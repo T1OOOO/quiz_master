@@ -1,0 +1,53 @@
+version: '3'
+
+tasks:
+  # --- Backend ---
+  run:
+    desc: Run the backend API
+    cmds:
+      - bash start.sh
+
+  test:backend:
+    desc: Run backend integration tests
+    cmds:
+      - go test ./internal/... -v
+
+  # --- Frontend (React) ---
+  web:dev:
+    desc: Start React development server
+    cmds:
+      - cd web && npm run dev
+
+  web:build:
+    desc: Build React production bundle
+    cmds:
+      - cd web && npm run build
+
+  web:test:
+    desc: Run Vitest for React
+    cmds:
+      - cd web && npm run test
+
+  # --- Mobile/Web (Flutter) ---
+  flutter:get:
+    desc: Fetch Flutter dependencies
+    cmds:
+      - cd flutter && flutter pub get
+
+  flutter:run:
+    desc: Run Flutter web app
+    cmds:
+      - cd flutter && flutter run -d chrome
+
+  flutter:test:
+    desc: Run Flutter unit/widget tests
+    cmds:
+      - cd flutter && flutter test
+
+  # --- Global ---
+  tidy:
+    desc: Clean and tidy everything
+    cmds:
+      - go mod tidy
+      - cd web && npm prune
+      - cd flutter && flutter clean

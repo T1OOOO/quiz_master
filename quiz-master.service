@@ -1,0 +1,16 @@
+[Unit]
+Description=Quiz Master Backend Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/quiz_master
+ExecStart=/var/www/quiz_master/quiz-server
+Restart=always
+RestartSec=5
+Environment=PORT=8085
+Environment=ENV=production
+
+[Install]
+WantedBy=multi-user.target
