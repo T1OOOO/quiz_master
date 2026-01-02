@@ -10,24 +10,26 @@ type Question struct {
 	CorrectText        string   `json:"correct_text,omitempty" yaml:"correct_text"`
 	CorrectMulti       []int    `json:"correct_multi,omitempty" yaml:"correct_multi"`
 	Explanation        string   `json:"explanation,omitempty" yaml:"explanation"`
+	Difficulty         int      `json:"difficulty,omitempty" yaml:"difficulty"`
 }
 
 type Quiz struct {
-	ID          string     `json:"id" yaml:"id"`
-	Title       string     `json:"title" yaml:"title"`
-	Description string     `json:"description" yaml:"description"`
-	Category    string     `json:"category" yaml:"category"`
-	Questions   []Question `json:"questions,omitempty" yaml:"questions"`
+	ID             string     `json:"id" yaml:"id"`
+	Title          string     `json:"title" yaml:"title"`
+	Description    string     `json:"description" yaml:"description"`
+	Category       string     `json:"category" yaml:"category"`
+	Questions      []Question `json:"questions,omitempty" yaml:"questions"`
+	QuestionsCount int        `json:"questions_count" yaml:"-"`
 }
 
 type AnswerResult struct {
 	Correct       bool        `json:"correct"`
 	CorrectAnswer interface{} `json:"correct_answer,omitempty"`
-	CorrectText   string      `json:"correct_answer_text,omitempty"`
+	CorrectText   string      `json:"correct_text,omitempty"`
 	Explanation   string      `json:"explanation,omitempty"`
 }
 
 type AnswerAttempt struct {
-	QuestionID  string      `json:"question_id"`
-	Answer      interface{} `json:"answer"`
+	QuestionID string      `json:"question_id"`
+	Answer     interface{} `json:"answer"`
 }

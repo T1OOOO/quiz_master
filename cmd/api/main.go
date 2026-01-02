@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"os"
 
-	"quiz_master/internal/config"
-	"quiz_master/internal/store"
-	"quiz_master/internal/service"
 	"quiz_master/internal/api"
+	"quiz_master/internal/config"
 	"quiz_master/internal/realtime"
+	"quiz_master/internal/service"
+	"quiz_master/internal/store"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
@@ -43,7 +43,7 @@ func main() {
 	// 5. Services
 	quizService := service.NewQuizService(quizStore)
 	authService := service.NewAuthService(userStore)
-	
+
 	// Realtime Hub (injects store into global Manager)
 	hub := realtime.NewHub(quizStore)
 	// Start hub loop
@@ -61,7 +61,7 @@ func main() {
 	// 7. Echo Setup
 	e := echo.New()
 	e.HideBanner = true
-	
+
 	// Middleware with slog
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
 		LogStatus: true,
@@ -89,7 +89,8 @@ func main() {
 		apiGroup.GET("/quizzes", quizHandler.List)
 		apiGroup.GET("/quizzes/:id", quizHandler.Get)
 		apiGroup.POST("/quizzes/:id/check", quizHandler.CheckAnswer)
-		
+		apiGroup.POST("/report", quizHandler.Report)
+
 		// Protected routes
 		apiGroup.POST("/submit", authHandler.SubmitResult, api.JWTMiddleware)
 	}
@@ -112,7 +113,7 @@ func main() {
 
 	// Static Files
 	e.Static("/assets", "web/dist/assets")
-	
+
 	// SPA Fallback for all non-API routes
 	e.GET("/*", func(c echo.Context) error {
 		c.Response().Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")

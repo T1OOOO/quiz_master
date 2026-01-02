@@ -1,4 +1,5 @@
 import '../global.css';
+import '../src/i18n'; // Initialize i18n
 import '../src/api/axios'; // Configure axios
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
@@ -10,6 +11,7 @@ import 'react-native-reanimated';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { useColorScheme } from '../src/hooks/useColorScheme';
+import { useSegments } from 'expo-router';
 
 const queryClient = new QueryClient();
 
@@ -54,52 +56,96 @@ export default function RootLayout() {
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { CustomDrawerContent } from '../src/components/CustomDrawerContent';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, View, Platform, StyleSheet, ImageBackground, Text } from 'react-native';
+
+import { vars } from 'nativewind';
+import { useThemeStore } from '../src/store/useThemeStore';
+// ... other imports ...
+
+// Define a theme with transparent background for the navigator
+const TransparentTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent',
+  },
+};
+
+function ThemeBackground() {
+    const { theme } = useThemeStore();
+    // Only render on Web and Holiday theme
+    if (Platform.OS === 'web' && theme === 'holiday') {
+        return (
+            <View style={StyleSheet.absoluteFill} pointerEvents="none">
+                <ImageBackground
+                    source={require('../assets/home-alone-bg.jpg')}
+                    style={[StyleSheet.absoluteFill, { width: '100%', height: '100%' }]}
+                    resizeMode="cover"
+                />
+                <View className="absolute inset-0 bg-black/10" />
+            </View>
+        );
+    }
+    return null;
+}
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const dimensions = useWindowDimensions();
+  const { theme } = useThemeStore();
+  const segments = useSegments();
   
-  // Show drawer permanently on larger screens (tablets/desktop)
   const isLargeScreen = dimensions.width >= 768;
+  const themeClass = theme === 'holiday' ? 'theme-holiday' : '';
+
+  // Use TransparentTheme when holiday theme is active to reveal the background image
+  const activeTheme = theme === 'holiday' 
+      ? TransparentTheme 
+      : (colorScheme === 'dark' ? DarkTheme : DefaultTheme);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-          <Drawer
-            drawerContent={(props) => <CustomDrawerContent {...props} />}
-            screenOptions={{
-              headerShown: false,
-              drawerType: isLargeScreen ? 'permanent' : 'front',
-              drawerStyle: {
-                width: isLargeScreen ? 280 : '80%',
-                maxWidth: 300,
-              },
-              swipeEnabled: !isLargeScreen,
-            }}
-          >
-            <Drawer.Screen 
-                name="index" 
-                options={{ 
-                    title: 'Главная',
-                    drawerLabel: 'Главная'
-                }} 
-            />
-            <Drawer.Screen 
-                name="quiz/[...id]" 
-                options={{ 
-                    drawerItemStyle: { display: 'none' },
-                    drawerType: 'front',
-                    swipeEnabled: false,
-                    drawerStyle: {
-                        width: 0,
-                    }
-                }} 
-            />
-          </Drawer>
-        </ThemeProvider>
-      </QueryClientProvider>
+      <View className={`flex-1 ${themeClass}`} style={{ flex: 1 }}>
+        {/* Global Background Layer */}
+        <ThemeBackground />
+        
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider value={activeTheme}>
+            <Drawer
+              drawerContent={(props) => <CustomDrawerContent {...props} />}
+              screenOptions={{
+                headerShown: false,
+                drawerType: (isLargeScreen && segments.length > 0 && segments[0] !== '(tabs)') ? 'permanent' : 'front',
+                drawerStyle: {
+                  width: isLargeScreen ? 280 : '80%',
+                  maxWidth: 300,
+                  backgroundColor: theme === 'holiday' ? 'transparent' : undefined,
+                },
+                swipeEnabled: !isLargeScreen || segments.length === 0 || segments[0] === '(tabs)',
+              }}
+            >
+              <Drawer.Screen 
+                  name="index" 
+                  options={{ 
+                      title: 'Главная',
+                      drawerLabel: 'Главная'
+                  }} 
+              />
+              <Drawer.Screen 
+                  name="quiz/[...id]" 
+                  options={{ 
+                      drawerItemStyle: { display: 'none' },
+                      drawerType: 'front',
+                      swipeEnabled: false,
+                      drawerStyle: {
+                          width: 0,
+                      }
+                  }} 
+              />
+            </Drawer>
+          </ThemeProvider>
+        </QueryClientProvider>
+      </View>
     </GestureHandlerRootView>
   );
 }

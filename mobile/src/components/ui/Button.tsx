@@ -1,9 +1,10 @@
 import { Text, TouchableOpacity } from 'react-native';
 import { cn } from '../../utils/cn';
-import { useThemeStyles } from '../../hooks/useThemeStyles';
+import { useThemeStore } from '../../store/useThemeStore';
 
 export function Button({ variant = 'default', size = 'default', className, children, ...props }) {
-    const { isHoliday } = useThemeStyles();
+    const { theme } = useThemeStore();
+    const isHoliday = theme === 'holiday';
 
     const baseStyles = "items-center justify-center rounded-xl flex-row";
 

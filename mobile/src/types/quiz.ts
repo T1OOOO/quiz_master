@@ -9,6 +9,7 @@ export interface Question {
     options: string[];
     explanation?: string;
     image_url?: string;
+    difficulty?: number;
     _optionMapping?: { opt: string; originalIdx: number }[];
 }
 

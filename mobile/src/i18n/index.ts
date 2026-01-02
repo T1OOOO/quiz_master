@@ -15,7 +15,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: getLocales()[0].languageCode ?? 'ru',
+    lng: 'ru', // Force Russian as per user request
     fallbackLng: 'ru',
     interpolation: {
       escapeValue: false, // react already safes from xss

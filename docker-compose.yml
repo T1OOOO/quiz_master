@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  quiz-master:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quiz-master
+    restart: unless-stopped
+    ports:
+      - "8085:8085"
+    environment:
+      - PORT=8085
+      - DB_PATH=/app/data/quiz.db
+      - ENV=production
+    volumes:
+      # Persist database
+      - ./data:/app/data
+      # Optional: mount quizzes for hot-reload (comment out for production)
+      # - ./quizzes:/app/quizzes:ro
+    networks:
+      - quiz-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8085/api/quizzes", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  quiz-network:
+    driver: bridge
+

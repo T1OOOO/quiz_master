@@ -61,7 +61,14 @@ export const CATEGORY_TRANSLATIONS: Record<string, string> = {
 
     // Holidays
     'Christmas': 'Рождество',
-    'New Year': 'Новый Год'
+    'New Year': 'Новый Год',
+
+    // UI Buttons & Labels
+    'Reset': 'Сброс',
+    'Mix': 'Перемешать',
+    'Question': 'Вопрос',
+    'Your Gift List': 'Ваш Список Подарков',
+    'Questions': 'Вопросы'
 };
 
 export const translateCategory = (text: string = ''): string => {

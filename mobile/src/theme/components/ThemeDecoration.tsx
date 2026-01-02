@@ -1,11 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Gift } from 'lucide-react-native';
-import { useThemeStyles } from '../../hooks/useThemeStyles';
+import { Gift } from '../../components/icons';
+import { useThemeStore } from '../../store/useThemeStore';
 import { cn } from '../../utils/cn';
 
 export function ThemeDecoration({ type }: { type: string }) {
-    const { isHoliday, isCyber } = useThemeStyles();
+    const { theme } = useThemeStore();
+    const isHoliday = theme === 'holiday';
+    const isCyber = theme === 'cyber';
 
     if (type === 'global') {
         // TODO: Implement Mobile Snowfall (e.g. using reanimated)

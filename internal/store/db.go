@@ -24,10 +24,10 @@ func InitDB(filepath string) error {
 	if err := createTables(); err != nil {
 		return err
 	}
-	
+
 	// Migration for existing tables
 	migrateUsers()
-	
+
 	return nil
 }
 
@@ -58,6 +58,7 @@ func createTables() error {
 			type TEXT DEFAULT 'choice',
 			image_url TEXT,
 			explanation TEXT,
+			difficulty INTEGER DEFAULT 0,
 			FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
 		);`,
 		`CREATE TABLE IF NOT EXISTS quiz_results (
@@ -90,11 +91,12 @@ func migrateUsers() {
 	_, _ = DB.Exec("ALTER TABLE questions ADD COLUMN correct_multi TEXT")
 	_, _ = DB.Exec("ALTER TABLE questions ADD COLUMN image_url TEXT")
 	_, _ = DB.Exec("ALTER TABLE questions ADD COLUMN explanation TEXT")
-	
+
 	_, _ = DB.Exec("ALTER TABLE quizzes ADD COLUMN category TEXT DEFAULT 'Разное'")
-	
+	_, _ = DB.Exec("ALTER TABLE questions ADD COLUMN difficulty INTEGER DEFAULT 0")
+
 	// Fix for legacy users table (password -> password_hash)
-	// SQLite doesn't support IF EXISTS for column rename in older versions easily, 
+	// SQLite doesn't support IF EXISTS for column rename in older versions easily,
 	// so we try to rename and ignore error if it fails (e.g. if column doesn't exist)
 	_, _ = DB.Exec("ALTER TABLE users RENAME COLUMN password TO password_hash")
 }

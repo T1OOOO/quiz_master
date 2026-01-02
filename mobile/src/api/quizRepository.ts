@@ -48,5 +48,23 @@ export const QuizRepository = {
             console.error('Failed to submit score:', error);
             return false;
         }
+    },
+    /**
+     * Report an issue with a question
+     */
+    async reportIssue(quizId: string, questionId: string, message: string, questionText: string): Promise<boolean> {
+        try {
+            await axios.post('/api/report', {
+                quiz_id: quizId,
+                question_id: questionId,
+                message: message,
+                question_text: questionText,
+                timestamp: new Date().toISOString()
+            });
+            return true;
+        } catch (error) {
+            console.error('Failed to report issue:', error);
+            return false;
+        }
     }
 };

@@ -3,11 +3,13 @@ import { View, Text, TouchableOpacity, Image, ScrollView, Dimensions } from 'rea
 import Markdown from 'react-native-markdown-display';
 import { cn } from '../../../utils/cn';
 import { useTelegram } from '../../../hooks/useTelegram';
-import { useThemeStyles } from '../../../hooks/useThemeStyles';
+import { useThemeStore } from '../../../store/useThemeStore';
 import { ThemeDecoration } from '../../../theme/components/ThemeDecoration';
 import { Button } from '../../../components/ui/Button'; // Ensure this exists
-import { Home, ChevronRight } from 'lucide-react-native';
+import { Trash2, Shuffle, CheckCircle, XCircle, ChevronRight, Info, Gift, Snowflake } from '../../../components/icons';
+import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
+import { ReportButton } from '../../../components/ReportButton';
 
 import { Quiz, Question, Feedback, QuizStats } from '../../../types/quiz';
 
@@ -31,7 +33,6 @@ interface QuestionCardProps {
     category?: any;
     quizTitle?: string;
     onNext?: () => void;
-    breadcrumbs?: Breadcrumb[];
     isLast?: boolean;
 }
 
@@ -50,10 +51,11 @@ export function QuestionCard({
     category,
     quizTitle,
     onNext,
-    breadcrumbs,
     isLast
 }: QuestionCardProps) {
-    const { styles, isHoliday, config } = useThemeStyles();
+    const { t } = useTranslation();
+    const { theme } = useThemeStore();
+    const isHoliday = theme === 'holiday';
     const { hapticFeedback } = useTelegram();
     const router = useRouter();
 
@@ -81,104 +83,153 @@ export function QuestionCard({
             contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 4 }}
             showsVerticalScrollIndicator={false}
         >
-            {/* Main Card Frame - Clean Winter White "Fresh Snow" */}
-            <View className={cn(
-                "rounded-3xl border border-slate-200 p-4 shadow-2xl relative overflow-hidden",
-                isHoliday ? "bg-white" : "bg-neutral-900 border-neutral-700"
-            )}>
+            {/* Main Card Frame */}
+            <View className="rounded-3xl border border-border p-4 shadow-2xl relative overflow-hidden bg-card">
                 
-                {/* Top Toolbar with Stats - Ultra Compact */}
-                <View className="mb-2 flex-row justify-between items-center px-1">
-                    <View className="flex-row items-center gap-2">
-                        {/* Progress */}
-                        <View className={cn("px-2 py-0.5 rounded-full border shadow-sm", styles.pill)}>
-                            <Text className={cn("text-[10px] font-black tracking-widest", styles.pillActive)}>
-                                {currentIdx + 1}/{totalQuestions}
-                            </Text>
-                        </View>
-                    </View>
-
-                    {/* Right Side: Score & Buttons */}
-                    <View className="flex-row items-center gap-1.5">
-                         {/* Score Board - Compact */}
-                        <View className={cn(
-                            "px-2 py-0.5 rounded-full border flex-row gap-2 items-center shadow-sm mr-1",
-                            isHoliday ? "bg-white border-slate-100" : "bg-neutral-800 border-neutral-700"
-                        )}>
-                            <View className="flex-row items-center gap-1">
-                                <Text className="text-[10px]">🎉</Text>
-                                <Text className={cn("text-[10px] font-bold", isHoliday ? "text-emerald-600" : "text-green-400")}>
-                                    {stats?.correct || 0}
+                {/* Top Toolbar with Stats - Compact Premium Design */}
+                <View className="mb-2">
+                    <View className="flex-row justify-between items-center px-3 py-2 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg">
+                        {/* Left Group: Question Stats */}
+                        <View className="flex-row items-center gap-2">
+                            {/* Progress */}
+                            <View className="flex-row items-center gap-1 px-2 py-0.5 rounded-lg bg-blue-500/10">
+                                <Text className="text-[13px]">❓</Text>
+                                <Text className="text-[11px] font-black tracking-tight text-blue-500">
+                                    {currentIdx + 1}/{totalQuestions}
                                 </Text>
                             </View>
-                            <View className="w-px h-2.5 bg-slate-200" />
-                            <View className="flex-row items-center gap-1">
-                                <Text className="text-[10px]">❄️</Text>
-                                <Text className={cn("text-[10px] font-bold", isHoliday ? "text-slate-400" : "text-red-400")}>
-                                    {stats?.incorrect || 0}
-                                </Text>
+                            
+                            {/* Results */}
+                            <View className="flex-row items-center gap-1.5">
+                                <View className="flex-row items-center gap-1 px-1.5 py-0.5 rounded-lg bg-green-500/10">
+                                    <Text className="text-[11px]">✅</Text>
+                                    <Text className="text-[11px] font-bold text-green-600">
+                                        {stats?.correct || 0}
+                                    </Text>
+                                </View>
+                                <View className="flex-row items-center gap-1 px-1.5 py-0.5 rounded-lg bg-red-500/10">
+                                    <Text className="text-[11px]">❌</Text>
+                                    <Text className="text-[11px] font-bold text-red-500">
+                                        {stats?.incorrect || 0}
+                                    </Text>
+                                </View>
                             </View>
+                            
+                            {/* Difficulty */}
+                            {question.difficulty && (
+                                <>
+                                    <View className="w-px h-4 bg-white/10" />
+                                    <View className="flex-row items-center gap-1 px-2 py-0.5 rounded-lg bg-purple-500/10">
+                                        <Text className="text-[12px]">⚡</Text>
+                                        <Text className="text-[10px] font-black text-purple-600">
+                                            {question.difficulty}/10
+                                        </Text>
+                                    </View>
+                                </>
+                            )}
                         </View>
 
-                        <TouchableOpacity onPress={onReset} className="px-2 py-0.5 bg-slate-100 rounded-full border border-slate-200">
-                             <Text className={cn("text-[9px] font-bold uppercase tracking-wider text-slate-500")}>Reset</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={onShuffleQuiz} className="px-2 py-0.5 bg-slate-100 rounded-full border border-slate-200">
-                            <Text className={cn("text-[9px] font-bold uppercase tracking-wider text-slate-500")}>Mix</Text>
-                        </TouchableOpacity>
+                        {/* Right Group: Actions */}
+                        <View className="flex-row items-center gap-1">
+                            {/* Reset */}
+                            <TouchableOpacity 
+                                onPress={onReset} 
+                                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10"
+                                // @ts-ignore
+                                title={t('quiz.reset', 'Сбросить прогресс')}
+                            >
+                                <Text className="text-[14px]">🔄</Text>
+                            </TouchableOpacity>
+                            
+                            {/* Shuffle */}
+                            <TouchableOpacity 
+                                onPress={onShuffleQuiz} 
+                                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10"
+                                // @ts-ignore
+                                title={t('quiz.mix', 'Перемешать вопросы')}
+                            >
+                                <Text className="text-[14px]">🔀</Text>
+                            </TouchableOpacity>
+                            
+                            {/* Report */}
+                            <View className="p-1.5 rounded-lg bg-white/5 border border-white/10">
+                                <ReportButton questionId={question.id} questionText={question.text} />
+                            </View>
+                        </View>
                     </View>
                 </View>
 
                 {/* Image - Compact */}
                 {question.image_url && (
-                    <View className="w-full h-28 mb-2 rounded-xl overflow-hidden bg-slate-100 border-2 border-white shadow-sm">
+                    <View className="w-full h-28 mb-2 rounded-xl overflow-hidden bg-muted border-2 border-border shadow-sm">
                         <Image
                             source={{ uri: question.image_url }}
-                            className={cn("w-full h-full", styles.cardImage)}
+                            className="w-full h-full"
                             resizeMode="cover"
                         />
                     </View>
                 )}
 
-                {/* Question Text - Dark Slate */}
+                {/* Question Text */}
                 <View className="mb-2 px-1">
                     <View style={{ opacity: 1 }}>
-                        <Markdown style={{ body: { color: isHoliday ? '#1e293b' : '#e5e5e5', fontSize: 16, fontWeight: '800', lineHeight: 22, fontFamily: 'serif' } }}>
+                        <Markdown style={{ 
+                            body: { 
+                                color: isHoliday ? '#1e293b' : '#e5e5e5', // Fallback for MD until generic support verified
+                                fontSize: 16, 
+                                fontWeight: '800', 
+                                lineHeight: 22, 
+                                fontFamily: 'serif' 
+                            } 
+                        }}>
                             {question.text}
                         </Markdown>
                     </View>
 
-                    <View className="mt-1 flex-row">
-                        <View className={cn(
-                            "px-2 py-0.5 rounded-lg border shadow-sm",
-                            feedback ? (feedback.correct ? "border-emerald-200 bg-emerald-50" : "border-rose-200 bg-rose-50") : "border-blue-200 bg-blue-50"
-                        )}>
-                            <Text className={cn(
-                                "text-[9px] font-black uppercase tracking-widest",
-                                feedback ? (feedback.correct ? "text-emerald-800" : "text-rose-800") : "text-blue-800"
+                    <View className="mt-1 flex-row gap-2">
+                        {/* Show feedback badge only after answer */}
+                        {feedback && (
+                            <View className={cn(
+                                "px-2 py-0.5 rounded-lg border shadow-sm",
+                                feedback.correct ? "border-emerald-200 bg-emerald-50" : "border-rose-200 bg-rose-50"
                             )}>
-                                {feedback ? (feedback.correct ? '🎉 Верно' : '❌ Ошибка') : '❄️ Вопрос'}
-                            </Text>
-                        </View>
+                                <Text className={cn(
+                                    "text-[9px] font-black uppercase tracking-widest",
+                                    feedback.correct ? "text-emerald-800" : "text-rose-800"
+                                )}>
+                                    {feedback.correct ? t('quiz.correct') : t('quiz.incorrect')}
+                                </Text>
+                            </View>
+                        )}
                     </View>
                 </View>
 
-                {/* Options - Festive Gift Cards Grid */}
-                <View className="flex-row flex-wrap justify-between px-1 mb-2">
+                {/* Options - Responsive Layout */}
+                <View className="flex-row flex-wrap px-1 mb-2">
                     {question.options.map((opt: string, idx: number) => {
                         const status = getOptionStatus(idx);
                         
-                        let bgClass = "bg-white border border-slate-200 shadow-sm";
-                        let textClass = "text-slate-700 font-bold";
-                        let ornamentClass = "bg-slate-100";
-                        let ornamentText = "text-slate-400";
+                        // Calculate if text is long (more than 30 chars = full width)
+                        const isLongText = opt.length > 30;
+                        
+                        let bgClass = isHoliday ? "bg-white border-amber-200 shadow-sm" : "bg-card-secondary border-border shadow-sm";
+                        let textClass = "text-text-primary font-bold";
+                        let ornamentClass = isHoliday ? "bg-red-50 border-red-100" : "bg-accent/10";
+                        let ornamentText = isHoliday ? "text-red-800" : "text-accent";
                         
                         // Active State
                         if (status === 'selected') {
-                            bgClass = isHoliday ? "bg-amber-50 border-amber-300 shadow-md" : "bg-sky-50 border-sky-300";
-                            textClass = isHoliday ? "text-amber-900" : "text-sky-900";
-                            ornamentClass = isHoliday ? "bg-amber-200" : "bg-sky-200";
-                            ornamentText = isHoliday ? "text-amber-800" : "text-sky-800";
+                            if (isHoliday) {
+                                bgClass = "bg-amber-50 border-amber-400 shadow-md";
+                                textClass = "text-amber-900";
+                                ornamentClass = "bg-amber-200 border-amber-300";
+                                ornamentText = "text-amber-900";
+                            } else {
+                                bgClass = "bg-accent/10 border-accent shadow-md"; 
+                                textClass = "text-accent"; 
+                                ornamentClass = "bg-accent/20";
+                                ornamentText = "text-accent-dark";
+                            }
                         } else if (status === 'correct') {
                             bgClass = "bg-emerald-50 border-emerald-300";
                             textClass = "text-emerald-900";
@@ -197,7 +248,9 @@ export function QuestionCard({
                                 onPress={() => handleSelect(idx)}
                                 disabled={disabled || !!feedback}
                                 className={cn(
-                                    "w-[49%] p-2 rounded-xl flex-row items-center transition-all mb-2", 
+                                    "p-2 rounded-xl flex-row items-center transition-all mb-2 border",
+                                    isLongText ? "w-full" : "w-[49%]",
+                                    !isLongText && idx % 2 === 0 && "mr-[2%]",
                                     bgClass,
                                 )}
                                 activeOpacity={0.7}
@@ -213,7 +266,15 @@ export function QuestionCard({
                                 </View>
                                 
                                 <View className="flex-1 justify-center">
-                                    <Markdown style={{ body: { color: status === 'selected' || status === 'correct' || status === 'incorrect' ? '#1e293b' : '#334155', fontSize: 13, lineHeight: 16, fontWeight: '600', fontFamily: 'serif' } }}>
+                                    <Markdown style={{ 
+                                        body: { 
+                                            color: status === 'selected' || status === 'correct' || status === 'incorrect' ? '#1e293b' : '#334155',
+                                            fontSize: 13, 
+                                            lineHeight: 16, 
+                                            fontWeight: '600', 
+                                            fontFamily: 'serif' 
+                                        } 
+                                    }}>
                                         {opt}
                                     </Markdown>
                                 </View>
@@ -222,34 +283,33 @@ export function QuestionCard({
                     })}
                 </View>
 
-                {/* Explanation Overlay/Compact */}
+                {/* Explanation Overlay/Compact - Vertical but Tight */}
                 {feedback && (
-                    <View className="mb-2 mx-1 p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
+                    <View className="mb-1 mx-1 p-2 rounded-lg bg-slate-50 border border-slate-200 shadow-sm">
                         <Text className="text-[9px] font-bold uppercase text-sky-600 mb-0.5">
-                            ✨ Интересный факт
+                            {t('quiz.explanation_title')}
                         </Text>
                         <Markdown style={{ body: { color: '#475569', fontSize: 12, lineHeight: 16 } }}>
-                            {feedback.explanation || "Нет объяснения."}
+                            {feedback.explanation || t('quiz.no_explanation')}
                         </Markdown>
                     </View>
                 )}
                 
-                {/* Next Button inside the Frame */}
+                {/* Next Button inside the Frame - Compact Height */}
                 {feedback && onNext && (
-                    <View className="w-full mt-0.5">
+                    <View className="w-full mt-0">
                          <TouchableOpacity
                             onPress={onNext}
                             className={cn(
-                                "w-full py-2.5 rounded-xl items-center justify-center shadow-md",
-                                isHoliday ? "bg-sky-500 border-b-4 border-sky-700 active:border-b-0 active:translate-y-1" : "bg-white"
+                                "w-full py-2 rounded-lg items-center justify-center shadow-sm",
+                                "bg-accent border-b-4 border-accent-dark active:border-b-0 active:translate-y-1"
                             )}
                             activeOpacity={0.8}
                         >
                             <Text className={cn(
-                                "font-bold text-xs uppercase tracking-wider",
-                                isHoliday ? "text-white" : "text-black"
+                                "font-bold text-xs uppercase tracking-wider text-white"
                             )}>
-                                {isLast ? "Завершить" : "Далее"}
+                                {isLast ? t('quiz.finish') : t('quiz.next')}
                             </Text>
                         </TouchableOpacity>
                     </View>

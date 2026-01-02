@@ -1,3 +1,112 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* DEFAULT THEME (Dark/Slate) */
+    --bg-primary: 15 23 42; /* slate-900 */
+    --bg-secondary: 30 41 59; /* slate-800 */
+    
+    --bg-card: 30 41 59; /* slate-800 - Default Dark Card */
+    --bg-card-secondary: 51 65 85; /* slate-700 */
+    
+    --bg-sidebar: 30 41 59; /* slate-800 - Default Solid Sidebar */
+    
+    --text-primary: 248 250 252; /* slate-50 */
+    --text-secondary: 148 163 184; /* slate-400 */
+    
+    --accent: 59 130 246; /* blue-500 */
+    --accent-light: 96 165 250; /* blue-400 */
+    
+    --border: 51 65 85; /* slate-700 */
+    
+    --success: 34 197 94; /* green-500 */
+    --error: 239 68 68; /* red-500 */
+  }
+
+  .theme-holiday {
+    /* HOLIDAY THEME (Rich Burgundy/Amber/Ivory) */
+    /* background: homeAloneBg (handled via ImageBackground) */
+    
+    /* Overlay: bg-amber-950/20 */
+    /* We can approximate the primary bg color if image fails to load, or use these for UI elements */
+    --bg-primary: 69 10 10; /* red-950 */
+    --bg-secondary: 127 29 29; /* red-900 */
+    
+    /* Text: text-stone-900 / text-stone-800 for cards, but pure white for severe contrast on dark? */
+    /* The 'holiday' theme in `holiday.ts` actually uses LIGHT backgrounds for cards (bg-stone-50) */
+    /* and DARK text (text-stone-900). */
+    /* BUT the sidebar uses `bg-white` and `text-stone-900` or `red-900`. */
+    
+    /* !!! CRITICAL DIFFERENCE !!! */
+    /* The 'Holiday' theme is a LIGHT card theme on a DARK overlay. */
+    /* Our previous assumption in global.css was a generic dark red theme. */
+    /* We need to define text-primary as DARK for this theme effectively, or scoped to cards. */
+    
+    /* Let's align with the `CustomDrawerContent` logic I just wrote: */
+    /* Drawer uses: bg-primary (which I set to red-950 approx). */
+    /* But `holiday.ts` says sidebar is "bg-white". */
+    /* We need to decide: Are we making a Dark Red Sidebar or a White Sidebar? */
+    /* The user liked the "Gourmet" look which was Ivory/White sidebar. */
+    /* My `CustomDrawerContent` refactor made it `bg-primary`... which might be wrong if `bg-primary` is Red. */
+    
+    /* REVISION: */
+    /* Let's make the GLOBAL theme vars reflect the "Main UI" colors. */
+    /* For Holiday: Sidebar is White (Ivory), Main BG is Red/Image. */
+    /* This implies a split theme system or carefully scoped vars. */
+    
+    /* Strategy: */
+    /* --bg-primary: The main background color of the PAGE/CONTAINER. */
+    /* --bg-card: The background of cards/drawers. */
+    
+    /* Let's update vars to support this split. */
+    
+    /* Page Background (Fallback if image missing) */
+    /* Was red-950, but original was light slate. */
+    /* Setting it to transparent or a neutral color to let ImageBackground shine or keep light theme logic */
+    --bg-page: 248 250 252; /* slate-50 - RESTORED LIGHT THEME BASE */
+    
+    /* Card/Sidebar Background */
+    --bg-card: 255 252 245; /* warm ivory/floral white */
+    --bg-card-secondary: 254 252 232; /* yellow-50/cream */
+    
+    /* Sidebar Specific (Glassy for Holiday) */
+    /* using rgba directly since nativewind rgb var usage expects channels */
+    /* wait, tailwind config uses rgb(var(--bg-sidebar) / <alpha>) so I must provide CHANNELS */
+    /* I CANNOT provide alpha in the channels if using <alpha-value> in config. */
+    /* Solution: Define --bg-sidebar as channels, and apply opacity in CLASS. */
+    
+    --bg-sidebar: 255 255 255; /* white */
+    
+    /* Text Colors (on cards) */
+    --text-primary: 28 25 23; /* stone-900 */
+    --text-secondary: 68 64 60; /* stone-700 */
+    --text-muted: 120 113 108; /* stone-500 */
+    
+    --accent: 251 191 36; /* amber-400 */
+    --accent-dark: 217 119 6; /* amber-600 */
+    
+    --border: 226 232 240; /* slate-200 - RESTORED CLEAN BORDER */
+    
+    --success: 16 185 129; /* emerald-500 */
+    --error: 244 63 94; /* rose-500 */
+  }
+}
+
+/* Custom Scrollbar for Holiday Theme Web */
+@media web {
+  .theme-holiday ::-webkit-scrollbar {
+    width: 8px;
+  }
+  .theme-holiday ::-webkit-scrollbar-track {
+    background: rgba(254, 252, 232, 0.5); /* cream transparent */
+  }
+  .theme-holiday ::-webkit-scrollbar-thumb {
+    background: rgba(251, 191, 36, 0.5); /* amber glass */
+    border-radius: 4px;
+  }
+  .theme-holiday ::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11, 0.8);
+  }
+}

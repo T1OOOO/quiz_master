@@ -1,0 +1,84 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Build artifacts
+quiz-server
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+*.txt
+backend.log
+build_log*.txt
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Node modules (if any)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Mobile build artifacts
+mobile/android/build/
+mobile/android/app/build/
+mobile/node_modules/
+
+# Flutter
+flutter/.dart_tool/
+flutter/build/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archive files
+*.tar.gz
+*.zip
+*.tar
+
+# Tools
+.tools/
+.cache/
+.modcache/
+
+# Scripts (keep only essential ones)
+*.sh
+!build.sh
+!deploy.sh
+

@@ -13,6 +13,11 @@ type Question struct {
 	Text               string   `yaml:"text" json:"text"`
 	Options            []string `yaml:"options" json:"options"`
 	CorrectAnswerIndex int      `yaml:"correct_answer" json:"correct_answer_index,omitempty"`
+	CorrectText        string   `yaml:"correct_text,omitempty" json:"correct_text,omitempty"`
+	CorrectMulti       []int    `yaml:"correct_multi,omitempty" json:"correct_multi,omitempty"`
+	ImageURL           string   `yaml:"image_url,omitempty" json:"image_url,omitempty"`
+	Explanation        string   `yaml:"explanation,omitempty" json:"explanation,omitempty"`
+	Difficulty         int      `yaml:"difficulty,omitempty" json:"difficulty,omitempty"`
 }
 
 type AnswerAttempt struct {

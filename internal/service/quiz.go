@@ -1,15 +1,16 @@
 package service
 
 import (
+	"fmt"
+	"io/fs"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"quiz_master/internal/models"
 	"quiz_master/internal/store"
-	"io/fs"
 
 	"gopkg.in/yaml.v3"
-);
+)
 
 type QuizService struct {
 	repo *store.QuizStore
@@ -45,7 +46,7 @@ func (s *QuizService) CheckAnswer(quizID, questionID string, answer interface{})
 		return nil, err
 	}
 	if q == nil {
-		return nil, nil // or error
+		return nil, fmt.Errorf("quiz not found: %s", quizID)
 	}
 
 	var question *models.Question
@@ -57,7 +58,7 @@ func (s *QuizService) CheckAnswer(quizID, questionID string, answer interface{})
 	}
 
 	if question == nil {
-		return nil, nil
+		return nil, fmt.Errorf("question not found: %s in quiz %s", questionID, quizID)
 	}
 
 	correct := false
@@ -66,10 +67,22 @@ func (s *QuizService) CheckAnswer(quizID, questionID string, answer interface{})
 	var correctTextStr string
 	switch question.Type {
 	case "choice":
-		ansIdx, ok := answer.(float64)
-		if ok {
-			correct = int(ansIdx) == question.CorrectAnswerIndex
+		// Handle both int and float64 (JSON numbers can be either)
+		var ansIdx int
+		switch v := answer.(type) {
+		case int:
+			ansIdx = v
+		case float64:
+			ansIdx = int(v)
+		case int64:
+			ansIdx = int(v)
+		default:
+			// Try to convert
+			if f, ok := answer.(float64); ok {
+				ansIdx = int(f)
+			}
 		}
+		correct = ansIdx == question.CorrectAnswerIndex
 		correctAnswer = question.CorrectAnswerIndex
 		if question.CorrectAnswerIndex >= 0 && question.CorrectAnswerIndex < len(question.Options) {
 			correctTextStr = question.Options[question.CorrectAnswerIndex]
@@ -119,7 +132,7 @@ func (s *QuizService) CheckAnswer(quizID, questionID string, answer interface{})
 
 func (s *QuizService) SyncFromFiles(dir string) error {
 	slog.Info("Syncing quizzes from directory", "dir", dir)
-	
+
 	processedIDs := make(map[string]bool)
 
 	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
@@ -144,12 +157,14 @@ func (s *QuizService) SyncFromFiles(dir string) error {
 				return nil
 			}
 
-			// Infer category from path (relative to quizzes dir)
-			rel, err := filepath.Rel(dir, path)
-			if err == nil {
-				parent := filepath.Dir(rel)
-				if parent != "." {
-					q.Category = parent
+			// Infer category from path (relative to quizzes dir) if not already set
+			if q.Category == "" {
+				rel, err := filepath.Rel(dir, path)
+				if err == nil {
+					parent := filepath.Dir(rel)
+					if parent != "." {
+						q.Category = parent
+					}
 				}
 			}
 
@@ -206,9 +221,8 @@ func (s *QuizService) SyncFromFiles(dir string) error {
 }
 
 func min(a, b int) int {
-    if a < b {
-        return a
-    }
-    return b
+	if a < b {
+		return a
+	}
+	return b
 }
-

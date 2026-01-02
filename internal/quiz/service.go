@@ -160,10 +160,10 @@ func (s *Service) CheckAnswer(quizID, questionID string, answerIdx int) (*Answer
 	if err != nil {
 		return nil, false
 	}
-	
+
 	correct := correctIdx == answerIdx
 	return &AnswerResult{
-		Correct: correct,
+		Correct:       correct,
 		CorrectAnswer: correctIdx, // In a real app we might hide this if checks are done per question
 	}, true
 }
@@ -196,8 +196,9 @@ func (s *Service) Update(q *Quiz) error {
 			quest.Type = "choice"
 		}
 		optionsJSON, _ := json.Marshal(quest.Options)
-		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, text, options, correct_answer_index, type) VALUES (?, ?, ?, ?, ?, ?)",
-			quest.ID, q.ID, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.Type)
+		multiJSON, _ := json.Marshal(quest.CorrectMulti)
+		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation, quest.Difficulty)
 		if err != nil {
 			tx.Rollback()
 			return err

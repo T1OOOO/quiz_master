@@ -3,9 +3,10 @@ package store
 import (
 	"database/sql"
 	"encoding/json"
-	"quiz_master/internal/models"
-	"github.com/google/uuid"
 	"iter"
+	"quiz_master/internal/models"
+
+	"github.com/google/uuid"
 )
 
 type QuizStore struct {
@@ -29,7 +30,13 @@ func (r *QuizStore) List() ([]models.Quiz, error) {
 
 func (r *QuizStore) All() iter.Seq2[models.Quiz, error] {
 	return func(yield func(models.Quiz, error) bool) {
-		rows, err := r.db.Query("SELECT id, title, description, category FROM quizzes")
+		// Include subquery to count questions
+		rows, err := r.db.Query(`
+			SELECT 
+				q.id, q.title, q.description, q.category,
+				(SELECT COUNT(*) FROM questions WHERE quiz_id = q.id) as q_count
+			FROM quizzes q
+		`)
 		if err != nil {
 			yield(models.Quiz{}, err)
 			return
@@ -38,7 +45,7 @@ func (r *QuizStore) All() iter.Seq2[models.Quiz, error] {
 
 		for rows.Next() {
 			var q models.Quiz
-			if err := rows.Scan(&q.ID, &q.Title, &q.Description, &q.Category); err != nil {
+			if err := rows.Scan(&q.ID, &q.Title, &q.Description, &q.Category, &q.QuestionsCount); err != nil {
 				if !yield(models.Quiz{}, err) {
 					return
 				}
@@ -61,8 +68,7 @@ func (r *QuizStore) Get(id string) (*models.Quiz, error) {
 		return nil, err
 	}
 
-	rows, err := r.db.Query("SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation FROM questions WHERE quiz_id = ?", id)
-
+	rows, err := r.db.Query("SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty FROM questions WHERE quiz_id = ?", id)
 
 	if err != nil {
 		return nil, err
@@ -76,13 +82,17 @@ func (r *QuizStore) Get(id string) (*models.Quiz, error) {
 		var multiJSON sql.NullString
 		var imageUrl sql.NullString
 		var explanation sql.NullString
-		if err := rows.Scan(&quest.ID, &quest.Type, &quest.Text, &optionsJSON, &quest.CorrectAnswerIndex, &correctText, &multiJSON, &imageUrl, &explanation); err != nil {
+		var difficulty sql.NullInt64
+		if err := rows.Scan(&quest.ID, &quest.Type, &quest.Text, &optionsJSON, &quest.CorrectAnswerIndex, &correctText, &multiJSON, &imageUrl, &explanation, &difficulty); err != nil {
 			return nil, err
 		}
 		json.Unmarshal([]byte(optionsJSON), &quest.Options)
 		quest.CorrectText = correctText.String
 		quest.ImageURL = imageUrl.String
 		quest.Explanation = explanation.String
+		if difficulty.Valid {
+			quest.Difficulty = int(difficulty.Int64)
+		}
 		if multiJSON.Valid {
 			json.Unmarshal([]byte(multiJSON.String), &quest.CorrectMulti)
 		}
@@ -115,14 +125,14 @@ func (r *QuizStore) Create(q *models.Quiz) error {
 	for _, quest := range q.Questions {
 		// Always generate unique question IDs to avoid YAML conflicts
 		quest.ID = uuid.New().String()
-		
+
 		if quest.Type == "" {
 			quest.Type = "choice"
 		}
 		optionsJSON, _ := json.Marshal(quest.Options)
 		multiJSON, _ := json.Marshal(quest.CorrectMulti)
-		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation)
+		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation, quest.Difficulty)
 		if err != nil {
 			tx.Rollback()
 			return err
@@ -163,8 +173,8 @@ func (r *QuizStore) Update(q *models.Quiz) error {
 		}
 		optionsJSON, _ := json.Marshal(quest.Options)
 		multiJSON, _ := json.Marshal(quest.CorrectMulti)
-		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation)
+		_, err = tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation, quest.Difficulty)
 		if err != nil {
 			tx.Rollback()
 			return err

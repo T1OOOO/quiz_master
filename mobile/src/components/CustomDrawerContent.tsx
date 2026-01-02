@@ -1,36 +1,38 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { useThemeStyles } from '../hooks/useThemeStyles';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuizStore } from '../store/quizStore';
-import { Palette, User, LogOut, CheckCircle, XCircle, Circle, ChevronRight, Home } from 'lucide-react-native';
+import { Palette, User, LogOut, CheckCircle, XCircle, Circle, ChevronRight, Home } from './icons';
 import { cn } from '../utils/cn';
 
+import { useTranslation } from 'react-i18next';
+// ... imports
+
 export function CustomDrawerContent(props: any) {
-  const { styles, isHoliday, themeId } = useThemeStyles();
-  const { toggleTheme } = useThemeStore();
+  const { toggleTheme, theme } = useThemeStore(); // Directly use theme from store
+  const { t } = useTranslation();
   const { 
     quizId, 
     quizTitle, 
     questions, 
-    currentQuestionIndex, 
     answers, 
     feedback, 
-    selectQuestion 
+    selectQuestion,
+    currentQuestionIndex
   } = useQuizStore();
 
   const getThemeName = () => {
     const names: Record<string, string> = {
-      'holiday': '🎄 Новый год',
-      'night': '🌙 Ночь',
-      'summer': '☀️ Лето',
-      'cyber': '🤖 Кибер',
-      'autumn': '🍂 Осень',
-      'romance': '💕 Романтика'
+      'holiday': t('theme.holiday', '🎄 Новый год'),
+      'night': t('theme.night', '🌙 Ночь'),
+      'summer': t('theme.summer', '☀️ Лето'),
+      'cyber': t('theme.cyber', '🤖 Кибер'),
+      'autumn': t('theme.autumn', '🍂 Осень'),
+      'romance': t('theme.romance', '💕 Романтика')
     };
-    return names[themeId] || themeId;
+    return names[theme] || theme;
   };
 
   // Get question status
@@ -49,8 +51,18 @@ export function CustomDrawerContent(props: any) {
 
   // Get status icon
   const getStatusIcon = (status: string, isCurrent: boolean) => {
+    // We can use a semantic color var for icons too if needed, 
+    // but for now let's keep it simple with hardcoded 'active' vs 'inactive' semantic-ish colors
+    // or use conditional classes on the Icon wrapper if possible (not easy with direct Lucide props).
+    // Let's rely on standard colors for status (red/green) and theme accent for current.
+    
+    // NOTE: Lucide icons expect hex/rgb strings usually, not css vars directly in 'color' prop easily 
+    // without helper. For now we stick to safe colors or simple logic.
+    const activeColor = "#fbbf24"; // Amber-400 equivalent (our accent)
+    const inactiveColor = "#9ca3af"; // Gray-400
+
     if (isCurrent) {
-      return <ChevronRight size={18} color={isHoliday ? "#fbbf24" : "#60a5fa"} />;
+      return <ChevronRight size={18} color={activeColor} />;
     }
     
     switch (status) {
@@ -59,15 +71,18 @@ export function CustomDrawerContent(props: any) {
       case 'incorrect':
         return <XCircle size={18} color="#ef4444" />;
       default:
-        return <Circle size={18} color={isHoliday ? "#d1d5db" : "#6b7280"} />;
+        return <Circle size={18} color={inactiveColor} />;
     }
   };
 
   const bgImage = require('../../assets/home-alone-bg.jpg');
   const isInQuiz = quizId && questions.length > 0;
 
+  // Semantic styles mapping
+  // We use our defined Tailwind classes: bg-primary, text-primary, border-border, etc.
+  
   return (
-    <View className="flex-1 overflow-hidden">
+    <View className="flex-1 overflow-hidden bg-primary">
         <ImageBackground
             source={bgImage}
             className="flex-1 w-full h-full"
@@ -75,29 +90,32 @@ export function CustomDrawerContent(props: any) {
             resizeMode="cover"
         >
             <LinearGradient
-            colors={isHoliday ? ['rgba(255, 250, 240, 0.85)', 'rgba(255, 240, 230, 0.95)'] : ['rgba(0,0,0,0.85)', 'rgba(26,26,26,0.95)']}
+            // We can't easily use CSS vars in LinearGradient 'colors' prop array in RN yet 
+            // without resolving them. For now, we keep the semi-transparent overlay 
+            // but maybe simplifying to a single CSS-based overlay View if we wanted full purity.
+            // Let's keep it visually compatible for now.
+            colors={['rgba(var(--bg-primary), 0.85)', 'rgba(var(--bg-secondary), 0.95)']}
             style={{ flex: 1 }}
             >
-            <View className={cn("flex-1 m-2 rounded-[2.5rem] overflow-hidden border", isHoliday ? "border-white/20 bg-white/50" : "border-gray-800 bg-transparent")}>
+            <View className="flex-1 m-2 rounded-[2.5rem] overflow-hidden border border-border bg-white/5">
                 <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: 0 }}>
                 {/* User Profile Section */}
-                <View className={cn("p-6 mb-4 border-b", isHoliday ? "border-black/5" : "border-gray-800")}>
-                    <View className={cn("w-16 h-16 rounded-full mb-3 items-center justify-center overflow-hidden", isHoliday ? "bg-amber-100/50 border border-amber-200" : "bg-gray-700")}>
-                        <User size={32} color={isHoliday ? "#92400e" : "#ccc"} />
+                <View className="p-6 mb-4 border-b border-border">
+                    <View className="w-16 h-16 rounded-full mb-3 items-center justify-center overflow-hidden bg-white/10 border border-white/20">
+                        <User size={32} color="rgba(var(--text-primary), 1)" />
                     </View>
-                    <Text className={cn("text-xl font-bold mb-1 font-serif", isHoliday ? "text-amber-900" : "text-white")}>
-                        Гость
+                    <Text className="text-xl font-bold mb-1 font-serif text-primary">
+                        {t('sidebar.guest', 'Гость')}
                     </Text>
-                    <Text className={cn("text-sm", isHoliday ? "text-amber-900/60" : "text-gray-500")}>
-                        Войдите, чтобы сохранять прогресс
+                    <Text className="text-sm text-text-sub">
+                        {t('sidebar.login_prompt', 'Войдите, чтобы сохранять прогресс')}
                     </Text>
                 </View>
 
             {/* Conditional: Question List OR Navigation */}
-            {/* Conditional: Question List OR Navigation */}
             {isInQuiz ? (
               <View className="px-4 mb-6">
-                <Text className={cn("text-xs font-bold uppercase mb-3 ml-2", isHoliday ? "text-amber-200/60" : "text-gray-500")}>
+                <Text className="text-xs font-bold uppercase mb-3 ml-2 text-text-sub">
                   {quizTitle || 'Quiz'}
                 </Text>
                 <View>
@@ -114,8 +132,7 @@ export function CustomDrawerContent(props: any) {
                         }}
                         className={cn(
                           "flex-row items-center p-3 rounded-lg mb-2",
-                          isCurrent && (isHoliday ? "bg-red-600/20 border border-red-600/30" : "bg-blue-600/20 border border-blue-600/30"),
-                          !isCurrent && (isHoliday ? "bg-white/5" : "bg-gray-800/50")
+                          isCurrent ? "bg-accent/20 border border-accent/30" : "bg-white/5"
                         )}
                       >
                         <View className="mr-3">
@@ -125,8 +142,7 @@ export function CustomDrawerContent(props: any) {
                           <Text 
                             className={cn(
                               "text-sm font-medium",
-                              isCurrent && (isHoliday ? "text-amber-100" : "text-blue-300"),
-                              !isCurrent && (isHoliday ? "text-white/80" : "text-gray-300")
+                              isCurrent ? "text-accent" : "text-text-sub"
                             )}
                             numberOfLines={1}
                           >
@@ -142,33 +158,33 @@ export function CustomDrawerContent(props: any) {
               <View className="px-4 mb-6">
                   {/* Navigation Menu */}
                   <View className="mb-6">
-                      <Text className={cn("text-xs font-bold uppercase mb-3 ml-2", isHoliday ? "text-amber-200/60" : "text-gray-500")}>
-                          Меню
+                      <Text className="text-xs font-bold uppercase mb-3 ml-2 text-text-sub">
+                          {t('sidebar.menu', 'Меню')}
                       </Text>
                       <TouchableOpacity 
                           onPress={() => props.navigation.navigate('index')}
-                          className={cn("flex-row items-center p-3 rounded-xl mb-1", isHoliday ? "bg-white/10" : "bg-gray-800/50")}
+                          className="flex-row items-center p-3 rounded-xl mb-1 bg-white/5 active:bg-white/10"
                       >
-                          <Home size={20} color={isHoliday ? "#fbbf24" : "#fff"} />
-                          <Text className={cn("ml-3 font-medium", isHoliday ? "text-amber-100" : "text-white")}>Главная</Text>
+                          <Home size={20} color="rgba(var(--text-primary), 1)" />
+                          <Text className="ml-3 font-medium text-primary">{t('sidebar.home', 'Главная')}</Text>
                       </TouchableOpacity>
                       
                       <TouchableOpacity 
                           disabled={true}
-                          className={cn("flex-row items-center p-3 rounded-xl opacity-50")}
+                          className="flex-row items-center p-3 rounded-xl opacity-50"
                       >
-                          <User size={20} color={isHoliday ? "#fbbf24" : "#fff"} />
-                          <Text className={cn("ml-3 font-medium", isHoliday ? "text-amber-100" : "text-white")}>Профиль (Скоро)</Text>
+                          <User size={20} color="rgba(var(--text-primary), 1)" />
+                          <Text className="ml-3 font-medium text-primary">{t('sidebar.profile', 'Профиль (Скоро)')}</Text>
                       </TouchableOpacity>
                   </View>
 
                   {/* Guest Stats (Simplified) */}
-                   <View className={cn("p-4 rounded-xl", isHoliday ? "bg-white/5 border border-white/10" : "bg-gray-800/30")}>
-                      <Text className={cn("text-xs font-bold uppercase mb-2", isHoliday ? "text-amber-200/60" : "text-gray-500")}>
-                          Ваша статистика
+                   <View className="p-4 rounded-xl bg-white/5 border border-white/10">
+                      <Text className="text-xs font-bold uppercase mb-2 text-text-sub">
+                          {t('sidebar.stats_title', 'Ваша статистика')}
                       </Text>
-                      <Text className={cn("text-sm mb-2", isHoliday ? "text-amber-100/80" : "text-gray-400")}>
-                        Пройдено тестов: <Text className="font-bold text-white">0</Text>
+                      <Text className="text-sm mb-2 text-text-sub">
+                        {t('sidebar.quizzes_completed', 'Пройдено тестов')}: <Text className="font-bold text-accent">0</Text>
                       </Text>
                   </View>
               </View>
@@ -176,25 +192,25 @@ export function CustomDrawerContent(props: any) {
 
             {/* Theme Toggler in Drawer */}
             <View className="px-4 mt-6">
-                <Text className={cn("text-xs font-bold uppercase mb-3 ml-2", isHoliday ? "text-amber-200/60" : "text-gray-500")}>Настройки</Text>
+                <Text className="text-xs font-bold uppercase mb-3 ml-2 text-text-sub">{t('sidebar.settings', 'Настройки')}</Text>
                 <TouchableOpacity 
                     onPress={toggleTheme}
-                    className={cn("flex-row items-center p-3 rounded-xl active:bg-white/5", isHoliday ? "bg-white/5 border border-white/10" : "")}
+                    className="flex-row items-center p-3 rounded-xl active:bg-white/5 bg-white/5 border border-white/10"
                 >
-                    <Palette size={20} color={isHoliday ? "#fbbf24" : "#fff"} />
+                    <Palette size={20} color="rgba(var(--accent), 1)" />
                     <View className="ml-3">
-                        <Text className={cn("font-medium", isHoliday ? "text-amber-100" : "text-white")}>Тема оформления</Text>
-                        <Text className={cn("text-xs", isHoliday ? "text-white/60" : "text-gray-500")}>{getThemeName()}</Text>
+                        <Text className="font-medium text-primary">{t('sidebar.theme', 'Тема оформления')}</Text>
+                        <Text className="text-xs text-text-sub">{getThemeName()}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
             </DrawerContentScrollView>
 
             {/* Footer */}
-            <View className={cn("p-4 border-t pb-8", isHoliday ? "border-white/10" : "border-gray-800")}>
+            <View className="p-4 border-t pb-8 border-border">
             <TouchableOpacity className="flex-row items-center p-2">
-                <LogOut size={20} color={isHoliday ? "#ef4444" : "#666"} />
-                <Text className={cn("ml-3 font-medium", isHoliday ? "text-white/60" : "text-gray-500")}>Выйти</Text>
+                <LogOut size={20} color="rgba(var(--error), 1)" />
+                <Text className="ml-3 font-medium text-text-sub">{t('sidebar.logout', 'Выйти')}</Text>
             </TouchableOpacity>
             </View>
                 </View>
