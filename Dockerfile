@@ -1,10 +1,10 @@
 # Build stage
-FROM golang:1.24-alpine AS builder
+FROM golang:alpine AS builder
 
 WORKDIR /app
 
-# Install build dependencies (gcc and musl-dev needed for CGO if required)
-RUN apk add --no-cache git gcc musl-dev
+# Install git (needed for fetching dependencies sometimes)
+RUN apk add --no-cache git
 
 # Copy go mod files
 COPY go.mod go.sum ./
@@ -14,20 +14,22 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN CGO_ENABLED=1 GOOS=linux go build -a -installsuffix cgo -o quiz-server ./cmd/api/main.go
+# modernc.org/sqlite is pure Go, so CGO_ENABLED=0 is preferred
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o quiz-server ./cmd/api/main.go
 
 # Runtime stage
 FROM alpine:latest
 
 WORKDIR /app
 
-# Install runtime dependencies (for SQLite and healthcheck)
-RUN apk add --no-cache ca-certificates sqlite wget
+# Install ca-certificates for HTTPS and Timezone data
+RUN apk add --no-cache ca-certificates tzdata
 
 # Copy binary from builder
 COPY --from=builder /app/quiz-server .
 
 # Copy quizzes directory
+# App scans this dir on startup/sync
 COPY quizzes ./quizzes
 
 # Create directory for database
