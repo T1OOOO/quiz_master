@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { QuizRepository } from '../api/quizRepository';
 import { Question, Feedback, Quiz } from '../types/quiz';
+import { processSingleQuestion, shuffleArray } from '../utils/quizEngine';
 
 interface QuizState {
   // State
@@ -24,40 +25,6 @@ interface QuizState {
   shuffleQuestions: () => void;
   loadQuestion: (index: number) => Promise<void>;
   preloadQuestions: (currentIndex: number) => void;
-}
-
-// Helper to shuffle questions
-function shuffleArray<T>(array: T[]): T[] {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
-
-// Helper to process a single question (shuffle options)
-function processSingleQuestion(q: Question): Question {
-    // Create an array of indices [0, 1, 2, 3]
-    const indices = q.options.map((_, i) => i);
-    // Shuffle the indices
-    const shuffledIndices = shuffleArray(indices);
-    
-    // Map options to new positions
-    const shuffledOptions = shuffledIndices.map(i => q.options[i]);
-    
-    // Store mapping to find original index later
-    const mapping = shuffledIndices.map((originalIdx, currentIdx) => ({
-        opt: q.options[originalIdx],
-        originalIdx
-    }));
-
-    return {
-        ...q,
-        options: shuffledOptions,
-        _optionMapping: mapping,
-        _fullyLoaded: true // Marker to indicate full data is present
-    };
 }
 
 export const useQuizStore = create<QuizState>((set, get) => ({

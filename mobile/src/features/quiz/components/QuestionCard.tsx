@@ -1,22 +1,15 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { cn } from '../../../utils/cn';
 import { useTelegram } from '../../../hooks/useTelegram';
 import { useThemeStore } from '../../../store/useThemeStore';
-import { ThemeDecoration } from '../../../theme/components/ThemeDecoration';
-import { Button } from '../../../components/ui/Button'; // Ensure this exists
-import { Trash2, Shuffle, CheckCircle, XCircle, ChevronRight, Info, Gift, Snowflake } from '../../../components/icons';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'expo-router';
-import { ReportButton } from '../../../components/ReportButton';
+import { QuizStats, Question, Feedback } from '../../../types/quiz';
 
-import { Quiz, Question, Feedback, QuizStats } from '../../../types/quiz';
-
-interface Breadcrumb {
-    label: string;
-    onPress?: () => void;
-}
+// Sub-components
+import { QuestionHeader } from './QuestionHeader';
+import { AnswerOptions } from './AnswerOptions';
 
 interface QuestionCardProps {
     question: Question;
@@ -46,10 +39,7 @@ export function QuestionCard({
     totalQuestions,
     onReset,
     onShuffleQuiz,
-    isShuffled,
     stats,
-    category,
-    quizTitle,
     onNext,
     isLast
 }: QuestionCardProps) {
@@ -57,59 +47,13 @@ export function QuestionCard({
     const { theme } = useThemeStore();
     const isHoliday = theme === 'holiday';
     const { hapticFeedback } = useTelegram();
-    const router = useRouter();
-    
 
     if (!question) return null;
 
     const handleSelect = (idx: number) => {
-        if (feedback || disabled) return;
         hapticFeedback('selection');
         onAnswer(idx);
     };
-
-    const getOptionStatus = (idx: number) => {
-        if (!feedback) {
-            return selectedAnswer === idx ? 'selected' : 'neutral';
-        }
-        const currentOptionText = question.options[idx];
-        if (feedback.correct_text === currentOptionText) return 'correct';
-        if (selectedAnswer === idx && !feedback.correct) return 'incorrect';
-        return 'neutral';
-    };
-
-    // Calculate optimal layout for options automatically
-    const layoutConfig = useMemo(() => {
-        const options = question.options;
-        const maxLength = Math.max(...options.map(opt => opt.length));
-        const avgLength = options.reduce((sum, opt) => sum + opt.length, 0) / options.length;
-        
-        // Automatically determine if we should use single column based on text length
-        const shouldUseSingleColumn = maxLength > 50 || avgLength > 35;
-        
-        // Automatically calculate optimal font size based on text length
-        let optimalFontSize: number;
-        if (maxLength > 100) {
-            optimalFontSize = 11;
-        } else if (maxLength > 60) {
-            optimalFontSize = 12;
-        } else if (maxLength > 40) {
-            optimalFontSize = 13;
-        } else {
-            optimalFontSize = 14;
-        }
-        
-        // Calculate line height based on font size
-        const lineHeight = optimalFontSize * 1.4;
-        
-        return {
-            useSingleColumn: shouldUseSingleColumn,
-            fontSize: optimalFontSize,
-            lineHeight: lineHeight,
-            maxLength,
-            avgLength
-        };
-    }, [question.options]);
 
     return (
         <ScrollView 
@@ -120,78 +64,16 @@ export function QuestionCard({
             {/* Main Card Frame */}
             <View className="rounded-3xl border border-border p-4 shadow-2xl relative overflow-hidden bg-card">
                 
-                {/* Top Toolbar with Stats - Compact Premium Design */}
-                <View className="mb-2">
-                    <View className="flex-row justify-between items-center px-3 py-2 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg">
-                        {/* Left Group: Question Stats */}
-                        <View className="flex-row items-center gap-2">
-                            {/* Progress */}
-                            <View className="flex-row items-center gap-1 px-2 py-0.5 rounded-lg bg-blue-500/10">
-                                <Text className="text-[13px]">❓</Text>
-                                <Text className="text-[11px] font-black tracking-tight text-blue-500">
-                                    {currentIdx + 1}/{totalQuestions}
-                                </Text>
-                            </View>
-                            
-                            {/* Results */}
-                            <View className="flex-row items-center gap-1.5">
-                                <View className="flex-row items-center gap-1 px-1.5 py-0.5 rounded-lg bg-green-500/10">
-                                    <Text className="text-[11px]">✅</Text>
-                                    <Text className="text-[11px] font-bold text-green-600">
-                                        {stats?.correct || 0}
-                                    </Text>
-                                </View>
-                                <View className="flex-row items-center gap-1 px-1.5 py-0.5 rounded-lg bg-red-500/10">
-                                    <Text className="text-[11px]">❌</Text>
-                                    <Text className="text-[11px] font-bold text-red-500">
-                                        {stats?.incorrect || 0}
-                                    </Text>
-                                </View>
-                            </View>
-                            
-                            {/* Difficulty */}
-                            {question.difficulty && (
-                                <>
-                                    <View className="w-px h-4 bg-white/10" />
-                                    <View className="flex-row items-center gap-1 px-2 py-0.5 rounded-lg bg-purple-500/10">
-                                        <Text className="text-[12px]">⚡</Text>
-                                        <Text className="text-[10px] font-black text-purple-600">
-                                            {question.difficulty}/10
-                                        </Text>
-                                    </View>
-                                </>
-                            )}
-                        </View>
-
-                        {/* Right Group: Actions */}
-                        <View className="flex-row items-center gap-1">
-                            {/* Reset */}
-                            <TouchableOpacity 
-                                onPress={onReset} 
-                                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10"
-                                // @ts-ignore
-                                title={t('quiz.reset', 'Сбросить прогресс')}
-                            >
-                                <Text className="text-[14px]">🔄</Text>
-                            </TouchableOpacity>
-                            
-                            {/* Shuffle */}
-                            <TouchableOpacity 
-                                onPress={onShuffleQuiz} 
-                                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10"
-                                // @ts-ignore
-                                title={t('quiz.mix', 'Перемешать вопросы')}
-                            >
-                                <Text className="text-[14px]">🔀</Text>
-                            </TouchableOpacity>
-                            
-                            {/* Report */}
-                            <View className="p-1.5 rounded-lg bg-white/5 border border-white/10">
-                                <ReportButton questionId={question.id} questionText={question.text} />
-                            </View>
-                        </View>
-                    </View>
-                </View>
+                <QuestionHeader 
+                    currentIdx={currentIdx}
+                    totalQuestions={totalQuestions}
+                    stats={stats}
+                    difficulty={question.difficulty}
+                    onReset={onReset}
+                    onShuffleQuiz={onShuffleQuiz}
+                    questionId={question.id}
+                    questionText={question.text}
+                />
 
                 {/* Image - Compact */}
                 {question.image_url && (
@@ -209,7 +91,7 @@ export function QuestionCard({
                     <View style={{ opacity: 1 }}>
                         <Markdown style={{ 
                             body: { 
-                                color: isHoliday ? '#1e293b' : '#e5e5e5', // Fallback for MD until generic support verified
+                                color: isHoliday ? '#1e293b' : '#e5e5e5', 
                                 fontSize: 16, 
                                 fontWeight: '800', 
                                 lineHeight: 22, 
@@ -238,103 +120,16 @@ export function QuestionCard({
                     </View>
                 </View>
 
-                {/* Options - Adaptive Responsive Layout (automatic) */}
-                <View className={cn(
-                    "px-1 mb-2",
-                    layoutConfig.useSingleColumn ? "flex-col" : "flex-row flex-wrap"
-                )}>
-                    {question.options.map((opt: string, idx: number) => {
-                        const status = getOptionStatus(idx);
-                        
-                        let bgClass = isHoliday ? "bg-white border-amber-200 shadow-sm" : "bg-card-secondary border-border shadow-sm";
-                        let textClass = "text-text-primary font-bold";
-                        let ornamentClass = isHoliday ? "bg-red-50 border-red-100" : "bg-accent/10";
-                        let ornamentText = isHoliday ? "text-red-800" : "text-accent";
-                        
-                        // Active State
-                        if (status === 'selected') {
-                            if (isHoliday) {
-                                bgClass = "bg-amber-50 border-amber-400 shadow-md";
-                                textClass = "text-amber-900";
-                                ornamentClass = "bg-amber-200 border-amber-300";
-                                ornamentText = "text-amber-900";
-                            } else {
-                                bgClass = "bg-accent/10 border-accent shadow-md"; 
-                                textClass = "text-accent"; 
-                                ornamentClass = "bg-accent/20";
-                                ornamentText = "text-accent-dark";
-                            }
-                        } else if (status === 'correct') {
-                            bgClass = "bg-emerald-50 border-emerald-300";
-                            textClass = "text-emerald-900";
-                            ornamentClass = "bg-emerald-200";
-                            ornamentText = "text-emerald-800";
-                        } else if (status === 'incorrect') {
-                            bgClass = "bg-rose-50 border-rose-300";
-                            textClass = "text-rose-900";
-                            ornamentClass = "bg-rose-200";
-                            ornamentText = "text-rose-800";
-                        }
+                {/* Options */}
+                <AnswerOptions 
+                    options={question.options}
+                    selectedAnswer={selectedAnswer}
+                    onAnswer={handleSelect}
+                    feedback={feedback}
+                    disabled={disabled}
+                />
 
-                        // Determine width based on layout
-                        const widthClass = layoutConfig.useSingleColumn 
-                            ? "w-full" 
-                            : "w-[49%]";
-                        
-                        const marginClass = !layoutConfig.useSingleColumn && idx % 2 === 0 
-                            ? "mr-[2%]" 
-                            : "";
-
-                        return (
-                            <TouchableOpacity
-                                key={idx}
-                                onPress={() => handleSelect(idx)}
-                                disabled={disabled || !!feedback}
-                                className={cn(
-                                    "p-2.5 rounded-xl flex-row items-start transition-all mb-2 border min-h-[44px]",
-                                    widthClass,
-                                    marginClass,
-                                    bgClass,
-                                )}
-                                activeOpacity={0.7}
-                            >
-                                {/* Simple Circle/Ornament Indicator */}
-                                <View className={cn(
-                                    "w-7 h-7 items-center justify-center rounded-full mr-2.5 border border-black/10 flex-shrink-0 mt-0.5",
-                                    ornamentClass
-                                )}>
-                                    <Text className={cn("text-[10px] font-black", ornamentText)}>
-                                        {String.fromCharCode(65 + idx)}
-                                    </Text>
-                                </View>
-                                
-                                <View className="flex-1 justify-center flex-shrink">
-                                    <Markdown style={{ 
-                                        body: { 
-                                            color: status === 'selected' || status === 'correct' || status === 'incorrect' 
-                                                ? '#1e293b' 
-                                                : '#334155',
-                                            fontSize: layoutConfig.fontSize, 
-                                            lineHeight: layoutConfig.lineHeight, 
-                                            fontWeight: '600', 
-                                            fontFamily: 'serif',
-                                            flexWrap: 'wrap',
-                                            flexShrink: 1
-                                        },
-                                        text: {
-                                            flexWrap: 'wrap',
-                                            flexShrink: 1
-                                        }
-                                    }}>
-                                        {opt}
-                                    </Markdown>
-                                </View>
-                            </TouchableOpacity>
-                        );
-                    })}
-                </View>
-
-                {/* Explanation Overlay/Compact - Vertical but Tight */}
+                {/* Explanation Overlay */}
                 {feedback && (
                     <View className="mb-1 mx-1 p-2 rounded-lg bg-slate-50 border border-slate-200 shadow-sm">
                         <Text className="text-[9px] font-bold uppercase text-sky-600 mb-0.5">
@@ -346,7 +141,7 @@ export function QuestionCard({
                     </View>
                 )}
                 
-                {/* Next Button inside the Frame - Compact Height */}
+                {/* Next Button */}
                 {feedback && onNext && (
                     <View className="w-full mt-0">
                          <TouchableOpacity
