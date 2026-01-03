@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
+import React, { useMemo } from 'react';
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { cn } from '../../../utils/cn';
 import { useTelegram } from '../../../hooks/useTelegram';
@@ -58,6 +58,7 @@ export function QuestionCard({
     const isHoliday = theme === 'holiday';
     const { hapticFeedback } = useTelegram();
     const router = useRouter();
+    
 
     if (!question) return null;
 
@@ -76,6 +77,39 @@ export function QuestionCard({
         if (selectedAnswer === idx && !feedback.correct) return 'incorrect';
         return 'neutral';
     };
+
+    // Calculate optimal layout for options automatically
+    const layoutConfig = useMemo(() => {
+        const options = question.options;
+        const maxLength = Math.max(...options.map(opt => opt.length));
+        const avgLength = options.reduce((sum, opt) => sum + opt.length, 0) / options.length;
+        
+        // Automatically determine if we should use single column based on text length
+        const shouldUseSingleColumn = maxLength > 50 || avgLength > 35;
+        
+        // Automatically calculate optimal font size based on text length
+        let optimalFontSize: number;
+        if (maxLength > 100) {
+            optimalFontSize = 11;
+        } else if (maxLength > 60) {
+            optimalFontSize = 12;
+        } else if (maxLength > 40) {
+            optimalFontSize = 13;
+        } else {
+            optimalFontSize = 14;
+        }
+        
+        // Calculate line height based on font size
+        const lineHeight = optimalFontSize * 1.4;
+        
+        return {
+            useSingleColumn: shouldUseSingleColumn,
+            fontSize: optimalFontSize,
+            lineHeight: lineHeight,
+            maxLength,
+            avgLength
+        };
+    }, [question.options]);
 
     return (
         <ScrollView 
@@ -204,13 +238,13 @@ export function QuestionCard({
                     </View>
                 </View>
 
-                {/* Options - Responsive Layout */}
-                <View className="flex-row flex-wrap px-1 mb-2">
+                {/* Options - Adaptive Responsive Layout (automatic) */}
+                <View className={cn(
+                    "px-1 mb-2",
+                    layoutConfig.useSingleColumn ? "flex-col" : "flex-row flex-wrap"
+                )}>
                     {question.options.map((opt: string, idx: number) => {
                         const status = getOptionStatus(idx);
-                        
-                        // Calculate if text is long (more than 30 chars = full width)
-                        const isLongText = opt.length > 30;
                         
                         let bgClass = isHoliday ? "bg-white border-amber-200 shadow-sm" : "bg-card-secondary border-border shadow-sm";
                         let textClass = "text-text-primary font-bold";
@@ -242,38 +276,55 @@ export function QuestionCard({
                             ornamentText = "text-rose-800";
                         }
 
+                        // Determine width based on layout
+                        const widthClass = layoutConfig.useSingleColumn 
+                            ? "w-full" 
+                            : "w-[49%]";
+                        
+                        const marginClass = !layoutConfig.useSingleColumn && idx % 2 === 0 
+                            ? "mr-[2%]" 
+                            : "";
+
                         return (
                             <TouchableOpacity
                                 key={idx}
                                 onPress={() => handleSelect(idx)}
                                 disabled={disabled || !!feedback}
                                 className={cn(
-                                    "p-2 rounded-xl flex-row items-center transition-all mb-2 border",
-                                    isLongText ? "w-full" : "w-[49%]",
-                                    !isLongText && idx % 2 === 0 && "mr-[2%]",
+                                    "p-2.5 rounded-xl flex-row items-start transition-all mb-2 border min-h-[44px]",
+                                    widthClass,
+                                    marginClass,
                                     bgClass,
                                 )}
                                 activeOpacity={0.7}
                             >
                                 {/* Simple Circle/Ornament Indicator */}
                                 <View className={cn(
-                                    "w-6 h-6 items-center justify-center rounded-full mr-2 border border-black/10 flex-shrink-0",
+                                    "w-7 h-7 items-center justify-center rounded-full mr-2.5 border border-black/10 flex-shrink-0 mt-0.5",
                                     ornamentClass
                                 )}>
-                                    <Text className={cn("text-[9px] font-black", ornamentText)}>
+                                    <Text className={cn("text-[10px] font-black", ornamentText)}>
                                         {String.fromCharCode(65 + idx)}
                                     </Text>
                                 </View>
                                 
-                                <View className="flex-1 justify-center">
+                                <View className="flex-1 justify-center flex-shrink">
                                     <Markdown style={{ 
                                         body: { 
-                                            color: status === 'selected' || status === 'correct' || status === 'incorrect' ? '#1e293b' : '#334155',
-                                            fontSize: 13, 
-                                            lineHeight: 16, 
+                                            color: status === 'selected' || status === 'correct' || status === 'incorrect' 
+                                                ? '#1e293b' 
+                                                : '#334155',
+                                            fontSize: layoutConfig.fontSize, 
+                                            lineHeight: layoutConfig.lineHeight, 
                                             fontWeight: '600', 
-                                            fontFamily: 'serif' 
-                                        } 
+                                            fontFamily: 'serif',
+                                            flexWrap: 'wrap',
+                                            flexShrink: 1
+                                        },
+                                        text: {
+                                            flexWrap: 'wrap',
+                                            flexShrink: 1
+                                        }
                                     }}>
                                         {opt}
                                     </Markdown>

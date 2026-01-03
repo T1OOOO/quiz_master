@@ -1,0 +1,19 @@
+import yaml
+import os
+
+def count_questions(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+            if data and 'questions' in data:
+                return len(data['questions'])
+    except Exception as e:
+        return f"Error: {e}"
+    return 0
+
+root_dir = r'quizzes\Cinema\Transformers'
+for root, dirs, files in os.walk(root_dir):
+    for file in files:
+        if file.endswith('.yaml'):
+            full_path = os.path.join(root, file)
+            print(f"{count_questions(full_path)}: {full_path}")

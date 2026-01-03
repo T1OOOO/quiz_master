@@ -21,7 +21,16 @@ mkdir -p "$BUILD_DIR/scripts"
 
 echo -e "${BLUE}🔨 Building Go backend (optional, will rebuild on server)...${NC}"
 # Optionally build binary (will be rebuilt on server anyway)
-# GOOS=linux GOARCH=amd64 CGO_ENABLED=1 go build -ldflags="-w -s" -o "$BUILD_DIR/quiz-server" ./cmd/api/main.go
+# Build binary for Linux (cross-compile)
+# We use modernc.org/sqlite which is pure Go, so CGO_ENABLED=0 should work fine.
+echo "Attempting to cross-compile for Linux..."
+if GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o "$BUILD_DIR/quiz-server" ./cmd/api/main.go; then
+    echo -e "${GREEN}✅ Local cross-compilation successful!${NC}"
+else
+    echo -e "${BLUE}⚠️  Local build failed. Continuing without binary (will build on server).${NC}"
+    # Ensure strict mode doesn't kill the script here
+    true
+fi
 
 echo -e "${BLUE}📁 Copying files...${NC}"
 # Copy essential files
@@ -51,7 +60,6 @@ if command -v rsync &> /dev/null; then
           --exclude='*.txt' \
           --exclude='.cache' \
           --exclude='.next' \
-          --exclude='dist' \
           --exclude='build' \
           --exclude='.DS_Store' \
           --exclude='Thumbs.db' \
@@ -68,7 +76,7 @@ else
     find "$BUILD_DIR/mobile" -type d -name ".expo" -exec rm -rf {} + 2>/dev/null || true
     find "$BUILD_DIR/mobile" -type d -name ".cache" -exec rm -rf {} + 2>/dev/null || true
     find "$BUILD_DIR/mobile" -type d -name "build" -exec rm -rf {} + 2>/dev/null || true
-    find "$BUILD_DIR/mobile" -type d -name "dist" -exec rm -rf {} + 2>/dev/null || true
+    # find "$BUILD_DIR/mobile" -type d -name "dist" -exec rm -rf {} + 2>/dev/null || true
     find "$BUILD_DIR/mobile" -type d -name ".next" -exec rm -rf {} + 2>/dev/null || true
     find "$BUILD_DIR/mobile/android" -type d -name ".gradle" -exec rm -rf {} + 2>/dev/null || true
     find "$BUILD_DIR/mobile/android" -type d -name ".cxx" -exec rm -rf {} + 2>/dev/null || true
@@ -241,164 +249,172 @@ mkdir -p "$APP_DIR/web"
 # Default: dynamic/SPA mode (faster build, recommended for weak servers)
 # Set USE_STATIC_RENDERING=true to enable static rendering
 USE_STATIC_RENDERING="${USE_STATIC_RENDERING:-false}"
-if [ "$USE_STATIC_RENDERING" = "true" ]; then
-    echo "🌐 Building Expo web version (static rendering, slower build but faster runtime)..."
-else
-    echo "🌐 Building Expo web version (dynamic/SPA mode - faster build, default)..."
-    echo "💡 To enable static rendering, set USE_STATIC_RENDERING=true"
-fi
 
-if [ -d "$PROJECT_ROOT/mobile" ]; then
-    cd "$PROJECT_ROOT/mobile"
-    
-    # Clean up old platform-specific icon files if they exist
-    echo "🧹 Cleaning up old icon files..."
-    rm -f src/components/icons.web.tsx 2>/dev/null || true
-    rm -f src/components/icons.native.tsx 2>/dev/null || true
-    # Ensure universal icons.tsx exists
-    if [ ! -f "src/components/icons.tsx" ]; then
-        echo "❌ ERROR: src/components/icons.tsx not found!"
-        exit 1
-    fi
-    
-    # Clean Metro cache to avoid stale module resolution
-    echo "🧹 Cleaning Metro cache..."
-    rm -rf .expo 2>/dev/null || true
-    rm -rf node_modules/.cache 2>/dev/null || true
-    rm -rf .metro 2>/dev/null || true
-    
-    # Temporarily modify app.json if static rendering is enabled
+# Check if we have pre-built web assets
+if [ -d "$PROJECT_ROOT/mobile/dist" ] && [ -f "$PROJECT_ROOT/mobile/dist/index.html" ]; then
+    echo "📦 Found pre-built web assets in mobile/dist, skipping Expo build..."
+    mkdir -p "$APP_DIR/web/dist"
+    cp -r "$PROJECT_ROOT/mobile/dist/"* "$APP_DIR/web/dist/"
+    echo "✅ Pre-built web assets deployed."
+else
     if [ "$USE_STATIC_RENDERING" = "true" ]; then
-        echo "📝 Configuring for static rendering..."
-        # Backup original app.json
-        cp app.json app.json.backup 2>/dev/null || true
-        # Change output to static instead of single
-        if command -v sed &> /dev/null; then
-            sed -i.bak 's/"output": "single"/"output": "static"/' app.json 2>/dev/null || \
-            sed -i 's/"output": "single"/"output": "static"/' app.json 2>/dev/null || true
-        fi
-    fi
-    # Always install dependencies (node_modules are excluded from archive)
-    echo "📦 Installing Expo dependencies..."
-    # Remove node_modules if exists to ensure clean install
-    rm -rf node_modules 2>/dev/null || true
-    
-    # Check if package.json exists
-    if [ ! -f "package.json" ]; then
-        echo "❌ ERROR: package.json not found in mobile directory!"
-        ls -la | head -10
-        exit 1
-    fi
-    
-    # Install all dependencies including lucide-react for web
-    echo "Running: npm install --legacy-peer-deps"
-    # Clear npm cache to ensure fresh install
-    npm cache clean --force 2>/dev/null || true
-    npm install --legacy-peer-deps
-    
-    # Verify critical dependencies are installed
-    if [ ! -d "node_modules/lucide-react" ]; then
-        echo "❌ lucide-react installation failed!"
-        echo "Attempting to install lucide-react directly..."
-        npm install lucide-react@^0.468.0 --legacy-peer-deps --force
-    fi
-    if [ ! -d "node_modules/lucide-react-native" ]; then
-        echo "⚠️  lucide-react-native not found (may be OK for web-only build)"
-    fi
-    if [ ! -d "node_modules/react-native-svg" ]; then
-        echo "⚠️  react-native-svg not found (required for lucide-react-native)"
-        echo "Installing react-native-svg..."
-        npm install react-native-svg@^15.15.1 --legacy-peer-deps
-    fi
-    
-    # Verify installation
-    if [ -d "node_modules/lucide-react" ]; then
-        echo "✅ lucide-react installed successfully"
+        echo "🌐 Building Expo web version (static rendering, slower build but faster runtime)..."
     else
-        echo "❌ ERROR: lucide-react still not found after installation!"
-        echo "Package.json contents:"
-        grep -A 2 "lucide-react" package.json || echo "  (not found in package.json)"
-        echo "Node modules directory:"
-        ls -la node_modules/ | head -20 || echo "  (node_modules not found)"
+        echo "🌐 Building Expo web version (dynamic/SPA mode - faster build, default)..."
+        echo "💡 To enable static rendering, set USE_STATIC_RENDERING=true"
     fi
-    
-    if [ "$USE_STATIC_RENDERING" = "true" ]; then
-        echo "🔨 Building static web export..."
-    else
-        echo "🔨 Building dynamic web export (SPA mode)..."
-    fi
-    EXPORT_LOG="/tmp/expo_export.log"
-    EXPORT_SUCCESS=false
-    
-    if command -v npx &> /dev/null; then
-        # Create output directory first
-        mkdir -p "$APP_DIR/web/dist"
+
+    if [ -d "$PROJECT_ROOT/mobile" ]; then
+        cd "$PROJECT_ROOT/mobile"
         
-        # Try expo export (with static output configured in app.json)
-        echo "Trying: npx expo export..."
-        if npx expo export 2>&1 | tee "$EXPORT_LOG"; then
-            # Check where files were exported
-            if [ -d "dist" ] && [ -f "dist/index.html" ]; then
-                echo "✅ Found dist/ directory with index.html"
-                rm -rf "$APP_DIR/web/dist" 2>/dev/null || true
-                mkdir -p "$APP_DIR/web/dist"
-                cp -r dist/* "$APP_DIR/web/dist/" 2>/dev/null || true
-                EXPORT_SUCCESS=true
-            elif [ -d ".output" ] && [ -f ".output/index.html" ]; then
-                echo "✅ Found .output/ directory with index.html"
-                rm -rf "$APP_DIR/web/dist" 2>/dev/null || true
-                mkdir -p "$APP_DIR/web/dist"
-                cp -r .output/* "$APP_DIR/web/dist/" 2>/dev/null || true
-                EXPORT_SUCCESS=true
-            else
-                echo "⚠️  Export completed but no dist/ or .output/ found"
-                echo "Contents of current directory:"
-                ls -la | head -20
+        # Clean up old platform-specific icon files if they exist
+        echo "🧹 Cleaning up old icon files..."
+        rm -f src/components/icons.web.tsx 2>/dev/null || true
+        rm -f src/components/icons.native.tsx 2>/dev/null || true
+        # Ensure universal icons.tsx exists
+        if [ ! -f "src/components/icons.tsx" ]; then
+            echo "❌ ERROR: src/components/icons.tsx not found!"
+            exit 1
+        fi
+        
+        # Clean Metro cache to avoid stale module resolution
+        echo "🧹 Cleaning Metro cache..."
+        rm -rf .expo 2>/dev/null || true
+        rm -rf node_modules/.cache 2>/dev/null || true
+        rm -rf .metro 2>/dev/null || true
+        
+        # Temporarily modify app.json if static rendering is enabled
+        if [ "$USE_STATIC_RENDERING" = "true" ]; then
+            echo "📝 Configuring for static rendering..."
+            # Backup original app.json
+            cp app.json app.json.backup 2>/dev/null || true
+            # Change output to static instead of single
+            if command -v sed &> /dev/null; then
+                sed -i.bak 's/"output": "single"/"output": "static"/' app.json 2>/dev/null || \
+                sed -i 's/"output": "single"/"output": "static"/' app.json 2>/dev/null || true
             fi
-        else
-            EXPORT_EXIT_CODE=${PIPESTATUS[0]}
-            echo "⚠️  expo export failed with exit code: $EXPORT_EXIT_CODE"
+        fi
+        # Always install dependencies (node_modules are excluded from archive)
+        echo "📦 Installing Expo dependencies..."
+        # Remove node_modules if exists to ensure clean install
+        rm -rf node_modules 2>/dev/null || true
+        
+        # Check if package.json exists
+        if [ ! -f "package.json" ]; then
+            echo "❌ ERROR: package.json not found in mobile directory!"
+            ls -la | head -10
+            exit 1
         fi
         
-        # If first attempt failed, try with --platform web
-        if [ "$EXPORT_SUCCESS" = false ]; then
-            echo "Trying: npx expo export --platform web..."
-            if npx expo export --platform web 2>&1 | tee -a "$EXPORT_LOG"; then
+        # Install all dependencies including lucide-react for web
+        echo "Running: npm install --legacy-peer-deps"
+        # Clear npm cache to ensure fresh install
+        npm cache clean --force 2>/dev/null || true
+        npm install --legacy-peer-deps
+        
+        # Verify critical dependencies are installed
+        if [ ! -d "node_modules/lucide-react" ]; then
+            echo "❌ lucide-react installation failed!"
+            echo "Attempting to install lucide-react directly..."
+            npm install lucide-react@^0.468.0 --legacy-peer-deps --force
+        fi
+        if [ ! -d "node_modules/lucide-react-native" ]; then
+            echo "⚠️  lucide-react-native not found (may be OK for web-only build)"
+        fi
+        if [ ! -d "node_modules/react-native-svg" ]; then
+            echo "⚠️  react-native-svg not found (required for lucide-react-native)"
+            echo "Installing react-native-svg..."
+            npm install react-native-svg@^15.15.1 --legacy-peer-deps
+        fi
+        
+        # Verify installation
+        if [ -d "node_modules/lucide-react" ]; then
+            echo "✅ lucide-react installed successfully"
+        else
+            echo "❌ ERROR: lucide-react still not found after installation!"
+            echo "Package.json contents:"
+            grep -A 2 "lucide-react" package.json || echo "  (not found in package.json)"
+            echo "Node modules directory:"
+            ls -la node_modules/ | head -20 || echo "  (node_modules not found)"
+        fi
+        
+        if [ "$USE_STATIC_RENDERING" = "true" ]; then
+            echo "🔨 Building static web export..."
+        else
+            echo "🔨 Building dynamic web export (SPA mode)..."
+        fi
+        EXPORT_LOG="/tmp/expo_export.log"
+        EXPORT_SUCCESS=false
+        
+        if command -v npx &> /dev/null; then
+            # Create output directory first
+            mkdir -p "$APP_DIR/web/dist"
+            
+            # Try expo export (with static output configured in app.json)
+            echo "Trying: npx expo export..."
+            if npx expo export 2>&1 | tee "$EXPORT_LOG"; then
+                # Check where files were exported
                 if [ -d "dist" ] && [ -f "dist/index.html" ]; then
                     echo "✅ Found dist/ directory with index.html"
                     rm -rf "$APP_DIR/web/dist" 2>/dev/null || true
                     mkdir -p "$APP_DIR/web/dist"
                     cp -r dist/* "$APP_DIR/web/dist/" 2>/dev/null || true
                     EXPORT_SUCCESS=true
+                elif [ -d ".output" ] && [ -f ".output/index.html" ]; then
+                    echo "✅ Found .output/ directory with index.html"
+                    rm -rf "$APP_DIR/web/dist" 2>/dev/null || true
+                    mkdir -p "$APP_DIR/web/dist"
+                    cp -r .output/* "$APP_DIR/web/dist/" 2>/dev/null || true
+                    EXPORT_SUCCESS=true
+                else
+                    echo "⚠️  Export completed but no dist/ or .output/ found"
+                    echo "Contents of current directory:"
+                    ls -la | head -20
+                fi
+            else
+                EXPORT_EXIT_CODE=${PIPESTATUS[0]}
+                echo "⚠️  expo export failed with exit code: $EXPORT_EXIT_CODE"
+            fi
+            
+            # If first attempt failed, try with --platform web
+            if [ "$EXPORT_SUCCESS" = false ]; then
+                echo "Trying: npx expo export --platform web..."
+                if npx expo export --platform web 2>&1 | tee -a "$EXPORT_LOG"; then
+                    if [ -d "dist" ] && [ -f "dist/index.html" ]; then
+                        echo "✅ Found dist/ directory with index.html"
+                        rm -rf "$APP_DIR/web/dist" 2>/dev/null || true
+                        mkdir -p "$APP_DIR/web/dist"
+                        cp -r dist/* "$APP_DIR/web/dist/" 2>/dev/null || true
+                        EXPORT_SUCCESS=true
+                    fi
                 fi
             fi
-        fi
-        
-        # Clean up temporary export directories (but keep for debugging if failed)
-        if [ "$EXPORT_SUCCESS" = true ]; then
-            rm -rf dist web-build .output 2>/dev/null || true
+            
+            # Clean up temporary export directories (but keep for debugging if failed)
+            if [ "$EXPORT_SUCCESS" = true ]; then
+                rm -rf dist web-build .output 2>/dev/null || true
+            else
+                echo "⚠️  Keeping export directories for debugging:"
+                ls -la | grep -E "(dist|output|web-build)" || echo "  (none found)"
+            fi
+            
+            # Restore original app.json if we modified it
+            if [ -f "app.json.backup" ]; then
+                mv app.json.backup app.json
+                rm -f app.json.bak 2>/dev/null || true
+            fi
         else
-            echo "⚠️  Keeping export directories for debugging:"
-            ls -la | grep -E "(dist|output|web-build)" || echo "  (none found)"
+            echo "❌ npx not found, cannot build web version"
         fi
         
-        # Restore original app.json if we modified it
-        if [ -f "app.json.backup" ]; then
-            mv app.json.backup app.json
-            rm -f app.json.bak 2>/dev/null || true
-        fi
-    else
-        echo "❌ npx not found, cannot build web version"
-    fi
-    
-    if [ "$EXPORT_SUCCESS" = false ]; then
-        echo "❌ Expo web export failed!"
-        echo "📋 Last 50 lines of export log:"
-        tail -50 "$EXPORT_LOG" 2>/dev/null || echo "  (log file not found)"
-        echo ""
-        echo "Creating minimal web directory..."
-        mkdir -p "$APP_DIR/web/dist"
-        cat > "$APP_DIR/web/dist/index.html" << 'HTML'
+        if [ "$EXPORT_SUCCESS" = false ]; then
+            echo "❌ Expo web export failed!"
+            echo "📋 Last 50 lines of export log:"
+            tail -50 "$EXPORT_LOG" 2>/dev/null || echo "  (log file not found)"
+            echo ""
+            echo "Creating minimal web directory..."
+            mkdir -p "$APP_DIR/web/dist"
+            cat > "$APP_DIR/web/dist/index.html" << 'HTML'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -420,32 +436,38 @@ if [ -d "$PROJECT_ROOT/mobile" ]; then
 </body>
 </html>
 HTML
-    else
-        echo "✅ Expo web export completed successfully"
-        echo "📦 Files copied to: $APP_DIR/web/dist/"
-        if [ -f "$APP_DIR/web/dist/index.html" ]; then
-            echo "✅ index.html found"
         else
-            echo "⚠️  Warning: index.html not found in dist/"
+            echo "✅ Expo web export completed successfully"
+            echo "📦 Files copied to: $APP_DIR/web/dist/"
+            if [ -f "$APP_DIR/web/dist/index.html" ]; then
+                echo "✅ index.html found"
+            else
+                echo "⚠️  Warning: index.html not found in dist/"
+            fi
         fi
+        cd "$PROJECT_ROOT"
+        
+        # Restore app.json if we modified it and haven't restored yet
+        if [ "$USE_STATIC_RENDERING" != "true" ] && [ -f "$PROJECT_ROOT/mobile/app.json.backup" ]; then
+            mv "$PROJECT_ROOT/mobile/app.json.backup" "$PROJECT_ROOT/mobile/app.json"
+        fi
+    else
+        echo "⚠️  Mobile directory not found, skipping web build"
+        mkdir -p "$APP_DIR/web/dist"
+        echo "<!DOCTYPE html><html><body><h1>Web build not available</h1></body></html>" > "$APP_DIR/web/dist/index.html"
     fi
-    cd "$PROJECT_ROOT"
-    
-    # Restore app.json if we modified it and haven't restored yet
-    if [ "$USE_STATIC_RENDERING" != "true" ] && [ -f "$PROJECT_ROOT/mobile/app.json.backup" ]; then
-        mv "$PROJECT_ROOT/mobile/app.json.backup" "$PROJECT_ROOT/mobile/app.json"
-    fi
-else
-    echo "⚠️  Mobile directory not found, skipping web build"
-    mkdir -p "$APP_DIR/web/dist"
-    echo "<!DOCTYPE html><html><body><h1>Web build not available</h1></body></html>" > "$APP_DIR/web/dist/index.html"
 fi
 
 # Build the Go application
-echo "🔨 Building Go application..."
-cd "$PROJECT_ROOT"
-go mod download
-go build -ldflags="-w -s" -o "$APP_DIR/quiz-server" ./cmd/api/main.go
+if [ -f "$PROJECT_ROOT/quiz-server" ] && [ -x "$PROJECT_ROOT/quiz-server" ]; then
+     echo "📦 Found pre-built Go binary, using it..."
+     cp "$PROJECT_ROOT/quiz-server" "$APP_DIR/quiz-server"
+else
+    echo "🔨 Building Go application..."
+    cd "$PROJECT_ROOT"
+    go mod download
+    go build -ldflags="-w -s" -o "$APP_DIR/quiz-server" ./cmd/api/main.go
+fi
 
 # Copy files
 echo "📁 Copying files..."

@@ -352,7 +352,7 @@ export default function QuizPage() {
 
                         {/* Question Card Centering Area */}
                         <View className="flex-1 items-center justify-start px-4 pt-6 md:px-0 pb-28">
-                            <View className="w-full max-w-xl shadow-xl">
+                            <View className="w-full max-w-xl shadow-xl flex-1">
                                 <QuestionCard
                                     question={questions[currentQuestionIndex]}
                                     totalQuestions={questions.length}
