@@ -11,6 +11,7 @@ export interface Question {
     image_url?: string;
     difficulty?: number;
     _optionMapping?: { opt: string; originalIdx: number }[];
+    _fullyLoaded?: boolean;
 }
 
 export interface Quiz {

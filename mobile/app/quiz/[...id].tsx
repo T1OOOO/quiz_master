@@ -353,21 +353,30 @@ export default function QuizPage() {
                         {/* Question Card Centering Area */}
                         <View className="flex-1 items-center justify-start px-4 pt-6 md:px-0 pb-28">
                             <View className="w-full max-w-xl shadow-xl flex-1">
-                                <QuestionCard
-                                    question={questions[currentQuestionIndex]}
-                                    totalQuestions={questions.length}
-                                    currentIdx={currentQuestionIndex}
-                                    onNext={() => selectQuestion(currentQuestionIndex + 1)}
-                                    onAnswer={handleAnswer}
-                                    selectedAnswer={answers[questions[currentQuestionIndex].id]}
-                                    feedback={feedback[questions[currentQuestionIndex].id]}
-                                    isLast={currentQuestionIndex === questions.length - 1}
-                                    isShuffled={false}
-                                    onReset={retryQuiz}
-                                    onShuffleQuiz={shuffleQuestions}
-                                    quizTitle={quizTitle || undefined}
-                                    stats={stats}
-                                />
+                                {questions[currentQuestionIndex] && (questions[currentQuestionIndex]._fullyLoaded || questions[currentQuestionIndex].text) ? (
+                                    <QuestionCard
+                                        question={questions[currentQuestionIndex]}
+                                        totalQuestions={questions.length}
+                                        currentIdx={currentQuestionIndex}
+                                        onNext={() => selectQuestion(currentQuestionIndex + 1)}
+                                        onAnswer={handleAnswer}
+                                        selectedAnswer={answers[questions[currentQuestionIndex].id]}
+                                        feedback={feedback[questions[currentQuestionIndex].id]}
+                                        isLast={currentQuestionIndex === questions.length - 1}
+                                        isShuffled={false}
+                                        onReset={retryQuiz}
+                                        onShuffleQuiz={shuffleQuestions}
+                                        quizTitle={quizTitle || undefined}
+                                        stats={stats}
+                                    />
+                                ) : (
+                                    <View className="flex-1 justify-center items-center bg-card/50 rounded-3xl border border-white/10">
+                                        <ActivityIndicator size="large" color="rgba(var(--accent), 1)" />
+                                        <Text className="text-text-secondary mt-4 text-xs font-medium uppercase tracking-widest">
+                                            {t('common.loading_question', 'Loading Question...')}
+                                        </Text>
+                                    </View>
+                                )}
                             </View>
                         </View>
                     </View>

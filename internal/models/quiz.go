@@ -13,6 +13,17 @@ type Question struct {
 	Difficulty         int      `json:"difficulty,omitempty" yaml:"difficulty"`
 }
 
+// QuestionPublic is the safe DTO for API responses
+type QuestionPublic struct {
+	ID         string   `json:"id"`
+	Type       string   `json:"type"`
+	Text       string   `json:"text"`
+	ImageURL   string   `json:"image_url,omitempty"`
+	Options    []string `json:"options,omitempty"`
+	Difficulty int      `json:"difficulty,omitempty"`
+	// No answers or explanations here!
+}
+
 type Quiz struct {
 	ID             string     `json:"id" yaml:"id"`
 	Title          string     `json:"title" yaml:"title"`
@@ -20,6 +31,15 @@ type Quiz struct {
 	Category       string     `json:"category" yaml:"category"`
 	Questions      []Question `json:"questions,omitempty" yaml:"questions"`
 	QuestionsCount int        `json:"questions_count" yaml:"-"`
+}
+
+type QuizPublic struct {
+	ID             string           `json:"id"`
+	Title          string           `json:"title"`
+	Description    string           `json:"description"`
+	Category       string           `json:"category"`
+	Questions      []QuestionPublic `json:"questions,omitempty"`
+	QuestionsCount int              `json:"questions_count"`
 }
 
 type AnswerResult struct {

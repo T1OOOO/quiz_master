@@ -88,6 +88,7 @@ func main() {
 
 		apiGroup.GET("/quizzes", quizHandler.List)
 		apiGroup.GET("/quizzes/:id", quizHandler.Get)
+		apiGroup.GET("/quizzes/:id/questions/:qid", quizHandler.GetQuestion)
 		apiGroup.POST("/quizzes/:id/check", quizHandler.CheckAnswer)
 		apiGroup.POST("/report", quizHandler.Report)
 

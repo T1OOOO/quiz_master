@@ -19,6 +19,22 @@ export const QuizRepository = {
     },
 
     /**
+     * Fetch quiz summary (lightweight metadata)
+     */
+     async getSummary(id: string): Promise<Quiz> {
+        const response = await axios.get(`/api/quizzes/${id}?mode=summary`);
+        return response.data;
+    },
+
+    /**
+     * Fetch a single question details
+     */
+    async getQuestion(quizId: string, questionId: string): Promise<any> {
+        const response = await axios.get(`/api/quizzes/${quizId}/questions/${questionId}`);
+        return response.data;
+    },
+
+    /**
      * Validate an answer for a specific question
      */
     async checkAnswer(quizId: string, questionId: string, answerIndex: number): Promise<Feedback> {

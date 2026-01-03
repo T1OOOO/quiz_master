@@ -24,8 +24,78 @@ func (s *QuizService) ListQuizzes() ([]models.Quiz, error) {
 	return s.repo.List()
 }
 
-func (s *QuizService) GetQuiz(id string) (*models.Quiz, error) {
-	return s.repo.Get(id)
+func toPublicQuestion(q models.Question) models.QuestionPublic {
+	return models.QuestionPublic{
+		ID:         q.ID,
+		Type:       q.Type,
+		Text:       q.Text,
+		ImageURL:   q.ImageURL,
+		Options:    q.Options,
+		Difficulty: q.Difficulty,
+	}
+}
+
+func (s *QuizService) GetQuiz(id string) (*models.QuizPublic, error) {
+	q, err := s.repo.Get(id)
+	if err != nil {
+		return nil, err
+	}
+	if q == nil {
+		return nil, nil
+	}
+
+	publicQuestions := make([]models.QuestionPublic, len(q.Questions))
+	for i, quest := range q.Questions {
+		publicQuestions[i] = toPublicQuestion(quest)
+	}
+
+	return &models.QuizPublic{
+		ID:             q.ID,
+		Title:          q.Title,
+		Description:    q.Description,
+		Category:       q.Category,
+		QuestionsCount: len(q.Questions),
+		Questions:      publicQuestions,
+	}, nil
+}
+
+func (s *QuizService) GetQuizSummary(id string) (*models.QuizPublic, error) {
+	q, err := s.repo.GetSummary(id)
+	if err != nil {
+		return nil, err
+	}
+	if q == nil {
+		return nil, nil
+	}
+
+	// Summaries typically don't need text/options, creating trimmed version
+	publicQuestions := make([]models.QuestionPublic, len(q.Questions))
+	for i, quest := range q.Questions {
+		// Use helper but ensure sensitive fields (if any remained) are stripped
+		publicQuestions[i] = toPublicQuestion(quest)
+	}
+
+	return &models.QuizPublic{
+		ID:             q.ID,
+		Title:          q.Title,
+		Description:    q.Description,
+		Category:       q.Category,
+		QuestionsCount: len(q.Questions),
+		Questions:      publicQuestions,
+	}, nil
+}
+
+func (s *QuizService) GetQuestion(quizID, questionID string) (*models.QuestionPublic, error) {
+	q, err := s.repo.GetQuestion(quizID, questionID)
+	if err != nil {
+		return nil, err
+	}
+	if q == nil {
+		return nil, nil
+	}
+
+	pq := toPublicQuestion(*q)
+	return &pq, nil
 }
 
 func (s *QuizService) CreateQuiz(q *models.Quiz) error {

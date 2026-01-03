@@ -22,6 +22,8 @@ interface QuizState {
   resetQuiz: () => void;
   retryQuiz: () => void;
   shuffleQuestions: () => void;
+  loadQuestion: (index: number) => Promise<void>;
+  preloadQuestions: (currentIndex: number) => void;
 }
 
 // Helper to shuffle questions
@@ -34,31 +36,28 @@ function shuffleArray<T>(array: T[]): T[] {
     return shuffled;
 }
 
-// Helper to process questions (shuffle options)
-function processQuestions(questions: Question[]): Question[] {
-    return questions.map(q => {
-        // Create an array of indices [0, 1, 2, 3]
-        const indices = q.options.map((_, i) => i);
-        // Shuffle the indices
-        const shuffledIndices = shuffleArray(indices);
-        
-        // Map options to new positions
-        const shuffledOptions = shuffledIndices.map(i => q.options[i]);
-        
-        // Store mapping to find original index later
-        // If correct ans is at index 0, and 0 moved to pos 2, 
-        // we need to know that option at pos 2 maps to original index 0
-        const mapping = shuffledIndices.map((originalIdx, currentIdx) => ({
-            opt: q.options[originalIdx],
-            originalIdx
-        }));
+// Helper to process a single question (shuffle options)
+function processSingleQuestion(q: Question): Question {
+    // Create an array of indices [0, 1, 2, 3]
+    const indices = q.options.map((_, i) => i);
+    // Shuffle the indices
+    const shuffledIndices = shuffleArray(indices);
+    
+    // Map options to new positions
+    const shuffledOptions = shuffledIndices.map(i => q.options[i]);
+    
+    // Store mapping to find original index later
+    const mapping = shuffledIndices.map((originalIdx, currentIdx) => ({
+        opt: q.options[originalIdx],
+        originalIdx
+    }));
 
-        return {
-            ...q,
-            options: shuffledOptions,
-            _optionMapping: mapping
-        };
-    });
+    return {
+        ...q,
+        options: shuffledOptions,
+        _optionMapping: mapping,
+        _fullyLoaded: true // Marker to indicate full data is present
+    };
 }
 
 export const useQuizStore = create<QuizState>((set, get) => ({
@@ -86,34 +85,89 @@ export const useQuizStore = create<QuizState>((set, get) => ({
       answers: {},
       feedback: {},
       currentQuestionIndex: 0,
-      startTime: Date.now()
+      startTime: Date.now(),
+      questions: []
     });
 
     try {
-      const data = await QuizRepository.getById(id);
-      
-      // Process questions (shuffle options) if needed
-      // Note: useQuiz.ts was shuffling options. We should replicate that.
-      const processedQuestions = processQuestions(data.questions);
-
+      // 1. Fetch Summary (Lightweight)
+      const data = await QuizRepository.getSummary(id);
       const catTitle = typeof data.category === 'string' ? data.category : data.category?.title;
 
       set({
         status: 'active',
         quizTitle: data.title,
-        quizCategory: catTitle || null, // Extract category title
-        questions: processedQuestions,
+        quizCategory: catTitle || null,
+        questions: data.questions, // Placeholders
       });
+
+      // 2. Load First Question Immediately
+      await get().loadQuestion(0);
+      
+      // 3. Preload next
+      get().preloadQuestions(0);
+
     } catch (err) {
       console.error('Failed to init quiz:', err);
-      set({ status: 'error', error: 'Failed to load quiz' });
+      // Fallback: try full load if summary fails
+      try {
+          const data = await QuizRepository.getById(id);
+           const processed = data.questions.map(processSingleQuestion);
+           set({
+               status: 'active',
+               quizTitle: data.title,
+               questions: processed
+           });
+      } catch (fallbackErr) {
+          set({ status: 'error', error: 'Failed to load quiz' });
+      }
     }
+  },
+
+  // New Action: Load specific question data
+  loadQuestion: async (index: number) => {
+      const state = get();
+      const question = state.questions[index];
+      
+      // Safety checks
+      if (!question) return;
+      // @ts-ignore
+      if (question._fullyLoaded || (question.text && question.text.length > 0)) return; // Already loaded
+
+      try {
+          // Fetch full data
+          const fullData = await QuizRepository.getQuestion(state.quizId!, question.id);
+          
+          // Process (shuffle)
+          const processed = processSingleQuestion(fullData);
+
+          // Update state
+          set(prev => {
+              const newQuestions = [...prev.questions];
+              newQuestions[index] = processed;
+              return { questions: newQuestions };
+          });
+      } catch (err) {
+          console.error(`Failed to load question ${index}`, err);
+      }
+  },
+
+  preloadQuestions: (currentIndex: number) => {
+      const state = get();
+      // Preload Next 2
+      const next1 = currentIndex + 1;
+      const next2 = currentIndex + 2;
+      
+      if (next1 < state.questions.length) state.loadQuestion(next1);
+      if (next2 < state.questions.length) state.loadQuestion(next2);
   },
 
   selectQuestion: (index: number) => {
     const { questions } = get();
     if (index >= 0 && index < questions.length) {
       set({ currentQuestionIndex: index });
+      // Trigger preload for upcoming
+      get().preloadQuestions(index);
     }
   },
 
@@ -163,14 +217,19 @@ export const useQuizStore = create<QuizState>((set, get) => ({
       currentQuestionIndex: 0,
       startTime: Date.now()
     });
+    // Trigger preload again just in case
+    get().preloadQuestions(0);
   },
 
   shuffleQuestions: () => {
       set((state) => ({
+          // We only shuffle the array order, but keep individual question data
           questions: shuffleArray(state.questions),
           currentQuestionIndex: 0,
           answers: {},
           feedback: {}
       }));
+      // Retrigger preload for new order
+      get().preloadQuestions(0);
   }
 }));

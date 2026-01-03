@@ -29,12 +29,36 @@ func (h *QuizHandler) List(c echo.Context) error {
 
 func (h *QuizHandler) Get(c echo.Context) error {
 	id := c.Param("id")
-	q, err := h.service.GetQuiz(id)
+	mode := c.QueryParam("mode")
+
+	var q *models.QuizPublic
+	var err error
+
+	if mode == "summary" {
+		q, err = h.service.GetQuizSummary(id)
+	} else {
+		q, err = h.service.GetQuiz(id)
+	}
+
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 	if q == nil {
 		return c.JSON(http.StatusNotFound, map[string]string{"error": "quiz not found"})
+	}
+	return c.JSON(http.StatusOK, q)
+}
+
+func (h *QuizHandler) GetQuestion(c echo.Context) error {
+	id := c.Param("id")
+	qid := c.Param("qid")
+
+	q, err := h.service.GetQuestion(id, qid)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+	}
+	if q == nil {
+		return c.JSON(http.StatusNotFound, map[string]string{"error": "question not found"})
 	}
 	return c.JSON(http.StatusOK, q)
 }

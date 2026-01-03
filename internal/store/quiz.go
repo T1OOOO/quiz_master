@@ -102,6 +102,81 @@ func (r *QuizStore) Get(id string) (*models.Quiz, error) {
 	return &q, nil
 }
 
+// GetSummary returns the quiz with lightweight question metadata (ID, Type, Difficulty) only.
+func (r *QuizStore) GetSummary(id string) (*models.Quiz, error) {
+	var q models.Quiz
+	err := r.db.QueryRow("SELECT id, title, description, category FROM quizzes WHERE id = ?", id).
+		Scan(&q.ID, &q.Title, &q.Description, &q.Category)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	} else if err != nil {
+		return nil, err
+	}
+
+	// Only fetch essential metadata for questions: ID, Type, Difficulty
+	// We sort by rowid (implicitly insertion order) or add an order column? For now, we assume implicit order.
+	rows, err := r.db.Query("SELECT id, type, difficulty FROM questions WHERE quiz_id = ?", id)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var quest models.Question
+		var difficulty sql.NullInt64
+		if err := rows.Scan(&quest.ID, &quest.Type, &difficulty); err != nil {
+			return nil, err
+		}
+		if difficulty.Valid {
+			quest.Difficulty = int(difficulty.Int64)
+		}
+		// Empty fields to ensure JSON omits or sends empty
+		quest.Text = ""
+		quest.Options = nil
+		quest.ImageURL = ""
+		quest.Explanation = ""
+
+		q.Questions = append(q.Questions, quest)
+	}
+	return &q, nil
+}
+
+// GetQuestion returns a single full question by ID.
+func (r *QuizStore) GetQuestion(quizID, questionID string) (*models.Question, error) {
+	var quest models.Question
+	var optionsJSON string
+	var correctText sql.NullString
+	var multiJSON sql.NullString
+	var imageUrl sql.NullString
+	var explanation sql.NullString
+	var difficulty sql.NullInt64
+
+	row := r.db.QueryRow(`
+		SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty 
+		FROM questions 
+		WHERE quiz_id = ? AND id = ?`, quizID, questionID)
+
+	err := row.Scan(&quest.ID, &quest.Type, &quest.Text, &optionsJSON, &quest.CorrectAnswerIndex, &correctText, &multiJSON, &imageUrl, &explanation, &difficulty)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	} else if err != nil {
+		return nil, err
+	}
+
+	json.Unmarshal([]byte(optionsJSON), &quest.Options)
+	quest.CorrectText = correctText.String
+	quest.ImageURL = imageUrl.String
+	quest.Explanation = explanation.String
+	if difficulty.Valid {
+		quest.Difficulty = int(difficulty.Int64)
+	}
+	if multiJSON.Valid {
+		json.Unmarshal([]byte(multiJSON.String), &quest.CorrectMulti)
+	}
+
+	return &quest, nil
+}
+
 func (r *QuizStore) Create(q *models.Quiz) error {
 	tx, err := r.db.Begin()
 	if err != nil {
