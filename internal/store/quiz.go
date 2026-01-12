@@ -115,7 +115,8 @@ func (r *QuizStore) GetSummary(id string) (*models.Quiz, error) {
 
 	// Only fetch essential metadata for questions: ID, Type, Difficulty
 	// We sort by rowid (implicitly insertion order) or add an order column? For now, we assume implicit order.
-	rows, err := r.db.Query("SELECT id, type, difficulty FROM questions WHERE quiz_id = ?", id)
+	// Fetch metadata + Text for sidebar
+	rows, err := r.db.Query("SELECT id, type, difficulty, text FROM questions WHERE quiz_id = ?", id)
 	if err != nil {
 		return nil, err
 	}
@@ -124,14 +125,13 @@ func (r *QuizStore) GetSummary(id string) (*models.Quiz, error) {
 	for rows.Next() {
 		var quest models.Question
 		var difficulty sql.NullInt64
-		if err := rows.Scan(&quest.ID, &quest.Type, &difficulty); err != nil {
+		if err := rows.Scan(&quest.ID, &quest.Type, &difficulty, &quest.Text); err != nil {
 			return nil, err
 		}
 		if difficulty.Valid {
 			quest.Difficulty = int(difficulty.Int64)
 		}
-		// Empty fields to ensure JSON omits or sends empty
-		quest.Text = ""
+		// Optimize payload: omit heavy fields not needed for sidebar
 		quest.Options = nil
 		quest.ImageURL = ""
 		quest.Explanation = ""

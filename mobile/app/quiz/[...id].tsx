@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocalSearchParams, useRouter, Stack, useNavigation } from 'expo-router';
 import { CommonActions } from '@react-navigation/native';
+import Animated, { FadeIn, SlideInRight } from 'react-native-reanimated';
 import { View, Text, ActivityIndicator, SafeAreaView, TouchableOpacity, ImageBackground, Platform, Dimensions, useWindowDimensions } from 'react-native';
 import { ArrowLeft, Menu, X, ChevronRight } from '../../src/components/icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -352,8 +353,12 @@ export default function QuizPage() {
 
                         {/* Question Card Centering Area */}
                         <View className="flex-1 items-center justify-start px-4 pt-6 md:px-0 pb-28">
-                            <View className="w-full max-w-xl shadow-xl flex-1">
-                                {questions[currentQuestionIndex] && (questions[currentQuestionIndex]._fullyLoaded || questions[currentQuestionIndex].text) ? (
+                            {questions[currentQuestionIndex] && (questions[currentQuestionIndex]._fullyLoaded) ? (
+                                <Animated.View 
+                                    key={currentQuestionIndex}
+                                    entering={FadeIn.duration(500)}
+                                    className="w-full max-w-xl shadow-xl flex-1"
+                                >
                                     <QuestionCard
                                         question={questions[currentQuestionIndex]}
                                         totalQuestions={questions.length}
@@ -369,15 +374,18 @@ export default function QuizPage() {
                                         quizTitle={quizTitle || undefined}
                                         stats={stats}
                                     />
-                                ) : (
-                                    <View className="flex-1 justify-center items-center bg-card/50 rounded-3xl border border-white/10">
-                                        <ActivityIndicator size="large" color="rgba(var(--accent), 1)" />
-                                        <Text className="text-text-secondary mt-4 text-xs font-medium uppercase tracking-widest">
-                                            {t('common.loading_question', 'Loading Question...')}
-                                        </Text>
-                                    </View>
-                                )}
-                            </View>
+                                </Animated.View>
+                            ) : (
+                                <Animated.View 
+                                    entering={FadeIn}
+                                    className="flex-1 w-full max-w-xl justify-center items-center bg-card/50 rounded-3xl border border-white/10"
+                                >
+                                    <ActivityIndicator size="large" color="rgba(var(--accent), 1)" />
+                                    <Text className="text-text-secondary mt-4 text-xs font-medium uppercase tracking-widest">
+                                        {t('common.loading_question', 'Loading Question...')}
+                                    </Text>
+                                </Animated.View>
+                            )}
                         </View>
                     </View>
                 </View>

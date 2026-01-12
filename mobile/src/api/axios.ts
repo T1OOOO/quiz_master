@@ -8,7 +8,7 @@ if (Platform.OS === 'web') {
   // On web, checking if we are in development (localhost) or production
   // @ts-ignore
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      axios.defaults.baseURL = 'http://localhost:8080';
+      axios.defaults.baseURL = 'http://localhost:8086';
   } else {
       // In production, use relative path so requests go to same origin (Nginx proxy)
       axios.defaults.baseURL = '';
@@ -16,7 +16,7 @@ if (Platform.OS === 'web') {
 } else {
   // For native platforms, use localhost in development
   // In production, this should be configured via environment variable
-  const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8080';
+  const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8086';
   axios.defaults.baseURL = API_URL;
 }
 

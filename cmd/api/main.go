@@ -114,6 +114,7 @@ func main() {
 
 	// Static Files
 	e.Static("/assets", "web/dist/assets")
+	e.Static("/_expo", "web/dist/_expo")
 
 	// SPA Fallback for all non-API routes
 	e.GET("/*", func(c echo.Context) error {

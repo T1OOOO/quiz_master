@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { QuizRepository } from '../api/quizRepository';
+import { Storage } from '../api/storage';
 import { Question, Feedback, Quiz } from '../types/quiz';
 import { processSingleQuestion, shuffleArray } from '../utils/quizEngine';
 
@@ -42,7 +43,6 @@ export const useQuizStore = create<QuizState>((set, get) => ({
 
   // Actions
   initQuiz: async (id: string) => {
-    // Prevent re-fetching if already loaded
     if (get().quizId === id && get().status === 'active') return;
 
     set({ 
@@ -57,36 +57,41 @@ export const useQuizStore = create<QuizState>((set, get) => ({
     });
 
     try {
-      // 1. Fetch Summary (Lightweight)
+      // 1. Try Network
       const data = await QuizRepository.getSummary(id);
+      
+      // Cache it
+      Storage.saveSummary(id, data);
+
       const catTitle = typeof data.category === 'string' ? data.category : data.category?.title;
 
       set({
         status: 'active',
         quizTitle: data.title,
         quizCategory: catTitle || null,
-        questions: data.questions, // Placeholders
+        questions: data.questions,
       });
 
-      // 2. Load First Question Immediately
       await get().loadQuestion(0);
-      
-      // 3. Preload next
       get().preloadQuestions(0);
 
     } catch (err) {
-      console.error('Failed to init quiz:', err);
-      // Fallback: try full load if summary fails
-      try {
-          const data = await QuizRepository.getById(id);
-           const processed = data.questions.map(processSingleQuestion);
-           set({
-               status: 'active',
-               quizTitle: data.title,
-               questions: processed
-           });
-      } catch (fallbackErr) {
-          set({ status: 'error', error: 'Failed to load quiz' });
+      console.warn('Network init failed, trying cache...', err);
+      
+      // 2. Try Cache
+      const cached = await Storage.getSummary(id);
+      if (cached) {
+          const catTitle = typeof cached.category === 'string' ? cached.category : cached.category?.title;
+          set({
+              status: 'active',
+              quizTitle: cached.title,
+              quizCategory: catTitle || null,
+              questions: cached.questions,
+          });
+          // Try loading first question from cache
+          await get().loadQuestion(0);
+      } else {
+          set({ status: 'error', error: 'Failed to load quiz (Offline)' });
       }
     }
   },
@@ -96,26 +101,37 @@ export const useQuizStore = create<QuizState>((set, get) => ({
       const state = get();
       const question = state.questions[index];
       
-      // Safety checks
       if (!question) return;
       // @ts-ignore
-      if (question._fullyLoaded || (question.text && question.text.length > 0)) return; // Already loaded
+      if (question._fullyLoaded) return; 
 
       try {
-          // Fetch full data
+          // 1. Network
           const fullData = await QuizRepository.getQuestion(state.quizId!, question.id);
           
-          // Process (shuffle)
+          // Cache it
+          Storage.saveQuestion(state.quizId!, fullData);
+
           const processed = processSingleQuestion(fullData);
 
-          // Update state
           set(prev => {
               const newQuestions = [...prev.questions];
               newQuestions[index] = processed;
               return { questions: newQuestions };
           });
       } catch (err) {
-          console.error(`Failed to load question ${index}`, err);
+          console.warn(`Network load question ${index} failed, trying cache...`);
+          
+          // 2. Cache
+          const cached = await Storage.getQuestion(state.quizId!, question.id);
+          if (cached) {
+              const processed = processSingleQuestion(cached);
+              set(prev => {
+                  const newQuestions = [...prev.questions];
+                  newQuestions[index] = processed;
+                  return { questions: newQuestions };
+              });
+          }
       }
   },
 
@@ -133,6 +149,8 @@ export const useQuizStore = create<QuizState>((set, get) => ({
     const { questions } = get();
     if (index >= 0 && index < questions.length) {
       set({ currentQuestionIndex: index });
+      // Ensure the selected question itself is loaded
+      get().loadQuestion(index);
       // Trigger preload for upcoming
       get().preloadQuestions(index);
     }
