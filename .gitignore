@@ -10,6 +10,7 @@ bin/
 build/
 dist/
 *.tar.gz
+*.tar.xz
 *.zip
 *.tar
 
@@ -54,6 +55,7 @@ mobile/web-build/
 
 # Android
 mobile/android/app/build/
+mobile/android/app/.cxx/
 mobile/android/build/
 mobile/android/.gradle/
 mobile/android/local.properties
@@ -109,6 +111,15 @@ make_*.py
 inspect_*.py
 create_*.py
 apply_*.py
+add_*.py
+newyear_*.py
+show_*.py
+summary_*.py
+validate_*.py
+detailed_*.py
+final_*.py
+full_*.py
+find_*.py
 explanation_manager.py
 quizzes/*.py
 quizzes/**/*.py
@@ -129,6 +140,18 @@ scripts/*.py
 *_cleanup*.txt
 *_fix*.txt
 *_output*.log
+
+# Temporary markdown reports and documentation
+*_REPORT.md
+*_STATUS.md
+*_GUIDE.md
+*_VALIDATION*.md
+*_FIX*.md
+*_CHECK*.md
+*_DEPLOY*.md
+*_SUMMARY.md
+*_LIST.md
+!README.md
 cleanup_log_*.json
 *_analysis.json
 *_preview.json
