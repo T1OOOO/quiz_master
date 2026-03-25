@@ -1,22 +1,30 @@
 package service
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/fs"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"quiz_master/internal/models"
-	"quiz_master/internal/store"
-
-	"gopkg.in/yaml.v3"
 )
 
 type QuizService struct {
-	repo *store.QuizStore
+	repo QuizRepository
 }
 
-func NewQuizService(repo *store.QuizStore) *QuizService {
+type QuizRepository interface {
+	List() ([]models.Quiz, error)
+	Get(id string) (*models.Quiz, error)
+	GetSummary(id string) (*models.Quiz, error)
+	GetQuestion(quizID, questionID string) (*models.Question, error)
+	Create(q *models.Quiz) error
+	Update(q *models.Quiz) error
+	Delete(id string) error
+}
+
+func NewQuizService(repo QuizRepository) *QuizService {
 	return &QuizService{repo: repo}
 }
 
@@ -214,7 +222,7 @@ func (s *QuizService) SyncFromFiles(dir string) error {
 		}
 
 		ext := filepath.Ext(path)
-		if ext == ".yaml" || ext == ".yml" {
+		if ext == ".json" {
 			data, err := os.ReadFile(path)
 			if err != nil {
 				slog.Error("failed to read quiz file", "path", path, "error", err)
@@ -222,8 +230,8 @@ func (s *QuizService) SyncFromFiles(dir string) error {
 			}
 
 			var q models.Quiz
-			if err := yaml.Unmarshal(data, &q); err != nil {
-				slog.Error("failed to unmarshal quiz", "path", path, "error", err)
+			if err := json.Unmarshal(data, &q); err != nil {
+				slog.Error("failed to unmarshal quiz JSON", "path", path, "error", err)
 				return nil
 			}
 

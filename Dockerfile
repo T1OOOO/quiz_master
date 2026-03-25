@@ -1,48 +1,40 @@
-# Build stage
-FROM golang:alpine AS builder
+FROM golang:1.24-alpine AS builder
 
-WORKDIR /app
+WORKDIR /src
 
-# Install git (needed for fetching dependencies sometimes)
 RUN apk add --no-cache git
 
-# Copy go mod files
 COPY go.mod go.sum ./
 RUN go mod download
 
-# Copy source code
-COPY . .
+COPY cmd ./cmd
+COPY internal ./internal
+COPY quizzes ./quizzes
+COPY web ./web
 
-# Build the application
-# modernc.org/sqlite is pure Go, so CGO_ENABLED=0 is preferred
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o quiz-server ./cmd/api/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-w -s" -o /out/quiz-server ./cmd/api
 
-# Runtime stage
-FROM alpine:latest
+FROM alpine:3.22 AS runtime
 
 WORKDIR /app
 
-# Install ca-certificates for HTTPS and Timezone data
-RUN apk add --no-cache ca-certificates tzdata
+RUN addgroup -S app && adduser -S -G app app \
+    && mkdir -p /app/data /app/quizzes /app/web/dist \
+    && chown -R app:app /app
 
-# Copy binary from builder
-COPY --from=builder /app/quiz-server .
+COPY --from=builder /out/quiz-server /app/quiz-server
+COPY --chown=app:app quizzes /app/quizzes
+COPY --chown=app:app web/dist /app/web/dist
 
-# Copy quizzes directory
-# App scans this dir on startup/sync
-COPY quizzes ./quizzes
-
-# Create directory for database
-RUN mkdir -p /app/data
-
-# Expose port
-EXPOSE 8085
-
-# Set environment variables
 ENV PORT=8085
 ENV DB_PATH=/app/data/quiz.db
 ENV ENV=production
+ENV QUIZZES_DIR=quizzes
+ENV JWT_TTL=24h
+ENV SHUTDOWN_TIMEOUT=10s
 
-# Run the application
+EXPOSE 8085
+
+USER app
+
 CMD ["./quiz-server"]
-

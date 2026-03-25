@@ -5,15 +5,14 @@ import (
 	"math/rand"
 	"sync"
 	"time"
-	"quiz_master/internal/store"
 
 	"github.com/gorilla/websocket"
 )
 
 // Game States
 const (
-	StateWaiting = "waiting"
-	StatePlaying = "playing"
+	StateWaiting  = "waiting"
+	StatePlaying  = "playing"
 	StateFinished = "finished"
 )
 
@@ -47,7 +46,7 @@ type RoomManager struct {
 	rooms   map[string]*Room
 	clients map[*websocket.Conn]string
 	mutex   sync.RWMutex
-	repo    *store.QuizStore
+	repo    interface{}
 }
 
 var Manager = &RoomManager{
@@ -92,7 +91,7 @@ func (rm *RoomManager) HandleMessage(conn *websocket.Conn, message []byte) {
 func (rm *RoomManager) createRoom(conn *websocket.Conn, data []byte) {
 	var p JoinPayload
 	json.Unmarshal(data, &p)
-	
+
 	code := generateCode()
 	room := &Room{
 		Code:    code,
@@ -101,40 +100,40 @@ func (rm *RoomManager) createRoom(conn *websocket.Conn, data []byte) {
 		State:   StateWaiting,
 		Votes:   make(map[string]int),
 	}
-	
+
 	// Add host as player
 	player := &Player{Conn: conn, Username: p.Username, Avatar: p.Avatar}
 	room.Players[p.Username] = player
-	
+
 	rm.mutex.Lock()
 	rm.rooms[code] = room
 	rm.clients[conn] = code
 	rm.mutex.Unlock()
-	
+
 	room.BroadcastState()
 }
 
 func (rm *RoomManager) joinRoom(conn *websocket.Conn, data []byte) {
 	var p JoinPayload
 	json.Unmarshal(data, &p)
-	
+
 	rm.mutex.RLock()
 	room, ok := rm.rooms[p.Code]
 	rm.mutex.RUnlock()
-	
+
 	if !ok {
 		sendError(conn, "Room not found")
 		return
 	}
-	
+
 	room.Mutex.Lock()
 	room.Players[p.Username] = &Player{Conn: conn, Username: p.Username, Avatar: p.Avatar}
 	room.Mutex.Unlock()
-	
+
 	rm.mutex.Lock()
 	rm.clients[conn] = p.Code
 	rm.mutex.Unlock()
-	
+
 	room.BroadcastState()
 }
 
@@ -142,7 +141,9 @@ func (rm *RoomManager) handleRoomMessage(code string, conn *websocket.Conn, msgT
 	rm.mutex.RLock()
 	room, ok := rm.rooms[code]
 	rm.mutex.RUnlock()
-	if !ok { return }
+	if !ok {
+		return
+	}
 
 	// Find player
 	var player *Player
@@ -155,21 +156,30 @@ func (rm *RoomManager) handleRoomMessage(code string, conn *websocket.Conn, msgT
 	}
 	room.Mutex.RUnlock()
 
-	if player == nil { return }
+	if player == nil {
+		return
+	}
 
 	switch msgType {
 	case "start_game":
 		if player.Username == room.HostID {
-			var d struct { QuizID string `json:"quiz_id"` }
+			var d struct {
+				QuizID string `json:"quiz_id"`
+			}
 			json.Unmarshal(payload, &d)
 			room.StartGame(d.QuizID)
 		}
 	case "vote":
-		var d struct { AnswerIdx int `json:"answer_index"` }
+		var d struct {
+			AnswerIdx int `json:"answer_index"`
+		}
 		json.Unmarshal(payload, &d)
 		room.SubmitVote(player.Username, d.AnswerIdx)
 	case "chat":
-		var d struct { Text string `json:"text"`; Image string `json:"image"` }
+		var d struct {
+			Text  string `json:"text"`
+			Image string `json:"image"`
+		}
 		json.Unmarshal(payload, &d)
 		room.SubmitChat(player.Username, d.Text, d.Image)
 	}
@@ -178,12 +188,14 @@ func (rm *RoomManager) handleRoomMessage(code string, conn *websocket.Conn, msgT
 func (rm *RoomManager) RemoveClient(conn *websocket.Conn) {
 	rm.mutex.Lock()
 	defer rm.mutex.Unlock()
-	
+
 	code, ok := rm.clients[conn]
-	if !ok { return }
-	
+	if !ok {
+		return
+	}
+
 	delete(rm.clients, conn)
-	
+
 	if room, exists := rm.rooms[code]; exists {
 		room.Mutex.Lock()
 		// Remove player
@@ -195,7 +207,7 @@ func (rm *RoomManager) RemoveClient(conn *websocket.Conn) {
 		}
 		empty := len(room.Players) == 0
 		room.Mutex.Unlock()
-		
+
 		if empty {
 			delete(rm.rooms, code)
 		} else {
@@ -209,19 +221,19 @@ func (rm *RoomManager) RemoveClient(conn *websocket.Conn) {
 func (r *Room) BroadcastState() {
 	r.Mutex.RLock()
 	defer r.Mutex.RUnlock()
-	
+
 	// Simplify for frontend
 	type PublicPlayer struct {
 		Username string `json:"username"`
 		Avatar   string `json:"avatar"`
 		Score    int    `json:"score"`
 	}
-	
+
 	players := make([]PublicPlayer, 0)
 	for _, p := range r.Players {
 		players = append(players, PublicPlayer{p.Username, p.Avatar, p.Score})
 	}
-	
+
 	msg := map[string]interface{}{
 		"type": "room_state",
 		"room": map[string]interface{}{
@@ -235,7 +247,7 @@ func (r *Room) BroadcastState() {
 			"chat_history":     r.ChatHistory,
 		},
 	}
-	
+
 	r.broadcast(msg)
 }
 
@@ -246,12 +258,12 @@ func (r *Room) StartGame(quizID string) {
 	r.CurrentQuestion = 0
 	r.Votes = make(map[string]int)
 	r.Mutex.Unlock()
-	
+
 	r.broadcast(map[string]interface{}{
-		"type": "game_started",
+		"type":    "game_started",
 		"quiz_id": quizID,
 	})
-	
+
 	r.BroadcastState()
 }
 
@@ -290,10 +302,10 @@ func (r *Room) SubmitChat(username string, text, image string) {
 		r.ChatHistory = r.ChatHistory[1:] // Keep last 50
 	}
 	r.Mutex.Unlock()
-	
+
 	// Broadcast chat event specifically (optimization)
 	r.broadcast(map[string]interface{}{
-		"type": "chat_message",
+		"type":    "chat_message",
 		"message": msg,
 	})
 }

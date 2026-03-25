@@ -1,89 +1,144 @@
 package tests
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"strings"
 	"testing"
 
-	"quiz_master/internal/core/domain"
-	"quiz_master/internal/infrastructure/db"
-	"quiz_master/internal/services/auth"
-	"quiz_master/internal/services/quiz"
-	thttp "quiz_master/internal/transport/http"
+	legacyapi "quiz_master/internal/api"
+	authhttp "quiz_master/internal/auth/http"
+	authservice "quiz_master/internal/auth/service"
+	authtoken "quiz_master/internal/auth/token"
+	"quiz_master/internal/models"
+	legacyservice "quiz_master/internal/service"
+	storagerepo "quiz_master/internal/storage/repository"
 
 	"github.com/labstack/echo/v4"
-	"github.com/stretchr/testify/suite"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	_ "modernc.org/sqlite"
 )
 
-type IntegrationTestSuite struct {
-	suite.Suite
-	echo *echo.Echo
-}
+func setupIntegrationServer(t *testing.T) (*echo.Echo, *sql.DB) {
+	db, err := sql.Open("sqlite", ":memory:")
+	require.NoError(t, err)
 
-func (s *IntegrationTestSuite) SetupSuite() {
-	// Initialize in-memory DB for pure isolation
-	dbConn, _ := sql.Open("sqlite", ":memory:")
-	
-	// Setup Schema
-	dbConn.Exec("CREATE TABLE users (id TEXT PRIMARY KEY, username TEXT UNIQUE, password TEXT, role TEXT)")
-	dbConn.Exec("CREATE TABLE quizzes (id TEXT PRIMARY KEY, title TEXT, description TEXT)")
-	dbConn.Exec("CREATE TABLE questions (id TEXT PRIMARY KEY, quiz_id TEXT, type TEXT, text TEXT, options TEXT, correct_answer_index INTEGER)")
-	dbConn.Exec("CREATE TABLE quiz_results (id TEXT PRIMARY KEY, user_id TEXT, quiz_id TEXT, score INTEGER, total_questions INTEGER, completed_at DATETIME)")
+	_, err = db.Exec(`
+		CREATE TABLE users (
+			id TEXT PRIMARY KEY,
+			username TEXT UNIQUE,
+			password TEXT,
+			role TEXT
+		)
+	`)
+	require.NoError(t, err)
+
+	_, err = db.Exec(`
+		CREATE TABLE quizzes (
+			id TEXT PRIMARY KEY,
+			title TEXT,
+			description TEXT,
+			category TEXT
+		)
+	`)
+	require.NoError(t, err)
+
+	_, err = db.Exec(`
+		CREATE TABLE questions (
+			id TEXT PRIMARY KEY,
+			quiz_id TEXT,
+			type TEXT,
+			text TEXT,
+			options TEXT,
+			correct_answer_index INTEGER,
+			correct_text TEXT,
+			correct_multi TEXT,
+			image_url TEXT,
+			explanation TEXT,
+			difficulty INTEGER
+		)
+	`)
+	require.NoError(t, err)
+
+	_, err = db.Exec(`
+		CREATE TABLE quiz_results (
+			id TEXT PRIMARY KEY,
+			user_id TEXT,
+			quiz_id TEXT,
+			score INTEGER,
+			total_questions INTEGER,
+			completed_at DATETIME
+		)
+	`)
+	require.NoError(t, err)
+
+	userRepo := storagerepo.NewUserRepository(db)
+	quizRepo := storagerepo.NewQuizRepository(db)
+
+	authSvc := authservice.New(userRepo, authtoken.NewLegacyManager())
+	quizSvc := legacyservice.NewQuizService(quizRepo)
+
+	authHandler := authhttp.NewHandler(authSvc, nil)
+	authMiddleware := authhttp.NewMiddleware(authtoken.NewLegacyManager())
+	quizHandler := legacyapi.NewQuizHandler(quizSvc)
 
 	e := echo.New()
-	
-	// Wiring
-	quizRepo := db.NewQuizRepository(dbConn)
-	userRepo := db.NewUserRepository(dbConn)
-	quizService := quiz.NewQuizService(quizRepo)
-	authService := auth.NewAuthService(userRepo)
-	quizHandler := thttp.NewQuizHandler(quizService)
-	authHandler := thttp.NewAuthHandler(authService)
-
 	api := e.Group("/api")
-	api.POST("/register", authHandler.Register)
-	api.POST("/login", authHandler.Login)
+	authhttp.RegisterRoutes(api, authHandler, authMiddleware)
 	api.GET("/quizzes", quizHandler.List)
-	
-	s.echo = e
+
+	return e, db
 }
 
-func (s *IntegrationTestSuite) TestAuthFlow() {
-	// 1. Register
-	userJSON := `{"username": "testuser", "password": "password123"}`
-	req := httptest.NewRequest(http.MethodPost, "/api/register", strings.NewReader(userJSON))
+func TestIntegration_AuthFlow(t *testing.T) {
+	e, db := setupIntegrationServer(t)
+	defer db.Close()
+
+	payload := map[string]string{"username": "testuser", "password": "password123"}
+	body, err := json.Marshal(payload)
+	require.NoError(t, err)
+
+	req := httptest.NewRequest(http.MethodPost, "/api/register", bytes.NewReader(body))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
-	
-	s.echo.ServeHTTP(rec, req)
-	s.Equal(http.StatusOK, rec.Code)
+	e.ServeHTTP(rec, req)
+	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var res domain.AuthResponse
-	err := json.Unmarshal(rec.Body.Bytes(), &res)
-	s.NoError(err)
-	s.Equal("testuser", res.Username)
+	var registerRes models.AuthResponse
+	err = json.Unmarshal(rec.Body.Bytes(), &registerRes)
+	require.NoError(t, err)
+	assert.Equal(t, "testuser", registerRes.Username)
 
-	// 2. Login
-	req = httptest.NewRequest(http.MethodPost, "/api/login", strings.NewReader(userJSON))
+	req = httptest.NewRequest(http.MethodPost, "/api/login", bytes.NewReader(body))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec = httptest.NewRecorder()
-	
-	s.echo.ServeHTTP(rec, req)
-	s.Equal(http.StatusOK, rec.Code)
+	e.ServeHTTP(rec, req)
+	assert.Equal(t, http.StatusOK, rec.Code)
 }
 
-func (s *IntegrationTestSuite) TestQuizList() {
+func TestIntegration_QuizList(t *testing.T) {
+	e, db := setupIntegrationServer(t)
+	defer db.Close()
+
+	quizRepo := storagerepo.NewQuizRepository(db)
+	err := quizRepo.Create(&models.Quiz{
+		ID:          "quiz-1",
+		Title:       "Quiz 1",
+		Description: "Desc",
+		Category:    "General",
+	})
+	require.NoError(t, err)
+
 	req := httptest.NewRequest(http.MethodGet, "/api/quizzes", nil)
 	rec := httptest.NewRecorder()
-	
-	s.echo.ServeHTTP(rec, req)
-	s.Equal(http.StatusOK, rec.Code)
-}
+	e.ServeHTTP(rec, req)
+	assert.Equal(t, http.StatusOK, rec.Code)
 
-func TestIntegration(t *testing.T) {
-	suite.Run(t, new(IntegrationTestSuite))
+	var quizzes []models.Quiz
+	err = json.Unmarshal(rec.Body.Bytes(), &quizzes)
+	require.NoError(t, err)
+	assert.Len(t, quizzes, 1)
 }

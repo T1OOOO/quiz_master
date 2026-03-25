@@ -4,7 +4,6 @@ import (
 	"log"
 	"net/http"
 	"sync"
-	"quiz_master/internal/store"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
@@ -21,11 +20,11 @@ type Event struct {
 }
 
 type Hub struct {
-	clients map[*websocket.Conn]bool
-	broadcast chan Event
-	register  chan *websocket.Conn
+	clients    map[*websocket.Conn]bool
+	broadcast  chan Event
+	register   chan *websocket.Conn
 	unregister chan *websocket.Conn
-	mutex     sync.Mutex
+	mutex      sync.Mutex
 }
 
 var GlobalHub = &Hub{
@@ -35,7 +34,9 @@ var GlobalHub = &Hub{
 	clients:    make(map[*websocket.Conn]bool),
 }
 
-func NewHub(repo *store.QuizStore) *Hub {
+type quizRepository interface{}
+
+func NewHub(repo quizRepository) *Hub {
 	Manager.repo = repo
 	return GlobalHub
 }
@@ -48,7 +49,7 @@ func (h *Hub) Run() {
 			h.clients[client] = true
 			h.mutex.Unlock()
 			log.Println("New spectator connected")
-			
+
 		case client := <-h.unregister:
 			h.mutex.Lock()
 			if _, ok := h.clients[client]; ok {
@@ -57,7 +58,7 @@ func (h *Hub) Run() {
 			}
 			h.mutex.Unlock()
 			log.Println("Spectator disconnected")
-			
+
 		case message := <-h.broadcast:
 			h.mutex.Lock()
 			for client := range h.clients {
@@ -82,7 +83,7 @@ func HandleWebSocket(c echo.Context) error {
 	if err != nil {
 		return err
 	}
-	
+
 	// Register for spectator/general events
 	GlobalHub.register <- ws
 
@@ -93,17 +94,17 @@ func HandleWebSocket(c echo.Context) error {
 			Manager.RemoveClient(ws)
 			ws.Close()
 		}()
-		
+
 		for {
 			_, msg, err := ws.ReadMessage()
 			if err != nil {
 				break // connection closed
 			}
-			
+
 			// Process message
 			Manager.HandleMessage(ws, msg)
 		}
 	}()
-	
+
 	return nil
 }
