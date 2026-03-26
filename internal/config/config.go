@@ -21,7 +21,7 @@ type Config struct {
 
 func Load() *Config {
 	return &Config{
-		Port:            getEnv("PORT", "8080"),
+		Port:            getEnv("PORT", "8090"),
 		DBPath:          getEnv("DB_PATH", "quiz.db"),
 		Env:             getEnv("ENV", "development"),
 		QuizzesDir:      getEnv("QUIZZES_DIR", "quizzes"),

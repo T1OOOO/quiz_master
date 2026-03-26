@@ -208,9 +208,27 @@ build_log.txt
 .cache/
 .modcache/
 .tools/
+.data/
+.run/
+web/dist/
+work_backup/
+index_backup.css
 
 # Flutter
 flutter/.dart_tool/
 flutter/build/
 flutter/.flutter-plugins
 flutter/.flutter-plugins-dependencies
+flutter/**/*.g.dart
+flutter/**/*.freezed.dart
+flutter/.packages
+flutter/pubspec.lock
+flutter/.dart_tool/
+flutter/ios/Pods/
+flutter/ios/.symlinks/
+flutter/ios/Flutter/Flutter.framework
+flutter/ios/Flutter/Flutter.podspec
+flutter/android/.gradle/
+flutter/android/app/debug/
+flutter/android/app/profile/
+flutter/android/app/release/

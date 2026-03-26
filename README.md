@@ -17,6 +17,38 @@
 2. Run `go test ./...`.
 3. Start the API with `go run ./cmd/api`.
 
+Local development defaults are separated from other apps:
+
+- API: `http://localhost:8090`
+- Flutter web dev server: `http://localhost:8091`
+
+Development scripts:
+
+- `powershell -File .\scripts\db.ps1 -Action init`
+- `powershell -File .\scripts\run-api.ps1 -InitDb`
+- `powershell -File .\scripts\stop-api.ps1`
+- `powershell -File .\scripts\run-client.ps1`
+- `powershell -File .\scripts\run-client-web.ps1 -WebPort 8091`
+- `powershell -File .\scripts\run-client-windows.ps1`
+- `powershell -File .\scripts\run-dev.ps1`
+- `powershell -File .\scripts\stop-dev.ps1`
+- `powershell -File .\scripts\stop-all.ps1`
+- `bash ./scripts/db.sh init`
+- `bash ./scripts/run-api.sh`
+- `bash ./scripts/stop-api.sh`
+- `bash ./scripts/run-client.sh`
+- `WEB_PORT=8091 bash ./scripts/run-client-web.sh`
+- `bash ./scripts/run-client-windows.sh`
+- `bash ./scripts/run-dev.sh`
+- `bash ./scripts/stop-dev.sh`
+- `bash ./scripts/stop-all.sh`
+
+The Flutter client now reads backend URLs from `--dart-define`:
+
+- `SERVER_BASE_URL`, default `http://localhost:8090`
+- `API_BASE_URL`, default `http://localhost:8090/api`
+- `WEB_PORT`, default `8091` for Flutter web dev runs
+
 Default endpoints:
 
 - `GET /healthz`
