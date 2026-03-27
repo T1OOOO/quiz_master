@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"encoding/json"
 	"iter"
+	"time"
 
-	"quiz_master/internal/models"
+	quizdomain "quiz_master/internal/quiz/domain"
 
 	"github.com/google/uuid"
 )
@@ -18,8 +19,8 @@ func NewQuizRepository(db *sql.DB) *QuizRepository {
 	return &QuizRepository{db: db}
 }
 
-func (r *QuizRepository) List() ([]models.Quiz, error) {
-	var quizzes []models.Quiz
+func (r *QuizRepository) List() ([]quizdomain.Quiz, error) {
+	var quizzes []quizdomain.Quiz
 	for q, err := range r.All() {
 		if err != nil {
 			return nil, err
@@ -29,8 +30,8 @@ func (r *QuizRepository) List() ([]models.Quiz, error) {
 	return quizzes, nil
 }
 
-func (r *QuizRepository) All() iter.Seq2[models.Quiz, error] {
-	return func(yield func(models.Quiz, error) bool) {
+func (r *QuizRepository) All() iter.Seq2[quizdomain.Quiz, error] {
+	return func(yield func(quizdomain.Quiz, error) bool) {
 		rows, err := r.db.Query(`
 			SELECT
 				q.id, q.title, q.description, q.category,
@@ -38,15 +39,15 @@ func (r *QuizRepository) All() iter.Seq2[models.Quiz, error] {
 			FROM quizzes q
 		`)
 		if err != nil {
-			yield(models.Quiz{}, err)
+			yield(quizdomain.Quiz{}, err)
 			return
 		}
 		defer rows.Close()
 
 		for rows.Next() {
-			var q models.Quiz
+			var q quizdomain.Quiz
 			if err := rows.Scan(&q.ID, &q.Title, &q.Description, &q.Category, &q.QuestionsCount); err != nil {
-				if !yield(models.Quiz{}, err) {
+				if !yield(quizdomain.Quiz{}, err) {
 					return
 				}
 				continue
@@ -58,8 +59,8 @@ func (r *QuizRepository) All() iter.Seq2[models.Quiz, error] {
 	}
 }
 
-func (r *QuizRepository) Get(id string) (*models.Quiz, error) {
-	var q models.Quiz
+func (r *QuizRepository) Get(id string) (*quizdomain.Quiz, error) {
+	var q quizdomain.Quiz
 	err := r.db.QueryRow("SELECT id, title, description, category FROM quizzes WHERE id = ?", id).
 		Scan(&q.ID, &q.Title, &q.Description, &q.Category)
 	if err == sql.ErrNoRows {
@@ -75,7 +76,7 @@ func (r *QuizRepository) Get(id string) (*models.Quiz, error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var quest models.Question
+		var quest quizdomain.Question
 		var optionsJSON string
 		var correctText sql.NullString
 		var multiJSON sql.NullString
@@ -101,8 +102,8 @@ func (r *QuizRepository) Get(id string) (*models.Quiz, error) {
 	return &q, nil
 }
 
-func (r *QuizRepository) GetSummary(id string) (*models.Quiz, error) {
-	var q models.Quiz
+func (r *QuizRepository) GetSummary(id string) (*quizdomain.Quiz, error) {
+	var q quizdomain.Quiz
 	err := r.db.QueryRow("SELECT id, title, description, category FROM quizzes WHERE id = ?", id).
 		Scan(&q.ID, &q.Title, &q.Description, &q.Category)
 	if err == sql.ErrNoRows {
@@ -118,7 +119,7 @@ func (r *QuizRepository) GetSummary(id string) (*models.Quiz, error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var quest models.Question
+		var quest quizdomain.Question
 		var difficulty sql.NullInt64
 		if err := rows.Scan(&quest.ID, &quest.Type, &difficulty, &quest.Text); err != nil {
 			return nil, err
@@ -132,8 +133,8 @@ func (r *QuizRepository) GetSummary(id string) (*models.Quiz, error) {
 	return &q, nil
 }
 
-func (r *QuizRepository) GetQuestion(quizID, questionID string) (*models.Question, error) {
-	var quest models.Question
+func (r *QuizRepository) GetQuestion(quizID, questionID string) (*quizdomain.Question, error) {
+	var quest quizdomain.Question
 	var optionsJSON string
 	var correctText sql.NullString
 	var multiJSON sql.NullString
@@ -167,7 +168,7 @@ func (r *QuizRepository) GetQuestion(quizID, questionID string) (*models.Questio
 	return &quest, nil
 }
 
-func (r *QuizRepository) Create(q *models.Quiz) error {
+func (r *QuizRepository) Create(q *quizdomain.Quiz) error {
 	tx, err := r.db.Begin()
 	if err != nil {
 		return err
@@ -204,7 +205,7 @@ func (r *QuizRepository) Create(q *models.Quiz) error {
 	return tx.Commit()
 }
 
-func (r *QuizRepository) Update(q *models.Quiz) error {
+func (r *QuizRepository) Update(q *quizdomain.Quiz) error {
 	tx, err := r.db.Begin()
 	if err != nil {
 		return err
@@ -245,5 +246,25 @@ func (r *QuizRepository) Update(q *models.Quiz) error {
 
 func (r *QuizRepository) Delete(id string) error {
 	_, err := r.db.Exec("DELETE FROM quizzes WHERE id = ?", id)
+	return err
+}
+
+func (r *QuizRepository) SaveReport(report *quizdomain.QuizReport) error {
+	if report.CreatedAt.IsZero() {
+		report.CreatedAt = time.Now().UTC()
+	}
+	if report.ID == "" {
+		report.ID = uuid.New().String()
+	}
+
+	_, err := r.db.Exec(
+		"INSERT INTO reports (id, quiz_id, question_id, message, question_text, created_at) VALUES (?, ?, ?, ?, ?, ?)",
+		report.ID,
+		report.QuizID,
+		report.QuestionID,
+		report.Message,
+		report.QuestionText,
+		report.CreatedAt,
+	)
 	return err
 }

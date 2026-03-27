@@ -1,55 +1,15 @@
 package models
 
-type Question struct {
-	ID                 string   `json:"id" yaml:"id"`
-	Type               string   `json:"type" yaml:"type"` // "choice", "text", "multi"
-	Text               string   `json:"text" yaml:"text"`
-	ImageURL           string   `json:"image_url,omitempty" yaml:"image_url"`
-	Options            []string `json:"options,omitempty" yaml:"options"`
-	CorrectAnswerIndex int      `json:"correct_answer_index" yaml:"correct_answer"`
-	CorrectText        string   `json:"correct_text,omitempty" yaml:"correct_text"`
-	CorrectMulti       []int    `json:"correct_multi,omitempty" yaml:"correct_multi"`
-	Explanation        string   `json:"explanation,omitempty" yaml:"explanation"`
-	Difficulty         int      `json:"difficulty,omitempty" yaml:"difficulty"`
-}
+import (
+	quizdomain "quiz_master/internal/quiz/domain"
+	quizdto "quiz_master/internal/quiz/http/dto"
+)
 
-// QuestionPublic is the safe DTO for API responses
-type QuestionPublic struct {
-	ID         string   `json:"id"`
-	Type       string   `json:"type"`
-	Text       string   `json:"text"`
-	ImageURL   string   `json:"image_url,omitempty"`
-	Options    []string `json:"options,omitempty"`
-	Difficulty int      `json:"difficulty,omitempty"`
-	// No answers or explanations here!
-}
+type Question = quizdomain.Question
+type Quiz = quizdomain.Quiz
+type QuizReport = quizdomain.QuizReport
 
-type Quiz struct {
-	ID             string     `json:"id" yaml:"id"`
-	Title          string     `json:"title" yaml:"title"`
-	Description    string     `json:"description" yaml:"description"`
-	Category       string     `json:"category" yaml:"category"`
-	Questions      []Question `json:"questions,omitempty" yaml:"questions"`
-	QuestionsCount int        `json:"questions_count" yaml:"-"`
-}
-
-type QuizPublic struct {
-	ID             string           `json:"id"`
-	Title          string           `json:"title"`
-	Description    string           `json:"description"`
-	Category       string           `json:"category"`
-	Questions      []QuestionPublic `json:"questions,omitempty"`
-	QuestionsCount int              `json:"questions_count"`
-}
-
-type AnswerResult struct {
-	Correct       bool        `json:"correct"`
-	CorrectAnswer interface{} `json:"correct_answer,omitempty"`
-	CorrectText   string      `json:"correct_text,omitempty"`
-	Explanation   string      `json:"explanation,omitempty"`
-}
-
-type AnswerAttempt struct {
-	QuestionID string      `json:"question_id"`
-	Answer     interface{} `json:"answer"`
-}
+type QuestionPublic = quizdto.QuestionPublic
+type QuizPublic = quizdto.QuizPublic
+type AnswerResult = quizdto.AnswerResult
+type AnswerAttempt = quizdto.AnswerAttempt

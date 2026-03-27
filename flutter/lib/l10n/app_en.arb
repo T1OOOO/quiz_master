@@ -1,0 +1,445 @@
+{
+  "@@locale": "en",
+  "appTitle": "Quiz Master",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "homeTitle": "Quizzes",
+  "@homeTitle": {
+    "description": "Home screen title"
+  },
+  "homeSubtitle": "Choose a topic",
+  "@homeSubtitle": {
+    "description": "Home screen subtitle"
+  },
+  "homeHolidayTitle": "🎄 Holiday Quizzes",
+  "@homeHolidayTitle": {
+    "description": "Holiday theme home title"
+  },
+  "homeHolidaySubtitle": "Find a gift under the tree",
+  "@homeHolidaySubtitle": {
+    "description": "Holiday theme home subtitle"
+  },
+  "searchPlaceholder": "Search...",
+  "@searchPlaceholder": {
+    "description": "Search input placeholder"
+  },
+  "quizDefaultDesc": "Interesting quiz to test your knowledge.",
+  "@quizDefaultDesc": {
+    "description": "Default quiz description"
+  },
+  "questionsCount": "{count} Questions",
+  "@questionsCount": {
+    "description": "Questions count text",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "play": "Play",
+  "@play": {
+    "description": "Play button text"
+  },
+  "categories": "CATEGORIES",
+  "@categories": {
+    "description": "Categories section title"
+  },
+  "quizzes": "QUIZZES",
+  "@quizzes": {
+    "description": "Quizzes section title"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home breadcrumb"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading text"
+  },
+  "errorLoad": "Failed to load quiz",
+  "@errorLoad": {
+    "description": "Error loading quiz"
+  },
+  "goBack": "Go Back",
+  "@goBack": {
+    "description": "Go back button"
+  },
+  "questionTitle": "Question {count}",
+  "@questionTitle": {
+    "description": "Question title with number",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "question": "Question",
+  "@question": {
+    "description": "Question label"
+  },
+  "correct": "🎉 Correct",
+  "@correct": {
+    "description": "Correct answer feedback"
+  },
+  "incorrect": "❌ Incorrect",
+  "@incorrect": {
+    "description": "Incorrect answer feedback"
+  },
+  "explanationTitle": "✨ Interesting Fact",
+  "@explanationTitle": {
+    "description": "Explanation section title"
+  },
+  "noExplanation": "No explanation available.",
+  "@noExplanation": {
+    "description": "No explanation available"
+  },
+  "finish": "Finish",
+  "@finish": {
+    "description": "Finish quiz button"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "Previous",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "reset": "Reset",
+  "@reset": {
+    "description": "Reset quiz button"
+  },
+  "shuffle": "Shuffle",
+  "@shuffle": {
+    "description": "Shuffle questions button"
+  },
+  "categoryCinema": "Cinema",
+  "@categoryCinema": {
+    "description": "Cinema category"
+  },
+  "categoryGastronomy": "Gastronomy",
+  "@categoryGastronomy": {
+    "description": "Gastronomy category"
+  },
+  "categoryNature": "Nature",
+  "@categoryNature": {
+    "description": "Nature category"
+  },
+  "categoryPhilias": "Philias",
+  "@categoryPhilias": {
+    "description": "Philias category"
+  },
+  "categoryPsychology": "Psychology",
+  "@categoryPsychology": {
+    "description": "Psychology category"
+  },
+  "categoryPhilology": "Philology",
+  "@categoryPhilology": {
+    "description": "Philology category"
+  },
+  "categoryNewYear": "New Year",
+  "@categoryNewYear": {
+    "description": "New Year category"
+  },
+  "categoryGeneral": "General",
+  "@categoryGeneral": {
+    "description": "General category"
+  },
+  "noQuestions": "No questions available",
+  "@noQuestions": {
+    "description": "No questions state in quiz screen"
+  },
+  "quizFallbackTitle": "Quiz",
+  "@quizFallbackTitle": {
+    "description": "Fallback quiz title"
+  },
+  "changeLanguage": "Change language",
+  "@changeLanguage": {
+    "description": "Tooltip for language switcher"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "English language label"
+  },
+  "languageRussian": "Russian",
+  "@languageRussian": {
+    "description": "Russian language label"
+  },
+  "noSearchResults": "No quizzes match your search",
+  "@noSearchResults": {
+    "description": "No search results state"
+  },
+  "noQuizzesAvailable": "No quizzes available yet",
+  "@noQuizzesAvailable": {
+    "description": "Empty quizzes state"
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+  "settingsAppearance": "Appearance",
+  "@settingsAppearance": {
+    "description": "Appearance section title"
+  },
+  "settingsTheme": "Theme",
+  "@settingsTheme": {
+    "description": "Theme setting label"
+  },
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {
+    "description": "Language setting label"
+  },
+  "settingsAdvanced": "Advanced",
+  "@settingsAdvanced": {
+    "description": "Advanced settings section"
+  },
+  "settingsDebugMode": "Debug mode",
+  "@settingsDebugMode": {
+    "description": "Debug mode toggle"
+  },
+  "settingsDebugModeDescription": "Show diagnostics and development tools",
+  "@settingsDebugModeDescription": {
+    "description": "Debug mode description"
+  },
+  "settingsAccount": "Account",
+  "@settingsAccount": {
+    "description": "Account section title"
+  },
+  "settingsSignedOut": "You are not signed in",
+  "@settingsSignedOut": {
+    "description": "Signed out state"
+  },
+  "settingsSignedOutDescription": "Sign in, register, or continue as guest",
+  "@settingsSignedOutDescription": {
+    "description": "Signed out description"
+  },
+  "settingsRole": "Role",
+  "@settingsRole": {
+    "description": "Role label"
+  },
+  "settingsLoggedOut": "Signed out successfully",
+  "@settingsLoggedOut": {
+    "description": "Logged out snackbar"
+  },
+  "settingsAccountError": "Failed to load account state",
+  "@settingsAccountError": {
+    "description": "Account error state"
+  },
+  "settingsNavigation": "Navigation",
+  "@settingsNavigation": {
+    "description": "Navigation section title"
+  },
+  "authLogin": "Sign in",
+  "@authLogin": {
+    "description": "Login action"
+  },
+  "authRegister": "Register",
+  "@authRegister": {
+    "description": "Register action"
+  },
+  "authGuest": "Continue as guest",
+  "@authGuest": {
+    "description": "Guest login action"
+  },
+  "authLogout": "Sign out",
+  "@authLogout": {
+    "description": "Logout action"
+  },
+  "authUsername": "Username",
+  "@authUsername": {
+    "description": "Username field label"
+  },
+  "authPassword": "Password",
+  "@authPassword": {
+    "description": "Password field label"
+  },
+  "authEmailOptional": "Email (optional)",
+  "@authEmailOptional": {
+    "description": "Optional email label"
+  },
+  "authUsernameRequired": "Enter a username",
+  "@authUsernameRequired": {
+    "description": "Username validation error"
+  },
+  "authSuccess": "Authentication successful",
+  "@authSuccess": {
+    "description": "Authentication success message"
+  },
+  "authError": "Authentication failed",
+  "@authError": {
+    "description": "Authentication error prefix"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "debugTitle": "Debug",
+  "@debugTitle": {
+    "description": "Debug screen title"
+  },
+  "debugSubtitle": "Inspect environment, auth, and health",
+  "@debugSubtitle": {
+    "description": "Debug screen subtitle"
+  },
+  "debugRefresh": "Refresh diagnostics",
+  "@debugRefresh": {
+    "description": "Refresh debug data action"
+  },
+  "debugEnvironment": "Environment",
+  "@debugEnvironment": {
+    "description": "Environment section title"
+  },
+  "debugServerBaseUrl": "Server base URL",
+  "@debugServerBaseUrl": {
+    "description": "Server base URL label"
+  },
+  "debugApiBaseUrl": "API base URL",
+  "@debugApiBaseUrl": {
+    "description": "API base URL label"
+  },
+  "debugPlatform": "Platform",
+  "@debugPlatform": {
+    "description": "Platform label"
+  },
+  "debugAuth": "Authentication",
+  "@debugAuth": {
+    "description": "Authentication section title"
+  },
+  "debugCurrentUser": "Current user",
+  "@debugCurrentUser": {
+    "description": "Current user label"
+  },
+  "debugAnonymous": "Anonymous",
+  "@debugAnonymous": {
+    "description": "Anonymous user label"
+  },
+  "debugNoRole": "No role",
+  "@debugNoRole": {
+    "description": "No role label"
+  },
+  "debugTokenPresent": "Token present",
+  "@debugTokenPresent": {
+    "description": "Token present label"
+  },
+  "debugServerHealth": "Server health",
+  "@debugServerHealth": {
+    "description": "Server health section title"
+  },
+  "debugStatusCode": "Status code",
+  "@debugStatusCode": {
+    "description": "Status code label"
+  },
+  "debugPayload": "Payload",
+  "@debugPayload": {
+    "description": "Payload label"
+  },
+  "debugHealthError": "Failed to load server health",
+  "@debugHealthError": {
+    "description": "Health check error"
+  },
+  "adminTitle": "Admin",
+  "@adminTitle": {
+    "description": "Admin screen title"
+  },
+  "adminSubtitle": "Admin dashboard and moderation tools",
+  "@adminSubtitle": {
+    "description": "Admin screen subtitle"
+  },
+  "adminAccessHint": "Sign in with an admin account to access this section",
+  "@adminAccessHint": {
+    "description": "Admin access hint"
+  },
+  "adminUnauthorized": "Admin access is required to view this screen",
+  "@adminUnauthorized": {
+    "description": "Unauthorized admin message"
+  },
+  "adminSummary": "Summary",
+  "@adminSummary": {
+    "description": "Admin summary section title"
+  },
+  "adminCurrentRole": "Current role",
+  "@adminCurrentRole": {
+    "description": "Current role label"
+  },
+  "adminCurrentUser": "Current user",
+  "@adminCurrentUser": {
+    "description": "Current user label"
+  },
+  "adminTokenState": "Token state",
+  "@adminTokenState": {
+    "description": "Token state label"
+  },
+  "adminTokenPresent": "Present",
+  "@adminTokenPresent": {
+    "description": "Token present state"
+  },
+  "adminTokenMissing": "Missing",
+  "@adminTokenMissing": {
+    "description": "Token missing state"
+  },
+  "adminContent": "Content",
+  "@adminContent": {
+    "description": "Content section title"
+  },
+  "adminQuizCount": "Quiz count",
+  "@adminQuizCount": {
+    "description": "Quiz count label"
+  },
+  "adminLeaderboard": "Leaderboard",
+  "@adminLeaderboard": {
+    "description": "Admin leaderboard title"
+  },
+  "adminNoLeaderboardData": "No leaderboard data yet",
+  "@adminNoLeaderboardData": {
+    "description": "No leaderboard data"
+  },
+  "adminLoadError": "Failed to load admin data",
+  "@adminLoadError": {
+    "description": "Admin load error"
+  },
+  "themeHoliday": "Holiday",
+  "@themeHoliday": {
+    "description": "Holiday theme name"
+  },
+  "themeNight": "Night",
+  "@themeNight": {
+    "description": "Night theme name"
+  },
+  "themeSummer": "Summer",
+  "@themeSummer": {
+    "description": "Summer theme name"
+  },
+  "themeCyber": "Cyber",
+  "@themeCyber": {
+    "description": "Cyber theme name"
+  },
+  "themeAutumn": "Autumn",
+  "@themeAutumn": {
+    "description": "Autumn theme name"
+  },
+  "themeRomance": "Romance",
+  "@themeRomance": {
+    "description": "Romance theme name"
+  },
+  "languageRussianShort": "RU",
+  "@languageRussianShort": {
+    "description": "Short Russian language label"
+  },
+  "languageEnglishShort": "EN",
+  "@languageEnglishShort": {
+    "description": "Short English language label"
+  },
+  "drawerGuest": "Guest mode",
+  "@drawerGuest": {
+    "description": "Drawer guest label"
+  },
+  "openMenu": "Open menu",
+  "@openMenu": {
+    "description": "Open menu tooltip"
+  }
+}

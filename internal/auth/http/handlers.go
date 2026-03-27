@@ -3,6 +3,7 @@ package http
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	authdomain "quiz_master/internal/auth/domain"
 	authservice "quiz_master/internal/auth/service"
@@ -53,6 +54,20 @@ func (h *Handler) Login(c echo.Context) error {
 	return c.JSON(http.StatusOK, res)
 }
 
+func (h *Handler) Refresh(c echo.Context) error {
+	var req authdomain.RefreshRequest
+	if err := c.Bind(&req); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+
+	res, err := h.service.Refresh(req.RefreshToken)
+	if err != nil {
+		return c.JSON(http.StatusUnauthorized, map[string]string{"error": err.Error()})
+	}
+
+	return c.JSON(http.StatusOK, res)
+}
+
 func (h *Handler) GuestLogin(c echo.Context) error {
 	var req struct {
 		Username string `json:"username"`
@@ -68,7 +83,27 @@ func (h *Handler) GuestLogin(c echo.Context) error {
 }
 
 func (h *Handler) GetLeaderboard(c echo.Context) error {
-	res, err := h.service.GetLeaderboard()
+	limit := 10
+	if rawLimit := c.QueryParam("limit"); rawLimit != "" {
+		if parsed, err := strconv.Atoi(rawLimit); err == nil && parsed > 0 {
+			limit = parsed
+		}
+	}
+
+	res, err := h.service.GetLeaderboard(limit)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+	}
+
+	return c.JSON(http.StatusOK, res)
+}
+
+func (h *Handler) GetUserQuota(c echo.Context) error {
+	user := c.Get("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	userID, _ := claims["user_id"].(string)
+
+	res, err := h.service.GetUserQuota(userID)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}

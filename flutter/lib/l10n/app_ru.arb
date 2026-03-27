@@ -1,0 +1,445 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Quiz Master",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "homeTitle": "Викторины",
+  "@homeTitle": {
+    "description": "Home screen title"
+  },
+  "homeSubtitle": "Выберите тему",
+  "@homeSubtitle": {
+    "description": "Home screen subtitle"
+  },
+  "homeHolidayTitle": "🎄 Новогодние викторины",
+  "@homeHolidayTitle": {
+    "description": "Holiday theme home title"
+  },
+  "homeHolidaySubtitle": "Выберите подарок под елкой",
+  "@homeHolidaySubtitle": {
+    "description": "Holiday theme home subtitle"
+  },
+  "searchPlaceholder": "Поиск...",
+  "@searchPlaceholder": {
+    "description": "Search input placeholder"
+  },
+  "quizDefaultDesc": "Интересная викторина для проверки знаний.",
+  "@quizDefaultDesc": {
+    "description": "Default quiz description"
+  },
+  "questionsCount": "{count} вопр.",
+  "@questionsCount": {
+    "description": "Questions count text",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "play": "Играть",
+  "@play": {
+    "description": "Play button text"
+  },
+  "categories": "КАТЕГОРИИ",
+  "@categories": {
+    "description": "Categories section title"
+  },
+  "quizzes": "ВИКТОРИНЫ",
+  "@quizzes": {
+    "description": "Quizzes section title"
+  },
+  "home": "Главная",
+  "@home": {
+    "description": "Home breadcrumb"
+  },
+  "loading": "Загрузка...",
+  "@loading": {
+    "description": "Loading text"
+  },
+  "errorLoad": "Не удалось загрузить квиз",
+  "@errorLoad": {
+    "description": "Error loading quiz"
+  },
+  "goBack": "Назад",
+  "@goBack": {
+    "description": "Go back button"
+  },
+  "questionTitle": "Вопрос {count}",
+  "@questionTitle": {
+    "description": "Question title with number",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "question": "Вопрос",
+  "@question": {
+    "description": "Question label"
+  },
+  "correct": "🎉 Верно",
+  "@correct": {
+    "description": "Correct answer feedback"
+  },
+  "incorrect": "❌ Ошибка",
+  "@incorrect": {
+    "description": "Incorrect answer feedback"
+  },
+  "explanationTitle": "✨ Интересный факт",
+  "@explanationTitle": {
+    "description": "Explanation section title"
+  },
+  "noExplanation": "Нет объяснения.",
+  "@noExplanation": {
+    "description": "No explanation available"
+  },
+  "finish": "Завершить",
+  "@finish": {
+    "description": "Finish quiz button"
+  },
+  "next": "Далее",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "Назад",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "reset": "Сброс",
+  "@reset": {
+    "description": "Reset quiz button"
+  },
+  "shuffle": "Перемешать",
+  "@shuffle": {
+    "description": "Shuffle questions button"
+  },
+  "categoryCinema": "Кино",
+  "@categoryCinema": {
+    "description": "Cinema category"
+  },
+  "categoryGastronomy": "Гастрономия",
+  "@categoryGastronomy": {
+    "description": "Gastronomy category"
+  },
+  "categoryNature": "Природа",
+  "@categoryNature": {
+    "description": "Nature category"
+  },
+  "categoryPhilias": "Филии",
+  "@categoryPhilias": {
+    "description": "Philias category"
+  },
+  "categoryPsychology": "Психология",
+  "@categoryPsychology": {
+    "description": "Psychology category"
+  },
+  "categoryPhilology": "Филология",
+  "@categoryPhilology": {
+    "description": "Philology category"
+  },
+  "categoryNewYear": "Новый Год",
+  "@categoryNewYear": {
+    "description": "New Year category"
+  },
+  "categoryGeneral": "Разное",
+  "@categoryGeneral": {
+    "description": "General category"
+  },
+  "noQuestions": "Нет вопросов",
+  "@noQuestions": {
+    "description": "No questions state in quiz screen"
+  },
+  "quizFallbackTitle": "Квиз",
+  "@quizFallbackTitle": {
+    "description": "Fallback quiz title"
+  },
+  "changeLanguage": "Сменить язык",
+  "@changeLanguage": {
+    "description": "Tooltip for language switcher"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "English language label"
+  },
+  "languageRussian": "Русский",
+  "@languageRussian": {
+    "description": "Russian language label"
+  },
+  "noSearchResults": "По вашему запросу ничего не найдено",
+  "@noSearchResults": {
+    "description": "No search results state"
+  },
+  "noQuizzesAvailable": "Пока нет доступных викторин",
+  "@noQuizzesAvailable": {
+    "description": "Empty quizzes state"
+  },
+  "settingsTitle": "Настройки",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+  "settingsAppearance": "Оформление",
+  "@settingsAppearance": {
+    "description": "Appearance section title"
+  },
+  "settingsTheme": "Тема",
+  "@settingsTheme": {
+    "description": "Theme setting label"
+  },
+  "settingsLanguage": "Язык",
+  "@settingsLanguage": {
+    "description": "Language setting label"
+  },
+  "settingsAdvanced": "Дополнительно",
+  "@settingsAdvanced": {
+    "description": "Advanced settings section"
+  },
+  "settingsDebugMode": "Режим отладки",
+  "@settingsDebugMode": {
+    "description": "Debug mode toggle"
+  },
+  "settingsDebugModeDescription": "Показывать диагностику и инструменты разработки",
+  "@settingsDebugModeDescription": {
+    "description": "Debug mode description"
+  },
+  "settingsAccount": "Аккаунт",
+  "@settingsAccount": {
+    "description": "Account section title"
+  },
+  "settingsSignedOut": "Вы не вошли в систему",
+  "@settingsSignedOut": {
+    "description": "Signed out state"
+  },
+  "settingsSignedOutDescription": "Войдите, зарегистрируйтесь или продолжайте как гость",
+  "@settingsSignedOutDescription": {
+    "description": "Signed out description"
+  },
+  "settingsRole": "Роль",
+  "@settingsRole": {
+    "description": "Role label"
+  },
+  "settingsLoggedOut": "Вы вышли из аккаунта",
+  "@settingsLoggedOut": {
+    "description": "Logged out snackbar"
+  },
+  "settingsAccountError": "Не удалось загрузить состояние аккаунта",
+  "@settingsAccountError": {
+    "description": "Account error state"
+  },
+  "settingsNavigation": "Навигация",
+  "@settingsNavigation": {
+    "description": "Navigation section title"
+  },
+  "authLogin": "Войти",
+  "@authLogin": {
+    "description": "Login action"
+  },
+  "authRegister": "Регистрация",
+  "@authRegister": {
+    "description": "Register action"
+  },
+  "authGuest": "Продолжить как гость",
+  "@authGuest": {
+    "description": "Guest login action"
+  },
+  "authLogout": "Выйти",
+  "@authLogout": {
+    "description": "Logout action"
+  },
+  "authUsername": "Имя пользователя",
+  "@authUsername": {
+    "description": "Username field label"
+  },
+  "authPassword": "Пароль",
+  "@authPassword": {
+    "description": "Password field label"
+  },
+  "authEmailOptional": "Email (необязательно)",
+  "@authEmailOptional": {
+    "description": "Optional email label"
+  },
+  "authUsernameRequired": "Введите имя пользователя",
+  "@authUsernameRequired": {
+    "description": "Username validation error"
+  },
+  "authSuccess": "Аутентификация успешна",
+  "@authSuccess": {
+    "description": "Authentication success message"
+  },
+  "authError": "Ошибка аутентификации",
+  "@authError": {
+    "description": "Authentication error prefix"
+  },
+  "cancel": "Отмена",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "confirm": "Подтвердить",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "debugTitle": "Отладка",
+  "@debugTitle": {
+    "description": "Debug screen title"
+  },
+  "debugSubtitle": "Проверка окружения, авторизации и состояния сервера",
+  "@debugSubtitle": {
+    "description": "Debug screen subtitle"
+  },
+  "debugRefresh": "Обновить диагностику",
+  "@debugRefresh": {
+    "description": "Refresh debug data action"
+  },
+  "debugEnvironment": "Окружение",
+  "@debugEnvironment": {
+    "description": "Environment section title"
+  },
+  "debugServerBaseUrl": "Базовый URL сервера",
+  "@debugServerBaseUrl": {
+    "description": "Server base URL label"
+  },
+  "debugApiBaseUrl": "Базовый URL API",
+  "@debugApiBaseUrl": {
+    "description": "API base URL label"
+  },
+  "debugPlatform": "Платформа",
+  "@debugPlatform": {
+    "description": "Platform label"
+  },
+  "debugAuth": "Авторизация",
+  "@debugAuth": {
+    "description": "Authentication section title"
+  },
+  "debugCurrentUser": "Текущий пользователь",
+  "@debugCurrentUser": {
+    "description": "Current user label"
+  },
+  "debugAnonymous": "Анонимный",
+  "@debugAnonymous": {
+    "description": "Anonymous user label"
+  },
+  "debugNoRole": "Нет роли",
+  "@debugNoRole": {
+    "description": "No role label"
+  },
+  "debugTokenPresent": "Токен присутствует",
+  "@debugTokenPresent": {
+    "description": "Token present label"
+  },
+  "debugServerHealth": "Состояние сервера",
+  "@debugServerHealth": {
+    "description": "Server health section title"
+  },
+  "debugStatusCode": "Код статуса",
+  "@debugStatusCode": {
+    "description": "Status code label"
+  },
+  "debugPayload": "Payload",
+  "@debugPayload": {
+    "description": "Payload label"
+  },
+  "debugHealthError": "Не удалось получить состояние сервера",
+  "@debugHealthError": {
+    "description": "Health check error"
+  },
+  "adminTitle": "Админка",
+  "@adminTitle": {
+    "description": "Admin screen title"
+  },
+  "adminSubtitle": "Панель администратора и инструменты модерации",
+  "@adminSubtitle": {
+    "description": "Admin screen subtitle"
+  },
+  "adminAccessHint": "Войдите под администратором, чтобы открыть этот раздел",
+  "@adminAccessHint": {
+    "description": "Admin access hint"
+  },
+  "adminUnauthorized": "Для просмотра этого экрана нужны права администратора",
+  "@adminUnauthorized": {
+    "description": "Unauthorized admin message"
+  },
+  "adminSummary": "Сводка",
+  "@adminSummary": {
+    "description": "Admin summary section title"
+  },
+  "adminCurrentRole": "Текущая роль",
+  "@adminCurrentRole": {
+    "description": "Current role label"
+  },
+  "adminCurrentUser": "Текущий пользователь",
+  "@adminCurrentUser": {
+    "description": "Current user label"
+  },
+  "adminTokenState": "Состояние токена",
+  "@adminTokenState": {
+    "description": "Token state label"
+  },
+  "adminTokenPresent": "Есть",
+  "@adminTokenPresent": {
+    "description": "Token present state"
+  },
+  "adminTokenMissing": "Отсутствует",
+  "@adminTokenMissing": {
+    "description": "Token missing state"
+  },
+  "adminContent": "Контент",
+  "@adminContent": {
+    "description": "Content section title"
+  },
+  "adminQuizCount": "Количество квизов",
+  "@adminQuizCount": {
+    "description": "Quiz count label"
+  },
+  "adminLeaderboard": "Лидерборд",
+  "@adminLeaderboard": {
+    "description": "Admin leaderboard title"
+  },
+  "adminNoLeaderboardData": "Данных лидерборда пока нет",
+  "@adminNoLeaderboardData": {
+    "description": "No leaderboard data"
+  },
+  "adminLoadError": "Не удалось загрузить данные админки",
+  "@adminLoadError": {
+    "description": "Admin load error"
+  },
+  "themeHoliday": "Новый год",
+  "@themeHoliday": {
+    "description": "Holiday theme name"
+  },
+  "themeNight": "Ночь",
+  "@themeNight": {
+    "description": "Night theme name"
+  },
+  "themeSummer": "Лето",
+  "@themeSummer": {
+    "description": "Summer theme name"
+  },
+  "themeCyber": "Кибер",
+  "@themeCyber": {
+    "description": "Cyber theme name"
+  },
+  "themeAutumn": "Осень",
+  "@themeAutumn": {
+    "description": "Autumn theme name"
+  },
+  "themeRomance": "Романтика",
+  "@themeRomance": {
+    "description": "Romance theme name"
+  },
+  "languageRussianShort": "RU",
+  "@languageRussianShort": {
+    "description": "Short Russian language label"
+  },
+  "languageEnglishShort": "EN",
+  "@languageEnglishShort": {
+    "description": "Short English language label"
+  },
+  "drawerGuest": "Гостевой режим",
+  "@drawerGuest": {
+    "description": "Drawer guest label"
+  },
+  "openMenu": "Открыть меню",
+  "@openMenu": {
+    "description": "Open menu tooltip"
+  }
+}

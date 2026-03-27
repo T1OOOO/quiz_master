@@ -3,14 +3,14 @@ package server
 import (
 	"net/http"
 
-	legacyapi "quiz_master/internal/api"
 	authhttp "quiz_master/internal/auth/http"
+	quizhttp "quiz_master/internal/quiz/http"
 	"quiz_master/internal/realtime"
 
 	"github.com/labstack/echo/v4"
 )
 
-func registerRoutes(e *echo.Echo, authHandler *authhttp.Handler, authMiddleware *authhttp.Middleware, quizHandler *legacyapi.QuizHandler) {
+func registerRoutes(e *echo.Echo, authHandler *authhttp.Handler, authMiddleware *authhttp.Middleware, quizHandler *quizhttp.Handler) {
 	e.GET("/healthz", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -30,6 +30,7 @@ func registerRoutes(e *echo.Echo, authHandler *authhttp.Handler, authMiddleware 
 	adminGroup := apiGroup.Group("/admin")
 	adminGroup.Use(authMiddleware.JWT)
 	adminGroup.Use(authhttp.Admin)
+	adminGroup.GET("/quizzes", quizHandler.List)
 	adminGroup.POST("/quizzes", quizHandler.Create)
 	adminGroup.PUT("/quizzes/:id", quizHandler.Update)
 	adminGroup.DELETE("/quizzes/:id", quizHandler.Delete)

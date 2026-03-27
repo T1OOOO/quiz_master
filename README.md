@@ -8,7 +8,8 @@
 - `internal/server` composition root, Echo setup, route mounting, lifecycle
 - `internal/auth` auth domain, service, JWT manager, HTTP handlers and middleware
 - `internal/storage` DB bootstrap, migrations, repositories
-- `internal/service` existing quiz business logic wired through repository interfaces
+- `internal/quiz` quiz HTTP and service runtime module
+- `internal/service` legacy compatibility facade for quiz imports/tests
 - `internal/realtime` websocket room/hub logic
 
 ## Local Run
@@ -42,6 +43,14 @@ Development scripts:
 - `bash ./scripts/run-dev.sh`
 - `bash ./scripts/stop-dev.sh`
 - `bash ./scripts/stop-all.sh`
+
+Quiz import and maintenance:
+
+- `go run ./cmd/dbtool -action init`
+- `go run ./cmd/dbtool -action import-quizzes`
+- `go run ./cmd/dbtool -action import-quizzes -prune`
+
+The API startup sync now imports and updates quizzes without deleting missing DB records. Use `import-quizzes -prune` only for intentional cleanup.
 
 The Flutter client now reads backend URLs from `--dart-define`:
 

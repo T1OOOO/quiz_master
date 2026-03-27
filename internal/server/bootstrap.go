@@ -10,13 +10,13 @@ import (
 	"syscall"
 	"time"
 
-	legacyapi "quiz_master/internal/api"
 	authhttp "quiz_master/internal/auth/http"
 	authservice "quiz_master/internal/auth/service"
 	authtoken "quiz_master/internal/auth/token"
 	"quiz_master/internal/config"
+	quizhttp "quiz_master/internal/quiz/http"
+	quizservice "quiz_master/internal/quiz/service"
 	"quiz_master/internal/realtime"
-	"quiz_master/internal/service"
 	storagedb "quiz_master/internal/storage/db"
 	storagerepo "quiz_master/internal/storage/repository"
 
@@ -43,18 +43,18 @@ func Build(cfg *config.Config) (*App, error) {
 
 	tokenManager := authtoken.NewManager(cfg.JWTSecret, cfg.JWTTTL)
 	authSvc := authservice.New(userRepo, tokenManager)
-	quizSvc := service.NewQuizService(quizRepo)
+	quizSvc := quizservice.New(quizRepo)
 
 	hub := realtime.NewHub(quizRepo)
 	go hub.Run()
 
-	if err := quizSvc.SyncFromFiles(cfg.QuizzesDir); err != nil {
+	if err := quizSvc.SyncFromFiles(cfg.QuizzesDir, quizservice.SyncOptions{}); err != nil {
 		slog.Warn("failed to sync quizzes from files", "error", err)
 	}
 
 	authHandler := authhttp.NewHandler(authSvc, hub)
 	authMiddleware := authhttp.NewMiddleware(tokenManager)
-	quizHandler := legacyapi.NewQuizHandler(quizSvc)
+	quizHandler := quizhttp.NewHandler(quizSvc)
 
 	e := echo.New()
 	e.HideBanner = true

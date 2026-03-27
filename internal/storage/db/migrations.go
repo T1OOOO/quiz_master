@@ -44,6 +44,22 @@ func RunMigrations(database *sql.DB) error {
 			completed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 			FOREIGN KEY(user_id) REFERENCES users(id)
 		);`,
+		`CREATE TABLE IF NOT EXISTS refresh_tokens (
+			token TEXT PRIMARY KEY,
+			user_id TEXT NOT NULL,
+			expires_at DATETIME NOT NULL,
+			created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+			FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+		);`,
+		`CREATE TABLE IF NOT EXISTS reports (
+			id TEXT PRIMARY KEY,
+			quiz_id TEXT NOT NULL,
+			question_id TEXT NOT NULL,
+			message TEXT NOT NULL,
+			question_text TEXT,
+			created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+			FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+		);`,
 	}
 
 	for _, query := range queries {

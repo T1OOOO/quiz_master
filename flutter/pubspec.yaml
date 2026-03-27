@@ -1,0 +1,83 @@
+name: quiz_master
+description: "Quiz Master Flutter Application"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Core
+  intl: any
+  cupertino_icons: ^1.0.8
+
+  # Modern HTTP client with interceptors, retry, caching
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+
+  # State management
+  flutter_riverpod: ^3.1.0
+  riverpod_annotation: ^4.0.0
+
+  # Immutable models & JSON serialization
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+
+  # UI & Design
+  google_fonts: ^6.3.3
+  animate_do: ^4.2.0
+  flex_color_scheme: ^8.4.0
+
+  # Navigation
+  go_router: ^17.0.1
+
+  # Utilities
+  shared_preferences: ^2.5.4
+  flutter_secure_storage: ^9.0.0
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  uuid: ^4.5.1
+
+  # Markdown
+  flutter_markdown_plus: ^1.0.6
+
+  # Storage
+  equatable: ^2.0.7
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  go_router_builder: ^4.1.3
+
+  # Dependency Injection
+  get_it: ^9.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^6.0.0
+
+  # Code generation
+  build_runner: ^2.4.13
+  freezed: ^3.2.3
+  json_serializable: ^6.8.0
+  riverpod_generator: ^4.0.0+1
+
+  # Testing
+  mockito: ^5.4.4
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/

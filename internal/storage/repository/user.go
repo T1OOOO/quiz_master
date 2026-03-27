@@ -3,6 +3,7 @@ package repository
 import (
 	"database/sql"
 	"strings"
+	"time"
 
 	authdomain "quiz_master/internal/auth/domain"
 
@@ -15,6 +16,22 @@ type UserRepository struct {
 
 func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
+}
+
+func (r *UserRepository) GetByID(id string) (*authdomain.User, error) {
+	var user authdomain.User
+	err := r.db.QueryRow("SELECT id, username, password_hash, role FROM users WHERE id = ?", id).
+		Scan(&user.ID, &user.Username, &user.Password, &user.Role)
+	if err != nil {
+		err = r.db.QueryRow("SELECT id, username, password, role FROM users WHERE id = ?", id).
+			Scan(&user.ID, &user.Username, &user.Password, &user.Role)
+		if err == sql.ErrNoRows {
+			return nil, nil
+		} else if err != nil {
+			return nil, err
+		}
+	}
+	return &user, nil
 }
 
 func (r *UserRepository) GetByUsername(username string) (*authdomain.User, error) {
@@ -120,4 +137,63 @@ func scanLeaderboard(rows *sql.Rows, withTitle bool) ([]map[string]interface{}, 
 		})
 	}
 	return results, nil
+}
+
+func (r *UserRepository) SaveRefreshToken(token *authdomain.RefreshToken) error {
+	_, err := r.db.Exec(
+		"INSERT INTO refresh_tokens (token, user_id, expires_at, created_at) VALUES (?, ?, ?, ?)",
+		token.Token,
+		token.UserID,
+		token.ExpiresAt.UTC(),
+		token.CreatedAt.UTC(),
+	)
+	return err
+}
+
+func (r *UserRepository) GetRefreshToken(refreshToken string) (*authdomain.RefreshToken, error) {
+	var stored authdomain.RefreshToken
+	var createdAt string
+	var expiresAt string
+	err := r.db.QueryRow(
+		"SELECT token, user_id, expires_at, created_at FROM refresh_tokens WHERE token = ?",
+		refreshToken,
+	).Scan(&stored.Token, &stored.UserID, &expiresAt, &createdAt)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	stored.ExpiresAt, err = parseSQLiteTime(expiresAt)
+	if err != nil {
+		return nil, err
+	}
+	stored.CreatedAt, err = parseSQLiteTime(createdAt)
+	if err != nil {
+		return nil, err
+	}
+
+	return &stored, nil
+}
+
+func (r *UserRepository) DeleteRefreshToken(refreshToken string) error {
+	_, err := r.db.Exec("DELETE FROM refresh_tokens WHERE token = ?", refreshToken)
+	return err
+}
+
+func parseSQLiteTime(value string) (time.Time, error) {
+	layouts := []string{
+		time.RFC3339Nano,
+		time.RFC3339,
+		"2006-01-02 15:04:05.999999999-07:00",
+		"2006-01-02 15:04:05.999999999",
+		"2006-01-02 15:04:05",
+	}
+	for _, layout := range layouts {
+		if ts, err := time.Parse(layout, value); err == nil {
+			return ts, nil
+		}
+	}
+	return time.Time{}, sql.ErrNoRows
 }

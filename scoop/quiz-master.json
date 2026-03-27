@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "description": "Quiz Master - Quiz application with Go backend and Flutter frontend",
+  "homepage": "https://github.com/yourusername/quiz_master",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yourusername/quiz_master/releases/download/v1.0.0/quiz-master-windows-amd64.zip",
+      "hash": "auto"
+    }
+  },
+  "bin": "quiz-master.exe",
+  "checkver": {
+    "github": "yourusername/quiz_master"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/yourusername/quiz_master/releases/download/v$version/quiz-master-windows-amd64.zip"
+      }
+    }
+  },
+  "notes": [
+    "This manifest installs the Quiz Master application.",
+    "For development, you'll also need:",
+    "  - Go (scoop install go)",
+    "  - Flutter (scoop install flutter)",
+    "  - Node.js (scoop install nodejs) - for React Native mobile app"
+  ]
+}
