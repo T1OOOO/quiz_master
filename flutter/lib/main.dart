@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_master/core/di/injection.dart';
@@ -10,10 +12,16 @@ import 'package:quiz_master/router/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize dependency injection
   await configureDependencies();
 
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    ProviderScope(
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
@@ -24,16 +32,20 @@ class MyApp extends ConsumerWidget {
     final themeType = ref.watch(themeProvider);
     final themeConfig = themeConfigs[themeType]!;
     final locale = ref.watch(localeProvider);
+    final effectiveLocale = kReleaseMode
+        ? locale
+        : (DevicePreview.locale(context) ?? locale);
 
     return MaterialApp.router(
       onGenerateTitle: (context) => context.l10n.appTitle,
       debugShowCheckedModeBanner: false,
+      locale: effectiveLocale,
       theme: _buildTheme(themeConfig, false),
       darkTheme: _buildTheme(themeConfig, true),
       themeMode: ThemeMode.dark,
-      locale: locale,
       supportedLocales: supportedLocales,
       localizationsDelegates: localizationsDelegates,
+      builder: DevicePreview.appBuilder,
       routerConfig: ref.watch(routerProvider),
     );
   }

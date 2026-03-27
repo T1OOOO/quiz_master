@@ -22,137 +22,129 @@ class QuestionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isCompact = constraints.maxWidth < 360;
+
+        final statsWrap = Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            _StatChip(
+              backgroundColor: Colors.blue.withValues(alpha: 0.1),
+              icon: '❓',
+              text: '${currentIndex + 1}/$totalQuestions',
+              textColor: Colors.blue,
+            ),
+            _StatChip(
+              backgroundColor: Colors.green.withValues(alpha: 0.1),
+              icon: '✅',
+              text: '${stats.correct}',
+              textColor: Colors.green,
+            ),
+            _StatChip(
+              backgroundColor: Colors.red.withValues(alpha: 0.1),
+              icon: '❌',
+              text: '${stats.incorrect}',
+              textColor: Colors.red,
+            ),
+            if (difficulty != null)
+              _StatChip(
+                backgroundColor: Colors.purple.withValues(alpha: 0.1),
+                icon: '⚡',
+                text: '$difficulty/10',
+                textColor: Colors.purple,
+              ),
+          ],
+        );
+
+        final actions = Wrap(
+          spacing: 4,
+          children: [
+            if (onReset != null)
+              IconButton(
+                icon: const Icon(Icons.refresh, size: 20),
+                onPressed: onReset,
+                tooltip: context.l10n.reset,
+              ),
+            if (onShuffle != null)
+              IconButton(
+                icon: const Icon(Icons.shuffle, size: 20),
+                onPressed: onShuffle,
+                tooltip: context.l10n.shuffle,
+              ),
+          ],
+        );
+
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.05),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+          ),
+          child: isCompact
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    statsWrap,
+                    if (onReset != null || onShuffle != null) ...[
+                      const SizedBox(height: 8),
+                      Align(alignment: Alignment.centerRight, child: actions),
+                    ],
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: statsWrap),
+                    if (onReset != null || onShuffle != null)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: actions,
+                      ),
+                  ],
+                ),
+        );
+      },
+    );
+  }
+}
+
+class _StatChip extends StatelessWidget {
+  const _StatChip({
+    required this.backgroundColor,
+    required this.icon,
+    required this.text,
+    required this.textColor,
+  });
+
+  final Color backgroundColor;
+  final String icon;
+  final String text;
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Left: Stats
-          Row(
-            children: [
-              // Progress
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.blue.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    const Text('❓', style: TextStyle(fontSize: 13)),
-                    const SizedBox(width: 4),
-                    Text(
-                      '${currentIndex + 1}/$totalQuestions',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-
-              // Correct
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.green.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    const Text('✅', style: TextStyle(fontSize: 11)),
-                    const SizedBox(width: 4),
-                    Text(
-                      '${stats.correct}',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-
-              // Incorrect
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.red.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    const Text('❌', style: TextStyle(fontSize: 11)),
-                    const SizedBox(width: 4),
-                    Text(
-                      '${stats.incorrect}',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Difficulty
-              if (difficulty != null) ...[
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.purple.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text('⚡', style: TextStyle(fontSize: 12)),
-                      const SizedBox(width: 4),
-                      Text(
-                        '$difficulty/10',
-                        style: const TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ],
-          ),
-
-          // Right: Actions
-          Row(
-            children: [
-              if (onReset != null)
-                IconButton(
-                  icon: const Icon(Icons.refresh, size: 20),
-                  onPressed: onReset,
-                  tooltip: context.l10n.reset,
-                ),
-              if (onShuffle != null)
-                IconButton(
-                  icon: const Icon(Icons.shuffle, size: 20),
-                  onPressed: onShuffle,
-                  tooltip: context.l10n.shuffle,
-                ),
-            ],
+          Text(icon, style: const TextStyle(fontSize: 12)),
+          const SizedBox(width: 4),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
           ),
         ],
       ),

@@ -246,22 +246,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
-                            childAspectRatio: 2.5,
-                          ),
-                      itemCount: displayData.items.length,
-                      itemBuilder: (context, index) {
-                        final quiz = displayData.items[index];
-                        return QuizCard(
-                          quiz: quiz,
-                          onTap: () => _selectQuiz(quiz.id),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final isCompact = constraints.maxWidth < 360;
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 1,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: isCompact ? 1.45 : 2.5,
+                              ),
+                          itemCount: displayData.items.length,
+                          itemBuilder: (context, index) {
+                            final quiz = displayData.items[index];
+                            return QuizCard(
+                              quiz: quiz,
+                              onTap: () => _selectQuiz(quiz.id),
+                            );
+                          },
                         );
                       },
                     ),
