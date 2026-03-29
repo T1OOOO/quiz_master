@@ -1,15 +1,18 @@
 package realtime
 
 import (
+	"encoding/json"
 	"errors"
 	"log"
 	"net/http"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	authtoken "quiz_master/internal/auth/token"
+	"quiz_master/internal/models"
 )
 
 type Event struct {
@@ -18,57 +21,66 @@ type Event struct {
 	User    string `json:"user,omitempty"`
 }
 
+type RoomStore interface {
+	CreateRoom(username, avatar string) (*models.Room, error)
+	GetRoom(code string) (*models.Room, error)
+	JoinRoom(code, username, avatar string) (*models.Room, error)
+	LeaveRoom(code, username string) (*models.Room, error)
+	StartRoom(code, username, quizID string) (*models.Room, error)
+	VoteRoom(code, username string, answerIndex int) (*models.Room, error)
+	ChatRoom(code, username, text, image string) (*models.Room, error)
+}
+
+type clientState struct {
+	username string
+	roomCode string
+}
+
 type Hub struct {
-	clients    map[*websocket.Conn]bool
+	store      RoomStore
 	broadcast  chan Event
 	register   chan *websocket.Conn
 	unregister chan *websocket.Conn
-	mutex      sync.Mutex
+
+	mutex       sync.RWMutex
+	clients     map[*websocket.Conn]clientState
+	subscribers map[string]map[*websocket.Conn]struct{}
+	roomVersion map[string]int64
 }
 
-var GlobalHub = &Hub{
-	broadcast:  make(chan Event),
-	register:   make(chan *websocket.Conn),
-	unregister: make(chan *websocket.Conn),
-	clients:    make(map[*websocket.Conn]bool),
-}
-
-type quizRepository interface{}
-
-func NewHub(repo quizRepository) *Hub {
-	Manager.repo = repo
-	return GlobalHub
+func NewHub(store RoomStore) *Hub {
+	return &Hub{
+		store:       store,
+		broadcast:   make(chan Event, 32),
+		register:    make(chan *websocket.Conn, 32),
+		unregister:  make(chan *websocket.Conn, 32),
+		clients:     make(map[*websocket.Conn]clientState),
+		subscribers: make(map[string]map[*websocket.Conn]struct{}),
+		roomVersion: make(map[string]int64),
+	}
 }
 
 func (h *Hub) Run() {
+	ticker := time.NewTicker(time.Second)
+	defer ticker.Stop()
+
 	for {
 		select {
 		case client := <-h.register:
 			h.mutex.Lock()
-			h.clients[client] = true
+			h.clients[client] = clientState{}
 			h.mutex.Unlock()
-			log.Println("New spectator connected")
+			log.Println("New websocket client connected")
 
 		case client := <-h.unregister:
-			h.mutex.Lock()
-			if _, ok := h.clients[client]; ok {
-				delete(h.clients, client)
-				client.Close()
-			}
-			h.mutex.Unlock()
-			log.Println("Spectator disconnected")
+			h.removeClient(client)
+			log.Println("Websocket client disconnected")
 
 		case message := <-h.broadcast:
-			h.mutex.Lock()
-			for client := range h.clients {
-				err := client.WriteJSON(message)
-				if err != nil {
-					log.Printf("WS Error: %v", err)
-					client.Close()
-					delete(h.clients, client)
-				}
-			}
-			h.mutex.Unlock()
+			h.broadcastGlobal(message)
+
+		case <-ticker.C:
+			h.syncRooms()
 		}
 	}
 }
@@ -77,7 +89,271 @@ func (h *Hub) BroadcastEvent(evt Event) {
 	h.broadcast <- evt
 }
 
-func NewWebSocketHandler(tokens *authtoken.Manager, allowedOrigins []string) echo.HandlerFunc {
+func (h *Hub) HandleMessage(conn *websocket.Conn, message []byte) {
+	var base struct {
+		Type    string          `json:"type"`
+		Payload json.RawMessage `json:"payload"`
+	}
+	if err := json.Unmarshal(message, &base); err != nil {
+		sendError(conn, "invalid message")
+		return
+	}
+
+	switch base.Type {
+	case "create_room":
+		h.handleCreateRoom(conn, base.Payload)
+	case "join_room":
+		h.handleJoinRoom(conn, base.Payload)
+	default:
+		state, ok := h.getClientState(conn)
+		if !ok || state.roomCode == "" || state.username == "" {
+			sendError(conn, "join a room first")
+			return
+		}
+		h.handleRoomMessage(conn, state, base.Type, base.Payload)
+	}
+}
+
+func (h *Hub) handleCreateRoom(conn *websocket.Conn, payload []byte) {
+	var req struct {
+		Username string `json:"username"`
+		Code     string `json:"code"`
+		Avatar   string `json:"avatar"`
+	}
+	if err := json.Unmarshal(payload, &req); err != nil {
+		sendError(conn, "invalid create room request")
+		return
+	}
+
+	room, err := h.store.CreateRoom(req.Username, req.Avatar)
+	if err != nil {
+		sendError(conn, err.Error())
+		return
+	}
+
+	h.bindClientToRoom(conn, room.Code, req.Username)
+	h.publishRoomState(room)
+}
+
+func (h *Hub) handleJoinRoom(conn *websocket.Conn, payload []byte) {
+	var req struct {
+		Username string `json:"username"`
+		Code     string `json:"code"`
+		Avatar   string `json:"avatar"`
+	}
+	if err := json.Unmarshal(payload, &req); err != nil {
+		sendError(conn, "invalid join room request")
+		return
+	}
+
+	room, err := h.store.JoinRoom(req.Code, req.Username, req.Avatar)
+	if err != nil {
+		sendError(conn, err.Error())
+		return
+	}
+
+	h.bindClientToRoom(conn, room.Code, req.Username)
+	h.publishRoomState(room)
+}
+
+func (h *Hub) handleRoomMessage(conn *websocket.Conn, state clientState, msgType string, payload []byte) {
+	var (
+		room *models.Room
+		err  error
+	)
+
+	switch msgType {
+	case "start_game":
+		var req struct {
+			QuizID string `json:"quiz_id"`
+		}
+		if err := json.Unmarshal(payload, &req); err != nil {
+			sendError(conn, "invalid start game request")
+			return
+		}
+		room, err = h.store.StartRoom(state.roomCode, state.username, req.QuizID)
+		if err == nil {
+			h.broadcastRoomMessage(state.roomCode, map[string]any{
+				"type":    "game_started",
+				"quiz_id": req.QuizID,
+			})
+		}
+	case "vote":
+		var req struct {
+			AnswerIndex int `json:"answer_index"`
+		}
+		if err := json.Unmarshal(payload, &req); err != nil {
+			sendError(conn, "invalid vote request")
+			return
+		}
+		room, err = h.store.VoteRoom(state.roomCode, state.username, req.AnswerIndex)
+	case "chat":
+		var req struct {
+			Text  string `json:"text"`
+			Image string `json:"image"`
+		}
+		if err := json.Unmarshal(payload, &req); err != nil {
+			sendError(conn, "invalid chat request")
+			return
+		}
+		room, err = h.store.ChatRoom(state.roomCode, state.username, req.Text, req.Image)
+		if err == nil && len(room.ChatHistory) > 0 {
+			last := room.ChatHistory[len(room.ChatHistory)-1]
+			h.broadcastRoomMessage(state.roomCode, map[string]any{
+				"type":    "chat_message",
+				"message": last,
+			})
+		}
+	default:
+		sendError(conn, "unsupported message type")
+		return
+	}
+
+	if err != nil {
+		sendError(conn, err.Error())
+		return
+	}
+	h.publishRoomState(room)
+}
+
+func (h *Hub) bindClientToRoom(conn *websocket.Conn, code, username string) {
+	h.mutex.Lock()
+	defer h.mutex.Unlock()
+
+	state := h.clients[conn]
+	if state.roomCode != "" && state.roomCode != code {
+		delete(h.subscribers[state.roomCode], conn)
+	}
+	state.roomCode = code
+	state.username = username
+	h.clients[conn] = state
+	if h.subscribers[code] == nil {
+		h.subscribers[code] = make(map[*websocket.Conn]struct{})
+	}
+	h.subscribers[code][conn] = struct{}{}
+}
+
+func (h *Hub) getClientState(conn *websocket.Conn) (clientState, bool) {
+	h.mutex.RLock()
+	defer h.mutex.RUnlock()
+	state, ok := h.clients[conn]
+	return state, ok
+}
+
+func (h *Hub) removeClient(conn *websocket.Conn) {
+	h.mutex.Lock()
+	state, ok := h.clients[conn]
+	if ok {
+		delete(h.clients, conn)
+		if state.roomCode != "" {
+			if subs := h.subscribers[state.roomCode]; subs != nil {
+				delete(subs, conn)
+				if len(subs) == 0 {
+					delete(h.subscribers, state.roomCode)
+					delete(h.roomVersion, state.roomCode)
+				}
+			}
+		}
+	}
+	h.mutex.Unlock()
+
+	if ok && state.roomCode != "" && state.username != "" {
+		if room, err := h.store.LeaveRoom(state.roomCode, state.username); err == nil && room != nil {
+			h.publishRoomState(room)
+		}
+	}
+	_ = conn.Close()
+}
+
+func (h *Hub) publishRoomState(room *models.Room) {
+	if room == nil {
+		return
+	}
+	h.mutex.Lock()
+	h.roomVersion[room.Code] = room.Version
+	h.mutex.Unlock()
+
+	players := make([]map[string]any, 0, len(room.Players))
+	for _, player := range room.Players {
+		if player == nil {
+			continue
+		}
+		players = append(players, map[string]any{
+			"username": player.Username,
+			"avatar":   player.AvatarColor,
+			"score":    player.Score,
+		})
+	}
+
+	h.broadcastRoomMessage(room.Code, map[string]any{
+		"type": "room_state",
+		"room": map[string]any{
+			"code":             room.Code,
+			"host":             room.HostID,
+			"version":          room.Version,
+			"state":            room.State,
+			"players":          players,
+			"votes":            room.Votes,
+			"quiz_id":          room.QuizID,
+			"current_question": room.CurrentQuestion,
+			"chat_history":     room.ChatHistory,
+		},
+	})
+}
+
+func (h *Hub) broadcastRoomMessage(code string, message any) {
+	h.mutex.RLock()
+	clients := make([]*websocket.Conn, 0, len(h.subscribers[code]))
+	for conn := range h.subscribers[code] {
+		clients = append(clients, conn)
+	}
+	h.mutex.RUnlock()
+
+	for _, conn := range clients {
+		if err := conn.WriteJSON(message); err != nil {
+			h.unregister <- conn
+		}
+	}
+}
+
+func (h *Hub) broadcastGlobal(message Event) {
+	h.mutex.RLock()
+	clients := make([]*websocket.Conn, 0, len(h.clients))
+	for conn := range h.clients {
+		clients = append(clients, conn)
+	}
+	h.mutex.RUnlock()
+
+	for _, conn := range clients {
+		if err := conn.WriteJSON(message); err != nil {
+			h.unregister <- conn
+		}
+	}
+}
+
+func (h *Hub) syncRooms() {
+	h.mutex.RLock()
+	codes := make([]string, 0, len(h.subscribers))
+	for code := range h.subscribers {
+		codes = append(codes, code)
+	}
+	h.mutex.RUnlock()
+
+	for _, code := range codes {
+		room, err := h.store.GetRoom(code)
+		if err != nil || room == nil {
+			continue
+		}
+		h.mutex.RLock()
+		lastVersion := h.roomVersion[code]
+		h.mutex.RUnlock()
+		if room.Version > lastVersion {
+			h.publishRoomState(room)
+		}
+	}
+}
+
+func NewWebSocketHandler(tokens *authtoken.Manager, allowedOrigins []string, hub *Hub) echo.HandlerFunc {
 	allowed := make(map[string]struct{}, len(allowedOrigins))
 	for _, origin := range allowedOrigins {
 		origin = strings.TrimSpace(origin)
@@ -107,13 +383,11 @@ func NewWebSocketHandler(tokens *authtoken.Manager, allowedOrigins []string) ech
 			return err
 		}
 
-		GlobalHub.register <- ws
+		hub.register <- ws
 
 		go func() {
 			defer func() {
-				GlobalHub.unregister <- ws
-				Manager.RemoveClient(ws)
-				ws.Close()
+				hub.unregister <- ws
 			}()
 
 			for {
@@ -121,8 +395,7 @@ func NewWebSocketHandler(tokens *authtoken.Manager, allowedOrigins []string) ech
 				if err != nil {
 					break
 				}
-
-				Manager.HandleMessage(ws, msg)
+				hub.HandleMessage(ws, msg)
 			}
 		}()
 
@@ -155,4 +428,8 @@ func extractBearerToken(header string) string {
 		return parts[1]
 	}
 	return ""
+}
+
+func sendError(conn *websocket.Conn, msg string) {
+	_ = conn.WriteJSON(map[string]string{"type": "error", "message": msg})
 }

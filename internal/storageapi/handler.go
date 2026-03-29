@@ -3,8 +3,10 @@ package storageapi
 import (
 	"net/http"
 
+	"quiz_master/internal/models"
 	quizdomain "quiz_master/internal/quiz/domain"
 	quizservice "quiz_master/internal/quiz/service"
+	"quiz_master/internal/roomstate"
 	storagedto "quiz_master/internal/storageapi/dto"
 
 	"github.com/labstack/echo/v4"
@@ -12,10 +14,11 @@ import (
 
 type Handler struct {
 	service *quizservice.QuizService
+	rooms   *roomstate.Service
 }
 
-func NewHandler(s *quizservice.QuizService) *Handler {
-	return &Handler{service: s}
+func NewHandler(s *quizservice.QuizService, rooms *roomstate.Service) *Handler {
+	return &Handler{service: s, rooms: rooms}
 }
 
 func (h *Handler) List(c echo.Context) error {
@@ -125,4 +128,128 @@ func (h *Handler) Report(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
 	}
 	return c.JSON(http.StatusOK, map[string]string{"status": "reported"})
+}
+
+func (h *Handler) CreateRoom(c echo.Context) error {
+	var payload storagedto.RoomCreateRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, err := h.rooms.CreateRoom(payload.Username, payload.Avatar)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	return c.JSON(http.StatusCreated, toDTORoom(room))
+}
+
+func (h *Handler) GetRoom(c echo.Context) error {
+	room, err := h.rooms.GetRoom(c.Param("code"))
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+	}
+	if room == nil {
+		return c.JSON(http.StatusNotFound, map[string]string{"error": "room not found"})
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func (h *Handler) JoinRoom(c echo.Context) error {
+	var payload storagedto.RoomJoinRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, err := h.rooms.JoinRoom(c.Param("code"), payload.Username, payload.Avatar)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func (h *Handler) LeaveRoom(c echo.Context) error {
+	var payload storagedto.RoomLeaveRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, err := h.rooms.LeaveRoom(c.Param("code"), payload.Username)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	if room == nil {
+		return c.NoContent(http.StatusNoContent)
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func (h *Handler) StartRoom(c echo.Context) error {
+	var payload storagedto.RoomStartRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, err := h.rooms.StartGame(c.Param("code"), payload.Username, payload.QuizID)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func (h *Handler) VoteRoom(c echo.Context) error {
+	var payload storagedto.RoomVoteRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, err := h.rooms.SubmitVote(c.Param("code"), payload.Username, payload.AnswerIndex)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func (h *Handler) ChatRoom(c echo.Context) error {
+	var payload storagedto.RoomChatRequest
+	if err := c.Bind(&payload); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+	}
+	room, _, err := h.rooms.SubmitChat(c.Param("code"), payload.Username, payload.Text, payload.Image)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
+	}
+	return c.JSON(http.StatusOK, toDTORoom(room))
+}
+
+func toDTORoom(room *models.Room) *storagedto.Room {
+	if room == nil {
+		return nil
+	}
+	players := make(map[string]storagedto.RoomPlayer, len(room.Players))
+	for key, player := range room.Players {
+		if player == nil {
+			continue
+		}
+		players[key] = storagedto.RoomPlayer{
+			Username:    player.Username,
+			AvatarColor: player.AvatarColor,
+			Score:       player.Score,
+		}
+	}
+	chat := make([]storagedto.RoomChatMessage, 0, len(room.ChatHistory))
+	for _, item := range room.ChatHistory {
+		chat = append(chat, storagedto.RoomChatMessage{
+			User:      item.User,
+			Text:      item.Text,
+			Image:     item.Image,
+			Timestamp: item.Timestamp,
+		})
+	}
+	return &storagedto.Room{
+		Code:            room.Code,
+		HostID:          room.HostID,
+		Version:         room.Version,
+		Players:         players,
+		State:           room.State,
+		QuizID:          room.QuizID,
+		CurrentQuestion: room.CurrentQuestion,
+		Votes:           room.Votes,
+		Revealed:        room.Revealed,
+		ChatHistory:     chat,
+	}
 }

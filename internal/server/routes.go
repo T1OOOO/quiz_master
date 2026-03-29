@@ -48,7 +48,7 @@ func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, tokenManager *
 	adminGroup.PUT("/quizzes/:id", quizHandler.Update)
 	adminGroup.DELETE("/quizzes/:id", quizHandler.Delete)
 
-	e.GET("/ws", realtime.NewWebSocketHandler(tokenManager, cfg.WSAllowedOrigins))
+	e.GET("/ws", realtime.NewWebSocketHandler(tokenManager, cfg.WSAllowedOrigins, authHandler.hub))
 	e.Static("/assets", "web/dist/assets")
 	e.Static("/_expo", "web/dist/_expo")
 	e.GET("/*", func(c echo.Context) error {

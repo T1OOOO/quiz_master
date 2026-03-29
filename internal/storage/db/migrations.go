@@ -157,6 +157,19 @@ CREATE TABLE IF NOT EXISTS reports (
 				return ensureColumn(tx, driver, "questions", "difficulty", "INTEGER DEFAULT 0")
 			},
 		},
+		{
+			version: 11,
+			name:    "create_rooms_state",
+			up: func(tx *sql.Tx, driver string) error {
+				return execDDL(tx, `
+CREATE TABLE IF NOT EXISTS rooms_state (
+	code TEXT PRIMARY KEY,
+	state_json TEXT NOT NULL,
+	version BIGINT NOT NULL DEFAULT 1,
+	updated_at %s DEFAULT CURRENT_TIMESTAMP
+);`, timestampType(driver))
+			},
+		},
 	}
 }
 

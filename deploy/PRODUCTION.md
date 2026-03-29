@@ -6,6 +6,7 @@
 - Supported limited-production mode: `sqlite` for single-node deployments with small load and explicit backup discipline
 
 `server` does not own persistent state. `auth` and `storage` do.
+Realtime room state is also persisted through `storage`; `server` holds only transient websocket connections.
 
 ## Deployment Baseline
 

@@ -63,7 +63,7 @@ func setupHandler(t *testing.T) (*Handler, *sql.DB) {
 	require.NoError(t, err)
 
 	repo := storagerepo.NewQuizRepository(db)
-	return NewHandler(quizservice.New(repo)), db
+	return NewHandler(quizservice.New(repo), nil), db
 }
 
 func TestHandlerCreate_UsesContractDTO(t *testing.T) {

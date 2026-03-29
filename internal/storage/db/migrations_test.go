@@ -31,6 +31,10 @@ func TestRunMigrationsIsIdempotent(t *testing.T) {
 	if count != len(storageMigrations()) {
 		t.Fatalf("expected %d migrations, got %d", len(storageMigrations()), count)
 	}
+
+	if _, err := database.Query(`SELECT code, state_json, version FROM rooms_state`); err != nil {
+		t.Fatalf("rooms_state table should exist: %v", err)
+	}
 }
 
 func TestRunMigrationsUpgradesLegacySchema(t *testing.T) {

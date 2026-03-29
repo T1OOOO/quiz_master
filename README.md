@@ -14,7 +14,7 @@
 - `internal/authapi` and `internal/storageapi` define internal HTTP contracts
 - `internal/authclient` and `internal/storageclient` are inter-service clients
 - `internal/authdb` and `internal/storage/db` own DB bootstrap and versioned migrations
-- `internal/realtime` owns websocket room and hub logic
+- `internal/realtime` owns websocket transport, while room state is persisted through `storage`
 
 ## Runtime Defaults
 
@@ -137,6 +137,8 @@ Public gateway endpoints on `server`:
 - `POST /api/quizzes/:id/check`
 - `POST /api/report`
 - `GET /ws`
+
+Realtime room state is no longer authoritative in `server` process memory. `server` keeps only live websocket connections and syncs room state through `storage`, which makes room lifecycle resilient across server restarts and workable for multi-instance deployments.
 
 Internal service endpoints:
 

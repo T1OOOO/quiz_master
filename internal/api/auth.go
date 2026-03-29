@@ -9,5 +9,5 @@ import (
 type AuthHandler = authhttp.Handler
 
 func NewAuthHandler(s *authservice.Service) *AuthHandler {
-	return authhttp.NewHandler(s, realtime.GlobalHub)
+	return authhttp.NewHandler(s, realtime.NewHub(nil))
 }

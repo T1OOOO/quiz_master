@@ -45,6 +45,13 @@ func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, storageHandler
 	internalGroup.DELETE("/quizzes/:id", storageHandler.Delete)
 	internalGroup.GET("/quizzes/:id/questions/:qid", storageHandler.GetQuestion)
 	internalGroup.POST("/reports", storageHandler.Report)
+	internalGroup.POST("/rooms", storageHandler.CreateRoom)
+	internalGroup.GET("/rooms/:code", storageHandler.GetRoom)
+	internalGroup.POST("/rooms/:code/join", storageHandler.JoinRoom)
+	internalGroup.POST("/rooms/:code/leave", storageHandler.LeaveRoom)
+	internalGroup.POST("/rooms/:code/start", storageHandler.StartRoom)
+	internalGroup.POST("/rooms/:code/vote", storageHandler.VoteRoom)
+	internalGroup.POST("/rooms/:code/chat", storageHandler.ChatRoom)
 }
 
 func loadStats(db *sql.DB) (map[string]int64, error) {

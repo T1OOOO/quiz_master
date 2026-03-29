@@ -9,6 +9,7 @@ import (
 	"quiz_master/internal/config"
 	"quiz_master/internal/httpapp"
 	quizservice "quiz_master/internal/quiz/service"
+	"quiz_master/internal/roomstate"
 	storagedb "quiz_master/internal/storage/db"
 	storagerepo "quiz_master/internal/storage/repository"
 	"quiz_master/internal/storageapi"
@@ -40,11 +41,13 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 	}
 
 	quizRepo := storagerepo.NewQuizRepository(dbConn)
+	roomRepo := storagerepo.NewRoomStateRepository(dbConn)
 	quizSvc := quizservice.New(quizRepo)
+	roomSvc := roomstate.New(roomRepo)
 	if err := quizSvc.SyncFromFiles(cfg.QuizzesDir, quizservice.SyncOptions{}); err != nil {
 		slog.Warn("failed to sync quizzes from files", "error", err)
 	}
-	storageHandler := storageapi.NewHandler(quizSvc)
+	storageHandler := storageapi.NewHandler(quizSvc, roomSvc)
 	traceShutdown, err := tracing.Init(context.Background(), "quiz-master-storage")
 	if err != nil {
 		_ = dbConn.Close()
