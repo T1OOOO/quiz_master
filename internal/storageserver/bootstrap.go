@@ -23,6 +23,9 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 	if err := cfg.Validate(); err != nil {
 		return nil, err
 	}
+	if cfg.Env == "production" && cfg.DBDriver == "sqlite" {
+		slog.Warn("storage is running in limited production mode with sqlite", "db_driver", cfg.DBDriver)
+	}
 
 	dbConn, err := storagedb.Open(context.Background(), storagedb.Config{
 		Driver:       cfg.DBDriver,

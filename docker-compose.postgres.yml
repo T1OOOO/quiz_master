@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: quiz-master-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-quiz_master}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-quiz_master}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-quiz_master} -d ${POSTGRES_DB:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - quiz-network
+
+  auth:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_DRIVER: postgres
+      DB_DSN: ${AUTH_DB_DSN:-postgres://quiz_master:quiz_master@postgres:5432/quiz_master_auth?sslmode=disable}
+      DB_PATH: ""
+
+  storage:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_DRIVER: postgres
+      DB_DSN: ${STORAGE_DB_DSN:-postgres://quiz_master:quiz_master@postgres:5432/quiz_master_storage?sslmode=disable}
+      DB_PATH: ""
+
+volumes:
+  postgres_data:

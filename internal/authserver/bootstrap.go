@@ -26,6 +26,9 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 	if err := cfg.Validate(); err != nil {
 		return nil, err
 	}
+	if cfg.Env == "production" && cfg.DBDriver == "sqlite" {
+		slog.Warn("auth is running in limited production mode with sqlite", "db_driver", cfg.DBDriver)
+	}
 
 	dbConn, err := authdb.Open(context.Background(), authdb.Config{
 		Driver:       cfg.DBDriver,
