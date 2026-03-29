@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"quiz_master/internal/service"
+	authtoken "quiz_master/internal/auth/token"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
@@ -15,24 +15,21 @@ import (
 )
 
 func TestJWTMiddleware_ValidToken(t *testing.T) {
-	// Create valid token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id":  "user1",
 		"username": "testuser",
 		"role":     "user",
 		"exp":      time.Now().Add(24 * time.Hour).Unix(),
 	})
-	tokenString, err := token.SignedString(service.SecretKey)
+	tokenString, err := token.SignedString(authtoken.DefaultSecretKey)
 	require.NoError(t, err)
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/protected", nil)
 	req.Header.Set(echo.HeaderAuthorization, "Bearer "+tokenString)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := JWTMiddleware(func(c echo.Context) error {
 		user := c.Get("user")
 		assert.NotNil(t, user)
@@ -45,13 +42,11 @@ func TestJWTMiddleware_ValidToken(t *testing.T) {
 }
 
 func TestJWTMiddleware_MissingToken(t *testing.T) {
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/protected", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := JWTMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -62,14 +57,12 @@ func TestJWTMiddleware_MissingToken(t *testing.T) {
 }
 
 func TestJWTMiddleware_InvalidTokenFormat(t *testing.T) {
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/protected", nil)
 	req.Header.Set(echo.HeaderAuthorization, "InvalidFormat token")
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := JWTMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -80,14 +73,12 @@ func TestJWTMiddleware_InvalidTokenFormat(t *testing.T) {
 }
 
 func TestJWTMiddleware_InvalidToken(t *testing.T) {
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/protected", nil)
 	req.Header.Set(echo.HeaderAuthorization, "Bearer invalid_token")
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := JWTMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -98,24 +89,21 @@ func TestJWTMiddleware_InvalidToken(t *testing.T) {
 }
 
 func TestJWTMiddleware_ExpiredToken(t *testing.T) {
-	// Create expired token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id":  "user1",
 		"username": "testuser",
 		"role":     "user",
-		"exp":      time.Now().Add(-1 * time.Hour).Unix(), // Expired
+		"exp":      time.Now().Add(-1 * time.Hour).Unix(),
 	})
-	tokenString, err := token.SignedString(service.SecretKey)
+	tokenString, err := token.SignedString(authtoken.DefaultSecretKey)
 	require.NoError(t, err)
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/protected", nil)
 	req.Header.Set(echo.HeaderAuthorization, "Bearer "+tokenString)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := JWTMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -126,30 +114,26 @@ func TestJWTMiddleware_ExpiredToken(t *testing.T) {
 }
 
 func TestAdminMiddleware_AdminRole(t *testing.T) {
-	// Create admin token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id":  "admin1",
 		"username": "admin",
 		"role":     "admin",
 		"exp":      time.Now().Add(24 * time.Hour).Unix(),
 	})
-	tokenString, err := token.SignedString(service.SecretKey)
+	tokenString, err := token.SignedString(authtoken.DefaultSecretKey)
 	require.NoError(t, err)
 
-	// Parse token
 	parsedToken, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		return service.SecretKey, nil
+		return authtoken.DefaultSecretKey, nil
 	})
 	require.NoError(t, err)
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/admin", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.Set("user", parsedToken)
 
-	// Test middleware
 	handler := AdminMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -160,30 +144,26 @@ func TestAdminMiddleware_AdminRole(t *testing.T) {
 }
 
 func TestAdminMiddleware_UserRole(t *testing.T) {
-	// Create user token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user_id":  "user1",
 		"username": "user",
 		"role":     "user",
 		"exp":      time.Now().Add(24 * time.Hour).Unix(),
 	})
-	tokenString, err := token.SignedString(service.SecretKey)
+	tokenString, err := token.SignedString(authtoken.DefaultSecretKey)
 	require.NoError(t, err)
 
-	// Parse token
 	parsedToken, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		return service.SecretKey, nil
+		return authtoken.DefaultSecretKey, nil
 	})
 	require.NoError(t, err)
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/admin", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.Set("user", parsedToken)
 
-	// Test middleware
 	handler := AdminMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -194,13 +174,11 @@ func TestAdminMiddleware_UserRole(t *testing.T) {
 }
 
 func TestAdminMiddleware_MissingUser(t *testing.T) {
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/admin", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test middleware
 	handler := AdminMiddleware(func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})

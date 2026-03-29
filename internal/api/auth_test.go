@@ -8,21 +8,21 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"quiz_master/internal/models"
-	"quiz_master/internal/service"
-	"quiz_master/internal/store"
+	authdomain "quiz_master/internal/auth/domain"
+	authservice "quiz_master/internal/auth/service"
+	authtoken "quiz_master/internal/auth/token"
+	storagerepo "quiz_master/internal/storage/repository"
 
-	_ "modernc.org/sqlite"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	_ "modernc.org/sqlite"
 )
 
 func setupAuthHandler(t *testing.T) (*AuthHandler, *sql.DB) {
 	db, err := sql.Open("sqlite", ":memory:")
 	require.NoError(t, err)
 
-	// Create schema
 	_, err = db.Exec(`
 		CREATE TABLE users (
 			id TEXT PRIMARY KEY,
@@ -38,6 +38,7 @@ func setupAuthHandler(t *testing.T) (*AuthHandler, *sql.DB) {
 			id TEXT PRIMARY KEY,
 			user_id TEXT,
 			quiz_id TEXT,
+			quiz_title TEXT,
 			score INTEGER,
 			total_questions INTEGER,
 			completed_at DATETIME
@@ -55,8 +56,8 @@ func setupAuthHandler(t *testing.T) (*AuthHandler, *sql.DB) {
 	`)
 	require.NoError(t, err)
 
-	repo := store.NewUserStore(db)
-	authService := service.NewAuthService(repo)
+	repo := storagerepo.NewUserRepository(db)
+	authService := authservice.New(repo, authtoken.NewLegacyManager(), nil)
 	handler := NewAuthHandler(authService)
 
 	return handler, db
@@ -66,7 +67,6 @@ func TestAuthHandler_Register(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Setup Echo
 	e := echo.New()
 	body := map[string]string{
 		"username": "testuser",
@@ -78,12 +78,11 @@ func TestAuthHandler_Register(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err := handler.Register(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var result models.AuthResponse
+	var result authdomain.AuthResponse
 	err = json.Unmarshal(rec.Body.Bytes(), &result)
 	require.NoError(t, err)
 	assert.NotEmpty(t, result.Token)
@@ -94,14 +93,12 @@ func TestAuthHandler_Register_InvalidRequest(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodPost, "/register", bytes.NewReader([]byte("invalid json")))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err := handler.Register(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, rec.Code)
@@ -111,17 +108,15 @@ func TestAuthHandler_Login(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Register first
-	repo := store.NewUserStore(db)
-	authService := service.NewAuthService(repo)
-	registerReq := &models.AuthRequest{
+	repo := storagerepo.NewUserRepository(db)
+	authService := authservice.New(repo, authtoken.NewLegacyManager(), nil)
+	registerReq := &authdomain.AuthRequest{
 		Username: "testuser",
 		Password: "password123",
 	}
 	_, err := authService.Register(registerReq)
 	require.NoError(t, err)
 
-	// Setup Echo for login
 	e := echo.New()
 	body := map[string]string{
 		"username": "testuser",
@@ -133,12 +128,11 @@ func TestAuthHandler_Login(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err = handler.Login(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var result models.AuthResponse
+	var result authdomain.AuthResponse
 	err = json.Unmarshal(rec.Body.Bytes(), &result)
 	require.NoError(t, err)
 	assert.NotEmpty(t, result.Token)
@@ -149,7 +143,6 @@ func TestAuthHandler_Login_InvalidCredentials(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Setup Echo
 	e := echo.New()
 	body := map[string]string{
 		"username": "nonexistent",
@@ -161,7 +154,6 @@ func TestAuthHandler_Login_InvalidCredentials(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err := handler.Login(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusUnauthorized, rec.Code)
@@ -171,7 +163,6 @@ func TestAuthHandler_GuestLogin(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Setup Echo
 	e := echo.New()
 	body := map[string]string{
 		"username": "guestuser",
@@ -182,12 +173,11 @@ func TestAuthHandler_GuestLogin(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err := handler.GuestLogin(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var result models.AuthResponse
+	var result authdomain.AuthResponse
 	err = json.Unmarshal(rec.Body.Bytes(), &result)
 	require.NoError(t, err)
 	assert.NotEmpty(t, result.Token)
@@ -198,24 +188,21 @@ func TestAuthHandler_GetLeaderboard(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	// Create test data
-	repo := store.NewUserStore(db)
-	authService := service.NewAuthService(repo)
-	user1 := &models.User{ID: "user1", Username: "user1", Password: "pwd", Role: "user"}
-	user2 := &models.User{ID: "user2", Username: "user2", Password: "pwd", Role: "user"}
+	repo := storagerepo.NewUserRepository(db)
+	authService := authservice.New(repo, authtoken.NewLegacyManager(), nil)
+	user1 := &authdomain.User{ID: "user1", Username: "user1", Password: "pwd", Role: "user"}
+	user2 := &authdomain.User{ID: "user2", Username: "user2", Password: "pwd", Role: "user"}
 	require.NoError(t, repo.Create(user1))
 	require.NoError(t, repo.Create(user2))
 
 	require.NoError(t, authService.SubmitResult("user1", "quiz1", 10, 10))
 	require.NoError(t, authService.SubmitResult("user2", "quiz1", 8, 10))
 
-	// Setup Echo
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, "/leaderboard", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	// Test
 	err := handler.GetLeaderboard(c)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, rec.Code)
@@ -230,9 +217,9 @@ func TestAuthHandler_Refresh(t *testing.T) {
 	handler, db := setupAuthHandler(t)
 	defer db.Close()
 
-	repo := store.NewUserStore(db)
-	authService := service.NewAuthService(repo)
-	initial, err := authService.Register(&models.AuthRequest{
+	repo := storagerepo.NewUserRepository(db)
+	authService := authservice.New(repo, authtoken.NewLegacyManager(), nil)
+	initial, err := authService.Register(&authdomain.AuthRequest{
 		Username: "refresh-user",
 		Password: "password123",
 	})
@@ -251,7 +238,7 @@ func TestAuthHandler_Refresh(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var result models.AuthResponse
+	var result authdomain.AuthResponse
 	err = json.Unmarshal(rec.Body.Bytes(), &result)
 	require.NoError(t, err)
 	assert.NotEmpty(t, result.Token)
@@ -259,8 +246,6 @@ func TestAuthHandler_Refresh(t *testing.T) {
 	assert.NotEqual(t, initial.RefreshToken, result.RefreshToken)
 }
 
-// TestAuthHandler_SubmitResult is skipped because it requires GlobalHub.Run() to be running
-// which would block the test. The functionality is tested in service/auth_test.go
 func TestAuthHandler_SubmitResult(t *testing.T) {
-	t.Skip("Skipping due to GlobalHub blocking - tested in service layer")
+	t.Skip("Skipping due to GlobalHub blocking")
 }

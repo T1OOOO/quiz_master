@@ -17,16 +17,22 @@ import (
 type Service struct {
 	repo            authrepo.UserRepository
 	tokens          *token.Manager
+	quizTitles      QuizTitleResolver
 	refreshTokenTTL time.Duration
 }
 
-func New(repo authrepo.UserRepository, tokens *token.Manager) *Service {
+type QuizTitleResolver interface {
+	GetQuizTitle(quizID string) (string, error)
+}
+
+func New(repo authrepo.UserRepository, tokens *token.Manager, quizTitles QuizTitleResolver) *Service {
 	if tokens == nil {
 		tokens = token.NewLegacyManager()
 	}
 	return &Service{
 		repo:            repo,
 		tokens:          tokens,
+		quizTitles:      quizTitles,
 		refreshTokenTTL: 30 * 24 * time.Hour,
 	}
 }
@@ -94,7 +100,15 @@ func (s *Service) GetLeaderboard(limit int) ([]map[string]interface{}, error) {
 }
 
 func (s *Service) SubmitResult(userID, quizID string, score, total int) error {
-	return s.repo.SaveResult(userID, quizID, score, total)
+	quizTitle := ""
+	if s.quizTitles != nil && quizID != "" {
+		title, err := s.quizTitles.GetQuizTitle(quizID)
+		if err != nil {
+			return err
+		}
+		quizTitle = title
+	}
+	return s.repo.SaveResult(userID, quizID, quizTitle, score, total)
 }
 
 func (s *Service) GetUserQuota(userID string) (*authdomain.UserQuota, error) {

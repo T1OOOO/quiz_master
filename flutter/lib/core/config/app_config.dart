@@ -8,4 +8,14 @@ class AppConfig {
     'API_BASE_URL',
     defaultValue: '$serverBaseUrl/api',
   );
+
+  static const String authApiBaseUrl = String.fromEnvironment(
+    'AUTH_API_BASE_URL',
+    defaultValue: apiBaseUrl,
+  );
+
+  static const String quizApiBaseUrl = String.fromEnvironment(
+    'QUIZ_API_BASE_URL',
+    defaultValue: apiBaseUrl,
+  );
 }

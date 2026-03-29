@@ -41,6 +41,18 @@ func (s *QuizService) ListQuizzes() ([]quizdomain.Quiz, error) {
 	return s.repo.List()
 }
 
+func (s *QuizService) GetRawQuiz(id string) (*quizdomain.Quiz, error) {
+	return s.repo.Get(id)
+}
+
+func (s *QuizService) GetRawQuizSummary(id string) (*quizdomain.Quiz, error) {
+	return s.repo.GetSummary(id)
+}
+
+func (s *QuizService) GetRawQuestion(quizID, questionID string) (*quizdomain.Question, error) {
+	return s.repo.GetQuestion(quizID, questionID)
+}
+
 func toPublicQuestion(q quizdomain.Question) quizdto.QuestionPublic {
 	return quizdto.QuestionPublic{
 		ID:         q.ID,

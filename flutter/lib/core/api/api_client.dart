@@ -6,23 +6,28 @@ import 'package:quiz_master/features/quiz/domain/entities/quiz_entities.dart';
 import 'package:quiz_master/features/statistics/domain/entities/statistics_entities.dart';
 
 final apiClientProvider = Provider<ApiClient>((ref) {
-  return ApiClient(ref.watch(dioClientProvider));
+  return ApiClient(
+    quizDio: ref.watch(dioClientProvider),
+    authDio: ref.watch(authDioClientProvider),
+  );
 });
 
 class ApiClient {
-  final Dio _dio;
+  final Dio _quizDio;
+  final Dio _authDio;
 
-  ApiClient(this._dio);
+  ApiClient({required Dio quizDio, required Dio authDio})
+    : _quizDio = quizDio,
+      _authDio = authDio;
 
-  // Get all quizzes
   Future<List<Quiz>> getAllQuizzes() async {
-    final response = await _dio.get('/quizzes');
+    final response = await _quizDio.get('/quizzes');
     final List<dynamic> data = response.data;
     return data.map((json) => Quiz.fromJson(json)).toList();
   }
 
   Future<List<Quiz>> getAdminQuizzes(String token) async {
-    final response = await _dio.get(
+    final response = await _quizDio.get(
       '/admin/quizzes',
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
@@ -30,34 +35,32 @@ class ApiClient {
     return data.map((json) => Quiz.fromJson(json)).toList();
   }
 
-  // Get quiz by ID
   Future<Quiz> getQuizById(String id) async {
-    final response = await _dio.get('/quizzes/$id');
+    final response = await _quizDio.get('/quizzes/$id');
     return Quiz.fromJson(response.data);
   }
 
-  // Get quiz summary (lightweight)
   Future<Quiz> getQuizSummary(String id) async {
-    final response = await _dio.get(
+    final response = await _quizDio.get(
       '/quizzes/$id',
       queryParameters: {'mode': 'summary'},
     );
     return Quiz.fromJson(response.data);
   }
 
-  // Get question details
   Future<Question> getQuestion(String quizId, String questionId) async {
-    final response = await _dio.get('/quizzes/$quizId/questions/$questionId');
+    final response = await _quizDio.get(
+      '/quizzes/$quizId/questions/$questionId',
+    );
     return Question.fromJson(response.data);
   }
 
-  // Check answer
   Future<Feedback> checkAnswer(
     String quizId,
     String questionId,
     int answerIndex,
   ) async {
-    final response = await _dio.post(
+    final response = await _quizDio.post(
       '/quizzes/$quizId/check',
       data: {
         'quiz_id': quizId,
@@ -68,7 +71,6 @@ class ApiClient {
     return Feedback.fromJson(response.data);
   }
 
-  // Submit score
   Future<bool> submitScore(
     String quizId,
     int score,
@@ -77,7 +79,7 @@ class ApiClient {
   ) async {
     if (token == null) return false;
     try {
-      await _dio.post(
+      await _authDio.post(
         '/submit',
         data: {'quiz_id': quizId, 'score': score, 'total_questions': total},
         options: Options(headers: {'Authorization': 'Bearer $token'}),
@@ -88,7 +90,6 @@ class ApiClient {
     }
   }
 
-  // Report issue
   Future<bool> reportIssue(
     String quizId,
     String questionId,
@@ -96,7 +97,7 @@ class ApiClient {
     String questionText,
   ) async {
     try {
-      await _dio.post(
+      await _quizDio.post(
         '/report',
         data: {
           'quiz_id': quizId,
@@ -112,33 +113,34 @@ class ApiClient {
     }
   }
 
-  // Auth endpoints
   Future<AuthResponse> login(AuthRequest request) async {
-    final response = await _dio.post('/login', data: request.toJson());
+    final response = await _authDio.post('/login', data: request.toJson());
     return _parseAuthResponse(response.data as Map<String, dynamic>);
   }
 
   Future<AuthResponse> register(AuthRequest request) async {
-    final response = await _dio.post('/register', data: request.toJson());
+    final response = await _authDio.post('/register', data: request.toJson());
     return _parseAuthResponse(response.data as Map<String, dynamic>);
   }
 
   Future<AuthResponse> guestLogin(String username) async {
-    final response = await _dio.post('/guest', data: {'username': username});
+    final response = await _authDio.post(
+      '/guest',
+      data: {'username': username},
+    );
     return _parseAuthResponse(response.data as Map<String, dynamic>);
   }
 
   Future<AuthResponse> refresh(String refreshToken) async {
-    final response = await _dio.post(
+    final response = await _authDio.post(
       '/refresh',
       data: {'refresh_token': refreshToken},
     );
     return _parseAuthResponse(response.data as Map<String, dynamic>);
   }
 
-  // Statistics endpoints
   Future<List<LeaderboardEntry>> getLeaderboard({int limit = 10}) async {
-    final response = await _dio.get(
+    final response = await _authDio.get(
       '/leaderboard',
       queryParameters: {'limit': limit},
     );
@@ -150,7 +152,7 @@ class ApiClient {
     String token, {
     int limit = 10,
   }) async {
-    final response = await _dio.get(
+    final response = await _authDio.get(
       '/admin/leaderboard',
       queryParameters: {'limit': limit},
       options: Options(headers: {'Authorization': 'Bearer $token'}),
@@ -159,10 +161,9 @@ class ApiClient {
     return data.map((json) => LeaderboardEntry.fromJson(json)).toList();
   }
 
-  // Quota endpoints
   Future<UserQuota?> getUserQuota(String token) async {
     try {
-      final response = await _dio.get(
+      final response = await _authDio.get(
         '/quota',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );

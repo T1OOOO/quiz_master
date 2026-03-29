@@ -8,10 +8,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	authdomain "quiz_master/internal/auth/domain"
 	authhttp "quiz_master/internal/auth/http"
 	authservice "quiz_master/internal/auth/service"
 	authtoken "quiz_master/internal/auth/token"
-	"quiz_master/internal/models"
+	quizdomain "quiz_master/internal/quiz/domain"
 	quizhttp "quiz_master/internal/quiz/http"
 	quizservice "quiz_master/internal/quiz/service"
 	storagerepo "quiz_master/internal/storage/repository"
@@ -68,6 +69,7 @@ func setupIntegrationServer(t *testing.T) (*echo.Echo, *sql.DB) {
 			id TEXT PRIMARY KEY,
 			user_id TEXT,
 			quiz_id TEXT,
+			quiz_title TEXT,
 			score INTEGER,
 			total_questions INTEGER,
 			completed_at DATETIME
@@ -100,7 +102,7 @@ func setupIntegrationServer(t *testing.T) (*echo.Echo, *sql.DB) {
 	userRepo := storagerepo.NewUserRepository(db)
 	quizRepo := storagerepo.NewQuizRepository(db)
 
-	authSvc := authservice.New(userRepo, authtoken.NewLegacyManager())
+	authSvc := authservice.New(userRepo, authtoken.NewLegacyManager(), nil)
 	quizSvc := quizservice.New(quizRepo)
 
 	authHandler := authhttp.NewHandler(authSvc, nil)
@@ -131,7 +133,7 @@ func TestIntegration_AuthFlow(t *testing.T) {
 	e.ServeHTTP(rec, req)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var registerRes models.AuthResponse
+	var registerRes authdomain.AuthResponse
 	err = json.Unmarshal(rec.Body.Bytes(), &registerRes)
 	require.NoError(t, err)
 	assert.Equal(t, "testuser", registerRes.Username)
@@ -158,7 +160,7 @@ func TestIntegration_QuizList(t *testing.T) {
 	defer db.Close()
 
 	quizRepo := storagerepo.NewQuizRepository(db)
-	err := quizRepo.Create(&models.Quiz{
+	err := quizRepo.Create(&quizdomain.Quiz{
 		ID:          "quiz-1",
 		Title:       "Quiz 1",
 		Description: "Desc",
@@ -171,7 +173,7 @@ func TestIntegration_QuizList(t *testing.T) {
 	e.ServeHTTP(rec, req)
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	var quizzes []models.Quiz
+	var quizzes []quizdomain.Quiz
 	err = json.Unmarshal(rec.Body.Bytes(), &quizzes)
 	require.NoError(t, err)
 	assert.Len(t, quizzes, 1)
@@ -182,12 +184,12 @@ func TestIntegration_ReportPersistsToDatabase(t *testing.T) {
 	defer db.Close()
 
 	quizRepo := storagerepo.NewQuizRepository(db)
-	err := quizRepo.Create(&models.Quiz{
+	err := quizRepo.Create(&quizdomain.Quiz{
 		ID:          "quiz-1",
 		Title:       "Quiz 1",
 		Description: "Desc",
 		Category:    "General",
-		Questions: []models.Question{
+		Questions: []quizdomain.Question{
 			{
 				ID:                 "question-1",
 				Type:               "choice",

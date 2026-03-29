@@ -3,6 +3,8 @@ set -euo pipefail
 
 SERVER_BASE_URL="${SERVER_BASE_URL:-http://localhost:8090}"
 API_BASE_URL="${API_BASE_URL:-$SERVER_BASE_URL/api}"
+AUTH_API_BASE_URL="${AUTH_API_BASE_URL:-$API_BASE_URL}"
+QUIZ_API_BASE_URL="${QUIZ_API_BASE_URL:-$API_BASE_URL}"
 DEVICE="${DEVICE:-chrome}"
 WEB_PORT="${WEB_PORT:-8091}"
 
@@ -15,6 +17,8 @@ FLUTTER_ARGS=(
   -d "$DEVICE"
   --dart-define="SERVER_BASE_URL=$SERVER_BASE_URL"
   --dart-define="API_BASE_URL=$API_BASE_URL"
+  --dart-define="AUTH_API_BASE_URL=$AUTH_API_BASE_URL"
+  --dart-define="QUIZ_API_BASE_URL=$QUIZ_API_BASE_URL"
 )
 
 if [[ "$DEVICE" == "chrome" || "$DEVICE" == "edge" || "$DEVICE" == "web-server" ]]; then

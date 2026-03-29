@@ -2,7 +2,6 @@ package repository
 
 import (
 	"database/sql"
-	"strings"
 	"time"
 
 	authdomain "quiz_master/internal/auth/domain"
@@ -70,37 +69,17 @@ func (r *UserRepository) Create(user *authdomain.User) error {
 	return err
 }
 
-func (r *UserRepository) SaveResult(userID, quizID string, score, total int) error {
+func (r *UserRepository) SaveResult(userID, quizID, quizTitle string, score, total int) error {
 	_, err := r.db.Exec(`
-		INSERT INTO quiz_results (id, user_id, quiz_id, score, total_questions, completed_at)
-		VALUES (?, ?, ?, ?, ?, datetime('now'))
-	`, uuid.New().String(), userID, quizID, score, total)
+		INSERT INTO quiz_results (id, user_id, quiz_id, quiz_title, score, total_questions, completed_at)
+		VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+	`, uuid.New().String(), userID, quizID, quizTitle, score, total)
 	return err
 }
 
 func (r *UserRepository) GetLeaderboard(limit int) ([]map[string]interface{}, error) {
 	rows, err := r.db.Query(`
-		SELECT u.username, r.score, r.total_questions, q.title
-		FROM quiz_results r
-		JOIN users u ON u.id = r.user_id
-		LEFT JOIN quizzes q ON q.id = r.quiz_id
-		ORDER BY r.score DESC, r.completed_at DESC
-		LIMIT ?
-	`, limit)
-	if err != nil {
-		if !strings.Contains(strings.ToLower(err.Error()), "no such table: quizzes") {
-			return nil, err
-		}
-		return r.getLeaderboardWithoutQuizzes(limit)
-	}
-	defer rows.Close()
-
-	return scanLeaderboard(rows, true)
-}
-
-func (r *UserRepository) getLeaderboardWithoutQuizzes(limit int) ([]map[string]interface{}, error) {
-	rows, err := r.db.Query(`
-		SELECT u.username, r.score, r.total_questions
+		SELECT u.username, r.score, r.total_questions, COALESCE(r.quiz_title, '')
 		FROM quiz_results r
 		JOIN users u ON u.id = r.user_id
 		ORDER BY r.score DESC, r.completed_at DESC
@@ -111,7 +90,7 @@ func (r *UserRepository) getLeaderboardWithoutQuizzes(limit int) ([]map[string]i
 	}
 	defer rows.Close()
 
-	return scanLeaderboard(rows, false)
+	return scanLeaderboard(rows, true)
 }
 
 func scanLeaderboard(rows *sql.Rows, withTitle bool) ([]map[string]interface{}, error) {

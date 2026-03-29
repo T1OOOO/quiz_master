@@ -1,0 +1,68 @@
+groups:
+  - name: quiz-master-core
+    rules:
+      - alert: QuizMasterServerDown
+        expr: up{job="quiz-master-server"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: server
+        annotations:
+          summary: "Quiz Master server target is down"
+          description: "Prometheus cannot scrape the server metrics endpoint for more than 1 minute."
+
+      - alert: QuizMasterAuthDown
+        expr: up{job="quiz-master-auth"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: auth
+        annotations:
+          summary: "Quiz Master auth target is down"
+          description: "Prometheus cannot scrape the auth metrics endpoint for more than 1 minute."
+
+      - alert: QuizMasterStorageDown
+        expr: up{job="quiz-master-storage"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: storage
+        annotations:
+          summary: "Quiz Master storage target is down"
+          description: "Prometheus cannot scrape the storage metrics endpoint for more than 1 minute."
+
+      - alert: QuizMasterServiceProbeFailed
+        expr: probe_success{job="blackbox-http"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Synthetic health check failed"
+          description: "Blackbox exporter cannot reach {{ $labels.instance }} for more than 2 minutes."
+
+      - alert: QuizMasterHigh5xxRate
+        expr: sum(rate(quiz_master_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(quiz_master_http_requests_total[5m])), 0.001) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High 5xx rate on Quiz Master"
+          description: "5xx responses are above 5% for 5 minutes."
+
+      - alert: QuizMasterHighP95Latency
+        expr: histogram_quantile(0.95, sum(rate(quiz_master_http_request_duration_seconds_bucket[5m])) by (le, service)) > 1.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High p95 latency on Quiz Master"
+          description: "P95 latency is above 1 second for 10 minutes on service {{ $labels.service }}."
+
+      - alert: QuizMasterDBUnavailable
+        expr: quiz_master_db_ping_ok == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database ping failing"
+          description: "Database ping is failing for service {{ $labels.service }}."

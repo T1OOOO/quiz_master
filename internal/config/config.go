@@ -12,6 +12,10 @@ type Config struct {
 	Env             string
 	QuizzesDir      string
 	JWTSecret       string
+	AuthAPIURL      string
+	AuthAPIToken    string
+	StorageAPIURL   string
+	StorageAPIToken string
 	JWTTTL          time.Duration
 	ShutdownTimeout time.Duration
 	DBMaxOpenConns  int
@@ -26,6 +30,10 @@ func Load() *Config {
 		Env:             getEnv("ENV", "development"),
 		QuizzesDir:      getEnv("QUIZZES_DIR", "quizzes"),
 		JWTSecret:       getEnv("JWT_SECRET", "your-secret-key-change-this-in-prod"),
+		AuthAPIURL:      getEnv("AUTH_API_URL", "http://localhost:8092"),
+		AuthAPIToken:    getEnv("AUTH_API_TOKEN", "dev-auth-token"),
+		StorageAPIURL:   getEnv("STORAGE_API_URL", "http://localhost:8093"),
+		StorageAPIToken: getEnv("STORAGE_API_TOKEN", "dev-storage-token"),
 		JWTTTL:          getEnvDuration("JWT_TTL", 24*time.Hour),
 		ShutdownTimeout: getEnvDuration("SHUTDOWN_TIMEOUT", 10*time.Second),
 		DBMaxOpenConns:  getEnvInt("DB_MAX_OPEN_CONNS", 1),

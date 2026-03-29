@@ -6,16 +6,18 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../config/app_config.dart';
 
 final dioClientProvider = Provider<Dio>((ref) {
-  return DioClient.create(ref: ref);
+  return DioClient.create(baseUrl: AppConfig.quizApiBaseUrl);
+});
+
+final authDioClientProvider = Provider<Dio>((ref) {
+  return DioClient.create(baseUrl: AppConfig.authApiBaseUrl);
 });
 
 class DioClient {
-  static Dio create({Ref? ref}) {
-    final effectiveBaseUrl = AppConfig.apiBaseUrl;
-
+  static Dio create({required String baseUrl}) {
     final dio = Dio(
       BaseOptions(
-        baseUrl: effectiveBaseUrl,
+        baseUrl: baseUrl,
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
         sendTimeout: const Duration(seconds: 30),
