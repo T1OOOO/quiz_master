@@ -3,40 +3,14 @@ package db
 import (
 	"database/sql"
 	"fmt"
+
+	"quiz_master/internal/dbx"
 )
 
 func RunMigrations(database *sql.DB) error {
-	queries := []string{
-		`CREATE TABLE IF NOT EXISTS quizzes (
-			id TEXT PRIMARY KEY,
-			title TEXT NOT NULL,
-			description TEXT,
-			category TEXT DEFAULT 'Разное',
-			created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-		);`,
-		`CREATE TABLE IF NOT EXISTS questions (
-			id TEXT PRIMARY KEY,
-			quiz_id TEXT NOT NULL,
-			text TEXT NOT NULL,
-			options TEXT NOT NULL,
-			correct_answer_index INTEGER NOT NULL,
-			correct_text TEXT,
-			correct_multi TEXT,
-			type TEXT DEFAULT 'choice',
-			image_url TEXT,
-			explanation TEXT,
-			difficulty INTEGER DEFAULT 0,
-			FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
-		);`,
-		`CREATE TABLE IF NOT EXISTS reports (
-			id TEXT PRIMARY KEY,
-			quiz_id TEXT NOT NULL,
-			question_id TEXT NOT NULL,
-			message TEXT NOT NULL,
-			question_text TEXT,
-			created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-			FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
-		);`,
+	queries := sqliteMigrations
+	if dbx.Driver(database) == dbx.DriverPostgres {
+		queries = postgresMigrations
 	}
 
 	for _, query := range queries {
@@ -58,4 +32,70 @@ func RunMigrations(database *sql.DB) error {
 	}
 
 	return nil
+}
+
+var sqliteMigrations = []string{
+	`CREATE TABLE IF NOT EXISTS quizzes (
+		id TEXT PRIMARY KEY,
+		title TEXT NOT NULL,
+		description TEXT,
+		category TEXT DEFAULT 'Разное',
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+	);`,
+	`CREATE TABLE IF NOT EXISTS questions (
+		id TEXT PRIMARY KEY,
+		quiz_id TEXT NOT NULL,
+		text TEXT NOT NULL,
+		options TEXT NOT NULL,
+		correct_answer_index INTEGER NOT NULL,
+		correct_text TEXT,
+		correct_multi TEXT,
+		type TEXT DEFAULT 'choice',
+		image_url TEXT,
+		explanation TEXT,
+		difficulty INTEGER DEFAULT 0,
+		FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+	);`,
+	`CREATE TABLE IF NOT EXISTS reports (
+		id TEXT PRIMARY KEY,
+		quiz_id TEXT NOT NULL,
+		question_id TEXT NOT NULL,
+		message TEXT NOT NULL,
+		question_text TEXT,
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+	);`,
+}
+
+var postgresMigrations = []string{
+	`CREATE TABLE IF NOT EXISTS quizzes (
+		id TEXT PRIMARY KEY,
+		title TEXT NOT NULL,
+		description TEXT,
+		category TEXT DEFAULT 'Разное',
+		created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+	);`,
+	`CREATE TABLE IF NOT EXISTS questions (
+		id TEXT PRIMARY KEY,
+		quiz_id TEXT NOT NULL,
+		text TEXT NOT NULL,
+		options TEXT NOT NULL,
+		correct_answer_index INTEGER NOT NULL,
+		correct_text TEXT,
+		correct_multi TEXT,
+		type TEXT DEFAULT 'choice',
+		image_url TEXT,
+		explanation TEXT,
+		difficulty INTEGER DEFAULT 0,
+		FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+	);`,
+	`CREATE TABLE IF NOT EXISTS reports (
+		id TEXT PRIMARY KEY,
+		quiz_id TEXT NOT NULL,
+		question_id TEXT NOT NULL,
+		message TEXT NOT NULL,
+		question_text TEXT,
+		created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY(quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+	);`,
 }

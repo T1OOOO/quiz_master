@@ -47,6 +47,7 @@ Local development defaults are separated from other apps:
 - Internal storage base URL for `server`: `http://localhost:8093`
 - Auth DB: `.data/auth.db` locally or `${AUTH_DB_PATH}` in containers
 - Storage DB: `.data/storage.db` locally or `${STORAGE_DB_PATH}` in containers
+- Optional Postgres mode per service via `${AUTH_DB_DRIVER}` / `${AUTH_DB_DSN}` and `${STORAGE_DB_DRIVER}` / `${STORAGE_DB_DSN}`
 - Prometheus: `http://localhost:9090`
 - Grafana: `http://localhost:3000`
 - Alertmanager: `http://localhost:9093`
@@ -95,6 +96,7 @@ Quiz import and maintenance:
 - `go run ./cmd/dbtool -action import-quizzes -prune`
 
 The API startup sync now imports and updates quizzes without deleting missing DB records. Use `import-quizzes -prune` only for intentional cleanup.
+`dbtool` is mainly relevant for SQLite paths. In Postgres mode, startup migrations still run automatically, but file-path reset/init flows are not used.
 
 The Flutter client now reads backend URLs from `--dart-define`:
 
@@ -168,9 +170,13 @@ Prometheus currently scrapes:
 
 Key environment variables for split runtime:
 
+- `AUTH_DB_DRIVER`
+- `AUTH_DB_DSN`
 - `AUTH_DB_PATH`
 - `AUTH_API_URL`
 - `AUTH_API_TOKEN`
+- `STORAGE_DB_DRIVER`
+- `STORAGE_DB_DSN`
 - `STORAGE_DB_PATH`
 - `STORAGE_API_URL`
 - `STORAGE_API_TOKEN`
@@ -193,12 +199,19 @@ The current runtime keeps SQLite as the persistence layer, so Compose only start
 ## Environment
 
 - `PORT` HTTP port inside the container and local process
+- `DB_DRIVER` `sqlite` or `postgres`
+- `DB_DSN` driver-specific DSN, required for `postgres`
 - `DB_PATH` SQLite database path
 - `ENV` application environment label for logs/runtime
 - `QUIZZES_DIR` source directory for quiz import sync
 - `JWT_SECRET` signing key for access tokens
 - `JWT_TTL` token TTL duration, e.g. `24h`
 - `SHUTDOWN_TIMEOUT` graceful shutdown timeout, e.g. `10s`
+
+Persistence modes:
+
+- `sqlite`: set `DB_DRIVER=sqlite` and `DB_PATH=/path/to/file.db`
+- `postgres`: set `DB_DRIVER=postgres` and `DB_DSN=postgres://user:pass@host:5432/dbname?sslmode=disable`
 
 ## Adding Modules
 

@@ -25,6 +25,8 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 	}
 
 	dbConn, err := storagedb.Open(context.Background(), storagedb.Config{
+		Driver:       cfg.DBDriver,
+		DSN:          cfg.DBDSN,
 		Path:         cfg.DBPath,
 		MaxOpenConns: cfg.DBMaxOpenConns,
 		MaxIdleConns: cfg.DBMaxIdleConns,

@@ -2,9 +2,11 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
 	"time"
 
 	authdomain "quiz_master/internal/auth/domain"
+	"quiz_master/internal/dbx"
 
 	"github.com/google/uuid"
 )
@@ -19,10 +21,10 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 
 func (r *UserRepository) GetByID(id string) (*authdomain.User, error) {
 	var user authdomain.User
-	err := r.db.QueryRow("SELECT id, username, password_hash, role FROM users WHERE id = ?", id).
+	err := r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, username, password_hash, role FROM users WHERE id = ?"), id).
 		Scan(&user.ID, &user.Username, &user.Password, &user.Role)
 	if err != nil {
-		err = r.db.QueryRow("SELECT id, username, password, role FROM users WHERE id = ?", id).
+		err = r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, username, password, role FROM users WHERE id = ?"), id).
 			Scan(&user.ID, &user.Username, &user.Password, &user.Role)
 		if err == sql.ErrNoRows {
 			return nil, nil
@@ -35,10 +37,10 @@ func (r *UserRepository) GetByID(id string) (*authdomain.User, error) {
 
 func (r *UserRepository) GetByUsername(username string) (*authdomain.User, error) {
 	var user authdomain.User
-	err := r.db.QueryRow("SELECT id, username, password_hash, role FROM users WHERE username = ?", username).
+	err := r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, username, password_hash, role FROM users WHERE username = ?"), username).
 		Scan(&user.ID, &user.Username, &user.Password, &user.Role)
 	if err != nil {
-		err = r.db.QueryRow("SELECT id, username, password, role FROM users WHERE username = ?", username).
+		err = r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, username, password, role FROM users WHERE username = ?"), username).
 			Scan(&user.ID, &user.Username, &user.Password, &user.Role)
 		if err == sql.ErrNoRows {
 			return nil, nil
@@ -54,13 +56,13 @@ func (r *UserRepository) Create(user *authdomain.User) error {
 		user.ID = uuid.New().String()
 	}
 
-	_, err := r.db.Exec("INSERT INTO users (id, username, password_hash, role) VALUES (?, ?, ?, ?)",
+	_, err := r.db.Exec(dbx.Rebind(r.db, "INSERT INTO users (id, username, password_hash, role) VALUES (?, ?, ?, ?)"),
 		user.ID, user.Username, user.Password, user.Role)
 	if err == nil {
 		return nil
 	}
 
-	_, legacyErr := r.db.Exec("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)",
+	_, legacyErr := r.db.Exec(dbx.Rebind(r.db, "INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)"),
 		user.ID, user.Username, user.Password, user.Role)
 	if legacyErr == nil {
 		return nil
@@ -70,21 +72,22 @@ func (r *UserRepository) Create(user *authdomain.User) error {
 }
 
 func (r *UserRepository) SaveResult(userID, quizID, quizTitle string, score, total int) error {
-	_, err := r.db.Exec(`
+	query := fmt.Sprintf(`
 		INSERT INTO quiz_results (id, user_id, quiz_id, quiz_title, score, total_questions, completed_at)
-		VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
-	`, uuid.New().String(), userID, quizID, quizTitle, score, total)
+		VALUES (?, ?, ?, ?, ?, ?, %s)
+	`, dbx.NowExpr(r.db))
+	_, err := r.db.Exec(dbx.Rebind(r.db, query), uuid.New().String(), userID, quizID, quizTitle, score, total)
 	return err
 }
 
 func (r *UserRepository) GetLeaderboard(limit int) ([]map[string]interface{}, error) {
-	rows, err := r.db.Query(`
+	rows, err := r.db.Query(dbx.Rebind(r.db, `
 		SELECT u.username, r.score, r.total_questions, COALESCE(r.quiz_title, '')
 		FROM quiz_results r
 		JOIN users u ON u.id = r.user_id
 		ORDER BY r.score DESC, r.completed_at DESC
 		LIMIT ?
-	`, limit)
+	`), limit)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +123,7 @@ func scanLeaderboard(rows *sql.Rows, withTitle bool) ([]map[string]interface{}, 
 
 func (r *UserRepository) SaveRefreshToken(token *authdomain.RefreshToken) error {
 	_, err := r.db.Exec(
-		"INSERT INTO refresh_tokens (token, user_id, expires_at, created_at) VALUES (?, ?, ?, ?)",
+		dbx.Rebind(r.db, "INSERT INTO refresh_tokens (token, user_id, expires_at, created_at) VALUES (?, ?, ?, ?)"),
 		token.Token,
 		token.UserID,
 		token.ExpiresAt.UTC(),
@@ -131,10 +134,10 @@ func (r *UserRepository) SaveRefreshToken(token *authdomain.RefreshToken) error 
 
 func (r *UserRepository) GetRefreshToken(refreshToken string) (*authdomain.RefreshToken, error) {
 	var stored authdomain.RefreshToken
-	var createdAt string
-	var expiresAt string
+	var createdAt interface{}
+	var expiresAt interface{}
 	err := r.db.QueryRow(
-		"SELECT token, user_id, expires_at, created_at FROM refresh_tokens WHERE token = ?",
+		dbx.Rebind(r.db, "SELECT token, user_id, expires_at, created_at FROM refresh_tokens WHERE token = ?"),
 		refreshToken,
 	).Scan(&stored.Token, &stored.UserID, &expiresAt, &createdAt)
 	if err == sql.ErrNoRows {
@@ -144,11 +147,11 @@ func (r *UserRepository) GetRefreshToken(refreshToken string) (*authdomain.Refre
 		return nil, err
 	}
 
-	stored.ExpiresAt, err = parseSQLiteTime(expiresAt)
+	stored.ExpiresAt, err = parseDBTime(expiresAt)
 	if err != nil {
 		return nil, err
 	}
-	stored.CreatedAt, err = parseSQLiteTime(createdAt)
+	stored.CreatedAt, err = parseDBTime(createdAt)
 	if err != nil {
 		return nil, err
 	}
@@ -157,11 +160,24 @@ func (r *UserRepository) GetRefreshToken(refreshToken string) (*authdomain.Refre
 }
 
 func (r *UserRepository) DeleteRefreshToken(refreshToken string) error {
-	_, err := r.db.Exec("DELETE FROM refresh_tokens WHERE token = ?", refreshToken)
+	_, err := r.db.Exec(dbx.Rebind(r.db, "DELETE FROM refresh_tokens WHERE token = ?"), refreshToken)
 	return err
 }
 
-func parseSQLiteTime(value string) (time.Time, error) {
+func parseDBTime(value interface{}) (time.Time, error) {
+	switch v := value.(type) {
+	case time.Time:
+		return v, nil
+	case string:
+		return parseDBTimeString(v)
+	case []byte:
+		return parseDBTimeString(string(v))
+	default:
+		return time.Time{}, sql.ErrNoRows
+	}
+}
+
+func parseDBTimeString(value string) (time.Time, error) {
 	layouts := []string{
 		time.RFC3339Nano,
 		time.RFC3339,

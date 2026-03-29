@@ -6,10 +6,15 @@ import (
 	"fmt"
 	"time"
 
+	"quiz_master/internal/dbx"
+
+	_ "github.com/jackc/pgx/v5/stdlib"
 	_ "modernc.org/sqlite"
 )
 
 type Config struct {
+	Driver       string
+	DSN          string
 	Path         string
 	MaxOpenConns int
 	MaxIdleConns int
@@ -17,10 +22,12 @@ type Config struct {
 }
 
 func Open(ctx context.Context, cfg Config) (*sql.DB, error) {
-	database, err := sql.Open("sqlite", cfg.Path)
+	driverName, dsn := resolveDriver(cfg.Driver, cfg.DSN, cfg.Path)
+	database, err := sql.Open(driverName, dsn)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open db: %w", err)
 	}
+	dbx.Register(database, driverName)
 
 	if cfg.MaxOpenConns > 0 {
 		database.SetMaxOpenConns(cfg.MaxOpenConns)
@@ -43,6 +50,15 @@ func Open(ctx context.Context, cfg Config) (*sql.DB, error) {
 	}
 
 	return database, nil
+}
+
+func resolveDriver(driver, dsn, path string) (string, string) {
+	switch dbx.NormalizeDriver(driver) {
+	case dbx.DriverPostgres:
+		return "pgx", dsn
+	default:
+		return "sqlite", path
+	}
 }
 
 func Ping(ctx context.Context, database *sql.DB, attempts int, delay time.Duration) error {

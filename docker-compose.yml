@@ -10,6 +10,8 @@ services:
       - .env
     environment:
       PORT: ${AUTH_PORT:-8092}
+      DB_DRIVER: ${AUTH_DB_DRIVER:-sqlite}
+      DB_DSN: ${AUTH_DB_DSN:-}
       DB_PATH: ${AUTH_DB_PATH:-/app/data/auth.db}
       ENV: ${ENV:-production}
       JWT_SECRET: ${JWT_SECRET:-change-me}
@@ -50,6 +52,8 @@ services:
       - .env
     environment:
       PORT: ${STORAGE_PORT:-8093}
+      DB_DRIVER: ${STORAGE_DB_DRIVER:-sqlite}
+      DB_DSN: ${STORAGE_DB_DSN:-}
       DB_PATH: ${STORAGE_DB_PATH:-/app/data/storage.db}
       ENV: ${ENV:-production}
       QUIZZES_DIR: ${QUIZZES_DIR:-quizzes}

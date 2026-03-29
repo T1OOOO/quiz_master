@@ -1,5 +1,7 @@
 param(
     [string]$Port = "8090",
+    [string]$DbDriver = "sqlite",
+    [string]$DbDsn = "",
     [string]$DbPath = ".data/quiz_master.db",
     [string]$JwtSecret = "dev-secret",
     [string]$AuthApiUrl = "http://localhost:8092",
@@ -17,6 +19,8 @@ $pidFile = Join-Path $runDir "server.pid"
 New-Item -ItemType Directory -Force -Path $runDir | Out-Null
 
 $env:PORT = $Port
+$env:DB_DRIVER = $DbDriver
+$env:DB_DSN = $DbDsn
 $env:DB_PATH = $DbPath
 $env:JWT_SECRET = $JwtSecret
 $env:AUTH_API_URL = $AuthApiUrl

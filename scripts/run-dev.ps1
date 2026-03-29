@@ -2,7 +2,11 @@ param(
     [string]$ServerPort = "8090",
     [string]$AuthPort = "8092",
     [string]$StoragePort = "8093",
+    [string]$AuthDbDriver = "sqlite",
+    [string]$AuthDbDsn = "",
     [string]$AuthDbPath = ".data/auth.db",
+    [string]$StorageDbDriver = "sqlite",
+    [string]$StorageDbDsn = "",
     [string]$StorageDbPath = ".data/storage.db",
     [string]$Device = "chrome",
     [string]$WebPort = "8091",
@@ -20,7 +24,11 @@ $serverBaseUrl = "http://localhost:$ServerPort"
     -ServerPort $ServerPort `
     -AuthPort $AuthPort `
     -StoragePort $StoragePort `
+    -AuthDbDriver $AuthDbDriver `
+    -AuthDbDsn $AuthDbDsn `
     -AuthDbPath $AuthDbPath `
+    -StorageDbDriver $StorageDbDriver `
+    -StorageDbDsn $StorageDbDsn `
     -StorageDbPath $StorageDbPath `
     -AuthApiToken $AuthApiToken `
     -StorageApiToken $StorageApiToken

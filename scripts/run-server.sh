@@ -2,6 +2,8 @@
 set -euo pipefail
 
 PORT="${PORT:-8090}"
+DB_DRIVER="${DB_DRIVER:-sqlite}"
+DB_DSN="${DB_DSN:-}"
 DB_PATH="${DB_PATH:-.data/quiz_master.db}"
 JWT_SECRET="${JWT_SECRET:-dev-secret}"
 AUTH_API_URL="${AUTH_API_URL:-http://localhost:8092}"
@@ -18,6 +20,8 @@ PID_FILE="$RUN_DIR/server.pid"
 mkdir -p "$RUN_DIR"
 
 export PORT
+export DB_DRIVER
+export DB_DSN
 export DB_PATH
 export JWT_SECRET
 export AUTH_API_URL

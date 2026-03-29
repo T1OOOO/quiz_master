@@ -6,6 +6,7 @@ import (
 	"iter"
 	"time"
 
+	"quiz_master/internal/dbx"
 	quizdomain "quiz_master/internal/quiz/domain"
 
 	"github.com/google/uuid"
@@ -61,7 +62,7 @@ func (r *QuizRepository) All() iter.Seq2[quizdomain.Quiz, error] {
 
 func (r *QuizRepository) Get(id string) (*quizdomain.Quiz, error) {
 	var q quizdomain.Quiz
-	err := r.db.QueryRow("SELECT id, title, description, category FROM quizzes WHERE id = ?", id).
+	err := r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, title, description, category FROM quizzes WHERE id = ?"), id).
 		Scan(&q.ID, &q.Title, &q.Description, &q.Category)
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -69,7 +70,7 @@ func (r *QuizRepository) Get(id string) (*quizdomain.Quiz, error) {
 		return nil, err
 	}
 
-	rows, err := r.db.Query("SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty FROM questions WHERE quiz_id = ?", id)
+	rows, err := r.db.Query(dbx.Rebind(r.db, "SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty FROM questions WHERE quiz_id = ?"), id)
 	if err != nil {
 		return nil, err
 	}
@@ -104,7 +105,7 @@ func (r *QuizRepository) Get(id string) (*quizdomain.Quiz, error) {
 
 func (r *QuizRepository) GetSummary(id string) (*quizdomain.Quiz, error) {
 	var q quizdomain.Quiz
-	err := r.db.QueryRow("SELECT id, title, description, category FROM quizzes WHERE id = ?", id).
+	err := r.db.QueryRow(dbx.Rebind(r.db, "SELECT id, title, description, category FROM quizzes WHERE id = ?"), id).
 		Scan(&q.ID, &q.Title, &q.Description, &q.Category)
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -112,7 +113,7 @@ func (r *QuizRepository) GetSummary(id string) (*quizdomain.Quiz, error) {
 		return nil, err
 	}
 
-	rows, err := r.db.Query("SELECT id, type, difficulty, text FROM questions WHERE quiz_id = ?", id)
+	rows, err := r.db.Query(dbx.Rebind(r.db, "SELECT id, type, difficulty, text FROM questions WHERE quiz_id = ?"), id)
 	if err != nil {
 		return nil, err
 	}
@@ -142,10 +143,10 @@ func (r *QuizRepository) GetQuestion(quizID, questionID string) (*quizdomain.Que
 	var explanation sql.NullString
 	var difficulty sql.NullInt64
 
-	row := r.db.QueryRow(`
+	row := r.db.QueryRow(dbx.Rebind(r.db, `
 		SELECT id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty
 		FROM questions
-		WHERE quiz_id = ? AND id = ?`, quizID, questionID)
+		WHERE quiz_id = ? AND id = ?`), quizID, questionID)
 
 	err := row.Scan(&quest.ID, &quest.Type, &quest.Text, &optionsJSON, &quest.CorrectAnswerIndex, &correctText, &multiJSON, &imageURL, &explanation, &difficulty)
 	if err == sql.ErrNoRows {
@@ -181,7 +182,7 @@ func (r *QuizRepository) Create(q *quizdomain.Quiz) error {
 		q.Category = "Разное"
 	}
 
-	if _, err := tx.Exec("INSERT INTO quizzes (id, title, description, category) VALUES (?, ?, ?, ?)", q.ID, q.Title, q.Description, q.Category); err != nil {
+	if _, err := tx.Exec(dbx.Rebind(r.db, "INSERT INTO quizzes (id, title, description, category) VALUES (?, ?, ?, ?)"), q.ID, q.Title, q.Description, q.Category); err != nil {
 		_ = tx.Rollback()
 		return err
 	}
@@ -195,7 +196,7 @@ func (r *QuizRepository) Create(q *quizdomain.Quiz) error {
 		}
 		optionsJSON, _ := json.Marshal(quest.Options)
 		multiJSON, _ := json.Marshal(quest.CorrectMulti)
-		if _, err := tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		if _, err := tx.Exec(dbx.Rebind(r.db, "INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"),
 			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation, quest.Difficulty); err != nil {
 			_ = tx.Rollback()
 			return err
@@ -215,12 +216,12 @@ func (r *QuizRepository) Update(q *quizdomain.Quiz) error {
 		q.Category = "Разное"
 	}
 
-	if _, err := tx.Exec("UPDATE quizzes SET title = ?, description = ?, category = ? WHERE id = ?", q.Title, q.Description, q.Category, q.ID); err != nil {
+	if _, err := tx.Exec(dbx.Rebind(r.db, "UPDATE quizzes SET title = ?, description = ?, category = ? WHERE id = ?"), q.Title, q.Description, q.Category, q.ID); err != nil {
 		_ = tx.Rollback()
 		return err
 	}
 
-	if _, err := tx.Exec("DELETE FROM questions WHERE quiz_id = ?", q.ID); err != nil {
+	if _, err := tx.Exec(dbx.Rebind(r.db, "DELETE FROM questions WHERE quiz_id = ?"), q.ID); err != nil {
 		_ = tx.Rollback()
 		return err
 	}
@@ -234,7 +235,7 @@ func (r *QuizRepository) Update(q *quizdomain.Quiz) error {
 		}
 		optionsJSON, _ := json.Marshal(quest.Options)
 		multiJSON, _ := json.Marshal(quest.CorrectMulti)
-		if _, err := tx.Exec("INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		if _, err := tx.Exec(dbx.Rebind(r.db, "INSERT INTO questions (id, quiz_id, type, text, options, correct_answer_index, correct_text, correct_multi, image_url, explanation, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"),
 			quest.ID, q.ID, quest.Type, quest.Text, string(optionsJSON), quest.CorrectAnswerIndex, quest.CorrectText, string(multiJSON), quest.ImageURL, quest.Explanation, quest.Difficulty); err != nil {
 			_ = tx.Rollback()
 			return err
@@ -245,7 +246,7 @@ func (r *QuizRepository) Update(q *quizdomain.Quiz) error {
 }
 
 func (r *QuizRepository) Delete(id string) error {
-	_, err := r.db.Exec("DELETE FROM quizzes WHERE id = ?", id)
+	_, err := r.db.Exec(dbx.Rebind(r.db, "DELETE FROM quizzes WHERE id = ?"), id)
 	return err
 }
 
@@ -258,7 +259,7 @@ func (r *QuizRepository) SaveReport(report *quizdomain.QuizReport) error {
 	}
 
 	_, err := r.db.Exec(
-		"INSERT INTO reports (id, quiz_id, question_id, message, question_text, created_at) VALUES (?, ?, ?, ?, ?, ?)",
+		dbx.Rebind(r.db, "INSERT INTO reports (id, quiz_id, question_id, message, question_text, created_at) VALUES (?, ?, ?, ?, ?, ?)"),
 		report.ID,
 		report.QuizID,
 		report.QuestionID,

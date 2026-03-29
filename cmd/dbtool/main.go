@@ -60,11 +60,14 @@ func main() {
 }
 
 func initDB(path string) error {
+	cfg := config.Load()
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil && filepath.Dir(path) != "." {
 		return err
 	}
 
 	db, err := storagedb.Open(context.Background(), storagedb.Config{
+		Driver:       cfg.DBDriver,
+		DSN:          cfg.DBDSN,
 		Path:         path,
 		MaxOpenConns: 1,
 		MaxIdleConns: 1,
@@ -86,7 +89,10 @@ func resetDB(path string) error {
 }
 
 func importQuizzes(dbPath, quizzesDir string, prune bool) error {
+	cfg := config.Load()
 	db, err := storagedb.Open(context.Background(), storagedb.Config{
+		Driver:       cfg.DBDriver,
+		DSN:          cfg.DBDSN,
 		Path:         dbPath,
 		MaxOpenConns: 1,
 		MaxIdleConns: 1,

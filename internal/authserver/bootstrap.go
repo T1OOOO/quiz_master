@@ -28,6 +28,8 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 	}
 
 	dbConn, err := authdb.Open(context.Background(), authdb.Config{
+		Driver:       cfg.DBDriver,
+		DSN:          cfg.DBDSN,
 		Path:         cfg.DBPath,
 		MaxOpenConns: cfg.DBMaxOpenConns,
 		MaxIdleConns: cfg.DBMaxIdleConns,

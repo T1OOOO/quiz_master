@@ -1,5 +1,7 @@
 param(
     [string]$Port = "8093",
+    [string]$DbDriver = "sqlite",
+    [string]$DbDsn = "",
     [string]$DbPath = ".data/storage.db",
     [string]$QuizzesDir = "quizzes",
     [string]$StorageApiToken = "dev-storage-token",
@@ -14,6 +16,8 @@ $pidFile = Join-Path $runDir "storage.pid"
 New-Item -ItemType Directory -Force -Path $runDir | Out-Null
 
 $env:PORT = $Port
+$env:DB_DRIVER = $DbDriver
+$env:DB_DSN = $DbDsn
 $env:DB_PATH = $DbPath
 $env:QUIZZES_DIR = $QuizzesDir
 $env:STORAGE_API_TOKEN = $StorageApiToken

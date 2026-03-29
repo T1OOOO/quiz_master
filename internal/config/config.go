@@ -10,6 +10,8 @@ import (
 
 type Config struct {
 	Port               string
+	DBDriver           string
+	DBDSN              string
 	DBPath             string
 	Env                string
 	QuizzesDir         string
@@ -39,6 +41,8 @@ func Load() *Config {
 	wsOrigins := getEnvCSV("WS_ALLOWED_ORIGINS", corsOrigins)
 	return &Config{
 		Port:               getEnv("PORT", "8090"),
+		DBDriver:           getEnv("DB_DRIVER", "sqlite"),
+		DBDSN:              getEnv("DB_DSN", ""),
 		DBPath:             getEnv("DB_PATH", "quiz.db"),
 		Env:                getEnv("ENV", "development"),
 		QuizzesDir:         getEnv("QUIZZES_DIR", "quizzes"),
@@ -68,6 +72,9 @@ func (c *Config) Validate() error {
 	}
 	if c.AuthRateLimitBurst <= 0 {
 		return fmt.Errorf("AUTH_RATE_LIMIT_BURST must be > 0")
+	}
+	if strings.EqualFold(c.DBDriver, "postgres") && strings.TrimSpace(c.DBDSN) == "" {
+		return fmt.Errorf("DB_DSN must be set when DB_DRIVER=postgres")
 	}
 
 	if strings.EqualFold(c.Env, "production") {

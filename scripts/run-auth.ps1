@@ -1,5 +1,7 @@
 param(
     [string]$Port = "8092",
+    [string]$DbDriver = "sqlite",
+    [string]$DbDsn = "",
     [string]$DbPath = ".data/auth.db",
     [string]$JwtSecret = "dev-secret",
     [string]$AuthApiToken = "dev-auth-token",
@@ -16,6 +18,8 @@ $pidFile = Join-Path $runDir "auth.pid"
 New-Item -ItemType Directory -Force -Path $runDir | Out-Null
 
 $env:PORT = $Port
+$env:DB_DRIVER = $DbDriver
+$env:DB_DSN = $DbDsn
 $env:DB_PATH = $DbPath
 $env:JWT_SECRET = $JwtSecret
 $env:AUTH_API_TOKEN = $AuthApiToken
