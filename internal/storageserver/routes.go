@@ -52,6 +52,7 @@ func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, storageHandler
 	internalGroup.POST("/rooms/:code/start", storageHandler.StartRoom)
 	internalGroup.POST("/rooms/:code/vote", storageHandler.VoteRoom)
 	internalGroup.POST("/rooms/:code/chat", storageHandler.ChatRoom)
+	internalGroup.GET("/rooms/stream", storageHandler.StreamRoomEvents)
 }
 
 func loadStats(db *sql.DB) (map[string]int64, error) {

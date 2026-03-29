@@ -1,6 +1,7 @@
 package storageapi
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"quiz_master/internal/models"
@@ -216,6 +217,38 @@ func (h *Handler) ChatRoom(c echo.Context) error {
 	return c.JSON(http.StatusOK, toDTORoom(room))
 }
 
+func (h *Handler) StreamRoomEvents(c echo.Context) error {
+	if h.rooms == nil {
+		return c.JSON(http.StatusServiceUnavailable, map[string]string{"error": "room events unavailable"})
+	}
+
+	c.Response().Header().Set(echo.HeaderContentType, "application/x-ndjson")
+	c.Response().Header().Set("Cache-Control", "no-cache")
+	c.Response().WriteHeader(http.StatusOK)
+
+	flusher, ok := c.Response().Writer.(http.Flusher)
+	if !ok {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "streaming unsupported"})
+	}
+
+	events := h.rooms.Subscribe(c.Request().Context())
+	encoder := json.NewEncoder(c.Response())
+	for {
+		select {
+		case <-c.Request().Context().Done():
+			return nil
+		case evt, ok := <-events:
+			if !ok {
+				return nil
+			}
+			if err := encoder.Encode(toDTORoomEvent(evt)); err != nil {
+				return nil
+			}
+			flusher.Flush()
+		}
+	}
+}
+
 func toDTORoom(room *models.Room) *storagedto.Room {
 	if room == nil {
 		return nil
@@ -251,5 +284,25 @@ func toDTORoom(room *models.Room) *storagedto.Room {
 		Votes:           room.Votes,
 		Revealed:        room.Revealed,
 		ChatHistory:     chat,
+	}
+}
+
+func toDTORoomEvent(evt roomstate.Event) storagedto.RoomEvent {
+	var chat *storagedto.RoomChatMessage
+	if evt.ChatMessage != nil {
+		chat = &storagedto.RoomChatMessage{
+			User:      evt.ChatMessage.User,
+			Text:      evt.ChatMessage.Text,
+			Image:     evt.ChatMessage.Image,
+			Timestamp: evt.ChatMessage.Timestamp,
+		}
+	}
+	return storagedto.RoomEvent{
+		Type:          string(evt.Type),
+		RoomCode:      evt.RoomCode,
+		Room:          toDTORoom(evt.Room),
+		BroadcastType: evt.BroadcastType,
+		QuizID:        evt.QuizID,
+		ChatMessage:   chat,
 	}
 }

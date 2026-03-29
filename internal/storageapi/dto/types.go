@@ -86,3 +86,12 @@ type RoomChatRequest struct {
 	Text     string `json:"text"`
 	Image    string `json:"image"`
 }
+
+type RoomEvent struct {
+	Type          string           `json:"type"`
+	RoomCode      string           `json:"room_code,omitempty"`
+	Room          *Room            `json:"room,omitempty"`
+	BroadcastType string           `json:"broadcast_type,omitempty"`
+	QuizID        string           `json:"quiz_id,omitempty"`
+	ChatMessage   *RoomChatMessage `json:"chat_message,omitempty"`
+}

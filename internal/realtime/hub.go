@@ -1,6 +1,7 @@
 package realtime
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"log"
@@ -31,6 +32,19 @@ type RoomStore interface {
 	ChatRoom(code, username, text, image string) (*models.Room, error)
 }
 
+type RoomEventStreamer interface {
+	StreamRoomEvents(ctx context.Context, onEvent func(RoomEvent) error) error
+}
+
+type RoomEvent struct {
+	Type          string
+	RoomCode      string
+	Room          *models.Room
+	BroadcastType string
+	QuizID        string
+	ChatMessage   *models.ChatMessage
+}
+
 type clientState struct {
 	username string
 	roomCode string
@@ -45,7 +59,6 @@ type Hub struct {
 	mutex       sync.RWMutex
 	clients     map[*websocket.Conn]clientState
 	subscribers map[string]map[*websocket.Conn]struct{}
-	roomVersion map[string]int64
 }
 
 func NewHub(store RoomStore) *Hub {
@@ -56,13 +69,13 @@ func NewHub(store RoomStore) *Hub {
 		unregister:  make(chan *websocket.Conn, 32),
 		clients:     make(map[*websocket.Conn]clientState),
 		subscribers: make(map[string]map[*websocket.Conn]struct{}),
-		roomVersion: make(map[string]int64),
 	}
 }
 
 func (h *Hub) Run() {
-	ticker := time.NewTicker(time.Second)
-	defer ticker.Stop()
+	if streamer, ok := h.store.(RoomEventStreamer); ok {
+		go h.consumeRoomEvents(streamer)
+	}
 
 	for {
 		select {
@@ -78,9 +91,6 @@ func (h *Hub) Run() {
 
 		case message := <-h.broadcast:
 			h.broadcastGlobal(message)
-
-		case <-ticker.C:
-			h.syncRooms()
 		}
 	}
 }
@@ -132,7 +142,6 @@ func (h *Hub) handleCreateRoom(conn *websocket.Conn, payload []byte) {
 	}
 
 	h.bindClientToRoom(conn, room.Code, req.Username)
-	h.publishRoomState(room)
 }
 
 func (h *Hub) handleJoinRoom(conn *websocket.Conn, payload []byte) {
@@ -153,7 +162,6 @@ func (h *Hub) handleJoinRoom(conn *websocket.Conn, payload []byte) {
 	}
 
 	h.bindClientToRoom(conn, room.Code, req.Username)
-	h.publishRoomState(room)
 }
 
 func (h *Hub) handleRoomMessage(conn *websocket.Conn, state clientState, msgType string, payload []byte) {
@@ -172,12 +180,6 @@ func (h *Hub) handleRoomMessage(conn *websocket.Conn, state clientState, msgType
 			return
 		}
 		room, err = h.store.StartRoom(state.roomCode, state.username, req.QuizID)
-		if err == nil {
-			h.broadcastRoomMessage(state.roomCode, map[string]any{
-				"type":    "game_started",
-				"quiz_id": req.QuizID,
-			})
-		}
 	case "vote":
 		var req struct {
 			AnswerIndex int `json:"answer_index"`
@@ -197,13 +199,6 @@ func (h *Hub) handleRoomMessage(conn *websocket.Conn, state clientState, msgType
 			return
 		}
 		room, err = h.store.ChatRoom(state.roomCode, state.username, req.Text, req.Image)
-		if err == nil && len(room.ChatHistory) > 0 {
-			last := room.ChatHistory[len(room.ChatHistory)-1]
-			h.broadcastRoomMessage(state.roomCode, map[string]any{
-				"type":    "chat_message",
-				"message": last,
-			})
-		}
 	default:
 		sendError(conn, "unsupported message type")
 		return
@@ -213,7 +208,7 @@ func (h *Hub) handleRoomMessage(conn *websocket.Conn, state clientState, msgType
 		sendError(conn, err.Error())
 		return
 	}
-	h.publishRoomState(room)
+	_ = room
 }
 
 func (h *Hub) bindClientToRoom(conn *websocket.Conn, code, username string) {
@@ -250,7 +245,6 @@ func (h *Hub) removeClient(conn *websocket.Conn) {
 				delete(subs, conn)
 				if len(subs) == 0 {
 					delete(h.subscribers, state.roomCode)
-					delete(h.roomVersion, state.roomCode)
 				}
 			}
 		}
@@ -258,9 +252,7 @@ func (h *Hub) removeClient(conn *websocket.Conn) {
 	h.mutex.Unlock()
 
 	if ok && state.roomCode != "" && state.username != "" {
-		if room, err := h.store.LeaveRoom(state.roomCode, state.username); err == nil && room != nil {
-			h.publishRoomState(room)
-		}
+		_, _ = h.store.LeaveRoom(state.roomCode, state.username)
 	}
 	_ = conn.Close()
 }
@@ -269,9 +261,6 @@ func (h *Hub) publishRoomState(room *models.Room) {
 	if room == nil {
 		return
 	}
-	h.mutex.Lock()
-	h.roomVersion[room.Code] = room.Version
-	h.mutex.Unlock()
 
 	players := make([]map[string]any, 0, len(room.Players))
 	for _, player := range room.Players {
@@ -331,25 +320,48 @@ func (h *Hub) broadcastGlobal(message Event) {
 	}
 }
 
-func (h *Hub) syncRooms() {
-	h.mutex.RLock()
-	codes := make([]string, 0, len(h.subscribers))
-	for code := range h.subscribers {
-		codes = append(codes, code)
-	}
-	h.mutex.RUnlock()
-
-	for _, code := range codes {
-		room, err := h.store.GetRoom(code)
-		if err != nil || room == nil {
+func (h *Hub) consumeRoomEvents(streamer RoomEventStreamer) {
+	for {
+		err := streamer.StreamRoomEvents(context.Background(), func(evt RoomEvent) error {
+			h.handleRoomEvent(evt)
+			return nil
+		})
+		if err != nil {
+			log.Printf("room event stream disconnected: %v", err)
+			time.Sleep(500 * time.Millisecond)
 			continue
 		}
-		h.mutex.RLock()
-		lastVersion := h.roomVersion[code]
-		h.mutex.RUnlock()
-		if room.Version > lastVersion {
-			h.publishRoomState(room)
+		return
+	}
+}
+
+func (h *Hub) handleRoomEvent(evt RoomEvent) {
+	switch evt.Type {
+	case "delete":
+		h.broadcastRoomMessage(evt.RoomCode, map[string]any{
+			"type":    "room_closed",
+			"code":    evt.RoomCode,
+			"message": "room closed",
+		})
+		h.mutex.Lock()
+		delete(h.subscribers, evt.RoomCode)
+		h.mutex.Unlock()
+	case "upsert":
+		switch evt.BroadcastType {
+		case "game_started":
+			h.broadcastRoomMessage(evt.RoomCode, map[string]any{
+				"type":    "game_started",
+				"quiz_id": evt.QuizID,
+			})
+		case "chat_message":
+			if evt.ChatMessage != nil {
+				h.broadcastRoomMessage(evt.RoomCode, map[string]any{
+					"type":    "chat_message",
+					"message": evt.ChatMessage,
+				})
+			}
 		}
+		h.publishRoomState(evt.Room)
 	}
 }
 

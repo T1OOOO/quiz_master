@@ -1,6 +1,7 @@
 package storageclient
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -65,4 +66,36 @@ func TestClientSaveReport_UsesContractDTO(t *testing.T) {
 		QuestionText: "Question?",
 	})
 	require.NoError(t, err)
+}
+
+func TestClientStreamRoomEvents_UsesNDJSONContract(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.Equal(t, "/internal/storage/rooms/stream", r.URL.Path)
+		assert.Equal(t, "secret-token", r.Header.Get("X-Internal-Token"))
+		w.Header().Set("Content-Type", "application/x-ndjson")
+		require.NoError(t, json.NewEncoder(w).Encode(storagedto.RoomEvent{
+			Type:     "upsert",
+			RoomCode: "ABCD",
+			Room: &storagedto.Room{
+				Code:   "ABCD",
+				HostID: "host",
+				State:  "waiting",
+				Players: map[string]storagedto.RoomPlayer{
+					"host": {Username: "host", AvatarColor: "#111111", Score: 0},
+				},
+			},
+		}))
+	}))
+	defer server.Close()
+
+	client := New(server.URL, "secret-token")
+	var got RoomEvent
+	err := client.StreamRoomEvents(context.Background(), func(evt RoomEvent) error {
+		got = evt
+		return context.Canceled
+	})
+	require.ErrorIs(t, err, context.Canceled)
+	assert.Equal(t, "upsert", got.Type)
+	require.NotNil(t, got.Room)
+	assert.Equal(t, "ABCD", got.Room.Code)
 }

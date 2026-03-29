@@ -1,9 +1,11 @@
 package roomstate
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"strings"
+	"sync"
 	"time"
 
 	"quiz_master/internal/models"
@@ -23,11 +25,15 @@ type Repository interface {
 }
 
 type Service struct {
-	repo Repository
+	repo   Repository
+	broker *Broker
 }
 
 func New(repo Repository) *Service {
-	return &Service{repo: repo}
+	return &Service{
+		repo:   repo,
+		broker: NewBroker(),
+	}
 }
 
 func (s *Service) CreateRoom(username, avatar string) (*models.Room, error) {
@@ -55,6 +61,7 @@ func (s *Service) CreateRoom(username, avatar string) (*models.Room, error) {
 	if err := s.repo.Create(room); err != nil {
 		return nil, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room})
 	return room, nil
 }
 
@@ -85,6 +92,7 @@ func (s *Service) JoinRoom(code, username, avatar string) (*models.Room, error) 
 	if err := s.repo.Update(room); err != nil {
 		return nil, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room})
 	return room, nil
 }
 
@@ -101,6 +109,7 @@ func (s *Service) LeaveRoom(code, username string) (*models.Room, error) {
 		if err := s.repo.Delete(room.Code); err != nil {
 			return nil, err
 		}
+		s.publish(Event{Type: EventTypeDelete, RoomCode: room.Code})
 		return nil, nil
 	}
 	if room.HostID == username {
@@ -112,6 +121,7 @@ func (s *Service) LeaveRoom(code, username string) (*models.Room, error) {
 	if err := s.repo.Update(room); err != nil {
 		return nil, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room})
 	return room, nil
 }
 
@@ -133,6 +143,7 @@ func (s *Service) StartGame(code, username, quizID string) (*models.Room, error)
 	if err := s.repo.Update(room); err != nil {
 		return nil, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room, BroadcastType: "game_started", QuizID: room.QuizID})
 	return room, nil
 }
 
@@ -154,6 +165,7 @@ func (s *Service) SubmitVote(code, username string, answerIndex int) (*models.Ro
 	if err := s.repo.Update(room); err != nil {
 		return nil, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room})
 	return room, nil
 }
 
@@ -178,7 +190,82 @@ func (s *Service) SubmitChat(code, username, text, image string) (*models.Room, 
 	if err := s.repo.Update(room); err != nil {
 		return nil, models.ChatMessage{}, err
 	}
+	s.publish(Event{Type: EventTypeUpsert, RoomCode: room.Code, Room: room, BroadcastType: "chat_message", ChatMessage: &msg})
 	return room, msg, nil
+}
+
+func (s *Service) Subscribe(ctx context.Context) <-chan Event {
+	if s == nil || s.broker == nil {
+		ch := make(chan Event)
+		close(ch)
+		return ch
+	}
+	return s.broker.Subscribe(ctx)
+}
+
+func (s *Service) publish(evt Event) {
+	if s == nil || s.broker == nil {
+		return
+	}
+	s.broker.Publish(evt)
+}
+
+type EventType string
+
+const (
+	EventTypeUpsert EventType = "upsert"
+	EventTypeDelete EventType = "delete"
+)
+
+type Event struct {
+	Type          EventType           `json:"type"`
+	RoomCode      string              `json:"room_code,omitempty"`
+	Room          *models.Room        `json:"room,omitempty"`
+	BroadcastType string              `json:"broadcast_type,omitempty"`
+	QuizID        string              `json:"quiz_id,omitempty"`
+	ChatMessage   *models.ChatMessage `json:"chat_message,omitempty"`
+}
+
+type Broker struct {
+	mu          sync.RWMutex
+	subscribers map[chan Event]struct{}
+}
+
+func NewBroker() *Broker {
+	return &Broker{subscribers: make(map[chan Event]struct{})}
+}
+
+func (b *Broker) Subscribe(ctx context.Context) <-chan Event {
+	ch := make(chan Event, 16)
+	b.mu.Lock()
+	b.subscribers[ch] = struct{}{}
+	b.mu.Unlock()
+
+	go func() {
+		<-ctx.Done()
+		b.mu.Lock()
+		delete(b.subscribers, ch)
+		b.mu.Unlock()
+		close(ch)
+	}()
+
+	return ch
+}
+
+func (b *Broker) Publish(evt Event) {
+	b.mu.RLock()
+	subscribers := make([]chan Event, 0, len(b.subscribers))
+	for ch := range b.subscribers {
+		subscribers = append(subscribers, ch)
+	}
+	b.mu.RUnlock()
+
+	for _, ch := range subscribers {
+		select {
+		case ch <- evt:
+		default:
+		}
+	}
 }
 
 func generateCode() string {
