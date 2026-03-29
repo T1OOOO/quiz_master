@@ -10,7 +10,7 @@ func InternalTokenMiddleware(expectedToken string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			if expectedToken == "" {
-				return next(c)
+				return c.JSON(http.StatusServiceUnavailable, map[string]string{"error": "internal auth is not configured"})
 			}
 			if c.Request().Header.Get("X-Internal-Token") != expectedToken {
 				return c.JSON(http.StatusUnauthorized, map[string]string{"error": "invalid internal token"})

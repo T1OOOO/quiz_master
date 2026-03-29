@@ -20,6 +20,9 @@ import (
 func Build(cfg *config.Config) (*httpapp.App, error) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
+	if err := cfg.Validate(); err != nil {
+		return nil, err
+	}
 
 	dbConn, err := storagedb.Open(context.Background(), storagedb.Config{
 		Path:         cfg.DBPath,
@@ -45,7 +48,7 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 
 	e := echo.New()
 	e.HideBanner = true
-	httpapp.ConfigureDefaultMiddleware(e)
+	httpapp.ConfigureDefaultMiddleware(e, cfg)
 	e.Use(httpapp.MetricsMiddleware("storage"))
 	registerRoutes(e, cfg, dbConn, storageHandler)
 

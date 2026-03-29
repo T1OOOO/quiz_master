@@ -104,6 +104,13 @@ The Flutter client now reads backend URLs from `--dart-define`:
 - `QUIZ_API_BASE_URL`, default `API_BASE_URL`
 - `WEB_PORT`, default `8091` for Flutter web dev runs
 
+Security-sensitive runtime env:
+
+- `CORS_ALLOWED_ORIGINS`
+- `WS_ALLOWED_ORIGINS`
+- `AUTH_RATE_LIMIT_RPS`
+- `AUTH_RATE_LIMIT_BURST`
+
 Default split endpoints:
 
 - Server (`:8090`): `GET /healthz`, `GET /readyz`, `POST /api/register`, `POST /api/login`, `POST /api/refresh`, `POST /api/guest`, `GET /api/leaderboard`, `POST /api/submit`, `GET /api/quota`, `GET /api/quizzes`, `GET /api/quizzes/:id`, `POST /api/quizzes/:id/check`, `POST /api/report`, `GET /ws`
@@ -115,6 +122,7 @@ Internal service endpoints:
 - Storage internal API: `/internal/storage/...`
 - Auth internal API: `/internal/auth/...`
 - Internal service auth between services uses `X-Internal-Token`
+- Websocket auth requires a JWT in `Authorization: Bearer ...` or `?access_token=...`
 
 Observability endpoints:
 
@@ -166,6 +174,10 @@ Key environment variables for split runtime:
 - `STORAGE_DB_PATH`
 - `STORAGE_API_URL`
 - `STORAGE_API_TOKEN`
+- `CORS_ALLOWED_ORIGINS`
+- `WS_ALLOWED_ORIGINS`
+- `AUTH_RATE_LIMIT_RPS`
+- `AUTH_RATE_LIMIT_BURST`
 - `OTEL_ENABLED`
 - `OTEL_EXPORTER_OTLP_ENDPOINT`
 - `OTEL_SERVICE_NAME`

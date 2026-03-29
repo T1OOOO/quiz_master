@@ -5,6 +5,9 @@ import (
 	"net/http"
 
 	authhttp "quiz_master/internal/auth/http"
+	authtoken "quiz_master/internal/auth/token"
+	"quiz_master/internal/config"
+	"quiz_master/internal/httpapp"
 	"quiz_master/internal/observability"
 	quizhttp "quiz_master/internal/quiz/http"
 	"quiz_master/internal/realtime"
@@ -12,7 +15,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func registerRoutes(e *echo.Echo, db *sql.DB, authMiddleware *authhttp.Middleware, authHandler *authGatewayHandler, quizHandler *quizhttp.Handler) {
+func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, tokenManager *authtoken.Manager, authMiddleware *authhttp.Middleware, authHandler *authGatewayHandler, quizHandler *quizhttp.Handler) {
 	e.GET("/healthz", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "ok"})
 	})
@@ -22,10 +25,11 @@ func registerRoutes(e *echo.Echo, db *sql.DB, authMiddleware *authhttp.Middlewar
 	e.GET("/metrics", echo.WrapHandler(observability.MetricsHandler("server", db)))
 
 	apiGroup := e.Group("/api")
-	apiGroup.POST("/register", authHandler.Register)
-	apiGroup.POST("/login", authHandler.Login)
-	apiGroup.POST("/refresh", authHandler.Refresh)
-	apiGroup.POST("/guest", authHandler.GuestLogin)
+	authRateLimiter := httpapp.NewIPRateLimiter(cfg.AuthRateLimitRPS, cfg.AuthRateLimitBurst)
+	apiGroup.POST("/register", authHandler.Register, authRateLimiter)
+	apiGroup.POST("/login", authHandler.Login, authRateLimiter)
+	apiGroup.POST("/refresh", authHandler.Refresh, authRateLimiter)
+	apiGroup.POST("/guest", authHandler.GuestLogin, authRateLimiter)
 	apiGroup.GET("/leaderboard", authHandler.GetLeaderboard)
 	apiGroup.POST("/submit", authHandler.SubmitResult, authMiddleware.JWT)
 	apiGroup.GET("/quota", authHandler.GetUserQuota, authMiddleware.JWT)
@@ -44,7 +48,7 @@ func registerRoutes(e *echo.Echo, db *sql.DB, authMiddleware *authhttp.Middlewar
 	adminGroup.PUT("/quizzes/:id", quizHandler.Update)
 	adminGroup.DELETE("/quizzes/:id", quizHandler.Delete)
 
-	e.GET("/ws", realtime.HandleWebSocket)
+	e.GET("/ws", realtime.NewWebSocketHandler(tokenManager, cfg.WSAllowedOrigins))
 	e.Static("/assets", "web/dist/assets")
 	e.Static("/_expo", "web/dist/_expo")
 	e.GET("/*", func(c echo.Context) error {

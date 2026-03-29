@@ -23,6 +23,9 @@ import (
 func Build(cfg *config.Config) (*httpapp.App, error) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
+	if err := cfg.Validate(); err != nil {
+		return nil, err
+	}
 
 	dbConn, err := authdb.Open(context.Background(), authdb.Config{
 		Path:         cfg.DBPath,
@@ -49,7 +52,7 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 
 	e := echo.New()
 	e.HideBanner = true
-	httpapp.ConfigureDefaultMiddleware(e)
+	httpapp.ConfigureDefaultMiddleware(e, cfg)
 	e.Use(httpapp.MetricsMiddleware("auth"))
 	registerRoutes(e, cfg, dbConn, authHandler, authMiddleware, internalHandler)
 

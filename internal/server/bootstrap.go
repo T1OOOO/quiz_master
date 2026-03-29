@@ -22,6 +22,9 @@ import (
 func Build(cfg *config.Config) (*httpapp.App, error) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
+	if err := cfg.Validate(); err != nil {
+		return nil, err
+	}
 
 	quizRepo := storageclient.New(cfg.StorageAPIURL, cfg.StorageAPIToken)
 	authClient := authclient.New(cfg.AuthAPIURL, cfg.AuthAPIToken)
@@ -41,9 +44,9 @@ func Build(cfg *config.Config) (*httpapp.App, error) {
 
 	e := echo.New()
 	e.HideBanner = true
-	httpapp.ConfigureDefaultMiddleware(e)
+	httpapp.ConfigureDefaultMiddleware(e, cfg)
 	e.Use(httpapp.MetricsMiddleware("server"))
-	registerRoutes(e, nil, authMiddleware, authGateway, quizHandler)
+	registerRoutes(e, cfg, nil, tokenManager, authMiddleware, authGateway, quizHandler)
 
 	return httpapp.New(
 		e,

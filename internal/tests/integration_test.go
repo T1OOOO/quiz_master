@@ -111,7 +111,7 @@ func setupIntegrationServer(t *testing.T) (*echo.Echo, *sql.DB) {
 
 	e := echo.New()
 	api := e.Group("/api")
-	authhttp.RegisterRoutes(api, authHandler, authMiddleware)
+	authhttp.RegisterRoutes(api, authHandler, authMiddleware, func(next echo.HandlerFunc) echo.HandlerFunc { return next })
 	api.GET("/quizzes", quizHandler.List)
 	api.GET("/quota", authHandler.GetUserQuota, authMiddleware.JWT)
 	api.POST("/report", quizHandler.Report)

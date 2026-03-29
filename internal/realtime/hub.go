@@ -1,17 +1,16 @@
 package realtime
 
 import (
+	"errors"
 	"log"
 	"net/http"
+	"strings"
 	"sync"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
+	authtoken "quiz_master/internal/auth/token"
 )
-
-var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool { return true },
-}
 
 type Event struct {
 	Type    string `json:"type"`
@@ -78,33 +77,82 @@ func (h *Hub) BroadcastEvent(evt Event) {
 	h.broadcast <- evt
 }
 
-func HandleWebSocket(c echo.Context) error {
-	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
-	if err != nil {
-		return err
+func NewWebSocketHandler(tokens *authtoken.Manager, allowedOrigins []string) echo.HandlerFunc {
+	allowed := make(map[string]struct{}, len(allowedOrigins))
+	for _, origin := range allowedOrigins {
+		origin = strings.TrimSpace(origin)
+		if origin != "" {
+			allowed[origin] = struct{}{}
+		}
 	}
 
-	// Register for spectator/general events
-	GlobalHub.register <- ws
+	upgrader := websocket.Upgrader{
+		CheckOrigin: func(r *http.Request) bool {
+			origin := strings.TrimSpace(r.Header.Get("Origin"))
+			if origin == "" {
+				return false
+			}
+			_, ok := allowed[origin]
+			return ok
+		},
+	}
 
-	// Read Loop
-	go func() {
-		defer func() {
-			GlobalHub.unregister <- ws
-			Manager.RemoveClient(ws)
-			ws.Close()
+	return func(c echo.Context) error {
+		if err := authorizeWebSocketRequest(c.Request(), tokens); err != nil {
+			return c.JSON(http.StatusUnauthorized, map[string]string{"error": "unauthorized websocket"})
+		}
+
+		ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
+		if err != nil {
+			return err
+		}
+
+		GlobalHub.register <- ws
+
+		go func() {
+			defer func() {
+				GlobalHub.unregister <- ws
+				Manager.RemoveClient(ws)
+				ws.Close()
+			}()
+
+			for {
+				_, msg, err := ws.ReadMessage()
+				if err != nil {
+					break
+				}
+
+				Manager.HandleMessage(ws, msg)
+			}
 		}()
 
-		for {
-			_, msg, err := ws.ReadMessage()
-			if err != nil {
-				break // connection closed
-			}
+		return nil
+	}
+}
 
-			// Process message
-			Manager.HandleMessage(ws, msg)
-		}
-	}()
+func authorizeWebSocketRequest(r *http.Request, tokens *authtoken.Manager) error {
+	if tokens == nil {
+		return errors.New("token manager is not configured")
+	}
 
-	return nil
+	tokenString := strings.TrimSpace(extractBearerToken(r.Header.Get("Authorization")))
+	if tokenString == "" {
+		tokenString = strings.TrimSpace(r.URL.Query().Get("access_token"))
+	}
+	if tokenString == "" {
+		tokenString = strings.TrimSpace(r.URL.Query().Get("token"))
+	}
+	if tokenString == "" {
+		return errors.New("missing websocket token")
+	}
+	_, err := tokens.Parse(tokenString)
+	return err
+}
+
+func extractBearerToken(header string) string {
+	parts := strings.SplitN(header, " ", 2)
+	if len(parts) == 2 && strings.EqualFold(parts[0], "Bearer") {
+		return parts[1]
+	}
+	return ""
 }

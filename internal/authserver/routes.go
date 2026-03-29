@@ -23,7 +23,7 @@ func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, authHandler *a
 	e.GET("/metrics", echo.WrapHandler(observability.MetricsHandler("auth", db)))
 
 	apiGroup := e.Group("/api")
-	authhttp.RegisterRoutes(apiGroup, authHandler, authMiddleware)
+	authhttp.RegisterRoutes(apiGroup, authHandler, authMiddleware, httpapp.NewIPRateLimiter(cfg.AuthRateLimitRPS, cfg.AuthRateLimitBurst))
 
 	internalGroup := e.Group("/internal/auth")
 	internalGroup.Use(httpapp.InternalTokenMiddleware(cfg.AuthAPIToken))
