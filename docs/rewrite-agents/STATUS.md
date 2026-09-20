@@ -14,10 +14,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P33 (`quiz_master-rq9.34`), execution child P33E (`quiz_master-rq9.43`) and fixture remediation P33F (`quiz_master-rq9.44`) are accepted and closed. Integration commit: `f85b2d4`. The original P33 hub card remains an immutable malformed-dependency audit; accepted hub lifecycle is recorded on `.43` and `.44`.
 - P05 (`quiz_master-rq9.6`) is accepted and closed. Integration commit: `a3d6062`. It adds the Go/PostgreSQL server skeleton, checksummed migrations, guest/session identity boundary, bounded startup/HTTP timeouts and disposable-database integration evidence.
 - P06F (`quiz_master-rq9.45`) is accepted and closed; reviewed Flutter foundation code is integrated in `313dda8`. Parent P06 (`quiz_master-rq9.7`) remains blocked only on Android build smoke: format/analyze, 20 widget/model tests and Web build/privacy scan pass, while local Gradle failed with a loopback/toolchain error and Android cmdline-tools are missing.
+- P07 (`quiz_master-rq9.8`) is accepted and closed with `DONE_WITH_CONCERNS`. Integration commit: `558cac7`. The digest-pinned Compose API/PostgreSQL stack passed build, health and exact teardown checks; pinned CI covers Go, Flutter Web and Android. No remote CI run or real debug APK is claimed, so P06 remains blocked.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P05, advisory P29, P33 and the P06 code slice are integrated. P06 is not accepted until Android build smoke passes. P07 is next and may resolve the reproducible Android toolchain before P06 closes.
+- Baseline packets P01-P05, advisory P29, P33, the reviewed P06 code slice and P07 are integrated. P06 is not accepted until Android build smoke passes. P08 is the next independent implementation slice.
 
 ## Preserved pre-existing work
 
@@ -27,9 +28,9 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Decisions and blockers
 
-- Live-team provisional reveal policy: the private host sees committed submissions immediately; teams receive receipt immediately; correctness is shared only after round close. Final product clarification remains required before P33 acceptance.
-- P05/P06 require accepted P04 plus accepted P33, so the live-team extension is frozen before backend/Flutter consumers.
-- Docker CLI is installed but the Docker Desktop Linux engine was unavailable during P00.
+- Live-team reveal policy is frozen by accepted P33: the private host sees committed submissions immediately; teams receive receipt immediately; correctness is shared only after round close.
+- P05/P06 consumed accepted P04 and P33 contracts; later backend/Flutter work must preserve those boundaries.
+- Docker Desktop's Linux engine is now available. P07 proved an isolated digest-pinned API/PostgreSQL stack and exact project/volume cleanup.
 - `bd doctor` reports a repository fingerprint mismatch and two pre-existing merge-artifact files. The database passed integrity and DB/JSONL sync checks. Do not auto-fix or delete those artifacts without resolving ownership.
 - Production cutover and external publication are not authorized by this status.
 - P01 verified 101/101 legacy JSON files and 3,128 questions. A nonzero legacy `correct_answer` is ignored by the current Go field tag and decodes to zero. Production data remains uninspected. P04/P08 must define explicit mapping, bounds checks, duplicate-ID policy and `correct_multi` handling.
@@ -40,6 +41,6 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Dispatch P07 reproducible toolchain/CI foundation and resolve or reproduce the P06 Android build blocker.
-2. Close P06 only after a real debug APK build succeeds on the approved toolchain; no device claim without a device.
-3. Dispatch P08 `quizctl` and the first real imported pack, then proceed to P09/P10 and the first vertical gate.
+1. Dispatch P08 `quizctl` and the first real imported pack, then proceed to P09/P10 and the first vertical gate.
+2. Close P06 only after a real debug APK build succeeds on an approved isolated toolchain or observed CI runner; no device claim without a device.
+3. Preserve P07's Android concern until the APK and its SHA-256 are recorded.
