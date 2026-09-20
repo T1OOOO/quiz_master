@@ -1,0 +1,46 @@
+P06F final gates
+Date: 2026-09-20
+Workspace: C:\ap\quiz_master\next\apps\quiz_app
+Toolchain: Flutter 3.47.1; Dart 3.13.1
+
+COMMAND: flutter pub get
+DURATION_MS: 3826
+EXIT: 0
+RESULT: dependencies resolved; pubspec.lock unchanged.
+
+COMMAND: flutter gen-l10n; dart run build_runner build --delete-conflicting-outputs
+DURATION_MS: 8069
+EXIT: 0
+RESULT: localization generated; Freezed build skipped/no-op; 0 outputs written.
+NOTE: build_runner reported that --delete-conflicting-outputs is removed and
+ignored, and an analyzer language-version warning; neither was a failure.
+
+COMMAND: dart format --output=none --set-exit-if-changed .
+DURATION_MS: 1732
+EXIT: 0
+RESULT: Formatted 8 files (0 changed) in 0.05 seconds.
+
+COMMAND: flutter analyze
+DURATION_MS: 9732
+EXIT: 0
+RESULT: No issues found (6.5 seconds reported by Flutter).
+
+COMMAND: flutter test
+DURATION_MS: 8876
+EXIT: 0
+RESULT: 20 tests passed.
+
+COMMAND: flutter build web
+DURATION_MS: 80288
+EXIT: 0
+RESULT: build/web created; Flutter compile time 77.2 seconds. Wasm dry run
+succeeded. Flutter emitted its existing optional Cupertino-font warning.
+
+COMMAND: fixed-string scan of build/web for private_grading, accepted_variants,
+correct_option_id, correct_option_ids, published_bundle, and quoted draft
+EXIT: 0
+RESULT: every marker count was 0.
+
+ANDROID: not retried. The prior environment/tooling failure is preserved in the
+existing build-apk evidence, as required by P06F.
+

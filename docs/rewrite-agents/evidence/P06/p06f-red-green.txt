@@ -1,0 +1,37 @@
+P06F RED/GREEN evidence
+Date: 2026-09-20
+Workspace: C:\ap\quiz_master\next\apps\quiz_app
+
+RED 1
+COMMAND: flutter test test/public_contract_and_cards_test.dart
+EXIT: 1
+RESULT: +10 -1. The real widget-tree tap could not find text "Submit answer".
+CAUSE PROVED: normalized-text QuestionCard rendered only a TextField and had no
+visible submit control.
+
+RED 2
+COMMAND: flutter test test/public_contract_and_cards_test.dart
+EXIT: 1
+RESULT: +10 -4. The decoder accepted difficulty "expert" and an empty reveal
+answer; the visible submit button was absent in enabled and submitting states.
+CAUSES PROVED: required enum/minLength validation and submit UI were missing.
+
+RED 3
+COMMAND: flutter test test/widget_test.dart
+EXIT: 1
+RESULT: +4 -1. After gallery navigation plus locale/theme changes, the
+MaterialApp routerConfig was a different GoRouter instance.
+CAUSE PROVED: QuizApp created a router inside build.
+
+GREEN FOCUSED
+COMMAND: flutter test test/public_contract_and_cards_test.dart
+EXIT: 0
+RESULT: 15 tests passed. Includes real TextField entry and button tap, disabled
+callbacks, Tab+Enter single choice, Tab+Space multiple choice, stable IDs,
+semantics, contract variants, phone/large-text, and projector layouts.
+
+COMMAND: flutter test test/widget_test.dart
+EXIT: 0
+RESULT: 5 tests passed. Includes real gallery navigation, router identity,
+locale/theme route retention, invite-token retention, and back behavior.
+
