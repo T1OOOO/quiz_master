@@ -61,16 +61,18 @@ jobs:
       - run: flutter build web
       - name: Reject private markers from Web output
         run: |
-          for marker in private_grading accepted_variants correct_option_id correct_option_ids published_bundle \"draft\"; do
-            if rg -F -n -- "$marker" build/web; then
+          markers=(private_grading accepted_variants correct_option_id correct_option_ids published_bundle '"draft"')
+          for marker in "${markers[@]}"; do
+            if grep -R -F -n -- "$marker" build/web; then
               echo "private marker found in Web artifact: $marker" >&2
               exit 1
             else
               status=$?
-              if [ "$status" -ne 1 ]; then
-                echo "private-marker scan failed with rg exit $status for $marker" >&2
-                exit "$status"
+              if [ "$status" -eq 1 ]; then
+                continue
               fi
+              echo "private-marker scan failed with grep exit $status for $marker" >&2
+              exit "$status"
             fi
           done
       - run: find build/web -type f ! -name SHA256SUMS.txt -print0 | LC_ALL=C sort -z | xargs -0r sha256sum > build/web/SHA256SUMS.txt

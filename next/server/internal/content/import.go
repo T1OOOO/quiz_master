@@ -61,6 +61,10 @@ func Import(path string) (Draft, Manifest, error) {
 	if !ok {
 		return fail("invalid_json", path)
 	}
+	canonicalSource, e := canonicalSourceBytes(b)
+	if e != nil {
+		return fail("invalid_json", path)
+	}
 	if e = allowed(obj, "id title description category questions", path); e != nil {
 		return Draft{}, Manifest{}, e
 	}
@@ -80,7 +84,7 @@ func Import(path string) (Draft, Manifest, error) {
 	}
 	sourcePath := filepath.ToSlash(filepath.Clean(path))
 	d := Draft{Contract: "quiz-contract/v1", State: "draft", QuizID: quizID, Locale: "ru", Revision: Revision{Number: 1}}
-	m := Manifest{MappingVersion: "legacy-choice/v1", SourcePath: sourcePath, SourceSHA256: hashBytes(b), SourceQuizID: sourceID, CanonicalQuizID: quizID, Category: obj["category"].(string), Title: obj["title"].(string), Description: obj["description"].(string)}
+	m := Manifest{MappingVersion: "legacy-choice/v1", SourcePath: sourcePath, SourceSHA256: hashBytes(canonicalSource), SourceQuizID: sourceID, CanonicalQuizID: quizID, Category: obj["category"].(string), Title: obj["title"].(string), Description: obj["description"].(string)}
 	seen := map[string]string{}
 	for pos, value := range questions {
 		where := fmt.Sprintf("%s#/questions/%d", path, pos)

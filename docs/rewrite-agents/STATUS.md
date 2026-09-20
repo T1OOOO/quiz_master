@@ -14,13 +14,14 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P33 (`quiz_master-rq9.34`), execution child P33E (`quiz_master-rq9.43`) and fixture remediation P33F (`quiz_master-rq9.44`) are accepted and closed. Integration commit: `f85b2d4`. The original P33 hub card remains an immutable malformed-dependency audit; accepted hub lifecycle is recorded on `.43` and `.44`.
 - P05 (`quiz_master-rq9.6`) is accepted and closed. Integration commit: `a3d6062`. It adds the Go/PostgreSQL server skeleton, checksummed migrations, guest/session identity boundary, bounded startup/HTTP timeouts and disposable-database integration evidence.
 - P06 (`quiz_master-rq9.7`) and P06F (`quiz_master-rq9.45`) are accepted and closed. Reviewed Flutter code is integrated in `313dda8`; remote Android evidence is integrated in `884782c`. GitHub job `106112259701` built a real 154,866,738-byte debug APK with SHA-256 `9024d7f12908563e90a4a0c587450b45ad86ed1942b0db728e3350e86994996b`. No device, release signing or release-mode claim is made.
-- P07 (`quiz_master-rq9.8`) is accepted and closed with `DONE_WITH_CONCERNS`. Integration commit: `558cac7`. The digest-pinned Compose API/PostgreSQL stack passed build, health and exact teardown checks; pinned CI covers Go, Flutter Web and Android. No remote CI run or real debug APK is claimed, so P06 remains blocked.
+- P07 (`quiz_master-rq9.8`) is accepted and closed with `DONE_WITH_CONCERNS`. Integration commit: `558cac7`. The digest-pinned Compose API/PostgreSQL stack passed build, health and exact teardown checks; pinned CI covers Go, Flutter Web and Android. P06 was later cleared by the successful remote Android debug build recorded above.
+- P07C (`quiz_master-rq9.46`) is locally accepted with `DONE_WITH_CONCERNS`. Canonical UTF-8/LF source hashing removes checkout line-ending variance, and the Web privacy scan no longer depends on unavailable `rg`. All sequential local gates passed; per user direction, no new GitHub Actions run was attempted and no all-green remote run is claimed.
 - P08 (`quiz_master-rq9.9`) is accepted and closed. Integration commit: `f5428ae`. `quizctl import/validate/build/diff` now produces a deterministic controlled bundle from the first real 25-question legacy pack; 25 grading entries and 150 option mappings were independently checked. Bundle SHA-256: `6c7754aa9b142d8657bac1bb65f0536d30364d262ef109315c4b9356ee512b95`.
 - P09 (`quiz_master-rq9.10`) is accepted and closed with one environment concern. Integration commit: `ec74e4a`. Authenticated attempts now pin the P08 bundle/snapshots, enforce deadlines and idempotent final answers, score only on the server and persist participant-scoped history. PostgreSQL concurrency tests pass; Windows race instrumentation is unavailable because `CGO_ENABLED=0`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P09, advisory P29 and P33 are integrated and accepted. P10 is dependency-ready after the successful P06 remote Android smoke. The first remote CI run also exposed two portability defects (missing `rg` and CRLF/LF-sensitive P08 source hashing) that must be remediated before P10/P11 acceptance.
+- Baseline packets P01-P09, advisory P29 and P33 are integrated and accepted. P10 is dependency-ready after the successful P06 remote Android smoke. The two portability defects exposed by the first remote CI run are locally remediated in P07C; remote confirmation is intentionally omitted by user direction.
 
 ## Preserved pre-existing work
 
@@ -45,6 +46,6 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Remediate the two remote CI portability failures and obtain a fully green rerun while preserving the successful Android artifact evidence.
-2. Dispatch P10 Flutter catalog-to-history flow, then run the P11 first vertical gate.
+1. Dispatch P10 Flutter catalog-to-history flow, then run the P11 first vertical gate.
+2. Preserve P07C's missing remote confirmation as an explicit limitation; do not run GitHub Actions unless the user changes direction.
 3. Preserve P09's unavailable Windows race instrumentation as explicit release evidence.

@@ -1,0 +1,10 @@
+command: bash docs/rewrite-agents/evidence/P07C/scanner-probe.sh
+exit: 0
+clean=0
+matched=10
+scanner_error=2
+
+Interpretation:
+- grep exit 1 for every marker is clean and returns scan status 0.
+- a fixed-string marker match is rejected with probe status 10.
+- a missing scan root propagates grep status 2 and is rejected.

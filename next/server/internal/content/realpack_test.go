@@ -22,7 +22,7 @@ func TestCheckedInRealPackCompleteAndReproducible(t *testing.T) {
 		d.Questions[i].Source["uri"] = source
 	}
 	Rehash(&d)
-	if m.SourceSHA256 != "2521e37a1187064c977dcbd8f1001b38f94016e26689333b214a07e1a0950439" {
+	if m.SourceSHA256 != "35a3e9f1aeb415d1e20d7ef913a493bfe8bbef2eb145ebc2079a29ebc725ed9a" {
 		t.Fatal("selected legacy source changed")
 	}
 	pack := filepath.Join(root, "next/content/home-alone-1-part-1")

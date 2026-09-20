@@ -148,6 +148,39 @@ func TestHashUnescapedUnicodeSortedKeys(t *testing.T) {
 		t.Fatal("canonical hash escaped Unicode/HTML or unsorted keys")
 	}
 }
+
+func TestCanonicalSourceBytesNormalizesOnlyTransportLineEndings(t *testing.T) {
+	lf := []byte("{\n\t\"id\": \"quiz\"\n}\n")
+	crlf := []byte("{\r\n\t\"id\": \"quiz\"\r\n}\r\n")
+	loneCR := []byte("{\r\t\"id\": \"quiz\"\r}\r")
+
+	canonicalLF, err := canonicalSourceBytes(lf)
+	if err != nil {
+		t.Fatal(err)
+	}
+	canonicalCRLF, err := canonicalSourceBytes(crlf)
+	if err != nil {
+		t.Fatal(err)
+	}
+	canonicalLoneCR, err := canonicalSourceBytes(loneCR)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if hashBytes(canonicalLF) != hashBytes(canonicalCRLF) {
+		t.Fatal("LF and CRLF source hashes differ")
+	}
+	if string(canonicalLoneCR) != "{\n\t\"id\": \"quiz\"\n}\n" {
+		t.Fatalf("lone CR was not normalized: %q", canonicalLoneCR)
+	}
+	mutated := append([]byte(nil), canonicalLF...)
+	mutated[3] = 'x'
+	if hashBytes(canonicalLF) == hashBytes(mutated) {
+		t.Fatal("non-line-ending source mutation did not change hash")
+	}
+	if _, err := canonicalSourceBytes([]byte{0xff}); err == nil {
+		t.Fatal("invalid UTF-8 source was accepted")
+	}
+}
 func TestBuildRejectsInvalidDraftAndTimestamp(t *testing.T) {
 	if _, e := Build(Draft{}, "v1", "2026-09-20T00:00:00Z"); e == nil {
 		t.Fatal("accepted invalid draft")

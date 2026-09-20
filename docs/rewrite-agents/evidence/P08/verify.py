@@ -34,6 +34,12 @@ def file_hash(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def canonical_source_hash(path):
+    raw = path.read_bytes()
+    raw.decode("utf-8", errors="strict")
+    return hashlib.sha256(raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")).hexdigest()
+
+
 def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -54,7 +60,8 @@ def verify_pack(directory):
     draft = load(directory / "draft.json")
     manifest = load(directory / "manifest.json")
     bundle = load(directory / "bundle.json")
-    assert file_hash(ROOT / SOURCE) == manifest["source_sha256"] == "2521e37a1187064c977dcbd8f1001b38f94016e26689333b214a07e1a0950439"
+    source_path = ROOT / SOURCE
+    assert canonical_source_hash(source_path) == manifest["source_sha256"] == "35a3e9f1aeb415d1e20d7ef913a493bfe8bbef2eb145ebc2079a29ebc725ed9a"
     assert manifest["source_path"] == SOURCE
     assert manifest["source_quiz_id"] == source["id"]
     assert manifest["canonical_quiz_id"] == draft["quiz_id"]
@@ -88,7 +95,7 @@ def verify_pack(directory):
     return {"source_questions": 25, "canonical_questions": 25, "private_grading_entries": 25,
             "question_mappings": 25, "option_mappings": sum(len(q["options"]) for q in manifest["questions"]),
             "nonzero_source_answers": sum(q["correct_answer"] != 0 for q in source["questions"]),
-            "source_sha256": manifest["source_sha256"], "draft_revision_sha256": draft_hash,
+            "source_canonical_lf_sha256": manifest["source_sha256"], "draft_revision_sha256": draft_hash,
             "bundle_sha256": bundle_hash, "question_revision_sha256": revisions,
             "artifact_file_sha256": {name: file_hash(directory / name) for name in ("draft.json", "manifest.json", "bundle.json")}}
 

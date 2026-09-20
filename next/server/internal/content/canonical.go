@@ -188,6 +188,18 @@ func canonicalValue(out *bytes.Buffer, v any) {
 		out.WriteString("null")
 	}
 }
+
+// canonicalSourceBytes preserves source JSON byte-for-byte except for transport
+// line endings. This makes a source hash stable across Windows and LF checkouts
+// without reserializing JSON or masking substantive whitespace/content changes.
+func canonicalSourceBytes(b []byte) ([]byte, error) {
+	if !utf8.Valid(b) {
+		return nil, fmt.Errorf("source is not valid UTF-8")
+	}
+	b = bytes.ReplaceAll(b, []byte("\r\n"), []byte("\n"))
+	return bytes.ReplaceAll(b, []byte("\r"), []byte("\n")), nil
+}
+
 func hashBytes(b []byte) string { h := sha256.Sum256(b); return hex.EncodeToString(h[:]) }
 func sum(v any) string {
 	b, e := Canonical(v)
