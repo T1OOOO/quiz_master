@@ -13,14 +13,14 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P04 (`quiz_master-rq9.5`) and its P04R remediation (`quiz_master-rq9.42`) are accepted and closed. Integration commit: `0b32a6c77fbc020b0c95b6bb80551ee095c458d2`.
 - P33 (`quiz_master-rq9.34`), execution child P33E (`quiz_master-rq9.43`) and fixture remediation P33F (`quiz_master-rq9.44`) are accepted and closed. Integration commit: `f85b2d4`. The original P33 hub card remains an immutable malformed-dependency audit; accepted hub lifecycle is recorded on `.43` and `.44`.
 - P05 (`quiz_master-rq9.6`) is accepted and closed. Integration commit: `a3d6062`. It adds the Go/PostgreSQL server skeleton, checksummed migrations, guest/session identity boundary, bounded startup/HTTP timeouts and disposable-database integration evidence.
-- P06F (`quiz_master-rq9.45`) is accepted and closed; reviewed Flutter foundation code is integrated in `313dda8`. Parent P06 (`quiz_master-rq9.7`) remains blocked only on Android build smoke: format/analyze, 20 widget/model tests and Web build/privacy scan pass, while local Gradle failed with a loopback/toolchain error and Android cmdline-tools are missing.
+- P06 (`quiz_master-rq9.7`) and P06F (`quiz_master-rq9.45`) are accepted and closed. Reviewed Flutter code is integrated in `313dda8`; remote Android evidence is integrated in `884782c`. GitHub job `106112259701` built a real 154,866,738-byte debug APK with SHA-256 `9024d7f12908563e90a4a0c587450b45ad86ed1942b0db728e3350e86994996b`. No device, release signing or release-mode claim is made.
 - P07 (`quiz_master-rq9.8`) is accepted and closed with `DONE_WITH_CONCERNS`. Integration commit: `558cac7`. The digest-pinned Compose API/PostgreSQL stack passed build, health and exact teardown checks; pinned CI covers Go, Flutter Web and Android. No remote CI run or real debug APK is claimed, so P06 remains blocked.
 - P08 (`quiz_master-rq9.9`) is accepted and closed. Integration commit: `f5428ae`. `quizctl import/validate/build/diff` now produces a deterministic controlled bundle from the first real 25-question legacy pack; 25 grading entries and 150 option mappings were independently checked. Bundle SHA-256: `6c7754aa9b142d8657bac1bb65f0536d30364d262ef109315c4b9356ee512b95`.
 - P09 (`quiz_master-rq9.10`) is accepted and closed with one environment concern. Integration commit: `ec74e4a`. Authenticated attempts now pin the P08 bundle/snapshots, enforce deadlines and idempotent final answers, score only on the server and persist participant-scoped history. PostgreSQL concurrency tests pass; Windows race instrumentation is unavailable because `CGO_ENABLED=0`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P05, advisory P29, P33, the reviewed P06 code slice and P07-P09 are integrated. P06 is not accepted until Android build smoke passes. P10 is code-ready on P08 but remains dependency-blocked by P06's missing APK smoke.
+- Baseline packets P01-P09, advisory P29 and P33 are integrated and accepted. P10 is dependency-ready after the successful P06 remote Android smoke. The first remote CI run also exposed two portability defects (missing `rg` and CRLF/LF-sensitive P08 source hashing) that must be remediated before P10/P11 acceptance.
 
 ## Preserved pre-existing work
 
@@ -45,6 +45,6 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Resolve P06 with a real debug APK on an approved isolated toolchain or observed CI runner; no device claim without a device.
-2. Dispatch P10 Flutter catalog-to-history flow after P06 closes, then run the P11 first vertical gate.
-3. Preserve P07's Android concern and P09's unavailable Windows race instrumentation as explicit release evidence.
+1. Remediate the two remote CI portability failures and obtain a fully green rerun while preserving the successful Android artifact evidence.
+2. Dispatch P10 Flutter catalog-to-history flow, then run the P11 first vertical gate.
+3. Preserve P09's unavailable Windows race instrumentation as explicit release evidence.
