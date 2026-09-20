@@ -12,10 +12,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P29 (`quiz_master-rq9.30`) is accepted and closed. Integration commit: `5e549a799bc8a14bc946240cd3a5005e305380ff`.
 - P04 (`quiz_master-rq9.5`) and its P04R remediation (`quiz_master-rq9.42`) are accepted and closed. Integration commit: `0b32a6c77fbc020b0c95b6bb80551ee095c458d2`.
 - P33 (`quiz_master-rq9.34`), execution child P33E (`quiz_master-rq9.43`) and fixture remediation P33F (`quiz_master-rq9.44`) are accepted and closed. Integration commit: `f85b2d4`. The original P33 hub card remains an immutable malformed-dependency audit; accepted hub lifecycle is recorded on `.43` and `.44`.
+- P05 (`quiz_master-rq9.6`) is accepted and closed. Integration commit: `a3d6062`. It adds the Go/PostgreSQL server skeleton, checksummed migrations, guest/session identity boundary, bounded startup/HTTP timeouts and disposable-database integration evidence.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P03, advisory P29 and the combined P04/P33 contracts are accepted. P05, P06 and P07 are now contract-ready and will run sequentially under the user's one-agent limit.
+- Baseline packets P01-P05, advisory P29 and the P33 live-team extension are accepted. P06, P07 and P08 are ready and will run sequentially under the user's one-agent limit.
 
 ## Preserved pre-existing work
 
@@ -38,6 +39,6 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Dispatch P05 backend foundation against the frozen P04/P33 contracts.
-2. Dispatch P06 Flutter foundation after P05 or at the next sequential slot; no parallel agent work.
-3. Dispatch P07 reproducible toolchain/CI foundation, then run the first integrated contract/foundation gate.
+1. Dispatch P06 Flutter foundation against the frozen P04/P33 fixtures; no parallel agent work.
+2. Dispatch P07 reproducible toolchain/CI foundation.
+3. Dispatch P08 `quizctl` and the first real imported pack, then proceed to P09/P10 and the first vertical gate.
