@@ -9,6 +9,7 @@ require (
 	github.com/jackc/pgx/v5 v5.9.1
 	github.com/labstack/echo/v4 v4.13.3
 	github.com/prometheus/client_golang v1.23.2
+	github.com/santhosh-tekuri/jsonschema/v6 v6.0.1
 	github.com/stretchr/testify v1.11.1
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0
 	go.opentelemetry.io/otel v1.42.0
@@ -16,6 +17,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.42.0
 	go.opentelemetry.io/otel/trace v1.42.0
 	golang.org/x/crypto v0.48.0
+	golang.org/x/text v0.34.0
 	golang.org/x/time v0.14.0
 	modernc.org/sqlite v1.33.0
 )
@@ -54,7 +56,6 @@ require (
 	golang.org/x/net v0.51.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
-	golang.org/x/text v0.34.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57 // indirect
 	google.golang.org/grpc v1.79.2 // indirect

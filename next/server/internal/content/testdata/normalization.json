@@ -1,0 +1,14 @@
+[
+ {"input":"  MARS\t\n","expected":"mars"},
+ {"input":"Straße STRASSE ẞ","expected":"strasse strasse ss"},
+ {"input":"E\u0301 é É","expected":"é é é"},
+ {"input":"Σςσ","expected":"σσσ"},
+ {"input":"İ I ı","expected":"i̇ i ı"},
+ {"input":"ﬃ K ſ","expected":"ffi k s"},
+ {"input":"ЁЖ ЁЖ","expected":"ёж ёж"},
+ {"input":"Ꭰꭰ","expected":"ᎠᎠ"},
+ {"input":"\u0085A\u00a0B\u1680C\u2000D\u2001E\u2002F\u2003G\u2004H\u2005I\u2006J\u2007K\u2008L\u2009M\u200aN\u2028O\u2029P\u202fQ\u205fR\u3000","expected":"a b c d e f g h i j k l m n o p q r"},
+ {"input":"\u001cA\u001dB\u001eC\u001f","expected":"a b c"},
+ {"input":"A\u200bB\ufeffC","expected":"a\u200bb\ufeffc"},
+ {"input":"\t\n\u000b\f\r ","expected":""}
+]
