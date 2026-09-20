@@ -1,0 +1,24 @@
+{
+    "container":  "qm-p09-20260920-1742",
+    "volume":  "qm-p09-20260920-1742-data",
+    "validated_container_id":  "78c7bfe488c91b5c91e323756757faa88da715394f0d01b280d28accf1dffe6b",
+    "validated_label":  "qm.task=P09",
+    "commands":  [
+                     "docker rm -f qm-p09-20260920-1742",
+                     "docker volume rm qm-p09-20260920-1742-data",
+                     "docker ps -a --filter name=^/qm-p09-20260920-1742$ --format {{.Names}}",
+                     "docker volume ls --filter name=^qm-p09-20260920-1742-data$ --format {{.Name}}"
+                 ],
+    "cwd":  "C:\\ap\\quiz_master",
+    "duration_seconds":  1.987,
+    "exits":  [
+                  0,
+                  0,
+                  0,
+                  0
+              ],
+    "removed_container":  "qm-p09-20260920-1742",
+    "removed_volume":  "qm-p09-20260920-1742-data",
+    "remaining_container":  "",
+    "remaining_volume":  ""
+}

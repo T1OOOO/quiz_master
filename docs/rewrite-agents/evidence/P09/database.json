@@ -1,0 +1,247 @@
+{
+    "container_name":  "qm-p09-20260920-1742",
+    "container_id":  "78c7bfe488c91b5c91e323756757faa88da715394f0d01b280d28accf1dffe6b",
+    "image":  "postgres:17",
+    "healthy":  "healthy",
+    "loopback_port":  [
+                          {
+                              "HostIp":  "127.0.0.1",
+                              "HostPort":  "64594"
+                          }
+                      ],
+    "volume":  "qm-p09-20260920-1742-data",
+    "inspection_command":  "docker exec qm-p09-20260920-1742 psql -U postgres -d p09 -At -c \u003cSQL in inspect-database.ps1\u003e",
+    "cwd":  "C:\\ap\\quiz_master",
+    "duration_seconds":  1.159,
+    "exit":  0,
+    "database":  {
+                     "server_version":  "17.11 (Debian 17.11-1.pgdg13+2)",
+                     "database":  "p09",
+                     "migrations":  [
+                                        {
+                                            "version":  1,
+                                            "checksum":  "af4e7f9abb3d29b954bc582409235dfa3cae1697315a89a45187cd1a9a28569a"
+                                        },
+                                        {
+                                            "version":  2,
+                                            "checksum":  "d729dccfd35d5e7f55955c359fc1bbb1d8cc12be839ed21e651b38a03b5319c2"
+                                        }
+                                    ],
+                     "row_counts":  {
+                                        "bundles":  2,
+                                        "attempts":  9,
+                                        "snapshots":  225,
+                                        "receipts":  13,
+                                        "finished":  6
+                                    },
+                     "public_row_private_marker_count":  0,
+                     "session_digest_format_failures":  0,
+                     "schema_objects":  [
+                                            {
+                                                "table":  "attempt_answers",
+                                                "indexes":  3
+                                            },
+                                            {
+                                                "table":  "attempt_bundles",
+                                                "indexes":  3
+                                            },
+                                            {
+                                                "table":  "attempt_questions",
+                                                "indexes":  3
+                                            },
+                                            {
+                                                "table":  "attempts",
+                                                "indexes":  2
+                                            }
+                                        ],
+                     "constraints":  [
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_answer_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_attempt_id_idempotency_key_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_attempt_id_question_id_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_attempt_id_question_id_revision_number_rev_fkey",
+                                             "type":  "f"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_idempotency_key_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_payload_digest_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_pkey",
+                                             "type":  "p"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_receipt_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_answers",
+                                             "name":  "attempt_answers_receipt_id_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_bundle_sha256_bundle_version_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_bundle_sha256_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_bundle_version_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_bundle_version_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_controlled_bundle_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_bundles",
+                                             "name":  "attempt_bundles_pkey",
+                                             "type":  "p"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_attempt_id_fkey",
+                                             "type":  "f"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_attempt_id_position_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_attempt_id_question_id_revision_number_re_key",
+                                             "type":  "u"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_pkey",
+                                             "type":  "p"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_position_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_public_question_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_question_id_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_revision_number_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_revision_sha256_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempt_questions",
+                                             "name":  "attempt_questions_snapshot_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_bundle_sha256_bundle_version_fkey",
+                                             "type":  "f"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_check1",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_check2",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_external_participant_id_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_id_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_participant_id_fkey",
+                                             "type":  "f"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_pkey",
+                                             "type":  "p"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_scoring_policy_version_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_server_score_check",
+                                             "type":  "c"
+                                         },
+                                         {
+                                             "table":  "attempts",
+                                             "name":  "attempts_status_check",
+                                             "type":  "c"
+                                         }
+                                     ],
+                     "immutability_triggers":  [
+                                                   "immutable_attempt_answer",
+                                                   "immutable_attempt_bundle",
+                                                   "immutable_attempt_pin",
+                                                   "immutable_attempt_question"
+                                               ]
+                 },
+    "raw_token_check":  "TestRealBundleBearerEndToEnd independently queried attempt/snapshot/receipt rows with both real raw bearer token values as SQL parameters; no matches. Values are never recorded."
+}

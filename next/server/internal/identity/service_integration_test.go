@@ -24,7 +24,7 @@ func TestGuestSessionLifecycleAndDatabaseConstraints(t *testing.T) {
 	if err := migrate.Apply(ctx, pool, migrate.Migrations()); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := pool.Exec(ctx, "truncate sessions, participants"); err != nil {
+	if _, err := pool.Exec(ctx, "truncate attempt_answers, attempt_questions, attempts, sessions, participants"); err != nil {
 		t.Fatal(err)
 	}
 	now := time.Date(2026, 9, 20, 12, 0, 0, 0, time.UTC)

@@ -25,7 +25,7 @@ func TestApplyCreatesTrackedSchemaAndRejectsChecksumDrift(t *testing.T) {
 	if err := pool.QueryRow(ctx, "select count(*) from schema_migrations").Scan(&count); err != nil {
 		t.Fatal(err)
 	}
-	if count != 1 {
+	if count != len(Migrations()) {
 		t.Fatalf("migration count = %d", count)
 	}
 	m := Migrations()
@@ -33,7 +33,7 @@ func TestApplyCreatesTrackedSchemaAndRejectsChecksumDrift(t *testing.T) {
 	if err := Apply(ctx, pool, m); err == nil {
 		t.Fatal("checksum drift was accepted")
 	}
-	if _, err := pool.Exec(ctx, "truncate sessions, participants"); err != nil {
+	if _, err := pool.Exec(ctx, "truncate attempt_answers, attempt_questions, attempts, sessions, participants"); err != nil {
 		t.Fatal(err)
 	}
 	_ = pgx.ErrNoRows

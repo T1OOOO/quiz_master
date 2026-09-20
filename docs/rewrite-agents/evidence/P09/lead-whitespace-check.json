@@ -1,0 +1,8 @@
+{
+  "executor": "lead (relay to exec-backend-P09)",
+  "cwd": "C:\\ap\\quiz_master",
+  "command": "git diff --check -- next/server/internal/attempts next/server/internal/migrate next/server/internal/identity next/server/internal/config next/server/internal/httpapi next/server/cmd/api docs/rewrite-agents/reports/P09.md docs/rewrite-agents/evidence/P09",
+  "exit": 0,
+  "duration_seconds": 0.164,
+  "notes": "Only Windows LF-to-CRLF working-copy warnings on six tracked Go files; no whitespace errors. Worker did not run Git."
+}
