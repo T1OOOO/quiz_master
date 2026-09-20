@@ -9,7 +9,39 @@ import (
 	"testing"
 
 	"quiz_master/next/server/internal/attempts"
+	"quiz_master/next/server/internal/identity"
 )
+
+type routeAttemptService struct{}
+
+func (routeAttemptService) Catalog() attempts.Catalog { return attempts.Catalog{} }
+func (routeAttemptService) Start(context.Context, string) (attempts.Attempt, error) {
+	return attempts.Attempt{}, nil
+}
+func (routeAttemptService) Submit(context.Context, string, string, attempts.AnswerRequest) (attempts.Receipt, error) {
+	return attempts.Receipt{}, nil
+}
+func (routeAttemptService) Finish(context.Context, string, string) (attempts.Finish, error) {
+	return attempts.Finish{}, nil
+}
+func (routeAttemptService) Reveals(context.Context, string, string) ([]attempts.Reveal, error) {
+	return nil, nil
+}
+func (routeAttemptService) GetHistory(context.Context, string, string) (attempts.Finish, error) {
+	return attempts.Finish{}, nil
+}
+func (routeAttemptService) ListHistory(context.Context, string) ([]attempts.Finish, error) {
+	return nil, nil
+}
+
+func TestRoutesAcceptsPersistenceIndependentAttemptService(t *testing.T) {
+	h := Routes(routeAttemptService{}, func(context.Context, string) (Principal, error) { return Principal{}, ErrUnauthorized }, func(context.Context, string) (identity.GuestSession, error) { return identity.GuestSession{}, nil })
+	w := httptest.NewRecorder()
+	h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, "/v1/catalog", nil))
+	if w.Code != http.StatusOK {
+		t.Fatal(w.Code)
+	}
+}
 
 func TestStrictAttemptJSON(t *testing.T) {
 	for _, raw := range []string{`{"score":99}`, `{} {}`, `null`, `{"question_id":"q-one","question_id":"q-two"}`, `{"Question_ID":"q-one"}`, `{"answer":{"option_id":"opt-one","correct":true}}`, `{"answer":{"option_id":"opt-one","text":null}}`, string([]byte{'{', '"', 'x', '"', ':', '"', 0xff, '"', '}'}), strings.Repeat(" ", 65537) + `{}`} {

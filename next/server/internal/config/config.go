@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -51,8 +52,28 @@ func FromEnv() (Config, error) {
 		return Config{}, fmt.Errorf("QM_DATABASE_URL is required")
 	}
 	u, err := url.Parse(c.DatabaseURL)
-	if err != nil || u.Scheme == "" || u.Host == "" {
-		return Config{}, fmt.Errorf("QM_DATABASE_URL must be an absolute URL")
+	if err != nil || u.Scheme == "" {
+		return Config{}, fmt.Errorf("QM_DATABASE_URL must be a PostgreSQL URL or explicit sqlite:path")
+	}
+	switch u.Scheme {
+	case "postgres", "postgresql":
+		if u.Host == "" {
+			return Config{}, fmt.Errorf("QM_DATABASE_URL PostgreSQL URL must be absolute")
+		}
+	case "sqlite":
+		// SQLite is deliberately a local-development mode.  Do not turn a
+		// PostgreSQL connection failure into a local database by fallback.
+		if u.Host != "" || u.RawQuery != "" || u.Fragment != "" || u.Opaque == "" {
+			return Config{}, fmt.Errorf("QM_DATABASE_URL SQLite path is invalid")
+		}
+		if host != "localhost" && !net.ParseIP(host).IsLoopback() {
+			return Config{}, fmt.Errorf("QM_DATABASE_URL SQLite mode requires a loopback listener")
+		}
+		if u.Opaque == ":memory:" || u.Opaque == "" || strings.Contains(strings.ToLower(u.Opaque), "memory:") {
+			return Config{}, fmt.Errorf("QM_DATABASE_URL SQLite path must be durable")
+		}
+	default:
+		return Config{}, fmt.Errorf("QM_DATABASE_URL has unsupported scheme %q", u.Scheme)
 	}
 	for _, setting := range []struct {
 		name   string

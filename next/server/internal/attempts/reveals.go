@@ -73,6 +73,10 @@ func loadManifest(path string, bundle content.Bundle) (revealManifest, error) {
 	digest := sha256.Sum256(raw)
 	return revealManifest{Explanations: explanations, SHA256: hex.EncodeToString(digest[:])}, nil
 }
+func ValidateManifest(path string, bundle content.Bundle) (map[string]string, error) {
+	m, err := loadManifest(path, bundle)
+	return m.Explanations, err
+}
 
 func buildReveal(bundle content.Bundle, explanations map[string]string, questionID string) (Reveal, error) {
 	var question *content.PublicQuestion
@@ -128,6 +132,9 @@ func buildReveal(bundle content.Bundle, explanations map[string]string, question
 		return Reveal{}, errors.New("reveal answer kind is invalid")
 	}
 	return Reveal{QuizID: bundle.Quiz.QuizID, QuestionID: questionID, QuestionRevision: question.Revision, CorrectAnswer: answer, Explanation: explanations[questionID]}, nil
+}
+func BuildReveal(bundle content.Bundle, explanations map[string]string, questionID string) (Reveal, error) {
+	return buildReveal(bundle, explanations, questionID)
 }
 
 func (s *Service) Reveals(ctx context.Context, owner, attemptID string) ([]Reveal, error) {

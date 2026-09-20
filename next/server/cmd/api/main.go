@@ -2,11 +2,14 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"errors"
 	"log"
+	_ "modernc.org/sqlite"
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -17,6 +20,7 @@ import (
 	"quiz_master/next/server/internal/httpapi"
 	"quiz_master/next/server/internal/identity"
 	"quiz_master/next/server/internal/migrate"
+	localsqlite "quiz_master/next/server/internal/sqlite"
 )
 
 func main() {
@@ -32,6 +36,9 @@ func run() error {
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if strings.HasPrefix(cfg.DatabaseURL, "sqlite:") {
+		return runSQLite(ctx, cfg)
+	}
 	pool, err := pgxpool.New(ctx, cfg.DatabaseURL)
 	if err != nil {
 		return err
@@ -69,6 +76,44 @@ func run() error {
 		return err
 	}
 }
+
+func runSQLite(ctx context.Context, cfg config.Config) error {
+	db, err := sql.Open("sqlite", strings.TrimPrefix(cfg.DatabaseURL, "sqlite:"))
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+	if err = localsqlite.Apply(ctx, db); err != nil {
+		return err
+	}
+	attemptService, err := localsqlite.NewAttempts(db, cfg.ContentBundlePath, cfg.ContentManifestPath, content.DefaultSchemas, cfg.AttemptDuration)
+	if err != nil {
+		return err
+	}
+	identities := localsqlite.NewIdentity(db, nil, identity.NewTokenSource(nil))
+	auth := func(ctx context.Context, token string) (httpapi.Principal, error) {
+		p, e := identities.Authenticate(ctx, token)
+		return httpapi.Principal{ID: p.ID, Kind: p.Kind}, e
+	}
+	srv := newServer(cfg, sqlitePinger{db}, httpapi.Routes(attemptService, auth, identities.CreateGuestSession))
+	errCh := make(chan error, 1)
+	go func() { errCh <- srv.ListenAndServe() }()
+	select {
+	case <-ctx.Done():
+		shutdown, cancel := context.WithTimeout(context.Background(), cfg.ShutdownTimeout)
+		defer cancel()
+		return srv.Shutdown(shutdown)
+	case err := <-errCh:
+		if errors.Is(err, http.ErrServerClosed) {
+			return nil
+		}
+		return err
+	}
+}
+
+type sqlitePinger struct{ db *sql.DB }
+
+func (p sqlitePinger) Ping(ctx context.Context) error { return p.db.PingContext(ctx) }
 
 func newServer(cfg config.Config, db httpapi.Pinger, api ...http.Handler) *http.Server {
 	mux := http.NewServeMux()

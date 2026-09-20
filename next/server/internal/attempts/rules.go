@@ -201,6 +201,13 @@ func makeSnapshots(b content.Bundle, shuffle Shuffler) ([]Snapshot, error) {
 	}
 	return out, nil
 }
+
+func MakeSnapshots(b content.Bundle, shuffle Shuffler) ([]Snapshot, error) {
+	return makeSnapshots(b, shuffle)
+}
+func RandomShuffle(ids []string) error                                { return randomShuffle(ids) }
+func ValidateAnswer(q content.PublicQuestion, a Answer) error         { return validateAnswer(q, a) }
+func Score(q content.PublicQuestion, g content.Grading, a Answer) int { return score(q, g, a) }
 func randomID(prefix string) (string, error) {
 	var b [16]byte
 	if _, err := rand.Read(b[:]); err != nil {

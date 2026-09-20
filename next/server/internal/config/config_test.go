@@ -1,6 +1,7 @@
 package config
 
 import (
+	"strings"
 	"testing"
 	"time"
 )
@@ -10,6 +11,41 @@ func TestFromEnvRejectsMissingDatabaseURL(t *testing.T) {
 	t.Setenv("QM_DATABASE_URL", "")
 	if _, err := FromEnv(); err == nil {
 		t.Fatal("FromEnv accepted a missing database URL")
+	}
+}
+
+func TestFromEnvAcceptsExplicitLocalSQLiteURL(t *testing.T) {
+	t.Setenv("QM_LISTEN_ADDR", "127.0.0.1:8088")
+	t.Setenv("QM_DATABASE_URL", "sqlite:C:/tmp/quiz-master.db")
+	cfg, err := FromEnv()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cfg.DatabaseURL != "sqlite:C:/tmp/quiz-master.db" {
+		t.Fatalf("database URL = %q", cfg.DatabaseURL)
+	}
+}
+
+func TestFromEnvRejectsSQLiteForNonlocalListener(t *testing.T) {
+	t.Setenv("QM_LISTEN_ADDR", "0.0.0.0:8088")
+	t.Setenv("QM_DATABASE_URL", "sqlite:C:/tmp/quiz-master.db")
+	t.Setenv("QM_CONTENT_BUNDLE_PATH", "bundle.json")
+	t.Setenv("QM_CONTENT_MANIFEST_PATH", "manifest.json")
+	_, err := FromEnv()
+	if err == nil || !strings.Contains(err.Error(), "loopback") {
+		t.Fatalf("error = %v, want loopback rejection", err)
+	}
+}
+
+func TestFromEnvRejectsNonDurableSQLiteMemoryURL(t *testing.T) {
+	for _, databaseURL := range []string{"sqlite::memory:", "sqlite:file::memory:"} {
+		t.Run(databaseURL, func(t *testing.T) {
+			t.Setenv("QM_LISTEN_ADDR", "127.0.0.1:8088")
+			t.Setenv("QM_DATABASE_URL", databaseURL)
+			if _, err := FromEnv(); err == nil {
+				t.Fatal("accepted non-durable SQLite memory database")
+			}
+		})
 	}
 }
 

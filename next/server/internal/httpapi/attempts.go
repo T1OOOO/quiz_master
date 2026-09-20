@@ -2,6 +2,7 @@ package httpapi
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"io"
@@ -14,13 +15,23 @@ import (
 	"quiz_master/next/server/internal/attempts"
 )
 
-func AttemptRoutes(s *attempts.Service, auth TokenAuthenticator) http.Handler {
+type AttemptService interface {
+	Catalog() attempts.Catalog
+	Start(context.Context, string) (attempts.Attempt, error)
+	Submit(context.Context, string, string, attempts.AnswerRequest) (attempts.Receipt, error)
+	Finish(context.Context, string, string) (attempts.Finish, error)
+	Reveals(context.Context, string, string) ([]attempts.Reveal, error)
+	GetHistory(context.Context, string, string) (attempts.Finish, error)
+	ListHistory(context.Context, string) ([]attempts.Finish, error)
+}
+
+func AttemptRoutes(s AttemptService, auth TokenAuthenticator) http.Handler {
 	mux := http.NewServeMux()
 	registerAttemptRoutes(mux, s, auth)
 	return noStoreRevealResponses(mux)
 }
 
-func Routes(s *attempts.Service, auth TokenAuthenticator, create GuestCreator) http.Handler {
+func Routes(s AttemptService, auth TokenAuthenticator, create GuestCreator) http.Handler {
 	mux := http.NewServeMux()
 	registerIdentityRoutes(mux, create)
 	registerAttemptRoutes(mux, s, auth)
@@ -36,7 +47,7 @@ func noStoreRevealResponses(next http.Handler) http.Handler {
 	})
 }
 
-func registerAttemptRoutes(mux *http.ServeMux, s *attempts.Service, auth TokenAuthenticator) {
+func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthenticator) {
 	mux.HandleFunc("GET /v1/catalog", func(w http.ResponseWriter, r *http.Request) { writeAttemptJSON(w, http.StatusOK, s.Catalog()) })
 	protected := func(pattern string, f http.HandlerFunc) { mux.Handle(pattern, Authenticate(auth, RequirePrincipal(f))) }
 	protected("POST /v1/attempts", func(w http.ResponseWriter, r *http.Request) {
