@@ -1,0 +1,69 @@
+00:00 +0: loading C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart
+00:00 +0: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes getAllQuizzes should return list of quizzes
+00:00 +1: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes getAdminQuizzes should return admin quiz list
+00:00 +2: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes getQuizById should return quiz
+00:00 +3: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes getQuizSummary should return quiz summary
+00:00 +4: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes getQuestion should return question
+00:00 +5: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Quizzes checkAnswer should return feedback
+00:00 +6: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Auth login should return AuthResponse
+00:00 +7: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should return empty string for null input
+00:00 +8: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should return empty string for null input
+00:00 +9: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should return empty string for null input
+00:00 +10: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Auth refresh should return AuthResponse
+00:00 +11: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics getLeaderboard should return list of entries
+00:00 +12: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics getLeaderboard should return list of entries
+00:00 +13: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should return full URL as is for http://
+00:00 +14: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics getAdminLeaderboard should return list of entries
+00:00 +15: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics getAdminLeaderboard should return list of entries
+00:00 +16: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should construct full URL for relative path starting with /
+00:00 +17: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics submitScore should return true on success
+00:00 +18: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils getImageUrl should construct full URL for relative path without /
+00:00 +19: C:/ap/quiz_master/flutter/test/core/api/api_client_test.dart: ApiClient - Statistics submitScore should return false on failure
+00:00 +20: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return false for null
+00:00 +21: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return false for empty string
+00:00 +22: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return true for http://
+00:00 +23: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return true for https://
+00:00 +24: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return false for assets path
+00:00 +25: C:/ap/quiz_master/flutter/test/core/utils/image_utils_test.dart: ImageUtils isNetworkImage should return true for relative path
+00:00 +26: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canStartQuiz should return true when quota is null
+00:00 +27: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canStartQuiz should return true when quizzes limit is 0 (unlimited)
+00:00 +28: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canStartQuiz should return false when limit reached
+00:00 +29: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canStartQuiz should return true when limit not reached
+00:00 +30: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canAnswerQuestion should return true when quota is null
+00:00 +31: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canAnswerQuestion should return false when questions limit reached
+00:00 +32: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canAttemptQuiz should return true when quota is null
+00:00 +33: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker canAttemptQuiz should return false when attempts limit reached
+00:00 +34: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker getRemainingQuizzes should return null when unlimited
+00:00 +35: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker getRemainingQuizzes should return correct remaining count
+00:00 +36: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker getRemainingQuestions should return null when unlimited
+00:00 +37: C:/ap/quiz_master/flutter/test/core/utils/quota_checker_test.dart: QuotaChecker getRemainingAttempts should return correct remaining count
+00:00 +38: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: (setUpAll)
+00:00 +38: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository login should return AuthResponse
+00:00 +39: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository register should return AuthResponse
+00:00 +40: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository guestLogin should return AuthResponse
+00:00 +41: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository refresh should return AuthResponse
+00:00 +42: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository getUserQuota should return UserQuota
+00:00 +43: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: AuthRepository getUserQuota should return null on error
+00:00 +44: C:/ap/quiz_master/flutter/test/features/auth/data/repositories/auth_repository_test.dart: (tearDownAll)
+00:00 +44: C:/ap/quiz_master/flutter/test/features/home/presentation/providers/home_providers_test.dart: Home Providers quizzesProvider should return list of quizzes
+00:00 +45: C:/ap/quiz_master/flutter/test/features/home/presentation/providers/home_providers_test.dart: Home Providers searchQueryProvider should update search query
+00:00 +46: C:/ap/quiz_master/flutter/test/features/home/presentation/providers/home_providers_test.dart: Home Providers currentPathProvider should update path
+00:00 +47: C:/ap/quiz_master/flutter/test/features/home/presentation/providers/home_providers_test.dart: Home Providers filteredQuizzesProvider should filter by search query
+00:00 +48: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: (setUpAll)
+00:00 +48: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: QuizRepositoryImpl getAllQuizzes should return list of quizzes
+00:00 +49: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: QuizRepositoryImpl getQuizById should return quiz
+00:00 +50: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: QuizRepositoryImpl getQuizSummary should return quiz summary
+00:00 +51: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: QuizRepositoryImpl getQuestion should return question
+00:00 +52: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: QuizRepositoryImpl checkAnswer should return feedback
+00:00 +53: C:/ap/quiz_master/flutter/test/features/quiz/data/repositories/quiz_repository_impl_test.dart: (tearDownAll)
+00:01 +53: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: (setUpAll)
+00:01 +53: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: QuizStateNotifier initQuiz should load quiz and set status to active
+00:01 +54: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: QuizStateNotifier initQuiz should set error status on failure
+00:01 +55: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: QuizStateNotifier submitAnswer should update answers and feedback
+00:01 +56: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: QuizStateNotifier selectQuestion should update currentQuestionIndex
+00:01 +57: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: QuizStateNotifier resetQuiz should reset state to idle
+00:01 +58: C:/ap/quiz_master/flutter/test/features/quiz/presentation/providers/quiz_providers_test.dart: (tearDownAll)
+00:03 +58: C:/ap/quiz_master/flutter/test/widget_test.dart: app renders home screen smoke test
+00:04 +59: C:/ap/quiz_master/flutter/test/widget_test.dart: home screen renders on small screens without overflow
+00:04 +60: C:/ap/quiz_master/flutter/test/widget_test.dart: quiz screen renders on small screens without overflow
+00:04 +61: All tests passed!
