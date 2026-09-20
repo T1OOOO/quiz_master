@@ -1,5 +1,5 @@
 ---
-name: qm-work-packe
+name: qm-work-packet
 description: "Execute a bounded Quiz Master assignment with explicit ownership, hub handoff and evidence."
 ---
 
