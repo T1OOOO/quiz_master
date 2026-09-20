@@ -1,0 +1,23 @@
+COMMAND: rg --files -g '.github/**' -g '*gitlab-ci*' -g 'Jenkinsfile' -g 'azure-pipelines*'; bd show quiz_master-qqx
+CWD: C:\ap\quiz_master
+
+quiz_master-qqx: Align development and deployment entry points with current repository
+Status: open
+Priority: P2
+Type: task
+Created: 2026-09-20 09:33
+Created by: Alexey Matvienko
+Updated: 2026-09-20 09:33
+
+Description:
+Overview found Taskfile.yml web tasks and build_deploy.sh referring to absent web source directory; mobile/src/api/axios.ts defaults to 8086 while server uses 8090; Dockerfile starts from Go 1.24 while go.mod declares 1.25. Align supported workflows and verify builds.
+
+Depends on (1):
+  → quiz_master-rq9.4: P03 - Local and CI environment contract [P2]
+
+Blocks (1):
+  ← quiz_master-rq9.4: P03 - Local and CI environment contract [P2 - in_progress]
+
+
+DURATION_MS: 5943
+EXIT: 0

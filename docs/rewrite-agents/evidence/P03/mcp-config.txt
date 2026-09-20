@@ -1,0 +1,6 @@
+COMMAND: rg --files docs/rewrite-agents | rg 'codex-config|MCP_SELECTION'; Get-Content docs/rewrite-agents/config/codex-config.snippet.toml -ErrorAction SilentlyContinue
+CWD: C:\ap\quiz_master
+docs/rewrite-agents\MCP_SELECTION_EN.md
+
+DURATION_MS: 151
+EXIT: 0

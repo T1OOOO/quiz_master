@@ -1,0 +1,487 @@
+COMMAND: Get-Content Taskfile.yml; Get-Content docker-compose.yml; Get-Content go.mod; Get-Content flutter/pubspec.yaml
+CWD: C:\ap\quiz_master
+version: '3'
+
+tasks:
+  # --- Backend ---
+  run:
+    desc: Run the backend API
+    cmds:
+      - bash start.sh
+
+  test:backend:
+    desc: Run backend integration tests
+    cmds:
+      - go test ./internal/... -v
+
+  # --- Frontend (React) ---
+  web:dev:
+    desc: Start React development server
+    cmds:
+      - cd web && npm run dev
+
+  web:build:
+    desc: Build React production bundle
+    cmds:
+      - cd web && npm run build
+
+  web:test:
+    desc: Run Vitest for React
+    cmds:
+      - cd web && npm run test
+
+  # --- Mobile/Web (Flutter) ---
+  flutter:get:
+    desc: Fetch Flutter dependencies
+    cmds:
+      - cd flutter && flutter pub get
+
+  flutter:run:
+    desc: Run Flutter web app
+    cmds:
+      - cd flutter && flutter run -d chrome
+
+  flutter:test:
+    desc: Run Flutter unit/widget tests
+    cmds:
+      - cd flutter && flutter test
+
+  # --- Global ---
+  tidy:
+    desc: Clean and tidy everything
+    cmds:
+      - go mod tidy
+      - cd web && npm prune
+      - cd flutter && flutter clean
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: quiz-master-auth
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: ${AUTH_PORT:-8092}
+      DB_DRIVER: ${AUTH_DB_DRIVER:-sqlite}
+      DB_DSN: ${AUTH_DB_DSN:-}
+      DB_PATH: ${AUTH_DB_PATH:-/app/data/auth.db}
+      ENV: ${ENV:-production}
+      JWT_SECRET: ${JWT_SECRET:-change-me}
+      AUTH_API_TOKEN: ${AUTH_API_TOKEN:-dev-auth-token}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-}
+      WS_ALLOWED_ORIGINS: ${WS_ALLOWED_ORIGINS:-}
+      AUTH_RATE_LIMIT_RPS: ${AUTH_RATE_LIMIT_RPS:-5}
+      AUTH_RATE_LIMIT_BURST: ${AUTH_RATE_LIMIT_BURST:-10}
+      JWT_TTL: ${JWT_TTL:-24h}
+      SHUTDOWN_TIMEOUT: ${SHUTDOWN_TIMEOUT:-10s}
+      OTEL_ENABLED: ${OTEL_ENABLED:-true}
+      OTEL_SERVICE_NAME: ${OTEL_AUTH_SERVICE_NAME:-quiz-master-auth}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-otel-collector:4317}
+      OTEL_EXPORTER_OTLP_INSECURE: ${OTEL_EXPORTER_OTLP_INSECURE:-true}
+      OTEL_TRACES_SAMPLER_ARG: ${OTEL_TRACES_SAMPLER_ARG:-1}
+    command: ["./quiz-auth"]
+    ports:
+      - "${AUTH_PORT:-8092}:8092"
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:8092/readyz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - quiz-network
+
+  storage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: quiz-master-storage
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: ${STORAGE_PORT:-8093}
+      DB_DRIVER: ${STORAGE_DB_DRIVER:-sqlite}
+      DB_DSN: ${STORAGE_DB_DSN:-}
+      DB_PATH: ${STORAGE_DB_PATH:-/app/data/storage.db}
+      ENV: ${ENV:-production}
+      QUIZZES_DIR: ${QUIZZES_DIR:-quizzes}
+      STORAGE_API_TOKEN: ${STORAGE_API_TOKEN:-dev-storage-token}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-}
+      WS_ALLOWED_ORIGINS: ${WS_ALLOWED_ORIGINS:-}
+      AUTH_RATE_LIMIT_RPS: ${AUTH_RATE_LIMIT_RPS:-5}
+      AUTH_RATE_LIMIT_BURST: ${AUTH_RATE_LIMIT_BURST:-10}
+      SHUTDOWN_TIMEOUT: ${SHUTDOWN_TIMEOUT:-10s}
+      OTEL_ENABLED: ${OTEL_ENABLED:-true}
+      OTEL_SERVICE_NAME: ${OTEL_STORAGE_SERVICE_NAME:-quiz-master-storage}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-otel-collector:4317}
+      OTEL_EXPORTER_OTLP_INSECURE: ${OTEL_EXPORTER_OTLP_INSECURE:-true}
+      OTEL_TRACES_SAMPLER_ARG: ${OTEL_TRACES_SAMPLER_ARG:-1}
+    command: ["./quiz-storage"]
+    ports:
+      - "${STORAGE_PORT:-8093}:8093"
+    volumes:
+      - ./data:/app/data
+      - ./quizzes:/app/quizzes:ro
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:8093/readyz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - quiz-network
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: quiz-master-server
+    restart: unless-stopped
+    depends_on:
+      auth:
+        condition: service_healthy
+      storage:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      PORT: ${PORT:-8090}
+      ENV: ${ENV:-production}
+      QUIZZES_DIR: ${QUIZZES_DIR:-quizzes}
+      JWT_SECRET: ${JWT_SECRET:-change-me}
+      JWT_TTL: ${JWT_TTL:-24h}
+      AUTH_API_URL: ${AUTH_API_URL:-http://auth:8092}
+      AUTH_API_TOKEN: ${AUTH_API_TOKEN:-dev-auth-token}
+      STORAGE_API_URL: ${STORAGE_API_URL:-http://storage:8093}
+      STORAGE_API_TOKEN: ${STORAGE_API_TOKEN:-dev-storage-token}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-}
+      WS_ALLOWED_ORIGINS: ${WS_ALLOWED_ORIGINS:-}
+      AUTH_RATE_LIMIT_RPS: ${AUTH_RATE_LIMIT_RPS:-5}
+      AUTH_RATE_LIMIT_BURST: ${AUTH_RATE_LIMIT_BURST:-10}
+      SHUTDOWN_TIMEOUT: ${SHUTDOWN_TIMEOUT:-10s}
+      OTEL_ENABLED: ${OTEL_ENABLED:-true}
+      OTEL_SERVICE_NAME: ${OTEL_SERVICE_NAME:-quiz-master-server}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-otel-collector:4317}
+      OTEL_EXPORTER_OTLP_INSECURE: ${OTEL_EXPORTER_OTLP_INSECURE:-true}
+      OTEL_TRACES_SAMPLER_ARG: ${OTEL_TRACES_SAMPLER_ARG:-1}
+    command: ["./quiz-server"]
+    ports:
+      - "${PORT:-8090}:8090"
+    volumes:
+      - ./data:/app/data
+      - ./quizzes:/app/quizzes:ro
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:8090/readyz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - quiz-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: quiz-master-prometheus
+    depends_on:
+      server:
+        condition: service_healthy
+      auth:
+        condition: service_healthy
+      storage:
+        condition: service_healthy
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/prometheus/rules:/etc/prometheus/rules:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: quiz-master-blackbox
+    expose:
+      - "9115"
+    volumes:
+      - ./deploy/blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+    command:
+      - "--config.file=/etc/blackbox_exporter/config.yml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: quiz-master-alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./deploy/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  loki:
+    image: grafana/loki:3.5.5
+    container_name: quiz-master-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./deploy/loki/loki-config.yml:/etc/loki/config.yml:ro
+      - loki_data:/loki
+    command:
+      - "-config.file=/etc/loki/config.yml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  tempo:
+    image: grafana/tempo:latest
+    container_name: quiz-master-tempo
+    ports:
+      - "3200:3200"
+    volumes:
+      - ./deploy/tempo/tempo.yml:/etc/tempo.yml:ro
+      - tempo_data:/tmp/tempo
+    command:
+      - "-config.file=/etc/tempo.yml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    container_name: quiz-master-otel-collector
+    depends_on:
+      tempo:
+        condition: service_started
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    volumes:
+      - ./deploy/otel-collector/config.yml:/etc/otelcol/config.yaml:ro
+    command:
+      - "--config=/etc/otelcol/config.yaml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  promtail:
+    image: grafana/promtail:3.5.5
+    container_name: quiz-master-promtail
+    depends_on:
+      loki:
+        condition: service_started
+    volumes:
+      - ./deploy/promtail/promtail-config.yml:/etc/promtail/config.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:
+      - "-config.file=/etc/promtail/config.yml"
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+  grafana:
+    image: grafana/grafana:12.1.1
+    container_name: quiz-master-grafana
+    depends_on:
+      prometheus:
+        condition: service_started
+      loki:
+        condition: service_started
+      tempo:
+        condition: service_started
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./deploy/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - quiz-network
+
+networks:
+  quiz-network:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  grafana_data:
+  loki_data:
+  tempo_data:
+module quiz_master
+
+go 1.25.0
+
+require (
+	github.com/golang-jwt/jwt/v5 v5.3.0
+	github.com/google/uuid v1.6.0
+	github.com/gorilla/websocket v1.5.3
+	github.com/jackc/pgx/v5 v5.9.1
+	github.com/labstack/echo/v4 v4.13.3
+	github.com/prometheus/client_golang v1.23.2
+	github.com/stretchr/testify v1.11.1
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0
+	go.opentelemetry.io/otel v1.42.0
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.42.0
+	go.opentelemetry.io/otel/sdk v1.42.0
+	go.opentelemetry.io/otel/trace v1.42.0
+	golang.org/x/crypto v0.48.0
+	golang.org/x/time v0.14.0
+	modernc.org/sqlite v1.33.0
+)
+
+require (
+	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dustin/go-humanize v1.0.1 // indirect
+	github.com/felixge/httpsnoop v1.0.4 // indirect
+	github.com/go-logr/logr v1.4.3 // indirect
+	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.28.0 // indirect
+	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
+	github.com/jackc/puddle/v2 v2.2.2 // indirect
+	github.com/labstack/gommon v0.4.2 // indirect
+	github.com/mattn/go-colorable v0.1.14 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
+	github.com/ncruces/go-strftime v0.1.9 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/prometheus/client_model v0.6.2 // indirect
+	github.com/prometheus/common v0.67.1 // indirect
+	github.com/prometheus/procfs v0.16.1 // indirect
+	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasttemplate v1.2.2 // indirect
+	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.42.0 // indirect
+	go.opentelemetry.io/otel/metric v1.42.0 // indirect
+	go.opentelemetry.io/proto/otlp v1.9.0 // indirect
+	go.yaml.in/yaml/v2 v2.4.3 // indirect
+	golang.org/x/net v0.51.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sys v0.41.0 // indirect
+	golang.org/x/text v0.34.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57 // indirect
+	google.golang.org/grpc v1.79.2 // indirect
+	google.golang.org/protobuf v1.36.11 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+	modernc.org/fileutil v1.3.40 // indirect
+	modernc.org/gc/v3 v3.0.0-20240107210532-573471604cb6 // indirect
+	modernc.org/mathutil v1.7.1 // indirect
+	modernc.org/memory v1.11.0 // indirect
+	modernc.org/strutil v1.2.1 // indirect
+	modernc.org/token v1.1.0 // indirect
+)
+name: quiz_master
+description: "Quiz Master Flutter Application"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Core
+  intl: any
+  cupertino_icons: ^1.0.8
+
+  # Modern HTTP client with interceptors, retry, caching
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+
+  # State management
+  flutter_riverpod: ^3.1.0
+  riverpod_annotation: ^4.0.0
+
+  # Immutable models & JSON serialization
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.11.0
+
+  # UI & Design
+  google_fonts: ^6.3.3
+  animate_do: ^4.2.0
+  flex_color_scheme: ^8.4.0
+  device_preview: ^1.3.1
+
+  # Navigation
+  go_router: ^17.0.1
+
+  # Utilities
+  shared_preferences: ^2.5.4
+  flutter_secure_storage: ^9.0.0
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  uuid: ^4.5.1
+
+  # Markdown
+  flutter_markdown_plus: ^1.0.6
+
+  # Storage
+  equatable: ^2.0.7
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  go_router_builder: ^4.1.3
+
+  # Dependency Injection
+  get_it: ^9.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^6.0.0
+
+  # Code generation
+  build_runner: ^2.4.13
+  freezed: ^3.2.3
+  json_serializable: ^6.8.0
+  riverpod_generator: ^4.0.0+1
+
+  # Testing
+  mockito: ^5.4.4
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+DURATION_MS: 40
+EXIT: 0

@@ -1,0 +1,11 @@
+COMMAND: Get-Command java -ErrorAction SilentlyContinue | Select-Object Name,Source; where.exe java
+CWD: C:\ap\quiz_master
+
+Name     Source
+----     ------
+java.exe C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\java.exe
+C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\java.exe
+
+
+DURATION_MS: 212
+EXIT: 0

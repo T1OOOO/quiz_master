@@ -1,0 +1,51 @@
+COMMAND: task --version; bash --version; node --version; npm --version; Test-Path web; Test-Path mobile; flutter doctor -v
+CWD: C:\ap\quiz_master
+GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+v24.20.0
+12.0.2
+False
+True
+[√] Flutter (Channel stable, 3.47.1, on Microsoft Windows [Version 10.0.26200.9457], locale en-US) [1,241ms]
+    • Flutter version 3.47.1 on channel stable at C:\Users\Alexey_Matvienko\dev\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 6655482ec0 (5 weeks ago), 2026-08-19 10:07:23 -0700
+    • Engine revision 5d53178869
+    • Dart version 3.13.1
+    • DevTools version 2.60.0
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets, enable-record-use, enable-swift-package-manager, omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
+
+[√] Windows Version (Windows 11 or higher, 25H2, 2009) [2.8s]
+
+[X] Android toolchain - develop for Android devices [315ms]
+    • Android SDK at C:\Users\Alexey_Matvienko\AppData\Local\Android\Sdk
+    • Emulator version unknown
+    X cmdline-tools component is missing.
+      Try installing or updating Android Studio.
+      Alternatively, download the tools from https://developer.android.com/studio#command-line-tools-only and make sure to set the ANDROID_HOME environment variable.
+      See https://developer.android.com/studio/command-line for more details.
+
+[√] Chrome - develop for the web [292ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[√] Visual Studio - develop Windows apps (Visual Studio Community 2022 17.14.41 (September 2026)) [288ms]
+    • Visual Studio at C:\Program Files\Microsoft Visual Studio\2022\Community
+    • Visual Studio Community 2022 version 17.14.37710.0
+    • Windows 10 SDK version 10.0.26100.0
+
+[√] Connected device (3 available) [503ms]
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.26200.9457]
+    • Chrome (web)      • chrome  • web-javascript • Google Chrome 152.0.7977.84
+    • Edge (web)        • edge    • web-javascript • Microsoft Edge 152.0.4191.66
+
+[√] Network resources [585ms]
+    • All expected network resources are available.
+
+! Doctor found issues in 1 category.
+
+DURATION_MS: 13959
+EXIT: 0

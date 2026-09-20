@@ -1,0 +1,15 @@
+COMMAND: Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe' -ErrorAction SilentlyContinue | Select-Object PSPath,'(default)'; Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe' -ErrorAction SilentlyContinue | Select-Object PSPath,'(default)'; Get-Command chrome, msedge -ErrorAction SilentlyContinue | Select-Object Name,Source
+CWD: C:\ap\quiz_master
+
+PSPath                                                                                                                (d
+                                                                                                                      ef
+                                                                                                                      au
+                                                                                                                      lt
+                                                                                                                      )
+------                                                                                                                --
+Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe C…
+Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe C…
+
+
+DURATION_MS: 603
+EXIT: 0
