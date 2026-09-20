@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:17@sha256:f4c66b820c6f974249089d3d16d86a3698eae11e8746eb6644b2271031e91232
+    environment:
+      POSTGRES_DB: quiz_master
+      POSTGRES_USER: quiz_master
+      # Development-only example value; never substitute a production credential.
+      POSTGRES_PASSWORD: quiz_master_development_only
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${QM_POSTGRES_PORT:-0}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quiz_master -d quiz_master"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+      start_period: 5s
+    networks: [quiz_v2]
+
+  api:
+    build:
+      context: ../..
+      dockerfile: next/infra/api/Dockerfile
+    environment:
+      QM_LISTEN_ADDR: 0.0.0.0:8080
+      QM_DATABASE_URL: postgres://quiz_master:quiz_master_development_only@postgres:5432/quiz_master?sslmode=disable
+      QM_DATABASE_STARTUP_TIMEOUT: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${QM_API_PORT:-0}:8080"
+    healthcheck:
+      test: ["CMD", "/healthprobe", "http://127.0.0.1:8080/health/ready"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+      start_period: 5s
+    networks: [quiz_v2]
+
+networks:
+  quiz_v2: {}
+
+volumes:
+  postgres_data: {}
