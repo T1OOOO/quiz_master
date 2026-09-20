@@ -5,11 +5,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 ## Current checkpoin
 
 - Branch: `codex/quiz-v2`; base commit: `ce310d7589bc0f97adcb25d04a15c117aea7c1d8`.
-- P00 (`quiz_master-rq9.1`) is in progress. Rewrite epic: `quiz_master-rq9`.
+- P00 (`quiz_master-rq9.1`) is accepted and closed. Integration commit: `d0dfc17057c163087bdc3390b22f6adfff3c3519`. Rewrite epic: `quiz_master-rq9`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- No rewrite worker has started. First issued packets: P01, P02 and P03. Dispatch waits for P00 acceptance.
+- First issued packets: P01, P02 and P03. P01 is the next ready task; by user direction, workers run sequentially with at most one child agent active.
 
 ## Preserved pre-existing work
 
@@ -27,7 +27,7 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Independently review P00 evidence and issued packets.
-2. Integrate/commit only the kit and lead-owned rewrite docs, excluding `.beads/issues.jsonl` and `PROJECT_OVERVIEW_RU.md`.
-3. Mark P00 done/accepted using the real commit, then dispatch P01 with one active child maximum.
-4. Run P02 and P03 sequentially after P01 handoff/review capacity permits.
+1. Dispatch and accept P01 from `docs/rewrite-agents/tasks/P01.md`.
+2. Run P02 and P03 sequentially after P01 handoff/review capacity permits.
+3. Use P01 evidence to issue P04; issue P29 when the single-agent slot is available.
+4. Resolve the reveal-policy clarification before accepting P33; independent foundation work may continue meanwhile.
