@@ -1,0 +1,69 @@
+PROJECT=qm-p11-125506
+name: qm-p11-125506
+services:
+  api:
+    build:
+      context: C:\ap\quiz_master
+      dockerfile: next/infra/api/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      QM_DATABASE_STARTUP_TIMEOUT: 20s
+      QM_DATABASE_URL: postgres://quiz_master:<redacted>@postgres:5432/quiz_master?sslmode=disable
+      QM_LISTEN_ADDR: 0.0.0.0:8080
+    healthcheck:
+      test:
+        - CMD
+        - /healthprobe
+        - http://127.0.0.1:8080/health/ready
+      timeout: 2s
+      interval: 2s
+      retries: 15
+      start_period: 5s
+    networks:
+      quiz_v2: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8080
+        published: "0"
+        protocol: tcp
+  postgres:
+    environment:
+      POSTGRES_DB: quiz_master
+      POSTGRES_PASSWORD: <redacted>
+      POSTGRES_USER: quiz_master
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U quiz_master -d quiz_master
+      timeout: 2s
+      interval: 2s
+      retries: 15
+      start_period: 5s
+    image: postgres:17@sha256:f4c66b820c6f974249089d3d16d86a3698eae11e8746eb6644b2271031e91232
+    networks:
+      quiz_v2: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 5432
+        published: "0"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
+        volume: {}
+networks:
+  quiz_v2:
+    name: qm-p11-125506_quiz_v2
+volumes:
+  postgres_data:
+    name: qm-p11-125506_postgres_data
+unknown flag: --progress
+UP_EXIT=1
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+DOWN_EXIT=0
