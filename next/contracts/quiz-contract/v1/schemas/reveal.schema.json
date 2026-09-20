@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quiz-contract/v1/reveal",
+  "title": "Post-permission reveal payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["quiz_id", "question_id", "question_revision", "correct_answer", "explanation"],
+  "not": {"anyOf": [{"required": ["grading"]}, {"required": ["accepted_variants"]}, {"required": ["correct_option_id"]}, {"required": ["correct_option_ids"]}]},
+  "properties": {"quiz_id": {"$ref": "#/$defs/id"}, "question_id": {"$ref": "#/$defs/id"}, "question_revision": {"$ref": "#/$defs/revision"}, "correct_answer": {"$ref": "#/$defs/correctAnswer"}, "explanation": {"type": "string", "minLength": 1}},
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{2,63}$"},
+    "revision": {"type": "object", "additionalProperties": false, "required": ["number", "sha256"], "properties": {"number": {"type": "integer", "minimum": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "correctAnswer": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["option_id", "text"], "properties": {"option_id": {"$ref": "#/$defs/id"}, "text": {"type": "string", "minLength": 1}}},
+      {"type": "object", "additionalProperties": false, "required": ["option_ids", "text"], "properties": {"option_ids": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/id"}}, "text": {"type": "string", "minLength": 1}}},
+      {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string", "minLength": 1}}}
+    ]}
+  }
+}

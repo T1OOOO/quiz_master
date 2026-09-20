@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quiz-contract/v1/published-bundle",
+  "title": "Immutable controlled published bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "bundle_version", "bundle_sha256", "published_at", "quiz", "private_grading"],
+  "properties": {
+    "contract": {"const": "quiz-contract/v1"},
+    "bundle_version": {"type": "string", "minLength": 1},
+    "bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "published_at": {"type": "string", "format": "date-time"},
+    "quiz": {"$ref": "#/$defs/quiz"},
+    "private_grading": {"type": "object", "additionalProperties": {"$ref": "#/$defs/grading"}, "description": "server/editor only; never serialize to pre-reveal clients"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{2,63}$"},
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "revision": {"type": "object", "additionalProperties": false, "required": ["number", "sha256"], "properties": {"number": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/hash"}}},
+    "media": {"type": "object", "additionalProperties": false, "required": ["uri"], "properties": {"uri": {"type": "string", "minLength": 1}, "kind": {"type": "string"}, "alt": {"type": "string"}}},
+    "source": {"type": "object", "additionalProperties": false, "required": ["uri"], "properties": {"uri": {"type": "string", "minLength": 1}, "title": {"type": "string"}}},
+    "option": {"type": "object", "additionalProperties": false, "required": ["option_id", "text"], "properties": {"option_id": {"$ref": "#/$defs/id"}, "text": {"type": "string", "minLength": 1}, "media": {"$ref": "#/$defs/media"}}},
+    "question": {"type": "object", "additionalProperties": false, "required": ["quiz_id", "question_id", "revision", "stem", "options", "difficulty", "source", "answer_kind"], "properties": {"quiz_id": {"$ref": "#/$defs/id"}, "question_id": {"$ref": "#/$defs/id"}, "revision": {"$ref": "#/$defs/revision"}, "stem": {"type": "string", "minLength": 1}, "options": {"type": "array", "minItems": 4, "maxItems": 6, "items": {"$ref": "#/$defs/option"}}, "difficulty": {"enum": ["unknown", "easy", "medium", "hard"]}, "source": {"$ref": "#/$defs/source"}, "media": {"type": "array", "items": {"$ref": "#/$defs/media"}}, "answer_kind": {"enum": ["single_choice", "multiple_choice", "normalized_text"]}}},
+    "quiz": {"type": "object", "additionalProperties": false, "required": ["quiz_id", "revision", "locale", "questions"], "properties": {"quiz_id": {"$ref": "#/$defs/id"}, "revision": {"$ref": "#/$defs/revision"}, "locale": {"type": "string", "minLength": 2}, "questions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/question"}}}},
+    "grading": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["correct_option_id"], "properties": {"correct_option_id": {"$ref": "#/$defs/id"}}},
+      {"type": "object", "additionalProperties": false, "required": ["correct_option_ids"], "properties": {"correct_option_ids": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/id"}}}},
+      {"type": "object", "additionalProperties": false, "required": ["accepted_variants"], "properties": {"accepted_variants": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}}}
+    ]}
+  }
+}

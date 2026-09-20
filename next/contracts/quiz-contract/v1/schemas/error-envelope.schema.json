@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quiz-contract/v1/error-envelope",
+  "title": "Non-leaking error envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "message", "retryable", "details"],
+  "properties": {"code": {"enum": ["deadline_exceeded", "stale_revision", "stale_round", "forbidden", "validation_failed", "idempotency_conflict"]}, "message": {"type": "string"}, "retryable": {"type": "boolean"}, "details": {"type": "object", "additionalProperties": {"type": "string"}}},
+  "not": {"anyOf": [{"required": ["correct_answer"]}, {"required": ["grading"]}, {"required": ["accepted_variants"]}]}
+}

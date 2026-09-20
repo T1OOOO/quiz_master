@@ -1,0 +1,9 @@
+{"cases":[
+  {"id":"single-exact","kind":"single_choice","submission":"opt-sun","key":{"correct_option_id":"opt-sun"},"expected_correct":true,"points":1,"speed_bonus":0},
+  {"id":"single-wrong","kind":"single_choice","submission":"opt-moon","key":{"correct_option_id":"opt-sun"},"expected_correct":false,"points":0,"speed_bonus":0},
+  {"id":"multi-exact","kind":"multiple_choice","submission":["opt-solid","opt-liquid","opt-gas"],"key":{"correct_option_ids":["opt-solid","opt-liquid","opt-gas"]},"expected_correct":true,"points":1,"speed_bonus":0},
+  {"id":"multi-partial","kind":"multiple_choice","submission":["opt-solid","opt-liquid"],"key":{"correct_option_ids":["opt-solid","opt-liquid","opt-gas"]},"expected_correct":false,"points":0,"speed_bonus":0},
+  {"id":"multi-extra","kind":"multiple_choice","submission":["opt-solid","opt-liquid","opt-gas","opt-plasma"],"key":{"correct_option_ids":["opt-solid","opt-liquid","opt-gas"]},"expected_correct":false,"points":0,"speed_bonus":0},
+  {"id":"text-unicode-case-space","kind":"normalized_text","submission":"  MARS\t","key":{"accepted_variants":["Mars"]},"expected_correct":true,"points":1,"speed_bonus":0},
+  {"id":"text-wrong","kind":"normalized_text","submission":"Venus","key":{"accepted_variants":["Mars"]},"expected_correct":false,"points":0,"speed_bonus":0}
+]}
