@@ -1,0 +1,746 @@
+{
+  "category_distribution": {
+    "Гастрономия": 11,
+    "Кино": 20,
+    "Новый Год": 9,
+    "Природа": 40,
+    "Психология": 5,
+    "Филии": 10,
+    "Филология": 6
+  },
+  "corpus_root": "quizzes",
+  "correct_answer_field_distribution": {
+    "correct_answer": 3128
+  },
+  "correct_multi_field_distribution": {
+    "absent": 1336,
+    "null": 1792
+  },
+  "duplicate_question_id_count": 0,
+  "duplicate_question_ids": {},
+  "duplicate_quiz_id_count": 0,
+  "duplicate_quiz_ids": {},
+  "files": [
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_1_part_1.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_1_part_1",
+      "sha256": "2521e37a1187064c977dcbd8f1001b38f94016e26689333b214a07e1a0950439"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_1_part_2.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_1_part_2",
+      "sha256": "b22a8b53e16ec5abc933c8297538dd8c28eb88197793d2be8bb906c277367d92"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_1_part_3.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_1_part_3",
+      "sha256": "a6aeff66ecbed680aa12664967082c5a62a2ea41d5189d306e897c6de2c9903c"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_1_part_4.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_1_part_4",
+      "sha256": "0a9a3cf9e261d9c0b428e37cedaf908f8b62e3987c30106b29037a6dfeca39d3"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_1_part_5.json",
+      "question_count": 20,
+      "quiz_id": "home_alone_1_part_5",
+      "sha256": "c1bc08595a44608e27d847a6c74e5682c8188f4fca9e8e1ce3524cf0c03e4ea6"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_2_part_1.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_2_part_1",
+      "sha256": "8750dcad4327aa63d814ca10ee3ee4387e7b06d1609c45e69a39aefddeeb01f2"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_2_part_2.json",
+      "question_count": 25,
+      "quiz_id": "home_alone_2_part_2",
+      "sha256": "c6002893267bad8bc2db0dbd38c82ffc107537c7b8916cd087909cc5b36d896f"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/HomeAlone/home_alone_2_part_3.json",
+      "question_count": 15,
+      "quiz_id": "home_alone_2_part_3",
+      "sha256": "58044e97daaed1abe868251dcf3d8c24e3310270451574a6fba217968d32b901"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/LOTR/lotr.json",
+      "question_count": 3,
+      "quiz_id": "lotr",
+      "sha256": "ba486e8e5463022519a2a4b38526dbd74b7c591a7b5edc0b6c6cc4a536a3d3e4"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/LOTR/lotr_fellowship_100.json",
+      "question_count": 50,
+      "quiz_id": "lotr_fellowship_100",
+      "sha256": "cee17b3be8a31442346ed9b0ffc785ea0d479d0d408f9422fd74e7882c4bb172"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json",
+      "question_count": 100,
+      "quiz_id": "lotr_return_king_bts_100",
+      "sha256": "a3fde271104a145f3d9c97133e9daaf8ec2bf34364eedb77bd37be972a3aa638"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/LOTR/lotr_two_towers_lore_100.json",
+      "question_count": 100,
+      "quiz_id": "lotr_two_towers_lore_100",
+      "sha256": "a89cd143e9876f9b90533dd0a78a1956be25de666328c6489353f9a35011bca9"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_animation_series.json",
+      "question_count": 25,
+      "quiz_id": "tf_animation_series",
+      "sha256": "6e7114c438217bc8999e59c5ff592a7a9667e52594e3a8e561ae08fbe3d9baa7"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_animation_unicron_tech.json",
+      "question_count": 25,
+      "quiz_id": "tf_animation_unicron_tech",
+      "sha256": "decc96923528b774405e19f8c89ec8934d855fcc19c4c5beb4364c4bd2c1aa7b"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_general.json",
+      "question_count": 25,
+      "quiz_id": "tf_general",
+      "sha256": "1f6382d8634b9485d142f09c436097b447e9971d4041a9d3c43925a795431891"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_hardcore.json",
+      "question_count": 25,
+      "quiz_id": "tf_hardcore",
+      "sha256": "8dabdf573c1d516d2a1d53195aef44b4700eba913190ca91e55483e50f8fd9c2"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_lore.json",
+      "question_count": 25,
+      "quiz_id": "tf_lore",
+      "sha256": "57d979a61d90a15f1f987710e32c6666f75c7be3fc6e794184f8136345818193"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_movies_bayverse.json",
+      "question_count": 25,
+      "quiz_id": "tf_movies_bayverse",
+      "sha256": "a08655221adf23cddfcacc64d2fc8fdee3541c6937907d2dd23feb35c8cfb06e"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_movies_modern.json",
+      "question_count": 25,
+      "quiz_id": "tf_movies_modern",
+      "sha256": "28b76b6f22f1137c0268fcce35c9b47f4614a977276768e0b5f534e5877745e5"
+    },
+    {
+      "category": "Кино",
+      "path": "quizzes/Cinema/Transformers/tf_toys.json",
+      "question_count": 25,
+      "quiz_id": "tf_toys",
+      "sha256": "4e44baab3f0379cedfea8a4443e3f08ab886c0b7ba4a19b0d4308e2018896261"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_cheeses_and_dairy.json",
+      "question_count": 19,
+      "quiz_id": "gastronomy_сыры_и_молочные_продукты",
+      "sha256": "5ce0d64767cae15b96834f598bcc760de56a2cbae404cd0d7e5a524b6bdbfbbe"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_cooking_techniques.json",
+      "question_count": 41,
+      "quiz_id": "gastronomy_техника_приготовления",
+      "sha256": "248940c245118dd7ca44e530455fb715708450e0ea3c3527e2b515df970783f1"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_drinks_and_alcohol.json",
+      "question_count": 36,
+      "quiz_id": "gastronomy_напитки_и_алкоголь",
+      "sha256": "22e7eaae9cd731f2800f19b2f9688c73f1a84b0764aacca5248f5f2341b56d1d"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_fruits_and_vegetables.json",
+      "question_count": 33,
+      "quiz_id": "gastronomy_фрукты_и_овощи",
+      "sha256": "6fcd6d520ee7ac9b8a064772c842ce7edf3afae35cf2699e0851967c831a47e9"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_general_facts_1.json",
+      "question_count": 57,
+      "quiz_id": "gastronomy_общие_факты_1",
+      "sha256": "efc1e25c32a06edec1e0bdfa11709752ac9bab2927fb903ca8ff6541314f2ebf"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_general_facts_2.json",
+      "question_count": 19,
+      "quiz_id": "gastronomy_общие_факты_2",
+      "sha256": "298844c2f634be1b60f7ba01e7bd72cff892a5da3be7d411a89017805a4f127b"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_meat_and_fish.json",
+      "question_count": 13,
+      "quiz_id": "gastronomy_мясо_и_рыба",
+      "sha256": "92717b90aa827bbbc2dee784ee61b15f2d05b2a55d5891f9739995dd5111e3ff"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_miscellaneous_off_topic.json",
+      "question_count": 2,
+      "quiz_id": "gastronomy_miscellaneous_off_topic",
+      "sha256": "0e0e2663573cecd34d044c3341a2a4c22eb65a084b474e341b8c2b209bbd1bb5"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_spices_and_ingredients.json",
+      "question_count": 22,
+      "quiz_id": "gastronomy_специи_и_ингредиенты",
+      "sha256": "476d1e68c7066eba4f0a77c06a857b87ddd282e4dd756369e4a30a62f31406e1"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_sweets_and_desserts.json",
+      "question_count": 24,
+      "quiz_id": "gastronomy_сладости_и_десерты",
+      "sha256": "bbf1a35d66380c56b08d1ddae762274bf72e10a0f01f094bcab0f5c265562e59"
+    },
+    {
+      "category": "Гастрономия",
+      "path": "quizzes/Gastronomy/gastronomy_traditions_and_etiquette.json",
+      "question_count": 33,
+      "quiz_id": "gastronomy_традиции_и_этикет",
+      "sha256": "f597dddba6e299dd5b7a993b12938691dabd3170dc7b9fb449152ee6ee1ea84b"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_behavior_and_psychology.json",
+      "question_count": 17,
+      "quiz_id": "cats_behavior_and_psychology",
+      "sha256": "66059f1994c75e82c039dbbea6b79f6a89e2268dfdaca1ded1b339a40d1da37e"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_anatomy_part_1.json",
+      "question_count": 20,
+      "quiz_id": "cats_biology_anatomy_part_1",
+      "sha256": "f7d085b6f91d25baa8c20535632a84563de007b865bc38b6f75a799028b6970e"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_anatomy_part_2.json",
+      "question_count": 19,
+      "quiz_id": "cats_biology_anatomy_part_2",
+      "sha256": "cbeb51d05357be0337e05a0927c6a629d4cc9ba9ee81644011345986f523fd2b"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_senses_part_1.json",
+      "question_count": 28,
+      "quiz_id": "cats_biology_senses_part_1",
+      "sha256": "f0ad137e80ed6f4ffdd7e5e96012bcc9a4418c46972a77f2ad65a54503df903c"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_senses_part_2.json",
+      "question_count": 28,
+      "quiz_id": "cats_biology_senses_part_2",
+      "sha256": "74c17410f4b97197f3b34369fc67956ae9af3d6f840eeb142df4f7ca5d43fb4f"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_senses_part_3.json",
+      "question_count": 28,
+      "quiz_id": "cats_biology_senses_part_3",
+      "sha256": "b4a34a7023d57a934f37c04dba97cee1066e2484fcf86cf458c7a07506630e96"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_biology_senses_part_4.json",
+      "question_count": 27,
+      "quiz_id": "cats_biology_senses_part_4",
+      "sha256": "fe1dad688d48d8b7dc0d2727398d51212d5266d4f444a95baaa803e4f36e2b89"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_breeds_man_made.json",
+      "question_count": 15,
+      "quiz_id": "cats_breeds_man_made",
+      "sha256": "4ad6a80bf33b7128bd952142a7a326e47dd2a60183a869575bad6d56737a9e84"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_breeds_natural_and_ancient_part_1.json",
+      "question_count": 20,
+      "quiz_id": "cats_breeds_natural_and_ancient_part_1",
+      "sha256": "3deb462aadbdf9f50d142ba7f43fce98d223865706fa76e77c4bb3c17953005e"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_breeds_natural_and_ancient_part_2.json",
+      "question_count": 20,
+      "quiz_id": "cats_breeds_natural_and_ancient_part_2",
+      "sha256": "d9f4ce6271f3d7c15661336489e85e29498f813d24b89c5b074d4a62850039c4"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_history_ancient_egypt.json",
+      "question_count": 15,
+      "quiz_id": "cats_history_ancient_egypt",
+      "sha256": "210daef7a394fb7f7fb4e89cb10dd996d99769ff6b20b20d63e6b3db383ce6ae"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_history_famous_and_culture.json",
+      "question_count": 15,
+      "quiz_id": "cats_history_famous_and_culture",
+      "sha256": "a45e227d6ea64933a56b0feb649c38a957ef2c1fc3b7c719cef94f5fdc7b8432"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_history_mythology.json",
+      "question_count": 15,
+      "quiz_id": "cats_history_mythology",
+      "sha256": "342779b0b56b5fa7e6c08d0a3a53d8c012513102b1d1828cb02fbac0bf03ad6a"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_history_other_eras.json",
+      "question_count": 15,
+      "quiz_id": "cats_history_other_eras",
+      "sha256": "b6aab912a04224598def1029d277256524d85dab0686e060378d537f3cb709f7"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_1.json",
+      "question_count": 24,
+      "quiz_id": "cats_trivia_records_and_general_part_1",
+      "sha256": "547445d4f0d12016403cc306d34627af41fa1fc68fed3b4ba7e987874ad47194"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_2.json",
+      "question_count": 24,
+      "quiz_id": "cats_trivia_records_and_general_part_2",
+      "sha256": "6840a20001bd7d5fb4061333e03dc063dee84ce18bb13f847c82b6d816596464"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_3.json",
+      "question_count": 24,
+      "quiz_id": "cats_trivia_records_and_general_part_3",
+      "sha256": "207f62d3c203e7d785b2098347e5cd346ab8fc88d5aa6ce79450c729b044e8eb"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_4.json",
+      "question_count": 13,
+      "quiz_id": "cats_trivia_records_and_general_part_4",
+      "sha256": "57c2f3f1371332023085ea7881f09d8f806a9e0d920584b49bb0e87922623b1e"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_biology_anatomy_part_1.json",
+      "question_count": 17,
+      "quiz_id": "dogs_biology_anatomy_part_1",
+      "sha256": "53f316226224a1d9793236c33724f403ca6c523ad8bc3f4928908ea8a31e4b68"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_biology_anatomy_part_2.json",
+      "question_count": 17,
+      "quiz_id": "dogs_biology_anatomy_part_2",
+      "sha256": "6ee11d6b4484c5c44052c57a04c4e133e46b9dd807f84c0a10240fa1239ed1b0"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_biology_senses_part_1.json",
+      "question_count": 24,
+      "quiz_id": "dogs_biology_senses_part_1",
+      "sha256": "ed2a5ca7c55346ca862c016b30fbbeba055fb4150520cbf8f25fdb827f4fbfca"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_biology_senses_part_2.json",
+      "question_count": 24,
+      "quiz_id": "dogs_biology_senses_part_2",
+      "sha256": "1940ff4db423efe086ca6befa693305c354531f047aa165cfc9b4332c4ac61e0"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_biology_senses_part_3.json",
+      "question_count": 24,
+      "quiz_id": "dogs_biology_senses_part_3",
+      "sha256": "6bd04116df6799bdcd7b0fc1f074165af81924811b0fbfcacf6fb4d73229b902"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_breeds_sporting_hounds.json",
+      "question_count": 15,
+      "quiz_id": "dogs_breeds_sporting_hounds",
+      "sha256": "029f837caf738dd8ca16db9166b88da42a1f0ac40bca917183af99f695b6c025"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_breeds_toy_terrier_rare_part_1.json",
+      "question_count": 19,
+      "quiz_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "sha256": "0fb1a5612217495f1e382e29647de0cc90afc0e2cdeaade3fd433ed3a8b5c832"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_breeds_toy_terrier_rare_part_2.json",
+      "question_count": 19,
+      "quiz_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "sha256": "45ee896fab7e9a7ea148404837f31403fbcce252048097fc08863aba16f3f277"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_breeds_working_herding.json",
+      "question_count": 23,
+      "quiz_id": "dogs_breeds_working_herding",
+      "sha256": "53ff7b7b611698bab1a3a7e3981a9091c579f4d35ef72edb3bf251506bfcfaf2"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_history_ancient_world.json",
+      "question_count": 28,
+      "quiz_id": "dogs_history_ancient_world",
+      "sha256": "6a80d27678c79638e70d33f55c11403ea6deb9719ccb63c47d8b4555eff367d3"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_history_famous_and_service.json",
+      "question_count": 25,
+      "quiz_id": "dogs_history_famous_and_service",
+      "sha256": "5d57a481030eb22b9b0d2eaa82f8aef82556b66e19a41980abfdd83b01eedb16"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_history_mythology.json",
+      "question_count": 19,
+      "quiz_id": "dogs_history_mythology",
+      "sha256": "a72c9e3b4fdcd4c576de8d9cca906bd574ce1a1302e39bd4104e27444f48375d"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_science_and_experiments.json",
+      "question_count": 15,
+      "quiz_id": "dogs_science_and_experiments",
+      "sha256": "fc44d64fe04ed49e7616835da4e87fdd10461ed2ebf0e8b6d32a8de1befa14a5"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_trivia_records_and_sports_part_1.json",
+      "question_count": 30,
+      "quiz_id": "dogs_trivia_records_and_sports_part_1",
+      "sha256": "43d4e9c8496be514f02e7da28f0568ad5b1d7e5db2c52dcff6afae93dc84e408"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_trivia_records_and_sports_part_2.json",
+      "question_count": 30,
+      "quiz_id": "dogs_trivia_records_and_sports_part_2",
+      "sha256": "5f9ef56dffb3340a0a0c18f03492ca2663198adfc59dfe06a942d38d73a63733"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Dogs/dogs_trivia_records_and_sports_part_3.json",
+      "question_count": 29,
+      "quiz_id": "dogs_trivia_records_and_sports_part_3",
+      "sha256": "f6a7ff738ed1c20fcaf3390d2a7b01a91ff767fd6dc17586f45c99e901fd4491"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_anatomy.json",
+      "question_count": 40,
+      "quiz_id": "nature_raccoons_anatomy",
+      "sha256": "a9d3fd9a441c3d633850ddeb2af2ab4e7572c854258dd3d4d9418e57ca71b682"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_behavior.json",
+      "question_count": 40,
+      "quiz_id": "nature_raccoons_behavior",
+      "sha256": "3c356b98b4f31354bc478f56d52d658fefb01eded3d482dccc2f447584c71f7a"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_culture.json",
+      "question_count": 40,
+      "quiz_id": "nature_raccoons_culture",
+      "sha256": "509f301af909df852c1bb6cd21eab301eaca5f10804140583eacd89387324829"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_habitat.json",
+      "question_count": 40,
+      "quiz_id": "nature_raccoons_habitat",
+      "sha256": "08692cf5ddb327a335166e9926d191b510acd6675e8f7fa30c4b99e5012efcee"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_science.json",
+      "question_count": 40,
+      "quiz_id": "nature_raccoons_science",
+      "sha256": "5928f1cf4e26a114db645304b89e320e8cf50719ae25abe4e2330d6e42398a96"
+    },
+    {
+      "category": "Природа",
+      "path": "quizzes/Nature/Raccoons/nature_raccoons_trivia.json",
+      "question_count": 50,
+      "quiz_id": "nature_raccoons_trivia",
+      "sha256": "bd2ac70f38d7a04997af72360d465082a2b418076e37a168b47089a0de46edb0"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_arts_literature.json",
+      "question_count": 55,
+      "quiz_id": "new_year_arts_literature",
+      "sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_cinema_intl.json",
+      "question_count": 50,
+      "quiz_id": "new_year_cinema_intl",
+      "sha256": "871164ed5fa51fcb354eaa2d84afba6efdf67b614cc0a3b0fc6ccaef22c7836e"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_cinema_ru.json",
+      "question_count": 102,
+      "quiz_id": "new_year_cinema_ru",
+      "sha256": "76d8d3f03f6a07be6ee5edcbf959ec1e0a2510af08c3042475eb929a779925e5"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_food_drinks.json",
+      "question_count": 49,
+      "quiz_id": "new_year_food_drinks",
+      "sha256": "21970d75c3d9fbab0a0f2f2771dc31f4d80a64b5cbdd46c82eb42bfa5aa87e70"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_history_science_1.json",
+      "question_count": 115,
+      "quiz_id": "new_year_history_science_1",
+      "sha256": "5920eed3f8a91a70e9a3814c427accbe076a766fc883b230a59514079b30d653"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_history_science_2.json",
+      "question_count": 113,
+      "quiz_id": "new_year_history_science_2",
+      "sha256": "a71cafce627edad94d055dd101ecfd913b36fc935284ee7c6c7e329a3101bf9c"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_mythology.json",
+      "question_count": 110,
+      "quiz_id": "new_year_mythology",
+      "sha256": "a55ac1a9a33e6d08a01b81806f7f94cb53e405d20c9ffa6e425798a45cabb7be"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_traditions_1.json",
+      "question_count": 80,
+      "quiz_id": "new_year_traditions_1",
+      "sha256": "5950a7a0f721edac312d1064765d14d47727da5c2896f8a9b0ec1eeb6d4a3b9b"
+    },
+    {
+      "category": "Новый Год",
+      "path": "quizzes/NewYear/new_year_traditions_2.json",
+      "question_count": 79,
+      "quiz_id": "new_year_traditions_2",
+      "sha256": "1c3458570c68f2fa856dd1318187a49c7fae61733f34275152fbe9d2c51cbe57"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_abstract.json",
+      "question_count": 16,
+      "quiz_id": "philias_abstract",
+      "sha256": "880c475502074472ecbdb61cad0a18bbb04bc0cb5e348f4a2aecc1403a29e755"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_animals_part_1.json",
+      "question_count": 15,
+      "quiz_id": "philias_animals_part_1",
+      "sha256": "3875607aa13744fb7ba6c7b8d64bf65c7945901df5672453ab7b4a42e6e73443"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_animals_part_2.json",
+      "question_count": 17,
+      "quiz_id": "philias_animals_part_2",
+      "sha256": "7cba42f680d41afbbc0106071b7a12a6854b6cd09ad8a0366943e1f41aec9de5"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_lifestyle_part_1.json",
+      "question_count": 20,
+      "quiz_id": "philias_lifestyle_part_1",
+      "sha256": "3781438a148e7b0b39a2d0a4ed075c21f119e5296648f17560c617d145fe9fb5"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_lifestyle_part_2.json",
+      "question_count": 21,
+      "quiz_id": "philias_lifestyle_part_2",
+      "sha256": "e0753189924c49f161bbe234bc3d47525079197b588ee598b530ea4f7facca04"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_nature.json",
+      "question_count": 21,
+      "quiz_id": "philias_nature",
+      "sha256": "a689be0c791e3e06c2c451942ba820f9ca967aff07ce368f37d092d0c9cadf84"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_nature_part_2.json",
+      "question_count": 10,
+      "quiz_id": "philias_nature_part_2",
+      "sha256": "f9ce03cb6f9d2d56b3da8c07558109724921087f936c42d59e7186d8d3f8d7ed"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_other.json",
+      "question_count": 16,
+      "quiz_id": "philias_other",
+      "sha256": "cb3e2e37a4d0af500ba60a51f64cb5c7809bf3e60e83b3a88d9c7fd9a53055d0"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_people_part_1.json",
+      "question_count": 14,
+      "quiz_id": "philias_people_part_1",
+      "sha256": "2acb86ab3782eb50aee58283fcc60dcc48e5ccfe9288368eb0f526ba998d2285"
+    },
+    {
+      "category": "Филии",
+      "path": "quizzes/Philias/philias_people_part_2.json",
+      "question_count": 15,
+      "quiz_id": "philias_people_part_2",
+      "sha256": "18139a0a9f42fe074b24dd3e16f54b4c494ab03c77cf10b3c12d4db964d5f0e4"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_archaisms.json",
+      "question_count": 12,
+      "quiz_id": "vocabulary_archaisms",
+      "sha256": "b702f2f3d54fcbf960f5816deccd02afdf864eba1102f287b5752fe5c110c0d2"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_art_culture.json",
+      "question_count": 16,
+      "quiz_id": "vocabulary_art_culture",
+      "sha256": "4a951f44fdd221c1f06bedf136a969f09bb42df857d8e462ba0e039169efbafc"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_church_slavonic.json",
+      "question_count": 17,
+      "quiz_id": "vocabulary_church_slavonic",
+      "sha256": "ee68c2833e65193f3cea448860378141b0ad351aa455ce539d196db57918a9ae"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_foreign.json",
+      "question_count": 20,
+      "quiz_id": "vocabulary_foreign",
+      "sha256": "4b1b8297e773847a72c5e53114756c0632a81bed19517e1330ed9fc9d53ae4a9"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_intellectual.json",
+      "question_count": 5,
+      "quiz_id": "vocabulary_intellectual",
+      "sha256": "04979f1789614032c52beb4797b7d7221e18f0f80f785c8158fab9992c91915c"
+    },
+    {
+      "category": "Филология",
+      "path": "quizzes/Philology/vocabulary_society.json",
+      "question_count": 20,
+      "quiz_id": "vocabulary_society",
+      "sha256": "5c08ce784d6f9292d28661c897d502ca957fb3e1ad33707df008cf27b0664ffc"
+    },
+    {
+      "category": "Психология",
+      "path": "quizzes/Psychology/phobias_animals.json",
+      "question_count": 89,
+      "quiz_id": "phobias_animals",
+      "sha256": "7c8906c59dce3ce1f07884c852adea60dfb47276b3cf82b51e88993c2bc7601b"
+    },
+    {
+      "category": "Психология",
+      "path": "quizzes/Psychology/phobias_celebrities.json",
+      "question_count": 33,
+      "quiz_id": "phobias_celebrities",
+      "sha256": "5715f0f17aa5c0c979f1f8d4bf002a54e98d601bc4b916f42fb409d5cdef4c1c"
+    },
+    {
+      "category": "Психология",
+      "path": "quizzes/Psychology/phobias_general.json",
+      "question_count": 54,
+      "quiz_id": "phobias_general",
+      "sha256": "2dfc218165733f3aaea4e85df4288a37083e077140baa302cef1c790522f7c7f"
+    },
+    {
+      "category": "Психология",
+      "path": "quizzes/Psychology/phobias_medical.json",
+      "question_count": 23,
+      "quiz_id": "phobias_medical",
+      "sha256": "fb48741c3523f61f54032fc5232d0d4c56424647e1941bec949be0ba3d42ca39"
+    },
+    {
+      "category": "Психология",
+      "path": "quizzes/Psychology/phobias_nature.json",
+      "question_count": 9,
+      "quiz_id": "phobias_nature",
+      "sha256": "861af5e5e4dbeb1cc307bf30b533bbcb1033f2f0297f16fa9471962841a223d8"
+    }
+  ],
+  "files_parsed": 101,
+  "files_total": 101,
+  "files_with_malformed_or_unreadable_content": 0,
+  "malformed_or_unreadable_inputs": [],
+  "option_count_distribution": {
+    "4": 124,
+    "5": 535,
+    "6": 2469
+  },
+  "question_type_distribution": {
+    "choice": 3128
+  },
+  "questions_missing_difficulty": 703,
+  "questions_total": 3128
+}

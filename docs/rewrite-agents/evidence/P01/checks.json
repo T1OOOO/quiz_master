@@ -1,0 +1,35 @@
+{
+  "revision": "5daa586b8ec5019f39d04bf40b74c24ce346c0e1",
+  "cwd": "C:\\ap\\quiz_master",
+  "tool_versions": {
+    "go": "go version go1.27.0 windows/amd64",
+    "python": "Python 3.14.7"
+  },
+  "checks": [
+    {
+      "command": "python docs/rewrite-agents/evidence/P01/inventory.py quizzes > docs/rewrite-agents/evidence/P01/inventory.json",
+      "duration_ms": 163,
+      "exit_code": 0,
+      "output_sha256": "e1e780d8966203b6ad094af0c864c9c76d9ae5cb58389a4b8083f281c1dc8c6e"
+    },
+    {
+      "command": "go run ./docs/rewrite-agents/evidence/P01/decode_repro.go ./docs/rewrite-agents/evidence/P01/decode_fixture.json > docs/rewrite-agents/evidence/P01/decode_repro.txt",
+      "duration_ms": 2581,
+      "exit_code": 0,
+      "output_sha256": "80208e9ea006d712c27ec1d89bc861c599d1e69ddbb0f587b75e4c9f0b2fe601"
+    },
+    {
+      "command": "go test ./docs/rewrite-agents/evidence/P01",
+      "duration_ms": 998,
+      "exit_code": 0,
+      "result": "package compiles; no test files"
+    }
+  ],
+  "artifact_sha256": {
+    "decode_fixture.json": "7d015523f7d0d94e41baae3953a55c68bd2b2b029cbf6c0ed2be461a3cf1e80b",
+    "decode_repro.go": "4c9efbe4b41ca1643f3dabd5c605725ee70341f36f8c832920c5ca45ccf5085b",
+    "decode_repro.txt": "80208e9ea006d712c27ec1d89bc861c599d1e69ddbb0f587b75e4c9f0b2fe601",
+    "inventory.json": "e1e780d8966203b6ad094af0c864c9c76d9ae5cb58389a4b8083f281c1dc8c6e",
+    "inventory.py": "c8b41915841b07fb208cb8361ea1d4c40ed8f78f2a41fdbe553e8561bf86a852"
+  }
+}

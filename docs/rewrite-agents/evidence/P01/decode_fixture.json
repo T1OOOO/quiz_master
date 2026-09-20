@@ -1,0 +1,15 @@
+{
+  "id": "p01-decode-fixture",
+  "title": "P01 local decoder fixture",
+  "description": "Isolated local evidence; not production content.",
+  "category": "P01",
+  "questions": [
+    {
+      "id": "p01-nonzero-answer",
+      "type": "choice",
+      "text": "Which position is retained?",
+      "options": ["zero", "one", "two"],
+      "correct_answer": 2
+    }
+  ]
+}
