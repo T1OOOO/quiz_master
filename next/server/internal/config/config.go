@@ -5,11 +5,12 @@ import (
 	"net"
 	"net/url"
 	"os"
+	"path/filepath"
 	"time"
 )
 
 type Config struct {
-	ContentBundlePath                                                       string
+	ContentBundlePath, ContentManifestPath                                  string
 	AttemptDuration                                                         time.Duration
 	ListenAddr, DatabaseURL                                                 string
 	ShutdownTimeout, DatabaseStartupTimeout, ReadHeaderTimeout, ReadTimeout time.Duration
@@ -19,6 +20,7 @@ type Config struct {
 func FromEnv() (Config, error) {
 	c := Config{ListenAddr: os.Getenv("QM_LISTEN_ADDR"), DatabaseURL: os.Getenv("QM_DATABASE_URL"), ShutdownTimeout: 10 * time.Second, DatabaseStartupTimeout: 15 * time.Second, ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 60 * time.Second}
 	c.ContentBundlePath = os.Getenv("QM_CONTENT_BUNDLE_PATH")
+	c.ContentManifestPath = os.Getenv("QM_CONTENT_MANIFEST_PATH")
 	c.AttemptDuration = 30 * time.Minute
 	if err := readDuration("QM_ATTEMPT_DURATION", &c.AttemptDuration); err != nil {
 		return Config{}, err
@@ -38,6 +40,12 @@ func FromEnv() (Config, error) {
 			return Config{}, fmt.Errorf("QM_CONTENT_BUNDLE_PATH is required for a nonlocal listener")
 		}
 		c.ContentBundlePath = "next/content/home-alone-1-part-1/bundle.json"
+	}
+	if c.ContentManifestPath == "" {
+		if host != "localhost" && !net.ParseIP(host).IsLoopback() {
+			return Config{}, fmt.Errorf("QM_CONTENT_MANIFEST_PATH is required for a nonlocal listener")
+		}
+		c.ContentManifestPath = filepath.Join(filepath.Dir(c.ContentBundlePath), "manifest.json")
 	}
 	if c.DatabaseURL == "" {
 		return Config{}, fmt.Errorf("QM_DATABASE_URL is required")

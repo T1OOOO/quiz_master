@@ -37,7 +37,7 @@ func TestPostgresAttemptLifecycle(t *testing.T) {
 	now := func() time.Time { return time.Unix(0, ticks.Load()).UTC() }
 	path := "../../../content/home-alone-1-part-1/bundle.json"
 	schemas := "../../../contracts/quiz-contract/v1/schemas"
-	opts := Options{Now: now, Shuffle: func(ids []string) error {
+	opts := Options{Now: now, ManifestPath: "../../../content/home-alone-1-part-1/manifest.json", Shuffle: func(ids []string) error {
 		for i, j := 0, len(ids)-1; i < j; i, j = i+1, j-1 {
 			ids[i], ids[j] = ids[j], ids[i]
 		}
@@ -130,6 +130,25 @@ func TestPostgresAttemptLifecycle(t *testing.T) {
 		if _, e = NewService(ctx, pool, conflictPath, schemas, 30*time.Minute, opts); e == nil {
 			t.Fatal("version/hash conflict accepted")
 		}
+		manifestRaw, e := os.ReadFile(opts.ManifestPath)
+		if e != nil {
+			t.Fatal(e)
+		}
+		var manifest content.Manifest
+		if e = json.Unmarshal(manifestRaw, &manifest); e != nil {
+			t.Fatal(e)
+		}
+		manifest.Questions[0].Explanation += " changed"
+		manifestRaw, _ = json.Marshal(manifest)
+		driftPath := filepath.Join(t.TempDir(), "manifest.json")
+		if e = os.WriteFile(driftPath, manifestRaw, 0600); e != nil {
+			t.Fatal(e)
+		}
+		drift := opts
+		drift.ManifestPath = driftPath
+		if _, e = NewService(ctx, pool, path, schemas, 30*time.Minute, drift); e == nil {
+			t.Fatal("explanation-only manifest drift accepted after service restart")
+		}
 		if _, e = NewService(ctx, pool, path, schemas, time.Second, opts); e == nil {
 			t.Fatal("invalid service duration")
 		}
@@ -182,11 +201,21 @@ func TestPostgresAttemptLifecycle(t *testing.T) {
 		if _, e = s.Submit(ctx, owner.ID, a.AttemptID, request(a, 2, "q-ha1-p1-3-opt-1", "wrong")); e != nil {
 			t.Fatal(e)
 		}
+		if _, e = s.Reveals(ctx, owner.ID, a.AttemptID); !errors.Is(e, ErrValidation) {
+			t.Fatal("unfinished reveal", e)
+		}
+		if _, e = s.Reveals(ctx, other.ID, a.AttemptID); !errors.Is(e, ErrForbidden) {
+			t.Fatal("foreign reveal", e)
+		}
 		f, e := s.Finish(ctx, owner.ID, a.AttemptID)
 		if e != nil || f.ServerScore != 1 || len(f.History) != 2 {
 			t.Fatal("partial finish", e, f.ServerScore)
 		}
 		s = newService()
+		reveals, e := s.Reveals(ctx, owner.ID, a.AttemptID)
+		if e != nil || len(reveals) != 2 || reveals[0].QuestionID != a.QuestionSnapshots[1].QuestionID || reveals[1].QuestionID != a.QuestionSnapshots[2].QuestionID {
+			t.Fatal("restart reveals", e, len(reveals))
+		}
 		got, e := s.GetHistory(ctx, owner.ID, a.AttemptID)
 		if e != nil || !reflect.DeepEqual(got, f) {
 			t.Fatal("restart", e)

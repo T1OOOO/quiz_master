@@ -14,15 +14,17 @@ import (
 )
 
 type Options struct {
-	Now     func() time.Time
-	ID      func(string) (string, error)
-	Shuffle Shuffler
+	Now          func() time.Time
+	ID           func(string) (string, error)
+	Shuffle      Shuffler
+	ManifestPath string
 }
 type Service struct {
-	pool     *pgxpool.Pool
-	bundle   content.Bundle
-	duration time.Duration
-	opts     Options
+	pool         *pgxpool.Pool
+	bundle       content.Bundle
+	explanations map[string]string
+	duration     time.Duration
+	opts         Options
 }
 
 // NewService validates raw input before persistence and verifies any previously
@@ -39,16 +41,32 @@ func NewService(ctx context.Context, pool *pgxpool.Pool, path, schemaDir string,
 		return nil, errors.New("controlled bundle required")
 	}
 	b := *doc.Bundle
+	manifest, err := loadManifest(opts.ManifestPath, b)
+	if err != nil {
+		return nil, err
+	}
 	raw, err := content.Canonical(b)
 	if err != nil {
 		return nil, err
 	}
-	if _, err = pool.Exec(ctx, `insert into attempt_bundles(bundle_sha256,bundle_version,controlled_bundle) values($1,$2,$3) on conflict do nothing`, b.BundleSHA256, b.BundleVersion, raw); err != nil {
+	if _, err = pool.Exec(ctx, `insert into attempt_bundles(bundle_sha256,bundle_version,controlled_bundle,manifest_sha256) values($1,$2,$3,$4) on conflict do nothing`, b.BundleSHA256, b.BundleVersion, raw, manifest.SHA256); err != nil {
 		return nil, fmt.Errorf("persist controlled bundle: %w", err)
 	}
 	var stored []byte
-	if err = pool.QueryRow(ctx, `select controlled_bundle from attempt_bundles where bundle_sha256=$1 and bundle_version=$2`, b.BundleSHA256, b.BundleVersion).Scan(&stored); err != nil {
+	var storedManifestHash *string
+	if err = pool.QueryRow(ctx, `select controlled_bundle,manifest_sha256 from attempt_bundles where bundle_sha256=$1 and bundle_version=$2`, b.BundleSHA256, b.BundleVersion).Scan(&stored, &storedManifestHash); err != nil {
 		return nil, errors.New("controlled bundle identity conflict")
+	}
+	if storedManifestHash == nil {
+		if _, err = pool.Exec(ctx, `update attempt_bundles set manifest_sha256=$3 where bundle_sha256=$1 and bundle_version=$2 and manifest_sha256 is null`, b.BundleSHA256, b.BundleVersion, manifest.SHA256); err != nil {
+			return nil, fmt.Errorf("adopt explanation manifest: %w", err)
+		}
+		if err = pool.QueryRow(ctx, `select manifest_sha256 from attempt_bundles where bundle_sha256=$1 and bundle_version=$2`, b.BundleSHA256, b.BundleVersion).Scan(&storedManifestHash); err != nil {
+			return nil, errors.New("explanation manifest identity conflict")
+		}
+	}
+	if storedManifestHash == nil || *storedManifestHash != manifest.SHA256 {
+		return nil, errors.New("explanation manifest content conflict")
 	}
 	var value any
 	if err = json.Unmarshal(stored, &value); err != nil {
@@ -67,7 +85,7 @@ func NewService(ctx context.Context, pool *pgxpool.Pool, path, schemaDir string,
 	if opts.Shuffle == nil {
 		opts.Shuffle = randomShuffle
 	}
-	return &Service{pool: pool, bundle: b, duration: duration, opts: opts}, nil
+	return &Service{pool: pool, bundle: b, explanations: manifest.Explanations, duration: duration, opts: opts}, nil
 }
 
 type Catalog struct {

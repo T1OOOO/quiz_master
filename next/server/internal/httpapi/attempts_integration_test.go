@@ -34,27 +34,60 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 	}
 	now := func() time.Time { return time.Date(2026, 9, 20, 12, 0, 0, 0, time.UTC) }
 	ident := identity.NewService(pool, now, identity.NewTokenSource(nil))
-	p, token, err := ident.CreateGuest(ctx, "E2E owner")
-	if err != nil {
-		t.Fatal(err)
-	}
-	_, other, err := ident.CreateGuest(ctx, "E2E stranger")
-	if err != nil {
-		t.Fatal(err)
-	}
 	auth := func(ctx context.Context, raw string) (Principal, error) {
 		p, e := ident.Authenticate(ctx, raw)
 		return Principal{ID: p.ID, Kind: p.Kind}, e
 	}
 	newHandler := func() http.Handler {
-		s, e := attempts.NewService(ctx, pool, "../../../content/home-alone-1-part-1/bundle.json", "../../../contracts/quiz-contract/v1/schemas", 30*time.Minute, attempts.Options{Now: now})
+		s, e := attempts.NewService(ctx, pool, "../../../content/home-alone-1-part-1/bundle.json", "../../../contracts/quiz-contract/v1/schemas", 30*time.Minute, attempts.Options{Now: now, ManifestPath: "../../../content/home-alone-1-part-1/manifest.json"})
 		if e != nil {
 			t.Fatal(e)
 		}
-		return AttemptRoutes(s, auth)
+		return Routes(s, auth, ident.CreateGuestSession)
 	}
 	server := httptest.NewServer(newHandler())
 	defer server.Close()
+	type guestResponse struct {
+		ParticipantID string    `json:"participant_id"`
+		Kind          string    `json:"kind"`
+		DisplayName   string    `json:"display_name"`
+		Token         string    `json:"token"`
+		ExpiresAt     time.Time `json:"expires_at"`
+	}
+	createGuest := func(name string) guestResponse {
+		req, e := http.NewRequest(http.MethodPost, server.URL+"/v1/guests", strings.NewReader(`{"display_name":"`+name+`"}`))
+		if e != nil {
+			t.Fatal(e)
+		}
+		req.Header.Set("Content-Type", "application/json")
+		res, e := server.Client().Do(req)
+		if e != nil {
+			t.Fatal(e)
+		}
+		defer res.Body.Close()
+		data, e := io.ReadAll(res.Body)
+		if e != nil {
+			t.Fatal(e)
+		}
+		if res.StatusCode != http.StatusCreated || res.Header.Get("Cache-Control") != "no-store" {
+			t.Fatalf("guest bootstrap status=%d cache=%q", res.StatusCode, res.Header.Get("Cache-Control"))
+		}
+		var object map[string]json.RawMessage
+		if e = json.Unmarshal(data, &object); e != nil || len(object) != 5 {
+			t.Fatalf("guest response is not closed: %v fields=%d", e, len(object))
+		}
+		var guest guestResponse
+		if e = json.Unmarshal(data, &guest); e != nil {
+			t.Fatal(e)
+		}
+		if guest.ParticipantID == "" || guest.Kind != "guest" || guest.DisplayName != name || guest.Token == "" || !guest.ExpiresAt.Equal(now().Add(24*time.Hour)) {
+			t.Fatal("invalid guest bootstrap response")
+		}
+		return guest
+	}
+	owner := createGuest("E2E owner")
+	stranger := createGuest("E2E stranger")
+	token, other := owner.Token, stranger.Token
 	captures := []json.RawMessage{}
 	validateDefinition := func(data []byte, name string) {
 		schemaRaw, e := os.ReadFile("../../../contracts/quiz-contract/v1/schemas/attempts.schema.json")
@@ -102,10 +135,17 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 		if res.StatusCode != want {
 			t.Fatalf("%s %s status %d want %d", method, path, res.StatusCode, want)
 		}
-		for _, marker := range []string{"private_grading", "grading", "correct_option_id", "correct_option_ids", "correct_answer", "accepted_variants", "explanation", "correctness", token, other} {
+		markers := []string{"private_grading", "grading", "accepted_variants", "correctness", token, other}
+		if !(method == http.MethodGet && strings.HasSuffix(path, "/reveals") && want == http.StatusOK) {
+			markers = append(markers, "correct_option_id", "correct_option_ids", "correct_answer", "explanation")
+		}
+		for _, marker := range markers {
 			if bytes.Contains(data, []byte(marker)) {
 				t.Fatalf("private marker leaked: %s", strings.ReplaceAll(marker, token, "token"))
 			}
+		}
+		if strings.HasSuffix(path, "/reveals") && res.Header.Get("Cache-Control") != "no-store" {
+			t.Fatal("reveal response is cacheable")
 		}
 		if json.Valid(data) {
 			captures = append(captures, append([]byte(nil), data...))
@@ -140,8 +180,7 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 	if err = content.ValidateSchema(raw, "../../../contracts/quiz-contract/v1/schemas/attempts.schema.json", "start"); err != nil {
 		t.Fatal(err)
 	}
-	external, _ := attempts.ExternalParticipant(p.ID)
-	if a.ParticipantID != external {
+	if a.ParticipantID != owner.ParticipantID {
 		t.Fatal("identity boundary")
 	}
 	// Independently map the source's nonzero index using the accepted manifest;
@@ -192,6 +231,9 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 	}
 	call("POST", answerPath, token, makeRequest(1, manifest.Questions[1].Options[0].CanonicalID, "correct"), 409)
 	call("POST", answerPath, token, makeRequest(2, manifest.Questions[2].Options[0].CanonicalID, "wrong"), 200)
+	revealPath := "/v1/attempts/" + a.AttemptID + "/reveals"
+	call("GET", revealPath, token, nil, 400)
+	call("GET", revealPath, other, nil, 404)
 	finishPath := "/v1/attempts/" + a.AttemptID + "/finish"
 	call("POST", finishPath, token, `{"server_score":999}`, 400)
 	finished := call("POST", finishPath, token, `{}`, 200)
@@ -200,6 +242,27 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 	_ = json.Unmarshal(finished, &result)
 	if result.ServerScore != 1 || len(result.History) != 2 {
 		t.Fatal("independent expected score 1 from one correct nonzero and one incorrect source answer")
+	}
+	revealRaw := call("GET", revealPath, token, nil, 200)
+	var revealItems []json.RawMessage
+	if err = json.Unmarshal(revealRaw, &revealItems); err != nil || len(revealItems) != 2 {
+		t.Fatalf("reveals: count=%d err=%v", len(revealItems), err)
+	}
+	explanationByQuestion := map[string]string{}
+	for _, question := range manifest.Questions {
+		explanationByQuestion[question.CanonicalID] = question.Explanation
+	}
+	for i, item := range revealItems {
+		if err = content.ValidateSchema(item, "../../../contracts/quiz-contract/v1/schemas/reveal.schema.json", "response"); err != nil {
+			t.Fatal(err)
+		}
+		var reveal attempts.Reveal
+		if err = json.Unmarshal(item, &reveal); err != nil {
+			t.Fatal(err)
+		}
+		if reveal.QuestionID != result.History[i].QuestionID || reveal.Explanation != explanationByQuestion[reveal.QuestionID] {
+			t.Fatal("reveal order or explanation changed")
+		}
 	}
 	server.Close()
 	server = httptest.NewServer(newHandler())
@@ -210,6 +273,10 @@ func TestRealBundleBearerEndToEnd(t *testing.T) {
 	if after := call("POST", finishPath, token, `{}`, 200); !bytes.Equal(finished, after) {
 		t.Fatal("reconstructed finish is not idempotent")
 	}
+	if after := call("GET", revealPath, token, nil, 200); !bytes.Equal(revealRaw, after) {
+		t.Fatal("reconstructed service lost reveals")
+	}
+	call("GET", revealPath, other, nil, 404)
 	call("GET", "/v1/history/"+a.AttemptID, other, nil, 404)
 	call("GET", "/v1/history/a-does-not-exist", other, nil, 404)
 	if string(call("GET", "/v1/history", other, nil, 200)) != "[]\n" {

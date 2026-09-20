@@ -18,6 +18,7 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P07C (`quiz_master-rq9.46`) is locally accepted with `DONE_WITH_CONCERNS`. Canonical UTF-8/LF source hashing removes checkout line-ending variance, and the Web privacy scan no longer depends on unavailable `rg`. All sequential local gates passed; per user direction, no new GitHub Actions run was attempted and no all-green remote run is claimed.
 - P08 (`quiz_master-rq9.9`) is accepted and closed. Integration commit: `f5428ae`. `quizctl import/validate/build/diff` now produces a deterministic controlled bundle from the first real 25-question legacy pack; 25 grading entries and 150 option mappings were independently checked. Bundle SHA-256: `6c7754aa9b142d8657bac1bb65f0536d30364d262ef109315c4b9356ee512b95`.
 - P09 (`quiz_master-rq9.10`) is accepted and closed with one environment concern. Integration commit: `ec74e4a`. Authenticated attempts now pin the P08 bundle/snapshots, enforce deadlines and idempotent final answers, score only on the server and persist participant-scoped history. PostgreSQL concurrency tests pass; Windows race instrumentation is unavailable because `CGO_ENABLED=0`.
+- P10A/P10AF (`quiz_master-rq9.11.1` / `.1.1`) are locally accepted with one environment concern. The real client can bootstrap a guest bearer session and retrieve owner-only, answered-only reveals after finish. Migration 0003 immutably binds exact P08 manifest bytes to the controlled bundle so historical explanations cannot drift. Full sequential Go tests, vet and P04/P08 preservation checks pass; the tagged PostgreSQL suite compiles but its live execution is pending because the approved disposable target is absent.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
@@ -46,6 +47,6 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Dispatch P10 Flutter catalog-to-history flow, then run the P11 first vertical gate.
+1. Dispatch P10 Flutter catalog-to-history flow against the now-complete guest/reveal API, then run the P11 first vertical gate.
 2. Preserve P07C's missing remote confirmation as an explicit limitation; do not run GitHub Actions unless the user changes direction.
 3. Preserve P09's unavailable Windows race instrumentation as explicit release evidence.

@@ -44,15 +44,35 @@ func TestAttemptErrorsAreStableAndNonLeaking(t *testing.T) {
 }
 func TestAttemptRoutesRequireBearerForParticipantOperations(t *testing.T) {
 	h := AttemptRoutes(nil, func(_ context.Context, _ string) (Principal, error) { return Principal{}, ErrUnauthorized })
-	for _, path := range []string{"/v1/attempts", "/v1/attempts/a-one/answers", "/v1/attempts/a-one/finish", "/v1/history", "/v1/history/a-one"} {
+	for _, path := range []string{"/v1/attempts", "/v1/attempts/a-one/answers", "/v1/attempts/a-one/finish", "/v1/attempts/a-one/reveals", "/v1/history", "/v1/history/a-one"} {
 		method := http.MethodPost
-		if strings.Contains(path, "history") {
+		if strings.Contains(path, "history") || strings.Contains(path, "reveals") {
 			method = http.MethodGet
 		}
 		w := httptest.NewRecorder()
 		h.ServeHTTP(w, httptest.NewRequest(method, path, nil))
 		if w.Code != 401 {
 			t.Fatal(path, w.Code)
+		}
+		if strings.Contains(path, "reveals") && w.Header().Get("Cache-Control") != "no-store" {
+			t.Fatal("unauthenticated reveal response is cacheable")
+		}
+	}
+}
+
+func TestEveryRevealResponseIsNoStore(t *testing.T) {
+	h := AttemptRoutes(nil, func(_ context.Context, _ string) (Principal, error) { return Principal{}, ErrUnauthorized })
+	for _, tt := range []struct {
+		method, authorization string
+	}{{http.MethodGet, ""}, {http.MethodGet, "Basic invalid"}, {http.MethodGet, "Bearer invalid"}, {http.MethodPost, "Bearer invalid"}} {
+		r := httptest.NewRequest(tt.method, "/v1/attempts/a-one/reveals", nil)
+		if tt.authorization != "" {
+			r.Header.Set("Authorization", tt.authorization)
+		}
+		w := httptest.NewRecorder()
+		h.ServeHTTP(w, r)
+		if w.Header().Get("Cache-Control") != "no-store" {
+			t.Fatalf("%s %q status=%d is cacheable", tt.method, tt.authorization, w.Code)
 		}
 	}
 }

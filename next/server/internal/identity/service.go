@@ -16,6 +16,11 @@ import (
 var ErrUnauthorized = errors.New("unauthorized")
 
 type Principal struct{ ID, Kind, DisplayName string }
+type GuestSession struct {
+	Principal Principal
+	Token     string
+	ExpiresAt time.Time
+}
 type Service struct {
 	pool   *pgxpool.Pool
 	now    func() time.Time
@@ -28,36 +33,47 @@ func NewService(pool *pgxpool.Pool, now func() time.Time, tokens TokenSource) *S
 	}
 	return &Service{pool: pool, now: now, tokens: tokens}
 }
-func (s *Service) CreateGuest(ctx context.Context, displayName string) (Principal, string, error) {
+func CleanDisplayName(displayName string) (string, error) {
 	displayName = strings.TrimSpace(displayName)
 	if displayName == "" || len(displayName) > 100 {
-		return Principal{}, "", fmt.Errorf("display name is invalid")
+		return "", fmt.Errorf("display name is invalid")
+	}
+	return displayName, nil
+}
+func (s *Service) CreateGuestSession(ctx context.Context, displayName string) (GuestSession, error) {
+	displayName, err := CleanDisplayName(displayName)
+	if err != nil {
+		return GuestSession{}, err
 	}
 	id, err := participantID()
 	if err != nil {
-		return Principal{}, "", err
+		return GuestSession{}, err
 	}
 	token, err := s.tokens.New()
 	if err != nil {
-		return Principal{}, "", err
+		return GuestSession{}, err
 	}
 	now := s.now().UTC()
 	expires := now.Add(24 * time.Hour)
 	tx, err := s.pool.Begin(ctx)
 	if err != nil {
-		return Principal{}, "", fmt.Errorf("begin guest: %w", err)
+		return GuestSession{}, fmt.Errorf("begin guest: %w", err)
 	}
 	defer func() { _ = tx.Rollback(ctx) }()
 	if _, err = tx.Exec(ctx, "insert into participants(id,kind,display_name,created_at,updated_at) values ($1,'guest',$2,$3,$3)", id, displayName, now); err != nil {
-		return Principal{}, "", fmt.Errorf("create guest: %w", err)
+		return GuestSession{}, fmt.Errorf("create guest: %w", err)
 	}
 	if _, err = tx.Exec(ctx, "insert into sessions(token_digest,participant_id,created_at,expires_at) values ($1,$2,$3,$4)", Digest(token), id, now, expires); err != nil {
-		return Principal{}, "", fmt.Errorf("issue session: %w", err)
+		return GuestSession{}, fmt.Errorf("issue session: %w", err)
 	}
 	if err = tx.Commit(ctx); err != nil {
-		return Principal{}, "", fmt.Errorf("commit guest: %w", err)
+		return GuestSession{}, fmt.Errorf("commit guest: %w", err)
 	}
-	return Principal{ID: id, Kind: "guest", DisplayName: displayName}, token, nil
+	return GuestSession{Principal: Principal{ID: id, Kind: "guest", DisplayName: displayName}, Token: token, ExpiresAt: expires}, nil
+}
+func (s *Service) CreateGuest(ctx context.Context, displayName string) (Principal, string, error) {
+	session, err := s.CreateGuestSession(ctx, displayName)
+	return session.Principal, session.Token, err
 }
 func (s *Service) Authenticate(ctx context.Context, token string) (Principal, error) {
 	var p Principal

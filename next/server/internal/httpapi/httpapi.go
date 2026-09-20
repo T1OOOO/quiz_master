@@ -34,6 +34,7 @@ type TokenAuthenticator func(context.Context, string) (Principal, error)
 
 func Authenticate(auth TokenAuthenticator, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "no-store")
 		parts := strings.Fields(r.Header.Get("Authorization"))
 		if len(parts) != 2 || parts[0] != "Bearer" {
 			WriteError(w, http.StatusUnauthorized, ErrUnauthorized)

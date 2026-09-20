@@ -45,7 +45,7 @@ func run() error {
 	if err := migrate.Apply(startupCtx, pool, migrate.Migrations()); err != nil {
 		return err
 	}
-	attemptService, err := attempts.NewService(startupCtx, pool, cfg.ContentBundlePath, content.DefaultSchemas, cfg.AttemptDuration, attempts.Options{})
+	attemptService, err := attempts.NewService(startupCtx, pool, cfg.ContentBundlePath, content.DefaultSchemas, cfg.AttemptDuration, attempts.Options{ManifestPath: cfg.ContentManifestPath})
 	if err != nil {
 		return err
 	}
@@ -54,7 +54,7 @@ func run() error {
 		p, err := identities.Authenticate(ctx, token)
 		return httpapi.Principal{ID: p.ID, Kind: p.Kind}, err
 	}
-	srv := newServer(cfg, pool, httpapi.AttemptRoutes(attemptService, auth))
+	srv := newServer(cfg, pool, httpapi.Routes(attemptService, auth, identities.CreateGuestSession))
 	errCh := make(chan error, 1)
 	go func() { errCh <- srv.ListenAndServe() }()
 	select {

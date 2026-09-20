@@ -16,6 +16,27 @@ import (
 
 func AttemptRoutes(s *attempts.Service, auth TokenAuthenticator) http.Handler {
 	mux := http.NewServeMux()
+	registerAttemptRoutes(mux, s, auth)
+	return noStoreRevealResponses(mux)
+}
+
+func Routes(s *attempts.Service, auth TokenAuthenticator, create GuestCreator) http.Handler {
+	mux := http.NewServeMux()
+	registerIdentityRoutes(mux, create)
+	registerAttemptRoutes(mux, s, auth)
+	return noStoreRevealResponses(mux)
+}
+
+func noStoreRevealResponses(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasPrefix(r.URL.Path, "/v1/attempts/") && strings.HasSuffix(r.URL.Path, "/reveals") {
+			w.Header().Set("Cache-Control", "no-store")
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+func registerAttemptRoutes(mux *http.ServeMux, s *attempts.Service, auth TokenAuthenticator) {
 	mux.HandleFunc("GET /v1/catalog", func(w http.ResponseWriter, r *http.Request) { writeAttemptJSON(w, http.StatusOK, s.Catalog()) })
 	protected := func(pattern string, f http.HandlerFunc) { mux.Handle(pattern, Authenticate(auth, RequirePrincipal(f))) }
 	protected("POST /v1/attempts", func(w http.ResponseWriter, r *http.Request) {
@@ -64,6 +85,15 @@ func AttemptRoutes(s *attempts.Service, auth TokenAuthenticator) http.Handler {
 		}
 		writeAttemptJSON(w, http.StatusOK, f)
 	})
+	protected("GET /v1/attempts/{attempt}/reveals", func(w http.ResponseWriter, r *http.Request) {
+		p, _ := PrincipalFromContext(r.Context())
+		reveals, err := s.Reveals(r.Context(), p.ID, r.PathValue("attempt"))
+		if err != nil {
+			writeAttemptError(w, err)
+			return
+		}
+		writeAttemptJSON(w, http.StatusOK, reveals)
+	})
 	protected("GET /v1/history", func(w http.ResponseWriter, r *http.Request) {
 		p, _ := PrincipalFromContext(r.Context())
 		history, err := s.ListHistory(r.Context(), p.ID)
@@ -82,7 +112,6 @@ func AttemptRoutes(s *attempts.Service, auth TokenAuthenticator) http.Handler {
 		}
 		writeAttemptJSON(w, http.StatusOK, history)
 	})
-	return mux
 }
 func writeAttemptJSON(w http.ResponseWriter, status int, v any) {
 	w.Header().Set("Content-Type", "application/json")
