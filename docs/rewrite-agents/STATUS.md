@@ -16,10 +16,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P06F (`quiz_master-rq9.45`) is accepted and closed; reviewed Flutter foundation code is integrated in `313dda8`. Parent P06 (`quiz_master-rq9.7`) remains blocked only on Android build smoke: format/analyze, 20 widget/model tests and Web build/privacy scan pass, while local Gradle failed with a loopback/toolchain error and Android cmdline-tools are missing.
 - P07 (`quiz_master-rq9.8`) is accepted and closed with `DONE_WITH_CONCERNS`. Integration commit: `558cac7`. The digest-pinned Compose API/PostgreSQL stack passed build, health and exact teardown checks; pinned CI covers Go, Flutter Web and Android. No remote CI run or real debug APK is claimed, so P06 remains blocked.
 - P08 (`quiz_master-rq9.9`) is accepted and closed. Integration commit: `f5428ae`. `quizctl import/validate/build/diff` now produces a deterministic controlled bundle from the first real 25-question legacy pack; 25 grading entries and 150 option mappings were independently checked. Bundle SHA-256: `6c7754aa9b142d8657bac1bb65f0536d30364d262ef109315c4b9356ee512b95`.
+- P09 (`quiz_master-rq9.10`) is accepted and closed with one environment concern. Integration commit: `ec74e4a`. Authenticated attempts now pin the P08 bundle/snapshots, enforce deadlines and idempotent final answers, score only on the server and persist participant-scoped history. PostgreSQL concurrency tests pass; Windows race instrumentation is unavailable because `CGO_ENABLED=0`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P05, advisory P29, P33, the reviewed P06 code slice, P07 and P08 are integrated. P06 is not accepted until Android build smoke passes. P09 is the next independent implementation slice; P10 still depends on P06 and P08.
+- Baseline packets P01-P05, advisory P29, P33, the reviewed P06 code slice and P07-P09 are integrated. P06 is not accepted until Android build smoke passes. P10 is code-ready on P08 but remains dependency-blocked by P06's missing APK smoke.
 
 ## Preserved pre-existing work
 
@@ -40,9 +41,10 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P04 defines executable `quiz-contract/v1` schemas, scoring fixtures, bundle/attempt pinning, idempotent answer-write evidence and the deliberately team-free base event envelope. The dependency-free checker accepts all positive instances and rejects 37 named negatives; P33 owns the live-team extension and final reveal timing.
 - P33 freezes `live-team-contract/v1`: one captain/final answer, admission closed on start, host-private arrivals, team receipt without correctness, shared reveal only after close, audience-separated events, QR/manual admission, reconnect/outbox semantics and private-by-default results. Its checker pins P04, accepts 18 positive cases and rejects 33 input-driven negatives by exact error; poisoned inputs reproduce 0/33 expected errors.
 - P08 freezes the first production-shaped content path: strict legacy decoding, collision-fatal stable IDs, explicit difficulty/multi-answer mapping, full Draft 2020-12 validation, P04-compatible canonical hashes, Unicode normalization vectors, atomic local outputs and secret-safe diffs. This is controlled local content, not publication or full-corpus reconciliation.
+- P09 adds migration 0002 and the first real API vertical: public catalog, authenticated start/answer/finish/history, reversible internal-to-contract participant IDs, immutable receipts, exact-deadline rejection, transaction serialization and private-key isolation. A disposable PostgreSQL run passed 53 attempt/HTTP integration events and left no container/volume.
 
 ## Next actions
 
-1. Dispatch P09 authoritative attempt scoring/history against the accepted P08 bundle.
-2. Close P06 only after a real debug APK build succeeds on an approved isolated toolchain or observed CI runner; no device claim without a device.
-3. Dispatch P10 only after P06 closes; preserve P07's Android concern until the APK and its SHA-256 are recorded.
+1. Resolve P06 with a real debug APK on an approved isolated toolchain or observed CI runner; no device claim without a device.
+2. Dispatch P10 Flutter catalog-to-history flow after P06 closes, then run the P11 first vertical gate.
+3. Preserve P07's Android concern and P09's unavailable Windows race instrumentation as explicit release evidence.
