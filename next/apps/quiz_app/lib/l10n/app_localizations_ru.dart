@@ -61,4 +61,62 @@ class AppLocalizationsRu extends AppLocalizations {
   String answer(String answer) {
     return 'Ответ: $answer';
   }
+
+  @override
+  String get displayName => 'Имя';
+
+  @override
+  String get continueLabel => 'Продолжить';
+
+  @override
+  String get startQuiz => 'Начать викторину';
+
+  @override
+  String get finishQuiz => 'Завершить викторину';
+
+  @override
+  String get history => 'История';
+
+  @override
+  String get noHistory => 'Завершённых викторин пока нет';
+
+  @override
+  String get retry => 'Повторить';
+
+  @override
+  String get loading => 'Загрузка…';
+
+  @override
+  String get submitting => 'Отправка…';
+
+  @override
+  String get finishing => 'Завершение…';
+
+  @override
+  String score(int score) {
+    return 'Счёт: $score';
+  }
+
+  @override
+  String questionsCount(int count) {
+    return 'Вопросов: $count';
+  }
+
+  @override
+  String get catalogEmpty => 'Доступных викторин пока нет.';
+
+  @override
+  String get catalogLoadError => 'Не удалось загрузить викторины.';
+
+  @override
+  String get historyLoadError => 'Не удалось загрузить историю.';
+
+  @override
+  String get resultsLoadError => 'Не удалось загрузить результаты.';
+
+  @override
+  String get journeyError => 'Не удалось продолжить.';
+
+  @override
+  String get newQuiz => 'Новая викторина';
 }

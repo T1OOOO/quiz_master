@@ -1,5 +1,8 @@
 // ignore_for_file: curly_braces_in_flow_control_structures, deprecated_member_use
 
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,274 +10,12 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_app/l10n/app_localizations.dart';
 
+part 'api_models.dart';
+part 'api_repository.dart';
+part 'journey.dart';
+part 'journey_pages.dart';
+
 void main() => runApp(const ProviderScope(child: QuizApp()));
-
-enum AnswerKind { singleChoice, multipleChoice, normalizedText }
-
-class Revision {
-  const Revision(this.number, this.sha256);
-  final int number;
-  final String sha256;
-  factory Revision.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'number', 'sha256'});
-    if (json['number'] is! int ||
-        (json['number'] as int) < 1 ||
-        json['sha256'] is! String ||
-        !RegExp(r'^[0-9a-f]{64}$').hasMatch(json['sha256'] as String)) {
-      throw const FormatException('revision');
-    }
-    return Revision(json['number'] as int, json['sha256'] as String);
-  }
-}
-
-class PublicOption {
-  const PublicOption({required this.id, required this.text});
-  final String id;
-  final String text;
-  factory PublicOption.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'option_id', 'text', 'media'});
-    if (json['option_id'] is! String ||
-        !_validId(json['option_id'] as String) ||
-        json['text'] is! String ||
-        (json['text'] as String).isEmpty) {
-      throw const FormatException('option');
-    }
-    if (json['media'] != null) Media.fromJson(_map(json['media']));
-    return PublicOption(
-      id: json['option_id'] as String,
-      text: json['text'] as String,
-    );
-  }
-}
-
-class Source {
-  const Source();
-  factory Source.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'uri', 'title'});
-    if (json['uri'] is! String ||
-        (json['uri'] as String).isEmpty ||
-        (json['title'] != null && json['title'] is! String))
-      throw const FormatException('source');
-    return const Source();
-  }
-}
-
-class Media {
-  const Media();
-  factory Media.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'uri', 'kind', 'alt'});
-    if (json['uri'] is! String ||
-        (json['uri'] as String).isEmpty ||
-        (json['kind'] != null && json['kind'] is! String) ||
-        (json['alt'] != null && json['alt'] is! String))
-      throw const FormatException('media');
-    return const Media();
-  }
-}
-
-class PublicQuestion {
-  const PublicQuestion({
-    required this.quizId,
-    required this.id,
-    required this.revision,
-    required this.stem,
-    required this.options,
-    required this.kind,
-  });
-  final String quizId;
-  final String id;
-  final Revision revision;
-  final String stem;
-  final List<PublicOption> options;
-  final AnswerKind kind;
-  factory PublicQuestion.fromJson(Map<String, dynamic> json) {
-    _closed(json, {
-      'quiz_id',
-      'question_id',
-      'revision',
-      'stem',
-      'options',
-      'difficulty',
-      'source',
-      'media',
-      'answer_kind',
-    });
-    final options = json['options'];
-    final kind = switch (json['answer_kind']) {
-      'single_choice' => AnswerKind.singleChoice,
-      'multiple_choice' => AnswerKind.multipleChoice,
-      'normalized_text' => AnswerKind.normalizedText,
-      _ => throw const FormatException('answer_kind'),
-    };
-    const difficulties = {'unknown', 'easy', 'medium', 'hard'};
-    if (json['quiz_id'] is! String ||
-        !_validId(json['quiz_id'] as String) ||
-        json['question_id'] is! String ||
-        !_validId(json['question_id'] as String) ||
-        json['stem'] is! String ||
-        (json['stem'] as String).isEmpty ||
-        !difficulties.contains(json['difficulty']) ||
-        options is! List ||
-        options.length < 4 ||
-        options.length > 6) {
-      throw const FormatException('public question');
-    }
-    final media = json['media'];
-    if (media != null && media is! List) throw const FormatException('media');
-    Source.fromJson(_map(json['source']));
-    if (media != null) {
-      for (final item in media) {
-        Media.fromJson(_map(item));
-      }
-    }
-    final parsedOptions = options
-        .map((e) => PublicOption.fromJson(_map(e)))
-        .toList(growable: false);
-    if (parsedOptions.map((option) => option.id).toSet().length !=
-        parsedOptions.length) {
-      throw const FormatException('duplicate option');
-    }
-    return PublicQuestion(
-      quizId: json['quiz_id'] as String,
-      id: json['question_id'] as String,
-      revision: Revision.fromJson(_map(json['revision'])),
-      stem: json['stem'] as String,
-      options: parsedOptions,
-      kind: kind,
-    );
-  }
-}
-
-class Reveal {
-  const Reveal({required this.answer, required this.explanation});
-  final String answer;
-  final String explanation;
-  factory Reveal.fromJson(Map<String, dynamic> json) {
-    _closed(json, {
-      'quiz_id',
-      'question_id',
-      'question_revision',
-      'correct_answer',
-      'explanation',
-    });
-    if (json['quiz_id'] is! String ||
-        !_validId(json['quiz_id'] as String) ||
-        json['question_id'] is! String ||
-        !_validId(json['question_id'] as String) ||
-        json['explanation'] is! String ||
-        (json['explanation'] as String).isEmpty) {
-      throw const FormatException('reveal');
-    }
-    Revision.fromJson(_map(json['question_revision']));
-    final answer = _map(json['correct_answer']);
-    _closed(answer, {'option_id', 'option_ids', 'text'});
-    final keys = answer.keys.toSet();
-    final single =
-        keys.length == 2 &&
-        keys.containsAll({'option_id', 'text'}) &&
-        answer['option_id'] is String &&
-        _validId(answer['option_id'] as String);
-    final optionIds = answer['option_ids'];
-    final multiple =
-        keys.length == 2 &&
-        keys.containsAll({'option_ids', 'text'}) &&
-        optionIds is List &&
-        optionIds.isNotEmpty &&
-        optionIds.every((id) => id is String && _validId(id)) &&
-        optionIds.toSet().length == optionIds.length;
-    final text = keys.length == 1 && keys.contains('text');
-    if (answer['text'] is! String ||
-        (answer['text'] as String).isEmpty ||
-        (!single && !multiple && !text)) {
-      throw const FormatException('reveal');
-    }
-    return Reveal(
-      answer: answer['text'] as String,
-      explanation: json['explanation'] as String,
-    );
-  }
-}
-
-class ApiFailure {
-  const ApiFailure({
-    required this.code,
-    required this.message,
-    required this.retryable,
-    required this.details,
-  });
-  final String code;
-  final String message;
-  final bool retryable;
-  final Map<String, String> details;
-  factory ApiFailure.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'code', 'message', 'retryable', 'details'});
-    const codes = {
-      'deadline_exceeded',
-      'stale_revision',
-      'stale_round',
-      'forbidden',
-      'validation_failed',
-      'idempotency_conflict',
-    };
-    if (!codes.contains(json['code']) ||
-        json['message'] is! String ||
-        json['retryable'] is! bool ||
-        json['details'] is! Map ||
-        (json['details'] as Map).entries.any(
-          (entry) => entry.key is! String || entry.value is! String,
-        ))
-      throw const FormatException('error envelope');
-    final details = Map<String, String>.from(json['details'] as Map);
-    return ApiFailure(
-      code: json['code'] as String,
-      message: json['message'] as String,
-      retryable: json['retryable'] as bool,
-      details: details,
-    );
-  }
-}
-
-void _closed(Map<String, dynamic> value, Set<String> allowed) {
-  if (value.keys.any((key) => !allowed.contains(key))) {
-    throw const FormatException('unknown or private field');
-  }
-}
-
-Map<String, dynamic> _map(Object? value) {
-  if (value is! Map<String, dynamic>) {
-    throw const FormatException('object required');
-  }
-  return value;
-}
-
-bool _validId(String value) =>
-    RegExp(r'^[a-z][a-z0-9-]{2,63}$').hasMatch(value);
-
-class QuizApiClient {
-  QuizApiClient({
-    required Uri baseUri,
-    Duration timeout = const Duration(seconds: 10),
-  }) : _dio = Dio(
-         BaseOptions(
-           baseUrl: _validBaseUri(baseUri).toString(),
-           connectTimeout: timeout,
-           receiveTimeout: timeout,
-         ),
-       );
-  final Dio _dio;
-  Dio get dio => _dio;
-  static Uri _validBaseUri(Uri uri) {
-    if (!uri.hasScheme ||
-        !uri.hasAuthority ||
-        !(uri.scheme == 'https' || uri.scheme == 'http'))
-      throw ArgumentError.value(
-        uri,
-        'baseUri',
-        'must be an absolute HTTP(S) URI',
-      );
-    return uri;
-  }
-}
 
 final themeModeProvider = NotifierProvider<ThemeModeController, ThemeMode>(
   ThemeModeController.new,
@@ -340,6 +81,7 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
   routes: [
     GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
+    GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
     GoRoute(
       path: '/join/:inviteToken',
       builder: (_, state) =>
@@ -391,29 +133,6 @@ class AppScaffold extends ConsumerWidget {
     ),
     body: SafeArea(child: body),
   );
-}
-
-class CatalogPage extends StatelessWidget {
-  const CatalogPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return AppScaffold(
-      title: l10n.catalogTitle,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            PackTile(title: l10n.galleryTitle, subtitle: l10n.practiceUnranked),
-            FilledButton(
-              onPressed: () => context.push('/gallery'),
-              child: Text(l10n.openGallery),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class JoinPage extends StatelessWidget {

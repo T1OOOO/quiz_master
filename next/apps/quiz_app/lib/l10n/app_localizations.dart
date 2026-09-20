@@ -193,6 +193,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Answer: {answer}'**
   String answer(String answer);
+
+  /// No description provided for @displayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display name'**
+  String get displayName;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @startQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Start quiz'**
+  String get startQuiz;
+
+  /// No description provided for @finishQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish quiz'**
+  String get finishQuiz;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @noHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed quizzes yet'**
+  String get noHistory;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading…'**
+  String get loading;
+
+  /// No description provided for @submitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitting…'**
+  String get submitting;
+
+  /// No description provided for @finishing.
+  ///
+  /// In en, this message translates to:
+  /// **'Finishing…'**
+  String get finishing;
+
+  /// No description provided for @score.
+  ///
+  /// In en, this message translates to:
+  /// **'Score: {score}'**
+  String score(int score);
+
+  /// No description provided for @questionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions'**
+  String questionsCount(int count);
+
+  /// No description provided for @catalogEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No quizzes are available yet.'**
+  String get catalogEmpty;
+
+  /// No description provided for @catalogLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load quizzes.'**
+  String get catalogLoadError;
+
+  /// No description provided for @historyLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load history.'**
+  String get historyLoadError;
+
+  /// No description provided for @resultsLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load results.'**
+  String get resultsLoadError;
+
+  /// No description provided for @journeyError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to continue.'**
+  String get journeyError;
+
+  /// No description provided for @newQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'New quiz'**
+  String get newQuiz;
 }
 
 class _AppLocalizationsDelegate

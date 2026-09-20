@@ -61,4 +61,62 @@ class AppLocalizationsEn extends AppLocalizations {
   String answer(String answer) {
     return 'Answer: $answer';
   }
+
+  @override
+  String get displayName => 'Display name';
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get startQuiz => 'Start quiz';
+
+  @override
+  String get finishQuiz => 'Finish quiz';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get noHistory => 'No completed quizzes yet';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get loading => 'Loading…';
+
+  @override
+  String get submitting => 'Submitting…';
+
+  @override
+  String get finishing => 'Finishing…';
+
+  @override
+  String score(int score) {
+    return 'Score: $score';
+  }
+
+  @override
+  String questionsCount(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String get catalogEmpty => 'No quizzes are available yet.';
+
+  @override
+  String get catalogLoadError => 'Unable to load quizzes.';
+
+  @override
+  String get historyLoadError => 'Unable to load history.';
+
+  @override
+  String get resultsLoadError => 'Unable to load results.';
+
+  @override
+  String get journeyError => 'Unable to continue.';
+
+  @override
+  String get newQuiz => 'New quiz';
 }
