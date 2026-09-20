@@ -1,0 +1,169 @@
+{
+  "cases": [
+    {
+      "name": "qr_to_host_escalation",
+      "input": {"operation":"authorize_host","credential_kind":"invite","actor_id":"captain-red","host_id":"host-001","command":"round.close"},
+      "expected_error": "host_auth.invite_not_host"
+    },
+    {
+      "name": "team_name_takeover",
+      "input": {"operation":"authorize_team","team_name":"Red Team","actor_id":"captain-blue","team_id":"team-red","captain_id":"captain-red"},
+      "expected_error": "team_auth.team_name_not_identity"
+    },
+    {
+      "name": "expired_invite",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":false,"rotated":false,"session_phase":"lobby","admission":"open","team_count":2,"server_at":"2026-09-20T22:00:01Z"},
+      "expected_error": "admission.invite_expired"
+    },
+    {
+      "name": "revoked_invite",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":true,"rotated":false,"session_phase":"lobby","admission":"open","team_count":2,"server_at":"2026-09-20T10:00:00Z"},
+      "expected_error": "admission.invite_revoked"
+    },
+    {
+      "name": "rotated_invite",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":false,"rotated":true,"session_phase":"lobby","admission":"open","team_count":2,"server_at":"2026-09-20T10:00:00Z"},
+      "expected_error": "admission.invite_rotated"
+    },
+    {
+      "name": "ambiguous_manual_code",
+      "input": {"operation":"validate_manual_code","manual_code":"O0IL0000"},
+      "expected_error": "manual_code.ambiguous_character"
+    },
+    {
+      "name": "short_manual_code",
+      "input": {"operation":"validate_manual_code","manual_code":"A1B2C3D"},
+      "expected_error": "manual_code.short_length"
+    },
+    {
+      "name": "token_leakage",
+      "input": {"operation":"schema_mutation","target":"presenter_event","path":["data","qr_token"],"mutation":{"kind":"set","value":"0123456789abcdef0123456789abcdef"},"validator":"event_schema"},
+      "expected_error": "schema.presenter_event.data.qr_token.unknown_property"
+    },
+    {
+      "name": "join_after_lock",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":false,"rotated":false,"session_phase":"lobby","admission":"locked","team_count":2,"server_at":"2026-09-20T10:00:00Z"},
+      "expected_error": "admission.locked"
+    },
+    {
+      "name": "join_after_start",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":false,"rotated":false,"session_phase":"active","admission":"open","team_count":2,"server_at":"2026-09-20T10:00:00Z"},
+      "expected_error": "admission.session_started"
+    },
+    {
+      "name": "fifty_first_team",
+      "input": {"operation":"admission","qr_token":"0123456789abcdef0123456789abcdef","manual_code":"0A1B2C3D","expires_at":"2026-09-20T22:00:00Z","revoked":false,"rotated":false,"session_phase":"lobby","admission":"open","team_count":50,"server_at":"2026-09-20T10:00:00Z"},
+      "expected_error": "admission.capacity_reached"
+    },
+    {
+      "name": "second_captain",
+      "input": {"operation":"claim_captain","existing_captain_id":"captain-red","requested_captain_id":"captain-blue"},
+      "expected_error": "captain.already_claimed"
+    },
+    {
+      "name": "unauthorized_captain_transfer",
+      "input": {"operation":"captain_transfer","actor_id":"captain-red","host_id":"host-001","current_captain_id":"captain-red","new_captain_id":"captain-blue"},
+      "expected_error": "transfer.actor_not_host"
+    },
+    {
+      "name": "second_answer",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:00:31Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":{"idempotency_key":"answer-red-001","payload_digest":"5e37e82e0506b9611b478acbfcd5196243cab2b586c98e40f0bd25d79b73dee5"},"serialized_first":"answer"},
+      "expected_error": "answer.final_submission_exists"
+    },
+    {
+      "name": "same_key_different_payload",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:00:30Z","client_at":null,"idempotency_key":"answer-red-001","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":{"idempotency_key":"answer-red-001","payload_digest":"5e37e82e0506b9611b478acbfcd5196243cab2b586c98e40f0bd25d79b73dee5"},"serialized_first":"answer"},
+      "expected_error": "answer.idempotency_conflict"
+    },
+    {
+      "name": "stale_round",
+      "input": {"operation":"submit_answer","round_id":"round-old","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:00:30Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"answer"},
+      "expected_error": "answer.stale_round"
+    },
+    {
+      "name": "stale_question_revision",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":2,"sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:00:30Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"answer"},
+      "expected_error": "answer.stale_question_revision"
+    },
+    {
+      "name": "stale_bundle",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"0000000000000000000000000000000000000000000000000000000000000000","server_received_at":"2026-09-20T10:00:30Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"answer"},
+      "expected_error": "answer.stale_bundle"
+    },
+    {
+      "name": "late_answer",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:01:01Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"answer"},
+      "expected_error": "answer.server_deadline_elapsed"
+    },
+    {
+      "name": "answer_close_race_close_first",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:00:59Z","client_at":null,"idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"close"},
+      "expected_error": "answer.close_won_race"
+    },
+    {
+      "name": "client_clock_authority",
+      "input": {"operation":"submit_answer","round_id":"round-001","question_revision":{"number":1,"sha256":"2222222222222222222222222222222222222222222222222222222222222222"},"bundle_sha256":"886816179d39228d08c932c281e052636d6fd8bc6075b9421f623bb001bd2dd3","server_received_at":"2026-09-20T10:01:01Z","client_at":"2026-09-20T10:00:30Z","idempotency_key":"answer-red-002","payload_digest":"3333333333333333333333333333333333333333333333333333333333333333","prior_answer":null,"serialized_first":"answer"},
+      "expected_error": "answer.client_clock_not_authoritative"
+    },
+    {
+      "name": "presenter_pre_reveal_secret_leak",
+      "input": {"operation":"schema_mutation","target":"presenter_event","path":["data","correct_answer"],"mutation":{"kind":"set","value":{"option_id":"opt-sun"}},"validator":"event_schema"},
+      "expected_error": "schema.presenter_event.data.correct_answer.unknown_property"
+    },
+    {
+      "name": "team_pre_reveal_secret_leak",
+      "input": {"operation":"schema_mutation","target":"team_event","path":["data","answer"],"mutation":{"kind":"set","value":{"option_id":"opt-sun"}},"validator":"event_schema"},
+      "expected_error": "schema.team_event.data.answer.unknown_property"
+    },
+    {
+      "name": "host_pre_reveal_grading_leak",
+      "input": {"operation":"schema_mutation","target":"host_event","path":["data","grading"],"mutation":{"kind":"set","value":{"is_correct":true}},"validator":"event_schema"},
+      "expected_error": "schema.host_event.data.grading.unknown_property"
+    },
+    {
+      "name": "cross_team_result_access",
+      "input": {"operation":"result_request","access":{"session_id":"session-live-001","audience":"team","scope":"own_answers_and_standings","credential_kind":"authenticated"},"requester_team_id":"team-red","target_team_id":"team-blue","server_at":"2026-09-20T12:00:00Z","requested_fields":["own_answers","standings"]},
+      "expected_error": "result_access.cross_team"
+    },
+    {
+      "name": "expired_public_link",
+      "input": {"operation":"result_request","access":{"session_id":"session-live-001","audience":"public","scope":"final_standings_and_reveals","credential_kind":"public_share","share_token":"0123456789abcdef0123456789abcdef","share_expires_at":"2026-09-27T10:00:00Z","share_revoked":false},"requester_team_id":null,"target_team_id":null,"server_at":"2026-09-27T10:00:01Z","requested_fields":["final_standings"]},
+      "expected_error": "result_access.public_expired"
+    },
+    {
+      "name": "revoked_public_link",
+      "input": {"operation":"result_request","access":{"session_id":"session-live-001","audience":"public","scope":"final_standings_and_reveals","credential_kind":"public_share","share_token":"0123456789abcdef0123456789abcdef","share_expires_at":"2026-09-27T10:00:00Z","share_revoked":true},"requester_team_id":null,"target_team_id":null,"server_at":"2026-09-21T10:00:00Z","requested_fields":["final_standings"]},
+      "expected_error": "result_access.public_revoked"
+    },
+    {
+      "name": "public_link_raw_answers",
+      "input": {"operation":"result_request","access":{"session_id":"session-live-001","audience":"public","scope":"final_standings_and_reveals","credential_kind":"public_share","share_token":"0123456789abcdef0123456789abcdef","share_expires_at":"2026-09-27T10:00:00Z","share_revoked":false},"requester_team_id":null,"target_team_id":null,"server_at":"2026-09-21T10:00:00Z","requested_fields":["raw_team_answers"]},
+      "expected_error": "result_access.public_overexposure"
+    },
+    {
+      "name": "duplicate_reconnect",
+      "input": {"operation":"replay_event","request":{"session_id":"session-live-001","audience":"team","last_seen_sequence":6,"mode":"contiguous_events"},"event_sequence":6,"event_room_version":4,"current_room_version":4,"available_from_sequence":5,"target_team_id":"team-red","authorized_team_id":"team-red"},
+      "expected_error": "replay.duplicate_or_stale_event"
+    },
+    {
+      "name": "gap_reconnect",
+      "input": {"operation":"replay_event","request":{"session_id":"session-live-001","audience":"team","last_seen_sequence":4,"mode":"contiguous_events"},"event_sequence":6,"event_room_version":4,"current_room_version":4,"available_from_sequence":6,"target_team_id":"team-red","authorized_team_id":"team-red"},
+      "expected_error": "replay.gap_requires_snapshot"
+    },
+    {
+      "name": "stale_reconnect",
+      "input": {"operation":"replay_event","request":{"session_id":"session-live-001","audience":"team","last_seen_sequence":2,"mode":"contiguous_events"},"event_sequence":3,"event_room_version":3,"current_room_version":4,"available_from_sequence":3,"target_team_id":"team-red","authorized_team_id":"team-red"},
+      "expected_error": "replay.stale_room_version"
+    },
+    {
+      "name": "missing_persisted_sequence",
+      "input": {"operation":"schema_mutation","target":"host_event","path":["sequence"],"mutation":{"kind":"remove"},"validator":"event_schema"},
+      "expected_error": "schema.host_event.sequence.required_property_missing"
+    },
+    {
+      "name": "missing_outbox_linkage",
+      "input": {"operation":"schema_mutation","target":"host_event","path":["outbox_id"],"mutation":{"kind":"remove"},"validator":"event_schema"},
+      "expected_error": "schema.host_event.outbox_id.required_property_missing"
+    }
+  ]
+}
