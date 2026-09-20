@@ -9,10 +9,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - P01 (`quiz_master-rq9.2`) is accepted and closed. Integration commit: `85ed3f038afee2249169f60243ccd322789d686c`.
 - P02 (`quiz_master-rq9.3`) is accepted and closed. Integration commit: `c5eec44a8037e99cee3316e35cf5b164b31a7ee5`.
 - P03 (`quiz_master-rq9.4`) is accepted and closed. Integration commit: `519848ab7a3b0a4118d589cabc8cbcbf3c687cf4`.
+- P29 (`quiz_master-rq9.30`) is accepted and closed. Integration commit: `5e549a799bc8a14bc946240cd3a5005e305380ff`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- Baseline packets P01-P03 are accepted. P29 is the next sequential advisory task; by user direction, at most one child agent is active.
+- Baseline packets P01-P03 and advisory P29 are accepted. P04 is the next sequential contract task; by user direction, at most one child agent is active.
 
 ## Preserved pre-existing work
 
@@ -33,7 +34,7 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 ## Next actions
 
-1. Dispatch and accept P29 from `docs/rewrite-agents/tasks/P29.md`.
-2. Issue P04 using the accepted P01 migration hazards and P29 product constraints.
-3. Issue P33 after P04/P29 acceptance and resolve the reveal-policy clarification before accepting it.
+1. Dispatch and accept P04 from `docs/rewrite-agents/tasks/P04.md`.
+2. Issue P33 after P04/P29 acceptance; P05/P06 remain blocked until P33 is accepted.
+3. Resolve the reveal-policy clarification before accepting P33; independent contract work may proceed meanwhile.
 4. Resolve the reveal-policy clarification before accepting P33; independent foundation work may continue meanwhile.

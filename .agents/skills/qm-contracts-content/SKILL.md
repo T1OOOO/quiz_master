@@ -1,5 +1,5 @@
 ---
-name: qm-contracts-conten
+name: qm-contracts-content
 description: "Design Quiz Master card and event contracts and migrate legacy quiz content with answer integrity."
 ---
 
