@@ -6,10 +6,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 
 - Branch: `codex/quiz-v2`; base commit: `ce310d7589bc0f97adcb25d04a15c117aea7c1d8`.
 - P00 (`quiz_master-rq9.1`) is accepted and closed. Integration commit: `d0dfc17057c163087bdc3390b22f6adfff3c3519`. Rewrite epic: `quiz_master-rq9`.
+- P01 (`quiz_master-rq9.2`) is accepted and closed. Integration commit: `85ed3f038afee2249169f60243ccd322789d686c`.
 - The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
 - Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
 - Per user direction, run no more than one child agent at a time.
-- First issued packets: P01, P02 and P03. P01 is the next ready task; by user direction, workers run sequentially with at most one child agent active.
+- First issued packets: P01, P02 and P03. P02 is the next ready task; by user direction, workers run sequentially with at most one child agent active.
 
 ## Preserved pre-existing work
 
@@ -24,10 +25,11 @@ Updated: 2026-09-20 (Europe/Istanbul)
 - Docker CLI is installed but the Docker Desktop Linux engine was unavailable during P00.
 - `bd doctor` reports a repository fingerprint mismatch and two pre-existing merge-artifact files. The database passed integrity and DB/JSONL sync checks. Do not auto-fix or delete those artifacts without resolving ownership.
 - Production cutover and external publication are not authorized by this status.
+- P01 verified 101/101 legacy JSON files and 3,128 questions. A nonzero legacy `correct_answer` is ignored by the current Go field tag and decodes to zero. Production data remains uninspected. P04/P08 must define explicit mapping, bounds checks, duplicate-ID policy and `correct_multi` handling.
 
 ## Next actions
 
-1. Dispatch and accept P01 from `docs/rewrite-agents/tasks/P01.md`.
-2. Run P02 and P03 sequentially after P01 handoff/review capacity permits.
+1. Dispatch and accept P02 from `docs/rewrite-agents/tasks/P02.md`.
+2. Run P03 after P02 acceptance.
 3. Use P01 evidence to issue P04; issue P29 when the single-agent slot is available.
 4. Resolve the reveal-policy clarification before accepting P33; independent foundation work may continue meanwhile.
