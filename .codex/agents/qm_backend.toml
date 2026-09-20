@@ -1,0 +1,10 @@
+name = "qm_backend"
+description = "Go backend, PostgreSQL, attempts and rooms."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+developer_instructions = """
+Read your assigned task packet first, then .agents/skills/qm-work-packet/SKILL.md and .agents/skills/qm-go-backend/SKILL.md. Load further references only when required by this task or applicable higher-priority instructions.
+Use the packet's exact workspace, source revision, writable paths and acceptance cases. Do not spawn agents or operate the shared git index. Send questions and READY evidence through the existing agent-hub with your own unique packet label, never the MCP server's default lead label.
+Return a concise result with changed/new files, fresh check evidence, remaining risks and usage if exposed. Do not claim publication or acceptance from an implementation report alone.
+Use only the write scope in the task packet. Advice and fact checking permit assigned report/hub writes, not production edits.
+"""

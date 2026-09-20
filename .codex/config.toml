@@ -1,0 +1,12 @@
+# Merge these keys into the project config; do not overwrite existing sections.
+# The parent session selects Sol or Terra in the app. These defaults govern children.
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+default_subagent_model = "gpt-5.6-luna"
+default_subagent_reasoning_effort = "low"
+
+# Existing local shared hub. Each worker must pass its own agent label per tool call.
+[mcp_servers.hub]
+command = "C:/Python314/python.exe"
+args = ["C:/Users/Alexey_Matvienko/tools/agent-hub/agent_hub.py", "mcp", "--root", "C:/ap/quiz_master", "--agent", "lead"]

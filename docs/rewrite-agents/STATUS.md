@@ -1,0 +1,33 @@
+# Quiz Master 2.0 rewrite status
+
+Updated: 2026-09-20 (Europe/Istanbul)
+
+## Current checkpoin
+
+- Branch: `codex/quiz-v2`; base commit: `ce310d7589bc0f97adcb25d04a15c117aea7c1d8`.
+- P00 (`quiz_master-rq9.1`) is in progress. Rewrite epic: `quiz_master-rq9`.
+- The P00-P39 Beads graph contains 40 mapped tasks and 70 plan dependency edges with no cycles.
+- Kit profiles, skills, documents and hub configuration are installed in the project. The current task cannot hot-load the new custom profiles; explicit model/effort spawning is the fallback.
+- Per user direction, run no more than one child agent at a time.
+- No rewrite worker has started. First issued packets: P01, P02 and P03. Dispatch waits for P00 acceptance.
+
+## Preserved pre-existing work
+
+- `.beads/issues.jsonl` was already modified before rewrite work. It now also carries the requested rewrite registry, but must not be included in a rewrite commit while the earlier publication rejection remains unresolved.
+- `PROJECT_OVERVIEW_RU.md` remains untracked and untouched. SHA-256: `1ED842B2F8B10EBC7FD16A58962ABCC22631905935791DA8719529873532E5E8`.
+- Do not reset, clean, stash or publish either artifact as part of rewrite integration.
+
+## Decisions and blockers
+
+- Live-team provisional reveal policy: the private host sees committed submissions immediately; teams receive receipt immediately; correctness is shared only after round close. Final product clarification remains required before P33 acceptance.
+- P05/P06 require accepted P04 plus accepted P33, so the live-team extension is frozen before backend/Flutter consumers.
+- Docker CLI is installed but the Docker Desktop Linux engine was unavailable during P00.
+- `bd doctor` reports a repository fingerprint mismatch and two pre-existing merge-artifact files. The database passed integrity and DB/JSONL sync checks. Do not auto-fix or delete those artifacts without resolving ownership.
+- Production cutover and external publication are not authorized by this status.
+
+## Next actions
+
+1. Independently review P00 evidence and issued packets.
+2. Integrate/commit only the kit and lead-owned rewrite docs, excluding `.beads/issues.jsonl` and `PROJECT_OVERVIEW_RU.md`.
+3. Mark P00 done/accepted using the real commit, then dispatch P01 with one active child maximum.
+4. Run P02 and P03 sequentially after P01 handoff/review capacity permits.
