@@ -1,0 +1,145 @@
+{{- $image := required "An immutable imported image tag is required" .Values.image -}}
+{{- $build := required "buildId is required" .Values.buildId -}}
+{{- if ne .Release.Namespace "quiz-master" -}}
+{{- fail "This chart must be installed in the isolated quiz-master namespace" -}}
+{{- end }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quiz-data
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: {{ .Values.storageClass | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.storageSize | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz-master
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: {app: quiz-master}
+  template:
+    metadata:
+      labels: {app: quiz-master}
+      annotations:
+        quiz-master/build-id: {{ $build | quote }}
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 20
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: api
+          image: {{ $image | quote }}
+          imagePullPolicy: IfNotPresent
+          command: [/app/api]
+          workingDir: /app
+          env:
+            - {name: QM_LISTEN_ADDR, value: "127.0.0.1:8088"}
+            - {name: QM_DATABASE_URL, value: "sqlite:/data/quiz.db"}
+            - {name: QM_CONTENT_BUNDLE_PATH, value: "/app/next/content/home-alone-1-part-1/bundle.json"}
+            - {name: QM_CONTENT_MANIFEST_PATH, value: "/app/next/content/home-alone-1-part-1/manifest.json"}
+            - {name: GOMAXPROCS, value: "1"}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 50m, memory: 64Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          startupProbe:
+            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, "http://127.0.0.1:8088/health/ready"]}
+            periodSeconds: 2
+            failureThreshold: 30
+          readinessProbe:
+            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, "http://127.0.0.1:8088/health/ready"]}
+            periodSeconds: 10
+          livenessProbe:
+            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, "http://127.0.0.1:8088/health/live"]}
+            periodSeconds: 20
+          volumeMounts: [{name: data, mountPath: /data}]
+        - name: web
+          image: {{ $image | quote }}
+          imagePullPolicy: IfNotPresent
+          command: [nginx, -g, "daemon off;"]
+          ports: [{name: http, containerPort: 8080}]
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 25m, memory: 32Mi}
+            limits: {cpu: 250m, memory: 128Mi}
+          readinessProbe:
+            httpGet: {path: /health/ready, port: http}
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: {path: /health/live, port: http}
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          volumeMounts: [{name: tmp, mountPath: /tmp}]
+      volumes:
+        - name: data
+          persistentVolumeClaim: {claimName: quiz-data}
+        - name: tmp
+          emptyDir: {sizeLimit: 64Mi}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: quiz-master}
+spec:
+  selector: {app: quiz-master}
+  ports: [{name: http, port: 80, targetPort: http}]
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata: {name: quiz-rate-limit}
+spec:
+  rateLimit: {average: 20, burst: 40}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quiz-master
+  annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.issuer | quote }}
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: quiz-master-quiz-rate-limit@kubernetescrd
+spec:
+  ingressClassName: {{ .Values.ingressClass | quote }}
+  tls:
+    - hosts: [{{ .Values.host | quote }}]
+      secretName: quiz-master-tls
+  rules:
+    - host: {{ .Values.host | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: {name: quiz-master, port: {name: http}}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: quiz-isolation}
+spec:
+  podSelector: {matchLabels: {app: quiz-master}}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: ingress-system}
+      ports: [{protocol: TCP, port: 8080}]
+  egress: []
