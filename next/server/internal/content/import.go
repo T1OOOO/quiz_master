@@ -13,6 +13,19 @@ import (
 var idInvalid = regexp.MustCompile(`[^a-z0-9-]+`)
 var idPattern = regexp.MustCompile(`^[a-z][a-z0-9-]{2,63}$`)
 
+// Explicit legacy quiz identities; do not derive identity from a file location.
+// v1's ASCII folding loses the Cyrillic topic and collapses these eight packs.
+var legacyQuizIDs = map[string]string{
+	"gastronomy_сыры_и_молочные_продукты": "gastronomy-cheeses-and-dairy",
+	"gastronomy_техника_приготовления":    "gastronomy-cooking-techniques",
+	"gastronomy_напитки_и_алкоголь":       "gastronomy-drinks-and-alcohol",
+	"gastronomy_фрукты_и_овощи":           "gastronomy-fruits-and-vegetables",
+	"gastronomy_мясо_и_рыба":              "gastronomy-meat-and-fish",
+	"gastronomy_специи_и_ингредиенты":     "gastronomy-spices-and-ingredients",
+	"gastronomy_сладости_и_десерты":       "gastronomy-sweets-and-desserts",
+	"gastronomy_традиции_и_этикет":        "gastronomy-traditions-and-etiquette",
+}
+
 // Preserve legal legacy ASCII IDs; fold case, replace separator runs, prefix short
 // or digit-leading IDs. Never truncate: long/unrepresentable IDs fail closed.
 func stableID(s string) string {
@@ -75,6 +88,10 @@ func Import(path string) (Draft, Manifest, error) {
 	}
 	sourceID := obj["id"].(string)
 	quizID := stableID(sourceID)
+	mappingVersion := "legacy-choice/v1"
+	if mapped, ok := legacyQuizIDs[sourceID]; ok {
+		quizID, mappingVersion = mapped, "legacy-choice/v2"
+	}
 	if !idPattern.MatchString(quizID) {
 		return fail("invalid_id", path+"#/id")
 	}
@@ -84,7 +101,7 @@ func Import(path string) (Draft, Manifest, error) {
 	}
 	sourcePath := filepath.ToSlash(filepath.Clean(path))
 	d := Draft{Contract: "quiz-contract/v1", State: "draft", QuizID: quizID, Locale: "ru", Revision: Revision{Number: 1}}
-	m := Manifest{MappingVersion: "legacy-choice/v1", SourcePath: sourcePath, SourceSHA256: hashBytes(canonicalSource), SourceQuizID: sourceID, CanonicalQuizID: quizID, Category: obj["category"].(string), Title: obj["title"].(string), Description: obj["description"].(string)}
+	m := Manifest{MappingVersion: mappingVersion, SourcePath: sourcePath, SourceSHA256: hashBytes(canonicalSource), SourceQuizID: sourceID, CanonicalQuizID: quizID, Category: obj["category"].(string), Title: obj["title"].(string), Description: obj["description"].(string)}
 	seen := map[string]string{}
 	for pos, value := range questions {
 		where := fmt.Sprintf("%s#/questions/%d", path, pos)

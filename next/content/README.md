@@ -57,8 +57,10 @@ packs; it is not the number of published/playable questions. `ready` means
 import/schema readiness, **not factual approval or publication**. A blocked
 collection still emits its report and exits 2 (`go run` returns 1 as above).
 
-At baseline `6ec08cd`: 101 files / 3128 questions, 93 ready, 8 blocked by repeated
-`gastronomy` quiz IDs. See `docs/rewrite-agents/REACT_FLUTTER_PARITY_RU.md` for
+At baseline `6ec08cd`: 101 files / 3128 questions, 93 ready, 8 blocked by canonical
+`gastronomy` ID collisions (distinct Cyrillic source IDs). With the explicit
+Gastronomy v2 mapping: **101 ready / 0 blocked**, still 3128 questions.
+See `docs/rewrite-agents/REACT_FLUTTER_PARITY_RU.md` for
 the evidence and staged migration plan. YAML material is outside this JSON audit.
 
 ## Mapping and integrity
@@ -102,6 +104,13 @@ or forced rename. The pair is preflighted together and ordinary commit failures
 are rolled back. A crash between file publications can leave a mixed pair; this
 is not a multi-file database transaction. Keep the manifest and validate its
 source hash/mappings with the provided evidence verifier after interrupted work.
+
+Eight known Cyrillic Gastronomy quiz IDs have explicit, location-independent
+canonical mappings in `import.go`, documented in the parity plan. Their manifests
+use `legacy-choice/v2`; all other imports retain `legacy-choice/v1`. Legacy source
+IDs and source JSON are unchanged. There is no general transliteration or random
+suffix fallback; unknown canonical collisions still block the audit. Existing
+v1/v2 manifests can be updated by the same controlled source with `--force`.
 
 Run `go test ./next/server/internal/content ./next/server/cmd/quizctl` for the
 golden, negative, conformance, real-pack and actual-executable end-to-end tests.

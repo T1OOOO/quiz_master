@@ -90,7 +90,7 @@ func WriteFiles(dir string, values map[string]any, force bool) error {
 			}
 			data, err := os.ReadFile(p)
 			var previous Manifest
-			if err != nil || json.Unmarshal(data, &previous) != nil || previous.MappingVersion != "legacy-choice/v1" {
+			if err != nil || json.Unmarshal(data, &previous) != nil || (previous.MappingVersion != "legacy-choice/v1" && previous.MappingVersion != "legacy-choice/v2") {
 				return &Error{"manifest_invalid", p}
 			}
 			if previous.CanonicalQuizID == incoming.CanonicalQuizID {
