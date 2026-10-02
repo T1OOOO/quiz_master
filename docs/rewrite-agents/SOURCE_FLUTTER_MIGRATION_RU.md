@@ -102,3 +102,30 @@ Home Alone направляется в уже существующее прох�
 Beads — единственный issue tracker; `quiz_master-i0r` остаётся задачей полного
 multi-pack API. Новые изменения stage/commit только точными путями.
 Публичный deployment пока остаётся прежним; сборка каталога не равна его выпуску.
+
+## Обновление 2026-10-02, 23:38 — критический multi-pack этап выпущен
+
+На https://quiz.kotopedia.org развёрнут build `quiz-2026.10.02-2327-5121fbd`,
+Helm revision 6. Все 101 исходный пакет / 3128 вопросов доступны; выбранный
+quiz_id явно передаётся API, попытка закрепляет private bundle/manifest в SQLite.
+Проверка исходного корпуса проходит все 3128 правильных ответов и историю после
+перезапуска. Исправлен deadlock списка истории на единственном SQLite connection.
+Запуск с карточки сразу открывает вопросы гостю без формы имени; URL выбранного
+квиза меняется и пригоден для ссылки. Праздничный фон исходника, цветные карточки,
+текстуры и двухколоночная телефонная сетка перенесены.
+
+Доказательства: 41 Flutter tests PASS, analyze no issues, release Web build PASS;
+`go test -p 1 ./next/server/... -timeout 120s` PASS. Это не заменяет ещё не выполненные
+root Go/vet и Android gates. Повторный public smoke: 101 выбранный каталог/attempt,
+полный cheese quiz 19 answers/history/reveals, replay PASS, чужой владелец 404.
+Браузер: поиск, запуск, selected URL, answer/continue до 2/19; errors пусто.
+Снимки `reports/source101-desktop.png`, `source101-phone.png`,
+`source101-question-desktop.png`, `source101-question-phone.png`, `source101-search.png`.
+
+Полный переход ещё НЕ принят: этапы 3–7 остаются в `quiz_master-rq9.15`:
+шесть тем, настоящий serif-шрифт, исходное меню/sidebar, Markdown/media/navigation,
+practice/ranked feedback, сохранение сессии/настроек и аккаунты. На 390px выявлен
+неудачный перенос «Гастрономия» в карточке — включён в следующий UI этап.
+Независимый агент и Android не запускались; off-node backups/load gates открыты.
+Windows hosts не изменён: ОС отказала в записи, требуется elevated редактор.
+Предыдущие NOT_RUN/deployment записи выше отражают более ранний этап.

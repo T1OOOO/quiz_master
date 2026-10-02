@@ -2,14 +2,26 @@ param([string]$BaseUrl = 'https://quiz.kotopedia.org')
 $ErrorActionPreference = 'Stop'
 # Creates disposable guests and a completed attempt; never prints bearer tokens.
 $version = Invoke-RestMethod "$BaseUrl/version.json"
-if ($version.build_id -ne 'quiz-2026.10.02-1759-585c4e2') { throw 'Unexpected build' }
+if ($version.build_id -ne 'quiz-2026.10.02-2327-5121fbd') { throw 'Unexpected build' }
 $ready = Invoke-WebRequest "$BaseUrl/health/ready"
 if ($ready.StatusCode -ne 200) { throw 'Not ready' }
-$catalog = Invoke-RestMethod "$BaseUrl/v1/catalog"
-if ($catalog.quiz.questions.Count -ne 25) { throw 'Unexpected preview catalog' }
+$collection = Invoke-RestMethod "$BaseUrl/assets/assets/catalog.json"
+if ($collection.Count -ne 101) { throw 'Unexpected collection' }
 $guest = Invoke-RestMethod "$BaseUrl/v1/guests" -Method Post -ContentType application/json -Body '{"display_name":"Deployment smoke"}'
 $headers = @{Authorization = "Bearer $($guest.token)"}
-$attempt = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{}'
+$total = 0
+foreach ($pack in $collection) {
+    $selected = Invoke-RestMethod "$BaseUrl/v1/catalog?quiz_id=$($pack.quiz_id)"
+    $request = @{quiz_id = $pack.quiz_id} | ConvertTo-Json -Compress
+    $started = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body $request
+    if ($selected.quiz.quiz_id -ne $pack.quiz_id -or $selected.quiz.questions.Count -ne $pack.questions_count -or $started.bundle_sha256 -ne $selected.bundle_sha256 -or $started.question_snapshots.Count -ne $pack.questions_count) { throw "Wrong selected pack: $($pack.quiz_id)" }
+    $total += $pack.questions_count
+    Start-Sleep -Milliseconds 150
+}
+if ($total -ne 3128) { throw 'Collection question count mismatch' }
+$catalog = Invoke-RestMethod "$BaseUrl/v1/catalog?quiz_id=gastronomy-cheeses-and-dairy"
+$expected = $catalog.quiz.questions.Count
+$attempt = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"gastronomy-cheeses-and-dairy"}'
 $path = "$BaseUrl/v1/attempts/$($attempt.attempt_id)"
 $early = Invoke-WebRequest "$path/reveals" -Headers $headers -SkipHttpErrorCheck
 if ($early.StatusCode -ne 404) { throw 'SQLite early reveal not blocked' }
@@ -31,8 +43,10 @@ foreach ($snapshot in $attempt.question_snapshots) {
 $finished = Invoke-RestMethod "$path/finish" -Method Post -ContentType application/json -Headers $headers -Body '{}'
 $history = Invoke-RestMethod "$BaseUrl/v1/history/$($attempt.attempt_id)" -Headers $headers
 $reveals = Invoke-RestMethod "$path/reveals" -Headers $headers
-if ($count -ne 25 -or $finished.status -ne 'finished' -or $history.history.Count -ne 25 -or $reveals.Count -ne 25) { throw 'Attempt/history/reveals mismatch' }
+if ($count -ne $expected -or $finished.status -ne 'finished' -or $history.history.Count -ne $expected -or $reveals.Count -ne $expected) { throw 'Attempt/history/reveals mismatch' }
+$list = @(Invoke-RestMethod "$BaseUrl/v1/history" -Headers $headers)
+if ($list.Count -ne 1 -or $list[0].attempt_id -ne $attempt.attempt_id) { throw 'History list mismatch' }
 $other = Invoke-RestMethod "$BaseUrl/v1/guests" -Method Post -ContentType application/json -Body '{"display_name":"Deployment ownership smoke"}'
 $denied = Invoke-WebRequest "$BaseUrl/v1/history/$($attempt.attempt_id)" -Headers @{Authorization = "Bearer $($other.token)"} -SkipHttpErrorCheck
 if ($denied.StatusCode -ne 404) { throw 'Cross-owner history exposed' }
-[pscustomobject]@{Build = $version.build_id; Answers = $count; Status = $finished.status; History = $history.history.Count; Reveals = $reveals.Count; Replay = 'PASS'; CrossOwner = $denied.StatusCode}
+[pscustomobject]@{Build = $version.build_id; Packs = $collection.Count; Questions = $total; Answers = $count; Status = $finished.status; History = $history.history.Count; Reveals = $reveals.Count; Replay = 'PASS'; CrossOwner = $denied.StatusCode}

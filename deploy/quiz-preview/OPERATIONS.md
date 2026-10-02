@@ -196,3 +196,38 @@ frontend/backend IDs and JS hash. Its app/DB/content were not updated. Other
 namespace Secret access still denied to Traefik. Temporary tunnel is not needed.
 Deployment issue can be closed; React parity/full catalog, off-node backup/restore,
 load testing and independent-provider review remain separate unfinished gates.
+
+## 2026-10-02 23:33 Europe/Istanbul — source collection and direct play, revision 6
+
+Release `quiz-2026.10.02-2327-5121fbd`, source commit
+`5121fbdcd2a67baf91df5bc2818a3d50b27a5d27`.
+Runtime image `docker.io/library/quiz-master@sha256:44abc6c8c0f16cd416877e07b3e3f11438066cf6ac7c945df81780b67a2ad601`.
+Actual pod API SHA256 `1ff63d17749776f308f43c2894a644e568000cfd882ac7cacd2223f1c4f1b322`;
+public JS SHA256 `520a090cd563878051e9d73f5259d917081cca51501aa20742ba21c775ab6287`.
+Both match public version.json. Runtime package remains at
+`/opt/quiz-master/releases/quiz-2026.10.02-2327-5121fbd` on the verified node.
+
+Sequential local Go/Flutter builds; remote runtime-only Docker build with
+network=none/pull=false; nginx config check; docker save/containerd import and
+explicit image digest alias. Helm lint with namespace, rendered server dry-run,
+then flock-protected atomic upgrade, wait/timeout 180s. Revision 6: Deployment 1/1,
+pod 2/2, zero restarts; existing PVC unchanged; certificate Ready True.
+Revision 5 initially lacked the digest alias and hit ImagePullBackOff; registered
+the imported digest alias and replaced only that failed quiz pod. Revision 6
+included the alias before upgrade and completed normally. No SQLite deletion.
+
+Preflight backup `/opt/quiz-master/backups/quiz-2026.10.02-2327-5121fbd.sqlite`
+and separate `.restore-proof.sqlite`: integrity_check=ok, matching counts
+13 participants / 110 attempts / 102 immutable bundles, private mode 0600.
+These are on-node recovery checks, not off-node disaster-recovery acceptance.
+Rollback revision 6 to 5 retains the PVC and needs no DB restore.
+
+Public smoke exit 0: all 101 selected catalogs and attempt starts, 3128 questions;
+nondefault cheese quiz finished with 19 answers/history/reveals; idempotent replay
+PASS; foreign owner 404. Browser search, direct no-name launch, shareable selected
+URL and answer/continue to question 2/19 verified. Desktop/phone screenshots in
+`docs/rewrite-agents/reports/source101-*.png`; browser errors empty.
+Language Learner revision 85 and JS SHA256
+`520c6508fc7c9457b684c2d3210ae15322bdc2e9d1faf35b319958f55fbe66c7`
+unchanged from its completed deployment; edge remains revision 10.
+No local Docker/Postgres, Actions, extra agents or messages to the neighboring chat.
