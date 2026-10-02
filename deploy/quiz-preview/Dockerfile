@@ -1,4 +1,4 @@
-ARG NGINX_IMAGE
+ARG NGINX_IMAGE=nginx@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
 FROM ${NGINX_IMAGE}
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --chmod=755 api /app/api
