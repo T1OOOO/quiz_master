@@ -78,3 +78,70 @@ runtime OCI index `sha256:fc8983e1c147fe58143fcaa106744628af03cd6bc0a6bba4ce66ac
 Both are pinned in tracked configuration. Flutter emitted deprecated PWA flag and
 unused Cupertino-font warnings; it still built successfully. No Android build was
 requested/performed in this Web preview.
+
+## 2026-10-02T09:22:20Z — namespace deployment and smoke (Codex)
+
+The digest reference was added to k3s and release values uploaded. Commands in
+`/opt/quiz-master/releases/quiz-2026.10.02-0857-ef419ae`:
+
+```sh
+k3s ctr -n k8s.io images tag docker.io/library/quiz-master:quiz-2026.10.02-0857-ef419ae docker.io/library/quiz-master@sha256:fc8983e1c147fe58143fcaa106744628af03cd6bc0a6bba4ce66ac9485f68f74
+helm lint --strict chart --namespace quiz-master -f release-values.yaml
+helm template quiz-master chart --namespace quiz-master -f release-values.yaml > rendered.yaml
+kubectl get namespace quiz-master >/dev/null 2>&1 || kubectl create namespace quiz-master
+kubectl apply --dry-run=server -n quiz-master -f rendered.yaml
+flock -n /opt/quiz-master/DEPLOY.lock helm upgrade --install quiz-master chart --namespace quiz-master --create-namespace -f release-values.yaml --wait --timeout 180s
+```
+
+Namespace creation, lint and server dry-run passed. First install timed out:
+API configuration rejected `sqlite:/data/quiz.db` because Go URL parsing sets
+Path, not the opaque path required by this application's explicit SQLite mode.
+No application code changed: chart corrected to `sqlite:../data/quiz.db` with
+working directory `/app`, resolving to the existing `/data` PVC. Uploaded the
+corrected template, reran lint/render/server dry-run, then:
+
+```sh
+flock -n /opt/quiz-master/DEPLOY.lock helm upgrade --install quiz-master chart --namespace quiz-master -f release-values.yaml --wait --timeout 180s
+kubectl get pods,pvc -n quiz-master
+kubectl get deployment quiz-master -n quiz-master
+helm list -n quiz-master
+kubectl get certificate -n quiz-master
+```
+
+Revision **2 deployed**; Deployment 1/1 available, pod 2/2 ready, zero restarts;
+1 GiB PVC Bound. The API and nginx are non-root and read-only except their mounts.
+Temporary SSH tunnel to `kubectl port-forward --address=127.0.0.1 -n quiz-master
+service/quiz-master 18082:80` allowed a full API smoke. The first smoke wrongly
+expected PostgreSQL's early-reveal 400; inspected SQLite's existing GetHistory
+guard and corrected the harness expectation to its 404. A subsequent test was
+interrupted by prematurely closing the test tunnel; no application defect claimed.
+Final runnable check:
+
+```powershell
+./deploy/quiz-preview/smoke.ps1 -BaseUrl http://127.0.0.1:18082
+```
+
+Exit zero: correct build/version, readiness 200, 25 accepted answers, finished
+attempt, 25 history entries and reveals, stable replay receipt, cross-owner 404.
+Only disposable test participants/attempts were created; no bearer tokens logged.
+Tunnel closed after completion; remote port 18082 confirmed unbound.
+
+**Public ingress/TLS: BLOCKED awaiting owner confirmation.** Live shared Traefik
+revision 9 has both providers restricted to ingress-system/language-learner/
+monitoring, and Recreate update strategy. Its service account cannot list our
+Ingress or Middleware (`kubectl auth can-i --as=system:serviceaccount:ingress-system:traefik
+list ingresses.networking.k8s.io -n quiz-master` and the equivalent middleware
+check both returned no). Existing namespace bindings use the
+`traefik-ingress-reader` ClusterRole. Required next step: add quiz-master to both
+provider namespace lists through the canonical edge Helm chart, and add a scoped
+RoleBinding in quiz-master. Do not broaden to all namespaces. This shared restart
+may briefly interrupt Language Learner; permission requested before mutation.
+Keep the edge previous revision for rollback, preserve all existing values, run
+its verify-release script before/after, and record shared changes in its required
+operations log. No edge change or neighbor source edit has been made.
+
+Certificate still Pending: HTTP-01 self-check receives 404 because Traefik ignores
+the namespace. This is not a DNS or secret problem. Language Learner continued
+to return HTTPS 200; app release remains revision 83. Final public HTTPS smoke,
+certificate acceptance, browser review, independent review, backup/restore and
+load acceptance remain NOT_RUN. Issue `quiz_master-eel` stays in progress.

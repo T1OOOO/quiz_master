@@ -5,6 +5,13 @@ Target: verified k3s node `192.3.164.184`, namespace **quiz-master**, release
 secrets, DBs or charts are reused; only the shared Traefik/issuer/storage provisioner.
 Existing Language Learner source tree is read-only for this task.
 
+Current status (2026-10-02): Helm revision 2 is ready in its own namespace;
+the guest/25-answer/history/reveal/ownership smoke check passed through SSH.
+Public TLS is pending: the shared Traefik has a namespace allowlist and scoped
+RBAC which currently exclude `quiz-master`. Adding the namespace and granting
+its ingress-reader RoleBinding requires a shared ingress restart (Recreate);
+owner confirmation requested before that change. Do not call the public URL live.
+
 This is the current single-pack rewrite preview, not React parity completion or a
 production acceptance. SQLite has one writer, one replica and a Recreate rollout
 (brief downtime). The API stays on loopback within the pod; nginx serves Web and
@@ -25,6 +32,8 @@ Install with `helm upgrade --install quiz-master ... -n quiz-master --create-nam
 --wait --timeout 180s`. Record exact remote operations in `deploy/quiz-preview/OPERATIONS.md`.
 Verify rollout, TLS, `/version.json`, `/health/ready`, `/v1/catalog`, a disposable
 guest/attempt flow and continued Language Learner health. Do not print bearer tokens.
+Run `pwsh -File deploy/quiz-preview/smoke.ps1` for the current 25-question preview.
+The check creates disposable guest/attempt records and prints no bearer tokens.
 
 Rollback: `helm rollback quiz-master PREVIOUS_REVISION -n quiz-master --wait`.
 On a failed first install stop only this Deployment; retain the PVC and inspect
