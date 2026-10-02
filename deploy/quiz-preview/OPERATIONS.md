@@ -1,5 +1,16 @@
 # Quiz preview operations
 
+## 2026-10-03 02:45 — overlay-only feedback, stable question layout
+
+Revision 11: `quiz-2026.10.03-0245-6b5e2e6`. Removed dynamically inserted result/
+continue controls from practice question layout. Both outcomes/explanations now
+use the centered modal; correct-answer timer/pause lives only in that modal.
+Single/text practice has no inactive continue footer. Multi-choice/legacy submit
+controls remain fixed, not newly inserted after answering. Details, image/hashes,
+backup proof and screenshots: `docs/rewrite-agents/reports/OVERLAY_ONLY_RU.md`.
+46 Flutter tests, analyze, Web release, practice HTTPS smoke and phone/desktop
+browser checks passed. Rollback to revision 10 retains the existing SQLite PVC.
+
 ## 2026-10-03 01:40 — cozy background and pausable auto advance
 
 Revision 10: `quiz-2026.10.03-0125-6326777`. Background restored, warm parchment
