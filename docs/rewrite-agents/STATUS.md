@@ -24,8 +24,13 @@ Updated: 2026-10-02 (Europe/Istanbul)
   Go CLI package tests PASS. Full Go suite/vet NOT_RUN: repeated host lease
   admission returned CPU_PRESSURE; no unreserved heavy operation was launched.
   Follow-up: `quiz_master-0o4`; no whole-repository Go passing claim.
-- Public `quiz.kotopedia.org` deployment is unchanged. No cutover or full parity
-  claim. Original `mobile/` and `flutter/` retained; protected pre-existing
+- Public `quiz.kotopedia.org` updated at the user's request: build
+  `quiz-2026.10.02-1759-585c4e2`, Helm revision 4. Production Web build PASS
+  (67.2s), HTTPS catalog asset 101/3128 and exact SHA256 PASS; guest/25-answer/
+  history/reveal/replay/ownership smoke PASS. Browser screenshot visually
+  verified at `reports/deployed-catalog-585c4e2.png`. API binary, SQLite PVC,
+  shared edge revision 10 and Language Learner revision 83 unchanged.
+  No full parity claim. Original `mobile/` and `flutter/` retained; protected pre-existing
   `.beads/issues.jsonl` and `PROJECT_OVERVIEW_RU.md` excluded from publication.
 
 ## Current checkpoint

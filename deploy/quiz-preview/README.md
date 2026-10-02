@@ -6,7 +6,7 @@ secrets, DBs or charts are reused; only the shared Traefik/issuer/storage provis
 Existing Language Learner source tree is read-only for this task.
 
 Current status (2026-10-02): **https://quiz.kotopedia.org is live**, certificate
-Ready; quiz Helm revision 3 and shared edge revision 10 deployed. The public HTTPS
+Ready; quiz Helm revision 4 and shared edge revision 10 deployed. The public HTTPS
 guest/25-answer/history/reveal/ownership smoke check passed. Owner approved the
 shared ingress restart; Language Learner's before/after release verification passed.
 Quiz's namespaced Role/RoleBinding grants Traefik only read access to its own
@@ -15,7 +15,8 @@ Shared values are in `shared-edge-quiz-values.yaml`: include this override in fu
 edge upgrades, or use `--reuse-values`, to retain the quiz namespace allowlist.
 Shared audit mirror: `/opt/ll/docs/ops/CHANGELOG.md` on the verified remote host.
 
-This is the current single-pack rewrite preview, not React parity completion or a
+The discovery catalog lists 101 packs / 3128 questions in seven categories;
+only Home Alone 1 (Part 1) is playable. This is a rewrite preview, not React parity completion or a
 production acceptance. SQLite has one writer, one replica and a Recreate rollout
 (brief downtime). The API stays on loopback within the pod; nginx serves Web and
 proxies `/v1` same-origin. No disabled browser security or local Docker is required.

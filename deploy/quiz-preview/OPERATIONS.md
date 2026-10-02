@@ -1,5 +1,40 @@
 # Quiz preview operations
 
+## 2026-10-02 — discovery catalog update (18:01 Europe/Istanbul)
+
+User requested updating the public site after source migration stage 1.
+Deployed only `quiz-master`, Helm revision **4**, build
+`quiz-2026.10.02-1759-585c4e2`, image
+`docker.io/library/quiz-master@sha256:2136d278b30428be730e88da9bee1e40856e314c5c6c33c6f4dbc9c73e8cb2c2`.
+
+- Fresh Flutter production build: PASS, 67.2s, `--no-pub --release
+  --no-wasm-dry-run --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org
+  --pwa-strategy=none --output build/production-catalog`.
+- Web JS SHA256: `9ddf4b6b215a163a248e4fa3f1a3491ab1bc14c21aaba29c674545d1348353be`.
+- Reused the previous verified API binary (source `ef419ae`), SHA256
+  `8202291efad70ec1bdb732d716835ce6e245fba3b66948b3edece9ceac2719d7`.
+  API runtime/contracts/private content unchanged; no DB migration or restoration.
+- Isolated package: `/opt/quiz-master/releases/quiz-2026.10.02-1759-585c4e2`.
+  Existing pinned nginx base; remote build `--network=none`, nginx config check,
+  containerd import, Helm strict lint, template and server dry run: PASS.
+  Upgrade used the existing lock plus `--atomic --wait --timeout 180s`.
+- Public version/readiness/TLS PASS; pod 2/2; original SQLite PVC UID retained.
+  Catalog metadata has 101 packs / 3128 questions; SHA256 matches the source
+  asset: `5fec3a317415d95a181e177b596f9a492b2d6965d0fb6126bcc71a0135591001`.
+- `pwsh -NoProfile -File deploy/quiz-preview/smoke.ps1`: PASS, 25 answers,
+  finished/history/reveals all 25, replay stable, cross-owner history 404.
+  This check creates disposable guest/attempt records in the existing SQLite DB.
+- Live browser screenshot visually checked:
+  `docs/rewrite-agents/reports/deployed-catalog-585c4e2.png`. Shows categories,
+  search, total counts and the explicit single-playable-pack migration notice.
+  Full UI interaction suite and independent agent review NOT_RUN this update.
+- Shared edge stays revision 10; Language Learner stays revision 83 and its
+  public frontend build/bundle hash matches preflight. No shared restart.
+
+Rollback: `helm rollback quiz-master 3 -n quiz-master --wait --timeout 180s`.
+Keep both release packages and the SQLite PVC. This is stage 1 discovery, not
+the completed React-to-Flutter migration. Multi-pack play remains `quiz_master-i0r`.
+
 ## 2026-10-02 — target verification and configuration preflight (Codex)
 
 Preflight status at this checkpoint: **NOT DEPLOYED**. No quiz namespace, workload, PVC or certificate created.

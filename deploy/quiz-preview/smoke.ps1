@@ -2,7 +2,7 @@ param([string]$BaseUrl = 'https://quiz.kotopedia.org')
 $ErrorActionPreference = 'Stop'
 # Creates disposable guests and a completed attempt; never prints bearer tokens.
 $version = Invoke-RestMethod "$BaseUrl/version.json"
-if ($version.build_id -ne 'quiz-2026.10.02-0857-ef419ae') { throw 'Unexpected build' }
+if ($version.build_id -ne 'quiz-2026.10.02-1759-585c4e2') { throw 'Unexpected build' }
 $ready = Invoke-WebRequest "$BaseUrl/health/ready"
 if ($ready.StatusCode -ne 200) { throw 'Not ready' }
 $catalog = Invoke-RestMethod "$BaseUrl/v1/catalog"
