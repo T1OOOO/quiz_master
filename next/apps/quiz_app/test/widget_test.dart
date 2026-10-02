@@ -10,6 +10,36 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets('practice tap checks once, feedback retry does not resubmit', (
+    tester,
+  ) async {
+    final api = await _QuizTestServer.start(failFirstReveal: true);
+    final client = QuizApiClient(baseUri: api.baseUri);
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Option 1'));
+    await tester.pumpAndSettle();
+    expect(api.answerBodies, hasLength(1));
+    expect(find.byKey(const Key('journey-error')), findsOneWidget);
+    await tester.tap(find.text('Retry'));
+    await tester.pumpAndSettle();
+    expect(api.answerBodies, hasLength(1));
+    expect(find.text('Incorrect'), findsWidgets);
+    expect(find.text('Because question 1.'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('feedback-next')));
+    await tester.pumpAndSettle();
+    expect(find.text('Question 2'), findsOneWidget);
+    await tester.tap(find.text('Option 4'));
+    await tester.pumpAndSettle();
+    expect(find.text('Correct'), findsWidgets);
+    expect(api.answerBodies, hasLength(2));
+  });
   testWidgets('quiz controls fit a short phone viewport', (tester) async {
     tester.view.physicalSize = const Size(390, 640);
     tester.view.devicePixelRatio = 1;
@@ -367,6 +397,7 @@ class _QuizTestServer {
   var finishCount = 0;
   var revealCount = 0;
   var historyCount = 0;
+  var feedbackCount = 0;
 
   static Future<_QuizTestServer> start({
     bool failFirstCatalog = false,
@@ -416,6 +447,20 @@ class _QuizTestServer {
     } else if (method == 'POST' && path.endsWith('/finish')) {
       finishCount++;
       response = _finishJson;
+    } else if (method == 'GET' && path.contains('/feedback/')) {
+      feedbackCount++;
+      final id = path.split('/').last;
+      final index = int.parse(id.substring(2));
+      if (failFirstReveal && feedbackCount == 1) {
+        status = 503;
+        response = _retryableError;
+      } else {
+        response = {
+          'correct':
+              (answerBodies.last['answer'] as Map)['option_id'] == 'opt-4',
+          'reveal': _revealsJson[index - 1],
+        };
+      }
     } else if (method == 'GET' && path.endsWith('/reveals')) {
       revealCount++;
       if (failFirstReveal && revealCount == 1) {

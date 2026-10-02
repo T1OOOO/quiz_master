@@ -232,11 +232,13 @@ class QuestionCard extends StatefulWidget {
     required this.onAnswer,
     this.submitting = false,
     this.reveal,
+    this.showExplanation = true,
   });
   final PublicQuestion question;
   final ValueChanged<Object> onAnswer;
   final bool submitting;
   final Reveal? reveal;
+  final bool showExplanation;
   @override
   State<QuestionCard> createState() => _QuestionCardState();
 }
@@ -284,6 +286,7 @@ class _QuestionCardState extends State<QuestionCard> {
               stableId: option.id,
               selected: single == option.id,
               disabled: disabled,
+              correct: widget.reveal?.correctOptionIds.contains(option.id),
               onActivate: () => _selectSingle(option.id),
               child: RadioListTile<String>(
                 value: option.id,
@@ -297,6 +300,7 @@ class _QuestionCardState extends State<QuestionCard> {
               stableId: option.id,
               selected: multiple.contains(option.id),
               disabled: disabled,
+              correct: widget.reveal?.correctOptionIds.contains(option.id),
               onActivate: () => _toggleMultiple(option.id),
               child: CheckboxListTile(
                 value: multiple.contains(option.id),
@@ -342,8 +346,10 @@ class _QuestionCardState extends State<QuestionCard> {
                 ],
               )
             else
-              ...choices,
-            if (widget.reveal != null) ExplanationPanel(reveal: widget.reveal!),
+              for (final choice in choices)
+                Padding(padding: const EdgeInsets.only(top: 8), child: choice),
+            if (widget.reveal != null && widget.showExplanation)
+              ExplanationPanel(reveal: widget.reveal!),
           ],
         ),
       ),
@@ -359,6 +365,7 @@ class _ChoiceControl extends StatefulWidget {
     required this.disabled,
     required this.onActivate,
     required this.child,
+    this.correct,
   });
 
   final String label;
@@ -367,6 +374,7 @@ class _ChoiceControl extends StatefulWidget {
   final bool disabled;
   final VoidCallback onActivate;
   final Widget child;
+  final bool? correct;
 
   @override
   State<_ChoiceControl> createState() => _ChoiceControlState();
@@ -405,12 +413,31 @@ class _ChoiceControlState extends State<_ChoiceControl> {
       onKeyEvent: _handleKey,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border: _focused
-              ? Border.all(color: Theme.of(context).colorScheme.primary)
-              : null,
-          borderRadius: BorderRadius.circular(8),
+          color: widget.correct == true
+              ? const Color(0xffe2f3df)
+              : widget.correct == false && widget.selected
+              ? const Color(0xffffe2df)
+              : const Color(0x55fff7ee),
+          border: Border.all(
+            color: widget.correct == true
+                ? const Color(0xff81c784)
+                : widget.correct == false && widget.selected
+                ? const Color(0xffcf7770)
+                : _focused || widget.selected
+                ? Theme.of(context).colorScheme.primary
+                : const Color(0xffe0cdbc),
+            width: 1.2,
+          ),
+          borderRadius: BorderRadius.circular(16),
         ),
-        child: widget.child,
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3),
+            child: widget.child,
+          ),
+        ),
       ),
     ),
   );

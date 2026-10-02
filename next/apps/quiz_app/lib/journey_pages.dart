@@ -38,6 +38,11 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final catalog = journey.catalog;
     final attempt = journey.attempt;
     final finish = journey.finish;
+    ref.listen(journeyProvider.select((s) => s.feedback), (previous, feedback) {
+      if (feedback != null && feedback != previous) {
+        _showFeedback(context, feedback, controller.nextQuestion);
+      }
+    });
     final title =
         ref
             .watch(discoveryCatalogProvider)
@@ -204,7 +209,8 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                 ] else if (finish != null) ...[
                   Text(
                     l10n.score(finish.score),
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(context).textTheme.headlineMedium
+                        ?.copyWith(color: _cream),
                   ),
                   if (journey.postFinishError != null)
                     _ErrorPanel(
@@ -309,10 +315,15 @@ class _QuestionStep extends ConsumerWidget {
         if (fitScreen)
           Expanded(
             child: SingleChildScrollView(
+              key: ValueKey(current.id),
               child: QuestionCard(
                 key: ValueKey(current.id),
                 question: current,
-                submitting: journey.submitting,
+                submitting:
+                    journey.submitting ||
+                    journey.receipts.length > journey.index,
+                reveal: journey.feedback?.reveal,
+                showExplanation: false,
                 onAnswer: (value) => ref
                     .read(journeyProvider.notifier)
                     .stage(current.kind, value),
@@ -323,15 +334,33 @@ class _QuestionStep extends ConsumerWidget {
           QuestionCard(
             key: ValueKey(current.id),
             question: current,
-            submitting: journey.submitting,
+            submitting:
+                journey.submitting || journey.receipts.length > journey.index,
             onAnswer: (value) =>
                 ref.read(journeyProvider.notifier).stage(current.kind, value),
           ),
         const SizedBox(height: 8),
+        if (journey.feedback != null)
+          TextButton.icon(
+            icon: Icon(
+              journey.feedback!.correct ? Icons.check_circle : Icons.cancel,
+              color: journey.feedback!.correct
+                  ? const Color(0xff1e5e22)
+                  : const Color(0xffa52a2a),
+            ),
+            label: Text(_feedbackLabel(context, journey.feedback!.correct)),
+            onPressed: () => _showFeedback(
+              context,
+              journey.feedback!,
+              ref.read(journeyProvider.notifier).nextQuestion,
+            ),
+          ),
         SizedBox(
           width: double.infinity,
           child: FilledButton(
-            onPressed: journey.staged == null || journey.submitting
+            onPressed: journey.feedback != null
+                ? ref.read(journeyProvider.notifier).nextQuestion
+                : journey.staged == null || journey.submitting
                 ? null
                 : ref.read(journeyProvider.notifier).submit,
             child: Text(
@@ -348,6 +377,92 @@ class _QuestionStep extends ConsumerWidget {
       ],
     );
   }
+}
+
+String _feedbackLabel(BuildContext context, bool correct) =>
+    Localizations.localeOf(context).languageCode == 'ru'
+    ? (correct ? 'Верно' : 'Неверно')
+    : (correct ? 'Correct' : 'Incorrect');
+
+void _showFeedback(
+  BuildContext context,
+  PracticeFeedback feedback,
+  VoidCallback next,
+) {
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: const Color(0xfffffcf6),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(27)),
+    ),
+    builder: (sheetContext) => Theme(
+      data: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xffe8791b),
+          surface: const Color(0xfffffcf6),
+        ),
+      ),
+      child: SafeArea(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(sheetContext).height * .65,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        _feedbackLabel(context, feedback.correct),
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          color: feedback.correct
+                              ? const Color(0xff1e5e22)
+                              : const Color(0xffa52a2a),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: MaterialLocalizations.of(context)
+                          .closeButtonTooltip,
+                      onPressed: () => Navigator.pop(sheetContext),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: DefaultTextStyle.merge(
+                      style: const TextStyle(color: _cream),
+                      child: ExplanationPanel(reveal: feedback.reveal),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    key: const Key('feedback-next'),
+                    onPressed: () {
+                      Navigator.pop(sheetContext);
+                      next();
+                    },
+                    child: Text(AppLocalizations.of(context)!.continueLabel),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 PublicQuestion? _orderedQuestion(Catalog catalog, AttemptSnapshot snapshot) {

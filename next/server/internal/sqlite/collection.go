@@ -133,6 +133,12 @@ func (s *Attempts) StartQuiz(ctx context.Context, owner, id string) (attempts.At
 // Rounds partition the source without changing its immutable grading bundle.
 // Shuffle only within a round: advancing through every round never repeats or loses a question.
 func (s *Attempts) StartRound(ctx context.Context, owner, id string, round int) (attempts.Attempt, error) {
+	return s.startRound(ctx, owner, id, round, false)
+}
+func (s *Attempts) StartPracticeRound(ctx context.Context, owner, id string, round int) (attempts.Attempt, error) {
+	return s.startRound(ctx, owner, id, round, true)
+}
+func (s *Attempts) startRound(ctx context.Context, owner, id string, round int, practice bool) (attempts.Attempt, error) {
 	pack, err := s.selected(id)
 	if err != nil {
 		return attempts.Attempt{}, err
@@ -156,5 +162,5 @@ func (s *Attempts) StartRound(ctx context.Context, owner, id string, round int) 
 	for i, id := range ids {
 		selected.bundle.Quiz.Questions[i] = byID[id]
 	}
-	return selected.Start(ctx, owner)
+	return selected.start(ctx, owner, practice)
 }

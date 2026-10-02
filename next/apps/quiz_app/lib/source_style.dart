@@ -1,6 +1,6 @@
 part of 'main.dart';
 
-const _cream = Color(0xff253c34);
+const _cream = Color(0xff25170c);
 
 class SourceScaffold extends ConsumerWidget {
   const SourceScaffold({super.key, required this.body, this.compact = false});
@@ -12,20 +12,22 @@ class SourceScaffold extends ConsumerWidget {
     return Theme(
       data: _theme(Brightness.light).copyWith(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xff256653),
-          surface: Colors.white,
+          seedColor: const Color(0xffe8791b),
+          surface: const Color(0xfffffcf6),
         ),
-        scaffoldBackgroundColor: const Color(0xfff5f4ef),
+        scaffoldBackgroundColor: const Color(0xfff7f0e7),
         cardTheme: CardThemeData(
-          color: Colors.white,
-          elevation: 0,
+          color: const Color(0xfffbf3e8),
+          elevation: 2,
+          shadowColor: const Color(0x38603612),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(27),
+            side: const BorderSide(color: Colors.white, width: 2),
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: const Color(0xfffffcf6),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
         ),
         textButtonTheme: TextButtonThemeData(
@@ -89,15 +91,51 @@ class SourceScaffold extends ConsumerWidget {
                     ),
                     child: Row(
                       children: [
+                        IconButton(
+                          key: const Key('nav-back'),
+                          tooltip: MaterialLocalizations.of(context)
+                              .backButtonTooltip,
+                          onPressed: () {
+                            if (context.canPop()) {
+                              context.pop();
+                              return;
+                            }
+                            final uri = GoRouterState.of(context).uri;
+                            final folder = uri.queryParameters['folder'] ?? '';
+                            final parent = folder
+                                .split('/')
+                                .take(folder.split('/').length - 1)
+                                .join('/');
+                            context.go(
+                              Uri(
+                                path: '/library',
+                                queryParameters: parent.isEmpty
+                                    ? null
+                                    : {'folder': parent},
+                              ).toString(),
+                            );
+                          },
+                          icon: const Icon(Icons.arrow_back, color: _cream),
+                        ),
+                        IconButton(
+                          key: const Key('nav-home'),
+                          tooltip:
+                              Localizations.localeOf(context).languageCode ==
+                                  'ru'
+                              ? 'Домой'
+                              : 'Home',
+                          onPressed: () => context.go('/library'),
+                          icon: const Icon(Icons.home_outlined, color: _cream),
+                        ),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                compact ? 'Quiz Master' : l10n.holidayTitle,
+                                'Quiz Master',
                                 style: TextStyle(
                                   color: _cream,
-                                  fontSize: compact ? 17 : 30,
+                                  fontSize: compact ? 17 : 24,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -106,7 +144,7 @@ class SourceScaffold extends ConsumerWidget {
                                 Text(
                                   l10n.holidaySubtitle,
                                   style: const TextStyle(
-                                    color: Color(0xff64756b),
+                                    color: Color(0xff6e563c),
                                     fontSize: 14,
                                   ),
                                 ),
@@ -163,8 +201,11 @@ class SourceFolderCard extends StatelessWidget {
       _ => 'nature',
     };
     return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(16),
+      color: const Color(0xfffbf3e8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+        side: const BorderSide(color: Colors.white, width: 2),
+      ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         key: Key('folder-$title'),

@@ -40,7 +40,7 @@ func Routes(s AttemptService, auth TokenAuthenticator, create GuestCreator) http
 
 func noStoreRevealResponses(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if strings.HasPrefix(r.URL.Path, "/v1/attempts/") && strings.HasSuffix(r.URL.Path, "/reveals") {
+		if strings.HasPrefix(r.URL.Path, "/v1/attempts/") && (strings.HasSuffix(r.URL.Path, "/reveals") || strings.Contains(r.URL.Path, "/feedback/")) {
 			w.Header().Set("Cache-Control", "no-store")
 		}
 		next.ServeHTTP(w, r)
@@ -74,6 +74,7 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		var body struct {
 			QuizID string `json:"quiz_id"`
 			Round  *int   `json:"round,omitempty"`
+			Mode   string `json:"mode,omitempty"`
 		}
 		if err := decodeAttemptJSON(w, r, &body); err != nil {
 			writeAttemptError(w, attempts.ErrValidation)
@@ -82,7 +83,16 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		p, _ := PrincipalFromContext(r.Context())
 		var a attempts.Attempt
 		var err error
-		if body.Round != nil {
+		if body.Mode != "" {
+			practice, ok := s.(interface {
+				StartPracticeRound(context.Context, string, string, int) (attempts.Attempt, error)
+			})
+			if body.Mode != "practice" || !ok || body.Round == nil || body.QuizID == "" {
+				err = attempts.ErrValidation
+			} else {
+				a, err = practice.StartPracticeRound(r.Context(), p.ID, body.QuizID, *body.Round)
+			}
+		} else if body.Round != nil {
 			rounds, ok := s.(interface {
 				StartRound(context.Context, string, string, int) (attempts.Attempt, error)
 			})
@@ -121,6 +131,22 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 			return
 		}
 		writeAttemptJSON(w, http.StatusOK, receipt)
+	})
+	protected("GET /v1/attempts/{attempt}/feedback/{question}", func(w http.ResponseWriter, r *http.Request) {
+		practice, ok := s.(interface {
+			Feedback(context.Context, string, string, string) (attempts.Reveal, bool, error)
+		})
+		if !ok {
+			writeAttemptError(w, attempts.ErrForbidden)
+			return
+		}
+		p, _ := PrincipalFromContext(r.Context())
+		reveal, correct, err := practice.Feedback(r.Context(), p.ID, r.PathValue("attempt"), r.PathValue("question"))
+		if err != nil {
+			writeAttemptError(w, err)
+			return
+		}
+		writeAttemptJSON(w, http.StatusOK, map[string]any{"correct": correct, "reveal": reveal})
 	})
 	protected("POST /v1/attempts/{attempt}/finish", func(w http.ResponseWriter, r *http.Request) {
 		var body struct{}

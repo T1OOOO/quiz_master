@@ -186,12 +186,14 @@ class Reveal {
     this.quizId,
     this.questionId,
     this.revision,
+    this.correctOptionIds = const {},
   });
   final String answer;
   final String explanation;
   final String? quizId;
   final String? questionId;
   final Revision? revision;
+  final Set<String> correctOptionIds;
   factory Reveal.fromJson(Map<String, dynamic> json) {
     _closed(json, {
       'quiz_id',
@@ -233,10 +235,29 @@ class Reveal {
     }
     return Reveal(
       answer: answer['text'] as String,
+      correctOptionIds: single
+          ? {answer['option_id'] as String}
+          : multiple
+          ? Set<String>.from(optionIds)
+          : {},
       explanation: json['explanation'] as String,
       quizId: json['quiz_id'] as String,
       questionId: json['question_id'] as String,
       revision: Revision.fromJson(_map(json['question_revision'])),
+    );
+  }
+}
+
+class PracticeFeedback {
+  const PracticeFeedback(this.correct, this.reveal);
+  final bool correct;
+  final Reveal reveal;
+  factory PracticeFeedback.fromJson(Map<String, dynamic> json) {
+    _closed(json, {'correct', 'reveal'});
+    if (json['correct'] is! bool) throw const FormatException('feedback');
+    return PracticeFeedback(
+      json['correct'] as bool,
+      Reveal.fromJson(_map(json['reveal'])),
     );
   }
 }

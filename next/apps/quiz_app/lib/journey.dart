@@ -30,6 +30,7 @@ class JourneyState {
     this.finish,
     this.reveals = const [],
     this.receipts = const [],
+    this.feedback,
   });
   final bool loading;
   final String? error;
@@ -45,6 +46,7 @@ class JourneyState {
   final Finish? finish;
   final List<Reveal> reveals;
   final List<Receipt> receipts;
+  final PracticeFeedback? feedback;
   JourneyState copyWith({
     bool? loading,
     String? error,
@@ -60,6 +62,7 @@ class JourneyState {
     Finish? finish,
     List<Reveal>? reveals,
     List<Receipt>? receipts,
+    PracticeFeedback? feedback,
   }) => JourneyState(
     loading: loading ?? this.loading,
     error: error,
@@ -75,15 +78,18 @@ class JourneyState {
     finish: finish ?? this.finish,
     reveals: reveals ?? this.reveals,
     receipts: receipts ?? this.receipts,
+    feedback: feedback,
   );
 }
 
 class JourneyController extends Notifier<JourneyState> {
   String? _quizId;
   int? _round;
+  int _generation = 0;
   @override
   JourneyState build() => const JourneyState();
   Future<void> openQuiz(String id, {int round = 0}) async {
+    final generation = ++_generation;
     _quizId = id;
     _round = round;
     state = JourneyState(session: state.session, loading: true);
@@ -97,6 +103,7 @@ class JourneyController extends Notifier<JourneyState> {
       ]);
       final session = results[0] as GuestSession;
       final catalog = results[1] as Catalog;
+      if (generation != _generation) return;
       if (catalog.quiz.id != id) {
         throw const FormatException('selected quiz mismatch');
       }
@@ -167,14 +174,20 @@ class JourneyController extends Notifier<JourneyState> {
   }
 
   Future<void> start() async {
+    final generation = _generation;
     final catalog = state.catalog;
     if (catalog == null) return;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
       final attempt = await ref
           .read(quizApiProvider)
-          .startAttempt(quizId: _quizId, round: _round);
+          .startAttempt(
+            quizId: _quizId,
+            round: _round,
+            practice: _quizId != null,
+          );
       validateAttemptCatalog(attempt, catalog);
+      if (generation != _generation) return;
       state = state.copyWith(loading: false, attempt: attempt, index: 0);
     } on ApiClientException catch (e) {
       state = state.copyWith(
@@ -192,15 +205,25 @@ class JourneyController extends Notifier<JourneyState> {
   }
 
   void stage(AnswerKind kind, Object value) {
-    if (state.submitting) return;
+    if (state.submitting ||
+        state.feedback != null ||
+        state.receipts.length > state.index) {
+      return;
+    }
     state = state.copyWith(staged: StagedAnswer.fromInput(kind, value));
+    if (_quizId != null && kind != AnswerKind.multipleChoice) submit();
+  }
+
+  void nextQuestion() {
+    if (state.feedback == null || state.submitting) return;
+    state = state.copyWith(index: state.index + 1);
   }
 
   Future<void> submit() async {
     final attempt = state.attempt;
     final staged = state.staged;
     if (attempt == null ||
-        staged == null ||
+        (staged == null && state.receipts.length <= state.index) ||
         state.submitting ||
         state.index >= attempt.snapshots.length) {
       return;
@@ -211,28 +234,47 @@ class JourneyController extends Notifier<JourneyState> {
       errorRetryable: false,
     );
     try {
-      final receipt = await ref
-          .read(quizApiProvider)
-          .submitAnswer(
-            attempt,
-            attempt.snapshots[state.index],
-            staged,
-            idempotencyKey: 'a-${DateTime.now().microsecondsSinceEpoch}',
-          );
+      if (state.receipts.length <= state.index) {
+        final receipt = await ref
+            .read(quizApiProvider)
+            .submitAnswer(
+              attempt,
+              attempt.snapshots[state.index],
+              staged!,
+              idempotencyKey:
+                  'a-${sha256.convert(utf8.encode('${attempt.id}/${attempt.snapshots[state.index].questionId}'))}',
+            );
+        if (state.attempt != attempt) return;
+        state = state.copyWith(
+          submitting: true,
+          receipts: [...state.receipts, receipt],
+        );
+      }
+      if (_quizId != null) {
+        final feedback = await ref
+            .read(quizApiProvider)
+            .feedback(attempt, attempt.snapshots[state.index], _quizId!);
+        if (state.attempt != attempt) return;
+        state = state.copyWith(submitting: false, feedback: feedback);
+        return;
+      }
       state = state.copyWith(
         submitting: false,
         index: state.index + 1,
         staged: null,
-        receipts: [...state.receipts, receipt],
       );
     } on ApiClientException catch (e) {
+      if (state.attempt != attempt) return;
       state = state.copyWith(
+        staged: staged,
         submitting: false,
         error: e.code,
         errorRetryable: e.retryable,
       );
     } on FormatException {
+      if (state.attempt != attempt) return;
       state = state.copyWith(
+        staged: staged,
         submitting: false,
         error: 'invalid_response',
         errorRetryable: false,

@@ -2,7 +2,7 @@ param([string]$BaseUrl = 'https://quiz.kotopedia.org')
 $ErrorActionPreference = 'Stop'
 # Creates disposable guests and a completed attempt; never prints bearer tokens.
 $version = Invoke-RestMethod "$BaseUrl/version.json"
-if ($version.build_id -ne 'quiz-2026.10.02-2327-5121fbd') { throw 'Unexpected build' }
+if ($version.build_id -ne 'quiz-2026.10.02-2358-c3420d3') { throw 'Unexpected build' }
 $ready = Invoke-WebRequest "$BaseUrl/health/ready"
 if ($ready.StatusCode -ne 200) { throw 'Not ready' }
 $collection = Invoke-RestMethod "$BaseUrl/assets/assets/catalog.json"
@@ -12,16 +12,16 @@ $headers = @{Authorization = "Bearer $($guest.token)"}
 $total = 0
 foreach ($pack in $collection) {
     $selected = Invoke-RestMethod "$BaseUrl/v1/catalog?quiz_id=$($pack.quiz_id)"
-    $request = @{quiz_id = $pack.quiz_id} | ConvertTo-Json -Compress
+    $request = @{quiz_id = $pack.quiz_id; round = 0} | ConvertTo-Json -Compress
     $started = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body $request
-    if ($selected.quiz.quiz_id -ne $pack.quiz_id -or $selected.quiz.questions.Count -ne $pack.questions_count -or $started.bundle_sha256 -ne $selected.bundle_sha256 -or $started.question_snapshots.Count -ne $pack.questions_count) { throw "Wrong selected pack: $($pack.quiz_id)" }
+    if ($selected.quiz.quiz_id -ne $pack.quiz_id -or $selected.quiz.questions.Count -ne $pack.questions_count -or $started.bundle_sha256 -ne $selected.bundle_sha256 -or $started.question_snapshots.Count -ne [Math]::Min(20,$pack.questions_count)) { throw "Wrong selected round: $($pack.quiz_id)" }
     $total += $pack.questions_count
     Start-Sleep -Milliseconds 150
 }
 if ($total -ne 3128) { throw 'Collection question count mismatch' }
 $catalog = Invoke-RestMethod "$BaseUrl/v1/catalog?quiz_id=gastronomy-cheeses-and-dairy"
 $expected = $catalog.quiz.questions.Count
-$attempt = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"gastronomy-cheeses-and-dairy"}'
+$attempt = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"gastronomy-cheeses-and-dairy","round":0}'
 $path = "$BaseUrl/v1/attempts/$($attempt.attempt_id)"
 $early = Invoke-WebRequest "$path/reveals" -Headers $headers -SkipHttpErrorCheck
 if ($early.StatusCode -ne 404) { throw 'SQLite early reveal not blocked' }
@@ -49,4 +49,10 @@ if ($list.Count -ne 1 -or $list[0].attempt_id -ne $attempt.attempt_id) { throw '
 $other = Invoke-RestMethod "$BaseUrl/v1/guests" -Method Post -ContentType application/json -Body '{"display_name":"Deployment ownership smoke"}'
 $denied = Invoke-WebRequest "$BaseUrl/v1/history/$($attempt.attempt_id)" -Headers @{Authorization = "Bearer $($other.token)"} -SkipHttpErrorCheck
 if ($denied.StatusCode -ne 404) { throw 'Cross-owner history exposed' }
-[pscustomobject]@{Build = $version.build_id; Packs = $collection.Count; Questions = $total; Answers = $count; Status = $finished.status; History = $history.history.Count; Reveals = $reveals.Count; Replay = 'PASS'; CrossOwner = $denied.StatusCode}
+$first = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"home-alone-1-part-1","round":0}'
+$last = Invoke-RestMethod "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"home-alone-1-part-1","round":1}'
+$ids = @($first.question_snapshots.question_id) + @($last.question_snapshots.question_id)
+if ($first.question_snapshots.Count -ne 20 -or $last.question_snapshots.Count -ne 5 -or @($ids | Select-Object -Unique).Count -ne 25) { throw 'Round partition mismatch' }
+$invalid = Invoke-WebRequest "$BaseUrl/v1/attempts" -Method Post -ContentType application/json -Headers $headers -Body '{"quiz_id":"home-alone-1-part-1","round":-1}' -SkipHttpErrorCheck
+if ($invalid.StatusCode -ne 400) {throw 'Invalid round accepted'}
+[pscustomobject]@{Build = $version.build_id; Packs = $collection.Count; Questions = $total; RoundLimit = 20; Partition = '20+5, unique'; Answers = $count; Status = $finished.status; History = $history.history.Count; Reveals = $reveals.Count; Replay = 'PASS'; CrossOwner = $denied.StatusCode}

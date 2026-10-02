@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS attempt_bundles (bundle_sha256 TEXT NOT NULL, bundle_
 CREATE TABLE IF NOT EXISTS attempts (id TEXT PRIMARY KEY, participant_id TEXT NOT NULL REFERENCES participants(id), external_id TEXT NOT NULL, bundle_sha256 TEXT NOT NULL, bundle_version TEXT NOT NULL, started_at TEXT NOT NULL, deadline_at TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('started','finished')), finished_at TEXT, server_score INTEGER, history TEXT);
 CREATE TABLE IF NOT EXISTS attempt_questions (attempt_id TEXT NOT NULL REFERENCES attempts(id), question_id TEXT NOT NULL, revision TEXT NOT NULL, public_question TEXT NOT NULL, snapshot TEXT NOT NULL, position INTEGER NOT NULL, PRIMARY KEY(attempt_id,question_id));
 CREATE TABLE IF NOT EXISTS attempt_answers (attempt_id TEXT NOT NULL, question_id TEXT NOT NULL, idempotency_key TEXT NOT NULL, payload_digest TEXT NOT NULL, answer TEXT NOT NULL, receipt TEXT NOT NULL, PRIMARY KEY(attempt_id,question_id), UNIQUE(attempt_id,idempotency_key), FOREIGN KEY(attempt_id,question_id) REFERENCES attempt_questions(attempt_id,question_id));
+CREATE TABLE IF NOT EXISTS practice_attempts (attempt_id TEXT PRIMARY KEY REFERENCES attempts(id));
 `
 
 // Apply installs the local schema in one transaction. Callers must use a file

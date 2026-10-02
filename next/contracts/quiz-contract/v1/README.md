@@ -23,6 +23,27 @@ is packaged only in the API runtime, never in Flutter public assets.
 
 ## Scoring proposal
 
+### Single-player practice extension (SQLite only)
+
+The closed start body additionally accepts `round` (zero-based integer), and
+`mode: "practice"` only with explicit `quiz_id` and `round`. Rounds partition
+the source into at most 20 questions, shuffled within each partition. The
+immutable full grading bundle/version remains pinned to the attempt.
+
+`GET /v1/attempts/{attempt}/feedback/{question}` returns the closed envelope
+`{"correct": boolean, "reveal": <reveal.schema.json object>}` only to the
+authenticated owner of a practice attempt, after that question's answer was
+accepted. It is `Cache-Control: no-store`, including failures. Unanswered,
+foreign and non-practice attempts are forbidden. Practice markers are stored
+atomically with start in an additive SQLite table. The base receipt/public
+catalog/event shapes do not gain correctness fields. Ranked/legacy attempts
+remain sealed until finish; this does not change multiplayer reveal policy.
+
+The selected Flutter single-player flow uses practice. One-choice taps submit
+immediately; multiple-choice retains an explicit submit action. Correctness is
+server-computed. Feedback retries reuse the accepted receipt without reposting.
+Explanations and display answers are read from the attempt's pinned DB manifest.
+
 Single choice is one point only when the submitted stable option ID exactly matches the private key. Multiple choice is one point only when the submitted ID set exactly equals the key; there is no partial credit. Normalized text is one point only when its normalized value equals an explicitly accepted variant. The pipeline is: Unicode NFC, Unicode `casefold`, then collapse every Unicode whitespace run to one ASCII space and trim. There is no speed bonus. The server computes every result.
 
 Reveal content is bound to the canonical private key and public option text for the same pinned revision. Text reveal exposes one permitted display answer only, never the accepted-variant list. P33 must decide whether a team may receive correctness before the shared reveal. This v1 contract neither permits a pre-reveal correctness payload nor decides that product policy.

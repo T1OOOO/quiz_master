@@ -116,10 +116,15 @@ class QuizApiClient {
     }
   }
 
-  Future<Attempt> startAttempt({String? quizId, int? round}) async {
+  Future<Attempt> startAttempt({
+    String? quizId,
+    int? round,
+    bool practice = false,
+  }) async {
     final response = await _authenticatedPost('/v1/attempts', {
       'quiz_id': ?quizId,
       'round': ?round,
+      if (practice) 'mode': 'practice',
     });
     if (response.statusCode != 201) throw _failure(response.data);
     final attempt = Attempt.fromJson(_map(response.data));
@@ -127,6 +132,27 @@ class QuizApiClient {
       throw const FormatException('attempt participant');
     }
     return attempt;
+  }
+
+  Future<PracticeFeedback> feedback(
+    Attempt attempt,
+    AttemptSnapshot snapshot,
+    String quizId,
+  ) async {
+    final response = await _authenticatedGet(
+      '/v1/attempts/${attempt.id}/feedback/${snapshot.questionId}',
+    );
+    if (response.statusCode != 200) throw _failure(response.data);
+    final value = PracticeFeedback.fromJson(_map(response.data));
+    final reveal = value.reveal;
+    if (reveal.quizId != quizId ||
+        reveal.questionId != snapshot.questionId ||
+        reveal.revision == null ||
+        !_sameRevision(reveal.revision!, snapshot.revision) ||
+        !snapshot.optionOrder.toSet().containsAll(reveal.correctOptionIds)) {
+      throw const FormatException('feedback mismatch');
+    }
+    return value;
   }
 
   Future<Receipt> submitAnswer(

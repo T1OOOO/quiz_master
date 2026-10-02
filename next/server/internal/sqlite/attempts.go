@@ -89,6 +89,9 @@ func (s *Attempts) Catalog() attempts.Catalog {
 	return attempts.Catalog{BundleVersion: s.bundle.BundleVersion, BundleSHA256: s.bundle.BundleSHA256, Quiz: s.bundle.Quiz}
 }
 func (s *Attempts) Start(ctx context.Context, owner string) (attempts.Attempt, error) {
+	return s.start(ctx, owner, false)
+}
+func (s *Attempts) start(ctx context.Context, owner string, practice bool) (attempts.Attempt, error) {
 	ext, e := attempts.ExternalParticipant(owner)
 	if e != nil {
 		return attempts.Attempt{}, e
@@ -116,6 +119,11 @@ func (s *Attempts) Start(ctx context.Context, owner string) (attempts.Attempt, e
 		sn, _ := json.Marshal(snaps[i])
 		rev, _ := json.Marshal(q.Revision)
 		if _, e = tx.ExecContext(ctx, "insert into attempt_questions(attempt_id,question_id,revision,public_question,snapshot,position) values(?,?,?,?,?,?)", id, q.QuestionID, string(rev), string(p), string(sn), i); e != nil {
+			return a, e
+		}
+	}
+	if practice {
+		if _, e = tx.ExecContext(ctx, "insert into practice_attempts(attempt_id) values(?)", id); e != nil {
 			return a, e
 		}
 	}
