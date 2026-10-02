@@ -1,0 +1,7 @@
+# Apply only to the existing edge release; preserve all other live values.
+traefik:
+  providers:
+    kubernetesIngress:
+      namespaces: [ingress-system, language-learner, monitoring, quiz-master]
+    kubernetesCRD:
+      namespaces: [ingress-system, language-learner, monitoring, quiz-master]
