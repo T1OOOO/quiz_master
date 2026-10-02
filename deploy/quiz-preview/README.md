@@ -5,12 +5,15 @@ Target: verified k3s node `192.3.164.184`, namespace **quiz-master**, release
 secrets, DBs or charts are reused; only the shared Traefik/issuer/storage provisioner.
 Existing Language Learner source tree is read-only for this task.
 
-Current status (2026-10-02): Helm revision 2 is ready in its own namespace;
-the guest/25-answer/history/reveal/ownership smoke check passed through SSH.
-Public TLS is pending: the shared Traefik has a namespace allowlist and scoped
-RBAC which currently exclude `quiz-master`. Adding the namespace and granting
-its ingress-reader RoleBinding requires a shared ingress restart (Recreate);
-owner confirmation requested before that change. Do not call the public URL live.
+Current status (2026-10-02): **https://quiz.kotopedia.org is live**, certificate
+Ready; quiz Helm revision 3 and shared edge revision 10 deployed. The public HTTPS
+guest/25-answer/history/reveal/ownership smoke check passed. Owner approved the
+shared ingress restart; Language Learner's before/after release verification passed.
+Quiz's namespaced Role/RoleBinding grants Traefik only read access to its own
+routes/TLS configuration. Other namespaces have no new grants.
+Shared values are in `shared-edge-quiz-values.yaml`: include this override in future
+edge upgrades, or use `--reuse-values`, to retain the quiz namespace allowlist.
+Shared audit mirror: `/opt/ll/docs/ops/CHANGELOG.md` on the verified remote host.
 
 This is the current single-pack rewrite preview, not React parity completion or a
 production acceptance. SQLite has one writer, one replica and a Recreate rollout

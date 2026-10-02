@@ -145,3 +145,19 @@ the namespace. This is not a DNS or secret problem. Language Learner continued
 to return HTTPS 200; app release remains revision 83. Final public HTTPS smoke,
 certificate acceptance, browser review, independent review, backup/restore and
 load acceptance remain NOT_RUN. Issue `quiz_master-eel` stays in progress.
+
+## 2026-10-02T09:56:13Z — owner-approved public routing completed
+
+See `shared-edge-operations.md` for exact commands and outcomes (mirrored to the
+remote `/opt/ll/docs/ops/CHANGELOG.md`). Owner approved the shared Recreate restart.
+Added a namespaced Role/RoleBinding in the quiz chart, then extended both shared
+provider allowlists through the existing edge Helm release, preserving all other
+live values. Diff showed only two namespace arguments; no existing route/image/
+certificate changes. Quiz revision 3 and edge revision 10 deployed. Certificate
+Ready True, HTTPS Web 200, correct release/JS hash. Public smoke exited zero with
+25 answers/history/reveals, idempotent replay and foreign-owner 404.
+Language Learner's full release verification passed before and after, with original
+frontend/backend IDs and JS hash. Its app/DB/content were not updated. Other
+namespace Secret access still denied to Traefik. Temporary tunnel is not needed.
+Deployment issue can be closed; React parity/full catalog, off-node backup/restore,
+load testing and independent-provider review remain separate unfinished gates.
