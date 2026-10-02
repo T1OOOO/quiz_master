@@ -1,5 +1,58 @@
 # Quiz preview operations
 
+## 2026-10-03 — twenty-question rounds and immediate practice feedback
+
+Current release: **revision 9**, `quiz-2026.10.03-0042-33f5cfc`, source commit
+`33f5cfc09e2dc719ad5466bfbf61c4be9aba4133`, image
+`docker.io/library/quiz-master@sha256:d6c33526a626387db4e2742a77cad662f5beb1a5510141faf7e8df4fbe29deae`.
+
+API SHA256: `5c6558fc37e42f08fbf25d255f619d340bb42d3fb57f97f7d3a6c0b19379b1ba`.
+Web JS SHA256: `00b0bd6c6963957301b39a900247b9c309219e382efe3c715d1e7ab005e36622`.
+Public downloaded JS hash matches the local stamp. Package is isolated at
+`/opt/quiz-master/releases/quiz-2026.10.03-0042-33f5cfc`.
+
+- Revision 7 (`quiz-2026.10.02-2358-c3420d3`) introduced shuffled partitions
+  <=20, seven generated category covers (261954 bytes total), compact question
+  layout, locally served CanvasKit/Roboto, nginx JS/JSON/WASM gzip.
+- Revision 8 deployed practice code successfully, but packing copied Flutter's
+  generated version.json over the release identity. The public version check
+  caught this. Revision 9 changes the immutable runtime image/stamp only, with
+  identical API and JS binaries. Stamp **after** copying Flutter output.
+- New additive SQLite table `practice_attempts`; marker and attempt start share
+  one transaction. No DB restoration, destructive migration or manifest rewrite.
+- Before final rollout, online backup and isolated restored-DB integrity/count
+  checks PASS: `/opt/quiz-master/backups/quiz-2026.10.03-0042-33f5cfc.sqlite`
+  plus `.restore-proof.sqlite`; participants=23, attempts=323, bundles=102.
+  Earlier unique revision-7/8 backups/packages retained.
+- Go server tests and vet PASS (GOMAXPROCS=2, -p1); 44 Flutter tests PASS;
+  analyze no issues; Web release PASS (39.4s, no CDN/no pub/no WASM dry run).
+- Remote runtime-only build used pinned nginx, `--network=none --pull=false`;
+  nginx config test, k3s digest alias/import, strict Helm lint, API-server dry-run,
+  locked atomic upgrade PASS. Pod 2/2, zero restarts; deployment 1/1; original PVC
+  `pvc-7fc2428f-4146-4c78-a26d-2347d9f3b7bf` retained. No local Docker/PG/Actions.
+- `smoke.ps1` PASS: 101 selected catalogs/first rounds, all 3128 source questions
+  counted, 20+5 partition without duplicates, negative round rejected, complete
+  19-answer quiz, history/reveals/replay and foreign-owner 404.
+- `practice-smoke.ps1` PASS: accepted answer feedback aligned to pinned revision,
+  nonempty explanation/correctness/no-store, unanswered/future/foreign 404,
+  unknown mode 400. Local SQLite test also proves correct/wrong scoring and
+  no early ranked feedback. Flutter test proves feedback retry does not resubmit.
+- Actual browser: full 20-answer practice round and finish, next round URL,
+  correct/incorrect overlay, common drawer/home/back; errors empty. Visually
+  checked `docs/rewrite-agents/reports/practice-*.png` at 390x640/1280x900.
+- Language Learner remains revision **85**; JS hash unchanged before/after:
+  `520c6508fc7c9457b684c2d3210ae15322bdc2e9d1faf35b319958f55fbe66c7`.
+  Shared edge remains revision10. No neighboring files/credentials/DBs changed.
+
+Rollback to verified pre-practice code:
+`helm rollback quiz-master 7 -n quiz-master --wait --timeout 180s`.
+Keep the PVC and additive table; do not restore a backup over live answers.
+No Android or independent-provider acceptance. All 3128 original explanations
+are displayed, but editorial improvement of 497 short candidates is pending
+`quiz_master-dhu`; three source-backed proposals are draft-only. A cold browser
+sample still showed CanvasKit WASM 8.170s, JS 4.779s: gzip is a payload reduction,
+not proof that all first-load latency is resolved.
+
 ## 2026-10-02 — discovery catalog update (18:01 Europe/Istanbul)
 
 User requested updating the public site after source migration stage 1.

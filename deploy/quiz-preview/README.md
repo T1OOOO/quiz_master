@@ -5,8 +5,8 @@ Target: verified k3s node `192.3.164.184`, namespace **quiz-master**, release
 secrets, DBs or charts are reused; only the shared Traefik/issuer/storage provisioner.
 Existing Language Learner source tree is read-only for this task.
 
-Current status (2026-10-02): **https://quiz.kotopedia.org is live**, certificate
-Ready; quiz Helm revision 6 and shared edge revision 10 deployed. The public HTTPS
+Current status (2026-10-03): **https://quiz.kotopedia.org is live**, certificate
+Ready; quiz Helm revision 9 and shared edge revision 10 deployed. The public HTTPS
 101-pack/3128-question selection and 19-answer/history/reveal/ownership smoke passed. Owner approved the
 shared ingress restart; Language Learner's before/after release verification passed.
 Quiz's namespaced Role/RoleBinding grants Traefik only read access to its own
@@ -26,7 +26,10 @@ Build the Linux/amd64 Go API with CGO_ENABLED=0, and Flutter Web release with
 `--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org`. Package `api`, `web`,
 `next/contracts`, the private source `quizzes` directory, nginx.conf and Dockerfile
 in an isolated staging directory. Private content must never be under `web`.
-Stamp `web/version.json` with build ID, commit and API/JS SHA256. Build the runtime
+After copying all Flutter build output, stamp `web/version.json` with build ID,
+commit and API/JS SHA256. Flutter itself generates a different version.json:
+stamping before copying silently overwrites the release identity. Verify the
+staged stamp and both actual file hashes before archiving. Build the runtime
 image on the remote host using a digest-pinned nginx base; do not compile there.
 Import the unique image tag into k3s containerd and register its repository@digest
 alias before the Helm upgrade. No Actions/registry push required.
