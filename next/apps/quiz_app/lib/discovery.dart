@@ -152,7 +152,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                         decoration: InputDecoration(
                           labelText: l10n.searchQuizzes,
                           prefixIcon: const Icon(Icons.search),
-                          border: const OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
                         onChanged: (value) =>
                             context.replace(_location(widget.folder, value)),
@@ -244,7 +246,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                 '${pack.description}\n${l10n.questionsCount(pack.questions)}',
                               ),
                               trailing: const Icon(Icons.play_arrow),
-                              onTap: () => context.push('/quiz/${pack.id}'),
+                              onTap: () => context.go('/quiz/${pack.id}'),
                             ),
                           ),
                         ),

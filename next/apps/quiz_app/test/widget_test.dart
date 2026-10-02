@@ -6,9 +6,47 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets('catalog selection uses a shareable quiz URL', (tester) async {
+    final api = await _QuizTestServer.start();
+    addTearDown(api.close);
+    final client = QuizApiClient(
+      baseUri: Uri.parse('https://api.example.test'),
+    );
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          quizApiProvider.overrideWithValue(client),
+          discoveryCatalogProvider.overrideWith(
+            (ref) async => const [
+              CatalogPack(
+                'quiz-many',
+                'Selected quiz',
+                'Description',
+                'General',
+                25,
+              ),
+            ],
+          ),
+        ],
+        child: const QuizApp(initialLocation: '/library'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('pack-quiz-many')));
+    await tester.pumpAndSettle();
+    final router = GoRouter.of(tester.element(find.byType(CatalogPage)));
+    expect(
+      router.routerDelegate.currentConfiguration.uri.path,
+      '/quiz/quiz-many',
+    );
+    expect(find.text('Display name'), findsNothing);
+    expect(find.text('Question 1'), findsOneWidget);
+  });
   testWidgets('selected quiz opens directly without asking for a name', (
     tester,
   ) async {
