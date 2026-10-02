@@ -1,7 +1,7 @@
 ARG NGINX_IMAGE
 FROM ${NGINX_IMAGE}
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY api /app/api
+COPY --chmod=755 api /app/api
 COPY next /app/next
 COPY web /usr/share/nginx/html
 WORKDIR /app
