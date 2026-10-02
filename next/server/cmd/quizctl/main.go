@@ -18,7 +18,7 @@ func main() { os.Exit(run(os.Args[1:], os.Stdout, os.Stderr)) }
 func run(args []string, out, errOut io.Writer) int {
 	fail := func(e error) int { fmt.Fprintln(errOut, "quizctl:", e); return 2 }
 	usage := func() int {
-		return fail(&content.Error{Kind: "usage", Path: "quizctl import|validate|build|diff (see next/content/README.md)"})
+		return fail(&content.Error{Kind: "usage", Path: "quizctl audit|import|validate|build|diff (see next/content/README.md)"})
 	}
 	if len(args) == 0 {
 		return usage()
@@ -38,7 +38,7 @@ func run(args []string, out, errOut io.Writer) int {
 			version = fs.String("version", "", "explicit bundle version")
 			publishedAt = fs.String("published-at", "", "RFC3339 publication timestamp")
 		}
-	case "validate":
+	case "audit", "validate":
 		in = fs.String("in", "", "draft or controlled bundle (additional paths may follow)")
 	case "diff":
 		before = fs.String("before", "", "original draft or controlled bundle")
@@ -53,6 +53,13 @@ func run(args []string, out, errOut io.Writer) int {
 		return usage()
 	}
 	switch command {
+	case "audit":
+		if *in == "" {
+			return usage()
+		}
+		if e := audit(*in, *schemaDir, out); e != nil {
+			return fail(e)
+		}
 	case "import":
 		if *in == "" || *outPath == "" {
 			return usage()

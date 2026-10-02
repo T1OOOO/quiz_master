@@ -39,6 +39,28 @@ inputs and prints only quiz/question IDs and revisions/bundle hashes. It never
 prints answer keys, accepted variants or prose. Publication-only metadata changes
 appear as a bundle revision change.
 
+## Full-collection readiness audit
+
+From the repository root, run:
+
+```powershell
+go run -p=1 ./next/server/cmd/quizctl audit --in quizzes
+```
+
+This read-only command walks JSON files in lexical path order and emits one JSON
+report with source metadata/counts, canonical IDs and all import/schema blockers.
+Every member of a duplicate canonical quiz ID group is blocked. No drafts,
+manifests or bundles are written. Symlink JSON inputs are rejected; symlink
+directories are not traversed. An empty/missing directory is an error.
+`questions` counts parseable source questions, including structurally blocked
+packs; it is not the number of published/playable questions. `ready` means
+import/schema readiness, **not factual approval or publication**. A blocked
+collection still emits its report and exits 2 (`go run` returns 1 as above).
+
+At baseline `6ec08cd`: 101 files / 3128 questions, 93 ready, 8 blocked by repeated
+`gastronomy` quiz IDs. See `docs/rewrite-agents/REACT_FLUTTER_PARITY_RU.md` for
+the evidence and staged migration plan. YAML material is outside this JSON audit.
+
 ## Mapping and integrity
 
 Legacy ASCII IDs are lowercased, runs outside `[a-z0-9-]` become `-`, and outer
