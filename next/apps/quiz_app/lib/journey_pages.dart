@@ -39,7 +39,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final attempt = journey.attempt;
     final finish = journey.finish;
     ref.listen(journeyProvider.select((s) => s.feedback), (previous, feedback) {
-      if (feedback != null && feedback != previous) {
+      if (feedback != null && !feedback.correct && feedback != previous) {
         _showFeedback(context, feedback, controller.nextQuestion);
       }
     });
@@ -281,7 +281,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
   }
 }
 
-class _QuestionStep extends ConsumerWidget {
+class _QuestionStep extends ConsumerStatefulWidget {
   const _QuestionStep({
     required this.journey,
     required this.question,
@@ -292,7 +292,70 @@ class _QuestionStep extends ConsumerWidget {
   final PublicQuestion? question;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_QuestionStep> createState() => _QuestionStepState();
+}
+
+class _QuestionStepState extends ConsumerState<_QuestionStep>
+    with WidgetsBindingObserver {
+  Timer? _advance;
+  int _seconds = 3;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didUpdateWidget(_QuestionStep oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.journey.feedback != oldWidget.journey.feedback) {
+      _advance?.cancel();
+      _advance = null;
+      if (widget.journey.feedback?.correct == true) _resume();
+    }
+  }
+
+  void _pause() {
+    _advance?.cancel();
+    setState(() => _advance = null);
+  }
+
+  void _resume() {
+    _seconds = 3;
+    _advance = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (ModalRoute.of(context)?.isCurrent != true) {
+        _pause();
+      } else if (_seconds == 1) {
+        _next();
+      } else {
+        setState(() => _seconds--);
+      }
+    });
+  }
+
+  void _next() {
+    _pause();
+    ref.read(journeyProvider.notifier).nextQuestion();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed && _advance != null) _pause();
+  }
+
+  @override
+  void dispose() {
+    _advance?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final journey = widget.journey;
+    final question = widget.question;
+    final fitScreen = widget.fitScreen;
     final l10n = AppLocalizations.of(context)!;
     final attempt = journey.attempt;
     final current = question;
@@ -342,6 +405,7 @@ class _QuestionStep extends ConsumerWidget {
         const SizedBox(height: 8),
         if (journey.feedback != null)
           TextButton.icon(
+            key: const Key('answer-explanation'),
             icon: Icon(
               journey.feedback!.correct ? Icons.check_circle : Icons.cancel,
               color: journey.feedback!.correct
@@ -349,17 +413,27 @@ class _QuestionStep extends ConsumerWidget {
                   : const Color(0xffa52a2a),
             ),
             label: Text(_feedbackLabel(context, journey.feedback!.correct)),
-            onPressed: () => _showFeedback(
-              context,
-              journey.feedback!,
-              ref.read(journeyProvider.notifier).nextQuestion,
+            onPressed: () {
+              _pause();
+              _showFeedback(context, journey.feedback!, _next);
+            },
+          ),
+        if (journey.feedback?.correct == true)
+          TextButton.icon(
+            key: Key(_advance == null ? 'auto-resume' : 'auto-pause'),
+            onPressed: _advance == null ? () => setState(_resume) : _pause,
+            icon: Icon(_advance == null ? Icons.play_arrow : Icons.pause),
+            label: Text(
+              _advance == null
+                  ? l10n.resumeAutoAdvance
+                  : l10n.autoAdvanceIn(_seconds),
             ),
           ),
         SizedBox(
           width: double.infinity,
           child: FilledButton(
             onPressed: journey.feedback != null
-                ? ref.read(journeyProvider.notifier).nextQuestion
+                ? _next
                 : journey.staged == null || journey.submitting
                 ? null
                 : ref.read(journeyProvider.notifier).submit,
@@ -389,23 +463,25 @@ void _showFeedback(
   PracticeFeedback feedback,
   VoidCallback next,
 ) {
-  showModalBottomSheet<void>(
+  showDialog<void>(
     context: context,
-    isScrollControlled: true,
-    backgroundColor: const Color(0xfffffcf6),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(27)),
-    ),
     builder: (sheetContext) => Theme(
       data: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xffe8791b),
-          surface: const Color(0xfffffcf6),
+          surface: const Color(0xffead9bf),
+        ),
+        textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color(0xff655444),
+          displayColor: const Color(0xff655444),
         ),
       ),
-      child: SafeArea(
+      child: Dialog(
+        backgroundColor: const Color(0xffead9bf),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(27)),
         child: ConstrainedBox(
           constraints: BoxConstraints(
+            maxWidth: 600,
             maxHeight: MediaQuery.sizeOf(sheetContext).height * .65,
           ),
           child: Padding(
@@ -439,7 +515,7 @@ void _showFeedback(
                 Flexible(
                   child: SingleChildScrollView(
                     child: DefaultTextStyle.merge(
-                      style: const TextStyle(color: _cream),
+                      style: const TextStyle(color: Color(0xff655444)),
                       child: ExplanationPanel(reveal: feedback.reveal),
                     ),
                   ),

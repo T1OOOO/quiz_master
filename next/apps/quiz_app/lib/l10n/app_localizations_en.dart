@@ -165,4 +165,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newQuiz => 'New quiz';
+
+  @override
+  String get resumeAutoAdvance => 'Resume auto advance';
+
+  @override
+  String autoAdvanceIn(int seconds) {
+    return 'Next in ${seconds}s · Pause';
+  }
 }

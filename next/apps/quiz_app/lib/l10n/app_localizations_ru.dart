@@ -165,4 +165,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get newQuiz => 'Новая викторина';
+
+  @override
+  String get resumeAutoAdvance => 'Продолжить автоматически';
+
+  @override
+  String autoAdvanceIn(int seconds) {
+    return 'Следующий через $seconds с · Пауза';
+  }
 }

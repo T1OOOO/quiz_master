@@ -379,6 +379,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New quiz'**
   String get newQuiz;
+
+  /// No description provided for @resumeAutoAdvance.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume auto advance'**
+  String get resumeAutoAdvance;
+
+  /// No description provided for @autoAdvanceIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Next in {seconds}s · Pause'**
+  String autoAdvanceIn(int seconds);
 }
 
 class _AppLocalizationsDelegate

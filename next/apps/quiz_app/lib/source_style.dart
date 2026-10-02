@@ -1,6 +1,6 @@
 part of 'main.dart';
 
-const _cream = Color(0xff25170c);
+const _cream = Color(0xffe7d8c4);
 
 class SourceScaffold extends ConsumerWidget {
   const SourceScaffold({super.key, required this.body, this.compact = false});
@@ -9,172 +9,205 @@ class SourceScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    return Theme(
-      data: _theme(Brightness.light).copyWith(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffe8791b),
-          surface: const Color(0xfffffcf6),
-        ),
-        scaffoldBackgroundColor: const Color(0xfff7f0e7),
-        cardTheme: CardThemeData(
-          color: const Color(0xfffbf3e8),
-          elevation: 2,
-          shadowColor: const Color(0x38603612),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(27),
-            side: const BorderSide(color: Colors.white, width: 2),
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/home-alone-bg.jpg',
+            fit: BoxFit.cover,
+            cacheWidth: 1024,
+            excludeFromSemantics: true,
           ),
         ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: const Color(0xfffffcf6),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(foregroundColor: _cream),
-        ),
-      ),
-      child: Scaffold(
-        drawer: Drawer(
-          child: SafeArea(
-            child: ListView(
-              children: [
-                const ListTile(
-                  title: Text(
-                    'Quiz Master',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.home),
-                  title: Text(l10n.browseQuizzes),
-                  onTap: () {
-                    Navigator.pop(context);
-                    context.go('/library');
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.history),
-                  title: Text(l10n.history),
-                  onTap: () {
-                    Navigator.pop(context);
-                    context.push('/history');
-                  },
-                ),
-                for (final locale in [const Locale('ru'), const Locale('en')])
-                  ListTile(
-                    leading: const Icon(Icons.language),
-                    title: Text(
-                      locale.languageCode == 'ru' ? l10n.russian : l10n.english,
+        const Positioned.fill(child: ColoredBox(color: Color(0x99502f1c))),
+        Theme(
+          data: _theme(Brightness.light).copyWith(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xffe8791b),
+              surface: const Color(0xffead9bf),
+            ),
+            scaffoldBackgroundColor: Colors.transparent,
+            textTheme: _theme(Brightness.light).textTheme.apply(
+              bodyColor: const Color(0xff655444),
+              displayColor: const Color(0xff655444),
+            ),
+            cardTheme: CardThemeData(
+              color: const Color(0xffead9bf),
+              elevation: 2,
+              shadowColor: const Color(0x38603612),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(27),
+                side: const BorderSide(color: Color(0xfff5e6cf), width: 2),
+              ),
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              filled: true,
+              fillColor: const Color(0xffead9bf),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: _cream),
+            ),
+          ),
+          child: Scaffold(
+            drawer: Drawer(
+              child: SafeArea(
+                child: ListView(
+                  children: [
+                    const ListTile(
+                      title: Text(
+                        'Quiz Master',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    onTap: () {
-                      ref.read(localeProvider.notifier).select(locale);
-                      Navigator.pop(context);
-                    },
+                    ListTile(
+                      leading: const Icon(Icons.home),
+                      title: Text(l10n.browseQuizzes),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/library');
+                      },
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.history),
+                      title: Text(l10n.history),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.push('/history');
+                      },
+                    ),
+                    for (final locale in [
+                      const Locale('ru'),
+                      const Locale('en'),
+                    ])
+                      ListTile(
+                        leading: const Icon(Icons.language),
+                        title: Text(
+                          locale.languageCode == 'ru'
+                              ? l10n.russian
+                              : l10n.english,
+                        ),
+                        onTap: () {
+                          ref.read(localeProvider.notifier).select(locale);
+                          Navigator.pop(context);
+                        },
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 1032),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          20,
+                          compact ? 4 : 16,
+                          20,
+                          compact ? 4 : 12,
+                        ),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              key: const Key('nav-back'),
+                              tooltip: MaterialLocalizations.of(context)
+                                  .backButtonTooltip,
+                              onPressed: () {
+                                if (context.canPop()) {
+                                  context.pop();
+                                  return;
+                                }
+                                final uri = GoRouterState.of(context).uri;
+                                final folder =
+                                    uri.queryParameters['folder'] ?? '';
+                                final parent = folder
+                                    .split('/')
+                                    .take(folder.split('/').length - 1)
+                                    .join('/');
+                                context.go(
+                                  Uri(
+                                    path: '/library',
+                                    queryParameters: parent.isEmpty
+                                        ? null
+                                        : {'folder': parent},
+                                  ).toString(),
+                                );
+                              },
+                              icon: const Icon(Icons.arrow_back, color: _cream),
+                            ),
+                            IconButton(
+                              key: const Key('nav-home'),
+                              tooltip:
+                                  Localizations.localeOf(context)
+                                          .languageCode ==
+                                      'ru'
+                                  ? 'Домой'
+                                  : 'Home',
+                              onPressed: () => context.go('/library'),
+                              icon: const Icon(
+                                Icons.home_outlined,
+                                color: _cream,
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Quiz Master',
+                                    style: TextStyle(
+                                      color: _cream,
+                                      fontSize: compact ? 17 : 24,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  if (!compact) ...[
+                                    const SizedBox(height: 6),
+                                    Text(
+                                      l10n.holidaySubtitle,
+                                      style: const TextStyle(
+                                        color: _cream,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ],
+                              ),
+                            ),
+                            Builder(
+                              builder: (context) => IconButton(
+                                tooltip: MaterialLocalizations.of(context)
+                                    .openAppDrawerTooltip,
+                                onPressed: () =>
+                                    Scaffold.of(context).openDrawer(),
+                                icon: const Icon(Icons.menu, color: _cream),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-              ],
+                  Expanded(
+                    child: DefaultTextStyle.merge(
+                      style: const TextStyle(color: _cream),
+                      child: body,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1032),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      20,
-                      compact ? 4 : 16,
-                      20,
-                      compact ? 4 : 12,
-                    ),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          key: const Key('nav-back'),
-                          tooltip: MaterialLocalizations.of(context)
-                              .backButtonTooltip,
-                          onPressed: () {
-                            if (context.canPop()) {
-                              context.pop();
-                              return;
-                            }
-                            final uri = GoRouterState.of(context).uri;
-                            final folder = uri.queryParameters['folder'] ?? '';
-                            final parent = folder
-                                .split('/')
-                                .take(folder.split('/').length - 1)
-                                .join('/');
-                            context.go(
-                              Uri(
-                                path: '/library',
-                                queryParameters: parent.isEmpty
-                                    ? null
-                                    : {'folder': parent},
-                              ).toString(),
-                            );
-                          },
-                          icon: const Icon(Icons.arrow_back, color: _cream),
-                        ),
-                        IconButton(
-                          key: const Key('nav-home'),
-                          tooltip:
-                              Localizations.localeOf(context).languageCode ==
-                                  'ru'
-                              ? 'Домой'
-                              : 'Home',
-                          onPressed: () => context.go('/library'),
-                          icon: const Icon(Icons.home_outlined, color: _cream),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Quiz Master',
-                                style: TextStyle(
-                                  color: _cream,
-                                  fontSize: compact ? 17 : 24,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              if (!compact) ...[
-                                const SizedBox(height: 6),
-                                Text(
-                                  l10n.holidaySubtitle,
-                                  style: const TextStyle(
-                                    color: Color(0xff6e563c),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ],
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) => IconButton(
-                            tooltip: MaterialLocalizations.of(context)
-                                .openAppDrawerTooltip,
-                            onPressed: () => Scaffold.of(context).openDrawer(),
-                            icon: const Icon(Icons.menu, color: _cream),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: DefaultTextStyle.merge(
-                  style: const TextStyle(color: _cream),
-                  child: body,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      ],
     );
   }
 }
@@ -201,10 +234,10 @@ class SourceFolderCard extends StatelessWidget {
       _ => 'nature',
     };
     return Material(
-      color: const Color(0xfffbf3e8),
+      color: const Color(0xffead9bf),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
-        side: const BorderSide(color: Colors.white, width: 2),
+        side: const BorderSide(color: Color(0xfff5e6cf), width: 2),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -227,9 +260,9 @@ class SourceFolderCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  color: _cream,
+                  color: Color(0xff655444),
                   fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

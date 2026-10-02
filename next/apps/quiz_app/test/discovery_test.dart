@@ -11,7 +11,13 @@ void main() {
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
     expect(find.text('101 quizzes · 3128 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
-    expect(find.byType(Image), findsNWidgets(7));
+    expect(
+      find.descendant(
+        of: find.byType(SourceFolderCard),
+        matching: find.byType(Image),
+      ),
+      findsNWidgets(7),
+    );
 
     await tester.enterText(find.byKey(const Key('catalog-search')), 'сыр');
     await tester.pumpAndSettle();
