@@ -39,7 +39,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final attempt = journey.attempt;
     final finish = journey.finish;
     ref.listen(journeyProvider.select((s) => s.feedback), (previous, feedback) {
-      if (feedback != null && !feedback.correct && feedback != previous) {
+      if (feedback != null && feedback != previous) {
         _showFeedback(context, feedback, controller.nextQuestion);
       }
     });
@@ -281,7 +281,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
   }
 }
 
-class _QuestionStep extends ConsumerStatefulWidget {
+class _QuestionStep extends ConsumerWidget {
   const _QuestionStep({
     required this.journey,
     required this.question,
@@ -292,70 +292,7 @@ class _QuestionStep extends ConsumerStatefulWidget {
   final PublicQuestion? question;
 
   @override
-  ConsumerState<_QuestionStep> createState() => _QuestionStepState();
-}
-
-class _QuestionStepState extends ConsumerState<_QuestionStep>
-    with WidgetsBindingObserver {
-  Timer? _advance;
-  int _seconds = 3;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void didUpdateWidget(_QuestionStep oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.journey.feedback != oldWidget.journey.feedback) {
-      _advance?.cancel();
-      _advance = null;
-      if (widget.journey.feedback?.correct == true) _resume();
-    }
-  }
-
-  void _pause() {
-    _advance?.cancel();
-    setState(() => _advance = null);
-  }
-
-  void _resume() {
-    _seconds = 3;
-    _advance = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (ModalRoute.of(context)?.isCurrent != true) {
-        _pause();
-      } else if (_seconds == 1) {
-        _next();
-      } else {
-        setState(() => _seconds--);
-      }
-    });
-  }
-
-  void _next() {
-    _pause();
-    ref.read(journeyProvider.notifier).nextQuestion();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed && _advance != null) _pause();
-  }
-
-  @override
-  void dispose() {
-    _advance?.cancel();
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final journey = widget.journey;
-    final question = widget.question;
-    final fitScreen = widget.fitScreen;
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final attempt = journey.attempt;
     final current = question;
@@ -402,46 +339,21 @@ class _QuestionStepState extends ConsumerState<_QuestionStep>
             onAnswer: (value) =>
                 ref.read(journeyProvider.notifier).stage(current.kind, value),
           ),
-        const SizedBox(height: 8),
-        if (journey.feedback != null)
-          TextButton.icon(
-            key: const Key('answer-explanation'),
-            icon: Icon(
-              journey.feedback!.correct ? Icons.check_circle : Icons.cancel,
-              color: journey.feedback!.correct
-                  ? const Color(0xff1e5e22)
-                  : const Color(0xffa52a2a),
-            ),
-            label: Text(_feedbackLabel(context, journey.feedback!.correct)),
-            onPressed: () {
-              _pause();
-              _showFeedback(context, journey.feedback!, _next);
-            },
-          ),
-        if (journey.feedback?.correct == true)
-          TextButton.icon(
-            key: Key(_advance == null ? 'auto-resume' : 'auto-pause'),
-            onPressed: _advance == null ? () => setState(_resume) : _pause,
-            icon: Icon(_advance == null ? Icons.play_arrow : Icons.pause),
-            label: Text(
-              _advance == null
-                  ? l10n.resumeAutoAdvance
-                  : l10n.autoAdvanceIn(_seconds),
+        if (!fitScreen || current.kind == AnswerKind.multipleChoice)
+          SizedBox(
+            width: double.infinity,
+            child: FilledButton(
+              onPressed:
+                  journey.staged == null ||
+                      journey.submitting ||
+                      journey.feedback != null
+                  ? null
+                  : ref.read(journeyProvider.notifier).submit,
+              child: Text(
+                journey.submitting ? l10n.submitting : l10n.continueLabel,
+              ),
             ),
           ),
-        SizedBox(
-          width: double.infinity,
-          child: FilledButton(
-            onPressed: journey.feedback != null
-                ? _next
-                : journey.staged == null || journey.submitting
-                ? null
-                : ref.read(journeyProvider.notifier).submit,
-            child: Text(
-              journey.submitting ? l10n.submitting : l10n.continueLabel,
-            ),
-          ),
-        ),
         if (journey.error != null)
           _ErrorPanel(
             message: l10n.journeyError,
@@ -465,80 +377,163 @@ void _showFeedback(
 ) {
   showDialog<void>(
     context: context,
-    builder: (sheetContext) => Theme(
-      data: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffe8791b),
-          surface: const Color(0xffead9bf),
-        ),
-        textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: const Color(0xff655444),
-          displayColor: const Color(0xff655444),
-        ),
-      ),
-      child: Dialog(
-        backgroundColor: const Color(0xffead9bf),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(27)),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: 600,
-            maxHeight: MediaQuery.sizeOf(sheetContext).height * .65,
+    barrierDismissible: false,
+    builder: (_) => _FeedbackDialog(feedback: feedback, next: next),
+  );
+}
+
+class _FeedbackDialog extends StatefulWidget {
+  const _FeedbackDialog({required this.feedback, required this.next});
+  final PracticeFeedback feedback;
+  final VoidCallback next;
+
+  @override
+  State<_FeedbackDialog> createState() => _FeedbackDialogState();
+}
+
+class _FeedbackDialogState extends State<_FeedbackDialog>
+    with WidgetsBindingObserver {
+  Timer? _advance;
+  int _seconds = 3;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    if (widget.feedback.correct) _resume();
+  }
+
+  void _pause() {
+    _advance?.cancel();
+    setState(() => _advance = null);
+  }
+
+  void _resume() {
+    _seconds = 3;
+    _advance = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (ModalRoute.of(context)?.isCurrent != true) {
+        _pause();
+      } else if (_seconds == 1) {
+        _next();
+      } else {
+        setState(() => _seconds--);
+      }
+    });
+  }
+
+  void _next() {
+    _advance?.cancel();
+    Navigator.pop(context);
+    widget.next();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed && _advance != null) _pause();
+  }
+
+  @override
+  void dispose() {
+    _advance?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final feedback = widget.feedback;
+    final l10n = AppLocalizations.of(context)!;
+    return PopScope(
+      canPop: false,
+      child: Theme(
+        data: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xffe8791b),
+            surface: const Color(0xffead9bf),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        _feedbackLabel(context, feedback.correct),
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          color: feedback.correct
-                              ? const Color(0xff1e5e22)
-                              : const Color(0xffa52a2a),
+          textTheme: Theme.of(context).textTheme.apply(
+            bodyColor: const Color(0xff655444),
+            displayColor: const Color(0xff655444),
+          ),
+        ),
+        child: Dialog(
+          backgroundColor: const Color(0xffead9bf),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(27),
+          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 600,
+              maxHeight: MediaQuery.sizeOf(context).height * .65,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          _feedbackLabel(context, feedback.correct),
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            color: feedback.correct
+                                ? const Color(0xff1e5e22)
+                                : const Color(0xffa52a2a),
+                          ),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      tooltip: MaterialLocalizations.of(context)
-                          .closeButtonTooltip,
-                      onPressed: () => Navigator.pop(sheetContext),
-                      icon: const Icon(Icons.close),
-                    ),
-                  ],
-                ),
-                Flexible(
-                  child: SingleChildScrollView(
-                    child: DefaultTextStyle.merge(
-                      style: const TextStyle(color: Color(0xff655444)),
-                      child: ExplanationPanel(reveal: feedback.reveal),
+                      IconButton(
+                        tooltip: MaterialLocalizations.of(context)
+                            .closeButtonTooltip,
+                        onPressed: _next,
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: DefaultTextStyle.merge(
+                        style: const TextStyle(color: Color(0xff655444)),
+                        child: ExplanationPanel(reveal: feedback.reveal),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    key: const Key('feedback-next'),
-                    onPressed: () {
-                      Navigator.pop(sheetContext);
-                      next();
-                    },
-                    child: Text(AppLocalizations.of(context)!.continueLabel),
+                  const SizedBox(height: 16),
+                  if (feedback.correct)
+                    TextButton.icon(
+                      key: Key(_advance == null ? 'auto-resume' : 'auto-pause'),
+                      onPressed: _advance == null
+                          ? () => setState(_resume)
+                          : _pause,
+                      icon: Icon(
+                        _advance == null ? Icons.play_arrow : Icons.pause,
+                      ),
+                      label: Text(
+                        _advance == null
+                            ? l10n.resumeAutoAdvance
+                            : l10n.autoAdvanceIn(_seconds),
+                      ),
+                    ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      key: const Key('feedback-next'),
+                      onPressed: _next,
+                      child: Text(AppLocalizations.of(context)!.continueLabel),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 PublicQuestion? _orderedQuestion(Catalog catalog, AttemptSnapshot snapshot) {

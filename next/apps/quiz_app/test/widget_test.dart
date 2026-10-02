@@ -10,30 +10,39 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
-  testWidgets(
-    'correct answer advances after three seconds without explanation',
-    (tester) async {
-      final api = await _QuizTestServer.start();
-      final client = QuizApiClient(baseUri: api.baseUri);
-      client.dio.httpClientAdapter = _QuizTestAdapter(api);
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
-        ),
-      );
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Option 4'));
-      await tester.pumpAndSettle();
-      expect(find.text('Because question 1.'), findsNothing);
-      await tester.pump(const Duration(seconds: 2));
-      expect(find.text('Question 1'), findsOneWidget);
-      await tester.pump(const Duration(seconds: 1));
-      await tester.pumpAndSettle();
-      expect(find.text('Question 2'), findsOneWidget);
-      expect(api.answerBodies, hasLength(1));
-    },
-  );
+  testWidgets('correct answer overlay advances without shifting the question', (
+    tester,
+  ) async {
+    final api = await _QuizTestServer.start();
+    final client = QuizApiClient(baseUri: api.baseUri);
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final before = tester.getRect(find.byType(QuestionCard));
+    await tester.tap(find.text('Option 4'));
+    await tester.pumpAndSettle();
+    expect(find.byType(Dialog), findsOneWidget);
+    expect(find.text('Because question 1.'), findsOneWidget);
+    expect(tester.getRect(find.byType(QuestionCard)), before);
+    expect(
+      find.descendant(
+        of: find.byType(QuestionCard),
+        matching: find.text('Correct'),
+      ),
+      findsNothing,
+    );
+    await tester.pump(const Duration(seconds: 2));
+    expect(find.text('Question 1'), findsOneWidget);
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.text('Question 2'), findsOneWidget);
+    expect(api.answerBodies, hasLength(1));
+  });
 
   testWidgets('auto advance can be paused, explained and resumed', (
     tester,
@@ -53,12 +62,8 @@ void main() {
     await tester.tap(find.byKey(const Key('auto-pause')));
     await tester.pump(const Duration(seconds: 4));
     expect(find.text('Question 1'), findsOneWidget);
-    await tester.tap(find.byKey(const Key('answer-explanation')));
-    await tester.pumpAndSettle();
     expect(find.byType(Dialog), findsOneWidget);
     expect(find.text('Because question 1.'), findsOneWidget);
-    await tester.tap(find.byTooltip('Close'));
-    await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('auto-resume')));
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
@@ -90,10 +95,7 @@ void main() {
     expect(find.byType(Dialog), findsOneWidget);
     await tester.pump(const Duration(seconds: 4));
     expect(find.byKey(const Key('auto-pause')), findsNothing);
-    expect(
-      find.text('Question 1'),
-      findsOneWidget,
-    );
+    expect(find.text('Question 1'), findsOneWidget);
     await tester.tap(find.byKey(const Key('feedback-next')));
     await tester.pumpAndSettle();
     expect(find.text('Question 2'), findsOneWidget);
@@ -121,9 +123,13 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Question 1'), findsOneWidget);
-    final action = find.widgetWithText(FilledButton, 'Continue');
-    expect(action, findsOneWidget);
-    expect(tester.getRect(action).bottom, lessThanOrEqualTo(640));
+    expect(find.widgetWithText(FilledButton, 'Continue'), findsNothing);
+    final before = tester.getRect(find.byType(QuestionCard));
+    await tester.tap(find.text('Option 1'));
+    await tester.pumpAndSettle();
+    expect(find.byType(Dialog), findsOneWidget);
+    expect(tester.getRect(find.byType(QuestionCard)), before);
+    expect(tester.getRect(find.byType(Dialog)).bottom, lessThanOrEqualTo(640));
     expect(tester.takeException(), isNull);
   });
   testWidgets('catalog selection uses a shareable quiz URL', (tester) async {
