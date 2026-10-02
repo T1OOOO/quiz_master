@@ -1,5 +1,15 @@
 # Quiz preview operations
 
+## 2026-10-03 01:40 — cozy background and pausable auto advance
+
+Revision 10: `quiz-2026.10.03-0125-6326777`. Background restored, warm parchment
+panels, correct-answer auto advance after 3s with pause/resume; incorrect answers
+use centered manual explanations. See `docs/rewrite-agents/reports/COZY_AUTO_ADVANCE_RU.md`
+for exact image, hashes, SQLite backup/restore proof, 46 Flutter tests, Web build,
+practice HTTPS smoke and desktop/phone screenshots. API/PVC/content unchanged;
+Language Learner revision 85, shared edge revision 10 unchanged. Rollback to quiz
+revision 9 retains SQLite PVC. Cold-start/editorial/full-parity gates remain open.
+
 ## 2026-10-03 — twenty-question rounds and immediate practice feedback
 
 Current release: **revision 9**, `quiz-2026.10.03-0042-33f5cfc`, source commit

@@ -6,11 +6,14 @@ secrets, DBs or charts are reused; only the shared Traefik/issuer/storage provis
 Existing Language Learner source tree is read-only for this task.
 
 Current status (2026-10-03): **https://quiz.kotopedia.org is live**, certificate
-Ready; quiz Helm revision 9 and shared edge revision 10 deployed. The public HTTPS
+Ready; quiz Helm revision 10 and shared edge revision 10 deployed. The public HTTPS
 101-pack/3128-question selection and 19-answer/history/reveal/ownership smoke passed. Owner approved the
 shared ingress restart; Language Learner's before/after release verification passed.
 Quiz's namespaced Role/RoleBinding grants Traefik only read access to its own
 routes/TLS configuration. Other namespaces have no new grants.
+Current UI restores the cozy photo background and warm parchment panels. Correct
+practice answers advance after three seconds (pause/resume or optional explanation);
+incorrect answers open a centered explanation and wait for manual continuation.
 Shared values are in `shared-edge-quiz-values.yaml`: include this override in future
 edge upgrades, or use `--reuse-values`, to retain the quiz namespace allowlist.
 Shared audit mirror: `/opt/ll/docs/ops/CHANGELOG.md` on the verified remote host.
