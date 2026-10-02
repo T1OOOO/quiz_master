@@ -98,6 +98,54 @@ abstract class AppLocalizations {
     Locale('ru'),
   ];
 
+  /// No description provided for @browseQuizzes.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse quizzes'**
+  String get browseQuizzes;
+
+  /// No description provided for @searchQuizzes.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title, description or category'**
+  String get searchQuizzes;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @catalogRoot.
+  ///
+  /// In en, this message translates to:
+  /// **'All categories'**
+  String get catalogRoot;
+
+  /// No description provided for @catalogInventory.
+  ///
+  /// In en, this message translates to:
+  /// **'{packs} quizzes · {questions} questions'**
+  String catalogInventory(int packs, int questions);
+
+  /// No description provided for @catalogPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'The full collection is being migrated. Only Home Alone 1 (Part 1) is playable in the new API so far.'**
+  String get catalogPreview;
+
+  /// No description provided for @packPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Play is not connected yet'**
+  String get packPending;
+
+  /// No description provided for @noSearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No quizzes match your search.'**
+  String get noSearchResults;
+
   /// No description provided for @catalogTitle.
   ///
   /// In en, this message translates to:

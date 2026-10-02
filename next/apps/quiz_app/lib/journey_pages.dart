@@ -32,6 +32,10 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
               constraints: const BoxConstraints(maxWidth: 760),
               child: Column(
                 children: [
+                  TextButton(
+                    onPressed: () => context.go('/library'),
+                    child: Text(l10n.browseQuizzes),
+                  ),
                   if (journey.session == null) ...[
                     TextField(
                       controller: _name,

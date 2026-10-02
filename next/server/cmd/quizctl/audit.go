@@ -16,6 +16,7 @@ type auditPack struct {
 	SourceID    string `json:"source_id"`
 	CanonicalID string `json:"canonical_id,omitempty"`
 	Title       string `json:"title"`
+	Description string `json:"description"`
 	Category    string `json:"category"`
 	Questions   int    `json:"questions"`
 	Error       string `json:"error,omitempty"`
@@ -49,14 +50,16 @@ func audit(root, schemas string, out io.Writer) error {
 		} else {
 			// Counts describe source material even when strict import rejects the pack.
 			var source struct {
-				ID        string            `json:"id"`
-				Title     string            `json:"title"`
-				Category  string            `json:"category"`
-				Questions []json.RawMessage `json:"questions"`
+				ID          string            `json:"id"`
+				Title       string            `json:"title"`
+				Description string            `json:"description"`
+				Category    string            `json:"category"`
+				Questions   []json.RawMessage `json:"questions"`
 			}
 			data, e := os.ReadFile(path)
 			if e == nil && json.Unmarshal(data, &source) == nil {
 				row.SourceID, row.Title, row.Category, row.Questions = source.ID, source.Title, source.Category, len(source.Questions)
+				row.Description = source.Description
 			}
 			draft, _, e := content.Import(path)
 			checkErr = e

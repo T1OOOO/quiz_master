@@ -14,8 +14,10 @@ part 'api_models.dart';
 part 'api_repository.dart';
 part 'journey.dart';
 part 'journey_pages.dart';
+part 'discovery.dart';
 
-void main() => runApp(const ProviderScope(child: QuizApp()));
+void main() =>
+    runApp(const ProviderScope(child: QuizApp(initialLocation: '/library')));
 
 final themeModeProvider = NotifierProvider<ThemeModeController, ThemeMode>(
   ThemeModeController.new,
@@ -79,6 +81,13 @@ ThemeData _theme(Brightness brightness) => ThemeData(
 GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
   initialLocation: initialLocation,
   routes: [
+    GoRoute(
+      path: '/library',
+      builder: (_, state) => DiscoveryPage(
+        folder: state.uri.queryParameters['folder'] ?? '',
+        query: state.uri.queryParameters['q'] ?? '',
+      ),
+    ),
     GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
     GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),

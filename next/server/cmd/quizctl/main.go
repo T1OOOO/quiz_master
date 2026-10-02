@@ -2,6 +2,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -18,7 +20,7 @@ func main() { os.Exit(run(os.Args[1:], os.Stdout, os.Stderr)) }
 func run(args []string, out, errOut io.Writer) int {
 	fail := func(e error) int { fmt.Fprintln(errOut, "quizctl:", e); return 2 }
 	usage := func() int {
-		return fail(&content.Error{Kind: "usage", Path: "quizctl audit|import|validate|build|diff (see next/content/README.md)"})
+		return fail(&content.Error{Kind: "usage", Path: "quizctl audit|catalog|import|validate|build|diff (see next/content/README.md)"})
 	}
 	if len(args) == 0 {
 		return usage()
@@ -30,7 +32,7 @@ func run(args []string, out, errOut io.Writer) int {
 	var in, outPath, before, after, version, publishedAt *string
 	var force *bool
 	switch command {
-	case "import", "build":
+	case "catalog", "import", "build":
 		in = fs.String("in", "", "input file")
 		outPath = fs.String("out", "", "import directory or bundle file")
 		force = fs.Bool("force", false, "explicit overwrite")
@@ -53,6 +55,37 @@ func run(args []string, out, errOut io.Writer) int {
 		return usage()
 	}
 	switch command {
+	case "catalog":
+		if *in == "" || *outPath == "" {
+			return usage()
+		}
+		// Reuse strict whole-corpus validation and collision reconciliation.
+		// Never export audit rows directly: future audit fields may be private.
+		var checked bytes.Buffer
+		if e := audit(*in, *schemaDir, &checked); e != nil {
+			return fail(e)
+		}
+		var report struct {
+			Packs []auditPack `json:"packs"`
+		}
+		if e := json.Unmarshal(checked.Bytes(), &report); e != nil {
+			return fail(e)
+		}
+		type metadata struct {
+			QuizID      string `json:"quiz_id"`
+			Title       string `json:"title"`
+			Description string `json:"description"`
+			Category    string `json:"category"`
+			Questions   int    `json:"questions_count"`
+		}
+		packs := make([]metadata, 0, len(report.Packs))
+		for _, p := range report.Packs {
+			packs = append(packs, metadata{p.CanonicalID, p.Title, p.Description, p.Category, p.Questions})
+		}
+		if e := content.WriteJSON(*outPath, packs, *force); e != nil {
+			return fail(e)
+		}
+		fmt.Fprintf(out, "catalog: %d packs\n", len(packs))
 	case "audit":
 		if *in == "" {
 			return usage()

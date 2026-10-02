@@ -10,6 +10,33 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get browseQuizzes => 'Все викторины';
+
+  @override
+  String get searchQuizzes => 'Поиск по названию, описанию или категории';
+
+  @override
+  String get categories => 'Категории';
+
+  @override
+  String get catalogRoot => 'Все категории';
+
+  @override
+  String catalogInventory(int packs, int questions) {
+    return 'Викторин: $packs · вопросов: $questions';
+  }
+
+  @override
+  String get catalogPreview =>
+      'Полная коллекция переносится. В новом API пока можно пройти только «Один дома 1 (Часть 1)».';
+
+  @override
+  String get packPending => 'Прохождение ещё не подключено';
+
+  @override
+  String get noSearchResults => 'По вашему запросу ничего не найдено.';
+
+  @override
   String get catalogTitle => 'Каталог викторин';
 
   @override

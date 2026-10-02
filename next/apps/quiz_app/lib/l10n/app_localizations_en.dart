@@ -10,6 +10,33 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get browseQuizzes => 'Browse quizzes';
+
+  @override
+  String get searchQuizzes => 'Search by title, description or category';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get catalogRoot => 'All categories';
+
+  @override
+  String catalogInventory(int packs, int questions) {
+    return '$packs quizzes · $questions questions';
+  }
+
+  @override
+  String get catalogPreview =>
+      'The full collection is being migrated. Only Home Alone 1 (Part 1) is playable in the new API so far.';
+
+  @override
+  String get packPending => 'Play is not connected yet';
+
+  @override
+  String get noSearchResults => 'No quizzes match your search.';
+
+  @override
   String get catalogTitle => 'Quiz catalog';
 
   @override

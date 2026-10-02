@@ -1,5 +1,11 @@
 # Quiz Master 2.0 — multi-agent execution plan
 
+Current user-directed product reference and sequential execution plan (2026-10-02):
+`SOURCE_FLUTTER_MIGRATION_RU.md`. The actual repository is the product source;
+the one-pack public deployment is not a visual reference or a complete rewrite.
+Use SQLite locally, no local Docker/PostgreSQL/GitHub Actions and no extra agents.
+The older architecture/wave proposal below does not override those instructions.
+
 Prepared 2026-09-20. This is an execution proposal and a launch kit, not evidence that the rewrite has been implemented. Product platforms: **Web and Android, one Flutter client**. The current repository is `C:\ap\quiz_master`; the similarly named project under AntigravitiProjects is not the target.
 
 ## 1. Outcome and architectural decisions

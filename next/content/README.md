@@ -63,6 +63,21 @@ Gastronomy v2 mapping: **101 ready / 0 blocked**, still 3128 questions.
 See `docs/rewrite-agents/REACT_FLUTTER_PARITY_RU.md` for
 the evidence and staged migration plan. YAML material is outside this JSON audit.
 
+## Public discovery metadata
+
+```powershell
+go run -p=1 ./next/server/cmd/quizctl catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json
+```
+
+This command reuses the whole-collection readiness audit and refuses to write
+any output if one source fails validation or canonical IDs collide. Its public
+allowlist is only `quiz_id`, `title`, `description`, `category`,
+`questions_count`: no question stems, options, explanations or grading.
+Use `--force` only to regenerate this exact reviewed metadata artifact.
+It is a temporary discovery asset, not proof that every pack is published or
+playable. The multi-pack API will replace this loader without changing the UI.
+See `docs/rewrite-agents/SOURCE_FLUTTER_MIGRATION_RU.md` for the current plan.
+
 ## Mapping and integrity
 
 Legacy ASCII IDs are lowercased, runs outside `[a-z0-9-]` become `-`, and outer
