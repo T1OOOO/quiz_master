@@ -9,6 +9,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets('selected quiz opens directly without asking for a name', (
+    tester,
+  ) async {
+    final api = await _QuizTestServer.start();
+    addTearDown(api.close);
+    final client = QuizApiClient(
+      baseUri: Uri.parse('https://api.example.test'),
+    );
+    final adapter = _QuizTestAdapter(api);
+    client.dio.httpClientAdapter = adapter;
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Display name'), findsNothing);
+    expect(find.text('Question 1'), findsOneWidget);
+    expect(find.textContaining('Unable'), findsNothing);
+    expect(adapter.selectedCatalog, 'quiz-many');
+    expect(adapter.selectedAttempt, 'quiz-many');
+  });
   testWidgets(
     'real 25-question API journey finishes once and preserves result navigation',
     (tester) async {
@@ -358,6 +381,7 @@ class _QuizTestServer {
 class _QuizTestAdapter implements HttpClientAdapter {
   _QuizTestAdapter(this.api);
   final _QuizTestServer api;
+  String? selectedCatalog, selectedAttempt;
 
   @override
   Future<ResponseBody> fetch(
@@ -365,6 +389,12 @@ class _QuizTestAdapter implements HttpClientAdapter {
     Stream<Uint8List>? requestStream,
     Future<void>? cancelFuture,
   ) async {
+    if (options.uri.path == '/v1/catalog') {
+      selectedCatalog = options.uri.queryParameters['quiz_id'];
+    }
+    if (options.uri.path == '/v1/attempts') {
+      selectedAttempt = (options.data as Map)['quiz_id'] as String?;
+    }
     final catalogGate = api._catalogGate;
     if (options.uri.path == '/v1/catalog' &&
         catalogGate != null &&

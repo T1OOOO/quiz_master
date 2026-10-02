@@ -84,8 +84,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final catalog = ref.watch(discoveryCatalogProvider);
-    return AppScaffold(
-      title: l10n.catalogTitle,
+    return SourceScaffold(
       body: catalog.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (_, _) => Center(
@@ -133,15 +132,10 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
             children: [
               Center(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1056),
+                  constraints: const BoxConstraints(maxWidth: 992),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        l10n.browseQuizzes,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      const SizedBox(height: 8),
                       Text(
                         l10n.catalogInventory(
                           packs.length,
@@ -164,7 +158,6 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                             context.replace(_location(widget.folder, value)),
                       ),
                       const SizedBox(height: 16),
-                      Text(l10n.catalogPreview),
                       const SizedBox(height: 12),
                       Wrap(
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -188,12 +181,12 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                       if (sortedFolders.isNotEmpty) ...[
                         Text(
                           l10n.categories,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: const TextStyle(color: _cream, fontSize: 18),
                         ),
                         const SizedBox(height: 12),
                         LayoutBuilder(
                           builder: (context, constraints) {
-                            final columns = constraints.maxWidth < 600 ? 2 : 3;
+                            final columns = constraints.maxWidth < 600 ? 2 : 4;
                             final width =
                                 (constraints.maxWidth - 12 * (columns - 1)) /
                                 columns;
@@ -204,38 +197,18 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                 for (final folder in sortedFolders)
                                   SizedBox(
                                     width: width,
-                                    child: Card(
-                                      child: InkWell(
-                                        key: Key('folder-$folder'),
-                                        borderRadius: BorderRadius.circular(12),
-                                        onTap: () => context.go(
-                                          _location(
-                                            [
-                                              if (widget.folder.isNotEmpty)
-                                                widget.folder,
-                                              folder,
-                                            ].join('/'),
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Icon(
-                                                Icons.folder_outlined,
-                                                size: 32,
-                                              ),
-                                              const SizedBox(height: 12),
-                                              Text(
-                                                folder,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleMedium,
-                                              ),
-                                            ],
-                                          ),
+                                    child: SourceFolderCard(
+                                      title: folder,
+                                      category: widget.folder.isEmpty
+                                          ? folder
+                                          : widget.folder,
+                                      onTap: () => context.go(
+                                        _location(
+                                          [
+                                            if (widget.folder.isNotEmpty)
+                                              widget.folder,
+                                            folder,
+                                          ].join('/'),
                                         ),
                                       ),
                                     ),
@@ -247,21 +220,32 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                       ],
                       for (final pack in visible)
                         Card(
-                          child: ListTile(
-                            key: Key('pack-${pack.id}'),
-                            isThreeLine: true,
-                            title: Text(pack.title),
-                            subtitle: Text(
-                              '${pack.description}\n${l10n.questionsCount(pack.questions)}${pack.id == 'home-alone-1-part-1' ? '' : ' · ${l10n.packPending}'}',
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          clipBehavior: Clip.antiAlias,
+                          child: DecoratedBox(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/bg_quiz_illustrated.png',
+                                ),
+                                fit: BoxFit.cover,
+                                opacity: .12,
+                              ),
                             ),
-                            trailing: Icon(
-                              pack.id == 'home-alone-1-part-1'
-                                  ? Icons.play_arrow
-                                  : Icons.hourglass_empty,
+                            child: ListTile(
+                              key: Key('pack-${pack.id}'),
+                              isThreeLine: true,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 16,
+                              ),
+                              title: Text(pack.title),
+                              subtitle: Text(
+                                '${pack.description}\n${l10n.questionsCount(pack.questions)}',
+                              ),
+                              trailing: const Icon(Icons.play_arrow),
+                              onTap: () => context.push('/quiz/${pack.id}'),
                             ),
-                            onTap: pack.id == 'home-alone-1-part-1'
-                                ? () => context.push('/')
-                                : null,
                           ),
                         ),
                       if (sortedFolders.isEmpty && visible.isEmpty)

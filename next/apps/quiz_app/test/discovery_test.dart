@@ -11,6 +11,7 @@ void main() {
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
     expect(find.text('101 quizzes · 3128 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
+    expect(find.byIcon(Icons.card_giftcard), findsNWidgets(2));
 
     await tester.enterText(find.byKey(const Key('catalog-search')), 'сыр');
     await tester.pumpAndSettle();
@@ -24,8 +25,8 @@ void main() {
     );
     expect(
       card.onTap,
-      isNull,
-    ); // No fake start for a pack not yet served by the API.
+      isNotNull,
+    ); // Every migrated source pack must have a real start action.
 
     await tester.enterText(
       find.byKey(const Key('catalog-search')),

@@ -98,6 +98,18 @@ abstract class AppLocalizations {
     Locale('ru'),
   ];
 
+  /// No description provided for @holidayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday quizzes'**
+  String get holidayTitle;
+
+  /// No description provided for @holidaySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A cozy evening, curious questions and your favorite topics'**
+  String get holidaySubtitle;
+
   /// No description provided for @browseQuizzes.
   ///
   /// In en, this message translates to:

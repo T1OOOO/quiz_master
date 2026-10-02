@@ -10,6 +10,13 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get holidayTitle => 'Holiday quizzes';
+
+  @override
+  String get holidaySubtitle =>
+      'A cozy evening, curious questions and your favorite topics';
+
+  @override
   String get browseQuizzes => 'Browse quizzes';
 
   @override

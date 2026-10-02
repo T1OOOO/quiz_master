@@ -17,10 +17,14 @@ type Attempts struct {
 	bundle       content.Bundle
 	duration     time.Duration
 	explanations map[string]string
+	packs        map[string]*Attempts
 }
 
 func NewAttempts(db *sql.DB, path, manifestPath, schemas string, duration time.Duration) (*Attempts, error) {
-	_, sourceStatErr := os.Stat(path)
+	info, sourceStatErr := os.Stat(path)
+	if sourceStatErr == nil && info.IsDir() {
+		return newCollection(db, path, schemas, duration)
+	}
 	d, e := content.ReadDocument(path, schemas)
 	if e != nil {
 		if !errors.Is(sourceStatErr, os.ErrNotExist) {
@@ -311,20 +315,23 @@ func (s *Attempts) GetHistory(ctx context.Context, owner, id string) (attempts.F
 	return f, err
 }
 func (s *Attempts) ListHistory(ctx context.Context, owner string) ([]attempts.Finish, error) {
-	rows, err := s.db.QueryContext(ctx, "select id from attempts where participant_id=? and status='finished' order by finished_at desc,id", owner)
+	rows, err := s.db.QueryContext(ctx, "select id,external_id,status,finished_at,server_score,history from attempts where participant_id=? and status='finished' order by finished_at desc,id", owner)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 	out := []attempts.Finish{}
 	for rows.Next() {
-		var id string
-		if err = rows.Scan(&id); err != nil {
+		var f attempts.Finish
+		var when, history string
+		if err = rows.Scan(&f.AttemptID, &f.ParticipantID, &f.Status, &when, &f.ServerScore, &history); err != nil {
 			return nil, err
 		}
-		f, e := s.GetHistory(ctx, owner, id)
-		if e != nil {
-			return nil, e
+		if f.FinishedAt, err = time.Parse(time.RFC3339Nano, when); err != nil {
+			return nil, err
+		}
+		if err = json.Unmarshal([]byte(history), &f.History); err != nil {
+			return nil, err
 		}
 		out = append(out, f)
 	}

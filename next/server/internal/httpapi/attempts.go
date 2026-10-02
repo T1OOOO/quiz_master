@@ -48,16 +48,46 @@ func noStoreRevealResponses(next http.Handler) http.Handler {
 }
 
 func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthenticator) {
-	mux.HandleFunc("GET /v1/catalog", func(w http.ResponseWriter, r *http.Request) { writeAttemptJSON(w, http.StatusOK, s.Catalog()) })
+	selected, supportsSelection := s.(interface {
+		CatalogFor(string) (attempts.Catalog, error)
+		StartQuiz(context.Context, string, string) (attempts.Attempt, error)
+	})
+	mux.HandleFunc("GET /v1/catalog", func(w http.ResponseWriter, r *http.Request) {
+		id := r.URL.Query().Get("quiz_id")
+		if id == "" {
+			writeAttemptJSON(w, http.StatusOK, s.Catalog())
+			return
+		}
+		if !supportsSelection {
+			writeAttemptError(w, attempts.ErrValidation)
+			return
+		}
+		catalog, err := selected.CatalogFor(id)
+		if err != nil {
+			writeAttemptError(w, err)
+			return
+		}
+		writeAttemptJSON(w, http.StatusOK, catalog)
+	})
 	protected := func(pattern string, f http.HandlerFunc) { mux.Handle(pattern, Authenticate(auth, RequirePrincipal(f))) }
 	protected("POST /v1/attempts", func(w http.ResponseWriter, r *http.Request) {
-		var body struct{}
+		var body struct {
+			QuizID string `json:"quiz_id"`
+		}
 		if err := decodeAttemptJSON(w, r, &body); err != nil {
 			writeAttemptError(w, attempts.ErrValidation)
 			return
 		}
 		p, _ := PrincipalFromContext(r.Context())
-		a, err := s.Start(r.Context(), p.ID)
+		var a attempts.Attempt
+		var err error
+		if body.QuizID == "" {
+			a, err = s.Start(r.Context(), p.ID)
+		} else if supportsSelection {
+			a, err = selected.StartQuiz(r.Context(), p.ID, body.QuizID)
+		} else {
+			err = attempts.ErrValidation
+		}
 		if err != nil {
 			writeAttemptError(w, err)
 			return

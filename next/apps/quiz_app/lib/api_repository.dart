@@ -102,9 +102,12 @@ class QuizApiClient {
     }
   }
 
-  Future<Catalog> catalog() async {
+  Future<Catalog> catalog({String? quizId}) async {
     try {
-      final response = await _dio.get<Object>('/v1/catalog');
+      final response = await _dio.get<Object>(
+        '/v1/catalog',
+        queryParameters: {'quiz_id': ?quizId},
+      );
       if (response.statusCode != 200) throw _failure(response.data);
       return Catalog.fromJson(_map(response.data));
     } on DioException catch (error) {
@@ -113,8 +116,10 @@ class QuizApiClient {
     }
   }
 
-  Future<Attempt> startAttempt() async {
-    final response = await _authenticatedPost('/v1/attempts', const {});
+  Future<Attempt> startAttempt({String? quizId}) async {
+    final response = await _authenticatedPost('/v1/attempts', {
+      'quiz_id': ?quizId,
+    });
     if (response.statusCode != 201) throw _failure(response.data);
     final attempt = Attempt.fromJson(_map(response.data));
     if (attempt.participantId != _requireSession().participantId) {

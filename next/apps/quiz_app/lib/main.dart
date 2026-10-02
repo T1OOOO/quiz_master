@@ -15,9 +15,13 @@ part 'api_repository.dart';
 part 'journey.dart';
 part 'journey_pages.dart';
 part 'discovery.dart';
+part 'source_style.dart';
 
-void main() =>
-    runApp(const ProviderScope(child: QuizApp(initialLocation: '/library')));
+void main() => runApp(
+  const ProviderScope(
+    child: QuizApp(initialLocation: '/library', defaultLocale: Locale('ru')),
+  ),
+);
 
 final themeModeProvider = NotifierProvider<ThemeModeController, ThemeMode>(
   ThemeModeController.new,
@@ -39,8 +43,9 @@ class LocaleController extends Notifier<Locale?> {
 }
 
 class QuizApp extends ConsumerStatefulWidget {
-  const QuizApp({super.key, this.initialLocation = '/'});
+  const QuizApp({super.key, this.initialLocation = '/', this.defaultLocale});
   final String initialLocation;
+  final Locale? defaultLocale;
 
   @override
   ConsumerState<QuizApp> createState() => _QuizAppState();
@@ -64,7 +69,7 @@ class _QuizAppState extends ConsumerState<QuizApp> {
       theme: _theme(Brightness.light),
       darkTheme: _theme(Brightness.dark),
       themeMode: ref.watch(themeModeProvider),
-      locale: ref.watch(localeProvider),
+      locale: ref.watch(localeProvider) ?? widget.defaultLocale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       routerConfig: _router,
@@ -89,6 +94,13 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
       ),
     ),
     GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
+    GoRoute(
+      path: '/quiz/:quizId',
+      builder: (_, state) => CatalogPage(
+        key: ValueKey(state.pathParameters['quizId']),
+        quizId: state.pathParameters['quizId']!,
+      ),
+    ),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
     GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
     GoRoute(

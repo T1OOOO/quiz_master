@@ -10,6 +10,13 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get holidayTitle => 'Новогодние викторины';
+
+  @override
+  String get holidaySubtitle =>
+      'Уютный вечер, интересные вопросы и любимые темы';
+
+  @override
   String get browseQuizzes => 'Все викторины';
 
   @override

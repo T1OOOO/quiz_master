@@ -49,7 +49,7 @@ spec:
           env:
             - {name: QM_LISTEN_ADDR, value: "127.0.0.1:8088"}
             - {name: QM_DATABASE_URL, value: "sqlite:../data/quiz.db"}
-            - {name: QM_CONTENT_BUNDLE_PATH, value: "/app/next/content/home-alone-1-part-1/bundle.json"}
+            - {name: QM_CONTENT_BUNDLE_PATH, value: "/app/quizzes"}
             - {name: QM_CONTENT_MANIFEST_PATH, value: "/app/next/content/home-alone-1-part-1/manifest.json"}
             - {name: GOMAXPROCS, value: "1"}
           securityContext:

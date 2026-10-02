@@ -79,14 +79,44 @@ class JourneyState {
 }
 
 class JourneyController extends Notifier<JourneyState> {
+  String? _quizId;
   @override
   JourneyState build() => const JourneyState();
+  Future<void> openQuiz(String id) async {
+    _quizId = id;
+    state = JourneyState(session: state.session, loading: true);
+    try {
+      final api = ref.read(quizApiProvider);
+      final session = state.session ?? await api.bootstrap('Guest');
+      state = state.copyWith(session: session);
+      final catalog = await api.catalog(quizId: id);
+      if (catalog.quiz.id != id) {
+        throw const FormatException('selected quiz mismatch');
+      }
+      state = state.copyWith(catalog: catalog);
+      await start();
+    } on ApiClientException catch (e) {
+      state = state.copyWith(
+        loading: false,
+        error: e.code,
+        errorRetryable: e.retryable,
+      );
+    } on FormatException {
+      state = state.copyWith(
+        loading: false,
+        error: 'invalid_response',
+        errorRetryable: false,
+      );
+    }
+  }
+
   Future<void> bootstrap(String name) async {
+    _quizId = null;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
       final session = await ref.read(quizApiProvider).bootstrap(name);
       state = state.copyWith(loading: true, session: session);
-      final catalog = await ref.read(quizApiProvider).catalog();
+      final catalog = await ref.read(quizApiProvider).catalog(quizId: _quizId);
       state = state.copyWith(
         loading: false,
         session: session,
@@ -111,7 +141,7 @@ class JourneyController extends Notifier<JourneyState> {
     if (state.session == null || state.loading) return;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
-      final catalog = await ref.read(quizApiProvider).catalog();
+      final catalog = await ref.read(quizApiProvider).catalog(quizId: _quizId);
       state = state.copyWith(loading: false, catalog: catalog);
     } on ApiClientException catch (e) {
       state = state.copyWith(
@@ -133,7 +163,9 @@ class JourneyController extends Notifier<JourneyState> {
     if (catalog == null) return;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
-      final attempt = await ref.read(quizApiProvider).startAttempt();
+      final attempt = await ref
+          .read(quizApiProvider)
+          .startAttempt(quizId: _quizId);
       validateAttemptCatalog(attempt, catalog);
       state = state.copyWith(loading: false, attempt: attempt, index: 0);
     } on ApiClientException catch (e) {

@@ -1,13 +1,26 @@
 part of 'main.dart';
 
 class CatalogPage extends ConsumerStatefulWidget {
-  const CatalogPage({super.key});
+  const CatalogPage({super.key, this.quizId});
+  final String? quizId;
   @override
   ConsumerState<CatalogPage> createState() => _CatalogPageState();
 }
 
 class _CatalogPageState extends ConsumerState<CatalogPage> {
   final _name = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    if (widget.quizId != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          ref.read(journeyProvider.notifier).openQuiz(widget.quizId!);
+        }
+      });
+    }
+  }
+
   @override
   void dispose() {
     _name.dispose();
@@ -22,145 +35,170 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final catalog = journey.catalog;
     final attempt = journey.attempt;
     final finish = journey.finish;
-    return AppScaffold(
-      title: l10n.catalogTitle,
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 760),
-              child: Column(
-                children: [
-                  TextButton(
-                    onPressed: () => context.go('/library'),
-                    child: Text(l10n.browseQuizzes),
+    final body = ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 760),
+            child: Column(
+              children: [
+                if (widget.quizId != null)
+                  Text(
+                    ref
+                            .watch(discoveryCatalogProvider)
+                            .asData
+                            ?.value
+                            .where((p) => p.id == widget.quizId)
+                            .firstOrNull
+                            ?.title ??
+                        '',
+                    style: const TextStyle(
+                      color: _cream,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  if (journey.session == null) ...[
-                    TextField(
-                      controller: _name,
-                      enabled: !journey.loading,
-                      decoration: InputDecoration(labelText: l10n.displayName),
+                TextButton(
+                  onPressed: () => context.go('/library'),
+                  child: Text(l10n.browseQuizzes),
+                ),
+                if (widget.quizId != null &&
+                    (journey.loading || catalog == null)) ...[
+                  if (journey.loading || journey.error == null)
+                    const CircularProgressIndicator()
+                  else
+                    _ErrorPanel(
+                      message: l10n.catalogLoadError,
+                      retryable: journey.errorRetryable,
+                      onRetry: () => controller.openQuiz(widget.quizId!),
                     ),
-                    const SizedBox(height: 12),
-                    FilledButton(
-                      onPressed: journey.loading
-                          ? null
-                          : () => controller.bootstrap(_name.text),
-                      child: Text(
-                        journey.loading ? l10n.loading : l10n.continueLabel,
-                      ),
-                    ),
-                    if (journey.error != null)
-                      _ErrorPanel(
-                        message: l10n.catalogLoadError,
-                        retryable: journey.errorRetryable,
-                        onRetry: () => controller.bootstrap(_name.text),
-                      ),
-                  ] else if (catalog == null) ...[
-                    if (journey.loading) ...[
-                      const CircularProgressIndicator(),
-                      const SizedBox(height: 8),
-                      Text(l10n.loading),
-                    ] else
-                      _ErrorPanel(
-                        message: l10n.catalogLoadError,
-                        retryable: journey.errorRetryable,
-                        onRetry: controller.reloadCatalog,
-                      ),
-                  ] else if (catalog.quiz.questions.isEmpty) ...[
-                    Text(l10n.catalogEmpty, key: const Key('catalog-empty')),
-                    const SizedBox(height: 12),
-                    FilledButton(
-                      onPressed: journey.loading
-                          ? null
-                          : controller.reloadCatalog,
-                      child: Text(journey.loading ? l10n.loading : l10n.retry),
-                    ),
-                  ] else if (attempt != null &&
-                      journey.index < attempt.snapshots.length) ...[
-                    _QuestionStep(
-                      journey: journey,
-                      question: _orderedQuestion(
-                        catalog,
-                        attempt.snapshots[journey.index],
-                      ),
-                    ),
-                  ] else if (attempt != null && finish == null) ...[
-                    FilledButton(
-                      onPressed: journey.submitting
-                          ? null
-                          : controller.complete,
-                      child: Text(
-                        journey.submitting ? l10n.finishing : l10n.finishQuiz,
-                      ),
-                    ),
-                    if (journey.error != null)
-                      _ErrorPanel(
-                        message: l10n.journeyError,
-                        retryable: journey.errorRetryable,
-                        onRetry: controller.retry,
-                      ),
-                  ] else if (finish != null) ...[
-                    Text(
-                      l10n.score(finish.score),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    if (journey.postFinishError != null)
-                      _ErrorPanel(
-                        message: l10n.resultsLoadError,
-                        retryable: journey.postFinishRetryable,
-                        onRetry: controller.complete,
-                      ),
-                    const SizedBox(height: 8),
-                    FilledButton(
-                      onPressed: controller.newQuiz,
-                      child: Text(l10n.newQuiz),
-                    ),
-                    TextButton(
-                      onPressed: () => context.push('/history'),
-                      child: Text(l10n.history),
-                    ),
-                    for (final reveal in journey.reveals)
-                      ExplanationPanel(reveal: reveal),
-                  ] else ...[
-                    PackTile(
-                      title: catalog.quiz.id,
-                      subtitle: l10n.questionsCount(
-                        catalog.quiz.questions.length,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    FilledButton(
-                      onPressed: journey.loading ? null : controller.start,
-                      child: Text(
-                        journey.loading ? l10n.loading : l10n.startQuiz,
-                      ),
-                    ),
-                    if (journey.error != null)
-                      _ErrorPanel(
-                        message: l10n.journeyError,
-                        retryable: journey.errorRetryable,
-                        onRetry: controller.retry,
-                      ),
-                  ],
+                ] else if (journey.session == null) ...[
+                  TextField(
+                    controller: _name,
+                    enabled: !journey.loading,
+                    decoration: InputDecoration(labelText: l10n.displayName),
+                  ),
                   const SizedBox(height: 12),
+                  FilledButton(
+                    onPressed: journey.loading
+                        ? null
+                        : () => controller.bootstrap(_name.text),
+                    child: Text(
+                      journey.loading ? l10n.loading : l10n.continueLabel,
+                    ),
+                  ),
+                  if (journey.error != null)
+                    _ErrorPanel(
+                      message: l10n.catalogLoadError,
+                      retryable: journey.errorRetryable,
+                      onRetry: () => controller.bootstrap(_name.text),
+                    ),
+                ] else if (catalog == null) ...[
+                  if (journey.loading) ...[
+                    const CircularProgressIndicator(),
+                    const SizedBox(height: 8),
+                    Text(l10n.loading),
+                  ] else
+                    _ErrorPanel(
+                      message: l10n.catalogLoadError,
+                      retryable: journey.errorRetryable,
+                      onRetry: controller.reloadCatalog,
+                    ),
+                ] else if (catalog.quiz.questions.isEmpty) ...[
+                  Text(l10n.catalogEmpty, key: const Key('catalog-empty')),
+                  const SizedBox(height: 12),
+                  FilledButton(
+                    onPressed: journey.loading
+                        ? null
+                        : controller.reloadCatalog,
+                    child: Text(journey.loading ? l10n.loading : l10n.retry),
+                  ),
+                ] else if (attempt != null &&
+                    journey.index < attempt.snapshots.length) ...[
+                  _QuestionStep(
+                    journey: journey,
+                    question: _orderedQuestion(
+                      catalog,
+                      attempt.snapshots[journey.index],
+                    ),
+                  ),
+                ] else if (attempt != null && finish == null) ...[
+                  FilledButton(
+                    onPressed: journey.submitting ? null : controller.complete,
+                    child: Text(
+                      journey.submitting ? l10n.finishing : l10n.finishQuiz,
+                    ),
+                  ),
+                  if (journey.error != null)
+                    _ErrorPanel(
+                      message: l10n.journeyError,
+                      retryable: journey.errorRetryable,
+                      onRetry: controller.retry,
+                    ),
+                ] else if (finish != null) ...[
+                  Text(
+                    l10n.score(finish.score),
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  if (journey.postFinishError != null)
+                    _ErrorPanel(
+                      message: l10n.resultsLoadError,
+                      retryable: journey.postFinishRetryable,
+                      onRetry: controller.complete,
+                    ),
+                  const SizedBox(height: 8),
+                  FilledButton(
+                    onPressed: controller.newQuiz,
+                    child: Text(l10n.newQuiz),
+                  ),
+                  TextButton(
+                    onPressed: () => context.push('/history'),
+                    child: Text(l10n.history),
+                  ),
+                  for (final reveal in journey.reveals)
+                    ExplanationPanel(reveal: reveal),
+                ] else ...[
+                  PackTile(
+                    title: catalog.quiz.id,
+                    subtitle: l10n.questionsCount(
+                      catalog.quiz.questions.length,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  FilledButton(
+                    onPressed: journey.loading ? null : controller.start,
+                    child: Text(
+                      journey.loading ? l10n.loading : l10n.startQuiz,
+                    ),
+                  ),
+                  if (journey.error != null)
+                    _ErrorPanel(
+                      message: l10n.journeyError,
+                      retryable: journey.errorRetryable,
+                      onRetry: controller.retry,
+                    ),
+                ],
+                const SizedBox(height: 12),
+                if (widget.quizId == null)
                   TextButton(
                     onPressed: () => context.push('/gallery'),
                     child: Text(l10n.openGallery),
                   ),
-                  if (journey.session != null && finish == null)
-                    TextButton(
-                      onPressed: () => context.push('/history'),
-                      child: Text(l10n.history),
-                    ),
-                ],
-              ),
+                if (journey.session != null && finish == null)
+                  TextButton(
+                    onPressed: () => context.push('/history'),
+                    child: Text(l10n.history),
+                  ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
+    return widget.quizId == null
+        ? AppScaffold(title: l10n.catalogTitle, body: body)
+        : SourceScaffold(body: body);
   }
 }
 
@@ -183,6 +221,12 @@ class _QuestionStep extends ConsumerWidget {
     }
     return Column(
       children: [
+        LinearProgressIndicator(
+          value: journey.index / attempt.snapshots.length,
+          minHeight: 6,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        const SizedBox(height: 16),
         Text('${journey.index + 1}/${attempt.snapshots.length}'),
         QuestionCard(
           key: ValueKey(current.id),

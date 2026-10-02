@@ -11,6 +11,16 @@ This is a proposed base contract. It is not published or accepted until lead rev
 - `schemas/attempts.schema.json` freezes revisions, bundle version/hash, ordered option IDs and position mapping at attempt start; the pinned bundle must equal the controlled published bundle. A write binds attempt/participant/question revision/typed answer/idempotency payload to an accepted UTC receipt; finish history repeats pinned question revision and its receipt reference. `payload_digest` is SHA-256 of canonical UTF-8 JSON (sorted keys, compact separators) of exactly `attempt_id`, `participant_id`, `question_id`, `question_revision`, and `answer`; it excludes the idempotency key.
 - `schemas/room-event.schema.json` is only the base envelope. P33 owns team admission, captain, scoring, standings and immediate-correctness fields. Base v1 recursively rejects them, including nested event data, and reserves a versioned extension design for P33.
 
+## HTTP selection (SQLite collection)
+
+`GET /v1/catalog?quiz_id=<canonical-id>` returns only that pack's public
+catalog. `POST /v1/attempts` accepts the closed body `{"quiz_id":"<canonical-id>"}`
+and pins that pack's immutable bundle/revisions. Unknown IDs are rejected; IDs
+are map lookups, never filesystem paths. Omitting selection preserves the default
+catalog and legacy `{}` start request. Authentication, ownership, receipt and
+post-finish reveal rules are unchanged. Collection source JSON/private grading
+is packaged only in the API runtime, never in Flutter public assets.
+
 ## Scoring proposal
 
 Single choice is one point only when the submitted stable option ID exactly matches the private key. Multiple choice is one point only when the submitted ID set exactly equals the key; there is no partial credit. Normalized text is one point only when its normalized value equals an explicitly accepted variant. The pipeline is: Unicode NFC, Unicode `casefold`, then collapse every Unicode whitespace run to one ASCII space and trim. There is no speed bonus. The server computes every result.
