@@ -10,11 +10,23 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get holidayTitle => 'Новогодние викторины';
+  String get holidayTitle => 'Викторины на каждый день';
 
   @override
-  String get holidaySubtitle =>
-      'Уютный вечер, интересные вопросы и любимые темы';
+  String get holidaySubtitle => 'Выбирайте тему. Играйте короткими раундами.';
+
+  @override
+  String roundLabel(int number) {
+    return 'Раунд $number';
+  }
+
+  @override
+  String get nextRound => 'Следующий раунд';
+
+  @override
+  String roundQuestions(int count) {
+    return '$count вопросов';
+  }
 
   @override
   String get browseQuizzes => 'Все викторины';

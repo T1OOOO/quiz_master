@@ -116,9 +116,10 @@ class QuizApiClient {
     }
   }
 
-  Future<Attempt> startAttempt({String? quizId}) async {
+  Future<Attempt> startAttempt({String? quizId, int? round}) async {
     final response = await _authenticatedPost('/v1/attempts', {
       'quiz_id': ?quizId,
+      'round': ?round,
     });
     if (response.statusCode != 201) throw _failure(response.data);
     final attempt = Attempt.fromJson(_map(response.data));

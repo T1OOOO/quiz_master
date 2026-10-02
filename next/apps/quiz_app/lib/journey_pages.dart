@@ -1,8 +1,9 @@
 part of 'main.dart';
 
 class CatalogPage extends ConsumerStatefulWidget {
-  const CatalogPage({super.key, this.quizId});
+  const CatalogPage({super.key, this.quizId, this.round = 0});
   final String? quizId;
+  final int round;
   @override
   ConsumerState<CatalogPage> createState() => _CatalogPageState();
 }
@@ -15,7 +16,9 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     if (widget.quizId != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {
-          ref.read(journeyProvider.notifier).openQuiz(widget.quizId!);
+          ref
+              .read(journeyProvider.notifier)
+              .openQuiz(widget.quizId!, round: widget.round);
         }
       });
     }
@@ -35,6 +38,65 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final catalog = journey.catalog;
     final attempt = journey.attempt;
     final finish = journey.finish;
+    final title =
+        ref
+            .watch(discoveryCatalogProvider)
+            .asData
+            ?.value
+            .where((p) => p.id == widget.quizId)
+            .firstOrNull
+            ?.title ??
+        '';
+    if (widget.quizId != null &&
+        attempt != null &&
+        catalog != null &&
+        journey.index < attempt.snapshots.length &&
+        !journey.loading) {
+      return SourceScaffold(
+        compact: true,
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 760),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () => context.go('/library'),
+                        child: Text(l10n.browseQuizzes),
+                      ),
+                      Text(l10n.roundLabel(widget.round + 1)),
+                    ],
+                  ),
+                  Expanded(
+                    child: _QuestionStep(
+                      journey: journey,
+                      question: _orderedQuestion(
+                        catalog,
+                        attempt.snapshots[journey.index],
+                      ),
+                      fitScreen: true,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     final body = ListView(
       padding: const EdgeInsets.all(16),
       children: [
@@ -71,7 +133,10 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                     _ErrorPanel(
                       message: l10n.catalogLoadError,
                       retryable: journey.errorRetryable,
-                      onRetry: () => controller.openQuiz(widget.quizId!),
+                      onRetry: () => controller.openQuiz(
+                        widget.quizId!,
+                        round: widget.round,
+                      ),
                     ),
                 ] else if (journey.session == null) ...[
                   TextField(
@@ -148,6 +213,14 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                       onRetry: controller.complete,
                     ),
                   const SizedBox(height: 8),
+                  if (widget.quizId != null &&
+                      (widget.round + 1) * 20 < catalog.quiz.questions.length)
+                    FilledButton(
+                      onPressed: () => context.go(
+                        '/quiz/${widget.quizId}?round=${widget.round + 1}',
+                      ),
+                      child: Text(l10n.nextRound),
+                    ),
                   FilledButton(
                     onPressed: controller.newQuiz,
                     child: Text(l10n.newQuiz),
@@ -198,12 +271,17 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     );
     return widget.quizId == null
         ? AppScaffold(title: l10n.catalogTitle, body: body)
-        : SourceScaffold(body: body);
+        : SourceScaffold(compact: true, body: body);
   }
 }
 
 class _QuestionStep extends ConsumerWidget {
-  const _QuestionStep({required this.journey, required this.question});
+  const _QuestionStep({
+    required this.journey,
+    required this.question,
+    this.fitScreen = false,
+  });
+  final bool fitScreen;
   final JourneyState journey;
   final PublicQuestion? question;
 
@@ -226,21 +304,39 @@ class _QuestionStep extends ConsumerWidget {
           minHeight: 6,
           borderRadius: BorderRadius.circular(8),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         Text('${journey.index + 1}/${attempt.snapshots.length}'),
-        QuestionCard(
-          key: ValueKey(current.id),
-          question: current,
-          submitting: journey.submitting,
-          onAnswer: (value) =>
-              ref.read(journeyProvider.notifier).stage(current.kind, value),
-        ),
-        FilledButton(
-          onPressed: journey.staged == null || journey.submitting
-              ? null
-              : ref.read(journeyProvider.notifier).submit,
-          child: Text(
-            journey.submitting ? l10n.submitting : l10n.continueLabel,
+        if (fitScreen)
+          Expanded(
+            child: SingleChildScrollView(
+              child: QuestionCard(
+                key: ValueKey(current.id),
+                question: current,
+                submitting: journey.submitting,
+                onAnswer: (value) => ref
+                    .read(journeyProvider.notifier)
+                    .stage(current.kind, value),
+              ),
+            ),
+          )
+        else
+          QuestionCard(
+            key: ValueKey(current.id),
+            question: current,
+            submitting: journey.submitting,
+            onAnswer: (value) =>
+                ref.read(journeyProvider.notifier).stage(current.kind, value),
+          ),
+        const SizedBox(height: 8),
+        SizedBox(
+          width: double.infinity,
+          child: FilledButton(
+            onPressed: journey.staged == null || journey.submitting
+                ? null
+                : ref.read(journeyProvider.notifier).submit,
+            child: Text(
+              journey.submitting ? l10n.submitting : l10n.continueLabel,
+            ),
           ),
         ),
         if (journey.error != null)

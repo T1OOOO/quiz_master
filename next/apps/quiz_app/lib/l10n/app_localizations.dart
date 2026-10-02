@@ -101,14 +101,32 @@ abstract class AppLocalizations {
   /// No description provided for @holidayTitle.
   ///
   /// In en, this message translates to:
-  /// **'Holiday quizzes'**
+  /// **'A little quiz, every day'**
   String get holidayTitle;
 
   /// No description provided for @holidaySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'A cozy evening, curious questions and your favorite topics'**
+  /// **'Pick a topic. Play in short rounds.'**
   String get holidaySubtitle;
+
+  /// No description provided for @roundLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Round {number}'**
+  String roundLabel(int number);
+
+  /// No description provided for @nextRound.
+  ///
+  /// In en, this message translates to:
+  /// **'Next round'**
+  String get nextRound;
+
+  /// No description provided for @roundQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions'**
+  String roundQuestions(int count);
 
   /// No description provided for @browseQuizzes.
   ///

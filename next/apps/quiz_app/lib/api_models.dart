@@ -526,13 +526,16 @@ class Attempt {
 void validateAttemptCatalog(Attempt attempt, Catalog catalog) {
   if (attempt.bundleVersion != catalog.bundleVersion ||
       attempt.bundleSha256 != catalog.bundleSha256 ||
-      attempt.snapshots.length != catalog.quiz.questions.length) {
+      attempt.snapshots.isEmpty ||
+      attempt.snapshots.length > catalog.quiz.questions.length) {
     throw const FormatException('attempt catalog mismatch');
   }
-  for (var index = 0; index < attempt.snapshots.length; index++) {
-    final snapshot = attempt.snapshots[index];
-    final question = catalog.quiz.questions[index];
-    if (snapshot.questionId != question.id ||
+  final questions = {
+    for (final question in catalog.quiz.questions) question.id: question,
+  };
+  for (final snapshot in attempt.snapshots) {
+    final question = questions[snapshot.questionId];
+    if (question == null ||
         !_sameRevision(snapshot.revision, question.revision) ||
         snapshot.optionOrder.length != question.options.length ||
         snapshot.optionOrder.toSet().length != question.options.length ||

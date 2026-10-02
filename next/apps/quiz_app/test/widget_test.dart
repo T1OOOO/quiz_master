@@ -10,6 +10,30 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets('quiz controls fit a short phone viewport', (tester) async {
+    tester.view.physicalSize = const Size(390, 640);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final api = await _QuizTestServer.start();
+    addTearDown(api.close);
+    final client = QuizApiClient(
+      baseUri: Uri.parse('https://api.example.test'),
+    );
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Question 1'), findsOneWidget);
+    final action = find.widgetWithText(FilledButton, 'Continue');
+    expect(action, findsOneWidget);
+    expect(tester.getRect(action).bottom, lessThanOrEqualTo(640));
+    expect(tester.takeException(), isNull);
+  });
   testWidgets('catalog selection uses a shareable quiz URL', (tester) async {
     final api = await _QuizTestServer.start();
     addTearDown(api.close);

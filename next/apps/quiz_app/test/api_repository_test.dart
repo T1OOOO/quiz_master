@@ -6,6 +6,24 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  test('shuffled round snapshots may be a strict catalog subset', () {
+    final other = jsonDecode(jsonEncode(questionJson)) as Map<String, dynamic>;
+    other['question_id'] = 'q-another';
+    final catalog = Catalog.fromJson({
+      'bundle_version': 'v1',
+      'bundle_sha256': 'a' * 64,
+      'quiz': {
+        'quiz_id': 'quiz-one',
+        'revision': {'number': 1, 'sha256': 'c' * 64},
+        'locale': 'en',
+        'questions': [other, questionJson],
+      },
+    });
+    expect(
+      () => validateAttemptCatalog(Attempt.fromJson(attemptJson), catalog),
+      returnsNormally,
+    );
+  });
   test('plain HTTP base URLs are restricted to loopback hosts', () {
     for (final allowed in [
       'https://api.example.test',

@@ -224,30 +224,53 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                         Card(
                           margin: const EdgeInsets.symmetric(vertical: 8),
                           clipBehavior: Clip.antiAlias,
-                          child: DecoratedBox(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'assets/bg_quiz_illustrated.png',
+                          child: Column(
+                            children: [
+                              ListTile(
+                                key: Key('pack-${pack.id}'),
+                                isThreeLine: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 16,
                                 ),
-                                fit: BoxFit.cover,
-                                opacity: .12,
+                                title: Text(pack.title),
+                                subtitle: Text(
+                                  '${pack.description}\n${l10n.questionsCount(pack.questions)}',
+                                ),
+                                trailing: const Icon(Icons.play_arrow),
+                                onTap: () => context.go('/quiz/${pack.id}'),
                               ),
-                            ),
-                            child: ListTile(
-                              key: Key('pack-${pack.id}'),
-                              isThreeLine: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 16,
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  16,
+                                  0,
+                                  16,
+                                  16,
+                                ),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Wrap(
+                                    spacing: 8,
+                                    runSpacing: 8,
+                                    children: [
+                                      for (
+                                        var round = 0;
+                                        round < (pack.questions + 19) ~/ 20;
+                                        round++
+                                      )
+                                        ActionChip(
+                                          label: Text(
+                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions((pack.questions - round * 20).clamp(1, 20))}',
+                                          ),
+                                          onPressed: () => context.go(
+                                            '/quiz/${pack.id}?round=$round',
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              title: Text(pack.title),
-                              subtitle: Text(
-                                '${pack.description}\n${l10n.questionsCount(pack.questions)}',
-                              ),
-                              trailing: const Icon(Icons.play_arrow),
-                              onTap: () => context.go('/quiz/${pack.id}'),
-                            ),
+                            ],
                           ),
                         ),
                       if (sortedFolders.isEmpty && visible.isEmpty)

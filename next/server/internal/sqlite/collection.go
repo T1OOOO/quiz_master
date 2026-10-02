@@ -129,3 +129,32 @@ func (s *Attempts) StartQuiz(ctx context.Context, owner, id string) (attempts.At
 	}
 	return pack.Start(ctx, owner)
 }
+
+// Rounds partition the source without changing its immutable grading bundle.
+// Shuffle only within a round: advancing through every round never repeats or loses a question.
+func (s *Attempts) StartRound(ctx context.Context, owner, id string, round int) (attempts.Attempt, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	questions := pack.bundle.Quiz.Questions
+	if round < 0 || round >= (len(questions)+19)/20 {
+		return attempts.Attempt{}, attempts.ErrValidation
+	}
+	end := min((round+1)*20, len(questions))
+	ids := make([]string, end-round*20)
+	byID := map[string]content.PublicQuestion{}
+	for i, q := range questions[round*20 : end] {
+		ids[i] = q.QuestionID
+		byID[q.QuestionID] = q
+	}
+	if err = attempts.RandomShuffle(ids); err != nil {
+		return attempts.Attempt{}, err
+	}
+	selected := *pack
+	selected.bundle.Quiz.Questions = make([]content.PublicQuestion, len(ids))
+	for i, id := range ids {
+		selected.bundle.Quiz.Questions[i] = byID[id]
+	}
+	return selected.Start(ctx, owner)
+}

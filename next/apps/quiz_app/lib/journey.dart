@@ -80,20 +80,27 @@ class JourneyState {
 
 class JourneyController extends Notifier<JourneyState> {
   String? _quizId;
+  int? _round;
   @override
   JourneyState build() => const JourneyState();
-  Future<void> openQuiz(String id) async {
+  Future<void> openQuiz(String id, {int round = 0}) async {
     _quizId = id;
+    _round = round;
     state = JourneyState(session: state.session, loading: true);
     try {
       final api = ref.read(quizApiProvider);
-      final session = state.session ?? await api.bootstrap('Guest');
-      state = state.copyWith(session: session);
-      final catalog = await api.catalog(quizId: id);
+      final results = await Future.wait<Object>([
+        state.session == null
+            ? api.bootstrap('Guest')
+            : Future.value(state.session!),
+        api.catalog(quizId: id),
+      ]);
+      final session = results[0] as GuestSession;
+      final catalog = results[1] as Catalog;
       if (catalog.quiz.id != id) {
         throw const FormatException('selected quiz mismatch');
       }
-      state = state.copyWith(catalog: catalog);
+      state = state.copyWith(session: session, catalog: catalog);
       await start();
     } on ApiClientException catch (e) {
       state = state.copyWith(
@@ -112,6 +119,7 @@ class JourneyController extends Notifier<JourneyState> {
 
   Future<void> bootstrap(String name) async {
     _quizId = null;
+    _round = null;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
       final session = await ref.read(quizApiProvider).bootstrap(name);
@@ -165,7 +173,7 @@ class JourneyController extends Notifier<JourneyState> {
     try {
       final attempt = await ref
           .read(quizApiProvider)
-          .startAttempt(quizId: _quizId);
+          .startAttempt(quizId: _quizId, round: _round);
       validateAttemptCatalog(attempt, catalog);
       state = state.copyWith(loading: false, attempt: attempt, index: 0);
     } on ApiClientException catch (e) {

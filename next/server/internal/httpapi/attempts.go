@@ -73,6 +73,7 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 	protected("POST /v1/attempts", func(w http.ResponseWriter, r *http.Request) {
 		var body struct {
 			QuizID string `json:"quiz_id"`
+			Round  *int   `json:"round,omitempty"`
 		}
 		if err := decodeAttemptJSON(w, r, &body); err != nil {
 			writeAttemptError(w, attempts.ErrValidation)
@@ -81,7 +82,16 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		p, _ := PrincipalFromContext(r.Context())
 		var a attempts.Attempt
 		var err error
-		if body.QuizID == "" {
+		if body.Round != nil {
+			rounds, ok := s.(interface {
+				StartRound(context.Context, string, string, int) (attempts.Attempt, error)
+			})
+			if !ok || body.QuizID == "" {
+				err = attempts.ErrValidation
+			} else {
+				a, err = rounds.StartRound(r.Context(), p.ID, body.QuizID, *body.Round)
+			}
+		} else if body.QuizID == "" {
 			a, err = s.Start(r.Context(), p.ID)
 		} else if supportsSelection {
 			a, err = selected.StartQuiz(r.Context(), p.ID, body.QuizID)

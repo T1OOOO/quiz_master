@@ -10,11 +10,23 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get holidayTitle => 'Holiday quizzes';
+  String get holidayTitle => 'A little quiz, every day';
 
   @override
-  String get holidaySubtitle =>
-      'A cozy evening, curious questions and your favorite topics';
+  String get holidaySubtitle => 'Pick a topic. Play in short rounds.';
+
+  @override
+  String roundLabel(int number) {
+    return 'Round $number';
+  }
+
+  @override
+  String get nextRound => 'Next round';
+
+  @override
+  String roundQuestions(int count) {
+    return '$count questions';
+  }
 
   @override
   String get browseQuizzes => 'Browse quizzes';

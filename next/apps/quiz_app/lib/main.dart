@@ -97,8 +97,9 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
     GoRoute(
       path: '/quiz/:quizId',
       builder: (_, state) => CatalogPage(
-        key: ValueKey(state.pathParameters['quizId']),
+        key: ValueKey(state.uri.toString()),
         quizId: state.pathParameters['quizId']!,
+        round: int.tryParse(state.uri.queryParameters['round'] ?? '0') ?? -1,
       ),
     ),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),

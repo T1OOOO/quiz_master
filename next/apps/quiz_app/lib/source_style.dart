@@ -1,176 +1,142 @@
 part of 'main.dart';
 
-const _cream = Color(0xfffff5df);
+const _cream = Color(0xff253c34);
 
-// The original React holiday assets, not a replacement illustration.
 class SourceScaffold extends ConsumerWidget {
-  const SourceScaffold({super.key, required this.body});
+  const SourceScaffold({super.key, required this.body, this.compact = false});
   final Widget body;
+  final bool compact;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Image.asset(
-            'assets/home-alone-bg.jpg',
-            fit: BoxFit.cover,
-            cacheWidth: 1600,
+    return Theme(
+      data: _theme(Brightness.light).copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xff256653),
+          surface: Colors.white,
+        ),
+        scaffoldBackgroundColor: const Color(0xfff5f4ef),
+        cardTheme: CardThemeData(
+          color: Colors.white,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
           ),
         ),
-        Positioned.fill(
-          child: ColoredBox(color: Colors.black.withValues(alpha: .48)),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
         ),
-        Theme(
-          data: _theme(Brightness.light).copyWith(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff991b1b),
-              surface: _cream,
-            ),
-            cardTheme: CardThemeData(
-              color: _cream,
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
-            ),
-            inputDecorationTheme: InputDecorationTheme(
-              filled: true,
-              fillColor: _cream,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(foregroundColor: _cream),
-            ),
-          ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            drawer: Drawer(
-              child: SafeArea(
-                child: ListView(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        l10n.holidayTitle,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.home),
-                      title: Text(l10n.browseQuizzes),
-                      onTap: () {
-                        Navigator.pop(context);
-                        context.go('/library');
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.history),
-                      title: Text(l10n.history),
-                      onTap: () {
-                        Navigator.pop(context);
-                        context.push('/history');
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.language),
-                      title: Text(l10n.russian),
-                      onTap: () {
-                        ref
-                            .read(localeProvider.notifier)
-                            .select(const Locale('ru'));
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.language),
-                      title: Text(l10n.english),
-                      onTap: () {
-                        ref
-                            .read(localeProvider.notifier)
-                            .select(const Locale('en'));
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: _cream),
+        ),
+      ),
+      child: Scaffold(
+        drawer: Drawer(
+          child: SafeArea(
+            child: ListView(
+              children: [
+                const ListTile(
+                  title: Text(
+                    'Quiz Master',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
+                ListTile(
+                  leading: const Icon(Icons.home),
+                  title: Text(l10n.browseQuizzes),
+                  onTap: () {
+                    Navigator.pop(context);
+                    context.go('/library');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.history),
+                  title: Text(l10n.history),
+                  onTap: () {
+                    Navigator.pop(context);
+                    context.push('/history');
+                  },
+                ),
+                for (final locale in [const Locale('ru'), const Locale('en')])
+                  ListTile(
+                    leading: const Icon(Icons.language),
+                    title: Text(
+                      locale.languageCode == 'ru' ? l10n.russian : l10n.english,
+                    ),
+                    onTap: () {
+                      ref.read(localeProvider.notifier).select(locale);
+                      Navigator.pop(context);
+                    },
+                  ),
+              ],
             ),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 1032),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 24, 20, 18),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '🎄 ${l10n.holidayTitle}',
-                                    style: TextStyle(
-                                      color: _cream,
-                                      fontSize:
-                                          MediaQuery.sizeOf(context).width < 600
-                                          ? 27
-                                          : 42,
-                                      fontFamily: 'serif',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    l10n.holidaySubtitle,
-                                    style: const TextStyle(
-                                      color: _cream,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
+          ),
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 1032),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      20,
+                      compact ? 4 : 16,
+                      20,
+                      compact ? 4 : 12,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                compact ? 'Quiz Master' : l10n.holidayTitle,
+                                style: TextStyle(
+                                  color: _cream,
+                                  fontSize: compact ? 17 : 30,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
-                            ),
-                            Builder(
-                              builder: (context) => IconButton.filled(
-                                style: IconButton.styleFrom(
-                                  backgroundColor: const Color(0xff991b1b),
-                                  foregroundColor: _cream,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
+                              if (!compact) ...[
+                                const SizedBox(height: 6),
+                                Text(
+                                  l10n.holidaySubtitle,
+                                  style: const TextStyle(
+                                    color: Color(0xff64756b),
+                                    fontSize: 14,
                                   ),
                                 ),
-                                tooltip: MaterialLocalizations.of(context)
-                                    .openAppDrawerTooltip,
-                                onPressed: () =>
-                                    Scaffold.of(context).openDrawer(),
-                                icon: const Icon(Icons.menu),
-                              ),
-                            ),
-                          ],
+                              ],
+                            ],
+                          ),
                         ),
-                      ),
+                        Builder(
+                          builder: (context) => IconButton(
+                            tooltip: MaterialLocalizations.of(context)
+                                .openAppDrawerTooltip,
+                            onPressed: () => Scaffold.of(context).openDrawer(),
+                            icon: const Icon(Icons.menu, color: _cream),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    child: DefaultTextStyle.merge(
-                      style: const TextStyle(color: _cream),
-                      child: body,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              Expanded(
+                child: DefaultTextStyle.merge(
+                  style: const TextStyle(color: _cream),
+                  child: body,
+                ),
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -186,89 +152,47 @@ class SourceFolderCard extends StatelessWidget {
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    final (color, icon) = switch (category.split('/').first) {
-      'Кино' => (const Color(0xffb91c1c), Icons.movie),
-      'Гастрономия' => (const Color(0xffb45309), Icons.restaurant),
-      'Природа' => (const Color(0xff047857), Icons.eco),
-      'Филии' => (const Color(0xffbe185d), Icons.favorite),
-      'Психология' => (const Color(0xff6d28d9), Icons.psychology),
-      'Филология' => (const Color(0xff92400e), Icons.menu_book),
-      'Новый Год' => (const Color(0xff991b1b), Icons.card_giftcard),
-      _ => (const Color(0xff334155), Icons.folder),
+    final cover = switch (category.split('/').first) {
+      'Гастрономия' => 'food',
+      'Кино' => 'cinema',
+      'Новый Год' => 'holiday',
+      'Природа' => 'nature',
+      'Психология' => 'psychology',
+      'Филии' => 'philias',
+      'Филология' => 'philology',
+      _ => 'nature',
     };
     return Material(
-      color: Colors.transparent,
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         key: Key('folder-$title'),
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          height: 145,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: _cream.withValues(alpha: .7), width: 2),
-            image: const DecorationImage(
-              image: AssetImage('assets/bg_soft_premium.png'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Image.asset(
+              'assets/categories/$cover.jpg',
+              height: 112,
               fit: BoxFit.cover,
+              cacheWidth: 600,
+              excludeFromSemantics: true,
             ),
-          ),
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        color.withValues(alpha: .92),
-                        color.withValues(alpha: .75),
-                        Colors.black.withValues(alpha: .5),
-                      ],
-                    ),
-                  ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
+              child: Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: _cream,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              Positioned(
-                right: -8,
-                bottom: -12,
-                child: Icon(
-                  icon,
-                  color: _cream.withValues(alpha: .12),
-                  size: 110,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(18),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(7),
-                      decoration: BoxDecoration(
-                        color: _cream.withValues(alpha: .18),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(icon, color: _cream, size: 24),
-                    ),
-                    Text(
-                      title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: _cream,
-                        fontFamily: 'serif',
-                        fontSize: 21,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
