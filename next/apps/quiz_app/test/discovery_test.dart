@@ -9,7 +9,7 @@ void main() {
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
-    expect(find.text('105 quizzes · 3403 questions'), findsOneWidget);
+    expect(find.text('106 quizzes · 3598 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(
@@ -44,6 +44,24 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('No quizzes match your search.'), findsOneWidget);
+  });
+
+  testWidgets('geography has its own category cover', (tester) async {
+    await _pumpDiscovery(tester, '/library');
+    final cover = tester.widget<Image>(
+      find.descendant(
+        of: find.byKey(const Key('folder-География')),
+        matching: find.byType(Image),
+      ),
+    );
+    expect(
+      (cover.image as ResizeImage).imageProvider,
+      isA<AssetImage>().having(
+        (image) => image.assetName,
+        'assetName',
+        'assets/categories/geography.jpg',
+      ),
+    );
   });
 
   testWidgets('folder deep link and breadcrumbs restore catalog navigation', (

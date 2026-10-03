@@ -233,6 +233,7 @@ class SourceFolderCard extends StatelessWidget {
       'Психология' => 'psychology',
       'Филии' => 'philias',
       'Филология' => 'philology',
+      'География' => 'geography',
       _ => 'nature',
     };
     return Material(

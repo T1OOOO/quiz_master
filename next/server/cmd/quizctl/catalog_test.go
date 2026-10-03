@@ -27,8 +27,8 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 	if err := json.Unmarshal(data, &packs); err != nil {
 		t.Fatal(err)
 	}
-	if len(packs) != 105 {
-		t.Fatalf("want 105 packs, got %d", len(packs))
+	if len(packs) != 106 {
+		t.Fatalf("want 106 packs, got %d", len(packs))
 	}
 	allowed := map[string]bool{"quiz_id": true, "title": true, "description": true, "category": true, "questions_count": true}
 	ids := map[string]bool{}
@@ -49,7 +49,7 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 		ids[id] = true
 		total += int(pack["questions_count"].(float64))
 	}
-	if total != 3403 || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] {
+	if total != 3598 || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] || !ids["prep-flags-world"] {
 		t.Fatalf("incomplete catalog: questions=%d", total)
 	}
 }
