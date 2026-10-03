@@ -43,7 +43,35 @@ Private source/key/bundle не размещаются в публичном ка
 Для выпуска достаточно обновить этот asset и серверные JSON в существующем
 runtime image. Flutter/Go production recompilation не требуется.
 Android build и отдельное независимое code review NOT_RUN; не заявлены PASS.
-Production release и browser evidence будут дописаны только после проверки.
+Production: `quiz-2026.10.03-preparation-ef96a79`, интеграция
+`ef96a79b0429671e1719a4c452d411fa245b4b4b`, Helm revision14.
+Image digest `sha256:28228ed6cf51259c9ad5fe9af4a8949fff82be1c6713d98789f11fc6fbff5a43`.
+API SHA256 `5c6558fc37e42f08fbf25d255f619d340bb42d3fb57f97f7d3a6c0b19379b1ba`
+и JS SHA256 `2a957994dcf86ca0ac7eb9e7a21d0694a834f908bda2ae1f10786e1be88191d1`
+не изменились. Public catalog SHA256
+`e9b2fd0b420ec548acb86ccedec24602aeddaaec7f44cdeade920b1c8b099ccc` совпал
+с исходным asset при отдельной HTTPS-загрузке; фактические103/3168 подтверждены.
+
+Remote runtime build network=none/pull=false, nginx-t, Helm strict lint/server
+dry-run, atomic upgrade PASS. Pod2/2 Running0restarts, health/ready OK;
+исходный PVC `pvc-7fc2428f-4146-4c78-a26d-2347d9f3b7bf` сохранён.
+Backup `/opt/quiz-master/backups/quiz-2026.10.03-preparation-ef96a79.sqlite`:
+online backup + независимый restore integrity OK, до релиза40participants /
+441attempts /102bundles. Проверочные попытки браузера добавлены обычным API.
+Первый shell hostname-probe был неверно процитирован PowerShell и не был
+зачтён; сама release.sh до сборки проверила фактический racknerd-f0269d5.
+
+Браузер1262x576 и390x640: 8 категорий помещаются; переход
+География→Столицы→квиз работает без запроса имени. Оба квиза открываются по URL,
+каждый показывает1/20. Неверный ответ открывает центральный диалог с полным
+правильным объяснением; Продолжить переносит на2/20. Верный ответ в столицах
+автоматически перевёл2/20→3/20. Точная1s задержка покрыта Flutter-тестом.
+Кино008 показывает Foster/Clarice, не чужой Schindler-текст. Длинный вопрос
+про Fellowship и все4варианта помещаются на390x640. Browser errors пусты.
+Снимки preparation-library-phone.png/preparation-capitals-feedback.png/
+preparation-cinema-feedback-phone.png просмотрены. Собственный браузер закрыт,
+ресурсы освобождены; полноценное завершение20ответов в production не заявляется.
+Rollback: `helm rollback quiz-master 13 -n quiz-master --wait`; live DB не откатывать.
 
 Остаток большого плана отслеживается в quiz_master-8k1; флаги и следующие
 культурные/исторические блоки ещё не опубликованы.
