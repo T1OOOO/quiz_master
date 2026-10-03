@@ -53,7 +53,7 @@ PUBLISHED: quiz-2026.10.03-culture-d5f070b, commit d5f070b5070fe6854539c3b2cf4a4
 
 ## Следующее обновление: ещё 60 вопросов
 
-LOCAL READY, пока не опубликовано: фольклор 20 и фильмы/актёры 40. Каталог 117 наборов / 3858 вопросов. Общее новое покрытие после публикации — 730 вопросов; полная программа 1890–2200 ещё не завершена.
+PUBLISHED: фольклор20 и фильмы/актёры40. Release quiz-2026.10.03-culture260-8c90873, commit8c90873d6328c65cb2ca5cd0484c2a7c1e85d13e, Helm18. Живой каталог117/3858. Общее новое покрытие730 вопросов; полная программа1890–2200 ещё не завершена.
 
 - Фактическое ревью обоих банков FINAL ACCEPT; кино исправлено по двум замечаниям (канонический AFI URL и замена повторного знания Michael Corleone/Al Pacino на Margo Channing/Bette Davis).
 - Источники: folklore-legacy20.json raw SHA a9f5e30b919a74b17f7eb5152026503f533c6a763c4759d7a2d05e5040677ee9; movie-actors40-legacy-pack.json SHA c2102b3866e8d41c7f7ddc9f8aa0688b3ad537d484c31c6a4c2916c25079ae9a.
@@ -64,3 +64,6 @@ LOCAL READY, пока не опубликовано: фольклор 20 и фи
 - Flutter analyze PASS; все 55 тестов PASS, повторно после каталога117 (concurrency=1). Release web с QM_API_BASE_URL=https://quiz.kotopedia.org собран; metadata asset обновлён после импорта. JS SHA 13ded45a5af928eb7450c8587f17201fffc177761a90743d56a56b8894a88301; каталог a0c164e309d70f01032e83733c2785c26189fdd219c2d3819468fd1ee8bb1819.
 - Найден воспроизводимый desktop overflow: на1262×768 нижний ряд был821px, RED. Минимальное изменение noncompact >8 categories coverHeight72 вместо112; tests1262×568/768 GREEN. Независимое code review ACCEPT. Живое браузерное подтверждение новой версии ещё NOT_RUN.
 - Защищённые пользовательские .beads/issues.jsonl, PROJECT_OVERVIEW_RU.md и старый flags checkpoint не включать в commit. Ресурсные очереди/ошибка Windows1450 пережданы без остановки чужих процессов.
+- Payload SHA2314436579cb3fb658c459740713cff3ddf863933d6ff083222ae89720b3181e; image sha256:bfc40a6477f71b126dccc542cbdcdb43971719163a37a57d587fc9159e6a5dfb. API SHA неизменен. StrictHelmlint/nginx-t/serverdryrun/atomicupgrade PASS; deployment1/1, pod2/2Running0restarts, тот же PVC.
+- Onlinebackup /opt/quiz-master/backups/quiz-2026.10.03-culture260-8c90873.sqlite integrity/isolatedrestore PASS, counts54participants/457attempts/116historicalbundles. Rollbackrevision17, не восстанавливать старую БД поверх новых ответов.
+- Live GET новых банков: folklore20/actors40 PASS, publicgrading отсутствует. Live version.json117/3858 и SHA каталога/JS совпадают с проверенными локальными артефактами. Новая браузерная проверкаNOT_RUN из-за hostcapacity; старые screenshotдоказательства относятся к17, не18.
