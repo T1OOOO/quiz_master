@@ -93,7 +93,10 @@ class Source {
 }
 
 class Media {
-  const Media();
+  const Media({required this.uri, this.kind, this.alt});
+  final String uri;
+  final String? kind;
+  final String? alt;
   factory Media.fromJson(Map<String, dynamic> json) {
     _closed(json, {'uri', 'kind', 'alt'});
     if (json['uri'] is! String ||
@@ -102,7 +105,11 @@ class Media {
         (json['alt'] != null && json['alt'] is! String)) {
       throw const FormatException('media');
     }
-    return const Media();
+    return Media(
+      uri: json['uri'] as String,
+      kind: json['kind'] as String?,
+      alt: json['alt'] as String?,
+    );
   }
 }
 
@@ -114,6 +121,7 @@ class PublicQuestion {
     required this.stem,
     required this.options,
     required this.kind,
+    this.media = const [],
   });
   final String quizId;
   final String id;
@@ -121,6 +129,7 @@ class PublicQuestion {
   final String stem;
   final List<PublicOption> options;
   final AnswerKind kind;
+  final List<Media> media;
   factory PublicQuestion.fromJson(Map<String, dynamic> json) {
     _closed(json, {
       'quiz_id',
@@ -156,11 +165,11 @@ class PublicQuestion {
     final media = json['media'];
     if (media != null && media is! List) throw const FormatException('media');
     Source.fromJson(_map(json['source']));
-    if (media != null) {
-      for (final item in media) {
-        Media.fromJson(_map(item));
-      }
-    }
+    final List<Media> parsedMedia = media == null
+        ? const <Media>[]
+        : List<Media>.unmodifiable(
+            (media as List).map<Media>((item) => Media.fromJson(_map(item))),
+          );
     final parsedOptions = options
         .map((e) => PublicOption.fromJson(_map(e)))
         .toList(growable: false);
@@ -175,6 +184,7 @@ class PublicQuestion {
       stem: json['stem'] as String,
       options: parsedOptions,
       kind: kind,
+      media: parsedMedia,
     );
   }
 }

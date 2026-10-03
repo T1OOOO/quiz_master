@@ -559,6 +559,7 @@ PublicQuestion? _orderedQuestion(Catalog catalog, AttemptSnapshot snapshot) {
     stem: source.stem,
     kind: source.kind,
     options: ordered,
+    media: source.media,
   );
 }
 

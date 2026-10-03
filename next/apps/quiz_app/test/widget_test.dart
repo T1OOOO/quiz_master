@@ -123,6 +123,61 @@ void main() {
       expect(api.answerBodies, hasLength(1));
     },
   );
+  for (final size in [const Size(390, 640), const Size(1262, 576)]) {
+    testWidgets('flag media keeps four choices stable at $size', (
+      tester,
+    ) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final url = 'https://quiz.kotopedia.org/flags/al-${size.width}.gif';
+      final question = PublicQuestion.fromJson({
+        ..._questionJson(1, flagMedia: true),
+        'media': [
+          {'uri': url, 'kind': 'image', 'alt': 'Флаг страны'},
+        ],
+      });
+      final pending = Completer<ImageInfo>();
+      final key = NetworkImage(url);
+      PaintingBinding.instance.imageCache.putIfAbsent(
+        key,
+        () => OneFrameImageStreamCompleter(pending.future),
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: QuestionCard(question: question, onAnswer: (_) {}),
+        ),
+      );
+      final mediaBefore = tester.getRect(
+        find.byKey(const Key('question-media')),
+      );
+      final choicesBefore = [
+        for (var option = 1; option <= 4; option++)
+          tester.getRect(find.text('Option $option')),
+      ];
+      expect(find.byType(Image), findsOneWidget);
+      expect(find.byKey(const Key('question-media-error')), findsNothing);
+      for (final bounds in choicesBefore) {
+        expect(bounds.bottom, lessThanOrEqualTo(size.height));
+      }
+
+      pending.completeError(StateError('test image failure'));
+      await tester.pump();
+      expect(find.byKey(const Key('question-media-error')), findsOneWidget);
+      expect(
+        tester.getRect(find.byKey(const Key('question-media'))),
+        mediaBefore,
+      );
+      for (var option = 1; option <= 4; option++) {
+        expect(
+          tester.getRect(find.text('Option $option')),
+          choicesBefore[option - 1],
+        );
+      }
+      expect(tester.takeException(), isNull);
+    });
+  }
 
   testWidgets('auto advance can be paused, explained and resumed', (
     tester,
@@ -214,6 +269,43 @@ void main() {
     expect(tester.getRect(find.byType(Dialog)).bottom, lessThanOrEqualTo(640));
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'decoded flag media survives the shuffled quiz page and has stable failure UI',
+    (tester) async {
+      tester.view.physicalSize = const Size(390, 640);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final api = await _QuizTestServer.start(flagMedia: true);
+      addTearDown(api.close);
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [quizApiProvider.overrideWithValue(client)],
+          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('question-media')), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Semantics && widget.properties.label == 'Флаг страны',
+        ),
+        findsOneWidget,
+      );
+      expect(find.byKey(const Key('question-media-error')), findsOneWidget);
+      for (var option = 1; option <= 4; option++) {
+        final bounds = tester.getRect(find.text('Option $option'));
+        expect(bounds.top, greaterThanOrEqualTo(0));
+        expect(bounds.bottom, lessThanOrEqualTo(640));
+      }
+      expect(tester.takeException(), isNull);
+    },
+  );
   testWidgets('catalog selection uses a shareable quiz URL', (tester) async {
     final api = await _QuizTestServer.start();
     addTearDown(api.close);
@@ -548,6 +640,7 @@ class _QuizTestServer {
   var revealCount = 0;
   var historyCount = 0;
   var feedbackCount = 0;
+  var flagMedia = false;
 
   static Future<_QuizTestServer> start({
     bool failFirstCatalog = false,
@@ -555,13 +648,14 @@ class _QuizTestServer {
     bool failFirstHistory = false,
     bool empty = false,
     bool holdFirstCatalog = false,
+    bool flagMedia = false,
   }) async => _QuizTestServer._(
     failFirstCatalog: failFirstCatalog,
     failFirstReveal: failFirstReveal,
     failFirstHistory: failFirstHistory,
     empty: empty,
     holdFirstCatalog: holdFirstCatalog,
-  );
+  )..flagMedia = flagMedia;
 
   Uri get baseUri => Uri.parse('https://quiz.test');
 
@@ -581,7 +675,7 @@ class _QuizTestServer {
         status = 503;
         response = _retryableError;
       } else {
-        response = _catalogJson(empty: empty);
+        response = _catalogJson(empty: empty, flagMedia: flagMedia);
       }
     } else if (method == 'POST' && path == '/v1/attempts') {
       status = 201;
@@ -687,7 +781,10 @@ const _retryableError = <String, Object>{
   'details': <String, String>{},
 };
 
-Map<String, Object> _catalogJson({required bool empty}) => {
+Map<String, Object> _catalogJson({
+  required bool empty,
+  bool flagMedia = false,
+}) => {
   'bundle_version': 'v25',
   'bundle_sha256': 'a' * 64,
   'quiz': {
@@ -696,11 +793,14 @@ Map<String, Object> _catalogJson({required bool empty}) => {
     'locale': 'en',
     'questions': empty
         ? <Object>[]
-        : [for (var index = 1; index <= 25; index++) _questionJson(index)],
+        : [
+            for (var index = 1; index <= 25; index++)
+              _questionJson(index, flagMedia: flagMedia && index == 1),
+          ],
   },
 };
 
-Map<String, Object> _questionJson(int index) => {
+Map<String, Object> _questionJson(int index, {bool flagMedia = false}) => {
   'quiz_id': 'quiz-many',
   'question_id': 'q-${index.toString().padLeft(3, '0')}',
   'revision': {'number': index, 'sha256': '${index % 10}' * 64},
@@ -711,6 +811,14 @@ Map<String, Object> _questionJson(int index) => {
   ],
   'difficulty': 'easy',
   'source': {'uri': 'https://example.test/$index'},
+  if (flagMedia)
+    'media': [
+      {
+        'uri': 'https://quiz.kotopedia.org/flags/al.gif',
+        'kind': 'image',
+        'alt': 'Флаг страны',
+      },
+    ],
   'answer_kind': 'single_choice',
 };
 

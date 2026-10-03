@@ -66,6 +66,37 @@ func TestImportGolden(t *testing.T) {
 		})
 	}
 }
+
+// Flag media survives source import and publication without changing answer IDs.
+func TestImportQuestionMedia(t *testing.T) {
+	want := []Media{{"uri": "https://quiz.kotopedia.org/flags/jp.gif", "kind": "image", "alt": "Флаг страны"}}
+	source := strings.Replace(legacyBase, `"correct_answer":2`, `"correct_answer":2,"media":[{"uri":"https://quiz.kotopedia.org/flags/jp.gif","kind":"image","alt":"Флаг страны"}]`, 1)
+	d, _, err := importText(t, source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if d.Questions[0].Media == nil || !reflect.DeepEqual(*d.Questions[0].Media, want) {
+		t.Fatal("media lost or changed during import")
+	}
+	b, err := Build(d, "test-media", "2026-10-03T02:09:21Z", schemas)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if b.Quiz.Questions[0].Media == nil || !reflect.DeepEqual(*b.Quiz.Questions[0].Media, want) || b.PrivateGrading["question-two"].CorrectOptionID != "question-two-opt-3" {
+		t.Fatal("published media or nonzero answer changed")
+	}
+}
+
+func TestImportQuestionMediaRejectsMalformedEntries(t *testing.T) {
+	for _, raw := range []string{`null`, `{}`, `[null]`, `[{"uri":""}]`, `[{"uri":17}]`, `[{"uri":"https://example.org/f.gif","kind":false}]`, `[{"uri":"https://example.org/f.gif","alt":17}]`, `[{"uri":"https://example.org/f.gif","answer_key":"private-marker"}]`} {
+		source := strings.Replace(legacyBase, `"correct_answer":2`, `"correct_answer":2,"media":`+raw, 1)
+		_, _, err := importText(t, source)
+		if err == nil || strings.Contains(err.Error(), "private-marker") {
+			t.Fatalf("malformed media accepted or private data exposed: %v", err)
+		}
+	}
+}
+
 func TestImportNegative(t *testing.T) {
 	cases := []struct{ name, old, new, code string }{
 		{"answer_missing", `,"correct_answer":2`, ``, "answer_index"},

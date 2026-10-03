@@ -286,6 +286,7 @@ class _QuestionCardState extends State<QuestionCard> {
   @override
   Widget build(BuildContext context) {
     final disabled = _disabled;
+    final questionImage = _imageMedia(widget.question.media);
     final choices = widget.question.options
         .map(
           (option) => switch (widget.question.kind) {
@@ -330,6 +331,10 @@ class _QuestionCardState extends State<QuestionCard> {
               widget.question.stem,
               style: Theme.of(context).textTheme.titleLarge,
             ),
+            if (questionImage != null) ...[
+              const SizedBox(height: 12),
+              _QuestionMedia(media: questionImage),
+            ],
             if (widget.question.kind == AnswerKind.normalizedText)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,6 +368,80 @@ class _QuestionCardState extends State<QuestionCard> {
       ),
     );
   }
+}
+
+Media? _imageMedia(Iterable<Media> media) {
+  for (final item in media) {
+    if (item.kind == 'image') return item;
+  }
+  return null;
+}
+
+class _QuestionMedia extends StatelessWidget {
+  const _QuestionMedia({required this.media});
+  final Media media;
+
+  Uri? get _uri {
+    final uri = Uri.tryParse(media.uri);
+    return uri != null && uri.scheme == 'https' && uri.host.isNotEmpty
+        ? uri
+        : null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final uri = _uri;
+    final alt = media.alt?.trim();
+    final russian = Localizations.localeOf(context).languageCode == 'ru';
+    final label = alt == null || alt.isEmpty
+        ? (russian ? 'Изображение вопроса' : 'Question image')
+        : alt;
+    final unavailable = russian
+        ? 'Изображение недоступно'
+        : 'Image unavailable';
+    return SizedBox(
+      key: const Key('question-media'),
+      height: 80,
+      width: double.infinity,
+      child: Semantics(
+        container: true,
+        label: label,
+        image: true,
+        child: uri == null
+            ? _QuestionMediaError(label: unavailable)
+            : Image.network(
+                uri.toString(),
+                fit: BoxFit.contain,
+                excludeFromSemantics: true,
+                loadingBuilder: (context, child, progress) => progress == null
+                    ? child
+                    : Center(
+                        child: Semantics(
+                          label: AppLocalizations.of(context)!.loading,
+                          liveRegion: true,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                errorBuilder: (_, _, _) =>
+                    _QuestionMediaError(label: unavailable),
+              ),
+      ),
+    );
+  }
+}
+
+class _QuestionMediaError extends StatelessWidget {
+  const _QuestionMediaError({required this.label});
+  final String label;
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Semantics(
+      key: const Key('question-media-error'),
+      label: label,
+      liveRegion: true,
+      child: Icon(Icons.broken_image_outlined),
+    ),
+  );
 }
 
 class _ChoiceControl extends StatefulWidget {

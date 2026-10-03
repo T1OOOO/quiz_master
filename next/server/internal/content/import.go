@@ -109,7 +109,7 @@ func Import(path string) (Draft, Manifest, error) {
 		if !ok {
 			return fail("invalid_json", where)
 		}
-		if e = allowed(q, "id type difficulty text options correct_answer correct_multi explanation", where); e != nil {
+		if e = allowed(q, "id type difficulty text options correct_answer correct_multi explanation media", where); e != nil {
 			return Draft{}, Manifest{}, e
 		}
 		qSource, ok := nonblank(q["id"])
@@ -180,6 +180,34 @@ func Import(path string) (Draft, Manifest, error) {
 			mapping.Options[i] = OptionMap{SourceIndex: i, CanonicalID: oid}
 		}
 		question := Question{QuestionID: qid, Revision: Revision{Number: 1}, Stem: stem, Options: options, Difficulty: difficulty, Source: map[string]string{"uri": sourcePath}, AnswerKind: "single_choice", Grading: Grading{CorrectOptionID: options[answer].OptionID}}
+		if raw, exists := q["media"]; exists {
+			entries, ok := raw.([]any)
+			if !ok {
+				return fail("media", where+"/media")
+			}
+			media := make([]Media, len(entries))
+			for i, entry := range entries {
+				item, ok := entry.(map[string]any)
+				if !ok {
+					return fail("media", where+"/media")
+				}
+				if e = allowed(item, "uri kind alt", where+"/media"); e != nil {
+					return Draft{}, Manifest{}, e
+				}
+				if _, ok := nonblank(item["uri"]); !ok {
+					return fail("media", where+"/media")
+				}
+				media[i] = Media{}
+				for key, value := range item {
+					text, ok := value.(string)
+					if !ok {
+						return fail("media", where+"/media")
+					}
+					media[i][key] = text
+				}
+			}
+			question.Media = &media
+		}
 		if q["correct_multi"] != nil {
 			indexes, ok := q["correct_multi"].([]any)
 			if !ok || len(indexes) == 1 {
