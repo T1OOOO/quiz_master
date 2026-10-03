@@ -202,7 +202,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                     width: width,
                                     child: SourceFolderCard(
                                       title: folder,
-                                      coverHeight: compact ? (columns == 2 ? 48 : 72) : 112,
+                                      coverHeight: compact
+                                          ? (columns == 2 ? 40 : 72)
+                                          : 112,
                                       category: widget.folder.isEmpty
                                           ? folder
                                           : widget.folder,

@@ -76,7 +76,10 @@ class _QuizAppState extends ConsumerState<QuizApp> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       routerConfig: _router,
       scrollBehavior: const MaterialScrollBehavior().copyWith(
-        dragDevices: {...const MaterialScrollBehavior().dragDevices, PointerDeviceKind.mouse},
+        dragDevices: {
+          ...const MaterialScrollBehavior().dragDevices,
+          PointerDeviceKind.mouse,
+        },
       ),
     );
   }

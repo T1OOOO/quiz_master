@@ -17,13 +17,30 @@ void main() {
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
-      await tester.pumpWidget(ProviderScope(
-        overrides: [discoveryCatalogProvider.overrideWith((ref) async => [
-          for (final category in ['Гастрономия', 'Кино', 'Новый Год', 'Природа', 'Психология', 'Филии', 'Филология'])
-            CatalogPack(category, category, 'Description', category, 20),
-        ])],
-        child: const QuizApp(initialLocation: '/library', defaultLocale: Locale('ru')),
-      ));
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            discoveryCatalogProvider.overrideWith(
+              (ref) async => [
+                for (final category in [
+                  'Гастрономия',
+                  'Кино',
+                  'Новый Год',
+                  'Природа',
+                  'Психология',
+                  'Филии',
+                  'Филология',
+                ])
+                  CatalogPack(category, category, 'Description', category, 20),
+              ],
+            ),
+          ],
+          child: const QuizApp(
+            initialLocation: '/library',
+            defaultLocale: Locale('ru'),
+          ),
+        ),
+      );
       await tester.pumpAndSettle();
       expect(find.byType(SourceFolderCard), findsNWidgets(7));
       for (final card in find.byType(SourceFolderCard).evaluate()) {
@@ -36,57 +53,76 @@ void main() {
     });
   }
   testWidgets('library scrolls by dragging with a mouse', (tester) async {
-    await tester.pumpWidget(ProviderScope(
-      overrides: [discoveryCatalogProvider.overrideWith((ref) async => [
-        for (var i = 0; i < 40; i++)
-          CatalogPack('pack-$i', 'Quiz $i', 'Description', 'Folder $i', 20),
-      ])],
-      child: const QuizApp(initialLocation: '/library'),
-    ));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          discoveryCatalogProvider.overrideWith(
+            (ref) async => [
+              for (var i = 0; i < 40; i++)
+                CatalogPack(
+                  'pack-$i',
+                  'Quiz $i',
+                  'Description',
+                  'Folder $i',
+                  20,
+                ),
+            ],
+          ),
+        ],
+        child: const QuizApp(initialLocation: '/library'),
+      ),
+    );
     await tester.pumpAndSettle();
     final list = find.byType(ListView).first;
-    final scrollable = find.descendant(of: list, matching: find.byType(Scrollable)).first;
+    final scrollable = find
+        .descendant(of: list, matching: find.byType(Scrollable))
+        .first;
     final position = tester.state<ScrollableState>(scrollable).position;
     expect(position.pixels, 0);
-    await tester.drag(list, const Offset(0, -180), kind: PointerDeviceKind.mouse);
+    await tester.drag(
+      list,
+      const Offset(0, -180),
+      kind: PointerDeviceKind.mouse,
+    );
     await tester.pumpAndSettle();
     expect(position.pixels, greaterThan(100));
     expect(tester.takeException(), isNull);
   });
-  testWidgets('correct overlay advances in one second without shifting question', (
-    tester,
-  ) async {
-    final api = await _QuizTestServer.start();
-    final client = QuizApiClient(baseUri: api.baseUri);
-    client.dio.httpClientAdapter = _QuizTestAdapter(api);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [quizApiProvider.overrideWithValue(client)],
-        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
-      ),
-    );
-    await tester.pumpAndSettle();
-    final before = tester.getRect(find.byType(QuestionCard));
-    await tester.tap(find.text('Option 4'));
-    await tester.pumpAndSettle();
-    expect(find.byType(Dialog), findsOneWidget);
-    expect(find.text('Because question 1.'), findsOneWidget);
-    expect(tester.getRect(find.byType(QuestionCard)), before);
-    expect(
-      find.descendant(
-        of: find.byType(QuestionCard),
-        matching: find.text('Correct'),
-      ),
-      findsNothing,
-    );
-    // Dialog entrance has already elapsed during pumpAndSettle.
-    await tester.pump(const Duration(milliseconds: 100));
-    expect(find.text('Question 1'), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 900));
-    await tester.pumpAndSettle();
-    expect(find.text('Question 2'), findsOneWidget);
-    expect(api.answerBodies, hasLength(1));
-  });
+  testWidgets(
+    'correct overlay advances in one second without shifting question',
+    (tester) async {
+      final api = await _QuizTestServer.start();
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [quizApiProvider.overrideWithValue(client)],
+          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final before = tester.getRect(find.byType(QuestionCard));
+      await tester.tap(find.text('Option 4'));
+      await tester.pumpAndSettle();
+      expect(find.byType(Dialog), findsOneWidget);
+      expect(find.text('Because question 1.'), findsOneWidget);
+      expect(tester.getRect(find.byType(QuestionCard)), before);
+      expect(
+        find.descendant(
+          of: find.byType(QuestionCard),
+          matching: find.text('Correct'),
+        ),
+        findsNothing,
+      );
+      // Dialog entrance has already elapsed during pumpAndSettle.
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(find.text('Question 1'), findsOneWidget);
+      await tester.pump(const Duration(milliseconds: 900));
+      await tester.pumpAndSettle();
+      expect(find.text('Question 2'), findsOneWidget);
+      expect(api.answerBodies, hasLength(1));
+    },
+  );
 
   testWidgets('auto advance can be paused, explained and resumed', (
     tester,
