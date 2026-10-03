@@ -85,7 +85,7 @@ void main() {
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
-    expect(find.text('117 quizzes · 3858 questions'), findsOneWidget);
+    expect(find.text('118 quizzes · 3878 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(

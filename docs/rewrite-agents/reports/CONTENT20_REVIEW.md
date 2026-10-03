@@ -77,6 +77,20 @@ Current post-observation SHA-256:
 - `paintings20.legacy.json`: `7C858CFFD8FF6D6771C723AC25A03C004FFACEC386EBBD40971D84758591ED67`
 - `build_paintings20.py`: `F2BC16FAB5C93D54946FF435C081F3A5E2110734E2C6157C0144716ADD689279`
 
+## Paintings20 replacement extras — targeted re-review REVISE
+
+I blind-solved revised 011–020 before opening the key: A, B, C, D, A, B, D, C, A, B. Those choices match the key. Opened institutional records support the base facts for Dalí (MoMA: oil on canvas), Vermeer (Mauritshuis: a *tronie*), Hokusai (Met: woodblock print), Delacroix (Louvre: July 1830), Klimt (Belvedere: gold/silver/platinum), Magritte (MoMA: eye), and the basic Monet context. The 20-question bank is nevertheless **REVISE**, not accepted, for these exact remaining fixes:
+
+| ID | Required revision |
+|---|---|
+| 011 | Explanation is 19 whitespace-token words; expand to 20–45 with a source-backed detail. The answer and MoMA record `https://www.moma.org/collection/works/79018` are sound. |
+| 015 | `Какой предмет стал сюжетом` is grammatically/semantically weak: the keyed answer is a figure, not a предмет, and the three alternatives are not parallel or plausible. Replace with a precise visual prompt, e.g. `Какой образ находится в центре композиции «Крика» Мунка?` and four parallel image descriptions. MUNCH’s opened page identifies a motif with several versions; do not overstate an unspecific collection page as a single-object record. |
+| 018 | **Replace the question, not only its explanation.** `Гранд-Жатт` is supplied verbatim in the title, so the answer is a tautology. A source-backed replacement can ask `Какую технику применил Сёра в «Воскресенье на Гранд-Жатт»?` with `пуантилизм` as the keyed answer; the Art Institute’s official material explains adjacent pure-color points mixing in the viewer’s eye. Its explanation is also 19 words and must become 20–45. |
+| 019 | Explanation is 18 words; the prompt `Какое впечатление стремился передать` is vague and inferential, while the cited collection overview is not a work record. Replace it with the concrete, source-backed question `Из окна какого города Моне написал «Впечатление. Восход солнца»?` → `Гавра` (Le Havre). Use the opened Musée Marmottan individual record `https://www.marmottan.fr/en/notice/4014/`, which identifies the hotel window, Le Havre outer harbour, early morning and the reason for the title. |
+| 020 | The current source is a factual mislink: `https://www.moma.org/collection/works/78987` opens John Covert’s *Ex Act*, not Mondrian. Change it to the opened MoMA Mondrian record `https://www.moma.org/collection/works/80160`; it names *Composition in Red, Blue, and Yellow* and describes gridded lines distributing primary-colour blocks. Align the Russian title with that work and retain rectangles only if the explanation cites those rectilinear/gridded forms. |
+
+011/012/013/014/016/017 have no new factual objection in this targeted pass, subject to the final corrected full-bank validation. The accepted pilot 001–010 remains unchanged. This is not structural validation, import approval, publication or release.
+
 ## Source-check notes
 
 - 001: Louvre exhibition PDF, pp. 83–84: Lisa Gherardini / Francesco del Giocondo.
@@ -100,3 +114,24 @@ Frozen-input SHA-256:
 - `paintings-pilot10.key.json`: `23F42F99321128B1496F6EFB6905B74315DA50F28F9E2492A70D84E113CFAD5F`
 - `paintings-pilot10.legacy.json`: `87C4DDA28C1FC135355A390F6FDBFD5C5E00A733D85EB081BF811F4ACF692129`
 - `render_paintings_pilot10.py`: `4DD339B5F9990FD7E47E1072ACEB1CC2850573402062DF6D9FE72E3B8F663BE3`
+
+## Paintings20 final targeted re-review — ACCEPT
+
+Reviewed 2026-10-03 after the five required corrections. I blind-solved the candidate before opening its key: 011 A (oil on canvas), 015 A (figure with hands at head), 018 C (pointillism), 019 A (Le Havre), and 020 B (rectangles). All match the current key.
+
+- 011 now has a 22-word explanation; MoMA record `https://www.moma.org/collection/works/79018` supports Dalí's oil-on-canvas medium.
+- 015 now asks about the central image, with four parallel visual descriptions. The MUNCH material supports the hands-at-head motif and its multiple versions.
+- 018 replaces the title-derived tautology with a question on technique. Art Institute material describes separated colour marks and optical mixture; `пуантилизм` accurately names that documented procedure. The explanation is 24 words.
+- 019 now asks the concrete, source-backed Le Havre location. Musée Marmottan's individual record `https://www.marmottan.fr/en/notice/4014/` identifies the hotel window, the outer harbour and the early-morning view. The explanation is 24 words.
+- 020 now cites the correct MoMA Mondrian record, `https://www.moma.org/collection/works/80160`, whose description supports the gridded rectilinear colour fields. The explanation is 21 words.
+
+**FINAL ACCEPT — editorial fact/source review only.** Current 001–010 remain the previously accepted pilot content; unchanged 012–014 and 016–017 retain their preceding source checks. With the five corrections above, all 20 current records pass this editorial review for factual support, a uniquely keyed answer, explanation length, phrasing and distinct knowledge. This is not structural validation, import approval, publication or release.
+
+Fresh read-only check: `python docs/rewrite-agents/content20/build_paintings20.py --check` returned `OK: readonly candidate/key/legacy parity`. This is integrity evidence only, not editorial or schema approval.
+
+Current SHA-256:
+
+- `paintings20.candidate.json`: `BDD02F0DEBDADA048864E1CCC326B6A4E4F1FD7D2A041D4842BE4765DBB9CFE7`
+- `paintings20.key.json`: `EBF93125D0500F7526C972BCCF0EC9819AE730F29C78F9E1EF3A3E6CC37286EC`
+- `paintings20.legacy.json`: `AF028DF9839D6A99652FDCA1F35C96FBA1F83F2D5216843775839D871A80897C`
+- `build_paintings20.py`: `4822EEE4ED1A80728CB9CC6ABFDDB761F858F93729BC780B6DFDBA83EB4D5126`
