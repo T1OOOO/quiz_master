@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
-  testWidgets('correct answer overlay advances without shifting the question', (
+  testWidgets('correct overlay advances in one second without shifting question', (
     tester,
   ) async {
     final api = await _QuizTestServer.start();
@@ -36,9 +36,10 @@ void main() {
       ),
       findsNothing,
     );
-    await tester.pump(const Duration(seconds: 2));
+    // Dialog entrance has already elapsed during pumpAndSettle.
+    await tester.pump(const Duration(milliseconds: 100));
     expect(find.text('Question 1'), findsOneWidget);
-    await tester.pump(const Duration(seconds: 1));
+    await tester.pump(const Duration(milliseconds: 900));
     await tester.pumpAndSettle();
     expect(find.text('Question 2'), findsOneWidget);
     expect(api.answerBodies, hasLength(1));
@@ -65,7 +66,9 @@ void main() {
     expect(find.byType(Dialog), findsOneWidget);
     expect(find.text('Because question 1.'), findsOneWidget);
     await tester.tap(find.byKey(const Key('auto-resume')));
-    await tester.pump(const Duration(seconds: 3));
+    await tester.pump(const Duration(milliseconds: 900));
+    expect(find.text('Question 1'), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 100));
     await tester.pumpAndSettle();
     expect(find.text('Question 2'), findsOneWidget);
   });

@@ -394,7 +394,7 @@ class _FeedbackDialog extends StatefulWidget {
 class _FeedbackDialogState extends State<_FeedbackDialog>
     with WidgetsBindingObserver {
   Timer? _advance;
-  int _seconds = 3;
+  int _seconds = 1;
 
   @override
   void initState() {
@@ -409,7 +409,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog>
   }
 
   void _resume() {
-    _seconds = 3;
+    _seconds = 1;
     _advance = Timer.periodic(const Duration(seconds: 1), (_) {
       if (ModalRoute.of(context)?.isCurrent != true) {
         _pause();
