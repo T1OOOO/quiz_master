@@ -1,0 +1,3818 @@
+{
+  "scope": "193 UN Member States plus the two UN non-member observer States; no territories, Kosovo or Taiwan.",
+  "as_of": "2026-10-03",
+  "sources": {
+    "m49": {
+      "uri": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "accessed": "2026-10-03",
+      "sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb"
+    },
+    "members_en": {
+      "uri": "https://www.un.org/en/about-us/member-states",
+      "accessed": "2026-10-03",
+      "sha256": "682bd4102391f3dc1fc94c0e21491fb22385382e6c8451d91d291aac3f9d0876"
+    },
+    "members_ru": {
+      "uri": "https://www.un.org/ru/about-us/member-states",
+      "accessed": "2026-10-03",
+      "sha256": "2f980da43a6ad0249f59198f9249058f6fc4af7caf315b85e53b2e61be08e71c"
+    },
+    "observers_en": {
+      "uri": "https://www.un.org/en/about-us/non-member-states",
+      "accessed": "2026-10-03",
+      "sha256": "d84aa20a6a7b8617dcaabe168e1a5b2511d406d2c08cf131fe27cf6ec3b41628"
+    },
+    "observers_ru": {
+      "uri": "https://www.un.org/ru/about-us/non-member-states",
+      "accessed": "2026-10-03",
+      "sha256": "461729de3d5e9bc76600d2bdf0b6304bba4cf984813d7a68683416b320966b17"
+    },
+    "samoa_capital": {
+      "uri": "https://specialist.samoa.travel/home/page/1082",
+      "accessed": "2026-10-03",
+      "sha256": "76646e73b4e913d184ac43ef22ffebb8fc1ab55f6272ae11b842809ba30a50fe"
+    }
+  },
+  "fetch_failures": [
+    {
+      "iso2": "WS",
+      "profile_uri": "https://data.un.org/legacy/en/iso/WS.html",
+      "error": "WS profile fetch failed: HTTP Error 404: Not Found",
+      "flag_uri_from_index": "https://data.un.org/legacy/common/flags/wsm_flag.png"
+    },
+    {
+      "iso2": "WS",
+      "profile_uri": "https://data.un.org/legacy/en/iso/WS.html",
+      "error": "flag fetch: HTTP Error 404: Not Found",
+      "flag_uri_from_index": "https://data.un.org/legacy/common/flags/wsm_flag.png"
+    }
+  ],
+  "countries": [
+    {
+      "iso2": "AD",
+      "iso3": "AND",
+      "name_ru": "Андорра",
+      "name_en": "Andorra",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/and_flag.png",
+      "capitals": [
+        {
+          "name_en": "Andorra la Vella",
+          "name_ru": "Андорра-ла-Велья",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AE",
+      "iso3": "ARE",
+      "name_ru": "Объединенные Арабские Эмираты",
+      "name_en": "United Arab Emirates",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/are_flag.png",
+      "capitals": [
+        {
+          "name_en": "Abu Dhabi",
+          "name_ru": "Абу-Даби",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AF",
+      "iso3": "AFG",
+      "name_ru": "Афганистан",
+      "name_en": "Afghanistan",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AF.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/afg_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kabul",
+          "name_ru": "Кабул",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AF.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AG",
+      "iso3": "ATG",
+      "name_ru": "Антигуа и Барбуда",
+      "name_en": "Antigua and Barbuda",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/atg_flag.png",
+      "capitals": [
+        {
+          "name_en": "Saint John's",
+          "name_ru": "Сент-Джонс",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AL",
+      "iso3": "ALB",
+      "name_ru": "Албания",
+      "name_en": "Albania",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/alb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tirana",
+          "name_ru": "Тирана",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AM",
+      "iso3": "ARM",
+      "name_ru": "Армения",
+      "name_en": "Armenia",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/arm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Yerevan",
+          "name_ru": "Ереван",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AO",
+      "iso3": "AGO",
+      "name_ru": "Ангола",
+      "name_en": "Angola",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ago_flag.png",
+      "capitals": [
+        {
+          "name_en": "Luanda",
+          "name_ru": "Луанда",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AR",
+      "iso3": "ARG",
+      "name_ru": "Аргентина",
+      "name_en": "Argentina",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/arg_flag.png",
+      "capitals": [
+        {
+          "name_en": "Buenos Aires",
+          "name_ru": "Буэнос-Айрес",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AT",
+      "iso3": "AUT",
+      "name_ru": "Австрия",
+      "name_en": "Austria",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/aut_flag.png",
+      "capitals": [
+        {
+          "name_en": "Vienna",
+          "name_ru": "Вена",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AU",
+      "iso3": "AUS",
+      "name_ru": "Австралия",
+      "name_en": "Australia",
+      "un_status": "member",
+      "region": "Oceania",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/aus_flag.png",
+      "capitals": [
+        {
+          "name_en": "Canberra",
+          "name_ru": "Канберра",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "AZ",
+      "iso3": "AZE",
+      "name_ru": "Азербайджан",
+      "name_en": "Azerbaijan",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/AZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/aze_flag.png",
+      "capitals": [
+        {
+          "name_en": "Baku",
+          "name_ru": "Баку",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/AZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BA",
+      "iso3": "BIH",
+      "name_ru": "Босния и Герцеговина",
+      "name_en": "Bosnia and Herzegovina",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bih_flag.png",
+      "capitals": [
+        {
+          "name_en": "Sarajevo",
+          "name_ru": "Сараево",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BB",
+      "iso3": "BRB",
+      "name_ru": "Барбадос",
+      "name_en": "Barbados",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BB.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/brb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bridgetown",
+          "name_ru": "Бриджтаун",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BB.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BD",
+      "iso3": "BGD",
+      "name_ru": "Бангладеш",
+      "name_en": "Bangladesh",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bgd_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dhaka",
+          "name_ru": "Дакка",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BE",
+      "iso3": "BEL",
+      "name_ru": "Бельгия",
+      "name_en": "Belgium",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bel_flag.png",
+      "capitals": [
+        {
+          "name_en": "Brussels",
+          "name_ru": "Брюссель",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BF",
+      "iso3": "BFA",
+      "name_ru": "Буркина-Фасо",
+      "name_en": "Burkina Faso",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BF.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bfa_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ouagadougou",
+          "name_ru": "Уагадугу",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BF.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BG",
+      "iso3": "BGR",
+      "name_ru": "Болгария",
+      "name_en": "Bulgaria",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bgr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Sofia",
+          "name_ru": "София",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BH",
+      "iso3": "BHR",
+      "name_ru": "Бахрейн",
+      "name_en": "Bahrain",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bhr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Manama",
+          "name_ru": "Манама",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BI",
+      "iso3": "BDI",
+      "name_ru": "Бурунди",
+      "name_en": "Burundi",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bdi_flag.png",
+      "capitals": [
+        {
+          "name_en": "Gitega",
+          "name_ru": "Гитега",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BJ",
+      "iso3": "BEN",
+      "name_ru": "Бенин",
+      "name_en": "Benin",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BJ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ben_flag.png",
+      "capitals": [
+        {
+          "name_en": "Porto-Novo",
+          "name_ru": "Порто-Ново",
+          "role": "constitutional",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BJ.html"
+        },
+        {
+          "name_en": "Cotonou",
+          "name_ru": "Котону",
+          "role": "economic",
+          "note": "UNdata capital-city footnote identifies the economic capital.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BJ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BN",
+      "iso3": "BRN",
+      "name_ru": "Бруней-Даруссалам",
+      "name_en": "Brunei Darussalam",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/brn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bandar Seri Begawan",
+          "name_ru": "Бандар Сери Бегаван",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BO",
+      "iso3": "BOL",
+      "name_ru": "Боливия (Многонациональное Государство)",
+      "name_en": "Bolivia (Plurinational State of)",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bol_flag.png",
+      "capitals": [
+        {
+          "name_en": "Sucre",
+          "name_ru": "Сукре",
+          "role": "constitutional",
+          "note": "UNdata lists Sucre; La Paz is the seat of government.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BO.html"
+        },
+        {
+          "name_en": "La Paz",
+          "name_ru": "Ла-Пас",
+          "role": "seat_of_government",
+          "note": "UNdata capital-city footnote identifies La Paz as seat of government.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BR",
+      "iso3": "BRA",
+      "name_ru": "Бразилия",
+      "name_en": "Brazil",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bra_flag.png",
+      "capitals": [
+        {
+          "name_en": "Brasilia",
+          "name_ru": "Бразилиа",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BS",
+      "iso3": "BHS",
+      "name_ru": "Багамские Острова",
+      "name_en": "Bahamas",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bhs_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nassau",
+          "name_ru": "Нассау",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BT",
+      "iso3": "BTN",
+      "name_ru": "Бутан",
+      "name_en": "Bhutan",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/btn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Thimphu",
+          "name_ru": "Тхимпху",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BW",
+      "iso3": "BWA",
+      "name_ru": "Ботсвана",
+      "name_en": "Botswana",
+      "un_status": "member",
+      "region": "Southern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/bwa_flag.png",
+      "capitals": [
+        {
+          "name_en": "Gaborone",
+          "name_ru": "Габороне",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BW.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BY",
+      "iso3": "BLR",
+      "name_ru": "Беларусь",
+      "name_en": "Belarus",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/blr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Minsk",
+          "name_ru": "Минск",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "BZ",
+      "iso3": "BLZ",
+      "name_ru": "Белиз",
+      "name_en": "Belize",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/BZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/blz_flag.png",
+      "capitals": [
+        {
+          "name_en": "Belmopan",
+          "name_ru": "Бельмопан",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/BZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CA",
+      "iso3": "CAN",
+      "name_ru": "Канада",
+      "name_en": "Canada",
+      "un_status": "member",
+      "region": "Northern America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/can_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ottawa",
+          "name_ru": "Оттава",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CD",
+      "iso3": "COD",
+      "name_ru": "Демократическая Республика Конго",
+      "name_en": "Democratic Republic of the Congo",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cod_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kinshasa",
+          "name_ru": "Киншаса",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CF",
+      "iso3": "CAF",
+      "name_ru": "Центральноафриканская Республика",
+      "name_en": "Central African Republic",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CF.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/caf_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bangui",
+          "name_ru": "Банги",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CF.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CG",
+      "iso3": "COG",
+      "name_ru": "Конго",
+      "name_en": "Congo",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cog_flag.png",
+      "capitals": [
+        {
+          "name_en": "Brazzaville",
+          "name_ru": "Браззавиль",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CH",
+      "iso3": "CHE",
+      "name_ru": "Швейцария",
+      "name_en": "Switzerland",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/che_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bern",
+          "name_ru": "Берн",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CI",
+      "iso3": "CIV",
+      "name_ru": "Кот-д'Ивуар",
+      "name_en": "Côte d’Ivoire",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/civ_flag.png",
+      "capitals": [
+        {
+          "name_en": "Yamoussoukro",
+          "name_ru": "Ямусукро",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CL",
+      "iso3": "CHL",
+      "name_ru": "Чили",
+      "name_en": "Chile",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/chl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Santiago",
+          "name_ru": "Сантьяго",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CM",
+      "iso3": "CMR",
+      "name_ru": "Камерун",
+      "name_en": "Cameroon",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cmr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Yaoundé",
+          "name_ru": "Яунде",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CN",
+      "iso3": "CHN",
+      "name_ru": "Китай",
+      "name_en": "China",
+      "un_status": "member",
+      "region": "Eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/chn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Beijing",
+          "name_ru": "Пекин",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CO",
+      "iso3": "COL",
+      "name_ru": "Колумбия",
+      "name_en": "Colombia",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/col_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bogota",
+          "name_ru": "Богота",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CR",
+      "iso3": "CRI",
+      "name_ru": "Коста-Рика",
+      "name_en": "Costa Rica",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cri_flag.png",
+      "capitals": [
+        {
+          "name_en": "San José",
+          "name_ru": "Сан-Хосе",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CU",
+      "iso3": "CUB",
+      "name_ru": "Куба",
+      "name_en": "Cuba",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cub_flag.png",
+      "capitals": [
+        {
+          "name_en": "Havana",
+          "name_ru": "Гавана",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CV",
+      "iso3": "CPV",
+      "name_ru": "Кабо-Верде",
+      "name_en": "Cabo Verde",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CV.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cpv_flag.png",
+      "capitals": [
+        {
+          "name_en": "Praia",
+          "name_ru": "Прая",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CV.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CY",
+      "iso3": "CYP",
+      "name_ru": "Кипр",
+      "name_en": "Cyprus",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cyp_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nicosia",
+          "name_ru": "Никосия",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "CZ",
+      "iso3": "CZE",
+      "name_ru": "Чехия",
+      "name_en": "Czechia",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/CZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/cze_flag.png",
+      "capitals": [
+        {
+          "name_en": "Prague",
+          "name_ru": "Прага",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/CZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DE",
+      "iso3": "DEU",
+      "name_ru": "Германия",
+      "name_en": "Germany",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/deu_flag.png",
+      "capitals": [
+        {
+          "name_en": "Berlin",
+          "name_ru": "Берлин",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DJ",
+      "iso3": "DJI",
+      "name_ru": "Джибути",
+      "name_en": "Djibouti",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DJ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/dji_flag.png",
+      "capitals": [
+        {
+          "name_en": "Djibouti",
+          "name_ru": "Джибути",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DJ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DK",
+      "iso3": "DNK",
+      "name_ru": "Дания",
+      "name_en": "Denmark",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DK.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/dnk_flag.png",
+      "capitals": [
+        {
+          "name_en": "Copenhagen",
+          "name_ru": "Копенгаген",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DK.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DM",
+      "iso3": "DMA",
+      "name_ru": "Доминика",
+      "name_en": "Dominica",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/dma_flag.png",
+      "capitals": [
+        {
+          "name_en": "Roseau",
+          "name_ru": "Розо",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DO",
+      "iso3": "DOM",
+      "name_ru": "Доминиканская Республика",
+      "name_en": "Dominican Republic",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/dom_flag.png",
+      "capitals": [
+        {
+          "name_en": "Santo Domingo",
+          "name_ru": "Санто-Доминго",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "DZ",
+      "iso3": "DZA",
+      "name_ru": "Алжир",
+      "name_en": "Algeria",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/DZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/dza_flag.png",
+      "capitals": [
+        {
+          "name_en": "Algiers",
+          "name_ru": "Алжир",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/DZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "EC",
+      "iso3": "ECU",
+      "name_ru": "Эквадор",
+      "name_en": "Ecuador",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/EC.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ecu_flag.png",
+      "capitals": [
+        {
+          "name_en": "Quito",
+          "name_ru": "Кито",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/EC.html"
+        }
+      ]
+    },
+    {
+      "iso2": "EE",
+      "iso3": "EST",
+      "name_ru": "Эстония",
+      "name_en": "Estonia",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/EE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/est_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tallinn",
+          "name_ru": "Таллинн",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/EE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "EG",
+      "iso3": "EGY",
+      "name_ru": "Египет",
+      "name_en": "Egypt",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/EG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/egy_flag.png",
+      "capitals": [
+        {
+          "name_en": "Cairo",
+          "name_ru": "Каир",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/EG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ER",
+      "iso3": "ERI",
+      "name_ru": "Эритрея",
+      "name_en": "Eritrea",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ER.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/eri_flag.png",
+      "capitals": [
+        {
+          "name_en": "Asmara",
+          "name_ru": "Асмэра",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ER.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ES",
+      "iso3": "ESP",
+      "name_ru": "Испания",
+      "name_en": "Spain",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ES.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/esp_flag.png",
+      "capitals": [
+        {
+          "name_en": "Madrid",
+          "name_ru": "Мадрид",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ES.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ET",
+      "iso3": "ETH",
+      "name_ru": "Эфиопия",
+      "name_en": "Ethiopia",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ET.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/eth_flag.png",
+      "capitals": [
+        {
+          "name_en": "Addis Ababa",
+          "name_ru": "Аддис-Абеба",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ET.html"
+        }
+      ]
+    },
+    {
+      "iso2": "FI",
+      "iso3": "FIN",
+      "name_ru": "Финляндия",
+      "name_en": "Finland",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/FI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/fin_flag.png",
+      "capitals": [
+        {
+          "name_en": "Helsinki",
+          "name_ru": "Хельсинки",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/FI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "FJ",
+      "iso3": "FJI",
+      "name_ru": "Фиджи",
+      "name_en": "Fiji",
+      "un_status": "member",
+      "region": "Melanesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/FJ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/fji_flag.png",
+      "capitals": [
+        {
+          "name_en": "Suva",
+          "name_ru": "Сува",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/FJ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "FM",
+      "iso3": "FSM",
+      "name_ru": "Микронезия (Федеративные Штаты)",
+      "name_en": "Micronesia (Federated States of)",
+      "un_status": "member",
+      "region": "Micronesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/FM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/fsm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Palikir",
+          "name_ru": "Паликир",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/FM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "FR",
+      "iso3": "FRA",
+      "name_ru": "Франция",
+      "name_en": "France",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/FR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/fra_flag.png",
+      "capitals": [
+        {
+          "name_en": "Paris",
+          "name_ru": "Париж",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/FR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GA",
+      "iso3": "GAB",
+      "name_ru": "Габон",
+      "name_en": "Gabon",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gab_flag.png",
+      "capitals": [
+        {
+          "name_en": "Libreville",
+          "name_ru": "Либревиль",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GB",
+      "iso3": "GBR",
+      "name_ru": "Соединенное Королевство Великобритании и Северной Ирландии",
+      "name_en": "United Kingdom of Great Britain and Northern Ireland",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GB.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gbr_flag.png",
+      "capitals": [
+        {
+          "name_en": "London",
+          "name_ru": "Лондон",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GB.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GD",
+      "iso3": "GRD",
+      "name_ru": "Гренада",
+      "name_en": "Grenada",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/grd_flag.png",
+      "capitals": [
+        {
+          "name_en": "Saint George's",
+          "name_ru": "Сент-Джордж",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GE",
+      "iso3": "GEO",
+      "name_ru": "Грузия",
+      "name_en": "Georgia",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/geo_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tbilisi",
+          "name_ru": "Тбилиси",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GH",
+      "iso3": "GHA",
+      "name_ru": "Гана",
+      "name_en": "Ghana",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gha_flag.png",
+      "capitals": [
+        {
+          "name_en": "Accra",
+          "name_ru": "Аккра",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GM",
+      "iso3": "GMB",
+      "name_ru": "Гамбия",
+      "name_en": "Gambia",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gmb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Banjul",
+          "name_ru": "Банжул",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GN",
+      "iso3": "GIN",
+      "name_ru": "Гвинея",
+      "name_en": "Guinea",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gin_flag.png",
+      "capitals": [
+        {
+          "name_en": "Conakry",
+          "name_ru": "Конакри",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GQ",
+      "iso3": "GNQ",
+      "name_ru": "Экваториальная Гвинея",
+      "name_en": "Equatorial Guinea",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GQ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gnq_flag.png",
+      "capitals": [
+        {
+          "name_en": "Malabo",
+          "name_ru": "Малабо",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GQ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GR",
+      "iso3": "GRC",
+      "name_ru": "Греция",
+      "name_en": "Greece",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/grc_flag.png",
+      "capitals": [
+        {
+          "name_en": "Athens",
+          "name_ru": "Афины",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GT",
+      "iso3": "GTM",
+      "name_ru": "Гватемала",
+      "name_en": "Guatemala",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gtm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Guatemala City",
+          "name_ru": "Гватемала Сити",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GW",
+      "iso3": "GNB",
+      "name_ru": "Гвинея-Бисау",
+      "name_en": "Guinea-Bissau",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/gnb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bissau",
+          "name_ru": "Бисау",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GW.html"
+        }
+      ]
+    },
+    {
+      "iso2": "GY",
+      "iso3": "GUY",
+      "name_ru": "Гайана",
+      "name_en": "Guyana",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/GY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/guy_flag.png",
+      "capitals": [
+        {
+          "name_en": "Georgetown",
+          "name_ru": "Джорджтаун",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/GY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "HN",
+      "iso3": "HND",
+      "name_ru": "Гондурас",
+      "name_en": "Honduras",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/HN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/hnd_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tegucigalpa",
+          "name_ru": "Тегусигальпа",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/HN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "HR",
+      "iso3": "HRV",
+      "name_ru": "Хорватия",
+      "name_en": "Croatia",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/HR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/hrv_flag.png",
+      "capitals": [
+        {
+          "name_en": "Zagreb",
+          "name_ru": "Загреб",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/HR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "HT",
+      "iso3": "HTI",
+      "name_ru": "Гаити",
+      "name_en": "Haiti",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/HT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/hti_flag.png",
+      "capitals": [
+        {
+          "name_en": "Port-au-Prince",
+          "name_ru": "Порт-о-Пренс",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/HT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "HU",
+      "iso3": "HUN",
+      "name_ru": "Венгрия",
+      "name_en": "Hungary",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/HU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/hun_flag.png",
+      "capitals": [
+        {
+          "name_en": "Budapest",
+          "name_ru": "Будапешт",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/HU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ID",
+      "iso3": "IDN",
+      "name_ru": "Индонезия",
+      "name_en": "Indonesia",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ID.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/idn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Jakarta",
+          "name_ru": "Джакарта",
+          "role": "capital",
+          "note": "Legacy UNdata profile lists Jakarta. As of 2026-10-03, transfer to Nusantara/IKN is staged and requires implementing regulation; do not claim a final transfer.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ID.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IE",
+      "iso3": "IRL",
+      "name_ru": "Ирландия",
+      "name_en": "Ireland",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/irl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dublin",
+          "name_ru": "Дублин",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IL",
+      "iso3": "ISR",
+      "name_ru": "Израиль",
+      "name_en": "Israel",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/isr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Jerusalem",
+          "name_ru": "Иерусалим",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IN",
+      "iso3": "IND",
+      "name_ru": "Индия",
+      "name_en": "India",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ind_flag.png",
+      "capitals": [
+        {
+          "name_en": "New Delhi",
+          "name_ru": "Нью-Дели",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IQ",
+      "iso3": "IRQ",
+      "name_ru": "Ирак",
+      "name_en": "Iraq",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IQ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/irq_flag.png",
+      "capitals": [
+        {
+          "name_en": "Baghdad",
+          "name_ru": "Багдад",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IQ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IR",
+      "iso3": "IRN",
+      "name_ru": "Иран (Исламская Республика)",
+      "name_en": "Iran (Islamic Republic of)",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/irn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tehran",
+          "name_ru": "Тегеран",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IS",
+      "iso3": "ISL",
+      "name_ru": "Исландия",
+      "name_en": "Iceland",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/isl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Reykjavik",
+          "name_ru": "Рейкьявик",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "IT",
+      "iso3": "ITA",
+      "name_ru": "Италия",
+      "name_en": "Italy",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/IT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ita_flag.png",
+      "capitals": [
+        {
+          "name_en": "Rome",
+          "name_ru": "Рим",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/IT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "JM",
+      "iso3": "JAM",
+      "name_ru": "Ямайка",
+      "name_en": "Jamaica",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/JM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/jam_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kingston",
+          "name_ru": "Кингстон",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/JM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "JO",
+      "iso3": "JOR",
+      "name_ru": "Иордания",
+      "name_en": "Jordan",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/JO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/jor_flag.png",
+      "capitals": [
+        {
+          "name_en": "Amman",
+          "name_ru": "Амман",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/JO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "JP",
+      "iso3": "JPN",
+      "name_ru": "Япония",
+      "name_en": "Japan",
+      "un_status": "member",
+      "region": "Eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/JP.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/jpn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tokyo",
+          "name_ru": "Токио",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/JP.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KE",
+      "iso3": "KEN",
+      "name_ru": "Кения",
+      "name_en": "Kenya",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ken_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nairobi",
+          "name_ru": "Найроби",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KG",
+      "iso3": "KGZ",
+      "name_ru": "Кыргызстан",
+      "name_en": "Kyrgyzstan",
+      "un_status": "member",
+      "region": "Central Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kgz_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bishkek",
+          "name_ru": "Бишкек",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KH",
+      "iso3": "KHM",
+      "name_ru": "Камбоджа",
+      "name_en": "Cambodia",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/khm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Phnom Penh",
+          "name_ru": "Пномпень",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KI",
+      "iso3": "KIR",
+      "name_ru": "Кирибати",
+      "name_en": "Kiribati",
+      "un_status": "member",
+      "region": "Micronesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kir_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bairiki",
+          "name_ru": "Байрики",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KM",
+      "iso3": "COM",
+      "name_ru": "Коморские Острова",
+      "name_en": "Comoros",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/com_flag.png",
+      "capitals": [
+        {
+          "name_en": "Moroni",
+          "name_ru": "Морони",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KN",
+      "iso3": "KNA",
+      "name_ru": "Сент-Китс и Невис",
+      "name_en": "Saint Kitts and Nevis",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kna_flag.png",
+      "capitals": [
+        {
+          "name_en": "Basseterre",
+          "name_ru": "Бастер",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KP",
+      "iso3": "PRK",
+      "name_ru": "Корейская Народно-Демократическая Республика",
+      "name_en": "Democratic People's Republic of Korea",
+      "un_status": "member",
+      "region": "Eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KP.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/prk_flag.png",
+      "capitals": [
+        {
+          "name_en": "Pyongyang",
+          "name_ru": "Пхеньян",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KP.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KR",
+      "iso3": "KOR",
+      "name_ru": "Республика Корея",
+      "name_en": "Republic of Korea",
+      "un_status": "member",
+      "region": "Eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kor_flag.png",
+      "capitals": [
+        {
+          "name_en": "Seoul",
+          "name_ru": "Сеул",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KW",
+      "iso3": "KWT",
+      "name_ru": "Кувейт",
+      "name_en": "Kuwait",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kwt_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kuwait City",
+          "name_ru": "Кувейт Сити",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KW.html"
+        }
+      ]
+    },
+    {
+      "iso2": "KZ",
+      "iso3": "KAZ",
+      "name_ru": "Казахстан",
+      "name_en": "Kazakhstan",
+      "un_status": "member",
+      "region": "Central Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/KZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/kaz_flag.png",
+      "capitals": [
+        {
+          "name_en": "Astana",
+          "name_ru": "Астана",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/KZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LA",
+      "iso3": "LAO",
+      "name_ru": "Лаосская Народно-Демократическая Республика",
+      "name_en": "Lao People's Democratic Republic",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lao_flag.png",
+      "capitals": [
+        {
+          "name_en": "Vientiane",
+          "name_ru": "Вьентьян",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LB",
+      "iso3": "LBN",
+      "name_ru": "Ливан",
+      "name_en": "Lebanon",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LB.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lbn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Beirut",
+          "name_ru": "Бейрут",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LB.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LC",
+      "iso3": "LCA",
+      "name_ru": "Сент-Люсия",
+      "name_en": "Saint Lucia",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LC.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lca_flag.png",
+      "capitals": [
+        {
+          "name_en": "Castries",
+          "name_ru": "Кастри",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LC.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LI",
+      "iso3": "LIE",
+      "name_ru": "Лихтенштейн",
+      "name_en": "Liechtenstein",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lie_flag.png",
+      "capitals": [
+        {
+          "name_en": "Vaduz",
+          "name_ru": "Вадуц",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LK",
+      "iso3": "LKA",
+      "name_ru": "Шри-Ланка",
+      "name_en": "Sri Lanka",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LK.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lka_flag.png",
+      "capitals": [
+        {
+          "name_en": "Colombo",
+          "name_ru": "Коломбо",
+          "role": "capital",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LK.html"
+        },
+        {
+          "name_en": "Sri Jayewardenepura Kotte",
+          "name_ru": "Шри-Джаяварденепура-Котте",
+          "role": "legislative",
+          "note": "UNdata capital-city footnote identifies the legislative capital.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LK.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LR",
+      "iso3": "LBR",
+      "name_ru": "Либерия",
+      "name_en": "Liberia",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lbr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Monrovia",
+          "name_ru": "Монровия",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LS",
+      "iso3": "LSO",
+      "name_ru": "Лесото",
+      "name_en": "Lesotho",
+      "un_status": "member",
+      "region": "Southern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lso_flag.png",
+      "capitals": [
+        {
+          "name_en": "Maseru",
+          "name_ru": "Масеру",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LT",
+      "iso3": "LTU",
+      "name_ru": "Литва",
+      "name_en": "Lithuania",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ltu_flag.png",
+      "capitals": [
+        {
+          "name_en": "Vilnius",
+          "name_ru": "Вильнюс",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LU",
+      "iso3": "LUX",
+      "name_ru": "Люксембург",
+      "name_en": "Luxembourg",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lux_flag.png",
+      "capitals": [
+        {
+          "name_en": "Luxembourg",
+          "name_ru": "Люксембург",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LV",
+      "iso3": "LVA",
+      "name_ru": "Латвия",
+      "name_en": "Latvia",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LV.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lva_flag.png",
+      "capitals": [
+        {
+          "name_en": "Riga",
+          "name_ru": "Рига",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LV.html"
+        }
+      ]
+    },
+    {
+      "iso2": "LY",
+      "iso3": "LBY",
+      "name_ru": "Ливия",
+      "name_en": "Libya",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/LY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/lby_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tripoli",
+          "name_ru": "Триполи",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/LY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MA",
+      "iso3": "MAR",
+      "name_ru": "Марокко",
+      "name_en": "Morocco",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mar_flag.png",
+      "capitals": [
+        {
+          "name_en": "Rabat",
+          "name_ru": "Рабат",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MC",
+      "iso3": "MCO",
+      "name_ru": "Монако",
+      "name_en": "Monaco",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MC.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mco_flag.png",
+      "capitals": [
+        {
+          "name_en": "Monaco",
+          "name_ru": "Монако",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MC.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MD",
+      "iso3": "MDA",
+      "name_ru": "Республика Молдова",
+      "name_en": "Republic of Moldova",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mda_flag.png",
+      "capitals": [
+        {
+          "name_en": "Chisinau",
+          "name_ru": "Кишинёв",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ME",
+      "iso3": "MNE",
+      "name_ru": "Черногория",
+      "name_en": "Montenegro",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ME.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mne_flag.png",
+      "capitals": [
+        {
+          "name_en": "Podgorica",
+          "name_ru": "Подгорица",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ME.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MG",
+      "iso3": "MDG",
+      "name_ru": "Мадагаскар",
+      "name_en": "Madagascar",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mdg_flag.png",
+      "capitals": [
+        {
+          "name_en": "Antananarivo",
+          "name_ru": "Антананариву",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MH",
+      "iso3": "MHL",
+      "name_ru": "Маршалловы Острова",
+      "name_en": "Marshall Islands",
+      "un_status": "member",
+      "region": "Micronesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mhl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Majuro",
+          "name_ru": "Маджуро",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MK",
+      "iso3": "MKD",
+      "name_ru": "Северная Македония",
+      "name_en": "North Macedonia",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MK.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mkd_flag.png",
+      "capitals": [
+        {
+          "name_en": "Skopje",
+          "name_ru": "Скопье",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MK.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ML",
+      "iso3": "MLI",
+      "name_ru": "Мали",
+      "name_en": "Mali",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ML.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mli_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bamako",
+          "name_ru": "Бамако",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ML.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MM",
+      "iso3": "MMR",
+      "name_ru": "Мьянма",
+      "name_en": "Myanmar",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mmr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nay Pyi Taw",
+          "name_ru": "Нейпьидо",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MN",
+      "iso3": "MNG",
+      "name_ru": "Монголия",
+      "name_en": "Mongolia",
+      "un_status": "member",
+      "region": "Eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mng_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ulaanbaatar",
+          "name_ru": "Улан-Батор",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MR",
+      "iso3": "MRT",
+      "name_ru": "Мавритания",
+      "name_en": "Mauritania",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mrt_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nouakchott",
+          "name_ru": "Нуакшот",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MT",
+      "iso3": "MLT",
+      "name_ru": "Мальта",
+      "name_en": "Malta",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mlt_flag.png",
+      "capitals": [
+        {
+          "name_en": "Valletta",
+          "name_ru": "Валлетта",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MU",
+      "iso3": "MUS",
+      "name_ru": "Маврикий",
+      "name_en": "Mauritius",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mus_flag.png",
+      "capitals": [
+        {
+          "name_en": "Port Louis",
+          "name_ru": "Порт-Луи",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MV",
+      "iso3": "MDV",
+      "name_ru": "Мальдивские Острова",
+      "name_en": "Maldives",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MV.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mdv_flag.png",
+      "capitals": [
+        {
+          "name_en": "Male",
+          "name_ru": "Мале",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MV.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MW",
+      "iso3": "MWI",
+      "name_ru": "Малави",
+      "name_en": "Malawi",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mwi_flag.png",
+      "capitals": [
+        {
+          "name_en": "Lilongwe",
+          "name_ru": "Лилонгве",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MW.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MX",
+      "iso3": "MEX",
+      "name_ru": "Мексика",
+      "name_en": "Mexico",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MX.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mex_flag.png",
+      "capitals": [
+        {
+          "name_en": "Mexico City",
+          "name_ru": "Мехико",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MX.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MY",
+      "iso3": "MYS",
+      "name_ru": "Малайзия",
+      "name_en": "Malaysia",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/mys_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kuala Lumpur",
+          "name_ru": "Куала-Лумпур",
+          "role": "capital",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MY.html"
+        },
+        {
+          "name_en": "Putrajaya",
+          "name_ru": "Путраджая",
+          "role": "administrative",
+          "note": "UNdata capital-city footnote identifies the administrative capital.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "MZ",
+      "iso3": "MOZ",
+      "name_ru": "Мозамбик",
+      "name_en": "Mozambique",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/MZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/moz_flag.png",
+      "capitals": [
+        {
+          "name_en": "Maputo",
+          "name_ru": "Мапуту",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/MZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NA",
+      "iso3": "NAM",
+      "name_ru": "Намибия",
+      "name_en": "Namibia",
+      "un_status": "member",
+      "region": "Southern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nam_flag.png",
+      "capitals": [
+        {
+          "name_en": "Windhoek",
+          "name_ru": "Виндхук",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NE",
+      "iso3": "NER",
+      "name_ru": "Нигер",
+      "name_en": "Niger",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ner_flag.png",
+      "capitals": [
+        {
+          "name_en": "Niamey",
+          "name_ru": "Ниамей",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NG",
+      "iso3": "NGA",
+      "name_ru": "Нигерия",
+      "name_en": "Nigeria",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nga_flag.png",
+      "capitals": [
+        {
+          "name_en": "Abuja",
+          "name_ru": "Абуджа",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NI",
+      "iso3": "NIC",
+      "name_ru": "Никарагуа",
+      "name_en": "Nicaragua",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nic_flag.png",
+      "capitals": [
+        {
+          "name_en": "Managua",
+          "name_ru": "Манагуа",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NL",
+      "iso3": "NLD",
+      "name_ru": "Нидерланды (Королевство)",
+      "name_en": "Netherlands (Kingdom of the)",
+      "un_status": "member",
+      "region": "Western Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nld_flag.png",
+      "capitals": [
+        {
+          "name_en": "Amsterdam",
+          "name_ru": "Амстердам",
+          "role": "constitutional",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NL.html"
+        },
+        {
+          "name_en": "The Hague",
+          "name_ru": "Гаага",
+          "role": "seat_of_government",
+          "note": "UNdata capital-city footnote identifies the seat of government.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NO",
+      "iso3": "NOR",
+      "name_ru": "Норвегия",
+      "name_en": "Norway",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nor_flag.png",
+      "capitals": [
+        {
+          "name_en": "Oslo",
+          "name_ru": "Осло",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NP",
+      "iso3": "NPL",
+      "name_ru": "Непал",
+      "name_en": "Nepal",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NP.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/npl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kathmandu",
+          "name_ru": "Катманду",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NP.html"
+        }
+      ]
+    },
+    {
+      "iso2": "NR",
+      "iso3": "NRU",
+      "name_ru": "Наоэро",
+      "name_en": "Naoero",
+      "un_status": "member",
+      "region": "Micronesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nru_flag.png",
+      "capitals": [
+        {
+          "name_en": "Yaren",
+          "name_ru": "Ярен",
+          "role": "de_facto",
+          "note": "Nauru has no official capital; UNdata lists Yaren as capital city.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NR.html"
+        }
+      ],
+      "display_aliases": {
+        "name_en": "Nauru",
+        "name_ru": "Науру",
+        "note": "Common aliases; raw M49 identity remains Naoero / Наоэро."
+      }
+    },
+    {
+      "iso2": "NZ",
+      "iso3": "NZL",
+      "name_ru": "Новая Зеландия",
+      "name_en": "New Zealand",
+      "un_status": "member",
+      "region": "Oceania",
+      "profile_uri": "https://data.un.org/legacy/en/iso/NZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/nzl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Wellington",
+          "name_ru": "Веллингтон",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/NZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "OM",
+      "iso3": "OMN",
+      "name_ru": "Оман",
+      "name_en": "Oman",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/OM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/omn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Muscat",
+          "name_ru": "Маскат",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/OM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PA",
+      "iso3": "PAN",
+      "name_ru": "Панама",
+      "name_en": "Panama",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/pan_flag.png",
+      "capitals": [
+        {
+          "name_en": "Panama City",
+          "name_ru": "Панама Сити",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PE",
+      "iso3": "PER",
+      "name_ru": "Перу",
+      "name_en": "Peru",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/per_flag.png",
+      "capitals": [
+        {
+          "name_en": "Lima",
+          "name_ru": "Лима",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PG",
+      "iso3": "PNG",
+      "name_ru": "Папуа-Новая Гвинея",
+      "name_en": "Papua New Guinea",
+      "un_status": "member",
+      "region": "Melanesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/png_flag.png",
+      "capitals": [
+        {
+          "name_en": "Port Moresby",
+          "name_ru": "Порт-Морсби",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PH",
+      "iso3": "PHL",
+      "name_ru": "Филиппины",
+      "name_en": "Philippines",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/phl_flag.png",
+      "capitals": [
+        {
+          "name_en": "Manila",
+          "name_ru": "Манила",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PK",
+      "iso3": "PAK",
+      "name_ru": "Пакистан",
+      "name_en": "Pakistan",
+      "un_status": "member",
+      "region": "Southern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PK.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/pak_flag.png",
+      "capitals": [
+        {
+          "name_en": "Islamabad",
+          "name_ru": "Исламабад",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PK.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PL",
+      "iso3": "POL",
+      "name_ru": "Польша",
+      "name_en": "Poland",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/pol_flag.png",
+      "capitals": [
+        {
+          "name_en": "Warsaw",
+          "name_ru": "Варшава",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PS",
+      "iso3": "PSE",
+      "name_ru": "Государство Палестина",
+      "name_en": "State of Palestine",
+      "un_status": "observer",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/pse_flag.png",
+      "capitals": [
+        {
+          "name_en": "East Jerusalem",
+          "name_ru": "Восточный Иерусалим",
+          "role": "capital",
+          "note": "UNdata: designation and data provided by the State of Palestine; UN position on Jerusalem is stated in A/RES/181 (II) and subsequent General Assembly and Security Council resolutions.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PT",
+      "iso3": "PRT",
+      "name_ru": "Португалия",
+      "name_en": "Portugal",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/prt_flag.png",
+      "capitals": [
+        {
+          "name_en": "Lisbon",
+          "name_ru": "Лиссабон",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "PW",
+      "iso3": "PLW",
+      "name_ru": "Палау",
+      "name_en": "Palau",
+      "un_status": "member",
+      "region": "Micronesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/plw_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ngerulmud",
+          "name_ru": "Нгерулмуд",
+          "role": "capital",
+          "note": "Current Palau primary source: Ngerulmud is the capital on Babeldaob; Palau Judiciary locates it in Melekeok State.",
+          "source_uri": "https://55piflm.gov.pw/about"
+        }
+      ]
+    },
+    {
+      "iso2": "PY",
+      "iso3": "PRY",
+      "name_ru": "Парагвай",
+      "name_en": "Paraguay",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/PY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/pry_flag.png",
+      "capitals": [
+        {
+          "name_en": "Asunción",
+          "name_ru": "Асунсьон",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/PY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "QA",
+      "iso3": "QAT",
+      "name_ru": "Катар",
+      "name_en": "Qatar",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/QA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/qat_flag.png",
+      "capitals": [
+        {
+          "name_en": "Doha",
+          "name_ru": "Доха",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/QA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "RO",
+      "iso3": "ROU",
+      "name_ru": "Румыния",
+      "name_en": "Romania",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/RO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/rou_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bucharest",
+          "name_ru": "Бухарест",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/RO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "RS",
+      "iso3": "SRB",
+      "name_ru": "Сербия",
+      "name_en": "Serbia",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/RS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/srb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Belgrade",
+          "name_ru": "Белград",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/RS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "RU",
+      "iso3": "RUS",
+      "name_ru": "Российская Федерация",
+      "name_en": "Russian Federation",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/RU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/rus_flag.png",
+      "capitals": [
+        {
+          "name_en": "Moscow",
+          "name_ru": "Москва",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/RU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "RW",
+      "iso3": "RWA",
+      "name_ru": "Руанда",
+      "name_en": "Rwanda",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/RW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/rwa_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kigali",
+          "name_ru": "Кигали",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/RW.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SA",
+      "iso3": "SAU",
+      "name_ru": "Саудовская Аравия",
+      "name_en": "Saudi Arabia",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sau_flag.png",
+      "capitals": [
+        {
+          "name_en": "Riyadh",
+          "name_ru": "Эр-Рияд",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SB",
+      "iso3": "SLB",
+      "name_ru": "Соломоновы Острова",
+      "name_en": "Solomon Islands",
+      "un_status": "member",
+      "region": "Melanesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SB.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/slb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Honiara",
+          "name_ru": "Хониара",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SB.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SC",
+      "iso3": "SYC",
+      "name_ru": "Сейшельские Острова",
+      "name_en": "Seychelles",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SC.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/syc_flag.png",
+      "capitals": [
+        {
+          "name_en": "Victoria",
+          "name_ru": "Виктория",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SC.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SD",
+      "iso3": "SDN",
+      "name_ru": "Судан",
+      "name_en": "Sudan",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sdn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Khartoum",
+          "name_ru": "Хартум",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SE",
+      "iso3": "SWE",
+      "name_ru": "Швеция",
+      "name_en": "Sweden",
+      "un_status": "member",
+      "region": "Northern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/swe_flag.png",
+      "capitals": [
+        {
+          "name_en": "Stockholm",
+          "name_ru": "Стокгольм",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SG",
+      "iso3": "SGP",
+      "name_ru": "Сингапур",
+      "name_en": "Singapore",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sgp_flag.png",
+      "capitals": [
+        {
+          "name_en": "Singapore",
+          "name_ru": "Сингапур",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SI",
+      "iso3": "SVN",
+      "name_ru": "Словения",
+      "name_en": "Slovenia",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SI.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/svn_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ljubljana",
+          "name_ru": "Любляна",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SI.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SK",
+      "iso3": "SVK",
+      "name_ru": "Словакия",
+      "name_en": "Slovakia",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SK.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/svk_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bratislava",
+          "name_ru": "Братислава",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SK.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SL",
+      "iso3": "SLE",
+      "name_ru": "Сьерра-Леоне",
+      "name_en": "Sierra Leone",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sle_flag.png",
+      "capitals": [
+        {
+          "name_en": "Freetown",
+          "name_ru": "Фритаун",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SM",
+      "iso3": "SMR",
+      "name_ru": "Сан-Марино",
+      "name_en": "San Marino",
+      "un_status": "member",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/smr_flag.png",
+      "capitals": [
+        {
+          "name_en": "San Marino",
+          "name_ru": "Сан-Марино",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SN",
+      "iso3": "SEN",
+      "name_ru": "Сенегал",
+      "name_en": "Senegal",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sen_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dakar",
+          "name_ru": "Дакар",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SO",
+      "iso3": "SOM",
+      "name_ru": "Сомали",
+      "name_en": "Somalia",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/som_flag.png",
+      "capitals": [
+        {
+          "name_en": "Mogadishu",
+          "name_ru": "Могадишо",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SR",
+      "iso3": "SUR",
+      "name_ru": "Суринам",
+      "name_en": "Suriname",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/sur_flag.png",
+      "capitals": [
+        {
+          "name_en": "Paramaribo",
+          "name_ru": "Парамарибо",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SS",
+      "iso3": "SSD",
+      "name_ru": "Южный Судан",
+      "name_en": "South Sudan",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ssd_flag.png",
+      "capitals": [
+        {
+          "name_en": "Juba",
+          "name_ru": "Джуба",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SS.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ST",
+      "iso3": "STP",
+      "name_ru": "Сан-Томе и Принсипи",
+      "name_en": "Sao Tome and Principe",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ST.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/stp_flag.png",
+      "capitals": [
+        {
+          "name_en": "Sao Tome",
+          "name_ru": "Сан-Томе",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ST.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SV",
+      "iso3": "SLV",
+      "name_ru": "Сальвадор",
+      "name_en": "El Salvador",
+      "un_status": "member",
+      "region": "Central America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SV.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/slv_flag.png",
+      "capitals": [
+        {
+          "name_en": "San Salvador",
+          "name_ru": "Сан-Сальвадор",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SV.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SY",
+      "iso3": "SYR",
+      "name_ru": "Сирийская Арабская Республика",
+      "name_en": "Syrian Arab Republic",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/syr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Damascus",
+          "name_ru": "Дамаск",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "SZ",
+      "iso3": "SWZ",
+      "name_ru": "Эсватини",
+      "name_en": "Eswatini",
+      "un_status": "member",
+      "region": "Southern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/SZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/swz_flag.png",
+      "capitals": [
+        {
+          "name_en": "Mbabane",
+          "name_ru": "Мбабане",
+          "role": "administrative",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SZ.html"
+        },
+        {
+          "name_en": "Lobamba",
+          "name_ru": "Лобамба",
+          "role": "legislative",
+          "note": "UNdata capital-city footnote identifies the legislative capital.",
+          "source_uri": "https://data.un.org/legacy/en/iso/SZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TD",
+      "iso3": "TCD",
+      "name_ru": "Чад",
+      "name_en": "Chad",
+      "un_status": "member",
+      "region": "Middle Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TD.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tcd_flag.png",
+      "capitals": [
+        {
+          "name_en": "N'Djamena",
+          "name_ru": "Нджамена",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TD.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TG",
+      "iso3": "TGO",
+      "name_ru": "Того",
+      "name_en": "Togo",
+      "un_status": "member",
+      "region": "Western Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tgo_flag.png",
+      "capitals": [
+        {
+          "name_en": "Lomé",
+          "name_ru": "Ломе",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TH",
+      "iso3": "THA",
+      "name_ru": "Таиланд",
+      "name_en": "Thailand",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TH.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tha_flag.png",
+      "capitals": [
+        {
+          "name_en": "Bangkok",
+          "name_ru": "Бангкок",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TH.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TJ",
+      "iso3": "TJK",
+      "name_ru": "Таджикистан",
+      "name_en": "Tajikistan",
+      "un_status": "member",
+      "region": "Central Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TJ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tjk_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dushanbe",
+          "name_ru": "Душанбе",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TJ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TL",
+      "iso3": "TLS",
+      "name_ru": "Тимор-Лешти",
+      "name_en": "Timor-Leste",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TL.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tls_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dili",
+          "name_ru": "Дили",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TL.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TM",
+      "iso3": "TKM",
+      "name_ru": "Туркменистан",
+      "name_en": "Turkmenistan",
+      "un_status": "member",
+      "region": "Central Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tkm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ashgabat",
+          "name_ru": "Ашхабад",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TN",
+      "iso3": "TUN",
+      "name_ru": "Тунис",
+      "name_en": "Tunisia",
+      "un_status": "member",
+      "region": "Northern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tun_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tunis",
+          "name_ru": "Тунис",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TO",
+      "iso3": "TON",
+      "name_ru": "Тонга",
+      "name_en": "Tonga",
+      "un_status": "member",
+      "region": "Polynesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TO.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ton_flag.png",
+      "capitals": [
+        {
+          "name_en": "Nuku'alofa",
+          "name_ru": "Нукуалофа",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TO.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TR",
+      "iso3": "TUR",
+      "name_ru": "Турция",
+      "name_en": "Türkiye",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TR.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tur_flag.png",
+      "capitals": [
+        {
+          "name_en": "Ankara",
+          "name_ru": "Анкара",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TR.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TT",
+      "iso3": "TTO",
+      "name_ru": "Тринидад и Тобаго",
+      "name_en": "Trinidad and Tobago",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TT.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tto_flag.png",
+      "capitals": [
+        {
+          "name_en": "Port of Spain",
+          "name_ru": "Порт-оф-Спейн",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TT.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TV",
+      "iso3": "TUV",
+      "name_ru": "Тувалу",
+      "name_en": "Tuvalu",
+      "un_status": "member",
+      "region": "Polynesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TV.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tuv_flag.png",
+      "capitals": [
+        {
+          "name_en": "Funafuti",
+          "name_ru": "Фунафути",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TV.html"
+        }
+      ]
+    },
+    {
+      "iso2": "TZ",
+      "iso3": "TZA",
+      "name_ru": "Объединенная Республика Танзания",
+      "name_en": "United Republic of Tanzania",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/TZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/tza_flag.png",
+      "capitals": [
+        {
+          "name_en": "Dodoma",
+          "name_ru": "Додома",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/TZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "UA",
+      "iso3": "UKR",
+      "name_ru": "Украина",
+      "name_en": "Ukraine",
+      "un_status": "member",
+      "region": "Eastern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/UA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ukr_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kyiv",
+          "name_ru": "Киев",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/UA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "UG",
+      "iso3": "UGA",
+      "name_ru": "Уганда",
+      "name_en": "Uganda",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/UG.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/uga_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kampala",
+          "name_ru": "Кампала",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/UG.html"
+        }
+      ]
+    },
+    {
+      "iso2": "US",
+      "iso3": "USA",
+      "name_ru": "Соединенные Штаты Америки",
+      "name_en": "United States of America",
+      "un_status": "member",
+      "region": "Northern America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/US.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/usa_flag.png",
+      "capitals": [
+        {
+          "name_en": "Washington, D.C.",
+          "name_ru": "Вашингтон, округ Колумбия",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/US.html"
+        }
+      ]
+    },
+    {
+      "iso2": "UY",
+      "iso3": "URY",
+      "name_ru": "Уругвай",
+      "name_en": "Uruguay",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/UY.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ury_flag.png",
+      "capitals": [
+        {
+          "name_en": "Montevideo",
+          "name_ru": "Монтевидео",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/UY.html"
+        }
+      ]
+    },
+    {
+      "iso2": "UZ",
+      "iso3": "UZB",
+      "name_ru": "Узбекистан",
+      "name_en": "Uzbekistan",
+      "un_status": "member",
+      "region": "Central Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/UZ.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/uzb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Tashkent",
+          "name_ru": "Ташкент",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/UZ.html"
+        }
+      ]
+    },
+    {
+      "iso2": "VA",
+      "iso3": "VAT",
+      "name_ru": "Святой Престол",
+      "name_en": "Holy See",
+      "un_status": "observer",
+      "region": "Southern Europe",
+      "profile_uri": "https://data.un.org/legacy/en/iso/VA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/vat_flag.png",
+      "capitals": [
+        {
+          "name_en": "Vatican City",
+          "name_ru": "Ватикан",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/VA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "VC",
+      "iso3": "VCT",
+      "name_ru": "Сент-Винсент и Гренадины",
+      "name_en": "Saint Vincent and the Grenadines",
+      "un_status": "member",
+      "region": "Caribbean",
+      "profile_uri": "https://data.un.org/legacy/en/iso/VC.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/vct_flag.png",
+      "capitals": [
+        {
+          "name_en": "Kingstown",
+          "name_ru": "Кингстаун",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/VC.html"
+        }
+      ]
+    },
+    {
+      "iso2": "VE",
+      "iso3": "VEN",
+      "name_ru": "Венесуэла (Боливарианская Республика)",
+      "name_en": "Venezuela (Bolivarian Republic of)",
+      "un_status": "member",
+      "region": "South America",
+      "profile_uri": "https://data.un.org/legacy/en/iso/VE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/ven_flag.png",
+      "capitals": [
+        {
+          "name_en": "Caracas",
+          "name_ru": "Каракас",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/VE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "VN",
+      "iso3": "VNM",
+      "name_ru": "Вьетнам",
+      "name_en": "Viet Nam",
+      "un_status": "member",
+      "region": "South-eastern Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/VN.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/vnm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Hanoi",
+          "name_ru": "Ханой",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/VN.html"
+        }
+      ]
+    },
+    {
+      "iso2": "VU",
+      "iso3": "VUT",
+      "name_ru": "Вануату",
+      "name_en": "Vanuatu",
+      "un_status": "member",
+      "region": "Melanesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/VU.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/vut_flag.png",
+      "capitals": [
+        {
+          "name_en": "Port Vila",
+          "name_ru": "Порт-Вила",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/VU.html"
+        }
+      ]
+    },
+    {
+      "iso2": "WS",
+      "iso3": "WSM",
+      "name_ru": "Самоа",
+      "name_en": "Samoa",
+      "un_status": "member",
+      "region": "Polynesia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/WS.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/wsm_flag.png",
+      "capitals": [
+        {
+          "name_en": "Apia",
+          "name_ru": "Апиа",
+          "role": "capital",
+          "note": "UNdata profile URL returned 404; official Samoa Tourism Authority identifies Apia as the capital city.",
+          "source_uri": "https://specialist.samoa.travel/home/page/1082"
+        }
+      ]
+    },
+    {
+      "iso2": "YE",
+      "iso3": "YEM",
+      "name_ru": "Йемен",
+      "name_en": "Yemen",
+      "un_status": "member",
+      "region": "Western Asia",
+      "profile_uri": "https://data.un.org/legacy/en/iso/YE.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/yem_flag.png",
+      "capitals": [
+        {
+          "name_en": "Sana'a",
+          "name_ru": "Сана",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/YE.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ZA",
+      "iso3": "ZAF",
+      "name_ru": "Южная Африка",
+      "name_en": "South Africa",
+      "un_status": "member",
+      "region": "Southern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ZA.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/zaf_flag.png",
+      "capitals": [
+        {
+          "name_en": "Pretoria",
+          "name_ru": "Претория",
+          "role": "administrative",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ZA.html"
+        },
+        {
+          "name_en": "Cape Town",
+          "name_ru": "Кейптаун",
+          "role": "legislative",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ZA.html"
+        },
+        {
+          "name_en": "Bloemfontein",
+          "name_ru": "Блумфонтейн",
+          "role": "judicial",
+          "note": "UNdata capital-city footnote.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ZA.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ZM",
+      "iso3": "ZMB",
+      "name_ru": "Замбия",
+      "name_en": "Zambia",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ZM.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/zmb_flag.png",
+      "capitals": [
+        {
+          "name_en": "Lusaka",
+          "name_ru": "Лусака",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ZM.html"
+        }
+      ]
+    },
+    {
+      "iso2": "ZW",
+      "iso3": "ZWE",
+      "name_ru": "Зимбабве",
+      "name_en": "Zimbabwe",
+      "un_status": "member",
+      "region": "Eastern Africa",
+      "profile_uri": "https://data.un.org/legacy/en/iso/ZW.html",
+      "flag_uri": "https://data.un.org/legacy/common/flags/zwe_flag.png",
+      "capitals": [
+        {
+          "name_en": "Harare",
+          "name_ru": "Хараре",
+          "role": "capital",
+          "note": "UNdata Capital city field.",
+          "source_uri": "https://data.un.org/legacy/en/iso/ZW.html"
+        }
+      ]
+    }
+  ]
+}
