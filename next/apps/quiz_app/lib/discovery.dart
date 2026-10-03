@@ -203,7 +203,10 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                     child: SourceFolderCard(
                                       title: folder,
                                       coverHeight: compact
-                                          ? (columns == 2 ? 40 : 72)
+                                          ? (columns == 2 ||
+                                                    sortedFolders.length > 8
+                                                ? 40
+                                                : 72)
                                           : 112,
                                       category: widget.folder.isEmpty
                                           ? folder
