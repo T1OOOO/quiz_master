@@ -9,7 +9,9 @@ $banks = @(
     @('prep_history_events', 'prep-history-events', 'preparation-history/legacy.json', 20),
     @('prep_greek_mythology', 'prep-greek-mythology', 'preparation-mythology/legacy.json', 20),
     @('prep_norse_mythology', 'prep-norse-mythology', 'preparation-mythology/norse-legacy.json', 20),
-    @('prep_compositions', 'prep-compositions', 'preparation-music/compositions20-legacy.json', 20)
+    @('prep_compositions', 'prep-compositions', 'preparation-music/compositions20-legacy.json', 20),
+    @('prep_folklore', 'prep-folklore', 'preparation-mythology/folklore-legacy20.json', 20),
+    @('prep_film_actors_2', 'prep-film-actors-2', 'preparation-music/movie-actors40-legacy-pack.json', 40)
 )
 $total = 0
 foreach ($bank in $banks) {
@@ -17,6 +19,10 @@ foreach ($bank in $banks) {
     $reviewed = Get-Content "docs/rewrite-agents/$($bank[2])" -Raw | ConvertFrom-Json
     $draft = Get-Content "next/content/$($bank[1])/draft.json" -Raw | ConvertFrom-Json
     $manifest = Get-Content "next/content/$($bank[1])/manifest.json" -Raw | ConvertFrom-Json
+    # Importer hashes source bytes after CRLF/CR -> LF, not the raw Windows file.
+    $sourceText = [IO.File]::ReadAllText("quizzes/Preparation/$($bank[0]).json").Replace("`r`n", "`n").Replace("`r", "`n")
+    $sourceHash = [BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::UTF8.GetBytes($sourceText))).Replace('-', '').ToLowerInvariant()
+    if ($manifest.source_sha256 -cne $sourceHash) { throw "Source digest drift: $($bank[1])" }
     $bundle = Get-Content "next/content/$($bank[1])/bundle.json" -Raw | ConvertFrom-Json
     if ($source.questions.Count -ne $bank[3] -or $draft.questions.Count -ne $bank[3] -or $bundle.quiz.questions.Count -ne $bank[3]) { throw "Count: $($bank[1])" }
     if ($source.description -match 'Черновик') { throw "Draft metadata: $($bank[1])" }
@@ -43,10 +49,10 @@ foreach ($bank in $banks) {
     }
     $total += $bank[3]
 }
-if ($total -ne 200) { throw 'Expected 200 reviewed questions' }
+if ($total -ne 260) { throw 'Expected 260 reviewed questions' }
 $catalog = Get-Content next/apps/quiz_app/assets/catalog.json -Raw | ConvertFrom-Json
-if ($catalog.Count -ne 115 -or ($catalog | Measure-Object questions_count -Sum).Sum -ne 3798) { throw 'Catalog inventory' }
+if ($catalog.Count -ne 117 -or ($catalog | Measure-Object questions_count -Sum).Sum -ne 3858) { throw 'Catalog inventory' }
 foreach ($pack in $catalog) {
     if (($pack.PSObject.Properties.Name | Sort-Object) -join ',' -cne 'category,description,questions_count,quiz_id,title') { throw 'Catalog is not metadata-only' }
 }
-Write-Output 'PASS 200 reviewed questions: stems/options/answers/explanations preserved, canonical/private grading aligned, public metadata-only catalog 115/3798'
+Write-Output 'PASS 260 reviewed questions: stems/options/answers/explanations preserved, canonical/private grading aligned, public metadata-only catalog 117/3858'

@@ -4,85 +4,88 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
-  testWidgets('twelve category cards fit a short desktop screen', (
-    tester,
-  ) async {
-    tester.view.physicalSize = const Size(1262, 568);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
-    const roots = [
-      'Гастрономия',
-      'География',
-      'История',
-      'Кино',
-      'Литература',
-      'Мифология',
-      'Музыка',
-      'Новый Год',
-      'Природа',
-      'Психология',
-      'Филии',
-      'Филология',
-    ];
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          discoveryCatalogProvider.overrideWith(
-            (ref) async => [
-              for (var i = 0; i < roots.length; i++)
-                CatalogPack(
-                  'category-$i',
-                  'Quiz $i',
-                  'Description',
-                  '${roots[i]}/Test',
-                  20,
-                ),
+  for (final height in [568.0, 768.0]) {
+    testWidgets(
+      'twelve category cards fit a desktop screen of height $height',
+      (tester) async {
+        tester.view.physicalSize = Size(1262, height);
+        tester.view.devicePixelRatio = 1;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        const roots = [
+          'Гастрономия',
+          'География',
+          'История',
+          'Кино',
+          'Литература',
+          'Мифология',
+          'Музыка',
+          'Новый Год',
+          'Природа',
+          'Психология',
+          'Филии',
+          'Филология',
+        ];
+        await tester.pumpWidget(
+          ProviderScope(
+            overrides: [
+              discoveryCatalogProvider.overrideWith(
+                (ref) async => [
+                  for (var i = 0; i < roots.length; i++)
+                    CatalogPack(
+                      'category-$i',
+                      'Quiz $i',
+                      'Description',
+                      '${roots[i]}/Test',
+                      20,
+                    ),
+                ],
+              ),
             ],
+            child: QuizApp(initialLocation: '/library'),
           ),
-        ],
-        child: QuizApp(initialLocation: '/library'),
-      ),
+        );
+        await tester.pumpAndSettle();
+        for (final root in roots) {
+          expect(
+            tester.getBottomRight(find.byKey(Key('folder-$root'))).dy,
+            lessThanOrEqualTo(height),
+            reason: '$root is below the viewport',
+          );
+        }
+        const covers = {
+          'Литература': 'philology',
+          'Музыка': 'music',
+          'История': 'history',
+          'Мифология': 'mythology',
+        };
+        for (final entry in covers.entries) {
+          final image = tester.widget<Image>(
+            find.descendant(
+              of: find.byKey(Key('folder-${entry.key}')),
+              matching: find.byType(Image),
+            ),
+          );
+          expect(
+            (image.image as ResizeImage).imageProvider,
+            isA<AssetImage>().having(
+              (asset) => asset.assetName,
+              'assetName',
+              'assets/categories/${entry.value}.jpg',
+            ),
+          );
+        }
+        expect(tester.takeException(), isNull);
+      },
     );
-    await tester.pumpAndSettle();
-    for (final root in roots) {
-      expect(
-        tester.getBottomRight(find.byKey(Key('folder-$root'))).dy,
-        lessThanOrEqualTo(568),
-        reason: '$root is below the viewport',
-      );
-    }
-    const covers = {
-      'Литература': 'philology',
-      'Музыка': 'music',
-      'История': 'history',
-      'Мифология': 'mythology',
-    };
-    for (final entry in covers.entries) {
-      final image = tester.widget<Image>(
-        find.descendant(
-          of: find.byKey(Key('folder-${entry.key}')),
-          matching: find.byType(Image),
-        ),
-      );
-      expect(
-        (image.image as ResizeImage).imageProvider,
-        isA<AssetImage>().having(
-          (asset) => asset.assetName,
-          'assetName',
-          'assets/categories/${entry.value}.jpg',
-        ),
-      );
-    }
-    expect(tester.takeException(), isNull);
-  });
+  }
 
   testWidgets('full catalog can be browsed without creating a guest', (
     tester,
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
-    expect(find.text('115 quizzes · 3798 questions'), findsOneWidget);
+    expect(find.text('117 quizzes · 3858 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(

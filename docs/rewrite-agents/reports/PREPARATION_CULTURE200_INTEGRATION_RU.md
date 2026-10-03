@@ -1,6 +1,6 @@
 # Культурная библиотека: проверенные 200 вопросов
 
-Дата: 2026-10-03. Статус до выкладки: ACCEPT, локальный каталог 115 наборов / 3798 вопросов. Живой сервер пока revision 16 / 106 / 3598; статус публикации обновляется только после реальной проверки.
+Дата: 2026-10-03. PUBLISHED: живой каталог 115 наборов / 3798 вопросов, Helm revision 17. Все 200 новых вопросов прошли независимый фактчек, технический импорт и живую проверку ниже.
 
 ## Состав и редакционные решения
 
@@ -38,4 +38,29 @@
 
 ## Выкладка
 
-PENDING. Цель — тот же проверенный racknerd-f0269d5 / 192.3.164.184, namespace quiz-master, существующий PVC. План: online SQLite backup + isolated restore, pinned runtime/API image, Helm atomic upgrade, живые API/catalog/assets SHA и браузерные сценарии. Rollback revision 16 без восстановления старой БД поверх новых ответов. Локальные Docker/PostgreSQL и GitHub Actions не использовались.
+PUBLISHED: quiz-2026.10.03-culture-d5f070b, commit d5f070b5070fe6854539c3b2cf4a44df637ad5a5; Helm revision 17. Проверенный racknerd-f0269d5 / 192.3.164.184, namespace quiz-master; deployment 1/1, pod 2/2 Running, 0 restarts; тот же PVC pvc-7fc2428f-4146-4c78-a26d-2347d9f3b7bf.
+
+- Payload SHA256 f4a88c372b1e38837a3d3a2839935397099d81d2b15a344373de3bec178e4750 (22320900 bytes); image sha256:851706cd15156eee637b62267eff8b6140d31aaaafa7cb28691b6d95481cb54f.
+- API sha256 47353a2844f12e3749da84cd13942d98dfb1fbe478d341f8370106ef0b026764 reused unchanged; JS 6d81798e8ff7ae7851925a0b2bc7ff32c79cc020888a8a182a856ddd04e392c2; live catalog 2d399603da666fd805c9b852805e94d1f40faaa3a1c309095126913a13f1edbb.
+- Online SQLite backup /opt/quiz-master/backups/quiz-2026.10.03-culture-d5f070b.sqlite: integrity ok, independent restored copy integrity ok, counts participants/attempts/bundles 51/453/107. Старые попытки и snapshots сохраняются; количество stored bundles не обязано равняться текущему каталогу.
+- nginx -t, strict Helm lint, server dry-run, atomic upgrade PASS. Dry-run warned about absent kubectl last-applied annotations on Helm-managed resources; actual apply not used.
+- Live GET /v1/catalog?quiz_id=… for all nine new banks: 200 total, correct counts, public grading absent. Static metadata catalog SHA matched local; three new JPEG cover SHAs matched live.
+- Browser actual Chromium 1262×568: all 12 root categories visible; compositions real shuffled 20-question round; wrong Handel/Vivaldi answer produced centered explanation without bottom layout shift; Continue reached 2/20.
+- Browser 390×640: modern books, Greek mythology and history showed actual question and four options within viewport. Correct Orpheus answer auto-advanced to 2/20; wrong Dionysos/Hephaistos answer produced readable centered explanation. No browser errors returned.
+- Mouse-down/move/up on phone-sized library scrolled from clipped lower rows to visible Филии/Филология; not merely DOM/wheel scrolling. Ten screenshots saved in culture200-evidence/. Physical Android device and all-20 UI completion NOT_RUN; full 3798-answer correctness/restart path is covered by server SQLite integration.
+- Own Chromium sessions closed after checks. Two browser leases expired between model turns; no new browser action was executed under expired grants. Owner closed browsers, reconciled actual quiescence, and acquired fresh grants before resuming.
+- Rollback revision 16, without restoring old DB over newer answers. No local Docker/PostgreSQL/GitHub Actions.
+
+## Следующее обновление: ещё 60 вопросов
+
+LOCAL READY, пока не опубликовано: фольклор 20 и фильмы/актёры 40. Каталог 117 наборов / 3858 вопросов. Общее новое покрытие после публикации — 730 вопросов; полная программа 1890–2200 ещё не завершена.
+
+- Фактическое ревью обоих банков FINAL ACCEPT; кино исправлено по двум замечаниям (канонический AFI URL и замена повторного знания Michael Corleone/Al Pacino на Margo Channing/Bette Davis).
+- Источники: folklore-legacy20.json raw SHA a9f5e30b919a74b17f7eb5152026503f533c6a763c4759d7a2d05e5040677ee9; movie-actors40-legacy-pack.json SHA c2102b3866e8d41c7f7ddc9f8aa0688b3ad537d484c31c6a4c2916c25079ae9a.
+- Importer source_sha256 нормализует только CRLF/CR в LF (canonical.go:192–200): folklore manifest da16d79a8b015f55c1c124e306d584f2c85ad4011a20c96ea449eae7155cc1c2 не обязан совпадать с raw Windows SHA. Независимое повторное ревью подтвердило это правило: ACCEPT, не дефект.
+- Canonical bundle SHA: folklore a13766ef62b6ea4abd19504a6f8c4a760ca296c66b6d2bd89be249be2a4d591d; actors c20dea8e8e7be1e696f48b71a02f4afe1388ebff7ed807ece1426f54eaf627d0.
+- verify-culture200.ps1 теперь проверяет все 260 вопросов и normalized source SHA: PASS. Независимое техническое ревью переноса 60, приватных ключей и публичной границы: ACCEPT.
+- Go test ./... и go vet ./... PASS; SQLite ответил на все 3858 вопросов и проверил результаты/историю после restart. GOMAXPROCS=2, -p 1.
+- Flutter analyze PASS; все 55 тестов PASS, повторно после каталога117 (concurrency=1). Release web с QM_API_BASE_URL=https://quiz.kotopedia.org собран; metadata asset обновлён после импорта. JS SHA 13ded45a5af928eb7450c8587f17201fffc177761a90743d56a56b8894a88301; каталог a0c164e309d70f01032e83733c2785c26189fdd219c2d3819468fd1ee8bb1819.
+- Найден воспроизводимый desktop overflow: на1262×768 нижний ряд был821px, RED. Минимальное изменение noncompact >8 categories coverHeight72 вместо112; tests1262×568/768 GREEN. Независимое code review ACCEPT. Живое браузерное подтверждение новой версии ещё NOT_RUN.
+- Защищённые пользовательские .beads/issues.jsonl, PROJECT_OVERVIEW_RU.md и старый flags checkpoint не включать в commit. Ресурсные очереди/ошибка Windows1450 пережданы без остановки чужих процессов.

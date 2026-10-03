@@ -207,7 +207,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                                     sortedFolders.length > 8
                                                 ? 40
                                                 : 72)
-                                          : 112,
+                                          : (sortedFolders.length > 8
+                                                ? 72
+                                                : 112),
                                       category: widget.folder.isEmpty
                                           ? folder
                                           : widget.folder,
