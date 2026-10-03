@@ -51,6 +51,32 @@ Current frozen-input SHA-256:
 
 Fresh check: `python docs/rewrite-agents/content20/render_paintings_pilot10.py --check` returned `OK: 10 unique choice questions, distinct options, explanation lengths, saved legacy parity`. The rechecked explanation counts are 24–28 words (003 is now 24).
 
+## Paintings20 frozen expansion — REVISE
+
+Reviewed 2026-10-03. I read `paintings20.candidate.json` before its key. Blind choices were 001 B, 002 A, 003 C, 004 D, 005 A, 006 D, 007 C, 008 B, 009 D, 010 C, 011 A, 012 A, 013 A, 014 B, 015 B, 016 B, 017 C, 018 C, 019 D, 020 D. They match the current key. The current source records support the basic keyed facts: 1656 (*Meninas*), 1642 (*Night Watch*), tempera on canvas, 1434 (*Arnolfini*), June 1889, Flatford/River Stour, 1937, Florence as where Leonardo **began** the portrait, memento mori, and 1930.
+
+**Full-bank verdict: REVISE. Do not import or publish this 20-item expansion.** The already accepted pilot facts in 001–010 are not re-opened here; they need no rewrite. The ten new records are not accepted as a group because:
+
+- 015 asks for `июнь 1889`, which the stem of 009 already gives; 017 asks for 1937, which the stem and explanation of 004 already give; 019 asks for the memento-mori meaning already supplied by 006's explanation. Replace these, not merely reword them.
+- 016 incorrectly calls Flatford a `город`; the cited record identifies a millpond at Flatford on the River Stour, not a city. 018 overstates its evidence: the Louvre says Leonardo **began** the portrait in Florence; it does not establish an unqualified `место создания`.
+- 011 has 18 whitespace-token words and 014 has 19; both miss the required 20–45-word explanation range.
+- 011–020 have boilerplate, identical private rationales for all three distractors (`Другой правдоподобный...`, etc.), rather than a rationale for each actual distractor as required by the packet.
+- Correct positions in the current order are `1,0,2,3,0,3,2,1,3,2,0,0,0,1,1,1,2,2,3,3`: five of each position but runs of three at 011–013 and 014–016, exceeding the maximum run of two. The builder's `targets = [0,0,0,1,1,1,2,2,3,3]` is the direct cause in the added block.
+- The additional questions rely too narrowly on the same ten works and mostly test bare dates/metadata. Replace all ten new records with distinct painting knowledge that does not leak from any other stem or explanation in this pack; preserve the accepted pilot semantics.
+
+### Builder safety observation
+
+`build_paintings20.py --check` has no argument parser or read-only check branch: importing/running it unconditionally regenerates `paintings20.candidate.json`, `paintings20.key.json` and `paintings20.legacy.json`. I invoked that command expecting a verification path before discovering the absence of `--check`; it may have deterministically rewritten those three frozen outputs. No pre-invocation SHA was captured, so byte non-mutation cannot be asserted. No further author-file operation was performed. Replace this with a separate read-only checker before another review.
+
+The broker had queued an interactive lease as `OLDER_REQUEST_WAITING`; under the lead-confirmed user exception, this was a bounded sequential non-lease review. The queued lease was released and no foreign lock/process was touched.
+
+Current post-observation SHA-256:
+
+- `paintings20.candidate.json`: `7721C577116F476D4D8591C53363D221E39DE379289D89CF7A60E07C7B54D0F3`
+- `paintings20.key.json`: `371AB4A3CE3CE876C0516AEB698F6BE7A60A25232163E73C5EF7827933178115`
+- `paintings20.legacy.json`: `7C858CFFD8FF6D6771C723AC25A03C004FFACEC386EBBD40971D84758591ED67`
+- `build_paintings20.py`: `F2BC16FAB5C93D54946FF435C081F3A5E2110734E2C6157C0144716ADD689279`
+
 ## Source-check notes
 
 - 001: Louvre exhibition PDF, pp. 83–84: Lisa Gherardini / Francesco del Giocondo.
