@@ -57,7 +57,7 @@ func TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart(t *testing.T)
 		bundles = append(bundles, b)
 	}
 	rows.Close()
-	if len(bundles) != 101 {
+	if len(bundles) != 103 {
 		t.Fatalf("packs=%d", len(bundles))
 	}
 	total := 0
@@ -101,7 +101,7 @@ func TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart(t *testing.T)
 			t.Fatal("foreign history exposed")
 		}
 	}
-	if total != 3128 {
+	if total != 3168 {
 		t.Fatalf("questions=%d", total)
 	}
 	restarted, err := NewAttempts(db, filepath.Join(root, "quizzes"), "", filepath.Join(root, content.DefaultSchemas), time.Hour)
@@ -111,7 +111,7 @@ func TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart(t *testing.T)
 	historyCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
 	defer cancel()
 	history, err := restarted.ListHistory(historyCtx, guest.Principal.ID)
-	if err != nil || len(history) != 101 {
+	if err != nil || len(history) != 103 {
 		t.Fatalf("restart history=%d err=%v", len(history), err)
 	}
 	if _, err = multi.StartQuiz(ctx, guest.Principal.ID, "../../bad"); !errors.Is(err, attempts.ErrValidation) {

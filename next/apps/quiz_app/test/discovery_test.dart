@@ -9,15 +9,19 @@ void main() {
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
-    expect(find.text('101 quizzes · 3128 questions'), findsOneWidget);
+    expect(find.text('103 quizzes · 3168 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(
         of: find.byType(SourceFolderCard),
         matching: find.byType(Image),
       ),
-      findsNWidgets(7),
+      findsNWidgets(8),
     );
+
+    await tester.enterText(find.byKey(const Key('catalog-search')), 'Столицы');
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('pack-prep-capitals-1')), findsOneWidget);
 
     await tester.enterText(find.byKey(const Key('catalog-search')), 'сыр');
     await tester.pumpAndSettle();
