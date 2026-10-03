@@ -84,7 +84,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final catalog = ref.watch(discoveryCatalogProvider);
+    final compact = MediaQuery.sizeOf(context).height < 720;
     return SourceScaffold(
+      compact: compact,
       body: catalog.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (_, _) => Center(
@@ -128,7 +130,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
               ? <String>[]
               : widget.folder.split('/');
           return ListView(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(compact ? 12 : 20),
             children: [
               Center(
                 child: ConstrainedBox(
@@ -159,8 +161,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                         onChanged: (value) =>
                             context.replace(_location(widget.folder, value)),
                       ),
-                      const SizedBox(height: 16),
-                      const SizedBox(height: 12),
+                      SizedBox(height: compact ? 8 : 28),
                       Wrap(
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
@@ -201,6 +202,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                     width: width,
                                     child: SourceFolderCard(
                                       title: folder,
+                                      coverHeight: compact ? (columns == 2 ? 48 : 72) : 112,
                                       category: widget.folder.isEmpty
                                           ? folder
                                           : widget.folder,

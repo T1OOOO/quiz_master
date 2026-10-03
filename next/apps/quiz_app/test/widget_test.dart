@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' show PointerDeviceKind;
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
@@ -10,6 +11,48 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  for (final size in [const Size(1262, 576), const Size(390, 640)]) {
+    testWidgets('library categories fit $size', (tester) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(ProviderScope(
+        overrides: [discoveryCatalogProvider.overrideWith((ref) async => [
+          for (final category in ['Гастрономия', 'Кино', 'Новый Год', 'Природа', 'Психология', 'Филии', 'Филология'])
+            CatalogPack(category, category, 'Description', category, 20),
+        ])],
+        child: const QuizApp(initialLocation: '/library', defaultLocale: Locale('ru')),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.byType(SourceFolderCard), findsNWidgets(7));
+      for (final card in find.byType(SourceFolderCard).evaluate()) {
+        final rect = tester.getRect(find.byWidget(card.widget));
+        expect(rect.bottom, lessThanOrEqualTo(size.height));
+        expect(rect.left, greaterThanOrEqualTo(0));
+        expect(rect.right, lessThanOrEqualTo(size.width));
+      }
+      expect(tester.takeException(), isNull);
+    });
+  }
+  testWidgets('library scrolls by dragging with a mouse', (tester) async {
+    await tester.pumpWidget(ProviderScope(
+      overrides: [discoveryCatalogProvider.overrideWith((ref) async => [
+        for (var i = 0; i < 40; i++)
+          CatalogPack('pack-$i', 'Quiz $i', 'Description', 'Folder $i', 20),
+      ])],
+      child: const QuizApp(initialLocation: '/library'),
+    ));
+    await tester.pumpAndSettle();
+    final list = find.byType(ListView).first;
+    final scrollable = find.descendant(of: list, matching: find.byType(Scrollable)).first;
+    final position = tester.state<ScrollableState>(scrollable).position;
+    expect(position.pixels, 0);
+    await tester.drag(list, const Offset(0, -180), kind: PointerDeviceKind.mouse);
+    await tester.pumpAndSettle();
+    expect(position.pixels, greaterThan(100));
+    expect(tester.takeException(), isNull);
+  });
   testWidgets('correct overlay advances in one second without shifting question', (
     tester,
   ) async {

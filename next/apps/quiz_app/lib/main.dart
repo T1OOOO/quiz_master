@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' show PointerDeviceKind;
 
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
@@ -74,6 +75,9 @@ class _QuizAppState extends ConsumerState<QuizApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       routerConfig: _router,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {...const MaterialScrollBehavior().dragDevices, PointerDeviceKind.mouse},
+      ),
     );
   }
 }

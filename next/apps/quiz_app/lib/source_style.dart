@@ -218,9 +218,11 @@ class SourceFolderCard extends StatelessWidget {
     required this.title,
     required this.category,
     required this.onTap,
+    this.coverHeight = 112,
   });
   final String title, category;
   final VoidCallback onTap;
+  final double coverHeight;
   @override
   Widget build(BuildContext context) {
     final cover = switch (category.split('/').first) {
@@ -248,20 +250,22 @@ class SourceFolderCard extends StatelessWidget {
           children: [
             Image.asset(
               'assets/categories/$cover.jpg',
-              height: 112,
+              height: coverHeight,
               fit: BoxFit.cover,
               cacheWidth: 600,
               excludeFromSemantics: true,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
+              padding: coverHeight < 112
+                  ? const EdgeInsets.all(8)
+                  : const EdgeInsets.fromLTRB(12, 12, 12, 14),
               child: Text(
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Color(0xff655444),
-                  fontSize: 16,
+                  fontSize: coverHeight < 112 ? 14 : 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
