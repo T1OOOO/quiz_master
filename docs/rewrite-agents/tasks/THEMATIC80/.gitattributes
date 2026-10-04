@@ -1,0 +1,3 @@
+# Independent review freezes exact candidate/key bytes across checkouts.
+*.candidate.json -text whitespace=cr-at-eol
+*.key.json -text whitespace=cr-at-eol
