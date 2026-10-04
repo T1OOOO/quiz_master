@@ -305,3 +305,11 @@ Language Learner revision 85 and JS SHA256
 `520c6508fc7c9457b684c2d3210ae15322bdc2e9d1faf35b319958f55fbe66c7`
 unchanged from its completed deployment; edge remains revision 10.
 No local Docker/Postgres, Actions, extra agents or messages to the neighboring chat.
+
+## 2026-10-04 — reviewed study library, revision19
+
+Release `quiz-2026.10.04-study-5536e77` from pushed commit `5536e777139018bae2b244bfe7a586e73f5d5543`. Four independently accepted introductory articles/80 local unranked questions/four illustrated heroes integrated at `#/study`. Full release/backup/browser/hash evidence is in `study/reviews/release-evidence.md`.
+
+Sequential local Flutter gates: 69 tests PASS, analyze clean, release web build PASS. Remote unchanged API binary reused and verified against running pod; runtime-only image build without pull/network. Lock held from baseline check through backup, import, strict Helm lint/server dry-run/atomic upgrade/public identity and JS hash checks. Namespace/release quiz-master only, image digest `6fd3e6d90203198b5a03975d9b3b6387821b504ae20a1bf63212ac8afd044b59`.
+
+Revision19 ready: Deployment1/1, pod2/2 zero restarts, original PVC unchanged, certificate Ready True. SQLite online backup and restore proof integrity/counts match (54 participants/457 attempts/118 bundles). Rollback target18 preserves PVC; no DB restore performed. Every public selected catalog matches API (118 packs/3878 questions); study catalog4/80; existing practice feedback/ownership smoke PASS. Actual public article/practice/explanation native clicks and desktop/phone screenshots checked. Language Learner revision85/frontend stamp/hash and edge revision10 remain unchanged; no neighbor writes. No local Docker/Postgres or Actions.
