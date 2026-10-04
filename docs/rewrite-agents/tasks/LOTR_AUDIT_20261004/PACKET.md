@@ -1,0 +1,11 @@
+# Existing LOTR audit — 2026-10-04
+
+Parent Beads quiz_master-dh2. Four existing packs, 253 questions (3+50+100+100). Keep counts and stable original question IDs unless a genuinely unsupported item needs an explicitly reviewed replacement.
+
+Review candidates first, save independent blind answers before reading private keys or old option audit. Then verify actual key, explanation, every alternative and book/film/Silmarillion/production scope. Read original sources suited to the claim: Tolkien's texts (chapter/page/edition), actual film screenplay/scene, filmmaker/actor interviews, official publisher/estate/film production references. A fan wiki can point to evidence, but an unchecked wiki assertion or memory is not final fact approval. Do not approve unsupported or inaccessible claims; identify the exact limitation and propose a source-verifiable narrower question if needed.
+
+Candidate-facing snapshots are in candidates/, exact source hashes and private grading/explanation snapshots in keys/. Parent owns original quizzes, integration and publication; reviewers never edit them. Owner A exclusively writes review-two-towers/, owner B exclusively writes review-return-king/. Root reviews the53 remaining candidate questions and global duplicates/translation ambiguity. No nested agents or heavy builds/browser processes. Existing user-approved exception allows only text research/JSON review without interactive reservations; build/browser/publication limitations remain intact.
+
+Each report must cover every assigned ID with accept/revise/reject, blind_answer, intended_answer, factual issue versus option clue/ambiguity, actual opened source URLs or precise checked primary text references, reason and exact proposed revised text/options/correct_answer/explanation when needed. At least check all alternatives for being true aliases or differences of canon. Do not silently guess numerical facts or production anecdotes. Sources that failed are recorded as failed, not claimed checked.
+
+No code or source edits, no commits/push/deployment by reviewers; you are not alone in this checkout, preserve others' work. Send a completed report and actual evidence to root. No automatic final approval merely because answer key matches a blind guess.

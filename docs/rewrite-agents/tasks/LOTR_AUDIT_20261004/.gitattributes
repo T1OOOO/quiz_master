@@ -1,0 +1,4 @@
+# Preserve byte-pinned editorial snapshots and review hashes across checkouts.
+*.json -text whitespace=cr-at-eol
+*.py text eol=lf
+*.md text eol=lf
