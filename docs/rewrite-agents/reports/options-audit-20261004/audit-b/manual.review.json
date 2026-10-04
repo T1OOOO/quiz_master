@@ -1,0 +1,422 @@
+[
+  {
+    "uid": "study/study-geography-countries/study-geography-countries-005",
+    "signal_index": null,
+    "verdict": "balanced",
+    "reason": "Все варианты краткие и грамматически параллельны; правильный вариант объясняет искажение, но не содержит лишнего ключа.",
+    "proposed_action": "Оставить варианты; проверять только содержательную корректность.",
+    "signal_matches_key": null,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "study/study-geography-countries/study-geography-countries-010",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Вариант «только в одном регионе» выделяется абсолютом и сразу отвечает на вопрос о свойстве классификации; остальные три — явно не о регионах.",
+    "proposed_action": "Сделать отвлекающие варианты предметнее и убрать абсолютную формулировку.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-geography-countries/study-geography-countries-018",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "«Какую именно государственную функцию» прямо переформулирует различие столицы и крупнейшего города, тогда как остальные признаки очевидно нерелевантны.",
+    "proposed_action": "Сделать отвлекающие вопросы правдоподобными по географическому статусу.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-geography-countries/study-geography-countries-020",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Вариант про физическое явление, координату, статус или функцию повторяет диагностическую схему вопроса; остальные варианты построены как заведомые ошибки.",
+    "proposed_action": "Сократить мета-перечень или выровнять отвлекающие первые шаги.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-geography-maps/study-geography-maps-010",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Только вариант «площадь слишком мала для полигона в данном масштабе» связывает размер объекта с масштабом — точным объяснением; остальные используют абсолюты и цвет.",
+    "proposed_action": "Добавить правдоподобные варианты про картографический масштаб и генерализацию.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-geography-maps/study-geography-maps-017",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Определение «плоскость проходит через центр Земли» единственное полное геометрическое определение, тогда как прочие варианты — несвязанные признаки.",
+    "proposed_action": "Сделать дистракторы геометрически близкими, например про малый круг.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-greek-mythology/study-greek-mythology-005",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Фраза «не делает его универсальным злым началом» содержит требуемый нюанс вывода; остальные варианты называют чужие роли и мифы.",
+    "proposed_action": "Сформулировать дистракторы как конкурирующие интерпретации Аида.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-greek-mythology/study-greek-mythology-009",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Вариант с оговоркой «традиции и культы не тождественны» прямо дает правильную квалификацию пары; остальные — очевидные категориальные ошибки.",
+    "proposed_action": "Вынести нюанс в объяснение и выровнять альтернативы по историко-религиозному типу.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-greek-mythology/study-greek-mythology-015",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Вариант одновременно называет Троянский цикл и начало поэмы с гнева Ахилла, то есть содержит два подтверждения; остальные отрицания явно нелепы.",
+    "proposed_action": "Сократить ответ до одного проверяемого тезиса и усилить дистракторы.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-greek-mythology/study-greek-mythology-019",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Только вариант про поэтическую древнюю версию и культовый контекст отвечает на роль гимна; остальные отрицают жанр или делают чрезмерные выводы.",
+    "proposed_action": "Сделать дистракторы реалистичными функциями источника.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-history/study-history-008",
+    "signal_index": null,
+    "verdict": "balanced",
+    "reason": "Все четыре варианта различают длительное условие, соперничество, память и конкретный триггер; правильный вариант не выделен длиной или пояснением.",
+    "proposed_action": "Оставить структуру; сохранять различие причины и повода в объяснении.",
+    "signal_matches_key": null,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "study/study-history/study-history-010",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Фраза «поздние интерпретации и исходный контекст — разные вопросы» точно объясняет ошибку; остальные варианты — очевидные универсальные отрицания.",
+    "proposed_action": "Укоротить правильный вариант и сделать дистракторы исторически правдоподобными.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-history/study-history-014",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "Только вариант описывает временную протяженность и ряд действий, повторяя определение процесса; остальные содержат нелогичные абсолюты.",
+    "proposed_action": "Сделать варианты сопоставимыми определениями события и процесса.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-history/study-history-016",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Вариант прямо предлагает независимое возникновение и дополнительные свидетельства — полный методологический ответ; остальные отрицают очевидные возможности.",
+    "proposed_action": "Разделить объяснение и ответ, а дистракторы сделать проверяемыми гипотезами контакта.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature/study-nature-001",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "Длинный вариант единственный объединяет популяцию, поколения, наследуемость и преимущество; это почти определение отбора, тогда как остальные описывают отдельное обучение или акклимацию.",
+    "proposed_action": "Сократить до наблюдаемого результата и перенести критерии в explanation.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature/study-nature-003",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Только вариант называет рассеяние тепла при каждом переходе — механизм потери энергии; остальные приписывают энергию воде, хищникам или разлагателям.",
+    "proposed_action": "Сделать дистракторы альтернативными механизмами трофического переноса.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature/study-nature-015",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Вариант «происхождение не доказывает вреда и распространения» содержит точное различие неместного и инвазивного; остальные — абсолюты о потомстве, видимости и хищничестве.",
+    "proposed_action": "Сформулировать дистракторы через реальные критерии инвазивности.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature/study-nature-018",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Вариант одновременно сообщает, что полипы — животные, и объясняет связь с симбионтами; остальные отрицают базовую биологию.",
+    "proposed_action": "Оставить короткое «полипы — животные», а симбиоз перенести в объяснение.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-001",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Полное определение «доля данного варианта гена среди его вариантов» единственное отвечает на вопрос о частоте; остальные измеряют силу, длину или признаки особи.",
+    "proposed_action": "Сделать дистракторы величинами популяционной генетики.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-011",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Вариант про прекращение скрещивания и плодовитого потомства точно называет репродуктивную изоляцию; остальные признаки сходства не являются барьером.",
+    "proposed_action": "Сделать альтернативы другими видами изоляции или близкими биологическими признаками.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-014",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "Длинное уточнение про редкость сохранения, захоронение и строение тела дает сразу все причины слабой отрицательной находки; остальные — абсурдные абсолюты.",
+    "proposed_action": "Сократить до «сохранение зависит от условий» и вынести детали в explanation.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-017",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Только вариант предлагает измерить выживание и число потомков вариантов в среде — реальный тест отбора; остальные предлагают назвать, оценить красоту или искать экстремум.",
+    "proposed_action": "Сделать дистракторы альтернативными проверяемыми дизайнами исследования.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-020",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "Вариант перечисляет генетику, анатомию и биогеографию как согласуемые линии данных, сразу формулируя корректную эпистемологию; остальные построены как абсолютные отрицания.",
+    "proposed_action": "Сократить перечисление или выровнять альтернативы по типам источников.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-history/study-history-012",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "«Депонирование требуемых ратификаций» — единственный юридически конкретный ответ; остальные варианты не являются условиями вступления договора в силу.",
+    "proposed_action": "Сделать отвлекающие варианты другими юридическими процедурами, а не бытовыми событиями.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "study/study-nature-evolution/study-nature-evolution-008",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Сходство ДНК вместе с последовательностью ископаемых дает две независимые линии подтверждения; остальные пары — поверхностные совпадения или названия.",
+    "proposed_action": "Сократить до одной пары данных и сделать альтернативы научно правдоподобнее.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-1/q_ha1_p1_12",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Только вариант содержит точное английское прозвище и географическую деталь «South Bend», тогда как остальные короткие выдуманные эпитеты.",
+    "proposed_action": "Оставить короткий перевод прозвища или сделать длину дистракторов сопоставимой.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-2/q_ha1_p2_16",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Скобки «он лез по ним как по лестнице» добавляют сюжетное подтверждение правильного предмета; остальные варианты без объяснительных деталей.",
+    "proposed_action": "Оставить только название предмета, пояснение перенести в explanation.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-3/q_ha1_p3_3",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Вариант одновременно называет спортсмена и предлагает два имени в скобках, тогда как остальные — одиночные бренды; это выглядит как подсказка при неоднозначности.",
+    "proposed_action": "Уточнить эталонный ответ и убрать альтернативные имена из option.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-4/q_ha1_p4_11",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Скобки раскрывают весь механизм метки: заткнуть раковины, включить воду и затопить дом; прочие варианты не объясняют связь с прозвищем.",
+    "proposed_action": "Сократить до «затапливал дома», детали вынести в explanation.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-4/q_ha1_p4_15",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Цитата сразу сопровождается переводом и полностью формулирует запоминаемую реплику; остальные короткие реплики не дают такой семантической опоры.",
+    "proposed_action": "Использовать либо цитату, либо перевод, а не оба в option.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-4/q_ha1_p4_18",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Первый вариант перечисляет три конкретных предмета и потому выглядит энциклопедически подтвержденным; остальные короткие категории не сопоставимы по детализации.",
+    "proposed_action": "Сократить до одного набора предметов без дополнительного пояснения и выровнять дистракторы.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-4/q_ha1_p4_24",
+    "signal_index": 0,
+    "verdict": "cue",
+    "reason": "Год и формат «мультфильм 1966 года» избыточно идентифицируют правильную экранизацию; остальные варианты — общие категории.",
+    "proposed_action": "Убрать год из option и сделать альтернативы названиями передач или фильмов.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-2-part-1/q_ha2_p1_10",
+    "signal_index": 1,
+    "verdict": "cue",
+    "reason": "Скобки содержат внутреннее отрицание «Нет, просто birdseed», явно подсказывающее, какой вариант следует выбрать; вариант 5 тоже повторяет birdseed без этого признания.",
+    "proposed_action": "Удалить редакторский комментарий из option и оставить один согласованный ответ.",
+    "signal_matches_key": false,
+    "confirmed_cue": false,
+    "priority": "medium"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-1/q_ha1_p1_7",
+    "signal_index": 2,
+    "verdict": "necessary_qualifier",
+    "reason": "«BB gun» — перевод/уточнение типа пневматического ружья, а не сюжетное объяснение; остальные варианты являются отдельными видами оружия.",
+    "proposed_action": "Можно сохранить английское уточнение для точности, но не добавлять дополнительную механику сцены.",
+    "signal_matches_key": true,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-1/q_ha1_p1_18",
+    "signal_index": 2,
+    "verdict": "necessary_qualifier",
+    "reason": "«Snow Globes» — оригинальное название стеклянных снежных шаров, полезное для идентификации предмета; скобки не объясняют, почему ответ верен.",
+    "proposed_action": "Сохранить перевод или оригинал в одном стиле у всех предметных вариантов.",
+    "signal_matches_key": true,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-2/q_ha1_p2_13",
+    "signal_index": 2,
+    "verdict": "cue",
+    "reason": "Только правильный бренд получает модель «Ram Van» в скобках, что добавляет независимую подсказку к ответу на вопрос о марке.",
+    "proposed_action": "Убрать модель из option либо дать модели у всех правдоподобных брендов.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-2/q_ha1_p2_21",
+    "signal_index": 3,
+    "verdict": "cue",
+    "reason": "«Carousel» — лишняя модельная деталь, присутствующая только у одного бренда и делающая вариант более конкретным; вопрос спрашивает лишь марку.",
+    "proposed_action": "Сократить до брендов или уравнять модельные уточнения.",
+    "signal_matches_key": true,
+    "confirmed_cue": true,
+    "priority": "high"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-3/q_ha1_p3_12",
+    "signal_index": 1,
+    "verdict": "necessary_qualifier",
+    "reason": "«Camel» — английское обозначение оттенка бежевого; это перевод цвета, а не объяснение правильности. Остальные варианты — простые цвета.",
+    "proposed_action": "Сохранить один язык описания цвета и не добавлять новые признаки.",
+    "signal_matches_key": true,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/home-alone-1-part-4/q_ha1_p4_22",
+    "signal_index": 0,
+    "verdict": "necessary_qualifier",
+    "reason": "«Shells / Ракушки» уточняет, какой вид macaroni имеется в виду, и дает перевод; это предметный квалификатор, хотя остальные варианты короче.",
+    "proposed_action": "Оставить один эквивалент названия и затем выровнять формат вариантов.",
+    "signal_matches_key": true,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/new-year-cinema-ru/q_new_year_cinema_ru_24_new_year_cinema_ru_25",
+    "signal_index": null,
+    "verdict": "balanced",
+    "reason": "Все должности оформлены одинаково кратко и грамматически параллельно; правильная должность не получает пояснения или скобочного преимущества.",
+    "proposed_action": "Оставить варианты; отдельно проверить фактический ключ.",
+    "signal_matches_key": null,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/dogs-biology-senses-part-1/q_dog_breeds_222",
+    "signal_index": null,
+    "verdict": "balanced",
+    "reason": "Все шесть вариантов — породы собак одинакового типа и длины; эпитет в stem не повторяется в одном option и не устраняет конкурентов.",
+    "proposed_action": "Оставить как есть; проверять только источник эпитета.",
+    "signal_matches_key": null,
+    "confirmed_cue": false,
+    "priority": "low"
+  },
+  {
+    "uid": "ranked/cats-history-famous-and-culture/q_cat_new_fam_3",
+    "signal_index": null,
+    "verdict": "balanced",
+    "reason": "Ответ «Кот в сапогах» — название персонажа, а остальные варианты тоже имена известных котов; формулировка не добавляет лишнего объяснения.",
+    "proposed_action": "Оставить варианты; при необходимости сделать все ответы названиями персонажей.",
+    "signal_matches_key": null,
+    "confirmed_cue": false,
+    "priority": "low"
+  }
+]
