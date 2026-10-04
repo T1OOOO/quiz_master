@@ -66,23 +66,30 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Column(
                 children: [
-                  Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton(
-                        onPressed: () => context.go('/library'),
-                        child: Text(l10n.browseQuizzes),
+                      Expanded(
+                        flex: 4,
+                        child: Text(
+                          title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            height: 1.2,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
-                      Text(l10n.roundLabel(widget.round + 1)),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: Text(
+                          l10n.roundLabel(widget.round + 1),
+                          textAlign: TextAlign.end,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ),
                     ],
                   ),
                   Expanded(

@@ -301,6 +301,7 @@ class _QuestionCardState extends State<QuestionCard> {
   @override
   Widget build(BuildContext context) {
     final disabled = _disabled;
+    final compact = MediaQuery.sizeOf(context).width < 600;
     final questionImage = _imageMedia(widget.question.media);
     final choices = widget.question.options
         .map(
@@ -313,10 +314,20 @@ class _QuestionCardState extends State<QuestionCard> {
               correct: widget.reveal?.correctOptionIds.contains(option.id),
               onActivate: () => _selectSingle(option.id),
               child: RadioListTile<String>(
+                dense: compact,
+                visualDensity: compact
+                    ? const VisualDensity(vertical: -1)
+                    : null,
+                contentPadding: compact
+                    ? const EdgeInsets.symmetric(horizontal: 8)
+                    : null,
                 value: option.id,
                 groupValue: single,
                 onChanged: disabled ? null : (id) => _selectSingle(id!),
-                title: Text(option.text),
+                title: Text(
+                  option.text,
+                  style: compact ? const TextStyle(fontSize: 16) : null,
+                ),
               ),
             ),
             AnswerKind.multipleChoice => _ChoiceControl(
@@ -327,9 +338,19 @@ class _QuestionCardState extends State<QuestionCard> {
               correct: widget.reveal?.correctOptionIds.contains(option.id),
               onActivate: () => _toggleMultiple(option.id),
               child: CheckboxListTile(
+                dense: compact,
+                visualDensity: compact
+                    ? const VisualDensity(vertical: -1)
+                    : null,
+                contentPadding: compact
+                    ? const EdgeInsets.symmetric(horizontal: 8)
+                    : null,
                 value: multiple.contains(option.id),
                 onChanged: disabled ? null : (_) => _toggleMultiple(option.id),
-                title: Text(option.text),
+                title: Text(
+                  option.text,
+                  style: compact ? const TextStyle(fontSize: 16) : null,
+                ),
               ),
             ),
             AnswerKind.normalizedText => const SizedBox.shrink(),
@@ -338,13 +359,16 @@ class _QuestionCardState extends State<QuestionCard> {
         .toList();
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(compact ? 12 : 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               widget.question.stem,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: compact
+                  ? Theme.of(context).textTheme.titleLarge
+                        ?.copyWith(fontSize: 18)
+                  : Theme.of(context).textTheme.titleLarge,
             ),
             if (questionImage != null) ...[
               const SizedBox(height: 12),
@@ -375,7 +399,10 @@ class _QuestionCardState extends State<QuestionCard> {
               )
             else
               for (final choice in choices)
-                Padding(padding: const EdgeInsets.only(top: 8), child: choice),
+                Padding(
+                  padding: EdgeInsets.only(top: compact ? 4 : 8),
+                  child: choice,
+                ),
             if (widget.reveal != null && widget.showExplanation)
               ExplanationPanel(reveal: widget.reveal!),
           ],

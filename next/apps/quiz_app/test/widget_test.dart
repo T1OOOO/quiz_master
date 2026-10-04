@@ -11,6 +11,144 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  for (final size in [const Size(390, 736), const Size(360, 640)]) {
+    testWidgets('six phone answers are visible and tappable at $size', (
+      tester,
+    ) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final api = await _QuizTestServer.start();
+      api.firstQuestion = {
+        ..._questionJson(1),
+        'stem':
+            'Как называется аргентинский ритуал приготовления мяса на гриле?',
+        'options': [
+          for (final entry in [
+            'Асадо',
+            'Кебаб',
+            'Барбекю',
+            'Сате',
+            'Шашлык',
+            'Тандури',
+          ].indexed)
+            {'option_id': 'opt-${entry.$1 + 1}', 'text': entry.$2},
+        ],
+      };
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            quizApiProvider.overrideWithValue(client),
+            discoveryCatalogProvider.overrideWith(
+              (ref) async => [
+                CatalogPack(
+                  'quiz-many',
+                  'Гастрономический этикет',
+                  '',
+                  'Гастрономия',
+                  20,
+                ),
+              ],
+            ),
+          ],
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many',
+            defaultLocale: Locale('ru'),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final viewport = tester.getRect(find.byType(SingleChildScrollView).first);
+      for (final label in [
+        'Асадо',
+        'Кебаб',
+        'Барбекю',
+        'Сате',
+        'Шашлык',
+        'Тандури',
+      ]) {
+        expect(
+          find.text(label).hitTestable(),
+          findsOneWidget,
+          reason: '$label is clipped',
+        );
+      }
+      for (final label in [
+        'Асадо',
+        'Кебаб',
+        'Барбекю',
+        'Сате',
+        'Шашлык',
+        'Тандури',
+      ]) {
+        final control = find
+            .ancestor(of: find.text(label), matching: find.byType(DecoratedBox))
+            .first;
+        final rect = tester.getRect(control);
+        expect(rect.height, greaterThanOrEqualTo(48));
+        expect(rect.top, greaterThanOrEqualTo(viewport.top));
+        expect(rect.bottom, lessThanOrEqualTo(viewport.bottom));
+      }
+      await tester.tap(find.text('Тандури'));
+      await tester.pumpAndSettle();
+      expect((api.answerBodies.single['answer'] as Map)['option_id'], 'opt-6');
+      expect(find.byType(Dialog), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
+  testWidgets(
+    'long phone answers at large text scale remain reachable by scrolling',
+    (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1;
+      tester.platformDispatcher.textScaleFactorTestValue = 2;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      final api = await _QuizTestServer.start();
+      api.firstQuestion = {
+        ..._questionJson(1),
+        'stem':
+            'Как называется аргентинский ритуал приготовления мяса на гриле?',
+        'options': [
+          for (var i = 1; i <= 6; i++)
+            {
+              'option_id': 'opt-$i',
+              'text':
+                  'Длинный вариант ответа номер $i с дополнительным пояснением',
+            },
+        ],
+      };
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [quizApiProvider.overrideWithValue(client)],
+          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final last = find.text(
+        'Длинный вариант ответа номер 6 с дополнительным пояснением',
+      );
+      await tester.scrollUntilVisible(
+        last,
+        140,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await Scrollable.ensureVisible(tester.element(last), alignment: 0.5);
+      await tester.pumpAndSettle();
+      expect(last.hitTestable(), findsOneWidget);
+      await tester.tap(last);
+      await tester.pumpAndSettle();
+      expect((api.answerBodies.single['answer'] as Map)['option_id'], 'opt-6');
+      expect(tester.takeException(), isNull);
+    },
+  );
   for (final size in [const Size(1262, 576), const Size(390, 640)]) {
     testWidgets('library categories fit $size', (tester) async {
       tester.view.physicalSize = size;
@@ -641,6 +779,7 @@ class _QuizTestServer {
   var historyCount = 0;
   var feedbackCount = 0;
   var flagMedia = false;
+  Map<String, Object>? firstQuestion;
 
   static Future<_QuizTestServer> start({
     bool failFirstCatalog = false,
@@ -676,10 +815,31 @@ class _QuizTestServer {
         response = _retryableError;
       } else {
         response = _catalogJson(empty: empty, flagMedia: flagMedia);
+        if (firstQuestion != null) {
+          ((response as Map)['quiz']['questions'] as List)[0] = firstQuestion;
+        }
       }
     } else if (method == 'POST' && path == '/v1/attempts') {
       status = 201;
       response = _attemptJson;
+      if (firstQuestion != null) {
+        final ids = (firstQuestion!['options'] as List)
+            .map((o) => (o as Map)['option_id'])
+            .toList();
+        response = {
+          ..._attemptJson,
+          'question_snapshots': [
+            {
+              ...(_attemptJson['question_snapshots'] as List).first as Map,
+              'option_order': ids,
+              'position_to_option_id': {
+                for (final entry in ids.indexed) '${entry.$1}': entry.$2,
+              },
+            },
+            ...(_attemptJson['question_snapshots'] as List).skip(1),
+          ],
+        };
+      }
     } else if (method == 'POST' && path.endsWith('/answers')) {
       final body = data is String
           ? jsonDecode(data) as Map<String, dynamic>
