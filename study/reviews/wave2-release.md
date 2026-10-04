@@ -27,3 +27,7 @@ Screenshots are ignored generated evidence: `study/site/wave2-*.png`. They are l
 Flutter full tests, analyzer, release build and new public deployment are **NOT_RUN** for this batch. Heavy resource request was queued (`RESOURCE_BUSY:heavy`, then `RAM_HEADROOM`) and withdrawn without launching anything. Later optional lazy-image screenshot admission was queued for commit headroom and withdrawn; no browser left running. Follow-up **quiz_master-ukk** preserves the exact remaining workflow. Existing69-test PASS belongs to the previous four-chapter release, not this batch.
 
 Public remains the preflight build above (four/80); no Helm/API/PVC/edge/Language Learner changes were made. Individual-question artwork remains120 pending briefs, not120 generated pictures. Original58-chapter expansion now has two accepted chapters and56 planned chapters remaining.
+
+## Production follow-up — 2026-10-04
+
+The pending Flutter and publication gates above were completed in the subsequent user-authorized release. Fresh 69-test suite, analyzer and release build passed. Production is now Helm revision20, build `quiz-2026.10.04-study-3ebba4e`, with six chapters/120 study questions. Local and public Flutter desktop/phone browser checks, backup/restore and full API smoke passed; see [exact release evidence](wave2-production.md). This supersedes the earlier NOT_RUN deployment checkpoint; future chapters, individual-question artwork and physical Android acceptance remain separate work.
