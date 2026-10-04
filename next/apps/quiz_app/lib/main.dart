@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ui' show PointerDeviceKind;
+import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
@@ -11,6 +12,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_app/l10n/app_localizations.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -18,6 +21,7 @@ part 'journey.dart';
 part 'journey_pages.dart';
 part 'discovery.dart';
 part 'source_style.dart';
+part 'study_pages.dart';
 
 void main() => runApp(
   const ProviderScope(
@@ -94,6 +98,17 @@ ThemeData _theme(Brightness brightness) => ThemeData(
 GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
   initialLocation: initialLocation,
   routes: [
+    GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
+    GoRoute(
+      path: '/study/:moduleId/practice',
+      builder: (_, state) =>
+          StudyPracticePage(moduleId: state.pathParameters['moduleId']!),
+    ),
+    GoRoute(
+      path: '/study/:moduleId',
+      builder: (_, state) =>
+          StudyArticlePage(moduleId: state.pathParameters['moduleId']!),
+    ),
     GoRoute(
       path: '/library',
       builder: (_, state) => DiscoveryPage(

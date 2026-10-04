@@ -173,4 +173,69 @@ class AppLocalizationsRu extends AppLocalizations {
   String autoAdvanceIn(int seconds) {
     return 'Следующий через $seconds с · Пауза';
   }
+
+  @override
+  String get studyLibrary => 'Учебная библиотека';
+
+  @override
+  String get studyIntro =>
+      'Разберитесь в теме через примеры и связи, затем проверьте себя на 20 вопросах.';
+
+  @override
+  String get studyRead => 'Читать материал';
+
+  @override
+  String get studyContents => 'Содержание';
+
+  @override
+  String get studyPractice => 'Самопроверка · 20 вопросов';
+
+  @override
+  String get studySources => 'Источники и дальнейшее чтение';
+
+  @override
+  String get studyObjectives => 'После изучения вы сможете';
+
+  @override
+  String get studyUnranked => 'Учебная самопроверка · без рейтинга';
+
+  @override
+  String get studyCorrect => 'Верно';
+
+  @override
+  String get studyIncorrect => 'Попробуем разобраться';
+
+  @override
+  String get studyPause => 'Остановить переход';
+
+  @override
+  String get studyContinue => 'Продолжить';
+
+  @override
+  String get studyNextSecond => 'Следующий вопрос через 1 секунду';
+
+  @override
+  String get studyComplete => 'Самопроверка завершена';
+
+  @override
+  String get studyRetry => 'Попробовать ещё раз';
+
+  @override
+  String get studyBackArticle => 'К статье';
+
+  @override
+  String get studyMissing => 'Материал не найден';
+
+  @override
+  String get studyLoadError => 'Не удалось загрузить материалы';
+
+  @override
+  String studyReadingMinutes(int minutes) {
+    return '≈ $minutes мин чтения';
+  }
+
+  @override
+  String studyScore(int correct, int total) {
+    return '$correct из $total';
+  }
 }

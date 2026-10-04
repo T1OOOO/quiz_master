@@ -1,0 +1,79 @@
+{
+  "id": "geography-countries",
+  "title": "География и страны: как читать мир, а не зубрить пары",
+  "description": "Координаты, карты, рельеф и политические границы как инструменты понимания стран.",
+  "category": "География и страны",
+  "level": "начальный",
+  "status": "accepted",
+  "reading_minutes_estimate": 9,
+  "objectives": [
+    "Отделять физическую географию от политической",
+    "Читать широту, долготу и масштаб как разные подсказки",
+    "Распознавать неизбежные искажения плоских карт",
+    "Понимать, что статус, границы и названия требуют источника и даты"
+  ],
+  "source_quiz_ids": [
+    "prep-capitals-1",
+    "prep-capitals-world",
+    "prep-flags-world"
+  ],
+  "article": "article.md",
+  "source_catalog": [
+    {
+      "id": "noaa-latitude",
+      "title": "What is latitude?",
+      "url": "https://oceanservice.noaa.gov/facts/latitude.html",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Широта, экватор и параллели."
+    },
+    {
+      "id": "noaa-longitude",
+      "title": "What is longitude?",
+      "url": "https://oceanservice.noaa.gov/facts/longitude.html",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Долгота, нулевой меридиан и меридианы."
+    },
+    {
+      "id": "nws-climate-factors",
+      "title": "Local Drivers of Climate",
+      "url": "https://www.weather.gov/media/ilm/Newsletter/WilmingtonWave_Fall_2018.pdf",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Широта, высота, течения, рельеф, ветры и близость воды как факторы местного климата."
+    },
+    {
+      "id": "usgs-projections",
+      "title": "Map Projections",
+      "url": "https://store.usgs.gov/assets/mod/storefiles/PDF/16573.pdf",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "PDF напрямую получен curl (200, 21 413 239 байт), текст обеих страниц проверен pypdf 2026-10-04: стр. 1 вводная; стр. 2 The Globe, Mercator, Equal areas, Rhumb line и Which ones best suit your needs? SHA256 51c492bd0437fab49e287b80ca82539b49744d6ec62e6409e97da918669eb037. Web-parser PDF недоступен; это не принятие по одному HTTP200."
+    },
+    {
+      "id": "un-m49",
+      "title": "UNSD M49 Methodology",
+      "url": "https://unstats.un.org/unsd/methodology/m49/?hl=en-GB",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Числовые коды стран и территорий, статистические регионы и ограничения классификаций."
+    },
+    {
+      "id": "sa-provinces",
+      "title": "South Africa's provinces",
+      "url": "https://www.gov.za/about-sa/south-africas-provinces",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Пример распределения столичных функций в Южной Африке."
+    },
+    {
+      "id": "un-los",
+      "title": "United Nations Convention on the Law of the Sea, Part V",
+      "url": "https://www.un.org/Depts/los/convention_agreements/texts/unclos/part5.htm",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Исключительная экономическая зона, её предел и права других государств."
+    }
+  ]
+}

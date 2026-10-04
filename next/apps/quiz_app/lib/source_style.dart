@@ -3,9 +3,15 @@ part of 'main.dart';
 const _cream = Color(0xffe7d8c4);
 
 class SourceScaffold extends ConsumerWidget {
-  const SourceScaffold({super.key, required this.body, this.compact = false});
+  const SourceScaffold({
+    super.key,
+    required this.body,
+    this.compact = false,
+    this.backLocation,
+  });
   final Widget body;
   final bool compact;
+  final String? backLocation;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
@@ -74,6 +80,14 @@ class SourceScaffold extends ConsumerWidget {
                       },
                     ),
                     ListTile(
+                      leading: const Icon(Icons.menu_book_outlined),
+                      title: Text(l10n.studyLibrary),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/study');
+                      },
+                    ),
+                    ListTile(
                       leading: const Icon(Icons.history),
                       title: Text(l10n.history),
                       onTap: () {
@@ -123,6 +137,10 @@ class SourceScaffold extends ConsumerWidget {
                               onPressed: () {
                                 if (context.canPop()) {
                                   context.pop();
+                                  return;
+                                }
+                                if (backLocation != null) {
+                                  context.go(backLocation!);
                                   return;
                                 }
                                 final uri = GoRouterState.of(context).uri;
@@ -219,10 +237,12 @@ class SourceFolderCard extends StatelessWidget {
     required this.category,
     required this.onTap,
     this.coverHeight = 112,
+    this.coverAsset,
   });
   final String title, category;
   final VoidCallback onTap;
   final double coverHeight;
+  final String? coverAsset;
   @override
   Widget build(BuildContext context) {
     final cover = switch (category.split('/').first) {
@@ -254,7 +274,7 @@ class SourceFolderCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              'assets/categories/$cover.jpg',
+              coverAsset ?? 'assets/categories/$cover.jpg',
               height: coverHeight,
               fit: BoxFit.cover,
               cacheWidth: 600,

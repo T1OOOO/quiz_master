@@ -391,6 +391,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next in {seconds}s · Pause'**
   String autoAdvanceIn(int seconds);
+
+  /// No description provided for @studyLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Study library'**
+  String get studyLibrary;
+
+  /// No description provided for @studyIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Understand a topic through examples and connections, then try a twenty-question self-check.'**
+  String get studyIntro;
+
+  /// No description provided for @studyRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the article'**
+  String get studyRead;
+
+  /// No description provided for @studyContents.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents'**
+  String get studyContents;
+
+  /// No description provided for @studyPractice.
+  ///
+  /// In en, this message translates to:
+  /// **'Self-check · 20 questions'**
+  String get studyPractice;
+
+  /// No description provided for @studySources.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources and further reading'**
+  String get studySources;
+
+  /// No description provided for @studyObjectives.
+  ///
+  /// In en, this message translates to:
+  /// **'After studying, you will be able to'**
+  String get studyObjectives;
+
+  /// No description provided for @studyUnranked.
+  ///
+  /// In en, this message translates to:
+  /// **'Study self-check · unranked'**
+  String get studyUnranked;
+
+  /// No description provided for @studyCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get studyCorrect;
+
+  /// No description provided for @studyIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s understand why'**
+  String get studyIncorrect;
+
+  /// No description provided for @studyPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause transition'**
+  String get studyPause;
+
+  /// No description provided for @studyContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get studyContinue;
+
+  /// No description provided for @studyNextSecond.
+  ///
+  /// In en, this message translates to:
+  /// **'Next question in one second'**
+  String get studyNextSecond;
+
+  /// No description provided for @studyComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Self-check complete'**
+  String get studyComplete;
+
+  /// No description provided for @studyRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get studyRetry;
+
+  /// No description provided for @studyBackArticle.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to article'**
+  String get studyBackArticle;
+
+  /// No description provided for @studyMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Article not found'**
+  String get studyMissing;
+
+  /// No description provided for @studyLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load study materials'**
+  String get studyLoadError;
+
+  /// No description provided for @studyReadingMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {minutes} min read'**
+  String studyReadingMinutes(int minutes);
+
+  /// No description provided for @studyScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{correct} of {total}'**
+  String studyScore(int correct, int total);
 }
 
 class _AppLocalizationsDelegate
