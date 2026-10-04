@@ -61,15 +61,23 @@ void main() {
   });
 
   testWidgets(
-    'bundled library loads four real articles and eighty sourced questions',
+    'bundled library loads six real chapters and 120 sourced questions',
     (tester) async {
       final container = ProviderContainer();
       addTearDown(container.dispose);
       final modules = await tester.runAsync(
         () => container.read(studyModulesProvider.future),
       );
-      expect(modules, hasLength(4));
-      for (final module in modules!) {
+      expect(modules, hasLength(6));
+      expect(modules!.map((module) => module.id).toSet(), {
+        'nature',
+        'geography-countries',
+        'history',
+        'greek-mythology',
+        'nature-evolution',
+        'geography-maps',
+      });
+      for (final module in modules) {
         expect(module.questions, hasLength(20));
         expect(module.articleMarkdown, contains('resource:assets/study/'));
         expect(

@@ -7,7 +7,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-EXPECTED = {"nature", "geography-countries", "history", "greek-mythology"}
+EXPECTED = {
+    "nature", "geography-countries", "history", "greek-mythology",
+    "nature-evolution", "geography-maps",
+}
 
 
 def require(condition, message):

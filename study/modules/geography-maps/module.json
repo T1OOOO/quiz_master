@@ -1,0 +1,78 @@
+{
+  "id": "geography-maps",
+  "title": "Карты и навигация: читать рельеф, масштаб и направление",
+  "description": "Топографические карты, проекции и навигационные решения без ложной точности.",
+  "category": "География",
+  "level": "средний",
+  "status": "accepted",
+  "reading_minutes_estimate": 10,
+  "objectives": [
+    "Извлекать форму рельефа и уклон из горизонталей и легенды",
+    "Выбирать масштаб и проекцию под конкретную задачу",
+    "Различать истинный, магнитный и сеточный север",
+    "Объяснять разницу между локсодромией и дугой большого круга"
+  ],
+  "source_quiz_ids": [
+    "prep-capitals-world",
+    "prep-flags-world"
+  ],
+  "article": "article.md",
+  "source_catalog": [
+    {
+      "id": "usgs-symbol-guide",
+      "title": "US Topo Cartographic Specifications — Map Symbol Guide",
+      "url": "https://www.usgs.gov/ngp-standards-and-specifications/us-topo-cartographic-specifications-map-symbol-guide",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Горизонтали, интервал, индексные линии, легенда и условные знаки."
+    },
+    {
+      "id": "usgs-map-scales",
+      "title": "Map Scales",
+      "url": "https://www.usgs.gov/publications/map-scales",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Масштаб как пропорция карты и местности."
+    },
+    {
+      "id": "noaa-azimuthal-equidistant",
+      "title": "Coordinate Conversion for Hydrographic Surveying",
+      "url": "https://www.ngs.noaa.gov/PUBS_LIB/CoordinateCoversionforHydrographicSurveying_TR_NOS114_CGS7.pdf",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Азимутальная эквидистантная проекция: расстояния и азимуты от центра проекции."
+    },
+    {
+      "id": "usgs-north-arrows",
+      "title": "What do the different north arrows on a USGS topographic map mean?",
+      "url": "https://www.usgs.gov/faqs/what-do-different-north-arrows-a-usgs-topographic-map-mean",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Истинный, сеточный и магнитный север; зависимость разницы истинного и сеточного севера от проекции и положения карты."
+    },
+    {
+      "id": "faa-great-circle",
+      "title": "Pilot’s Handbook of Aeronautical Knowledge Glossary",
+      "url": "https://www.faa.gov/sites/faa.gov/files/21_phak_glossary.pdf",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Great circle route как кратчайшее расстояние по поверхности сферы между двумя точками."
+    },
+    {
+      "id": "natgeo-projections",
+      "title": "Selecting a Map Projection",
+      "url": "https://education.nationalgeographic.org/resource/selecting-map-projection/",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Доступное образовательное подтверждение компромиссов проекций и выбора сохраняемого свойства."
+    },
+    {
+      "id": "noaa-declination",
+      "title": "Magnetic Declination",
+      "url": "https://www.ncei.noaa.gov/products/magnetic-declination",
+      "accessed": "2026-10-04",
+      "evidence_status": "opened",
+      "scope": "Склонение, магнитный и истинный север, зависимость от места и времени."
+    }
+  ]
+}

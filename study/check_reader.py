@@ -21,7 +21,12 @@ class ReaderRenderingChecks(unittest.TestCase):
         path = build.ROOT.parent / 'next/apps/quiz_app/assets/study/catalog.json'
         self.assertIn(path, list(generated))
         payload = json.loads(generated[path])
-        self.assertEqual(len(payload['modules']), 4)
+        self.assertEqual(len(payload['modules']), 6)
+        self.assertEqual(
+            {module['id'] for module in payload['modules']},
+            {'nature', 'geography-countries', 'history', 'greek-mythology',
+             'nature-evolution', 'geography-maps'},
+        )
         for module in payload['modules']:
             self.assertEqual(len(module['questions']), 20)
             self.assertIn('resource:assets/study/', module['article_markdown'])

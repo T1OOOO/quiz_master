@@ -8,7 +8,7 @@ cd "/opt/quiz-master/releases/$quiz_build"
 exec 9>/opt/quiz-master/DEPLOY.lock
 flock -n 9
 # Abort if another deployment changed the baseline after our preflight.
-test "$(kubectl get deploy quiz-master -n quiz-master -o jsonpath='{.spec.template.spec.containers[0].image}')" = 'docker.io/library/quiz-master@sha256:bfc40a6477f71b126dccc542cbdcdb43971719163a37a57d587fc9159e6a5dfb'
+test "$(kubectl get deploy quiz-master -n quiz-master -o jsonpath='{.spec.template.spec.containers[0].image}')" = 'docker.io/library/quiz-master@sha256:6fd3e6d90203198b5a03975d9b3b6387821b504ae20a1bf63212ac8afd044b59'
 sha256sum -c checksums.txt
 python3 backup_sqlite.py "/opt/quiz-master/backups/$quiz_build.sqlite"
 docker build --network=none --pull=false -t "quiz-master:$quiz_build" .
