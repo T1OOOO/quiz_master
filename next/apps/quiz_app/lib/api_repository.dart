@@ -102,11 +102,14 @@ class QuizApiClient {
     }
   }
 
-  Future<Catalog> catalog({String? quizId}) async {
+  Future<Catalog> catalog({String? quizId, DifficultyBand? difficulty}) async {
     try {
       final response = await _dio.get<Object>(
         '/v1/catalog',
-        queryParameters: {'quiz_id': ?quizId},
+        queryParameters: {
+          'quiz_id': ?quizId,
+          'difficulty': ?difficulty?.wireName,
+        },
       );
       if (response.statusCode != 200) throw _failure(response.data);
       return Catalog.fromJson(_map(response.data));
@@ -119,11 +122,13 @@ class QuizApiClient {
   Future<Attempt> startAttempt({
     String? quizId,
     int? round,
+    DifficultyBand? difficulty,
     bool practice = false,
   }) async {
     final response = await _authenticatedPost('/v1/attempts', {
       'quiz_id': ?quizId,
       'round': ?round,
+      'difficulty': ?difficulty?.wireName,
       if (practice) 'mode': 'practice',
     });
     if (response.statusCode != 201) throw _failure(response.data);

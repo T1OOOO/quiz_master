@@ -13,9 +13,13 @@ This is a proposed base contract. It is not published or accepted until lead rev
 
 ## HTTP selection (SQLite collection)
 
-`GET /v1/catalog?quiz_id=<canonical-id>` returns only that pack's public
-catalog. `POST /v1/attempts` accepts the closed body `{"quiz_id":"<canonical-id>"}`
-and pins that pack's immutable bundle/revisions. Unknown IDs are rejected; IDs
+`GET /v1/catalog?quiz_id=<canonical-id>&difficulty=<easy|medium|hard|nightmare>`
+optionally returns only the requested difficulty band from that pack. `POST /v1/attempts`
+accepts the closed body `{"quiz_id":"<canonical-id>","difficulty":"hard"}`
+and pins that pack's immutable bundle/revisions. Numeric `difficulty_level` is
+optional and exact (1–10); its canonical bands are Easy 1–3, Medium 4–6, Hard
+7–8 and Nightmare 9–10. Draft/private bundle metadata carries editorial tags;
+only approved `context_tag_ids` may appear in public questions. Unknown IDs are rejected; IDs
 are map lookups, never filesystem paths. Omitting selection preserves the default
 catalog and legacy `{}` start request. Authentication, ownership, receipt and
 post-finish reveal rules are unchanged. Collection source JSON/private grading
@@ -26,8 +30,10 @@ is packaged only in the API runtime, never in Flutter public assets.
 ### Single-player practice extension (SQLite only)
 
 The closed start body additionally accepts `round` (zero-based integer), and
-`mode: "practice"` only with explicit `quiz_id` and `round`. Rounds partition
-the source into at most 20 questions, shuffled within each partition. The
+`mode: "practice"` only with explicit `quiz_id` and `round`. For a difficulty
+request, omitting `round` starts every matching question; an explicit zero-based
+round filters the full pack before it partitions the matching questions into at
+most 20 questions, shuffled within each partition. The
 immutable full grading bundle/version remains pinned to the attempt.
 
 `GET /v1/attempts/{attempt}/feedback/{question}` returns the closed envelope

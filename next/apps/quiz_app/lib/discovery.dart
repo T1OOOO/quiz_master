@@ -6,10 +6,22 @@ class CatalogPack {
     this.title,
     this.description,
     this.category,
-    this.questions,
-  );
+    this.questions, [
+    this.difficultyCounts,
+    this.contextSearchTerms = const [],
+  ]);
   final String id, title, description, category;
   final int questions;
+  final Map<DifficultyBand, int>? difficultyCounts;
+  final List<String> contextSearchTerms;
+
+  int? count(DifficultyBand band) => difficultyCounts?[band];
+
+  int questionsFor(DifficultyBand? band) =>
+      band == null ? questions : count(band) ?? questions;
+
+  String get searchableText =>
+      '$title $description $category ${contextSearchTerms.join(' ')}';
 
   factory CatalogPack.fromJson(Map<String, dynamic> json) {
     _closed(json, {
@@ -18,6 +30,8 @@ class CatalogPack {
       'description',
       'category',
       'questions_count',
+      'difficulty_counts',
+      'context_search_terms',
     });
     for (final key in ['quiz_id', 'title', 'description', 'category']) {
       if (json[key] is! String || (json[key] as String).trim().isEmpty) {
@@ -29,12 +43,46 @@ class CatalogPack {
         (json['questions_count'] as int) < 1) {
       throw const FormatException('catalog metadata');
     }
+    final rawCounts = json['difficulty_counts'];
+    Map<DifficultyBand, int>? difficultyCounts;
+    if (rawCounts != null) {
+      if (rawCounts is! Map ||
+          rawCounts.keys.any((key) => key is! String) ||
+          rawCounts.entries.any(
+            (entry) => entry.value is! int || entry.value < 0,
+          )) {
+        throw const FormatException('difficulty counts');
+      }
+      final names = rawCounts.keys.cast<String>().toSet();
+      const required = {'easy', 'medium', 'hard', 'nightmare'};
+      if (!names.containsAll(required) ||
+          names.difference({...required, 'unknown'}).isNotEmpty ||
+          rawCounts.values.cast<int>().fold(0, (sum, value) => sum + value) >
+              (json['questions_count'] as int)) {
+        throw const FormatException('difficulty counts');
+      }
+      difficultyCounts = {
+        for (final band in DifficultyBand.values)
+          band: rawCounts[band.wireName] as int,
+      };
+    }
+    final rawTerms = json['context_search_terms'];
+    if (rawTerms != null &&
+        (rawTerms is! List ||
+            rawTerms.any((term) => term is! String || term.trim().isEmpty) ||
+            rawTerms.toSet().length != rawTerms.length)) {
+      throw const FormatException('context search terms');
+    }
     return CatalogPack(
       json['quiz_id'] as String,
       json['title'] as String,
       json['description'] as String,
       (json['category'] as String).replaceAll('\\', '/'),
       json['questions_count'] as int,
+      difficultyCounts,
+      rawTerms == null
+          ? const []
+          : List<String>.unmodifiable(rawTerms.cast<String>()),
     );
   }
 }
@@ -51,8 +99,14 @@ final discoveryCatalogProvider = FutureProvider<List<CatalogPack>>((ref) async {
 });
 
 class DiscoveryPage extends ConsumerStatefulWidget {
-  const DiscoveryPage({super.key, required this.folder, required this.query});
+  const DiscoveryPage({
+    super.key,
+    required this.folder,
+    required this.query,
+    this.difficulty,
+  });
   final String folder, query;
+  final DifficultyBand? difficulty;
 
   @override
   ConsumerState<DiscoveryPage> createState() => _DiscoveryPageState();
@@ -72,11 +126,16 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
     super.dispose();
   }
 
-  String _location(String folder, [String query = '']) => Uri(
+  String _location(
+    String folder, [
+    String query = '',
+    DifficultyBand? difficulty,
+  ]) => Uri(
     path: '/library',
     queryParameters: {
       if (folder.isNotEmpty) 'folder': folder,
       if (query.isNotEmpty) 'q': query,
+      if (difficulty != null) 'difficulty': difficulty.wireName,
     },
   ).toString();
 
@@ -106,10 +165,12 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
           final folders = <String>{};
           final visible = <CatalogPack>[];
           for (final pack in packs) {
+            if (widget.difficulty != null &&
+                (pack.count(widget.difficulty!) ?? 0) == 0) {
+              continue;
+            }
             if (query.isNotEmpty) {
-              if ('${pack.title} ${pack.description} ${pack.category}'
-                  .toLowerCase()
-                  .contains(query)) {
+              if (pack.searchableText.toLowerCase().contains(query)) {
                 visible.add(pack);
               }
             } else if (pack.category == widget.folder ||
@@ -158,23 +219,57 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                             borderRadius: BorderRadius.circular(16),
                           ),
                         ),
-                        onChanged: (value) =>
-                            context.replace(_location(widget.folder, value)),
+                        onChanged: (value) => context.replace(
+                          _location(widget.folder, value, widget.difficulty),
+                        ),
                       ),
                       SizedBox(height: compact ? 8 : 28),
+                      if (packs.any((pack) => pack.difficultyCounts != null))
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            for (final band in DifficultyBand.values)
+                              ChoiceChip(
+                                key: Key('difficulty-${band.wireName}'),
+                                label: Text(_difficultyLabel(l10n, band)),
+                                selected: widget.difficulty == band,
+                                onSelected:
+                                    packs.any(
+                                      (pack) => (pack.count(band) ?? 0) > 0,
+                                    )
+                                    ? (_) => context.go(
+                                        _location(
+                                          widget.folder,
+                                          widget.query,
+                                          widget.difficulty == band
+                                              ? null
+                                              : band,
+                                        ),
+                                      )
+                                    : null,
+                              ),
+                          ],
+                        ),
                       Wrap(
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           TextButton(
                             key: const Key('catalog-root'),
-                            onPressed: () => context.go('/library'),
+                            onPressed: () => context.go(
+                              _location('', '', widget.difficulty),
+                            ),
                             child: Text(l10n.catalogRoot),
                           ),
                           for (var i = 0; i < segments.length; i++) ...[
                             const Icon(Icons.chevron_right, size: 18),
                             TextButton(
                               onPressed: () => context.go(
-                                _location(segments.take(i + 1).join('/')),
+                                _location(
+                                  segments.take(i + 1).join('/'),
+                                  '',
+                                  widget.difficulty,
+                                ),
                               ),
                               child: Text(segments[i]),
                             ),
@@ -220,6 +315,8 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                               widget.folder,
                                             folder,
                                           ].join('/'),
+                                          '',
+                                          widget.difficulty,
                                         ),
                                       ),
                                     ),
@@ -247,7 +344,13 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                   '${pack.description}\n${l10n.questionsCount(pack.questions)}',
                                 ),
                                 trailing: const Icon(Icons.play_arrow),
-                                onTap: () => context.go('/quiz/${pack.id}'),
+                                onTap: () => context.go(
+                                  _quizLocation(
+                                    pack.id,
+                                    null,
+                                    widget.difficulty,
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(
@@ -264,15 +367,24 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                     children: [
                                       for (
                                         var round = 0;
-                                        round < (pack.questions + 19) ~/ 20;
+                                        round <
+                                            (pack.questionsFor(
+                                                      widget.difficulty,
+                                                    ) +
+                                                    19) ~/
+                                                20;
                                         round++
                                       )
                                         ActionChip(
                                           label: Text(
-                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions((pack.questions - round * 20).clamp(1, 20))}',
+                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions((pack.questionsFor(widget.difficulty) - round * 20).clamp(1, 20))}',
                                           ),
                                           onPressed: () => context.go(
-                                            '/quiz/${pack.id}?round=$round',
+                                            _quizLocation(
+                                              pack.id,
+                                              round,
+                                              widget.difficulty,
+                                            ),
                                           ),
                                         ),
                                     ],
@@ -302,3 +414,20 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
     );
   }
 }
+
+String _quizLocation(String quizId, int? round, DifficultyBand? difficulty) =>
+    Uri(
+      path: '/quiz/$quizId',
+      queryParameters: {
+        if (round != null) 'round': '$round',
+        if (difficulty != null) 'difficulty': difficulty.wireName,
+      },
+    ).toString();
+
+String _difficultyLabel(AppLocalizations l10n, DifficultyBand band) =>
+    switch (band) {
+      DifficultyBand.easy => l10n.difficultyEasy,
+      DifficultyBand.medium => l10n.difficultyMedium,
+      DifficultyBand.hard => l10n.difficultyHard,
+      DifficultyBand.nightmare => l10n.difficultyNightmare,
+    };

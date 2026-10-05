@@ -383,6 +383,45 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('long prompt and choices remain scrollable on a mobile viewport', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final question = PublicQuestion.fromJson({
+      ...base,
+      'stem':
+          'A deliberately long question prompt that wraps across several '
+          'lines on a small phone without hiding the answer choices or causing '
+          'a layout overflow.',
+      'options': List.generate(
+        4,
+        (i) => {
+          'option_id': 'opt-${i + 1}',
+          'text':
+              'A deliberately long answer option ${i + 1} that must wrap '
+              'cleanly in the available mobile width.',
+        },
+      ),
+    });
+    await tester.pumpWidget(
+      app(
+        SingleChildScrollView(
+          child: QuestionCard(question: question, onAnswer: (_) {}),
+        ),
+      ),
+    );
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -500),
+    );
+    await tester.pump();
+    expect(find.textContaining('answer option 4'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'submitting cards disable stable-id choices and retain semantics',
     (tester) async {

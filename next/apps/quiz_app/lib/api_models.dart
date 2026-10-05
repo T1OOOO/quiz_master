@@ -2,6 +2,38 @@ part of 'main.dart';
 
 enum AnswerKind { singleChoice, multipleChoice, normalizedText }
 
+enum DifficultyBand { easy, medium, hard, nightmare }
+
+extension DifficultyBandWire on DifficultyBand {
+  String get wireName => switch (this) {
+    DifficultyBand.easy => 'easy',
+    DifficultyBand.medium => 'medium',
+    DifficultyBand.hard => 'hard',
+    DifficultyBand.nightmare => 'nightmare',
+  };
+
+  int get minLevel => switch (this) {
+    DifficultyBand.easy => 1,
+    DifficultyBand.medium => 4,
+    DifficultyBand.hard => 7,
+    DifficultyBand.nightmare => 9,
+  };
+
+  int get maxLevel => switch (this) {
+    DifficultyBand.easy => 3,
+    DifficultyBand.medium => 6,
+    DifficultyBand.hard => 8,
+    DifficultyBand.nightmare => 10,
+  };
+}
+
+DifficultyBand? difficultyBandFromWire(String? value) {
+  for (final band in DifficultyBand.values) {
+    if (band.wireName == value) return band;
+  }
+  return null;
+}
+
 sealed class StagedAnswer {
   const StagedAnswer();
 
@@ -121,6 +153,9 @@ class PublicQuestion {
     required this.stem,
     required this.options,
     required this.kind,
+    this.difficulty,
+    this.difficultyLevel,
+    this.contextTagIds = const [],
     this.media = const [],
   });
   final String quizId;
@@ -129,6 +164,9 @@ class PublicQuestion {
   final String stem;
   final List<PublicOption> options;
   final AnswerKind kind;
+  final DifficultyBand? difficulty;
+  final int? difficultyLevel;
+  final List<String> contextTagIds;
   final List<Media> media;
   factory PublicQuestion.fromJson(Map<String, dynamic> json) {
     _closed(json, {
@@ -138,6 +176,8 @@ class PublicQuestion {
       'stem',
       'options',
       'difficulty',
+      'difficulty_level',
+      'context_tag_ids',
       'source',
       'media',
       'answer_kind',
@@ -149,14 +189,34 @@ class PublicQuestion {
       'normalized_text' => AnswerKind.normalizedText,
       _ => throw const FormatException('answer_kind'),
     };
-    const difficulties = {'unknown', 'easy', 'medium', 'hard'};
+    final difficultyWire = json['difficulty'];
+    final difficulty = difficultyWire == 'unknown'
+        ? null
+        : difficultyWire is String
+        ? difficultyBandFromWire(difficultyWire)
+        : null;
+    final difficultyLevel = json['difficulty_level'];
+    final contextTagIds = json['context_tag_ids'];
     if (json['quiz_id'] is! String ||
         !_validId(json['quiz_id'] as String) ||
         json['question_id'] is! String ||
         !_validId(json['question_id'] as String) ||
         json['stem'] is! String ||
         (json['stem'] as String).isEmpty ||
-        !difficulties.contains(json['difficulty']) ||
+        (difficultyWire != 'unknown' && difficulty == null) ||
+        (json.containsKey('difficulty_level') &&
+            (difficultyLevel is! int ||
+                difficultyLevel < 1 ||
+                difficultyLevel > 10 ||
+                difficulty == null ||
+                difficultyLevel < difficulty.minLevel ||
+                difficultyLevel > difficulty.maxLevel)) ||
+        (json.containsKey('context_tag_ids') &&
+            (contextTagIds is! List ||
+                contextTagIds.any(
+                  (id) => id is! String || !_validContextTagId(id),
+                ) ||
+                contextTagIds.toSet().length != contextTagIds.length)) ||
         options is! List ||
         options.length < 4 ||
         options.length > 6) {
@@ -184,6 +244,11 @@ class PublicQuestion {
       stem: json['stem'] as String,
       options: parsedOptions,
       kind: kind,
+      difficulty: difficulty,
+      difficultyLevel: difficultyLevel as int?,
+      contextTagIds: contextTagIds == null
+          ? const []
+          : List<String>.unmodifiable(contextTagIds.cast<String>()),
       media: parsedMedia,
     );
   }
@@ -292,6 +357,7 @@ class ApiFailure {
       'forbidden',
       'validation_failed',
       'idempotency_conflict',
+      'no_match',
     };
     if (!codes.contains(json['code']) ||
         json['message'] is! String ||
@@ -327,6 +393,22 @@ Map<String, dynamic> _map(Object? value) {
 
 bool _validId(String value) =>
     RegExp(r'^[a-z][a-z0-9-]{2,63}$').hasMatch(value);
+
+bool _validTagId(String value) =>
+    RegExp(r'^[a-z][a-z0-9-]{1,31}:[a-z][a-z0-9-]{1,63}$').hasMatch(value);
+
+bool _validContextTagId(String value) {
+  if (!_validTagId(value)) return false;
+  final namespace = value.substring(0, value.indexOf(':'));
+  return const {
+    'domain',
+    'topic',
+    'franchise',
+    'medium',
+    'era',
+    'skill',
+  }.contains(namespace);
+}
 
 DateTime _utcInstant(Object? value) {
   if (value is! String ||
@@ -427,23 +509,56 @@ class Catalog {
     required this.bundleVersion,
     required this.bundleSha256,
     required this.quiz,
+    this.difficultyCounts = const {},
   });
   final String bundleVersion;
   final String bundleSha256;
   final PublicQuiz quiz;
+  final Map<String, int> difficultyCounts;
 
   factory Catalog.fromJson(Map<String, dynamic> json) {
-    _closed(json, {'bundle_version', 'bundle_sha256', 'quiz'});
+    _closed(json, {
+      'bundle_version',
+      'bundle_sha256',
+      'quiz',
+      'difficulty_counts',
+    });
     if (json['bundle_version'] is! String ||
         (json['bundle_version'] as String).isEmpty ||
         json['bundle_sha256'] is! String ||
         !RegExp(r'^[0-9a-f]{64}$').hasMatch(json['bundle_sha256'] as String)) {
       throw const FormatException('catalog');
     }
+    final quiz = PublicQuiz.fromJson(_map(json['quiz']));
+    var counts = <String, int>{};
+    if (json.containsKey('difficulty_counts')) {
+      final raw = _map(json['difficulty_counts']);
+      const requiredBands = {'easy', 'medium', 'hard', 'nightmare'};
+      if (!raw.keys.toSet().containsAll(requiredBands) ||
+          raw.keys.toSet().difference({
+            ...requiredBands,
+            'unknown',
+          }).isNotEmpty ||
+          raw.values.any((value) => value is! int || value < 0)) {
+        throw const FormatException('catalog difficulty counts');
+      }
+      counts = Map<String, int>.from(raw);
+      final selectedCounts = <String, int>{};
+      for (final question in quiz.questions) {
+        final name = question.difficulty?.wireName ?? 'unknown';
+        selectedCounts.update(name, (count) => count + 1, ifAbsent: () => 1);
+      }
+      if (selectedCounts.entries.any(
+        (entry) => (counts[entry.key] ?? 0) < entry.value,
+      )) {
+        throw const FormatException('catalog difficulty counts mismatch');
+      }
+    }
     return Catalog(
       bundleVersion: json['bundle_version'] as String,
       bundleSha256: json['bundle_sha256'] as String,
-      quiz: PublicQuiz.fromJson(_map(json['quiz'])),
+      quiz: quiz,
+      difficultyCounts: Map.unmodifiable(counts),
     );
   }
 }

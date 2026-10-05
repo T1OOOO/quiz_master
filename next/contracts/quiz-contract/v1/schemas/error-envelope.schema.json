@@ -5,6 +5,6 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["code", "message", "retryable", "details"],
-  "properties": {"code": {"enum": ["deadline_exceeded", "stale_revision", "stale_round", "forbidden", "validation_failed", "idempotency_conflict"]}, "message": {"type": "string"}, "retryable": {"type": "boolean"}, "details": {"type": "object", "additionalProperties": {"type": "string"}}},
+  "properties": {"code": {"enum": ["deadline_exceeded", "stale_revision", "stale_round", "forbidden", "validation_failed", "no_match", "idempotency_conflict"]}, "message": {"type": "string"}, "retryable": {"type": "boolean"}, "details": {"type": "object", "additionalProperties": {"type": "string"}}},
   "not": {"anyOf": [{"required": ["correct_answer"]}, {"required": ["grading"]}, {"required": ["accepted_variants"]}]}
 }

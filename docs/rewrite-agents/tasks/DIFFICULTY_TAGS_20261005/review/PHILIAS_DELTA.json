@@ -1,0 +1,106 @@
+[
+  {
+    "candidate": "philias-root90.json",
+    "before_sha256": "f878cfd1350ccf9ddc978f4d94f4557b4faca69a4223186be5f7cd42d8ffe4d7",
+    "after_sha256": "b95f0ed70c9b741a0c1784b2b3cd453df72358dbbf46f68fc9fbc1d3a212b9e4",
+    "before": {
+      "provider": "quiz",
+      "pack_id": "philias_other",
+      "question_id": "q_philias_300_84",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:psychology",
+        "skill:terminology",
+        "topic:medical-terms",
+        "topic:philia"
+      ],
+      "context_tag_ids": [
+        "domain:psychology",
+        "topic:medical-terms",
+        "topic:philia"
+      ],
+      "rationale": "Фроттеризм требует специального названия трения в толпе; англоязычный раббинг прозрачен, а охло- лишь толпа, но никто не задаёт официальную форму термина.",
+      "confidence": "low",
+      "editorial_flags": [
+        "overlapping-term-meanings",
+        "diagnostic-description-oversimplified",
+        "medical-terminology-needs-source"
+      ]
+    },
+    "after": {
+      "provider": "quiz",
+      "pack_id": "philias_other",
+      "question_id": "q_philias_300_84",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:psychology",
+        "skill:terminology",
+        "topic:medical-terms",
+        "topic:philia"
+      ],
+      "context_tag_ids": [
+        "domain:psychology",
+        "topic:medical-terms",
+        "topic:philia"
+      ],
+      "rationale": "Ключ Тачеризм требует отдельного редкого названия; Фроттеризм дан рядом и назван в объяснении, а Раббинг прозрачно намекает на трение. Несогласованность вынесена в флаг, не в повышение сложности.",
+      "confidence": "low",
+      "editorial_flags": [
+        "overlapping-term-meanings",
+        "diagnostic-description-oversimplified",
+        "medical-terminology-needs-source",
+        "answer-explanation-name-mismatch"
+      ]
+    }
+  },
+  {
+    "candidate": "philias-root90.json",
+    "before_sha256": "b95f0ed70c9b741a0c1784b2b3cd453df72358dbbf46f68fc9fbc1d3a212b9e4",
+    "after_sha256": "06085f7d2b447043e323b487bde2f6c2f0d015260eb33858862ce5aa2b7bef76",
+    "before": {
+      "provider": "quiz",
+      "pack_id": "philias_nature",
+      "question_id": "q_philias_100_20",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "domain:psychology",
+        "skill:terminology",
+        "topic:philia"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "domain:psychology",
+        "topic:philia"
+      ],
+      "rationale": "Дендро- связан с дендрарием и деревьями, арборо- тоже обозначает их, а сильвано- лес; общий ботано- не задаёт именно лесные растения.",
+      "confidence": "low",
+      "editorial_flags": [
+        "overlapping-term-meanings",
+        "interest-sexual-attraction-conflation"
+      ]
+    },
+    "after": {
+      "provider": "quiz",
+      "pack_id": "philias_nature",
+      "question_id": "q_philias_100_20",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "domain:psychology",
+        "skill:terminology",
+        "topic:philia"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "domain:psychology",
+        "topic:philia"
+      ],
+      "rationale": "Дендро- связан с дендрарием и деревьями, арборо- тоже обозначает их, а сильвано- лес; общий ботано- не задаёт именно лесные растения.",
+      "confidence": "low",
+      "editorial_flags": [
+        "overlapping-term-meanings"
+      ]
+    }
+  }
+]

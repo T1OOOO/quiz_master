@@ -21,6 +21,10 @@ type Revision struct {
 	Number int    `json:"number"`
 	SHA256 string `json:"sha256"`
 }
+type TaxonomyRef struct {
+	TaxonomyID     string `json:"taxonomy_id"`
+	TaxonomySHA256 string `json:"taxonomy_sha256"`
+}
 type Grading struct {
 	CorrectOptionID  string   `json:"correct_option_id,omitempty"`
 	CorrectOptionIDs []string `json:"correct_option_ids,omitempty"`
@@ -33,23 +37,27 @@ type Option struct {
 	Media    Media  `json:"media,omitempty"`
 }
 type Question struct {
-	QuestionID string            `json:"question_id"`
-	Revision   Revision          `json:"revision"`
-	Stem       string            `json:"stem"`
-	Options    []Option          `json:"options"`
-	Difficulty string            `json:"difficulty"`
-	Source     map[string]string `json:"source"`
-	Media      *[]Media          `json:"media,omitempty"`
-	AnswerKind string            `json:"answer_kind"`
-	Grading    Grading           `json:"grading"`
+	QuestionID      string            `json:"question_id"`
+	Revision        Revision          `json:"revision"`
+	Stem            string            `json:"stem"`
+	Options         []Option          `json:"options"`
+	Difficulty      string            `json:"difficulty"`
+	DifficultyLevel *int              `json:"difficulty_level,omitempty"`
+	EditorialTagIDs []string          `json:"editorial_tag_ids,omitempty"`
+	ContextTagIDs   []string          `json:"context_tag_ids,omitempty"`
+	Source          map[string]string `json:"source"`
+	Media           *[]Media          `json:"media,omitempty"`
+	AnswerKind      string            `json:"answer_kind"`
+	Grading         Grading           `json:"grading"`
 }
 type Draft struct {
-	Contract  string     `json:"contract"`
-	State     string     `json:"state"`
-	QuizID    string     `json:"quiz_id"`
-	Revision  Revision   `json:"revision"`
-	Locale    string     `json:"locale"`
-	Questions []Question `json:"questions"`
+	Contract    string       `json:"contract"`
+	State       string       `json:"state"`
+	QuizID      string       `json:"quiz_id"`
+	Revision    Revision     `json:"revision"`
+	Locale      string       `json:"locale"`
+	TaxonomyRef *TaxonomyRef `json:"taxonomy_ref,omitempty"`
+	Questions   []Question   `json:"questions"`
 }
 type OptionMap struct {
 	SourceIndex int    `json:"source_index"`
@@ -74,15 +82,17 @@ type Manifest struct {
 	Questions       []QuestionMap `json:"questions"`
 }
 type PublicQuestion struct {
-	QuizID     string            `json:"quiz_id"`
-	QuestionID string            `json:"question_id"`
-	Revision   Revision          `json:"revision"`
-	Stem       string            `json:"stem"`
-	Options    []Option          `json:"options"`
-	Difficulty string            `json:"difficulty"`
-	Source     map[string]string `json:"source"`
-	Media      *[]Media          `json:"media,omitempty"`
-	AnswerKind string            `json:"answer_kind"`
+	QuizID          string            `json:"quiz_id"`
+	QuestionID      string            `json:"question_id"`
+	Revision        Revision          `json:"revision"`
+	Stem            string            `json:"stem"`
+	Options         []Option          `json:"options"`
+	Difficulty      string            `json:"difficulty"`
+	DifficultyLevel *int              `json:"difficulty_level,omitempty"`
+	ContextTagIDs   []string          `json:"context_tag_ids,omitempty"`
+	Source          map[string]string `json:"source"`
+	Media           *[]Media          `json:"media,omitempty"`
+	AnswerKind      string            `json:"answer_kind"`
 }
 type PublicQuiz struct {
 	QuizID    string           `json:"quiz_id"`
@@ -91,10 +101,15 @@ type PublicQuiz struct {
 	Questions []PublicQuestion `json:"questions"`
 }
 type Bundle struct {
-	Contract       string             `json:"contract"`
-	BundleVersion  string             `json:"bundle_version"`
-	BundleSHA256   string             `json:"bundle_sha256"`
-	PublishedAt    string             `json:"published_at"`
-	Quiz           PublicQuiz         `json:"quiz"`
-	PrivateGrading map[string]Grading `json:"private_grading"`
+	Contract                string                             `json:"contract"`
+	BundleVersion           string                             `json:"bundle_version"`
+	BundleSHA256            string                             `json:"bundle_sha256"`
+	PublishedAt             string                             `json:"published_at"`
+	TaxonomyRef             *TaxonomyRef                       `json:"taxonomy_ref,omitempty"`
+	Quiz                    PublicQuiz                         `json:"quiz"`
+	PrivateGrading          map[string]Grading                 `json:"private_grading"`
+	PrivateQuestionMetadata map[string]PrivateQuestionMetadata `json:"private_question_metadata,omitempty"`
+}
+type PrivateQuestionMetadata struct {
+	EditorialTagIDs []string `json:"editorial_tag_ids"`
 }

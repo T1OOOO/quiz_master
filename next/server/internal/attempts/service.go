@@ -18,6 +18,7 @@ type Options struct {
 	ID           func(string) (string, error)
 	Shuffle      Shuffler
 	ManifestPath string
+	TaxonomyPath string
 }
 type Service struct {
 	pool         *pgxpool.Pool
@@ -41,6 +42,18 @@ func NewService(ctx context.Context, pool *pgxpool.Pool, path, schemaDir string,
 		return nil, errors.New("controlled bundle required")
 	}
 	b := *doc.Bundle
+	if content.HasAnnotations(doc.Draft) {
+		if opts.TaxonomyPath == "" {
+			return nil, errors.New("taxonomy required for annotated controlled bundle")
+		}
+		taxonomy, err := content.LoadTaxonomy(opts.TaxonomyPath)
+		if err != nil {
+			return nil, fmt.Errorf("load taxonomy: %w", err)
+		}
+		if err = content.ValidateBundleWithTaxonomy(b, schemaDir, taxonomy); err != nil {
+			return nil, fmt.Errorf("validate annotated controlled bundle: %w", err)
+		}
+	}
 	manifest, err := loadManifest(opts.ManifestPath, b)
 	if err != nil {
 		return nil, err
@@ -89,9 +102,10 @@ func NewService(ctx context.Context, pool *pgxpool.Pool, path, schemaDir string,
 }
 
 type Catalog struct {
-	BundleVersion string             `json:"bundle_version"`
-	BundleSHA256  string             `json:"bundle_sha256"`
-	Quiz          content.PublicQuiz `json:"quiz"`
+	BundleVersion    string             `json:"bundle_version"`
+	BundleSHA256     string             `json:"bundle_sha256"`
+	Quiz             content.PublicQuiz `json:"quiz"`
+	DifficultyCounts map[string]int     `json:"difficulty_counts,omitempty"`
 }
 
 func (s *Service) Catalog() Catalog {
@@ -99,7 +113,105 @@ func (s *Service) Catalog() Catalog {
 	raw, _ := json.Marshal(s.bundle.Quiz)
 	var q content.PublicQuiz
 	_ = json.Unmarshal(raw, &q)
-	return Catalog{BundleVersion: s.bundle.BundleVersion, BundleSHA256: s.bundle.BundleSHA256, Quiz: q}
+	return Catalog{BundleVersion: s.bundle.BundleVersion, BundleSHA256: s.bundle.BundleSHA256, Quiz: q, DifficultyCounts: DifficultyCounts(q)}
+}
+
+func (s *Service) selected(id string) (*Service, error) {
+	if id != s.bundle.Quiz.QuizID {
+		return nil, ErrValidation
+	}
+	return s, nil
+}
+
+func (s *Service) CatalogFor(id string) (Catalog, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Catalog{}, err
+	}
+	return selected.Catalog(), nil
+}
+
+func (s *Service) CatalogForDifficulty(id, difficulty string) (Catalog, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Catalog{}, err
+	}
+	filtered, err := SelectDifficulty(selected.bundle.Quiz, difficulty)
+	if err != nil {
+		return Catalog{}, err
+	}
+	copy := *selected
+	copy.bundle.Quiz = filtered
+	return copy.Catalog(), nil
+}
+
+func (s *Service) StartQuiz(ctx context.Context, owner, id string) (Attempt, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Attempt{}, err
+	}
+	return selected.Start(ctx, owner)
+}
+
+func (s *Service) StartDifficultyQuiz(ctx context.Context, owner, id, difficulty string) (Attempt, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Attempt{}, err
+	}
+	filtered, err := SelectDifficulty(selected.bundle.Quiz, difficulty)
+	if err != nil {
+		return Attempt{}, err
+	}
+	copy := *selected
+	copy.bundle.Quiz = filtered
+	return copy.Start(ctx, owner)
+}
+
+func (s *Service) StartRound(ctx context.Context, owner, id string, round int) (Attempt, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Attempt{}, err
+	}
+	questions, err := s.shuffledRound(selected.bundle.Quiz.Questions, round)
+	if err != nil {
+		return Attempt{}, err
+	}
+	copy := *selected
+	copy.bundle.Quiz.Questions = questions
+	return copy.Start(ctx, owner)
+}
+
+func (s *Service) StartDifficultyRound(ctx context.Context, owner, id, difficulty string, round int) (Attempt, error) {
+	selected, err := s.selected(id)
+	if err != nil {
+		return Attempt{}, err
+	}
+	filtered, err := SelectDifficulty(selected.bundle.Quiz, difficulty)
+	if err != nil {
+		return Attempt{}, err
+	}
+	questions, err := s.shuffledRound(filtered.Questions, round)
+	if err != nil {
+		return Attempt{}, err
+	}
+	copy := *selected
+	copy.bundle.Quiz.Questions = questions
+	return copy.Start(ctx, owner)
+}
+
+func (s *Service) shuffledRound(questions []content.PublicQuestion, round int) ([]content.PublicQuestion, error) {
+	selected, err := QuestionRound(questions, round)
+	if err != nil {
+		return nil, err
+	}
+	return ShuffleQuestions(selected, s.opts.Shuffle)
+}
+func DifficultyCounts(quiz content.PublicQuiz) map[string]int {
+	counts := map[string]int{"easy": 0, "medium": 0, "hard": 0, "nightmare": 0}
+	for _, question := range quiz.Questions {
+		counts[question.Difficulty]++
+	}
+	return counts
 }
 func (s *Service) now() time.Time { return s.opts.Now().UTC().Truncate(time.Microsecond) }
 func (s *Service) Start(ctx context.Context, owner string) (Attempt, error) {

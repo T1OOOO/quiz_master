@@ -121,6 +121,9 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
       builder: (_, state) => DiscoveryPage(
         folder: state.uri.queryParameters['folder'] ?? '',
         query: state.uri.queryParameters['q'] ?? '',
+        difficulty: difficultyBandFromWire(
+          state.uri.queryParameters['difficulty'],
+        ),
       ),
     ),
     GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
@@ -129,7 +132,12 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
       builder: (_, state) => CatalogPage(
         key: ValueKey(state.uri.toString()),
         quizId: state.pathParameters['quizId']!,
-        round: int.tryParse(state.uri.queryParameters['round'] ?? '0') ?? -1,
+        round: state.uri.queryParameters.containsKey('round')
+            ? int.tryParse(state.uri.queryParameters['round']!) ?? -1
+            : null,
+        difficulty: difficultyBandFromWire(
+          state.uri.queryParameters['difficulty'],
+        ),
       ),
     ),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),

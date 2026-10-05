@@ -52,7 +52,7 @@ func run() error {
 	if err := migrate.Apply(startupCtx, pool, migrate.Migrations()); err != nil {
 		return err
 	}
-	attemptService, err := attempts.NewService(startupCtx, pool, cfg.ContentBundlePath, content.DefaultSchemas, cfg.AttemptDuration, attempts.Options{ManifestPath: cfg.ContentManifestPath})
+	attemptService, err := attempts.NewService(startupCtx, pool, cfg.ContentBundlePath, content.DefaultSchemas, cfg.AttemptDuration, attempts.Options{ManifestPath: cfg.ContentManifestPath, TaxonomyPath: cfg.ContentTaxonomyPath})
 	if err != nil {
 		return err
 	}
@@ -86,7 +86,7 @@ func runSQLite(ctx context.Context, cfg config.Config) error {
 	if err = localsqlite.Apply(ctx, db); err != nil {
 		return err
 	}
-	attemptService, err := localsqlite.NewAttempts(db, cfg.ContentBundlePath, cfg.ContentManifestPath, content.DefaultSchemas, cfg.AttemptDuration)
+	attemptService, err := localsqlite.NewAttemptsWithTaxonomy(db, cfg.ContentBundlePath, cfg.ContentManifestPath, content.DefaultSchemas, cfg.AttemptDuration, cfg.ContentTaxonomyPath)
 	if err != nil {
 		return err
 	}

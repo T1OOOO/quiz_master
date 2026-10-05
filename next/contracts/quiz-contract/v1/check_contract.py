@@ -15,6 +15,7 @@ SCHEMAS = ROOT / "schemas"
 FIXTURES = ROOT / "fixtures"
 ID_RE = re.compile(r"^[a-z][a-z0-9-]{2,63}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+TAG_RE = re.compile(r"^[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$")
 SECRET_KEYS = {
     "grading", "private_grading", "correct_option_id", "correct_option_ids",
     "accepted_variants", "correct_text", "correct_answer", "answer_key", "correct",
@@ -123,9 +124,10 @@ def reject_team(value, context: str):
 
 
 def validate_question(question, quiz_id: str, public=False):
-    allowed = {"question_id", "revision", "stem", "options", "difficulty", "source", "media", "answer_kind", "grading"}
+    allowed = {"question_id", "revision", "stem", "options", "difficulty", "difficulty_level", "editorial_tag_ids", "context_tag_ids", "source", "media", "answer_kind", "grading"}
     if public:
         allowed.add("quiz_id")
+        allowed.discard("editorial_tag_ids")
     require_shape(question, {"question_id", "revision", "stem", "options", "difficulty", "source", "answer_kind"}, allowed, "question")
     require_id(question.get("question_id"), "question_id")
     require_revision(question.get("revision"), "question revision")
@@ -139,7 +141,19 @@ def validate_question(question, quiz_id: str, public=False):
         require(isinstance(option.get("text"), str) and option["text"].strip(), "option text is required")
         option_ids.append(option["option_id"])
     require(len(option_ids) == len(set(option_ids)), "option IDs must be unique within a question")
-    require(question.get("difficulty") in {"unknown", "easy", "medium", "hard"}, "difficulty must be explicit; unknown never becomes zero")
+    require(question.get("difficulty") in {"unknown", "easy", "medium", "hard", "nightmare"}, "difficulty must be explicit; unknown never becomes zero")
+    level = question.get("difficulty_level")
+    if level is not None:
+        require(isinstance(level, int) and not isinstance(level, bool) and 1 <= level <= 10, "difficulty_level must be 1..10")
+        band = "easy" if level <= 3 else "medium" if level <= 6 else "hard" if level <= 8 else "nightmare"
+        require(question["difficulty"] == band, "difficulty_level must match difficulty band")
+    editorial = question.get("editorial_tag_ids", [])
+    context = question.get("context_tag_ids", [])
+    require(isinstance(editorial, list) and isinstance(context, list), "tag IDs must be arrays")
+    for ids in (editorial, context):
+        require(all(isinstance(tag, str) and TAG_RE.fullmatch(tag) is not None for tag in ids), "tag ID is invalid")
+        require(ids == sorted(set(ids)), "tag IDs must be sorted and unique")
+    if not public: require(set(context).issubset(editorial), "context tags must be an editorial subset")
     source = question.get("source")
     require_shape(source, {"uri"}, {"uri", "title"}, "source")
     require(isinstance(source.get("uri"), str) and source["uri"], "source.uri is required")
@@ -171,7 +185,7 @@ def validate_grading(question, option_ids):
 
 
 def validate_draft(draft):
-    require_shape(draft, {"contract", "state", "quiz_id", "revision", "locale", "questions"}, {"contract", "state", "quiz_id", "revision", "locale", "questions"}, "draft quiz")
+    require_shape(draft, {"contract", "state", "quiz_id", "revision", "locale", "questions"}, {"contract", "state", "quiz_id", "revision", "locale", "taxonomy_ref", "questions"}, "draft quiz")
     require(draft.get("contract") == "quiz-contract/v1", "wrong contract")
     require(draft.get("state") == "draft", "draft state required")
     require_id(draft.get("quiz_id"), "quiz_id")
@@ -189,7 +203,7 @@ def validate_draft(draft):
 
 def validate_public(question):
     reject_secret(question, "public question")
-    require_shape(question, {"quiz_id", "question_id", "revision", "stem", "options", "difficulty", "source", "answer_kind"}, {"quiz_id", "question_id", "revision", "stem", "options", "difficulty", "source", "media", "answer_kind"}, "public question")
+    require_shape(question, {"quiz_id", "question_id", "revision", "stem", "options", "difficulty", "source", "answer_kind"}, {"quiz_id", "question_id", "revision", "stem", "options", "difficulty", "difficulty_level", "context_tag_ids", "source", "media", "answer_kind"}, "public question")
     require_id(question.get("quiz_id"), "public quiz_id")
     option_ids = validate_question(question, question["quiz_id"], public=True)
     require("explanation" not in question, "public question leaks explanation")
@@ -321,23 +335,26 @@ def validate_room(event):
 def validate_error(error):
     reject_secret(error, "error envelope")
     require_shape(error, {"code", "message", "retryable", "details"}, {"code", "message", "retryable", "details"}, "error envelope")
-    require(error["code"] in {"deadline_exceeded", "stale_revision", "stale_round", "forbidden", "validation_failed", "idempotency_conflict"}, "error code invalid")
+    require(error["code"] in {"deadline_exceeded", "stale_revision", "stale_round", "forbidden", "validation_failed", "no_match", "idempotency_conflict"}, "error code invalid")
     require(isinstance(error["message"], str) and isinstance(error["retryable"], bool) and isinstance(error["details"], dict), "error envelope value types invalid")
 
 
 def validate_published(bundle, draft):
-    require_shape(bundle, {"contract", "bundle_version", "bundle_sha256", "published_at", "quiz", "private_grading"}, {"contract", "bundle_version", "bundle_sha256", "published_at", "quiz", "private_grading"}, "published bundle")
+    require_shape(bundle, {"contract", "bundle_version", "bundle_sha256", "published_at", "quiz", "private_grading"}, {"contract", "bundle_version", "bundle_sha256", "published_at", "taxonomy_ref", "quiz", "private_grading", "private_question_metadata"}, "published bundle")
     require(bundle.get("contract") == "quiz-contract/v1", "published bundle contract invalid")
     require(isinstance(bundle.get("bundle_version"), str) and bundle["bundle_version"], "published bundle_version required")
     require(isinstance(bundle.get("bundle_sha256"), str) and SHA256_RE.fullmatch(bundle["bundle_sha256"]) is not None, "published bundle hash invalid")
     quiz = bundle["quiz"]
     require_shape(quiz, {"quiz_id", "revision", "locale", "questions"}, {"quiz_id", "revision", "locale", "questions"}, "published canonical public quiz")
-    expected_public = [{key: value for key, value in question.items() if key != "grading"} | {"quiz_id": draft["quiz_id"]} for question in draft["questions"]]
+    expected_public = [{key: value for key, value in question.items() if key not in {"grading", "editorial_tag_ids"}} | {"quiz_id": draft["quiz_id"]} for question in draft["questions"]]
     canonical_quiz = {"quiz_id": draft["quiz_id"], "revision": draft["revision"], "locale": draft["locale"], "questions": expected_public}
     require(quiz == canonical_quiz, "published bundle must contain exact canonical immutable public quiz content")
     for question in quiz["questions"]: validate_public(question)
     expected_grading = {question["question_id"]: question["grading"] for question in draft["questions"]}
     require(bundle["private_grading"] == expected_grading, "published private_grading must exactly equal canonical draft grading")
+    expected_metadata = {question["question_id"]: {"editorial_tag_ids": question["editorial_tag_ids"]} for question in draft["questions"] if question.get("editorial_tag_ids")}
+    require(bundle.get("private_question_metadata", {}) == expected_metadata, "published private metadata must exactly equal editorial draft tags")
+    require(bundle.get("taxonomy_ref") == draft.get("taxonomy_ref"), "published taxonomy reference must match draft")
     hash_input = {key: value for key, value in bundle.items() if key != "bundle_sha256"}
     require(bundle["bundle_sha256"] == digest(hash_input), "published bundle_sha256 must equal canonical hash input excluding bundle_sha256")
 

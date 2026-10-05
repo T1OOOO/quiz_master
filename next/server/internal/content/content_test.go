@@ -41,8 +41,8 @@ func TestImportGolden(t *testing.T) {
 		{"zero_missing", "", `["a","b","c","d"]`, 0, "single_choice", "unknown", []string{"question-two-opt-1"}},
 		{"nonzero_null", `,"difficulty":null,"correct_multi":null`, `["a","b","c","d"]`, 2, "single_choice", "unknown", []string{"question-two-opt-3"}},
 		{"last_four_empty", `,"difficulty":1,"correct_multi":[]`, `["a","b","c","d"]`, 3, "single_choice", "easy", []string{"question-two-opt-4"}},
-		{"last_five", `,"difficulty":7`, `["a","b","c","d","e"]`, 4, "single_choice", "medium", []string{"question-two-opt-5"}},
-		{"last_six", `,"difficulty":10`, `["a","b","c","d","e","f"]`, 5, "single_choice", "hard", []string{"question-two-opt-6"}},
+		{"last_five", `,"difficulty":7`, `["a","b","c","d","e"]`, 4, "single_choice", "hard", []string{"question-two-opt-5"}},
+		{"last_six", `,"difficulty":10`, `["a","b","c","d","e","f"]`, 5, "single_choice", "nightmare", []string{"question-two-opt-6"}},
 		{"multi", `,"difficulty":8,"correct_multi":[3,2]`, `["a","b","c","d"]`, 2, "multiple_choice", "hard", []string{"question-two-opt-3", "question-two-opt-4"}},
 	} {
 		t.Run(tc.name, func(t *testing.T) {

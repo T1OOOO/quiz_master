@@ -76,6 +76,15 @@ func ValidateDraft(d Draft, schemaPath string) error {
 	}
 	return validateDraftLinks(d)
 }
+func ValidateDraftWithTaxonomy(d Draft, schemaDir string, taxonomy *Taxonomy) error {
+	if e := ValidateDraft(d, filepath.Join(schemaDir, "draft-quiz.schema.json")); e != nil {
+		return e
+	}
+	if hasAnnotations(d) {
+		return validateTaxonomyLinks(d, taxonomy)
+	}
+	return nil
+}
 func validateDraftLinks(d Draft) error {
 	if strings.TrimSpace(d.Locale) == "" {
 		return &Error{"required", d.QuizID + "/locale"}
@@ -90,6 +99,24 @@ func validateDraftLinks(d Draft) error {
 		seen[q.QuestionID] = true
 		if strings.TrimSpace(q.Stem) == "" || strings.TrimSpace(q.Source["uri"]) == "" {
 			return &Error{"required", where}
+		}
+		if e := validateDifficulty(q.Difficulty, q.DifficultyLevel, where); e != nil {
+			return e
+		}
+		if e := validateTagIDs(q.EditorialTagIDs, where); e != nil {
+			return e
+		}
+		if e := validateTagIDs(q.ContextTagIDs, where); e != nil {
+			return e
+		}
+		editorial := map[string]bool{}
+		for _, id := range q.EditorialTagIDs {
+			editorial[id] = true
+		}
+		for _, id := range q.ContextTagIDs {
+			if !editorial[id] {
+				return &Error{"context_tag_subset", where}
+			}
 		}
 		options := map[string]bool{}
 		for _, o := range q.Options {
@@ -172,9 +199,10 @@ func ValidateCollection(drafts []Draft, schemaDir string) error {
 // DraftFromBundle reconstructs the exact private revision input. Public question
 // and quiz revisions intentionally identify the original private draft content.
 func DraftFromBundle(b Bundle) Draft {
-	d := Draft{Contract: b.Contract, State: "draft", QuizID: b.Quiz.QuizID, Revision: b.Quiz.Revision, Locale: b.Quiz.Locale, Questions: make([]Question, 0, len(b.Quiz.Questions))}
+	d := Draft{Contract: b.Contract, State: "draft", QuizID: b.Quiz.QuizID, Revision: b.Quiz.Revision, Locale: b.Quiz.Locale, TaxonomyRef: b.TaxonomyRef, Questions: make([]Question, 0, len(b.Quiz.Questions))}
 	for _, q := range b.Quiz.Questions {
-		d.Questions = append(d.Questions, Question{QuestionID: q.QuestionID, Revision: q.Revision, Stem: q.Stem, Options: q.Options, Difficulty: q.Difficulty, Source: q.Source, Media: q.Media, AnswerKind: q.AnswerKind, Grading: b.PrivateGrading[q.QuestionID]})
+		metadata := b.PrivateQuestionMetadata[q.QuestionID]
+		d.Questions = append(d.Questions, Question{QuestionID: q.QuestionID, Revision: q.Revision, Stem: q.Stem, Options: q.Options, Difficulty: q.Difficulty, DifficultyLevel: q.DifficultyLevel, EditorialTagIDs: metadata.EditorialTagIDs, ContextTagIDs: q.ContextTagIDs, Source: q.Source, Media: q.Media, AnswerKind: q.AnswerKind, Grading: b.PrivateGrading[q.QuestionID]})
 	}
 	return d
 }
@@ -188,6 +216,16 @@ func ValidateBundle(b Bundle, schemaPath string) error {
 	}
 	return validateBundleLinks(b)
 }
+func ValidateBundleWithTaxonomy(b Bundle, schemaDir string, taxonomy *Taxonomy) error {
+	if e := ValidateBundle(b, filepath.Join(schemaDir, "published-bundle.schema.json")); e != nil {
+		return e
+	}
+	d := DraftFromBundle(b)
+	if hasAnnotations(d) {
+		return validateTaxonomyLinks(d, taxonomy)
+	}
+	return nil
+}
 func validateBundleLinks(b Bundle) error {
 	if strings.TrimSpace(b.BundleVersion) == "" {
 		return &Error{"required", b.Quiz.QuizID + "/bundle_version"}
@@ -199,9 +237,24 @@ func validateBundleLinks(b Bundle) error {
 		if _, ok := b.PrivateGrading[q.QuestionID]; !ok {
 			return &Error{"grading_coverage", b.Quiz.QuizID + "/" + q.QuestionID}
 		}
+		if _, exists := b.PrivateQuestionMetadata[q.QuestionID]; exists && len(b.PrivateQuestionMetadata[q.QuestionID].EditorialTagIDs) == 0 {
+			return &Error{"metadata_coverage", b.Quiz.QuizID + "/" + q.QuestionID}
+		}
 	}
 	if len(b.PrivateGrading) != len(b.Quiz.Questions) {
 		return &Error{"grading_coverage", b.Quiz.QuizID}
+	}
+	for id := range b.PrivateQuestionMetadata {
+		found := false
+		for _, q := range b.Quiz.Questions {
+			if q.QuestionID == id {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return &Error{"metadata_coverage", b.Quiz.QuizID + "/" + id}
+		}
 	}
 	if e := validateDraftLinks(DraftFromBundle(b)); e != nil {
 		return e
@@ -271,6 +324,12 @@ func errorLocation(e error) string {
 }
 
 func Build(d Draft, version, publishedAt string, schemaDirs ...string) (Bundle, error) {
+	return build(d, version, publishedAt, nil, schemaDirs...)
+}
+func BuildWithTaxonomy(d Draft, version, publishedAt string, taxonomy *Taxonomy, schemaDirs ...string) (Bundle, error) {
+	return build(d, version, publishedAt, taxonomy, schemaDirs...)
+}
+func build(d Draft, version, publishedAt string, taxonomy *Taxonomy, schemaDirs ...string) (Bundle, error) {
 	if strings.TrimSpace(version) == "" {
 		return Bundle{}, &Error{"build_input", d.QuizID}
 	}
@@ -281,16 +340,35 @@ func Build(d Draft, version, publishedAt string, schemaDirs ...string) (Bundle, 
 	if len(schemaDirs) > 0 {
 		dir = schemaDirs[0]
 	}
-	if e := ValidateDraft(d, filepath.Join(dir, "draft-quiz.schema.json")); e != nil {
+	if hasAnnotations(d) && taxonomy == nil {
+		return Bundle{}, &Error{"taxonomy_required", d.QuizID}
+	}
+	if taxonomy != nil {
+		e := ValidateDraftWithTaxonomy(d, dir, taxonomy)
+		if e != nil {
+			return Bundle{}, e
+		}
+	} else if e := ValidateDraft(d, filepath.Join(dir, "draft-quiz.schema.json")); e != nil {
 		return Bundle{}, e
 	}
-	b := Bundle{Contract: d.Contract, BundleVersion: version, PublishedAt: publishedAt, Quiz: PublicQuiz{QuizID: d.QuizID, Revision: d.Revision, Locale: d.Locale}, PrivateGrading: map[string]Grading{}}
+	b := Bundle{Contract: d.Contract, BundleVersion: version, PublishedAt: publishedAt, TaxonomyRef: d.TaxonomyRef, Quiz: PublicQuiz{QuizID: d.QuizID, Revision: d.Revision, Locale: d.Locale}, PrivateGrading: map[string]Grading{}}
 	for _, q := range d.Questions {
-		b.Quiz.Questions = append(b.Quiz.Questions, PublicQuestion{QuizID: d.QuizID, QuestionID: q.QuestionID, Revision: q.Revision, Stem: q.Stem, Options: q.Options, Difficulty: q.Difficulty, Source: q.Source, Media: q.Media, AnswerKind: q.AnswerKind})
+		b.Quiz.Questions = append(b.Quiz.Questions, PublicQuestion{QuizID: d.QuizID, QuestionID: q.QuestionID, Revision: q.Revision, Stem: q.Stem, Options: q.Options, Difficulty: q.Difficulty, DifficultyLevel: q.DifficultyLevel, ContextTagIDs: q.ContextTagIDs, Source: q.Source, Media: q.Media, AnswerKind: q.AnswerKind})
 		b.PrivateGrading[q.QuestionID] = q.Grading
+		if len(q.EditorialTagIDs) != 0 {
+			if b.PrivateQuestionMetadata == nil {
+				b.PrivateQuestionMetadata = map[string]PrivateQuestionMetadata{}
+			}
+			b.PrivateQuestionMetadata[q.QuestionID] = PrivateQuestionMetadata{EditorialTagIDs: q.EditorialTagIDs}
+		}
 	}
 	b.BundleSHA256 = hashWithout(b, "bundle_sha256")
-	if e := ValidateBundle(b, filepath.Join(dir, "published-bundle.schema.json")); e != nil {
+	if taxonomy != nil {
+		e := ValidateBundleWithTaxonomy(b, dir, taxonomy)
+		if e != nil {
+			return Bundle{}, e
+		}
+	} else if e := ValidateBundle(b, filepath.Join(dir, "published-bundle.schema.json")); e != nil {
 		return Bundle{}, e
 	}
 	return b, nil

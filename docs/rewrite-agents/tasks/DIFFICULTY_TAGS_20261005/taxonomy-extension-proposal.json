@@ -1,0 +1,266 @@
+{
+  "schema_version": "qm-taxonomy-extension-proposal/v1",
+  "base_taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "fcaf4ce7c923bf6734f660c6873674e1f42bd6986d6fc3c04dd5d6095ed51e11"
+  },
+  "base_count": 403,
+  "proposed_count": 423,
+  "status": "proposal-not-applied",
+  "tags": [
+    {
+      "id": "domain:society",
+      "facet": "domain",
+      "label_ru": "Общество и право",
+      "label_en": "Society and law",
+      "aliases_ru": [],
+      "aliases_en": [
+        "society",
+        "law"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-products",
+      "facet": "topic",
+      "label_ru": "Продукты и блюда",
+      "label_en": "Food products and dishes",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:edible-fungi",
+      "facet": "topic",
+      "label_ru": "Съедобные грибы",
+      "label_en": "Edible fungi",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food",
+        "domain:nature"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:restaurant-industry",
+      "facet": "topic",
+      "label_ru": "Рестораны и ресторанное дело",
+      "label_en": "Restaurants and restaurant industry",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-senses",
+      "facet": "topic",
+      "label_ru": "Вкус и восприятие еды",
+      "label_en": "Taste and food perception",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:culinary-profession",
+      "facet": "topic",
+      "label_ru": "Кулинарные профессии",
+      "label_en": "Culinary professions",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:space-food",
+      "facet": "topic",
+      "label_ru": "Питание в космосе",
+      "label_en": "Space food",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food",
+        "domain:science"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-history",
+      "facet": "topic",
+      "label_ru": "История еды",
+      "label_en": "Food history",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food",
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:grain-pasta",
+      "facet": "topic",
+      "label_ru": "Крупы и макаронные изделия",
+      "label_en": "Grain foods and pasta",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-law",
+      "facet": "topic",
+      "label_ru": "Законы о еде и питании",
+      "label_en": "Food and nutrition law",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food",
+        "topic:law-regulations"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:brand-logos",
+      "facet": "topic",
+      "label_ru": "Логотипы брендов",
+      "label_en": "Brand logos",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:arts"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:law-regulations",
+      "facet": "topic",
+      "label_ru": "Законы и правила",
+      "label_en": "Laws and regulations",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:society"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-safety",
+      "facet": "topic",
+      "label_ru": "Безопасность пищи",
+      "label_en": "Food safety",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "medium:comics",
+      "facet": "medium",
+      "label_ru": "Комиксы",
+      "label_en": "Comics",
+      "aliases_ru": [
+        "графический роман"
+      ],
+      "aliases_en": [
+        "graphic novel"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animation-production",
+      "facet": "topic",
+      "label_ru": "Создание анимации",
+      "label_en": "Animation production",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:screen"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "topic:film-music",
+      "facet": "topic",
+      "label_ru": "Музыка в кино",
+      "label_en": "Film music",
+      "aliases_ru": [
+        "киносаундтрек"
+      ],
+      "aliases_en": [
+        "film soundtrack"
+      ],
+      "parent_ids": [
+        "domain:screen",
+        "domain:arts"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "ingredient:maize",
+      "facet": "ingredient",
+      "label_ru": "Кукуруза",
+      "label_en": "Maize",
+      "aliases_ru": [],
+      "aliases_en": [
+        "corn"
+      ],
+      "parent_ids": [
+        "ingredient-family:grain-starch"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:quinoa",
+      "facet": "ingredient",
+      "label_ru": "Киноа",
+      "label_en": "Quinoa",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "ingredient-family:grain-starch"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:peanut",
+      "facet": "ingredient",
+      "label_ru": "Арахис",
+      "label_en": "Peanut",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "ingredient-family:nut-seed"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:saffron",
+      "facet": "ingredient",
+      "label_ru": "Шафран",
+      "label_en": "Saffron",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "ingredient-family:herb-spice"
+      ],
+      "player_safe": false
+    }
+  ]
+}

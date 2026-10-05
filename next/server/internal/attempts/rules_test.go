@@ -2,6 +2,8 @@ package attempts
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -96,5 +98,79 @@ func TestSnapshotsArePinnedAndDoNotMutateCatalog(t *testing.T) {
 	}
 	if _, err := makeSnapshots(b, func(ids []string) error { ids[0] = "forged"; return nil }); err == nil {
 		t.Fatal("invalid shuffler permutation accepted")
+	}
+}
+
+func TestDifficultySelectionPartitionsFilteredPackWithoutRepeats(t *testing.T) {
+	quiz := content.PublicQuiz{QuizID: "q-filtered"}
+	for i := 0; i < 82; i++ {
+		difficulty := "hard"
+		if i%2 == 0 {
+			difficulty = "easy"
+		}
+		quiz.Questions = append(quiz.Questions, content.PublicQuestion{QuestionID: fmt.Sprintf("q-%02d", i), Difficulty: difficulty})
+	}
+	filtered, err := SelectDifficulty(quiz, "easy")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(filtered.Questions) != 41 {
+		t.Fatalf("filtered count = %d", len(filtered.Questions))
+	}
+	service := Service{bundle: content.Bundle{BundleVersion: "v-original", BundleSHA256: "hash-original", Quiz: quiz}}
+	catalog, err := service.CatalogForDifficulty("q-filtered", "easy")
+	if err != nil || catalog.BundleVersion != "v-original" || catalog.BundleSHA256 != "hash-original" || len(catalog.Quiz.Questions) != len(filtered.Questions) {
+		t.Fatalf("catalog/source identity agreement = %+v, %v", catalog, err)
+	}
+	seen := map[string]bool{}
+	for round, want := range []int{20, 20, 1} {
+		questions, err := QuestionRound(filtered.Questions, round)
+		if err != nil || len(questions) != want {
+			t.Fatalf("round %d = %d, %v", round, len(questions), err)
+		}
+		for _, question := range questions {
+			if question.Difficulty != "easy" || seen[question.QuestionID] {
+				t.Fatalf("bad filtered partition question %+v", question)
+			}
+			seen[question.QuestionID] = true
+		}
+	}
+	if len(seen) != len(filtered.Questions) {
+		t.Fatalf("partition retained %d of %d", len(seen), len(filtered.Questions))
+	}
+	if _, err = QuestionRound(filtered.Questions, 3); !errors.Is(err, ErrValidation) {
+		t.Fatalf("past tail round = %v", err)
+	}
+	if _, err = SelectDifficulty(quiz, "nightmare"); !errors.Is(err, ErrNoMatch) {
+		t.Fatalf("empty selected catalog = %v", err)
+	}
+}
+
+func TestServiceShuffledRoundPermutesOnlyItsSelectedSlice(t *testing.T) {
+	questions := make([]content.PublicQuestion, 41)
+	for i := range questions {
+		questions[i] = content.PublicQuestion{QuestionID: fmt.Sprintf("q-%02d", i)}
+	}
+	service := Service{opts: Options{Shuffle: func(ids []string) error {
+		for left, right := 0, len(ids)-1; left < right; left, right = left+1, right-1 {
+			ids[left], ids[right] = ids[right], ids[left]
+		}
+		return nil
+	}}}
+	selected, err := service.shuffledRound(questions, 1)
+	if err != nil || len(selected) != 20 {
+		t.Fatalf("round = %d, %v", len(selected), err)
+	}
+	for i, question := range selected {
+		want := fmt.Sprintf("q-%02d", 39-i)
+		if question.QuestionID != want {
+			t.Fatalf("position %d = %s, want %s", i, question.QuestionID, want)
+		}
+	}
+	if questions[20].QuestionID != "q-20" || questions[40].QuestionID != "q-40" {
+		t.Fatal("round shuffle mutated full source order")
+	}
+	if _, err = ShuffleQuestions(questions[:2], func(ids []string) error { ids[0] = ids[1]; return nil }); !errors.Is(err, ErrValidation) {
+		t.Fatalf("duplicate shuffled ID = %v", err)
 	}
 }

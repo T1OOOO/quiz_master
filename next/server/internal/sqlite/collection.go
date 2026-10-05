@@ -15,10 +15,18 @@ import (
 
 // Source answers stay server-side. Validate the entire collection before
 // atomically storing immutable bundles; existing attempts retain their versions.
-func newCollection(db *sql.DB, directory, schemas string, duration time.Duration) (*Attempts, error) {
+func newCollection(db *sql.DB, directory, schemas string, duration time.Duration, taxonomyPath string) (*Attempts, error) {
 	type pack struct {
 		service       *Attempts
 		raw, manifest []byte
+	}
+	var taxonomy *content.Taxonomy
+	if taxonomyPath != "" {
+		var err error
+		taxonomy, err = content.LoadTaxonomy(taxonomyPath)
+		if err != nil {
+			return nil, err
+		}
 	}
 	var loaded []pack
 	packs := map[string]*Attempts{}
@@ -32,11 +40,11 @@ func newCollection(db *sql.DB, directory, schemas string, duration time.Duration
 		if entry.IsDir() || !strings.HasSuffix(entry.Name(), ".json") {
 			return nil
 		}
-		draft, manifest, err := content.Import(path)
+		draft, manifest, err := content.ImportWithTaxonomy(path, taxonomy)
 		if err != nil {
 			return err
 		}
-		bundle, err := content.Build(draft, "source-v1", "2026-10-02T00:00:00Z", schemas)
+		bundle, err := content.BuildWithTaxonomy(draft, "source-v1", "2026-10-02T00:00:00Z", taxonomy, schemas)
 		if err != nil {
 			return err
 		}
@@ -122,12 +130,52 @@ func (s *Attempts) CatalogFor(id string) (attempts.Catalog, error) {
 	}
 	return pack.Catalog(), nil
 }
+func (s *Attempts) CatalogForDifficulty(id, difficulty string) (attempts.Catalog, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Catalog{}, err
+	}
+	selected, err := selectDifficulty(pack, difficulty)
+	if err != nil {
+		return attempts.Catalog{}, err
+	}
+	return selected.Catalog(), nil
+}
 func (s *Attempts) StartQuiz(ctx context.Context, owner, id string) (attempts.Attempt, error) {
 	pack, err := s.selected(id)
 	if err != nil {
 		return attempts.Attempt{}, err
 	}
 	return pack.Start(ctx, owner)
+}
+func (s *Attempts) StartPracticeQuiz(ctx context.Context, owner, id string) (attempts.Attempt, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	return pack.start(ctx, owner, true)
+}
+func (s *Attempts) StartDifficultyQuiz(ctx context.Context, owner, id, difficulty string) (attempts.Attempt, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	selected, err := selectDifficulty(pack, difficulty)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	return selected.start(ctx, owner, false)
+}
+func (s *Attempts) StartDifficultyPracticeQuiz(ctx context.Context, owner, id, difficulty string) (attempts.Attempt, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	selected, err := selectDifficulty(pack, difficulty)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	return selected.start(ctx, owner, true)
 }
 
 // Rounds partition the source without changing its immutable grading bundle.
@@ -138,23 +186,46 @@ func (s *Attempts) StartRound(ctx context.Context, owner, id string, round int) 
 func (s *Attempts) StartPracticeRound(ctx context.Context, owner, id string, round int) (attempts.Attempt, error) {
 	return s.startRound(ctx, owner, id, round, true)
 }
+func (s *Attempts) StartDifficultyRound(ctx context.Context, owner, id, difficulty string, round int) (attempts.Attempt, error) {
+	return s.startDifficultyRound(ctx, owner, id, difficulty, round, false)
+}
+func (s *Attempts) StartDifficultyPracticeRound(ctx context.Context, owner, id, difficulty string, round int) (attempts.Attempt, error) {
+	return s.startDifficultyRound(ctx, owner, id, difficulty, round, true)
+}
 func (s *Attempts) startRound(ctx context.Context, owner, id string, round int, practice bool) (attempts.Attempt, error) {
 	pack, err := s.selected(id)
 	if err != nil {
 		return attempts.Attempt{}, err
 	}
-	questions := pack.bundle.Quiz.Questions
-	if round < 0 || round >= (len(questions)+19)/20 {
-		return attempts.Attempt{}, attempts.ErrValidation
+	questions, err := attempts.QuestionRound(pack.bundle.Quiz.Questions, round)
+	if err != nil {
+		return attempts.Attempt{}, err
 	}
-	end := min((round+1)*20, len(questions))
-	ids := make([]string, end-round*20)
+	return startQuestionRound(ctx, owner, pack, questions, practice)
+}
+func (s *Attempts) startDifficultyRound(ctx context.Context, owner, id, difficulty string, round int, practice bool) (attempts.Attempt, error) {
+	pack, err := s.selected(id)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	selected, err := selectDifficulty(pack, difficulty)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	questions, err := attempts.QuestionRound(selected.bundle.Quiz.Questions, round)
+	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	return startQuestionRound(ctx, owner, selected, questions, practice)
+}
+func startQuestionRound(ctx context.Context, owner string, pack *Attempts, questions []content.PublicQuestion, practice bool) (attempts.Attempt, error) {
+	ids := make([]string, len(questions))
 	byID := map[string]content.PublicQuestion{}
-	for i, q := range questions[round*20 : end] {
+	for i, q := range questions {
 		ids[i] = q.QuestionID
 		byID[q.QuestionID] = q
 	}
-	if err = attempts.RandomShuffle(ids); err != nil {
+	if err := attempts.RandomShuffle(ids); err != nil {
 		return attempts.Attempt{}, err
 	}
 	selected := *pack
@@ -163,4 +234,13 @@ func (s *Attempts) startRound(ctx context.Context, owner, id string, round int, 
 		selected.bundle.Quiz.Questions[i] = byID[id]
 	}
 	return selected.start(ctx, owner, practice)
+}
+func selectDifficulty(pack *Attempts, difficulty string) (*Attempts, error) {
+	quiz, err := attempts.SelectDifficulty(pack.bundle.Quiz, difficulty)
+	if err != nil {
+		return nil, err
+	}
+	selected := *pack
+	selected.bundle.Quiz = quiz
+	return &selected, nil
 }

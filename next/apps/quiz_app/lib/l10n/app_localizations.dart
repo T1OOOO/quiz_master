@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Round {number}'**
   String roundLabel(int number);
 
+  /// No description provided for @allQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'All questions'**
+  String get allQuestions;
+
   /// No description provided for @nextRound.
   ///
   /// In en, this message translates to:
@@ -139,6 +145,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search by title, description or category'**
   String get searchQuizzes;
+
+  /// No description provided for @difficultyEasy.
+  ///
+  /// In en, this message translates to:
+  /// **'Easy'**
+  String get difficultyEasy;
+
+  /// No description provided for @difficultyMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get difficultyMedium;
+
+  /// No description provided for @difficultyHard.
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get difficultyHard;
+
+  /// No description provided for @difficultyNightmare.
+  ///
+  /// In en, this message translates to:
+  /// **'Nightmare'**
+  String get difficultyNightmare;
 
   /// No description provided for @categories.
   ///

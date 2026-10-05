@@ -59,7 +59,7 @@ func TestIDGrammarAndDifficultyBoundaries(t *testing.T) {
 			t.Fatalf("invalid ID accepted: %v", e)
 		}
 	}
-	for _, tc := range []struct{ number, want string }{{"1", "easy"}, {"3", "easy"}, {"4", "medium"}, {"7", "medium"}, {"8", "hard"}, {"10", "hard"}} {
+	for _, tc := range []struct{ number, want string }{{"1", "easy"}, {"3", "easy"}, {"4", "medium"}, {"6", "medium"}, {"7", "hard"}, {"8", "hard"}, {"9", "nightmare"}, {"10", "nightmare"}} {
 		d, _, e := importText(t, strings.Replace(legacyBase, `"correct_answer":2`, `"correct_answer":2,"difficulty":`+tc.number, 1))
 		if e != nil || d.Questions[0].Difficulty != tc.want {
 			t.Fatal("difficulty boundary", e)

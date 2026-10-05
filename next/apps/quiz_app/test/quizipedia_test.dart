@@ -322,7 +322,9 @@ void main() {
     await tester.pump();
     await pan.moveBy(const Offset(-25, 0));
     await tester.pump();
-    await pan.moveBy(Offset(targetIndex == 3 ? -155 : -25, 0));
+    // The first drag distance starts the gesture instead of panning the map.
+    // Keep the rightmost country's hole inside the clipped viewport as well.
+    await pan.moveBy(Offset(targetIndex == 3 ? -205 : -25, 0));
     await pan.up();
     await tester.pumpAndSettle();
     expect(controller.value.storage[12], isNot(0));
@@ -333,6 +335,11 @@ void main() {
       final local = Offset(
         matrix[0] * x * size.width + matrix[4] * y * size.height + matrix[12],
         matrix[1] * x * size.width + matrix[5] * y * size.height + matrix[13],
+      );
+      expect(
+        (Offset.zero & tester.getSize(viewport)).contains(local),
+        isTrue,
+        reason: 'Target $targetIndex, scene ($x, $y), viewport $local',
       );
       await tester.tapAt(tester.getTopLeft(viewport) + local);
       await tester.pump();

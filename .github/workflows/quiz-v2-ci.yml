@@ -31,7 +31,7 @@ jobs:
       - name: PostgreSQL integration suite
         run: |
           port=$(docker compose --project-name qm-ci-${{ github.run_id }} -f next/infra/compose.yml port postgres 5432 | sed 's/.*://')
-          QM_TEST_DATABASE_URL="postgres://quiz_master:quiz_master_development_only@127.0.0.1:${port}/quiz_master?sslmode=disable" go test -p 1 -count=1 -tags integration ./next/server/internal/migrate ./next/server/internal/identity ./next/server/internal/store
+          QM_TEST_DATABASE_URL="postgres://quiz_master:quiz_master_development_only@127.0.0.1:${port}/quiz_master?sslmode=disable" go test -p 1 -count=1 -tags integration ./next/server/internal/migrate ./next/server/internal/identity ./next/server/internal/store ./next/server/internal/attempts
       - name: Start isolated integration API
         run: docker compose --project-name qm-ci-${{ github.run_id }} -f next/infra/compose.yml up --build --wait api
       - name: Probe API health

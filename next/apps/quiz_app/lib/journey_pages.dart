@@ -1,9 +1,10 @@
 part of 'main.dart';
 
 class CatalogPage extends ConsumerStatefulWidget {
-  const CatalogPage({super.key, this.quizId, this.round = 0});
+  const CatalogPage({super.key, this.quizId, this.round, this.difficulty});
   final String? quizId;
-  final int round;
+  final int? round;
+  final DifficultyBand? difficulty;
   @override
   ConsumerState<CatalogPage> createState() => _CatalogPageState();
 }
@@ -18,7 +19,11 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         if (mounted) {
           ref
               .read(journeyProvider.notifier)
-              .openQuiz(widget.quizId!, round: widget.round);
+              .openQuiz(
+                widget.quizId!,
+                round: widget.round,
+                difficulty: widget.difficulty,
+              );
         }
       });
     }
@@ -85,7 +90,11 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                       const SizedBox(width: 8),
                       Flexible(
                         child: Text(
-                          l10n.roundLabel(widget.round + 1),
+                          widget.round == null
+                              ? l10n.allQuestions
+                              : l10n.roundLabel(widget.round! + 1),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.end,
                           style: const TextStyle(fontSize: 14),
                         ),
@@ -134,7 +143,15 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                     ),
                   ),
                 TextButton(
-                  onPressed: () => context.go('/library'),
+                  onPressed: () => context.go(
+                    Uri(
+                      path: '/library',
+                      queryParameters: {
+                        if (widget.difficulty != null)
+                          'difficulty': widget.difficulty!.wireName,
+                      },
+                    ).toString(),
+                  ),
                   child: Text(l10n.browseQuizzes),
                 ),
                 if (widget.quizId != null &&
@@ -148,6 +165,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                       onRetry: () => controller.openQuiz(
                         widget.quizId!,
                         round: widget.round,
+                        difficulty: widget.difficulty,
                       ),
                     ),
                 ] else if (journey.session == null) ...[
@@ -227,10 +245,15 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                     ),
                   const SizedBox(height: 8),
                   if (widget.quizId != null &&
-                      (widget.round + 1) * 20 < catalog.quiz.questions.length)
+                      widget.round != null &&
+                      (widget.round! + 1) * 20 < catalog.quiz.questions.length)
                     FilledButton(
                       onPressed: () => context.go(
-                        '/quiz/${widget.quizId}?round=${widget.round + 1}',
+                        _quizLocation(
+                          widget.quizId!,
+                          widget.round! + 1,
+                          widget.difficulty,
+                        ),
                       ),
                       child: Text(l10n.nextRound),
                     ),

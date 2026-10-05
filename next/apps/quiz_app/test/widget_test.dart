@@ -11,6 +11,35 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets(
+    'browse from a failed selected quiz preserves its difficulty band',
+    (tester) async {
+      final api = await _QuizTestServer.start(failFirstCatalog: true);
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            quizApiProvider.overrideWithValue(client),
+            discoveryCatalogProvider.overrideWith((ref) async => []),
+          ],
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many?difficulty=hard',
+            defaultLocale: Locale('en'),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Browse quizzes'));
+      await tester.pumpAndSettle();
+      final router = GoRouter.of(tester.element(find.byType(DiscoveryPage)));
+      expect(
+        router.routeInformationProvider.value.uri.queryParameters['difficulty'],
+        'hard',
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
   for (final size in [const Size(390, 736), const Size(360, 640)]) {
     testWidgets('six phone answers are visible and tappable at $size', (
       tester,

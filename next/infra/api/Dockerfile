@@ -14,6 +14,7 @@ COPY --from=build /out/quiz-v2-api /quiz-v2-api
 COPY --from=build /out/healthprobe /healthprobe
 COPY next/content/home-alone-1-part-1 /app/next/content/home-alone-1-part-1
 COPY next/contracts/quiz-contract/v1 /app/next/contracts/quiz-contract/v1
+COPY metadata/tags.v1.json /app/metadata/tags.v1.json
 WORKDIR /app
 USER nonroot:nonroot
 EXPOSE 8080

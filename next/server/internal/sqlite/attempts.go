@@ -7,6 +7,7 @@ import (
 	"errors"
 	"github.com/google/uuid"
 	"os"
+	"path/filepath"
 	"quiz_master/next/server/internal/attempts"
 	"quiz_master/next/server/internal/content"
 	"time"
@@ -21,9 +22,19 @@ type Attempts struct {
 }
 
 func NewAttempts(db *sql.DB, path, manifestPath, schemas string, duration time.Duration) (*Attempts, error) {
+	taxonomyPath := ""
+	if info, err := os.Stat(path); err == nil && info.IsDir() {
+		candidate := filepath.Join(filepath.Dir(path), "metadata", "tags.v1.json")
+		if _, err = os.Stat(candidate); err == nil {
+			taxonomyPath = candidate
+		}
+	}
+	return NewAttemptsWithTaxonomy(db, path, manifestPath, schemas, duration, taxonomyPath)
+}
+func NewAttemptsWithTaxonomy(db *sql.DB, path, manifestPath, schemas string, duration time.Duration, taxonomyPath string) (*Attempts, error) {
 	info, sourceStatErr := os.Stat(path)
 	if sourceStatErr == nil && info.IsDir() {
-		return newCollection(db, path, schemas, duration)
+		return newCollection(db, path, schemas, duration, taxonomyPath)
 	}
 	d, e := content.ReadDocument(path, schemas)
 	if e != nil {
@@ -60,6 +71,18 @@ func NewAttempts(db *sql.DB, path, manifestPath, schemas string, duration time.D
 	if d.Bundle == nil {
 		return nil, attempts.ErrValidation
 	}
+	if content.HasAnnotations(d.Draft) {
+		if taxonomyPath == "" {
+			return nil, &content.Error{Kind: "taxonomy_required", Path: path}
+		}
+		taxonomy, err := content.LoadTaxonomy(taxonomyPath)
+		if err != nil {
+			return nil, err
+		}
+		if err = content.ValidateBundleWithTaxonomy(*d.Bundle, schemas, taxonomy); err != nil {
+			return nil, err
+		}
+	}
 	explanations := map[string]string{}
 	manifestRaw, manifestErr := os.ReadFile(manifestPath)
 	if manifestErr != nil {
@@ -86,7 +109,7 @@ func NewAttempts(db *sql.DB, path, manifestPath, schemas string, duration time.D
 	return &Attempts{db: db, bundle: *d.Bundle, duration: duration, explanations: explanations}, nil
 }
 func (s *Attempts) Catalog() attempts.Catalog {
-	return attempts.Catalog{BundleVersion: s.bundle.BundleVersion, BundleSHA256: s.bundle.BundleSHA256, Quiz: s.bundle.Quiz}
+	return attempts.Catalog{BundleVersion: s.bundle.BundleVersion, BundleSHA256: s.bundle.BundleSHA256, Quiz: s.bundle.Quiz, DifficultyCounts: attempts.DifficultyCounts(s.bundle.Quiz)}
 }
 func (s *Attempts) Start(ctx context.Context, owner string) (attempts.Attempt, error) {
 	return s.start(ctx, owner, false)

@@ -1,0 +1,1565 @@
+{
+  "schema_version": "qm-question-annotations/v1",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "09e8e90542c121bda2e4978daaf74639ed32f3e828838d3a3f2d4e8896a4276e"
+  },
+  "records": [
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сладости_и_десерты",
+      "question_id": "q_gastronomy_сладости_и_десерты_9_food_154",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:chocolate",
+        "skill:classification",
+        "topic:desserts"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:desserts"
+      ],
+      "rationale": "Нужно распознать German Chocolate Cake по фамилии кондитера, хотя в самом стеме ошибочно задана версия о немецком городе; берлинер и штрудель усиливают ложную географическую ассоциацию.",
+      "confidence": "low",
+      "editorial_flags": [
+        "factual-error-suspected",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_0_food_5",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:butter",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Сливочное масло — ожидаемая основа слоёного круассана, тогда как шоколад, джем и крем относятся к вариациям выпечки; слово «начинка» неточно описывает ламинирование теста.",
+      "confidence": "low",
+      "editorial_flags": [
+        "factual-error-suspected"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_10_food_201",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Термин «материнские соусы» известен подготовленному любителю французской кухни; остальные торжественные названия звучат правдоподобно, но не являются установленным термином.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_11_food_202",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Для велюте нужно помнить именно светлый бульон; молоко делает заманчивым бешамель, а сливки и масло правдоподобны как компоненты, но не как жидкая база.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_12_food_226",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:food",
+        "era:nineteenth-century",
+        "skill:temporal-order",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Надо знать узкий эпизод с продажей кетчупа как средства в 1830-х и соотнести его с XIX веком; ряд веков не даёт содержательной подсказки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "medical-claim-needs-source",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_13_food_230",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:egg",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Голландский соус — распространённая пара к яйцам Бенедикт; остальные варианты — реальные соусы, но не классическая подача этого блюда.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_14_food_231",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "era:early-modern",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Нужны автор и точное название Le Cuisinier François, а не общее знание бешамеля; остальные названия книг похожи на возможные кулинарные трактаты.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_15_food_289",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:ir",
+        "domain:food",
+        "ingredient:saffron",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Иран широко связывают с шафраном, но Испания и Индия остаются правдоподобными странами-отвлекателями для игрока без знания производства.",
+      "confidence": "low",
+      "editorial_flags": [
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_16_food_403",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Эспаньоль требуется отличить от четырёх других материнских соусов по тёмному бульону и связи с демигласом, а не просто узнать французское название.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_17_food_442",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Демиглас узнаётся по выпаренному тёмному мясному бульону; айоли, песто и маринара — тоже насыщенные соусы, но не отвечают описанию.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_1_food_49",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:food",
+        "era:nineteenth-century",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Требуется вспомнить именно кетчуп из странного эпизода 1830-х; остальные знакомые приправы не дают логического пути к заявленному лечебному употреблению.",
+      "confidence": "low",
+      "editorial_flags": [
+        "medical-claim-needs-source",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_20_food_p5_85",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "skill:quantitative",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Классическое соотношение 3:1 требует точной кулинарной пропорции; варианты 1:1 и 2:1 выглядят бытово возможными для тех, кто помнит лишь состав винегрета.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_21_food_601",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:mg",
+        "domain:food",
+        "ingredient:vanilla",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Это конкретная связка урагана 2017 года, Мадагаскара и цен на ваниль; остальные природные бедствия и страны не отсеиваются общим знанием специи.",
+      "confidence": "low",
+      "editorial_flags": [
+        "needs-independent-fact-check",
+        "quantitative-claim-needs-source",
+        "ranking-time-sensitive"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_22_food_643",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:food",
+        "era:nineteenth-century",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Вопрос повторяет малоизвестную историю о лекарственном кетчупе, и среди бытовых функций соуса верный вариант не выводится по формулировке.",
+      "confidence": "low",
+      "editorial_flags": [
+        "medical-claim-needs-source",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_23_food_681",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:egg",
+        "skill:classification",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Нужно понимать риск разрушения эмульсии при перегреве голландского соуса; редкие специи и свежие желтки выглядят правдоподобными бытовыми причинами сложности.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_24_food_699",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Деглазирование надо узнать по добавлению жидкости после жарки; фламбирование и пассерование знакомы по сковороде, но не растворяют прижарки.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_2_food_62",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:pepper",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Pepper X — свежая специализированная запись, тогда как Carolina Reaper остаётся более знакомым и потому сильным отвлекающим ответом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_3_food_81",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Связь Эскофье с пятью материнскими соусами требует кулинарно-исторической памяти; все альтернативы — известные шефы и не отбрасываются по форме имени.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_4_food_82",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:milk",
+        "skill:terminology",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Бешамель обычно узнают по молоку и ру; велюте и эспаньоль — близкие французские соусы, но их базы различаются.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_5_food_101",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:milk",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Среди названных материнских соусов только бешамель строится на молоке; остальные варианты позволяют проверить конкретное различие основ.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_6_food_107",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:saffron",
+        "skill:quantitative",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Нужно помнить редкую численную оценку 75 000 цветков на фунт шафрана; все крупные числа выглядят возможными без знания урожайности крокуса.",
+      "confidence": "low",
+      "editorial_flags": [
+        "quantitative-claim-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_7_food_164",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "cuisine:mexican",
+        "domain:food",
+        "ingredient-family:fruit-vegetable",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Авокадо — общеизвестная зелёная основа гуакамоле, а шпинат и огурец лишь повторяют цветовую подсказку.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_специи_и_ингредиенты",
+      "question_id": "q_gastronomy_специи_и_ингредиенты_8_food_175",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:wheat",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Ру нужно отличить от названий техник: это обжаренная мука с жиром для загущения, а пассерование близко по действию, но не называет смесь.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_0_food_1",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:cheese",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Италия — ожидаемая родина Пармиджано-Реджано, но Швейцария и Франция остаются знакомыми сырными странами.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_11_food_215",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:coffee",
+        "skill:direct-recall",
+        "topic:food-etiquette"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-etiquette"
+      ],
+      "rationale": "Итальянская норма о капучино после полудня известна туристам и любителям кофе, однако в вопросе она подана как общее правило о пищеварении и требует проверки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "cultural-generalization-needs-source",
+        "medical-claim-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_13_food_233",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:milk",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Моцарелла di Bufala связывается с молоком буйволицы; корова и коза выглядят обычнее, но не соответствуют классической версии названия.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_14_food_236",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:peruvian",
+        "domain:food",
+        "ingredient:lime",
+        "skill:terminology",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Leche de tigre нужно распознать как лаймовый маринад для севиче, а не как молочный продукт: буквальное «молоко» и варианты сливок или кокоса создают ложную опору.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_17_food_p5_13",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:indian",
+        "domain:food",
+        "ingredient:spinach",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Palak буквально указывает на шпинат, а все альтернативы — распространённые индийские овощи или бобовые; сыр панир уже дан в названии блюда.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_18_food_p5_17",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:jp",
+        "cuisine:japanese",
+        "domain:food",
+        "ingredient-family:meat-seafood",
+        "skill:terminology",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Редкое японское прозвище basashi «мясо цветущей сакуры» надо связать с сырой кониной; сашими и вагю правдоподобны как более известные японские ответы.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_19_food_p5_45",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:food",
+        "ingredient:pasta",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Нужно помнить конкретную историю Томаса Джефферсона и mac and cheese; Вашингтон, Линкольн и Рузвельт столь же привычны как исторические президентские отвлекатели.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_1_food_58",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:cheese",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Сыр как «самый воруемый» продукт — запоминающийся, но непроверяемый из вопроса рекорд; мясо, шоколад и вино выглядят столь же дорогостоящими альтернативами.",
+      "confidence": "low",
+      "editorial_flags": [
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_20_food_631",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:cheese",
+        "skill:quantitative",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Точная доля около 4% не следует из вариантов и зависит от спорной статистики; соседние проценты выглядят равно возможными без источника.",
+      "confidence": "low",
+      "editorial_flags": [
+        "quantitative-claim-needs-source",
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_21_food_637",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:hazelnut",
+        "skill:quantitative",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Надо помнить заявленную четверть мирового фундука для Nutella; это ореховая паста, поэтому тег пшеницы или макарон здесь был бы ложным.",
+      "confidence": "low",
+      "editorial_flags": [
+        "quantitative-claim-needs-source",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_22_food_653",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:gr",
+        "cuisine:greek",
+        "domain:food",
+        "ingredient:cheese",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Фета — широко известный компонент греческого салата; остальные перечисленные сыры не образуют столь устойчивой пару с названием блюда.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_24_food_667",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:au",
+        "domain:food",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Нужно знать редкий рассказ о вкусе Witchetty grub у коренных австралийцев; миндаль — сам ключевой вкусовой ответ, а не ингредиент личинки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "cultural-generalization-needs-source",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_2_food_63",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:rs",
+        "domain:food",
+        "ingredient:milk",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Пуле из ослиного молока — нишевый сербский факт; буйвол, як и верблюд кажутся более реалистичными источниками дорогого сыра.",
+      "confidence": "low",
+      "editorial_flags": [
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_3_food_64",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:ca",
+        "domain:food",
+        "ingredient:cheese",
+        "ingredient:pasta",
+        "skill:direct-recall",
+        "topic:grain-pasta"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:grain-pasta"
+      ],
+      "rationale": "Канада как лидер потребления mac and cheese — неочевидный статистический факт, а США и Италия выглядят естественными соперниками по блюду и пасте.",
+      "confidence": "low",
+      "editorial_flags": [
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_4_food_94",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:egg",
+        "ingredient:milk",
+        "skill:classification",
+        "topic:food-safety"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-safety"
+      ],
+      "rationale": "Дверца холодильника логично выделяется перепадами температуры, но вопрос обобщает совет одновременно для яиц и молока и нуждается в предметной проверке.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "food-safety-oversimplified"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_6_food_120",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:ca",
+        "domain:food",
+        "ingredient:cheese",
+        "ingredient:potato",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Путин прочно связан с Квебеком и Канадой; Россия отвлекает русским звучанием названия, а Бельгия — ассоциацией с картофелем фри.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_7_food_151",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:milk",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Моцарелла di Bufala — узнаваемая итальянская связка; пармезан и маскарпоне тоже итальянские сыры, но не делаютcя из буйволиного молока.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_8_food_168",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:basil",
+        "ingredient:olive-oil",
+        "skill:terminology",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Песто узнаётся по базилику, кедровым орехам и пармезану; карбонара и маринара — знакомые итальянские соусы, но не соответствуют составу.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_9_food_193",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:tr",
+        "cuisine:turkish",
+        "domain:food",
+        "skill:terminology",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Манты нужно отделить от хинкали, равиоли, гёдза и вонтонов: все они похожи как тестовые блюда, но йогуртовая подача указывает на турецкий термин.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_10_food_106",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Шифонад — специальный термин для ленточек из листьев; жюльен и брунуаз тоже техники нарезки, поэтому простое знание общего действия недостаточно.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_11_food_118",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:ir",
+        "domain:food",
+        "ingredient:fish",
+        "skill:direct-recall",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Алмас нужно связать именно с белугой-альбиносом, а не с более обычными источниками икры; формулировка о самой дорогой икре добавляет непроверяемый рекорд.",
+      "confidence": "low",
+      "editorial_flags": [
+        "ranking-time-sensitive",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_12_food_140",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:seafood",
+        "skill:direct-recall",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Прозвище «фуа-гра океана» для абалона — специальная гастрономическая ассоциация; устрица, омар и гребешок столь же правдоподобны как дорогие морепродукты.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_13_food_153",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Су-вид широко узнаваем по вакуумному пакету и воде с точной температурой; остальные ответы называют обычные способы нагрева без этой отличительной пары.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_15_food_169",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:banana",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Банан часто связывают с триптофаном и серотонином, но медицинский ярлык «антидепрессант» чрезмерно упрощает действие продукта.",
+      "confidence": "low",
+      "editorial_flags": [
+        "medical-claim-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_16_food_180",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:fr",
+        "cuisine:french",
+        "domain:food",
+        "skill:direct-recall",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Франция является ожидаемой родиной названия flambe, но Италия и Испания правдоподобны как европейские кухни с алкогольными блюдами.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_18_food_192",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "domain:science",
+        "skill:direct-recall",
+        "topic:chemistry"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:chemistry"
+      ],
+      "rationale": "Хинин надо связать с флуоресценцией тоника под ультрафиолетом; сахар, кислота и витамин C выглядят знакомыми напиточными компонентами, но не дают этого эффекта.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_19_food_199",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:wheat",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Ру определяется как смесь муки и жира, а варианты о нарезке, сковороде и украшении не описывают загуститель для соусов.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_1_food_40",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:pe",
+        "domain:food",
+        "ingredient:maize",
+        "skill:direct-recall",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-history"
+      ],
+      "rationale": "Возраст археологических остатков попкорна в Перу — редкий конкретный факт; мёд, вино и сыр тоже естественно воспринимаются как древние продукты.",
+      "confidence": "low",
+      "editorial_flags": [
+        "needs-independent-fact-check",
+        "quantitative-claim-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_21_food_204",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient-family:fruit-vegetable",
+        "ingredient:onion",
+        "skill:quantitative",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Заявленное соотношение мирпуа 2:1:1 нужно знать, но все варианты записаны испорченными числами, поэтому ключ 7261 не представляет эту пропорцию в читаемой форме.",
+      "confidence": "low",
+      "editorial_flags": [
+        "answer-format-ambiguous",
+        "factual-error-suspected"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_23_food_228",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient-family:fruit-vegetable",
+        "ingredient:onion",
+        "skill:direct-recall",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Мирпуа — классическая овощная основа эспаньоля; софрито и букет гарни тоже французско-европейские кухонные термины, но не называют эту тройку овощей.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_25_food_244",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Жюльен — знакомый термин для тонкой соломки; брунуаз и шифонад являются реальными техниками, но задают кубики и ленты.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_26_food_256",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Tourné — французская техника фигурной нарезки, тогда как стем называет её японским ножом; сантоку и накири поэтому создают ложную, но убедительную рамку.",
+      "confidence": "low",
+      "editorial_flags": [
+        "factual-error-suspected"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_29_food_401",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:fish",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "A la meuniere — специальный французский способ с мукой, маслом, лимоном и петрушкой; су-вид, конфи и поширование тоже техники, но не описывают этот набор.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_2_food_83",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:egg",
+        "skill:direct-recall",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Голландский соус — обычная пара к яйцам Бенедикт; барбекю, айоли и песто известны, но не входят в классическое блюдо.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_30_food_409",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Описание сворачивания листьев прямо подводит к шифонаду, но жюльен и брунуаз требуют помнить различие формы нарезки.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_33_food_p5_4",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:quinoa",
+        "skill:direct-recall",
+        "topic:food-products"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:food-products"
+      ],
+      "rationale": "Киноа надо связать с инкским выражением, но она не является истинным злаком, поэтому тег круп или пшеницы здесь был бы неточным; рис и кукуруза создают исторически близкие отвлечения.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "cultural-generalization-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_34_food_p5_6",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:fish",
+        "skill:direct-recall",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Гравлакс нужно узнать как солёного лосося со скандинавской подачей; сельдь и форель остаются похожими северными рыбными альтернативами.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_35_food_p5_14",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient-family:meat-seafood",
+        "skill:terminology",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Tripe — специальное название съедобной выстилки желудка; потроха и хрящ акулы связаны с животной пищей, но обозначают другие ткани.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_36_food_p5_24",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:seafood",
+        "skill:direct-recall",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Абалон как «фуа-гра океана» — редкая ресторанная ассоциация; омар, устрица и голубой тунец столь же убедительны без знания прозвища.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_38_food_p5_58",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient-family:fruit-vegetable",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Мацерация — точный термин для размягчения фруктов жидкостью или сахаром; пюре, охлаждение и сушка — реальные обработки, но дают иной результат.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_39_food_p5_59",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Брунуаз требует запомнить очень мелкий кубик 1,5–3 мм; жюльен и шифонад близки как французские термины, но обозначают полоски и ленты.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_3_food_84",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:wheat",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Ру определяется по муке и жиру для загущения; варианты о сковороде, маринаде и нарезке не описывают рабочую смесь.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_40_food_p5_60",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:water",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Bain-marie узнаётся как водяная баня для деликатного нагрева; нож, сковорода и весы относятся к кухне, но не изолируют продукт от прямого жара.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_43_food_602",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:ir",
+        "domain:food",
+        "ingredient:fish",
+        "skill:quantitative",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Возраст 60–100 лет для лучшей икры Алмас — очень редкая цифра без логической опоры среди шести диапазонов, а само оценочное утверждение требует источника.",
+      "confidence": "low",
+      "editorial_flags": [
+        "needs-independent-fact-check",
+        "quantitative-claim-needs-source",
+        "superlative-needs-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_44_food_670",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient:cheese",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Casu Marzu выделяется именно живыми личинками сырной мухи; плесень, необычный цвет и долгую выдержку легко принять за другие экзотические особенности сыра.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "food-safety-oversimplified",
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_46_food_680",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:wheat",
+        "skill:classification",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Три цвета ру зависят от обжарки и образуют установленную классификацию; варианты по вкусу, температуре и консистенции не описывают эти стадии.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_47_food_683",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:quantitative",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Размер жюльена 5 см на 3 мм — точная профессиональная норма; несколько близких геометрических вариантов нельзя исключить без знания стандарта.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_48_food_685",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:direct-recall",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Шифонад начинается со сворачивания листьев в плотный рулон, что прямо отличает его от рубки, растирания, сушки и ошпаривания.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_49_food_688",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:food",
+        "skill:classification",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Майонез нужно отнести к устойчивой эмульсии и отличить от быстро расслаивающегося винегрета; термины «полупостоянная» и «нестабильная» звучат специально, но не являются ключом.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "needs-independent-fact-check"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_4_food_85",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Жюльен — наиболее знакомое название тонкой овощной соломки; мирпуа и турне относятся к иной форме подготовки овощей.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_50_food_690",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "cuisine:french",
+        "domain:food",
+        "ingredient:mushroom",
+        "skill:terminology",
+        "topic:edible-fungi"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:edible-fungi"
+      ],
+      "rationale": "Дюксель надо узнать как грибную основу с шалотом и травами; слово «паста» не делает её макаронным или пшеничным продуктом, а прочие начинки правдоподобны.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_51_food_692",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient-family:meat-seafood",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Рендеринг — специальный термин для медленного вытапливания жира из мяса; фламбирование, глазирование и пассерование используют нагрев, но не извлекают жир.",
+      "confidence": "high",
+      "editorial_flags": []
+    }
+  ]
+}

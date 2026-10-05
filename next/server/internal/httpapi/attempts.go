@@ -52,10 +52,40 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		CatalogFor(string) (attempts.Catalog, error)
 		StartQuiz(context.Context, string, string) (attempts.Attempt, error)
 	})
+	difficultySelection, supportsDifficulty := s.(interface {
+		CatalogForDifficulty(string, string) (attempts.Catalog, error)
+		StartDifficultyQuiz(context.Context, string, string, string) (attempts.Attempt, error)
+		StartDifficultyRound(context.Context, string, string, string, int) (attempts.Attempt, error)
+	})
+	difficultyPractice, supportsDifficultyPractice := s.(interface {
+		StartDifficultyPracticeQuiz(context.Context, string, string, string) (attempts.Attempt, error)
+		StartDifficultyPracticeRound(context.Context, string, string, string, int) (attempts.Attempt, error)
+	})
 	mux.HandleFunc("GET /v1/catalog", func(w http.ResponseWriter, r *http.Request) {
-		id := r.URL.Query().Get("quiz_id")
+		id, difficulty, valid := catalogSelection(r)
+		if !valid {
+			writeAttemptError(w, attempts.ErrValidation)
+			return
+		}
 		if id == "" {
+			if difficulty != "" {
+				writeAttemptError(w, attempts.ErrValidation)
+				return
+			}
 			writeAttemptJSON(w, http.StatusOK, s.Catalog())
+			return
+		}
+		if difficulty != "" {
+			if !supportsDifficulty {
+				writeAttemptError(w, attempts.ErrValidation)
+				return
+			}
+			catalog, err := difficultySelection.CatalogForDifficulty(id, difficulty)
+			if err != nil {
+				writeAttemptError(w, err)
+				return
+			}
+			writeAttemptJSON(w, http.StatusOK, catalog)
 			return
 		}
 		if !supportsSelection {
@@ -72,9 +102,10 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 	protected := func(pattern string, f http.HandlerFunc) { mux.Handle(pattern, Authenticate(auth, RequirePrincipal(f))) }
 	protected("POST /v1/attempts", func(w http.ResponseWriter, r *http.Request) {
 		var body struct {
-			QuizID string `json:"quiz_id"`
-			Round  *int   `json:"round,omitempty"`
-			Mode   string `json:"mode,omitempty"`
+			QuizID     string  `json:"quiz_id"`
+			Round      *int    `json:"round,omitempty"`
+			Mode       string  `json:"mode,omitempty"`
+			Difficulty *string `json:"difficulty,omitempty"`
 		}
 		if err := decodeAttemptJSON(w, r, &body); err != nil {
 			writeAttemptError(w, attempts.ErrValidation)
@@ -83,14 +114,51 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		p, _ := PrincipalFromContext(r.Context())
 		var a attempts.Attempt
 		var err error
-		if body.Mode != "" {
-			practice, ok := s.(interface {
-				StartPracticeRound(context.Context, string, string, int) (attempts.Attempt, error)
-			})
-			if body.Mode != "practice" || !ok || body.Round == nil || body.QuizID == "" {
-				err = attempts.ErrValidation
+		difficulty := ""
+		if body.Difficulty != nil {
+			difficulty = *body.Difficulty
+		}
+		if !validDifficulty(difficulty) || (body.Difficulty != nil && difficulty == "") {
+			err = attempts.ErrValidation
+		} else if body.Mode != "" {
+			if difficulty != "" {
+				if !supportsDifficultyPractice || body.Mode != "practice" || body.QuizID == "" {
+					err = attempts.ErrValidation
+				} else if body.Round == nil {
+					a, err = difficultyPractice.StartDifficultyPracticeQuiz(r.Context(), p.ID, body.QuizID, difficulty)
+				} else {
+					a, err = difficultyPractice.StartDifficultyPracticeRound(r.Context(), p.ID, body.QuizID, difficulty, *body.Round)
+				}
 			} else {
-				a, err = practice.StartPracticeRound(r.Context(), p.ID, body.QuizID, *body.Round)
+				if body.Mode != "practice" || body.QuizID == "" {
+					err = attempts.ErrValidation
+				} else if body.Round == nil {
+					practice, ok := s.(interface {
+						StartPracticeQuiz(context.Context, string, string) (attempts.Attempt, error)
+					})
+					if !ok {
+						err = attempts.ErrValidation
+					} else {
+						a, err = practice.StartPracticeQuiz(r.Context(), p.ID, body.QuizID)
+					}
+				} else {
+					practice, ok := s.(interface {
+						StartPracticeRound(context.Context, string, string, int) (attempts.Attempt, error)
+					})
+					if !ok {
+						err = attempts.ErrValidation
+					} else {
+						a, err = practice.StartPracticeRound(r.Context(), p.ID, body.QuizID, *body.Round)
+					}
+				}
+			}
+		} else if difficulty != "" {
+			if !supportsDifficulty || body.QuizID == "" {
+				err = attempts.ErrValidation
+			} else if body.Round == nil {
+				a, err = difficultySelection.StartDifficultyQuiz(r.Context(), p.ID, body.QuizID, difficulty)
+			} else {
+				a, err = difficultySelection.StartDifficultyRound(r.Context(), p.ID, body.QuizID, difficulty, *body.Round)
 			}
 		} else if body.Round != nil {
 			rounds, ok := s.(interface {
@@ -190,6 +258,19 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		writeAttemptJSON(w, http.StatusOK, history)
 	})
 }
+func catalogSelection(r *http.Request) (string, string, bool) {
+	query := r.URL.Query()
+	for key, values := range query {
+		if (key != "quiz_id" && key != "difficulty") || len(values) != 1 || values[0] == "" {
+			return "", "", false
+		}
+	}
+	id, difficulty := query.Get("quiz_id"), query.Get("difficulty")
+	return id, difficulty, validDifficulty(difficulty)
+}
+func validDifficulty(difficulty string) bool {
+	return difficulty == "" || difficulty == "easy" || difficulty == "medium" || difficulty == "hard" || difficulty == "nightmare"
+}
 func writeAttemptJSON(w http.ResponseWriter, status int, v any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Cache-Control", "no-store")
@@ -203,6 +284,8 @@ func writeAttemptError(w http.ResponseWriter, err error) {
 		code, status, retry = "forbidden", http.StatusNotFound, false
 	case errors.Is(err, attempts.ErrValidation):
 		status, retry = http.StatusBadRequest, false
+	case errors.Is(err, attempts.ErrNoMatch):
+		code, status, retry = "no_match", http.StatusUnprocessableEntity, false
 	case errors.Is(err, attempts.ErrRevision):
 		code, status, retry = "stale_revision", http.StatusConflict, false
 	case errors.Is(err, attempts.ErrDeadline):

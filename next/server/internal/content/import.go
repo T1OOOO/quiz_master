@@ -61,6 +61,13 @@ func integer(v any) (int, bool) {
 }
 
 func Import(path string) (Draft, Manifest, error) {
+	return ImportWithTaxonomy(path, nil)
+}
+
+// ImportWithTaxonomy is the strict path for newly annotated raw sources. The
+// compatibility Import entrypoint remains usable for legacy sources that have
+// no taxonomy reference or annotations.
+func ImportWithTaxonomy(path string, taxonomy *Taxonomy) (Draft, Manifest, error) {
 	b, e := os.ReadFile(path)
 	if e != nil {
 		return Draft{}, Manifest{}, &Error{"read", path}
@@ -78,7 +85,7 @@ func Import(path string) (Draft, Manifest, error) {
 	if e != nil {
 		return fail("invalid_json", path)
 	}
-	if e = allowed(obj, "id title description category questions", path); e != nil {
+	if e = allowed(obj, "id title description category taxonomy_ref questions", path); e != nil {
 		return Draft{}, Manifest{}, e
 	}
 	for _, key := range []string{"id", "title", "description", "category"} {
@@ -101,6 +108,13 @@ func Import(path string) (Draft, Manifest, error) {
 	}
 	sourcePath := filepath.ToSlash(filepath.Clean(path))
 	d := Draft{Contract: "quiz-contract/v1", State: "draft", QuizID: quizID, Locale: "ru", Revision: Revision{Number: 1}}
+	if raw, exists := obj["taxonomy_ref"]; exists {
+		ref, ok := rawTaxonomyRef(raw)
+		if !ok {
+			return fail("taxonomy_reference", path+"#/taxonomy_ref")
+		}
+		d.TaxonomyRef = ref
+	}
 	m := Manifest{MappingVersion: mappingVersion, SourcePath: sourcePath, SourceSHA256: hashBytes(canonicalSource), SourceQuizID: sourceID, CanonicalQuizID: quizID, Category: obj["category"].(string), Title: obj["title"].(string), Description: obj["description"].(string)}
 	seen := map[string]string{}
 	for pos, value := range questions {
@@ -109,7 +123,7 @@ func Import(path string) (Draft, Manifest, error) {
 		if !ok {
 			return fail("invalid_json", where)
 		}
-		if e = allowed(q, "id type difficulty text options correct_answer correct_multi explanation media", where); e != nil {
+		if e = allowed(q, "id type difficulty editorial_tag_ids context_tag_ids text options correct_answer correct_multi explanation media", where); e != nil {
 			return Draft{}, Manifest{}, e
 		}
 		qSource, ok := nonblank(q["id"])
@@ -144,19 +158,30 @@ func Import(path string) (Draft, Manifest, error) {
 			return fail("answer_index", where)
 		}
 		difficulty := "unknown"
+		var difficultyLevel *int
 		if q["difficulty"] != nil {
 			n, ok := integer(q["difficulty"])
 			if !ok || n < 1 || n > 10 {
 				return fail("difficulty", where)
 			}
-			switch {
-			case n <= 3:
-				difficulty = "easy"
-			case n <= 7:
-				difficulty = "medium"
-			default:
-				difficulty = "hard"
-			}
+			difficulty = difficultyBand(n)
+			difficultyLevel = &n
+		}
+		editorialRaw, editorialPresent := q["editorial_tag_ids"]
+		if editorialPresent && editorialRaw == nil {
+			return fail("tag_ids", where)
+		}
+		editorialTagIDs, err := rawTagIDs(editorialRaw)
+		if err != nil {
+			return fail("tag_ids", where)
+		}
+		contextRaw, contextPresent := q["context_tag_ids"]
+		if contextPresent && contextRaw == nil {
+			return fail("tag_ids", where)
+		}
+		contextTagIDs, err := rawTagIDs(contextRaw)
+		if err != nil {
+			return fail("tag_ids", where)
 		}
 		options := make([]Option, len(rawOptions))
 		mapping := QuestionMap{SourceID: qSource, CanonicalID: qid, Options: make([]OptionMap, len(rawOptions))}
@@ -179,7 +204,7 @@ func Import(path string) (Draft, Manifest, error) {
 			options[i] = Option{OptionID: oid, Text: text}
 			mapping.Options[i] = OptionMap{SourceIndex: i, CanonicalID: oid}
 		}
-		question := Question{QuestionID: qid, Revision: Revision{Number: 1}, Stem: stem, Options: options, Difficulty: difficulty, Source: map[string]string{"uri": sourcePath}, AnswerKind: "single_choice", Grading: Grading{CorrectOptionID: options[answer].OptionID}}
+		question := Question{QuestionID: qid, Revision: Revision{Number: 1}, Stem: stem, Options: options, Difficulty: difficulty, DifficultyLevel: difficultyLevel, EditorialTagIDs: editorialTagIDs, ContextTagIDs: contextTagIDs, Source: map[string]string{"uri": sourcePath}, AnswerKind: "single_choice", Grading: Grading{CorrectOptionID: options[answer].OptionID}}
 		if raw, exists := q["media"]; exists {
 			entries, ok := raw.([]any)
 			if !ok {
@@ -240,5 +265,44 @@ func Import(path string) (Draft, Manifest, error) {
 		m.Questions = append(m.Questions, mapping)
 	}
 	Rehash(&d)
+	if hasAnnotations(d) {
+		if e = validateTaxonomyLinks(d, taxonomy); e != nil {
+			return Draft{}, Manifest{}, e
+		}
+	}
 	return d, m, nil
+}
+
+func rawTaxonomyRef(v any) (*TaxonomyRef, bool) {
+	m, ok := v.(map[string]any)
+	if !ok || len(m) != 2 {
+		return nil, false
+	}
+	id, idOK := nonblank(m["taxonomy_id"])
+	hash, hashOK := nonblank(m["taxonomy_sha256"])
+	if !idOK || !hashOK || !taxonomySHA256Pattern.MatchString(hash) {
+		return nil, false
+	}
+	return &TaxonomyRef{TaxonomyID: id, TaxonomySHA256: hash}, true
+}
+func rawTagIDs(v any) ([]string, error) {
+	if v == nil {
+		return nil, nil
+	}
+	values, ok := v.([]any)
+	if !ok {
+		return nil, &Error{"tag_ids", ""}
+	}
+	ids := make([]string, len(values))
+	for i, value := range values {
+		id, ok := nonblank(value)
+		if !ok {
+			return nil, &Error{"tag_ids", ""}
+		}
+		ids[i] = id
+	}
+	if err := validateTagIDs(ids, ""); err != nil {
+		return nil, err
+	}
+	return ids, nil
 }

@@ -20,6 +20,7 @@ var (
 	ErrRevision         = errors.New("stale_revision")
 	ErrDeadline         = errors.New("deadline_exceeded")
 	ErrConflict         = errors.New("idempotency_conflict")
+	ErrNoMatch          = errors.New("no_match")
 	internalParticipant = regexp.MustCompile(`^p_[0-9a-f]{32}$`)
 	externalParticipant = regexp.MustCompile(`^p-[0-9a-f]{32}$`)
 	contractID          = regexp.MustCompile(`^[a-z][a-z0-9-]{2,63}$`)
@@ -36,6 +37,64 @@ func InternalParticipant(id string) (string, error) {
 		return "", ErrForbidden
 	}
 	return "p_" + id[2:], nil
+}
+
+// SelectDifficulty filters the complete immutable public pack before callers
+// partition it into rounds. The returned quiz retains its source identity.
+func SelectDifficulty(quiz content.PublicQuiz, difficulty string) (content.PublicQuiz, error) {
+	if difficulty != "easy" && difficulty != "medium" && difficulty != "hard" && difficulty != "nightmare" {
+		return content.PublicQuiz{}, ErrValidation
+	}
+	selected := quiz
+	selected.Questions = nil
+	for _, question := range quiz.Questions {
+		if question.Difficulty == difficulty {
+			selected.Questions = append(selected.Questions, question)
+		}
+	}
+	if len(selected.Questions) == 0 {
+		return content.PublicQuiz{}, ErrNoMatch
+	}
+	return selected, nil
+}
+
+// QuestionRound returns a copy of one zero-based 20-question partition.
+func QuestionRound(questions []content.PublicQuestion, round int) ([]content.PublicQuestion, error) {
+	if round < 0 || round >= (len(questions)+19)/20 {
+		return nil, ErrValidation
+	}
+	end := min((round+1)*20, len(questions))
+	return append([]content.PublicQuestion(nil), questions[round*20:end]...), nil
+}
+
+// ShuffleQuestions permutes only an already-selected question slice and
+// rejects a shuffler that does not return the same question IDs exactly once.
+func ShuffleQuestions(questions []content.PublicQuestion, shuffle Shuffler) ([]content.PublicQuestion, error) {
+	ids := make([]string, len(questions))
+	byID := make(map[string]content.PublicQuestion, len(questions))
+	for i, question := range questions {
+		if question.QuestionID == "" || byID[question.QuestionID].QuestionID != "" {
+			return nil, ErrValidation
+		}
+		ids[i] = question.QuestionID
+		byID[question.QuestionID] = question
+	}
+	if err := shuffle(ids); err != nil {
+		return nil, err
+	}
+	ordered := make([]content.PublicQuestion, len(ids))
+	for i, id := range ids {
+		question, ok := byID[id]
+		if !ok {
+			return nil, ErrValidation
+		}
+		ordered[i] = question
+		delete(byID, id)
+	}
+	if len(byID) != 0 {
+		return nil, ErrValidation
+	}
+	return ordered, nil
 }
 
 type Answer struct {

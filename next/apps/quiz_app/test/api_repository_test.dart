@@ -370,6 +370,12 @@ void main() {
           jsonEncode({
             'bundle_version': 'v1',
             'bundle_sha256': 'a' * 64,
+            'difficulty_counts': {
+              'easy': 0,
+              'medium': 0,
+              'hard': 0,
+              'nightmare': 0,
+            },
             'quiz': {
               'quiz_id': 'quiz-one',
               'revision': {'number': 1, 'sha256': 'b' * 64},
@@ -381,6 +387,124 @@ void main() {
         );
       await received.response.close();
       await expectLater(pending, throwsFormatException);
+    },
+  );
+
+  test(
+    'difficulty selection is preserved in catalog and attempt requests',
+    () async {
+      final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
+      addTearDown(server.close);
+      final client = QuizApiClient(
+        baseUri: Uri.parse('http://${server.address.host}:${server.port}'),
+      );
+      final requests = StreamIterator(server);
+      addTearDown(requests.cancel);
+
+      final pendingCatalog = client.catalog(
+        quizId: 'quiz-one',
+        difficulty: DifficultyBand.nightmare,
+      );
+      await requests.moveNext();
+      final catalog = requests.current;
+      expect(catalog.uri.queryParameters, {
+        'quiz_id': 'quiz-one',
+        'difficulty': 'nightmare',
+      });
+      catalog.response
+        ..statusCode = 200
+        ..headers.contentType = ContentType.json
+        ..write(
+          jsonEncode({
+            'bundle_version': 'v1',
+            'bundle_sha256': 'a' * 64,
+            'difficulty_counts': {
+              'easy': 20,
+              'medium': 3,
+              'hard': 0,
+              'nightmare': 0,
+            },
+            'quiz': {
+              'quiz_id': 'quiz-one',
+              'revision': {'number': 1, 'sha256': 'b' * 64},
+              'locale': 'en',
+              'questions': [],
+            },
+          }),
+        );
+      await catalog.response.close();
+      await pendingCatalog;
+
+      final bootstrap = client.bootstrap('Ada');
+      await requests.moveNext();
+      final guest = requests.current;
+      guest.response
+        ..statusCode = 201
+        ..headers.contentType = ContentType.json
+        ..write(jsonEncode(guestJson));
+      await guest.response.close();
+      await bootstrap;
+
+      final pendingAttempt = client.startAttempt(
+        quizId: 'quiz-one',
+        round: 1,
+        difficulty: DifficultyBand.nightmare,
+        practice: true,
+      );
+      await requests.moveNext();
+      final attempt = requests.current;
+      expect(jsonDecode(await utf8.decoder.bind(attempt).join()), {
+        'quiz_id': 'quiz-one',
+        'round': 1,
+        'difficulty': 'nightmare',
+        'mode': 'practice',
+      });
+      attempt.response
+        ..statusCode = 201
+        ..headers.contentType = ContentType.json
+        ..write(jsonEncode(attemptJson));
+      await attempt.response.close();
+      await pendingAttempt;
+    },
+  );
+
+  test(
+    'catalog preserves the server no_match error instead of invalid_response',
+    () async {
+      final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
+      addTearDown(server.close);
+      final nextRequest = server.first;
+      final client = QuizApiClient(
+        baseUri: Uri.parse('http://${server.address.host}:${server.port}'),
+      );
+      final pending = client.catalog(
+        quizId: 'quiz-one',
+        difficulty: DifficultyBand.nightmare,
+      );
+      final rejected = expectLater(
+        pending,
+        throwsA(
+          isA<ApiClientException>().having(
+            (error) => error.code,
+            'code',
+            'no_match',
+          ),
+        ),
+      );
+      final request = await nextRequest;
+      request.response
+        ..statusCode = 422
+        ..headers.contentType = ContentType.json
+        ..write(
+          jsonEncode({
+            'code': 'no_match',
+            'message': 'No matching questions.',
+            'retryable': false,
+            'details': <String, String>{},
+          }),
+        );
+      await request.response.close();
+      await rejected;
     },
   );
 

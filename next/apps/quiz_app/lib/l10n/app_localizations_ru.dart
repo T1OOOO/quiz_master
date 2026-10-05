@@ -21,6 +21,9 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get allQuestions => 'Все вопросы';
+
+  @override
   String get nextRound => 'Следующий раунд';
 
   @override
@@ -33,6 +36,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get searchQuizzes => 'Поиск по названию, описанию или категории';
+
+  @override
+  String get difficultyEasy => 'Легко';
+
+  @override
+  String get difficultyMedium => 'Средне';
+
+  @override
+  String get difficultyHard => 'Сложно';
+
+  @override
+  String get difficultyNightmare => 'Кошмар';
 
   @override
   String get categories => 'Категории';

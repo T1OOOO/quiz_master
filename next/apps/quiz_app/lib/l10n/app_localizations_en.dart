@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get allQuestions => 'All questions';
+
+  @override
   String get nextRound => 'Next round';
 
   @override
@@ -33,6 +36,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchQuizzes => 'Search by title, description or category';
+
+  @override
+  String get difficultyEasy => 'Easy';
+
+  @override
+  String get difficultyMedium => 'Medium';
+
+  @override
+  String get difficultyHard => 'Hard';
+
+  @override
+  String get difficultyNightmare => 'Nightmare';
 
   @override
   String get categories => 'Categories';

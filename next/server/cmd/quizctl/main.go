@@ -29,6 +29,7 @@ func run(args []string, out, errOut io.Writer) int {
 	fs := flag.NewFlagSet(command, flag.ContinueOnError)
 	fs.SetOutput(io.Discard)
 	schemaDir := fs.String("schemas", content.DefaultSchemas, "local accepted schema directory")
+	taxonomyPath := fs.String("taxonomy", "", "optional frozen taxonomy dictionary for annotated content")
 	var in, outPath, before, after, version, publishedAt *string
 	var force *bool
 	switch command {
@@ -102,7 +103,11 @@ func run(args []string, out, errOut io.Writer) int {
 				return fail(&content.Error{Kind: "output_path", Path: *outPath})
 			}
 		}
-		d, m, e := content.Import(*in)
+		taxonomy, e := loadTaxonomy(*taxonomyPath)
+		if e != nil {
+			return fail(e)
+		}
+		d, m, e := content.ImportWithTaxonomy(*in, taxonomy)
 		if e != nil {
 			return fail(e)
 		}
@@ -122,10 +127,24 @@ func run(args []string, out, errOut io.Writer) int {
 			return usage()
 		}
 		seen := map[string]bool{}
+		taxonomy, e := loadTaxonomy(*taxonomyPath)
+		if e != nil {
+			return fail(e)
+		}
 		for _, p := range paths {
 			doc, e := content.ReadDocument(p, *schemaDir)
 			if e != nil {
 				return fail(e)
+			}
+			if taxonomy != nil {
+				if doc.Bundle != nil {
+					e = content.ValidateBundleWithTaxonomy(*doc.Bundle, *schemaDir, taxonomy)
+				} else {
+					e = content.ValidateDraftWithTaxonomy(doc.Draft, *schemaDir, taxonomy)
+				}
+				if e != nil {
+					return fail(e)
+				}
 			}
 			if seen[doc.Draft.QuizID] {
 				return fail(&content.Error{Kind: "duplicate_id", Path: p + "#" + doc.Draft.QuizID})
@@ -147,7 +166,11 @@ func run(args []string, out, errOut io.Writer) int {
 		if doc.Bundle != nil {
 			return fail(&content.Error{Kind: "build_input", Path: *in})
 		}
-		b, e := content.Build(doc.Draft, *version, *publishedAt, *schemaDir)
+		taxonomy, e := loadTaxonomy(*taxonomyPath)
+		if e != nil {
+			return fail(e)
+		}
+		b, e := content.BuildWithTaxonomy(doc.Draft, *version, *publishedAt, taxonomy, *schemaDir)
 		if e != nil {
 			return fail(e)
 		}
@@ -174,6 +197,12 @@ func run(args []string, out, errOut io.Writer) int {
 		}
 	}
 	return 0
+}
+func loadTaxonomy(path string) (*content.Taxonomy, error) {
+	if path == "" {
+		return nil, nil
+	}
+	return content.LoadTaxonomy(path)
 }
 func samePath(a, b string) bool {
 	aa, ea := filepath.Abs(a)

@@ -1,0 +1,870 @@
+{
+  "schema_version": "qm-question-annotations/v1",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "2ff002603ad7794957962c89c9ccd32a5ddb7a43c72b0b17ae3d6c5e50ae6bf1"
+  },
+  "records": [
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_0_food_1",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:it",
+        "domain:food",
+        "ingredient:cheese",
+        "skill:association",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Связь Пармиджано-Реджано с Италией широко известна; варианты стран понятны, но не равноценны.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_1_food_58",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:cheese",
+        "skill:quantitative",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Неочевидный мировой статистический факт; все продуктовые варианты правдоподобны.",
+      "confidence": "low",
+      "editorial_flags": [
+        "needs-fact-source-audit"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_2_food_63",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:rs",
+        "domain:food",
+        "ingredient:milk",
+        "skill:direct-recall",
+        "topic:cheese-dairy"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cheese-dairy"
+      ],
+      "rationale": "Редкий сорт сыра и ослиное молоко требуют гастрономической эрудиции; близкие виды животных мешают угадыванию.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "superlative-needs-scope-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_сыры_и_молочные_продукты",
+      "question_id": "q_gastronomy_сыры_и_молочные_продукты_8_food_168",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "domain:food",
+        "ingredient-family:nut-seed",
+        "ingredient:basil",
+        "ingredient:cheese",
+        "ingredient:garlic",
+        "ingredient:olive-oil",
+        "skill:recognition",
+        "topic:spices-sauces"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:spices-sauces"
+      ],
+      "rationale": "Набор базилика, орехов и пармезана даёт узнаваемую подсказку к песто.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_1_food_40",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:food",
+        "era:prehistoric",
+        "ingredient-family:grain-starch",
+        "skill:temporal-order",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Возраст археологических остатков попкорна — специализированный факт без бытового вывода.",
+      "confidence": "low",
+      "editorial_flags": [
+        "needs-fact-source-audit"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_2_food_83",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:butter",
+        "skill:association",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Голландский соус как часть яиц Бенедикт знаком подготовленному любителю кухни; варианты различимы.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_3_food_84",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient-family:grain-starch",
+        "ingredient:wheat",
+        "skill:terminology",
+        "topic:cooking-technique"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:cooking-technique"
+      ],
+      "rationale": "Кулинарный термин требует подготовки, но единственная смесь продуктов среди типов нарезки и посуды облегчает выбор.",
+      "confidence": "high",
+      "editorial_flags": [
+        "uneven-option-specificity"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "gastronomy_техника_приготовления",
+      "question_id": "q_gastronomy_техника_приготовления_11_food_118",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:food",
+        "ingredient:fish",
+        "skill:direct-recall",
+        "topic:meat-seafood"
+      ],
+      "context_tag_ids": [
+        "domain:food",
+        "topic:meat-seafood"
+      ],
+      "rationale": "Редкая икра требует специального знания; необычный вариант белуги-альбиноса выделяется среди рыб.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "superlative-needs-scope-source"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-flags-world",
+      "question_id": "flag-9a42e01",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:jp",
+        "domain:geography",
+        "skill:recognition",
+        "topic:flag"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:flag"
+      ],
+      "rationale": "Флаг Японии почти универсально узнаваем, а описание исключает турецкий вариант.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-flags-world",
+      "question_id": "flag-e1d5974",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:al",
+        "domain:geography",
+        "skill:comparison",
+        "topic:flag"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:flag"
+      ],
+      "rationale": "Нужно отличить похожие балканские символы по цвету орла и кайме.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-flags-world",
+      "question_id": "flag-5e88446",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:kp",
+        "domain:geography",
+        "skill:comparison",
+        "topic:flag"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:flag"
+      ],
+      "rationale": "Требуется различить редкие сходные композиции КНДР и Лаоса по звезде.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-flags-world",
+      "question_id": "flag-91522cf",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:zw",
+        "domain:geography",
+        "skill:recognition",
+        "topic:flag"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:flag"
+      ],
+      "rationale": "Зимбабве узнаётся по нескольким деталям, но это не массово знакомый флаг.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-capitals-1",
+      "question_id": "capitals-oct3-001",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:geography",
+        "skill:association",
+        "topic:capital-city"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:capital-city"
+      ],
+      "rationale": "Вашингтон как федеральная столица — базовый факт; Нью-Йорк служит понятным отвлекателем.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-capitals-1",
+      "question_id": "capitals-oct3-004",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:ng",
+        "domain:geography",
+        "skill:comparison",
+        "topic:capital-city"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:capital-city"
+      ],
+      "rationale": "Лагос известнее, поэтому нужно помнить перенос столичной функции в Абуджу.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-capitals-1",
+      "question_id": "capitals-oct3-010",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:mw",
+        "domain:geography",
+        "skill:comparison",
+        "topic:capital-city"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:capital-city"
+      ],
+      "rationale": "Лилонгве — менее частая пара, осложнённая крупнейшим и бывшим центрами.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_behavior_and_psychology",
+      "question_id": "q_nature_cats_behavior_cat_009",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-behavior",
+        "topic:cat"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-behavior",
+        "topic:cat"
+      ],
+      "rationale": "Обобщение о мяуканье взрослых кошек требует конкретного этологического знания.",
+      "confidence": "low",
+      "editorial_flags": [
+        "overabsolute-wording"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_behavior_and_psychology",
+      "question_id": "q_nature_cats_anatomy_cat_138",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "domain:science",
+        "skill:terminology",
+        "topic:animal-anatomy",
+        "topic:cat",
+        "topic:chemistry"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:cat"
+      ],
+      "rationale": "Непеталактон — специализированный химический термин, другие вещества правдоподобны.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_media_298",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:dog"
+      ],
+      "rationale": "Интернет-мем о Нудле кратковременен и не относится к общей биологии собак.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "off-topic-pack-content"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_392",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "rationale": "Точное число мышц уха — специализированный числовой факт.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "nature_raccoons_science",
+      "question_id": "q_nature_raccoons_science_001",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:terminology",
+        "topic:animal-classification",
+        "topic:raccoon"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-classification",
+        "topic:raccoon"
+      ],
+      "rationale": "Латинское название Procyon lotor требует систематической терминологии.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-history-events",
+      "question_id": "history-001",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "era:early-modern",
+        "skill:temporal-order",
+        "topic:historical-events"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:historical-events"
+      ],
+      "rationale": "Формулировка требует отличить принятие текста от голосования и подписания Декларации.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-history-events",
+      "question_id": "history-005",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:science",
+        "era:twentieth-century",
+        "skill:temporal-order",
+        "topic:astronomy",
+        "topic:historical-events"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:historical-events"
+      ],
+      "rationale": "1957 год запуска Спутника-1 — известная школьная дата; варианты разводят его с полётом человека.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-history-events",
+      "question_id": "history-011",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:nz",
+        "domain:history",
+        "era:nineteenth-century",
+        "skill:temporal-order",
+        "topic:historical-events"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:historical-events"
+      ],
+      "rationale": "Новая Зеландия как ранний пример избирательного права знакома не всем, годы близки.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "prep-history-events",
+      "question_id": "history-020",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:in",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:spatial",
+        "topic:historical-events"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:historical-events"
+      ],
+      "rationale": "Марш Ганди известен, но название прибрежного Данди — деталь подготовленного уровня.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "lotr_fellowship_100",
+      "question_id": "lotr_f_1",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "skill:direct-recall",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "topic:lore"
+      ],
+      "rationale": "Бэг-Энд знаком зрителю и читателю, но остальные топонимы создают реальную конкуренцию.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "lotr_fellowship_100",
+      "question_id": "lotr_f_21",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "skill:direct-recall",
+        "topic:characters"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "topic:characters"
+      ],
+      "rationale": "Запоминающийся дар в книге и фильме требует воспоминания сцены, но не узкой фанатской справки.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "lotr_fellowship_100",
+      "question_id": "lotr_f_36",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "skill:direct-recall",
+        "topic:characters"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "topic:characters"
+      ],
+      "rationale": "Имя хозяина гостиницы — конкретная деталь начала путешествия; другие персонажи Бри правдоподобны.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "lotr_fellowship_100",
+      "question_id": "lotr_f_50",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "skill:direct-recall",
+        "topic:film-plots"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:middle-earth",
+        "topic:film-plots"
+      ],
+      "rationale": "Главная цель Братства — центральная завязка, прямо узнаваемая по вариантам.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-terminator",
+      "question_id": "theme-terminator-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:terminator",
+        "medium:film",
+        "skill:direct-recall",
+        "topic:film-plots"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:terminator",
+        "medium:film",
+        "topic:film-plots"
+      ],
+      "rationale": "Защита Сары Коннор — базовая завязка популярного фильма; Джон остаётся осмысленным отвлекателем.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-terminator",
+      "question_id": "theme-terminator-006",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:terminator",
+        "medium:film",
+        "skill:association",
+        "topic:film-plots"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:terminator",
+        "medium:film",
+        "topic:film-plots"
+      ],
+      "rationale": "Cyberdyne известна фанатам, но конкретное место работы Дайсона не центральная фабула.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-harry-potter",
+      "question_id": "theme-hp-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "franchise:harry-potter",
+        "medium:book",
+        "skill:direct-recall",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "franchise:harry-potter",
+        "medium:book",
+        "topic:lore"
+      ],
+      "rationale": "Функция Карты мародёров широко известна в массовой франшизе.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-harry-potter",
+      "question_id": "theme-hp-006",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "franchise:harry-potter",
+        "medium:book",
+        "skill:classification",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "franchise:harry-potter",
+        "medium:book",
+        "topic:lore"
+      ],
+      "rationale": "Базовое ограничение зелья: человеческое превращение легко отличить от зверей и призраков.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-game-of-thrones",
+      "question_id": "theme-got-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "skill:association",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "topic:lore"
+      ],
+      "rationale": "Винтерфелл как дом Старков — один из наиболее узнаваемых фактов сериала.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-game-of-thrones",
+      "question_id": "theme-got-006",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "skill:association",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "topic:lore"
+      ],
+      "rationale": "Родовой меч Лёд — менее центральная, но чёткая лорная связь; есть близкий отвлекатель.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-dreamworks",
+      "question_id": "theme-dw-001",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:dreamworks",
+        "medium:animation",
+        "skill:direct-recall",
+        "topic:film-plots"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:dreamworks",
+        "medium:animation",
+        "topic:film-plots"
+      ],
+      "rationale": "Мотивация Шрека вернуть болото — ясная завязка известного мультфильма.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "theme-pixar",
+      "question_id": "theme-pixar-001",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:pixar",
+        "medium:animation",
+        "skill:recognition",
+        "topic:characters"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:pixar",
+        "medium:animation",
+        "topic:characters"
+      ],
+      "rationale": "Самоопределение Базза как космического рейнджера — ключевая черта «Истории игрушек».",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-geography-countries",
+      "question_id": "study-geography-countries-001",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:geography",
+        "skill:spatial",
+        "topic:world-geography"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:world-geography"
+      ],
+      "rationale": "Широта относительно экватора — базовое определение с прозрачными отвлекателями.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-geography-maps",
+      "question_id": "study-geography-maps-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:geography",
+        "skill:terminology",
+        "topic:cartography"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:cartography"
+      ],
+      "rationale": "Горизонталь — школьный термин; другие варианты проверяют различение слоёв карты.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-greek-mythology",
+      "question_id": "study-greek-mythology-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:gr",
+        "domain:mythology",
+        "medium:book",
+        "skill:direct-recall",
+        "topic:mythology-greek"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:mythology-greek"
+      ],
+      "rationale": "Хаос как первичная сила узнаваем; остальные варианты — герои и царь, что помогает исключению.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-history",
+      "question_id": "study-history-001",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:temporal-order",
+        "topic:historical-events"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:historical-events"
+      ],
+      "rationale": "Правило счёта лет до н. э. — базовое; варианты идут в явном хронологическом ряду.",
+      "confidence": "high",
+      "editorial_flags": []
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-nature",
+      "question_id": "study-nature-001",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:classification",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:evolution"
+      ],
+      "rationale": "Школьный механизм отбора можно отличить от изменения одной особи; единственный подробный популяционный вариант облегчает ответ.",
+      "confidence": "high",
+      "editorial_flags": [
+        "answer-length-cue"
+      ]
+    },
+    {
+      "provider": "study",
+      "pack_id": "study-nature-evolution",
+      "question_id": "study-nature-evolution-001",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:terminology",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:evolution"
+      ],
+      "rationale": "Частота аллеля — точный популяционный термин, не сводимый к признаку одной особи.",
+      "confidence": "high",
+      "editorial_flags": []
+    }
+  ],
+  "review": {
+    "reviewer": "root",
+    "basis": "Read all 42 stems/options and compared rubric, audience, scope and tags.",
+    "status": "accepted_with_private_editorial_flags",
+    "no_fact_reverification_claim": true
+  }
+}
