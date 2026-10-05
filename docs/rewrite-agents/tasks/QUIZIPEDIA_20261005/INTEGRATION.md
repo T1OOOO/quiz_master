@@ -1,0 +1,63 @@
+# Root integration checkpoint
+
+2026-10-05. Acquired the pinned Natural Earth 110m JSON, streamed the pinned HYG
+v4.1 file to a 56-star subset, and acquired six individually reviewed photographs
+and the unlabeled endocrine SVG/Commons PNG. Sources and exact checksums are
+preserved in `quizipedia/`; generated catalogue/manifests and seven small rasters
+are bundled in `next/apps/quiz_app/assets/quizipedia/`.
+
+First data checks ran under admitted asset lease
+`lease-5f08cd75007543f483224d162c5a1f5d`, renewed by an owned guard. Five checks
+passed: deterministic build, all 177 features/rings, 20 country identities/flags,
+40 target metadata references, retained star values/line endpoints and actual
+raster hashes/image-space coordinates. That lease and guard were released after
+quiescence. The targeted independent factual review accepted all 14 hotspots,
+all six photo depictions and their provenance; see `review-facts.md`.
+
+The explicit 403-tag metadata amendment required regenerating the catalogue
+reference and both manifests. Regeneration and five fresh data checks passed;
+nine metadata-pipeline tests also passed under the admitted light5 lease.
+Independent static code review requested production
+map zoom/pan interaction coverage and correct-score coverage; those tests now
+exercise real transformed taps, holes/ocean selection and score=1. Root added import, route, drawer
+entry, pubspec asset directory, localized page title and explicit home callback.
+
+Flutter checks were executed under renewable admitted serial7 lease
+`lease-ecb2a28cac0e4f2d935210cee611bc5c`, then released after the commands exited.
+All ten core Quizipedia tests passed in the full client run. The full run had
+87 passes and three failures: stale inventory/category assertions and two
+pending difficulty-UI layout regressions. Those were corrected and their
+targeted checks passed, including long scaled mobile answers. The added actual
+route/drawer round-trip test still needs fake-async asset-IO repair and a fresh
+run. Analyzer initially identified two difficulty-code errors, missing l10n
+codegen and five Quizipedia lint/API notices; source repairs and codegen are
+performed, but clean analyzer acceptance is still pending.
+
+`review-final.md` independently accepts current static implementation and asset
+hashes, conditional on runtime gates. A previous separate-provider read-only
+review returned APPROVE on an older snapshot; its renewal guard expired and
+the owning session reconciled it after confirmed process exit. It cannot
+establish current runtime or changed-scope acceptance. A new bounded
+changed-scope review returned APPROVE under admitted renewable provider11
+lease; actual model/cost and review boundaries are in `review-provider.md`.
+
+Five fresh catalogue checks and nine metadata tests passed again under admitted
+256 MiB light-format14 lease. That reservation was used for bounded formatting,
+data checks and preparing an isolated baseline client, never for Flutter
+runtime tests or a heavy build. Source hashes are also checked against the Git
+index. `.gitattributes` preserves acquired and authored data bytes, including
+legitimate CRLF, so cross-platform checkout does not invalidate the manifest.
+
+The existing CI workflow gains manual dispatch and builds its Web artifact
+with the existing `QM_API_BASE_URL` define pointed at the production origin.
+This is a progress commit for remote validation; all runtime gates remain
+required before production cutover.
+
+An isolated stable-baseline client release is being prepared so Quizipedia
+does not publish the unfinished difficulty API/UI migration. No release,
+clean analyzer, web build or production success is claimed by this checkpoint.
+
+Scope: four local unranked learning games, 20/6/6/8 targets; no current-sky
+calculation and no assertion that the 110m map supplies all 195 country targets.
+Possible later modules: bones/muscles, rivers/mountains, trees, birds, minerals
+and Solar System order/scale, each with separate source/visual review.

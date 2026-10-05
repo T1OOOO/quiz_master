@@ -88,6 +88,18 @@ class SourceScaffold extends ConsumerWidget {
                       },
                     ),
                     ListTile(
+                      leading: const Icon(Icons.public),
+                      title: Text(
+                        Localizations.localeOf(context).languageCode == 'ru'
+                            ? 'Квизипедия'
+                            : 'Quizipedia',
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/quizipedia');
+                      },
+                    ),
+                    ListTile(
                       leading: const Icon(Icons.history),
                       title: Text(l10n.history),
                       onTap: () {

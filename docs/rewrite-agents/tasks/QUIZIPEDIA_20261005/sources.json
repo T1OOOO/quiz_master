@@ -1,0 +1,75 @@
+{
+  "manifest_version": 1,
+  "prepared_on": "2026-10-05",
+  "status": "research_only_not_acquired_or_published",
+  "base_revision": "e802ed21db936bdb9809bab2d137903eb0aa425e",
+  "sources": [
+    {
+      "id": "country-registry-195",
+      "kind": "existing_project_data",
+      "path": "docs/rewrite-agents/preparation-country-registry/countries.json",
+      "coverage": "193 UN Member States plus 2 UN non-member observer States",
+      "binding": "iso2",
+      "reuse_status": "existing registry only; preserve its separately reviewed media provenance"
+    },
+    {
+      "id": "natural-earth-admin0-10m-v5.1.1",
+      "kind": "country_geometry",
+      "landing_url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/",
+      "download_url": "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip",
+      "version": "5.1.1",
+      "coverage_claim": "258 countries/features; not equal to the product 195-country target set",
+      "license": "public domain according to Natural Earth Terms of Use",
+      "attribution": "Natural Earth, 1:10m Admin 0 Countries, v5.1.1",
+      "boundary_policy": "de facto boundaries; disputed areas are marked/available",
+      "required_before_import": ["record ZIP checksum", "ISO mapping and exception table", "multipolygon/hole/antimeridian tests"]
+    },
+    {
+      "id": "endocrine-english-svg",
+      "kind": "anatomy_diagram",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Endocrine_English.svg",
+      "original_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Endocrine_English.svg",
+      "authors": ["OpenStax", "Tomáš Kebert", "umimeto.org"],
+      "license": "CC BY-SA 4.0",
+      "attribution": "OpenStax, Tomáš Kebert and umimeto.org, Endocrine English.svg, CC BY-SA 4.0; changes indicated",
+      "challenge_constraint": "do not expose answer-revealing embedded labels",
+      "required_before_import": ["legal share-alike review", "normalized hotspot review", "independent factual coordinate check"]
+    },
+    {
+      "id": "hyg-database",
+      "kind": "star_catalog",
+      "repository_url": "https://github.com/astronexus/HYG-Database",
+      "license_url": "https://raw.githubusercontent.com/astronexus/HYG-Database/main/LICENSE",
+      "license": "CC BY-SA 4.0",
+      "repository_status": "archived 2025-02-14",
+      "attribution": "HYG Database, CC BY-SA 4.0",
+      "required_before_import": ["pin commit", "record file checksum", "license/share-alike review", "declare fixed atlas epoch/projection"]
+    },
+    {
+      "id": "iau-constellations",
+      "kind": "constellation_authority",
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "coverage": "88 IAU constellations; boundary coordinate links in J2000",
+      "facts_used": ["IAU defines constellation areas/boundaries", "there is no canonical IAU stick figure", "charts are CC BY 4.0"],
+      "required_before_import": ["versioned editorial line-segment table", "fact-check selected patterns", "do not claim real-time sky"]
+    },
+    {
+      "id": "wikimedia-commons-landmarks",
+      "kind": "photograph_discovery",
+      "url": "https://commons.wikimedia.org/",
+      "license": "per-file; no blanket license",
+      "required_manifest_fields": ["file page", "original download URL", "creator", "license/version", "attribution", "modification status", "acquired SHA-256"],
+      "constraint": "only actual licensed photographs for recognition cards; credit must be reachable in app"
+    },
+    {
+      "id": "flame-evaluation",
+      "kind": "optional_technology",
+      "package_url": "https://pub.dev/packages/flame/versions",
+      "documentation_url": "https://docs.flame-engine.org/latest/flame/inputs/inputs.html",
+      "stable_version_seen": "1.38.2",
+      "minimum_dart_seen": "3.11",
+      "current_app_dependency": "absent",
+      "recommendation": "do not add for bounded v1; reassess after Flutter-widget prototype"
+    }
+  ]
+}

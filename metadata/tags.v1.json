@@ -1,0 +1,5110 @@
+{
+  "schema_version": "qm-taxonomy/v1",
+  "taxonomy_id": "qm-tags-v1",
+  "facets": [
+    {
+      "id": "domain",
+      "ru": "Предметная область",
+      "en": "Domain",
+      "cardinality": "1..n"
+    },
+    {
+      "id": "topic",
+      "ru": "Тема",
+      "en": "Topic",
+      "cardinality": "1..n"
+    },
+    {
+      "id": "country",
+      "ru": "Страна",
+      "en": "Country",
+      "cardinality": "0..n",
+      "authority": "ISO 3166-1 alpha-2 seed registry"
+    },
+    {
+      "id": "place",
+      "ru": "Место",
+      "en": "Place",
+      "cardinality": "0..n",
+      "authority": "curated gazetteer; IDs must include country where ambiguous"
+    },
+    {
+      "id": "cuisine",
+      "ru": "Кухня",
+      "en": "Cuisine",
+      "cardinality": "0..n"
+    },
+    {
+      "id": "ingredient",
+      "ru": "Ингредиент",
+      "en": "Ingredient",
+      "cardinality": "0..n"
+    },
+    {
+      "id": "era",
+      "ru": "Эпоха",
+      "en": "Era",
+      "cardinality": "0..n"
+    },
+    {
+      "id": "franchise",
+      "ru": "Франшиза/мир",
+      "en": "Franchise/world",
+      "cardinality": "0..n"
+    },
+    {
+      "id": "medium",
+      "ru": "Медиум",
+      "en": "Medium",
+      "cardinality": "0..n"
+    },
+    {
+      "id": "person",
+      "ru": "Персона/персонаж",
+      "en": "Person/character",
+      "cardinality": "0..n",
+      "authority": "curated authority file"
+    },
+    {
+      "id": "knowledge_skill",
+      "ru": "Тип знания/умения",
+      "en": "Knowledge skill",
+      "cardinality": "1..n"
+    }
+  ],
+  "tags": [
+    {
+      "id": "country:ad",
+      "facet": "country",
+      "label_ru": "Андорра",
+      "label_en": "Andorra",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ae",
+      "facet": "country",
+      "label_ru": "Объединенные Арабские Эмираты",
+      "label_en": "United Arab Emirates",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:af",
+      "facet": "country",
+      "label_ru": "Афганистан",
+      "label_en": "Afghanistan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ag",
+      "facet": "country",
+      "label_ru": "Антигуа и Барбуда",
+      "label_en": "Antigua and Barbuda",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:al",
+      "facet": "country",
+      "label_ru": "Албания",
+      "label_en": "Albania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:am",
+      "facet": "country",
+      "label_ru": "Армения",
+      "label_en": "Armenia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ao",
+      "facet": "country",
+      "label_ru": "Ангола",
+      "label_en": "Angola",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ar",
+      "facet": "country",
+      "label_ru": "Аргентина",
+      "label_en": "Argentina",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:at",
+      "facet": "country",
+      "label_ru": "Австрия",
+      "label_en": "Austria",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:au",
+      "facet": "country",
+      "label_ru": "Австралия",
+      "label_en": "Australia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:az",
+      "facet": "country",
+      "label_ru": "Азербайджан",
+      "label_en": "Azerbaijan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ba",
+      "facet": "country",
+      "label_ru": "Босния и Герцеговина",
+      "label_en": "Bosnia and Herzegovina",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bb",
+      "facet": "country",
+      "label_ru": "Барбадос",
+      "label_en": "Barbados",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bd",
+      "facet": "country",
+      "label_ru": "Бангладеш",
+      "label_en": "Bangladesh",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:be",
+      "facet": "country",
+      "label_ru": "Бельгия",
+      "label_en": "Belgium",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bf",
+      "facet": "country",
+      "label_ru": "Буркина-Фасо",
+      "label_en": "Burkina Faso",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bg",
+      "facet": "country",
+      "label_ru": "Болгария",
+      "label_en": "Bulgaria",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bh",
+      "facet": "country",
+      "label_ru": "Бахрейн",
+      "label_en": "Bahrain",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bi",
+      "facet": "country",
+      "label_ru": "Бурунди",
+      "label_en": "Burundi",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bj",
+      "facet": "country",
+      "label_ru": "Бенин",
+      "label_en": "Benin",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bn",
+      "facet": "country",
+      "label_ru": "Бруней-Даруссалам",
+      "label_en": "Brunei Darussalam",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bo",
+      "facet": "country",
+      "label_ru": "Боливия (Многонациональное Государство)",
+      "label_en": "Bolivia (Plurinational State of)",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:br",
+      "facet": "country",
+      "label_ru": "Бразилия",
+      "label_en": "Brazil",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bs",
+      "facet": "country",
+      "label_ru": "Багамские Острова",
+      "label_en": "Bahamas",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bt",
+      "facet": "country",
+      "label_ru": "Бутан",
+      "label_en": "Bhutan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bw",
+      "facet": "country",
+      "label_ru": "Ботсвана",
+      "label_en": "Botswana",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:by",
+      "facet": "country",
+      "label_ru": "Беларусь",
+      "label_en": "Belarus",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:bz",
+      "facet": "country",
+      "label_ru": "Белиз",
+      "label_en": "Belize",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ca",
+      "facet": "country",
+      "label_ru": "Канада",
+      "label_en": "Canada",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cd",
+      "facet": "country",
+      "label_ru": "Демократическая Республика Конго",
+      "label_en": "Democratic Republic of the Congo",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cf",
+      "facet": "country",
+      "label_ru": "Центральноафриканская Республика",
+      "label_en": "Central African Republic",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cg",
+      "facet": "country",
+      "label_ru": "Конго",
+      "label_en": "Congo",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ch",
+      "facet": "country",
+      "label_ru": "Швейцария",
+      "label_en": "Switzerland",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ci",
+      "facet": "country",
+      "label_ru": "Кот-д'Ивуар",
+      "label_en": "Côte d’Ivoire",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cl",
+      "facet": "country",
+      "label_ru": "Чили",
+      "label_en": "Chile",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cm",
+      "facet": "country",
+      "label_ru": "Камерун",
+      "label_en": "Cameroon",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cn",
+      "facet": "country",
+      "label_ru": "Китай",
+      "label_en": "China",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:co",
+      "facet": "country",
+      "label_ru": "Колумбия",
+      "label_en": "Colombia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cr",
+      "facet": "country",
+      "label_ru": "Коста-Рика",
+      "label_en": "Costa Rica",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cu",
+      "facet": "country",
+      "label_ru": "Куба",
+      "label_en": "Cuba",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cv",
+      "facet": "country",
+      "label_ru": "Кабо-Верде",
+      "label_en": "Cabo Verde",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cy",
+      "facet": "country",
+      "label_ru": "Кипр",
+      "label_en": "Cyprus",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:cz",
+      "facet": "country",
+      "label_ru": "Чехия",
+      "label_en": "Czechia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:de",
+      "facet": "country",
+      "label_ru": "Германия",
+      "label_en": "Germany",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:dj",
+      "facet": "country",
+      "label_ru": "Джибути",
+      "label_en": "Djibouti",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:dk",
+      "facet": "country",
+      "label_ru": "Дания",
+      "label_en": "Denmark",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:dm",
+      "facet": "country",
+      "label_ru": "Доминика",
+      "label_en": "Dominica",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:do",
+      "facet": "country",
+      "label_ru": "Доминиканская Республика",
+      "label_en": "Dominican Republic",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:dz",
+      "facet": "country",
+      "label_ru": "Алжир",
+      "label_en": "Algeria",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ec",
+      "facet": "country",
+      "label_ru": "Эквадор",
+      "label_en": "Ecuador",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ee",
+      "facet": "country",
+      "label_ru": "Эстония",
+      "label_en": "Estonia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:eg",
+      "facet": "country",
+      "label_ru": "Египет",
+      "label_en": "Egypt",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:er",
+      "facet": "country",
+      "label_ru": "Эритрея",
+      "label_en": "Eritrea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:es",
+      "facet": "country",
+      "label_ru": "Испания",
+      "label_en": "Spain",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:et",
+      "facet": "country",
+      "label_ru": "Эфиопия",
+      "label_en": "Ethiopia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:fi",
+      "facet": "country",
+      "label_ru": "Финляндия",
+      "label_en": "Finland",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:fj",
+      "facet": "country",
+      "label_ru": "Фиджи",
+      "label_en": "Fiji",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:fm",
+      "facet": "country",
+      "label_ru": "Микронезия (Федеративные Штаты)",
+      "label_en": "Micronesia (Federated States of)",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:fr",
+      "facet": "country",
+      "label_ru": "Франция",
+      "label_en": "France",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ga",
+      "facet": "country",
+      "label_ru": "Габон",
+      "label_en": "Gabon",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gb",
+      "facet": "country",
+      "label_ru": "Великобритания",
+      "label_en": "United Kingdom",
+      "aliases_ru": [
+        "Соединённое Королевство"
+      ],
+      "aliases_en": [
+        "UK",
+        "Britain"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gd",
+      "facet": "country",
+      "label_ru": "Гренада",
+      "label_en": "Grenada",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ge",
+      "facet": "country",
+      "label_ru": "Грузия",
+      "label_en": "Georgia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gh",
+      "facet": "country",
+      "label_ru": "Гана",
+      "label_en": "Ghana",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gm",
+      "facet": "country",
+      "label_ru": "Гамбия",
+      "label_en": "Gambia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gn",
+      "facet": "country",
+      "label_ru": "Гвинея",
+      "label_en": "Guinea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gq",
+      "facet": "country",
+      "label_ru": "Экваториальная Гвинея",
+      "label_en": "Equatorial Guinea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gr",
+      "facet": "country",
+      "label_ru": "Греция",
+      "label_en": "Greece",
+      "aliases_ru": [
+        "Эллада"
+      ],
+      "aliases_en": [
+        "Hellas"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gt",
+      "facet": "country",
+      "label_ru": "Гватемала",
+      "label_en": "Guatemala",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gw",
+      "facet": "country",
+      "label_ru": "Гвинея-Бисау",
+      "label_en": "Guinea-Bissau",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:gy",
+      "facet": "country",
+      "label_ru": "Гайана",
+      "label_en": "Guyana",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:hn",
+      "facet": "country",
+      "label_ru": "Гондурас",
+      "label_en": "Honduras",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:hr",
+      "facet": "country",
+      "label_ru": "Хорватия",
+      "label_en": "Croatia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ht",
+      "facet": "country",
+      "label_ru": "Гаити",
+      "label_en": "Haiti",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:hu",
+      "facet": "country",
+      "label_ru": "Венгрия",
+      "label_en": "Hungary",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:id",
+      "facet": "country",
+      "label_ru": "Индонезия",
+      "label_en": "Indonesia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ie",
+      "facet": "country",
+      "label_ru": "Ирландия",
+      "label_en": "Ireland",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:il",
+      "facet": "country",
+      "label_ru": "Израиль",
+      "label_en": "Israel",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:in",
+      "facet": "country",
+      "label_ru": "Индия",
+      "label_en": "India",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:iq",
+      "facet": "country",
+      "label_ru": "Ирак",
+      "label_en": "Iraq",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ir",
+      "facet": "country",
+      "label_ru": "Иран (Исламская Республика)",
+      "label_en": "Iran (Islamic Republic of)",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:is",
+      "facet": "country",
+      "label_ru": "Исландия",
+      "label_en": "Iceland",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:it",
+      "facet": "country",
+      "label_ru": "Италия",
+      "label_en": "Italy",
+      "aliases_ru": [
+        "Итальянская Республика"
+      ],
+      "aliases_en": [
+        "Italian Republic"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:jm",
+      "facet": "country",
+      "label_ru": "Ямайка",
+      "label_en": "Jamaica",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:jo",
+      "facet": "country",
+      "label_ru": "Иордания",
+      "label_en": "Jordan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:jp",
+      "facet": "country",
+      "label_ru": "Япония",
+      "label_en": "Japan",
+      "aliases_ru": [
+        "Ниппон",
+        "Нихон"
+      ],
+      "aliases_en": [
+        "Nippon",
+        "Nihon"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ke",
+      "facet": "country",
+      "label_ru": "Кения",
+      "label_en": "Kenya",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kg",
+      "facet": "country",
+      "label_ru": "Кыргызстан",
+      "label_en": "Kyrgyzstan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kh",
+      "facet": "country",
+      "label_ru": "Камбоджа",
+      "label_en": "Cambodia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ki",
+      "facet": "country",
+      "label_ru": "Кирибати",
+      "label_en": "Kiribati",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:km",
+      "facet": "country",
+      "label_ru": "Коморские Острова",
+      "label_en": "Comoros",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kn",
+      "facet": "country",
+      "label_ru": "Сент-Китс и Невис",
+      "label_en": "Saint Kitts and Nevis",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kp",
+      "facet": "country",
+      "label_ru": "Корейская Народно-Демократическая Республика",
+      "label_en": "Democratic People's Republic of Korea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kr",
+      "facet": "country",
+      "label_ru": "Республика Корея",
+      "label_en": "Republic of Korea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kw",
+      "facet": "country",
+      "label_ru": "Кувейт",
+      "label_en": "Kuwait",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:kz",
+      "facet": "country",
+      "label_ru": "Казахстан",
+      "label_en": "Kazakhstan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:la",
+      "facet": "country",
+      "label_ru": "Лаосская Народно-Демократическая Республика",
+      "label_en": "Lao People's Democratic Republic",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lb",
+      "facet": "country",
+      "label_ru": "Ливан",
+      "label_en": "Lebanon",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lc",
+      "facet": "country",
+      "label_ru": "Сент-Люсия",
+      "label_en": "Saint Lucia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:li",
+      "facet": "country",
+      "label_ru": "Лихтенштейн",
+      "label_en": "Liechtenstein",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lk",
+      "facet": "country",
+      "label_ru": "Шри-Ланка",
+      "label_en": "Sri Lanka",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lr",
+      "facet": "country",
+      "label_ru": "Либерия",
+      "label_en": "Liberia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ls",
+      "facet": "country",
+      "label_ru": "Лесото",
+      "label_en": "Lesotho",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lt",
+      "facet": "country",
+      "label_ru": "Литва",
+      "label_en": "Lithuania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lu",
+      "facet": "country",
+      "label_ru": "Люксембург",
+      "label_en": "Luxembourg",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:lv",
+      "facet": "country",
+      "label_ru": "Латвия",
+      "label_en": "Latvia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ly",
+      "facet": "country",
+      "label_ru": "Ливия",
+      "label_en": "Libya",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ma",
+      "facet": "country",
+      "label_ru": "Марокко",
+      "label_en": "Morocco",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mc",
+      "facet": "country",
+      "label_ru": "Монако",
+      "label_en": "Monaco",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:md",
+      "facet": "country",
+      "label_ru": "Республика Молдова",
+      "label_en": "Republic of Moldova",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:me",
+      "facet": "country",
+      "label_ru": "Черногория",
+      "label_en": "Montenegro",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mg",
+      "facet": "country",
+      "label_ru": "Мадагаскар",
+      "label_en": "Madagascar",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mh",
+      "facet": "country",
+      "label_ru": "Маршалловы Острова",
+      "label_en": "Marshall Islands",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mk",
+      "facet": "country",
+      "label_ru": "Северная Македония",
+      "label_en": "North Macedonia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ml",
+      "facet": "country",
+      "label_ru": "Мали",
+      "label_en": "Mali",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mm",
+      "facet": "country",
+      "label_ru": "Мьянма",
+      "label_en": "Myanmar",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mn",
+      "facet": "country",
+      "label_ru": "Монголия",
+      "label_en": "Mongolia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mr",
+      "facet": "country",
+      "label_ru": "Мавритания",
+      "label_en": "Mauritania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mt",
+      "facet": "country",
+      "label_ru": "Мальта",
+      "label_en": "Malta",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mu",
+      "facet": "country",
+      "label_ru": "Маврикий",
+      "label_en": "Mauritius",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mv",
+      "facet": "country",
+      "label_ru": "Мальдивские Острова",
+      "label_en": "Maldives",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mw",
+      "facet": "country",
+      "label_ru": "Малави",
+      "label_en": "Malawi",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mx",
+      "facet": "country",
+      "label_ru": "Мексика",
+      "label_en": "Mexico",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:my",
+      "facet": "country",
+      "label_ru": "Малайзия",
+      "label_en": "Malaysia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:mz",
+      "facet": "country",
+      "label_ru": "Мозамбик",
+      "label_en": "Mozambique",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:na",
+      "facet": "country",
+      "label_ru": "Намибия",
+      "label_en": "Namibia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ne",
+      "facet": "country",
+      "label_ru": "Нигер",
+      "label_en": "Niger",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ng",
+      "facet": "country",
+      "label_ru": "Нигерия",
+      "label_en": "Nigeria",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ni",
+      "facet": "country",
+      "label_ru": "Никарагуа",
+      "label_en": "Nicaragua",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:nl",
+      "facet": "country",
+      "label_ru": "Нидерланды (Королевство)",
+      "label_en": "Netherlands (Kingdom of the)",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:no",
+      "facet": "country",
+      "label_ru": "Норвегия",
+      "label_en": "Norway",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:np",
+      "facet": "country",
+      "label_ru": "Непал",
+      "label_en": "Nepal",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:nr",
+      "facet": "country",
+      "label_ru": "Наоэро",
+      "label_en": "Naoero",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:nz",
+      "facet": "country",
+      "label_ru": "Новая Зеландия",
+      "label_en": "New Zealand",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:om",
+      "facet": "country",
+      "label_ru": "Оман",
+      "label_en": "Oman",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pa",
+      "facet": "country",
+      "label_ru": "Панама",
+      "label_en": "Panama",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pe",
+      "facet": "country",
+      "label_ru": "Перу",
+      "label_en": "Peru",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pg",
+      "facet": "country",
+      "label_ru": "Папуа-Новая Гвинея",
+      "label_en": "Papua New Guinea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ph",
+      "facet": "country",
+      "label_ru": "Филиппины",
+      "label_en": "Philippines",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pk",
+      "facet": "country",
+      "label_ru": "Пакистан",
+      "label_en": "Pakistan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pl",
+      "facet": "country",
+      "label_ru": "Польша",
+      "label_en": "Poland",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ps",
+      "facet": "country",
+      "label_ru": "Государство Палестина",
+      "label_en": "State of Palestine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pt",
+      "facet": "country",
+      "label_ru": "Португалия",
+      "label_en": "Portugal",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:pw",
+      "facet": "country",
+      "label_ru": "Палау",
+      "label_en": "Palau",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:py",
+      "facet": "country",
+      "label_ru": "Парагвай",
+      "label_en": "Paraguay",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:qa",
+      "facet": "country",
+      "label_ru": "Катар",
+      "label_en": "Qatar",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ro",
+      "facet": "country",
+      "label_ru": "Румыния",
+      "label_en": "Romania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:rs",
+      "facet": "country",
+      "label_ru": "Сербия",
+      "label_en": "Serbia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ru",
+      "facet": "country",
+      "label_ru": "Россия",
+      "label_en": "Russia",
+      "aliases_ru": [
+        "Российская Федерация"
+      ],
+      "aliases_en": [
+        "Russian Federation"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:rw",
+      "facet": "country",
+      "label_ru": "Руанда",
+      "label_en": "Rwanda",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sa",
+      "facet": "country",
+      "label_ru": "Саудовская Аравия",
+      "label_en": "Saudi Arabia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sb",
+      "facet": "country",
+      "label_ru": "Соломоновы Острова",
+      "label_en": "Solomon Islands",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sc",
+      "facet": "country",
+      "label_ru": "Сейшельские Острова",
+      "label_en": "Seychelles",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sd",
+      "facet": "country",
+      "label_ru": "Судан",
+      "label_en": "Sudan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:se",
+      "facet": "country",
+      "label_ru": "Швеция",
+      "label_en": "Sweden",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sg",
+      "facet": "country",
+      "label_ru": "Сингапур",
+      "label_en": "Singapore",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:si",
+      "facet": "country",
+      "label_ru": "Словения",
+      "label_en": "Slovenia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sk",
+      "facet": "country",
+      "label_ru": "Словакия",
+      "label_en": "Slovakia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sl",
+      "facet": "country",
+      "label_ru": "Сьерра-Леоне",
+      "label_en": "Sierra Leone",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sm",
+      "facet": "country",
+      "label_ru": "Сан-Марино",
+      "label_en": "San Marino",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sn",
+      "facet": "country",
+      "label_ru": "Сенегал",
+      "label_en": "Senegal",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:so",
+      "facet": "country",
+      "label_ru": "Сомали",
+      "label_en": "Somalia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sr",
+      "facet": "country",
+      "label_ru": "Суринам",
+      "label_en": "Suriname",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ss",
+      "facet": "country",
+      "label_ru": "Южный Судан",
+      "label_en": "South Sudan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:st",
+      "facet": "country",
+      "label_ru": "Сан-Томе и Принсипи",
+      "label_en": "Sao Tome and Principe",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sv",
+      "facet": "country",
+      "label_ru": "Сальвадор",
+      "label_en": "El Salvador",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sy",
+      "facet": "country",
+      "label_ru": "Сирийская Арабская Республика",
+      "label_en": "Syrian Arab Republic",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:sz",
+      "facet": "country",
+      "label_ru": "Эсватини",
+      "label_en": "Eswatini",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:td",
+      "facet": "country",
+      "label_ru": "Чад",
+      "label_en": "Chad",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tg",
+      "facet": "country",
+      "label_ru": "Того",
+      "label_en": "Togo",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:th",
+      "facet": "country",
+      "label_ru": "Таиланд",
+      "label_en": "Thailand",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tj",
+      "facet": "country",
+      "label_ru": "Таджикистан",
+      "label_en": "Tajikistan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tl",
+      "facet": "country",
+      "label_ru": "Тимор-Лешти",
+      "label_en": "Timor-Leste",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tm",
+      "facet": "country",
+      "label_ru": "Туркменистан",
+      "label_en": "Turkmenistan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tn",
+      "facet": "country",
+      "label_ru": "Тунис",
+      "label_en": "Tunisia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:to",
+      "facet": "country",
+      "label_ru": "Тонга",
+      "label_en": "Tonga",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tr",
+      "facet": "country",
+      "label_ru": "Турция",
+      "label_en": "Türkiye",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tt",
+      "facet": "country",
+      "label_ru": "Тринидад и Тобаго",
+      "label_en": "Trinidad and Tobago",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tv",
+      "facet": "country",
+      "label_ru": "Тувалу",
+      "label_en": "Tuvalu",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:tz",
+      "facet": "country",
+      "label_ru": "Объединенная Республика Танзания",
+      "label_en": "United Republic of Tanzania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ua",
+      "facet": "country",
+      "label_ru": "Украина",
+      "label_en": "Ukraine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ug",
+      "facet": "country",
+      "label_ru": "Уганда",
+      "label_en": "Uganda",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:us",
+      "facet": "country",
+      "label_ru": "США",
+      "label_en": "United States",
+      "aliases_ru": [
+        "Соединённые Штаты"
+      ],
+      "aliases_en": [
+        "USA",
+        "United States of America"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:uy",
+      "facet": "country",
+      "label_ru": "Уругвай",
+      "label_en": "Uruguay",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:uz",
+      "facet": "country",
+      "label_ru": "Узбекистан",
+      "label_en": "Uzbekistan",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:va",
+      "facet": "country",
+      "label_ru": "Святой Престол",
+      "label_en": "Holy See",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:vc",
+      "facet": "country",
+      "label_ru": "Сент-Винсент и Гренадины",
+      "label_en": "Saint Vincent and the Grenadines",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ve",
+      "facet": "country",
+      "label_ru": "Венесуэла (Боливарианская Республика)",
+      "label_en": "Venezuela (Bolivarian Republic of)",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:vn",
+      "facet": "country",
+      "label_ru": "Вьетнам",
+      "label_en": "Viet Nam",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:vu",
+      "facet": "country",
+      "label_ru": "Вануату",
+      "label_en": "Vanuatu",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ws",
+      "facet": "country",
+      "label_ru": "Самоа",
+      "label_en": "Samoa",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:ye",
+      "facet": "country",
+      "label_ru": "Йемен",
+      "label_en": "Yemen",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:za",
+      "facet": "country",
+      "label_ru": "Южная Африка",
+      "label_en": "South Africa",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:zm",
+      "facet": "country",
+      "label_ru": "Замбия",
+      "label_en": "Zambia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "country:zw",
+      "facet": "country",
+      "label_ru": "Зимбабве",
+      "label_en": "Zimbabwe",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:argentine",
+      "facet": "cuisine",
+      "label_ru": "Аргентинская кухня",
+      "label_en": "Argentine cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:armenian",
+      "facet": "cuisine",
+      "label_ru": "Армянская кухня",
+      "label_en": "Armenian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:brazilian",
+      "facet": "cuisine",
+      "label_ru": "Бразильская кухня",
+      "label_en": "Brazilian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:british",
+      "facet": "cuisine",
+      "label_ru": "Британская кухня",
+      "label_en": "British cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:chinese",
+      "facet": "cuisine",
+      "label_ru": "Китайская кухня",
+      "label_en": "Chinese cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:czech",
+      "facet": "cuisine",
+      "label_ru": "Чешская кухня",
+      "label_en": "Czech cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:french",
+      "facet": "cuisine",
+      "label_ru": "Французская кухня",
+      "label_en": "French cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:georgian",
+      "facet": "cuisine",
+      "label_ru": "Грузинская кухня",
+      "label_en": "Georgian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:german",
+      "facet": "cuisine",
+      "label_ru": "Немецкая кухня",
+      "label_en": "German cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:greek",
+      "facet": "cuisine",
+      "label_ru": "Греческая кухня",
+      "label_en": "Greek cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:hungarian",
+      "facet": "cuisine",
+      "label_ru": "Венгерская кухня",
+      "label_en": "Hungarian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:indian",
+      "facet": "cuisine",
+      "label_ru": "Индийская кухня",
+      "label_en": "Indian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:italian",
+      "facet": "cuisine",
+      "label_ru": "Итальянская кухня",
+      "label_en": "Italian cuisine",
+      "aliases_ru": [
+        "кухня Италии"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:japanese",
+      "facet": "cuisine",
+      "label_ru": "Японская кухня",
+      "label_en": "Japanese cuisine",
+      "aliases_ru": [
+        "кухня Японии"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:korean",
+      "facet": "cuisine",
+      "label_ru": "Корейская кухня",
+      "label_en": "Korean cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:lebanese",
+      "facet": "cuisine",
+      "label_ru": "Ливанская кухня",
+      "label_en": "Lebanese cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:mexican",
+      "facet": "cuisine",
+      "label_ru": "Мексиканская кухня",
+      "label_en": "Mexican cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:moroccan",
+      "facet": "cuisine",
+      "label_ru": "Марокканская кухня",
+      "label_en": "Moroccan cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:peruvian",
+      "facet": "cuisine",
+      "label_ru": "Перуанская кухня",
+      "label_en": "Peruvian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:russian",
+      "facet": "cuisine",
+      "label_ru": "Русская кухня",
+      "label_en": "Russian cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:spanish",
+      "facet": "cuisine",
+      "label_ru": "Испанская кухня",
+      "label_en": "Spanish cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:swedish",
+      "facet": "cuisine",
+      "label_ru": "Шведская кухня",
+      "label_en": "Swedish cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:thai",
+      "facet": "cuisine",
+      "label_ru": "Тайская кухня",
+      "label_en": "Thai cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:turkish",
+      "facet": "cuisine",
+      "label_ru": "Турецкая кухня",
+      "label_en": "Turkish cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "cuisine:vietnamese",
+      "facet": "cuisine",
+      "label_ru": "Вьетнамская кухня",
+      "label_en": "Vietnamese cuisine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "domain:arts",
+      "facet": "domain",
+      "label_ru": "Искусство и культура",
+      "label_en": "Arts and culture",
+      "aliases_ru": [
+        "картины",
+        "музыка"
+      ],
+      "aliases_en": [
+        "paintings",
+        "music"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:food",
+      "facet": "domain",
+      "label_ru": "Еда и напитки",
+      "label_en": "Food and drink",
+      "aliases_ru": [
+        "гастрономия"
+      ],
+      "aliases_en": [
+        "gastronomy"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:games",
+      "facet": "domain",
+      "label_ru": "Игры",
+      "label_en": "Games",
+      "aliases_ru": [
+        "видеоигры"
+      ],
+      "aliases_en": [
+        "video games"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:geography",
+      "facet": "domain",
+      "label_ru": "География",
+      "label_en": "Geography",
+      "aliases_ru": [
+        "столицы",
+        "флаги"
+      ],
+      "aliases_en": [
+        "capitals",
+        "flags"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:history",
+      "facet": "domain",
+      "label_ru": "История",
+      "label_en": "History",
+      "aliases_ru": [
+        "исторические события"
+      ],
+      "aliases_en": [
+        "historical events"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:holiday",
+      "facet": "domain",
+      "label_ru": "Праздники и традиции",
+      "label_en": "Holidays and traditions",
+      "aliases_ru": [
+        "Новый год"
+      ],
+      "aliases_en": [
+        "New Year"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:language",
+      "facet": "domain",
+      "label_ru": "Язык и лексика",
+      "label_en": "Language and vocabulary",
+      "aliases_ru": [
+        "филология"
+      ],
+      "aliases_en": [
+        "philology"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:literature",
+      "facet": "domain",
+      "label_ru": "Литература",
+      "label_en": "Literature",
+      "aliases_ru": [
+        "книги"
+      ],
+      "aliases_en": [
+        "books"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:mythology",
+      "facet": "domain",
+      "label_ru": "Мифология и фольклор",
+      "label_en": "Mythology and folklore",
+      "aliases_ru": [
+        "предания"
+      ],
+      "aliases_en": [
+        "folklore"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:nature",
+      "facet": "domain",
+      "label_ru": "Природа и животные",
+      "label_en": "Nature and animals",
+      "aliases_ru": [
+        "животные"
+      ],
+      "aliases_en": [
+        "animals"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:psychology",
+      "facet": "domain",
+      "label_ru": "Психология",
+      "label_en": "Psychology",
+      "aliases_ru": [
+        "фобии",
+        "филии"
+      ],
+      "aliases_en": [
+        "phobias",
+        "philias"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:science",
+      "facet": "domain",
+      "label_ru": "Наука",
+      "label_en": "Science",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "domain:screen",
+      "facet": "domain",
+      "label_ru": "Экранные произведения",
+      "label_en": "Screen media",
+      "aliases_ru": [
+        "кино",
+        "телесериалы"
+      ],
+      "aliases_en": [
+        "film",
+        "television"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "era:ancient",
+      "facet": "era",
+      "label_ru": "Древность",
+      "label_en": "Antiquity",
+      "aliases_ru": [
+        "античность",
+        "древний мир"
+      ],
+      "aliases_en": [
+        "ancient world"
+      ],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:early-modern",
+      "facet": "era",
+      "label_ru": "Раннее Новое время",
+      "label_en": "Early modern period",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:medieval",
+      "facet": "era",
+      "label_ru": "Средние века",
+      "label_en": "Middle Ages",
+      "aliases_ru": [
+        "средневековье"
+      ],
+      "aliases_en": [
+        "medieval"
+      ],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:middle-earth-third-age",
+      "facet": "era",
+      "label_ru": "Третья эпоха Средиземья",
+      "label_en": "Third Age of Middle-earth",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:nineteenth-century",
+      "facet": "era",
+      "label_ru": "XIX век",
+      "label_en": "Nineteenth century",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:prehistoric",
+      "facet": "era",
+      "label_ru": "Доисторическая эпоха",
+      "label_en": "Prehistory",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:renaissance",
+      "facet": "era",
+      "label_ru": "Возрождение",
+      "label_en": "Renaissance",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:twentieth-century",
+      "facet": "era",
+      "label_ru": "XX век",
+      "label_en": "Twentieth century",
+      "aliases_ru": [
+        "двадцатый век"
+      ],
+      "aliases_en": [
+        "20th century"
+      ],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "era:twenty-first-century",
+      "facet": "era",
+      "label_ru": "XXI век",
+      "label_en": "Twenty-first century",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:history"
+      ],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:dreamworks",
+      "facet": "franchise",
+      "label_ru": "Миры DreamWorks",
+      "label_en": "DreamWorks worlds",
+      "aliases_ru": [
+        "DreamWorks"
+      ],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:game-of-thrones",
+      "facet": "franchise",
+      "label_ru": "Игра престолов",
+      "label_en": "Game of Thrones",
+      "aliases_ru": [
+        "Песнь Льда и Пламени"
+      ],
+      "aliases_en": [
+        "A Song of Ice and Fire"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:harry-potter",
+      "facet": "franchise",
+      "label_ru": "Гарри Поттер",
+      "label_en": "Harry Potter",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:home-alone",
+      "facet": "franchise",
+      "label_ru": "Один дома",
+      "label_en": "Home Alone",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:middle-earth",
+      "facet": "franchise",
+      "label_ru": "Легендариум Толкина",
+      "label_en": "Tolkien legendarium",
+      "aliases_ru": [
+        "Властелин колец",
+        "Хоббит"
+      ],
+      "aliases_en": [
+        "The Lord of the Rings",
+        "The Hobbit"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:nintendo",
+      "facet": "franchise",
+      "label_ru": "Nintendo",
+      "label_en": "Nintendo",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:pixar",
+      "facet": "franchise",
+      "label_ru": "Миры Pixar",
+      "label_en": "Pixar worlds",
+      "aliases_ru": [
+        "Pixar"
+      ],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:pokemon",
+      "facet": "franchise",
+      "label_ru": "Покемон",
+      "label_en": "Pokémon",
+      "aliases_ru": [
+        "Покемоны"
+      ],
+      "aliases_en": [
+        "Pokemon"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:star-wars",
+      "facet": "franchise",
+      "label_ru": "Звёздные войны",
+      "label_en": "Star Wars",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:terminator",
+      "facet": "franchise",
+      "label_ru": "Терминатор",
+      "label_en": "Terminator",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "franchise:transformers",
+      "facet": "franchise",
+      "label_ru": "Трансформеры",
+      "label_en": "Transformers",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "ingredient-family:beverage",
+      "facet": "ingredient",
+      "label_ru": "Напитки",
+      "label_en": "Beverages",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:dairy",
+      "facet": "ingredient",
+      "label_ru": "Молочные продукты",
+      "label_en": "Dairy",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:fruit-vegetable",
+      "facet": "ingredient",
+      "label_ru": "Фрукты и овощи",
+      "label_en": "Fruit and vegetables",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:grain-starch",
+      "facet": "ingredient",
+      "label_ru": "Зерновые и крахмалы",
+      "label_en": "Grains and starches",
+      "aliases_ru": [
+        "крупы"
+      ],
+      "aliases_en": [
+        "grains"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:herb-spice",
+      "facet": "ingredient",
+      "label_ru": "Травы и специи",
+      "label_en": "Herbs and spices",
+      "aliases_ru": [
+        "пряности"
+      ],
+      "aliases_en": [
+        "seasonings"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:meat-seafood",
+      "facet": "ingredient",
+      "label_ru": "Мясо и морепродукты",
+      "label_en": "Meat and seafood",
+      "aliases_ru": [
+        "рыба"
+      ],
+      "aliases_en": [
+        "fish"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:nut-seed",
+      "facet": "ingredient",
+      "label_ru": "Орехи и семена",
+      "label_en": "Nuts and seeds",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient-family:sweetener",
+      "facet": "ingredient",
+      "label_ru": "Подсластители",
+      "label_en": "Sweeteners",
+      "aliases_ru": [
+        "сахара"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:almond",
+      "facet": "ingredient",
+      "label_ru": "Миндаль",
+      "label_en": "Almond",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:apple",
+      "facet": "ingredient",
+      "label_ru": "Яблоко",
+      "label_en": "Apple",
+      "aliases_ru": [
+        "яблоки"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:banana",
+      "facet": "ingredient",
+      "label_ru": "Банан",
+      "label_en": "Banana",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:basil",
+      "facet": "ingredient",
+      "label_ru": "Базилик",
+      "label_en": "Basil",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:beef",
+      "facet": "ingredient",
+      "label_ru": "Говядина",
+      "label_en": "Beef",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:bread",
+      "facet": "ingredient",
+      "label_ru": "Хлеб",
+      "label_en": "Bread",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:butter",
+      "facet": "ingredient",
+      "label_ru": "Сливочное масло",
+      "label_en": "Butter",
+      "aliases_ru": [
+        "масло"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:cheese",
+      "facet": "ingredient",
+      "label_ru": "Сыр",
+      "label_en": "Cheese",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:chocolate",
+      "facet": "ingredient",
+      "label_ru": "Шоколад",
+      "label_en": "Chocolate",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:cocoa",
+      "facet": "ingredient",
+      "label_ru": "Какао",
+      "label_en": "Cocoa",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:coffee",
+      "facet": "ingredient",
+      "label_ru": "Кофе",
+      "label_en": "Coffee",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:cream",
+      "facet": "ingredient",
+      "label_ru": "Сливки",
+      "label_en": "Cream",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:egg",
+      "facet": "ingredient",
+      "label_ru": "Яйцо",
+      "label_en": "Egg",
+      "aliases_ru": [
+        "яйца"
+      ],
+      "aliases_en": [
+        "eggs"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:fish",
+      "facet": "ingredient",
+      "label_ru": "Рыба",
+      "label_en": "Fish",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:garlic",
+      "facet": "ingredient",
+      "label_ru": "Чеснок",
+      "label_en": "Garlic",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:grape",
+      "facet": "ingredient",
+      "label_ru": "Виноград",
+      "label_en": "Grape",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:hazelnut",
+      "facet": "ingredient",
+      "label_ru": "Фундук",
+      "label_en": "Hazelnut",
+      "aliases_ru": [
+        "лесной орех"
+      ],
+      "aliases_en": [
+        "filbert"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:honey",
+      "facet": "ingredient",
+      "label_ru": "Мёд",
+      "label_en": "Honey",
+      "aliases_ru": [
+        "мед"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:lemon",
+      "facet": "ingredient",
+      "label_ru": "Лимон",
+      "label_en": "Lemon",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:lime",
+      "facet": "ingredient",
+      "label_ru": "Лайм",
+      "label_en": "Lime",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:milk",
+      "facet": "ingredient",
+      "label_ru": "Молоко",
+      "label_en": "Milk",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:mushroom",
+      "facet": "ingredient",
+      "label_ru": "Гриб",
+      "label_en": "Mushroom",
+      "aliases_ru": [
+        "грибы"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:olive-oil",
+      "facet": "ingredient",
+      "label_ru": "Оливковое масло",
+      "label_en": "Olive oil",
+      "aliases_ru": [
+        "оливковое масло"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:onion",
+      "facet": "ingredient",
+      "label_ru": "Лук",
+      "label_en": "Onion",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:pasta",
+      "facet": "ingredient",
+      "label_ru": "Паста",
+      "label_en": "Pasta",
+      "aliases_ru": [
+        "макароны"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:pepper",
+      "facet": "ingredient",
+      "label_ru": "Перец",
+      "label_en": "Pepper",
+      "aliases_ru": [
+        "перцы"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:potato",
+      "facet": "ingredient",
+      "label_ru": "Картофель",
+      "label_en": "Potato",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:poultry",
+      "facet": "ingredient",
+      "label_ru": "Птица",
+      "label_en": "Poultry",
+      "aliases_ru": [
+        "курица"
+      ],
+      "aliases_en": [
+        "chicken"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:rice",
+      "facet": "ingredient",
+      "label_ru": "Рис",
+      "label_en": "Rice",
+      "aliases_ru": [
+        "рисовая крупа"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:salt",
+      "facet": "ingredient",
+      "label_ru": "Соль",
+      "label_en": "Salt",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:seafood",
+      "facet": "ingredient",
+      "label_ru": "Морепродукты",
+      "label_en": "Seafood",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:spinach",
+      "facet": "ingredient",
+      "label_ru": "Шпинат",
+      "label_en": "Spinach",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:sugar",
+      "facet": "ingredient",
+      "label_ru": "Сахар",
+      "label_en": "Sugar",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:tea",
+      "facet": "ingredient",
+      "label_ru": "Чай",
+      "label_en": "Tea",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:tomato",
+      "facet": "ingredient",
+      "label_ru": "Томат",
+      "label_en": "Tomato",
+      "aliases_ru": [
+        "помидор"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:vanilla",
+      "facet": "ingredient",
+      "label_ru": "Ваниль",
+      "label_en": "Vanilla",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:water",
+      "facet": "ingredient",
+      "label_ru": "Вода",
+      "label_en": "Water",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:wheat",
+      "facet": "ingredient",
+      "label_ru": "Пшеница",
+      "label_en": "Wheat",
+      "aliases_ru": [
+        "пшеничная мука"
+      ],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:wine",
+      "facet": "ingredient",
+      "label_ru": "Вино",
+      "label_en": "Wine",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "ingredient:yogurt",
+      "facet": "ingredient",
+      "label_ru": "Йогурт",
+      "label_en": "Yogurt",
+      "aliases_ru": [
+        "йогурт"
+      ],
+      "aliases_en": [
+        "yoghurt"
+      ],
+      "parent_ids": [
+        "domain:food"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "medium:animation",
+      "facet": "medium",
+      "label_ru": "Анимация",
+      "label_en": "Animation",
+      "aliases_ru": [
+        "мультфильм"
+      ],
+      "aliases_en": [
+        "animated film"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "medium:book",
+      "facet": "medium",
+      "label_ru": "Книга",
+      "label_en": "Book",
+      "aliases_ru": [
+        "роман"
+      ],
+      "aliases_en": [
+        "novel"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "medium:film",
+      "facet": "medium",
+      "label_ru": "Фильм",
+      "label_en": "Film",
+      "aliases_ru": [
+        "кино"
+      ],
+      "aliases_en": [
+        "movie"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "medium:television",
+      "facet": "medium",
+      "label_ru": "Телесериал",
+      "label_en": "Television series",
+      "aliases_ru": [
+        "сериал"
+      ],
+      "aliases_en": [
+        "TV series"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "medium:video-game",
+      "facet": "medium",
+      "label_ru": "Видеоигра",
+      "label_en": "Video game",
+      "aliases_ru": [
+        "игра"
+      ],
+      "aliases_en": [
+        "game"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "person:gandalf-fictional",
+      "facet": "person",
+      "label_ru": "Гэндальф",
+      "label_en": "Gandalf",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": false
+    },
+    {
+      "id": "person:tolkien-jrr",
+      "facet": "person",
+      "label_ru": "Дж. Р. Р. Толкин",
+      "label_en": "J. R. R. Tolkien",
+      "aliases_ru": [
+        "Толкин"
+      ],
+      "aliases_en": [
+        "Tolkien"
+      ],
+      "parent_ids": [],
+      "player_safe": false
+    },
+    {
+      "id": "place:africa",
+      "facet": "place",
+      "label_ru": "Африка",
+      "label_en": "Africa",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:antarctica",
+      "facet": "place",
+      "label_ru": "Антарктида",
+      "label_en": "Antarctica",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:asia",
+      "facet": "place",
+      "label_ru": "Азия",
+      "label_en": "Asia",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:europe",
+      "facet": "place",
+      "label_ru": "Европа",
+      "label_en": "Europe",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:middle-earth-fictional",
+      "facet": "place",
+      "label_ru": "Средиземье",
+      "label_en": "Middle-earth",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:north-america",
+      "facet": "place",
+      "label_ru": "Северная Америка",
+      "label_en": "North America",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:oceania",
+      "facet": "place",
+      "label_ru": "Океания",
+      "label_en": "Oceania",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:rome-it",
+      "facet": "place",
+      "label_ru": "Рим",
+      "label_en": "Rome",
+      "aliases_ru": [
+        "Roma"
+      ],
+      "aliases_en": [
+        "Roma"
+      ],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:south-america",
+      "facet": "place",
+      "label_ru": "Южная Америка",
+      "label_en": "South America",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "place:tokyo-jp",
+      "facet": "place",
+      "label_ru": "Токио",
+      "label_en": "Tokyo",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:geography"
+      ],
+      "player_safe": false
+    },
+    {
+      "id": "skill:association",
+      "facet": "knowledge_skill",
+      "label_ru": "Связывание сущностей",
+      "label_en": "Association",
+      "aliases_ru": [
+        "соответствие"
+      ],
+      "aliases_en": [
+        "matching"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:classification",
+      "facet": "knowledge_skill",
+      "label_ru": "Классификация",
+      "label_en": "Classification",
+      "aliases_ru": [
+        "отнесение к классу"
+      ],
+      "aliases_en": [
+        "categorisation"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:comparison",
+      "facet": "knowledge_skill",
+      "label_ru": "Сравнение и различение",
+      "label_en": "Comparison and distinction",
+      "aliases_ru": [
+        "отличить"
+      ],
+      "aliases_en": [
+        "distinguish"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:direct-recall",
+      "facet": "knowledge_skill",
+      "label_ru": "Прямое воспроизведение факта",
+      "label_en": "Direct fact recall",
+      "aliases_ru": [
+        "знание факта"
+      ],
+      "aliases_en": [
+        "recall"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:quantitative",
+      "facet": "knowledge_skill",
+      "label_ru": "Количество и величина",
+      "label_en": "Quantity and magnitude",
+      "aliases_ru": [
+        "число",
+        "процент"
+      ],
+      "aliases_en": [
+        "number",
+        "percentage"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:recognition",
+      "facet": "knowledge_skill",
+      "label_ru": "Узнавание",
+      "label_en": "Recognition",
+      "aliases_ru": [
+        "распознавание"
+      ],
+      "aliases_en": [
+        "identify"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:spatial",
+      "facet": "knowledge_skill",
+      "label_ru": "Пространственная привязка",
+      "label_en": "Spatial relation",
+      "aliases_ru": [
+        "географическая привязка"
+      ],
+      "aliases_en": [
+        "location"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:temporal-order",
+      "facet": "knowledge_skill",
+      "label_ru": "Время и последовательность",
+      "label_en": "Time and sequence",
+      "aliases_ru": [
+        "датировка"
+      ],
+      "aliases_en": [
+        "chronology"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "skill:terminology",
+      "facet": "knowledge_skill",
+      "label_ru": "Терминология",
+      "label_en": "Terminology",
+      "aliases_ru": [
+        "термин"
+      ],
+      "aliases_en": [
+        "term"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:actors",
+      "facet": "topic",
+      "label_ru": "Актёры и роли",
+      "label_en": "Actors and roles",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-anatomy",
+      "facet": "topic",
+      "label_ru": "Анатомия животных",
+      "label_en": "Animal anatomy",
+      "aliases_ru": [
+        "органы чувств"
+      ],
+      "aliases_en": [
+        "senses"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-behavior",
+      "facet": "topic",
+      "label_ru": "Поведение животных",
+      "label_en": "Animal behaviour",
+      "aliases_ru": [
+        "повадки"
+      ],
+      "aliases_en": [
+        "habits"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-breeds",
+      "facet": "topic",
+      "label_ru": "Породы животных",
+      "label_en": "Animal breeds",
+      "aliases_ru": [
+        "породы кошек",
+        "породы собак"
+      ],
+      "aliases_en": [
+        "cat breeds",
+        "dog breeds"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-classification",
+      "facet": "topic",
+      "label_ru": "Классификация животных",
+      "label_en": "Animal classification",
+      "aliases_ru": [
+        "систематика"
+      ],
+      "aliases_en": [
+        "taxonomy"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-culture",
+      "facet": "topic",
+      "label_ru": "Животные в культуре",
+      "label_en": "Animals in culture",
+      "aliases_ru": [
+        "мифология животных"
+      ],
+      "aliases_en": [
+        "animal mythology"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-domestication",
+      "facet": "topic",
+      "label_ru": "Одомашнивание животных",
+      "label_en": "Animal domestication",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-habitat",
+      "facet": "topic",
+      "label_ru": "Ареал и среда обитания",
+      "label_en": "Habitat and range",
+      "aliases_ru": [
+        "места обитания"
+      ],
+      "aliases_en": [
+        "range"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-records",
+      "facet": "topic",
+      "label_ru": "Рекорды и факты о животных",
+      "label_en": "Animal records and trivia",
+      "aliases_ru": [
+        "продвинутая эрудиция"
+      ],
+      "aliases_en": [
+        "trivia"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-senses",
+      "facet": "topic",
+      "label_ru": "Органы чувств животных",
+      "label_en": "Animal senses",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:animal-sports",
+      "facet": "topic",
+      "label_ru": "Спорт с животными",
+      "label_en": "Animal sports",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:archaic-words",
+      "facet": "topic",
+      "label_ru": "Устаревшие слова",
+      "label_en": "Archaic words",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:architecture",
+      "facet": "topic",
+      "label_ru": "Архитектура",
+      "label_en": "Architecture",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:astronomy",
+      "facet": "topic",
+      "label_ru": "Астрономия",
+      "label_en": "Astronomy",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:ballet",
+      "facet": "topic",
+      "label_ru": "Балет",
+      "label_en": "Ballet",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:beverages",
+      "facet": "topic",
+      "label_ru": "Напитки",
+      "label_en": "Beverages",
+      "aliases_ru": [
+        "алкоголь"
+      ],
+      "aliases_en": [
+        "drinks"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:biology",
+      "facet": "topic",
+      "label_ru": "Биология",
+      "label_en": "Biology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:borrowed-words",
+      "facet": "topic",
+      "label_ru": "Заимствованные слова",
+      "label_en": "Loanwords",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:calendar",
+      "facet": "topic",
+      "label_ru": "Календарь",
+      "label_en": "Calendar",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:capital-city",
+      "facet": "topic",
+      "label_ru": "Столицы",
+      "label_en": "Capital cities",
+      "aliases_ru": [
+        "столица"
+      ],
+      "aliases_en": [
+        "capital"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:cartography",
+      "facet": "topic",
+      "label_ru": "Карты",
+      "label_en": "Maps",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:cat",
+      "facet": "topic",
+      "label_ru": "Кошки",
+      "label_en": "Cats",
+      "aliases_ru": [
+        "кошка"
+      ],
+      "aliases_en": [
+        "cat"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:celebrations",
+      "facet": "topic",
+      "label_ru": "Праздничные традиции",
+      "label_en": "Celebration traditions",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:characters",
+      "facet": "topic",
+      "label_ru": "Персонажи",
+      "label_en": "Characters",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:cheese-dairy",
+      "facet": "topic",
+      "label_ru": "Сыры и молочные продукты",
+      "label_en": "Cheese and dairy",
+      "aliases_ru": [
+        "молочные продукты"
+      ],
+      "aliases_en": [
+        "dairy"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:chemistry",
+      "facet": "topic",
+      "label_ru": "Химия",
+      "label_en": "Chemistry",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:composers",
+      "facet": "topic",
+      "label_ru": "Композиторы",
+      "label_en": "Composers",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:composition",
+      "facet": "topic",
+      "label_ru": "Музыкальные произведения",
+      "label_en": "Musical compositions",
+      "aliases_ru": [
+        "композиции"
+      ],
+      "aliases_en": [
+        "works"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:cooking-technique",
+      "facet": "topic",
+      "label_ru": "Кулинарные техники",
+      "label_en": "Cooking techniques",
+      "aliases_ru": [
+        "приготовление"
+      ],
+      "aliases_en": [
+        "cookery"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:customs",
+      "facet": "topic",
+      "label_ru": "Обычаи и этикет",
+      "label_en": "Customs and etiquette",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:desserts",
+      "facet": "topic",
+      "label_ru": "Десерты и сладости",
+      "label_en": "Desserts and sweets",
+      "aliases_ru": [
+        "сладкие истории"
+      ],
+      "aliases_en": [
+        "sweets"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:directors",
+      "facet": "topic",
+      "label_ru": "Режиссёры",
+      "label_en": "Directors",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:dog",
+      "facet": "topic",
+      "label_ru": "Собаки",
+      "label_en": "Dogs",
+      "aliases_ru": [
+        "собака"
+      ],
+      "aliases_en": [
+        "dog"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:ecology",
+      "facet": "topic",
+      "label_ru": "Экология",
+      "label_en": "Ecology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:english-vocabulary",
+      "facet": "topic",
+      "label_ru": "Английская лексика",
+      "label_en": "English vocabulary",
+      "aliases_ru": [
+        "английские слова",
+        "английские выражения"
+      ],
+      "aliases_en": [
+        "English words",
+        "English expressions"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:evolution",
+      "facet": "topic",
+      "label_ru": "Эволюция",
+      "label_en": "Evolution",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:fantasy-items",
+      "facet": "topic",
+      "label_ru": "Артефакты вымышленных миров",
+      "label_en": "Fictional artefacts",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:film-awards",
+      "facet": "topic",
+      "label_ru": "Кинопремии",
+      "label_en": "Film awards",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:film-plots",
+      "facet": "topic",
+      "label_ru": "Сюжеты фильмов",
+      "label_en": "Film plots",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:film-production",
+      "facet": "topic",
+      "label_ru": "Создание кино",
+      "label_en": "Film production",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:flag",
+      "facet": "topic",
+      "label_ru": "Флаги",
+      "label_en": "Flags",
+      "aliases_ru": [
+        "государственные флаги"
+      ],
+      "aliases_en": [
+        "national flags"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:folklore",
+      "facet": "topic",
+      "label_ru": "Фольклор",
+      "label_en": "Folklore",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:food-etiquette",
+      "facet": "topic",
+      "label_ru": "Гастрономический этикет",
+      "label_en": "Food etiquette",
+      "aliases_ru": [
+        "традиции"
+      ],
+      "aliases_en": [
+        "dining etiquette"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:fruit-vegetables",
+      "facet": "topic",
+      "label_ru": "Фрукты и овощи",
+      "label_en": "Fruit and vegetables",
+      "aliases_ru": [
+        "сад и огород"
+      ],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:geology",
+      "facet": "topic",
+      "label_ru": "Геология",
+      "label_en": "Geology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:historical-events",
+      "facet": "topic",
+      "label_ru": "Исторические события",
+      "label_en": "Historical events",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:lexicology",
+      "facet": "topic",
+      "label_ru": "Лексика",
+      "label_en": "Lexicology",
+      "aliases_ru": [
+        "заимствования",
+        "архаизмы"
+      ],
+      "aliases_en": [
+        "loanwords",
+        "archaisms"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:literary-works",
+      "facet": "topic",
+      "label_ru": "Литературные произведения",
+      "label_en": "Literary works",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:lore",
+      "facet": "topic",
+      "label_ru": "Устройство вымышленных миров",
+      "label_en": "Fictional world lore",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:meat-seafood",
+      "facet": "topic",
+      "label_ru": "Мясо и морепродукты",
+      "label_en": "Meat and seafood",
+      "aliases_ru": [
+        "мясо и рыба"
+      ],
+      "aliases_en": [
+        "fish"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:medical-terms",
+      "facet": "topic",
+      "label_ru": "Медицинские термины",
+      "label_en": "Medical terms",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:musical-theatre",
+      "facet": "topic",
+      "label_ru": "Мюзиклы",
+      "label_en": "Musicals",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:mythic-tradition",
+      "facet": "topic",
+      "label_ru": "Мифологическая традиция",
+      "label_en": "Mythic tradition",
+      "aliases_ru": [
+        "пантеон",
+        "фольклор"
+      ],
+      "aliases_en": [
+        "pantheon",
+        "folklore"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:mythology-greek",
+      "facet": "topic",
+      "label_ru": "Греческая мифология",
+      "label_en": "Greek mythology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:mythology-norse",
+      "facet": "topic",
+      "label_ru": "Скандинавская мифология",
+      "label_en": "Norse mythology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:new-year",
+      "facet": "topic",
+      "label_ru": "Новый год",
+      "label_en": "New Year",
+      "aliases_ru": [
+        "новогодние традиции"
+      ],
+      "aliases_en": [
+        "New Year traditions"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:opera",
+      "facet": "topic",
+      "label_ru": "Опера",
+      "label_en": "Opera",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:painting",
+      "facet": "topic",
+      "label_ru": "Живопись",
+      "label_en": "Painting",
+      "aliases_ru": [
+        "картины"
+      ],
+      "aliases_en": [
+        "paintings"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:philia",
+      "facet": "topic",
+      "label_ru": "Филии",
+      "label_en": "Philias",
+      "aliases_ru": [
+        "предпочтения"
+      ],
+      "aliases_en": [
+        "loves"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:phobia",
+      "facet": "topic",
+      "label_ru": "Фобии",
+      "label_en": "Phobias",
+      "aliases_ru": [
+        "страхи"
+      ],
+      "aliases_en": [
+        "fears"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:physics",
+      "facet": "topic",
+      "label_ru": "Физика",
+      "label_en": "Physics",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:psychological-terms",
+      "facet": "topic",
+      "label_ru": "Психологические термины",
+      "label_en": "Psychological terms",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:raccoon",
+      "facet": "topic",
+      "label_ru": "Еноты",
+      "label_en": "Raccoons",
+      "aliases_ru": [
+        "енот"
+      ],
+      "aliases_en": [
+        "raccoon"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:religion",
+      "facet": "topic",
+      "label_ru": "Религия",
+      "label_en": "Religion",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:rhetoric",
+      "facet": "topic",
+      "label_ru": "Риторика",
+      "label_en": "Rhetoric",
+      "aliases_ru": [
+        "риторические приёмы",
+        "фигуры речи"
+      ],
+      "aliases_en": [
+        "rhetorical devices",
+        "figures of speech"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:robot-technology",
+      "facet": "topic",
+      "label_ru": "Роботы и технологии",
+      "label_en": "Robots and technology",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:service-animals",
+      "facet": "topic",
+      "label_ru": "Служебные животные",
+      "label_en": "Service animals",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:social-etiquette",
+      "facet": "topic",
+      "label_ru": "Светский этикет",
+      "label_en": "Social etiquette",
+      "aliases_ru": [
+        "знакомство",
+        "правила вежливости"
+      ],
+      "aliases_en": [
+        "introductions",
+        "manners"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:spices-sauces",
+      "facet": "topic",
+      "label_ru": "Специи и соусы",
+      "label_en": "Spices and sauces",
+      "aliases_ru": [
+        "пряности"
+      ],
+      "aliases_en": [
+        "seasonings"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:television-worlds",
+      "facet": "topic",
+      "label_ru": "Миры телесериалов",
+      "label_en": "Television worlds",
+      "aliases_ru": [
+        "сериалы"
+      ],
+      "aliases_en": [
+        "TV worlds"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:toys",
+      "facet": "topic",
+      "label_ru": "Игрушки",
+      "label_en": "Toys",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:video-games",
+      "facet": "topic",
+      "label_ru": "Видеоигры",
+      "label_en": "Video games",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:word-meaning",
+      "facet": "topic",
+      "label_ru": "Значения слов",
+      "label_en": "Word meanings",
+      "aliases_ru": [
+        "толкование слов",
+        "словарный запас"
+      ],
+      "aliases_en": [
+        "definitions",
+        "vocabulary"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:word-origin",
+      "facet": "topic",
+      "label_ru": "Происхождение слов",
+      "label_en": "Word origins",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:world-geography",
+      "facet": "topic",
+      "label_ru": "География мира",
+      "label_en": "World geography",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:writers",
+      "facet": "topic",
+      "label_ru": "Писатели",
+      "label_en": "Writers",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [],
+      "player_safe": true
+    }
+  ],
+  "collections": [
+    {
+      "id": "collection:italy",
+      "label_ru": "Италия сквозь темы",
+      "label_en": "Italy across themes",
+      "all_tag_ids": [],
+      "any_tag_ids": [
+        "country:it",
+        "cuisine:italian",
+        "place:rome-it"
+      ],
+      "excluded_tag_ids": []
+    },
+    {
+      "id": "collection:rice",
+      "label_ru": "Рис в культурах мира",
+      "label_en": "Rice across cultures",
+      "all_tag_ids": [
+        "ingredient:rice"
+      ],
+      "any_tag_ids": [],
+      "excluded_tag_ids": []
+    },
+    {
+      "id": "collection:tolkien",
+      "label_ru": "Мир Толкина",
+      "label_en": "Tolkien world",
+      "all_tag_ids": [],
+      "any_tag_ids": [
+        "franchise:middle-earth",
+        "person:tolkien-jrr"
+      ],
+      "excluded_tag_ids": []
+    }
+  ],
+  "authorities": [
+    {
+      "id": "country-qm-195-20261003",
+      "facet": "country",
+      "id_pattern": "country:<ISO-3166-1-alpha-2>",
+      "entry_count": 195,
+      "source_path": "docs/rewrite-agents/preparation-country-registry/countries.json",
+      "source_sha256": "78B1BB2D9FBFDB35033022DBDC94C34A89AD472A6CCE835C5DD1EC2932F14B04",
+      "entry_mapping": {
+        "id": "country:{iso2}",
+        "ru": "name_ru",
+        "en": "name_en",
+        "aliases": "editorially-curated only; no inferred aliases"
+      },
+      "scope": "193 UN Member States plus Holy See and State of Palestine; exact labels, ISO2/ISO3, capitals and exceptions are frozen in the cited existing registry."
+    }
+  ],
+  "visibility_policy": "player_safe=true permits only broad context tags; all answer-derived, country, place, cuisine, ingredient and person tags remain editorial-only. Context tag IDs must be an approved subset of editorial IDs.",
+  "taxonomy_sha256": "fcaf4ce7c923bf6734f660c6873674e1f42bd6986d6fc3c04dd5d6095ed51e11"
+}

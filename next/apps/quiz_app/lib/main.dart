@@ -14,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/l10n/app_localizations.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'quizipedia.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -98,6 +99,11 @@ ThemeData _theme(Brightness brightness) => ThemeData(
 GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
   initialLocation: initialLocation,
   routes: [
+    GoRoute(
+      path: '/quizipedia',
+      builder: (context, _) =>
+          QuizipediaPage(onExit: () => context.go('/library')),
+    ),
     GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
     GoRoute(
       path: '/study/:moduleId/practice',
