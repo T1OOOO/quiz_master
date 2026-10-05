@@ -93,3 +93,19 @@ baseline image. It does not make a production change. The current Compose,
 Dockerfile, and route-test source pass whitespace validation on static review.
 Remote Compose integration and CI Web compilation remain pending and are not
 accepted by this finding.
+
+## CI migration-order delta
+
+**ACCEPT for static CI ordering; fresh remote proof remains pending.** The
+workflow now starts only `postgres` before the integration packages run. This
+preserves `runner_integration_test.go`'s required sequence: apply migrations
+1--2, insert a legacy pre-manifest bundle, then apply migration 3. `-p 1`
+also prevents the identity and store integration packages from sharing and
+truncating that database concurrently. Only after that suite does the workflow
+build and wait for the API, then probe its live and ready endpoints.
+
+The diff does not alter migration guards, backend code, test fixtures, or API
+health assertions. The reported prior run had already passed Go unit/vet and
+the API health path, while failing the migration fixture because the API had
+pre-applied migration 3. This is a targeted correction of that test ordering.
+I did not execute a remote run, so this is not evidence of a fresh CI pass.

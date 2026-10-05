@@ -95,3 +95,13 @@ the actual route/drawer roundtrip, after the second-pump correction. Executed
 under granted 2 GiB lease `lease-bdf4f6f7dd764cdf8f8e7fcdd542d9d1`, renewed by
 owned guard PID25700, then released after every test process returned. Remote
 Compose integration and release Web compilation still require the next CI run.
+
+Third CI run `37308905207` accepted the complete Flutter job: format, analyze,
+all 83 tests, production-URL Web compilation, private-marker scan, checksums and
+artifact upload. Go unit tests/vet and the corrected Compose API startup passed.
+The remaining failure exposed old CI ordering: API startup already applied all
+migrations before a test attempted its pre-manifest legacy insert. Identity and
+store package tests also share/truncate one database. CI now starts PostgreSQL
+alone, runs those packages serially (`-p 1`), then starts API and probes health.
+The migration/data protection itself is unchanged; the rejecting guard is not
+weakened. A fresh run is required to accept the ordering correction.
