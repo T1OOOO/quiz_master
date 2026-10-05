@@ -100,3 +100,22 @@ func TestRoutesComposeGuestAndProtectedAttemptPatterns(t *testing.T) {
 		t.Fatalf("attempt status = %d", w.Code)
 	}
 }
+
+// This exercises the public contract before reports are wired: an authenticated
+// participant must be able to submit a bounded feedback report.
+func TestRoutesAcceptsAuthenticatedFeedbackReport(t *testing.T) {
+	h := Routes(nil, func(_ context.Context, token string) (Principal, error) {
+		if token != "guest-token" {
+			return Principal{}, ErrUnauthorized
+		}
+		return Principal{ID: "p_0123456789abcdef0123456789abcdef", Kind: "guest"}, nil
+	}, func(context.Context, string) (identity.GuestSession, error) { return identity.GuestSession{}, nil })
+	r := httptest.NewRequest(http.MethodPost, "/v1/reports", strings.NewReader(`{"request_id":"frq_0123456789abcdef0123456789abcdef","type":"ui","item_ids":["screen:/library"],"comment":"Button overlaps the answer","context":{"route":"/library","viewport":{"width":390,"height":844,"dpr":2},"locale":"en","theme":"light","platform":"web","app_version":"test","timestamp":"2026-10-06T00:00:00Z"}}`))
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Authorization", "Bearer guest-token")
+	w := httptest.NewRecorder()
+	h.ServeHTTP(w, r)
+	if w.Code != http.StatusCreated {
+		t.Fatalf("report status = %d, body=%q", w.Code, w.Body.String())
+	}
+}
