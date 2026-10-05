@@ -57,3 +57,15 @@ worktree SHA-256 remains the reviewed
 `39e2f7987bb6b7fb005ca58d553b33748b184e54aa4cf0bd83705d8553c2b38d`.
 `git diff --cached --check` passes. This supersedes the required correction
 above; it does not change the pending Flutter/CI runtime limitation.
+
+## CI-repair delta re-review
+
+**ACCEPT.** The index contains exactly two relevant repair files:
+`next/server/internal/sqlite/collection_test.go` replaces only the three stale
+source-collection expectations (`118/3878/118` to `126/3958/126`), and
+`next/apps/quiz_app/lib/main.dart` adds only the required blank line before the
+local Quizipedia import. The staged import block has the same 659 lines as the
+previously formatted isolated game source and no textual difference. Cached
+whitespace validation passes. This evaluates the reported CI failure repair;
+the corrected test and CI workflow have not been rerun, so no runtime-pass
+claim is made.

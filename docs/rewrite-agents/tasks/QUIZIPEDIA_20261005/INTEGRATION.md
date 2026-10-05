@@ -61,3 +61,16 @@ Scope: four local unranked learning games, 20/6/6/8 targets; no current-sky
 calculation and no assertion that the 110m map supplies all 195 country targets.
 Possible later modules: bones/muscles, rivers/mountains, trees, birds, minerals
 and Solar System order/scale, each with separate source/visual review.
+# Remote CI validation checkpoint
+
+Progress commit `b21571b7a7f349576d015f9871daba89b849de98` was pushed and
+dispatched as GitHub Actions run `37306903180`. Android debug compilation and
+artifact upload succeeded. This run did not accept Web or the full Go suite:
+the source-collection integration assertion still expected 118 packs/3878
+questions instead of the existing 126/3958 inventory, and Dart formatting
+required one blank line before the new local import in `main.dart`.
+
+The next validation revision changes only those inventory assertions and the
+import spacing. It does not change backend behavior or include the pending
+difficulty/tag integration. Full CI and production verification remain pending.
+

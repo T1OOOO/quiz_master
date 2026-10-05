@@ -14,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quiz_app/l10n/app_localizations.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'quizipedia.dart';
 
 part 'api_models.dart';
