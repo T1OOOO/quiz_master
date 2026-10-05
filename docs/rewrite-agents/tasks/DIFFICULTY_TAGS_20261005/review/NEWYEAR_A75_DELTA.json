@@ -1,0 +1,512 @@
+{
+  "before_sha256": "27772a627f1c72e06dadb3809e68fd0cea1ce2c1a16de78d87d7187ced7432a3",
+  "after_sha256": "d671840014dbd862d381a5bb7b7752389d4711173099ae01f36c70de081e4474",
+  "before_taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "09e8e90542c121bda2e4978daaf74639ed32f3e828838d3a3f2d4e8896a4276e"
+  },
+  "after_taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
+  "changes": [
+    {
+      "question_id": "q_new_year_arts_literature_0_new_year_arts_literature_1",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_0_new_year_arts_literature_1",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "medium:animation",
+          "skill:direct-recall",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "medium:animation",
+          "topic:ballet"
+        ],
+        "rationale": "Нужно узнать общеизвестную музыку балета по названию мультфильма; шесть русских композиторов делают выбор чуть внимательнее простого узнавания.",
+        "confidence": "high",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_0_new_year_arts_literature_1",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "medium:animation",
+          "skill:direct-recall",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "medium:animation",
+          "topic:ballet"
+        ],
+        "rationale": "Нужно узнать общеизвестную музыку балета по названию мультфильма; шесть русских композиторов делают выбор чуть внимательнее простого узнавания.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: автор музыки «Щелкунчика», как в arts_literature_50"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_6_new_year_arts_literature_7",
+      "fields": [
+        "confidence",
+        "context_tag_ids",
+        "editorial_flags",
+        "editorial_tag_ids",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_6_new_year_arts_literature_7",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:ballet"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:ballet"
+        ],
+        "rationale": "Надо знать техническое отличие акселя — вход вперёд с ребра; остальные названия прыжков знакомы, но не описаны в вопросе.",
+        "confidence": "high",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_6_new_year_arts_literature_7",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:sports",
+          "skill:direct-recall",
+          "topic:figure-skating"
+        ],
+        "context_tag_ids": [
+          "domain:sports",
+          "topic:figure-skating"
+        ],
+        "rationale": "Техническое отличие акселя — вход вперёд с ребра — требует знания фигурного катания среди шести правдоподобных прыжков. Формулировка «самый сложный» требует отдельной проверки; это не основание повышать сложность выше 5.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "factual-superlative-needs-source"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_13_new_year_arts_literature_14",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_13_new_year_arts_literature_14",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "skill:direct-recall",
+          "topic:characters",
+          "topic:literary-works"
+        ],
+        "context_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "topic:literary-works"
+        ],
+        "rationale": "Марли — ключевой персонаж «Рождественской песни», но ключ помечает Билла Сайкса, поэтому оценка сопровождается явным конфликтом.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_13_new_year_arts_literature_14",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "skill:direct-recall",
+          "topic:characters",
+          "topic:literary-works"
+        ],
+        "context_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "topic:literary-works"
+        ],
+        "rationale": "Марли — ключевой персонаж «Рождественской песни», но ключ помечает Билла Сайкса, поэтому оценка сопровождается явным конфликтом.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation",
+          "near_duplicate: Джейкоб Марли, как в arts_literature_17"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_16_new_year_arts_literature_17",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_16_new_year_arts_literature_17",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:new-year"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:new-year"
+        ],
+        "rationale": "Нужен редкий факт о ранней реакции на конкретную песню; предложенное объяснение описывает другую по смыслу песню и требует источника.",
+        "confidence": "low",
+        "editorial_flags": [
+          "factual-claim-needs-source",
+          "premise-ambiguity"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_16_new_year_arts_literature_17",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:new-year"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:new-year"
+        ],
+        "rationale": "Нужен редкий факт о ранней реакции на конкретную песню; предложенное объяснение описывает другую по смыслу песню и требует источника.",
+        "confidence": "low",
+        "editorial_flags": [
+          "factual-claim-needs-source",
+          "premise-ambiguity",
+          "answer-key-conflicts-explanation"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+      "fields": [
+        "confidence",
+        "editorial_flags",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "skill:direct-recall",
+          "topic:characters"
+        ],
+        "context_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "topic:characters"
+        ],
+        "rationale": "У Скруджа не было жены: Белль расторгла помолвку; вариант ключа выражает этот факт неточно, но ближе остальных.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "premise-ambiguity"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "skill:direct-recall",
+          "topic:characters"
+        ],
+        "context_tag_ids": [
+          "domain:literature",
+          "medium:book",
+          "topic:characters"
+        ],
+        "rationale": "Нужно помнить историю помолвки Скруджа и Белль. Ключ «Его жена умерла» прямо противоречит объяснению о холостяке и не является близким по смыслу ответом; оценка 4 относится к требуемому литературному знанию, а достоверность ключа помечена отдельно.",
+        "confidence": "low",
+        "editorial_flags": [
+          "premise-ambiguity",
+          "answer-key-conflicts-explanation"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Нужно различить запись 1980 года и предложенные годы релиза; объяснение само указывает на спор дат.",
+        "confidence": "low",
+        "editorial_flags": [
+          "year-dependent-claim-needs-source"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Нужно различить запись 1980 года и предложенные годы релиза; объяснение само указывает на спор дат.",
+        "confidence": "low",
+        "editorial_flags": [
+          "year-dependent-claim-needs-source",
+          "answer-key-conflicts-explanation"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_38_new_year_arts_literature_39",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_38_new_year_arts_literature_39",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Название New Year's Day прямо дано среди вариантов, однако ключ отмечает Delicate.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation",
+          "answer-cue-in-stem"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_38_new_year_arts_literature_39",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Название New Year's Day прямо дано среди вариантов, однако ключ отмечает Delicate.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation",
+          "answer-cue-in-stem",
+          "near_duplicate: Taylor Swift/New Year's Day и уборка после вечеринки, как в arts_literature_51"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_50_new_year_arts_literature_51",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_50_new_year_arts_literature_51",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "rationale": "Автор «Щелкунчика» — базовый факт о Чайковском, но ключ ошибочно выбирает Прокофьева.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_50_new_year_arts_literature_51",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:ballet",
+          "topic:composers"
+        ],
+        "rationale": "Автор «Щелкунчика» — базовый факт о Чайковском, но ключ ошибочно выбирает Прокофьева.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation",
+          "near_duplicate: автор музыки «Щелкунчика», как в arts_literature_0"
+        ]
+      }
+    },
+    {
+      "question_id": "q_new_year_arts_literature_51_new_year_arts_literature_52",
+      "fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_51_new_year_arts_literature_52",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Строка про уборку бутылок прямо относится к New Year's Day, но ключ указывает Style.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_arts_literature",
+        "question_id": "q_new_year_arts_literature_51_new_year_arts_literature_52",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:direct-recall",
+          "topic:composition"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:composition"
+        ],
+        "rationale": "Строка про уборку бутылок прямо относится к New Year's Day, но ключ указывает Style.",
+        "confidence": "low",
+        "editorial_flags": [
+          "answer-key-conflicts-explanation",
+          "near_duplicate: Taylor Swift/New Year's Day и уборка после вечеринки, как в arts_literature_38"
+        ]
+      }
+    },
+    {
+      "question_id": "q_cinema_intl_19",
+      "fields": [
+        "confidence",
+        "editorial_flags",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "new_year_cinema_intl",
+        "question_id": "q_cinema_intl_19",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:screen",
+          "medium:film",
+          "skill:direct-recall",
+          "topic:characters"
+        ],
+        "context_tag_ids": [
+          "domain:screen",
+          "medium:film",
+          "topic:characters"
+        ],
+        "rationale": "Синди Лу Кто — ребёнок, сочувствующий Гринчу; варианты построены как похожие имена жителей Ктограда.",
+        "confidence": "high",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "new_year_cinema_intl",
+        "question_id": "q_cinema_intl_19",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:screen",
+          "medium:film",
+          "skill:direct-recall",
+          "topic:characters"
+        ],
+        "context_tag_ids": [
+          "domain:screen",
+          "medium:film",
+          "topic:characters"
+        ],
+        "rationale": "Нужно знать имя ребёнка, который поддерживает Гринча, среди похожих имён жителей Ктограда. Слово «подружка» допускает романтический смысл и ответ Марта Мэй, поэтому оценка 4 сопровождается пометкой неоднозначности.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "wording-ambiguity"
+        ]
+      }
+    }
+  ],
+  "source_changes": false
+}

@@ -45,8 +45,8 @@ independent Codex contexts, not an independent-provider certification.
   correct discovery invocation above was rerun successfully.
 - Contract checker:3positive cases,7scoring cases,37named negatives rejected,
   content hash8bb47ad26c94bade21146b318dea66544412fdebb67dde31612f1d3c995685e5.
-- Root partial combined metadata check2590/4078 PASS after accepted Philias165,
-  Preparation75 and fresh Pets75 copies; reviewers also checked candidates.
+- Root partial combined metadata check2665/4078 PASS after accepted Philias165,
+  Preparation75, fresh Pets75 and NewYear75 copies; reviewers also checked candidates.
   All source semantic hashes remain frozen; partial success is not full coverage.
 
 Pinned CI190e863 now passed all3 jobs, including real PostgreSQL/health, Web and
@@ -55,13 +55,14 @@ No Android signing/device result or metadata production rollout is implied.
 
 ## Editorial state
 
-Taxonomy423 semantic SHA09e8e90542c121bda2e4978daaf74639ed32f3e828838d3a3f2d4e8896a4276e.
-The20 additions have an independent vocabulary review, with old403 definitions
-unchanged. Game catalog/manifest edits only rebind this taxonomy reference and
+Taxonomy425 semantic SHA07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151.
+The earlier20 additions and latest2 sports/figure-skating additions have independent
+vocabulary reviews; all previous definitions remain unchanged. Game catalog/manifest edits only rebind this taxonomy reference and
 refresh the catalog hash; game facts, coordinates and licensed pictures unchanged.
 
-Accepted copies2590/4078 are recorded by ACCEPTED_REFERENCE_REBIND and
-ACCEPTED_WAVE_423_2/3/4/5/6. These include all299 freshly reread food records, HomeAlone185,
+Accepted copies2665/4078 are recorded by ACCEPTED_REFERENCE_REBIND,
+ACCEPTED_WAVE_423_2/3/4/5/6, ACCEPTED_REFERENCE_REBIND_425 and ACCEPTED_WAVE_425_1.
+These include all299 freshly reread food records, HomeAlone185,
 celebrities33 and animal phobias89 after review corrections. Root original
 country/capital/Study/word/firstpet annotation provenance remains explicit in
 earlier reports; this total is not a claim every fact was independently sourced.
@@ -76,8 +77,15 @@ Fresh Pets75 passed independent full75 raw+annotation review after18 duplicate
 flags and2 cue ratings4to2. Root separately reread all20 delta source records.
 The preceding Pets150 classifier/copy pass is REJECTED outsideaccepted, with
 PETS_423_A150_REWORK explaining why uniqueness/shape checks do not prove quality.
-NewYear candidate is only an unstarted envelope; no decisions are accepted.
-Still unclassified1488: pets470, NewYear753, Preparation265. Full application, deterministic
+NewYear75 passed independent full75 raw/metadata review and final10-row correction
+recheck. Root read all10 affected raw records; key conflicts, duplicate links,
+Scrooge reasoning, figure-skating tags/superlative and Grinch ambiguity corrected.
+All numeric ratings and source fields remain unchanged;40 low/43 flagged rows
+are not factual certification. Source key/explanation follow-up: quiz_master-jsu.
+After425 rebind, root Python11 and game catalog5 tests passed; all2590 prior
+record arrays match GitHEAD, and game facts/media/geometry remain unchanged.
+Still unclassified1413: cats112, dogs358, NewYear678, Preparation265, covered by
+nine exact disjoint unstarted frozen425 packets. Full application, deterministic
 private index/catalog generation, provider privacy checks and synchronized release
 remain required. No fallback scores or keyword-based tagging will fill these gaps.
 

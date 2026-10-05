@@ -1,0 +1,18 @@
+{
+  "base_taxonomy_sha256": "09e8e90542c121bda2e4978daaf74639ed32f3e828838d3a3f2d4e8896a4276e",
+  "reason": "The existing dictionary cannot represent the frozen figure-skating question. Preserve all423 existing definitions and add only a sports domain and figure-skating topic.",
+  "tags": [
+    {
+      "id": "domain:sports", "facet": "domain",
+      "label_ru": "Спорт", "label_en": "Sports",
+      "aliases_ru": ["спортивные дисциплины"], "aliases_en": ["sport"],
+      "parent_ids": [], "player_safe": true
+    },
+    {
+      "id": "topic:figure-skating", "facet": "topic",
+      "label_ru": "Фигурное катание", "label_en": "Figure skating",
+      "aliases_ru": [], "aliases_en": [],
+      "parent_ids": ["domain:sports"], "player_safe": true
+    }
+  ]
+}

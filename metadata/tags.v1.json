@@ -5305,6 +5305,32 @@
       "aliases_en": [],
       "parent_ids": [],
       "player_safe": true
+    },
+    {
+      "id": "domain:sports",
+      "facet": "domain",
+      "label_ru": "Спорт",
+      "label_en": "Sports",
+      "aliases_ru": [
+        "спортивные дисциплины"
+      ],
+      "aliases_en": [
+        "sport"
+      ],
+      "parent_ids": [],
+      "player_safe": true
+    },
+    {
+      "id": "topic:figure-skating",
+      "facet": "topic",
+      "label_ru": "Фигурное катание",
+      "label_en": "Figure skating",
+      "aliases_ru": [],
+      "aliases_en": [],
+      "parent_ids": [
+        "domain:sports"
+      ],
+      "player_safe": true
     }
   ],
   "collections": [
@@ -5360,5 +5386,5 @@
     }
   ],
   "visibility_policy": "player_safe=true permits only broad context tags; all answer-derived, country, place, cuisine, ingredient and person tags remain editorial-only. Context tag IDs must be an approved subset of editorial IDs.",
-  "taxonomy_sha256": "09e8e90542c121bda2e4978daaf74639ed32f3e828838d3a3f2d4e8896a4276e"
+  "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
 }
