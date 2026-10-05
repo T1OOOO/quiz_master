@@ -74,3 +74,24 @@ The next validation revision changes only those inventory assertions and the
 import spacing. It does not change backend behavior or include the pending
 difficulty/tag integration. Full CI and production verification remain pending.
 
+Second CI run `37307803096` passed Dart formatting, Flutter analysis, Android
+compilation, all Go unit/source integration tests and Go vet. Flutter finished
+82 tests with one failure in the second real-route opening (fake-async asset
+I/O). The isolated Compose API then exited because its old image/config omitted
+required content paths and the runtime content/schema files.
+
+The navigation test now creates both asset-loading routes in `runAsync`, pumps
+the second Go Router transition twice, awaits the actual catalogue Future, and
+asserts the final UI/no exceptions. The old test reproduced its timeout locally;
+the first single-pump repair reproduced a missing-builder exception; the second
+repair passed the actual targeted test. A full isolated Flutter test rerun is
+pending. The Compose repair explicitly supplies the existing bundle/manifest,
+copies their runtime data and validation schemas, and uses `/app` as working
+directory. Production API/data remain the previously verified release bytes.
+
+Local isolated game client: `dart format --output=none --set-exit-if-changed .`
+passed (20 files, zero changes); `flutter test` passed all 83 tests, including
+the actual route/drawer roundtrip, after the second-pump correction. Executed
+under granted 2 GiB lease `lease-bdf4f6f7dd764cdf8f8e7fcdd542d9d1`, renewed by
+owned guard PID25700, then released after every test process returned. Remote
+Compose integration and release Web compilation still require the next CI run.

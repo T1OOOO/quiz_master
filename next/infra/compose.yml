@@ -26,6 +26,8 @@ services:
       QM_LISTEN_ADDR: 0.0.0.0:8080
       QM_DATABASE_URL: postgres://quiz_master:quiz_master_development_only@postgres:5432/quiz_master?sslmode=disable
       QM_DATABASE_STARTUP_TIMEOUT: 20s
+      QM_CONTENT_BUNDLE_PATH: /app/next/content/home-alone-1-part-1/bundle.json
+      QM_CONTENT_MANIFEST_PATH: /app/next/content/home-alone-1-part-1/manifest.json
     depends_on:
       postgres:
         condition: service_healthy

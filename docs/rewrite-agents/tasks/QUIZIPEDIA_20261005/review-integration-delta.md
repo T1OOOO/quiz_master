@@ -69,3 +69,27 @@ previously formatted isolated game source and no textual difference. Cached
 whitespace validation passes. This evaluates the reported CI failure repair;
 the corrected test and CI workflow have not been rerun, so no runtime-pass
 claim is made.
+
+## Compose, real-I/O route, and release-helper delta
+
+**ACCEPT for the reviewed changed scope.** The Compose environment supplies
+absolute bundle and manifest paths required by the nonlocal API listener. The
+runtime Docker image copies precisely that legacy controlled bundle and the
+validation schemas, then uses `/app`, so the configured relative schema path
+resolves. The bundled Home Alone document has no taxonomy annotations, so its
+legacy controlled-bundle startup does not require the absent taxonomy file.
+
+The second drawer-open repair creates the route inside `runAsync`, pumps the
+Go Router transition twice, and awaits the actual catalogue future. Root
+evidence in `INTEGRATION.md` records a narrow route pass and an isolated
+client `flutter test` pass of all 83 tests under released lease
+`lease-bdf4f6f7dd764cdf8f8e7fcdd542d9d1`; formatter also passed with zero
+changes. The review did not run those commands.
+
+The text-only release helper verifies CI Web checksums before packaging,
+copies the immutable baseline API/content, validates the preserved catalog and
+all bundled Quizipedia asset bytes, and creates a new build guard for the old
+baseline image. It does not make a production change. The current Compose,
+Dockerfile, and route-test source pass whitespace validation on static review.
+Remote Compose integration and CI Web compilation remain pending and are not
+accepted by this finding.

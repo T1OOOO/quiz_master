@@ -53,7 +53,17 @@ void main() {
       expect(find.byKey(const Key('catalog-search')), findsOneWidget);
       await tester.tap(find.byIcon(Icons.menu));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Quizipedia'));
+      await tester.runAsync(() async {
+        await tester.tap(find.text('Quizipedia'));
+        await tester.pump();
+        await tester.pump();
+        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
+          find.byWidgetPredicate(
+            (widget) => widget is FutureBuilder<QuizipediaCatalog>,
+          ),
+        );
+        await builder.future!.timeout(const Duration(seconds: 5));
+      });
       await tester.pumpAndSettle();
       expect(find.text('World map and flags'), findsOneWidget);
       expect(tester.takeException(), isNull);
