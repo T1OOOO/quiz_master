@@ -4,5 +4,4415 @@
     "taxonomy_id": "qm-tags-v1",
     "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
   },
-  "records": []
+  "records": [
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_92",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Кличка Свит Пи уже дана в вопросе и повторена в вариантах; для выбора не нужно знать трюк со стаканом.",
+      "confidence": "high",
+      "editorial_flags": [
+        "answer_in_stem: Свит Пи",
+        "record_and_breed_claim_unverified: бордер-колли/метис в q_dog_records_318",
+        "near_duplicate: q_dog_records_92,q_dog_records_318 —Свит Пи/10 ступеней",
+        "near_duplicate: q_dog_records_318,q_dog_records_541 — Sweet Pea/бокал/10 ступеней; имя здесь уже в условии"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_318",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Десять ступеней — частный рекорд баланса;5,7 и15 выглядят столь же возможными, имя собаки не позволяет вычислить количество.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "record_measurement_unverified:10 ступеней",
+        "near_duplicate: q_dog_records_92,q_dog_records_318 —Свит Пи/10 ступеней",
+        "near_duplicate: q_dog_records_541 — Sweet Pea/спуск с бокалом по десяти ступеням"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_science_372",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:psychology",
+        "skill:terminology",
+        "topic:dog",
+        "topic:medical-terms",
+        "topic:phobia"
+      ],
+      "context_tag_ids": [
+        "domain:psychology",
+        "topic:dog",
+        "topic:medical-terms",
+        "topic:phobia"
+      ],
+      "rationale": "Кинофобия — менее знакомое название страха; зоофобия близка, но шире, арахно- и клаустрофобия известны по другим объектам, нужно различить термин.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "near_duplicate: q_dog_myth_259 — кинофобия/страх собак"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_577",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "skill:direct-recall",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Šumma Ālu — узкое название месопотамских записей; Хаммурапи и Ашшурбанапал известнее и правдоподобны для табличек, бытовое содержание название не раскрывает.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_text_date_unverified:2700 лет и содержание"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_mythology_570",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:mythology",
+        "era:ancient",
+        "skill:association",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "era:ancient",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Гула менее известна Иштар; Нинхурсаг и Эрешкигаль тоже реальные богини, поэтому врачевание требует специального знания функций пантеона.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "myth_and_healing_claim_unverified: связь с Гулой и слюной"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_science_389",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:science",
+        "era:prehistoric",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "era:prehistoric",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Миацис надо отличить от Cynodictis, Hesperocyon и Tomarctus, также похожих ископаемых названий;60 миллионов лет лишь сужают эпоху, не выбирают предка.",
+      "confidence": "low",
+      "editorial_flags": [
+        "evolution_taxonomy_concern: Miacis как прямой предок всех псовых и Азия60млн",
+        "near_duplicate: q_dog_evolution_502 — Miacis/предок псовых; альтернативы отличаются"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_breeds_359",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:history",
+        "skill:quantitative",
+        "topic:animal-breeds",
+        "topic:animal-domestication",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "3500 лет — конкретная археологическая оценка;2000 и5000 тоже правдоподобны для древней мексиканской породы, оговорка более немного выделяет ключ.",
+      "confidence": "low",
+      "editorial_flags": [
+        "archaeological_age_unverified:3500 и современная порода",
+        "option_wording_hint: более только ключ"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_breeds_14",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-breeds",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Кокер-спаниель как лидер Crufts — выставочная статистика; пудели и ретриверы столь же обычны на шоу, известность пород не определяет число побед.",
+      "confidence": "low",
+      "editorial_flags": [
+        "dated_show_superlative: лидер за всю историю и семь побед",
+        "related_fact: A180 q_dog_culture_255 —другая выставка Westminster, не duplicate",
+        "near_duplicate: q_dog_crufts_549 — английский кокер и наибольшее число Best in Show на Crufts"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_breeds_42",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:eg",
+        "domain:history",
+        "era:ancient",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Салюки известна древностью, но басенджи и фараонова собака особенно близкие египетские конкуренты; дата329 не позволяет различить их без породной истории.",
+      "confidence": "low",
+      "editorial_flags": [
+        "oldest_date_concern:329до н.э. в стеме и2100 в объяснении",
+        "near_duplicate: A180 q_dog_history_517 —самая древняя салюки"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_space_09",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:ru",
+        "domain:history",
+        "skill:temporal-order",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "rationale": "1957 связывается со «Спутником-2» по школьной истории космоса;1960 напоминает Белку/Стрелку,1961 Гагарина, точный год Лайки нужно припомнить.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_first_claim_unverified: первое живое существо на орбите"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_347",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "skill:quantitative",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "15000 долларов — редкая сумма политического рассказа;5000,50000 и100000 также возможны для эсминца, стем не даёт расчёта затрат.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_legend_concern: история Фалы/эсминца могла быть обвинением, не установленным событием",
+        "superlative_unverified: самое дорогое спасение",
+        "related_fact: A180 q_dog_history_253 —Фала/Рузвельт, другой факт"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_513",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:ch",
+        "domain:geography",
+        "skill:spatial",
+        "topic:dog",
+        "topic:service-animals",
+        "topic:world-geography"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:dog",
+        "topic:service-animals",
+        "topic:world-geography"
+      ],
+      "rationale": "Порода сенбернар почти дословно совпадает с перевалом Большой Сен-Бернар; остальные названия не дают связи, поэтому конкретную историю монастыря знать не нужно.",
+      "confidence": "high",
+      "editorial_flags": [
+        "lexical_hint: сенбернар/Сен-Бернар",
+        "related_fact: A180 q_dog_history_365 —век начала спасения, иной факт",
+        "near_duplicate: q_dog_breeds_213 — сенбернар/монастырь-перевал Святого Бернара, обратное направление"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_339",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "skill:recognition",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "rationale": "Сириус единственный прямо назван Собачьей звездой в вариантах вопроса о собачьих днях; эта подпись раскрывает ответ без знания римского календаря.",
+      "confidence": "high",
+      "editorial_flags": [
+        "answer_description_hint: Собачья звезда",
+        "near_duplicate: q_dog_history_339,q_dog_myth_40,q_dog_culture_572 —Сириус/собачьи дни"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_mythology_571",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:eg",
+        "domain:history",
+        "era:ancient",
+        "skill:association",
+        "topic:astronomy"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "topic:astronomy"
+      ],
+      "rationale": "Сириус как ориентир разлива Нила — школьная историческая астрономия; Полярная знакома навигацией, Вега и Бетельгейзе реальны, но подпись Собачья звезда не объясняет разлив.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_calendar_claim_unverified: восход и начало года",
+        "related_fact: q_dog_history_339,q_dog_myth_40 —римская жара, другой факт"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_580",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:history",
+        "skill:spatial",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Колима — специальный археологический регион; Юкатан и Чьяпас более известны древними культурами, Сонора тоже мексиканский штат, гробницы не дают вывода.",
+      "confidence": "low",
+      "editorial_flags": [
+        "archaeological_superlative_unverified: больше всего фигурок"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_86",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:food-history"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:food-history"
+      ],
+      "rationale": "Ken-L-Ration менее знаком российского рынка, чем Pedigree, Chappi и Purina;1922 мог относится к нескольким старым маркам, нужно помнить конкретную историю консервов.",
+      "confidence": "low",
+      "editorial_flags": [
+        "commercial_first_claim_unverified: первый массовый и успешный1922"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_87",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "rationale": "«Зов предков» — известный роман Джека Лондона из школьного чтения; Твен и Стивенсон правдоподобны для приключений, но название обычно устойчиво связано с автором.",
+      "confidence": "high",
+      "editorial_flags": [
+        "plot_summary_unverified: превращение в вожака волчьей стаи",
+        "near_duplicate: q_dog_history_87,q_dog_history_279 —автор Зова предков"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_279",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "rationale": "Бак и «Зов предков» поддерживают знакомую ассоциацию с Джеком Лондоном; Хемингуэй и Диккенс известны, но не требуют отдельного эпизода для исключения.",
+      "confidence": "high",
+      "editorial_flags": [
+        "plot_summary_unverified: вожак стаи",
+        "near_duplicate: q_dog_history_87,q_dog_history_279 —автор Зова предков"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_myth_40",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:association",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "rationale": "Сириус как яркая звезда Большого Пса — знакомая астрономическая ассоциация; Полярная и Вега относятся к другим созвездиям, упоминание Большого Пса сильно помогает.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_term_claim_unverified: римские собачьи дни",
+        "near_duplicate: q_dog_history_339,q_dog_myth_40,q_dog_culture_572 —Сириус/собачьи дни"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_210",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:fr",
+        "domain:history",
+        "era:prehistoric",
+        "skill:association",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "rationale": "Обнаружение Ласко собакой встречается в популярных историях искусства; бункер и шахта подходят Франции1940, но точное открытие надо связать с известной пещерой.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_discovery_variant: роль Робота и кролика требуют источника",
+        "near_duplicate: q_dog_history_81,q_dog_history_10,q_dog_history_273 — Робот/открытие Ласко"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_show_306",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:quantitative",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "28000 участников — конкретная статистика Crufts;15000 и40000 столь же возможны для огромной выставки, ежегодность не даёт определённого масштаба.",
+      "confidence": "low",
+      "editorial_flags": [
+        "time_sensitive_show_count: год и состав дисциплин отсутствуют"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_myth_46",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:mythology",
+        "skill:association",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Семаргл как крылатый пёс менее известен Перуна и Велеса; функция посевов напоминает Велеса, поэтому нужно знать спорный образ отдельного славянского божества.",
+      "confidence": "low",
+      "editorial_flags": [
+        "myth_reconstruction_concern: крылатый пёс и хранитель семян"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_264",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:recognition",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Пиклз прямо назван в вопросе и вариантах; кубок1966 не нужен, чтобы повторить уже данную кличку.",
+      "confidence": "high",
+      "editorial_flags": [
+        "answer_in_stem: Пиклз",
+        "historical_discovery_unverified: трофей Жюля Риме"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_mythology_555",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:language",
+        "skill:recognition",
+        "topic:dog",
+        "topic:folklore",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "topic:dog",
+        "topic:folklore",
+        "topic:word-origin"
+      ],
+      "rationale": "Scucca единственный необычный древний вариант и сопровождается значением демон, подходящим призраку; Shadow и Shock звучат как современные английские слова, что облегчает редкую этимологию.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "option_definition_hint: демон только ключ",
+        "etymology_unverified: Scucca/Black Shuck"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_mythology_559",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:spatial",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Йорк надо знать как конкретный фольклорный город Баргеста; Лондон и Манчестер тоже английские, древность не исключает их, Эдинбург легче отделить по стране.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "folklore_location_unverified: охота на людей вЙорке"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_history_515",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Кареты и лошади — известная историческая связь далматинов; нюх дыма и отсутствие страха огня правдоподобны как мифы, шланги слабее, нужен один рабочий сюжет.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_service_claim_unverified: расчистка пути",
+        "near_duplicate: A180 q_dog_breeds_82 —далматин/пожарные кареты, inverse",
+        "near_duplicate: q_dog_breeds_218 — далматин/пожарные конные повозки"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_mythology_578",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:eg",
+        "domain:mythology",
+        "skill:association",
+        "topic:cat",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:cat",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Бастет широко известна как египетская кошачья богиня; Исида и Хатор тоже связаны с защитой и семьёй, но именно кошки дают знакомую предметную подсказку.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "myth_role_generalization: защита и семья, траур в объяснении"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_culture_572",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:language",
+        "skill:association",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "topic:astronomy",
+        "topic:word-origin"
+      ],
+      "rationale": "Происхождение от Сириуса узнаётся по Собачьей звезде; лай и линька кажутся бытовыми объяснениями, каникулы историческим, поэтому нужно знать короткую этимологическую связь.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_term_claim_unverified: совпадение восхода и пика жары",
+        "near_duplicate: q_dog_history_339,q_dog_myth_40,q_dog_culture_572 —Сириус/собачьи дни"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_culture_249",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:geography",
+        "skill:spatial",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:world-geography"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:world-geography"
+      ],
+      "rationale": "Название Лидс сильно указывает на Великобританию среди шести стран; существование музея знать не обязательно, достаточно знакомого английского топонима.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "geographic_hint: Замок Лидс",
+        "museum_exclusivity_claim_unverified: исключительно ошейники"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_ancient_world",
+      "question_id": "q_dog_records_529",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:au",
+        "domain:nature",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "29 лет5месяцев единственный ответ с месяцами, что выделяет документированный рекорд против25,27 и31 года; точный возраст Блуи всё же отдельный факт.",
+      "confidence": "low",
+      "editorial_flags": [
+        "dated_record_superlative: самый долгоживущий требует актуальной даты",
+        "option_precision_hint: месяцы только ключ",
+        "near_duplicate: A180 q_dog_records_26 —возраст Блуи, другие альтернативы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_biology_233",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Белые новорождённые далматины — популярный необычный факт; сразу пятнистые сильнее интуитивно, поэтому нужно знать возрастное появление окраса.",
+      "confidence": "low",
+      "editorial_flags": [
+        "breed_absolute_concern: полностью белые без оговорки врождённых пятен"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_breeds_213",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:ch",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Монахи Альп и спасение путников привычно связываются с сенбернаром; бернский зенненхунд тоже швейцарский, но менее известен этой службой.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_origin_unverified: монастырь и название",
+        "near_duplicate: q_dog_history_513 —Сен-Бернар/сенбернар, inverse",
+        "near_duplicate: q_dog_history_513 — сенбернар/монастырь-перевал Святого Бернара"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_breeds_369",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:de",
+        "domain:geography",
+        "skill:recognition",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Скобки прямо называют собаку немецким шпицем, что ведёт к Германии; название американская уже объявлено обманчивым, поэтому история происхождения не нужна.",
+      "confidence": "low",
+      "editorial_flags": [
+        "answer_description_hint: немецкий шпиц",
+        "breed_origin_scope: немецкие предки и американское оформление породы смешаны"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_breeds_55",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:de",
+        "country:gb",
+        "domain:history",
+        "skill:recognition",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Только немецкая овчарка среди вариантов является овчаркой, а Германия дана как избегаемая ассоциация; оба слова стема почти складываются в ключ.",
+      "confidence": "high",
+      "editorial_flags": [
+        "lexical_hint: овчарка/Германия",
+        "historical_renaming_unverified: Alsatian и сроки"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_breeds_594",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:hu",
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Белая шнуровая шерсть естественно помогает спрятаться среди овец; тяжесть и аэродинамика явно слабее защитного объяснения, шоу бытовое отвлечение.",
+      "confidence": "low",
+      "editorial_flags": [
+        "functional_claim_unverified: кольчуга от волков",
+        "near_duplicate: A180 q_dog_breeds_362 —функция шерсти комондора"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_331",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "skill:association",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Рин Тин Тин обычно известен как немецкая овчарка; колли отвлекает Ласси, доберман и ротвейлер подходят военному образу, нужна одна культурная породная связь.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_popularity_cause_unverified: рост популярности1920-х",
+        "near_duplicate: q_dog_history_331,q_dog_history_520 —порода Рин Тин Тина",
+        "related_fact: A180 q_dog_history_63 —спасение Warner, иной запрос"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_519",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "skill:direct-recall",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Четыре похожих малых терьера требуют точной породы Тото, а не простого узнавания фильма; керн легко спутать со скотч- и йоркширским.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "near_duplicate: A180 q_dog_history_330,q_dog_media_59 —порода Тото; q_dog_media_290 обратная связь Терри"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_69",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:ru",
+        "domain:history",
+        "skill:association",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "rationale": "Гибель Лайки — широко известная трагическая история, но версия недельного полёта даёт содержательное отвлечение; орбитальная станция и инопланетяне явно слабее.",
+      "confidence": "low",
+      "editorial_flags": [
+        "first_flight_scope: первая собака в космосе против первой орбитальной",
+        "historical_death_timing_unverified: часы и перегрев",
+        "related_fact: q_dog_space_09 —год; q_dog_history_350 —запас кислорода"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_350",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:ru",
+        "domain:history",
+        "skill:quantitative",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:astronomy",
+        "topic:dog"
+      ],
+      "rationale": "Девять дней кислородного запаса — техническая деталь «Спутника-2»;3,5 и30 дней правдоподобны для автономного аппарата, смерть через часы не даёт проектного срока.",
+      "confidence": "low",
+      "editorial_flags": [
+        "unsupported_key_in_explanation: объяснение сообщает гибель, не запас9 дней"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_81",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:fr",
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "rationale": "Робот — менее известное имя, чем сама пещера Ласко; Балто и Лайка легче исключить по другим историям, но Ниппер и Скип остаются возможными кличками.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_discovery_variant: кролик и роль собаки",
+        "near_duplicate: q_dog_history_210,q_dog_history_81 —Робот/Ласко, inverse",
+        "near_duplicate: q_dog_history_10,q_dog_history_273 — Робот/Ласко"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_93",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "skill:association",
+        "topic:actors",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "topic:dog"
+      ],
+      "rationale": "Стронгхарт менее массовый киноактёр, но Плуто,Снупи иБолт вымышленные и легче исключаются; Бенджи иТото остаются реальными экранными конкурентами.",
+      "confidence": "low",
+      "editorial_flags": [
+        "first_star_scope_unverified: первый актёр и звезда Аллеи"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_media_251",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:society",
+        "skill:association",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Кабосу знакома по Doge, но Чимс и Болци связаны с другим похожим мемом; Хатико известнее по истории верности, нужна конкретная интернет-собака.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "media_date_unverified: вирусность2013 и логотип"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_crufts_581",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-breeds",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Порода победителя2007 Araki Fabulous Willie — редкая выставочная биография; пудель,лабрадор иколли обычные участники, длинная кличка породу не сообщает.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "show_winner_claim_unverified:2007 и титулованность"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_21",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "skill:association",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Того надо отличить от более знаменитого Балто; Ном1925 узнаваем по фильму и истории сыворотки, остальные клички слабее, но конкретная роль Того требует памяти.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_superlative_unverified: самый опасный и большой участок"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_media_18",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:comics",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:comics",
+        "topic:animal-breeds",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "Порода стилизованного Снупи не очевидна по рисунку; бигль и бассет оба ушастые гончие, поэтому нужен знакомый факт о Peanuts.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_24",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-sports",
+        "topic:calendar",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:calendar",
+        "topic:dog"
+      ],
+      "rationale": "Март — менее известный календарный факт Идитарода; январь,февраль иапрель тоже подходят снегу Аляски, название гонки месяц не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "schedule_generalization: ежегодный старт и исключения"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_351",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:recognition",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Вопрос спрашивает награды во множественном числе, а только ключ содержит две награды; все пять альтернатив одиночные, что позволяет выбрать без истории Чипса.",
+      "confidence": "low",
+      "editorial_flags": [
+        "grammatical_hint: множественное число и единственная пара",
+        "historical_award_claim_unverified: вручение и отзыв"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_520",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "skill:association",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Немецкая овчарка как Рин Тин Тин — известная старая киноассоциация; колли подходит Ласси, доберман и бультерьер тоже экранно правдоподобны.",
+      "confidence": "low",
+      "editorial_flags": [
+        "first_star_claim_concern: первая кинозвезда",
+        "near_duplicate: q_dog_history_331,q_dog_history_520 —порода Рин Тин Тина"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_05",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Поимка шпиона Стабби — конкретный военный подвиг; донесения,раны имины тоже типичные собачьи задачи, поэтому звание сержанта причину не задаёт.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_official_rank_claim: официальное повышение и шпион",
+        "near_duplicate: q_dog_history_05,q_dog_history_205 —Стабби/шпион"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_25",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:de",
+        "domain:history",
+        "skill:spatial",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Германия1916 — точная история школ поводырей; Франция иБритания также имели раненых ветеранов, США иШвейцария подходят развитию служб, дата не выбирает страну.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_school_claim_unverified: Германия1916",
+        "near_duplicate: q_dog_history_25,q_dog_history_528 —первая школа поводырей"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_45",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:classification",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Метис с тремя названными породами заметно подробнее всех чистопородных ответов; овчарка выглядит особенно логичной военной собакой, поэтому подсказка помогает, но не доказывает ключ.",
+      "confidence": "low",
+      "editorial_flags": [
+        "option_detail_hint: единственный подробный метис",
+        "historical_superlative_unverified: самый титулованный и10 солдат"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_205",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Газ ипоиск раненых тоже реальные направления помощи Стабби, но ключ требует конкретного эпизода шпиона; общий армейский контекст не различает эти подвиги.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_official_rank_claim: повышение за шпиона",
+        "near_duplicate: q_dog_history_05,q_dog_history_205 —Стабби/шпион"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_302",
+      "difficulty_level": 9,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Точный102-й полк — редкая архивная деталь даже для знакомых с биографией Стабби;101-й почти неотличим без специальной памяти, а остальные номера выглядят реальными соединениями.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "official_service_scope_unverified: полноправный участник полка"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_history_528",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:de",
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Пара1916/Германия — специальный факт;1891/Англия выглядит ранним правдоподобным началом,1930/Франция послевоенным, поэтому ранний год сам ключ не задаёт.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_school_claim_unverified: Ольденбург1916",
+        "near_duplicate: q_dog_history_25,q_dog_history_528 —первая школа поводырей"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_famous_and_service",
+      "question_id": "q_dog_culture_266",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "skill:direct-recall",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "Понго иПердита узнаются по популярному мультфильму; Анита/Роджер отвлекают хозяевами, Лаки/Патч щенками, а Микки/Минни явно другие персонажи.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "localization_name_variant: Пэдди/Перита требуют версии дубляжа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_myth_380",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:mythology",
+        "skill:association",
+        "topic:dog",
+        "topic:mythology-greek"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:mythology-greek"
+      ],
+      "rationale": "Неизбежное догоняние — редкий миф о Лайлапсе; полёт,невидимость и бессмертие столь же типичны для дара Зевса, имя силы не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "myth_variant_unverified: Европа и превращение обоих в созвездия",
+        "near_duplicate: q_dog_myth_380,q_dog_mythology_564 —Лайлапс/догоняет добычу"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_myth_383",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Красные уши белых Кун Аннун — специфическая валлийская деталь; чёрные,золотые ипрозрачные одинаково возможны для призрачных гончих без знания традиции.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "folklore_variant_unverified: цвет ушей",
+        "near_duplicate: q_dog_myth_383,q_dog_mythology_569 —белые Кун Аннун/красные уши",
+        "near_duplicate: q_dog_myth_74 — Кун Аннун/белое тело/красные уши, обратное имя"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_history_352",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:recognition",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Почтовый пёс естественно соответствует Национальному почтовому музею, единственному профильному учреждению; авиация,шпионаж иискусство не требуют точной биографии для исключения.",
+      "confidence": "low",
+      "editorial_flags": [
+        "institutional_category_hint: почтовый пёс/почтовый музей",
+        "time_sensitive_display_claim: сегодня экспозиция"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_564",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:mythology",
+        "skill:association",
+        "topic:dog",
+        "topic:mythology-greek"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:mythology-greek"
+      ],
+      "rationale": "Четыре магические силы остаются правдоподобными в легенде Зевса; способность всегда догонять нужна как конкретный сюжетный парадокс, не бытовая функция собаки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "myth_variant_unverified: происхождение и созвездие",
+        "near_duplicate: q_dog_myth_380,q_dog_mythology_564 —Лайлапс/догоняет добычу"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_569",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Белое тело скрасными ушами нужно помнить по валлийскому фольклору; чёрные сзелёными глазами и золотые крылатые одинаково подходят сверхъестественным псам.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "folklore_variant_unverified: внешний вид Кун Аннун",
+        "near_duplicate: q_dog_myth_383,q_dog_mythology_569 —белые Кун Аннун/красные уши",
+        "near_duplicate: q_dog_myth_74 — Кун Аннун/белое тело/красные уши, обратное имя"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_myth_74",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:association",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Белые псы с красными ушами требуют валлийского фольклора; написание Cŵn Annwn помогает отличить валлийское имя от греческого Цербера и японского Инугами, но остаются британские альтернативы.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "folklore_variant_unverified: облик и предвестие смерти",
+        "near_duplicate: q_dog_myth_383,q_dog_mythology_569 — обратное узнавание Кун Аннун по белому телу и красным ушам"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_breeds_34",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Особенность басенджи известна как отсутствие обычного лая; человеческая речь, ультразвук и исключительно жесты выглядят неправдоподобно даже без знания йодля.",
+      "confidence": "low",
+      "editorial_flags": [
+        "absolute_claim_unverified: не лает и строение гортани",
+        "near_duplicate: A180 q_dog_breeds_508,q_dog_breeds_324 — басенджи и необычная вокализация"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_history_341",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:ch",
+        "domain:history",
+        "skill:quantitative",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Нужно помнить приписываемое Барри число спасённых за двенадцать лет: 25, 40, 50 и 70 одинаково возможны, роль спасателя числа не подсказывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_legend_unverified: около 40 спасённых",
+        "related_fact: q_dog_history_32 спрашивает породу Барри, число 40 дано в его условии"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_myth_30",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Бангей — малоизвестная локализация церковной легенды 1577 года; Лондон и Йорк тоже подходят по старинным храмам и историям о чёрных псах.",
+      "confidence": "low",
+      "editorial_flags": [
+        "folklore_historical_claim_unverified: явление и следы на двери",
+        "related_fact: q_dog_mythology_556 спрашивает название церкви в уже названном Бангее"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_history_32",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:ch",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Швейцарский спасатель Барри связывается с привычным образом сенбернара в Альпах; бернский зенненхунд географически подходит, но спасательная роль заметно выделяет сенбернара.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_legend_unverified: спасённые 40 человек",
+        "related_fact: q_dog_history_341 спрашивает число спасённых Барри, здесь оно дано"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_history_335",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:direct-recall",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Почётный мэр Дюк и Корморант мало знакомы русскоязычной аудитории; среди шести штатов нет географической подсказки к Миннесоте.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_local_claim_unverified: три избрания почётным мэром"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_556",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Нужно знать конкретную церковь Святой Марии из легенды о Бангее; Святой Павел и Святая Троица столь же обычные названия английских храмов.",
+      "confidence": "low",
+      "editorial_flags": [
+        "folklore_historical_claim_unverified: 1577 год и погибшие прихожане",
+        "related_fact: q_dog_myth_30 спрашивает город, здесь Бангей уже назван"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_566",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:mythology",
+        "skill:recognition",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Паньху малоизвестен, но гибрид дракона и собаки — единственный собачий образ в объявленной теме; другие ответы предлагают общие должности бога или императора.",
+      "confidence": "low",
+      "editorial_flags": [
+        "folklore_variant_unverified: описание Паньху как гибрида дракона и собаки"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_myth_379",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:mythology",
+        "skill:direct-recall",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Родство Шолотля и Кетцалькоатля нужно знать отдельно: отец, сын и брат-близнец одинаково естественны для мифологической генеалогии, имя родства не раскрывает.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "myth_variant_unverified: брат-близнец",
+        "related_fact: q_dog_mythology_563 спрашивает имя проводника, а не родство"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_563",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:mythology",
+        "skill:association",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Собачья голова и проводник в Миктлан требуют узнавания Шолотля; Кетцалькоатль и Уицилопочтли знакомее и правдоподобны как ацтекские боги, но их роли другие.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "myth_variant_unverified: девять уровней и роль проводника",
+        "related_fact: q_dog_myth_379 спрашивает родство Шолотля с Кетцалькоатлем"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_mythology_591",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:eg",
+        "domain:mythology",
+        "skill:association",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Анубис известен как бог умерших; версия о псовых у кладбищ прямо соединяет его функцию с обликом и сильнее случайности или охоты в пустыне.",
+      "confidence": "low",
+      "editorial_flags": [
+        "causal_interpretation_unverified: происхождение образа Анубиса"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_culture_373",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:literature",
+        "medium:book",
+        "skill:recognition",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "topic:dog",
+        "topic:literary-works",
+        "topic:writers"
+      ],
+      "rationale": "Вопрос о собаке у Конан Дойла решается названием «Собака Баскервилей»: единственное название буквально повторяет искомый объект, чтения детектива не требуется.",
+      "confidence": "high",
+      "editorial_flags": [
+        "lexical_answer_hint: собака в единственном названии"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_new_myth_1",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:mythology",
+        "skill:association",
+        "topic:mythic-tradition",
+        "topic:mythology-norse"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:mythic-tradition",
+        "topic:mythology-norse"
+      ],
+      "rationale": "Фенрир узнаваем по популярной скандинавской мифологии; Гарм остаётся правдоподобным зверем, тогда как Тюр и Один обычно известны как боги, а не сын Локи-волк.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "myth_variant_unverified: родство и Рагнарёк"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_history_mythology",
+      "question_id": "q_dog_new_myth_2",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:mythology",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Связь ксолоитцкуинтли с Миктланом нужна как конкретный ацтекский обычай; мексиканское имя помогает, но чихуахуа и выдуманная ацтекская гончая тоже звучат местно.",
+      "confidence": "low",
+      "editorial_flags": [
+        "folklore_historical_claim_unverified: проводник души",
+        "near_duplicate: A180 q_dog_myth_47 — ксолоитцкуинтли проводит души в загробный мир"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_media_260",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:television",
+        "skill:direct-recall",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:television",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "Брайан знаком зрителям «Гриффинов», но белый интеллектуальный пёс не даёт буквальной подсказки имени; Стьюи и Питер — знакомые имена того же сериала.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "breed_identity_unverified: пояснение называет лабрадора"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_culture_245",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "era:twentieth-century",
+        "medium:film",
+        "skill:direct-recall",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "era:twentieth-century",
+        "medium:film",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "«Маска» широко известна, однако кличка Майло требует памяти о второстепенном герое; Макс, Бадди и Лаки столь же правдоподобные собачьи имена.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_evolution_501",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "era:prehistoric",
+        "skill:quantitative",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Известное раннее одомашнивание собак позволяет отвергнуть 2–3 тысячи лет, но отличить 15–40 тысяч от 5–10 тысяч без представления о доаграрной истории труднее.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_range_unverified: даты одомашнивания зависят от критерия",
+        "near_duplicate: q_dog_science_388 — интервал 15–40 тысяч лет"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_science_301",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:kr",
+        "domain:science",
+        "era:twenty-first-century",
+        "skill:terminology",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "era:twenty-first-century",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Перенос ядра соматической клетки знаком по клонированию Долли и применим к Снуппи; CRISPR и деление эмбриона остаются научно правдоподобными альтернативами.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_scientific_claim_unverified: процедура 2005 года",
+        "related_fact: A180 q_dog_history_202,q_dog_science_300 спрашивают породу клона и суррогатной матери; q_dog_science_293 спрашивает достижение"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_history_269",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:de",
+        "domain:history",
+        "skill:recognition",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Фамилия Луиса Добермана буквально повторяется в ответе «доберман-пинчер»; среди остальных пород такого совпадения нет.",
+      "confidence": "low",
+      "editorial_flags": [
+        "lexical_answer_hint: фамилия Доберман",
+        "ambiguous_wording: личная собака или выведенная порода",
+        "near_duplicate: A180 q_dog_history_77 — Луис Доберман и доберман-пинчер"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_science_07",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-anatomy",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Точное измерение слюны в опытах Павлова делает хирургическую канюлю убедительнее миски или губки; стеклянная трубка всё же выглядит возможным лабораторным ответом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "procedure_claim_unverified: способ выведения слюнного протока",
+        "near_duplicate: q_dog_science_207 — хирургическая канюля для сбора слюны"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_science_207",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-anatomy",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Сбор секреции для точных опытов поддерживает канюлю, а не миску, губку или давление на челюсть; конкурирующая стеклянная трубка требует различить инструмент и операцию.",
+      "confidence": "low",
+      "editorial_flags": [
+        "procedure_claim_unverified: изложение операции и протока",
+        "near_duplicate: q_dog_science_07 — хирургическая канюля для сбора слюны"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_science_293",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:science",
+        "era:twenty-first-century",
+        "skill:association",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "era:twenty-first-century",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Кличка Снуппи связана с клонированием в научных новостях; 2005 год исключает первую собаку на орбите, но сам по себе не отличает клонирование от рекорда.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_superlative_unverified: первая клонированная собака",
+        "related_fact: q_dog_science_301 спрашивает метод; A180 q_dog_history_202,q_dog_science_300 спрашивают породы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_science_388",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "era:prehistoric",
+        "skill:quantitative",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Нужна оценка доисторического масштаба: 15–40 тысяч конкурируют с 10–12 тысячами, тогда как миллион и последние две тысячи выглядят крайностями.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_range_unverified: объяснение не обосновывает интервал 15–40 тысяч",
+        "near_duplicate: q_dog_evolution_501 — время одомашнивания"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_1",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:animal-behavior",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-behavior",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Реакция собак на отражение знакома по бытовым наблюдениям; исключение только для пуделей выглядит выдуманным, но обучение оставляет правдоподобный конкурент.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_generalization_unverified: зеркальный тест не равен отсутствию самосознания"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_2",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:terminology",
+        "topic:animal-anatomy",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-anatomy",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "rationale": "Обоняние прямо указывает на обонятельную луковицу; мозжечок и гиппокамп имеют другие известные функции, а цифра 40 для выбора не нужна.",
+      "confidence": "low",
+      "editorial_flags": [
+        "lexical_answer_hint: обоняние/обонятельная луковица",
+        "scientific_quantity_unverified: 40 раз и критерий сравнения"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_3",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:direct-recall",
+        "topic:animal-senses",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-senses",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Раздельная обработка слов и интонации опирается на конкретное исследование мозга; бытовое понимание команд не доказывает распределение по полушариям, оба частичных ответа возможны.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_generalization_unverified: распределение смысла и интонации по полушариям"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_4",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:association",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Окситоцин широко известен как гормон привязанности; адреналин и кортизол связаны со стрессом, инсулин с сахаром, поэтому «гормон любви» сильно помогает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "popular_label_hint: гормон любви",
+        "scientific_generalization_unverified: эффект зрительного контакта"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_5",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:quantitative",
+        "topic:animal-behavior",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-behavior",
+        "topic:dog"
+      ],
+      "rationale": "Средний словарь 165 слов — специальная оценка; необычно точное число выделяется среди 10, 500 и 1000, но бытовое наблюдение величину не устанавливает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "numeric_precision_hint: 165 среди круглых чисел",
+        "scientific_average_unverified: выборка, понимание слова и сравнение с ребёнком"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_science_and_experiments",
+      "question_id": "q_dog_new_sci_6",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:direct-recall",
+        "topic:animal-behavior",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-behavior",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "rationale": "Магнитная ориентация при выборе места — малоизвестное исследование; осторожный ответ «не доказано» выглядит правдоподобно, обычное знание обоняния не решает вопрос.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_evidence_unverified: магниторецепция и ориентация при дефекации"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_334",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:no",
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Шесть пальцев и скальные уступы позволяют узнать лундехунда только при знании редкой норвежской породы; элкхунд и бухунд столь же подходящие по стране названия.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "near_duplicate: A180 q_dog_breeds_78 — лундехунд и шесть пальцев; q_dog_breeds_360 об ушах является связанным другим признаком",
+        "near_duplicate: q_dog_breeds_592 — лундехунд/шесть пальцев; там явно слабые альтернативы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_51",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:direct-recall",
+        "topic:animal-senses",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-senses",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "«Кукурузные чипсы» — необычная бытовая ассоциация, название бактерий её не раскрывает; влажная земля и старая кожа также естественно подходят запаху лап.",
+      "confidence": "low",
+      "editorial_flags": [
+        "causal_microbiology_claim_unverified: Proteus/Pseudomonas и ферментация"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_201",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:association",
+        "topic:dog",
+        "topic:physics"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:dog"
+      ],
+      "rationale": "Прилипание репейника к шерсти напоминает липучку из знакомой истории изобретений; молния и заклёпка соединяют иначе, клейкая лента не использует крючки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "invention_anecdote_unverified: Милки и 1941 год",
+        "near_duplicate: A180 q_dog_science_41; q_dog_science_304 — репейник на собаке и Velcro, обратная связь; порода A180 q_dog_science_237 другой факт"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_304",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "domain:science",
+        "skill:association",
+        "topic:biology",
+        "topic:dog",
+        "topic:physics"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "domain:science",
+        "topic:dog"
+      ],
+      "rationale": "Репейник известен цепкими головками, а крапива и роза не столь хорошо прикрепляются к меху; чертополох остаётся правдоподобным колючим растением.",
+      "confidence": "low",
+      "editorial_flags": [
+        "invention_anecdote_unverified: Милки",
+        "near_duplicate: q_dog_science_201,A180 q_dog_science_41 — растение/изобретение Velcro, обратная связь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_38",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "rationale": "Подушечки лап — менее очевидный ответ, чем язык, с которым знакомо охлаждение собак; нужно отличить потоотделение от испарения при дыхании.",
+      "confidence": "low",
+      "editorial_flags": [
+        "physiology_simplification: распределение потовых желез",
+        "near_duplicate: q_dog_biology_376 — активные потовые железы на лапах; A180 q_dog_biology_287,q_dog_biology_95 спрашивают охлаждение, иной механизм"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_64",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Возраст половины взрослого веса трудно определить без опыта выращивания щенков; 3, 4–5 и 6 месяцев близки и не исключаются общей идеей быстрого роста.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_average_unverified: сильная зависимость возраста от породы и размера"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_262",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:animal-senses",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-senses",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "rationale": "Известное сильное обоняние поддерживает распознавание по запаху; ограничения только пуделями, младенцами или сном выглядят искусственными и ослабляют конкуренцию.",
+      "confidence": "low",
+      "editorial_flags": [
+        "medical_detection_claim_unverified: обучение, болезни и надёжность не оговорены"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_277",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:association",
+        "topic:animal-behavior",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-behavior",
+        "topic:dog"
+      ],
+      "rationale": "Клубок интуитивно сохраняет тепло и закрывает живот; растяжение спины или улучшение слуха хуже соответствуют согнутой позе, экономия места остаётся бытовым конкурентом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "causal_behavior_interpretation_unverified: инстинктивная защита от хищников"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_376",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:dog"
+      ],
+      "rationale": "Подушечки лап нужно знать как место эккриновых желёз; подмышки и живот вызывают человеческую аналогию, а привычная одышка не указывает точное место.",
+      "confidence": "low",
+      "editorial_flags": [
+        "absolute_claim_unverified: единственное место активных потовых желез",
+        "near_duplicate: q_dog_biology_38 — пот через подушечки лап"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_91",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-senses",
+        "topic:dog"
+      ],
+      "rationale": "Миф о чёрно-белом зрении знаком, а синий и жёлтый — распространённое исправление; полное человеческое зрение правдоподобнее инфракрасного, но требует различить цветоощущение.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "scientific_simplification: цветовое восприятие"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_367",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:jp",
+        "domain:science",
+        "era:twentieth-century",
+        "skill:association",
+        "topic:dog",
+        "topic:robot-technology"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:robot-technology"
+      ],
+      "rationale": "Aibo — известное название робота Sony, но Spot и Tekno тоже реальные или правдоподобные робопитомцы; год помогает поколению, не раскрывает бренд модели.",
+      "confidence": "low",
+      "editorial_flags": [
+        "commercial_superlative_unverified: первая массовая робособака"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_390",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-classification",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-classification",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Цинодиктис — единственный явно ископаемый термин среди современных волка, лисы, шакала и кошки; возраст 30–40 миллионов лет резко выделяет его даже без палеонтологии.",
+      "confidence": "low",
+      "editorial_flags": [
+        "option_category_hint: единственный ископаемый термин",
+        "taxonomy_claim_unverified: первый истинный псовый и систематическое положение Cynodictis"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_sport_586",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:recognition",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "В условии уже объяснён совместный бег: пояс и амортизатор логично связывают человека с собакой; рюкзак и обувь для лап не обеспечивают тягу.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "option_detail_hint: единственный полный комплект",
+        "related_fact: q_dog_sport_56 спрашивает название каникросса, здесь оно дано"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_sport_56",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:terminology",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "«Кросс» помогает связать каникросс с бегом, но флайбол и курсинг тоже звучат спортивно; нужно отличить совместную тягу от аджилити и перетягивания грузов.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "related_fact: q_dog_sport_586 спрашивает снаряжение уже названного каникросса"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_62",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:biology",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:biology",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "rationale": "Температуру около 38,5 нужно знать отдельно от человеческих 36,6; диапазоны 37–37,5 и 39,5–40,5 выглядят достаточно близкими для неспециалиста.",
+      "confidence": "low",
+      "editorial_flags": [
+        "veterinary_range_unverified: нормальная температура и границы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_84",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:animal-behavior",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-behavior",
+        "topic:biology",
+        "topic:dog"
+      ],
+      "rationale": "Движения спящей собаки знакомы, а REM — известная фаза сновидений; возраст пять лет или соседство с хозяином выглядят произвольными ограничениями.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_inference_unverified: вероятные сновидения и одинаковость с человеческими",
+        "near_duplicate: A180 q_dog_biology_297 — REM/сновидения, обратная связь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_576",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:science",
+        "skill:direct-recall",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:science",
+        "topic:animal-domestication",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Евразия правдоподобна как исторический ареал волков и раннего человека; отличить её восточную/западную двойственность от Китая и Индии требует конкретной гипотезы исследования.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_hypothesis_unverified: статья Nature не идентифицирована; смешение происхождения и мест одомашнивания"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_291",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Грейхаунд широко связан с собачьими бегами; салюки и уиппет тоже быстрые борзые и не отсекаются без знания рекордной породы.",
+      "confidence": "low",
+      "editorial_flags": [
+        "superlative_measurement_unverified: скорость до 72 км/ч",
+        "near_duplicate: q_dog_biology_511 — грейхаунд/72 км/ч, обратная связь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_511",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "У грейхаунда ожидается высокая скорость, а 100 км/ч выглядит чрезмерно; точные 72 и перевод в мили выделены среди круглых чисел, оставляя 50 км/ч конкурентом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "numeric_precision_hint: 72 и 45 миль против круглых чисел",
+        "superlative_measurement_unverified: максимальная скорость",
+        "near_duplicate: q_dog_biology_291 — грейхаунд/72 км/ч, обратная связь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_523",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:animal-senses",
+        "topic:dog",
+        "topic:law-regulations"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-breeds",
+        "topic:animal-senses",
+        "topic:dog",
+        "topic:law-regulations"
+      ],
+      "rationale": "Бладхаунд известен следовым обонянием, но немецкая и бельгийская овчарки ассоциируются с полицией; судебная допустимость требует специальной породной истории.",
+      "confidence": "low",
+      "editorial_flags": [
+        "legal_generalization_unverified: юрисдикция, условия допустимости и точность следа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_biology_243",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Чау-чау и шарпей уже перечислены в вопросе, а ответ дословно повторяет пару; знать пигментацию языка не требуется.",
+      "confidence": "low",
+      "editorial_flags": [
+        "answer_in_stem: обе породы",
+        "absolute_claim_unverified: единственные породы с тёмным языком",
+        "near_duplicate: q_dog_breeds_342 — чау-чау/шарпей и тёмный язык; здесь обе породы в условии"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_science_575",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "era:prehistoric",
+        "skill:association",
+        "topic:animal-domestication",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "domain:nature",
+        "era:prehistoric",
+        "topic:animal-domestication",
+        "topic:dog"
+      ],
+      "rationale": "Совместная охота хорошо объясняет пользу человека и волка, но охрана пещер тоже возможна; конкретное первенство не выводится из общих знаний о приручении.",
+      "confidence": "low",
+      "editorial_flags": [
+        "scientific_hypothesis_unverified: первый союз и интервал 14–40 тысяч лет"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_329",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Для небольшой лхаса апсо подходят согревание и ловля грызунов; роль внутреннего сторожа требует знать монастырскую историю, хотя почта и медитация слабее.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_breed_role_unverified: монастырские стражи"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_592",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:no",
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Шесть пальцев дают захват при лазании, тогда как крылья и отсутствие когтей неправдоподобны; длинный хвост помогает равновесию, но уступает прямой функции пальцев.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "weak_distractors: крылья и отсутствие когтей",
+        "near_duplicate: q_dog_breeds_334,A180 q_dog_breeds_78 — лундехунд и шесть пальцев"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_72",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Прозвище Nanny Dog не указывает стаффордширского бультерьера по внешности; лабрадор, колли и ньюфаундленд тоже привычно считаются терпеливыми к детям.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_nickname_unverified: викторианское происхождение и обобщение поведения"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_98",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:hu",
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Шнуровая шерсть узнаётся по фотографиям комондора или пули; пудель и водяная собака тоже кудрявы, но дреды требуют различить фактуру.",
+      "confidence": "low",
+      "editorial_flags": [
+        "breed_function_claim_unverified: броня против хищников",
+        "near_duplicate: q_dog_breeds_364 — пули/шнуры, обратная связь; q_dog_breeds_594 и A180 q_dog_breeds_362 спрашивают назначение шерсти комондора"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_218",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Далматин узнаваем как пожарный талисман, а конные повозки уточняют знакомый образ; овчарка и ротвейлер возможны как служебные, но не столь связаны с каретами.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_function_claim_unverified: расчистка пути",
+        "near_duplicate: q_dog_history_515,A180 q_dog_breeds_82 — далматины/пожарные конные повозки"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_15",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:society",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Корги Елизаветы II — широко узнаваемый образ новостей и фотографий; конкретный пемброк дан готовым вариантом, другие породы не имеют столь сильной связи.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_count_and_date_unverified: более 30 и 1933",
+        "related_fact: A180 q_dog_history_590 спрашивает год появления Дуки, а не породу"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_221",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:language",
+        "skill:terminology",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "rationale": "Низкорослая внешность делает карликовую собаку убедительной, но королевская отвлекает известностью корги у монархов, пастушья реальной функцией; нужны валлийские корни.",
+      "confidence": "low",
+      "editorial_flags": [
+        "etymological_claim_unverified: cor/gi и буквальный перевод"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_1",
+      "question_id": "q_dog_breeds_364",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:hu",
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Сравнение со шваброй прямо поддерживает длинные свисающие шнуры; гладкая шерсть, голая кожа и пушистый шар не похожи на предложенный бытовой предмет.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "visual_analogy_hint: швабра",
+        "near_duplicate: q_dog_breeds_98 — пули/шнуровая шерсть"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_217",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Бо и Санни менее узнаваемы, чем сам Обама; пудель, лабрадудль и испанская водяная собака также правдоподобны как семейные питомцы, клички породу не подсказывают.",
+      "confidence": "low",
+      "editorial_flags": [
+        "allergy_generalization_unverified: выбор подходящей аллергикам породы",
+        "near_duplicate: q_dog_history_22 — португальские водяные собаки семьи Обамы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_records_57",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Той-пудель Чанда-Лиа — частная рекордная биография; бордер-колли, шелти и папильон тоже считаются обучаемыми, число трюков породу не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "record_cognition_claim_unverified: 469 трюков и знание таблицы умножения",
+        "related_fact: A180 q_dog_records_320,q_dog_records_544 спрашивают число трюков, здесь оно дано"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_crufts_549",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Семь Best in Show на Crufts нужно помнить из выставочной статистики; кокер, пудель и овчарка одинаково правдоподобны по популярности пород.",
+      "confidence": "low",
+      "editorial_flags": [
+        "time_sensitive_show_record_unverified: семь побед и шесть у Ллойда",
+        "near_duplicate: q_dog_breeds_14 — кокер лидирует на Crufts"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_67",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:zw",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Родезийский риджбек знаком как львиная собака, но охрана шахт тоже согласуется с Африкой; название породы само цель охоты не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_breed_function_unverified: выведение и удержание львов",
+        "near_duplicate: q_dog_breeds_514 — риджбек для охоты на львов, обратная связь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_94",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:zw",
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Слово «риджбек» помогает найти гребень на спине, но одновременно предложены тайский и родезийский риджбеки; различить ключ по этому признаку невозможно надёжно.",
+      "confidence": "low",
+      "editorial_flags": [
+        "multiple_plausible_answers: тайский риджбек также имеет гребень",
+        "breed_standard_claim_unverified: складка шерсти и обязательный признак"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_514",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "country:zw",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Родезийский риджбек связан с охотой на львов, однако бурбуль тоже выглядит сильным африканским охранником; удержание зверя требует породной истории.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_breed_function_unverified: выведение и удержание львов",
+        "near_duplicate: q_dog_breeds_67 — риджбек/охота на львов"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_228",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:language",
+        "skill:recognition",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:english-vocabulary",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "domain:language",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "rationale": "Английское woodcock дано в условии и повторяется частично в «кокер»; остальные спаниели и охотничьи породы не имеют такого буквального совпадения.",
+      "confidence": "low",
+      "editorial_flags": [
+        "lexical_answer_hint: woodcock/Cocker",
+        "etymological_hunting_claim_unverified: происхождение названия"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_231",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:de",
+        "domain:nature",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Веймаранер известен серебристой внешностью любителям пород; голубой дог и итальянский грейхаунд тоже могут казаться серыми и тихими, прозвище не уникально выводится.",
+      "confidence": "low",
+      "editorial_flags": [
+        "nickname_behavior_claim_unverified: серый призрак и бесшумность"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_309",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Герберт Саммерс Ллойд — малоизвестный выставочный владелец; Крафт отвлекает именем самой выставки, Твидмут и Штефаниц известны как заводчики.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_show_record_unverified: шесть побед из семи",
+        "related_fact: q_dog_crufts_549,q_dog_breeds_14 спрашивают лидирующую породу, а не владельца"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_342",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Тёмный язык чау-чау узнаваем, но нужно вспомнить ещё шарпея; пары китайских и японских пород выглядят правдоподобно без знания пигментации.",
+      "confidence": "low",
+      "editorial_flags": [
+        "absolute_claim_unverified: единственные две породы и неизвестная причина",
+        "near_duplicate: q_dog_biology_243 — чау-чау/шарпей и тёмный язык; там пара уже в условии"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_211",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:association",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-anatomy",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Пудель широко ассоциируется с постоянной стрижкой и малой линькой; хаски и ретривер заметно линяют, а мопс и бигль имеют короткую шерсть.",
+      "confidence": "low",
+      "editorial_flags": [
+        "allergy_and_coat_claim_unverified: гипоаллергенность, отсутствие подшёрстка и волосы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_33",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:language",
+        "skill:terminology",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "rationale": "Песчаная кожа требует китайской этимологии; морщинистое лицо убедительно отвлекает видимой внешностью, синий язык реальным породным признаком.",
+      "confidence": "low",
+      "editorial_flags": [
+        "etymological_claim_unverified: перевод шарпей",
+        "near_duplicate: A180 q_dog_breeds_325 — песчаная кожа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_89",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:jp",
+        "domain:history",
+        "skill:association",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Акита узнаваема и достаточно крупна для медведей, но хоккайдо и тоса тоже подходят крупной дичи; статус памятника не отделяет одну японскую породу однозначно.",
+      "confidence": "low",
+      "editorial_flags": [
+        "nonunique_status_claim: национальными памятниками признаны несколько пород",
+        "historical_hunting_claim_unverified: медведи и шесть коренных пород"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_breeds_346",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:jp",
+        "domain:nature",
+        "skill:recognition",
+        "topic:animal-behavior",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-behavior",
+        "topic:animal-breeds",
+        "topic:dog"
+      ],
+      "rationale": "Самостоятельность единственная обычная поведенческая причина сложной дрессировки; постоянный сон, слишком малый размер и плохой слух выглядят слабыми объяснениями для акиты.",
+      "confidence": "low",
+      "editorial_flags": [
+        "weak_distractors: единственный нормальный поведенческий ответ",
+        "behavior_superlative_unverified: экспертная сложность и причинная связь с охотой"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_275",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:religion"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "medium:book",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:religion"
+      ],
+      "rationale": "Грейхаунд в Притчах — специфическая переводческая деталь; мастиф, овчарка и дог исторически выглядят возможными, знакомство с Библией не гарантирует данный перевод.",
+      "confidence": "low",
+      "editorial_flags": [
+        "translation_and_exclusivity_claim_unverified: Притчи 30:31 и единственная порода"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_573",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "country:it",
+        "domain:history",
+        "era:ancient",
+        "skill:association",
+        "topic:animal-culture",
+        "topic:architecture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:ancient",
+        "topic:animal-culture",
+        "topic:architecture",
+        "topic:dog"
+      ],
+      "rationale": "Перевод «Берегись собаки» дан в условии и функционально указывает вход; спальня и кухня не предупреждают входящего гостя.",
+      "confidence": "low",
+      "editorial_flags": [
+        "functional_answer_hint: предупреждение у входа",
+        "historical_prevalence_unverified: часто встречалось в Помпеях"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_10",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "country:fr",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:association",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "rationale": "Пещера Ласко известна как французская находка 1940 года, но имя Робот и кролик требуют вспомнить историю открытия; клад и бункер тоже подходят случайной находке.",
+      "confidence": "low",
+      "editorial_flags": [
+        "discovery_anecdote_unverified: роль собаки Робота",
+        "near_duplicate: q_dog_history_210,q_dog_history_81,q_dog_history_273 — Робот/Ласко, прямое и обратное узнавание"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_22",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Португальская водяная собака — отдельная деталь семьи Обамы; пудель, бишон и лабрадудль также ассоциируются с малой линькой, аллергия не определяет единственную породу.",
+      "confidence": "low",
+      "editorial_flags": [
+        "allergy_generalization_unverified: выбор из-за аллергии",
+        "near_duplicate: q_dog_history_217 — порода Бо и Санни у Обамы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_58",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:society",
+        "skill:direct-recall",
+        "topic:brand-logos",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:brand-logos",
+        "topic:dog"
+      ],
+      "rationale": "Образ собаки у граммофона узнаваем, но Ниппер — менее знакомая кличка; Ласси, Тото и Рин Тин Тин тоже реальные знаменитые собаки, лозунг имени не даёт.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "brand_history_unverified: RCA Victor и происхождение изображения"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_68",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-breeds",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "Порода местного почётного мэра Дьюка малоизвестна; в условии нет белого окраса или размера, а ретривер, сенбернар и ньюфаундленд одинаково возможны.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "historical_local_claim_unverified: три избрания",
+        "related_fact: q_dog_history_335 спрашивает штат Миннесота, уже названный здесь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_273",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:fr",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:painting"
+      ],
+      "rationale": "Робот — второстепенное имя из истории Ласко; Лайка и Балто отсеиваются знакомыми историями, но Скип и Ниппер не дают достаточной подсказки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "discovery_anecdote_unverified: роль Робота",
+        "near_duplicate: q_dog_history_210,q_dog_history_81,q_dog_history_10 — Робот/Ласко"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_303",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:history",
+        "domain:science",
+        "skill:direct-recall",
+        "topic:biology",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "domain:science",
+        "topic:biology",
+        "topic:dog",
+        "topic:medical-terms"
+      ],
+      "rationale": "Бантинг и Бест известны как пара исследователей инсулина, но Маклеод тоже связан с тем же открытием; нужно отличить ассистента от других участников.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_experiment_claim_unverified: роль Марджори и формулировка изоляции",
+        "related_fact: A180 q_dog_science_03 спрашивает имя собаки, а не ассистента"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_353",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:society",
+        "skill:quantitative",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:animal-culture",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "372 медали выглядит как точный музейный учёт среди круглых 50, 100 и 500, что помогает угадыванию; реальное число коллекции всё равно малоизвестно.",
+      "confidence": "low",
+      "editorial_flags": [
+        "numeric_precision_hint: 372 среди круглых чисел",
+        "time_sensitive_collection_count_unverified: предметы вместе с Оуни",
+        "related_fact: q_dog_history_352 спрашивает музей, а не количество медалей"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_374",
+      "difficulty_level": 1,
+      "editorial_tag_ids": [
+        "domain:language",
+        "skill:recognition",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "topic:dog",
+        "topic:word-origin"
+      ],
+      "rationale": "Вариант «Fidus (или Fido)» прямо содержит имя Фидо из условия; знать латинское значение не нужно, другие слова не повторяют кличку.",
+      "confidence": "low",
+      "editorial_flags": [
+        "lexical_answer_hint: Fido в ответе",
+        "etymology_and_popularization_unverified: форма Fidus/Fido и влияние Линкольна"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_06",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:history",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Смоки как терапевт — специальная военная биография; Бадди и Хатико тоже связаны с помощью и верностью человеку, порода в варианте сама роль не объясняет.",
+      "confidence": "low",
+      "editorial_flags": [
+        "first_recognition_claim_unverified: официальная первая собака-терапевт",
+        "near_duplicate: A180 q_dog_history_294,q_dog_history_248 — Смоки/терапия"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_88",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Ориент — малоизвестная кличка поводыря Ирвина; Бадди и Дюк тоже подходят помощнику человека, длина маршрута и 1990 год имя не раскрывают.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_distance_claim_unverified: 3400 км и первенство",
+        "near_duplicate: q_dog_history_280,q_dog_history_343 — Ориент/Ирвин/Аппалачская тропа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_280",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Нужно помнить имя Ориент из конкретного похода Билла Ирвина; все варианты обычные собачьи клички, хозяин и дата не дают языкового вывода.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_distance_claim_unverified: первый поводырь на маршруте",
+        "near_duplicate: q_dog_history_88,q_dog_history_343 — Ориент/Ирвин/Аппалачская тропа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_history_343",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:us",
+        "domain:history",
+        "era:twentieth-century",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "context_tag_ids": [
+        "domain:history",
+        "era:twentieth-century",
+        "topic:dog",
+        "topic:service-animals"
+      ],
+      "rationale": "Условие не называет хозяина, но 1990 год и Аппалачская тропа всё равно требуют частной биографии Ориента; среди Бадди, Бака и Дьюка нет явного исключения.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_distance_claim_unverified: впервые и 3400 км",
+        "near_duplicate: q_dog_history_88,q_dog_history_280 — Ориент/Аппалачская тропа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_myth_259",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:language",
+        "domain:psychology",
+        "skill:terminology",
+        "topic:dog",
+        "topic:phobia",
+        "topic:word-origin"
+      ],
+      "context_tag_ids": [
+        "domain:language",
+        "domain:psychology",
+        "topic:dog",
+        "topic:phobia",
+        "topic:word-origin"
+      ],
+      "rationale": "Кинофобия требует греческого корня собаки; канифобия выглядит особенно близким латинским конкурентом, зоофобия означает более общий страх животных.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "terminology_claim_unverified: клиническая формулировка страха",
+        "near_duplicate: q_dog_science_372 — страх собак/кинофобия"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_2",
+      "question_id": "q_dog_mythology_557",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:mythology",
+        "era:early-modern",
+        "skill:direct-recall",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "era:early-modern",
+        "topic:dog",
+        "topic:folklore"
+      ],
+      "rationale": "Слово «отпечатки» скорее наводит на царапины, тогда как легенда называет опалины; нужно знать местное объяснение следов на двери Блайтбурга.",
+      "confidence": "low",
+      "editorial_flags": [
+        "folklore_historical_claim_unverified: следы 1577 года и атрибуция Шаку",
+        "related_fact: q_dog_myth_30,q_dog_mythology_556 спрашивают другой город Бангей и его церковь"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_myth_381",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:cn",
+        "domain:mythology",
+        "skill:recognition",
+        "topic:architecture",
+        "topic:mythic-tradition"
+      ],
+      "context_tag_ids": [
+        "domain:mythology",
+        "topic:architecture",
+        "topic:mythic-tradition"
+      ],
+      "rationale": "Парные львы-хранители у входа узнаваемы по изображениям китайских храмов; ряд из пяти или крыша слабее, а половые атрибуты подробно выделены в правильном варианте.",
+      "confidence": "low",
+      "editorial_flags": [
+        "option_detail_hint: самец с шаром и самка с детёнышем",
+        "cultural_symbolism_unverified: традиционная расстановка и символика"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_541",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:association",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Спуск с бокалом на голове — необычный трюк Свит Пи, требующий истории рекорда; скорость и задние лапы также правдоподобны, но точные десять ступеней выделяют подробный ответ.",
+      "confidence": "low",
+      "editorial_flags": [
+        "option_detail_hint: десять ступеней и бокал",
+        "record_claim_unverified: условия спуска",
+        "near_duplicate: q_dog_records_92,q_dog_records_318 — Sweet Pea/бокал/10 ступеней, разные вопросы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_546",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Количество побед Чи-Чи не выводится из необычного конкурса; 3, 5, 7 и 10 выглядят равно возможными сроками побед известной собаки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_show_record_unverified: семь побед и рекорд",
+        "near_duplicate: q_dog_records_323 — Чи-Чи/семь побед, число дано там; порода там отдельная часть факта"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_313",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "era:twenty-first-century",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "era:twenty-first-century",
+        "topic:animal-records",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "107,2 метра с переводом в футы выделяются среди круглых дистанций, что помогает угадать рекорд; сам заплыв Эбби Гёрл общей аудитории мало знаком.",
+      "confidence": "low",
+      "editorial_flags": [
+        "numeric_precision_hint: десятичное число и футы",
+        "time_sensitive_record_unverified: до сих пор непревзойдённый",
+        "near_duplicate: q_dog_records_79 — Эбби Гёрл/кельпи/107 метров, обратный параметр"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_598",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:th",
+        "domain:nature",
+        "era:twenty-first-century",
+        "skill:direct-recall",
+        "topic:animal-records"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "topic:animal-records"
+      ],
+      "rationale": "Кинг-Конг как имя конкретного рекордного буйвола 2025 года требует недавней новости; Зевс и Биг Сплэш тоже правдоподобные клички огромного животного.",
+      "confidence": "low",
+      "editorial_flags": [
+        "pack_subject_mismatch: водяной буйвол в dog-паке",
+        "time_sensitive_record_unverified: самый высокий в 2025 году и 185 см"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_show_11",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:association",
+        "topic:animal-culture",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-culture",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Crufts и Вестминстер — наиболее известные выставки, но сочетание старейшей и крупнейшей не позволяет однозначно выбрать одну; историческое первенство требует отдельной проверки.",
+      "confidence": "low",
+      "editorial_flags": [
+        "compound_superlative_claim_unverified: старейшая/крупнейшая/престижнейшая",
+        "chronology_concern: Westminster старше указанного 1891 года Crufts"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_show_308",
+      "difficulty_level": 9,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:quantitative",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-culture",
+        "topic:dog"
+      ],
+      "rationale": "350 кг убранной шерсти — редкая хозяйственная статистика NEC; все значения от 50 до 1000 кг возможны без данных об уборке, неокруглённого уникального ключа нет.",
+      "confidence": "low",
+      "editorial_flags": [
+        "unsupported_annual_quantity: год, источник и метод учёта шерсти не указаны"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_sport_398",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Педаль машины отличает флайбол от простой игры в мяч; бросок человека остаётся сильным бытовым конкурентом, а поиск в песке или передача от другого пса слабее.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "sport_mechanism_unverified: педаль/пусковая поверхность",
+        "near_duplicate: q_dog_sport_585,q_dog_sport_76 — флайбол/активация установки с мячом"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_sport_552",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:temporal-order",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Первый показ флайбола на Crufts в 1990 году — специальная дата дисциплины; 1974 и 1980 также выглядят возможными, термин спорта год не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_date_unverified: первая демонстрация на Crufts",
+        "related_fact: q_dog_sport_398,q_dog_sport_585 спрашивают получение мяча, а не год"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_sport_585",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:recognition",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Механическую установку естественно активировать лапой; лай и простое ожидание не запускают обычный механизм, прыжок через него хуже соответствует получению мяча.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "weak_distractors: действие с установкой",
+        "near_duplicate: q_dog_sport_398,q_dog_sport_76 — флайбол/педаль/мяч"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_show_13",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Скромные 200 фунтов против престижного Best in Show — неожиданная частная сумма; отсутствие денег и 500 или 1000 тоже правдоподобны без знания правил награды.",
+      "confidence": "low",
+      "editorial_flags": [
+        "time_sensitive_prize_unverified: денежный приз без года"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_sport_76",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:terminology",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Мяч помогает связать дисциплину с flyball, а аджилити отвлекает барьерами; педаль и командная эстафета отличают флайбол от фрисби и каникросса.",
+      "confidence": "medium",
+      "editorial_flags": [
+        "near_duplicate: q_dog_sport_398,q_dog_sport_585 — флайбол/педаль/мяч, обратное название"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_sport_400",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "skill:direct-recall",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Руками можно физически помочь пройти препятствие, поэтому касание выглядит запрещённым, тогда как голос и жесты нужны управлению; немедленная дисквалификация всё же требует правил.",
+      "confidence": "low",
+      "editorial_flags": [
+        "sport_rule_generalization_unverified: касание собаки/препятствия и степень санкции"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_crufts_550",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "country:gb",
+        "domain:sports",
+        "skill:temporal-order",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "1928 год введения Best in Show — отдельная выставочная дата; 1891 отвлекает основанием Crufts, а 1900 и 1950 также возможны для расширения наград.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_first_date_unverified: введение Best in Show"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_media_19",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "topic:animal-breeds",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "Плуто широко знаком, но точная порода рисованного персонажа неочевидна; бладхаунд и пойнтер подходят висячим ушам, лабрадор также возможен без канонических сведений.",
+      "confidence": "low",
+      "editorial_flags": [
+        "character_breed_identity_unverified: бладхаунд и раннее воплощение персонажа"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_71",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "skill:recognition",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Единственный ответ с точной высотой 191,7 см заметно выделяет прыжок; быстрый бег правдоподобен для грейхаунда, но детализация помогает без знания Фезер.",
+      "confidence": "low",
+      "editorial_flags": [
+        "option_precision_hint: единственный измеренный рекорд",
+        "record_claim_unverified: 2017 и 191,7 см",
+        "near_duplicate: q_dog_records_312,q_dog_records_534 — Фезер/высокий прыжок/191,7"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_312",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Все высоты даны с десятыми долями, поэтому 191,7 не выделяется форматом; нужно помнить измерение Фезер, 180,2 и 205,3 столь же возможны.",
+      "confidence": "low",
+      "editorial_flags": [
+        "record_measurement_unverified: 75,5 дюйма и 191,7 см",
+        "near_duplicate: q_dog_records_71,q_dog_records_534 — Фезер/191,7 см"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_534",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "skill:quantitative",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "era:twenty-first-century",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "191,7 с переводом в дюймы выделяется среди круглых высот 150, 175 и 205; точный рекорд всё равно требует памяти, но формат существенно помогает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "numeric_precision_hint: 191,7 и дюймы среди целых",
+        "record_measurement_unverified: прыжок Фезер",
+        "near_duplicate: q_dog_records_71,q_dog_records_312 — Фезер/191,7 см"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_media_272",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "skill:direct-recall",
+        "topic:characters",
+        "topic:dog",
+        "topic:film-plots"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:characters",
+        "topic:dog",
+        "topic:film-plots"
+      ],
+      "rationale": "Гибель щенка — известный повод сюжета «Джона Уика», но Дейзи нужно помнить как имя; Молли, Белла и Луна столь же возможные женские клички.",
+      "confidence": "medium",
+      "editorial_flags": []
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_culture_296",
+      "difficulty_level": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "era:twentieth-century",
+        "medium:animation",
+        "skill:association",
+        "topic:dog",
+        "topic:film-production"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "era:twentieth-century",
+        "medium:animation",
+        "topic:dog"
+      ],
+      "rationale": "«Леди и Бродяга» узнаётся как ранняя классика Disney; 1955 помогает отличить более поздние «Балто» и «Оливер и компания», но «101 далматинец» остаётся близким конкурентом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_superlative_unverified: первый полнометражный фильм о собаках в мире",
+        "format_first_claim_unverified: CinemaScope"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_evolution_502",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "era:prehistoric",
+        "skill:direct-recall",
+        "topic:animal-classification",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "era:prehistoric",
+        "topic:animal-classification",
+        "topic:dog",
+        "topic:evolution"
+      ],
+      "rationale": "Все четыре названия относятся к ископаемым формам, поэтому древесный эоценовый Miacis нужно различить по палеонтологии; простая категория древнего животного ответа не даёт.",
+      "confidence": "low",
+      "editorial_flags": [
+        "taxonomy_and_date_claim_unverified: единый предок всех псовых, эоцен и 60 млн лет",
+        "near_duplicate: q_dog_science_389 — Miacis/предок современных псовых"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_media_270",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:television",
+        "skill:direct-recall",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "medium:animation",
+        "medium:television",
+        "topic:characters",
+        "topic:dog"
+      ],
+      "rationale": "Сеймур знаком по памятной серии «Футурамы»; Бендер и Нибблер проще исключаются как другие герои, но Лаки и Бастер подходят собаке без знания эпизода.",
+      "confidence": "low",
+      "editorial_flags": [
+        "plot_wording_concern: ожидание в прошлом Фрая, ушедшего в будущее; срок 12 лет"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_culture_387",
+      "difficulty_level": 3,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:society",
+        "skill:association",
+        "topic:celebrations",
+        "topic:customs",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:celebrations",
+        "topic:customs",
+        "topic:dog"
+      ],
+      "rationale": "День мёртвых широко связывается с Мексикой и алтарями; Европа или Австралия имеют другие известные поминальные обычаи, специальные питомцы не меняют основную ассоциацию.",
+      "confidence": "low",
+      "editorial_flags": [
+        "cultural_generalization_unverified: распространение алтарей питомцам",
+        "near_duplicate: q_dog_culture_574 — мексиканские алтари умершим питомцам"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_culture_393",
+      "difficulty_level": 5,
+      "editorial_tag_ids": [
+        "domain:arts",
+        "skill:association",
+        "topic:composers",
+        "topic:composition",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:arts",
+        "topic:composers",
+        "topic:composition",
+        "topic:dog"
+      ],
+      "rationale": "Рабочий кабинет логичен для наблюдения Вагнером за реакцией Пепса при сочинении; колени тоже позволяют видеть собаку, но кухня и прихожая хуже соответствуют задаче.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_anecdote_unverified: табурет и влияние реакции на музыку",
+        "related_fact: A180 q_dog_history_208,q_dog_culture_08 спрашивают композитора, здесь Вагнер уже назван"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_culture_574",
+      "difficulty_level": 2,
+      "editorial_tag_ids": [
+        "country:mx",
+        "domain:society",
+        "skill:association",
+        "topic:celebrations",
+        "topic:customs",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:society",
+        "topic:celebrations",
+        "topic:customs",
+        "topic:dog"
+      ],
+      "rationale": "Название Día de los Muertos дано по-испански и праздник узнаваем как мексиканский; японская, индийская и египетская традиции не дают такого языкового соответствия.",
+      "confidence": "low",
+      "editorial_flags": [
+        "language_cultural_hint: испанское название праздника",
+        "cultural_generalization_unverified: алтари питомцам",
+        "near_duplicate: q_dog_culture_387 — Мексика/алтари умершим питомцам"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_media_348",
+      "difficulty_level": 7,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "medium:television",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:film-production"
+      ],
+      "context_tag_ids": [
+        "domain:screen",
+        "franchise:game-of-thrones",
+        "medium:television",
+        "topic:animal-breeds",
+        "topic:dog",
+        "topic:film-production"
+      ],
+      "rationale": "Северная инуитская собака — конкретная производственная деталь сериала; хаски, маламут и волчак тоже похожи на волков и не исключаются знакомством с сюжетом.",
+      "confidence": "low",
+      "editorial_flags": [
+        "casting_and_behavior_claim_unverified: молодые лютоволки и характер породы"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_culture_588",
+      "difficulty_level": 6,
+      "editorial_tag_ids": [
+        "domain:arts",
+        "skill:direct-recall",
+        "topic:animal-senses",
+        "topic:composition",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:arts",
+        "topic:animal-senses",
+        "topic:composition",
+        "topic:dog"
+      ],
+      "rationale": "Ультразвуковой свист — специальная деталь записи «A Day in the Life»; лай и имя собаки тоже правдоподобные музыкальные шутки, имя Маккартни само эффект не раскрывает.",
+      "confidence": "low",
+      "editorial_flags": [
+        "recording_frequency_and_intent_unverified: слышимость только собаками и подарок Марте"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_79",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:sports",
+        "era:twenty-first-century",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:sports",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:animal-sports",
+        "topic:dog"
+      ],
+      "rationale": "Кельпи Эбби Гёрл — редкая биография рекордной серфингистки; лабрадор и португальская водяная собака интуитивно даже больше подходят водному спорту.",
+      "confidence": "low",
+      "editorial_flags": [
+        "time_sensitive_record_unverified: долгий серфинг или дальность 107 метров",
+        "near_duplicate: q_dog_records_313 — Эбби Гёрл/кельпи/107,2 м, обратный параметр"
+      ]
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_trivia_records_and_sports_part_3",
+      "question_id": "q_dog_records_323",
+      "difficulty_level": 8,
+      "editorial_tag_ids": [
+        "domain:nature",
+        "skill:direct-recall",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "context_tag_ids": [
+        "domain:nature",
+        "topic:animal-breeds",
+        "topic:animal-records",
+        "topic:dog"
+      ],
+      "rationale": "Африканская песчаная собака мало известна, а китайская хохлатая сильно отвлекает типичным образом победителей конкурса; семь побед породу не раскрывают.",
+      "confidence": "low",
+      "editorial_flags": [
+        "historical_show_breed_claim_unverified: Чи-Чи, семь побед и Раскал",
+        "near_duplicate: q_dog_records_546 — Чи-Чи/семь побед; порода является дополнительным вопросом"
+      ]
+    }
+  ]
 }

@@ -94,12 +94,24 @@ facts. Accepted byte copy is recorded by ACCEPTED_WAVE_425_2; factual claims and
 keys have not been independently sourced or repaired by this metadata work.
 
 Still awaiting acceptance1301: dogs358, NewYear678, Preparation265, covered by
-the eight remaining exact disjoint frozen425 packets. Preparation B135 is an
-author-complete, structurally validated candidate, pending independent review;
-Dogs A180 has30 literal records saved after60 full raw reads, with150 candidate
-records still unwritten. These165 draft rows are excluded from accepted totals.
-Fresh combined accepted2777 and draft165 partial checks preserve source4078
-semantic integrity and reject overlap. NewYear source-key follow-up remains jsu.
+the eight remaining exact disjoint frozen425 packets. All Dogs358 and
+Preparation265 candidates are now author-complete:623 unaccepted decisions.
+Combined accepted2777 plus these623 pass structural checks as3400/4078;
+all4078 source semantics remain frozen and exact packet order/non-overlap pass.
+NewYear678 remains unannotated. No draft decision contributes to accepted totals.
+Dogs A180 has independent full180 raw/annotation review with12 findings covering
+15 identities, pending author correction and delta recheck. Root read all15
+affected stems/options/keys/explanations and annotations, agreeing that visible
+answer-format cues warrant lower estimates and redundant duplicate flags need
+consolidation. Dogs B178 has no independent raw review yet.
+Preparation B135/C130 independent review has read20 of its selected122 raw
+records; the other102 and final deltas remain pending. Root read and changed
+three B135 folklore records, lowering004/008 from7to4, retaining003 at7 because
+its options contain names without translations. All three gained specific
+source-quality flags; no source content changed. PREPARATION_B135_DELTA records
+this correction, which still needs independent recheck. Existing REWORK and
+INCOMPLETE reports are historical first-pass verdicts, not acceptance.
+NewYear source-key follow-up remains jsu.
 Full application, deterministic
 private index/catalog generation, provider privacy checks and synchronized release
 remain required. No fallback scores or keyword-based tagging will fill these gaps.

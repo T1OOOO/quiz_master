@@ -1,0 +1,180 @@
+{
+  "schema_version": "qm-annotation-review-delta/v1",
+  "before_sha256": "8a647d3a4bb86cffa44b2dba4e021cdc892668b8904cd7602871f03eacec8784",
+  "after_sha256": "f69f3cc5c2ce53a10f7132d7952b696bcb39afcf28e10a2fc7794bd634decf00",
+  "changed_record_count": 3,
+  "unchanged_record_count": 132,
+  "grade_change_count": 2,
+  "changes": [
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-003"
+      },
+      "before": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-003",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "Нужно различить две формы тэнгу по птицеподобному клюву, а не выбрать соседних существ японского фольклора.",
+        "confidence": "medium",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-003",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:mythology",
+          "skill:terminology",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "Нужно вспомнить редкое название птицеподобной формы: варианты содержат только имена, без перевода карасу или описания клюва. Две формы тэнгу правдоподобно конкурируют, поэтому сам физический признак в стеме не выдаёт нужное японское название.",
+        "confidence": "low",
+        "editorial_flags": [
+          "near_repeat: prep-folklore-003/004 проверяют две стороны одного противопоставления форм тэнгу",
+          "terminology_source_unverified: различие карасу и ко но ха тэнгу требует конкретного источника"
+        ]
+      },
+      "changed_fields": [
+        "confidence",
+        "editorial_flags",
+        "editorial_tag_ids",
+        "rationale"
+      ]
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-004"
+      },
+      "before": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-004",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "Длинный нос на человеческом лице противопоставлен клюву карасу тэнгу и требует точного различения образов.",
+        "confidence": "medium",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-004",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:mythology",
+          "skill:recognition",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "В отличие от вопроса о редком названии формы, здесь выбирается телесный признак: горшок золота и панцирь слабее носа или клюва. Длинный ответ и узнаваемый образ длинноносого тэнгу помогают, но две формы названы без перевода, поэтому их точное противопоставление остаётся знанием среднего уровня.",
+        "confidence": "low",
+        "editorial_flags": [
+          "near_repeat: prep-folklore-003/004 проверяют две стороны одного противопоставления форм тэнгу",
+          "option_detail_hint: ключ длиннее и подробнее остальных телесных признаков",
+          "terminology_source_unverified: отнесение длинного человеческого носа к ко но ха тэнгу требует конкретного источника"
+        ]
+      },
+      "changed_fields": [
+        "confidence",
+        "difficulty_level",
+        "editorial_flags",
+        "editorial_tag_ids",
+        "rationale"
+      ]
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-008"
+      },
+      "before": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-008",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "Составное описание тела каппы требует отличить его от тэнгу и других японских существ.",
+        "confidence": "medium",
+        "editorial_flags": []
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "prep-folklore",
+        "question_id": "prep-folklore-008",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:mythology",
+          "skill:recognition",
+          "topic:folklore"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:folklore"
+        ],
+        "rationale": "Единственное трёхчастное описание заметно выделяется длиной, а лицо с носом и крылатая лошадь напоминают другие известные образы. Подсказка облегчает выбор, но для уверенного сопоставления каппы с сочетанием водных животных нужно знакомство с японским фольклором; конкретная версия описания не указана.",
+        "confidence": "low",
+        "editorial_flags": [
+          "option_detail_hint: только ключ сочетает три отдельные части тела и существенно длиннее альтернатив",
+          "version_specific_source_unverified: черепашье тело, лягушачьи ноги и обезьянья голова приписаны неназванному японскому описанию"
+        ]
+      },
+      "changed_fields": [
+        "confidence",
+        "difficulty_level",
+        "editorial_flags",
+        "editorial_tag_ids",
+        "rationale"
+      ]
+    }
+  ],
+  "source_fields_changed": false,
+  "context_tags_unchanged": true,
+  "root_full_raw_reads": [
+    "prep-folklore-003",
+    "prep-folklore-004",
+    "prep-folklore-008"
+  ],
+  "source4078_semantic_integrity": "PASS",
+  "partial135_validation": "PASS",
+  "review_disagreement": "prep-folklore-003 remains7: alternatives are untranslated names and do not supply the bird description or its mapping.004/008 lowered7to4 for option cues/recognition; source uncertainty does not itself increase difficulty.",
+  "acceptance": "PENDING independent delta recheck and completion of agreed122-record combined sample; no factual certification"
+}
