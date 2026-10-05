@@ -1,0 +1,3916 @@
+{
+  "schema_version": "qm-annotation-review-delta/v1",
+  "scope": "CATS_425_C112_IDS.json ordered112",
+  "before_sha256": "0a0e334b6dd271bfdc5e3c96bee79a72696b8594e5879e16cfb872e4f67493f8",
+  "after_sha256": "06838773d81d2ae8e05559a5420a2f0736341037859f9c3d0510f15283080e6a",
+  "changed_record_count": 62,
+  "unchanged_record_count": 50,
+  "grade_change_count": 8,
+  "changes": [
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_094",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_094",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Любовь и плодородие прямо напоминают известные функции Фрейи, поэтому не нужно помнить только её котов; Хель, Сиф, Идунн и Скади — реальные богини, различение требует обычной любительской мифологии.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "explanation_source_concern: дар Тора и обычай фермеров требуют источника"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_094",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Любовь и плодородие прямо напоминают известные функции Фрейи, поэтому не нужно помнить только её котов; Хель, Сиф, Идунн и Скади — реальные богини, различение требует обычной любительской мифологии.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "explanation_source_concern: дар Тора и обычай фермеров требуют источника",
+          "near_duplicate: Фрейя ↔ коты в колеснице; cat_094,cat_292,q_cat_new_myth_2 — прямой/обратный повтор ассоциации"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_140",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_140",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Нужно назвать дарителя котов Фрейи, а не саму известную богиню; Один, Тор, Локи и великаны правдоподобны в скандинавском сюжете, найденные в лесу коты тоже возможны, ясного вывода из стема нет.",
+        "confidence": "low",
+        "editorial_flags": [
+          "myth_variant_unverified: история подарка Тора требует источника"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_140",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Нужно назвать дарителя котов Фрейи, а не саму известную богиню; Один, Тор, Локи и великаны правдоподобны в скандинавском сюжете, найденные в лесу коты тоже возможны, ясного вывода из стема нет.",
+        "confidence": "low",
+        "editorial_flags": [
+          "myth_variant_unverified: история подарка Тора требует источника",
+          "near_duplicate: даритель Тор; cat_140 спрашивает дарителя, cat_292 уже включает подарок Тора в ключ — частичный повтор, разные задачи"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_292",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_292",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:recognition",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Вопрос уже называет существ кошками, а только вариант «гигантские коты» сохраняет это описание; львы, тигры, драконы и волки не требуют знания мифа для исключения.",
+        "confidence": "high",
+        "editorial_flags": [
+          "weak_distractors: кошки названы в стеме, прочие ответы другие животные",
+          "explanation_source_concern: подарок Тора в ответе не обоснован"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_nature_cats_history_culture_cat_292",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:recognition",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Вопрос уже называет существ кошками, а только вариант «гигантские коты» сохраняет это описание; львы, тигры, драконы и волки не требуют знания мифа для исключения.",
+        "confidence": "high",
+        "editorial_flags": [
+          "weak_distractors: кошки названы в стеме, прочие ответы другие животные",
+          "explanation_source_concern: подарок Тора в ответе не обоснован",
+          "near_duplicate: Фрейя ↔ коты в колеснице; cat_094,cat_292,q_cat_new_myth_2 — прямой/обратный повтор ассоциации",
+          "near_duplicate: даритель Тор; cat_140 спрашивает дарителя, cat_292 уже включает подарок Тора в ключ — частичный повтор, разные задачи"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_cat_new_myth_2",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_cat_new_myth_2",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Здесь нет подсказки про любовь и плодородие, нужно помнить связь Фрейи с котами; Сиф, Хель и Идунн — правдоподобные богини, поэтому вопрос труднее версии с названными функциями.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "near_duplicate: cat_094 внутри пакета",
+          "explanation_concern: прообраз лесных кошек требует источника"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_mythology",
+        "question_id": "q_cat_new_myth_2",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:mythology-norse"
+        ],
+        "rationale": "Здесь нет подсказки про любовь и плодородие, нужно помнить связь Фрейи с котами; Сиф, Хель и Идунн — правдоподобные богини, поэтому вопрос труднее версии с названными функциями.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "near_duplicate: cat_094 внутри пакета",
+          "explanation_concern: прообраз лесных кошек требует источника",
+          "near_duplicate: Фрейя ↔ коты в колеснице; cat_094,cat_292,q_cat_new_myth_2 — прямой/обратный повтор ассоциации"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_029",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_029",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "Возраст Кримм Пафф нужно помнить как отдельный рекорд; 25 и 30 лет выглядят возможными для долгожителя, 45 экстремально, но точность «38 лет и 3 дня» выделяет ключ и облегчает выбор.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: возраст и официальный максимум",
+          "near_duplicate: принятый cat_284 о Кримм Пафф",
+          "option_precision_hint: только ключ включает дни"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_029",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "Возраст Кримм Пафф нужно помнить как отдельный рекорд; 25 и 30 лет выглядят возможными для долгожителя, 45 экстремально, но точность «38 лет и 3 дня» выделяет ключ и облегчает выбор.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: возраст и официальный максимум",
+          "near_duplicate: принятый cat_284 о Кримм Пафф",
+          "option_precision_hint: только ключ включает дни",
+          "near_duplicate: возраст Кримм Пафф 38 лет и 3 дня; cat_029,cat_188,cat_062"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_188",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_188",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "20, 25, 30 и 42 года допускают разные оценки долголетия, точного возраста из стема не вывести; запись с тремя днями помогает распознать типичный рекордный ответ, снижая трудность специального факта.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: возраст и статус рекорда",
+          "near_duplicate: cat_029 и принятый cat_284",
+          "option_precision_hint: дни есть только в ключе",
+          "gender_concern: Кримм Пафф названа котом"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_188",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "20, 25, 30 и 42 года допускают разные оценки долголетия, точного возраста из стема не вывести; запись с тремя днями помогает распознать типичный рекордный ответ, снижая трудность специального факта.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: возраст и статус рекорда",
+          "near_duplicate: cat_029 и принятый cat_284",
+          "option_precision_hint: дни есть только в ключе",
+          "gender_concern: Кримм Пафф названа котом",
+          "near_duplicate: возраст Кримм Пафф 38 лет и 3 дня; cat_029,cat_188,cat_062"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_013",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_013",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Анекдот о Ньютоне и кошачьей дверце встречается в популярной истории науки, но все пять учёных и изобретателей правдоподобны; формулировка не даёт опоры, кроме знакомства с этой историей.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: изобретение дверцы Ньютоном"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_013",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Анекдот о Ньютоне и кошачьей дверце встречается в популярной истории науки, но все пять учёных и изобретателей правдоподобны; формулировка не даёт опоры, кроме знакомства с этой историей.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: изобретение дверцы Ньютоном",
+          "near_duplicate: Ньютон ↔ кошачья дверца; cat_013,cat_215,cat_065"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_062",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_062",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "Нужно отличить рекордные 38 лет и 3 дня от 30 лет и 5 месяцев, 28, 25 и 42 лет; наличие второй точной величины ослабляет подсказку необычной точности, но это остаётся один рекордный факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: официально старейшая и возраст",
+          "near_duplicate: cat_029 и принятый cat_284"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_062",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:cat"
+        ],
+        "rationale": "Нужно отличить рекордные 38 лет и 3 дня от 30 лет и 5 месяцев, 28, 25 и 42 лет; наличие второй точной величины ослабляет подсказку необычной точности, но это остаётся один рекордный факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_claim_unverified: официально старейшая и возраст",
+          "near_duplicate: cat_029 и принятый cat_284",
+          "near_duplicate: возраст Кримм Пафф 38 лет и 3 дня; cat_029,cat_188,cat_062"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_215",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_215",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Эйнштейн, Ньютон, Эдисон, да Винчи и Тесла одинаково подходят широкому образу изобретателя; выбрать Ньютона можно по знакомому биографическому анекдоту, бытовая функция дверцы не помогает.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: история Ньютона",
+          "near_duplicate: cat_013"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_215",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Эйнштейн, Ньютон, Эдисон, да Винчи и Тесла одинаково подходят широкому образу изобретателя; выбрать Ньютона можно по знакомому биографическому анекдоту, бытовая функция дверцы не помогает.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: история Ньютона",
+          "near_duplicate: cat_013",
+          "near_duplicate: Ньютон ↔ кошачья дверца; cat_013,cat_215,cat_065"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_nature_cats_history_culture_cat_065",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_065",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Эксперименты в стеме подходят и Ньютону, и Эйнштейну, и Тесле, так что ключ требует припоминания анекдота; перестановка Эдисона и да Винчи не создаёт нового смыслового пути к ответу.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: два отверстия для кошки и котят",
+          "near_duplicate: cat_013 и cat_215"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_nature_cats_history_culture_cat_065",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Эксперименты в стеме подходят и Ньютону, и Эйнштейну, и Тесле, так что ключ требует припоминания анекдота; перестановка Эдисона и да Винчи не создаёт нового смыслового пути к ответу.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "attribution_legend_unverified: два отверстия для кошки и котят",
+          "near_duplicate: cat_013 и cat_215",
+          "near_duplicate: Ньютон ↔ кошачья дверца; cat_013,cat_215,cat_065"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_1",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_cat_new_eras_1",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "rationale": "Муизза — частное имя в религиозной легенде, менее известное общей аудитории; Айша, Лейла и Фатима звучат как подходящие арабские имена, признак любимой кошки не позволяет их исключить.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "religious_legend_unverified: кличка и история рукава",
+          "near_duplicate: принятый cat_116"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_history_other_eras",
+        "question_id": "q_cat_new_eras_1",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "rationale": "Муизза — частное имя в религиозной легенде, менее известное общей аудитории; Айша, Лейла и Фатима звучат как подходящие арабские имена, признак любимой кошки не позволяет их исключить.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "religious_legend_unverified: кличка и история рукава",
+          "near_duplicate: принятый cat_116",
+          "near_duplicate: кошка Мухаммеда ↔ Муизза/Муэзза; q_cat_new_eras_1,cat_097"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_046",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_046",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Кошки известны длительным сном, поэтому 2 часа, отсутствие сна и5–8 часов легко исключаются; между12–16 и20–22 требуется обычное представление о средней взрослой кошке, а не редкий точный рекорд.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "range_generalization: сон меняется с возрастом и состоянием"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_046",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Кошки известны длительным сном, поэтому 2 часа, отсутствие сна и5–8 часов легко исключаются; между12–16 и20–22 требуется обычное представление о средней взрослой кошке, а не редкий точный рекорд.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "range_generalization: сон меняется с возрастом и состоянием",
+          "near_duplicate: доля суток во сне; cat_046 часы, cat_076 процент — близкий количественный факт, численное расхождение отдельно отмечено"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_076",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_076",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Взрослая кошка много спит, что отсеивает30% и только ночь;50%,70% и90% требуют оценить долю суток, причём70% узнаётся как популярная округлённая цифра, но объяснение задаёт иной диапазон.",
+        "confidence": "low",
+        "editorial_flags": [
+          "explanation_numeric_mismatch:13–16 часов не дают ровно70 процентов",
+          "near_duplicate: cat_046 о длительности сна"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_076",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Взрослая кошка много спит, что отсеивает30% и только ночь;50%,70% и90% требуют оценить долю суток, причём70% узнаётся как популярная округлённая цифра, но объяснение задаёт иной диапазон.",
+        "confidence": "low",
+        "editorial_flags": [
+          "explanation_numeric_mismatch:13–16 часов не дают ровно70 процентов",
+          "near_duplicate: cat_046 о длительности сна",
+          "near_duplicate: доля суток во сне; cat_046 часы, cat_076 процент — близкий количественный факт, численное расхождение отдельно отмечено"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_042",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_042",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Медленное моргание как спокойствие и доверие часто описывается владельцам; сон остаётся правдоподобным, атака, болезнь и отсутствие зрения слабее, достаточно популярного знания кошачьих сигналов.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "behavior_absolute_concern: полный смысл доверия зависит от контекста",
+          "near_duplicate: принятые cat_055 и cat_337"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_042",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Медленное моргание как спокойствие и доверие часто описывается владельцам; сон остаётся правдоподобным, атака, болезнь и отсутствие зрения слабее, достаточно популярного знания кошачьих сигналов.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "behavior_absolute_concern: полный смысл доверия зависит от контекста",
+          "near_duplicate: принятые cat_055 и cat_337",
+          "near_duplicate: медленное моргание ↔ доверие; cat_042,cat_238"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_238",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_238",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Направленное хозяину моргание связывают с дружелюбием в популярных рассказах; просьба еды и сон возможны, но атака и боль хуже соответствуют медленному спокойному жесту, это одна знакомая ассоциация.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "behavior_absolute_concern: полное доверие не выводится из одного сигнала",
+          "near_duplicate: cat_042 и принятый cat_055"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_238",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Направленное хозяину моргание связывают с дружелюбием в популярных рассказах; просьба еды и сон возможны, но атака и боль хуже соответствуют медленному спокойному жесту, это одна знакомая ассоциация.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "behavior_absolute_concern: полное доверие не выводится из одного сигнала",
+          "near_duplicate: cat_042 и принятый cat_055",
+          "near_duplicate: медленное моргание ↔ доверие; cat_042,cat_238"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_184",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_184",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Комочки шерсти — распространённое бытовое объяснение поедания травы; витамины и вкус тоже кажутся разумными, заточка зубов и всеядность слабее, поэтому ключ узнаваем, хотя единая причинная версия сомнительна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "causal_generalization_concern: трава не обязательно нужна для отрыгивания шерсти"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_184",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Комочки шерсти — распространённое бытовое объяснение поедания травы; витамины и вкус тоже кажутся разумными, заточка зубов и всеядность слабее, поэтому ключ узнаваем, хотя единая причинная версия сомнительна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "causal_generalization_concern: трава не обязательно нужна для отрыгивания шерсти",
+          "near_duplicate: трава ↔ удаление шерсти; cat_184,cat_257"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_257",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_257",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Популярная связь травы с очищением от шерсти узнаваема, а термин регургитация делает ответ особенно подробным; вкус и голод возможны как причины, заточка зубов и игры слабее, редкая ветеринарная подготовка не нужна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "causal_generalization_concern: трава и регургитация не единственное объяснение",
+          "near_duplicate: cat_184",
+          "option_detail_hint: медицинское уточнение только ключа"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_behavior_cat_257",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-behavior",
+          "topic:cat"
+        ],
+        "rationale": "Популярная связь травы с очищением от шерсти узнаваема, а термин регургитация делает ответ особенно подробным; вкус и голод возможны как причины, заточка зубов и игры слабее, редкая ветеринарная подготовка не нужна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "causal_generalization_concern: трава и регургитация не единственное объяснение",
+          "near_duplicate: cat_184",
+          "option_detail_hint: медицинское уточнение только ключа",
+          "near_duplicate: трава ↔ удаление шерсти; cat_184,cat_257"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_044",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_044",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Быстрый бег кошки делает5 и10 км/ч слабыми ответами,100 чрезмерным, но30 и48–50 остаются разумными; нужна популярная цифра максимального спринта, диапазон ключа немного выделяет его.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "performance_claim_unverified: максимальный спринт зависит от измерения",
+          "near_duplicate: принятые cat_077 и cat_120",
+          "option_range_hint: единственный диапазон48–50"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_044",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Быстрый бег кошки делает5 и10 км/ч слабыми ответами,100 чрезмерным, но30 и48–50 остаются разумными; нужна популярная цифра максимального спринта, диапазон ключа немного выделяет его.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "performance_claim_unverified: максимальный спринт зависит от измерения",
+          "near_duplicate: принятые cat_077 и cat_120",
+          "option_range_hint: единственный диапазон48–50",
+          "near_duplicate: скорость спринта 48–50 км/ч; cat_044,cat_189"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_189",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_189",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "5 и10 км/ч явно малы,100 слишком велико для домашней кошки, но20 и48–50 требуют припоминания спринтерской цифры; перевод в30 миль/ч дополнительно выделяет нужный вариант.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "performance_claim_unverified: предел скорости и сравнение с олимпийцами",
+          "near_duplicate: cat_044 и принятый cat_077",
+          "option_detail_hint: только ключ дан в милях"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_189",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "5 и10 км/ч явно малы,100 слишком велико для домашней кошки, но20 и48–50 требуют припоминания спринтерской цифры; перевод в30 миль/ч дополнительно выделяет нужный вариант.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "performance_claim_unverified: предел скорости и сравнение с олимпийцами",
+          "near_duplicate: cat_044 и принятый cat_077",
+          "option_detail_hint: только ключ дан в милях",
+          "near_duplicate: скорость спринта 48–50 км/ч; cat_044,cat_189"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_035",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_035",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Пот на подушечках — распространённая любительская особенность кошек; язык отвлекает аналогией с охлаждением собак, отсутствие пота кажется возможным под мехом, уши и вся кожа менее точны, нужен один физиологический факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "anatomy_simplification: отсутствие других потовых желез требует уточнения"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_035",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Пот на подушечках — распространённая любительская особенность кошек; язык отвлекает аналогией с охлаждением собак, отсутствие пота кажется возможным под мехом, уши и вся кожа менее точны, нужен один физиологический факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "anatomy_simplification: отсутствие других потовых желез требует уточнения",
+          "near_duplicate: потоотделение ↔ подушечки лап; cat_035,cat_236,cat_100"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_236",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_236",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Подушечки лап узнаются по популярной физиологии кошек; язык и весь мех дают понятные ложные аналогии, уши и хвост слабее, но слово «только» превращает доступный факт в сомнительное абсолютное утверждение.",
+        "confidence": "low",
+        "editorial_flags": [
+          "anatomy_absolute_concern: только на лапах не равнозначно в основном в объяснении",
+          "near_duplicate: cat_035"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_236",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Подушечки лап узнаются по популярной физиологии кошек; язык и весь мех дают понятные ложные аналогии, уши и хвост слабее, но слово «только» превращает доступный факт в сомнительное абсолютное утверждение.",
+        "confidence": "low",
+        "editorial_flags": [
+          "anatomy_absolute_concern: только на лапах не равнозначно в основном в объяснении",
+          "near_duplicate: cat_035",
+          "near_duplicate: потоотделение ↔ подушечки лап; cat_035,cat_236,cat_100"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_147",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_147",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Пульс взрослой кошки — специальная физиологическая величина;60–80 привлекает человеческой нормой,200–300 кажется возможным у малого животного,40 и1000 легче исключить, точный диапазон110–140 не выводится из стема.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: узкий нормальный пульс110–140 требует условий и ветеринарного источника",
+          "near_duplicate: принятый cat_071"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_147",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Пульс взрослой кошки — специальная физиологическая величина;60–80 привлекает человеческой нормой,200–300 кажется возможным у малого животного,40 и1000 легче исключить, точный диапазон110–140 не выводится из стема.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: узкий нормальный пульс110–140 требует условий и ветеринарного источника",
+          "near_duplicate: принятый cat_071",
+          "near_duplicate: пульс 110–140 уд/мин; cat_147,cat_230,cat_360"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_230",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_230",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "110–140 и200–300 выглядят возможными частотами для малого животного,60–80 привлекает человеческой аналогией;40–60 и500 легче отсечь, но для уверенного ответа нужен ветеринарный диапазон.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: норма110–140 требует условий и источника",
+          "near_duplicate: cat_147 и принятый cat_071"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_1",
+        "question_id": "q_nature_cats_anatomy_cat_230",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "110–140 и200–300 выглядят возможными частотами для малого животного,60–80 привлекает человеческой аналогией;40–60 и500 легче отсечь, но для уверенного ответа нужен ветеринарный диапазон.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: норма110–140 требует условий и источника",
+          "near_duplicate: cat_147 и принятый cat_071",
+          "near_duplicate: пульс 110–140 уд/мин; cat_147,cat_230,cat_360"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_anatomy_cat_360",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_anatomy_cat_360",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Здесь200–220 является более узкой правдоподобной альтернативой, чем300;60–80 и50–70 похожи на человеческий пульс,300 на сильное возбуждение, точная кошачья норма остаётся специальным знанием.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: ключ110–140 и альтернатива200–220 нуждаются в возрастном и клиническом контексте",
+          "near_duplicate: cat_147,cat_230 и принятый cat_071"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_anatomy_cat_360",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Здесь200–220 является более узкой правдоподобной альтернативой, чем300;60–80 и50–70 похожи на человеческий пульс,300 на сильное возбуждение, точная кошачья норма остаётся специальным знанием.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: ключ110–140 и альтернатива200–220 нуждаются в возрастном и клиническом контексте",
+          "near_duplicate: cat_147,cat_230 и принятый cat_071",
+          "near_duplicate: пульс 110–140 уд/мин; cat_147,cat_230,cat_360"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_anatomy_cat_100",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_anatomy_cat_100",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Лапы как место потоотделения встречаются в популярных описаниях кошек; язык, уши и подмышки дают аналогии с людьми или собаками, хвост слабее, выбор доступен любителю, но исключительность места спорна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "anatomy_absolute_concern: единственное место не следует из в основном в объяснении",
+          "near_duplicate: cat_035 и cat_236"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_anatomy_cat_100",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:cat"
+        ],
+        "rationale": "Лапы как место потоотделения встречаются в популярных описаниях кошек; язык, уши и подмышки дают аналогии с людьми или собаками, хвост слабее, выбор доступен любителю, но исключительность места спорна.",
+        "confidence": "low",
+        "editorial_flags": [
+          "anatomy_absolute_concern: единственное место не следует из в основном в объяснении",
+          "near_duplicate: cat_035 и cat_236",
+          "near_duplicate: потоотделение ↔ подушечки лап; cat_035,cat_236,cat_100"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_018",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_018",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:temporal-order",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "1745 год позволяет выбрать Елизавету Петровну по школьной хронологии правлений; Пётр I к этому времени умер, Екатерина II и Павел I правили позже, Николай II значительно позже, кошачья подробность для выбора необязательна.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_claim_unverified: текст указа и дата",
+          "wording_concern: император вместо императрица"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_018",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:temporal-order",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "1745 год позволяет выбрать Елизавету Петровну по школьной хронологии правлений; Пётр I к этому времени умер, Екатерина II и Павел I правили позже, Николай II значительно позже, кошачья подробность для выбора необязательна.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_claim_unverified: текст указа и дата",
+          "wording_concern: император вместо императрица",
+          "near_duplicate: указ 1745 года о казанских котах ↔ Елизавета Петровна; cat_018,cat_250"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_019",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_019",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Эрмики заметно созвучно названию музея и выглядит естественным ласковым сокращением; гвардейцы, хранители и подвальники описывают роль, Мурзики обычную кличку, поэтому можно догадаться без знания внутреннего прозвища.",
+        "confidence": "high",
+        "editorial_flags": [
+          "lexical_hint: эрмики образовано от Эрмитажа",
+          "near_duplicate: принятый cat_244"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_019",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Эрмики заметно созвучно названию музея и выглядит естественным ласковым сокращением; гвардейцы, хранители и подвальники описывают роль, Мурзики обычную кличку, поэтому можно догадаться без знания внутреннего прозвища.",
+        "confidence": "high",
+        "editorial_flags": [
+          "lexical_hint: эрмики образовано от Эрмитажа",
+          "near_duplicate: принятый cat_244",
+          "near_duplicate: прозвище эрмики; cat_019,cat_381"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_045",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_045",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Кличка спасительницы котёнка в лондонской церкви — специальная военная история; английское Faith с переводом Вера выделяется среди Надежды, Любви, Мурки и Дины и немного облегчает редкий факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_award_unverified: история Фейт и награда",
+          "option_language_hint: только ключ включает английское имя"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_045",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Кличка спасительницы котёнка в лондонской церкви — специальная военная история; английское Faith с переводом Вера выделяется среди Надежды, Любви, Мурки и Дины и немного облегчает редкий факт.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_award_unverified: история Фейт и награда",
+          "option_language_hint: только ключ включает английское имя",
+          "near_duplicate: Фейт ↔ спасение Панды в Блиц; cat_045,cat_234 имя,cat_123 подвиг — обратный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_060",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_060",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Жёлтый бант не выводится из работы мышелова; красный ошейник, жилетка и медаль тоже выглядят как музейная символика, носочки слабее, нужен конкретный факт о внутренней практике Эрмитажа.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: официальная униформа каждого эрмитажного кота"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_060",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Жёлтый бант не выводится из работы мышелова; красный ошейник, жилетка и медаль тоже выглядят как музейная символика, носочки слабее, нужен конкретный факт о внутренней практике Эрмитажа.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: официальная униформа каждого эрмитажного кота",
+          "near_duplicate: жёлтый бант ↔ униформа; cat_060,cat_245 прямой,cat_190 обратный повтор с сильной подсказкой"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_089",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_089",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Комнатные и надворные — исторические бытовые названия, но дворцовые/подвальные и парадные/кухонные столь же логичны для разного размещения; охотники/лентяи и цвета слабее, требуется конкретная дворцовая классификация.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_classification_unverified: два класса при Екатерине II"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_089",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Комнатные и надворные — исторические бытовые названия, но дворцовые/подвальные и парадные/кухонные столь же логичны для разного размещения; охотники/лентяи и цвета слабее, требуется конкретная дворцовая классификация.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_classification_unverified: два класса при Екатерине II",
+          "near_duplicate: комнатные/надворные коты; cat_089 классификация,cat_269 один класс с подсказкой — частичный обратный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_190",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale",
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_190",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Слово «официально» прямо согласуется с униформой; красота остаётся бытовой возможностью, но путаница с крысами, отпугивание туристов и защита горла явно слабее, знание цвета банта уже дано в вопросе.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: официальный бант всем котам",
+          "near_duplicate: cat_060",
+          "lexical_hint: официально и официальная униформа"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_190",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "«Официально выдается» прямо ведёт к единственному варианту об официальной униформе; цвет банта уже дан, а крысы, туристы и защита горла не создают содержательной конкуренции.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: официальный бант всем котам",
+          "near_duplicate: cat_060",
+          "lexical_hint: официально и официальная униформа",
+          "near_duplicate: жёлтый бант ↔ униформа; cat_060,cat_245 прямой,cat_190 обратный повтор с сильной подсказкой"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_203",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale",
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_203",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:recognition",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Указание «обычно только собакам» почти прямо ведёт к «Геройской собаке»; медаль Дикин — правдоподобная животная награда, но тигр, орден и миска не объясняют собачье ограничение.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_source_unverified: точное название и дата награждения",
+          "lexical_hint: собачья награда названа Hero Dog"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_203",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:recognition",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Условие «обычно только собакам» непосредственно повторяется в названии «Геройская собака»/Hero Dog Award; остальные награды не выражают это ограничение, и биография Тары для выбора не нужна.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_source_unverified: точное название и дата награждения",
+          "lexical_hint: собачья награда названа Hero Dog",
+          "near_duplicate: Тара ↔ Hero Dog Award; cat_203 с прямой подсказкой,cat_109 без неё"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_245",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_245",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Без предыдущего вопроса жёлтый бант нужно знать как музейную подробность; ошейник, жилетка и медаль правдоподобны для «служащих» животных, шапочка слабее, цвет и форма не выводятся из стема.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: единая официальная униформа",
+          "near_duplicate: cat_060"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_245",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Без предыдущего вопроса жёлтый бант нужно знать как музейную подробность; ошейник, жилетка и медаль правдоподобны для «служащих» животных, шапочка слабее, цвет и форма не выводятся из стема.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "institutional_claim_unverified: единая официальная униформа",
+          "near_duplicate: cat_060",
+          "near_duplicate: жёлтый бант ↔ униформа; cat_060,cat_245 прямой,cat_190 обратный повтор с сильной подсказкой"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_269",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale",
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_269",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Комнатные коты естественно соответствуют живущим в залах; надворные противопоставлены помещению, золотые и охотники не описывают размещение, дворцовые стражи слабее точного бытового термина.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_naming_unverified: пенсионеры и классификация при Екатерине II",
+          "near_duplicate: cat_089",
+          "lexical_hint: живущие в залах и комнатные"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_269",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Живущие в залах почти буквально описаны вариантом «комнатные коты»; надворные противопоставлены помещению, а охотники и золотые коты не обозначают размещение, поэтому историческую классификацию помнить не нужно.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_naming_unverified: пенсионеры и классификация при Екатерине II",
+          "near_duplicate: cat_089",
+          "lexical_hint: живущие в залах и комнатные",
+          "near_duplicate: комнатные/надворные коты; cat_089 классификация,cat_269 один класс с подсказкой — частичный обратный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_381",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_381",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Оба слова ключа сохраняют корень Эрмитажа и дают сильную подсказку музейного прозвища; гвардейцы и хранители описывают функцию, подвальники место, Мурзики общую кличку.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: cat_019 и принятый cat_244",
+          "lexical_hint: эрмики и эрмиты созвучны Эрмитажу"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_381",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Оба слова ключа сохраняют корень Эрмитажа и дают сильную подсказку музейного прозвища; гвардейцы и хранители описывают функцию, подвальники место, Мурзики общую кличку.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: cat_019 и принятый cat_244",
+          "lexical_hint: эрмики и эрмиты созвучны Эрмитажу",
+          "near_duplicate: прозвище эрмики; cat_019,cat_381"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_012",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_012",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:fr",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Лайка, Белка и Стрелка знакомы как собаки, что позволяет отсечь их, но Пушинка тоже похожа на кошачье имя; Фелисетт нужно знать из менее заметной французской космической истории.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_superlative_unverified: первая и единственная кошка в космосе",
+          "near_duplicate: принятые cat_059 и cat_345"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_012",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:fr",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Лайка, Белка и Стрелка знакомы как собаки, что позволяет отсечь их, но Пушинка тоже похожа на кошачье имя; Фелисетт нужно знать из менее заметной французской космической истории.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_superlative_unverified: первая и единственная кошка в космосе",
+          "near_duplicate: принятые cat_059 и cat_345",
+          "near_duplicate: кошка-космонавт ↔ Фелисетт; cat_012,cat_286"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_286",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_286",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:fr",
+          "domain:history",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Фелисетт узнаётся любителем истории космоса, остальные знаменитые имена ассоциируются с собаками; дата здесь не дана, поэтому нужна именно кличка кошки, хотя отсечение собачьих вариантов облегчает вопрос.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_superlative_unverified: единственная кошка-космонавт",
+          "near_duplicate: cat_012 и принятый cat_059"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_286",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:fr",
+          "domain:history",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Фелисетт узнаётся любителем истории космоса, остальные знаменитые имена ассоциируются с собаками; дата здесь не дана, поэтому нужна именно кличка кошки, хотя отсечение собачьих вариантов облегчает вопрос.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_superlative_unverified: единственная кошка-космонавт",
+          "near_duplicate: cat_012 и принятый cat_059",
+          "near_duplicate: кошка-космонавт ↔ Фелисетт; cat_012,cat_286"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_221",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_221",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Аосиму надо отличить от другого кошачьего острова Тасиросимы; Хоккайдо, Окинава и Сикоку крупнее и менее похожи на описанное место, но само36-кратное соотношение не даёт географического вывода.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_ratio_unverified:36:1 без даты",
+          "near_duplicate: принятые cat_017 и cat_091"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_2",
+        "question_id": "q_nature_cats_history_culture_cat_221",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Аосиму надо отличить от другого кошачьего острова Тасиросимы; Хоккайдо, Окинава и Сикоку крупнее и менее похожи на описанное место, но само36-кратное соотношение не даёт географического вывода.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_ratio_unverified:36:1 без даты",
+          "near_duplicate: принятые cat_017 и cat_091",
+          "near_duplicate: Аосима ↔ остров с отношением 36:1; cat_221,cat_170; школьная история cat_325 — отдельный факт"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_014",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_014",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Кот-мэр Стаббс встречается в международных курьёзных новостях, но имя надо помнить отдельно; Сокс, Ларри и Саймон тоже известные общественные коты, Барни обычная кличка, Талкитна не даёт языковой подсказки.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_concern: почётный мэр не обычная избранная должность, срок требует источника"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_014",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Кот-мэр Стаббс встречается в международных курьёзных новостях, но имя надо помнить отдельно; Сокс, Ларри и Саймон тоже известные общественные коты, Барни обычная кличка, Талкитна не даёт языковой подсказки.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_concern: почётный мэр не обычная избранная должность, срок требует источника",
+          "near_duplicate: Стаббс ↔ почётный мэр Талкитны; cat_014,cat_364 имя,cat_066 город — обратный повтор, не одинаковая трудность"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_109",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_109",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Без фразы «обычно собакам» награду Hero Dog надо связать с известной историей Тары; медаль Дикин и «За отвагу» правдоподобны, золотая миска и французское гражданство слабее, собака-нападающий лишь косвенно помогает.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_source_unverified: точное название и дата награды",
+          "near_duplicate: cat_203"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_109",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Без фразы «обычно собакам» награду Hero Dog надо связать с известной историей Тары; медаль Дикин и «За отвагу» правдоподобны, золотая миска и французское гражданство слабее, собака-нападающий лишь косвенно помогает.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_source_unverified: точное название и дата награды",
+          "near_duplicate: cat_203",
+          "near_duplicate: Тара ↔ Hero Dog Award; cat_203 с прямой подсказкой,cat_109 без неё"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_123",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_123",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Спасение котёнка под бомбами естественно подходит награде за мужество, но поимка100 крыс тоже напоминает реальные подвиги корабельных котов; служба, тишина на мессе и предсказания слабее, история Фейт всё же нужна.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_and_deed_unverified: специальная медаль PDSA и события",
+          "related_fact: cat_045"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_123",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Спасение котёнка под бомбами естественно подходит награде за мужество, но поимка100 крыс тоже напоминает реальные подвиги корабельных котов; служба, тишина на мессе и предсказания слабее, история Фейт всё же нужна.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_and_deed_unverified: специальная медаль PDSA и события",
+          "related_fact: cat_045",
+          "near_duplicate: Фейт ↔ спасение Панды в Блиц; cat_045,cat_234 имя,cat_123 подвиг — обратный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_170",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_170",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Аосима и Тасиросима — два содержательно близких кошачьих острова, крупные Хоккайдо, Окинава и Сикоку легче исключить; указанная пропорция требует знания заметки об Аосиме, а объяснение численно ей противоречит.",
+        "confidence": "low",
+        "editorial_flags": [
+          "numeric_contradiction:80 кошек на4 жителей дают20:1, не36:1",
+          "dated_population_unverified:2024 год",
+          "near_duplicate: cat_221 и принятый cat_017"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_170",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Аосима и Тасиросима — два содержательно близких кошачьих острова, крупные Хоккайдо, Окинава и Сикоку легче исключить; указанная пропорция требует знания заметки об Аосиме, а объяснение численно ей противоречит.",
+        "confidence": "low",
+        "editorial_flags": [
+          "numeric_contradiction:80 кошек на4 жителей дают20:1, не36:1",
+          "dated_population_unverified:2024 год",
+          "near_duplicate: cat_221 и принятый cat_017",
+          "near_duplicate: Аосима ↔ остров с отношением 36:1; cat_221,cat_170; школьная история cat_325 — отдельный факт"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_234",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_234",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Котёнок Панда не раскрывает имя матери Фейт, это частный эпизод Блица; английское Faith в лондонском контексте заметнее русских Надежды, Любви, Мурки и Дины, поэтому редкую кличку можно немного легче узнать.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_deed_unverified:1940 год и спасение Панды",
+          "near_duplicate: cat_045",
+          "option_language_hint: английская запись только в ключе"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_234",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "era:twentieth-century",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:twentieth-century",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:historical-events"
+        ],
+        "rationale": "Котёнок Панда не раскрывает имя матери Фейт, это частный эпизод Блица; английское Faith в лондонском контексте заметнее русских Надежды, Любви, Мурки и Дины, поэтому редкую кличку можно немного легче узнать.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_deed_unverified:1940 год и спасение Панды",
+          "near_duplicate: cat_045",
+          "option_language_hint: английская запись только в ключе",
+          "near_duplicate: Фейт ↔ спасение Панды в Блиц; cat_045,cat_234 имя,cat_123 подвиг — обратный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_250",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_250",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:temporal-order",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Школьная хронология российского престола ставит1745 год в правление Елизаветы Петровны; Пётр I уже умер, Екатерина II, Павел I и Николай II правили позже, поэтому не нужно помнить точное количество котов.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_claim_unverified:30 котов и дата указа",
+          "near_duplicate: cat_018"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_250",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "country:ru",
+          "domain:history",
+          "era:early-modern",
+          "skill:temporal-order",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "era:early-modern",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Школьная хронология российского престола ставит1745 год в правление Елизаветы Петровны; Пётр I уже умер, Екатерина II, Павел I и Николай II правили позже, поэтому не нужно помнить точное количество котов.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "historical_claim_unverified:30 котов и дата указа",
+          "near_duplicate: cat_018",
+          "near_duplicate: указ 1745 года о казанских котах ↔ Елизавета Петровна; cat_018,cat_250"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_274",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale",
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_274",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "rationale": "Memory известна намного шире остальных песен «Кошек», поэтому название можно узнать даже при ограниченном знакомстве с мюзиклом; Macavity, Rum Tum Tugger и Skimbleshanks действительно подходят другим персонажам, роль Гризабеллы уточняет выбор.",
+        "confidence": "high",
+        "editorial_flags": [
+          "inverse_repeat: принятый cat_156 связывает Memory с Гризабеллой"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_274",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "rationale": "Memory широко узнаётся как главный хит «Кошек» и здесь прямо присутствует среди названий; остальные четыре песни правдоподобны внутри мюзикла, но обычное знакомство с известной арией позволяет связать её с Гризабеллой без подробного знания спектакля.",
+        "confidence": "high",
+        "editorial_flags": [
+          "inverse_repeat: принятый cat_156 связывает Memory с Гризабеллой",
+          "near_duplicate: Гризабелла ↔ Memory; cat_274,cat_386"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_386",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale",
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_386",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "rationale": "Песня Memory узнаваема как главный хит мюзикла, перевод «Память» дополнительно помогает вспомнить название; остальные четыре песни реальны в том же спектакле, поэтому знание только слова «Кошки» не полностью решает вопрос.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: cat_274 и обратный принятый cat_156"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_386",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:arts",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "context_tag_ids": [
+          "domain:arts",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:composition",
+          "topic:musical-theatre"
+        ],
+        "rationale": "Memory — самый узнаваемый хит «Кошек», а перевод «Память» дополнительно помогает припомнить его; реальные песни других персонажей оставляют небольшую конкуренцию, поэтому достаточно поверхностного знакомства с мюзиклом.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: cat_274 и обратный принятый cat_156",
+          "near_duplicate: Гризабелла ↔ Memory; cat_274,cat_386"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_020",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_020",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Медаль Дикин — специальное знание о животных на службе; Пурпурное сердце и медаль за отвагу звучат как награды за подвиг, орден Ленина не подходит британскому кораблю, золотая рыбка явно шутливая, требуется любительская история.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_superlative_unverified: единственный кот и медаль Дикин"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_020",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Медаль Дикин — специальное знание о животных на службе; Пурпурное сердце и медаль за отвагу звучат как награды за подвиг, орден Ленина не подходит британскому кораблю, золотая рыбка явно шутливая, требуется любительская история.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_superlative_unverified: единственный кот и медаль Дикин",
+          "near_duplicate: Саймон ↔ медаль Дикин; cat_020,cat_243"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_066",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_066",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Знать имя Стаббса проще, чем помнить маленькую Талкитну; Анкоридж, Джуно, Ном и Фэрбанкс — реальные аляскинские места без исключающей подсказки, поэтому требуется конкретная география курьёзной биографии.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_and_term_unverified: мэр и20 лет",
+          "inverse_repeat: cat_014"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_066",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:geography",
+          "skill:spatial",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "context_tag_ids": [
+          "domain:geography",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:world-geography"
+        ],
+        "rationale": "Знать имя Стаббса проще, чем помнить маленькую Талкитну; Анкоридж, Джуно, Ном и Фэрбанкс — реальные аляскинские места без исключающей подсказки, поэтому требуется конкретная география курьёзной биографии.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_and_term_unverified: мэр и20 лет",
+          "inverse_repeat: cat_014",
+          "near_duplicate: Стаббс ↔ почётный мэр Талкитны; cat_014,cat_364 имя,cat_066 город — обратный повтор, не одинаковая трудность"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_031",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_031",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Clowder — малоупотребительное английское собирательное слово, которое нужно отличить от общего «стая» и львиного прайда; собрание и гуртовка слабее, латинская запись помогает знакомому с языковой викториной, но не обычному владельцу.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "language_scope_missing: английская традиция не указана в стеме",
+          "related_fact: принятый cat_276 о собирательных названиях"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_031",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Clowder — малоупотребительное английское собирательное слово, которое нужно отличить от общего «стая» и львиного прайда; собрание и гуртовка слабее, латинская запись помогает знакомому с языковой викториной, но не обычному владельцу.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "language_scope_missing: английская традиция не указана в стеме",
+          "related_fact: принятый cat_276 о собирательных названиях",
+          "near_duplicate: взрослые кошки ↔ Clowder; cat_031,cat_182; другие коллективные слова не равнозначный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_057",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_057",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Kindle — специальное собирательное существительное, а Litter является сильным содержательным конкурентом; Clowder относится к взрослым кошкам, Pride и Pack другим группам, нужны тонкие языковые различия и уточнение смысла группы.",
+        "confidence": "low",
+        "editorial_flags": [
+          "ambiguous_collective_noun: Litter тоже подходит группе котят, официальный термин требует словаря"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_057",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Kindle — специальное собирательное существительное, а Litter является сильным содержательным конкурентом; Clowder относится к взрослым кошкам, Pride и Pack другим группам, нужны тонкие языковые различия и уточнение смысла группы.",
+        "confidence": "low",
+        "editorial_flags": [
+          "ambiguous_collective_noun: Litter тоже подходит группе котят, официальный термин требует словаря",
+          "near_duplicate: котята ↔ Kindle; cat_057,cat_119,cat_232,cat_359; различие один помёт и Litter оставлено в отдельных флагах"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_119",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_119",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Уточнение одной матери усиливает правдоподобие «выводка» вместо Kindle; Clowder, Pride и Pack можно различить по животным, но уверенный выбор редкого английского термина требует словарной оговорки, отсутствующей в стеме.",
+        "confidence": "low",
+        "editorial_flags": [
+          "ambiguous_key: группа одной матери обычно подразумевает litter, русский выводок тоже подходит",
+          "near_duplicate: cat_057"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_119",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Уточнение одной матери усиливает правдоподобие «выводка» вместо Kindle; Clowder, Pride и Pack можно различить по животным, но уверенный выбор редкого английского термина требует словарной оговорки, отсутствующей в стеме.",
+        "confidence": "low",
+        "editorial_flags": [
+          "ambiguous_key: группа одной матери обычно подразумевает litter, русский выводок тоже подходит",
+          "near_duplicate: cat_057",
+          "near_duplicate: котята ↔ Kindle; cat_057,cat_119,cat_232,cat_359; различие один помёт и Litter оставлено в отдельных флагах"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_145",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_145",
+        "difficulty_level": 8,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Pounce как собирательное название редко даже для изучающих английский; пранс, слайд и джамп звучат как заимствованные слова движения и не отсеиваются без словаря, мяу-хор очевидно шуточный, требуется узкая лексическая запись.",
+        "confidence": "low",
+        "editorial_flags": [
+          "lexical_claim_unverified: pounce как группа взрослых кошек требует словарного источника"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_145",
+        "difficulty_level": 8,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Pounce как собирательное название редко даже для изучающих английский; пранс, слайд и джамп звучат как заимствованные слова движения и не отсеиваются без словаря, мяу-хор очевидно шуточный, требуется узкая лексическая запись.",
+        "confidence": "low",
+        "editorial_flags": [
+          "lexical_claim_unverified: pounce как группа взрослых кошек требует словарного источника",
+          "near_duplicate: группа кошек ↔ Pounce; cat_145 прямой,cat_265 с переводом прыжок — разные подсказки"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_182",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_182",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Для взрослых кошек нужно выбрать Clowder, а Kindle является особенно близким термином о котятах; прайд, стая и рой известнее и легче исключить, если знаком с английскими собирательными словами животных.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "near_duplicate: cat_031",
+          "related_fact: принятый cat_276"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_182",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Для взрослых кошек нужно выбрать Clowder, а Kindle является особенно близким термином о котятах; прайд, стая и рой известнее и легче исключить, если знаком с английскими собирательными словами животных.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "near_duplicate: cat_031",
+          "related_fact: принятый cat_276",
+          "near_duplicate: взрослые кошки ↔ Clowder; cat_031,cat_182; другие коллективные слова не равнозначный повтор"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_232",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_232",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Kindle нужно отличить от Clowder и Pounce, которые также относятся к кошачьим группам; Pride и Pack легче исключаются, но уточнение одного помёта требует точной языковой категории, поэтому это более специальное различение.",
+        "confidence": "low",
+        "editorial_flags": [
+          "lexical_scope_concern: один помёт и kindle требуют разграничения с отсутствующим litter",
+          "near_duplicate: cat_057 и cat_119"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_232",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "rationale": "Kindle нужно отличить от Clowder и Pounce, которые также относятся к кошачьим группам; Pride и Pack легче исключаются, но уточнение одного помёта требует точной языковой категории, поэтому это более специальное различение.",
+        "confidence": "low",
+        "editorial_flags": [
+          "lexical_scope_concern: один помёт и kindle требуют разграничения с отсутствующим litter",
+          "near_duplicate: cat_057 и cat_119",
+          "near_duplicate: котята ↔ Kindle; cat_057,cat_119,cat_232,cat_359; различие один помёт и Litter оставлено в отдельных флагах"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_265",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_265",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Значение «прыжок» даёт путь через знакомое английское pounce, даже без знания названий групп; Clowder и Glaring обозначают другие слова, Pride и Pack переводятся иначе, но pounce не входит в самый базовый словарь.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "lexical_claim_unverified: pounce как собирательное название",
+          "near_duplicate: cat_145",
+          "translation_hint: значение прыжок облегчает выбор"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_265",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Значение «прыжок» даёт путь через знакомое английское pounce, даже без знания названий групп; Clowder и Glaring обозначают другие слова, Pride и Pack переводятся иначе, но pounce не входит в самый базовый словарь.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "lexical_claim_unverified: pounce как собирательное название",
+          "near_duplicate: cat_145",
+          "translation_hint: значение прыжок облегчает выбор",
+          "near_duplicate: группа кошек ↔ Pounce; cat_145 прямой,cat_265 с переводом прыжок — разные подсказки"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_359",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_359",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Две латинские формы Clowder и Kindle конкурируют как взрослые кошки и котята, а прайд, стая и рой менее специфичны; нужно знать менее употребительное собирательное название, но сильной альтернативы Litter здесь нет.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "language_scope_missing: английский язык не указан в стеме",
+          "near_duplicate: cat_057 и cat_232"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_3",
+        "question_id": "q_nature_cats_history_culture_cat_359",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:language",
+          "skill:terminology",
+          "topic:cat",
+          "topic:english-vocabulary",
+          "topic:word-meaning"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:cat",
+          "topic:word-meaning"
+        ],
+        "rationale": "Две латинские формы Clowder и Kindle конкурируют как взрослые кошки и котята, а прайд, стая и рой менее специфичны; нужно знать менее употребительное собирательное название, но сильной альтернативы Litter здесь нет.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "language_scope_missing: английский язык не указан в стеме",
+          "near_duplicate: cat_057 и cat_232",
+          "near_duplicate: котята ↔ Kindle; cat_057,cat_119,cat_232,cat_359; различие один помёт и Litter оставлено в отдельных флагах"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_326",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_326",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Личное имя ухаживающей за кошками почти неизвестно, но Наоко Камимото единственная выглядит японкой в вопросе об Аосиме; Джордж, Мэри Энн, Михаил и Виктория дают сильную возможность исключения, поэтому редкий факт в этих вариантах заметно облегчается.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_person_claim: единственный ухаживающий в2024–2025 требует датированного источника",
+          "option_origin_hint: только Наоко Камимото явно японское имя"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_326",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:jp",
+          "domain:society",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Наоко Камимото — единственное явно японское имя среди Джорджа, Мэри Энн, Михаила и Виктории в вопросе об Аосиме; национальная форма вариантов сильно облегчает редкий личный факт, хотя сама по себе не доказывает ключ.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_person_claim: единственный ухаживающий в2024–2025 требует датированного источника",
+          "option_origin_hint: только Наоко Камимото явно японское имя"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_243",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_243",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "История Саймона связана с медалью Дикин, но название награды нужно знать отдельно; Пурпурное сердце и «За отвагу» кажутся уместными за подвиг, орден Ленина и золотая рыбка слабее, нужна подготовленная любительская эрудиция.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_superlative_unverified: единственный кот с медалью",
+          "near_duplicate: cat_020"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_243",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "История Саймона связана с медалью Дикин, но название награды нужно знать отдельно; Пурпурное сердце и «За отвагу» кажутся уместными за подвиг, орден Ленина и золотая рыбка слабее, нужна подготовленная любительская эрудиция.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "award_superlative_unverified: единственный кот с медалью",
+          "near_duplicate: cat_020",
+          "near_duplicate: Саймон ↔ медаль Дикин; cat_020,cat_243"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_364",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_364",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Стаббс как аляскинский кот-мэр встречается в медийных курьёзах, но Сокс и Ларри тоже связаны с политикой, Саймон с общественной известностью; Василий слабее американского контекста, имя всё равно нужно припомнить.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_concern: почётный мэр, первая и срок20 лет требуют источника",
+          "near_duplicate: cat_014"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_364",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "country:us",
+          "domain:society",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:cat"
+        ],
+        "rationale": "Стаббс как аляскинский кот-мэр встречается в медийных курьёзах, но Сокс и Ларри тоже связаны с политикой, Саймон с общественной известностью; Василий слабее американского контекста, имя всё равно нужно припомнить.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_role_concern: почётный мэр, первая и срок20 лет требуют источника",
+          "near_duplicate: cat_014",
+          "near_duplicate: Стаббс ↔ почётный мэр Талкитны; cat_014,cat_364 имя,cat_066 город — обратный повтор, не одинаковая трудность"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_169",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_169",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "country:iq",
+          "domain:language",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat",
+          "topic:word-origin"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:animal-anatomy",
+          "topic:cat",
+          "topic:word-origin"
+        ],
+        "rationale": "Сходство tabby с Аттабией позволяет выбрать район по звуку, даже не зная истории ткани; Басра, Вавилон, Мекка и Дамаск — более знакомые названия, но ни одно не даёт такой фонетической связи.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "etymological_source_unverified: квартал и цепочка заимствования",
+          "lexical_hint: tabby и Аттабия созвучны"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_169",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "country:iq",
+          "domain:language",
+          "skill:association",
+          "topic:animal-anatomy",
+          "topic:cat",
+          "topic:word-origin"
+        ],
+        "context_tag_ids": [
+          "domain:language",
+          "topic:animal-anatomy",
+          "topic:cat",
+          "topic:word-origin"
+        ],
+        "rationale": "Названное tabby заметно созвучно Аттабии, единственному подходящему по звуку варианту; остальные ответы — более известные географические названия, поэтому фонетическая связь позволяет выбрать квартал без знания истории шёлка.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "etymological_source_unverified: квартал и цепочка заимствования",
+          "lexical_hint: tabby и Аттабия созвучны"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_224",
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_224",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Able Seacat выглядит специально кошачьим вариантом морского звания и сопровождается обычным матросом; адмирал, капитан и командор высокие офицерские ранги, гвардеец менее связан с кораблём, поэтому можно догадаться без редкой биографии.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_rank_unverified: Able Seacat и причина повышения",
+          "related_fact: cat_159",
+          "option_word_hint: Seacat прямо включает кота"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_224",
+        "difficulty_level": 1,
+        "editorial_tag_ids": [
+          "country:gb",
+          "domain:history",
+          "skill:association",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:history",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:service-animals"
+        ],
+        "rationale": "Только Able Seacat содержит cat и снабжено переводом «Матрос», подходящим корабельному коту; адмирал, капитан и командор — высокие офицерские звания, поэтому необычный вариант раскрывает ответ без знания истории Саймона.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "honorary_rank_unverified: Able Seacat и причина повышения",
+          "related_fact: cat_159",
+          "option_word_hint: Seacat прямо включает кота"
+        ]
+      }
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_097",
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_097",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "rationale": "Сюжет с рукавом помогает знакомому с легендой вспомнить Муэззу, но не выводит имя сам по себе; Фатима, Лейла и Аиша звучат столь же уместно, Муська легче отсеивается, остаётся частная религиозная традиция.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "legend_presented_as_fact: история рукава не атрибутирована легенде в стеме",
+          "near_duplicate: cat_new_eras_1 и принятый cat_116"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "cats_trivia_records_and_general_part_4",
+        "question_id": "q_nature_cats_history_culture_cat_097",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:direct-recall",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:animal-culture",
+          "topic:cat",
+          "topic:religion"
+        ],
+        "rationale": "Сюжет с рукавом помогает знакомому с легендой вспомнить Муэззу, но не выводит имя сам по себе; Фатима, Лейла и Аиша звучат столь же уместно, Муська легче отсеивается, остаётся частная религиозная традиция.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "legend_presented_as_fact: история рукава не атрибутирована легенде в стеме",
+          "near_duplicate: cat_new_eras_1 и принятый cat_116",
+          "near_duplicate: кошка Мухаммеда ↔ Муизза/Муэзза; q_cat_new_eras_1,cat_097"
+        ]
+      }
+    }
+  ],
+  "unchanged_records": [
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_122"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_172"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_291"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_293"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_294"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_nature_cats_history_culture_cat_322"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_cat_new_myth_1"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_mythology",
+      "question_id": "q_cat_new_myth_3"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_2"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_3"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_4"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_5"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_6"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_7"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_8"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_history_other_eras",
+      "question_id": "q_cat_new_eras_9"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_252"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_179"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_173"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_021"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_216"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_008"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_032"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_231"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_253"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_behavior_cat_136"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_003"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_1",
+      "question_id": "q_nature_cats_anatomy_cat_040"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_anatomy_cat_332"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_anatomy_cat_278"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_285"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_anatomy_cat_153"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_037"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_049"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_048"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_335"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_2",
+      "question_id": "q_nature_cats_history_culture_cat_117"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_324"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_166"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_177"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_325"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_158"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_3",
+      "question_id": "q_nature_cats_history_culture_cat_255"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_373"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_050"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_061"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_167"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_201"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_159"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "cats_trivia_records_and_general_part_4",
+      "question_id": "q_nature_cats_history_culture_cat_078"
+    }
+  ],
+  "verification": {
+    "performed_by": "same author; independent root verification pending",
+    "cli_chunk": "f0e8f5",
+    "partial": "PASS 112/4078 source integrity preserved",
+    "assertion_chunk": "7e5a4d",
+    "exact_order_and_scope": 112,
+    "all_other_rows_equal": true,
+    "only_changed_fields": [
+      "difficulty_level",
+      "rationale",
+      "editorial_flags"
+    ],
+    "taxonomy_tags_context_confidence_identity_unchanged": true,
+    "original_flags_retained": true,
+    "source_semantic_records_preserved": 4078,
+    "source_raw_pack_hashes_preserved": 6,
+    "limits": "No independent acceptance or factual certification. Source integrity covers frozen4078; duplicate judgments compare reviewed raw facts, not a global exhaustive duplicate search."
+  }
+}

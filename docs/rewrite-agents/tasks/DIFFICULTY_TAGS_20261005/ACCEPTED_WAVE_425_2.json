@@ -1,0 +1,26 @@
+{
+  "records": 112,
+  "accepted_total": 2777,
+  "remaining": 1301,
+  "change": "byte-identical Cats C112 accepted copy after independent full112 review and exact62-record delta recheck",
+  "artifacts": [
+    {
+      "source": "docs/rewrite-agents/tasks/DIFFICULTY_TAGS_20261005/annotations/cats-425-c112.json",
+      "accepted": "docs/rewrite-agents/tasks/DIFFICULTY_TAGS_20261005/accepted/cats-425-c112.json",
+      "sha256": "06838773d81d2ae8e05559a5420a2f0736341037859f9c3d0510f15283080e6a",
+      "records": 112,
+      "review": "review/CATS_425_C112.md",
+      "review_sha256": "e6ffad899d4423b44d228da73fdcc6343647aeec78fd3e74e5240e5f6033b1b5",
+      "delta": "review/CATS_C112_DELTA.json",
+      "delta_sha256": "beb7e387ebc2df1d06781b7fb32a6eb93c4c03e9e6d776c49dc5bad880a1f8d7",
+      "preimage": "review/CATS_C112_BEFORE_FIX.json",
+      "preimage_sha256": "0a0e334b6dd271bfdc5e3c96bee79a72696b8594e5879e16cfb872e4f67493f8",
+      "review_format_delta": "review/FORMAT_ONLY_C112_REVIEW.json"
+    }
+  ],
+  "limitations": [
+    "editorial difficulty estimates, not calibrated response rates",
+    "metadata acceptance does not certify or repair original source facts/keys",
+    "full application/index/catalog/production rollout pending"
+  ]
+}

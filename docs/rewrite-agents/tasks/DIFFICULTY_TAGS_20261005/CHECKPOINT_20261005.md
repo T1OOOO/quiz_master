@@ -45,8 +45,8 @@ independent Codex contexts, not an independent-provider certification.
   correct discovery invocation above was rerun successfully.
 - Contract checker:3positive cases,7scoring cases,37named negatives rejected,
   content hash8bb47ad26c94bade21146b318dea66544412fdebb67dde31612f1d3c995685e5.
-- Root partial combined metadata check2665/4078 PASS after accepted Philias165,
-  Preparation75, fresh Pets75 and NewYear75 copies; reviewers also checked candidates.
+- Root partial combined metadata check2777/4078 PASS after accepted Philias165,
+  Preparation75, fresh Pets75, NewYear75 and Cats112 copies; reviewers also checked candidates.
   All source semantic hashes remain frozen; partial success is not full coverage.
 
 Pinned CI190e863 now passed all3 jobs, including real PostgreSQL/health, Web and
@@ -60,8 +60,8 @@ The earlier20 additions and latest2 sports/figure-skating additions have indepen
 vocabulary reviews; all previous definitions remain unchanged. Game catalog/manifest edits only rebind this taxonomy reference and
 refresh the catalog hash; game facts, coordinates and licensed pictures unchanged.
 
-Accepted copies2665/4078 are recorded by ACCEPTED_REFERENCE_REBIND,
-ACCEPTED_WAVE_423_2/3/4/5/6, ACCEPTED_REFERENCE_REBIND_425 and ACCEPTED_WAVE_425_1.
+Accepted copies2777/4078 are recorded by ACCEPTED_REFERENCE_REBIND,
+ACCEPTED_WAVE_423_2/3/4/5/6, ACCEPTED_REFERENCE_REBIND_425 and ACCEPTED_WAVE_425_1/2.
 These include all299 freshly reread food records, HomeAlone185,
 celebrities33 and animal phobias89 after review corrections. Root original
 country/capital/Study/word/firstpet annotation provenance remains explicit in
@@ -84,8 +84,23 @@ All numeric ratings and source fields remain unchanged;40 low/43 flagged rows
 are not factual certification. Source key/explanation follow-up: quiz_master-jsu.
 After425 rebind, root Python11 and game catalog5 tests passed; all2590 prior
 record arrays match GitHEAD, and game facts/media/geometry remain unchanged.
-Still unclassified1413: cats112, dogs358, NewYear678, Preparation265, covered by
-nine exact disjoint unstarted frozen425 packets. Full application, deterministic
+Cats112 passed independent full112 raw/annotation review and a bounded final
+62-record delta recheck. Root reread all8 changed-grade source records and verified
+62 changed/50 unchanged, retained prior flags, exact112 order, six source byte
+hashes and full4078 semantic integrity. Eight visible-cue estimates were lowered;
+59 rows gained60 private duplicate flags. Aoshima school history, distinct
+English collective words and Hermitage aliases/uniform/classes remain separate
+facts. Accepted byte copy is recorded by ACCEPTED_WAVE_425_2; factual claims and
+keys have not been independently sourced or repaired by this metadata work.
+
+Still awaiting acceptance1301: dogs358, NewYear678, Preparation265, covered by
+the eight remaining exact disjoint frozen425 packets. Preparation B135 is an
+author-complete, structurally validated candidate, pending independent review;
+Dogs A180 has30 literal records saved after60 full raw reads, with150 candidate
+records still unwritten. These165 draft rows are excluded from accepted totals.
+Fresh combined accepted2777 and draft165 partial checks preserve source4078
+semantic integrity and reject overlap. NewYear source-key follow-up remains jsu.
+Full application, deterministic
 private index/catalog generation, provider privacy checks and synchronized release
 remain required. No fallback scores or keyword-based tagging will fill these gaps.
 
