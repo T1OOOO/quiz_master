@@ -1,0 +1,1750 @@
+{
+  "schema_version": "qm-annotation-review-delta/v1",
+  "packet": "DOGS_425_A180_IDS.json",
+  "source_baseline": "e802ed21db936bdb9809bab2d137903eb0aa425e",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
+  "status": "READY_FOR_DELTA_REVIEW",
+  "before_sha256": "f5aead00a7848779a2fb52d79f849c30726f9acfc2de1bd4633e07566c1d5f33",
+  "after_sha256": "58eb33960cfcd676813684ad326c4fc19605b89b860998fe803e9bd545304bd0",
+  "report_before_sha256": "8802a77f3ca6be7a44615fc5b7cd731578269ccc5048de70b126f7462381f6cd",
+  "report_after_sha256": "20ce9acfd596e1b55941423df4c405a94168e72786b0db6ed4cb8a848191be60",
+  "review_findings": 12,
+  "changed_rows": 15,
+  "score_and_rationale_changes": 13,
+  "flag_only_changes": 2,
+  "unchanged_rows": 165,
+  "changes": [
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_biology_345"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_biology_345",
+        "difficulty_level": 5,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:dog"
+        ],
+        "rationale": "Подсказка50% быстрее человеческого пульса позволяет оценить около120 при исходных80;90 и150 тоже зависят от принятой нормы, поэтому число требует оговорки.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: единый средний пульс без условий",
+          "numeric_hint:50% быстрее человека"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_biology_345",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-anatomy",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-anatomy",
+          "topic:dog"
+        ],
+        "rationale": "Подсказка «на 50% быстрее человеческого» позволяет от привычной оценки 80 ударов получить 120; сравнение готовых чисел заметно легче самостоятельного знания нормы пульса, хотя исходная человеческая норма требует оговорки.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_range_concern: единый средний пульс без условий",
+          "numeric_hint:50% быстрее человека"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_204"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_204",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:terminology",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "rationale": "Четыре протеза подсказывают бионику, но Робопес и Кибер-друг тоже подходят по смыслу; требуется узнать закрепившееся прозвище, а не имя животного.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "first_claim_unverified: четыре протеза",
+          "near_duplicate: q_dog_history_04,q_dog_history_204,q_dog_history_305 —Наки’о/бионическая собака, inverse"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_204",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:terminology",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "rationale": "Четыре протеза прямо связывают Наки’о с бионикой и ответом «Бионическая собака»; Робопес и Кибер-друг лишь общие фантазийные названия, а точную биографию знать не обязательно.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "first_claim_unverified: четыре протеза",
+          "near_duplicate: q_dog_history_04,q_dog_history_204,q_dog_history_305 —Наки’о/бионическая собака, inverse"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_305"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_305",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:terminology",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "rationale": "«Бионическая» естественно описывает замену конечностей, но Робопес и Кибер-друг сохраняют конкуренцию; Супер-Хаски и Стальной бегун менее точны, знание истории умеренно помогает.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "first_claim_unverified: первый обладатель четырёх протезов",
+          "near_duplicate: q_dog_history_04,q_dog_history_204,q_dog_history_305 —Наки’о/бионическая собака, inverse"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_history_305",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:society",
+          "skill:terminology",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "context_tag_ids": [
+          "domain:society",
+          "topic:animal-culture",
+          "topic:dog",
+          "topic:medical-terms"
+        ],
+        "rationale": "Замена четырёх конечностей прозрачна для термина «бионическая собака»; Железный Лапик, Супер-Хаски и Стальной бегун выглядят придуманными прозвищами, поэтому описание существенно облегчает выбор.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "first_claim_unverified: первый обладатель четырёх протезов",
+          "near_duplicate: q_dog_history_04,q_dog_history_204,q_dog_history_305 —Наки’о/бионическая собака, inverse"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_myth_29"
+      },
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_myth_29",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:quantitative",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "rationale": "Трёхглавый Цербер — массовый образ античной мифологии; две или семь голов напоминают других чудовищ, но знакомая школьная ассоциация обычно достаточна.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377 —три головы Цербера",
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы Цербера"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_anatomy_part_2",
+        "question_id": "q_dog_myth_29",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:quantitative",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "rationale": "Трёхглавый Цербер — массовый образ античной мифологии; две или семь голов напоминают других чудовищ, но знакомая школьная ассоциация обычно достаточна.",
+        "confidence": "high",
+        "editorial_flags": [
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 — три головы Цербера"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_1",
+        "question_id": "q_dog_breeds_337"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_1",
+        "question_id": "q_dog_breeds_337",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-breeds",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-breeds",
+          "topic:dog"
+        ],
+        "rationale": "Предел−56°C малоизвестен,−40 и−50 выглядят равно возможными для северной собаки; перевод−70°F выделяет ключ, но не обосновывает физиологический предел.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_temperature_concern: безопасная переносимость без длительности и условий",
+          "option_precision_hint: Фаренгейт только ключ"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_1",
+        "question_id": "q_dog_breeds_337",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-breeds",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-breeds",
+          "topic:dog"
+        ],
+        "rationale": "Только ответ −70°F (−56°C) содержит перевод между шкалами, заметно выделяющий заявленный предел; −40 и −50°C физиологически выглядят возможными, но конкурируют без такой подсказки.",
+        "confidence": "low",
+        "editorial_flags": [
+          "medical_temperature_concern: безопасная переносимость без длительности и условий",
+          "option_precision_hint: Фаренгейт только ключ"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_2",
+        "question_id": "q_dog_records_531"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_2",
+        "question_id": "q_dog_records_531",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "Рост Зевса нужно помнить как рекорд;90,100,5 и120см возможны для дога, но44 дюйма и десятая доля выделяют111,8.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_superlative_unverified: самый высокий в истории",
+          "option_precision_hint: дюймы только ключ"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_2",
+        "question_id": "q_dog_records_531",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "111,8 см — единственный вариант с переводом в 44 дюйма и подробностью официального замера; среди 90, 120 и 100,5 см форма ответа помогает выбрать рекорд Зевса без точной памяти.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_superlative_unverified: самый высокий в истории",
+          "option_precision_hint: дюймы только ключ"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_3",
+        "question_id": "q_dog_mythology_561"
+      },
+      "changed_fields": [
+        "editorial_flags"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_3",
+        "question_id": "q_dog_mythology_561",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:quantitative",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "rationale": "Три головы Цербера — привычный античный образ;четыре числовых ответа не требуют тонких вариантов мифа,достаточно школьного узнавания.",
+        "confidence": "low",
+        "editorial_flags": [
+          "symbolism_unverified: верность/свирепость/бдительность голов",
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы",
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы Цербера"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_biology_senses_part_3",
+        "question_id": "q_dog_mythology_561",
+        "difficulty_level": 2,
+        "editorial_tag_ids": [
+          "domain:mythology",
+          "skill:quantitative",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "context_tag_ids": [
+          "domain:mythology",
+          "topic:dog",
+          "topic:mythology-greek"
+        ],
+        "rationale": "Три головы Цербера — привычный античный образ;четыре числовых ответа не требуют тонких вариантов мифа,достаточно школьного узнавания.",
+        "confidence": "low",
+        "editorial_flags": [
+          "symbolism_unverified: верность/свирепость/бдительность голов",
+          "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 — три головы Цербера"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_sporting_hounds",
+        "question_id": "q_dog_crufts_582"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_sporting_hounds",
+        "question_id": "q_dog_crufts_582",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:sports",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:animal-sports",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:sports",
+          "topic:animal-records",
+          "topic:animal-sports",
+          "topic:dog"
+        ],
+        "rationale": "Точные9лет195дней редки,но единственный ответ с днями явно выделяется как документированный рекорд;7,8 и11лет без такой точности слабее по форме.",
+        "confidence": "low",
+        "editorial_flags": [
+          "dated_superlative_unverified: старейший Crufts",
+          "option_precision_hint: дни только ключ"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_sporting_hounds",
+        "question_id": "q_dog_crufts_582",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:sports",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:animal-sports",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:sports",
+          "topic:animal-records",
+          "topic:animal-sports",
+          "topic:dog"
+        ],
+        "rationale": "9 лет и 195 дней — единственный ответ с днями, выделяющий себя как документированный возраст Джета; остальные варианты 7, 11 и ровно 8 лет дают сильную подсказку формой, а не биографией.",
+        "confidence": "low",
+        "editorial_flags": [
+          "dated_superlative_unverified: старейший Crufts",
+          "option_precision_hint: дни только ключ"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_320"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_320",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "469 трюков — редкая точная статистика,но единственное неокруглённое число выделяется среди100,250,500,150 и320;варианты облегчают припоминание рекорда.",
+        "confidence": "low",
+        "editorial_flags": [
+          "record_and_cognition_claim: трюки/таблица умножения требуют метода",
+          "option_precision_hint:469 против округлённых чисел",
+          "near_duplicate: q_dog_records_320,q_dog_records_544 —469 трюков"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_320",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "469 выделяется как точный учтённый репертуар среди 100, 250, 500, 150 и 320 трюков; эта заметная форма ответа позволяет выбрать Чанда-Лиа без самостоятельного знания количества.",
+        "confidence": "low",
+        "editorial_flags": [
+          "record_and_cognition_claim: трюки/таблица умножения требуют метода",
+          "option_precision_hint:469 против округлённых чисел",
+          "near_duplicate: q_dog_records_320,q_dog_records_544 —469 трюков"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_544"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_544",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "469 единственное конкретное число между круглыми100,250 и500,что помогает распознать рекорд;имя Чанда-Лиа само количество не определяет.",
+        "confidence": "low",
+        "editorial_flags": [
+          "record_and_cognition_claim:469 и умножение",
+          "option_precision_hint: неокруглённый ключ",
+          "near_duplicate: q_dog_records_320,q_dog_records_544 —469 трюков"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_544",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "Среди 100, 250 и 500 только 469 выглядит неокруглённым результатом учёта; четыре коротких варианта делают эту подсказку особенно заметной, хотя само имя Чанда-Лиа числа не объясняет.",
+        "confidence": "low",
+        "editorial_flags": [
+          "record_and_cognition_claim:469 и умножение",
+          "option_precision_hint: неокруглённый ключ",
+          "near_duplicate: q_dog_records_320,q_dog_records_544 —469 трюков"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_397"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_397",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "Рост Перл надо помнить точно,но9,14см с3,59дюйма единственный подробно переведённый вариант;7,5 и10,2 тоже возможны,так что подсказка не равна расчёту.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_record: ныне живущая самая маленькая",
+          "option_precision_hint: дюймы только ключ"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_397",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "9,14 см (3,59 дюйма) — единственный ответ с сотыми и переводом в другую единицу; 7,5 и 10,2 см также возможны по размеру, но форма явно выделяет официальный замер Перл.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_record: ныне живущая самая маленькая",
+          "option_precision_hint: дюймы только ключ"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_537"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_537",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog",
+          "topic:service-animals"
+        ],
+        "rationale": "15см надо помнить дляКапкейк,но единственный перевод6дюймов выделяет измеренный рекорд;10 и20см столь же возможны для миниатюрной чихуахуа.",
+        "confidence": "low",
+        "editorial_flags": [
+          "dated_record_unverified: служебная собака/размер",
+          "option_precision_hint: дюймы только ключ",
+          "near_duplicate: q_dog_records_27,q_dog_records_314,q_dog_records_537 —Капкейк, порода/рекорд/рост"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+        "question_id": "q_dog_records_537",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog",
+          "topic:service-animals"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog",
+          "topic:service-animals"
+        ],
+        "rationale": "15 см (6 дюймов) — единственный двуединичный замер, выделенный среди 10, 20 и 7,5 см; готовая форма официальной записи облегчает ответ о Капкейк без памяти о её росте.",
+        "confidence": "low",
+        "editorial_flags": [
+          "dated_record_unverified: служебная собака/размер",
+          "option_precision_hint: дюймы только ключ",
+          "near_duplicate: q_dog_records_27,q_dog_records_314,q_dog_records_537 —Капкейк, порода/рекорд/рост"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_science_336"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_science_336",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:science",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:science",
+          "topic:animal-behavior",
+          "topic:dog"
+        ],
+        "rationale": "1022 единственный неокруглённый ответ среди100,500,250,2000 и750,что выделяет исследовательский результат;точную память Чейзер без этой формы знать трудно.",
+        "confidence": "low",
+        "editorial_flags": [
+          "study_measurement_unverified: слова/предметы и классификация по форме",
+          "option_precision_hint:1022 против круглых чисел",
+          "related_fact: q_dog_science_395 спрашивает исключение, не число"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_science_336",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:science",
+          "skill:quantitative",
+          "topic:animal-behavior",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:science",
+          "topic:animal-behavior",
+          "topic:dog"
+        ],
+        "rationale": "1022 — единственное неокруглённое число среди 100, 500, 250, 2000 и 750, поэтому выглядит как опубликованный результат исследования Чейзер; точное количество можно распознать по вариантам.",
+        "confidence": "low",
+        "editorial_flags": [
+          "study_measurement_unverified: слова/предметы и классификация по форме",
+          "option_precision_hint:1022 против круглых чисел",
+          "related_fact: q_dog_science_395 спрашивает исключение, не число"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_396"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_396",
+        "difficulty_level": 6,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "1,007м единственный ответ с тремя десятичными знаками ифутами,что сильно напоминает официальный замер;90,95,5 и120см всё же возможны для высокого дога.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_record: Реджинальд2025",
+          "option_precision_hint: три знака ифуты только ключ",
+          "near_duplicate: q_dog_records_52,q_dog_records_396 —Реджинальд/дог/1,007м, inverse"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_396",
+        "difficulty_level": 3,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "Только 1,007 метра сопровождается футами и дюймами и имеет три десятичных знака; эта форма заметно выделяет документированный рост Реджинальда среди остальных возможных размеров дога.",
+        "confidence": "low",
+        "editorial_flags": [
+          "time_sensitive_record: Реджинальд2025",
+          "option_precision_hint: три знака ифуты только ключ",
+          "near_duplicate: q_dog_records_52,q_dog_records_396 —Реджинальд/дог/1,007м, inverse"
+        ]
+      }
+    },
+    {
+      "identity": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_536"
+      },
+      "changed_fields": [
+        "difficulty_level",
+        "rationale"
+      ],
+      "before": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_536",
+        "difficulty_level": 7,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "20,77сек надо знать из конкретного рекорда Нормана,но сотые доли выделяются против15,60 и40,5;30метров не позволяют вычислить скорость без новых данных.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_time_unverified:2013 самокат",
+          "option_precision_hint: сотые секунды только ключ"
+        ]
+      },
+      "after": {
+        "provider": "quiz",
+        "pack_id": "dogs_breeds_working_herding",
+        "question_id": "q_dog_records_536",
+        "difficulty_level": 4,
+        "editorial_tag_ids": [
+          "domain:nature",
+          "skill:quantitative",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "context_tag_ids": [
+          "domain:nature",
+          "topic:animal-records",
+          "topic:dog"
+        ],
+        "rationale": "20,77 секунды — единственный результат с сотыми, выделяющий записанный рекорд Нормана среди 15, 60 и 40,5; дистанция 30 метров сама время не вычисляет, но варианты дают сильную подсказку.",
+        "confidence": "medium",
+        "editorial_flags": [
+          "record_time_unverified:2013 самокат",
+          "option_precision_hint: сотые секунды только ключ"
+        ]
+      }
+    }
+  ],
+  "unchanged_identities": [
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_media_298"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_breeds_78"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_breeds_61"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_records_540"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_breeds_230"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_breeds_236"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_media_286"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_43"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_392"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_history_358"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_225"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_297"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_332"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_287"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_records_319"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_records_542"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_1",
+      "question_id": "q_dog_biology_36"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_biology_95"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_records_49"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_records_310"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_biology_70"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_history_340"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_history_04"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_myth_377"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_myth_382"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_mythology_567"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_biology_53"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_mythology_565"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_mythology_579"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_anatomy_part_2",
+      "question_id": "q_dog_mythology_562"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_360"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_363"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_82"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_361"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_593"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_myth_47"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_biology_525"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_history_202"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_232"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_65"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_214"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_238"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_242"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_history_73"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_culture_17"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_media_268"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_biology_512"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_222"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_244"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_breeds_326"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_mythology_560"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_history_63"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_1",
+      "question_id": "q_dog_history_524"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_culture_263"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_media_271"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_history_590"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_history_356"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_39"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_507"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_20"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_506"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_522"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_587"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_37"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_75"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_90"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_267"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_333"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_371"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_biology_391"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_myth_385"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_science_03"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_science_300"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_science_395"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_culture_295"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_2",
+      "question_id": "q_dog_culture_386"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_culture_597"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_records_26"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_records_315"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_records_538"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_sport_399"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_sport_551"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_365"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_media_284"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_366"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_77"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_media_16"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_biology_368"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_208"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_349"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_history_31"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_biology_44"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_biology_375"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_myth_384"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_mythology_568"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_myth_96"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_breeds_508"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_breeds_324"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_biology_senses_part_3",
+      "question_id": "q_dog_culture_394"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_science_237"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_science_41"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_breeds_50"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_83"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_517"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_records_316"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_records_539"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_97"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_media_274"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_records_317"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_292"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_357"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_history_100"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_sporting_hounds",
+      "question_id": "q_dog_culture_08"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_culture_250"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_328"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_23"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_212"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_227"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_327"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_344"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_370"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_breeds_526"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_294"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_299"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_253"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_54"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_330"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_354"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_history_248"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_media_281"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_media_288"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_1",
+      "question_id": "q_dog_media_59"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_culture_255"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_media_290"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_show_12"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_crufts_547"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_breeds_325"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_records_27"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_records_314"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_history_338"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_history_60"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_history_254"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_mythology_558"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_myth_378"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_history_355"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_crufts_583"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
+      "question_id": "q_dog_show_307"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_223"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_224"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_229"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_362"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_509"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_510"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_breeds_527"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_history_80"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_52"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_322"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_533"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_history_516"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_321"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_evolution_504"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_28"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_66"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_311"
+    },
+    {
+      "provider": "quiz",
+      "pack_id": "dogs_breeds_working_herding",
+      "question_id": "q_dog_records_532"
+    }
+  ],
+  "verification": {
+    "own_partial180": "PASS chunk4515c5",
+    "exact_packet_order_and_uniqueness": true,
+    "source_semantic4078_preserved": true,
+    "raw_pack_hashes_equal_inventory": 9,
+    "accepted2777_overlap": 0,
+    "B178_overlap": 0,
+    "tags_context_confidence_identity_order_preserved": true,
+    "nonduplicate_factual_uncertainty_flags_preserved": true,
+    "preimage_exact_frozen_bytes": true,
+    "checks_chunk": "f2de14",
+    "raw_read_chunks": [
+      "b9f81c",
+      "ba900d"
+    ],
+    "fact_certification": false,
+    "independent_delta_acceptance": false
+  },
+  "limits": [
+    "Source facts and keys unchanged; no factual certification",
+    "Review remaining105 structural wording is stale; author leaves reviewer report unchanged",
+    "Only approved15 rows changed; no broader classification or duplicate audit"
+  ]
+}

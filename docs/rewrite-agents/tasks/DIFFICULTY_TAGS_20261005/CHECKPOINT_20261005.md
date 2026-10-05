@@ -124,3 +124,18 @@ factual concerns are not resolved by assigning difficulty or tags.
 Beads qr4/qr4.5 remain in progress. Future source-level factual fixes and a ranked
 mixed-pack immutable bundle are separate work; current CLI search supports
 cross-theme private selections without presenting Study as ranked API content.
+
+
+## Subsequent Dogs A180 acceptance and recovery
+
+ACCEPTED_WAVE_425_3 accepts180 after independent full180 initial source review
+and root independent15-row final delta review (13 grades, two flag-only rows).
+Acceptance is now2957/4078; remaining1121 = Dogs178 + Preparation265 + NewYear678.
+Preparation three-row delta has independent acceptance, but102 of its selected122
+raw reads remain pending. Dogs B178 has incomplete preliminary reviewer reading:
+99–106 need clean reread and later coverage has gaps; two tentative findings
+(duplicate flags q_dog_breeds_213, cue estimate q_dog_records_529) require completion
+and source recheck before a verdict. No B178 acceptance. NewYear678 unstarted.
+Resource queues previously prevented continuation; no factual certification or
+metadata production rollout is implied. Feedback feature is a newly authorized
+parallel task in FEEDBACK_20261006; these remaining annotation tasks stay open.

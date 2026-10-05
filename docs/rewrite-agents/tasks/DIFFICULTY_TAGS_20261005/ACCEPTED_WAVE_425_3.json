@@ -1,0 +1,27 @@
+{
+  "records": 180,
+  "accepted_total": 2957,
+  "remaining": 1121,
+  "change": "Dogs A180 byte-identical accepted copy after full independent180 source review and independent root15-row delta recheck",
+  "artifacts": [
+    {
+      "source": "docs/rewrite-agents/tasks/DIFFICULTY_TAGS_20261005/annotations/dogs-425-a180.json",
+      "accepted": "docs/rewrite-agents/tasks/DIFFICULTY_TAGS_20261005/accepted/dogs-425-a180.json",
+      "sha256": "58eb33960cfcd676813684ad326c4fc19605b89b860998fe803e9bd545304bd0",
+      "records": 180,
+      "review": "review/DOGS_425_A180.md",
+      "review_sha256": "6161aeb44e80f621f1718ecaaef453e51af94208b7ed541e9995ee3b335d01fa",
+      "final_review": "review/DOGS_A180_FINAL_ROOT.md",
+      "final_review_sha256": "2bd22b7351842a1b196fd9b23951f40431e3b4905d653a71ef6afe0a33a67352",
+      "delta": "review/DOGS_A180_DELTA.json",
+      "delta_sha256": "73ee240056af1d857ce67fb0f80a7aceeba4bc90a2ac6548f837a0b82a19ffe8",
+      "preimage": "review/DOGS_A180_BEFORE_FIX.json",
+      "preimage_sha256": "f5aead00a7848779a2fb52d79f849c30726f9acfc2de1bd4633e07566c1d5f33"
+    }
+  ],
+  "limitations": [
+    "editorial estimates, not measured answer rates",
+    "source facts and keys unchanged and not certified",
+    "full metadata application/index/catalog/production release pending"
+  ]
+}

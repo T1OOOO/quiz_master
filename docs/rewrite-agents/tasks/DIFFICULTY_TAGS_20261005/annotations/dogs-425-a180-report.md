@@ -5,7 +5,8 @@ Status: READY_FOR_REVIEW / DONE_WITH_CONCERNS. Candidate only; independent conte
 Author: existing actual session session-722dd1313cb04509a831961ec1838af6, Codex gpt-6-sol; parent Beads quiz_master-qr4.3. Owned edits only annotations/dogs-425-a180.json and this report. No children, source/accepted/taxonomy/contract/manifests/other worker leaves/Git/index/.beads/deployment changes.
 
 Exact scope: all180 ordered identities in DOGS_425_A180_IDS.json. Source baseline e802ed21db936bdb9809bab2d137903eb0aa425e. Taxonomy425 qm-tags-v1 /07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151.
-Candidate byte SHA256: `f5aead00a7848779a2fb52d79f849c30726f9acfc2de1bd4633e07566c1d5f33`.
+Current corrected candidate byte SHA256: `58eb33960cfcd676813684ad326c4fc19605b89b860998fe803e9bd545304bd0`.
+Frozen before-fix candidate byte SHA256: `f5aead00a7848779a2fb52d79f849c30726f9acfc2de1bd4633e07566c1d5f33` (byte-identical review/DOGS_A180_BEFORE_FIX.json).
 Scope manifest byte SHA256: `e6c41ee19aeb81d219a37a0f3726379013798425a6f78abe936708c0da1f0023`.
 
 ## Actual reading and literal decisions
@@ -35,8 +36,8 @@ Existing command, after the final literal topic/cluster patch:
 
 Fresh assertions e16e62 PASS: exactly180 candidate identities in exact frozen selection order;180 unique individual rationale strings; exact taxonomy reference; all4078 source semantic records/coverage equal frozen INVENTORY; all nine selected raw file byte hashes equal INVENTORY; zero candidate identity overlap with separate2777 accepted records, which also have unique identities. This does not accept or newly review the broader corpus. Validator also checks schema, integer1–10, known sorted unique IDs, domain/topic coverage, safe context subset and private-facet exclusion. Raw stems/options/keys/explanations were untouched.
 
-Scores: {"1":12,"2":18,"3":15,"4":17,"5":29,"6":33,"7":38,"8":18}.
-Bands: {"easy":45,"medium":79,"hard":56,"nightmare":0}.
+Scores after bounded review correction: {"1":12,"2":21,"3":21,"4":19,"5":28,"6":25,"7":36,"8":18}.
+Bands after correction: {"easy":54,"medium":72,"hard":54,"nightmare":0}.
 Confidence: {"medium":84,"low":83,"high":13}.
 Low-confidence83/180; flagged174/180. There are no9/10s; quotas were not imposed. A flag often marks a visible hint, retained repeat, dated record or bounded source uncertainty rather than a rejected key. Editorial estimates are not observed response rates.
 
@@ -66,4 +67,30 @@ Source facts are NOT certified. Particularly unresolved: clinical developmental 
 
 Actual atomic interactive256MiB RAM/commit plus16MiB disk bundle included exact contract/manifest/inventory/metadata/accepted and published-source shared reads, plus only the two existing owned leaf writes. Initial lease-2e272948564748b8921720dda7598640 generation1 GRANTED protected first60 raw reads and first30 literal decisions. It was renewed and quiescently RELEASED at root's checkpoint request; candidate checkpoint SHA84d870b17b54844ce9c6852b091b2345314e0b583134a51ea8edff7bb8af0841. Root later integrated/pushed that checkpoint and updated this report scaffold; candidate remained unchanged. Lease-0c43d7e249cf449fad6204e2a0deda9b generation1 was QUEUED then GRANTED after bounded waiting; it was released before any data work to permit root integration. Request failures between these stages did not authorize data work.
 
-Current complete bundle lease-e308336044c5474d983c2e9099ed2ac3 generation1 was QUEUED with no content work; heartbeats/status checks at40/80 seconds confirmed GRANTED at80. It was renewed while composing and before each bounded write/read/check. Remaining150 decisions, final patches, verification and this report ran under that actual grant. No foreign lease was reconciled or reservation changed. All calls returned and no process/child remains; final handoff records quiescent release. No acceptance or independent factual verification is claimed.
+Original authoring complete bundle lease-e308336044c5474d983c2e9099ed2ac3 generation1 was QUEUED with no content work; heartbeats/status checks at40/80 seconds confirmed GRANTED at80. It was renewed while composing and before each bounded write/read/check. Remaining150 decisions, final patches, verification and this report ran under that actual grant. No foreign lease was reconciled or reservation changed. All calls returned and no process/child remains; final handoff records quiescent release. No acceptance or independent factual verification is claimed.
+
+## Bounded A180 independent-review correction
+
+READY_FOR_DELTA_REVIEW, pending independent acceptance. The twelve findings in review/DOGS_425_A180.md affect fifteen rows: thirteen difficulty+rationale changes and two flag-only Cerberus consolidations. Review report fully read in chunk41f990. All fifteen affected full stems/options/keys/explanations/annotations were read in b9f81c; combined output truncated q_dog_records_396, so its complete row was reread without truncation in ba900d before edits. No other rows were reclassified. Every changed score has a fresh individual cue-aware rationale. Agreed levels reflect visible answer-form/lexical clues rather than only rarity of the fact.
+
+- q_dog_biology_345: 5 → 2; Подсказка «на 50% быстрее человеческого» позволяет от привычной оценки 80 ударов получить 120; сравнение готовых чисел заметно легче самостоятельного знания нормы пульса, хотя исходная человеческая норма требует оговорки.
+- q_dog_records_531: 6 → 3; 111,8 см — единственный вариант с переводом в 44 дюйма и подробностью официального замера; среди 90, 120 и 100,5 см форма ответа помогает выбрать рекорд Зевса без точной памяти.
+- q_dog_breeds_337: 7 → 4; Только ответ −70°F (−56°C) содержит перевод между шкалами, заметно выделяющий заявленный предел; −40 и −50°C физиологически выглядят возможными, но конкурируют без такой подсказки.
+- q_dog_history_204: 3 → 2; Четыре протеза прямо связывают Наки’о с бионикой и ответом «Бионическая собака»; Робопес и Кибер-друг лишь общие фантазийные названия, а точную биографию знать не обязательно.
+- q_dog_history_305: 3 → 2; Замена четырёх конечностей прозрачна для термина «бионическая собака»; Железный Лапик, Супер-Хаски и Стальной бегун выглядят придуманными прозвищами, поэтому описание существенно облегчает выбор.
+- q_dog_crufts_582: 6 → 3; 9 лет и 195 дней — единственный ответ с днями, выделяющий себя как документированный возраст Джета; остальные варианты 7, 11 и ровно 8 лет дают сильную подсказку формой, а не биографией.
+- q_dog_records_320: 6 → 3; 469 выделяется как точный учтённый репертуар среди 100, 250, 500, 150 и 320 трюков; эта заметная форма ответа позволяет выбрать Чанда-Лиа без самостоятельного знания количества.
+- q_dog_records_544: 6 → 3; Среди 100, 250 и 500 только 469 выглядит неокруглённым результатом учёта; четыре коротких варианта делают эту подсказку особенно заметной, хотя само имя Чанда-Лиа числа не объясняет.
+- q_dog_science_336: 6 → 3; 1022 — единственное неокруглённое число среди 100, 500, 250, 2000 и 750, поэтому выглядит как опубликованный результат исследования Чейзер; точное количество можно распознать по вариантам.
+- q_dog_records_397: 6 → 3; 9,14 см (3,59 дюйма) — единственный ответ с сотыми и переводом в другую единицу; 7,5 и 10,2 см также возможны по размеру, но форма явно выделяет официальный замер Перл.
+- q_dog_records_396: 6 → 3; Только 1,007 метра сопровождается футами и дюймами и имеет три десятичных знака; эта форма заметно выделяет документированный рост Реджинальда среди остальных возможных размеров дога.
+- q_dog_records_537: 6 → 3; 15 см (6 дюймов) — единственный двуединичный замер, выделенный среди 10, 20 и 7,5 см; готовая форма официальной записи облегчает ответ о Капкейк без памяти о её росте.
+- q_dog_records_536: 7 → 4; 20,77 секунды — единственный результат с сотыми, выделяющий записанный рекорд Нормана среди 15, 60 и 40,5; дистанция 30 метров сама время не вычисляет, но варианты дают сильную подсказку.
+
+For q_dog_myth_29 and q_dog_mythology_561, overlapping near_duplicate entries were replaced by one cluster naming q_dog_myth_29, q_dog_myth_377 and q_dog_mythology_561 (three heads of Cerberus). The symbolism_unverified flag remains. Existing q_dog_myth_377 was unchanged. All factual, medical, historical, time-sensitive, uncertainty, precision and other nonduplicate flags remain byte-for-byte as field values; no source fact or answer was certified. Tags, context, confidence, identities and order are unchanged across every row. Exactly165 other annotation objects remain equal to the exact preimage.
+
+New verification4515c5: own partial180 PASS, "Validated 180/4078 annotations; source integrity preserved." Fresh assertions f2de14: exact180 ordered unique IDs; zero accepted2777 overlap; zero B178 overlap; all4078 semantic hashes/coverage equal inventory; all nine raw pack hashes above still equal inventory; 180 individual unique rationales; only approved thirteen score/rationale and two flag changes. B178 candidate SHA360e916708d0bb1b22df5851e7c9169ad93cb0582035501533dce8c6e738354c remains untouched.
+
+Before-byte capture occurred before any candidate edit and matches frozen f5aead00a7848779a2fb52d79f849c30726f9acfc2de1bd4633e07566c1d5f33. Structured review/DOGS_A180_DELTA.json records all fifteen before/after objects, exact changed fields, score13/flag2 counts, all165 unchanged identities and executable verification results; its final SHA is handed off separately. Original report SHA8802a77f3ca6be7a44615fc5b7cd731578269ccc5048de70b126f7462381f6cd is recorded in delta. Reviewer structural wording about "remaining105" is stale alongside its explicit full180 reading checkpoint; root will request correction in the delta verdict, and this author did not edit the review report.
+
+Resource: actual lease-512356ae867343afbaad39a2f1749b6f generation1, interactive256MiB RAM/commit and16MiB disk, includes only four exact owned write leaves (A180 JSON/report plus authorised BEFORE_FIX/DELTA). Initial request errored because new paths did not exist; no content work followed. Root precreated only empty scaffolds; identical request/key entered QUEUED and actual status later confirmed GRANTED. Renewed before bounded edits/checks. Files quiescent before release; release receipt and all final hashes are sent after file verification. No Git/Beads/accepted/source/foreign files or child agents were touched. Next assignment requires a separate fresh lease.

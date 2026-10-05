@@ -505,7 +505,7 @@
       "provider": "quiz",
       "pack_id": "dogs_biology_anatomy_part_2",
       "question_id": "q_dog_biology_345",
-      "difficulty_level": 2,
+      "difficulty_level": 5,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -517,7 +517,7 @@
         "topic:animal-anatomy",
         "topic:dog"
       ],
-      "rationale": "Подсказка «на 50% быстрее человеческого» позволяет от привычной оценки 80 ударов получить 120; сравнение готовых чисел заметно легче самостоятельного знания нормы пульса, хотя исходная человеческая норма требует оговорки.",
+      "rationale": "Подсказка50% быстрее человеческого пульса позволяет оценить около120 при исходных80;90 и150 тоже зависят от принятой нормы, поэтому число требует оговорки.",
       "confidence": "low",
       "editorial_flags": [
         "medical_range_concern: единый средний пульс без условий",
@@ -577,7 +577,7 @@
       "provider": "quiz",
       "pack_id": "dogs_biology_anatomy_part_2",
       "question_id": "q_dog_history_204",
-      "difficulty_level": 2,
+      "difficulty_level": 3,
       "editorial_tag_ids": [
         "domain:society",
         "skill:terminology",
@@ -591,7 +591,7 @@
         "topic:dog",
         "topic:medical-terms"
       ],
-      "rationale": "Четыре протеза прямо связывают Наки’о с бионикой и ответом «Бионическая собака»; Робопес и Кибер-друг лишь общие фантазийные названия, а точную биографию знать не обязательно.",
+      "rationale": "Четыре протеза подсказывают бионику, но Робопес и Кибер-друг тоже подходят по смыслу; требуется узнать закрепившееся прозвище, а не имя животного.",
       "confidence": "medium",
       "editorial_flags": [
         "first_claim_unverified: четыре протеза",
@@ -602,7 +602,7 @@
       "provider": "quiz",
       "pack_id": "dogs_biology_anatomy_part_2",
       "question_id": "q_dog_history_305",
-      "difficulty_level": 2,
+      "difficulty_level": 3,
       "editorial_tag_ids": [
         "domain:society",
         "skill:terminology",
@@ -616,7 +616,7 @@
         "topic:dog",
         "topic:medical-terms"
       ],
-      "rationale": "Замена четырёх конечностей прозрачна для термина «бионическая собака»; Железный Лапик, Супер-Хаски и Стальной бегун выглядят придуманными прозвищами, поэтому описание существенно облегчает выбор.",
+      "rationale": "«Бионическая» естественно описывает замену конечностей, но Робопес и Кибер-друг сохраняют конкуренцию; Супер-Хаски и Стальной бегун менее точны, знание истории умеренно помогает.",
       "confidence": "medium",
       "editorial_flags": [
         "first_claim_unverified: первый обладатель четырёх протезов",
@@ -642,7 +642,8 @@
       "rationale": "Трёхглавый Цербер — массовый образ античной мифологии; две или семь голов напоминают других чудовищ, но знакомая школьная ассоциация обычно достаточна.",
       "confidence": "high",
       "editorial_flags": [
-        "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 — три головы Цербера"
+        "near_duplicate: q_dog_myth_29,q_dog_myth_377 —три головы Цербера",
+        "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы Цербера"
       ]
     },
     {
@@ -1298,7 +1299,7 @@
       "provider": "quiz",
       "pack_id": "dogs_biology_senses_part_1",
       "question_id": "q_dog_breeds_337",
-      "difficulty_level": 4,
+      "difficulty_level": 7,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -1310,7 +1311,7 @@
         "topic:animal-breeds",
         "topic:dog"
       ],
-      "rationale": "Только ответ −70°F (−56°C) содержит перевод между шкалами, заметно выделяющий заявленный предел; −40 и −50°C физиологически выглядят возможными, но конкурируют без такой подсказки.",
+      "rationale": "Предел−56°C малоизвестен,−40 и−50 выглядят равно возможными для северной собаки; перевод−70°F выделяет ключ, но не обосновывает физиологический предел.",
       "confidence": "low",
       "editorial_flags": [
         "medical_temperature_concern: безопасная переносимость без длительности и условий",
@@ -1439,7 +1440,7 @@
       "provider": "quiz",
       "pack_id": "dogs_biology_senses_part_2",
       "question_id": "q_dog_records_531",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -1451,7 +1452,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "111,8 см — единственный вариант с переводом в 44 дюйма и подробностью официального замера; среди 90, 120 и 100,5 см форма ответа помогает выбрать рекорд Зевса без точной памяти.",
+      "rationale": "Рост Зевса нужно помнить как рекорд;90,100,5 и120см возможны для дога, но44 дюйма и десятая доля выделяют111,8.",
       "confidence": "medium",
       "editorial_flags": [
         "record_superlative_unverified: самый высокий в истории",
@@ -2450,7 +2451,8 @@
       "confidence": "low",
       "editorial_flags": [
         "symbolism_unverified: верность/свирепость/бдительность голов",
-        "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 — три головы Цербера"
+        "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы",
+        "near_duplicate: q_dog_myth_29,q_dog_myth_377,q_dog_mythology_561 —три головы Цербера"
       ]
     },
     {
@@ -2693,7 +2695,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_sporting_hounds",
       "question_id": "q_dog_crufts_582",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:sports",
         "skill:quantitative",
@@ -2707,7 +2709,7 @@
         "topic:animal-sports",
         "topic:dog"
       ],
-      "rationale": "9 лет и 195 дней — единственный ответ с днями, выделяющий себя как документированный возраст Джета; остальные варианты 7, 11 и ровно 8 лет дают сильную подсказку формой, а не биографией.",
+      "rationale": "Точные9лет195дней редки,но единственный ответ с днями явно выделяется как документированный рекорд;7,8 и11лет без такой точности слабее по форме.",
       "confidence": "low",
       "editorial_flags": [
         "dated_superlative_unverified: старейший Crufts",
@@ -3402,7 +3404,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
       "question_id": "q_dog_records_320",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -3414,7 +3416,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "469 выделяется как точный учтённый репертуар среди 100, 250, 500, 150 и 320 трюков; эта заметная форма ответа позволяет выбрать Чанда-Лиа без самостоятельного знания количества.",
+      "rationale": "469 трюков — редкая точная статистика,но единственное неокруглённое число выделяется среди100,250,500,150 и320;варианты облегчают припоминание рекорда.",
       "confidence": "low",
       "editorial_flags": [
         "record_and_cognition_claim: трюки/таблица умножения требуют метода",
@@ -3426,7 +3428,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
       "question_id": "q_dog_records_544",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -3438,7 +3440,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "Среди 100, 250 и 500 только 469 выглядит неокруглённым результатом учёта; четыре коротких варианта делают эту подсказку особенно заметной, хотя само имя Чанда-Лиа числа не объясняет.",
+      "rationale": "469 единственное конкретное число между круглыми100,250 и500,что помогает распознать рекорд;имя Чанда-Лиа само количество не определяет.",
       "confidence": "low",
       "editorial_flags": [
         "record_and_cognition_claim:469 и умножение",
@@ -3579,7 +3581,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
       "question_id": "q_dog_records_397",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -3591,7 +3593,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "9,14 см (3,59 дюйма) — единственный ответ с сотыми и переводом в другую единицу; 7,5 и 10,2 см также возможны по размеру, но форма явно выделяет официальный замер Перл.",
+      "rationale": "Рост Перл надо помнить точно,но9,14см с3,59дюйма единственный подробно переведённый вариант;7,5 и10,2 тоже возможны,так что подсказка не равна расчёту.",
       "confidence": "low",
       "editorial_flags": [
         "time_sensitive_record: ныне живущая самая маленькая",
@@ -3602,7 +3604,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_toy_terrier_rare_part_2",
       "question_id": "q_dog_records_537",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -3616,7 +3618,7 @@
         "topic:dog",
         "topic:service-animals"
       ],
-      "rationale": "15 см (6 дюймов) — единственный двуединичный замер, выделенный среди 10, 20 и 7,5 см; готовая форма официальной записи облегчает ответ о Капкейк без памяти о её росте.",
+      "rationale": "15см надо помнить дляКапкейк,но единственный перевод6дюймов выделяет измеренный рекорд;10 и20см столь же возможны для миниатюрной чихуахуа.",
       "confidence": "low",
       "editorial_flags": [
         "dated_record_unverified: служебная собака/размер",
@@ -3824,7 +3826,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_working_herding",
       "question_id": "q_dog_science_336",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:science",
         "skill:quantitative",
@@ -3836,7 +3838,7 @@
         "topic:animal-behavior",
         "topic:dog"
       ],
-      "rationale": "1022 — единственное неокруглённое число среди 100, 500, 250, 2000 и 750, поэтому выглядит как опубликованный результат исследования Чейзер; точное количество можно распознать по вариантам.",
+      "rationale": "1022 единственный неокруглённый ответ среди100,500,250,2000 и750,что выделяет исследовательский результат;точную память Чейзер без этой формы знать трудно.",
       "confidence": "low",
       "editorial_flags": [
         "study_measurement_unverified: слова/предметы и классификация по форме",
@@ -4089,7 +4091,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_working_herding",
       "question_id": "q_dog_records_396",
-      "difficulty_level": 3,
+      "difficulty_level": 6,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -4101,7 +4103,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "Только 1,007 метра сопровождается футами и дюймами и имеет три десятичных знака; эта форма заметно выделяет документированный рост Реджинальда среди остальных возможных размеров дога.",
+      "rationale": "1,007м единственный ответ с тремя десятичными знаками ифутами,что сильно напоминает официальный замер;90,95,5 и120см всё же возможны для высокого дога.",
       "confidence": "low",
       "editorial_flags": [
         "time_sensitive_record: Реджинальд2025",
@@ -4137,7 +4139,7 @@
       "provider": "quiz",
       "pack_id": "dogs_breeds_working_herding",
       "question_id": "q_dog_records_536",
-      "difficulty_level": 4,
+      "difficulty_level": 7,
       "editorial_tag_ids": [
         "domain:nature",
         "skill:quantitative",
@@ -4149,7 +4151,7 @@
         "topic:animal-records",
         "topic:dog"
       ],
-      "rationale": "20,77 секунды — единственный результат с сотыми, выделяющий записанный рекорд Нормана среди 15, 60 и 40,5; дистанция 30 метров сама время не вычисляет, но варианты дают сильную подсказку.",
+      "rationale": "20,77сек надо знать из конкретного рекорда Нормана,но сотые доли выделяются против15,60 и40,5;30метров не позволяют вычислить скорость без новых данных.",
       "confidence": "medium",
       "editorial_flags": [
         "record_time_unverified:2013 самокат",
