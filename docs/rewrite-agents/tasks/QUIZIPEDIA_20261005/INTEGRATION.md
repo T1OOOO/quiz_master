@@ -105,3 +105,11 @@ store package tests also share/truncate one database. CI now starts PostgreSQL
 alone, runs those packages serially (`-p 1`), then starts API and probes health.
 The migration/data protection itself is unchanged; the rejecting guard is not
 weakened. A fresh run is required to accept the ordering correction.
+
+Final CI run `37309587847` at source `486df89432076e514660fbd6c520e1ca4bae2699`
+completed successfully in all three jobs: Go, Flutter and Android. This accepts
+the CI ordering repair and the complete isolated game client. The exact Web
+artifact was published as Helm revision 24, build
+`quiz-2026.10.05-quizipedia-486df89`; public hashes, catalogue and an attempt
+started before deployment passed the post-release checks. See
+`RELEASE_20261005.md` for concrete runtime evidence and remaining browser scope.
