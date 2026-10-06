@@ -52,6 +52,13 @@ spec:
             - {name: QM_CONTENT_BUNDLE_PATH, value: "/app/quizzes"}
             - {name: QM_CONTENT_MANIFEST_PATH, value: "/app/next/content/home-alone-1-part-1/manifest.json"}
             - {name: GOMAXPROCS, value: "1"}
+            {{- if .Values.feedbackAdminSecret }}
+            - name: QM_FEEDBACK_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.feedbackAdminSecret | quote }}
+                  key: token
+            {{- end }}
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true

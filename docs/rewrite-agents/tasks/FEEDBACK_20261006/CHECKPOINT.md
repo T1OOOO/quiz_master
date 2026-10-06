@@ -1,6 +1,6 @@
 # Feedback implementation checkpoint — 2026-10-06
 
-Feature issue quiz_master-xas remains in progress until release/runtime checks.
+Feature issue quiz_master-xas: production Web release verified; see RELEASE_20261006.md.
 Contract frozen at bc00126; active targets next/server + next/apps/quiz_app.
 
 Implemented global RU/EN feedback button, scrollable comment form, optional PNG
@@ -37,8 +37,11 @@ retry retention/idempotency, opt-out, sanitized query and operator-button hiding
 
 Independent source review is documented in REVIEW_20261006.md. This was another
 Codex agent, not verified cross-provider acceptance. PostgreSQL integration-tag
-execution, release Web/Android builds, actual browser screenshot/admin smoke and
-production deployment are NOT_RUN. The ordinary Go suite exercises real SQLite
+execution and Android release/device checks are NOT_RUN. Web/Linux release builds,
+production deployment, public API moderation and actual browser screenshot submission
+passed on 2026-10-06. Browser verified moderator login rendering; protected operations
+were exercised through the API, not by entering the operator key into the browser.
+The ordinary Go suite exercises real SQLite
 HTTP/store persistence and concurrency; it does not certify PostgreSQL execution.
 No running Flutter target was available for hot reload/restart.
 
@@ -52,9 +55,13 @@ Earlier local RED report route returned 404 before implementation. User-authoriz
 recovery released exactly one stale disconnected board_game_platform QUEUED
 reservation. No processes were killed and no host thresholds were changed.
 
-Next: guarded release builds and browser/admin smoke; provision the server-only
-operator token for moderation, rehearse persistence/rollback and publish to the
-existing production target. Keep quiz_master-xas open until these gates pass.
+Published build quiz-2026.10.06-feedback-e0f89cf, Helm revision 25. Server-only
+operator secret provisioned. Backup restoration, migration with original-row
+preservation and old API rollback rehearsal passed before cutover. A pre-cutover
+attempt completed afterward with replay, score, history and explanations preserved.
+Browser submission persisted a 448330-byte PNG; only synthetic test reports were
+deleted. All owned build/browser leases released and the browser session closed.
+Extended PostgreSQL and Android validation remains separate follow-up work.
 
 Difficulty/tag task remains 2957/4078 accepted, remaining 1121. Feedback does not
 apply unpublished annotations or alter question content. Those issues stay open;

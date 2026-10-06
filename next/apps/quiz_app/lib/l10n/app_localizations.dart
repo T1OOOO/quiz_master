@@ -541,38 +541,203 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{correct} of {total}'**
   String studyScore(int correct, int total);
+
+  /// No description provided for @feedbackDeleteReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete report?'**
   String get feedbackDeleteReport;
+
+  /// No description provided for @feedbackCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
   String get feedbackCancel;
+
+  /// No description provided for @feedbackDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
   String get feedbackDelete;
+
+  /// No description provided for @feedbackReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
   String get feedbackReport;
+
+  /// No description provided for @feedbackScreenshotUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot unavailable'**
   String get feedbackScreenshotUnavailable;
+
+  /// No description provided for @feedbackClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
   String get feedbackClose;
+
+  /// No description provided for @feedbackAllQuizzes.
+  ///
+  /// In en, this message translates to:
+  /// **'All quizzes'**
   String get feedbackAllQuizzes;
+
+  /// No description provided for @feedbackReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
   String get feedbackReports;
+
+  /// No description provided for @feedbackRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
   String get feedbackRefresh;
+
+  /// No description provided for @feedbackLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
   String get feedbackLogout;
+
+  /// No description provided for @feedbackOperatorToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Operator token'**
   String get feedbackOperatorToken;
+
+  /// No description provided for @feedbackSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
   String get feedbackSignIn;
+
+  /// No description provided for @feedbackOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
   String get feedbackOpen;
+
+  /// No description provided for @feedbackResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
   String get feedbackResolved;
+
+  /// No description provided for @feedbackAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
   String get feedbackAll;
+
+  /// No description provided for @feedbackOperationFailedCheckTheTokenAndRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation failed. Check the token and retry.'**
   String get feedbackOperationFailedCheckTheTokenAndRetry;
+
+  /// No description provided for @feedbackNoReports.
+  ///
+  /// In en, this message translates to:
+  /// **'No reports'**
   String get feedbackNoReports;
+
+  /// No description provided for @feedbackResolve.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolve'**
   String get feedbackResolve;
+
+  /// No description provided for @feedbackReopen.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen'**
   String get feedbackReopen;
+
+  /// No description provided for @feedbackPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
   String get feedbackPrevious;
+
+  /// No description provided for @feedbackNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
   String get feedbackNext;
+
+  /// No description provided for @feedbackSendFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
   String get feedbackSendFeedback;
+
+  /// No description provided for @feedbackThankYouForYourFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for your feedback'**
   String get feedbackThankYouForYourFeedback;
+
+  /// No description provided for @feedbackFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
   String get feedbackFeedback;
+
+  /// No description provided for @feedbackApplicationProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Application problem'**
   String get feedbackApplicationProblem;
+
+  /// No description provided for @feedbackQuestionProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Question problem'**
   String get feedbackQuestionProblem;
+
+  /// No description provided for @feedbackSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion'**
   String get feedbackSuggestion;
+
+  /// No description provided for @feedbackComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment'**
   String get feedbackComment;
+
+  /// No description provided for @feedbackAttachScreenshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach screenshot'**
   String get feedbackAttachScreenshot;
+
+  /// No description provided for @feedbackScreenshotUnavailableYouCanSendAComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot unavailable. You can send a comment.'**
   String get feedbackScreenshotUnavailableYouCanSendAComment;
+
+  /// No description provided for @feedbackCouldNotSendYourTextIsSavedPleaseRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not send. Your text is saved — please retry.'**
   String get feedbackCouldNotSendYourTextIsSavedPleaseRetry;
+
+  /// No description provided for @feedbackSending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
   String get feedbackSending;
+
+  /// No description provided for @feedbackSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
   String get feedbackSend;
 }
 

@@ -255,104 +255,104 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get feedbackDeleteReport => "Delete report?";
+  String get feedbackDeleteReport => 'Delete report?';
 
   @override
-  String get feedbackCancel => "Cancel";
+  String get feedbackCancel => 'Cancel';
 
   @override
-  String get feedbackDelete => "Delete";
+  String get feedbackDelete => 'Delete';
 
   @override
-  String get feedbackReport => "Report";
+  String get feedbackReport => 'Report';
 
   @override
-  String get feedbackScreenshotUnavailable => "Screenshot unavailable";
+  String get feedbackScreenshotUnavailable => 'Screenshot unavailable';
 
   @override
-  String get feedbackClose => "Close";
+  String get feedbackClose => 'Close';
 
   @override
-  String get feedbackAllQuizzes => "All quizzes";
+  String get feedbackAllQuizzes => 'All quizzes';
 
   @override
-  String get feedbackReports => "Reports";
+  String get feedbackReports => 'Reports';
 
   @override
-  String get feedbackRefresh => "Refresh";
+  String get feedbackRefresh => 'Refresh';
 
   @override
-  String get feedbackLogout => "Logout";
+  String get feedbackLogout => 'Logout';
 
   @override
-  String get feedbackOperatorToken => "Operator token";
+  String get feedbackOperatorToken => 'Operator token';
 
   @override
-  String get feedbackSignIn => "Sign in";
+  String get feedbackSignIn => 'Sign in';
 
   @override
-  String get feedbackOpen => "Open";
+  String get feedbackOpen => 'Open';
 
   @override
-  String get feedbackResolved => "Resolved";
+  String get feedbackResolved => 'Resolved';
 
   @override
-  String get feedbackAll => "All";
+  String get feedbackAll => 'All';
 
   @override
   String get feedbackOperationFailedCheckTheTokenAndRetry =>
-      "Operation failed. Check the token and retry.";
+      'Operation failed. Check the token and retry.';
 
   @override
-  String get feedbackNoReports => "No reports";
+  String get feedbackNoReports => 'No reports';
 
   @override
-  String get feedbackResolve => "Resolve";
+  String get feedbackResolve => 'Resolve';
 
   @override
-  String get feedbackReopen => "Reopen";
+  String get feedbackReopen => 'Reopen';
 
   @override
-  String get feedbackPrevious => "Previous";
+  String get feedbackPrevious => 'Previous';
 
   @override
-  String get feedbackNext => "Next";
+  String get feedbackNext => 'Next';
 
   @override
-  String get feedbackSendFeedback => "Send feedback";
+  String get feedbackSendFeedback => 'Send feedback';
 
   @override
-  String get feedbackThankYouForYourFeedback => "Thank you for your feedback";
+  String get feedbackThankYouForYourFeedback => 'Thank you for your feedback';
 
   @override
-  String get feedbackFeedback => "Feedback";
+  String get feedbackFeedback => 'Feedback';
 
   @override
-  String get feedbackApplicationProblem => "Application problem";
+  String get feedbackApplicationProblem => 'Application problem';
 
   @override
-  String get feedbackQuestionProblem => "Question problem";
+  String get feedbackQuestionProblem => 'Question problem';
 
   @override
-  String get feedbackSuggestion => "Suggestion";
+  String get feedbackSuggestion => 'Suggestion';
 
   @override
-  String get feedbackComment => "Comment";
+  String get feedbackComment => 'Comment';
 
   @override
-  String get feedbackAttachScreenshot => "Attach screenshot";
+  String get feedbackAttachScreenshot => 'Attach screenshot';
 
   @override
   String get feedbackScreenshotUnavailableYouCanSendAComment =>
-      "Screenshot unavailable. You can send a comment.";
+      'Screenshot unavailable. You can send a comment.';
 
   @override
   String get feedbackCouldNotSendYourTextIsSavedPleaseRetry =>
-      "Could not send. Your text is saved — please retry.";
+      'Could not send. Your text is saved — please retry.';
 
   @override
-  String get feedbackSending => "Sending…";
+  String get feedbackSending => 'Sending…';
 
   @override
-  String get feedbackSend => "Send";
+  String get feedbackSend => 'Send';
 }

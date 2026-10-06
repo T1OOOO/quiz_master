@@ -4,6 +4,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --chmod=755 api /app/api
 COPY next /app/next
 COPY quizzes /app/quizzes
+COPY metadata /app/metadata
 COPY web /usr/share/nginx/html
 WORKDIR /app
 USER 10001:10001

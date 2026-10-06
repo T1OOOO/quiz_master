@@ -255,104 +255,104 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get feedbackDeleteReport => "Удалить отзыв?";
+  String get feedbackDeleteReport => 'Удалить отзыв?';
 
   @override
-  String get feedbackCancel => "Отмена";
+  String get feedbackCancel => 'Отмена';
 
   @override
-  String get feedbackDelete => "Удалить";
+  String get feedbackDelete => 'Удалить';
 
   @override
-  String get feedbackReport => "Отзыв";
+  String get feedbackReport => 'Отзыв';
 
   @override
-  String get feedbackScreenshotUnavailable => "Снимок недоступен";
+  String get feedbackScreenshotUnavailable => 'Снимок недоступен';
 
   @override
-  String get feedbackClose => "Закрыть";
+  String get feedbackClose => 'Закрыть';
 
   @override
-  String get feedbackAllQuizzes => "Все викторины";
+  String get feedbackAllQuizzes => 'Все викторины';
 
   @override
-  String get feedbackReports => "Отзывы";
+  String get feedbackReports => 'Отзывы';
 
   @override
-  String get feedbackRefresh => "Обновить";
+  String get feedbackRefresh => 'Обновить';
 
   @override
-  String get feedbackLogout => "Выйти";
+  String get feedbackLogout => 'Выйти';
 
   @override
-  String get feedbackOperatorToken => "Токен оператора";
+  String get feedbackOperatorToken => 'Токен оператора';
 
   @override
-  String get feedbackSignIn => "Войти";
+  String get feedbackSignIn => 'Войти';
 
   @override
-  String get feedbackOpen => "Открытые";
+  String get feedbackOpen => 'Открытые';
 
   @override
-  String get feedbackResolved => "Решённые";
+  String get feedbackResolved => 'Решённые';
 
   @override
-  String get feedbackAll => "Все";
+  String get feedbackAll => 'Все';
 
   @override
   String get feedbackOperationFailedCheckTheTokenAndRetry =>
-      "Операция не выполнена. Проверьте токен и повторите.";
+      'Операция не выполнена. Проверьте токен и повторите.';
 
   @override
-  String get feedbackNoReports => "Отзывов пока нет";
+  String get feedbackNoReports => 'Отзывов пока нет';
 
   @override
-  String get feedbackResolve => "Решено";
+  String get feedbackResolve => 'Решено';
 
   @override
-  String get feedbackReopen => "Открыть снова";
+  String get feedbackReopen => 'Открыть снова';
 
   @override
-  String get feedbackPrevious => "Назад";
+  String get feedbackPrevious => 'Назад';
 
   @override
-  String get feedbackNext => "Далее";
+  String get feedbackNext => 'Далее';
 
   @override
-  String get feedbackSendFeedback => "Отправить отзыв";
+  String get feedbackSendFeedback => 'Отправить отзыв';
 
   @override
-  String get feedbackThankYouForYourFeedback => "Спасибо за отзыв";
+  String get feedbackThankYouForYourFeedback => 'Спасибо за отзыв';
 
   @override
-  String get feedbackFeedback => "Обратная связь";
+  String get feedbackFeedback => 'Обратная связь';
 
   @override
-  String get feedbackApplicationProblem => "Проблема приложения";
+  String get feedbackApplicationProblem => 'Проблема приложения';
 
   @override
-  String get feedbackQuestionProblem => "Проблема вопроса";
+  String get feedbackQuestionProblem => 'Проблема вопроса';
 
   @override
-  String get feedbackSuggestion => "Предложение";
+  String get feedbackSuggestion => 'Предложение';
 
   @override
-  String get feedbackComment => "Комментарий";
+  String get feedbackComment => 'Комментарий';
 
   @override
-  String get feedbackAttachScreenshot => "Прикрепить снимок экрана";
+  String get feedbackAttachScreenshot => 'Прикрепить снимок экрана';
 
   @override
   String get feedbackScreenshotUnavailableYouCanSendAComment =>
-      "Снимок недоступен. Можно отправить комментарий.";
+      'Снимок недоступен. Можно отправить комментарий.';
 
   @override
   String get feedbackCouldNotSendYourTextIsSavedPleaseRetry =>
-      "Не удалось отправить. Текст сохранён — попробуйте ещё раз.";
+      'Не удалось отправить. Текст сохранён — попробуйте ещё раз.';
 
   @override
-  String get feedbackSending => "Отправка…";
+  String get feedbackSending => 'Отправка…';
 
   @override
-  String get feedbackSend => "Отправить";
+  String get feedbackSend => 'Отправить';
 }
