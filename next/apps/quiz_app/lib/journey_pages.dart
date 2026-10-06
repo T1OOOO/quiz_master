@@ -423,8 +423,9 @@ class _FeedbackDialog extends StatefulWidget {
 
 class _FeedbackDialogState extends State<_FeedbackDialog>
     with WidgetsBindingObserver {
+  static const _autoAdvanceSeconds = 2;
   Timer? _advance;
-  int _seconds = 1;
+  int _seconds = _autoAdvanceSeconds;
 
   @override
   void initState() {
@@ -439,11 +440,11 @@ class _FeedbackDialogState extends State<_FeedbackDialog>
   }
 
   void _resume() {
-    _seconds = 1;
+    _seconds = _autoAdvanceSeconds;
     _advance = Timer.periodic(const Duration(seconds: 1), (_) {
       if (ModalRoute.of(context)?.isCurrent != true) {
         _pause();
-      } else if (_seconds == 1) {
+      } else if (_seconds <= 1) {
         _next();
       } else {
         setState(() => _seconds--);
@@ -516,12 +517,13 @@ class _FeedbackDialogState extends State<_FeedbackDialog>
                           ),
                         ),
                       ),
-                      IconButton(
-                        tooltip: MaterialLocalizations.of(context)
-                            .closeButtonTooltip,
-                        onPressed: _next,
-                        icon: const Icon(Icons.close),
-                      ),
+                      if (!feedback.correct)
+                        IconButton(
+                          tooltip: MaterialLocalizations.of(context)
+                              .closeButtonTooltip,
+                          onPressed: _next,
+                          icon: const Icon(Icons.close),
+                        ),
                     ],
                   ),
                   Flexible(
@@ -548,14 +550,15 @@ class _FeedbackDialogState extends State<_FeedbackDialog>
                             : l10n.autoAdvanceIn(_seconds),
                       ),
                     ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: FilledButton(
-                      key: const Key('feedback-next'),
-                      onPressed: _next,
-                      child: Text(AppLocalizations.of(context)!.continueLabel),
+                  if (!feedback.correct)
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        key: const Key('feedback-next'),
+                        onPressed: _next,
+                        child: Text(l10n.continueLabel),
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

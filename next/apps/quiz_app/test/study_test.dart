@@ -159,7 +159,7 @@ void main() {
   ) async {
     await _pump(tester, const StudyArticlePage(moduleId: 'history'));
     final context = tester.element(find.text('A short lesson'));
-    expect(DefaultTextStyle.of(context).style.color, const Color(0xff655444));
+    expect(DefaultTextStyle.of(context).style.color, const Color(0xff3f2f23));
     final heading = tester.widget<Text>(find.text(moduleFixture.title).first);
     expect(heading.style!.color, const Color(0xff655444));
   });
@@ -237,6 +237,101 @@ void main() {
     },
   );
 
+  testWidgets('article keeps paper text and tables readable in dark mode', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(361, 682));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          studyModulesProvider.overrideWith((ref) async => [moduleFixture]),
+          _quizCatalogOverride,
+        ],
+        child: MaterialApp(
+          theme: ThemeData.dark(),
+          darkTheme: ThemeData.dark(),
+          themeMode: ThemeMode.dark,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('en'),
+          home: const StudyArticlePage(moduleId: 'history'),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final markdown = tester.widget<MarkdownBody>(
+      find.byType(MarkdownBody).first,
+    );
+    final style = markdown.styleSheet!;
+    expect(style.p!.color, const Color(0xff3f2f23));
+    expect(style.a!.color, const Color(0xff005f52));
+    expect(style.tableBody!.color, const Color(0xff3f2f23));
+    final paper = tester.widget<Card>(find.byType(Card).first).color!;
+    final contrast =
+        (paper.computeLuminance() + .05) /
+        (style.p!.color!.computeLuminance() + .05);
+    expect(contrast, greaterThan(4.5));
+    expect(find.byKey(const Key('study-mobile-table')), findsOneWidget);
+    expect(find.text('Heading'), findsOneWidget);
+    expect(find.text('Detail'), findsOneWidget);
+    expect(find.text('One'), findsOneWidget);
+    expect(
+      find.text(
+        'A longer detail that remains visible in a labeled card on a narrow screen.',
+      ),
+      findsOneWidget,
+    );
+    expect(find.byType(Table), findsNothing);
+    expect(find.byType(SingleChildScrollView), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('article keeps its Markdown table on desktop widths', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(800, 682));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await _pump(tester, const StudyArticlePage(moduleId: 'history'));
+
+    expect(find.byKey(const Key('study-mobile-table')), findsNothing);
+    expect(find.byType(Table), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('mobile table cards preserve escaped pipes and backslashes', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(361, 682));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await _pumpStudyArticle(
+      tester,
+      _moduleWithMarkdown(
+        '# Lesson\n\n| Label | Detail |\n|---|---|\n| Path | C:\\path \\| before |',
+      ),
+    );
+
+    expect(find.byKey(const Key('study-mobile-table')), findsOneWidget);
+    expect(find.text('C:\\path | before'), findsOneWidget);
+  });
+
+  testWidgets('mobile leaves fenced and formatted tables to Markdown', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(361, 682));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await _pumpStudyArticle(
+      tester,
+      _moduleWithMarkdown(
+        '# Lesson\n\n```text\n| Header | Detail |\n|---|---|\n| A | B |\n```\n\n| Header | Detail |\n|---|---|\n| <em>A</em> | ~~B~~ |',
+      ),
+    );
+
+    expect(find.byKey(const Key('study-mobile-table')), findsNothing);
+    expect(find.byType(Table), findsOneWidget);
+  });
+
   testWidgets(
     'library cards avoid overflow on narrow screens at large text scale',
     (tester) async {
@@ -283,6 +378,24 @@ Future<void> _pump(WidgetTester tester, Widget page) async {
   await tester.pumpAndSettle();
 }
 
+Future<void> _pumpStudyArticle(WidgetTester tester, StudyModule module) async {
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        studyModulesProvider.overrideWith((ref) async => [module]),
+        _quizCatalogOverride,
+      ],
+      child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('en'),
+        home: const StudyArticlePage(moduleId: 'history'),
+      ),
+    ),
+  );
+  await tester.pumpAndSettle();
+}
+
 final _quizCatalogOverride = discoveryCatalogProvider.overrideWith(
   (ref) async => [
     const CatalogPack(
@@ -304,7 +417,7 @@ final moduleFixture = StudyModule(
   description: 'A short lesson',
   category: 'History',
   readingMinutesEstimate: 3,
-  articleMarkdown: '# A lesson\n\nA paragraph.\n\n![Missing illustration](resource:assets/study/does-not-exist.png)\n\n## Sources\n\nA sourced section.',
+  articleMarkdown: '# A lesson\n\nA paragraph.\n\n![Missing illustration](resource:assets/study/does-not-exist.png)\n\n| Heading | Detail |\n|---|---|\n| One | A longer detail that remains visible in a labeled card on a narrow screen. |\n\n## Sources\n\nA sourced section.',
   objectives: const ['Learn one thing'],
   sourceQuizIds: const ['history-quiz'],
   sources: const [
@@ -325,4 +438,17 @@ final moduleFixture = StudyModule(
         sourceRefs: const ['src'],
       ),
   ],
+);
+
+StudyModule _moduleWithMarkdown(String articleMarkdown) => StudyModule(
+  id: moduleFixture.id,
+  title: moduleFixture.title,
+  description: moduleFixture.description,
+  category: moduleFixture.category,
+  readingMinutesEstimate: moduleFixture.readingMinutesEstimate,
+  articleMarkdown: articleMarkdown,
+  objectives: moduleFixture.objectives,
+  sourceQuizIds: moduleFixture.sourceQuizIds,
+  sources: moduleFixture.sources,
+  questions: moduleFixture.questions,
 );

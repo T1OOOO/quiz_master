@@ -269,10 +269,10 @@ void main() {
       MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Challenge'));
+    await tester.tap(find.text('Training'));
     await tester.tap(find.text('World map and flags'));
     await tester.pumpAndSettle();
-    expect(find.textContaining('Challenge · local unranked'), findsOneWidget);
+    expect(find.textContaining('Training · local unranked'), findsOneWidget);
     expect(find.text('Correct answer'), findsNothing);
     expect(find.byKey(const Key('quizipedia-map')), findsOneWidget);
     expect(find.text('Check'), findsOneWidget);
@@ -297,7 +297,7 @@ void main() {
       MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Challenge'));
+    await tester.tap(find.text('Training'));
     await tester.tap(find.text('World map and flags'));
     await tester.pumpAndSettle();
 
@@ -318,30 +318,25 @@ void main() {
     await tester.ensureVisible(viewport);
     await tester.pumpAndSettle();
     final pan = await tester.startGesture(tester.getCenter(viewport));
-    await pan.moveBy(const Offset(-25, 0));
+    await pan.moveBy(Offset(targetIndex < 2 ? 25 : -25, 0));
     await tester.pump();
-    await pan.moveBy(const Offset(-25, 0));
+    await pan.moveBy(Offset(targetIndex < 2 ? 25 : -25, 0));
     await tester.pump();
     // The first drag distance starts the gesture instead of panning the map.
-    // Keep the rightmost country's hole inside the clipped viewport as well.
-    await pan.moveBy(Offset(targetIndex == 3 ? -205 : -25, 0));
+    // Pan toward the tested country to keep its ring and hole in view.
+    await pan.moveBy(Offset(targetIndex < 2 ? 25 : -25, 0));
     await pan.up();
     await tester.pumpAndSettle();
     expect(controller.value.storage[12], isNot(0));
 
     Future<void> tapScene(double x, double y) async {
       final size = tester.getSize(find.byKey(const Key('quizipedia-map')));
-      final matrix = controller.value.storage;
-      final local = Offset(
-        matrix[0] * x * size.width + matrix[4] * y * size.height + matrix[12],
-        matrix[1] * x * size.width + matrix[5] * y * size.height + matrix[13],
+      final box = tester.renderObject<RenderBox>(
+        find.byKey(const Key('quizipedia-map')),
       );
-      expect(
-        (Offset.zero & tester.getSize(viewport)).contains(local),
-        isTrue,
-        reason: 'Target $targetIndex, scene ($x, $y), viewport $local',
+      await tester.tapAt(
+        box.localToGlobal(Offset(x * size.width, y * size.height)),
       );
-      await tester.tapAt(tester.getTopLeft(viewport) + local);
       await tester.pump();
     }
 
@@ -353,7 +348,7 @@ void main() {
     expect(check().onPressed, isNull);
     await tapScene(left + .025, .23);
     expect(check().onPressed, isNotNull);
-    await tapScene(left + .025, .08); // Ocean, outside every feature.
+    await tapScene(left + .025, .58); // Ocean, outside every feature.
     expect(check().onPressed, isNull);
     await tapScene(left + .025, .23);
     await tester.ensureVisible(find.text('Check'));
@@ -363,6 +358,66 @@ void main() {
     expect(find.textContaining('Score 1'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'explore selects countries outside the training set and search finds them',
+    (tester) async {
+      final data = fixture();
+      (data['countries'] as List).add({
+        'id': 'extra-country',
+        'name_ru': 'Дополнительная страна',
+        'name_en': 'Extra country',
+        'polygons': [
+          [_rectangle(.12, .65, .23, .8)],
+        ],
+      });
+      tester.view.physicalSize = const Size(361, 682);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(home: QuizipediaPage(bundle: _Bundle(data))),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('World map and flags'));
+      await tester.pumpAndSettle();
+      final map = find.byKey(const Key('quizipedia-map'));
+      final box = tester.renderObject<RenderBox>(map);
+      await tester.tapAt(
+        box.localToGlobal(Offset(box.size.width * .17, box.size.height * .72)),
+      );
+      await tester.pump();
+      expect(
+        tester.widget<Text>(find.byKey(const Key('map-selection-label'))).data,
+        'Extra country',
+      );
+      expect(
+        (tester.widget<CustomPaint>(map).painter as dynamic).selected,
+        'extra-country',
+      );
+      await tester.tap(find.byTooltip('Show selected country'));
+      await tester.pumpAndSettle();
+      final controller = tester
+          .widget<InteractiveViewer>(
+            find.byKey(const Key('quizipedia-viewport')),
+          )
+          .transformationController!;
+      expect(controller.value.getMaxScaleOnAxis(), greaterThan(1));
+      await tester.tap(find.byTooltip('Reset view'));
+      await tester.pump();
+      expect(controller.value.getMaxScaleOnAxis(), 1);
+      await tester.ensureVisible(find.byKey(const Key('map-country-search')));
+      await tester.tap(find.byKey(const Key('map-country-search')));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'Extra');
+      await tester.pump();
+      expect(find.widgetWithText(ListTile, 'Extra country'), findsOneWidget);
+      expect(find.widgetWithText(ListTile, 'Name test0'), findsNothing);
+      await tester.tap(find.widgetWithText(ListTile, 'Extra country'));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    },
+  );
 
   testWidgets('zoom buttons preserve the gesture scale limits', (tester) async {
     await tester.pumpWidget(
@@ -392,7 +447,7 @@ void main() {
       MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Challenge'));
+    await tester.tap(find.text('Training'));
     await tester.tap(find.text('Endocrine system'));
     await tester.runAsync(() async {
       await tester.pump();

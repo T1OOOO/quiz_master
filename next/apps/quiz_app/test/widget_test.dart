@@ -256,7 +256,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
   testWidgets(
-    'correct overlay advances in one second without shifting question',
+    'correct overlay advances in two seconds without shifting question',
     (tester) async {
       final api = await _QuizTestServer.start();
       final client = QuizApiClient(baseUri: api.baseUri);
@@ -284,7 +284,7 @@ void main() {
       // Dialog entrance has already elapsed during pumpAndSettle.
       await tester.pump(const Duration(milliseconds: 100));
       expect(find.text('Question 1'), findsOneWidget);
-      await tester.pump(const Duration(milliseconds: 900));
+      await tester.pump(const Duration(milliseconds: 1900));
       await tester.pumpAndSettle();
       expect(find.text('Question 2'), findsOneWidget);
       expect(api.answerBodies, hasLength(1));
@@ -346,33 +346,42 @@ void main() {
     });
   }
 
-  testWidgets('auto advance can be paused, explained and resumed', (
-    tester,
-  ) async {
-    final api = await _QuizTestServer.start();
-    final client = QuizApiClient(baseUri: api.baseUri);
-    client.dio.httpClientAdapter = _QuizTestAdapter(api);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [quizApiProvider.overrideWithValue(client)],
-        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
-      ),
-    );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Option 4'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('auto-pause')));
-    await tester.pump(const Duration(seconds: 4));
-    expect(find.text('Question 1'), findsOneWidget);
-    expect(find.byType(Dialog), findsOneWidget);
-    expect(find.text('Because question 1.'), findsOneWidget);
-    await tester.tap(find.byKey(const Key('auto-resume')));
-    await tester.pump(const Duration(milliseconds: 900));
-    expect(find.text('Question 1'), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.pumpAndSettle();
-    expect(find.text('Question 2'), findsOneWidget);
-  });
+  testWidgets(
+    'correct feedback waits two seconds, has no continue and resumes',
+    (tester) async {
+      final api = await _QuizTestServer.start();
+      final client = QuizApiClient(baseUri: api.baseUri);
+      client.dio.httpClientAdapter = _QuizTestAdapter(api);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [quizApiProvider.overrideWithValue(client)],
+          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Option 4'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('feedback-next')), findsNothing);
+      expect(
+        find.descendant(
+          of: find.byType(Dialog),
+          matching: find.byIcon(Icons.close),
+        ),
+        findsNothing,
+      );
+      await tester.tap(find.byKey(const Key('auto-pause')));
+      await tester.pump(const Duration(seconds: 4));
+      expect(find.text('Question 1'), findsOneWidget);
+      expect(find.byType(Dialog), findsOneWidget);
+      expect(find.text('Because question 1.'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('auto-resume')));
+      await tester.pump(const Duration(milliseconds: 1900));
+      expect(find.text('Question 1'), findsOneWidget);
+      await tester.pump(const Duration(milliseconds: 100));
+      await tester.pumpAndSettle();
+      expect(find.text('Question 2'), findsOneWidget);
+    },
+  );
 
   testWidgets('practice tap checks once, feedback retry does not resubmit', (
     tester,
@@ -397,6 +406,7 @@ void main() {
     expect(find.text('Incorrect'), findsWidgets);
     expect(find.text('Because question 1.'), findsOneWidget);
     expect(find.byType(Dialog), findsOneWidget);
+    expect(find.byKey(const Key('feedback-next')), findsOneWidget);
     await tester.pump(const Duration(seconds: 4));
     expect(find.byKey(const Key('auto-pause')), findsNothing);
     expect(find.text('Question 1'), findsOneWidget);

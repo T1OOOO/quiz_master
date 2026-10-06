@@ -562,7 +562,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                 ),
                 ButtonSegment(
                   value: true,
-                  label: Text(_t(context, 'Challenge', 'Вызов')),
+                  label: Text(_t(context, 'Training', 'Тренировка')),
                 ),
               ],
               selected: {_challenge},
@@ -705,9 +705,11 @@ class _QuizGame extends StatefulWidget {
 class _QuizGameState extends State<_QuizGame> {
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
     _Module.map =>
-      widget.catalog.countryRows
-          .where((row) => widget.catalog.mapTargetIds.contains(row['id']))
-          .toList(),
+      widget.challenge
+          ? widget.catalog.countryRows
+                .where((row) => widget.catalog.mapTargetIds.contains(row['id']))
+                .toList()
+          : widget.catalog.countryRows,
     _Module.anatomy =>
       (widget.catalog.anatomy['targets'] as List).cast<Map<String, dynamic>>(),
     _Module.landmarks => widget.catalog.landmarks,
@@ -904,6 +906,7 @@ class _QuizGameState extends State<_QuizGame> {
         ),
       );
     }
+    if (widget.module == _Module.map) return _mapContent();
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -913,8 +916,8 @@ class _QuizGameState extends State<_QuizGame> {
             widget.challenge
                 ? _t(
                     context,
-                    'Challenge · local unranked',
-                    'Вызов · без рейтинга',
+                    'Training · local unranked',
+                    'Тренировка · без рейтинга',
                   )
                 : _t(
                     context,
@@ -967,6 +970,141 @@ class _QuizGameState extends State<_QuizGame> {
         ],
       ),
     );
+  }
+
+  Widget _mapContent() => LayoutBuilder(
+    builder: (context, constraints) => Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.challenge
+                    ? _t(
+                        context,
+                        'Training · local unranked',
+                        'Тренировка · без рейтинга',
+                      )
+                    : _t(
+                        context,
+                        'Explore · local unranked',
+                        'Изучение · без рейтинга',
+                      ),
+              ),
+              if (widget.challenge)
+                Text(
+                  _t(
+                    context,
+                    'Question ${_questionIndex + 1} of ${_session.targets.length} · Score ${_session.score}',
+                    'Вопрос ${_questionIndex + 1} из ${_session.targets.length} · Счёт ${_session.score}',
+                  ),
+                ),
+              Text(_prompt(), style: Theme.of(context).textTheme.titleMedium),
+            ],
+          ),
+        ),
+        Expanded(child: _mapView()),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: constraints.maxHeight * .38),
+          child: SingleChildScrollView(
+            key: const Key('map-details'),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (widget.challenge)
+                  _challengeControls()
+                else
+                  _mapExploreControls(),
+                if (_submitted) _feedback(),
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(_t(context, 'Exit', 'Выйти')),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget _mapExploreControls() {
+    final description =
+        _current['explanation_${Localizations.localeOf(context).languageCode == 'ru' ? 'ru' : 'en'}'];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(_name(_currentId), style: Theme.of(context).textTheme.titleMedium),
+        if (description is String && description.isNotEmpty) Text(description),
+        const SizedBox(height: 8),
+        OutlinedButton.icon(
+          key: const Key('map-country-search'),
+          onPressed: _findCountry,
+          icon: const Icon(Icons.search),
+          label: Text(_t(context, 'Find a country', 'Найти страну')),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _findCountry() async {
+    var query = '';
+    final chosen = await showDialog<String>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, update) => AlertDialog(
+          title: Text(_t(context, 'Find a country', 'Найти страну')),
+          content: SizedBox(
+            width: 400,
+            height: MediaQuery.sizeOf(context).height * .5,
+            child: Column(
+              children: [
+                TextField(
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    labelText: _t(context, 'Country name', 'Название страны'),
+                  ),
+                  onChanged: (value) =>
+                      update(() => query = value.trim().toLowerCase()),
+                ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      for (final row in _targets)
+                        if ((row['name_ru'] as String).toLowerCase().contains(
+                              query,
+                            ) ||
+                            (row['name_en'] as String).toLowerCase().contains(
+                              query,
+                            ))
+                          ListTile(
+                            title: Text(_localized(context, row, 'name')),
+                            selected: row['id'] == _exploreId,
+                            onTap: () => Navigator.pop(
+                              dialogContext,
+                              row['id'] as String,
+                            ),
+                          ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: Text(_t(context, 'Cancel', 'Отмена')),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (mounted && chosen != null) _select(chosen);
   }
 
   String _prompt() {
@@ -1089,7 +1227,7 @@ class _QuizGameState extends State<_QuizGame> {
       child: OutlinedButton(
         onPressed: _submitted ? null : () => _select(id),
         style: OutlinedButton.styleFrom(
-          minimumSize: const Size(44, 44),
+          minimumSize: const Size(48, 48),
           backgroundColor: selected
               ? Theme.of(context).colorScheme.secondaryContainer
               : null,
@@ -1258,50 +1396,22 @@ class _QuizGameState extends State<_QuizGame> {
       ..scaleByDouble(ratio, ratio, ratio, 1);
   }
 
-  Widget _mapView() => _sceneViewport(2, (size) {
+  Widget _mapView() {
     final highlight = widget.challenge
         ? (_reverse || _submitted ? _currentId : null)
         : _exploreId;
-    return Semantics(
-      label: _t(context, 'Interactive world map', 'Интерактивная карта мира'),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapUp: (details) {
-          // InteractiveViewer gives its child a child-local scene position.
-          final point = QuizipediaPoint(
-            details.localPosition.dx / size.width,
-            details.localPosition.dy / size.height,
-          );
-          String? hit;
-          for (final country in widget.catalog.countries.reversed) {
-            if (country.contains(point)) {
-              hit = country.id;
-              break;
-            }
-          }
-          if (widget.challenge ||
-              (hit != null && widget.catalog.mapTargetIds.contains(hit))) {
-            _select(hit); // Ocean clears a tentative selection.
-          }
-        },
-        child: CustomPaint(
-          key: const Key('quizipedia-map'),
-          size: size,
-          painter: _MapPainter(
-            features: widget.catalog.countries,
-            highlighted: highlight,
-            selected: _selected,
-            correct: _submitted ? _currentId : null,
-            numbers: widget.challenge && !_reverse
-                ? _session.options
-                : const [],
-            showLabels: !widget.challenge,
-            russian: Localizations.localeOf(context).languageCode == 'ru',
-          ),
-        ),
-      ),
+    return QuizipediaWorldMap(
+      features: widget.catalog.countries,
+      controller: _controller,
+      selected: widget.challenge ? _selected : _exploreId,
+      highlighted: highlight,
+      correct: _submitted ? _currentId : null,
+      numbers: widget.challenge && !_reverse ? _session.options : const [],
+      showLabels: !widget.challenge,
+      selectionEnabled: !_submitted && (!widget.challenge || !_reverse),
+      onSelect: _select,
     );
-  });
+  }
 
   Widget _anatomyView(ui.Image image) {
     final anatomy = widget.catalog.anatomy;
@@ -1510,6 +1620,278 @@ class _Hotspot {
   final double x, y, radius;
 }
 
+/// A map has its own gesture area and controls; the page does not intercept pan.
+class QuizipediaWorldMap extends StatefulWidget {
+  const QuizipediaWorldMap({
+    super.key,
+    required this.features,
+    required this.controller,
+    required this.onSelect,
+    this.selected,
+    this.highlighted,
+    this.correct,
+    this.numbers = const [],
+    this.showLabels = true,
+    this.selectionEnabled = true,
+  });
+  final List<QuizipediaFeature> features;
+  final TransformationController controller;
+  final ValueChanged<String?> onSelect;
+  final String? selected, highlighted, correct;
+  final List<String> numbers;
+  final bool showLabels, selectionEnabled;
+
+  @override
+  State<QuizipediaWorldMap> createState() => _QuizipediaWorldMapState();
+}
+
+class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
+  Size _view = Size.zero;
+  Size get _scene => Size(
+    math.min(_view.width, _view.height * 2),
+    math.min(_view.width, _view.height * 2) / 2,
+  );
+  QuizipediaFeature? get _selected => widget.features
+      .where((feature) => feature.id == widget.selected)
+      .firstOrNull;
+
+  void _zoom(double factor) {
+    final scale = widget.controller.value.getMaxScaleOnAxis();
+    final next = (scale * factor).clamp(1.0, 6.0).toDouble();
+    final center = Offset(_view.width / 2, _view.height / 2);
+    final scene = widget.controller.toScene(center);
+    widget.controller.value = Matrix4.identity()
+      ..translateByDouble(
+        center.dx - scene.dx * next,
+        center.dy - scene.dy * next,
+        0,
+        1,
+      )
+      ..scaleByDouble(next, next, next, 1);
+  }
+
+  void _focus() {
+    final feature = _selected;
+    if (feature == null || _view.isEmpty) return;
+    // Use the largest part, avoiding distant islands stretching the camera.
+    Rect? bounds;
+    for (final polygon in feature.polygons) {
+      final ring = polygon.first;
+      final xs = ring.map((p) => p.x), ys = ring.map((p) => p.y);
+      final rect = Rect.fromLTRB(
+        xs.reduce(math.min),
+        ys.reduce(math.min),
+        xs.reduce(math.max),
+        ys.reduce(math.max),
+      );
+      if (bounds == null ||
+          rect.width * rect.height > bounds.width * bounds.height)
+        bounds = rect;
+    }
+    final worldWidth = _scene.width;
+    final worldHeight = _scene.height;
+    final scale = math
+        .min(
+          _view.width * .7 / math.max(1, bounds!.width * worldWidth),
+          _view.height * .7 / math.max(1, bounds.height * worldHeight),
+        )
+        .clamp(1.0, 6.0)
+        .toDouble();
+    final center = Offset(
+      bounds.center.dx * worldWidth + (_view.width - worldWidth) / 2,
+      bounds.center.dy * worldHeight + (_view.height - worldHeight) / 2,
+    );
+    widget.controller.value = Matrix4.identity()
+      ..translateByDouble(
+        _view.width / 2 - center.dx * scale,
+        _view.height / 2 - center.dy * scale,
+        0,
+        1,
+      )
+      ..scaleByDouble(scale, scale, scale, 1);
+  }
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      _view = Size(constraints.maxWidth, constraints.maxHeight);
+      final scene = _scene;
+      final selected = _selected;
+      final name = selected == null
+          ? (widget.selectionEnabled
+                ? _t(context, 'Tap a country', 'Нажмите на страну')
+                : _t(context, 'Choose an answer below', 'Выберите ответ ниже'))
+          : (Localizations.localeOf(context).languageCode == 'ru'
+                ? selected.nameRu
+                : selected.nameEn);
+      return ColoredBox(
+        color: const Color(0xffd9edfc),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: ClipRect(
+                child: InteractiveViewer(
+                  key: const Key('quizipedia-viewport'),
+                  transformationController: widget.controller,
+                  constrained: false,
+                  boundaryMargin: const EdgeInsets.all(48),
+                  minScale: 1,
+                  maxScale: 6,
+                  child: SizedBox(
+                    width: _view.width,
+                    height: _view.height,
+                    child: Center(
+                      child: Semantics(
+                        label: _t(
+                          context,
+                          'Interactive world map',
+                          'Интерактивная карта мира',
+                        ),
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTapUp: !widget.selectionEnabled
+                              ? null
+                              : (details) {
+                                  final point = QuizipediaPoint(
+                                    details.localPosition.dx / scene.width,
+                                    details.localPosition.dy / scene.height,
+                                  );
+                                  final hit = widget.features.reversed
+                                      .where((f) => f.contains(point))
+                                      .firstOrNull;
+                                  widget.onSelect(hit?.id);
+                                },
+                          child: CustomPaint(
+                            key: const Key('quizipedia-map'),
+                            size: scene,
+                            painter: _MapPainter(
+                              features: widget.features,
+                              highlighted: widget.highlighted,
+                              selected: widget.selected,
+                              correct: widget.correct,
+                              numbers: widget.numbers,
+                              showLabels: widget.showLabels,
+                              russian:
+                                  Localizations.localeOf(context)
+                                      .languageCode ==
+                                  'ru',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              left: 8,
+              right: 64,
+              child: IgnorePointer(
+                child: Semantics(
+                  liveRegion: true,
+                  child: Material(
+                    color: const Color(0xff173f57),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        name,
+                        key: const Key('map-selection-label'),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: Material(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      tooltip: _t(context, 'Zoom in', 'Увеличить'),
+                      icon: const Icon(Icons.add, color: Color(0xff173f57)),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
+                      ),
+                      onPressed: () => _zoom(1.5),
+                    ),
+                    IconButton(
+                      tooltip: _t(context, 'Zoom out', 'Уменьшить'),
+                      icon: const Icon(Icons.remove, color: Color(0xff173f57)),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
+                      ),
+                      onPressed: () => _zoom(1 / 1.5),
+                    ),
+                    IconButton(
+                      tooltip: _t(context, 'Reset view', 'Весь мир'),
+                      icon: const Icon(Icons.public, color: Color(0xff173f57)),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
+                      ),
+                      onPressed: () =>
+                          widget.controller.value = Matrix4.identity(),
+                    ),
+                    IconButton(
+                      tooltip: _t(
+                        context,
+                        'Show selected country',
+                        'Показать выбранную страну',
+                      ),
+                      icon: const Icon(
+                        Icons.center_focus_strong,
+                        color: Color(0xff173f57),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
+                      ),
+                      onPressed: selected == null ? null : _focus,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 8,
+              left: 8,
+              right: 8,
+              child: IgnorePointer(
+                child: Text(
+                  _t(
+                    context,
+                    'Drag to move · pinch or +/− to zoom',
+                    'Перетаскивайте карту · масштаб двумя пальцами или +/−',
+                  ),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Color(0xff173f57),
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
 class _MapPainter extends CustomPainter {
   const _MapPainter({
     required this.features,
@@ -1553,8 +1935,10 @@ class _MapPainter extends CustomPainter {
           path,
           Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = 1
-            ..color = const Color(0xff737d82),
+            ..strokeWidth = feature.id == selected ? 2.5 : 1
+            ..color = feature.id == selected
+                ? const Color(0xff513408)
+                : const Color(0xff737d82),
         );
       }
     }
