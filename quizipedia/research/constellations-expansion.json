@@ -1,0 +1,6219 @@
+{
+  "schema_version": "quizipedia-constellation-expansion-research/v1",
+  "status": "research_draft_pending_independent_review",
+  "accessed": "2026-10-07",
+  "scope": {
+    "constellation_count": 88,
+    "preserved_existing_ids": [
+      "uma",
+      "cas",
+      "ori",
+      "lyr",
+      "cyg",
+      "cru",
+      "sco",
+      "leo"
+    ],
+    "serpens": "One IAU constellation ID (ser), with two chart panels and two boundary text segments; never split into two IDs.",
+    "russian_names_note": "Draft standard Russian-language constellation names; the IAU table itself provides Latin and English forms, so Russian localization remains an editorial mapping rather than an IAU-published field."
+  },
+  "source_metadata": {
+    "iau": {
+      "title": "The 88 IAU Constellations",
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "accessed": "2026-10-07",
+      "claims": "Official page lists Latin names, official abbreviations, English names, charts and boundary downloads. The linked boundary TXT format gives right ascension and declination coordinates in J2000 and the abbreviation. The IAU charts are J2000 and CC BY 4.0; do not assume that image license statement covers boundary files."
+    },
+    "stellarium_modern": {
+      "repository": "Stellarium/stellarium",
+      "commit": "e835ad6ee5171c9deac2bdb8f1d3003085691197",
+      "index_url": "https://raw.githubusercontent.com/Stellarium/stellarium/e835ad6ee5171c9deac2bdb8f1d3003085691197/skycultures/modern/index.json",
+      "description_url": "https://raw.githubusercontent.com/Stellarium/stellarium/e835ad6ee5171c9deac2bdb8f1d3003085691197/skycultures/modern/description.md",
+      "guide_url": "https://github.com/Stellarium/stellarium/blob/master/guide/ch_skycultures.tex",
+      "attribution": "Stellarium team",
+      "license": "The modern sky-culture description states text and data CC BY-SA 4.0; illustrations separately Free Art License. Only index.json machine-readable line data is proposed, not illustrations.",
+      "id_convention": "Stellarium guide describes lines as arrays of polylines with numbers usually Hipparcos HIP identifiers; all numeric references used in the 88 modern constellation figures were crossmatched as HIP IDs.",
+      "coordinate_epoch": "The line file stores HIP IDs, not coordinates. Join to a separately licensed star table; HYG v4.1 records RA/Dec at epoch and equinox 2000.0.",
+      "boundaries": "index.json marks edges_type=iau, edges_source=https://pbarbier.com/constellations/edges_18.txt and edges_epoch=B1875. This differs from its artist-selected star line figures and from the IAU linked TXT boundary coordinate exports.",
+      "serpens": "The index has one CON modern Ser figure with two disconnected line groups; one record and one ID."
+    },
+    "hyg_v41": {
+      "repository": "astronexus/HYG-Database",
+      "commit": "c7f7f883fe678cc7680169a50ccd7dcc49b060ce",
+      "dataset_url": "https://raw.githubusercontent.com/astronexus/HYG-Database/c7f7f883fe678cc7680169a50ccd7dcc49b060ce/hyg/CURRENT/hygdata_v41.csv",
+      "readme_url": "https://github.com/astronexus/HYG-Database/blob/main/hyg/README.md",
+      "version": "4.1",
+      "attribution": "HYG Database v4.1, David Nash / Astronexus",
+      "license": "CC BY-SA 4.0",
+      "identity": "Match Stellarium line IDs to HYG hip, not HYG id (the latter is the database primary key).",
+      "coordinates": "README says RA and Dec are epoch/equinox 2000.0.",
+      "crossmatch": {
+        "csv_rows": 119626,
+        "nonzero_unique_hip_ids": 117951,
+        "stellarium_unique_line_hip_ids": 710,
+        "line_hip_ids_matched": 710,
+        "line_hip_ids_missing": 0,
+        "local_project_star_subset_rows": 56,
+        "local_subset_line_hip_matches": 54,
+        "local_subset_line_hip_missing": 656,
+        "result": "All 710 unique line HIPs resolved in the pinned HYG v4.1 hip field; 54 are present in project stars-source.json, 656 are absent from that 56-row subset. No star coordinates have been fabricated."
+      }
+    }
+  },
+  "iau_asset_verification": {
+    "pdf_direct_links_found_in_opened_iau_table": 89,
+    "boundary_direct_links_found_in_opened_iau_table": 89,
+    "expected": "87 ordinary constellation rows use one chart and boundary file each; Serpens has two panels and two boundary-segment files, keeping the count at 88 unique constellation IDs.",
+    "directly_opened_assets": [
+      "Aquila PDF and boundary TXT",
+      "Andromeda PDF and boundary TXT",
+      "Pegasus PDF and boundary TXT",
+      "Serpens Caput PDF and ser1 TXT",
+      "Serpens Cauda PDF and ser2 TXT"
+    ],
+    "remaining": "All listed asset hrefs were matched from official IAU table HTML; only the above sample assets were individually fetched/opened."
+  },
+  "constellation_records": [
+    {
+      "id": "and",
+      "abbreviation": "And",
+      "latin_name": "Andromeda",
+      "english_name": "Princess",
+      "name_ru": "Андромеда",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/AND.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/and.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern And",
+        "source_lines_hip": [
+          [
+            677,
+            3092,
+            5447
+          ],
+          [
+            9640,
+            5447,
+            4436,
+            3881
+          ]
+        ],
+        "unique_hip_ids": [
+          677,
+          3092,
+          3881,
+          4436,
+          5447,
+          9640
+        ],
+        "hyg_v41_matched_hip_ids": [
+          677,
+          3092,
+          3881,
+          4436,
+          5447,
+          9640
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          677,
+          3092,
+          3881,
+          4436,
+          5447,
+          9640
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ant",
+      "abbreviation": "Ant",
+      "latin_name": "Antlia",
+      "english_name": "Air Pump",
+      "name_ru": "Насос",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/ANT.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ant.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ant",
+        "source_lines_hip": [
+          [
+            51172,
+            48926
+          ]
+        ],
+        "unique_hip_ids": [
+          48926,
+          51172
+        ],
+        "hyg_v41_matched_hip_ids": [
+          48926,
+          51172
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          48926,
+          51172
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "aps",
+      "abbreviation": "Aps",
+      "latin_name": "Apus",
+      "english_name": "Bird of Paradise",
+      "name_ru": "Райская Птица",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/APS.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/aps.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Aps",
+        "source_lines_hip": [
+          [
+            72370,
+            81065,
+            81852
+          ]
+        ],
+        "unique_hip_ids": [
+          72370,
+          81065,
+          81852
+        ],
+        "hyg_v41_matched_hip_ids": [
+          72370,
+          81065,
+          81852
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          72370,
+          81065,
+          81852
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "aql",
+      "abbreviation": "Aql",
+      "latin_name": "Aquila",
+      "english_name": "Eagle",
+      "name_ru": "Орёл",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/AQL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/aql.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Aql",
+        "source_lines_hip": [
+          [
+            98036,
+            97649,
+            97278
+          ],
+          [
+            97649,
+            95501,
+            97804
+          ],
+          [
+            99473,
+            97804
+          ],
+          [
+            95501,
+            93747,
+            93244
+          ],
+          [
+            95501,
+            93805
+          ]
+        ],
+        "unique_hip_ids": [
+          93244,
+          93747,
+          93805,
+          95501,
+          97278,
+          97649,
+          97804,
+          98036,
+          99473
+        ],
+        "hyg_v41_matched_hip_ids": [
+          93244,
+          93747,
+          93805,
+          95501,
+          97278,
+          97649,
+          97804,
+          98036,
+          99473
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          93244,
+          93747,
+          93805,
+          95501,
+          97278,
+          97649,
+          97804,
+          98036,
+          99473
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "aqr",
+      "abbreviation": "Aqr",
+      "latin_name": "Aquarius",
+      "english_name": "Water Bearer",
+      "name_ru": "Водолей",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/AQR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/aqr.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Aqr",
+        "source_lines_hip": [
+          [
+            106278,
+            109074,
+            110395,
+            110960,
+            111497,
+            112961,
+            114855,
+            115438
+          ],
+          [
+            109074,
+            110003,
+            109139
+          ],
+          [
+            110003,
+            111123,
+            112716,
+            113136,
+            114341
+          ],
+          [
+            102618,
+            106278
+          ]
+        ],
+        "unique_hip_ids": [
+          102618,
+          106278,
+          109074,
+          109139,
+          110003,
+          110395,
+          110960,
+          111123,
+          111497,
+          112716,
+          112961,
+          113136,
+          114341,
+          114855,
+          115438
+        ],
+        "hyg_v41_matched_hip_ids": [
+          102618,
+          106278,
+          109074,
+          109139,
+          110003,
+          110395,
+          110960,
+          111123,
+          111497,
+          112716,
+          112961,
+          113136,
+          114341,
+          114855,
+          115438
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          102618,
+          106278,
+          109074,
+          109139,
+          110003,
+          110395,
+          110960,
+          111123,
+          111497,
+          112716,
+          112961,
+          113136,
+          114341,
+          114855,
+          115438
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ara",
+      "abbreviation": "Ara",
+      "latin_name": "Ara",
+      "english_name": "Altar",
+      "name_ru": "Жертвенник",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/ARA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ara.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ara",
+        "source_lines_hip": [
+          [
+            88714,
+            85792,
+            83081,
+            82363,
+            85727,
+            85267,
+            85258,
+            88714
+          ]
+        ],
+        "unique_hip_ids": [
+          82363,
+          83081,
+          85258,
+          85267,
+          85727,
+          85792,
+          88714
+        ],
+        "hyg_v41_matched_hip_ids": [
+          82363,
+          83081,
+          85258,
+          85267,
+          85727,
+          85792,
+          88714
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          82363,
+          83081,
+          85258,
+          85267,
+          85727,
+          85792,
+          88714
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ari",
+      "abbreviation": "Ari",
+      "latin_name": "Aries",
+      "english_name": "Ram",
+      "name_ru": "Овен",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/ARI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ari.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ari",
+        "source_lines_hip": [
+          [
+            13209,
+            9884,
+            8903,
+            8832
+          ]
+        ],
+        "unique_hip_ids": [
+          8832,
+          8903,
+          9884,
+          13209
+        ],
+        "hyg_v41_matched_hip_ids": [
+          8832,
+          8903,
+          9884,
+          13209
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          8832,
+          8903,
+          9884,
+          13209
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "aur",
+      "abbreviation": "Aur",
+      "latin_name": "Auriga",
+      "english_name": "Charioteer",
+      "name_ru": "Возничий",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/AUR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/aur.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Aur",
+        "source_lines_hip": [
+          [
+            28380,
+            28360,
+            24608,
+            23453,
+            23015
+          ],
+          [
+            25428,
+            23015
+          ],
+          [
+            25428,
+            28380
+          ]
+        ],
+        "unique_hip_ids": [
+          23015,
+          23453,
+          24608,
+          25428,
+          28360,
+          28380
+        ],
+        "hyg_v41_matched_hip_ids": [
+          23015,
+          23453,
+          24608,
+          25428,
+          28360,
+          28380
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          23015,
+          23453,
+          24608,
+          25428,
+          28360,
+          28380
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "boo",
+      "abbreviation": "Boo",
+      "latin_name": "Boötes",
+      "english_name": "Herdsman",
+      "name_ru": "Волопас",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/BOO.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/boo.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Boo",
+        "source_lines_hip": [
+          [
+            71795,
+            69673,
+            72105,
+            74666,
+            73555,
+            71075,
+            71053,
+            69673,
+            67927,
+            67459
+          ]
+        ],
+        "unique_hip_ids": [
+          67459,
+          67927,
+          69673,
+          71053,
+          71075,
+          71795,
+          72105,
+          73555,
+          74666
+        ],
+        "hyg_v41_matched_hip_ids": [
+          67459,
+          67927,
+          69673,
+          71053,
+          71075,
+          71795,
+          72105,
+          73555,
+          74666
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          67459,
+          67927,
+          69673,
+          71053,
+          71075,
+          71795,
+          72105,
+          73555,
+          74666
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cae",
+      "abbreviation": "Cae",
+      "latin_name": "Caelum",
+      "english_name": "Engraving Tool",
+      "name_ru": "Резец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CAE.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cae.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cae",
+        "source_lines_hip": [
+          [
+            21060,
+            21770,
+            21861
+          ]
+        ],
+        "unique_hip_ids": [
+          21060,
+          21770,
+          21861
+        ],
+        "hyg_v41_matched_hip_ids": [
+          21060,
+          21770,
+          21861
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          21060,
+          21770,
+          21861
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cam",
+      "abbreviation": "Cam",
+      "latin_name": "Camelopardalis",
+      "english_name": "Giraffe",
+      "name_ru": "Жираф",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CAM.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cam.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cam",
+        "source_lines_hip": [
+          [
+            16228,
+            18505,
+            22783
+          ],
+          [
+            16228,
+            17959,
+            22783
+          ],
+          [
+            17959,
+            25110
+          ]
+        ],
+        "unique_hip_ids": [
+          16228,
+          17959,
+          18505,
+          22783,
+          25110
+        ],
+        "hyg_v41_matched_hip_ids": [
+          16228,
+          17959,
+          18505,
+          22783,
+          25110
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          16228,
+          17959,
+          18505,
+          22783,
+          25110
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cap",
+      "abbreviation": "Cap",
+      "latin_name": "Capricornus",
+      "english_name": "Sea Goat",
+      "name_ru": "Козерог",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CAP.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cap.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cap",
+        "source_lines_hip": [
+          [
+            100064,
+            100345,
+            104139,
+            105515,
+            106985,
+            107556
+          ],
+          [
+            105515,
+            105881,
+            104139
+          ],
+          [
+            100345,
+            102485
+          ],
+          [
+            104139,
+            102978
+          ]
+        ],
+        "unique_hip_ids": [
+          100064,
+          100345,
+          102485,
+          102978,
+          104139,
+          105515,
+          105881,
+          106985,
+          107556
+        ],
+        "hyg_v41_matched_hip_ids": [
+          100064,
+          100345,
+          102485,
+          102978,
+          104139,
+          105515,
+          105881,
+          106985,
+          107556
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          100064,
+          100345,
+          102485,
+          102978,
+          104139,
+          105515,
+          105881,
+          106985,
+          107556
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "car",
+      "abbreviation": "Car",
+      "latin_name": "Carina",
+      "english_name": "Ship's Keel",
+      "name_ru": "Киль",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CAR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/car.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Car",
+        "source_lines_hip": [
+          [
+            45238,
+            50099,
+            52419,
+            52468,
+            54463,
+            53253,
+            51232,
+            50371,
+            45556
+          ],
+          [
+            42568,
+            41037,
+            30438
+          ],
+          [
+            45080,
+            45556
+          ],
+          [
+            45080,
+            42568
+          ],
+          [
+            30438,
+            31685
+          ],
+          [
+            41037,
+            39429
+          ]
+        ],
+        "unique_hip_ids": [
+          30438,
+          31685,
+          39429,
+          41037,
+          42568,
+          45080,
+          45238,
+          45556,
+          50099,
+          50371,
+          51232,
+          52419,
+          52468,
+          53253,
+          54463
+        ],
+        "hyg_v41_matched_hip_ids": [
+          30438,
+          31685,
+          39429,
+          41037,
+          42568,
+          45080,
+          45238,
+          45556,
+          50099,
+          50371,
+          51232,
+          52419,
+          52468,
+          53253,
+          54463
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          30438,
+          31685,
+          39429,
+          41037,
+          42568,
+          45080,
+          45238,
+          45556,
+          50099,
+          50371,
+          51232,
+          52419,
+          52468,
+          53253,
+          54463
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cas",
+      "abbreviation": "Cas",
+      "latin_name": "Cassiopeia",
+      "english_name": "Queen",
+      "name_ru": "Кассиопея",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CAS.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cas.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cas",
+        "source_lines_hip": [
+          [
+            8886,
+            6686,
+            4427,
+            3179,
+            746
+          ]
+        ],
+        "unique_hip_ids": [
+          746,
+          3179,
+          4427,
+          6686,
+          8886
+        ],
+        "hyg_v41_matched_hip_ids": [
+          746,
+          3179,
+          4427,
+          6686,
+          8886
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          746,
+          3179,
+          4427,
+          6686,
+          8886
+        ],
+        "project_subset_missing_hip_ids": [],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cen",
+      "abbreviation": "Cen",
+      "latin_name": "Centaurus",
+      "english_name": "Centaur",
+      "name_ru": "Центавр",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CEN.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cen.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cen",
+        "source_lines_hip": [
+          [
+            71683,
+            68702,
+            66657,
+            68002,
+            68282,
+            67472,
+            67464,
+            65936,
+            65109
+          ],
+          [
+            67464,
+            68933
+          ],
+          [
+            67472,
+            71352,
+            73334
+          ],
+          [
+            68002,
+            61932,
+            60823,
+            59196,
+            56480,
+            56561
+          ]
+        ],
+        "unique_hip_ids": [
+          56480,
+          56561,
+          59196,
+          60823,
+          61932,
+          65109,
+          65936,
+          66657,
+          67464,
+          67472,
+          68002,
+          68282,
+          68702,
+          68933,
+          71352,
+          71683,
+          73334
+        ],
+        "hyg_v41_matched_hip_ids": [
+          56480,
+          56561,
+          59196,
+          60823,
+          61932,
+          65109,
+          65936,
+          66657,
+          67464,
+          67472,
+          68002,
+          68282,
+          68702,
+          68933,
+          71352,
+          71683,
+          73334
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          56480,
+          56561,
+          59196,
+          60823,
+          61932,
+          65109,
+          65936,
+          66657,
+          67464,
+          67472,
+          68002,
+          68282,
+          68702,
+          68933,
+          71352,
+          71683,
+          73334
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cep",
+      "abbreviation": "Cep",
+      "latin_name": "Cepheus",
+      "english_name": "King",
+      "name_ru": "Цефей",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CEP.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cep.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cep",
+        "source_lines_hip": [
+          [
+            109492,
+            112724,
+            106032,
+            105199,
+            109492
+          ],
+          [
+            112724,
+            116727,
+            106032
+          ]
+        ],
+        "unique_hip_ids": [
+          105199,
+          106032,
+          109492,
+          112724,
+          116727
+        ],
+        "hyg_v41_matched_hip_ids": [
+          105199,
+          106032,
+          109492,
+          112724,
+          116727
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          105199,
+          106032,
+          109492,
+          112724,
+          116727
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cet",
+      "abbreviation": "Cet",
+      "latin_name": "Cetus",
+      "english_name": "Sea Monster",
+      "name_ru": "Кит",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CET.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cet.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cet",
+        "source_lines_hip": [
+          [
+            10324,
+            11484
+          ],
+          [
+            8102,
+            3419,
+            1562
+          ],
+          [
+            3419,
+            5364,
+            6537,
+            8645,
+            11345,
+            12390,
+            12770,
+            11783,
+            8102
+          ],
+          [
+            10826,
+            12390
+          ],
+          [
+            10826,
+            12387,
+            12706,
+            14135,
+            13954,
+            12828,
+            11484,
+            12093,
+            12706
+          ]
+        ],
+        "unique_hip_ids": [
+          1562,
+          3419,
+          5364,
+          6537,
+          8102,
+          8645,
+          10324,
+          10826,
+          11345,
+          11484,
+          11783,
+          12093,
+          12387,
+          12390,
+          12706,
+          12770,
+          12828,
+          13954,
+          14135
+        ],
+        "hyg_v41_matched_hip_ids": [
+          1562,
+          3419,
+          5364,
+          6537,
+          8102,
+          8645,
+          10324,
+          10826,
+          11345,
+          11484,
+          11783,
+          12093,
+          12387,
+          12390,
+          12706,
+          12770,
+          12828,
+          13954,
+          14135
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          1562,
+          3419,
+          5364,
+          6537,
+          8102,
+          8645,
+          10324,
+          10826,
+          11345,
+          11484,
+          11783,
+          12093,
+          12387,
+          12390,
+          12706,
+          12770,
+          12828,
+          13954,
+          14135
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cha",
+      "abbreviation": "Cha",
+      "latin_name": "Chamaeleon",
+      "english_name": "Chameleon",
+      "name_ru": "Хамелеон",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CHA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cha.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cha",
+        "source_lines_hip": [
+          [
+            40702,
+            51839,
+            60000
+          ]
+        ],
+        "unique_hip_ids": [
+          40702,
+          51839,
+          60000
+        ],
+        "hyg_v41_matched_hip_ids": [
+          40702,
+          51839,
+          60000
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          40702,
+          51839,
+          60000
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cir",
+      "abbreviation": "Cir",
+      "latin_name": "Circinus",
+      "english_name": "Drawing Compass",
+      "name_ru": "Циркуль",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CIR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cir.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cir",
+        "source_lines_hip": [
+          [
+            71908,
+            75323
+          ],
+          [
+            71908,
+            74824
+          ]
+        ],
+        "unique_hip_ids": [
+          71908,
+          74824,
+          75323
+        ],
+        "hyg_v41_matched_hip_ids": [
+          71908,
+          74824,
+          75323
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          71908,
+          74824,
+          75323
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cma",
+      "abbreviation": "CMa",
+      "latin_name": "Canis Major",
+      "english_name": "Great Dog",
+      "name_ru": "Большой Пёс",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CMA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cma.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern CMa",
+        "source_lines_hip": [
+          [
+            33160,
+            34045,
+            33347,
+            32349,
+            33977,
+            34444,
+            35037,
+            35904
+          ],
+          [
+            33579,
+            33856,
+            34444
+          ],
+          [
+            33856,
+            33165,
+            31592,
+            31416
+          ],
+          [
+            31592,
+            30324
+          ],
+          [
+            31592,
+            32349
+          ],
+          [
+            33579,
+            32759
+          ],
+          [
+            30122,
+            33579
+          ],
+          [
+            33347,
+            33160
+          ]
+        ],
+        "unique_hip_ids": [
+          30122,
+          30324,
+          31416,
+          31592,
+          32349,
+          32759,
+          33160,
+          33165,
+          33347,
+          33579,
+          33856,
+          33977,
+          34045,
+          34444,
+          35037,
+          35904
+        ],
+        "hyg_v41_matched_hip_ids": [
+          30122,
+          30324,
+          31416,
+          31592,
+          32349,
+          32759,
+          33160,
+          33165,
+          33347,
+          33579,
+          33856,
+          33977,
+          34045,
+          34444,
+          35037,
+          35904
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          30122,
+          30324,
+          31416,
+          31592,
+          32349,
+          32759,
+          33160,
+          33165,
+          33347,
+          33579,
+          33856,
+          33977,
+          34045,
+          34444,
+          35037,
+          35904
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cmi",
+      "abbreviation": "CMi",
+      "latin_name": "Canis Minor",
+      "english_name": "Lesser Dog",
+      "name_ru": "Малый Пёс",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CMI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cmi.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern CMi",
+        "source_lines_hip": [
+          [
+            37279,
+            36188
+          ]
+        ],
+        "unique_hip_ids": [
+          36188,
+          37279
+        ],
+        "hyg_v41_matched_hip_ids": [
+          36188,
+          37279
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          36188,
+          37279
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cnc",
+      "abbreviation": "Cnc",
+      "latin_name": "Cancer",
+      "english_name": "Crab",
+      "name_ru": "Рак",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CNC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cnc.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cnc",
+        "source_lines_hip": [
+          [
+            43103,
+            42806,
+            40843
+          ],
+          [
+            42806,
+            42911,
+            40526
+          ],
+          [
+            42911,
+            44066
+          ]
+        ],
+        "unique_hip_ids": [
+          40526,
+          40843,
+          42806,
+          42911,
+          43103,
+          44066
+        ],
+        "hyg_v41_matched_hip_ids": [
+          40526,
+          40843,
+          42806,
+          42911,
+          43103,
+          44066
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          40526,
+          40843,
+          42806,
+          42911,
+          43103,
+          44066
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "col",
+      "abbreviation": "Col",
+      "latin_name": "Columba",
+      "english_name": "Dove",
+      "name_ru": "Голубь",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/COL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/col.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Col",
+        "source_lines_hip": [
+          [
+            30277,
+            29807,
+            28199,
+            27628,
+            28328
+          ],
+          [
+            27628,
+            26634,
+            25859
+          ]
+        ],
+        "unique_hip_ids": [
+          25859,
+          26634,
+          27628,
+          28199,
+          28328,
+          29807,
+          30277
+        ],
+        "hyg_v41_matched_hip_ids": [
+          25859,
+          26634,
+          27628,
+          28199,
+          28328,
+          29807,
+          30277
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          25859,
+          26634,
+          27628,
+          28199,
+          28328,
+          29807,
+          30277
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "com",
+      "abbreviation": "Com",
+      "latin_name": "Coma Berenices",
+      "english_name": "Berenice's Hair",
+      "name_ru": "Волосы Вероники",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/COM.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/com.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Com",
+        "source_lines_hip": [
+          [
+            64241,
+            64394,
+            60742
+          ]
+        ],
+        "unique_hip_ids": [
+          60742,
+          64241,
+          64394
+        ],
+        "hyg_v41_matched_hip_ids": [
+          60742,
+          64241,
+          64394
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          60742,
+          64241,
+          64394
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cra",
+      "abbreviation": "CrA",
+      "latin_name": "Corona Australis",
+      "english_name": "Southern Crown",
+      "name_ru": "Южная Корона",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CRA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cra.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern CrA",
+        "source_lines_hip": [
+          [
+            91875,
+            92989,
+            93174,
+            93825,
+            94114,
+            94160,
+            94005,
+            93542,
+            92953
+          ],
+          [
+            91875,
+            90887
+          ]
+        ],
+        "unique_hip_ids": [
+          90887,
+          91875,
+          92953,
+          92989,
+          93174,
+          93542,
+          93825,
+          94005,
+          94114,
+          94160
+        ],
+        "hyg_v41_matched_hip_ids": [
+          90887,
+          91875,
+          92953,
+          92989,
+          93174,
+          93542,
+          93825,
+          94005,
+          94114,
+          94160
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          90887,
+          91875,
+          92953,
+          92989,
+          93174,
+          93542,
+          93825,
+          94005,
+          94114,
+          94160
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "crb",
+      "abbreviation": "CrB",
+      "latin_name": "Corona Borealis",
+      "english_name": "Northern Crown",
+      "name_ru": "Северная Корона",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CRB.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/crb.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern CrB",
+        "source_lines_hip": [
+          [
+            76127,
+            75695,
+            76267,
+            76952,
+            77512,
+            78159,
+            78493
+          ]
+        ],
+        "unique_hip_ids": [
+          75695,
+          76127,
+          76267,
+          76952,
+          77512,
+          78159,
+          78493
+        ],
+        "hyg_v41_matched_hip_ids": [
+          75695,
+          76127,
+          76267,
+          76952,
+          77512,
+          78159,
+          78493
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          75695,
+          76127,
+          76267,
+          76952,
+          77512,
+          78159,
+          78493
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "crt",
+      "abbreviation": "Crt",
+      "latin_name": "Crater",
+      "english_name": "Cup",
+      "name_ru": "Чаша",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CRT.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/crt.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Crt",
+        "source_lines_hip": [
+          [
+            53740,
+            54682,
+            55705,
+            55282,
+            53740
+          ],
+          [
+            55282,
+            55687,
+            56633,
+            58188,
+            57283,
+            55705
+          ]
+        ],
+        "unique_hip_ids": [
+          53740,
+          54682,
+          55282,
+          55687,
+          55705,
+          56633,
+          57283,
+          58188
+        ],
+        "hyg_v41_matched_hip_ids": [
+          53740,
+          54682,
+          55282,
+          55687,
+          55705,
+          56633,
+          57283,
+          58188
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          53740,
+          54682,
+          55282,
+          55687,
+          55705,
+          56633,
+          57283,
+          58188
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cru",
+      "abbreviation": "Cru",
+      "latin_name": "Crux",
+      "english_name": "Southern Cross",
+      "name_ru": "Южный Крест",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CRU.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cru.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cru",
+        "source_lines_hip": [
+          [
+            61084,
+            60718
+          ],
+          [
+            62434,
+            59747
+          ]
+        ],
+        "unique_hip_ids": [
+          59747,
+          60718,
+          61084,
+          62434
+        ],
+        "hyg_v41_matched_hip_ids": [
+          59747,
+          60718,
+          61084,
+          62434
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          59747,
+          60718,
+          61084,
+          62434
+        ],
+        "project_subset_missing_hip_ids": [],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "crv",
+      "abbreviation": "Crv",
+      "latin_name": "Corvus",
+      "english_name": "Crow",
+      "name_ru": "Ворон",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CRV.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/crv.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Crv",
+        "source_lines_hip": [
+          [
+            61174,
+            60965,
+            59803,
+            59316,
+            59199
+          ],
+          [
+            59316,
+            61359,
+            60965
+          ]
+        ],
+        "unique_hip_ids": [
+          59199,
+          59316,
+          59803,
+          60965,
+          61174,
+          61359
+        ],
+        "hyg_v41_matched_hip_ids": [
+          59199,
+          59316,
+          59803,
+          60965,
+          61174,
+          61359
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          59199,
+          59316,
+          59803,
+          60965,
+          61174,
+          61359
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cvn",
+      "abbreviation": "CVn",
+      "latin_name": "Canes Venatici",
+      "english_name": "Hunting Dogs",
+      "name_ru": "Гончие Псы",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CVN.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cvn.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern CVn",
+        "source_lines_hip": [
+          [
+            61317,
+            63125
+          ]
+        ],
+        "unique_hip_ids": [
+          61317,
+          63125
+        ],
+        "hyg_v41_matched_hip_ids": [
+          61317,
+          63125
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          61317,
+          63125
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "cyg",
+      "abbreviation": "Cyg",
+      "latin_name": "Cygnus",
+      "english_name": "Swan",
+      "name_ru": "Лебедь",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/CYG.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/cyg.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Cyg",
+        "source_lines_hip": [
+          [
+            94779,
+            95853,
+            97165,
+            100453,
+            102098
+          ],
+          [
+            100453,
+            102488,
+            104732,
+            107310
+          ],
+          [
+            100453,
+            98110,
+            95947
+          ]
+        ],
+        "unique_hip_ids": [
+          94779,
+          95853,
+          95947,
+          97165,
+          98110,
+          100453,
+          102098,
+          102488,
+          104732,
+          107310
+        ],
+        "hyg_v41_matched_hip_ids": [
+          94779,
+          95853,
+          95947,
+          97165,
+          98110,
+          100453,
+          102098,
+          102488,
+          104732,
+          107310
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          95947,
+          97165,
+          100453,
+          102098,
+          102488
+        ],
+        "project_subset_missing_hip_ids": [
+          94779,
+          95853,
+          98110,
+          104732,
+          107310
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "del",
+      "abbreviation": "Del",
+      "latin_name": "Delphinus",
+      "english_name": "Dolphin",
+      "name_ru": "Дельфин",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/DEL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/del.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Del",
+        "source_lines_hip": [
+          [
+            101421,
+            101769,
+            101958,
+            102532,
+            102281,
+            101769
+          ]
+        ],
+        "unique_hip_ids": [
+          101421,
+          101769,
+          101958,
+          102281,
+          102532
+        ],
+        "hyg_v41_matched_hip_ids": [
+          101421,
+          101769,
+          101958,
+          102281,
+          102532
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          101421,
+          101769,
+          101958,
+          102281,
+          102532
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "dor",
+      "abbreviation": "Dor",
+      "latin_name": "Dorado",
+      "english_name": "Dorado",
+      "name_ru": "Золотая Рыба",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/DOR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/dor.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Dor",
+        "source_lines_hip": [
+          [
+            27100,
+            27890,
+            26069,
+            27100
+          ],
+          [
+            26069,
+            21281,
+            19893
+          ]
+        ],
+        "unique_hip_ids": [
+          19893,
+          21281,
+          26069,
+          27100,
+          27890
+        ],
+        "hyg_v41_matched_hip_ids": [
+          19893,
+          21281,
+          26069,
+          27100,
+          27890
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          19893,
+          21281,
+          26069,
+          27100,
+          27890
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "dra",
+      "abbreviation": "Dra",
+      "latin_name": "Draco",
+      "english_name": "Dragon",
+      "name_ru": "Дракон",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/DRA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/dra.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Dra",
+        "source_lines_hip": [
+          [
+            87585,
+            87833,
+            85670,
+            85829,
+            87585,
+            94376,
+            97433,
+            94648,
+            89937,
+            83895,
+            80331,
+            78527,
+            75458,
+            68756,
+            61281,
+            56211
+          ]
+        ],
+        "unique_hip_ids": [
+          56211,
+          61281,
+          68756,
+          75458,
+          78527,
+          80331,
+          83895,
+          85670,
+          85829,
+          87585,
+          87833,
+          89937,
+          94376,
+          94648,
+          97433
+        ],
+        "hyg_v41_matched_hip_ids": [
+          56211,
+          61281,
+          68756,
+          75458,
+          78527,
+          80331,
+          83895,
+          85670,
+          85829,
+          87585,
+          87833,
+          89937,
+          94376,
+          94648,
+          97433
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          56211,
+          61281,
+          68756,
+          75458,
+          78527,
+          80331,
+          83895,
+          85670,
+          85829,
+          87585,
+          87833,
+          89937,
+          94376,
+          94648,
+          97433
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "equ",
+      "abbreviation": "Equ",
+      "latin_name": "Equuleus",
+      "english_name": "Little Horse",
+      "name_ru": "Малый Конь",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/EQU.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/equ.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Equ",
+        "source_lines_hip": [
+          [
+            104521,
+            104858,
+            105570,
+            104987,
+            104521
+          ]
+        ],
+        "unique_hip_ids": [
+          104521,
+          104858,
+          104987,
+          105570
+        ],
+        "hyg_v41_matched_hip_ids": [
+          104521,
+          104858,
+          104987,
+          105570
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          104521,
+          104858,
+          104987,
+          105570
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "eri",
+      "abbreviation": "Eri",
+      "latin_name": "Eridanus",
+      "english_name": "River",
+      "name_ru": "Эридан",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/ERI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/eri.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Eri",
+        "source_lines_hip": [
+          [
+            7588,
+            9007,
+            10602,
+            11407,
+            12413,
+            12486,
+            13847,
+            15510,
+            17797,
+            17874,
+            20042,
+            20535,
+            21393,
+            17651,
+            16611,
+            15474,
+            14146,
+            12843,
+            13701,
+            15197,
+            16537,
+            17378,
+            21444,
+            22109,
+            22701,
+            23875,
+            23972,
+            21594
+          ]
+        ],
+        "unique_hip_ids": [
+          7588,
+          9007,
+          10602,
+          11407,
+          12413,
+          12486,
+          12843,
+          13701,
+          13847,
+          14146,
+          15197,
+          15474,
+          15510,
+          16537,
+          16611,
+          17378,
+          17651,
+          17797,
+          17874,
+          20042,
+          20535,
+          21393,
+          21444,
+          21594,
+          22109,
+          22701,
+          23875,
+          23972
+        ],
+        "hyg_v41_matched_hip_ids": [
+          7588,
+          9007,
+          10602,
+          11407,
+          12413,
+          12486,
+          12843,
+          13701,
+          13847,
+          14146,
+          15197,
+          15474,
+          15510,
+          16537,
+          16611,
+          17378,
+          17651,
+          17797,
+          17874,
+          20042,
+          20535,
+          21393,
+          21444,
+          21594,
+          22109,
+          22701,
+          23875,
+          23972
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          7588,
+          9007,
+          10602,
+          11407,
+          12413,
+          12486,
+          12843,
+          13701,
+          13847,
+          14146,
+          15197,
+          15474,
+          15510,
+          16537,
+          16611,
+          17378,
+          17651,
+          17797,
+          17874,
+          20042,
+          20535,
+          21393,
+          21444,
+          21594,
+          22109,
+          22701,
+          23875,
+          23972
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "for",
+      "abbreviation": "For",
+      "latin_name": "Fornax",
+      "english_name": "Furnace",
+      "name_ru": "Печь",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/FOR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/for.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern For",
+        "source_lines_hip": [
+          [
+            13147,
+            14879
+          ]
+        ],
+        "unique_hip_ids": [
+          13147,
+          14879
+        ],
+        "hyg_v41_matched_hip_ids": [
+          13147,
+          14879
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          13147,
+          14879
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "gem",
+      "abbreviation": "Gem",
+      "latin_name": "Gemini",
+      "english_name": "Twins",
+      "name_ru": "Близнецы",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/GEM.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/gem.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Gem",
+        "source_lines_hip": [
+          [
+            31681,
+            34088,
+            35550,
+            35350,
+            32362
+          ],
+          [
+            35550,
+            36962,
+            37740
+          ],
+          [
+            36962,
+            37826
+          ],
+          [
+            36962,
+            36046,
+            34693,
+            36850
+          ],
+          [
+            34693,
+            33018
+          ],
+          [
+            34693,
+            32246,
+            30883
+          ],
+          [
+            32246,
+            30343,
+            29655,
+            28734
+          ]
+        ],
+        "unique_hip_ids": [
+          28734,
+          29655,
+          30343,
+          30883,
+          31681,
+          32246,
+          32362,
+          33018,
+          34088,
+          34693,
+          35350,
+          35550,
+          36046,
+          36850,
+          36962,
+          37740,
+          37826
+        ],
+        "hyg_v41_matched_hip_ids": [
+          28734,
+          29655,
+          30343,
+          30883,
+          31681,
+          32246,
+          32362,
+          33018,
+          34088,
+          34693,
+          35350,
+          35550,
+          36046,
+          36850,
+          36962,
+          37740,
+          37826
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          28734,
+          29655,
+          30343,
+          30883,
+          31681,
+          32246,
+          32362,
+          33018,
+          34088,
+          34693,
+          35350,
+          35550,
+          36046,
+          36850,
+          36962,
+          37740,
+          37826
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "gru",
+      "abbreviation": "Gru",
+      "latin_name": "Grus",
+      "english_name": "Crane",
+      "name_ru": "Журавль",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/GRU.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/gru.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Gru",
+        "source_lines_hip": [
+          [
+            114131,
+            110997,
+            109268,
+            112122,
+            114421,
+            114131
+          ],
+          [
+            112122,
+            113638
+          ],
+          [
+            112122,
+            112623
+          ],
+          [
+            109268,
+            109111,
+            108085
+          ]
+        ],
+        "unique_hip_ids": [
+          108085,
+          109111,
+          109268,
+          110997,
+          112122,
+          112623,
+          113638,
+          114131,
+          114421
+        ],
+        "hyg_v41_matched_hip_ids": [
+          108085,
+          109111,
+          109268,
+          110997,
+          112122,
+          112623,
+          113638,
+          114131,
+          114421
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          108085,
+          109111,
+          109268,
+          110997,
+          112122,
+          112623,
+          113638,
+          114131,
+          114421
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "her",
+      "abbreviation": "Her",
+      "latin_name": "Hercules",
+      "english_name": "Hercules",
+      "name_ru": "Геркулес",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/HER.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/her.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Her",
+        "source_lines_hip": [
+          [
+            86414,
+            87808,
+            85112,
+            84606,
+            84380,
+            81833,
+            81126,
+            79992,
+            77760
+          ],
+          [
+            81833,
+            81693,
+            80816,
+            80170
+          ],
+          [
+            81693,
+            83207,
+            85693,
+            84379
+          ],
+          [
+            86974,
+            87933,
+            88794
+          ],
+          [
+            83207,
+            84380
+          ],
+          [
+            86974,
+            85693
+          ]
+        ],
+        "unique_hip_ids": [
+          77760,
+          79992,
+          80170,
+          80816,
+          81126,
+          81693,
+          81833,
+          83207,
+          84379,
+          84380,
+          84606,
+          85112,
+          85693,
+          86414,
+          86974,
+          87808,
+          87933,
+          88794
+        ],
+        "hyg_v41_matched_hip_ids": [
+          77760,
+          79992,
+          80170,
+          80816,
+          81126,
+          81693,
+          81833,
+          83207,
+          84379,
+          84380,
+          84606,
+          85112,
+          85693,
+          86414,
+          86974,
+          87808,
+          87933,
+          88794
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          77760,
+          79992,
+          80170,
+          80816,
+          81126,
+          81693,
+          81833,
+          83207,
+          84379,
+          84380,
+          84606,
+          85112,
+          85693,
+          86414,
+          86974,
+          87808,
+          87933,
+          88794
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "hor",
+      "abbreviation": "Hor",
+      "latin_name": "Horologium",
+      "english_name": "Pendulum Clock",
+      "name_ru": "Часы",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/HOR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/hor.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Hor",
+        "source_lines_hip": [
+          [
+            19747,
+            12484,
+            14240
+          ]
+        ],
+        "unique_hip_ids": [
+          12484,
+          14240,
+          19747
+        ],
+        "hyg_v41_matched_hip_ids": [
+          12484,
+          14240,
+          19747
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          12484,
+          14240,
+          19747
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "hya",
+      "abbreviation": "Hya",
+      "latin_name": "Hydra",
+      "english_name": "Water Snake",
+      "name_ru": "Гидра",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/HYA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/hya.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Hya",
+        "source_lines_hip": [
+          [
+            42799,
+            42402,
+            42313,
+            43109,
+            43234,
+            42799
+          ],
+          [
+            43234,
+            43813,
+            45336,
+            46776,
+            46509,
+            46390,
+            45751,
+            47452,
+            48356,
+            49841,
+            51069,
+            52943,
+            54204,
+            56343,
+            57936,
+            64166,
+            64962,
+            68895,
+            69415,
+            70306,
+            72571
+          ]
+        ],
+        "unique_hip_ids": [
+          42313,
+          42402,
+          42799,
+          43109,
+          43234,
+          43813,
+          45336,
+          45751,
+          46390,
+          46509,
+          46776,
+          47452,
+          48356,
+          49841,
+          51069,
+          52943,
+          54204,
+          56343,
+          57936,
+          64166,
+          64962,
+          68895,
+          69415,
+          70306,
+          72571
+        ],
+        "hyg_v41_matched_hip_ids": [
+          42313,
+          42402,
+          42799,
+          43109,
+          43234,
+          43813,
+          45336,
+          45751,
+          46390,
+          46509,
+          46776,
+          47452,
+          48356,
+          49841,
+          51069,
+          52943,
+          54204,
+          56343,
+          57936,
+          64166,
+          64962,
+          68895,
+          69415,
+          70306,
+          72571
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          42313,
+          42402,
+          42799,
+          43109,
+          43234,
+          43813,
+          45336,
+          45751,
+          46390,
+          46509,
+          46776,
+          47452,
+          48356,
+          49841,
+          51069,
+          52943,
+          54204,
+          56343,
+          57936,
+          64166,
+          64962,
+          68895,
+          69415,
+          70306,
+          72571
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "hyi",
+      "abbreviation": "Hyi",
+      "latin_name": "Hydrus",
+      "english_name": "Lesser Water Snake",
+      "name_ru": "Южная Гидра",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/HYI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/hyi.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Hyi",
+        "source_lines_hip": [
+          [
+            2021,
+            17678,
+            12394,
+            11001,
+            9236
+          ]
+        ],
+        "unique_hip_ids": [
+          2021,
+          9236,
+          11001,
+          12394,
+          17678
+        ],
+        "hyg_v41_matched_hip_ids": [
+          2021,
+          9236,
+          11001,
+          12394,
+          17678
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          2021,
+          9236,
+          11001,
+          12394,
+          17678
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ind",
+      "abbreviation": "Ind",
+      "latin_name": "Indus",
+      "english_name": "Indian",
+      "name_ru": "Индеец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/IND.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ind.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ind",
+        "source_lines_hip": [
+          [
+            105319,
+            101772,
+            103227,
+            105319
+          ]
+        ],
+        "unique_hip_ids": [
+          101772,
+          103227,
+          105319
+        ],
+        "hyg_v41_matched_hip_ids": [
+          101772,
+          103227,
+          105319
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          101772,
+          103227,
+          105319
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lac",
+      "abbreviation": "Lac",
+      "latin_name": "Lacerta",
+      "english_name": "Lizard",
+      "name_ru": "Ящерица",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LAC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lac.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lac",
+        "source_lines_hip": [
+          [
+            109937,
+            111104,
+            111022,
+            110609,
+            110538,
+            111169,
+            111022
+          ]
+        ],
+        "unique_hip_ids": [
+          109937,
+          110538,
+          110609,
+          111022,
+          111104,
+          111169
+        ],
+        "hyg_v41_matched_hip_ids": [
+          109937,
+          110538,
+          110609,
+          111022,
+          111104,
+          111169
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          109937,
+          110538,
+          110609,
+          111022,
+          111104,
+          111169
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "leo",
+      "abbreviation": "Leo",
+      "latin_name": "Leo",
+      "english_name": "Lion",
+      "name_ru": "Лев",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LEO.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/leo.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Leo",
+        "source_lines_hip": [
+          [
+            57632,
+            54879,
+            49669,
+            49583,
+            50583,
+            54872,
+            57632
+          ],
+          [
+            50583,
+            50335,
+            48455,
+            47908
+          ],
+          [
+            54872,
+            54879
+          ]
+        ],
+        "unique_hip_ids": [
+          47908,
+          48455,
+          49583,
+          49669,
+          50335,
+          50583,
+          54872,
+          54879,
+          57632
+        ],
+        "hyg_v41_matched_hip_ids": [
+          47908,
+          48455,
+          49583,
+          49669,
+          50335,
+          50583,
+          54872,
+          54879,
+          57632
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          47908,
+          48455,
+          49583,
+          49669,
+          50335,
+          50583,
+          54872,
+          54879,
+          57632
+        ],
+        "project_subset_missing_hip_ids": [],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lep",
+      "abbreviation": "Lep",
+      "latin_name": "Lepus",
+      "english_name": "Hare",
+      "name_ru": "Заяц",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LEP.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lep.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lep",
+        "source_lines_hip": [
+          [
+            28910,
+            28103,
+            27288,
+            25985,
+            24305
+          ],
+          [
+            25985,
+            27654,
+            27072,
+            25606,
+            23685
+          ],
+          [
+            25985,
+            25606
+          ],
+          [
+            24305,
+            24845
+          ],
+          [
+            24305,
+            24327
+          ],
+          [
+            23685,
+            24305
+          ],
+          [
+            24327,
+            24244
+          ],
+          [
+            24845,
+            24873
+          ]
+        ],
+        "unique_hip_ids": [
+          23685,
+          24244,
+          24305,
+          24327,
+          24845,
+          24873,
+          25606,
+          25985,
+          27072,
+          27288,
+          27654,
+          28103,
+          28910
+        ],
+        "hyg_v41_matched_hip_ids": [
+          23685,
+          24244,
+          24305,
+          24327,
+          24845,
+          24873,
+          25606,
+          25985,
+          27072,
+          27288,
+          27654,
+          28103,
+          28910
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          23685,
+          24244,
+          24305,
+          24327,
+          24845,
+          24873,
+          25606,
+          25985,
+          27072,
+          27288,
+          27654,
+          28103,
+          28910
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lib",
+      "abbreviation": "Lib",
+      "latin_name": "Libra",
+      "english_name": "Scales",
+      "name_ru": "Весы",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LIB.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lib.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lib",
+        "source_lines_hip": [
+          [
+            77853,
+            76333,
+            74785,
+            72622,
+            73714,
+            76333
+          ]
+        ],
+        "unique_hip_ids": [
+          72622,
+          73714,
+          74785,
+          76333,
+          77853
+        ],
+        "hyg_v41_matched_hip_ids": [
+          72622,
+          73714,
+          74785,
+          76333,
+          77853
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          72622,
+          73714,
+          74785,
+          76333,
+          77853
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lmi",
+      "abbreviation": "LMi",
+      "latin_name": "Leo Minor",
+      "english_name": "Lesser Lion",
+      "name_ru": "Малый Лев",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LMI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lmi.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern LMi",
+        "source_lines_hip": [
+          [
+            53229,
+            51233,
+            49593,
+            46952
+          ],
+          [
+            49593,
+            53229
+          ]
+        ],
+        "unique_hip_ids": [
+          46952,
+          49593,
+          51233,
+          53229
+        ],
+        "hyg_v41_matched_hip_ids": [
+          46952,
+          49593,
+          51233,
+          53229
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          46952,
+          49593,
+          51233,
+          53229
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lup",
+      "abbreviation": "Lup",
+      "latin_name": "Lupus",
+      "english_name": "Wolf",
+      "name_ru": "Волк",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LUP.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lup.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lup",
+        "source_lines_hip": [
+          [
+            77634,
+            78970,
+            78384,
+            77634
+          ],
+          [
+            78384,
+            76297,
+            75141,
+            75177
+          ],
+          [
+            75141,
+            73273
+          ],
+          [
+            76297,
+            76552,
+            74395,
+            71860
+          ],
+          [
+            74395,
+            71536
+          ],
+          [
+            71860,
+            70576
+          ],
+          [
+            71860,
+            73273
+          ]
+        ],
+        "unique_hip_ids": [
+          70576,
+          71536,
+          71860,
+          73273,
+          74395,
+          75141,
+          75177,
+          76297,
+          76552,
+          77634,
+          78384,
+          78970
+        ],
+        "hyg_v41_matched_hip_ids": [
+          70576,
+          71536,
+          71860,
+          73273,
+          74395,
+          75141,
+          75177,
+          76297,
+          76552,
+          77634,
+          78384,
+          78970
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          70576,
+          71536,
+          71860,
+          73273,
+          74395,
+          75141,
+          75177,
+          76297,
+          76552,
+          77634,
+          78384,
+          78970
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lyn",
+      "abbreviation": "Lyn",
+      "latin_name": "Lynx",
+      "english_name": "Lynx",
+      "name_ru": "Рысь",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LYN.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lyn.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lyn",
+        "source_lines_hip": [
+          [
+            45860,
+            45688,
+            44700,
+            44248,
+            41075,
+            36145,
+            33449,
+            30060
+          ]
+        ],
+        "unique_hip_ids": [
+          30060,
+          33449,
+          36145,
+          41075,
+          44248,
+          44700,
+          45688,
+          45860
+        ],
+        "hyg_v41_matched_hip_ids": [
+          30060,
+          33449,
+          36145,
+          41075,
+          44248,
+          44700,
+          45688,
+          45860
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          30060,
+          33449,
+          36145,
+          41075,
+          44248,
+          44700,
+          45688,
+          45860
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "lyr",
+      "abbreviation": "Lyr",
+      "latin_name": "Lyra",
+      "english_name": "Lyre",
+      "name_ru": "Лира",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/LYR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/lyr.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Lyr",
+        "source_lines_hip": [
+          [
+            91262,
+            91971,
+            92420,
+            93194,
+            92791,
+            91971
+          ]
+        ],
+        "unique_hip_ids": [
+          91262,
+          91971,
+          92420,
+          92791,
+          93194
+        ],
+        "hyg_v41_matched_hip_ids": [
+          91262,
+          91971,
+          92420,
+          92791,
+          93194
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          91262,
+          91971,
+          92420,
+          92791,
+          93194
+        ],
+        "project_subset_missing_hip_ids": [],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "men",
+      "abbreviation": "Men",
+      "latin_name": "Mensa",
+      "english_name": "Table Mountain",
+      "name_ru": "Столовая Гора",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/MEN.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/men.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Men",
+        "source_lines_hip": [
+          [
+            25918,
+            21949
+          ]
+        ],
+        "unique_hip_ids": [
+          21949,
+          25918
+        ],
+        "hyg_v41_matched_hip_ids": [
+          21949,
+          25918
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          21949,
+          25918
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "mic",
+      "abbreviation": "Mic",
+      "latin_name": "Microscopium",
+      "english_name": "Microscope",
+      "name_ru": "Микроскоп",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/MIC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/mic.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Mic",
+        "source_lines_hip": [
+          [
+            105140,
+            103738,
+            102831
+          ]
+        ],
+        "unique_hip_ids": [
+          102831,
+          103738,
+          105140
+        ],
+        "hyg_v41_matched_hip_ids": [
+          102831,
+          103738,
+          105140
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          102831,
+          103738,
+          105140
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "mon",
+      "abbreviation": "Mon",
+      "latin_name": "Monoceros",
+      "english_name": "Unicorn",
+      "name_ru": "Единорог",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/MON.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/mon.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Mon",
+        "source_lines_hip": [
+          [
+            29651,
+            34769
+          ],
+          [
+            30867,
+            34769,
+            32533,
+            30419,
+            31216,
+            31978
+          ],
+          [
+            32533,
+            31978,
+            30665
+          ],
+          [
+            34769,
+            39211,
+            39863
+          ],
+          [
+            39211,
+            37447
+          ]
+        ],
+        "unique_hip_ids": [
+          29651,
+          30419,
+          30665,
+          30867,
+          31216,
+          31978,
+          32533,
+          34769,
+          37447,
+          39211,
+          39863
+        ],
+        "hyg_v41_matched_hip_ids": [
+          29651,
+          30419,
+          30665,
+          30867,
+          31216,
+          31978,
+          32533,
+          34769,
+          37447,
+          39211,
+          39863
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          29651,
+          30419,
+          30665,
+          30867,
+          31216,
+          31978,
+          32533,
+          34769,
+          37447,
+          39211,
+          39863
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "mus",
+      "abbreviation": "Mus",
+      "latin_name": "Musca",
+      "english_name": "Fly",
+      "name_ru": "Муха",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/MUS.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/mus.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Mus",
+        "source_lines_hip": [
+          [
+            62322,
+            57363,
+            61199,
+            61585,
+            62322
+          ]
+        ],
+        "unique_hip_ids": [
+          57363,
+          61199,
+          61585,
+          62322
+        ],
+        "hyg_v41_matched_hip_ids": [
+          57363,
+          61199,
+          61585,
+          62322
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          57363,
+          61199,
+          61585,
+          62322
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "nor",
+      "abbreviation": "Nor",
+      "latin_name": "Norma",
+      "english_name": "Set Square",
+      "name_ru": "Наугольник",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/NOR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/nor.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Nor",
+        "source_lines_hip": [
+          [
+            79509,
+            80000,
+            80582,
+            78639,
+            80000
+          ],
+          [
+            78639,
+            79509
+          ]
+        ],
+        "unique_hip_ids": [
+          78639,
+          79509,
+          80000,
+          80582
+        ],
+        "hyg_v41_matched_hip_ids": [
+          78639,
+          79509,
+          80000,
+          80582
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          78639,
+          79509,
+          80000,
+          80582
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "oct",
+      "abbreviation": "Oct",
+      "latin_name": "Octans",
+      "english_name": "Octant",
+      "name_ru": "Октант",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/OCT.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/oct.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Oct",
+        "source_lines_hip": [
+          [
+            107089,
+            112405,
+            70638,
+            107089
+          ]
+        ],
+        "unique_hip_ids": [
+          70638,
+          107089,
+          112405
+        ],
+        "hyg_v41_matched_hip_ids": [
+          70638,
+          107089,
+          112405
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          70638,
+          107089,
+          112405
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "oph",
+      "abbreviation": "Oph",
+      "latin_name": "Ophiuchus",
+      "english_name": "Serpent Bearer",
+      "name_ru": "Змееносец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/OPH.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/oph.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Oph",
+        "source_lines_hip": [
+          [
+            86032,
+            86742
+          ],
+          [
+            84012,
+            86742
+          ],
+          [
+            86032,
+            83000,
+            79882,
+            81377,
+            84012,
+            85755
+          ]
+        ],
+        "unique_hip_ids": [
+          79882,
+          81377,
+          83000,
+          84012,
+          85755,
+          86032,
+          86742
+        ],
+        "hyg_v41_matched_hip_ids": [
+          79882,
+          81377,
+          83000,
+          84012,
+          85755,
+          86032,
+          86742
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          79882,
+          81377,
+          83000,
+          84012,
+          85755,
+          86032,
+          86742
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ori",
+      "abbreviation": "Ori",
+      "latin_name": "Orion",
+      "english_name": "Hunter",
+      "name_ru": "Орион",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/ORI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ori.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ori",
+        "source_lines_hip": [
+          [
+            26727,
+            26311,
+            25930
+          ],
+          [
+            29434,
+            29426
+          ],
+          [
+            29434,
+            28716,
+            27913
+          ],
+          [
+            29426,
+            29038,
+            27913
+          ],
+          [
+            29426,
+            28614,
+            27989,
+            26727,
+            27366,
+            24436,
+            25930,
+            25336,
+            26207,
+            27989
+          ],
+          [
+            25336,
+            22449,
+            22549,
+            22730,
+            22797,
+            23123
+          ],
+          [
+            22449,
+            22509,
+            22845
+          ],
+          [
+            29038,
+            28614
+          ]
+        ],
+        "unique_hip_ids": [
+          22449,
+          22509,
+          22549,
+          22730,
+          22797,
+          22845,
+          23123,
+          24436,
+          25336,
+          25930,
+          26207,
+          26311,
+          26727,
+          27366,
+          27913,
+          27989,
+          28614,
+          28716,
+          29038,
+          29426,
+          29434
+        ],
+        "hyg_v41_matched_hip_ids": [
+          22449,
+          22509,
+          22549,
+          22730,
+          22797,
+          22845,
+          23123,
+          24436,
+          25336,
+          25930,
+          26207,
+          26311,
+          26727,
+          27366,
+          27913,
+          27989,
+          28614,
+          28716,
+          29038,
+          29426,
+          29434
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          24436,
+          25336,
+          25930,
+          26207,
+          26311,
+          26727,
+          27366,
+          27989
+        ],
+        "project_subset_missing_hip_ids": [
+          22449,
+          22509,
+          22549,
+          22730,
+          22797,
+          22845,
+          23123,
+          27913,
+          28614,
+          28716,
+          29038,
+          29426,
+          29434
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "pav",
+      "abbreviation": "Pav",
+      "latin_name": "Pavo",
+      "english_name": "Peacock",
+      "name_ru": "Павлин",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PAV.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/pav.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Pav",
+        "source_lines_hip": [
+          [
+            100751,
+            105858,
+            102395,
+            99240,
+            100751
+          ],
+          [
+            99240,
+            98495,
+            91792,
+            93015,
+            99240
+          ],
+          [
+            93015,
+            92609,
+            90098,
+            88866,
+            92609
+          ],
+          [
+            88866,
+            86929
+          ]
+        ],
+        "unique_hip_ids": [
+          86929,
+          88866,
+          90098,
+          91792,
+          92609,
+          93015,
+          98495,
+          99240,
+          100751,
+          102395,
+          105858
+        ],
+        "hyg_v41_matched_hip_ids": [
+          86929,
+          88866,
+          90098,
+          91792,
+          92609,
+          93015,
+          98495,
+          99240,
+          100751,
+          102395,
+          105858
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          86929,
+          88866,
+          90098,
+          91792,
+          92609,
+          93015,
+          98495,
+          99240,
+          100751,
+          102395,
+          105858
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "peg",
+      "abbreviation": "Peg",
+      "latin_name": "Pegasus",
+      "english_name": "Winged Horse",
+      "name_ru": "Пегас",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PEG.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/peg.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Peg",
+        "source_lines_hip": [
+          [
+            1067,
+            113963
+          ],
+          [
+            113881,
+            112158,
+            109352
+          ],
+          [
+            113881,
+            112748,
+            112440,
+            109176,
+            107354
+          ],
+          [
+            113963,
+            112447,
+            112029,
+            109427,
+            107315
+          ],
+          [
+            677,
+            113881
+          ],
+          [
+            677,
+            1067
+          ],
+          [
+            113881,
+            113963
+          ]
+        ],
+        "unique_hip_ids": [
+          677,
+          1067,
+          107315,
+          107354,
+          109176,
+          109352,
+          109427,
+          112029,
+          112158,
+          112440,
+          112447,
+          112748,
+          113881,
+          113963
+        ],
+        "hyg_v41_matched_hip_ids": [
+          677,
+          1067,
+          107315,
+          107354,
+          109176,
+          109352,
+          109427,
+          112029,
+          112158,
+          112440,
+          112447,
+          112748,
+          113881,
+          113963
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          677,
+          1067,
+          107315,
+          107354,
+          109176,
+          109352,
+          109427,
+          112029,
+          112158,
+          112440,
+          112447,
+          112748,
+          113881,
+          113963
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "per",
+      "abbreviation": "Per",
+      "latin_name": "Perseus",
+      "english_name": "Hero",
+      "name_ru": "Персей",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PER.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/per.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Per",
+        "source_lines_hip": [
+          [
+            17448,
+            18246,
+            18614,
+            18532,
+            17358,
+            15863,
+            14328,
+            13268
+          ],
+          [
+            15863,
+            14576,
+            14354,
+            13254
+          ]
+        ],
+        "unique_hip_ids": [
+          13254,
+          13268,
+          14328,
+          14354,
+          14576,
+          15863,
+          17358,
+          17448,
+          18246,
+          18532,
+          18614
+        ],
+        "hyg_v41_matched_hip_ids": [
+          13254,
+          13268,
+          14328,
+          14354,
+          14576,
+          15863,
+          17358,
+          17448,
+          18246,
+          18532,
+          18614
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          13254,
+          13268,
+          14328,
+          14354,
+          14576,
+          15863,
+          17358,
+          17448,
+          18246,
+          18532,
+          18614
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "phe",
+      "abbreviation": "Phe",
+      "latin_name": "Phoenix",
+      "english_name": "Phoenix",
+      "name_ru": "Феникс",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PHE.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/phe.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Phe",
+        "source_lines_hip": [
+          [
+            5348,
+            5165,
+            2072,
+            5348
+          ],
+          [
+            5165,
+            7083,
+            8837,
+            5165,
+            6867,
+            2072,
+            2081,
+            765,
+            2072
+          ]
+        ],
+        "unique_hip_ids": [
+          765,
+          2072,
+          2081,
+          5165,
+          5348,
+          6867,
+          7083,
+          8837
+        ],
+        "hyg_v41_matched_hip_ids": [
+          765,
+          2072,
+          2081,
+          5165,
+          5348,
+          6867,
+          7083,
+          8837
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          765,
+          2072,
+          2081,
+          5165,
+          5348,
+          6867,
+          7083,
+          8837
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "pic",
+      "abbreviation": "Pic",
+      "latin_name": "Pictor",
+      "english_name": "Painter's Easel",
+      "name_ru": "Живописец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PIC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/pic.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Pic",
+        "source_lines_hip": [
+          [
+            32607,
+            27530,
+            27321
+          ]
+        ],
+        "unique_hip_ids": [
+          27321,
+          27530,
+          32607
+        ],
+        "hyg_v41_matched_hip_ids": [
+          27321,
+          27530,
+          32607
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          27321,
+          27530,
+          32607
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "psa",
+      "abbreviation": "PsA",
+      "latin_name": "Piscis Austrinus",
+      "english_name": "Southern Fish",
+      "name_ru": "Южная Рыба",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PSA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/psa.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern PsA",
+        "source_lines_hip": [
+          [
+            113368,
+            111954,
+            108661,
+            107608,
+            109422,
+            111188,
+            113246
+          ]
+        ],
+        "unique_hip_ids": [
+          107608,
+          108661,
+          109422,
+          111188,
+          111954,
+          113246,
+          113368
+        ],
+        "hyg_v41_matched_hip_ids": [
+          107608,
+          108661,
+          109422,
+          111188,
+          111954,
+          113246,
+          113368
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          107608,
+          108661,
+          109422,
+          111188,
+          111954,
+          113246,
+          113368
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "psc",
+      "abbreviation": "Psc",
+      "latin_name": "Pisces",
+      "english_name": "Fishes",
+      "name_ru": "Рыбы",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PSC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/psc.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Psc",
+        "source_lines_hip": [
+          [
+            4889,
+            5742
+          ],
+          [
+            4889,
+            6193,
+            5742,
+            7097,
+            8198,
+            9487,
+            8833,
+            7884,
+            7007,
+            4906,
+            3760,
+            1645,
+            118268,
+            116771,
+            117245,
+            116928,
+            115738,
+            114971,
+            115227,
+            115830,
+            116771
+          ]
+        ],
+        "unique_hip_ids": [
+          1645,
+          3760,
+          4889,
+          4906,
+          5742,
+          6193,
+          7007,
+          7097,
+          7884,
+          8198,
+          8833,
+          9487,
+          114971,
+          115227,
+          115738,
+          115830,
+          116771,
+          116928,
+          117245,
+          118268
+        ],
+        "hyg_v41_matched_hip_ids": [
+          1645,
+          3760,
+          4889,
+          4906,
+          5742,
+          6193,
+          7007,
+          7097,
+          7884,
+          8198,
+          8833,
+          9487,
+          114971,
+          115227,
+          115738,
+          115830,
+          116771,
+          116928,
+          117245,
+          118268
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          1645,
+          3760,
+          4889,
+          4906,
+          5742,
+          6193,
+          7007,
+          7097,
+          7884,
+          8198,
+          8833,
+          9487,
+          114971,
+          115227,
+          115738,
+          115830,
+          116771,
+          116928,
+          117245,
+          118268
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "pup",
+      "abbreviation": "Pup",
+      "latin_name": "Puppis",
+      "english_name": "Ship's Stern",
+      "name_ru": "Корма",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PUP.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/pup.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Pup",
+        "source_lines_hip": [
+          [
+            39757,
+            38146,
+            35264,
+            31685,
+            32768,
+            36377,
+            39429,
+            39757
+          ]
+        ],
+        "unique_hip_ids": [
+          31685,
+          32768,
+          35264,
+          36377,
+          38146,
+          39429,
+          39757
+        ],
+        "hyg_v41_matched_hip_ids": [
+          31685,
+          32768,
+          35264,
+          36377,
+          38146,
+          39429,
+          39757
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          31685,
+          32768,
+          35264,
+          36377,
+          38146,
+          39429,
+          39757
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "pyx",
+      "abbreviation": "Pyx",
+      "latin_name": "Pyxis",
+      "english_name": "Mariner's Compass",
+      "name_ru": "Компас",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/PYX.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/pyx.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Pyx",
+        "source_lines_hip": [
+          [
+            42515,
+            42828,
+            43409
+          ]
+        ],
+        "unique_hip_ids": [
+          42515,
+          42828,
+          43409
+        ],
+        "hyg_v41_matched_hip_ids": [
+          42515,
+          42828,
+          43409
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          42515,
+          42828,
+          43409
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ret",
+      "abbreviation": "Ret",
+      "latin_name": "Reticulum",
+      "english_name": "Net",
+      "name_ru": "Сетка",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/RET.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ret.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ret",
+        "source_lines_hip": [
+          [
+            19780,
+            19921,
+            18597,
+            17440,
+            19780
+          ]
+        ],
+        "unique_hip_ids": [
+          17440,
+          18597,
+          19780,
+          19921
+        ],
+        "hyg_v41_matched_hip_ids": [
+          17440,
+          18597,
+          19780,
+          19921
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          17440,
+          18597,
+          19780,
+          19921
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "scl",
+      "abbreviation": "Scl",
+      "latin_name": "Sculptor",
+      "english_name": "Sculptor",
+      "name_ru": "Скульптор",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SCL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/scl.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Scl",
+        "source_lines_hip": [
+          [
+            116231,
+            4577,
+            115102,
+            116231
+          ]
+        ],
+        "unique_hip_ids": [
+          4577,
+          115102,
+          116231
+        ],
+        "hyg_v41_matched_hip_ids": [
+          4577,
+          115102,
+          116231
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          4577,
+          115102,
+          116231
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "sco",
+      "abbreviation": "Sco",
+      "latin_name": "Scorpius",
+      "english_name": "Scorpion",
+      "name_ru": "Скорпион",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SCO.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/sco.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Sco",
+        "source_lines_hip": [
+          [
+            85927,
+            86670,
+            87073,
+            86228,
+            84143,
+            82671,
+            82514,
+            82396,
+            81266,
+            80763,
+            78401
+          ],
+          [
+            80763,
+            78265
+          ],
+          [
+            80763,
+            78820
+          ]
+        ],
+        "unique_hip_ids": [
+          78265,
+          78401,
+          78820,
+          80763,
+          81266,
+          82396,
+          82514,
+          82671,
+          84143,
+          85927,
+          86228,
+          86670,
+          87073
+        ],
+        "hyg_v41_matched_hip_ids": [
+          78265,
+          78401,
+          78820,
+          80763,
+          81266,
+          82396,
+          82514,
+          82671,
+          84143,
+          85927,
+          86228,
+          86670,
+          87073
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          78401,
+          78820,
+          80763,
+          81266,
+          82396,
+          82514,
+          84143,
+          85927,
+          86228,
+          86670,
+          87073
+        ],
+        "project_subset_missing_hip_ids": [
+          78265,
+          82671
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "sct",
+      "abbreviation": "Sct",
+      "latin_name": "Scutum",
+      "english_name": "Shield",
+      "name_ru": "Щит",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SCT.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/sct.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Sct",
+        "source_lines_hip": [
+          [
+            92175,
+            92202,
+            92814,
+            90595,
+            91117,
+            92175
+          ]
+        ],
+        "unique_hip_ids": [
+          90595,
+          91117,
+          92175,
+          92202,
+          92814
+        ],
+        "hyg_v41_matched_hip_ids": [
+          90595,
+          91117,
+          92175,
+          92202,
+          92814
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          90595,
+          91117,
+          92175,
+          92202,
+          92814
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "ser",
+      "abbreviation": "Ser",
+      "latin_name": "Serpens",
+      "english_name": "Serpent",
+      "name_ru": "Змея",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SERCP.pdf",
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SERCD.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/ser1.txt",
+        "https://iauarchive.eso.org/static/public/constellations/txt/ser2.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Ser",
+        "source_lines_hip": [
+          [
+            79593,
+            77516,
+            77622,
+            77070,
+            76276,
+            77233,
+            78072,
+            77450,
+            77233
+          ],
+          [
+            92946,
+            90441,
+            89962,
+            88670,
+            88048,
+            86565,
+            86263,
+            84880
+          ]
+        ],
+        "unique_hip_ids": [
+          76276,
+          77070,
+          77233,
+          77450,
+          77516,
+          77622,
+          78072,
+          79593,
+          84880,
+          86263,
+          86565,
+          88048,
+          88670,
+          89962,
+          90441,
+          92946
+        ],
+        "hyg_v41_matched_hip_ids": [
+          76276,
+          77070,
+          77233,
+          77450,
+          77516,
+          77622,
+          78072,
+          79593,
+          84880,
+          86263,
+          86565,
+          88048,
+          88670,
+          89962,
+          90441,
+          92946
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          76276,
+          77070,
+          77233,
+          77450,
+          77516,
+          77622,
+          78072,
+          79593,
+          84880,
+          86263,
+          86565,
+          88048,
+          88670,
+          89962,
+          90441,
+          92946
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "sex",
+      "abbreviation": "Sex",
+      "latin_name": "Sextans",
+      "english_name": "Sextant",
+      "name_ru": "Секстант",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SEX.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/sex.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Sex",
+        "source_lines_hip": [
+          [
+            51437,
+            49641
+          ]
+        ],
+        "unique_hip_ids": [
+          49641,
+          51437
+        ],
+        "hyg_v41_matched_hip_ids": [
+          49641,
+          51437
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          49641,
+          51437
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "sge",
+      "abbreviation": "Sge",
+      "latin_name": "Sagitta",
+      "english_name": "Arrow",
+      "name_ru": "Стрела",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SGE.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/sge.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Sge",
+        "source_lines_hip": [
+          [
+            96837,
+            97365,
+            96757
+          ],
+          [
+            97365,
+            98337,
+            98920
+          ]
+        ],
+        "unique_hip_ids": [
+          96757,
+          96837,
+          97365,
+          98337,
+          98920
+        ],
+        "hyg_v41_matched_hip_ids": [
+          96757,
+          96837,
+          97365,
+          98337,
+          98920
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          96757,
+          96837,
+          97365,
+          98337,
+          98920
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "sgr",
+      "abbreviation": "Sgr",
+      "latin_name": "Sagittarius",
+      "english_name": "Archer",
+      "name_ru": "Стрелец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/SGR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/sgr.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Sgr",
+        "source_lines_hip": [
+          [
+            89931,
+            90496
+          ],
+          [
+            89642,
+            90185,
+            88635,
+            87072
+          ],
+          [
+            88635,
+            89931,
+            90185,
+            93506,
+            92041,
+            89931
+          ],
+          [
+            92041,
+            90496,
+            89341
+          ],
+          [
+            93506,
+            93864,
+            92855,
+            92041
+          ],
+          [
+            92855,
+            93085,
+            93683,
+            94820,
+            95168
+          ],
+          [
+            93864,
+            96406,
+            98688,
+            98412,
+            98032,
+            95347
+          ],
+          [
+            98032,
+            95294
+          ]
+        ],
+        "unique_hip_ids": [
+          87072,
+          88635,
+          89341,
+          89642,
+          89931,
+          90185,
+          90496,
+          92041,
+          92855,
+          93085,
+          93506,
+          93683,
+          93864,
+          94820,
+          95168,
+          95294,
+          95347,
+          96406,
+          98032,
+          98412,
+          98688
+        ],
+        "hyg_v41_matched_hip_ids": [
+          87072,
+          88635,
+          89341,
+          89642,
+          89931,
+          90185,
+          90496,
+          92041,
+          92855,
+          93085,
+          93506,
+          93683,
+          93864,
+          94820,
+          95168,
+          95294,
+          95347,
+          96406,
+          98032,
+          98412,
+          98688
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          87072,
+          88635,
+          89341,
+          89642,
+          89931,
+          90185,
+          90496,
+          92041,
+          92855,
+          93085,
+          93506,
+          93683,
+          93864,
+          94820,
+          95168,
+          95294,
+          95347,
+          96406,
+          98032,
+          98412,
+          98688
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "tau",
+      "abbreviation": "Tau",
+      "latin_name": "Taurus",
+      "english_name": "Bull",
+      "name_ru": "Телец",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/TAU.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/tau.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Tau",
+        "source_lines_hip": [
+          [
+            25428,
+            21881,
+            20889
+          ],
+          [
+            21421,
+            26451
+          ],
+          [
+            20205,
+            20455
+          ],
+          [
+            20205,
+            18724,
+            15900
+          ],
+          [
+            21421,
+            20889
+          ],
+          [
+            21421,
+            20894,
+            20205
+          ],
+          [
+            20889,
+            20648,
+            20455,
+            17847
+          ]
+        ],
+        "unique_hip_ids": [
+          15900,
+          17847,
+          18724,
+          20205,
+          20455,
+          20648,
+          20889,
+          20894,
+          21421,
+          21881,
+          25428,
+          26451
+        ],
+        "hyg_v41_matched_hip_ids": [
+          15900,
+          17847,
+          18724,
+          20205,
+          20455,
+          20648,
+          20889,
+          20894,
+          21421,
+          21881,
+          25428,
+          26451
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          15900,
+          17847,
+          18724,
+          20205,
+          20455,
+          20648,
+          20889,
+          20894,
+          21421,
+          21881,
+          25428,
+          26451
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "tel",
+      "abbreviation": "Tel",
+      "latin_name": "Telescopium",
+      "english_name": "Telescope",
+      "name_ru": "Телескоп",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/TEL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/tel.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Tel",
+        "source_lines_hip": [
+          [
+            90568,
+            90422
+          ]
+        ],
+        "unique_hip_ids": [
+          90422,
+          90568
+        ],
+        "hyg_v41_matched_hip_ids": [
+          90422,
+          90568
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          90422,
+          90568
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "tra",
+      "abbreviation": "TrA",
+      "latin_name": "Triangulum Australe",
+      "english_name": "Southern Triangle",
+      "name_ru": "Южный Треугольник",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/TRA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/tra.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern TrA",
+        "source_lines_hip": [
+          [
+            82273,
+            74946,
+            77952,
+            82273
+          ]
+        ],
+        "unique_hip_ids": [
+          74946,
+          77952,
+          82273
+        ],
+        "hyg_v41_matched_hip_ids": [
+          74946,
+          77952,
+          82273
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          74946,
+          77952,
+          82273
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "tri",
+      "abbreviation": "Tri",
+      "latin_name": "Triangulum",
+      "english_name": "Triangle",
+      "name_ru": "Треугольник",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/TRI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/tri.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Tri",
+        "source_lines_hip": [
+          [
+            10670,
+            10064,
+            8796,
+            10670
+          ]
+        ],
+        "unique_hip_ids": [
+          8796,
+          10064,
+          10670
+        ],
+        "hyg_v41_matched_hip_ids": [
+          8796,
+          10064,
+          10670
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          8796,
+          10064,
+          10670
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "tuc",
+      "abbreviation": "Tuc",
+      "latin_name": "Tucana",
+      "english_name": "Toucan",
+      "name_ru": "Тукан",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/TUC.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/tuc.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Tuc",
+        "source_lines_hip": [
+          [
+            110130,
+            114996,
+            1599
+          ],
+          [
+            114996,
+            2484
+          ]
+        ],
+        "unique_hip_ids": [
+          1599,
+          2484,
+          110130,
+          114996
+        ],
+        "hyg_v41_matched_hip_ids": [
+          1599,
+          2484,
+          110130,
+          114996
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          1599,
+          2484,
+          110130,
+          114996
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "uma",
+      "abbreviation": "UMa",
+      "latin_name": "Ursa Major",
+      "english_name": "Great Bear",
+      "name_ru": "Большая Медведица",
+      "legacy_target": true,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/UMA.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/uma.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern UMa",
+        "source_lines_hip": [
+          [
+            67301,
+            65378,
+            62956,
+            59774,
+            54061,
+            53910,
+            58001,
+            59774
+          ],
+          [
+            58001,
+            57399,
+            54539,
+            50372
+          ],
+          [
+            54539,
+            50801
+          ],
+          [
+            53910,
+            48402,
+            46853,
+            44471
+          ],
+          [
+            46853,
+            44127
+          ],
+          [
+            48402,
+            48319,
+            41704,
+            46733,
+            54061
+          ]
+        ],
+        "unique_hip_ids": [
+          41704,
+          44127,
+          44471,
+          46733,
+          46853,
+          48319,
+          48402,
+          50372,
+          50801,
+          53910,
+          54061,
+          54539,
+          57399,
+          58001,
+          59774,
+          62956,
+          65378,
+          67301
+        ],
+        "hyg_v41_matched_hip_ids": [
+          41704,
+          44127,
+          44471,
+          46733,
+          46853,
+          48319,
+          48402,
+          50372,
+          50801,
+          53910,
+          54061,
+          54539,
+          57399,
+          58001,
+          59774,
+          62956,
+          65378,
+          67301
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [
+          53910,
+          54061,
+          58001,
+          59774,
+          62956,
+          65378,
+          67301
+        ],
+        "project_subset_missing_hip_ids": [
+          41704,
+          44127,
+          44471,
+          46733,
+          46853,
+          48319,
+          48402,
+          50372,
+          50801,
+          54539,
+          57399
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "umi",
+      "abbreviation": "UMi",
+      "latin_name": "Ursa Minor",
+      "english_name": "Lesser Bear",
+      "name_ru": "Малая Медведица",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/UMI.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/umi.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern UMi",
+        "source_lines_hip": [
+          [
+            11767,
+            85822,
+            82080,
+            77055,
+            79822,
+            75097,
+            72607,
+            77055
+          ]
+        ],
+        "unique_hip_ids": [
+          11767,
+          72607,
+          75097,
+          77055,
+          79822,
+          82080,
+          85822
+        ],
+        "hyg_v41_matched_hip_ids": [
+          11767,
+          72607,
+          75097,
+          77055,
+          79822,
+          82080,
+          85822
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          11767,
+          72607,
+          75097,
+          77055,
+          79822,
+          82080,
+          85822
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "vel",
+      "abbreviation": "Vel",
+      "latin_name": "Vela",
+      "english_name": "Sails",
+      "name_ru": "Паруса",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/VEL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/vel.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Vel",
+        "source_lines_hip": [
+          [
+            39953,
+            42536,
+            42913,
+            45941,
+            48774,
+            52727,
+            51986,
+            50191,
+            46651,
+            44816,
+            39953
+          ]
+        ],
+        "unique_hip_ids": [
+          39953,
+          42536,
+          42913,
+          44816,
+          45941,
+          46651,
+          48774,
+          50191,
+          51986,
+          52727
+        ],
+        "hyg_v41_matched_hip_ids": [
+          39953,
+          42536,
+          42913,
+          44816,
+          45941,
+          46651,
+          48774,
+          50191,
+          51986,
+          52727
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          39953,
+          42536,
+          42913,
+          44816,
+          45941,
+          46651,
+          48774,
+          50191,
+          51986,
+          52727
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "vir",
+      "abbreviation": "Vir",
+      "latin_name": "Virgo",
+      "english_name": "Maiden",
+      "name_ru": "Дева",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/VIR.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/vir.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Vir",
+        "source_lines_hip": [
+          [
+            57380,
+            60129,
+            61941,
+            65474,
+            69427,
+            69701,
+            71957
+          ],
+          [
+            65474,
+            66249,
+            68520,
+            72220
+          ],
+          [
+            66249,
+            63090,
+            63608
+          ],
+          [
+            63090,
+            61941
+          ]
+        ],
+        "unique_hip_ids": [
+          57380,
+          60129,
+          61941,
+          63090,
+          63608,
+          65474,
+          66249,
+          68520,
+          69427,
+          69701,
+          71957,
+          72220
+        ],
+        "hyg_v41_matched_hip_ids": [
+          57380,
+          60129,
+          61941,
+          63090,
+          63608,
+          65474,
+          66249,
+          68520,
+          69427,
+          69701,
+          71957,
+          72220
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          57380,
+          60129,
+          61941,
+          63090,
+          63608,
+          65474,
+          66249,
+          68520,
+          69427,
+          69701,
+          71957,
+          72220
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "vol",
+      "abbreviation": "Vol",
+      "latin_name": "Volans",
+      "english_name": "Flying Fish",
+      "name_ru": "Летучая Рыба",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/VOL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/vol.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Vol",
+        "source_lines_hip": [
+          [
+            37504,
+            34481,
+            39794,
+            37504
+          ],
+          [
+            39794,
+            35228
+          ],
+          [
+            39794,
+            41312,
+            44382,
+            39794
+          ]
+        ],
+        "unique_hip_ids": [
+          34481,
+          35228,
+          37504,
+          39794,
+          41312,
+          44382
+        ],
+        "hyg_v41_matched_hip_ids": [
+          34481,
+          35228,
+          37504,
+          39794,
+          41312,
+          44382
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          34481,
+          35228,
+          37504,
+          39794,
+          41312,
+          44382
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    },
+    {
+      "id": "vul",
+      "abbreviation": "Vul",
+      "latin_name": "Vulpecula",
+      "english_name": "Fox",
+      "name_ru": "Лисичка",
+      "legacy_target": false,
+      "official_chart_pdf_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/pdf/VUL.pdf"
+      ],
+      "official_boundary_txt_urls": [
+        "https://iauarchive.eso.org/static/public/constellations/txt/vul.txt"
+      ],
+      "official_asset_link_status": "direct href extracted and matched in opened IAU table HTML; only representative assets were fetched/opened",
+      "line_candidate": {
+        "figure_id": "CON modern Vul",
+        "source_lines_hip": [
+          [
+            95771,
+            98543
+          ]
+        ],
+        "unique_hip_ids": [
+          95771,
+          98543
+        ],
+        "hyg_v41_matched_hip_ids": [
+          95771,
+          98543
+        ],
+        "hyg_v41_missing_hip_ids": [],
+        "project_subset_matched_hip_ids": [],
+        "project_subset_missing_hip_ids": [
+          95771,
+          98543
+        ],
+        "interpretation": "Stellarium modern educational stick-figure polylines, not IAU boundary geometry; candidate only, no import or replacement approved"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "opened_verified",
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "result": "Opened IAU official list and retrieved table HTML; confirmed all object-specific chart/boundary hrefs (89 files of each kind because Serpens has two components but is one ID)."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/pdf/AQL.pdf",
+      "result": "Opened official Aquila chart."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/txt/aql.txt",
+      "result": "Opened raw Aquila boundary coordinates, format matches official J2000 RA|Dec|abbreviation description."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/pdf/AND.pdf",
+      "result": "Opened official Andromeda chart."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/txt/and.txt",
+      "result": "Opened raw Andromeda boundary coordinates."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/pdf/PEG.pdf",
+      "result": "Opened official Pegasus chart."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/txt/peg.txt",
+      "result": "Opened raw Pegasus boundary coordinates."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/pdf/SERCP.pdf",
+      "result": "Opened official Serpens Caput chart panel."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/txt/ser1.txt",
+      "result": "Opened Serpens Caput boundary segment; remains part of one Serpens constellation."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/pdf/SERCD.pdf",
+      "result": "Opened official Serpens Cauda chart panel."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://iauarchive.eso.org/static/public/constellations/txt/ser2.txt",
+      "result": "Opened Serpens Cauda boundary segment; remains part of one Serpens constellation."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://raw.githubusercontent.com/Stellarium/stellarium/e835ad6ee5171c9deac2bdb8f1d3003085691197/skycultures/modern/index.json",
+      "result": "Opened pinned machine-readable index; parsed 88 modern figures and 710 unique line-star HIP IDs; preserved source polylines."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://raw.githubusercontent.com/Stellarium/stellarium/e835ad6ee5171c9deac2bdb8f1d3003085691197/skycultures/modern/description.md",
+      "result": "Opened modern sky-culture description; authorship Stellarium team and data CC BY-SA 4.0; illustration license is separately stated."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://github.com/Stellarium/stellarium/blob/master/guide/ch_skycultures.tex",
+      "result": "Opened Stellarium guide; documents HIP line identifiers and the separate official-boundary epoch/source fields."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://raw.githubusercontent.com/astronexus/HYG-Database/c7f7f883fe678cc7680169a50ccd7dcc49b060ce/hyg/CURRENT/hygdata_v41.csv",
+      "result": "Stream-read pinned HYG v4.1 CSV rows=119626; parsed hip field and matched every unique Stellarium constellation-line HIP. No coordinates were copied into the draft."
+    },
+    {
+      "kind": "opened_verified",
+      "url": "https://github.com/astronexus/HYG-Database/blob/main/hyg/README.md",
+      "result": "Opened HYG README: v4.1 license/attribution, hip field distinct from HYG primary key, and RA/Dec epoch/equinox 2000.0."
+    }
+  ],
+  "limitations": [
+    "Research candidate only; no production catalog, map or articles changed.",
+    "Modern constellation polylines are a Stellarium educational style, not a unique IAU-mandated star figure; editorial approval is needed before replacing current eight patterns.",
+    "Russian display names are standard-language draft mappings; the IAU source itself supplies Latin and English only.",
+    "The 89 hrefs were extracted and matched for all rows, but only named sample chart/boundary assets were individually opened.",
+    "No build, tests, browser automation, content import, Git index operation, commit or publish was run."
+  ]
+}

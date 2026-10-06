@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -418,6 +419,81 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets('zoomed map badges keep a readable screen size', (tester) async {
+    final controller = TransformationController();
+    addTearDown(controller.dispose);
+    final feature = QuizipediaFeature(
+      id: 'brazil',
+      nameRu: 'Бразилия',
+      nameEn: 'Brazil',
+      polygons: [
+        [
+          _rectangle(
+            .35,
+            .3,
+            .65,
+            .7,
+          ).map((p) => QuizipediaPoint(p[0], p[1])).toList(),
+        ],
+      ],
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SizedBox(
+          width: 300,
+          height: 200,
+          child: QuizipediaWorldMap(
+            features: [feature],
+            controller: controller,
+            onSelect: (_) {},
+            selected: 'brazil',
+            highlighted: 'brazil',
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    Future<int> whitePixels(double scale) async {
+      controller.value = Matrix4.diagonal3Values(scale, scale, 1);
+      await tester.pump();
+      final map = tester.widget<CustomPaint>(
+        find.byKey(const Key('quizipedia-map')),
+      );
+      final size = tester.getSize(find.byKey(const Key('quizipedia-map')));
+      final recorder = ui.PictureRecorder();
+      final canvas = Canvas(recorder)
+        ..translate(120, 60)
+        ..scale(scale);
+      canvas.translate(-size.width / 2, -size.height / 2);
+      map.painter!.paint(canvas, size);
+      final picture = recorder.endRecording();
+      final image = await picture.toImage(240, 120);
+      final bytes = (await image.toByteData(
+        format: ui.ImageByteFormat.rawRgba,
+      ))!;
+      var white = 0;
+      for (var i = 0; i < bytes.lengthInBytes; i += 4) {
+        if (bytes.getUint8(i) > 245 &&
+            bytes.getUint8(i + 1) > 245 &&
+            bytes.getUint8(i + 2) > 245) {
+          white++;
+        }
+      }
+      image.dispose();
+      picture.dispose();
+      return white;
+    }
+
+    final normal = await tester.runAsync(() => whitePixels(1));
+    final zoomed = await tester.runAsync(() => whitePixels(6));
+    expect(normal, greaterThan(100));
+    expect(
+      zoomed,
+      closeTo(normal!, normal * .2),
+      reason: 'The country badge must not grow to cover the map at 6x zoom.',
+    );
+  });
 
   testWidgets('zoom buttons preserve the gesture scale limits', (tester) async {
     await tester.pumpWidget(

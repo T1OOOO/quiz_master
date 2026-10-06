@@ -1,0 +1,1489 @@
+{
+  "schema_version": "qm-quizipedia-anatomy-research/v1",
+  "status": "draft_for_independent_review",
+  "scope": {
+    "statement_ru": "Учебная выборка крупных структур, а не полный список анатомии человека. Универсального числа органов или анатомических структур нет: результат зависит от принятой классификации и уровня детализации.",
+    "bone_count_ru": "Для типичного взрослого указывается 206 костей скелета; это число отдельных костей, не число названий/типов, а часть костей срастается в процессе развития.",
+    "typical_adult_bone_count": 206,
+    "target_count": 93
+  },
+  "sources": [
+    {
+      "id": "lower-muscles",
+      "title": "OpenStax A&P 2e §11.6 Appendicular Muscles of the Pelvic Girdle and Lower Limbs",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Gluteus maximus location and hip movement; quadriceps group, knee extension and rectus femoris hip flexion",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "digestive",
+      "title": "OpenStax A&P 2e §23.1 Digestive System",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-1-overview-of-the-digestive-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Digestive canal, accessory organs, absorption",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "resp",
+      "title": "OpenStax A&P 2e §22.1 Respiratory Organs",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Conducting airways and gas-exchange structures",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "lungs",
+      "title": "OpenStax A&P 2e §22.2 Lungs",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Lung location, pleura and gas exchange",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "heart",
+      "title": "OpenStax A&P 2e §19.1 Heart Anatomy",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/19-1-heart-anatomy",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Heart location, chambers, great vessels",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "vessels",
+      "title": "OpenStax A&P 2e §20.1 Blood Vessels",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Arteries, capillaries, veins and exchange",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "cns",
+      "title": "OpenStax A&P 2e §13.2 Central Nervous System",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Brain regions and spinal cord",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "pns",
+      "title": "OpenStax A&P 2e §13.4 Peripheral Nervous System",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Nerve plexuses and peripheral nerves",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "renal",
+      "title": "OpenStax A&P 2e §25.3 Kidney Anatomy",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Kidney position and internal organization",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "skeleton",
+      "title": "OpenStax A&P 2e §7.1 Skeletal Divisions",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-1-divisions-of-the-skeletal-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Skeleton divisions; typical adult count 206 and fusion caveat",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "upper-bones",
+      "title": "OpenStax A&P 2e §8.2 Upper Limb Bones",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-2-bones-of-the-upper-limb",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Pectoral girdle and upper-limb bones",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "lower-bones",
+      "title": "OpenStax A&P 2e §8.4 Lower Limb Bones",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-4-bones-of-the-lower-limb",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Lower-limb and foot bones",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "vertebral",
+      "title": "OpenStax A&P 2e §7.3 Vertebral Column",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-3-the-vertebral-column",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Spinal column, regions and bones",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "muscle-trunk",
+      "title": "OpenStax A&P 2e §11.4 Trunk Muscles",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Abdominal/thoracic muscles and breathing",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "muscle-upper",
+      "title": "OpenStax A&P 2e §11.5 Upper Limb Muscles",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Pectoral girdle, shoulder and arm muscles",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "senses",
+      "title": "OpenStax A&P §14.1 Sensory Perception",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/14-1-sensory-perception",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Eye, ear, taste and smell anatomy",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "skin",
+      "title": "OpenStax A&P 2e §5.1 Skin Layers",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Epidermis, dermis and cutaneous structures",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "lymph",
+      "title": "OpenStax A&P §21.1 Lymphatic Anatomy",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Lymph nodes, spleen and vessels",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "pituitary",
+      "title": "OpenStax A&P 2e §17.3 Pituitary/Hypothalamus",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Hypothalamus and pituitary",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "male",
+      "title": "OpenStax A&P 2e §27.1 Testicular System",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Testes and reproductive ducts",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "female",
+      "title": "OpenStax A&P 2e §27.2 Ovarian System",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+      "publisher": "OpenStax/Rice University; CC BY-NC-SA 4.0",
+      "supports": "Ovaries, uterine tubes and uterus",
+      "license_note": "CC BY-NC-SA 4.0",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-thyroid",
+      "title": "NCI SEER Training: Thyroid & Parathyroid",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/thyroid.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Thyroid position and function",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-thymus",
+      "title": "NCI SEER Training: Thymus",
+      "url": "https://training.seer.cancer.gov/anatomy/lymphatic/components/thymus.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Thymus position and T-cell maturation",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-adrenal",
+      "title": "NCI SEER Training: Adrenal Gland",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/adrenal.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Adrenal structure and function",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-pancreas",
+      "title": "NCI SEER Training: Pancreatic Islets",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/pancreas.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Pancreatic endocrine role",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-ovaries",
+      "title": "NCI SEER Training: Ovaries",
+      "url": "https://training.seer.cancer.gov/anatomy/reproductive/female/ovaries.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Ovary position and function",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    },
+    {
+      "id": "seer-testes",
+      "title": "NCI SEER Training: Gonads",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/gonads.html",
+      "publisher": "U.S. National Cancer Institute educational module",
+      "supports": "Testes as endocrine gonads",
+      "license_note": "Public-sector teaching module",
+      "accessed": "2026-10-07",
+      "opened": true
+    }
+  ],
+  "targets": [
+    {
+      "id": "thyroid",
+      "name_ru": "Щитовидная железа",
+      "name_en": "Thyroid gland",
+      "system": "endocrine",
+      "location_ru": "Спереди шеи, по сторонам трахеи ниже гортани.",
+      "function_ru": "Выделяет гормоны, участвующие в регуляции обмена веществ.",
+      "source_ids": [
+        "seer-thyroid"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "thymus",
+      "name_ru": "Тимус",
+      "name_en": "Thymus",
+      "system": "lymphatic",
+      "location_ru": "За грудиной в верхней части грудной клетки.",
+      "function_ru": "Обеспечивает созревание T-лимфоцитов.",
+      "source_ids": [
+        "seer-thymus"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "adrenals",
+      "name_ru": "Надпочечники",
+      "name_en": "Adrenal glands",
+      "system": "endocrine",
+      "location_ru": "Парные железы над верхними полюсами почек.",
+      "function_ru": "Кора и мозговое вещество выделяют гормоны, включая кортизол и адреналин.",
+      "source_ids": [
+        "seer-adrenal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pancreas",
+      "name_ru": "Поджелудочная железа",
+      "name_en": "Pancreas",
+      "system": "digestive_endocrine",
+      "location_ru": "Верхняя часть живота позади желудка.",
+      "function_ru": "Эндокринные клетки выделяют инсулин и глюкагон; другие части участвуют в пищеварении.",
+      "source_ids": [
+        "seer-pancreas",
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "ovaries",
+      "name_ru": "Яичники",
+      "name_en": "Ovaries",
+      "system": "reproductive_endocrine",
+      "location_ru": "В малом тазу по сторонам матки.",
+      "function_ru": "Созревают яйцеклетки и вырабатываются гормоны.",
+      "source_ids": [
+        "seer-ovaries",
+        "female"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "testes",
+      "name_ru": "Яички",
+      "name_en": "Testes",
+      "system": "reproductive_endocrine",
+      "location_ru": "В мошонке вне основной полости тела.",
+      "function_ru": "Образуют сперматозоиды и тестостерон.",
+      "source_ids": [
+        "seer-testes"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "oral-cavity",
+      "name_ru": "Ротовая полость",
+      "name_en": "Oral cavity",
+      "system": "digestive",
+      "location_ru": "Начальный отдел пищеварительного тракта.",
+      "function_ru": "Принимает пищу; зубы и язык начинают её механическую обработку.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "tongue",
+      "name_ru": "Язык",
+      "name_en": "Tongue",
+      "system": "digestive_sensory",
+      "location_ru": "На дне ротовой полости.",
+      "function_ru": "Перемещает пищу и содержит вкусовые рецепторные структуры.",
+      "source_ids": [
+        "digestive",
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "salivary-glands",
+      "name_ru": "Слюнные железы",
+      "name_en": "Salivary glands",
+      "system": "digestive",
+      "location_ru": "Вокруг ротовой полости; протоки открываются в неё.",
+      "function_ru": "Выделяют слюну для увлажнения пищи и начала пищеварения.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pharynx",
+      "name_ru": "Глотка",
+      "name_en": "Pharynx",
+      "system": "digestive_respiratory",
+      "location_ru": "Позади носовой и ротовой полостей.",
+      "function_ru": "Проводит воздух к гортани, пищу — к пищеводу.",
+      "source_ids": [
+        "digestive",
+        "resp"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "esophagus",
+      "name_ru": "Пищевод",
+      "name_en": "Esophagus",
+      "system": "digestive",
+      "location_ru": "От глотки через грудную полость к желудку.",
+      "function_ru": "Перистальтически перемещает пищу в желудок.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "stomach",
+      "name_ru": "Желудок",
+      "name_en": "Stomach",
+      "system": "digestive",
+      "location_ru": "Слева в верхней части живота, под диафрагмой.",
+      "function_ru": "Перемешивает пищу с секретом и дозирует её переход в тонкую кишку.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "duodenum",
+      "name_ru": "Двенадцатиперстная кишка",
+      "name_en": "Duodenum",
+      "system": "digestive",
+      "location_ru": "Первый отдел тонкой кишки после желудка.",
+      "function_ru": "Получает желчь и панкреатический сок для дальнейшего пищеварения.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "small-intestine",
+      "name_ru": "Тонкая кишка",
+      "name_en": "Small intestine",
+      "system": "digestive",
+      "location_ru": "Петли в центральной и нижней частях живота.",
+      "function_ru": "Основное место пищеварения и всасывания питательных веществ.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "colon",
+      "name_ru": "Ободочная кишка",
+      "name_en": "Colon",
+      "system": "digestive",
+      "location_ru": "Обрамляет петли тонкой кишки.",
+      "function_ru": "Всасывает воду и формирует содержимое для выведения.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "appendix",
+      "name_ru": "Червеобразный отросток",
+      "name_en": "Vermiform appendix",
+      "system": "digestive_lymphatic",
+      "location_ru": "У начала толстой кишки, обычно справа внизу живота.",
+      "function_ru": "Узкий отросток слепой кишки, содержащий лимфоидную ткань.",
+      "source_ids": [
+        "digestive",
+        "lymph"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "rectum",
+      "name_ru": "Прямая кишка",
+      "name_en": "Rectum",
+      "system": "digestive",
+      "location_ru": "Конечный отдел толстой кишки в малом тазу.",
+      "function_ru": "Накапливает кал перед дефекацией.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "liver",
+      "name_ru": "Печень",
+      "name_en": "Liver",
+      "system": "digestive",
+      "location_ru": "Преимущественно справа вверху живота под диафрагмой.",
+      "function_ru": "Обрабатывает всосавшиеся вещества и образует желчь.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "gallbladder",
+      "name_ru": "Жёлчный пузырь",
+      "name_en": "Gallbladder",
+      "system": "digestive",
+      "location_ru": "На нижней поверхности печени.",
+      "function_ru": "Хранит и концентрирует желчь.",
+      "source_ids": [
+        "digestive"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "nasal-cavity",
+      "name_ru": "Носовая полость",
+      "name_en": "Nasal cavity",
+      "system": "respiratory_sensory",
+      "location_ru": "За наружным носом и над ротовой полостью.",
+      "function_ru": "Проводит, согревает и увлажняет воздух; верхняя часть содержит обонятельные рецепторы.",
+      "source_ids": [
+        "resp",
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "larynx",
+      "name_ru": "Гортань",
+      "name_en": "Larynx",
+      "system": "respiratory",
+      "location_ru": "Между глоткой и трахеей в передней части шеи.",
+      "function_ru": "Проводит воздух и содержит голосовой аппарат.",
+      "source_ids": [
+        "resp"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "trachea",
+      "name_ru": "Трахея",
+      "name_en": "Trachea",
+      "system": "respiratory",
+      "location_ru": "От гортани вниз к главным бронхам.",
+      "function_ru": "Проводит воздух; хрящевые дуги поддерживают просвет.",
+      "source_ids": [
+        "resp"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "main-bronchi",
+      "name_ru": "Главные бронхи",
+      "name_en": "Main bronchi",
+      "system": "respiratory",
+      "location_ru": "Отходят от трахеи и входят в лёгкие.",
+      "function_ru": "Проводят воздух и ветвятся внутри лёгких.",
+      "source_ids": [
+        "resp"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "bronchioles",
+      "name_ru": "Бронхиолы",
+      "name_en": "Bronchioles",
+      "system": "respiratory",
+      "location_ru": "Мелкие ветви бронхиального дерева внутри лёгких.",
+      "function_ru": "Проводят воздух; их мышечные стенки регулируют просвет.",
+      "source_ids": [
+        "resp"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "alveoli",
+      "name_ru": "Лёгочные альвеолы",
+      "name_en": "Pulmonary alveoli",
+      "system": "respiratory",
+      "location_ru": "Микроскопические мешочки на концах дыхательных путей.",
+      "function_ru": "Через тонкий барьер обменивают газы с капиллярами.",
+      "source_ids": [
+        "resp",
+        "lungs"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "lungs",
+      "name_ru": "Лёгкие",
+      "name_en": "Lungs",
+      "system": "respiratory",
+      "location_ru": "Парные органы грудной полости по сторонам средостения.",
+      "function_ru": "Обеспечивают вентиляцию и газообмен; покрыты плеврой.",
+      "source_ids": [
+        "lungs"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "diaphragm",
+      "name_ru": "Диафрагма",
+      "name_en": "Diaphragm",
+      "system": "muscular_respiratory",
+      "location_ru": "Куполообразная мышца под лёгкими между грудной и брюшной полостями.",
+      "function_ru": "Главная мышца вдоха; сокращение увеличивает объём грудной полости.",
+      "source_ids": [
+        "lungs",
+        "muscle-trunk"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "heart",
+      "name_ru": "Сердце",
+      "name_en": "Heart",
+      "system": "cardiovascular",
+      "location_ru": "В средостении между лёгкими, за грудиной.",
+      "function_ru": "Четыре камеры перекачивают кровь в лёгочный и системный круги.",
+      "source_ids": [
+        "heart"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "aorta",
+      "name_ru": "Аорта",
+      "name_en": "Aorta",
+      "system": "cardiovascular",
+      "location_ru": "Выходит из левого желудочка и проходит через грудь и живот.",
+      "function_ru": "Главная системная артерия распределяет кровь по ветвям.",
+      "source_ids": [
+        "heart",
+        "vessels"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "vena-cavae",
+      "name_ru": "Полые вены",
+      "name_en": "Venae cavae",
+      "system": "cardiovascular",
+      "location_ru": "Верхняя и нижняя полые вены входят в правое предсердие.",
+      "function_ru": "Возвращают кровь из верхней и нижней частей тела к сердцу.",
+      "source_ids": [
+        "heart"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pulmonary-arteries",
+      "name_ru": "Лёгочные артерии",
+      "name_en": "Pulmonary arteries",
+      "system": "cardiovascular",
+      "location_ru": "От правого желудочка к лёгким.",
+      "function_ru": "Несут кровь от сердца к лёгочным капиллярам.",
+      "source_ids": [
+        "heart"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pulmonary-veins",
+      "name_ru": "Лёгочные вены",
+      "name_en": "Pulmonary veins",
+      "system": "cardiovascular",
+      "location_ru": "От лёгких к левому предсердию.",
+      "function_ru": "Возвращают насыщенную кислородом кровь к сердцу.",
+      "source_ids": [
+        "heart"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "coronary-arteries",
+      "name_ru": "Коронарные артерии",
+      "name_en": "Coronary arteries",
+      "system": "cardiovascular",
+      "location_ru": "Начинаются у основания аорты и идут по сердцу.",
+      "function_ru": "Снабжают кровью миокард.",
+      "source_ids": [
+        "heart"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "arterioles",
+      "name_ru": "Артериолы",
+      "name_en": "Arterioles",
+      "system": "cardiovascular",
+      "location_ru": "Мелкие ответвления артерий перед капиллярными сетями.",
+      "function_ru": "Регулируют приток крови к тканям изменением просвета.",
+      "source_ids": [
+        "vessels"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "capillaries",
+      "name_ru": "Капилляры",
+      "name_en": "Capillaries",
+      "system": "cardiovascular",
+      "location_ru": "Мельчайшие сосуды между артериолами и венулами.",
+      "function_ru": "Обеспечивают обмен газов, веществ и отходов между кровью и тканями.",
+      "source_ids": [
+        "vessels"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "veins",
+      "name_ru": "Вены",
+      "name_en": "Veins",
+      "system": "cardiovascular",
+      "location_ru": "Собирают кровь из венул и направляют к сердцу.",
+      "function_ru": "Возвращают кровь к сердцу; клапаны многих вен конечностей препятствуют обратному току.",
+      "source_ids": [
+        "vessels"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "cerebrum",
+      "name_ru": "Большой мозг",
+      "name_en": "Cerebrum",
+      "system": "nervous",
+      "location_ru": "Крупная часть переднего мозга внутри черепа.",
+      "function_ru": "Участвует в восприятии, произвольном движении и высших функциях.",
+      "source_ids": [
+        "cns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "cerebellum",
+      "name_ru": "Мозжечок",
+      "name_en": "Cerebellum",
+      "system": "nervous",
+      "location_ru": "Позади ствола мозга в задней черепной ямке.",
+      "function_ru": "Сопоставляет команды с сенсорной обратной связью и корректирует движения.",
+      "source_ids": [
+        "cns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "brainstem",
+      "name_ru": "Ствол мозга",
+      "name_en": "Brainstem",
+      "system": "nervous",
+      "location_ru": "Связывает головной мозг со спинным; состоит из среднего мозга, моста и продолговатого мозга.",
+      "function_ru": "Проводит основные пути между мозгом и спинным мозгом.",
+      "source_ids": [
+        "cns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "spinal-cord",
+      "name_ru": "Спинной мозг",
+      "name_en": "Spinal cord",
+      "system": "nervous",
+      "location_ru": "В позвоночном канале; заканчивается выше нижнего конца позвоночника.",
+      "function_ru": "Передаёт нервные сигналы и участвует в рефлексах.",
+      "source_ids": [
+        "cns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "corpus-callosum",
+      "name_ru": "Мозолистое тело",
+      "name_en": "Corpus callosum",
+      "system": "nervous",
+      "location_ru": "Пучок белого вещества между полушариями большого мозга.",
+      "function_ru": "Обеспечивает многие связи между полушариями коры.",
+      "source_ids": [
+        "cns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "sciatic-nerve",
+      "name_ru": "Седалищный нерв",
+      "name_en": "Sciatic nerve",
+      "system": "nervous",
+      "location_ru": "От крестцового сплетения через ягодичную область к ноге.",
+      "function_ru": "Несёт чувствительные и двигательные волокна для нижней конечности.",
+      "source_ids": [
+        "pns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "femoral-nerve",
+      "name_ru": "Бедренный нерв",
+      "name_en": "Femoral nerve",
+      "system": "nervous",
+      "location_ru": "От поясничного сплетения к передней стороне бедра.",
+      "function_ru": "Передаёт чувствительные сигналы и управляет рядом мышц бедра.",
+      "source_ids": [
+        "pns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "radial-nerve",
+      "name_ru": "Лучевой нерв",
+      "name_en": "Radial nerve",
+      "system": "nervous",
+      "location_ru": "По задней стороне плеча к предплечью и кисти.",
+      "function_ru": "Несёт чувствительные и двигательные волокна, в том числе к разгибателям руки.",
+      "source_ids": [
+        "pns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "ulnar-nerve",
+      "name_ru": "Локтевой нерв",
+      "name_en": "Ulnar nerve",
+      "system": "nervous",
+      "location_ru": "Проходит за внутренней стороной локтя к кисти.",
+      "function_ru": "Обеспечивает чувствительность части кисти и работу ряда её мелких мышц.",
+      "source_ids": [
+        "pns"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "kidneys",
+      "name_ru": "Почки",
+      "name_en": "Kidneys",
+      "system": "urinary",
+      "location_ru": "Парные забрюшинные органы по сторонам позвоночника; правая ниже левой.",
+      "function_ru": "Фильтруют кровь и регулируют состав жидкостей, формируя мочу.",
+      "source_ids": [
+        "renal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "ureters",
+      "name_ru": "Мочеточники",
+      "name_en": "Ureters",
+      "system": "urinary",
+      "location_ru": "Парные мышечные протоки от почек к мочевому пузырю.",
+      "function_ru": "Перистальтически перемещают мочу.",
+      "source_ids": [
+        "renal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "urinary-bladder",
+      "name_ru": "Мочевой пузырь",
+      "name_en": "Urinary bladder",
+      "system": "urinary",
+      "location_ru": "Полый мышечный орган малого таза позади лобкового сочленения.",
+      "function_ru": "Накапливает мочу перед выведением.",
+      "source_ids": [
+        "renal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "urethra",
+      "name_ru": "Мочеиспускательный канал",
+      "name_en": "Urethra",
+      "system": "urinary",
+      "location_ru": "Выводной проток от мочевого пузыря наружу.",
+      "function_ru": "Проводит мочу наружу; анатомия различается по типичной половой анатомии.",
+      "source_ids": [
+        "renal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "nephron",
+      "name_ru": "Нефрон",
+      "name_en": "Nephron",
+      "system": "urinary",
+      "location_ru": "Микроскопическая функциональная единица почки.",
+      "function_ru": "Фильтрует плазму и избирательно возвращает воду и растворённые вещества.",
+      "source_ids": [
+        "renal"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "skull",
+      "name_ru": "Череп",
+      "name_en": "Skull",
+      "system": "skeletal",
+      "location_ru": "Кости головы окружают мозг и формируют лицевой каркас.",
+      "function_ru": "Защищает мозг и поддерживает структуры лица.",
+      "source_ids": [
+        "skeleton"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "mandible",
+      "name_ru": "Нижняя челюсть",
+      "name_en": "Mandible",
+      "system": "skeletal",
+      "location_ru": "Подвижная кость нижней части лица.",
+      "function_ru": "Несёт нижние зубы и движется при жевании и речи.",
+      "source_ids": [
+        "skeleton"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "vertebrae",
+      "name_ru": "Позвонки",
+      "name_en": "Vertebrae",
+      "system": "skeletal",
+      "location_ru": "Последовательно образуют позвоночный столб от шеи до таза.",
+      "function_ru": "Поддерживают туловище и защищают спинной мозг.",
+      "source_ids": [
+        "vertebral"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "ribs",
+      "name_ru": "Рёбра",
+      "name_en": "Ribs",
+      "system": "skeletal",
+      "location_ru": "Двенадцать пар дуг между грудными позвонками и передней грудной стенкой.",
+      "function_ru": "Формируют грудную клетку и защищают органы груди.",
+      "source_ids": [
+        "skeleton"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "sternum",
+      "name_ru": "Грудина",
+      "name_en": "Sternum",
+      "system": "skeletal",
+      "location_ru": "Плоская кость по средней линии передней стенки груди.",
+      "function_ru": "Соединяется с рёбрами и ключицами.",
+      "source_ids": [
+        "skeleton"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "clavicle",
+      "name_ru": "Ключица",
+      "name_en": "Clavicle",
+      "system": "skeletal",
+      "location_ru": "Между грудиной и лопаткой в плечевом поясе.",
+      "function_ru": "Связывает плечевой пояс с осевым скелетом.",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "scapula",
+      "name_ru": "Лопатка",
+      "name_en": "Scapula",
+      "system": "skeletal",
+      "location_ru": "Плоская кость задней поверхности плечевого пояса.",
+      "function_ru": "Сочленяется с ключицей и плечевой костью; даёт места прикрепления мышцам.",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "humerus",
+      "name_ru": "Плечевая кость",
+      "name_en": "Humerus",
+      "system": "skeletal",
+      "location_ru": "Между плечевым суставом и локтем.",
+      "function_ru": "Сочленяется с лопаткой, лучевой и локтевой костями.",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "radius",
+      "name_ru": "Лучевая кость",
+      "name_en": "Radius",
+      "system": "skeletal",
+      "location_ru": "Латеральная кость предплечья со стороны большого пальца.",
+      "function_ru": "Сочленяется с локтевой костью и костями запястья.",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "ulna",
+      "name_ru": "Локтевая кость",
+      "name_en": "Ulna",
+      "system": "skeletal",
+      "location_ru": "Медиальная кость предплечья со стороны мизинца.",
+      "function_ru": "Формирует выступ локтя и участвует в локтевом суставе.",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pelvis",
+      "name_ru": "Таз",
+      "name_en": "Pelvis",
+      "system": "skeletal",
+      "location_ru": "Кольцо малого таза из двух тазовых костей, крестца и копчика.",
+      "function_ru": "Передаёт нагрузку туловища ногам и защищает тазовые органы.",
+      "source_ids": [
+        "skeleton"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "femur",
+      "name_ru": "Бедренная кость",
+      "name_en": "Femur",
+      "system": "skeletal",
+      "location_ru": "Единственная кость бедра между тазобедренным и коленным суставами.",
+      "function_ru": "Несёт нагрузку и участвует в обоих суставах.",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "patella",
+      "name_ru": "Надколенник",
+      "name_en": "Patella",
+      "system": "skeletal",
+      "location_ru": "Сесамовидная кость в сухожилии четырёхглавой мышцы перед коленом.",
+      "function_ru": "Защищает сухожилие и улучшает рычаг разгибания колена.",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "tibia",
+      "name_ru": "Большеберцовая кость",
+      "name_en": "Tibia",
+      "system": "skeletal",
+      "location_ru": "Крупная медиальная кость голени.",
+      "function_ru": "Несёт основную нагрузку и участвует в коленном и голеностопном суставах.",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "fibula",
+      "name_ru": "Малоберцовая кость",
+      "name_en": "Fibula",
+      "system": "skeletal",
+      "location_ru": "Тонкая латеральная кость голени.",
+      "function_ru": "Служит местом прикрепления мышц и формирует наружную лодыжку.",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "deltoid",
+      "name_ru": "Дельтовидная мышца",
+      "name_en": "Deltoid",
+      "system": "muscular",
+      "location_ru": "Покрывает плечевой сустав и прикрепляется к плечевой кости.",
+      "function_ru": "Отводит руку; отдельные волокна помогают сгибать или разгибать плечо.",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pectoralis-major",
+      "name_ru": "Большая грудная мышца",
+      "name_en": "Pectoralis major",
+      "system": "muscular",
+      "location_ru": "Передняя стенка груди, прикрепление к плечевой кости.",
+      "function_ru": "Приводит и вращает плечо внутрь.",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "latissimus-dorsi",
+      "name_ru": "Широчайшая мышца спины",
+      "name_en": "Latissimus dorsi",
+      "system": "muscular",
+      "location_ru": "Широкая нижняя мышца спины, прикрепляется к плечевой кости.",
+      "function_ru": "Разгибает, приводит и вращает плечо внутрь.",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "rectus-abdominis",
+      "name_ru": "Прямая мышца живота",
+      "name_en": "Rectus abdominis",
+      "system": "muscular",
+      "location_ru": "Продольная мышца передней стенки живота.",
+      "function_ru": "Сгибает туловище и помогает повышать внутрибрюшное давление.",
+      "source_ids": [
+        "muscle-trunk"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "external-oblique",
+      "name_ru": "Наружная косая мышца живота",
+      "name_en": "External oblique",
+      "system": "muscular",
+      "location_ru": "Поверхностная боковая стенка живота.",
+      "function_ru": "Сгибает и вращает туловище.",
+      "source_ids": [
+        "muscle-trunk"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "gluteus-maximus",
+      "name_ru": "Большая ягодичная мышца",
+      "name_en": "Gluteus maximus",
+      "system": "muscular",
+      "location_ru": "Поверхностная крупная мышца ягодичной области.",
+      "function_ru": "Разгибает и вращает бедро.",
+      "source_ids": [
+        "lower-muscles"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "quadriceps-femoris",
+      "name_ru": "Четырёхглавая мышца бедра",
+      "name_en": "Quadriceps femoris",
+      "system": "muscular",
+      "location_ru": "Группа мышц передней поверхности бедра.",
+      "function_ru": "Разгибает колено; прямая мышца бедра также сгибает бедро.",
+      "source_ids": [
+        "lower-muscles"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "cornea",
+      "name_ru": "Роговица",
+      "name_en": "Cornea",
+      "system": "sensory",
+      "location_ru": "Прозрачная передняя часть наружной оболочки глаза.",
+      "function_ru": "Пропускает и преломляет свет, защищая глаз.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "iris",
+      "name_ru": "Радужка",
+      "name_en": "Iris",
+      "system": "sensory",
+      "location_ru": "Окрашенная часть глаза вокруг зрачка.",
+      "function_ru": "Меняет диаметр зрачка и количество входящего света.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "retina",
+      "name_ru": "Сетчатка",
+      "name_en": "Retina",
+      "system": "sensory",
+      "location_ru": "Светочувствительная оболочка задней части глаза.",
+      "function_ru": "Палочки и колбочки преобразуют свет в нервные сигналы.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "lens",
+      "name_ru": "Хрусталик",
+      "name_en": "Lens",
+      "system": "sensory",
+      "location_ru": "Прозрачная структура за радужкой.",
+      "function_ru": "Помогает фокусировать изображение на сетчатке.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "cochlea",
+      "name_ru": "Улитка внутреннего уха",
+      "name_en": "Cochlea",
+      "system": "sensory",
+      "location_ru": "Спиральная часть внутреннего уха.",
+      "function_ru": "Преобразует колебания в нервные сигналы слуха.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "semicircular-canals",
+      "name_ru": "Полукружные каналы",
+      "name_en": "Semicircular canals",
+      "system": "sensory",
+      "location_ru": "Три дугообразных канала внутреннего уха.",
+      "function_ru": "Воспринимают вращательные движения головы для равновесия.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "olfactory-epithelium",
+      "name_ru": "Обонятельный эпителий",
+      "name_en": "Olfactory epithelium",
+      "system": "sensory",
+      "location_ru": "Верхний участок слизистой носовой полости.",
+      "function_ru": "Его рецепторные нейроны воспринимают молекулы запахов.",
+      "source_ids": [
+        "senses"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "epidermis",
+      "name_ru": "Эпидермис",
+      "name_en": "Epidermis",
+      "system": "integumentary",
+      "location_ru": "Наружный слой кожи.",
+      "function_ru": "Формирует барьер и обновляется клетками базального слоя.",
+      "source_ids": [
+        "skin"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "dermis",
+      "name_ru": "Дерма",
+      "name_en": "Dermis",
+      "system": "integumentary",
+      "location_ru": "Соединительнотканный слой под эпидермисом.",
+      "function_ru": "Придаёт коже прочность; содержит сосуды, нервы, фолликулы и железы.",
+      "source_ids": [
+        "skin"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "spleen",
+      "name_ru": "Селезёнка",
+      "name_en": "Spleen",
+      "system": "lymphatic",
+      "location_ru": "Верхняя левая часть живота рядом с желудком.",
+      "function_ru": "Фильтрует кровь и участвует в иммунных реакциях.",
+      "source_ids": [
+        "lymph"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "lymph-nodes",
+      "name_ru": "Лимфатические узлы",
+      "name_en": "Lymph nodes",
+      "system": "lymphatic",
+      "location_ru": "Группы вдоль лимфатических сосудов, включая шею, подмышки и пах.",
+      "function_ru": "Фильтруют лимфу и организуют иммунные реакции.",
+      "source_ids": [
+        "lymph"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "lymphatic-vessels",
+      "name_ru": "Лимфатические сосуды",
+      "name_en": "Lymphatic vessels",
+      "system": "lymphatic",
+      "location_ru": "Проходят через ткани и сходятся в крупные протоки.",
+      "function_ru": "Возвращают тканевую жидкость в кровь и переносят иммунные клетки.",
+      "source_ids": [
+        "lymph"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pituitary",
+      "name_ru": "Гипофиз",
+      "name_en": "Pituitary gland",
+      "system": "endocrine",
+      "location_ru": "У основания мозга в турецком седле, соединён с гипоталамусом.",
+      "function_ru": "Выделяет гормоны, часть которых регулирует другие железы.",
+      "source_ids": [
+        "pituitary"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "hypothalamus",
+      "name_ru": "Гипоталамус",
+      "name_en": "Hypothalamus",
+      "system": "nervous_endocrine",
+      "location_ru": "В нижней передней части промежуточного мозга над гипофизом.",
+      "function_ru": "Связывает нервную и гормональную регуляцию гомеостаза.",
+      "source_ids": [
+        "pituitary"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "pineal-gland",
+      "name_ru": "Эпифиз",
+      "name_en": "Pineal gland",
+      "system": "endocrine",
+      "location_ru": "Небольшая железа в задней области промежуточного мозга.",
+      "function_ru": "Выделяет мелатонин, связанный с суточной регуляцией.",
+      "source_ids": [
+        "pituitary"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "uterus",
+      "name_ru": "Матка",
+      "name_en": "Uterus",
+      "system": "reproductive",
+      "location_ru": "Полый мышечный орган малого таза между мочевым пузырём и прямой кишкой.",
+      "function_ru": "Внутренняя оболочка циклически меняется; орган поддерживает беременность.",
+      "source_ids": [
+        "female"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "uterine-tubes",
+      "name_ru": "Маточные трубы",
+      "name_en": "Uterine tubes",
+      "system": "reproductive",
+      "location_ru": "Парные протоки между областью яичников и маткой.",
+      "function_ru": "Помогают переносить ооцит к матке.",
+      "source_ids": [
+        "female"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "cervix",
+      "name_ru": "Шейка матки",
+      "name_en": "Cervix",
+      "system": "reproductive",
+      "location_ru": "Нижняя узкая часть матки, выступающая во влагалище.",
+      "function_ru": "Соединяет полость матки с влагалищем через цервикальный канал.",
+      "source_ids": [
+        "female"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "epididymis",
+      "name_ru": "Придаток яичка",
+      "name_en": "Epididymis",
+      "system": "reproductive",
+      "location_ru": "Извитый проток вдоль задней поверхности яичка.",
+      "function_ru": "Здесь сперматозоиды созревают и временно хранятся.",
+      "source_ids": [
+        "male"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "vas-deferens",
+      "name_ru": "Семявыносящий проток",
+      "name_en": "Ductus deferens",
+      "system": "reproductive",
+      "location_ru": "От придатка яичка через семенной канатик в таз.",
+      "function_ru": "Перемещает сперматозоиды к семявыбрасывающему протоку.",
+      "source_ids": [
+        "male"
+      ],
+      "source_open_status": "opened"
+    },
+    {
+      "id": "prostate",
+      "name_ru": "Предстательная железа",
+      "name_en": "Prostate gland",
+      "system": "reproductive",
+      "location_ru": "Под мочевым пузырём вокруг начального отдела уретры.",
+      "function_ru": "Выделяет секрет, входящий в состав семенной жидкости.",
+      "source_ids": [
+        "male"
+      ],
+      "source_open_status": "opened"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "digestive-tract",
+      "system": "digestive",
+      "title": "Stomach colon rectum diagram unlabeled.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Stomach_colon_rectum_diagram_unlabeled.svg",
+      "author": "Medium69 (unlabelled version); derived from William Crochot/U.S. public-domain work",
+      "license": "CC BY-SA 4.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "unlabelled": true,
+      "assessment": "No structure-name labels in this version; candidate for GI location questions.",
+      "status": "reviewed_candidate"
+    },
+    {
+      "id": "gi-wall",
+      "system": "digestive",
+      "title": "Layers of the GI Tract Unlabeled.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Layers_of_the_GI_Tract_Unlabeled.jpg",
+      "author": "Goran tek-en",
+      "license": "CC BY-SA 3.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "unlabelled": true,
+      "assessment": "No labels; wall-layer candidate, pending legibility check.",
+      "status": "reviewed_candidate"
+    },
+    {
+      "id": "nervous-map",
+      "system": "nervous",
+      "title": "Nervous system diagram unlabeled.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Nervous_system_diagram_unlabeled.svg",
+      "author": "Jmarchn; full redraw (prior versions by Medium69)",
+      "license": "CC BY-SA 4.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "unlabelled": true,
+      "assessment": "Unlabelled page description; inspect SVG for incidental text before use.",
+      "status": "reviewed_candidate"
+    },
+    {
+      "id": "eye",
+      "system": "sensory",
+      "title": "Eye anatomy drawing that is unlabeled for teaching.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Eye_anatomy_drawing_that_is_unlabeled_for_teaching.jpg",
+      "author": "Chris Sullivan / Myemail568",
+      "license": "CC BY-SA 4.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "unlabelled": true,
+      "assessment": "Explicitly described as unlabelled; labels/answer key exist in other versions.",
+      "status": "reviewed_candidate"
+    },
+    {
+      "id": "bronchiole",
+      "system": "respiratory",
+      "title": "Bronchiole.png",
+      "url": "https://commons.wikimedia.org/wiki/File:Bronchiole.png",
+      "author": "Sheldahl",
+      "license": "CC BY-SA 4.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "unlabelled": true,
+      "assessment": "Unlabelled bronchiole/alveoli; usable for gas-exchange structures.",
+      "status": "reviewed_candidate"
+    },
+    {
+      "id": "body-surface",
+      "system": "integumentary",
+      "title": "Human body features no labels.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Human_body_features_no_labels.svg",
+      "author": "Original Vsion; vector by Sjef and Racconish; later correction by Jmarchn",
+      "license": "CC BY-SA 3.0 shown on file page",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "unlabelled": true,
+      "assessment": "No labels; external regions only, not internal-organ placement.",
+      "status": "reviewed_candidate"
+    }
+  ],
+  "schema_proposal": {
+    "status": "proposal_only",
+    "ru": "Вместо одной карты использовать коллекцию boards по системам или областям тела. Каждый board задаёт asset, его размеры, attribution/license и набор неизменных target IDs. Координаты hotspot нормировать относительно исходного холста (x,y 0..1; radius относительно меньшей стороны); один target может иметь несколько hotspots. Текст ответов держать в отдельном слое. Сохранить совместимость: шесть существующих IDs остаются стабильными, старые пиксельные triples нормируются делением на размеры изображения. Независимо проверить координаты и лицензию до изменения сборщика/runtime.",
+    "en": "Use multiple boards grouped by system or body region, each with an image asset, source dimensions, credit/license and stable target IDs. Store hotspots as normalized x/y (0..1) and radius relative to the smaller dimension; allow multiple hotspots per target. Keep answers in a separate annotation layer. Preserve the six existing IDs and convert current pixel triples by dividing by source dimensions. Review coordinates and licensing before builder/runtime changes."
+  },
+  "opened_research_note": "OpenStax and NCI SEER educational source pages were opened on 2026-10-07; source_ids link each target to opened primary teaching sources. Commons file pages were opened to inspect titles, authors and displayed licenses; image pixels were not downloaded or edited."
+}

@@ -1775,20 +1775,24 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                                       .firstOrNull;
                                   widget.onSelect(hit?.id);
                                 },
-                          child: CustomPaint(
-                            key: const Key('quizipedia-map'),
-                            size: scene,
-                            painter: _MapPainter(
-                              features: widget.features,
-                              highlighted: widget.highlighted,
-                              selected: widget.selected,
-                              correct: widget.correct,
-                              numbers: widget.numbers,
-                              showLabels: widget.showLabels,
-                              russian:
-                                  Localizations.localeOf(context)
-                                      .languageCode ==
-                                  'ru',
+                          child: ValueListenableBuilder<Matrix4>(
+                            valueListenable: widget.controller,
+                            builder: (context, transform, child) => CustomPaint(
+                              key: const Key('quizipedia-map'),
+                              size: scene,
+                              painter: _MapPainter(
+                                features: widget.features,
+                                highlighted: widget.highlighted,
+                                selected: widget.selected,
+                                correct: widget.correct,
+                                numbers: widget.numbers,
+                                showLabels: widget.showLabels,
+                                sceneScale: transform.getMaxScaleOnAxis(),
+                                russian:
+                                    Localizations.localeOf(context)
+                                        .languageCode ==
+                                    'ru',
+                              ),
                             ),
                           ),
                         ),
@@ -1915,11 +1919,13 @@ class _MapPainter extends CustomPainter {
     required this.numbers,
     required this.showLabels,
     required this.russian,
+    required this.sceneScale,
   });
   final List<QuizipediaFeature> features;
   final String? highlighted, selected, correct;
   final List<String> numbers;
   final bool showLabels, russian;
+  final double sceneScale;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -1966,6 +1972,7 @@ class _MapPainter extends CustomPainter {
           russian ? feature.nameRu : feature.nameEn,
           Colors.black,
           Colors.white,
+          sceneScale: sceneScale,
         );
       }
     }
@@ -1980,6 +1987,7 @@ class _MapPainter extends CustomPainter {
         '${i + 1}',
         Colors.white,
         const Color(0xff263d58),
+        sceneScale: sceneScale,
       );
     }
   }
@@ -2005,6 +2013,7 @@ class _MapPainter extends CustomPainter {
       correct != old.correct ||
       showLabels != old.showLabels ||
       russian != old.russian ||
+      sceneScale != old.sceneScale ||
       numbers != old.numbers;
 }
 
@@ -2106,8 +2115,12 @@ void _paintLabel(
   Offset center,
   String text,
   Color foreground,
-  Color background,
-) {
+  Color background, {
+  double sceneScale = 1,
+}) {
+  canvas.save();
+  canvas.translate(center.dx, center.dy);
+  canvas.scale(1 / sceneScale);
   final painter = TextPainter(
     text: TextSpan(
       text: text,
@@ -2120,7 +2133,7 @@ void _paintLabel(
     textDirection: TextDirection.ltr,
   )..layout();
   final rect = Rect.fromCenter(
-    center: center,
+    center: Offset.zero,
     width: painter.width + 8,
     height: painter.height + 4,
   );
@@ -2131,4 +2144,5 @@ void _paintLabel(
     );
   }
   painter.paint(canvas, rect.topLeft + const Offset(4, 2));
+  canvas.restore();
 }

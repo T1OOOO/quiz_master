@@ -1,0 +1,1239 @@
+{
+  "reviewer": "openai/gpt-6.1-sol; session-953f8e04dea2475b90f779241bc3a6bb",
+  "author_session": "session-4e0b14850cf24ff5b11a1e62b723b64c",
+  "source_file": "quizipedia/research/anatomy-expansion.json",
+  "source_sha256": "98CF0B38FC65E0FD0F28467B7CBC0D6DB21E71A0852736FCEAD5744D8C483EC7",
+  "overall_verdict": "accept_with_visual_limitations",
+  "summary": "93 IDs structurally accounted. Recheck opened OpenStax §11.6 after a source-only revision. All 93 target source mappings now have appropriate opened support. Diagram licensing/unlabeled page evidence is retained, while certified hotspots remain zero until rendered-asset QA and an authored target map exist.",
+  "source_reviews": [
+    {
+      "source_id": "digestive",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-1-overview-of-the-digestive-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §23.1: пищеварительный канал, вспомогательные органы и большинство пищеварения/всасывания в тонкой кишке."
+    },
+    {
+      "source_id": "resp",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §22.1: органы дыхательной системы, проводящие пути и их функции."
+    },
+    {
+      "source_id": "lungs",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §22.2: строение лёгких и плевра."
+    },
+    {
+      "source_id": "heart",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/19-1-heart-anatomy",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §19.1: расположение сердца, камеры и магистральные сосуды."
+    },
+    {
+      "source_id": "vessels",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §20.1: артерии, артериолы, капилляры, вены и направления кровотока."
+    },
+    {
+      "source_id": "cns",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §13.2: центральная нервная система, отделы мозга и спинной мозг."
+    },
+    {
+      "source_id": "pns",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §13.4: периферические нервы и сплетения."
+    },
+    {
+      "source_id": "renal",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §25.3: положение почек и их макроанатомия."
+    },
+    {
+      "source_id": "skeleton",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-1-divisions-of-the-skeletal-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §7.1: 206 костей у типичного взрослого, слияние костей при развитии, череп, рёбра и грудина."
+    },
+    {
+      "source_id": "upper-bones",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-2-bones-of-the-upper-limb",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §8.2: плечевой пояс и кости верхней конечности."
+    },
+    {
+      "source_id": "lower-bones",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-4-bones-of-the-lower-limb",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §8.4: кости нижней конечности; не является источником для мышц."
+    },
+    {
+      "source_id": "vertebral",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-3-the-vertebral-column",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §7.3: позвоночный столб и его регионы."
+    },
+    {
+      "source_id": "muscle-trunk",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §11.4: мышцы живота/груди, наружная косая, прямая мышца живота и диафрагма."
+    },
+    {
+      "source_id": "muscle-upper",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §11.5: мышцы плечевого пояса и верхней конечности."
+    },
+    {
+      "source_id": "senses",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/14-1-sensory-perception",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §14.1: структуры глаза, уха, обоняния и их сенсорные функции."
+    },
+    {
+      "source_id": "skin",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §5.1: эпидермис, дерма и кожные структуры."
+    },
+    {
+      "source_id": "lymph",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §21.1: лимфатические сосуды, узлы, селезёнка и созревание T-клеток в тимусе."
+    },
+    {
+      "source_id": "pituitary",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §17.3: гипоталамус, гипофиз и эндокринная регуляция."
+    },
+    {
+      "source_id": "male",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §27.1: яички, придаток, семявыносящий проток и предстательная железа."
+    },
+    {
+      "source_id": "female",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+      "outcome": "opened_verified",
+      "evidence": "Открыт OpenStax §27.2: матка, трубы и шейка матки."
+    },
+    {
+      "source_id": "seer-thyroid",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/thyroid.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: положение щитовидной железы по сторонам трахеи ниже гортани и синтез тиреоидных гормонов."
+    },
+    {
+      "source_id": "seer-thymus",
+      "url": "https://training.seer.cancer.gov/anatomy/lymphatic/components/thymus.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: положение тимуса за грудиной и созревание T-лимфоцитов."
+    },
+    {
+      "source_id": "seer-adrenal",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/adrenal.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: строение и эндокринная функция надпочечников."
+    },
+    {
+      "source_id": "seer-pancreas",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/pancreas.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: эндокринная роль островков поджелудочной железы."
+    },
+    {
+      "source_id": "seer-ovaries",
+      "url": "https://training.seer.cancer.gov/anatomy/reproductive/female/ovaries.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: положение яичников по сторонам матки и оогенез."
+    },
+    {
+      "source_id": "seer-testes",
+      "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/gonads.html",
+      "outcome": "opened_verified",
+      "evidence": "Открыт NCI SEER: гонады производят гаметы и гормоны; яички секретируют тестостерон."
+    },
+    {
+      "source_id": "lower-muscles",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs",
+      "outcome": "opened_verified",
+      "evidence": "Recheck opened OpenStax §11.6: gluteus maximus is in the gluteal group that moves the femur; quadriceps femoris comprises four anterior-thigh muscles that extend and stabilize the knee, while rectus femoris also flexes the thigh."
+    }
+  ],
+  "target_reviews": [
+    {
+      "target_id": "thyroid",
+      "source_ids": [
+        "seer-thyroid"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "thymus",
+      "source_ids": [
+        "seer-thymus"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "adrenals",
+      "source_ids": [
+        "seer-adrenal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pancreas",
+      "source_ids": [
+        "seer-pancreas",
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "ovaries",
+      "source_ids": [
+        "seer-ovaries",
+        "female"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "testes",
+      "source_ids": [
+        "seer-testes"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "oral-cavity",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "tongue",
+      "source_ids": [
+        "digestive",
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "salivary-glands",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pharynx",
+      "source_ids": [
+        "digestive",
+        "resp"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "esophagus",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "stomach",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "digestive-tract"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "duodenum",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "small-intestine",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "colon",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "digestive-tract"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "appendix",
+      "source_ids": [
+        "digestive",
+        "lymph"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "rectum",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "digestive-tract"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "liver",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "gallbladder",
+      "source_ids": [
+        "digestive"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "nasal-cavity",
+      "source_ids": [
+        "resp",
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "larynx",
+      "source_ids": [
+        "resp"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "trachea",
+      "source_ids": [
+        "resp"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "main-bronchi",
+      "source_ids": [
+        "resp"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "bronchioles",
+      "source_ids": [
+        "resp"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "bronchiole"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "alveoli",
+      "source_ids": [
+        "resp",
+        "lungs"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "bronchiole"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "lungs",
+      "source_ids": [
+        "lungs"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "diaphragm",
+      "source_ids": [
+        "lungs",
+        "muscle-trunk"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "heart",
+      "source_ids": [
+        "heart"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "aorta",
+      "source_ids": [
+        "heart",
+        "vessels"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "vena-cavae",
+      "source_ids": [
+        "heart"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pulmonary-arteries",
+      "source_ids": [
+        "heart"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pulmonary-veins",
+      "source_ids": [
+        "heart"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "coronary-arteries",
+      "source_ids": [
+        "heart"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "arterioles",
+      "source_ids": [
+        "vessels"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "capillaries",
+      "source_ids": [
+        "vessels"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "veins",
+      "source_ids": [
+        "vessels"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "cerebrum",
+      "source_ids": [
+        "cns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "nervous-map"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "cerebellum",
+      "source_ids": [
+        "cns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "brainstem",
+      "source_ids": [
+        "cns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "spinal-cord",
+      "source_ids": [
+        "cns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "nervous-map"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "corpus-callosum",
+      "source_ids": [
+        "cns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "sciatic-nerve",
+      "source_ids": [
+        "pns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "femoral-nerve",
+      "source_ids": [
+        "pns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "radial-nerve",
+      "source_ids": [
+        "pns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "ulnar-nerve",
+      "source_ids": [
+        "pns"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "kidneys",
+      "source_ids": [
+        "renal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "ureters",
+      "source_ids": [
+        "renal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "urinary-bladder",
+      "source_ids": [
+        "renal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "urethra",
+      "source_ids": [
+        "renal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "nephron",
+      "source_ids": [
+        "renal"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "skull",
+      "source_ids": [
+        "skeleton"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "mandible",
+      "source_ids": [
+        "skeleton"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "vertebrae",
+      "source_ids": [
+        "vertebral"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "ribs",
+      "source_ids": [
+        "skeleton"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "sternum",
+      "source_ids": [
+        "skeleton"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "clavicle",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "scapula",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "humerus",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "radius",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "ulna",
+      "source_ids": [
+        "upper-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pelvis",
+      "source_ids": [
+        "skeleton"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "femur",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "patella",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "tibia",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "fibula",
+      "source_ids": [
+        "lower-bones"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "deltoid",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pectoralis-major",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "latissimus-dorsi",
+      "source_ids": [
+        "muscle-upper"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "rectus-abdominis",
+      "source_ids": [
+        "muscle-trunk"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "external-oblique",
+      "source_ids": [
+        "muscle-trunk"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "gluteus-maximus",
+      "source_ids": [
+        "lower-muscles"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Rechecked against independently opened OpenStax §11.6, which supports the stated location and movement/function."
+    },
+    {
+      "target_id": "quadriceps-femoris",
+      "source_ids": [
+        "lower-muscles"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Rechecked against independently opened OpenStax §11.6, which supports the stated location and movement/function."
+    },
+    {
+      "target_id": "cornea",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "eye"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "iris",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "eye"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "retina",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "eye"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "lens",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [
+        "eye"
+      ],
+      "image_status": "conditional_candidate_only",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "cochlea",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "semicircular-canals",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "olfactory-epithelium",
+      "source_ids": [
+        "senses"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "epidermis",
+      "source_ids": [
+        "skin"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "dermis",
+      "source_ids": [
+        "skin"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "spleen",
+      "source_ids": [
+        "lymph"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "lymph-nodes",
+      "source_ids": [
+        "lymph"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "lymphatic-vessels",
+      "source_ids": [
+        "lymph"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pituitary",
+      "source_ids": [
+        "pituitary"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "hypothalamus",
+      "source_ids": [
+        "pituitary"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "pineal-gland",
+      "source_ids": [
+        "pituitary"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "uterus",
+      "source_ids": [
+        "female"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "uterine-tubes",
+      "source_ids": [
+        "female"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "cervix",
+      "source_ids": [
+        "female"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "epididymis",
+      "source_ids": [
+        "male"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "vas-deferens",
+      "source_ids": [
+        "male"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    },
+    {
+      "target_id": "prostate",
+      "source_ids": [
+        "male"
+      ],
+      "factual_status": "source_mapping_verified",
+      "image_candidate_ids": [],
+      "image_status": "no_candidate_board",
+      "note": "Заявленные расположение и учебная функция согласуются с открытыми указанными источниками в пределах краткой инвентарной формулировки."
+    }
+  ],
+  "diagram_reviews": [
+    {
+      "diagram_id": "digestive-tract",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 4.0 (file page)",
+      "label_spoiler_status": "filename says unlabeled; require rendered-file QA before use",
+      "candidate_target_ids": [
+        "stomach",
+        "colon",
+        "rectum"
+      ],
+      "verdict": "conditional_candidate",
+      "note": "Usable only for broad GI-shape recognition after visual QA; no hotspot coordinates or labels were asserted."
+    },
+    {
+      "diagram_id": "gi-wall",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 3.0 (file page)",
+      "label_spoiler_status": "file page explicitly describes an unlabeled GI-wall diagram",
+      "candidate_target_ids": [],
+      "verdict": "not_applicable_to_inventory",
+      "note": "No listed target is a GI wall layer, so it does not currently serve a target in this 93-item inventory."
+    },
+    {
+      "diagram_id": "nervous-map",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 4.0 (file page)",
+      "label_spoiler_status": "file page lists a no-label SVG and separately lists numbered/language variants",
+      "candidate_target_ids": [
+        "cerebrum",
+        "spinal-cord"
+      ],
+      "verdict": "conditional_candidate",
+      "note": "May support broad CNS identification only after visual QA; the page alone does not substantiate exact locations for brainstem, cerebellum, corpus callosum, or named peripheral nerves."
+    },
+    {
+      "diagram_id": "eye",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 4.0 (file page)",
+      "label_spoiler_status": "file page explicitly says it is unlabeled and that labeled/answer-key versions are separate",
+      "candidate_target_ids": [
+        "cornea",
+        "iris",
+        "retina",
+        "lens"
+      ],
+      "verdict": "conditional_candidate",
+      "note": "Strongest candidate for the four listed eye structures, conditional on rendered-file QA and an authored target map."
+    },
+    {
+      "diagram_id": "bronchiole",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 4.0 (file page)",
+      "label_spoiler_status": "file page describes an unlabeled bronchiole-and-alveoli illustration",
+      "candidate_target_ids": [
+        "bronchioles",
+        "alveoli"
+      ],
+      "verdict": "conditional_candidate",
+      "note": "Candidate for structure recognition only; no existing hotspot coordinates were supplied."
+    },
+    {
+      "diagram_id": "body-surface",
+      "page_opened": true,
+      "license_verified": "CC BY-SA 3.0 (file page)",
+      "label_spoiler_status": "file page enumerates unlabelled draws separately from labeled variants",
+      "candidate_target_ids": [],
+      "verdict": "not_applicable_to_internal_targets",
+      "note": "External-body outline only; it cannot locate internal organs and has no direct target match in this inventory."
+    }
+  ],
+  "blockers": [
+    {
+      "target_ids": [
+        "stomach",
+        "colon",
+        "rectum",
+        "cerebrum",
+        "spinal-cord",
+        "cornea",
+        "iris",
+        "retina",
+        "lens",
+        "bronchioles",
+        "alveoli"
+      ],
+      "severity": "production_visual_qa",
+      "reason": "Candidate pages are useful and their licenses/unlabeled descriptions were opened, but the inventory contains no rendered-artifact inspection record or target-to-coordinate mapping. Do not fabricate hotspots; create and review an explicit map before release."
+    }
+  ],
+  "counts": {
+    "targets_total": 93,
+    "source_mapping_verified": 93,
+    "needs_source_replacement": 0,
+    "sources_opened": 27,
+    "diagram_pages_opened": 6,
+    "certified_hotspots": 0
+  },
+  "revision_author_session": "session-5115e6f38de049c3a9a5673b7c601d17",
+  "recheck": {
+    "verified_source_diff": "Only gluteus-maximus and quadriceps-femoris source_ids changed; the other 91 target source mappings match the prior review record.",
+    "opened_source": "lower-muscles",
+    "visual_scope": "No hotspot or visual-certification claim added; certified_hotspots remains 0."
+  }
+}

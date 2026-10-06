@@ -1,0 +1,18 @@
+{
+  "modelConfigs": {
+    "customAliases": {
+      "qm-gemini-3.8-flash-medium": {
+        "extends": "gemini-3.8-flash",
+        "modelConfig": {
+          "model": "gemini-3.8-flash",
+          "generateContentConfig": {
+            "thinkingConfig": {
+              "thinkingLevel": "MEDIUM"
+            },
+            "maxOutputTokens": 16384
+          }
+        }
+      }
+    }
+  }
+}

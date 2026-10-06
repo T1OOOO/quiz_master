@@ -1,0 +1,42 @@
+{
+  "reviewer": "openai/gpt-6.1-sol; session-953f8e04dea2475b90f779241bc3a6bb",
+  "author": "/root",
+  "articles": [
+    {
+      "article_id": "quizipedia:anatomy:ovaries",
+      "verdict": "accept",
+      "article_sha256": "5b8c32997883eb15184cdb745d39f802b73a06619b8839cbaf847f147c7bceb4",
+      "note": "Точный Atlas target_id соответствует статье. Текст ясно отделяет яичник от матки и трубы, овуляцию от оплодотворения и сочетает репродуктивную и эндокринную роли без клинических рекомендаций.",
+      "checked_sources": [
+        {
+          "url": "https://training.seer.cancer.gov/anatomy/reproductive/female/ovaries.html",
+          "outcome": "opened_verified",
+          "evidence": "NCI SEER подтверждает парные яичники по сторонам матки, корковое вещество с фолликулами и ооцитами, сосудисто-нервное мозговое вещество, овуляцию и секрецию прогестерона и некоторого эстрогена жёлтым телом."
+        },
+        {
+          "url": "https://training.seer.cancer.gov/ovarian/anatomy/",
+          "outcome": "opened_verified",
+          "evidence": "NCI SEER подтверждает парные яичники в малом тазу латерально от матки, их продукцию яйцеклеток и репродуктивных гормонов, а также прохождение яйцеклетки через маточные трубы к матке."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:anatomy:testes",
+      "verdict": "accept",
+      "article_sha256": "d747013d9b84303ddec176c3ad382a80d87d6af8572c93258ef8c9211e561709",
+      "note": "Точный Atlas target_id соответствует статье. Объяснение различает яичко, мошонку и придаток, а также связывает семенные канальцы со сперматогенезом и клетки Лейдига с гормональной функцией.",
+      "checked_sources": [
+        {
+          "url": "https://training.seer.cancer.gov/anatomy/reproductive/male/testes.html",
+          "outcome": "opened_verified",
+          "evidence": "NCI SEER подтверждает развитие яичек в брюшной полости и опускание в мошонку, температуру примерно на 3 °C ниже температуры тела, семенные канальцы, клетки Лейдига между ними и поддерживающие клетки Сертоли."
+        },
+        {
+          "url": "https://my.clevelandclinic.org/health/body/23964-testicles",
+          "outcome": "opened_verified",
+          "evidence": "Cleveland Clinic подтверждает расположение яичек в мошонке, две функции — сперматозоиды и гормоны, выработку тестостерона клетками Лейдига, температуру ниже температуры тела и отдельный придаток вдоль яичка."
+        }
+      ]
+    }
+  ]
+}
