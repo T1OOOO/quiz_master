@@ -29,6 +29,22 @@ CREATE TABLE IF NOT EXISTS attempts (id TEXT PRIMARY KEY, participant_id TEXT NO
 CREATE TABLE IF NOT EXISTS attempt_questions (attempt_id TEXT NOT NULL REFERENCES attempts(id), question_id TEXT NOT NULL, revision TEXT NOT NULL, public_question TEXT NOT NULL, snapshot TEXT NOT NULL, position INTEGER NOT NULL, PRIMARY KEY(attempt_id,question_id));
 CREATE TABLE IF NOT EXISTS attempt_answers (attempt_id TEXT NOT NULL, question_id TEXT NOT NULL, idempotency_key TEXT NOT NULL, payload_digest TEXT NOT NULL, answer TEXT NOT NULL, receipt TEXT NOT NULL, PRIMARY KEY(attempt_id,question_id), UNIQUE(attempt_id,idempotency_key), FOREIGN KEY(attempt_id,question_id) REFERENCES attempt_questions(attempt_id,question_id));
 CREATE TABLE IF NOT EXISTS practice_attempts (attempt_id TEXT PRIMARY KEY REFERENCES attempts(id));
+CREATE TABLE IF NOT EXISTS feedback_reports (
+ id TEXT PRIMARY KEY,
+ participant_id TEXT NOT NULL REFERENCES participants(id),
+ request_id TEXT NOT NULL,
+ payload_digest TEXT NOT NULL CHECK(length(payload_digest)=64),
+ type TEXT NOT NULL CHECK(type IN ('ui','content','idea')),
+ item_ids TEXT NOT NULL,
+ comment TEXT NOT NULL CHECK(length(comment) BETWEEN 1 AND 5000),
+ context TEXT NOT NULL,
+ screenshot BLOB CHECK(length(screenshot)<=2097152),
+ status TEXT NOT NULL CHECK(status IN ('open','resolved')),
+ created_at TEXT NOT NULL,
+ updated_at TEXT NOT NULL,
+ UNIQUE(participant_id,request_id)
+);
+CREATE INDEX IF NOT EXISTS feedback_reports_status_time ON feedback_reports(status,created_at DESC,id DESC);
 `
 
 // Apply installs the local schema in one transaction. Callers must use a file

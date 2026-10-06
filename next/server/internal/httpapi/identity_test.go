@@ -109,7 +109,7 @@ func TestRoutesAcceptsAuthenticatedFeedbackReport(t *testing.T) {
 			return Principal{}, ErrUnauthorized
 		}
 		return Principal{ID: "p_0123456789abcdef0123456789abcdef", Kind: "guest"}, nil
-	}, func(context.Context, string) (identity.GuestSession, error) { return identity.GuestSession{}, nil })
+	}, func(context.Context, string) (identity.GuestSession, error) { return identity.GuestSession{}, nil }, FeedbackConfig{Store: newFeedbackStore(t)})
 	r := httptest.NewRequest(http.MethodPost, "/v1/reports", strings.NewReader(`{"request_id":"frq_0123456789abcdef0123456789abcdef","type":"ui","item_ids":["screen:/library"],"comment":"Button overlaps the answer","context":{"route":"/library","viewport":{"width":390,"height":844,"dpr":2},"locale":"en","theme":"light","platform":"web","app_version":"test","timestamp":"2026-10-06T00:00:00Z"}}`))
 	r.Header.Set("Content-Type", "application/json")
 	r.Header.Set("Authorization", "Bearer guest-token")

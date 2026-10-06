@@ -8,8 +8,8 @@ import (
 
 func TestMigrationsRegisterRevealManifestInOrder(t *testing.T) {
 	migrations := Migrations()
-	if len(migrations) != 3 {
-		t.Fatalf("migration count = %d, want 3", len(migrations))
+	if len(migrations) != 4 {
+		t.Fatalf("migration count = %d, want 4", len(migrations))
 	}
 	for index, migration := range migrations {
 		if migration.Version != int64(index+1) {

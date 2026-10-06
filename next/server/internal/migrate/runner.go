@@ -21,13 +21,16 @@ var attemptsSQL string
 //go:embed migrations/0003_reveal_manifest.sql
 var revealManifestSQL string
 
+//go:embed migrations/0004_feedback_reports.sql
+var feedbackReportsSQL string
+
 type Migration struct {
 	Version       int64
 	SQL, Checksum string
 }
 
 func Migrations() []Migration {
-	return []Migration{{Version: 1, SQL: identitySQL, Checksum: checksum(identitySQL)}, {Version: 2, SQL: attemptsSQL, Checksum: checksum(attemptsSQL)}, {Version: 3, SQL: revealManifestSQL, Checksum: checksum(revealManifestSQL)}}
+	return []Migration{{Version: 1, SQL: identitySQL, Checksum: checksum(identitySQL)}, {Version: 2, SQL: attemptsSQL, Checksum: checksum(attemptsSQL)}, {Version: 3, SQL: revealManifestSQL, Checksum: checksum(revealManifestSQL)}, {Version: 4, SQL: feedbackReportsSQL, Checksum: checksum(feedbackReportsSQL)}}
 }
 func checksum(s string) string { sum := sha256.Sum256([]byte(s)); return hex.EncodeToString(sum[:]) }
 

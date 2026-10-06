@@ -31,10 +31,13 @@ func AttemptRoutes(s AttemptService, auth TokenAuthenticator) http.Handler {
 	return noStoreRevealResponses(mux)
 }
 
-func Routes(s AttemptService, auth TokenAuthenticator, create GuestCreator) http.Handler {
+func Routes(s AttemptService, auth TokenAuthenticator, create GuestCreator, feedback ...FeedbackConfig) http.Handler {
 	mux := http.NewServeMux()
 	registerIdentityRoutes(mux, create)
 	registerAttemptRoutes(mux, s, auth)
+	if len(feedback) == 1 && feedback[0].Store != nil {
+		registerReportRoutes(mux, auth, feedback[0])
+	}
 	return noStoreRevealResponses(mux)
 }
 

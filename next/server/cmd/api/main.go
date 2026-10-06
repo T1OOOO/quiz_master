@@ -13,6 +13,7 @@ import (
 	"syscall"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/jackc/pgx/v5/stdlib"
 
 	"quiz_master/next/server/internal/attempts"
 	"quiz_master/next/server/internal/config"
@@ -20,6 +21,7 @@ import (
 	"quiz_master/next/server/internal/httpapi"
 	"quiz_master/next/server/internal/identity"
 	"quiz_master/next/server/internal/migrate"
+	"quiz_master/next/server/internal/reports"
 	localsqlite "quiz_master/next/server/internal/sqlite"
 )
 
@@ -61,7 +63,9 @@ func run() error {
 		p, err := identities.Authenticate(ctx, token)
 		return httpapi.Principal{ID: p.ID, Kind: p.Kind}, err
 	}
-	srv := newServer(cfg, pool, httpapi.Routes(attemptService, auth, identities.CreateGuestSession))
+	reportDB := stdlib.OpenDBFromPool(pool)
+	defer reportDB.Close()
+	srv := newServer(cfg, pool, httpapi.Routes(attemptService, auth, identities.CreateGuestSession, httpapi.FeedbackConfig{Store: reports.NewStore(reportDB), AdminToken: cfg.FeedbackAdminToken}))
 	errCh := make(chan error, 1)
 	go func() { errCh <- srv.ListenAndServe() }()
 	select {
@@ -95,7 +99,7 @@ func runSQLite(ctx context.Context, cfg config.Config) error {
 		p, e := identities.Authenticate(ctx, token)
 		return httpapi.Principal{ID: p.ID, Kind: p.Kind}, e
 	}
-	srv := newServer(cfg, sqlitePinger{db}, httpapi.Routes(attemptService, auth, identities.CreateGuestSession))
+	srv := newServer(cfg, sqlitePinger{db}, httpapi.Routes(attemptService, auth, identities.CreateGuestSession, httpapi.FeedbackConfig{Store: reports.NewStore(db), AdminToken: cfg.FeedbackAdminToken}))
 	errCh := make(chan error, 1)
 	go func() { errCh <- srv.ListenAndServe() }()
 	select {

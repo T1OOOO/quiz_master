@@ -11,6 +11,7 @@ import (
 )
 
 type Config struct {
+	FeedbackAdminToken                                                      string
 	ContentBundlePath, ContentManifestPath, ContentTaxonomyPath             string
 	AttemptDuration                                                         time.Duration
 	ListenAddr, DatabaseURL                                                 string
@@ -21,6 +22,10 @@ type Config struct {
 func FromEnv() (Config, error) {
 	c := Config{ListenAddr: os.Getenv("QM_LISTEN_ADDR"), DatabaseURL: os.Getenv("QM_DATABASE_URL"), ShutdownTimeout: 10 * time.Second, DatabaseStartupTimeout: 15 * time.Second, ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 60 * time.Second}
 	c.ContentBundlePath = os.Getenv("QM_CONTENT_BUNDLE_PATH")
+	c.FeedbackAdminToken = os.Getenv("QM_FEEDBACK_ADMIN_TOKEN")
+	if c.FeedbackAdminToken != "" && (len(c.FeedbackAdminToken) < 32 || len(c.FeedbackAdminToken) > 4096 || strings.ContainsAny(c.FeedbackAdminToken, " \t\r\n")) {
+		return Config{}, fmt.Errorf("QM_FEEDBACK_ADMIN_TOKEN must be 32..4096 characters without whitespace")
+	}
 	c.ContentManifestPath = os.Getenv("QM_CONTENT_MANIFEST_PATH")
 	c.ContentTaxonomyPath = os.Getenv("QM_CONTENT_TAXONOMY_PATH")
 	c.AttemptDuration = 30 * time.Minute

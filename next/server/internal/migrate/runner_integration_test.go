@@ -59,7 +59,7 @@ func TestApplyCreatesTrackedSchemaAndRejectsChecksumDrift(t *testing.T) {
 	if err := Apply(ctx, pool, m); err == nil {
 		t.Fatal("checksum drift was accepted")
 	}
-	if _, err := pool.Exec(ctx, "truncate attempt_answers, attempt_questions, attempts, attempt_bundles, sessions, participants"); err != nil {
+	if _, err := pool.Exec(ctx, "truncate feedback_reports, attempt_answers, attempt_questions, attempts, attempt_bundles, sessions, participants"); err != nil {
 		t.Fatal(err)
 	}
 	_ = pgx.ErrNoRows

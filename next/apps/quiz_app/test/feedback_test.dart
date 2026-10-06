@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/main.dart';
@@ -7,8 +8,14 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      const ProviderScope(
-        child: QuizApp(initialLocation: '/library', defaultLocale: Locale('en')),
+      ProviderScope(
+        overrides: [
+          discoveryCatalogProvider.overrideWith((ref) async => []),
+        ],
+        child: const QuizApp(
+          initialLocation: '/library',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
