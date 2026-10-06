@@ -1,0 +1,186 @@
+{
+  "reviewer": "openai/gpt-6.1-sol session-953f8e04dea2475b90f779241bc3a6bb (article-pilot-factcheck-953f8e04)",
+  "author": "/root/article_pilot_writer",
+  "articles": [
+    {
+      "article_id": "quizipedia:landmark:colosseum",
+      "verdict": "accept",
+      "article_sha256": "4095090028b5e5871c9b9eb18f74fb154f014f52e9bcb370d0ed49971fabc664",
+      "note": "Целевой landmark соответствует статье. Обе текущие официальные страницы Turismo Roma открылись и подтверждают амфитеатр Флавиев, его подземные помещения для подготовки зрелищ, средневековое и ренессансное использование как каменоломни, мастерских и жилья, а также Ludus Magnus как отдельную гладиаторскую школу с небольшой тренировочной ареной.",
+      "checked_sources": [
+        {
+          "url": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "outcome": "opened_verified",
+          "evidence": "Официальная страница Turismo Roma открылась; она называет Колизей амфитеатром Флавиев, располагает его между Палатином, Эсквилином и Целием, связывает строительство с Веспасианом, описывает арену и подземные помещения для подготовки зрелищ, а также средневековое и ренессансное использование как каменоломни, мастерских и жилья."
+        },
+        {
+          "url": "https://www.turismoroma.it/en/places/ludus-magnus",
+          "outcome": "opened_verified",
+          "evidence": "Официальная страница Turismo Roma открылась; она описывает Ludus Magnus как отдельную гладиаторскую школу рядом с Колизеем, соединённую с его подземной частью галереей, с маленьким амфитеатром для тренировок."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:landmark:taj-mahal",
+      "verdict": "accept",
+      "article_sha256": "5c9883ee9f9489f5a852cfbe3660c77a895c67e1ea7509cbb9637e846f2cf5f3",
+      "note": "Целевой landmark и факты согласованы. ЮНЕСКО прямо подтверждает Агру, правый берег Ямуны, мавзолей Шах-Джахана в память о Мумтаз-Махал, датировку и состав ансамбля; обе ссылки открылись.",
+      "checked_sources": [
+        {
+          "url": "https://whc.unesco.org/en/list/252/",
+          "outcome": "opened",
+          "evidence": "Страница ЮНЕСКО подтверждает место, заказчика, посвящение, мавзолей, мечеть, гостевой дом, ворота и положение гробницы у края четырёхчастного сада."
+        },
+        {
+          "url": "https://tajmahal.gov.in/",
+          "outcome": "opened",
+          "evidence": "Официальный государственный сайт памятника открылся; он служит вторым официальным источником для статьи."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:landmark:giza-pyramid",
+      "verdict": "accept",
+      "article_sha256": "02a34928a83aef36dfbd4dfd3606fcd620a275820d3de71d3dc442f5a5e0abee",
+      "note": "Целевой landmark и факты согласованы: Великая пирамида отнесена к Хуфу/Хеопсу и к некрополю Гизы, а не к отдельному музею.",
+      "checked_sources": [
+        {
+          "url": "https://whc.unesco.org/en/list/86/",
+          "outcome": "opened",
+          "evidence": "ЮНЕСКО определяет объект от Гизы до Дахшура и называет Великую пирамиду Хуфу среди трёх пирамид Гизы."
+        },
+        {
+          "url": "https://egymonuments.gov.eg/monuments/the-great-pyramid/",
+          "outcome": "opened",
+          "evidence": "Страница Министерства туризма и древностей Египта называет Великую пирамиду гробницей царя Хуфу на плато Гиза."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:landmark:petra-treasury",
+      "verdict": "accept",
+      "article_sha256": "d529137402cd97c7e34a5ba177d2ad20b8d2653981f84590a75e0fe08efd31ac",
+      "note": "Цель соответствует статье. ЮНЕСКО подтверждает контекст Петры, а новая официальная страница Visit Petra прямо называет Аль-Хазне высеченным набатейским монументом и мавзолеем; оба источника открылись.",
+      "checked_sources": [
+        {
+          "url": "https://whc.unesco.org/en/list/326",
+          "outcome": "opened",
+          "evidence": "ЮНЕСКО подтверждает набатейский караванный город между Красным и Мёртвым морями, торговые связи и частично высеченную в скале архитектуру."
+        },
+        {
+          "url": "https://visitpetra.jo/en/Location/2",
+          "outcome": "opened",
+          "evidence": "Официальная страница Visit Petra открылась и описывает Al Khazna как высеченный набатеями монумент, в действительности мавзолей/погребальный объект."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:landmark:sydney-opera",
+      "verdict": "accept",
+      "article_sha256": "6c293a0a3b637cd9ee3bccf605e902089dbd903d7cc4bf4ff73d278df2e469f9",
+      "note": "Целевой landmark и факты согласованы: полуостров в гавани, Утзон, конкурс 1957 года, открытие 1973 года и система оболочек подтверждены открытыми источниками.",
+      "checked_sources": [
+        {
+          "url": "https://whc.unesco.org/en/list/166/",
+          "outcome": "opened",
+          "evidence": "ЮНЕСКО подтверждает гавань, три группы оболочек, два главных зала, ресторан, Утзона, 1957 год, 1973 год и вклад Ове Арупа."
+        },
+        {
+          "url": "https://www.sydneyoperahouse.com/our-story?mencid=meganav%3AThe_Building%3AThe_Building%3AHeader",
+          "outcome": "opened",
+          "evidence": "Официальный сайт подтверждает Утзона, открытие в 1973 году, начало строительства в 1959 году и сферическое решение формы."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:landmark:eiffel",
+      "verdict": "accept",
+      "article_sha256": "1219680292ba70b62240d96374db44144dda386494e8fed6f86b7be361469327",
+      "note": "Целевой landmark и факты согласованы: выставка 1889 года, конкурс, команда Кёхлин—Нугье—Совестр—Эйфель, сроки строительства и научные применения подтверждены двумя официальными страницами.",
+      "checked_sources": [
+        {
+          "url": "https://www.toureiffel.paris/en/the-monument/history",
+          "outcome": "opened",
+          "evidence": "Официальная история подтверждает выставку 1889 года, начало работ 26 января 1887 года, завершение 31 марта 1889 года и авторов проекта."
+        },
+        {
+          "url": "https://www.toureiffel.paris/en/the-monument/eiffel-tower-and-science",
+          "outcome": "opened",
+          "evidence": "Официальная страница подтверждает метеорологические, астрономические, физические и радиосвязные исследования на башне."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:anatomy:thyroid",
+      "verdict": "accept",
+      "article_sha256": "0e15a3ff8f5d084c567f428528f16600f3a87f84f5ab6c1a6f01176b1732a81f",
+      "note": "Целевой anatomy и факты согласованы. Специфические анатомические и гормональные утверждения проверены по NCI SEER; NCBI подтверждает эндокринный контекст. Это образовательное описание не содержит клинических рекомендаций.",
+      "checked_sources": [
+        {
+          "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/thyroid.html",
+          "outcome": "opened",
+          "evidence": "NCI SEER подтверждает положение ниже гортани, две доли по сторонам трахеи, перешеек, тироксин, трийодтиронин, йод, кальцитонин и заднее положение паращитовидных желёз."
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK22231/pdf/Bookshelf_NBK22231.pdf",
+          "outcome": "opened",
+          "evidence": "NCBI Bookshelf открывается и перечисляет щитовидную и паращитовидные железы как эндокринные органы; детальные утверждения проверены по SEER."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:anatomy:thymus",
+      "verdict": "accept",
+      "article_sha256": "691967b7e903637c31c23dab398a6a5fc9174d856f71f12d148613f9698b6935",
+      "note": "Целевой anatomy соответствует статье. Две новые медицинские страницы открылись и независимо подтверждают положение за грудиной, созревание T-клеток и ключевые отличия от щитовидной железы; Cleveland Clinic также подтверждает детские изменения тимуса.",
+      "checked_sources": [
+        {
+          "url": "https://my.clevelandclinic.org/health/body/23016-thymus",
+          "outcome": "opened",
+          "evidence": "Cleveland Clinic открылась: тимус расположен за грудиной в верхней груди, спереди и выше сердца; в нём созревают T-клетки, а после пубертата он уменьшается и замещается жиром."
+        },
+        {
+          "url": "https://cancer.ca/en/cancer-information/resources/glossary/t/thymus",
+          "outcome": "opened",
+          "evidence": "Canadian Cancer Society открылась и подтверждает маленькую железу в центре груди за грудиной, где лимфоциты созревают, размножаются и становятся T-клетками."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:anatomy:adrenals",
+      "verdict": "accept",
+      "article_sha256": "c46be00d9141e63643e22ef1bbf9ed2f4c2d0b6004179549b70bfb09b65dd421",
+      "note": "Целевой anatomy и факты согласованы: парность, расположение у верхней части почек, кора и мозговое вещество, а также гормоны подтверждены SEER; NCBI подтверждает эндокринную классификацию.",
+      "checked_sources": [
+        {
+          "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/adrenal.html",
+          "outcome": "opened",
+          "evidence": "NCI SEER подтверждает парное расположение у верхней части каждой почки, кору и мозговое вещество, альдостерон, кортизол, адреналин и норадреналин."
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK22231/pdf/Bookshelf_NBK22231.pdf",
+          "outcome": "opened",
+          "evidence": "NCBI Bookshelf открывается и подтверждает надпочечники как эндокринные органы; детальные утверждения проверены по SEER."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:anatomy:pancreas",
+      "verdict": "accept",
+      "article_sha256": "68eef9375aab6011a9cc0560b9c218f3ab860a7a00b7959abb1c73be2b3aac1d",
+      "note": "Целевой anatomy и факты согласованы: положение позади желудка, экзокринная часть, островки, инсулин и глюкагон подтверждены SEER; NCBI подтверждает эндокринный контекст.",
+      "checked_sources": [
+        {
+          "url": "https://training.seer.cancer.gov/anatomy/endocrine/glands/pancreas.html",
+          "outcome": "opened",
+          "evidence": "NCI SEER подтверждает положение позади желудка, экзокринную секрецию в двенадцатиперстную кишку и эндокринные островки с инсулином и глюкагоном."
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK22231/pdf/Bookshelf_NBK22231.pdf",
+          "outcome": "opened",
+          "evidence": "NCBI Bookshelf открывается и подтверждает поджелудочную железу как эндокринный орган; детальные утверждения проверены по SEER."
+        }
+      ]
+    }
+  ]
+}

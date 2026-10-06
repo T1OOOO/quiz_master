@@ -1012,6 +1012,26 @@ class _StudyFeedbackDialog extends StatelessWidget {
                     child: ExplanationPanel(reveal: reveal!),
                   ),
                 if (reveal != null)
+                  QuestionArticleLink(
+                    quizId: 'study-${module.id}',
+                    questionId: question.id,
+                    revision: sha256
+                        .convert(
+                          utf8.encode(
+                            jsonEncode({
+                              'id': question.id,
+                              'text': question.text,
+                              'options': question.options,
+                              'correct_answer': question.correctAnswer,
+                              'explanation': question.explanation,
+                              'source_refs': question.sourceRefs,
+                            }),
+                          ),
+                        )
+                        .toString(),
+                    onBeforeOpen: onPause,
+                  ),
+                if (reveal != null)
                   for (final source in referenced)
                     Align(
                       alignment: Alignment.centerLeft,

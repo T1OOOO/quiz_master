@@ -19,6 +19,7 @@ import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
+import 'question_articles.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -608,8 +609,13 @@ String _normalize(String value) =>
     value.trim().replaceAll(RegExp(r'\s+'), ' ').toLowerCase();
 
 class ExplanationPanel extends StatelessWidget {
-  const ExplanationPanel({super.key, required this.reveal});
+  const ExplanationPanel({
+    super.key,
+    required this.reveal,
+    this.onBeforeArticleOpen,
+  });
   final Reveal reveal;
+  final VoidCallback? onBeforeArticleOpen;
   @override
   Widget build(BuildContext context) => Semantics(
     liveRegion: true,
@@ -623,6 +629,15 @@ class ExplanationPanel extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Text(reveal.explanation),
+          if (reveal.quizId != null &&
+              reveal.questionId != null &&
+              reveal.revision != null)
+            QuestionArticleLink(
+              quizId: reveal.quizId,
+              questionId: reveal.questionId,
+              revision: reveal.revision!.sha256,
+              onBeforeOpen: onBeforeArticleOpen,
+            ),
         ],
       ),
     ),

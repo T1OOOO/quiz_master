@@ -10,6 +10,8 @@ import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'question_articles.dart';
+
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
 class QuizipediaPoint {
@@ -764,6 +766,14 @@ class _QuizGameState extends State<_QuizGame> {
   String _name(String id) => _localized(context, _row(id), 'name');
   String get _currentId => widget.challenge ? _session.current : _exploreId!;
   Map<String, dynamic> get _current => _row(_currentId);
+  String get _articleDomain => switch (widget.module) {
+    _Module.map => 'country',
+    _Module.anatomy => 'anatomy',
+    _Module.landmarks => 'landmark',
+    _Module.sky => 'constellation',
+  };
+  Widget _articleLink() =>
+      QuestionArticleLink(domain: _articleDomain, targetId: _currentId);
   bool get _reverse => _questionIndex.isOdd;
   bool get _submitted => widget.challenge && _session.submitted;
 
@@ -1040,6 +1050,7 @@ class _QuizGameState extends State<_QuizGame> {
       children: [
         Text(_name(_currentId), style: Theme.of(context).textTheme.titleMedium),
         if (description is String && description.isNotEmpty) Text(description),
+        _articleLink(),
         const SizedBox(height: 8),
         OutlinedButton.icon(
           key: const Key('map-country-search'),
@@ -1243,6 +1254,7 @@ class _QuizGameState extends State<_QuizGame> {
       Text(_name(_currentId), style: Theme.of(context).textTheme.titleMedium),
       const SizedBox(height: 8),
       Text(_localized(context, _current, 'explanation')),
+      _articleLink(),
       if (widget.module == _Module.landmarks)
         Text(
           _t(
@@ -1309,6 +1321,7 @@ class _QuizGameState extends State<_QuizGame> {
                   ),
                 ),
               Text(_localized(context, correct, 'explanation')),
+              _articleLink(),
               const SizedBox(height: 8),
               FilledButton(
                 onPressed: _next,
@@ -1685,8 +1698,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
         ys.reduce(math.max),
       );
       if (bounds == null ||
-          rect.width * rect.height > bounds.width * bounds.height)
+          rect.width * rect.height > bounds.width * bounds.height) {
         bounds = rect;
+      }
     }
     final worldWidth = _scene.width;
     final worldHeight = _scene.height;

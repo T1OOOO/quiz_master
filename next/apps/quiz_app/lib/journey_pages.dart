@@ -530,7 +530,10 @@ class _FeedbackDialogState extends State<_FeedbackDialog>
                     child: SingleChildScrollView(
                       child: DefaultTextStyle.merge(
                         style: const TextStyle(color: Color(0xff655444)),
-                        child: ExplanationPanel(reveal: feedback.reveal),
+                        child: ExplanationPanel(
+                          reveal: feedback.reveal,
+                          onBeforeArticleOpen: _pause,
+                        ),
                       ),
                     ),
                   ),

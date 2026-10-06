@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -240,6 +241,10 @@ void main() {
   testWidgets('article keeps paper text and tables readable in dark mode', (
     tester,
   ) async {
+    tester.view.physicalSize = const Size(361, 682);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     await tester.binding.setSurfaceSize(const Size(361, 682));
     addTearDown(() => tester.binding.setSurfaceSize(null));
     await tester.pumpWidget(
@@ -303,6 +308,10 @@ void main() {
   testWidgets('mobile table cards preserve escaped pipes and backslashes', (
     tester,
   ) async {
+    tester.view.physicalSize = const Size(361, 682);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     await tester.binding.setSurfaceSize(const Size(361, 682));
     addTearDown(() => tester.binding.setSurfaceSize(null));
     await _pumpStudyArticle(
@@ -319,6 +328,10 @@ void main() {
   testWidgets('mobile leaves fenced and formatted tables to Markdown', (
     tester,
   ) async {
+    tester.view.physicalSize = const Size(361, 682);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     await tester.binding.setSurfaceSize(const Size(361, 682));
     addTearDown(() => tester.binding.setSurfaceSize(null));
     await _pumpStudyArticle(

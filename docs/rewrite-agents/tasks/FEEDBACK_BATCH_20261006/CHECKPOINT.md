@@ -60,3 +60,23 @@ continues in foq with independent factual review. No GitHub Actions.
 
 Do not stage foreign content20/README, study/check_reader.py, PROJECT_OVERVIEW
 or unrelated Beads rows. Pending metadata remains 2957/4078 accepted, 1121 remaining.
+
+
+2026-10-06 later continuation: guarded Flutter full suite now passes 110 tests,
+including redesigned map and feedback pacing tests. Focused Study/article suite
+passes 22 tests after correcting the actual test viewport to361x682. The analyzer
+reported8 info notices; source repairs applied, final analyzer still pending.
+New question-linked mini article reader and editorial exact-hash publication gate
+are in progress under quiz_master-2ln/4dv; independently checked Atlas pilot has
+9 accepted and1 revised. Real browser exercise, Web build and deployment remain
+pending, so previous production/report state is unchanged.
+
+2026-10-07 continuation: all 20 initial mini-articles independently accepted
+(10 Atlas and 10 gastronomy); imported catalog passes exact hashes and bindings.
+Final Flutter analyze has no issues. Full Flutter suite with the final 20-article
+asset passes all 110 tests; Web compilation currently in progress. Study
+generator parity passes 6 modules / 120 questions after regenerating ignored HTML.
+Coverage revision-key regression has two passing Python tests and independent
+changed-scope review. Coverage: 20 accepted / 4275, 4255 still missing; next
+eight constellation articles assigned under quiz_master-2ln.2. Browser exercise
+and publication are still pending; real reports remain open.
