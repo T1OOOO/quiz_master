@@ -541,6 +541,39 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{correct} of {total}'**
   String studyScore(int correct, int total);
+  String get feedbackDeleteReport;
+  String get feedbackCancel;
+  String get feedbackDelete;
+  String get feedbackReport;
+  String get feedbackScreenshotUnavailable;
+  String get feedbackClose;
+  String get feedbackAllQuizzes;
+  String get feedbackReports;
+  String get feedbackRefresh;
+  String get feedbackLogout;
+  String get feedbackOperatorToken;
+  String get feedbackSignIn;
+  String get feedbackOpen;
+  String get feedbackResolved;
+  String get feedbackAll;
+  String get feedbackOperationFailedCheckTheTokenAndRetry;
+  String get feedbackNoReports;
+  String get feedbackResolve;
+  String get feedbackReopen;
+  String get feedbackPrevious;
+  String get feedbackNext;
+  String get feedbackSendFeedback;
+  String get feedbackThankYouForYourFeedback;
+  String get feedbackFeedback;
+  String get feedbackApplicationProblem;
+  String get feedbackQuestionProblem;
+  String get feedbackSuggestion;
+  String get feedbackComment;
+  String get feedbackAttachScreenshot;
+  String get feedbackScreenshotUnavailableYouCanSendAComment;
+  String get feedbackCouldNotSendYourTextIsSavedPleaseRetry;
+  String get feedbackSending;
+  String get feedbackSend;
 }
 
 class _AppLocalizationsDelegate

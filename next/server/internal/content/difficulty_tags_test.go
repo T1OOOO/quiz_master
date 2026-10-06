@@ -162,7 +162,7 @@ func TestLoadTaxonomyRealFixtureHashAndInventory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if taxonomy.ID == "" || taxonomy.SHA256 == "" || len(taxonomy.Tags) != 423 {
+	if taxonomy.ID != "qm-tags-v1" || taxonomy.SHA256 != "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151" || len(taxonomy.Tags) != 425 {
 		t.Fatalf("fixture identity/tags = %q/%q/%d", taxonomy.ID, taxonomy.SHA256, len(taxonomy.Tags))
 	}
 }

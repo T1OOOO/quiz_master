@@ -79,11 +79,50 @@ class QuizApiClient {
        );
   final Dio _dio;
   GuestSession? _session;
+  Future<GuestSession>? _pendingBootstrap;
   Dio get dio => _dio;
+
+  Future<void> submitReport(Map<String, Object> payload) async {
+    final session = await bootstrap('Guest');
+    try {
+      final response = await _dio.post<Object>(
+        '/v1/reports',
+        data: payload,
+        options: Options(
+          contentType: Headers.jsonContentType,
+          headers: {'Authorization': 'Bearer ${session.token}'},
+        ),
+      );
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        throw _failure(response.data);
+      }
+      final receipt = _map(response.data);
+      if (receipt['id'] is! String ||
+          !RegExp(r'^rep_[0-9a-f]{32}$').hasMatch(receipt['id'] as String) ||
+          !{'open', 'resolved'}.contains(receipt['status']) ||
+          receipt['created_at'] is! String) {
+        throw const FormatException('invalid feedback receipt');
+      }
+      _utcInstant(receipt['created_at']);
+    } on DioException catch (error) {
+      if (error.response?.data != null) throw _failure(error.response!.data);
+      throw const ApiClientException('network', retryable: true);
+    }
+  }
 
   /// Creates an in-memory guest session.  The bearer is deliberately not
   /// attached until this request has completed successfully.
-  Future<GuestSession> bootstrap(String displayName) async {
+  Future<GuestSession> bootstrap(String displayName) {
+    if (_session != null) return Future.value(_session!);
+    if (_pendingBootstrap != null) return _pendingBootstrap!;
+    final future = _createGuest(displayName);
+    _pendingBootstrap = future;
+    return future.whenComplete(() {
+      if (identical(_pendingBootstrap, future)) _pendingBootstrap = null;
+    });
+  }
+
+  Future<GuestSession> _createGuest(String displayName) async {
     final cleaned = displayName.trim();
     if (cleaned.isEmpty || cleaned.length > 100) {
       throw const ApiClientException('validation_failed', retryable: false);

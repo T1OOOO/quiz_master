@@ -85,7 +85,7 @@ func ValidStatus(status string) bool { return status == "open" || status == "res
 
 func bounded(value string, max int, required bool) bool {
 	n := utf8.RuneCountInString(value)
-	return utf8.ValidString(value) && n <= max && (!required || strings.TrimSpace(value) != "")
+	return utf8.ValidString(value) && !strings.ContainsRune(value, 0) && n <= max && (!required || strings.TrimSpace(value) != "")
 }
 
 // Normalize produces the digest of the effective payload, not transport JSON.

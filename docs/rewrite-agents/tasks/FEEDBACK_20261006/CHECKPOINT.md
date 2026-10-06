@@ -1,48 +1,61 @@
-# Feedback implementation checkpoint
+# Feedback implementation checkpoint — 2026-10-06
 
-Contract frozen at bc00126. Feature issue quiz_master-xas is in progress.
-Active production targets verified: next/server + next/apps/quiz_app.
+Feature issue quiz_master-xas remains in progress until release/runtime checks.
+Contract frozen at bc00126; active targets next/server + next/apps/quiz_app.
 
-Backend local RED verified before implementation: the focused report-route test
-exited1 with report status404 under granted heavy lease0b59c35e....
-Root then wrote the backend draft under granted interactive lease689504...:
-reports validation/store, PostgreSQL migration4, matching SQLite schema, API
-submission and private admin lifecycle, optional operator configuration and
-production/local wiring. Added HTTP, concurrency, reopen and integration tests.
-The route test now uses a real SQLite store fixture. gofmt and diff checks passed.
-No compiled GREEN, vet or PostgreSQL execution has occurred after these changes.
-Heavy requests were denied by RAM, then CPU_PRESSURE on the resumed turn.
-This is a development checkpoint, not acceptance or deployment.
+Implemented global RU/EN feedback button, scrollable comment form, optional PNG
+preview/attachment, three-second bounded capture, frozen sanitized screen/current
+question context, stable payload/request ID across retry and shared in-flight guest
+bootstrap. Guest feedback does not mutate the active quiz journey. Operator and
+invite screens are excluded from capture; invitation context is normalized.
 
-Root inspected the test body and route assembly under a granted complete bundle.
-The request follows the frozen valid payload and uses an authenticated fixture.
-Run37385129754 at e6914df completed with failure before cancellation was requested;
-its failure cause has not been verified. Do not treat it as accepted RED evidence.
+Private /feedback page uses a separate Dio and page-memory-only operator token.
+It supports filtered/paginated reports, context/PNG detail, resolve/reopen,
+confirmation before delete, refresh/logout, mounted/generation guards and visible
+errors. Raw credentials do not enter normal API calls, assets or feedback payloads.
 
-The user explicitly prohibited GitHub Actions because there is no budget.
-No further Actions runs, dispatches or remote build downloads are authorized.
-The workflow is removed; use locally guarded tests and builds instead.
-Git push is still required and is not permission to start paid CI.
+Backend supplies durable SQLite/PostgreSQL reports and migration 4, strict request
+validation, authenticated submission, idempotent/concurrent receipt handling and
+private operator lifecycle. NUL text is rejected; operator minimum is 32 Unicode
+characters with separate 4096-byte maximum and whitespace exclusion.
 
-Flutter author added test/feedback_test.dart using existing QuizApp; it has not
-run yet. Author corrected the explicit Material import and isolated catalog
-provider override. No client feature yet.
-Independent reviewer read the full contract under granted lease cdbb167c... and
-returned ambiguities. Root resolved them in CLARIFICATIONS.md and sent both authors
-the exact decisions. Implementation review remains pending.
-QUEUED confers no permission; local heavy checks require a real guarded grant.
-Preserve all foreign changes.
+Verification executed on current implementation with GRANTED guarded bundles:
+- go test -p 1 ./next/server/...: PASS (all packages).
+- go vet -p 1 ./next/server/...: PASS.
+- flutter test --no-pub --concurrency=1: PASS, 101 tests.
+- flutter analyze --no-pub: PASS, no issues.
+- Dart format and gofmt: PASS; whitespace/staging checks required before commit.
 
-User authorized recovery of one stale foreign QUEUED reservation75c59.... Broker
-confirmed its owner disconnected for over17000 seconds and no operation launched;
-host-owner reconciliation released exactly that reservation at generation2.
-No process was killed and no host thresholds changed.
+The NUL environment fixture was changed to direct validation because operating
+systems reject NUL during Setenv. The current taxonomy fixture is pinned to ID
+qm-tags-v1, 425 tags and SHA256
+07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151.
+Execution caught/fixed a pre-existing private dialog-name collision and missing
+Overlay ancestor; installed Flutter Overlay.wrap preserves the router subtree.
+Feedback widget tests exercise the screenshot timeout path using the test clock,
+retry retention/idempotency, opt-out, sanitized query and operator-button hiding.
 
-Next: independently review backend draft, reject NUL in bounded SQL strings,
-check operator credential character/byte minimum, run guarded Go tests/vet and
-isolated PostgreSQL tests; execute Flutter RED then implement the global form,
-capture/context/session handling and private administration. Feature remains open.
+Independent source review is documented in REVIEW_20261006.md. This was another
+Codex agent, not verified cross-provider acceptance. PostgreSQL integration-tag
+execution, release Web/Android builds, actual browser screenshot/admin smoke and
+production deployment are NOT_RUN. The ordinary Go suite exercises real SQLite
+HTTP/store persistence and concurrency; it does not certify PostgreSQL execution.
+No running Flutter target was available for hot reload/restart.
 
-Difficulty/tag task remains2957/4078 accepted, remaining1121; feedback does not
-apply unpublished annotations or alter question content. All remaining issues
-remain open. Source facts have not been certified by metadata acceptance.
+User prohibited GitHub Actions due to budget. No new runs, dispatches, downloads
+or paid infrastructure were used. The workflow remains removed. Git push is
+required and does not authorize paid CI. User explicitly allowed lightweight
+reads/edits without Hub admission in this task; heavy operations retained real
+admission, periodic renewal and release after process exit.
+
+Earlier local RED report route returned 404 before implementation. User-authorized
+recovery released exactly one stale disconnected board_game_platform QUEUED
+reservation. No processes were killed and no host thresholds were changed.
+
+Next: guarded release builds and browser/admin smoke; provision the server-only
+operator token for moderation, rehearse persistence/rollback and publish to the
+existing production target. Keep quiz_master-xas open until these gates pass.
+
+Difficulty/tag task remains 2957/4078 accepted, remaining 1121. Feedback does not
+apply unpublished annotations or alter question content. Those issues stay open;
+metadata acceptance is not factual certification. Preserve unrelated dirty work.

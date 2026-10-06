@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+	"unicode"
+	"unicode/utf8"
 )
 
 type Config struct {
@@ -23,8 +25,8 @@ func FromEnv() (Config, error) {
 	c := Config{ListenAddr: os.Getenv("QM_LISTEN_ADDR"), DatabaseURL: os.Getenv("QM_DATABASE_URL"), ShutdownTimeout: 10 * time.Second, DatabaseStartupTimeout: 15 * time.Second, ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 60 * time.Second}
 	c.ContentBundlePath = os.Getenv("QM_CONTENT_BUNDLE_PATH")
 	c.FeedbackAdminToken = os.Getenv("QM_FEEDBACK_ADMIN_TOKEN")
-	if c.FeedbackAdminToken != "" && (len(c.FeedbackAdminToken) < 32 || len(c.FeedbackAdminToken) > 4096 || strings.ContainsAny(c.FeedbackAdminToken, " \t\r\n")) {
-		return Config{}, fmt.Errorf("QM_FEEDBACK_ADMIN_TOKEN must be 32..4096 characters without whitespace")
+	if !validFeedbackToken(c.FeedbackAdminToken) {
+		return Config{}, fmt.Errorf("QM_FEEDBACK_ADMIN_TOKEN requires at least 32 characters, at most 4096 bytes, and no whitespace or NUL")
 	}
 	c.ContentManifestPath = os.Getenv("QM_CONTENT_MANIFEST_PATH")
 	c.ContentTaxonomyPath = os.Getenv("QM_CONTENT_TAXONOMY_PATH")
@@ -104,4 +106,9 @@ func readDuration(name string, target *time.Duration) error {
 		*target = value
 	}
 	return nil
+}
+
+// Empty disables moderation. Validate raw configuration without echoing secrets.
+func validFeedbackToken(token string) bool {
+	return token == "" || (utf8.ValidString(token) && utf8.RuneCountInString(token) >= 32 && len(token) <= 4096 && strings.IndexFunc(token, unicode.IsSpace) < 0 && !strings.ContainsRune(token, 0))
 }

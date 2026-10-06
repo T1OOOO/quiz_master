@@ -1,6 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures, deprecated_member_use
 
 import 'dart:async';
+import 'dart:ui' as ui;
 import 'dart:convert';
 import 'dart:ui' show PointerDeviceKind;
 import 'dart:math';
@@ -8,6 +9,8 @@ import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +27,8 @@ part 'journey_pages.dart';
 part 'discovery.dart';
 part 'source_style.dart';
 part 'study_pages.dart';
+part 'feedback.dart';
+part 'feedback_admin.dart';
 
 void main() => runApp(
   const ProviderScope(
@@ -81,6 +86,12 @@ class _QuizAppState extends ConsumerState<QuizApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       routerConfig: _router,
+      builder: (context, child) => Overlay.wrap(
+        child: _FeedbackOverlay(
+          router: _router,
+          child: child ?? const SizedBox(),
+        ),
+      ),
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
           ...const MaterialScrollBehavior().dragDevices,
@@ -142,6 +153,7 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
     ),
     GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
     GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
+    GoRoute(path: '/feedback', builder: (_, _) => const FeedbackAdminPage()),
     GoRoute(
       path: '/join/:inviteToken',
       builder: (_, state) =>
@@ -159,6 +171,11 @@ class AppScaffold extends ConsumerWidget {
     appBar: AppBar(
       title: Text(title),
       actions: [
+        IconButton(
+          tooltip: AppLocalizations.of(context)!.feedbackReports,
+          onPressed: () => context.go('/feedback'),
+          icon: const Icon(Icons.feedback_outlined),
+        ),
         IconButton(
           tooltip: AppLocalizations.of(context)!.english,
           onPressed: () =>

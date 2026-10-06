@@ -51,7 +51,7 @@ func registerReportRoutes(mux *http.ServeMux, auth TokenAuthenticator, cfg Feedb
 	admin := func(next http.HandlerFunc) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Cache-Control", "private, no-store")
-			if len(cfg.AdminToken) < 32 {
+			if !utf8.ValidString(cfg.AdminToken) || utf8.RuneCountInString(cfg.AdminToken) < 32 {
 				writeReportFailure(w, http.StatusServiceUnavailable, "feedback_admin_disabled", "feedback administration is disabled", false)
 				return
 			}

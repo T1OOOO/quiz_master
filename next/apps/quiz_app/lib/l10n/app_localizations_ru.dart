@@ -253,4 +253,106 @@ class AppLocalizationsRu extends AppLocalizations {
   String studyScore(int correct, int total) {
     return '$correct из $total';
   }
+
+  @override
+  String get feedbackDeleteReport => "Удалить отзыв?";
+
+  @override
+  String get feedbackCancel => "Отмена";
+
+  @override
+  String get feedbackDelete => "Удалить";
+
+  @override
+  String get feedbackReport => "Отзыв";
+
+  @override
+  String get feedbackScreenshotUnavailable => "Снимок недоступен";
+
+  @override
+  String get feedbackClose => "Закрыть";
+
+  @override
+  String get feedbackAllQuizzes => "Все викторины";
+
+  @override
+  String get feedbackReports => "Отзывы";
+
+  @override
+  String get feedbackRefresh => "Обновить";
+
+  @override
+  String get feedbackLogout => "Выйти";
+
+  @override
+  String get feedbackOperatorToken => "Токен оператора";
+
+  @override
+  String get feedbackSignIn => "Войти";
+
+  @override
+  String get feedbackOpen => "Открытые";
+
+  @override
+  String get feedbackResolved => "Решённые";
+
+  @override
+  String get feedbackAll => "Все";
+
+  @override
+  String get feedbackOperationFailedCheckTheTokenAndRetry =>
+      "Операция не выполнена. Проверьте токен и повторите.";
+
+  @override
+  String get feedbackNoReports => "Отзывов пока нет";
+
+  @override
+  String get feedbackResolve => "Решено";
+
+  @override
+  String get feedbackReopen => "Открыть снова";
+
+  @override
+  String get feedbackPrevious => "Назад";
+
+  @override
+  String get feedbackNext => "Далее";
+
+  @override
+  String get feedbackSendFeedback => "Отправить отзыв";
+
+  @override
+  String get feedbackThankYouForYourFeedback => "Спасибо за отзыв";
+
+  @override
+  String get feedbackFeedback => "Обратная связь";
+
+  @override
+  String get feedbackApplicationProblem => "Проблема приложения";
+
+  @override
+  String get feedbackQuestionProblem => "Проблема вопроса";
+
+  @override
+  String get feedbackSuggestion => "Предложение";
+
+  @override
+  String get feedbackComment => "Комментарий";
+
+  @override
+  String get feedbackAttachScreenshot => "Прикрепить снимок экрана";
+
+  @override
+  String get feedbackScreenshotUnavailableYouCanSendAComment =>
+      "Снимок недоступен. Можно отправить комментарий.";
+
+  @override
+  String get feedbackCouldNotSendYourTextIsSavedPleaseRetry =>
+      "Не удалось отправить. Текст сохранён — попробуйте ещё раз.";
+
+  @override
+  String get feedbackSending => "Отправка…";
+
+  @override
+  String get feedbackSend => "Отправить";
 }
