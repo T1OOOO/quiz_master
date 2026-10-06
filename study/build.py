@@ -157,11 +157,20 @@ def outputs(modules, include_flutter=False):
         pack = {"id": f"study-{m['id']}", "title": m["title"], "description": m["description"], "category": m["category"], "questions": module["questions"]}
         result[ROOT / "site" / "quiz-packs" / f"{m['id']}.json"] = json.dumps(pack, ensure_ascii=False, indent=2) + "\n"
     if include_flutter:
+        catalog = read_json(ROOT.parent / "next/apps/quiz_app/assets/catalog.json")
+        native_quiz_ids = {quiz["quiz_id"] for quiz in catalog}
         native_modules = []
         for module in modules:
             metadata = module["metadata"]
             require(metadata["status"] == "accepted", f"{metadata['id']}: Flutter export requires accepted editorial status")
             native = {k: metadata[k] for k in ("id", "title", "description", "category", "reading_minutes_estimate", "objectives", "source_quiz_ids")}
+            # Legacy source IDs remain valid for the standalone reader; Flutter
+            # routes use canonical IDs. Reject missing targets before export.
+            native["source_quiz_ids"] = []
+            for legacy_id in metadata["source_quiz_ids"]:
+                quiz_id = legacy_id if legacy_id in native_quiz_ids else legacy_id.replace("_", "-")
+                require(quiz_id in native_quiz_ids, f"{metadata['id']}: missing Flutter quiz reference {legacy_id}")
+                native["source_quiz_ids"].append(quiz_id)
             native["article_markdown"] = module["article_markdown"].replace("../../assets/", "resource:assets/study/")
             native["questions"] = module["questions"]
             native["sources"] = [{k: s[k] for k in ("id", "title", "url")} for s in metadata["source_catalog"]]

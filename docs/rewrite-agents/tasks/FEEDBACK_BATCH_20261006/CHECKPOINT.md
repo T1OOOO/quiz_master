@@ -40,6 +40,17 @@ lightweight reads/edits only. Own queued lease withdrawn before ending the turn;
 when continuing. No background verification process was started.
 Production stays on quiz-2026.10.06-feedback-e0f89cf and all real reports stay open.
 
+Resume follow-up: audited all 126 client catalog entries (3958 questions) against
+the six Study modules. Found four legacy underscore IDs used by each of the two
+nature modules; Flutter routes require their existing hyphenated canonical IDs.
+Corrected the client export and study/build.py export mapping, with a missing-target
+check. Legacy module metadata stays unchanged for standalone-reader validation.
+ARTICLE_COVERAGE_RU.md now lists all packs: nine have thematic links, 117 do not.
+This measures declared links only, not question-by-question answer coverage.
+Lightweight JSON inspection confirmed zero unknown client references after editing;
+generator parity and Flutter runtime verification remain pending. The resumed
+standard lease again stayed QUEUED COMMIT_HEADROOM; no heavy process was launched.
+
 Next: get GRANTED guarded verification bundle, run Flutter unit/widget tests and
 analyzer, repair evidence-backed failures, build Web, use map in actual browser
 at 361x682 and desktop: tap non-training country, selected paint/name, pan/zoom,
