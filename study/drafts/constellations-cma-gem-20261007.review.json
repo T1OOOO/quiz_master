@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/constellations-cma-gem-20261007.json",
+  "sha256": "FF384275A9C127E340432987F6A95B97C1CD937E5B873BECF57CBDFFA41269C4",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-67e13b7da3d74945a6b06be90cb471cd",
+  "hub_evidence_message": 15624,
+  "articles_reviewed": 2,
+  "target_ids": [
+    "cma",
+    "gem"
+  ],
+  "unicode_letter_word_counts": [
+    170,
+    173
+  ],
+  "word_count_rule": "Unicode letter tokens; numbers excluded; hyphenated words joined.",
+  "sources_per_article": [
+    3,
+    3
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    "https://iauarchive.eso.org/static/public/constellations/pdf/CMA.pdf",
+    "https://chandra.si.edu/photo/2000/0065/",
+    "https://iauarchive.eso.org/public/themes/constellations/",
+    "https://iauarchive.eso.org/static/public/constellations/pdf/GEM.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-35/"
+  ],
+  "corrections": [
+    "Corrected Russian title grammar to double system of Sirius.",
+    "Replaced generic diffraction claim with Chandra grating support pattern; qualified Sirius A detector source as possible UV leak.",
+    "Rewrote both articles with substantive source facts rather than repeated map instructions; added optical contrast, temperature, NGC 2168 and observing differences.",
+    "Qualified common cluster birth and potential Galactic tidal dispersal; removed unsupported globular-cluster comparison."
+  ],
+  "lead_verification": "Read initial and final bodies, source supports and exact metadata; opened Chandra Sirius/NASA M35/IAU CMA and GEM endpoints including chart screenshots; verified 170/173 Unicode letter words, final SHA and single EOF LF. Independent reviewer re-read final bytes and opened exact primary sources.",
+  "limitations": [
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No canonical import/export parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
