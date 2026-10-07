@@ -1,0 +1,48 @@
+{
+  "reviewer": "geography-factcheck-fresh; openai-codex/gpt-6.1-sol; session-15e3c7deff234331a5323333c8b7b0bc",
+  "author": "root; session-5935a39af6104fcfb3bf6353e4d807ae",
+  "task_id": "task-60cd936ef7a841b49d5106be80d45c91",
+  "scope": "Native editorial source review only. This record does not grant a different-provider, technical, export, release, or publication gate.",
+  "word_count_rule": "Whitespace-delimited body_ru tokens, including Markdown heading markers.",
+  "draft": {
+    "path": "study/question_articles/drafts/country-france-20261007.json",
+    "file_sha256": "bbf8d51cefee3ee70770c9e6115d95fe1de6cde446ad69d96dd6683f734b7a82",
+    "schema_version": "qm-question-articles/v1",
+    "article": {
+      "article_id": "quizipedia:country:FR",
+      "verdict": "accept",
+      "article_sha256": "f3e6a5028f21cbac084a89c066f1a553f7fb1dd33f70c3f104d5b2f5dc0895d1",
+      "word_count": 185,
+      "note": "Факты и формулировки поддержаны первичными страницами Елисейского дворца: порядок читается от древка как синий, белый, красный; происхождение цветов не смешано с установленным в 1794 году конкретным порядком. Формулировка осторожно отделяет легенды о выборе сочетания от подтверждённых решений.",
+      "target_binding": {
+        "kind": "quizipedia",
+        "domain": "country",
+        "target_id": "FR",
+        "outcome": "verified in current Quizipedia country targets"
+      },
+      "checked_sources": [
+        {
+          "url": "https://www.elysee.fr/la-presidence/le-drapeau-francais",
+          "outcome": "opened_verified",
+          "evidence": "Élysée identifies white with the king and blue/red with Paris; describes the tricolour cockade as a patriotic symbol; records the National Convention's 15 February 1794 decree: blue attached to the staff, white in the middle, red flying outward; and qualifies the legend that David chose the order."
+        },
+        {
+          "url": "https://www.elysee.fr/la-presidence/les-symboles-de-la-republique-francaise-expliques-pour-les-enfants",
+          "outcome": "opened_verified",
+          "evidence": "Élysée's Republic-symbols page independently states that white was the king's colour, blue and red were Paris's colours, and their alliance was conceived during the 1789 Revolution."
+        }
+      ]
+    }
+  },
+  "structural_checks": {
+    "tag_ids": "country:fr, domain:geography and topic:flag all resolve in metadata/tags.v1.json.",
+    "target_refs": "The sole country/FR target resolves in the current Quizipedia catalog.",
+    "duplicate_binding": "No other question-article draft binds quizipedia:country:FR.",
+    "source_count": "Two HTTPS source records, both opened.",
+    "word_bound": "185 is within the required 100-220 range."
+  },
+  "remaining_risks": [
+    "Reviewer and author share the declared openai-codex provider class, so this is not a different-provider review gate.",
+    "No test, build, browser automation, export, or publication action was run."
+  ]
+}
