@@ -1,0 +1,62 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/harry-potter-rest-20261007.json",
+  "sha256": "C859D21F25B05A79B41BFE5F6E90B2C68EF60C590C317752135659F2A11C9C53",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-b6f756c63f7442d7ae21ed936962b598",
+  "articles_reviewed": 7,
+  "exact_question_revisions": 7,
+  "sources_per_article": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    2
+  ],
+  "tags_valid": true,
+  "evidence": [
+    {
+      "kind": "blind_solve",
+      "result": "Solved before reading draft: option positions 002=2, 005=3, 006=4, 007=1, 008=2, 009=4, 010=3; all match the final explanatory treatment."
+    },
+    {
+      "kind": "source_open",
+      "result": "Directly opened cited official harrypotter.com pages: Marauder’s Map writing and Fact File; Polyjuice Potion Fact File and Rowling writing; Room of Requirement Fact File and feature; Everyone Connected to Voldemort’s Horcruxes; History of Voldemort’s Horcruxes. These support map/invisibility with Room exception, Moste Potente Potions and human-only Polyjuice, Room seventh floor/three passes, Crabbe-Fiendfyre diadem, and Neville-Nagini."
+    },
+    {
+      "kind": "static_audit",
+      "result": "Schema qm-question-articles/v1; 7 exact expected IDs, one question_ref each, all revision_sha256 values equal current canonical questions, status=draft, 2+ official source links each, 2026-10-07 access dates, and all tag_ids exist in qm-tags-v1."
+    },
+    {
+      "kind": "editorial_recheck",
+      "result": "Q009 initially measured 138 Russian words and was returned for rework. Final checkpoint is 150 words, explicitly explains Ron/sword, Hermione/basilisk fang, and Harry/basilisk fang; Q010 chronology now correctly says Harry was an unwitting Horcrux rather than becoming one later."
+    }
+  ],
+  "verdicts": {
+    "theme-hp-002": "ACCEPT_DRAFT",
+    "theme-hp-005": "ACCEPT_DRAFT",
+    "theme-hp-006": "ACCEPT_DRAFT",
+    "theme-hp-007": "ACCEPT_DRAFT",
+    "theme-hp-008": "ACCEPT_DRAFT",
+    "theme-hp-009": "ACCEPT_DRAFT",
+    "theme-hp-010": "ACCEPT_DRAFT"
+  },
+  "corrections": [
+    "Added explicit Ron/sword and Hermione/basilisk-fang distractor explanations in Q009.",
+    "Corrected Harry Horcrux chronology in Q010.",
+    "Expanded Q009 with source-supported Crabbe loss-of-control and death."
+  ],
+  "lead_verification": "Lead read all seven final articles and actual options, confirmed canonical revisions and source links against opened official pages, checked final raw SHA and metadata. Actual helper model labels are self-reported; role routing is not verified runtime identity.",
+  "limitations": [
+    "No tests, build, import, export, publication, or production runtime action was run; this is a native editorial review and does not satisfy an independent cross-provider gate."
+  ],
+  "publication_gate": "PENDING"
+}
