@@ -1,0 +1,47 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/constellations-tau-peg-20261007.json",
+  "sha256": "7959C66A2F26BD38D2110DDF048CBCBC855962525A9613C67DE5DF1BB66AC492",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-6f3fd2bc1a8b43bbbd62fe7b0dd6eac0",
+  "hub_evidence_message": 15278,
+  "articles_reviewed": 2,
+  "target_ids": [
+    "tau",
+    "peg"
+  ],
+  "unicode_letter_word_counts": [
+    160,
+    171
+  ],
+  "word_count_rule": "Unicode letter tokens; numeric tokens excluded; hyphenated words joined.",
+  "sources_per_article": [
+    3,
+    3
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    "https://iauarchive.eso.org/static/public/constellations/pdf/TAU.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-45/",
+    "https://iauarchive.eso.org/public/themes/constellations/",
+    "https://iauarchive.eso.org/static/public/constellations/pdf/PEG.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-15/"
+  ],
+  "corrections": [
+    "Lead replaced repetitive map-navigation prose with Merope dust radiation-pressure explanation and optical effects of the telescope.",
+    "Added sourced M15 age, approximate distance, star color/temperature, Pease 1 and qualified binocular viewing.",
+    "Added IAU formal-region/nonphysical-line source; excluded unconfirmed black-hole assertion."
+  ],
+  "lead_verification": "Read all initial and final article text; opened both NASA primary pages and IAU TAU/PEG PDF charts including screenshots; checked exact catalog targets/existing tags/status, counts, raw SHA and single EOF LF.",
+  "limitations": [
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No canonical import, export/parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
