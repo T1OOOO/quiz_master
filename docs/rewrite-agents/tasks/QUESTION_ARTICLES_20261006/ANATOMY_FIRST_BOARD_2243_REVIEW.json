@@ -1,0 +1,155 @@
+{
+  "reviewer": "geography-factcheck-fresh; openai-codex/gpt-6.1-sol; session-15e3c7deff234331a5323333c8b7b0bc",
+  "author": "root; session-5935a39af6104fcfb3bf6353e4d807ae",
+  "task_id": "task-0a679c3f08324bc492435e13b2a33d15",
+  "scope": "Independent factual, figure-reference and stated-rights audit of research only. It does not approve an image asset, image download, runtime visibility, target mapping, hotspot, or product reuse.",
+  "input": {
+    "path": "docs/rewrite-agents/tasks/QUESTION_ARTICLES_20261006/ANATOMY_NEW_TARGETS_2144.json",
+    "sha256": "94e37c29c4c0c33f0c438b69b53080004fdcf3a86736924413fcff5f82879a2b",
+    "schema_version": "qm-anatomy-first-board-research/v1"
+  },
+  "targets": [
+    {
+      "existing_target_id": "heart",
+      "verdict": "revise",
+      "facts_verdict": "accept",
+      "fact_evidence": [
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology/pages/19-1-heart-anatomy",
+          "outcome": "opened_verified",
+          "evidence": "OpenStax places the heart medially between the lungs in the mediastinum, within the pericardial cavity, and names the pericardium. It gives Figure 19.2 the exact title Position of the Heart in the Thorax."
+        },
+        {
+          "url": "https://www.nhlbi.nih.gov/health/heart/anatomy",
+          "outcome": "opened_verified",
+          "evidence": "NHLBI confirms four chambers, atria receiving blood, and ventricles pumping blood to the lungs and the body."
+        }
+      ],
+      "figure_rights_evidence": {
+        "figure_reference": "OpenStax Figure 19.2, Position of the Heart in the Thorax",
+        "general_license_evidence": "The fetched OpenStax page footer says its textbooks are CC BY-NC-SA 4.0 except where otherwise noted. The opened CC BY-NC-SA 4.0 deed states attribution, noncommercial, ShareAlike and no-additional-restrictions terms, and warns that other rights may still limit use.",
+        "unverified": [
+          "No pixel-level inspection of Figure 19.2 occurred.",
+          "The page-level textbook notice is not figure-specific proof that this figure has no separate credit or exception.",
+          "No runtime asset, visible placement, target mapping or hotspot was inspected."
+        ]
+      },
+      "concrete_fix": "Before any asset decision, inspect the actual figure and its credit/exception line, determine the product's intended use against the license conditions, record complete attribution and verify the rendered board's heart visibility and hotspot separately."
+    },
+    {
+      "existing_target_id": "lungs",
+      "verdict": "revise",
+      "facts_verdict": "accept",
+      "fact_evidence": [
+        {
+          "url": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system",
+          "outcome": "opened_verified",
+          "evidence": "NHLBI states that the right lung has three lobes, the left has two and is smaller to accommodate the heart; it identifies alveoli as the gas-exchange site."
+        },
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+          "outcome": "opened_verified",
+          "evidence": "OpenStax confirms paired lungs linked to the trachea by right and left bronchi, pleural enclosure, gas exchange, and Figure 22.13 with exact title Gross Anatomy of the Lungs."
+        }
+      ],
+      "figure_rights_evidence": {
+        "figure_reference": "OpenStax Figure 22.13, Gross Anatomy of the Lungs",
+        "general_license_evidence": "The fetched OpenStax page states the same textbook-level CC BY-NC-SA 4.0 notice, subject to exceptions.",
+        "unverified": [
+          "No pixel-level check established that every required lobe/label is visible and legible.",
+          "No figure-specific credit or exception was verified.",
+          "No runtime asset, visible placement, target mapping or hotspot was inspected."
+        ]
+      },
+      "concrete_fix": "Verify the image and figure-specific credit before reuse; then verify that right/left lungs and requested labels are actually visible in the selected board asset."
+    },
+    {
+      "existing_target_id": "liver",
+      "verdict": "revise",
+      "facts_verdict": "accept",
+      "fact_evidence": [
+        {
+          "url": "https://www.niddk.nih.gov/health-information/liver-disease",
+          "outcome": "opened_verified",
+          "evidence": "NIDDK states that the liver digests food and processes and distributes nutrients."
+        },
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-1-overview-of-the-digestive-system",
+          "outcome": "opened_verified",
+          "evidence": "OpenStax identifies liver, gallbladder and pancreas as accessory digestive organs releasing secretions including bile, and gives Figure 23.2 the exact title Components of the Digestive System."
+        }
+      ],
+      "figure_rights_evidence": {
+        "figure_reference": "OpenStax Figure 23.2, Components of the Digestive System",
+        "general_license_evidence": "The fetched OpenStax page states a textbook-level CC BY-NC-SA 4.0 notice, subject to exceptions.",
+        "unverified": [
+          "Text confirms the figure number and title but not pixel-level presence, legibility or position of the liver.",
+          "No figure-specific credit or exception was verified.",
+          "No runtime asset, visible placement, target mapping or hotspot was inspected."
+        ]
+      },
+      "concrete_fix": "Inspect the actual Figure 23.2 before selecting it; record its specific credit and only then test whether the liver is distinguishable on the intended board."
+    },
+    {
+      "existing_target_id": "kidneys",
+      "verdict": "revise",
+      "facts_verdict": "accept",
+      "fact_evidence": [
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+          "outcome": "opened_verified",
+          "evidence": "OpenStax places kidneys on either side of the spine retroperitoneally and says the right is lower due to the liver; it distinguishes cortex and medulla, gives Figure 25.8 exact title Left Kidney, and describes nephrons as functional units that cleanse blood."
+        },
+        {
+          "url": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+          "outcome": "opened_verified",
+          "evidence": "NIDDK confirms paired kidneys by the spine, blood filtration and waste/excess-water removal to form urine, ureters to the bladder, and nephron/glomerular filtering."
+        },
+        {
+          "url": "https://www.niddk.nih.gov/news/media-library/17561",
+          "outcome": "opened_verified",
+          "evidence": "NIDDK identifies the asset title Kidney cross section with the functions labeled, describes it as a black-and-white labelled kidney cross section, and asks users to credit NIDDK, NIH."
+        }
+      ],
+      "figure_rights_evidence": {
+        "openstax_figure_reference": "OpenStax Figure 25.8, Left Kidney",
+        "openstax_general_license_evidence": "The fetched OpenStax page states a textbook-level CC BY-NC-SA 4.0 notice, subject to exceptions.",
+        "niddk_alternative": "The opened NIDDK media page supplies a credit instruction but does not state a reuse license in the fetched content.",
+        "unverified": [
+          "No pixel-level figure inspection occurred.",
+          "No figure-specific OpenStax credit or exception was verified.",
+          "The NIDDK credit instruction alone is not a stated reuse permission.",
+          "No runtime asset, visible placement, target mapping or hotspot was inspected."
+        ]
+      },
+      "concrete_fix": "Do not use the NIDDK alternative based on its credit line alone. For either candidate, confirm figure-specific rights and actual board visibility before implementation."
+    }
+  ],
+  "inventory_and_runtime_limits": {
+    "research_identifiers": ["heart", "lungs", "liver", "kidneys"],
+    "finding": "The input labels these as existing research targets, but this review did not treat that assertion or any alt text as proof of runtime target inventory, pixel visibility, or a correct click region.",
+    "not_verified": ["catalog/runtime target membership", "asset presence in the app", "image pixels", "hotspot coordinates", "target-to-hotspot matching", "product distribution classification"]
+  },
+  "source_coverage": {
+    "opened_pages": [
+      "OpenStax Heart Anatomy",
+      "NHLBI Heart Anatomy",
+      "NHLBI Respiratory System",
+      "OpenStax The Lungs",
+      "NIDDK Liver Disease",
+      "OpenStax Digestive System",
+      "OpenStax Gross Anatomy of the Kidney",
+      "NIDDK Your Kidneys & How They Work",
+      "NIDDK Kidney cross section media asset",
+      "Creative Commons BY-NC-SA 4.0 deed"
+    ],
+    "result": "All cited educational and stated-rights pages were opened. Factual goals and cited figure titles/numbers are supported; asset-specific clearance and runtime conditions are not."
+  },
+  "remaining_risks": [
+    "All four targets are REVISE for asset integration until figure-specific rights and actual asset/runtime visibility are verified.",
+    "No legal conclusion is offered; the report states only the opened page-level terms and missing evidence.",
+    "The interactive lease request returned no grant; the task's explicit lightweight read/edit exception was used.",
+    "No image download, browser automation, test, build, export, publication, or production acceptance was performed.",
+    "Reviewer and author share the declared openai-codex provider class, so this is not a different-provider gate."
+  ]
+}

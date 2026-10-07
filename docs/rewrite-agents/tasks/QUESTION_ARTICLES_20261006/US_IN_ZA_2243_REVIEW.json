@@ -1,0 +1,135 @@
+{
+  "task_id": "task-c7b35f8f8d53433ab3a2373961788012",
+  "review_kind": "native editorial fact and binding review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-15e3c7deff234331a5323333c8b7b0bc",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/country-flags-us-in-za-20261008.json",
+    "sha256": "f885ba02754114a7f2d39cb347a16adccfc65ec109cbad3862d98c0f7a3668a4",
+    "state": "frozen original citation set"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": {
+      "quizipedia:country:US": "catalog map_target_ids contains US",
+      "quizipedia:country:IN": "catalog map_target_ids contains IN",
+      "quizipedia:country:ZA": "catalog map_target_ids contains ZA"
+    },
+    "tag_ids": "country:us, country:in, country:za, domain:geography, and topic:flag exist in metadata/tags.v1.json.",
+    "question_refs": "All three arrays are intentionally empty; no nonexistent binding was asserted.",
+    "duplicate_draft_targets": "A scan of study/question_articles/drafts for quizipedia:country:US|IN|ZA found only this input file.",
+    "word_limit": "All bodies meet the packet's 100–220 whitespace-word range."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:country:US",
+      "article_sha256": "9afbb4d16dfc687c68fb721498e9f1146bc38661886483c146b9f79a46ff2a4d",
+      "word_count": 168,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.archives.gov/federal-register/codification/executive-order/10834.html",
+          "opened": true,
+          "finding": "Executive Order 10834 section 1 prescribes thirteen horizontal alternating red and white stripes and white stars in a blue union; section 31 makes the prescribed flag official on 4 July 1960."
+        },
+        {
+          "url": "https://www.archives.gov/files/education/pdf/the-constitution-rules-k-2-teacher-guide.pdf",
+          "opened": true,
+          "finding": "National Archives teacher guide, PDF page 5, states that 13 red-and-white stripes represent the original 13 colonies and 50 white stars represent the 50 states."
+        }
+      ],
+      "binding_and_pedagogy": "The US target and all three supplied tags resolve. The recognition sequence and the two-number distinction are clear; no unsupported color symbolism is introduced.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:IN",
+      "article_sha256": "8040ce1b3a34b7bbc90ba9c7ff99bdb3e601c74515408ead619985b8d9382ca3",
+      "word_count": 157,
+      "verdict": "REVISE",
+      "source_evidence": [
+        {
+          "url": "https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=1749614&lang=2&reg=48",
+          "opened": false,
+          "finding": "Independent web opening timed out (HTTP 400); the text-fetch service was refused by robots policy. Its claimed support could not be verified."
+        },
+        {
+          "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2022/jul/doc202272975301.pdf",
+          "opened": true,
+          "finding": "Ministry of Culture factsheet lines 4–5 supports adoption of the current form on 22 July 1947; lines 27–31 supports the July 1947 replacement of the spinning wheel by the Dharma Chakra. It does not state equal bands, 24 spokes, or the Chakra diameter relative to the white band."
+        }
+      ],
+      "binding_and_pedagogy": "The IN target and all three supplied tags resolve. The historical distinction between the spinning wheel and Dharma Chakra is pedagogically useful.",
+      "required_correction": "For this frozen citation set, either remove/qualify the claims about equal tricolour bands, 24 spokes, and especially the approximate Chakra diameter, or replace the inaccessible PIB HTML citation with a directly opened official source that explicitly supports them. Do not infer the diameter from the historical PDF."
+    },
+    {
+      "id": "quizipedia:country:ZA",
+      "article_sha256": "d3f4bb6945fecf227130a9feb6f2c839cdb7524af8042411fb695606a312e93e",
+      "word_count": 176,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.gov.za/about-sa/national-flag-0",
+          "opened": true,
+          "finding": "The Government of South Africa page identifies Fred Brownell, first use on 27 April 1994, the possible convergence reading of the Y, and says no universal symbolism should be attached to individual colors or their combinations."
+        },
+        {
+          "url": "https://www.gov.za/documents/constitution/constitution-republic-south-africa-1996-schedule-1-national-flag-07-feb-1997",
+          "opened": true,
+          "finding": "Constitution Schedule 1 specifies the 3:2 ratio, six colors, a green one-fifth-width Y, its convergence from the hoist, the black triangle with gold edging, white edging, and red upper/blue lower fields."
+        }
+      ],
+      "binding_and_pedagogy": "The ZA target and all three supplied tags resolve. Its description accurately prioritizes the Y trajectory and preserves the source's symbolism qualification.",
+      "required_correction": null
+    }
+  ],
+  "recheck_candidate_evidence": {
+    "url": "https://www.eoikhartoum.gov.in/national-symbols.php",
+    "opened": true,
+    "authority": "Embassy of India, Khartoum (official Government of India mission site)",
+    "finding": "Lines 148 and 151 explicitly state equal saffron/white/green bands, a navy-blue Chakra in the white band, 24 spokes, diameter approximately equal to the width of the white band, and adoption on 22 July 1947. This is not a source link in the frozen input, so it cannot change the original IN verdict; it is sufficient evidence for a source-replacement recheck if the draft is revised."
+  },
+  "final_recheck": {
+    "input_sha256": "e829d53029c90cfb4aef77a981a65e9e80704aa2c57eefccb7d7e0614ca5c896",
+    "change_checked": "Only IN source_links[0] changed from the inaccessible PIB HTML citation to the Embassy of India, Khartoum citation. Body, target_refs, tag_ids, US, and ZA remain as in the original input.",
+    "embassy_source_reopened": true,
+    "per_article_verdicts": {
+      "quizipedia:country:US": "ACCEPT",
+      "quizipedia:country:IN": "REVISE",
+      "quizipedia:country:ZA": "ACCEPT"
+    },
+    "india_article_sha256": "50a7badfb5177536e44973bd5089b5846001517a06eaaf8993f120470d7dfde9",
+    "india_word_count": 157,
+    "india_resolved_claims": "The replacement, reopened after the file change, directly supports equal band order, a navy-blue Chakra in the white band, 24 spokes, the approximate diameter statement, and adoption on 22 July 1947. The existing PIB PDF continues to support the spinning-wheel-to-Dharma-Chakra history.",
+    "india_remaining_required_correction": "The unchanged sentence that adoption occurred before independence on 15 August still has no direct support in either final cited source: the Embassy page states 22 July 1947 but not the 15 August independence date, and the PIB PDF likewise does not state it. Remove that comparison or add a directly opened official source that explicitly gives the 15 August independence date before accepting IN."
+  },
+  "overall_original_verdict": "REVISE: US and ZA are source-supported; IN has an inaccessible cited HTML source and the accessible cited PDF does not support all present geometry claims.",
+  "final_narrow_clause_recheck": {
+    "input_sha256": "5d3e50c39f6bb26fee5e51e6814d62134d29a2e456b34ff503aac82d5bc9a9d0",
+    "compared_with": "e829d53029c90cfb4aef77a981a65e9e80704aa2c57eefccb7d7e0614ca5c896",
+    "change_checked": "The previously unsupported clause 'до обретения независимости 15 августа' is absent. IN otherwise retains the reviewed replacement Embassy source, historical PIB PDF, target, tags, and the source-supported geometry/Chakra wording. US and ZA article hashes and source lists are unchanged.",
+    "india_article_sha256": "1fef352a02fa38e087fec852d01d578467ea947bfe67309677b5ad8f9ebe7f33",
+    "word_counts": {
+      "quizipedia:country:US": 168,
+      "quizipedia:country:IN": 152,
+      "quizipedia:country:ZA": 176
+    },
+    "per_article_verdicts": {
+      "quizipedia:country:US": "ACCEPT",
+      "quizipedia:country:IN": "ACCEPT",
+      "quizipedia:country:ZA": "ACCEPT"
+    },
+    "final_evidence": "The Embassy page was reopened after its source replacement and explicitly supports the present IN geometry, 24 spokes, approximate diameter, and 22 July adoption wording. The PIB PDF remains direct evidence for the historical replacement of the spinning wheel by the Dharma Chakra. No unsupported 15 August comparison remains."
+  },
+  "overall_final_verdict": "ACCEPT for editorial factual/source/binding review of final SHA 5d3e50c39f6bb26fee5e51e6814d62134d29a2e456b34ff503aac82d5bc9a9d0. This evidence does not represent a different-provider, technical, or publication gate.",
+  "limits": [
+    "A covering report-path lease was requested but returned queued/blank; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No production drafts, catalog, metadata, code, tests, builds, browser automation, download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and is not a different-provider or technical/publication gate."
+  ]
+}
