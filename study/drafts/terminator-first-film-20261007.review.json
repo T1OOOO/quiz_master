@@ -1,0 +1,55 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/terminator-first-film-20261007.json",
+  "sha256": "0BBAF761217627377553194BE00E1F4F35D748F839E556A67A50DC9D13AC07B9",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-44b834d284014ec19d7586e0c9ee687d",
+  "hub_evidence_message": 14514,
+  "articles_reviewed": 2,
+  "exact_question_revisions": 2,
+  "question_ids": [
+    "theme-terminator-001",
+    "theme-terminator-002"
+  ],
+  "blind_solve_option_positions": [
+    2,
+    4
+  ],
+  "sources_per_article": [
+    2,
+    2
+  ],
+  "tags_valid": true,
+  "lead_final_unicode_word_counts": [
+    159,
+    157
+  ],
+  "reviewer_count_recheck": "Reviewer reread the final file, corrected Q002 count to157, and retained ACCEPT_DRAFT for both articles.",
+  "opened_sources": [
+    {
+      "url": "https://catalog.afi.com/Film/57224-THE-TERMINATOR",
+      "supports": "Synopsis places the story in Los Angeles, says Kyle protects Sarah and describes Silberman's interview."
+    },
+    {
+      "url": "https://overblack.org/script/the-terminator-1984",
+      "supports": "Original screenplay provides supplementary qualified scene context; not a source for treating unfilmed draft scenes as released-film facts."
+    }
+  ],
+  "corrections": [
+    "Lead replaced AFI geographic-metadata reference with explicit synopsis support for story setting.",
+    "Existing country:us tag added to geographic article."
+  ],
+  "lead_verification": "Lead read both final bodies and all actual options, opened both sources, checked exact revisions/tags/status/source counts and final SHA/EOF. Final word counts recomputed after source sentence shortened; initial reviewer count164 for Q002 was stale.",
+  "limitations": [
+    "Native editorial evidence does not satisfy independent-provider Hub gate.",
+    "Screenplay is mirrored by a third-party archive; draft differences excluded.",
+    "No canonical import, export/parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
