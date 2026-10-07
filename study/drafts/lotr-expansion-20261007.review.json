@@ -1,0 +1,48 @@
+{
+  "reviewed_commit": "033e45b",
+  "task_id": "task-a681544566914f4cb7ac1b51107b45cc",
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "blind_solve",
+      "result": "Candidate-only answers recorded before opening key: [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]."
+    },
+    {
+      "kind": "opened_primary_sources",
+      "result": "Opened all three ledger texts: Fellowship, Two Towers, Return of the King; excerpts support Q001-Q017 core answers. Q005/Q007/Q015 exceptions described in findings."
+    },
+    {
+      "kind": "structural_readonly_inspection",
+      "result": "17 unique candidate IDs; 17 matching key records; four unique options each; correct-index distribution 0:16,2:1; candidate/key SHA256 recorded."
+    },
+    {
+      "kind": "duplicate_review",
+      "result": "Read next/content/lotr bundle/draft: three questions cover Gollum at Orodruin, Fellowship count, and Shadowfax; none duplicates this batch."
+    }
+  ],
+  "findings": [
+    "PACK REWORK: answer positions are [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 16 consecutive index-0 answers are a material giveaway. Shuffle and update key/rationales.",
+    "Q005 REWORK: answer Fredegar/Fatty Bolger is supported; 'Фолька Болджера' conflates Folco Boffin with Fredegar Bolger, and generic 'Хоббита Тука' is giveaway.",
+    "Q007 REWORK: Bill Ferny is correct; Harry Goatleaf is a West-gate gatekeeper, not Ferny's servant. Rework that rationale and unsupported Russian rendering 'Козлопас'.",
+    "Q015 REWORK: Aragorn says kingsfoil first; Ioreth recognizes/repeats it. Reword to the sequence and use an identified Russian edition for 'Королевский лист'.",
+    "Q001,002,003,004,006,008,009,010,011,012,013,014,016,017 factual answers are supported by the opened work text; every index-0 keyed item still needs positional repair. Q003/Q004/Q006/Q017 also have conspicuous distractors.",
+    "No duplicate with canonical next/content/lotr. Tag strings match `namespace:value`, canon_scope is uniformly book, and numeric difficulty values are 5-8; registry/range validity cannot be proven from assigned material because canonical lotr contract has no matching metadata fields."
+  ],
+  "remaining_risks": [
+    "Ledger is a third-party English e-text mirror and does not establish Russian-translation choices.",
+    "Read lease lease-1422816218ef425eb82234de595647ad stayed QUEUED/OLDER_REQUEST_WAITING; explicit packet light-text-read fallback was used.",
+    "No task-packet source revision; no Git/index operation, test, build, browser process, import, or deployment."
+  ],
+  "reviewer_label": "lotr-blind-review",
+  "sha256": {
+    "candidate": "EA2DDE08893ACA75F4BE73D7288DEFA82D428F6D2050864AAFC8D09C074F110E",
+    "key": "900139A6D30B8CD5A6F21330FDE47D6E3ED5DBD02A4F0B9F4E9C6F1D10C81861"
+  },
+  "source_evidence": [
+    "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_1__en.htm — opened; Fallohides lines126-130, Tobold163-166, Goldberry1798-1802, Fatty1551/1567, barrow-wight1973, Bill Ferny2646-2650, Amon Hen6114, Folco Boffin529/858, Harry gatekeeper2141-2147/2585-2587.",
+    "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_2__en.htm — opened; Entwives' gardens1034, Brown Lands1035.",
+    "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_3__en.htm — opened; Grey Company/North418-420, Dunharrow519, Imrahil and Ship/Silver Swan345, kingsfoil1583-1585, Elanor3636, Sharkey3452-3470."
+  ],
+  "status": "DONE_WITH_CONCERNS",
+  "verdict": "REWORK"
+}
