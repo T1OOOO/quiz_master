@@ -1,0 +1,106 @@
+{
+  "reviewer": "geography-factcheck-fresh; openai-codex/gpt-6.1-sol; session-15e3c7deff234331a5323333c8b7b0bc",
+  "author": "root; session-5935a39af6104fcfb3bf6353e4d807ae",
+  "task_id": "task-9ccab9885b154494b1a3359b701b64f2",
+  "scope": "Native editorial source audit and inventory only. No medical advice, article text, catalog, draft, code, publication, or cross-provider gate is created by this report.",
+  "reviewed_draft": {
+    "path": "study/question_articles/drafts/anatomy-complete.json",
+    "file_sha256": "5569b9774cbe5d06c04b312fef5872a8cb4034c964389ca92231c5299d8ee0b1",
+    "schema_version": "qm-question-articles/v1",
+    "articles": [
+      {
+        "article_id": "quizipedia:anatomy:ovaries",
+        "verdict": "accept",
+        "article_sha256": "5b8c32997883eb15184cdb745d39f802b73a06619b8839cbaf847f147c7bceb4",
+        "word_count": 185,
+        "target_ref": {
+          "kind": "quizipedia",
+          "domain": "anatomy",
+          "target_id": "ovaries",
+          "outcome": "verified in current anatomy target catalog"
+        },
+        "tag_ids": {
+          "value": [],
+          "outcome": "empty list is structurally valid; no tag identifier is claimed"
+        },
+        "note": "Статья корректно отделяет яичник от матки и маточной трубы, овуляцию от оплодотворения и анатомическое расположение от индивидуальной вариативности. Она описывает обычную анатомию и функцию, без диагностики, лечения или персонального совета.",
+        "checked_sources": [
+          {
+            "url": "https://training.seer.cancer.gov/anatomy/reproductive/female/ovaries.html",
+            "outcome": "opened_verified",
+            "evidence": "NCI SEER confirms paired pelvic location, cortex with follicles and oocytes, vascular and neural medulla, ovulation from a mature follicle, follicular estrogen secretion, and corpus-luteum progesterone with some estrogen."
+          },
+          {
+            "url": "https://training.seer.cancer.gov/ovarian/anatomy/",
+            "outcome": "opened_verified",
+            "evidence": "NCI SEER confirms paired ovaries lateral to the uterus, their egg and reproductive-hormone roles, and separate fallopian tubes that carry ova toward the uterus."
+          }
+        ]
+      },
+      {
+        "article_id": "quizipedia:anatomy:testes",
+        "verdict": "accept",
+        "article_sha256": "d747013d9b84303ddec176c3ad382a80d87d6af8572c93258ef8c9211e561709",
+        "word_count": 184,
+        "target_ref": {
+          "kind": "quizipedia",
+          "domain": "anatomy",
+          "target_id": "testes",
+          "outcome": "verified in current anatomy target catalog"
+        },
+        "tag_ids": {
+          "value": [],
+          "outcome": "empty list is structurally valid; no tag identifier is claimed"
+        },
+        "note": "Статья различает яички, мошонку и придаток; связывает семенные канальцы со сперматогенезом, клетки Сертоли с поддержкой развивающихся клеток, а клетки Лейдига с гормональной функцией. Она говорит об обычном развитии и функции без медицинской рекомендации.",
+        "checked_sources": [
+          {
+            "url": "https://training.seer.cancer.gov/anatomy/reproductive/male/testes.html",
+            "outcome": "opened_verified",
+            "evidence": "NCI SEER supports embryonic abdominal origin and usual descent to the scrotum, temperature about 3 C below body temperature, seminiferous tubules, Leydig cells between them, Sertoli support cells, sperm production, and later epididymal maturation."
+          },
+          {
+            "url": "https://my.clevelandclinic.org/health/body/23964-testicles",
+            "outcome": "opened_verified",
+            "evidence": "Cleveland Clinic confirms paired testes in the scrotum, sperm and hormone production, testosterone in Leydig cells, cooler temperature for spermatogenesis, seminiferous tubules, and the separate epididymis along each testis."
+          }
+        ]
+      }
+    ]
+  },
+  "catalog_inventory": {
+    "visible_anatomy_target_ids": [
+      "thyroid",
+      "thymus",
+      "adrenals",
+      "pancreas",
+      "ovaries",
+      "testes"
+    ],
+    "existing_article_bindings": {
+      "thyroid": "study/question_articles/drafts/pilot.json",
+      "thymus": "study/question_articles/drafts/pilot.json",
+      "adrenals": "study/question_articles/drafts/pilot.json",
+      "pancreas": "study/question_articles/drafts/pilot.json",
+      "ovaries": "study/question_articles/drafts/anatomy-complete.json",
+      "testes": "study/question_articles/drafts/anatomy-complete.json"
+    },
+    "eligible_unbound_targets": [],
+    "proposal_status": "BLOCKED_BY_CATALOG_INVENTORY",
+    "proposal_count": 0,
+    "reason": "No existing visible anatomy target lacks an article binding. Supplying four proposed targets or source links would falsely label already bound targets as eligible.",
+    "required_follow_up": "Root must add visible anatomy targets to the canonical catalog or authorize retargeting before a four-target expansion proposal can be made. Root controls any integration and independent review."
+  },
+  "structural_checks": {
+    "target_refs": "Both current anatomy target refs resolve; every visible anatomy target is already bound once across draft articles.",
+    "duplicate_binding": "No duplicate anatomy target binding found.",
+    "article_word_bounds": "Ovaries 185 and testes 184 whitespace-delimited body tokens; both are in the 100-220 range.",
+    "source_opening": "All four cited source pages were independently opened."
+  },
+  "remaining_risks": [
+    "The requested four eligible expansion candidates cannot be proposed under the current catalog and no-binding condition.",
+    "Reviewer and author share the declared openai-codex provider class, so this is not a different-provider gate.",
+    "The interactive lease request returned no grant; the task's explicit lightweight read/edit exception was used.",
+    "No test, build, browser automation, export, publication, or production acceptance was performed."
+  ]
+}

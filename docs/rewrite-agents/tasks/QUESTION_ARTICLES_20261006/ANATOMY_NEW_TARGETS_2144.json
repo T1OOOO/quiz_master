@@ -1,0 +1,141 @@
+{
+  "schema_version": "qm-anatomy-first-board-research/v1",
+  "status": "draft_for_independent_review",
+  "prepared_at": "2026-10-08",
+  "scope": {
+    "purpose_ru": "Подготовить первую доску для уже существующих целей heart, lungs, liver и kidneys без создания новых записей каталога.",
+    "source_plan": "quizipedia/research/anatomy-expansion.json",
+    "excluded": [
+      "создание или изменение каталога",
+      "привязки статей и вопросы",
+      "скачивание изображений",
+      "горячие точки и координаты"
+    ]
+  },
+  "targets": [
+    {
+      "existing_target_id": "heart",
+      "name_ru": "Сердце",
+      "learning_goal_ru": "Ученик на схеме находит сердце в средостении, называет предсердия и желудочки и объясняет, что желудочки направляют кровь в лёгочный и большой круги.",
+      "facts": [
+        {
+          "statement_ru": "Сердце находится в грудной полости между лёгкими, в средостении; его окружают перикард и перикардиальная полость.",
+          "source": "OpenStax, 19.1 Heart Anatomy",
+          "url": "https://openstax.org/books/anatomy-and-physiology/pages/19-1-heart-anatomy",
+          "opened": true,
+          "accessed": "2026-10-08"
+        },
+        {
+          "statement_ru": "У сердца четыре камеры: два предсердия принимают кровь, а два желудочка служат основными насосными камерами и направляют кровь к лёгким или телу.",
+          "source": "NHLBI, Heart Anatomy",
+          "url": "https://www.nhlbi.nih.gov/health/heart/anatomy",
+          "opened": true,
+          "accessed": "2026-10-08"
+        }
+      ],
+      "figure_candidate": {
+        "visible_candidate": "OpenStax, Figure 19.2 “Position of the Heart in the Thorax” — на странице видима схема положения сердца в грудной клетке.",
+        "source_url": "https://openstax.org/books/anatomy-and-physiology/pages/19-1-heart-anatomy",
+        "license_verified": "Страница указывает лицензию OpenStax CC BY-NC-SA 4.0 для учебного содержания и требует указания OpenStax; коммерческое использование требует разрешения.",
+        "attribution": "Betts et al., Anatomy and Physiology, OpenStax; ссылка на раздел и на книгу обязательна по инструкции страницы.",
+        "reuse_status": "CONDITIONAL_NONCOMMERCIAL_REVIEW",
+        "reuse_note_ru": "Кандидат можно рассматривать только после проверки режима использования в продукте и сохранения атрибуции/ShareAlike; файл не скачивался. Горячие точки не предложены."
+      }
+    },
+    {
+      "existing_target_id": "lungs",
+      "name_ru": "Лёгкие",
+      "learning_goal_ru": "Ученик различает правое и левое лёгкое, их доли и объясняет, что газообмен происходит на границе альвеол и капилляров.",
+      "facts": [
+        {
+          "statement_ru": "Лёгкие — парные органы: правое имеет три доли, левое две; левое меньше, поскольку оставляет место для сердца.",
+          "source": "NHLBI, The Respiratory System",
+          "url": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system",
+          "opened": true,
+          "accessed": "2026-10-08"
+        },
+        {
+          "statement_ru": "Лёгкие соединены с трахеей правым и левым бронхами, покрыты плеврой, а их главная функция — обмен кислорода и углекислого газа.",
+          "source": "OpenStax, 22.2 The Lungs",
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+          "opened": true,
+          "accessed": "2026-10-08"
+        }
+      ],
+      "figure_candidate": {
+        "visible_candidate": "OpenStax, Figure 22.13 “Gross Anatomy of the Lungs” — на странице видна маркированная схема строения лёгких.",
+        "source_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+        "license_verified": "Страница явно сообщает CC BY-NC-SA 4.0 для содержания OpenStax; для цифрового распространения требуются атрибуция и та же лицензия, коммерческое использование требует разрешения.",
+        "attribution": "Betts et al., Anatomy and Physiology 2e, OpenStax; ссылка на раздел и на книгу обязательна по инструкции страницы.",
+        "reuse_status": "CONDITIONAL_NONCOMMERCIAL_REVIEW",
+        "reuse_note_ru": "Не использовать до проверки режима распространения и фигуры на отдельные сторонние права; файл не скачивался. Горячие точки не предложены."
+      }
+    },
+    {
+      "existing_target_id": "liver",
+      "name_ru": "Печень",
+      "learning_goal_ru": "Ученик узнаёт печень как добавочный орган пищеварения и связывает её с обработкой питательных веществ и образованием желчи, не приписывая цветам схемы медицинское значение.",
+      "facts": [
+        {
+          "statement_ru": "Печень участвует в пищеварении, а также в обработке и распределении питательных веществ.",
+          "source": "NIDDK, Liver Disease",
+          "url": "https://www.niddk.nih.gov/health-information/liver-disease",
+          "opened": true,
+          "accessed": "2026-10-08"
+        },
+        {
+          "statement_ru": "Печень относится к добавочным органам пищеварения; вместе с желчным пузырём и поджелудочной железой она выделяет секреты, включая желчь, необходимые для продолжения пищеварения в тонкой кишке.",
+          "source": "OpenStax, 23.1 Overview of the Digestive System",
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-1-overview-of-the-digestive-system",
+          "opened": true,
+          "accessed": "2026-10-08"
+        }
+      ],
+      "figure_candidate": {
+        "visible_candidate": "OpenStax, Figure 23.2 “Components of the Digestive System” — на странице видна маркированная схема органов пищеварительной системы, включающая печень.",
+        "source_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-1-overview-of-the-digestive-system",
+        "license_verified": "Страница явно сообщает CC BY-NC-SA 4.0 для содержания OpenStax; повторное использование допустимо лишь в некоммерческом режиме с атрибуцией и ShareAlike, коммерческий режим требует разрешения.",
+        "attribution": "Betts et al., Anatomy and Physiology 2e, OpenStax; ссылка на раздел и на книгу обязательна по инструкции страницы.",
+        "reuse_status": "CONDITIONAL_NONCOMMERCIAL_REVIEW",
+        "reuse_note_ru": "Это кандидат для общей схемы, а не доказательство отдельной лицензии каждого элемента; до правовой проверки не использовать. Файл не скачивался, горячие точки не предложены."
+      }
+    },
+    {
+      "existing_target_id": "kidneys",
+      "name_ru": "Почки",
+      "learning_goal_ru": "Ученик показывает парные почки по сторонам позвоночника, называет корковое и мозговое вещество на разрезе и связывает нефрон с фильтрацией крови и образованием мочи.",
+      "facts": [
+        {
+          "statement_ru": "Почки расположены по обе стороны позвоночника забрюшинно; правая лежит ниже левой из-за печени.",
+          "source": "OpenStax, 25.3 Gross Anatomy of the Kidney",
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+          "opened": true,
+          "accessed": "2026-10-08"
+        },
+        {
+          "statement_ru": "Почки фильтруют кровь, удаляют отходы и избыток воды; образующаяся моча идёт из почки по мочеточникам к мочевому пузырю.",
+          "source": "NIDDK, Your Kidneys & How They Work",
+          "url": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+          "opened": true,
+          "accessed": "2026-10-08"
+        }
+      ],
+      "figure_candidate": {
+        "visible_candidate": "OpenStax, Figure 25.8 “Left Kidney” — на странице видны положение почек и поперечный разрез с корковым и мозговым веществом.",
+        "source_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+        "license_verified": "Страница указывает CC BY-NC-SA 4.0 для содержания OpenStax, с атрибуцией и ShareAlike для цифрового некоммерческого распространения; коммерческое использование требует разрешения.",
+        "attribution": "Betts et al., Anatomy and Physiology 2e, OpenStax; ссылка на раздел и на книгу обязательна по инструкции страницы.",
+        "alternative_visible_candidate": "NIDDK Media Library, “Kidney cross section with the functions labeled”; на странице указано: credit NIDDK, NIH, но отдельная лицензия повторного использования не найдена.",
+        "alternative_source_url": "https://www.niddk.nih.gov/news/media-library/17561",
+        "alternative_reuse_status": "NOT_VERIFIED_NO_REUSE",
+        "reuse_status": "CONDITIONAL_NONCOMMERCIAL_REVIEW",
+        "reuse_note_ru": "Файлы не скачивались. Для NIDDK-изображения атрибуция видима, но лицензия повторного использования не подтверждена; его не использовать. Горячие точки не предложены."
+      }
+    }
+  ],
+  "review_notes_ru": [
+    "Все четыре ID уже есть в anatomy-expansion.json; этот файл не добавляет инвентарные цели и не меняет их bindings.",
+    "Каждая цель содержит две открытые образовательные страницы с датой доступа 2026-10-08.",
+    "Лицензионный статус фигур требует независимой проверки перед любым включением в продукт; этот исследовательский файл сам по себе не разрешает повторное использование."
+  ]
+}

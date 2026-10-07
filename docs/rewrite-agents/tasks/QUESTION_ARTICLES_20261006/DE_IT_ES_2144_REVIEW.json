@@ -1,0 +1,100 @@
+{
+  "reviewer": "geography-factcheck-fresh; openai-codex/gpt-6.1-sol; session-15e3c7deff234331a5323333c8b7b0bc",
+  "authors": {
+    "initial_draft": "flags_writer_fresh; session-4c751f72b4f94a44bd7e2942c6b109d9",
+    "final_corrections": "root; session-5935a39af6104fcfb3bf6353e4d807ae"
+  },
+  "task_id": "task-cd9cb020f7ad4e7db7d9d3291e7f9f3c",
+  "scope": "Native editorial source review only. No technical, export, publication, release, or different-provider gate is granted.",
+  "word_count_rule": "Whitespace-delimited body_ru tokens, including Markdown heading markers.",
+  "reviewed_draft": {
+    "path": "study/question_articles/drafts/country-flags-de-it-es-20261007.json",
+    "file_sha256": "526d6a50f6921b1d0083c8ba151fadae7c41bb3eb3a59c186a062bae56eebf06",
+    "schema_version": "qm-question-articles/v1",
+    "articles": [
+      {
+        "article_id": "quizipedia:country:DE",
+        "verdict": "revise",
+        "article_sha256": "e448b2f69fa221bdcad696f68e942aca1d191bd0913f5073b92e933d8f5d8d39",
+        "word_count": 179,
+        "target_binding": {"kind": "quizipedia", "domain": "country", "target_id": "DE", "outcome": "verified"},
+        "tag_ids": {"value": ["country:de", "domain:geography", "topic:flag"], "outcome": "all resolve"},
+        "note": "Текст исторической части точен по доступной странице Бундестага, включая осторожную формулировку о неопределённом происхождении, решения 1848 и 1949 годов. Однако два обязательных источника юридической и технической части не открылись при двух прямых попытках, поэтому статью нельзя принять при требовании открыть каждую финальную ссылку.",
+        "required_correction": "Replace or repair both inaccessible cited URLs with official pages/PDFs that can be directly opened, then recheck the statutory black-red-gold formula and 3:5 construction.",
+        "checked_sources": [
+          {
+            "url": "https://www.gesetze-im-internet.de/gg/art_22.html",
+            "outcome": "opened_failed_twice",
+            "evidence": "Both direct opens returned 400 Timeout fetching; no article-22 text was available for independent inspection."
+          },
+          {
+            "url": "https://www.gesetze-im-internet.de/flaggano_1996/FlaggAnO_1996.pdf",
+            "outcome": "opened_failed_twice",
+            "evidence": "Both direct opens returned 400 Timeout fetching; the equal horizontal bands and 3:5 construction could not be independently verified from the cited regulation."
+          },
+          {
+            "url": "https://www.bundestag.de/en/parliament/symbols/flag",
+            "outcome": "opened_verified",
+            "evidence": "Bundestag confirms that the origins cannot be established with certainty, black-red-gold's unity/freedom association, the 1848 Frankfurt decisions, and the 1949 Parliamentary Council decision."
+          }
+        ]
+      },
+      {
+        "article_id": "quizipedia:country:IT",
+        "verdict": "accept",
+        "article_sha256": "7c65df689b44e3144e3659fc789b52c2a30ed29b3dda8a105a8caabae5574f6a",
+        "word_count": 180,
+        "target_binding": {"kind": "quizipedia", "domain": "country", "target_id": "IT", "outcome": "verified"},
+        "tag_ids": {"value": ["country:it", "domain:geography", "topic:flag"], "outcome": "all resolve"},
+        "note": "Статья корректно читает полосы от древка, привязывает правило трёх равных вертикальных полос к статье 12 и излагает 1797, 1946 и 1947 годы в документальном, а не легендарном ключе.",
+        "checked_sources": [
+          {
+            "url": "https://www.quirinale.it/allegati_statici/costituzione/costituzione.pdf",
+            "outcome": "opened_verified",
+            "evidence": "Official Quirinale Constitution PDF article 12 states green, white and red in three equal vertical bands."
+          },
+          {
+            "url": "https://www.quirinale.it/it/pagine/simboli-repubblica-tricolore",
+            "outcome": "opened_verified",
+            "evidence": "Quirinale records the Cispadane Parliament's 7 January 1797 decision, the historical Napoleonic context, the 19 June 1946 decree, the 24 March 1947 Constituent Assembly confirmation, and article-12 wording."
+          }
+        ]
+      },
+      {
+        "article_id": "quizipedia:country:ES",
+        "verdict": "revise",
+        "article_sha256": "3904912fdab985d06a20f6bd902282246bf23f000c371478ad03b629963337f4",
+        "word_count": 179,
+        "target_binding": {"kind": "quizipedia", "domain": "country", "target_id": "ES", "outcome": "verified"},
+        "tag_ids": {"value": ["country:es", "domain:geography", "topic:flag"], "outcome": "all resolve"},
+        "note": "Доступная страница Ла-Монклоа подтверждает морское происхождение при Карле III, проектный выбор 1785 года и различимость белых флагов в море. Но обязательная ссылка BOE на статью 4 Конституции не открылась при двух прямых попытках; поэтому конституционную пропорцию и правило автономных флагов нельзя принять по требуемому источнику.",
+        "required_correction": "Replace or repair the BOE citation with a directly openable official constitutional text that supports article 4's two-to-one yellow band and autonomous-community flag rule, then recheck.",
+        "checked_sources": [
+          {
+            "url": "https://boe.es/buscar/act.php?id=BOE-A-1978-31229&p=20240217&tn=1",
+            "outcome": "opened_failed_twice",
+            "evidence": "Both direct opens returned 400 Timeout fetching; article 4 text was unavailable for independent inspection."
+          },
+          {
+            "url": "https://www.lamoncloa.gob.es/lang/ca/espana/simbolosdelestado/Paginas/index.aspx",
+            "outcome": "opened_verified",
+            "evidence": "La Moncloa confirms Charles III-era origins, the difficulty distinguishing predominantly white naval flags, selection of two designs from twelve in 1785, and that current regulation starts from the 1978 Constitution's article 4.1."
+          }
+        ]
+      }
+    ]
+  },
+  "structural_checks": {
+    "target_refs": "DE, IT and ES current Quizipedia country targets resolve once each.",
+    "tag_ids": "All nine stated country, geography and flag tags resolve in metadata/tags.v1.json.",
+    "duplicate_bindings": "No duplicate DE, IT or ES country target binding exists in another draft.",
+    "word_bounds": "DE 179, IT 180 and ES 179; each is within 100-220.",
+    "source_opening": "Four of seven final citations opened and were inspected. Three timed-out citations were retried once and remain unavailable."
+  },
+  "remaining_risks": [
+    "DE and ES remain REVISE until every cited legal source can be opened and inspected.",
+    "Reviewer and drafters share the declared openai-codex provider class, so this is not a different-provider gate.",
+    "The interactive lease request returned no grant; the task's explicit lightweight read/edit exception was used.",
+    "No test, build, browser automation, export, publication, or production acceptance was performed."
+  ]
+}
