@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -691,7 +692,7 @@ void main() {
   testWidgets('shows the localized quiz catalog home', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: QuizApp()));
 
-    expect(find.text('Quiz catalog'), findsOneWidget);
+    expect(find.text('Каталог викторин'), findsOneWidget);
   });
 
   testWidgets('switches catalog labels between English and Russian', (
@@ -699,13 +700,58 @@ void main() {
   ) async {
     await tester.pumpWidget(const ProviderScope(child: QuizApp()));
 
-    await tester.tap(find.byTooltip('Русский'));
-    await tester.pumpAndSettle();
     expect(find.text('Каталог викторин'), findsOneWidget);
 
     await tester.tap(find.byTooltip('English'));
     await tester.pumpAndSettle();
     expect(find.text('Quiz catalog'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Русский'));
+    await tester.pumpAndSettle();
+    expect(find.text('Каталог викторин'), findsOneWidget);
+  });
+
+  testWidgets('question stems render Markdown without literal delimiters', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: QuestionCard(
+          question: PublicQuestion.fromJson({
+            ..._questionJson(1),
+            'stem': '**Офидиофобия** — это боязнь:',
+          }),
+          onAnswer: (_) {},
+        ),
+      ),
+    );
+
+    expect(find.byType(MarkdownBody), findsOneWidget);
+    expect(
+      find.text('Офидиофобия — это боязнь:', findRichText: true),
+      findsOneWidget,
+    );
+    expect(
+      find.text('**Офидиофобия** — это боязнь:', findRichText: true),
+      findsNothing,
+    );
+  });
+
+  testWidgets('question stems reject inline Markdown images', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: QuestionCard(
+          question: PublicQuestion.fromJson({
+            ..._questionJson(1),
+            'stem':
+                'Текст вопроса ![нельзя](https://example.invalid/image.png)',
+          }),
+          onAnswer: (_) {},
+        ),
+      ),
+    );
+
+    expect(find.byType(Image), findsNothing);
   });
 
   testWidgets('offers light dark and system theme controls', (tester) async {

@@ -57,7 +57,11 @@ class LocaleController extends Notifier<Locale?> {
 }
 
 class QuizApp extends ConsumerStatefulWidget {
-  const QuizApp({super.key, this.initialLocation = '/', this.defaultLocale});
+  const QuizApp({
+    super.key,
+    this.initialLocation = '/',
+    this.defaultLocale = const Locale('ru'),
+  });
   final String initialLocation;
   final Locale? defaultLocale;
 
@@ -396,12 +400,16 @@ class _QuestionCardState extends State<QuestionCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.question.stem,
-              style: compact
-                  ? Theme.of(context).textTheme.titleLarge
-                        ?.copyWith(fontSize: 18)
-                  : Theme.of(context).textTheme.titleLarge,
+            MarkdownBody(
+              data: widget.question.stem,
+              imageBuilder: (_, _, _) => const SizedBox.shrink(),
+              styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context))
+                  .copyWith(
+                    p: compact
+                        ? Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(fontSize: 18)
+                        : Theme.of(context).textTheme.titleLarge,
+                  ),
             ),
             if (questionImage != null) ...[
               const SizedBox(height: 12),
