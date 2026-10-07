@@ -1,0 +1,150 @@
+{
+  "reviewer": "geography-factcheck-fresh; openai-codex/gpt-6.1-sol; session-15e3c7deff234331a5323333c8b7b0bc",
+  "authors": {
+    "study/question_articles/drafts/study-coordinates-20261007.json": "root; session-5935a39af6104fcfb3bf6353e4d807ae",
+    "study/question_articles/drafts/country-flags-jp-au-gb-20261007.json": "flags_writer_fresh; session-4c751f72b4f94a44bd7e2942c6b109d9",
+    "flags_source_addition": "root; session-5935a39af6104fcfb3bf6353e4d807ae added the third Japan source only"
+  },
+  "task_id": "task-00f07b48753f400c97f9a51353ca6c93",
+  "scope": "Native editorial and source review only. This record does not grant technical, publication, or cross-provider approval.",
+  "word_count_rule": "Whitespace-delimited body_ru tokens, including Markdown heading markers; required range is 100-220.",
+  "drafts": [
+    {
+      "path": "study/question_articles/drafts/study-coordinates-20261007.json",
+      "file_sha256": "d0993281314e5ff54c5294e22b3c20acdf956c60f4d0a978a10a68c81acb016e",
+      "articles": [
+        {
+          "article_id": "study:geography-countries:coordinates",
+          "verdict": "accept",
+          "article_sha256": "659dd0b408485afd4090aff6a2220d979a5c1fb181a0b674e468fe851c38f512",
+          "word_count": 203,
+          "note": "Объяснение точно различает широту и долготу, привязывает их к экватору и нулевому меридиану, верно квалифицирует около 111 км на градус широты и зависимость расстояния между меридианами от широты. Оно не подменяет координаты высотой, температурой или названием страны.",
+          "question_bindings": [
+            {
+              "quiz_id": "study-geography-countries",
+              "question_id": "study-geography-countries-001",
+              "revision_sha256": "4f6f8946ad7c86d3a7e3076e00243321bdffeca8c2671f8a69f6b9b8ef456bb9",
+              "outcome": "verified against current Study catalog with build.py study_revision; answer is latitude north/south of the Equator"
+            },
+            {
+              "quiz_id": "study-geography-countries",
+              "question_id": "study-geography-countries-002",
+              "revision_sha256": "89ed172a4b2ebd6dd18857069a879e261cca05516a1a1b3deb4fe566eb2c44a6",
+              "outcome": "verified against current Study catalog with build.py study_revision; answer is longitude east/west of the prime meridian"
+            }
+          ],
+          "checked_sources": [
+            {
+              "url": "https://oceanservice.noaa.gov/facts/latitude.html",
+              "outcome": "opened_verified",
+              "evidence": "NOAA defines latitude as north/south of the Equator, gives 0 degrees at the Equator and 90 degrees at the poles, describes parallels as east-west, and gives about 111 km per degree."
+            },
+            {
+              "url": "https://oceanservice.noaa.gov/facts/longitude.html",
+              "outcome": "opened_verified",
+              "evidence": "NOAA defines longitude east/west of the prime meridian, describes meridians as pole-to-pole, and explains that they are widest apart at the Equator and meet at the poles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "study/question_articles/drafts/country-flags-jp-au-gb-20261007.json",
+      "file_sha256": "da917a826bd75e646d12bccfca1f22eb64da0437d1243920d50ea78e29723f6e",
+      "articles": [
+        {
+          "article_id": "quizipedia:country:JP",
+          "verdict": "accept",
+          "article_sha256": "b2582648057847763a7e5af733effeda7529ad26eb6cafd169d486b12931669d",
+          "word_count": 189,
+          "note": "The final three-source version resolves the former support gap: the newly cited stable flag section explicitly translates Hinomaru as sun circle. The text accurately separates statutory geometry and colours from wider cultural interpretation.",
+          "target_binding": {
+            "kind": "quizipedia",
+            "domain": "country",
+            "target_id": "JP",
+            "outcome": "verified in current Quizipedia country map targets"
+          },
+          "checked_sources": [
+            {
+              "url": "https://www8.cao.go.jp/chosei/kokkikokka/kokkikokka",
+              "outcome": "opened_verified",
+              "evidence": "Cabinet Office page gives the 1999 law, Nisshoki as national flag, 2:3 ratio, centered circle of three-fifths the flag height, white field, and red/crimson circle."
+            },
+            {
+              "url": "https://www.japan.go.jp/japan/index.html",
+              "outcome": "opened_verified",
+              "evidence": "Government of Japan page identifies the national flag as Nisshoki and notes Hinomaru as its alternate name."
+            },
+            {
+              "url": "https://web-japan.org/kidsweb/faq/society01.html",
+              "outcome": "opened_verified",
+              "evidence": "The stable flag FAQ section explicitly states that hinomaru means sun circle and describes the red circle on white. Dated political material elsewhere on this page was not used."
+            }
+          ]
+        },
+        {
+          "article_id": "quizipedia:country:AU",
+          "verdict": "accept",
+          "article_sha256": "db6ce6e6e458f5db009fc36f115e11b95d9cfa2fb8ca63992bd79393133a28b3",
+          "word_count": 190,
+          "note": "The account distinguishes the 1901 flag competition and first hoisting, the 1903 official drawing, and the 1908 seventh Commonwealth Star point. It does not incorrectly call the seven points seven states.",
+          "target_binding": {
+            "kind": "quizipedia",
+            "domain": "country",
+            "target_id": "AU",
+            "outcome": "verified in current Quizipedia country map targets"
+          },
+          "checked_sources": [
+            {
+              "url": "https://www.pmc.gov.au/resources/australian-flags-booklet/part-1-australian-national-flag",
+              "outcome": "opened_verified",
+              "evidence": "Australian Government booklet supports the three elements, the seventh point added in 1908 for territories, four seven-point and one five-point Southern Cross stars, and the 1903 official drawing."
+            },
+            {
+              "url": "https://www.pmc.gov.au/honours-and-symbols/australian-national-symbols/australian-national-flag",
+              "outcome": "opened_verified",
+              "evidence": "Australian Government history supports the 1901 competition and first official hoisting on 3 September 1901."
+            }
+          ]
+        },
+        {
+          "article_id": "quizipedia:country:GB",
+          "verdict": "accept",
+          "article_sha256": "c0c427ae1e890fd958c6d3f22c1a88ea9b123366512169ef5dbf0a21f760677c",
+          "word_count": 203,
+          "note": "The text accurately identifies the three crosses and their constituent associations, dates the first Union Flag to 1606 and the current Ireland-inclusive version to 1801, and gives the Royal Household's stated reason the Welsh dragon is absent.",
+          "target_binding": {
+            "kind": "quizipedia",
+            "domain": "country",
+            "target_id": "GB",
+            "outcome": "verified in current Quizipedia country map targets"
+          },
+          "checked_sources": [
+            {
+              "url": "https://www.royal.uk/union-jack?page=7",
+              "outcome": "opened_verified",
+              "evidence": "Royal Household page supports Union Flag/Union Jack naming, the English/Welsh, Scottish and Irish crosses, the 1606 and 1801 milestones, and the explanation for no Welsh dragon."
+            },
+            {
+              "url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/legislativescrutiny/act-of-union-1707/overview/union-of-the-crowns/",
+              "outcome": "opened_verified",
+              "evidence": "UK Parliament history corroborates James I's 1606 instruction to combine the St George and St Andrew crosses."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "structural_checks": {
+    "schema_version": "both drafts declare qm-question-articles/v1",
+    "tag_ids": "All geography, country and flag tag_ids resolve in metadata/tags.v1.json.",
+    "target_refs": "JP, AU and GB each resolve once in the current Quizipedia country target list; no matching target binding occurs in another question-article draft.",
+    "question_refs": "Both coordinate references reproduce the exact current canonical Study revision hash computed by study/question_articles/build.py.",
+    "duplicate_article_bindings": "No duplicate coordinate question binding or JP/AU/GB country target binding found across the draft directory.",
+    "source_count": "Coordinates 2; JP 3; AU 2; GB 2. Every listed source page was opened for this review."
+  },
+  "remaining_risks": [
+    "This is an editorial source review by openai-codex, the same actual provider class as the drafting lead; it is not a different-provider gate.",
+    "No technical build, export, publication, or production acceptance was performed or implied."
+  ]
+}
