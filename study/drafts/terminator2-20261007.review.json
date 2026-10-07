@@ -1,0 +1,68 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/terminator2-20261007.json",
+  "sha256": "4D85FD77BDAD82610F21A35AC326190DA3B863D7A96AB824E1ACBF25E536AC48",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-5734da2e526b400e905ba7b9433f5c95",
+  "hub_evidence_message": 14788,
+  "articles_reviewed": 5,
+  "exact_question_revisions": 5,
+  "question_ids": [
+    "theme-terminator-006",
+    "theme-terminator-007",
+    "theme-terminator-008",
+    "theme-terminator-009",
+    "theme-terminator-010"
+  ],
+  "blind_solve_option_positions": [
+    1,
+    4,
+    2,
+    3,
+    1
+  ],
+  "russian_unicode_word_counts": [
+    150,
+    152,
+    164,
+    161,
+    162
+  ],
+  "sources_per_article": [
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    {
+      "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false",
+      "supports": "Released-film synopsis: Cyberdyne/Dyson and original relics; T-1000 liquid metal; John prohibits killing, not weapons; nitrogen freeze and heat re-formation; molten-metal destruction; original arm/CPU followed by Sarah lowering protector."
+    },
+    {
+      "url": "https://overblack.org/script/terminator-2-judgment-day-1991",
+      "supports": "Original screenplay corroborates Cyberdyne, liquid-metal description, John's rule, nitrogen and original arm/chip; supplementary only where consistent with released film."
+    }
+  ],
+  "corrections": [
+    "Corrected description of two models instead of two opponents.",
+    "Corrected Russian grammatical agreement for rubber distractor.",
+    "Replaced generic source boilerplate with concrete scene context and precise support statements.",
+    "Excluded screenplay-only ending, cut-specific CPU switch, dates and literal mercury composition."
+  ],
+  "lead_verification": "Lead read initial and final article text/all options, opened both sources and pinpointed draft-ending discrepancy, checked exact revisions/tags/status/source counts/Unicode word counts/raw SHA and single final LF.",
+  "limitations": [
+    "Screenplay is a third-party mirror and contains draft differences; released-film claims use AFI synopsis.",
+    "Native editorial review does not satisfy independent-provider Hub acceptance.",
+    "No canonical import, export/parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
