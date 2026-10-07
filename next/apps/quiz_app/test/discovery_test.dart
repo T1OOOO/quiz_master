@@ -156,7 +156,9 @@ Future<void> _pumpDiscovery(WidgetTester tester, String location) async {
   // Wait for real asset IO outside fake-async, not for an arbitrary delay.
   await tester.runAsync(() async {
     await tester.pumpWidget(
-      ProviderScope(child: QuizApp(initialLocation: location)),
+      ProviderScope(
+        child: QuizApp(initialLocation: location, defaultLocale: Locale('en')),
+      ),
     );
     final container = ProviderScope.containerOf(
       tester.element(find.byType(DiscoveryPage)),

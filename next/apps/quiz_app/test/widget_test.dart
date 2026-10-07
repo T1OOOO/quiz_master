@@ -158,7 +158,10 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many',
+            defaultLocale: Locale('en'),
+          ),
         ),
       );
       await tester.pumpAndSettle();
@@ -237,7 +240,10 @@ void main() {
             ],
           ),
         ],
-        child: const QuizApp(initialLocation: '/library'),
+        child: const QuizApp(
+          initialLocation: '/library',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -265,7 +271,10 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many',
+            defaultLocale: Locale('en'),
+          ),
         ),
       );
       await tester.pumpAndSettle();
@@ -356,7 +365,10 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many',
+            defaultLocale: Locale('en'),
+          ),
         ),
       );
       await tester.pumpAndSettle();
@@ -393,7 +405,10 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [quizApiProvider.overrideWithValue(client)],
-        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        child: const QuizApp(
+          initialLocation: '/quiz/quiz-many',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -433,7 +448,10 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [quizApiProvider.overrideWithValue(client)],
-        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        child: const QuizApp(
+          initialLocation: '/quiz/quiz-many',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -462,7 +480,10 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+          child: const QuizApp(
+            initialLocation: '/quiz/quiz-many',
+            defaultLocale: Locale('en'),
+          ),
         ),
       );
       await tester.pumpAndSettle();
@@ -507,7 +528,10 @@ void main() {
             ],
           ),
         ],
-        child: const QuizApp(initialLocation: '/library'),
+        child: const QuizApp(
+          initialLocation: '/library',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -534,7 +558,10 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [quizApiProvider.overrideWithValue(client)],
-        child: const QuizApp(initialLocation: '/quiz/quiz-many'),
+        child: const QuizApp(
+          initialLocation: '/quiz/quiz-many',
+          defaultLocale: Locale('en'),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -755,7 +782,9 @@ void main() {
   });
 
   testWidgets('offers light dark and system theme controls', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: QuizApp()));
+    await tester.pumpWidget(
+      const ProviderScope(child: QuizApp(defaultLocale: Locale('en'))),
+    );
 
     await tester.tap(find.byTooltip('Light theme'));
     await tester.pump();
@@ -774,7 +803,9 @@ void main() {
   testWidgets('gallery route and history survive locale and theme changes', (
     tester,
   ) async {
-    await tester.pumpWidget(const ProviderScope(child: QuizApp()));
+    await tester.pumpWidget(
+      const ProviderScope(child: QuizApp(defaultLocale: Locale('en'))),
+    );
     final router = tester
         .widget<MaterialApp>(find.byType(MaterialApp))
         .routerConfig;
@@ -807,6 +838,7 @@ void main() {
       const ProviderScope(
         child: QuizApp(
           initialLocation: '/join/0123456789abcdef0123456789abcdef',
+          defaultLocale: Locale('en'),
         ),
       ),
     );
@@ -838,7 +870,7 @@ Future<void> _pumpApiApp(WidgetTester tester, _QuizTestServer api) {
   return tester.pumpWidget(
     ProviderScope(
       overrides: [quizApiProvider.overrideWithValue(client)],
-      child: const QuizApp(),
+      child: const QuizApp(defaultLocale: Locale('en')),
     ),
   );
 }

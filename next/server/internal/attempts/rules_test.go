@@ -212,11 +212,11 @@ func TestServiceShuffledRoundPermutesOnlyItsSelectedSlice(t *testing.T) {
 		return nil
 	}}}
 	selected, err := service.shuffledRound(questions, 1)
-	if err != nil || len(selected) != 20 {
+	if err != nil || len(selected) != 21 {
 		t.Fatalf("round = %d, %v", len(selected), err)
 	}
 	for i, question := range selected {
-		want := fmt.Sprintf("q-%02d", 39-i)
+		want := fmt.Sprintf("q-%02d", 40-i)
 		if question.QuestionID != want {
 			t.Fatalf("position %d = %s, want %s", i, question.QuestionID, want)
 		}
