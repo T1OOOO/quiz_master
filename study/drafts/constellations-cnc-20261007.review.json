@@ -1,0 +1,41 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/constellations-cnc-20261007.json",
+  "sha256": "74B8F8F3E877FD330573F29BBC7CDEF824D02F607ACB50E3F9D4F13AF5FEDAB5",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-5935a39af6104fcfb3bf6353e4d807ae",
+  "hub_task": "task-e497f0f5777542b6b7c3eea81acc1c11",
+  "hub_evidence_message": 15808,
+  "articles_reviewed": 1,
+  "target_ids": [
+    "cnc"
+  ],
+  "unicode_letter_word_counts": [
+    177
+  ],
+  "word_count_rule": "Unicode letter tokens; numbers excluded; hyphenated words joined.",
+  "sources_per_article": [
+    3
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    "https://iauarchive.eso.org/static/public/constellations/pdf/CNC.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-44/",
+    "https://iauarchive.eso.org/public/themes/constellations/"
+  ],
+  "corrections": [
+    "Reconciled reviewer count178 to177 using en-dash-aware Unicode-letter rule; final bytes unchanged.",
+    "Avoided erroneous M45 label in NASA navigation and kept all facts specific to M44."
+  ],
+  "lead_verification": "Lead authored and read full article after opening NASA M44 and IAU CNC/general; audited exact target/catalog tags, draft status,3sources,177word count, single EOF LF and final SHA. Independent native reviewer verified all final source assertions and corrected count rule.",
+  "limitations": [
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No canonical import/export parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
