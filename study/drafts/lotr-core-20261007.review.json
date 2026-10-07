@@ -1,0 +1,45 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/lotr-core-20261007.json",
+  "sha256": "FC2A31C7099DB268E3EB044726D02E6FA9D2B04231A89A1179FB22B915660455",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-640a4ee8e979412c848ddf2f3a6c936f",
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "author_session": "session-018864f5fe3842519aab70316ad9e08b",
+  "hub_task": "task-0dac2f4815a64837b5344aeac212bd00",
+  "articles_reviewed": 3,
+  "exact_question_revisions": 3,
+  "sources_per_article": [
+    2,
+    2,
+    2
+  ],
+  "corrections": [
+    "Q2: Nine Walkers statement placed after Council, Book II chapter 3 The Ring Goes South; opening and source support both corrected.",
+    "Q3: unsupported film claim removed; Brego explained as son of Eorl and builder of the hall, supported by Two Towers."
+  ],
+  "primary_passages": [
+    {
+      "url": "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_3__en.htm",
+      "passages": "Mount Doom: 2474-2477, Gollum bite/fall and Sam carrying Frodo"
+    },
+    {
+      "url": "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_1__en.htm",
+      "passages": "The Ring Goes South: 4277-4280, Nine Walkers; Flight to the Ford: 3269, Asfaloth"
+    },
+    {
+      "url": "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_2__en.htm",
+      "passages": "1450 Shadowfax and Hasufel; 1610 Brego; 2703-2714 Gandalf and Pippin"
+    }
+  ],
+  "lead_verification": "Lead reread final Q2 body/source support and Q3 source support; actual file SHA confirmed. Native reviewer checked all three articles and canonical bindings.",
+  "limitations": [
+    "Primary authored texts accessed through third-party e-text mirrors.",
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No export, parity check, runtime tests, canonical import or production publication in this batch."
+  ],
+  "publication_gate": "PENDING"
+}
