@@ -1,0 +1,49 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/constellations-aqr-aur-20261007.json",
+  "sha256": "9ED8D52A04158984D8D0D1FDFB146557CBDA0AE4B17173890FE2883ACA017120",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-bb39b303bec648879113438bb70b4512",
+  "hub_evidence_message": 15353,
+  "articles_reviewed": 2,
+  "target_ids": [
+    "aqr",
+    "aur"
+  ],
+  "unicode_letter_word_counts": [
+    169,
+    167
+  ],
+  "word_count_rule": "Unicode letter tokens; numbers excluded; hyphenated words joined.",
+  "sources_per_article": [
+    3,
+    3
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    "https://iauarchive.eso.org/static/public/constellations/pdf/AQR.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-2/",
+    "https://iauarchive.eso.org/public/themes/constellations/",
+    "https://iauarchive.eso.org/static/public/constellations/pdf/AUR.pdf",
+    "https://www.jpl.nasa.gov/images/pia13447-wise-catches-a-runaway-star-in-flames/"
+  ],
+  "corrections": [
+    "Replaced unavailable NASA M36 source with actual JPL AE Aurigae source before delegation.",
+    "Lead found and removed invented AE Aurigae bow-shock/compressed-gas claims not supported by the linked source.",
+    "Rewrote both bodies with substantive astronomy: M2 size/population/gravity/image ranges and qualified observing; AE Aurigae likely birth reconstruction, binary encounter, ionized gas, heated/reflecting dust and assigned IR colors.",
+    "Kept reconstructed origin qualified; avoided literal stellar-surface collision or visible fire."
+  ],
+  "lead_verification": "Read all initial/final article text and source supports; opened NASA M2/JPL AE Aurigae and IAU AQR/AUR PDF endpoints including screenshots; audited exact targets/tags/status/counts/hash and single EOF LF.",
+  "limitations": [
+    "AUR PDF had no text extraction for checker; endpoint opened, lead used PDF screenshot. No unsupported chart geometry stated.",
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No canonical import/export parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
