@@ -1,0 +1,77 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/harry-potter-core-20261007.json",
+  "sha256": "8327C3C796C86D9B96A8C4BF110ACF3EF6B00DC422A9DEDA2E9F8D0DDCB34B11",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-640a4ee8e979412c848ddf2f3a6c936f",
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "author_session": "session-018864f5fe3842519aab70316ad9e08b",
+  "hub_task": "task-166f4eb0f4204cedbad5a8a31ac432cc",
+  "articles_reviewed": 3,
+  "exact_question_revisions": 3,
+  "sources_per_article": [
+    2,
+    2,
+    2
+  ],
+  "tags_valid": true,
+  "source_evidence": [
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-001",
+      "verdict": "accept",
+      "opened_sources": [
+        {
+          "url": "https://www.harrypotter.com/writing-by-jk-rowling/the-marauders-map",
+          "supports": "заклинание Гомункулуса и отслеживание передвижений каждого человека в замке"
+        },
+        {
+          "url": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement",
+          "supports": "исключение: Карта мародёров не показывает, кто находится внутри Выручай-комнаты"
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-003",
+      "verdict": "accept",
+      "opened_sources": [
+        {
+          "url": "https://www.harrypotter.com/features/moony-wormtail-padfoot-prongs-marauders-illustrations",
+          "supports": "прямое сопоставление Remus Lupin — Moony, Peter Pettigrew — Wormtail, Sirius Black — Padfoot, James Potter — Prongs"
+        },
+        {
+          "url": "https://www.harrypotter.com/features/everything-we-know-about-the-marauders",
+          "supports": "ликантропия Ремуса, формы Джеймса, Сириуса и Питера и происхождение прозвища Moony"
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-004",
+      "verdict": "accept",
+      "opened_sources": [
+        {
+          "url": "https://www.harrypotter.com/fact-file/plants-and-potions/polyjuice-potion",
+          "supports": "физический облик другого человека, человеческие превращения, требуемая часть человека и сложность рецепта"
+        },
+        {
+          "url": "https://www.harrypotter.com/writing-by-jk-rowling/polyjuice-potion",
+          "supports": "временное действие, ограничение на смену вида и пояснение автора о принципе ингредиентов"
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    "Removed unsupported Russian rendering of Padfoot; retained official English nickname.",
+    "Corrected source-support typo to ликантропия."
+  ],
+  "lead_verification": "Lead read every article/actual option, independently opened all six official source pages, confirmed final draft SHA and all three canonical question revisions.",
+  "limitations": [
+    "Native editorial review does not satisfy independent-provider Hub acceptance.",
+    "No canonical import, export, parity/runtime tests, build or production publication in this batch."
+  ],
+  "publication_gate": "PENDING",
+  "semantic_review_sha256": "E62E44B178893DAB9892EABFA7B5D1F8D262DEECA224366F58D6028DEC258637",
+  "formatting_note": "Removed one trailing blank line for git diff --check; JSON content unchanged. Prior semantic review SHA retained."
+}
