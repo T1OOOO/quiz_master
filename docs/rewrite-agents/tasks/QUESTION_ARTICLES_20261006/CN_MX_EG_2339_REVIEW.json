@@ -1,0 +1,92 @@
+{
+  "task_id": "task-c0b5135379d947afb4695b690ce38ab3",
+  "review_kind": "native editorial source, factual, and binding review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-15e3c7deff234331a5323333c8b7b0bc",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/country-flags-cn-mx-eg-20261008.json",
+    "sha256": "5b2e21466511ca2ba96499e75fcf537ad5ea83c6a964252e180447f153f3d9de"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "Catalog map_target_ids contains CN, MX, and EG.",
+    "tag_ids": "country:cn, country:mx, country:eg, domain:geography, and topic:flag exist in metadata/tags.v1.json.",
+    "question_refs": "All three arrays are empty; no nonexistent binding was asserted.",
+    "duplicate_draft_targets": "A scan of study/question_articles/drafts for quizipedia:country:CN|MX|EG found only this input file.",
+    "word_limit": "All bodies meet the packet's 100–220 whitespace-word range."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:country:CN",
+      "article_sha256": "afcfa5e45701b1c3204e851aefbaef91cad97dbda09bb67ec710d2ecfc5a443a",
+      "word_count": 160,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://english.www.gov.cn/archive/laws_regulations/2014/08/23/content_281474982987458.htm",
+          "opened": true,
+          "finding": "State Council archive labels this as the Constitution text amended through 2004; Article 136 directly states that the PRC national flag is a red flag with five stars."
+        },
+        {
+          "url": "https://english.court.gov.cn/2016-04/14/c_1170197.htm",
+          "opened": true,
+          "finding": "The Supreme People's Court publication appendix specifies a red rectangular flag, five yellow five-pointed stars in the upper-left with the staff on the left, one larger star and four smaller stars to its right; it expressly explains how directions reverse when the staff is on the right."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately uses flag orientation to distinguish the red field and five-star group, without adding unsupported color symbolism.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:MX",
+      "article_sha256": "ccb600390d525457a040fae0bd5b360710b8c0fe63e37f0611cca45814ab6455",
+      "word_count": 146,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://ordenjuridico.gob.mx/Documentos/Federal/html/wo13243.html",
+          "opened": true,
+          "finding": "Article 3 specifies three equal vertical bands from the staff in green, white, red order and the national arms centered in the white band. Article 2 describes the eagle, flowering nopal on a rock emerging from a lake, curved snake held in beak and claw, and oak/laurel branches."
+        },
+        {
+          "url": "https://embamex.sre.gob.mx/ecuador/images/Boletines/enerofebrero2016.pdf",
+          "opened": true,
+          "finding": "The Mexican Embassy newsletter page 7 states that the current flag was adopted by decree of 16 September 1968, places the arms in the white band, links the scene to the Mexica journey and founding of Tenochtitlan, and identifies the current 1968 design."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article correctly treats the arms as the distinguishing feature of the tricolor and presents the foundation account as the diplomatic source's historical/legendary framing.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:EG",
+      "article_sha256": "b7db52e01a9aa65703f726feccc0ed2f8bfa044fa87842d10d7e7ff48cebc355",
+      "word_count": 143,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://egyptembassy.net/egypt-today/egypts-government/progressive-constitution/",
+          "opened": true,
+          "finding": "Embassy Constitution page Article 223 lists black, white, and red and an Eagle of Salah El Din in golden yellow as the Egyptian national flag elements."
+        },
+        {
+          "url": "https://www.presidency.eg/ar/%D9%85%D8%B5%D8%B1/%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%89/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D9%8A/",
+          "opened": true,
+          "finding": "The Presidency page states red at the top, white in the middle with the golden Eagle of Saladin, and black at the bottom; it is also the article's stated official source for color interpretations."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article states the geometric recognition facts directly and limits color meanings to the Presidency source rather than asserting a universal flag code.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for editorial factual/source/binding scope of the stated final input SHA.",
+  "limits": [
+    "A covering report-path lease was requested but returned queued/blank; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, or release/publication gate."
+  ]
+}

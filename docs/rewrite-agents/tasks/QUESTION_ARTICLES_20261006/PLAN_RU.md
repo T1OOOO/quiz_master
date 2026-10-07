@@ -284,3 +284,28 @@ US_IN_ZA_2243_REVIEW.json сохраняет исходные замечания
 не выполнялись без допуска. Это не ревью другим провайдером.
 В английский пакет добавлен короткий запускной промпт для Claude/Gemini:
 новая READY и предложение, без повторного выполнения завершённых заданий.
+
+Heartbeat23:39UTC: secure26OPEN/no new (latest08:19:08UTC), production unchanged.
+Managed Claude release reviewer remains QUEUED, no running Claude/Gemini claimed.
+Export request3480 QUEUED then released without execution; lightweight path requests
+also released. Existing user exception used only for bounded text edits.
+Actual native writer accepted taskfbed55e0 Hub17098 and produced CN/MX/EG;
+its original SHAac283785 had explicit source-access limitations. Lead replaced
+unavailable citations with opened official CN court appendix, Mexican Segob law
+and embassy newsletter p7, Egyptian embassy Constitution; narrowed unsupported
+EG proportions and attributed Mexican founding legend. Final SHA
+5b2e21466511ca2ba96499e75fcf537ad5ea83c6a964252e180447f153f3d9de,
+CN160/MX146/EG143 words. Final independent editorial review taskc0b51353
+accepted Hub17144; final verdict pending.
+Lead wrote Scl/Sgr drafts, independently reviewed task19442256 (accepted17117).
+Both ACCEPT; exact input SHAb41e56308a466b96126ffa6d574bde52434a1317ee579b23221c72f30c016030.
+SCL_SGR_2339_REVIEW.json SHAcc0fa7807266d131ea6dc92962bcab365fae5e301a47639950dd2bb93fa003ea.
+Opened IAU/ESO/NASA JPL sources, valid catalog IDs/tags and no duplicate bindings.
+All five remain draft; formal export/coverage/runtime/publication and
+independent different-provider release gate pending. Generated accepted catalog
+count remains30. JSON parsing, word counts and diff whitespace checked only;
+no test/build/browser automation without resource grant.
+Shared ripgrep Windows quoting failed in actual calls; native rg fallback used,
+host operations defect reported17091.
+
+Финальное нативное ревью CN/MX/EG завершено Hub17165/17166: все три ACCEPT. Все шесть официальных ссылок независимо открыты. CN_MX_EG_2339_REVIEW.json SHA10984f91f780b60759fef96be195a553e83d10b0ac7a1af28c3a3517c4d4bf48; final input SHA5b2e2146 неизменён. Все пять статей готовы редакционно; statusdraft сохраняется до формальных последующих этапов.

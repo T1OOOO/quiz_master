@@ -1,0 +1,72 @@
+{
+  "task_id": "task-1944225695b14141a6e05c79078617a3",
+  "review_kind": "native editorial source, factual, and binding review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-15e3c7deff234331a5323333c8b7b0bc",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/constellations-scl-sgr-20261008.json",
+    "sha256": "b41e56308a466b96126ffa6d574bde52434a1317ee579b23221c72f30c016030"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "Catalog constellation targets contain scl and sgr.",
+    "tag_ids": "domain:science, skill:recognition, and topic:astronomy exist in metadata/tags.v1.json.",
+    "question_refs": "Both arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:constellation:scl|sgr found only this input file.",
+    "word_limit": "Both bodies meet the helper batch's 100–220 whitespace-word range."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:scl",
+      "article_sha256": "b4a0c5762054b6cdbb9c39014370c6826bf0b0a020ac2c206eeb5e9e360df524",
+      "word_count": 168,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU states that it recognizes 88 constellations, defines them as bounded sky areas, and distinguishes them from informal line patterns; the table lists Sculptor with abbreviation Scl. It also says apparent star groupings generally have no physical connection."
+        },
+        {
+          "url": "https://www.eso.org/public/news/eso2510/",
+          "opened": true,
+          "finding": "The ESO release is dated 18 June 2025 and identifies NGC 253 as the Sculptor Galaxy, 11 million light-years away. It reports over 50 MUSE/VLT observing hours, more than 100 exposures, and a mapped width of about 65,000 light-years; its thousand-color data support statements about stars, gas, dust, age, composition, and motion. ESO also labels its image NGC 253 as in Sculptor."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article correctly distinguishes the formal sky region, its conventional drawn pattern, and the separate galaxy NGC 253. Its 2025 observation facts are attributed to the dated ESO release and do not turn an apparent direction into a physical association.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:sgr",
+      "article_sha256": "addac33e22d79a28bd261c6776a98186b34a36eb34420ae0a18b2b513c6cd86f",
+      "word_count": 182,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Sagittarius with abbreviation Sgr and defines constellations as bounded sky regions rather than physically connected objects; no stick-figure rendering is formally defined."
+        },
+        {
+          "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/telescopes-get-extraordinary-view-of-milky-ways-black-hole/",
+          "opened": true,
+          "finding": "NASA JPL identifies Sagittarius A* as the Milky Way's central supermassive black hole, with about four million solar masses and a distance over 26,000 light-years. It explains that black holes are detected through nearby matter, and that EHT combines radio-wave-capable telescopes worldwide into an Earth-size virtual telescope to image matter surrounding Sagittarius A* and reveal its silhouette."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article correctly separates the Sagittarius sky region, the Milky Way, and Sagittarius A*. It accurately describes the EHT as a virtual radio telescope and its output as an image of surrounding emitting gas rather than an optical view of a stellar surface.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final editorial factual/source/binding scope of the stated input SHA.",
+  "limits": [
+    "A covering report-path lease was requested but returned queued/blank; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, or release/publication gate."
+  ]
+}
