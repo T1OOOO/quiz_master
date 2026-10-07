@@ -1,0 +1,62 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/terminator-core-20261007.json",
+  "sha256": "D4BAB7D8ED4F5ABCADB29ED013ECF61BD3D9050AB086C76465CE7D1E90A5C477",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-57ecf917b360437eb79ab8304852c645",
+  "hub_evidence_message": 14199,
+  "articles_reviewed": 3,
+  "exact_question_revisions": 3,
+  "question_ids": [
+    "theme-terminator-003",
+    "theme-terminator-004",
+    "theme-terminator-005"
+  ],
+  "russian_word_counts": [
+    157,
+    151,
+    182
+  ],
+  "sources_per_article": [
+    2,
+    2,
+    2
+  ],
+  "tags_valid": true,
+  "blind_solve_option_positions": [
+    1,
+    3,
+    3
+  ],
+  "opened_sources": [
+    {
+      "url": "https://catalog.afi.com/Film/57224-THE-TERMINATOR",
+      "kind": "Official film catalog synopsis",
+      "supports": "Telephone directory search; tanker explosion, factory pipe bomb, hydraulic press; Sarah pregnant with Kyle's son."
+    },
+    {
+      "url": "https://overblack.org/script/the-terminator-1984",
+      "kind": "Original screenplay mirrored by a third-party archive",
+      "supports": "Phone-book scene, press destruction, Sarah's final tape identifying Kyle as John's father.",
+      "limitation": "Screenplay draft differences are not treated as facts about the released film."
+    }
+  ],
+  "corrections": [
+    "Clarified tanker, factory bomb, then press sequence.",
+    "Removed editorial process wording from the user article.",
+    "Used established parent-child relationship instead of unsupported age/generation inference."
+  ],
+  "lead_verification": "Lead read final articles and actual options, opened both sources, verified raw SHA, exact revisions, existing taxonomy IDs, draft status and single final LF.",
+  "limitations": [
+    "AFI's unnecessary future-year discrepancy was detected and omitted; catalog is not treated as infallible.",
+    "Native editorial review does not satisfy independent-provider Hub acceptance.",
+    "No canonical import, export/parity, runtime tests, build or production publication."
+  ],
+  "publication_gate": "PENDING"
+}
