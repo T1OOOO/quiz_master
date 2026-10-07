@@ -57,8 +57,10 @@ def build():
     assert {row['id'] for row in countries if row['id'] in selected} == selected
     credits = [dict(id='natural-earth', attribution='Natural Earth, 1:110m Admin 0 Countries. Generalized de facto boundaries; background features do not define the quiz country list.',
                     source_url='https://www.naturalearthdata.com/', license='Public domain', license_url='https://www.naturalearthdata.com/about/terms-of-use/'),
-               dict(id='hyg', attribution='HYG Database v4.1, David Nash / Astronexus. 56-star subset, fixed J2000 coordinates; Quiz Master editorial connecting lines. Adapted data and patterns: CC BY-SA 4.0.',
-                    source_url='https://github.com/astronexus/HYG-Database', license='CC BY-SA 4.0', license_url='https://creativecommons.org/licenses/by-sa/4.0/')]
+               dict(id='hyg', attribution=f'HYG Database v4.1, David Nash / Astronexus. {len(stars)}-star subset, fixed J2000 coordinates; eight preserved Quiz Master pilot patterns. Adapted data: CC BY-SA 4.0.',
+                    source_url='https://github.com/astronexus/HYG-Database', license='CC BY-SA 4.0', license_url='https://creativecommons.org/licenses/by-sa/4.0/'),
+               dict(id='sky-modern', attribution='HYG Database v4.1, David Nash / Astronexus, J2000 coordinates. Stellarium team, modern sky-culture star-figure data. Adapted data and connecting lines: CC BY-SA 4.0. No constellation illustrations reused; connecting lines are not IAU boundaries.',
+                    source_url='https://github.com/Stellarium/stellarium/tree/e835ad6ee5171c9deac2bdb8f1d3003085691197/skycultures/modern', license='CC BY-SA 4.0', license_url='https://creativecommons.org/licenses/by-sa/4.0/')]
     for image in images:
         credits.append(dict(id=image['id'], attribution=image['creator']+'. '+image['modification'],
                             source_url=image['source_url'], license=image['license'], license_url=image['license_url']))
@@ -81,8 +83,9 @@ def build():
         row.update(stars=[{key:value for key,value in stars[str(sid)].items() if key in ('id','name','ra_hours','dec_degrees','magnitude')}
                           for sid in target['star_ids']],
                    lines=[[str(a),str(b)] for chain in target['chains'] for a,b in zip(chain,chain[1:])],
-                   tag_ids=['domain:science','skill:recognition','topic:astronomy'], credit_id='hyg',
-                   source_url='https://github.com/astronexus/HYG-Database')
+                   tag_ids=['domain:science','skill:recognition','topic:astronomy'],
+                   credit_id='sky-modern' if target.get('line_source')=='stellarium-modern' else 'hyg',
+                   source_url=target.get('source_url','https://github.com/astronexus/HYG-Database'))
         constellations.append(row)
     for row in countries+anatomy+landmarks+constellations:
         assert set(row.get('tag_ids',[])) <= known_tags, row['id']
@@ -107,4 +110,6 @@ if __name__ == '__main__':
     (OUT/'catalog.json').write_bytes(encoded(catalog))
     (OUT/'manifest.json').write_bytes(encoded(manifest))
     (BASE/'manifest.json').write_bytes(encoded(manifest))
-    print('Built',len(catalog['countries']),'background features; 20/6/6/8 learning targets')
+    print('Built',len(catalog['countries']),'background features;',
+          len(catalog['map_target_ids']),len(catalog['anatomy']['targets']),
+          len(catalog['landmarks']),len(catalog['constellations']),'learning targets')

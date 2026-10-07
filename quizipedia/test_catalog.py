@@ -47,8 +47,8 @@ class CatalogTests(unittest.TestCase):
     def test_target_metadata_credit_and_tag_references(self):
         targets = [r for r in self.catalog['countries'] if r['id'] in self.catalog['map_target_ids']]
         targets += self.catalog['anatomy']['targets']+self.catalog['landmarks']+self.catalog['constellations']
-        self.assertEqual(40,len(targets))
-        self.assertEqual(40,len({r['id'] for r in targets}))
+        self.assertEqual(120,len(targets))
+        self.assertEqual(120,len({r['id'] for r in targets}))
         tags = {t['id'] for t in load(ROOT/'metadata/tags.v1.json')['tags']}
         credits = {c['id'] for c in self.catalog['credits']}
         for row in targets:
@@ -78,6 +78,15 @@ class CatalogTests(unittest.TestCase):
                 self.assertIn(b,stars)
                 self.assertNotEqual(a,b)
         self.assertEqual(set(source),seen)
+
+    def test_all_iau_constellations_present_with_single_serpens(self):
+        research = load(BASE/'research/constellations-expansion.json')
+        expected = {row['id'] for row in research['constellation_records']}
+        actual = {row['id'] for row in self.catalog['constellations']}
+        self.assertEqual(88, len(expected))
+        self.assertEqual(expected, actual)
+        self.assertEqual(1, sum(row['id'] == 'ser' for row in self.catalog['constellations']))
+        self.assertTrue(set(research['scope']['preserved_existing_ids']) <= actual)
 
     def test_real_rasters_manifest_and_hotspot_image_space(self):
         for row in self.manifest['images']:
