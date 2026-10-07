@@ -1,0 +1,55 @@
+{
+  "schema_version": "qm-draft-editorial-review/v1",
+  "reviewed_at": "2026-10-07",
+  "draft": "study/question_articles/drafts/constellations-and-dra-cep-20261007.json",
+  "sha256": "D0AE83AFAC8C0A1ED0A3D8ABE72002A003E279FFBDD5EE098598279DD7BFBF01",
+  "verdict": "ACCEPT_DRAFT",
+  "reviewer_session": "session-96be15e7d4db4e309fcf220b0a3e45bc",
+  "provider": "codex",
+  "provider_identity_verified": false,
+  "reviewer_runtime": "native Codex helper; independent of author",
+  "author_session": "session-657b1a3becc34cfc96eba36d64ef8c78",
+  "hub_task": "task-4b402179161840a8bc0ef73933f8faab",
+  "hub_evidence_message": 15069,
+  "articles_reviewed": 3,
+  "target_ids": [
+    "and",
+    "dra",
+    "cep"
+  ],
+  "unicode_letter_word_counts": [
+    157,
+    155,
+    158
+  ],
+  "word_count_rule": "Unicode letter tokens, hyphens joined; numeric tokens excluded. Lead alphanumeric counts: 159/158/158.",
+  "sources_per_article": [
+    3,
+    3,
+    4
+  ],
+  "tags_valid": true,
+  "opened_sources": [
+    "https://iauarchive.eso.org/static/public/constellations/pdf/AND.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/",
+    "https://iauarchive.eso.org/public/themes/constellations/",
+    "https://iauarchive.eso.org/static/public/constellations/pdf/DRA.pdf",
+    "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-6/",
+    "https://iauarchive.eso.org/static/public/constellations/pdf/CEP.pdf",
+    "https://www.jpl.nasa.gov/news/cosmology-standard-candle-not-so-standard-after-all/"
+  ],
+  "corrections": [
+    "Replaced generic widget implementation prose with concrete source-backed astrophysics.",
+    "Corrected planetary-nebula terminology from photographs to early telescopic resemblance.",
+    "Corrected M31 location inside Andromeda, not beside the constellation region.",
+    "Identified assigned elemental colors as the Hubble 1994 image.",
+    "Replaced literal backtick-n with real paragraph breaks; added IAU region definition and JPL period-luminosity evidence."
+  ],
+  "lead_verification": "Read all final articles; opened IAU general and all three PDF charts including screenshots, NASA M31/Caldwell6/Photojournal and JPL; audited exact target refs, existing tags, status, source counts, word counts, raw hash and single EOF LF.",
+  "limitations": [
+    "Checker could not extract Photojournal body; lead opened it and JPL independently supports Cepheid/wind claims.",
+    "Native editorial review does not satisfy different-provider Hub acceptance.",
+    "No import/export parity, runtime tests, build or publication."
+  ],
+  "publication_gate": "PENDING"
+}
