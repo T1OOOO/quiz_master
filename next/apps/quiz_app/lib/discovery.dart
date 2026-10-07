@@ -1,5 +1,17 @@
 part of 'main.dart';
 
+int questionRoundCount(int questions) {
+  if (questions <= 0) return 0;
+  final fullRounds = questions ~/ 20;
+  return fullRounds == 0 ? 1 : fullRounds;
+}
+
+int questionCountInRound(int questions, int round) {
+  final count = questionRoundCount(questions);
+  if (round < 0 || round >= count) return 0;
+  return round == count - 1 ? questions - round * 20 : 20;
+}
+
 class CatalogPack {
   const CatalogPack(
     this.id,
@@ -368,16 +380,16 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                       for (
                                         var round = 0;
                                         round <
-                                            (pack.questionsFor(
-                                                      widget.difficulty,
-                                                    ) +
-                                                    19) ~/
-                                                20;
+                                            questionRoundCount(
+                                              pack.questionsFor(
+                                                widget.difficulty,
+                                              ),
+                                            );
                                         round++
                                       )
                                         ActionChip(
                                           label: Text(
-                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions((pack.questionsFor(widget.difficulty) - round * 20).clamp(1, 20))}',
+                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions(questionCountInRound(pack.questionsFor(widget.difficulty), round))}',
                                           ),
                                           onPressed: () => context.go(
                                             _quizLocation(

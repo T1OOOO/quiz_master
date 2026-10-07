@@ -106,7 +106,7 @@ func TestPostgresDifficultyRoundsPersistFilteredShuffledPartitions(t *testing.T)
 		}
 	}
 	seen := map[string]bool{}
-	for round, want := range []int{20, 20, 1} {
+	for round, want := range []int{20, 21} {
 		a, e := service.StartDifficultyRound(ctx, owner.ID, bundle.Quiz.QuizID, "easy", round)
 		if e != nil {
 			t.Fatal(e)
@@ -184,7 +184,7 @@ func TestPostgresDifficultyRoundsPersistFilteredShuffledPartitions(t *testing.T)
 	if !reflect.DeepEqual(original, service.Catalog()) {
 		t.Fatal("round selection mutated full catalog")
 	}
-	if _, err = service.StartDifficultyRound(ctx, owner.ID, bundle.Quiz.QuizID, "easy", 3); !errors.Is(err, ErrValidation) {
+	if _, err = service.StartDifficultyRound(ctx, owner.ID, bundle.Quiz.QuizID, "easy", 2); !errors.Is(err, ErrValidation) {
 		t.Fatalf("past-tail round: %v", err)
 	}
 	if _, err = service.CatalogForDifficulty(bundle.Quiz.QuizID, "nightmare"); !errors.Is(err, ErrNoMatch) {

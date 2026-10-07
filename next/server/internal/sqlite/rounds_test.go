@@ -35,7 +35,7 @@ func TestRoundsCoverEveryQuestionOnceAndPinShuffledSnapshots(t *testing.T) {
 		t.Fatal(err)
 	}
 	seen := map[string]bool{}
-	for round, want := range []int{20, 5} {
+	for round, want := range []int{25} {
 		a, err := rounds.StartRound(ctx, guest.Principal.ID, s.bundle.Quiz.QuizID, round)
 		if err != nil {
 			t.Fatal(err)
@@ -63,7 +63,7 @@ func TestRoundsCoverEveryQuestionOnceAndPinShuffledSnapshots(t *testing.T) {
 	if len(seen) != 25 {
 		t.Fatal("source questions lost")
 	}
-	for _, bad := range []int{-1, 2, 2147483647} {
+	for _, bad := range []int{-1, 1, 2, 2147483647} {
 		if _, err = rounds.StartRound(ctx, guest.Principal.ID, s.bundle.Quiz.QuizID, bad); !errors.Is(err, attempts.ErrValidation) {
 			t.Fatal("invalid round accepted")
 		}
@@ -80,7 +80,7 @@ func TestRoundsCoverEveryQuestionOnceAndPinShuffledSnapshots(t *testing.T) {
 		t.Fatal("question order not shuffled")
 	}
 	var stored int
-	if err = db.QueryRow("select count(*) from attempt_questions where attempt_id=?", a.AttemptID).Scan(&stored); err != nil || stored != 20 {
+	if err = db.QueryRow("select count(*) from attempt_questions where attempt_id=?", a.AttemptID).Scan(&stored); err != nil || stored != 25 {
 		t.Fatal("round snapshot not pinned")
 	}
 }

@@ -246,7 +246,8 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                   const SizedBox(height: 8),
                   if (widget.quizId != null &&
                       widget.round != null &&
-                      (widget.round! + 1) * 20 < catalog.quiz.questions.length)
+                      widget.round! + 1 <
+                          questionRoundCount(catalog.quiz.questions.length))
                     FilledButton(
                       onPressed: () => context.go(
                         _quizLocation(

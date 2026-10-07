@@ -58,12 +58,27 @@ func SelectDifficulty(quiz content.PublicQuiz, difficulty string) (content.Publi
 	return selected, nil
 }
 
-// QuestionRound returns a copy of one zero-based 20-question partition.
+// QuestionRoundCount returns the number of rounds in a selected question set.
+func QuestionRoundCount(questionCount int) int {
+	if questionCount <= 0 {
+		return 0
+	}
+	if count := questionCount / 20; count > 0 {
+		return count
+	}
+	return 1
+}
+
+// QuestionRound returns a copy of one zero-based 20-question partition;
+// the final round absorbs any remainder.
 func QuestionRound(questions []content.PublicQuestion, round int) ([]content.PublicQuestion, error) {
-	if round < 0 || round >= (len(questions)+19)/20 {
+	if round < 0 || round >= QuestionRoundCount(len(questions)) {
 		return nil, ErrValidation
 	}
-	end := min((round+1)*20, len(questions))
+	end := (round + 1) * 20
+	if round == QuestionRoundCount(len(questions))-1 {
+		end = len(questions)
+	}
 	return append([]content.PublicQuestion(nil), questions[round*20:end]...), nil
 }
 

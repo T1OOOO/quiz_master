@@ -123,7 +123,7 @@ func TestDifficultySelectionPartitionsFilteredPackWithoutRepeats(t *testing.T) {
 		t.Fatalf("catalog/source identity agreement = %+v, %v", catalog, err)
 	}
 	seen := map[string]bool{}
-	for round, want := range []int{20, 20, 1} {
+	for round, want := range []int{20, 21} {
 		questions, err := QuestionRound(filtered.Questions, round)
 		if err != nil || len(questions) != want {
 			t.Fatalf("round %d = %d, %v", round, len(questions), err)
@@ -138,11 +138,65 @@ func TestDifficultySelectionPartitionsFilteredPackWithoutRepeats(t *testing.T) {
 	if len(seen) != len(filtered.Questions) {
 		t.Fatalf("partition retained %d of %d", len(seen), len(filtered.Questions))
 	}
-	if _, err = QuestionRound(filtered.Questions, 3); !errors.Is(err, ErrValidation) {
+	if _, err = QuestionRound(filtered.Questions, 2); !errors.Is(err, ErrValidation) {
 		t.Fatalf("past tail round = %v", err)
 	}
 	if _, err = SelectDifficulty(quiz, "nightmare"); !errors.Is(err, ErrNoMatch) {
 		t.Fatalf("empty selected catalog = %v", err)
+	}
+}
+
+func TestQuestionRoundBoundaries(t *testing.T) {
+	for _, tt := range []struct {
+		questionCount int
+		sizes         []int
+	}{
+		{0, nil}, {1, []int{1}}, {19, []int{19}}, {20, []int{20}},
+		{21, []int{21}}, {39, []int{39}}, {40, []int{20, 20}},
+		{41, []int{20, 21}}, {61, []int{20, 20, 21}},
+	} {
+		t.Run(fmt.Sprint(tt.questionCount), func(t *testing.T) {
+			questions := make([]content.PublicQuestion, tt.questionCount)
+			for i := range questions {
+				questions[i].QuestionID = fmt.Sprintf("q-%02d", i)
+			}
+			if got := QuestionRoundCount(tt.questionCount); got != len(tt.sizes) {
+				t.Fatalf("round count = %d, want %d", got, len(tt.sizes))
+			}
+			seen := 0
+			for round, want := range tt.sizes {
+				got, err := QuestionRound(questions, round)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if len(got) != want {
+					t.Fatalf("round %d count = %d, want %d", round, len(got), want)
+				}
+				for i, question := range got {
+					if question.QuestionID != questions[seen+i].QuestionID {
+						t.Fatalf("round %d position %d = %q", round, i, question.QuestionID)
+					}
+				}
+				seen += len(got)
+			}
+			if seen != tt.questionCount {
+				t.Fatalf("partitioned %d of %d questions", seen, tt.questionCount)
+			}
+			for _, round := range []int{-1, len(tt.sizes)} {
+				if _, err := QuestionRound(questions, round); !errors.Is(err, ErrValidation) {
+					t.Errorf("invalid round %d: %v", round, err)
+				}
+			}
+		})
+	}
+	questions := []content.PublicQuestion{{QuestionID: "original"}}
+	copy, err := QuestionRound(questions, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	copy[0].QuestionID = "changed"
+	if questions[0].QuestionID != "original" {
+		t.Fatal("round copy mutated source questions")
 	}
 }
 
