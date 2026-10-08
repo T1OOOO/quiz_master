@@ -1,0 +1,80 @@
+{
+  "acceptance": "Distinct author/reviewer, primarysourcevisits+exactcurrenthashes+findings, no inventedreviews/gates.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-6468a45aa629470cb76fd85da497669e",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Read-only independently review frozen study/question_articles/drafts/constellations-cra-crb-20261008.json. You did not author these objects. Fullcontext English ARTICLE_CMI_COL_20261008_EN.md adapts CRA/CRB. Actually open all sixunique primarysources includingESO0031,ESO1109image/news,NASA2024, MNRAS2026. Verify explicit constellation placement, R/TYreflection, shockvsreflection distinction, jetvelocity, TCrBmechanism/dates/distance/qualifiedrecurrence; ensure2026sourceactualexists and exactinterval notcontradicted. No inventedcurrenteruption/unsupported prediction. Return accept/revise perwholeobjecthash SHA256jsonensure_asciiFalse/sort_keysTrue/separatorscomma-colonUTF8, wordcounts/linkcounts/sourceschecked. No edits/children/heavyoperations/tests/build/browserautomation/git/deploy. HubfreshREADY/explicitoffer,readinteractivelease,releaseQUEUEDbeforeauthorizedlightread/webexception. Sameactualproviderreview only draftacceptance, not different-providerrelease.",
+  "created_at": 1791480189.2777567,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-46f266b221414c89aae2dc4e5b9e814b",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "actually_opened_urls": [
+      "https://iauarchive.eso.org/public/themes/constellations/",
+      "https://www.eso.org/public/italy/news/eso0031/",
+      "https://www.eso.org/public/images/eso1109a/",
+      "https://www.eso.org/public/news/eso1109/",
+      "https://www.nasa.gov/centers-and-facilities/marshall/nasa-global-astronomers-await-rare-nova-explosion/?linkId=459776500",
+      "https://arxiv.org/abs/2607.15245",
+      "https://arxiv.org/html/2607.15245v1"
+    ],
+    "evidence": [
+      {
+        "check": "Current draft object hashes and lengths",
+        "result": "CRA sha256=55f23c23963292c1ec6914de6524785d09416a53054aec079ab35c9a8ca3ad0a; 155 body words; 4 source links. CRB sha256=7e2aa2aedc590140cda10162aaee5bab94d3ea60a868852cbf56ba21a8da5e42; 178 body words; 3 source links. Canonical SHA-256: serialize each article object as UTF-8 JSON ensure_ascii=false, sort_keys=true, separators=(',',':')."
+      },
+      {
+        "check": "IAU constellation identification",
+        "result": "Opened https://iauarchive.eso.org/public/themes/constellations/ and inspected IAU table lines 968-977. It identifies CrA as Corona Australis / Southern Crown and CrB as Corona Borealis / Northern Crown."
+      },
+      {
+        "check": "CRA physical-region and nebula facts",
+        "result": "Opened https://www.eso.org/public/italy/news/eso0031/ (lines 10-16): places R CrA star-forming complex in Corona Australis; R CrA illuminates reddish nebulosity, TY CrA blue; much of nebulosity reflects stellar light scattered by dust. Opened https://www.eso.org/public/images/eso1109a/ (lines 2-3, 24-28): NGC 6729 metadata places it in Corona Australis and discusses ejected material/speeds up to one million km/h. Opened https://www.eso.org/public/news/eso1109/ (lines 9-14): young-star jets create shocks and HH structures; the distinct upper-left feature is mostly reflected starlight. This verifies the text's region/object distinction and reflection/shock distinction."
+      },
+      {
+        "check": "CRB binary, mechanism, historical dates, and forecast qualification",
+        "result": "Opened NASA https://www.nasa.gov/centers-and-facilities/marshall/nasa-global-astronomers-await-rare-nova-explosion/?linkId=459776500 (lines 251-277): places T CrB in Corona Borealis; supports ~3,000 light-years, white-dwarf/red-giant binary, hydrogen transfer, nova mechanism, white dwarf survival, approximate recurrence, 1946 event, and possibility-qualified September 2024 forecast. Opened arXiv record https://arxiv.org/abs/2607.15245 and full primary paper HTML https://arxiv.org/html/2607.15245v1; the paper was submitted 16 July 2026, states 1866 and 1946 eruptions in §1, conditions scenarios on no eruption by 11 July 2026, and explicitly calls the resulting dates conditional monitoring windows rather than a unique prediction. The article does not claim a post-July event."
+      },
+      {
+        "check": "Nonblocking source metadata note",
+        "result": "The CRB arXiv source_links.supports summary could also mention its explicit historical 1866/1946 evidence; the linked primary URL supports that claim and I verified the full text. This is metadata completeness only, not a factual blocker."
+      }
+    ],
+    "objects": [
+      {
+        "id": "quizipedia:constellation:cra",
+        "issues": [],
+        "link_count": 4,
+        "sha256": "55f23c23963292c1ec6914de6524785d09416a53054aec079ab35c9a8ca3ad0a",
+        "verdict": "accept",
+        "word_count": 155
+      },
+      {
+        "id": "quizipedia:constellation:crb",
+        "issues": [],
+        "link_count": 3,
+        "sha256": "7e2aa2aedc590140cda10162aaee5bab94d3ea60a868852cbf56ba21a8da5e42",
+        "verdict": "accept",
+        "word_count": 178
+      }
+    ],
+    "review_scope": "Read-only independent review of the current CRA/CRB draft objects and linked evidence; no files changed.",
+    "reviewer": "Codex/OpenAI current session session-6468a45aa629470cb76fd85da497669e; exact underlying model variant not exposed",
+    "verdict": "accept"
+  },
+  "root_task_id": "task-46f266b221414c89aae2dc4e5b9e814b",
+  "run_id": "run-f39a8419996649e890486f13d80b0a4a",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: CRA/CRB independent source/hash review",
+  "version": 3
+}

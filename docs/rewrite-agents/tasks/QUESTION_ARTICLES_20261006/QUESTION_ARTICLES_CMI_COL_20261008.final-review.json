@@ -1,0 +1,47 @@
+{
+  "acceptance": "Independent opened-source findings and exactcurrentobjecthashes; no inventedchecks or runtimeapproval.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Independently review frozen constellations-cmi-col-20261008.json; Englishcontext ARTICLE_CMI_COL_20261008_EN.md. Open all six unique primarysources; check every claim, exact targetbinding,150–220words,2–5sources. Root replaced misleadingProcyonB either/or selfcheck beforefreeze. Verify Procyonorbit/masses/p-modes, white dwarfphysics, NGC1808radius4kpcvsdiameter,1997observationvsrelease,explicitconstellation association. Return accept/revise perwholeobject SHA256 canonicaljson ensure_asciiFalse sort_keysTrue separatorscomma/colon UTF8. No edits/children/heavyoperations/tests/browserautomation/git/deploy. Hubacceptandscopedinteractivereadlease; releaseQUEUEDbeforeexistingauthorizedlightread/webexception. Different actual provider releaseapproval remains pending. FreshREADY thenexplicitoffer.",
+  "created_at": 1791480086.0245934,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-1ddb5e8219954b89960bc60253c4e361",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "check": "Frozen object: quizipedia:constellation:cmi",
+        "result": "ACCEPT. Canonical SHA-256 (ensure_ascii=false, sort_keys=true, separators=(',',':'), UTF-8): 5d212be54511509efdb76ff779510553bc5a6794aebe12354c44b7f64973c63d. body_ru=184 whitespace-delimited words; one exact target_ref constellation/cmi; 4 source links."
+      },
+      {
+        "check": "CMI sources opened",
+        "result": "IAU https://iauarchive.eso.org/public/themes/constellations/ lists Canis Minor / CMi and a boundary (lines 913–917); NASA https://science.nasa.gov/universe/stars/types/ identifies Procyon B as a Canis Minor white dwarf and explains white dwarfs as residual cores after envelope loss, dim to the unaided eye (300–307); NTRS https://ntrs.nasa.gov/search.jsp?R=20160002444 reports Procyon A/B visual binary, 40.84-y period based on two decades of Hubble plus historical astrometry, and masses 1.478±0.012 and 0.592±0.006 M_sun (16–18); arXiv https://arxiv.org/abs/astro-ph/0403035 reports 12-night 1999 Procyon A Doppler observations, detected p-modes, and limits of classical asymptotic theory (16–17). Claims distinguish A’s p-modes from system motion and keep constellation as sky area."
+      },
+      {
+        "check": "Frozen object: quizipedia:constellation:col",
+        "result": "ACCEPT. Canonical SHA-256 (same serialization): e365d325fe08501aa6f9e7c665440814da915a1a1ae5400c8838290748d60f9d. body_ru=181 whitespace-delimited words; one exact target_ref constellation/col; 3 source links."
+      },
+      {
+        "check": "COL sources opened",
+        "result": "IAU page lists Columba / Col and boundary (958–962). NASA Hubble https://science.nasa.gov/asset/hubble/barred-spiral-galaxy-ngc-1808/ explicitly classifies NGC 1808 in Columba, distance 40 million light-years (315–324), starburst/barred spiral (345–349), exposure 14 Aug 1997 and release 22 Mar 1998 (331–356). Salak et al. https://arxiv.org/abs/1603.05881 says ALMA mapped central r~4 kpc (radius, not diameter), lists compact CND, r~500-pc ring, gas-rich bar, and spiral arms, and finds non-circular motions tied to nuclear spiral and outflow (16–19). Article wording accurately says \"примерно на 4 килопарсека от ядра\" and does not confuse observation date with release."
+      }
+    ],
+    "summary": "Independent frozen CMI/COL factual, source, ambiguity and quality review: both objects ACCEPT. All six unique linked sources were actually opened; hashes and source-specific evidence included."
+  },
+  "root_task_id": "task-1ddb5e8219954b89960bc60253c4e361",
+  "run_id": "run-55502c7dfdd4407895e76640d65d5957",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: CMI/COL exact independent source review",
+  "version": 3
+}

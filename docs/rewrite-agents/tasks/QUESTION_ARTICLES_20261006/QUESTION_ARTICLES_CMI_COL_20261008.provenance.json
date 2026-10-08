@@ -1,0 +1,79 @@
+{
+  "author_task": {
+    "acceptance": "Two original source-backed schema-valid article objects, all sources actually opened, qualified facts/constellation association and no writes/heavy operations.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\study\\question_articles",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+    ],
+    "assignee": "session-6468a45aa629470cb76fd85da497669e",
+    "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+    "body": "Lead is completing the authorized Quiz Master question-linked library. Read-only assignment: draft exactly two Russian articles, Canis Minor (cmi, Малый Пёс) and Columba (col, Голубь), 150–220 body words each with engaging educational facts and selfchecks, 2–5 actually opened primary links each. Use existing frozen CAM/CIR batch schema qm-question-articles/v1, id quizipedia:constellation:<id>, target_refs kind quizipedia/domain constellation/target_id, question_refs [], tag_ids existing domain:science/skill:recognition/topic:astronomy, status draft. Return batch_json string and source claim evidence in Hub submit; no files edited. Distinguish sky region from physical systems; qualify uncertain/dated distances and discoveries. Explicitly prove object belongs to constellation, no frame-unsafe coordinates. No unsupported mythology or source fabrication. Existing English packet ARTICLE_CAM_CIR_20261008_EN.md supplies full project context; adapt only targets to cmi/col. Follow real Hub task accept, interactive scoped read lease; if QUEUED release before existing human-authorized lightweight read/web exception. No tests/build/browser automation/managed processes/subagents/git/deploy. No secrets or feedback data. Current epoch3; actual previous external jobs cancelled/stale and no vendor review. This is draft only; independent reviewer and root integrate later. Model runtime unavailable; do not claim an override. You are not alone: preserve all peer work. Announce fresh READY; await explicit offer.",
+    "created_at": 1791479784.0762777,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-f59a1efc6f4f442fa1343a49c947a26f",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "batch_json": "{\"schema_version\":\"qm-question-articles/v1\",\"articles\":[{\"id\":\"quizipedia:constellation:cmi\",\"title_ru\":\"Малый Пёс: двойная звезда и её колебания\",\"body_ru\":\"### Область и звезда\\nМалый Пёс (Canis Minor, CMi) — область небесной сферы с установленной границей. Яркая звезда Процион находится в ней, но принадлежность к созвездию означает только направление на небе. Это система из двух физически связанных звёзд: Процион A и гораздо более тусклый белый карлик Процион B. Белый карлик — остаток звезды, исчерпавшей ядерное топливо; рядом с яркой A его особенно трудно увидеть.\\n\\n### Орбита и внутренние колебания\\nПо снимкам «Хаббла» за два десятилетия и старым позиционным наблюдениям исследователи рассчитали орбиту пары: один оборот занимает около 40,84 года. Анализ движения позволил оценить массы компонентов — примерно 1,48 и 0,59 массы Солнца. Процион интересен не только орбитой. Спектральные наблюдения компоненты A зафиксировали колебания, похожие на звуковые волны внутри звезды. Частоты таких пульсаций помогают исследовать её недра; ранняя работа отмечала, что простая теория не полностью описывала найденный спектр. Важно: речь о колебаниях самой звезды A, а не о движении системы по небу. Малый Пёс — координатная область, двойной Процион — физическая пара внутри неё.\\n\\n### Самопроверка\\nПочему Процион B считается частью системы, а не созвездия? Что можно узнать по орбите пары?\",\"target_refs\":[{\"kind\":\"quizipedia\",\"domain\":\"constellation\",\"target_id\":\"cmi\"}],\"question_refs\":[],\"source_links\":[{\"title\":\"IAU — The Constellations\",\"url\":\"https://iauarchive.eso.org/public/themes/constellations/\",\"accessed\":\"2026-10-08\",\"supports\":\"Официальная форма Canis Minor, сокращение CMi и принцип созвездий как участков небесной сферы с установленными границами.\"},{\"title\":\"NASA — Types of Stars\",\"url\":\"https://science.nasa.gov/universe/stars/types/\",\"accessed\":\"2026-10-08\",\"supports\":\"NASA приводит Процион B как пример белого карлика в Canis Minor и объясняет, почему белые карлики трудно увидеть.\"},{\"title\":\"NASA NTRS — Hubble Space Telescope Astrometry of the Procyon System\",\"url\":\"https://ntrs.nasa.gov/search.jsp?R=20160002444\",\"accessed\":\"2026-10-08\",\"supports\":\"Исследование орбиты Procyon A/B по Hubble и исторической астрометрии: период 40,84 года и динамические массы компонентов.\"},{\"title\":\"Martić et al. — p-mode frequencies in solar-like stars: I. Procyon A\",\"url\":\"https://arxiv.org/abs/astro-ph/0403035\",\"accessed\":\"2026-10-08\",\"supports\":\"Первичные спектроскопические наблюдения Procyon A в 1999 году обнаружили p-модовые колебания по доплеровским сдвигам и отметили трудности их описания классической асимптотической теорией.\"}],\"tag_ids\":[\"domain:science\",\"skill:recognition\",\"topic:astronomy\"],\"status\":\"draft\"},{\"id\":\"quizipedia:constellation:col\",\"title_ru\":\"Голубь: вспышка звездообразования в NGC 1808\",\"body_ru\":\"### Область на небе\\nГолубь (Columba, Col) — южный участок небесной сферы. Его границы описывают направление, а не оболочку, связывающую все видимые объекты. В этом созвездии находится NGC 1808 — спиральная галактика с перемычкой, примерно в 40 млн световых лет от нас. «Хаббл» наблюдал её в 1997 году: центральная область проявила бурное рождение звёзд, поэтому галактику относят к типу starburst, или галактик со вспышкой звездообразования.\\n\\n### Что видно в газе\\nРадиотелескоп ALMA исследовал холодный молекулярный газ в центральной области NGC 1808, простирающейся примерно на 4 килопарсека от ядра. Карта выявила четыре структуры: компактный диск вокруг ядра, кольцо радиусом около 500 парсек, газовую перемычку и спиральные рукава. По движению газа команда также обнаружила некруговые потоки, связанные с внутренним спиральным рисунком и выбросом вещества из центра. Это показывает, что звёздообразование и движение газа идут одновременно; снимок одной галактики не раскрывает всю динамику, а радионаблюдения позволяют проследить холодное сырьё для новых звёзд. При этом соседство объектов на небе само по себе не доказывает физическую связь.\\n\\n### Самопроверка\\nЧто является областью неба — Голубь или NGC 1808? Какие четыре компонента молекулярного газа различила карта ALMA?\",\"target_refs\":[{\"kind\":\"quizipedia\",\"domain\":\"constellation\",\"target_id\":\"col\"}],\"question_refs\":[],\"source_links\":[{\"title\":\"IAU — The Constellations\",\"url\":\"https://iauarchive.eso.org/public/themes/constellations/\",\"accessed\":\"2026-10-08\",\"supports\":\"Официальная форма Columba, сокращение Col и таблица границ созвездий небесной сферы.\"},{\"title\":\"NASA Hubble — Barred Spiral Galaxy NGC 1808\",\"url\":\"https://science.nasa.gov/asset/hubble/barred-spiral-galaxy-ngc-1808/\",\"accessed\":\"2026-10-08\",\"supports\":\"Страница Hubble указывает NGC 1808 в Columba, даёт приблизительное расстояние 40 млн световых лет и описывает наблюдение центрального звездообразования в 1997 году.\"},{\"title\":\"Salak et al. — Gas Dynamics and Outflow in the Barred Starburst Galaxy NGC 1808 Revealed with ALMA\",\"url\":\"https://arxiv.org/abs/1603.05881\",\"accessed\":\"2026-10-08\",\"supports\":\"Первичные ALMA CO-наблюдения NGC 1808 разрешили центральный диск, кольцо, перемычку и спиральные рукава; кинематический анализ выявил некруговые движения и истечение газа.\"}],\"tag_ids\":[\"domain:science\",\"skill:recognition\",\"topic:astronomy\"],\"status\":\"draft\"}]}",
+      "evidence": [
+        {
+          "detail": "Opened IAU constellation table and verified Canis Minor/CMi and Columba/Col entries; checked the sky-region definition.",
+          "kind": "source",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "detail": "Opened NASA star-types page; Procyon B is explicitly identified as a white dwarf in Canis Minor.",
+          "kind": "source",
+          "url": "https://science.nasa.gov/universe/stars/types/"
+        },
+        {
+          "detail": "Opened NASA NTRS journal reprint record; verified Procyon binary orbit period and component mass estimates.",
+          "kind": "source",
+          "url": "https://ntrs.nasa.gov/search.jsp?R=20160002444"
+        },
+        {
+          "detail": "Opened original research paper abstract; verified spectroscopy, observation dates, and p-mode result for Procyon A.",
+          "kind": "source",
+          "url": "https://arxiv.org/abs/astro-ph/0403035"
+        },
+        {
+          "detail": "Opened NASA Hubble object page; verified NGC 1808 appears in Columba, the approximate distance, starburst type and Hubble observation date.",
+          "kind": "source",
+          "url": "https://science.nasa.gov/asset/hubble/barred-spiral-galaxy-ngc-1808/"
+        },
+        {
+          "detail": "Opened original ALMA research paper; verified four gas structures and observed non-circular/outflow motions in NGC 1808.",
+          "kind": "source",
+          "url": "https://arxiv.org/abs/1603.05881"
+        }
+      ],
+      "limitations": [
+        "No repository files edited.",
+        "No tests/builds or browser automation run; outside the read-only author assignment.",
+        "Independent source/hash review remains pending and required before acceptance.",
+        "Runtime model variant is not exposed by this interface; no specific model override is claimed."
+      ],
+      "status": "DONE",
+      "summary": "Read-only Russian drafts completed for Canis Minor (cmi) and Columba (col), with IAU identity evidence and opened object-specific primary source pages for both."
+    },
+    "root_task_id": "task-f59a1efc6f4f442fa1343a49c947a26f",
+    "run_id": "run-69dcc6efeaac4289a43a49b6c268aa6c",
+    "skills": [],
+    "state": "SUBMITTED",
+    "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+    "title": "quiz_master-2ln.1: CMI/COL original source-backed articles",
+    "version": 3
+  },
+  "root_corrections": [
+    "Replaced false either/or selfcheck: Procyon B belongs to physical binary and is located in constellation; these descriptions coexist."
+  ],
+  "root_source_checks": [
+    "Actually opened NASA NTRS20160002444: orbit40.84yr and masses1.478/0.592solar",
+    "Actually opened arXiv1603.05881: central radius~4kpc, fourgasstructures and noncircular/outflowmotions"
+  ],
+  "status": "Both current frozen objects accepted by distinct native source/hash reviewer; different-provider and runtime/publication gates pending"
+}
