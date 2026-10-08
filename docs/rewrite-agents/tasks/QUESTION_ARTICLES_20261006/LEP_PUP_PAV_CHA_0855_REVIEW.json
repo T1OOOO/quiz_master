@@ -1,0 +1,146 @@
+{
+  "schema_version": "qm-question-articles-review/v1",
+  "review_id": "LEP_PUP_PAV_CHA_0855_REVIEW",
+  "reviewed_at": "2026-10-08",
+  "reviewer": {
+    "label": "review-article-reader-t2d503c8",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-lep-pup-pav-cha-20261008.json",
+    "sha256": "8bf415417597ed47e357e48c9eb4b09907d1df4bb90fb84fc235143583b17720",
+    "ends_with_single_newline": true
+  },
+  "overall_verdict": "REVISE",
+  "publication_status": "not_authorized_by_this_same-provider_editorial_review",
+  "opened_sources": [
+    {
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "result": "Opened earlier in this reviewer session; IAU defines constellations as bounded sky areas and lists Lepus/Lep, Puppis/Pup, Pavo/Pav and Chamaeleon/Cha. A task-time retry returned a fetch timeout, which did not alter the already opened result."
+    },
+    {
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Extreme_space/Spirograph_Nebula_IC_418",
+      "result": "Opened. ESA supports IC 418 in Lepus at about 2,000 light-years, red-giant outer-layer ejection, its about-0.2-light-year diameter, ultraviolet fluorescence, and uncertain texture origin. It does not state the etymology of 'planetary nebula'."
+    },
+    {
+      "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-46/",
+      "result": "Opened. NASA supports M46 as an open cluster in Puppis and explicitly says NGC 2438 is 2,400 light-years in front of the roughly 5,400-light-year cluster."
+    },
+    {
+      "url": "https://esahubble.org/images/heic1903c/",
+      "result": "Opened. ESA/Hubble supports NGC 6752 as a globular cluster in Pavo, white-dwarf observations used to measure its age, and background Bedin 1. It does not explain white-dwarf cooling or make it the age-indicator rationale."
+    },
+    {
+      "url": "https://science.nasa.gov/missions/hubble/hubble-spies-newly-forming-star-incubating-in-ic-2631/",
+      "result": "Opened. NASA supports an infrared Hubble image of protostar J1672835.29-763111.64 in IC 2631, a Chamaeleon star-forming region; collapse/accretion of gas and dust, obscuration by dust, and eventual nuclear fusion. It does not state the draft's disks, illuminated-gas, filter-to-colour, or visual-image-processing claims."
+    }
+  ],
+  "binding_checks": {
+    "runtime_catalog": "next/apps/quiz_app/assets/quizipedia/catalog.json contains 88 constellations. lep/Lepus/Lep, pup/Puppis/Pup, pav/Pavo/Pav and cha/Chamaeleon/Cha each carry domain:science, skill:recognition and topic:astronomy.",
+    "batch": "All four IDs and target_ids are unique; each has exactly one quizipedia constellation target, empty question_refs, the required three tags, status draft, and a whitespace body.split() count within 100–220.",
+    "draft_duplicate_scan": "A focused literal ID scan of study/question_articles/drafts found these four IDs only in this frozen input."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:lep",
+      "verdict": "REVISE",
+      "body_split_word_count": 123,
+      "source_links_opened": 2,
+      "finding": "The ESA page substantiates the identity, direction, distance, stellar evolution, ultraviolet fluorescence, diameter, and uncertain textures. It does not substantiate the statement that the word 'planetary' comes from early-telescope appearance.",
+      "required_correction": "Add an authoritative source for that name-origin statement or remove it; retain the source-supported IC 418 account."
+    },
+    {
+      "id": "quizipedia:constellation:pup",
+      "verdict": "REVISE",
+      "body_split_word_count": 123,
+      "source_links_opened": 2,
+      "finding": "NASA gives the concrete correction the article is designed to teach: NGC 2438 is a foreground planetary nebula, 2,400 light-years in front of M46. The draft instead calls it merely visible 'against' the cluster and leaves the result as a generic hypothetical; its measurement-advice list is not supported by the cited page.",
+      "required_correction": "State NASA's explicit foreground and distance relation, or remove the NGC 2438 teaching example. If retaining the distances/velocities/composition advice, cite a source that supports that methodological list."
+    },
+    {
+      "id": "quizipedia:constellation:pav",
+      "verdict": "REVISE",
+      "body_split_word_count": 125,
+      "source_links_opened": 2,
+      "finding": "ESA/Hubble supports NGC 6752 in Pavo, the white-dwarf age study, and background Bedin 1. Its page does not support the inserted explanation that a white dwarf is a hot stellar remnant whose cooling is the population-evolution indicator.",
+      "required_correction": "Cite an authoritative stellar-evolution source for the white-dwarf cooling explanation or limit this paragraph to ESA/Hubble's stated white-dwarf age measurement."
+    },
+    {
+      "id": "quizipedia:constellation:cha",
+      "verdict": "REVISE",
+      "body_split_word_count": 125,
+      "source_links_opened": 2,
+      "finding": "NASA supports the IC 2631 protostar, contracting/accreting gas and dust, infrared observation and dust obscuration. It does not support the draft's claim about disks, bright zones as illuminated gas, or coloured processing mapping filters to hues.",
+      "required_correction": "Cite an image-processing/protostellar-disk source for those claims, or rewrite around the NASA-supported collapse, accretion, dust obscuration, infrared image, and transition to fusion."
+    }
+  ],
+  "method": {
+    "word_count": "Whitespace-separated tokens using body_ru.split(), including Markdown headings if present.",
+    "limitations": "Same-provider editorial review only; it is not cross-provider acceptance, integration/export, runtime validation, release, or publication approval. No draft, catalog, code, index, test, build, browser automation, managed worker, commit, or deploy was changed/run."
+  },
+  "final_recheck": {
+    "task_id": "task-8ec8f881a65440d9a99d7d28d151ca39",
+    "reviewed_at": "2026-10-08",
+    "reviewer": {
+      "label": "review-article-reader-t2d503c8",
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+    },
+    "original_review_provenance": {
+      "report_sha256": "7902d60312d9f700378de041a5ca5e07ab1d4ef397b0a18c8115c438119f6e40",
+      "overall_verdict": "REVISE",
+      "reason": "Lep name-origin, Pup foreground relation/method advice, Pav cooling rationale, and Cha unsupported image/process claims required correction"
+    },
+    "final_input": {
+      "path": "study/question_articles/drafts/constellations-lep-pup-pav-cha-20261008.json",
+      "sha256": "fb1a9eef9c563e7dc52ed526c9ebfb0ba24876810d38a2186ca69f14a2ddd2f1",
+      "ends_with_single_newline": true
+    },
+    "lease_evidence": {
+      "request_id": "lease-533bf89dc57642188fa1338842ad4aab",
+      "request_state": "QUEUED",
+      "request_reason": "OLDER_REQUEST_WAITING",
+      "release_state": "RELEASED",
+      "generation": 1,
+      "note": "No grant was claimed; queued request was released before the task-specific light-edit exception was used."
+    },
+    "scope": "Narrow recheck of four source-limited corrections using the previously opened primary sources; no broad re-research.",
+    "source_recheck": {
+      "lep": "Removed unsupported planetary-nebula name-origin sentence. ESA supports the retained Lepus direction, about-2,000-light-year distance, red-giant transition, ultraviolet fluorescence, about-0.2-light-year diameter and uncertain textures.",
+      "pup": "NASA supports M46/NGC 2437 in Puppis at roughly 5,400 light-years and explicitly places NGC 2438 2,400 light-years in front, with ejected gas and a central white dwarf.",
+      "pav": "ESA/Hubble supports NGC 6752 in Pavo, the observation purpose of measuring its age through white dwarfs, and background Bedin 1. Unsupported cooling rationale is removed.",
+      "cha": "NASA supports the IC 2631 infrared protostar, collapse and accretion of gas/dust, heat before fusion, dust obscuration of visible light, and eventual nuclear fusion. Unsupported disk/filter/illuminated-gas language is removed."
+    },
+    "articles": [
+      {
+        "id": "quizipedia:constellation:lep",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 108,
+        "correction_verified": "Unsupported name-origin claim removed."
+      },
+      {
+        "id": "quizipedia:constellation:pup",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 126,
+        "correction_verified": "Explicit foreground and 2,400-light-year relation now used."
+      },
+      {
+        "id": "quizipedia:constellation:pav",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 114,
+        "correction_verified": "ESA stated white-dwarf age-study purpose replaces cooling rationale."
+      },
+      {
+        "id": "quizipedia:constellation:cha",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 132,
+        "correction_verified": "NASA-supported collapse/accretion/infrared/heat/fusion explanation now used."
+      }
+    ],
+    "final_verdict": "ACCEPT_DRAFT_AFTER_TARGETED_RECHECK",
+    "limits": "Same-provider editorial recheck only; not cross-provider acceptance, integration/export, runtime validation, release, or publication approval. No draft, catalog, code, index, test, build, browser automation, managed worker, commit, or deploy was changed/run."
+  }
+}
