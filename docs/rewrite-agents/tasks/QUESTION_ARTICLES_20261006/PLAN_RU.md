@@ -443,3 +443,41 @@ different-provider release review and publication remain pending. Same-provider
 native editorial acceptance is not release approval. Real feedback remains OPEN
 until published verification. No canonical code/assets, GitHub Actions, worker
 schedulers, unrelated files or other projects' resources changed.
+
+Heartbeat 05:50 UTC: secure production refresh still 26 OPEN, no new feedback,
+latest 2026-10-07T08:19:08.506876077Z. Managed Claude release reviewer remains
+QUEUED/OLDER_REQUEST_WAITING, not running. Export3531 and light path requests
+3532/3533/3534/3535 QUEUED/released; no heavy execution. Native author READY17724,
+accepted17726, submitted17730 task99cd831b: Ari/Psc/Lib/Cet four source-backed drafts.
+Author initial submitted SHA4f30b3234e4b498a4aecbedfc7360d7185621b8163adb6ecaa41c1093ca4644c.
+Canonical APOD URL-only follow-up SHA db7b4c05bd9650518c296ede243208a9a9df7a95f0a4fc70586af3c2de2f9bfa
+was announced17732/17733; second submit was rejected after initial submit, so
+this follow-up is not a second successful task submission. Independent checker
+READY17729, accepted17736, submitted17740 taskdc22eba3: PSC/CET ACCEPT, ARI/LIB REVISE.
+Original report SHA0a5b0a5d2c1a8e68545037f321bf5058a7e97183f66e0cefd4e87e9b0392fe62.
+Lead corrected two statements: ESA/Hubble attribution and image/direction qualifier
+for NGC770; lowering rather than generic refinement of HD140283 upper age limit.
+Final draft SHA692c652a087fb4338578c063967e765032718c1478d1c035d5032f60622ebe4f.
+Fresh recheck READY17745, accepted17747, submitted17750 task5ab12d1d: four ACCEPT,
+word counts156/143/154/153. Final ARI_PSC_LIB_CET_0550_REVIEW.json report
+SHAf65ef47c1f3d576cffd76adb46546945a6173e05015fb7c87ae1c2f558ebfa67 retains
+original revision provenance. Lead read full draft/report and primary sources,
+verified hashes/bindings/tags/counts/duplicates. Manual inventory104 unique drafts,
+36 of 88 runtime constellation targets have draft articles. Generated catalog30
+unchanged. English helper packet now documents the exact arguments.resources map:
+malformed nonempty-resource-bundle errors are not queued reservations. The example
+was successfully used by the lead for QUEUED requests, not a grant.
+Formal export, runtime tests/build/browser, different-provider release review and
+publication remain pending. Same-provider editorial evidence is not release
+approval. Real feedback remains OPEN until published verification. No canonical
+code/assets, GitHub Actions, worker schedulers, unrelated files or foreign resources changed.
+
+Whitespace gate caught EOF blank lines; lead removed only trailing whitespace,
+verified reconstructed old bytes SHA692c652a and parsed JSON equality. Path3536
+QUEUED/released, light edit only. Fresh reconciliation READY17754, accepted17756,
+submitted17757 task70f484a4: all four editorial verdicts unchanged ACCEPT.
+Final file SHA f3089425a1094672fd1f0a5932e2d571f0bb9093988f1e06fe019f0715815de2;
+final report SHA 3b17a72a7be6bb0893976ce01ce555ec531a65c505a98d4a97adbcda9352c53f.
+Previous final content/report hashes above are retained provenance. No semantic
+article changes during formatting reconciliation. Beads updated through bd
+before export so its database and scoped issue JSONL contain this checkpoint.

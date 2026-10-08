@@ -64,3 +64,21 @@ Completed task IDs in packets are history; do not repeat them. Follow exact file
 ownership, request leases, preserve other edits, submit actual opened-source
 and hash evidence. No ungranted heavy work, GitHub Actions or worker schedulers.
 ```
+
+## Exact lease-call shape (protocol correction)
+
+The native helpers repeatedly received `nonempty resource bundle required`.
+That is a malformed request, not a QUEUED reservation. Pass a nonempty `resources`
+map inside `arguments`, not at the tool's top level. The lead used the following
+shape successfully; its result was QUEUED, not GRANTED. Replace the path with your
+assigned existing file/directory and use a fresh task-specific key:
+
+```json
+{"action":"request","arguments":{"profile":"interactive","resources":{"agent_turns":1,"path:project-b50d7d0cbbb84e3bbf9691469c747c8e:C:/ap/quiz_master/study/question_articles/drafts":1},"ram_bytes":268435456,"commit_bytes":268435456,"disk_bytes":{"system":1048576},"key":"your-unique-task-key"}}
+```
+
+Use the returned actual id/generation for release/status. A malformed request
+creates no usable reservation. A QUEUED request must be released before ending
+the finite turn. Neither response authorizes heavy work. The existing user
+exception remains limited to lightweight reads/edits. For future assignments,
+request the exact owned file path where it exists, avoiding broad directory locks.
