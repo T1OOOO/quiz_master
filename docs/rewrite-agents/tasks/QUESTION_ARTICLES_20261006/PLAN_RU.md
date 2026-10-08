@@ -391,3 +391,27 @@ unchanged. Formal export/runtime/cross-provider review/publication pending;
 same-provider native editorial evidence is not different-provider release approval.
 Real feedback staysOPEN until published verification. No canonical code/assets,
 Actions, worker schedulers or other projects' resources changed.
+
+
+Heartbeat 03:43 UTC: secure production refresh 26 OPEN, no new feedback,
+latest 2026-10-07T08:19:08.506876077Z. Managed Claude release reviewer remains
+QUEUED/OLDER_REQUEST_WAITING; no running provider worker or release acceptance.
+Export 3524 and light paths 3525/3526/3527 QUEUED/released; no heavy execution.
+Fresh native author READY 17662, accepted 17664, submitted 17668,
+task2392bf59 drafted Car/Com/Her/Per using opened IAU and four NASA sources.
+Initial SHA cf9e37e585cc3e57151642b91a4c1ca8de255fc3dac8fea01ccaf37a0549e317.
+Independent original review ba95f81a accepted first three, revised Perseus:
+boundaries define sky area, not coordinate grid; embedded star formation is
+largely hidden by dust. Lead corrected only these two statements.
+Final SHA 6e87c4bf7b2c102f9a67e5d83c3e3acf0b4096a28c9d819add0606770c5a0d95.
+Fresh recheck READY 17680, accepted 17682, submitted 17686, task0449df7c:
+all four ACCEPT, word counts 168/148/156/155. Review report preserves original
+REVISE provenance; SHA b9dff82697ddc8a18d038d22af362b8f0c2fe92e5a6cd78741b6f3ad21017ed3.
+Lead inspected full final draft/report, hashes, source passages and manual
+inventory: 96 records/96 unique draft IDs; 28 of 88 constellation targets
+have draft articles. Generated catalog remains 30 entries. Only light editing,
+JSON parsing, manual binding/source checks and whitespace verification performed.
+Formal export, runtime tests/build, different-provider release review and
+publication remain pending. Same-provider editorial review is not release
+approval. Real feedback remains OPEN until published verification. No canonical
+code/assets, GitHub Actions, worker schedulers or foreign resources changed.

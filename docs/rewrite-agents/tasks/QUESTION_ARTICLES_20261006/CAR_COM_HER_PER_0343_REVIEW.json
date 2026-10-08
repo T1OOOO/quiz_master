@@ -1,0 +1,130 @@
+{
+  "task_id": "task-0449df7c43e844fba20765c8e1f3ef64",
+  "review_kind": "native editorial source, factual, and binding review; final narrow Perseus recheck",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "initial_checkpoint": {
+    "task_id": "task-ba95f81aedcd4fa6b54df240a9a7228c",
+    "input_sha256": "cf9e37e585cc3e57151642b91a4c1ca8de255fc3dac8fea01ccaf37a0549e317",
+    "report_sha256_before_recheck": "c5ac015c469df49d22effb7a9ea4b199c8ba5efbfd810dc7ec7053d472369a82",
+    "verdicts": {
+      "car": "ACCEPT",
+      "com": "ACCEPT",
+      "her": "ACCEPT",
+      "per": "REVISE"
+    },
+    "word_counts": {
+      "car": 168,
+      "com": 148,
+      "her": 156,
+      "per": 148
+    },
+    "finding": "PER originally called IAU boundaries a coordinate grid and said several hundred forming stars were visible without retaining NASA's dust-obscuration qualification."
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-car-com-her-per-20261008.json",
+    "sha256": "6e87c4bf7b2c102f9a67e5d83c3e3acf0b4096a28c9d819add0606770c5a0d95"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "Catalog targets car, com, her, and per resolve to the corresponding constellation entries.",
+    "tag_ids": "Each resolved catalog target carries domain:science, skill:recognition, and topic:astronomy.",
+    "question_refs": "All four arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:constellation:car|com|her|per found only this input file.",
+    "word_limit": "Final CAR 168, COM 148, HER 156, and PER 155 all meet the required 100–220 whitespace-word range; initial PER had 148."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:car",
+      "article_sha256": "529800244474a57e20eed830551a382f1c7fa470bba70b8a049547e02c1ae8a1",
+      "word_count": 168,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU defines a constellation as a boundary-defined sky area and lists Carina with abbreviation Car; drawn figures are not formally defined and apparent star groupings need not be physically connected."
+        },
+        {
+          "url": "https://science.nasa.gov/asset/hubble/carina-nebula-2/",
+          "opened": true,
+          "finding": "NASA identifies the Carina Nebula as NGC 3372 in Carina, an immense gas-and-dust cloud at an estimated 7,500 light-years. It describes stellar winds and ultraviolet radiation sculpting material and compressing cold hydrogen to trigger further star formation, and lists the image filters."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article correctly keeps the formal Carina sky area separate from NGC 3372, qualifies the distance as an estimate, and reasonably cautions that filtered, processed astronomy imagery is not ordinary unaided-eye colour.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:com",
+      "article_sha256": "fee3096bfc131735c47e49da97fe8156d76a92dff0549fa662182e29584f6d70",
+      "word_count": 148,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Coma Berenices with abbreviation Com and defines constellations as bounded sky areas rather than physical collections."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-100/",
+          "opened": true,
+          "finding": "NASA identifies M100 as a spiral galaxy in Coma Berenices, gives 56 million light-years, describes dusty spiral arms and star formation, and says Cepheid variables in its arms are reliable distance mileposts."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The area-versus-galaxy distinction, physical classification, and qualified distance attribution are source-supported and clear.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:her",
+      "article_sha256": "e2e57fa9b4572ee0ed7acd6b94c1befcebe26809364cd504ee6cd1c4375794a2",
+      "word_count": 156,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Hercules with abbreviation Her and explains that being in a constellation means falling within its official boundaries."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-13/",
+          "opened": true,
+          "finding": "NASA classifies M13 as a globular cluster in Hercules, gives 25,000 light-years, says over 100,000 stars are within it, and describes Hubble's exceptionally clear view of its dense core."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The text accurately contrasts a formal direction on the sky with the dense physical M13 star cluster and attaches the distance to the cluster rather than all objects in Hercules.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:per",
+      "article_sha256": "32538154ecbc8049a0cd8960d203965898db44d27583eecf1c47eb20087c8035",
+      "word_count": 155,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Perseus with abbreviation Per and says a constellation is an area surrounded by an official boundary whose defining quantity is sky coordinates. It does not call those boundaries a coordinate grid."
+        },
+        {
+          "url": "https://science.nasa.gov/missions/hubble/hubble-celebrates-33rd-anniversary-with-a-peek-into-nearby-star-forming-region/",
+          "opened": true,
+          "finding": "NASA places NGC 1333 in the Perseus molecular cloud at approximately 960 light-years. It describes several hundred newly forming stars embedded in the dark cloud, but says most star-birth activity is hidden behind fine dust; the blackness is obscuring dust, not empty space."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final narrow edit now calls the IAU boundaries a defined area of the celestial sphere and says several hundred forming stars are inside the dark cloud while much of the star-formation process is obscured by dust. Both corrections match the independently opened IAU and NASA sources; the unchanged object binding, jets, and approximate distance remain sound.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final input SHA 6e87c4bf7b2c102f9a67e5d83c3e3acf0b4096a28c9d819add0606770c5a0d95: CAR, COM, HER, and PER all meet the stated editorial factual/source/binding scope. The original PER REVISE provenance is retained above.",
+  "limits": [
+    "A covering report-path lease request did not grant a usable lease; the user-authorized lightweight read/edit exception was used only for this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, commit, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, release, or publication gate."
+  ]
+}
