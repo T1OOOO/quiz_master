@@ -1,0 +1,99 @@
+{
+  "task_id": "task-0595782ec48e44848fba201a94b0d99a",
+  "review_kind": "native editorial source, factual, binding, and correction-provenance review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/country-flags-no-se-mg-20261008.json",
+    "original_author_input_sha256": "8d3d7fcc68fda735b7641ed7dc7edbf6cef3d4c0d36bb605b6f5f467ead8f980",
+    "final_sha256": "fea399103386a47a6c8b67051937c5c99220b7d3006d43d20dee2360e1b26281"
+  },
+  "reviewed_corrections": {
+    "SE": "The final text accurately replaces an ambiguous tails claim with the law's ordinary rectangular/tretungad forms, the Armed Forces' naval use, and the head-of-state/authorized-royal-house exception.",
+    "MG": "The disputed 14 October 1958 adoption-date claim is absent from the final body. The replacement geography is supported by the embassy page; article 4 geometry is independently verified from the official Primature PDF."
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown heading markers count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "The runtime catalog contains country targets NO, SE, and MG.",
+    "tag_ids": "country:no, country:se, country:mg, domain:geography, and topic:flag exist in metadata/tags.v1.json.",
+    "question_refs": "All three arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:country:NO|SE|MG found only this input file.",
+    "word_limit": "NO and SE have 151 tokens each; MG has 170. All are within 100–220."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:country:NO",
+      "article_sha256": "2d030196e3eda619d3e58fd33797dc57b4471b88d5d71b4baa8fbc70cb7f85fe",
+      "word_count": 151,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.regjeringen.no/no/dep/ud/dep/diplomatiske-forbindelser-og-protokoll/norges-flagg-forskrift/id449230/",
+          "opened": true,
+          "finding": "The Foreign Ministry page states red fields, a dark-blue cross with a white border, the 16:22 width:length ratio, and 17 May as Constitution Day in the official flag-day list; it also says state bodies fly the state flag on official flag days."
+        },
+        {
+          "url": "https://www.regjeringen.no/no/dokumenter/lov_flagg/id765476/",
+          "opened": true,
+          "finding": "The official law page identifies the Norwegian Flag Act as dated 10 December 1898."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The description and layer order are supported by the Norwegian Foreign Ministry regulation. The calendar statement is limited to the official flag-day practice and does not overstate private use.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:SE",
+      "article_sha256": "961e9353178ef83327c7d371b2743bbd789ed8fa1471b1c1bd8b0746c7d5b749",
+      "word_count": 151,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-1982269-om-sveriges-flagga_sfs-1982-269/",
+          "opened": true,
+          "finding": "The Riksdag's current text says the flag is blue with a yellow cross perpendicular to its edges; it may be rectangular or three-tailed. Section 4 gives Armed Forces naval use and permits the head of state and, with consent, other royal-house members to use the three-tailed flag."
+        },
+        {
+          "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-1983826-med-riktlinjer-for_sfs-1983-826/",
+          "opened": true,
+          "finding": "The regulation specifies light medium blue fields and a golden-yellow cross, with NCS and CIE measurement details."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final wording correctly preserves both legal forms and exceptions, while its visual-recognition advice remains appropriately limited to flag recognition rather than a uniqueness claim.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:MG",
+      "article_sha256": "74f453275259b67a044c4bfe156318826eff36f11df1096172987e5d01a3cb00",
+      "word_count": 170,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://app.primature.gov.mg/constitution-iv",
+          "opened": true,
+          "access_method": "Official PDF retrieved through shared fetch and converted to text with markitdown after the web reader returned an internal error.",
+          "finding": "Article 4 calls the national emblem a white-red-green tricolour of three equal rectangular bands: the first is vertical and white at the hoist, with the other two horizontal, red upper and green lower. It also names Antananarivo as the capital."
+        },
+        {
+          "url": "https://ambamad-moscou.diplomatie.gov.mg/index.php/glavnaya/znakomstvo-s-madagaskarom",
+          "opened": true,
+          "finding": "The official embassy page gives the same white-left/red-upper/green-lower composition and describes Madagascar as an island in the Indian Ocean, separated from the continent by the Mozambique Channel, with Antananarivo as capital."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final article accurately states the constitutional geometry and the limited map geography. It deliberately avoids the embassy page's potentially disputed adoption-date assertion, so no date claim remains to approve.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final editorial factual/source/binding scope of the stated final SHA.",
+  "limits": [
+    "All six cited official URLs were independently opened. The Primature PDF required shared-fetch plus text conversion because the web reader returned an internal error; article 4 text was nevertheless directly verified.",
+    "A covering report-path lease was requested but returned blank/queued; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, or release/publication gate."
+  ]
+}

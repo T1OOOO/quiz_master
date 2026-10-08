@@ -309,3 +309,40 @@ Shared ripgrep Windows quoting failed in actual calls; native rg fallback used,
 host operations defect reported17091.
 
 Финальное нативное ревью CN/MX/EG завершено Hub17165/17166: все три ACCEPT. Все шесть официальных ссылок независимо открыты. CN_MX_EG_2339_REVIEW.json SHA10984f91f780b60759fef96be195a553e83d10b0ac7a1af28c3a3517c4d4bf48; final input SHA5b2e2146 неизменён. Все пять статей готовы редакционно; statusdraft сохраняется до формальных последующих этапов.
+
+Heartbeat00:44UTC: secure26OPEN/no new/latest08:19:08UTC; production unchanged.
+MCP connection rotated; lead connected new own identity sessionbd778c4b.
+Authenticated handoff from this chat's prior session5935a39a to new session
+completed via hub_runtime official CLI, existing team2ed45295 now epoch3.
+No other project identities/resources changed. New inbox old history drained
+and acknowledged through17442; subsequent actual messages continue normally.
+Export request3499 QUEUED/released without execution; light path3503/3505
+also released; only user lightweight read/edit exception used.
+Native writer actual READY17434, accepted17441 taska5f4ce92; NO/SE/MG draft
+original SHA8d3d7fcc68fda735b7641ed7dc7edbf6cef3d4c0d36bb605b6f5f467ead8f980.
+Lead corrected Swedish three-tail wording and royal exception; removed disputed
+Madagascar adoption date (official embassy14Oct conflicts with other21Oct accounts)
+and replaced it with supported geography, without asserting a new adoption date.
+Final SHAfea399103386a47a6c8b67051937c5c99220b7d3006d43d20dee2360e1b26281,
+NO151/SE151/MG170 words. Exact native independent review task0595782e pending.
+Lead drafted Vir/Oph,185/196 words; primary IAU/ESO/NASA/ESAWebb sources opened.
+SHA478987d8bb5d5debc317735d3944fbc64557ae427c2c6027537c3ca59088434c;
+independent native review task7f4fdebe offered after fresh READY.
+Original unoffered RU/KR/TR proposal taska89d3fdb cancelled before assignment:
+those IDs are absent from actual map_target_ids; NO/SE/MG selected instead.
+Managed Claude release reviewer remains QUEUED, not running; fresh status verified.
+All new records draft; formal export/runtime/different-provider/publication gates
+remain pending. JSON parses and bounded manual structural/whitespace checks only.
+
+Final editorial checkpoint 00:44 UTC: Vir/Oph ACCEPT (events17472/17473),
+input SHA478987d8bb5d5debc317735d3944fbc64557ae427c2c6027537c3ca59088434c;
+VIR_OPH_0044_REVIEW.json SHA5739ab28e1bd2684477dad3efb6c8dd0561616abe30bc5c62abfdaac9ca8ffc5.
+NO/SE/MG all ACCEPT (events17485/17486), final input
+SHAfea399103386a47a6c8b67051937c5c99220b7d3006d43d20dee2360e1b26281;
+NO_SE_MG_0044_REVIEW.json SHAbda2fb2acdb8f5b000800b4d0f1014e17028e7bc5a7194f3ef006927ac8ca881.
+Checker verified Madagascar constitutional text with shared fetch/markitdown.
+This is independent native editorial review, not a different-provider release gate.
+Updated AGENTS adapter instructions propagated: Google Antigravity app/official agy,
+no Gemini CLI for personal accounts; managed official vendor workers require grants.
+All five remain drafts: 88 unique draft articles, 30 generated accepted catalog entries.
+No export, build, browser gate or publication performed; 26 real feedback items OPEN.

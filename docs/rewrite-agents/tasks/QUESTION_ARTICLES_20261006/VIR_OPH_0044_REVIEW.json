@@ -1,0 +1,83 @@
+{
+  "task_id": "task-7f4fdebeac304cbbb59dbc3d8ed7407e",
+  "review_kind": "native editorial source, factual, and binding review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/constellations-vir-oph-20261008.json",
+    "sha256": "478987d8bb5d5debc317735d3944fbc64557ae427c2c6027537c3ca59088434c"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown heading markers count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "The runtime catalog contains constellation targets vir and oph, with matching Russian names and IAU abbreviations Vir and Oph.",
+    "tag_ids": "domain:science, skill:recognition, and topic:astronomy are present in metadata/tags.v1.json and on both catalog targets.",
+    "question_refs": "Both arrays are empty; the drafts make no nonexistent question-binding claim.",
+    "duplicate_draft_targets": "A scan for quizipedia:constellation:vir|oph found only this input draft.",
+    "word_limit": "Vir has 185 and Oph has 196 whitespace tokens, each within the required 100–220 range."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:vir",
+      "article_sha256": "f183135e6940607aecad12b20983a2d1a1382deb124848a5e6c278f5fc32980c",
+      "word_count": 185,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU recognizes 88 constellations with three-letter Latin abbreviations, defines them as bounded sky areas, and says their line patterns are not formal definitions; it also explains that apparent stellar groupings usually are not physically connected."
+        },
+        {
+          "url": "https://eso.org/public/images/eso1907b/",
+          "opened": true,
+          "finding": "ESO identifies M87 as a large elliptical galaxy about 55 million light-years away in Virgo and identifies its central object as a supermassive black hole."
+        },
+        {
+          "url": "https://www.eso.org/public/news/eso1907/",
+          "opened": true,
+          "finding": "The dated 10 April 2019 release reports the first direct visual evidence of the M87 black hole and its shadow; it gives 55 million light-years and 6.5 billion solar masses, eight ground-based radio telescopes, an Earth-sized virtual telescope, a ring-like structure with a dark central shadow, and the gravitational-bending/capture interpretation."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately separates Virgo as a formal sky region, M87 as a galaxy in that direction, and M87's central black hole. The numerical values, date, array description, and careful non-surface explanation match the opened ESO material; the self-check reinforces the intended scale distinction.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:oph",
+      "article_sha256": "f50851ff1432239ebfde554eec4742a718f5a7d3910d85dd94054afed6fd0cde",
+      "word_count": 196,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU's formal-area definition, 88-constellation list, and convention-versus-physical-connection distinction support Ophiuchus/Oph as a map reference rather than a physically bound star group."
+        },
+        {
+          "url": "https://science.nasa.gov/missions/webb/webb-celebrates-first-year-of-science-with-close-up-on-birth-of-sun-like-stars/",
+          "opened": true,
+          "finding": "NASA's 12 July 2023 first-anniversary release gives 390 light-years, about 50 young solar-mass-or-smaller stars, dense dust around protostars, red bipolar molecular-hydrogen jets, S1 as the only substantially more massive star, and disk shadows described as potential future planetary systems."
+        },
+        {
+          "url": "https://esawebb.org/images/weic2316a/",
+          "opened": true,
+          "finding": "ESA/Webb identifies the Rho Ophiuchi cloud complex as a 390-light-year object in Ophiuchus; it specifies infrared filters, says young-star jets light molecular hydrogen shown red, and describes circumstellar-disk shadows as future planetary-system material."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately distinguishes the Ophiuchus sky region, the Rho Ophiuchi cloud complex, and a disk around an individual young star. The wording correctly retains uncertainty about planets in a disk and matches the opened NASA and ESA/Webb descriptions.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final editorial factual/source/binding scope of the stated input SHA.",
+  "limits": [
+    "All five distinct cited URLs, representing the six article citation entries because the IAU source is shared, were opened independently.",
+    "A covering report-path lease was requested but returned blank/queued; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, or release/publication gate."
+  ]
+}
