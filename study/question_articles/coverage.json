@@ -2,9 +2,9 @@
   "schema_version": "qm-article-coverage/v1",
   "note": "Exact unrecorded ranked revisions are null; capture actual public DTO before authoring/publishing. Accepted means reviewed local catalog, not production deployment.",
   "counts": {
-    "missing": 4245,
-    "draft": 0,
-    "accepted": 30
+    "missing": 4208,
+    "draft": 87,
+    "accepted": 60
   },
   "entries": [
     {
@@ -1864,8 +1864,8 @@
       "revision_sha256": "59fa4ab8625f87ef699008ed93799b7407212b87050679298039c37eccb1df2a",
       "source_path": "quizzes/Cinema/LOTR/lotr.json",
       "stem": "Кто упал в огонь Ородруина вместе с Кольцом Всевластия?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:lotr:q-lotr-0-lotr-q1",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -1874,8 +1874,8 @@
       "revision_sha256": "6ab903a6393516efa938225fd74517a42b64917646363d3e089c0ef37df3eae5",
       "source_path": "quizzes/Cinema/LOTR/lotr.json",
       "stem": "Сколько членов было в Братстве Кольца?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:lotr:q-lotr-1-lotr-q2",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -1884,8 +1884,8 @@
       "revision_sha256": "45795429e66d6ebc551dcccd29a4cbac6ce996b16a8f55ae77d4f25bc6e09d45",
       "source_path": "quizzes/Cinema/LOTR/lotr.json",
       "stem": "Как звали коня Гэндальфа?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:lotr:q-lotr-2-lotr-q3",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4694,8 +4694,8 @@
       "revision_sha256": "0e35fab4e10b977a24047b6384852712bf85e3408ba4ca6e926e4a62e8ef4e1e",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Что Карта мародёров показывает вместе с планом Хогвартса?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-001",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4704,8 +4704,8 @@
       "revision_sha256": "05dd12e398d64117555bf6c4d40de19fe7b8e569abc2e198c040c96b58c49b83",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Что происходит с отметкой человека на Карте мародёров, когда он надевает мантию-невидимку?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-002",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4714,8 +4714,8 @@
       "revision_sha256": "6a5227b2bc112952978011723f99f62668f448427c05693fbe854a444445801c",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Кто из Мародёров носил прозвище Лунатик?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-003",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4724,8 +4724,8 @@
       "revision_sha256": "a6729b01a9318cf85ab7e60c089a41a29e477338ecccfff667dfc74f1f35f9a9",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Для чего герои используют Оборотное зелье?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-004",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4734,8 +4734,8 @@
       "revision_sha256": "9d42b6df5c50f000c9db3a2e2959494c088177da2a29dcbe7a4f5c91976c81ab",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "В какой книге Гермиона находит рецепт Оборотного зелья?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-005",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4744,8 +4744,8 @@
       "revision_sha256": "756bfb064de3c3e9727ae68280db2711b227a25eff3ee901ecf1240a34c12eea",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "На какой вид существ рассчитано Оборотное зелье?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-006",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4754,8 +4754,8 @@
       "revision_sha256": "44b136a91692b8d71035192d87f1f186ade8e651cc04a8d2f394576121cabcc0",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "На каком этаже Хогвартса находится Выручай-комната?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-007",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4764,8 +4764,8 @@
       "revision_sha256": "56be08c59490f3aa37ace5a00a42538c31e4ce10a6d0ed87fb407f2a7064524d",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Как нужно пройти мимо стены, чтобы вызвать Выручай-комнату?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-008",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4774,8 +4774,8 @@
       "revision_sha256": "b30435299d7655112e28a625aea8a9f890b78c04d6a760609805dbd91d9a83de",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Какой предмет был уничтожен адским огнём Винсента Крэбба?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-009",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4784,8 +4784,8 @@
       "revision_sha256": "48e42b92d67811c88588dec09aa5ed09f0f6215d86a1e8507e773c7368c292ba",
       "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
       "stem": "Кто уничтожил Нагайну в финале?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-harry-potter:theme-hp-010",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -4994,8 +4994,8 @@
       "revision_sha256": "f0a2cab5c44fd3fe316c3be318ec10ca05c9e52bb8d075af20cf904aa207d50f",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Кого Кайл Риз защищает в «Терминаторе» 1984 года?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-001",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5004,8 +5004,8 @@
       "revision_sha256": "346051237b053ad2994358a0104ec79b720b7021e5e3d6dada21345bbfc78541",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Где происходит основная погоня за Сарой в «Терминаторе» 1984 года?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-002",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5014,8 +5014,8 @@
       "revision_sha256": "d529aacd24396b38fed9c966331c22cb32311833bda9329dff5ce4d2cfc30360",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Как Терминатор в первом фильме ищет адреса женщин по имени Сара Коннор?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-003",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5024,8 +5024,8 @@
       "revision_sha256": "fff06af577074f761648606883a2ac5c5c626f8c3215adbe71aeebcb197cb32b",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Что окончательно уничтожает киборга в финале первого «Терминатора»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-004",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5034,8 +5034,8 @@
       "revision_sha256": "13991c099baa96652a547e1bcbf12c2dbbe10e9643dcf1a331fe2337b09fa5ed",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Кем Кайл Риз оказывается для ещё не родившегося Джона Коннора в первом фильме?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-005",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5044,8 +5044,8 @@
       "revision_sha256": "0634508b10871d757c84cd506d61b3cf37024b0d088f52141be0e9fed1f8e58b",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "В какой организации Майлз Дайсон разрабатывает микропроцессор в «Терминаторе 2»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-006",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5054,8 +5054,8 @@
       "revision_sha256": "be8c08d26e302d26075897775f95254f27d6803082e40331b87b93d6a3604087",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Из чего состоит тело Т-1000 в «Терминаторе 2»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-007",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5064,8 +5064,8 @@
       "revision_sha256": "b6259697864e9b81bd93453182dd33daa3f8a5ba0a16b36a8393f25af35a2108",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Какое правило Джон устанавливает для своего защитника в «Терминаторе 2»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-008",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5074,8 +5074,8 @@
       "revision_sha256": "f5753a513a429ec719e1e02a3486c678214ca194429631389262bbde6e5c9d24",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Какая жидкость замораживает Т-1000 перед финальным боем в «Терминаторе 2»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-009",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -5084,8 +5084,8 @@
       "revision_sha256": "db75a426508d4ca0ed6f1f8ca6add139c1e8fec53c271d8be361c8c2fc6f400d",
       "source_path": "quizzes/Cinema/Thematic80/terminator.json",
       "stem": "Что Джон и Сара выбрасывают в расплавленный металл перед гибелью своего защитника в «Терминаторе 2»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:theme-terminator:theme-terminator-010",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -30164,8 +30164,8 @@
       "revision_sha256": "8954b981c2b5bd9c6f489de1708bbc496f1d7cbe6816f0b6eaaaab7f9127fcc6",
       "source_path": "quizzes/Preparation/prep_ballet.json",
       "stem": "Кто написал музыку к сценической пантомиме «Чудесный мандарин»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:prep-ballet:music-oct3-040",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -36834,8 +36834,8 @@
       "revision_sha256": "223dbe663e94ba050cf4240d7eb6e8c0134e9e20b25afa3671d1f302c8be1f58",
       "source_path": "quizzes/Preparation/prep_musicals.json",
       "stem": "Кто написал музыку к мюзиклу «Иосиф и его удивительный разноцветный плащ снов»?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quiz:prep-musicals:music-oct3-020",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -39594,8 +39594,8 @@
       "revision_sha256": "4f6f8946ad7c86d3a7e3076e00243321bdffeca8c2671f8a69f6b9b8ef456bb9",
       "source_path": "next/apps/quiz_app/assets/study/catalog.json",
       "stem": "Что измеряет широта точки?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "study:geography-countries:coordinates",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -39604,8 +39604,8 @@
       "revision_sha256": "89ed172a4b2ebd6dd18857069a879e261cca05516a1a1b3deb4fe566eb2c44a6",
       "source_path": "next/apps/quiz_app/assets/study/catalog.json",
       "stem": "Что измеряет долгота точки?",
-      "article_id": null,
-      "status": "missing"
+      "article_id": "study:geography-countries:coordinates",
+      "status": "draft"
     },
     {
       "kind": "question",
@@ -40820,8 +40820,8 @@
       "target_id": "CA",
       "title": "Канада",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:CA",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -40829,8 +40829,8 @@
       "target_id": "US",
       "title": "Соединенные Штаты Америки",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:US",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -40874,8 +40874,8 @@
       "target_id": "AR",
       "title": "Аргентина",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:AR",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -40883,8 +40883,8 @@
       "target_id": "CL",
       "title": "Чили",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:CL",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -40982,8 +40982,8 @@
       "target_id": "NO",
       "title": "Норвегия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:NO",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41018,8 +41018,8 @@
       "target_id": "ZA",
       "title": "Южная Африка",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:ZA",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41036,8 +41036,8 @@
       "target_id": "MX",
       "title": "Мексика",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:MX",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41054,8 +41054,8 @@
       "target_id": "BR",
       "title": "Бразилия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:BR",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41180,8 +41180,8 @@
       "target_id": "FR",
       "title": "Франция",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:FR",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41495,8 +41495,8 @@
       "target_id": "MG",
       "title": "Мадагаскар",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:MG",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41675,8 +41675,8 @@
       "target_id": "IN",
       "title": "Индия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:IN",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41783,8 +41783,8 @@
       "target_id": "SE",
       "title": "Швеция",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:SE",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41882,8 +41882,8 @@
       "target_id": "DE",
       "title": "Германия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:DE",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -41981,8 +41981,8 @@
       "target_id": "ES",
       "title": "Испания",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:ES",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42026,8 +42026,8 @@
       "target_id": "AU",
       "title": "Австралия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:AU",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42044,8 +42044,8 @@
       "target_id": "CN",
       "title": "Китай",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:CN",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42062,8 +42062,8 @@
       "target_id": "IT",
       "title": "Италия",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:IT",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42080,8 +42080,8 @@
       "target_id": "GB",
       "title": "Соединенное Королевство Великобритании и Северной Ирландии",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:GB",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42188,8 +42188,8 @@
       "target_id": "JP",
       "title": "Япония",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:JP",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42260,8 +42260,8 @@
       "target_id": "EG",
       "title": "Египет",
       "training": true,
-      "article_id": null,
-      "status": "missing"
+      "article_id": "quizipedia:country:EG",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42491,11 +42491,119 @@
     {
       "kind": "target",
       "domain": "constellation",
-      "target_id": "uma",
-      "title": "Большая Медведица",
+      "target_id": "and",
+      "title": "Андромеда",
       "training": true,
-      "article_id": "quizipedia:constellation:uma",
+      "article_id": "quizipedia:constellation:and",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ant",
+      "title": "Насос",
+      "training": true,
+      "article_id": "quizipedia:constellation:ant",
       "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "aps",
+      "title": "Райская Птица",
+      "training": true,
+      "article_id": "quizipedia:constellation:aps",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "aql",
+      "title": "Орёл",
+      "training": true,
+      "article_id": "quizipedia:constellation:aql",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "aqr",
+      "title": "Водолей",
+      "training": true,
+      "article_id": "quizipedia:constellation:aqr",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ara",
+      "title": "Жертвенник",
+      "training": true,
+      "article_id": "quizipedia:constellation:ara",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ari",
+      "title": "Овен",
+      "training": true,
+      "article_id": "quizipedia:constellation:ari",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "aur",
+      "title": "Возничий",
+      "training": true,
+      "article_id": "quizipedia:constellation:aur",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "boo",
+      "title": "Волопас",
+      "training": true,
+      "article_id": "quizipedia:constellation:boo",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cae",
+      "title": "Резец",
+      "training": true,
+      "article_id": "quizipedia:constellation:cae",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cam",
+      "title": "Жираф",
+      "training": true,
+      "article_id": "quizipedia:constellation:cam",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cap",
+      "title": "Козерог",
+      "training": true,
+      "article_id": "quizipedia:constellation:cap",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "car",
+      "title": "Киль",
+      "training": true,
+      "article_id": "quizipedia:constellation:car",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42509,28 +42617,118 @@
     {
       "kind": "target",
       "domain": "constellation",
-      "target_id": "ori",
-      "title": "Орион",
+      "target_id": "cen",
+      "title": "Центавр",
       "training": true,
-      "article_id": "quizipedia:constellation:ori",
+      "article_id": "quizipedia:constellation:cen",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cep",
+      "title": "Цефей",
+      "training": true,
+      "article_id": "quizipedia:constellation:cep",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cet",
+      "title": "Кит",
+      "training": true,
+      "article_id": "quizipedia:constellation:cet",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cha",
+      "title": "Хамелеон",
+      "training": true,
+      "article_id": "quizipedia:constellation:cha",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cir",
+      "title": "Циркуль",
+      "training": true,
+      "article_id": "quizipedia:constellation:cir",
       "status": "accepted"
     },
     {
       "kind": "target",
       "domain": "constellation",
-      "target_id": "lyr",
-      "title": "Лира",
+      "target_id": "cma",
+      "title": "Большой Пёс",
       "training": true,
-      "article_id": "quizipedia:constellation:lyr",
+      "article_id": "quizipedia:constellation:cma",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cmi",
+      "title": "Малый Пёс",
+      "training": true,
+      "article_id": "quizipedia:constellation:cmi",
       "status": "accepted"
     },
     {
       "kind": "target",
       "domain": "constellation",
-      "target_id": "cyg",
-      "title": "Лебедь",
+      "target_id": "cnc",
+      "title": "Рак",
       "training": true,
-      "article_id": "quizipedia:constellation:cyg",
+      "article_id": "quizipedia:constellation:cnc",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "col",
+      "title": "Голубь",
+      "training": true,
+      "article_id": "quizipedia:constellation:col",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "com",
+      "title": "Волосы Вероники",
+      "training": true,
+      "article_id": "quizipedia:constellation:com",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cra",
+      "title": "Южная Корона",
+      "training": true,
+      "article_id": "quizipedia:constellation:cra",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "crb",
+      "title": "Северная Корона",
+      "training": true,
+      "article_id": "quizipedia:constellation:crb",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "crt",
+      "title": "Чаша",
+      "training": true,
+      "article_id": "quizipedia:constellation:crt",
       "status": "accepted"
     },
     {
@@ -42545,11 +42743,155 @@
     {
       "kind": "target",
       "domain": "constellation",
-      "target_id": "sco",
-      "title": "Скорпион",
+      "target_id": "crv",
+      "title": "Ворон",
       "training": true,
-      "article_id": "quizipedia:constellation:sco",
+      "article_id": "quizipedia:constellation:crv",
       "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cvn",
+      "title": "Гончие Псы",
+      "training": true,
+      "article_id": "quizipedia:constellation:cvn",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "cyg",
+      "title": "Лебедь",
+      "training": true,
+      "article_id": "quizipedia:constellation:cyg",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "del",
+      "title": "Дельфин",
+      "training": true,
+      "article_id": "quizipedia:constellation:del",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "dor",
+      "title": "Золотая Рыба",
+      "training": true,
+      "article_id": "quizipedia:constellation:dor",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "dra",
+      "title": "Дракон",
+      "training": true,
+      "article_id": "quizipedia:constellation:dra",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "equ",
+      "title": "Малый Конь",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "eri",
+      "title": "Эридан",
+      "training": true,
+      "article_id": "quizipedia:constellation:eri",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "for",
+      "title": "Печь",
+      "training": true,
+      "article_id": "quizipedia:constellation:for",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "gem",
+      "title": "Близнецы",
+      "training": true,
+      "article_id": "quizipedia:constellation:gem",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "gru",
+      "title": "Журавль",
+      "training": true,
+      "article_id": "quizipedia:constellation:gru",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "her",
+      "title": "Геркулес",
+      "training": true,
+      "article_id": "quizipedia:constellation:her",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "hor",
+      "title": "Часы",
+      "training": true,
+      "article_id": "quizipedia:constellation:hor",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "hya",
+      "title": "Гидра",
+      "training": true,
+      "article_id": "quizipedia:constellation:hya",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "hyi",
+      "title": "Южная Гидра",
+      "training": true,
+      "article_id": "quizipedia:constellation:hyi",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ind",
+      "title": "Индеец",
+      "training": true,
+      "article_id": "quizipedia:constellation:ind",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lac",
+      "title": "Ящерица",
+      "training": true,
+      "article_id": "quizipedia:constellation:lac",
+      "status": "draft"
     },
     {
       "kind": "target",
@@ -42559,6 +42901,384 @@
       "training": true,
       "article_id": "quizipedia:constellation:leo",
       "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lep",
+      "title": "Заяц",
+      "training": true,
+      "article_id": "quizipedia:constellation:lep",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lib",
+      "title": "Весы",
+      "training": true,
+      "article_id": "quizipedia:constellation:lib",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lmi",
+      "title": "Малый Лев",
+      "training": true,
+      "article_id": "quizipedia:constellation:lmi",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lup",
+      "title": "Волк",
+      "training": true,
+      "article_id": "quizipedia:constellation:lup",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lyn",
+      "title": "Рысь",
+      "training": true,
+      "article_id": "quizipedia:constellation:lyn",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "lyr",
+      "title": "Лира",
+      "training": true,
+      "article_id": "quizipedia:constellation:lyr",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "men",
+      "title": "Столовая Гора",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "mic",
+      "title": "Микроскоп",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "mon",
+      "title": "Единорог",
+      "training": true,
+      "article_id": "quizipedia:constellation:mon",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "mus",
+      "title": "Муха",
+      "training": true,
+      "article_id": "quizipedia:constellation:mus",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "nor",
+      "title": "Наугольник",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "oct",
+      "title": "Октант",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "oph",
+      "title": "Змееносец",
+      "training": true,
+      "article_id": "quizipedia:constellation:oph",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ori",
+      "title": "Орион",
+      "training": true,
+      "article_id": "quizipedia:constellation:ori",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "pav",
+      "title": "Павлин",
+      "training": true,
+      "article_id": "quizipedia:constellation:pav",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "peg",
+      "title": "Пегас",
+      "training": true,
+      "article_id": "quizipedia:constellation:peg",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "per",
+      "title": "Персей",
+      "training": true,
+      "article_id": "quizipedia:constellation:per",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "phe",
+      "title": "Феникс",
+      "training": true,
+      "article_id": "quizipedia:constellation:phe",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "pic",
+      "title": "Живописец",
+      "training": true,
+      "article_id": "quizipedia:constellation:pic",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "psa",
+      "title": "Южная Рыба",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "psc",
+      "title": "Рыбы",
+      "training": true,
+      "article_id": "quizipedia:constellation:psc",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "pup",
+      "title": "Корма",
+      "training": true,
+      "article_id": "quizipedia:constellation:pup",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "pyx",
+      "title": "Компас",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ret",
+      "title": "Сетка",
+      "training": true,
+      "article_id": "quizipedia:constellation:ret",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "scl",
+      "title": "Скульптор",
+      "training": true,
+      "article_id": "quizipedia:constellation:scl",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "sco",
+      "title": "Скорпион",
+      "training": true,
+      "article_id": "quizipedia:constellation:sco",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "sct",
+      "title": "Щит",
+      "training": true,
+      "article_id": "quizipedia:constellation:sct",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "ser",
+      "title": "Змея",
+      "training": true,
+      "article_id": "quizipedia:constellation:ser",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "sex",
+      "title": "Секстант",
+      "training": true,
+      "article_id": "quizipedia:constellation:sex",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "sge",
+      "title": "Стрела",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "sgr",
+      "title": "Стрелец",
+      "training": true,
+      "article_id": "quizipedia:constellation:sgr",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "tau",
+      "title": "Телец",
+      "training": true,
+      "article_id": "quizipedia:constellation:tau",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "tel",
+      "title": "Телескоп",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "tra",
+      "title": "Южный Треугольник",
+      "training": true,
+      "article_id": null,
+      "status": "missing"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "tri",
+      "title": "Треугольник",
+      "training": true,
+      "article_id": "quizipedia:constellation:tri",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "tuc",
+      "title": "Тукан",
+      "training": true,
+      "article_id": "quizipedia:constellation:tuc",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "uma",
+      "title": "Большая Медведица",
+      "training": true,
+      "article_id": "quizipedia:constellation:uma",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "umi",
+      "title": "Малая Медведица",
+      "training": true,
+      "article_id": "quizipedia:constellation:umi",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "vel",
+      "title": "Паруса",
+      "training": true,
+      "article_id": "quizipedia:constellation:vel",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "vir",
+      "title": "Дева",
+      "training": true,
+      "article_id": "quizipedia:constellation:vir",
+      "status": "draft"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "vol",
+      "title": "Летучая Рыба",
+      "training": true,
+      "article_id": "quizipedia:constellation:vol",
+      "status": "accepted"
+    },
+    {
+      "kind": "target",
+      "domain": "constellation",
+      "target_id": "vul",
+      "title": "Лисичка",
+      "training": true,
+      "article_id": "quizipedia:constellation:vul",
+      "status": "draft"
     }
   ]
 }

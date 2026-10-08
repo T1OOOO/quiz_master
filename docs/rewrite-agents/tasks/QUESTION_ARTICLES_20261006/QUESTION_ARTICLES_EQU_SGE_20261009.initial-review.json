@@ -1,0 +1,76 @@
+{
+  "acceptance": "Independent current hashes and actually opened primary sources with exact ACCEPT/revise findings.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only frozen study/question_articles/drafts/constellations-equ-sge-20261009.json; fullEnglishARTICLE_EQU_SGE_20261009_EN.md. Openall4uniqueprimaryURLs independently. Verify explicitEquuleus/Sagittaregion/association, alphaEquspectroscopicbinary/types/massratio1.15/blendedlines, M71distanceclassificationhistory/metalrich2015methodqualified12±1Gyr. Root changed repeatedskyregion selfchecks to distinctobject-specificquestions and removedfalse M71notstarsSagittawording. Age one method distinguished paperMSTO12±2 vsTO-knee12±1. Check150–220words/schema/source_supports/dates, compute canonicalSHA256 ofeachwholeUTF8jsonsortkeyscompactensureasciiFalse. Return perarticleverdict/concretesourceevidence/exacthash. No files/Git/children/tests/build/browserautomation/managedworkers/deploy/secrets. FreshREADY/offer/accept epoch4, scopedreadlease releaseQUEUEDbeforeexistinglightread/webexception. Native evidence only, crossproviderreleasependingquiz_master-mkk.",
+  "created_at": 1791498295.6551783,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-a180a5f1a6884900b54726d26ab28fdd",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "article_id": "quizipedia:constellation:equ",
+        "body_words": 183,
+        "canonical_sha256": "483eef89b6fd78ada983378ebe75d13763bfd7f479477c8abc6861c20e3fd44f",
+        "checked_sources": [
+          {
+            "evidence": "Actually opened. IAU defines constellations as bounded sky areas; its table lists Equuleus / Equ / Equulei.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Direct primary URL open failed twice: it redirects to oup.silverchair-cdn.com/article-minimal/1081607, inaccessible to the required opener. The official OUP search result does display an abstract supporting G7 giant, Am secondary, q=1.15±0.03 from relative radial velocities, and line-blending difficulty, so I found no factual contradiction; this is an independently accessible-source blocker.",
+            "url": "https://academic.oup.com/mnras/article/330/2/288/1081607"
+          }
+        ],
+        "finding": "The body correctly explains composite spectra, radial velocities, and blending, but cannot receive ACCEPT while its cited primary source fails the required actual open. Replace or supplement with an independently accessible authoritative primary/official abstract and update source metadata; then recompute and re-review.",
+        "schema": "qm-question-articles/v1; two HTTPS sources; draft; constellation/equ target_ref; empty question_refs; required three tags.",
+        "verdict": "REVISE"
+      },
+      {
+        "article_id": "quizipedia:constellation:sge",
+        "body_words": 200,
+        "canonical_sha256": "a9743cc0bbe0a088ac05a19c884d4efd4871499130d3ef1a7fd59b38107d7ebb",
+        "checked_sources": [
+          {
+            "evidence": "Actually opened. IAU defines constellations as bounded areas and lists Sagitta / Sge / Sagittae.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Actually opened. NASA gives M71 as a globular cluster in Sagitta, roughly 13,000 light-years away, and says its nature was debated until the 1970s, when it was recognized as a relatively sparse globular cluster.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-71/"
+          },
+          {
+            "evidence": "Actually opened. Submitted 3 Jun 2015; the original study calls M71 a metal-rich Galactic globular cluster, uses color–magnitude diagrams/isochrones, finds MSTO 12±2 Gyr and separately ΔKnee_TO 12±1 Gyr. The article uses only the latter as its cited one-method estimate.",
+            "url": "https://arxiv.org/abs/1506.01180"
+          }
+        ],
+        "finding": "All factual claims and source supports match. The self-check now tests the historical classification rather than repeating the sky-region distinction.",
+        "schema": "qm-question-articles/v1; three HTTPS sources; draft; constellation/sge target_ref; empty question_refs; required three tags.",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "remaining_risks": [
+      "EQU factual statements are consistent with the official OUP indexed abstract, but the linked OUP primary article could not be opened directly by this independent reviewer due a non-retryable CDN redirect.",
+      "No tests/builds or broader article source audit were run. Cross-provider review remains pending."
+    ],
+    "status": "DONE_WITH_CONCERNS",
+    "summary": "Read-only independent EQU/SGE review complete: SGE ACCEPT; EQU REVISE for required-source accessibility only. No files changed; native evidence is not cross-provider release approval."
+  },
+  "root_task_id": "task-a180a5f1a6884900b54726d26ab28fdd",
+  "run_id": "run-b06fc978b295436eaa5f04f6638ad374",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent EQU/SGE exact-object source review",
+  "version": 3
+}

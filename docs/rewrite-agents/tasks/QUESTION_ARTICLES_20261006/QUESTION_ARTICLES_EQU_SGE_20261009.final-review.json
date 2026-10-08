@@ -1,0 +1,76 @@
+{
+  "acceptance": "Corrected EQU exacthash ACCEPT/revise with actual primary visits; unchanged SGE hash confirm.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only corrected frozen constellations-equ-sge-20261009.json. EQU rootrewritten S Equulei masstransfer instead of alphaEqu afterindependentreviewer rejected inaccessibleOUPsource. OriginalalphaEqu draft/findingspreservedprovenance. SGE unchangedacceptedhasha9743cc0bbe0a088ac05a19c884d4efd4871499130d3ef1a7fd59b38107d7ebb. OpenIAU + originalarxiv0706.3835 independently; verify constellationassociation/naming,2007dated opticalspectra,radialvelocities hot/cold,30%fasterthansynchronism, likelycool-to-hotL1transfer, Halphaabsorption and SEqudoubleemissionoutsideeclipses/onepeakqualifiedorigin. Checkdistinctselfcheck150–220words/source_supports/wholeobjectcanonicalhash; noalphaEquclaimsremain. Rootbodycoauthor. No files/Git/children/tests/build/browserautomation/managedworkers/deploy/secrets. FreshREADY/explicitoffer/accept epoch4; scopedreadlease releaseQUEUEbeforeexistinglightread/webexception. Nativeevidence notcrossvendorreleaseapproval.",
+  "created_at": 1791498544.6091428,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-52edaede28544866941148c839e38f16",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "article_id": "quizipedia:constellation:equ",
+        "body_words": 199,
+        "canonical_sha256": "099fdf4e7e9dfc15c351ffbee7f026c1ff3191a78e08f4a33ca78e839e9b48c6",
+        "checked_sources": [
+          {
+            "evidence": "Actually opened during this review sequence. IAU defines constellations as bounded sky areas and lists Equuleus / Equ / Equulei.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Actually opened. Submitted 26 Jun 2007. Its abstract reports high-resolution optical spectra of S Equulei and KO Aquilae; radial velocities of hotter and cool components; hot mass gainers rotate about 30% above synchronous; likely cool-to-hot L1 transfer; H-alpha extra absorption/accretion structures; and S Equ double-peaked emission outside eclipses, with one peak likely from flowing matter between the centre of mass and cool component.",
+            "url": "https://arxiv.org/abs/0706.3835"
+          }
+        ],
+        "finding": "The rewritten body accurately preserves the paper’s inferential wording. No alpha Equulei/OUP-dependent assertion remains. Its object-specific self-check correctly asks transfer direction rather than repeating the constellation-boundary point.",
+        "schema": "qm-question-articles/v1; draft; target_refs constellation/equ; empty question_refs; required tags; 2 HTTPS sources.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "article_id": "quizipedia:constellation:sge",
+        "body_words": 200,
+        "canonical_sha256": "a9743cc0bbe0a088ac05a19c884d4efd4871499130d3ef1a7fd59b38107d7ebb",
+        "checked_sources": [
+          {
+            "evidence": "Prior actual open: lists Sagitta / Sge and defines bounded sky areas.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Prior actual open: M71 in Sagitta, globular cluster, roughly 13,000 ly, classification dispute resolved as sparse globular in the 1970s.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-71/"
+          },
+          {
+            "evidence": "Prior actual open: 2015 M71 study; MSTO 12±2 Gyr and separate Delta(Knee)_TO 12±1 Gyr method; metal-rich globular.",
+            "url": "https://arxiv.org/abs/1506.01180"
+          }
+        ],
+        "finding": "Confirmed unchanged canonical hash and previously accepted source-grounded verdict.",
+        "schema": "Unchanged from accepted initial review: qm-question-articles/v1; draft; target_refs constellation/sge; empty question_refs; required tags; 3 HTTPS sources.",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "remaining_risks": [
+      "No tests/builds or cross-provider release review were run.",
+      "The article’s research findings are attributed to a 2007 paper and are not presented as a current measurement."
+    ],
+    "status": "DONE",
+    "summary": "Corrected frozen recheck: ACCEPT EQU and unchanged SGE. The accessible 2007 arXiv primary supports all revised EQU claims; no files changed. Native fact evidence only, not cross-provider release approval."
+  },
+  "root_task_id": "task-52edaede28544866941148c839e38f16",
+  "run_id": "run-c5de07f333824f299bf64372a771944c",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: corrected EQU accessible-primary recheck",
+  "version": 3
+}

@@ -1,0 +1,65 @@
+{
+  "acceptance": "Independent concrete local export correspondence/evidence, no releaseapprovalclaim.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study",
+    "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\question_articles.dart",
+    "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only native independent inspect next/apps/quiz_app/assets/study/question-articles.json generated under real grant3739 and existing study/question_articles/build.py/reviews/drafts. Initial --check stale reproduced; --write then --check PASS60. Verify generated accepted articles correspond to exact frozen manifest hashes andbindings, nounreviewedobjectincluded, semantics/status transformation only; inspect tests for appropriate nextgates. No files/children/Git/tests/build/browserautomation/managedworkers/deploy/secrets. ActualREADY/offer/accept scopedreadlease; releaseQUEUEDbeforeexistinglightreadexception. Model labelsselfreported. Epoch4root828b0735. Native verdictpreparationonly, compliantcrossproviderreviewandFlutter/browser/publicationpendingquiz_master-mkk. Return concreteevidence/hashes/risks thenIDLE.",
+  "created_at": 1791498029.7881062,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-9d325e7b1d2d45dab460e08a29b20ecd",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "kind": "static_export_correspondence",
+        "result": "Parsed 146 frozen input articles and all 19 review files (60 verdict records). Exactly 60 have verdict=accept and an article_sha256 equal to the independently recomputed canonical article JSON hash. The generated asset contains exactly those 60 IDs, sorted and unique; no unexpected IDs and no missing accepted IDs."
+      },
+      {
+        "kind": "exact_generated_data",
+        "result": "Asset schema qm-question-articles/v1; all 60 entries status=accepted; deep equality holds against the locally recomputed expected export consisting of each exact accepted frozen object with status changed from draft to accepted. Canonical asset SHA-256: 3752e4177f960e25380b2095aa9223a2bc12af9b259f5b7fc3dda764b6101984. Canonical sorted [id, reviewed article_sha256] manifest digest: 71501a9498df52a141aba999b21e8597f0c34e13697e0f9ae1a12368d390553f."
+      },
+      {
+        "kind": "manifest_scope",
+        "result": "The exporter subset is deliberate: 86 of the 146 frozen draft objects have no accepted review and are absent from the asset (60 target-only and 26 question-bound). No unreviewed object is included. Published bindings total 50 target_refs and 10 exact question_refs."
+      },
+      {
+        "kind": "static_contract_review",
+        "result": "build.py requires independent top-level review identities, exact reviewed canonical hash, valid accepted/draft input status, 2–5 unique HTTPS sources with evidence metadata, nonempty Russian title/body, target catalog membership or exact question revision, and unique bindings; it writes only after these checks. All 19 current review files have nonempty distinct author/reviewer values."
+      },
+      {
+        "kind": "reader_gate_review",
+        "result": "question_articles.dart fails closed for non-accepted entries, malformed data, duplicate IDs, and unsafe/non-HTTPS source links; target and question lookup includes domain and exact revision. question_articles_test.dart includes exact-revision lookup, failure-closed decoder, mobile reader/open-pause/link placement, and absent-article tests. I did not execute tests/builds, as prohibited."
+      },
+      {
+        "kind": "author_execution_evidence",
+        "result": "Root reports under genuine grants: initial stale check reproduced; build.py --write then --check passed 60; test_coverage.py two tests passed; Flutter question_articles_test.dart four tests passed; coverage refresh reported accepted 60/draft 87/missing 4208. This reviewer did not rerun those commands."
+      }
+    ],
+    "remaining_risks": [
+      "This audit did not independently fact-check all 60 article claims or rerun build/test commands.",
+      "The Dart tests use fixture catalogs; build.py is the static production-asset correspondence gate. Cross-provider review and full Flutter web/browser verification remain pending."
+    ],
+    "status": "DONE",
+    "summary": "Independent read-only static audit finds the checked-in 60-article local asset is an exact accepted-review subset of frozen drafts with only the intended status transformation. No files changed. This is native evidence only; compliant cross-provider review, full Flutter web/browser verification, and publication remain outside this verdict.",
+    "verdict": "ACCEPT local export correspondence"
+  },
+  "root_task_id": "task-9d325e7b1d2d45dab460e08a29b20ecd",
+  "run_id": "run-18717827b7f6423fbef0a7024547da65",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent local 60-article export audit",
+  "version": 3
+}
