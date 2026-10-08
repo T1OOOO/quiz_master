@@ -1,0 +1,104 @@
+{
+  "articles": [
+    {
+      "body_ru_words": 174,
+      "canonical_sha256": "1f14a09601e46709d9c0c44b8fd9ef0dd21a66a99fed46e269c2ff5e49e74f82",
+      "findings": [
+        "NGC 2997, IAU identity/projection explanation, target binding, self-check, and word count all pass.",
+        "The statement that Antlia dwarf is old-dominated while retaining central atomic hydrogen accurately paraphrases the cited ESO report, but that report is explicitly dated 1999. In an undated explanatory paragraph it is presented as current and omits the 2011 HST result of an appreciable blue central population confirming ongoing star formation.",
+        "The Local Group-edge/outlying wording remains defensible: the 2011 study says it is at the Local Group's very edge; 2013/2015 sources additionally place the original Antlia in the NGC 3109 association. The wording should be qualified rather than replaced with an unsupported categorical alternative.",
+        "Editorial concern: title phrase 'на одном направлении' is awkward Russian; 'в одном направлении' or a title naming the sky area reads more naturally."
+      ],
+      "id": "quizipedia:constellation:ant",
+      "required_revision": "Date/attribute the ESO 1999 finding and add or link the 2011 HST qualification about the blue central population/ongoing star formation; then recalculate frozen hash. Keep 'outlying/edge of the Local Group' qualified and distinguish original Antlia from Antlia B if mentioning the NGC 3109 association.",
+      "status": "REVISE"
+    },
+    {
+      "body_ru_words": 196,
+      "canonical_sha256": "1cf3dd047173abb6bcb93adbc8c422cce8482673f4267d0f2e14d4e5b1475557",
+      "findings": [
+        "IAU identity/projection wording, target binding, self-check and 150–220-word length pass.",
+        "NASA supports NGC 6101's Apus location, roughly 50,000-light-year distance, loose packing, and Hubble stellar-population observations.",
+        "The article correctly time-bounds the 2011/2014-era non-detection of multiple populations in IC 4499 and then states the 2018 result. The opened 2018 primary source explicitly reports first detection of two sub-populations with different nitrogen abundance.",
+        "No misleading physical-pair inference is made."
+      ],
+      "id": "quizipedia:constellation:aps",
+      "status": "ACCEPT"
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "detail": "Canonical form: json.dumps(whole article object, ensure_ascii=false, sort_keys=true, separators=(',', ':')), UTF-8 SHA-256.",
+      "kind": "frozen_object_hashes",
+      "objects": [
+        {
+          "id": "quizipedia:constellation:ant",
+          "sha256": "1f14a09601e46709d9c0c44b8fd9ef0dd21a66a99fed46e269c2ff5e49e74f82",
+          "words_body_ru": 174
+        },
+        {
+          "id": "quizipedia:constellation:aps",
+          "sha256": "1cf3dd047173abb6bcb93adbc8c422cce8482673f4267d0f2e14d4e5b1475557",
+          "words_body_ru": 196
+        }
+      ]
+    },
+    {
+      "detail": "IAU table lists Antlia/Ant and Apus/Aps; significance text explains the original star patterns generally have no physical connection and are perspective effects.",
+      "kind": "source_opened",
+      "url": "https://iauarchive.eso.org/public/themes/constellations/"
+    },
+    {
+      "detail": "ESO identifies NGC 2997 as an Antlia spiral roughly 30 million light-years away, brightest member of its namesake group, imaged in infrared with VLT HAWK-I.",
+      "kind": "source_opened",
+      "url": "https://www.eso.org/public/unitedkingdom/images/eso1042f/"
+    },
+    {
+      "detail": "The dated 27-Feb-1999 ESO report calls Antlia dwarf an outlying Local Group member and describes its then-inferred old-dominated population plus central H I.",
+      "kind": "source_opened",
+      "url": "https://www.eso.org/public/news/eso9913/"
+    },
+    {
+      "detail": "2011 HST-based abstract calls Antlia at the Local Group edge and finds an appreciable blue central population confirming ongoing star formation; this materially qualifies the undated 1999-era description.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/1109.1142"
+    },
+    {
+      "detail": "2013 study identifies Antlia among original NGC 3109 association members; it does not negate its Local Group-edge wording.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/1310.6365"
+    },
+    {
+      "detail": "2015 Antlia B paper explicitly distinguishes Antlia B from the original Antlia dwarf and calls the original another likely NGC 3109 satellite.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/1508.01800"
+    },
+    {
+      "detail": "NASA identifies NGC 6101 as loosely packed globular cluster in Apus at roughly 50,000 light-years, with Hubble multiwavelength observations to characterize its populations.",
+      "kind": "source_opened",
+      "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-107/"
+    },
+    {
+      "detail": "ESA/Hubble 2014 report says IC 4499 is a Milky Way globular in Apus, roughly 12 billion years old, and at that time found no sign of multiple generations.",
+      "kind": "source_opened",
+      "url": "https://esahubble.org/images/potw1431a/"
+    },
+    {
+      "detail": "2018 primary abstract reports the first detection of multiple populations in IC 4499: two sub-populations with different nitrogen abundance.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/1807.07618"
+    }
+  ],
+  "new_files": [],
+  "remaining_risks": [
+    "ANT is not ready until the current-state stellar-population wording/source coverage is corrected and its hash changes.",
+    "This native same-provider review does not satisfy a different-provider release gate or constitute publication approval."
+  ],
+  "status": "DONE",
+  "verification": {
+    "no_edits": true,
+    "source_opens": "All seven cited URLs opened; three additional Antlia primary/research references opened to resolve the age/membership issue.",
+    "tests_build_git_runtime": "NOT_RUN; forbidden/not applicable to read-only factual review"
+  }
+}

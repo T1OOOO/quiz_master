@@ -1,0 +1,99 @@
+{
+  "reviewer": "codex/gpt-6.1-sol self-reported; session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "codex/gpt-6-luna self-reported; session-6468a45aa629470cb76fd85da497669e; root applied primary-source/date/editorial corrections",
+  "scope": "Independent native exact factual/editorial draft acceptance. Different actual provider and gated runtime/publication checks pending.",
+  "review_tasks": [
+    "task-711b2376bdac4b8180b5f30c0c435c86",
+    "task-231c501589504fa59e21391f1bf15085"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:ant",
+      "verdict": "accept",
+      "article_sha256": "5b8637c1071ec8173ae568bfb702b63b68f9713e3f5c4ba1f719233cbb048daa",
+      "note": "Corrected title is natural Russian and accurately frames both objects as sharing a sky area. The ESO claim is explicitly dated to 1999 rather than presented as a final current conclusion. The 2011 HST source accurately supports the added blue central population and ongoing-star-formation statement. The qualified Local Group-edge wording, projection explanation, target binding, self-check, source count and word range pass.",
+      "checked_sources": [
+        {
+          "url": "https://iauarchive.eso.org/public/themes/constellations/",
+          "evidence": "IAU table lists Antlia/Ant and Apus/Aps; significance text explains the original star patterns generally have no physical connection and are perspective effects."
+        },
+        {
+          "url": "https://www.eso.org/public/unitedkingdom/images/eso1042f/",
+          "evidence": "ESO identifies NGC 2997 as an Antlia spiral roughly 30 million light-years away, brightest member of its namesake group, imaged in infrared with VLT HAWK-I."
+        },
+        {
+          "url": "https://www.eso.org/public/news/eso9913/",
+          "evidence": "The dated 27-Feb-1999 ESO report calls Antlia dwarf an outlying Local Group member and describes its then-inferred old-dominated population plus central H I."
+        },
+        {
+          "url": "https://arxiv.org/abs/1109.1142",
+          "evidence": "2011 HST-based abstract calls Antlia at the Local Group edge and finds an appreciable blue central population confirming ongoing star formation; this materially qualifies the undated 1999-era description."
+        },
+        {
+          "url": "https://arxiv.org/abs/1310.6365",
+          "evidence": "2013 study identifies Antlia among original NGC 3109 association members; it does not negate its Local Group-edge wording."
+        },
+        {
+          "url": "https://arxiv.org/abs/1508.01800",
+          "evidence": "2015 Antlia B paper explicitly distinguishes Antlia B from the original Antlia dwarf and calls the original another likely NGC 3109 satellite."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-107/",
+          "evidence": "NASA identifies NGC 6101 as loosely packed globular cluster in Apus at roughly 50,000 light-years, with Hubble multiwavelength observations to characterize its populations."
+        },
+        {
+          "url": "https://esahubble.org/images/potw1431a/",
+          "evidence": "ESA/Hubble 2014 report says IC 4499 is a Milky Way globular in Apus, roughly 12 billion years old, and at that time found no sign of multiple generations."
+        },
+        {
+          "url": "https://arxiv.org/abs/1807.07618",
+          "evidence": "2018 primary abstract reports the first detection of multiple populations in IC 4499: two sub-populations with different nitrogen abundance."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:aps",
+      "verdict": "accept",
+      "article_sha256": "1cf3dd047173abb6bcb93adbc8c422cce8482673f4267d0f2e14d4e5b1475557",
+      "note": "Exact object hash is unchanged from the preceding review. Prior opened-source checks remain valid: NGC 6101 identity/distance/loose structure and IC 4499's 2014-era non-detection versus 2018 nitrogen-population finding are accurately time-bounded.",
+      "checked_sources": [
+        {
+          "url": "https://iauarchive.eso.org/public/themes/constellations/",
+          "evidence": "IAU table lists Antlia/Ant and Apus/Aps; significance text explains the original star patterns generally have no physical connection and are perspective effects."
+        },
+        {
+          "url": "https://www.eso.org/public/unitedkingdom/images/eso1042f/",
+          "evidence": "ESO identifies NGC 2997 as an Antlia spiral roughly 30 million light-years away, brightest member of its namesake group, imaged in infrared with VLT HAWK-I."
+        },
+        {
+          "url": "https://www.eso.org/public/news/eso9913/",
+          "evidence": "The dated 27-Feb-1999 ESO report calls Antlia dwarf an outlying Local Group member and describes its then-inferred old-dominated population plus central H I."
+        },
+        {
+          "url": "https://arxiv.org/abs/1109.1142",
+          "evidence": "2011 HST-based abstract calls Antlia at the Local Group edge and finds an appreciable blue central population confirming ongoing star formation; this materially qualifies the undated 1999-era description."
+        },
+        {
+          "url": "https://arxiv.org/abs/1310.6365",
+          "evidence": "2013 study identifies Antlia among original NGC 3109 association members; it does not negate its Local Group-edge wording."
+        },
+        {
+          "url": "https://arxiv.org/abs/1508.01800",
+          "evidence": "2015 Antlia B paper explicitly distinguishes Antlia B from the original Antlia dwarf and calls the original another likely NGC 3109 satellite."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-107/",
+          "evidence": "NASA identifies NGC 6101 as loosely packed globular cluster in Apus at roughly 50,000 light-years, with Hubble multiwavelength observations to characterize its populations."
+        },
+        {
+          "url": "https://esahubble.org/images/potw1431a/",
+          "evidence": "ESA/Hubble 2014 report says IC 4499 is a Milky Way globular in Apus, roughly 12 billion years old, and at that time found no sign of multiple generations."
+        },
+        {
+          "url": "https://arxiv.org/abs/1807.07618",
+          "evidence": "2018 primary abstract reports the first detection of multiple populations in IC 4499: two sub-populations with different nitrogen abundance."
+        }
+      ]
+    }
+  ]
+}

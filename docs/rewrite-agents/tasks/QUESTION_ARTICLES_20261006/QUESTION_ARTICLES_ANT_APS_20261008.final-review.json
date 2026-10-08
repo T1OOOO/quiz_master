@@ -1,0 +1,72 @@
+{
+  "articles": [
+    {
+      "body_ru_words": 190,
+      "canonical_sha256": "5b8637c1071ec8173ae568bfb702b63b68f9713e3f5c4ba1f719233cbb048daa",
+      "findings": [
+        "Corrected title is natural Russian and accurately frames both objects as sharing a sky area.",
+        "The ESO claim is explicitly dated to 1999 rather than presented as a final current conclusion.",
+        "The 2011 HST source accurately supports the added blue central population and ongoing-star-formation statement.",
+        "The qualified Local Group-edge wording, projection explanation, target binding, self-check, source count and word range pass."
+      ],
+      "id": "quizipedia:constellation:ant",
+      "status": "ACCEPT"
+    },
+    {
+      "body_ru_words": 196,
+      "canonical_sha256": "1cf3dd047173abb6bcb93adbc8c422cce8482673f4267d0f2e14d4e5b1475557",
+      "findings": [
+        "Exact object hash is unchanged from the preceding review.",
+        "Prior opened-source checks remain valid: NGC 6101 identity/distance/loose structure and IC 4499's 2014-era non-detection versus 2018 nitrogen-population finding are accurately time-bounded."
+      ],
+      "id": "quizipedia:constellation:aps",
+      "status": "ACCEPT"
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "canonical_hashes",
+      "method": "UTF-8 json.dumps whole object with ensure_ascii=false, sort_keys=true, separators=(',', ':').",
+      "objects": [
+        {
+          "body_ru_words": 190,
+          "id": "quizipedia:constellation:ant",
+          "sha256": "5b8637c1071ec8173ae568bfb702b63b68f9713e3f5c4ba1f719233cbb048daa"
+        },
+        {
+          "body_ru_words": 196,
+          "id": "quizipedia:constellation:aps",
+          "sha256": "1cf3dd047173abb6bcb93adbc8c422cce8482673f4267d0f2e14d4e5b1475557",
+          "unchanged_from_prior_review": true
+        }
+      ]
+    },
+    {
+      "detail": "Reopened for this correction. Its abstract calls Antlia a galaxy at the very edge of the Local Group and reports an appreciable blue stellar population at its core, confirming ongoing star formation. This directly supports the corrected Antlia wording and new source metadata.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/1109.1142"
+    },
+    {
+      "detail": "All were opened in the immediately preceding review; their claims and APS factual acceptance remain valid. Only ANT changed in this recheck.",
+      "kind": "previously_opened_current_sources",
+      "urls": [
+        "https://iauarchive.eso.org/public/themes/constellations/",
+        "https://www.eso.org/public/unitedkingdom/images/eso1042f/",
+        "https://www.eso.org/public/news/eso9913/",
+        "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-107/",
+        "https://esahubble.org/images/potw1431a/",
+        "https://arxiv.org/abs/1807.07618"
+      ]
+    }
+  ],
+  "new_files": [],
+  "remaining_risks": [
+    "Same-provider factual review is not different-provider release approval or publication approval."
+  ],
+  "status": "DONE",
+  "verification": {
+    "no_edits": true,
+    "tests_build_git_runtime": "NOT_RUN; forbidden/not applicable to read-only review"
+  }
+}
