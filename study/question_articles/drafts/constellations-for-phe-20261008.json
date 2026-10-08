@@ -1,0 +1,89 @@
+{
+  "schema_version": "qm-question-articles/v1",
+  "articles": [
+    {
+      "id": "quizipedia:constellation:for",
+      "title_ru": "Печь: галактика и скопление галактик",
+      "body_ru": "Печь (Fornax, сокращение For) — одно из 88 созвездий Международного астрономического союза. В современной астрономии созвездие — участок небесной сферы с условной границей, а не группа звезд, обязанных быть физически связанными. Через эту область на земном небе видны объекты разных масштабов и расстояний.\n\nНапример, ESO показывает, где в Печи расположена NGC 1365: это отдельная крупная спиральная галактика с перемычкой, примерно в 60 миллионах световых лет от нас. Перемычка проходит через ядро; её гравитационное влияние помогает формировать из межзвёздных облаков газа и пыли пару спиральных рукавов, где рождаются горячие молодые звезды. Поэтому структура на снимках сочетает старые звезды перемычки и яркие молодые звезды рукавов.\n\nДругой масштаб — скопление галактик Печь. Обзор Fornax Deep Survey с телескопом VST охватил десятки квадратных градусов и позволил увидеть многочисленные тусклые галактики и слабый свет между ними. Это не «часть рисунка» созвездия: скопление — гравитационная система, тогда как созвездие служит картой положения. Проверь себя: NGC 1365 — это область неба, скопление или отдельная галактика? Ответ: отдельная галактика, видимая в созвездии Печь.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "for"
+        }
+      ],
+      "question_refs": [],
+      "source_links": [
+        {
+          "title": "IAU: Constellations",
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "supports": "88 formal sky regions; Fornax/For and Phoenix/Phe.",
+          "accessed": "2026-10-08"
+        },
+        {
+          "title": "ESO: NGC 1365",
+          "url": "https://www.eso.org/public/news/eso9911/",
+          "supports": "Barred spiral galaxy in Fornax, distance about 60 million light-years and young stars in spiral arms.",
+          "accessed": "2026-10-08"
+        },
+        {
+          "title": "ESO: Fornax Deep Survey",
+          "url": "https://www.eso.org/public/news/eso1734/",
+          "supports": "VST survey reveals faint galaxies and intracluster light.",
+          "accessed": "2026-10-08"
+        },
+        {
+          "title": "ESO: Fornax Deep Survey observations",
+          "url": "https://www.eso.org/sci/publications/announcements/sciann17326.html",
+          "supports": "Survey covers roughly 28 square degrees.",
+          "accessed": "2026-10-08"
+        }
+      ],
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "quizipedia:constellation:phe",
+      "title_ru": "Феникс: два объекта с одним небесным адресом",
+      "body_ru": "Феникс (Phoenix; Phe) — одно из 88 созвездий, официально перечисленных IAU. Это условная область неба, и само название не обозначает единственный физический объект. Внутри этого направления наблюдатели встречают объекты, не связанные друг с другом: имена обоих лишь содержат «Феникс».\n\nВ этом созвездии видна отдельная небольшая система — карликовая галактика Феникс. ESO описывает её как необычную карликовую систему: по форме она напоминает сфероидальную, но рядом с ней обнаружено облако газа. Облако не лежит внутри галактики, однако связано с ней гравитацией; его выброс, вероятно, вызвали сверхновые. В галактике также наблюдаются молодые звезды.\n\nСовсем другой объект — скопление галактик Феникс, удалённое примерно на 5,73 миллиарда световых лет. Снимок NASA объединяет данные телескопов Chandra, Hubble и радиотелескопа VLA: горячий газ заметен в рентгеновских лучах, струи от центральной чёрной дыры создают полости, а более холодные газовые нити связаны с образованием звёзд. Так созвездие становится указателем направления, а не границей физического соседства. Проверь себя: карликовая галактика и далёкое скопление — один объект? Нет, это два самостоятельных объекта разных масштабов и расстояний.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "phe"
+        }
+      ],
+      "question_refs": [],
+      "source_links": [
+        {
+          "title": "IAU: Constellations",
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "supports": "88 formal sky regions; Fornax/For and Phoenix/Phe.",
+          "accessed": "2026-10-08"
+        },
+        {
+          "title": "ESO: Phoenix Dwarf",
+          "url": "https://www.eso.org/public/australia/images/potw1838a/",
+          "supports": "Dwarf in Phoenix, young stars, gravitationally bound external gas cloud and proposed supernova ejection.",
+          "accessed": "2026-10-08"
+        },
+        {
+          "title": "NASA: Phoenix Cluster",
+          "url": "https://science.nasa.gov/asset/hubble/phoenix-cluster/",
+          "supports": "Cluster distance, Chandra/Hubble/VLA composite, gas cavities, jets and star-forming filaments.",
+          "accessed": "2026-10-08"
+        }
+      ],
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "status": "draft"
+    }
+  ]
+}

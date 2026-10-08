@@ -1,0 +1,283 @@
+{
+  "schema_version": "qm-article-work-evidence/v1",
+  "date": "2026-10-08",
+  "author_tasks": [
+    {
+      "task_id": "task-60975c9c5ea743a794e8612cf3306358",
+      "assignee": "session-6468a45aa629470cb76fd85da497669e",
+      "state": "SUBMITTED",
+      "result": {
+        "draft_batch": {
+          "articles": [
+            {
+              "body": "Печь (Fornax, сокращение For) — одно из 88 созвездий Международного астрономического союза. В современной астрономии созвездие — участок небесной сферы с условной границей, а не группа звезд, обязанных быть физически связанными. Через эту область на земном небе видны объекты разных масштабов и расстояний.\n\nНапример, ESO показывает, где в Печи расположена NGC 1365: это отдельная крупная спиральная галактика с перемычкой, примерно в 60 миллионах световых лет от нас. Перемычка проходит через ядро; её гравитационное влияние направляет газ и пыль в спиральные рукава, где рождаются горячие молодые звезды. Поэтому структура на снимках сочетает старые звезды перемычки и яркие молодые звезды рукавов.\n\nДругой масштаб — скопление галактик Печь. Обзор Fornax Deep Survey с телескопом VST охватил десятки квадратных градусов и позволил увидеть многочисленные тусклые галактики и слабый свет между ними. Это не «часть рисунка» созвездия: скопление — гравитационная система, тогда как созвездие служит картой положения. Проверь себя: NGC 1365 — это область неба, скопление или отдельная галактика? Ответ: отдельная галактика, видимая в созвездии Печь.",
+              "id": "for",
+              "title": "Печь"
+            },
+            {
+              "body": "Феникс (Phoenix; Phe) — одно из 88 созвездий, официально перечисленных IAU. Это условная область неба, и само название не обозначает единственный физический объект. Внутри этого направления наблюдатели встречают объекты, не связанные друг с другом: имена обоих лишь содержат «Феникс».\n\nКарликовая галактика Феникс находится примерно в 1,44 миллиона световых лет от Земли. ESO описывает её как необычную карликовую систему: по форме она напоминает сфероидальную, но рядом с ней обнаружено облако газа. Облако не лежит внутри галактики, однако связано с ней гравитацией; его выброс, вероятно, вызвали сверхновые. В галактике также наблюдаются молодые звезды.\n\nСовсем другой объект — скопление галактик Феникс, удалённое примерно на 5,73 миллиарда световых лет. Снимок NASA объединяет данные телескопов Chandra, Hubble и радиотелескопа VLA: горячий газ заметен в рентгеновских лучах, струи от центральной чёрной дыры создают полости, а более холодные газовые нити связаны с образованием звёзд. Так созвездие становится указателем направления, а не границей физического соседства. Проверь себя: карликовая галактика и далёкое скопление — один объект? Нет, это два самостоятельных объекта разных масштабов и расстояний.",
+              "id": "phe",
+              "title": "Феникс"
+            }
+          ],
+          "status": "draft",
+          "tags": null,
+          "target_refs": null
+        },
+        "evidence": [
+          {
+            "kind": "word_count",
+            "result": "Counted Russian article bodies in memory: for=161 words; phe=167 words; both within 150–220."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+            "result": "Opened IAU FAQ/table: 88 constellations cover the sky; Fornax/For and Phoenix/Phe entries and charts are present."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://www.eso.org/public/news/eso9911/",
+            "result": "Opened ESO NGC 1365 page: barred galaxy in direction of Fornax, about 60 million light-years away; bar and young blue spiral arms described."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://www.eso.org/public/news/eso1734/",
+            "result": "Opened ESO Fornax Deep Survey report: 2.3-gigapixel VST image reveals faint galaxies and intracluster light."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://www.eso.org/sci/publications/announcements/sciann17326.html",
+            "result": "Opened ESO survey description: 2–12 hour exposure times across about 28 square degrees."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://www.eso.org/public/australia/images/potw1838a/",
+            "result": "Opened ESO Phoenix Dwarf page: gas cloud lies outside galaxy, remains gravitationally bound, supernova ejection suspected; young stars reported."
+          },
+          {
+            "kind": "source_open",
+            "reference": "https://science.nasa.gov/asset/hubble/phoenix-cluster/",
+            "result": "Opened NASA Phoenix Cluster page: distinct cluster in Phoenix at 5.73 billion light-years; Chandra/Hubble/VLA observations of gas, jets, cavities and star-forming cooler filaments."
+          },
+          {
+            "kind": "lease",
+            "result": "Covering interactive read lease lease-fc016a0e5ec240fe915e4cb5e515f17e returned QUEUED (OLDER_REQUEST_WAITING), then was released at generation 1 before bounded web research. No repository files read or changed."
+          }
+        ],
+        "files_changed": [],
+        "limitations": [
+          "Packet's exact v1 article schema, target reference bindings and allowed tag values could not be read because the covering read lease queued; no values were invented. Root must apply bindings and arrange the required independent fact check."
+        ],
+        "opened_primary_sources": [
+          {
+            "article_id": "for",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "article_id": "for",
+            "url": "https://www.eso.org/public/news/eso9911/"
+          },
+          {
+            "article_id": "for",
+            "url": "https://www.eso.org/public/news/eso1734/"
+          },
+          {
+            "article_id": "for",
+            "url": "https://www.eso.org/sci/publications/announcements/sciann17326.html"
+          },
+          {
+            "article_id": "phe",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "article_id": "phe",
+            "url": "https://www.eso.org/public/australia/images/potw1838a/"
+          },
+          {
+            "article_id": "phe",
+            "url": "https://science.nasa.gov/asset/hubble/phoenix-cluster/"
+          }
+        ],
+        "runtime_identity": "codex/gpt-6-luna, Hub session-6468a45aa629470cb76fd85da497669e (Hub-reported identity; model verification false); requested drafting model was gpt-6-luna/high.",
+        "status": "PARTIAL_DRAFTS_READY_BINDINGS_PENDING",
+        "summary": "Completed two Russian draft bodies in memory (for: 161 words; phe: 167 words) against directly opened primary astronomy sources. No files changed. I could not read the packet/schema because the sole covering interactive read lease was QUEUED (OLDER_REQUEST_WAITING); released it immediately per instruction. These are draft bodies and evidence, not final bound articles.",
+        "tests_build_publication": "Not run; prohibited by task."
+      }
+    },
+    {
+      "task_id": "task-f32acc9a1e1d4432a375817639130975",
+      "assignee": "session-068dca3b763f4a588face0e827c50faa",
+      "state": "SUBMITTED",
+      "result": {
+        "batch_json": {
+          "articles": [
+            {
+              "body_ru": "## Созвездие и система\n\nЖивописец, или Pictor, входит в перечень созвездий Международного астрономического союза; его стандартное сокращение — Pic, а английское название — Painter’s Easel. Созвездие — размеченная область небесной сферы: звёзды условного рисунка могут находиться на очень разных расстояниях и не составлять единую физическую группу. Полезно отличать этот небесный «адрес» от системы звезды β Живописца (Beta Pictoris), которая видна в направлении Живописца.\n\nBeta Pictoris — молодая звезда с дисками обломков, возникших при столкновениях планетезималей. В инфракрасных наблюдениях Webb 2024 года видны основной и второй, наклонённый диски; у второго обнаружили изогнутую пылевую структуру, прозванную «кошачьим хвостом». Предложение, что её создало сравнительно недавнее событие выброса пыли, остаётся гипотезой команды.\n\n## Планета, которую пришлось «проявить»\n\nВ июле 2026 года ESO сообщила о Beta Pictoris d — третьей известной планете системы на момент публикации. На архивных снимках планеты d и b в 2014 году почти совпали на луче зрения. После удаления света b слабую d удалось различить. Это прямая съёмка: телескоп фиксирует свет планеты, а не только её косвенное влияние на звезду.\n\nПроверьте себя: что обозначают «Pictor», «Beta Pictoris» и «d» — область неба, звезду с системой или отдельную планету?",
+              "id": "quizipedia:constellation:pic",
+              "question_refs": [],
+              "source_links": [
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "Pictor/Pic, Painter’s Easel; constellations are sky regions and projected star patterns need not be physically connected.",
+                  "title": "IAU: The Constellations",
+                  "url": "https://iauarchive.eso.org/public/themes/constellations/"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "Beta Pictoris main and inclined secondary debris discs; curved cat’s-tail dust feature; recent dust-production event is a hypothesis.",
+                  "title": "ESA: Webb discovers dusty cat’s tail in Beta Pictoris system",
+                  "url": "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_discovers_dusty_cat_s_tail_in_Beta_Pictoris_system"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "Places Beta Pictoris towards the constellation Pictor and identifies its dusty debris disc and VLT-observed planet.",
+                  "title": "ESA: Around Beta Pictoris",
+                  "url": "https://www.esa.int/ESA_Multimedia/Images/2018/08/Around_Beta_Pictoris"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "ESO’s 15 July 2026 report identifies Beta Pictoris d as the third known planet; d and b nearly aligned in 2014 images, with b’s light removed to reveal d.",
+                  "title": "ESO: The Beta Pictoris d exoplanet observed over the years",
+                  "url": "https://eso.org/public/images/eso2609b/"
+                }
+              ],
+              "status": "draft",
+              "tag_ids": [
+                "domain:science",
+                "skill:recognition",
+                "topic:astronomy"
+              ],
+              "target_refs": [
+                {
+                  "domain": "constellation",
+                  "kind": "quizipedia",
+                  "target_id": "pic"
+                }
+              ],
+              "title_ru": "Живописец: пылевые диски и новая планета"
+            },
+            {
+              "body_ru": "## Область неба и след взрыва\n\nПаруса (лат. Vela) — созвездие южного неба; стандартное сокращение Международного астрономического союза — Vel. Созвездия делят небесную сферу на области, но их рисунки — проекция с Земли, а не обязательно группа близких друг к другу тел. Поэтому «в направлении Парусов» не означает, что каждый объект там физически связан со всеми звёздами области.\n\n## Пульсар внутри остатка\n\nОстаток сверхновой в Парусах — расширяющееся облако вещества после взрыва массивной звезды. Пульсар Vela — компактная нейтронная звезда, оставшаяся после коллапса той же звезды. По оценке NASA APOD, взрыв произошёл около 12 000 лет назад. Это разные масштабы: огромная газовая структура и быстро вращающийся звёздный остаток внутри неё.\n\nПо данным NASA, пульсар вращается более 11 раз в секунду и выбрасывает струю заряженных частиц. В серии снимков Chandra, сделанных с июня по сентябрь 2010 года, её форма и движение подсказали исследователям возможную медленную прецессию — это была интерпретация наблюдений, а не установленный факт.\n\nВ 2023 году NASA показало данные IXPE о поляризации рентгеновского излучения туманности, питаемой пульсаром. Поляризация помогает исследовать упорядоченность магнитного поля; составное изображение объединяет измерения IXPE и Chandra, а его цвета условны.\n\nПроверьте себя: что здесь является областью неба, газовой оболочкой, нейтронной звездой и туманностью вокруг неё?",
+              "id": "quizipedia:constellation:vel",
+              "question_refs": [],
+              "source_links": [
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "Vela/Vel, the Sails; constellations are sky regions and projected patterns, not necessarily physical groups.",
+                  "title": "IAU: The Constellations",
+                  "url": "https://iauarchive.eso.org/public/themes/constellations/"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "Vela pulsar is a neutron star formed after a massive star collapsed; NASA page reports over 11 rotations per second, possible precession suggested by Chandra images from June–September 2010, and a supernova more than 10,000 years ago.",
+                  "title": "NASA: Vela Pulsar",
+                  "url": "https://www.nasa.gov/missions/chandra/vela-pulsar/"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "The Vela pulsar wind nebula, IXPE X-ray polarization data, particle jet, magnetic-field investigation; composite image combines IXPE and Chandra observations.",
+                  "title": "NASA: Vela Pulsar Wind Nebula Takes Flight in New Image From NASA’s IXPE",
+                  "url": "https://www.nasa.gov/universe/stars/vela-pulsar-wind-nebula-takes-flight-in-new-image-from-nasas-ixpe-2/"
+                },
+                {
+                  "accessed": "2026-10-08",
+                  "supports": "NASA APOD describes the shock from the Vela supernova and identifies the pulsar at the remnant’s center; gives an estimate of about 12,000 years.",
+                  "title": "NASA APOD: The Vela Supernova Remnant, 2 June 2026",
+                  "url": "https://science.nasa.gov/image-article/apod-2026-june-2-the-vela-supernova-remnant/"
+                }
+              ],
+              "status": "draft",
+              "tag_ids": [
+                "domain:science",
+                "skill:recognition",
+                "topic:astronomy"
+              ],
+              "target_refs": [
+                {
+                  "domain": "constellation",
+                  "kind": "quizipedia",
+                  "target_id": "vel"
+                }
+              ],
+              "title_ru": "Паруса: сверхновая, пульсар и рентгеновская туманность"
+            }
+          ],
+          "schema_version": "qm-question-articles/v1"
+        },
+        "evidence": [
+          {
+            "kind": "source_open",
+            "supports": "Directly opened the IAU constellation table; confirmed Pictor / Pic / Painter’s Easel and Vela / Vel / the Sails, and read its explanation that constellations are sky areas and projected patterns.",
+            "title": "IAU: The Constellations",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; checked the two debris discs, curved tail, suggested recent dust event and its explicit hypothetical status.",
+            "title": "ESA: Webb discovers dusty cat’s tail in Beta Pictoris system",
+            "url": "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_discovers_dusty_cat_s_tail_in_Beta_Pictoris_system"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; checked discovery/report date 15 July 2026, planet d as third known planet, 2014 apparent alignment with b and image processing needed to reveal d.",
+            "title": "ESO: The Beta Pictoris d exoplanet observed over the years",
+            "url": "https://eso.org/public/images/eso2609b/"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; checked neutron-star origin, rotation, the Chandra 2010 observations and possible—not definitive—precession interpretation, and supernova age wording.",
+            "title": "NASA: Vela Pulsar",
+            "url": "https://www.nasa.gov/missions/chandra/vela-pulsar/"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; checked X-ray polarization and composite IXPE/Chandra imagery.",
+            "title": "NASA: Vela Pulsar Wind Nebula Takes Flight in New Image From NASA’s IXPE",
+            "url": "https://www.nasa.gov/universe/stars/vela-pulsar-wind-nebula-takes-flight-in-new-image-from-nasas-ixpe-2/"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; confirms the star is towards Pictor and is surrounded by a dusty debris disc.",
+            "title": "ESA: Around Beta Pictoris",
+            "url": "https://www.esa.int/ESA_Multimedia/Images/2018/08/Around_Beta_Pictoris"
+          },
+          {
+            "kind": "source_open",
+            "supports": "Directly opened; checked the expanding shock/remnant description, central pulsar, and source’s approximate 12,000-year estimate.",
+            "title": "NASA APOD: The Vela Supernova Remnant",
+            "url": "https://science.nasa.gov/image-article/apod-2026-june-2-the-vela-supernova-remnant/"
+          }
+        ],
+        "limitations": [
+          "Drafting used actual OpenAI Codex runtime with Hub model label gpt-6.1 (self-reported); requested gpt-6-luna/high was unavailable, so no such setting is claimed.",
+          "No independent fact-check performed; the packet requires separate review by the lead’s fact-checker.",
+          "No tests, builds, browser automation, file edits, imports, exports, Git or publication performed."
+        ],
+        "runtime_identity": "openai/gpt-6.1 (Hub self-reported model label); Hub session session-068dca3b763f4a588face0e827c50faa; team team-2ed452959d1b4bdfa7ec7c94fb8584ce epoch 3; task task-f32acc9a1e1d4432a375817639130975.",
+        "status": "DONE",
+        "summary": "Two original Russian draft articles for the assigned constellation IDs PIC and VEL; no repository files edited.",
+        "word_counts": {
+          "pic": 187,
+          "vel": 200
+        }
+      }
+    }
+  ],
+  "integration": {
+    "root": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+    "for_phe": "Root applied existing schema, target_refs and tag_ids to partial draft bodies; no new factual content added.",
+    "article_count": 120,
+    "batch_count": 36,
+    "constellation_draft_coverage": "52/88",
+    "formal_gates": "Not run: lease-66adbb409c0f4faeb7bfa92933ca4e1f QUEUED/OLDER_REQUEST_WAITING then released. Bounded data read/edit inspection only.",
+    "publication": "Native independent editorial acceptance4/4; not exported/imported or deployed; feedback26/26OPEN; cross-provider/runtime gates pending.",
+    "corrections": [
+      "FOR bar mechanism narrowed to arm formation per ESO9911",
+      "PHE uncited dwarf distance removed; cluster5.73Gly retained from actual NASA About Object Distance metadata",
+      "PIC redundantESA2018link replaced by ESO2026pressrelease supporting direct-imaging definition"
+    ],
+    "cross_provider_task": "task-f98e25cd80444372a50c974c1b6cc37e NEW/unassigned",
+    "hub_review_limit": "FOR task.review refused independent provider required. PIC rework recorded under differing labels, actual vendor both OpenAI; no cross-provider approval claimed.",
+    "final_review_task": "task-1ecebf06ccb04eb3a798f435a9ea951d"
+  }
+}

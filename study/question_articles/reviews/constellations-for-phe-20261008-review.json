@@ -1,0 +1,29 @@
+{
+  "reviewer": "openai/gpt-6.1-sol (self-reported); session-b613b490955945d2b10661bf11105f02",
+  "author": "codex/gpt-6-luna; session-6468a45aa629470cb76fd85da497669e; root applied schema and source corrections",
+  "scope": "Independent native factual and editorial acceptance, exact final drafts only; cross-provider/publication/runtime gates pending.",
+  "review_task": "task-1ecebf06ccb04eb3a798f435a9ea951d",
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:for",
+      "verdict": "accept",
+      "article_sha256": "6b599d44f3ddb004e70c55c68c0d9db3c4241073da3300d85456b0e3d73c57e9",
+      "note": "Corrected «помогает формировать ... пару спиральных рукавов» is materially aligned with ESO's stated mechanism; no ambiguity in the self-check answer.",
+      "checked_sources": [
+        "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141 — 88 defined sky regions and perspective distinction.",
+        "https://www.eso.org/public/news/eso9911/ — NGC 1365 in Fornax, ~60 million light-years; bar perturbation causes interstellar gas/dust clouds to form two arms and young stars make them prominent.",
+        "https://www.eso.org/public/news/eso1734/ and https://www.eso.org/sci/publications/announcements/sciann17326.html — faint intracluster light and ~28-square-degree VST survey."
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:phe",
+      "verdict": "accept",
+      "article_sha256": "5528062cc5852e5ec51dd67b0b5408f38662189fa54005cc31771325941d128a",
+      "note": "Unsupported 1.44-million-light-year dwarf distance is removed; retained cluster distance is directly supported by NASA metadata. The dwarf-versus-cluster self-check is unambiguous.",
+      "checked_sources": [
+        "https://www.eso.org/public/australia/images/potw1838a/ — Phoenix Dwarf morphology, external gravitationally bound gas, young stars, and supernova ejection as a hypothesis.",
+        "https://science.nasa.gov/asset/hubble/phoenix-cluster/ — body supports Chandra/Hubble/VLA composite, jets, cavities and star-forming cooler-gas filaments; About the Object > Distance explicitly states 5.73 billion light-years."
+      ]
+    }
+  ]
+}

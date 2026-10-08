@@ -1,0 +1,69 @@
+{
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "read_only_recheck",
+      "result": "Current two JSON files parsed successfully; canonical article SHA-256 recomputed with ensure_ascii=false, sort_keys=true, separators=(',',':')."
+    },
+    {
+      "kind": "source_open",
+      "result": "Re-opened corrected claim sources: ESO eso9911; ESO potw1838a; NASA Hubble Phoenix Cluster body and About Object Distance metadata (5.73 billion light-years); ESO eso2609; ESO eso2609b. Reconfirmed Vela Chandra, IXPE, and APOD sources."
+    },
+    {
+      "kind": "hashes",
+      "result": "FOR 6B599D44F3DDB004E70C55C68C0D9DB3C4241073DA3300D85456B0E3D73C57E9; PHE 5528062CC5852E5EC51DD67B0B5408F38662189FA54005CC31771325941D128A; PIC 78CFBE6A90263B43EB0E283B0FFAC966817B282D8A57F4AB2F6459DF39913A79; unchanged VEL 2D9B1C6E2B81BC868F8E217A93016411446E9C65245CBDB3A7CCD432090CD6A0."
+    },
+    {
+      "kind": "not_run",
+      "result": "No edits, test/build, browser automation, git, export, deploy, or publication action."
+    }
+  ],
+  "remaining_risks": [
+    "Same declared OpenAI provider as author: this evidence is not a cross-provider release approval.",
+    "Draft acceptance is editorial only; no import/publication claim."
+  ],
+  "reviewer_label": "four-constellation-review",
+  "runtime_identity": "openai/gpt-6.1-sol (self-reported); session-b613b490955945d2b10661bf11105f02",
+  "status": "DONE",
+  "verdicts": {
+    "quizipedia:constellation:for": {
+      "canonical_sha256": "6B599D44F3DDB004E70C55C68C0D9DB3C4241073DA3300D85456B0E3D73C57E9",
+      "checked_sources": [
+        "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141 — 88 defined sky regions and perspective distinction.",
+        "https://www.eso.org/public/news/eso9911/ — NGC 1365 in Fornax, ~60 million light-years; bar perturbation causes interstellar gas/dust clouds to form two arms and young stars make them prominent.",
+        "https://www.eso.org/public/news/eso1734/ and https://www.eso.org/sci/publications/announcements/sciann17326.html — faint intracluster light and ~28-square-degree VST survey."
+      ],
+      "result": "Corrected «помогает формировать ... пару спиральных рукавов» is materially aligned with ESO's stated mechanism; no ambiguity in the self-check answer.",
+      "verdict": "ACCEPT"
+    },
+    "quizipedia:constellation:phe": {
+      "canonical_sha256": "5528062CC5852E5EC51DD67B0B5408F38662189FA54005CC31771325941D128A",
+      "checked_sources": [
+        "https://www.eso.org/public/australia/images/potw1838a/ — Phoenix Dwarf morphology, external gravitationally bound gas, young stars, and supernova ejection as a hypothesis.",
+        "https://science.nasa.gov/asset/hubble/phoenix-cluster/ — body supports Chandra/Hubble/VLA composite, jets, cavities and star-forming cooler-gas filaments; About the Object > Distance explicitly states 5.73 billion light-years."
+      ],
+      "result": "Unsupported 1.44-million-light-year dwarf distance is removed; retained cluster distance is directly supported by NASA metadata. The dwarf-versus-cluster self-check is unambiguous.",
+      "verdict": "ACCEPT"
+    },
+    "quizipedia:constellation:pic": {
+      "canonical_sha256": "78CFBE6A90263B43EB0E283B0FFAC966817B282D8A57F4AB2F6459DF39913A79",
+      "checked_sources": [
+        "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_discovers_dusty_cat_s_tail_in_Beta_Pictoris_system — main/secondary debris discs, cat's-tail feature, and recent dust-production explanation remains a hypothesis.",
+        "https://www.eso.org/public/news/eso2609/ — 15 July 2026, third planet, archive detections, and explicit direct-imaging definition.",
+        "https://eso.org/public/images/eso2609b/ — d/b 2014 near-alignment and removal of b light revealing d."
+      ],
+      "result": "The replacement ESO release directly supports the previously under-cited direct-imaging explanation; final self-check has a unique mapping: region, star system, planet.",
+      "verdict": "ACCEPT"
+    },
+    "quizipedia:constellation:vel": {
+      "canonical_sha256": "2D9B1C6E2B81BC868F8E217A93016411446E9C65245CBDB3A7CCD432090CD6A0",
+      "checked_sources": [
+        "https://www.nasa.gov/missions/chandra/vela-pulsar/ — >11 rotations/s and June–September 2010 data only suggest possible precession.",
+        "https://www.nasa.gov/universe/stars/vela-pulsar-wind-nebula-takes-flight-in-new-image-from-nasas-ixpe-2/ — IXPE polarization, wind nebula, and magnetic-field investigation.",
+        "https://science.nasa.gov/image-article/apod-2026-june-2-the-vela-supernova-remnant/ — about 12,000-year estimate and pulsar at remnant center."
+      ],
+      "result": "Unchanged hash confirmed. The text retains the necessary qualification that precession was an interpretation, not established fact.",
+      "verdict": "ACCEPT"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "canonical_article_sha256": {
+    "quizipedia:constellation:for": "6633149BF7994B12FB39F5EFF18F049F59BD5A4E96C28A02FDC234EFAEB4C2D9",
+    "quizipedia:constellation:phe": "3563E0F48F33E83DDC75CB4EEA60EB8EE2749B25D0ECC76052099B8F28B781A3",
+    "quizipedia:constellation:pic": "1084D149FEA7D64B3600F88E8CA55465A8132B863FAA7CD2DBCBC4967153F479",
+    "quizipedia:constellation:vel": "2D9B1C6E2B81BC868F8E217A93016411446E9C65245CBDB3A7CCD432090CD6A0"
+  },
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "source_open",
+      "result": "Opened every listed primary URL. Key pages: ESO eso9911 (Fornax), ESO potw1838a + NASA Phoenix Cluster asset (Phoenix), ESA Webb + ESO eso2609b (Pictor), NASA Chandra + IXPE + APOD 2026-06-02 (Vela)."
+    },
+    {
+      "kind": "source_open",
+      "result": "Additional opened primary/database evidence: SIMBAD Phoenix Dwarf gives 0.44 Mpc; NASA Chandra Phoenix Cluster gives about 5.7 billion light-years; ESO eso2609 press release gives third planet, 15 July 2026, and direct-imaging explanation."
+    },
+    {
+      "kind": "canonical_hash",
+      "result": "Per-article canonical SHA-256 computed with ensure_ascii=false, sort_keys=true and separators=(',',':'): For 6633149BF7994B12FB39F5EFF18F049F59BD5A4E96C28A02FDC234EFAEB4C2D9; Phe 3563E0F48F33E83DDC75CB4EEA60EB8EE2749B25D0ECC76052099B8F28B781A3; Pic 1084D149FEA7D64B3600F88E8CA55465A8132B863FAA7CD2DBCBC4967153F479; Vel 2D9B1C6E2B81BC868F8E217A93016411446E9C65245CBDB3A7CCD432090CD6A0."
+    },
+    {
+      "kind": "checks_not_run",
+      "result": "Read/JSON parse and SHA computation only; no edits, test/build/browser automation/git/export/import/publication."
+    }
+  ],
+  "remaining_risks": [
+    "Three articles need root-owned source/wording corrections.",
+    "Same declared provider as author; this does not establish a cross-provider release gate."
+  ],
+  "reviewer_label": "four-constellation-review",
+  "runtime_identity": "openai/gpt-6.1-sol (self-reported); session-b613b490955945d2b10661bf11105f02",
+  "status": "DONE_WITH_CONCERNS",
+  "verdicts": {
+    "quizipedia:constellation:for": "REVISE: ESO eso9911 says the bar perturbation causes gas/dust clouds to form a pair of arms; replace «направляет ... в рукава» with «формирует из межзвёздных облаков газа и пыли пару спиральных рукавов».",
+    "quizipedia:constellation:phe": "REVISE: ESO potw1838a supports gas/young-star/ejection claims but not 1.44 Mly; NASA Hubble page supports composite/cavities/filaments but opened body omits 5.73 Gly. Add opened SIMBAD record (0.44 Mpc) and NASA Chandra Phoenix Cluster (about 5.7 Gly), or remove numbers.",
+    "quizipedia:constellation:pic": "REVISE: facts supported, but add/replace ESO image citation with opened ESO 15-Jul-2026 press release eso2609 so direct-imaging definition is directly supported.",
+    "quizipedia:constellation:vel": "ACCEPT: APOD explicitly says about 12,000 years; Chandra expressly frames precession as suggested/conditional; IXPE supports polarization and magnetic-field organization."
+  }
+}

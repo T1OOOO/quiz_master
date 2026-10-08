@@ -1,0 +1,30 @@
+{
+  "reviewer": "openai/gpt-6.1-sol (self-reported); session-b613b490955945d2b10661bf11105f02",
+  "author": "openai/gpt-6.1; session-068dca3b763f4a588face0e827c50faa; root applied source correction",
+  "scope": "Independent native factual and editorial acceptance, exact final drafts only; cross-provider/publication/runtime gates pending.",
+  "review_task": "task-1ecebf06ccb04eb3a798f435a9ea951d",
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:pic",
+      "verdict": "accept",
+      "article_sha256": "78cfbe6a90263b43eb0e283b0ffac966817b282d8a57f4ab2f6459df39913a79",
+      "note": "The replacement ESO release directly supports the previously under-cited direct-imaging explanation; final self-check has a unique mapping: region, star system, planet.",
+      "checked_sources": [
+        "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_discovers_dusty_cat_s_tail_in_Beta_Pictoris_system — main/secondary debris discs, cat's-tail feature, and recent dust-production explanation remains a hypothesis.",
+        "https://www.eso.org/public/news/eso2609/ — 15 July 2026, third planet, archive detections, and explicit direct-imaging definition.",
+        "https://eso.org/public/images/eso2609b/ — d/b 2014 near-alignment and removal of b light revealing d."
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:vel",
+      "verdict": "accept",
+      "article_sha256": "2d9b1c6e2b81bc868f8e217a93016411446e9c65245cbdb3a7ccd432090cd6a0",
+      "note": "Unchanged hash confirmed. The text retains the necessary qualification that precession was an interpretation, not established fact.",
+      "checked_sources": [
+        "https://www.nasa.gov/missions/chandra/vela-pulsar/ — >11 rotations/s and June–September 2010 data only suggest possible precession.",
+        "https://www.nasa.gov/universe/stars/vela-pulsar-wind-nebula-takes-flight-in-new-image-from-nasas-ixpe-2/ — IXPE polarization, wind nebula, and magnetic-field investigation.",
+        "https://science.nasa.gov/image-article/apod-2026-june-2-the-vela-supernova-remnant/ — about 12,000-year estimate and pulsar at remnant center."
+      ]
+    }
+  ]
+}
