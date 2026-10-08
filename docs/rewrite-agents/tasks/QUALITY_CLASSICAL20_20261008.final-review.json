@@ -209,5 +209,170 @@
   "reviewer_amendment": {
     "hub_message_id": 18174,
     "correction": "Q005 verdict changed from ACCEPT to REVISE: own-conception phrase unsupported. Frozen pre-correction totals11 ACCEPT/4 REVISE/5 UNRESOLVED. Root removed this phrase in keyc85496ab...; recheck pending."
+  },
+  "attribution_and_source_recheck": {
+    "task_id": "task-d6594957389f4d4e8a8255de82bc3ebd",
+    "changes": [],
+    "evidence": [
+      {
+        "detail": "lines 131-148: Vivaldi; final fugue appropriates Ruggieri conclusion.",
+        "id": "Q005",
+        "url": "https://www.laphil.com/works/gloria-in-d-major-rv-589",
+        "verdict": "ACCEPT"
+      },
+      {
+        "detail": "lines 93-103: Nijinsky choreographed ballet.",
+        "id": "Q007",
+        "url": "https://www.bso.org/works/the-rite-of-spring",
+        "verdict": "ACCEPT"
+      },
+      {
+        "detail": "lines 18-24: New York, 16 Dec 1893, Anton Seidl.",
+        "id": "Q008",
+        "url": "https://www.antonin-dvorak.cz/en/work/symphony-no-9/",
+        "verdict": "ACCEPT"
+      },
+      {
+        "detail": "lines 166,176-178: Dies Irae second movement; terrible Day of Wrath.",
+        "id": "Q015",
+        "url": "https://www.laphil.com/works/requiem-verdi",
+        "verdict": "ACCEPT"
+      },
+      {
+        "detail": "lines 113-115: Bach and work later called Goldberg Variations; answer index 2.",
+        "id": "Q003",
+        "url": "https://www.bach-leipzig.de/de/node/21950",
+        "verdict": "SOURCE_REPLACEMENT_SUPPORTED"
+      },
+      {
+        "detail": "lines 11-15,29-30: six poems, Vltava II; answer index 1.",
+        "id": "Q010",
+        "url": "https://bedrichsmetana.nm.cz/en/work/detail/my-country/133",
+        "verdict": "SOURCE_REPLACEMENT_SUPPORTED"
+      },
+      {
+        "detail": "lines 131-138: Russian defeat of Napoleon / triumph over French invaders; answer index 0.",
+        "id": "Q013",
+        "url": "https://www.laphil.com/works/1812-overture-and-other-tone-poems",
+        "verdict": "SOURCE_REPLACEMENT_SUPPORTED"
+      },
+      {
+        "detail": "lines 75-89,106-108: official collection’s 1918/19 transcription 'Canon ä 3 Violinis con suo Basso'; answer index 3.",
+        "id": "Q016",
+        "url": "https://digital.sim.spk-berlin.de/viewer/image/783919026-01/282/",
+        "verdict": "SOURCE_REPLACEMENT_SUPPORTED_WITH_CAVEAT"
+      },
+      {
+        "detail": "lines 26-29: rededicated to Hans von Bülow; answer index 2.",
+        "id": "Q019",
+        "url": "https://www.mariinsky.ru/en/playbill/playbill/2015/5/1/3_2000/",
+        "verdict": "SOURCE_REPLACEMENT_SUPPORTED"
+      }
+    ],
+    "input_hashes": {
+      "candidate_sha256": "9E923E923473286C8F69A599487A9692EB7735C9BDF842E42696A586FC3A9CAC",
+      "key_sha256": "C85496AB6687A26183684F0F97FE7240826C7B481F23D5C3EFCF9BCF37203E99"
+    },
+    "limitations": [
+      "Q016 direct Staatsbibliothek manuscript viewer needs JavaScript. Opened source is an institutional scholarly transcription, not an opened autograph viewer.",
+      "No full-pack/publication/cross-provider acceptance. Replacement prose needs root’s frozen-text follow-up recheck."
+    ],
+    "operations": "read-only web research; no files edited",
+    "packet_label": "CRR-20261008",
+    "status": "completed_read_only_narrow_recheck"
+  },
+  "five_source_substitution_recheck": {
+    "task_id": "task-72584224b7184bf18c783e7645e16c93",
+    "changes": [],
+    "evidence": [
+      {
+        "answer": "Иоганну Себастьяну Баху",
+        "answer_index": 2,
+        "detail": "lines 113-115: Bach published the future Goldberg Variations in 1741 as aria/variations for two-manual harpsichord; wording supported.",
+        "id": "Q003",
+        "url": "https://www.bach-leipzig.de/de/node/21950",
+        "verdict": "ACCEPT"
+      },
+      {
+        "answer": "«Влтава»",
+        "answer_index": 1,
+        "detail": "lines 11-15,29-30: My Country has six symphonic poems and Vltava is II, after Vyšehrad.",
+        "id": "Q010",
+        "url": "https://bedrichsmetana.nm.cz/en/work/detail/my-country/133",
+        "verdict": "ACCEPT"
+      },
+      {
+        "answer": "Разгром армии Наполеона в России",
+        "answer_index": 0,
+        "detail": "lines 131-138: Russian defeat of Napoleon / triumph over French invaders; explanation’s later-work point follows the page’s 1812/1882 chronology.",
+        "id": "Q013",
+        "url": "https://www.laphil.com/works/1812-overture-and-other-tone-poems",
+        "verdict": "ACCEPT"
+      },
+      {
+        "answer": "Трёх скрипок и бассо континуо",
+        "answer_index": 3,
+        "detail": "lines 75-89,106-108 support the institutional 1918/19 article transcription 'Canon ä 3 Violinis con suo Basso'. Trim unsupported final clause about later arrangements or cite it. Direct manuscript viewer requires JavaScript; source is not an opened autograph.",
+        "id": "Q016",
+        "url": "https://digital.sim.spk-berlin.de/viewer/image/783919026-01/282/",
+        "verdict": "REVISE"
+      },
+      {
+        "answer": "Гансу фон Бюлову",
+        "answer_index": 2,
+        "detail": "lines 26-29: rededicated to Bülow, who first performed it in Boston, 1875.",
+        "id": "Q019",
+        "url": "https://www.mariinsky.ru/en/playbill/playbill/2015/5/1/3_2000/",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "input_hashes": {
+      "candidate_sha256": "9E923E923473286C8F69A599487A9692EB7735C9BDF842E42696A586FC3A9CAC",
+      "key_sha256": "800EE2167C02CE8FBF94CC3C3B57C45813CEC179AC4CE3271A2E626A6BA49CA0"
+    },
+    "limitations": [
+      "No full-pack, publication, or cross-provider acceptance.",
+      "Q016 must preserve its institutional-scholarly-transcription rather than autograph provenance and needs the stated final-clause trim/additional citation."
+    ],
+    "operations": "read-only source and exact-file recheck; no edits or heavy operations",
+    "packet_label": "CRR-20261008",
+    "status": "final_five_frozen_recheck_complete"
+  },
+  "q016_final_trim_recheck": {
+    "task_id": "task-74f2018d4d6d41e2abf44adafe7e2d39",
+    "changes": [],
+    "evidence": [
+      {
+        "answer_index": 3,
+        "answer_text": "Трёх скрипок и бассо континуо",
+        "detail": "Opened institutional collection page lines 75-89 identifies the 1918/1919 Gustav Beckmann article; lines 106-108 transcribe “Canon ä 3 Violinis con suo Basso.” The exact remaining evidence/explanation are source-supported. No autograph was opened.",
+        "id": "wave20-classical-music-016",
+        "url": "https://digital.sim.spk-berlin.de/viewer/image/783919026-01/282/",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "input_hashes": {
+      "candidate_sha256": "9E923E923473286C8F69A599487A9692EB7735C9BDF842E42696A586FC3A9CAC",
+      "key_sha256": "E6D1039EAE3019B0D99B1A76247D445514D8B6A59081AFF896166BB7467518A4"
+    },
+    "limitations": [
+      "The source is an institutional digitisation of a 1918/19 scholarly transcription, rather than an opened autograph manuscript.",
+      "Only Q016/current hash inspected; other 19 records were not retested."
+    ],
+    "operations": "read-only exact recheck; no edits/heavy operations",
+    "packet_label": "CRR-20261008",
+    "status": "q016_exact_trim_verified"
+  },
+  "final_revision": {
+    "status": "native_editorial_accept_with_provenance_caveat",
+    "candidate_sha256": "9e923e923473286c8f69a599487a9692eb7735c9bdf842e42696a586fc3a9cac",
+    "key_sha256": "e6d1039eae3019b0d99b1a76247d445514d8b6a59081aff896166bb7467518a4",
+    "accepted_question_count": 20,
+    "method": "Initial blind-derived20 answer pairs; retained11 unchanged ACCEPT rows. Four revised explanations accepted on c85496ab; four source replacements accepted on800ee216; final Q016 trim accepted on e6d1039e. Root data inspection confirms only stated records changed and all20 indices map to answer text. No full20 re-run on each one-record revision.",
+    "limitations": [
+      "Same actual OpenAI vendor; cross-provider review task-8ce44b3df8684757bd377083394dcbd5 NEW, unassigned.",
+      "Q016 uses institutional digitisation of1918/19scholarly transcription, not an opened autograph.",
+      "Draft only; import, runtime gates, integration and publication remain pending."
+    ]
   }
 }
