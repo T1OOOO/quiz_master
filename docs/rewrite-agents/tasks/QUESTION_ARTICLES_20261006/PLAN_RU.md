@@ -523,3 +523,25 @@ source support, target/tag bindings, duplicate IDs/targets, EOF and manual inven
 All108 records have unique draft IDs,40of88 runtime constellation targets now have
 draft articles. Generated catalog30 unchanged; formal export/runtime/browser/build,
 different-provider release review/publication remain pending. No feedback closed.
+
+Heartbeat 07:56 UTC: secure production refresh26OPEN/no new feedback,
+latest2026-10-07T08:19:08.506876077Z. Managed Claude release reviewer remains
+QUEUED/OLDER_REQUEST_WAITING, not running. No fresh external READY received.
+Export3542 and notes3543 QUEUED/released, no heavy execution.
+Native author task69bed0bc READY17823, accepted17825, submitted17828/17829,
+four CVn/Mon/Ser/Cap source-backed drafts, frozen SHA
+4764aa2abcd7a128d8ff1acf9be61ae3e628d9705b3b5f3037bb8dd4d43b83bd,
+whitespace counts118/127/121/132, single EOF newline. Distinct native reviewer
+session3b5d06260957443d9a2a71a707f64e0e READY17831, accepted17834 task6908e8a3;
+covering report directory request17835QUEUED/released17836, light report scope.
+Full report pending. Lead read whole frozen draft, opened IAU+NASA M51/Rosette/
+M16/M30 pages, verified runtime tags/targets/uniqueIDs/counts. Extra official
+Spitzer NASA/JPL-Caltech source explicitly supports the M51 NGC5194/5195 pair;
+passed to reviewer for independent consideration, draft not changed mid-review.
+Manual inventory112unique draft IDs,44of88 runtimeconstellation targets have drafts.
+Generatedcatalog30 unchanged. This batch remains draft pending review/fixes.
+Formalexport/runtime tests/build/browser/different-provider release gates and
+publication pending. No GitHub Actions/worker schedulers/foreign resources changed.
+Real feedback stays OPEN until published verification.
+
+Heartbeat07:56 final: initial independent native review6908e8a3 REVISE CVn/Mon/Cap, ACCEPT Ser; original report7c7077302e58eb67739b19b1052d8fbeb5d664ce4d37fc0bdcb29d61c7c8f939 preserved. Lead correction lease45433e87 queue3545 released/light exception: added official Spitzer citation for NGC5194/5195; limited NASA M51 supports field; Rosette context image explicitly DSS background/Hubble inset; M30 removed unsupported diagram/hotter-bluer/both-fuel claims, uses NASA collisions and binary hydrogen transfer. Final frozen draft9fbcb0dda47cf522b5ce14a2ec374e6df101d87f6d5b77dbd18c200b7302887f, counts118/142/121/134. Distinct checker fresh READY17844, offerf31adecb, accepted17848 task8cf55c32, report path lease739132e1 queued17849/released17850, submitted17851. Final four ACCEPT_DRAFT_AFTER_TARGETED_RECHECK; report SHA256 83c30e8d124d97c3b73f7e6a601c81a1e06e215d996e3ab02eec6f5c5aa449c4. Root read full final report and verified exact input hash/counts, single EOF newline,112 unique draft IDs/44of88 constellation coverage. Notes lease3c266824 queue3546 released/light edit exception. Generated catalog30 unchanged; same-provider editorial only, formal export/runtime/browser/different-provider release and publication gates still pending.26 production feedback OPEN, no new feedback. No heavy execution/Actions/schedulers/deployment/foreign resource changes.

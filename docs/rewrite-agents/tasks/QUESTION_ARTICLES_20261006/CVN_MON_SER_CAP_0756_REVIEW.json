@@ -1,0 +1,143 @@
+{
+  "schema_version": "qm-question-articles-review/v1",
+  "review_id": "CVN_MON_SER_CAP_0756_REVIEW",
+  "reviewed_at": "2026-10-08",
+  "reviewer": {
+    "label": "review-article-reader-t2d503c8",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-cvn-mon-ser-cap-20261008.json",
+    "sha256": "4764aa2abcd7a128d8ff1acf9be61ae3e628d9705b3b5f3037bb8dd4d43b83bd"
+  },
+  "overall_verdict": "REVISE",
+  "publication_status": "not_authorized_by_this_same-provider_editorial_review",
+  "opened_sources": [
+    {
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "result": "Opened. IAU defines constellations as bounded sky areas and lists Canes Venatici/CVn, Monoceros/Mon, Serpens/Ser and Capricornus/Cap."
+    },
+    {
+      "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-51/",
+      "result": "Opened. Supports M51 as the Whirlpool spiral in Canes Venatici, dust/gas arms, pink star-forming regions, blue clusters, and the close NGC 5195 interaction. The page does not name NGC 5194."
+    },
+    {
+      "url": "https://science.nasa.gov/asset/hubble/rosette-nebula-context-image/",
+      "result": "Opened. Supports Monoceros, roughly 5,000 light-years, roughly 100 light-years, a giant molecular-cloud edge, young-star radiation causing glow, and hydrogen/dust silhouettes. It identifies the broad background as Digitized Sky Survey and Hubble as the small inset; its color statement applies to the composite context image."
+    },
+    {
+      "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-16/",
+      "result": "Opened. Supports M16 in Serpens, IC 4703 plus NGC 6611, erosion of pillars by ultraviolet radiation and stellar winds, and infrared visibility of stars forming in the pillars plus background stars."
+    },
+    {
+      "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-30/",
+      "result": "Opened. Supports M30 as a dense old globular cluster in Capricornus about 28,000 light-years away and gives two blue-straggler mechanisms: near-head-on stellar collisions and binary hydrogen transfer. It does not state the draft's property-diagram or hotter/bluer explanation."
+    }
+  ],
+  "additional_source_checked": {
+    "url": "https://www.spitzer.caltech.edu/image/ssc2019-11c-the-whirlpool-galaxy-in-infrared-light",
+    "result": "Opened. NASA/JPL-Caltech explicitly calls Whirlpool/Messier 51 NGC 5194/5195, a pair in Canes Venatici. It is a suitable added citation if the current CVn NGC 5194 wording is retained."
+  },
+  "binding_checks": {
+    "runtime_catalog": "next/apps/quiz_app/assets/quizipedia/catalog.json contains 88 constellations. cvn/Canes Venatici/CVn, mon/Monoceros/Mon, ser/Serpens/Ser and cap/Capricornus/Cap each carry domain:science, skill:recognition and topic:astronomy.",
+    "batch": "All four article IDs and target_ids are unique; each has exactly one quizipedia constellation target, empty question_refs, the required three tags, and status draft.",
+    "draft_duplicate_scan": "A focused literal ID scan of study/question_articles/drafts found these four IDs only in this frozen input."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:cvn",
+      "verdict": "REVISE",
+      "body_split_word_count": 118,
+      "source_links_opened": 2,
+      "finding": "The cited NASA M51 page supports the location, pair/interacting context, NGC 5195, image features and cautious interaction language, but does not contain the NGC 5194 alias asserted in the body and its own supports field.",
+      "required_correction": "Either add the opened official Spitzer NASA/JPL-Caltech URL, which explicitly identifies M51 as NGC 5194/5195, or remove NGC 5194 from the current citation-dependent wording and self-check."
+    },
+    {
+      "id": "quizipedia:constellation:mon",
+      "verdict": "REVISE",
+      "body_split_word_count": 127,
+      "source_links_opened": 2,
+      "finding": "The cited Rosette page says the broad context image background is Digitized Sky Survey and Hubble is only its small inset. Therefore 'В данных Hubble цвета...' overstates the source attribution, although the source does support the listed color elements for its composite context image.",
+      "required_correction": "Replace that attribution with wording such as 'В контекстном изображении NASA цвета связаны...' or specify that Hubble supplies the inset."
+    },
+    {
+      "id": "quizipedia:constellation:ser",
+      "verdict": "ACCEPT",
+      "body_split_word_count": 121,
+      "source_links_opened": 2,
+      "evidence": "IAU supports Ser/sky-area framing. NASA supports the M16, IC 4703, NGC 6611, pillar erosion, and infrared/background-star distinctions. The draft preserves those qualifications."
+    },
+    {
+      "id": "quizipedia:constellation:cap",
+      "verdict": "REVISE",
+      "body_split_word_count": 132,
+      "source_links_opened": 2,
+      "finding": "The cited NASA M30 page supports the old cluster, 28,000-light-year distance, blue stragglers, collisions, and binary hydrogen transfer. It does not substantiate the property-diagram statement or the general claim that in both mechanisms a star gains fuel and becomes hotter and bluer.",
+      "required_correction": "Either cite an authoritative source for those explanatory claims or limit the text to NASA's explicit collision and binary hydrogen-transfer mechanisms and its statement that blue stragglers appear to reclaim youth."
+    }
+  ],
+  "method": {
+    "word_count": "Whitespace-separated tokens using body_ru.split(), including headings if present; all four counts are within the required 100–220 range.",
+    "limitations": "Same-provider editorial review only; it is not cross-provider acceptance, integration, export, runtime validation, release, or publication approval. No draft, catalog, code, index, test, build, browser automation, managed worker, commit, or deploy was changed/run."
+  },
+  "final_recheck": {
+    "task_id": "task-8cf55c329c28497796b50ebf9e055c08",
+    "reviewed_at": "2026-10-08",
+    "reviewer": {
+      "label": "review-article-reader-t2d503c8",
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+    },
+    "original_review_provenance": {
+      "report_sha256": "7c7077302e58eb67739b19b1052d8fbeb5d664ce4d37fc0bdcb29d61c7c8f939",
+      "overall_verdict": "REVISE",
+      "reason": "CVn citation, Mon composite-image attribution, and Cap source-overreach corrections required"
+    },
+    "final_input": {
+      "path": "study/question_articles/drafts/constellations-cvn-mon-ser-cap-20261008.json",
+      "sha256": "9fbcb0dda47cf522b5ce14a2ec374e6df101d87f6d5b77dbd18c200b7302887f"
+    },
+    "scope": "Narrow recheck of the three prior findings and unchanged Serpens article; no broad re-research.",
+    "source_recheck": {
+      "cvn": "The added opened official NASA/JPL-Caltech Spitzer citation explicitly identifies Whirlpool/Messier 51 as NGC 5194/5195, a pair in Canes Venatici. The M51 NASA supports field now limits itself to claims its own page states.",
+      "mon": "The Rosette text now correctly identifies a NASA context image, Digitized Sky Survey as its broad background, and Hubble as the small inset; the opened NASA page supports its color, distance, size, glowing-gas, gas/dust and silhouette claims.",
+      "cap": "The M30 text now uses NASA's explicit near-head-on collision and binary hydrogen-transfer mechanisms, including transfer from a more massive companion, and removes the unsupported diagram/hotter-bluer/both-mechanisms wording.",
+      "ser": "The Serpens body and citations are unchanged from the previously accepted source check."
+    },
+    "articles": [
+      {
+        "id": "quizipedia:constellation:cvn",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 118,
+        "source_links_opened": 3,
+        "correction_verified": "Added Spitzer source and corrected current NASA supports field bind NGC 5194/5195 claim."
+      },
+      {
+        "id": "quizipedia:constellation:mon",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 142,
+        "source_links_opened": 2,
+        "correction_verified": "Composite context-image, DSS background and Hubble-inset wording matches the opened NASA page."
+      },
+      {
+        "id": "quizipedia:constellation:ser",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 121,
+        "source_links_opened": 2,
+        "correction_verified": "Unchanged previously accepted article."
+      },
+      {
+        "id": "quizipedia:constellation:cap",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 134,
+        "source_links_opened": 2,
+        "correction_verified": "Source-limited NASA collision and binary hydrogen-transfer account now used."
+      }
+    ],
+    "final_verdict": "ACCEPT_DRAFT_AFTER_TARGETED_RECHECK",
+    "limits": "Same-provider editorial recheck only; not cross-provider acceptance, integration/export, runtime validation, release, or publication approval. No draft, catalog, code, index, test, build, browser automation, managed worker, commit, or deploy was changed/run."
+  }
+}
