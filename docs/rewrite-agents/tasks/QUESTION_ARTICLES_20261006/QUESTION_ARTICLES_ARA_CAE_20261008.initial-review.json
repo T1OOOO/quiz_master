@@ -1,0 +1,89 @@
+{
+  "articles": [
+    {
+      "body_ru_words": 170,
+      "canonical_sha256": "87df30e7eee59e521f6ed6a13c71dcc3372aebeee21187a3a9686769bb657670",
+      "findings": [
+        "Ara naming, boundary/projection distinction, target binding, source count and 150–220-word length pass.",
+        "Westerlund 1 is explicitly placed in Ara by NASA. Dust/infrared wording and Westerlund 1-26 classification/radius accurately follow the opened sources.",
+        "The Dec-2025 Fermi claim is correctly time-bounded and qualified: the over-650-light-year bubble/nascent outflow is distinct from the 2022 H.E.S.S. ring; article does not collapse the hypotheses into fact."
+      ],
+      "id": "quizipedia:constellation:ara",
+      "status": "ACCEPT"
+    },
+    {
+      "body_ru_words": 201,
+      "canonical_sha256": "2ce06bd47b4d06e12cb0fe40801bd0b6034bec103798dfd179a76eebb527c9c0",
+      "findings": [
+        "Caelum name/abbreviation, projection distinction, target binding, self-check, source count and 150–220-word length pass.",
+        "LHS 1678 in Caelum was checked from primary Gaia coordinates in the original paper against the IAU Caelum boundary, rather than inferred from the system name.",
+        "The original study supports validated b/c and 0.86/3.69-day periods while d was still a candidate; the opened 2024 article supports validation of d and its roughly Earth-size radius. The revision narrative is accurate."
+      ],
+      "id": "quizipedia:constellation:cae",
+      "status": "ACCEPT"
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "canonical_hashes",
+      "method": "UTF-8 json.dumps whole article object with ensure_ascii=false, sort_keys=true, separators=(',', ':')).",
+      "objects": [
+        {
+          "body_ru_words": 170,
+          "id": "quizipedia:constellation:ara",
+          "sha256": "87df30e7eee59e521f6ed6a13c71dcc3372aebeee21187a3a9686769bb657670"
+        },
+        {
+          "body_ru_words": 201,
+          "id": "quizipedia:constellation:cae",
+          "sha256": "2ce06bd47b4d06e12cb0fe40801bd0b6034bec103798dfd179a76eebb527c9c0"
+        }
+      ]
+    },
+    {
+      "detail": "IAU table confirms Ara/Ara/the Altar and Caelum/Cae/the Engraving Tool. Its significance section says original constellation patterns generally have no physical connection. The published Caelum boundary vertices were also opened.",
+      "kind": "source_opened",
+      "url": "https://iauarchive.eso.org/public/themes/constellations/"
+    },
+    {
+      "detail": "NASA page dated/updated 18 Dec 2025 places Westerlund 1 in Ara; says Fermi data show a gamma-ray bubble over 650 light-years long below the Milky Way plane, calls it a nascent outflow likely recently produced by massive young cluster stars, and distinguishes the H.E.S.S. 2022 gamma-ray ring.",
+      "kind": "source_opened",
+      "url": "https://science.nasa.gov/missions/fermi/nasas-fermi-spots-young-star-cluster-blowing-gamma-ray-bubbles/"
+    },
+    {
+      "detail": "NASA/ESA Hubble identifies Westerlund 1-26 as a red supergiant, sometimes classed as a hypergiant, with radius over 1,500 Suns; source describes Westerlund 1 as a young super star cluster.",
+      "kind": "source_opened",
+      "url": "https://science.nasa.gov/missions/hubble/hubble-homes-in-on-a-hypergiants-home/"
+    },
+    {
+      "detail": "2024 article validates third planet d using TESS and new ground-based light curves; radius 0.98 ± 0.07 Earth radii and 4.97-day orbit.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/2403.00110"
+    },
+    {
+      "detail": "Original primary paper directly opened as the underlying study mirrored by the listed CaltechAUTHORS record. It validates b/c by ground follow-up at 0.86/3.69 days and retains d as a 4.97-day candidate; primary PDF table gives Gaia DR2 position RA 68.1789866°, Dec −39.7908744°.",
+      "kind": "source_opened",
+      "url": "https://arxiv.org/abs/2110.12079"
+    },
+    {
+      "detail": "Using the primary-paper Gaia coordinate and IAU's opened Caelum boundary vertices, an independent point-in-polygon check places LHS 1678 within Caelum. Thus the article's direction claim is factually resolved rather than inferred from the name.",
+      "kind": "location_verification"
+    },
+    {
+      "detail": "Direct open returned the web reader's Internal Error. The linked study's primary arXiv record/PDF was opened independently; this is an access limitation of the record endpoint, not a factual contradiction.",
+      "kind": "direct_source_access_limitation",
+      "url": "https://authors.library.caltech.edu/records/c2crt-2vh22"
+    }
+  ],
+  "new_files": [],
+  "remaining_risks": [
+    "The CaltechAUTHORS record URL itself did not render in the web reader; the corresponding primary arXiv paper/PDF was opened instead.",
+    "Same-provider factual review is not a different-provider release approval or publication approval."
+  ],
+  "status": "DONE",
+  "verification": {
+    "no_edits": true,
+    "tests_build_git_runtime": "NOT_RUN; forbidden/not applicable"
+  }
+}

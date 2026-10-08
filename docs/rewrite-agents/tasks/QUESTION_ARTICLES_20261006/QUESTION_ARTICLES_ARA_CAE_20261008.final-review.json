@@ -1,0 +1,29 @@
+{
+  "evidence": [
+    {
+      "check": "ARA canonical object",
+      "result": "ACCEPT; SHA-256 87df30e7eee59e521f6ed6a13c71dcc3372aebeee21187a3a9686769bb657670; body_ru 170 words; no metadata/body change."
+    },
+    {
+      "check": "ARA source evidence",
+      "result": "Current IAU page opened; prior direct opens of NASA Fermi and NASA/ESA Hubble support all current dated, measurement, and interpretation claims."
+    },
+    {
+      "check": "CAE canonical object",
+      "result": "ACCEPT; SHA-256 6720cc567caf34d2284907fec4184d1170d7c598e58d0e37bde7d1cc60eef64b; body_ru 201 words; five current source links."
+    },
+    {
+      "check": "CAE planet sources",
+      "result": "arXiv:2110.12079 opened: b/c validated, 0.86 and 3.69 days, third 4.97-day candidate. arXiv:2403.00110 opened: TESS+ground data validates d, 0.98±0.07 Earth radii, 4.97 days."
+    },
+    {
+      "check": "CAE location classification",
+      "result": "Exact SIMBAD page opened: FK5 ep=J2000 eq=2000 04:32:42.6355697348 -39:47:12.165103980. Exact Roman VI/42 query independently fetched: declares J2000 FK5 input, outputs B1875 FK4 RA=067.1156, Dec=-40.0515, Cst=Cae. Location is a transparent coordinate/catalogue inference only; frame-unsafe raw-IAU-file proof remains retracted."
+    },
+    {
+      "check": "scope",
+      "result": "No files edited; no tests/build/git/automation run. Same-provider review is not cross-provider release approval."
+    }
+  ],
+  "summary": "Final ARA/CAE metadata/source recheck: both ACCEPT; CAE now uses accessible primary papers and a frame-safe Roman VI/42 classification."
+}

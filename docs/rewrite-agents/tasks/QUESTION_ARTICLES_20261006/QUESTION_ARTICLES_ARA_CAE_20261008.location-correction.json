@@ -1,0 +1,41 @@
+{
+  "scope": "Initial CAE location proof retracted; final source/hash recheck pending.",
+  "messages": [
+    {
+      "id": 18541,
+      "time": 1791472718.713344,
+      "channel": "project/project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "sender": "session-6468a45aa629470cb76fd85da497669e",
+      "recipient": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+      "kind": "message",
+      "reply_to": null,
+      "task_id": null,
+      "text": "CAE source-gap check: I did not find an opened primary source that explicitly states “LHS 1678 is in Caelum.” I will not cite Wikipedia for that claim. I did open the primary CDS/SIMBAD object record (https://simbad.u-strasbg.fr/simbad/sim-basic?Ident=LHS+1678), which gives LHS 1678's ICRS J2000 coordinates as 04:32:42.6349, −39:47:12.1500 (lines 34, 48), and the official IAU constellation table (https://iauarchive.eso.org/public/themes/constellations/), which establishes Caelum/Cae as an IAU region and describes constellations as sky areas. Together those enable a coordinate-to-boundary mapping, but that remains an explicit inference, not a source that directly states the association. NASA Exoplanet Archive's LHS 1678 page has the same coordinates in search results but direct open timed out; it also does not label the constellation. Recommendation: retain the location phrase only if you accept transparent coordinate/IAU-boundary inference, otherwise remove the explicit LHS 1678/Caelum association. No draft edits made."
+    },
+    {
+      "id": 18546,
+      "time": 1791472862.459636,
+      "channel": "project/project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "sender": "session-5191183ee6a04c9b849a7910ff93166c",
+      "recipient": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+      "kind": "message",
+      "reply_to": null,
+      "task_id": null,
+      "text": "[eri_hya_gru_ind_review] Exact IAU Caelum boundary text URL opened: https://iauarchive.eso.org/static/public/constellations/txt/cae.txt . Correction to my prior evidence: the file contains only raw RA/Dec vertices and no epoch/frame declaration. The original LHS 1678 primary PDF (arXiv:2110.12079, Table 1) labels its Gaia DR2 position R.A. J2015.5 = 68.17898662887°, Dec. J2015.5 = −39.79087441181°. I compared those values directly with the unlabeled IAU vertices; that assumes a common frame/epoch and is not valid proof. Retract the claimed point-in-polygon verification. Treat the direct Caelum-location citation as unresolved pending an explicit catalog classification or documented boundary epoch plus proper transformation. Replacing the Caltech record with arXiv fixes source accessibility but does not itself establish Caelum textually."
+    },
+    {
+      "id": 18552,
+      "time": 1791473232.9559355,
+      "channel": "project/project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "sender": "session-5191183ee6a04c9b849a7910ff93166c",
+      "recipient": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+      "kind": "message",
+      "reply_to": null,
+      "task_id": null,
+      "text": "[eri_hya_gru_ind_review] Narrow CAE source-gap result (actual opens). Do NOT use unlabeled IAU cae.txt as frame evidence. I opened CDS/VizieR VI/49 ReadMe: https://vizier.cfa.harvard.edu/ftp/cats/VI/49/ReadMe . It documents bound_20.dat as J2000 RA/Dec chart boundary data, but explicitly says Roman VI/42 should determine an object's constellation (VI/49 is for charts/atlases).\n\nFrame-safe classification: opened an exact CDS/VizieR VI/42/out query using the SIMBAD J2000 coordinate (04 32 42.6356, -39 47 12.1651) with -c.eq=J2000:\nhttps://vizier.cfa.harvard.edu/viz-bin/asu-tsv?-source=VI%2F42%2Fout&-c=04%2032%2042.6356%20-39%2047%2012.1651&-c.eq=J2000&-out.max=10\nThe server reports input #Coosys J2000 eq_FK5 J2000, transforms/output-coordinates in #Coosys B1875 eq_FK4 B1875, and returns RA1875=067.1156, DE1875=-40.0515, Cst=Cae. This is the appropriate documented coordinate transformation/classification; it establishes the source lies in Caelum.\n\nCross-check source coordinate: SIMBAD page https://simbad.cds.unistra.fr/simbad/sim-id?Ident=LHS+1678 labels its supplied coordinate ICRS (ep=J2000), while the paper table labels Gaia DR2 position J2015.5. Use the SIMBAD J2000 coordinate for the VI/42 query, not the paper's J2015.5 coordinate.\n\nLimits: the result is a catalogue classification at the listed coordinate, not a textual Caelum statement in either planet paper; it does not validate the unlabeled IAU raw file or a hand-drawn polygon. The 2024/2021 papers still remain the sources for planet parameters. This closes the location claim as a transparent coordinate/catalogue inference."
+    }
+  ],
+  "root_access_limitations": [
+    "Root opened SIMBADJ2000 and bothprimaryplanetpapers plusCDSVI49ReadMe; exactCDSclassificationquery failed in rootwebreader, independentreviewer reports actualopened classificationdata. Finalreview must retain distinct evidence, no inventedrootvisit."
+  ]
+}
