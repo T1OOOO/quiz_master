@@ -1,0 +1,79 @@
+{
+  "schema_version": "qm-source-ux-audit/v1",
+  "recorded_date": "2026-10-08",
+  "hub_task": "task-d96deed046784456a3e4689b8e45a1af",
+  "changed_files": [],
+  "checks_not_run": [
+    "No tests, browser, emulator, analyzer, build, export, commit, or deploy was run by this audit."
+  ],
+  "code_quality": "Each finding has a narrow patch boundary and a widget/semantics test proposal; no new framework is needed.",
+  "evidence": [
+    {
+      "kind": "source_scope",
+      "result": "Read the exact assigned Flutter files and existing FEEDBACK_BATCH_20261006 PLAN_RU.md/CHECKPOINT.md/REVIEW.md. The prior plan documents map selection/zoom/search, feedback pause/resume, mobile study tables, and paper contrast as implemented source changes, so none is repeated as a new finding."
+    },
+    {
+      "kind": "source_trace",
+      "result": "Traced question presentation from JourneyQuestionPanel through QuestionCard/ExplanationPanel/QuestionArticleLink, plus Discovery, Study and Quizipedia source paths. No browser, device, test, analyzer, build, or runtime command was run."
+    },
+    {
+      "kind": "lease",
+      "result": "Covering read lease lease-1a98d10db5c24e38b801dcf706e44e3c returned QUEUED (OLDER_REQUEST_WAITING) and was released at generation 1 before use of the packet's lightweight read exception; no grant claimed."
+    }
+  ],
+  "findings": [
+    {
+      "consequence": "The text says 1/1 or N/N while the bar computes index/length: it is 0% for a one-question quiz and remains below 100% on the last question.",
+      "lines": "339-345",
+      "minimal_patch": "Compute the displayed-current progress as (journey.index + 1) / attempt.snapshots.length, guarding the nonempty snapshot invariant.",
+      "path": "next/apps/quiz_app/lib/journey_pages.dart",
+      "severity": "P1",
+      "test_proposal": "Widget-test a one-question attempt for LinearProgressIndicator.value == 1 and a ten-question attempt at index 9 for value == 1.",
+      "trigger": "Start a one-question quiz or view the last question of any quiz."
+    },
+    {
+      "consequence": "excludeSemantics hides RadioListTile/CheckboxListTile semantics, then the replacement exposes the opaque stable option id as value and generic button role instead of radio/checkbox checked state.",
+      "lines": "569-577",
+      "minimal_patch": "Preserve the native tile semantics, or replace the wrapper with explicit checked/inMutuallyExclusive semantics and omit stableId from the announced value.",
+      "path": "next/apps/quiz_app/lib/main.dart",
+      "severity": "P1",
+      "test_proposal": "Use SemanticsTester for a selected radio and selected checkbox; assert the option text and checked/selected state are announced without opt-* IDs.",
+      "trigger": "Use TalkBack/VoiceOver or keyboard traversal on a single- or multiple-choice option."
+    },
+    {
+      "consequence": "The visible fallback is only a broken-image icon; the localized unavailable text exists only as a semantics label and there is neither visible explanation nor retry. A learner cannot tell whether the image mattered or recover it.",
+      "lines": "485-510; 516-527",
+      "minimal_patch": "Render the localized unavailable text beside the icon and provide a retry action that rebuilds the image request; retain the existing fixed placeholder height to avoid layout shift.",
+      "path": "next/apps/quiz_app/lib/main.dart",
+      "severity": "P1",
+      "test_proposal": "Fail an image provider and assert visible unavailable copy plus retry; retry with a succeeding provider and assert the image replaces the fallback.",
+      "trigger": "A question image has an invalid URL or its network request fails."
+    },
+    {
+      "consequence": "The article silently replaces the illustration with SizedBox.shrink(), removing both the visual teaching cue and any visible/semantic indication that it failed. This defeats the plan's friendly content goal on constrained devices.",
+      "lines": "540-557",
+      "minimal_patch": "Use a compact error placeholder with the Markdown alt text and localized unavailable copy; keep its bounded height so surrounding content remains stable.",
+      "path": "next/apps/quiz_app/lib/study_pages.dart",
+      "severity": "P1",
+      "test_proposal": "Pump a module with a missing resource image and assert an accessible visible placeholder and retained article/source navigation.",
+      "trigger": "A resource study image is missing or fails to decode."
+    },
+    {
+      "consequence": "FutureBuilder returns an empty SizedBox for both loading and error. The optional educational path vanishes without a loading or failure state, indistinguishable from a legitimate absence of an article.",
+      "lines": "157-173",
+      "minimal_patch": "Keep no-link rendering only for a successfully loaded catalog with no match; show a compact nonblocking loading state, and a localized retry/accessibility message for errors.",
+      "path": "next/apps/quiz_app/lib/question_articles.dart",
+      "severity": "P2",
+      "test_proposal": "Inject an AssetBundle that throws, assert a retry/error affordance; inject a delayed successful bundle and assert the link appears after completion while a genuinely missing article remains absent.",
+      "trigger": "question-articles.json fails to load or decode while a matching question explanation has an article."
+    }
+  ],
+  "remaining_risks": [
+    "Findings are static source inferences only; narrow viewport layout, assistive-technology announcements, image-network behavior, and actual visual polish require later widget/device/browser validation.",
+    "No source file was edited; independent review remains required after an implementation patch."
+  ],
+  "requirements_compliance": "Five source-backed UX issues remain. This audit intentionally excludes the map, two-second feedback timer, study table cards, and study contrast because the feedback checkpoint documents those changes as already implemented.",
+  "reviewer_label": "review-article-reader-t2d503c8",
+  "runtime_identity": "codex/gpt-6.1-sol; session-3b5d06260957443d9a2a71a707f64e0e",
+  "status": "DONE_WITH_CONCERNS"
+}

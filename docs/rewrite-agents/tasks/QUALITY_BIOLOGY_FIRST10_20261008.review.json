@@ -1,0 +1,45 @@
+{
+  "schema_version": "qm-quality-review/v1",
+  "recorded_date": "2026-10-08",
+  "status": "REVISE",
+  "review_scope": "biology20 first ten original draft questions only",
+  "runtime_identity": "native OpenAI gpt-6.1-sol; not cross-provider release acceptance",
+  "hub_task": "task-023c9d16149e4b2d80118384931e278e",
+  "result": {
+    "candidate_sha256": "28E5465D55CBE26C16976EE3093B02C997B28E7D746B9511ED2F7997BAFAE9D2",
+    "evidence": [
+      "Read candidate first ten before opening key; SHA recorded.",
+      "Opened/used NHGRI Genome, DNA, Codon and Chromosomes pages plus NCBI Bookshelf NBK9841/NBK9896 cited in key.",
+      "Lease lease-131364f3f9664e889cb23f2cf82f8f0d was QUEUED then released."
+    ],
+    "findings": [
+      "ACCEPT 001,002,004,005.",
+      "REVISE key parity: 003 answer index1/key0; 006 index2/key0; 007 index1/key3; 009 index1/key0; 010 index0/key1.",
+      "008 ambiguous: mitochondrion and chloroplast satisfy stated condition; add 'в животной клетке' then mitochondrion unique."
+    ],
+    "key_sha256": "539C3D84747E372B62EA3DACFCAD6EFB98F3F76478C5EFCA50783DD5F7C49669",
+    "limitations": [
+      "Read-only native OpenAI review, not cross-provider acceptance; no files changed."
+    ],
+    "status": "DONE_WITH_CONCERNS"
+  },
+  "editorial_followup": [
+    {
+      "hub_message_id": 18043,
+      "text": "BIOLOGY20 FIRST10 FULL ROWS (read-only follow-up; source evidence NHGRI Genome/DNA/Genomics/Codon/Chromosomes and NCBI NBK9841/NBK9896):\n001 FACT_OK EDIT_REVISE d3 key1 correct1; tags absent. Options already parallel enough; revise stem to «Полным геномом организма называют…»; keep correct slot1.\n002 FACT_OK EDIT_REVISE d2 key3 correct3; source NHGRI DNA. Replace opt2 «только аденин и гуанин» (not current duplicate) to make four base-set alternatives: [A,U,G,C; A,T,G,U; A,T,G,C; A,T,U,C], correct2 (index3).\n003 FACT_OK EDIT_REVISE d2 key0 WRONG correct1; source NHGRI genomics. Replace nonparallel opt3 «аденин—цитозин» with «с урацилом»; [с гуанином, с тимином, с цитозином, с урацилом], correct1.\n004 FACT_OK EDIT_REVISE d3 key2 correct2; source NHGRI Codon. Parallel: [три аминокислоты, участок мембраны, три нуклеотида, один нуклеотид], correct2.\n005 FACT_OK EDIT_MINOR d3 key1 correct1; source NCBI NBK9841. Existing distractors plausible enough; no text needed.\n006 FACT_OK EDIT_REVISE d3 key0 WRONG correct2; source NHGRI glossary. Opt3 «синтез белка по РНК» duplicates translation; replace with «мейоз»; correct2.\n007 FACT_OK EDIT_REVISE d2 key3 WRONG correct1; source NHGRI Chromosomes. Ask «Сколько пар…» and options [22,23,24,46], correct1; remove «46 пар» dimensional giveaway.\n008 FACT_OK BUT_AMBIGUOUS d5 key2 WRONG; source NCBI NBK9896. Stem «Какой органоид животной клетки…»; [митохондрия,лизосома,аппарат Гольджи,хлоропласт], correct0.\n009 FACT_OK EDIT_REVISE d3 key0 WRONG correct1; source NCBI NBK9896. Stem/opt1 «синтезируют большую часть АТФ»; others [хранят весь геном, синтезируют большую часть АТФ, расщепляют внеклеточные белки, запасают кислород], correct1.\n010 FACT_OK EDIT_REVISE d3 key1 WRONG correct0; source NCBI NBK9896. Replace duplicate «тилакоидами» with «рибосомы»: [кристы,тилакоиды,центриоли,рибосомы], correct0.\nROOT CAUSE: candidate option arrays place correct answers at varying indices, while generator assumes opts[0] correct. Key indices must be reconciled after candidate order is fixed; factual verdict is not editorial/publish acceptance. Tags are absent from candidate rows, so no tag validation possible."
+    }
+  ],
+  "lead_findings": [
+    "Generator treats ROWS option0 as correct but several rows put the correct option elsewhere; saved-parity and position-balance checks preserve the error.",
+    "Follow-up row002 correct-position annotation contradicted its explicit options. Lead derives indices from answer text, not the annotation.",
+    "NCBI NBK9896 returned CAPTCHA to lead; accessible OpenStax Biology2e4.3 independently supports organelle claims."
+  ],
+  "lead_opened_sources": [
+    "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+    "https://www.genome.gov/genetics-glossary/Codon",
+    "https://www.genome.gov/genetics-glossary/Transcription",
+    "https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet",
+    "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "https://www.genome.gov/genetics-glossary/Genome"
+  ]
+}

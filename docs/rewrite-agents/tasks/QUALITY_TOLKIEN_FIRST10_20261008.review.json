@@ -1,0 +1,150 @@
+{
+  "schema_version": "qm-quality-review/v1",
+  "recorded_date": "2026-10-08",
+  "hub_task": "task-680a576600d04f9f8d14f4d668c35f7f",
+  "result": {
+    "changed_files": [],
+    "code_quality": "Not applicable: content-only read-only audit.",
+    "evidence": [
+      {
+        "command": "Get-FileHash quizzes/Cinema/LOTR/lotr_fellowship_100.json -Algorithm SHA256",
+        "cwd": "C:\\ap\\quiz_master",
+        "kind": "file_hash",
+        "result": "EB20F18F0736C1467D825B5385B610CB582D02D82BD28C321850B8F829E5E184"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened official Tolkien Estate page; it identifies Bag End and Weathertop in its work summary.",
+        "url": "https://www.tolkienestate.com/writing/the-lord-of-the-rings/"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened screenplay transcript; p.14 explicitly has Bilbo's Old Toby line and pp.14-15 show the party fireworks. This is supplementary, not an official studio source.",
+        "url": "https://www.scripts.com/script-pdf-body.php?id=1197"
+      },
+      {
+        "kind": "primary_text",
+        "result": "Checked relevant Fellowship chapters: Book I ch.1 (items 1,2,3,5,6), ch.2 (6,7), ch.9 (7,8,9), ch.11 (10), plus Prologue 'Concerning Pipe-weed' (4)."
+      },
+      {
+        "kind": "key_check",
+        "result": "After independently deriving answers, inspected zero-based correct_answer values: all ten match."
+      },
+      {
+        "kind": "scope_check",
+        "result": "Read only the target pack and the inventory pointer; no files changed, tests, builds, browser automation, exports, git or managed workers run."
+      }
+    ],
+    "findings": [
+      {
+        "consequence": "Five of ten keys are the sixth option (lotr_f_2, _4, _6, _7, _8), with a consecutive run at _6-_8; this makes guessing by position materially easier.",
+        "correction": "Shuffle each affected option list and update its zero-based correct_answer; preserve the exact option texts and recheck all mappings.",
+        "evidence": "First-ten distribution: index 1=2, 2=1, 3=1, 4=1, 5=5.",
+        "lines": "34, 64, 94, 109, 124",
+        "path": "quizzes/Cinema/LOTR/lotr_fellowship_100.json",
+        "severity": "P2",
+        "trigger": "A player reaches the first ten questions and learns the answer slot pattern."
+      },
+      {
+        "consequence": "None of the first ten legacy records has difficulty or tags, so difficulty balance and topic filtering cannot be audited from the data.",
+        "correction": "Add schema-supported difficulty and topic/source tags during a legacy-pack migration.",
+        "lines": "8-157",
+        "path": "quizzes/Cinema/LOTR/lotr_fellowship_100.json",
+        "severity": "P3",
+        "trigger": "Attempting to inspect difficulty progression or discoverability by topic."
+      }
+    ],
+    "fresh_checks": [
+      "Static JSON inspection and SHA-256 recomputation only.",
+      "No runtime test/build/browser check run; prohibited by the packet."
+    ],
+    "input": {
+      "path": "C:\\ap\\quiz_master\\quizzes\\Cinema\\LOTR\\lotr_fellowship_100.json",
+      "scope": "questions 1-10 only",
+      "sha256": "EB20F18F0736C1467D825B5385B610CB582D02D82BD28C321850B8F829E5E184"
+    },
+    "item_verdicts": [
+      {
+        "blind_answer": "Бэг-Энд / Bag End (option index 3)",
+        "evidence": "J.R.R. Tolkien, The Fellowship of the Ring, Book I ch. 1, 'A Long-expected Party'; official Tolkien Estate page names Bag End.",
+        "id": "lotr_f_1",
+        "note": "All six location distractors are plausible Middle-earth places; easy recall item.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "111 / eleventy-first (option index 5)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 1, 'A Long-expected Party'.",
+        "id": "lotr_f_2",
+        "note": "Numerical distractors are plausible; easy recall item.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Фейерверки / fireworks (option index 2)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 1, 'A Long-expected Party'; screenplay transcript opened, pp. 14-15, shows Gandalf lighting party fireworks.",
+        "id": "lotr_f_3",
+        "note": "Distractors are related to the setting; no answer-length clue observed.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Старый Тоби / Old Toby (option index 5)",
+        "evidence": "Opened screenplay transcript p. 14: Bilbo calls Old Toby the finest weed in Southfarthing; book Prologue, 'Concerning Pipe-weed', names Old Toby, Longbottom Leaf and Southern Star.",
+        "id": "lotr_f_4",
+        "note": "Longbottom Leaf and Southern Star are deliberately plausible book-world distractors; the film-scene qualifier makes Old Toby unique. The direct film transcript is non-official; retain a licensed/official film citation if source metadata is added.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Дрого Бэггинс / Drogo Baggins (option index 4)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 1, 'A Long-expected Party'.",
+        "id": "lotr_f_5",
+        "note": "Bungo is a credible family distractor; explanation's Brandywine death detail is consistent with the chapter.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Сэмуайз Гэмджи / Samwise Gamgee (option index 5)",
+        "evidence": "The Fellowship of the Ring, Book I chs. 1-2, 'A Long-expected Party' and 'The Shadow of the Past'.",
+        "id": "lotr_f_6",
+        "note": "Hamfast is a fair near-miss as Sam's gardener father; 'Frodo's friend' makes Samwise unique.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Мистер Андерхилл / Mr Underhill (option index 5)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 2, 'The Shadow of the Past' (Gandalf's travelling-name advice); Book I ch. 9 confirms Frodo uses it at Bree.",
+        "id": "lotr_f_7",
+        "note": "Explanation is supported; no factual correction needed.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Гарцующий пони / The Prancing Pony (option index 5)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 9, 'At the Sign of The Prancing Pony'.",
+        "id": "lotr_f_8",
+        "note": "Distractors read as inn names and remain plausible; easy recall item.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Strider (option index 1)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 9, 'At the Sign of The Prancing Pony'.",
+        "id": "lotr_f_9",
+        "note": "Other names belong to distinct Tolkien characters/titles, so the answer is unique.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "blind_answer": "Заверть / Weathertop (Amon Sul) (option index 1)",
+        "evidence": "The Fellowship of the Ring, Book I ch. 11, 'A Knife in the Dark'; official Tolkien Estate page identifies the battle on Weathertop.",
+        "id": "lotr_f_10",
+        "note": "Other geographical distractors are plausible; answer explanation properly connects Weathertop and Amon Sul.",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "remaining_risks": [
+      "Strict candidate-first blindness was compromised when a preliminary schema-inspection command inadvertently printed explanation text before correct_answer was inspected. The factual answer derivation and later key comparison were still performed independently; use a fresh blind reviewer if that protocol must be strictly certified.",
+      "No direct official studio page or licensed screenplay could be located for the one film-specific Old Toby line; the citation status is disclosed rather than treating the transcript as primary.",
+      "This review covers only the first ten items and does not infer a verdict for the other forty."
+    ],
+    "requirements_compliance": "Factual answer review: 10/10 correct and uniquely supported. Content-quality rework is advised for the exposed answer-position pattern and absent difficulty/tag metadata.",
+    "reviewer_label": "review-article-reader-t2d503c8",
+    "runtime_identity": "codex/gpt-6.1-sol (self-reported); session-3b5d06260957443d9a2a71a707f64e0e",
+    "status": "DONE_WITH_CONCERNS",
+    "usage": "No quota/usage data exposed."
+  },
+  "lead_note": "Native review does not certify blind independence, official film-source verification, complete pack or cross-provider release acceptance. Do not force index balance: correct answer mapping takes priority."
+}

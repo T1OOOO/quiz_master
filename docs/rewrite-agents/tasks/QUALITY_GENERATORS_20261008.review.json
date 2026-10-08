@@ -1,0 +1,22 @@
+{
+  "schema_version": "qm-static-generator-review/v1",
+  "recorded_date": "2026-10-08",
+  "hub_task": "task-95caa36937784ee08b5886531cc91e3b",
+  "result": {
+    "evidence": [
+      "build_biology20.py:36-41 derives every answer from ROWS option 0; saved biology key/candidate have 11 direct selected-option/explanation contradictions (IDs 003,006-011,013,015-017).",
+      "Static positional dependencies also identified in music-classical/classical-music20.py:15,194,198 and build_paintings20.py:14-29; remaining inspected builders hold separate answer/index data.",
+      "Candidate SHA256 28E5465D55CBE26C16976EE3093B02C997B28E7D746B9511ED2F7997BAFAE9D2; key SHA256 539C3D84747E372B62EA3DACFCAD6EFB98F3F76478C5EFCA50783DD5F7C49669; Hub report 18111."
+    ],
+    "limitations": "String comparison proves internal key/explanation conflict only, not factual validity. No generators/tests were run. Read lease queued and release attempt returned unknown lease; user light read exception used.",
+    "summary": "Read-only static survey of 15 content20 generator sources complete. No generator/test execution and no file changes."
+  },
+  "hub_followup": [
+    {
+      "id": 18111,
+      "text": "Static survey done. HIGH: build_biology20.py:36 iterates ROWS; :37 promotes choices.pop(0) as correct and inserts at POS; :41 writes idx. Every first ROWS option therefore drives the key, irrespective of explanation/distractors. Saved candidate SHA256 28E5465D55CBE26C16976EE3093B02C997B28E7D746B9511ED2F7997BAFAE9D2; key 539C3D84747E372B62EA3DACFCAD6EFB98F3F76478C5EFCA50783DD5F7C49669. Direct key-selected option vs its own explanation contradictions: 003 guanine/A—T; 006 replication/transcription; 007 22/23 pairs; 008 Golgi/mitochondrion; 009 whole genome/ATP; 010 thylakoids/cristae; 011 mitochondrion/chloroplast; 013 both parents/maternal; 015 proteins/full DNA; 016 1/three stops; 017 guanine/uracil. Text agreement only (not factual approval): 001,002,004,005,012,014,018,019,020. Source rows confirm at :10,:13-18,:20,:22-24. Root 011/016 independent corrections remain authoritative. Other first-slot positional dependencies: music-classical/classical-music20.py:15 documents correct-first; :194 swaps options[0] to target (reason swap :198). build_paintings20.py:14-24 extras use answer=0; :26-29 swaps. Explicit per-row indices, no blanket zero: chemistry20.py:44-52; solar-system20.py:35-40; space-missions20.py:58-59; build_landforms20.py:13,49; build_world_monuments20.py:64-69; build_animal_world20.py:37-40; middle_ages:39-42; modern_events:38-41; roman:37-40; egyptian:40-43; classic-books:183-193; popular music:131-140. These are unverified risk only. No execution/tests/edits. Lease lease-952c8aba08c64c099648cc6ce8a3ca1d QUEUED OLDER_REQUEST_WAITING; release with id/gen returned unknown lease None."
+    }
+  ],
+  "resource_cleanup": "Worker subsequently released its actual queued lease lease-952c8aba08c64c099648cc6ce8a3ca1d generation1; Hub correction18117 confirms RELEASED. The original None-id failure remains in provenance.",
+  "limits": "Static source/internal-consistency review only; no generator executed or remaining factual content accepted. Eleven biology contradictions corrected in separate revised pack."
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "qm-quality-review/v1",
+  "recorded_date": "2026-10-08",
+  "hub_task": "task-aa5bf8fb0f494deeabb675e3b6a2d909",
+  "status": "REVISE_WITH_UNRESOLVED_SOURCE_CHECKS",
+  "messages": [
+    {
+      "hub_message_id": 18051,
+      "text": "SECOND10 preliminary independent review, precise URLs:\n011 ACCEPT: хлоропласт, idx2; https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells d2.\n012 REVISE: candidate/key not independently re-opened in this turn; defer.\n013 REVISE: mitochondrial inheritance wording needs qualified human maternal inheritance; defer source.\n014 ACCEPT phenotype = observable traits, idx0; https://www.genome.gov/genetics-glossary/Phenotype d3.\n015 REVISE duplicate genome with 001. Replacement application: «Какой пример относится к некодирующей части генома?» options [интрон гена, готовая аминокислота, рибосома, клеточная мембрана]; answer «интрон гена», idx0; https://www.genome.gov/genetics-glossary/Genome d4.\n016 ACCEPT 3 stop codons, idx3; https://www.genome.gov/genetics-glossary/Codon d4.\n017 REVISE: stem asks pair, current options are single bases. Proposed «Какая пара оснований характерна для РНК?» [аденин—урацил, аденин—тимин, гуанин—тимин, цитозин—тимин]; answer аденин—урацил idx0; https://www.genome.gov/genetics-glossary/Codon d3.\n018 REVISE terminology: insertion/deletion/substitution of one base pair is not uniformly “point mutation” in all teaching conventions; stem should ask «Как называется замена одной пары оснований?» answer точечная мутация; distractors транслокация, полиплоидия, инверсия; idx0; https://www.genome.gov/genetics-glossary/Mutation d5.\n019 ACCEPT tRNA brings amino acid, idx3; https://www.genome.gov/genetics-glossary/Transfer-RNA d5.\n020 REVISE scope: chromosomes principally nuclear, but mitochondrial chromosome exception makes absolute wording risky. Stem «Где находятся линейные хромосомы ядерного генома?» options [в ядре, в лизосомах, в аппарате Гольджи, в рибосомах]; answer в ядре idx0; https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet d3.\nLease lease-a658ccf5b6fa47f5b2ce6d34c0cd5728 QUEUED then RELEASED. Candidate/key hashes previously recorded; no edits."
+    }
+  ],
+  "lead_corrections": [
+    "Original011 chloroplast is index1, NOT2; original0163stopcodons is index0, NOT3. Derived answer text must determine index.",
+    "012 and013 verified directly by lead using NHGRI Chromosomes/DNA fact sheets; mitochondrial inheritance qualified with usually.",
+    "015 intron alternative not used: cited Genome definition alone did not establish intron claim. Replacement applies explicitly directed DNA complementarity.",
+    "017 replaced stem asking a pair but offering single bases; new RNA base question cites RNA glossary.",
+    "018 narrowed to substitution; lead opened specific Point-Mutation glossary.",
+    "Foreign original candidate/key/generator untouched; separate twenty-item revised draft awaits exact-revision independent check."
+  ]
+}

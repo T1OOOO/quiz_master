@@ -1,0 +1,16 @@
+{
+  "schema_version": "qm-reviewed-draft-revision/v1",
+  "status": "editorially_reviewed_pending_integration",
+  "input_candidate": "docs/rewrite-agents/content20/biology20.candidate.json",
+  "input_sha256": "28e5465d55cbe26c16976ee3093b02c997b28e7d746b9511ed2f7997bafae9d2",
+  "input_key_sha256": "539c3d84747e372b62ea3dacfcad6efb98f3f76478c5efca50783dd5f7c49669",
+  "changes": "Correct answer/key drift; parallel plausible options; remove duplicate genome question; explicit DNA chain direction; scoped telomere, mitochondrial and genetic-code claims. Original files unchanged.",
+  "review_tasks": [
+    "task-023c9d16149e4b2d80118384931e278e",
+    "task-aa5bf8fb0f494deeabb675e3b6a2d909",
+    "task-63c6c6220bf84a29836270d2befef42d"
+  ],
+  "final_candidate_sha256": "fa30fc28fd28f7fe9d14277d9045bc3c961811696c6310d09b59d8fe822f81d6",
+  "final_key_sha256": "eec8cfce5d12980398f65ee296f9f5a93d0b4fe7e70af0a68455f454e095e974",
+  "limits": "All20 exact-revision answers/options accepted by a separate native source reviewer; same-vendor editorial evidence only. Import/runtime and different-provider release gates remain pending."
+}

@@ -1,0 +1,341 @@
+{
+  "schema_version": "qm-quality-review/v1",
+  "recorded_date": "2026-10-08",
+  "hub_task": "task-63c6c6220bf84a29836270d2befef42d",
+  "result": {
+    "changed_files": [],
+    "code_quality": "Not applicable: content-only review.",
+    "evidence": [
+      {
+        "command": "Get-FileHash candidate/key -Algorithm SHA256",
+        "cwd": "C:\\ap\\quiz_master",
+        "kind": "hash",
+        "result": "Candidate and key exactly match the packet hashes."
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; defines genome as all DNA instructions in a cell.",
+        "url": "https://www.genome.gov/genetics-glossary/Genome"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; supports DNA bases, maternal mtDNA, and anti-parallel complementary strands.",
+        "url": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; supports triplet codons and 61/3 coding/stop split.",
+        "url": "https://www.genome.gov/genetics-glossary/Codon"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; supports ribosomes, mitochondria, cristae, ATP, chloroplasts and nuclear chromosomes.",
+        "url": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; defines RNA copy of DNA.",
+        "url": "https://www.genome.gov/genetics-glossary/Transcription"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; supports 23 pairs, telomere shortening qualification, maternal mtDNA and nuclear chromosomes.",
+        "url": "https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; defines observable traits including eye colour.",
+        "url": "https://www.genome.gov/genetics-glossary/Phenotype"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; identifies RNA bases including uracil.",
+        "url": "https://www.genome.gov/genetics-glossary/Ribonucleic-Acid-RNA"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; defines a single-base-pair point mutation.",
+        "url": "https://www.genome.gov/genetics-glossary/Point-Mutation"
+      },
+      {
+        "kind": "source_open",
+        "result": "Opened; defines tRNA's adaptor/amino-acid delivery role.",
+        "url": "https://www.genome.gov/genetics-glossary/Transfer-RNA-tRNA"
+      },
+      {
+        "kind": "key_parity",
+        "result": "Candidate-first derived zero-based indices equal all 20 correct_answer indices and answer_text values in key."
+      },
+      {
+        "kind": "metadata_check",
+        "result": "Tags domain:science and topic:biology are both present in metadata/tags.v1.json; no missing source fields; levels are valid 2–5."
+      }
+    ],
+    "fresh_checks": [
+      "Static JSON/hash/metadata inspection and web source opens only.",
+      "No files edited, no tests, builds, browser automation, export, git or managed workers run."
+    ],
+    "input_hashes": {
+      "candidate": "FA30FC28FD28F7FE9D14277D9045BC3C961811696C6310D09B59D8FE822F81D6",
+      "key": "EEC8CFCE5D12980398F65EE296F9F5A93D0B4FE7E70AF0A68455F454E095E974"
+    },
+    "item_verdicts": [
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "полный набор его ДНК",
+        "id": "wave20-biology-001",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "The remaining molecular inventories are parallel but incorrect.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Genome",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 2,
+        "derived_answer_text": "аденин, тимин, гуанин, цитозин",
+        "id": "wave20-biology-002",
+        "key_difficulty_level": 2,
+        "key_index_zero_based": 2,
+        "key_parity": "MATCH",
+        "options_review": "Each distractor replaces one standard DNA base with uracil.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "с тимином",
+        "id": "wave20-biology-003",
+        "key_difficulty_level": 2,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "G/C and U are plausible base-level distractors; A-T is unique for DNA.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 2,
+        "derived_answer_text": "последовательность из трёх нуклеотидов",
+        "id": "wave20-biology-004",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 2,
+        "key_parity": "MATCH",
+        "options_review": "Two, three amino acids, and four nucleotides are fair near-misses.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Codon",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "рибосома",
+        "id": "wave20-biology-005",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "Other organelles are plausible but do not translate mRNA into a protein.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 2,
+        "derived_answer_text": "транскрипция",
+        "id": "wave20-biology-006",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 2,
+        "key_parity": "MATCH",
+        "options_review": "Replication, translation and recombination are distinct processes.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Transcription",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "23",
+        "id": "wave20-biology-007",
+        "key_difficulty_level": 2,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "22 and 46 distinguish pairs from counts; 24 is a credible numeric distractor.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 0,
+        "derived_answer_text": "митохондрия",
+        "id": "wave20-biology-008",
+        "key_difficulty_level": 4,
+        "key_index_zero_based": 0,
+        "key_parity": "MATCH",
+        "options_review": "Opened source states mitochondria have own DNA and two membranes; alternatives lack that combination in a typical animal cell.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "синтезируют АТФ из энергии питательных веществ",
+        "id": "wave20-biology-009",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "Each distractor maps to a different organelle function; aerobic-respiration wording appropriately narrows the claim.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 0,
+        "derived_answer_text": "кристы",
+        "id": "wave20-biology-010",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 0,
+        "key_parity": "MATCH",
+        "options_review": "Thylakoids, cisternae and microvilli are plausible structural distractors.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "хлоропласт",
+        "id": "wave20-biology-011",
+        "key_difficulty_level": 2,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "The source identifies chloroplasts as photosynthetic plant organelles.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "они немного укорачиваются",
+        "id": "wave20-biology-012",
+        "key_difficulty_level": 4,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "The stated absence of sufficient telomerase correctly qualifies the normal shortening rule.",
+        "review_difficulty_1_to_10": 4,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 0,
+        "derived_answer_text": "от матери",
+        "id": "wave20-biology-013",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 0,
+        "key_parity": "MATCH",
+        "options_review": "The source explains maternal mitochondrial inheritance through retained egg mitochondria.",
+        "review_difficulty_1_to_10": 3,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "наблюдаемый цвет его глаз",
+        "id": "wave20-biology-014",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "This is the sole observable trait; the other options are sequence/order data.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Phenotype",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 2,
+        "derived_answer_text": "ТАЦГ",
+        "id": "wave20-biology-015",
+        "key_difficulty_level": 5,
+        "key_index_zero_based": 2,
+        "key_parity": "MATCH",
+        "options_review": "For 5′-АТГЦ-3′, antiparallel complement is 3′-ТАЦГ-5′. The opened source explicitly says strands run in opposite directions and A-T/C-G pair.",
+        "review_difficulty_1_to_10": 5,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 0,
+        "derived_answer_text": "3",
+        "id": "wave20-biology-016",
+        "key_difficulty_level": 4,
+        "key_index_zero_based": 0,
+        "key_parity": "MATCH",
+        "options_review": "The source gives 64 codons, 61 amino-acid coding and three stops.",
+        "review_difficulty_1_to_10": 4,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Codon",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "урацил",
+        "id": "wave20-biology-017",
+        "key_difficulty_level": 3,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "Other answers are normal shared bases; the source states RNA uses uracil rather than thymine.",
+        "review_difficulty_1_to_10": 2,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Ribonucleic-Acid-RNA",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 2,
+        "derived_answer_text": "точечная мутация",
+        "id": "wave20-biology-018",
+        "key_difficulty_level": 4,
+        "key_index_zero_based": 2,
+        "key_parity": "MATCH",
+        "options_review": "A one-base-pair change is point mutation; other options are chromosomal/genomic-scale changes.",
+        "review_difficulty_1_to_10": 4,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Point-Mutation",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 3,
+        "derived_answer_text": "доставляет аминокислоту, соответствующую кодону матричной РНК",
+        "id": "wave20-biology-019",
+        "key_difficulty_level": 4,
+        "key_index_zero_based": 3,
+        "key_parity": "MATCH",
+        "options_review": "Opened source confirms tRNA is the adaptor that pairs to mRNA and inserts the appropriate amino acid; other RNA roles are distinct.",
+        "review_difficulty_1_to_10": 4,
+        "source_opened": "https://www.genome.gov/genetics-glossary/Transfer-RNA-tRNA",
+        "verdict": "ACCEPT"
+      },
+      {
+        "derived_answer_index_zero_based": 1,
+        "derived_answer_text": "в ядре",
+        "id": "wave20-biology-020",
+        "key_difficulty_level": 2,
+        "key_index_zero_based": 1,
+        "key_parity": "MATCH",
+        "options_review": "The source locates animal/plant-cell chromosomes in the nucleus; mitochondrial DNA does not turn mitochondria into the location of the nuclear genome.",
+        "review_difficulty_1_to_10": 1,
+        "source_opened": "https://www.genome.gov/about-genomics/fact-sheets/Chromosomes-Fact-Sheet",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "metadata": {
+      "evidence": "Every key record has a nonempty source; difficulty_level values are 2,3,4,5; both domain:science and topic:biology exist in metadata/tags.v1.json. Candidate intentionally carries no answer/key fields.",
+      "note": "Review ratings are on the requested 1–10 scale; key difficulty is an editorial 2–5 band and is reasonable for this introductory set.",
+      "result": "ACCEPT"
+    },
+    "remaining_risks": [
+      "Review is same-provider editorial evidence and is not a cross-provider release acceptance.",
+      "No runtime/import/build/test was run, as prohibited; assessment is limited to the frozen candidate/key and cited sources."
+    ],
+    "requirements_compliance": "ACCEPT for content correctness and private-key parity: independently derived answer text/index matches 20/20 key records; every prompt has one supported answer.",
+    "reviewer_label": "review-article-reader-t2d503c8",
+    "runtime_identity": "codex/gpt-6.1-sol (self-reported); session-3b5d06260957443d9a2a71a707f64e0e",
+    "scope": "All 20 records in the frozen Biology20 candidate/key pair; candidate read before key.",
+    "status": "DONE",
+    "usage": "No quota/usage data exposed."
+  },
+  "lead_verdict": "ACCEPT_EDITORIAL_ONLY; all20 supported and mappings match; integration and different-provider release gates remain pending."
+}

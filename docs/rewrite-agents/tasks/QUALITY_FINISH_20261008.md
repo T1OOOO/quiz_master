@@ -1,0 +1,65 @@
+# Quiz Master: finish drafts, verify answers and improve learning UX
+
+Updated 2026-10-08. Lead: Codex, actual workspace `C:/ap/quiz_master`, branch `codex/quiz-v2`. This packet supersedes the old sequential-only content plan following the user's explicit request for parallel native, Claude and Antigravity work. This is an execution backlog, not a claim that the corpus has passed review.
+
+## Scope and evidence
+
+The user wants every draft completed, every quiz and answer checked, plausible answer options without hints, friendly mobile UI, interesting educational articles with sources, difficulty 1–10 and useful cross-topic tags. Existing feedback must stay open until the fix is verified in production. No GitHub Actions.
+
+`QUALITY_INVENTORY_20261008.json` freezes file hashes and IDs: 126 legacy packs / 3958 questions; 30 canonical bundles / 1108 questions; 27 candidate packs / 437 questions; 116 draft articles in 34 batches; 126 player catalog entries; 30 generated local catalog articles. Branches overlap: these totals cannot be added to estimate unique questions. Canonical questions are nested under `quiz.questions`; candidate, key and legacy copies must not be counted three times. Existing reviewed articles are not evidence that every question in their quiz was reviewed.
+
+Runtime Quizipedia has 88 constellations; 48 have draft articles, leaving 40. Anatomy currently has six runtime objects; the research expansion lists 93 but integration, illustration licensing and hotspots remain incomplete. Reconcile existing review evidence against exact current hashes before commissioning duplicate reviews.
+
+## Ordered stages
+
+1. **Coverage and prioritization.** Use the inventory rows, preserve original hashes, and assign disjoint batches of 10–20 question IDs. Start with reported factual problems, answer-key drift and draft packs before low-risk catalog polish. Each batch must return actual per-item evidence, not a structural pass.
+2. **Question and answer quality.** Independently solve before reading the key. Verify primary sources, book versus film continuity, wording and answer uniqueness. Compare the keyed answer with the independently derived answer. Check all distractors for factual alternatives, grammatical clues, parentheses, repeated meanings and conspicuous length. Rate difficulty 1–10; reuse the existing runtime tier mapping and tag registry. Return ACCEPT, REVISE or UNRESOLVED per ID. Do not force answer-position balance at the cost of correctness.
+3. **Finish drafts and articles.** Apply reviewed corrections in a separate owned revision with provenance; keep source candidates intact until integration. Complete all candidate packs and article batches in the inventory, prioritizing question-linked explanatory articles rather than unrelated facts. Each article needs a clear learning point, useful detail and several primary-source links. Complete the remaining constellation targets and anatomy/landmark backlog, then validate references, licenses and hotspots. Do not generate another large unchecked backlog.
+4. **Friendly UX.** Address the five audited defects below with minimal changes in shared components. Obtain the required resource grant, reproduce each bug in a focused test, implement, then verify narrow/mobile layout, large text, keyboard and assistive semantics. Personally exercise map selection/zoom/search and a complete question-to-article journey in the browser before publication.
+5. **Integrate and publish.** Require independent review of the exact final revision from a genuinely different provider, content gates, Flutter/server checks as relevant, resource-granted builds and browser verification. Commit/push owned stable work only. Deploy after the existing authorized release gates pass, verify published behavior, then resolve the matching feedback.
+
+## Assigned work and actual state
+
+| Owner | Hub task / scope | State at assignment |
+|---|---|---|
+| Native article_reader_review | `task-680a576600d04f9f8d14f4d668c35f7f`: first ten Tolkien questions; `task-63c6c6220bf84a29836270d2befef42d`: frozen corrected biology20 | Tolkien report submitted with blind/film-source limitations; corrected biology20 has 20/20 editorial ACCEPT, integration pending |
+| Native flags_writer_fresh | `task-023c9d16149e4b2d80118384931e278e` and `task-aa5bf8fb0f494deeabb675e3b6a2d909`: original biology20; `task-95caa36937784ee08b5886531cc91e3b`: static generator survey | Original reports submitted; lead caught index/citation errors and independently corrected them. Static survey submitted:15 generators inspected without execution,11 biology internal contradictions; other risks remain unverified |
+| Antigravity Gemini 3.8 Flash Medium | `task-4cf50b0ea9d8446f890cd05aeca20ea5`, managed worker `managed-c33e5441d251f060a9d7b70410f94ed6d0cea540689d028c45b0e99b3a1d880f`: eight frozen constellation articles | QUEUED, OLDER_REQUEST_WAITING; task RUNNING is not proof executor is running |
+| Claude Sonnet | `task-ef83c142666f49528f8d5a03d4eebf57`, managed worker `managed-428e84e88cc1ca308bd6d4e2e71dc92fbe22f3b437d3a3e381cead86525f3597`: existing release review | QUEUED; preserve this worker rather than duplicate it |
+| Lead | Coverage registry, provenance, correction integration, Beads, gates and release | In progress |
+
+Actual `agy models` confirms `gemini-3.8-flash-medium`; Google uses official Antigravity CLI `agy`, not the retired personal-account Gemini CLI. Native helpers here actually use OpenAI GPT-6.1-sol; different self-reported `openai`/`codex` labels do not make independent vendors. Supervised small batches may use cheaper external models; the lead checks every result. Maintain at most three concurrent active turns including the lead; no per-worker schedulers.
+
+## UI audit to implement
+
+Source-only task `task-d96deed046784456a3e4689b8e45a1af` found:
+
+- `journey_pages.dart:339`: progress uses index/length while displayed count uses index+1; a one-question attempt shows 0% and the last question never reaches full progress.
+- `main.dart:569`: replacement option semantics exposes opaque option IDs and a generic button role; convey checked state and mutually-exclusive selection correctly.
+- `main.dart:485`: question image failure shows only an icon; show visible localized unavailable text and a retry action.
+- `study_pages.dart:540`: failed article image disappears; retain an accessible bounded placeholder with alt text.
+- `question_articles.dart:157`: loading/error both hide the educational link; provide nonblocking loading/error/retry states, keeping absence only for a successfully loaded catalog without a match. Account for cached failed futures on retry.
+
+These are source findings, not tested fixes. Existing map, feedback pause/resume, study tables and contrast changes already have separate feedback evidence and still await published validation. The latest secure feedback refresh found 26 total, all 26 OPEN. Flutter gate request `lease-ff7f27f8caee45ba856e36198966d5a7` was QUEUED and released; no tests/build/browser were run under that request.
+
+## English launch prompt for connected Claude or Antigravity
+
+Paste this into the existing assistant session. It contains no credentials:
+
+```text
+You are a Quiz Master execution assistant working under the Codex lead. The user explicitly requests finishing all drafts, checking all quiz facts and answer options, and friendly educational mobile UX. Work in C:/ap/quiz_master, preserve all unrelated modifications, and read AGENTS.md plus docs/rewrite-agents/tasks/QUALITY_FINISH_20261008.md and the role-specific .agents/skills/*/SKILL.md. Read C:/Users/Alexey_Matvienko/tools/agent-hub/HOST_HUB.md for the current protocol. Do not use archived per-project hub tools/files.
+
+Call host_hub hub_help, then hub_connect with your real provider/model/capabilities and actual workspace. Reuse your existing identity if already connected. List/join team team-2ed452959d1b4bdfa7ec7c94fb8584ce, declare genuine ready=true, read and ACK messages, and search prior decisions. Tell the lead your exact fresh session ID and availability. Wait for an explicit bounded task offer and accept it. Do not self-claim shared files or duplicate existing workers. Set activity truthfully. Request a covering path/read lease before work; QUEUED grants nothing. The existing exception allows only bounded lightweight read/edit after releasing a queued request; tests, builds, browser automation and managed workers always require a GRANTED resource bundle. Never alter another project's requests/processes.
+
+For a content task independently solve before reading the answer key, open primary sources, verify every option and return per-ID verdict, exact input/output hashes, citations, ambiguity, minimal revisions, difficulty and valid tags. Factual ACCEPT does not mean options or integration are accepted. For UI use the existing shared components, reproduce first, minimal patch, focused test and actual mobile/keyboard evidence. Use shared MCP memory/ripgrep/codebase-memory/context7/fetch where appropriate; fall back to native Windows rg if the shared ripgrep path-quoting error recurs. Never print secrets or private feedback details.
+
+Submit structured evidence through host_hub, obtain a separate provider's review of the exact final revision, and report real blockers. Do not commit/push/deploy, launch children, create schedulers, use GitHub Actions or bypass resource admission. The lead owns integration and final release. Wait only with hub_wait <=30 seconds while your turn is genuinely active; no claim that an idle session or queued managed worker is doing work.
+```
+
+Managed headless reviewers have no MCP and must receive the exact bounded task/context through `hub_worker spawn`; the lead handles Hub coordination and resource admission. Connected volunteers use the prompt above. Additional child agents require a separate explicit bounded assignment and a granted resource bundle; this initial packet does not authorize them.
+
+## Current concrete content failure
+
+The biology generator `docs/rewrite-agents/content20/build_biology20.py:36` assumes `ROWS` option zero is correct, removes it and reinserts it at a balanced position. Several rows already contain the correct answer elsewhere; the generator therefore confidently marks the wrong choice. Its saved-parity/balance check cannot detect this factual error. The first-ten independent review identified wrong keys at 003, 006, 007, 009, 010 and an ambiguous stem at 008. Freeze provenance and finish the reviewed revision before importing this pack. No blanket approval of remaining questions or other generators follows from this finding.
+
+Different-provider biology review is an unassigned task for the next genuinely ready external volunteer: task-c9229449f5cf487885a8710fd4742e1a. No external reviewer has accepted it yet.
