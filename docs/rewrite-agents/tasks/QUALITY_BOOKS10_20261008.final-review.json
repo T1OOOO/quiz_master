@@ -1,0 +1,329 @@
+{
+  "schema_version": "qm-draft-revision-review/v1",
+  "status": "native_source_and_editorial_accepted_pending_cross_provider_and_integration",
+  "candidate_sha256": "71ab4e72e8f01b37806f78b862c988cc09e95701d1c4f9ac2a1fa877db2ee578",
+  "key_sha256": "e0ebdec3e9bfd318874c2b6a93ceeb2593754d1f2c9abcf6fb700d4e95aeb1a5",
+  "question_count": 10,
+  "editorial": {
+    "task_id": "task-271705e079064d9d81c225a2ec9d39de",
+    "result": {
+      "changed_files": [],
+      "evidence": [
+        {
+          "kind": "candidate-first-key-parity",
+          "result": "Derived candidate answers/indexes 0,1,2,3,0,1,2,3,0,1 before opening the key; all ten match current key answer_text and correct_answer."
+        },
+        {
+          "kind": "editorial-review",
+          "result": "All ten current stems/options checked for source-name hints, grammar, answer-length/form clues, and wording ambiguity. Previously requested editorial repairs are present."
+        },
+        {
+          "kind": "metadata-review",
+          "result": "Each record uses the valid common context tags domain:literature, topic:literary-works, medium:book plus valid country IDs gr,it,it,gb,de,ru,fr,fr,gb,gb."
+        },
+        {
+          "kind": "lease",
+          "result": "lease-aa3b073708b0492cb48aa7316fa9ba24 was QUEUED/OLDER_REQUEST_WAITING then RELEASED; bounded human light-read exception used, no grant claimed."
+        }
+      ],
+      "input_hashes": {
+        "candidate": "71AB4E72E8F01B37806F78B862C988CC09E95701D1C4F9AC2A1FA877DB2EE578",
+        "key": "E0EBDEC3E9BFD318874C2B6A93CEEB2593754D1F2C9ABCF6FB700D4E95AEB1A5"
+      },
+      "item_verdicts": [
+        {
+          "derived_answer": "Ахилла",
+          "derived_index_zero_based": 0,
+          "difficulty_1_to_10": 2,
+          "id": "001",
+          "note": "Compact parallel names; no clue.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "В Италию",
+          "derived_index_zero_based": 1,
+          "difficulty_1_to_10": 4,
+          "id": "002",
+          "note": "'Конечная цель' removes the prior Carthage-stop ambiguity; options are parallel destination phrases.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "7 женщин и 3 мужчины",
+          "derived_index_zero_based": 2,
+          "difficulty_1_to_10": 5,
+          "id": "003",
+          "note": "All four options now use parallel gender ratios; no length giveaway.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "Джеффри Чосер",
+          "derived_index_zero_based": 3,
+          "difficulty_1_to_10": 2,
+          "id": "004",
+          "note": "Source hint removed and nominative author options match the stem.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "Гёте",
+          "derived_index_zero_based": 0,
+          "difficulty_1_to_10": 2,
+          "id": "005",
+          "note": "Surname-only options eliminate the former full-name length cue.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "Роман в стихах",
+          "derived_index_zero_based": 1,
+          "difficulty_1_to_10": 2,
+          "id": "006",
+          "note": "Genre stem and four parallel form labels are clear.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "Изучать право",
+          "derived_index_zero_based": 2,
+          "difficulty_1_to_10": 5,
+          "id": "007",
+          "note": "Clear motivation question with parallel infinitive phrases.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "1857",
+          "derived_index_zero_based": 3,
+          "difficulty_1_to_10": 6,
+          "id": "008",
+          "note": "Stem now explicitly asks about first separate-book publication, resolving the earlier format ambiguity. Factual/source verification belongs to the separate helper.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "1886",
+          "derived_index_zero_based": 0,
+          "difficulty_1_to_10": 6,
+          "id": "009",
+          "note": "Four parallel years; no wording or format cue.",
+          "verdict": "ACCEPT_EDITORIAL"
+        },
+        {
+          "derived_answer": "Частями в журнале",
+          "derived_index_zero_based": 1,
+          "difficulty_1_to_10": 4,
+          "id": "010",
+          "note": "All choices now answer publication form directly; correct answer no longer carries an exclusive date detail.",
+          "verdict": "ACCEPT_EDITORIAL"
+        }
+      ],
+      "remaining_risks": [
+        "This same-provider editorial result is not cross-provider release acceptance.",
+        "No primary sources were opened and no factual/full-pack approval is made; separate fact checker owns that scope.",
+        "No files were edited and no tests, build, browser automation, import, git or deploy ran."
+      ],
+      "reviewer_label": "books-second-review",
+      "runtime_identity": "openai/gpt-6.1-sol; session-9096ef745c31489092d606260c750835",
+      "scope": "Final editorial/options/metadata review only; no factual or source re-approval.",
+      "status": "DONE",
+      "tags": {
+        "country_by_id": {
+          "001": "country:gr",
+          "002": "country:it",
+          "003": "country:it",
+          "004": "country:gb",
+          "005": "country:de",
+          "006": "country:ru",
+          "007": "country:fr",
+          "008": "country:fr",
+          "009": "country:gb",
+          "010": "country:gb"
+        },
+        "note": "Country tags are valid editorial-only taxonomy tags under the stated visibility policy.",
+        "shared": [
+          "domain:literature",
+          "topic:literary-works",
+          "medium:book"
+        ]
+      },
+      "usage": "No quota/usage data exposed."
+    }
+  },
+  "limitations": [
+    "Same actual OpenAI provider, not cross-provider release approval.",
+    "No runtime gates/import/deployment; all26productionfeedback stayOPEN.",
+    "Numericdifficulty is editorial estimate; country tags describe literary tradition/context, not a claim about every story's setting."
+  ],
+  "source_facts": {
+    "task_id": "task-9f47164c9b57426284473225fbbd25bd",
+    "result": {
+      "blind_answers": {
+        "001": 0,
+        "002": 1,
+        "003": 2,
+        "004": 3,
+        "005": 0,
+        "006": 1,
+        "007": 2,
+        "008": 3,
+        "009": 0,
+        "010": 1
+      },
+      "changed_files": [],
+      "evidence": [
+        {
+          "detail": "Runtime hashes match assigned frozen QUALITY_BOOKS10_20261008 candidate and key.",
+          "type": "hash"
+        },
+        {
+          "detail": "All ten candidate answers derived before key match 0,1,2,3,0,1,2,3,0,1.",
+          "type": "blind_solve"
+        },
+        {
+          "detail": "All ten current sources actually opened, including Goethe-Institut German version of the same catalogue record for the tragedy wording.",
+          "type": "opened_sources"
+        }
+      ],
+      "hashes": {
+        "candidate": "71AB4E72E8F01B37806F78B862C988CC09E95701D1C4F9AC2A1FA877DB2EE578",
+        "key": "E0EBDEC3E9BFD318874C2B6A93CEEB2593754D1F2C9ABCF6FB700D4E95AEB1A5"
+      },
+      "records": [
+        {
+          "answer": "Ахилла (0)",
+          "difficulty": 3,
+          "evidence": "Harvard CHS Iliad: Achilles' destructive anger and quarrel with Agamemnon.",
+          "id": "001",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:gr"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Италия (1)",
+          "difficulty": 4,
+          "evidence": "MIT Aeneid I: destined Latian/Italian settlement and Roman future; Italy, seven-year wandering and Carthage context supported.",
+          "id": "002",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:it"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Семь женщин и трое мужчин (2)",
+          "difficulty": 5,
+          "evidence": "Brown original: three young men (Panfilo, Filostrato, Dioneo) and seven ladies.",
+          "id": "003",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:it"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Джеффри Чосер (3)",
+          "difficulty": 3,
+          "evidence": "British Library Archives: catalogue title and contents identify Geoffrey Chaucer and The Canterbury Tales.",
+          "id": "004",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:gb"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Иоганн Вольфганг фон Гёте (0)",
+          "difficulty": 2,
+          "evidence": "Goethe-Institut: Faust under Johann Wolfgang von Goethe; German presentation says Der Tragödie erster Teil.",
+          "id": "005",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:de"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Роман в стихах (1)",
+          "difficulty": 2,
+          "evidence": "State Pushkin Museum: novel in verse; chapters 1825–32 and 1833 collection.",
+          "id": "006",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:ru"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Учиться праву (2)",
+          "difficulty": 5,
+          "evidence": "Maison de Balzac: Rastignac came to study law and stayed at Vauquer; Bianchon future doctor.",
+          "id": "007",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:fr"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "1857 (3)",
+          "difficulty": 6,
+          "evidence": "BnF: 1856 Revue de Paris serialization; first separate Michel Lévy book edition in 1857.",
+          "id": "008",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:fr"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "1886 (0)",
+          "difficulty": 6,
+          "evidence": "Stevenson Museum life chronology dates Strange Case of Dr Jekyll and Mr Hyde to 1886.",
+          "id": "009",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:gb"
+          ],
+          "verdict": "ACCEPT"
+        },
+        {
+          "answer": "Частями в журнале (1)",
+          "difficulty": 4,
+          "evidence": "British Library: Great Expectations first published serially in 1860–61.",
+          "id": "010",
+          "tags": [
+            "domain:literature",
+            "topic:literary-works",
+            "medium:book",
+            "country:gb"
+          ],
+          "verdict": "ACCEPT"
+        }
+      ],
+      "remaining_risks": [
+        "Independent provider review remains required for release; this is fact-check evidence, not publication or acceptance."
+      ],
+      "reviewer_label": "factcheck-quality-books10-final",
+      "runtime_identity": "openai/gpt-6.1-sol; session-019f564aed9f4281b324c52ce86f4e67",
+      "scope_note": "Option construction/editorial clue audit is separately assigned and not asserted here.",
+      "status": "DONE",
+      "verdict": "ACCEPT: 10/10 current factual/source records. Numeric difficulty is 2–6; tags use valid domain/topic/medium/country namespaces with no anomaly observed."
+    }
+  },
+  "cross_provider_task": "task-bd1ab53d8ed84f62b45ecaf535656b45"
+}

@@ -1,0 +1,415 @@
+{
+  "schema_version": "qm-draft-original-review/v1",
+  "input_candidate_sha256": "283f67ef0662722af6d0cbd266633b31ce4f41a7840ef6b0dbadcd5205abd9c6",
+  "input_key_sha256": "b94984b9947369279b82854dd682fe13699329a1483674035b10f06ab4c4c6c2",
+  "question_count": 10,
+  "reviews": [
+    {
+      "task_id": "task-230aa91d68c7411e8d65b1b008cfbdf8",
+      "result": {
+        "blind_answers": [
+          {
+            "answer": "Ахилла",
+            "id": "001",
+            "index": 0
+          },
+          {
+            "answer": "В Италию",
+            "id": "002",
+            "index": 1
+          },
+          {
+            "answer": "Семь женщин и трое мужчин",
+            "id": "003",
+            "index": 2
+          },
+          {
+            "answer": "Джеффри Чосера",
+            "id": "004",
+            "index": 3
+          },
+          {
+            "answer": "Иоганн Вольфганг фон Гёте",
+            "id": "005",
+            "index": 0
+          },
+          {
+            "answer": "Как роман в стихах",
+            "id": "006",
+            "index": 1
+          },
+          {
+            "answer": "Изучать право",
+            "id": "007",
+            "index": 2
+          },
+          {
+            "answer": "1857",
+            "id": "008",
+            "index": 3
+          },
+          {
+            "answer": "1886",
+            "id": "009",
+            "index": 0
+          },
+          {
+            "answer": "Выходил частями в периодике в 1860–1861 годах",
+            "id": "010",
+            "index": 1
+          }
+        ],
+        "changed_files": [],
+        "cross_item_notes": [
+          "No answer length, parenthetical wording, or option construction yields a material answer clue in this 10-item scope.",
+          "Q004 and Q008 name an institution in the stem; Q008 is revised for pedagogical precision. Q004 remains factual but can be simplified later by removing catalogue framing.",
+          "Duplicate/rephrased-question audit outside these candidate/key records was not authorized in this assignment."
+        ],
+        "evidence": [
+          {
+            "kind": "hash",
+            "result": "candidate SHA256 283F67EF0662722AF6D0CBD266633B31CE4F41A7840EF6B0DBADCD5205ABD9C6; key SHA256 B94984B9947369279B82854DD682FE13699329A1483674035B10F06AB4C4C6C2."
+          },
+          {
+            "kind": "blind-solve",
+            "result": "Derived answers/indexes before reading key: 001–010 = 0,1,2,3,0,1,2,3,0,1; all match frozen key."
+          },
+          {
+            "kind": "opened_sources",
+            "result": "Opened supporting sources for all 10 records: Harvard CHS Iliad; MIT Aeneid; Brown Decameron primary text; British Library Chaucer; Goethe-Institut Faust; State Pushkin Museum Onegin; Maison de Balzac Père Goriot; BnF catalogue/PDF Madame Bovary; Stevenson Museum; British Library Great Expectations."
+          }
+        ],
+        "hashes": {
+          "classic-books20.candidate.json": "283F67EF0662722AF6D0CBD266633B31CE4F41A7840EF6B0DBADCD5205ABD9C6",
+          "classic-books20.key.json": "B94984B9947369279B82854DD682FE13699329A1483674035B10F06AB4C4C6C2"
+        },
+        "records": [
+          {
+            "correction": "Replace failed key source/evidence with the opened CHS primary-text URL; retain answer and explanation.",
+            "difficulty": 4,
+            "evidence": "Harvard CHS Rhapsody 1 opens with Achilles' disastrous anger and immediately names his quarrel with Agamemnon. The frozen Perseus Atlas URL returned 502.",
+            "id": "001",
+            "source_opened": "https://www-current.chs.harvard.edu/primary-source/homeric-iliad-sb/",
+            "tags": [
+              "ancient-greece",
+              "epic",
+              "homer"
+            ],
+            "verdict": "REVISE"
+          },
+          {
+            "correction": null,
+            "difficulty": 4,
+            "evidence": "Opened Book I says the Trojans steer to fruitful Italy; Carthage is an episode and Ithaca belongs to Odysseus.",
+            "id": "002",
+            "source_opened": "https://classics.mit.edu/Virgil/aeneid.1.i.html",
+            "tags": [
+              "ancient-rome",
+              "epic",
+              "virgil"
+            ],
+            "verdict": "ACCEPT"
+          },
+          {
+            "correction": "Replace key source/evidence with the opened Brown original-text page; retain answer and distractors.",
+            "difficulty": 6,
+            "evidence": "Opened Brown Decameron text identifies the seven ladies and names the three young men Pamfilo, Filostrato and Dioneo. The frozen BnF bibliography page opened but did not substantiate the claimed 7/3 composition.",
+            "id": "003",
+            "source_opened": "https://webhelper.brown.edu/decameron/texts/DecShowText.php?lang=eng&myID=d01intro",
+            "tags": [
+              "medieval-literature",
+              "boccaccio",
+              "frame-narrative"
+            ],
+            "verdict": "REVISE"
+          },
+          {
+            "correction": null,
+            "difficulty": 3,
+            "evidence": "Opened British Library record title and contents explicitly identify Geoffrey Chaucer and The Canterbury Tales. Distractors are distinct authors; no ambiguity.",
+            "id": "004",
+            "source_opened": "https://searcharchives.bl.uk/catalog/032-002030059",
+            "tags": [
+              "medieval-literature",
+              "chaucer",
+              "english-literature"
+            ],
+            "verdict": "ACCEPT"
+          },
+          {
+            "correction": null,
+            "difficulty": 2,
+            "evidence": "Opened Goethe-Institut catalogue lists Faust and Faust 1 under Johann Wolfgang von Goethe.",
+            "id": "005",
+            "source_opened": "https://www.goethe.de/ins/nl/en/bib/uak/bue.cfm?publicationId=8112",
+            "tags": [
+              "german-literature",
+              "goethe",
+              "drama"
+            ],
+            "verdict": "ACCEPT"
+          },
+          {
+            "correction": null,
+            "difficulty": 3,
+            "evidence": "Opened State Pushkin Museum page calls Eugene Onegin a novel in verse, gives 1823–30 composition, chapter publication 1825–32, and collected edition 1833.",
+            "id": "006",
+            "source_opened": "https://old.pushkinmuseum.ru/?q=exhibition/dal-svobodnogo-romana-k-190-letiyu-publikacii-iv-v-i-vi-glav-romana-pushkina-evgeniy",
+            "tags": [
+              "russian-literature",
+              "pushkin",
+              "genre"
+            ],
+            "verdict": "ACCEPT"
+          },
+          {
+            "correction": null,
+            "difficulty": 5,
+            "evidence": "Opened Maison de Balzac notice says Rastignac came to Paris to study law and identifies Bianchon as the future doctor; explanation and medical distractor are supported.",
+            "id": "007",
+            "source_opened": "https://www.maisondebalzac.paris.fr/vocabulaire/furne/notices/pere_goriot.htm",
+            "tags": [
+              "french-literature",
+              "balzac",
+              "characters"
+            ],
+            "verdict": "ACCEPT"
+          },
+          {
+            "correction": "Use root's precise replacement: «В каком году „Госпожа Бовари“ впервые вышла отдельной книгой?»; retain 1857. Replace key evidence with this opened BnF catalogue and state serial 1856 versus volume 1857.",
+            "difficulty": 5,
+            "evidence": "Opened BnF catalogue records 1856 Revue de Paris serialization and 1857 Michel Lévy volume edition; frozen BnF PDF also labels Madame Bovary 1857. Existing wording asks catalogue-date trivia rather than publication form.",
+            "id": "008",
+            "source_opened": "https://catalogue.bnf.fr/ark:/12148/cb35284670v",
+            "tags": [
+              "french-literature",
+              "flaubert",
+              "publication-history"
+            ],
+            "verdict": "REVISE"
+          },
+          {
+            "correction": "Replace key source/evidence with the opened museum life page. Remove the unsupported distractor rationale that claims the timeline ties 1888 to another travel period; say only that 1888 does not match 1886.",
+            "difficulty": 4,
+            "evidence": "Opened Robert Louis Stevenson Museum life page lists Strange Case of Dr Jekyll and Mr Hyde (1886), alongside Treasure Island (1883). Frozen timeline opened but exposed no searchable 1886 entry in this client.",
+            "id": "009",
+            "source_opened": "https://stevensonmuseum.org/robert-louis-stevenson/the-life/",
+            "tags": [
+              "scottish-literature",
+              "stevenson",
+              "publication-history"
+            ],
+            "verdict": "REVISE"
+          },
+          {
+            "correction": null,
+            "difficulty": 5,
+            "evidence": "Opened British Library page explicitly says first published in serial form 1860–61 and identifies orphan Pip. Options are unambiguous.",
+            "id": "010",
+            "source_opened": "https://support.bl.uk/book/detail/93c22a09-06f5-469b-9839-9e7d00d87cb9",
+            "tags": [
+              "victorian-literature",
+              "dickens",
+              "serialization"
+            ],
+            "verdict": "ACCEPT"
+          }
+        ],
+        "remaining_risks": [
+          "A different declared provider must review/accept the Hub result; same-provider evidence is not cross-provider release approval.",
+          "Q001, Q003 and Q009 require the specified key source/evidence substitutions; Q008 needs the planned stem/source update and an affected-item recheck."
+        ],
+        "reviewer_label": "factcheck-classic-books20-001-010",
+        "runtime_identity": "openai/gpt-6.1-sol; session-019f564aed9f4281b324c52ce86f4e67",
+        "status": "DONE_WITH_CONCERNS",
+        "summary": "Blind answers exactly match the private indices. Six ACCEPT, four source/formulation REVISE; no item is UNRESOLVED. All 10 factual answers have an actually opened supporting institutional/original-text URL. No files changed and no tests/build/browser automation run."
+      }
+    },
+    {
+      "task_id": "task-5b892c335fd340e9a24c90028abf636b",
+      "result": {
+        "changed_files": [],
+        "evidence": [
+          {
+            "kind": "candidate-first-key-parity",
+            "result": "Blind candidate derivation before private key: indexes 0,1,2,3,0,1,2,3,0,1; all ten match key."
+          },
+          {
+            "kind": "static-generator-read",
+            "path": "docs/rewrite-agents/content20/classic-books20.py",
+            "result": "ROWS has 10 entries; enumerate emits 001–010; check asserts len==10. No 011–020 exists. No execution."
+          },
+          {
+            "kind": "metadata-read",
+            "path": "metadata/tags.v1.json",
+            "result": "Verified proposed existing IDs domain:literature, medium:book, topic:literary-works and skill IDs."
+          },
+          {
+            "kind": "lease",
+            "result": "lease-1a381218bcc6474183db613cddbd3d14 was QUEUED/OLDER_REQUEST_WAITING then RELEASED; bounded human light-read exception used, no grant claimed."
+          }
+        ],
+        "input_hashes": {
+          "candidate": "283F67EF0662722AF6D0CBD266633B31CE4F41A7840EF6B0DBADCD5205ABD9C6",
+          "key": "B94984B9947369279B82854DD682FE13699329A1483674035B10F06AB4C4C6C2"
+        },
+        "item_verdicts": [
+          {
+            "difficulty_1_to_10": 2,
+            "editorial": "Direct, grammatical, compact parallel proper-name options.",
+            "id": "001",
+            "minimal_patch": null,
+            "verdict": "ACCEPT"
+          },
+          {
+            "difficulty_1_to_10": 3,
+            "editorial": "'Куда направляются' permits Carthage as an episode.",
+            "id": "002",
+            "minimal_patch": {
+              "options": [
+                "Итака",
+                "Италия",
+                "Египет",
+                "Карфаген"
+              ],
+              "text": "Какая земля является конечным предназначением троянцев Энея в «Энеиде»?"
+            },
+            "verdict": "REVISE"
+          },
+          {
+            "difficulty_1_to_10": 5,
+            "editorial": "Correct composition is visibly longest; use parallel numerals.",
+            "id": "003",
+            "minimal_patch": {
+              "options": [
+                "10 мужчин",
+                "7 мужчин и 3 женщины",
+                "7 женщин и 3 мужчин",
+                "5 женщин и 5 мужчин"
+              ],
+              "text": "Каков состав десяти рассказчиков в рамке «Декамерона»?"
+            },
+            "verdict": "REVISE"
+          },
+          {
+            "difficulty_1_to_10": 1,
+            "editorial": "British Library catalogue is a source hint/catalogue-trivia framing.",
+            "id": "004",
+            "minimal_patch": {
+              "options": [
+                "Джованни Боккаччо",
+                "Уильям Шекспир",
+                "Джон Мильтон",
+                "Джеффри Чосер"
+              ],
+              "text": "Кто написал «Кентерберийские рассказы»?"
+            },
+            "verdict": "REVISE"
+          },
+          {
+            "difficulty_1_to_10": 1,
+            "editorial": "Full correct name is a length giveaway.",
+            "id": "005",
+            "minimal_patch": {
+              "options": [
+                "Гёте",
+                "Шиллер",
+                "Манн",
+                "Гейне"
+              ],
+              "text": "Какой немецкий писатель создал драму «Фауст»?"
+            },
+            "verdict": "REVISE"
+          },
+          {
+            "difficulty_1_to_10": 2,
+            "editorial": "Awkward stem and uneven, correct-shortest options.",
+            "id": "006",
+            "minimal_patch": {
+              "options": [
+                "Роман в прозе",
+                "Роман в стихах",
+                "Сборник рассказов",
+                "Пятиактная пьеса"
+              ],
+              "text": "Как принято определять жанр «Евгения Онегина»?"
+            },
+            "verdict": "REVISE"
+          },
+          {
+            "difficulty_1_to_10": 4,
+            "editorial": "Clear motivation; parallel infinitives; medicine distractor is useful.",
+            "id": "007",
+            "minimal_patch": null,
+            "verdict": "ACCEPT"
+          },
+          {
+            "difficulty_1_to_10": 3,
+            "editorial": "Catalogue/date trivia; 1857 needs publication-format qualification because serialisation began in 1856.",
+            "id": "008",
+            "minimal_patch": {
+              "conditional_on_fact_check": "If source distinguishes the first book edition, use «В каком году «Госпожа Бовари» впервые вышла отдельной книгой?» with [1847,1867,1887,1857]; otherwise remove."
+            },
+            "verdict": "UNRESOLVED"
+          },
+          {
+            "difficulty_1_to_10": 3,
+            "editorial": "Parallel four-digit years, no cue.",
+            "id": "009",
+            "minimal_patch": null,
+            "verdict": "ACCEPT"
+          },
+          {
+            "difficulty_1_to_10": 3,
+            "editorial": "Correct alone contains both medium and dates, making it longest/most specific.",
+            "id": "010",
+            "minimal_patch": {
+              "options": [
+                "Частями в журнале",
+                "Сразу отдельной книгой",
+                "Сначала как театральная пьеса",
+                "Посмертно"
+              ],
+              "text": "Как впервые публиковались «Большие надежды»?"
+            },
+            "verdict": "REVISE"
+          }
+        ],
+        "remaining_risks": [
+          "No factual/source approval: no external URLs opened by design.",
+          "Q008 needs fact-checker confirmation of 1856 serialization versus 1857 separate-book edition.",
+          "No files edited; root owns remediation/integration."
+        ],
+        "reviewer_label": "books-second-review",
+        "runtime_identity": "openai/gpt-6.1-sol; session-9096ef745c31489092d606260c750835",
+        "scope": "Read-only editorial/structural audit; no duplicate primary-source research or generator execution.",
+        "static_generator": {
+          "answer_positions": "0,1,2,3,0,1,2,3,0,1; counts 3/3/2/2; static inspection only.",
+          "result": "Pilot10 only, not 20."
+        },
+        "status": "DONE_WITH_CONCERNS",
+        "usage": "No quota/usage data exposed.",
+        "valid_tag_recommendations": {
+          "per_item": {
+            "001": "skill:direct-recall",
+            "002": "skill:direct-recall",
+            "003": "skill:quantitative",
+            "004": "skill:association",
+            "005": "skill:association",
+            "006": "skill:terminology",
+            "007": "skill:association",
+            "008": "skill:temporal-order",
+            "009": "skill:temporal-order",
+            "010": "skill:temporal-order"
+          },
+          "shared": [
+            "domain:literature",
+            "medium:book",
+            "topic:literary-works"
+          ]
+        }
+      }
+    }
+  ],
+  "lead_assessment": "Factual answer-index agreement does not accept options. Reject source helper blanket no-option-cue claim; separate editorial helper found7 items needing changes. Originalpilot10 only; final revised10review pending. Actualhelpers self-report OpenAIgpt6.1-sol, not proven cheaper Terra override. Sameactualvendor not crossproviderapproval."
+}
