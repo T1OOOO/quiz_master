@@ -1,0 +1,60 @@
+{
+  "reviewer": "codex/gpt-6.1-sol self-reported; session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "codex/gpt-6-luna self-reported; session-6468a45aa629470cb76fd85da497669e; root applied source/qualification/naming corrections",
+  "scope": "Independent native exact factual/editorial draft acceptance. Different actual provider and gated runtime/publication checks pending.",
+  "review_tasks": [
+    "task-a31bfad391574dd8bdd0edb09a97988d",
+    "task-18cb58808c5949acac76cea9c67aede6",
+    "task-bf82c743eb304020a43b05aeda05cfa1"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:eri",
+      "verdict": "accept",
+      "article_sha256": "43fac9298b1b7d9e23e1b9c1767f0bca77d34bf3b9087c8d4ce6c8b77a9360aa",
+      "note": "PASS. Added official NASA Hubble NGC 1300 source directly supports the bar-arm geometry and inner 'spiral within a spiral'. 'Рядом на снимке видна другая...' accurately describes projected co-appearance and avoids a physical-association implication.",
+      "checked_sources": [
+        {
+          "evidence": "Opened; defined sky areas/boundaries and perspective, plus Eri.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; 69 million ly, Hubble/visible dust versus Webb/IR dust emission.",
+          "url": "https://science.nasa.gov/asset/webb/webb-and-hubbles-views-of-spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Reopened; NGC 1300 arms leave the straight bar and source explicitly calls the central feature a spiral within a spiral.",
+          "url": "https://science.nasa.gov/asset/hubble/spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Previously opened; NGC 1232’s distorted theta-shaped other galaxy in the image, blue young-star arms and yellow-reddish core.",
+          "url": "https://www.eso.org/public/unitedkingdom/images/ngc1232b/"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:hya",
+      "verdict": "accept",
+      "article_sha256": "bb6b7d0349a7d31d8becda27d45d116e2b07d2603a1d00d70eed16c454acec74",
+      "note": "PASS. 'Южная Гидра' preserves the required distinction from Hydra/Hya and the Hyi abbreviation; no factual claim changed.",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; official table differentiates Hydra/Hya from Hydrus/Hyi and supports the bounded-sky-region explanation.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; 840 million ly, 10-million-degree gas, jets/cavities, and nearly 400,000-ly iron/metal displacement.",
+          "url": "https://www.chandra.harvard.edu/photo/2009/hydra/"
+        },
+        {
+          "evidence": "Previously opened; Hydra A as a brightest cluster galaxy.",
+          "url": "https://science.nasa.gov/asset/hubble/galaxy-hydra-a/"
+        },
+        {
+          "evidence": "Previously opened; qualified general feedback/heating/cooling cycle.",
+          "url": "https://science.nasa.gov/missions/hubble/nasas-hubble-finds-evidence-of-galaxy-star-birth-regulated-by-black-hole-fountain/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "articles": [
+    {
+      "blind_candidate_assessment": "The address-versus-physical-neighbourhood self-check has one clear answer and is useful.",
+      "canonical_sha256": "1A8C278CF426EF565E2CA3DE1BDBEE0D0068C78A9693766A7CBCE56669A991A7",
+      "checked_sources": [
+        {
+          "evidence": "Opened: defined sky areas/boundaries, perspective, varied distances; Eridanus/Eri.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Opened: NGC 1300 Eri, 69 million ly, bar/arms, Hubble dust absorption and Webb infrared dust emission.",
+          "url": "https://science.nasa.gov/asset/webb/webb-and-hubbles-views-of-spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Opened additional official source: supports the inner spiral.",
+          "url": "https://science.nasa.gov/asset/hubble/spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Opened: theta companion; blue star-forming arms and yellow-reddish old core.",
+          "url": "https://www.eso.org/public/unitedkingdom/images/ngc1232b/"
+        }
+      ],
+      "findings": [
+        "Factual text verified: IAU supports bounded sky areas/perspective; current NASA NGC 1300 page supports barred spiral, 69 million ly, visible dust/IR emission/star-forming regions; ESO supports NGC 1232 details.",
+        "Citation coverage: current listed NGC 1300 Webb/Hubble URL does not state the inner 'spiral within a spiral'. Add official NASA https://science.nasa.gov/asset/hubble/spiral-galaxy-ngc-1300/ (opened, explicitly supports it) or remove the sentence."
+      ],
+      "id": "quizipedia:constellation:eri",
+      "verdict": "REVISE",
+      "word_count_body_ru": 161
+    },
+    {
+      "blind_candidate_assessment": "The self-check unambiguously distinguishes Hydra A from the Hya sky region.",
+      "canonical_sha256": "A2F295F73432E2F560F024AFF05B71B086EAFA089D2FF29983C31C7F7FC63E3D",
+      "checked_sources": [
+        {
+          "evidence": "Opened: Hydra/Hya distinct from Hydrus/Hyi; sky-region explanation.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Opened: 840 million ly, 10-million-degree gas, supernova iron/metals moved nearly 400,000 ly, jets/cavities.",
+          "url": "https://www.chandra.harvard.edu/photo/2009/hydra/"
+        },
+        {
+          "evidence": "Opened: Hydra A is a brightest cluster galaxy.",
+          "url": "https://science.nasa.gov/asset/hubble/galaxy-hydra-a/"
+        },
+        {
+          "evidence": "Opened: general massive-central-galaxy feedback/heating/cooling/fallback cycle.",
+          "url": "https://science.nasa.gov/missions/hubble/nasas-hubble-finds-evidence-of-galaxy-star-birth-regulated-by-black-hole-fountain/"
+        }
+      ],
+      "findings": [
+        "Hya/Hyi nomenclature, object-versus-sky-region distinction, 840-million-ly/10-million-degree/400,000-ly claims and qualified wider feedback context all hold."
+      ],
+      "id": "quizipedia:constellation:hya",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 179
+    },
+    {
+      "blind_candidate_assessment": "The final prompt cleanly distinguishes constellation, NGC 7582 and the foreground comet.",
+      "canonical_sha256": "9E1DCB80713007EFDCDB167A64CCEAE86A0F8F8DBA917284BE9AE7DD575C3CE0",
+      "checked_sources": [
+        {
+          "evidence": "Opened: Grus/Gru and sky-area treatment.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Opened: Grus Triplet about 70 million ly and comet 29 light-minutes away.",
+          "url": "https://science.nasa.gov/image-article/apod-2023-december-21-three-galaxies-and-a-comet/"
+        },
+        {
+          "evidence": "Opened: NGC 7582, MUSE/VLT ionized-element map, star-forming red regions, cone outflow, and conditional shielding/diversion.",
+          "url": "https://www.eso.org/public/images/potw2206c/"
+        }
+      ],
+      "findings": [
+        "All facts and the qualified shielding interpretation are directly supported; self-check is clear."
+      ],
+      "id": "quizipedia:constellation:gru",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 159
+    },
+    {
+      "blind_candidate_assessment": "The self-check correctly separates Indus, NGC 7090 and X1/X2.",
+      "canonical_sha256": "582067903747FE23B2FA78F819210EA9759DC00AB910E9970FC3302D1B77D842",
+      "checked_sources": [
+        {
+          "evidence": "Opened: Indus/Ind and sky-area treatment.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Opened: edge-on NGC 7090, arms, hydrogen star-formation regions, dust/near-IR.",
+          "url": "https://esahubble.org/images/potw1237a/"
+        },
+        {
+          "evidence": "Actual open attempted; non-retryable redirect/500, no readable page.",
+          "url": "https://academic.oup.com/mnras/article/486/4/5709/5484889"
+        },
+        {
+          "evidence": "Opened authors’ primary preprint: two transient sources and >80/>300 factors; further observations required.",
+          "url": "https://arxiv.org/abs/1904.13044"
+        }
+      ],
+      "findings": [
+        "Factual text verified: edge-on view/dust/star formation and the >80/>300 X-ray changes; source correctly retains uncertainty about nature.",
+        "Citation access: cited OUP URL was opened but failed with non-retryable redirect/500. Add/swap authors’ opened primary preprint https://arxiv.org/abs/1904.13044 before acceptance."
+      ],
+      "id": "quizipedia:constellation:ind",
+      "verdict": "REVISE",
+      "word_count_body_ru": 180
+    }
+  ],
+  "canonicalization": "UTF-8 JSON; ensure_ascii=false; sort_keys=true; separators=(',', ':'); SHA-256 of each complete article object.",
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "source_open",
+      "result": "Opened all 10 cited URLs; 9 supplied readable primary/official content, while listed OUP/MNRAS NGC 7090 URL returned a non-retryable redirect/500. Opened official NASA NGC 1300 page and authors’ arXiv primary preprint as explicit substitutes for verification."
+    },
+    {
+      "kind": "canonical_hash",
+      "result": "Recomputed SHA-256 for each complete article object using UTF-8, ensure_ascii=false, sort_keys=true, separators=(',', ':')."
+    },
+    {
+      "kind": "structural_check",
+      "result": "Parsed both JSON drafts and counted body tokens: Eri 161; Hya 179; Gru 159; Ind 180; all are within 150–220."
+    }
+  ],
+  "new_files": [],
+  "publication_status": "No publication, import or acceptance claimed.",
+  "remaining_risks": [
+    "ERI requires the missing official NASA inner-spiral citation in source_links.",
+    "IND requires an accessible primary citation in source_links; the current OUP URL could not be read."
+  ],
+  "reviewer_label": "eri_hya_gru_ind_review",
+  "runtime_identity": "codex/gpt-6.1-sol self-reported; session-5191183ee6a04c9b849a7910ff93166c",
+  "status": "DONE_WITH_CONCERNS"
+}

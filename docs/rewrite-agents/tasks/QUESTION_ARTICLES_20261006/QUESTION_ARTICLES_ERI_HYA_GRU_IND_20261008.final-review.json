@@ -1,0 +1,158 @@
+{
+  "articles": [
+    {
+      "canonical_sha256": "43FAC9298B1B7D9E23E1B9C1767F0BCA77D34BF3B9087C8D4CE6C8B77A9360AA",
+      "checked_sources": [
+        {
+          "evidence": "Opened; defined sky areas/boundaries and perspective, plus Eri.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; 69 million ly, Hubble/visible dust versus Webb/IR dust emission.",
+          "url": "https://science.nasa.gov/asset/webb/webb-and-hubbles-views-of-spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Reopened; NGC 1300 arms leave the straight bar and source explicitly calls the central feature a spiral within a spiral.",
+          "url": "https://science.nasa.gov/asset/hubble/spiral-galaxy-ngc-1300/"
+        },
+        {
+          "evidence": "Previously opened; NGC 1232’s distorted theta-shaped other galaxy in the image, blue young-star arms and yellow-reddish core.",
+          "url": "https://www.eso.org/public/unitedkingdom/images/ngc1232b/"
+        }
+      ],
+      "correction_assessment": "PASS. Added official NASA Hubble NGC 1300 source directly supports the bar-arm geometry and inner 'spiral within a spiral'. 'Рядом на снимке видна другая...' accurately describes projected co-appearance and avoids a physical-association implication.",
+      "id": "quizipedia:constellation:eri",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 164
+    },
+    {
+      "canonical_sha256": "BB6B7D0349A7D31D8BECDA27D45D116E2B07D2603A1D00D70EED16C454ACEC74",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; official table differentiates Hydra/Hya from Hydrus/Hyi and supports the bounded-sky-region explanation.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; 840 million ly, 10-million-degree gas, jets/cavities, and nearly 400,000-ly iron/metal displacement.",
+          "url": "https://www.chandra.harvard.edu/photo/2009/hydra/"
+        },
+        {
+          "evidence": "Previously opened; Hydra A as a brightest cluster galaxy.",
+          "url": "https://science.nasa.gov/asset/hubble/galaxy-hydra-a/"
+        },
+        {
+          "evidence": "Previously opened; qualified general feedback/heating/cooling cycle.",
+          "url": "https://science.nasa.gov/missions/hubble/nasas-hubble-finds-evidence-of-galaxy-star-birth-regulated-by-black-hole-fountain/"
+        }
+      ],
+      "correction_assessment": "PASS. 'Южная Гидра' preserves the required distinction from Hydra/Hya and the Hyi abbreviation; no factual claim changed.",
+      "id": "quizipedia:constellation:hya",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 179
+    },
+    {
+      "canonical_sha256": "5EE20BC3BC82BCCE543AD7F6A28953962164AAF3128FC77C037AEC8495AA33BF",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; Grus/Gru and bounded-sky-region treatment.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Reopened; image recorded 13 Dec 2023, Grus Triplet about 70 million ly, C/2020 V2 ZTF about 29 light-minutes away.",
+          "url": "https://science.nasa.gov/image-article/apod-2023-december-21-three-galaxies-and-a-comet/"
+        },
+        {
+          "evidence": "Previously opened; NGC 7582, MUSE/VLT ionized mapping, conical outflow and explicitly qualified shielding/diversion interpretation.",
+          "url": "https://www.eso.org/public/images/potw2206c/"
+        }
+      ],
+      "correction_assessment": "PASS. The comet wording is now explicitly a 13-Dec-2023 image-state claim for C/2020 V2 ZTF, not a current distance.",
+      "id": "quizipedia:constellation:gru",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 169
+    },
+    {
+      "canonical_sha256": "16f600230a32d6a4e57dc86c9ae2087cd67f52ffe750d7fc8ddafb841a2e1174",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; Indus/Ind and bounded sky region.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; edge-on NGC 7090, dust and hydrogen star-formation regions, near-IR dust transparency.",
+          "url": "https://esahubble.org/images/potw1237a/"
+        },
+        {
+          "evidence": "Reopened; authors and MNRAS-accepted status, two transient ULXs, X1 >80/X2 >300 increases, and future observations needed for nature.",
+          "url": "https://arxiv.org/abs/1904.13044"
+        }
+      ],
+      "correction_assessment": "PASS. The source now uses the directly readable authors’ arXiv primary preprint, which is marked accepted for MNRAS and supports X1 >80 and X2 >300 flux increases plus unresolved source nature. Final supports metadata was separately re-read and accepted on its current whole-object hash.",
+      "id": "quizipedia:constellation:ind",
+      "verdict": "ACCEPT",
+      "word_count_body_ru": 180
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "canonical_hash",
+      "result": "Reparsed both frozen drafts and recomputed each entire-article SHA-256 using UTF-8, ensure_ascii=false, sort_keys=true, separators=(',', ':')."
+    },
+    {
+      "kind": "source_open",
+      "result": "Reopened corrected NASA NGC 1300, authors’ arXiv NGC 7090, IAU, and NASA APOD URLs; all readable and support the corrected statements. All unchanged source claims were directly checked in the preceding review pass."
+    },
+    {
+      "kind": "structure",
+      "result": "Current body word counts: Eri 164, Hya 179, Gru 169, Ind 180; each remains within 150–220. Self-checks remain useful and unambiguous."
+    }
+  ],
+  "new_files": [],
+  "publication_status": "Review result only. Same-provider review is not cross-provider acceptance; no publication/import/commit is claimed.",
+  "remaining_risks": [],
+  "reviewer_label": "eri_hya_gru_ind_review",
+  "runtime_identity": "codex/gpt-6.1-sol self-reported; session-5191183ee6a04c9b849a7910ff93166c",
+  "status": "DONE",
+  "final_ind_metadata_review": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "detail": "Independently recomputed from whole current quizipedia:constellation:ind object via UTF-8 json.dumps(ensure_ascii=false, sort_keys=true, separators=(',', ':')).",
+        "kind": "canonical_hash",
+        "value": "16f600230a32d6a4e57dc86c9ae2087cd67f52ffe750d7fc8ddafb841a2e1174"
+      },
+      {
+        "detail": "Abstract names X1/X2 transient ULX candidates in NGC 7090; reports flux increases >80 and >300 respectively; says future observations are necessary to determine the compact object's true nature. Metadata states accepted for publication in MNRAS and links the related MNRAS DOI.",
+        "kind": "primary_source_opened",
+        "url": "https://arxiv.org/abs/1904.13044"
+      },
+      {
+        "detail": "Current source_links[2].supports is accurate to the opened abstract/metadata and contains no volume or page-range claim.",
+        "kind": "metadata_review"
+      }
+    ],
+    "new_files": [],
+    "remaining_risks": [
+      "Same-provider factual review is not cross-provider acceptance or publication."
+    ],
+    "status": "DONE",
+    "verdict": {
+      "article": "Indus / quizipedia:constellation:ind",
+      "canonical_sha256": "16f600230a32d6a4e57dc86c9ae2087cd67f52ffe750d7fc8ddafb841a2e1174",
+      "scope": "Only current source_links[2].supports changed; article body unchanged from preceding review.",
+      "status": "ACCEPT"
+    },
+    "verification": {
+      "heavy_operations": "NOT_RUN",
+      "no_edits": true,
+      "tests_build_git": "NOT_RUN; not applicable to read-only editorial check"
+    }
+  },
+  "review_tasks": [
+    "task-a31bfad391574dd8bdd0edb09a97988d",
+    "task-18cb58808c5949acac76cea9c67aede6",
+    "task-bf82c743eb304020a43b05aeda05cfa1"
+  ],
+  "compiled_by_lead": "Combined exact independent reports; earlier IND hash preserved in recheck.json, superseded only by independent IND-only current-hash acceptance."
+}

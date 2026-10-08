@@ -1,0 +1,52 @@
+{
+  "reviewer": "codex/gpt-6.1-sol self-reported; session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "OpenAI Codex/gpt-6.1 self-reported; session-068dca3b763f4a588face0e827c50faa; root applied naming/headings/date/source corrections",
+  "scope": "Independent native exact factual/editorial draft acceptance. Different actual provider and gated runtime/publication checks pending.",
+  "review_tasks": [
+    "task-a31bfad391574dd8bdd0edb09a97988d",
+    "task-18cb58808c5949acac76cea9c67aede6",
+    "task-bf82c743eb304020a43b05aeda05cfa1"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:gru",
+      "verdict": "accept",
+      "article_sha256": "5ee20bc3bc82bcce543ad7f6a28953962164aaf3128fc77c037aec8495aa33bf",
+      "note": "PASS. The comet wording is now explicitly a 13-Dec-2023 image-state claim for C/2020 V2 ZTF, not a current distance.",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; Grus/Gru and bounded-sky-region treatment.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Reopened; image recorded 13 Dec 2023, Grus Triplet about 70 million ly, C/2020 V2 ZTF about 29 light-minutes away.",
+          "url": "https://science.nasa.gov/image-article/apod-2023-december-21-three-galaxies-and-a-comet/"
+        },
+        {
+          "evidence": "Previously opened; NGC 7582, MUSE/VLT ionized mapping, conical outflow and explicitly qualified shielding/diversion interpretation.",
+          "url": "https://www.eso.org/public/images/potw2206c/"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:ind",
+      "verdict": "accept",
+      "article_sha256": "16f600230a32d6a4e57dc86c9ae2087cd67f52ffe750d7fc8ddafb841a2e1174",
+      "note": "PASS. The source now uses the directly readable authors’ arXiv primary preprint, which is marked accepted for MNRAS and supports X1 >80 and X2 >300 flux increases plus unresolved source nature. Final supports metadata was separately re-read and accepted on its current whole-object hash.",
+      "checked_sources": [
+        {
+          "evidence": "Reopened; Indus/Ind and bounded sky region.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Previously opened; edge-on NGC 7090, dust and hydrogen star-formation regions, near-IR dust transparency.",
+          "url": "https://esahubble.org/images/potw1237a/"
+        },
+        {
+          "evidence": "Reopened; authors and MNRAS-accepted status, two transient ULXs, X1 >80/X2 >300 increases, and future observations needed for nature.",
+          "url": "https://arxiv.org/abs/1904.13044"
+        }
+      ]
+    }
+  ]
+}
