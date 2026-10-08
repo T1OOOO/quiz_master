@@ -346,3 +346,27 @@ Updated AGENTS adapter instructions propagated: Google Antigravity app/official 
 no Gemini CLI for personal accounts; managed official vendor workers require grants.
 All five remain drafts: 88 unique draft articles, 30 generated accepted catalog entries.
 No export, build, browser gate or publication performed; 26 real feedback items OPEN.
+
+Heartbeat 01:45 UTC: securely refreshed production feedback, 26 OPEN/no new,
+latest2026-10-07T08:19:08.506876077Z. Managed Claude release reviewer remains
+QUEUED/OLDER_REQUEST_WAITING; no execution or release acceptance claimed.
+Export request3515 and light path requests3516/3517 QUEUED/released without
+heavy execution; the existing user exception was used only for lightweight edits.
+Actual runtime map has20 targets. AR/CL were the final two lacking drafts.
+Fresh authorREADY17544, accepted17547, submitted17556/17557 task39fa6e36.
+Original draft SHA1deebee479472e56b6cb37720d8d93d3fdbcff91373090a27797162524a65b07.
+Independent reviewer accepted17565; original report AR ACCEPT/CL REVISE:
+Article3 Chile display rule omitted the condition that a staff/mast is unavailable.
+Lead changed only that sentence to explicitly include the condition and fully
+extended display. Final draft SHA70c6578f8f0175a1998a6c143f257a6e46f0fbe795e3facb83b4ae61654c81f8.
+Fresh recheckREADY17575/accepted17577/submitted17580, taskb5162a17:
+AR ACCEPT, CL ACCEPT. Final AR_CL_0145_REVIEW.json
+SHA4a2a5fe64193d4821c0bdfce1a5cd2e5bb42b85035c48bc878af0df42fc2ba07;
+original REVISE provenance retained; final whitespace counts141/165.
+Lead inspected full input/report, hashes, all4officialsources and manual inventory:
+90draft records/90unique IDs,20current map targets/zero missing country drafts.
+This covers current map targets, not all countries worldwide. Generated accepted
+catalog remains30; formal export/runtime/cross-provider review/publication pending.
+Same-provider native editorial review is not the different-provider release gate.
+Real production feedback stays OPEN until published verification. No code/assets,
+GitHub Actions, worker schedulers or other projects' resources changed.

@@ -1,0 +1,92 @@
+{
+  "task_id": "task-f86a2de5033647009728c7afcd5b65bd",
+  "review_kind": "native editorial source, factual, and binding review",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "input": {
+    "path": "study/question_articles/drafts/country-flags-ar-cl-20261008.json",
+    "initial_sha256": "1deebee479472e56b6cb37720d8d93d3fdbcff91373090a27797162524a65b07",
+    "final_sha256": "70c6578f8f0175a1998a6c143f257a6e46f0fbe795e3facb83b4ae61654c81f8"
+  },
+  "recheck": {
+    "task_id": "task-b5162a17f5f6474fa68812ea098f74ba",
+    "lead_correction": "Only the Chile Article 3 orientation paragraph changed. It now explicitly restricts the fully extended vertical-or-horizontal placement rule to when the flag cannot be hoisted on a staff or mast.",
+    "final_article_hashes": {
+      "quizipedia:country:AR": "b1cbfda9abda05e51e9030e4e3fc3b07acbf81c3025b5857ee5d90066d815549",
+      "quizipedia:country:CL": "b6b8f10ca28c92ae1552b354a48bdaffefe80680caa45a13e681932f7e57f7b6"
+    },
+    "final_word_counts": {
+      "AR": 141,
+      "CL": 165
+    },
+    "affected_source_recheck": "BCN Decreto Supremo 1534 Article 3 was previously opened. Its text says that when a flag cannot be flown on a staff or mast, it is displayed fully extended horizontally or vertically, and in both cases the blue square remains upper left to the viewer. The final Russian sentence accurately includes that condition."
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown heading markers count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "The runtime catalog contains country targets AR and CL.",
+    "tag_ids": "country:ar, country:cl, domain:geography, and topic:flag exist in metadata/tags.v1.json.",
+    "question_refs": "Both arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:country:AR|CL found only this input file.",
+    "word_limit": "AR has 141 and CL has 153 whitespace tokens, both within 100–220."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:country:AR",
+      "article_sha256": "b1cbfda9abda05e51e9030e4e3fc3b07acbf81c3025b5857ee5d90066d815549",
+      "final_article_sha256": "b1cbfda9abda05e51e9030e4e3fc3b07acbf81c3025b5857ee5d90066d815549",
+      "word_count": 141,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.casarosada.gob.ar/nuestro-pais/simbolos-nacionales",
+          "opened": true,
+          "access_method": "Shared fetch after the web reader timed out.",
+          "finding": "Casa Rosada defines the official national flag as three horizontal bands, two sky-blue and a white middle, with the sun reproduced in the middle from early Argentine gold and silver coins; it specifies the sun's golden-yellow colour."
+        },
+        {
+          "url": "https://www.argentina.gob.ar/interior/asuntos-politicos-e-institucionales/simbolos-nacionales",
+          "opened": true,
+          "finding": "The Interior Ministry page says the Inca sun was incorporated in the central white band on 25 February 1818 and identifies the 2010 decree that defines flag materials, colours, and accessories."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately describes the official national design with the central Sun of May and treats a plain sky-blue/white rendering only as a visually similar composition, without claiming that it is an equivalent official national design.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:country:CL",
+      "initial_article_sha256": "186a07b64c18169369ff2c257be4e017614c7b1cb2914e59541f266faad29c6a",
+      "final_article_sha256": "b6b8f10ca28c92ae1552b354a48bdaffefe80680caa45a13e681932f7e57f7b6",
+      "word_count": 153,
+      "initial_verdict": "REVISE",
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=18035",
+          "opened": true,
+          "finding": "Decreto Supremo 1534 states the two equal-height horizontal halves; the lower is red, while the upper is a blue third at the hoist and the remaining two thirds white, with a white five-point star centered in the blue square. It also says the blue square is upper left to the viewer for horizontal or vertical display only when it is not possible to fly the flag on a staff or mast."
+        },
+        {
+          "url": "https://www.minrel.gob.cl/ceremonial-y-protocolo/emblemas-nacionales",
+          "opened": true,
+          "finding": "Chile's Foreign Ministry identifies the current flag as a national emblem and dates its legalisation to 18 October 1817, with its first public use on 12 February 1818."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "Initial review found that the orientation paragraph omitted the Article 3 condition. The final text now explicitly confines this placement rule to fully extended horizontal or vertical display when a staff or mast is unavailable; the corrected claim and the geometry, colours, star, and hoist-side description are accurate.",
+      "required_correction": null
+    }
+  ],
+  "initial_overall_verdict": "REVISE: AR was accepted; CL required the specified Article 3 display-condition qualifier and an exact-hash recheck.",
+  "overall_verdict": "ACCEPT for final editorial factual/source/binding scope of final SHA 70c6578f8f0175a1998a6c143f257a6e46f0fbe795e3facb83b4ae61654c81f8.",
+  "limits": [
+    "All four cited official URLs were independently opened. Casa Rosada required shared fetch after a web-reader timeout.",
+    "A covering report-path lease was requested but returned blank/queued; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, or release/publication gate."
+  ]
+}
