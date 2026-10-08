@@ -1,0 +1,47 @@
+{
+  "acceptance": "Exact final MUS canonicalhash with independent primarysource evidence and no outdated companion assertion; LUP unchanged.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Independently recheck only final MUS object in study/question_articles/drafts/constellations-lup-mus-20261008.json. Initial4objectreview preserved: other3unchangedaccepted. Rootmappedauthorprototype toexistingcontract; datedESO2010 andauthors2015RVreport4.04±0.1d, probableWDonly, notproofmorphology; addedoriginalarxiv1501.03373,4linksinclIAU/accessdates. 2020/2024A&A403; no claimsfromunreadtext. Verify everyrevisedbody/support/selfcheck/hash and150–220words; otherLUPunchangedhashverify. No files/heavy/Git/children; epoch3readbundle releaseQUEUEDbeforeexistinglightread/webexception. Returnaccept/revise exacthashactualsources/evidence.",
+  "created_at": 1791487767.710798,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-6fec7807e61f4a888a698be0a4aa81b3",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "check": "LUP unchanged object",
+        "result": "ACCEPT. Canonical SHA-256 remains fb723caf5480987dd407841919926a11db487858838f5c4b35936e13e29cc56e; 190 words and 3 HTTPS source links. It is byte-equivalent at object level to the prior accepted review."
+      },
+      {
+        "check": "MUS corrected object, contract, and hash",
+        "result": "ACCEPT. Canonical SHA-256: 199b7ea247db7479e6422cdc74a32589abe3594ee5190482adb1f3f25178fbc5. 189 whitespace-delimited Russian words, 4 HTTPS links, qm-question-articles/v1, correct mus target ref, empty question_refs, retained tags, and draft status."
+      },
+      {
+        "check": "MUS facts and dated source metadata",
+        "result": "ACCEPT. Previously independently opened ESO's dated 2010 page https://www.eso.org/public/ireland/images/potw1012a/ supports Musca, ~1,800 ly, reverse-S/ring projection, and identifies the close unseen companion only as a 2010 possibility. Previously opened NASA's Hubble page https://science.nasa.gov/asset/hubble/planetary-nebula-ngc-5189/ supports Musca, 1,800 ly, white-dwarf remnant, reverse-S appearance, and the 2012 multi-lobed interpretation. Previously opened Manick, Miszalski & McBride 2015 https://arxiv.org/abs/1501.03373 reports the RV-discovered close binary with P=4.04±0.1 days and calls a massive white dwarf the most plausible companion type. The body and supports correctly state the latter as inferred, not imaged, and do not infer a proved binary cause for every nebular feature."
+      },
+      {
+        "check": "Self-check and limitations",
+        "result": "ACCEPT. The self-check cleanly separates constellation from object and asks what the 2015 authors reported without implying that the morphology mechanism is established. No claims are drawn from inaccessible A&A 2020/2024 PDFs."
+      }
+    ],
+    "summary": "Final corrected MUS recheck: ACCEPT. The historical ESO hypothesis, 2015 RV binary discovery, qualified companion type, and unresolved morphological causation are now accurately separated; LUP is unchanged."
+  },
+  "root_task_id": "task-6fec7807e61f4a888a698be0a4aa81b3",
+  "run_id": "run-16025662e70d42afb39f2f59d76196da",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: final corrected MUS exacthash recheck",
+  "version": 3
+}

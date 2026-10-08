@@ -1,0 +1,36 @@
+{
+  "reviewer": "Native Codex session-5191183ee6a04c9b849a7910ff93166c; model self-reported",
+  "author": "Native Codex/OpenAI session-068dca3b763f4a588face0e827c50faa; actual model variant unverified; root mapped corrected MUS proposal to existing schema",
+  "scope": "Independent native source-backed draft acceptance only; different actual provider and runtime/publication gates pending",
+  "review_tasks": [
+    "task-da9bcd316c7b4d0db18c6f68b07ae282",
+    "task-6fec7807e61f4a888a698be0a4aa81b3"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:lup",
+      "verdict": "accept",
+      "article_sha256": "fb723caf5480987dd407841919926a11db487858838f5c4b35936e13e29cc56e",
+      "note": "ACCEPT. Canonical SHA-256: fb723caf5480987dd407841919926a11db487858838f5c4b35936e13e29cc56e. 190 words; correct lup target ref, empty question_refs, 3 HTTPS links and draft status. I opened ESO 2013 https://www.hq.eso.org/public/news/eso1308/ (SN 1006 expanding ring in Lupus; VLT/VIMOS shock-front mapping; fast suprathermal protons are not cosmic rays themselves but may seed them) and NASA Hubble https://science.nasa.gov/asset/hubble/sn-1006-supernova-remnant-hubble/ (Lupus, 6,850 ly, event around 1 May 1006 and white-dwarf explosion). The article's historical/date qualifiers and caution about precursor protons are sound.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT. Canonical SHA-256: fb723caf5480987dd407841919926a11db487858838f5c4b35936e13e29cc56e. 190 words; correct lup target ref, empty question_refs, 3 HTTPS links and draft status. I opened ESO 2013 https://www.hq.eso.org/public/news/eso1308/ (SN 1006 expanding ring in Lupus; VLT/VIMOS shock-front mapping; fast suprathermal protons are not cosmic rays themselves but may seed them) and NASA Hubble https://science.nasa.gov/asset/hubble/sn-1006-supernova-remnant-hubble/ (Lupus, 6,850 ly, event around 1 May 1006 and white-dwarf explosion). The article's historical/date qualifiers and caution about precursor protons are sound."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:mus",
+      "verdict": "accept",
+      "article_sha256": "199b7ea247db7479e6422cdc74a32589abe3594ee5190482adb1f3f25178fbc5",
+      "note": "ACCEPT. Canonical SHA-256: 199b7ea247db7479e6422cdc74a32589abe3594ee5190482adb1f3f25178fbc5. 189 whitespace-delimited Russian words, 4 HTTPS links, qm-question-articles/v1, correct mus target ref, empty question_refs, retained tags, and draft status.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT. Previously independently opened ESO's dated 2010 page https://www.eso.org/public/ireland/images/potw1012a/ supports Musca, ~1,800 ly, reverse-S/ring projection, and identifies the close unseen companion only as a 2010 possibility. Previously opened NASA's Hubble page https://science.nasa.gov/asset/hubble/planetary-nebula-ngc-5189/ supports Musca, 1,800 ly, white-dwarf remnant, reverse-S appearance, and the 2012 multi-lobed interpretation. Previously opened Manick, Miszalski & McBride 2015 https://arxiv.org/abs/1501.03373 reports the RV-discovered close binary with P=4.04±0.1 days and calls a massive white dwarf the most plausible companion type. The body and supports correctly state the latter as inferred, not imaged, and do not infer a proved binary cause for every nebular feature."
+        },
+        {
+          "evidence": "ACCEPT. The self-check cleanly separates constellation from object and asks what the 2015 authors reported without implying that the morphology mechanism is established. No claims are drawn from inaccessible A&A 2020/2024 PDFs."
+        }
+      ]
+    }
+  ]
+}
