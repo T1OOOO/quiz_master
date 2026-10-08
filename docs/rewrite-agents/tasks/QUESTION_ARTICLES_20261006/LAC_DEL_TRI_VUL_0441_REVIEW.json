@@ -1,0 +1,134 @@
+{
+  "task_id": "task-a6368dea3ba0482ebf9b58892ea41f9e",
+  "review_kind": "native editorial source, factual, and binding review; final narrow recheck",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "initial_checkpoint": {
+    "task_id": "task-0e6ff4cfdb344a378d5606d0c277c04a",
+    "input_sha256": "bc7299598b5f06f03b397fb6dd524fa249552bbd9c7232c9a74b909653faf6ff",
+    "report_sha256_before_recheck": "724fc7addc26cfdbb11536895521926f8de262082b390d0c0da1c379ec4d6294",
+    "verdicts": {
+      "lac": "REVISE",
+      "del": "REVISE",
+      "tri": "REVISE",
+      "vul": "ACCEPT"
+    },
+    "word_counts": {
+      "lac": 154,
+      "del": 151,
+      "tri": 149,
+      "vul": 164
+    },
+    "findings": [
+      "LAC conflated the whole blazar/active nucleus with its central black hole.",
+      "DEL introduced an unsupported foreground category into the source's cluster-versus-background-galaxy image reading.",
+      "TRI called M33 the most famous object without source support."
+    ]
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-lac-del-tri-vul-20261008.json",
+    "sha256": "37c3e78a13ae43de4eedb69e9dd71dc188b8f90187c5644306f32b05649b6cfb"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "Catalog targets lac, del, tri, and vul resolve to the matching constellation entries.",
+    "tag_ids": "Each resolved catalog target carries domain:science, skill:recognition, and topic:astronomy.",
+    "question_refs": "All four arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:constellation:lac|del|tri|vul found only this input file.",
+    "word_limit": "Final LAC 157, DEL 151, TRI 150, and VUL 164 each meet the required 100–220 whitespace-word range; initial counts are retained above."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:lac",
+      "article_sha256": "09c1cf318accae3b454806cb004aa27643cd3e60f840ece6ed069e6381bfa197",
+      "word_count": 157,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU defines constellations as boundary-defined sky areas, distinguishes formal areas from drawn figures, and lists Lacerta with abbreviation Lac."
+        },
+        {
+          "url": "https://www.nasa.gov/missions/ixpe/nasas-ixpe-reveals-x-ray-generating-particles-in-black-hole-jets/",
+          "opened": true,
+          "finding": "NASA describes BL Lacertae as a blazar with a central supermassive black hole, bright disk, and Earth-oriented jet; IXPE and ground telescopes measured polarization and support Compton scattering by electrons as the X-ray mechanism."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final edit identifies BL Lac as a blazar and active galactic nucleus with a supermassive black hole, disk, and Earth-directed jet, so it no longer equates the whole source with the black hole. The opened NASA source supports the observation and X-ray mechanism claims.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:del",
+      "article_sha256": "9c4b8df2883d24c625952aa92ad39421a2da22fd9a042f99666b1fc361ca0d96",
+      "word_count": 151,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Delphinus with abbreviation Del and defines a modern constellation as a bounded area of sky."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-42/",
+          "opened": true,
+          "finding": "NASA identifies Caldwell 42/NGC 7006 as a globular cluster in Delphinus; it says globular clusters contain hundreds of thousands of mutually gravity-bound stars, and that tiny background galaxies look fuzzier and more extended than cluster stars. Intervening dust dims visible light while infrared passes through better."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final image-reading sentence is now confined to the source-supported distinction between cluster stars and distant background galaxies. The area-versus-cluster and infrared claims remain supported.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:tri",
+      "article_sha256": "b0d78a766ba1f54bd73244c92a6e76c9640652d9e76c32dbdcd721c1afe64720",
+      "word_count": 150,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Triangulum with abbreviation Tri and defines constellation membership through official bounded sky areas."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-33/",
+          "opened": true,
+          "finding": "NASA identifies M33 as a spiral galaxy in Triangulum about 3 million light-years away. Its Hubble page supports the mosaic's stars, clusters, nebulae, blue rapid-star-birth regions, NGC 604 in a spiral arm, and variable-star evidence that M33 is a separate galaxy."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The final text uses neutral «Один из объектов в этой области» and retains source-supported claims about M33, its distance, its separate-galaxy evidence, and the Hubble image.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:vul",
+      "article_sha256": "af71d197927134fed5ef754b3c73ad2ebbf90e3662b8c2009c40eaa9ff1ff831",
+      "word_count": 164,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU lists Vulpecula with abbreviation Vul and explains that its official boundaries define a sky area, separate from conventional line figures."
+        },
+        {
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-27/",
+          "opened": true,
+          "finding": "NASA identifies M27 as a planetary nebula in Vulpecula more than 1,200 light-years away; its name comes from a planet-like telescopic appearance, it came from an aging star's shed outer layers, and the displayed Hubble colors map blue to oxygen, green to hydrogen, and red to sulfur and nitrogen."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately separates the Vulpecula sky area from M27, explains the historical misnomer without calling it a planet, attaches the distance to the nebula, and frames the color mapping as data visualization.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final input SHA 37c3e78a13ae43de4eedb69e9dd71dc188b8f90187c5644306f32b05649b6cfb: LAC, DEL, TRI, and VUL meet the stated editorial factual/source/binding scope. Original REVISE provenance is retained above.",
+  "limits": [
+    "A covering report-path lease was requested but did not grant a usable lease; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, commit, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, release, or publication gate."
+  ]
+}
