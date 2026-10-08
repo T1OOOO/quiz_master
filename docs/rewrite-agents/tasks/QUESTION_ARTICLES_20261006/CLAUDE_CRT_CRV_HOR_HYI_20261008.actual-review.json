@@ -1,0 +1,125 @@
+{
+  "task_id": "task-b20f90ae37fa430a82dde159f989e5ec",
+  "managed_id": "managed-3b535a2fc0a5543c5719f6b51b798eb0950261dff8e1124d20e2ad5a644de9e0",
+  "provider": "claude",
+  "requested_model": "sonnet",
+  "observed_transcript_model": "claude-sonnet-5",
+  "run_id": "run-9e8003d3e34a41e5ba9fb9acf1e1dbe6",
+  "runner_exit_code": 0,
+  "root_inspected_report_sha256": "42fb28ca287a418c202e05e5fb8349c251292f6b0ff96c48c3b5ce93c36ffe48",
+  "scope": "Actual separate-provider factual findings for four frozen drafts; runner/task scope failed, so not compliant release approval.",
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:crt",
+      "article_sha256": "429659b8745b00e170309c1685198a17d93b06615132bde1131fda974db97710",
+      "verdict": "accept",
+      "note": "Conditional dark-matter interpretation, half-light radius and discovery distance match the primary papers.",
+      "visited_disclosed_sources": [
+        "https://iauarchive.eso.org/public/themes/constellations/",
+        "https://arxiv.org/abs/1601.07178",
+        "https://arxiv.org/abs/1612.06398"
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:crv",
+      "article_sha256": "1b0d92aed95f0c175eb8909c790a84bb762cb82c31a8ff931cb547a435f5bfd3",
+      "verdict": "accept",
+      "note": "Current draft omits the unsupported interaction duration; tidal tails, young clusters and optical/ALMA roles agree with disclosed sources.",
+      "visited_disclosed_sources": [
+        "https://iauarchive.eso.org/public/themes/constellations/",
+        "https://science.nasa.gov/asset/hubble/stellar-fireworks-accompany-antennae-galaxy-collision/",
+        "https://www.eso.org/public/images/eso1137b/",
+        "https://science.nasa.gov/missions/hubble/hubble-reveals-stellar-fireworks-accompanying-galaxy-collisions/"
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:hor",
+      "article_sha256": "a63b33ace9ce20169209f7082e89d5d74d54a09078b24a407bbe9ae14fe5697e",
+      "verdict": "accept",
+      "note": "Central starburst ring and outer spiral arms are separated. The source distance discrepancy is accurately qualified.",
+      "visited_disclosed_sources": [
+        "https://iauarchive.eso.org/public/themes/constellations/",
+        "https://esahubble.org/images/heic0106j/",
+        "https://science.nasa.gov/missions/webb/nasas-webb-depicts-staggering-structure-in-19-nearby-spiral-galaxies/"
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:hyi",
+      "article_sha256": "555ce80bc8b0f697ca02ec935feea371e861b4b7195e0c6e04357c9a5a02e159",
+      "verdict": "accept",
+      "note": "Hydrus/Hydra remain distinct; NGC602 placement and qualified low-mass-star X-ray explanation match the disclosed observations.",
+      "visited_disclosed_sources": [
+        "https://iauarchive.eso.org/public/themes/constellations/",
+        "https://chandra.harvard.edu/photo/2013/ngc602/",
+        "https://esahubble.org/images/ngc602/"
+      ]
+    }
+  ],
+  "visited_source_urls": [
+    "https://iauarchive.eso.org/public/themes/constellations/",
+    "https://arxiv.org/abs/1601.07178",
+    "https://arxiv.org/abs/1612.06398",
+    "https://science.nasa.gov/asset/hubble/stellar-fireworks-accompany-antennae-galaxy-collision/",
+    "https://www.eso.org/public/images/eso1137b/",
+    "https://science.nasa.gov/missions/hubble/hubble-reveals-stellar-fireworks-accompanying-galaxy-collisions/",
+    "https://esahubble.org/images/heic0106j/",
+    "https://science.nasa.gov/missions/webb/nasas-webb-depicts-staggering-structure-in-19-nearby-spiral-galaxies/",
+    "https://chandra.harvard.edu/photo/2013/ngc602/",
+    "https://esahubble.org/images/ngc602/",
+    "https://science.nasa.gov/missions/hubble/taken-under-the-wing-of-the-small-magellanic-cloud/"
+  ],
+  "disclosed_unique_sources": 10,
+  "extra_background_review_sources": [
+    "https://science.nasa.gov/missions/hubble/taken-under-the-wing-of-the-small-magellanic-cloud/"
+  ],
+  "methodology_limit": "Claude WebFetch supplied summarized/AI-processed page extraction; this is not raw HTML or byte-for-byte quote verification.",
+  "nonblocking_notes": [
+    "The English packet supplies process context; astronomy claims correctly come from the named JSON drafts.",
+    "The extra NASA background page was used in review provenance; article claims remain supported by disclosed primary links.",
+    "Antennae source distances differ; the article does not assert their distance."
+  ],
+  "root_acceptance": "Initial Hub acceptance was premature because root had inspected report/source calls before the complete tool trace. Full trace review withdraws the compliant release-gate claim.",
+  "sdk_reported_accounting": {
+    "total_cost_usd": 1.3672182000000004,
+    "basis": "SDK list-price estimate, not account charge or balance; duplicate cumulative result rows are not summed.",
+    "models": {
+      "claude-sonnet-5": {
+        "costUSD": 1.2054542000000001,
+        "costBasis": "list",
+        "canonicalModel": "claude-sonnet-5"
+      },
+      "claude-haiku-4-5-20251001": {
+        "costUSD": 0.161764,
+        "costBasis": "list",
+        "canonicalModel": "claude-haiku-4-5"
+      }
+    }
+  },
+  "observed_tool_names": [
+    "Agent",
+    "Bash",
+    "Read",
+    "ToolSearch",
+    "WebFetch",
+    "Write"
+  ],
+  "scope_violations": [
+    {
+      "tool": "Agent",
+      "evidence": "Explore child successfully launched despite explicit no-child task restriction."
+    },
+    {
+      "tool": "Write",
+      "evidence": "Created a plan file in the provider user plans directory despite explicit no-file-edits restriction; no repository edits observed."
+    }
+  ],
+  "next_action": "Do not launch further managed reviews until read-only/no-delegation capabilities are enforced by the launcher, not only prompted. Preserve factual findings and accounting; runtime/publication remains gated.",
+  "corrective_issue": "quiz_master-mkk",
+  "hub_state_correction": {
+    "current_recorded_state": "ACCEPTED",
+    "compliant_release_gate": false,
+    "rework_attempt": "rejected: submitted task required",
+    "cancel_attempt": "rejected: only unstarted tasks may be cancelled",
+    "meaning": "Preserve immutable history; root withdrawal and corrective issue override release interpretation."
+  }
+}

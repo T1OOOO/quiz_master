@@ -1,0 +1,38 @@
+{
+  "reviewer": "Native Codex session-5191183ee6a04c9b849a7910ff93166c; runtime model label self-reported",
+  "author": "Native Codex/OpenAI session-6468a45aa629470cb76fd85da497669e; root corrected the author-reported RET cause/effect wording before review",
+  "scope": "Independent native source-backed draft acceptance; different-provider compliant review and runtime/publication gates pending",
+  "review_tasks": [
+    "task-f600ee2120b14071b087853ce3e29936"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:sct",
+      "article_sha256": "dc3419ebaaf402df71d58137e02b915b7020b54f2acea914eb757bd63cdd1750",
+      "verdict": "accept",
+      "note": "ACCEPT. Canonical SHA-256: dc3419ebaaf402df71d58137e02b915b7020b54f2acea914eb757bd63cdd1750. 192 whitespace-delimited Russian words; 3 HTTPS links; qm-question-articles/v1; correct sct target ref, empty question_refs, required tags, draft status. I opened IAU https://iauarchive.eso.org/public/themes/constellations/ (Scutum/Sct and boundary materials), ESO https://www.eso.org/public/unitedkingdom/news/eso1430/ (M11/NGC 6705 in Scutum, ~6,000 ly, nearly 20 ly, close to 3,000 stars, shared origin, loose binding and qualified likely future dispersal), and NASA https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-11/ (Scutum, 6,200 ly, >2,900 stars, V-shaped brightest stars, loose gravity). The differing approximate distances are attributed correctly; the future dissolution is clearly a forecast.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT. Canonical SHA-256: dc3419ebaaf402df71d58137e02b915b7020b54f2acea914eb757bd63cdd1750. 192 whitespace-delimited Russian words; 3 HTTPS links; qm-question-articles/v1; correct sct target ref, empty question_refs, required tags, draft status. I opened IAU https://iauarchive.eso.org/public/themes/constellations/ (Scutum/Sct and boundary materials), ESO https://www.eso.org/public/unitedkingdom/news/eso1430/ (M11/NGC 6705 in Scutum, ~6,000 ly, nearly 20 ly, close to 3,000 stars, shared origin, loose binding and qualified likely future dispersal), and NASA https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-11/ (Scutum, 6,200 ly, >2,900 stars, V-shaped brightest stars, loose gravity). The differing approximate distances are attributed correctly; the future dissolution is clearly a forecast."
+        },
+        {
+          "evidence": "ACCEPT. Both articles explicitly distinguish the IAU-defined sky region from the physical cluster/galaxy, and the self-checks have unique, supported answers. No current-tense claim relies on a superseded image-caption hypothesis."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:ret",
+      "article_sha256": "668570418bf9662fb71ccca11e66c9bb3dae4187d4ea1eba021b76d74c0fb94a",
+      "verdict": "accept",
+      "note": "ACCEPT. Canonical SHA-256: 668570418bf9662fb71ccca11e66c9bb3dae4187d4ea1eba021b76d74c0fb94a. 184 words; 3 HTTPS links; qm-question-articles/v1; correct ret target ref, empty question_refs, required tags, draft status. I opened ESO https://www.eso.org/public/images/eso0643a/ (NGC 1313 spiral in Reticulum, ~20 million ly, starburst regions and gas supershells inflated/etched by successive star-formation bursts) and original research https://arxiv.org/abs/2606.14860. The paper was submitted 12 June 2026; its abstract says GMOS-S spectroscopy covered 19 regions, derives ages 2.7–6.0 Myr, and reports complex asymmetric gas kinematics in the north. The draft's rounded 2.7–6 Myr range and its cautious treatment of past interactions as an explanation are sound.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT. Canonical SHA-256: 668570418bf9662fb71ccca11e66c9bb3dae4187d4ea1eba021b76d74c0fb94a. 184 words; 3 HTTPS links; qm-question-articles/v1; correct ret target ref, empty question_refs, required tags, draft status. I opened ESO https://www.eso.org/public/images/eso0643a/ (NGC 1313 spiral in Reticulum, ~20 million ly, starburst regions and gas supershells inflated/etched by successive star-formation bursts) and original research https://arxiv.org/abs/2606.14860. The paper was submitted 12 June 2026; its abstract says GMOS-S spectroscopy covered 19 regions, derives ages 2.7–6.0 Myr, and reports complex asymmetric gas kinematics in the north. The draft's rounded 2.7–6 Myr range and its cautious treatment of past interactions as an explanation are sound."
+        },
+        {
+          "evidence": "ACCEPT. Both articles explicitly distinguish the IAU-defined sky region from the physical cluster/galaxy, and the self-checks have unique, supported answers. No current-tense claim relies on a superseded image-caption hypothesis."
+        }
+      ]
+    }
+  ]
+}
