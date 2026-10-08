@@ -1,0 +1,41 @@
+{
+  "reviewer": "Native Codex, session-5191183ee6a04c9b849a7910ff93166c; model label self-reported",
+  "author": "Native Codex, session-6468a45aa629470cb76fd85da497669e; runtime variant unavailable",
+  "scope": "Independent native source review only; different-provider review, runtime gates and publication pending",
+  "review_tasks": [
+    "task-47693888b54c4caea1184310df89192e"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:cam",
+      "verdict": "accept",
+      "article_sha256": "999feb72e9e8fc04b978913b09f967bdcf277d0283b65dc598b5768140d4c70a",
+      "note": "All primary sources independently opened; distances and uncertain interpretations qualified.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT; SHA-256 999feb72e9e8fc04b978913b09f967bdcf277d0283b65dc598b5768140d4c70a, using UTF-8 json.dumps(ensure_ascii=False, sort_keys=True, separators=(',',':')); body_ru 170 words, 3 sources, one correct constellation target binding."
+        },
+        {
+          "evidence": "IAU page opened: Camelopardalis / Cam official entry and boundaries-as-sky-area framing. NASA Caldwell 7 page opened: NGC 2403=Caldwell 7, Camelopardalis, spiral galaxy, distance 12 million ly, H II star-forming ionized hydrogen regions, Herschel 1788, SN 2004dj in 2004. NASA Hubble SN page opened: SN 2004dj in NGC 2403 outskirts far beyond the Milky Way; possible ~15-solar-mass star; compact Sandage 96 cluster. The Russian 'вероятно' correctly retains uncertainty."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:cir",
+      "verdict": "accept",
+      "article_sha256": "ecaf81bf3a90381f1afb398f2ee45ec3fb7e9cf1e125072f97a124f7536accf6",
+      "note": "All primary sources independently opened; distances and uncertain interpretations qualified.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT; SHA-256 ecaf81bf3a90381f1afb398f2ee45ec3fb7e9cf1e125072f97a124f7536accf6, same canonical rule; body_ru 172 words, 3 sources, one correct constellation target binding."
+        },
+        {
+          "evidence": "NASA Hubble/Webb Circinus page opened: galaxy is about 13 million ly away and listed in Circinus; Webb NIRISS/AMI isolates hot dust near the SMBH and says most IR emission comes from a compact dusty feeding structure rather than outflowing material. Article accurately says this revises dominant-emission attribution without claiming outflows are absent."
+        },
+        {
+          "evidence": "ESO ALMA page opened: molecular gas streams through two spiral arms in the innermost disc, feeding doughnut-shaped cloud/ring; team found about 90% of material does not end in black hole and is expelled back out. Article qualifies as the team estimate and keeps it scoped to gas/material in this feeding process."
+        }
+      ]
+    }
+  ]
+}

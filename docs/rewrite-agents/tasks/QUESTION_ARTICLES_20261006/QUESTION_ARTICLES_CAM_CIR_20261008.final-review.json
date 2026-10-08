@@ -1,0 +1,59 @@
+{
+  "acceptance": "Exactcurrenthashes and independentopenedprimarysourceswith claim-by-claimverdict; no inventedchecks.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Read frozen study/question_articles/drafts/constellations-cam-cir-20261008.json. Independentlyopenall5uniqueprimarysources, verifycurrentfacts/constellationassociation/prose150–220words/2–5links,targetbindings. Wholeobjectcanonicalhash=json.dumps ensure_asciiFalse sort_keysTrue separatorscomma/colon UTF8SHA256. Reviewestimateddistances/progenitorprobability/hotdustvsoutflows/ALMA90%claim qualified. RootonlyclarifiedCIRselfcheck namesakes. Return perobjectaccept/revise exacthash, findings/sourcevisitevidence. No edits/children/tests/build/browserautomation/gitdeploy; Englishpacket ARTICLE_CAM_CIR_20261008_EN.md; scopedinteractive readlease releaseQUEUEDbeforeexistingauthorizedlightread/webexception. Sameproviderreviewnotactualdifferentproviderreleaseapproval.",
+  "created_at": 1791476349.3386385,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-47693888b54c4caea1184310df89192e",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "check": "CAM canonical object",
+        "result": "ACCEPT; SHA-256 999feb72e9e8fc04b978913b09f967bdcf277d0283b65dc598b5768140d4c70a, using UTF-8 json.dumps(ensure_ascii=False, sort_keys=True, separators=(',',':')); body_ru 170 words, 3 sources, one correct constellation target binding."
+      },
+      {
+        "check": "CAM object/source evidence",
+        "result": "IAU page opened: Camelopardalis / Cam official entry and boundaries-as-sky-area framing. NASA Caldwell 7 page opened: NGC 2403=Caldwell 7, Camelopardalis, spiral galaxy, distance 12 million ly, H II star-forming ionized hydrogen regions, Herschel 1788, SN 2004dj in 2004. NASA Hubble SN page opened: SN 2004dj in NGC 2403 outskirts far beyond the Milky Way; possible ~15-solar-mass star; compact Sandage 96 cluster. The Russian 'вероятно' correctly retains uncertainty."
+      },
+      {
+        "check": "CIR canonical object",
+        "result": "ACCEPT; SHA-256 ecaf81bf3a90381f1afb398f2ee45ec3fb7e9cf1e125072f97a124f7536accf6, same canonical rule; body_ru 172 words, 3 sources, one correct constellation target binding."
+      },
+      {
+        "check": "CIR Webb/distance evidence",
+        "result": "NASA Hubble/Webb Circinus page opened: galaxy is about 13 million ly away and listed in Circinus; Webb NIRISS/AMI isolates hot dust near the SMBH and says most IR emission comes from a compact dusty feeding structure rather than outflowing material. Article accurately says this revises dominant-emission attribution without claiming outflows are absent."
+      },
+      {
+        "check": "CIR ALMA scope evidence",
+        "result": "ESO ALMA page opened: molecular gas streams through two spiral arms in the innermost disc, feeding doughnut-shaped cloud/ring; team found about 90% of material does not end in black hole and is expelled back out. Article qualifies as the team estimate and keeps it scoped to gas/material in this feeding process."
+      },
+      {
+        "check": "shared terminology/quality",
+        "result": "IAU page independently opened: both official forms/abbreviations (Camelopardalis Cam; Circinus Cir) appear, and its defined-boundary framing supports the constellation-versus-object selfchecks. Both prose lengths are within 150–220 words; no overclaim found."
+      },
+      {
+        "check": "scope",
+        "result": "No files edited, and no tests, builds, git, browser automation, managed workers, or child agents run. Same-provider review does not satisfy cross-provider release approval."
+      }
+    ],
+    "summary": "Independent CAM/CIR frozen-object review: both ACCEPT. Distances, uncertainty, Webb emission interpretation, and ALMA 90% scope match opened sources."
+  },
+  "root_task_id": "task-47693888b54c4caea1184310df89192e",
+  "run_id": "run-9e04b832196240cbbcae597c7ca886e4",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent CAM/CIR exact facts review",
+  "version": 3
+}
