@@ -28,7 +28,7 @@ Runtime Quizipedia has 88 constellations; 48 have draft articles, leaving 40. An
 | Claude Sonnet | `task-ef83c142666f49528f8d5a03d4eebf57`, managed worker `managed-428e84e88cc1ca308bd6d4e2e71dc92fbe22f3b437d3a3e381cead86525f3597`: existing release review | QUEUED; preserve this worker rather than duplicate it |
 | Lead | Coverage registry, provenance, correction integration, Beads, gates and release | In progress |
 
-Actual `agy models` confirms `gemini-3.8-flash-medium`; Google uses official Antigravity CLI `agy`, not the retired personal-account Gemini CLI. Native helpers here actually use OpenAI GPT-6.1-sol; different self-reported `openai`/`codex` labels do not make independent vendors. Supervised small batches may use cheaper external models; the lead checks every result. Maintain at most three concurrent active turns including the lead; no per-worker schedulers.
+Actual `agy models` confirms `gemini-3.8-flash-medium`; Google uses official Antigravity CLI `agy`, not the retired personal-account Gemini CLI. The initial native helpers use OpenAI GPT-6.1-sol; the fresh classical reviewer uses the qm_fact_checker role with OpenAI GPT-5.6-terra/high. Different self-reported `openai`/`codex` labels do not make independent vendors. Supervised small batches may use cheaper external models; the lead checks every result. Maintain at most three concurrent active turns including the lead; no per-worker schedulers.
 
 ## UI audit to implement
 
@@ -63,3 +63,9 @@ Managed headless reviewers have no MCP and must receive the exact bounded task/c
 The biology generator `docs/rewrite-agents/content20/build_biology20.py:36` assumes `ROWS` option zero is correct, removes it and reinserts it at a balanced position. Several rows already contain the correct answer elsewhere; the generator therefore confidently marks the wrong choice. Its saved-parity/balance check cannot detect this factual error. The first-ten independent review identified wrong keys at 003, 006, 007, 009, 010 and an ambiguous stem at 008. Freeze provenance and finish the reviewed revision before importing this pack. No blanket approval of remaining questions or other generators follows from this finding.
 
 Different-provider biology review is an unassigned task for the next genuinely ready external volunteer: task-c9229449f5cf487885a8710fd4742e1a. No external reviewer has accepted it yet.
+
+## Classical20 revision checkpoint (2026-10-08)
+
+Original foreign classical candidate/key are unchanged. A separate QUALITY_CLASSICAL20_20261008 revision removes answer-length/parenthetical clues, fixes the malformed nickname-author item and adds numeric difficulty with valid tags. Original first/second-ten reports and their source limitations are preserved. Fresh native Terra task task-f992eeafc2de41788b561fad7da46de3 independently derived all20 answer text/index pairs correctly; amended verdict is11 ACCEPT/4 REVISE/5 UNRESOLVED. Root corrected source attribution/prose at005/007/008/015. Exact revised-key review and alternate primary sources are assigned to task-d6594957389f4d4e8a8255de82bc3ebd. The saved review describes its own frozen input hashes, not blanket approval of future revisions.
+
+No imports, builds, browser automation, deployment or cross-provider release approval occurred. The gate request remained QUEUED and was released; managed Claude/Gemini still QUEUED, not running. Secure feedback refresh still26 total/26 OPEN, latest2026-10-07T08:19:08.506876077Z. Remaining full-corpus, UI, article, anatomy, integration and published feedback validation phases stay open.

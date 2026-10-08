@@ -1,0 +1,213 @@
+{
+  "schema_version": "qm-editorial-review/v1",
+  "task_id": "task-f992eeafc2de41788b561fad7da46de3",
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "candidate_first",
+      "result": "Candidate was opened and blind-solved before key; all 20 derived answer text/index pairs match key."
+    },
+    {
+      "kind": "source_open",
+      "result": "Opened cited official sources. Explicit direct-fetch failures: Q003 400 timeout, Q010 400 timeout, Q013 429, Q016 400 timeout, Q019 429; each marked UNRESOLVED."
+    },
+    {
+      "kind": "metadata",
+      "result": "All difficulty levels 3–8; all tags valid in metadata/tags.v1.json."
+    }
+  ],
+  "limitations": [
+    "No files, reports, tests, builds, browser automation, imports, exports, git, deploys, or child agents were used.",
+    "Same-provider editorial review only; not independent cross-provider release approval.",
+    "Q003/Q010/Q013/Q016/Q019 need successful direct source opens before acceptance."
+  ],
+  "metadata": "All difficulty levels are within 1–10 and proportionate (3–8). Every record uses valid taxonomy IDs domain:arts and topic:composers; the latter is broad but acceptable for this composition-centered pack. All candidate options are distinct, type-parallel and contain no parenthetical or length clues.",
+  "methodology": "Candidate opened and blind-solved before key. Derived answer text/index exactly matched the private key for all 20. Cited URLs were then actually opened; any direct fetch timeout/429 is UNRESOLVED under the packet.",
+  "packet_label": "CRR-20261008",
+  "rows": [
+    {
+      "answer": "В третьей части",
+      "evidence": "Mozarteum lines 172–184 lists movement 3, Alla turca; explanation and options accurate.",
+      "id": "001",
+      "index": 0,
+      "source": "https://kv.mozarteum.at/de/work/sonate-in-a-4091",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Людвига Рельштаба",
+      "evidence": "Beethoven-Haus lines 310–313 says Beethoven did not use the title and credits poet Ludwig Rellstab; explanation accurate.",
+      "id": "002",
+      "index": 1,
+      "source": "https://www.beethoven.de/en/media/view/6442239777570816/scan/0",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Иоганну Себастьяну Баху",
+      "evidence": "Direct open failed: 400 Timeout fetching. Answer/key plausible but source-open requirement not met.",
+      "id": "003",
+      "index": 2,
+      "source": "https://data.carnegiehall.org/works/54497/about",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "answer": "На барже на Темзе",
+      "evidence": "RSMGB lines 81–90: 1717 Thames party; king and orchestra were in separate barges.",
+      "id": "004",
+      "index": 3,
+      "source": "https://www.rsmgb.org/news/from-the-archives-handel-water-music",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Антонио Вивальди",
+      "evidence": "LA Phil lines 131–148 names Vivaldi and says he appropriated Ruggieri’s conclusion for the final fugue.",
+      "id": "005",
+      "index": 0,
+      "source": "https://www.laphil.com/works/gloria-in-d-major-rv-589",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Настроить струну ми на ми-бемоль",
+      "evidence": "LOC lines 406–407: solo violin E-string tuned down a half-step.",
+      "id": "006",
+      "index": 1,
+      "source": "https://blogs.loc.gov/nls-music-notes/2022/10/song-stories-camille-saint-sans-and-danse-macabre/",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Васлав Нижинский",
+      "evidence": "BSO lines 102–103 identifies Nijinsky as choreographer. Change key explanation attribution from LOC to BSO.",
+      "id": "007",
+      "index": 2,
+      "source": "https://www.bso.org/works/the-rite-of-spring",
+      "verdict": "REVISE"
+    },
+    {
+      "answer": "Антон Зайдль",
+      "evidence": "Dvořák archive lines 18–25 gives 16 Dec 1893, NY Philharmonic Society, conductor Anton Seidl. Change attribution from NY Phil archive to Dvořák archive.",
+      "id": "008",
+      "index": 3,
+      "source": "https://www.antonin-dvorak.cz/en/work/symphony-no-9/",
+      "verdict": "REVISE"
+    },
+    {
+      "answer": "Александр Зилоти",
+      "evidence": "BSO lines 94–99 and 115–117: Moscow 9 Nov 1901, Siloti conducting, Rachmaninoff soloist.",
+      "id": "009",
+      "index": 0,
+      "source": "https://www.bso.org/works/piano-concerto-no-2-6",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "«Влтава»",
+      "evidence": "Direct open failed: 400 Timeout fetching. Answer/key plausible but source-open requirement not met.",
+      "id": "010",
+      "index": 1,
+      "source": "https://sofiaphilharmonic.com/en/works/bedrich-smetana-symphonic-poem-vltava-from-cycle-ma-vlast",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "answer": "Генри Пёрселла",
+      "evidence": "LA Phil lines 154–157: variation theme from Purcell’s Abdelazar.",
+      "id": "011",
+      "index": 2,
+      "source": "https://www.laphil.com/works/the-young-persons-guide-to-the-orchestra-op-34",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Фредерик Шопен",
+      "evidence": "Fryderyk Chopin Institute story lines 223–224 calls Revolutionary Etude Op.10 No.12 Chopin’s; new wording removes nickname-author ambiguity.",
+      "id": "012",
+      "index": 3,
+      "source": "https://artsandculture.google.com/story/symbols-and-imagination-narodowy-instytut-fryderyka-chopina/TwUxx7PabkyL1g?hl=en",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Разгром армии Наполеона в России",
+      "evidence": "Direct open failed: 429 Too Many Requests. Answer/key plausible but source-open requirement not met.",
+      "id": "013",
+      "index": 0,
+      "source": "https://en.tchaikovsky-research.net/pages/1812_Overture",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "answer": "Три симфонических эскиза",
+      "evidence": "Philharmonie de Paris line 30 quotes ‘Trois esquisses symphoniques pour orchestre’ and lists three parts.",
+      "id": "014",
+      "index": 1,
+      "source": "https://philharmoniedeparis.fr/fr/magazine/series/les-cles-du-classique/les-cles-du-classique-34-la-mer-de-debussy",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Dies irae",
+      "evidence": "LA Phil lines 166 and 176–178 identifies Dies Irae and Day of Wrath. Change key evidence/explanation attribution from Met to LA Phil.",
+      "id": "015",
+      "index": 2,
+      "source": "https://www.laphil.com/works/requiem-verdi",
+      "verdict": "REVISE"
+    },
+    {
+      "answer": "Трёх скрипок и бассо континуо",
+      "evidence": "Direct open failed: 400 Timeout fetching. Answer/key plausible but source-open requirement not met.",
+      "id": "016",
+      "index": 3,
+      "source": "https://www.loc.gov/static/events/concerts-from-the-library-of-congress/documents/programs/2425-OAE-Bullock-Jan24-program.pdf",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "answer": "Августа Йегера",
+      "evidence": "LA Phil lines 156–164 identifies Jaeger as Variation IX/Nimrod.",
+      "id": "017",
+      "index": 0,
+      "source": "https://www.laphil.com/works/enigma-variations-op-36",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "«Сон в летнюю ночь»",
+      "evidence": "LA Phil lines 155 and 164 puts Wedding March in Mendelssohn’s incidental music for Shakespeare’s play.",
+      "id": "018",
+      "index": 1,
+      "source": "https://www.laphil.com/works/a-midsummer-nights-dream-overture-and-incidental-music",
+      "verdict": "ACCEPT"
+    },
+    {
+      "answer": "Гансу фон Бюлову",
+      "evidence": "Direct open failed: 429 Too Many Requests. Answer/key plausible but source-open requirement not met.",
+      "id": "019",
+      "index": 2,
+      "source": "https://en.tchaikovsky-research.net/pages/Piano_Concerto_No._1",
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "answer": "Идея-фикс",
+      "evidence": "LA Phil lines 164–171 calls the beloved’s recurring theme idée fixe and follows its transformations.",
+      "id": "020",
+      "index": 3,
+      "source": "https://www.laphil.com/works/symphonie-fantastique",
+      "verdict": "ACCEPT"
+    }
+  ],
+  "runtime_identity": "openai/gpt-5.6-terra (self-reported); session-315cbf1dd55545c8b1c611d851a8b527",
+  "sha256": {
+    "candidate": "9E923E923473286C8F69A599487A9692EB7735C9BDF842E42696A586FC3A9CAC",
+    "key": "C26839975496FCB9DB37F0F463180C6FBF2A09306A93AA3571DFC35F40B82B40"
+  },
+  "status": "DONE_WITH_CONCERNS",
+  "totals": {
+    "accept": 12,
+    "revise": 3,
+    "unresolved": 5
+  },
+  "incomplete_previous_review": {
+    "evidence": [
+      "Original frozen inputs only: candidate 9e923e923473286c8f69a599487a9692eb7735c9bdf842e42696a586fc3a9cac; key bc05774e354c51acc1a6fbc60329093377c99fa2d12d3b746bca6d2b1bd12880.",
+      "Static parity only: 20 candidate/20 key; each key index mapped to its recorded answer text."
+    ],
+    "limitations": "Source/explanation and full-option review NOT completed due execution budget. Known blockers in original revision: Q005 unsupported source; Q006 prior citation cannot pass. Do not infer approval; root has corrected a later key and assigned another reviewer.",
+    "status": "REVIEW_INCOMPLETE",
+    "summary": "DONE_WITH_CONCERNS: frozen revision not fully reviewed."
+  },
+  "reviewer_amendment": {
+    "hub_message_id": 18174,
+    "correction": "Q005 verdict changed from ACCEPT to REVISE: own-conception phrase unsupported. Frozen pre-correction totals11 ACCEPT/4 REVISE/5 UNRESOLVED. Root removed this phrase in keyc85496ab...; recheck pending."
+  }
+}

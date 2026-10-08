@@ -1,0 +1,170 @@
+{
+  "schema_version": "qm-quality-review/v1",
+  "recorded_date": "2026-10-08",
+  "scope": "Original classical-music20 draft, all20, before root revision",
+  "input_candidate_sha256": "db40d6f6ac4b563f5a1c4e4c34d0a6bececbab9765d6db534c101d2778d4eb05",
+  "input_key_sha256": "0899baeea2a72b3471c18a2ec220b8ff1ed418ea0727ec0fc5840893dbe128da",
+  "first10": {
+    "hub_task": "task-4ed8a084a1a146ee9395248a7e8689e2",
+    "result": {
+      "evidence": [
+        {
+          "check": "candidate-first answer derivation",
+          "result": "001..010 derived answers/indexes 0,1,2,3,0,1,2,3,0,1; each equals key after comparison."
+        },
+        {
+          "check": "authoritative sources opened",
+          "result": "Mozarteum KV 331; Beethoven-Haus Op.27/2; Carnegie Hall BWV988; Royal Society of Musicians Water Music; BSO Rite, Dvorak 9, Rachmaninoff 2; Sofia Philharmonic Vltava; Philharmonie Danse macabre."
+        },
+        {
+          "check": "006 source support",
+          "result": "Philharmonie lines 87–90 says scordatura but has no mi-bemol occurrence; LOC NLS source explicitly says E string down a half-step."
+        },
+        {
+          "check": "scope",
+          "result": "No files changed; no test/build/browser automation; lease-164c9ba2965e4f8ca3446b1dc9b85cdc queued then released."
+        }
+      ],
+      "findings": [
+        {
+          "finding": "The cited Philharmonie page proves only scordatura, not E to E-flat.",
+          "id": "wave20-classical-music-006",
+          "minimal_fix": "Change key source/evidence to https://blogs.loc.gov/nls-music-notes/2022/10/song-stories-camille-saint-sans-and-danse-macabre/; retain candidate answer index 1.",
+          "severity": "medium"
+        },
+        {
+          "finding": "Exact key source URL id=1120757 returned internal error in this review.",
+          "id": "wave20-classical-music-005",
+          "minimal_fix": "Use a stable official Philharmonie entry (search result id=1090464 explicitly supports the Ruggieri final-fugue qualification).",
+          "severity": "low"
+        }
+      ],
+      "input_sha256": "DB40D6F6AC4B563F5A1C4E4C34D0A6BECECBAB9765D6DB534C101D2778D4EB05",
+      "key_sha256": "0899BAEEA2A72B3471C18A2EC220B8FF1ED418EA0727EC0FC5840893DBE128DA",
+      "per_id": [
+        {
+          "answer": "В третьей, заключительной части",
+          "id": "001",
+          "index": 0,
+          "source": "https://kv.mozarteum.at/de/work/sonate-in-a-4091",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "Поэт Людвиг Рельштаб",
+          "id": "002",
+          "index": 1,
+          "source": "https://www.beethoven.de/en/media/view/6442239777570816/scan/0",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "Иоганн Себастьян Бах",
+          "id": "003",
+          "index": 2,
+          "source": "https://data.carnegiehall.org/works/54497/about",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "На барже во время королевской прогулки по Темзе",
+          "id": "004",
+          "index": 3,
+          "source": "https://www.rsmgb.org/news/from-the-archives-handel-water-music",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "Антонио Вивальди",
+          "id": "005",
+          "index": 0,
+          "source": "https://pad.philharmoniedeparis.fr/CIMU/ermes/player.aspx?id=1120757",
+          "verdict": "PASS_WITH_SOURCE_LIMIT"
+        },
+        {
+          "answer": "Верхнюю струну ми опустить на полутон до ми-бемоля",
+          "id": "006",
+          "index": 1,
+          "source": "https://philharmoniedeparis.fr/fr/live/concert/1121933-orchestre-de-paris-julien-masmondet",
+          "verdict": "REVISE_SOURCE"
+        },
+        {
+          "answer": "Васлав Нижинский",
+          "id": "007",
+          "index": 2,
+          "source": "https://www.bso.org/works/the-rite-of-spring",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "Антон Зайдль",
+          "id": "008",
+          "index": 3,
+          "source": "https://www.bso.org/works/dvorak-symphony-no-9-from-the-new-world",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "Александр Зилоти",
+          "id": "009",
+          "index": 0,
+          "source": "https://www.bso.org/works/piano-concerto-no-2-6",
+          "verdict": "PASS"
+        },
+        {
+          "answer": "«Влтава»",
+          "id": "010",
+          "index": 1,
+          "source": "https://sofiaphilharmonic.com/en/works/bedrich-smetana-symphonic-poem-vltava-from-cycle-ma-vlast",
+          "verdict": "PASS"
+        }
+      ],
+      "status": "DONE",
+      "summary": "Read-only factual/options audit of first 10 records. Answers were independently derived before key inspection; all ten text/index pairs match. Citation-support correction is required for 006."
+    }
+  },
+  "second10": {
+    "hub_task": "task-5e20824aaf474b9fa54bc578302d392f",
+    "result": {
+      "evidence": [
+        "Candidate SHA256 DB40D6F6AC4B563F5A1C4E4C34D0A6BECECBAB9765D6DB534C101D2778D4EB05; key SHA256 0899BAEEA2A72B3471C18A2EC220B8FF1ED418EA0727EC0FC5840893DBE128DA.",
+        "Derived answer/key parity: 011 2, 012 3, 013 0, 014 1, 015 2, 016 3, 017 0, 018 1, 019 2, 020 3. Detailed per-ID report Hub 18142.",
+        "Precise proposals: Q012 reframe negative attribution and find accessible authority; Q013 use defeat/expulsion wording; Q019 remove unsupported causal clause."
+      ],
+      "limitations": "Q012 URL timed out; Q015 URL returned internal error; Q014 needs direct-text confirmation. No factual blanket approval. No files, generators, tests, or builds run.",
+      "summary": "Read-only classical music questions 011-020 audit complete; candidate first, key second. Eight fully opened supporting URLs; two source fetches failed and one opened page still needs direct-text confirmation."
+    },
+    "detailed_messages": [
+      {
+        "hub_message_id": 18142,
+        "text": "Classical second10 read-only review. Candidate read first, answer text derived before key; then key parity checked. Input SHA256: candidate DB40D6F6AC4B563F5A1C4E4C34D0A6BECECBAB9765D6DB534C101D2778D4EB05; key 0899BAEEA2A72B3471C18A2EC220B8FF1ED418EA0727EC0FC5840893DBE128DA. All current questions have four parallel nominal options and no answer-length cue; all difficulty metadata \"средний\"; candidate carries no tags, so no tag proposal beyond existing category metadata.\n\n011 derive Henry Purcell -> candidate idx2/key2 PASS. Opened https://www.laphil.com/works/the-young-persons-guide-to-the-orchestra-op-34: Purcell Abdelazar dance is variation theme. Difficulty 4/10. No correction.\n012 derive “It does not belong to Chopin himself” -> idx3/key3 PASS by wording. Listed source https://chopinsociety.org/tomasz-ritter.html timed out when opened; source evidence UNRESOLVED (do not treat as opened). Also stem asks “кому принадлежит” but correct option is a negative attribution; revise stem to “Как вернее охарактеризовать прозвище…” or supply a direct accessible Chopin authority. Difficulty 5/10.\n013 derive Napoleon’s 1812 retreat/defeat in Russia -> idx0/key0 PASS. Opened https://en.tchaikovsky-research.net/pages/1812_Overture: commemorates Russia’s defeat of Napoleon in 1812. Slight precision improvement: “разгром Наполеона в России в 1812 году” better matches opened wording than “отступление армии”. Difficulty 4/10.\n014 derive three symphonic sketches -> idx1/key1 PASS. Opened https://philharmoniedeparis.fr/fr/magazine/series/les-cles-du-classique/les-cles-du-classique-34-la-mer-de-debussy (page opened; exact authorial subtitle requires reviewer confirmation from its text). Difficulty 5/10.\n015 derive Dies irae -> idx2/key2 PASS. https://www.metopera.org/information/verdis-requiem-program returned internal error, so source evidence UNRESOLVED; no factual approval from that failed fetch. Difficulty 4/10.\n016 derive three violins and basso continuo -> idx3/key3 PASS. Opened Library of Congress primary program PDF https://www.loc.gov/static/events/concerts-from-the-library-of-congress/documents/programs/2425-OAE-Bullock-Jan24-program.pdf. Difficulty 5/10.\n017 derive August Jaeger -> idx0/key0 PASS. Opened https://www.laphil.com/works/enigma-variations-op-36. Difficulty 5/10.\n018 derive incidental music to A Midsummer Night’s Dream -> idx1/key1 PASS. Opened https://www.laphil.com/works/a-midsummer-nights-dream-overture-and-incidental-music. Difficulty 3/10.\n019 derive Hans von Bülow -> idx2/key2 PASS. Opened https://en.tchaikovsky-research.net/pages/Piano_Concerto_No._1. Difficulty 6/10; remove “после конфликта с Николаем Рубинштейном” from stem unless independently evidenced because the answer concerns dedication, not causation.\n020 derive idée fixe -> idx3/key3 PASS. Opened https://www.laphil.com/works/symphonie-fantastique. Difficulty 5/10.\n\nNo factual blanket approval: URLs 012 and 015 failed to fetch; 014 opened but detail needs direct-text confirmation. Source/fact quality still needs independent provider review. Lease lease-f2e0e90e85034d5f9e2d5677e4f1cb5d queued then released generation1. No files/generators/tests changed."
+      }
+    ]
+  },
+  "lead_disposition": "REVISE: keys match independently derived answers, but citation failures, unsupported specific scordatura detail, malformed negative-attribution prompt and answer-shape/parenthetical hints remain. Separate corrected20 authored and awaiting exact-revision independent review.",
+  "lead_options_review_corrections": [
+    "Second10 reviewer generic alloptionsparallel/nolengthcue assertion was rejected:012 askswho butcorrectanswernegative;018correctanswer uniquelylong and explanatory;020onlycorrecthasparentheticaltranslation.",
+    "Revised choices explicitly remove these cues and parallel tuning/ensemble/place/name variants; answerindexderived fromtext rather than positionassumption."
+  ],
+  "lead_verified_primary_passages": [
+    {
+      "url": "https://blogs.loc.gov/nls-music-notes/2022/10/song-stories-camille-saint-sans-and-danse-macabre/",
+      "support": "E-string tuned down halfstep."
+    },
+    {
+      "url": "https://www.laphil.com/works/gloria-in-d-major-rv-589",
+      "support": "Vivaldi composer and Ruggieri final-fugue borrowing."
+    },
+    {
+      "url": "https://www.laphil.com/works/requiem-verdi",
+      "support": "Diesirae text portrays DayofWrath."
+    },
+    {
+      "url": "https://philharmoniedeparis.fr/fr/magazine/series/les-cles-du-classique/les-cles-du-classique-34-la-mer-de-debussy",
+      "support": "Line30authorialsubtitle Trois esquisses symphoniques pour orchestre."
+    },
+    {
+      "url": "https://artsandculture.google.com/story/symbols-and-imagination-narodowy-instytut-fryderyka-chopina/TwUxx7PabkyL1g?hl=en",
+      "support": "NIFCcuratedstory line223refers to Chopin RevolutionaryEtudeOp10No12; new question askscomposer only, not claimednickname inventor orcomposition legend."
+    },
+    {
+      "url": "https://storage.nifc.pl/web_files/_plik/file_manager/files/292623_Rules_of_the_Competition_2.02.24_last_pdf.pdf",
+      "support": "Page5preliminaryrepertoire explicitlysolelyChopinworks includes CminorOp10No12."
+    }
+  ],
+  "limitations": "Same-vendor native source reports plus lead checks only. Neither original reports nor key/parity inspection certify the revised20 or cross-provider integration/release."
+}

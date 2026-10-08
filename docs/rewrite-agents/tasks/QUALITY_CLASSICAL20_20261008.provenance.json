@@ -1,0 +1,14 @@
+{
+  "schema_version": "qm-reviewed-draft-revision/v1",
+  "status": "draft_pending_source_resolution_and_revision_recheck",
+  "input_candidate": "docs/rewrite-agents/content20/music-classical/classical-music20.candidate.json",
+  "input_sha256": "db40d6f6ac4b563f5a1c4e4c34d0a6bececbab9765d6db534c101d2778d4eb05",
+  "input_key_sha256": "0899baeea2a72b3471c18a2ec220b8ff1ed418ea0727ec0fc5840893dbe128da",
+  "changes": "Parallel choices, remove parenthetical answer clue and question-side source name, replace malformed negative-attribution question with sourced composer question, narrow claims and numeric difficulty/tags. Original foreign files unchanged.",
+  "limitations": "Same actual OpenAI vendor editorial review only. No cross-provider release approval, import, runtime tests/build, browser automation or publication. Five source failures remain open until successful primary evidence and final revision review.",
+  "candidate_sha256": "9e923e923473286c8f69a599487a9692eb7735c9bdf842e42696a586fc3a9cac",
+  "key_sha256": "c85496ab6687a26183684f0f97fe7240826c7b481f23d5c3efcf9bcf37203e99",
+  "review_task": "task-f992eeafc2de41788b561fad7da46de3",
+  "recheck_task": "task-d6594957389f4d4e8a8255de82bc3ebd",
+  "review_summary": "Frozen pre-correction key c268399...: 12 ACCEPT, 3 REVISE for source attribution, 5 UNRESOLVED for direct fetch failures. All 20 independently derived answer text/index pairs match. Root corrected 005/007/008/015 prose; exact changed-key recheck pending."
+}
