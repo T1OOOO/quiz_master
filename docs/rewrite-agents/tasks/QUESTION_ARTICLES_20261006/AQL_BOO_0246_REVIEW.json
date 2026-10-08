@@ -1,0 +1,91 @@
+{
+  "task_id": "task-599f1d1687044abe9f8534111f166195",
+  "review_kind": "native editorial source, factual, and binding review; final narrow recheck",
+  "reviewer": {
+    "packet_label": "geography-factcheck-fresh",
+    "hub_session_id": "session-78107d1dd7e24208acc34f2bc0c751ca",
+    "provider": "openai-codex",
+    "model": "gpt-6.1-sol"
+  },
+  "reviewed_at": "2026-10-08",
+  "initial_checkpoint": {
+    "task_id": "task-2453c9a997814852a59fb6ce846c8308",
+    "input_sha256": "c1485a0ed565a6456b290b3bee54a94c1184db69b783507f5c2efeea75ea94a4",
+    "report_sha256_before_recheck": "a3166e3b9fc2a6c1a50b009c041df9b9d9ab9379fab29ba70a204b2251010e48",
+    "verdicts": {
+      "aql": "ACCEPT",
+      "boo": "REVISE"
+    },
+    "word_counts": {
+      "aql": 169,
+      "boo": 166
+    },
+    "finding": "BOO's original phrase could imply an additional Boötes star even though the NASA source names only Arcturus in Boötes."
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-aql-boo-20261008.json",
+    "sha256": "75866a0bf8ef6b4cccf6dd0b2a01a65e6633071980d9fb21955b0e20dd3bfb63"
+  },
+  "word_count_rule": "Whitespace-separated tokens in body_ru; Markdown headings count as tokens.",
+  "structural_checks": {
+    "schema_version": "qm-question-articles/v1",
+    "target_refs": "Catalog targets aql and boo exist and resolve to Aquila/Aql and Boötes/Boo.",
+    "tag_ids": "The resolved catalog targets carry domain:science, skill:recognition, and topic:astronomy.",
+    "question_refs": "Both arrays are empty; no nonexistent question binding is claimed.",
+    "duplicate_draft_targets": "A draft scan for quizipedia:constellation:aql|boo found only this input file.",
+    "word_limit": "Final AQL has 169 and final BOO 170 whitespace words, both within the required 100–220 range; the original checkpoint counts were AQL 169 and BOO 166."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:aql",
+      "article_sha256": "9665ea94ec3013fcbeca91e00cc319a739428d69972bd218bf84ae890bf588e4",
+      "word_count": 169,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU defines constellations as bounded sky areas, says drawn line patterns are not formally defined, distinguishes asterisms, lists Aquila with abbreviation Aql, and identifies the Summer Triangle as Altair, Deneb, and Vega from three different constellations."
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/summer-triangle-corner-altair/",
+          "opened": true,
+          "finding": "NASA's map caption identifies Vega in Lyra, Altair in Aquila, and Deneb in Cygnus as the three stars of the Summer Triangle; the article also calls Altair the brightest star in Aquila."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The article accurately separates the official Aquila sky area, the conventional line drawing, Altair, and the cross-constellation Summer Triangle asterism. Its visibility wording is appropriately nonabsolute.",
+      "required_correction": null
+    },
+    {
+      "id": "quizipedia:constellation:boo",
+      "article_sha256": "40b2cdbf2e1e726954f3dde3816bab65d43fb4dd40640aa8d474410429dbc195",
+      "word_count": 170,
+      "verdict": "ACCEPT",
+      "source_evidence": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "opened": true,
+          "finding": "IAU defines modern constellations as boundary-defined sky areas, does not formally define stick figures, and lists Boötes with abbreviation Boo."
+        },
+        {
+          "url": "https://science.nasa.gov/universe/stars/types/",
+          "opened": true,
+          "finding": "NASA states that Arcturus in the northern constellation Boötes is a red giant visible to the unaided eye."
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/connecting-the-dots-with-asterisms/",
+          "opened": true,
+          "finding": "NASA gives the exact Diamond of Virgo membership: Arcturus in Boötes, Cor Caroli in Canes Venatici, Denebola in Leo, and Spica in Virgo."
+        }
+      ],
+      "factual_and_pedagogical_assessment": "The narrow final edit uses NASA's exact four-star membership: Arcturus/Boötes, Cor Caroli/Canes Venatici, Denebola/Leo, and Spica/Virgo. It removes the original ambiguity while retaining the sound distinction between the Boötes area, Arcturus, and an asterism.",
+      "required_correction": null
+    }
+  ],
+  "overall_verdict": "ACCEPT for final input SHA 75866a0bf8ef6b4cccf6dd0b2a01a65e6633071980d9fb21955b0e20dd3bfb63: AQL and BOO both meet the stated editorial factual/source/binding scope. The initial REVISE provenance is retained above.",
+  "limits": [
+    "A covering report-path lease was requested but returned queued/blank; the user-authorized lightweight read/edit exception was used only to create this assigned report.",
+    "No draft, catalog, metadata, code, test, build, browser automation, image download, export, or publication action was performed.",
+    "This is same-provider native editorial evidence and does not satisfy a different-provider, technical, release, or publication gate."
+  ]
+}

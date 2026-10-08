@@ -370,3 +370,24 @@ catalog remains30; formal export/runtime/cross-provider review/publication pendi
 Same-provider native editorial review is not the different-provider release gate.
 Real production feedback stays OPEN until published verification. No code/assets,
 GitHub Actions, worker schedulers or other projects' resources changed.
+
+Heartbeat02:46UTC: production refresh26OPEN/no new/latest08:19:08UTC;
+managedClaude release reviewer stillQUEUED/OLDER_REQUEST_WAITING, not running.
+Export3521 and light path3522/3523 QUEUED/released; no heavy execution.
+Native astronomy author freshREADY17630/accepted17632/submitted17636,
+task2644b2cb created Aql/Boo drafts with actually opened IAU/NASA sources.
+OriginalSHAc1485a0ed565a6456b290b3bee54a94c1184db69b783507f5c2efeea75ea94a4.
+Independent review2453c9a9 foundAQL ACCEPT/BOO REVISE: Diamond membership
+wording could imply an extra Boötes star besides Arcturus. Lead replaced only
+that sentence with the explicit four stars and their respective constellations.
+FinalSHA75866a0bf8ef6b4cccf6dd0b2a01a65e6633071980d9fb21955b0e20dd3bfb63.
+Fresh recheckREADY17650/accepted17652/submitted17654,task599f1d16:
+AQL ACCEPT169words/BOO ACCEPT170words. Final AQL_BOO_0246_REVIEW.json
+SHA9f58e34bea06a0237717736026dc39d9db983312a9ba4fef01731483a2173eaf;
+originalREVISE provenance retained. Lead inspected full draft/report and hashes,
+NASA passages and lightweight manual inventory:92records/92unique draft IDs;
+24of88constellation targets have draft articles. Generatedacceptedcatalog30
+unchanged. Formal export/runtime/cross-provider review/publication pending;
+same-provider native editorial evidence is not different-provider release approval.
+Real feedback staysOPEN until published verification. No canonical code/assets,
+Actions, worker schedulers or other projects' resources changed.
