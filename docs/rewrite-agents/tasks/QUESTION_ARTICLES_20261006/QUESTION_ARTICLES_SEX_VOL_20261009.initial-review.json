@@ -1,0 +1,77 @@
+{
+  "acceptance": "Two exact current hashes and independently opened primary sources with concrete factual/editorial verdicts.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Read-only independent review of frozen study/question_articles/drafts/constellations-sex-vol-20261009.json. Full English ARTICLE_SEX_VOL_20261009_EN.md. Open all five unique primary URLs and verify current claims, explicit constellation associations, NGC3115 type/edge-on/distance/billion-solar-mass black hole; independently confirm actual2025arxiv2508.07042 mass/radio-accretion model; actual2026arxiv2609.10270 and southeastern synchrotron island/electrons/magnetic-field transport hypothesis. Source dates and qualifications matter; do not trust author claims or invented papers. Verify 150–220words, metadata/supports, contract and unique selfchecks; return perarticle accept/revise with exact canonical SHA256 UTF8 jsonensure_asciiFalse/sort_keysTrue/compact comma-colon. No edits/children/Git/managed processes/tests/build/browserautomation/deploy/secrets. Fresh READY/explicitoffer/accept epoch3, scoped interactive read bundle releaseQUEUEDbeforeexistinglight read/webexception. Managed external reviews stopped for issuequiz_master-mkk; native verdict notactualdifferentvendorreleaseapproval.",
+  "created_at": 1791494198.7475693,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-cfa04fd8bd4d4a4b8e3aa29a2e81d931",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "article_id": "quizipedia:constellation:sex",
+        "body_words": 195,
+        "canonical_sha256": "49e93537a042517f445d65ea53e94c018d8500b816867e30a2b11f5c7fcb8685",
+        "checked_sources": [
+          {
+            "evidence": "IAU table lists Sextans with abbreviation Sex. Its explanation says constellations are scientifically defined areas of sky and “in” means inside the defined boundary, not membership of a star pattern.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          },
+          {
+            "evidence": "NASA identifies Caldwell 53 as NGC 3115: Sextans, 32 million light-years, lenticular galaxy, disk and bulge without spiral arms, edge-on appearance, and central black hole roughly one billion solar masses.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-53/"
+          },
+          {
+            "evidence": "Actually opened. Submitted 9 Aug 2025; VLA localizes a faint 22-GHz nucleus in NGC 3115. Modeling the radio peak as an ADAF yields (1.2±0.2)×10^9 solar masses, consistent with prior 1–2×10^9 dynamical estimates.",
+            "url": "https://arxiv.org/abs/2508.07042"
+          }
+        ],
+        "finding": "All factual claims and support metadata match. The text preserves the inferential status of the radio/ADAF mass estimate.",
+        "nonblocking_pedagogy": "The self-check is sound but repeats the map-versus-physical-system distinction. If revised later, ask what the 1.2-billion-solar-mass result is based on (a modeled radio peak, not a direct image).",
+        "schema": "qm-question-articles/v1; 3 source_links; target_refs constellation/sex; empty question_refs; draft; required tags present.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "article_id": "quizipedia:constellation:vol",
+        "body_words": 177,
+        "canonical_sha256": "89d9f633d33ab533210282f78c9a5d7fd6453546bec53d32eacd190e98a06297",
+        "checked_sources": [
+          {
+            "evidence": "IAU table lists Volans with abbreviation Vol; the same source defines IAU constellations as bounded sky areas rather than physical groups.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          },
+          {
+            "evidence": "Actually opened ESO release (4 May 2011): NGC 2442 is in Volans, has asymmetric spiral arms/double-hook appearance, and a gravitational interaction is thought likely, while the responsible galaxy is not positively identified.",
+            "url": "https://www.hq.eso.org/public/news/eso1115/"
+          },
+          {
+            "evidence": "Actually opened. Submitted 9 Sep 2026. The abstract combines radio continuum with optical H-alpha and infrared data; reports a southeast steep-spectrum synchrotron island with no clear H-alpha/IR/FUV/NUV counterpart; 2D simulations find anisotropic diffusion along ordered magnetic fields enables CREs to reach it more efficiently.",
+            "url": "https://arxiv.org/abs/2609.10270"
+          }
+        ],
+        "finding": "All factual claims and support metadata match. “could” and the final caveat correctly avoid treating the transport model as a traced path for individual particles.",
+        "nonblocking_pedagogy": "The current self-check is correct but duplicate in structure. If revising later, ask why a synchrotron island can be visible without clear local young-star tracers: the paper infers CREs are unlikely to be injected there and models transport from elsewhere.",
+        "schema": "qm-question-articles/v1; 3 source_links; target_refs constellation/vol; empty question_refs; draft; required tags present.",
+        "verdict": "ACCEPT"
+      }
+    ],
+    "summary": "Independent read-only review complete: ACCEPT both frozen articles. Recomputed canonical SHA-256 and opened every unique cited source (IAU, NASA, ESO, arXiv:2508.07042, arXiv:2609.10270). No files changed."
+  },
+  "root_task_id": "task-cfa04fd8bd4d4a4b8e3aa29a2e81d931",
+  "run_id": "run-74f0f3d7dba542cdbbd62827e343294c",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent SEX/VOL facts and exact-hash review",
+  "version": 3
+}

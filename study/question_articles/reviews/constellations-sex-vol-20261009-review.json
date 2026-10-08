@@ -1,0 +1,50 @@
+{
+  "reviewer": "Native Codex session-5191183ee6a04c9b849a7910ff93166c; runtime model label self-reported",
+  "author": "Native Codex/OpenAI session-6468a45aa629470cb76fd85da497669e",
+  "scope": "Independent native source-backed draft acceptance only; Hub review rejected root acceptance with independent provider required. Tasks remain SUBMITTED; different-provider compliant review and runtime/publication gates pending.",
+  "review_tasks": [
+    "task-cfa04fd8bd4d4a4b8e3aa29a2e81d931"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:sex",
+      "article_sha256": "49e93537a042517f445d65ea53e94c018d8500b816867e30a2b11f5c7fcb8685",
+      "verdict": "accept",
+      "note": "All factual claims and support metadata match. The text preserves the inferential status of the radio/ADAF mass estimate. qm-question-articles/v1; 3 source_links; target_refs constellation/sex; empty question_refs; draft; required tags present. The self-check is sound but repeats the map-versus-physical-system distinction. If revised later, ask what the 1.2-billion-solar-mass result is based on (a modeled radio peak, not a direct image).",
+      "checked_sources": [
+        {
+          "evidence": "IAU table lists Sextans with abbreviation Sex. Its explanation says constellations are scientifically defined areas of sky and “in” means inside the defined boundary, not membership of a star pattern.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "NASA identifies Caldwell 53 as NGC 3115: Sextans, 32 million light-years, lenticular galaxy, disk and bulge without spiral arms, edge-on appearance, and central black hole roughly one billion solar masses.",
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-caldwell-catalog/caldwell-53/"
+        },
+        {
+          "evidence": "Actually opened. Submitted 9 Aug 2025; VLA localizes a faint 22-GHz nucleus in NGC 3115. Modeling the radio peak as an ADAF yields (1.2±0.2)×10^9 solar masses, consistent with prior 1–2×10^9 dynamical estimates.",
+          "url": "https://arxiv.org/abs/2508.07042"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:vol",
+      "article_sha256": "89d9f633d33ab533210282f78c9a5d7fd6453546bec53d32eacd190e98a06297",
+      "verdict": "accept",
+      "note": "All factual claims and support metadata match. “could” and the final caveat correctly avoid treating the transport model as a traced path for individual particles. qm-question-articles/v1; 3 source_links; target_refs constellation/vol; empty question_refs; draft; required tags present. The current self-check is correct but duplicate in structure. If revising later, ask why a synchrotron island can be visible without clear local young-star tracers: the paper infers CREs are unlikely to be injected there and models transport from elsewhere.",
+      "checked_sources": [
+        {
+          "evidence": "IAU table lists Volans with abbreviation Vol; the same source defines IAU constellations as bounded sky areas rather than physical groups.",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/"
+        },
+        {
+          "evidence": "Actually opened ESO release (4 May 2011): NGC 2442 is in Volans, has asymmetric spiral arms/double-hook appearance, and a gravitational interaction is thought likely, while the responsible galaxy is not positively identified.",
+          "url": "https://www.hq.eso.org/public/news/eso1115/"
+        },
+        {
+          "evidence": "Actually opened. Submitted 9 Sep 2026. The abstract combines radio continuum with optical H-alpha and infrared data; reports a southeast steep-spectrum synchrotron island with no clear H-alpha/IR/FUV/NUV counterpart; 2D simulations find anisotropic diffusion along ordered magnetic fields enables CREs to reach it more efficiently.",
+          "url": "https://arxiv.org/abs/2609.10270"
+        }
+      ]
+    }
+  ]
+}
