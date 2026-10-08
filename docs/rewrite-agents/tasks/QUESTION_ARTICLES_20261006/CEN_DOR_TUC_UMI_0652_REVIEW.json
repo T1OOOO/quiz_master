@@ -1,0 +1,133 @@
+{
+  "schema_version": "qm-question-articles-review/v1",
+  "review_id": "CEN_DOR_TUC_UMI_0652_REVIEW",
+  "reviewed_at": "2026-10-08",
+  "reviewer": {
+    "label": "review-article-reader-t2d503c8",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+  },
+  "input": {
+    "path": "study/question_articles/drafts/constellations-cen-dor-tuc-umi-20261008.json",
+    "sha256": "1d82538baf2110b95971d5a5c0d7df0d17717a583a8206e3dd9820954abb04cb"
+  },
+  "overall_verdict": "REVISE",
+  "publication_status": "not_authorized_by_this_same-provider_editorial_review",
+  "opened_sources": [
+    {
+      "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+      "result": "Opened. IAU defines the 88 constellations as bounded sky areas, distinguishes figures/asterisms from those areas, and lists Centaurus/Cen, Dorado/Dor, Tucana/Tuc and Ursa Minor/UMi."
+    },
+    {
+      "url": "https://science.nasa.gov/asset/hubble/omega-centauri-2/",
+      "result": "Opened. NASA gives Omega Centauri as a globular cluster in Centaurus, 17,700 light-years away, roughly 10 million gravitationally bound stars, and reports more than 500 Hubble images over two decades finding seven fast-moving inner stars as compelling IMBH evidence."
+    },
+    {
+      "url": "https://science.nasa.gov/asset/hubble/the-tarantula-nebula-in-the-large-magellanic-cloud/",
+      "result": "Opened. NASA identifies 30 Doradus/Tarantula as an emission nebula in the Large Magellanic Cloud at about 170,000 light-years; UV radiation and hot particles from young stars hollowed the gas bubble and compressed its rim into ridges."
+    },
+    {
+      "url": "https://science.nasa.gov/missions/tess/first-light-tess-shares-first-science-image-in-hunt-to-find-new-worlds/",
+      "result": "Opened. NASA identifies the bright dot above the Small Magellanic Cloud as NGC 104/47 Tucanae, a globular cluster of hundreds of thousands of stars in Tucana."
+    },
+    {
+      "url": "https://science.nasa.gov/image-article/apod-2012-december-6-47-tuc-near-the-small-magellanic-cloud/",
+      "result": "Opened. NASA APOD gives 47 Tuc about 13,000 light-years and the Small Magellanic Cloud about 210,000 light-years, explicitly saying they are not physically close; it identifies the SMC as a Milky Way satellite galaxy."
+    },
+    {
+      "url": "https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/",
+      "result": "Opened. NASA places Polaris near the north celestial pole, says it traces a small 24-hour circle and is useful for north; it is the Little Dipper handle/tail in Ursa Minor, is not the sky's brightest star, and gives Vega as poleward about 14,000 years ago and again about 12,000 years in the future."
+    }
+  ],
+  "binding_checks": {
+    "runtime_catalog": "next/apps/quiz_app/assets/quizipedia/catalog.json contains 88 constellations. cen/Centaurus/Cen, dor/Dorado/Dor, tuc/Tucana/Tuc and umi/Ursa Minor/UMi each carry exactly domain:science, skill:recognition, topic:astronomy.",
+    "batch": "All four article IDs and target_ids are unique; each has one quizipedia constellation target, empty question_refs, the required three tags, and status draft.",
+    "draft_duplicate_scan": "A focused literal ID scan of study/question_articles/drafts found these four IDs only in this frozen input."
+  },
+  "articles": [
+    {
+      "id": "quizipedia:constellation:cen",
+      "verdict": "ACCEPT",
+      "word_count_letter_tokens": 151,
+      "source_links_opened": 2,
+      "evidence": "IAU supports Cen and the sky-area distinction. NASA supports Centaurus location, 17,700 ly, roughly 10 million bound stars, and the more-than-500-image/seven-fast-star IMBH-evidence account. The wording preserves the candidate/evidence qualification."
+    },
+    {
+      "id": "quizipedia:constellation:dor",
+      "verdict": "ACCEPT",
+      "word_count_letter_tokens": 145,
+      "source_links_opened": 2,
+      "evidence": "IAU supports Dor and the sky-area distinction. NASA supports 30 Doradus/Tarantula as an emission nebula in the LMC at about 170,000 ly and the UV/hot-particle bubble, compressed-ridge explanation."
+    },
+    {
+      "id": "quizipedia:constellation:tuc",
+      "verdict": "ACCEPT",
+      "word_count_letter_tokens": 156,
+      "source_links_opened": 3,
+      "evidence": "IAU supports Tuc and the sky-area distinction. NASA TESS supports the bright NGC 104/47 Tuc dot above the SMC; NASA APOD supports the 13,000/210,000 ly comparison, halo/satellite-galaxy distinction, and lack of physical proximity."
+    },
+    {
+      "id": "quizipedia:constellation:umi",
+      "verdict": "REVISE",
+      "word_count_letter_tokens": 154,
+      "source_links_opened": 2,
+      "finding": "The final temporal sentence is self-contradictory and reverses the cited source's future interval: it says 'около 14 000 лет назад ... будет ближе к Веге'.",
+      "required_correction": "Replace it with: 'Около 14 000 лет назад небесный полюс был направлен к Веге; примерно через 12 000 лет он снова будет у Веги.' This preserves NASA's distinct past and future statements. The rest of the Polaris explanation is supported."
+    }
+  ],
+  "method": {
+    "word_count": "Unicode letter-token count using [^\\W\\d_]+(?:[-–][^\\W\\d_]+)* after Markdown heading markers; all counts are within the required 100–220 range.",
+    "limitations": "This is a same-provider editorial review, not a cross-provider acceptance, import/export, runtime, or publication gate. No draft, catalog, code, export, commit, deploy, build, test, browser automation, or managed worker was changed/run."
+  },
+  "final_recheck": {
+    "task_id": "task-50f2238ddd9f4f87bf87e8c62161fba3",
+    "reviewed_at": "2026-10-08",
+    "reviewer": {
+      "label": "review-article-reader-t2d503c8",
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "session_id": "session-3b5d06260957443d9a2a71a707f64e0e"
+    },
+    "original_review_provenance": {
+      "report_sha256": "418d75e843e97a11d68452b58e8754fe2af38339734d2e1b8c86b5dc8a01b541",
+      "overall_verdict": "REVISE",
+      "reason": "UMI temporal sentence required correction"
+    },
+    "final_input": {
+      "path": "study/question_articles/drafts/constellations-cen-dor-tuc-umi-20261008.json",
+      "sha256": "473f1151b8ea470d45c616dc1671a09d8411f36f47ad5cb78583d6014510e30a"
+    },
+    "scope": "Narrow recheck: the UMI temporal sentence only; no other content re-researched or modified by this reviewer.",
+    "source_recheck": {
+      "url": "https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/",
+      "result": "The corrected UMI text now distinguishes NASA’s two statements: the pole pointed toward Vega about 14,000 years ago and will again do so in about 12,000 years."
+    },
+    "word_count_method": "Whitespace-separated tokens using body_ru.split(), including Markdown headings, as required for this final criterion.",
+    "articles": [
+      {
+        "id": "quizipedia:constellation:cen",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 159
+      },
+      {
+        "id": "quizipedia:constellation:dor",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 154
+      },
+      {
+        "id": "quizipedia:constellation:tuc",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 170
+      },
+      {
+        "id": "quizipedia:constellation:umi",
+        "verdict": "ACCEPT",
+        "body_split_word_count": 171,
+        "correction_verified": true
+      }
+    ],
+    "final_verdict": "ACCEPT_DRAFT_AFTER_TARGETED_RECHECK",
+    "limits": "Same-provider editorial recheck only; not independent cross-provider acceptance, export/runtime validation, or publication approval."
+  }
+}

@@ -481,3 +481,45 @@ final report SHA 3b17a72a7be6bb0893976ce01ce555ec531a65c505a98d4a97adbcda9352c53
 Previous final content/report hashes above are retained provenance. No semantic
 article changes during formatting reconciliation. Beads updated through bd
 before export so its database and scoped issue JSONL contain this checkpoint.
+
+Heartbeat 06:52 UTC: secure production refresh 26 OPEN, no new feedback,
+latest 2026-10-07T08:19:08.506876077Z. Managed Claude release reviewer remains
+QUEUED/OLDER_REQUEST_WAITING, not running. Initial export request used unknown
+heavy_slots resource and was rejected without a lease; hub_help confirmed heavy.
+Correct export3537 and notes3538 QUEUED/released, no heavy execution.
+Native author READY17773, accepted17776, submitted17779/17780 taskd239a251
+created Cen/Dor/Tuc/Umi four drafts. Frozen initial input SHA
+1d82538baf2110b95971d5a5c0d7df0d17717a583a8206e3dd9820954abb04cb,
+counts159/154/170/163, exact one EOF newline. Author path request returned empty
+Hub error; user light-edit exception only. Original reviewer READY17782,
+accepted17784 task94545806, but exhausted execution budget before a full report;
+no successful report/submission or full acceptance. Reviewer initially suggested
+14k future; lead checked exact NASA source (14k past/12k future) and reviewer
+confirmed correction. Cancellation rejected because task already started; its
+incomplete status is recorded rather than counted as active completed review.
+Replacement native reviewer session3b5d06260957443d9a2a71a707f64e0e actually
+READY17796, accepted17799 task9e8a060f. Covering report path request17800
+QUEUED/released17801, light review/report scope only. Full report pending.
+Lead independently opened all six unique primary IAU/NASA cited pages, read
+whole frozen draft and verified target/tag bindings, IDs, counts and sources.
+Manual inventory108 unique drafts/40of88 constellation targets with drafts;
+generated catalog30 unchanged. These four remain drafts pending review/fixes.
+Formal export/runtime tests/build/browser and different-provider release review
+remain pending; native editorial evidence is not release approval. No publish,
+Actions, worker scheduler, canonical code/assets or foreign resource changes.
+Real feedback remains OPEN until published verification.
+
+Replacement reviewer submitted17802 task9e8a060f: CEN/DOR/TUC ACCEPT,
+UMI REVISE, original report SHA418d75e843e97a11d68452b58e8754fe2af38339734d2e1b8c86b5dc8a01b541.
+Lead corrected only the Vega temporal sentence, distinguishing14k years past and
+12k years future. Draft-path3540 QUEUED/released, light correction only.
+Final draft SHA473f1151b8ea470d45c616dc1671a09d8411f36f47ad5cb78583d6014510e30a.
+Fresh final recheck READY17808, accepted17811, submitted17814 task50f2238d;
+report-path17812 QUEUED/released17813. Four final ACCEPT_DRAFT, required whitespace
+counts159/154/170/171. Original letter-token counts and REVISE provenance retained;
+final report SHAb76886b96a10c14e97aba2b719db90b11e568371cc535957483e5ebf9a6a9e72.
+Lead verified whole draft, report plus recheck, exact hashes, count-method agreement,
+source support, target/tag bindings, duplicate IDs/targets, EOF and manual inventory.
+All108 records have unique draft IDs,40of88 runtime constellation targets now have
+draft articles. Generated catalog30 unchanged; formal export/runtime/browser/build,
+different-provider release review/publication remain pending. No feedback closed.
