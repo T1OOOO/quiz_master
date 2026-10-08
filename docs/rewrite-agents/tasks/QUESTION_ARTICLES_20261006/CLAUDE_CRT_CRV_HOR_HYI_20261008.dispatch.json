@@ -1,0 +1,19 @@
+{
+  "task_id": "task-b20f90ae37fa430a82dde159f989e5ec",
+  "dispatch": {
+    "id": "managed-3b535a2fc0a5543c5719f6b51b798eb0950261dff8e1124d20e2ad5a644de9e0",
+    "task_id": "task-b20f90ae37fa430a82dde159f989e5ec",
+    "run_id": "run-9e8003d3e34a41e5ba9fb9acf1e1dbe6",
+    "lease_id": "lease-479a98185f504547aaa9f98e64f9a1ac",
+    "epoch": 3,
+    "session_id": "session-aa9657f5b6204a0e8bf504ff605aebf2",
+    "provider": "claude",
+    "model": "sonnet",
+    "state": "QUEUED",
+    "reason": "OLDER_REQUEST_WAITING",
+    "created_at": 1791484217.8027673
+  },
+  "scope": "Finite read-only official Claude runner, current epoch3. QUEUED owns no resources and is not evidence of model activity or factual review.",
+  "routing": "First attempt rejected by conservative model level. Explicit supervised calibration override supplied: four exact drafts already native-reviewed; root must independently inspect actual Claude results before any different-provider approval.",
+  "limits": "No recursion, writes, tests/build/browser automation, GitHub Actions, per-worker schedulers or deployment. Existing lead heartbeat inspects official status; no duplicate launches."
+}

@@ -1,0 +1,47 @@
+{
+  "acceptance": "Current final exact hashes, metadata supports source and no unreviewed body changes; distinct reviewer evidence.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5191183ee6a04c9b849a7910ff93166c",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Your body-review accepted CRT429659... and CRV541e854...; root cleaned your nonblocking obsolete-largest metadata note. Only CRV source_links[1].supports changed: asset supports Corvus/luminous tails/>1000clusters/collisionstarbirth; gravitational cluster retention now explicitly attributed to added1997release. Body/otherfields unchanged. Verify exact currentmetadata against already independently reopened sources, recompute wholeobjecthashes and accept/revise. Read previousbody-reviewJSON and currentdraft. No edits/children/heavy/tests/browser/git/deploy; existing bounded readexception after scopedlease request/releaseQUEUED. FreshREADY thenoffer.",
+  "created_at": 1791484041.3627303,
+  "depth": 0,
+  "difficulty": 1,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-03644852c4c343258529fbe77e77e92b",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "check": "CRT final metadata and hash",
+        "result": "ACCEPT. Canonical SHA-256 (ensure_ascii=false, sort_keys=true, separators=(',',':')): 429659b8745b00e170309c1685198a17d93b06615132bde1131fda974db97710. 169 whitespace-delimited words and 3 source links. Current object is unchanged from the prior accepted whole-object review."
+      },
+      {
+        "check": "CRV final metadata and hash",
+        "result": "ACCEPT. Canonical SHA-256: 1b0d92aed95f0c175eb8909c790a84bb762cb82c31a8ff931cb547a435f5bfd3. 169 whitespace-delimited words and 4 source links. Body and all non-metadata fields are unchanged; the whole-object hash changed only because source_links[1].supports was corrected."
+      },
+      {
+        "check": "CRV corrected citation-support wording",
+        "result": "ACCEPT. Previously opened NASA Hubble asset https://science.nasa.gov/asset/hubble/stellar-fireworks-accompany-antennae-galaxy-collision/ supports Corvus placement, luminous tidal tails produced by gravitational forces, over 1,000 young clusters, and collision-triggered star formation. Previously opened original NASA 1997 release https://science.nasa.gov/missions/hubble/hubble-reveals-stellar-fireworks-accompanying-galaxy-collisions/ supports the qualified claim that young clusters may remain gravitationally bound and evolve into globular clusters. The replacement metadata now separates those claims correctly; no unsupported interaction age or cluster ranking remains."
+      },
+      {
+        "check": "Other source support retained",
+        "result": "Previously opened ESO image page https://www.eso.org/public/images/eso1137b/ supports the visible-light/newborn-star and ALMA CO/dense cold gas distinction; IAU constellation table https://iauarchive.eso.org/public/themes/constellations/ supports Corvus/Crv identification."
+      }
+    ],
+    "summary": "Final CRT/CRV metadata and current-hash rereview: ACCEPT both. CRV's corrected source-support text accurately assigns the Hubble-asset and original-1997-release claims; article bodies remain unchanged."
+  },
+  "root_task_id": "task-03644852c4c343258529fbe77e77e92b",
+  "run_id": "run-178e01059bd444ec9ebfd298dad04aca",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: final CRV source-metadata hash check",
+  "version": 3
+}

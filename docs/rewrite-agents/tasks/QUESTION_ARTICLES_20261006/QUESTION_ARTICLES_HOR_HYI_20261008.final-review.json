@@ -1,0 +1,106 @@
+{
+  "acceptance": "Independent primary source visit evidence, per current object accept/revise verdict and exact canonical hashes; no fabricated gates.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-6468a45aa629470cb76fd85da497669e",
+  "author": "session-bd778c4baf4442bf85d8bb5b2a34c2a8",
+  "body": "Review constellations-hor-hyi-20261008.json; you did NOT author them. Root corrected centralstarburst ring versus larger spiral-arm oval and false location selfcheck beforefreeze. Verify dimensions/ring gasflow, ESAcaption30Mly/metadata40Mly discrepancy qualified, NGC602association/starcounts/Xray source hypothesis/winds; Hydrus distinctHydra. Read full English ARTICLE_CRT_CRV_HOR_HYI_20261008_EN.md and frozen JSON. Actually open all linked unique sources, verify every factual claim and constellation association,150–220words/2–5links, exact bindings. Return canonical whole-object SHA256 json.dumps ensure_asciiFalse sort_keysTrue separators(',',':') UTF8. No edits/children/tests/build/browserautomation/subprocess/git/deploy. Fresh READY/explicit offer; scoped interactive read lease then releaseQUEUED before authorized bounded lightread/web exception. Native draft acceptance only, not actual different-provider publication gate. You are not alone; preserve other work.",
+  "created_at": 1791483659.8330426,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-7f1052fdd9214de0ad6db59e9ccb6dae",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. IAU table separately lists Horologium/Hor, Hydrus/Hyi, and Hydra/Hya.",
+        "title": "The Constellations | IAU",
+        "url": "https://iauarchive.eso.org/public/themes/constellations/"
+      },
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. Explicitly places NGC 1512 in Horologium; supports barred spiral, 70,000-light-year diameter, 2,400-light-year central circumnuclear starburst ring, gas funneling along bar. Caption says 30 million light-years; object metadata lists 40 million.",
+        "title": "Wide view of NGC 1512 | ESA/Hubble",
+        "url": "https://esahubble.org/images/heic0106j/"
+      },
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. Says NGC 1512 is 30 million light-years away in Horologium; image description identifies the larger dense oval of orange spiral arms beginning at bar ends. Confirms current draft separates this from central starburst ring.",
+        "title": "NASA's Webb Depicts Staggering Structure in 19 Nearby Spiral Galaxies | NASA Science",
+        "url": "https://science.nasa.gov/missions/webb/nasas-webb-depicts-staggering-structure-in-19-nearby-spiral-galaxies/"
+      },
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. Fast facts list Hydrus; text places the star-forming region in the SMC Wing, says NGC 602 contains at least three clusters, compares NGC 602a to Orion by age/mass/size, and describes extended X-rays likely from overlapping emission of several thousand young low-mass stars rather than hot massive-star-wind gas.",
+        "title": "NGC 602: Taken Under the 'Wing' of the Small Magellanic Cloud | Chandra",
+        "url": "https://chandra.harvard.edu/photo/2013/ngc602/"
+      },
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. Object metadata identifies NGC 602 as a star-cluster grouping in Hydrus.",
+        "title": "Hubble/Chandra/Spitzer composite image of NGC 602 | ESA/Hubble",
+        "url": "https://esahubble.org/images/ngc602/"
+      },
+      {
+        "accessed": "2026-10-08",
+        "kind": "source_open",
+        "supports": "Directly opened. Identifies the SMC as a dwarf galaxy and Milky Way satellite; places young stars in its Wing.",
+        "title": "Taken Under the “Wing” of the Small Magellanic Cloud | NASA Science",
+        "url": "https://science.nasa.gov/missions/hubble/taken-under-the-wing-of-the-small-magellanic-cloud/"
+      },
+      {
+        "hashes": {
+          "hor": "a63b33ace9ce20169209f7082e89d5d74d54a09078b24a407bbe9ae14fe5697e",
+          "hyi": "555ce80bc8b0f697ca02ec935feea371e861b4b7195e0c6e04357c9a5a02e159"
+        },
+        "kind": "canonical_hash",
+        "method": "For each article object, recursively sort JSON object keys, serialize compactly with Unicode unescaped, encode UTF-8, SHA-256."
+      },
+      {
+        "kind": "scope",
+        "note": "Read-only independent fact review of the frozen root-corrected file. No files edited. Native draft acceptance only; no different-provider gate claimed."
+      }
+    ],
+    "object_reviews": [
+      {
+        "body_words": 180,
+        "canonical_sha256": "a63b33ace9ce20169209f7082e89d5d74d54a09078b24a407bbe9ae14fe5697e",
+        "findings": [],
+        "id": "quizipedia:constellation:hor",
+        "source_count": 3,
+        "verdict": "accept"
+      },
+      {
+        "body_words": 189,
+        "canonical_sha256": "555ce80bc8b0f697ca02ec935feea371e861b4b7195e0c6e04357c9a5a02e159",
+        "findings": [],
+        "id": "quizipedia:constellation:hyi",
+        "source_count": 3,
+        "verdict": "accept"
+      }
+    ],
+    "status": "DONE",
+    "summary": "Both frozen articles accepted. Required structure and counts are valid. HOR’s distance discrepancy is transparently qualified; corrected central starburst ring versus outer oval spiral-arm ring is accurate and the self-check tests the distinction. HYI’s Hydrus/Hydra distinction, constellation placement, SMC context, cluster facts and qualified X-ray interpretation are supported.",
+    "verdict": "accept"
+  },
+  "root_task_id": "task-7f1052fdd9214de0ad6db59e9ccb6dae",
+  "run_id": "run-155dbfdda16a44c5a22dc93b857b2703",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: HOR/HYI exact independent facts review",
+  "version": 3
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "qm-question-articles/v1",
+  "articles": [
+    {
+      "id": "quizipedia:constellation:crt",
+      "title_ru": "Чаша и Crater II: слабый гигант",
+      "body_ru": "### Небесная Чаша и далёкая галактика\nЧаша (Crater, Crt) — ограниченный участок небесной сферы; звёзды, нарисованные на карте в виде чаши, не обязаны быть физически связанными. Внутри границ созвездия видна Crater II — карликовая галактика-спутник Млечного Пути. Это далёкая система, а не часть звёздного рисунка.\n### Слабый гигант\nОткрытие Crater II объявили в 2016 году по данным обзора VST ATLAS. Авторы оценили расстояние примерно в 120 килопарсек от Солнца. Они назвали её «слабым гигантом»: радиус, вмещающий половину её звёздного света, около 1 100 парсек, но свет распределён так широко, что галактика имеет одну из самых низких поверхностных яркостей среди спутников Млечного Пути. Поэтому большой размер не означает, что её легко заметить.\nСпектроскопия звёзд-кандидатов дала очень малый разброс лучевых скоростей — около 2,7 км/с. При допущении, что система близка к динамическому равновесию и двойные звёзды не искажают измерение, исследователи заключили, что в общей массе системы может преобладать тёмная материя.\n### Самопроверка\nЧто означает «в созвездии Чаши»: физическую связь с чашеобразными звёздами или положение на небе? Почему Crater II трудно обнаружить?",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "crt"
+        }
+      ],
+      "question_refs": [],
+      "source_links": [
+        {
+          "title": "IAU — The Constellations",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/",
+          "accessed": "2026-10-08",
+          "supports": "IAU table identifies Crater (Crt) as the Cup; the IAU explains constellations are defined sky areas and an object \"in\" a constellation lies within its boundaries rather than belonging to a star pattern."
+        },
+        {
+          "title": "Torrealba et al. — The feeble giant: Discovery of a large and diffuse Milky Way dwarf galaxy in the constellation of Crater",
+          "url": "https://arxiv.org/abs/1601.07178",
+          "accessed": "2026-10-08",
+          "supports": "Original discovery paper explicitly names the constellation of Crater; identifies Crater 2 from VST ATLAS imaging, estimates about 120 kpc distance and about 1,100 pc half-light radius, and describes its very low surface brightness."
+        },
+        {
+          "title": "Caldwell et al. — Crater 2: An Extremely Cold Dark Matter Halo",
+          "url": "https://arxiv.org/abs/1612.06398",
+          "accessed": "2026-10-08",
+          "supports": "Original spectroscopy study finds 62 member candidates and line-of-sight velocity dispersion 2.7 ± 0.3 km/s; the dark-matter-dominated interpretation is explicitly conditional on dynamical equilibrium and negligible unresolved-binary contamination."
+        }
+      ],
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "quizipedia:constellation:crv",
+      "title_ru": "Ворон и галактики с приливными антеннами",
+      "body_ru": "### Созвездие и пара галактик\nВорон (Corvus, Crv) — область неба с установленными границами, а не физическая стая звёзд. В её направлении находятся NGC 4038 и NGC 4039, пара спиральных галактик, известная как «Антенны». Гравитационные приливы вытянули из них длинные потоки светящегося вещества — отсюда название, напоминающее усики насекомого.\n### Как столкновение рождает звёзды\nСнимки «Хаббла» показывают пылевые полосы и яркие голубые скопления молодых звёзд. В одном выпуске NASA сообщило более чем о тысяче молодых сверхзвёздных скоплений в этой паре. Такие молодые скопления могут удерживаться собственной гравитацией и со временем стать шаровыми скоплениями. Это помогает объяснить, что шаровые скопления могут появляться не только в ранней Вселенной, но и при слияниях галактик.\nДанные ALMA добавляют другой слой картины: миллиметровое излучение молекул CO служит следом плотного холодного газа, из которого формируются звёзды, тогда как оптический снимок показывает уже родившиеся звёзды. Вместе эти наблюдения связывают движение галактик с материалом и местами звездообразования.\n### Самопроверка\nЧто обозначает Corvus — положение на небе или физическую группу? Какие сведения дают оптический снимок и наблюдения ALMA?",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "crv"
+        }
+      ],
+      "question_refs": [],
+      "source_links": [
+        {
+          "title": "IAU — The Constellations",
+          "url": "https://iauarchive.eso.org/public/themes/constellations/",
+          "accessed": "2026-10-08",
+          "supports": "IAU table identifies Corvus (Crv) as the Crow; the IAU explains constellations are defined sky areas and an object \"in\" a constellation lies within its boundaries rather than belonging to a star pattern."
+        },
+        {
+          "title": "NASA/ESA Hubble — Stellar Fireworks Accompany Antennae Galaxy Collision",
+          "url": "https://science.nasa.gov/asset/hubble/stellar-fireworks-accompany-antennae-galaxy-collision/",
+          "accessed": "2026-10-08",
+          "supports": "Hubble image release explicitly places NGC 4038/4039 in Corvus, attributes luminous tidal tails to gravitational forces, and reports over 1,000 young clusters and collision-triggered star formation. Cluster survival is supported separately by the linked original1997 release."
+        },
+        {
+          "title": "ESO — Antennae galaxies composite of ALMA and Hubble observations",
+          "url": "https://www.eso.org/public/images/eso1137b/",
+          "accessed": "2026-10-08",
+          "supports": "ESO observational release explicitly places NGC 4038/4039 in Corvus; explains visible-light Hubble shows newborn stars while ALMA millimetre/submillimetre CO observations trace dense cold hydrogen clouds where new stars form."
+        },
+        {
+          "title": "NASA Hubble — Hubble Reveals Stellar Fireworks Accompanying Galaxy Collisions (1997)",
+          "url": "https://science.nasa.gov/missions/hubble/hubble-reveals-stellar-fireworks-accompanying-galaxy-collisions/",
+          "accessed": "2026-10-08",
+          "supports": "The linked original release describes collision-triggered star formation and observations suggesting young clusters can remain bound by their own gravity and evolve into globular clusters; no interaction age is asserted here."
+        }
+      ],
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "status": "draft"
+    }
+  ]
+}

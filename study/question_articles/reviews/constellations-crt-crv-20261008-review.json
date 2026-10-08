@@ -1,0 +1,37 @@
+{
+  "reviewer": "Native Codex, session-5191183ee6a04c9b849a7910ff93166c; model label self-reported",
+  "author": "Native Codex, session-6468a45aa629470cb76fd85da497669e; runtime variant unavailable; root corrected unsupported source claims",
+  "scope": "Independent native exact-source factual draft acceptance; different actual provider and runtime/publication approval pending",
+  "review_tasks": [
+    "task-8333291925b845139861ba36fb1106e1",
+    "task-c8a93b6a31964d1d97569bc5ab62b9dc",
+    "task-03644852c4c343258529fbe77e77e92b"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:crt",
+      "verdict": "accept",
+      "article_sha256": "429659b8745b00e170309c1685198a17d93b06615132bde1131fda974db97710",
+      "note": "ACCEPT. Canonical SHA-256 (ensure_ascii=false, sort_keys=true, separators=(',',':')): 429659b8745b00e170309c1685198a17d93b06615132bde1131fda974db97710. 169 whitespace-delimited words and 3 source links. Current object is unchanged from the prior accepted whole-object review.",
+      "checked_sources": [
+        {
+          "evidence": "IAU https://iauarchive.eso.org/public/themes/constellations/ lists Crater/Crt, Cup and boundary (983–987). Discovery paper https://arxiv.org/abs/1601.07178 explicitly says Crater 2 was identified in VST ATLAS, has ~1100-pc half-light radius, very low surface brightness, and lies ~120 kpc from the Sun (16–17). Spectroscopy paper https://arxiv.org/abs/1612.06398 finds 62 members and 2.7±0.3 km/s dispersion (16), and limits the dark-matter conclusion to dynamical equilibrium plus negligible unresolved-binary contamination (19). Article retains those conditions and clearly separates sky location from physical association."
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:crv",
+      "verdict": "accept",
+      "article_sha256": "1b0d92aed95f0c175eb8909c790a84bb762cb82c31a8ff931cb547a435f5bfd3",
+      "note": "ACCEPT. Canonical SHA-256: 1b0d92aed95f0c175eb8909c790a84bb762cb82c31a8ff931cb547a435f5bfd3. 169 whitespace-delimited words and 4 source links. Body and all non-metadata fields are unchanged; the whole-object hash changed only because source_links[1].supports was corrected.",
+      "checked_sources": [
+        {
+          "evidence": "ACCEPT. Previously opened NASA Hubble asset https://science.nasa.gov/asset/hubble/stellar-fireworks-accompany-antennae-galaxy-collision/ supports Corvus placement, luminous tidal tails produced by gravitational forces, over 1,000 young clusters, and collision-triggered star formation. Previously opened original NASA 1997 release https://science.nasa.gov/missions/hubble/hubble-reveals-stellar-fireworks-accompanying-galaxy-collisions/ supports the qualified claim that young clusters may remain gravitationally bound and evolve into globular clusters. The replacement metadata now separates those claims correctly; no unsupported interaction age or cluster ranking remains."
+        },
+        {
+          "evidence": "Previously opened ESO image page https://www.eso.org/public/images/eso1137b/ supports the visible-light/newborn-star and ALMA CO/dense cold gas distinction; IAU constellation table https://iauarchive.eso.org/public/themes/constellations/ supports Corvus/Crv identification."
+        }
+      ]
+    }
+  ]
+}
