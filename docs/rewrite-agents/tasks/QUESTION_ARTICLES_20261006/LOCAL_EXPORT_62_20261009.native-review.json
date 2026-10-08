@@ -1,0 +1,62 @@
+{
+  "acceptance": "Independent correspondence audit with exact hashes and local-preparation verdict.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only exact currentlocalasset62 after genuinegrant3760 importedacceptedEQU/SGE review and exporterwrite/checkPASS62, coveragerefresh. Inspect frozen drafts/reviews and generatedasset independent expectedacceptedsubset/deepequality withonlystatusdraft→accepted; computecanonicalasset/manifestdigests/countbindings; no factualreviewall62claim. PreviousLOCAL_EXPORT60 reporthistorical. No files/Git/children/tests/build/browserautomation/managedworkers/deploy/secrets. FreshREADY/explicitoffer/accept epoch4,scopedreadlease releaseQUEUEbeforeexistinglightreadexception. Native preparation only, different-provider/fullweb/browser/publicationpendingquiz_master-mkk. Returnconcreteevidence/limitations,IDLE.",
+  "created_at": 1791501214.304965,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-b4af9e0b30cb47319de33092739c5d23",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "command": "read-only Python audit, cwd C:\\ap\\quiz_master, exit 0",
+        "kind": "independent_reconstruction",
+        "result": "Parsed every draft and review. Exactly 62 accept verdicts reference known draft records; all 62 canonical article hashes match their review records; no unknown review IDs, duplicate asset IDs, extra asset IDs, or missing expected asset IDs."
+      },
+      {
+        "kind": "deep_correspondence",
+        "result": "Rebuilt expected catalog by copying each accepted draft article and changing only status draft→accepted, then sorting by id. Full object deep equality with next/apps/quiz_app/assets/study/question-articles.json is true; asset schema qm-question-articles/v1; 62/62 asset records status accepted."
+      },
+      {
+        "kind": "digests",
+        "result": "Asset canonical SHA-256 ca31c329c4e5f31d4cba09f61bf434cd814709191203e7e146147adfbb8c5b8c; raw file SHA-256 2cd643a5e9b6e6ca4f8a165a742a78e0d0f72abf45f347c23f17243811d27b35; accepted review-manifest mapping SHA-256 f04155bc8ba1286c8bcc164bfe394ba5a8785d166a3190a3beeb6b6d63901687."
+      },
+      {
+        "command": "read-only Python audit, cwd C:\\ap\\quiz_master, exit 0",
+        "kind": "coverage_binding_crosscheck",
+        "result": "coverage.json fields and recomputed counts agree: accepted 62, draft 87, missing 4206. All 62 asset bindings exactly equal the accepted coverage bindings; accepted coverage article IDs exactly equal the asset IDs."
+      },
+      {
+        "kind": "exporter_static_inspection",
+        "result": "build.py reconstructs accepted records only after review verdict=accept and exact article_sha256 equality, validates bindings/source metadata, and replaces only status with accepted."
+      }
+    ],
+    "leases": "Scoped interactive read lease lease-765a1ca4bca3453aaebb5c3086e43dd2 was granted and released.",
+    "remaining_risks": [
+      "I did not run build.py --check, tests, a build, browser automation, or fact-check all 62 articles; those were outside this audit scope.",
+      "This is native local-preparation evidence. Different-provider/full web verification and publication approval remain pending under quiz_master-mkk."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/export62-r1",
+    "status": "DONE",
+    "verdict": "ACCEPT — local 62-record export is an exact reconstruction of the independently accepted frozen-review subset."
+  },
+  "root_task_id": "task-b4af9e0b30cb47319de33092739c5d23",
+  "run_id": "run-20ac8aecfc034e608534d05710513b37",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent local62 article export audit",
+  "version": 3
+}

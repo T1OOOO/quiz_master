@@ -1,0 +1,110 @@
+{
+  "acceptance": "Independent factual verdicts on frozen exact objects with actual source access evidence.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only review exactly study/question_articles/drafts/constellations-mic-tel-20261009.json, provenance and full English ARTICLE_MIC_TEL_20261009_EN.md. Actually open each primary source, verify every factual assertion/region association, especially AU Mic known planets dated source count and updated 2022 HR6819 no-black-hole interpretation, clear self-checks/no answer ambiguity, Russian 150–220 words. Return per article exact canonical SHA256 accept/rework, actual URL evidence, limitations. No files/Git/children/managedworkers/tests/build/browserautomation/export/deploy/secrets. Native local factual review only, cross-provider release pending OPEN quiz_master-mkk. Request read lease, release QUEUED before existing light read/web exception. Other agents present; root owns integration.",
+  "created_at": 1791501415.3491414,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-9f8ef032b12f4782946e6f3541e15c59",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "article_id": "quizipedia:constellation:mic",
+        "canonical_sha256": "99468d8d89fca3221496705ae64ae744fa44ed3dc90f3e589a3581d96ecb9621",
+        "checked_sources": [
+          {
+            "evidence": "Opened: bounded sky areas; Microscopium/Mic.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Opened: 11 Jan 2023 report gives Microscopium, 32 ly, ~23 Myr, two planets at that date, collisionally replenished debris, and 3.56/4.44 μm fine-dust result.",
+            "url": "https://science.nasa.gov/missions/webb/new-webb-image-reveals-dusty-disk-like-never-seen-before/"
+          },
+          {
+            "evidence": "Direct open failed: Internal Error.",
+            "url": "https://www.nature.com/articles/s41586-020-2400-z"
+          },
+          {
+            "evidence": "Opened: 3–5 μm disk imaging and no compelling companion candidates.",
+            "url": "https://arxiv.org/abs/2308.02486"
+          },
+          {
+            "evidence": "Opened alternate original: AU Mic b transit, 8.46 d.",
+            "url": "https://arxiv.org/abs/2006.13248"
+          },
+          {
+            "evidence": "Opened: d validation/tentative status; counts require date qualification.",
+            "url": "https://arxiv.org/abs/2302.04922"
+          }
+        ],
+        "findings": [
+          "Unqualified present-tense claim that AU Mic has two known planets is stale. Actually opened arXiv:2302.04922 (2023) reports a statistically validated/tentative AU Mic d beyond the two known transiting planets b/c. Current NASA Exoplanet Archive result lists b,c,d and controversial e; direct archive page timed out, so this is not opened source evidence.",
+          "Listed Nature URL failed direct opening. Replace it with opened original preprint arXiv:2006.13248, supporting AU Mic b's transit/8.46 d, or remove that metadata claim."
+        ],
+        "required_change": "Date-qualify/remove the two-planet count; replace inaccessible Nature URL with arXiv:2006.13248; request exact post-edit rereview.",
+        "verdict": "REWORK",
+        "word_count": 164
+      },
+      {
+        "article_id": "quizipedia:constellation:tel",
+        "canonical_sha256": "621be836e2980d90b3cbef7e8093208a5c89852388e359d05bf72de399f3b329",
+        "checked_sources": [
+          {
+            "evidence": "Opened: bounded sky areas; Telescopium/Tel.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Opened: 2022 revision, MUSE no bright wide companion, GRAVITY two close sources, binary/no BH, stripped-star interaction/short phase; image location Telescopium.",
+            "url": "https://www.hq.eso.org/public/news/eso2204/"
+          },
+          {
+            "evidence": "Opened: MUSE and GRAVITY results, close binary/no BH, stripped B plus Be interpretation.",
+            "url": "https://arxiv.org/abs/2203.01359"
+          }
+        ],
+        "note": "Factual claims, self-check answer, sources, target reference, and word count supported.",
+        "verdict": "ACCEPT",
+        "word_count": 166
+      }
+    ],
+    "changed_files": [],
+    "evidence": [
+      {
+        "kind": "frozen_hashes",
+        "result": "MIC 99468d8d89fca3221496705ae64ae744fa44ed3dc90f3e589a3581d96ecb9621 (164 words); TEL 621be836e2980d90b3cbef7e8093208a5c89852388e359d05bf72de399f3b329 (166 words). Both have valid v1 shape, draft status, one matching constellation target reference, no question refs, 4/3 HTTPS sources."
+      },
+      {
+        "kind": "actual_source_opens",
+        "result": "Opened IAU, NASA Webb, arXiv:2308.02486, ESO eso2204, arXiv:2203.01359, original accessible AU Mic preprint arXiv:2006.13248, and arXiv:2302.04922. Listed Nature URL directly failed with Internal Error."
+      }
+    ],
+    "lease": "Scoped read lease lease-11501c6c331a4a0aa92854b40d2f262d granted/released before web reading.",
+    "remaining_risks": [
+      "No tests, build, export, browser automation, or file edits; review scope is this frozen pair only.",
+      "Native review is not cross-provider publication approval; quiz_master-mkk remains open."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/MIC-TEL-r1",
+    "status": "DONE_WITH_CONCERNS",
+    "verdicts": {
+      "quizipedia:constellation:mic": "REWORK",
+      "quizipedia:constellation:tel": "ACCEPT"
+    }
+  },
+  "root_task_id": "task-9f8ef032b12f4782946e6f3541e15c59",
+  "run_id": "run-49272bd534ea4e2ebd81eea76c30cbe4",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent MIC/TEL frozen factual review",
+  "version": 3
+}
