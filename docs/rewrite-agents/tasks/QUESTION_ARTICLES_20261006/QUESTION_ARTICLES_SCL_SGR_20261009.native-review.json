@@ -1,0 +1,113 @@
+{
+  "acceptance": "Actual source visits, exact hashes and all scoped article verdicts; minimal factual corrections if needed.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Bounded read-only independent QuizMaster article factual preparation. Workspace C:/ap/quiz_master branchcodex/quiz-v2 HEAD5e9b903, root session828b team2ed452 epoch4. User authorized finish drafts/facts/answers/mobile UX and interesting source-backed Quizipedia. Local100accepted78/88constellationreadings,156draftarticles53batches;10remainingconstellationreviews;26feedbackOPEN/no new. Serverstagedf57191b64/publice0f89cf unchanged. Root is selfcheckcoauthor; original authors preserved inGit. Disclose originalauthorship; if originalauthor sourceauditonlynotindependentaccept. Read exact frozen object; actually open every cited primaryURL; verify all facts/figures/types/sky associations/uncertainty/dates/imagecolors/mechanisms/selfchecks. Contract qm-question-articles/v1 exact id/targetrefs/statusdraft/emptyquestionrefs/three science-recognition-astronomy tags/2–5HTTPSsources/150–220rawRussianwhitespacewords/usefulheadings/answeredobjectselfcheck. Return structured articles[{id,verdict,canonical_sha256,checked_sources:[{url,evidence,accessed2026-10-09}],minimalcorrections}] canonicalSHA256 json.dumps ensure_ascii=False sort_keys=True separators=(',',':'). Preserve originalsourceaccessdates; actual independent visits recordedseparately. Currenthost_hub accept/readlease/ack/activity, sharedinteractive256MiBread reservation and release beforeweb/end. QUEUEDnothing, release beforehuman-authorizedboundedlightread/webexception. No writes/Git/children/tests/build/browserautomation/managedworkers/Actions/export/deploy. Nativepreparation only; different-providerreleaseapproval/mkkcontainment/browser/cutover and broaderquestionsoptionsUIanatomy remainpending. Notalone preserveotherfiles/resources.\nFrozenfile:study/question_articles/drafts/constellations-scl-sgr-20261008.json\nSCL182/SGR197words. ESO2025NGC25311millionly/MUSEVLT>50hours>100exposures65000lymap composition/motion;JPLSagA*4millionSun>26000ly/EHTEarthsizedvirtualradioarray, surroundinggasnotstellarsurface.",
+  "created_at": 1791530460.466738,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-d873bb173fa1424f94bae05854989e49",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "ab63d0abb9e0029bc926b80d2f1130f27e511df6176099c953231e4eab8fa279",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU page; lines 48-61 support the 88 bounded regions and the distinction between sky region and stellar pattern; line 174 identifies Sculptor/Scl.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened ESO release (18 June 2025); lines 7-11 support the Sculptor Galaxy/NGC 253, ~11 million light-years, MUSE on VLT, >50 hours, >100 exposures, ~65,000 light-year map, and using colors to study composition and motion; line 96 explicitly labels NGC 253 in constellation Sculptor.",
+            "url": "https://www.eso.org/public/news/eso2510/"
+          }
+        ],
+        "id": "quizipedia:constellation:scl",
+        "minimal_corrections": [],
+        "notes": "The self-check correctly explains what spectral colors add and distinguishes the galaxy map from constellation lines.",
+        "verdict": "accept",
+        "word_count": 182
+      },
+      {
+        "canonical_sha256": "724bc77307b6104eb1f0d4670beb9b14054717be41e5fe252f44a2e7b278651a",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU page; lines 48-61 describe the 88 bounded sky regions and that pattern stars are generally not physically connected; line 172 identifies Sagittarius/Sgr.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened NASA JPL page; lines 31-36 identify Sagittarius A* at the Milky Way center; lines 73 and 83-98 describe the EHT Earth-sized virtual telescope, imaging surrounding matter, >26,000 light-years and 4 million solar masses; line 92 explicitly places the galactic center toward Sagittarius.",
+            "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/telescopes-get-extraordinary-view-of-milky-ways-black-hole/"
+          }
+        ],
+        "id": "quizipedia:constellation:sgr",
+        "minimal_corrections": [],
+        "notes": "The wording identifies the radio image as surrounding gas, not a stellar surface; the self-check correctly separates Sagittarius as sky direction from the Milky Way and its central black hole.",
+        "verdict": "accept",
+        "word_count": 197
+      }
+    ],
+    "authorship": "I did not author the original SCL/SGR drafts.",
+    "evidence": [
+      {
+        "check": "Exact frozen article objects reviewed read-only",
+        "reference": "study/question_articles/drafts/constellations-scl-sgr-20261008.json",
+        "result": "pass"
+      },
+      {
+        "check": "Canonical hashes and raw whitespace word counts",
+        "reference": "SCL ab63d0abb9e0029bc926b80d2f1130f27e511df6176099c953231e4eab8fa279, 182 words; SGR 724bc77307b6104eb1f0d4670beb9b14054717be41e5fe252f44a2e7b278651a, 197 words.",
+        "result": "pass"
+      },
+      {
+        "check": "Primary sources opened; claims, object/constellation associations, numbers and self-checks checked",
+        "reference": "IAU, ESO NGC 253, and NASA JPL Sagittarius A* pages were actually opened on 2026-10-09; source-level evidence follows.",
+        "result": "pass"
+      },
+      {
+        "check": "Contract fields, source count and article length",
+        "reference": "Both objects have exact target_refs, empty question_refs, expected science/recognition/astronomy tags, draft status, two HTTPS source links and 150-220 whitespace-separated Russian words.",
+        "result": "pass"
+      }
+    ],
+    "limitations": "Original source_links dates remain 2026-10-08; independent source visits in this review occurred 2026-10-09. No files were modified. Native factual preparation only; this does not constitute different-provider release approval.",
+    "review_date": "2026-10-09",
+    "reviewer_identity": "Codex; exact runtime model variant not exposed in session context.",
+    "source_visits": [
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://www.eso.org/public/news/eso2510/"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/telescopes-get-extraordinary-view-of-milky-ways-black-hole/"
+      }
+    ],
+    "verdict": "accept"
+  },
+  "root_task_id": "task-d873bb173fa1424f94bae05854989e49",
+  "run_id": "run-ec3c84b6cdfe43b0a9943ab4346b8718",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: scl-sgr exact article review",
+  "version": 3
+}
