@@ -247,3 +247,8 @@ Realstandardgrant3793 imported finalnative reviewmanifest and existingexporter -
 ## Production image preload verified (16:24 UTC)
 
 16:24UTC execution under actual4421/4424: archived current production e0f89cf OCIimage and installed only own watchedK3star. Initial dualaliasarchive correctly retained de8c but triggered K3scanonicalReference->NamedTagged failure; actualnativeadviceHub22630 supported tag-only correction. Verified tag-only archive67491328B sha2563fa16626b37c138941f0eed41d39442c8059dd75be8900de3f645e50228a71d5, sole tagdescriptor exactde8c, atomicreplace own watchedtar; originaldualtar retained outsidewatchedforevidence. ActualK3slog19:28:20+03 Imported1images success, generatedcanonicaldigestalias exactde8c and bothimagespinned. Productionversione0f89cf/pod2of2/26OPENnonew unchanged. No sharedcache/deployment/DB/PVC/node restart or otherproject mutations. ie7 remainsin_progress: restart/cacheloss rehearsal/future releaseintegration/rootcause investigation pending; local133 notbuilt/published.
+
+
+## Remaining country article source audit (17:25 UTC)
+
+17:25UTC: root added answered selfchecks to remaining FR/AR/CL countrydrafts (205/170/195words). Actualnativehelper acceptedHubtask59d59e under grantedreadleaseeaea7 after six primaryURLvisits2026-10-09; allthreeexacthashesaccepted. Fullreportandmanifest imported under actual4478. Export4483 remainedQUEUEDagent_turns/olderrequest and ownreleasedwithout execution;runtime133/coverage4198missing24draft133accepted unchanged, next136exportpending. 26feedbackOPEN/no new. No appcode/deps/newscript/fullbuild/browser/deploy/managedexternallaunch. Nativepreparationnotdifferentproviderrelease;productione0f89cf unchanged;broader2ln1in_progress;foreign69preserved.

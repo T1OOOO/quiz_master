@@ -1,0 +1,104 @@
+{
+  "acceptance": "3exactwholeobjecthashes and actualsourceevidence; request rework for unsupportedclaims",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\country-flags-ar-cl-20261008.json",
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\country-france-20261007.json"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent exacthash factual review of two frozen draftfiles, all6primarysources actualopens. Verify allclaims/selfchecks, targetrefs emptyquestionrefs150-220words. No edits/children/build/browser. Require actualscopedreadgrant. Report eachhash/verdict/findings/checked_sources URL,evidence,actualvisitdate. Nativepreparationnotdifferentproviderrelease.",
+  "created_at": 1791566763.273516,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-59d59e0044ff400fbc23e9a5c47a1ed9",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Casa Rosada national symbols page. It describes two horizontal celeste bands around a white center, the central sun reproduced from early Argentine coins, and its gold-yellow color.",
+            "url": "https://www.casarosada.gob.ar/nuestro-pais/simbolos-nacionales"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Argentina.gob.ar national symbols page. It states that the Sun was incorporated in the central white band on 25 February 1818.",
+            "url": "https://www.argentina.gob.ar/interior/asuntos-politicos-e-institucionales/simbolos-nacionales"
+          }
+        ],
+        "id": "quizipedia:country:AR",
+        "notes": "Article's stripe layout, sun placement/color, and 1818 fact are supported. Self-check answers match cited official descriptions.",
+        "question_refs": [],
+        "sha256": "cf1d2ff7a230854cbf47019648578c6a09f38d02cddaa858798509efd83987ff",
+        "status": "draft",
+        "target_ref": "quizipedia:country:AR",
+        "verdict": "accept",
+        "word_count": 170
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Chilean Library of Congress legal text, Decreto Supremo 1534. Article 1 specifies two equal horizontal bands, red below, blue for the hoist-side third of the upper band and white for the remaining two thirds, with a centered five-point white star; Article 3 specifies upper-left placement from viewer perspective when displayed without a mast.",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=18035"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Chilean Ministry of Foreign Affairs national emblems page. It identifies the flag as a national emblem adopted by Supreme Decree 1534 and links the official specification.",
+            "url": "https://www.minrel.gob.cl/ceremonial-y-protocolo/emblemas-nacionales"
+          }
+        ],
+        "id": "quizipedia:country:CL",
+        "notes": "Geometry, star, and display-orientation self-check are directly supported by the decree; the Ministry source supports national-emblem/adoption context.",
+        "question_refs": [],
+        "sha256": "4cbe814c73144d760e7ebb96a45251d02aff9e1a652258f9bb3b3a7a99dd917e",
+        "status": "draft",
+        "target_ref": "quizipedia:country:CL",
+        "verdict": "accept",
+        "word_count": 195
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Élysée page. It specifies the definitive 15 February 1794 order as blue at the hoist, white in the middle, red flying; it distinguishes the documented decree from legends around the flag's origin.",
+            "url": "https://www.elysee.fr/la-presidence/le-drapeau-francais"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Élysée's explainer, which identifies white with the king and blue/red with Paris, and describes the colors' joining during the Revolution.",
+            "url": "https://www.elysee.fr/la-presidence/les-symboles-de-la-republique-francaise-expliques-pour-les-enfants"
+          }
+        ],
+        "id": "quizipedia:country:FR",
+        "notes": "Color order, historical context, qualified origin claims, and self-check answers are supported by the two Élysée pages.",
+        "question_refs": [],
+        "sha256": "af0cbc017e1a3670ca3c32b9d0bcabc00a744106d170943f805439117a99d4dd",
+        "status": "draft",
+        "target_ref": "quizipedia:country:FR",
+        "verdict": "accept",
+        "word_count": 205
+      }
+    ],
+    "evidence": [
+      "Read both current JSON draft files under actual GRANTED lease lease-eaea7d23ff8f4195b6c6f13e93880748.",
+      "Computed canonical sorted-key UTF-8 JSON SHA-256 for each full article object; verified exact ids, target_refs, empty question_refs, status draft, tags, and word counts.",
+      "Actually opened each of the six cited primary source URLs on 2026-10-09 and checked the claims described above."
+    ],
+    "model": "Codex; exact runtime model variant unavailable",
+    "summary": "Independent source and contract review completed for AR, CL, and FR. All six cited primary sources were opened on 2026-10-09. All three objects match their country target_refs, have empty question_refs, remain draft, and are within the 150–220 word range (including headings). No factual or self-check corrections required.",
+    "verdict": "accept"
+  },
+  "root_task_id": "task-59d59e0044ff400fbc23e9a5c47a1ed9",
+  "run_id": "run-dd768359558542a494aae70f6f1cca1e",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent FR AR CL article factual source audit",
+  "version": 3
+}
