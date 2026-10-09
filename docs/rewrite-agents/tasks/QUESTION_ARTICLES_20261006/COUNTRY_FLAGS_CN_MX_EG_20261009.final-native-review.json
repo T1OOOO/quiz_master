@@ -1,0 +1,108 @@
+{
+  "acceptance": "Full final perarticle exacthash/verdict plus URL/evidence/accessed; initial rework report preserved.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\country-flags-cn-mx-eg-20261008.json"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Recheck frozen CN/MX/EG after ONLY CN first citation replacement with actual StateCouncil Constitution2018amended published2019 Article141. Root opened header2018 and Article141 independently. Body and MX/EG wholeobjects unchanged. Verify newCN exacthash/sourceURL/title/supports; retain allcitationactualevidence and reconfirm unchangedMX/EG hashes. No edits/children/build/browser; granted read lease mandatory. Native prep notreleaseapproval.",
+  "created_at": 1791552552.557437,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-565ff746e3bb474e8e9a642acd3e96f6",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened current State Council Constitution page; page identifies amendments through 2018, and Article 141 describes the national flag as red with five stars. Supports the revised citation and article’s constitutional description.",
+            "url": "https://english.www.gov.cn/archive/lawregulations/201911/20/content_WS5ed8856ec6d0b3f0e9499913.html"
+          },
+          {
+            "accessed": "2026-10-08",
+            "evidence": "Opened Supreme People's Court publication of the National Flag Law appendix; supports yellow five-pointed stars, one large and four smaller to its right, with the diagram oriented with the flagstaff on the left.",
+            "url": "https://english.court.gov.cn/2016-04/14/c_1170197.htm"
+          }
+        ],
+        "id": "quizipedia:country:CN",
+        "notes": "No correction needed. Specific layout claim is attributed to the law appendix, distinct from the Constitution's concise description.",
+        "question_refs": [],
+        "sha256": "81c092d975fcddaf6b1895fece2c7af27d3dc4d64d53c3512a8afaa4eba18a5b",
+        "status": "draft",
+        "target_ref": "quizipedia:country:CN",
+        "verdict": "accept",
+        "word_count": 179
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-08",
+            "evidence": "Opened Mexico's federal law; Articles 2–3 support the vertical green-white-red stripes and central coat of arms, including eagle, nopal on a rock in a lake, snake and branches.",
+            "url": "https://ordenjuridico.gob.mx/Documentos/Federal/html/wo13243.html"
+          },
+          {
+            "accessed": "2026-10-08",
+            "evidence": "Opened Embassy of Mexico newsletter PDF, page 7; supports the Tenochtitlan founding legend and the modern flag design established in 1968.",
+            "url": "https://embamex.sre.gob.mx/ecuador/images/Boletines/enerofebrero2016.pdf"
+          }
+        ],
+        "id": "quizipedia:country:MX",
+        "notes": "Exact canonical hash matches prior accepted review; no article content changed.",
+        "question_refs": [],
+        "sha256": "998b05aed60a2cc3529e5b17367eaf4738c57a1698a42371399528d35e085819",
+        "status": "draft",
+        "target_ref": "quizipedia:country:MX",
+        "verdict": "accept",
+        "word_count": 163
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-08",
+            "evidence": "Opened Embassy of Egypt Constitution page; Article 223 identifies black, white and red and the golden-yellow Eagle of Saladin for the national flag.",
+            "url": "https://egyptembassy.net/egypt-today/egypts-government/progressive-constitution/"
+          },
+          {
+            "accessed": "2026-10-08",
+            "evidence": "Opened the Egyptian Presidency's current flag page; supports the red-white-black horizontal order and golden eagle in the center.",
+            "url": "https://www.presidency.eg/ar/%D9%85%D8%B5%D8%B1/%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%89/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D9%8A/"
+          }
+        ],
+        "id": "quizipedia:country:EG",
+        "notes": "Exact canonical hash matches prior accepted review; no article content changed.",
+        "question_refs": [],
+        "sha256": "e0ca67a3c90fe8a3225ccd2d70220a286bf74a284610e529129f63bee6399b63",
+        "status": "draft",
+        "target_ref": "quizipedia:country:EG",
+        "verdict": "accept",
+        "word_count": 164
+      }
+    ],
+    "evidence": [
+      "Read current draft JSON under actual GRANTED lease lease-084187c46e674b7ea4b83f20eef3d60e.",
+      "Canonical sorted-key UTF-8 JSON SHA-256s computed from each current article object; CN changed only as previously described, MX and EG match previously reviewed hashes.",
+      "All six source URLs were actually opened in prior source review; replacement State Council CN page was independently opened on 2026-10-09."
+    ],
+    "model": "Codex; exact runtime model variant unavailable",
+    "summary": "Final recheck of current CN/MX/EG objects. CN citation now points to the current State Council Constitution page; MX and EG objects are byte-canonical-hash unchanged from their prior accepted review. All three remain draft, have exactly one matching country target_ref, empty question_refs, and 150–220 whitespace-delimited Russian words including headings.",
+    "verdict": "accept"
+  },
+  "root_task_id": "task-565ff746e3bb474e8e9a642acd3e96f6",
+  "run_id": "run-acd46093ea4d43fbaae8e20c115baa80",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Final CN citation recheck with MX EG unchanged hashes",
+  "version": 3,
+  "provenance_correction": {
+    "hub_message_id": 21911,
+    "actual_visit_date": "2026-10-09",
+    "note": "Reviewer confirmed all six independent source visits were 2026-10-09. Five dates in final raw report copied original draft metadata; initial source review contains actual visits. No additional reads for this correction."
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "articles": [
+    {
+      "canonical_sha256": "54678096d1501eeaf676eb29d3092380728b62cd5502710ca80b0a90f05768f3",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view0; source labels itself full text after amendments through March 14, 2004 (lines 18-25). Article 136 says the PRC flag is a red flag with five stars (turn1088view0, lines 583-585). This directly supports the words but is not the current constitutional text.",
+          "url": "https://english.www.gov.cn/archive/laws_regulations/2014/08/23/content_281474982987458.htm"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view1. Its 1949 Appendix explicitly says it uses the flagstaff-left orientation, specifies a red rectangle with five yellow five-pointed stars in the upper left, one large and four smaller to its right (turn1088view1/turn1088view2, lines 199-206); this supports the geometry and selfcheck. The cited page is a 2016 publication of the law, so it should be understood as an English presentation of the 1949 design directions, not the current full law.",
+          "url": "https://english.court.gov.cn/2016-04/14/c_1170197.htm"
+        }
+      ],
+      "evidence": "Exact country target/schema valid: country CN, question_refs empty, status draft, tags country:cn/domain:geography/topic:flag, two HTTPS sources. Body/selfcheck are factually accurate and 179 words. Minimal source correction: replace the 2004-archived Constitution URL/title/supports with current 2019 official English text amended through 2018 (opened separately: https://english.www.gov.cn/archive/lawregulations/201911/20/content_WS5ed8856ec6d0b3f0e9499913.html; turn1091view0 and turn1095view0 lines 30-35, 687-692 show 2018 amendment and current Article 141, same red-five-star wording). The current Chinese National Flag Law page is marked effective and amended in 2020, and retains the 1949 making directions (turn1094view0/turn1095view1 lines 12-22 and 162-176), independently confirming the design remains current.",
+      "id": "quizipedia:country:CN",
+      "minimal_corrections": [
+        "Replace the first Constitution source with the current 2019/2018-amended official text and update supports to Article 141; keep the body unchanged. The 2016 flag-law page can remain if its stated scope stays limited to its 1949 Appendix."
+      ],
+      "verdict": "REVISE",
+      "word_count": 179
+    },
+    {
+      "canonical_sha256": "998b05aed60a2cc3529e5b17367eaf4738c57a1698a42371399528d35e085819",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view2. Articles 2 and 3 (turn1088view3/turn1088view4, lines 73-85) specify the eagle, nopal growing on a rock from a lake, snake held in beak and claw, oak/laurel branches, vertical green-white-red order from hoist, and centered emblem.",
+          "url": "https://ordenjuridico.gob.mx/Documentos/Federal/html/wo13243.html"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view3; find turn1088view5, lines 537-544 on PDF page 6 supports the 1968 adoption/design and the Tenochtitlan founding legend. It explicitly attributes the account to the Mexican government source.",
+          "url": "https://embamex.sre.gob.mx/ecuador/images/Boletines/enerofebrero2016.pdf"
+        }
+      ],
+      "evidence": "Exact country target/schema valid: country MX, question_refs empty, status draft, tags country:mx/domain:geography/topic:flag, two HTTPS sources. Body and answered selfcheck are supported and 163 words. The diplomatic PDF is dated 2016, but claims are historical (1968 design/adoption and origin legend), not an unqualified recent update.",
+      "id": "quizipedia:country:MX",
+      "minimal_corrections": [],
+      "verdict": "ACCEPT",
+      "word_count": 163
+    },
+    {
+      "canonical_sha256": "e0ca67a3c90fe8a3225ccd2d70220a286bf74a284610e529129f63bee6399b63",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view4. Article 223 (turn1089view1/turn1089view2, lines 1302-1305) identifies the three colors and golden-yellow Eagle of Salah El Din.",
+          "url": "https://egyptembassy.net/egypt-today/egypts-government/progressive-constitution/"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened 2026-10-09, ref turn1087view5; current presidency page (turn1089view3/turn1089view5, lines 95-110) states red top, white middle, black bottom, and gold Salah al-Din eagle at the center of the white band. The page identifies the flag as current.",
+          "url": "https://www.presidency.eg/ar/%D9%85%D8%B5%D8%B1/%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%89/%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D9%8A/"
+        }
+      ],
+      "evidence": "Exact country target/schema valid: country EG, question_refs empty, status draft, tags country:eg/domain:geography/topic:flag, two HTTPS sources. Body and answered selfcheck are supported and 164 words. It attributes color meanings to the Presidency page without presenting them as universal.",
+      "id": "quizipedia:country:EG",
+      "minimal_corrections": [],
+      "verdict": "ACCEPT",
+      "word_count": 164
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "hash_schema_words",
+      "result": "Read current frozen file under scoped GRANTED lease. Recomputed per-object canonical SHA256 (UTF-8 JSON, ensure_ascii=False, sorted keys, compact separators). Counts: CN 179, MX 163, EG 164. Verified IDs, exact country target_refs, empty question_refs, status draft, country/domain/topic tags and answered selfchecks."
+    },
+    {
+      "kind": "actual_source_visits",
+      "result": "Actually opened all six citations today and examined claim-specific text. Also opened current official 2019 PRC Constitution and current-effective Chinese National Flag Law amended in 2020. No cited source fetch failed."
+    },
+    {
+      "kind": "source_archive_limitation",
+      "result": "CN body claims remain accurate, and a current official source confirms them. Nevertheless its first cited Constitution is only the version amended through 2004, while the current Constitution amended in 2018 labels the same sentence Article 141; revise that citation. Second CN citation is explicitly a 2016 publication of the 1949 design appendix; current 2020 law retains the same appendix."
+    },
+    {
+      "kind": "no_edits",
+      "result": "No draft files were modified; no tests/builds/browser automation run."
+    }
+  ],
+  "grant_id": "lease-c6df6770fe3f44da849a484fb206bc61",
+  "remaining_risks": [
+    "CN needs the first primary source URL/title/supports updated from the 2004-archived Constitution to the current 2018-amended Constitution; article text itself is accurate."
+  ],
+  "runtime_identity": "codex; exact model variant unavailable in current runtime metadata",
+  "status": "DONE_WITH_CONCERNS",
+  "summary": "MX and EG pass. CN's facts pass, but revise the archived constitutional citation to a current official text; all URLs were directly opened."
+}
