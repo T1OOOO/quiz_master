@@ -1,0 +1,137 @@
+{
+  "acceptance": "Every assigned article has source-checked verdict and canonical hash, exact binding check, actual evidence; report ambiguity rather than inventing support.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\harry-potter-rest-20261007.json",
+    "C:\\ap\\quiz_master\\next\\content\\theme-harry-potter\\bundle.json"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent factual and pedagogical review ONLY theme-hp-002, theme-hp-005, theme-hp-006 in harry-potter-rest-20261007.json. Match canonical prompt/options/revision from next/content/theme-harry-potter/bundle.json. Open every cited official URL with web tools; check book/film distinctions, answer and distractor reasoning, factual claims, 150-220 whitespace words, readability and useful context. Compute canonical article SHA256 ensure_ascii=False sorted compact JSON. Submit structured per-article verdict, hash, checked_sources with actual URL/evidence/accessed date and findings through Hub. No writes, builds, browser UI, subprocess workers or children. Obtain real interactive shared-read lease first; QUEUED grants nothing. Unknown runtime variant must remain honestly unknown. Different-provider release review remains separate.",
+  "created_at": 1791581745.308684,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-fcc0b5c4177f445baca2728f77b4c8d9",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "bound_question": {
+          "correct_option": "Остаётся видимой",
+          "correct_option_id": "theme-hp-002-opt-2",
+          "stem": "Что происходит с отметкой человека на Карте мародёров, когда он надевает мантию-невидимку?"
+        },
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened J.K. Rowling's official Map article. It says James Potter's Invisibility Cloak helped map the castle interior and the Homonculous Charm tracks every person's movements in the castle.",
+            "url": "https://www.harrypotter.com/writing-by-jk-rowling/the-marauders-map"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened the official Map fact file. It says the map tracks human and ghostly inhabitants and their movements and is not fooled by Invisibility Cloaks, Polyjuice Potion, or Animagi. This directly supports the answer.",
+            "url": "https://www.harrypotter.com/fact-file/objects/the-marauders-map"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-002",
+        "notes": "No factual correction needed. Distinct learning point is the difference between visual concealment and magical map tracking, with a useful reminder that the map itself is not universally infallible (HP-001's Room of Requirement exception). Distractor explanations match the bound options and are reasonable.",
+        "question_ref": {
+          "question_id": "theme-hp-002",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "05dd12e398d64117555bf6c4d40de19fe7b8e569abc2e198c040c96b58c49b83"
+        },
+        "sha256": "9a7fe09f4fd9e701010945c48384e8b05b8ef939e7c3fdee9f69ccd5159a2817",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "accept",
+        "word_count": 171
+      },
+      {
+        "bound_question": {
+          "correct_option": "В «Сильнодействующих зельях»",
+          "correct_option_id": "theme-hp-005-opt-3",
+          "stem": "В какой книге Гермиона находит рецепт Оборотного зелья?"
+        },
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened official Polyjuice Potion fact file. It says this is an advanced, complicated recipe and identifies Moste Potente Potions in the Restricted Section of the Hogwarts library as its book source.",
+            "url": "https://www.harrypotter.com/fact-file/plants-and-potions/polyjuice-potion"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened J.K. Rowling's official article. It describes the potion as complex and time-consuming and notes that many adult witches and wizards fear to attempt it, supporting the context about difficulty.",
+            "url": "https://www.harrypotter.com/writing-by-jk-rowling/polyjuice-potion"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-005",
+        "notes": "Correct option and question binding match the bundle. The article adds useful context about difficulty and why the named potion text is more plausible than general-history or spell textbooks; no book/film distinction error found.",
+        "question_ref": {
+          "question_id": "theme-hp-005",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "9d42b6df5c50f000c9db3a2e2959494c088177da2a29dcbe7a4f5c91976c81ab"
+        },
+        "sha256": "5efb4fad21747b6c2d3500da9433ebd88b585ae759e21c74aece447aab0f3720",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "accept",
+        "word_count": 155
+      },
+      {
+        "bound_question": {
+          "correct_option": "На людей",
+          "correct_option_id": "theme-hp-006-opt-4",
+          "other_options": [
+            "На домашних животных",
+            "На волшебных зверей",
+            "На школьных призраков"
+          ],
+          "stem": "На какой вид существ рассчитано Оборотное зелье?"
+        },
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened official Polyjuice Potion fact file. It defines the effect as taking another human being's physical appearance and labels the potion 'For human transformations only.' It does not discuss ghosts or establish why a ghost is outside that target category.",
+            "url": "https://www.harrypotter.com/fact-file/plants-and-potions/polyjuice-potion"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Opened J.K. Rowling's official article. It says the drinker assumes another person's physical appearance, requires part of that individual's body, and cannot change species. This supports the human-form rule, but does not resolve whether a human ghost is a defensible reading of the distractor.",
+            "url": "https://www.harrypotter.com/writing-by-jk-rowling/polyjuice-potion"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-006",
+        "notes": "Concrete ambiguity: 'school ghosts' are former humans, and the question asks broadly what kind of beings the potion is designed for. The article says ghosts do not qualify, but the cited references do not establish that detail. Prefer changing the question to ask what physical form it can assume and/or replacing 'school ghosts' with a clearly non-human species; revise the ghost-specific explanation accordingly.",
+        "question_ref": {
+          "question_id": "theme-hp-006",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "756bfb064de3c3e9727ae68280db2711b227a25eff3ee901ecf1240a34c12eea"
+        },
+        "sha256": "fbeae44cfec6c0c00e8fc525c668c27b9f1055a1dac7c2f452f455f36ddeb1f7",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "revise",
+        "word_count": 161
+      }
+    ],
+    "evidence": [
+      "Read only the three assigned article objects from harry-potter-rest-20261007.json and the corresponding three question records plus answer keys from next/content/theme-harry-potter/bundle.json under actual GRANTED lease lease-981e2f0fe7084850af0a84b2386afa41.",
+      "Verified each question_ref question_id and revision_sha256 against the bound bundle question revision; verified exact correct option ID against private grading data.",
+      "Computed canonical sorted-key compact UTF-8 JSON SHA-256 and whitespace-delimited body count for each complete article object; all are draft with empty target_refs and 150–220 words.",
+      "Opened all four unique official source URLs on 2026-10-10 (six article citation instances) and checked relevant claims, book-world framing, distractors and pedagogical value."
+    ],
+    "model": "Codex; exact runtime variant unknown",
+    "summary": "Reviewed only HP-002, HP-005, and HP-006 against the current bundle and four unique official Harry Potter URLs (six citation occurrences), all actually opened on 2026-10-10. HP-002 and HP-005 accept. HP-006 requires revision: the question's 'school ghosts' distractor is not cleanly excluded by its wording; ghosts are formerly human persons, while the source only specifies transformation into another human's physical form / human transformations. Clarify the target as a living human physical form or replace the ghost distractor, and avoid presenting ghost eligibility as directly established by the cited page.",
+    "verdict": "mixed"
+  },
+  "root_task_id": "task-fcc0b5c4177f445baca2728f77b4c8d9",
+  "run_id": "run-d632b30da22e48e7b719ee51cf3bea6d",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent HP article review 002/005/006",
+  "version": 3
+}

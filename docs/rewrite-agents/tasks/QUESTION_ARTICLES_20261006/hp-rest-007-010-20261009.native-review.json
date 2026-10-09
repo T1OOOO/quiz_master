@@ -1,0 +1,177 @@
+{
+  "acceptance": "Every assigned article has source-checked verdict and canonical hash, exact binding check, actual evidence; report ambiguity rather than inventing support.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\harry-potter-rest-20261007.json",
+    "C:\\ap\\quiz_master\\next\\content\\theme-harry-potter\\bundle.json"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent factual and pedagogical review ONLY theme-hp-007, theme-hp-008, theme-hp-009, theme-hp-010 in harry-potter-rest-20261007.json. Match canonical prompt/options/revision from next/content/theme-harry-potter/bundle.json. Open every cited official URL with web tools; check book/film distinctions, answer and distractor reasoning, factual claims, 150-220 whitespace words, readability and useful context. Compute canonical article SHA256 ensure_ascii=False sorted compact JSON. Submit structured per-article verdict, hash, checked_sources with actual URL/evidence/accessed date and findings through Hub. No writes, builds, browser UI, subprocess workers or children. Obtain real interactive shared-read lease first; QUEUED grants nothing. Unknown runtime variant must remain honestly unknown. Different-provider release review remains separate.",
+  "created_at": 1791581745.3704538,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-3c8d9cd304fe45429be9a9cdeac342b6",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "authorship_disclosure": "I did not author the four frozen article bodies.",
+    "changed_files": [],
+    "evidence": [
+      {
+        "reference": "lease-fe0968064f9442cabda557c2f3d5d821",
+        "result": "GRANTED before file and source review.",
+        "type": "read_lease"
+      },
+      {
+        "reference": "next/content/theme-harry-potter/bundle.json",
+        "result": "All four question_refs and revision_sha256 values exactly match the canonical bundle; prompts and answer options match their article explanations.",
+        "type": "binding_check"
+      },
+      {
+        "reference": "https://www.harrypotter.com/fact-file/locations/the-room-of-requirement",
+        "result": "Opened 2026-10-10; supports seventh floor, opposite-tapestry location, three passes while concentrating, need-driven appearance, and Dumbledore's Army use.",
+        "type": "source_open"
+      },
+      {
+        "reference": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement",
+        "result": "Opened 2026-10-10; supports need-driven room, DA/resistance roles, diadem hidden there, Crabbe's Fiendfyre and death.",
+        "type": "source_open"
+      },
+      {
+        "reference": "https://www.harrypotter.com/features/history-of-voldemorts-horcruxes",
+        "result": "Opened 2026-10-10; supports diary/locket/cup/diadem destruction distinctions and Neville's destruction of Nagini with Gryffindor's sword.",
+        "type": "source_open"
+      },
+      {
+        "reference": "https://www.harrypotter.com/features/everyone-connected-to-voldemorts-horcruxes",
+        "result": "Opened 2026-10-10; supports Ron's locket, Hermione's cup, Crabbe's Fiendfyre/diadem, and Neville/Nagini facts.",
+        "type": "source_open"
+      }
+    ],
+    "grant": {
+      "generation": 1,
+      "id": "lease-fe0968064f9442cabda557c2f3d5d821",
+      "profile": "interactive"
+    },
+    "overall": "ACCEPT all four. Each body is 150–220 whitespace words, has valid draft contract fields, and binds exactly to the canonical quiz question. This is native review evidence only, not different-provider release approval.",
+    "reviewer_label": "eri_hya_gru_ind_review/hp-007-010-r1",
+    "runtime_identity": "codex; runtime variant unknown",
+    "verdicts": [
+      {
+        "binding": {
+          "correct_option": "theme-hp-007-opt-1",
+          "question_id": "theme-hp-007",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "44b136a91692b8d71035192d87f1f186ade8e651cc04a8d2f394576121cabcc0"
+        },
+        "canonical_sha256": "c5fa3c924f50d4145249e90c8537d4a721b1ec2ac503acd835c1f9933b408dc1",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official fact file explicitly places the room on the seventh floor, opposite the tapestry, and gives its need-driven nature.",
+            "url": "https://www.harrypotter.com/fact-file/locations/the-room-of-requirement"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official feature confirms the room appears only for real need and documents its DA and resistance uses.",
+            "url": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement"
+          }
+        ],
+        "findings": "Correct answer and distractor explanations are unambiguous. The article keeps the claim in book-universe context.",
+        "id": "quiz:theme-harry-potter:theme-hp-007",
+        "prose_words": 160,
+        "verdict": "ACCEPT"
+      },
+      {
+        "binding": {
+          "correct_option": "theme-hp-008-opt-2",
+          "question_id": "theme-hp-008",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "56be08c59490f3aa37ace5a00a42538c31e4ce10a6d0ed87fb407f2a7064524d"
+        },
+        "canonical_sha256": "57dfa5204ff03f9e3efb2405e228b68633839d1870a01fe77ac9670a30659ed0",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official fact file says the wall is passed three times while concentrating on the need.",
+            "url": "https://www.harrypotter.com/fact-file/locations/the-room-of-requirement"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official feature says the room appears only for real need and comes equipped for the seeker's purpose.",
+            "url": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement"
+          }
+        ],
+        "findings": "The correct option combines both required conditions. The three distractors are clearly ruled out without adding unsupported spell mechanics.",
+        "id": "quiz:theme-harry-potter:theme-hp-008",
+        "prose_words": 161,
+        "verdict": "ACCEPT"
+      },
+      {
+        "binding": {
+          "correct_option": "theme-hp-009-opt-4",
+          "question_id": "theme-hp-009",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "b30435299d7655112e28a625aea8a9f890b78c04d6a760609805dbd91d9a83de"
+        },
+        "canonical_sha256": "33a185df478e2f089051ff048fe8d6754b5d24c4be1c286df48c66a019d6819b",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official feature places the diadem in the Room of Requirement and identifies Crabbe's Fiendfyre and its consequence.",
+            "url": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official Horcrux history identifies the diadem as a Horcrux, stored in the Room, destroyed by Crabbe's Fiendfyre; it also gives the diary, locket and cup destroyers.",
+            "url": "https://www.harrypotter.com/features/history-of-voldemorts-horcruxes"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official feature confirms Hermione/cup, Ron/locket, and Crabbe/diadem distinctions.",
+            "url": "https://www.harrypotter.com/features/everyone-connected-to-voldemorts-horcruxes"
+          }
+        ],
+        "findings": "The article expressly marks the book context, avoiding adaptation conflation. All four option explanations are factually distinct and correct.",
+        "id": "quiz:theme-harry-potter:theme-hp-009",
+        "prose_words": 158,
+        "verdict": "ACCEPT"
+      },
+      {
+        "binding": {
+          "correct_option": "theme-hp-010-opt-3",
+          "question_id": "theme-hp-010",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "48e42b92d67811c88588dec09aa5ed09f0f6215d86a1e8507e773c7368c292ba"
+        },
+        "canonical_sha256": "64c0eafa1659c539d78f2b4def84953f29ae67d820a53cda32e013043538e4e2",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official feature says Nagini is beheaded by Neville Longbottom using Gryffindor's sword at the Battle of Hogwarts.",
+            "url": "https://www.harrypotter.com/features/everyone-connected-to-voldemorts-horcruxes"
+          },
+          {
+            "accessed": "2026-10-10",
+            "evidence": "Official Horcrux history identifies Nagini as a Horcrux and names Neville as its destroyer; it distinguishes Harry's, Ron's and other Horcrux actions.",
+            "url": "https://www.harrypotter.com/features/history-of-voldemorts-horcruxes"
+          }
+        ],
+        "findings": "Correct option and distractors cleanly test the named final action. The time-limited claim that Nagini is the last remaining Horcrux is accurate in this scene.",
+        "id": "quiz:theme-harry-potter:theme-hp-010",
+        "prose_words": 171,
+        "verdict": "ACCEPT"
+      }
+    ]
+  },
+  "root_task_id": "task-3c8d9cd304fe45429be9a9cdeac342b6",
+  "run_id": "run-58102c39c13249268ac767cc5d32583c",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent HP article review 007/008/009/010",
+  "version": 3
+}
