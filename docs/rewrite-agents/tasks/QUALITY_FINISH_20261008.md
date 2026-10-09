@@ -237,3 +237,8 @@ Realstandardgrant3793 imported finalnative reviewmanifest and existingexporter -
 ## Pending export and production recovery (14:28 UTC)
 
 14:28UTC: pending CN/MX/EG export completed under actual4293: write/checkPASS133, coverage4198missing24draft133accepted. New production503 discovered: no serviceendpoints, replacement ErrImagePull after node interruption, exact productionimage missing in containerd but preserved inDocker. Actual4300 imported ONLY existing e0f89cf image; canonical OCI descriptor sha256de8c independently hashed before digestalias, native secondopinion Hub22228 retained. Kubelet automatically recovered2/2Running; publicversion unchanged e0f89cf, catalogJSON and authenticatedreports26OPEN/no new. PVCunchanged, noDB/deployment/pod mutations. Detailed RECOVERY_20261009_1428.md records wrapperimageID and public health HTML caveat. Need durable image recovery, node/cache-loss investigation; local133 not rebuilt/published; fullbrowser/differentprovider/cutover/mkk/broaderquality pending.
+
+
+## Image recovery preparation (15:25 UTC)
+
+15:25UTC: secure feedback26OPEN/no new; recovered production pod2/2Running/nodeReady. Watched K3s imagesdir absent; hostuptime95days, rootcause stillunknown. Prepared source-backed bounded IMAGE_DURABILITY_20261009.md using officialK3simportdocs and actual nativeindependentadviceHub22422. Heavy4365QUEUED/released, noarchiveinstallation/restart executed. Next grant: exact old e0f89cf OCIarchive with verified tag+digest aliases and atomicwatcheddir install, preserve sharedcache/otherprojects; restart/cache-loss rehearsal/releaseintegration remainpending. Local133 unchanged, newmaterials notpublished.
