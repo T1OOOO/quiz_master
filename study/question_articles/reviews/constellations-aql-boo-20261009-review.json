@@ -1,0 +1,51 @@
+{
+  "author": "Existing draft authors preserved in Git; root session-828b0735e7ee4cfbb59e021475f4bcee (answered self-check coauthor)",
+  "reviewer": "Native Codex session-5bf9fd5062264ec7b071256a3f4fd97d; exact model variant unknown",
+  "scope": "Independent native factual/contract preparation; real import grant3805. Different-provider release review, browser/cutover/publication remain pending.",
+  "review_tasks": [
+    "task-02e2ba4a238a4397b0eb9353863d6096"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:constellation:aql",
+      "article_sha256": "f7dfd963c7a8ef226eed36310992a7309e77925cd1d62f3487c41b21c55843d7",
+      "verdict": "accept",
+      "note": "IAU defines constellations as bounded sky regions and lists Aquila/Aql. NASA explicitly places Altair in Aquila with Vega/Lyra and Deneb/Cygnus in the Summer Triangle. The self-check distinguishes the region, individual star, and asterism correctly. Schema, aql target_ref, empty question_refs, tags, draft status, and two links pass.",
+      "checked_sources": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "evidence": "IAU Constellations page, lines 53-61 (bounded sky regions and asterisms), 105 (Aquila/Aql), 109 (Boötes/Boo).",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/summer-triangle-corner-altair/",
+          "evidence": "NASA article dated 2026-07-15, lines 247 and 251: membership and host constellations of Altair, Vega, Deneb.",
+          "accessed": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:constellation:boo",
+      "article_sha256": "8aa99d00e7a69bdb7f1e3f341a5d682ee54a4def47c213b47106aeda32f402f7",
+      "verdict": "accept",
+      "note": "IAU lists Boötes/Boo and defines constellation boundaries. NASA identifies Arcturus in northern Boötes as a red giant visible to the unaided eye. NASA lists all four Diamond of Virgo stars and their host constellations; the self-check answer is correct. Schema, boo target_ref, empty question_refs, tags, draft status, and three links pass.",
+      "checked_sources": [
+        {
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "evidence": "IAU Constellations page, lines 53-61 (bounded sky regions and asterisms), 105 (Aquila/Aql), 109 (Boötes/Boo).",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://science.nasa.gov/universe/stars/types/",
+          "evidence": "NASA Types of Stars, lines 298-299: Arcturus in Boötes is a red giant visible to the unaided eye.",
+          "accessed": "2026-10-09"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/connecting-the-dots-with-asterisms/",
+          "evidence": "NASA asterisms article, line 264: Diamond of Virgo membership and host constellations.",
+          "accessed": "2026-10-09"
+        }
+      ]
+    }
+  ]
+}

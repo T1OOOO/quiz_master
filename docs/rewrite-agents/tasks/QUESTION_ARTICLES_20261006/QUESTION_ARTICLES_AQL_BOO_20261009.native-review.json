@@ -1,0 +1,107 @@
+{
+  "acceptance": "Actual independent primary visits and exact twoarticle verdict/hashes, originality disclosed; sourceauditonly iforiginalauthor.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent source and contract review of existing study/question_articles/drafts/constellations-aql-boo-20261008.json. Fullcontext:156draftarticles53batches/all88constellationreadings, local70accepted incl48constellations;40readingdrafts unaccepted. Stagedserverf57191b64/publicolde0f89cf;26feedbackOPEN. Root willfreeze answeredselfchecks beforeoffer, coauthor; inspectcurrentobjects only. Discloseanyoriginalauthorship: ifsameauthor do notclaimindependentverdict, onlyaudit. Actually open all4uniqueprimaryURLs IAU/NASA, validate Altair/Vega/Deneb constellationmembership, SummerTriangleasterism, Arcturusredgiant, VirgoDiamond4stars/constellationnames, visibilityscope andselfchecks. ValidateRussian150–220words, schemaqm-question-articles/v1, exactidsrefs aql/boo/statusdraft/requiredtagids/questionrefs[]/2–5links. Returnperarticle accept/rework and exactwholeobjectSHA256(json ensure_ascii=False sort_keys=True separators comma colon), actualchecked_sources url/evidence/accessdate andminimalcorrections. Sourceaccessed2026-10-08 preservedauthorhistory; ownvisits today inreport. FullEnglishcontextARTICLE_FINAL4_20261009_EN.md applicableexcepttargets. FreshREADY actualofferaccept then interactive sharedreadlease; queuednoauthority releasebeforeauthorized boundedlightread/webexception. No files/Git/children/tests/build/browserautomation/export/deploy/managedworkers. Nativepreparation only; differentproviderrelease gatepending OPENmkk containment. Preserveunrelatedwork/resources; noActions.",
+  "created_at": 1791512336.0620737,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-02e2ba4a238a4397b0eb9353863d6096",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "kind": "source_review",
+        "reference": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+        "result": "opened; confirms region definition, Aquila/Aql, Boötes/Boo"
+      },
+      {
+        "kind": "source_review",
+        "reference": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/summer-triangle-corner-altair/",
+        "result": "opened; confirms Summer Triangle membership and Altair in Aquila"
+      },
+      {
+        "kind": "source_review",
+        "reference": "https://science.nasa.gov/universe/stars/types/",
+        "result": "opened; confirms Arcturus in Boötes is a naked-eye red giant"
+      },
+      {
+        "kind": "source_review",
+        "reference": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/connecting-the-dots-with-asterisms/",
+        "result": "opened; confirms Diamond of Virgo stars span four constellations"
+      },
+      {
+        "kind": "canonical_hash",
+        "reference": "study/question_articles/drafts/constellations-aql-boo-20261008.json",
+        "result": "AQL f7dfd963c7a8ef226eed36310992a7309e77925cd1d62f3487c41b21c55843d7; BOO 8aa99d00e7a69bdb7f1e3f341a5d682ee54a4def47c213b47106aeda32f402f7"
+      }
+    ],
+    "limitations": [
+      "Native source review only; no cross-provider release approval."
+    ],
+    "source_visits": {
+      "date": "2026-10-09",
+      "note": "Independent visits made today; frozen source_links preserve the author access date 2026-10-08.",
+      "opened_sources": [
+        {
+          "evidence": "IAU Constellations page, lines 53-61 (bounded sky regions and asterisms), 105 (Aquila/Aql), 109 (Boötes/Boo).",
+          "opened": true,
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+        },
+        {
+          "evidence": "NASA article dated 2026-07-15, lines 247 and 251: membership and host constellations of Altair, Vega, Deneb.",
+          "opened": true,
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/summer-triangle-corner-altair/"
+        },
+        {
+          "evidence": "NASA Types of Stars, lines 298-299: Arcturus in Boötes is a red giant visible to the unaided eye.",
+          "opened": true,
+          "url": "https://science.nasa.gov/universe/stars/types/"
+        },
+        {
+          "evidence": "NASA asterisms article, line 264: Diamond of Virgo membership and host constellations.",
+          "opened": true,
+          "url": "https://science.nasa.gov/solar-system/skywatching/night-sky-network/connecting-the-dots-with-asterisms/"
+        }
+      ]
+    },
+    "summary": "Independent read-only review of the exact frozen AQL/BOO objects. I did not author these articles. Both accepted; text, schema, primary-source claims, and object-specific self-checks pass.",
+    "verdicts": [
+      {
+        "body_whitespace_words": 184,
+        "canonical_object_sha256": "f7dfd963c7a8ef226eed36310992a7309e77925cd1d62f3487c41b21c55843d7",
+        "findings": [
+          "IAU defines constellations as bounded sky regions and lists Aquila/Aql. NASA explicitly places Altair in Aquila with Vega/Lyra and Deneb/Cygnus in the Summer Triangle.",
+          "The self-check distinguishes the region, individual star, and asterism correctly. Schema, aql target_ref, empty question_refs, tags, draft status, and two links pass."
+        ],
+        "id": "quizipedia:constellation:aql",
+        "verdict": "accept"
+      },
+      {
+        "body_whitespace_words": 187,
+        "canonical_object_sha256": "8aa99d00e7a69bdb7f1e3f341a5d682ee54a4def47c213b47106aeda32f402f7",
+        "findings": [
+          "IAU lists Boötes/Boo and defines constellation boundaries. NASA identifies Arcturus in northern Boötes as a red giant visible to the unaided eye.",
+          "NASA lists all four Diamond of Virgo stars and their host constellations; the self-check answer is correct. Schema, boo target_ref, empty question_refs, tags, draft status, and three links pass."
+        ],
+        "id": "quizipedia:constellation:boo",
+        "verdict": "accept"
+      }
+    ]
+  },
+  "root_task_id": "task-02e2ba4a238a4397b0eb9353863d6096",
+  "run_id": "run-9536a7ad6639403dbd462389eb39a854",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent AQL BOO article acceptance",
+  "version": 3
+}
