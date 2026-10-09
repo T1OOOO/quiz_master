@@ -1,0 +1,116 @@
+{
+  "acceptance": "Three exact reviewed objecthashes, primarysourceactualevidence and pedagogical findings",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\harry-potter-core-20261007.json"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Audit ONLY theme-hp-001,003,004 current frozen objects in core draft. Actual opens all6primarycitedURL. Verify all factualclaims, distractor explanations, bookvsfilm caveats,150-220words and exactref/hash. Assess useful learning beyond answer; report concrete rework iftoo repetitive/unsupported. Noedits/children/browser/build. Actualscopedreadgrant mandatory. Fullperarticle hash verdict URL/evidence/actualvisitdate; nativepreparationnotreleaseapproval.",
+  "created_at": 1791570488.0276752,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-a192f24d9d2641f7bcb4d61d17386a73",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened J.K. Rowling's official Marauder's Map article. It says the Homonculous Charm lets the holder track every person's movements in the castle and that the map records the castle's secret passages. Supports the answer and map-versus-school-directory explanation.",
+            "url": "https://www.harrypotter.com/writing-by-jk-rowling/the-marauders-map"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened official Room of Requirement feature. It explicitly says even the Marauder's Map cannot tell who is inside that room. Supports the article's important visibility caveat.",
+            "url": "https://www.harrypotter.com/features/everything-you-need-to-know-about-the-room-of-requirement"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-001",
+        "notes": "Useful learning goes beyond 'where are people' by explaining the map's tracking enchantment, distinguishing people from unrelated records/inventory, and noting the Room of Requirement exception. Non-map distractor comparisons are category-based rather than unsupported claims about other spells.",
+        "question_ref": {
+          "question_id": "theme-hp-001",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "0e35fab4e10b977a24047b6384852712bf85e3408ba4ca6e926e4a62e8ef4e1e"
+        },
+        "sha256": "9fc4e741a66c477df3642dde6b886406ba40115937e4f41c1bacad459565275b",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "accept",
+        "word_count": 169
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened official Marauders portraits feature. It labels Remus Lupin as Moony, links his portrait to the full moon and werewolf life, and identifies Wormtail/Peter, Padfoot/Sirius, and Prongs/James.",
+            "url": "https://www.harrypotter.com/features/moony-wormtail-padfoot-prongs-marauders-illustrations"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened official Marauders history feature. It explicitly maps James/Prongs/stag, Sirius/Padfoot/dog, Peter/Wormtail/rat, and Remus/Moony, with Moony tied to his lycanthropy; it explains the friends became Animagi to accompany Remus.",
+            "url": "https://www.harrypotter.com/features/everything-we-know-about-the-marauders"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-003",
+        "notes": "Distinct pedagogical angle: separates Remus's lycanthropy-linked nickname from the other three nicknames tied to Animagus forms. Self-check and mappings are supported; no book/film continuity mixing claim.",
+        "question_ref": {
+          "question_id": "theme-hp-003",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "6a5227b2bc112952978011723f99f62668f448427c05693fbe854a444445801c"
+        },
+        "sha256": "d403113ace5993b786ee1861ba0825e74bed1f217e9f11c0735f1a5e3923facc",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "accept",
+        "word_count": 163
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened official Harry Potter Encyclopedia fact file. It defines the potion as changing the drinker into another human's physical appearance, lists the needed bodily ingredient and complexity, and labels the potion for human transformations only.",
+            "url": "https://www.harrypotter.com/fact-file/plants-and-potions/polyjuice-potion"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened J.K. Rowling's official article. It says the effect is temporary, requires part of the target person's body, and can change age, sex and race but not species.",
+            "url": "https://www.harrypotter.com/writing-by-jk-rowling/polyjuice-potion"
+          }
+        ],
+        "id": "quiz:theme-harry-potter:theme-hp-004",
+        "notes": "The article distinguishes a temporary human appearance transformation from memory, object, and invisibility effects. 'Dangerous' is presented as a caution derived from the official human-only restriction, without inventing a specific consequence. The age/sex/race wording follows the source's own terminology.",
+        "question_ref": {
+          "question_id": "theme-hp-004",
+          "quiz_id": "theme-harry-potter",
+          "revision_sha256": "a6729b01a9318cf85ab7e60c089a41a29e477338ecccfff667dfc74f1f35f9a9"
+        },
+        "sha256": "b2c18de18df91e2818cdaac9e406772fc97db431a3e9a735e8cb3eb19386643c",
+        "status": "draft",
+        "target_refs": [],
+        "verdict": "accept",
+        "word_count": 166
+      }
+    ],
+    "evidence": [
+      "Read only the three requested article objects from study/question_articles/drafts/harry-potter-core-20261007.json under actual GRANTED lease lease-7f0c9d68554447a18d5cfcade5179afd.",
+      "Computed canonical sorted-key UTF-8 JSON SHA-256 for each full object; checked ids, empty target_refs, question_refs, draft status, and whitespace-delimited body counts.",
+      "Actually opened all six cited primary URLs on 2026-10-09 and checked their relevant claims.",
+      "Pedagogical review: each has a topic-specific explanatory thread and a self-check beyond answer restatement; no concrete repetition or unsupported lore claim found. Underlying quiz prompt/options were not included in the scoped file, so only stored question_ref syntax—not target quiz revision payload—was checked."
+    ],
+    "model": "Codex; exact runtime model variant unavailable",
+    "summary": "All three requested article objects are factually supported by the six cited official Harry Potter sources actually opened on 2026-10-09. Each body contributes context beyond the keyed answer and has a distinct self-check. The stories are framed as franchise/book-world facts; none asserts a film-only detail. Each is 150–220 whitespace-delimited words including headings, draft status, empty target_refs, and one correctly named question_ref. I verified the stored question IDs and revision-hash strings syntactically; the underlying private quiz objects were outside the one-file/three-entry review scope, so I did not recompute those bindings against quiz payloads.",
+    "verdict": "accept"
+  },
+  "root_task_id": "task-a192f24d9d2641f7bcb4d61d17386a73",
+  "run_id": "run-52c9b7a3701f4c1e94296137ad4e0a9a",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent first three HP core miniarticle factual and learning audit",
+  "version": 3
+}
