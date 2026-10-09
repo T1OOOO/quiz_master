@@ -1,0 +1,97 @@
+{
+  "acceptance": "Exact frozen independent fact/contract verdicts with actually opened source evidence.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only exact study/question_articles/drafts/constellations-men-nor-20261009.json, originalprovenance and ARTICLE_MEN_NOR_20261009_EN.md. Root pre-freeze corrected Russian mistranslation 'по-латыни Наугольник'→name translation; NGC2031 'globular'→stellar to avoid mixed classification; replacedNORboundaryselfcheck withgasvsstars. Rootcoauthor, youindependent. Actuallyopen all sources verifyallclaims/regionassociation/uncertainty/dates/numbers (NGC2031blue-straggler hypotheses/Cepheids/LMC;Normaclusterborder/distance/ESO13700187kpc3tails).150–220Russianwords/contract/exacthashes. Return perarticleaccept/rework/sourceevidence. No files/Git/children/managedworkers/tests/build/browser/export/deploy/secrets. Readlease andexistinglightread/webexceptiononly. Nativeprep notdifferentproviderreleaseapproval; OPENmkk unchanged.",
+  "created_at": 1791505465.1155956,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-fce2f0d50f614abba0d20f5988d0785a",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "f576b6c6e7893a3e74538dda2aefe676c9ba3c87f40429728f4e64f70d88ce41",
+        "checked_sources": [
+          {
+            "evidence": "IAU defines 88 constellations as sky regions and supports use of Men.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Supports NGC 2031 in Mensa/LMC, LMC as Milky Way satellite, about 150,000 ly, Cepheids, and the stated contamination/blue-straggler hypotheses.",
+            "url": "https://science.nasa.gov/missions/hubble/hubble-beholds-brilliant-blue-star-cluster/"
+          },
+          {
+            "evidence": "Supports near-infrared Cepheid photometry and construction of a period–luminosity relation for distance work.",
+            "url": "https://arxiv.org/abs/astro-ph/0610469"
+          }
+        ],
+        "id": "quizipedia:constellation:men",
+        "verdict": "ACCEPT",
+        "word_count": 178
+      },
+      {
+        "canonical_sha256": "2c4e6132ca84054273b6a3b65039978bedc2e4c02c10643143efe2d2b8df2d82",
+        "checked_sources": [
+          {
+            "evidence": "Supports Norma as an IAU-defined sky region.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "evidence": "Supports Abell 3627/Norma-cluster location near the Norma–Triangulum Australe border, approximately 220 million ly, and foreground Milky Way obscuration.",
+            "url": "https://science.nasa.gov/missions/hubble/hubble-focuses-on-the-great-attractor/"
+          },
+          {
+            "evidence": "Supports ram-pressure stripping of gas from ESO 137-001 within the Norma cluster.",
+            "url": "https://science.nasa.gov/missions/hubble/life-is-too-fast-too-furious-for-this-runaway-galaxy/"
+          },
+          {
+            "evidence": "Supports warm ionized gas traced to at least 87 kpc, three tails, and a regular stellar-rotation field against disturbed gas; it is an arXiv December 2022 submission.",
+            "url": "https://arxiv.org/abs/2212.03891"
+          },
+          {
+            "evidence": "Official journal record for DOI 10.1093/mnras/stad1003 gives publication date 2023-04-04, disproving a 2022 journal-publication claim.",
+            "url": "https://academic.oup.com/mnras/article/521/4/6266/7104070"
+          }
+        ],
+        "id": "quizipedia:constellation:nor",
+        "required_change": "Replace 'Наблюдения MUSE, опубликованные в 2022 году' with 'Работа, выложенная на arXiv в 2022 году' or remove the year (journal publication was 2023, not 2022).",
+        "verdict": "REWORK",
+        "word_count": 183
+      }
+    ],
+    "changed_files": [],
+    "evidence": [
+      "Read frozen JSON directly; canonical JSON SHA-256 recomputed with ensure_ascii=false, sort_keys=true, separators=(',', ':').",
+      "All six listed source URLs were independently opened. MEN factual claims match the IAU, NASA Hubble, and original Cepheid-study sources.",
+      "NOR physical claims match the IAU, NASA Hubble, NASA ESO 137-001, and arXiv:2212.03891 sources. The MUSE paper was submitted to arXiv in December 2022, while the MNRAS paper (DOI 10.1093/mnras/stad1003) was published 2023-04-04; therefore the current phrase 'опубликованные в 2022 году' is inaccurate."
+    ],
+    "remaining_risks": [
+      "NOR needs the one dated-wording correction and a new exact-hash recheck after any body change.",
+      "This native review is preparatory evidence only; it does not satisfy the separate cross-provider publication review gate."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/MEN-NOR-r1",
+    "status": "DONE_WITH_CONCERNS",
+    "usage": {
+      "children": 0,
+      "file_edits": 0,
+      "source_urls_opened": 7,
+      "tests_builds_exports": 0
+    }
+  },
+  "root_task_id": "task-fce2f0d50f614abba0d20f5988d0785a",
+  "run_id": "run-39f52c0281de4fd0b3504fa770e672eb",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent frozen MEN NOR factual review",
+  "version": 3
+}

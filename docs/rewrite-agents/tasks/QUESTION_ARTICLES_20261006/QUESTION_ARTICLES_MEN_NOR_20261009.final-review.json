@@ -1,0 +1,70 @@
+{
+  "acceptance": "Exact final hashes and independent factual acceptance after dated-wording correction.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only exact current study/question_articles/drafts/constellations-men-nor-20261009.json. Initialreview taskfce2... retained docsinitial-review.json; MEN unchangedACCEPT. Root removed inaccurate2022publication phrase: 'С помощью MUSE исследователи проследили' now noyear; physicalclaims/numbers/source metadataunchanged. Confirm correction, exactnewNORhash and unchangedMENhash, perarticleaccept/rework/sourceevidencefromactualprioropens/newopensifneeded. Rootcoauthor,youindependent. Noedits/Git/children/managedworkers/heavy/tests/build/browser/export/deploy/secrets. Readleaseprotocol andexistinglightreadexception;nativeprep onlycrossproviderreleasependingOPENmkk.",
+  "created_at": 1791505630.6503687,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-86b36c79725c4f04b06385d32bf12a79",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "f576b6c6e7893a3e74538dda2aefe676c9ba3c87f40429728f4e64f70d88ce41",
+        "checked_sources": [
+          "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "https://science.nasa.gov/missions/hubble/hubble-beholds-brilliant-blue-star-cluster/",
+          "https://arxiv.org/abs/astro-ph/0610469"
+        ],
+        "id": "quizipedia:constellation:men",
+        "verdict": "ACCEPT",
+        "word_count": 178
+      },
+      {
+        "canonical_sha256": "a64c75ce4453aa3d61f453c8e15275ed237b6ee3f50d74282ade22c650e7906c",
+        "checked_sources": [
+          "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141",
+          "https://science.nasa.gov/missions/hubble/hubble-focuses-on-the-great-attractor/",
+          "https://science.nasa.gov/missions/hubble/life-is-too-fast-too-furious-for-this-runaway-galaxy/",
+          "https://arxiv.org/abs/2212.03891"
+        ],
+        "id": "quizipedia:constellation:nor",
+        "verdict": "ACCEPT",
+        "word_count": 181
+      }
+    ],
+    "changed_files": [],
+    "evidence": [
+      "Re-read the current frozen JSON and recomputed each whole-object canonical SHA-256 with ensure_ascii=false, sort_keys=true, separators=(',', ':').",
+      "NOR now omits the inaccurate 2022 journal-publication assertion. Its retained MUSE source supports the 87 kpc, three-tail, warm-ionized-gas and stellar/gas-kinematics claims; all other sources and claim wording are unchanged from the independently opened initial review.",
+      "MEN is byte-for-byte hash unchanged from its initial accepted review."
+    ],
+    "remaining_risks": [
+      "Native review is preparatory evidence only; the separate cross-provider publication review remains pending."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/MEN-NOR-final-r1",
+    "status": "DONE",
+    "usage": {
+      "children": 0,
+      "file_edits": 0,
+      "new_source_opens": 0,
+      "tests_builds_exports": 0
+    }
+  },
+  "root_task_id": "task-86b36c79725c4f04b06385d32bf12a79",
+  "run_id": "run-8c75eab3e6144fa9ab36f2e31e70a41a",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: final corrected MEN NOR rereview",
+  "version": 3
+}
