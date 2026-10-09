@@ -1,0 +1,167 @@
+{
+  "schema_version": "qm-question-articles/v1",
+  "articles": [
+    {
+      "id": "quizipedia:constellation:oct",
+      "title_ru": "Октант: звёздная ассоциация и край карты",
+      "body_ru": "## Октант: группа, а не участок неба\n\nОктант — одно из самых южных созвездий; его официальная область неба охватывает Южный небесный полюс. Но «ассоциация Октанта» — уже не созвездие, а молодая разреженная группа звёзд, названная по направлению, где её обнаружили. По исследованию 2024 года её звёзды лежат примерно в 150 парсеках и занимают широкий диапазон склонений, от −86° до −20°: ассоциация не помещается целиком в границы Октанта.\n\nВозраст такой группы можно оценивать, мысленно прокручивая движения звёзд назад. Исследователи использовали данные Gaia DR3 и лучевые скорости, затем сравнили прошлые положения членов. Получилось 34±2 миллиона лет; авторы называют это наиболее точной на тот момент динамической оценкой. Метод не измеряет возраст по одному светилу: он ищет, когда траектории многих звёзд сходились ближе всего. Более ранняя работа нашла маломассивных кандидатов и проверяла их молодость по спектрам и литию, но подчёркивала неопределённость членства. Такая широкая структура требует осторожной проверки: похожее движение само по себе не доказывает общее рождение.\n\nСамоконтроль: что имеет возраст около 34 млн лет — созвездие на небесной карте или движущаяся звёздная ассоциация?\n\nОтвет: ассоциация; созвездие обозначает область неба и не имеет общего возраста звёзд.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "oct"
+        }
+      ],
+      "question_refs": [],
+      "status": "draft",
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "source_links": [
+        {
+          "title": "границы IAU",
+          "url": "https://iauarchive.eso.org/static/public/constellations/txt/oct.txt",
+          "accessed": "2026-10-09",
+          "supports": "Official IAU boundary coordinates for Octans; compared with the association's broad declination span."
+        },
+        {
+          "title": "исследование динамического возраста",
+          "url": "https://arxiv.org/html/2406.12686",
+          "accessed": "2026-10-09",
+          "supports": "Original 2024 traceback study: Gaia DR3/high-resolution radial velocities; dynamical age 34±2 Myr; association lies about 150 pc away and member declinations span −86° to −20°."
+        },
+        {
+          "title": "спектроскопический поиск членов",
+          "url": "https://arxiv.org/abs/1411.5703",
+          "accessed": "2026-10-09",
+          "supports": "Original spectroscopic study of low-mass Octans candidates and lithium-based age uncertainty."
+        }
+      ]
+    },
+    {
+      "id": "quizipedia:constellation:psa",
+      "title_ru": "Южная Рыба: пылевые пояса Фомальгаута",
+      "body_ru": "## Южная Рыба: кольца Фомальгаута\n\nФомальгаут — яркая звезда в созвездии Южной Рыбы, но интересен он не только как небесный ориентир. В 2023 году камера MIRI телескопа «Джеймс Уэбб» показала вокруг звезды три вложенных пылевых пояса, тянущихся примерно на 23 миллиарда километров. Внутренние пояса прежде не удавалось разрешить в инфракрасном свете. \n\nЭто не снимок планет: пояса состоят из обломков столкновений более крупных тел — аналогов астероидов и комет. На снимке внешнего кольца заметили яркое пятно, первоначально интерпретированное как возможный след недавнего столкновения ледяных тел. Однако последующая проверка архивных снимков ALMA и Keck сопоставила фоновые источники с изображением Уэбба. Команда показала, что эффектное «Большое пылевое облако» в наружном кольце — фоновый объект, а не подтверждённая часть системы Фомальгаута. Это напоминает: яркое пятно на снимке ещё не обязательно спутник звезды. Поэтому кольца дают косвенные подсказки о системе, а не прямой портрет её планет.\n\nСамоконтроль: что именно Уэбб разрешил впервые — планету или тёплые внутренние пылевые пояса?\n\nОтвет: тёплые внутренние пылевые пояса. Наблюдение пыли само по себе не подтверждает планету.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "psa"
+        }
+      ],
+      "question_refs": [],
+      "status": "draft",
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "source_links": [
+        {
+          "title": "границы IAU",
+          "url": "https://iauarchive.eso.org/static/public/constellations/txt/psa.txt",
+          "accessed": "2026-10-09",
+          "supports": "Official IAU boundary coordinates for Piscis Austrinus."
+        },
+        {
+          "title": "наблюдения MIRI",
+          "url": "https://science.nasa.gov/missions/webb/webb-looks-for-fomalhauts-asteroid-belt-and-finds-much-more/",
+          "accessed": "2026-10-09",
+          "supports": "NASA Webb release, 2023; updated 2026-09-21. Fomalhaut is in Piscis Austrinus; MIRI resolves three nested belts and describes the collision-cloud interpretation as possible."
+        },
+        {
+          "title": "анализ диска MIRI",
+          "url": "https://arxiv.org/abs/2305.03789",
+          "accessed": "2026-10-09",
+          "supports": "Original JWST/MIRI study of Fomalhaut's inner and intermediate dust belts."
+        },
+        {
+          "title": "проверка фоновых источников",
+          "url": "https://arxiv.org/html/2305.10480",
+          "accessed": "2026-10-09",
+          "supports": "Original ALMA/Keck follow-up identifies the Great Dust Cloud as a background object."
+        }
+      ]
+    },
+    {
+      "id": "quizipedia:constellation:pyx",
+      "title_ru": "Компас: редкая пара NGC 2818",
+      "body_ru": "## Компас: редкая пара в скоплении\n\nВ созвездии Компаса видна необычная пара: планетарная туманность NGC 2818 и рассеянное скопление NGC 2818A. Слово «планетарная» здесь историческое: туманность — это сброшенные внешние слои стареющей звезды, а не облако планет. Такая соседская комбинация редка, потому что рассеянные скопления постепенно рассеиваются, тогда как звёзды, способные стать туманностями, обычно живут миллиарды лет.\n\nДолгое время было неясно, действительно ли туманность принадлежит скоплению или лишь случайно лежит на том же луче зрения. В работе 2025 года исследователи получили высокоточные спектры туманности инструментом GHOST на телескопе Gemini и сравнили её лучевую скорость со скоростью скопления по данным Gaia. Они заключили, что NGC 2818 физически связана с NGC 2818A. Это важно: возраст и параметры скопления помогают оценить массу звезды-прародителя туманности. Авторы отмечают, что стадия туманности длится лишь десятки тысяч лет, поэтому такие пары особенно редки. Новые наблюдения поддержали физическую связь, которую раньше оспаривали из-за различий в измерениях скорости.\n\nСамоконтроль: почему принадлежность скоплению помогает изучать прошлое звезды, породившей NGC 2818?\n\nОтвет: возраст скопления ограничивает время жизни прародителя и помогает оценить его первоначальную массу.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "pyx"
+        }
+      ],
+      "question_refs": [],
+      "status": "draft",
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "source_links": [
+        {
+          "title": "границы IAU",
+          "url": "https://iauarchive.eso.org/static/public/constellations/txt/pyx.txt",
+          "accessed": "2026-10-09",
+          "supports": "Official IAU boundary coordinates for Pyxis."
+        },
+        {
+          "title": "работа о связи туманности и скопления",
+          "url": "https://arxiv.org/html/2503.19287",
+          "accessed": "2026-10-09",
+          "supports": "Original 2025 paper uses Gemini GHOST spectra and Gaia cluster velocities to support the physical association of NGC 2818 with NGC 2818A."
+        },
+        {
+          "title": "описание наблюдений Hubble",
+          "url": "https://science.nasa.gov/missions/hubble/hubble-snaps-images-of-a-nebula-within-a-cluster/",
+          "accessed": "2026-10-09",
+          "supports": "NASA/Hubble release locates NGC 2818 and NGC 2818A in Pyxis and explains rarity of a cluster-planetary-nebula pair."
+        }
+      ]
+    },
+    {
+      "id": "quizipedia:constellation:tra",
+      "title_ru": "Южный Треугольник: проверка звёзд NGC 6025",
+      "body_ru": "## Южный Треугольник: звёзды на проверку\n\nNGC 6025 — рассеянное скопление в созвездии Южного Треугольника. Его звёзды не просто соседствуют на вид: астрономы проверяют, какие из них действительно связаны гравитацией и движутся вместе. В исследовании 2006 года учёные повторно измеряли лучевые скорости звёзд NGC 6025 и другого скопления в течение пяти лет. Среди звёзд NGC 6025 они нашли две двойные системы с линиями обоих компонентов в спектре; одна, по системной скорости, оказалась не членом скопления.\n\nВосемь других объектов меняли лучевую скорость или форму спектральных линий. Авторы осторожно назвали их кандидатами в двойные: некоторые могли оказаться пятнистыми быстро вращающимися звёздами или пульсирующими объектами. Всего в программе повторно наблюдали 78 звёзд двух скоплений; число относится к обоим объектам вместе, а не только к NGC 6025. Более поздняя фотометрическая работа также рассматривала NGC 6025 и приводила координаты его центра, позволяя сопоставить объект с официальной границей созвездия. Так каталоговое «скопление в Треугольнике» превращается в конкретную задачу о членстве звёзд.\n\nСамоконтроль: почему не каждую переменную спектральную линию в NGC 6025 авторы сразу сочли двойной звездой?\n\nОтвет: похожую изменчивость могут давать пятна на вращающейся звезде или пульсации; нужны дополнительные наблюдения.",
+      "target_refs": [
+        {
+          "kind": "quizipedia",
+          "domain": "constellation",
+          "target_id": "tra"
+        }
+      ],
+      "question_refs": [],
+      "status": "draft",
+      "tag_ids": [
+        "domain:science",
+        "skill:recognition",
+        "topic:astronomy"
+      ],
+      "source_links": [
+        {
+          "title": "границы IAU",
+          "url": "https://iauarchive.eso.org/static/public/constellations/txt/tra.txt",
+          "accessed": "2026-10-09",
+          "supports": "Official IAU boundary coordinates for Triangulum Australe; compared with NGC 6025 center coordinates in the 2014 study."
+        },
+        {
+          "title": "спектроскопия NGC 6025",
+          "url": "https://astronomia.unam.mx/journals/rmxac/article/view/ia.14052059p.2006.26.117",
+          "accessed": "2026-10-09",
+          "supports": "Original repeated spectroscopic study: two double-lined binaries in NGC 6025; one kinematic non-member; additional variable-line objects are candidates, not confirmed binaries."
+        },
+        {
+          "title": "параметры и фотометрия NGC 6025",
+          "url": "https://arxiv.org/html/1403.3538",
+          "accessed": "2026-10-09",
+          "supports": "Original photometric study with NGC 6025 center coordinates and analysis of peculiar-star membership."
+        }
+      ]
+    }
+  ]
+}
