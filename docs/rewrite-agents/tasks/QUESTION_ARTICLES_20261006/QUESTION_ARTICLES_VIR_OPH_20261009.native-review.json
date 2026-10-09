@@ -1,0 +1,131 @@
+{
+  "acceptance": "Actual primary visits, exact object hashes, two verdicts, minimal corrections and limitations.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Quiz Master bounded read-only source review. Workspace C:/ap/quiz_master, lead session828b epoch4 team2ed452. User asks finish interesting factual articles linked to every question/Quizipedia target. Local96accepted articles (74/88constellation readings),156draftarticles53batches; production stille0f89cf and stagedf57191b64;26feedbackOPEN/no new. Root is coauthor of headings/answeredselfchecks, originals preserved inGit. Disclose previous authorship; if originalauthor do sourceaudit not independent acceptance. Read exact frozen JSON, actually open every cited primary URL, check every number, mechanism, identification, caveat, selfcheck answer and useful headings. Contract qm-question-articles/v1 IDs/exact target refs/emptyquestionrefs/science recognition astronomy tags/draft/2–5HTTPSsources/150–220Russianwords. Return structured articles id/verdict accept orrework/canonical_sha256 SHA256(json.dumps ensure_ascii=False sort_keys=True separators=(',',':'))/checked_sources [{url,evidence,accessed2026-10-09}] and minimal required corrections; actual visits not assumed. Original articleaccessdates preserved. Use current host_hub task accept, shared interactive read lease, truthful activity. Queued grants no authority; release before authorized bounded lightread/web exception. No edits, Git, children, tests, builds, browserautomation, managedproviders, publication orActions. Native factual preparation only; different-provider release review/mkk containment/browser/cutover remain pending.\nOwnedreviewfile: study/question_articles/drafts/constellations-vir-oph-20261008.json\nVIR191/OPH207words. ESO2019M87shadow55millionly6.5billionSun8radiotelescopes; ESA/Webb RhoOphiuchiplace NASA2023 390ly50youngstarsS1diskshadowsH2redbipolarjets. Don'tstate physicalsurface or discoveredplanets.",
+  "created_at": 1791526670.5308056,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-b6d4a236a84e44639974e6defbc0584f",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "3eb90943af254c1ef2b9243f2a730d43834f2577a3fbd45a39f3b81c56785442",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU page; lines 48-61 establish 88 official regions, fixed boundaries, Virgo/Vir in table, and that constellation patterns generally do not imply physical connection among stars.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened ESO M87 image page; lines 1-2 and 27-32 identify M87 as an elliptical galaxy about 55 million light-years away and place it in Virgo.",
+            "url": "https://eso.org/public/images/eso1907b/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened ESO 2019 announcement; lines 8-10 support the eight ground-based radio-telescope array and Earth-sized virtual telescope; lines 9 and 14-17 support distance, mass, and shadow/ring interpretation.",
+            "url": "https://www.eso.org/public/news/eso1907/"
+          }
+        ],
+        "id": "quizipedia:constellation:vir",
+        "notes": "Claims, source alignment, self-check answer, contract fields, and word count pass. The dark center is correctly described as a shadow rather than a physical surface.",
+        "verdict": "accept",
+        "word_count": 185
+      },
+      {
+        "canonical_sha256": "1d64e34fd839036538eda42951c903b719c1f5452b1afd34d2c2f976fad87cf8",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU page; lines 48-61 define constellations as bounded sky regions, and its names table identifies Ophiuchus/Oph.",
+            "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened NASA Webb first-year release; lines 318 and 327-330 support 390 light-years, approximately 50 young stars of solar or lower masses, S1, dusty protostars, red molecular-hydrogen bipolar jets, and shadows indicating protoplanetary disks as potential future systems.",
+            "url": "https://science.nasa.gov/missions/webb/webb-celebrates-first-year-of-science-with-close-up-on-birth-of-sun-like-stars/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened ESA/Webb object page; lines 93-97 explicitly associate Rho Ophiuchi with Ophiuchus and 390 light-years; lines 138-141 describe jets, molecular hydrogen shown red, disk shadows, and S1.",
+            "url": "https://esawebb.org/images/weic2316a/"
+          }
+        ],
+        "id": "quizipedia:constellation:oph",
+        "notes": "Claims, source alignment, self-check answer, contract fields, and word count pass. The text does not overstate disk shadows as detected planets.",
+        "verdict": "accept",
+        "word_count": 202
+      }
+    ],
+    "evidence": [
+      {
+        "check": "Draft file read; current exact objects checked",
+        "reference": "study/question_articles/drafts/constellations-vir-oph-20261008.json",
+        "result": "pass"
+      },
+      {
+        "check": "Canonical JSON object hashes and Russian word counts",
+        "reference": "VIR 3eb90943af254c1ef2b9243f2a730d43834f2577a3fbd45a39f3b81c56785442 (185 words); OPH 1d64e34fd839036538eda42951c903b719c1f5452b1afd34d2c2f976fad87cf8 (202 words)",
+        "result": "pass"
+      },
+      {
+        "check": "Primary source facts and explicit constellation associations",
+        "reference": "Opened IAU, ESO M87, ESO EHT, NASA Webb and ESA/Webb sources on 2026-10-09; per-source evidence and URLs included below.",
+        "result": "pass"
+      },
+      {
+        "check": "Article contract: target refs, empty question refs, tags, draft status, answered object-specific selfchecks",
+        "reference": "Exact current objects verified read-only.",
+        "result": "pass"
+      }
+    ],
+    "limitations": "The draft's source_links accessed dates remain 2026-10-08; this review records independent visits on 2026-10-09 and made no file changes. Native review evidence only; no cross-provider release approval.",
+    "review_date": "2026-10-09",
+    "reviewer_identity": "Codex; exact runtime model variant is not exposed in this session context.",
+    "scope": "Independent native read-only review of VIR and OPH in study/question_articles/drafts/constellations-vir-oph-20261008.json. I did not author these originals.",
+    "source_visits": [
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://eso.org/public/images/eso1907b/"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://www.eso.org/public/news/eso1907/"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://science.nasa.gov/missions/webb/webb-celebrates-first-year-of-science-with-close-up-on-birth-of-sun-like-stars/"
+      },
+      {
+        "date": "2026-10-09",
+        "opened": true,
+        "url": "https://esawebb.org/images/weic2316a/"
+      }
+    ],
+    "verdict": "accept"
+  },
+  "root_task_id": "task-b6d4a236a84e44639974e6defbc0584f",
+  "run_id": "run-4f88875004704a7ba98f8bae8725c24c",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: vir-oph article source acceptance",
+  "version": 3
+}

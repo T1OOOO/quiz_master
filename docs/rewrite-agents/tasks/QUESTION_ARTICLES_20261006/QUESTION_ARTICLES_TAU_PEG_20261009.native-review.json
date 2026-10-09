@@ -1,0 +1,98 @@
+{
+  "acceptance": "Actual primary visits, exact object hashes, two verdicts, minimal corrections and limitations.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Quiz Master bounded read-only source review. Workspace C:/ap/quiz_master, lead session828b epoch4 team2ed452. User asks finish interesting factual articles linked to every question/Quizipedia target. Local96accepted articles (74/88constellation readings),156draftarticles53batches; production stille0f89cf and stagedf57191b64;26feedbackOPEN/no new. Root is coauthor of headings/answeredselfchecks, originals preserved inGit. Disclose previous authorship; if originalauthor do sourceaudit not independent acceptance. Read exact frozen JSON, actually open every cited primary URL, check every number, mechanism, identification, caveat, selfcheck answer and useful headings. Contract qm-question-articles/v1 IDs/exact target refs/emptyquestionrefs/science recognition astronomy tags/draft/2–5HTTPSsources/150–220Russianwords. Return structured articles id/verdict accept orrework/canonical_sha256 SHA256(json.dumps ensure_ascii=False sort_keys=True separators=(',',':'))/checked_sources [{url,evidence,accessed2026-10-09}] and minimal required corrections; actual visits not assumed. Original articleaccessdates preserved. Use current host_hub task accept, shared interactive read lease, truthful activity. Queued grants no authority; release before authorized bounded lightread/web exception. No edits, Git, children, tests, builds, browserautomation, managedproviders, publication orActions. Native factual preparation only; different-provider release review/mkk containment/browser/cutover remain pending.\nOwnedreviewfile: study/question_articles/drafts/constellations-tau-peg-20261007.json\nTAU195/PEG206words. M45>1000stars445ly, Merope dust radiation pressure/grain size and telescope rayartifact; M15~12Gyr33600ly/Pease1 dyingstar. Pegasus GreatSquare boundary/Andromeda adjacency must not imply every corner belongs Pegasus.",
+  "created_at": 1791526670.4911766,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-ea4ce6fc7fa84019b4f5e5b26076dccc",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "496eb93954576f55d5656c6cb04faae57aa360988da7c1152f63b7489662eb32",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU Taurus chart; it explicitly labels TAURUS and M45 in the charted sky region.",
+            "url": "https://iauarchive.eso.org/static/public/constellations/pdf/TAU.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened; NASA lines 295–320 identify M45 as an open cluster in Taurus, give 445 ly and over 1,000 stars, describe visibility, Merope/radiation-pressure particle sorting, and state that the bright rays are an optical effect within the telescope.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-45/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened; IAU lines 799–810 defines constellations as bounded sky areas and distinguishes being within a constellation from membership in a drawn star pattern.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          }
+        ],
+        "finding": "The draft correctly separates Taurus as an IAU-defined sky area from M45 as an open cluster. NASA directly supports 445 ly, more than 1,000 loosely gravity-bound stars, unaided-eye visibility under dark skies, Merope's radiation-pressure grain-size effect, and the telescope-internal origin of apparent rays. The self-check has a clear answer.",
+        "id": "quizipedia:constellation:tau",
+        "minimal_required_corrections": [],
+        "verdict": "ACCEPT",
+        "word_count": 195
+      },
+      {
+        "canonical_sha256": "6da03ddf15f85cc66d21618a77bbf09e6ee786a9e80d2a3dcdb893a51f0aaf2f",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened IAU Pegasus chart; it labels PEGASUS, M15 and adjacent ANDROMEDA, so it supports the directional association without a false boundary inference.",
+            "url": "https://iauarchive.eso.org/static/public/constellations/pdf/PEG.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened; NASA lines 295–328 identify M15 as a globular cluster in Pegasus at 33,600 ly and about 12 billion years old, describe its dense core and blue/orange stars, and identify Pease 1 as a planetary nebula—the gaseous shell of a dying star—visible within the cluster; lines 317–318 support binocular and Pease 1 wording.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-15/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened; IAU lines 803–810 supports the article's sky-region versus drawn-figure distinction.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          }
+        ],
+        "finding": "The article treats Pegasus as a sky area and M15 as a distinct globular cluster. NASA directly supports Pegasus placement, globular-cluster type, 33,600-ly distance, about 12-Gyr age, dense core with blue/orange stellar populations, Pease 1 as a dying star's gaseous shell, and binocular visibility. The heading and self-check teach the intended object distinction without claiming every Great Square corner belongs to Pegasus.",
+        "id": "quizipedia:constellation:peg",
+        "minimal_required_corrections": [],
+        "verdict": "ACCEPT",
+        "word_count": 206
+      }
+    ],
+    "authorship_disclosure": "I did not author the TAU or PEG draft objects.",
+    "changed_files": [],
+    "evidence": [
+      "Read the exact current frozen file after a GRANTED scoped interactive read lease, then released lease-3bc8be213f6f47b986b74de5bb844944 before the bounded web/source review.",
+      "Opened every five unique cited URLs on 2026-10-09: TAU and PEG IAU charts, the shared IAU constellation-definition page, and NASA Hubble pages for M45 and M15.",
+      "Contract audit passed for both: qm-question-articles/v1, exact constellation target_ref, empty question_refs, required three tags, draft status, three HTTPS sources, and raw whitespace body counts of 195 (TAU) and 206 (PEG)."
+    ],
+    "remaining_risks": [
+      "No correction found. This is a native factual-preparation review only; it is not the separate different-provider release approval."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/TAU-PEG-r1",
+    "status": "DONE",
+    "usage": {
+      "children": 0,
+      "file_edits": 0,
+      "read_lease": "lease-3bc8be213f6f47b986b74de5bb844944, released before web validation",
+      "tests_builds_exports": 0,
+      "unique_urls_opened": 5
+    }
+  },
+  "root_task_id": "task-ea4ce6fc7fa84019b4f5e5b26076dccc",
+  "run_id": "run-6c15b3d3c46d4fb3b9cd39358f591e9c",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: tau-peg article source acceptance",
+  "version": 3
+}
