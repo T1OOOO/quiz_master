@@ -242,3 +242,8 @@ Realstandardgrant3793 imported finalnative reviewmanifest and existingexporter -
 ## Image recovery preparation (15:25 UTC)
 
 15:25UTC: secure feedback26OPEN/no new; recovered production pod2/2Running/nodeReady. Watched K3s imagesdir absent; hostuptime95days, rootcause stillunknown. Prepared source-backed bounded IMAGE_DURABILITY_20261009.md using officialK3simportdocs and actual nativeindependentadviceHub22422. Heavy4365QUEUED/released, noarchiveinstallation/restart executed. Next grant: exact old e0f89cf OCIarchive with verified tag+digest aliases and atomicwatcheddir install, preserve sharedcache/otherprojects; restart/cache-loss rehearsal/releaseintegration remainpending. Local133 unchanged, newmaterials notpublished.
+
+
+## Production image preload verified (16:24 UTC)
+
+16:24UTC execution under actual4421/4424: archived current production e0f89cf OCIimage and installed only own watchedK3star. Initial dualaliasarchive correctly retained de8c but triggered K3scanonicalReference->NamedTagged failure; actualnativeadviceHub22630 supported tag-only correction. Verified tag-only archive67491328B sha2563fa16626b37c138941f0eed41d39442c8059dd75be8900de3f645e50228a71d5, sole tagdescriptor exactde8c, atomicreplace own watchedtar; originaldualtar retained outsidewatchedforevidence. ActualK3slog19:28:20+03 Imported1images success, generatedcanonicaldigestalias exactde8c and bothimagespinned. Productionversione0f89cf/pod2of2/26OPENnonew unchanged. No sharedcache/deployment/DB/PVC/node restart or otherproject mutations. ie7 remainsin_progress: restart/cacheloss rehearsal/future releaseintegration/rootcause investigation pending; local133 notbuilt/published.
