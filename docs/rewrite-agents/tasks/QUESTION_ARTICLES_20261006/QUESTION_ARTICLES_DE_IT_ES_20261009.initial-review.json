@@ -1,0 +1,135 @@
+{
+  "acceptance": "Actual primary URL visits, all exact article IDs/hashes/verdicts and source-level evidence; minimal corrections when needed.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent QuizMaster frozen country-flag article review. Workspace C:/ap/quiz_master HEADc60894d branchcodex/quiz-v2;rootsession828b team2ed452 epoch4. User wants factual educational interesting articles linkedtocountrymap/flags. Local116accepted articles inclall88constellations;156draftarticles53batches;41draftbindings4198missing. 26feedbackOPENnonew, productione0f89cf/stagedf57191b64 unchanged;local116notrebuilt/uploaded. Root selfcheckcoauthor, originalauthorsinGit; disclosepreviousauthorship, iforiginalauthor noindependentacceptance. Actuallyopen every citedprimaryURL (governmentofficialtext/PDF/history); verify every fact/design/orientation/number/dates/uncertainty/selfcheck andcountryatlasassociation. Contractqm-question-articles/v1 exactwholeID quizipedia:country:CODE/exactcountrytargetref/emptyquestionrefs/validcountry-geography-flag tags/statusdraft/2–5HTTPSsources/150–220rawwhitespaceRussianwords/usefulheadings/variedansweredselfcheck. Return structured articles[{id,verdict,canonical_sha256,checked_sources:[{url,evidence,accessed2026-10-09}],minimalcorrections}] plusactualsourcevisits/limitations. Fullobjecthashsha256canonicaljson ensure_asciiFalse sort_keysTrue separatorscomma colon. Originalsourceaccessdatespreserved. Treatlaw as dated official flagdescription notlegaladvice; flagcurrentfacts actuallyverified. Currenthost_hub accept/sharedinteractive readlease/ack/truthfulactivity/release beforeweb/end.QUEUEDnothing releasebeforehuman-authorizedboundedlightreadwebexception. Noedits/Git/children/tests/build/browserautomation/managedworkers/Actions/import/deploy. Nativefactualpreparation only; differentproviderrelease/mkkcontainment/browser/cutover/broaderquestions/options/UI/anatomy pending. Preserveforeignfiles/resources.\nFrozenfile:study/question_articles/drafts/country-flags-de-it-es-20261007.json\nDE199/IT202/ES196words. Germanyhorizontalblackredgold3:5 Article22constitutional vsseparateflagordinance1848/1949originsuncertain. ItalyverticalequalgreenwhiteRed article12 Cispadane7Jan1797decree1946assembly1947. SpainArticle4redyellowredwidth1:2:1 regionalwithnational,1785CarlosIII navalrecognizability.",
+  "created_at": 1791537582.2508974,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-6f52575239a24176831a3d49cc5448c8",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "bb199c62f091b0d0326b4c1eb8b7cba5754dfaff948e5bc33f740ac17b71e806",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "result": "Direct open attempted; web fetch timed out. Do not count this attempt as successful source verification.",
+            "url": "https://www.gesetze-im-internet.de/gg/art_22.html"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened current full German Basic Law at the official Ministry of Justice/Federal Office of Justice site; Article 22(2) states the federal flag is black-red-gold. This verified alternate can replace the timed-out article-specific link.",
+            "url": "https://www.gesetze-im-internet.de/gg/BJNR000010949.html"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened the German flag order, section I.1: equal-width transverse stripes, black above, red middle, gold below, cloth height:length 3:5.",
+            "url": "https://www.gesetze-im-internet.de/flaggano_1996/i_.html"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened Bundestag history page: origins cannot be identified with certainty; describes unity/freedom context, 1848 declaration by the Frankfurt Federal Diet and National Assembly, and the 1949 Parliamentary Council decision.",
+            "url": "https://www.bundestag.de/en/parliament/symbols/flag"
+          }
+        ],
+        "id": "quizipedia:country:DE",
+        "minimal_corrections": [
+          "Replace source_links URL https://www.gesetze-im-internet.de/gg/art_22.html with the successfully opened official full-text Basic Law URL https://www.gesetze-im-internet.de/gg/BJNR000010949.html. No body change is needed."
+        ],
+        "raw_whitespace_word_count": 199,
+        "verdict": "revise"
+      },
+      {
+        "canonical_sha256": "3dd41f69be317b4ebf4e846a2aef1c8ae7aab7977396b5da751ba7a26694fbc9",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened the Quirinale-hosted Constitution PDF; Article 12 gives green, white and red in three equal vertical bands.",
+            "url": "https://www.quirinale.it/allegati_statici/costituzione/costituzione.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened the Presidency's history page; it documents the Cispadane Republic decree at Reggio Emilia on 7 January 1797 and the provisional 19 June 1946 flag, 24 March 1947 confirmation, and insertion into Article 12.",
+            "url": "https://www.quirinale.it/it/pagine/simboli-repubblica-tricolore"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened the image linked by the Quirinale history page; it depicts the current green-white-red vertical tricolour and supports the article's staff-to-fly reading.",
+            "url": "https://www.quirinale.it/allegati_statici/tricolore/p-tricolore-min.jpg"
+          }
+        ],
+        "id": "quizipedia:country:IT",
+        "minimal_corrections": [],
+        "raw_whitespace_word_count": 202,
+        "verdict": "accept"
+      },
+      {
+        "canonical_sha256": "a3f537f0e24b8d906593f2c6f953545ed53fc1b14f015070ca995ead7ce00e5d",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened the BOE consolidated Constitution page (text extraction timed out when reopening specific lines); the officially hosted consolidated Constitution PDF was also opened and verified Article 4: red-yellow-red horizontal bands, yellow twice each red band's width, and autonomous-community flags may be used alongside the Spanish flag.",
+            "url": "https://boe.es/buscar/act.php?id=BOE-A-1978-31229&p=20240217&tn=1"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened BOE's consolidated Constitution PDF and located Article 4.1–4.2. The text matches the article's stripe order, 1:2:1 ratio and regional-flag qualification.",
+            "url": "https://www.boe.es/buscar/pdf/1978/BOE-A-1978-31229-consolidado.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Actually opened La Moncloa's state-flag history page. It attributes the present flag's origin to Charles III; explains the white-ensign identification problem at sea; and says the 1785 decree selected separate designs for the navy and merchant fleet, with later broader use.",
+            "url": "https://www.lamoncloa.gob.es/lang/ca/espana/simbolosdelestado/Paginas/index.aspx"
+          }
+        ],
+        "id": "quizipedia:country:ES",
+        "minimal_corrections": [],
+        "raw_whitespace_word_count": 196,
+        "verdict": "accept"
+      }
+    ],
+    "authorship": "I did not author these articles.",
+    "evidence": [
+      {
+        "kind": "contract_and_structure",
+        "result": "All three exact objects meet the stated schema shape: exact country IDs, matching one-country target_refs, empty question_refs, status draft, expected geography/flag tags and 2–3 HTTPS source links. Raw body whitespace counts are DE 199, IT 202, ES 196, all within 150–220."
+      },
+      {
+        "kind": "self_checks",
+        "result": "Independently checked each varied self-check: DE distinguishes constitutional color order from technical stripe construction and ratio; IT distinguishes the 1797 historical decree from the current constitutional form; ES calculates 1:2:1 and separates national from regional flags. Answers are correct."
+      },
+      {
+        "kind": "canonical_hashes",
+        "result": "Recomputed SHA256 for each whole article as canonical JSON (ensure_ascii=false, sort_keys=true, separators=(',',':')); hashes above match the frozen file."
+      },
+      {
+        "kind": "authorship",
+        "result": "No prior authorship of these articles by this reviewer. No edits made."
+      }
+    ],
+    "limitations": [
+      "The German article-specific Basic Law URL timed out on direct open; its claim was verified from the successfully opened current official full-text Basic Law and Bundestag source. Recommend replacing the failed URL before acceptance.",
+      "The Spanish BOE HTML page opened, but a later line extraction timed out; the opened current consolidated BOE PDF verified the corresponding Article 4 text.",
+      "This is native review preparation only, not cross-provider release approval. Draft source-access dates were preserved; listed dates are this review's actual visits."
+    ],
+    "runtime_identity": "codex; exact model variant not independently exposed in this turn",
+    "status": "DONE_WITH_CONCERNS",
+    "summary": "Independent read-only review of the frozen DE/IT/ES flag articles. IT and ES are accepted. DE's statements are supported, but its Article 22 citation timed out on direct open; the same current official German Basic Law was opened at its full-text URL, so the minimal correction is to replace the failed article-specific link. No files changed."
+  },
+  "root_task_id": "task-6f52575239a24176831a3d49cc5448c8",
+  "run_id": "run-6034997650fd48fea290f90f51c4e4b2",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: de-it-es country flag article review",
+  "version": 3
+}

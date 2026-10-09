@@ -1,0 +1,83 @@
+{
+  "acceptance": "Actual primary URL visits, all exact article IDs/hashes/verdicts and source-level evidence; minimal corrections when needed.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent QuizMaster frozen country-flag article review. Workspace C:/ap/quiz_master HEADc60894d branchcodex/quiz-v2;rootsession828b team2ed452 epoch4. User wants factual educational interesting articles linkedtocountrymap/flags. Local116accepted articles inclall88constellations;156draftarticles53batches;41draftbindings4198missing. 26feedbackOPENnonew, productione0f89cf/stagedf57191b64 unchanged;local116notrebuilt/uploaded. Root selfcheckcoauthor, originalauthorsinGit; disclosepreviousauthorship, iforiginalauthor noindependentacceptance. Actuallyopen every citedprimaryURL (governmentofficialtext/PDF/history); verify every fact/design/orientation/number/dates/uncertainty/selfcheck andcountryatlasassociation. Contractqm-question-articles/v1 exactwholeID quizipedia:country:CODE/exactcountrytargetref/emptyquestionrefs/validcountry-geography-flag tags/statusdraft/2–5HTTPSsources/150–220rawwhitespaceRussianwords/usefulheadings/variedansweredselfcheck. Return structured articles[{id,verdict,canonical_sha256,checked_sources:[{url,evidence,accessed2026-10-09}],minimalcorrections}] plusactualsourcevisits/limitations. Fullobjecthashsha256canonicaljson ensure_asciiFalse sort_keysTrue separatorscomma colon. Originalsourceaccessdatespreserved. Treatlaw as dated official flagdescription notlegaladvice; flagcurrentfacts actuallyverified. Currenthost_hub accept/sharedinteractive readlease/ack/truthfulactivity/release beforeweb/end.QUEUEDnothing releasebeforehuman-authorizedboundedlightreadwebexception. Noedits/Git/children/tests/build/browserautomation/managedworkers/Actions/import/deploy. Nativefactualpreparation only; differentproviderrelease/mkkcontainment/browser/cutover/broaderquestions/options/UI/anatomy pending. Preserveforeignfiles/resources.\nFrozenfile:study/question_articles/drafts/country-flags-20261007.json\nCA176/BR195words. Canada11vs13pointsdesignJacquesSaintCyr15Feb1965flag vs19thcenturysymbol2:1. Brazil27starsstates+FederalDistrict/SpicaVirgoPará/aligned1889Rio outsidecelestialsphere aestheticaccuracy caveat.",
+  "created_at": 1791537582.0901535,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-2b898e89e6aa4ff085cd44783dbcb4be",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "actual_source_visits": "All four cited official URLs opened independently on 2026-10-09.",
+    "articles": [
+      {
+        "canonical_sha256": "c1e3141cdc8fe82ecc15ad6ffba761c00efb321faf611961c6796181a984b711",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Official description gives 2:1 proportion, red-white-red design with central white square and 11-point leaf; explains 13-to-11 point change for long-distance recognition; identifies 15 February 1965 first hoist.",
+            "url": "https://www.canada.ca/en/canadian-heritage/services/flag-canada-description.html"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Official history attributes the redesign to graphic artist Jacques St-Cyr, dates inauguration on Parliament Hill to 15 February 1965, and traces maple-leaf identity to the 19th century.",
+            "url": "https://www.canada.ca/en/canadian-heritage/services/flag-canada-history.html"
+          }
+        ],
+        "contract_check": "Exact country target CA, empty question_refs, valid country/geography/flag tags, two HTTPS sources, draft status, 176 words, and answered self-check all conform.",
+        "id": "quizipedia:country:CA",
+        "minimal_corrections": [],
+        "verdict": "ACCEPT",
+        "word_count": 176
+      },
+      {
+        "canonical_sha256": "00a0f4d5537e12d317f01dbe7c9cb92ac04333679fe314daddad5d5708d7aa5c",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Brazilian Space Agency states 27 stars represent the states including the Federal District, identifies Spica/Virgo as Pará, and notes imprecision and aesthetic placement.",
+            "url": "https://www.gov.br/aeb/pt-br/centrais-de-conteudo/publicacoes/instagram-do-periodo-de-defeso-eleitoral-2022/semana-espacial-100-anos-de-independencia-as-constelacoes-da-bandeira"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Lei 5.700 art. 3 §1 specifies Rio de Janeiro sky at 08:30 on 15 November 1889 viewed from outside the celestial sphere; art. 5 specifies diamond, blue circle, white band and Ordem e Progresso.",
+            "url": "https://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-5700-1-setembro-1971-357915-normaatualizada-pl.html"
+          }
+        ],
+        "contract_check": "Exact country target BR, empty question_refs, valid country/geography/flag tags, two HTTPS sources, draft status, 195 words, and answered self-check all conform.",
+        "id": "quizipedia:country:BR",
+        "minimal_corrections": [],
+        "verdict": "ACCEPT",
+        "word_count": 195
+      }
+    ],
+    "authorship_disclosure": "I did not author the frozen CA/BR article bodies. Per task packet, the root coauthored the answered self-checks.",
+    "changed_files": [],
+    "evidence": [
+      "Canada.ca description: first hoist 15 February 1965; 2:1; central white square; stylized 11-point leaf; original 13-point version was unreadable at distance.",
+      "Canada.ca history: Jacques St-Cyr redesigned the leaf from 13 to 11 points; Parliament Hill inauguration 15 February 1965; maple-leaf Canadian identity dates to the 19th century.",
+      "Brazilian Chamber of Deputies, Lei 5.700: 15 November 1889 Rio sky at 08:30; perspective outside celestial sphere; flag geometric and motto specifications.",
+      "Brazilian Space Agency: 27 stars represent states plus Federal District; Spica in Virgo represents Pará; placement has astronomical imprecision and aesthetic treatment."
+    ],
+    "limitations": [
+      "This is native factual-preparation evidence only; it is not cross-provider publication or release approval."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/ca-br-r1",
+    "scope": "read-only independent factual, source, and contract review"
+  },
+  "root_task_id": "task-2b898e89e6aa4ff085cd44783dbcb4be",
+  "run_id": "run-e9d9e4ecf77a4c54929a44087ab2035a",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: ca-br country flag article review",
+  "version": 3
+}

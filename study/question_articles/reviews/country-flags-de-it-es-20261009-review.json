@@ -1,0 +1,80 @@
+{
+  "author": "Existing authors preserved inGit; root828b answered selfcheck and DE citation coauthor",
+  "reviewer": "Native Codex session-5bf9fd5062264ec7b071256a3f4fd97d; exactruntimevariantunknown",
+  "scope": "Independent native factual preparation; different-provider release/browser/cutover/publication pending.",
+  "review_tasks": [
+    "task-6f52575239a24176831a3d49cc5448c8",
+    "task-614e5ed5466b4367a7838d8bfcd9c59d"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:country:DE",
+      "article_sha256": "6f0c31adc2c29dc6477661520826278f18e743bd54abcb008a6120973d657742",
+      "verdict": "accept",
+      "note": "Exact source/hash native preparation; final DE replacement checked. Some source endpoints failed on repeat fetch; actual successful visits preserved in original/final reports. Release approval pending.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Opened current full German Basic Law at the official Ministry of Justice/Federal Office of Justice site; Article 22(2) states the federal flag is black-red-gold. This verified alternate can replace the timed-out article-specific link.",
+          "url": "https://www.gesetze-im-internet.de/gg/BJNR000010949.html"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Opened the German flag order, section I.1: equal-width transverse stripes, black above, red middle, gold below, cloth height:length 3:5.",
+          "url": "https://www.gesetze-im-internet.de/flaggano_1996/i_.html"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Opened Bundestag history page: origins cannot be identified with certainty; describes unity/freedom context, 1848 declaration by the Frankfurt Federal Diet and National Assembly, and the 1949 Parliamentary Council decision.",
+          "url": "https://www.bundestag.de/en/parliament/symbols/flag"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:country:IT",
+      "article_sha256": "3dd41f69be317b4ebf4e846a2aef1c8ae7aab7977396b5da751ba7a26694fbc9",
+      "verdict": "accept",
+      "note": "Exact source/hash native preparation; final DE replacement checked. Some source endpoints failed on repeat fetch; actual successful visits preserved in original/final reports. Release approval pending.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened the Quirinale-hosted Constitution PDF; Article 12 gives green, white and red in three equal vertical bands.",
+          "url": "https://www.quirinale.it/allegati_statici/costituzione/costituzione.pdf"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened the Presidency's history page; it documents the Cispadane Republic decree at Reggio Emilia on 7 January 1797 and the provisional 19 June 1946 flag, 24 March 1947 confirmation, and insertion into Article 12.",
+          "url": "https://www.quirinale.it/it/pagine/simboli-repubblica-tricolore"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened the image linked by the Quirinale history page; it depicts the current green-white-red vertical tricolour and supports the article's staff-to-fly reading.",
+          "url": "https://www.quirinale.it/allegati_statici/tricolore/p-tricolore-min.jpg"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:country:ES",
+      "article_sha256": "a3f537f0e24b8d906593f2c6f953545ed53fc1b14f015070ca995ead7ce00e5d",
+      "verdict": "accept",
+      "note": "Exact source/hash native preparation; final DE replacement checked. Some source endpoints failed on repeat fetch; actual successful visits preserved in original/final reports. Release approval pending.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened the BOE consolidated Constitution page (text extraction timed out when reopening specific lines); the officially hosted consolidated Constitution PDF was also opened and verified Article 4: red-yellow-red horizontal bands, yellow twice each red band's width, and autonomous-community flags may be used alongside the Spanish flag.",
+          "url": "https://boe.es/buscar/act.php?id=BOE-A-1978-31229&p=20240217&tn=1"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened BOE's consolidated Constitution PDF and located Article 4.1–4.2. The text matches the article's stripe order, 1:2:1 ratio and regional-flag qualification.",
+          "url": "https://www.boe.es/buscar/pdf/1978/BOE-A-1978-31229-consolidado.pdf"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened La Moncloa's state-flag history page. It attributes the present flag's origin to Charles III; explains the white-ensign identification problem at sea; and says the 1785 decree selected separate designs for the navy and merchant fleet, with later broader use.",
+          "url": "https://www.lamoncloa.gob.es/lang/ca/espana/simbolosdelestado/Paginas/index.aspx"
+        }
+      ]
+    }
+  ]
+}
