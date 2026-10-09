@@ -1,0 +1,84 @@
+{
+  "articles": [
+    {
+      "canonical_sha256": "66ed650a5f1a1c87efe4032b7d6e945324cc3316dc7a3306275e9424565c803c",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view0. Sections 1 and 31, lines 41-46 and 78, specify thirteen alternating red and white stripes, white stars on blue, and that this flag became official July 4, 1960.",
+          "url": "https://www.archives.gov/federal-register/codification/executive-order/10834.html"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view1; find turn1081view0/turn1081view1 lines 184-188 states 13 stripes represent the original thirteen colonies and 50 stars each represent one of the fifty states.",
+          "url": "https://www.archives.gov/files/education/pdf/the-constitution-rules-k-2-teacher-guide.pdf"
+        }
+      ],
+      "evidence": "ID/target_ref US match; question_refs empty; status draft; tags country:us/domain:geography/topic:flag; two HTTPS sources. Body and answered selfcheck correctly distinguish historical thirteen colonies/stripes from current fifty states/stars and accurately date EO 10834's prescribed design. No unsupported color symbolism.",
+      "id": "quizipedia:country:US",
+      "minimal_corrections": [],
+      "verdict": "ACCEPT",
+      "word_count": 180
+    },
+    {
+      "canonical_sha256": "30c5cbdb00a53586284dcdb9a1aa792dce21e35fc3164ca02d044d45520f9608",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view2; find turn1081view2/turn1081view3 lines 148-151 confirms equal horizontal saffron-white-green bands, navy wheel, 24 spokes, approximate diameter of white band, and adoption by Constituent Assembly on 22 July 1947.",
+          "url": "https://www.eoikhartoum.gov.in/national-symbols.php"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view3; find turn1081view4/turn1081view5 lines 61-67 describes the 1931 tricolour with Gandhi's spinning wheel and says the 22 July 1947 adopted flag replaced that centre symbol with Emperor Ashoka's Dharma Chakra.",
+          "url": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page14.html"
+        }
+      ],
+      "evidence": "ID/target_ref IN match; question_refs empty; status draft; tags country:in/domain:geography/topic:flag; two HTTPS sources. The replacement second citation opens the government-published PIB magazine and supports the historical claim. Body/selfcheck accurately identify current symbol, 24 spokes, 1947 adoption and earlier charkha.",
+      "id": "quizipedia:country:IN",
+      "minimal_corrections": [],
+      "verdict": "ACCEPT",
+      "word_count": 171
+    },
+    {
+      "canonical_sha256": "617599bea42bc3c288a518a07901dd312f9ab407848861aeb8b315c6a62d0578",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view4; find turn1081view6/turn1081view7 lines 38-45 supports designer Fred Brownell, first use 27 April 1994, V-shaped central design flowing into a horizontal band, convergence interpretation, and the caution against universal meanings for individual colors.",
+          "url": "https://www.gov.za/about-sa/national-flag-0"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view5; find turn1081view9 lines 32-43 specifies 1.5:1 (3:2) dimensions, green Y band at one-fifth flag width, convergence and continuation to fly, white/gold edging, black triangle, and upper red/lower blue bands.",
+          "url": "https://www.gov.za/documents/constitution/constitution-republic-south-africa-1996-schedule-1-national-flag-07-feb-1997"
+        }
+      ],
+      "evidence": "ID/target_ref ZA match; question_refs empty; status draft; tags country:za/domain:geography/topic:flag; two HTTPS sources. Body and answered selfcheck match the constitutional geometry and official history. It qualifies the convergence reading and avoids fixed universal color meanings.",
+      "id": "quizipedia:country:ZA",
+      "minimal_corrections": [],
+      "verdict": "ACCEPT",
+      "word_count": 195
+    }
+  ],
+  "changed_files": [],
+  "evidence": [
+    {
+      "kind": "canonical_hashes_and_contract",
+      "result": "Read the current frozen file under scoped GRANTED lease. Recomputed whole-object canonical SHA256 with UTF-8 JSON, ensure_ascii=False, sorted keys and compact separators. Counts 180/171/195 whitespace-separated body words. Verified each exact ID, country target_ref, empty question_refs, draft status, country/domain/topic tags, two HTTPS sources and answered object-specific selfchecks."
+    },
+    {
+      "kind": "actual_source_visits",
+      "result": "Actually opened all six current citations on 2026-10-09 and checked the claims against source text. The replacement India PIB source is directly opened and supports the charkha-to-Dharma-Chakra claim. Search/open refs and cited lines appear under each article."
+    },
+    {
+      "kind": "no_edits",
+      "result": "No draft files were modified; no tests/builds/browser automation run."
+    }
+  ],
+  "remaining_risks": [],
+  "runtime_identity": "codex; exact model variant unavailable in current runtime metadata",
+  "source_visit_summary": "All six cited URLs actually opened successfully today. Existing source access dates in the frozen objects were preserved; replacement Indian PIB citation is dated 2026-10-09.",
+  "status": "DONE",
+  "summary": "All three frozen articles pass factual, source, schema and answered-selfcheck review. No draft files were changed."
+}

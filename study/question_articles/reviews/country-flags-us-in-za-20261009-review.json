@@ -1,0 +1,64 @@
+{
+  "author": "Existing authors preserved in Git; root answered selfchecks and IN citation coauthor",
+  "reviewer": "Native Codex session-5bf9fd5062264ec7b071256a3f4fd97d; exact variant unavailable",
+  "scope": "Independent native preparation; exporter not run this turn; different-provider release/browser/cutover/publication pending",
+  "review_tasks": [
+    "task-83075c472c8544d888190e4229656f7f"
+  ],
+  "articles": [
+    {
+      "article_id": "quizipedia:country:US",
+      "article_sha256": "66ed650a5f1a1c87efe4032b7d6e945324cc3316dc7a3306275e9424565c803c",
+      "verdict": "accept",
+      "note": "ID/target_ref US match; question_refs empty; status draft; tags country:us/domain:geography/topic:flag; two HTTPS sources. Body and answered selfcheck correctly distinguish historical thirteen colonies/stripes from current fifty states/stars and accurately date EO 10834's prescribed design. No unsupported color symbolism.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view0. Sections 1 and 31, lines 41-46 and 78, specify thirteen alternating red and white stripes, white stars on blue, and that this flag became official July 4, 1960.",
+          "url": "https://www.archives.gov/federal-register/codification/executive-order/10834.html"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view1; find turn1081view0/turn1081view1 lines 184-188 states 13 stripes represent the original thirteen colonies and 50 stars each represent one of the fifty states.",
+          "url": "https://www.archives.gov/files/education/pdf/the-constitution-rules-k-2-teacher-guide.pdf"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:country:IN",
+      "article_sha256": "30c5cbdb00a53586284dcdb9a1aa792dce21e35fc3164ca02d044d45520f9608",
+      "verdict": "accept",
+      "note": "ID/target_ref IN match; question_refs empty; status draft; tags country:in/domain:geography/topic:flag; two HTTPS sources. The replacement second citation opens the government-published PIB magazine and supports the historical claim. Body/selfcheck accurately identify current symbol, 24 spokes, 1947 adoption and earlier charkha.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view2; find turn1081view2/turn1081view3 lines 148-151 confirms equal horizontal saffron-white-green bands, navy wheel, 24 spokes, approximate diameter of white band, and adoption by Constituent Assembly on 22 July 1947.",
+          "url": "https://www.eoikhartoum.gov.in/national-symbols.php"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view3; find turn1081view4/turn1081view5 lines 61-67 describes the 1931 tricolour with Gandhi's spinning wheel and says the 22 July 1947 adopted flag replaced that centre symbol with Emperor Ashoka's Dharma Chakra.",
+          "url": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page14.html"
+        }
+      ]
+    },
+    {
+      "article_id": "quizipedia:country:ZA",
+      "article_sha256": "617599bea42bc3c288a518a07901dd312f9ab407848861aeb8b315c6a62d0578",
+      "verdict": "accept",
+      "note": "ID/target_ref ZA match; question_refs empty; status draft; tags country:za/domain:geography/topic:flag; two HTTPS sources. Body and answered selfcheck match the constitutional geometry and official history. It qualifies the convergence reading and avoids fixed universal color meanings.",
+      "checked_sources": [
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view4; find turn1081view6/turn1081view7 lines 38-45 supports designer Fred Brownell, first use 27 April 1994, V-shaped central design flowing into a horizontal band, convergence interpretation, and the caution against universal meanings for individual colors.",
+          "url": "https://www.gov.za/about-sa/national-flag-0"
+        },
+        {
+          "accessed": "2026-10-09",
+          "evidence": "Actually opened today (2026-10-09), ref turn1080view5; find turn1081view9 lines 32-43 specifies 1.5:1 (3:2) dimensions, green Y band at one-fifth flag width, convergence and continuation to fly, white/gold edging, black triangle, and upper red/lower blue bands.",
+          "url": "https://www.gov.za/documents/constitution/constitution-republic-south-africa-1996-schedule-1-national-flag-07-feb-1997"
+        }
+      ]
+    }
+  ]
+}
