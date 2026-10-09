@@ -252,3 +252,8 @@ Realstandardgrant3793 imported finalnative reviewmanifest and existingexporter -
 ## Remaining country article source audit (17:25 UTC)
 
 17:25UTC: root added answered selfchecks to remaining FR/AR/CL countrydrafts (205/170/195words). Actualnativehelper acceptedHubtask59d59e under grantedreadleaseeaea7 after six primaryURLvisits2026-10-09; allthreeexacthashesaccepted. Fullreportandmanifest imported under actual4478. Export4483 remainedQUEUEDagent_turns/olderrequest and ownreleasedwithout execution;runtime133/coverage4198missing24draft133accepted unchanged, next136exportpending. 26feedbackOPEN/no new. No appcode/deps/newscript/fullbuild/browser/deploy/managedexternallaunch. Nativepreparationnotdifferentproviderrelease;productione0f89cf unchanged;broader2ln1in_progress;foreign69preserved.
+
+
+## France Argentina Chile export completed (18:27 UTC)
+
+18:27UTC: actualstandard4566 completed pending FR/AR/CL export:write/checkPASS136,coverage4198missing21draft136accepted;all88constellation articles retained. Securefeedback26OPEN/latest2026-10-07/no new. FreshinteractiveClaude/AntigravityREADY requested throughHub, noactualactivityclaim/managedexternal launch. Nativehelper assigned boundedHP001/003/004 factual/pedagogicalaudit taska192f24d foractualsourcechecks; outcome notyetreceived. Productione0f89cf unchanged;local136notbuilt/uploaded/published. Fullbrowser/differentproviderrelease/cutover/mkk/broaderquizquality/anatomy andie7rehearsal/integration pending. Foreign69preserved.
