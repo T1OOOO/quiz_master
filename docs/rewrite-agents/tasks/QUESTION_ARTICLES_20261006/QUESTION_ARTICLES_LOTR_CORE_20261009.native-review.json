@@ -1,0 +1,111 @@
+{
+  "original_task": {
+    "acceptance": "Three current exact-object verdicts, independent question/answer-choice and exact revision check, actual sources and minimal corrections.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\study\\question_articles",
+      "C:\\ap\\quiz_master\\next"
+    ],
+    "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+    "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+    "body": "Quiz Master finite independent read-only question-linked article review. Workspace C:/ap/quiz_master HEAD84c5ef6, root828b team2ed452 epoch4. User wants factual quizzes/options and substantive interesting articles, source-backed and bound to exact questionrevision. Local110accepted inclall88constellationreadings,156draftarticles53batches;47draftbindings4198missing. Productione0f89cf/stagedf57191b64 unchanged26feedbackOPENnonew. Nativepreparation only; different-providerrelease review/OPENmkkcontainment/browser/cutover remainpending. FreshREADY/explicitofferaccept/currenthost_hub sharedinteractive readlease, QUEUED grantsnothingreleasebeforeboundedhuman-authorizedlightread/webexception;no managedworkers/tests/builds/browserautomationwithoutgrants. Noedits/Git/children/Actions/deploy. Root ownsimports/export. Contractqm-question-articles/v1 exactIDs emptytargetrefs exactquestionrefs revisionSHA256/title/body150–220words/usefulheadings/2–5HTTPSsources/statusdraft. Originalsourceaccessdatespreserved; actualsourcevisitsrecorded2026-10-09. Disclose priorauthorship; iforiginalauthor sourceauditonlynotindependentaccept. Read question candidates/options without keys first and independently answer; then inspect authoritative key/sources/article and verify everydistractor, exactrevisionbinding and allarticlefacts; stalebinding reject. Existing build.py describes canonical snapshot path; use read-onlymetadata notexecute. Return perarticle{id,verdict,canonical_sha256,checked_sources[{url,evidence,accessed}],minimalcorrections,question_binding_check} plusactualvisits/limitations; fullobjectSHA256canonicaljson ensure_asciiFalse sort_keysTrue separatorscomma colon. Sources copiedscript/bookprimarytext legitimateforfacts but scriptsmaydifferreleasedfilm; require releasedfilmevidence for chronology. Priorreviews are contextnotcurrentacceptance.\nFile study/question_articles/drafts/lotr-core-20261007.json three articles. Root unchanged articleobjects. Priorreview study/drafts/lotr-core-20261007.review.json is previousdraftcontextonly. Bookcanon: Gollumfall/fingerRing/SamFrodo alive; nineWalkers formula afterCouncil BookII TheRingGoesSouth;ShadowfaxGandalfvsHasufelAragorn/AsfalothGlorfindel/BregoEorlson notfilmhorseconfusion. Include minimalfact/tag/choiceambiguityissues iffound.",
+    "created_at": 1791534260.9115674,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "review",
+    "id": "task-e72bd0e4ac9a4eb9aacef136df10641f",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "articles": [
+        {
+          "canonical_sha256": "38ed8fd71987fca31acbe51b95aaa72e5966de181a442b1184dfb3dc2c1e93a4",
+          "checked_sources": [
+            "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_3__en.htm — Return of the King, Mount Doom passage: Gollum bites Frodo, gloats, oversteps and falls with the Ring.",
+            "https://www.tolkienestate.com/selected-further-reading/ — official contextual chronology and Ring centrality."
+          ],
+          "findings": "The answer and all distractors are unambiguous; wording correctly rejects the common false framing that Frodo calmly throws the Ring away.",
+          "id": "quiz:lotr:q-lotr-0-lotr-q1",
+          "question_binding": {
+            "blind_answer": "Голлум",
+            "correct_option_id": "q-lotr-0-lotr-q1-opt-1",
+            "question_id": "q-lotr-0-lotr-q1",
+            "result": "match",
+            "revision_sha256": "59fa4ab8625f87ef699008ed93799b7407212b87050679298039c37eccb1df2a"
+          },
+          "verdict": "ACCEPT",
+          "word_count": 184
+        },
+        {
+          "canonical_sha256": "9121280932c310b04db7c2b16ef25aa3b684072d2d3ae1eaba1492db34ed2b2f",
+          "checked_sources": [
+            "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_1__en.htm — The Ring Goes South states 'The Company of the Ring shall be Nine' and enumerates the departure.",
+            "https://www.tolkienestate.com/writing/ — official work context."
+          ],
+          "findings": "The composition and Nine Walkers/Nine Riders explanation agree with the primary text. The numerical distractors are clear.",
+          "id": "quiz:lotr:q-lotr-1-lotr-q2",
+          "question_binding": {
+            "blind_answer": "9",
+            "correct_option_id": "q-lotr-1-lotr-q2-opt-2",
+            "question_id": "q-lotr-1-lotr-q2",
+            "result": "match",
+            "revision_sha256": "6ab903a6393516efa938225fd74517a42b64917646363d3e089c0ef37df3eae5"
+          },
+          "verdict": "ACCEPT",
+          "word_count": 201
+        },
+        {
+          "canonical_sha256": "a1e36f594ce70c3457226de35db9b6916ac76eecb77870c129029f22617e1672",
+          "checked_sources": [
+            "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_2__en.htm — supports Shadowfax bearing Gandalf and Gimli, Hasufel bearing Aragorn, and book-only Brego distinction.",
+            "https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_1__en.htm — supports Asfaloth as Glorfindel's horse."
+          ],
+          "finding": "The answer and distractors are sound, but current source_links[0].supports attributes the later Gandalf-and-Pippin travel claim to The Two Towers. That event belongs in The Return of the King, so the current support metadata is false/incomplete.",
+          "id": "quiz:lotr:q-lotr-2-lotr-q3",
+          "question_binding": {
+            "blind_answer": "Тенегрив (Shadowfax)",
+            "correct_option_id": "q-lotr-2-lotr-q3-opt-3",
+            "question_id": "q-lotr-2-lotr-q3",
+            "result": "match",
+            "revision_sha256": "45795429e66d6ebc551dcccd29a4cbac6ce996b16a8f55ae77d4f25bc6e09d45"
+          },
+          "required_correction": "Either remove the Pippin sentence and its support claim, or add https://ae-lib.org.ua/texts-c/tolkien__the_lord_of_the_rings_3__en.htm as a third source and move the Pippin support there. I independently opened that Return of the King text today; it places Pippin with Gandalf and Shadowfax on the journey to Minas Tirith. Recompute the article hash and request a narrow recheck after correction.",
+          "verdict": "REWORK",
+          "word_count": 160
+        }
+      ],
+      "authorship_disclosure": "I did not author these three frozen article objects.",
+      "changed_files": [],
+      "evidence": [
+        "Blind solves before consulting grading data: Gollum; 9; Shadowfax. Each matches the private answer key and the exact current bundle revision.",
+        "All five currently cited URLs were opened independently today; the Return of the King text was additionally opened to test the unsupported Pippin citation mapping.",
+        "Canonical hashes were recomputed using UTF-8 JSON with ensure_ascii=false, sort_keys=true and separators=(',', ':')."
+      ],
+      "remaining_risks": [
+        "q3 cannot be accepted with the existing source mapping. The factual body is otherwise sound.",
+        "This is native preparation evidence only and is not a cross-provider publication/release approval."
+      ],
+      "reviewer_label": "eri_hya_gru_ind_review/lotr-core-r1",
+      "scope": "read-only independent factual/editorial review; no production edits"
+    },
+    "root_task_id": "task-e72bd0e4ac9a4eb9aacef136df10641f",
+    "run_id": "run-6a56e159341e4b4ab910e9c490b2ca38",
+    "skills": [],
+    "state": "SUBMITTED",
+    "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+    "title": "quiz_master-2ln.1: lotr-core source and question acceptance",
+    "version": 3
+  },
+  "q3_corrected_verdict": {
+    "id": 20638,
+    "time": 1791534610.364057,
+    "channel": "project/project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "sender": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+    "recipient": "session-828b0735e7ee4cfbb59e021475f4bcee",
+    "kind": "message",
+    "reply_to": null,
+    "task_id": null,
+    "text": "[eri_hya_gru_ind_review/lotr-q3-r2] Correction to my q3 rework finding: ACCEPT; no object change. Current SHA-256 remains a1e36f594ce70c3457226de35db9b6916ac76eecb77870c129029f22617e1672 (160 words). I reopened the cited Two Towers URL today. The Palantír passage explicitly supports the current narrower claim: lines 2694–2705 Gandalf rides ahead with Peregrin, tells him ‘Shadowfax shall show you his paces,’ Aragorn sets Pippin in Gandalf’s arms, and Shadowfax departs; lines 2710–2717 describe Pippin riding with Gandalf and Shadowfax’s pace. Thus source_links[0] legitimately supports ‘later Shadowfax carries Pippin’; my prior statement wrongly conflated it with their later arrival at Minas Tirith. Other q3 checks still hold: Two Towers lines 1446–1450 supports Shadowfax/Gandalf/Gimli versus Hasufel/Aragorn; Fellowship supports Asfaloth/Glorfindel. No edits or new facts. Preserve initial rework report as superseded only on this point."
+  }
+}
