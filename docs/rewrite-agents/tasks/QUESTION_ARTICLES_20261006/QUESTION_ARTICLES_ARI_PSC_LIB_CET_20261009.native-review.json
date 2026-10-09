@@ -1,0 +1,136 @@
+{
+  "acceptance": "ExactfinalcorrectedARI acceptance andunchanged3objecthashrecheck withactualsourceevidence.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only exact final recheck current study/question_articles/drafts/constellations-ari-psc-lib-cet-20261008.json after initial task377333c rework. Root actually opened NASA APOD and NASA/Hubble replacement, replaced inaccessible ESA link with https://science.nasa.gov/missions/hubble/hubble-spots-a-curious-spiral/ accessed2026-10-09; distance nowabout100millionly attributedNASAAPOD ratherthan110. NGC770/unbarreddescription attributedNASA/Hubble, APODsupportmetadataupdated. ARI171words, otherthreeobjects unchanged atacceptedinitialhashes. Initial actualreport preserved QUESTION_ARTICLES_ARI_PSC_LIB_CET_20261009.initial-review.json. Verifyexactminimalcorrections and todayprimaryopens, hashes ofentirecurrent4objects. Returnperarticleaccept/rework canonicalhash + checked_sources. Samefullcontextprevious task:local75/all88drafts/nativeprep only/crossproviderreleasependingOPENmkk/staged64/publicold/noedits/children/Git/tests/build/browserautomation/export/deploy/managedworkers. Actualofferaccept/readleasebeforeboundedread; releasebeforewait/web-only exception. Do notinferinitialacceptedhashforchangedARI.",
+  "created_at": 1791516258.6491601,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-566949d78c6b4404b15f2c91abbc4064",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "authorship": "I did not author these articles.",
+    "evidence": [
+      {
+        "kind": "canonical_hashes",
+        "reference": "study/question_articles/drafts/constellations-ari-psc-lib-cet-20261008.json",
+        "result": "ARI d2b04e8868b81e750c39cfe203cebe11967e068dfc4b6501aab5663484f391bd; PSC b535a1d1a13b6570742acdf40bbafaded4a791800fb476f293238c184de6466f; LIB 56f033dffaf601360f832a85a90a103e64596d8460c1caa6e20ea9549600c6ae; CET 745122ecf86aca46395d62ef3a84034e195794d01c2443808080c0147d5c4ea2."
+      },
+      {
+        "kind": "word_counts",
+        "reference": "study/question_articles/drafts/constellations-ari-psc-lib-cet-20261008.json",
+        "result": "Whitespace body counts ARI 172, PSC 154, LIB 159, CET 164; each within 150–220 words."
+      },
+      {
+        "kind": "change_scope",
+        "reference": "study/question_articles/drafts/constellations-ari-psc-lib-cet-20261008.json",
+        "result": "ARI final content/source metadata rechecked; PSC, LIB, CET canonical hashes exactly match prior accepted verdicts."
+      },
+      {
+        "kind": "contract_audit",
+        "reference": "study/question_articles/drafts/constellations-ari-psc-lib-cet-20261008.json",
+        "result": "All four expected IDs, schema, target_refs, empty question_refs, required tags, draft statuses, and 2–3 links each verified."
+      }
+    ],
+    "limitations": [
+      "Native editorial/source review only; not a different-provider release approval."
+    ],
+    "source_visits": {
+      "date": "2026-10-09",
+      "note": "Direct re-opened sources for corrected ARI and prior same-day opened sources for unchanged objects are listed below. Original access dates remain in frozen source_links.",
+      "opened_sources": [
+        {
+          "evidence": "Directly opened today; IAU lines 53-61 define sky-region boundaries; row 107 lists Aries/Ari. Earlier same-day review also checked Pisces/Psc row 166, Libra/Lib row 149, and Cetus/Cet row 121.",
+          "opened": true,
+          "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx?hkey=bb9dc841-0618-41b5-ac70-149741062141"
+        },
+        {
+          "evidence": "Directly opened today; NASA APOD lines 242-244: NGC 772/Arp 78 in Aries, about 100 million light-years, prominent outer arm, NGC 770 companion and likely tidal interactions.",
+          "opened": true,
+          "url": "https://science.nasa.gov/image-article/apod-2011-july-7-arp-78-peculiar-galaxy-in-aries/"
+        },
+        {
+          "evidence": "Directly opened today; NASA Hubble lines 251-254: NGC 770 satellite distorted/disrupted the arm; NGC 772 is an unbarred spiral.",
+          "opened": true,
+          "url": "https://science.nasa.gov/missions/hubble/hubble-spots-a-curious-spiral/"
+        },
+        {
+          "evidence": "Opened earlier today; NASA lines 295-317 support M74 in Pisces, 32 million light-years, symmetric arms, H II regions and UV ionization.",
+          "opened": true,
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-74/"
+        },
+        {
+          "evidence": "Opened earlier today; 2013 NASA release, lines 311-323 and 328-331 support Libra, parallax, age estimate and uncertainty compatibility.",
+          "opened": true,
+          "url": "https://science.nasa.gov/missions/hubble/hubble-finds-birth-certificate-of-oldest-known-star/"
+        },
+        {
+          "evidence": "Original Bond et al. 2013 PDF opened earlier today; lines 19-30 give the parallax-only ±0.31 Gyr and total ~±0.8 Gyr uncertainties and identify oxygen/composition contributions.",
+          "opened": true,
+          "url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/03/STScI-01EVSRBXMMPE1Z94GEMJET538S.pdf"
+        },
+        {
+          "evidence": "Opened earlier today; NASA lines 295-320 support M77 in Cetus, 45 million light-years, Seyfert classification and accretion-powered active core.",
+          "opened": true,
+          "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-77/"
+        }
+      ]
+    },
+    "summary": "Final independent read-only review of the corrected frozen ARI/PSC/LIB/CET batch. ARI now passes with the NASA/APOD distance and accessible NASA/Hubble interaction source; PSC, LIB, CET hashes remain byte-for-byte equal to their prior accepted objects. All four are accepted. No files were changed.",
+    "verdicts": [
+      {
+        "body_whitespace_words": 172,
+        "canonical_object_sha256": "d2b04e8868b81e750c39cfe203cebe11967e068dfc4b6501aab5663484f391bd",
+        "findings": [
+          "IAU's opened table lists Aries/Ari and defines constellation boundaries. NASA APOD identifies Arp 78/NGC 772 in Aries, gives an approximate distance of 100 million light-years, and describes its prominent outer arm and likely tidal interactions.",
+          "The replacement NASA/Hubble article opened successfully and explicitly states that satellite NGC 770 distorted/disrupted NGC 772's arm, leaving it elongated and asymmetric; it also confirms the unbarred spiral classification. The article attributes these claims appropriately and its self-check answer is correct.",
+          "The previously inaccessible ESA/Hubble link is gone. The new NASA/Hubble source records access date 2026-10-09; the APOD source retains its author's 2026-10-08 date and now supports metadata matches the text. Schema, target_ref ari, empty question_refs, tags, draft status, and three links pass."
+        ],
+        "id": "quizipedia:constellation:ari",
+        "verdict": "accept"
+      },
+      {
+        "body_whitespace_words": 154,
+        "canonical_object_sha256": "b535a1d1a13b6570742acdf40bbafaded4a791800fb476f293238c184de6466f",
+        "findings": [
+          "Unchanged exact hash from prior review. NASA's opened M74 page supports Pisces location, approximate 32 million light-year distance, spiral arms, H II regions, and UV ionization by young stars. Its object-specific self-check is correct; schema and source metadata remain valid."
+        ],
+        "id": "quizipedia:constellation:psc",
+        "verdict": "accept"
+      },
+      {
+        "body_whitespace_words": 159,
+        "canonical_object_sha256": "56f033dffaf601360f832a85a90a103e64596d8460c1caa6e20ea9549600c6ae",
+        "findings": [
+          "Unchanged exact hash from prior review. NASA's opened 2013 release and the original Bond et al. paper support the explicitly dated 14.5 ± 0.8 billion-year estimate, parallax measurement, oxygen/composition uncertainty, and compatibility with the Universe's age. The text does not claim this is the latest estimate; its self-check is correct."
+        ],
+        "id": "quizipedia:constellation:lib",
+        "verdict": "accept"
+      },
+      {
+        "body_whitespace_words": 164,
+        "canonical_object_sha256": "745122ecf86aca46395d62ef3a84034e195794d01c2443808080c0147d5c4ea2",
+        "findings": [
+          "Unchanged exact hash from prior review. NASA's opened M77 page supports Cetus location, approximate 45 million light-year distance, spiral/Seyfert classification, active nucleus and accretion-powered supermassive black hole. The self-check and schema pass."
+        ],
+        "id": "quizipedia:constellation:cet",
+        "verdict": "accept"
+      }
+    ]
+  },
+  "root_task_id": "task-566949d78c6b4404b15f2c91abbc4064",
+  "run_id": "run-6cf632c7cdce4b7baab1a032a27dc84d",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: final corrected ARI and unchanged PSC LIB CET recheck",
+  "version": 3
+}

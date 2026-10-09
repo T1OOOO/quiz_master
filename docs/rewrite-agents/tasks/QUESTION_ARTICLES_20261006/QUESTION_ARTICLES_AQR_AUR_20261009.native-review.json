@@ -1,0 +1,93 @@
+{
+  "acceptance": "Actualindependentprimaryvisits andexactfrozenhashverdicts; no falsifiedpublication/crossproviderclaim.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent exact frozen review of study/question_articles/drafts/constellations-aqr-aur-20261007.json. Fullcontext:156draftarticles53batches/all88constellationreadings; local75accepted includes53constellations,35remainingunaccepted. Serverstagedf57191b64/publicolde0f89cf;26feedbackOPEN/no new. Root coauthored answeredvariedselfchecks beforefreeze; LIB logicalwording simplified, dated2013estimate+uncertainty kept. Disclose anypreviousauthorship: ifsameauthoronlysourceaudit, noindependentacceptance. Open every citedprimaryURL yourself inclIAUcharts/originalpaperPDF; validate everyclassification/number/date/location/uncertainty/selfcheckanswer; verify150–220Russianwords and exactschemaqm-question-articles/v1/statusdraft/id/targetrefs/emptyquestionrefs/requiredtagids/2–5sources. Return perarticle accept/rework, canonicalwholeobjectSHA256(json ensure_ascii=False sort_keys=True separators comma colon), precise minimalcorrections, checked_sources url/evidence, today2026-10-09accessdate; preserve originalsourcedates inarticleprovenance. Specificrisk: M2 masscentralconcentration vsdensity/outerstreamers; AE Aur binaryencounter hypothesis vsphysicalcollision; LIB2013age estimate must notbe falselypresented latest; NGC772bar/NGC770; M74ionization; M77Seyfertaccretion. ReadEnglishfullcontextARTICLE_FINAL4_20261009_EN.md asneededexcepttargetset. ActualfreshREADY/offeraccept andsharedinteractive readlease; queuedowns nothing releasebefore authorized boundedlightread/webexception. No files/Git/children/tests/build/browserautomation/export/deploy/managedexternalworkers/Actions. Nativepreparation reviewonly, notdifferentproviderrelease gate; OPENmkk containment remains; preserveunrelatedresources/files.",
+  "created_at": 1791516090.463823,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "review",
+  "id": "task-97f0e266b8b84650942c69455c1dd73b",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "canonical_sha256": "4b9d549e871e73369aa9e61efe6c4f099e98fc2830783936af6cef39af16281d",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "IAU Aquarius chart labels M2 in the official constellation region.",
+            "url": "https://iauarchive.eso.org/static/public/constellations/pdf/AQR.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "NASA supports M2 as a gravitationally bound globular cluster in Aquarius, ~37,000 ly away, >150 ly diameter, >150,000 stars, central mass concentration, outward stellar streams, visible/IR Hubble core image, telescope resolution, and ideal naked-eye conditions.",
+            "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-2/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "IAU defines constellations as bounded sky regions rather than physical line figures.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          }
+        ],
+        "id": "quizipedia:constellation:aqr",
+        "verdict": "ACCEPT",
+        "word_count": 195
+      },
+      {
+        "canonical_sha256": "08040bc371c03d4a0377ead017931730bb65935cb64f8fd29f2ba78fb316492a",
+        "checked_sources": [
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Opened the official Auriga IAU chart (text extraction is empty, but the one-page PDF source opened).",
+            "url": "https://iauarchive.eso.org/static/public/constellations/pdf/AUR.pdf"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "JPL calls AE Aurigae a runaway star; presents its likely Trapezium/binary–binary encounter history cautiously, distinguishes gas emission/heated IR dust/reflected visible light, and explicitly maps WISE false colors to infrared wavelengths.",
+            "url": "https://www.jpl.nasa.gov/images/pia13447-wise-catches-a-runaway-star-in-flames/"
+          },
+          {
+            "accessed": "2026-10-09",
+            "evidence": "Supports the direction-versus-physical-origin distinction used in the self-check.",
+            "url": "https://iauarchive.eso.org/public/themes/constellations/"
+          }
+        ],
+        "id": "quizipedia:constellation:aur",
+        "verdict": "ACCEPT",
+        "word_count": 195
+      }
+    ],
+    "changed_files": [],
+    "evidence": [
+      "Verified current frozen schema, IDs, refs, empty question refs, required tags, draft status, 3 sources per article, answered self-checks, and 195-word Russian bodies.",
+      "Independently opened all five unique listed URLs on 2026-10-09 after release of the scoped read lease; canonical whole-object hashes recomputed with ensure_ascii=false, sort_keys=true, separators=(',', ':')."
+    ],
+    "remaining_risks": [
+      "No correction identified. This native source/contract review is not the separate cross-provider publication approval."
+    ],
+    "reviewer_label": "eri_hya_gru_ind_review/AQR-AUR-r1",
+    "status": "DONE",
+    "usage": {
+      "children": 0,
+      "file_edits": 0,
+      "read_lease": "lease-8c9132ff16784a7596f453a7dccdeffd released before web validation",
+      "tests_builds_exports": 0,
+      "unique_source_urls_opened": 5
+    }
+  },
+  "root_task_id": "task-97f0e266b8b84650942c69455c1dd73b",
+  "run_id": "run-c45d46030d904d8799d303867d0608f8",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: independent AQR/AUR source acceptance",
+  "version": 3
+}
