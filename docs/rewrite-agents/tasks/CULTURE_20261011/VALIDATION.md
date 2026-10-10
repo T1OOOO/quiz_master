@@ -30,3 +30,17 @@ failed at its hardcoded old count; only that fixture was updated to 128 / 3978.
 Full Flutter tests, release build and publication evidence follow in RELEASE.md.
 All 69 unrelated dirty/untracked file hashes were preserved before integration.
 No claim is made about reviewing the full existing bank or resolving real feedback.
+
+## Published-runtime binding correction
+
+First post-publication browser check found that new articles did not appear.
+The public-verification assertion failed: runtime provenance URI is
+/app/quizzes/... while quizctl import used quizzes/...; source URI participates
+in the question revision hash. The 20 new canonical artifacts were rehashed
+using the exact runtime provenance URI with the existing Go content.Rehash/Build.
+All 20 resulting public questions equal captured live catalogs byte-semantically.
+Only question provenance/revisions, quiz revision/bundle hashes and article refs/
+review hashes changed; stems, options, grading, article bodies and links did not.
+Release rehearsal now asserts all 20 runtime article bindings BEFORE deployment.
+The first publication is not counted as completion; corrected reader publication
+and mobile browser verification are required.

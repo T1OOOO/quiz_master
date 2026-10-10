@@ -1,0 +1,54 @@
+{
+  "overall": "accept",
+  "scope": "Independent runtime article-binding recheck for the 20 cinema/music questions after source URI rebinding.",
+  "verified20": {
+    "unique_questions": 20,
+    "public_bundle_questions_equal_captured_live_questions": 20,
+    "packet_public_text_options_difficulty_equal_bundle": 20,
+    "private_and_draft_grading_equal_packet_keys": 20,
+    "article_title_body_links_equal_accepted_packets": 20,
+    "article_question_refs_equal_captured_live_revisions": 20,
+    "accepted_review_hashes_equal_current_articles": 20
+  },
+  "evidence": {
+    "current_packet_sha256": {
+      "cinema": "1AAB65614C990834F0BFBDAF31937A9C15F42A83EB6652CD6251D1A441BE67D6",
+      "music": "A728F81A57522B6F3271D56F7855761D4896C6952BFF2FFB23F54D220848B046"
+    },
+    "captured_live_catalogs_sha256": "AB749335E55E426BBF2B83D11E664F9217DD95EACFF2555A7F4D38DD42B9837E",
+    "runtime_source_uris": {
+      "cinema": "/app/quizzes/Cinema/People/cinema_people_20261011.json",
+      "music": "/app/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    "provenance_only_comparisons": {
+      "unique_questions": 20,
+      "bundle_and_draft_question_representations": 40,
+      "relative_to_runtime_uri_transitions": 40,
+      "non_provenance_question_changes": 0,
+      "private_grading_changes": 0
+    },
+    "reader_export": {
+      "existing_articles_unchanged": 162,
+      "current_articles": 182,
+      "changed_articles": 20,
+      "changed_article_fields": "question_refs only; review records changed only by the dependent article_sha256"
+    },
+    "scoped_diff_paths": [
+      "next/apps/quiz_app/assets/study/question-articles.json",
+      "next/content/cinema-people-20261011/bundle.json",
+      "next/content/cinema-people-20261011/draft.json",
+      "next/content/music-people-20261011/bundle.json",
+      "next/content/music-people-20261011/draft.json",
+      "study/question_articles/drafts/culture-people-20261011.json",
+      "study/question_articles/reviews/culture-people-20261011.json"
+    ],
+    "git_diff_check_exit": 0
+  },
+  "findings": [],
+  "limitations": [
+    "This compares the supplied live-catalog capture, not a new browser/network fetch.",
+    "Factual source review is reused from the accepted cinema and music fact-check reports; this scope is provenance and reader binding only.",
+    "Acceptance is editorial integration evidence only and does not approve deployment or publication."
+  ],
+  "no_deployment_claim": true
+}
