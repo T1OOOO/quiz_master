@@ -1,0 +1,27 @@
+{
+  "grant": "lease-48bc850b1a0a435d8009b312bc6aa1bf GRANTED queue5299",
+  "source_review_tasks": [
+    "task-c42c9db82fa84d16ba647f1b4368291e",
+    "task-0835639ad8534061bea8abf2210146e7"
+  ],
+  "candidate_sha256": "156149af1929761bb32ae99cff37bfafbd0e5d49c2b2b0f89be6d900c9060d3e",
+  "key_sha256": "3a2a78325fc6907ed83d5810312c9e467220d94abc84f4c9098d1f7db6ba573a",
+  "import_source_sha256": "611486b239a15310f6242295bd794983048c90dc16d9ab262440b58c5aedfe59",
+  "bundle_sha256": "54cc36d41bb9b8ff547fbffc4209621199f2b07b7ddb3af44d98e85fb70af85f",
+  "initial_check": "Old .run/thematic80/quizctl.exe omitted numeric difficulty_level; first roundtrip failed KeyError. Rebuilt current quizctl source, regenerated and individually validated draft/bundle; final roundtrip passed. Prior grant renewal expired; released old lease and obtained new grant before regeneration.",
+  "checks": [
+    "current quizctl compiled successfully",
+    "current quizctl import/build completed",
+    "draft and bundle individually validated",
+    "all10 reviewed stems/options, keys/numeric difficulty/explanations preserved",
+    "article catalog check PASS156"
+  ],
+  "difficulty": "estimated; not calibrated",
+  "pending": [
+    "question-linked mini articles",
+    "different-provider release review",
+    "app build/browser",
+    "deployment/import to production database"
+  ],
+  "publication": "Local private canonical bundle only. published_at is bundle metadata, not a production publication claim."
+}
