@@ -1,0 +1,28 @@
+{
+  "scope": "HP006only; unaccepted article remains draft pending independent review",
+  "grant": "lease-bee08d093d52480c86af681658bca733 queue5093 standardGRANTED",
+  "changes": [
+    "legacy options[2]: school ghosts to hippogriffs",
+    "canonical import/build regenerated actual quizctl",
+    "article one sentence and exact question revision binding"
+  ],
+  "checks": {
+    "other9public_questions": "exactly unchanged",
+    "private_grading": "exactly unchanged",
+    "other6articles_in_batch": "exactly unchanged",
+    "canonical_draft_validate": "PASS",
+    "canonical_bundle_validate": "PASS",
+    "article_catalog_check": "PASS155"
+  },
+  "initial_validate_call": "Passing draft and bundle together correctly rejected duplicate quiz_id; both pass individually.",
+  "new_question_revision_sha256": "c22cc23b9960d3e423df217dddc1d0b55a68d24f56fc1dd5ef9ae0367b71b5dc",
+  "new_bundle_sha256": "ecde7674847320160f48ca5a041c584fba5c26c56576e97cb68e50f40b517737",
+  "article_sha256": "10d2beed85c7640e16d42dd89c52a84ed6add19d8cb932217b69abf9483edc0c",
+  "pending": [
+    "independent exact-hash HP006 fact review",
+    "article acceptance/export",
+    "different-provider release review",
+    "full app build/browser",
+    "publication"
+  ]
+}

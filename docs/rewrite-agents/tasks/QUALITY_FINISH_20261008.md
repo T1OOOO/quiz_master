@@ -292,3 +292,8 @@ Secure production feedback remains26OPEN/no new. Actual managed Codex gpt-6-luna
 
 
 03:43UTC export completed under actualstandard5045: build.py --write and --check PASS155miniarticles; coverage.py4198missing/1draft/156acceptedbindings (10newarticles/11newrefs). RemainingdraftHP006 excluded, all88constellations retained. Raw independentnative853aa0 exacthash/source/binding audit preserved; screenplaymirrorcaveat recorded. No fullFlutterbuild/browser/differentproviderrelease/publication; productione0f89cf/26feedbackOPEN unchanged.
+
+
+## HP006 canonical repair (04:41 UTC)
+
+04:41UTC: root actualstandard5093 repairedHP006 ambiguousghost→hippogriff, existingquizctl import/build generatednewsha c22cc23b andbundleecde7674. Other9publicquestionobjects/privategrading exactunchanged, allotherbatcharticles unchanged. Individualdraft/bundlevalidatePASS; acceptedarticlecatalogcheckPASS155, HP006157worddraft rebound butnotaccepted. Initialcombinedvalidationcorrectlyrejectedsamequizduplicate, individualcallsPASS. IndependentHP006source/hashreview andexport pending; fullbuild/browser/differentproviderrelease/publication pending;26feedbackOPEN/versione0f89cf unchanged.
