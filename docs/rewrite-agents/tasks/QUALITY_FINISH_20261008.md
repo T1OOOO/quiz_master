@@ -279,3 +279,8 @@ Secure production feedback remains26OPEN/no new. Actual managed Codex gpt-6-luna
 ## Planet draft corrections (01:41 UTC)
 
 01:41UTC: applied3 planet-draft review corrections under explicit lightweight read/edit exception after root4953queued/released:004explanation matches choices,007orbital description+156.8inclination primarysources,010Jupiter added. Correct indices preserved, unaffected7questions unchanged; rawreview saved. Corrected-hash independent recheck/import/miniarticles/build/browser/publication pending; runtime145/productione0f89cf/26OPEN unchanged. Mode helper actual task e49c4786 submitted resource checkpoint only/no code changes. No edit lease claimed; heavy operations and managed workers still require actual grants.
+
+
+## Planet corrected-hash recheck (02:38 UTC)
+
+02:38UTC: actual native corrected-hash recheck0835639 accepted004/007/010 after5NASAURLopens; rawtask/result saved, all10planetquestions now nativepreparationreviewed (notdifferentproviderrelease). Correctedindices preserved. Lead supplied exact4articleJSONs+3quizbundles+coordinatecanonicalpaths to remainingarticle reviewer853aa0, removing priorinventory blocker; new audit outcome pending. Runtime145/productione0f89cf/26OPEN unchanged; import/miniarticles/fullbuild/browser/publication pending. Root granted4996 for bounded evidence/docs/Beads only. Prior Beads notes archived verbatim because full notes exceeded Windows command-line limit.

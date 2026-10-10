@@ -1,0 +1,109 @@
+{
+  "acceptance": "Three explicit verdicts with real source access and exact hashes; no fabricated acceptance if resourcequeued.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\drafts\\planet-paradoxes-20261010.candidate.json",
+    "C:\\ap\\quiz_master\\study\\drafts\\planet-paradoxes-20261010.key.json",
+    "C:\\ap\\quiz_master\\study\\drafts\\planet-paradoxes-20261010.review.json",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006\\PLANET_PARADOX_REVISIONS_20261010.md"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only recheck corrected planet-paradox004/007/010. Files candidate/key now SHA256156149af1929761bb32ae99cff37bfafbd0e5d49c2b2b0f89be6d900c9060d3e /3a2a78325fc6907ed83d5810312c9e467220d94abc84f4c9098d1f7db6ba573a. Read prior review and revisions evidence. Actually verify supported004explanation,007broaderorbitalstem/equatorial alternative/156.8inclination (NASA NTRSsec2)/sourceIDs,010bothNASAplanet sources. Correct indices unchanged; other7objects unchanged. No edits/tests/build/browser/import/publish/children. Real GRANTED sharedread lease beforeaudit; no root resource held. Same-provider preparation only, report exacthashes and whether each finding addressed.",
+  "created_at": 1791596629.5173938,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-0835639ad8534061bea8abf2210146e7",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      {
+        "kind": "hashes",
+        "result": "Recomputed current candidate/key SHA256; values match task's expected corrected hashes."
+      },
+      {
+        "kind": "source_audit",
+        "result": "Actually opened all five cited URLs on 2026-10-10; direct evidence and supported claims are listed under each verdict."
+      },
+      {
+        "kind": "contract_review",
+        "result": "Checked corrected question stems/options, keyed answers, explanation/source alignment, and preserved correct_answer_index values 3, 1, 2."
+      },
+      {
+        "kind": "scope",
+        "result": "Used granted shared-read lease; released lease after inspection. No files changed; no tests/build/import/publication run."
+      }
+    ],
+    "limitations": [
+      "This is same-provider native preparation only; it does not satisfy a different-provider release review."
+    ],
+    "runtime_identity": "Codex native session session-5bf9fd5062264ec7b071256a3f4fd97d; exact model variant not independently exposed.",
+    "sha256": {
+      "planet-paradoxes-20261010.candidate.json": "156149AF1929761BB32AE99CFF37BFAFBD0E5D49C2B2B0F89BE6D900C9060D3E",
+      "planet-paradoxes-20261010.key.json": "3A2A78325FC6907ED83D5810312C9E467220D94ABC84F4C9098D1F7DB6BA573A"
+    },
+    "status": "DONE",
+    "summary": "Read-only independent recheck of corrected planet-paradoxes items 004, 007, 010. All three revisions resolve the prior review findings; answer indices are unchanged. No edits, imports, tests, builds, or publication were performed.",
+    "verdicts": [
+      {
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NASA Science, section 'The Largest Volcano': Mars is home to the largest volcano in the solar system, Olympus Mons; it also contrasts Olympus Mons with Earth's Mount Everest.",
+            "url": "https://science.nasa.gov/mars/facts/"
+          }
+        ],
+        "correct_answer_index": 3,
+        "finding": "The revised explanation now refers to the actual planet choices and identifies Mars as Olympus Mons's home. NASA directly calls Olympus Mons the Solar System's largest volcano. The Earth distractor's Everest contrast remains clear and does not undermine the unique answer.",
+        "question_id": "planet-paradox-004",
+        "verdict": "accept"
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NASA Science, Triton overview: it is the only large solar-system moon orbiting opposite its planet's rotation, a retrograde orbit; NASA says scientists think it was captured by Neptune's gravity.",
+            "url": "https://science.nasa.gov/neptune/moons/triton/"
+          },
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NASA NTRS, Rubincam, section 2 'TRITON', PDF page 3 / extracted lines 69-74: Triton's orbital plane is inclined 156.8 degrees to Neptune's equator, 'so that the motion is retrograde.'",
+            "url": "https://ntrs.nasa.gov/api/citations/20030022784/downloads/20030022784.pdf"
+          }
+        ],
+        "correct_answer_index": 1,
+        "finding": "The broadened stem asks for Triton's orbital description, and the options now distinguish prograde, retrograde, polar, and equatorial cases. NASA states the orbit is retrograde and opposite Neptune's rotation. The NASA NTRS paper explicitly gives a 156.8-degree inclination relative to Neptune's equator and calls the motion retrograde; that is neither a 90-degree polar orbit nor a coplanar equatorial orbit. The possible-capture wording is appropriately presented as a hypothesis.",
+        "question_id": "planet-paradox-007",
+        "verdict": "accept"
+      },
+      {
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NASA Science, Jupiter 'Structure' and 'Surface': pressure and temperature increase deep in the atmosphere; Jupiter has no true surface, and extreme pressure and temperatures deep inside would crush, melt, or vaporize a spacecraft.",
+            "url": "https://science.nasa.gov/jupiter/jupiter-facts/"
+          },
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NASA Science, Saturn 'Surface': Saturn has no true surface and extreme pressures and temperatures deep inside would crush, melt, or vaporize a spacecraft.",
+            "url": "https://science.nasa.gov/saturn/facts/"
+          }
+        ],
+        "correct_answer_index": 2,
+        "finding": "The key cites both planets named in the explanation. NASA says neither gas giant has a true surface, and describes pressure and temperature increasing deep inside; this supports the distinction from a normal landing on solid ground.",
+        "question_id": "planet-paradox-010",
+        "verdict": "accept"
+      }
+    ]
+  },
+  "root_task_id": "task-0835639ad8534061bea8abf2210146e7",
+  "run_id": "run-60bdd5b2028546d68a8182f5bce247f6",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Recheck three corrected planet draft findings",
+  "version": 3
+}
