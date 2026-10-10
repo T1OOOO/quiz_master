@@ -1,0 +1,148 @@
+{
+  "acceptance": "All10 question IDs individually audited against actual source reads. Exact candidate/key hashes and sourceURLs/date recorded. No factual or distractor verdict without reading. If queued, checkpoint honestly.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\drafts\\planet-paradoxes-20261010.candidate.json",
+    "C:\\ap\\quiz_master\\study\\drafts\\planet-paradoxes-20261010.key.json"
+  ],
+  "assignee": "session-5bf9fd5062264ec7b071256a3f4fd97d",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only independent preparation review of candidate/key. Open listed official NASA URLs to verify all10 correct answers, exclude ambiguous alternative answers, review credible distractors and answer-length giveaways/difficulty. No edit, import, publish, children, tests/build/browser. Actual GRANTED shared read resource required, root no longer holds edit lease. Frozen files in commit24a6136 authoritative; report exact hashes, per-question accept/revise and actual source access. No release approval (same provider). You are not alone: preserve other edits/resources.",
+  "created_at": 1791585761.7192678,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-c42c9db82fa84d16ba647f1b4368291e",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "authorship": "I did not author these files. Native same-provider review only.",
+    "changed_files": [],
+    "checked_sources": [
+      {
+        "accessed": "2026-10-10",
+        "supports": "176-day solar day vs ~88-day year and ~59-day rotation",
+        "url": "https://science.nasa.gov/mercury/facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "runaway greenhouse; rotation 243 days, year 225 days, solar day 117 days",
+        "url": "https://science.nasa.gov/venus/venus-facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "hydrogen/helium composition; Great Red Spot; no true surface and deep pressure",
+        "url": "https://science.nasa.gov/jupiter/jupiter-facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "Olympus Mons is the Solar System’s largest volcano",
+        "url": "https://science.nasa.gov/mars/facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "only planet with average density below water; no true surface; pressure at depth",
+        "url": "https://science.nasa.gov/saturn/facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "97.77-degree axial tilt causes extreme seasons; Uranus second least dense",
+        "url": "https://science.nasa.gov/uranus/facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "Triton retrograde relative to Neptune’s rotation",
+        "url": "https://science.nasa.gov/neptune/neptune-facts/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "Triton’s retrograde orbit and unusual orbital inclination",
+        "url": "https://science.nasa.gov/neptune/moons/triton/"
+      },
+      {
+        "accessed": "2026-10-10",
+        "supports": "Triton orbital plane inclined 156.8 degrees to Neptune’s equator; motion retrograde",
+        "url": "https://ntrs.nasa.gov/api/citations/20030022784/downloads/20030022784.pdf"
+      }
+    ],
+    "decisions": [
+      {
+        "id": "planet-paradox-001",
+        "note": "NASA Venus facts directly attributes Venus’s extreme surface heat to its dense runaway-greenhouse atmosphere. Options are parallel in length and only this answer fits; difficulty 3 seems plausible.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-002",
+        "note": "NASA Mercury facts distinguishes 176-day solar day from 88-day year and 59-day axial rotation, making the noon-to-noon answer unique. Options have no obvious length giveaway; difficulty 6 is plausible because it distinguishes three periods.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-003",
+        "note": "NASA Jupiter facts says it is mostly hydrogen and helium and supports the deeper hydrogen explanation. Wrong pairs are distinct; difficulty 3 seems plausible.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-004",
+        "note": "NASA Mars facts explicitly calls Olympus Mons the Solar System’s largest volcano, so Mars is uniquely correct. The key explanation mentions an impact crater and Earth’s highest mountain although neither is in the choices; replace with a short explanation mapping directly to the four planet options. Difficulty 3 reasonable.",
+        "verdict": "REVISE"
+      },
+      {
+        "id": "planet-paradox-005",
+        "note": "NASA Saturn facts says Saturn is the only planet with average density below water. The explanation correctly limits this to average whole-planet density. Difficulty 5 may be high for a common fact, but this is subjective.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-006",
+        "note": "NASA Uranus facts gives 97.77° tilt and calls it the cause of the Solar System’s most extreme seasons, including 21-year dark winters. Distractors do not fit that mechanism; difficulty 5 plausible.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-007",
+        "note": "NASA Neptune facts and its Triton page support retrograde motion. The key also asserts Triton is neither polar nor in the ring plane, but its source list only cites Neptune facts. Add the Triton page and an orientation reference such as NASA NTRS’s paper giving inclination 156.8° relative to Neptune’s equator, or trim those distractor rationales. The polar-orbit option may confuse because orbital plane and direction are separate properties. Difficulty 4 plausible.",
+        "verdict": "REVISE"
+      },
+      {
+        "id": "planet-paradox-008",
+        "note": "NASA Jupiter facts identifies the Great Red Spot as an atmospheric storm and says Jupiter has no true surface. Its three alternatives are surface-geology interpretations. Difficulty 2 plausible.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-009",
+        "note": "NASA Venus facts gives 243-day axial rotation, 225-day year, and 117-day solar day. The first option is uniquely correct; options compare periods in parallel. Difficulty 6 plausible.",
+        "verdict": "ACCEPT"
+      },
+      {
+        "id": "planet-paradox-010",
+        "note": "NASA Saturn facts supports no true surface and increasing deep pressure/temperature; NASA Jupiter facts supports the same for Jupiter. Since the stem names both and the explanation covers both, add Jupiter to this record’s sources (it is already in the source ledger), or narrow the stem to Saturn. Intended answer is unique; difficulty 4 plausible.",
+        "verdict": "REVISE"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "file_inspection",
+        "result": "After solving candidate questions without the key, I checked the private key. Both frozen files were read under GRANTED shared read lease lease-9ea91cdec6454421984ca7b1704f3840, then the lease was released. Exact file SHA-256 values are recorded above."
+      },
+      {
+        "kind": "source_audit",
+        "result": "Actually opened 2026-10-10: NASA Science Mercury, Venus, Jupiter, Mars, Saturn, Uranus, Neptune facts pages; NASA Science Triton page; NASA NTRS Rubincam technical paper, 20030022784. These support all correct answers and identify the limited source gaps noted in Q007/Q010."
+      },
+      {
+        "kind": "review_scope",
+        "result": "All ten candidate questions were independently answered before examining the key. No edits, build, tests, import, publication, or release approval."
+      }
+    ],
+    "sha256": {
+      "study/drafts/planet-paradoxes-20261010.candidate.json": "5ACCA1C99BE781F2DD838E385AE44B3658AB00FB7CFA8CAC17B96EB6FB287C68",
+      "study/drafts/planet-paradoxes-20261010.key.json": "DC2683416890FD93E63C264534E9DD3D05BC383FDDFF006B60FFCD9859D86661"
+    },
+    "summary": "Independent read-only native preparation review of all 10 frozen questions at commit 24a6136. No files changed. Seven items accepted as written; Q004, Q007, and Q010 need the source/explanation fixes below. Same-provider review only, not release approval."
+  },
+  "root_task_id": "task-c42c9db82fa84d16ba647f1b4368291e",
+  "run_id": "run-5c6bfd29ab9644c395ca1e9e6c5b5d64",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent native planet-paradox draft audit at 24a6136",
+  "version": 3
+}
