@@ -1,0 +1,17 @@
+{
+  "event": "result",
+  "result": {
+    "conversation_id": "cdc7e106-390c-4600-958a-29d3702d5d96",
+    "status": "SUCCESS",
+    "response": "{\n  \"overall\": \"accept\",\n  \"packet_sha256\": \"1aab65614c990834f0bfbdaf31937a9c15f42a83eb6652cd6251d1a441be67d6\",\n  \"answers\": [\n    {\n      \"question_id\": \"cinema-people-001\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-people-002\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-people-003\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-people-004\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-people-005\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-people-006\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-people-007\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-people-008\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-people-009\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-people-010\",\n      \"index\": 3\n    }\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Independent verification relied on supplied text, native reviewer evidence, and established domain knowledge without issuing independent HTTP requests or computing local cryptographic hashes.\",\n    \"No claim is made of opening external source URLs during this review turn.\",\n    \"This review assesses question uniqueness, factual accuracy, answer keys, distractor plausibility, and article alignment within the provided packet; it does not constitute release approval.\"\n  ]\n}\n",
+    "duration_seconds": 12.4368223,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 33151,
+      "output_tokens": 2503,
+      "thinking_tokens": 2027,
+      "cache_read_tokens": 0,
+      "total_tokens": 35654
+    }
+  }
+}

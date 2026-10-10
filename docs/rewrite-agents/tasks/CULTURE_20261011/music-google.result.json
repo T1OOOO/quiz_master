@@ -1,0 +1,17 @@
+{
+  "event": "result",
+  "result": {
+    "conversation_id": "aa3e231f-a591-43ee-9357-1d9b646ce8e1",
+    "status": "SUCCESS",
+    "response": "{\n  \"overall\": \"accept\",\n  \"packet_sha256\": \"a728f81a57522b6f3271d56f7855761d4896c6952bff2ffb23f54d220848b046\",\n  \"answers\": [\n    {\n      \"question_id\": \"music-people-001\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-people-002\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"music-people-003\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"music-people-004\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"music-people-005\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-people-006\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"music-people-007\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"music-people-008\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"music-people-009\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-people-010\",\n      \"index\": 3\n    }\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Independent verification was conducted without tool execution, live HTTP opens, or independent SHA-256 hash recalculation, evaluating the packet against domain knowledge and the provided native source evidence.\",\n    \"No release or publication approval is implied by this content review.\"\n  ]\n}\n",
+    "duration_seconds": 12.2318569,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 11926,
+      "output_tokens": 2421,
+      "thinking_tokens": 1968,
+      "cache_read_tokens": 20452,
+      "total_tokens": 14347
+    }
+  }
+}
