@@ -1,0 +1,15 @@
+# October10 browser and reviewer gate
+
+Production remains quiz-2026.10.06-feedback-e0f89cf. SSH confirmed hostname racknerd-f0269d5, immutable baseline digest de8c71716add4f88aa678abb8a7b05e1a649b3c94f86befd3a406c94662af4e2 and PVC UID7fc2428f-4146-4c78-a26d-2347d9f3b7bf. No upgrade yet.
+
+User explicitly removed mandatory resource-queue waiting for Quiz Master. AGENTS override committed/pushed a1ebca0; automation prompt updated through app tool. Only own queued browser lease and unlaunched Gemini managed job were released/cancelled. Shared broker/foreign resources unchanged.
+
+Actual mobile390x844 browser test: country tap selected Bolivia, focus painted readable label, search selected Canada, article opened/closed, anatomy selected pancreas, atlas exposed all88constellations. Flag training accepted US tap and scored1; reverse-country round advanced. Desktop1262x800 retained readable map/details. Old root-builder Overlay caused repeatable RenderBox geometry exception during view focus/resize. Native independent Hub task4d91f6db and upstream Flutter191508/193287 corroborated framework focus path.
+
+Candidate remediation reuses ShellRoute to place existing feedback controls below Navigator; all route paths/query parsing unchanged. Existing feedback test now requires Navigator ancestry: failed before change (null), passed after. All3feedback tests pass; analyzer clean10.1s; full114tests pass26s. Go attempts/sqlite/httpapi PASS (SQLite38.153s). Article exporter check PASS160accepted entries; all88constellation readings retained.
+
+Actual fixed browser bundle quiz-qa-2026.10.10-focus, JS fe8132f2cdf03b5e42810865e968fe29cfdd363a55c539c6a5386ba22baa506a. Fresh session qm-focus-oct10:390x844 map/Bolivia, resize1262x800, searchCanada, article open then resize390x844, close, keyboardTab, feedback open/cancel. Console clean after explicit clear. Feedback screenshot qa-oct10-focus-feedback.png; final console qa-oct10-focus-console.txt. QA build finished124.3s; prior build a1ebca0 superseded by this candidate. CupertinoIcons warning retained, visible tested controls use Material icons.
+
+Gemini3.8FlashMedium first direct tool audit17.19s returned empty due MCP permission denial; no approval bypass used. Text-only supplied-evidence audit21.75s returned explicit ACCEPT for003Jupiter/004Olympus and limitations, archived GEMINI_TEXT_AUDIT_20261010.json. Gemini3.1ProHigh source review116.49s returned REVISE claiming private bindings meant draft statuses. Lead checked contract/export/tests and did not weaken fail-closed decoding. Gemini3.8FlashMedium recheck36.17s explicitly retracted CRITICAL, findingsempty, HOLD only pending actual browser focus gate/artifact parity. Raw original/recheck archived; these are static reviews, not Gemini execution of browser/tests. Lead subsequently executed focus gate clean.
+
+Release packaging/fresh backup-copy rehearsal/immutable image validation/public verification still pending. No PostgreSQL integration acceptance, full corpus audit or draft completion is claimed. Keep all real26feedback reports open.

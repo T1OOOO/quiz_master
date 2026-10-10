@@ -19,6 +19,13 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byTooltip('Send feedback'), findsOneWidget);
+    // Root-builder overlays can trigger Web focus traversal before layout.
+    expect(
+      tester
+          .element(find.byTooltip('Send feedback'))
+          .findAncestorWidgetOfExactType<Navigator>(),
+      isNotNull,
+    );
     await tester.tap(find.byTooltip('Send feedback'));
     // Exercise the bounded screenshot timeout in the test clock.
     await tester.pump(const Duration(seconds: 3));

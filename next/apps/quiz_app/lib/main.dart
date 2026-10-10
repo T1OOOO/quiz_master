@@ -91,12 +91,6 @@ class _QuizAppState extends ConsumerState<QuizApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       routerConfig: _router,
-      builder: (context, child) => Overlay.wrap(
-        child: _FeedbackOverlay(
-          router: _router,
-          child: child ?? const SizedBox(),
-        ),
-      ),
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
           ...const MaterialScrollBehavior().dragDevices,
@@ -116,53 +110,63 @@ ThemeData _theme(Brightness brightness) => ThemeData(
 GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
   initialLocation: initialLocation,
   routes: [
-    GoRoute(
-      path: '/quizipedia',
-      builder: (context, _) =>
-          QuizipediaPage(onExit: () => context.go('/library')),
-    ),
-    GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
-    GoRoute(
-      path: '/study/:moduleId/practice',
-      builder: (_, state) =>
-          StudyPracticePage(moduleId: state.pathParameters['moduleId']!),
-    ),
-    GoRoute(
-      path: '/study/:moduleId',
-      builder: (_, state) =>
-          StudyArticlePage(moduleId: state.pathParameters['moduleId']!),
-    ),
-    GoRoute(
-      path: '/library',
-      builder: (_, state) => DiscoveryPage(
-        folder: state.uri.queryParameters['folder'] ?? '',
-        query: state.uri.queryParameters['q'] ?? '',
-        difficulty: difficultyBandFromWire(
-          state.uri.queryParameters['difficulty'],
+    // Keep global controls below the navigator's already-owned overlay.
+    ShellRoute(
+      builder: (context, state, child) =>
+          _FeedbackOverlay(router: GoRouter.of(context), child: child),
+      routes: [
+        GoRoute(
+          path: '/quizipedia',
+          builder: (context, _) =>
+              QuizipediaPage(onExit: () => context.go('/library')),
         ),
-      ),
-    ),
-    GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
-    GoRoute(
-      path: '/quiz/:quizId',
-      builder: (_, state) => CatalogPage(
-        key: ValueKey(state.uri.toString()),
-        quizId: state.pathParameters['quizId']!,
-        round: state.uri.queryParameters.containsKey('round')
-            ? int.tryParse(state.uri.queryParameters['round']!) ?? -1
-            : null,
-        difficulty: difficultyBandFromWire(
-          state.uri.queryParameters['difficulty'],
+        GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
+        GoRoute(
+          path: '/study/:moduleId/practice',
+          builder: (_, state) =>
+              StudyPracticePage(moduleId: state.pathParameters['moduleId']!),
         ),
-      ),
-    ),
-    GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
-    GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
-    GoRoute(path: '/feedback', builder: (_, _) => const FeedbackAdminPage()),
-    GoRoute(
-      path: '/join/:inviteToken',
-      builder: (_, state) =>
-          JoinPage(token: state.pathParameters['inviteToken']!),
+        GoRoute(
+          path: '/study/:moduleId',
+          builder: (_, state) =>
+              StudyArticlePage(moduleId: state.pathParameters['moduleId']!),
+        ),
+        GoRoute(
+          path: '/library',
+          builder: (_, state) => DiscoveryPage(
+            folder: state.uri.queryParameters['folder'] ?? '',
+            query: state.uri.queryParameters['q'] ?? '',
+            difficulty: difficultyBandFromWire(
+              state.uri.queryParameters['difficulty'],
+            ),
+          ),
+        ),
+        GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
+        GoRoute(
+          path: '/quiz/:quizId',
+          builder: (_, state) => CatalogPage(
+            key: ValueKey(state.uri.toString()),
+            quizId: state.pathParameters['quizId']!,
+            round: state.uri.queryParameters.containsKey('round')
+                ? int.tryParse(state.uri.queryParameters['round']!) ?? -1
+                : null,
+            difficulty: difficultyBandFromWire(
+              state.uri.queryParameters['difficulty'],
+            ),
+          ),
+        ),
+        GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
+        GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
+        GoRoute(
+          path: '/feedback',
+          builder: (_, _) => const FeedbackAdminPage(),
+        ),
+        GoRoute(
+          path: '/join/:inviteToken',
+          builder: (_, state) =>
+              JoinPage(token: state.pathParameters['inviteToken']!),
+        ),
+      ],
     ),
   ],
 );
