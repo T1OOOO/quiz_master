@@ -25,6 +25,8 @@ catalog=json.loads((stage/'web/assets/assets/catalog.json').read_text());assert 
 v=dict(buildId=build,commit=commit,local_build=True,packs=130,questions=3998,study_modules=6,study_questions=120,question_articles=202,api_sha256=sha(stage/'api'),main_dart_js_sha256=sha(stage/'web/main.dart.js'))
 (stage/'web/version.json').write_text(json.dumps(v)+'\n',encoding='utf-8')
 s=(base/'rehearse.py').read_text().replace('2026-10-10T00:00:00Z','2026-10-11T00:00:00Z')
+assert s.count(' for _ in range(50):')==1
+s=s.replace(' for _ in range(50):',' deadline=time.monotonic()+60\n while time.monotonic()<deadline:')
 needle=" guest=req('/v1/guests'"
 assert s.count(needle)==1
 # Existing-row preservation and old API rollback remain; check both new public packs too.
