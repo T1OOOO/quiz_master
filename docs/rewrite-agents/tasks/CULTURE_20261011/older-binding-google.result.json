@@ -1,0 +1,17 @@
+{
+  "event": "result",
+  "result": {
+    "conversation_id": "6a2cbd92-ce41-4489-af63-7a50574adf81",
+    "status": "SUCCESS",
+    "response": "{\n  \"verdict\": \"accept\",\n  \"findings\": [\n    \"Resolution precedence correctly checks `HERE / 'snapshots' / f'{qid}.json'` first and falls back to `ROOT / 'next/content' / qid / 'bundle.json'`, ensuring public served DTO snapshots take priority over legacy canonical bundles.\",\n    \"Canonical fallback remains fully functional when no snapshot is present, as verified by `BundleResolutionTests.test_canonical_fallback_when_snapshot_is_absent`.\",\n    \"Snapshot precedence over divergent canonical bundle revisions is explicitly verified by `BundleResolutionTests.test_snapshot_wins_when_canonical_has_another_revision`.\",\n    \"Validation integrity is maintained with no loosened constraints: quiz ID match, exact 64-character hex revision format, unique question match (`len(matches) == 1`), and duplicate binding prevention are all preserved.\",\n    \"No secret exposure: captured endpoints are public read-only catalog DTOs without grading keys or internal credentials.\",\n    \"Factual article text (`title_ru`, `body_ru`, `source_links`) is unchanged; modifications are strictly confined to `revision_sha256` bindings and corresponding review integrity hashes (`article_sha256`).\"\n  ],\n  \"limitations\": [\n    \"Independent text-only review: no tools or test suites were executed during this review turn.\",\n    \"No publication approval: shared runtime asset export (`--write`) was not authorized or verified in runtime environments.\",\n    \"Execution evidence in the prompt is evaluated as-reported; no verification evidence was independently generated or invented.\"\n  ]\n}\n",
+    "duration_seconds": 14.1148384,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 35947,
+      "output_tokens": 2838,
+      "thinking_tokens": 2486,
+      "cache_read_tokens": 0,
+      "total_tokens": 38785
+    }
+  }
+}

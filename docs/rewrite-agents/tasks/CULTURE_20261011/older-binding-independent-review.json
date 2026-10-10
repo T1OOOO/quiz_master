@@ -1,0 +1,51 @@
+{
+  "overall": "accept",
+  "scope": "Independent read-only review of the 25 older served-pack article-binding repair.",
+  "implementation_evidence": ".run/culture_20261011/older-binding-implementation.json",
+  "verified": {
+    "worker_production_paths_exactly_match_declared_scope": 22,
+    "captured_snapshots": {
+      "lotr": 3,
+      "prep-ballet": 20,
+      "prep-musicals": 20,
+      "theme-harry-potter": 10,
+      "theme-terminator": 10
+    },
+    "affected_question_refs_matching_snapshot_id_and_revision": 25,
+    "affected_articles_with_unchanged_title_body_links_and_other_semantics": 25,
+    "review_files_with_unchanged_author_and_reviewer_identities": 7,
+    "dependent_review_article_sha256_values_matching_current_articles": 25,
+    "snapshot_grading_key_leaks": 0,
+    "planet_paradoxes_accepted_reader_articles_unchanged": 6
+  },
+  "builder_resolution": {
+    "verified_change": "For non-Study question refs, build.py selects a tracked snapshot before next/content canonical fallback.",
+    "focused_tests": [
+      "python -m unittest study.question_articles.test_build -v",
+      "PASS: test_snapshot_wins_when_canonical_has_another_revision",
+      "PASS: test_canonical_fallback_when_snapshot_is_absent"
+    ],
+    "meaningful_coverage": "The fixture has both sources with different revisions, so the precedence test would fail if canonical remained first; the second test verifies unchanged canonical-only behavior."
+  },
+  "diff_checks": {
+    "git_diff_check_head_scoped_exit": 0,
+    "scoped_worker_paths": [
+      "study/question_articles/build.py",
+      "study/question_articles/test_build.py",
+      "study/question_articles/snapshots/README.md",
+      "study/question_articles/snapshots/lotr.json",
+      "study/question_articles/snapshots/prep-ballet.json",
+      "study/question_articles/snapshots/prep-musicals.json",
+      "study/question_articles/snapshots/theme-harry-potter.json",
+      "study/question_articles/snapshots/theme-terminator.json",
+      "7 tracked affected draft files",
+      "7 tracked dependent review files"
+    ]
+  },
+  "findings": [],
+  "limitations": [
+    "This review validates the supplied captured public snapshots and current file state; it does not refetch the five catalog endpoints.",
+    "No reader export, application build, deployment, commit, or publication was run or approved by this review."
+  ],
+  "no_publication_claim": true
+}

@@ -41,6 +41,23 @@ try:
  guest=req('/v1/guests',{'display_name':'Release rehearsal'},expect=201);token=guest['token']
  for qid in ['cinema-people-20261011','music-people-20261011']:
   bundle=json.loads((root/'next/content'/qid/'bundle.json').read_text())
+  live=req('/v1/catalog?quiz_id='+qid)
+  expected_questions=bundle['quiz']['questions']
+  for expected,actual in zip(expected_questions,live['quiz']['questions'],strict=True):
+   # Staging uses its own directory; compare semantics and assert the exact known URI difference.
+   expected_uri=expected['source']['uri']
+   assert expected_uri.startswith('/app/quizzes/')
+   assert actual['source']['uri']==str(root/'quizzes'/expected_uri.removeprefix('/app/quizzes/'))
+   actual['source']['uri']=expected_uri
+   actual['revision']=expected['revision']
+   assert actual==expected, 'Staging question content mismatch: '+qid
+  # These two packs are already served by the prior release: assert exact production revisions too.
+  with urllib.request.urlopen('https://quiz.kotopedia.org/v1/catalog?quiz_id='+qid,timeout=15) as response:
+   production=json.load(response)
+  assert expected_questions==production['quiz']['questions'], 'Production revision mismatch: '+qid
+  articles=json.loads((root/'web/assets/assets/study/question-articles.json').read_text())['articles']
+  matches=[ref for article in articles for ref in article['question_refs'] if ref['quiz_id']==qid]
+  assert len(matches)==10 and {ref['question_id']:ref['revision_sha256'] for ref in matches}=={q['question_id']:q['revision']['sha256'] for q in live['quiz']['questions']}
   attempt=req('/v1/attempts',{'quiz_id':qid,'mode':'practice'},token,expect=201)
   assert len(attempt['question_snapshots'])==10
   for snap in attempt['question_snapshots']:

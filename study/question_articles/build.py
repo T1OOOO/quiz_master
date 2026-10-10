@@ -78,9 +78,9 @@ def export():
                     study = read(ROOT / 'next/apps/quiz_app/assets/study/catalog.json')
                     matches = [q for m in study['modules'] if f"study-{m['id']}" == qid for q in m['questions'] if q['id'] == question_id and study_revision(q) == revision]
                 else:
-                    bundle_path = ROOT / 'next/content' / qid / 'bundle.json'
+                    bundle_path = HERE / 'snapshots' / f'{qid}.json'
                     if not bundle_path.is_file():
-                        bundle_path = HERE / 'snapshots' / f'{qid}.json'
+                        bundle_path = ROOT / 'next/content' / qid / 'bundle.json'
                     require(bundle_path.is_file(), f'{aid}: canonical bundle or captured public revision required before publishing question article')
                     bundle = read(bundle_path)
                     require(bundle['quiz']['quiz_id'] == qid, f'{aid}: snapshot quiz mismatch')

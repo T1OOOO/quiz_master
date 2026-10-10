@@ -1,0 +1,375 @@
+{
+  "status": "DONE",
+  "scope": "Older served-pack article binding repair only",
+  "changed_files": [
+    "study/question_articles/build.py",
+    "study/question_articles/test_build.py",
+    "study/question_articles/snapshots/README.md",
+    "study/question_articles/snapshots/lotr.json",
+    "study/question_articles/snapshots/prep-ballet.json",
+    "study/question_articles/snapshots/prep-musicals.json",
+    "study/question_articles/snapshots/theme-harry-potter.json",
+    "study/question_articles/snapshots/theme-terminator.json",
+    "study/question_articles/drafts/harry-potter-core-20261007.json",
+    "study/question_articles/drafts/harry-potter-rest-20261007.json",
+    "study/question_articles/drafts/lotr-core-20261007.json",
+    "study/question_articles/drafts/music-feedback-20261007.json",
+    "study/question_articles/drafts/terminator-core-20261007.json",
+    "study/question_articles/drafts/terminator-first-film-20261007.json",
+    "study/question_articles/drafts/terminator2-20261007.json",
+    "study/question_articles/reviews/hp-core-first3-20261009-review.json",
+    "study/question_articles/reviews/hp-rest-002-005-20261009-review.json",
+    "study/question_articles/reviews/hp-rest-007-010-20261009-review.json",
+    "study/question_articles/reviews/hp006-repaired-20261010-review.json",
+    "study/question_articles/reviews/lotr-core-20261009-review.json",
+    "study/question_articles/reviews/remaining-ten-20261010-review.json",
+    "study/question_articles/reviews/terminator-core-20261009-review.json",
+    ".run/culture_20261011/older-binding-implementation.json"
+  ],
+  "checks": [
+    {
+      "command": "python -m unittest study.question_articles.test_build -v",
+      "result": "PASS: 2 tests; snapshot precedence and canonical-only fallback"
+    },
+    {
+      "command": "python inline validation: all five snapshots/ref IDs/revisions plus build.export()",
+      "result": "PASS: all25 affected current refs match exact captured snapshot question IDs/revisions; builder validates; all6 planet article refs remain present; exporter was not invoked in --write mode and shared runtime asset was not edited."
+    }
+  ],
+  "red_green": "The snapshot-precedence test failed before the builder change because the canonical revision won; both tests passed after swapping resolution order.",
+  "source_captures": [
+    {
+      "quiz_id": "lotr",
+      "url": "https://quiz.kotopedia.org/v1/catalog?quiz_id=lotr",
+      "captured_utc": "2026-10-10T22:04:49.371561+00:00",
+      "http_status": 200,
+      "questions": 3,
+      "question_ids": [
+        "q-lotr-0-lotr-q1",
+        "q-lotr-1-lotr-q2",
+        "q-lotr-2-lotr-q3"
+      ],
+      "source_uris": [
+        "/app/quizzes/Cinema/LOTR/lotr.json"
+      ],
+      "sha256": "d395081b0fb2237a71973305f2838e15fade82e6b22cc39d864839521eb11eae"
+    },
+    {
+      "quiz_id": "prep-ballet",
+      "url": "https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-ballet",
+      "captured_utc": "2026-10-10T22:04:50.027038+00:00",
+      "http_status": 200,
+      "questions": 20,
+      "question_ids": [
+        "music-oct3-004",
+        "music-oct3-005",
+        "music-oct3-006",
+        "music-oct3-028",
+        "music-oct3-029",
+        "music-oct3-030",
+        "music-oct3-031",
+        "music-oct3-032",
+        "music-oct3-033",
+        "music-oct3-034",
+        "music-oct3-035",
+        "music-oct3-036",
+        "music-oct3-037",
+        "music-oct3-038",
+        "music-oct3-039",
+        "music-oct3-040",
+        "music-oct3-041",
+        "music-oct3-042",
+        "music-oct3-043",
+        "music-oct3-044"
+      ],
+      "source_uris": [
+        "/app/quizzes/Preparation/prep_ballet.json"
+      ],
+      "sha256": "78f5b427d35bb3b3b331d7cd1521255de791c0236e8269f5f3fdfe3ffccfec2b"
+    },
+    {
+      "quiz_id": "prep-musicals",
+      "url": "https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-musicals",
+      "captured_utc": "2026-10-10T22:04:50.927738+00:00",
+      "http_status": 200,
+      "questions": 20,
+      "question_ids": [
+        "music-oct3-001",
+        "music-oct3-002",
+        "music-oct3-003",
+        "music-oct3-011",
+        "music-oct3-012",
+        "music-oct3-013",
+        "music-oct3-014",
+        "music-oct3-015",
+        "music-oct3-016",
+        "music-oct3-017",
+        "music-oct3-018",
+        "music-oct3-019",
+        "music-oct3-020",
+        "music-oct3-021",
+        "music-oct3-022",
+        "music-oct3-023",
+        "music-oct3-024",
+        "music-oct3-025",
+        "music-oct3-026",
+        "music-oct3-027"
+      ],
+      "source_uris": [
+        "/app/quizzes/Preparation/prep_musicals.json"
+      ],
+      "sha256": "8680eefcb2046102e433be525df2557f6e410c919973b924da587dc1b87e20cc"
+    },
+    {
+      "quiz_id": "theme-harry-potter",
+      "url": "https://quiz.kotopedia.org/v1/catalog?quiz_id=theme-harry-potter",
+      "captured_utc": "2026-10-10T22:04:51.549413+00:00",
+      "http_status": 200,
+      "questions": 10,
+      "question_ids": [
+        "theme-hp-001",
+        "theme-hp-002",
+        "theme-hp-003",
+        "theme-hp-004",
+        "theme-hp-005",
+        "theme-hp-006",
+        "theme-hp-007",
+        "theme-hp-008",
+        "theme-hp-009",
+        "theme-hp-010"
+      ],
+      "source_uris": [
+        "/app/quizzes/Cinema/Thematic80/harry_potter.json"
+      ],
+      "sha256": "9b61ea8ba344d247ffcc78abd08ff8dda3ceaafdd11a68e5ef304b9ca9a542fb"
+    },
+    {
+      "quiz_id": "theme-terminator",
+      "url": "https://quiz.kotopedia.org/v1/catalog?quiz_id=theme-terminator",
+      "captured_utc": "2026-10-10T22:04:52.007252+00:00",
+      "http_status": 200,
+      "questions": 10,
+      "question_ids": [
+        "theme-terminator-001",
+        "theme-terminator-002",
+        "theme-terminator-003",
+        "theme-terminator-004",
+        "theme-terminator-005",
+        "theme-terminator-006",
+        "theme-terminator-007",
+        "theme-terminator-008",
+        "theme-terminator-009",
+        "theme-terminator-010"
+      ],
+      "source_uris": [
+        "/app/quizzes/Cinema/Thematic80/terminator.json"
+      ],
+      "sha256": "6c3e6e7b2eeb5949d660e912f8be94e04ad2a3a0ffe3cc1479f8a8208f319d40"
+    }
+  ],
+  "counts": {
+    "affected_question_refs_updated": 25,
+    "dependent_review_article_sha256_updated": 25,
+    "planet_articles_preserved": 6
+  },
+  "baseline_sha256": {
+    "study/question_articles/build.py": "9AFC3F5916B6DE7580DDEC9C1BE37A9A1DDD82403E2F71A952012EF019169C57",
+    "study/question_articles/snapshots/README.md": "EBF769EA30BDDD5233A7518F1DEF87F01910DCBB877BAEFD86B988133560CBEC",
+    "study/question_articles/drafts/harry-potter-core-20261007.json": "8327C3C796C86D9B96A8C4BF110ACF3EF6B00DC422A9DEDA2E9F8D0DDCB34B11",
+    "study/question_articles/drafts/harry-potter-rest-20261007.json": "FAF4CCF56CE873F64118CD265BABA2098FD0CBA8C79DA59767109C9AEA3E5A56",
+    "study/question_articles/drafts/lotr-core-20261007.json": "FC2A31C7099DB268E3EB044726D02E6FA9D2B04231A89A1179FB22B915660455",
+    "study/question_articles/drafts/music-feedback-20261007.json": "DE1105D5FB25B2259CCF66EC72E143D40348B10E34BE0787781C8DED86B40E9A",
+    "study/question_articles/drafts/terminator-core-20261007.json": "CC9A0659D636F36190CC09D6BA31E3148CBEE7124F80A46CF43E69050BC1C24F",
+    "study/question_articles/drafts/terminator-first-film-20261007.json": "0BBAF761217627377553194BE00E1F4F35D748F839E556A67A50DC9D13AC07B9",
+    "study/question_articles/drafts/terminator2-20261007.json": "4D85FD77BDAD82610F21A35AC326190DA3B863D7A96AB824E1ACBF25E536AC48",
+    "study/question_articles/reviews/hp-core-first3-20261009-review.json": "45F7824519FA93970F7E98B89AC7905B17F6B6F2CD6839BC27835C366BA30C4C",
+    "study/question_articles/reviews/hp-rest-002-005-20261009-review.json": "C8E72888233D3C926CB8B57EF444BD630AE386802D01C7F0253610E3210E7E86",
+    "study/question_articles/reviews/hp-rest-007-010-20261009-review.json": "DAE2E8923BC3E90897407E4177B0BDE4DFC8DE9C6722DFABF5B069814498FAE3",
+    "study/question_articles/reviews/hp006-repaired-20261010-review.json": "132EC4CA78D9B9A2F56761A08F66E63C94001A710FCD8F8610B16EB967BD259E",
+    "study/question_articles/reviews/lotr-core-20261009-review.json": "1C5CC2B227F59181B2ECE3E769E71BA0C786E712B2A8DEC6FF8FA83E91927761",
+    "study/question_articles/reviews/remaining-ten-20261010-review.json": "C5E54F1BB8FA096B80141D59D5670C205BDC4743FE46B40E364A8DBC85CA98D7",
+    "study/question_articles/reviews/terminator-core-20261009-review.json": "EC0BD58D6BD870D7347758372BA2201A7F923A79B7E4D69B70DFB879CADEE40E"
+  },
+  "current_sha256": {
+    "study/question_articles/build.py": "2097F91AEE8B582BC5A8BAF43971A32D344E2212E6F9A73CE9558F15588C1D26",
+    "study/question_articles/test_build.py": "6BD07C336AF0A9668E181B71B0DE7200D14F610766E6A3903769F32EA999CA09",
+    "study/question_articles/snapshots/README.md": "0911B7410FD9F782939F677A141A5EF62B17BAB53A43D5EFE0C70689231FA5F7",
+    "study/question_articles/snapshots/lotr.json": "D395081B0FB2237A71973305F2838E15FADE82E6B22CC39D864839521EB11EAE",
+    "study/question_articles/snapshots/prep-ballet.json": "78F5B427D35BB3B3B331D7CD1521255DE791C0236E8269F5F3FDFE3FFCCFEC2B",
+    "study/question_articles/snapshots/prep-musicals.json": "8680EEFCB2046102E433BE525DF2557F6E410C919973B924DA587DC1B87E20CC",
+    "study/question_articles/snapshots/theme-harry-potter.json": "9B61EA8BA344D247FFCC78ABD08FF8DDA3CEAAFDD11A68E5EF304B9CA9A542FB",
+    "study/question_articles/snapshots/theme-terminator.json": "6C3E6E7B2EEB5949D660E912F8BE94E04AD2A3A0FFE3CC1479F8A8208F319D40",
+    "study/question_articles/drafts/harry-potter-core-20261007.json": "89D40670E3CDF51F329BAE90E42462ED7C35470E90EA31FA5071D555C79CC5C6",
+    "study/question_articles/drafts/harry-potter-rest-20261007.json": "322E1F21F84F82E084526A7390923E9F824AB37BBE633E5A072400FCD0C07A37",
+    "study/question_articles/drafts/lotr-core-20261007.json": "2F40665B6ED4280D2F197BF534091EE826AFEF53213261D517523E5FB7B0295B",
+    "study/question_articles/drafts/music-feedback-20261007.json": "000B9D854FB501366DB82DE77772D8EF6C8387F6A909F580378465AE42CD2EB6",
+    "study/question_articles/drafts/terminator-core-20261007.json": "567E05E5589FD58620841542E06D047510CF2A698FBC12E2F251654207FE7D0C",
+    "study/question_articles/drafts/terminator-first-film-20261007.json": "E7131FD93298B0FCDA82AA628F69E774046534501F7CE34102D3BAC4E7B002B3",
+    "study/question_articles/drafts/terminator2-20261007.json": "2B4E180D3CD0198203541A3FB2E7AF44EF58B1A82A18B2E8D8179742FCA56CBA",
+    "study/question_articles/reviews/hp-core-first3-20261009-review.json": "204BCA072EC716444D19F0E7C91ED02C5E2EE27C7F39A9437B65F594B0194233",
+    "study/question_articles/reviews/hp-rest-002-005-20261009-review.json": "FA9D64A25EC9FA472A4FF17C8EE27AAFC2BD1D16F35A4B676340F745C89B2E43",
+    "study/question_articles/reviews/hp-rest-007-010-20261009-review.json": "D8F0EF060FD1B074047AE8B0532B97F0E294EE50788838953909635E93A8EFF9",
+    "study/question_articles/reviews/hp006-repaired-20261010-review.json": "8AC85681129BE5B1BD10C3CEEB1AAEF56AB158C7181C5AE0A138E52991C4EAA9",
+    "study/question_articles/reviews/lotr-core-20261009-review.json": "3AF68FB4B2436836476EA761956D7FCC6052A0807E64A698C81D8C91EB52B1B4",
+    "study/question_articles/reviews/remaining-ten-20261010-review.json": "D209CE0334D94C40037EBA648BA5714145C7C28E9530788D08E6EEFE99EF32C5",
+    "study/question_articles/reviews/terminator-core-20261009-review.json": "082F2031C3F3FBBA56FF449991DC7D739590D1B61706182C033124D2B0C1DD70"
+  },
+  "limitations": [
+    "No reader runtime export, web/app build, deployment, or publication was run.",
+    "Source captures record public DTOs only; no grading answers are present.",
+    "Article rewrites changed only question_refs.revision_sha256; review rewrites changed only dependent article_sha256 values, preserving authors/reviewers and verdicts."
+  ],
+  "verified_bindings": [
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-001",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-001",
+      "revision_sha256": "9c034c638c5ec9be4b72886957148ce2b638da8dbce6272bb5d3395b258c8ca1"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-003",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-003",
+      "revision_sha256": "606ca4c226e55a393f1f84ed70506e119f429b19c263039439a4a4ae15414dac"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-004",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-004",
+      "revision_sha256": "8aeabfb3f1b0bf56291f585326ede10318e97229a86529df4f173f40c5518ab4"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-002",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-002",
+      "revision_sha256": "80a9f9fdc176cc1cbf26155cee81daecc409195eb96fdac3f8f2a2329cafccd4"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-005",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-005",
+      "revision_sha256": "3b17533415acc1e349203e8016c4ee7519fdcaf843a7ff53111b4c043cdea4e8"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-006",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-006",
+      "revision_sha256": "0ff885d4625d0327b7c80e76630eb3ccf2c0b530a56eafe00779c7d8894839e9"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-007",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-007",
+      "revision_sha256": "fce66a138204d5d2723116bf2ba75165acfef306b454643c022ff74cae612bb3"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-008",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-008",
+      "revision_sha256": "7126bbb2e4f8425930877dbe3bea80ca6bb79d309f1eddc2395d33733ad9abb6"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-009",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-009",
+      "revision_sha256": "dde3323dbc0f2de7827e16d257ea2359343de525b20b70947f338fed45d550cc"
+    },
+    {
+      "article_id": "quiz:theme-harry-potter:theme-hp-010",
+      "quiz_id": "theme-harry-potter",
+      "question_id": "theme-hp-010",
+      "revision_sha256": "c8a56dd935400197a90ff70bad49daa022c62eb43e0f4b018c98eb98d8936c34"
+    },
+    {
+      "article_id": "quiz:lotr:q-lotr-0-lotr-q1",
+      "quiz_id": "lotr",
+      "question_id": "q-lotr-0-lotr-q1",
+      "revision_sha256": "e6ebbf7678763dd3cf37066ef025a547efc9291e5eb11991fcc14e1adfdcfdf7"
+    },
+    {
+      "article_id": "quiz:lotr:q-lotr-1-lotr-q2",
+      "quiz_id": "lotr",
+      "question_id": "q-lotr-1-lotr-q2",
+      "revision_sha256": "f779bb3dff13a4f8315c8065990af738d62a79f44593a78640dca76304e87141"
+    },
+    {
+      "article_id": "quiz:lotr:q-lotr-2-lotr-q3",
+      "quiz_id": "lotr",
+      "question_id": "q-lotr-2-lotr-q3",
+      "revision_sha256": "649e7339f7168a62aa5c41b14ebc702afe026d90cc9baabb5663bb9496e2d323"
+    },
+    {
+      "article_id": "quiz:prep-ballet:music-oct3-040",
+      "quiz_id": "prep-ballet",
+      "question_id": "music-oct3-040",
+      "revision_sha256": "fb5f32c719630eb2974b81841406b992d5fac2d7917df99a4615df3a3acf5935"
+    },
+    {
+      "article_id": "quiz:prep-musicals:music-oct3-020",
+      "quiz_id": "prep-musicals",
+      "question_id": "music-oct3-020",
+      "revision_sha256": "b89b3fa4f4fbd64313981cd44c58d217d038bca39ad28b6832736cb29057a253"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-003",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-003",
+      "revision_sha256": "49de79e9235321819843205ce06dddbd70914e2d8bc6a1ca07e6eddf238c0a7f"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-004",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-004",
+      "revision_sha256": "e483ff2ab34c7255ffb5ef02ae4fedc8f92735d7e104858c1778cb84c2b5c536"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-005",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-005",
+      "revision_sha256": "0b85bda22dc5a80fbeb3e3b0f4a51b9f6f6380ee54c88a18df8fb59687e6f078"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-001",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-001",
+      "revision_sha256": "ae0d01437dc90959ded3f43bed6179a118ae4ff50f53d9cb03784015fe0e38ee"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-002",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-002",
+      "revision_sha256": "d8a349f76b611e006d555fa19eaccfad732f9618d6c6951b42dcbf4a58ce0dbd"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-006",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-006",
+      "revision_sha256": "bdbef262dd019276d254b3b088e3c746a5010dfc99bcec006d486183715ab2e4"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-007",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-007",
+      "revision_sha256": "b5450b26a38f65e22cefc6ddef64a5138a2ca08d00634c5edd79ace535287707"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-008",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-008",
+      "revision_sha256": "f7379cb3022876e4cc1af330bd3c569b5d655c7cf34d432ffa1e0ded43fc2979"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-009",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-009",
+      "revision_sha256": "ae28e9483720f9a138601e866da04500020c2448ad48cf1702dfe9593126537d"
+    },
+    {
+      "article_id": "quiz:theme-terminator:theme-terminator-010",
+      "quiz_id": "theme-terminator",
+      "question_id": "theme-terminator-010",
+      "revision_sha256": "8a139a9dfc0829c0a5385822bcb36aea84926ca53c13607da3413a7302ff15cb"
+    }
+  ],
+  "runtime_identity": "openai/gpt-6-luna, medium (spawn assignment); initial Hub connection used an imprecise gpt-6 model label."
+}

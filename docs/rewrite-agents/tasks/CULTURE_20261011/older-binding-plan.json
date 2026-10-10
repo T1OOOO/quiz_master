@@ -1,0 +1,82 @@
+{
+  "beads_issue": "quiz_master-ch4",
+  "status": "plan_only",
+  "problem": "build.py resolves next/content/<quiz_id>/bundle.json before a captured public snapshot. The five legacy canonical bundles exist but do not reproduce the currently served public revisions, leaving 25 accepted article question_refs stale.",
+  "audit": {
+    "source": ".run/culture_20261011/all-served-binding-audit.json",
+    "affected": {
+      "lotr": 3,
+      "prep-ballet": 1,
+      "prep-musicals": 1,
+      "theme-harry-potter": 10,
+      "theme-terminator": 10
+    },
+    "affected_total": 25,
+    "unserved_excluded": {
+      "pack": "planet-paradoxes-20261010",
+      "refs": 6,
+      "reason": "The audit records HTTP 400/not_served for the question pack. Its six existing accepted reader articles must remain unchanged; this repair neither captures a served-pack snapshot nor rewrites their bindings."
+    }
+  },
+  "exact_tracked_article_paths": {
+    "drafts": [
+      "study/question_articles/drafts/harry-potter-core-20261007.json",
+      "study/question_articles/drafts/harry-potter-rest-20261007.json",
+      "study/question_articles/drafts/lotr-core-20261007.json",
+      "study/question_articles/drafts/music-feedback-20261007.json",
+      "study/question_articles/drafts/terminator-core-20261007.json",
+      "study/question_articles/drafts/terminator-first-film-20261007.json",
+      "study/question_articles/drafts/terminator2-20261007.json"
+    ],
+    "reviews": [
+      "study/question_articles/reviews/hp-core-first3-20261009-review.json",
+      "study/question_articles/reviews/hp-rest-002-005-20261009-review.json",
+      "study/question_articles/reviews/hp-rest-007-010-20261009-review.json",
+      "study/question_articles/reviews/hp006-repaired-20261010-review.json",
+      "study/question_articles/reviews/lotr-core-20261009-review.json",
+      "study/question_articles/reviews/remaining-ten-20261010-review.json",
+      "study/question_articles/reviews/terminator-core-20261009-review.json"
+    ]
+  },
+  "minimal_fix": {
+    "snapshot_capture_first": [
+      "study/question_articles/snapshots/lotr.json",
+      "study/question_articles/snapshots/prep-ballet.json",
+      "study/question_articles/snapshots/prep-musicals.json",
+      "study/question_articles/snapshots/theme-harry-potter.json",
+      "study/question_articles/snapshots/theme-terminator.json"
+    ],
+    "snapshot_requirements": [
+      "Capture the exact served public catalog DTO for each listed quiz_id, including question_id and revision.sha256, with capture URL, time, and file SHA-256 recorded in the repair evidence.",
+      "Do not include or infer grading keys in snapshots; they establish the runtime reader binding only.",
+      "Do not create a served-pack snapshot for the unserved planet-paradoxes-20261010 question pack; preserve its six existing accepted reader articles unchanged."
+    ],
+    "builder_change": {
+      "path": "study/question_articles/build.py",
+      "current_resolution": "canonical next/content bundle is used whenever it exists; snapshot is considered only when canonical is absent.",
+      "proposed_resolution": "For non-study quiz refs, use study/question_articles/snapshots/<quiz_id>.json when that tracked snapshot exists; otherwise retain the current canonical next/content/<quiz_id>/bundle.json fallback.",
+      "rationale": "A reviewed captured public snapshot is authoritative for an article's runtime revision, while canonical bundles remain the reproducible source for packs without a snapshot."
+    },
+    "binding_updates": [
+      "Replace only the 25 affected revision_sha256 values in question_refs with their matching captured snapshot revisions.",
+      "Recompute only the dependent article_sha256 values in the seven review files; article title/body/source_links, factual review verdicts, options, and grading remain untouched.",
+      "Regenerate the reader article export only after the builder accepts all bindings."
+    ]
+  },
+  "test_plan": [
+    "Add a focused builder regression test where both a canonical bundle and a snapshot exist with different revisions; assert an article ref matching the snapshot succeeds, proving snapshot precedence.",
+    "Add the complementary canonical-only case to assert existing behavior remains unchanged when no snapshot exists.",
+    "Validate each of the 25 rewritten refs against its captured snapshot question_id plus revision.sha256, and assert all 25 review hashes match canonical article JSON after the ref-only change.",
+    "Run the article builder check and its focused regression test after export; assert the six existing accepted planet-paradoxes-20261010 reader articles are unchanged and no served-pack snapshot is added for its HTTP-400 question pack."
+  ],
+  "evidence_read": {
+    "builder_resolution_lines": "study/question_articles/build.py:81-87",
+    "existing_snapshot_policy": "study/question_articles/snapshots/README.md",
+    "existing_snapshots_for_affected_packs": 0
+  },
+  "limitations": [
+    "The audit summary proves the 25 mismatches but does not contain the target served revision hashes. Capturing the five exact public snapshots is required before a safe implementation.",
+    "This report plans a repair only. It does not alter code, articles, reviews, snapshots, exports, commits, deployment, or publication."
+  ],
+  "no_publication_claim": true
+}

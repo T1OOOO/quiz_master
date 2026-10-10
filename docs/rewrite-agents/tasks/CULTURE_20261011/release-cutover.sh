@@ -3,13 +3,13 @@
 set -euo pipefail
 quiz_mode=${1:-prepare}
 [[ "$quiz_mode" = prepare || "$quiz_mode" = publish ]]
-quiz_build=quiz-2026.10.11-culture-2e3516f
+quiz_build=quiz-2026.10.11-culture-ba80671
 test "$(hostname)" = racknerd-f0269d5
 cd "/opt/quiz-master/releases/$quiz_build"
 chmod 755 api
 exec 9>/opt/quiz-master/DEPLOY.lock
 flock -n 9
-test "$(kubectl get deploy quiz-master -n quiz-master -o jsonpath='{.spec.template.spec.containers[0].image}')" = docker.io/library/quiz-master@sha256:6115f4d218a9ed65e1a35999551e660535d5fbf6b14e4b2ab0e6fbf535165523
+test "$(kubectl get deploy quiz-master -n quiz-master -o jsonpath='{.spec.template.spec.containers[0].image}')" = docker.io/library/quiz-master@sha256:4bd143f63b447c9cf1634d73af706522081e0a24d0c610f35b5a6d7845dd104b
 test "$(kubectl get pvc quiz-data -n quiz-master -o jsonpath='{.metadata.uid}')" = 7fc2428f-4146-4c78-a26d-2347d9f3b7bf
 sha256sum -c checksums.txt > cutover-checksums.log
 echo '26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01  api' | sha256sum -c -
@@ -20,7 +20,7 @@ python3 - "$quiz_run" <<'PY'
 from pathlib import Path
 import re,sys
 run=sys.argv[1]
-assert re.fullmatch(r'quiz-2026\.10\.11-culture-2e3516f-cutover-\d{8}T\d{6}Z',run)
+assert re.fullmatch(r'quiz-2026\.10\.11-culture-ba80671-cutover-\d{8}T\d{6}Z',run)
 s=Path('rehearse.py').read_text()
 a="sandbox=root/'rehearsal-final'"
 b="'/opt/quiz-master/backups/'+build+'.sqlite'"
