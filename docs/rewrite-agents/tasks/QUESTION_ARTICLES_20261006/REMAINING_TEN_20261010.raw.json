@@ -1,0 +1,228 @@
+{
+  "acceptance": "All11remaining articles receive truthful individual sourceverified accept/revise verdicts or explicitly blockedsource; no invented coverage.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles",
+    "C:\\ap\\quiz_master\\next\\content"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read study/question_articles/coverage.json and existing acceptance reviews; enumerate12currentlydraft articles, excludeHP006 ownedelsewhere. Independently review remaining11 sourcebackedarticles (likelyTerminator/LOTR). Actually open citedprimaryURLs, verify question/options from canonicalbundle (no public/privategrading leaks), exactsha256 contract150-220words and accuracy/bookfilmdistinction. Read-only no files modifications, subprocessworkers or children. Require GRANTEDinteractive sharedreads. Submit structured perarticle verdict/hash/sourceevidence/accesseddate and exactneededcorrections. Nativepreparation notdifferentproviderrelease.",
+  "created_at": 1791582820.8840854,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-853aa0d5f8784e4386c5687cdf4ef37c",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "articles": [
+      {
+        "binding": "Sarah Connor / option 2",
+        "canonical_sha256": "94857ed735c627e6549f4e25f6b1e214e9bbc7cc243c11b3e9b74955f0c9a644",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI opened: film, Los Angeles and cast/role context; OverBlack screenplay also opened.",
+            "url": "https://catalog.afi.com/Film/57224-THE-TERMINATOR"
+          }
+        ],
+        "revision": "f0a2cab5c44fd3fe316c3be318ec10ca05c9e52bb8d075af20cf904aa207d50f",
+        "target_id": "quiz:theme-terminator:theme-terminator-001",
+        "verdict": "ACCEPT",
+        "words": 161
+      },
+      {
+        "binding": "Los Angeles / option 4",
+        "canonical_sha256": "0b910f175c889e6ebf43c6ee016fdeedbf1425bfbf32de2f67502777fa0ff97a",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI opened: Los Angeles setting; OverBlack screenplay also opened.",
+            "url": "https://catalog.afi.com/Film/57224-THE-TERMINATOR"
+          }
+        ],
+        "revision": "346051237b053ad2994358a0104ec79b720b7021e5e3d6dada21345bbfc78541",
+        "target_id": "quiz:theme-terminator:theme-terminator-002",
+        "verdict": "ACCEPT",
+        "words": 159
+      },
+      {
+        "binding": "Cyberdyne Systems / option 1",
+        "canonical_sha256": "ea488480ac75a34ad2410cab5ce44431cbdad5fb23c3c884edf37df586da43d4",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI T2 record and cited T2 screenplay opened; recovered-components/Dyson summary agrees.",
+            "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false"
+          }
+        ],
+        "revision": "0634508b10871d757c84cd506d61b3cf37024b0d088f52141be0e9fed1f8e58b",
+        "target_id": "quiz:theme-terminator:theme-terminator-006",
+        "verdict": "ACCEPT",
+        "words": 154
+      },
+      {
+        "binding": "Liquid metal / option 4",
+        "canonical_sha256": "ef7e0dbd67c86789704aabce71346dbacb166607cf6a8f79cbfb20b8723713b9",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI T2 record and cited T2 screenplay opened; wording is appropriately fictional.",
+            "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false"
+          }
+        ],
+        "revision": "be8c08d26e302d26075897775f95254f27d6803082e40331b87b93d6a3604087",
+        "target_id": "quiz:theme-terminator:theme-terminator-007",
+        "verdict": "ACCEPT",
+        "words": 155
+      },
+      {
+        "binding": "Do not kill people / option 2",
+        "canonical_sha256": "99915e58f3a7483b33e72c7b3dd9d2e50f10115239e9bb8105706bb1a38b1ca6",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI T2 record and cited T2 screenplay opened; reprogramming restriction is correctly described.",
+            "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false"
+          }
+        ],
+        "revision": "b6259697864e9b81bd93453182dd33daa3f8a5ba0a16b36a8393f25af35a2108",
+        "target_id": "quiz:theme-terminator:theme-terminator-008",
+        "verdict": "ACCEPT",
+        "words": 168
+      },
+      {
+        "binding": "Liquid nitrogen / option 3",
+        "canonical_sha256": "2adb24ba952e395443320ef0d326fb27a2df2ec54a0bf76c666135ef967643c3",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI T2 record and cited T2 screenplay opened; temporary freezing vs destruction is clear.",
+            "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false"
+          }
+        ],
+        "revision": "f5753a513a429ec719e1e02a3486c678214ca194429631389262bbde6e5c9d24",
+        "target_id": "quiz:theme-terminator:theme-terminator-009",
+        "verdict": "ACCEPT",
+        "words": 163
+      },
+      {
+        "binding": "Hand and chip / option 1",
+        "canonical_sha256": "c28cdc88cf9afbc225bfdcb7fe5938fde13faa84fecfd3886bc737b8edfe5c71",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "AFI T2 record and cited T2 screenplay opened; disposal sequence is accurately summarized.",
+            "url": "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false"
+          }
+        ],
+        "revision": "db75a426508d4ca0ed6f1f8ca6add139c1e8fec53c271d8be361c8c2fc6f400d",
+        "target_id": "quiz:theme-terminator:theme-terminator-010",
+        "verdict": "ACCEPT",
+        "words": 166
+      },
+      {
+        "binding": "Béla Bartók / option 4",
+        "canonical_sha256": "01a0b1824336df92dcc5b9a5bda54069765e880026b1f312d2a82f3093c8d5c4",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "Boosey catalogue/audio, Paris Opera and Khachaturian Museum cited pages opened; attribution/comparators sound.",
+            "url": "https://www.boosey.com/cr/music/Bela-Bartok-The-Miraculous-Mandarin/5414"
+          }
+        ],
+        "revision": "8954b981c2b5bd9c6f489de1708bbc496f1d7cbe6816f0b6eaaaab7f9127fcc6",
+        "target_id": "quiz:prep-ballet:music-oct3-040",
+        "verdict": "ACCEPT",
+        "words": 186
+      },
+      {
+        "binding": "Andrew Lloyd Webber / option 3",
+        "canonical_sha256": "91d322c3a5aea40beae9e0dfb93326289e5feb9bb2258f48364987f509ad0efd",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "ALW official page opened: Webber music, Rice lyrics, school-work history. Origins, MTI, Schwartz and Miranda pages all opened; comparison authorships sound.",
+            "url": "https://www.andrewlloydwebber.com/show/joseph"
+          }
+        ],
+        "revision": "223dbe663e94ba050cf4240d7eb6e8c0134e9e20b25afa3671d1f302c8be1f58",
+        "target_id": "quiz:prep-musicals:music-oct3-020",
+        "verdict": "ACCEPT",
+        "words": 188
+      },
+      {
+        "binding": "Latitude / longitude both option 0",
+        "canonical_sha256": "659dd0b408485afd4090aff6a2220d979a5c1fb181a0b674e468fe851c38f512",
+        "checked_sources": [
+          {
+            "accessed_on": "2026-10-10",
+            "evidence": "NOAA latitude and longitude pages opened: north/south equator, east/west prime meridian. candidate/key/catalog parity confirmed.",
+            "url": "https://oceanservice.noaa.gov/facts/latitude.html"
+          }
+        ],
+        "revision": "4f6f8946ad7c86d3a7e3076e00243321bdffeca8c2671f8a69f6b9b8ef456bb9;89ed172a4b2ebd6dd18857069a879e261cca05516a1a1b3deb4fe566eb2c44a6",
+        "target_id": "study:geography-countries:coordinates",
+        "verdict": "ACCEPT",
+        "words": 203
+      }
+    ],
+    "evidence": [
+      {
+        "detail": "GRANTED shared read lease lease-041eb7c6d00b4f9f90bdfa81198463fe generation 1; released after reads.",
+        "kind": "lease"
+      },
+      {
+        "detail": "All objects are draft, word counts 154–203, and SHA-256 is canonical JSON ensure_ascii=false/sort_keys=true/separators comma-colon.",
+        "kind": "hash_contract"
+      },
+      {
+        "detail": "All 11 target references match their exact questions/options/correct answers and recorded article revisions; geography candidate/key/catalog agree.",
+        "kind": "binding"
+      },
+      {
+        "detail": "Every cited source URL was opened in this review, 2026-10-10; full URL/evidence groups are in articles.",
+        "kind": "sources"
+      }
+    ],
+    "limitation": "The two cited OverBlack screenplay pages are accessible mirrors, whereas AFI is the record-level source. No production files changed; this is native factual preparation only, not cross-provider release approval.",
+    "packet_label": "eri_hya_gru_ind_review:task853aa0-final",
+    "source_url_groups": {
+      "ballet": [
+        "https://www.boosey.com/cr/music/Bela-Bartok-The-Miraculous-Mandarin/5414",
+        "https://www.boosey.com/cr/music/Bela-Bartok-The-Miraculous-Mandarin/5414&Type=1",
+        "https://www.operadeparis.fr/en/season-24-25/opera/coppelia",
+        "https://khachaturianmuseum.am/en/arman/"
+      ],
+      "geography": [
+        "https://oceanservice.noaa.gov/facts/latitude.html",
+        "https://oceanservice.noaa.gov/facts/longitude.html"
+      ],
+      "musicals": [
+        "https://www.andrewlloydwebber.com/show/joseph",
+        "https://www.andrewlloydwebber.com/news/the-origins-of-joseph-and-the-amazing-technicolor-dreamcoat",
+        "https://www.mtishows.com/sweeney-todd",
+        "https://stephenschwartz.com/works/wicked/",
+        "https://www.linmanuel.com/project/hamilton/"
+      ],
+      "terminator_t1": [
+        "https://catalog.afi.com/Film/57224-THE-TERMINATOR",
+        "https://overblack.org/script/the-terminator-1984"
+      ],
+      "terminator_t2": [
+        "https://catalog.afi.com/Catalog/moviedetails/67074?mobile-app=true&theme=false",
+        "https://overblack.org/script/terminator-2-judgment-day-1991"
+      ]
+    },
+    "verdict": "ACCEPT"
+  },
+  "root_task_id": "task-853aa0d5f8784e4386c5687cdf4ef37c",
+  "run_id": "run-9a1f7dc38b6b425e8853c205fad2ce6e",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Audit remaining unaccepted mini article drafts",
+  "version": 3
+}
