@@ -1,0 +1,47 @@
+{
+  "checkout_head_before_owned_commit": "7a1df05",
+  "grant": {
+    "id": "lease-ccf04b61dd544e65bb9dc79019c87bc7",
+    "queue": 5391,
+    "actual_state": "GRANTED and renewed during operations. Expired after processes completed; reconciled quiescent to RELEASED. Failed renewal started no new operation."
+  },
+  "workdir": "C:/ap/quiz_master/next/apps/quiz_app",
+  "checks": [
+    {
+      "command": "python study/question_articles/build.py --write / --check",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0,
+      "result": "PASS160 exact review hashes, source metadata and bindings"
+    },
+    {
+      "command": "old158/all88constellations/new2/foreign69 assertions",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "exit_code": 0,
+      "result": "No issues found;10.7s"
+    },
+    {
+      "command": "flutter test --no-pub",
+      "exit_code": 0,
+      "result": "114 tests passed;18s"
+    },
+    {
+      "command": "flutter build web --release --no-pub --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org --dart-define=QM_BUILD_ID=quiz-qa-2026.10.10-160-7a1df05",
+      "exit_code": 0,
+      "result": "Built build/web108.7s;Wasm dry run succeeded;CupertinoIcons font warning retained"
+    }
+  ],
+  "observed_read_only_sha256": {
+    "article_source_and_compiled_asset": "d5dbbe30ec0c4f56e02a24e143175edfcfa36d7aee976bd9da11591963665e07",
+    "pubspec_lock": "ff11de15e06e620199c5fe6e1fdee97fc2c0767badee4a9f6069eeb9cfbeede0",
+    "main_dart_js": "1bab7388d33ecde832e79b091c21a44718864c1d40c5d00c5f2a8a4c6b6fbef8"
+  },
+  "limits": [
+    "Browser/mobile manual QA not run; no deployment.",
+    "Different-provider final verdict missing: Antigravity exited0 but empty final response, denied hash command.",
+    "Private planet pack not installed in production database; 26 feedback remain OPEN."
+  ]
+}

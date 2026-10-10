@@ -1,0 +1,82 @@
+{
+  "acceptance": "Independent exact-hash source-open article verdicts under actual grant; otherwise no-verdict checkpoint.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\planet-paradoxes-next-two-20261010.json",
+    "C:\\ap\\quiz_master\\next\\content\\planet-paradoxes-20261010\\bundle.json"
+  ],
+  "assignee": "session-0694de75432041edb32574d792c6b19c",
+  "author": "session-629dac9934a94f1cb5ed46dd621c2778",
+  "body": "Read only two root-authored question-linked articles003/004 in planet-paradoxes-next-two-20261010.json and corresponding current canonical quiz bundle. Independently verify facts, pedagogical context, all answer distractors, exact binding and canonical article hashes. Actually open all4 cited NASA URLs, including redirected Jupiter Facts and Viking1 Olympus page. Mars Facts and Olympus caption give differing height figures: draft intentionally omits height, do not introduce unsupported reconciliation. Require GRANTED interactive shared reads before any files/source audit; numeric ram/commit268435456,disk system1048576. Wait<=30s then release truthful NO_VERDICT if blocked. No edits, children, tests/build/export/deploy. Submit per-ID ACCEPT/REVISE, wordcount, canonicalJSON hashes, sourceURL dates/evidence/limitations.",
+  "created_at": 1791660082.055575,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-0f299e1164ab40508206bbebd840da72",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "kind": "lease",
+        "result": "GRANTED interactive shared-read lease-3ce10525c7504121b96fbd57c09960ce generation 1 for exactly the assigned draft and bundle."
+      },
+      {
+        "kind": "candidate_first",
+        "result": "Before inspecting private keys: 003 selected hydrogen and helium (opt-2); 004 selected Mars (opt-4). Both match current private_grading."
+      },
+      {
+        "kind": "binding",
+        "result": "003 article ref f12a9d26a6f4f79b631e475ec1a7aa84da1e065643c3a9d3be747c91008b171f equals bundle revision; 004 article ref 041a4c708650868c63eed94a52936d217b216921d23ed088c3f8abb9bfc16b26 equals bundle revision."
+      },
+      {
+        "kind": "canonical_hash",
+        "result": "Canonical JSON SHA-256 using sort_keys=true, ensure_ascii=false, separators=(',', ':'): 003 dcffaec986e5f3d1cb0b5d13985a92ff8cfe529734ab9a646ae96c70b54b79af; 004 d20388bbabaa8e084afd76a035d0ffeaedfafd499c4a46c3ada9d8ecd5c8c6c6."
+      },
+      {
+        "kind": "source_opens",
+        "result": "Actually opened all four cited NASA URLs on 2026-10-10: Jupiter Facts (including redirect path), Jupiter overview, Mars Facts, and Viking 1 Olympus Mons resource."
+      }
+    ],
+    "packet_label": "planet-next-two-review",
+    "remaining_risks": [
+      "Native draft review only; no export, publication, release, or integration acceptance is claimed."
+    ],
+    "runtime_identity": "openai/gpt-6; session-0694de75432041edb32574d792c6b19c",
+    "source_audit": {
+      "accessed": "2026-10-10",
+      "urls": [
+        "https://science.nasa.gov/jupiter/jupiter-facts/",
+        "https://science.nasa.gov/jupiter/",
+        "https://science.nasa.gov/mars/facts/",
+        "https://science.nasa.gov/resource/viking-1-orbiter-image-olympus-mons/"
+      ]
+    },
+    "status": "DONE",
+    "verdicts": [
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-003",
+        "canonical_article_sha256": "dcffaec986e5f3d1cb0b5d13985a92ff8cfe529734ab9a646ae96c70b54b79af",
+        "reason": "NASA Jupiter Facts supports predominantly hydrogen/helium composition, insufficient mass to ignite as a star, compression to liquid hydrogen, electrically conducting liquid metallic hydrogen, and no true surface. The article distinguishes composition from state of matter; H/He is uniquely correct against all distractor pairs.",
+        "verdict": "ACCEPT",
+        "word_count": 196
+      },
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-004",
+        "canonical_article_sha256": "d20388bbabaa8e084afd76a035d0ffeaedfafd499c4a46c3ada9d8ecd5c8c6c6",
+        "reason": "NASA Mars Facts identifies Olympus Mons on Mars as the solar system's largest volcano. The Viking 1 resource supports the mosaic, over-600-km base, scarp/lava-flow description, summit caldera, and qualified recurrent-collapse explanation. Mars is uniquely correct. The article intentionally omits height, so the differing Mars Facts/Viking height figures create no unresolved claim.",
+        "verdict": "ACCEPT",
+        "word_count": 200
+      }
+    ]
+  },
+  "root_task_id": "task-0f299e1164ab40508206bbebd840da72",
+  "run_id": "run-e921af72c9554faa8c73052ecee46c01",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: Jupiter and Olympus article fact review",
+  "version": 3
+}
