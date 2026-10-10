@@ -1,0 +1,83 @@
+{
+  "acceptance": "Independent source-backed exact-hash verdict per article, actual granted reads and actual source opens. Otherwise truthful resource checkpoint.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\planet-paradoxes-first-two-20261010.json",
+    "C:\\ap\\quiz_master\\next\\content\\planet-paradoxes-20261010\\bundle.json"
+  ],
+  "assignee": "session-0694de75432041edb32574d792c6b19c",
+  "author": "session-629dac9934a94f1cb5ed46dd621c2778",
+  "body": "Read-only two draft articles in planet-paradoxes-first-two-20261010.json (189/191 words). Verify current canonical bundle questions001/002, answer uniqueness/options, exact binding hashes and factual/pedagogical accuracy. Actually open all four cited NASA URLs. Source claims do not automatically approve authored text; examine solar-day noon language on eccentric Mercury and pedagogical energy interpretation. Require actual GRANTED shared-read lease before reads/source audit. No edits/tests/build/children/export/publication. Submit exact canonical article hashes, individual ACCEPT/REVISE, sourceURLs evidence/date and limits. If queue remains blocked after <=30s, release/checkpoint no verdict.",
+  "created_at": 1791656162.8002949,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-d62db70fe3dd492ca9b10b4d79a5f876",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "kind": "lease",
+        "result": "GRANTED interactive shared-read lease-9003e81141cc4ca8add563a8e9581d56, generation 1, for exactly the draft and bundle."
+      },
+      {
+        "kind": "source_opens",
+        "result": "Opened all four cited NASA URLs on 2026-10-10: Venus Facts, Venus overview, Mercury Facts, and Mercury overview."
+      },
+      {
+        "kind": "candidate_first",
+        "result": "Before private key inspection, selected 001 opt-1 greenhouse effect and 002 opt-3 solar-day/noon-to-noon option; both matched private_grading."
+      },
+      {
+        "kind": "revision_binding",
+        "result": "001 draft a7609449fa3f77e564d94b509cbfc3bcfb41ac323262817d6e21de6faf4c8378 = bundle; 002 draft 93e9cd3202de3e205591233d44e84af2f5837bc2d0700a02be2a703430c5aac5 = bundle."
+      },
+      {
+        "kind": "canonical_hash",
+        "result": "Computed article canonical JSON SHA-256 using sort_keys=true, ensure_ascii=false, separators=(',', ':'): 001 9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d; 002 182c4db593c8a8cc9ea35c98f017715b269b4c2abf3d4edfd290a11f0cb32bb2."
+      }
+    ],
+    "packet_label": "planet-first-articles-review",
+    "remaining_risks": [
+      "Mercury needs the stated narrow editorial revision before article acceptance.",
+      "Native draft review only; no export, publication, release, or acceptance gate is claimed."
+    ],
+    "runtime_identity": "openai/gpt-6; session-0694de75432041edb32574d792c6b19c",
+    "source_audit": {
+      "accessed": "2026-10-10",
+      "urls": [
+        "https://science.nasa.gov/venus/venus-facts/",
+        "https://science.nasa.gov/venus/",
+        "https://science.nasa.gov/mercury/facts/",
+        "https://science.nasa.gov/mercury/"
+      ]
+    },
+    "status": "DONE_WITH_CONCERNS",
+    "verdicts": [
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-001",
+        "canonical_article_sha256": "9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d",
+        "reason": "NASA Venus Facts supports second-from-Sun, hottest, thick CO2 atmosphere, and runaway greenhouse heat trapping; Venus overview independently supports second-from-Sun/hottest. The teaching model separates incoming energy from heat loss and labels itself simplified. Stronger greenhouse effect is uniquely correct; rotation, tidal heating, and reflectivity do not explain the primary mechanism.",
+        "verdict": "ACCEPT",
+        "word_count": 189
+      },
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-002",
+        "canonical_article_sha256": "182c4db593c8a8cc9ea35c98f017715b269b4c2abf3d4edfd290a11f0cb32bb2",
+        "reason": "NASA Mercury Facts supports 88-day orbit, 59-day rotation, and 176-day solar/full day-night cycle; the key is unique. Revise the unqualified 'from noon to noon' equivalence: the same cited source says the eccentric orbit can make the Sun rise, set, and rise again at some locations (and reverse at sunset). Say 176 days is the solar-day/repeat period and note the irregular apparent solar motion, or remove the noon-to-noon gloss.",
+        "verdict": "REVISE",
+        "word_count": 191
+      }
+    ]
+  },
+  "root_task_id": "task-d62db70fe3dd492ca9b10b4d79a5f876",
+  "run_id": "run-0f5a080348254f2994b334611c71a698",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "Independent Venus/Mercury question-linked article review",
+  "version": 3
+}

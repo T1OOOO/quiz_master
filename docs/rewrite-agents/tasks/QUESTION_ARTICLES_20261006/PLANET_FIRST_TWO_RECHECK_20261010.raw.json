@@ -1,0 +1,73 @@
+{
+  "acceptance": "Actual exact-hash corrected Mercury review with source evidence; no release gate inference.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\planet-paradoxes-first-two-20261010.json",
+    "C:\\ap\\quiz_master\\next\\content\\planet-paradoxes-20261010\\bundle.json"
+  ],
+  "assignee": "session-0694de75432041edb32574d792c6b19c",
+  "author": "session-629dac9934a94f1cb5ed46dd621c2778",
+  "body": "Root removed ambiguous noon-to-noon gloss and added NASA-supported eccentric-orbit sunrise/set/re-rise caveat in article002 only. Independently re-read exact current article and binding; verify new caveat against actually opened Mercury Facts. Shared-read grant required. No edits, children, tests/builds/export. Preserve article001 verdict only if unchanged hash matches prior actual review. Submit exact corrected hash, word count, ACCEPT/REVISE, source-open date/evidence and limitations.",
+  "created_at": 1791656560.7415426,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-07faf0c5f9ee4d6fac08f9da33e4db42",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [],
+    "evidence": [
+      {
+        "kind": "lease",
+        "result": "Fresh GRANTED interactive shared-read lease-f50410ccb8d74f929a3253c417dd9655 generation 1; released after this recheck."
+      },
+      {
+        "kind": "current_article",
+        "result": "Read current article002 only under grant; 206 words; canonical JSON SHA-256 (sort_keys=true, ensure_ascii=false, separators=(',', ':')) = bbdcc8e0aab1bae8fba93c62dbd80a17f267dd5875013866fdd12cdd613527e0."
+      },
+      {
+        "kind": "binding",
+        "result": "Article002 question_ref 93e9cd3202de3e205591233d44e84af2f5837bc2d0700a02be2a703430c5aac5 exactly matches current bundle question revision; private key remains planet-paradox-002-opt-3."
+      },
+      {
+        "kind": "source_open",
+        "result": "Actually reopened https://science.nasa.gov/mercury/facts/ on 2026-10-10. NASA states 88-day orbit, 59-day axial rotation, 176-day solar/full day-night cycle, and that at some locations the morning Sun can rise, set, and rise again because of Mercury's highly eccentric orbit."
+      },
+      {
+        "kind": "unchanged_001",
+        "result": "Article001 remains 189 words with prior independently checked canonical hash 9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d."
+      }
+    ],
+    "packet_label": "planet-first-articles-review",
+    "remaining_risks": [
+      "This accepts the corrected draft text only. No export, publication, release, or integration acceptance is claimed."
+    ],
+    "runtime_identity": "openai/gpt-6; session-0694de75432041edb32574d792c6b19c",
+    "status": "DONE",
+    "verdicts": [
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-002",
+        "canonical_article_sha256": "bbdcc8e0aab1bae8fba93c62dbd80a17f267dd5875013866fdd12cdd613527e0",
+        "reason": "The corrected text removes the ambiguous noon-to-noon equation, correctly calls 176 days Mercury's full solar cycle, and adds the cited eccentric-orbit rise/set/re-rise caveat. The numerical contrasts, key, and question revision binding remain correct and unique.",
+        "verdict": "ACCEPT",
+        "word_count": 206
+      },
+      {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-001",
+        "canonical_article_sha256": "9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d",
+        "reason": "Current canonical hash matches the prior actual source-backed review; no new text review was required.",
+        "verdict": "ACCEPT_PRESERVED",
+        "word_count": 189
+      }
+    ]
+  },
+  "root_task_id": "task-07faf0c5f9ee4d6fac08f9da33e4db42",
+  "run_id": "run-27db5b5cc17849509aa9d296c1473d89",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "quiz_master-2ln.1: corrected Mercury solar-cycle article recheck",
+  "version": 3
+}
