@@ -1,0 +1,52 @@
+?   	quiz_master/cmd/api	[no test files]
+?   	quiz_master/cmd/auth	[no test files]
+?   	quiz_master/cmd/dbtool	[no test files]
+?   	quiz_master/cmd/server	[no test files]
+?   	quiz_master/cmd/storage	[no test files]
+?   	quiz_master/docs/rewrite-agents/evidence/P01	[no test files]
+ok  	quiz_master/internal/api	1.433s
+?   	quiz_master/internal/auth/domain	[no test files]
+?   	quiz_master/internal/auth/http	[no test files]
+?   	quiz_master/internal/auth/repository	[no test files]
+?   	quiz_master/internal/auth/service	[no test files]
+?   	quiz_master/internal/auth/token	[no test files]
+ok  	quiz_master/internal/authapi	0.973s
+?   	quiz_master/internal/authapi/dto	[no test files]
+ok  	quiz_master/internal/authclient	1.219s
+ok  	quiz_master/internal/authdb	1.133s
+?   	quiz_master/internal/authserver	[no test files]
+ok  	quiz_master/internal/config	0.624s
+?   	quiz_master/internal/dbx	[no test files]
+ok  	quiz_master/internal/httpapp	1.251s
+?   	quiz_master/internal/models	[no test files]
+?   	quiz_master/internal/observability	[no test files]
+?   	quiz_master/internal/quiz/domain	[no test files]
+?   	quiz_master/internal/quiz/http	[no test files]
+?   	quiz_master/internal/quiz/http/dto	[no test files]
+?   	quiz_master/internal/quiz/service	[no test files]
+ok  	quiz_master/internal/realtime	0.814s
+ok  	quiz_master/internal/roomstate	0.612s
+ok  	quiz_master/internal/server	1.348s
+ok  	quiz_master/internal/storage/db	1.323s
+ok  	quiz_master/internal/storage/repository	1.371s
+ok  	quiz_master/internal/storageapi	1.118s
+?   	quiz_master/internal/storageapi/dto	[no test files]
+ok  	quiz_master/internal/storageclient	1.271s
+?   	quiz_master/internal/storageserver	[no test files]
+ok  	quiz_master/internal/tests	1.407s
+?   	quiz_master/internal/tracing	[no test files]
+ok  	quiz_master/next/server/cmd/api	1.068s
+ok  	quiz_master/next/server/cmd/quizctl	18.897s
+ok  	quiz_master/next/server/internal/attempts	(cached)
+ok  	quiz_master/next/server/internal/config	0.794s
+ok  	quiz_master/next/server/internal/content	(cached)
+ok  	quiz_master/next/server/internal/httpapi	(cached)
+ok  	quiz_master/next/server/internal/identity	0.848s
+ok  	quiz_master/next/server/internal/migrate	0.794s
+ok  	quiz_master/next/server/internal/reports	1.240s
+--- FAIL: TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart (9.47s)
+    collection_test.go:61: packs=130
+FAIL
+FAIL	quiz_master/next/server/internal/sqlite	12.880s
+ok  	quiz_master/next/server/internal/store	0.886s
+FAIL
