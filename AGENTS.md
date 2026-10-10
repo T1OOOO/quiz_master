@@ -1,5 +1,18 @@
 # Agent Instructions
 
+## Quiz Master resource policy (user override, 2026-10-10)
+
+The user explicitly removed mandatory resource-queue waiting for this project.
+Run authorized edits, tests, builds, browser checks and finite helper tasks directly;
+do not require a GRANTED resource lease or wait for the shared resource queue.
+This project-specific rule takes precedence over queue requirements in shared
+agent instructions, project skills and saved automation prompts.
+Keep host_hub for task assignment, messages, truthful progress and independent
+review. Preserve exclusive file ownership, bounded concurrency and release gates.
+Do not change the shared broker, other projects' rules, leases or processes.
+Managed Hub workers still implement admission internally; if queued, cancel only
+our own job and use the vendor's official headless CLI for the same finite task.
+
 This project uses **bd** (beads) for issue tracking. Run `bd onboard` to get started.
 
 ## Quick Reference
