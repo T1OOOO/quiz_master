@@ -1,0 +1,45 @@
+{
+  "overall": "revise",
+  "packet_sha256": "EA6D81FDF5C4B5D93F0C8C5C5A0616B71B1A93E802B3E191E64FDDD2B6B8DE39",
+  "answers": [
+    {"question_id": "cinema-encore-001", "index": 2},
+    {"question_id": "cinema-encore-002", "index": 0},
+    {"question_id": "cinema-encore-003", "index": 3},
+    {"question_id": "cinema-encore-004", "index": 1},
+    {"question_id": "cinema-encore-005", "index": 1},
+    {"question_id": "cinema-encore-006", "index": 3},
+    {"question_id": "cinema-encore-007", "index": 0},
+    {"question_id": "cinema-encore-008", "index": 2},
+    {"question_id": "cinema-encore-009", "index": 3},
+    {"question_id": "cinema-encore-010", "index": 0}
+  ],
+  "findings": [
+    {
+      "question_id": "cinema-encore-007",
+      "severity": "medium",
+      "reason": "Both supplied BFI pages were opened, but neither names Su Li-zhen or explicitly maps that character to Maggie Cheung. They establish the film, Wong Kar-wai, and Cheung in the cast, which is insufficient support for this character-to-actor key and the article's central claim.",
+      "required_change": "Replace or add a relevant accessible source that explicitly identifies Maggie Cheung as Su Li-zhen, then update source_refs/source_links and recheck this item."
+    }
+  ],
+  "opened_sources": [
+    {"url": "https://www.bfi.org.uk/bfi-film-releases/red-shoes", "opened": true, "claim_support": "Identifies Victoria/Vicky Page as Moira Shearer and gives the film credits."},
+    {"url": "https://www.bfi.org.uk/features/red-shoes-moira-shearer-ballet-shoes-powell-pressburger", "opened": true, "claim_support": "Supports Shearer's ballet career and role context."},
+    {"url": "https://www.bfi.org.uk/film/8803865c-9135-5c8f-b36f-6e50ffcb4873/the-400-blows", "opened": true, "claim_support": "Lists François Truffaut and the principal cast including Jean-Pierre Leaud and Albert Remy."},
+    {"url": "https://player.bfi.org.uk/subscription/film/watch-the-400-blows-1959-online", "opened": true, "claim_support": "Explicitly identifies Antoine Doinel as Jean-Pierre Leaud and calls the film Truffaut's directorial debut."},
+    {"url": "https://player.bfi.org.uk/subscription/film/watch-the-cabinet-of-dr-caligari-1919-online", "opened": true, "claim_support": "Names Robert Wiene as director; identifies Cesare as the somnambulist and lists Conrad Veidt."},
+    {"url": "https://www.bfi.org.uk/features/100-years-cabinet-dr-caligari", "opened": true, "claim_support": "States the 26 February 1920 Berlin premiere, credits Wiene, and explicitly identifies Cesare as Conrad Veidt."},
+    {"url": "https://www.bfi.org.uk/film/8e81a2c0-b1e4-51c4-b5da-93458d361dc3/do-the-right-thing", "opened": true, "claim_support": "Supports Spike Lee and his character Mookie."},
+    {"url": "https://www.bfi.org.uk/features/where-begin-with-spike-lee", "opened": true, "claim_support": "Explicitly describes Lee's Mookie as the pizza-delivery protagonist."},
+    {"url": "https://www.bfi.org.uk/film/b018cb15-0228-522c-850b-d19fccd99150/black-narcissus", "opened": true, "claim_support": "Identifies Deborah Kerr as Sister Clodagh and Kathleen Byron as Sister Ruth."},
+    {"url": "https://www.bfi.org.uk/features/black-narcissus-exoticism-eroticism-powell-pressburger", "opened": true, "claim_support": "Supports the Pinewood/Leonardslee production context."},
+    {"url": "https://player.bfi.org.uk/rentals/film/watch-in-the-mood-for-love-2000-online", "opened": true, "claim_support": "Names Wong Kar-wai and features Maggie Cheung and Tony Leung; it does not name Su Li-zhen."},
+    {"url": "https://www.bfi.org.uk/film/1b8c3bcb-842f-5ba2-90ee-39b6b40b7c21/in-the-mood-for-love?trk=article-ssr-frontend-pulse_little-text-block", "opened": true, "claim_support": "Names the director and actors, but does not explicitly map Su Li-zhen to Maggie Cheung."},
+    {"url": "https://www.bfi.org.uk/film/bc9dc6fa-0761-553d-8324-f1fbd4bd2005/beau-travail", "opened": true, "claim_support": "Supports Claire Denis, Denis Lavant, and the film record."},
+    {"url": "https://www.bfi.org.uk/sight-and-sound/features/beau-travail-1998-claire-denis-greatest-films-poll", "opened": true, "claim_support": "Explicitly identifies Claire Denis; Denis Lavant as Sergeant Galoup; Michel Subor as Forestier; Gregoire Colin as Sentain; and the Djibouti setting."}
+  ],
+  "limitations": [
+    "Candidate-only blind answers were recorded before reading the key; the candidate file inspected had SHA-256 47C504B1385BD6BD6A0CF2C6BC040987C00E4D19680A9746B4F9F76436CFAE10, while this review is anchored to the supplied packet SHA-256.",
+    "The corrected option ordering removes the earlier position imbalance. Questions 006 and 007 intentionally share a film but test separate director and actor-role facts; this is a coverage preference, not a factual blocker.",
+    "I checked exact and close candidate wording against the available quiz corpus only at a content-review level; no semantic-similarity metric for the stated 3,978-item baseline was supplied."
+  ]
+}

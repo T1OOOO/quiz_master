@@ -1,0 +1,17 @@
+{
+  "event": "result",
+  "result": {
+    "conversation_id": "daf07abf-820b-4d4c-85bd-1bc28e7c1c20",
+    "status": "SUCCESS",
+    "response": "{\n  \"overall\": \"revise\",\n  \"packet_sha256\": \"ea6d81fdf5c4b5d93f0c8c5c5a0616b71b1a93e802b3e191e64fddd2b6b8de39\",\n  \"answers\": [\n    {\"question_id\": \"cinema-encore-001\", \"index\": 2},\n    {\"question_id\": \"cinema-encore-002\", \"index\": 0},\n    {\"question_id\": \"cinema-encore-003\", \"index\": 3},\n    {\"question_id\": \"cinema-encore-004\", \"index\": 1},\n    {\"question_id\": \"cinema-encore-005\", \"index\": 1},\n    {\"question_id\": \"cinema-encore-006\", \"index\": 3},\n    {\"question_id\": \"cinema-encore-007\", \"index\": 0},\n    {\"question_id\": \"cinema-encore-008\", \"index\": 2},\n    {\"question_id\": \"cinema-encore-009\", \"index\": 3},\n    {\"question_id\": \"cinema-encore-010\", \"index\": 0}\n  ],\n  \"findings\": [\n    {\n      \"question_id\": \"cinema-encore-007\",\n      \"severity\": \"medium\",\n      \"reason\": \"The supplied BFI sources ('mood-player' and 'mood-film') establish Wong Kar-wai, Maggie Cheung, and Tony Leung Chiu-wai in the film, but neither source explicitly names the character Su Li-zhen (Су Личжэнь) or maps Maggie Cheung to this character name. As a result, the question premise and the miniarticle's core assertion remain unverified by the cited ledger.\",\n      \"required_change\": \"Update or supplement the source ledger with an accessible, authoritative source (such as a BFI feature or Sight & Sound essay) that explicitly names Maggie Cheung as Su Li-zhen, and update source_refs and source_links accordingly.\"\n    }\n  ],\n  \"limitations\": [\n    \"Independent solve performed without external network access or running hash computations.\",\n    \"Source verification relies strictly on the native reviewer's verified evidence ledger and internal domain knowledge.\",\n    \"No release approval implied.\"\n  ]\n}\n",
+    "duration_seconds": 15.5703776,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 33520,
+      "output_tokens": 3114,
+      "thinking_tokens": 2563,
+      "cache_read_tokens": 0,
+      "total_tokens": 36634
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "event": "result",
+  "result": {
+    "conversation_id": "0651fe28-10b8-4dc5-8774-c6ab4223ebd6",
+    "status": "SUCCESS",
+    "response": "{\n  \"overall\": \"accept\",\n  \"packet_sha256\": \"9d08985e3203b181ac530786592ee572811531a5d81a4450ea22cb75cca8ca3e\",\n  \"answers\": [\n    {\n      \"question_id\": \"music-encore-001\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-encore-002\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"music-encore-003\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"music-encore-004\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"music-encore-005\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-encore-006\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"music-encore-007\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"music-encore-008\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"music-encore-009\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"music-encore-010\",\n      \"index\": 2\n    }\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Independent verification performed without executing web fetches, opening external URLs, or computing cryptographic hashes.\",\n    \"Verification relied on internal domain knowledge and evaluation of the supplied packet and native reviewer audit evidence.\",\n    \"No live database duplicate scan or runtime quiz delivery/rendering checks were executed.\",\n    \"Editorial and factual evaluation only; no production deployment or release approval is implied.\"\n  ]\n}\n",
+    "duration_seconds": 15.9432176,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 12097,
+      "output_tokens": 3413,
+      "thinking_tokens": 2941,
+      "cache_read_tokens": 20452,
+      "total_tokens": 15510
+    }
+  }
+}

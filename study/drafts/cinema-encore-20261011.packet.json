@@ -1,0 +1,622 @@
+{
+  "pack_id": "cinema-encore-20261011",
+  "title": "Кино: роли, авторы и экранные миры",
+  "description": "Десять вопросов о ролях, режиссёрах и экранных мирах: от немецкого экспрессионизма до гонконгской мелодрамы.",
+  "category": "Кино",
+  "source_ledger": [
+    {
+      "id": "red-release",
+      "title": "BFI: The Red Shoes",
+      "url": "https://www.bfi.org.uk/bfi-film-releases/red-shoes",
+      "accessed_on": "2026-10-11",
+      "supports": "Виктория Пейдж, Мойра Ширер и постановщики."
+    },
+    {
+      "id": "red-feature",
+      "title": "BFI: The Red Shoes exhibition feature",
+      "url": "https://www.bfi.org.uk/features/red-shoes-moira-shearer-ballet-shoes-powell-pressburger",
+      "accessed_on": "2026-10-11",
+      "supports": "Роль Вики Пейдж и участие Мойры Ширер."
+    },
+    {
+      "id": "blows-film",
+      "title": "BFI: The 400 Blows",
+      "url": "https://www.bfi.org.uk/film/8803865c-9135-5c8f-b36f-6e50ffcb4873/the-400-blows",
+      "accessed_on": "2026-10-11",
+      "supports": "Антуан Дуанель, Жан-Пьер Лео и Франсуа Трюффо."
+    },
+    {
+      "id": "blows-player",
+      "title": "BFI Player: The 400 Blows",
+      "url": "https://player.bfi.org.uk/subscription/film/watch-the-400-blows-1959-online",
+      "accessed_on": "2026-10-11",
+      "supports": "Дебют Трюффо и образ Антуана Дуэнеля."
+    },
+    {
+      "id": "caligari-player",
+      "title": "BFI Player: The Cabinet of Dr. Caligari",
+      "url": "https://player.bfi.org.uk/subscription/film/watch-the-cabinet-of-dr-caligari-1919-online",
+      "accessed_on": "2026-10-11",
+      "supports": "Роберт Вине, персонаж Чезаре и актёрский состав."
+    },
+    {
+      "id": "caligari-feature",
+      "title": "BFI: 100 years of The Cabinet of Dr. Caligari",
+      "url": "https://www.bfi.org.uk/features/100-years-cabinet-dr-caligari",
+      "accessed_on": "2026-10-11",
+      "supports": "Премьера, Роберт Вине, Чезаре и Конрад Файдт."
+    },
+    {
+      "id": "right-film",
+      "title": "BFI: Do the Right Thing",
+      "url": "https://www.bfi.org.uk/film/8e81a2c0-b1e4-51c4-b5da-93458d361dc3/do-the-right-thing",
+      "accessed_on": "2026-10-11",
+      "supports": "Спайк Ли и его персонаж Муки."
+    },
+    {
+      "id": "right-feature",
+      "title": "BFI: Where to begin with Spike Lee",
+      "url": "https://www.bfi.org.uk/features/where-begin-with-spike-lee",
+      "accessed_on": "2026-10-11",
+      "supports": "Муки, сыгранный Спайком Ли, и место действия фильма."
+    },
+    {
+      "id": "narcissus-film",
+      "title": "BFI: Black Narcissus",
+      "url": "https://www.bfi.org.uk/film/b018cb15-0228-522c-850b-d19fccd99150/black-narcissus",
+      "accessed_on": "2026-10-11",
+      "supports": "Сестра Клода, Дебора Керр и авторы фильма."
+    },
+    {
+      "id": "narcissus-feature",
+      "title": "BFI: Black Narcissus at 75",
+      "url": "https://www.bfi.org.uk/features/black-narcissus-exoticism-eroticism-powell-pressburger",
+      "accessed_on": "2026-10-11",
+      "supports": "Съёмки в Pinewood и садах Леонардсли вместо Гималаев."
+    },
+    {
+      "id": "mood-player",
+      "title": "BFI Player: In the Mood for Love",
+      "url": "https://player.bfi.org.uk/rentals/film/watch-in-the-mood-for-love-2000-online",
+      "accessed_on": "2026-10-11",
+      "supports": "Вонг Карвай, Мэгги Чун и Тони Люн."
+    },
+    {
+      "id": "mood-film",
+      "title": "BFI: In the Mood for Love",
+      "url": "https://www.bfi.org.uk/film/1b8c3bcb-842f-5ba2-90ee-39b6b40b7c21/in-the-mood-for-love?trk=article-ssr-frontend-pulse_little-text-block",
+      "accessed_on": "2026-10-11",
+      "supports": "Авторы, актёры и звуковой образ фильма."
+    },
+    {
+      "id": "beau-film",
+      "title": "BFI: Beau travail",
+      "url": "https://www.bfi.org.uk/film/bc9dc6fa-0761-553d-8324-f1fbd4bd2005/beau-travail",
+      "accessed_on": "2026-10-11",
+      "supports": "Клер Дени, Дени Лаван и сержант Галуп."
+    },
+    {
+      "id": "beau-feature",
+      "title": "BFI Sight and Sound: Beau Travail",
+      "url": "https://www.bfi.org.uk/sight-and-sound/features/beau-travail-1998-claire-denis-greatest-films-poll",
+      "accessed_on": "2026-10-11",
+      "supports": "Галуп, Лаван, Дени и джибутийский контекст."
+    },
+    {
+      "id": "mood-criterion",
+      "title": "Criterion Collection: In the Mood for Love",
+      "url": "https://www.criterion.com/films/198-in-the-mood-for-love?source=post_page---------------------------",
+      "accessed_on": "2026-10-11",
+      "supports": "Кастинговая запись: Maggie Cheung Man Yuk — Su Li-Zhen."
+    },
+    {
+      "id": "mood-hk",
+      "title": "BFI: 10 great films set in Hong Kong",
+      "url": "https://www.bfi.org.uk/lists/10-great-films-set-hong-kong",
+      "accessed_on": "2026-10-11",
+      "supports": "Su Li-zhen (Maggie Cheung) и сюжетный контекст фильма."
+    }
+  ],
+  "questions": [
+    {
+      "id": "cinema-encore-001",
+      "text": "Какая актриса сыграла балерину Викторию Пейдж в фильме «Красные башмачки»?",
+      "options": [
+        "Дебора Керр",
+        "Кэтлин Байрон",
+        "Мойра Ширер",
+        "Джин Симмонс"
+      ],
+      "correct_answer": 2,
+      "explanation": "Викторию Пейдж сыграла Мойра Ширер. BFI называет её реальной балериной и исполнительницей роли Вики.",
+      "difficulty_level": 5,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:gb",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:moira-shearer"
+      ],
+      "source_refs": [
+        "red-release",
+        "red-feature"
+      ],
+      "distractor_notes": [
+        "Керр снималась в другом фильме Пауэлла и Прессбургера.",
+        "Байрон играла в «Чёрном нарциссе».",
+        "Верно: Ширер сыграла Вики Пейдж.",
+        "Симмонс не исполняла эту роль."
+      ],
+      "article": {
+        "title_ru": "Балерина Вики Пейдж",
+        "body_ru": "«Красные башмачки» строятся вокруг Виктории, или Вики, Пейдж — молодой балерины, которой предлагают главную партию в балете о волшебных туфлях. BFI прямо связывает персонажа с Мойрой Ширер: она была профессиональной танцовщицей и сыграла Вики. Борис Лермонтов, сыгранный Антоном Уолбруком, руководит балетной труппой и приглашает Вики к главной партии.\n\nКартина вышла в Великобритании в 1948 году; её поставили Майкл Пауэлл и Эмерик Прессбургер. Материал BFI об архивной выставке добавляет биографический штрих: Ширер была ведущей танцовщицей Sadler’s Wells и в кино тогда только начинала. Её согласие на роль пришло после долгих колебаний, а успех фильма сделал актрису международной звездой. Образ Вики соединяет профессиональный балет Ширер с тщательно стилизованным миром фильма.",
+        "source_links": [
+          {
+            "title": "BFI: The Red Shoes",
+            "url": "https://www.bfi.org.uk/bfi-film-releases/red-shoes",
+            "accessed": "2026-10-11",
+            "supports": "Вики Пейдж сыграна Мойрой Ширер."
+          },
+          {
+            "title": "BFI: The Red Shoes exhibition feature",
+            "url": "https://www.bfi.org.uk/features/red-shoes-moira-shearer-ballet-shoes-powell-pressburger",
+            "accessed": "2026-10-11",
+            "supports": "Контекст карьеры Ширер и роль Вики."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-002",
+      "text": "Кто сыграл Антуана Дуэнеля в фильме «Четыреста ударов»?",
+      "options": [
+        "Жан-Пьер Лео",
+        "Альбер Реми",
+        "Франсуа Трюффо",
+        "Клод Шаброль"
+      ],
+      "correct_answer": 0,
+      "explanation": "Антуана Дуэнеля сыграл Жан-Пьер Лео; BFI называет героя экранным alter ego Трюффо.",
+      "difficulty_level": 6,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:fr",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:jean-pierre-leaud"
+      ],
+      "source_refs": [
+        "blows-film",
+        "blows-player"
+      ],
+      "distractor_notes": [
+        "Верно: Лео исполнил роль Антуана.",
+        "Реми входил в актёрский состав, но не играл Антуана.",
+        "Трюффо был режиссёром и сценаристом.",
+        "Шаброль не играл героя фильма."
+      ],
+      "article": {
+        "title_ru": "Антуан Дуэнель и лицо новой волны",
+        "body_ru": "В «Четырёхстах ударах» Франсуа Трюффо знакомит зрителя с Антуаном Дуэнелем, парижским школьником, который ищет выход из давления семьи и школы. BFI называет Антуана экранным alter ego режиссёра и фиксирует исполнителя роли: Жан-Пьер Лео. Трюффо написал и поставил фильм, а Лео придал герою упрямую, наблюдательную экранную индивидуальность.\n\nФильм вышел во Франции в 1959 году и стал полнометражным режиссёрским дебютом Трюффо. BFI Player описывает Антуана как двенадцатилетнего мальчика, для которого прогулы, мелкие проступки и кино становятся убежищем. Страница BFI также выделяет финальный стоп-кадр — один из узнаваемых приёмов картины. В актёрском составе BFI также названы Клер Морье и Альбер Реми. Финальный стоп-кадр оставляет будущее Антуана открытым.",
+        "source_links": [
+          {
+            "title": "BFI: The 400 Blows",
+            "url": "https://www.bfi.org.uk/film/8803865c-9135-5c8f-b36f-6e50ffcb4873/the-400-blows",
+            "accessed": "2026-10-11",
+            "supports": "Антуан Дуэнель сыгран Жаном-Пьером Лео."
+          },
+          {
+            "title": "BFI Player: The 400 Blows",
+            "url": "https://player.bfi.org.uk/subscription/film/watch-the-400-blows-1959-online",
+            "accessed": "2026-10-11",
+            "supports": "Дебют Трюффо и описание героя."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-003",
+      "text": "Кто поставил «Кабинет доктора Калигари»?",
+      "options": [
+        "Фриц Ланг",
+        "Фридрих Вильгельм Мурнау",
+        "Георг Вильгельм Пабст",
+        "Роберт Вине"
+      ],
+      "correct_answer": 3,
+      "explanation": "Режиссёр «Кабинета доктора Калигари» — Роберт Вине.",
+      "difficulty_level": 6,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:directors",
+        "country:de",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:robert-wiene"
+      ],
+      "source_refs": [
+        "caligari-player",
+        "caligari-feature"
+      ],
+      "distractor_notes": [
+        "Ланг — другой немецкий режиссёр эпохи немого кино.",
+        "Мурнау поставил другие классические фильмы.",
+        "Пабст не был режиссёром этой картины.",
+        "Верно: Вине указан режиссёром на BFI."
+      ],
+      "article": {
+        "title_ru": "Роберт Вине и тревожный город Калигари",
+        "body_ru": "«Кабинет доктора Калигари» поставил Роберт Вине. BFI Player приводит его имя в режиссёрской строке, а историческая статья BFI связывает фильм с немецким экспрессионизмом и премьерой в Берлине 26 февраля 1920 года. Вине использовал экспрессионистскую стилизацию как часть режиссёрского рассказа, а не как простой декоративный фон.\n\nИстория разворачивается вокруг ярмарочного гипнотизёра Калигари и сомнамбулы Чезаре. Наклонные расписные декорации и намеренно искажённая перспектива создают ощущение нестабильного мира; BFI описывает их как часть влияния фильма на хоррор и нуар. Поэтому «Калигари» полезно помнить не только как ранний фильм ужасов, но и как пример того, как режиссура, декор и рамочная история работают вместе. Фильм сохранил силу именно потому, что его декор, игра и структура делают границу между воспоминанием и реальностью неустойчивой.",
+        "source_links": [
+          {
+            "title": "BFI Player: The Cabinet of Dr. Caligari",
+            "url": "https://player.bfi.org.uk/subscription/film/watch-the-cabinet-of-dr-caligari-1919-online",
+            "accessed": "2026-10-11",
+            "supports": "Режиссёр Роберт Вине."
+          },
+          {
+            "title": "BFI: 100 years of The Cabinet of Dr. Caligari",
+            "url": "https://www.bfi.org.uk/features/100-years-cabinet-dr-caligari",
+            "accessed": "2026-10-11",
+            "supports": "Премьера и экспрессионистский контекст."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-004",
+      "text": "Какого героя в фильме «Делай как надо» сыграл Спайк Ли?",
+      "options": [
+        "Сэл",
+        "Муки",
+        "Радио Рахим",
+        "Багин Аут"
+      ],
+      "correct_answer": 1,
+      "explanation": "Спайк Ли сыграл разносчика пиццы Муки.",
+      "difficulty_level": 5,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:us",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:spike-lee"
+      ],
+      "source_refs": [
+        "right-film",
+        "right-feature"
+      ],
+      "distractor_notes": [
+        "Сэл — другой герой фильма.",
+        "Верно: Ли сыграл Муки.",
+        "Радио Рахим — другой персонаж.",
+        "Багин Аут — другой персонаж."
+      ],
+      "article": {
+        "title_ru": "Спайк Ли в роли Муки",
+        "body_ru": "В «Делай как надо» Спайк Ли не только поставил фильм: он сыграл Муки, разносчика пиццы в бруклинском квартале. Страница BFI о фильме прямо говорит о «собственном персонаже Ли Муки», а обзор его работ повторяет: именно Муки действует в жаркий день, когда напряжение между жителями нарастает. Ли строит Муки как наблюдателя и участника, которому приходится принимать решение в переломный момент дня.\n\nФильм вышел в 1989 году. BFI описывает его как картину о сообществе, где повседневный конфликт постепенно превращается в кризис. В статье перечислены и другие участники ансамбля — Джон Туртурро, Сэмюэл Л. Джексон, Руби Ди и Осси Дэвис. Их персонажи складываются в многоголосый портрет района. Такая роль Ли помогает увидеть, что режиссёр иногда присутствует в кадре не камео, а как центральный проводник зрителя через события фильма.",
+        "source_links": [
+          {
+            "title": "BFI: Do the Right Thing",
+            "url": "https://www.bfi.org.uk/film/8e81a2c0-b1e4-51c4-b5da-93458d361dc3/do-the-right-thing",
+            "accessed": "2026-10-11",
+            "supports": "Ли и его персонаж Муки."
+          },
+          {
+            "title": "BFI: Where to begin with Spike Lee",
+            "url": "https://www.bfi.org.uk/features/where-begin-with-spike-lee",
+            "accessed": "2026-10-11",
+            "supports": "Муки как разносчик пиццы, сыгранный Ли."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-005",
+      "text": "Какую героиню сыграла Дебора Керр в фильме «Чёрный нарцисс»?",
+      "options": [
+        "Сестру Рут",
+        "Сестру Клоду",
+        "Мисс Прайс",
+        "Вики Пейдж"
+      ],
+      "correct_answer": 1,
+      "explanation": "Дебора Керр сыграла сестру Клоду.",
+      "difficulty_level": 6,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:gb",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:deborah-kerr"
+      ],
+      "source_refs": [
+        "narcissus-film",
+        "narcissus-feature"
+      ],
+      "distractor_notes": [
+        "Сестру Рут сыграла Кэтлин Байрон.",
+        "Верно: Керр сыграла сестру Клоду.",
+        "Мисс Прайс не героиня этого фильма.",
+        "Вики Пейдж — персонаж другого фильма."
+      ],
+      "article": {
+        "title_ru": "Сестра Клода в «Чёрном нарциссе»",
+        "body_ru": "В «Чёрном нарциссе» Дебора Керр играет сестру Клоду, руководительницу общины монахинь в гималайском монастыре. BFI называет и персонажа, и актрису, а также противопоставляет Клоду сестре Рут, которую сыграла Кэтлин Байрон. Клода пытается сохранить порядок общины, тогда как Рут всё сильнее поддаётся болезненной одержимости.\n\nФильм Пауэлла и Прессбургера вышел в Великобритании в 1947 году. Хотя сюжет помещён в Гималаи, BFI указывает, что значительная часть съёмок проходила в Pinewood Studios и садах Леонардсли в Сассексе. Этот производственный факт объясняет, почему картина одновременно воспринимается как история места и как тщательно сконструированная студийная фантазия. В образе Клоды соединяются религиозная дисциплина, воспоминания о прошлом и нарастающая неуверенность.",
+        "source_links": [
+          {
+            "title": "BFI: Black Narcissus",
+            "url": "https://www.bfi.org.uk/film/b018cb15-0228-522c-850b-d19fccd99150/black-narcissus",
+            "accessed": "2026-10-11",
+            "supports": "Сестра Клода сыграна Деборой Керр."
+          },
+          {
+            "title": "BFI: Black Narcissus at 75",
+            "url": "https://www.bfi.org.uk/features/black-narcissus-exoticism-eroticism-powell-pressburger",
+            "accessed": "2026-10-11",
+            "supports": "Клода, Рут и студийные съёмки."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-006",
+      "text": "Кто был режиссёром фильма «Любовное настроение»?",
+      "options": [
+        "Чжан Имоу",
+        "Эдвард Янг",
+        "Хоу Сяосянь",
+        "Вонг Карвай"
+      ],
+      "correct_answer": 3,
+      "explanation": "«Любовное настроение» поставил Вонг Карвай.",
+      "difficulty_level": 5,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:directors",
+        "country:cn",
+        "era:twenty-first-century",
+        "knowledge_skill:direct-recall",
+        "person:wong-kar-wai"
+      ],
+      "source_refs": [
+        "mood-player",
+        "mood-film"
+      ],
+      "distractor_notes": [
+        "Чжан Имоу — другой режиссёр китайского кино.",
+        "Эдвард Янг не ставил этот фильм.",
+        "Хоу Сяосянь не ставил этот фильм.",
+        "Верно: режиссёр — Вонг Карвай."
+      ],
+      "article": {
+        "title_ru": "Вонг Карвай и настроение Гонконга",
+        "body_ru": "Режиссёр «Любовного настроения» — Вонг Карвай. BFI Player указывает его в титульных данных и описывает фильм как историю соседей в Гонконге 1960-х годов. Вонг выстраивает игру Мэгги Чун и Тони Люна через паузы, повторяющиеся маршруты и недосказанные встречи.\n\nКартина вышла в 2000 году. Страница BFI подчёркивает роль операторской работы, костюмов и музыки в её атмосфере, а также называет фильм совместным производством Гонконга и Франции. Реставрация 4K была сделана с 35-миллиметрового оригинального негатива при участии нескольких организаций и одобрена Вонгом Карваем. Эти сведения показывают, что режиссура не сводится к выбору актёров: авторское решение продолжается в контроле визуального и звукового облика фильма. Такой контроль над изображением и звуком превращает историю соседей в фильм о памяти, времени и невысказанной близости.",
+        "source_links": [
+          {
+            "title": "BFI Player: In the Mood for Love",
+            "url": "https://player.bfi.org.uk/rentals/film/watch-in-the-mood-for-love-2000-online",
+            "accessed": "2026-10-11",
+            "supports": "Вонг Карвай указан режиссёром."
+          },
+          {
+            "title": "BFI: In the Mood for Love",
+            "url": "https://www.bfi.org.uk/film/1b8c3bcb-842f-5ba2-90ee-39b6b40b7c21/in-the-mood-for-love?trk=article-ssr-frontend-pulse_little-text-block",
+            "accessed": "2026-10-11",
+            "supports": "Авторы, актёры и художественный контекст."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-007",
+      "text": "Какая актриса играет Су Личжэнь в «Любовном настроении»?",
+      "options": [
+        "Мэгги Чун",
+        "Гун Ли",
+        "Чжан Цзыи",
+        "Мишель Йео"
+      ],
+      "correct_answer": 0,
+      "explanation": "Су Личжэнь сыграла Мэгги Чун.",
+      "difficulty_level": 6,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:cn",
+        "era:twenty-first-century",
+        "knowledge_skill:direct-recall",
+        "person:maggie-cheung"
+      ],
+      "source_refs": [
+        "mood-criterion",
+        "mood-hk"
+      ],
+      "distractor_notes": [
+        "Верно: Чун исполнила эту роль.",
+        "Гун Ли не играет Су Личжэнь.",
+        "Чжан Цзыи не входит в этот актёрский дуэт.",
+        "Мишель Йео не играет Су Личжэнь."
+      ],
+      "article": {
+        "title_ru": "Су Личжэнь и Мэгги Чун",
+        "body_ru": "Су Личжэнь в «Любовном настроении» играет Мэгги Чун. Criterion прямо указывает Мэгги Чун как Су Личжэнь, а статья BFI описывает её и Тони Люна как двух соседей, чья близость возникает после открытия о супругах. Су работает секретаршей в судоходной компании, а Чоу — журналистом; их повседневные маршруты постепенно становятся ритуалом ожидания.\n\nДействие происходит в Гонконге 1960-х, хотя фильм был выпущен в 2000 году. BFI обращает внимание на костюмы, музыку и фотографию как на части общего ощущения сдержанного желания. В этой эстетике одежда Су и присутствие героини не являются случайным украшением: визуальный ритм помогает передать время, место и дистанцию между персонажами. Мэгги Чун создаёт образ, где сдержанная походка и молчание выражают не меньше, чем диалог.",
+        "source_links": [
+          {
+            "title": "Criterion Collection: In the Mood for Love",
+            "url": "https://www.criterion.com/films/198-in-the-mood-for-love?source=post_page---------------------------",
+            "accessed": "2026-10-11",
+            "supports": "Cast & Credits прямо сопоставляет Maggie Cheung Man Yuk и Su Li-Zhen."
+          },
+          {
+            "title": "BFI: 10 great films set in Hong Kong",
+            "url": "https://www.bfi.org.uk/lists/10-great-films-set-hong-kong",
+            "accessed": "2026-10-11",
+            "supports": "Статья прямо называет Su Li-zhen (Maggie Cheung) в описании фильма."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-008",
+      "text": "Кто поставил фильм «Хорошая работа»?",
+      "options": [
+        "Аньес Варда",
+        "Шанталь Акерман",
+        "Клер Дени",
+        "Жюли Дельпи"
+      ],
+      "correct_answer": 2,
+      "explanation": "«Хорошую работу» поставила Клер Дени.",
+      "difficulty_level": 7,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:directors",
+        "country:fr",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:claire-denis"
+      ],
+      "source_refs": [
+        "beau-film",
+        "beau-feature"
+      ],
+      "distractor_notes": [
+        "Варда — другой французский режиссёр.",
+        "Акерман не была режиссёром этой картины.",
+        "Верно: Дени поставила фильм.",
+        "Дельпи не была режиссёром этой картины."
+      ],
+      "article": {
+        "title_ru": "Клер Дени и «Хорошая работа»",
+        "body_ru": "«Хорошую работу» поставила Клер Дени. BFI указывает её в режиссёрской строке и помещает действие фильма среди французских легионеров в Джибути. Название Beau travail отсылает к военной дисциплине, но Дени показывает её как хрупкую систему привычек, жестов и скрытых конфликтов.\n\nКартина датирована на BFI 1998 годом. В материале Sight and Sound сказано, что сценарий Дени и Жан-Поля Фарго отталкивался от новеллы Германа Мелвилла «Билли Бадд», но переносит её мотивы в иной мир. Режиссёр работает с движением, жестом и взглядом так, что строевая подготовка выглядит почти как хореография. Поэтому фильм помогает обсуждать не только сюжет, но и язык кино: телесное действие сообщает то, что герои редко формулируют словами. В её кино пустыня, море и казарма становятся пространствами памяти, одиночества и напряжённой мужской иерархии.",
+        "source_links": [
+          {
+            "title": "BFI: Beau travail",
+            "url": "https://www.bfi.org.uk/film/bc9dc6fa-0761-553d-8324-f1fbd4bd2005/beau-travail",
+            "accessed": "2026-10-11",
+            "supports": "Клер Дени указана режиссёром."
+          },
+          {
+            "title": "BFI Sight and Sound: Beau Travail",
+            "url": "https://www.bfi.org.uk/sight-and-sound/features/beau-travail-1998-claire-denis-greatest-films-poll",
+            "accessed": "2026-10-11",
+            "supports": "Дени, Фарго, Мелвилл и место действия."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-009",
+      "text": "Кто сыграл сержанта Галупа в «Хорошей работе»?",
+      "options": [
+        "Мишель Сюбор",
+        "Грегуар Колен",
+        "Венсан Линдон",
+        "Дени Лаван"
+      ],
+      "correct_answer": 3,
+      "explanation": "Сержанта Галупа сыграл Дени Лаван.",
+      "difficulty_level": 7,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:fr",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:denis-lavant"
+      ],
+      "source_refs": [
+        "beau-film",
+        "beau-feature"
+      ],
+      "distractor_notes": [
+        "Сюбор играл командира Форестье.",
+        "Колен играл Жиля Сентена.",
+        "Линдон не исполнял эту роль.",
+        "Верно: Лаван сыграл Галупа."
+      ],
+      "article": {
+        "title_ru": "Дени Лаван как сержант Галуп",
+        "body_ru": "В «Хорошей работе» сержанта Галупа сыграл Дени Лаван. BFI называет Лавана в составе и поясняет, что Галуп вспоминает службу во Французском иностранном легионе в Джибути. Статья Sight and Sound уточняет отношения героев: командир Бруно Форестье — Мишель Сюбор, а новобранец Жиль Сентен — Грегуар Колен. Командная иерархия делает ревность Галупа к Сентену особенно разрушительной.\n\nГалуп — не просто военный в группе: его ревность к популярному Сентену задаёт внутреннее напряжение фильма. BFI отмечает, что для Клер Дени движение и жест здесь не менее выразительны, чем диалог, поэтому Лаван играет через пластику и сдержанность. Фильм заканчивается знаменитой танцевальной сценой Галупа, превращающей накопленное напряжение в резкое движение.",
+        "source_links": [
+          {
+            "title": "BFI: Beau travail",
+            "url": "https://www.bfi.org.uk/film/bc9dc6fa-0761-553d-8324-f1fbd4bd2005/beau-travail",
+            "accessed": "2026-10-11",
+            "supports": "Лаван в актёрском составе и Галуп в описании."
+          },
+          {
+            "title": "BFI Sight and Sound: Beau Travail",
+            "url": "https://www.bfi.org.uk/sight-and-sound/features/beau-travail-1998-claire-denis-greatest-films-poll",
+            "accessed": "2026-10-11",
+            "supports": "Галуп сыгран Лаваном; роли Сюбора и Колена."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cinema-encore-010",
+      "text": "Кто сыграл сомнамбулу Чезаре в «Кабинете доктора Калигари»?",
+      "options": [
+        "Конрад Файдт",
+        "Вернер Краус",
+        "Фридрих Фехер",
+        "Эмиль Яннингс"
+      ],
+      "correct_answer": 0,
+      "explanation": "Сомнамбулу Чезаре сыграл Конрад Файдт.",
+      "difficulty_level": 7,
+      "tags": [
+        "domain:screen",
+        "medium:film",
+        "topic:actors",
+        "country:de",
+        "era:twentieth-century",
+        "knowledge_skill:direct-recall",
+        "person:conrad-veidt"
+      ],
+      "source_refs": [
+        "caligari-player",
+        "caligari-feature"
+      ],
+      "distractor_notes": [
+        "Верно: Файдт сыграл Чезаре.",
+        "Краус играл доктора Калигари.",
+        "Фехер играл Франциса.",
+        "Яннингс не исполнял эту роль."
+      ],
+      "article": {
+        "title_ru": "Конрад Файдт и Чезаре",
+        "body_ru": "Сомнамбулу Чезаре в «Кабинете доктора Калигари» сыграл Конрад Файдт. BFI Player перечисляет Файдта среди главных актёров, а историческая статья BFI прямо связывает Чезаре с его именем. В сюжете Калигари показывает сомнамбулу на ярмарке и использует его для преступлений. Файдт строит Чезаре через грим, вытянутую позу и почти бессловесное движение, а Краус воплощает властного Калигари.\n\nФильм Роберта Вине вышел в начале 1920-х и стал важной вехой немецкого экспрессионизма. BFI описывает ломаные декорации и сомнение между правдой и бредом как части его воздействия. Фехер в этой истории связан с Францисом, рассказчиком рамочной конструкции, тогда как Чезаре — зловещая фигура внутри его повествования. Чезаре остаётся одним из самых узнаваемых силуэтов раннего фильма ужасов и живым знаком тревожной эстетики экспрессионизма.",
+        "source_links": [
+          {
+            "title": "BFI Player: The Cabinet of Dr. Caligari",
+            "url": "https://player.bfi.org.uk/subscription/film/watch-the-cabinet-of-dr-caligari-1919-online",
+            "accessed": "2026-10-11",
+            "supports": "Актёрский состав и режиссёр."
+          },
+          {
+            "title": "BFI: 100 years of The Cabinet of Dr. Caligari",
+            "url": "https://www.bfi.org.uk/features/100-years-cabinet-dr-caligari",
+            "accessed": "2026-10-11",
+            "supports": "Чезаре сыгран Конрадом Файдтом."
+          }
+        ]
+      }
+    }
+  ]
+}

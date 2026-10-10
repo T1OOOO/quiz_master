@@ -1,0 +1,79 @@
+from pathlib import Path
+import hashlib,json,shutil,subprocess,sys
+r=Path('C:/ap/quiz_master');commit=sys.argv[1]
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=r,text=True).strip()==commit
+build='quiz-2026.10.11-encore-'+commit[:7];stage=r/'.run/culture_encore_20261011'/build;stage.mkdir()
+base=r/'.run/feedback_triage_20261006/releases/quiz-2026.10.10-articles-3ec0a33'
+for name in ['next','quizzes','metadata','chart','Dockerfile','nginx.conf','backup_sqlite.py','release-values.yaml','api']:
+ src=base/name;dst=stage/name
+ if src.is_dir():shutil.copytree(src,dst)
+ else:shutil.copyfile(src,dst)
+for topic,folder in [('cinema','Cinema/People'),('music','MusicPeople')]:
+ q=Path('quizzes')/folder/f'{topic}_people_20261011.json';(stage/q).parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(r/q,stage/q)
+ shutil.copytree(r/'next/content'/f'{topic}-people-20261011',stage/'next/content'/f'{topic}-people-20261011')
+ q=Path('quizzes')/folder/f'{topic}_encore_20261011.json';shutil.copyfile(r/q,stage/q)
+ shutil.copytree(r/'next/content'/f'{topic}-encore-20261011',stage/'next/content'/f'{topic}-encore-20261011')
+shutil.copytree(r/'next/apps/quiz_app/build/web',stage/'web')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+source_quizzes={p.relative_to(r/'quizzes').as_posix():sha(p) for p in (r/'quizzes').rglob('*.json')}
+staged_quizzes={p.relative_to(stage/'quizzes').as_posix():sha(p) for p in (stage/'quizzes').rglob('*.json')}
+assert staged_quizzes==source_quizzes, 'Release must preserve every quiz source byte'
+assert sha(stage/'api')=='26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01'
+articles=json.loads((stage/'web/assets/assets/study/question-articles.json').read_text())['articles'];assert len(articles)==202
+assert articles==json.loads((r/'next/apps/quiz_app/assets/study/question-articles.json').read_text())['articles']
+catalog=json.loads((stage/'web/assets/assets/catalog.json').read_text());assert len(catalog)==130 and sum(p['questions_count'] for p in catalog)==3998
+v=dict(buildId=build,commit=commit,local_build=True,packs=130,questions=3998,study_modules=6,study_questions=120,question_articles=202,api_sha256=sha(stage/'api'),main_dart_js_sha256=sha(stage/'web/main.dart.js'))
+(stage/'web/version.json').write_text(json.dumps(v)+'\n',encoding='utf-8')
+s=(base/'rehearse.py').read_text().replace('2026-10-10T00:00:00Z','2026-10-11T00:00:00Z')
+needle=" guest=req('/v1/guests'"
+assert s.count(needle)==1
+# Existing-row preservation and old API rollback remain; check both new public packs too.
+s=s.replace(needle," for qid in ['cinema-encore-20261011','music-encore-20261011']:req('/v1/catalog?quiz_id='+qid)\n"+needle)
+needle=" body={'request_id'"
+assert s.count(needle)==1
+play=""" for qid in ['cinema-encore-20261011','music-encore-20261011']:
+  bundle=json.loads((root/'next/content'/qid/'bundle.json').read_text())
+  live=req('/v1/catalog?quiz_id='+qid)
+  expected_questions=bundle['quiz']['questions']
+  for expected,actual in zip(expected_questions,live['quiz']['questions'],strict=True):
+   # Staging uses its own directory; compare semantics and assert the exact known URI difference.
+   expected_uri=expected['source']['uri']
+   assert expected_uri.startswith('/app/quizzes/')
+   assert actual['source']['uri']==str(root/'quizzes'/expected_uri.removeprefix('/app/quizzes/'))
+   actual['source']['uri']=expected_uri
+   actual['revision']=expected['revision']
+   assert actual==expected, 'Staging question content mismatch: '+qid
+  articles=json.loads((root/'web/assets/assets/study/question-articles.json').read_text())['articles']
+  matches=[ref for article in articles for ref in article['question_refs'] if ref['quiz_id']==qid]
+  assert len(matches)==10 and {ref['question_id']:ref['revision_sha256'] for ref in matches}=={q['question_id']:q['revision']['sha256'] for q in live['quiz']['questions']}
+  attempt=req('/v1/attempts',{'quiz_id':qid,'mode':'practice'},token,expect=201)
+  assert len(attempt['question_snapshots'])==10
+  for snap in attempt['question_snapshots']:
+   answer={'option_id':bundle['private_grading'][snap['question_id']]['correct_option_id']}
+   core={'attempt_id':attempt['attempt_id'],'participant_id':attempt['participant_id'],'question_id':snap['question_id'],'question_revision':snap['question_revision'],'answer':answer}
+   payload={'question_id':snap['question_id'],'question_revision':snap['question_revision'],'answer':answer,'idempotency_key':'encore-'+snap['question_id'],'payload_digest':hashlib.sha256(json.dumps(core,sort_keys=True,separators=(',',':')).encode()).hexdigest()}
+   req('/v1/attempts/'+attempt['attempt_id']+'/answers',payload,token)
+   feedback=req('/v1/attempts/'+attempt['attempt_id']+'/feedback/'+snap['question_id'],token=token)
+   assert feedback['correct'] is True
+  finish=req('/v1/attempts/'+attempt['attempt_id']+'/finish',{},token)
+  assert len(finish['history'])==10 and finish['server_score']>0
+"""
+bindings=""" articles=json.loads((root/'web/assets/assets/study/question-articles.json').read_text())['articles']
+ for qid in ['lotr','prep-ballet','prep-musicals','theme-harry-potter','theme-terminator']:
+  with urllib.request.urlopen('https://quiz.kotopedia.org/v1/catalog?quiz_id='+qid,timeout=15) as response:
+   public=json.load(response)
+  questions={q['question_id']:q['revision']['sha256'] for q in public['quiz']['questions']}
+  refs=[ref for article in articles for ref in article['question_refs'] if ref['quiz_id']==qid]
+  assert len(refs)=={'lotr':3,'prep-ballet':1,'prep-musicals':1,'theme-harry-potter':10,'theme-terminator':10}[qid]
+  assert all(questions.get(ref['question_id'])==ref['revision_sha256'] for ref in refs), 'Older article revision mismatch: '+qid
+"""
+s=s.replace(needle,bindings+play+needle)
+(stage/'rehearse.py').write_text(s,encoding='utf-8')
+s=(r/'docs/rewrite-agents/tasks/QUESTION_ARTICLES_20261006/release-cutover-20261010.sh').read_text()
+s=s.replace('quiz-2026.10.10-articles-3ec0a33',build).replace(r'2026\.10\.10-articles-3ec0a33',r'2026\.10\.11-encore-'+commit[:7]).replace('sha256:de8c71716add4f88aa678abb8a7b05e1a649b3c94f86befd3a406c94662af4e2','sha256:528ac3e7e9fe05db1a7d8aa5d93013f72451734541fcebd7cdf668cf63adada9').replace('f55d150a730f7cde44744fd25b5619f0b31119c137279e278e4b174f745560bd',v['main_dart_js_sha256'])
+s=s.replace('exec 9>', 'chmod 755 api\nexec 9>')
+(stage/'cutover.sh').write_text(s,encoding='utf-8',newline='\n')
+files=[p for p in stage.rglob('*') if p.is_file() and p.name!='checksums.txt']
+(stage/'checksums.txt').write_text('\n'.join(sha(p)+'  '+p.relative_to(stage).as_posix() for p in files)+'\n',encoding='utf-8')
+archive=stage.parent/(stage.name+'.tar.gz');subprocess.run(['tar','-czf',str(archive),'-C',str(stage),'.'],check=True)
+packet=dict(version=v,stage=str(stage),archive=str(archive),sha256=sha(archive));(r/'.run/culture_encore_20261011/package.json').write_text(json.dumps(packet,indent=2));print(json.dumps(packet,indent=2))
