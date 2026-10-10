@@ -1,6 +1,6 @@
 {
   "overall": "accept",
-  "packet_sha256": "DED6EBB88C6F720A29A130EAB00A94F8CEDCB2544A23F429128F26419583DC66",
+  "packet_sha256": "685FD95DA50B4C06DFCC1547A751B9FFD87A89C7B4E5D9BE05B2EB798B27E880",
   "answers": [
     {"question_id":"cinema-encore-001","index":2},
     {"question_id":"cinema-encore-002","index":0},
@@ -36,6 +36,7 @@
     "Candidate-first blind answers were recorded before reading the key. The final candidate file inspected had SHA-256 47C504B1385BD6BD6A0CF2C6BC040987C00E4D19680A9746B4F9F76436CFAE10; option reordering preserved answer text and the final indices above were independently remapped.",
     "Questions 006 and 007 share a film but test separate director and actor-role facts. The corrected answer-position spread is 0:3, 1:2, 2:2, 3:3.",
     "An exact-text scan of 128 JSON files under quizzes found no matching candidate question text. No semantic-similarity metric for the stated 3,978-item baseline was supplied, so broader duplicate assessment remains editorial rather than measured.",
+    "The packet hash changed solely because its line endings were normalized from CRLF to LF: current parsed JSON equals HEAD exactly and the content, answers, articles, and source links were not re-fetched or re-solved.",
     "This review covers draft content and sources only; it does not claim integration, import, publication, or runtime delivery."
   ]
 }

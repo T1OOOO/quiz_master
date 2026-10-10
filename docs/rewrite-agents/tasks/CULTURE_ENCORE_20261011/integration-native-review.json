@@ -1,0 +1,31 @@
+{
+  "overall": "accept",
+  "source_commit": "7f4e55aeee84526084efed8dccb8cd3c879275f9",
+  "checks": [
+    {
+      "subject": "quizzes/Cinema/Thematic80/harry_potter.json",
+      "result": "byte_identical_to_failed_baseline",
+      "sha256": "306C65E20DCA4BD35B4BC2FBB2041B6CD6D323DBC848D6D223958CACC61DA1BC"
+    },
+    {
+      "subject": "theme-hp-006 canonical and captured public DTO",
+      "result": "matched",
+      "option_index": 2,
+      "option_text": "На школьных призраков",
+      "correct_answer_index": 3,
+      "public_correct_option_id": "theme-hp-006-opt-4"
+    },
+    {
+      "subject": "study/drafts/cinema-encore-20261011.packet.json",
+      "result": "semantic_json_equal_to_HEAD_after_newline_normalization",
+      "sha256": "685FD95DA50B4C06DFCC1547A751B9FFD87A89C7B4E5D9BE05B2EB798B27E880",
+      "questions": 10,
+      "article_word_counts": [108, 104, 117, 125, 102, 117, 114, 121, 104, 116]
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "The prior failed-baseline archive was used for byte comparison because the earlier staging directory was intentionally moved to .run/culture_encore_20261011/failed-baseline-7f4e55a.",
+    "This is a local baseline and JSON-equivalence audit. It does not claim a fresh runtime fetch, integration commit, deployment, or publication."
+  ]
+}

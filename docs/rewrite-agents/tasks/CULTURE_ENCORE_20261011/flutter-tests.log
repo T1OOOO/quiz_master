@@ -1,0 +1,126 @@
+00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart
+00:00 +0: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: shuffled round snapshots may be a strict catalog subset
+00:00 +1: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: plain HTTP base URLs are restricted to loopback hosts
+00:00 +2: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: typed staged answers serialize to the exact public wire shape
+00:00 +3: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: valid empty catalog remains a displayable catalog state
+00:00 +4: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: security timestamps require complete UTC RFC3339 instants
+00:00 +5: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: attempt snapshots must exactly match catalog questions and option permutations
+00:00 +6: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: finish history must exactly match accepted receipts and revisions
+00:00 +7: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: reveals exactly match ordered finish history and expected quiz
+00:00 +8: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: client rejects duplicate wrong-quiz swapped and missing reveals
+00:00 +9: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: answer digest is canonical and does not contain server-only fields
+00:00 +10: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: guest bootstrap is closed and never adds bearer to the guest request
+00:00 +11: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: catalog is public and rejects a secret-bearing quiz response
+00:00 +12: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: difficulty selection is preserved in catalog and attempt requests
+00:00 +13: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: catalog preserves the server no_match error instead of invalid_response
+00:00 +14: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: authenticated attempt writes use pinned revision digest and bearer
+00:00 +15: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: single multi and text answers reach the wire with exact typed bodies
+00:00 +16: C:/ap/quiz_master/next/apps/quiz_app/test/api_repository_test.dart: finish reveals and history use bearer and validate alignment
+00:01 +17: loading C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart
+00:02 +17: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: API catalog accepts full-pack band counts with selected questions
+00:02 +18: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: API catalog rejects malformed band counts and private fields
+00:02 +19: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: empty band remains a typed non-retryable API failure
+00:02 +20: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: public questions accept exact difficulty and safe context metadata
+00:02 +21: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: public questions reject invalid difficulty mappings and private metadata
+00:02 +22: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: public context tags accept only approved safe namespaces
+00:02 +23: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: local study projection can construct an unranked question
+00:02 +24: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: discovery accepts valid optional difficulty counts and context search
+00:02 +25: C:/ap/quiz_master/next/apps/quiz_app/test/difficulty_test.dart: discovery rejects malformed difficulty counts and unsafe search terms
+00:02 +26: loading C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart
+00:04 +26: C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart: twelve category cards fit a desktop screen of height 568.0
+00:08 +27: C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart: twelve category cards fit a desktop screen of height 768.0
+00:09 +28: C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart: full catalog can be browsed without creating a guest
+00:12 +29: C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart: geography has its own category cover
+00:13 +30: C:/ap/quiz_master/next/apps/quiz_app/test/discovery_test.dart: folder deep link and breadcrumbs restore catalog navigation
+00:15 +31: loading C:/ap/quiz_master/next/apps/quiz_app/test/feedback_repository_test.dart
+00:16 +31: C:/ap/quiz_master/next/apps/quiz_app/test/feedback_repository_test.dart: report and quiz bootstrap share one in-flight participant
+00:16 +32: C:/ap/quiz_master/next/apps/quiz_app/test/feedback_repository_test.dart: feedback routes remove invite, query and fragment secrets
+00:17 +33: loading C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart
+00:18 +33: C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart: global feedback button is available on the library route
+00:24 +34: C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart: operator page has no feedback capture button
+00:25 +35: C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart: failed send keeps text and reuses request id on retry
+00:30 +36: loading C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart
+00:32 +36: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: public contract parser rejects secret and unknown fields
+00:32 +37: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: closed decoders reject nested secrets and non-string details
+00:32 +38: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: contract decoder enforces IDs revisions option uniqueness and bounds
+00:32 +39: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: reveal decoder accepts exactly one nonempty answer variant
+00:32 +40: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: typed error envelope and public shape decode closed values
+00:32 +41: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: single selection returns the stable option id
+00:35 +42: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: multiple selection returns stable ids
+00:35 +43: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: normalized text submits normalized input and reveal is explicit
+00:36 +44: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: normalized text submits from the visible submit control
+00:37 +45: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: submitting state suppresses text and choice callbacks
+00:37 +46: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: single-choice control activates its stable ID with Enter
+00:38 +47: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: multiple-choice control activates its stable ID with Space
+00:38 +48: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: cards fit a narrow phone and large text scale
+00:38 +49: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: long prompt and choices remain scrollable on a mobile viewport
+00:39 +50: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: submitting cards disable stable-id choices and retain semantics
+00:39 +51: C:/ap/quiz_master/next/apps/quiz_app/test/public_contract_and_cards_test.dart: six options fit a wide projector layout
+00:39 +52: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart
+00:41 +52: C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: articles match exact quiz revision, not only a reusable question ID
+00:41 +53: C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: drafts, duplicate articles and unsafe source schemes fail closed
+00:41 +54: C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: mobile reader pauses before opening and puts checked links at the end
+00:44 +55: C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: missing article does not suggest an unwritten article
+00:44 +56: loading C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart
+00:46 +56: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: real Quizipedia route returns to the library and drawer reopens it
+00:55 +57: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: polygon hit testing preserves holes and multipart features
+00:55 +58: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: scene conversion applies the inverse transform once
+00:55 +59: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: session randomizes unique targets, has four choices, and scores once
+00:55 +60: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: catalog validates references, unique IDs and numeric bounds
+00:56 +61: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: J2000 projection unwraps RA and uses one scale with RA increasing left
+00:56 +62: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: map challenge has a check step and no revealed correct answer
+00:57 +63: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: transformed production map respects polygon holes and ocean
+00:59 +64: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: explore selects countries outside the training set and search finds them
+01:02 +65: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: zoomed map badges keep a readable screen size
+01:02 +66: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: zoom buttons preserve the gesture scale limits
+01:03 +67: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: anatomy directions both reach the check step
+01:05 +68: C:/ap/quiz_master/next/apps/quiz_app/test/quizipedia_test.dart: narrow scaled home scrolls and missing photo blocks questions
+01:06 +69: loading C:/ap/quiz_master/next/apps/quiz_app/test/rounds_test.dart
+01:07 +69: C:/ap/quiz_master/next/apps/quiz_app/test/rounds_test.dart: round counts and slices retain every selected question once
+01:07 +70: loading C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart
+01:09 +70: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: study card uses its own illustrated cover
+01:14 +71: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: feedback blocks background answers and focuses pause
+01:17 +72: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: backgrounding pauses the correct-answer timer
+01:17 +73: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: catalog refresh pauses feedback until manual continuation
+01:19 +74: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: bundled library loads six real chapters and 120 sourced questions
+01:19 +75: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: twenty answers finish once with exact score and retry resets state
+01:27 +76: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: study deep link has article back navigation and shared home menu
+01:31 +77: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: article prose uses dark ink on parchment surfaces
+01:31 +78: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: correct choice uses stable option ID and advances after one second
+01:32 +79: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: pause reveals source-backed explanation and prevents timed advance
+01:33 +80: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: wrong answer shows centered explanation and waits for manual continue
+01:33 +81: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: repeated taps cannot score the same question twice
+01:34 +82: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: article shows contents, readable quiz title, sources and handles missing image
+01:35 +83: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: article keeps paper text and tables readable in dark mode
+01:35 +84: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: article keeps its Markdown table on desktop widths
+01:35 +85: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: mobile table cards preserve escaped pipes and backslashes
+01:36 +86: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: mobile leaves fenced and formatted tables to Markdown
+01:37 +87: C:/ap/quiz_master/next/apps/quiz_app/test/study_test.dart: library cards avoid overflow on narrow screens at large text scale
+01:37 +88: loading C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart
+01:40 +88: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: browse from a failed selected quiz preserves its difficulty band
+01:48 +89: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: six phone answers are visible and tappable at Size(390.0, 736.0)
+01:50 +90: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: six phone answers are visible and tappable at Size(360.0, 640.0)
+01:51 +91: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: long phone answers at large text scale remain reachable by scrolling
+01:52 +92: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: library categories fit Size(1262.0, 576.0)
+01:53 +93: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: library categories fit Size(390.0, 640.0)
+01:53 +94: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: library scrolls by dragging with a mouse
+01:55 +95: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: correct overlay advances in two seconds without shifting question
+01:56 +96: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: flag media keeps four choices stable at Size(390.0, 640.0)
+01:56 +97: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: flag media keeps four choices stable at Size(1262.0, 576.0)
+01:56 +98: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: correct feedback waits two seconds, has no continue and resumes
+01:57 +99: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: practice tap checks once, feedback retry does not resubmit
+01:59 +100: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: quiz controls fit a short phone viewport
+02:00 +101: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: decoded flag media survives the shuffled quiz page and has stable failure UI
+02:00 +102: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: catalog selection uses a shareable quiz URL
+02:01 +103: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: selected quiz opens directly without asking for a name
+02:01 +104: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: real 25-question API journey finishes once and preserves result navigation
+02:16 +105: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: catalog empty and retryable errors are localized in EN and RU
+02:17 +106: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: history error retry resolves to localized empty state
+02:18 +107: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: shows the localized quiz catalog home
+02:18 +108: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: switches catalog labels between English and Russian
+02:19 +109: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: question stems render Markdown without literal delimiters
+02:19 +110: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: question stems reject inline Markdown images
+02:19 +111: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: offers light dark and system theme controls
+02:19 +112: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: gallery route and history survive locale and theme changes
+02:21 +113: C:/ap/quiz_master/next/apps/quiz_app/test/widget_test.dart: deep links show join admission boundary and back returns home
+02:22 +114: All tests passed!

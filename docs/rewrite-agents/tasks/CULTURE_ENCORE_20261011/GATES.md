@@ -15,5 +15,8 @@
   in the full suite. No production UI or API code changed in this batch.
 - Foreign-file hash snapshot: all 69 preserved. Temporary producer removed.
 
+Archived gate logs normalize line endings and trailing whitespace only;
+`gate-log-manifest.json` records their raw and archived hashes.
+
 Release copy/backup/rollback, actual production bindings and browser evidence
 will be recorded after cutover. Physical Android was not checked in this batch.

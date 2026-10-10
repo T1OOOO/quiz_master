@@ -1,17 +1,17 @@
 {
   "event": "result",
   "result": {
-    "conversation_id": "cf96304d-5129-4513-8a0e-b891618f8275",
+    "conversation_id": "9f57e076-b66b-4183-b940-1fa4492be3a6",
     "status": "SUCCESS",
-    "response": "{\n  \"overall\": \"accept\",\n  \"packet_sha256\": \"ded6ebb88c6f720a29a130eab00a94f8cedcb2544a23f429128f26419583dc66\",\n  \"answers\": [\n    {\n      \"question_id\": \"cinema-encore-001\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-encore-002\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-encore-003\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-004\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-encore-005\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-encore-006\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-007\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-encore-008\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-encore-009\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-010\",\n      \"index\": 0\n    }\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Independent verification performed blind without accessing external network resources or independently computing cryptographic hash digests.\",\n    \"Source verification relies strictly on the provided packet documentation and native reviewer evidence records.\",\n    \"This evaluation assesses editorial quality, question clarity, distractor plausibility, and factual consistency; it does not grant deployment or release approval.\"\n  ]\n}\n",
-    "duration_seconds": 18.6297871,
+    "response": "{\n  \"overall\": \"accept\",\n  \"packet_sha256\": \"685fd95da50b4c06dfcc1547a751b9ffd87a89c7b4e5d9be05b2eb798b27e880\",\n  \"answers\": [\n    {\n      \"question_id\": \"cinema-encore-001\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-encore-002\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-encore-003\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-004\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-encore-005\",\n      \"index\": 1\n    },\n    {\n      \"question_id\": \"cinema-encore-006\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-007\",\n      \"index\": 0\n    },\n    {\n      \"question_id\": \"cinema-encore-008\",\n      \"index\": 2\n    },\n    {\n      \"question_id\": \"cinema-encore-009\",\n      \"index\": 3\n    },\n    {\n      \"question_id\": \"cinema-encore-010\",\n      \"index\": 0\n    }\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Solved and reviewed purely from packet content, internal cinematic knowledge, and supplied native reviewer evidence without opening external URLs or executing independent tools.\",\n    \"Packet SHA-256 is transcribed verbatim from the prompt header without independent cryptographic computation.\",\n    \"Cross-packet duplication checks are limited to internal review of the supplied 10 questions; global question repository overlap was not dynamically queried.\"\n  ]\n}\n",
+    "duration_seconds": 20.4036508,
     "num_turns": 1,
     "usage": {
-      "input_tokens": 33656,
-      "output_tokens": 2514,
-      "thinking_tokens": 2054,
+      "input_tokens": 33702,
+      "output_tokens": 3195,
+      "thinking_tokens": 2721,
       "cache_read_tokens": 0,
-      "total_tokens": 36170
+      "total_tokens": 36897
     }
   }
 }
