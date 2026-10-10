@@ -1,0 +1,81 @@
+{
+  "acceptance": "Actual source-backed independent ACCEPT/REVISE only under GRANTED; otherwise truthful NO_VERDICT_RESOURCE_BLOCKED.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\quizzes\\Cinema\\Thematic80\\harry_potter.json",
+    "C:\\ap\\quiz_master\\next\\content\\theme-harry-potter\\bundle.json",
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\harry-potter-rest-20261007.json",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\QUESTION_ARTICLES_20261006\\HP006_REPAIR_20261010.json"
+  ],
+  "assignee": "session-b8f2320742d4469ea4f0a045f9fd72d6",
+  "author": "session-828b0735e7ee4cfbb59e021475f4bcee",
+  "body": "Read-only fresh retry after 5afcd31 repair. Previous review collected NO evidence because RAM queue. Reserve actual shared-read lease before reading. Check HP006 in legacy quiz and canonical bundle, then exact article in harry-potter-rest batch, and repair evidence. Open both official cited sources. Verify sole correct answer human transformation, hippogriff distractor validity, article factual accuracy and sources, binding c22cc23b9960d3e423df217dddc1d0b55a68d24f56fc1dd5ef9ae0367b71b5dc and article hash10d2beed85c7640e16d42dd89c52a84ed6add19d8cb932217b69abf9483edc0c. Submit structured exact hashes, actual source URLs opened, verdict and limitations. No edits, tests, builds, children or release approval. Bounded queue wait <=30 seconds; release if blocked, no false verdict.",
+  "created_at": 1791610855.2097952,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "content",
+  "id": "task-42fea9ad7b334657aff765272a87c34c",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "article": {
+      "binding": {
+        "correct_answer": "На людей",
+        "correct_option_id": "theme-hp-006-opt-4",
+        "question_id": "theme-hp-006",
+        "revision_sha256": "c22cc23b9960d3e423df217dddc1d0b55a68d24f56fc1dd5ef9ae0367b71b5dc"
+      },
+      "canonical_sha256": "10d2beed85c7640e16d42dd89c52a84ed6add19d8cb932217b69abf9483edc0c",
+      "checked_sources": [
+        {
+          "accessed_on": "2026-10-10",
+          "evidence": "Official Harry Potter fact file opened: lines 66, 91, 97 and 114 say another human, human transformations only, and a bit of the target.",
+          "url": "https://www.harrypotter.com/fact-file/plants-and-potions/polyjuice-potion"
+        },
+        {
+          "accessed_on": "2026-10-10",
+          "evidence": "J.K. Rowling archive opened: lines 26–28 state another person/body part, temporary duration, and no change of species.",
+          "url": "https://www.harrypotter.com/writing-by-jk-rowling/polyjuice-potion"
+        }
+      ],
+      "factual_check": "ACCEPT: official fact file says Polyjuice creates the physical appearance of another human and is for human transformations only; Rowling archive says it can change age, sex and race but not species, needs a body part (usually hair), and lasts temporarily. The article’s human-only conclusion and hippogriff distractor are unique and supported.",
+      "status": "draft",
+      "target_id": "quiz:theme-harry-potter:theme-hp-006",
+      "title_ru": "Оборотное зелье: ограничение на вид",
+      "word_count": 157
+    },
+    "evidence": [
+      {
+        "detail": "GRANTED exact shared-read lease lease-b4a03a60b73b4192915e431e1bf61cc0 generation 1; released after review.",
+        "kind": "lease"
+      },
+      {
+        "detail": "Recomputed full article canonical SHA-256 (ensure_ascii=false, sort_keys=true, separators comma-colon): 10d2beed85c7640e16d42dd89c52a84ed6add19d8cb932217b69abf9483edc0c.",
+        "kind": "canonical_hash"
+      },
+      {
+        "detail": "157 whitespace-delimited words, within the 150–220 contract.",
+        "kind": "word_count"
+      },
+      {
+        "detail": "Legacy HP006 and canonical bundle share stem/options. Hippogriffs are option index 2 / option-id theme-hp-006-opt-3; only people are index 3 / theme-hp-006-opt-4; private grading selects opt-4. Article ref revision is c22cc23b9960d3e423df217dddc1d0b55a68d24f56fc1dd5ef9ae0367b71b5dc, matching bundle.",
+        "kind": "binding"
+      },
+      {
+        "detail": "All ten current legacy questions match canonical stems and option text; all ten current private-grading option ids are present. A pre-repair snapshot was not in scope, so this confirms present parity rather than independently proving historical unchangedness.",
+        "kind": "current_parity"
+      }
+    ],
+    "limitation": "No production edits or validation/build commands run. This native review is preparation evidence, not different-provider release approval.",
+    "packet_label": "eri_hya_gru_ind_review:hp006-recheck-5afcd31",
+    "verdict": "ACCEPT"
+  },
+  "root_task_id": "task-42fea9ad7b334657aff765272a87c34c",
+  "run_id": "run-90499dff7c3f43a0bc76d212110d65d5",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+  "title": "HP006 repaired article independent fact recheck 0540",
+  "version": 3
+}
