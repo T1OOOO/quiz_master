@@ -1,0 +1,63 @@
+{
+  "changed_ids": [
+    "q-ha1-p1-7",
+    "q-ha1-p1-15",
+    "q-ha1-p1-17"
+  ],
+  "correct_keys": {
+    "q-ha1-p1-15": "q-ha1-p1-15-opt-2",
+    "q-ha1-p1-17": "q-ha1-p1-17-opt-3",
+    "q-ha1-p1-7": "q-ha1-p1-7-opt-1"
+  },
+  "unchanged_revisions": 22,
+  "source_sha256": "9e7e5c72c4713ea55fab70e5c5e6f688d1be66b3ccb22ab11180de08fdc7dbbd",
+  "article_refs": [],
+  "articles": 206,
+  "checks": [
+    {
+      "command": "quizctl import (25 questions)",
+      "exit_code": 0
+    },
+    {
+      "command": "quizctl validate draft",
+      "exit_code": 0
+    },
+    {
+      "command": "quizctl build",
+      "exit_code": 0
+    },
+    {
+      "command": "quizctl validate bundle",
+      "exit_code": 0
+    },
+    {
+      "command": "quizctl audit --in quizzes (131 ready/4008 questions/0 blocked)",
+      "exit_code": 0
+    },
+    {
+      "command": "quizctl catalog (matches current client asset)",
+      "exit_code": 0
+    },
+    {
+      "command": "go test -p=1 ./next/server/...",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s study/question_articles -p test_*.py (4 tests)",
+      "exit_code": 0
+    },
+    {
+      "command": "python study/question_articles/coverage.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python .run/phobias_repair_20261011/verify_foreign.py (69 hashes)",
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "No new browser/web-build/staging/rollback/publication verification yet",
+    "Remaining nine factual questions held",
+    "Coverage report has 4198 missing targets; no full-library fact certification"
+  ]
+}

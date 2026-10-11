@@ -1,0 +1,23 @@
+{
+  "provider": "claude",
+  "model": "sonnet",
+  "task_id": "task-ffd249d5c72d4fbf85f70a8c5ab696f0",
+  "run_id": "run-fda56c591bcf4329b9842bd72d501e4c",
+  "hub_state": "ACCEPTED",
+  "reviewer_provider": "codex",
+  "draft_sha256": "9e7e5c72c4713ea55fab70e5c5e6f688d1be66b3ccb22ab11180de08fdc7dbbd",
+  "source_actually_opened": "https://catalog.afi.com/Film/58544-HOME-ALONE",
+  "candidate_first": true,
+  "verdicts": {
+    "q_ha1_p1_7": "accept",
+    "q_ha1_p1_15": "accept",
+    "q_ha1_p1_17": "accept"
+  },
+  "limits": [
+    "Single AFI synopsis source; no frame-accurate film certification",
+    "Remaining nine factual items unverified",
+    "Editorial difficulty estimate, not empirical calibration",
+    "No publication approval"
+  ],
+  "integration": "Exact reviewed source draft applied; other 22 question objects unchanged"
+}
