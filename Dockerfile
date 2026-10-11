@@ -10,6 +10,8 @@ COPY flutter/pubspec.yaml flutter/pubspec.lock* ./
 RUN flutter pub get
 
 COPY flutter ./
+# *.g.dart / *.freezed.dart are gitignored, so generate them before compiling.
+RUN dart run build_runner build --delete-conflicting-outputs
 RUN flutter build web --release \
     --dart-define=SERVER_BASE_URL=${SERVER_BASE_URL}
 
