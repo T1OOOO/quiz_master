@@ -1,0 +1,21 @@
+{
+  "verdict": "accept",
+  "packet_sha256": "d1ca0be6f612d79bdc90486110a77a7d30d9a508753ed6e0be06999666f14efc",
+  "findings": [
+    "Archive/API/main.dart.js sha256 recomputed directly from staged files and match package.json exactly (archive 6b707776...24e0f, api 26e1657f...2ad53, main.dart.js 12349a6a...dad53b).",
+    "Baseline image guard: cutover.sh's pre-flight kubectl image check targets sha256:a3b97115..., identical to package.json baseline_image; consistent self-reference, though live cluster state itself is unverifiable read-only.",
+    "Source parity: independently counted questions in all 5 touched source JSON files (10+10+10+20+9=59), matching runtime-bundles.json and expected-staging-revisions.json totals — not just internal consistency of the generated files.",
+    "59 strict staging revisions are asserted before normalization: in stage rehearse.py, the exact-match check against expected-staging-revisions.json (line 62) runs strictly before the lines that overwrite actual['source']['uri'] and actual['revision'] to the pre-build form (lines 63-64) ahead of the final actual==expected comparison. Ordering is correct for all 5 bundles/59 questions.",
+    "Answer integrity: independently loaded quizzes/Psychology/phobias_nature.json and confirmed all 9 blind answers quoted in editorial_review.blind_answers equal the file's actual correct_answer text, with 4 options each — matches the packet's claim without re-deriving editorial source review (which is explicitly out of scope here).",
+    "Historical row preservation: rehearse.py's migration check requires old_rows[t] <= current for every table and equal cardinality except attempt_bundles (only additive growth allowed there, capped to +131 via after[3]-before[3]==131) — correctly enforces no destructive writes to existing rows.",
+    "Fresh backup + restore: backup_sqlite.py performs a live sqlite3 .backup from the real PVC path, then backs up again into a second restore-proof file and checks pragma integrity_check on both; remote-prepare.txt's backup timestamp (20261011T055401Z) is same-day, consistent with a fresh run rather than reused evidence.",
+    "Old API rollback: rehearse.py's final block starts the prior build's (quiz-2026.10.06-feedback-e0f89cf) binary against the migrated DB and checks catalog/history/attempt reads still succeed; remote-prepare.txt shows 'old_api_rollback: ok'.",
+    "Root-vs-independent distinction: package.json's root_prepare and remote-prepare.txt are the same content — a single SSH-executed `cutover.sh prepare` run as root on racknerd-f0269d5. That is the release engineer's own execution, not a second independently-run prepare. This review itself is a read-only hash/logic audit of that run's artifacts, not a second live execution."
+  ],
+  "remaining_gates": [
+    "A second, independently *executed* `cutover.sh prepare` run (by a different operator/session, as the DUPLICATE_REPAIR_20261011 precedent required) has not been produced for this phobias task — only one root-run prepare exists.",
+    "`cutover.sh publish`, the k3s rollout, and the production readiness/pod-restart checks have not run yet.",
+    "Public and mobile-browser verification against the live site (version.json, main.dart.js hash, catalog/attempt flow) is mandatory after publish and has not happened for this build."
+  ],
+  "limitations": "Review was strictly read-only Python/Bash hashing and static code inspection of the named files; no SSH, builds, deploys, or browser actions were performed or attempted. Live cluster/image state, production DB contents, and anything only observable post-publish could not be checked. Editorial correctness of the 9 phobias source facts was not re-derived — the packet's prior editorial_review is relied on as supplied, per instructions."
+}

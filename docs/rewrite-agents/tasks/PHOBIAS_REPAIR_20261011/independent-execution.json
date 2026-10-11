@@ -1,0 +1,41 @@
+{
+  "status": "PASS_PREPARE_ONLY",
+  "executed_by": "Codex/GPT-6 independent staging gate",
+  "mode": "prepare",
+  "production_changed": false,
+  "command": "ssh guarded hostname/archive check -> existing quiz-2026.10.11-phobias-1537ff5 -> bash cutover.sh prepare",
+  "direct_execution": {
+    "started_utc": "2026-10-11T05:59:33.633838+00:00",
+    "finished_utc": "2026-10-11T06:00:29.439475+00:00",
+    "returncode": 0,
+    "stdout_path": "independent-direct.txt",
+    "stdout_sha256": "f24aa5eb0afb988619285ee4514997ed6b1894ea6a36b3dba8c1c5f14f473157",
+    "result_path": "independent-result.json"
+  },
+  "freshness": {
+    "new_backup": "/opt/quiz-master/backups/quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055939Z.sqlite",
+    "new_values_file": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055939Z-values.yaml",
+    "prior_root_prepare_timestamp": "20261011T055401Z",
+    "distinct_from_prior": true
+  },
+  "package": {
+    "build": "quiz-2026.10.11-phobias-1537ff5",
+    "package_archive_sha256": "6b70777681511e8c27c5d9956240eb11a2679f99127a49c755638fa295224e0f",
+    "local_archive_sha256": "6b70777681511e8c27c5d9956240eb11a2679f99127a49c755638fa295224e0f",
+    "package_json_sha256": "013d36770bd19b612f1509953e15a0c3e68c2f886c03e4dd1d50d840e50612b7"
+  },
+  "actual_output_evidence": {
+    "hostname_and_archive_guard": "SSH script completed with exit 0 after hostname assertion and sha256sum archive check; direct output says archive OK.",
+    "artifact_checks": "api and web/main.dart.js both printed OK; container printed expected API and main.dart.js digests.",
+    "backup_restore": "Fresh 055939Z backup printed integrity ok and restore ok.",
+    "rehearsal": "migration ok; original rows preserved, integrity, feedback lifecycle and old API rollback all printed ok.",
+    "container": "Docker build, nginx syntax test, OCI save/import and image digest output completed before PREPARED.",
+    "deployment_dry_run": "Helm lint completed with 0 failed charts; Kubernetes resources were server dry-run configured, followed by PREPARED mode=prepare.",
+    "final_marker": "PREPARED build=quiz-2026.10.11-phobias-1537ff5 values=quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055939Z-values.yaml mode=prepare"
+  },
+  "limitations": [
+    "The cutover script did not print an individual line for each of the packet's 59 strict revision/answer/finish checks; successful direct exit is evidence that its configured prepare path completed.",
+    "Warnings about pre-existing kubectl last-applied annotations and a recommended Helm chart icon were non-fatal; Helm reported zero failed charts.",
+    "This was isolated staging prepare only. It did not publish, cut over production, or perform public browser verification."
+  ]
+}

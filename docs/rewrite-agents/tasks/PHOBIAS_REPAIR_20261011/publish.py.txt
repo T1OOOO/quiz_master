@@ -1,0 +1,25 @@
+"""Publish the already transferred exact package after independent gates."""
+from pathlib import Path
+import hashlib,json,re,subprocess
+r=Path('C:/ap/quiz_master');d=r/'.run/phobias_repair_20261011';m=json.loads((d/'package.json').read_text());review=json.loads((d/'release-review.json').read_text())
+assert review['verdict']=='accept'
+execution=json.loads((d/'execution-review.json').read_text())
+assert execution['verdict']=='accept' and execution['hub_task_state']=='ACCEPTED'
+direct=json.loads((d/'independent-result.json').read_text())
+assert direct['returncode']==0 and direct['build']==m['version']['buildId'] and direct['package_sha256']==m['sha256']
+assert direct['direct_stdout_sha256']==hashlib.sha256((d/'independent-direct.txt').read_bytes()).hexdigest()
+assert 'mode=prepare' in (d/'independent-direct.txt').read_text() and 'cutover-20261011T055401Z-values.yaml' not in (d/'independent-direct.txt').read_text()
+assert review['packet_sha256']==hashlib.sha256((d/'release-review-packet.json').read_bytes()).hexdigest()
+assert hashlib.sha256(Path(m['archive']).read_bytes()).hexdigest()==m['sha256']
+assert '"old_api_rollback": "ok"' in (d/'remote-prepare.txt').read_text()
+assert 'mode=prepare' in (d/'remote-prepare.txt').read_text()
+build=m['version']['buildId'];assert re.fullmatch(r'quiz-2026\.10\.11-phobias-[a-f0-9]{7}',build)
+script=f'''set -euo pipefail
+test "$(hostname)" = racknerd-f0269d5
+cd /opt/quiz-master/releases
+echo '{m['sha256']}  {build}.tar.gz' | sha256sum -c -
+cd {build}
+bash cutover.sh publish 2>&1 | tee publish.log
+'''
+res=subprocess.run(['ssh','-i','C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519','root@192.3.164.184',script],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+(d/'publish.txt').write_text(res.stdout);print(res.stdout);assert res.returncode==0

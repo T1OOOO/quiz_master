@@ -1,0 +1,66 @@
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+import json
+import subprocess
+
+root = Path(r"C:/ap/quiz_master")
+run_dir = root / ".run" / "phobias_repair_20261011"
+package = json.loads((run_dir / "package.json").read_text(encoding="utf-8"))
+build = package["version"]["buildId"]
+expected_sha = package["sha256"]
+archive = Path(package["archive"])
+actual_sha = sha256(archive.read_bytes()).hexdigest()
+if actual_sha != expected_sha:
+    raise RuntimeError(f"local archive SHA-256 mismatch: {actual_sha}")
+
+remote_script = f'''set -euo pipefail
+test "$(hostname)" = "racknerd-f0269d5"
+cd /opt/quiz-master/releases
+printf '%s  %s.tar.gz\\n' '{expected_sha}' '{build}' | sha256sum -c -
+test -d '{build}'
+cd '{build}'
+bash -n cutover.sh
+python3 -m py_compile rehearse.py
+bash cutover.sh prepare
+'''
+
+stdout_path = run_dir / "independent-direct.txt"
+started = datetime.now(timezone.utc)
+with stdout_path.open("w", encoding="utf-8", newline="\n") as output:
+    output.write(f"STARTED_UTC={started.isoformat()}\n")
+    output.flush()
+    completed = subprocess.run(
+        [
+            "ssh",
+            "-i",
+            "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+            "root@192.3.164.184",
+            remote_script,
+        ],
+        stdout=output,
+        stderr=subprocess.STDOUT,
+        text=True,
+        check=False,
+    )
+finished = datetime.now(timezone.utc)
+stdout_sha = sha256(stdout_path.read_bytes()).hexdigest()
+(run_dir / "independent-result.json").write_text(
+    json.dumps(
+        {
+            "mode": "prepare",
+            "started_utc": started.isoformat(),
+            "finished_utc": finished.isoformat(),
+            "returncode": completed.returncode,
+            "build": build,
+            "package_sha256": expected_sha,
+            "local_archive_sha256": actual_sha,
+            "direct_stdout": stdout_path.name,
+            "direct_stdout_sha256": stdout_sha,
+        },
+        indent=2,
+    )
+    + "\n",
+    encoding="utf-8",
+)
+raise SystemExit(completed.returncode)

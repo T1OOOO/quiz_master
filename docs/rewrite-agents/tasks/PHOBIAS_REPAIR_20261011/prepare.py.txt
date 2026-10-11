@@ -1,0 +1,48 @@
+from pathlib import Path
+import ast,hashlib,json,shutil,subprocess
+r=Path('C:/ap/quiz_master');w=r/'.run/phobias_repair_20261011'
+commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=r,text=True).strip();build='quiz-2026.10.11-phobias-'+commit[:7]
+base=r/'.run/planet_release_20261011/quiz-2026.10.11-planets-d228c9e';stage=w/build;stage.mkdir()
+for name in ['next','quizzes','metadata','chart','Dockerfile','nginx.conf','backup_sqlite.py','release-values.yaml','api']:
+ src=base/name;dst=stage/name
+ if src.is_dir():shutil.copytree(src,dst)
+ else:shutil.copyfile(src,dst)
+for rel in ['Philias/philias_lifestyle_part_1.json','Psychology/phobias_nature.json']:shutil.copyfile(r/'quizzes'/rel,stage/'quizzes'/rel)
+shutil.copytree(r/'next/apps/quiz_app/build/web',stage/'web')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert {p.relative_to(r/'quizzes').as_posix():sha(p) for p in (r/'quizzes').rglob('*.json')}=={p.relative_to(stage/'quizzes').as_posix():sha(p) for p in (stage/'quizzes').rglob('*.json')}
+assert sha(stage/'api')=='26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01'
+changed=subprocess.check_output(['git','diff','--name-only','d228c9e',commit,'--','next/server'],cwd=r,text=True).splitlines();assert changed and all(p.endswith('_test.go') for p in changed)
+subprocess.run([str(w/'fixtures.exe'),str(r),str(w),build],check=True)
+bundles=json.loads((w/'runtime-bundles.json').read_text())
+assert set(bundles)=={'cinema-encore-20261011','music-encore-20261011','planet-paradoxes-20261010','philias-lifestyle-part-1','phobias-nature'}
+assert sum(len(b['quiz']['questions']) for b in bundles.values())==59
+assert all(q['source']['uri'].startswith('/app/quizzes/') for b in bundles.values() for q in b['quiz']['questions']), 'Runtime fixture source maps must remain immutable'
+expected=json.loads((w/'expected-staging-revisions.json').read_text());assert sum(len(v) for v in expected.values())==59
+assert all(q['revision']!=expected[qid][q['question_id']] for qid,b in bundles.items() for q in b['quiz']['questions'])
+for qid,bundle in bundles.items():
+ dest=stage/'next/content'/qid;dest.mkdir(exist_ok=True)
+ (dest/'bundle.json').write_text(json.dumps(bundle,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+shutil.copyfile(w/'expected-staging-revisions.json',stage/'expected-staging-revisions.json')
+catalog=json.loads((stage/'web/assets/assets/catalog.json').read_text());assert len(catalog)==131 and sum(p['questions_count'] for p in catalog)==4008
+assert len(json.loads((stage/'web/assets/assets/study/question-articles.json').read_text())['articles'])==206
+assert build.encode() in (stage/'web/main.dart.js').read_bytes()
+v=dict(buildId=build,commit=commit,local_build=True,packs=131,questions=4008,study_modules=6,study_questions=120,question_articles=206,api_sha256=sha(stage/'api'),main_dart_js_sha256=sha(stage/'web/main.dart.js'))
+(stage/'web/version.json').write_text(json.dumps(v)+'\n')
+s=(base/'rehearse.py').read_text()
+s=s.replace("['cinema-encore-20261011','music-encore-20261011','planet-paradoxes-20261010']","['cinema-encore-20261011','music-encore-20261011','planet-paradoxes-20261010','philias-lifestyle-part-1','phobias-nature']")
+needle="   actual['source']['uri']=expected_uri";assert s.count(needle)==1
+s=s.replace(needle,"   assert actual['revision']==json.loads((root/'expected-staging-revisions.json').read_text())[qid][actual['question_id']], 'Strict staging revision mismatch'\n"+needle)
+s=s.replace(" for qid in ['cinema-encore-20261011'", " assert after[3]-before[3]==131, 'Unexpected bundle-cache growth'\n for qid in ['cinema-encore-20261011'",1)
+s=s.replace("assert len(matches)==10 and {ref", "assert len(matches)==(0 if qid in ['philias-lifestyle-part-1','phobias-nature'] else 10)\n  if matches:assert {ref")
+s=s.replace("assert len(attempt['question_snapshots'])==10", "assert len(attempt['question_snapshots'])==len(expected_questions)")
+s=s.replace("assert len(finish['history'])==10", "assert len(finish['history'])==len(expected_questions)")
+s=s.replace("try:req('/v1/catalog?quiz_id=lotr')", "try:\n req('/v1/catalog?quiz_id=lotr')\n assert len(req('/v1/history',token=token))==5\n assert req('/v1/history/'+attempt['attempt_id'],token=token)==finish")
+ast.parse(s);(stage/'rehearse.py').write_text(s,newline='\n')
+s=(base/'cutover.sh').read_text().replace('quiz-2026.10.11-planets-d228c9e',build).replace('planets-d228c9e','phobias-'+commit[:7]).replace('sha256:3e9402747c700298eb756b927c7f028894ed5d3ed7efb9a83ca48b0f82a35636','sha256:a3b9711e51e0711ded28bce268dab250d1bf8fe7ceff8a308939a271fc02db83').replace('d695fc62b6ade31e603e4a03347e2902552a7474b415a1de5c748500ac52be60',v['main_dart_js_sha256'])
+assert 'planets-d228c9e' not in s and s.count(v['main_dart_js_sha256'])==3
+(stage/'cutover.sh').write_text(s,newline='\n')
+(stage/'checksums.txt').write_text('\n'.join(sha(p)+'  '+p.relative_to(stage).as_posix() for p in sorted(stage.rglob('*')) if p.is_file() and p.name!='checksums.txt')+'\n')
+archive=w/(build+'.tar.gz');subprocess.run(['tar','-czf',str(archive),'-C',str(stage),'.'],check=True)
+m=dict(version=v,stage=str(stage),archive=str(archive),sha256=sha(archive),baseline_image='docker.io/library/quiz-master@sha256:a3b9711e51e0711ded28bce268dab250d1bf8fe7ceff8a308939a271fc02db83')
+(w/'package.json').write_text(json.dumps(m,indent=2));print(json.dumps(m,indent=2))

@@ -7,5 +7,11 @@
   "options_per_question": 4,
   "root_assertions": "All9exactreviewed draft/keys, candidate/source metadata unchanged, original retained. Actual all131/4008 source corpus normalized label/key regression passed. Historical immutable attempts remain handled by unchanged runtime; staging will verify existing rows/oldAPI.",
   "limits": "No clinical advice, no newminiarticles, fullfactbacklog/Android untouched.",
-  "full_go_tests": "Actual go test ./... PASS: quizctl15.261s,sqlite71.905s; unaffected packages cached. No runtime code changes."
+  "full_go_tests": "Actual go test ./... PASS: quizctl15.261s,sqlite71.905s; unaffected packages cached. No runtime code changes.",
+  "web_release": {
+    "command": "flutter build web --release --no-pub --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org --dart-define=QM_BUILD_ID=quiz-2026.10.11-phobias-1537ff5",
+    "exit_code": 0,
+    "compile_seconds": 130.4,
+    "warning": "Existing missing Cupertino font-family warning; actual mobile screenshots checked separately."
+  }
 }

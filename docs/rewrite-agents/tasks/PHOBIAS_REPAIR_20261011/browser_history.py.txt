@@ -1,0 +1,11 @@
+from pathlib import Path
+import subprocess,json
+w=Path('.run/phobias_repair_20261011');cli=['node','C:/Users/Alexey_Matvienko/AppData/Roaming/npm/node_modules/agent-browser/bin/agent-browser.js','--session','quiz-phobias-live']
+def run(*args):return subprocess.check_output(cli+list(args),text=True,encoding='utf-8')
+run('scroll','up','650','--selector','#flt-semantic-node-128');top=run('snapshot','-c')
+run('scroll','down','650','--selector','#flt-semantic-node-128');bottom=run('snapshot','-c')
+questions=json.loads(Path('quizzes/Psychology/phobias_nature.json').read_text(encoding='utf-8'))['questions']
+assert all(q['explanation'] in top+bottom for q in questions)
+errors=run('errors');assert not errors.strip(),errors
+(w/'browser-explanations.json').write_text(json.dumps({'matched_exact_source_explanations':9,'top':top,'bottom':bottom,'browser_errors':errors,'scope':'Published390x844 actual scrollable result; all nine complete source explanations observed.'},ensure_ascii=False,indent=2),encoding='utf-8')
+print('All9 published result explanations exactly match reviewed source; browsererrors empty')
