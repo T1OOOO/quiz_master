@@ -1,0 +1,40 @@
+{
+  "verdict": "accept",
+  "packet_sha256": "e4e2c65e786256d5bd8f2c469a48703268fae2c9374af4a6c5aad235640d7105",
+  "findings": [
+    "Archive sha256 db36f7cb6df508f8f8231e492f72481ebc7c87ba29cac5a5db5e694250b8c221 recomputed now and matches package.json/independent-result.json; stage api sha256 26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01 and web/main.dart.js sha256 ec05a736342f15213cad5afdc4aa5e8cd0c3a757ca793c25de8e733a4e812ea2 unchanged after the disk-pressure cleanup; independent-direct.txt sha256 fd6d4d221baba6bcfe9a634d464e28af9f52afc8eecd0d213ead9bac8024c4c6 and independent-failed-direct.txt sha256 411eb77b6d0b8fcadff6fca10b0a4974af1ddcdfeda82aa067530c8fd4e4de5e both still match their *-result.json records.",
+    "Corrected ordering in stage rehearse.py (patched by prepare.py lines 34-35 into the loop at lines 60-65): line 62 'assert actual[revision]==expected-staging-revisions.json[...]' (strict staging match against the LIVE API's already-normalized bundle) executes BEFORE line 63 'actual[source][uri]=expected_uri' and line 64 'actual[revision]=expected[revision]', which only rewrite the local comparison dict afterward for the final line 65 'assert actual==expected' structural check. My prior write-up reversed this ordering; the strict revision assert is first, the URI/revision overwrite-for-comparison is second.",
+    "094710Z run is the authoritative native pass: independent-direct.txt/independent-result.json show migration ok, counts [95,95,663,366,14578,984], old_api_rollback ok, through 'PREPARED build=... EXIT=0' with EXIT=0 observed directly in the transcript.",
+    "094609Z run is a distinct failed attempt (rehearse probe bind 127.0.0.1:18088 Address already in use) ending EXIT=1, correctly isolated in independent-failed-direct.txt/independent-failed-result.json.",
+    "remote-prepare.txt (the earlier, separate PREPARED run) ends at 'PREPARED build=... mode=prepare' with no EXIT= line captured at all -- exit status unknown for that run, distinct from both the 094609Z fail and the 094710Z exit0 pass; this matches root's own exec/write_stdin-observed exit0 claim being attached to a different (094710Z) invocation than the unknown-exit one.",
+    "claude-fallback-runtime.json (7029 bytes, non-empty) now records a real official headless CLI invocation: session_id 02925038-c5b2-46e8-a927-2cf3b2816187, modelUsage.claude-sonnet-5 with real token/cost accounting (cost_usd 0.307, 21 turns) -- confirms an actual claude.exe headless run occurred, contradicting my prior claim that no headless CLI was invoked.",
+    "However, the 'result' field of that recorded headless run is character-for-character identical to this session's own prior interactive turn output. That means this artifact documents that a headless CLI process executed and billed real usage, but it is not evidence of an independent/separate reviewer process reaching its own conclusion -- it reproduces this same review context. It should not be counted as additional corroboration beyond this session's own analysis.",
+    "No host_hub connection was available in this review (WinError2 persists); this remains a static/file-based review of on-disk evidence, now additionally corroborated by one real but non-independent headless CLI execution record -- not by a separate Hub-recorded reviewer identity.",
+    "All131-source sha256 parity, the 84-question strict-staging-revision set across 6 packs, the 6 grading/finish/history attempts, backup+restore with integrity_check, old-row preservation plus old-API rollback, and the baseline b16fc180.../PVC uid 7fc2428f-.../DEPLOY.lock gates all check out in prepare.py, release-fixtures.go.txt, rehearse.py and cutover.sh exactly as previously found; only the revision-check ordering phrasing above has been corrected.",
+    "release-review-packet.json's editorial_review hub_state 'ACCEPTED' remains unverifiable from this session (no Hub connection); treated as an unconfirmed upstream claim, not validated by this review.",
+    "The reported production DiskPressure incident (node not ready since ~10:00:11Z) and root's cleanup of obsolete rehearsal SQLite copies/old web copies under DEPLOY.lock, leaving 17.7GB free, are outside this review's scope per instruction; no files this review depends on (archive, package.json, stage api/web, independent-*.txt/json) were affected -- hashes above are unchanged."
+  ],
+  "remaining_gates": [
+    "Node/public health must be independently confirmed ready (DiskPressure cleared) before any new deployment is attempted; this review does not certify that recovery.",
+    "Live publication (helm upgrade --atomic, public version.json/main.dart.js checks) has not been executed or evidenced; cutover.sh's publish branch remains untested.",
+    "Mobile/browser verification of the actually-published new build is still required; the only screenshot on file predates publishing and is not new-release verification.",
+    "Hub-recorded independent review/acceptance of this release is still outstanding since host_hub is unavailable in this session -- no Hub ACCEPTED claim is made or should be inferred from this review.",
+    "Remaining nine Home Alone factual questions outside the three corrected IDs remain unverified per the packet's own stated limits."
+  ],
+  "limitations": [
+    "This review performed no writes, builds, SSH, browser, or deploy actions; all verification was recomputation/inspection of existing on-disk evidence in C:/ap/quiz_master/.run/home_alone_repair_20261011.",
+    "host_hub is unavailable (WinError2); this is a file-based review, now corroborated by one real headless CLI execution record that reproduced this same session's own prior output rather than an independent reviewer run.",
+    "The DiskPressure incident, its cleanup, and node/public recovery were not verified by this review and are explicitly out of scope per instruction; no new deployment approval is given or implied here."
+  ],
+  "root_disposition": {
+    "static_package_checks": "accepted after root rechecked revision assertion precedes local URI/revision overwrite",
+    "review_process": "Official standalone Claude CLI; resumed same reviewer, not two independent reviews",
+    "unaccepted_claims": [
+      "Reviewer incorrectly treats own previous result appearing in CLI output as lack of independence from root writer",
+      "Reviewer incident chronology/Ready paraphrase is inaccurate and outside its scope",
+      "Root remote-prepare exit0 was actually observed in exec tool; absence of EXIT marker alone does not undo observed process status"
+    ],
+    "hub_review_recording": "unavailable WinError2; no task ACCEPTED fabricated",
+    "publication": "held until production recovers and actual Hub/release gates finish"
+  }
+}

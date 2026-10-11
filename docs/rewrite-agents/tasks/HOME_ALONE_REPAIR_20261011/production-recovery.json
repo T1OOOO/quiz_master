@@ -1,0 +1,30 @@
+{
+  "issue": "quiz_master-0iq",
+  "observed_utc": "2026-10-11T20:58Z",
+  "production_unavailable": true,
+  "deployment_ready": "0/1",
+  "baseline_image": "b16fc180a449998e5b15297e33125654ba13ec3df67b6d25a1cc20f47957cbe8",
+  "cause": "DiskPressure True since2026-10-11T11:00:11Z; own Quiz pod FailedScheduling untolerated disk-pressure taint",
+  "recovery_actions": [
+    "Exclusive Quiz DEPLOY.lock; removed26 obsolete rehearsal copies only",
+    "Removed8 old unpacked web copies only after verifying retained release archive contains web/main.dart.js"
+  ],
+  "directly_freed_bytes": 2149265408,
+  "preserved": [
+    "Production SQLite/PVC",
+    "Every /opt/quiz-master/backups file",
+    "Release archives",
+    "Oct11 current/pending releases",
+    "Retained rollback images",
+    "Other projects resources/rules/processes"
+  ],
+  "latest_kubelet_available_bytes": 16547962880,
+  "kubelet_evictionHard": {
+    "nodefs.available": "5%",
+    "imagefs.available": "5%"
+  },
+  "kubelet_minimum_reclaim": "10%",
+  "kubelet_pressure_transition": "5m",
+  "status": "Await actual node/pod/public recovery; no taint override, global restart or new release publication",
+  "host_hub": "hub_help callable; hub_connect and team join fail WinError2. Shared broker not modified."
+}
