@@ -1,0 +1,21 @@
+{
+  "changed_files": [
+    {
+      "path": "quizzes/Philias/philias_lifestyle_part_1.json",
+      "questions": 20,
+      "sha256": "d791dde830e2b1afe995504119d6b25bd7f10f48d5cb76721f0f781ba176db52",
+      "exact_frozen_proposal_parity": true
+    },
+    {
+      "path": "quizzes/Psychology/phobias_nature.json",
+      "questions": 9,
+      "sha256": "d4960b66bdcf4a17e19ec41e00fda3cbec44674d96f8d1cc4969e082c6337153",
+      "exact_frozen_proposal_parity": true
+    }
+  ],
+  "articles": 206,
+  "changed_question_article_refs": [],
+  "red": "TestSourceCorpusHasDistinctAnswerLabels failed all3 duplicates before source changes",
+  "green": "Same focused regression passed after data changes; full go test ./... completed, including sqlite44.480s and quizctl11.533s; go vet ./... exit0. Existing package results cached where source unaffected.",
+  "scope": "Mechanical answer-label deduplication, not factual philia verification."
+}

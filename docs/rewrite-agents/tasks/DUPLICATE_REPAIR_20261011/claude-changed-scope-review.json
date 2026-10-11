@@ -1,0 +1,22 @@
+{
+  "result": "**Hub session:** session-4f3a4cf549fc45b5a2410da8ae8f5fd1, team-2ed452959d1b4bdfa7ec7c94fb8584ce, activity COMPLETED.\n\n**Verdict:** ACCEPT task-073aa94ba2b54d49815d5559ce5955d9 (state now ACCEPTED).\n\n**Findings:** All 3 proposals match current files exactly (philias_100_54, philias_100_59 drop only the non-keyed duplicate, correct_answer stays 1; phobias_part_8_20 drops the non-keyed duplicate with correct_answer shifting 2→1), all other fields untouched. Corrected native-review.json's ambiguous \"removed original index 2\" wording — actual zero-based removal was index 1; the keyed instance at old index 2 is what's retained and shifted to new index 1. `answer_labels_test.go` is meaningful corpus-wide coverage, not a toy check.\n\n**Risks:** Read-only review — I didn't execute go test/vet/build myself, relying on ROOT's self-reported RED→GREEN/full-go/vet-pass evidence; no factual endorsement of philia/phobia terminology was made or implied.",
+  "session_id": "b2c02801-70ec-42b1-b22d-0ef32dfc60d0",
+  "duration_ms": 72308,
+  "modelUsage": {
+    "claude-sonnet-5": {
+      "inputTokens": 14,
+      "outputTokens": 5506,
+      "cacheReadInputTokens": 479667,
+      "cacheCreationInputTokens": 45818,
+      "webSearchRequests": 0,
+      "costUSD": 0.3342934000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 1641,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "is_error": false
+}
