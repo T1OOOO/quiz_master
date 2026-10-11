@@ -1,0 +1,43 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "task-8b9a47ab95994d8fa054b60b3756decd",
+  "run_id": "run-5367ca2700084847882e6a42d801713f",
+  "build": "quiz-2026.10.11-home-alone-e0d13f4",
+  "commit": "e0d13f497717dc4fb2e242ef07f813699602df5e",
+  "package_sha256": "db36f7cb6df508f8f8231e492f72481ebc7c87ba29cac5a5db5e694250b8c221",
+  "direct_stdout_file": ".run/home_alone_repair_20261011/independent-v2-direct.txt",
+  "direct_stdout_sha256": "702a3d29a1a62c6a067a91cdceebfd86f353b2be87ea50a8fa3106d3fc92c757",
+  "actual_returncode": 0,
+  "observed_exit": "SSH_ACTUAL_EXIT_CODE=0",
+  "tool_session": 85708,
+  "observed_at_local": "2026-10-12T00:14:57+03:00",
+  "remote_prepare_timestamp": "2026-10-11T21:13:59Z",
+  "host": "racknerd-f0269d5",
+  "node_disk_pressure": "False",
+  "deployment_ready": "1/1",
+  "healthy_running_pods_2of2": 1,
+  "public_previous_build": "quiz-2026.10.11-phobias-1537ff5",
+  "baseline_image": "docker.io/library/quiz-master@sha256:b16fc180a449998e5b15297e33125654ba13ec3df67b6d25a1cc20f47957cbe8",
+  "prepared_image": "sha256:3914d4cc34fd3d0826669d798435099671a63c61b13e9cad08dd9f05b7508a34",
+  "remote_archive_path": "/opt/quiz-master/releases/quiz-2026.10.11-home-alone-e0d13f4.tar.gz",
+  "remote_archive_sha256": "db36f7cb6df508f8f8231e492f72481ebc7c87ba29cac5a5db5e694250b8c221",
+  "remote_archive_size": 47357303,
+  "remote_archive_check": "sha256sum OK",
+  "remote_archive_check_exit": 0,
+  "checks": {
+    "backup_restore_integrity": "ok",
+    "migration": "ok",
+    "original_rows_preserved": true,
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "chart_lint": "passed",
+    "server_dry_run": "passed",
+    "mode": "prepare"
+  },
+  "scope": "No publication, Helm upgrade, remote source edits, PVC edits, feedback edits, child processes, or other resources were used.",
+  "remaining_risks": [
+    "The immutable archive was independently verified at the sibling release path with sha256sum OK, size 47357303, and actual SSH exit 0.",
+    "The cluster retains stale non-running pod records alongside one healthy 2/2 Running pod; deployment status is 1/1 and DiskPressure is False.",
+    "Prepare success does not authorize publication or live new-build browser/mobile acceptance."
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "review_label": "culture-new-factcheck-codex-20261012",
+  "status": "DONE_WITH_CONCERNS",
+  "reviewed_at": "2026-10-12",
+  "scope": "Independent fact, option, source, miniarticle, semantic-duplicate and batch-variety review of the frozen twelve-item culture draft. No writer file was changed.",
+  "workspace": "C:\\ap\\quiz_master",
+  "source_revision": "61fedfc710347522820e35a4bb51ce9c8b763e29",
+  "input_sha256": {
+    "writer.json": "AEAC144EDF72BA97C70B9CE086BCE87FDA3358FD662D935C20176C848139A9BF",
+    "writer-sources.md": "1F4EF5C911308EE08662226F97DB45666599756D659F355349F43D80BAC79C8A"
+  },
+  "candidate_first_limit": "I first inspected the JSON shape, but an erroneous preview selected article rather than stem and exposed the explanatory text before the later stem-plus-options solve. The later candidate answers are recorded, but are not claimed as an unanchored blind solve.",
+  "batch_verdict": "HOLD",
+  "batch_findings": [
+    "All 12 stems use the same recall mechanic: identify a named award winner from a title, category and year. Six are Oscar acting-winner questions and six are Grammy general-field-winner questions. This does not deliver the requested broad mix of films, music, actors and singers.",
+    "Questions 04 and 05 share the 53rd Oscars; 09 and 12 share the 41st Grammys; 10 and 11 share the 65th Grammys. Their articles explicitly supply neighboring answers or repeat the same ceremony/category contrast, reducing the value of a batch player sees together.",
+    "Every index is represented three times, but that mechanical balance caused the factual key failure in 03. Keep the balance only after assigning the true answer; swapping Forest Whitaker and Leonardo DiCaprio in options B/C preserves the 3/3/3/3 distribution.",
+    "09 and 11 visibly give away the answer because the requested album titles contain the artist's name: The Miseducation of Lauryn Hill and Harry's House.",
+    "The articles meet the stated 120-141 range when words are whitespace-delimited: 135, 127, 123, 127, 134, 120, 129, 130, 141, 129, 136, 135. The repeated closing paragraph is formulaic and consumes educational space."
+  ],
+  "corpus_duplicate_screen": {
+    "method": "Targeted native text search of every JSON file under quizzes/ for the twelve film, album, song and performer knowledge points; source hit context was then inspected.",
+    "result": "No exact existing question repeats a proposed winner-to-work-to-award pairing. The released prep_film_directors_1.json asks who directed Raging Bull, so 05 is adjacent in film/topic but is not a semantic duplicate of its acting-award claim."
+  },
+  "key_distribution": {
+    "as_submitted": { "A": 3, "B": 3, "C": 3, "D": 3 },
+    "integrity": "Invalid because 03 points at Leonardo DiCaprio. Swap its B/C options or set the true answer after placing Forest Whitaker at C."
+  },
+  "items": [
+    {
+      "id": "culture-new-01",
+      "candidate_answer": "A — Джейми Фокс",
+      "verdict": "REWORK",
+      "fact_check": "Correct: the official 77th Academy Awards results name Jamie Foxx winner for Actor in a Leading Role for Ray; Don Cheadle, Leonardo DiCaprio and Clint Eastwood are the other listed nominees. The Academy PDF also documents Foxx's same-year supporting nomination for Collateral.",
+      "options": "All four options are category peers, so the distractors are fair and no length or parenthetical cue appears.",
+      "article_check": "Its main claims are supported, but the supplied memorable-moments link is ceremony context rather than a distinct evidence source for the extra double-nomination teaching claim.",
+      "required_correction": "Replace the second supplied URL with the Academy's primary PDF https://awardsdatabase.oscars.org/Help/Statistics?file=Act-Nom2CatsSameYr.pdf, which explicitly lists 2004 (77th) Jamie Foxx — Ray leading-role winner and Collateral supporting-role nomination. Retain the full 2005 ceremony page as the result source."
+    },
+    {
+      "id": "culture-new-02",
+      "candidate_answer": "B — Бен Кингсли",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 55th Academy Awards page lists Ben Kingsley as Actor in a Leading Role winner for Gandhi and Richard Attenborough as Directing winner. Its film listing confirms eight wins from eleven nominations.",
+      "options": "Attenborough is a fair role-confusion distractor; the other three do not create a second defensible answer.",
+      "article_check": "The details checked match the Academy record. Hold is for the batch-level award-recall repetition, not a factual defect.",
+      "required_correction": "Replace with a non-award cinema/actor question if this batch keeps another Oscar item."
+    },
+    {
+      "id": "culture-new-03",
+      "candidate_answer": "B — Форест Уитакер",
+      "submitted_key": "C — Леонардо ДиКаприо",
+      "verdict": "REWORK",
+      "fact_check": "The submitted key is false. The official 79th Academy Awards page lists Forest Whitaker as winner for The Last King of Scotland and Leonardo DiCaprio as a nominee. The article correctly says Whitaker, so key, stem/options and article disagree.",
+      "options": "Forest Whitaker is currently present and uniquely correct; the remaining names are real nominees, so no new distractor is needed.",
+      "article_check": "Its Best Picture versus Best Actor distinction is factually sound but repeats the batch mechanic.",
+      "required_correction": "Swap options B and C while retaining correct_index 2, or set correct_index 1. The swap preserves the intended balanced key distribution."
+    },
+    {
+      "id": "culture-new-04",
+      "candidate_answer": "D — Сисси Спейсек",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 53rd Academy Awards results name Spacek Actress in a Leading Role winner for Coal Miner's Daughter. The Academy's memorable-moments page identifies her as Loretta Lynn; it also identifies De Niro and Steenburgen's different real-person roles.",
+      "options": "No alternate answer is defensible. Steenburgen is a relevant same-ceremony distractor; the option formatting is even.",
+      "article_check": "Supported, but it gives De Niro/Jake LaMotta information that overlaps 05.",
+      "required_correction": "Keep only if recast around performance/role rather than another winner-identification stem; otherwise replace for variety."
+    },
+    {
+      "id": "culture-new-05",
+      "candidate_answer": "A — Роберт Де Ниро",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 53rd Academy Awards page names De Niro leading-actor winner for Raging Bull; Pesci was supporting-actor nominee and Duvall a different leading-actor nominee. The film entry confirms two wins including De Niro and editor Thelma Schoonmaker.",
+      "options": "Pesci is a strong role-category distractor; Duvall is a same-category nominee; Newman is incorrect. No form cue appears.",
+      "article_check": "Factually sound. It is topic-adjacent, but not a semantic duplicate, of the existing released Raging Bull director question.",
+      "required_correction": "Replace or rewrite as non-award film/acting knowledge because 04 already uses the same 1981 ceremony and award-recall mechanic."
+    },
+    {
+      "id": "culture-new-06",
+      "candidate_answer": "B — Эдриен Броуди",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 75th Academy Awards page names Adrien Brody leading-actor winner for The Pianist, with Cage, Day-Lewis and Nicholson among the nominees; its film record shows the three stated wins.",
+      "options": "All distractors are actual same-category nominees, which is strong option design and avoids giveaways.",
+      "article_check": "The role/category claims are supported. Hold reflects the sixth Oscar-winner recall item, not an isolated factual fault.",
+      "required_correction": "Replace with a distinct film/actor concept if the batch retains two or fewer award questions."
+    },
+    {
+      "id": "culture-new-07",
+      "candidate_answer": "C — Билли Айлиш",
+      "verdict": "ACCEPT",
+      "fact_check": "Correct: Recording Academy's 2020 report states Billie Eilish won Record Of The Year for bad guy and lists Lizzo, H.E.R. and Ariana Grande among the other nominees. Its Song Of The Year page calls that a songwriter award and credits Eilish and Finneas.",
+      "options": "All distractors are actual Record Of The Year nominees; no answer-length or parenthetical cue appears.",
+      "article_check": "The Record versus Song distinction is clear and supported. This is the strongest award item to retain as the batch's single category-literacy example.",
+      "required_correction": "None for the isolated item; do not treat it as approval of the entire batch."
+    },
+    {
+      "id": "culture-new-08",
+      "candidate_answer": "D — Daft Punk",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 2014 Album Of The Year page names Daft Punk and Random Access Memories. The official artist profile separately lists the same ceremony's Get Lucky Record Of The Year with Pharrell Williams and Nile Rodgers.",
+      "options": "The three alternative electronic acts are unambiguously wrong, though their connection to this particular award is weaker than a same-category nominee set.",
+      "article_check": "The credits and category distinction are supported. It remains another award-winner lookup rather than a varied music question.",
+      "required_correction": "Use its credited collaboration or production context for a non-award question, or replace it."
+    },
+    {
+      "id": "culture-new-09",
+      "candidate_answer": "A — Лорин Хилл",
+      "verdict": "REWORK",
+      "fact_check": "Correct: the 41st Grammy results list The Miseducation Of Lauryn Hill as Album Of The Year and the official Rewind calls Hill the first rap artist to win that award, with five Grammys that night.",
+      "options": "The stem contains 'Lauryn Hill' in the album title and option A repeats it, making the answer a direct textual giveaway. Shania Twain and Madonna were album-category nominees; Celine Dion won Record Of The Year, so the fact logic is otherwise sound.",
+      "article_check": "Supported, but it also reveals 12's Celine Dion answer and repeats 1999 ceremony material.",
+      "required_correction": "Replace this stem with a non-self-named work or a different cultural concept; do not merely reshuffle options."
+    },
+    {
+      "id": "culture-new-10",
+      "candidate_answer": "B — Lizzo",
+      "verdict": "HOLD",
+      "fact_check": "Correct: the 65th Grammy results list Lizzo — About Damn Time as Record Of The Year winner; Adele, Beyoncé and Harry Styles are listed with other Record nominees. Lizzo's official profile also lists the record win and Pop Solo nomination.",
+      "options": "All options are plausible same-ceremony names and do not disclose the answer by form.",
+      "article_check": "Supported, but it names Harry's House/Styles and is paired with 11 from the same ceremony, causing direct batch repetition.",
+      "required_correction": "Retain at most one of 10/11; replace the other with non-award music knowledge."
+    },
+    {
+      "id": "culture-new-11",
+      "candidate_answer": "C — Гарри Стайлс",
+      "verdict": "REWORK",
+      "fact_check": "Correct: both the 65th Grammy results and the Album Of The Year 2023 page name Harry Styles for Harry's House. Bad Bunny, Beyoncé and Kendrick Lamar are album-category nominees.",
+      "options": "The title Harry's House gives away Harry Styles before cultural knowledge is needed. The other options are fair nominees, but cannot repair the stem-level clue.",
+      "article_check": "Supported but duplicates 10's exact ceremony and its Record-versus-Album teaching pattern.",
+      "required_correction": "Replace rather than reorder."
+    },
+    {
+      "id": "culture-new-12",
+      "candidate_answer": "D — Селин Дион",
+      "verdict": "REWORK",
+      "fact_check": "Correct: the 1999 Record Of The Year page names Celine Dion for My Heart Will Go On, while the 41st Grammy results name James Horner and Will Jennings for Song Of The Year. The general winners page also lists all three 1999 general-field results.",
+      "options": "No alternative is defensible, although two distractors are not same-category nominees; Shania Twain would be a more meaningful alternative if this item were retained.",
+      "article_check": "The supplied general genre URL is broader than necessary. The article's last sentence invokes Lauryn Hill although she is not an option, and 09 has already supplied this answer through the same ceremony.",
+      "required_correction": "Replace the general URL with https://www.grammy.com/awards/41st-annual-grammy-awards/; revise the final sentence or replace the item as part of the 1999-ceremony de-duplication."
+    }
+  ],
+  "actual_sources_opened": [
+    "https://www.oscars.org/oscars/ceremonies/2005",
+    "https://awardsdatabase.oscars.org/Help/Statistics?file=Act-Nom2CatsSameYr.pdf",
+    "https://www.oscars.org/oscars/ceremonies/1983/A--E",
+    "https://www.oscars.org/oscars/ceremonies/2007",
+    "https://www.oscars.org/oscars/ceremonies/1981",
+    "https://www.oscars.org/oscars/ceremonies/1981/memorable-moments",
+    "https://www.oscars.org/oscars/ceremonies/2003",
+    "https://www.grammy.com/news/billie-eilish-wins-record-year-bad-guy-2020-grammys/",
+    "https://www.grammy.com/awards/categories/song-of-the-year/2020/",
+    "https://www.grammy.com/awards/categories/album-of-the-year/2014/",
+    "https://www.grammy.com/artists/daft-punk/8207/",
+    "https://www.grammy.com/awards/41st-annual-grammy-awards/",
+    "https://www.grammy.com/news/lauryn-hill-album-year-win-miseducation-grammy-rewind-video-speech/",
+    "https://www.grammy.com/awards/65th-annual-grammy-awards-2022/",
+    "https://www.grammy.com/artists/lizzo/251879/",
+    "https://www.grammy.com/awards/categories/album-of-the-year/2023/",
+    "https://www.grammy.com/awards/categories/record-of-the-year/1999/",
+    "https://www.grammy.com/music-genre/general/"
+  ],
+  "counts": { "accept": 1, "rework": 4, "hold": 7 },
+  "publication_status": "Not published, imported or accepted. This review is evidence for the next editorial revision and an independent cross-provider review still decides acceptance."
+}

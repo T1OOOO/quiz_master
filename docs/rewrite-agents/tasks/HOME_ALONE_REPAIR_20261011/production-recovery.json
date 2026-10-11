@@ -1,8 +1,8 @@
 {
   "issue": "quiz_master-0iq",
   "observed_utc": "2026-10-11T20:58Z",
-  "production_unavailable": true,
-  "deployment_ready": "0/1",
+  "production_unavailable": false,
+  "deployment_ready": "1/1",
   "baseline_image": "b16fc180a449998e5b15297e33125654ba13ec3df67b6d25a1cc20f47957cbe8",
   "cause": "DiskPressure True since2026-10-11T11:00:11Z; own Quiz pod FailedScheduling untolerated disk-pressure taint",
   "recovery_actions": [
@@ -25,6 +25,12 @@
   },
   "kubelet_minimum_reclaim": "10%",
   "kubelet_pressure_transition": "5m",
-  "status": "Await actual node/pod/public recovery; no taint override, global restart or new release publication",
-  "host_hub": "hub_help callable; hub_connect and team join fail WinError2. Shared broker not modified."
+  "status": "Recovered; reviewed HomeAlone release e0d13f4 published, live browser verification in progress",
+  "host_hub": "Reconnected successfully as actual session-3b969565efcc49e5a427bb8d51f90fc7; old managed reviewer NEEDS_ATTENTION due broker restart, official CLI fallback now records cross-provider review",
+  "recovered_utc": "2026-10-11T21:06:52Z",
+  "containers_ready": "2/2",
+  "public_https": "Actual server curl returned exact previous phobias-1537ff5 version",
+  "published_build": "quiz-2026.10.11-home-alone-e0d13f4",
+  "helm_revision": 34,
+  "release_image": "sha256:5d41e68671f2ab8d3d01fe34a4a4b670f212d47000834c33913f2cc0e310861a"
 }

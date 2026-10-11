@@ -1,0 +1,15 @@
+{
+  "verdict": "accept",
+  "hub_task_state": "ACCEPTED",
+  "task_id": "task-8b9a47ab95994d8fa054b60b3756decd",
+  "direct_sha256": "702a3d29a1a62c6a067a91cdceebfd86f353b2be87ea50a8fa3106d3fc92c757",
+  "result_sha256": "6ec9b2cf47ed365f39d613ba385fa63ec6f18d97d50b9de2e0930f02f8c0bfc7",
+  "archive_sha256": "db36f7cb6df508f8f8231e492f72481ebc7c87ba29cac5a5db5e694250b8c221",
+  "observed_process_exit": "tool_session=85708, exec/write_stdin-polled actual_returncode=0 (observed_exit='SSH_ACTUAL_EXIT_CODE=0'), per the task's own specified capture method -- not inferred from the PREPARED stdout marker alone. independent-v2-direct.txt's own transcript additionally shows REMOTE_ARCHIVE_CHECK_EXIT=0 for the sibling-archive correction block and ends at 'PREPARED build=quiz-2026.10.11-home-alone-e0d13f4 ... mode=prepare'.",
+  "remaining_gates": [
+    "Live publication (helm upgrade, public cutover) remains unexecuted; the public endpoint still serves the prior build quiz-2026.10.11-phobias-1537ff5 -- this review does not certify publication.",
+    "No live new-release mobile/browser verification exists.",
+    "Stale non-running pod records persist alongside the one healthy 2/2 Running pod; deployment is 1/1 and DiskPressure is False, but ongoing node hygiene is not certified by this review.",
+    "Remaining nine Home Alone facts, the full 4008-question bank, and Android remain out of scope and unverified."
+  ]
+}
