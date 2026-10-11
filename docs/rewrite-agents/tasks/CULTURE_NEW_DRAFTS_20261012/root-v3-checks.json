@@ -1,0 +1,28 @@
+{
+  "verdict": "HOLD",
+  "input_sha256": "1193e9b850603d690936fcb08c708c2da447450fde7436a650c27a6ac3c3a5dd",
+  "actual_checks": {
+    "json_parse": "PASS",
+    "12_items": "PASS",
+    "expected_answer_assertions": "PASS",
+    "balanced3_each": "FAIL",
+    "key_counts": {
+      "0": 4,
+      "3": 2,
+      "2": 2,
+      "1": 4
+    },
+    "v3-09_four_distinct_options": "FAIL; options0 and2 same composer/performer pair reversed"
+  },
+  "editorial_findings": [
+    "v3-02 article states Brody lead role, answering v3-06.",
+    "Four cinema director-recall stems; limited mechanic variety.",
+    "Articles still discuss how to select answer and distractors instead of expanding topic.",
+    "New DancingQueen claim not demonstrated by detailed primary source evidence in one-paragraph source log."
+  ],
+  "limitations": [
+    "Not a complete v3 fact audit.",
+    "Native independent v3 report pending.",
+    "No canonical integration or publication."
+  ]
+}

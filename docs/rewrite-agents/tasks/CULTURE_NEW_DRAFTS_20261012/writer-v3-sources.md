@@ -1,0 +1,2 @@
+# v3 source evidence
+All cited Academy and Recording Academy URLs were opened directly. Per-item articles link the two supporting pages. Claims map: 01 Gandhi roles; 02–06 Academy film/credit records; 07 bad guy songwriting; 08 Random Access Memories guest credit; 09 composer/lyricist versus performer; 10–12 artist/work mappings. JSON asserts options[correct_index] equals expected_answer_text. No v1/v2 file modified.
