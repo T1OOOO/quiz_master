@@ -1,0 +1,83 @@
+{
+  "label": "culture-new-factcheck-codex-20261012-v3",
+  "status": "HOLD",
+  "review_type": "finite independent blocking structural and editorial review",
+  "reviewed_at": "2026-10-12",
+  "scope": {
+    "input": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/writer-v3.json",
+    "input_sha256": "1193E9B850603D690936FCB08C708C2DA447450FDE7436A650C27A6AC3C3A5DD",
+    "sources_manifest": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/writer-v3-sources.md",
+    "sources_manifest_sha256": "91C3AAF655B033DCBADDDA9208EE1BF5CE3BCC00950B2BFCCBD25E70AC552D9D",
+    "writer_files_modified": false,
+    "publication_or_acceptance_claimed": false
+  },
+  "verdict": {
+    "status": "HOLD",
+    "blocking_reasons": [
+      "v3-09 has semantically duplicate distractors: options 0 and 2 both normalize to James Horner + Celine Dion, merely reversed.",
+      "The answer-index distribution is A:4, B:4, C:2, D:2, not the required three at each position.",
+      "v3-02's article gives 'Adrien Brody — lead-role performer', which is the exact answer to later v3-06.",
+      "The two cited v3-11 Grammy pages contain ABBA's 2023 'Don't Shut Me Down' entry and no 'Dancing Queen'; they do not support the new Dancing Queen/ABBA claim."
+    ],
+    "editorial_reason": "The revision removed the old generic source-card closing, but several mini-articles now chiefly explain why named options are distractors (especially 02, 06, 08, 10, 11, 12) instead of adding a distinct sourced culture fact. Eight prose bodies are below the requested 60-word lower target when source URLs are excluded."
+  },
+  "machine_checks": {
+    "question_count": 12,
+    "key_text_mismatches": [],
+    "key_indices_zero_based": [0, 3, 2, 1, 0, 1, 0, 1, 3, 1, 0, 2],
+    "key_distribution_A_B_C_D": [4, 4, 2, 2],
+    "two_urls_each": true,
+    "v3_09_duplicate_option_pair": {
+      "option_0": "Селин Дион и Джеймс Хорнер",
+      "option_2": "Джеймс Хорнер и Селин Дион",
+      "normalized": "джеймс хорнер + селин дион"
+    },
+    "spoiler": {
+      "earlier_article": "v3-02",
+      "later_question": "v3-06",
+      "spoiled_answer": "Эдриен Броуди"
+    },
+    "prose_body_words_excluding_source_lines": {
+      "v3-01": 56,
+      "v3-02": 57,
+      "v3-03": 50,
+      "v3-04": 56,
+      "v3-05": 61,
+      "v3-06": 54,
+      "v3-07": 55,
+      "v3-08": 54,
+      "v3-09": 63,
+      "v3-10": 60,
+      "v3-11": 57,
+      "v3-12": 60
+    }
+  },
+  "source_check_performed": {
+    "item": "v3-11",
+    "urls_opened": [
+      "https://www.grammy.com/awards/65th-annual-grammy-awards-2022/",
+      "https://www.grammy.com/awards/categories/record-of-the-year/2023/"
+    ],
+    "finding": "Both official pages list 'Don't Shut Me Down' beside ABBA in 2023 Record of the Year. Searches on those pages find no 'Dancing Queen'. The supplied citations therefore do not substantiate v3-11's answer or its first sentence; a direct claim-appropriate source is needed."
+  },
+  "per_item": [
+    {"id":"v3-01","status":"REWORK","finding":"56-word body; roles are useful but the article mostly rehearses option roles. Full fact audit not performed in this blocking pass."},
+    {"id":"v3-02","status":"HOLD","finding":"57-word body and directly spoils v3-06 by naming Brody as The Pianist's lead performer. Full fact audit not performed."},
+    {"id":"v3-03","status":"REWORK","finding":"50-word body; multiple 2005-director prompts reduce film variety. Full fact audit not performed."},
+    {"id":"v3-04","status":"REWORK","finding":"56-word body; one of three consecutive 2005 Academy director items. Full fact audit not performed."},
+    {"id":"v3-05","status":"REWORK","finding":"The body meets 60 words, but it is the third consecutive 2005 Academy director identification item. Full fact audit not performed."},
+    {"id":"v3-06","status":"HOLD","finding":"54-word body; exact answer is disclosed in earlier v3-02 article. Full fact audit not performed."},
+    {"id":"v3-07","status":"REWORK","finding":"55-word body; retain only if expanded with a sourced music-making fact rather than option elimination. Full fact audit not performed."},
+    {"id":"v3-08","status":"REWORK","finding":"54-word body; the credits premise is promising but the article is largely a list of excluded names. Full fact audit not performed."},
+    {"id":"v3-09","status":"HOLD","finding":"Options 0 and 2 are the same Horner/Dion pair in reverse order, so four unique options are absent. Full fact audit not performed."},
+    {"id":"v3-10","status":"REWORK","finding":"60-word body, but it enumerates other options instead of giving a fresh fact about Lizzo or the recording. Full fact audit not performed."},
+    {"id":"v3-11","status":"HOLD","finding":"57-word body; cited sources do not contain Dancing Queen, only Don't Shut Me Down/ABBA. This specific source-fit failure was independently checked."},
+    {"id":"v3-12","status":"REWORK","finding":"60-word body, but it rehearses all distractor album/artist mappings and shares the 65th-Grammy source cluster. Full fact audit not performed."}
+  ],
+  "limitations": [
+    "This was deliberately a blocking structural/editorial review, so it does not claim a full factual pass for v3-01 through v3-10 or v3-12.",
+    "The writer's manifest says all URLs were opened but supplies no per-URL access log; that assertion was not promoted to independent evidence.",
+    "No source, canonical, build, SSH, publication, or author-file action was performed."
+  ],
+  "required_next_gate": "Repair the blockers, provide claim-appropriate sources and substantive concise mini-articles, then obtain a fresh different-provider fact review. This report does not publish or accept the batch."
+}
