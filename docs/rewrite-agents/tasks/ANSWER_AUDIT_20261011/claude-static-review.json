@@ -1,0 +1,22 @@
+{
+  "result": "```json\n{\n  \"verdict\": \"accept\",\n  \"packet_sha256\": \"e09afcf7ad1125d3f9e4456f9e00595fda0716a522017b31a5dc689cd3856db3\",\n  \"findings\": [\n    \"All three duplicate-label cases are structurally real given check.py's definition (casefold-stripped option set shorter than option list): q_philias_100_54 repeats 'Осмофилия', q_philias_100_59 repeats 'Эритрофилия', q_phobias_part_8_20 repeats 'Пирофобия'.\",\n    \"Each proposed repair preserves the originally-keyed answer text: for q_philias_100_54 and q_philias_100_59 the kept correct_answer index (1) is unchanged because the removed duplicate sits after it (index 3); for q_phobias_part_8_20 the keyed text (old index 2) is retained and correct_answer is renumbered to the new index (1) of that same text — no silent swap of which label is correct.\",\n    \"All other fields (id, type, difficulty, text, explanation) are reproduced unchanged between before/proposed in the three repair entries, matching the check.py field-equality assertion.\",\n    \"Heuristic flags (666) and the visual repeated-stem group (195) are explicitly labeled candidate/triage, not proven errors, which matches the actual duplicate-label count (3) being kept separate and narrower — the README does not overstate heuristic hits as confirmed defects.\",\n    \"The link between the public production DTO (hyphenated question_id, e.g. q-philias-100-54) and the private source record (underscored id, q_philias_100_54) rests on matching stem/option text, not a cross-referenced ID or hash field in this packet — a real but disclosed gap, not a fabricated one.\"\n  ],\n  \"limitations\": [\n    \"No tool execution was performed for this audit; the 131-pack/4008-question totals, per-file sha256 values, and the 666 heuristic-flag count in triage.json are taken from the packet's own check.py and its 'execution' self-report, not independently re-run or re-hashed here.\",\n    \"Primary-source fact verification (e.g., whether 'Ольфактофилия' vs 'Осмофилия', or which philia/phobia term is linguistically correct) is explicitly out of scope and remains pending, as the packet itself states.\",\n    \"Production-to-source record correspondence is inferred from matching stem and option text rather than a direct ID/hash crosswalk in the supplied evidence; if the production snapshot and source file ever diverge in exact wording this inference would need re-checking.\",\n    \"Correctness of the heuristic parenthesis/length-ratio flag logic and the 195-question visual-duplicate exclusion was not independently re-derived, only read as asserted.\"\n  ]\n}\n```",
+  "session_id": "7e94a41c-1977-4d93-8d05-6ee59a4a431f",
+  "duration_ms": 46907,
+  "modelUsage": {
+    "claude-sonnet-5": {
+      "inputTokens": 2,
+      "outputTokens": 3120,
+      "cacheReadInputTokens": 8522,
+      "cacheCreationInputTokens": 12223,
+      "webSearchRequests": 0,
+      "costUSD": 0.0818004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 2190,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "is_error": false
+}

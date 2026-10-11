@@ -1,0 +1,40 @@
+{
+  "task_id": "task-aa70a63f0de74e47b914e05ea274c1a3",
+  "assignee": "session-3fe455467cc244aeb6e2018e4fdede00",
+  "run_id": "run-74ce5336725248c8a67e7d01b0663c97",
+  "state": "SUBMITTED",
+  "result": {
+    "blind_answers_before_key": [
+      "q_ha1_p1_7: index 2; q_ha1_p1_8: index 4, uncertain; q_ha1_p1_12: index 1; q_ha1_p1_15: index 1",
+      "q_ha1_p1_17: index 2; q_ha1_p1_18: index 2; q_ha1_p1_20: index 2; q_ha1_p2_6: index 1, uncertain",
+      "q_ha1_p2_7: index 1; q_ha1_p2_10: index 2; q_ha1_p2_12: index 2; q_ha1_p2_13: index 2"
+    ],
+    "changed_files": [],
+    "evidence": [
+      "Candidate read before selected-private key; candidate/private each contain 12 matching IDs and all private keys are in range.",
+      "Read-only PowerShell parity check passed in C:\\ap\\quiz_master. candidate SHA256 24747DF6A46647459E57DCBEEC0A30D4410C635FF54A265D758A5DB68B457E90; private SHA256 32367DB220B29438E0F566B3C5AD68ECC87BD4179DDBFD51770244C7BAFB1ABC."
+    ],
+    "item_findings": [
+      "q_ha1_p1_7 REVISE: only key has '(BB gun)'. Use 'Из пневматического ружья'; retain the English term only in explanation.",
+      "q_ha1_p1_8 REVISE: keyed zero answer alone adds a parenthetical causal explanation and is longer. Use 'Ни одной'; put the clarification in explanation. Count-only distractors would be more parallel.",
+      "q_ha1_p1_12 REVISE: unique bilingual parenthesis and extreme length identify key. Use 'Убийца с лопатой из Саут-Бенда'; remove English gloss from options.",
+      "q_ha1_p1_15 REVISE: only key has '(тобогган)'. Use 'Санки'; explanation may name the variant.",
+      "q_ha1_p1_17 REVISE: key is the lone full, emotionally specific sentence. Use a concise parallel answer such as 'Верни мне мою семью', or make all choices comparable requests.",
+      "q_ha1_p1_18 REVISE: unique English parenthesis plus length. Use 'Снежные шары'.",
+      "q_ha1_p1_20 REVISE: only key includes parenthetical production attribution. Use 'Мальчик в парике'; keep attribution in explanation if sourced.",
+      "q_ha1_p2_6 REVISE: key is the lone bilingual long film title; 'Один дома (рекурсия)' is an implausible joke distractor. Use Russian title only or standardize original-title treatment across all film options; replace the joke.",
+      "q_ha1_p2_7 REVISE: key combines two detailed mechanisms while every distractor is terse. Narrow the stem to one prop (for example the cardboard figure) or make all options equally specific.",
+      "q_ha1_p2_10 REVISE: key alone has two color qualifiers in parentheses and is much longer. Use 'Голубая и розовая'.",
+      "q_ha1_p2_12 REVISE: only key has '(отпечаталась буква М)'. Use 'Ладонь'; move the visual detail to explanation.",
+      "q_ha1_p2_13 REVISE: only key gives a model in parentheses despite a make-only question. Use 'Dodge'."
+    ],
+    "remaining_risks": [
+      "No authoritative source was opened: no factual claim, exact quotation, production-credit detail, or key correctness is endorsed.",
+      "This bounded review covers only the selected 12 Home Alone heuristic flags, not all 666 heuristic flags or 4008 corpus questions."
+    ],
+    "reviewer_label": "answer-giveaway-audit/session-3fe455467cc244aeb6e2018e4fdede00",
+    "runtime_identity": "codex/GPT-6 (self-reported; supervised readonly routing override)",
+    "status": "DONE_WITH_CONCERNS",
+    "verdict": "REVISE all 12 for answer-format giveaways; this is an editorial result only, not factual source verification."
+  }
+}

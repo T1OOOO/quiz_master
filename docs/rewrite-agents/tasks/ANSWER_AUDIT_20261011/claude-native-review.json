@@ -1,0 +1,22 @@
+{
+  "result": "**Verdict: ACCEPT** (editorial scope only) — task-aa70a63f0de74e47b914e05ea274c1a3, reviewed as session-fd7a9791d32f4ce59200f7afebc85f5c, hub team-2ed452959d1b4bdfa7ec7c94fb8584ce.\n\nAll 12 item_findings in `native-editorial-review.json` were checked against the actual options/stems in `candidate.json` and the `key_index`/`reasons` in `selected-private.json`:\n- Every flagged giveaway (unique parenthetical gloss, or markedly longer/more-detailed keyed option) is real and matches the private key in all 12 cases.\n- Blind pre-key guesses matched the key in 11/12; the one miss (q_ha1_p1_8) was honestly flagged \"uncertain\" rather than asserted.\n- q_ha1_p2_6 correctly avoided the \"unique parentheses\" claim since two options there have parens — shows the triage distinguishes length-based from parenthesis-based tells rather than overclaiming.\n- No item treats the private `explanation` text as verified fact; verdict stays scoped to answer-format giveaways, not source truth.\n\n**Limitations:** I did not independently recompute the SHA256 hashes cited as \"Read-only PowerShell parity check\" — that's the native agent's self-report. The `runtime_identity: \"codex/GPT-6 (self-reported; supervised readonly routing override)\"` field is an unverified self-report and should not be trusted as an identity claim. Scope is bounded to these 12 of 666 heuristic flags / 4008 corpus questions; this is not a fact-check of trivia accuracy and not approval to import/publish.",
+  "session_id": "7e94a41c-1977-4d93-8d05-6ee59a4a431f",
+  "duration_ms": 82665,
+  "modelUsage": {
+    "claude-sonnet-5": {
+      "inputTokens": 22,
+      "outputTokens": 8124,
+      "thinkingTokens": 4672,
+      "cacheReadInputTokens": 734717,
+      "cacheCreationInputTokens": 62615,
+      "webSearchRequests": 0,
+      "costUSD": 0.4786874,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "is_error": false
+}
