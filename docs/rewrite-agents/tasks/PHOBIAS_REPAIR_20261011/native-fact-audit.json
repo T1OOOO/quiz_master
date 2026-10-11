@@ -1,0 +1,135 @@
+{
+  "audit": "quiz_master-l1l native fact audit",
+  "status": "DONE",
+  "accessed_utc_date": "2026-10-11",
+  "reviewer": "Codex/GPT-6",
+  "scope": "Frozen candidate-facing and draft repair for phobias_nature; no source or runtime changes reviewed as approved.",
+  "blinding": {
+    "candidate_facing_reviewed_before_draft": true,
+    "limitation": "The original quiz key was previously visible during the assigned original-source audit, so this is not a fully blind review. The frozen candidate-facing file was nevertheless solved before this draft/key comparison.",
+    "independent_candidate_answers": {
+      "q_phobias_part_1_2": "Акрофобия",
+      "q_phobias_part_1_4": "Аэрофобия",
+      "q_phobias_part_4_7": "Большими водоёмами",
+      "q_phobias_part_5_25": "Высота, верхушка",
+      "q_phobias_part_7_9": "Страх дождя",
+      "q_phobias_part_8_11": "Высота над землёй",
+      "q_phobias_part_8_20": "Пирофобия",
+      "q_phobias_part_8_25": "Громом и молнией",
+      "q_phobias_part_9_8": "Человек пропускает дела из-за страха дождя"
+    }
+  },
+  "frozen_draft": {
+    "path": "docs/rewrite-agents/tasks/PHOBIAS_REPAIR_20261011/draft.json",
+    "sha256": "918ADAC2C4130005E08FF38B0DB0CBD2780CA0CB76221513B5D8481DB8412B24"
+  },
+  "sources_opened": [
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/21956-acrophobia-fear-of-heights",
+      "support": "Defines acrophobia as intense fear of heights; gives balconies and distinguishes fear of flying from acrophobia."
+    },
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/22431-aerophobia-fear-of-flying",
+      "support": "Defines aerophobia as fear of airplane flying and lists takeoff, landing and turbulence as triggers."
+    },
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/22958-aquaphobia-fear-of-water",
+      "support": "Identifies thalassophobia as fear of large bodies of water and distinguishes aquaphobia as fear of water."
+    },
+    {
+      "url": "https://www.collinsdictionary.com/us/dictionary/english/acro",
+      "support": "Dictionary entry gives acro- senses including height/top and identifies Greek akros as topmost/highest."
+    },
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/22534-ombrophobia-fear-of-rain",
+      "support": "Defines ombrophobia as extreme fear of rain, including drizzle, and gives avoidance or skipped activities as examples."
+    },
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/24757-phobias",
+      "support": "Lists pyrophobia as fear of fire and distinguishes everyday strong fear from a phobia."
+    },
+    {
+      "url": "https://my.clevelandclinic.org/health/diseases/22101-astraphobia",
+      "support": "Defines astraphobia as fear of thunder and lightning and explicitly names brontophobia as another name."
+    }
+  ],
+  "items": [
+    {
+      "id": "q_phobias_part_1_2",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Акрофобия.",
+      "evidence": "Cleveland Clinic defines it as intense fear of heights and includes a balcony as an example.",
+      "distractors_and_explanation": "The options name different objects or situations. The explanation accurately distinguishes the height object from fear of flying.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/21956-acrophobia-fear-of-heights"
+    },
+    {
+      "id": "q_phobias_part_1_4",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Аэрофобия.",
+      "evidence": "Cleveland Clinic defines aerophobia as fear of flying in an airplane and supports the listed flight triggers.",
+      "distractors_and_explanation": "The non-key options describe materially different fears. The explanation does not make a diagnostic claim.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/22431-aerophobia-fear-of-flying"
+    },
+    {
+      "id": "q_phobias_part_4_7",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Большими водоёмами.",
+      "evidence": "Cleveland Clinic identifies thalassophobia as fear of large bodies of water, while aquaphobia concerns water more generally.",
+      "distractors_and_explanation": "All distractors are outside that object. The specificity comparison in the explanation follows the source definitions.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/22958-aquaphobia-fear-of-water"
+    },
+    {
+      "id": "q_phobias_part_5_25",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Высота, верхушка.",
+      "evidence": "Collins gives acro- senses including height, top and extremities, with Greek akros as topmost/highest.",
+      "distractors_and_explanation": "The question asks for the applicable sense in акрофобия; the explanation preserves the broader dictionary nuance instead of treating acro- as only one sense.",
+      "source_url": "https://www.collinsdictionary.com/us/dictionary/english/acro"
+    },
+    {
+      "id": "q_phobias_part_7_9",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Страх дождя.",
+      "evidence": "Cleveland Clinic defines ombrophobia as extreme fear of rain, including a light drizzle.",
+      "distractors_and_explanation": "The options name distinct weather phenomena. The explanation correctly avoids treating thunder or lightning as rain.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/22534-ombrophobia-fear-of-rain"
+    },
+    {
+      "id": "q_phobias_part_8_11",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Высота над землёй.",
+      "evidence": "Cleveland Clinic uses a balcony as a height example and specifically says fear of airplane flying may be aerophobia rather than acrophobia.",
+      "distractors_and_explanation": "The scenario makes the height-versus-flying distinction without relying on the previously unsupported bathophobia/batheophobia synonym claim.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/21956-acrophobia-fear-of-heights"
+    },
+    {
+      "id": "q_phobias_part_8_20",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Пирофобия.",
+      "evidence": "Cleveland Clinic lists pyrophobia as fear of fire and distinguishes ordinary strong fear from phobia.",
+      "distractors_and_explanation": "All distractors have different objects. The explanation is appropriately framed as a general distinction, not an individual diagnosis.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/24757-phobias"
+    },
+    {
+      "id": "q_phobias_part_8_25",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Громом и молнией.",
+      "evidence": "Cleveland Clinic defines astraphobia as fear of thunder and lightning and says brontophobia is another name for it.",
+      "distractors_and_explanation": "The wording correctly tests the shared object of synonymous terms; it no longer offers the synonyms as competing answers.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/22101-astraphobia"
+    },
+    {
+      "id": "q_phobias_part_9_8",
+      "verdict": "ACCEPT",
+      "key_compare": "Candidate answer and draft key are Человек пропускает дела из-за страха дождя.",
+      "evidence": "Cleveland Clinic lists skipping educational, professional or personal activities due to possible rain and notes impact on daily life.",
+      "distractors_and_explanation": "The distractors are ordinary precautions; the keyed application is the only one showing avoidance with functional impact. It is a useful application item rather than the prior duplicate rain recall.",
+      "source_url": "https://my.clevelandclinic.org/health/diseases/22534-ombrophobia-fear-of-rain"
+    }
+  ],
+  "overall": {
+    "verdict": "ACCEPT",
+    "counts": {"accept": 9, "revise": 0, "reject": 0},
+    "risk": "Educational terminology only. It must not be presented as a method to diagnose a person; the frozen draft itself makes no treatment recommendation."
+  }
+}

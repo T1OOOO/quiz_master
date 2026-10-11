@@ -1,0 +1,67 @@
+{
+  "task": "PHOBIAS_REPAIR_20261011 editorial review (quiz_master-l1l)",
+  "verdict": "accept",
+  "draft_sha256": "918adac2c4130005e08ff38b0db0cbd2780ca0cb76221513b5d8481db8412b24",
+  "blind_answers": {
+    "q_phobias_part_1_2": "Акрофобия",
+    "q_phobias_part_1_4": "Аэрофобия",
+    "q_phobias_part_4_7": "Большими водоёмами",
+    "q_phobias_part_5_25": "Высота, верхушка",
+    "q_phobias_part_7_9": "Страх дождя",
+    "q_phobias_part_8_11": "Высота над землёй",
+    "q_phobias_part_8_20": "Пирофобия",
+    "q_phobias_part_8_25": "Громом и молнией",
+    "q_phobias_part_9_8": "Человек пропускает дела из-за страха дождя"
+  },
+  "blind_vs_key": "all 9 blind answers match draft correct_answer",
+  "per_item": [
+    {
+      "id": "q_phobias_part_1_2",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/21956-acrophobia-fear-of-heights fetched: acrophobia = intense fear of heights (stairs, ladder, balcony), explicitly distinct from aerophobia. No alt-correct option, no giveaway."
+    },
+    {
+      "id": "q_phobias_part_1_4",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/22431-aerophobia-fear-of-flying fetched: aerophobia = extreme fear of flying; triggers takeoff/landing/turbulence. Matches."
+    },
+    {
+      "id": "q_phobias_part_4_7",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/22958-aquaphobia-fear-of-water fetched: 'Thalassophobia, fear of large bodies of water' explicitly listed. Bracket giveaway '(глубины)' from original removed in draft, correctly."
+    },
+    {
+      "id": "q_phobias_part_5_25",
+      "verdict": "accept_with_limitation",
+      "evidence": "https://www.collinsdictionary.com/us/dictionary/english/acro returned HTTP 403 to WebFetch and the fetch tool was denied by permission policy, so the Collins definition could not be directly fetched/verified this session. 'acro-' = height/top is standard Greek-root dictionary knowledge consistent with the draft's answer, but source support is unconfirmed, not disconfirmed. Flag for root to re-verify this one source."
+    },
+    {
+      "id": "q_phobias_part_7_9",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/22534-ombrophobia-fear-of-rain fetched: ombrophobia = extreme fear of rain; thunder/lightning and fog listed as separate related phobias, supporting draft's explanation that distinguishes it from astraphobia."
+    },
+    {
+      "id": "q_phobias_part_8_11",
+      "verdict": "accept",
+      "evidence": "Same acrophobia source confirms balcony/height-only scenario without flight fear = acrophobia, distinct from aerophobia. Correctly replaces prior unsupported rare batheophobia-synonym item with a supported height-vs-flight application question, per task brief."
+    },
+    {
+      "id": "q_phobias_part_8_20",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/24757-phobias fetched: lists 'Pyrophobia (Fear of Fire)' confirming term/meaning."
+    },
+    {
+      "id": "q_phobias_part_8_25",
+      "verdict": "accept",
+      "evidence": "https://my.clevelandclinic.org/health/diseases/22101-astraphobia fetched: 'an intense fear of thunder and lightning... Another name for astraphobia is brontophobia.' Fixes prior flaw (thunder-only) by correctly relating astraphobia/brontophobia to BOTH thunder and lightning, not narrowing to a bare synonym pair."
+    },
+    {
+      "id": "q_phobias_part_9_8",
+      "verdict": "accept",
+      "evidence": "Same ombrophobia source explicitly contrasts clinical avoidance ('skipping educational, professional or personal activities if there's a chance rain might occur') against normal precautions (umbrella, drying shoes, choosing a jacket) -- matches distractor set exactly."
+    }
+  ],
+  "other_findings": "Metadata/IDs/difficulties identical across original/draft/candidate-facing for all 9 items. No treatment/diagnosis language in any draft explanation (original's boilerplate 'поддаются лечению...психотерапии' correctly removed). No bracket/length answer giveaways found in draft options. No alternative-correct-answer ambiguity found in any of the 9 items.",
+  "limitations": "Collins Dictionary source for q_phobias_part_5_25 could not be fetched this session (403/permission-denied on both WebFetch and fetch tool) -- root should independently re-verify that one citation. All other 6 unique source URLs were successfully fetched and support their respective answers/explanations. This is editorial review only; no source edits, builds, or publish actions were performed.",
+  "activity": "COMPLETED"
+}

@@ -1,0 +1,32 @@
+{
+  "result": "**Hub acceptance complete.**\n\n- **Task:** `task-049953fb2fbb4dc0ae7efb710c55c6dd` (\"quiz_master-l1l independent9 phobias fact audit\")\n- **Verdict: ACCEPT** → task state is now `ACCEPTED`\n- **Reviewer session:** `session-f4bb15d92ecd496e97dc6582eca90c23` · **Activity:** `COMPLETED`\n\n**Hashes confirmed matching** (case-insensitive hex, same value): native audit's frozen draft sha256 `918ADAC2C4130005E08FF38B0DB0CBD2780CA0CB76221513B5D8481DB8412B24` = the task's exact `918adac2c4130005e08ff38b0db0cbd2780ca0cb76221513b5d8481db8412b24`.\n\n**q_phobias_part_5_25 gate cleared:** my original 403/permission-denied limitation on the Collins \"acro-\" page stands honestly on record (not retracted, never fetched by me). But `root-acro-verification.json` (root's own web open/find) and `native-fact-audit.json` (native's independent open) both report matching content — height/top/extremities senses, explicit acrophobia example, Greek *akros* = topmost/highest — corroborating each other and the draft's answer. That external corroboration is sufficient to clear the pending gate, so this item now stands at full ACCEPT in my review.\n\nAll 9 native per-item verdicts, evidence, and the overall risk framing (educational only, no diagnosis/treatment) agreed with my own independent findings — no disagreements.\n\nThis is editorial acceptance of the native audit only — not an import/revision/build/publish/release approval, which remains root's gate.",
+  "session_id": "cf3a8acc-eb1b-45a0-9871-edbb7be95d22",
+  "is_error": false,
+  "modelUsage": {
+    "claude-sonnet-5": {
+      "inputTokens": 42,
+      "outputTokens": 11651,
+      "thinkingTokens": 4569,
+      "cacheReadInputTokens": 1574313,
+      "cacheCreationInputTokens": 156995,
+      "webSearchRequests": 0,
+      "costUSD": 1.0594366,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 40617,
+      "outputTokens": 1167,
+      "thinkingTokens": 0,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.046452,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  }
+}
