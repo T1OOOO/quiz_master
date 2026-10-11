@@ -1,0 +1,59 @@
+{
+  "verdict": "revise",
+  "packet_sha256": "42fc9c8d9c2f6f7ddc4ea3133607d6f9f952a0f96d9fd9a1ea712de925a04332",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "area": "rehearse.py staging normalization",
+      "description": "In the per-pack content check (`actual['source']['uri']=expected_uri; actual['revision']=expected['revision']` before `assert actual==expected`), the revision field is force-overwritten prior to comparison. For every rehearsed pack except planet-paradoxes-20261010 (which public_verifier.py checks exactly against production with no overwrite), this blinds the bundle-vs-live-catalog equality check to any revision drift. Revision correctness for those other packs rests solely on the separate article-ref `revision_sha256` binding assert, not on this check. URI normalization alone (environment path) is legitimate; folding revision into the same overwrite is not."
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "area": "prepare_script API preservation",
+      "description": "stage/'api' is copied byte-identical from the prior release base (quiz-2026.10.11-encore-317b339) rather than rebuilt from commit d228c9e; the only guard is `sha256(stage/'api')=='26e1657...'`, a literal-equality assert, not a diff of backend/API source between the two commits. If d228c9e touched API code, the carried-forward binary would be silently stale while passing this check."
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "area": "rehearse.py port collision check",
+      "description": "`with socket.socket() as probe: probe.bind(('127.0.0.1',18088))` binds then immediately releases the port before `start()` binds again — a TOCTOU check, not a reservation. A concurrent run can claim port 18088 in that window. Risk is elevated because AGENTS.md explicitly removes mandatory resource-queue waiting for this project, so concurrent helper/rehearsal invocations are plausible."
+    },
+    {
+      "id": "F4",
+      "severity": "low",
+      "area": "rehearse.py row-preservation exemption",
+      "description": "attempt_bundles is the only table allowed to grow (`old_rows[t] <= current` without the equal-length requirement applied to the others), and the 'after' snapshot is taken immediately post-startup, before any test traffic. Plausibly explained by server-startup bundle caching, but not confirmed in the packet; this is the one table where an unexpected write path would go undetected by the length check."
+    },
+    {
+      "id": "F5",
+      "severity": "low",
+      "area": "rehearse.py rollback validation depth",
+      "description": "Post-migration rollback compatibility is validated with a single `GET /v1/catalog?quiz_id=lotr` against the old binary. It does not exercise the session/attempt/attempt_answers rows written under the new schema during the same rehearsal run, so it does not prove the old binary can safely read or operate on data the new build created."
+    },
+    {
+      "id": "F6",
+      "severity": "low",
+      "area": "archive integrity handoff",
+      "description": "cutover.sh verifies checksums.txt internal consistency (plus two explicit literal hashes for api/main.dart.js) after the release is already unpacked on the production host. Nothing in the supplied scripts re-verifies the top-level archive sha256 recorded in package.json against the unpacked tree; integrity of the Windows-to-racknerd-f0269d5 transfer step itself is unverified by anything in this packet."
+    }
+  ],
+  "remaining_gates": [
+    "Confirm no backend/API source diff exists between the prior release commit and d228c9e, or explicitly document this release as content-only, before trusting the carried-forward api binary (F2).",
+    "Fix or explicitly accept F1: have rehearse.py assert actual['revision']==expected['revision'] before any overwrite, or document that article-ref binding checks are the intended sole revision guard for non-new packs.",
+    "Close the port-probe TOCTOU window (F3), e.g. hold the bound socket until immediately before start(), especially given no mandatory queue serialization on this project.",
+    "Clarify why attempt_bundles alone is allowed to grow in the immediate post-startup snapshot (F4).",
+    "Run and capture evidence for the browser/UI check and remote rehearsal + physical/Android check — evidence block states these are 'not yet checked'.",
+    "Verify the package.json archive-level sha256 against the unpacked production-host tree before cutover.sh executes (F6).",
+    "Execute cutover.sh in prepare mode on racknerd-f0269d5 and capture its PREPARED output plus rehearsal/public-verification JSON as evidence; no execution evidence is present in this packet, only the scripts and assertions.",
+    "Publish mode (helm upgrade --atomic + post-upgrade public verification) should not be authorized until the above are resolved; prepare mode's blast radius is limited to dry-run/local artifacts and is comparatively low-risk."
+  ],
+  "limitations": [
+    "This is a static, read-only inspection of the supplied packet text; no shell/tool/MCP execution was performed, no hashes were independently recomputed, and packet_sha256 and all embedded sha256 values are reported as given, not verified.",
+    "cutover.sh, rehearse.py, backup_sqlite.py and prepare_script were read but not executed or simulated; conclusions are from code reading only.",
+    "Production URI/question-hash and article-ref validation is reported as already independently confirmed by root and was not re-derived here.",
+    "No visibility into chart/, release-values.yaml, nginx.conf, or the Windows-to-production transfer mechanism beyond what appears in this packet; findings are scoped to the scripts and metadata actually shown.",
+    "Evidence block's claims about completed local gates (Python/Go/Flutter) are taken as reported, not re-verified."
+  ]
+}

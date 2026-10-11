@@ -1,0 +1,20 @@
+from pathlib import Path
+import hashlib,json,re,subprocess
+r=Path('C:/ap/quiz_master');d=r/'.run/planet_release_20261011';m=json.loads((d/'package.json').read_text());build=m['version']['buildId'];sha=m['sha256']
+assert re.fullmatch(r'quiz-2026\.10\.11-planets-[a-f0-9]{7}',build)
+assert hashlib.sha256(Path(m['archive']).read_bytes()).hexdigest()==sha
+key='C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519';target='root@192.3.164.184'
+subprocess.run(['scp','-i',key,m['archive'],target+':/opt/quiz-master/releases/'+build+'.tar.gz'],check=True)
+script=f'''set -euo pipefail
+test "$(hostname)" = racknerd-f0269d5
+cd /opt/quiz-master/releases
+echo '{sha}  {build}.tar.gz' | sha256sum -c -
+mkdir {build}
+tar -xzf {build}.tar.gz --no-same-owner -C {build}
+cd {build}
+bash -n cutover.sh
+python3 -m py_compile rehearse.py
+bash cutover.sh prepare 2>&1 | tee prepare.log
+'''
+res=subprocess.run(['ssh','-i',key,target,script],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+(d/'remote-prepare.txt').write_text(res.stdout);print(res.stdout);assert res.returncode==0

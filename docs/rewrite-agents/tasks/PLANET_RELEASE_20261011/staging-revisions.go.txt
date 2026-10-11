@@ -1,0 +1,27 @@
+package main
+
+import (
+ "encoding/json"
+ "os"
+ "strings"
+ "path/filepath"
+ "quiz_master/next/server/internal/content"
+)
+
+func main() {
+ stage := os.Args[1]
+ hashes := map[string]map[string]content.Revision{}
+ for _, id := range []string{"cinema-encore-20261011", "music-encore-20261011", "planet-paradoxes-20261010"} {
+  raw, err := os.ReadFile(filepath.Join(stage,"next/content",id,"bundle.json")); if err != nil { panic(err) }
+  var b content.Bundle; if err=json.Unmarshal(raw,&b); err != nil { panic(err) }
+  d := content.DraftFromBundle(b)
+  for i := range d.Questions {
+   uri:=d.Questions[i].Source["uri"]
+   if !strings.HasPrefix(uri,"/app/quizzes/") { panic(uri) }
+   d.Questions[i].Source["uri"]="/opt/quiz-master/releases/quiz-2026.10.11-planets-d228c9e/quizzes/"+strings.TrimPrefix(uri,"/app/quizzes/")
+  }
+  content.Rehash(&d); hashes[id]=map[string]content.Revision{}
+  for _, q := range d.Questions { hashes[id][q.QuestionID]=q.Revision }
+ }
+ raw,err:=json.MarshalIndent(hashes,"","  "); if err!=nil { panic(err) }; if err=os.WriteFile(os.Args[2],raw,0600); err!=nil { panic(err) }
+}
