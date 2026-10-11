@@ -9,7 +9,7 @@
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-003",
       "verdict": "accept",
-      "article_sha256": "dcffaec986e5f3d1cb0b5d13985a92ff8cfe529734ab9a646ae96c70b54b79af",
+      "article_sha256": "ccbd4dda9d1a18e11dc943eff0ce00e458645ca366aadc31582959fc96413cc6",
       "note": "NASA Jupiter Facts supports predominantly hydrogen/helium composition, insufficient mass to ignite as a star, compression to liquid hydrogen, electrically conducting liquid metallic hydrogen, and no true surface. The article distinguishes composition from state of matter; H/He is uniquely correct against all distractor pairs.",
       "checked_sources": [
         {
@@ -22,12 +22,21 @@
           "accessed_on": "2026-10-10",
           "evidence": "NASA Jupiter Facts supports predominantly hydrogen/helium composition, insufficient mass to ignite as a star, compression to liquid hydrogen, electrically conducting liquid metallic hydrogen, and no true surface. The article distinguishes composition from state of matter; H/He is uniquely correct against all distractor pairs."
         }
-      ]
+      ],
+      "previous_article_sha256": "dcffaec986e5f3d1cb0b5d13985a92ff8cfe529734ab9a646ae96c70b54b79af",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     },
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-004",
       "verdict": "accept",
-      "article_sha256": "d20388bbabaa8e084afd76a035d0ffeaedfafd499c4a46c3ada9d8ecd5c8c6c6",
+      "article_sha256": "186c33d6180be2dd8163da0b358d07881181b4be68c7793851b8483723809d96",
       "note": "NASA Mars Facts identifies Olympus Mons on Mars as the solar system's largest volcano. The Viking 1 resource supports the mosaic, over-600-km base, scarp/lava-flow description, summit caldera, and qualified recurrent-collapse explanation. Mars is uniquely correct. The article intentionally omits height, so the differing Mars Facts/Viking height figures create no unresolved claim.",
       "checked_sources": [
         {
@@ -40,7 +49,16 @@
           "accessed_on": "2026-10-10",
           "evidence": "NASA Mars Facts identifies Olympus Mons on Mars as the solar system's largest volcano. The Viking 1 resource supports the mosaic, over-600-km base, scarp/lava-flow description, summit caldera, and qualified recurrent-collapse explanation. Mars is uniquely correct. The article intentionally omits height, so the differing Mars Facts/Viking height figures create no unresolved claim."
         }
-      ]
+      ],
+      "previous_article_sha256": "d20388bbabaa8e084afd76a035d0ffeaedfafd499c4a46c3ada9d8ecd5c8c6c6",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     }
   ]
 }

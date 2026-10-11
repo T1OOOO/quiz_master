@@ -1,0 +1,19 @@
+package main
+
+import (
+ "encoding/json"
+ "os"
+ "path/filepath"
+ "quiz_master/next/server/internal/content"
+)
+
+func main() {
+ dir := "next/content/planet-paradoxes-20261010"
+ raw, err := os.ReadFile(filepath.Join(dir,"draft.json")); if err != nil { panic(err) }
+ var d content.Draft; if err=json.Unmarshal(raw,&d); err != nil { panic(err) }
+ for i := range d.Questions { d.Questions[i].Source["uri"]="/app/quizzes/Science/planet_paradoxes_20261010.json" }
+ content.Rehash(&d)
+ b, err := content.Build(d,"2026.10.11.planets","2026-10-11T01:00:00Z"); if err != nil { panic(err) }
+ if err=content.WriteJSON(filepath.Join(dir,"draft.json"),d,true); err != nil { panic(err) }
+ if err=content.WriteJSON(filepath.Join(dir,"bundle.json"),b,true); err != nil { panic(err) }
+}

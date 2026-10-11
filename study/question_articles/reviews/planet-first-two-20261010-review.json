@@ -10,7 +10,7 @@
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-001",
       "verdict": "accept",
-      "article_sha256": "9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d",
+      "article_sha256": "075b6f3aa004e4235e32357887579aab395e32f1b9f30f1044da489743690238",
       "note": "NASA Venus Facts supports second-from-Sun, hottest, thick CO2 atmosphere, and runaway greenhouse heat trapping; Venus overview independently supports second-from-Sun/hottest. The teaching model separates incoming energy from heat loss and labels itself simplified. Stronger greenhouse effect is uniquely correct; rotation, tidal heating, and reflectivity do not explain the primary mechanism.",
       "checked_sources": [
         {
@@ -23,12 +23,21 @@
           "accessed_on": "2026-10-10",
           "evidence": "Actual source overview opened; see raw initial review evidence."
         }
-      ]
+      ],
+      "previous_article_sha256": "9415fde5c49cf1f404fbcfc61e89f73d855a369d512b6d7ed409b1eb4f62f79d",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     },
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-002",
       "verdict": "accept",
-      "article_sha256": "bbdcc8e0aab1bae8fba93c62dbd80a17f267dd5875013866fdd12cdd613527e0",
+      "article_sha256": "6f2b1b14f476a06b9cf8d35431e067737257969d8a9f79990b19fea2e977cc52",
       "note": "The corrected text removes the ambiguous noon-to-noon equation, correctly calls 176 days Mercury's full solar cycle, and adds the cited eccentric-orbit rise/set/re-rise caveat. The numerical contrasts, key, and question revision binding remain correct and unique.",
       "checked_sources": [
         {
@@ -41,7 +50,16 @@
           "accessed_on": "2026-10-10",
           "evidence": "Actual source overview opened; see raw initial review evidence."
         }
-      ]
+      ],
+      "previous_article_sha256": "bbdcc8e0aab1bae8fba93c62dbd80a17f267dd5875013866fdd12cdd613527e0",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     }
   ]
 }

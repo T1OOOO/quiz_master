@@ -1,0 +1,177 @@
+{
+  "tasks": [
+    {
+      "acceptance": "Read-only exact publication transformation plan and release dependencies; no new code/files or claim passed gates.",
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\next\\content\\planet-paradoxes-20261010",
+        "C:\\ap\\quiz_master\\study\\question_articles",
+        "C:\\ap\\quiz_master\\.run\\culture_encore_20261011"
+      ],
+      "assignee": "session-619385f9d2cc4066987d419899d3ad95",
+      "author": "session-629dac9934a94f1cb5ed46dd621c2778",
+      "body": "Read-only finite audit in C:/ap/quiz_master. Inspect private planet-paradoxes-20261010 pack and latest culture_encore release helpers, identify exact smallest publication adaptation, files to update, counts/assertions and release-gate requirements. Do not edit/export/build/deploy/commit. Prior commit082bd6e completed ten miniarticles locally; production130packs3998questions202articles. All ten private questions need correct runtime source URI and article refs/review hashes rebinding. Current69 foreign files preserved. No children, GitHub Actions, broker/otherproject changes. Connect truthful host_hub identity, join ready, send sessionID for offer; wait acceptance before substantive audit. Return concrete commands/file pointers and risks, submit evidence. Actual provider labels unverified. User removed resourcequeue waiting only this project.",
+      "created_at": 1791682742.2545788,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "review",
+      "id": "task-22989a3dd2464abba03c0e6a55295fc5",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "affected_files": [
+          "quizzes/Science/planet_paradoxes_20261010.json (new)",
+          "next/content/planet-paradoxes-20261010/{manifest.json,draft.json,bundle.json}",
+          "four planet article draft files and four matching review files",
+          "next/apps/quiz_app/assets/{catalog.json,study/question-articles.json}"
+        ],
+        "changed_files": [],
+        "concerns": [
+          "Prepared .run/planet_publication_20261011 and next/server/.run_planet_publication scripts were outside this task's allowed paths and were not inspected.",
+          "No scripts, tests, build, export, deploy, commit or push ran. This is a plan, not publication evidence.",
+          "Preserve unrelated existing changes in .beads/issues.jsonl, docs/rewrite-agents/content20/README.md, and study/check_reader.py."
+        ],
+        "concrete_plan": [
+          "Create served source quizzes/Science/planet_paradoxes_20261010.json from frozen private legacy source; import only to a temporary candidate because the canonical manifest protects the private URI.",
+          "Validate temporary draft/bundle and assert all 10 IDs, stems, options/order, explanations, option IDs/correct private-grading mapping and difficulty metadata equal current canonical before scoped replacement. Copy candidate manifest with draft so source_path/source_sha256 change together.",
+          "Apply production binding pattern: set all source.uri values to /app/quizzes/Science/planet_paradoxes_20261010.json; content.Rehash then content.Build and write canonical draft.json/bundle.json.",
+          "Rebind exactly ten revision_sha256 question_refs across four article batches (2+2+2+4) and update matching article_sha256 in their four review files; no body/source/verdict modification.",
+          "Rebuild accepted article catalog after refs/review hashes agree; resulting counts should be 131 packs, 4008 questions, 212 articles."
+        ],
+        "evidence": [
+          {
+            "command": "python -c <read-only canonical article-hash assertion>",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "PASS baseline: 10 accepted reviews match canonical article hashes and 10 unique article IDs"
+          },
+          {
+            "command": "Get-Content/read-only metadata audit of next/content/planet-paradoxes-20261010 and four planet article/review batches",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "Canonical pack contains 10 questions/private grading IDs and only private study/drafts URI; four batches/reviews contain 2+2+2+4 accepted aligned records."
+          },
+          {
+            "command": "Read-only release-helper audit (.run/culture_encore_20261011 plus production-bindings.go.txt)",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "Established supported transition is temp quizctl import followed by content.Rehash/content.Build and then article revision binding."
+          }
+        ],
+        "fresh_hashes": {
+          "bundle.json": "A485E437DC31951659E8EFA2329CB03BEB3E59E1F15743B6D6DE1C9CA636DD08",
+          "draft.json": "56988310806905E226C5B1D97CC23EB47DD8A93841090D33D7A35AE7140D279B",
+          "manifest.json": "AE7A172D398E8F175AC74A99B1A5D0F255719135C0DA5ED7DF558C97B6D477E0"
+        },
+        "release_prerequisites": [
+          "Fresh temp-import semantic/private-grading equality proof, validate draft/bundle, final 10 served URIs, exact 10 article refs/review hashes.",
+          "Go content and quizctl tests; article --check plus 4 Python tests; Flutter analyze/full 114-test suite/web build; staging rehearsal, old API rollback, and independent integration review.",
+          "Staging must resolve served URI, expose catalog pack, match all 10 article refs/final revisions, and complete a correct 10-answer attempt."
+        ],
+        "reviewer_label": "planet-publication-audit",
+        "runtime_identity": "codex/gpt-6.1-sol; session-619385f9d2cc4066987d419899d3ad95",
+        "source_revision": "082bd6ea3382f389eb2d98e4b80da1e1914a0807",
+        "status": "DONE_WITH_CONCERNS"
+      },
+      "review_note": "Independent Claude Sonnet 5 reviewer (session-cf916acc6e10418c943685f22f3b61e4). I could not retrieve this task's own original submission text in this session (full project task list too large to page by line with available tooling; message search only returns truncated task.submitted snippets), so I am not independently re-deriving the '212 vs 206' article-count defect or the stale current-article-hash-match claim myself; I defer to the already-reported disposition. Independently verified from the live repo: next/apps/quiz_app/assets/catalog.json currently has exactly 131 packs totaling exactly 4008 questions and (per the successor task's own reported evidence, now visible to me after reviewing it) 206 public articles -- the corrected figures, not 212. No publication/release approval implied.",
+      "reviewer": "session-cf916acc6e10418c943685f22f3b61e4",
+      "root_task_id": "task-22989a3dd2464abba03c0e6a55295fc5",
+      "run_id": "run-5dfebe84817a4b08815c1c0ad6c1ac17",
+      "skills": [],
+      "state": "REWORK",
+      "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+      "title": "Planet publication: read-only source/revision and release audit",
+      "version": 4
+    },
+    {
+      "acceptance": "Accurate current semantic and canonicalhash preservation review; actual counts131/4008/206; no false accepted oldhash claim; exact ownfiles only.",
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\.run\\planet_publication_20261011",
+        "C:\\ap\\quiz_master\\next\\server\\.run_planet_publication",
+        "C:\\ap\\quiz_master\\next\\content\\planet-paradoxes-20261010",
+        "C:\\ap\\quiz_master\\study\\question_articles",
+        "C:\\ap\\quiz_master\\quizzes\\Science",
+        "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets",
+        "C:\\ap\\quiz_master\\next\\server\\internal\\sqlite",
+        "C:\\ap\\quiz_master\\next\\server\\cmd\\quizctl"
+      ],
+      "assignee": "session-619385f9d2cc4066987d419899d3ad95",
+      "author": "session-629dac9934a94f1cb5ed46dd621c2778",
+      "body": "Read-only final review of current publication transformation and preserved baseline. Exact expected131packs4008questions206articles (not212: original206 already contains all10planetarticles). Inspect .run/planet_publication_20261011/{prepare.py,rebind.py,binding-map.json,old-drafts,bundle-before.json,articles-before.json,catalog-before.json}, next/server/.run_planet_publication/main.go, changed canonical bundle/manifest/draft, served bytecopysource, four article drafts. Existing reviewfiles have OLD hashes and are deliberately not valid until accepted newbinding review: do not report acceptance currently. Independently verify text/options/keys/difficulty unchanged, URI/revisions correct, oldarticletext/sources preserved exactly, unique10bindings, all130oldcatalogrows preserved. Identify pinnedGo testcounts affected. No edits/exports/build/deploy/commit/children. Report exact current observed hashes/facts not previoustaskstate.",
+      "created_at": 1791683027.6123064,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "review",
+      "id": "task-18bf1548a0d34abb901b7d38c8278746",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [],
+        "current_observations": {
+          "article_bindings": "binding-map has exactly 10 unique planet article IDs; each current draft ref equals the current bundle revision and each mapped new_sha256 equals the canonical JSON hash.",
+          "counts": "131 packs, 4008 questions, 206 public articles",
+          "current_hashes": {
+            "binding_map": "6D22D1B62B7D5B4AB2E45D2D5EAAC32154E78926482978B229E0EED40C61549D",
+            "bundle": "4E37882F924215D6DFA5EBD518FC6F4C786840993306A7162929653BADE4A5C4",
+            "draft": "88AB460DE7178A8544773B767FE6A06F8C96F9C36C94256025FB4CC8077B034C",
+            "manifest": "227C309986783859844BAE3C84A8515BC7B1C1D01F2A70975A3A3E697A2C44E1",
+            "served_source": "35615252E746C4B481152B09353CE45A152A96DC58667D0F08348012DF55ED91"
+          },
+          "sqlite_pins": "next/server/internal/sqlite/collection_test.go currently pins packs=131, questions=4008, restart history=131 (the prior 60/104/114 values are no longer present in the inspected range)."
+        },
+        "evidence": [
+          {
+            "command": "python -c <read-only current/baseline comparison>",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "PASS: served source byte-identical; all 10 questions preserve semantic fields and private grading; all ten current URIs are /app/quizzes/Science/planet_paradoxes_20261010.json; all 10 mapped article bodies/sources are unchanged; catalog retains all 130 baseline rows and is now 131 packs / 4008 questions."
+          },
+          {
+            "command": "python -c <read-only public article asset comparison>",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "PASS: public article asset remains baseline-identical at 206 articles with 10 old planet revision refs; it is not an acceptance artifact for updated revisions."
+          },
+          {
+            "command": "python -c <read-only review gate state assertion>",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "PASS: all 10 updated planet draft article hashes mismatch the corresponding old accepted review hashes; export remains correctly blocked pending independent acceptance."
+          },
+          {
+            "command": "static review of prepare.py, rebind.py, main.go, binding-map.json, collection_test.go",
+            "cwd": "C:\\ap\\quiz_master",
+            "result": "No preservation defect found. prepare imports only to temp and compares ten question IDs/stems/options/grading/difficulty; main.go applies URI/Rehash/Build; rebind changes only question revision refs, preserving old copies and mapping old/new article hashes."
+          }
+        ],
+        "reviewer_label": "planet-publication-current-review",
+        "risks": [
+          "No test/build/export/deploy/commit ran in this review.",
+          "The current public question-articles asset is deliberately unchanged at 206 articles and has old revision refs; it must only be regenerated after review hashes are updated by a qualified independent reviewer.",
+          "No claim is made about the concurrently running Claude source/key review."
+        ],
+        "runtime_identity": "codex/gpt-6.1-sol; session-619385f9d2cc4066987d419899d3ad95",
+        "status": "DONE_WITH_CONCERNS",
+        "verdict": "Current transformation is semantically preserving and has the intended served URI/revision rebind. It is not ready to export/release: all four review files retain old hashes by design, so the accepted-article export must remain blocked until a qualified independent reviewer accepts the ten new canonical hashes."
+      },
+      "review_note": "Independent Claude Sonnet 5 reviewer (session-cf916acc6e10418c943685f22f3b61e4). Support for ACCEPT rests on two independently verified sources, not on re-reading this task's internal evidence log (not retrievable within the no-paging scope of this session): (1) Direct Read of next/apps/quiz_app/assets/catalog.json: manually enumerated all pack entries and summed questions_count -> exactly 131 packs and exactly 4008 questions, matching this task's reported totals exactly. (2) My own completed prior static review (session-273941e4-c0c0-4e31-b821-bb6734922e50, packet_sha256 6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74, verdict ACCEPT) of the planet-paradoxes-20261010 baseline-vs-runtime bundle: all 10 questions' stems, options (id+text+order), answer_kind, difficulty, difficulty_level and private_grading.correct_option_id were byte-identical between baseline and runtime; only per-question source.uri (study/drafts/...legacy.json -> /app/quizzes/Science/planet_paradoxes_20261010.json), revision.sha256, bundle_sha256, bundle_version and published_at differed. That is the same migration shape this task describes ('served byte-identical source...only runtime source URI/revisions and article refs changed'). Explicit limitations preserved: I did not independently enumerate/count the 206 local article files in this pass; I did not independently recompute any SHA-256 hash (old or new); I did not re-open this task's own submitted result text (tool/message-size constraints, and re-paging was out of scope per instruction). The 'old 10 review hashes deliberately pending update' framing is consistent with what I already verified in the prior packet review (binding_map old_sha256 values matched the prior recorded article review hashes). No publication/release approval is given or implied.",
+      "reviewer": "session-cf916acc6e10418c943685f22f3b61e4",
+      "root_task_id": "task-18bf1548a0d34abb901b7d38c8278746",
+      "run_id": "run-8d0393b03c484fceb7f49eac01740c81",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-2ed452959d1b4bdfa7ec7c94fb8584ce",
+      "title": "quiz_master-yu4: current planet binding integration review",
+      "version": 4
+    }
+  ],
+  "independent_hash_confirmation": {
+    "id": 28202,
+    "time": 1791683178.231853,
+    "channel": "project/project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "sender": "session-619385f9d2cc4066987d419899d3ad95",
+    "recipient": "session-629dac9934a94f1cb5ed46dd621c2778",
+    "kind": "message",
+    "snippet": "{\"reply_to\":null,\"task_id\":null,\"text\":\"[planet-publication-current-review] [CONFIRMED] independent recomputation, not trust…",
+    "reply_to": null,
+    "task_id": null,
+    "text": "planet-publication-current-review CONFIRMED independent recomputation, not trust of map. Command (cwd C:\\ap\\quiz_master): python -c reads each current planet article, canonicalizes json.dumps(article, ensure_ascii=False, sort_keys=True, separators=(',',':')), SHA-256s it, and asserts observed map == binding-map new_sha256 (10 entries).\n001 075b6f3aa004e4235e32357887579aab395e32f1b9f30f1044da489743690238\n002 6f2b1b14f476a06b9cf8d35431e067737257969d8a9f79990b19fea2e977cc52\n003 ccbd4dda9d1a18e11dc943eff0ce00e458645ca366aadc31582959fc96413cc6\n004 186c33d6180be2dd8163da0b358d07881181b4be68c7793851b8483723809d96\n005 50399ea034c86161310dbf3562dc6a850854aba861f6f1c5513bfbc1b02a844c\n006 a5ef85d6e0f159a621408f32271839df097daed145df1c81bfd7d6c08ae893ff\n007 e26d6135637aaa96ebfaf33ca304529870d012478b2205cdce45ba973c0a88a4\n008 f23b4af72d18f29edb854357c63d3d1e1e52514407c57b68953ab539e5b383a9\n009 cea1abb5d28966b089ca459b6ae22ea2b48ffc9999b57910adf7c90d3de51155\n010 67cf72c08c69aa0404dc44a0683b6e49b46dcc0c2eb98f1da415a933821428ff"
+  }
+}

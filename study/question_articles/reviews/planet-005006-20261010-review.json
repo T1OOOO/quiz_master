@@ -9,7 +9,7 @@
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-005",
       "verdict": "accept",
-      "article_sha256": "93dec9ce17e16ae2875b8ee4111bf02cea85249074a979f898abfafd9f47669c",
+      "article_sha256": "50399ea034c86161310dbf3562dc6a850854aba861f6f1c5513bfbc1b02a844c",
       "note": {
         "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-005",
         "target_question_id": "planet-paradox-005",
@@ -35,12 +35,21 @@
           "opened_by": "writer and lead",
           "evidence": "официальный обзор Сатурна как газового гиганта, его колец и системы спутников"
         }
-      ]
+      ],
+      "previous_article_sha256": "93dec9ce17e16ae2875b8ee4111bf02cea85249074a979f898abfafd9f47669c",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     },
     {
       "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-006",
       "verdict": "accept",
-      "article_sha256": "53152a36ef021c8195b7c3acd1c4915d4f94c78c13e56dda3be4eaf9313a060b",
+      "article_sha256": "a5ef85d6e0f159a621408f32271839df097daed145df1c81bfd7d6c08ae893ff",
       "note": {
         "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-006",
         "target_question_id": "planet-paradox-006",
@@ -71,7 +80,16 @@
           "opened_by": "writer and lead",
           "evidence": "официальный обзор Урана как ледяного гиганта и его необычной ориентации"
         }
-      ]
+      ],
+      "previous_article_sha256": "53152a36ef021c8195b7c3acd1c4915d4f94c78c13e56dda3be4eaf9313a060b",
+      "binding_review": {
+        "scope": "URI/revision-only; body and sources unchanged",
+        "native_task": "task-18bf1548a0d34abb901b7d38c8278746",
+        "native_hash_message": 28202,
+        "independent_provider": "Actual Claude Sonnet5 official CLI supplied-evidence review",
+        "packet_sha256": "6b944771bf42ad893e8e2caaac404ba046c52bf1134b7bdf7c882cc8568f9e74",
+        "limitations": "Claude did not recompute hashes or fetch URLs; native checker recomputed all10 canonical hashes. No release approval."
+      }
     }
   ]
 }
