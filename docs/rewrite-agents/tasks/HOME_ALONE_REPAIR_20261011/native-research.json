@@ -1,0 +1,113 @@
+{
+  "audit": "quiz_master-1nh Home Alone part 1 research",
+  "status": "DONE_WITH_CONCERNS",
+  "accessed_utc_date": "2026-10-11",
+  "scope": "Selected part 1 IDs 7,8,12,15,17,18,20; no quiz/draft edits.",
+  "blinding": "Candidate was read before private keys; prior editorial exposure makes the independent answers only partial.",
+  "pre_key_answers": {
+    "q_ha1_p1_7": "BB gun not supported under combined Buzz/pizza-fight premise.",
+    "q_ha1_p1_8": "Uncertain.",
+    "q_ha1_p1_12": "South Bend Shovel Slayer.",
+    "q_ha1_p1_15": "Sled; exact type uncertain.",
+    "q_ha1_p1_17": "Family back instead of presents.",
+    "q_ha1_p1_18": "Uncertain.",
+    "q_ha1_p1_20": "Art-department son in costume, pending source."
+  },
+  "sources_opened": [
+    {
+      "id": "S1",
+      "url": "https://assets.scriptslug.com/live/pdf/scripts/home-alone-1990.pdf",
+      "status": "Opened; fourth draft, 1990-01-17; blue revisions 1990-02-02.",
+      "limit": "Draft, not direct released-film viewing."
+    },
+    {
+      "id": "S2",
+      "url": "https://time.com/5742708/home-alone-facts/",
+      "status": "Opened; reports Ratray's 2013 account: art director's son appeared in costume.",
+      "limit": "No wig or director-only attribution."
+    },
+    {
+      "id": "S3",
+      "url": "https://catalog.afi.com/Film/58544-HOME-ALONE",
+      "status": "Opened AFI released-film catalog synopsis.",
+      "limit": "Synopsis, not direct viewing."
+    }
+  ],
+  "script_evidence": {
+    "q_ha1_p1_7": "p.73 scenes 318-320: BB gun in later burglar scene.",
+    "q_ha1_p1_8": "pp.9-14: delivery begins indoors; no collision/count.",
+    "q_ha1_p1_12": "pp.7-8 scene 16: Buzz's nickname story.",
+    "q_ha1_p1_15": "p.33 scene 88: saucer sled.",
+    "q_ha1_p1_17": "p.77 scene 321G: family-back request.",
+    "q_ha1_p1_18": "No snow-globe/globe match.",
+    "q_ha1_p1_20": "p.29: girlfriend-photo gag."
+  },
+  "afi_evidence": {
+    "q_ha1_p1_7": "lines 1310-1312 and 1323 separate dinner attack and later pellet-gun use.",
+    "q_ha1_p1_12": "lines 1304 and 1309 describe Buzz's false Marley story.",
+    "q_ha1_p1_15": "line 1312 corroborates staircase sled action.",
+    "q_ha1_p1_17": "line 1320 corroborates the family-back request."
+  },
+  "items": [
+    {
+      "id": "q_ha1_p1_7",
+      "verdict": "REVISE",
+      "old_key": "BB gun",
+      "finding": "The combined old premise is false.",
+      "repair": "Ask what Kevin takes from Buzz's room before confronting burglars; key BB gun. State separate timing.",
+      "limitations": "No direct film viewing."
+    },
+    {
+      "id": "q_ha1_p1_8",
+      "verdict": "UNVERIFIED",
+      "old_key": "zero boxes",
+      "finding": "No acceptable evidence establishes the count.",
+      "repair": "Remove the numerical item pending final-film/rights-holder visual evidence.",
+      "limitations": "AFI does not resolve the prop detail."
+    },
+    {
+      "id": "q_ha1_p1_12",
+      "verdict": "REVISE",
+      "old_key": "South Bend Shovel Slayer",
+      "finding": "It is Buzz's rumor, not a Marley fact.",
+      "repair": "Ask how Buzz calls Marley in his story; explain the rumor. Use short parallel nicknames.",
+      "limitations": "Exact final-film wording not directly viewed."
+    },
+    {
+      "id": "q_ha1_p1_15",
+      "verdict": "REVISE",
+      "old_key": "toboggan",
+      "finding": "The available draft says saucer sled.",
+      "repair": "Ask what Kevin rides down the stairs; key санки-тарелка. Remove color/toboggan wording.",
+      "limitations": "Exact final-cut label remains draft-derived."
+    },
+    {
+      "id": "q_ha1_p1_17",
+      "verdict": "ACCEPT",
+      "old_key": "family back instead of presents",
+      "finding": "AFI corroborates the released-film meaning.",
+      "repair": "Use: «О чем Кевин просит Санту вместо подарков?» Key: «Вернуть его семью». Short parallel options.",
+      "limitations": "Not a verbatim Russian quotation."
+    },
+    {
+      "id": "q_ha1_p1_18",
+      "verdict": "UNVERIFIED",
+      "old_key": "snow globes",
+      "finding": "No opened primary/rights-holder visual source establishes the collection.",
+      "repair": "Remove or replace only after direct visual corroboration.",
+      "limitations": "Trivia leads were not authority."
+    },
+    {
+      "id": "q_ha1_p1_20",
+      "verdict": "REVISE",
+      "old_key": "art director's son in costume",
+      "finding": "Photo setup plus reported participant account support this narrower claim.",
+      "repair": "Ask who posed for the photo; key сын арт-директора в костюме. Omit wig/director-only claims.",
+      "limitations": "S2 is not a rights-holder production note."
+    }
+  ],
+  "overall": {
+    "counts": {"accept": 1, "revise": 4, "unverified": 2},
+    "conclusion": "AFI confirms the BB-gun premise error and Santa request. Visual prop details still need final-film or rights-holder evidence."
+  }
+}

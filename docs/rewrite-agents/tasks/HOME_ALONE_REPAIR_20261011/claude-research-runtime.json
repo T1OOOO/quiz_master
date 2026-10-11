@@ -1,0 +1,67 @@
+{
+  "result": "Research complete and reported to Hub (task-07dfa8a6111b402e971f9fc64bcfea4c), activity marked COMPLETED. Here's the full JSON result for part2 IDs 6, 7, 10, 12, 13:\n\n```json\n{\n  \"items\": [\n    {\n      \"question_id\": \"q_ha1_p2_6\",\n      \"verdict\": \"REVISE\",\n      \"old_premise\": \"Какой фильм (на французском языке) смотрит Кевин, когда притворяется, что ему не страшно одному в первой части?\",\n      \"evidence\": [\n        {\"source\": \"homealone.fandom.com/wiki/It's_a_Wonderful_Life (synopsis)\", \"status\": \"accessed via search snippet, direct fetch blocked (402)\", \"date\": \"2026-10-11\"},\n        {\"source\": \"convergent recap/trivia sources (multiple, via WebSearch)\", \"status\": \"accessed\", \"date\": \"2026-10-11\"}\n      ],\n      \"scene_locator\": \"Paris subplot, at Uncle Rob and Georgette's apartment, while the extended family (not Kevin, not Kate) gathers for the evening\",\n      \"corrected_premise\": \"Находясь в Париже у дяди Роба, какой фильм в французском дубляже смотрит по телевизору остальная семья Маккалистеров (кроме Кевина и Кейт), пока Фрэнк разносит креветки?\",\n      \"parallel_options\": [\"Чудо на 34-й улице\", \"Эта замечательная жизнь (It's a Wonderful Life)\", \"Рождественская песнь\", \"Белое Рождество\", \"Один дома (рекурсия)\", \"Гринч\"],\n      \"key\": \"Эта замечательная жизнь (It's a Wonderful Life)\",\n      \"explanation\": \"Это не сцена с Кевином: в парижской сюжетной линии остальные Маккалистеры смотрят по французскому телевидению дублированную версию «Эта замечательная жизнь» (1946).\",\n      \"limitations\": \"No screenplay or film access; based on secondary synopsis sources only.\"\n    },\n    {\n      \"question_id\": \"q_ha1_p2_7\",\n      \"verdict\": \"ACCEPT\",\n      \"premise\": \"Что Кевин использовал в первой части, чтобы имитировать вечеринку с людьми (помимо манекенов)?\",\n      \"evidence\": [\n        {\"source\": \"SlashFilm, \\\"How All Those Mannequins Got Into Home Alone\\\"\", \"status\": \"accessed via search snippet\", \"date\": \"2026-10-11\"},\n        {\"source\": \"convergent trivia sources (multiple)\", \"status\": \"accessed\", \"date\": \"2026-10-11\"}\n      ],\n      \"scene_locator\": \"Night before the final confrontation, Kevin runs the fake party to fool a passerby/the bandits, with mannequins pulled on strings by a toy-train transformer and a cardboard Michael Jordan cutout riding the train track, set to 'Rockin' Around the Christmas Tree'\",\n      \"key\": \"Картонную фигуру Майкла Джордана и поезда с веревками\",\n      \"explanation\": \"Манекены двигались на веревках за счет трансформатора игрушечной железной дороги; картонный Майкл Джордан был установлен на рельсах того же поезда.\",\n      \"note\": \"Wording is slightly imprecise (it's mannequins-on-strings powered by the train, not generic 'trains with ropes') but factually sound; minor rewording optional, not required.\",\n      \"limitations\": \"Secondary sources only; no direct film/screenplay access.\"\n    },\n    {\n      \"question_id\": \"q_ha1_p2_10\",\n      \"verdict\": \"UNVERIFIED\",\n      \"premise\": \"Какого цвета были банки с краской, которые Кевин спустил на веревке в лицо бандитам в первой части?\",\n      \"evidence\": [\n        {\"source\": \"multiple WebSearch queries for exact colors\", \"status\": \"no color-specific confirmation found; target wiki pages returned HTTP 402 (paywalled/blocked), WebFetch and markitdown tools denied by permission mode\", \"date\": \"2026-10-11\"}\n      ],\n      \"scene_locator\": \"Staircase trap, paint cans swung down the stairwell rope onto Harry and Marv's faces\",\n      \"finding\": \"The paint-can-on-a-rope trap itself is solidly attested, but no accessible text source confirmed the specific colors ('light blue' / 'peach'). Cannot claim colors from indexed snippets, and claiming a direct visual/frame observation would violate the no-video-observation constraint.\",\n      \"recommendation\": \"Root should verify the exact colors directly against the released film or a rights-holder clip, or drop the color-specific detail from the stem if unconfirmable.\",\n      \"limitations\": \"No WebFetch/markitdown access in this session; fandom pages inaccessible; search snippets never specified colors.\"\n    },\n    {\n      \"question_id\": \"q_ha1_p2_12\",\n      \"verdict\": \"ACCEPT\",\n      \"premise\": \"Какую часть тела Гарри обжег о раскаленную дверную ручку в первом фильме?\",\n      \"evidence\": [\n        {\"source\": \"ScreenRant, \\\"Would Harry & Marv Survive the Booby Traps?\\\"\", \"status\": \"accessed via search snippet\", \"date\": \"2026-10-11\"},\n        {\"source\": \"Villains Fandom, Harry and Marv page\", \"status\": \"accessed via search snippet\", \"date\": \"2026-10-11\"}\n      ],\n      \"scene_locator\": \"Basement door trap: Kevin wires the inside doorknob to an electric-hibachi/barbecue-starter heating element; Harry grabs the outside knob\",\n      \"key\": \"Ладонь\",\n      \"explanation\": \"Гарри обжег правую ладонь о раскаленную дверную ручку; ожог оставил след в форме буквы «M», который показан/упомянут в «Один дома 2».\",\n      \"limitations\": \"Secondary sources only; Home Alone 2 callback is widely corroborated across multiple independent sources.\"\n    },\n    {\n      \"question_id\": \"q_ha1_p2_13\",\n      \"verdict\": \"ACCEPT\",\n      \"premise\": \"Какой марки был грузовик, на котором приехала банда в первом фильме?\",\n      \"evidence\": [\n        {\"source\": \"IMCDb.org, two independent vehicle-identification entries\", \"status\": \"accessed via search snippet\", \"date\": \"2026-10-11\"},\n        {\"source\": \"Officially licensed Greenlight 1:43 diecast replica, explicitly modeled as the film vehicle\", \"status\": \"accessed via search snippet\", \"date\": \"2026-10-11\"}\n      ],\n      \"scene_locator\": \"Gang's vehicle throughout the film, signage reading 'Oh-Kay Plumbing & Heating'\",\n      \"key\": \"Dodge (Ram Van)\",\n      \"explanation\": \"Банда ездила на фургоне 1986 Dodge Ram Van (Maxiwagon) с надписью «Oh-Kay Plumbing & Heating» на бортах.\",\n      \"limitations\": \"Based on vehicle-identification database and licensed merchandise, not direct frame viewing; convergent across independent sources.\"\n    }\n  ],\n  \"limitations_overall\": [\n    \"This session's WebFetch and markitdown tools were denied by permission mode; all evidence comes from WebSearch result snippets of secondary sources, not direct screenplay/film access or self-reported prior knowledge.\",\n    \"No video/frame/color observation was claimed anywhere.\",\n    \"Root retains authority over final wording, giveaway-pattern fixes, and source integration.\"\n  ]\n}\n```\n\nKey finding: the user's suspected-wrong-premise flag for q_ha1_p2_6 was correct — the French-dubbed *It's a Wonderful Life* is watched by the extended family in Paris, not by Kevin. That item needs a full premise rewrite, not just a reworded key. The paint-can colors (q_ha1_p2_10) couldn't be confirmed from any accessible text source, so it's UNVERIFIED pending root's direct check against the film.",
+  "session_id": "abd5e4f5-24cf-4322-9ece-641eaf47698e",
+  "modelUsage": {
+    "claude-sonnet-5": {
+      "inputTokens": 38,
+      "outputTokens": 11423,
+      "cacheReadInputTokens": 1428143,
+      "cacheCreationInputTokens": 98759,
+      "webSearchRequests": 0,
+      "costUSD": 0.7949706000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 4871,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 137356,
+      "outputTokens": 3743,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 12,
+      "costUSD": 0.27607099999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "mcp__host_hub__hub_task",
+      "tool_use_id": "toolu_014ycZgqKYkky2kkyZQH1TfM",
+      "tool_input": {
+        "action": "list"
+      }
+    },
+    {
+      "tool_name": "mcp__fetch__fetch",
+      "tool_use_id": "toolu_01KizKsRPK8WupJVz3224n77",
+      "tool_input": {
+        "url": "https://homealone.fandom.com/wiki/Paint_cans",
+        "max_length": 3000
+      }
+    },
+    {
+      "tool_name": "mcp__fetch__fetch",
+      "tool_use_id": "toolu_014dFnYrkRVRiYmiRMmcWHFA",
+      "tool_input": {
+        "url": "https://homealone.fandom.com/wiki/Michael_Jordan",
+        "max_length": 3000
+      }
+    },
+    {
+      "tool_name": "mcp__markitdown__convert_to_markdown",
+      "tool_use_id": "toolu_01BDmSLZdumAiP16ReNe8G7H",
+      "tool_input": {
+        "uri": "https://homealone.fandom.com/wiki/Paint_cans"
+      }
+    }
+  ],
+  "is_error": false
+}

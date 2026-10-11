@@ -1,0 +1,11 @@
+# Home Alone: factual repair before publication
+
+Beads: `quiz_master-1nh` remains in progress. This packet does **not** publish changes.
+
+1. Research: Codex reviewed seven first-part items; official Claude CLI researched five second-part items and reported through host_hub. Root rejected snippet-only publication approvals and cancelled only its own earlier managed attempt. Actual output and access limitations are preserved.
+2. Draft: root wrote eight narrower questions with four parallel choices and short player explanations. Four unsupported visual-detail questions remain held. The incorrect dinner-fight premise requires changing the question, not merely shortening its answer. Candidate/private source snapshots preserve the old state for comparison.
+3. Review: a fresh official Claude CLI session completed exact proposal/source review. First-part review is independent of the writer; part-two consistency review is not fully independent of the earlier Claude research. The Hub offer was dispatched but not accepted; its unused task (`task-6f1a72e1f2164be9a24f4d5ecd139745`) was cancelled after completion. Read review-disposition.md and the actual runtime report. The narrower three-item final-subset-draft.json now needs an accepted independent recheck; it is not approved or integrated.
+4. Integration: apply only individually accepted repairs; resolve every hold with primary evidence or a separately reviewed replacement. Review difficulty when a repaired stem changes the knowledge being tested. Preserve IDs and unrelated metadata. Check nearby topics in duplicate-scan.json before replacement questions.
+5. Release: run revision/article/history checks and appropriate server/client gates; obtain independent release review, then deploy and verify actual published questions in the browser. Close this issue only after its full scope passes publication verification. Keep real feedback reports open until their respective fixes are verified.
+
+The bank scan covers **185 questions across eight Home Alone packs**. It found no exact normalized duplicates; it is not an exhaustive semantic or factual audit of that bank. The production baseline remains `quiz-2026.10.11-phobias-1537ff5`, 131 packs/4008 questions/206 articles, Helm 33. No fresh application test, browser test or deployment is claimed by this research packet.
