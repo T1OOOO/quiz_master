@@ -1,0 +1,76 @@
+{
+  "checkpoint_type": "read_only_source_research_checkpoint",
+  "conversation_id": "404d881a-4534-4899-b2f8-f98038dba329",
+  "runtime": {
+    "provider": "antigravity",
+    "model": "Gemini 3.8 Flash (Medium)",
+    "reported_model_id": "gemini-3.8-flash-medium",
+    "capabilities": [
+      "read",
+      "research"
+    ]
+  },
+  "hub_coordination": {
+    "session_id": "session-cc37fd8ff7c5478d89fb92778a656982",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "task_id": "task-8727f4ccc6e74776aad7ec8d61cee95b",
+    "offer_id": "offer-08bdab1d54c6407aade35697cafa2ee7",
+    "task_state": "RUNNING",
+    "run_id": "run-6cc5a0600ff14befa0433693d9b2d530",
+    "actual_submit_occurred": false,
+    "status_note": "Task offer was atomically accepted; checkpoint returned directly per lead request prior to final task submission."
+  },
+  "sources_accessed": [
+    {
+      "source_id": "S1_AFI",
+      "url": "https://catalog.afi.com/Film/58544-HOME-ALONE",
+      "status": "OPENED_AND_READ",
+      "nature": "AFI Catalog of Feature Films release synopsis",
+      "findings": "Synopsis confirms Buzz tells Kevin a false story about neighbor Marley murdering his family in 1958. Identifies Harry and Marv as 'the wet bandits' due to flooded sinks. Does not document the nickname 'South Bend Shovel Slayer', contains zero mention of snow globes, and does not mention Buzz's girlfriend photo."
+    },
+    {
+      "source_id": "S2_TIME",
+      "url": "https://time.com/5742708/home-alone-facts/",
+      "status": "OPEN_INCOMPLETE",
+      "nature": "Secondary journalistic interview piece",
+      "findings": "Initial HTTP fetch returned client-rendered wrapper without article body text; subsequent MCP fetch timed out/canceled. No verifiable participant quote directly extracted during this run."
+    },
+    {
+      "source_id": "S3_SCRIPT_PRIOR",
+      "url": "https://assets.scriptslug.com/live/pdf/scripts/home-alone-1990.pdf",
+      "status": "PRIOR_RECORD_ONLY",
+      "nature": "Dated screenplay (fourth draft, Jan 17 1990)",
+      "findings": "Referenced from existing repository audit (native-research.json). Contains Buzz Marley story (scene 16) and girlfriend photo scene (p.29), but no snow globe mention. Draft text does not constitute release-film proof."
+    }
+  ],
+  "items": {
+    "q_ha1_p1_12": {
+      "claim": "Какое прозвище дали соседу с лопатой (старику Марли) местные дети в первом фильме? / Key: South Bend Shovel Slayer",
+      "verdict": "HOLD",
+      "reason": "Missing final-film proof. AFI synopsis verifies Buzz's murder rumor regarding Marley but omits the specific moniker 'South Bend Shovel Slayer'. While present in earlier script drafts as Buzz's rumor rather than a verified neighborhood fact, exact released-film dialogue was not directly viewed from authoritative release transcripts or video.",
+      "evidence_snippet": "AFI: 'Buzz tells Kevin and one of their cousins that Mr. Marley... murdered his family in 1958, but was never convicted...'"
+    },
+    "q_ha1_p1_18": {
+      "claim": "Какой предмет коллекционирования Марв маниакально воровал из каждого дома в первой части? / Key: Стеклянные снежные шары (Snow Globes)",
+      "verdict": "HOLD",
+      "reason": "Unsupported / unverified trivia. AFI synopsis and fourth-draft screenplay contain no reference to Marv stealing snow globes; AFI explicitly confirms the burglars' MO was leaving kitchen taps running to earn the name 'the wet bandits'. No opened primary source substantiates a snow-globe collection.",
+      "evidence_snippet": "AFI: 'As the thieves leave the Murphy house, Marv stops up the kitchen sink and turns on the water to flood the place...'"
+    },
+    "q_ha1_p1_20": {
+      "claim": "Интересный факт: кто на самом деле изображен на фотографии «девушки Базза»? / Key: Мальчик (сын арт-директора) в парике",
+      "verdict": "HOLD",
+      "reason": "Inaccessible primary proof. AFI synopsis omits the photograph gag entirely. The TIME magazine article (secondary interview citing actor Devin Ratray) was not successfully retrieved in readable text in this run. Screenplay confirms the in-scene gag but not behind-the-scenes casting trivia. Lacks direct rights-holder or primary production archive confirmation.",
+      "evidence_snippet": "Script draft scene 29 establishes the photo existence; behind-the-scenes casting of art director's son remains unverified by opened primary sources."
+    }
+  },
+  "duplicate_screening": {
+    "scope": "185 questions across 8 Home Alone packs",
+    "summary": "Existing repository duplicate-scan.json indicates no exact normalized stem collision for these specific items, but established semantic neighbors exist (q_ha1_p2_4 on Marley saving Kevin, multiple pizza/burglar questions). Any future replacement for q_ha1_p1_18 or q_ha1_p1_20 must avoid existing plot points in part 1/part 2 packs."
+  },
+  "limitations": [
+    "No direct release print or AV media was viewed.",
+    "AFI synopsis is an authoritative reference for major released-film actions but does not index minor visual props or micro-dialogue.",
+    "TIME.com failed to yield readable text due to fetch cancellation/client rendering; secondary trivia claims are not accepted without direct openable primary evidence.",
+    "All three items remain on HOLD pending independent lead review and different-provider validation."
+  ]
+}

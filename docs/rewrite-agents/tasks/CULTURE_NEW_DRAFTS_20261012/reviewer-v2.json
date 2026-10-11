@@ -1,0 +1,155 @@
+{
+  "label": "culture-new-factcheck-codex-20261012-v2",
+  "status": "HOLD",
+  "review_type": "independent finite fact/options and learning-value review",
+  "reviewed_at": "2026-10-12",
+  "scope": {
+    "input": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/writer-v2.json",
+    "input_sha256": "145CFD298A46D3ECC28098871BB6633AD0289F787435E2FD036624C65239989F",
+    "sources_manifest": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/writer-v2-sources.md",
+    "sources_manifest_sha256": "EE4492598E9E1023EB8917568A2215EFF25264E505D0EFD6E8F90B3972E391D9",
+    "writer_files_modified": false,
+    "publication_or_acceptance_claimed": false,
+    "v1_blinding": "No fully blind claim: the previous review disclosed its accidental article preview before the candidate-first check. This v2 review evaluates the frozen revised draft."
+  },
+  "batch_verdict": {
+    "status": "HOLD",
+    "reason": "All twelve answer keys and stated core facts checked against the cited Academy/Recording Academy sources, but this is not yet the varied, educational culture batch requested. Seven stems are award/nomination/category prompts (05–07 and 09–12), including five direct nomination/statistic lookups (05, 06, 09, 11, 12). Three questions reuse the same 65th-Grammy record, and two each reuse Gandhi/1983 and Raging Bull/1981. Every article spends the identical 29-word closing paragraph telling the learner how to inspect source cards, leaving 92–100 non-template body words; that is mechanically padded rather than film/music learning. Rewrite as concise, useful 60–100-word factual mini-articles, extending only where a source-rich claim earns the additional length, and remove all how-to-consult-source or guessing-answer filler."
+  },
+  "structural_checks": {
+    "question_count": 12,
+    "four_options_each": true,
+    "two_urls_each": true,
+    "article_word_counts_including_source_lines": {
+      "v2-01": 129,
+      "v2-02": 126,
+      "v2-03": 133,
+      "v2-04": 128,
+      "v2-05": 131,
+      "v2-06": 126,
+      "v2-07": 131,
+      "v2-08": 126,
+      "v2-09": 129,
+      "v2-10": 125,
+      "v2-11": 131,
+      "v2-12": 127
+    },
+    "key_indices_zero_based": [0, 1, 2, 3, 0, 3, 0, 1, 2, 3, 2, 1],
+    "key_distribution_A_B_C_D": [3, 3, 3, 3],
+    "answer_length_or_parenthesis_giveaway": "No positional, parenthetical, or conspicuously longer-key giveaway found. v2-02 nevertheless has an invented/opaque distractor, Jacob Rimiss, rather than four comparably plausible names.",
+    "cross_question_spoilers": "No article states another item's exact answer. Context clustering still reduces variety: 01/06 Gandhi (1983); 02/03 Raging Bull (1981); 09/11/12 65th Grammys (2023).",
+    "existing_quiz_duplicate_check": "Searched all quizzes/**/*.json for every revised title/name. Only a semantic near-duplicate was found: quizzes/Preparation/prep_film_directors_1.json asks who directed Raging Bull and explains Jake LaMotta. v2-02 uses the same film/person connection, so it should be replaced or moved to a materially different learning objective. The remaining searched terms had no literal match."
+  },
+  "source_review": {
+    "primary_sources_opened": [
+      "https://www.oscars.org/oscars/ceremonies/1983/A--E",
+      "https://www.oscars.org/oscars/ceremonies/1983/memorable-moments",
+      "https://www.oscars.org/oscars/ceremonies/1981/O",
+      "https://www.oscars.org/oscars/ceremonies/1981/memorable-moments",
+      "https://www.oscars.org/oscars/ceremonies/2003/Z?qt-honorees=1",
+      "https://www.oscars.org/oscars/ceremonies/2003",
+      "https://www.oscars.org/oscars/ceremonies/2003/memorable-moments",
+      "https://www.oscars.org/oscars/ceremonies/2005",
+      "https://awardsdatabase.oscars.org/Help/Statistics?file=Act-Nom2CatsSameYr.pdf",
+      "https://www.grammy.com/awards/categories/song-of-the-year/2020/",
+      "https://www.grammy.com/news/billie-eilish-wins-record-year-bad-guy-2020-grammys/",
+      "https://www.grammy.com/awards/categories/album-of-the-year/2014/",
+      "https://www.grammy.com/artists/daft-punk/8207/",
+      "https://www.grammy.com/awards/65th-annual-grammy-awards-2022/",
+      "https://www.grammy.com/awards/categories/album-of-the-year/2023/",
+      "https://www.grammy.com/awards/41st-annual-grammy-awards/",
+      "https://www.grammy.com/awards/categories/record-of-the-year/1999/",
+      "https://www.grammy.com/artists/lizzo/251879/",
+      "https://www.grammy.com/awards/categories/record-of-the-year/2023/"
+    ],
+    "availability": "All opened cited sources returned usable official content except the supplied 2003/Z?qt-honorees=1 URL, which timed out. The Academy base 2003 page opened and confirms the relevant credits, so replace the unstable URL rather than retaining it.",
+    "breadth_and_derived_content": "There are no science questions. Academy and Recording Academy records are primary for the award/credit metadata, but they cannot turn award-list recall into a broad film/music learning article. The repetitive 29-word source-reading boilerplate is not source-derived. Conservative manual estimates of source-derived fact paraphrase per repeatedly used official page are below 200 words (about 101 for 1983, 97 for 1981, and 110 for the 65th Grammys); this is an estimate, not a copyright measurement. Use a substantive film-credit, editing, songwriting, or production source before retaining craft exposition."
+  },
+  "questions": [
+    {
+      "id": "v2-01",
+      "verdict": "REWORK",
+      "key_check": "PASS — Richard Attenborough directed Gandhi; Kingsley acted, Briley wrote, and Shankar is associated with its music.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/1983/A--E", "https://www.oscars.org/oscars/ceremonies/1983/memorable-moments"],
+      "correction": "Keep the crew-role premise, but replace the generic award-card tutorial and shared closing with sourced facts about this production. Do not use 55th-ceremony metadata as most of the lesson."
+    },
+    {
+      "id": "v2-02",
+      "verdict": "REWORK",
+      "key_check": "PASS — Robert De Niro played Jake LaMotta; the Academy 1981 material supports the actor/film/boxer link.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/1981/memorable-moments", "https://www.oscars.org/oscars/ceremonies/1981/O"],
+      "correction": "Replace Jacob Rimiss with a real, plausible boxer or Raging Bull figure, and replace the item because an existing quiz already asks the Raging Bull director and explains Jake LaMotta. Remove the generic source-card closing."
+    },
+    {
+      "id": "v2-03",
+      "verdict": "REWORK",
+      "key_check": "PASS — Thelma Schoonmaker won Film Editing for Raging Bull.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/1981/O", "https://www.oscars.org/oscars/ceremonies/1981/memorable-moments"],
+      "correction": "The Academy pages substantiate the credit, not the broad definition of what an editor does. Cite a real editing/craft source and explain a concrete editorial choice, or replace the explanatory claims; also avoid the second item on the same film."
+    },
+    {
+      "id": "v2-04",
+      "verdict": "REWORK",
+      "key_check": "PASS — Ronald Harwood is the adapted-screenplay winner for The Pianist; Polanski, Brody, and Edelman match directing, acting, and cinematography respectively.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/2003/Z?qt-honorees=1", "https://www.oscars.org/oscars/ceremonies/2003", "https://www.oscars.org/oscars/ceremonies/2003/memorable-moments"],
+      "correction": "Replace the timed-out /2003/Z?qt-honorees=1 link with /2003. Replace the generic adapted-screenplay/award-card lesson and repeated closing with a specific, source-backed fact about adapting Szpilman's memoir."
+    },
+    {
+      "id": "v2-05",
+      "verdict": "HOLD",
+      "key_check": "PASS — Jamie Foxx won Lead Actor for Ray and was nominated in Supporting Actor for Collateral at the 77th Academy Awards.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/2005", "https://awardsdatabase.oscars.org/Help/Statistics?file=Act-Nom2CatsSameYr.pdf"],
+      "correction": "Replace with a film-performance or production fact. It is exact but remains a rare-nomination-statistic lookup, and the article teaches how to parse award status rather than about either film."
+    },
+    {
+      "id": "v2-06",
+      "verdict": "HOLD",
+      "key_check": "PASS — Gandhi received eight Oscars from eleven nominations.",
+      "sources_accessed": ["https://www.oscars.org/oscars/ceremonies/1983/memorable-moments", "https://www.oscars.org/oscars/ceremonies/1983/A--E"],
+      "correction": "Replace the numeric award-count recall. It repeats v2-01's Gandhi/1983 source context and its explanation is largely generic instructions plus a count."
+    },
+    {
+      "id": "v2-07",
+      "verdict": "REWORK",
+      "key_check": "PASS — the Song of the Year page credits Billie Eilish O'Connell and Finneas O'Connell as bad guy songwriters.",
+      "sources_accessed": ["https://www.grammy.com/awards/categories/song-of-the-year/2020/", "https://www.grammy.com/news/billie-eilish-wins-record-year-bad-guy-2020-grammys/"],
+      "correction": "Retain the songwriter-versus-recording insight, but ask it without making the category page the subject and teach a concrete credit distinction. Remove the generic closing."
+    },
+    {
+      "id": "v2-08",
+      "verdict": "REWORK",
+      "key_check": "PASS — Giorgio Moroder appears among Random Access Memories' featured artists/credits.",
+      "sources_accessed": ["https://www.grammy.com/awards/categories/album-of-the-year/2014/", "https://www.grammy.com/artists/daft-punk/8207/"],
+      "correction": "This is the strongest non-award premise, but the article's broad credit-role statements need a music-production source or a direct, album-specific credit fact. Make every distractor genuinely album-adjacent and remove the repeated closing."
+    },
+    {
+      "id": "v2-09",
+      "verdict": "HOLD",
+      "key_check": "PASS — Un Verano Sin Ti is listed beside Bad Bunny in Album of the Year for the 65th Grammys.",
+      "sources_accessed": ["https://www.grammy.com/awards/65th-annual-grammy-awards-2022/", "https://www.grammy.com/awards/categories/album-of-the-year/2023/"],
+      "correction": "Replace the direct nominee-list lookup. If Oasis remains in any rewrite, describe it accurately as a Bad Bunny/J Balvin collaborative album rather than implying every option is a solo Bad Bunny album."
+    },
+    {
+      "id": "v2-10",
+      "verdict": "REWORK",
+      "key_check": "PASS — the official Song of the Year listing credits James Horner and Will Jennings for My Heart Will Go On; Celine Dion is the Record of the Year performer.",
+      "sources_accessed": ["https://www.grammy.com/awards/41st-annual-grammy-awards/", "https://www.grammy.com/awards/categories/record-of-the-year/1999/"],
+      "correction": "Keep the useful composer/lyricist/performer distinction, but reframe it as a film-music credit question with a source about the song's creation, rather than another Grammy result. Remove the generic closing."
+    },
+    {
+      "id": "v2-11",
+      "verdict": "HOLD",
+      "key_check": "PASS — Lizzo's Grammy profile lists About Damn Time as a 65th-Grammy Best Pop Solo Performance nominee.",
+      "sources_accessed": ["https://www.grammy.com/artists/lizzo/251879/", "https://www.grammy.com/awards/65th-annual-grammy-awards-2022/"],
+      "correction": "Replace this nominee/category lookup, especially because v2-09 and v2-12 already use the same ceremony. Use an artist, song, or production fact with an explanation that teaches it."
+    },
+    {
+      "id": "v2-12",
+      "verdict": "HOLD",
+      "key_check": "PASS — Don't Shut Me Down is listed for ABBA among the 2023 Record of the Year nominees.",
+      "sources_accessed": ["https://www.grammy.com/awards/65th-annual-grammy-awards-2022/", "https://www.grammy.com/awards/categories/record-of-the-year/2023/"],
+      "correction": "Replace this direct nominee-list lookup and the generic closing. It is a third item tied to the same 65th-Grammy context and does not teach a fact about ABBA beyond a nomination."
+    }
+  ],
+  "required_next_gate": "A different-provider review must assess any rewritten batch. This report is fact-check evidence only; it neither publishes content nor accepts it."
+}
