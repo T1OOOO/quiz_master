@@ -1,0 +1,36 @@
+{
+  "review_scope": "Two source questions/options and103/102-word expanded articles ONLY",
+  "input_sha256": "0d634bc950c3c844918b535df6786e3b7815c5164aaa7f64ed860aa8439d2059",
+  "actual_hub_task": "task-8b0b636d443e4013a26be16e14b9461d",
+  "actual_hub_state": "ACCEPTED",
+  "actual_hub_version": 4,
+  "actual_hub_reviewer": "session-437e46db0a624de5a25b1ac078659944",
+  "actual_cli_exit": 0,
+  "runtime_sha256": "239a0f07b8f6a77fa4365c73069985da78d677697cc8abf9c12c3c158066a7d3",
+  "model_usage": {
+    "claude-sonnet-5": {
+      "inputTokens": 12,
+      "outputTokens": 5489,
+      "cacheReadInputTokens": 374640,
+      "cacheCreationInputTokens": 36997,
+      "webSearchRequests": 0,
+      "costUSD": 0.27783,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 2236,
+      "canonicalModel": "claude-sonnet-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "source_access": "Claude reports independently fetched all4primaryURLs and continuation text; root also openedthoseprimarypages. DirectHubreviewnotechecked actualper2ACCEPT, not inferred from exit0.",
+  "review_summary": [
+    "Oz article keeps qualifiedcolourintent, specificpairsequincount, sepiaarrival,1902stage andup-to9studio cameras, all source-supported.",
+    "Hendrix article includes Izabella/1968OlympicWhite/18Aug1969,shop/woods,left-handedadaptation/gift/MoPOPconnection, all source-supported."
+  ],
+  "limitations": [
+    "No blind-solving claim; promptcues existed.",
+    "Wordcount103/102 independently checked byroot, Claude reliedonprovidedcounts.",
+    "No approvalof canonical bindingmetadata, deployment, fullbankfacts or remaining12drafts."
+  ]
+}
