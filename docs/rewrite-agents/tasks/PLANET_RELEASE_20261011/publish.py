@@ -1,0 +1,19 @@
+"""Publish the already transferred exact package after independent gates."""
+from pathlib import Path
+import hashlib,json,re,subprocess
+r=Path('C:/ap/quiz_master');d=r/'.run/planet_release_20261011';m=json.loads((d/'package.json').read_text());review=json.loads((d/'claude-followup.json').read_text())
+assert review['verdict']=='accept'
+assert review['packet_sha256']==hashlib.sha256((d/'followup-packet.json').read_bytes()).hexdigest()
+assert hashlib.sha256(Path(m['archive']).read_bytes()).hexdigest()==m['sha256']
+assert '"old_api_rollback": "ok"' in (d/'strict-rehearsal.txt').read_text()
+assert 'mode=prepare' in (d/'remote-prepare.txt').read_text()
+build=m['version']['buildId'];assert re.fullmatch(r'quiz-2026\.10\.11-planets-[a-f0-9]{7}',build)
+script=f'''set -euo pipefail
+test "$(hostname)" = racknerd-f0269d5
+cd /opt/quiz-master/releases
+echo '{m['sha256']}  {build}.tar.gz' | sha256sum -c -
+cd {build}
+bash cutover.sh publish 2>&1 | tee publish.log
+'''
+res=subprocess.run(['ssh','-i','C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519','root@192.3.164.184',script],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+(d/'publish.txt').write_text(res.stdout);print(res.stdout);assert res.returncode==0
