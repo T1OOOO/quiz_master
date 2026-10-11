@@ -1,0 +1,55 @@
+{
+  "runtime": "Actual official Claude CLI exit0, modelUsage claude-sonnet-5; same reviewer resumed",
+  "reported_result": {
+    "hub_task_state": "task-6bed317995f54b9991d0e36cff54c10f remained NEW/unassigned after a bounded ≤30s wait and a follow-up poll -- no offer arrived, so dispatch is pending and this work could not be hub_task-submitted against it; reported directly here and via project message instead.",
+    "task_id": "task-6bed317995f54b9991d0e36cff54c10f",
+    "public_build_js_sha_check": {
+      "method": "actual Python urllib GET (not browser) from this session",
+      "version_json": {
+        "buildId": "quiz-2026.10.11-home-alone-e0d13f4",
+        "commit": "e0d13f497717dc4fb2e242ef07f813699602df5e",
+        "matches_package_json": true
+      },
+      "main_dart_js_sha256": "ec05a736342f15213cad5afdc4aa5e8cd0c3a757ca793c25de8e733a4e812ea2",
+      "matches_expected": true,
+      "note": "Production is now actually serving the HomeAlone build (not just prepared) -- a change since the last QA cycle, which had the public endpoint still on phobias-1537ff5."
+    },
+    "exact25_check": {
+      "public_question_count": 25,
+      "frozen_bundle_question_count": 25,
+      "content_and_revision_mismatches": 0,
+      "three_corrected_questions_match": [
+        "q-ha1-p1-7",
+        "q-ha1-p1-15",
+        "q-ha1-p1-17"
+      ]
+    },
+    "privacy_check": {
+      "private_grading_present": false,
+      "correct_option_id_or_correct_answer_index_present": false,
+      "result": "clean"
+    },
+    "browserproof_disposition": "browser-answers.json/browser-explanations.json/production-status.json/public-verification.json were read as root-supplied evidence only (all 25 refs clicked, manual Finish, Счёт: 25, scrolled explanations for all 25 incl. the 3 revised); this review did not execute any browser itself and no q7/q15/q17-specific screenshots exist on disk to view, only the earlier pre-publish desktop/mobile screenshot already noted as not new-release verification.",
+    "culture_dispositions": {
+      "task-bdc3ff3937734fd584e6386853e8b9e2": "ACCEPTED as evidence report only (not publication of the 12 items) -- independently re-confirmed on writer.json's actual draft bytes: culture-new-03 key/article mismatch (points to DiCaprio, article+real result say Forest Whitaker), all-12 award-recall repetition, cross-spoilers 04/05+09/12+10/11, and 09/11 stem-level album-title giveaways.",
+      "task-d2776ca0467a48358a16f0b8ea965810": "REWORK with 4 concrete conditions: (1) fix culture-new-03's key/option/article mismatch, (2) break the uniform award-lookup mechanic for genuine variety, (3) deduplicate the three shared-ceremony cross-spoiler pairs, (4) replace or rephrase 09/11 so the stem doesn't name the answer in the title."
+    },
+    "remaining_work": [
+      "task-6bed317995f54b9991d0e36cff54c10f needs an actual offer+accept cycle before it can be formally Hub-submitted; root must offer it.",
+      "No invented ACCEPTED claim for any task issued by this session -- a different-provider root review of this session's work is still required.",
+      "22 unchanged Home Alone facts, the remaining nine previously-flagged factual items, the full 4008-question bank, and Android are out of scope and unverified.",
+      "Culture draft needs the writer's corrected resubmission before any further review or integration."
+    ]
+  },
+  "root_disposition": {
+    "public_HTTP": "Reported actual independent urllib execution matches root actual published verification; no accepted task execution claimed",
+    "task_protocol": "Root created/offered finite task6bed, but Claude did not accept and finished without submission. Root withdrew only its own unused renewed offer and cancelled unused NEW task after actual process exit0. No Hub ACCEPTED claim for this optional task. Prior mandatory staging QA8b acceptance remains valid.",
+    "rejected_screenshot_claim": "CLI said q7/q15/q17 screenshots absent; false. They exist in owned docs directory, all3 were visually inspected by root. This statement is rejected, not used as evidence.",
+    "actual_screenshot_sha256": {
+      "live-mobile-q-ha1-p1-15.png": "df78b04860c0392408305ed827394050601379010f886810e4cb9bf3e98f7161",
+      "live-mobile-q-ha1-p1-17.png": "c9601228abba8c0b33222c1b00a4fea139c3cd6161b510ccdffcd3619c97cbf9",
+      "live-mobile-q-ha1-p1-7.png": "63549cacf0c511449b2af6fc05b378c526bc019c97508dc6f9a778d16120c9c4"
+    },
+    "accepted_culture_report_task": "task-bdc3ff3937734fd584e6386853e8b9e2 actual ACCEPTED as reportonly; v1writer actual REWORK. V2 is separate outstanding task."
+  }
+}
