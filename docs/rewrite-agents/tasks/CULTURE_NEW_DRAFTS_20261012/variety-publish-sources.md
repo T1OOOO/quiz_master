@@ -1,0 +1,35 @@
+# Culture variety pilot v2: source and claim record
+
+Access date: 2026-10-12. The four cited source URLs were opened directly. Excerpts below are concise paraphrases of the opened source material.
+
+## culture-variety-pilot-v2-01 — cinema
+
+| Claim | Source | Provenance, access, and excerpt |
+| --- | --- | --- |
+| Baum's book uses silver slippers; a documented 1939 film pair uses ruby/red construction. | [Library of Congress: *To See the Wizard*](https://loc.gov/exhibits/oz/ozsect2.html) | U.S. national-library exhibition/archive; opened. It says the slippers were originally silver in Baum's book and that ruby was *purportedly* chosen to take advantage of colour photography. The described exhibited pair has red satin and 2,300 sequins per shoe. |
+| Kansas is sepia-toned and colour begins with Dorothy's arrival in Oz. | [American Film Institute: *AFI Movie Club: The Wizard of Oz*](https://www.afi.com/news/afi-movie-club-the-wizard-of-oz/) | Film institute educational archive; opened. AFI describes the sepia beginning and end, the colour transition in Oz, and silver slippers in Baum's original books. |
+
+The colour rationale stays qualified because the Library of Congress uses “purportedly”; the sequin count is explicitly limited to the pair described by that exhibition.
+
+## culture-variety-pilot-v2-02 — music
+
+| Claim | Source | Provenance, access, and excerpt |
+| --- | --- | --- |
+| The guitar Hendrix played at Woodstock in 1969 was called Izabella; it was an Olympic White Fender Stratocaster. | [Experience Hendrix: *Historic Stratocaster at Woodstock*](https://www.jimihendrix.com/editorial/experience-hendrix-tour-underway-kickoff-in-jimis-hometown-highlighted-by-onstage-appearance-of-historic-stratocaster-he-played-at-woodstock/) | Official artist-rightsholder site; opened. It reports that the Fender Stratocaster Hendrix played at Woodstock in 1969 was known as Izabella and quotes the Museum of Pop Culture record identifying it as Olympic White. |
+| Fender identifies Izabella as a 1968 Olympic White Stratocaster, played at Woodstock on 18 August 1969. | [Fender: *Jimi Hendrix and a Strat Named Izabella*](https://www.fender.com/articles/fender-performances/jimi-hendrix-and-a-strat-named-izabella) | Instrument maker/rightsholder publisher; opened. Fender names the guitar, gives its 1968 Olympic White model description, and dates the Woodstock performance. |
+| The left-handed adaptation reversed strings and the bone nut, moved the strap pin, and used the guitar upside-down. | [Experience Hendrix: *Historic Stratocaster at Woodstock*](https://www.jimihendrix.com/editorial/experience-hendrix-tour-underway-kickoff-in-jimis-hometown-highlighted-by-onstage-appearance-of-historic-stratocaster-he-played-at-woodstock/) | Official artist-rightsholder site; opened. Its Museum of Pop Culture quotation says the strings and bone nut were reversed, the strap pin was moved, and the guitar was played upside-down. It does not say the nut was replaced. |
+| Izabella is associated with Seattle's Museum of Pop Culture and was brought out for the 2024 Experience Hendrix Tour launch. | [Experience Hendrix: *Historic Stratocaster at Woodstock*](https://www.jimihendrix.com/editorial/experience-hendrix-tour-underway-kickoff-in-jimis-hometown-highlighted-by-onstage-appearance-of-historic-stratocaster-he-played-at-woodstock/) | Official artist-rightsholder site; opened. It says the instrument was brought to the launch by arrangement with MoPop and identifies the museum holding context. |
+
+## Duplicate screen
+
+On 2026-10-12, native search across current `quizzes/**/*.json` checked `Волшебник страны Оз`, `Dorothy`, `ruby slippers`, `Джими Хендрикс`, `Hendrix`, `Izabella`, `Stratocaster`, and `электрогитар`.
+
+The bank has Dorothy-actor and Toto-breed questions, but no book-to-film slipper-colour question. It has no Hendrix, Izabella, or Stratocaster question. The two knowledge objectives are not semantic duplicates of the returned hits.
+
+## Lead final changes and additional claim
+
+Final draft variety-final.json keeps frozen writer-v2 untouched. Lead independently opened all source URLs, including the Fender Izabella feature. Experience Hendrix/MoPop quotation states that Hendrix gave this guitar to drummer Mitch Mitchell shortly before his death. This supports the final article’s gift statement. It describes reversal of strings and nut, but does not prove a nut was never replaced at another time; that unsupported negative has been removed. Russian colour-film wording is «цветная съёмка». No acceptance, integration or publication is implied.
+
+## Reader-ready expanded candidate (fresh review required)
+
+variety-publish-candidate.json SHA0d634bc950c3c844918b535df6786e3b7815c5164aaa7f64ed860aa8439d2059 contains unchanged questions/options/keys and103/102-word articles to meet the current reader100-word gate. Fresh fact review is required for the expanded prose. LOC’s exhibition section Shooting the Wizard of Oz describes MGM studio sets and up to nine cameras filming one scene; AFI’s Movie Trivia describes Oz adaptations beginning on stage in1902. Fender’s Izabella feature names the1968 Olympic White instrument, Woodstock performance on18August1969, Manny’s Music inNewYork, alder body and maple neck, and its MoPOP connection inSeattle. Experience Hendrix’s museum quotation supports left-handed modifications and gift toMitchMitchell. Lead opened these four URLs directly; reviewers must verify independently rather than trust this record. No extra quote excerpts or all-pairs/all-performances assertions are used.
