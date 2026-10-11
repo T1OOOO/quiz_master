@@ -1,0 +1,98 @@
+{
+  "packet_label": "CULTURE_NEXT8_FACTCHECK_V2_20261012",
+  "review_status": "DONE_WITH_CONCERNS",
+  "reviewed_at": "2026-10-12",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session": "session-79f42d8274ac4d6aa02cbdfc60df567f"
+  },
+  "input": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/next8-v2.json",
+    "sha256": "932DEE6A361774B9ED4CB811B10BEE88531D22828A6437A0905470FD76594A4B"
+  },
+  "method": "Blind-solved the stems before comparing the private keys, counted article words, and directly opened every distinct cited URL. Source access and claim-level notes are in next8-v2-review-sources.md.",
+  "items": [
+    {
+      "id": "next8v2-01",
+      "verdict": "revise",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 107,
+      "finding": "The Pixar Coco page directly supports independently controlled bones, detachable bones, and vertebrae. It supports the answer and central article claim. The second cited graphics.pixar.com PDF URL now opens a generic Technology Libraries page, not the claimed course paper; remove it or replace it with a directly opened Coco production source. The distractors are parallel enough."
+    },
+    {
+      "id": "next8v2-02",
+      "verdict": "revise",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 102,
+      "finding": "The Pixar Coco page directly supports the ever-expanding-city rule, new residents, Tenochtitlan/water inspiration, and towers/layers. The same bad or redirected PDF citation must be removed or replaced. No competing answer is defensible."
+    },
+    {
+      "id": "next8v2-03",
+      "verdict": "hold",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 113,
+      "finding": "The keyed answer is the only sensible option, but this is a generic media-literacy prompt rather than an evidence-led actor question. BAFTA was inaccessible to the required fetcher (robots 403); SAG-AFTRA's home page is only a programme index. The article also asserts Academy Museum coverage without citing it. Replace with a named performer, a directly accessible first-party interview, and claims that the named interview actually makes."
+    },
+    {
+      "id": "next8v2-04",
+      "verdict": "hold",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 110,
+      "finding": "The intended choice is plausible among these four, but the absolute wording 'what first determines' is not established by either source and a pause can also express intention or subtext. The cited pages do not document a named actor explaining this claim. Reframe around a named, observed scene/interview statement and cite that accessible primary interview."
+    },
+    {
+      "id": "next8v2-05",
+      "verdict": "accept",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 107,
+      "finding": "Queen's official story directly supports the feet-and-hands multiple-take recording and Brian May's audience-participation purpose. The answer is unique and distractors are plausibly music-related except the deliberately contrasting quartet/orchestra choices. Do not retain the unrelated Bohemian Rhapsody feature as factual support. Batch repetition with next8v2-08 still needs resolution."
+    },
+    {
+      "id": "next8v2-06",
+      "verdict": "accept",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 107,
+      "finding": "The official 2019 Abbey Road page labels The Long One as a Medley and lists its component songs; the album page supports the careful studio-arrangement context. The answer is unique, the article is within range, and no material factual defect was found."
+    },
+    {
+      "id": "next8v2-07",
+      "verdict": "accept",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 106,
+      "finding": "The Beatles' official Hollywood Bowl page explicitly ties the lack of fold-back speakers to the musicians being unable to hear themselves and supports the three-track restoration statement. The answer is unique. The Abbey Road citation is unnecessary for this item but does not contradict it."
+    },
+    {
+      "id": "next8v2-08",
+      "verdict": "revise",
+      "blind_answer_option_index": 0,
+      "key_matches_blind_answer": true,
+      "article_word_count": 107,
+      "finding": "A repeated short phrase is a reasonable unique answer, and Queen's official We Will Rock You history supports the crowd-participation premise. However, this duplicates next8v2-05's song, source, audience-participation lesson, and miniarticle evidence, making it a cross-spoiler pair. Replace this item with a different singer/song and a source-specific observation; remove the unrelated Rock Candy page."
+    }
+  ],
+  "batch_findings": [
+    "All eight intended keys are numeric zero-based index 0. Unless the delivery layer is guaranteed to shuffle options before display, this is a visible answer-position giveaway and blocks release. Reorder the correct option and update each private key before import.",
+    "next8v2-01 and next8v2-02 repeat Coco/Pixar production design; retain at most one unless the surrounding bank intentionally separates closely related production topics.",
+    "next8v2-05 and next8v2-08 repeat We Will Rock You, the same official Queen story, audience participation, and the stomp/clap premise. This is a substantive cross-spoiler pair.",
+    "next8v2-03 and next8v2-04 are both generic, unsourced acting-craft lessons and should be replaced by distinct named-performer interviews rather than repaired with programme landing pages."
+  ],
+  "summary": {
+    "accept": 3,
+    "revise": 3,
+    "hold": 2,
+    "article_word_range_102_to_113": true,
+    "release_recommendation": "Do not import or publish this v2 draft until source repairs, actor replacements, duplicate removal, and option-position rebalance are independently rechecked."
+  },
+  "limitations": [
+    "BAFTA denied automated access through robots.txt; that is recorded as an access failure, not evidence for its claims.",
+    "No author, runtime, import, publication, Git, build, browser, or production file was changed."
+  ]
+}

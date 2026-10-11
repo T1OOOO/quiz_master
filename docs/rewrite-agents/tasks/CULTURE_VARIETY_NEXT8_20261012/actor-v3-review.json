@@ -1,0 +1,54 @@
+{
+  "packet_label": "CULTURE_NEXT8_ACTORS_V3_20261012",
+  "review_status": "DONE",
+  "reviewed_at": "2026-10-12",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session": "session-79f42d8274ac4d6aa02cbdfc60df567f"
+  },
+  "input": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/next8-actors-v3.json",
+    "sha256": "0B338834C2036578DABBF2550D826E842BB418E0B155105125C4B54159CED0D9"
+  },
+  "answer_method": "NOT_A_BLIND_SOLVE: the supplied file exposed numeric keys and correct-answer text before this review. Key checks below are structural and factual self-checks, not independent blind-answer evidence.",
+  "items": [
+    {
+      "id": "next8v3-actor-01",
+      "verdict": "accept",
+      "numeric_index": 2,
+      "numeric_index_is_zero_based_and_matches_option_text": true,
+      "article_word_count": 111,
+      "source_findings": [
+        "AFI Catalog identifies the 1971 film and credits Gene Wilder as Willy Wonka and Peter Ostrum as Charlie Bucket.",
+        "AFI Movie Club confirms the Roald Dahl adaptation, Wilder's requested limp-and-somersault entrance, and his stated reason for it."
+      ],
+      "option_quality": "All four are distinct. Depp and Chalamet are plausible later Wonka performers; Ostrum is the same film's Charlie, so the distractors test the stated role and 1971 qualifier without an obvious giveaway.",
+      "article_claim_review": "The title change, Dahl source, Wilder/Ostrum roles, entrance proposal, and later-version distinction are supported or clearly framed as interpretation. No unsupported material claim found."
+    },
+    {
+      "id": "next8v3-actor-02",
+      "verdict": "accept",
+      "numeric_index": 1,
+      "numeric_index_is_zero_based_and_matches_option_text": true,
+      "article_word_count": 110,
+      "source_findings": [
+        "AFI Catalog identifies the 1992 film, Francis Ford Coppola as director, Gary Oldman as Dracula, Winona Ryder as Mina Murray/Elisabeta, Anthony Hopkins as Van Helsing, Keanu Reeves as Jonathan Harker, and Richard E. Grant as Dr. Jack Seward.",
+        "Sony Pictures identifies Oldman, Ryder, and Hopkins as stars and describes Oldman's Dracula performance in Coppola's version."
+      ],
+      "option_quality": "All four options are distinct credited members of the film's ensemble, so the wrong answers remain plausible and the role-specific wording is necessary. There is no answer-position or wording cue beyond ordinary knowledge of the cast.",
+      "article_claim_review": "The year, director, role allocation, ensemble premise, and production-credit context are supported. The phrasing about romantic/visual form is an accurate paraphrase of Sony's own promotional description, not a claim of historical consensus."
+    }
+  ],
+  "batch_checks": {
+    "question_count": 2,
+    "each_has_four_distinct_options": true,
+    "numeric_indices": [2, 1],
+    "answer_position_distribution": "Two items use different nonzero positions; no repeated first-option cue exists in this two-item repair.",
+    "cross_spoiler_or_repeated_subject": "None found between the two replacement questions. They concern separate films, performers, and roles."
+  },
+  "limitations": [
+    "This review covers only next8-actors-v3.json and the four cited sources; it does not re-review the remaining six NEXT8 v2 items or amount to import, publication, or final acceptance.",
+    "Because the supplied artifact was key-bearing, no independent blind solve was performed or claimed."
+  ]
+}

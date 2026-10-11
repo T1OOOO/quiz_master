@@ -101,7 +101,7 @@ func TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart(t *testing.T)
 			t.Fatal("foreign history exposed")
 		}
 	}
-	if total != 4010 {
+	if total != 4012 {
 		t.Fatalf("questions=%d", total)
 	}
 	restarted, err := NewAttempts(db, filepath.Join(root, "quizzes"), "", filepath.Join(root, content.DefaultSchemas), time.Hour)

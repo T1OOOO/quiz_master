@@ -1,0 +1,61 @@
+{
+  "label": "culture-variety-actors-integration-20261012",
+  "task_id": "task-a1f8a6d30b7845d58e60369aa8285084",
+  "run_id": "run-b96ba774a9d3431c98789d58cebb524f",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "source_packet": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/next8-actors-v3.json",
+    "sha256": "0B338834C2036578DABBF2550D826E842BB418E0B155105125C4B54159CED0D9",
+    "review_path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/actor-v3-review.json",
+    "review_scope": "accepted primary-source question/article prose; it is not a final cross-provider review of generated bindings or a publication approval"
+  },
+  "added_questions": [
+    {
+      "question_id": "cinema-people-012",
+      "correct_option_index": 2,
+      "correct_option_text": "Джин Уайлдер",
+      "revision_sha256": "91790c87904f61c37d4b2e63ac520c605fe3eb435775a5a3ab6d08db25a45e81",
+      "editorial_tag_ids": ["domain:arts", "domain:screen", "medium:film", "topic:actors"],
+      "context_tag_ids": []
+    },
+    {
+      "question_id": "cinema-people-013",
+      "correct_option_index": 1,
+      "correct_option_text": "Гэри Олдман",
+      "revision_sha256": "08d98099c5cb854321ab72a3290003f917b1ba89c510da7bb9cf09e359e563e2",
+      "editorial_tag_ids": ["domain:arts", "domain:screen", "medium:film", "topic:actors"],
+      "context_tag_ids": []
+    }
+  ],
+  "provenance": {
+    "taxonomy": "metadata/tags.v1.json; qm-tags-v1; 07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "source_uri": "/app/quizzes/Cinema/People/cinema_people_20261011.json",
+    "staging": "Imported with explicit taxonomy, then root-owned ignored culture_actor_binding wrapper rebound the source URI, rehashed and built with the frozen taxonomy before canonical replacement. Wrapper exit 0 with no stdout."
+  },
+  "checks": [
+    "staged and final draft/bundle validation with explicit taxonomy: PASS, 13 questions",
+    "article build --write and --check: PASS, 210 accepted mini articles",
+    "full server tests: PASS across cmd/api, cmd/quizctl, and all nine internal packages",
+    "article tests from study/question_articles working directory: PASS, 4 tests",
+    "structural parity: all prior 11 Cinema public DTOs/private grading/revisions equal HEAD; all 208 old reader article objects equal HEAD",
+    "catalog parity: 130 old rows equal HEAD; Cinema People count only changed 11 to 13; 131 rows / 4012 questions / public metadata allowlist only",
+    "foreign snapshot verification: PASS, 69 foreign hashes preserved",
+    "git diff --check: PASS"
+  ],
+  "current_file_sha256": {
+    "quizzes/Cinema/People/cinema_people_20261011.json": "717efcedf1d96a46079f6704ff21eafca64eade92ac1cecb640e1485ef7f019e",
+    "next/content/cinema-people-20261011/manifest.json": "9c059c74732796ee636b86ff9d54b79a51eb1b7e1cb58c57f230a707f6f437fe",
+    "next/content/cinema-people-20261011/draft.json": "83073049fa8865d14569dbe12ed2ccaf38d94c7f106c2d7f8fb4d04ef5dccf07",
+    "next/content/cinema-people-20261011/bundle.json": "65f6aec0f6f0e69ccd28792660717a5ead6d570b9987dc1c294751f9fc421beb",
+    "study/question_articles/drafts/actors-20261012.json": "87ea883869de5d1873934e2c75d2d0f6f7cc977885bbd8fc90bcd5c6b74055e6",
+    "study/question_articles/reviews/actors-20261012.json": "61ea0996476697c59f23498ec84533981371f9249ec3f0474816c86f7b766124",
+    "next/apps/quiz_app/assets/catalog.json": "241ae72047f47ca6cfe78f81078b567972cb1738f662142db9d2774075f91542",
+    "next/apps/quiz_app/assets/study/question-articles.json": "e6f751bbdb2fcd3faab5801b202e46f36208b8c7691b85b770e0bba503287761",
+    "next/server/cmd/quizctl/catalog_test.go": "88a689ec662a028eb124366ff641b9303fb2c317fccc6c310a3041dea35fa043",
+    "next/server/internal/sqlite/collection_test.go": "f3fab162eec673197cf32959c9f32510c9532f7a890acbd6c35160b3c253dfe5"
+  },
+  "not_claimed": [
+    "final cross-provider review",
+    "release, deployment, production publication or acceptance"
+  ]
+}

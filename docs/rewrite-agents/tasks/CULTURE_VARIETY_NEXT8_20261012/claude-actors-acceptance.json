@@ -1,0 +1,19 @@
+{
+  "task_id": "task-a1f8a6d30b7845d58e60369aa8285084",
+  "actual_hub_state": "ACCEPTED",
+  "reviewer": "session-26675a60c1504d91857c20a654cdfa97",
+  "provider": "claude",
+  "runtime_models": [
+    "claude-sonnet-5",
+    "claude-haiku-4-5-20251001"
+  ],
+  "review": "## Review summary — ACCEPT (independent fact + structural review, not a publication signoff)\n\n**What I verified myself (not just trusted the evidence file):**\n- Recomputed `sha256sum` on all 11 files named in `actor-integration-evidence.json` — every hash matched exactly.\n- Compared canonical `cinema_people_20261011.json`, `draft.json`, `bundle.json`, `manifest.json` entries for `cinema-people-012`/`013` against `next8-actors-v3.json` — text, 4 distinct options, zero-based correct indices (2 → Джин Уайлдер, 1 → Гэри Олдман), explanations, and the frozen `editorial_tag_ids` all match verbatim; `context_tag_ids` is empty everywhere.\n- Confirmed the public bundle quiz DTO carries **no** `correct_option_id` — grading stays private, matching `private_grading`/`private_question_metadata`.\n- Recomputed `article_sha256` using the project's own `study/question_articles/build.py` hash algorithm for both articles — exact match to `reviews/actors-20261012.json`, so the reviewed article text is unmodified.\n- Word counts: 111 and 110 words exactly, as claimed.\n- `git diff HEAD` on the three content/asset files: only the two new question/article objects were appended; all 11 prior Cinema DTOs/grading and all 208 prior reader articles are byte-identical to HEAD.\n- `catalog.json`: 131 rows, Σquestions_count = 4012, Cinema People row = 13. Reader `question-articles.json`: 210 articles total.\n- Live-fetched all four primary URLs (AFI Catalog ×2, AFI Movie Club, Sony Pictures) — every cast/role/year/anecdote claim in both articles is directly supported.\n- Distractors are plausible and distinct; no answer-position pattern (indices 2 and 1).\n\n**Limitations (stated in the review, not claimed as passing):**\n- I did not run the Go/Python test suites myself — the worker's \"all tests pass\" claim is unverified by me.\n- Only `cinema-people-012`/`013` were reviewed, not the other NEXT8 v2 items.\n- This is not a release/publication approval.\n\nSubmitted via `hub_task review` as **accept** on `task-a1f8a6d30b7845d58e60369aa8285084`. Unrelated hub chatter (from `language_learner` project lease incidents) was acknowledged but is not relevant to this review.",
+  "limitations": [
+    "Not a publication signoff; only actor2 reviewed."
+  ],
+  "root_execution": [
+    "Full Go server suite exit 0",
+    "Python article unittest discover: 4 tests, exit 0",
+    "Foreign snapshot: 69 hashes preserved"
+  ]
+}

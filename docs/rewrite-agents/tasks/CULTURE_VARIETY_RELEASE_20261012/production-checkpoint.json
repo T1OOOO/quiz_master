@@ -1,0 +1,60 @@
+{
+  "published_version": {
+    "buildId": "quiz-2026.10.12-culture-variety-b015251",
+    "commit": "b015251802a7e0060af7cb88d46f08e0a0632b26",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4010,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 208,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "90eb495f69a0f54b1a31f10aed7a9ea346f1ea4e1395526ddc796619f850cfe8"
+  },
+  "archive_sha256": "722a6ba1085824a2537c297be0792204a7c49c624fb346a108bd7b4d9ee966af",
+  "image": "sha256:c75c4ed6f3570dd3b624eccb6ef572d501990433dbe836ecd837c93b496c97d6",
+  "helm_revision": 35,
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-variety-b015251.tar",
+  "durable_archive_sha256": "8246ee04bdafad69770e81ebea888c9b151b8ddbf858fb8e034282d753e6629c",
+  "publication_log_sha256": "797f1b2979dcc65a6c08a54d466db86836567719d26f68c8a0d2136d8ed2f359",
+  "final_health_log_sha256": "e2795aca4d2cf69635527a2f98b04843ab6f2b65488abd27e38fc726be3a75f2",
+  "production_feedback": {
+    "status_counts": {
+      "open": 26
+    },
+    "changed": false
+  },
+  "public_asset_hashes": {
+    "main.dart.js": "90eb495f69a0f54b1a31f10aed7a9ea346f1ea4e1395526ddc796619f850cfe8",
+    "assets/assets/catalog.json": "b0c959702cc2e8659c430434986819d7a06a64f367f5d75429de93cef19495b6",
+    "assets/assets/study/question-articles.json": "d6bf35b9a1e57b4bd265b1ac88c8b8ff09982f90a9efc496b583a647593a6bc4"
+  },
+  "checks": [
+    "Fresh backup integrity/restore and disposable rehearsal: eight packs,106 questions",
+    "Existing database rows preserved; old API rollback on copy",
+    "Prepared immutable image reused for atomic Helm publication",
+    "Exact public version/assets,87 selected article refs and prior fixes verified",
+    "Local mobile Cinema quiz11/11; production Music quiz11/11;390x844",
+    "New question options and miniarticles visually inspected; source buttons opened expected URLs",
+    "Final server Ready/no pressure; existing Bound PVC; durable image checksum matches"
+  ],
+  "browser_limitations": [
+    "Fender destination initially displayed a challenge; URL handler verified, external page accessibility is not guaranteed."
+  ],
+  "local_next_candidate": {
+    "questions": 4012,
+    "articles": 210,
+    "added_actor_questions": [
+      "cinema-people-012",
+      "cinema-people-013"
+    ],
+    "independent_review": "ACCEPTED",
+    "published": false
+  },
+  "not_claimed": [
+    "All bank facts reviewed",
+    "All held drafts ready",
+    "All feedback resolved",
+    "Actor candidate published"
+  ]
+}
