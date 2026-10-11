@@ -12,7 +12,11 @@ import (
 
 func TestSourceCorpusHasDistinctAnswerLabels(t *testing.T) {
 	var out bytes.Buffer
-	if err := audit("../../../../quizzes", filepath.Join("../../../..", content.DefaultSchemas), &out); err != nil {
+	taxonomy, err := content.LoadTaxonomy(filepath.Join("../../../..", "metadata", "tags.v1.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := auditWithTaxonomy("../../../../quizzes", filepath.Join("../../../..", content.DefaultSchemas), taxonomy, &out); err != nil {
 		t.Fatal(err)
 	}
 	var report struct{ Packs []auditPack }
@@ -21,7 +25,7 @@ func TestSourceCorpusHasDistinctAnswerLabels(t *testing.T) {
 	}
 	want := map[string]string{"q-philias-100-54": "Ольфактофилия", "q-philias-100-59": "Эритрофилия", "q-phobias-part-8-20": "Пирофобия"}
 	for _, pack := range report.Packs {
-		draft, _, err := content.Import(pack.Path)
+		draft, _, err := content.ImportWithTaxonomy(pack.Path, taxonomy)
 		if err != nil {
 			t.Fatal(err)
 		}

@@ -60,10 +60,14 @@ func run(args []string, out, errOut io.Writer) int {
 		if *in == "" || *outPath == "" {
 			return usage()
 		}
+		taxonomy, e := loadTaxonomy(*taxonomyPath)
+		if e != nil {
+			return fail(e)
+		}
 		// Reuse strict whole-corpus validation and collision reconciliation.
 		// Never export audit rows directly: future audit fields may be private.
 		var checked bytes.Buffer
-		if e := audit(*in, *schemaDir, &checked); e != nil {
+		if e := auditWithTaxonomy(*in, *schemaDir, taxonomy, &checked); e != nil {
 			return fail(e)
 		}
 		var report struct {
@@ -91,7 +95,11 @@ func run(args []string, out, errOut io.Writer) int {
 		if *in == "" {
 			return usage()
 		}
-		if e := audit(*in, *schemaDir, out); e != nil {
+		taxonomy, e := loadTaxonomy(*taxonomyPath)
+		if e != nil {
+			return fail(e)
+		}
+		if e := auditWithTaxonomy(*in, *schemaDir, taxonomy, out); e != nil {
 			return fail(e)
 		}
 	case "import":

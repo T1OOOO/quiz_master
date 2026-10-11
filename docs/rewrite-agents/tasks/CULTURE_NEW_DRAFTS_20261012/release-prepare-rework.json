@@ -1,0 +1,16 @@
+{
+  "status": "REWORK_NO_EXECUTION",
+  "prepare_sha256": "bd398ebe520edb9d5193c39c7f7bdfe2f15d14c1bbb2cdb95cc0b59d3cdaa7ac",
+  "findings": [
+    "Copies planet d228c9e base instead of currently published Home Alone e0d13f4; source byte-parity will reject missing prior corrections.",
+    "Requires article asset206 while approved integration208; would fail or publish inconsistent count.",
+    "API source guard permits only *_test.go but accepted CLI production changes are main.go/audit.go.",
+    "Cutover generation and package manifest still use b16fc baseline instead of currently published5d41.",
+    "Rehearsal generator still expects10article matches and6history records; final targets People11 and8fixturepacks.",
+    "No actual eight-pack taxonomy-aware fixture generator is present at expected fixtures.exe."
+  ],
+  "not_run": [
+    "No package/build/rehearsal/upload/deploy executed."
+  ],
+  "next_step": "Root reuse exact immutable Home package and operational scripts; fix only explicit constants/fixtures, run meaningful preflight and independent review before release."
+}

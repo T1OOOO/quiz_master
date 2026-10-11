@@ -3,6 +3,10 @@
   "description": "Черновой набор из десяти вопросов о фильмах, актёрах, режиссёрах и киноцехе с первичными источниками.",
   "category": "Кино",
   "id": "cinema-people-20261011",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
   "questions": [
     {
       "id": "cinema-people-001",
@@ -143,6 +147,27 @@
       "explanation": "Верный ответ: Дженни Бивен. Это соответствует категории: костюмы.",
       "type": "choice",
       "difficulty": 6
+    },
+    {
+      "id": "cinema-people-011",
+      "text": "Какого цвета были туфельки Дороти в книге Л. Фрэнка Баума до экранизации 1939 года?",
+      "options": [
+        "Рубиновыми",
+        "Серебряными",
+        "Изумрудными",
+        "Золотыми"
+      ],
+      "correct_answer": 1,
+      "explanation": "Верный ответ: Серебряными. В книге Баума туфельки Дороти были серебряными.",
+      "type": "choice",
+      "difficulty": 4,
+      "editorial_tag_ids": [
+        "domain:screen",
+        "medium:film",
+        "topic:film-production",
+        "topic:literary-works"
+      ],
+      "context_tag_ids": []
     }
   ]
 }

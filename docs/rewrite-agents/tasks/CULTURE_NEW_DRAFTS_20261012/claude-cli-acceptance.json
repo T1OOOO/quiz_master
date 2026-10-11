@@ -1,0 +1,14 @@
+{
+  "task_id": "task-6da55b2fff2a42f58d6088292f5445d0",
+  "verdict": "accept",
+  "hub_state": "ACCEPTED",
+  "hub_event": 29142,
+  "reviewer_session": "session-ddfb479116e8454d8bf6a893f86a922d",
+  "provider": "claude",
+  "runtime_models": [
+    "claude-sonnet-5"
+  ],
+  "runtime_sha256": "47cb147fcc3990ebef18dd422feede61cb0539671e1d1564129e479cb76fcd61",
+  "scope": "Static independent review of five quizctl files and implementation evidence. Root and implementer ran gates; reviewer did not execute tests. No release signoff.",
+  "result": "Review complete — **ACCEPTED** (error_count: 0).\n\n**Files inspected:** `next/server/cmd/quizctl/main.go`, `audit.go`, `taxonomy_audit_test.go`, `answer_labels_test.go`, `catalog_test.go`, `docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/cli-taxonomy-fix-evidence.json`.\n\n**Findings:**\n- Root cause confirmed and fixed: `main.go` now loads `--taxonomy` via `loadTaxonomy()` for audit/catalog/import/validate/build and threads it through; `audit.go`'s `auditWithTaxonomy` uses `content.ImportWithTaxonomy` + `ValidateDraftWithTaxonomy` instead of the taxonomy-blind `Import`.\n- Fail-closed verified: `taxonomy_audit_test.go` asserts exit 2 for omitted or unreadable taxonomy on annotated content.\n- Output overwrite safety verified: catalog write happens only after `auditWithTaxonomy` succeeds, so a rejected unknown tag (even with `--force`) never touches the output file — confirmed by the sentinel-file assertion.\n- Public metadata allowlist verified: `catalog_test.go` enforces exactly the 5 allowed keys; `taxonomy_audit_test.go` additionally string-checks for leaked `editorial_tag_ids`/`correct_option`/tag values.\n- Unannotated-content compatibility preserved via the legacy nil-taxonomy `audit()` wrapper.\n- Meaningful regressions: `catalog_test.go`/`answer_labels_test.go` now pass the real `metadata/tags.v1.json` against the full corpus (131 packs/4010 questions) — exactly the condition the original bug silently skipped.\n- Fix is scoped to the stated bug; no unrelated changes in the inspected files.\n\n**Hub response:** task state is now `ACCEPTED` (version 4), reviewer recorded as this session.\n\n**Limitations:** Static code review only — I did not execute any tests myself, only read the evidence file's claimed RED/GREEN results and the source. Does not cover the separate sqlite `collection_test` 4008-count mismatch (explicitly out of scope, owned elsewhere). This is code signoff only, not release/publication approval."
+}

@@ -1,0 +1,63 @@
+{
+  "label": "culture-variety-cli-taxonomy-fix-20261012",
+  "task_id": "task-6da55b2fff2a42f58d6088292f5445d0",
+  "run_id": "run-81e75984335f4178b6c233cb7ea48257",
+  "root_cause": {
+    "main_go": "audit and catalog parsed --taxonomy but did not load or pass it into audit",
+    "audit_go": "audit used content.Import instead of content.ImportWithTaxonomy"
+  },
+  "red_before_implementation": {
+    "command": "go test ./next/server/cmd/quizctl -run TestAuditAndCatalogHonorExplicitFrozenTaxonomy -count=1",
+    "result": "FAIL as expected: valid annotated fixture with correct_answer index 1 and explicit metadata/tags.v1.json returned taxonomy_required"
+  },
+  "implementation": {
+    "audit_go": "preserves audit(root, schemas, out) for legacy callers and adds auditWithTaxonomy(root, schemas, taxonomy, out), using ImportWithTaxonomy and ValidateDraftWithTaxonomy",
+    "main_go": "audit and catalog load their explicit taxonomy flag and call auditWithTaxonomy"
+  },
+  "green_evidence": [
+    {
+      "command": "go test ./next/server/cmd/quizctl -run TestAuditAndCatalogHonorExplicitFrozenTaxonomy -count=1",
+      "result": "PASS"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl audit --taxonomy metadata/tags.v1.json --in quizzes",
+      "result": "PASS: 131 files, 4010 questions, 131 ready, 0 blocked"
+    },
+    {
+      "command": "go test ./next/server/internal/content ./next/server/cmd/quizctl",
+      "result": "PASS"
+    },
+    {
+      "command": "quizctl catalog --taxonomy metadata/tags.v1.json --in quizzes --out <temporary file>",
+      "result": "PASS: 131 packs, 4010 questions; JSON assertions verified only quiz_id/title/description/category/questions_count and no grading/editorial-tag fields"
+    },
+    {
+      "command": "Push-Location study/question_articles; python -m unittest test_build test_coverage",
+      "result": "PASS: 4 tests. The earlier ModuleNotFoundError came from invoking test_coverage outside its directory, where Python resolved no local coverage.py module; no dependency was required or added."
+    }
+  ],
+  "regression_coverage": [
+    "explicit frozen taxonomy permits annotated audit and catalog",
+    "annotated fixture uses nonzero correct_answer index 1",
+    "omitted or unreadable taxonomy exits 2",
+    "unknown editorial tag rejects catalog and leaves an existing output sentinel unchanged",
+    "catalog fixture output does not include editorial tags, grading fields or tag values"
+  ],
+  "whole_corpus_caller_updates": {
+    "answer_labels_test_go": "loads the frozen dictionary once, calls auditWithTaxonomy and imports every audited source with that same dictionary",
+    "catalog_test_go": "passes --taxonomy metadata/tags.v1.json explicitly and expects the current total of 4010 questions",
+    "compatibility": "legacy audit(root, schemas, out) still passes nil taxonomy; explicit CLI omission remains fail-closed for annotated input"
+  },
+  "current_file_sha256": {
+    "next/server/cmd/quizctl/main.go": "8d5335db9ef7855d99aabd3838ee2bcf5e6080b84816d65385c794d222569019",
+    "next/server/cmd/quizctl/audit.go": "6be6404a2eb84fbb868243ae81b53bc5e726d07f76e295cbcb5af986267cb232",
+    "next/server/cmd/quizctl/taxonomy_audit_test.go": "a80baf6b839ad495489b5c9ec298150bb982db955e124264f4899ea1b96a1af6",
+    "next/server/cmd/quizctl/answer_labels_test.go": "4923c44bb130bfaca60e07a5c9cec8e60ea4f56b6c79a0acc874b8f1bc6b63c0",
+    "next/server/cmd/quizctl/catalog_test.go": "b6a30049301dbe4aab2dab38ae655d38ea2265a901868e770d16a51fd4b4897c"
+  },
+  "not_claimed": [
+    "independent review",
+    "catalog asset regeneration",
+    "release, publication or deployment"
+  ]
+}

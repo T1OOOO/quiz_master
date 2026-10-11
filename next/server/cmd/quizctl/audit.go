@@ -24,6 +24,12 @@ type auditPack struct {
 
 // audit checks readiness, not factual truth, and never writes migration artifacts.
 func audit(root, schemas string, out io.Writer) error {
+	return auditWithTaxonomy(root, schemas, nil, out)
+}
+
+// auditWithTaxonomy checks annotations when the caller supplied a frozen taxonomy.
+// The audit wrapper remains for legacy callers that intentionally have no taxonomy.
+func auditWithTaxonomy(root, schemas string, taxonomy *content.Taxonomy, out io.Writer) error {
 	info, err := os.Lstat(root)
 	if err != nil || !info.IsDir() {
 		return &content.Error{Kind: "input_directory", Path: root}
@@ -61,12 +67,12 @@ func audit(root, schemas string, out io.Writer) error {
 				row.SourceID, row.Title, row.Category, row.Questions = source.ID, source.Title, source.Category, len(source.Questions)
 				row.Description = source.Description
 			}
-			draft, _, e := content.Import(path)
+			draft, _, e := content.ImportWithTaxonomy(path, taxonomy)
 			checkErr = e
 			if e == nil {
 				row.CanonicalID = draft.QuizID
 				ids[draft.QuizID] = append(ids[draft.QuizID], len(report.Packs))
-				checkErr = content.ValidateDraft(draft, filepath.Join(schemas, "draft-quiz.schema.json"))
+				checkErr = content.ValidateDraftWithTaxonomy(draft, schemas, taxonomy)
 			}
 		}
 		if checkErr != nil {

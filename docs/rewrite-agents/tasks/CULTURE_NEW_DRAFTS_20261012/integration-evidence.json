@@ -1,0 +1,129 @@
+{
+  "label": "culture-variety-integration-20261012",
+  "task_id": "task-338b49c4e37d4abd8f82395842c7e8ce",
+  "run_id": "run-f1908515db2e402588e97da6c5a56094",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "followup_task_id": "task-3d7e5a25b01541e8a8929079584b48f6",
+  "source_candidate": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/variety-publish-candidate.json",
+    "sha256": "0d634bc950c3c844918b535df6786e3b7815c5164aaa7f64ed860aa8439d2059",
+    "fact_gate": {
+      "task_id": "task-8b0b636d443e4013a26be16e14b9461d",
+      "provider": "Official Claude",
+      "session_id": "session-437e46db0a624de5a25b1ac078659944",
+      "scope": "accepted source-backed article prose only; this is not a review of later question-revision or reader-binding metadata"
+    }
+  },
+  "taxonomy": {
+    "path": "metadata/tags.v1.json",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "cinema_editorial_tag_ids": [
+      "domain:screen",
+      "medium:film",
+      "topic:film-production",
+      "topic:literary-works"
+    ],
+    "music_editorial_tag_ids": [
+      "domain:arts"
+    ],
+    "context_tag_ids": [],
+    "note": "No finer Hendrix/Stratocaster IDs exist in the frozen dictionary; no IDs were invented and old tag arrays remain unchanged."
+  },
+  "added_questions": [
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-011",
+      "correct_option_index": 1,
+      "correct_option_text": "Серебряными",
+      "revision_sha256": "3730d3f18624a1187e2e3455c5150a1927580e89c670f74b623add5ba156f9ea"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-011",
+      "correct_option_index": 0,
+      "correct_option_text": "Изабелла",
+      "revision_sha256": "2a9f556ad4a1ebfeb6b76a7259d8da80a7522f62b78110ed990f501c30e6c1f1"
+    }
+  ],
+  "commands": [
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl import --taxonomy metadata/tags.v1.json ... --force",
+      "result": "PASS: both staged imports, 11 questions each"
+    },
+    {
+      "command": "go run -p=1 ./next/server/.run/culture_variety_binding <stage-dir> <absolute /app source URI>",
+      "result": "PASS: exit 0 for both; no stdout; root-owned ignored wrapper rehashed and built the staged annotated bundles"
+    },
+    {
+      "command": "quizctl validate --taxonomy metadata/tags.v1.json on the two staged and two final drafts/bundles",
+      "result": "PASS: four staged and four final validations, 11 questions each"
+    },
+    {
+      "command": "python study/question_articles/build.py --write; python study/question_articles/build.py --check",
+      "result": "PASS: 208 independently reviewed mini articles, bindings/review hashes/source metadata checked"
+    },
+    {
+      "command": "Push-Location study/question_articles; python -m unittest test_build test_coverage",
+      "result": "PASS: 4 tests. An earlier split invocation outside this directory could not resolve the repository-local coverage.py module; no package dependency was missing or added."
+    },
+    {
+      "command": "python .run/phobias_repair_20261011/verify_foreign.py",
+      "result": "PASS before integration: 69 foreign hashes preserved"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl audit --taxonomy metadata/tags.v1.json --in quizzes",
+      "result": "PASS after the separately reviewed CLI fix: 131 files, 4010 questions, 131 ready, 0 blocked"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl catalog --taxonomy metadata/tags.v1.json --in quizzes --out next/apps/quiz_app/assets/catalog.json --force",
+      "result": "PASS: 131 public metadata rows and 4010 questions; only cinema-people-20261011 and music-people-20261011 changed from 10 to 11 questions"
+    },
+    {
+      "command": "go test -p=1 ./next/server/...",
+      "result": "PASS: all 11 server packages"
+    }
+  ],
+  "parity": {
+    "old_questions": "all 20 old public DTOs, private grading entries and question revisions equal the HEAD canonical bundles",
+    "reader_articles": "all 206 prior article objects equal the HEAD reader asset; exactly two accepted article bindings were added for a total of 208",
+    "privacy": "new editorial tags occur only in private_question_metadata; public questions omit editorial_tag_ids and have no context tags",
+    "source_uri": "both new public questions use stable absolute /app/quizzes/... source URIs"
+  },
+  "full_server_go_test": {
+    "command": "go test -p=1 ./next/server/...",
+    "exit_code": 0,
+    "stdout": [
+      "ok quiz_master/next/server/cmd/api",
+      "ok quiz_master/next/server/cmd/quizctl",
+      "ok quiz_master/next/server/internal/attempts",
+      "ok quiz_master/next/server/internal/config",
+      "ok quiz_master/next/server/internal/content",
+      "ok quiz_master/next/server/internal/httpapi",
+      "ok quiz_master/next/server/internal/identity",
+      "ok quiz_master/next/server/internal/migrate",
+      "ok quiz_master/next/server/internal/reports",
+      "ok quiz_master/next/server/internal/sqlite",
+      "ok quiz_master/next/server/internal/store"
+    ]
+  },
+  "current_file_sha256": {
+    "quizzes/Cinema/People/cinema_people_20261011.json": "da93d24fe84ac6b5e1cd4b9b18064c522b09889365aef15e448f27aa03c14094",
+    "quizzes/MusicPeople/music_people_20261011.json": "b50fb86491533b7d9a1fba25b093def4fc7e9f022fc536b59d9032e4ced7d29e",
+    "next/content/cinema-people-20261011/manifest.json": "c02b3184368d86d3c166e7bcd1b40ee141ff9c944a3b5782bfa248fe498cea84",
+    "next/content/cinema-people-20261011/draft.json": "8b76c2e597df650f6a2e2c29473f92a436bce9e38317fdfad7b09fefbcd79a77",
+    "next/content/cinema-people-20261011/bundle.json": "17bc83d8345a89f09debe4d0837068eb5bb7306d63ab0a2feb728039650a5097",
+    "next/content/music-people-20261011/manifest.json": "d17790195f2173c94caf6b021e19c6081218f9b84781050ffad2094863a4d8fd",
+    "next/content/music-people-20261011/draft.json": "1e81a7aff3a5f2a849f6edcaf776064b2eea9ce854d0568ad0ea8eee7b9a96cf",
+    "next/content/music-people-20261011/bundle.json": "59163ac6d1c52d7e04de95733298ef0b395644666492d7b36beb646ff2d03e6f",
+    "study/question_articles/drafts/culture-variety-20261012.json": "92c628df05b74529cc143a92318531ce50ee0a1790fd58bafba4491d45014533",
+    "study/question_articles/reviews/culture-variety-20261012.json": "c668dd8fcd753767b9eab41d7f8ff9711a1b810b8e3982b763b44bfd6b7e25a7",
+    "next/apps/quiz_app/assets/study/question-articles.json": "d6bf35b9a1e57b4bd265b1ac88c8b8ff09982f90a9efc496b583a647593a6bc4",
+    "next/apps/quiz_app/assets/catalog.json": "b0c959702cc2e8659c430434986819d7a06a64f367f5d75429de93cef19495b6",
+    "next/server/internal/sqlite/collection_test.go": "b6ef950420430b653994353fcf260a88325d1b04f7d571b3e38224eb726524d9"
+  },
+  "not_claimed": [
+    "independent structural review of the final reader binding metadata",
+    "release preparation, publication, deployment or acceptance"
+  ]
+}

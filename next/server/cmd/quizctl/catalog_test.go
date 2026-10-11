@@ -15,7 +15,7 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "catalog.json")
 	var out, errs bytes.Buffer
 	code := run([]string{"catalog", "--in", "../../../../quizzes", "--out", path,
-		"--schemas", filepath.Join("../../../..", content.DefaultSchemas)}, &out, &errs)
+		"--schemas", filepath.Join("../../../..", content.DefaultSchemas), "--taxonomy", filepath.Join("../../../..", "metadata", "tags.v1.json")}, &out, &errs)
 	if code != 0 {
 		t.Fatalf("catalog failed: code=%d err=%s", code, &errs)
 	}
@@ -49,7 +49,7 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 		ids[id] = true
 		total += int(pack["questions_count"].(float64))
 	}
-	if total != 4008 || !ids["planet-paradoxes-20261010"] || !ids["prep-wave20-paintings"] || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] || !ids["prep-flags-world"] {
+	if total != 4010 || !ids["planet-paradoxes-20261010"] || !ids["prep-wave20-paintings"] || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] || !ids["prep-flags-world"] {
 		t.Fatalf("incomplete catalog: questions=%d", total)
 	}
 	for _, id := range []string{"preparation-books-classic", "preparation-books-modern", "prep-musicals", "prep-ballet", "prep-opera", "prep-compositions", "prep-history-events", "prep-greek-mythology", "prep-norse-mythology", "prep-folklore", "prep-film-actors-2", "cinema-encore-20261011", "music-encore-20261011"} {

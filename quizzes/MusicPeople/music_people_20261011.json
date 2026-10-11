@@ -3,6 +3,10 @@
   "description": "Десять вопросов о певцах, авторах и записях с первичными музейными и официальными источниками.",
   "category": "Музыка",
   "id": "music-people-20261011",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
   "questions": [
     {
       "id": "music-people-001",
@@ -143,6 +147,24 @@
       "explanation": "Страница Rock Hall указывает, что Билли Холидей в 2000 году представила Диана Росс.",
       "type": "choice",
       "difficulty": 6
+    },
+    {
+      "id": "music-people-011",
+      "text": "Как называлась белая Stratocaster, на которой Хендрикс выступил на Вудстоке в 1969 году?",
+      "options": [
+        "Изабелла",
+        "Люсиль",
+        "Розанна",
+        "Мэри"
+      ],
+      "correct_answer": 0,
+      "explanation": "Верный ответ: Изабелла. Официальные источники называют Woodstock-гитару Хендрикса Izabella.",
+      "type": "choice",
+      "difficulty": 5,
+      "editorial_tag_ids": [
+        "domain:arts"
+      ],
+      "context_tag_ids": []
     }
   ]
 }
