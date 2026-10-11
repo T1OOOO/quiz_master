@@ -1,0 +1,28 @@
+"""Finish the real published browser attempt using observed accessibility refs."""
+from pathlib import Path
+import json,re,subprocess,time
+d=Path('.run/duplicate_repair_20261011');m=json.loads((d/'package.json').read_text());b=json.loads((Path(m['stage'])/'next/content/phobias-nature/bundle.json').read_text());session='quiz-dedup-live-ddf47be'
+def command(*args):return subprocess.check_output(['node','C:/Users/Alexey_Matvienko/AppData/Roaming/npm/node_modules/agent-browser/bin/agent-browser.js','--session',session,*args],text=True,encoding='utf-8')
+evidence=[]
+for q in b['quiz']['questions']:
+ answer=b['private_grading'][q['question_id']]['correct_option_id'];deadline=time.monotonic()+20
+ while True:
+  snapshot=command('snapshot','-i');lines=[s for s in snapshot.splitlines() if answer in s and '[disabled' not in s]
+  if lines:break
+  assert time.monotonic()<deadline,'Expected question not available: '+q['question_id'];time.sleep(.3)
+ if q['question_id']=='q-phobias-part-8-20':command('screenshot',str(Path('docs/rewrite-agents/tasks/DUPLICATE_REPAIR_20261011/live-mobile-fire.png').resolve()))
+ assert len(lines)==1;ref=re.search(r'\[ref=(e\d+)\]',lines[0]).group(1)
+ command('click','@'+ref);evidence.append({'question_id':q['question_id'],'observed_ref':ref,'choice':answer})
+deadline=time.monotonic()+20
+while True:
+ snapshot=command('snapshot','-i')
+ finish=[line for line in snapshot.splitlines() if 'Завершить викторину' in line]
+ if len(finish)==1:break
+ assert time.monotonic()<deadline,'Finish action missing';time.sleep(.3)
+command('click','@'+re.search(r'\[ref=(e\d+)\]',finish[0]).group(1))
+deadline=time.monotonic()+20
+while True:
+ result=command('snapshot','-c')
+ if 'Счёт: 9' in result:break
+ assert time.monotonic()<deadline,'Finished score not visible';time.sleep(.3)
+(d/'browser-answers.json').write_text(json.dumps({'scope':'Actual published9-question phobias-nature UI, allobservedoptionrefs+manualFinish; sourcekeyselectiontests grading/flow, not factual correctness','answers':evidence,'result_snapshot':result},ensure_ascii=False,indent=2));print(result)

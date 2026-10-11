@@ -1,0 +1,41 @@
+from pathlib import Path
+import json,hashlib,urllib.request
+r=Path('.run/duplicate_repair_20261011');m=json.loads((r/'package.json').read_text());stage=Path(m['stage']);base='https://quiz.kotopedia.org/'
+def get(p):
+ with urllib.request.urlopen(base+p,timeout=30) as f:return f.read()
+assert json.loads(get('version.json'))==m['version'];results={}
+for remote,local in [('main.dart.js','web/main.dart.js'),('assets/assets/catalog.json','web/assets/assets/catalog.json'),('assets/assets/study/question-articles.json','web/assets/assets/study/question-articles.json')]:
+ raw=get(remote);assert raw==(stage/local).read_bytes(),remote;results[remote]=hashlib.sha256(raw).hexdigest()
+a=json.loads(get('assets/assets/study/question-articles.json'))['articles']
+count=0
+for pack,expected in [('planet-paradoxes-20261010',10),('cinema-encore-20261011',10),('music-encore-20261011',10),('cinema-people-20261011',10),('music-people-20261011',10),('lotr',3),('prep-ballet',1),('prep-musicals',1),('theme-harry-potter',10),('theme-terminator',10),('gastronomy-traditions-and-etiquette',10)]:
+ cat=json.loads(get('v1/catalog?quiz_id='+pack))
+ if pack=='planet-paradoxes-20261010':
+  expected_questions=json.loads((stage/'next/content'/pack/'bundle.json').read_text())['quiz']['questions']
+  assert cat['quiz']['questions']==expected_questions, 'Exact production question/revision mismatch'
+ qs={q['question_id']:q['revision']['sha256'] for q in cat['quiz']['questions']}
+ refs=[ref for article in a for ref in article['question_refs'] if ref['quiz_id']==pack]
+ assert len(refs)==expected
+ assert all(qs.get(ref['question_id'])==ref['revision_sha256'] for ref in refs),pack
+ assert not any(secret in json.dumps(cat) for secret in ['private_grading','correct_option_id','correct_answer_index'])
+ count+=len(refs)
+assert count==85
+fixed=[]
+old=json.loads((Path('docs/rewrite-agents/tasks/ANSWER_AUDIT_20261011')/'production-duplicates.json').read_text())['questions']
+for pack in ['philias-lifestyle-part-1','phobias-nature']:
+ cat=json.loads(get('v1/catalog?quiz_id='+pack))
+ expected_questions=json.loads((stage/'next/content'/pack/'bundle.json').read_text())['quiz']['questions']
+ assert cat['quiz']['questions']==expected_questions
+ for q in cat['quiz']['questions']:
+  labels=[o['text'].strip().casefold() for o in q['options']]
+  assert len(labels)==len(set(labels))
+  prior=next((x for x in old if x['question_id']==q['question_id']),None)
+  if prior:
+   assert len(q['options'])==5 and q['revision']!=prior['revision']
+   fixed.append(q)
+ assert not any(secret in json.dumps(cat) for secret in ['private_grading','correct_option_id','correct_answer_index'])
+assert len(fixed)==3
+results['repaired_questions']=fixed
+
+results.update(version=m['version'],live_question_article_bindings=count)
+(r/'public-verification.json').write_text(json.dumps(results,indent=2),encoding='utf-8');print(json.dumps(results,indent=2))

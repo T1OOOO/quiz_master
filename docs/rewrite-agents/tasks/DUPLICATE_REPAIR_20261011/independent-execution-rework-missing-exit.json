@@ -1,0 +1,48 @@
+{
+  "status": "REWORK_FRESH_ARTIFACTS_DIRECT_EXIT_UNCAPTURED",
+  "executor": "codex/GPT-6; session-3fe455467cc244aeb6e2018e4fdede00",
+  "build_id": "quiz-2026.10.11-dedup-ddf47be",
+  "mode": "prepare",
+  "remote_target": "root@192.3.164.184:/opt/quiz-master/releases/quiz-2026.10.11-dedup-ddf47be",
+  "execution": {
+    "cutover_prepare_invocations": 1,
+    "initial_guard_attempt": "failed before cd or cutover invocation because PowerShell mangled the hostname command substitution; corrected command used a single-quoted remote command",
+    "fresh_run": "Python subprocess started prepare; its local host wrapper timed out before capture_output returned, so the direct subprocess exit code and stdout were not captured.",
+    "fresh_artifacts": "Fresh 20261011T050534Z backup, restore proof, rehearsal script/database/rollback API, rehearsal JSON, values and rendered manifests exist on the isolated stage.",
+    "verification_exit": 0
+  },
+  "gates": {
+    "api_sha256": "OK",
+    "web_main_dart_js_sha256": "OK",
+    "backup_restore": {
+      "integrity": "ok",
+      "restore": "ok",
+      "counts": [92, 660, 232]
+    },
+    "migration": {
+      "status": "ok",
+      "original_rows_preserved": true,
+      "integrity": "ok",
+      "feedback_lifecycle": "ok",
+      "old_api_rollback": "ok"
+    },
+    "container_build": "completed",
+    "nginx_config": "syntax ok and test successful",
+    "chart_lint": "1 chart linted, 0 failed",
+    "kubernetes_server_dry_run": "network policy, PVC, RBAC, service, deployment, ingress, and middleware configured in server dry run"
+  },
+  "prepared_image": "sha256:eef77d329f3a3558c332c785b6d3168d2650b8cfba75ab151c7db66dd7e3d7e8",
+  "evidence": {
+    "historical_log": "independent-prepare.txt",
+    "historical_log_sha256": "0A64C10C6A6615E511054C9D690E00E347ECF6D9559E8DEEEF4BECCD751DD54E",
+    "fresh_artifact_verification": "independent-prepare-verification.txt",
+    "fresh_artifact_verification_sha256": "41CE7991F08D88B7B4E4DD081A29B85097DFDD92BC06F2EF436BF516156D8F75",
+    "package_sha256": "DEC24C13DCBF06B5A5A3DCEC8C728CC318C9A93312DFE723661680C634E79D26"
+  },
+  "limitations": [
+    "Prepare mode only; no Helm upgrade, live image check, public URL request, browser check, or publication occurred.",
+    "The fresh remote run's direct SSH return code and stdout were not captured because the local execution wrapper timed out. Fresh artifacts and a separate read-only verification command (exit 0) are not substitutes for that capture.",
+    "The isolated remote stage and its existing files were preserved; no transfer, mkdir, deletion, move, source edit, or API validator change was made.",
+    "Remote prepare emitted kubectl apply warnings about missing last-applied annotations; the server dry runs still succeeded."
+  ]
+}

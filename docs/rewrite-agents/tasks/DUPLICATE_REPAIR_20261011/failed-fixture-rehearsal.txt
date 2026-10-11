@@ -1,0 +1,9 @@
+quiz-2026.10.11-dedup-ddf47be.tar.gz: OK
+api: OK
+web/main.dart.js: OK
+{'backup': '/opt/quiz-master/backups/quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite', 'integrity': 'ok', 'restore': 'ok', 'counts': [92, 660, 232]}
+Traceback (most recent call last):
+  File "/opt/quiz-master/releases/quiz-2026.10.11-dedup-ddf47be/rehearse-quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.py", line 60, in <module>
+    assert expected_uri.startswith('/app/quizzes/')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

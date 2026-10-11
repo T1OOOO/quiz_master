@@ -1,0 +1,25 @@
+{
+  "verdict": "accept",
+  "packet_sha256": "b7a74b62ce81c91850fbab7b0c4fc19c63a37773dc3226dca4e07a092b44e6e3",
+  "findings": [
+    "Previous rejection's '63/62 hex char' claim is a miscount, not a real defect: version.api_sha256, version.main_dart_js_sha256, and package.sha256 in release-review-packet.json are each exactly 64 hex characters.",
+    "Recomputed SHA-256 directly from the actual on-disk files and all three match the packet: archive quiz-2026.10.11-dedup-ddf47be.tar.gz -> 9ce207d7...af01, api binary -> 26e1657f...ab01, web/main.dart.js -> 8c7c4839...2b060.",
+    "Recomputing SHA-256 of release-review-packet.json itself reproduces b7a74b62...4e6e3, matching the value both this review and the prior rejection cite.",
+    "stage/checksums.txt was independently re-verified against every file it lists in the actual stage directory: 0 mismatches.",
+    "docs/rewrite-agents/tasks/DUPLICATE_REPAIR_20261011/fixtures.go.txt on disk is byte-identical to packet.fixtures_helper, and genuinely marshals the runtime bundle (frozen /app/quizzes/ source URIs) before mutating Source['uri'] and rehashing for expected-staging-revisions.json \u2014 the source-map-freeze fix from the prior defect report is real, not just asserted prose.",
+    "runtime-bundles.json / expected-staging-revisions.json on disk contain exactly the 5 claimed quiz IDs, 59 total questions in each, and all runtime bundle source URIs are frozen to /app/quizzes/ as required.",
+    "Actual stage/cutover.sh and stage/rehearse.py are byte-identical to packet.scripts entries; main_dart_js hash appears exactly 3 times in cutover.sh, 'planets-d228c9e' does not appear, and the baseline image digest matches package.json.",
+    "git diff d228c9e..ddf47be -- next/server shows only next/server/cmd/quizctl/answer_labels_test.go changed, confirming the prepare_driver's source-only-test assertion for this commit range.",
+    "HEAD and the commit field in package.json/release-review-packet.json both resolve to ddf47beb8b5307813646486f5606bba222307e1f, a valid, present commit object."
+  ],
+  "remaining_gates": [
+    "Only prepare mode has run (log ends at 'PREPARED ... mode=prepare'); the publish branch of cutover.sh (helm upgrade, live kubectl image check, public quiz.kotopedia.org/version.json and main.dart.js curl verification) has not executed and remains required before this is a live release.",
+    "Independent execution of this prepare/rehearsal sequence by a second operator/agent, rather than static file inspection, is still open per the finite-review scope of this task.",
+    "Post-publication browser verification against the production site remains required once publish mode runs."
+  ],
+  "limitations": [
+    "This was a readonly static review: Python hashlib recomputation and file/diff inspection only, no builds, SSH, browser, deployment, or child processes were run.",
+    "No independent re-execution of rehearse.py/cutover.sh against production (racknerd-f0269d5, live PVC, quiz.kotopedia.org) was performed from this environment; conclusions rely on matching on-disk stage artifacts to the packet plus git history, not on re-running the staging rehearsal.",
+    "No Android or other factual/platform certification is made."
+  ]
+}

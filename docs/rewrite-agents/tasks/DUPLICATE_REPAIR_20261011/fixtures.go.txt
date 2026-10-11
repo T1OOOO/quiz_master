@@ -8,7 +8,8 @@ func main(){
   d,_,e:=content.Import(filepath.Join(repo,"quizzes",rel));if e!=nil{panic(e)}
   for i:=range d.Questions{d.Questions[i].Source["uri"]="/app/quizzes/"+rel};content.Rehash(&d)
   b,e:=content.Build(d,"2026.10.11.duplicates","2026-10-11T00:00:00Z",filepath.Join(repo,content.DefaultSchemas));if e!=nil{panic(e)}
-  result[d.QuizID]=b
+  // Freeze source maps before computing staging revisions.
+  raw,e:=json.Marshal(b);if e!=nil{panic(e)};result[d.QuizID]=json.RawMessage(raw)
   for i:=range d.Questions{d.Questions[i].Source["uri"]="/opt/quiz-master/releases/"+build+"/quizzes/"+rel};content.Rehash(&d)
   expected[d.QuizID]=map[string]content.Revision{};for _,q:=range d.Questions{expected[d.QuizID][q.QuestionID]=q.Revision}
  }

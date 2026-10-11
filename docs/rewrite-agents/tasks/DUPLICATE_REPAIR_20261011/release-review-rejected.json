@@ -1,0 +1,23 @@
+{
+  "verdict": "revise",
+  "packet_sha256": "b7a74b62ce81c91850fbab7b0c4fc19c63a37773dc3226dca4e07a092b44e6e3",
+  "findings": [
+    "PACKET_SHA256 is 63 hex characters, not 64 \u2014 not a well-formed SHA-256 digest as supplied.",
+    "package.sha256 ('9ce207d7...af01') is 63 hex characters, not 64 \u2014 malformed digest.",
+    "version.api_sha256 ('26e1657f...6f01') is 62 hex characters, not 64 \u2014 malformed digest.",
+    "Only main_dart_js_sha256 is a well-formed 64-hex-char digest; the inconsistency across hash fields in the same packet undermines trust in the stated binary/image/PVC guard checks that depend on these hashes matching.",
+    "All 'actual_prepare', 'failure_and_repair', and 'root_scope' evidence is self-reported free text pasted into the request, not independently reproducible from this read-only review \u2014 no way to confirm the strict59/131-cache-growth/old-row-preservation/backup-restore/prior-API-history assertions actually ran against real production state (racknerd-f0269d5, PVC uid 7fc2428f..., live quiz.kotopedia.org) versus being hand-authored.",
+    "The review explicitly disallows tools/shell/files/build/deploy, so the Go source-map alias fix, fixtures_helper correctness, and cutover.sh/rehearse.py logic were assessed only by static reading of the supplied text, not executed or cross-checked against the actual repository files at ddf47be."
+  ],
+  "remaining_gates": [
+    "Re-issue the packet with correctly formed (64 hex char) SHA-256 digests for packet, package archive, and api binary, and confirm they match independently (e.g. recomputed by a second party).",
+    "Independent execution of rehearse.py / cutover.sh prepare mode by a different agent/operator, with raw unedited output, not a hand-assembled summary.",
+    "Live browser/public verification against quiz.kotopedia.org/version.json and main.dart.js hash after any real publish step \u2014 not yet shown here.",
+    "Confirmation from a second independent reviewer or tool run that bundle revision hashes were computed before the source URI/path rewrite (the stated 'freeze before mutation' fix), not just asserted in prose."
+  ],
+  "limitations": [
+    "This review was conducted with no tool, shell, file, build, or deploy access, as instructed; it is a static read of the pasted packet text only.",
+    "No access exists from this environment to the named production host, Kubernetes cluster, or public site to confirm any claim independently.",
+    "Malformed hash lengths may be a transcription artifact rather than evidence of tampering, but a release gate cannot distinguish the two without a corrected, verifiable packet."
+  ]
+}

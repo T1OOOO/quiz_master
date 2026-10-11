@@ -1,0 +1,43 @@
+{
+  "status": "PASS_PREPARE_ONLY",
+  "executor": "codex/GPT-6; session-3fe455467cc244aeb6e2018e4fdede00",
+  "build_id": "quiz-2026.10.11-dedup-ddf47be",
+  "mode": "prepare",
+  "remote_target": "root@192.3.164.184:/opt/quiz-master/releases/quiz-2026.10.11-dedup-ddf47be",
+  "execution": {
+    "cutover_prepare_invocations": 1,
+    "initial_guard_attempt": "failed before cd or cutover invocation because PowerShell mangled the hostname command substitution; corrected command used a single-quoted remote command",
+    "remote_exit_evidence": "prepare.log reaches PREPARED under set -euo pipefail; remote process check found no cutover.sh prepare or rehearse.py process"
+  },
+  "gates": {
+    "api_sha256": "OK",
+    "web_main_dart_js_sha256": "OK",
+    "backup_restore": {
+      "integrity": "ok",
+      "restore": "ok",
+      "counts": [92, 660, 232]
+    },
+    "migration": {
+      "status": "ok",
+      "original_rows_preserved": true,
+      "integrity": "ok",
+      "feedback_lifecycle": "ok",
+      "old_api_rollback": "ok"
+    },
+    "container_build": "completed",
+    "nginx_config": "syntax ok and test successful",
+    "chart_lint": "1 chart linted, 0 failed",
+    "kubernetes_server_dry_run": "network policy, PVC, RBAC, service, deployment, ingress, and middleware configured in server dry run"
+  },
+  "prepared_image": "sha256:eef77d329f3a3558c332c785b6d3168d2650b8cfba75ab151c7db66dd7e3d7e8",
+  "evidence": {
+    "log": "independent-prepare.txt",
+    "log_sha256": "0A64C10C6A6615E511054C9D690E00E347ECF6D9559E8DEEEF4BECCD751DD54E",
+    "package_sha256": "DEC24C13DCBF06B5A5A3DCEC8C728CC318C9A93312DFE723661680C634E79D26"
+  },
+  "limitations": [
+    "Prepare mode only; no Helm upgrade, live image check, public URL request, browser check, or publication occurred.",
+    "The isolated remote stage and its existing files were preserved; no transfer, mkdir, deletion, move, source edit, or API validator change was made.",
+    "Remote prepare emitted kubectl apply warnings about missing last-applied annotations; the server dry runs still succeeded."
+  ]
+}
