@@ -3,6 +3,9 @@ package server
 import (
 	"database/sql"
 	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 
 	authhttp "quiz_master/internal/auth/http"
 	authtoken "quiz_master/internal/auth/token"
@@ -49,10 +52,34 @@ func registerRoutes(e *echo.Echo, cfg *config.Config, db *sql.DB, tokenManager *
 	adminGroup.DELETE("/quizzes/:id", quizHandler.Delete)
 
 	e.GET("/ws", realtime.NewWebSocketHandler(tokenManager, cfg.WSAllowedOrigins, authHandler.hub))
-	e.Static("/assets", "web/dist/assets")
-	e.Static("/_expo", "web/dist/_expo")
-	e.GET("/*", func(c echo.Context) error {
+	e.GET("/*", webHandler(webDistDir))
+}
+
+const webDistDir = "web/dist"
+
+// webHandler serves the built web client from dir. Existing files are served
+// as-is; any other non-API path falls back to index.html so client-side routes
+// survive a reload. Unknown /api paths keep returning 404 JSON.
+func webHandler(dir string) echo.HandlerFunc {
+	root := filepath.Clean(dir)
+	return func(c echo.Context) error {
+		reqPath := c.Request().URL.Path
+		if reqPath == "/api" || strings.HasPrefix(reqPath, "/api/") {
+			return echo.ErrNotFound
+		}
+
+		rel := strings.TrimPrefix(filepath.Clean("/"+reqPath), "/")
+		if rel != "" {
+			full := filepath.Join(root, rel)
+			if info, err := os.Stat(full); err == nil && !info.IsDir() {
+				if rel == "index.html" || rel == "flutter_service_worker.js" || rel == "flutter_bootstrap.js" || rel == "version.json" {
+					c.Response().Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+				}
+				return c.File(full)
+			}
+		}
+
 		c.Response().Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
-		return c.File("web/dist/index.html")
-	})
+		return c.File(filepath.Join(root, "index.html"))
+	}
 }

@@ -1,4 +1,21 @@
-FROM golang:1.24-alpine AS builder
+ARG FLUTTER_IMAGE=ghcr.io/cirruslabs/flutter:stable
+
+FROM ${FLUTTER_IMAGE} AS webbuilder
+
+ARG SERVER_BASE_URL=https://quiz.kotopedia.org
+
+WORKDIR /src/flutter
+
+COPY flutter/pubspec.yaml flutter/pubspec.lock* ./
+RUN flutter pub get
+
+COPY flutter ./
+# *.g.dart / *.freezed.dart are gitignored, so generate them before compiling.
+RUN dart run build_runner build --delete-conflicting-outputs
+RUN flutter build web --release \
+    --dart-define=SERVER_BASE_URL=${SERVER_BASE_URL}
+
+FROM golang:1.25-alpine AS builder
 
 WORKDIR /src
 
@@ -21,9 +38,10 @@ FROM alpine:3.22 AS runtime
 WORKDIR /app
 
 RUN addgroup -S app && adduser -S -G app app \
-    && mkdir -p /app/data /app/quizzes /app/web/dist \
+    && mkdir -p /app/data /app/quizzes \
     && chown -R app:app /app
 
+COPY --from=webbuilder --chown=app:app /src/flutter/build/web /app/web/dist
 COPY --from=builder /out/quiz-api /app/quiz-api
 COPY --from=builder /out/quiz-auth /app/quiz-auth
 COPY --from=builder /out/quiz-server /app/quiz-server
