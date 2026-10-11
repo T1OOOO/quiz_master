@@ -1,0 +1,55 @@
+{
+  "label": "culture-variety-pilot-v2-20261012",
+  "status": "DRAFT_READY_FOR_INDEPENDENT_REVIEW",
+  "workspace": "C:\\ap\\quiz_master",
+  "source_revision": "29c25d1453b59f0c8977cb6c054b0da7b7f557ee",
+  "accessed_at": "2026-10-12",
+  "questions": [
+    {
+      "id": "culture-variety-pilot-v2-01",
+      "area": "cinema",
+      "difficulty": 4,
+      "tags": ["экранизация", "Волшебник страны Оз", "Technicolor", "реквизит"],
+      "stem": "Какого цвета были туфельки Дороти в книге Л. Фрэнка Баума до экранизации 1939 года?",
+      "options": ["Рубиновыми", "Серебряными", "Изумрудными", "Золотыми"],
+      "correct_index": 1,
+      "expected_answer_text": "Серебряными",
+      "source_urls": [
+        "https://loc.gov/exhibits/oz/ozsect2.html",
+        "https://www.afi.com/news/afi-movie-club-the-wizard-of-oz/"
+      ],
+      "article": "В книге Л. Фрэнка Баума туфельки Дороти серебряные, а в фильме 1939 года они стали рубиновыми. По формулировке Библиотеки Конгресса, цвет, вероятно, изменили, чтобы воспользоваться возможностями цветной фотографии. В её экспозиции описана конкретная пара туфелек: красный сатин, примерно 2300 пайеток на каждом туфле и плоские украшенные банты. AFI добавляет, что сепийные эпизоды в Канзасе сменяются цветом после прибытия Дороти в Оз. Так экранизация преобразует деталь текста в часть визуальной драматургии."
+    },
+    {
+      "id": "culture-variety-pilot-v2-02",
+      "area": "music",
+      "difficulty": 5,
+      "tags": ["Джими Хендрикс", "Stratocaster", "Woodstock", "электрогитара"],
+      "stem": "Как называли белую Stratocaster, на которой Хендрикс сыграл на Woodstock в 1969 году?",
+      "options": ["Изабелла", "Люсиль", "Розанна", "Мэри"],
+      "correct_index": 0,
+      "expected_answer_text": "Изабелла",
+      "source_urls": [
+        "https://www.jimihendrix.com/editorial/experience-hendrix-tour-underway-kickoff-in-jimis-hometown-highlighted-by-onstage-appearance-of-historic-stratocaster-he-played-at-woodstock/",
+        "https://www.fender.com/articles/fender-performances/jimi-hendrix-and-a-strat-named-izabella"
+      ],
+      "article": "Белая Stratocaster Хендрикса, прозванная Izabella, звучала на Woodstock в 1969 году; Fender уточняет, что это была Olympic White Stratocaster 1968 года. Инструмент стал известен не только именем. Официальный сайт Experience Hendrix объясняет, что для леворукой игры на праворукой гитаре Хендрикс перевернул струны и костяной верхний порожек, а также перенёс крепление ремня; порожек не заменяли. Та же страница связывает Izabella с Музеем поп-культуры Сиэтла, который предоставил её для показа в 2024 году. Это показывает, как индивидуальная переделка меняет эргономику инструмента."
+    }
+  ],
+  "constraints_checked": {
+    "question_count": 2,
+    "areas": ["cinema", "music"],
+    "award_or_nomination_recall": false,
+    "director_or_actor_credit_recall": false,
+    "options_per_question": 4,
+    "distinct_correct_indices": true,
+    "expected_answer_text_matches_option": true,
+    "two_primary_urls_per_question": true,
+    "article_word_counts": {
+      "culture-variety-pilot-v2-01": 70,
+      "culture-variety-pilot-v2-02": 80
+    },
+    "article_word_range": "70-100"
+  },
+  "review_note": "Draft only. Independent fact and answer-quality review is required before any acceptance or publication decision."
+}

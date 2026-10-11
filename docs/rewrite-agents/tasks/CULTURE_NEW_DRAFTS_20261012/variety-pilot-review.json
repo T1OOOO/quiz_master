@@ -1,0 +1,66 @@
+{
+  "label": "culture-variety-pilot-factcheck-codex-20261012",
+  "status": "REVISE",
+  "review_type": "independent two-item source, option-quality, and duplicate review",
+  "reviewed_at": "2026-10-12",
+  "scope": {
+    "input": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/variety-pilot.json",
+    "input_sha256": "826B818018F64D729731305194AE0BEFBE2026E98E2E383D3AC497DBDD9F1DD0",
+    "source_record": "docs/rewrite-agents/tasks/CULTURE_NEW_DRAFTS_20261012/variety-pilot-sources.md",
+    "writer_files_modified": false,
+    "blindness": "No full-blind claim: the lead had already read the key/article material before this review."
+  },
+  "batch_verdict": {
+    "status": "REVISE",
+    "reason": "The pilot has useful non-award culture premises and no released-bank semantic duplicate found, but both items need precise wording or option repair before acceptance."
+  },
+  "sources_opened": [
+    "https://loc.gov/exhibits/oz/ozsect2.html",
+    "https://www.afi.com/news/afi-movie-club-the-wizard-of-oz/",
+    "https://www.fender.com/products/jimi-hendrix-voodoo-child-strat-journeyman-relic",
+    "https://www.jimihendrix.com/editorial/experience-hendrix-tour-underway-kickoff-in-jimis-hometown-highlighted-by-onstage-appearance-of-historic-stratocaster-he-played-at-woodstock/",
+    "https://www.fender.com/articles/instruments/15-stratocaster-players-for-the-ages"
+  ],
+  "duplicate_check": {
+    "method": "Searched current quizzes/**/*.json for Волшебник страны Оз, Dorothy, ruby slippers, Джими Хендрикс, Hendrix, and электрогитар.",
+    "result": "Wizard of Oz hits concern Toto's breed and Judy Garland/Dorothy; no slipper adaptation item was found. No Hendrix/instrument item was found. These are not semantic duplicates of the pilot objectives."
+  },
+  "items": [
+    {
+      "id": "culture-variety-pilot-01",
+      "verdict": "REVISE",
+      "key_and_options": "PASS — silver is the correct book answer; four one-word color options are distinct, parallel, and have no length giveaway.",
+      "sources_and_claims": [
+        "Library of Congress says Baum's slippers were originally silver; the displayed 1939 pair has red satin and 2,300 sequins on each shoe, while earlier designs included one reminiscent of silver shoes.",
+        "AFI confirms silver footwear in Baum's books and describes the sepia beginning/end and transition to color on arrival in Oz.",
+        "The LOC wording is qualified: the slippers were 'purportedly' changed to ruby to take full advantage of color photography. The draft states this as definite causality."
+      ],
+      "required_correction": "Change 'Смена цвета помогла показать возможности цветной съёмки Technicolor' to a qualified formulation, for example: 'По версии Библиотеки Конгресса, цвет, вероятно, выбрали, чтобы использовать возможности цветной съёмки.' Restrict the red-satin/2,300-sequin wording to the exhibited pair or state that this is how the documented shoes were made."
+    },
+    {
+      "id": "culture-variety-pilot-02",
+      "verdict": "REVISE",
+      "key_and_options": "Core answer is supported, but it is conspicuously longer and the other three options are implausible/absurd (pick thickness, fourth pickup, removal of all frets). This gives the answer away.",
+      "sources_and_claims": [
+        "Fender describes Hendrix as a left-handed player using an upside-down, reverse-strung right-handed guitar and separately says he flipped right-handed guitars.",
+        "Experience Hendrix/Museum of Pop Culture says Izabella's strings and bone nut were reversed, the strap pin moved, and the guitar played upside-down; it identifies the instrument at Woodstock in 1969.",
+        "Fender's artist article supports the Monterey 1967 and Woodstock 1969 references.",
+        "The draft's 'замену верхнего порожка' is inaccurate: the cited source says the bone nut was reversed, not replaced."
+      ],
+      "required_correction": "Replace 'замену верхнего порожка' with 'переворачивание верхнего порожка' or 'смену его ориентации'. Use parallel, plausible options, for example: (A) 'Переворачивал корпус и менял порядок струн' [correct]; (B) 'Менял верхний порожек, не переворачивая корпус'; (C) 'Переставлял крепление ремня, не меняя струн'; (D) 'Переворачивал корпус, сохраняя порядок струн'."
+    }
+  ],
+  "checks": {
+    "question_count": 2,
+    "four_distinct_options_each": true,
+    "correct_answer_matches_option": true,
+    "correct_indices": [1, 0],
+    "article_word_counts_claimed_by_draft": [80, 79]
+  },
+  "limitations": [
+    "Review is limited to these two frozen items and their five supplied citations; it does not make a claim about a wider culture bank.",
+    "The Library of Congress gives the 2,300-sequin detail for the pair it describes, so it does not independently establish an all-production-pairs claim.",
+    "No canonical, source, build, SSH, publication, or writer-file change was made."
+  ],
+  "required_next_gate": "Apply the two concrete repairs and obtain a fresh independent review before any acceptance or publication decision."
+}
