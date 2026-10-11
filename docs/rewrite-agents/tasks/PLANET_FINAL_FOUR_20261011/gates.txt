@@ -1,0 +1,25 @@
+Initial unittest invocation from repository root:
+python -m unittest study.question_articles.test_build study.question_articles.test_coverage
+Exit1: test_coverage imports sibling coverage module, unavailable on root sys.path. Two test_build tests passed; no content defect inferred.
+
+Corrected invocation from study/question_articles:
+python -m unittest test_build test_coverage
+Exit0; Ran4 tests in0.181s; OK.
+
+python .run/planet_final_four_20261011/google_review.py
+Exit0; actual official agy gemini-3.8-flash-medium supplied-evidence reviewer ACCEPT all4 exact canonical article hashes. No independent Google URL fetches.
+
+python study/question_articles/build.py --write
+Exit0: PASS206 independently reviewed mini articles; checked bindings, review hashes and source metadata.
+python study/question_articles/build.py --check
+Exit0: PASS206 independently reviewed mini articles; checked bindings, review hashes and source metadata.
+python .run/planet_final_four_20261011/verify_export.py
+Exit0: PASS4 exact-hash/revision articles;206 local articles, original202 unchanged;all10 planet questions covered;69 unrelated files preserved.
+
+flutter.bat test --no-pub test/question_articles_test.dart (next/apps/quiz_app)
+Exit0: All4 tests passed; exact revision matching, fail-closed invalid drafts/duplicates/schemes, mobile reader pause/links, missing article behavior.
+
+git diff --check
+Exit0: no diagnostics.
+
+No browser, Android, production build or deployment for this local/private content batch. Full Go gate belongs to previous e414b85 evidence; no Go changes here.

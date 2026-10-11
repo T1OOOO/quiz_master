@@ -1,0 +1,134 @@
+{
+  "reviewer": "Native Codex fact checker gpt-6.1-sol; session-cf3f8ded72214fbd955ba5018ea4fcc9",
+  "author": "Native writer session-1fae21da9fc2439080b7aed27a488ace",
+  "scope": "Independent final review of four frozen draft mini-articles. I solved the four linked questions before inspecting the draft, directly opened every cited NASA/NASA-affiliated primary page, recalculated canonical article SHA-256 values, and checked the exact current bundle revisions. This is a content-review record, not an import, publication, acceptance, or release decision.",
+  "review_tasks": [
+    "task-a667eccd3f6e4928a9656b63eaa32e86"
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-007",
+      "verdict": "accept",
+      "article_sha256": "c1604a1cb6574bccd8ca3ed6e09338265efcd927a27478ff08fba7c8c864f7e4",
+      "note": {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-007",
+        "target_question_id": "planet-paradox-007",
+        "verdict": "ACCEPT",
+        "independent_answer": "В сторону, обратную вращению Нептуна (ретроградная орбита).",
+        "evaluations": {
+          "accuracy": "NASA прямо описывает орбиту Тритона как противоположную вращению Нептуна и называет её ретроградной. Текст не смешивает это с синхронным вращением спутника.",
+          "ambiguity": "Неоднозначности нет: ответ относится к направлению орбиты вокруг Нептуна, а не к вращению Тритона вокруг собственной оси.",
+          "supported_inference": "Связь с захватом сформулирована как гипотеза/улика, а не как наблюдение самого события или единственно возможная история; это соответствует осторожной формулировке NASA.",
+          "pedagogy": "Статья объясняет смысл ретроградности и отделяет наблюдаемую орбиту от вывода о происхождении."
+        }
+      },
+      "checked_sources": [
+        {
+          "url": "https://science.nasa.gov/neptune/moons/triton/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: Тритон обращается в направлении, противоположном вращению Нептуна (ретроградная орбита); учёные считают его объектом пояса Койпера, захваченным гравитацией Нептуна."
+        },
+        {
+          "url": "https://science.nasa.gov/asset/hubble/orbit-of-neptunes-newly-discovered-moon/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: ретроградная орбита Тритона предполагает, что он является захваченным объектом пояса Койпера."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-008",
+      "verdict": "accept",
+      "article_sha256": "5676b82c2873361f9c32e22d1d7e929ad77d3210c79f25a00492a29e235ced6e",
+      "note": {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-008",
+        "target_question_id": "planet-paradox-008",
+        "verdict": "ACCEPT",
+        "independent_answer": "Долгоживущий атмосферный шторм.",
+        "evaluations": {
+          "accuracy": "Большое Красное Пятно корректно названо атмосферным антициклоном высокого давления, а не кратером, лавовым озером или вулканом.",
+          "ambiguity": "Текст не переносит направление вращения на земные ураганы без оговорки о полушарии и не делает неподтверждённого утверждения о непрерывной исторической идентичности пятна с XVII века.",
+          "supported_claims": "Состав видимых облаков, атмосферная природа пятна, отсутствие истинной твёрдой поверхности и изменения формы, размера и цвета поддержаны источниками.",
+          "pedagogy": "Сопоставление видимого красного овала с динамикой газа и давления прямо объясняет, почему правильный вариант — шторм."
+        }
+      },
+      "checked_sources": [
+        {
+          "url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: полосы и завитки — холодные ветреные облака аммиака и воды в атмосфере водорода и гелия; Большое Красное Пятно — гигантский шторм больше Земли; у Юпитера нет истинной поверхности."
+        },
+        {
+          "url": "https://www.nasa.gov/centers-and-facilities/goddard/jupiters-great-red-spot-a-swirling-mystery/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA Goddard: Большое Красное Пятно — антициклон вокруг центра высокого атмосферного давления; отсутствие твёрдой поверхности не ослабляет такие штормы, как на Земле."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-009",
+      "verdict": "accept",
+      "article_sha256": "c7d21dce2f95172a69ab86ec55f38c7a463a97e177a78c1a620a518e12180d76",
+      "note": {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-009",
+        "target_question_id": "planet-paradox-009",
+        "verdict": "ACCEPT",
+        "independent_answer": "Осевое (сидерическое) вращение дольше года.",
+        "evaluations": {
+          "accuracy": "Текст верно различает около 243 суток сидерического вращения, 224,701 суток орбитального периода и 116,750 суток полного солнечного дня.",
+          "terminology": "243,690 не воспроизводится как число суток: в таблице NSSDC это отношение периодов Венеры и Земли, тогда как период Венеры дан как −5832,6 часа. Сидерический и солнечный периоды ясно разведены.",
+          "ambiguity": "Фраза о сутках ограничена явно названной системой отсчёта; не повторена ошибочная формулировка, что от восхода до заката проходит 117 суток.",
+          "pedagogy": "Статья объясняет, почему привычное слово «сутки» требует уточнения и почему ключ вопроса остаётся однозначным."
+        }
+      },
+      "checked_sources": [
+        {
+          "url": "https://science.nasa.gov/venus/venus-facts/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: вращение Венеры около 243 земных суток, год около 225 суток, Венера вращается в обратную сторону по сравнению с Землёй."
+        },
+        {
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA NSSDC: сидерический орбитальный период 224,701 суток; сидерическое вращение −5832,6 часа; полный солнечный день 2802 часа (116,750 суток)."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-010",
+      "verdict": "accept",
+      "article_sha256": "31aa7bfc3eec6647c2361309d8533980270833c64504aba71b7e8874534ea318",
+      "note": {
+        "article_id": "quiz:planet-paradoxes-20261010:planet-paradox-010",
+        "target_question_id": "planet-paradox-010",
+        "verdict": "ACCEPT",
+        "independent_answer": "Нет твёрдого грунта для посадки; с глубиной давление растёт.",
+        "evaluations": {
+          "accuracy": "Корректно отделены отсутствие истинной твёрдой поверхности и невозможность посадки от строения недр. Текст не делает ложного вывода, что у газовых гигантов нет ядра.",
+          "scope": "Утверждения о состоянии водорода и разрушительных давлении/температуре приведены как описания условий спуска, а не как слишком точная модель всего внутреннего строения.",
+          "ambiguity": "«Нет места для посадки» явно означает отсутствие землеподобной твёрдой площадки, а не отсутствие вещества или внутренних слоёв.",
+          "pedagogy": "Контраст между облаками, меняющимся состоянием вещества и каменистой посадкой делает правильный ответ практическим и ясным."
+        }
+      },
+      "checked_sources": [
+        {
+          "url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: у Юпитера нет истинной поверхности; глубинные давление и температура разрушают аппарат; его недра включают газы и жидкости, а ядро описывается как размытое, не твёрдое."
+        },
+        {
+          "url": "https://science.nasa.gov/saturn/facts/",
+          "accessed_on": "2026-10-11",
+          "fetch_status": "opened",
+          "evidence": "NASA: у Сатурна нет истинной поверхности; ниже находятся газы и жидкости; экстремальные давление и температура разрушат аппарат; в центре описано плотное ядро, окружённое слоями жидкого водорода."
+        }
+      ]
+    }
+  ]
+}
