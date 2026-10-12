@@ -249,6 +249,34 @@ void main() {
   });
 
   testWidgets(
+    'choice semantics keep stable IDs out of the spoken value in both modes',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      for (final kind in ['single_choice', 'multiple_choice']) {
+        final question = PublicQuestion.fromJson({
+          ...base,
+          'answer_kind': kind,
+          'options': [
+            {'option_id': 'private-option-1', 'text': 'Option 1'},
+            ...((base['options'] as List).skip(1)),
+          ],
+        });
+        await tester.pumpWidget(
+          app(QuestionCard(question: question, onAnswer: (_) {})),
+        );
+
+        final data = tester
+            .getSemantics(find.bySemanticsLabel('Option 1'))
+            .getSemanticsData();
+        expect(data.label, 'Option 1');
+        expect(data.value, isEmpty);
+        expect(data.identifier, 'private-option-1');
+      }
+      semantics.dispose();
+    },
+  );
+
+  testWidgets(
     'normalized text submits normalized input and reveal is explicit',
     (tester) async {
       Object? answer;

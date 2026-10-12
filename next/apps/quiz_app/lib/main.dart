@@ -574,7 +574,7 @@ class _ChoiceControlState extends State<_ChoiceControl> {
     container: true,
     excludeSemantics: true,
     label: widget.label,
-    value: widget.stableId,
+    identifier: widget.stableId,
     button: true,
     selected: widget.selected,
     enabled: !widget.disabled,
