@@ -1,0 +1,53 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-0e78574e6e7c49fea77334d9b667eb99",
+  "reviewer": "session-29a951e1cc334f4eaa1417ac9a8fc9a0",
+  "review_note": "Verified root-v2.json sha256 f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3 matches file exactly; option_words [2,2,2,2] and [3,3,4,3] and article_words 113/111 all recomputed and match root-v2-checks.json. candidate.questions carries only id/area/text/options/difficulty (no key); editorial.items hold the answers separately. Independently fetched the 5th cited BFI National Archive budget feature (direct WebFetch, 200): confirms 'filmed primarily at Pinewood Studios, with a small number of exteriors at Leonardslee Gardens in West Sussex doubling for India, and Irish-set flashbacks filmed in Galway' \u2014 this exactly supports the V2 stem's added '\u043e\u0441\u043d\u043e\u0432\u043d\u0443\u044e \u0447\u0430\u0441\u0442\u044c' qualifier and the rewritten article's multi-location claim, resolving the V1 completeness gap (Galway flashbacks now acknowledged; article explicitly says calling it all-studio or all-garden would be inaccurate). Re-confirmed BFI catalogue page and Criterion essay (via r.jina.ai proxy after Cloudflare blocked direct fetch \u2014 disclosing honestly: live current-page text, not an archive/cache copy) still support Pinewood/Horsham/matte-painting claims verbatim. Music item unchanged in substance; MoMA pillow-speaker fact re-confirmed via the same proxy route; '\u043c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438' is a clearer non-calque rendering of the same verified device, key unchanged (index 2), laurieanderson.com claims unaffected. No exact-stem duplicates found in existing-stems.json or the four CULTURE_NEXT4 root-v3.json questions. All proposed_existing_tag_ids (domain:arts, domain:screen, medium:film, topic:film-production, country:gb, topic:composition, country:us) confirmed present in metadata/tags.v1.json; new subject tags correctly kept out of the existing-tag list. Minor non-blocking cosmetic note: music option word-lengths are 3/3/4/3 with the correct answer being the only 4-word option \u2014 a slight length tell, not severe enough to require rework given natural Russian phrasing ('\u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438'). All four options per question remain distinct, plausible, non-superlative, and avoid award/parenthetical giveaways. This verdict certifies only this exact V2 draft for further editorial pipeline steps, not canonical import or publication.",
+  "input_sha256": "f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3",
+  "actual_cli_exit": 0,
+  "source_access_limit": "Reviewer states BFI/artist direct fetches and MoMA/Criterion current-page proxy via r.jina.ai after direct403. This is not a watched-film or original-image certification.",
+  "raw_callback": {
+    "acceptance": [
+      "Exact frozen V2 hash, keys/options/articles/source claims checked",
+      "No all-exteriors-in-Horsham implication; source classifications/access honest",
+      "Actual different-provider callback; draft-only"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root V2 f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3 narrows BlackNarcissus studio stem and exterior-location article using newly opened BFI archival budget feature (Pinewood plus some gardens and Galway flashbacks); clarifies pillow-speaker Russian term without changing MoMA fact. Original writer preserved. Five actual Root source opens, native writer four actual opens. Independent Claude actual source access and editorial review required before any canonical integration.",
+    "created_at": 1791807048.378406,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-0e78574e6e7c49fea77334d9b667eb99",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/root-v2.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/root-v2-checks.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/root-sources.md",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/REWORK_V2_EN.md"
+      ],
+      "limits": [
+        "Draft only, no canonical integration or publication"
+      ],
+      "sha256": "f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3",
+      "summary": "Frozen Root V2, two sourced drafts/articles113 and111 words; primary archival BFI source resolves exterior qualification. Original V1 remains unchanged."
+    },
+    "root_task_id": "task-0e78574e6e7c49fea77334d9b667eb99",
+    "run_id": "run-8a3b083fa44246dbbba4cfe6a51aaa8e",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Final factual/editorial review of corrected two culture drafts",
+    "version": 4,
+    "reviewer": "session-29a951e1cc334f4eaa1417ac9a8fc9a0",
+    "review_note": "Verified root-v2.json sha256 f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3 matches file exactly; option_words [2,2,2,2] and [3,3,4,3] and article_words 113/111 all recomputed and match root-v2-checks.json. candidate.questions carries only id/area/text/options/difficulty (no key); editorial.items hold the answers separately. Independently fetched the 5th cited BFI National Archive budget feature (direct WebFetch, 200): confirms 'filmed primarily at Pinewood Studios, with a small number of exteriors at Leonardslee Gardens in West Sussex doubling for India, and Irish-set flashbacks filmed in Galway' \u2014 this exactly supports the V2 stem's added '\u043e\u0441\u043d\u043e\u0432\u043d\u0443\u044e \u0447\u0430\u0441\u0442\u044c' qualifier and the rewritten article's multi-location claim, resolving the V1 completeness gap (Galway flashbacks now acknowledged; article explicitly says calling it all-studio or all-garden would be inaccurate). Re-confirmed BFI catalogue page and Criterion essay (via r.jina.ai proxy after Cloudflare blocked direct fetch \u2014 disclosing honestly: live current-page text, not an archive/cache copy) still support Pinewood/Horsham/matte-painting claims verbatim. Music item unchanged in substance; MoMA pillow-speaker fact re-confirmed via the same proxy route; '\u043c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438' is a clearer non-calque rendering of the same verified device, key unchanged (index 2), laurieanderson.com claims unaffected. No exact-stem duplicates found in existing-stems.json or the four CULTURE_NEXT4 root-v3.json questions. All proposed_existing_tag_ids (domain:arts, domain:screen, medium:film, topic:film-production, country:gb, topic:composition, country:us) confirmed present in metadata/tags.v1.json; new subject tags correctly kept out of the existing-tag list. Minor non-blocking cosmetic note: music option word-lengths are 3/3/4/3 with the correct answer being the only 4-word option \u2014 a slight length tell, not severe enough to require rework given natural Russian phrasing ('\u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438'). All four options per question remain distinct, plausible, non-superlative, and avoid award/parenthetical giveaways. This verdict certifies only this exact V2 draft for further editorial pipeline steps, not canonical import or publication."
+  }
+}

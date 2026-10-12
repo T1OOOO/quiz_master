@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "check": "full-go",
+      "command": [
+        "go",
+        "test",
+        "./next/server/...",
+        "-count=1"
+      ],
+      "actual_exit": 0,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next2b_20261012\\full-go.txt",
+      "log_sha256": "d57080b8d5b150ae6a84bfaa2339d5662272a53eb3dc23ec6c4f3e05679d9aa9"
+    },
+    {
+      "check": "discovery-corpus-targeted",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test",
+        "test/discovery_test.dart",
+        "--plain-name",
+        "full catalog can be browsed without creating a guest"
+      ],
+      "actual_exit": 0,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next2b_20261012\\discovery-corpus-targeted.txt",
+      "log_sha256": "6b1d80269515f11778c54c0ab0811598ce3bedcc1935f515bfb11fbaef243513"
+    },
+    {
+      "check": "full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "actual_exit": 0,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next2b_20261012\\full-flutter.txt",
+      "log_sha256": "0b210d48cf0171218a3d9e5fb0563c268867d9526ce80c37176c430dc4ddd686"
+    },
+    {
+      "check": "flutter-analyze",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "actual_exit": 0,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next2b_20261012\\flutter-analyze.txt",
+      "log_sha256": "c6f5898275009906e0b42c0b7d945bff85a35e8de058a911789b2a84b30442da"
+    }
+  ],
+  "initial_failure": "Flutter discovery had stale4020 corpus-count expectation; actual source count4022, updated exactly one expected label. Original failing log retained; no runtime Dart changed. Full Go already passed and not repeated.",
+  "scope": "Local full Go,116Flutter and analyzer; no build/browser/publication claimed"
+}

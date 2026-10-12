@@ -23,7 +23,7 @@ func TestSourceCorpusHasDistinctAnswerLabels(t *testing.T) {
 	if err := json.Unmarshal(out.Bytes(), &report); err != nil {
 		t.Fatal(err)
 	}
-	want := map[string]string{"q-philias-100-54": "Ольфактофилия", "q-philias-100-59": "Эритрофилия", "q-phobias-part-8-20": "Пирофобия"}
+	want := map[string]string{"q-philias-100-54": "Ольфактофилия", "q-philias-100-59": "Эритрофилия", "q-phobias-part-8-20": "Пирофобия", "cinema-people-017": "Pinewood Studios", "music-people-017": "Миниатюрный динамик для подушки"}
 	for _, pack := range report.Packs {
 		draft, _, err := content.ImportWithTaxonomy(pack.Path, taxonomy)
 		if err != nil {

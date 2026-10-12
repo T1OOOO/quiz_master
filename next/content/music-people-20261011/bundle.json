@@ -1,6 +1,6 @@
 {
-  "bundle_sha256": "0616e4c32b8f8d56b197d0518f3e512e56d6f2603c13ca6e1a08c7799fd31660",
-  "bundle_version": "2026.10.12.next4",
+  "bundle_sha256": "37bdc82a81cd8f160447c329d3ae0534bde72063564d7cd4665c570909b5e73e",
+  "bundle_version": "2026.10.12.next2b",
   "contract": "quiz-contract/v1",
   "private_grading": {
     "music-people-001": {
@@ -50,6 +50,9 @@
     },
     "music-people-016": {
       "correct_option_id": "music-people-016-opt-4"
+    },
+    "music-people-017": {
+      "correct_option_id": "music-people-017-opt-3"
     }
   },
   "private_question_metadata": {
@@ -85,6 +88,13 @@
     "music-people-016": {
       "editorial_tag_ids": [
         "country:in",
+        "domain:arts",
+        "topic:composition"
+      ]
+    },
+    "music-people-017": {
+      "editorial_tag_ids": [
+        "country:us",
         "domain:arts",
         "topic:composition"
       ]
@@ -621,12 +631,45 @@
           "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
         },
         "stem": "На каком инструменте прославился индийский музыкант Рави Шанкар?"
+      },
+      {
+        "answer_kind": "single_choice",
+        "difficulty": "hard",
+        "difficulty_level": 7,
+        "options": [
+          {
+            "option_id": "music-people-017-opt-1",
+            "text": "Миниатюрный петличный микрофон"
+          },
+          {
+            "option_id": "music-people-017-opt-2",
+            "text": "Миниатюрный кассетный плеер"
+          },
+          {
+            "option_id": "music-people-017-opt-3",
+            "text": "Миниатюрный динамик для подушки"
+          },
+          {
+            "option_id": "music-people-017-opt-4",
+            "text": "Миниатюрный слуховой аппарат"
+          }
+        ],
+        "question_id": "music-people-017",
+        "quiz_id": "music-people-20261011",
+        "revision": {
+          "number": 1,
+          "sha256": "b58f29797f4014e25af8ee8db8469fea735e2a35fabaaf55be742628c8d67b97"
+        },
+        "source": {
+          "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
+        },
+        "stem": "Какое устройство Лори Андерсон поместила во рту в видеоработе «O Superman»?"
       }
     ],
     "quiz_id": "music-people-20261011",
     "revision": {
       "number": 1,
-      "sha256": "2f317826d0798a78c2b2d4eaa2331f866653805db724d6e3cfc68a61236fc1f3"
+      "sha256": "ac725d6ed61ae939a010ce3e87595190ed0416bb049026c9a4bf6bda95b6702c"
     }
   },
   "taxonomy_ref": {

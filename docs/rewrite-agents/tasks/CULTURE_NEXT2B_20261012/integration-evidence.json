@@ -1,0 +1,82 @@
+{
+  "task_id": "task-4b5245298586434abc7df01eb9d80b8f",
+  "status": "READY_FOR_INDEPENDENT_BINDING_REVIEW",
+  "input": {
+    "path": "root-v2.json",
+    "sha256": "f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3",
+    "claude_task": "task-0e78574e6e7c49fea77334d9b667eb99",
+    "claude_actual_state": "ACCEPTED"
+  },
+  "counts": {
+    "packs": 131,
+    "questions": 4022,
+    "articles": 220,
+    "cinema_people": 17,
+    "music_people": 17
+  },
+  "validation": [
+    {
+      "command": "quizctl validate each of four canonical documents with metadata/tags.v1.json",
+      "exit_code": 0,
+      "result": "17 questions each"
+    },
+    {
+      "command": "quizctl audit --in quizzes --taxonomy metadata/tags.v1.json",
+      "exit_code": 0,
+      "result": "131 packs/4022 questions (catalog regenerated)"
+    },
+    {
+      "command": "quizctl catalog --force with frozen taxonomy",
+      "exit_code": 0,
+      "result": "131 packs"
+    },
+    {
+      "command": "python -m unittest test_build test_coverage; python build.py --write; python build.py --check",
+      "cwd": "study/question_articles",
+      "exit_code": 0,
+      "result": "4 tests OK; 220 reviewed mini articles"
+    }
+  ],
+  "parity": {
+    "old16_source_canonical_public_private_revisions": "exact PASS for each People pack",
+    "old_reader_articles_exact": 218,
+    "unrelated_catalog_rows_exact": 129,
+    "neutral_descriptions_preserved": true,
+    "public_reader_private_fields_absent": true
+  },
+  "source_provenance": {
+    "claude_limit": "Claude directly fetched the BFI budget feature; BFI catalogue, Criterion and MoMA were accessed through current-page proxy after direct blocks. This is editorial/source review only, not canonical binding or publication approval.",
+    "country_tags": "existing country tags are private editorial_tag_ids; new public context_tag_ids are empty."
+  },
+  "hashes": {
+    "cinema": {
+      "source_sha256": "316b118b6066a5f3e79bb25d51dc6b6067caa1f59884f6c4cf1be5652a46388b",
+      "draft_sha256": "5ab51b83b3512b5c67885a9ef1ec98d4bdc634b7c7179bab90647abb988a3b46",
+      "manifest_sha256": "ba7b4ba41e539a23a6ef4342295983d9eda49c1ae68a43b64f153c66a9a0ebf1",
+      "bundle_sha256": "e762924a12097822b1238eccde82dc73eabf3ce17724b71957daa7c3a7d4dd21",
+      "new_revision": "7c1feee824352948c09b76291c132dcc65ab4e1a3fa723e5685e061fc27d3172"
+    },
+    "music": {
+      "source_sha256": "7f30f6027d6737e14c0ceb7e5f69592e1fce3a8aee47014e245873789cf80ccc",
+      "draft_sha256": "60773832effc150a8661f943daf9fbea82083a9efe54a6df8df618eb72ba9301",
+      "manifest_sha256": "2a6733f748af336860db30f9e65ea5e84fcfd19b60a9f758b31062c7160fb1a6",
+      "bundle_sha256": "5048d9ae14d6df35f2b0f7898cc6a4751a94734c3f2bc1568b9f58e07bb54bf4",
+      "new_revision": "b58f29797f4014e25af8ee8db8469fea735e2a35fabaaf55be742628c8d67b97"
+    },
+    "catalog_sha256": "8b6edb37f39362608023359ff904c1d3356349e8b35139b748e3a5f6afa601eb",
+    "reader_sha256": "d872906a36981f8cb647d791ebc341d12629d0b39355dfc0390fcc1e127bada9",
+    "catalog_changed_rows": [
+      "cinema-people-20261011",
+      "music-people-20261011"
+    ],
+    "unrelated_catalog_rows_exact": 129,
+    "old_reader_records_exact": 218,
+    "new_reader_ids": [
+      "quiz:cinema-people-20261011:cinema-people-017",
+      "quiz:music-people-20261011:music-people-017"
+    ],
+    "article_draft_sha256": "2cb4b539194be67ed15935af2872f690fdd96c075359da6e2f6bace2b487f780",
+    "article_review_sha256": "103a4388b4101d68842662905b34411785e6ebb9a3ba3a993d19e446a58deb24"
+  },
+  "release": "No Git, SSH, build, deployment, or publication occurred."
+}

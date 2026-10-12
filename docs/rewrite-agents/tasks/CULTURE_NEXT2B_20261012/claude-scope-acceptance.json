@@ -1,0 +1,51 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-17eebb76139c49c7ab71cfa279ae14c2",
+  "reviewer": "session-482344b8b8ce4d34b1f19aea70d65133",
+  "review_note": "Independent review of the earlier read-only scope/handoff task against INTEGRATE_EN.md: the packet's own INTEGRATE_EN.md confirms this task's output was the scope document plus the execute-only helper reference (next/server/.run/culture_next2_binding_20261012/main.go) and explicitly states no editing/import/build occurred under it -- a separate task (task-4b5245298586434abc7df01eb9d80b8f, reviewed separately above) owns the actual mutation. Target file list in INTEGRATE_EN.md (quizzes/*, next/content/*/{draft,manifest,bundle}.json, catalog.json, question-articles.json, culture-next2b-20261012 drafts/reviews, integration-evidence.json) matches exactly the files this review independently inspected and hashed in the binding review; the named helper path exists in the repo and is restricted to the two stated source paths per the scope doc. Nothing in this task's described scope contradicts the actual integration artifacts found on disk. No edits, builds, or helper execution performed for this review.",
+  "actual_final_cli_exit": 0,
+  "initial_process_limit": "Initial180secondtimeout; no initial prose used as acceptance. Resumed actual callback also inspected the discovery corpus fixture correction.",
+  "scope": "Binding/scope only; full gates/build/browser/publication separate",
+  "raw_callback": {
+    "acceptance": [
+      "Exact minimal path list and commands from current accepted workflow",
+      "No edits, builds, Git/index, server actions or source assumptions"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Finite read-only preparation, no integration yet. Enumerate exact existing source/canonical/article/assets paths and reusable helper commands for one new item per current16-question People pack. Current source7aca39e,production reader4207ef5. Preserve unrelated work. Writer task057f3d is still researching; source acceptance and separate ownership assignment will precede mutation.",
+    "created_at": 1791806607.6101918,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-17eebb76139c49c7ab71cfa279ae14c2",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "Legacy sources: quizzes/Cinema/People/cinema_people_20261011.json; quizzes/MusicPeople/music_people_20261011.json",
+        "Canonical triplets: next/content/cinema-people-20261011/{draft,manifest,bundle}.json; next/content/music-people-20261011/{draft,manifest,bundle}.json",
+        "Generated assets: next/apps/quiz_app/assets/catalog.json; next/apps/quiz_app/assets/study/question-articles.json. New owned article pair: study/question_articles/drafts/culture-next2b-20261012.json and reviews/culture-next2b-20261012.json; integration evidence: docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/integration-evidence.json",
+        "Root-owned count fixtures confirmed: next/server/cmd/quizctl/catalog_test.go; next/server/cmd/quizctl/answer_labels_test.go; next/server/internal/sqlite/collection_test.go",
+        "Reusable execute-only binding helper confirmed: next/server/.run/culture_next2_binding_20261012/main.go. Per-pack stage command: go run ./next/server/.run/culture_next2_binding_20261012 C:/ap/quiz_master <Cinema/People/cinema_people_20261011.json|MusicPeople/music_people_20261011.json> <fresh-stage>/<cinema|music> <frozen-version> <frozen-published-at>. It imports with metadata/tags.v1.json, assigns /app/quizzes URI, rehashes, taxonomy-validates and writes triplet.",
+        "After separate acceptance/freeze: snapshot source/canonical/private grading plus catalog/reader baselines; append one raw question per pack; stage helper both packs; prove old16 source/canonical public/private/revision parity; copy triplets; patch canonical revisions into the new two article refs/review hashes; run four individual canonical quizctl validates, audit, catalog --force, and article unittest/build --write/--check; verify 131/4022/220, People17 each, public reader nonleakage, old218 articles/129 catalog rows exact; root runs its owned fixture and broader gates."
+      ],
+      "status": "DONE_READ_ONLY_SCOPE",
+      "summary": "No mutations. Current minimal integration scope for one appended cinema and one appended music question is confirmed; both current People source packs and canonical triplets are at 16 questions, so expected next IDs are 017 pending frozen editorial input."
+    },
+    "root_task_id": "task-17eebb76139c49c7ab71cfa279ae14c2",
+    "run_id": "run-7c2541e2951d4ce1a996d8ae59c78ada",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Read-only scope for next two culture question integration",
+    "version": 4,
+    "reviewer": "session-482344b8b8ce4d34b1f19aea70d65133",
+    "review_note": "Independent review of the earlier read-only scope/handoff task against INTEGRATE_EN.md: the packet's own INTEGRATE_EN.md confirms this task's output was the scope document plus the execute-only helper reference (next/server/.run/culture_next2_binding_20261012/main.go) and explicitly states no editing/import/build occurred under it -- a separate task (task-4b5245298586434abc7df01eb9d80b8f, reviewed separately above) owns the actual mutation. Target file list in INTEGRATE_EN.md (quizzes/*, next/content/*/{draft,manifest,bundle}.json, catalog.json, question-articles.json, culture-next2b-20261012 drafts/reviews, integration-evidence.json) matches exactly the files this review independently inspected and hashed in the binding review; the named helper path exists in the repo and is restricted to the two stated source paths per the scope doc. Nothing in this task's described scope contradicts the actual integration artifacts found on disk. No edits, builds, or helper execution performed for this review."
+  }
+}

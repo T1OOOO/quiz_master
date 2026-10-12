@@ -1,0 +1,57 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-4b5245298586434abc7df01eb9d80b8f",
+  "reviewer": "session-482344b8b8ce4d34b1f19aea70d65133",
+  "review_note": "Independent binding review (Claude, read-only): verified root-v2.json sha256 f0621c2e...93fe3 matches the ACCEPTED Claude task-0e78574e...editorial draft exactly. For both new items, text/options/correct_answer/explanation in quizzes/Cinema/People/cinema_people_20261011.json and quizzes/MusicPeople/music_people_20261011.json match root-v2.json verbatim; stable keys confirmed correct: cinema-people-017 correct_answer=0 -> option1 'Pinewood Studios' (bundle correct_option_id=cinema-people-017-opt-1); music-people-017 correct_answer=2 -> option3 '\u041c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438' (opt-3). Canonical draft/manifest/bundle triplets for both packs re-hash to exactly the sha256 values recorded in integration-evidence.json (source/draft/manifest/bundle/new_revision all match); diffs against HEAD show only insertion of the new item plus whole-file hash/version metadata refresh, no old-16 content altered. source.uri bound to /app/quizzes/{Cinema/People,MusicPeople}/*.json as required; article question_refs revision_sha256 (7c1feee8...d3172 cinema, b58f2979...d8d67b97 music) match bundle revision.sha256 exactly. study/question_articles drafts+reviews files hash to the exact article_draft_sha256/article_review_sha256 in integration-evidence.json; reviewer verdicts are both 'accept' with checked_sources matching root-v2 claim_ledger URLs. catalog.json: exactly 131 rows before/after, only cinema-people-20261011 and music-people-20261011 changed (16->17 questions_count each), remaining 129 rows byte-identical. question-articles.json: 218 pre-existing article objects byte-identical, exactly 2 new ids added (quiz:cinema-people-20261011:cinema-people-017, quiz:music-people-20261011:music-people-017), none removed/altered. All proposed_existing_tag_ids used on the new items (domain:arts, domain:screen, medium:film, topic:film-production, country:gb, topic:composition, country:us) are present in metadata/tags.v1.json; none of the editorially-proposed new subject tags (work:*, technique:*, person:laurie-anderson) were applied to the canonical items or leaked into taxonomy -- no new taxonomy IDs. Root-owned Go fixtures match the claimed diff exactly: catalog_test.go and collection_test.go 4020->4022; answer_labels_test.go adds exactly {cinema-people-017: 'Pinewood Studios', music-people-017: '\u041c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438'}, consistent with the verified keys. Additional fixture flagged this round: next/apps/quiz_app/test/discovery_test.dart line 88 narrows the expected label from an implied 4020 to the literal string '131 quizzes \u00b7 4022 questions' inside a testWidgets expect() -- test-only assertion text, no lib/runtime Dart touched, and the literal matches the independently verified counts (131 packs/4022 questions) exactly. root-gates.json (full Go/Flutter/analyzer run log) does not exist yet in the packet, so full-suite pass/fail is NOT independently confirmed by this review -- binding/content/parity facts are certified, test/build/release gates are explicitly out of scope per this packet and must be confirmed separately before any publication. No edits, builds, network or helper execution were performed in this review; all checks were local file reads/hashes/diffs.",
+  "actual_final_cli_exit": 0,
+  "initial_process_limit": "Initial180secondtimeout; no initial prose used as acceptance. Resumed actual callback also inspected the discovery corpus fixture correction.",
+  "scope": "Binding/scope only; full gates/build/browser/publication separate",
+  "raw_callback": {
+    "acceptance": [
+      "Exact accepted input and canonical/private/public/article bindings",
+      "Old-source/canonical/artifact parity and neutral descriptions",
+      "Frozen taxonomy/privacy boundaries; meaningful validators/export; evidence actual hashes/counts/exits"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\quizzes\\Cinema\\People\\cinema_people_20261011.json",
+      "C:\\ap\\quiz_master\\quizzes\\MusicPeople\\music_people_20261011.json",
+      "C:\\ap\\quiz_master\\next\\content\\cinema-people-20261011",
+      "C:\\ap\\quiz_master\\next\\content\\music-people-20261011",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+      "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Integrate exact Root V2 f0621c2ecad00e5707826e1df4d51d125a358a9bcb18ed23bc65a5dfaa993fe3 with actual Claude final acceptance in CULTURE_NEXT2B_20261012/claude-v2-acceptance.json. Append one cinema-people017 and music-people017, target131/4022/220 and17each. Read INTEGRATE_EN.md. Own only two legacyPeople sources, bothcanonicaltriplets, generated catalog/reader assets and new culture-next2b studyarticle draft/review plus integration-evidence.json. Root owns fixtures, finalinput and release. Preserve old16questions/revisions/privategrading,218articles and129unrelatedcatalogrows. Small content/import/article validators only; no Git/UI/build/server/SSH/deploy.",
+    "created_at": 1791807308.7663102,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-4b5245298586434abc7df01eb9d80b8f",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/integration-evidence.json sha256 f545d9dbeaad9f9a5d5ab684a284aad7d83c3064a36af35b4817c5fd56e3fbab",
+        "quizctl validate x4 exit 0; audit/catalog exit 0 at 131 packs/4022 questions; question_articles test/build/write/check exit 0 at 220 articles",
+        "new canonical revisions cinema-people-017 7c1feee824352948c09b76291c132dcc65ab4e1a3fa723e5685e061fc27d3172; music-people-017 b58f29797f4014e25af8ee8db8469fea735e2a35fabaaf55be742628c8d67b97"
+      ],
+      "status": "READY_FOR_INDEPENDENT_BINDING_REVIEW",
+      "summary": "Integrated the two accepted Root V2 questions/articles. Canonical validation, audit/catalog and article tests/export passed; exact snapshots prove old 16 People questions/canonical private/public/revisions, all 218 prior reader records, and 129 unrelated catalog rows unchanged. No release action."
+    },
+    "root_task_id": "task-4b5245298586434abc7df01eb9d80b8f",
+    "run_id": "run-bd56223471844f399d0009741b191ef7",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Integrate two independently accepted culture questions and articles",
+    "version": 4,
+    "reviewer": "session-482344b8b8ce4d34b1f19aea70d65133",
+    "review_note": "Independent binding review (Claude, read-only): verified root-v2.json sha256 f0621c2e...93fe3 matches the ACCEPTED Claude task-0e78574e...editorial draft exactly. For both new items, text/options/correct_answer/explanation in quizzes/Cinema/People/cinema_people_20261011.json and quizzes/MusicPeople/music_people_20261011.json match root-v2.json verbatim; stable keys confirmed correct: cinema-people-017 correct_answer=0 -> option1 'Pinewood Studios' (bundle correct_option_id=cinema-people-017-opt-1); music-people-017 correct_answer=2 -> option3 '\u041c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438' (opt-3). Canonical draft/manifest/bundle triplets for both packs re-hash to exactly the sha256 values recorded in integration-evidence.json (source/draft/manifest/bundle/new_revision all match); diffs against HEAD show only insertion of the new item plus whole-file hash/version metadata refresh, no old-16 content altered. source.uri bound to /app/quizzes/{Cinema/People,MusicPeople}/*.json as required; article question_refs revision_sha256 (7c1feee8...d3172 cinema, b58f2979...d8d67b97 music) match bundle revision.sha256 exactly. study/question_articles drafts+reviews files hash to the exact article_draft_sha256/article_review_sha256 in integration-evidence.json; reviewer verdicts are both 'accept' with checked_sources matching root-v2 claim_ledger URLs. catalog.json: exactly 131 rows before/after, only cinema-people-20261011 and music-people-20261011 changed (16->17 questions_count each), remaining 129 rows byte-identical. question-articles.json: 218 pre-existing article objects byte-identical, exactly 2 new ids added (quiz:cinema-people-20261011:cinema-people-017, quiz:music-people-20261011:music-people-017), none removed/altered. All proposed_existing_tag_ids used on the new items (domain:arts, domain:screen, medium:film, topic:film-production, country:gb, topic:composition, country:us) are present in metadata/tags.v1.json; none of the editorially-proposed new subject tags (work:*, technique:*, person:laurie-anderson) were applied to the canonical items or leaked into taxonomy -- no new taxonomy IDs. Root-owned Go fixtures match the claimed diff exactly: catalog_test.go and collection_test.go 4020->4022; answer_labels_test.go adds exactly {cinema-people-017: 'Pinewood Studios', music-people-017: '\u041c\u0438\u043d\u0438\u0430\u0442\u044e\u0440\u043d\u044b\u0439 \u0434\u0438\u043d\u0430\u043c\u0438\u043a \u0434\u043b\u044f \u043f\u043e\u0434\u0443\u0448\u043a\u0438'}, consistent with the verified keys. Additional fixture flagged this round: next/apps/quiz_app/test/discovery_test.dart line 88 narrows the expected label from an implied 4020 to the literal string '131 quizzes \u00b7 4022 questions' inside a testWidgets expect() -- test-only assertion text, no lib/runtime Dart touched, and the literal matches the independently verified counts (131 packs/4022 questions) exactly. root-gates.json (full Go/Flutter/analyzer run log) does not exist yet in the packet, so full-suite pass/fail is NOT independently confirmed by this review -- binding/content/parity facts are certified, test/build/release gates are explicitly out of scope per this packet and must be confirmed separately before any publication. No edits, builds, network or helper execution were performed in this review; all checks were local file reads/hashes/diffs."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "actual_hub_state": "REWORK",
+  "task_id": "task-057f3dbe37de4426ade913387199a841",
+  "reviewer": "session-29a951e1cc334f4eaa1417ac9a8fc9a0",
+  "review_note": "Independently re-fetched all 4 cited sources (BFI catalogue direct; Criterion essay and MoMA page via r.jina.ai text-reader proxy after Cloudflare 403-blocked direct WebFetch/curl \u2014 live current-page reads, not archive/cache). All literal claims matched source text exactly: BFI confirms Pinewood+Horsham-garden exteriors; Criterion confirms Powell's controlled-conditions rationale, Horsham garden, Pinewood sets, Himalaya matte paintings; MoMA confirms pillow speaker in mouth playing prerecorded violin solo modulated by lips, plus skull drum solo; laurieanderson.com confirms bio roles and O Superman/Big Science link. Music item (culture-next2b-music-01) is fully accurate, no error. Cinema item (culture-next2b-cinema-01) has 1 completeness error: article states exteriors were shot only 'in the Horsham garden,' but a 5th primary BFI source (budget feature, independently verified) shows exteriors also included Irish-set flashbacks filmed in Galway, so V1's location claim overstates exhaustiveness by omission. No duplicate-stem conflict found against existing-stems.json or CULTURE_NEXT4 root-v3.json four questions. All proposed_existing_tag_ids present in metadata/tags.v1.json. This gap is already resolved in the submitted Root V2 (task-0e78574e6e7c49fea77334d9b667eb99), reviewed separately.",
+  "input_sha256": "60b67f911947f9ccc3a79fd2e99c6651961829433e6d99fec7c19a1243b2a15d",
+  "actual_cli_exit": 0,
+  "source_access_limit": "Reviewer states BFI/artist direct fetches and MoMA/Criterion current-page proxy via r.jina.ai after direct403. This is not a watched-film or original-image certification.",
+  "raw_callback": {
+    "acceptance": [
+      "Two useful nonduplicate questions; four plausible comparable options",
+      "Candidate/key separated; articles100-220 words and actual primary claim ledger",
+      "Small JSON/count/source/tag/difficulty checks; truthful limits"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-e2e73ec3862544b9bf5003965031d719",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Human-authorized bounded culture backlog extension. One cinema/performance/craft and one music/instrumentation/production item. Russian original phrasing, four parallel options,100-220word miniarticle, two actually opened primary sources each, honest access ledger. Draft only in CULTURE_NEXT2B_20261012; no production/canonical changes. Lead will independently verify sources and use Claude review.",
+    "created_at": 1791806306.5371156,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-057f3dbe37de4426ade913387199a841",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "artifacts": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012\\writer-v1.json",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012\\sources-v1.md"
+      ],
+      "evidence": [
+        "Created only writer-v1.json and sources-v1.md in the assigned CULTURE_NEXT2B packet.",
+        "JSON parsed: exactly two candidate/editorial items; areas cinema,music; four options each; 0-based keys 0 and 2; article word counts 106 and 110; source URL count two each; all proposed existing tags found in metadata/tags.v1.json.",
+        "Actually opened sources: BFI Black Narcissus page; Criterion Black Narcissus essay; MoMA Laurie Anderson exhibition page; Laurie Anderson official biography. Source-by-claim ledgers and limits are in sources-v1.md.",
+        "SHA256 writer-v1.json=60B67F911947F9CCC3A79FD2E99C6651961829433E6D99FEC7C19A1243B2A15D; sources-v1.md=BEA819FB2F9BEC8AC5E03828FCFC9502A55D2BB32460F2C1E9EB33D0282397A0."
+      ],
+      "risks": [
+        "Independent factual/editorial review is still required. Criterion is a publisher essay rather than archival production paperwork; the direct BFI page supports the key, and the article labels its analytical conclusion as inference."
+      ],
+      "status": "DONE_WITH_EVIDENCE",
+      "summary": "Draft-only two-item Russian culture packet completed for independent review; no publication or canonical change claimed."
+    },
+    "root_task_id": "task-057f3dbe37de4426ade913387199a841",
+    "run_id": "run-b6f6e07112954a0ba64a65bd2865499c",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Draft two varied cinema and music questions with source-backed articles",
+    "version": 4,
+    "reviewer": "session-29a951e1cc334f4eaa1417ac9a8fc9a0",
+    "review_note": "Independently re-fetched all 4 cited sources (BFI catalogue direct; Criterion essay and MoMA page via r.jina.ai text-reader proxy after Cloudflare 403-blocked direct WebFetch/curl \u2014 live current-page reads, not archive/cache). All literal claims matched source text exactly: BFI confirms Pinewood+Horsham-garden exteriors; Criterion confirms Powell's controlled-conditions rationale, Horsham garden, Pinewood sets, Himalaya matte paintings; MoMA confirms pillow speaker in mouth playing prerecorded violin solo modulated by lips, plus skull drum solo; laurieanderson.com confirms bio roles and O Superman/Big Science link. Music item (culture-next2b-music-01) is fully accurate, no error. Cinema item (culture-next2b-cinema-01) has 1 completeness error: article states exteriors were shot only 'in the Horsham garden,' but a 5th primary BFI source (budget feature, independently verified) shows exteriors also included Irish-set flashbacks filmed in Galway, so V1's location claim overstates exhaustiveness by omission. No duplicate-stem conflict found against existing-stems.json or CULTURE_NEXT4 root-v3.json four questions. All proposed_existing_tag_ids present in metadata/tags.v1.json. This gap is already resolved in the submitted Root V2 (task-0e78574e6e7c49fea77334d9b667eb99), reviewed separately."
+  }
+}
