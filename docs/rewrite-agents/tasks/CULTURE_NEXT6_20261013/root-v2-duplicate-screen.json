@@ -1,0 +1,62 @@
+{
+  "scope": "All enumerated legacy quiz question text/options/explanations and all230 question-linked reader entries, normalized names/title aliases; no universal semantic or all-bank fact certification",
+  "legacy_json_files": 131,
+  "legacy_question_records_inspected": 4032,
+  "reader_entries": 230,
+  "reader_sha256": "61e894a2279929c0ba1920c8f767ff9f84a2a9da5a6a0dfdb30b6397a5d9ba5b",
+  "matches": {
+    "cinema-people-023": {
+      "legacy_question_matches": [],
+      "reader_article_matches": []
+    },
+    "cinema-people-024": {
+      "legacy_question_matches": [],
+      "reader_article_matches": []
+    },
+    "music-people-023": {
+      "legacy_question_matches": [],
+      "reader_article_matches": []
+    },
+    "music-people-024": {
+      "legacy_question_matches": [
+        {
+          "file": "quizzes\\MusicPeople\\music_people_20261011.json",
+          "id": "music-people-002",
+          "stem": "На каком альбоме Нины Симон указана запись Mississippi Goddamn?",
+          "options": [
+            "Little Girl Blue",
+            "I Put a Spell on You",
+            "Nina Simone in Concert",
+            "Black Gold"
+          ]
+        }
+      ],
+      "reader_article_matches": [
+        {
+          "id": "quiz:music-people-20261011:music-people-002",
+          "title": null,
+          "question_refs": [
+            {
+              "quiz_id": "music-people-20261011",
+              "question_id": "music-people-002",
+              "revision_sha256": "d70545fa957515327719ccf381a1081698724e93a689987fff68b14879d0e9b2"
+            }
+          ]
+        },
+        {
+          "id": "quiz:music-people-20261011:music-people-006",
+          "title": null,
+          "question_refs": [
+            {
+              "quiz_id": "music-people-20261011",
+              "question_id": "music-people-006",
+              "revision_sha256": "0281ae308bf0a1dd7c7e49147cd56f6f11904e2e799cab5c1be546bf637c34fb"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "interpretation": "V2 BlackGirl/Sembene,Persepolis/Satrapi,FelaAfrobeat have no name/title matches. Nina exists in music002 on MississippiGoddamn/NinaSimoneinConcert; LittleGirlBlue appears there only as a distractor. The new Porgy/LittleGirlBlue recording question is a distinct fact, not a rephrase. V1 Ray/Pather duplicate already rejected.",
+  "source_runtime_limit": "Git legacy and published runtime intentionally differ in retained repair rows; counts/search coverage here describe Git source, not exact live all-pack semantic parity."
+}

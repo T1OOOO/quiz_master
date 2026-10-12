@@ -1,0 +1,13 @@
+# Next6 V3 final bounded source repair
+
+Actual same-context Claude V2 review is REWORK1/CLI0, preserved in claude-v2-rework.json. All four key/text pairs are repaired, and the BlackGirl topic resolves the direct Ray duplicate. Root's normalized name/title screen now covers131 legacy JSON files/4032 question records and all230 readers; the old Nina002 question is about MississippiGoddamn/InConcert, with LittleGirlBlue only as a distractor, so the proposed Porgy recording is distinct. This is not a universal semantic/factual audit.
+
+Own ONLY new writer-v3.json/sources-v3.md; preserve V1/V2 byte-identical. No product/source/build/Git/server/browser/children. Three exact repairs:
+
+1. Replace Nina's A Single Woman store link. It is a real official page for an unrelated final album and remains padding. Root ACTUALLY retrieved https://www.ninasimone.com/1933-1959/ on2026-10-13: its explicit FEBRUARY1959 LittleGirlBlue album section discusses I LovesYouPorgy and early pressings. Independently open it and use it as a genuinely question-specific official primary source, alongside RockHall. Update all ledger/source links. Do not merely assert access from Root's report. There is now primary support for1959; Root's earlier possible date conflict was not established, but the nonessential year may stay omitted to minimize edits. No need to add unrelated archive facts.
+
+2. Fela: Root ACTUALLY retrieved https://felakuti.com/story/1960, which explicitly describes disbanding HighlifeRakers and forming KoolaLobitos in1960. It confirms the reviewer-noted museum/estate date discrepancy; calling KoolaLobitos his FIRST band is also unsafe. Replace the article's1961/first-band statement with a neutral, supported London/highlife/KoolaLobitos sentence that does not assert a founding year or first-band status. Record the discrepancy honestly in the ledger. Keep the current two relevant sources; the direct1960 page can be recorded as additional access evidence without inflating the end-link count.
+
+3. BlackGirl: tighten the French title nuance from alienation/belonging to ownership/belonging, matching BFI. Avoid presenting interpretation as a literal source claim.
+
+Retain all four V2 IDs, stems/options/intended answers and all correct positions0/1/2/3. Keep110–160 whitespace words without padding; all options[key]==intended_text must pass. Report hashes, actual source access, word counts and exact changed fields. This is the second substantive fix attempt; if blocked or if further facts cannot be supported, report the concrete evidence/missing decision instead of silently looping or inventing access. Root owns a real independent recheck before integration/publication.

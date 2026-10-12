@@ -1,0 +1,275 @@
+{
+  "task_id": "task-556c2f0c5a5b4677a93b6fe03c4d14fc",
+  "status": "LOCAL_SOURCE_INTEGRATION_FROZEN_PENDING_ROOT_GATES_AND_DIFFERENT_PROVIDER_BINDING_REVIEW",
+  "publication_or_commit_claim": false,
+  "accepted_inputs": {
+    "next6_writer_v3": "17e0c69846e8bf2e0e1b290e971f9f9cff216ccdba2d68b226db69024941aa4c",
+    "next6_sources_v3": "23ffb7d568df6f267b48740be1cb6b399d3bc4633fff9d0b003ed6a98f194237",
+    "next6_claude_v3_review": "docs/rewrite-agents/tasks/CULTURE_NEXT6_20261013/claude-v3-acceptance.json",
+    "newyear_proposal": "9621c8d06ac67f9c0aefcdd342fc9d08f62fb192c9f1aa7c6ec8d691516db694",
+    "newyear_original_source_sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603"
+  },
+  "result": {
+    "counts": {
+      "packs": 131,
+      "questions": 4036,
+      "articles": 234,
+      "cinema_people": 24,
+      "music_people": 24,
+      "newyear": 55
+    },
+    "people_additions": {
+      "cinema": [
+        "cinema-people-023",
+        "cinema-people-024"
+      ],
+      "music": [
+        "music-people-023",
+        "music-people-024"
+      ],
+      "answer_indexes": {
+        "cinema-people-023": 0,
+        "cinema-people-024": 1,
+        "music-people-023": 2,
+        "music-people-024": 3
+      }
+    },
+    "newyear_repairs": {
+      "changed_source_indexes": [
+        29,
+        36
+      ],
+      "other53_exact": true,
+      "old_raw_sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603",
+      "final_sha256": "3b17f7897d82dc88fa7d2159a1721a57b56253822f2c6c49f619f1cb62380c76",
+      "utf8_lf_no_cr": true
+    },
+    "canonical": {
+      "cinema-people-20261011": {
+        "old22_draft_exact": true,
+        "old22_manifest_exact": true,
+        "old22_public_dto_exact": true,
+        "old22_private_grading_exact": true,
+        "new_ids": [
+          "cinema-people-023",
+          "cinema-people-024"
+        ],
+        "new_revisions": {
+          "cinema-people-023": "c53894526896b8cffe6777777cd8be05b3bf3b2213f7d0bec18c3561cff82b77",
+          "cinema-people-024": "78398be43b68d4c34abcc6c5331546ab91b40b785e6902ef6d7cc23e513597cd"
+        },
+        "source_uri": "/app/quizzes/Cinema/People/cinema_people_20261011.json",
+        "source_sha256": "64a949036e048e8e380e2ff1ee4b23fffea3f6ddb0d78c8748e60f2f18cd379d",
+        "taxonomy_ref": {
+          "taxonomy_id": "qm-tags-v1",
+          "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+        }
+      },
+      "music-people-20261011": {
+        "old22_draft_exact": true,
+        "old22_manifest_exact": true,
+        "old22_public_dto_exact": true,
+        "old22_private_grading_exact": true,
+        "new_ids": [
+          "music-people-023",
+          "music-people-024"
+        ],
+        "new_revisions": {
+          "music-people-023": "f1a31357b68a88404397480179c67134bca0360f5bbf7b93d714014ca366444c",
+          "music-people-024": "3a911b0bc4a22b21800832398e4516da4e99001ddad8df40e3de4077e92f134e"
+        },
+        "source_uri": "/app/quizzes/MusicPeople/music_people_20261011.json",
+        "source_sha256": "04c8ce0731c52383b463c8995fecea682f6b5394f478e56b13c5ff67dd4ab486",
+        "taxonomy_ref": {
+          "taxonomy_id": "qm-tags-v1",
+          "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+        }
+      }
+    },
+    "articles": {
+      "articles": [
+        {
+          "id": "quiz:cinema-people-20261011:cinema-people-023",
+          "question_refs": [
+            {
+              "quiz_id": "cinema-people-20261011",
+              "question_id": "cinema-people-023",
+              "revision_sha256": "c53894526896b8cffe6777777cd8be05b3bf3b2213f7d0bec18c3561cff82b77"
+            }
+          ],
+          "article_sha256": "e9d49ee8ad2c0ff4d1f9c83773ca406577f29e779d53153c01390d30a9a7d5b3",
+          "source_url_count": 2
+        },
+        {
+          "id": "quiz:cinema-people-20261011:cinema-people-024",
+          "question_refs": [
+            {
+              "quiz_id": "cinema-people-20261011",
+              "question_id": "cinema-people-024",
+              "revision_sha256": "78398be43b68d4c34abcc6c5331546ab91b40b785e6902ef6d7cc23e513597cd"
+            }
+          ],
+          "article_sha256": "d5435ccaa3edae90ec0e9ae5e601e0986b37e3a46194123c445a4ae42ac9144d",
+          "source_url_count": 2
+        },
+        {
+          "id": "quiz:music-people-20261011:music-people-023",
+          "question_refs": [
+            {
+              "quiz_id": "music-people-20261011",
+              "question_id": "music-people-023",
+              "revision_sha256": "f1a31357b68a88404397480179c67134bca0360f5bbf7b93d714014ca366444c"
+            }
+          ],
+          "article_sha256": "5c5b41ae97cd1f790ee306ac3b3ee306955df0ee582d359d86341cbeacc546ba",
+          "source_url_count": 2
+        },
+        {
+          "id": "quiz:music-people-20261011:music-people-024",
+          "question_refs": [
+            {
+              "quiz_id": "music-people-20261011",
+              "question_id": "music-people-024",
+              "revision_sha256": "3a911b0bc4a22b21800832398e4516da4e99001ddad8df40e3de4077e92f134e"
+            }
+          ],
+          "article_sha256": "70a9a01833526d6ba87643f8a03dc591dbf960f1e0e41e15c71db0c9f0fe704b",
+          "source_url_count": 2
+        }
+      ],
+      "old_reader_count": 230,
+      "new_reader_count": 234
+    },
+    "catalog": {
+      "count": 131,
+      "changed_pack_rows": [
+        "cinema-people-20261011",
+        "music-people-20261011"
+      ],
+      "unrelated129_exact": true,
+      "public_allowlist_only": true,
+      "sha256": "0e538af4682bf8130bb3cd4133ab69e44b4eeead5f1a9f79938dd7a55b80db48"
+    }
+  },
+  "parity": {
+    "old44_people_exact": true,
+    "old230_reader_prefix_exact": true,
+    "unrelated129_catalog_exact": true,
+    "newyear_other53_exact": true,
+    "private_grading_not_in_reader": true,
+    "lf_legacy_sources": {
+      "cinema-people-20261011": true,
+      "music-people-20261011": true,
+      "new-year-arts-literature": true
+    }
+  },
+  "metadata_revision_coupling": {
+    "current_audit_valid": true,
+    "audit_pack": {
+      "path": "quizzes/NewYear/new_year_arts_literature.json",
+      "source_id": "new_year_arts_literature",
+      "canonical_id": "new-year-arts-literature",
+      "title": "Музыка и литература",
+      "description": "Увлекательные вопросы и факты.",
+      "category": "Новый Год",
+      "questions": 55
+    },
+    "runtime_import_note": "No existing next/content/new-year-arts-literature canonical triplet was present at baseline; no new canonical pack was introduced because the active catalog/import workflow reads this legacy source directly. The final source byte hash changed by design; only rows29/36 have semantic changes. Historical annotation snapshots were not edited."
+  },
+  "count_fixtures": [
+    {
+      "path": "next/server/cmd/quizctl/catalog_test.go",
+      "replacements": 1
+    },
+    {
+      "path": "next/server/internal/sqlite/collection_test.go",
+      "replacements": 1
+    },
+    {
+      "path": "next/apps/quiz_app/test/discovery_test.dart",
+      "replacements": 1
+    }
+  ],
+  "checks": [
+    {
+      "command": "python .run/culture_next6_integration_20261013/prepare_legacy.py",
+      "exit": 0,
+      "evidence": "legacy-changes.json; exact four append records and source rows29/36 only"
+    },
+    {
+      "command": "GOMAXPROCS=1 go build -p=1 -o .run/culture_next6_integration_20261013/culture_next6_bind.exe ./next/server/.run/culture_next2_binding_20261012",
+      "exit": 0,
+      "evidence": "binding-build-exit.txt"
+    },
+    {
+      "command": "culture_next6_bind.exe for Cinema and Music staged outputs",
+      "exit": 0,
+      "evidence": "canonical-stage-exit.json; stable /app URIs and 24 questions each"
+    },
+    {
+      "command": "python .run/culture_next6_integration_20261013/check_stage.py",
+      "exit": 0,
+      "evidence": "canonical-stage-parity.json; old22 draft/manifest/public/private exact for each pack"
+    },
+    {
+      "command": "GOMAXPROCS=1 go build -p=1 -o .run/culture_next6_integration_20261013/quizctl-next6.exe ./next/server/cmd/quizctl",
+      "exit": 0,
+      "evidence": "quizctl-current-build-exit.txt; needed after historical binary rejected annotated collection"
+    },
+    {
+      "command": ".run/culture_next6_integration_20261013/quizctl-next6.exe catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json --force --taxonomy metadata/tags.v1.json",
+      "exit": 0,
+      "evidence": "quizctl-current-catalog-output.txt: catalog: 131 packs"
+    },
+    {
+      "command": "quizctl-next6 validate four People draft/bundle files with metadata/tags.v1.json",
+      "exit": 0,
+      "evidence": "validate-exits.json"
+    },
+    {
+      "command": ".run/culture_next6_integration_20261013/quizctl-next6.exe audit --in quizzes --taxonomy metadata/tags.v1.json",
+      "exit": 0,
+      "evidence": "quizctl-current-audit.json: files131/questions4036/ready131/blocked0"
+    },
+    {
+      "command": "python .run/culture_next6_integration_20261013/final_parity.py",
+      "exit": 0,
+      "evidence": "final-parity.json"
+    }
+  ],
+  "preserved_initial_failures": [
+    {
+      "command": ".run/quizctl-culture-20261011.exe catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json --force --taxonomy metadata/tags.v1.json",
+      "actual_exit": 2,
+      "result": "collection_blocked: quizzes; no catalog overwrite occurred. Historical binary did not bind the frozen taxonomy for the annotated People packs.",
+      "evidence": "quizctl-catalog-output.txt and quizctl-catalog-exit.json"
+    },
+    {
+      "command": "python check_stage.py initial run",
+      "actual_exit": 1,
+      "result": "KeyError: bundle field is quiz.questions, not top-level questions; no canonical replacement occurred before the scratch assertion was corrected.",
+      "evidence": "current check_stage.py is the corrected assertion; staged outputs were rechecked successfully."
+    }
+  ],
+  "hashes": {
+    "quizzes/Cinema/People/cinema_people_20261011.json": "64a949036e048e8e380e2ff1ee4b23fffea3f6ddb0d78c8748e60f2f18cd379d",
+    "quizzes/MusicPeople/music_people_20261011.json": "04c8ce0731c52383b463c8995fecea682f6b5394f478e56b13c5ff67dd4ab486",
+    "quizzes/NewYear/new_year_arts_literature.json": "3b17f7897d82dc88fa7d2159a1721a57b56253822f2c6c49f619f1cb62380c76",
+    "next/content/cinema-people-20261011/draft.json": "89b90521382d2dae68dcfed3be35398fc310c426341af65320357e814d022164",
+    "next/content/cinema-people-20261011/manifest.json": "04acf889262018d90264c148d6ea1e6d0c9ce1e284729ff6577a96d5b7b6fdc5",
+    "next/content/cinema-people-20261011/bundle.json": "b3822cd360f811c390828e095d2ebbcf40214d91bb176de8cada889fd4fd1e11",
+    "next/content/music-people-20261011/draft.json": "9a6e99fca5de0e8c28c5480b7b5e06c6ee3489c7efeb0ea100c9a8f7d3947a5a",
+    "next/content/music-people-20261011/manifest.json": "63c28823e409536af11721c5b62a1ba52334e86c4c3d39823f92449471abf452",
+    "next/content/music-people-20261011/bundle.json": "042fb5918ee33efb64ca42ed19a423edbf208a181b6063b2a550b057caebdc1e",
+    "next/apps/quiz_app/assets/catalog.json": "0e538af4682bf8130bb3cd4133ab69e44b4eeead5f1a9f79938dd7a55b80db48",
+    "next/apps/quiz_app/assets/study/question-articles.json": "22d0882995f7cf5cbf548e7c7d84f919ef7195179a15f9c0c81a82f183605b4b",
+    "study/question_articles/drafts/culture-next6-20261013.json": "f004e074af3cb436333b09cb5a7b32c09f50c5d39cbb6b1ad4efacfb6894f84a",
+    "study/question_articles/reviews/culture-next6-20261013.json": "b15c0804a22b4c77d13852a0c4802b124c59564894485da4e248b3aed7f681ae"
+  },
+  "limitations": [
+    "The accepted Claude V3 review covers source-backed draft prose/options; it does not independently review generated canonical revision bindings.",
+    "No pre-existing NewYear canonical triplet was in the active workflow. The audit validates final source structure/counts; runtime source/revision behavior and the intentionally changed source-wide raw hash require Root’s later full gate and binding review.",
+    "Historical annotations and unrelated unresolved NewYear row16 were not edited.",
+    "No full Go/Flutter/analyzer suite, commit, deployment, server, browser, SSH, or production database interaction was performed."
+  ]
+}

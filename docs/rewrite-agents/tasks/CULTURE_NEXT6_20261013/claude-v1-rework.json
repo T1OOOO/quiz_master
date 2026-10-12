@@ -1,0 +1,129 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "reported_error_count": 4,
+  "writer_sha256": "bbdf5d75769d6f760c8bd56ca26fdd2b057d9408cf06436c4c99d348ae4cf0d6",
+  "raw_callback": {
+    "acceptance": "Actual4items/4options/4minarticles/eightprimaryURLs, exacthashes/accesslimits/wordcounts and callback; no publication claim",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT6_20261013"
+    ],
+    "assignee": "session-fa7d8e6143c84c17a35c337941b6b398",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "English full context C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT6_20261013/WORK_PACKET_EN.md. Writer owns only new writer-v1.json/sources-v1.md;4Russianquestions/4articles110-160words/8institutionalURLs,2cinema2music, no existing230topicduplicates, no option giveaways. Actual source-access ledger and hashes/selfchecks. No children/product/Git/server/build/browser/deploy. Draft only; independent fact review/integration/publication later by Root.",
+    "created_at": 1791844876.281329,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-2c878a2e6d644025850ada6b4406169a",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "PowerShell ConvertFrom-Json succeeded.",
+        "4 items, four options each; correct positions 1/2/3/4.",
+        "Whitespace article word counts: 122, 115, 129, 134; two URLs per item.",
+        "Eight cited BFI/Rock Hall/Afrobeat Archive pages were actually opened on 2026-10-13.",
+        "SHA256 writer-v1.json BBDF5D75769D6F760C8BD56CA26FDD2B057D9408CF06436C4C99D348AE4CF0D6; sources-v1.md C1DF29F63DABAE5D7615597B5839C5EC98BF0006631901CEC408F0EB1803B840."
+      ],
+      "label": "culture_next6_writer_v1",
+      "risk": "Scoped duplicate screen is not whole-corpus certification; independent fact review remains required.",
+      "status": "draft_pending_independent_review",
+      "summary": "Four Russian culture drafts frozen for independent review only."
+    },
+    "root_task_id": "task-2c878a2e6d644025850ada6b4406169a",
+    "run_id": "run-93717e4e0aa2409d94df03738ff6ed73",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-qlk Next6 four source-backed diverse draft items",
+    "version": 4,
+    "reviewer": "session-011ec963f0de4f23872f409e1ee4cad1",
+    "review_note": "Independent review (blind-answered all 4 before reading key): cinema-023 and music-024 keys are CORRECT; cinema-024 and music-023 confirm root's index/text mismatch bugs. 4 required fixes:\n1) cinema-people-024: correct_answer must be 0, not 1 (options[0]='Маржан Сатрапи' matches correct_answer_text; options[1]='Сильвен Шоме' does not). BFI sources (autobiographical films, comic book films) both opened successfully and directly confirm Paronnaud+Satrapi co-direction, autobiographical/monochrome basis, and exile/emigration detail -- article text itself is accurate.\n2) music-people-023: correct_answer must be 0, not 2 (options[0]='Фела Кути' matches correct_answer_text; options[2]='Кинг Санни Аде' does not). rockhall.com/inductees/fela-kuti opened successfully and directly supports 'Afrobeat pioneer', Koola Lobitos/1961/London, James Brown/Sly Stone influence, Alagbon Close.\n3) music-people-023 second source: afrobeatarchive.com opened successfully but is NOT an institutional/official archive -- it is a volunteer/curatorial fan project ('central digital archive for Nigerian music' with public 'Submit an Artist' contributions, no museum/university/government affiliation). Replace with a genuine second institutional source.\n4) music-people-024 second source: library.rockhall.com/home/inductees opened successfully but is only a generic alphabetical inductee index page ('We do not have a research guide for every Inductee at this time') with zero question-specific content about Nina Simone or 'I Loves You Porgy'/Little Girl Blue. Replace with her actual individual Rock Hall research-guide page or another source specific to this recording.\nAlso verified: BFI Apu paddy-field/train detail is phrased accurately in the article vs source. Little Girl Blue recorded 1957, released by Bethlehem Feb 1959 -- Rock Hall's own 1959 attribution is directly supported and matches external verification (Wikipedia/Discogs), not an unsupported date conversion.\nAll 8 cited URLs were opened successfully (access status per URL: BFI pather-panchali ok, BFI 10-great-trilogies ok, BFI 10-great-autobiographical-films ok, BFI 10-great-comic-book-films ok, rockhall fela-kuti ok-institutional, afrobeatarchive ok-but-not-institutional, rockhall nina-simone ok-institutional, library.rockhall.com/home/inductees ok-but-generic-non-specific).\nBlind independent answers recorded before reading key: cinema-023=Сатьяджит Рай, cinema-024=Маржан Сатрапи, music-023=Фела Кути, music-024=Нина Симон.\nScope note: this is a finite 4-item read-only review, not whole-bank certification; full corpus duplicate screen for Nina Simone across all 230 articles was not independently repeated here (read-only scope) -- recommend root confirm before integration. Distractor options in all 4 items are plausible, comparable in type/length, with no parentheses/nationality/length giveaway. Word counts (122/115/129/134) and source-access dates all check out against root's structural gate."
+  },
+  "detailed_report": {
+    "task_id": "task-2c878a2e6d644025850ada6b4406169a",
+    "decision": "rework",
+    "error_count": 4,
+    "summary": "Independent review confirms 2 key/index bugs and 2 weak secondary sources; cinema-023 and music-024 answer keys are correct.",
+    "findings": [
+      {
+        "id": "cinema-people-023",
+        "status": "ok",
+        "note": "Independently answered Сатьяджит Рай before reading key; matches key (index 0). Both BFI sources opened successfully and directly confirm director, Apu-trilogy placement, and the paddy-field/train scene detail as phrased in the article. No fix needed."
+      },
+      {
+        "id": "cinema-people-024",
+        "status": "error",
+        "note": "Independently answered Маржан Сатрапи (index 0) before reading key. editorial.correct_answer=1 and correct_answer_text='Маржан Сатрапи', but options[1] is actually 'Сильвен Шоме' and 'Маржан Сатрапи' is options[0]. This is the index/text mismatch root already flagged. Required fix: set correct_answer to 0. Both BFI sources (autobiographical films, comic book films) confirm Paronnaud+Satrapi as directors and the exile/emigration detail; article text is accurate and well-supported."
+      },
+      {
+        "id": "music-people-023",
+        "status": "error",
+        "note": "Independently answered Фела Кути (index 0) before reading key. editorial.correct_answer=2 and correct_answer_text='Фела Кути', but options[2] is 'Кинг Санни Аде'; 'Фела Кути' is options[0]. Same class of index/text mismatch root flagged. Required fix: set correct_answer to 0. Separately, source quality issue: rockhall.com/inductees/fela-kuti is a solid institutional primary source and directly supports 'Afrobeat pioneer', Koola Lobitos/1961/London, and the James Brown/Sly Stone influence claims. However afrobeatarchive.com is NOT an institutional/official archive -- it is a volunteer/curatorial fan project ('central digital archive for Nigerian music' with a 'Submit an Artist' feature, no museum/university/government affiliation). Required fix: replace it with a second genuine institutional source (e.g. another Rock Hall page, Smithsonian Folkways, Grammy, or similar) that specifically supports the Afrobeat-pioneer claim."
+      },
+      {
+        "id": "music-people-024",
+        "status": "error",
+        "note": "Independently answered Нина Симон (index 3) before reading key. editorial.correct_answer=3 and correct_answer_text='Нина Симон' correctly matches options[3]. No index bug here. However the second source, library.rockhall.com/home/inductees, is a generic alphabetical inductee index page stating 'We do not have a research guide for every Inductee at this time' -- it contains no question-specific content about Nina Simone or 'I Loves You Porgy'/Little Girl Blue, so it does not count as a meaningful second question-specific institutional source per the review brief. Required fix: link her actual individual Rock Hall Library research guide page (if one exists) or another institutional source specific to this recording/album. Separately verified: Little Girl Blue was recorded in 1957 but released by Bethlehem Records in Feb 1959; Rock Hall's own page attributes the 1959 date directly, consistent with external verification (Wikipedia/Discogs), so this is directly supported real history, not an unsupported date conversion."
+      }
+    ],
+    "source_access": [
+      {
+        "url": "https://www.bfi.org.uk/film/bfbb9ef1-1b2c-58fd-b030-4f50c4827d91/pather-panchali",
+        "status": "opened_successfully",
+        "supports": "director, trilogy placement, train/paddy-field scene, runtime, year"
+      },
+      {
+        "url": "https://www.bfi.org.uk/lists/10-great-trilogies",
+        "status": "opened_successfully",
+        "supports": "director, three films of the Apu trilogy"
+      },
+      {
+        "url": "https://www.bfi.org.uk/lists/10-great-autobiographical-films",
+        "status": "opened_successfully",
+        "supports": "co-directors, autobiographical comic basis, monochrome style, exile/emigration"
+      },
+      {
+        "url": "https://www.bfi.org.uk/lists/10-great-comic-book-films",
+        "status": "opened_successfully",
+        "supports": "co-directors, comic basis, 1979 revolution disruption"
+      },
+      {
+        "url": "https://rockhall.com/inductees/fela-kuti/",
+        "status": "opened_successfully",
+        "supports": "Afrobeat pioneer, highlife/jazz/soul fusion, Koola Lobitos 1961 London, James Brown/Sly Stone influence, Alagbon Close political critique"
+      },
+      {
+        "url": "https://www.afrobeatarchive.com/artists/fela-kuti",
+        "status": "opened_successfully_but_not_institutional",
+        "supports": "general biography only; not an official/institutional archive, does not satisfy the two-institutional-source requirement"
+      },
+      {
+        "url": "https://rockhall.com/inductees/nina-simone/",
+        "status": "opened_successfully",
+        "supports": "I Loves You Porgy on Little Girl Blue (1959), classical training, genres, influences, who she influenced"
+      },
+      {
+        "url": "https://library.rockhall.com/home/inductees",
+        "status": "opened_successfully_but_generic",
+        "supports": "nothing question-specific; general alphabetical inductee index only"
+      }
+    ],
+    "blind_independent_answers": {
+      "cinema-people-023": "Сатьяджит Рай",
+      "cinema-people-024": "Маржан Сатрапи",
+      "music-people-023": "Фела Кути",
+      "music-people-024": "Нина Симон"
+    },
+    "scope_note": "Finite 4-item read-only fact/editorial review only. No whole-bank certification. Duplicate screen beyond root's scoped rg search (esp. Nina Simone across the 230 existing articles) not independently repeated here due to read-only scope -- recommend root confirm before integration."
+  },
+  "actual_final_report": "Review submitted successfully to `host_hub` (task state: **REWORK**, 4 errors).\n\n## Summary\n\nBlind independent answers (before reading the key) matched the writer's intended answers for all four items: Сатьяджит Рай, Маржан Сатрапи, Фела Кути, Нина Симон.\n\n**Confirmed root's structural findings** — two real key/index bugs:\n- **cinema-people-024**: `correct_answer` points to index 1 (Сильвен Шоме) but should be 0 (Маржан Сатрапи, matching `correct_answer_text`).\n- **music-people-023**: `correct_answer` points to index 2 (Кинг Санни Аде) but should be 0 (Фела Кути).\n\n**Two additional source-quality issues found independently:**\n- music-023's second source, afrobeatarchive.com, is a volunteer fan/curatorial project, not an institutional archive — fails the two-institutional-source bar.\n- music-024's second source, library.rockhall.com/home/inductees, is just a generic alphabetical index with no Nina Simone-specific content.\n\n**Verified as accurate:** cinema-023 and music-024 answer keys, the BFI Apu paddy-field/train detail, the Persepolis exile detail, and the 1959 release date for *Little Girl Blue* (recorded 1957, released by Bethlehem in Feb 1959 — matches Rock Hall and external sources like Wikipedia/Discogs).\n\nAll 8 cited URLs opened successfully. This was a finite read-only review — no whole-bank certification, and I flagged that a full-corpus Nina Simone duplicate check should still be done by root before integration.",
+  "limitations": [
+    "Finite4-item review; whole bank not certified",
+    "Reviewer corroborated Rock Hall1959 attribution using secondary sources too; Root does not treat that as universal release-date certification",
+    "Root full relevant-corpus Nina duplicate screen still required; no integration/publication"
+  ]
+}

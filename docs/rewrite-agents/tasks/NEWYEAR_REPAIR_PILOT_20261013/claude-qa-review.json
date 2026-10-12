@@ -1,0 +1,66 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "Meaningful realAPI originalfalse/copytrue bothanswers, actualexits/hash/sourceparity/cleanup, honestlimits and tasksubmit",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\newyear_repair_pilot_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NEWYEAR_REPAIR_PILOT_20261013"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read NEWYEAR_REPAIR_PILOT_20261013/QA_PACKET_EN.md. Existing WindowsQA API4ee698source384, localonly freeport18094GOMAX1 disposableSQLite+original/corrected55sourcecopies. Actualfalsebefore/trueafter forBelle1980 viarealAPI, preserveother53/source947, actualownPIDstop/exit/portfree, no production feedback. Ownonlynewqa-native scratch and authoritative-regression-evidence.json; no product/canonical/metadata/Git/server/browser/build/children. Independent approvedproposal only, not integration/publication.",
+    "created_at": 1791846163.4602728,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-7fa8dfaf019546a1b3cd7447dd71d3d8",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        ".run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v2.py",
+        ".run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v2-input-schema-failure.py",
+        ".run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v3.py",
+        ".run/newyear_repair_pilot_20261013/qa-native/results-v2.json",
+        ".run/newyear_repair_pilot_20261013/qa-native/* disposable content, SQLite, logs, and cleanup evidence",
+        "docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/authoritative-regression-evidence.json"
+      ],
+      "evidence": [
+        {
+          "path": "docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/authoritative-regression-evidence.json",
+          "sha256": "00decc489f008021aecd56efd430351071cb49c867815ebd83d850867d8215f9"
+        },
+        {
+          "check": "python run_authoritative_regression-v3.py exit 0; original false,false score0; proposed true,true score2; source unchanged; both cleanup port-free",
+          "path": ".run/newyear_repair_pilot_20261013/qa-native/results-v2.json"
+        },
+        {
+          "path": "quizzes/NewYear/new_year_arts_literature.json",
+          "sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603"
+        }
+      ],
+      "limitations": "No production/source/canonical/metadata changes were made. This is only two-proposal isolated HTTP QA, not production publication or full-pack factual certification. Initial harness contract/input-shape failures are preserved in scratch evidence.",
+      "status": "LOCAL_ISOLATED_QA_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+      "summary": "Real loopback HTTP against the captured API produced false,false for the unmodified 55-question copy and true,true for the exact proposed two-row copy. Original source SHA stayed unchanged; both captured child processes were cleaned up and ports became free."
+    },
+    "root_task_id": "task-7fa8dfaf019546a1b3cd7447dd71d3d8",
+    "run_id": "run-097a427d7d9243fcac0661c44704d08b",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-jsu isolated two-item authoritative before-after QA",
+    "version": 4,
+    "reviewer": "session-8c7a35a4960749a7a5f8c9d8c11afa92",
+    "review_note": "Independent Claude Sonnet 5 QA evidence review. Verified without rerunning any API/tests/build (static reads + hashing only). All four cited artifact hashes recomputed and matched exactly: source quizzes/NewYear/new_year_arts_literature.json=9476758b...ffb603, proposal root-candidates-v1.json=9621c8d0...691516db694, api binary .run/culture_next5_browser_root_20261013/qa-api.exe=4ee69810...a6aedb4a, taxonomy metadata/tags.v1.json=98f01990...832546f8c. authoritative-regression-evidence.json's per-case payloads (revision SHAs, option_ids, server_score 0 vs 2, cleanup pids/exit codes/port_free/log_sha256) are byte-identical to the raw results-v2.json and to the per-case *-cleanup.json sidecars -- no discrepancy between the summarized evidence doc and the raw harness output. Read run_authoritative_regression-v3.py in full: it is a genuine real-HTTP harness (urllib against a live subprocess of the hash-verified qa-api.exe on loopback 18094), not a stub -- it asserts source SHA before/after, asserts each proposal's 'before' block equals the live source record at that index (no drift), builds an original-v3 copy via raw byte passthrough and a corrected-v3 copy via JSON deep-copy touching only indices 29/36, asserts exactly 53 of 55 parsed records are unchanged and the changed set is exactly {29,36}, drives real guest/attempt/answer/feedback/finish/reveal calls selecting the option_id by catalog option text (the documented fix for both preserved harness failures), and cleans up via process.terminate()+wait() followed by a real re-bind probe for port_free_after_cleanup. Original case: both answers false, server_score 0, reveal shows old defective key/explanation (wife=index0 / 1979). Corrected case: both answers true, server_score 2, reveal shows proposed key/explanation (Belle=index5 / 1980). Log files are legitimately 0 bytes (api wrote nothing to stdout/stderr), which is why log_sha256 equals the well-known SHA256-of-empty-string e3b0c442...b855 in both cases -- not a fabricated/placeholder hash, just an empty capture file. ROOT_QA_PRECISION_EN.md's caveat that 'byte_and_semantic_equal' for the other 53 records means record-value/semantic equality (dict equality in the harness), not raw serialized-byte equality, is accurate and honestly stated -- the corrected copy is re-serialized with different formatting/indent than the original raw bytes, while the untouched original-v3 copy is a true byte passthrough preserving the original file's SHA. Confirmed the two preserved harness failures are genuine discovery artifacts, not relabeled successes: grepped run_authoritative_regression.py and found the exact claimed bug (indexing an attempt snapshot's 'options', which lacks public option_id/text, instead of the public /v1/catalog) at line 70; the v2 input-schema failure record (canonical_question_id vs actual source_id/public_id) is also consistent with the accepted proposal's actual field names. The first failed helper (run_authoritative_regression.py) sits one level above qa-native/ in the broader task scratch directory as described, is preserved untouched (8759 bytes), and does not overwrite or conflict with qa-native-owned scripts. No source, canonical content, metadata, database, browser, SSH, or Git state was touched by this review -- only sha256sum and file reads were run. This acceptance is proposal/QA-evidence review only: it does not certify the remaining 53 records' factual correctness, does not reproduce or certify production/Helm44 grading, and does not constitute integration or publication."
+  },
+  "actual_report": "Review submitted — `task-7fa8dfaf019546a1b3cd7447dd71d3d8` is now **ACCEPTED**.\n\n**Verdict: ACCEPT (error_count: 0)**\n\n**Key findings:**\n- All 4 artifact hashes (source, proposal, API binary, taxonomy) independently recomputed — all match exactly.\n- `authoritative-regression-evidence.json` is byte-consistent with the raw `results-v2.json` and the per-case cleanup sidecars — no gap between the summarized claim and the underlying evidence.\n- Read `run_authoritative_regression-v3.py` end-to-end: it's a genuine real-HTTP harness against a live, hash-verified `qa-api.exe` subprocess — not a stub. It asserts source parity before/after, verifies the two proposals' \"before\" blocks still match the live source exactly, isolates an untouched byte-passthrough copy vs. a 2-row-only corrected copy (53/55 records provably unchanged), drives real guest/attempt/answer/feedback/reveal calls, and verifies port release after cleanup via a real re-bind probe.\n- Original copy: both answers false, score 0, reveal shows the old defective key (wife/1979). Corrected copy: both true, score 2, reveal shows Belle/1980.\n- The `e3b0c442...` log hash is legitimately SHA256-of-empty-string (0-byte capture logs) — not a fabricated placeholder.\n- `ROOT_QA_PRECISION_EN.md`'s caveat about \"semantic\" vs. \"byte\" equality for the other 53 records is accurate, not overstated.\n- Spot-checked both preserved historical harness failures in the actual failed scripts — both are real bugs matching their documented descriptions, not relabeled successes.\n\n**Scope respected:** no API/tests/build rerun, no edits, no source/canonical/metadata/Git/browser/server changes — verification was read-only (file reads + `sha256sum`). This acceptance covers QA-evidence review only for the two in-scope items; it does not certify the remaining 53 records, reproduce production grading, or constitute integration/publication.",
+  "reviewed_evidence_sha256": "00decc489f008021aecd56efd430351071cb49c867815ebd83d850867d8215f9",
+  "limits": [
+    "Isolated disposable Go API QA only; production grading and published UI not certified",
+    "53 unchanged row values, not separately measured raw serialized bytes",
+    "Only two proposed repairs; all other flagged NewYear facts remain unreviewed"
+  ]
+}

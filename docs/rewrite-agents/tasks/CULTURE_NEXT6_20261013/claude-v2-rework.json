@@ -1,0 +1,57 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "reported_error_count": 1,
+  "writer_sha256": "84154422e83f619a88cb59ca161f0d5e54d8dd35fd7535f04e6e5d4976abb6dc",
+  "raw_callback": {
+    "acceptance": "All4 options[key]==intended_text,4reproducible errors addressed,8meaningfulactual-access URLs, preservedV1, exacthashes/wordcounts and submitcallback",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT6_20261013"
+    ],
+    "assignee": "session-fa7d8e6143c84c17a35c337941b6b398",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read CULTURE_NEXT6_20261013/V2_FIX_PACKET_EN.md and actual claude-v1-rework.json. PreserveV1. Ownonlywriter-v2.json/sources-v2.md. Fix2actualkey/text mismatches via correctoption ordering; replacefanarchive/genericindex with2meaningfulinstitutional/officialprimaries, updateallclaims/links/access, handleNina dateconflict withoutunsupportedassertion. Same4IDs/answers,110-160words, actualchecks/hashes. No product/Git/server/build/children; independent recheck before integration.",
+    "created_at": 1791845621.3857334,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-a838bf5e636b48bfa90bac250dea16cc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "ConvertFrom-Json passed.",
+        "4 items; 4 options each; positions 0/1/2/3; each options[correct_answer] equals correct_answer_text.",
+        "Whitespace word counts 125, 115, 135, 134; two URLs per item.",
+        "Opened BFI Black Girl/Sembène, official felakuti.com, and Rock Hall Nina recording sources on 2026-10-13.",
+        "SHA256 writer-v2.json 84154422E83F619A88CB59CA161F0D5E54D8DD35FD7535F04E6E5D4976ABB6DC; sources-v2.md BA0EE6B7707F0B98DCECC754A3C5BBEB835E3DBB343C0A9CBF4028FC8F1D26FE."
+      ],
+      "label": "culture_next6_writer_v2",
+      "risk": "Independent recheck remains required; V2 is not integrated or published.",
+      "status": "draft_pending_independent_review",
+      "summary": "V2 addresses all review errors plus Root's discovered direct duplicate."
+    },
+    "root_task_id": "task-a838bf5e636b48bfa90bac250dea16cc",
+    "run_id": "run-4329a768a7b345eca5efcd385edb4415",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-qlk Next6 V2 fix four verified review errors",
+    "version": 4,
+    "reviewer": "session-6712f4cb27f1468798b2de1a166cadb0",
+    "review_note": "V2 recheck. Blind answer for NEW cinema-023 before reading key: Усман Сембен -- matches key index0.\n\nKey/text equality verified for all 4 (not just root's flag): cinema-023 idx0='Усман Сембен' OK; cinema-024 idx1='Маржан Сатрапи' OK; music-023 idx2='Фела Кути' OK; music-024 idx3='Нина Симон' OK (unchanged). Both V1 bugs genuinely fixed via reorder, not blanket re-keying.\n\nBlack Girl fact-check: fetched both new BFI URLs. black-girl page confirms Sembène as director, 'feature debut', actress name (BFI itself uses two orderings, so article's wording is fine). where-begin-with-ousmane-sembene directly confirms Diouana Senegal-to-France domestic work, apartment isolation, on-screen silence vs interior voiceover, and the French title's dual sense (BFI: 'ownership and belonging'). Minor nuance: article adds 'отчуждение' (alienation), not literally in the BFI phrasing -- low-stakes paraphrase drift. cinema-007 duplicate concern resolved since topic fully changed.\n\nREQUIRED FIX -- music-024 2nd source not relevant: shop.rockhall.com/.../nina-simone-a-single-woman page is a real official Rock Hall store listing, but for 'A Single Woman: The Complete Elektra Recordings', Simone's unrelated 1990s final album -- not Little Girl Blue / I Loves You Porgy. Only a passing marketing mention of '1959's Little Girl Blue', no song/album-specific content. Fails packet's own bar ('two links must be relevant, not just a homepage/index for the count'). Please swap for an actual Little Girl Blue / I Loves You Porgy-specific official source.\n\nNote (not counted) -- the year omission looks like overcorrection: this new source itself says '1959's Little Girl Blue', matching Rock Hall and the Wikipedia/Discogs corroboration from the V1 review; no real competing date found so far.\n\nNote (not counted) -- felakuti.com/gb/about is a genuine official estate site (Kuti family + Partisan Records), valid fan-archive replacement; confirms early-1970s Afrobeat and highlife lineage, but its own timeline reads Koola Lobitos formed 1960 (1961 entries are marriage/first child), vs the article's '1961' sourced to Rock Hall which does say 1961 directly -- minor cross-source year discrepancy worth a look.\n\nWord counts (125/115/135/134) and 8 URLs opened successfully match root's v2 gate. Scope: finite read-only recheck, not full-corpus duplicate certification; root's broader checks still pending."
+  },
+  "actual_report": "Review submitted — task-a838bf5e636b48bfa90bac250dea16cc is **REWORK**, 1 error.\n\n## Summary\n\nBlind answer for the new cinema-023 item (Усман Сембен / *Black Girl*) matched the key. All 4 key/text index pairs are now correctly aligned — the V1 Satrapi/Fela bugs were genuinely fixed by reordering options, not by blanket re-keying, confirmed by direct index checks.\n\n**Required fix (1 error):** music-024's new second source (`shop.rockhall.com` — \"A Single Woman: The Complete Elektra Recordings\") is an official Rock Hall page but for an unrelated 1990s Nina Simone album, not *Little Girl Blue*/\"I Loves You Porgy.\" It still fails the packet's own \"must be relevant, not just appended for the count\" bar — just a different flavor of padding than the V1 generic index it replaced.\n\n**Non-blocking notes:** the year omission for *Little Girl Blue* looks like overcorrection (every source checked, including the new one, agrees on 1959, with no real conflict found); and Fela's official estate site timeline suggests Koola Lobitos formed in 1960, not 1961 as stated (sourced to Rock Hall, which does say 1961) — a minor cross-source discrepancy worth a look before publication.\n\nThe *Black Girl* facts (Diouana, Senegal→France, isolation, silence/voiceover contrast, title nuance) all checked out against the two new BFI sources, with one minor paraphrase drift (\"alienation\" added, not literally in the source). The V1 cinema-007 duplicate concern is resolved since the topic changed entirely.",
+  "root_additional_findings": [
+    "Confirmed primary Fela estate timeline1960 contradicts museum1961; remove nonessential year and first-band claim",
+    "Tighten BlackGirl title nuance to source ownership/belonging",
+    "Root now actually retrieved relevant Nina official archive with explicit LittleGirlBlue/Porgy section; previous potential dateconflict was not established. Date need not be restored for this recording question."
+  ],
+  "limits": [
+    "Finite4item recheck, no integration/publication",
+    "V1/V2 remain unchanged; original REWORK evidence retained",
+    "No all-bank or published browser certification"
+  ]
+}

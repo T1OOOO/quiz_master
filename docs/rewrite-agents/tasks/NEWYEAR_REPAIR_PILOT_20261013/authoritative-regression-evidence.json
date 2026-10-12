@@ -1,0 +1,167 @@
+{
+  "task_id": "task-7fa8dfaf019546a1b3cd7447dd71d3d8",
+  "packet": "docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/QA_PACKET_EN.md",
+  "status": "LOCAL_ISOLATED_QA_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+  "publication_or_production_claim": false,
+  "scope": {
+    "source_edited": false,
+    "canonical_or_metadata_edited": false,
+    "production_or_shared_database_touched": false,
+    "browser_or_server_or_ssh_or_git_or_build_used": false
+  },
+  "inputs": {
+    "source_path": "C:\\ap\\quiz_master\\quizzes\\NewYear\\new_year_arts_literature.json",
+    "source_sha256_before": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603",
+    "proposal_path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NEWYEAR_REPAIR_PILOT_20261013\\root-candidates-v1.json",
+    "proposal_sha256": "9621c8d06ac67f9c0aefcdd342fc9d08f62fb192c9f1aa7c6ec8d691516db694",
+    "api_path": "C:\\ap\\quiz_master\\.run\\culture_next5_browser_root_20261013\\qa-api.exe",
+    "api_sha256": "4ee698107118a45c5da45bf87e1faa687540dc282dd0059341d9c402a6aedb4a",
+    "taxonomy_path": "C:\\ap\\quiz_master\\metadata\\tags.v1.json",
+    "taxonomy_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "source_question_count": 55,
+    "corrected_source_changes": [
+      {
+        "source_index": 29,
+        "source_id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+        "public_id": "q-new-year-arts-literature-29-new-year-arts-literature-30",
+        "before_key": 0,
+        "after_key": 5
+      },
+      {
+        "source_index": 36,
+        "source_id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+        "public_id": "q-new-year-arts-literature-36-new-year-arts-literature-37",
+        "before_key": 4,
+        "after_key": 3
+      }
+    ],
+    "other_source_records_byte_and_semantic_equal": 53
+  },
+  "harness": {
+    "script": ".run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v3.py",
+    "results": ".run/newyear_repair_pilot_20261013/qa-native/results-v2.json",
+    "network": "real loopback HTTP against captured qa-api.exe; per-case disposable SQLite",
+    "api_process_cleanup": "Each captured API child was terminated only by its own process handle; terminate exit code 1 is recorded as expected forced cleanup, and each post-cleanup port bind succeeded."
+  },
+  "actual_regression": {
+    "original_unmodified_copy": {
+      "belle_feedback_correct": false,
+      "happy_new_year_1980_feedback_correct": false,
+      "server_score": 0,
+      "reveal_payloads": {
+        "q-new-year-arts-literature-29-new-year-arts-literature-30": {
+          "quiz_id": "new-year-arts-literature",
+          "question_id": "q-new-year-arts-literature-29-new-year-arts-literature-30",
+          "question_revision": {
+            "number": 1,
+            "sha256": "5dea60227f97a0097f5d9751cb7c5ed0f9c60c281bc0a5b719a76271dcfacadb"
+          },
+          "correct_answer": {
+            "option_id": "q-new-year-arts-literature-29-new-year-arts-literature-30-opt-1",
+            "text": "Его жена умерла"
+          },
+          "explanation": "Скрудж был так поглощен деньгами, что его невеста Белль расторгла помолвку, а сам он остался холостяком."
+        },
+        "q-new-year-arts-literature-36-new-year-arts-literature-37": {
+          "quiz_id": "new-year-arts-literature",
+          "question_id": "q-new-year-arts-literature-36-new-year-arts-literature-37",
+          "question_revision": {
+            "number": 1,
+            "sha256": "42f9b4547ccadb402d833ca45a2125952b4596aa71dbc44f5c9abd9dbe8677e1"
+          },
+          "correct_answer": {
+            "option_id": "q-new-year-arts-literature-36-new-year-arts-literature-37-opt-5",
+            "text": "1979"
+          },
+          "explanation": "Песная была записана в 1980 году для альбома 'Super Trouper', хотя изначально планировалась как мюзикл."
+        }
+      },
+      "cleanup": {
+        "api_pid": 46464,
+        "api_exit": 1,
+        "port": 18094,
+        "port_free_after_cleanup": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "approved_proposed_copy": {
+      "belle_feedback_correct": true,
+      "happy_new_year_1980_feedback_correct": true,
+      "server_score": 2,
+      "reveal_payloads": {
+        "q-new-year-arts-literature-29-new-year-arts-literature-30": {
+          "quiz_id": "new-year-arts-literature",
+          "question_id": "q-new-year-arts-literature-29-new-year-arts-literature-30",
+          "question_revision": {
+            "number": 1,
+            "sha256": "e87388413fa776054c53ae749be4febb0b979c01f35dd1493d1ca66632a6d35e"
+          },
+          "correct_answer": {
+            "option_id": "q-new-year-arts-literature-29-new-year-arts-literature-30-opt-6",
+            "text": "Белль"
+          },
+          "explanation": "Белль сама освобождает Скруджа от помолвки: она видит, что любовь к богатству вытеснила его прежние чувства. Позже дух показывает её семью с другим мужем. Вопрос относится к повести Диккенса, а не к отдельной экранизации."
+        },
+        "q-new-year-arts-literature-36-new-year-arts-literature-37": {
+          "quiz_id": "new-year-arts-literature",
+          "question_id": "q-new-year-arts-literature-36-new-year-arts-literature-37",
+          "question_revision": {
+            "number": 1,
+            "sha256": "ea412cf2113bc1ae39f8bb5d504877b9640b0596ece91910b888d89204088e3e"
+          },
+          "correct_answer": {
+            "option_id": "q-new-year-arts-literature-36-new-year-arts-literature-37-opt-4",
+            "text": "1980"
+          },
+          "explanation": "Альбом Super Trouper вышел в Швеции 3 ноября 1980 года. «Happy New Year» была написана и записана в том же году; крупный отдельный сингл появился позднее, в 1999 году. Поэтому вопрос уточняет выпуск альбома, а не сингла."
+        }
+      },
+      "cleanup": {
+        "api_pid": 13864,
+        "api_exit": 1,
+        "port": 18094,
+        "port_free_after_cleanup": true,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "assertions": {
+      "original_both_false": true,
+      "proposed_both_true": true,
+      "original_source_sha_unchanged": true,
+      "other_source_records_unchanged": 53
+    }
+  },
+  "preserved_initial_failures": [
+    {
+      "kind": "real-API client contract discovery",
+      "path": ".run/newyear_repair_pilot_20261013/run_authoritative_regression.py",
+      "error": "KeyError: 'options' after guest and attempt creation; snapshots expose revision/order, while public option text and IDs come from /v1/catalog.",
+      "cleanup_path": ".run/newyear_repair_pilot_20261013/qa-native/original-cleanup.json",
+      "resolution": "Harness only: select public option ID from catalog and retain snapshot for revision."
+    },
+    {
+      "kind": "pre-HTTP accepted-input schema discovery",
+      "path": ".run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v2-input-schema-failure.py",
+      "error": "KeyError: canonical_question_id; accepted proposal actually exposes source_id and public_id.",
+      "record": ".run/newyear_repair_pilot_20261013/qa-native/v2-input-schema-failure.json",
+      "resolution": "Harness only: record actual source_id/public_id fields."
+    }
+  ],
+  "checks": [
+    {
+      "command": "python .run/newyear_repair_pilot_20261013/qa-native/run_authoritative_regression-v3.py",
+      "exit_code": 0,
+      "evidence": "results-v2.json: real HTTP original=false,false; proposed=true,true; scores 0 and 2; source raw SHA unchanged; both captured child cleanups port-free"
+    },
+    {
+      "command": "PowerShell extraction of results-v2.json cleanup and outcomes",
+      "exit_code": 0,
+      "evidence": "both cleanup sidecars report port_free_after_cleanup=true"
+    }
+  ],
+  "limitations": [
+    "The proposed corrections remain isolated disposable copies; this does not modify or certify production.",
+    "Only the two accepted proposals and other 53 record equality inside this 55-question source file were exercised; no full-pack factual certification is claimed.",
+    "The two harness discovery failures are retained as scratch evidence; they were not content or API failures."
+  ]
+}

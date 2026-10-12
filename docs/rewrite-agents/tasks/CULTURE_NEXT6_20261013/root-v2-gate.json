@@ -1,0 +1,20 @@
+{
+  "v1_additional_blocking_duplicate": {
+    "candidate_id": "cinema-people-023",
+    "existing_id": "cinema-people-007",
+    "existing_stem": "Кто поставил фильм «Песнь дороги» (Pather Panchali)?",
+    "same_answer": "Сатьяджит Рай",
+    "scope": "Exact same director/Pather Panchali recognition, not merely same artist"
+  },
+  "v2_key_text_equality_all4": true,
+  "v2_word_counts": {
+    "cinema-people-023": 125,
+    "cinema-people-024": 115,
+    "music-people-023": 135,
+    "music-people-024": 134
+  },
+  "v1_hash_preserved": "bbdf5d75769d6f760c8bd56ca26fdd2b057d9408cf06436c4c99d348ae4cf0d6",
+  "v2_sha256": "84154422e83f619a88cb59ca161f0d5e54d8dd35fd7535f04e6e5d4976abb6dc",
+  "sources_v2_sha256": "ba0ee6b7707f0b98dcecc754a3c5bbeb835e3dbb343c0a9cbf4028fc8f1d26fe",
+  "limits": "Root structural/duplicate gate only; different-provider V2 full recheck pending. Broad regex hits in unrelated cats/raccoons were false positives, not quiz-topic duplicates."
+}

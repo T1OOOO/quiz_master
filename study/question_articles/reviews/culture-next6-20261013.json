@@ -1,0 +1,92 @@
+{
+  "reviewer": "Independent Claude V3 supplied-packet source review",
+  "author": "CULTURE_NEXT6_WRITER_V3_20261013",
+  "input_sha256": "17e0c69846e8bf2e0e1b290e971f9f9cff216ccdba2d68b226db69024941aa4c",
+  "actual_hub_task": "task-26d81032d035420abbb5ce2c19a61817",
+  "review_limits": [
+    "Claude accepted the frozen V3 prose and source-ledger scope; it did not review generated canonical question-reference revisions.",
+    "Question-reference revision hashes were added during this integration and require a separate different-provider binding review."
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-023",
+      "verdict": "accept",
+      "article_sha256": "e9d49ee8ad2c0ff4d1f9c83773ca406577f29e779d53153c01390d30a9a7d5b3",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "British Film Institute — Black Girl",
+          "url": "https://www.bfi.org.uk/film/3650bd24-2554-5ca5-bc8d-a3acd7592468/black-girl",
+          "accessed": "2026-10-13",
+          "supports": "BFI указывает Усмана Сембена режиссёром Black Girl и Тэрез Мбиссин Диоп среди актёров."
+        },
+        {
+          "title": "British Film Institute — Where to begin with Ousmane Sembène",
+          "url": "https://www.bfi.org.uk/features/where-begin-with-ousmane-sembene",
+          "accessed": "2026-10-13",
+          "supports": "Диуана приезжает из Сенегала работать во Франции; BFI называет фильм первым полнометражным фильмом Сембена."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-024",
+      "verdict": "accept",
+      "article_sha256": "d5435ccaa3edae90ec0e9ae5e601e0986b37e3a46194123c445a4ae42ac9144d",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "British Film Institute — 10 great autobiographical films",
+          "url": "https://www.bfi.org.uk/lists/10-great-autobiographical-films",
+          "accessed": "2026-10-13",
+          "supports": "«Персеполис» поставили Венсан Паронно и Маржан Сатрапи. Фильм основан на автобиографическом комиксе Сатрапи и использует монохромную рисованную стилистику."
+        },
+        {
+          "title": "British Film Institute — 10 great comic book films",
+          "url": "https://www.bfi.org.uk/lists/10-great-comic-book-films",
+          "accessed": "2026-10-13",
+          "supports": "«Персеполис» поставили Венсан Паронно и Маржан Сатрапи. Фильм основан на автобиографическом комиксе Сатрапи и использует монохромную рисованную стилистику."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-023",
+      "verdict": "accept",
+      "article_sha256": "5c5b41ae97cd1f790ee306ac3b3ee306955df0ee582d359d86341cbeacc546ba",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "Rock and Roll Hall of Fame — Fela Kuti",
+          "url": "https://rockhall.com/inductees/fela-kuti/",
+          "accessed": "2026-10-13",
+          "supports": "Кути назван пионером афробита; жанр соединял хайлайф, джаз и соул."
+        },
+        {
+          "title": "Official Fela Kuti — About",
+          "url": "https://felakuti.com/gb/about",
+          "accessed": "2026-10-13",
+          "supports": "Кути назван пионером афробита; жанр соединял хайлайф, джаз и соул. Официальный сайт Фелы описывает его лондонский период, хайлайф и Koola Lobitos; V3 не утверждает год основания или что это была первая группа."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-024",
+      "verdict": "accept",
+      "article_sha256": "70a9a01833526d6ba87643f8a03dc591dbf960f1e0e41e15c71db0c9f0fe704b",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "Rock and Roll Hall of Fame — Nina Simone",
+          "url": "https://rockhall.com/inductees/nina-simone/",
+          "accessed": "2026-10-13",
+          "supports": "Rock Hall описывает Симон как классически подготовленную пианистку, работавшую с несколькими жанрами."
+        },
+        {
+          "title": "Official Nina Simone Archive — 1933–1959",
+          "url": "https://www.ninasimone.com/1933-1959/",
+          "accessed": "2026-10-13",
+          "supports": "Официальный архив Нины Симон помещает выпуск Little Girl Blue в февраль 1959 года и объясняет связь I Loves You, Porgy с поздними тиражами. Rock Hall описывает Симон как классически подготовленную пианистку, работавшую с несколькими жанрами."
+        }
+      ]
+    }
+  ]
+}

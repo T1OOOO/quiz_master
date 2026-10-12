@@ -1,0 +1,76 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "reported_error_count": 0,
+  "proposal_sha256": "9621c8d06ac67f9c0aefcdd342fc9d08f62fb192c9f1aa7c6ec8d691516db694",
+  "raw_callback": {
+    "acceptance": "Actual primarybook/officialABBA evidence; correct uniquekeys/plausible options/precise wording; full limitations and actual accept/rework callback. No full-bank certification",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NEWYEAR_REPAIR_PILOT_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root source-backed proposals at docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/root-candidates-v1.json and ROOT_RESEARCH_EN.md. Review two existing key/stem defects: Dickens falsewife premise (new asks fiancée Belle,6shortnames) and ABBA HappyNewYear release ambiguity (new asks SuperTrouper albumyear1980). Preserve source9476758...55pack; actual livepublicstems/options/revisions captured. No source/product/database edit, no integration/publication. Third Catholiccondemnation item deferredunsupported. Independent different-provider facts/options review required before any future implementation.",
+    "created_at": 1791845436.6040041,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-7bc5027c7fb9401695a1da3e2f6e62b4",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_paths": [
+        "C:/ap/quiz_master/docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/root-candidates-v1.json",
+        "C:/ap/quiz_master/docs/rewrite-agents/tasks/NEWYEAR_REPAIR_PILOT_20261013/ROOT_RESEARCH_EN.md"
+      ],
+      "evidence": [
+        {
+          "check": "Root primary source retrieval",
+          "outcome": "actual pages opened; source claims support narrowed proposed questions",
+          "sources": [
+            "https://www.gutenberg.org/files/19337/19337-h/19337-h.htm",
+            "https://abbasite.com/articles/the-making-of-super-trouper/",
+            "https://abbasite.com/articles/in-focus-happy-new-year/"
+          ]
+        },
+        {
+          "check": "current published candidate matching",
+          "count": 55,
+          "pack": "new-year-arts-literature",
+          "proposals": 2,
+          "stems_options_revisions_captured": true
+        },
+        {
+          "actual": true,
+          "check": "source preserved",
+          "sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603"
+        }
+      ],
+      "limitations": [
+        "No source/product/keys/database edits or production fix",
+        "Independent factual/options review and source-wide canonical/metadata revision reconciliation pending",
+        "Catholic-condemnation question17 deferred unsupported; all other NewYear conflicts remain open"
+      ],
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-7bc5027c7fb9401695a1da3e2f6e62b4",
+    "run_id": "run-59ccf295234d429ebb1be69c7ceab041",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-jsu independent two-item NewYear repair proposal gate",
+    "version": 4,
+    "reviewer": "session-926d84fac1d041a7bd83d611e5594c2c",
+    "review_note": "Independent Claude Sonnet 5 review of both repair proposals. Methodology: answered both candidate-facing questions blind (Belle / 1980) before reading proposed keys or Root's research; both matched. Verified sourceSHA256 9476758b...ffb603 against live quizzes/NewYear/new_year_arts_literature.json (match) and proposalSHA256 9621c8d0...691516db694 against root-candidates-v1.json (match). Confirmed 'before' blocks in root-candidates-v1.json are byte-identical to live source indices 29 and 36 (no drift). Item 1 (Belle): old key/explanation falsely called her Scrooge's 'wife' and claimed HE broke the engagement (both false per primary text); proposed wording asks for the former fiancee's name, removing the old long-parenthetical giveaway option, uses 6 short plausible names, key=Belle (index 5) aligns with text and explanation. Verified against Gutenberg Stave Two primary text: Belle says 'I release you' (she, not he, ends it), never termed his wife; later scene shows her with her own husband/children, Scrooge mentioned only in passing. No unsupported gloss added. Item 2 (Super Trouper 1980): old key selected 1979, contradicting its own explanation (which said 1980) -- internal key/explanation defect confirmed. Proposed question cleanly asks album release year (not single release year), key=1980 (index 3) aligns. Verified against official ABBA site: Super Trouper released Sweden 3 Nov 1980, 'Happy New Year' written Jan 1980/recorded Feb 1980 for that album; the song was NOT released as its own major single until 1999. Proposed explanation's album-vs-single distinction is accurate and avoids conflating the two dates. Both items: 6 options/key alignment correct, no parenthetical-length tell, stable source IDs retained, no duplicate-question concerns introduced vs the rest of the pack. Deferred item (index 16, Roman-Catholic condemnation claim) correctly NOT touched by this proposal and NOT endorsed by this review -- its key/explanation mismatch (key=Feliz Navidad, explanation describes I Saw Mommy Kissing Santa Claus) remains open and unresolved, and the broader condemnation claim has no primary corroboration here. This acceptance covers only the 2 in-scope proposals; it is proposal-review only, not production publication, and does not certify the rest of the 55-question pack, canonical grading, or metadata/history reconciliation."
+  },
+  "actual_report": "Review submitted and recorded as `ACCEPTED` on `task-7bc5027c7fb9401695a1da3e2f6e62b4`.\n\n**Verdict: ACCEPT (error_count: 0)** — both proposals.\n\n**Methodology:** Answered blind first — Belle / 1980 — before reading proposed keys; both matched independently.\n\n**Item 1 — Dickens (q_…_29_…_30):** Old stored key/explanation falsely called Belle \"Scrooge's wife\" and claimed *he* broke the engagement. Primary Gutenberg Stave Two text confirms the opposite: she says \"I release you,\" never termed his wife, and the later scene shows *her* family, not his. Proposed wording/key (Belle, index 5) is correct, the giveaway-length parenthetical option is removed, and all six options are plausible short names.\n\n**Item 2 — ABBA (q_…_36_…_37):** Old key selected 1979 while its own explanation said 1980 — an internal contradiction. Official ABBA site confirms *Super Trouper* released Sweden 3 Nov 1980; \"Happy New Year\" was written/recorded in 1980 for that album but not issued as a major standalone single until 1999. Proposed question explicitly asks the album year and correctly keys 1980, cleanly separating album vs. single.\n\n**Hashes verified:** sourceSHA `9476758b…ffb603` matches the live `quizzes/NewYear/new_year_arts_literature.json` exactly (no drift); proposalSHA `9621c8d0…691516db694` matches `root-candidates-v1.json` exactly.\n\n**Deferred item (index 16, Roman-Catholic condemnation claim):** Correctly left untouched and **not** validated by this review — its key (Feliz Navidad) still mismatches its own explanation (describes \"I Saw Mommy Kissing Santa Claus\"), and the broad condemnation claim has no primary sourcing here. Still open.\n\n**Scope note:** This accepts only the 2 proposals for future integration review — no source/key/database edits were made, no build/test/deploy/browser checks were run, and this does not certify the rest of the 55-question pack or reproduce/fix production grading.",
+  "root_precision_note": "Peer shorthand says old explanation claimed he broke engagement. Exact frozen row explanation says Belle broke it; the wrong HE assertion is in the long distractor, while old stored key selected wife died. Raw rows/review preserved; new proposal corrects false wife premise, key and option giveaways.",
+  "limits": [
+    "Accepts two proposed factual repairs only; source unchanged, not a production fix",
+    "Full source-wide metadata/canonical/history/article reconciliation and release gates pending",
+    "Catholic-condemnation and all other NewYear conflicts unreviewed/unfixed",
+    "Published grading not directly tested; native isolated real-API QA is a separate gate"
+  ]
+}

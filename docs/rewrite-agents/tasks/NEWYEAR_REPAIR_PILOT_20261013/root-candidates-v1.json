@@ -1,0 +1,117 @@
+{
+  "beads": "quiz_master-jsu",
+  "source_file": "C:\\ap\\quiz_master\\quizzes\\NewYear\\new_year_arts_literature.json",
+  "source_sha256": "9476758bbc8cb97f694aa302d3b8869f7eb0ca7dd6909eb0545adce455ffb603",
+  "current_public_pack": "new-year-arts-literature",
+  "public_count": 55,
+  "proposals": [
+    {
+      "source_index": 29,
+      "source_id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+      "public_id": "q-new-year-arts-literature-29-new-year-arts-literature-30",
+      "published_revision": {
+        "number": 1,
+        "sha256": "754ef88e8cb5addbe0d7c3274856b514cd4c32fb66c035abb1768c680d2722fb"
+      },
+      "before": {
+        "id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+        "type": "choice",
+        "text": "Как звали жену Эбенезера Скруджа в повести Диккенса 'Рождественская песнь'?",
+        "options": [
+          "Его жена умерла",
+          "Марта",
+          "У него не было жены (он расторг помолвку)",
+          "Дейзи",
+          "Клара",
+          "Белль"
+        ],
+        "correct_answer": 0,
+        "explanation": "Скрудж был так поглощен деньгами, что его невеста Белль расторгла помолвку, а сам он остался холостяком.",
+        "correct_multi": null,
+        "difficulty": 4
+      },
+      "proposed_after": {
+        "id": "q_new_year_arts_literature_29_new_year_arts_literature_30",
+        "type": "choice",
+        "text": "Как звали невесту Скруджа, расторгнувшую помолвку в повести Диккенса «Рождественская песнь»?",
+        "options": [
+          "Марта",
+          "Дора",
+          "Эстелла",
+          "Дейзи",
+          "Клара",
+          "Белль"
+        ],
+        "correct_answer": 5,
+        "explanation": "Белль сама освобождает Скруджа от помолвки: она видит, что любовь к богатству вытеснила его прежние чувства. Позже дух показывает её семью с другим мужем. Вопрос относится к повести Диккенса, а не к отдельной экранизации.",
+        "correct_multi": null,
+        "difficulty": 4
+      },
+      "source_urls": [
+        "https://www.gutenberg.org/files/19337/19337-h/19337-h.htm"
+      ],
+      "root_source_access": "Actual web pages opened 2026-10-13 local date; Gutenberg Stave2 release/belle-family scenes; official ABBA album/song history",
+      "state": "PROPOSAL_PENDING_DIFFERENT_PROVIDER_REVIEW"
+    },
+    {
+      "source_index": 36,
+      "source_id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+      "public_id": "q-new-year-arts-literature-36-new-year-arts-literature-37",
+      "published_revision": {
+        "number": 1,
+        "sha256": "387e35ae7a833c80232364f7425a266e28ff7d8fb6cb74dccab476f73ac8a9f6"
+      },
+      "before": {
+        "id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+        "type": "choice",
+        "text": "В каком году шведская группа ABBA выпустила свой знаменитый хит 'Happy New Year'?",
+        "options": [
+          "1976",
+          "1974",
+          "1982",
+          "1980",
+          "1979",
+          "1985"
+        ],
+        "correct_answer": 4,
+        "explanation": "Песная была записана в 1980 году для альбома 'Super Trouper', хотя изначально планировалась как мюзикл.",
+        "correct_multi": null,
+        "difficulty": 4
+      },
+      "proposed_after": {
+        "id": "q_new_year_arts_literature_36_new_year_arts_literature_37",
+        "type": "choice",
+        "text": "В каком году вышел альбом ABBA Super Trouper, в который входит «Happy New Year»?",
+        "options": [
+          "1976",
+          "1974",
+          "1982",
+          "1980",
+          "1979",
+          "1985"
+        ],
+        "correct_answer": 3,
+        "explanation": "Альбом Super Trouper вышел в Швеции 3 ноября 1980 года. «Happy New Year» была написана и записана в том же году; крупный отдельный сингл появился позднее, в 1999 году. Поэтому вопрос уточняет выпуск альбома, а не сингла.",
+        "correct_multi": null,
+        "difficulty": 4
+      },
+      "source_urls": [
+        "https://abbasite.com/articles/the-making-of-super-trouper/",
+        "https://abbasite.com/articles/in-focus-happy-new-year/"
+      ],
+      "root_source_access": "Actual web pages opened 2026-10-13 local date; Gutenberg Stave2 release/belle-family scenes; official ABBA album/song history",
+      "state": "PROPOSAL_PENDING_DIFFERENT_PROVIDER_REVIEW"
+    }
+  ],
+  "deferred_question": {
+    "source_index": 16,
+    "source_id": "q_new_year_arts_literature_16_new_year_arts_literature_17",
+    "reason": "Key/explanation conflict plus broad Roman-Catholic condemnation claim; no primary evidence for that scope obtained. Do not fix only the key or certify this assertion."
+  },
+  "limits": [
+    "No source/key/product/database changes",
+    "Published candidate stems/options/revisions observed; private production grading not requested or exposed",
+    "Two Root proposals require independent factual/editorial review, duplicate checks, source-wide revision/metadata reconciliation and full release gates",
+    "All other NewYear conflicts remain quiz_master-jsu; no whole-bank certification"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "Actualcanonical/source/reader integration with strictsourceLFhashes/references/parity, precise2repairdiff+all4correctnewkeys, counts, privateDTOseparation, metadata/revisioncouplingproof and honestlimits; freeze forRootgates",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\quizzes\\Cinema\\People",
+      "C:\\ap\\quiz_master\\quizzes\\MusicPeople",
+      "C:\\ap\\quiz_master\\quizzes\\NewYear",
+      "C:\\ap\\quiz_master\\next\\content",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets",
+      "C:\\ap\\quiz_master\\study\\question_articles",
+      "C:\\ap\\quiz_master\\next\\server\\cmd\\quizctl",
+      "C:\\ap\\quiz_master\\next\\server\\internal\\sqlite",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT6_20261013",
+      "C:\\ap\\quiz_master\\.run\\culture_next6_integration_20261013"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read CULTURE_NEXT6_20261013/INTEGRATION_PACKET_EN.md. LOCAL SOURCE ONLY, explicitlistedfileownership. ApprovedNext6V3 fourquestions/articles8URLs + independentlyapprovedNewYear2rowrepairs. Preserveold44People/230articles/129catalogrows/53otherNewYearrows.131/4036/234 People24each/NewYear55/study6/120. Actualexistingimporter/schema/productionURI/LFsourcehash/bindings; metadata coupling explicitlyverified, historicalflags notfalsecertified. Bounded selfchecks/freeze/report; Rootfullgates/independentreview/commit/publication later. No children/Git/server/browser/Flutterbuild/fulltests. CompatibleCLI reuse or singleboundedGoCLIcompileonlyifneeded.",
+    "created_at": 1791847205.9397085,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-556c2f0c5a5b4677a93b6fe03c4d14fc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "quizzes/Cinema/People/cinema_people_20261011.json",
+        "quizzes/MusicPeople/music_people_20261011.json",
+        "quizzes/NewYear/new_year_arts_literature.json",
+        "next/content/cinema-people-20261011/{draft,manifest,bundle}.json",
+        "next/content/music-people-20261011/{draft,manifest,bundle}.json",
+        "next/apps/quiz_app/assets/catalog.json",
+        "next/apps/quiz_app/assets/study/question-articles.json",
+        "study/question_articles/drafts/culture-next6-20261013.json",
+        "study/question_articles/reviews/culture-next6-20261013.json",
+        "next/server/cmd/quizctl/catalog_test.go",
+        "next/server/internal/sqlite/collection_test.go",
+        "next/apps/quiz_app/test/discovery_test.dart",
+        ".run/culture_next6_integration_20261013/*",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_20261013/integration-evidence.json"
+      ],
+      "concerns": "The historical quizctl binary rejected annotated packs; its no-write failure is preserved. A current scratch-built CLI passed. NewYear has no baseline canonical triplet, so its source-wide raw-hash/revision coupling requires Root's full gate and independent binding review. No source commit or publication claim.",
+      "evidence": [
+        {
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT6_20261013/integration-evidence.json",
+          "sha256": "6a4f506d6572b1e122cf9cbcd15e725e2abdf9c41b229acb0fc073d5e9f19cbc"
+        },
+        {
+          "check": "old44 People exact; old230 reader prefix exact; unrelated129 catalog exact; NewYear other53 exact; final 131/4036/234",
+          "path": ".run/culture_next6_integration_20261013/final-parity.json"
+        },
+        {
+          "check": "four current quizctl draft/bundle validations exit 0",
+          "path": ".run/culture_next6_integration_20261013/validate-exits.json"
+        },
+        {
+          "check": "current quizctl audit exit 0; 131 files, 4036 questions, 131 ready, 0 blocked",
+          "path": ".run/culture_next6_integration_20261013/quizctl-current-audit.json"
+        }
+      ],
+      "status": "DONE_WITH_CONCERNS",
+      "summary": "Local Next6 source integration frozen: four approved People questions/articles and two approved NewYear rows are integrated. Bounded structural parity/import checks pass at 131 packs, 4036 questions, 234 reader articles; Root must run full gates and a different-provider binding review."
+    },
+    "root_task_id": "task-556c2f0c5a5b4677a93b6fe03c4d14fc",
+    "run_id": "run-392e4400de6d426babac57b61d4828af",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-qlk/jsu integrate approved four Next6 items and two NewYear repairs",
+    "version": 4,
+    "reviewer": "session-1d2f158262b9429e8b0b8de0991561f2",
+    "review_note": "Independent read-only review of frozen Next6 source integration vs baseline 8e7b256. Verified: (1) every claimed SHA-256 in integration-evidence.json matches the actual file on disk byte-for-byte (11 files checked: quizzes/Cinema+MusicPeople+NewYear sources, draft/manifest/bundle triplets x2, catalog.json, question-articles.json); (2) git diff --stat vs 8e7b256 touches exactly the claimed file set, nothing extra; (3) NewYear source diff changes only rows 29 and 36 (Scrooge's fiancee / ABBA album question), rest byte-identical aside from declared UTF8/LF normalization; (4) new IDs cinema-people-023/024, music-people-023/024 added with correct_answer indexes 0/1/2/3 exactly as declared, draft.json revision.sha256 for each matches both the manifest grading (correct_option_id) and the article binding's revision_sha256; (5) the 4 new study articles are 126/115/133/134 words with 2 source_links (8 total) each, no correct_answer/correct_option_id/private_grading leakage in the article file or in next/apps/quiz_app/assets/* (the one grep hit, assets/study/catalog.json, is a pre-existing file byte-identical to baseline 8e7b256, unrelated to this integration, correctly out of scope); (6) the three count-fixture diffs (catalog_test.go, collection_test.go, discovery_test.dart) are pure 4032->4036 count edits, no logic change; (7) the two 'foreign dirty' files (study/check_reader.py, docs/rewrite-agents/content20/README.md) are confirmed unrelated to Next6 (reader-module-count and content20-wave edits), correctly excluded from integration attribution. No edits, builds, tests, or API calls were performed by this review; root's own full-go/full-flutter gate logs were inspected only as evidence, not re-run. No discrepancies found in the scoped data-only review; row16/Catholic-flag item remains open as previously noted and is out of scope here."
+  },
+  "actual_report": "Review submitted successfully: **ACCEPT, error_count 0**.\n\nSummary: I independently verified the frozen Next6 integration (task-556c2f0c5a5b4677a93b6fe03c4d14fc) against baseline `8e7b256` — every claimed SHA-256 hash matched the files on disk exactly, the git diff touched only the declared file set, the NewYear repair changed only rows 29/36 as claimed, the four new People questions/articles (126/115/133/134 words, 8 sources) were correctly bound by revision hash with no answer-leakage into Flutter/player assets, and the three test-fixture diffs were pure count bumps (4032→4036) with no logic changes. The two \"foreign dirty\" files and the one pre-existing grading-term hit in `assets/study/catalog.json` were confirmed unrelated/pre-existing and correctly out of scope. No edits, builds, or tests were run — this was a read-only inspection.",
+  "integration_evidence_sha256": "6a4f506d6572b1e122cf9cbcd15e725e2abdf9c41b229acb0fc073d5e9f19cbc",
+  "limits": [
+    "Local source integration only; fresh build/browser/release gates and publication remain separate",
+    "Whole bank/other NewYear flags/physical Android not certified"
+  ]
+}

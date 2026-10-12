@@ -1,0 +1,11 @@
+# NewYear correctness pilot
+
+This advances existing P1 `quiz_master-jsu`, rather than declaring a new all-bank audit. Two published question stems/options are reproduced in `root-candidates-v1.json`; their source keys conflict with the source's own explanations. No runtime content, grading or database has been changed.
+
+For Dickens, the actual original text in Stave Two shows the former fiancée releasing Scrooge from the engagement and subsequently shows Belle with another husband. A question asking the name of Scrooge's wife contains a false premise; merely selecting the long parenthetical option also preserves an obvious answer clue and incorrectly says he broke the engagement. Proposed wording asks the former fiancée's name, with six short name options and the original stable ID retained. The proposed key selects Belle. Root read the primary text at https://www.gutenberg.org/files/19337/19337-h/19337-h.htm; independent review is pending.
+
+For ABBA, the official album history gives the Swedish release of Super Trouper as3November1980. The official song history distinguishes the1980 album recording/release from the major1999 single. The old stored key selects1979. The proposed question explicitly asks the album year, retains six year options/order and selects1980. Root read https://abbasite.com/articles/the-making-of-super-trouper/ and https://abbasite.com/articles/in-focus-happy-new-year/; independent review is pending.
+
+The Roman-Catholic condemnation question is deferred. Its key selects Feliz Navidad while the explanation describes I Saw Mommy Kissing Santa Claus, but the broad condemnation claim has not received primary corroboration here. Switching only the index would not establish its factual precision.
+
+Source file hashes and actual published revision IDs are frozen in the candidate evidence. The source's55-question pack may receive new source-wide revisions if any row changes; reconcile canonical grading, metadata, retained rows, existing histories and article references before integration. A repair proposal is neither release acceptance nor a production fix. Keep all historical annotation flags and outstanding conflicts. Physical browser checks remain blocked separately under cw6; official CLI/source access is not UI verification.

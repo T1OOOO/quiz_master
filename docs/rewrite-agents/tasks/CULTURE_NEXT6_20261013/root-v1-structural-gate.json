@@ -1,0 +1,26 @@
+{
+  "writer_sha256": "bbdf5d75769d6f760c8bd56ca26fdd2b057d9408cf06436c4c99d348ae4cf0d6",
+  "sources_sha256": "c1df29f63dabae5d7615597b5839c5ec98bf0006631901cec408f0eb1803b840",
+  "actual_key_mismatches": [
+    {
+      "id": "cinema-people-024",
+      "key_index": 1,
+      "key_selected_text": "Сильвен Шоме",
+      "intended_text": "Маржан Сатрапи"
+    },
+    {
+      "id": "music-people-023",
+      "key_index": 2,
+      "key_selected_text": "Кинг Санни Аде",
+      "intended_text": "Фела Кути"
+    }
+  ],
+  "actual_word_counts": {
+    "cinema-people-023": 122,
+    "cinema-people-024": 115,
+    "music-people-023": 129,
+    "music-people-024": 134
+  },
+  "verdict": "BLOCKED_BEFORE_INTEGRATION",
+  "limits": "Root structural gate only; independent source/factual/editorial review pending; V1 retained unchanged"
+}
