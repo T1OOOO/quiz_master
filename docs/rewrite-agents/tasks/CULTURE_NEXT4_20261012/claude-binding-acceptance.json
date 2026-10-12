@@ -1,0 +1,15 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-86536f3705e143028dff03e423be3646",
+  "actual_hub_event": 30813,
+  "reviewer": "session-7ea0fe4b82e74f78a4663a9425302e5c",
+  "provider": "claude",
+  "review_note": "Independently verified: sha256 of root-v3.json and all 8 canonical artifacts match integration-evidence.json exactly; correct_answer index mapping, public/private separation, and article binding revision hashes all confirmed correct. Not independently verified: article_sha256 serialization and live external source URLs.",
+  "scope": "Canonical binding only; prior direct-source acceptance separate",
+  "actual_final_cli_exit": 0,
+  "integration_evidence_sha256": "31dc8ba777c98a46216eeb34b77c06ffc6122505dd9623ff46adaf7cb198f5b9",
+  "limitations": [
+    "Reviewer did not independently compute article serialization hash; article exporter check/tests passed independently.",
+    "Release execution/publication gate remains pending."
+  ]
+}

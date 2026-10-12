@@ -1,0 +1,26 @@
+{
+  "go": {
+    "command": "go test -p=1 ./next/server/...",
+    "exit_code": 0,
+    "all_packages_passed": true,
+    "tool_session": 62665
+  },
+  "flutter": {
+    "command": "flutter test --reporter compact",
+    "exit_code": 0,
+    "passed": 115,
+    "log_sha256": "8c815ad0ed8b6a7c2c3c40aec7ff90fd3eae3f48de7e9a7e172e9bd09b5d8e9b"
+  },
+  "analyzer": {
+    "command": "flutter analyze",
+    "exit_code": 0,
+    "result": "No issues found",
+    "log_sha256": "be848491eb515f95e1cf4fd25bb735e21b86d904aa3b1e4f55cd2c27dc79456d"
+  },
+  "parity": "root-parity.json PASS against full HEAD1248",
+  "foreign": "69 hashes unchanged",
+  "limitations": [
+    "No running Dart connection for hot reload; only a test count fixture changed. Fresh production build and browser checks remain release gates.",
+    "No complete bank fact audit or Android APK verification."
+  ]
+}

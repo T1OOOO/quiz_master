@@ -1,0 +1,136 @@
+{
+  "provider": "antigravity official agy CLI",
+  "model_requested": "gemini-3.8-flash-medium",
+  "actual_cli_exit": 0,
+  "conversation_id": "869a7081-c8de-4e07-8d99-975eac13320c",
+  "input_sha256": {
+    "candidate.json": "390b993dac0a1fa7b17b84e81cca378c1ef8cc1873e8bd83e287a0c43fe63c5d",
+    "editorial.json": "81ddb98e307542870d120c37e5eae03caadd292fa502b7a0573f34a02907727d",
+    "audit-v1.json": "99c5f3d163bae4a88e4370283425f56262c7b4083f81d34bdbfa7d760c979c85",
+    "SOURCES.md": "68597c323e3612afb6f551ba45c9b55d092a6768075cf88c3d7077405f27cef7"
+  },
+  "review": {
+    "overall": {
+      "total_items": 12,
+      "accept_count": 8,
+      "revise_count": 4,
+      "reject_count": 0,
+      "keys_plausibility": "All 12 editorial keys are substantively plausible, canonically defensible, and match the intended Tolkien lore. No key represents a factual inversion.",
+      "native_agreement_summary": "Agreed with native audit on 10 of 12 items (accepted 6, revised 4). Disagreed on 2 items (lotr-rk-91 and lotr-tt-95) where native audit conflated editorial explanation citations and omitted parent-work titles with factual errors in the question stem."
+    },
+    "items": [
+      {
+        "question_id": "lotr-rk-91",
+        "verdict": "accept",
+        "agrees_with_native": false,
+        "reason": "The question stem uniquely identifies Christopher Lee among the six options (he is the only actor listed who played Saruman). Lee's annual rereading of The Lord of the Rings is an authentic, widely publicized biographical fact. The native audit marked this as 'revise' because of a provenance mismatch in the backend explanation (Guardian interview vs. press conference) and an inaccessible web endpoint. Explanation citation hygiene is desirable, but the quiz item itself is functional, factually sound, and has a unique correct answer.",
+        "required_change": null,
+        "primary_verification_pending": "Verify primary interview transcript (e.g., The Guardian, May 2003 or film press junket) to harmonize backend editorial notes."
+      },
+      {
+        "question_id": "lotr-rk-92",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Third Age 2941 is the canonical year Bilbo Baggins finds the One Ring in Gollum's cave during the Quest of Erebor. Distractors are parallel four-digit Third Age years with no grammatical or length cues.",
+        "required_change": null,
+        "primary_verification_pending": "Check The Lord of the Rings, Appendix B, 'The Tale of Years', Third Age entry for 2941."
+      },
+      {
+        "question_id": "lotr-rk-93",
+        "verdict": "revise",
+        "agrees_with_native": true,
+        "reason": "While Anduin is 'The Great River' of the Third Age in Rhovanion and Gondor, Sirion is also explicitly designated 'The Great River' (of Beleriand) in The Silmarillion. Because both Anduin and Sirion appear in the option list, the unqualified stem 'Великая река Средиземья' creates genuine ambiguity for players knowledgeable in broader Tolkien lore.",
+        "required_change": "Narrow the stem geographically or chronologically (e.g., 'Как называлась Великая река Гондора и Рованиона в Третью Эпоху?') or replace 'Сирион' with an unambiguous non-competing river like 'Келебрант' or 'Гландуин'.",
+        "primary_verification_pending": "Confirm primary textual designations of Anduin in LOTR and Sirion in The Silmarillion."
+      },
+      {
+        "question_id": "lotr-rk-94",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Gondor is the unique correct realm of Boromir and Faramir, sons of Denethor II, the Ruling Steward. The phrasing 'королевство Фарамира и Боромира' does not falsely style them as crowned kings; it denotes their realm/nation.",
+        "required_change": null,
+        "primary_verification_pending": "Cross-reference kingdom affiliation in The Fellowship of the Ring and The Return of the King, Appendix A."
+      },
+      {
+        "question_id": "lotr-rk-95",
+        "verdict": "revise",
+        "agrees_with_native": true,
+        "reason": "Agrees with native verdict 'revise', but refines the underlying rationale: calling Mithlond a 'город' is colloquial rather than a fatal error, but including Alqualondë (the Haven of the Swans, an actual Elven city/port famous for its white ships) among the options creates cross-continental confusion between Middle-earth and the Undying Lands (Aman).",
+        "required_change": "Rephrase stem to focus specifically on the haven in Middle-earth: 'Из какой гавани Средиземья отплывали Белые Корабли эльфов на Заокраинный Запад?' and key 'Митлонд (Серые Гавани)'.",
+        "primary_verification_pending": "Verify chapter text in The Return of the King, 'The Grey Havens'."
+      },
+      {
+        "question_id": "lotr-rk-96",
+        "verdict": "revise",
+        "agrees_with_native": true,
+        "reason": "The keyed option 'Чёрные корабли Корсаров Умбара' contains egregious test-taking flaws: it echoes the words 'Корсаров Умбара' directly from the question stem, and it is significantly longer and more detailed than all five distractors. Furthermore, merging book descriptions with Peter Jackson's film adaptations introduces version divergence (theatrical cut vs. extended edition scene).",
+        "required_change": "Eliminate the stem-echo phrase, standardize distractor lengths to parallel short descriptive terms (e.g., 'Чёрные корабли с чёрными парусами', 'Драккары с красными вёслами', etc.), and specify whether the book chapter or extended film cut is being asked.",
+        "primary_verification_pending": "Verify ship descriptions in The Return of the King ('The Last Debate' / 'The Battle of the Pelennor Fields') and theatrical vs. extended film scripts."
+      },
+      {
+        "question_id": "lotr-rk-97",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Celeborn is uniquely the Lord of Lothlórien and husband of Galadriel at the close of the Third Age. All five distractors are prominent Elven lords who fail one or both criteria.",
+        "required_change": null,
+        "primary_verification_pending": "Confirm titles in The Fellowship of the Ring, Book II, Chapter 6 ('Lothlórien') and Chapter 7 ('The Mirror of Galadriel')."
+      },
+      {
+        "question_id": "lotr-rk-98",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Narya (the Red Ring / Ring of Fire) was given to Gandalf by Círdan the Shipwright upon Gandalf's arrival at the Grey Havens. Distractors Nenya and Vilya are peer Elven rings held by Galadriel and Elrond; options are fair and unambiguous.",
+        "required_change": null,
+        "primary_verification_pending": "Check Appendix B, 'The Third Age' and The Return of the King, 'The Grey Havens'."
+      },
+      {
+        "question_id": "lotr-rk-99",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "The Prologue to The Lord of the Rings ('Note on the Shire Records') explicitly states that Bilbo Baggins composed the three volumes titled 'Translations from the Elvish' while in Rivendell. Distractors include four non-hobbits and Frodo, making Bilbo the singular valid hobbit compiler.",
+        "required_change": null,
+        "primary_verification_pending": "Verify Prologue, 'Note on the Shire Records' in The Fellowship of the Ring."
+      },
+      {
+        "question_id": "lotr-rk-100",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Paladin Took II (later Thain Paladin II) is canonically the father of Peregrin (Pippin) Took. The distractors represent plausible hobbit and Gondorian names without creating ambiguity.",
+        "required_change": null,
+        "primary_verification_pending": "Check Appendix C, Family Trees ('Took of Great Smials') in The Return of the King."
+      },
+      {
+        "question_id": "lotr-tt-95",
+        "verdict": "accept",
+        "agrees_with_native": false,
+        "reason": "The stem cites the exact formal title of the Tolkien linguistic appendix: 'Elements in Quenya and Sindarin Names'. In that specific appendix, the entry 'aran' is defined as 'king'. The native audit marked this as 'revise' under the claim that omitting 'к «Сильмариллиону»' creates a false premise or misattribution. However, omitting the parent title in a standalone quiz question is an editorial brevity choice, not a factual falsehood. The stem does not claim the appendix belongs to The Two Towers, and 'aran' is uniquely and incontrovertibly correct.",
+        "required_change": null,
+        "primary_verification_pending": "Locate entry 'aran' in The Silmarillion, Appendix: 'Elements in Quenya and Sindarin Names'."
+      },
+      {
+        "question_id": "lotr-tt-96",
+        "verdict": "accept",
+        "agrees_with_native": true,
+        "reason": "Naugrim ('the Stunted People') is the Sindarin Elvish name for Dwarves. Khazâd is the Dwarves' endonym in Khuzdul, Edain refers to the Three Houses of Men, and Uruk-hai designates great Orcs. The answer is unique and canonically exact.",
+        "required_change": null,
+        "primary_verification_pending": "Verify Sindarin root and definition in LOTR Appendix F and The Silmarillion index."
+      }
+    ],
+    "overclaims": [
+      "Native audit asserted that lotr-tt-95 contains a 'false premise' or 'attributes an appendix to the wrong book'; the stem cites the exact title of the appendix ('Elements in Quenya and Sindarin Names'), so omitting the host book title is an editorial brevity decision rather than a factual defect.",
+      "Native audit treated the word 'город' in lotr-rk-95 as a factual disqualifier on the grounds that Mithlond is a haven/harbour, failing to recognize that the true risk is option-level ambiguity with Alqualondë (an actual Haven-City in Aman associated with White Ships).",
+      "Native audit labeled its review a 'blind solve' while processing candidate options and editorial answers within the same prompt execution context.",
+      "Native audit occasionally conflated secondary fan encyclopedia page lookups (Tolkien Gateway, TheOneRing) with primary source verification events."
+    ],
+    "limitations": [
+      "No licensed, fully searchable primary print or digital Tolkien texts (Allen & Unwin, HarperCollins, Houghton Mifflin Harcourt) were accessed or cited with edition-specific page numbers; all evaluations rely on established Tolkien scholarship and provided artifacts.",
+      "This adjudication is strictly bounded to the 12 candidate items supplied in this prompt packet (lotr-rk-91 through lotr-rk-100, lotr-tt-95, lotr-tt-96) and does not extend to the remaining 238 LOTR items or the wider 4016-question bank.",
+      "Film adaptation claims (lotr-rk-96) could not be verified against timecoded screenplay transcripts or home video releases due to tool and network restrictions.",
+      "This review constitutes finite analytical adjudication for the Quiz Master editorial lead, not an authoritative publication release or legal clearance."
+    ]
+  },
+  "transport_sha256": "4683e09497e37e16d64f13401d2c6a95907efe72e6820a16be7802854fb5d6df",
+  "limits": [
+    "Supplied native evidence only; no direct-primary/coldblind/Hubacceptance callback claimed."
+  ]
+}

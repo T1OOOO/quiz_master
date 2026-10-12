@@ -1,0 +1,96 @@
+{
+  "reviewer": "Claude direct primary-source review plus Root direct source checks",
+  "author": "CULTURE_NEXT4_ROOT_V3_20261012",
+  "input_sha256": "6c31b808a31536a894daf8aa2fb4e65ee41470f95a95a7340a61790be4ac58cf",
+  "actual_hub_event": 30754,
+  "review_limits": [
+    "Claude event 30754 accepted the supplied RootV3 editorial candidate after direct access to six primary sources.",
+    "This review does not approve generated canonical binding metadata, client UI, or release."
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-015",
+      "verdict": "accept",
+      "article_sha256": "50413d86dea1aa6249b24f7781ab648038d02171c6aefbbbf3a03fc35cfb76a3",
+      "note": "Accepted RootV3 editorial evidence; generated canonical binding metadata remains outside this review.",
+      "checked_sources": [
+        {
+          "title": "https://news.disney.com/jon-favreau-lion-king-interview",
+          "url": "https://news.disney.com/jon-favreau-lion-king-interview",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        },
+        {
+          "title": "https://news.disney.com/frozen-2-animation",
+          "url": "https://news.disney.com/frozen-2-animation",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-016",
+      "verdict": "accept",
+      "article_sha256": "a4c45fa59cfb0048f02e4a3d770a18ad70d21c73f871fb0acc12cd674ba3838f",
+      "note": "Accepted RootV3 editorial evidence; generated canonical binding metadata remains outside this review.",
+      "checked_sources": [
+        {
+          "title": "https://news.disney.com/frozen-2-animation",
+          "url": "https://news.disney.com/frozen-2-animation",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        },
+        {
+          "title": "https://news.disney.com/jon-favreau-lion-king-interview",
+          "url": "https://news.disney.com/jon-favreau-lion-king-interview",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-015",
+      "verdict": "accept",
+      "article_sha256": "6057f0d6d2f37d120c0483517cfd3163c273a468cdcd8d159da0b218d34defe4",
+      "note": "Accepted RootV3 editorial evidence; generated canonical binding metadata remains outside this review.",
+      "checked_sources": [
+        {
+          "title": "https://petergabriel.com/video/peter-gabriel-sledgehammer-hd-1080p/",
+          "url": "https://petergabriel.com/video/peter-gabriel-sledgehammer-hd-1080p/",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        },
+        {
+          "title": "https://petergabriel.com/news/sledgehammer-video-remastered/",
+          "url": "https://petergabriel.com/news/sledgehammer-video-remastered/",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-016",
+      "verdict": "accept",
+      "article_sha256": "7ef2fbff7fa3e5c5fb84b2e0382e76534685616fab7973dd1aabddf9a34c6087",
+      "note": "Accepted RootV3 editorial evidence; generated canonical binding metadata remains outside this review.",
+      "checked_sources": [
+        {
+          "title": "https://www.grammy.com/news/lifetime-achievement-award-ravi-shankar/",
+          "url": "https://www.grammy.com/news/lifetime-achievement-award-ravi-shankar/",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        },
+        {
+          "title": "https://grammymuseum.org/exhibit/ravi-shankar-a-life-in-music/",
+          "url": "https://grammymuseum.org/exhibit/ravi-shankar-a-life-in-music/",
+          "accessed": "2026-10-12",
+          "supports": "Primary source cited in accepted RootV3 editorial packet."
+        }
+      ]
+    }
+  ],
+  "claude_final_acceptance": {
+    "actual_hub_event": 30754,
+    "scope": "Independent editorial/direct-primary-source acceptance for RootV3; canonical binding and release remain separate gates."
+  }
+}

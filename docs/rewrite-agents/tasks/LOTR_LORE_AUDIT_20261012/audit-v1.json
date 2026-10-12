@@ -1,0 +1,229 @@
+{
+  "audit_label": "culture-next8-v2-factcheck:lotr-lore-audit-v1",
+  "status": "DONE_WITH_CONCERNS",
+  "accessed_on": "2026-10-12",
+  "scope": {
+    "source_commit": "1248f6c21d600789d1e3f113aaa9d7a5cb19bd1f",
+    "candidate_sha256": "390B993DAC0A1FA7B17B84E81CCA378C1EF8CC1873E8BD83E287A0C43FE63C5D",
+    "editorial_sha256": "81DDB98E307542870D120C37E5EAE03CAADD292FA502B7A0573F34A02907727D",
+    "bundle_sha256": {
+      "next/content/lotr-return-king-bts-100/bundle.json": "72cf3b1c6b6289837e78d767bf4d5937988f875173db2f96c0e4723ace44dbab",
+      "next/content/lotr-two-towers-lore-100/bundle.json": "a95fd566eab2590105dd323223e877ad271d97e8e10fdba28c8a1b98b58253e4"
+    },
+    "blind_solve_method": "candidate.json was read before editorial.json; answers below were recorded before seeing private option IDs.",
+    "not_a_full_bank_review": true
+  },
+  "source_access_limit": "A licensed, searchable online text of Tolkien's original work/appendices was not accessible in this bounded review. The opened publisher page establishes the editions, but does not expose the passages. Tolkien Gateway and Tolkien File entries were opened only as secondary locators; they are not claimed as primary verification. An unaffiliated full-text PDF was reached but rejected as an authoritative source because provenance/rights were not established. Therefore direct-text citation locations are repair targets, and fact-certainty labels distinguish the limitation from the editorial verdict.",
+  "summary": {
+    "items": 12,
+    "accept": 7,
+    "revise": 5,
+    "reject": 0,
+    "uncertain": 0,
+    "key_parity": "12/12 blind answers matched the private keys",
+    "primary_source_access": "No licensed full original text opened; one original-person interview transcript endpoint was inaccessible and an accessible fan-site republication was treated as secondary."
+  },
+  "items": [
+    {
+      "question_id": "lotr-rk-91",
+      "blind_answer": "Кристофер Ли",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-91-opt-5",
+      "key_parity": true,
+      "verdict": "revise",
+      "fact_certainty": "high for Lee/Saruman; medium for the annual-rereading attribution",
+      "difficulty_estimate_1_to_10": 4,
+      "suggested_tags": ["lotr", "films", "cast"],
+      "findings": [
+        "The casting answer is unique and distractors are comparable LOTR cast members.",
+        "The annual-reading claim is not tied to a named interview in the stem. The opened fan-site post attributes it to a Guardian interview, while the supplied explanation calls it a press-conference statement; those are not the same provenance.",
+        "The archival press-conference URL itself failed at robots retrieval, so it cannot support the claim in this review."
+      ],
+      "repair": "Name and link the Guardian interview (or remove the annual-rereading clause); retain Lee as the key only after matching the explanation to that source.",
+      "source_status": "secondary support opened; direct primary/interview endpoint unavailable"
+    },
+    {
+      "question_id": "lotr-rk-92",
+      "blind_answer": "2941",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-92-opt-6",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 6,
+      "suggested_tags": ["lotr", "lore", "third-age"],
+      "findings": [
+        "The intended answer agrees with Appendix B, Tale of Years (Third Age): Bilbo comes to the Ring in T.A. 2941.",
+        "All six numeric choices are parallel and no option-length cue exists."
+      ],
+      "repair": "Add the exact edition/page or Appendix B locator to the source ledger.",
+      "source_status": "canonical locator identified; licensed text not opened"
+    },
+    {
+      "question_id": "lotr-rk-93",
+      "blind_answer": "Андуин",
+      "blind_uncertainty": "medium: Anduin is the intended late-Third-Age answer, but Sirion is also called the Great River in Tolkien's legendarium",
+      "key_option_id": "lotr-rk-93-opt-6",
+      "key_parity": true,
+      "verdict": "revise",
+      "fact_certainty": "high that Anduin is called Great River; high that wording is ambiguous",
+      "difficulty_estimate_1_to_10": 3,
+      "suggested_tags": ["lotr", "lore", "geography"],
+      "findings": [
+        "The opened secondary locator identifies Anduin as the Great River in Third-Age/Gondor usage.",
+        "Sirion, also offered as an option, is called the Great River in First-Age Beleriand. The unqualified phrase 'Великая река Средиземья' permits both, so the current single-choice key is not unique."
+      ],
+      "repair": "Narrow the stem to 'Как называлась Великая река Гондора/Третьей Эпохи?' or remove Sirion; cite the relevant chapter/index entry.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-rk-94",
+      "blind_answer": "Гондор",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-94-opt-3",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 2,
+      "suggested_tags": ["lotr", "lore", "gondor"],
+      "findings": [
+        "Gondor is the unique intended kingdom; distractors are peer Middle-earth regions/realms.",
+        "The wording does not say that Faramir and Boromir were kings, so it does not itself assert a false title."
+      ],
+      "repair": "Add a precise canonical locator (The Return of the King/Appendix A).",
+      "source_status": "canonical locator needed"
+    },
+    {
+      "question_id": "lotr-rk-95",
+      "blind_answer": "Митлонд",
+      "blind_uncertainty": "medium: Mithlond is the Grey Havens, but the question calls it a city and uses a loose location relation",
+      "key_option_id": "lotr-rk-95-opt-2",
+      "key_parity": true,
+      "verdict": "revise",
+      "fact_certainty": "high for Mithlond/Grey Havens; medium for the exact wording",
+      "difficulty_estimate_1_to_10": 5,
+      "suggested_tags": ["lotr", "lore", "elf"],
+      "findings": [
+        "Mithlond is the Sindarin name for the Grey Havens, the departure harbour associated with the White Ships.",
+        "'В каком городе находились' is imprecise: the text's setting is a haven/harbour, not a city label, and the phrase could imply that the ships were permanently located there."
+      ],
+      "repair": "Ask 'Из какой гавани отплывали Белые Корабли?' and accept 'Митлонд (Серые Гавани)'; cite The Return of the King, 'The Grey Havens'.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-rk-96",
+      "blind_answer": "Чёрные корабли Корсаров Умбара",
+      "blind_uncertainty": "medium: book wording is clear; film-version scope is not",
+      "key_option_id": "lotr-rk-96-opt-3",
+      "key_parity": true,
+      "verdict": "revise",
+      "fact_certainty": "high for book event; medium for combined book/film formulation",
+      "difficulty_estimate_1_to_10": 6,
+      "suggested_tags": ["lotr", "lore", "gondor"],
+      "findings": [
+        "The book identifies Umbar's black fleet at Pelargir; the keyed description is substantively aligned with that event.",
+        "The stem merges book and film without naming theatrical versus extended edition or a film scene. It also makes the keyed option conspicuously longer and more specific than every distractor, an answer cue."
+      ],
+      "repair": "Ask only about The Return of the King book chapter 'The Last Debate'/'The Battle of the Pelennor Fields', or identify the exact film cut and scene. Replace choices with parallel ship descriptions of similar length.",
+      "source_status": "secondary locators opened; official film/cut evidence not opened"
+    },
+    {
+      "question_id": "lotr-rk-97",
+      "blind_answer": "Келеборн",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-97-opt-2",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 3,
+      "suggested_tags": ["lotr", "lore", "elf"],
+      "findings": [
+        "Celeborn is the unique spouse of Galadriel and co-ruler/Lord of Lórien in the relevant period. All alternatives are recognizable Elf-lords but do not satisfy both conditions."
+      ],
+      "repair": "Add a chapter/appendix locator for the end-of-Third-Age qualifier.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-rk-98",
+      "blind_answer": "Нарья",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-98-opt-2",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 5,
+      "suggested_tags": ["lotr", "lore", "rings"],
+      "findings": [
+        "Narya is the Ring of Fire that Círdan gives Gandalf. Nenya and Vilya are plausible peer ring distractors; the remaining alternatives are clearly wrong but do not make a second answer defensible."
+      ],
+      "repair": "Cite Appendix B, Third Age and/or 'The Grey Havens' with edition/page.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-rk-99",
+      "blind_answer": "Бильбо Бэггинс",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-99-opt-6",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 6,
+      "suggested_tags": ["lotr", "lore", "books"],
+      "findings": [
+        "The Prologue's 'Note on the Shire Records' connects Bilbo with the three volumes named 'Translations from the Elvish'. The explanation correctly avoids claiming that he singly authored the published Silmarillion.",
+        "No distractor shares that exact work attribution."
+      ],
+      "repair": "Keep the qualifying 'согласно прологу' and add the Prologue subsection/edition locator.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-rk-100",
+      "blind_answer": "Паладин Тук",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-rk-100-opt-3",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 5,
+      "suggested_tags": ["lotr", "lore", "hobbits"],
+      "findings": [
+        "Paladin II Took is Peregrin/Pippin's father. The other hobbit-family options are plausible names but do not create a second correct answer."
+      ],
+      "repair": "Cite Appendix C, 'Took of Great Smials'.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    },
+    {
+      "question_id": "lotr-tt-95",
+      "blind_answer": "Аран",
+      "blind_uncertainty": "medium: the word meaning is known, but the named appendix requires a work citation",
+      "key_option_id": "lotr-tt-95-opt-3",
+      "key_parity": true,
+      "verdict": "revise",
+      "fact_certainty": "high for aran = king; high that the attribution is incomplete/misleading",
+      "difficulty_estimate_1_to_10": 8,
+      "suggested_tags": ["lotr", "lore", "languages"],
+      "findings": [
+        "The word aran means 'king' in the relevant Elvish glossary tradition, and the options are parallel language terms.",
+        "'Elements in Quenya and Sindarin Names' is an appendix to The Silmarillion, not a standalone unqualified LOTR appendix. A Two Towers pack can ask it, but the source work must be named to avoid a false premise."
+      ],
+      "repair": "Use 'В приложении к «Сильмариллиону» ...' or cite the correct LOTR appendix if a different source is intended; provide the exact edition/page.",
+      "source_status": "secondary lexical locator opened; direct cited appendix not opened"
+    },
+    {
+      "question_id": "lotr-tt-96",
+      "blind_answer": "Наугрим",
+      "blind_uncertainty": "low",
+      "key_option_id": "lotr-tt-96-opt-4",
+      "key_parity": true,
+      "verdict": "accept",
+      "fact_certainty": "high, but direct primary-text access limited",
+      "difficulty_estimate_1_to_10": 5,
+      "suggested_tags": ["lotr", "lore", "languages"],
+      "findings": [
+        "Naugrim is the Elvish/Sindarin name for Dwarves. Khazad is their own name, Edain refers to Men, and Uruk-hai to a kind of Orc, leaving a unique answer."
+      ],
+      "repair": "Add a canonical appendix/source locator and specify Sindarin if the expected register matters.",
+      "source_status": "secondary locator opened; direct primary-text access limited"
+    }
+  ]
+}

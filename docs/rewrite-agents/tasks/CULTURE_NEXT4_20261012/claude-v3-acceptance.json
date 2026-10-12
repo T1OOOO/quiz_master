@@ -1,0 +1,17 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-936a0cd704a64a7cbb8fca0b8061ed41",
+  "actual_hub_event": 30754,
+  "reviewer": "session-d5a3e8cb69ed4f4c91699c132f467063",
+  "provider": "claude",
+  "input_sha256": "6c31b808a31536a894daf8aa2fb4e65ee41470f95a95a7340a61790be4ac58cf",
+  "actual_final_cli_exit": 0,
+  "review_note": "root-v3.json sha256 6c31b808a31536a894daf8aa2fb4e65ee41470f95a95a7340a61790be4ac58cf verified; word counts 110/118/123/118 and 4-way unique keys/options confirmed; all 9 proposed tags exist in metadata/tags.v1.json (no new taxonomy); all 6 primary sources (Disney x2, petergabriel.com x2, grammy.com, grammymuseum.org) fetched and support article claims verbatim; GRAMMY no-trailing-slash 403 noted, trailing-slash URL used per source ledger; museum exhibit dates (2015-04-29 open, 2015-05-29/2016-05-12 on view) are actually consistent, not inconsistent as the ledger claims, but dates are correctly excluded from the quiz regardless. Draft editorial gate only, no canonical/runtime/publication claim made.",
+  "actual_direct_source_urls": 6,
+  "scope": "Draft editorial/direct-source gate only",
+  "limits": [
+    "Initial180secondreviewtimeout; invalid shell/oldarchive registry lookups do not certify currentchecks. Resume used exactcurrentregistry and actualcallback.",
+    "No canonical/runtime/publication gate claimed.",
+    "Museum date fields differ; sourceledger called them inconsistent, reviewer interpreted them as consistent. No quiz/article date claim relies on them."
+  ]
+}
