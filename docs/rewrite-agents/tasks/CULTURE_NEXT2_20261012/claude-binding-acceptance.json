@@ -1,0 +1,14 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_hub_event": 30387,
+  "task_id": "task-861fc0ce8ca3488d840b97bf0b7860f9",
+  "reviewer": "session-71ccd4c559c841ee9be3b2f8b9d51df4",
+  "provider": "claude",
+  "review": "Static inspection only (no builds/tests/validators run by me): all claimed hashes match actual files; cinema-people-014/music-people-014 correct_option_id is opt-3/opt-2 (index2/index1) and private, absent from public DTOs; word counts 119/115 confirmed; article revision sha256 matches question revision; catalog diff touches only the 2 named rows (13->14, stale wording removed, 131 packs stable); question-articles.json diff is pure 58-line append, old 212 untouched; old-13 question objects in both legacy sources are untouched (pure additions); the 3 test fixture diffs are single-line 4014->4016 only. Did not independently rerun quizctl validate/audit/catalog, go test, or Flutter tests this pass; relying on lead's reported go-final/Flutter115 logs for those gates.",
+  "cli_exit_code": 0,
+  "limits": [
+    "Final pass was read-only static review; first timed-out invocation attempted invalid validator commands and a repository-wide find contrary to the prompt. These are not successful verification gates.",
+    "Root executed fresh full Go, Flutter115 and analyzer after fixing three count fixtures. Source/shape acceptance is separate from release approval.",
+    "No deployment/publication yet."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "reviewer": "Native final source review plus official Claude supplied-evidence final review",
+  "author": "CULTURE_NEXT2_FINAL_V3_20261012",
+  "input_sha256": "18dfc3000e1069ac833fd72d41425fbc10ddcbde227353cd1124bfe44099adba",
+  "actual_hub_event": 30132,
+  "review_limits": [
+    "Supplied-evidence editorial review; Claude did not successfully open original web pages in this pass.",
+    "Native final independently opened BFI/Kate Bush/Fish People; AFI returned 403 for native reviewer while the lead reports direct access.",
+    "This review is not a canonical binding, UI, or release approval."
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-014",
+      "verdict": "accept",
+      "article_sha256": "b714066552c8f70556d27aef906851079533658e2cda920c52db81b7a23e2afa",
+      "note": "Native final review directly checked the available primary sources; AFI returned 403 to that reviewer while the lead reports direct access. Claude event 30132 separately accepted the supplied final V3 evidence without a successful direct-source fetch. Neither verdict reviews generated canonical binding metadata.",
+      "checked_sources": [
+        {
+          "title": "BFI: The Tales of Hoffmann",
+          "url": "https://www.bfi.org.uk/features/tales-hoffmann-exclusive-materials-making-powell-pressburger-masterpiece",
+          "accessed": "2026-10-12",
+          "supports": "съёмку фильма под заранее записанную партитуру, работу камеры, экранные роли танцовщиков и вклад художника Hein Heckroth"
+        },
+        {
+          "title": "AFI Fest: Tales of Hoffmann",
+          "url": "https://fest.afi.com/1994/opera-on-film-1994/tales-of-hoffmann/",
+          "accessed": "2026-10-12",
+          "supports": "контекст программы AFI: фильм 1951 года, режиссёры Майкл Пауэлл и Эмерик Прессбургер, а также состав исполнителей"
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-014",
+      "verdict": "accept",
+      "article_sha256": "afd16ed803a2bba54c51410787ff55020da53b4c672bce3aaa601d31ff93722f",
+      "note": "Native final review directly checked the available primary sources; AFI returned 403 to that reviewer while the lead reports direct access. Claude event 30132 separately accepted the supplied final V3 evidence without a successful direct-source fetch. Neither verdict reviews generated canonical binding metadata.",
+      "checked_sources": [
+        {
+          "title": "Kate Bush: Hounds of Love",
+          "url": "https://www.katebush.com/hounds-of-love/",
+          "accessed": "2026-10-12",
+          "supports": "авторское намерение представить Running Up That Hill как filmic piece of dance"
+        },
+        {
+          "title": "Fish People: Hounds of Love",
+          "url": "https://music.katebush.com/buy/hounds-of-love/",
+          "accessed": "2026-10-12",
+          "supports": "пятый студийный альбом Буш и трек-лист, где Running Up That Hill идёт первым"
+        }
+      ]
+    }
+  ],
+  "native_final_review": {
+    "status": "accept",
+    "provenance": "CULTURE_NEXT2_20261012 reviewer-v3.json",
+    "direct_source_results": [
+      "Native reviewer independently opened BFI, Kate Bush and Fish People sources.",
+      "Native reviewer received HTTP 403 for AFI; the lead separately reports direct AFI access."
+    ],
+    "limitation": "The AFI access discrepancy remains recorded; the cinema graded answer rests on BFI."
+  },
+  "claude_final_acceptance": {
+    "actual_hub_event": 30132,
+    "task_id": "task-dd61746ffc634ed3adb773bbaed2df05",
+    "reviewer": "session-66e457bca9a54d21b046c4dfc72a2740",
+    "scope": "Supplied-evidence editorial acceptance only; Claude did not successfully open original web pages in that pass."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "task_id": "task-861fc0ce8ca3488d840b97bf0b7860f9",
+  "packet_label": "culture-next2-20261012",
+  "status": "READY_FOR_INDEPENDENT_BINDING_REVIEW",
+  "input": {
+    "path": "final-v3.json",
+    "sha256": "18dfc3000e1069ac833fd72d41425fbc10ddcbde227353cd1124bfe44099adba",
+    "native_final": "ACCEPT",
+    "claude_event": 30132
+  },
+  "scope": {
+    "added_question_ids": [
+      "cinema-people-014",
+      "music-people-014"
+    ],
+    "counts": {
+      "packs": 131,
+      "questions": 4016,
+      "articles": 214,
+      "cinema_people": 14,
+      "music_people": 14
+    },
+    "legacy_metadata_changes": [
+      "Cinema People description: neutral Вопросы prefix",
+      "Music People description: neutral Вопросы prefix"
+    ]
+  },
+  "source_and_binding": {
+    "taxonomy": "metadata/tags.v1.json",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "stable_uris": [
+      "/app/quizzes/Cinema/People/cinema_people_20261011.json",
+      "/app/quizzes/MusicPeople/music_people_20261011.json"
+    ],
+    "private_country_tag": "country:gb in editorial_tag_ids; context_tag_ids empty/omitted",
+    "article_question_revisions": {
+      "cinema-people-014": "62120d606cb002c2eac1e39ab2cf12221ddca7d3c860d96988cd457ffd082fd4",
+      "music-people-014": "b9d68af1aba3815c76b50860383caca6e63dbdb0dde44cbe082312a63563cf49"
+    }
+  },
+  "checks": [
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 C:/ap/quiz_master Cinema/People/cinema_people_20261011.json <stage>/cinema 2026.10.12.next2 2026-10-12T00:00:00Z",
+      "exit_code": 0,
+      "result": "Generated cinema canonical triplet: 14 questions, stable app URI, frozen taxonomy"
+    },
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 C:/ap/quiz_master MusicPeople/music_people_20261011.json <stage>/music 2026.10.12.next2 2026-10-12T00:00:00Z",
+      "exit_code": 0,
+      "result": "Generated music canonical triplet: 14 questions, stable app URI, frozen taxonomy"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl validate --in <each canonical draft or bundle> --taxonomy metadata/tags.v1.json",
+      "exit_code": 0,
+      "result": "Four documents valid; each People pack has 14 questions"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl audit --in quizzes --taxonomy metadata/tags.v1.json",
+      "exit_code": 0,
+      "result": "131 files/packs, 4016 questions, 131 ready, 0 blocked"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json --taxonomy metadata/tags.v1.json --force",
+      "exit_code": 0,
+      "result": "catalog: 131 packs"
+    },
+    {
+      "command": "python -m unittest test_build test_coverage; python build.py --write; python build.py --check",
+      "cwd": "study/question_articles",
+      "exit_code": 0,
+      "result": "4 tests passed; reader export/check reports 214 independently reviewed mini articles"
+    },
+    {
+      "command": "read-only baseline parity script",
+      "exit_code": 0,
+      "result": "old13 source/draft/manifest/bundle exact per People pack; 129 unrelated catalog rows exact; 212 prior reader records exact; public reader grading/editorial fields absent"
+    },
+    {
+      "command": "go test -p=1 ./next/server/...",
+      "exit_code": 1,
+      "result": "All listed packages passed except cmd/quizctl catalog total fixture was stale at 4014; no content defect reported"
+    },
+    {
+      "command": "go test -p=1 ./next/server/cmd/quizctl",
+      "exit_code": 0,
+      "result": "12.220s after release-lead updated the root-owned 4016 count fixture"
+    }
+  ],
+  "negative_evidence": [
+    {
+      "command": "go run ./next/server/cmd/quizctl validate --in <legacy raw source> --taxonomy metadata/tags.v1.json",
+      "exit_code": 2,
+      "reason": "validate accepts canonical documents, not legacy sources; wrapper had already successfully imported both sources"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl validate --in <draft> <bundle> --taxonomy metadata/tags.v1.json",
+      "exit_code": 2,
+      "reason": "same quiz ID supplied twice; the command correctly rejects duplicate document IDs"
+    },
+    {
+      "command": "go -p=1 test ./next/server/...",
+      "exit_code": 1,
+      "reason": "Go CLI option placed before subcommand; no packages ran"
+    }
+  ],
+  "review_provenance": {
+    "native_final": "Accepted both items; direct BFI/Kate Bush/Fish People checks recorded; AFI returned HTTP 403 to native reviewer",
+    "claude": "event 30132 accepted supplied final-V3 evidence without a successful direct-source fetch",
+    "limitation": "Neither editorial review is an independent review of generated canonical binding metadata, catalog output, reader asset, or release gates"
+  },
+  "hashes": {
+    "quizzes\\Cinema\\People\\cinema_people_20261011.json": "1b1ab567eb6ef4059d9cf6e09052485b8a505861e4e170c69a9e250bb1a54010",
+    "quizzes\\MusicPeople\\music_people_20261011.json": "ed3e062d5dca4fa371d04e72df096f270c55a0c852a525e687565c4350c0ec8e",
+    "next\\content\\cinema-people-20261011\\draft.json": "ac25589b7d3ed9b640c29ce1cedf5ecc6054ac083b61199c7966190cb37c88f3",
+    "next\\content\\cinema-people-20261011\\manifest.json": "bef22fc19719ffa432f27c49d583be56346c1d6646a48b1e1b92458b1db8b50c",
+    "next\\content\\cinema-people-20261011\\bundle.json": "6df1849c3ff320d3e085f69f9c3e88e080871e3f11e31b9f489ec267f01d4e38",
+    "next\\content\\music-people-20261011\\draft.json": "f4e6c93eec82dad7097613a1542817c3c9a062fe8e5d78a8ca3ad955e1bf044e",
+    "next\\content\\music-people-20261011\\manifest.json": "dec2d4d482459b9bd95540144e0faf66256a38625f897a53c9b59223f4ee6dac",
+    "next\\content\\music-people-20261011\\bundle.json": "c4fe450bf5f96597996b3f17de59beb844fc20f557abd9dd89e4425059369a57",
+    "next\\apps\\quiz_app\\assets\\catalog.json": "76066a4c9a1bd98811b96464f583ee5e1fe9a0dc35f514e22cbfaaba820520a0",
+    "next\\apps\\quiz_app\\assets\\study\\question-articles.json": "38557533f5e607057a563d56432b5c04e1052d5b55ef1f0836f1985997433d44",
+    "study\\question_articles\\drafts\\culture-next2-20261012.json": "2ed39363c24b6a718365fa6948b75e1625d2dbd4c7f0cdaa15025f4ec0c28c29",
+    "study\\question_articles\\reviews\\culture-next2-20261012.json": "7f4b8eac7868290477f7cf4091601834b1dab8933285db0aa4de6ca7fc9b0a37"
+  },
+  "scratch_evidence": [
+    "baseline-hashes.json",
+    "canonical-parity.json",
+    "final-parity.json"
+  ],
+  "publication": "No publication, deployment, Git operation, or release approval was performed."
+}
