@@ -1,0 +1,33 @@
+{
+  "baseline_source": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+  "baseline_checkpoint": "6c5f20f",
+  "cause": "Nested Navigator article sheet painted below ShellRoute feedback Stack sibling FAB",
+  "fix": "useRootNavigator:true on shared QuestionArticleLink modal",
+  "changed_files": [
+    "next/apps/quiz_app/lib/question_articles.dart",
+    "next/apps/quiz_app/test/question_articles_test.dart"
+  ],
+  "actual_red_exit": 1,
+  "actual_green_targeted_exit": 0,
+  "targeted_tests": 8,
+  "actual_full_flutter_exit": 0,
+  "full_flutter_tests": 116,
+  "regression": "Pointer-layer failure before fix; after fix feedback cannot be tapped through reader, Close and systemBack restore feedback",
+  "logs_sha256": {
+    "red.txt": "5d45ae0e3d94e0045f8f590427499c5f73942a57dc51e974208c193f013bbcc3",
+    "green.txt": "e03fba31268d84c9b2d088ed0b1e638c7d21dbb86069e04ca6f36302b982c042",
+    "full-flutter.txt": "664fb00f5f4d8d238d9c16fc7f7d914811b1aa7b2aec48d92e20c61bcb5c4d4c",
+    "analyze.txt": "1e502b163b50bdc9b445b1b1870ed9e23a9ea91a05ba6903b27d80c16a43437e"
+  },
+  "hot_reload_limit": "DTD discovery found no debug process; actual hot_reload returned no active connection. Fresh web build and browser QA required.",
+  "limits": [
+    "No physical Android or screen reader check",
+    "Feedback accessible after closing reader; no new in-reader entry point",
+    "Code and publishedbrowser gates pending"
+  ],
+  "source_hashes": {
+    "next/apps/quiz_app/lib/question_articles.dart": "2edd58ebfe54a99c3c82c544a037f8903273dec0f25e46c8c9a01505a8280722",
+    "next/apps/quiz_app/test/question_articles_test.dart": "9432771ef2cba36127ef28e8461e04be7cba2fe2350d51086e5b86d7081c27ff"
+  },
+  "actual_analyzer_exit": 0
+}

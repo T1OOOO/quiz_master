@@ -1,0 +1,8 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-5cb0fe7809554bd8810655e9aa3a6b9e",
+  "reviewer": "session-5ec6a092da4243a4a4f1cd75cad30f7d",
+  "review_note": "Verified: useRootNavigator:true correctly fixes nested-navigator modal painting below ShellRoute's sibling feedback FAB. File hashes and all 4 log hashes (red/green/full-flutter/analyze) match code-evidence.json. red.txt genuinely fails pre-fix; green/full-flutter(116)/analyze genuinely pass post-fix. New regression test covers open-blocks-FAB, close-restores-FAB, tap-works-after-close, reopen+systemBack-restores. No other call sites needed/received changes; pause-before-open and https-only source link safety preserved. Scope matches task. Limits accurately disclosed.",
+  "actual_cli_exit": 0,
+  "scope": "Code only, fresh build/browser/publication gates pending"
+}

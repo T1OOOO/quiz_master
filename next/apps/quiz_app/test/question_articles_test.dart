@@ -113,6 +113,63 @@ void main() {
     },
   );
 
+  testWidgets('reader stays above shell feedback and restores it on close', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    var feedbackOpened = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Stack(
+          children: [
+            Navigator(
+              onGenerateRoute: (_) => MaterialPageRoute<void>(
+                builder: (_) => Scaffold(
+                  body: QuestionArticleLink(
+                    domain: 'landmark',
+                    targetId: 'eiffel',
+                    bundle: _Bundle(catalog([article()])),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 12,
+              bottom: 88,
+              child: FloatingActionButton.small(
+                onPressed: () => feedbackOpened = true,
+                child: const Icon(Icons.support_agent),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final feedback = find.byIcon(Icons.support_agent);
+    expect(feedback.hitTestable(), findsOneWidget);
+    await tester.tap(find.byType(TextButton));
+    await tester.pumpAndSettle();
+    expect(find.byType(QuestionArticleReader), findsOneWidget);
+    expect(feedback.hitTestable(), findsNothing);
+    await tester.tap(find.byIcon(Icons.close));
+    await tester.pumpAndSettle();
+    expect(find.byType(QuestionArticleReader), findsNothing);
+    expect(feedback.hitTestable(), findsOneWidget);
+    await tester.tap(feedback);
+    expect(feedbackOpened, isTrue);
+    await tester.tap(find.byType(TextButton));
+    await tester.pumpAndSettle();
+    await tester.binding.handlePopRoute();
+    await tester.pumpAndSettle();
+    expect(find.byType(QuestionArticleReader), findsNothing);
+    expect(feedback.hitTestable(), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('missing article does not suggest an unwritten article', (
     tester,
   ) async {

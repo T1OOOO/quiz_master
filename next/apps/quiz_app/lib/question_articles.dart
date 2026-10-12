@@ -182,6 +182,7 @@ class _QuestionArticleLinkState extends State<QuestionArticleLink> {
             widget.onBeforeOpen?.call();
             showModalBottomSheet<void>(
               context: context,
+              useRootNavigator: true,
               isScrollControlled: true,
               useSafeArea: true,
               showDragHandle: true,
