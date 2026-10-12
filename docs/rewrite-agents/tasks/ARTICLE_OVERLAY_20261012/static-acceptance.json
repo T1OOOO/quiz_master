@@ -1,0 +1,11 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-b3c295cdddb24d999be89114a8664d9c",
+  "event": 31095,
+  "reviewer": "session-c43febe4360746beb78037fd6822425d",
+  "review_note": "Independently reverified (not trusted from metadata): archive/api/main.dart.js/tags.v1.json sha256 recomputed locally, all match package.json/release-evidence.json. fast_archive_check.py streaming validation passed (297/297 members). Source commit 4207ef5 matches HEAD exactly; diff is genuinely one line (useRootNavigator:true) plus a new test file. All 3 QuestionArticleLink callers share the fix; quizipedia.dart's other showModalBottomSheet is a distinct, correctly-excluded sheet. Test/log file hashes match code-evidence.json; red.txt genuinely fails at the claimed assertion pre-fix, green/full-flutter(116)/analyze genuinely pass post-fix. cutover.sh/rehearse.py guards (hostname pin, flock, image-digest==package.baseline_image, PVC UID pin, checksum verification, backup+restore with row-preservation/integrity checks, old-API rollback check) are real and consistent. Limitations: no execution of scripts/builds/browser, no hub task-candidate listing; static read-only inspection only.",
+  "package_sha256": "829bceeb809bd7d53da62de2088c2587afc52aa1e8ccc1cea1a9a4455496dc76",
+  "actual_final_cli_exit": 0,
+  "scope": "Exact static package only",
+  "process_limit": "Initial reviewer requested delegation confirmation; authorized lead confirmed. First callback used decision instead of installed verdict; final actual callback accepted. No preliminary prose used as approval."
+}

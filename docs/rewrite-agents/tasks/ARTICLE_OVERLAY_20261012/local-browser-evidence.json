@@ -1,0 +1,56 @@
+{
+  "viewport": [
+    390,
+    844
+  ],
+  "fresh_pinned_source": "4207ef5e10f6bdd2b0a66d0a0d4d33251046b46b",
+  "qa_compile": "Fresh release compilation with localhost APIbase/QA buildId; no stale Dart binary reuse",
+  "qa_build_log_sha256": "b8bdde79226dcc8fea96bc62defea6e17a789e70d195f1c23a4f8438ced70fb5",
+  "qa_main_js_sha256": "1cfb74804bdc53336db483c9f068a273317add95a902dc81e4ef770b668ce8c4",
+  "disposable_api": "Owned local API/proxy; both process exits/stop flags confirmed",
+  "browser_closed": true,
+  "packs": {
+    "cinema": {
+      "score": 16,
+      "question_count": 16,
+      "question_article_screenshots_viewed": true,
+      "screenshots_sha256": {
+        "local-cinema-people-015.png": "11f58a13811137f4d797003cbe2a3da10948d47d6adabac621f7a817d33c4267",
+        "local-cinema-015-article.png": "f87a41009cbe6213ec29e5446cca65520f0325d7793578fad2251527e55bb879",
+        "local-cinema-people-016.png": "4df068ebbac840c1e0737f7719ad64e49452b390a25d1ec30194fc307f796525",
+        "local-cinema-016-article.png": "7c03d6d0b5902451fee40ed7ad23886b75ddaa74d64266103e1e89835b2d7b30"
+      }
+    },
+    "music": {
+      "score": 16,
+      "question_count": 16,
+      "question_article_screenshots_viewed": true,
+      "screenshots_sha256": {
+        "local-music-people-015.png": "6cbef0b3272b322c81ebe256b4c138a1fe8f9923d9e1bbb7b70a2c7d2fc17b7c",
+        "local-music-015-article.png": "64cbfa8c7759e2e11ce9e8cf40110f129c1cac16d384e4b147620d1d16070678",
+        "local-music-people-016.png": "cc4794195a205cff0dd501b12832c07f544e2f01080889e90c8082aecd388f1b",
+        "local-music-016-article.png": "177998c5339789f27e249c2a265da9c29070fd1582e9923f9007617aefe955ac"
+      }
+    }
+  },
+  "reader_overlay": "Four actual modal snapshots expose only reader controls, with no global feedback control over body. All four article screenshots inspected without overlay.",
+  "feedback_restored": {
+    "after": "Reader Close",
+    "observed_click_ref": "e214",
+    "dialog_controls": [
+      "Проблема приложения",
+      "Комментарий",
+      "Прикрепить снимок экрана",
+      "Отмена",
+      "Отправить (disabled)"
+    ],
+    "dialog_opened": true,
+    "cancelled": true,
+    "report_submitted": false
+  },
+  "limits": [
+    "No external source navigation claimed in browser QA; source controls inspected.",
+    "SystemBack dismissal covered by widget regression; physicalAndroid/screenreader untested.",
+    "Fresh production JS differs by APIbase/buildId and requires post-publication browser verification."
+  ]
+}

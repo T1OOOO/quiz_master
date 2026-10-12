@@ -1,0 +1,57 @@
+{
+  "package_sha256": "829bceeb809bd7d53da62de2088c2587afc52aa1e8ccc1cea1a9a4455496dc76",
+  "build": "quiz-2026.10.12-reader-4207ef5",
+  "source_commit": "4207ef5e10f6bdd2b0a66d0a0d4d33251046b46b",
+  "image": "sha256:ee09f1289bcf2cab54ee5b8366cd7142bd133fdd3975ecc89d47300db4b5fb51",
+  "values": "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "51b5dbee6fb45b693441e196af91158641c553707af846ac5b21c52758a19552",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-reader-4207ef5.tar",
+  "durable_archive_sha256": "b5e1ee6a8c5f6a60b8c84373fb94df5106eafd228744c3488d358e6b55b792f1",
+  "actual_copy_rehearsal": {
+    "packs": 8,
+    "questions": 116,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "proofs": {
+      "music": {
+        "path": "C:\\ap\\quiz_master\\.run\\article_overlay_browser_20261012\\local-music-answers.json",
+        "sha256": "da17225ed38c281195fd2d85bb4651eeed76a00d9de14229ca637558ab5c9460",
+        "score": 16,
+        "question_count": 16
+      },
+      "cinema": {
+        "path": "C:\\ap\\quiz_master\\.run\\article_overlay_browser_20261012\\local-cinema-answers.json",
+        "sha256": "38e8dc0a193adf566b5d0931ab626d255b32ab96ff69a91e5bdddbcba0267e30",
+        "score": 16,
+        "question_count": 16
+      }
+    },
+    "new_questions_visible_options": 4,
+    "no_spoken_option_ids": true,
+    "both_question_screenshots_viewed": true,
+    "both_article_screenshots_viewed": true,
+    "source_link_checks": "All four new article source-link controls visible in snapshots; no browser navigation to external sources claimed in this QA. Primary sources separately opened by Root and editorial Claude.",
+    "browser_closed": true,
+    "api_proxy_stopped": true,
+    "reader_overlay_evidence_sha256": "af5d4f466be0225682f002d4b7b92b87bb5498983b3dc121f4fa76028ba0e8c4",
+    "feedback_restoration": "Actual feedback dialog opened and cancelled after reader Close; no report sent",
+    "qa_js_sha256": "1cfb74804bdc53336db483c9f068a273317add95a902dc81e4ef770b668ce8c4"
+  },
+  "not_claimed": [
+    "Published culture release/browser verification",
+    "All bank facts reviewed",
+    "Physical screen reader verification",
+    "Android APK validation"
+  ],
+  "qa_limit": "Local browser used a fresh compilation of the exact pinned Dart with localhost APIbase and QA build ID for a disposable API, because production APIbase is absolute HTTPS. Production JS was independently built; exact published JS QA remains required."
+}

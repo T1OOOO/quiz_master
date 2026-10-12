@@ -1,0 +1,68 @@
+{
+  "task_id": "task-b3c295cdddb24d999be89114a8664d9c",
+  "status": "READY_FOR_INDEPENDENT_STATIC_REVIEW",
+  "build_id": "quiz-2026.10.12-reader-4207ef5",
+  "source_commit": "4207ef5e10f6bdd2b0a66d0a0d4d33251046b46b",
+  "counts": {
+    "packs": 131,
+    "questions": 4020,
+    "articles": 218,
+    "cinema_people": 16,
+    "music_people": 16,
+    "runtime_fixture_packs": 8,
+    "runtime_fixture_questions": 116
+  },
+  "flutter": {
+    "command": "flutter build web --release --output C:\\ap\\quiz_master\\.run\\article_overlay_release_20261012\\web-production --dart-define=QM_BUILD_ID=quiz-2026.10.12-reader-4207ef5 --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org",
+    "exit_code": 0,
+    "compile_duration_seconds": 164.0,
+    "js_sha256": "f983486734d9a96969a748615c15199e85b76403fe1091453bd20f20e5bf3313",
+    "warnings": "Wasm dry-run informational warning; existing CupertinoIcons font warning; MaterialIcons tree-shaking notice."
+  },
+  "carried_artifacts": {
+    "byte_identical_to_corrected_next4_stage": true,
+    "sha256_by_path": {
+      "api": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "quizzes/Cinema/People/cinema_people_20261011.json": "2c79651c6aa0ab67bc9474d8b46e845dd8ff4c9d217095ff529a180fbdd27681",
+      "quizzes/MusicPeople/music_people_20261011.json": "53984a2529bd425b55764808676c614e350e4d88ce7054bc406b22aa79c9682f",
+      "next/content/cinema-people-20261011/draft.json": "94a13b7a511c9ec8172a2cb3f90ccef0af39a5c982fa9e8374b8da6ebcbf6ea9",
+      "next/content/cinema-people-20261011/manifest.json": "91facc16cf238314e1f52ad4c4685981d3b397b6f6ab1f80a4b9b518c117a919",
+      "next/content/cinema-people-20261011/bundle.json": "ddbeeca477eb2cabc41b7692f01575b7f88eab931caa43240d8ae0ac1442039c",
+      "next/content/music-people-20261011/draft.json": "d27f9f85d3d2b1cfacb4863cd0daf28f3a6ce9ec893d3edbb052981714dd6114",
+      "next/content/music-people-20261011/manifest.json": "5daf722707f326a8714118d8f1d2361b55b696a4d0303a9f432045ce424fe345",
+      "next/content/music-people-20261011/bundle.json": "0f226778640df8cc5ef23977ac4251c65d570025b4242154a3cac53134dda490",
+      "next/apps/quiz_app/assets/catalog.json": "9597f628b988a9df6e46e5446921ffbed8c7a99131fe1f06a55e2305700ef209",
+      "next/apps/quiz_app/assets/study/question-articles.json": "b122a07ea54dbcb31b6e1309865aaab91a2592c36e0a5bcbd12f2b6e88563fdc",
+      "metadata/tags.v1.json": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+    }
+  },
+  "fixtures": {
+    "generator": "go run ./next/server/.run/culture_next2_release_20261012 ... quiz-2026.10.12-reader-4207ef5",
+    "exit_code": 0,
+    "packs": 8,
+    "questions": 116,
+    "runtime_bundles_sha256": "8fa5f28c63b2e5f9fe2cda6e5a830ed8fc2efe46934c9444646426478fd45f05",
+    "staging_revisions_sha256": "c721a2c1fa362810d49d245b8fac5067bf1d3b86a74391fe73821feff5277f31",
+    "grading_and_revision_bindings_verified": true
+  },
+  "archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\article_overlay_release_20261012\\quiz-2026.10.12-reader-4207ef5.tar.gz",
+    "sha256": "829bceeb809bd7d53da62de2088c2587afc52aa1e8ccc1cea1a9a4455496dc76",
+    "bytes": 47959821,
+    "members": 297,
+    "files": 297,
+    "checksums_entries": 296,
+    "verification": "streaming tar.gz validation passed; flat root; no bytecode or links"
+  },
+  "guards": {
+    "package_baseline_image": "docker.io/library/quiz-master@sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+    "cutover_baseline_image": "docker.io/library/quiz-master@sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+    "guard_equals_package_baseline": true,
+    "dynamic_full_build_regex": true,
+    "main_dart_js_guards": 3,
+    "bash_syntax": "passed",
+    "rehearse_syntax": "passed"
+  },
+  "package_sha256": "a4dbe3d458604faf415d4cb95f53b3a5c663812de50b414b161b6853bd0ba781",
+  "release": "No SSH, server call, deployment, publication, or acceptance claim. Root owns external review and release gates."
+}
