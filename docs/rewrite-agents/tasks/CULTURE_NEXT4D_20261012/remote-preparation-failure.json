@@ -1,0 +1,15 @@
+{
+  "actual_prepare_exit": 1,
+  "archive_sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+  "remote_archive_hash_verified": true,
+  "actual_failure": "bash -n cutover.sh: line5 CRLF conditional syntax error",
+  "cutover_crlf_lines": 75,
+  "prepare_log_sha256": "0f9420c274443bd65e88b2044ca7c759dfc6b4c5209fcf2340240d444fd01ca5",
+  "rehearsal_completed": false,
+  "docker_image_built": false,
+  "production_switch_performed": false,
+  "v1_release_eligible": false,
+  "history": "Prior actual static ACCEPT0 preserved; Linux syntax gate discovered real packaging defect. Never reuse V1 acceptance as V2 approval.",
+  "v2_task": "task-49c93d08709b4ab7887c24404828939e",
+  "limits": "V1 upload/extracteddirectory preserved on server; no delete/overwrite. V2 must use separatearchive/directory and independentreview."
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "quiz-release-v2-repair-evidence/v1",
+  "task_id": "task-49c93d08709b4ab7887c24404828939e",
+  "status": "LOCAL_V2_READY_FOR_LEAD_LINUX_CHECK_AND_INDEPENDENT_REVIEW",
+  "publication_status": "NOT_PUBLISHED",
+  "failure_history": {
+    "remote_prepare": "Archive hash verification passed; remote bash -n cutover.sh then failed before rehearsal, Docker, or publication because cutover.sh used CRLF (reported line 5)."
+  },
+  "repair": {
+    "v1_stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\quiz-2026.10.12-culture-f219916",
+    "v2_stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v2\\quiz-2026.10.12-culture-f219916",
+    "only_stage_byte_changes": [
+      "checksums.txt",
+      "cutover.sh"
+    ],
+    "cutover_crlf_pairs_in_v1": 75,
+    "cutover_carriage_returns_in_v2": 0,
+    "dependent_checksum_regenerated": true
+  },
+  "identity": {
+    "build_id": "quiz-2026.10.12-culture-f219916",
+    "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "baseline_image": "docker.io/library/quiz-master@sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "5dd403547220c96b9a7abade2eaef56c2b19051f29723974a18f3625fd431610"
+  },
+  "archives": {
+    "v1_sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+    "v2_sha256": "02e645a0d202c4d66bd9ae080874440d56fd6dbd9d58c5a90a5b63bc5046dc37",
+    "v2_package_sha256": "d209455609c909635e8e38c9414be1fd0ea8f2e5724d0bdea0cf4b56eab83b80",
+    "v2_manifest_sha256": "989851f21fc8c7398b7b2a3607da737a1cf7bb49600adeea89a724b2c939f34f"
+  },
+  "verification": {
+    "same_296_relative_paths": true,
+    "archive_file_members": 296,
+    "checksums_verified": 295,
+    "all_tar_members_regular_and_safe": true,
+    "no_links_or_bytecode": true,
+    "retained_runtime_api_js_catalog_reader_bundle_metadata_unchanged": true,
+    "v1_archive_remained_unchanged": true,
+    "linux_bash_n": "Not run locally; lead owns the Linux gate."
+  },
+  "limits": {
+    "not_run": [
+      "Flutter build",
+      "tests",
+      "Linux bash -n",
+      "rehearsal",
+      "Docker",
+      "server/SSH/deployment",
+      "Git"
+    ],
+    "reason": "This task repaired only local package line endings; lead owns remote execution and release gates."
+  }
+}

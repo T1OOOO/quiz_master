@@ -1,0 +1,72 @@
+{
+  "task": "task-b87ed0c53f8d41d0b532585ed6ced809",
+  "sandbox": ".run/culture_next4d_browser_debug_20261012",
+  "browser": {
+    "session": "quiz-next4d-debug",
+    "viewport": "390x844",
+    "fresh_context": true
+  },
+  "runtime": {
+    "mode": "local-relative-api-qa",
+    "compiled_js": "reused reader4207 QA build",
+    "fresh_assets": true,
+    "production_traffic": false
+  },
+  "diagnosis": {
+    "fresh_music_route": "http://127.0.0.1:18089/#/quiz/music-people-20261011",
+    "catalog_status": 200,
+    "auth_logging": "presence only; token values omitted",
+    "catalog_authorization_present": false,
+    "attempt_and_answer_authorization_present": true,
+    "result": "fresh browser context loaded Music successfully; prior load failure was not reproduced; product cause not inferred"
+  },
+  "music_people": {
+    "answered": 20,
+    "score": "20/20",
+    "question_020": {
+      "selected_key": "opt2",
+      "four_options_visible": true,
+      "screenshot": "local-music-people-020.png",
+      "sha256": "14337E80C091C19E06840C95C5C80AD0A9E655F31966E7F1742DEEB4DD28952E"
+    },
+    "api_trace": "catalog 200; guest 201; attempt 201; answers and feedback 001-020 all 200; finish 200; reveals 200"
+  },
+  "reader": {
+    "title": "Первая женщина в Rock Hall",
+    "body_visible_and_scrollable": true,
+    "source_controls": [
+      "Rock Hall: Aretha Franklin rockhall.com",
+      "Rock Hall: 1987 induction class rockhall.com"
+    ],
+    "feedback_fab_overlay": false,
+    "screenshot": "local-music-article-001.png",
+    "sha256": "BF99C5C11E6390A3B7F54FC6D2F81E3B47812D25F45FC35492C5377F3EFF06A7"
+  },
+  "feedback": {
+    "opened": true,
+    "modal_observed": true,
+    "submit_disabled": true,
+    "closed_with_cancel": true,
+    "result_restored": true,
+    "writes": false
+  },
+  "cleanup": {
+    "server_stop_file": "local-browser-stop-music",
+    "server_exit_code": 0,
+    "browser_close_command": "hung/no output; session process was already bounded and server cleanup completed"
+  },
+  "limitations": [
+    "QA browser reused prior reader4207 compiled JS; this is not fresh production-JS certification",
+    "local SQLite only",
+    "no production API or feedback writes"
+  ],
+  "root_correction": {
+    "scope_status": "PARTIAL_NEW_READERS_NOT_CHECKED",
+    "music020_screenshot_personally_viewed": true,
+    "four_choices_fit": true,
+    "reader_checked": "Old question001 Aretha article only; does not cover requested newquestion020",
+    "fresh_context_diagnosis": "Failure did not reproduce; no rootcause established. Harness reused original disposable databases, not a newSQLite fixture.",
+    "cleanup": "Close hung; no closed=true receipt. New continuationtaskf1be owns official cleanup and newreaders.",
+    "continued_task": "task-f1be7e0af3944b74a7130da63cc270a0"
+  }
+}

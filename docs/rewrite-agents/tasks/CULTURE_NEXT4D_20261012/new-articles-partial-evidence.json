@@ -1,0 +1,37 @@
+{
+  "task": "task-21d4ec68a76b43d990047938b1adf748",
+  "status": "PARTIAL_BLOCKED",
+  "scope": "new question-020 article readers only; no 20/20 rerun",
+  "browser": {
+    "session": "quiz-next4d-articles",
+    "viewport": "390x844",
+    "session_info": "active=true, pid=40372 recorded before close attempt"
+  },
+  "cinema": {
+    "route": "http://127.0.0.1:18089/#/quiz/cinema-people-20261011",
+    "catalog": 200,
+    "guest": 201,
+    "attempt": 201,
+    "observed": "fresh question 001 screen with four options",
+    "question_020_article": "not reached because no completed result state was available and task prohibited rerunning 20/20"
+  },
+  "music": {
+    "question_020_article": "not run; same no-result-state constraint"
+  },
+  "feedback_and_sources": "not claimed; no new-020 reader or source controls observed in this run",
+  "cleanup": {
+    "server_stop_file": "local-browser-stop-cinema",
+    "server_exit_code": 0,
+    "browser_close": {
+      "command": "agent-browser --session quiz-next4d-articles close",
+      "result": "hung with no receipt; bounded shell command terminated exit 1",
+      "no_force_kill": true
+    }
+  },
+  "limitations": [
+    "Prior Aretha article001 evidence remains partial and is not reused",
+    "No source/product/Git/build/production changes",
+    "No feedback submitted"
+  ],
+  "root_correction": "Conditional avoid-rerun advice was misunderstood; new taskf1be explicitly authorizes20choice reruns when results unavailable. Original partial kept, no checks assumed."
+}
