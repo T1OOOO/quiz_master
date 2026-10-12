@@ -1,0 +1,19 @@
+{
+  "actual_v2_prepare_exit": 1,
+  "archive_sha256": "02e645a0d202c4d66bd9ae080874440d56fd6dbd9d58c5a90a5b63bc5046dc37",
+  "linux_syntax_api_js_hashes": true,
+  "backup_integrity_restore": "PASS",
+  "full_rehearsal": "FAILED_STRICT_REVISION",
+  "first_mismatch": {
+    "quiz_id": "cinema-encore-20261011",
+    "question_id": "cinema-encore-001",
+    "actual_sha256": "b21413a71b3aaf3027d6c41de003c5f3537c4c5b9f286a41ddbe8024f2c77b39",
+    "stale_expected_sha256": "a5d3d4b7f5d5aa4a1068dea178f414b39a5f1694b69ffe16666fdf99396e206c"
+  },
+  "diagnosis": "Existing compiledGo reference exporter reproduced both actualnewf219path and old42path controlhashes; all8 staged legacy files equalinputrepositorybytes. Expected metadata copiedfromoldbuild contained122 rather than124 questionIDs.",
+  "strict_gate_preserved": true,
+  "production_switch": false,
+  "prepare_log_sha256": "42db2649c1866bc4183571419717106801676275a149a703cfd2b6f0249c9557",
+  "v3_task": "task-615936a1fbb54bffa96166038286e652",
+  "limits": "Initial naive publicDTO Pythonhash didnotmatch; use actualGo exporter/rehearsal proof, not guessedhashalgorithm. V3requiresindependentreview and repeatcopyrehearsal."
+}

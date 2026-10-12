@@ -1,0 +1,75 @@
+{
+  "schema": "quiz-release-v3-fixture-repair-evidence/v1",
+  "task_id": "task-615936a1fbb54bffa96166038286e652",
+  "status": "LOCAL_V3_READY_FOR_LEAD_REHEARSAL_AND_INDEPENDENT_REVIEW",
+  "publication_status": "NOT_PUBLISHED",
+  "failure_history": {
+    "v2_remote_prepare": "Backup/restore passed; strict staging revision gate then failed at cinema-encore-001 because prior expected revision a5d3...206c did not match actual probe revision b214...b39. No Docker or publication ran."
+  },
+  "source_identity": {
+    "build_id": "quiz-2026.10.12-culture-f219916",
+    "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "baseline_image": "docker.io/library/quiz-master@sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "5dd403547220c96b9a7abade2eaef56c2b19051f29723974a18f3625fd431610"
+  },
+  "repair": {
+    "v2_stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v2\\quiz-2026.10.12-culture-f219916",
+    "v3_stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v3\\quiz-2026.10.12-culture-f219916",
+    "only_stage_byte_changes": [
+      "checksums.txt",
+      "expected-staging-revisions.json",
+      "runtime-bundles.json"
+    ],
+    "expected_staging_revisions_source": "C:\\ap\\quiz_master\\.run\\culture_next4d_20261012\\fixture-probe\\expected-staging-revisions.json",
+    "runtime_bundles_change": "Only Cinema People and Music People entries were replaced from the paired root fixture probe; the other six V2 runtime entries are unchanged. This maintains 8 packs and 124 fixture questions.",
+    "strict_gate": "rehearse.py strict revision equality and the documented stage-file-vs-/app URI normalization assertion remain unchanged.",
+    "cutover_lf_preserved": true
+  },
+  "validation": {
+    "v2_v3_changed_stage_paths": [
+      "checksums.txt",
+      "expected-staging-revisions.json",
+      "runtime-bundles.json"
+    ],
+    "stage_file_members": 296,
+    "archive_file_members": 296,
+    "checksums_verified": 295,
+    "archive_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+    "manifest_sha256": "1a03bbd423398dcd186df7997163d2a7b0c912b682aedbba53b8432ab2398ef6",
+    "cutover_carriage_returns": 0,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "5dd403547220c96b9a7abade2eaef56c2b19051f29723974a18f3625fd431610",
+    "fixture_packs": 8,
+    "fixture_questions": 124,
+    "runtime_packs": 8,
+    "runtime_questions": 124,
+    "other_six_runtime_entries_unchanged": true,
+    "tar_members_regular_safe": true,
+    "no_links_or_bytecode": true
+  },
+  "artifacts": {
+    "package": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v3\\package.json",
+    "package_sha256": "fc236dbe412e10f59fd7d9cfd44febbb11b5f08c98ca6be8722b8e21a07ac35e",
+    "archive": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v3\\quiz-2026.10.12-culture-f219916.tar.gz",
+    "archive_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+    "manifest_sha256": "1a03bbd423398dcd186df7997163d2a7b0c912b682aedbba53b8432ab2398ef6"
+  },
+  "limits": {
+    "not_run": [
+      "build",
+      "source tests",
+      "browser",
+      "SSH/server",
+      "remote rehearsal",
+      "Docker",
+      "Git",
+      "deployment"
+    ],
+    "remaining_gates": [
+      "lead-owned V3 remote rehearsal",
+      "different-provider static review",
+      "lead execution/publication gates"
+    ]
+  }
+}

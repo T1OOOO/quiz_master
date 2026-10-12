@@ -1,0 +1,47 @@
+{
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "New immutableV2 hash/296paths/parity, onlylineendingrepair. No Linuxsyntax orpublication claimeduntilRootgate.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4D_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Actual remoteprepare failed beforeDocker/rehearsal/publication: Bash-n cutover.sh line5 CRLFsyntaxerror. Preserve originalv1 archive/stage/evidence. OwnONLY new .run/culture_next4d_release_20261012/v2 subtree and Next4D/packaging-v2-evidence.json. Copyexact296file v1stage, normalize ONLY cutover.sh CRLF->LF; recomputechecksums/filemanifest/archive/packageJSON. Samebuild/sourcef219/baselinecdb, no freshbuild needed (JS/APIunchanged). Assert exact296paths, onlycutover/checksums differ v1, zeroCRinsh, alltar/checksumhashes/retaineddata unchanged. No source/Git/browser/SSH/server/deploy/children. Root owns remoteLFbash-n and reviewer. Record actual selfcheck, frozenhashes, failurehistory.",
+    "created_at": 1791832145.11889,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-49c93d08709b4ab7887c24404828939e",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/packaging-v2-evidence.json sha256=b5a6824d2bf8bffdbd8e73dd6dd74601de190824715d4301d08daa94adec45e9",
+        ".run/culture_next4d_release_20261012/v2/package.json sha256=d209455609c909635e8e38c9414be1fd0ea8f2e5724d0bdea0cf4b56eab83b80",
+        ".run/culture_next4d_release_20261012/v2/quiz-2026.10.12-culture-f219916.tar.gz sha256=02e645a0d202c4d66bd9ae080874440d56fd6dbd9d58c5a90a5b63bc5046dc37",
+        ".run/culture_next4d_release_20261012/v2/post-freeze-verification.json: V1 archive unchanged; 296 paths/members; 295 checksum entries; zero CR in cutover; Linux bash -n intentionally left to lead"
+      ],
+      "summary": "Frozen V2 package after the CRLF-only cutover repair. V1 remains immutable. V2 preserves the exact 296 relative paths; its only stage-byte changes are cutover.sh (75 CRLF pairs converted to LF) and regenerated checksums.txt. No build, source, server, or publication action occurred."
+    },
+    "root_task_id": "task-49c93d08709b4ab7887c24404828939e",
+    "run_id": "run-9c4c7e0a823e4e1c9c8e97c350eea0bf",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4D V2 packaging fix: normalize cutover.sh LF and refreeze exact file set",
+    "version": 4,
+    "reviewer": "session-f19713a2d5e74e2b8691740dfc4aef98",
+    "review_note": "Independent static review of the V2 CRLF repair (Claude Sonnet 5, read-only, fresh computation, not trusting author/Root JSON claims). Byte-level check (Python, not grep) of cutover.sh: V1 stage has exactly 75 CR bytes / 75 CRLF pairs (matches remote-preparation-failure.json's reported defect); V2 stage has 0 CR bytes. Content diff after stripping CRLF from V1 shows V2's cutover.sh is logic-identical to V1 (same guard lines, same image/PVC/API-sha checks) -- this is a pure line-ending fix, not a logic change. diff -rq across all 296 files in the V1 vs V2 extracted stage directories shows exactly two differing files: checksums.txt and cutover.sh, matching the claimed only_stage_byte_changes exactly. Explicitly spot-checked (independent cmp, not relying on claimed per-file hashes) that catalog.json, question-articles.json, web/version.json, api, web/main.dart.js, metadata/tags.v1.json, runtime-bundles.json, and expected-staging-revisions.json are byte-identical between V1 and V2 -- no content/version/API/JS/retained-file drift. V2 archive .run/culture_next4d_release_20261012/v2/quiz-2026.10.12-culture-f219916.tar.gz sha256=02e645a0d202c4d66bd9ae080874440d56fd6dbd9d58c5a90a5b63bc5046dc37 reproduced exactly; package.json sha256=d209455609c909635e8e38c9414be1fd0ea8f2e5724d0bdea0cf4b56eab83b80 reproduced exactly; file-manifest.json sha256=989851f21fc8c7398b7b2a3607da737a1cf7bb49600adeea89a724b2c939f34f reproduced exactly. One streaming pass over all 296 V2 tar members: 296 manifest entries (296 unique), 0 hash mismatches, 0 missing-from-manifest, 0 links/symlinks, 0 unsafe (absolute/..) paths, 0 bytecode files, and the tar's own relative path set is set-equal to the verified Next4C base (296==296). Verified the packaged cutover.sh inside the V2 tar itself (not just the stage dir) also has 0 CR bytes. V1 archive sha256=67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007 reproduced unchanged -- V1 extracted dir/archive were not overwritten. Distinguishing Root's own evidence from mine: Root's root-v2-package-gate.json/packaging-v2-validation.json claim a remote Linux bash -n exit 0 on V2 -- I did NOT run that myself (no SSH/server access in this review's scope) and am not certifying remote execution; I independently confirm the byte-level root cause (CRLF) is fully and only removed, with no other change, which is what a bash -n syntax pass would be expected to validate. Verdict: accept, error_count=0, for the local V2 package-repair scope only (mechanical CRLF->LF fix, exact 296-path/archive/manifest integrity, zero collateral changes). Out of scope / not performed by this review: remote Linux bash -n execution, rehearsal, Docker build, server/SSH actions, publication, Flutter build/tests, or any browser/execution-review/live-release gate -- all remain Root-owned, and this acceptance does not authorize publication."
+  },
+  "actual_hub_state": "ACCEPTED",
+  "package_sha256": "02e645a0d202c4d66bd9ae080874440d56fd6dbd9d58c5a90a5b63bc5046dc37",
+  "actual_report": "Review recorded. Task `task-49c93d08709b4ab7887c24404828939e` is now `ACCEPTED` (verdict **accept**, error_count **0**).\n\n**Verdict: accept, error_count 0** — V2 CRLF repair task.\n\n**Independently verified:**\n- V1 `cutover.sh` has exactly 75 CR bytes (confirms the reported remote defect); V2 has 0, and after stripping CRLF the V1/V2 logic is byte-identical — pure line-ending fix, no guard/logic change.\n- `diff -rq` across all 296 stage files: only `checksums.txt` and `cutover.sh` differ between V1 and V2, nothing else.\n- Independently `cmp`'d catalog.json, question-articles.json, version.json, api, main.dart.js, taxonomy, runtime-bundles.json, expected-staging-revisions.json — all byte-identical V1 vs V2.\n- V2 archive (`02e645a0…`), `package.json` (`d2094556…`), `file-manifest.json` (`989851f2…`) all reproduce exactly.\n- One streaming pass over all 296 V2 tar members: 0 hash mismatches vs manifest, 0 missing, 0 links/symlinks, 0 unsafe paths, 0 bytecode, path set identical to the verified base. Confirmed the packaged `cutover.sh` inside the tar itself also has 0 CR bytes.\n- V1 archive (`67b68725…`) reproduced unchanged — confirms V1 was preserved, not overwritten.\n\n**Distinguished from Root's evidence:** Root's `root-v2-package-gate.json`/`packaging-v2-validation.json` claim a remote Linux `bash -n` exit 0 — I did not run that myself (no SSH access in scope) and am not certifying remote execution; my acceptance rests only on the independently confirmed byte-level root-cause fix and archive/manifest integrity.\n\n**Limits:** no remote Linux syntax execution, rehearsal, Docker build, server/SSH, Flutter build/tests, browser QA, or publication performed by this review — those remain Root-owned, and this does not authorize release.",
+  "limits": [
+    "StaticLF-onlycandidate repair scope",
+    "No UI/rehearsal/execution/publication acceptance"
+  ]
+}

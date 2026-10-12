@@ -1,0 +1,59 @@
+{
+  "runtime_source": "f219916",
+  "viewport": [
+    390,
+    844
+  ],
+  "qa_js": "Reused reader4207QA compilation with explicit http://127.0.0.1:18089 API endpoint (notrelativeAPI); fresh f219 catalog/reader/canonicalassets. FreshproductionJS not exercised locally.",
+  "cinema_root": {
+    "browser": "CodexIAB viaCua; Chrome unavailable/agent-browser session_info timedout; no sourcefix claimed",
+    "fresh_disposable_sqlite": true,
+    "actual_known_key_UI_clicks": 20,
+    "score": 20,
+    "finish_and_reveals_http": 200,
+    "correct_result_row": "Answer Джина Роулендс, semanticnode303/articlebutton323, AXindex27 afterscroll10pages",
+    "article_title": "Семья Лонгетти на экране",
+    "readable_body_and_scroll": true,
+    "two_source_controls": [
+      "American Film Institute Catalog catalog.afi.com",
+      "AFI Silver Theatre and Cultural Center silver.afi.com"
+    ],
+    "feedback_overlay_absent": true,
+    "feedback_restored_after_close": true,
+    "feedback_open_cancel": true,
+    "submit_disabled": true,
+    "feedback_submitted": false,
+    "screenshot_evidence": "Root personally viewed Cua imageoutputs forbody/footer/resultat390x844; no filesystemPNGexport/hash claim",
+    "browser_close_and_viewport_reset": "Actual Cua calls completed without error",
+    "local_server_stop_actual_exit": 0
+  },
+  "music_native": {
+    "session": "quiz-next4d-music-final",
+    "result": "20/20",
+    "result_ref": "group Answer: Бесси Смит; button @e230",
+    "article_ref_clicked": "@e230",
+    "title": "Запись, сделавшая Бесси Смит звездой",
+    "sources": [
+      "U.S. National Park Service www.nps.gov",
+      "Rock and Roll Hall of Fame rockhall.com"
+    ],
+    "screenshot": "music-article-020-final.png",
+    "sha256": "4F4973F9C8499E72FC9DD6884898B5B05C378679D984A2281C9441227272BF31",
+    "feedback_open_snapshot": "alertdialog; Отправить disabled; Отмена @e248",
+    "feedback_restore_snapshot": "group Музыка: голоса и записи Счёт: 20; Bessie row restored",
+    "visual": "article body and both source controls visible; FAB absent from article modal screenshot"
+  },
+  "music_root_viewed_screenshot": true,
+  "original_wrong_cinema_article": "Native observed AnswerКэролРид and clickedthatrow; Root laterselected actualGenaRowlandsrow. Wrongselectionwas QAerror, not established appbindingbug. Originalpartialpreserved.",
+  "native_cleanup_limit": "official named close attempted for both sessions; CLI hung (cinema 30s, music 10s), so browser closure is unverified; no force kill or --all used",
+  "root_setup_failures": [
+    "Initial Root18091 originfailed because QAJS hardcodes18089; restartedownserverat18089 usingnewstopreceipt. No productionbug inferred.",
+    "Cua DOMCDP transienttimeouts; switchedtodocumentedAX controls, re-readstatebeforeactions."
+  ],
+  "other_limits": [
+    "No publishednewJS/browser acceptance",
+    "No physicalAndroid/keyboard/screenreader",
+    "Source controlsobserved, externalnavigationnotclaimed",
+    "Resultanswerheadingcontrast followupquiz_master-cgs"
+  ]
+}
