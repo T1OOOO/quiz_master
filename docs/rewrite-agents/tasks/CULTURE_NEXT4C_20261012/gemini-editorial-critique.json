@@ -1,0 +1,111 @@
+{
+  "critique_metadata": {
+    "agent": "gemini",
+    "target_draft": "CULTURE_NEXT4C_ROOT_V2_20261012",
+    "language": "ru",
+    "input_sha256": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3",
+    "verification_mode": "read_only_inline_data",
+    "independent_recomputation": false
+  },
+  "overall_summary": {
+    "verdict": "accept_with_minor_preferences",
+    "drafts_assessment": "All four new drafts (2 cinema, 2 music) are factually grounded in authoritative documentation (BFI, Criterion, Library of Congress, Rock Hall, Songwriters Hall of Fame). The stems are well-targeted, options are homogeneous and structurally balanced, difficulty estimates (4-6) are realistic, and mini-articles provide substantive educational context rather than mere repetitions of the answer key. Variety relative to the 74 existing stems is strong, introducing foundational world cinema (Ozu) and 1950s-1960s songwriting credits (Stax/Chess blues and soul) without topical overlap.",
+    "option_changes_assessment": "All four frozen editorial modifications to existing items (cinema-people-006, 009, 015 and music-people-007) significantly improve distractor comparability and linguistic conciseness without disturbing key correctness or meaning."
+  },
+  "draft_evaluations": [
+    {
+      "item_id": "culture-next4c-cinema-01",
+      "verdict": "accept",
+      "difficulty_assessment": {
+        "claimed": 6,
+        "recommended": 6,
+        "comment": "Accurate rating (6/10). Requires knowledge of Japanese post-war cinema and Yasujirō Ozu's recurring ensemble."
+      },
+      "fairness_and_options": "Excellent. All four options are actresses who performed in 'Tokyo Story' (Setsuko Hara, Haruko Sugimura, Chieko Higashiyama, Kyōko Kagawa). Distractors cannot be eliminated merely by recognizing non-cast names.",
+      "mini_article_utility": "High. Clarifies the critical nuance emphasized by BFI that the 'Noriko' character in Ozu's Noriko trilogy represents recurring thematic archetypes rather than a single continuous narrative personage.",
+      "repetition_and_variety": "Expands Japanese cinema coverage beyond the existing Ray ('Pather Panchali') and Wong Kar-wai ('In the Mood for Love') entries in the 74-stem corpus.",
+      "findings": []
+    },
+    {
+      "item_id": "culture-next4c-cinema-02",
+      "verdict": "preference",
+      "difficulty_assessment": {
+        "claimed": 4,
+        "recommended": 4,
+        "comment": "Accurate rating (4/10). 'Casablanca' is a cultural touchstone, but distinct character names across classic cinema maintain moderate difficulty."
+      },
+      "fairness_and_options": "Strong. Ilsa Lund is unambiguous. However, distractor 'Мадлен Эльстер' was played by Kim Novak (Vertigo), whereas 'Алисия Хуберман' (Notorious) and 'Паула Альквист' (Gaslight) were both iconic Ingrid Bergman roles.",
+      "mini_article_utility": "High. Outlines Curtiz's production circumstances and Hal Wallis's script revisions during the shoot.",
+      "repetition_and_variety": "Introduces classic 1940s Hollywood cinema with no collision with existing stems.",
+      "findings": [
+        {
+          "priority": "P3",
+          "category": "distractor_comparability",
+          "reason": "Madeleine Elster is played by Kim Novak, while Alicia Huberman and Paula Alqvist are Ingrid Bergman characters. Replacing Madeleine Elster with another classic Bergman heroine creates a completely uniform Bergman-filmography distractor set.",
+          "minimal_proposal": "Replace 'Мадлен Эльстер' with 'Мария' ('По ком звонит колокол', 1943) or 'Карин' ('Стромболи, земля Божья', 1950)."
+        }
+      ]
+    },
+    {
+      "item_id": "culture-next4c-music-01",
+      "verdict": "accept",
+      "difficulty_assessment": {
+        "claimed": 5,
+        "recommended": 5,
+        "comment": "Accurate rating (5/10). Many casual listeners assume Aretha Franklin wrote 'Respect', while soul/R&B connoisseurs readily identify Otis Redding."
+      },
+      "fairness_and_options": "Excellent. Distractors (Sam Cooke, Wilson Pickett, Jerry Butler) are prominent 1960s soul singer-songwriters of comparable stature and era.",
+      "mini_article_utility": "High. Explains the Stax 1965 original vs. 1967 Atlantic arrangement and Carolyn Franklin's contribution at the piano.",
+      "repetition_and_variety": "Complements music-people-001 (where Aretha Franklin is the inducted artist) by testing composition history rather than inductee status.",
+      "findings": []
+    },
+    {
+      "item_id": "culture-next4c-music-02",
+      "verdict": "accept",
+      "difficulty_assessment": {
+        "claimed": 6,
+        "recommended": 6,
+        "comment": "Accurate rating (6/10). Separating legendary Chicago blues performers from the primary songwriter (Willie Dixon) is a classic medium-to-hard music trivia challenge."
+      },
+      "fairness_and_options": "Excellent. Howlin' Wolf, Little Walter, and John Lee Hooker are peer figures of Chicago and Delta blues closely tied to Chess Records.",
+      "mini_article_utility": "High. Highlights Dixon's dual role as Chess Records bassist/composer and Waters' definitive performance.",
+      "repetition_and_variety": "Fills an open gap in pre-1960s Chicago blues in the 74-stem set.",
+      "findings": []
+    }
+  ],
+  "option_changes_evaluations": [
+    {
+      "question_id": "cinema-people-006",
+      "verdict": "accept",
+      "priority": "P3",
+      "reason": "Before options mixed four different crew departments (costume, editor, cinematographer, production designer) from 'Fury Road'. After options unify the field to four prominent female film editors (Thelma Schoonmaker, Margaret Sixel, Sally Menke, Anne V. Coates), testing editing knowledge directly.",
+      "meaning_preserved": true
+    },
+    {
+      "question_id": "cinema-people-009",
+      "verdict": "accept",
+      "priority": "P3",
+      "reason": "Before options mixed zither composer (Karas), cinematographer (Krasker), author (Greene), and producer (Korda). After options are all distinguished British/international cinematographers (Jack Cardiff, Robert Krasker, Freddie Francis, Douglas Slocombe), eliminating category-based guessing.",
+      "meaning_preserved": true
+    },
+    {
+      "question_id": "cinema-people-015",
+      "verdict": "accept",
+      "priority": "P3",
+      "reason": "Shifts options from verbose, nominalized constructions ('Для автоматического переноса...', 'Для наблюдения за нюансами...') to direct purpose clauses ('Чтобы переносить...', 'Чтобы аниматоры видели...'). Improves readability under timer without altering meaning.",
+      "meaning_preserved": true
+    },
+    {
+      "question_id": "music-people-007",
+      "verdict": "accept",
+      "priority": "P3",
+      "reason": "In the original set, 'A-Tisket, A-Tasket' was the only nursery rhyme among standard jazz repertoire titles ('How High the Moon', 'Summertime'). The proposed change sets all four options to classic nursery rhymes ('Mary Had a Little Lamb', 'Twinkle, Twinkle, Little Star', 'Pop Goes the Weasel'), eliminating meta-guessing.",
+      "meaning_preserved": true
+    }
+  ],
+  "checks_not_performed": [
+    "External HTTP/live web retrieval against BFI, Criterion, or Library of Congress URLs (performed under strict offline/read-only parameters).",
+    "Recomputation of input SHA256 (accepted directly as provided by lead).",
+    "File system mutation, git commit/push, or test runner invocation in accordance with task constraints."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "check": "full-go",
+      "command": [
+        "go",
+        "test",
+        "./next/server/...",
+        "-count=1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 75.13,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next4c_20261012\\full-go.txt",
+      "log_sha256": "70665224245f5f255d375ce0199f62c984a1d87a5873216af2827cb1fa45fc0e"
+    },
+    {
+      "check": "full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 33.66,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next4c_20261012\\full-flutter.txt",
+      "log_sha256": "ccbc8aef45fe7505d23e69bbc559340ac747d971cc6807caf4f092fcbdb32ea8"
+    },
+    {
+      "check": "flutter-analyze",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 17.19,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next4c_20261012\\flutter-analyze.txt",
+      "log_sha256": "4b05ff39724fed28b3d847c660f1e8c9396dd6c4e4a55da07e9f4d2f28f5e03d"
+    }
+  ],
+  "scope": "Actual local fullGo/Flutter/analyzer. Countsfixtures anticipated4022to4026 after validatedimport; no freshbuild/browser/publication claimed."
+}

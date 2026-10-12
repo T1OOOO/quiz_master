@@ -1,0 +1,107 @@
+{
+  "task_id": "task-08bc23f70f5d493a9b6a59219c88da29",
+  "packet_label": "culture-next4c-integration-20261012",
+  "input": {
+    "root_v2": "root-v2.json",
+    "root_v2_sha256": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3",
+    "claude_verdict": "claude-v2-verdict.json",
+    "claude_task": "task-4203c866522b420188061d5e01593918",
+    "claude_state": "ACCEPTED",
+    "approved_option_changes": "approved-option-changes.json"
+  },
+  "scope": {
+    "new_question_ids": [
+      "cinema-people-018",
+      "cinema-people-019",
+      "music-people-018",
+      "music-people-019"
+    ],
+    "approved_existing_option_changes": [
+      "cinema-people-006",
+      "cinema-people-009",
+      "cinema-people-015",
+      "music-people-007"
+    ],
+    "existing_article_rebinds": [
+      "quiz:cinema-people-20261011:cinema-people-006",
+      "quiz:cinema-people-20261011:cinema-people-009",
+      "quiz:cinema-people-20261011:cinema-people-015",
+      "quiz:music-people-20261011:music-people-007"
+    ]
+  },
+  "result": {
+    "counts": {
+      "packs": 131,
+      "questions": 4026,
+      "articles": 224,
+      "cinema_people": 19,
+      "music_people": 19
+    },
+    "parity": {
+      "old_private_grading_34": "PASS",
+      "untouched_old_dto_30": "PASS",
+      "approved_option_edits_4": "PASS",
+      "unrelated_catalog_rows_129": "PASS",
+      "unchanged_reader_rows_216": "PASS",
+      "affected_article_rebinds_4": "PASS",
+      "reader_private_grading_nonleak": "PASS"
+    },
+    "hashes": {
+      "quizzes\\Cinema\\People\\cinema_people_20261011.json": "ed0e9d1422f0f11b1e7295a135918fed8fb8b09b6d91cf8f502926ae60151637",
+      "quizzes\\MusicPeople\\music_people_20261011.json": "c18a5c428a7311037255bb3ba085fa4c01d53dddc56d0cf8809b2dec16ad2d71",
+      "next\\content\\cinema-people-20261011\\draft.json": "1dd4dcb8a3ec61b4f948e4ac3394008692378aa72f49bd4608f844f9342020be",
+      "next\\content\\cinema-people-20261011\\manifest.json": "94ac71a9f33dfb868627c01615dac35365400fbcf26b8774ebc08eb9857a0d8c",
+      "next\\content\\cinema-people-20261011\\bundle.json": "20c9a8b10823e5e63c368d14edaba03490114e416cfa64316558388fe6595061",
+      "next\\content\\music-people-20261011\\draft.json": "df1e2fd7325f84cc549b04da4dfe9323c548757906845e87b0f6c45c2f325b76",
+      "next\\content\\music-people-20261011\\manifest.json": "96c75633f6d4faee30da0cb2c3c7678bd229b86a3e6b526ff2fcb19090ecbc5e",
+      "next\\content\\music-people-20261011\\bundle.json": "7672845ed63673a3ff6e481e214535a8a92fd93cd491268a27fa555be51908f5",
+      "next\\apps\\quiz_app\\assets\\catalog.json": "96c36c0952d9e330c267afed759f6e8ec34e879e2e293a99926c2b748f3a432c",
+      "next\\apps\\quiz_app\\assets\\study\\question-articles.json": "9a2e3c37890f1d4ff796ee11f700d73e126aba1255fc74eea7028d2be8f531d8",
+      "study\\question_articles\\drafts\\culture-next4c-20261012.json": "3a82a96c8a095200121af69f19272c77b98c6d100a3f99ae068c0665638e3467",
+      "study\\question_articles\\reviews\\culture-next4c-20261012.json": "05835e8eccd0d71a84eaf6f8416831bd34f7fde85206602db1d5ff3fe0c853a9"
+    }
+  },
+  "checks": [
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 <repo> Cinema/People/cinema_people_20261011.json <owned-stage>/cinema 2026.10.12.next4c 2026-10-12T00:00:00Z",
+      "exit": 0,
+      "result": "19 questions; stable /app URI; frozen taxonomy"
+    },
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 <repo> MusicPeople/music_people_20261011.json <owned-stage>/music 2026.10.12.next4c 2026-10-12T00:00:00Z",
+      "exit": 0,
+      "result": "19 questions; stable /app URI; frozen taxonomy"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl validate --in next/content/{cinema,music}-people-20261011/{draft,bundle}.json --taxonomy metadata/tags.v1.json",
+      "exit": 0,
+      "result": "four validations, 19 questions each"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl audit --in quizzes --taxonomy metadata/tags.v1.json",
+      "exit": 0,
+      "result": "131 files, 4026 questions, 131 ready, 0 blocked"
+    },
+    {
+      "command": "go run ./next/server/cmd/quizctl catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json --taxonomy metadata/tags.v1.json --force",
+      "exit": 0,
+      "result": "131 packs"
+    },
+    {
+      "command": "cd study/question_articles && python -m unittest test_build test_coverage && python build.py --write && python build.py --check",
+      "exit": 0,
+      "result": "4 tests passed; 224 independently reviewed mini articles"
+    },
+    {
+      "command": "python .run/culture_next4c_integrate_20261012/final_parity.py",
+      "exit": 0,
+      "result": "30 old untouched DTO, 34 old private grades, 4 exact option edits, 129 unrelated catalog rows, 216 unchanged reader rows, 4 article rebinds, no reader grading leak"
+    }
+  ],
+  "review_limits": [
+    "The imported Root V2 draft was independently accepted by Claude under task-4203c866522b420188061d5e01593918.",
+    "That source verdict is draft-only and does not approve generated canonical revision bindings, client behavior, release artifacts, or publication.",
+    "This evidence records local structural parity and validators; a different-provider binding review remains required before publication."
+  ],
+  "status": "READY_FOR_DIFFERENT_PROVIDER_BINDING_REVIEW"
+}

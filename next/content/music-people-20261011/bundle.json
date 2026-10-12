@@ -1,6 +1,6 @@
 {
-  "bundle_sha256": "37bdc82a81cd8f160447c329d3ae0534bde72063564d7cd4665c570909b5e73e",
-  "bundle_version": "2026.10.12.next2b",
+  "bundle_sha256": "20f3879543be3490a4587b4d098efc0dc6e8bdd08f03391703cf649b1a61c41a",
+  "bundle_version": "2026.10.12.next4c",
   "contract": "quiz-contract/v1",
   "private_grading": {
     "music-people-001": {
@@ -53,6 +53,12 @@
     },
     "music-people-017": {
       "correct_option_id": "music-people-017-opt-3"
+    },
+    "music-people-018": {
+      "correct_option_id": "music-people-018-opt-1"
+    },
+    "music-people-019": {
+      "correct_option_id": "music-people-019-opt-1"
     }
   },
   "private_question_metadata": {
@@ -309,15 +315,15 @@
         "options": [
           {
             "option_id": "music-people-007-opt-1",
-            "text": "Judy"
+            "text": "Mary Had a Little Lamb"
           },
           {
             "option_id": "music-people-007-opt-2",
-            "text": "How High the Moon"
+            "text": "Twinkle, Twinkle, Little Star"
           },
           {
             "option_id": "music-people-007-opt-3",
-            "text": "Summertime"
+            "text": "Pop Goes the Weasel"
           },
           {
             "option_id": "music-people-007-opt-4",
@@ -328,7 +334,7 @@
         "quiz_id": "music-people-20261011",
         "revision": {
           "number": 1,
-          "sha256": "c327d212f7640b7ee1e451ca9e6a64709ec07069e0a8648d3ac4619199764a10"
+          "sha256": "5939ed27530aab19c3a75f1cad84198afde86eafff93ba31cde7aa829c602b60"
         },
         "source": {
           "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
@@ -664,12 +670,78 @@
           "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
         },
         "stem": "Какое устройство Лори Андерсон поместила во рту в видеоработе «O Superman»?"
+      },
+      {
+        "answer_kind": "single_choice",
+        "difficulty": "medium",
+        "difficulty_level": 5,
+        "options": [
+          {
+            "option_id": "music-people-018-opt-1",
+            "text": "Отис Реддинг"
+          },
+          {
+            "option_id": "music-people-018-opt-2",
+            "text": "Сэм Кук"
+          },
+          {
+            "option_id": "music-people-018-opt-3",
+            "text": "Уилсон Пикетт"
+          },
+          {
+            "option_id": "music-people-018-opt-4",
+            "text": "Джерри Батлер"
+          }
+        ],
+        "question_id": "music-people-018",
+        "quiz_id": "music-people-20261011",
+        "revision": {
+          "number": 1,
+          "sha256": "18eb2dd9f5f2110cb7f74614c2ed08bb044daec59a64871b1e5bb563471a2a20"
+        },
+        "source": {
+          "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
+        },
+        "stem": "Кто написал и первым записал «Respect», которую в 1967 году переосмыслила Арета Франклин?"
+      },
+      {
+        "answer_kind": "single_choice",
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "options": [
+          {
+            "option_id": "music-people-019-opt-1",
+            "text": "Вилли Диксон"
+          },
+          {
+            "option_id": "music-people-019-opt-2",
+            "text": "Хаулин Вулф"
+          },
+          {
+            "option_id": "music-people-019-opt-3",
+            "text": "Литл Уолтер"
+          },
+          {
+            "option_id": "music-people-019-opt-4",
+            "text": "Джон Ли Хукер"
+          }
+        ],
+        "question_id": "music-people-019",
+        "quiz_id": "music-people-20261011",
+        "revision": {
+          "number": 1,
+          "sha256": "14b31b16f20088e286bfe087f29ae4c3519e88a219d8ba560c467a664d537d41"
+        },
+        "source": {
+          "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
+        },
+        "stem": "Кто написал «I’m Your Hoochie Coochie Man», ставшую хитом в исполнении Мадди Уотерса?"
       }
     ],
     "quiz_id": "music-people-20261011",
     "revision": {
       "number": 1,
-      "sha256": "ac725d6ed61ae939a010ce3e87595190ed0416bb049026c9a4bf6bda95b6702c"
+      "sha256": "d4280a5b93718670237ece4c342930ffafa3a2304e9b20804ac2a4e1a5754ccb"
     }
   },
   "taxonomy_ref": {
