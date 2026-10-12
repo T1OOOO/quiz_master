@@ -1,0 +1,50 @@
+{
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Actualcopyrehearsal8packs124/restore/rollback/oldrows/imagearchive/values/localUIlimits; no fabricatedpassedgates.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root own ONLY execution-packet.json in .run/culture_next4d_release_lead_20261012 andNext4Ddocs afteractual V3preparePASS; immutablearchive4bd772...a341/sourcef219. No publicationassumed; different-providerClaudeexecutionreview required.",
+    "created_at": 1791833853.4984965,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-8bc48da4a6c048719fb656914a7dd8a6",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/execution-packet.json",
+        ".run/culture_next4d_release_lead_20261012/remote-prepare.txt",
+        ".run/culture_next4d_release_lead_20261012/publish_prepared.py"
+      ],
+      "image": "sha256:ee2b454c486c65d8e8ca7bc343f01736d78284871de39b62dc6260b19afcfbb1",
+      "package_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+      "requires_independent_execution_review": true,
+      "status": "DONE",
+      "summary": "ActualV3prepare0/fullcopyrehearsal8packs124questions; exactpreparedimage,backuprestore/oldrows/feedbackcopyrollback/lint/dryrunPASS. Publicationnotperformed; limits nativebrowsercleanup/cgscontrast/QAexplicitlocalhostreuse/physicalAndroid stated."
+    },
+    "root_task_id": "task-8bc48da4a6c048719fb656914a7dd8a6",
+    "run_id": "run-427790935a794bed83bf4475e61e8926",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4D execution evidence packet",
+    "version": 4,
+    "reviewer": "session-1f488bde54704d539f74c254d5180c1c",
+    "review_note": "Independent review of the Next4D V3 execution/prepare evidence (Claude Sonnet 5, read-only, no build/SSH/browser/Git performed). Hash reproduction: package.json sha256=4bd7722a... matches the already independently ACCEPTED V3 archive (task-615936a1..., not re-scanned here). remote-prepare.txt reproduced sha256=2a844f9e... exactly; publish_prepared.py reproduced sha256=ee80dd06... exactly; root-local-browser-gate.json reproduced sha256=dad4e0c0... exactly, matching local_browser_evidence_sha256. remote-prepare.txt is internally consistent: backup+restore integrity/restore=ok with old row counts preserved post-migration, feedback_lifecycle=ok, old_api_rollback=ok, docker image builds to manifest-list sha256:ee2b454c... matching the claimed image exactly, durable k3s archive sha256=0523c4f4... matching exactly, helm lint 0 failed, kubectl dry-run=server succeeds for every resource, and the log ends with explicit 'PREPARED ... mode=prepare' -- no production-switch line anywhere, confirming no publish occurred. Independently re-ran the git guard logic myself (not trusting the script): `git merge-base --is-ancestor f219916 HEAD` true; `git diff --name-only f219916 HEAD -- next quizzes metadata study/question_articles` empty -- every commit after f219916 touches only docs/.beads/Next5-draft material, never runtime paths. The ancestor+no-runtime-diff guard design is sound. publish_prepared.py (static read) consumes the already-reviewed immutable image (no 'docker build' in the eventual script) and only writes/syntax-checks a local preview before any real SSH publish call -- consistent with prepared-not-published; no publish.txt/preview script exists on disk, confirming the real publish has not run. Root's local browser QA (Cinema 20/20 with the corrected Longhetti article + 2 AFI sources + feedback restore, after an earlier native run mistakenly hit the old Carol Reed/BFI article -- disclosed, consistent with task-f1be7e0af3944b74a7130da63cc270a0's own PARTIAL_BLOCKED record; Music 20/20 with Bessie Smith article + NPS/Rock Hall sources) is Root's first-party evidence, not reproduced by me (no browser in scope); accepted as adequate content-correctness evidence for a prepare-stage gate only, not full UI/live/105-binding/Android certification. Disclosed limitations (QA JS reused reader4207 against explicit localhost:18089, not fresh production JS; native browser-close hung with no force-kill; no screenshot file export for cinema) are honestly reported, non-blocking here, and correctly remain open follow-ups rather than silently dropped. Verdict: accept, error_count=0, scoped to: this prepare-execution evidence packet is internally consistent, hashes reproduce exactly, git/image/archive/rollback/dry-run claims check out, and no publication occurred. NOT certified: actual publish execution, fresh production JS/browser exercise, full live bindings/feedback inventory, physical Android, whole-bank facts. Root retains ownership of running the actual publish and all post-publish gates."
+  },
+  "actual_hub_state": "ACCEPTED",
+  "package_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+  "actual_report": "Review recorded. Task `task-8bc48da4a6c048719fb656914a7dd8a6` is now `ACCEPTED` (verdict **accept**, error_count **0**).\n\n**Verdict: accept, error_count 0** — Next4D V3 execution/prepare evidence packet.\n\n**Independently verified:**\n- `package.json` sha256 matches the already-ACCEPTED V3 archive exactly (not re-scanned, reused that prior full streaming verification).\n- `remote-prepare.txt`, `publish_prepared.py`, and `root-local-browser-gate.json` hashes all reproduce exactly as claimed.\n- `remote-prepare.txt` is internally consistent end-to-end: backup/restore integrity OK with old rows preserved, feedback-lifecycle/API-rollback OK, Docker image hash matches claim exactly (`ee2b454c…`), durable k3s archive hash matches exactly (`0523c4f4…`), helm lint clean, `kubectl apply --dry-run=server` succeeds on every resource, log ends `PREPARED ... mode=prepare` — no publish line anywhere.\n- Independently re-ran the **git guard logic myself** rather than trusting the script: confirmed `f219916` is an ancestor of HEAD, and `git diff` on the runtime paths (`next`, `quizzes`, `metadata`, `study/question_articles`) between `f219916` and HEAD is empty — every later commit touches only docs/Beads/Next5-draft material. The ancestor + no-runtime-diff guard is sound.\n- Confirmed no `publish.txt`/preview script exists on disk — the actual publish has genuinely not run yet.\n\n**Accepted as-is (Root's own first-party evidence, not reproduced by me):** local browser QA — Cinema 20/20 with the corrected Longhetti article (after an earlier native run hit the wrong Carol Reed article, disclosed and consistent with a separate PARTIAL_BLOCKED task record), Music 20/20 with the Bessie Smith article and both source sets. Disclosed limitations (reused QA JS against localhost, not fresh production JS; browser-close hang with no force-kill; no screenshot file export for cinema) are honest, non-blocking for this scope, and correctly left as open follow-ups.\n\n**Not certified by this review:** actual publish execution, fresh production JS/browser exercise, full live bindings/feedback inventory, physical Android, or whole-bank facts — Root retains ownership of running the real publish and all post-publish gates.",
+  "image": "sha256:ee2b454c486c65d8e8ca7bc343f01736d78284871de39b62dc6260b19afcfbb1",
+  "limits": [
+    "Preparedexecutionevidence/staticpublicationplan, notpublishedverification",
+    "No UI/rehearsal/execution/publication acceptance"
+  ]
+}

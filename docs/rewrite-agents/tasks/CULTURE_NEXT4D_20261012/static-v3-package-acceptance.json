@@ -1,0 +1,47 @@
+{
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "296exactfiles, onlyfixturemetadata+checksums changes, strictgatepreserved,8/124 fixture coverage,archivehash. PreserveV1/V2.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4D_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "ActualV2 Linuxprepare backup/restorePASS thenstrictrevisionFAILEDcinema-encore-001 actualb21413...b39 expecteda5d3...206c. Root existingGo fixtures.exe with same8stagedlegacyfiles byteequalrepo and buildf219 reproducedactualb214,124questions/8packs. Probe .run/culture_next4d_20261012/fixture-probe containsnewexpected/runtime. OwnONLY newv3 subtree inrelease folder and Next4D/packaging-v3-evidence.json. Copy296V2stage; replace expected-staging-revisions.json fromprobe (8/124). Update runtime-bundles.json ONLY twoPeople entries fromstagecanonicalf21920each; retainother6objects unchanged. Preserveallcanonical/legacy/JS/API/version/cutoverLF/rehearse strictassertlogic. Validateexpectedids/count124,strictsha/differentURIexplanation,124runtime,4packfixtures required; refreezechecksums/manifest/tar/package. DifferencesV2 ONLYexpected/runtime/checksums. No source/build/tests/browser/SSH/server/Git/children. Root ownsfailedrehearsaljournal/independentreview/newremote. ExistingGoexporter evidence notwholebankcertificate.",
+    "created_at": 1791832948.4609213,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-615936a1fbb54bffa96166038286e652",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/packaging-v3-evidence.json sha256=30ac6567584c6db66c522ca3a7bd9a82a64d769c7cc7289882d69d97717f3c9c",
+        ".run/culture_next4d_release_20261012/v3/package.json sha256=fc236dbe412e10f59fd7d9cfd44febbb11b5f08c98ca6be8722b8e21a07ac35e",
+        ".run/culture_next4d_release_20261012/v3/quiz-2026.10.12-culture-f219916.tar.gz sha256=4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+        ".run/culture_next4d_release_20261012/v3/post-freeze-verification.json: exact 296 stage/archive members; 295 checksums verified; zero CR in cutover"
+      ],
+      "summary": "Frozen V3 from V2 with the supplied eight-pack/124-question staging fixture revisions and the paired two People runtime fixture entries. Strict rehearsal logic, LF cutover, version, JS/API and all canonical/legacy package data are retained. V2-to-V3 stage changes are exactly expected-staging-revisions.json, runtime-bundles.json, and checksums.txt."
+    },
+    "root_task_id": "task-615936a1fbb54bffa96166038286e652",
+    "run_id": "run-62d64ff074da4d97aa87739a881d4918",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4D V3 rebuild stale staging revision fixtures without relaxing strict gate",
+    "version": 4,
+    "reviewer": "session-cc30d3423c8e41e5930a09308aea3280",
+    "review_note": "Independent static review of the V3 fixture-only repair (Claude Sonnet 5, read-only, fresh computation, not trusting author/Root JSON). diff -rq across all 296 V2 vs V3 stage files shows exactly three differing files: checksums.txt, expected-staging-revisions.json, runtime-bundles.json -- matching the claimed only_stage_byte_changes exactly; all other 293 files (incl. api, web/main.dart.js, web/version.json, cutover.sh, catalog.json, question-articles.json) untouched between V2 and V3. V3 archive sha256=4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341, file-manifest.json sha256=1a03bbd423398dcd186df7997163d2a7b0c912b682aedbba53b8432ab2398ef6, and package.json sha256=fc236dbe412e10f59fd7d9cfd44febbb11b5f08c98ca6be8722b8e21a07ac35e all reproduced exactly. One streaming pass over all 296 V3 tar members: 296 manifest entries (296 unique), 0 hash mismatches, 0 missing-from-manifest, 0 links/symlinks, 0 unsafe paths, 0 bytecode, tar path-set set-equal to the verified Next4C base; packaged cutover.sh still has 0 CR bytes (LF preservation confirmed independently, not just claimed). checksums.txt has 295 lines, consistent with prior versions. expected-staging-revisions.json: parsed-JSON-equal to .run/culture_next4d_20261012/fixture-probe/expected-staging-revisions.json (raw bytes differ only in formatting/whitespace, confirmed via json-equality not cmp). runtime-bundles.json: parsed and diffed programmatically -- exactly 2 of 8 top-level entries changed (cinema-people-20261011, music-people-20261011), both byte/structure-identical to the paired fixture-probe's entries; the other 6 entries are unchanged from V2. Total fixture packs=8, questions=124, matching claim. Independently verified the disclosed fixture-envelope deviation is real but confined to envelope-only fields: for both People fixture entries, bundle_version (2026.10.11.duplicates vs canonical 2026.10.12.next4d), published_at, and the derived bundle_sha256 differ from the canonical next/content/.../bundle.json, but quiz.questions (public DTOs, 20 each), private_grading, private_question_metadata, contract, and taxonomy_ref are all exactly equal between the fixture entry and the canonical stage bundle. This confirms Root's framing that runtime-bundles.json is a release/rehearsal fixture envelope, not the canonical service bundle, and that no grading/canonical/legacy content actually differs -- only non-authoritative envelope metadata used by the fixture generator. Did not independently rerun the Go reference exporter or the remote strict-revision rehearsal myself (no build/server/SSH in this review's scope); I am not certifying that the V2 cinema-encore-001 stale-revision defect is actually fixed end-to-end on a live server, only that the V3 local package's fixture files are byte/content-correct relative to the supplied fixture-probe and that no unrelated/collateral file changed. Local browser/UI results in root-local-browser-gate.json (Cinema 20/20, Music 20/20, article/source checks) are Root's own execution evidence, not reproduced or verified by me. Verdict: accept, error_count=0, scoped strictly to this local V3 fixture-repair package (exact 296-path/archive/manifest integrity, exactly-3-file changed scope, correct merge of the 2 probe-sourced fixture entries with the other 6 preserved, and confirmed envelope-only -- not canonical/grading -- divergence). Out of scope: remote rehearsal re-execution, Go exporter re-run, build/tests, browser/Android QA, SSH/server actions, and publication -- all remain Root-owned; this acceptance does not authorize release."
+  },
+  "actual_hub_state": "ACCEPTED",
+  "package_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+  "actual_report": "Review recorded. Task `task-615936a1fbb54bffa96166038286e652` is now `ACCEPTED` (verdict **accept**, error_count **0**).\n\n**Verdict: accept, error_count 0** — V3 fixture-only repair.\n\n**Independently verified:**\n- `diff -rq` across all 296 V2↔V3 stage files: exactly 3 differ (`checksums.txt`, `expected-staging-revisions.json`, `runtime-bundles.json`); everything else — API, main.dart.js, version.json, cutover.sh, catalog.json, question-articles.json — untouched.\n- V3 archive (`4bd7722a…`), manifest (`1a03bbd4…`), package.json (`fc236dbe…`) all reproduce exactly.\n- Streamed all 296 V3 tar members: 0 mismatches vs manifest, 0 missing, 0 links, 0 unsafe paths, 0 bytecode, path-set identical to the verified base; packaged `cutover.sh` still has 0 CR bytes.\n- `expected-staging-revisions.json` is parsed-JSON-equal to the fixture-probe source (raw bytes differ only in whitespace).\n- `runtime-bundles.json`: exactly 2 of 8 entries changed (cinema-people/music-people), matching the probe exactly; other 6 untouched; totals 8 packs/124 questions confirmed.\n- Disclosed envelope deviation independently confirmed as real but cosmetic: `bundle_version`/`published_at`/derived `bundle_sha256` differ from canonical, but `quiz.questions`, `private_grading`, `private_question_metadata`, `contract`, `taxonomy_ref` are exactly equal to the canonical stage bundle for both People packs — no grading/canonical content drift.\n\n**Not verified by me:** did not rerun the Go reference exporter or the remote strict-revision rehearsal (no build/SSH in scope) — not certifying the live cinema-encore-001 defect is fixed end-to-end, only that this local package's fixture files are correct and nothing collateral changed. Root's local-browser QA results are Root's own evidence, not reproduced here.\n\n**Limits:** remote rehearsal, Go exporter re-run, build/tests, browser/Android QA, SSH/server actions, and publication remain Root-owned; this acceptance does not authorize release.",
+  "limits": [
+    "Staticfixture-onlycandidate repair scope",
+    "No UI/rehearsal/execution/publication acceptance"
+  ]
+}

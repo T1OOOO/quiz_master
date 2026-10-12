@@ -1,0 +1,47 @@
+{
+  "package_sha256": "4bd7722af219cfc3511e64c290d7e7a6cf3fe46e48fe99775798da6ae152a341",
+  "build": "quiz-2026.10.12-culture-f219916",
+  "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+  "image": "sha256:ee2b454c486c65d8e8ca7bc343f01736d78284871de39b62dc6260b19afcfbb1",
+  "values": "quiz-2026.10.12-culture-f219916-cutover-20261012T193705Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "2a844f9eeafabafe7a76618361923e267dca8584136378948dfe6417ccf7b76d",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-f219916.tar",
+  "durable_archive_sha256": "0523c4f4188ae2107b9ad295256325d08bc3cb99f91f24c8ab03389af68fd8d5",
+  "actual_copy_rehearsal": {
+    "packs": 8,
+    "questions": 124,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_browser_evidence_sha256": "dad4e0c0f712fd2eb7e878bdaa898bc18283ec84ff401f177d4454ce5c4f6794",
+  "local_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "cinema_score": 20,
+    "music_score": 20,
+    "new_article_titles_correct": true,
+    "four_source_controls": true,
+    "feedback_overlay_and_restore": true,
+    "root_IAB_closed_and_server_stopped": true,
+    "native_browser_cleanup": "Officialclosehung/unverified; no forcekill. Retained ashostcleanupconcern, notclaimedclosed."
+  },
+  "publish_script_sha256": "ee80dd06077eedb7e0a73238ad20496c4bcfb04545368e8f9f90c7dfa879e6b6",
+  "preparation_history": [
+    "V1 CRLF failed Linuxsyntax before rehearsal; preserved",
+    "V2 LFfixstaticaccepted thenstrict oldpath revision fixturefailed afterbackuprestore; preserved",
+    "V3fixturefixactualstaticACCEPT0 and actualfullremotePREPARED0"
+  ],
+  "QA_limit": "Reused reader4207QA compilation with explicit http://127.0.0.1:18089 API endpoint (notrelativeAPI); fresh f219 catalog/reader/canonicalassets. FreshproductionJS not exercised locally.",
+  "not_claimed": [
+    "PublishednewJS/browser/full105bindings/feedbackverification",
+    "Wholebank facts/Androidhardware/keyboard/screenreader",
+    "Nativehungbrowser fullcleanup",
+    "Resultheadingcontrast fix(cgsopen)"
+  ]
+}
