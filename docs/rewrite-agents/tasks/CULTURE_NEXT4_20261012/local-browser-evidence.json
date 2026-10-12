@@ -1,0 +1,41 @@
+{
+  "viewport": [
+    390,
+    844
+  ],
+  "packs": {
+    "cinema": {
+      "questions": 16,
+      "score": 16,
+      "proof_sha256": "2b4c43a1110f03fe4c2903e58e4d92cbf5e337314f07959957c800c9d5e9c12b",
+      "observed_question_screenshots": {
+        "015": "0a2b7bc3b8c632464d44b9fe432daf7587b9d20fe755b1bc399057c4da3a885b",
+        "016": "1aecc6b645b076cedec8cb321c0741648ff09b19595b9fdf77f413b1843f287a"
+      },
+      "observed_article_screenshots": {
+        "015": "5a1a9faf62074ecf1fed7b96e9d40d0bf3f386f45c8a62631af9c0f50667695b",
+        "016": "254b6d65efa56834b8ec4284d9b5b0352d5a336262ffa65485bbaf21da2f8792"
+      }
+    },
+    "music": {
+      "questions": 16,
+      "score": 16,
+      "proof_sha256": "2414342391958ddf217ae71ad40024264b90e33e94ec4aed12ed755ae050d778",
+      "observed_question_screenshots": {
+        "015": "6cbef0b3272b322c81ebe256b4c138a1fe8f9923d9e1bbb7b70a2c7d2fc17b7c",
+        "016": "2695c7af59b4ab78caffc8b29b999989bfb732b1f0f8b1ded28de9fdc9ac48bc"
+      },
+      "observed_article_screenshots": {
+        "015": "b9616ad04e3b14a3d10363e8609cc5257261ca57d3af3f3d9cd02a55e4c447cc",
+        "016": "9db19617107c39e630d6bb262b8dd398b07b000557a97cef43113e8c053f860a"
+      }
+    }
+  },
+  "actual_result": "PASS",
+  "four_new_questions": "Viewed all screenshots: stem and4options fit; no spoken internal IDs",
+  "four_new_articles": "Opened from results and viewed screenshots; scrollable body with2source controls visible in snapshots",
+  "browser_closed": "Initial music close timed out; official retry succeeded",
+  "api_stopped": "Both owned API/proxy stop flags and process exits confirmed",
+  "external_links": "Controls inspected; no browser external navigation claimed. Direct editorialsource review separately performed.",
+  "qa_compile_limit": "Unchanged Dart/dependencies asserted against deployed7d7a163; reused prior QA compile with fresh4020/218assets and unchanged API. Exact fresh production JS remains published QA gate."
+}

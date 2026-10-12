@@ -1,0 +1,9 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-e13ad43f0c3a49dcb1b4544559154f9a",
+  "event": 30865,
+  "reviewer": "session-ccb1425b56fd4eeb9fc43bdd90715e09",
+  "review_note": "Re-review after repair: fast_archive_check.py passed on resubmitted archive (sha256 07381d74..., 297/297 members, flat root, no bytecode/links) matching package.json. cutover.sh line 12 now requires baseline sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5, matching package.json/release-evidence.json declared baseline_image -- prior blocking mismatch resolved. api/js checksum guards (lines 15-16) and backup/rehearsal-copy/identity guards unchanged. Counts unchanged and consistent: 131 packs/4020 questions/218 articles/People16/8 fixture packs-116 questions. Source commit c15eefc unchanged and previously confirmed pushed. Accept as static package review only; not a deployment/publication approval.",
+  "package_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+  "scope": "Exact repaired static package only"
+}

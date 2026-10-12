@@ -1,0 +1,301 @@
+{
+  "verified_at_utc": "2026-10-12T09:50:21.536516+00:00",
+  "published_version": {
+    "buildId": "quiz-2026.10.12-culture-c15eefc",
+    "commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+    "source_commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4020,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 218,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "d53d5f37343585d0a3532bebac1aa432294623caf1c1b901fc93913e19f79b70",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "package_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+  "helm_revision": 39,
+  "image": "sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-c15eefc.tar",
+  "durable_archive_sha256": "0614b0557ec09548e1a7cac98a64213dbac4a09073c1bc0f07278f0cbf653158",
+  "static_review": {
+    "actual_hub_state": "ACCEPTED",
+    "task_id": "task-e13ad43f0c3a49dcb1b4544559154f9a",
+    "event": 30865,
+    "reviewer": "session-ccb1425b56fd4eeb9fc43bdd90715e09",
+    "review_note": "Re-review after repair: fast_archive_check.py passed on resubmitted archive (sha256 07381d74..., 297/297 members, flat root, no bytecode/links) matching package.json. cutover.sh line 12 now requires baseline sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5, matching package.json/release-evidence.json declared baseline_image -- prior blocking mismatch resolved. api/js checksum guards (lines 15-16) and backup/rehearsal-copy/identity guards unchanged. Counts unchanged and consistent: 131 packs/4020 questions/218 articles/People16/8 fixture packs-116 questions. Source commit c15eefc unchanged and previously confirmed pushed. Accept as static package review only; not a deployment/publication approval.",
+    "package_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+    "scope": "Exact repaired static package only"
+  },
+  "execution_review": {
+    "actual_hub_state": "ACCEPTED",
+    "task_id": "task-fed4435b02ab45deb6e8948052b88129",
+    "event": 30910,
+    "reviewer": "session-77759d205b1d4bb9ad9af850a0c5ef26",
+    "review_note": "Independently verified static/prepared package evidence in .run/culture_next4_release_lead_20261012 and docs/.../CULTURE_NEXT4_20261012: archive sha256 07381d74... matches file on disk; source commit c15eefc... matches git HEAD; remote-prepare.txt sha256 matches execution-packet.json remote_log_sha256; cutover.sh contains baseline-image guard (sha256:e3f30...) and PVC-identity guard, backup+rehearsal steps, matching claims; local-browser-evidence.json proofs (music/cinema, score 16/16) match hashes in execution-packet.json. No execution-acceptance.json/publish.txt/publish-prepared-preview.sh exist yet for this release, confirming publication has NOT occurred -- this is a pre-publication static/prepared review only, not a deployment approval. Unresolved limitations explicitly carried over from source evidence: no physical screen reader or Android device QA, and live QA against the fresh production main.dart.js build is still outstanding and must happen post-publication, not inferred from this review.",
+    "package_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+    "image": "sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+    "actual_final_cli_exit": 0,
+    "scope": "Actual prepared execution evidence and immutable publication script; live QA follows publication",
+    "review_process_correction": "Initial reviewer incorrectly inferred nonexistent task from default partial Hub list; resumed exact direct callback succeeded. No initial prose approval used."
+  },
+  "public_verification": {
+    "main.dart.js": "d53d5f37343585d0a3532bebac1aa432294623caf1c1b901fc93913e19f79b70",
+    "assets/assets/catalog.json": "9597f628b988a9df6e46e5446921ffbed8c7a99131fe1f06a55e2305700ef209",
+    "assets/assets/study/question-articles.json": "b122a07ea54dbcb31b6e1309865aaab91a2592c36e0a5bcbd12f2b6e88563fdc",
+    "repaired_questions": [
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-54",
+        "revision": {
+          "number": 1,
+          "sha256": "988e62fbb5c94c10d86bb41975136188becdab26302ca331d2871e32c93335b1"
+        },
+        "stem": "Любовь к запахам называется",
+        "options": [
+          {
+            "option_id": "q-philias-100-54-opt-1",
+            "text": "Осмофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-2",
+            "text": "Ольфактофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-3",
+            "text": "Офрезиофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-4",
+            "text": "Ароматофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-5",
+            "text": "Бромидрофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 5,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-59",
+        "revision": {
+          "number": 1,
+          "sha256": "d6db109169542120ae95148ae34923026595f1f9986bd29085552ba04621c344"
+        },
+        "stem": "Любовь к красному цвету — это",
+        "options": [
+          {
+            "option_id": "q-philias-100-59-opt-1",
+            "text": "Гематофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-2",
+            "text": "Эритрофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-3",
+            "text": "Эреутофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-4",
+            "text": "Руброфилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-5",
+            "text": "Розофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "phobias-nature",
+        "question_id": "q-phobias-part-8-20",
+        "revision": {
+          "number": 1,
+          "sha256": "dc3382adea3f953ce1e05c2fb77ad8f8bda3e51482b784407bd0bb714250c275"
+        },
+        "stem": "Как называется интенсивный страх огня?",
+        "options": [
+          {
+            "option_id": "q-phobias-part-8-20-opt-1",
+            "text": "Астрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-2",
+            "text": "Пирофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-3",
+            "text": "Акрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-4",
+            "text": "Клаустрофобия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Psychology/phobias_nature.json"
+        },
+        "answer_kind": "single_choice"
+      }
+    ],
+    "phobias_new_revisions": 9,
+    "home_alone_exact_questions": 25,
+    "version": {
+      "buildId": "quiz-2026.10.12-culture-c15eefc",
+      "commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+      "source_commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+      "local_build": true,
+      "packs": 131,
+      "questions": 4020,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 218,
+      "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "main_dart_js_sha256": "d53d5f37343585d0a3532bebac1aa432294623caf1c1b901fc93913e19f79b70",
+      "taxonomy_id": "qm-tags-v1",
+      "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+      "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+    },
+    "live_question_article_bindings": 97
+  },
+  "published_mobile_qa": {
+    "cinema": {
+      "score": 16,
+      "questions": 16,
+      "viewport": [
+        390,
+        844
+      ],
+      "answer_evidence_sha256": "3fa5e82815a187e487add379983451bebcf69efb68733dadc0b714d3751a725b",
+      "screenshots": {
+        "live-cinema-people-015.png": "93ae917d0c9308d52c03903a3b1e767cf6b2398d3153900596a23e433cebccf1",
+        "live-cinema-people-016.png": "ded7cdf20ac936d01d61796b08d8744d5ffc811fe7afb9f7dfb01135ed3a3256",
+        "live-cinema-015-article.png": "5a1a9faf62074ecf1fed7b96e9d40d0bf3f386f45c8a62631af9c0f50667695b",
+        "live-cinema-016-article.png": "254b6d65efa56834b8ec4284d9b5b0352d5a336262ffa65485bbaf21da2f8792"
+      },
+      "scope": "Source-key grading/flow through observed UI; independent facts reviewed separately."
+    },
+    "music": {
+      "score": 16,
+      "questions": 16,
+      "viewport": [
+        390,
+        844
+      ],
+      "answer_evidence_sha256": "c20858422b1ad0a4613ac420b8725ccefac2816678b43223eac74b69f3139818",
+      "screenshots": {
+        "live-music-people-015.png": "5c0559d0abeafd985addda1dce3a12af2ff5eeebb218a6408a552d5738b40c95",
+        "live-music-people-016.png": "06dc73ed87a7cc340e28733334a66e9eaebe74e9a24273e9e334e46f619fee68",
+        "live-music-015-article.png": "b9616ad04e3b14a3d10363e8609cc5257261ca57d3af3f3d9cd02a55e4c447cc",
+        "live-music-016-article.png": "9db19617107c39e630d6bb262b8dd398b07b000557a97cef43113e8c053f860a"
+      },
+      "scope": "Source-key grading/flow through observed UI; independent facts reviewed separately."
+    }
+  },
+  "source_gates": {
+    "go": {
+      "command": "go test -p=1 ./next/server/...",
+      "exit_code": 0,
+      "all_packages_passed": true,
+      "tool_session": 62665
+    },
+    "flutter": {
+      "command": "flutter test --reporter compact",
+      "exit_code": 0,
+      "passed": 115,
+      "log_sha256": "8c815ad0ed8b6a7c2c3c40aec7ff90fd3eae3f48de7e9a7e172e9bd09b5d8e9b"
+    },
+    "analyzer": {
+      "command": "flutter analyze",
+      "exit_code": 0,
+      "result": "No issues found",
+      "log_sha256": "be848491eb515f95e1cf4fd25bb735e21b86d904aa3b1e4f55cd2c27dc79456d"
+    },
+    "parity": "root-parity.json PASS against full HEAD1248",
+    "foreign": "69 hashes unchanged",
+    "limitations": [
+      "No running Dart connection for hot reload; only a test count fixture changed. Fresh production build and browser checks remain release gates.",
+      "No complete bank fact audit or Android APK verification."
+    ]
+  },
+  "parity": {
+    "catalog_unrelated_rows_preserved": 129,
+    "reader_old_objects_preserved": 214,
+    "source_old_questions_preserved": 28,
+    "canonical_private_old_records_preserved": 28,
+    "baseline": "1248f6c21d600789d1e3f113aaa9d7a5cb19bd1f",
+    "result": "PASS"
+  },
+  "server_gates": {
+    "prepare_exit": 0,
+    "publish_exit": 0,
+    "health_exit": 0,
+    "backup_restore": "PASS",
+    "copy_fixture_questions": 116,
+    "old_rows_preserved": true,
+    "copy_feedback_lifecycle": "PASS",
+    "old_api_rollback": "PASS",
+    "same_pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "ready_replicas": 1,
+    "available_replicas": 1,
+    "node_pressures": false
+  },
+  "feedback": {
+    "columns": [
+      "id",
+      "participant_id",
+      "request_id",
+      "payload_digest",
+      "type",
+      "item_ids",
+      "comment",
+      "context",
+      "screenshot",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "count": 26,
+    "status_counts": [
+      [
+        "open",
+        26
+      ]
+    ],
+    "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13"
+  },
+  "logs_sha256": {
+    "remote-prepare.txt": "171c8220bb18d28936806ca461339da0b7f1c33e7cbe83e3b98388dbb5776926",
+    "publish.txt": "a1e9251be54821da3007a65b23421b43eebc240cbcd37be66a1fea3003373dd1",
+    "final-health.txt": "a2b7182bdf87c2520fc8118bd63add43f9e672872263a4d03ecf7a56d7141980"
+  },
+  "limits": [
+    "Full-bank factual and answer-option audit remains open.",
+    "26 real feedback reports remain open and unchanged.",
+    "Physical screen reader and Android APK not checked.",
+    "Local QA reused unchanged Dart/dependencies; published browser used fresh production JS.",
+    "Primary sources checked by Root and editorial Claude; UI source controls inspected, external click navigation not claimed."
+  ],
+  "process_corrections": [
+    "Initial native package had stale previous-image guard; actual Claude REWORK, exact one-line repair plus regenerated checksums/archive independently accepted before server upload.",
+    "Lead publication values filename guard made dynamic before execution review.",
+    "Execution reviewer mistakenly used first Hub task page; actual direct callback30910 and exit0 supersede that partial-list conclusion."
+  ]
+}

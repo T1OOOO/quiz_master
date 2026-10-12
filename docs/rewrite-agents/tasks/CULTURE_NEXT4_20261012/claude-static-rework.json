@@ -1,0 +1,10 @@
+{
+  "actual_hub_state": "REWORK",
+  "event": 30838,
+  "task_id": "task-e13ad43f0c3a49dcb1b4544559154f9a",
+  "reviewer": "session-00f6d4d1170b4da28ced7f24a17a2dbb",
+  "initial_archive_sha256": "1e25de5766d7c0b4c01dbb24a23e1f5ace9b8909fc85dad5ba4b7943dece89c6",
+  "actual_cli_exit": 0,
+  "result": "The review was submitted successfully: state is now `REWORK`, error_count 1.\n\n**Review summary (task-e13ad43f0c3a49dcb1b4544559154f9a, decision: rework, error_count: 1)**\n\nVerified independently:\n- Source commit `c15eefc9b0088a8f4eefc83d0a7876dddd30d26f` is pushed and matches HEAD on `codex/quiz-v2`.\n- `fast_archive_check.py` passed: 297/297 archive members exactly match stage files, flat root, no bytecode/links.\n- Counts consistent between `package.json` and `release-evidence.json`: 131 packs, 4020 questions, 218 articles, 16 cinema/16 music people, 8 fixture packs / 116 questions.\n- `cutover.sh` is syntactically valid (`bash -n`), and the identity/backup/rehearsal-copy script logic is present (hostname check, `DEPLOY.lock` flock, `backup_sqlite.py`, a rehearsal-script rewrite+run step).\n\nBlocking finding confirmed by direct inspection: `cutover.sh` line 12 still hard-codes the **previous** baseline image digest (`ba4315df...`) as the required currently-deployed precondition, while this release's own metadata declares the new baseline as `e3f30baf...`. That's a stale guard inconsistent with the package's declared state \u2014 it needs reconciling against the actual cluster image before resubmission.\n\nThis is a static review decision only, not a publication/deployment approval \u2014 no files were modified, nothing was built, browsed, or deployed.",
+  "resolution": "Native repair offered; no server upload/publication of rejected package."
+}

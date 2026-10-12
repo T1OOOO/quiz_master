@@ -1,0 +1,54 @@
+{
+  "package_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+  "build": "quiz-2026.10.12-culture-c15eefc",
+  "source_commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+  "image": "sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+  "values": "quiz-2026.10.12-culture-c15eefc-cutover-20261012T093604Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "171c8220bb18d28936806ca461339da0b7f1c33e7cbe83e3b98388dbb5776926",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-c15eefc.tar",
+  "durable_archive_sha256": "0614b0557ec09548e1a7cac98a64213dbac4a09073c1bc0f07278f0cbf653158",
+  "actual_copy_rehearsal": {
+    "packs": 8,
+    "questions": 116,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "proofs": {
+      "music": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next4_integration_20261012\\local-music-answers.json",
+        "sha256": "2414342391958ddf217ae71ad40024264b90e33e94ec4aed12ed755ae050d778",
+        "score": 16,
+        "question_count": 16
+      },
+      "cinema": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next4_integration_20261012\\local-cinema-answers.json",
+        "sha256": "2b4c43a1110f03fe4c2903e58e4d92cbf5e337314f07959957c800c9d5e9c12b",
+        "score": 16,
+        "question_count": 16
+      }
+    },
+    "new_questions_visible_options": 4,
+    "no_spoken_option_ids": true,
+    "both_question_screenshots_viewed": true,
+    "both_article_screenshots_viewed": true,
+    "source_link_checks": "All four new article source-link controls visible in snapshots; no browser navigation to external sources claimed in this QA. Primary sources separately opened by Root and editorial Claude.",
+    "browser_closed": true,
+    "api_proxy_stopped": true
+  },
+  "not_claimed": [
+    "Published culture release/browser verification",
+    "All bank facts reviewed",
+    "Physical screen reader verification",
+    "Android APK validation"
+  ],
+  "qa_limit": "Local browser used unchanged Dart/dependencies from prior Singer QA compilation with fresh catalog/articles and unchanged API code. Fresh production Flutter JS separately built/packaged; live exact-new-JS QA remains required."
+}

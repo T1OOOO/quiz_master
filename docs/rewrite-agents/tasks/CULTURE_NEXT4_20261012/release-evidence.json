@@ -1,0 +1,94 @@
+{
+  "task_id": "task-e13ad43f0c3a49dcb1b4544559154f9a",
+  "status": "READY_FOR_INDEPENDENT_STATIC_REVIEW_AFTER_IMAGE_GUARD_REPAIR",
+  "build_id": "quiz-2026.10.12-culture-c15eefc",
+  "source_commit": "c15eefc9b0088a8f4eefc83d0a7876dddd30d26f",
+  "counts": {
+    "packs": 131,
+    "questions": 4020,
+    "articles": 218,
+    "cinema_people": 16,
+    "music_people": 16,
+    "runtime_fixture_packs": 8,
+    "runtime_fixture_questions": 116
+  },
+  "flutter": {
+    "command": "flutter build web --release --output C:\\ap\\quiz_master\\.run\\culture_next4_release_20261012\\web-production --dart-define=QM_BUILD_ID=quiz-2026.10.12-culture-c15eefc --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org",
+    "exit_code": 0,
+    "compile_duration_seconds": 91.4,
+    "js_sha256": "d53d5f37343585d0a3532bebac1aa432294623caf1c1b901fc93913e19f79b70",
+    "warnings": "Wasm dry-run informational warning; existing CupertinoIcons font warning; MaterialIcons tree-shaking notice."
+  },
+  "fixtures": {
+    "command": "go run ./next/server/.run/culture_next2_release_20261012 C:/ap/quiz_master C:/ap/quiz_master/.run/culture_next4_release_20261012 quiz-2026.10.12-culture-c15eefc",
+    "exit_code": 0,
+    "packs": 8,
+    "questions": 116,
+    "runtime_bundles_sha256": "8fa5f28c63b2e5f9fe2cda6e5a830ed8fc2efe46934c9444646426478fd45f05",
+    "staging_revisions_sha256": "05264e037e5477faedc46dfe337cf37e3178a2800ad83688219a7057499ea325"
+  },
+  "archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next4_release_20261012\\quiz-2026.10.12-culture-c15eefc.tar.gz",
+    "sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+    "bytes": 47959863,
+    "members": 297,
+    "files": 297,
+    "checksums_entries": 296,
+    "verification": "streaming tar.gz validation passed after guard repair"
+  },
+  "stage": {
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "js_sha256": "d53d5f37343585d0a3532bebac1aa432294623caf1c1b901fc93913e19f79b70",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "baseline_image": "docker.io/library/quiz-master@sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+    "cutover": "bash -n passed; dynamic digest and full-release build regex guards retained",
+    "rehearse": "python compile passed; People article/reference expectations updated to 16"
+  },
+  "checks": [
+    {
+      "command": "fixture count assertion",
+      "exit_code": 0,
+      "result": "8 fixture packs / 116 questions; source URIs retain /app/quizzes/ mapping"
+    },
+    {
+      "command": "stage/package assertions and checksum verification",
+      "exit_code": 0,
+      "result": "full 40-hex commit fields, 131/4020/218, People16, 296 checksum lines"
+    },
+    {
+      "command": "C:/Program Files/Git/bin/bash.exe -n stage/cutover.sh",
+      "exit_code": 0
+    },
+    {
+      "command": "streaming tar.gz validator",
+      "exit_code": 0,
+      "result": "297 archive members exactly match 297 stage files"
+    }
+  ],
+  "package_sha256": "44d0d62c543e0c1a75e69ba33534ff6895c7c18a003436d3e24297f280f0e874",
+  "release": "No SSH, server call, deployment, publication, or acceptance claim. Root owns external review and release gates.",
+  "repair": {
+    "reviewer_event": 30838,
+    "reviewer_session": "session-00f6d4d1170b4da28ced7f24a17a2dbb",
+    "reason": "Repaired stale current-deployment image guard in cutover.sh.",
+    "changed_stage_files": [
+      "checksums.txt",
+      "cutover.sh"
+    ],
+    "guard_image": "docker.io/library/quiz-master@sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+    "package_baseline_image": "docker.io/library/quiz-master@sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+    "guard_equals_package_baseline": true,
+    "rejected_initial_archive": "C:\\ap\\quiz_master\\.run\\culture_next4_release_20261012\\rejected-stale-image-guard\\quiz-2026.10.12-culture-c15eefc.tar.gz",
+    "rejected_initial_archive_sha256": "1e25de5766d7c0b4c01dbb24a23e1f5ace9b8909fc85dad5ba4b7943dece89c6",
+    "new_archive_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+    "checksums_rebuilt": true,
+    "streaming_validation": {
+      "archive_sha256": "07381d7486878f7b50ad063957ba8ba4292caf5190db6847797b17b027ad1f25",
+      "members": 297,
+      "exact_stage_files": 297,
+      "flat_root": true,
+      "no_bytecode_or_links": true
+    }
+  }
+}
