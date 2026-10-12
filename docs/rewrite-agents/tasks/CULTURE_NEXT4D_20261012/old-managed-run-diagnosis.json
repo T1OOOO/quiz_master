@@ -1,0 +1,33 @@
+{
+  "managed_id": "managed-b45ca131d4b74b056edb2b31cc475eb8ebfa3798cb108aae1a16329f4e76f1a8",
+  "task_id": "task-816148e7596540ecb171404b6d18bf56",
+  "run_id": "run-98f56ea46a5645848fb9601ed1ea3ccb",
+  "launch_id": "launch-3ca55994885b4846834bc3dc80271fa0",
+  "lease_id": "lease-c15b7396f9bf488e8d7307bc271c37cc",
+  "generation": 2,
+  "official_worker_status": "NEEDS_ATTENTION",
+  "official_reason": "RuntimeError: broker restarted during a launch; retain reservation and reconcile",
+  "historical_pid": 3856,
+  "known_reservation": {
+    "ram_bytes": 1073741824,
+    "commit_bytes": 1073741824,
+    "agent_turns": 1
+  },
+  "checks": [
+    "Publicresources exactlease5587 confirmed RUNNING expired",
+    "FTS linkedownHomeAlone task816 andoriginalauthorb2fa",
+    "Identifier-only SELECT onmanaged table read-only resolvedopaqueID; no credentials orstate writes",
+    "Officialhub_worker status withcorrectID returned NEEDS_ATTENTION",
+    "Knownrunfolder containsprovideroutput; nofullJobObjectexitreceipt",
+    "InstalledRunner/README explicitlyretainuncertainlaunchedreservation andrequirefulltreeexit/adoption"
+  ],
+  "not_done": [
+    "No fullprocess-treequiescence certification",
+    "No processkill,leasecancel/reconcile orbroker/state DBmutation",
+    "No admincredential access orbrokerrestart",
+    "No otherprojectresources altered"
+  ],
+  "remaining": "AuthorizedHubmaintainer must establishofficialfulltreeexit/adoption andterminalrunnerrecovery. Genericownerreconcile rejectsmanagedlaunches; do notinferexitfromTTL/parentPID/providerresult. Sharedbrokerchanges remainoutsideQuizMasterauthorization.",
+  "operations_message": 32757,
+  "limits": "This is an operational follow-up, not a reason to claim Next4D publication or bypass another project safeguards."
+}
