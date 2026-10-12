@@ -9,6 +9,7 @@ import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quiz_app/l10n/app_localizations.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
@@ -862,6 +863,47 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Каталог викторин'), findsOneWidget);
   });
+  for (final (contextName, foreground) in [
+    ('result', const Color(0xffe7d8c4)),
+    ('feedback modal', const Color(0xff655444)),
+  ]) {
+    for (final brightness in Brightness.values) {
+      testWidgets(
+        'answer heading uses the $contextName foreground in ${brightness.name} mode',
+        (tester) async {
+          await tester.pumpWidget(
+            MaterialApp(
+              locale: const Locale('en'),
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              theme: ThemeData(
+                brightness: brightness,
+                textTheme: ThemeData(brightness: brightness).textTheme.apply(
+                  bodyColor: const Color(0xff655444),
+                  displayColor: const Color(0xff655444),
+                ),
+              ),
+              home: Scaffold(
+                body: DefaultTextStyle.merge(
+                  style: TextStyle(color: foreground),
+                  child: const ExplanationPanel(
+                    reveal: Reveal(
+                      answer: 'Test answer',
+                      explanation: 'Readable explanation.',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          final heading = tester.widget<Text>(find.text('Answer: Test answer'));
+          expect(heading.style?.color, foreground);
+          expect(tester.takeException(), isNull);
+        },
+      );
+    }
+  }
 }
 
 Future<void> _pumpApiApp(WidgetTester tester, _QuizTestServer api) {

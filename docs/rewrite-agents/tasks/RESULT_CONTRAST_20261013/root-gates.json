@@ -1,0 +1,32 @@
+{
+  "checks": [
+    {
+      "check": "full-flutter-ui",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 31.24,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013\\full-flutter-ui.txt",
+      "log_sha256": "008ca07451aa93526072f8c7f0824e9662542e0188d7b741c01f5f7b73466d74"
+    },
+    {
+      "check": "flutter-analyze-ui",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 15.01,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013\\flutter-analyze-ui.txt",
+      "log_sha256": "8e661f00f948200c7ce6c4c2982f2fcddeef1d3b98727b66c2f1980e8e3bc01f"
+    }
+  ],
+  "scope": "Actual fresh full Flutter/analyzer after frozen ExplanationPanel contrast fix. Prior full Go gate retained because no Go source changed. Build/browser/publication pending.",
+  "hot_reload": "DTD discovery found no debug process; Root hot_reload call returned no active app. No successful hot reload claimed."
+}

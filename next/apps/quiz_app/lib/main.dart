@@ -638,7 +638,11 @@ class ExplanationPanel extends StatelessWidget {
         children: [
           Text(
             AppLocalizations.of(context)!.answer(reveal.answer),
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color:
+                  DefaultTextStyle.of(context).style.color ??
+                  Theme.of(context).colorScheme.onSurface,
+            ),
           ),
           Text(reveal.explanation),
           if (reveal.quizId != null &&

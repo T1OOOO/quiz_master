@@ -1,0 +1,41 @@
+{
+  "packet_label": "codex-result-contrast-20261013",
+  "task_id": "task-b8b0b19515be4cdbb31b997bed2b9f0e",
+  "scope": [
+    "next/apps/quiz_app/lib/main.dart",
+    "next/apps/quiz_app/test/widget_test.dart",
+    ".run/result_contrast_worker_20261013"
+  ],
+  "root_cause": "ExplanationPanel applied ThemeData.titleMedium, whose explicit foreground overrode the readable DefaultTextStyle used by SourceScaffold. The explanation text inherited the contextual foreground.",
+  "change": "ExplanationPanel now copies titleMedium with DefaultTextStyle's foreground, falling back to colorScheme.onSurface only when the context has no foreground.",
+  "regression": {
+    "red_command": "flutter test test/widget_test.dart --name 'answer heading uses'",
+    "red_exit": 1,
+    "red_observation": "Result light and dark contexts expected cream #e7d8c4 but rendered brown #655444; feedback modal light and dark contexts already rendered their readable brown foreground.",
+    "green_command": "flutter test test/widget_test.dart --name 'answer heading uses'",
+    "green_exit": 0,
+    "green_result": "4 targeted cases passed: result and feedback modal contexts in light and dark modes."
+  },
+  "checks": [
+    {
+      "command": "dart format test/widget_test.dart",
+      "exit": 0
+    },
+    {
+      "command": "flutter analyze lib/main.dart test/widget_test.dart",
+      "exit": 0,
+      "result": "No issues found"
+    }
+  ],
+  "evidence_sha256": {
+    "main.dart": "2021b5abe72bac15605607473f5563358d00eff81d31af4c9580ef2ef4381514",
+    "widget_test.dart": "ae8d3377612ccd57e140e45f53eb0ce78987d23124df8b3a4eec2742c517b5e2",
+    "red.txt": "956e524c05ea96c6e7b4871a9166e97a8649adea4c3c9ff42d39b95bb42ab874",
+    "green-after-format.txt": "0a3cccec9fd9c86cef25359c6f9def5cd9077334acb70d8c821e11ba36ed55db6",
+    "analyze-after-format.txt": "ef4fd2042c62c7244deecfcb6b426553a7c84eecb5b774f6e84e3ff111ddfcb6"
+  },
+  "limitations": [
+    "No hot reload was performed because this bounded task had no running debug target and prohibits browser/server work.",
+    "No full Flutter suite, web build, or publication check was run; those remain Root-owned gates."
+  ]
+}
