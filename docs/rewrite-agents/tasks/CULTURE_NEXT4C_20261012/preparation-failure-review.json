@@ -1,0 +1,51 @@
+{
+  "actual_hub_state": "REWORK",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Actual prepared evidence bound to archive/source/immutableimage/durablearchive/log; copiedDB originalrows/feedback preserved, oldAPIrollback; publisher no Docker rebuild and exact pinned HEAD; real differentprovider callback required before publication.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4c_release_lead_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root will prepare only independently accepted V2 package83ab6792, source42a2aaf, currentbaseline983, exact296files; remote upload/backuprestore/copy8x122/rollback/imagebuild/import/durable archive/lint/serverdryrun. Review submitted actual execution-packet/remote-prepare/publish_prepared/localbrowserevidence; no remoteexecution byreviewer. Publication consumes exact preparedimage, freshbackup/rehearsal, atomicHelm. Separate exact-public-JS/browser/livefeedback checks afterpublication. No wholebank orAndroidcertification. Root owns runtimelead/docs only, preserve others.",
+    "created_at": 1791816517.5020185,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-3fd466cb0deb4b78a7ef775dcff590fb",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "actual_exit": 1,
+      "evidence": [
+        {
+          "check": "actualSSHprepare",
+          "exit": 1,
+          "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/remote-prepare-outage.txt"
+        },
+        {
+          "check": "NodeDiskPressure anddepl unavailable",
+          "exit": 0,
+          "path": "C:/ap/quiz_master/.run/culture_next4c_release_lead_20261012/outage-diagnostic.txt"
+        }
+      ],
+      "failure": "SharedNodeDiskPressure evictedQuiz/ingress15:00beforeourpublication; HTTPSrefusedduringcopyrehearsal. BackuprestorePASS, noimagebuild/Helm executed; currentimage983 unchanged.",
+      "remaining": "ActualindependentREWORK, recoverownheadroom, freshpreparation/reviewbeforepublish.",
+      "status": "PREPARATION_FAILED_NO_PUBLICATION"
+    },
+    "root_task_id": "task-3fd466cb0deb4b78a7ef775dcff590fb",
+    "run_id": "run-999fd0d2a4ac4a599b0f34697cdc279e",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4C prepared immutable publication plan independent review",
+    "version": 4,
+    "reviewer": "session-494349b6b0944d8e861d8dd7f3f3203c",
+    "review_note": "Preparation evidence does not satisfy release acceptance. remote-prepare-outage.txt: package/API/web artifacts and backup+restore (counts 105/675/246) verified OK, but the cutover rehearsal script crashed with an unhandled ConnectionRefusedError hitting https://quiz.kotopedia.org/v1/catalog — no successful rehearsal completion, no evidence the live catalog check ever passed. outage-diagnostic.txt confirms root cause is infra, not content: the quiz-master Deployment has zero available replicas (MinimumReplicasUnavailable); prior pod was Evicted for ephemeral-storage exhaustion, and the replacement pod is stuck Pending/FailedScheduling because the only node carries an untolerated taint, so nothing can schedule. Actual failure boundary is cluster capacity/scheduling (disk exhaustion + taint), not quiz content, build, or backup integrity. Correctly, no publication occurred. Missing evidence: a passing rehearsal/cutover run against a reachable service, and resolution of node taint/disk pressure before any retry. This submission is for the failed attempt only; do not treat as pass."
+  },
+  "raw_log_sha256": "56f95136fee945ac21e24762088275366313ff195a13b44744e23b95644cdc18"
+}

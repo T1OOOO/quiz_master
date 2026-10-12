@@ -1,0 +1,61 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-3fd466cb0deb4b78a7ef775dcff590fb",
+  "reviewer": "session-6503f2eadbba407eabd534d01a17a349",
+  "review_note": "Independent read-only re-review of Next4C publication plan (claude-sonnet-5). ACCEPT.\n\nRecomputed with native Windows certutil, no edits/builds/deploys/browser: (1) archive sha256 83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b exact match. (2) remote-prepare.txt sha256 64b4a333da5434f5e36af781c0c711137024601a25186fc68399616a5c957a15 exact match to execution-packet.json remote_log_sha256. (3) git rev-parse HEAD = 42a2aaf4ed66698d3f7303b716bbac36913ff139, exact match to package.json version.commit and publish_prepared.py's own assert. (4) spot-recomputed 3 local-browser-evidence.json artifact hashes (local-music-answers.json, local-cinema-answers.json, local-feedback-restored.json) -- all exact.\n\nPreparation log (remote-prepare.txt) confirms every required element: fresh sqlite backup+integrity+restore all 'ok' with original counts [105,675,246]; original_rows_preserved=true and feedback_lifecycle='ok' after copied-DB rehearsal; rehearsal counts packs=8/questions=122 match execution-packet.json actual_copy_rehearsal exactly; old_api_rollback='ok'; image built, exported, imported into k3s containerd with durable archive sha256 b95ebf2e...2f791f logged and matching execution-packet.json durable_archive_sha256 verbatim; helm chart lint 1 chart/0 failed; 7 kubectl apply --dry-run=server confirmations (networkpolicy, pvc, role, rolebinding, service, deployment, ingress, middleware).\n\nRead publish_prepared.py and the staged v2 cutover.sh directly. The publish script binds package+image+hub-acceptance via execution-acceptance.json (asserts actual_hub_state=='ACCEPTED', package_sha256==package.json sha, image==execution-packet.json image -- this file does not yet exist in the lead's dir, which is expected: it is the artifact my own review verdict is meant to produce, not a missing-evidence defect), binds source commit via live git HEAD check, and binds the preparation log via the remote-prepare.txt hash check verified above. It reuses the already-reviewed cutover.sh prefix (hostname/lock guard, unchanged production-baseline image guard sha256:98317653...086fc, PVC UID check, checksum verify, backup_sqlite.py fresh backup, freshly-regenerated rehearse-<run>.py rehearsal) verbatim up to the 'quiz_image=' split, so the fresh backup and copied-DB rehearsal are genuinely repeated, not skipped. Its own appended tail asserts 'docker build' not in script (confirmed absent) and instead verifies the durable archive checksum plus presence of the already-imported digest in k3s ctr images ls before helm lint/template/dry-run and an atomic helm upgrade (--atomic --wait --timeout 180s), followed by post-deploy image/public-version/public-main.dart.js verification. Baseline guard is retained unmodified in the reused prefix.\n\nLocal browser evidence/preserved-runtime-clarification match the described scope exactly: both 19-question People packs at 390x844 scored 19/19, 8 question + 4 article screenshots, 9 source-link controls, feedback restored after reader close, reuses an unchanged local Dart build with new content; fresh production build and exact published-JS/browser verification explicitly deferred to post-publish (not claimed here). The 7 preserved canonical files are disclosed as prior-published runtime lineage differing from current Git source (not identical), including the pre-existing, separately tracked HP006 hippogriffs/ghosts gap (quiz_master-2ln.1) -- correctly disclosed, not smuggled in as new content.\n\nNo requirement violations, no hash mismatches found.\n\nLimits: no outbound network in this sandbox to reach the remote host or quiz.kotopedia.org directly; relied on the logged remote-prepare.txt output (itself hash-bound) for remote-side confirmation. Did not certify Android hardware, full bank facts, or live publication -- none claimed by this package either.",
+  "actual_cli_exit": 0,
+  "package_sha256": "83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b",
+  "source_commit": "42a2aaf4ed66698d3f7303b716bbac36913ff139",
+  "actual_log_sha256": "36aa4184024ac5ab98b1379f92bdd66212f5d37a0737b054f8d6499793fcddcf",
+  "raw_callback": {
+    "acceptance": "Actual prepared evidence bound to archive/source/immutableimage/durablearchive/log; copiedDB originalrows/feedback preserved, oldAPIrollback; publisher no Docker rebuild and exact pinned HEAD; real differentprovider callback required before publication.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4c_release_lead_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root will prepare only independently accepted V2 package83ab6792, source42a2aaf, currentbaseline983, exact296files; remote upload/backuprestore/copy8x122/rollback/imagebuild/import/durable archive/lint/serverdryrun. Review submitted actual execution-packet/remote-prepare/publish_prepared/localbrowserevidence; no remoteexecution byreviewer. Publication consumes exact preparedimage, freshbackup/rehearsal, atomicHelm. Separate exact-public-JS/browser/livefeedback checks afterpublication. No wholebank orAndroidcertification. Root owns runtimelead/docs only, preserve others.",
+    "created_at": 1791816517.5020185,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-3fd466cb0deb4b78a7ef775dcff590fb",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "actual_prepare_exit": 0,
+      "evidence": [
+        {
+          "check": "Fresh153504Zbackuprestore/copy8x122/originalrowspreserved/feedbackcopy/oldAPIrollback/imageimport/lint/serverdryrun",
+          "exit": 0,
+          "path": "C:/ap/quiz_master/.run/culture_next4c_release_lead_20261012/remote-prepare.txt"
+        },
+        {
+          "check": "Immutablepackage/source/image/durablearchive/log andactual19+19localQA hashesbound",
+          "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/execution-packet.json"
+        },
+        {
+          "check": "Actual differentprovider staticacceptance for exactV2packet",
+          "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/static-final-acceptance.json"
+        }
+      ],
+      "image": "sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+      "package_sha256": "83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b",
+      "remaining": "Actual independentexecutionreview before consumeimage withoutrebuild; publishedversion/JS/catalog/reader103bindings/livebrowser/feedback/health checksrequiredafterHelm. No publicationclaimed.",
+      "status": "PREPARED_PENDING_INDEPENDENT_EXECUTION_REVIEW"
+    },
+    "review_note": "Independent read-only re-review of Next4C publication plan (claude-sonnet-5). ACCEPT.\n\nRecomputed with native Windows certutil, no edits/builds/deploys/browser: (1) archive sha256 83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b exact match. (2) remote-prepare.txt sha256 64b4a333da5434f5e36af781c0c711137024601a25186fc68399616a5c957a15 exact match to execution-packet.json remote_log_sha256. (3) git rev-parse HEAD = 42a2aaf4ed66698d3f7303b716bbac36913ff139, exact match to package.json version.commit and publish_prepared.py's own assert. (4) spot-recomputed 3 local-browser-evidence.json artifact hashes (local-music-answers.json, local-cinema-answers.json, local-feedback-restored.json) -- all exact.\n\nPreparation log (remote-prepare.txt) confirms every required element: fresh sqlite backup+integrity+restore all 'ok' with original counts [105,675,246]; original_rows_preserved=true and feedback_lifecycle='ok' after copied-DB rehearsal; rehearsal counts packs=8/questions=122 match execution-packet.json actual_copy_rehearsal exactly; old_api_rollback='ok'; image built, exported, imported into k3s containerd with durable archive sha256 b95ebf2e...2f791f logged and matching execution-packet.json durable_archive_sha256 verbatim; helm chart lint 1 chart/0 failed; 7 kubectl apply --dry-run=server confirmations (networkpolicy, pvc, role, rolebinding, service, deployment, ingress, middleware).\n\nRead publish_prepared.py and the staged v2 cutover.sh directly. The publish script binds package+image+hub-acceptance via execution-acceptance.json (asserts actual_hub_state=='ACCEPTED', package_sha256==package.json sha, image==execution-packet.json image -- this file does not yet exist in the lead's dir, which is expected: it is the artifact my own review verdict is meant to produce, not a missing-evidence defect), binds source commit via live git HEAD check, and binds the preparation log via the remote-prepare.txt hash check verified above. It reuses the already-reviewed cutover.sh prefix (hostname/lock guard, unchanged production-baseline image guard sha256:98317653...086fc, PVC UID check, checksum verify, backup_sqlite.py fresh backup, freshly-regenerated rehearse-<run>.py rehearsal) verbatim up to the 'quiz_image=' split, so the fresh backup and copied-DB rehearsal are genuinely repeated, not skipped. Its own appended tail asserts 'docker build' not in script (confirmed absent) and instead verifies the durable archive checksum plus presence of the already-imported digest in k3s ctr images ls before helm lint/template/dry-run and an atomic helm upgrade (--atomic --wait --timeout 180s), followed by post-deploy image/public-version/public-main.dart.js verification. Baseline guard is retained unmodified in the reused prefix.\n\nLocal browser evidence/preserved-runtime-clarification match the described scope exactly: both 19-question People packs at 390x844 scored 19/19, 8 question + 4 article screenshots, 9 source-link controls, feedback restored after reader close, reuses an unchanged local Dart build with new content; fresh production build and exact published-JS/browser verification explicitly deferred to post-publish (not claimed here). The 7 preserved canonical files are disclosed as prior-published runtime lineage differing from current Git source (not identical), including the pre-existing, separately tracked HP006 hippogriffs/ghosts gap (quiz_master-2ln.1) -- correctly disclosed, not smuggled in as new content.\n\nNo requirement violations, no hash mismatches found.\n\nLimits: no outbound network in this sandbox to reach the remote host or quiz.kotopedia.org directly; relied on the logged remote-prepare.txt output (itself hash-bound) for remote-side confirmation. Did not certify Android hardware, full bank facts, or live publication -- none claimed by this package either.",
+    "reviewer": "session-6503f2eadbba407eabd534d01a17a349",
+    "root_task_id": "task-3fd466cb0deb4b78a7ef775dcff590fb",
+    "run_id": "run-39dff1ee8af443f9ad38327c28eee4db",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4C prepared immutable publication plan independent review",
+    "version": 7
+  },
+  "image": "sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4"
+}

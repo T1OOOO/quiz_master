@@ -1,0 +1,51 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-00eee3539c4f48f6810c138dd1033294",
+  "reviewer": "session-ae2c32110bf24fa9a75c156a86fca582",
+  "review_note": "Independent read-only re-review of V2 package (.run/culture_next4c_release_lead_20261012/package.json -> v2 stage), Claude Sonnet 5. ACCEPT.\n\nVerified directly, not just re-asserted: fast_archive_check.py rerun read-only -> sha256 83ab679...060059 exact, 366 tar members = 296 files+69 dirs+root, flat, no bytecode/links. V1-vs-V2 stage diff: exactly 53 files removed, 0 added. Baseline image guard sha256:98317653...086fc present in v2/cutover.sh; bash -n OK. Go/Flutter/analyze log hashes match root-gates.json and tails show genuine pass output.\n\nChecked the 'preserved runtime, not new content' claim for the 7 non-People files myself: byte-identical to C:/ap/quiz_master/.run/culture_next2b_release_20261012/quiz-2026.10.12-culture-939f231 (prior published runtime); all 7 differ from git HEAD 42a2aaf. Confirms genuine preservation, not disguised new content.\n\nDrilled into the two content discrepancies the prior reviewer flagged:\n1. home-alone q-ha1-p1-7 correct_option_id (opt-3 git vs opt-1 runtime): file has one commit ever; production was patched out-of-band under HOME_ALONE_REPAIR_20261011, independently reviewed, published as e0d13f4 on 2026-10-11. Pre-existing disclosed git/prod sync gap, not new.\n2. theme-hp-006 distractor (hippogriffs in git commit 5afcd31/939f231 vs ghosts in the actual runtime bytes, older bundle_version too): confirmed via merge-base that the runtime's own claimed source commit 939f231 DOES include the fix, yet deployed bytes don't -- the reviewed HP006 fix apparently never reached production across 2+ releases. Disclosed in preserved-runtime-clarification.json ('schoolghosts distractor' named) and tracked in beads quiz_master-2ln.1. Predates this task; package correctly preserves what's actually live rather than smuggling an out-of-scope fix in.\n\nNo undisclosed content drift inside this package's own scope. cinema/music-encore and planet-paradoxes diffs are version-tag only, 0 question-level diffs confirmed.\n\nLimits: no outbound network in this sandbox, could not query quiz.kotopedia.org directly; relied on local runtime-stage/checkpoint evidence. Static read-only review only; no deployment/live-browser certification, none authorized by me. Recommend separate non-blocking bd issue to actually deploy the merged HP006 fix.",
+  "actual_cli_exit": 0,
+  "package_sha256": "83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b",
+  "source_commit": "42a2aaf4ed66698d3f7303b716bbac36913ff139",
+  "actual_log_sha256": "a47327353e603491b020dc193f321291316743133a57dece0efb71a2292488c9",
+  "raw_callback": {
+    "acceptance": "Frozen V2 exact296file set (derive actual), no extra drafts/foreign README, flatno links, baseline983, source42/API26/same fresh JS306b,8x122,19each; actual archivechecksum/syntax checks and precise counts. Root independentClaude review before upload.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4c_release_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root independent archive audit found 53 extra next/content files versus previous verified release (17 prep triplets, foreign dirty README/integration-review); current349files package must not publish. Preserve submitted V1 bytes for actual Claude static review. Clone current stage into own OUT/v2/quiz-2026.10.12-culture-42a2aaf (same build/source/API/JS, NO rebuild), retain only previous939f231 stage next/content exact path set, with current twoPeople source bytes. Remove exactly53extras only inside verified own v2 stage. Exclude web/.last_build_id. Recompute checksums/archive and precise tar_members/file_members. Assert scope equals previous stage file set minus .last_build_id; all retained canonical unchanged except twoPeople; content source remains42. Update release-evidence to V2 task and package after freeze, keep V1 evidence as release-evidence-v1.json. No source/Git/test/build/SSH/browser/deploy/children. You are not alone; preserve others. Submit full actual evidence; no publication.",
+    "created_at": 1791816280.2411675,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-00eee3539c4f48f6810c138dd1033294",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "clarification": "Evidence now identifies the prior verified published runtime stage as the reference, enumerates all seven intentionally retained non-People canonical files, and separates their published-runtime lineage from current Git source lineage.",
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/release-evidence.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/release-evidence-v2-before-clarification.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/preserved-runtime-clarification.json",
+        ".run/culture_next4c_release_20261012/v2/package.json"
+      ],
+      "limits": "Clarification corrects evidence lineage only. Fresh different-provider critical release review remains required; no publication is claimed.",
+      "packet_label": "culture-next4c-release-v2-clarification-20261012",
+      "status": "READY_FOR_FRESH_CRITICAL_RELEASE_REVIEW",
+      "unchanged_artifact": "Archive remains 83ab67928dbe0ee0cad02b5a570d4131f07a1b60c7b75a9fa3713dd76960059b; no stage, compiled web, archive, source, or build changes."
+    },
+    "review_note": "Independent read-only re-review of V2 package (.run/culture_next4c_release_lead_20261012/package.json -> v2 stage), Claude Sonnet 5. ACCEPT.\n\nVerified directly, not just re-asserted: fast_archive_check.py rerun read-only -> sha256 83ab679...060059 exact, 366 tar members = 296 files+69 dirs+root, flat, no bytecode/links. V1-vs-V2 stage diff: exactly 53 files removed, 0 added. Baseline image guard sha256:98317653...086fc present in v2/cutover.sh; bash -n OK. Go/Flutter/analyze log hashes match root-gates.json and tails show genuine pass output.\n\nChecked the 'preserved runtime, not new content' claim for the 7 non-People files myself: byte-identical to C:/ap/quiz_master/.run/culture_next2b_release_20261012/quiz-2026.10.12-culture-939f231 (prior published runtime); all 7 differ from git HEAD 42a2aaf. Confirms genuine preservation, not disguised new content.\n\nDrilled into the two content discrepancies the prior reviewer flagged:\n1. home-alone q-ha1-p1-7 correct_option_id (opt-3 git vs opt-1 runtime): file has one commit ever; production was patched out-of-band under HOME_ALONE_REPAIR_20261011, independently reviewed, published as e0d13f4 on 2026-10-11. Pre-existing disclosed git/prod sync gap, not new.\n2. theme-hp-006 distractor (hippogriffs in git commit 5afcd31/939f231 vs ghosts in the actual runtime bytes, older bundle_version too): confirmed via merge-base that the runtime's own claimed source commit 939f231 DOES include the fix, yet deployed bytes don't -- the reviewed HP006 fix apparently never reached production across 2+ releases. Disclosed in preserved-runtime-clarification.json ('schoolghosts distractor' named) and tracked in beads quiz_master-2ln.1. Predates this task; package correctly preserves what's actually live rather than smuggling an out-of-scope fix in.\n\nNo undisclosed content drift inside this package's own scope. cinema/music-encore and planet-paradoxes diffs are version-tag only, 0 question-level diffs confirmed.\n\nLimits: no outbound network in this sandbox, could not query quiz.kotopedia.org directly; relied on local runtime-stage/checkpoint evidence. Static read-only review only; no deployment/live-browser certification, none authorized by me. Recommend separate non-blocking bd issue to actually deploy the merged HP006 fix.",
+    "reviewer": "session-ae2c32110bf24fa9a75c156a86fca582",
+    "root_task_id": "task-00eee3539c4f48f6810c138dd1033294",
+    "run_id": "run-bad9a9ee8853475ca9b55b150d2eee22",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4C release V2: exact approved runtime file scope",
+    "version": 7
+  }
+}

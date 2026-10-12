@@ -1,0 +1,63 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "plan_sha256": "ed5afc04ffbdcf1528b343372b79c6b49f2fe40d08d8a49c3b0938ebfcbde8b6",
+  "actual_log_sha256": "4a659ff8ce22cd0d9fecd7de8919ce43b1926197d570576f1cf36e8e31d555cf",
+  "raw_callback": {
+    "acceptance": "Bounded seven-file drift report distinguishes actual content changes frommetadata/normalization, references existing actualreview lineage, proposes smallest safe sourcealignment with answerIDs/articles preservation. No production changes or unverifiedfactassertions.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CANONICAL_RUNTIME_ALIGNMENT_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read-only investigation while Root completes Next4C release. User wants all quizzes verified; independentreview found seven Git canonical files differ from previouslypublished runtime. Own only docs/rewrite-agents/tasks/CANONICAL_RUNTIME_ALIGNMENT_20261012/plan.md. Read Next4C preserved-runtime-clarification and V2scope/rootfinding, canonical files/pinnedGit42, currentpublished previous939stage, originalrepair evidence/review lineage. Identify actual question-stem/key/options changes, intentional runtimeURI/revision normalization versus source drift, and smallest safe followup to align source without changing published meanings. Do not edit source/canonical/articles/runtime release dirs, runtests/builds/browser/SSH/Gitmutations, spawnchildren or claim allfacts certified. You are not alone; preserveothers. Mark sources notyetverified and evidence unavailable explicitly. Beads3vw broader followup stays open. Write concise English plan with exact paths, evidence, gates, risks; Hubsubmit.",
+    "created_at": 1791817170.0479712,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-c4441332a4414441a45de6703d2d2dc7",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CANONICAL_RUNTIME_ALIGNMENT_20261012\\plan-v1.md",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CANONICAL_RUNTIME_ALIGNMENT_20261012\\plan.md"
+      ],
+      "checks": [
+        {
+          "command": "Get-FileHash plan-v1.md, plan.md",
+          "exit": 0
+        },
+        {
+          "command": "Get-Content plan.md | Measure-Object",
+          "exit": 0,
+          "result": "37 lines; 898 words"
+        }
+      ],
+      "evidence": [
+        "preserved V1 plan SHA-256: 27208a839f5302a58514a0a6e73e25ac300e3a753ddd9a3a90665889f97c553b",
+        "amended plan SHA-256: ed5afc04ffbdcf1528b343372b79c6b49f2fe40d08d8a49c3b0938ebfcbde8b6",
+        "reviewed claude-plan-rework.json; updated CULTURE_NEXT4C_20261012/preserved-runtime-clarification.json; static-final-acceptance.json"
+      ],
+      "packet_label": "canonical-runtime-alignment-plan-v2-20261012",
+      "risks": [
+        "Home Alone answer-key alignment and HP006 rollout still require independent content/deployment review.",
+        "Underlying repair provenance remains a gate for every path.",
+        "No test, build, browser, Git, SSH, server, or publication work was run or claimed."
+      ],
+      "summary": "Preserved V1 and amended the HP ledger: hippogriffs-versus-ghosts is a documented pre-existing deployment/content gap tracked by quiz_master-2ln.1, not a normalization assertion. No source/package work."
+    },
+    "review_note": "Independent re-review of amended plan.md vs plan-v1.md, Claude Sonnet 5. ACCEPT — prior REWORK finding is resolved.\n\nThe theme-harry-potter/bundle.json ledger row no longer labels the DTO mismatch as 'runtime source/revision normalization.' It now states: Git/939f231 carries the reviewed HP006 'hippogriffs' distractor fix, deployed runtime bytes still show 'ghosts', the fix never reached production across 2+ releases, tracked as quiz_master-2ln.1, and the alignment-decision column explicitly says 'Do not call this normalization or metadata.' This matches the corrected preserved-runtime-clarification.json scope text I re-read just now ('Git HP006 has a reviewed hippogriffs distractor absent from production; this is a real pre-existing content gap tracked by quiz_master-2ln.1, not metadata normalization'). No unverified normalization claim remains in either file.\n\nRest of the plan checks out: Home Alone row now cites the specific repair trail (HOME_ALONE_REPAIR_20261011, published e0d13f4) consistent with static-final-acceptance.json; cinema/music-encore/planet-paradoxes rows now cite the accepted (ACCEPTED-task) zero-question-level-diff finding while still requiring a field-level diff before any 'metadata-only' regeneration, so no premature classification is smuggled in; review-lineage section correctly adds static-final-acceptance.json as a cited source; risk section correctly reframes which direction (old-runtime vs git) perpetuates vs fixes the HP006 gap; write scope, staging-only import/rehash requirement, and independent-provider promotion gate are unchanged and still sound. I'm not asserting any new unverified source fact myself — relying on the already-ACCEPTED static-final-acceptance.json and the lead's corrected clarification file as cited evidence.\n\nLimits: read-only plan review only (plan.md, plan-v1.md diff, preserved-runtime-clarification.json); did not re-open static-v2-rework.json, release-evidence.json, or beads quiz_master-2ln.1 itself; no code/build/browse/deploy performed or authorized by me.",
+    "reviewer": "session-4366e965a33742d9916f0ce69683951b",
+    "root_task_id": "task-c4441332a4414441a45de6703d2d2dc7",
+    "run_id": "run-6c4e3f8094404e36bc5c9b44d2c8e352",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Plan source/runtime alignment for seven preserved canonical files",
+    "version": 7
+  },
+  "scope": "Corrected read-only followup plan only. No sourcealignment or factual changes implemented/approved for publication."
+}

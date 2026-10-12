@@ -1,0 +1,50 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-26fcccebaf574fea92001923912ade7d",
+  "reviewer": "session-677dae1ea1644854aead7710936bdac6",
+  "review_note": "Independent Claude (claude-sonnet-5) read-only review of Culture Next4C release package (build quiz-2026.10.12-culture-42a2aaf). Verified by direct recomputation, no edits/builds/browsing/deploys: (1) source_commit 42a2aaf4ed66698d3f7303b716bbac36913ff139 matches current git HEAD exactly. (2) Independently re-ran fast_archive_check.py (read-only): archive sha256 92165825dbe9c03acd51fb34e4294d349e90212097995e80f404e8b9c47934a7 confirmed, 349/349 exact byte-identical stage<->archive files, no symlinks/hardlinks/bytecode, no path traversal, no nested build-id root. The validate_archive.py script's 'members':349 and my fast_archive_check.py's 'members':436 differ only because the latter also counts the archive's 87 directory tar entries (349 files + 87 dirs = 436); file-level exact-match (349) is identical in both, so this is a counting-definition difference between the two scripts, not a corruption or discrepancy in the archive itself. (3) Recomputed api binary sha256 (26e1657f...f01) and web/main.dart.js sha256 (306b8bb5...458e) directly from the staged files -- both match package.json/checksums.txt exactly, confirming the api-reuse-without-rebuild claim. (4) Recomputed catalog.json: 131 packs, questions_count sum = 4026, cinema-people-20261011 = 19, music-people-20261011 = 19, question-articles.json = 224 entries -- all match claimed counts exactly. (5) validate_archive.py's fixture_packs=8/fixture_questions=122 are preceded by real asserts (len(runtime-bundles)==8, summed question counts==122) before being written, not fabricated literals. (6) Baseline image digest docker.io/library/quiz-master@sha256:98317653...086fc is consistent across package.json, release-evidence.json and the validate_archive.py BASELINE guard embedded in cutover.sh (also confirms old 'ee09f128' short-hash guard is absent). (7) Spot-checked 3 of the local-browser-evidence.json artifact hashes (local-cinema-answers.json, local-music-answers.json, local-feedback-restored.json) directly against the files on disk -- all 3 match exactly; did not launch a browser or recompute all 20 listed hashes. (8) root-gates.json full-go/full-flutter/flutter-analyze all show actual_exit=0 with logged sha256s; its own scope note discloses these were run at the prior 4022-question count, before the 4026 bump -- correctly disclosed as a limitation, not hidden. No requirement violations, no hash mismatches, no byte-level discrepancies found. Scope limits, concurred: this is local-package/static evidence review only -- it does not certify production deployment, live publication, the published main.dart.js, Android/physical-device/screen-reader testing, or full-bank factual certification; those remain explicitly out of scope per release-evidence.json's own 'limits' field and are not claimed here.",
+  "actual_cli_exit": 0,
+  "package_sha256": "92165825dbe9c03acd51fb34e4294d349e90212097995e80f404e8b9c47934a7",
+  "source_commit": "42a2aaf4ed66698d3f7303b716bbac36913ff139",
+  "actual_log_sha256": "ff2d02818f0cb77b9687fa0dca5446446b216b3931fde72db52bbc1129205452",
+  "raw_callback": {
+    "acceptance": "ActualfreshFlutter0 exactsource/baseline/APIhash/versioncounts/flatarchive8x122fixtures; no publicationclaimed.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4c_release_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Source42a2aaf4ed66698d3f7303b716bbac36913ff139 pushed/binding+fullGo116Flutter/analyzer passed. Freshproductionweb package quiz-2026.10.12-culture-42a2aaf target131/4026/224 People19,8fixtures122questions. API/libDart/depsunchanged; reuseactualpreviousverifiedAPI26e1657 withbyteproof/noAPIrebuildclaim. CurrentHelm41baselineimage98317653087b76920c6396d8d1a1e88ae3cbec8b7f39b461fc87108ca15086fc equalpackage ANDcutoverguard. ReusepriorNext2Btemplates updatePeople19readerrefs/122rehearsal/fullsourceversion. Execute-only existingfixturehelper next/server/.run/culture_next2_release_20261012/main.go emitscurrent8runtime/stagingrefs. Own .run/culture_next4c_release_20261012 +release-evidence.json only. RootcurrentlyownsheavybrowserQA: preparetemplate/readinessfirst, NOFlutterbuild untilRootexplicitQAclosedmessage. NoSource/tests/CI/Git/SSH/deploy/helperwrites/children. Exactflatarchivechecksums/filecount nolinks/bytecode/nestedroot. Rootstatic/executionreview/livesafetygatesseparate.",
+    "created_at": 1791815208.172411,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-26fcccebaf574fea92001923912ade7d",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "artifact": "archive SHA-256 92165825dbe9c03acd51fb34e4294d349e90212097995e80f404e8b9c47934a7; 349 streamed-validated stage files; 8 fixture packs / 122 questions.",
+      "build": "Fresh Flutter production web exit 0, 131.8s; QM_BUILD_ID=quiz-2026.10.12-culture-42a2aaf and production API URL.",
+      "evidence": [
+        ".run/culture_next4c_release_20261012/package.json",
+        ".run/culture_next4c_release_20261012/archive-validation.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/release-evidence.json"
+      ],
+      "limits": "Local package only. Root-owned independent static/execution review, server gates and publication have not occurred.",
+      "packet_label": "culture-next4c-release-20261012",
+      "status": "READY_FOR_INDEPENDENT_RELEASE_REVIEW"
+    },
+    "root_task_id": "task-26fcccebaf574fea92001923912ade7d",
+    "run_id": "run-8d7e590d43b042e9974e210e649cdfe3",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Prepare finite Next4C release package (Beads quiz_master-3vw)",
+    "version": 4,
+    "reviewer": "session-677dae1ea1644854aead7710936bdac6",
+    "review_note": "Independent Claude (claude-sonnet-5) read-only review of Culture Next4C release package (build quiz-2026.10.12-culture-42a2aaf). Verified by direct recomputation, no edits/builds/browsing/deploys: (1) source_commit 42a2aaf4ed66698d3f7303b716bbac36913ff139 matches current git HEAD exactly. (2) Independently re-ran fast_archive_check.py (read-only): archive sha256 92165825dbe9c03acd51fb34e4294d349e90212097995e80f404e8b9c47934a7 confirmed, 349/349 exact byte-identical stage<->archive files, no symlinks/hardlinks/bytecode, no path traversal, no nested build-id root. The validate_archive.py script's 'members':349 and my fast_archive_check.py's 'members':436 differ only because the latter also counts the archive's 87 directory tar entries (349 files + 87 dirs = 436); file-level exact-match (349) is identical in both, so this is a counting-definition difference between the two scripts, not a corruption or discrepancy in the archive itself. (3) Recomputed api binary sha256 (26e1657f...f01) and web/main.dart.js sha256 (306b8bb5...458e) directly from the staged files -- both match package.json/checksums.txt exactly, confirming the api-reuse-without-rebuild claim. (4) Recomputed catalog.json: 131 packs, questions_count sum = 4026, cinema-people-20261011 = 19, music-people-20261011 = 19, question-articles.json = 224 entries -- all match claimed counts exactly. (5) validate_archive.py's fixture_packs=8/fixture_questions=122 are preceded by real asserts (len(runtime-bundles)==8, summed question counts==122) before being written, not fabricated literals. (6) Baseline image digest docker.io/library/quiz-master@sha256:98317653...086fc is consistent across package.json, release-evidence.json and the validate_archive.py BASELINE guard embedded in cutover.sh (also confirms old 'ee09f128' short-hash guard is absent). (7) Spot-checked 3 of the local-browser-evidence.json artifact hashes (local-cinema-answers.json, local-music-answers.json, local-feedback-restored.json) directly against the files on disk -- all 3 match exactly; did not launch a browser or recompute all 20 listed hashes. (8) root-gates.json full-go/full-flutter/flutter-analyze all show actual_exit=0 with logged sha256s; its own scope note discloses these were run at the prior 4022-question count, before the 4026 bump -- correctly disclosed as a limitation, not hidden. No requirement violations, no hash mismatches, no byte-level discrepancies found. Scope limits, concurred: this is local-package/static evidence review only -- it does not certify production deployment, live publication, the published main.dart.js, Android/physical-device/screen-reader testing, or full-bank factual certification; those remain explicitly out of scope per release-evidence.json's own 'limits' field and are not claimed here."
+  }
+}

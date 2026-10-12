@@ -1,0 +1,59 @@
+{
+  "actual_hub_state": "REWORK",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Bounded seven-file drift report distinguishes actual content changes frommetadata/normalization, references existing actualreview lineage, proposes smallest safe sourcealignment with answerIDs/articles preservation. No production changes or unverifiedfactassertions.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CANONICAL_RUNTIME_ALIGNMENT_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read-only investigation while Root completes Next4C release. User wants all quizzes verified; independentreview found seven Git canonical files differ from previouslypublished runtime. Own only docs/rewrite-agents/tasks/CANONICAL_RUNTIME_ALIGNMENT_20261012/plan.md. Read Next4C preserved-runtime-clarification and V2scope/rootfinding, canonical files/pinnedGit42, currentpublished previous939stage, originalrepair evidence/review lineage. Identify actual question-stem/key/options changes, intentional runtimeURI/revision normalization versus source drift, and smallest safe followup to align source without changing published meanings. Do not edit source/canonical/articles/runtime release dirs, runtests/builds/browser/SSH/Gitmutations, spawnchildren or claim allfacts certified. You are not alone; preserveothers. Mark sources notyetverified and evidence unavailable explicitly. Beads3vw broader followup stays open. Write concise English plan with exact paths, evidence, gates, risks; Hubsubmit.",
+    "created_at": 1791817170.0479712,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-c4441332a4414441a45de6703d2d2dc7",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CANONICAL_RUNTIME_ALIGNMENT_20261012\\plan.md"
+      ],
+      "checks": [
+        {
+          "command": "Get-FileHash plan.md",
+          "exit": 0
+        },
+        {
+          "command": "Get-Content plan.md | Measure-Object",
+          "exit": 0,
+          "result": "36 lines; 949 words"
+        }
+      ],
+      "evidence": [
+        "plan SHA-256: 27208a839f5302a58514a0a6e73e25ac300e3a753ddd9a3a90665889f97c553b",
+        "read sources: CULTURE_NEXT4C_20261012/preserved-runtime-clarification.json; static-v2-rework.json; release-evidence.json; root-package-scope-finding.json"
+      ],
+      "packet_label": "canonical-runtime-alignment-plan-20261012",
+      "risks": [
+        "Underlying repair provenance for each path remains to be traced before any source alignment.",
+        "Home Alone key and Harry Potter text require independent content/key review; this plan does not certify them.",
+        "No test, build, browser, Git, SSH, or publication work was run or claimed."
+      ],
+      "summary": "Read-only seven-path ledger and post-release alignment gates; no source/package/release modifications."
+    },
+    "root_task_id": "task-c4441332a4414441a45de6703d2d2dc7",
+    "run_id": "run-4308d5b779664467b72c84b879ab8eb3",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Plan source/runtime alignment for seven preserved canonical files",
+    "version": 4,
+    "reviewer": "session-cf30d656d8be427dae3588b0867d1a4a",
+    "review_note": "Independent read-only review of plan.md (CANONICAL_RUNTIME_ALIGNMENT_20261012), Claude Sonnet 5. Mostly sound: correctly scopes write access to the 7 non-People paths only, correctly requires a field-level diff before calling anything 'metadata-only' ('not inference from a matching public screen'), correctly refuses to treat public-API DTO equality as proof of grading correctness, and correctly blocks any repair that can't be traced to review+predecessor evidence.\n\nOne correction needed: the theme-harry-potter/bundle.json ledger row labels the 'exact public DTO mismatch' as 'attributable to runtime source/revision normalization' and calls this an 'Evidence-backed distinction.' That phrase is lifted verbatim from preserved-runtime-clarification.json's own text, but static-final-acceptance.json's reviewer drilled into this exact discrepancy and found it is NOT a normalization artifact: it is the HP006 distractor text itself (hippogriffs in git/939f231 vs ghosts in deployed runtime bytes), a disclosed content gap already tracked as beads quiz_master-2ln.1, where a reviewed fix merged into source never reached production across 2+ releases. Presenting the normalization explanation as evidence-backed in the ledger risks biasing the follow-up task toward a premature metadata-only classification for that row, which directly contradicts the plan's own stricter rule in step 2 of its 'Smallest safe follow-up' section. The row's 'Alignment decision needed' column (require a field-level diff, no normalization without proof) is written correctly and should stand; only the 'Evidence-backed distinction' column's premature normalization attribution needs rewording, and the plan should cite beads quiz_master-2ln.1 as the known prior lineage for that row instead of accepting the clarification file's conflated framing. Everything else in the plan (seven-path ledger scope, Home Alone key handling, risk/hold points, no-deploy/no-build/no-test boundary) checks out against preserved-runtime-clarification.json and static-final-acceptance.json.\n\nLimits: read-only review of plan.md plus the two named evidence files and the previous task's review note; did not re-open static-v2-rework.json, release-evidence.json or the beads database; no code/build/browse/deploy performed, none authorized by me."
+  },
+  "raw_log_sha256": "9a533e6e482a684cbc607c03798628e642fccdd197dfdf5ab7e7fbdbcbb169c1"
+}
