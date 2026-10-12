@@ -1,0 +1,11 @@
+# Next finite release
+
+Lead owns release publication. Current published source is b015251, immutable image c75c4ed6f3570dd3b624eccb6ef572d501990433dbe836ecd837c93b496c97d6, 131 packs / 4010 questions / 208 articles. Current accepted actor source is 926c3fa, 131 / 4012 / 210, and is pushed. Actor factual and generated-binding review was actually accepted in host_hub by Claude; it is not a release signoff.
+
+Use the existing release machinery and the currently published immutable culture-variety package as the base. Do not rebuild from the older Home Alone baseline or trust synthetic rehearsal booleans. Carry the unchanged approved API binary and frozen taxonomy. Override only accepted Cinema People source/canonical files and fresh production web assets. The next actor release has eight rehearsal packs and 108 questions (Cinema People 13, Music People 11); preserve all prior DTOs, grading and articles.
+
+Build with both QM_BUILD_ID and QM_API_BASE_URL=https://quiz.kotopedia.org. Verify the compiled API endpoint before uploading. Require exact source commit and independent candidate hashes, fresh production identity/PVC/health, backup integrity and actual disposable restoration, fresh API question/revision/article binding checks, answer scoring, feedback lifecycle only on the copy, and old API rollback. Prepare one immutable image, verify its durable archive checksum and rendered digest, obtain another provider's actual review, then publish that same image atomically. Rebuilding during publication invalidates the reviewed image.
+
+After publication verify public version and assets, new question and article revisions, and mobile browser interaction. Keep all 26 real feedback reports open until their own published fixes are verified. No GitHub Actions, mandatory resource queue, other project cleanup or guessed external-agent activity.
+
+Singer v4 remains a separate draft/review packet. Do not import it merely because its basic key facts are correct: the user explicitly requires plausible comparable options and useful miniarticles, without answer-length cues or filler about the answer choices. Original culture drafts and other NEXT8 v2 items remain held where reviews request changes. Preserve the foreign-69 snapshot and exclusive ownership throughout.

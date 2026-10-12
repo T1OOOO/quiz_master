@@ -1,0 +1,3 @@
+# Root editorial repair, pending independent review
+
+V4 was held for inaccessible MoMA source and option/prose defects. V5 replaced the source and prose, but its stem explicitly named an application while only the keyed choice was an application. Root therefore preserved V5 and created V6 with a project-name question and four real Björk album titles. The numeric key, article bodies and source URLs are unchanged; an assert-based check verifies that parity. No import or publication. Independent source checks and answer-quality review remain required, including school geography in the Mercury article.

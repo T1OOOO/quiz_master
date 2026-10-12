@@ -1,0 +1,125 @@
+{
+  "packet_label": "CULTURE_NEXT8_SINGERS_V4_20261012",
+  "reviewer": {
+    "hub_label": "culture-next8-v2-factcheck",
+    "session_id": "session-79f42d8274ac4d6aa02cbdfc60df567f",
+    "review_date": "2026-10-12"
+  },
+  "review_status": "DONE_WITH_CONCERNS",
+  "input": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/singers-v4.json",
+    "sha256": "DF6FEC149517529884544CBFDC0913A200B83957BCA57D2E30067B6BF9B780CB",
+    "record_count": 2
+  },
+  "answer_method": {
+    "status": "NOT_A_BLIND_SOLVE",
+    "reason": "The supplied JSON contains correct_answer and correct_answer_text. This reviewer saw both before assessment, so answer-key verification is a self-check only."
+  },
+  "source_access": [
+    {
+      "url": "https://www.moma.org/explore/inside_out/2014/06/11/biophilia-the-first-app-in-momas-collection/",
+      "source_owner": "Museum of Modern Art",
+      "outcome": "HOLD_SOURCE_INACCESSIBLE",
+      "evidence": "Direct fetch on 2026-10-12 returned HTTP 403.",
+      "effect": "The item cannot rely on this URL for its hybrid tablet-app, interaction, or Solstice-specific claims."
+    },
+    {
+      "url": "https://shop.bjork.com/products/bjork-biophilia",
+      "source_owner": "Björk Official Store",
+      "outcome": "ACCESSIBLE_SUPPORTS_PARTIAL",
+      "evidence": "The description calls Biophilia an interdisciplinary exploration of the universe and physical forces where music, nature, and technology meet.",
+      "effect": "Supports only the music/nature/technology framework, not the MoMA-specific app-interaction claims."
+    },
+    {
+      "url": "https://www.queenonline.com/freddie_mercury",
+      "source_owner": "Queen Online",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "evidence": "It identifies the real name as Farrokh Bulsara, birthplace Zanzibar, and says that 25 years later in London Freddie Mercury fronted Queen.",
+      "effect": "Supports singer-02's identity, Zanzibar, and later Queen/London context."
+    },
+    {
+      "url": "https://freddiemercury.com/bio/",
+      "source_owner": "Freddie Mercury Official Website",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "evidence": "It says he was born Farrokh Bulsara on Zanzibar and took piano lessons at St Peter's boarding school in Bombay.",
+      "effect": "Supports singer-02's birth-name and early-piano claims."
+    }
+  ],
+  "items": [
+    {
+      "id": "next8v4-singer-01",
+      "verdict": "HOLD",
+      "key_self_check": {
+        "stored_index": 0,
+        "stored_text": "Интерактивное приложение для планшетов",
+        "index_matches_option": true
+      },
+      "factual_assessment": "The Björk store supports the broad interdisciplinary music/nature/technology statement. The supplied MoMA primary URL was directly inaccessible (HTTP 403), so the claimed hybrid tablet application, song interaction, and Solstice planet/string/vocal mechanism are not independently source-supported for acceptance.",
+      "article_assessment": {
+        "word_count": 106,
+        "range_check_100_to_150": true,
+        "claim_issues": [
+          "The first four factual sentences depend materially on the inaccessible MoMA page.",
+          "The conclusion that the listener can change the course of interaction is likewise not supported by the accessible source in the supplied ledger."
+        ]
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [38, 21, 22, 36],
+        "answer_length_issue": "The keyed option is substantially longer than the two middle distractors, creating a visible length cue.",
+        "parallelism_issue": "«Концерт без электронных инструментов» is a performance-format distractor, while the other choices are media or publication formats; it does not form a comparable option set.",
+        "uniqueness": "The keyed text is uniquely responsive, but source access and option construction prevent acceptance."
+      },
+      "duplicate_knowledge_check": "No Biophilia mention was found in the searched stable content directories quizzes, categorized, or quizipedia. This is a bounded duplicate check, not a certification of the entire bank.",
+      "tags": {
+        "proposed": ["domain:arts"],
+        "frozen_tag_check": "PASS",
+        "evidence": "metadata/tags.v1.json defines domain:arts as the player-safe domain tag 'Искусство и культура'."
+      },
+      "required_revision": "Use a directly accessible first-party source that explicitly supports the app and interaction claims, or replace/remove those claims; then rebuild all four options as comparable formats with no conspicuously long keyed answer."
+    },
+    {
+      "id": "next8v4-singer-02",
+      "verdict": "REVISE",
+      "key_self_check": {
+        "stored_index": 2,
+        "stored_text": "Фаррух Булсара",
+        "index_matches_option": true
+      },
+      "factual_assessment": "Both accessible official biographies support Farrokh Bulsara, Zanzibar, Queen/London context, and the St Peter's piano lessons. The answer is unique.",
+      "article_assessment": {
+        "word_count": 111,
+        "range_check_100_to_150": true,
+        "claim_check": "The factual biography claims are supported by the two accessible official sources.",
+        "pedagogical_issue": "The last two sentences identify the distractors as the other Queen members and explain their quiz function. They discuss the answer set rather than add biographical understanding; revise them into sourced context about his path from Zanzibar and school music to Queen."
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [21, 18, 14, 17],
+        "length_giveaway": "No material length giveaway.",
+        "parallelism": "All four are personal names connected to Queen, and the three distractors are recognizable fellow members. They are plausibly comparable, although their extra given names make them stylistically less uniform than the keyed two-word birth name.",
+        "uniqueness": "PASS"
+      },
+      "duplicate_knowledge_check": "No Farrokh/Bulsara/Freddie birth-name prompt was found in the searched stable content directories quizzes, categorized, or quizipedia. This is a bounded duplicate check, not a certification of the entire bank.",
+      "tags": {
+        "proposed": ["domain:arts"],
+        "frozen_tag_check": "PASS",
+        "evidence": "metadata/tags.v1.json defines domain:arts as the player-safe domain tag 'Искусство и культура'."
+      },
+      "required_revision": "Keep the supported answer and source URLs, but replace the answer-option commentary in the final two sentences with substantive sourced biographical context. Consider harmonising option naming style while retaining comparable Queen-member distractors."
+    }
+  ],
+  "batch_checks": {
+    "all_four_primary_urls_directly_opened": true,
+    "inaccessible_source_count": 1,
+    "all_article_bodies_in_range_100_to_150_words": true,
+    "cross_item_duplicate_knowledge_point": "None: Biophilia's format and Mercury's birth name are distinct.",
+    "frozen_tags_valid": true,
+    "release_actions": "None. No author file, production/runtime file, import, build, Git, publication, or deployment action was performed."
+  },
+  "limitations": [
+    "MoMA's supplied primary URL was not accessible to this review because it returned HTTP 403.",
+    "The mixed key-bearing draft prevents a blind-solve claim.",
+    "Duplicate screening was limited to the stable content directories named in the report; a full-bank audit was outside this packet."
+  ]
+}
