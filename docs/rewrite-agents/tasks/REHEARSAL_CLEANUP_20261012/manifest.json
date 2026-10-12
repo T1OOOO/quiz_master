@@ -1,0 +1,339 @@
+{
+  "candidates": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-actors-3556b59/rehearsal-quiz-2026.10.12-actors-3556b59-cutover-20261012T010417Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76764417,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\ACTOR_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-actors-3556b59"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-actors-3556b59/rehearsal-quiz-2026.10.12-actors-3556b59-cutover-20261012T012232Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76768513,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\ACTOR_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-actors-3556b59"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-singers-1c9b534/rehearsal-quiz-2026.10.12-singers-1c9b534-cutover-20261012T033933Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76842241,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\SINGER_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-singers-1c9b534"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-singers-1c9b534/rehearsal-quiz-2026.10.12-singers-1c9b534-cutover-20261012T052814Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76850433,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\SINGER_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-singers-1c9b534"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-variety-b015251/rehearsal-quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76731649,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\CULTURE_VARIETY_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-culture-variety-b015251"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-variety-b015251/rehearsal-quiz-2026.10.12-culture-variety-b015251-cutover-20261011T233300Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76727553,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\CULTURE_VARIETY_RELEASE_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-culture-variety-b015251"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-7d7a163/rehearsal-quiz-2026.10.12-culture-7d7a163-cutover-20261012T074611Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76907777,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\CULTURE_NEXT2_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-culture-7d7a163"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-7d7a163/rehearsal-quiz-2026.10.12-culture-7d7a163-cutover-20261012T075310Z",
+      "symlink": false,
+      "directory": true,
+      "bytes": 76907777,
+      "checkpoint": "docs\\rewrite-agents\\tasks\\CULTURE_NEXT2_20261012\\production-checkpoint.json",
+      "build": "quiz-2026.10.12-culture-7d7a163"
+    }
+  ],
+  "protected_builds": [
+    "quiz-2026.10.12-reader-4207ef5",
+    "quiz-2026.10.12-culture-c15eefc"
+  ],
+  "scope": "Only eight completed copy-rehearsal sandboxes. All logs preserved alongside releases; no backup, durable archive, image or PVC deletion.",
+  "provenance": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-actors-3556b59/rehearsal-quiz-2026.10.12-actors-3556b59-cutover-20261012T010417Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          97,
+          97,
+          665,
+          238,
+          14614,
+          1020
+        ],
+        "post_migration_counts": [
+          97,
+          97,
+          665,
+          369,
+          14614,
+          1020
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "528d24f8a64353a960db3c7cab93e102ed60f25433409654839e947e1042788e",
+      "script_sha256": "6214d182adb371649d25a1253bde250c8fb8b73bcbf722ddd21f3c31d01ba212"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-actors-3556b59/rehearsal-quiz-2026.10.12-actors-3556b59-cutover-20261012T012232Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          97,
+          97,
+          665,
+          238,
+          14614,
+          1020
+        ],
+        "post_migration_counts": [
+          97,
+          97,
+          665,
+          369,
+          14614,
+          1020
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "528d24f8a64353a960db3c7cab93e102ed60f25433409654839e947e1042788e",
+      "script_sha256": "1703f1360d0592081ff4bce6a0cab1d00c3df0e165a3e14399ceb7e81ce712c1"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-singers-1c9b534/rehearsal-quiz-2026.10.12-singers-1c9b534-cutover-20261012T033933Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          98,
+          98,
+          666,
+          239,
+          14627,
+          1033
+        ],
+        "post_migration_counts": [
+          98,
+          98,
+          666,
+          370,
+          14627,
+          1033
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "c97d62ca4c7b423a4719ebbdd9018d97f0e6bdec026e6e08004ef5ac2aa7180d",
+      "script_sha256": "5941f811f220442ed43232154b1bad16601b679a2594a71e4d556d16cf0824fd"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-singers-1c9b534/rehearsal-quiz-2026.10.12-singers-1c9b534-cutover-20261012T052814Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          98,
+          98,
+          666,
+          239,
+          14627,
+          1033
+        ],
+        "post_migration_counts": [
+          98,
+          98,
+          666,
+          370,
+          14627,
+          1033
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "c97d62ca4c7b423a4719ebbdd9018d97f0e6bdec026e6e08004ef5ac2aa7180d",
+      "script_sha256": "4f3d0cb157f8f629ba5e8b47c2d531b162d8943fc5df9980ba6f2209463de3db"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-variety-b015251/rehearsal-quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          96,
+          96,
+          664,
+          236,
+          14603,
+          1009
+        ],
+        "post_migration_counts": [
+          96,
+          96,
+          664,
+          367,
+          14603,
+          1009
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "9a357870c2fd2a0f88f2d8fbe5fd1e5575199ade71c0dfd82a0d72966c9195c6",
+      "script_sha256": "319d521f1850411ca752ffb7906f67217d1cd4c84ab29bc6099167252d5571ac"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-variety-b015251/rehearsal-quiz-2026.10.12-culture-variety-b015251-cutover-20261011T233300Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          96,
+          96,
+          664,
+          236,
+          14603,
+          1009
+        ],
+        "post_migration_counts": [
+          96,
+          96,
+          664,
+          367,
+          14603,
+          1009
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "9a357870c2fd2a0f88f2d8fbe5fd1e5575199ade71c0dfd82a0d72966c9195c6",
+      "script_sha256": "b1aa45555e52c8d426d2e8cac054a8ee398cda88f109597ebee095da738ef9e1"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-7d7a163/rehearsal-quiz-2026.10.12-culture-7d7a163-cutover-20261012T074611Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          99,
+          99,
+          667,
+          240,
+          14640,
+          1046
+        ],
+        "post_migration_counts": [
+          99,
+          99,
+          667,
+          371,
+          14640,
+          1046
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "f213ea6040830d8ef40361c7179007ca08e1afcfb3b95ae35b430bfba28099aa",
+      "script_sha256": "93dbda17577713a9ff9993a4659d65b358eece23dcaf015f81dbd5aa9679f24d"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-7d7a163/rehearsal-quiz-2026.10.12-culture-7d7a163-cutover-20261012T075310Z",
+      "files": [
+        "api.log",
+        "quiz.sqlite",
+        "rollback-api"
+      ],
+      "result": {
+        "migration": "ok",
+        "original_counts": [
+          99,
+          99,
+          667,
+          240,
+          14640,
+          1046
+        ],
+        "post_migration_counts": [
+          99,
+          99,
+          667,
+          371,
+          14640,
+          1046
+        ],
+        "original_rows_preserved": true,
+        "integrity": "ok",
+        "feedback_lifecycle": "ok",
+        "old_api_rollback": "ok"
+      },
+      "result_sha256": "f213ea6040830d8ef40361c7179007ca08e1afcfb3b95ae35b430bfba28099aa",
+      "script_sha256": "c523632743a5597268fc59e4825ba192a31d437c8a2f7e7531112057cab1f0cd"
+    }
+  ]
+}

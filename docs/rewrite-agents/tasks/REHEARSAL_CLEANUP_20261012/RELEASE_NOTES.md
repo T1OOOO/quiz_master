@@ -1,0 +1,8 @@
+# Verified old rehearsal copy cleanup
+Independent Claude review accepted the exact eight-target manifest and guarded script before execution. Actual run deleted only copied quiz.sqlite and rollback-api files from four old successful releases; all eight api.log files were retained and hash-verified. No recursive deletion, pruning, deployment or image changes.
+614,621,184 bytes of available disk space were reclaimed in the immediate before/after measurement (about 586 MiB). Disk remains 94% used; this small safe cleanup is not a full capacity solution.
+Current reader and previous rollback release file sets and API/JS hashes are unchanged. All backup and durable-archive filename/size metadata match the baseline. Live database quick_check passes. A CRLF error affected the first post-run read-only preservation command; it was corrected and the check passed. Deletion was not rerun.
+Remaining failed/ambiguous/older rehearsal copies were preserved. The public library remains 131 packs, 4020 questions and 218 articles. Full-bank fact verification and LOTR wording repairs remain tracked separately.
+Limitations: backup/archive metadata comparison is not a full byte hash of every historical archive; the current durable archive is independently hash-checked. No new Android or screen-reader tests; no product code changed.
+
+Post-run public exact version/JS/catalog/reader and 97 live question/article bindings passed. Deployment Ready, no node pressures, existing PVC Bound and current durable archive hash passed. Feedback remains 26 open reports with the identical full-row hash. Beads 5ux stays in progress for further provenance review of older copies; no broad capacity cleanup is authorized by this manifest.

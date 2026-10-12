@@ -1,0 +1,55 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-1b5b261feb0e4c0e874f797430c5d9a2",
+  "reviewer": "session-4b299a2597a1478fbc6ba159ac3d8ddd",
+  "note": "Independent read-only review of REHEARSAL_CLEANUP_20261012. Verified TASK_EN.md, manifest.json, remote-provenance.json, dry-run.json, cleanup-reviewed.sh, and all four cited production-checkpoint.json files (ACTOR_RELEASE_20261012, SINGER_RELEASE_20261012, CULTURE_VARIETY_RELEASE_20261012, CULTURE_NEXT2_20261012). Findings: (1) The 8 targets are exactly actors-3556b59 x2, singers-1c9b534 x2, culture-variety-b015251 x2, culture-7d7a163(next2) x2, matching task scope; protected_builds correctly excludes the current reader build (4207ef5) and culture-next4 (c15eefc), consistent with recent git log. (2) All four checkpoint files show ACCEPTED static+execution reviews with migration/integrity/old_api_rollback PASS and old_rows_preserved true, corroborating the manifest's per-rehearsal provenance results (same PASS/true pattern, independent data points from production builds vs rehearsal DB counts). (3) Script containment: hostname pin, flock on DEPLOY.lock, kubectl image-digest and PVC-UID pinning before any Python runs. (4) Python guards: root and each target path required to equal their own os.path.resolve() (rejects any symlink in the chain, including root itself); parent/build-dir relationship checked structurally (parent.parent==root, parent.name==build); build must not be in protected_builds; exact file-set equality check {api.log, quiz.sqlite, rollback-api} with no extra/symlinked members; rehearsal result/script files re-hashed against remote-provenance.json sha256 values (ties deletion eligibility to the exact reviewed rehearsal evidence, not just manifest text); rehearsal result JSON is independently re-parsed and re-checked (migration/integrity/old_rows_preserved/old_api_rollback) rather than trusted from manifest. (5) Process-in-use guard walks /proc, checking cwd/exe/every fd of every PID for symlink targets inside any target path before deletion \u2014 covers open-file and cwd cases. (6) Deletion is exact and non-recursive: api.log is renamed to a preserved sidecar (verified not pre-existing, then re-hashed after rename), quiz.sqlite and rollback-api are unlinked by exact name (no glob/wildcard/recursive rm), then rmdir (which only succeeds on an empty dir, i.e. only if exactly those 3 known files were present) \u2014 matches 'quiz.sqlite and rollback-api unlinked, api.log preserved' requirement. No backups/archives/images/PVC are touched. dry-run.json confirms all 8 preflight guards currently pass.\n\nLimitations I could not close in a read-only desk review: I did not SSH, execute, or re-run anything \u2014 I verified guard logic by reading source, not by observing a live run. The process-in-use /proc scan and the kubectl/hostname pins are checked only immediately before deletion inside the same script run, so there is an inherent (small) TOCTOU window between the guard check and the unlink/rmdir calls; this is a design limitation to note, not a defect given the flock and narrow execution window. I relied on the provenance file's own reported SHA256 values rather than recomputing them myself against remote bytes, since the targets live on a remote host I'm not touching. Acceptance here certifies the reviewed plan/script/evidence only, not runtime execution or a post-run production check; the four checkpoint files are themselves the lead's/other reviewers' prior evidence, not something I re-executed.",
+  "manifest_sha256": "6f1a8efed3ff3c545a9bb0987cb0c057639d04b5ccff0c3d6cf091b2295a619d",
+  "script_sha256": "de2c4d94e765339ae1bcdc0b34f7206beffcc29dab46cd77efce25c2c392b3b6",
+  "raw_callback": {
+    "acceptance": [
+      "Exact path provenance from successful checkpoints and run scripts",
+      "Containment, symlink, active process guards; preserve logs; immutable reviewed manifest"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\REHEARSAL_CLEANUP_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Beads quiz_master-5ux. Read-only Claude review before bounded cleanup of old successful Quiz Master copied rehearsal sandboxes. Preserve current/rollback, logs, all backups/PVC/images and foreign resources. Root owns inventory/script/evidence; independent accept or rework.",
+    "created_at": 1791802599.4031792,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-1b5b261feb0e4c0e874f797430c5d9a2",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/REHEARSAL_CLEANUP_20261012/manifest.json",
+        "docs/rewrite-agents/tasks/REHEARSAL_CLEANUP_20261012/remote-provenance.json",
+        "docs/rewrite-agents/tasks/REHEARSAL_CLEANUP_20261012/dry-run.json"
+      ],
+      "limits": [
+        "No mutation executed pending independent review"
+      ],
+      "manifest_sha256": "6f1a8efed3ff3c545a9bb0987cb0c057639d04b5ccff0c3d6cf091b2295a619d",
+      "script_sha256": "de2c4d94e765339ae1bcdc0b34f7206beffcc29dab46cd77efce25c2c392b3b6",
+      "summary": "Exact eight successful old copied sandboxes; all logs retained. Current/rollback excluded, no recursive removal.",
+      "tests": [
+        "Actual remote read-only preflight all eight pass",
+        "Bash syntax and embedded Python compile pass"
+      ]
+    },
+    "root_task_id": "task-1b5b261feb0e4c0e874f797430c5d9a2",
+    "run_id": "run-51898d171d47423496aa6c5cba43f84a",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Review exact old rehearsal-copy cleanup manifest",
+    "version": 4,
+    "reviewer": "session-4b299a2597a1478fbc6ba159ac3d8ddd",
+    "review_note": "Independent read-only review of REHEARSAL_CLEANUP_20261012. Verified TASK_EN.md, manifest.json, remote-provenance.json, dry-run.json, cleanup-reviewed.sh, and all four cited production-checkpoint.json files (ACTOR_RELEASE_20261012, SINGER_RELEASE_20261012, CULTURE_VARIETY_RELEASE_20261012, CULTURE_NEXT2_20261012). Findings: (1) The 8 targets are exactly actors-3556b59 x2, singers-1c9b534 x2, culture-variety-b015251 x2, culture-7d7a163(next2) x2, matching task scope; protected_builds correctly excludes the current reader build (4207ef5) and culture-next4 (c15eefc), consistent with recent git log. (2) All four checkpoint files show ACCEPTED static+execution reviews with migration/integrity/old_api_rollback PASS and old_rows_preserved true, corroborating the manifest's per-rehearsal provenance results (same PASS/true pattern, independent data points from production builds vs rehearsal DB counts). (3) Script containment: hostname pin, flock on DEPLOY.lock, kubectl image-digest and PVC-UID pinning before any Python runs. (4) Python guards: root and each target path required to equal their own os.path.resolve() (rejects any symlink in the chain, including root itself); parent/build-dir relationship checked structurally (parent.parent==root, parent.name==build); build must not be in protected_builds; exact file-set equality check {api.log, quiz.sqlite, rollback-api} with no extra/symlinked members; rehearsal result/script files re-hashed against remote-provenance.json sha256 values (ties deletion eligibility to the exact reviewed rehearsal evidence, not just manifest text); rehearsal result JSON is independently re-parsed and re-checked (migration/integrity/old_rows_preserved/old_api_rollback) rather than trusted from manifest. (5) Process-in-use guard walks /proc, checking cwd/exe/every fd of every PID for symlink targets inside any target path before deletion \u2014 covers open-file and cwd cases. (6) Deletion is exact and non-recursive: api.log is renamed to a preserved sidecar (verified not pre-existing, then re-hashed after rename), quiz.sqlite and rollback-api are unlinked by exact name (no glob/wildcard/recursive rm), then rmdir (which only succeeds on an empty dir, i.e. only if exactly those 3 known files were present) \u2014 matches 'quiz.sqlite and rollback-api unlinked, api.log preserved' requirement. No backups/archives/images/PVC are touched. dry-run.json confirms all 8 preflight guards currently pass.\n\nLimitations I could not close in a read-only desk review: I did not SSH, execute, or re-run anything \u2014 I verified guard logic by reading source, not by observing a live run. The process-in-use /proc scan and the kubectl/hostname pins are checked only immediately before deletion inside the same script run, so there is an inherent (small) TOCTOU window between the guard check and the unlink/rmdir calls; this is a design limitation to note, not a defect given the flock and narrow execution window. I relied on the provenance file's own reported SHA256 values rather than recomputing them myself against remote bytes, since the targets live on a remote host I'm not touching. Acceptance here certifies the reviewed plan/script/evidence only, not runtime execution or a post-run production check; the four checkpoint files are themselves the lead's/other reviewers' prior evidence, not something I re-executed."
+  }
+}
