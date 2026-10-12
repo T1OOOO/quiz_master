@@ -1,0 +1,15 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_hub_event": 30132,
+  "task_id": "task-dd61746ffc634ed3adb773bbaed2df05",
+  "reviewer": "session-66e457bca9a54d21b046c4dfc72a2740",
+  "provider": "claude",
+  "review": "FINAL V3 accepted. Supplied-evidence pass only, no WebFetch this session. Cinema item retargeted to 4 parallel production-method options (no cast/gender involved) - resolves V1's gender-cue defect; correct answer 'pre-recorded score' matches BFI claim quoted by lead and independently confirmed ACCESSIBLE_SUPPORTS by native V1 reviewer. Article correctly separates dancing screen performers from unseen recorded singers and names Hein Heckroth as BFI's cited designer. Music item distractors are now comparable-length same-album tracks (Mother Stands for Comfort/Waking the Witch/And Dream of Sheep); correct answer Running Up That Hill is no longer uniquely long or uniquely long-worded - resolves V1's length-cue defect. Kate Bush video-intention quote and Fish People fifth-studio-album/tracklist claims both independently ACCESSIBLE_SUPPORTS per native reviewer. candidate-v3.json contains only blind id/area/text/options/difficulty fields, no leaked key/explanation. Open limitation: article still cites AFI for year/directors/cast context; native V1 reviewer got HTTP 403 on that URL while the lead reports direct access - this access discrepancy is unresolved by me (no WebFetch available this pass) but does not affect the graded correct answer, which rests on BFI alone. Also could not independently recompute final_sha256 (no hash tool this session); taking root-checks.json's reported value on trust. New work/technique tag strings remain correctly marked non-canonical proposals; country:gb stays player_safe:false pending owner visibility decision. This is draft editorial acceptance only, not schema import/release.",
+  "input_sha256": "18dfc3000e1069ac833fd72d41425fbc10ddcbde227353cd1124bfe44099adba",
+  "cli_exit_code": 0,
+  "limits": [
+    "Supplied-evidence editorial review; Claude did not successfully open original web pages in this pass.",
+    "Native final independently opened BFI/Kate Bush/FishPeople; AFI403 preserved; lead directly opened AFI.",
+    "No canonical integration, schema import or publication."
+  ]
+}

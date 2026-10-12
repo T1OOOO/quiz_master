@@ -1,0 +1,148 @@
+{
+  "packet_label": "CULTURE_NEXT2_FINAL_V3_20261012",
+  "reviewer": {
+    "hub_label": "culture-next8-v2-factcheck",
+    "session_id": "session-79f42d8274ac4d6aa02cbdfc60df567f",
+    "review_date": "2026-10-12"
+  },
+  "review_status": "DONE",
+  "input": {
+    "candidate_path": "docs/rewrite-agents/tasks/CULTURE_NEXT2_20261012/candidate-v3.json",
+    "final_path": "docs/rewrite-agents/tasks/CULTURE_NEXT2_20261012/final-v3.json",
+    "sha256": "18DFC3000E1069AC833FD72D41425FBC10DDCBDE227353CD1124BFE44099ADBA",
+    "record_count": 2
+  },
+  "candidate_first_check": {
+    "candidate_read_before_final": true,
+    "selections": {
+      "culture-next2-cinema-01": "Под заранее записанную партитуру",
+      "culture-next2-music-01": "Running Up That Hill"
+    },
+    "interpretation": "These selections match the stored keys, but this is not a blind-solve claim: the reviewer had already reviewed the same two facts in V1."
+  },
+  "source_access": [
+    {
+      "url": "https://www.bfi.org.uk/features/tales-hoffmann-exclusive-materials-making-powell-pressburger-masterpiece",
+      "owner": "British Film Institute",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "The Tales of Hoffmann is Powell and Pressburger's 1951 screen treatment of Offenbach's opera.",
+        "The whole film was shot to a pre-recorded score.",
+        "That method enabled dance-led recasting, silent-film-style camera movement and tricks.",
+        "Hein Heckroth designed each act around a dominant colour and used gauzes, painted backdrops, and visual tricks."
+      ]
+    },
+    {
+      "url": "https://fest.afi.com/1994/opera-on-film-1994/tales-of-hoffmann/",
+      "owner": "AFI FEST",
+      "outcome": "INACCESSIBLE_HTTP_403",
+      "effect": "The reviewer could not independently verify the article's attribution that an AFI programme records the year, directors, and cast. This is not a disproof; the core final question, answer, and teaching claims are independently supported by BFI."
+    },
+    {
+      "url": "https://www.katebush.com/hounds-of-love/",
+      "owner": "Kate Bush official website",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "Bush hoped Running Up That Hill could be seen as a 'filmic piece of dance'.",
+        "The page says much work went into videos for the album's singles."
+      ]
+    },
+    {
+      "url": "https://music.katebush.com/buy/hounds-of-love/",
+      "owner": "Fish People",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "Hounds of Love is Bush's fifth studio album.",
+        "The reissue list contains Mother Stands for Comfort, Running Up That Hill, Waking the Witch, and And Dream of Sheep."
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "culture-next2-cinema-01",
+      "verdict": "ACCEPT",
+      "key_check": {
+        "stored_index": 2,
+        "stored_text": "Под заранее записанную партитуру",
+        "index_matches_option": true
+      },
+      "v1_recheck": {
+        "AFI_attribution": "The URL still returned HTTP 403 to this reviewer; recorded as a limitation rather than evidence.",
+        "gender_giveaway": "RESOLVED. The question now asks a production-method fact and all options are parallel filming methods."
+      },
+      "factual_assessment": "BFI directly supports the correct method and every material production claim in the narrowed article. The retained AFI sentence is redundant to the item and has an honest access limitation.",
+      "article_assessment": {
+        "word_count": 119,
+        "range_check_100_to_150": true,
+        "teaching_value": "Strong: it connects the pre-recorded score to camera movement, dance-led screen casting, and colour-led production design.",
+        "claim_check": "PASS for the BFI-supported production claims."
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [31, 34, 32, 27],
+        "parallelism": "All choices describe plausible filming/sound workflows.",
+        "length_giveaway": "None material.",
+        "uniqueness": "PASS: BFI explicitly states that the whole film was shot to a pre-recorded score."
+      },
+      "difficulty": {
+        "proposed": 7,
+        "assessment": "Reasonable for a specific historical-production fact after removal of the cast/gender cue."
+      },
+      "duplicate_check": "No Tales of Hoffmann match was found in the targeted stable directories quizzes, categorized, and quizipedia. This is bounded screening, not a full-bank audit.",
+      "tags": {
+        "valid_existing_ids": ["domain:arts", "domain:screen", "medium:film", "topic:film-production", "topic:opera", "country:gb"],
+        "note": "All IDs exist. country:gb remains player_safe:false and needs the normal tag-owner decision if it will be exposed to players; this does not invalidate the frozen ID."
+      }
+    },
+    {
+      "id": "culture-next2-music-01",
+      "verdict": "ACCEPT",
+      "key_check": {
+        "stored_index": 1,
+        "stored_text": "Running Up That Hill",
+        "index_matches_option": true
+      },
+      "v1_recheck": {
+        "source_support": "PASS: official Kate Bush page states the filmic-dance intention; Fish People confirms all four choices are Hounds of Love tracks.",
+        "length_giveaway": "RESOLVED. Option lengths are 25, 20, 16, and 18 characters; the key is neither the longest nor the shortest."
+      },
+      "factual_assessment": "Both accessible official sources support every concrete article and option claim.",
+      "article_assessment": {
+        "word_count": 115,
+        "range_check_100_to_150": true,
+        "teaching_value": "Good: it explains a video-intent statement in relation to an album's track sequence without exposing the option set.",
+        "claim_check": "PASS"
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [25, 20, 16, 18],
+        "parallelism": "All four are song titles from the same album, confirmed by Fish People's tracklisting.",
+        "length_giveaway": "None material.",
+        "uniqueness": "PASS: only Running Up That Hill is named in Bush's quoted video-intent statement."
+      },
+      "difficulty": {
+        "proposed": 6,
+        "assessment": "Reasonable once title-length cue is removed."
+      },
+      "duplicate_check": "No Kate Bush or Running Up That Hill match was found in the targeted stable directories quizzes, categorized, and quizipedia. This is bounded screening, not a full-bank audit.",
+      "tags": {
+        "valid_existing_ids": ["domain:arts", "topic:composition", "country:gb"],
+        "note": "All IDs exist. country:gb remains player_safe:false and needs the normal tag-owner decision if it will be exposed to players; this does not invalidate the frozen ID."
+      }
+    }
+  ],
+  "batch_checks": {
+    "directly_opened_all_listed_urls": true,
+    "accessible_sources": 3,
+    "inaccessible_sources": 1,
+    "all_article_bodies_in_range_100_to_150_words": true,
+    "rechecked_v1_findings": "Cinema gender/cast giveaway resolved; music length cue resolved; AFI access limitation remains honestly recorded.",
+    "review_error_count": 0,
+    "release_actions": "None. Final V3 was not imported or published, and no author, canonical, runtime, build, Git, or deployment file/action was changed."
+  },
+  "limitations": [
+    "The AFI page returned HTTP 403 on direct access. This limits independent verification of its attribution but not the BFI-supported core cinema fact.",
+    "Candidate-first selections are not a blind-solve result because the V1 review already exposed the same facts.",
+    "Duplicate screening was targeted to the named stable directories and is not a full-bank certification."
+  ]
+}

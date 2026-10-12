@@ -1,0 +1,91 @@
+{
+  "label": "CULTURE_NEXT2_WRITER_20261012_CULTURE_NEXT8_WRITER",
+  "language": "ru",
+  "status": "DRAFT_REQUIRES_INDEPENDENT_REVIEW",
+  "candidate": {
+    "questions": [
+      {
+        "id": "culture-next2-cinema-01",
+        "area": "cinema",
+        "text": "Какой исполнитель указан в материалах AFI в роли Дапертутто в фильме «Сказки Гофмана»?",
+        "options": [
+          "Роберт Рунсвилл",
+          "Леонид Мясин",
+          "Людмила Черина",
+          "Роберт Хелпманн"
+        ],
+        "difficulty": 7,
+        "explanation": "В программе AFI FEST роль Дапертутто указана у Роберта Хелпманна.",
+        "article_title": "Опера, снятая под готовую партитуру",
+        "article_body": "«Сказки Гофмана» Майкла Пауэлла и Эмерика Прессбургера — экранная версия оперы Оффенбаха, где музыка и движение были спроектированы как единая система. Материалы BFI сообщают, что весь фильм снимали под заранее записанную партитуру. Такой порядок позволил режиссёрам строить сцены как немое кино: свободнее использовать движение камеры и визуальные трюки, а многие вокальные партии отдать танцовщикам. Поэтому актёрский состав здесь нельзя понимать только как набор «говорящих» ролей. BFI отдельно связывает постановку с художником Хайнрихом Хекротом: каждый акт получил собственный ведущий цвет, а декорации использовали живописные задники и театральные эффекты. Программа AFI фиксирует фильм 1951 года, режиссёров Пауэлла и Прессбургера, а также роли исполнителей. Это хороший пример того, как заранее записанный звук меняет язык экранной игры и монтажа.",
+        "source_urls": [
+          "https://www.bfi.org.uk/features/tales-hoffmann-exclusive-materials-making-powell-pressburger-masterpiece",
+          "https://fest.afi.com/1994/opera-on-film-1994/tales-of-hoffmann/"
+        ],
+        "source_accessed_on": "2026-10-12",
+        "proposed_existing_tag_ids": [
+          "domain:arts",
+          "domain:screen",
+          "medium:film",
+          "topic:actors",
+          "topic:film-production",
+          "topic:opera",
+          "country:gb"
+        ],
+        "editorial_proposed_new_subject_tags": [
+          "work:tales-of-hoffmann-1951",
+          "technique:pre-recorded-score"
+        ],
+        "distractor_reasoning": {
+          "Роберт Рунсвилл": "Исполнил Гофмана в этом фильме.",
+          "Леонид Мясин": "Танцовщик, связанный с постановкой, но не Дапертутто.",
+          "Людмила Черина": "Исполнила Джульетту в этом фильме, но не Дапертутто."
+        }
+      },
+      {
+        "id": "culture-next2-music-01",
+        "area": "music",
+        "text": "Какую песню Кейт Буш хотела показать в клипе как «кинематографическую танцевальную вещь»?",
+        "options": [
+          "Cloudbusting",
+          "Running Up That Hill",
+          "Hounds of Love",
+          "The Big Sky"
+        ],
+        "difficulty": 6,
+        "explanation": "На официальной странице альбома Буш пишет, что хотела представить «Running Up That Hill» как filmic piece of dance.",
+        "article_title": "Танец как визуальный язык песни",
+        "article_body": "На официальной странице «Hounds of Love» Кейт Буш вспоминает, что в создание клипов к синглам с альбома было вложено много работы. О «Running Up That Hill» она пишет, что хотела увидеть её как «кинематографическую танцевальную вещь». Это формулирует не сюжетный пересказ песни, а принцип её экранного образа: движение становится способом передать идею композиции. Официальный магазин Fish People помещает трек первым в трек-листе переиздания «Hounds of Love» и называет альбом пятым студийным релизом Буш. Сопоставление двух страниц полезно для разговора о поп-музыке: одна фиксирует авторское намерение для видео, другая — место записи в устройстве альбома. Так клип можно рассматривать не как случайное сопровождение сингла, а как отдельное художественное решение, связанное с музыкальной формой и последовательностью релиза.",
+        "source_urls": [
+          "https://www.katebush.com/hounds-of-love/",
+          "https://music.katebush.com/buy/hounds-of-love/"
+        ],
+        "source_accessed_on": "2026-10-12",
+        "proposed_existing_tag_ids": [
+          "domain:arts",
+          "topic:composition",
+          "country:gb"
+        ],
+        "editorial_proposed_new_subject_tags": [
+          "work:hounds-of-love",
+          "technique:dance-for-camera"
+        ],
+        "distractor_reasoning": {
+          "Cloudbusting": "Песня с того же альбома и из цикла синглов.",
+          "The Big Sky": "Песня с того же альбома, поэтому подходит по периоду и жанру.",
+          "Hounds of Love": "Титульная композиция альбома и правдоподобный вариант из того же релиза."
+        }
+      }
+    ]
+  },
+  "private_key": {
+    "culture-next2-cinema-01": {
+      "correct_answer": 3,
+      "correct_answer_text": "Роберт Хелпманн"
+    },
+    "culture-next2-music-01": {
+      "correct_answer": 1,
+      "correct_answer_text": "Running Up That Hill"
+    }
+  }
+}

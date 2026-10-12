@@ -1,0 +1,152 @@
+{
+  "packet_label": "CULTURE_NEXT2_20261012",
+  "reviewer": {
+    "hub_label": "culture-next8-v2-factcheck",
+    "session_id": "session-79f42d8274ac4d6aa02cbdfc60df567f",
+    "review_date": "2026-10-12"
+  },
+  "review_status": "DONE_WITH_CONCERNS",
+  "input": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_NEXT2_20261012/writer.json",
+    "sha256": "EF372B87D3EB2B74D22C31EB179705DAC5A19271CCAC5D22A6C1A25C3451BDD1",
+    "record_count": 2
+  },
+  "blind_solve": {
+    "method": "The lead supplied only the two stems and options before this reviewer opened writer.json, its private key, articles, or source ledger.",
+    "answers": [
+      {
+        "id": "culture-next2-cinema-01",
+        "answer": "Роберт Хелпманн",
+        "confidence": "moderate"
+      },
+      {
+        "id": "culture-next2-music-01",
+        "answer": "The Big Sky",
+        "confidence": "low-to-moderate"
+      }
+    ],
+    "result": "One of two unanchored answers matched the key. The source/key review below is separate from this blind record."
+  },
+  "source_access": [
+    {
+      "url": "https://www.bfi.org.uk/features/tales-hoffmann-exclusive-materials-making-powell-pressburger-masterpiece",
+      "owner": "British Film Institute",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "The 1951 film is Powell and Pressburger's screen treatment of Offenbach's opera.",
+        "The whole film was shot to a pre-recorded score, enabling dance-led casting and silent-film-style camera movement and tricks.",
+        "Hein Heckroth designed each act around a dominant colour and used gauzes, painted backdrops, and cinematic visual tricks.",
+        "It identifies Robert Helpmann as Dappertutto and Ludmilla Tcherina as Giulietta."
+      ]
+    },
+    {
+      "url": "https://fest.afi.com/1994/opera-on-film-1994/tales-of-hoffmann/",
+      "owner": "AFI FEST",
+      "outcome": "INACCESSIBLE_HTTP_403",
+      "effect": "The exact attribution in the question to AFI materials was not independently verifiable. BFI supports the underlying role credit, but not the claim that AFI states it."
+    },
+    {
+      "url": "https://www.katebush.com/hounds-of-love/",
+      "owner": "Kate Bush official website",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "Bush says much work went into videos for the album's singles.",
+        "She hoped Running Up That Hill could be seen as a 'filmic piece of dance'."
+      ]
+    },
+    {
+      "url": "https://music.katebush.com/buy/hounds-of-love/",
+      "owner": "Fish People",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "Hounds of Love is Bush's fifth studio album.",
+        "Running Up That Hill (A Deal with God) is first in the reissue tracklisting."
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "culture-next2-cinema-01",
+      "verdict": "REVISE",
+      "key_check": {
+        "stored_index": 3,
+        "stored_text": "Роберт Хелпманн",
+        "index_matches_option": true
+      },
+      "factual_assessment": "The BFI source directly supports Helpmann as Dappertutto and supports the full production-design article. AFI itself returned HTTP 403, so the wording 'указан в материалах AFI' cannot be accepted as independently verified from the listed source.",
+      "article_assessment": {
+        "word_count": 115,
+        "range_check_100_to_150": true,
+        "claim_check": "The concrete production claims are supported by BFI. The final statement about changing the language of editing is a reasonable interpretation, but the source directly demonstrates camera/casting consequences rather than a specific editing claim.",
+        "teaching_value": "Strong: it explains how a pre-recorded score shaped casting, camera work, and design."
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [15, 12, 14, 15],
+        "uniqueness": "The correct answer is unique under the cast credit.",
+        "fairness_failure": "Людмила Черина is the only female option against the male Dappertutto role, creating an obvious gender cue. The item therefore does not fairly deliver its stated difficulty 7.",
+        "required_revision": "Either replace the female distractor with a comparable male performer connected to the film, or better retarget the question to the article's pre-recorded-score production insight and give four parallel production choices. Also use an accessible source for the AFI attribution or change the stem to an attribution supported by BFI."
+      },
+      "difficulty": {
+        "proposed": 7,
+        "assessment": "Reasonable for a source-specific cast-credit question after the gender giveaway is removed."
+      },
+      "duplicate_check": "No matches for The Tales of Hoffmann or its Russian title were found in the targeted stable directories quizzes, categorized, and quizipedia. This is bounded screening, not a full-bank audit.",
+      "tags": {
+        "valid_existing_ids": ["domain:arts", "domain:screen", "medium:film", "topic:actors", "topic:film-production", "topic:opera", "country:gb"],
+        "note": "All proposed IDs exist in metadata. country:gb is marked player_safe:false, so it requires the content/tag owner's normal player-exposure decision. The two work/technique strings are correctly separated as non-canonical editorial suggestions."
+      }
+    },
+    {
+      "id": "culture-next2-music-01",
+      "verdict": "REVISE",
+      "key_check": {
+        "stored_index": 1,
+        "stored_text": "Running Up That Hill",
+        "index_matches_option": true
+      },
+      "factual_assessment": "Both official sources support the answer and every concrete article claim.",
+      "article_assessment": {
+        "word_count": 115,
+        "range_check_100_to_150": true,
+        "claim_check": "PASS",
+        "teaching_value": "Good: it distinguishes authorial video intent from album-sequence context without explaining the answer options."
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [12, 20, 14, 11],
+        "uniqueness": "PASS",
+        "parallelism": "All options are song titles from Hounds of Love and are plausible on period/album grounds.",
+        "fairness_failure": "The keyed title is the sole three-word and longest option, producing the long-answer cue the packet expressly prohibits.",
+        "required_revision": "Use similarly long same-album distractors, for example Mother Stands for Comfort, Waking the Witch, and And Dream of Sheep, so the quote remains the only reliable route to the answer."
+      },
+      "difficulty": {
+        "proposed": 6,
+        "assessment": "Reasonable once the length cue is removed."
+      },
+      "duplicate_check": "No matches for Kate Bush or Running Up That Hill were found in the targeted stable directories quizzes, categorized, and quizipedia. This is bounded screening, not a full-bank audit.",
+      "tags": {
+        "valid_existing_ids": ["domain:arts", "topic:composition", "country:gb"],
+        "note": "All proposed IDs exist in metadata. country:gb is marked player_safe:false, so it requires the content/tag owner's normal player-exposure decision. The two work/technique strings are correctly separated as non-canonical editorial suggestions."
+      }
+    }
+  ],
+  "batch_checks": {
+    "directly_opened_all_listed_urls": true,
+    "accessible_sources": 3,
+    "inaccessible_sources": 1,
+    "all_article_bodies_in_range_100_to_150_words": true,
+    "private_key_exposure": "The writer file contains a private key and the explanation itself exposes the answer; blind solving was therefore completed first from the lead-supplied stem/options only.",
+    "review_error_count": 3,
+    "error_breakdown": [
+      "Cinema: AFI source is HTTP 403, leaving the AFI attribution unverified.",
+      "Cinema: sole female distractor is a gender giveaway for the male role.",
+      "Music: keyed answer is the sole three-word and longest option."
+    ],
+    "release_actions": "None. No author, canonical, runtime, import, build, Git, publication, or deployment file/action was changed."
+  },
+  "limitations": [
+    "The AFI page returned HTTP 403 on direct access; no repeated attempts were made.",
+    "Duplicate screening was targeted to the named stable directories and is not a full-bank certification."
+  ]
+}

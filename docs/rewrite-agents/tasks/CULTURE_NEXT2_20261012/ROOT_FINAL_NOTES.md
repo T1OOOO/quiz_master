@@ -1,0 +1,15 @@
+# Final editorial changes and release boundary
+
+Final V3 SHA-256: `18dfc3000e1069ac833fd72d41425fbc10ddcbde227353cd1124bfe44099adba`.
+
+The V1 blind candidate mistakenly contained answer-bearing explanations. V2 separates them into editorial records and replaces a cast-credit question with the more useful pre-recorded-score production insight. This also removes a female cast distractor that made a male-role answer easier to guess.
+
+Native review identified a potential music answer-length cue. Its initial word-count description was wrong; the separate correction preserves that error's provenance. The title has four words, while two original distractors have three. V3 uses four verified same-album titles with 25/20/16/18 characters, so the correct option is neither longest nor uniquely long. The Fish People track list directly supports the new distractors. Root also narrowed the cinema article's final inference to camera movement and screen casting, which the BFI explicitly discusses, and corrected the editorial mistranslation of score as a numerical count.
+
+Root directly opened all four references on 2026-10-12. Native AFI access returned 403; the lead's access returned the programme fields. These different observations are preserved. Institutional BFI/AFI references are distinguished from original production paperwork. Existing registry tag IDs and the keyless candidate field boundary were independently asserted. Country tags remain editorial metadata subject to the existing player-visibility policy; work/technique tags are proposals, not registry changes.
+
+The first root character-length assertion expected 24 for Mother Stands for Comfort. It failed before writing artifacts and was corrected to the actual 25. The final assertions passed: two questions, four unique options each, key/index agreement, difficulty range, 119/115-word miniarticles, two HTTPS references each, stable earlier files and a candidate without editorial fields.
+
+This folder is a draft packet. Draft review does not establish canonical import, published question/article bindings, user-interface checks or release approval. The production singer release remains `quiz-2026.10.12-singers-1c9b534` with 4014 questions and 212 miniarticles; the 26 real feedback reports remain open. No build, migration or deployment is performed by this follow-up packet.
+
+Claude's first finite review reached a 240-second timeout during WebFetch. The follow-up inspected supplied source evidence and native access findings, returned exit 0 and actually accepted final V3 through Hub event 30132. The native final report independently accepts both items and preserves its AFI access limitation. These are draft editorial gates; no successful Claude direct-source fetch is claimed. The exact callback is saved separately in `claude-final-acceptance.json`.
