@@ -1,0 +1,219 @@
+{
+  "published_version": {
+    "buildId": "quiz-2026.10.12-actors-3556b59",
+    "commit": "3556b594eff9f90f1e059ee85227f1ec9f77f54f",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4012,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 210,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "fd62f51e34ce8c964141a08f27b38dcf474779ea993e8d6eae5901455e30e1fa"
+  },
+  "archive_sha256": "fd206f196cacda844bf662d99c8816ae9c6e915d556990b6c9c2336e1ddee747",
+  "image": "sha256:1c5bd37e71e2a67022d0f9d234b391d90ea5dd21d526358bf90cbb0583ea4774",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-actors-3556b59.tar",
+  "durable_archive_sha256": "fa02ee5128196ac989879ae0bdd06a4a4958f1a5ff1eea10ffcf38678da2bb56",
+  "static_review": {
+    "actual_hub_state": "ACCEPTED",
+    "actual_hub_event": 29507,
+    "task_id": "task-52b5761db58b4930ae02aa97f138a12b",
+    "reviewer": "session-d7fd857c3d83405dbf4bf8059f520a2a",
+    "provider": "claude",
+    "package_sha256": "fd206f196cacda844bf662d99c8816ae9c6e915d556990b6c9c2336e1ddee747",
+    "review": "The review callback succeeded. Actual `hub_task review` response:\n\n- **state**: `ACCEPTED`\n- **task_id**: `task-52b5761db58b4930ae02aa97f138a12b`\n- **reviewer**: `session-d7fd857c3d83405dbf4bf8059f520a2a` (this session)\n- **package_sha256**: `fd206f196cacda844bf662d99c8816ae9c6e915d556990b6c9c2336e1ddee747` (matches recomputed hash)\n- **version**: 4\n- **review_note**: recorded verbatim as submitted\n\nHost limits: no resource lease was needed for this read-only review; team `team-fab5ad65654a4e6e811c532dd448a9f0` membership was required and confirmed via rejoin before the call succeeded (initial attempt failed with `team membership required` until I re-ran `hub_team join`).",
+    "limits": [
+      "Static repairedfixture/package only; actual server rehearsal and image/live gates stillpending."
+    ]
+  },
+  "execution_review": {
+    "actual_hub_state": "ACCEPTED",
+    "actual_hub_event": 29576,
+    "task_id": "task-52c796c4f63a44f2937762f03e44aa31",
+    "reviewer": "session-3825a383d7c94585a33b7a906ad0f6f7",
+    "provider": "claude",
+    "package_sha256": "fd206f196cacda844bf662d99c8816ae9c6e915d556990b6c9c2336e1ddee747",
+    "image": "sha256:1c5bd37e71e2a67022d0f9d234b391d90ea5dd21d526358bf90cbb0583ea4774",
+    "remote_log_sha256": "218bfd889c4a593e059734f49fb91076012c91cb3d9218d9144d33fae51278d7",
+    "review": "## EXECUTION EVIDENCE REVIEW COMPLETE ✅\n\n**Review Status:** ACCEPTED (task-52c796c4f63a44f2937762f03e44aa31)  \n**Scope:** Actor release 20261012 (131 packs, 4012 questions, 210 articles)  \n**Evidence Reviewed:** Immutable image, log integrity, migration rehearsal, local QA, publication script\n\n### Hash Verification (All Match)\n- **Package archive:** `fd206f196cacda844bf662d99c8816ae9c6e915d556990b6c9c2336e1ddee747` ✓\n- **Remote-prepare log:** `218bfd889c4a593e059734f49fb91076012c91cb3d9218d9144d33fae51278d7` ✓\n- **Durable k3s archive:** `fa02ee5128196ac989879ae0bdd06a4a4958f1a5ff1eea10ffcf38678da2bb56` ✓\n\n### Migration & Integrity (Remote Rehearsal)\n| Gate | Result |\n|------|--------|\n| Migration | OK |\n| Actors added | 131 (238→369 in staging table) |\n| Original rows preserved | **true** |\n| Backup/restore integrity | **PASS** |\n| Feedback lifecycle copy-only | **PASS** |\n| Old API rollback | **PASS** |\n| Grading article bindings | **PASS** |\n\n### Image & Deployment Prep\n- **Docker build:** Exit 0, multi-stage cached efficiently\n- **Image:** `sha256:1c5bd37e71e2a67022d0f9d234b391d90ea5dd21d526358bf90cbb0583ea4774` (immutable, no rebuild in publication)\n- **Helm lint:** 0 failed ✓\n- **Helm dry-run:** PASS (all K8s resources configured) ✓\n- **K3s import:** PASS (archive imported, image verified) ✓\n- **Durable storage:** Ready at `/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-actors-3556b59.tar`\n\n### Local QA (Mobile, Real API)\n- **Score:** 13/13 ✓\n- **New actor articles:** Viewed + 2 source links clicked (AFI) ✓\n- **Question screenshots:** Viewed ✓\n- **API proxy:** Stopped cleanly ✓\n\n### Publication Script Verification\nThe `publish_prepared.py` script:\n- ✅ Verifies all hashes independently\n- ✅ Consumes pre-reviewed immutable image (no Docker build)\n- ✅ Runs fresh backup/rehearsal before atomic Helm upgrade\n- ✅ Repeats all integrity checks (old-row preservation, article bindings, API rollback)\n- ✅ Implements atomic flag (`--atomic --wait 180s`)\n- ✅ Validates production deployment matches prepared values\n\n### Deferred Gates (Production Phase)\n- ⏸ Production actor publication (awaits atomic Helm apply)\n- ⏸ Published actor browser verification (post-deployment)\n- ⏸ All bank facts reviewed (out of scope — reviewer-independent)\n\n### Verdict\n**READY FOR ATOMIC PUBLICATION**  \nLead's command evidence is complete and independently verified. All pre-deployment integrity gates passed. No execution or publication claims invented; static gates honored. Image is immutable, ready to consume. Script correctly repeats fresh rehearsal before atomic upgrade.\n\nHuman authorization for production deployment is retained by the lead. This review confirms the preparation is sound.",
+    "clarification": "131 staging rows are migrated pack rows, not 131 added actors. Only two actor questions are added. Reviewer inspected recorded lead execution evidence; publication and published browser verification remained pending."
+  },
+  "public_verification": {
+    "main.dart.js": "fd62f51e34ce8c964141a08f27b38dcf474779ea993e8d6eae5901455e30e1fa",
+    "assets/assets/catalog.json": "241ae72047f47ca6cfe78f81078b567972cb1738f662142db9d2774075f91542",
+    "assets/assets/study/question-articles.json": "e6f751bbdb2fcd3faab5801b202e46f36208b8c7691b85b770e0bba503287761",
+    "repaired_questions": [
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-54",
+        "revision": {
+          "number": 1,
+          "sha256": "988e62fbb5c94c10d86bb41975136188becdab26302ca331d2871e32c93335b1"
+        },
+        "stem": "Любовь к запахам называется",
+        "options": [
+          {
+            "option_id": "q-philias-100-54-opt-1",
+            "text": "Осмофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-2",
+            "text": "Ольфактофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-3",
+            "text": "Офрезиофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-4",
+            "text": "Ароматофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-5",
+            "text": "Бромидрофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 5,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-59",
+        "revision": {
+          "number": 1,
+          "sha256": "d6db109169542120ae95148ae34923026595f1f9986bd29085552ba04621c344"
+        },
+        "stem": "Любовь к красному цвету — это",
+        "options": [
+          {
+            "option_id": "q-philias-100-59-opt-1",
+            "text": "Гематофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-2",
+            "text": "Эритрофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-3",
+            "text": "Эреутофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-4",
+            "text": "Руброфилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-5",
+            "text": "Розофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "phobias-nature",
+        "question_id": "q-phobias-part-8-20",
+        "revision": {
+          "number": 1,
+          "sha256": "dc3382adea3f953ce1e05c2fb77ad8f8bda3e51482b784407bd0bb714250c275"
+        },
+        "stem": "Как называется интенсивный страх огня?",
+        "options": [
+          {
+            "option_id": "q-phobias-part-8-20-opt-1",
+            "text": "Астрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-2",
+            "text": "Пирофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-3",
+            "text": "Акрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-4",
+            "text": "Клаустрофобия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Psychology/phobias_nature.json"
+        },
+        "answer_kind": "single_choice"
+      }
+    ],
+    "phobias_new_revisions": 9,
+    "home_alone_exact_questions": 25,
+    "version": {
+      "buildId": "quiz-2026.10.12-actors-3556b59",
+      "commit": "3556b594eff9f90f1e059ee85227f1ec9f77f54f",
+      "local_build": true,
+      "packs": 131,
+      "questions": 4012,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 210,
+      "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "main_dart_js_sha256": "fd62f51e34ce8c964141a08f27b38dcf474779ea993e8d6eae5901455e30e1fa"
+    },
+    "live_question_article_bindings": 89
+  },
+  "local_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "score": 13,
+    "new_questions_visible_options": 4,
+    "question_screenshots_viewed": true,
+    "new_actor_article_screenshot_viewed": true,
+    "source_click_targets": [
+      "https://catalog.afi.com/Catalog/moviedetails/54174",
+      "https://www.afi.com/news/afi-movie-club-willy-wonka-and-the-chocolate-factory/"
+    ],
+    "browser_closed": true,
+    "api_proxy_stopped": true
+  },
+  "production_feedback": {
+    "open": 26,
+    "changed": false
+  },
+  "negative_gates_repaired": [
+    "Rejected stock Flutter version metadata and nested archive layout before upload",
+    "Removed reviewer-created bytecode from package",
+    "Rejected stale staging fixture with 106 expected revisions; replaced with exact 108 and repeated server rehearsal"
+  ],
+  "limits": [
+    "Singer V7 integration is a separate unpublished candidate",
+    "Full-bank fact audit and 26 open feedback reports remain"
+  ],
+  "remote-prepare.txt_sha256": "218bfd889c4a593e059734f49fb91076012c91cb3d9218d9144d33fae51278d7",
+  "publish.txt_sha256": "4dac6d1e278b62266bb5d20e3c67d30e4966ac183cd21f78b1839688a6d623f6",
+  "final-health.txt_sha256": "7388464112df2f1db24db99449638315763bae99a53c0bd80d2f4a16424d1f22",
+  "helm_revision": 36,
+  "published_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "score": 13,
+    "new_question_screenshots_viewed": true,
+    "new_article_screenshot_viewed": true,
+    "sources_clicked": [
+      "https://catalog.afi.com/Catalog/moviedetails/54174",
+      "https://www.afi.com/news/afi-movie-club-willy-wonka-and-the-chocolate-factory/"
+    ],
+    "browser_closed": true,
+    "evidence_sha256": "57e7b9ee8df48256c390dd4a08966a8dddd62bf7567d1d89da1ad02ee48251ae"
+  }
+}

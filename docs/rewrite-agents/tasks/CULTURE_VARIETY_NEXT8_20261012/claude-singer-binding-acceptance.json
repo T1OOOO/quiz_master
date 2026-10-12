@@ -1,0 +1,9 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_hub_event": 29568,
+  "task_id": "task-ad25660144894150987d90f3be9daf28",
+  "reviewer": "session-a842f5c2e2844262a17dde67dd526477",
+  "provider": "claude",
+  "source_sha256": "8970f2cc84c8c9ad7546878ae4fa9e419b01962a8744554b0f43609c3ade0d79",
+  "review": "The review was submitted successfully \u2014 task is now `ACCEPTED`, state recorded under `review_note` with my full verification evidence.\n\n**Verdict: ACCEPT**, error_count 0. Independently verified: all 6 artifact hashes and the source packet SHA match the evidence file; `music-people-012`/`013` correct indices (0, 2) are correct; the prior 210 reader articles and 130 catalog rows are byte-identical to HEAD (diffed directly, not just trusting the evidence log); totals are 212 articles / 131 packs / 4014 questions; `catalog.json` leaks no grading/private/editorial fields; the private bundle correctly segregates `private_grading`/`private_question_metadata` from the public quiz payload; and no singer-related files touch the actor release package. One non-blocking note flagged: the catalog's Music People description still says \"ten questions\" despite 13 \u2014 pre-existing, not introduced by this change, worth a follow-up but not a reason to revise."
+}

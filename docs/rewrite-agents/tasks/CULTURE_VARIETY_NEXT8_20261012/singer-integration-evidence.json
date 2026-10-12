@@ -1,0 +1,46 @@
+{
+  "status": "READY_FOR_DIFFERENT_PROVIDER_BINDING_REVIEW",
+  "source_packet_sha256": "8970f2cc84c8c9ad7546878ae4fa9e419b01962a8744554b0f43609c3ade0d79",
+  "counts": {
+    "packs": 131,
+    "questions": 4014,
+    "articles": 212,
+    "cinema_people": 13,
+    "music_people": 13
+  },
+  "added": {
+    "music-people-012": "d823d1e95e68addffcfea4121bb5654931e79b0cd9c6eb10559c01238874aa69",
+    "music-people-013": "67cc9525c484d2210f4855a5e1410aeb0418320d0e6a923ae4e7b5255b4c63f9"
+  },
+  "checks": {
+    "old_music_11_dto_private_grading_and_revisions_equal_head": true,
+    "old_210_reader_articles_equal_head": true,
+    "old_130_catalog_rows_equal_head": true,
+    "public_bundle_excludes_grading_and_editorial_tags": true,
+    "source_uri_is_stable_app_uri": true,
+    "taxonomy_tag_is_existing_private_domain_arts": true
+  },
+  "executed_checks": [
+    "root-owned singer_binding_20261012 wrapper exit 0; generated canonical stage with frozen taxonomy and stable /app URI",
+    "quizctl validate --taxonomy metadata/tags.v1.json on final draft and bundle: exit 0; 13 questions each",
+    "study/question_articles: build --write, build --check, and python -m unittest test_build test_coverage: exit 0; 212 articles / 4 tests",
+    "quizctl catalog --taxonomy metadata/tags.v1.json: exit 0; 131 packs",
+    "quizctl audit --taxonomy metadata/tags.v1.json: exit 0; 131 packs / 4014 questions",
+    "go test -p=1 ./next/server/...: exit 0",
+    "python .run/phobias_repair_20261011/verify_foreign.py: exit 0; 69 foreign hashes preserved"
+  ],
+  "hashes": {
+    "music_legacy": "51a099e2de267767426dc3cee9ca6d874d66eb8f04fdf7344d76ecdb38f583c0",
+    "music_draft": "8bd32a2f16b1a7e613b7cca0acab14c4b7d18f535301463c710796cdc08a6606",
+    "music_manifest": "c92fe6f2fec00b479e85d43b39f895bbc7cf00005940a7591542e62b1b805eef",
+    "music_bundle": "54355c36086880402f5abd73d371ce563064fc57980683bc6fd40aa6fa9db604",
+    "catalog": "150f3b650b481957e4252700c45297911817105a2b90368eef8d568978547f05",
+    "reader_articles": "58663f6a21c8042c101d2e96d2a98da8bd2763ccdeb0f031d40fd0bad098694d"
+  },
+  "not_claimed": [
+    "different-provider generated-binding review",
+    "release",
+    "deployment",
+    "publication"
+  ]
+}

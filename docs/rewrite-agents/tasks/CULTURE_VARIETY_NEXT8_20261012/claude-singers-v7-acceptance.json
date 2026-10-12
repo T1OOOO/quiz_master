@@ -1,0 +1,19 @@
+{
+  "task_id": "task-402e2158044e4ba394945b0208b048a4",
+  "actual_hub_state": "ACCEPTED",
+  "actual_hub_event": 29307,
+  "provider": "claude",
+  "reviewer": "session-ebdc1ebeba644791aa96b4e4149ca014",
+  "runtime_models": [
+    "claude-sonnet-5",
+    "claude-haiku-4-5-20251001"
+  ],
+  "input_sha256": "8970f2cc84c8c9ad7546878ae4fa9e419b01962a8744554b0f43609c3ade0d79",
+  "review": "Review submitted with verdict **ACCEPT**. Summary:\n\n**Both items in singers-v7.json (SHA256 `8970f2cc...`) verified against all four primary sources, accessed directly this session:**\n\n- **Item 1 (Björk/MoMA, key index 0 \"Biophilia\"):** MoMA press-release PDF, read in full, confirms Biophilia was MoMA's first app acquisition and lists the cited instruments verbatim; Björk's shop page confirms the \"music/nature/technology\" framing verbatim. Options are all real albums; answer is unique and correct.\n- **Item 2 (Mercury birth name, key index 2 \"Фаррух Булсара\"):** Queen Online and freddiemercury.com both confirm Farrokh Bulsara/Zanzibar/1964 Middlesex move/Ealing College of Art/meeting Taylor and May. I independently re-opened the Penguin Readers PDF and confirmed it says St Peter's School was in **Panchgani**, conflicting with freddiemercury.com's \"Bombay\" — the same conflict v6 flagged. V7's fix (deleting the city word entirely, keeping only \"в школе Святого Петра\") correctly resolves this; nothing unsupported remains.\n\nOne minor, non-blocking note recorded: in item 2 the correct option is the shortest by 3+ characters (14 vs 17/18/21) — a weak length cue worth a glance if the pattern recurs in future items, but not enough to warrant REVISE.\n\nTags (`domain:arts`) confirmed present/frozen in `metadata/tags.v1.json`. No edits, imports, builds, or publication actions were taken — read-only review only.",
+  "imported": false,
+  "published": false,
+  "limitations": [
+    "Source/editorial acceptance only, not generated bindings or release approval.",
+    "Minor Mercury option length variation is non-blocking; monitor systematic answer-length patterns."
+  ]
+}

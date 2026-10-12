@@ -1,0 +1,138 @@
+{
+  "packet_label": "CULTURE_NEXT8_SINGERS_V6_20261012",
+  "reviewer": {
+    "hub_label": "culture-next8-v2-factcheck",
+    "session_id": "session-79f42d8274ac4d6aa02cbdfc60df567f",
+    "review_date": "2026-10-12"
+  },
+  "review_status": "DONE_WITH_CONCERNS",
+  "input": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_VARIETY_NEXT8_20261012/singers-v6.json",
+    "sha256": "1C3C907F60C39A4877A8BF0DA17E25DCA3132D49B358F55F36F5E0CA12F62880",
+    "record_count": 2
+  },
+  "answer_method": {
+    "status": "NOT_A_BLIND_SOLVE",
+    "reason": "The supplied JSON contains correct_answer and correct_answer_text. Key checks were self-checks after those fields had been seen."
+  },
+  "source_access": [
+    {
+      "url": "https://assets.moma.org/documents/moma_press-release_389534.pdf",
+      "source_owner": "Museum of Modern Art",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "direct_open": "The PDF fetched directly on 2026-10-12. The generic PDF-to-Markdown converter itself received HTTP 403, but the document bytes were read in memory from the same URL and its text extracted.",
+      "verified_claims": [
+        "The Biophilia app was acquired by MoMA's Department of Architecture and Design and was the first app to enter the collection.",
+        "The displayed Biophilia instruments included a Tesla coil, Gravity Harps, gameleste, and pipe organ, programmed to play Björk-composed music and sounds.",
+        "The press release lists Debut, Homogenic, and Vespertine among Björk's albums."
+      ]
+    },
+    {
+      "url": "https://shop.bjork.com/products/bjork-biophilia",
+      "source_owner": "Björk Official Store",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "It describes Biophilia as an interdisciplinary exploration where music, nature, and technology meet."
+      ]
+    },
+    {
+      "url": "https://www.queenonline.com/freddie_mercury",
+      "source_owner": "Queen Online",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "Real name Farrokh Bulsara and birthplace Zanzibar.",
+        "The family moved to Middlesex in 1964; he studied graphic design at Ealing College of Art and met Roger Taylor and Brian May while with Wreckage."
+      ]
+    },
+    {
+      "url": "https://freddiemercury.com/bio/",
+      "source_owner": "Freddie Mercury Official Website",
+      "outcome": "ACCESSIBLE_SUPPORTS",
+      "verified_claims": [
+        "He was born Farrokh Bulsara in Zanzibar.",
+        "Jer Bulsara ensured piano lessons at St Peter's boarding school in Bombay.",
+        "It describes Mercury as Queen's lead vocalist."
+      ]
+    },
+    {
+      "url": "https://www.penguinreaders.co.uk/wp-content/uploads/2020/04/PR_L5_FreddieMercury_AnswerKey.pdf",
+      "source_owner": "Penguin Readers",
+      "outcome": "ACCESSIBLE_CONFLICT_RECORDED",
+      "direct_open": "The PDF fetched directly on 2026-10-12. Its first-page answer text identifies St Peter's School as in Panchgani, southeast of Mumbai.",
+      "effect": "It conflicts with the city-level 'Bombay' wording in the cited Freddie Mercury official biography. The article must not state Bombay as the school's precise location."
+    }
+  ],
+  "items": [
+    {
+      "id": "next8v6-singer-01",
+      "verdict": "ACCEPT",
+      "key_self_check": {
+        "stored_index": 0,
+        "stored_text": "Biophilia",
+        "index_matches_option": true
+      },
+      "factual_assessment": "Every externally checkable claim is supported by the two accessible primary sources. The MoMA PDF directly establishes the precise collection claim and instrument detail; the official store establishes the music/nature/technology framing.",
+      "article_assessment": {
+        "word_count": 111,
+        "range_check_100_to_150": true,
+        "teaching_value": "The article explains why the app belongs in the work's artistic form and supplies concrete, source-backed museum context rather than narrating the option set.",
+        "claim_check": "PASS"
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [9, 10, 9, 5],
+        "parallelism": "All four options are real Björk album/project titles. The MoMA PDF itself lists the three distractors among her albums, making the set plausible and comparable.",
+        "length_giveaway": "None material.",
+        "uniqueness": "PASS: only Biophilia is identified by the primary MoMA source as the first app in its collection."
+      },
+      "duplicate_knowledge_check": "No Biophilia query was found in the searched stable content directories quizzes, categorized, or quizipedia. This is a bounded duplicate check, not a full-bank certification.",
+      "tags": {
+        "proposed": ["domain:arts"],
+        "frozen_tag_check": "PASS",
+        "evidence": "metadata/tags.v1.json defines domain:arts as the player-safe domain tag 'Искусство и культура'."
+      }
+    },
+    {
+      "id": "next8v6-singer-02",
+      "verdict": "REVISE",
+      "key_self_check": {
+        "stored_index": 2,
+        "stored_text": "Фаррух Булсара",
+        "index_matches_option": true
+      },
+      "factual_assessment": "The two cited official biographies support Farrokh Bulsara, Zanzibar, the 1964 Middlesex move, Ealing study, Taylor/May connection, and St Peter's boarding-school piano lessons. However, the city-level school claim is not safe: Freddie Mercury's official biography says Bombay, while the directly opened Penguin Readers answer key identifies St Peter's School in Panchgani, southeast of Mumbai. The article's statement that the school was 'in Bombay' needs removal or correction.",
+      "article_assessment": {
+        "word_count": 116,
+        "range_check_100_to_150": true,
+        "teaching_value": "The revised article adds a coherent sourced path through Zanzibar, India, Middlesex, study, and early music. It no longer explains the distractors.",
+        "claim_check": "REVISE: replace «в школе Святого Петра в Бомбее» with a city-neutral supported formulation such as «в школе Святого Петра в Индии», unless the author supplies a source that resolves the Panchgani/Bombay conflict."
+      },
+      "options_assessment": {
+        "options_count": 4,
+        "lengths_characters": [21, 18, 14, 17],
+        "parallelism": "All four options are Queen-associated personal names; the distractors are fellow members and are plausible for a group-knowledge question.",
+        "length_giveaway": "None material.",
+        "uniqueness": "PASS: both official sources name Farrokh Bulsara as Mercury's birth name."
+      },
+      "duplicate_knowledge_check": "No Farrokh/Bulsara/Mercury birth-name prompt was found in the searched stable content directories quizzes, categorized, or quizipedia. This is a bounded duplicate check, not a full-bank certification.",
+      "tags": {
+        "proposed": ["domain:arts"],
+        "frozen_tag_check": "PASS",
+        "evidence": "metadata/tags.v1.json defines domain:arts as the player-safe domain tag 'Искусство и культура'."
+      },
+      "required_revision": "Remove or correct the precise city claim for St Peter's School. Retaining «в Индии» is supported by the Queen official biography and avoids asserting that the school was in Bombay."
+    }
+  ],
+  "batch_checks": {
+    "all_four_primary_urls_directly_opened": true,
+    "all_article_bodies_in_range_100_to_150_words": true,
+    "cross_item_duplicate_knowledge_point": "None: Biophilia's MoMA collection status and Mercury's birth name are distinct.",
+    "frozen_tags_valid": true,
+    "release_actions": "None. No author file, production/runtime file, import, build, Git, publication, or deployment action was performed."
+  },
+  "limitations": [
+    "This combined key-bearing file prevents a blind-solve claim.",
+    "The generic PDF-to-Markdown converter received HTTP 403, although the supplied MoMA PDF URL itself opened and was independently read in memory.",
+    "Duplicate screening was limited to the stable content directories named in this report; a full-bank audit was outside this packet."
+  ]
+}

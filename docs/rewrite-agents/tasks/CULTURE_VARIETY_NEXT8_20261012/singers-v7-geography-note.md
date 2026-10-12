@@ -1,0 +1,3 @@
+# School-city ambiguity removed, independent review pending
+
+Root directly opened the Penguin Readers publisher PDF (https://www.penguinreaders.co.uk/wp-content/uploads/2020/04/PR_L5_FreddieMercury_AnswerKey.pdf), page 1: St Peter's School in Panchgani, southeast of Mumbai. The cited official Mercury biography uses Bombay. Rather than repeat that geographic shorthand as a precise city assertion, V7 removes only the words about Bombay. The school/piano claim, all four cited URLs, question choices and numeric keys remain unchanged. V6 is retained for the review history. No singer import or publication. V7 still requires independent review of its exact hash and source-supported prose.
