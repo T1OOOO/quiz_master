@@ -1,0 +1,212 @@
+{
+  "published_version": {
+    "buildId": "quiz-2026.10.12-singers-1c9b534",
+    "commit": "1c9b5340602e0a57d2cef2bc8765946e8baafc90",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4014,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 212,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "962ddb8c13bf3c0700bee8b4273f981be0c0995d0a1117cef0077341f89c19a1"
+  },
+  "package_sha256": "498bda87b62d86b8bb731a75532a0592edd88fe91d99873f84e575bfcfb3372f",
+  "helm_revision": 37,
+  "image": "sha256:ba4315df2c10a95e6b1d4bea17df8b07cb75598635305bf08a07cd723c56ffd0",
+  "durable_archive_sha256": "fbf1621337caf9f693969962a074094a1834c9fb7d57795df9bd4579e9539b9c",
+  "static_review": {
+    "actual_hub_state": "ACCEPTED",
+    "actual_hub_event": 29955,
+    "task_id": "task-46c424fd1ccd42e192467447f15f75f6",
+    "reviewer": "session-ce0fb17a296d4359b6b801a9e12b6cb7",
+    "provider": "claude",
+    "package_sha256": "498bda87b62d86b8bb731a75532a0592edd88fe91d99873f84e575bfcfb3372f",
+    "review": "## Review Complete ✅\n\n**Task:** task-46c424fd1ccd42e192467447f15f75f6 — Repair identity guard exact artifact review\n\n**Verdict:** ACCEPT\n\n**Key Findings:**\n\n1. **Stale Regex Identified & Fixed**\n   - **Root cause:** Line 23 hardcoded old actor regex `r'quiz-2026\\.10\\.12-actors-3556b59-cutover-...'` (fails on singers-1c9b534)\n   - **Repair:** Dynamic regex using `re.escape(build) + '-cutover-...'` passed as argv2\n\n2. **Three-Line Repair Verified**\n   - Line 19: Pass `$quiz_build` to Python script\n   - Line 22: Unpack `run, build = sys.argv[1:3]`\n   - Line 23: Use `re.escape(build)` to prevent hardcoding/injection\n\n3. **Guard Checks**\n   - ✅ Red guard: Old actor regex correctly fails on singers\n   - ✅ Green guard: New regex accepts any valid build ID\n   - ✅ Old build rejection: `re.escape()` blocks traversal/bypass\n   - ✅ Bash syntax: Valid\n\n4. **Archive Integrity**\n   - SHA256: `498bda87b62d86b8bb731a75532a0592edd88fe91d99873f84e575bfcfb3372f`\n   - Files: 294/294 stage files present, flat root, no bytecode\n   - Only `cutover.sh` + `checksums.txt` changed\n   - Source/API/JS/version fixtures unchanged\n\nReview submitted via hub_task. Server preparation and publication remain pending.",
+    "clarification": "The caller passes the frozen quiz_build. The guard accepts only a run for that build plus UTC suffix; root tests reject stale actor build and traversal. Source/API/JS unchanged; server gates pending."
+  },
+  "execution_review": {
+    "actual_hub_state": "ACCEPTED",
+    "actual_hub_event": 29987,
+    "task_id": "task-d3740efc86d34dbab5e5d78b01b98dad",
+    "reviewer": "session-8349a4b1bc594a6a84ce04f73ec70f68",
+    "provider": "claude",
+    "package_sha256": "498bda87b62d86b8bb731a75532a0592edd88fe91d99873f84e575bfcfb3372f",
+    "image": "sha256:ba4315df2c10a95e6b1d4bea17df8b07cb75598635305bf08a07cd723c56ffd0",
+    "remote_log_sha256": "27d7fe9b9d2f9a1e424d58ac67f1abc71bd84ba71ba04cd3d101a736767ed2af",
+    "review": "Archive hash 498bda87b... verified. Remote prepare log 27d7fe9b... verified. Image sha256:ba4315df... immutable across files. Backup/restore/migration/grading/feedback lifecycle all PASS. Browser QA 13/13 local verified, no internal IDs exposed. Publication script correctly consumes pre-reviewed image without rebuild. Helm atomic upgrade with post-deploy version/JS SHA verification gates. 0 errors.",
+    "limits": [
+      "Reviewer inspected lead execution evidence, no actual SSH by reviewer",
+      "Published browser/physical screen reader validation not claimed"
+    ]
+  },
+  "public_verification": {
+    "main.dart.js": "962ddb8c13bf3c0700bee8b4273f981be0c0995d0a1117cef0077341f89c19a1",
+    "assets/assets/catalog.json": "150f3b650b481957e4252700c45297911817105a2b90368eef8d568978547f05",
+    "assets/assets/study/question-articles.json": "58663f6a21c8042c101d2e96d2a98da8bd2763ccdeb0f031d40fd0bad098694d",
+    "repaired_questions": [
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-54",
+        "revision": {
+          "number": 1,
+          "sha256": "988e62fbb5c94c10d86bb41975136188becdab26302ca331d2871e32c93335b1"
+        },
+        "stem": "Любовь к запахам называется",
+        "options": [
+          {
+            "option_id": "q-philias-100-54-opt-1",
+            "text": "Осмофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-2",
+            "text": "Ольфактофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-3",
+            "text": "Офрезиофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-4",
+            "text": "Ароматофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-5",
+            "text": "Бромидрофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 5,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-59",
+        "revision": {
+          "number": 1,
+          "sha256": "d6db109169542120ae95148ae34923026595f1f9986bd29085552ba04621c344"
+        },
+        "stem": "Любовь к красному цвету — это",
+        "options": [
+          {
+            "option_id": "q-philias-100-59-opt-1",
+            "text": "Гематофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-2",
+            "text": "Эритрофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-3",
+            "text": "Эреутофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-4",
+            "text": "Руброфилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-5",
+            "text": "Розофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "phobias-nature",
+        "question_id": "q-phobias-part-8-20",
+        "revision": {
+          "number": 1,
+          "sha256": "dc3382adea3f953ce1e05c2fb77ad8f8bda3e51482b784407bd0bb714250c275"
+        },
+        "stem": "Как называется интенсивный страх огня?",
+        "options": [
+          {
+            "option_id": "q-phobias-part-8-20-opt-1",
+            "text": "Астрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-2",
+            "text": "Пирофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-3",
+            "text": "Акрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-4",
+            "text": "Клаустрофобия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Psychology/phobias_nature.json"
+        },
+        "answer_kind": "single_choice"
+      }
+    ],
+    "phobias_new_revisions": 9,
+    "home_alone_exact_questions": 25,
+    "version": {
+      "buildId": "quiz-2026.10.12-singers-1c9b534",
+      "commit": "1c9b5340602e0a57d2cef2bc8765946e8baafc90",
+      "local_build": true,
+      "packs": 131,
+      "questions": 4014,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 212,
+      "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "main_dart_js_sha256": "962ddb8c13bf3c0700bee8b4273f981be0c0995d0a1117cef0077341f89c19a1"
+    },
+    "live_question_article_bindings": 91
+  },
+  "published_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "score": 13,
+    "questions": 13,
+    "no_spoken_option_ids": true,
+    "new_question_and_article_screenshots_viewed": true,
+    "browser_closed": true,
+    "grading_method": "Observed visible labels selected using separately reviewed source keys; this is a grading/flow check, not blind fact verification."
+  },
+  "verification": {
+    "flutter_tests": 115,
+    "analyzer": "No issues",
+    "server_rehearsal_fixtures": 110,
+    "old_rows_preserved": true,
+    "backup_restore": "PASS",
+    "old_api_rollback": "PASS",
+    "production_health": "Ready; PVC unchanged; durable image hash matches"
+  },
+  "negative_gate": "Original archive failed the stale hardcoded cutover identity guard before Docker/Helm. Only own failed staging archive was quarantined. Root passed the frozen build identity to Python, tested rejection of stale/traversal names, updated checksums, obtained actual Claude static and execution acceptance, and repeated preparation before publication.",
+  "feedback": {
+    "open": 26,
+    "closed_by_release": 0
+  },
+  "limits": [
+    "Full-bank factual audit and coverage backlog remain.",
+    "Physical screen reader and Android APK not tested.",
+    "Local source-link checks opened MoMA, Bjork shop and Freddie official biography; Queen Online browser click timed out. Published articles were inspected; source links were not re-opened in this live pass.",
+    "Review transport timeouts do not imply exit zero; recorded actual Hub acceptance events are the review gates."
+  ],
+  "remote-prepare.txt_sha256": "27d7fe9b9d2f9a1e424d58ac67f1abc71bd84ba71ba04cd3d101a736767ed2af",
+  "publish.txt_sha256": "c111b6f8636c018f7541c9b21a56e356d4d3d9bc4863f52f3ca8b768cfe90558",
+  "final-health.txt_sha256": "0d8f086ec06f04a5670a91516a6532b553bb63cb73ca0959e3ab06ae4e886b8f",
+  "published-browser-answers.json_sha256": "9dca09653de09b58dfd5fa5b73947f86ad3821da7f2b83dd427e9ad144e26e71",
+  "live-music-people-012.png_sha256": "68165ee4012b6cef98b230ceb7ea44fb381bcccde5bbe8cd5647c70da8b1f895",
+  "live-music-people-013.png_sha256": "88d2d9024e337e8fb61a0562107aa395320159549ba3d800fc332c7da96d2ecb",
+  "live-bjork-article.png_sha256": "0117e80ddde5809c30e00bcae41a9cd3f54afda385b72406f8d646835e3178d0",
+  "live-mercury-article.png_sha256": "e5719a1a94874438336387cf4eba67663f62e4d92b86f87de237863a64db7764"
+}
