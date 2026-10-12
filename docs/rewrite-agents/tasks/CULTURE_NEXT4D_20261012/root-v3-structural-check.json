@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "hashes": {
+    "writer-v1.json": "c76ae1d30c69372d9e6195e7f4b33213957ffb4b670799902cfef93f4d119ce6",
+    "sources-v1.md": "44c25984a976febc9838bc38773a6e33cd9a633b914242c7dbaa6a104e60998c",
+    "writer-v2.json": "c77ca2584fa7716fbd740757584e6bf316df87d461ff012a8c5d8c4b7b8395a4",
+    "sources-v2.md": "ef86f26ffa6ccb52eb1e8937780e1bdeac80d078d949c04d5ae31a7264cf853f",
+    "writer-v3.json": "333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9",
+    "sources-v3.md": "f424866b938ee5116ca2ad136ddd67425b0fd44ddcac631b7bdf637f7de8d699"
+  },
+  "checks": [
+    "2items/4distinctchoices/key-text/HTTPS/100-150words",
+    "Candidates and whole MusicV2 editorial item preserved",
+    "V1/V2 immutable",
+    "V2 cinema false-family sentence removed"
+  ],
+  "limits": [
+    "Structural and changed-scope parity only; separate actual Claude factual review required",
+    "No import/build/browser/publication for Next4D"
+  ]
+}

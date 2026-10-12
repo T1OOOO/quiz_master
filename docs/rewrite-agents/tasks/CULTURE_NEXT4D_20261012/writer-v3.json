@@ -1,0 +1,59 @@
+{
+  "label": "culture-next4d-writer-v3",
+  "language": "ru",
+  "status": "draft_pending_independent_review",
+  "supersedes": "writer-v2.json",
+  "scope": "Two revised source-backed culture drafts only; not canonical content.",
+  "candidate": {
+    "questions": [
+      {"id":"culture-next4d-cinema-001","area":"cinema_actors","text":"Какая актриса сыграла Мейбл Лонгетти в фильме Джона Кассаветиса «Женщина под влиянием»?","options":["Джина Роулендс","Джилл Клейберг","Джеральдин Чаплин","Дайан Китон"],"difficulty":6},
+      {"id":"culture-next4d-music-001","area":"music_singers","text":"Какая певица исполнила «Down Hearted Blues» в записи 1923 года?","options":["Ма Рейни","Бесси Смит","Этель Уотерс","Айда Кокс"],"difficulty":6}
+    ]
+  },
+  "editorial": {
+    "items": [
+      {
+        "id":"culture-next4d-cinema-001",
+        "correct_answer":0,
+        "correct_answer_text":"Джина Роулендс",
+        "explanation":"AFI указывает Джину Роулендс в роли Мейбл Лонгетти; Питер Фальк играет её мужа Ника.",
+        "article_title":"Семья Лонгетти на экране",
+        "article_body":"«Женщина под влиянием» Джона Кассаветиса вышла в 1974 году. В центре фильма — Мейбл Лонгетти, которую играет Джина Роулендс, и её муж Ник в исполнении Питера Фалька. Фред Дрейпер сыграл Джорджа Мортенсена, отца Мейбл. Кассаветис указан одновременно режиссёром и сценаристом, поэтому история семьи Лонгетти складывается вокруг его собственного текста и постановки. AFI относит фильм к драме и фиксирует родственные связи в актёрском составе: мать Роулендс сыграла Марту Мортенсен, мать Мейбл. Дети Кассаветиса тоже появились в фильме, но в других ролях: Ник, указанный как N.J., сыграл Адольфа, а Александра, указанная как Xan, — Эдриен Дженсен. В афишной аннотации AFI Silver Мейбл и Ник названы родителями троих детей.",
+        "article_word_count":112,
+        "source_urls":["https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE","https://silver.afi.com/movies/detail/0100004818/"],
+        "source_accessed_on":"2026-10-12",
+        "source_access":[
+          {"url":"https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE","publisher":"American Film Institute Catalog","status":"opened_successfully","supports":"1974 date; cast credits for Gena Rowlands/Mabel Longhetti and Peter Falk/Nick Longhetti; Cassavetes as writer-director; actual family-casting roles."},
+          {"url":"https://silver.afi.com/movies/detail/0100004818/","publisher":"AFI Silver Theatre and Cultural Center","status":"opened_successfully","supports":"Mabel is played by Gena Rowlands, Nick by Peter Falk, and they are parents of three children; identifies Cassavetes and 1974."}
+        ],
+        "claim_ledger":[
+          {"claim":"Джина Роулендс сыграла Мейбл Лонгетти, а Питер Фальк — Ника Лонгетти.","supporting_urls":["https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE","https://silver.afi.com/movies/detail/0100004818/"],"support_status":"directly_supported"},
+          {"claim":"Фильм вышел в 1974 году, а Джон Кассаветис указан режиссёром и сценаристом.","supporting_urls":["https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE","https://silver.afi.com/movies/detail/0100004818/"],"support_status":"directly_supported"},
+          {"claim":"Мать Роулендс сыграла Марту Мортенсен; Ник Кассаветис, указанный как N.J., сыграл Адольфа, а Александра Кассаветис, указанная как Xan, — Эдриен Дженсен.","supporting_urls":["https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE"],"support_status":"directly_supported"}
+        ],
+        "distractor_reasoning":{"Джилл Клейберг":"Американская актриса той же эпохи; AFI не указывает её в роли Мейбл.","Джеральдин Чаплин":"Киноактриса с международной карьерой; роль Мейбл в источниках закреплена за Роулендс.","Дайан Китон":"Известная американская актриса, но в списке ролей AFI она отсутствует."}
+      },
+      {
+        "id":"culture-next4d-music-001",
+        "correct_answer":1,
+        "correct_answer_text":"Бесси Смит",
+        "explanation":"NPS прямо сообщает, что 16 февраля 1923 года Бесси Смит записала «Down Hearted Blues» под фортепиано Кларенса Уильямса.",
+        "article_title":"Запись, сделавшая Бесси Смит звездой",
+        "article_body":"16 февраля 1923 года Бесси Смит записала «Down Hearted Blues» и «Gulf Coast Blues»; на фортепиано ей аккомпанировал Кларенс Уильямс. Национальная парковая служба США отмечает, что Альберта Хантер записала «Down Hearted Blues» годом раньше, но версия Смит разошлась тиражом более 780 тысяч экземпляров за шесть месяцев. Этот успех сделал Смит звездой блюза. Её путь к записи начался гораздо раньше: сначала она пела на улицах Чаттануги с братом, затем работала танцовщицей в труппе Moses Stokes. Там она познакомилась с Ма Рейни. Rock and Roll Hall of Fame называет это ученичеством и подчёркивает, что главным отличием Смит оставался её голос. Позднее она много гастролировала и записывалась для Columbia.",
+        "article_word_count":112,
+        "source_urls":["https://www.nps.gov/locations/lowermsdeltaregion/bessie-smith.htm","https://rockhall.com/inductees/bessie-smith/?flavour=full"],
+        "source_accessed_on":"2026-10-12",
+        "source_access":[
+          {"url":"https://www.nps.gov/locations/lowermsdeltaregion/bessie-smith.htm","publisher":"U.S. National Park Service","status":"opened_successfully","supports":"16 February 1923 recording, Clarence Williams accompaniment, prior Alberta Hunter recording, sales context, early career, touring and Columbia recording history."},
+          {"url":"https://rockhall.com/inductees/bessie-smith/?flavour=full","publisher":"Rock and Roll Hall of Fame","status":"opened_successfully","supports":"Empress of the Blues epithet, apprenticeship under Ma Rainey, and emphasis on Smith's voice."}
+        ],
+        "claim_ledger":[
+          {"claim":"16 февраля 1923 года Бесси Смит записала «Down Hearted Blues» с Кларенсом Уильямсом за фортепиано.","supporting_urls":["https://www.nps.gov/locations/lowermsdeltaregion/bessie-smith.htm"],"support_status":"directly_supported"},
+          {"claim":"Альберта Хантер записала песню годом раньше, а версия Смит продалась тиражом более 780 тысяч за шесть месяцев.","supporting_urls":["https://www.nps.gov/locations/lowermsdeltaregion/bessie-smith.htm"],"support_status":"directly_supported"},
+          {"claim":"Рок-холл описывает связь Смит с Ма Рейни как ученичество и выделяет её голос.","supporting_urls":["https://rockhall.com/inductees/bessie-smith/?flavour=full"],"support_status":"directly_supported"}
+        ],
+        "distractor_reasoning":{"Ма Рейни":"Была старшей современницей и важной фигурой ранней карьеры Смит, но NPS не называет её исполнительницей этой записи.","Этель Уотерс":"Блюзовая и джазовая певица той же эпохи; NPS указывает на Смит.","Айда Кокс":"Блюзовая певица и современница Смит; NPS не связывает её с вокалом на этой записи."}
+      }
+    ]
+  }
+}

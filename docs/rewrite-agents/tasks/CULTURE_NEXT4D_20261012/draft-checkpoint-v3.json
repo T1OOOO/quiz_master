@@ -1,0 +1,25 @@
+{
+  "status": "INDEPENDENTLY_ACCEPTED_DRAFT_PENDING_INTEGRATION",
+  "selected": "writer-v3.json",
+  "writer_sha256": "333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9",
+  "source_ledger_sha256": "f424866b938ee5116ca2ad136ddd67425b0fd44ddcac631b7bdf637f7de8d699",
+  "items": 2,
+  "miniarticles": 2,
+  "source_links": 4,
+  "review": "Actual Claude changed-scope ACCEPT0 after V1REWORK2 andV2REWORK1; role error fixed with direct AFI source recheck",
+  "review_task": "task-717789f59fb74ceabdeb6e9108362d0e",
+  "checks": "root-v3-structural-check.json; unchanged candidate/music semantic JSON equality, not raw record byte identity",
+  "production": "Helm42 source42a2aaf 131packs4026questions224articles; Next4D not imported or published",
+  "next": [
+    "Integrate exactly1question/article perPeoplepack from acceptedV3",
+    "Use existing validated taxonomy/metadata and preserve stable old question keys/revisions",
+    "Bind article refs to actual new revisions and obtain independent binding/scope review",
+    "Run changed-source regression gates and production browser/backup/publication gates"
+  ],
+  "limits": [
+    "No Next4D canonical import/browser/publication yet",
+    "Difficulty editorial estimate, not calibrated",
+    "Wholebank/Android/capacity/HP006/runtimealignment remain separate followups",
+    "Root private MCP config cleanup was blocked by policy; ignored local configs retained"
+  ]
+}
