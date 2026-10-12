@@ -1,0 +1,73 @@
+{
+  "task": "task-f0b6279f607840fcad2abf4b0c8016bd",
+  "packet": "CULTURE_NEXT4D_20261012/BROWSER_WORK_PACKET_EN.md",
+  "workspace": "C:/ap/quiz_master",
+  "source_revision": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+  "runtime": {
+    "mode": "local-relative-api-qa",
+    "compiled_js": "reused prior reader4207 QA compilation",
+    "assets": "fresh Next4D candidate bundles/manifests/catalogs/articles",
+    "viewport": "390x844",
+    "provider_identity": {
+      "configured_role": "qm_qa",
+      "configured_profile": "gpt-5.6-luna-medium",
+      "runtime_routing": "unverified"
+    }
+  },
+  "cinema_people": {
+    "questions": 20,
+    "answered": 20,
+    "score": "20/20",
+    "question_020": {
+      "observed": true,
+      "options_visible": 4,
+      "selected_key": "opt1",
+      "screenshot": "local-cinema-people-020.png",
+      "sha256": "17BF9A8BE9877749DA22F53D969532292AE6DA19A18B13467E977034C764906B"
+    },
+    "api_trace": "local SQLite relative-API QA: catalog 200; guest 201; answers/feedback 200 for 001-020; finish 200; reveals 200"
+  },
+  "music_people": {
+    "questions": 20,
+    "api_catalog": "200 with 20 fresh questions, including music-people-020",
+    "ui": "blocked after bounded browser recovery: compiled reader showed Не удалось загрузить викторины despite direct browser fetch of /v1/catalog?quiz_id=music-people-20261011 returning 200",
+    "selected_key_requirement": "opt2",
+    "score": null
+  },
+  "reader_source_footer_feedback": {
+    "status": "not completed",
+    "reason": "music UI failure and agent-browser daemon/session hang after one bounded recovery; no feedback writes were made"
+  },
+  "screenshots": {
+    "initial.png": "B4112AFAE762EBB904E9D3F5D0E4BCE7EA91CE8AEC279FE690F90400FF274E8A",
+    "local-cinema-people-020.png": "17BF9A8BE9877749DA22F53D969532292AE6DA19A18B13467E977034C764906B"
+  },
+  "cleanup": "cinema and music local servers stopped via own stop files; no production API/feedback writes; no source/Git/build changes",
+  "root_addendum": {
+    "suite_status": "PARTIAL_NOT_RELEASE_ACCEPTANCE",
+    "root_viewed_cinema020": true,
+    "official_named_browser_cleanup": [
+      {
+        "session": "quiz-next4d-qa",
+        "actual_exit": 0,
+        "closed": true
+      },
+      {
+        "session": "quiz-next4d-qa-recover",
+        "actual_exit": 0,
+        "closed": true
+      },
+      {
+        "session": "quiz-next4d-qa2",
+        "actual_exit": 0,
+        "closed": true
+      }
+    ],
+    "new_debug_task": "task-b87ed0c53f8d41d0b532585ed6ced809",
+    "limits": [
+      "Music20/20 and reader/source/feedback checks remain unfinished",
+      "Fixture stale guest token is a hypothesis, not proven product cause",
+      "QA uses earlier relative-API JS with new content; fresh production JS requires separate live verification"
+    ]
+  }
+}

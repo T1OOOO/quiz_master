@@ -1,0 +1,54 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Actual fresh build succeeds; exact previous296 runtime paths maintained; immutable archive/manifest/version/source hashes and durable release-evidence.json supplied; no publication or source mutation.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4D_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Own only ignored .run/culture_next4d_release_20261012 and durable CULTURE_NEXT4D_20261012/release-evidence.json. No source edits, Git, tests, browser, SSH/server/deploy, other processes, children or schedulers. Read qm-release and AGENTS project queue override. Source f219916 is pushed; full Go/116 Flutter/analyzer and independent binding acceptance passed. One fresh Flutter release build permitted. Base ONLY verified .run/culture_next4c_release_20261012/v2/quiz-2026.10.12-culture-42a2aaf exact 296-file runtime set. Overlay two people legacy JSONs, six canonical triplet files, catalog, reader and fresh web build excluding web/.last_build_id. Do not copy whole content/docs/study tree. Same 296 relative paths; no links, bytecode, extra files. Preserve seven earlier repaired runtime canonical files byte-identical to base; disclose differences from Git; HP006 follow-up remains. Keep study/check_reader.py six-module base version, not foreign dirty ten-module local version. Reuse API SHA26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01 after checking runtime Go/Dart code unchanged between42 andf219. Tag quiz-2026.10.12-culture-f219916; actual source SHA,131packs/4028questions/226articles,6study/120. Actual JS/catalog/reader SHA and taxonomy. Create immutable tar.gz and file manifest; compare entire file set to previous42. Report and stop if file-set/guard fails; never silently broaden. Submit real build command, exit, logSHA, hashes and limitations, then freeze. Root handles independent static review/browser/backup/release gates later.",
+    "created_at": 1791826556.6073968,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-1efad0ac3641432bb62c1af4cf4032bc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/release-evidence.json sha256=47db7556f56a54495a51dc4f941a90b7e624d64be8fdffe81d4694dd9a45a6cb",
+        ".run/culture_next4d_release_20261012/package.json sha256=3bcba0ea7aea7da6d2486bdf8a3545a0cfed2080e9682d1e1ffbed4210599604",
+        ".run/culture_next4d_release_20261012/quiz-2026.10.12-culture-f219916.tar.gz sha256=67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+        ".run/culture_next4d_release_20261012/post-freeze-verification.json: 296 stage/archive members, 295 checksum entries verified, baseline guard equality true"
+      ],
+      "summary": "Built and froze the local Next4D immutable package for independent review. Fresh production Flutter build exited 0; final package retains the exact 296-file base path set, uses current Helm42 guard, and records full frozen source f21991673f11e4113873ef3b58bfe87fbbb910a6. No publication or deployment was performed."
+    },
+    "root_task_id": "task-1efad0ac3641432bb62c1af4cf4032bc",
+    "run_id": "run-a8a9c71168e5462091386d19f16637b8",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4D immutable local release package from pushed f219916",
+    "version": 4,
+    "reviewer": "session-faa49e7ba1664e9ba00dad57093880fc",
+    "review_note": "Independent static package review (Claude Sonnet 5, read-only, fresh computations, not trusting author JSON). Archive .run/culture_next4d_release_20261012/quiz-2026.10.12-culture-f219916.tar.gz sha256=67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007 reproduced exactly; release-evidence.json sha256=47db7556...a45a6cb and package.json sha256=3bcba0ea...10599604 reproduced exactly; flutter-production-build.log sha256=bb92b2ab...0678d1 reproduced exactly, exit=0. Archive: 296 tar members, all streamed and rehashed against file-manifest.json (296 manifest entries, 296 unique, 0 mismatches, 0 missing); no absolute/.. paths, no symlinks, no bytecode; exact path-set diff against verified base .run/culture_next4c_release_20261012/v2/quiz-2026.10.12-culture-42a2aaf is empty (296==296, identical). All 8 retained runtime canonical paths (api binary + home-alone-1-part-1, theme-harry-potter bundle/draft/manifest, cinema-encore, music-encore, planet-paradoxes bundles) are byte-identical base vs candidate. api sha256 and main.dart.js sha256 in web/version.json reproduced exactly (26e1657f...30ab6f01 and 5dd40354...25fd431610). metadata/tags.v1.json is byte-identical to base (unchanged taxonomy) and its file hash matches the claimed taxonomy_file_sha256 exactly. study/check_reader.py is absent from both base and candidate (correctly preserved absence). checksums.txt has 295 lines (296 members minus itself), matching post-freeze claim. cutover.sh: bash -n syntax OK; embedded guard requires current Helm42 image sha cdb9092b1f3e...8947e902f815db4, real PVC UID, real hostname, and the exact api sha; rehearse.py: ast.parse OK. Content correctness: diffed staged catalog.json/question-articles.json against git d771e5b -- catalog unchanged except cinema-people-20261011/music-people-20261011 rows (19->20 questions_count), all other 129 rows byte-identical; question-articles.json gained exactly 2 new entries (224->226) with zero changes to any of the prior 224. The 2 new articles' title_ru/body_ru are byte-identical to frozen writer-v3.json (sha256=333d575f...28c6b9e9, reproduced exactly), with correct revision-sha bindings (cinema 566ffcec..., music e83cf6c2...) and 2 source_links each (4 total). Both new question bundle entries (cinema-people-020, music-people-020) expose exactly the same 9-key public DTO as before (answer_kind/difficulty/difficulty_level/options/question_id/quiz_id/revision/source/stem), correct_option_id lives only in private_grading (opt-1/opt-2 matching the editorial correct_answer index), source.uri stays /app/..., revision sha256 matches claimed values exactly. Prior 19+19 question rows in both People bundles are byte-identical to d771e5b. web/.last_build_id transient file correctly absent from final candidate. Not independently recomputed from source: study_modules=6/study_questions=120 in web/version.json (no study-module-count-bearing asset found outside the unchanged, byte-identical API binary and untouched content directories; figure is carried as unchanged declared metadata, not contradicted by anything found, but not freshly derived by this review either). Out of scope / not run by this review: full Go/Flutter test suites, any build, browser/mobile QA, SSH, server execution, deployment, rollback rehearsal, headroom/health checks, or any whole-bank factual/Android certification -- all remain Root-owned per the package task's own stated limits. Verdict: accept, error_count=0. This acceptance covers only this immutable local static package (archive integrity, exact file-set/hash parity with the verified base, retained-file preservation, and the two new content items' correctness/isolation); it is not publication, deployment, or production-release approval."
+  },
+  "actual_report": "Review recorded successfully — task `task-1efad0ac3641432bb62c1af4cf4032bc` is now `ACCEPTED` on the hub (verdict **accept**, error_count **0**), reviewer `session-faa49e7ba1664e9ba00dad57093880fc`.\n\n**Verdict: accept, error_count 0.**\n\n**Independently verified (all freshly computed, not taken from author JSON):**\n- Archive `67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007`, `release-evidence.json`, `package.json`, and the build log hash all reproduce exactly; fresh Flutter build exit = 0.\n- All 296 tar members streamed and rehashed against `file-manifest.json`: 0 mismatches, 0 missing, 296 unique entries. No absolute/`..` paths, no symlinks, no bytecode. Candidate path set is byte-for-byte identical to the verified Next4C base (296==296).\n- All 8 retained canonical paths (API binary + 7 content files) byte-identical to base.\n- `api` and `main.dart.js` SHA-256 match claimed values exactly; taxonomy file byte-identical to base.\n- `study/check_reader.py` correctly absent from both base and candidate; `web/.last_build_id` correctly excluded.\n- `cutover.sh` passes `bash -n`, guards on the current Helm42 image SHA + real PVC UID/hostname + API SHA; `rehearse.py` passes `ast.parse`.\n- Catalog diff vs git `d771e5b`: only the two People rows moved 19→20; other 129 rows byte-identical.\n- Reader articles: 224→226, zero changes to prior 224; the 2 new articles are byte-identical to frozen `writer-v3.json`, correct revision bindings, 2 source links each (4 total).\n- Both new question DTOs expose the same 9 public keys with no grading leak; `correct_option_id` isolated in `private_grading`, matching editorial answer index.\n\n**Not independently re-derived:** `study_modules=6`/`study_questions=120` in `version.json` — no counting source found outside the unchanged API binary/content tree; not contradicted, just not freshly recomputed.\n\n**Out of scope (Root-owned):** full Go/Flutter test suites, build execution, browser/mobile QA, SSH, server/deployment actions, rollback rehearsal, health/headroom checks, and any whole-bank factual or Android certification. This acceptance covers only the immutable local static package — not publication or production release.",
+  "release_evidence_sha256": "47db7556f56a54495a51dc4f941a90b7e624d64be8fdffe81d4694dd9a45a6cb",
+  "history": [
+    "Initial300s timeout: no acceptance assumed",
+    "Resumed180s timeout: no acceptance assumed",
+    "Finish240s timeout after actual clean substantive verdict but no callback",
+    "Same-context final120s window actualexit0 and actual ACCEPT callback"
+  ],
+  "root_addendum": "Root independently counted actual unchanged packaged study/catalog.json:6modules with20questions each,120total. This fills the explicitly retained reviewer count limitation, not a second fabricated callback.",
+  "limits": [
+    "Local immutable static package only",
+    "No browser/rehearsal/execution/deployment/live/wholebank/physicalAndroid certification"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "New frozen V2 eliminates both actualduplicate facts, uses precise supported session/release wording and refreshedconsistentledger, containsfourvalidcandidates/articles/sourcepairs andrealselfcheck/dedup/accessproof; priorV1untouched andnointegration/approval.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT5_20261012"
+    ],
+    "assignee": "session-fa7d8e6143c84c17a35c337941b6b398",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read WORK_PACKET_EN.md and ROOT_V1_FINDINGS_EN.md. Root actuallegacyread found BOTHcinemaV1items alreadyasked in prep_film_actors_2.json lines309/439; English-only screenmissedRussian corpus. Music022 inaccuratelyequates1953single withpreciserecordingsession; seeRootprimaryevidence/accesslimits. OwnONLY writer-v2.json/sources-v2.md, preserveV1frozen/Rootnotes/Next4Drelease. Replace cinema021/022 withoriginal variedsupportedfacts; retainMusic021semanticallyunlessevidencedissue, correctMusic022stem/explanation/article/ledger toverifiedsession/releasedistinction or omitdatefromstem anduse1953single releasefromaccessibleRockHall. Four120–180word miniarticles/twoinstitutional URLs each, balanced4options. ActualRussian+Englishdedup acrossBOTHquizzes andnext/content, scopedoutputnotminifiedfullfiledump. No source/Git/tests/builds/browserQA/server/deploy/children. Submitactualselfchecks/accessledger/hashes, freezeforindependentreview. This isRootauthoringfeedback, notfabricateddifferent-providerHubreview.",
+    "created_at": 1791828737.6068263,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-c3036b596fda4cff9bf237cfb36c649a",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "ConvertFrom-Json completed successfully.",
+        "Four items: four options each and unique correct positions 1/2/3/4.",
+        "Article word counts: 126, 121, 123, 121; two cited URLs per item.",
+        "SHA256 writer-v2.json AC6A9E682CD1DEB21A0B5CC89562A6E75BC3DF73FC40DD36EB78AB2087A43427; sources-v2.md 0BC24005D62ADF4558CCFB031F45A345DD33AD74473E06674BEE04E379EDE61E.",
+        "Eight cited BFI/AFI/Rock Hall/Smithsonian URLs were actually opened on 2026-10-12."
+      ],
+      "files": [
+        {
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/writer-v2.json",
+          "sha256": "AC6A9E682CD1DEB21A0B5CC89562A6E75BC3DF73FC40DD36EB78AB2087A43427"
+        },
+        {
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/sources-v2.md",
+          "sha256": "0BC24005D62ADF4558CCFB031F45A345DD33AD74473E06674BEE04E379EDE61E"
+        }
+      ],
+      "label": "culture_next5_writer_v2",
+      "risk": "Independent different-provider factual review remains required; draft is not integrated or published.",
+      "status": "draft_pending_independent_review",
+      "summary": "V2 rework frozen; V1 preserved."
+    },
+    "root_task_id": "task-c3036b596fda4cff9bf237cfb36c649a",
+    "run_id": "run-158ea49f20094bad8ffa5fd9ed93bde0",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next5 V2 replace two duplicate cinema questions and correct recording/release wording",
+    "version": 4,
+    "reviewer": "session-1ac8e6d9c56b48018bf21092d66b665d",
+    "review_note": "Independent Claude Sonnet 5 review 2026-10-12. Hashes match frozen values exactly (writer-v2 ac6a9e68..., sources-v2 0bc24005...). Blind solve of candidate-public-v2.json BEFORE reading keys, via primary-source research: cinema-021=Mastroianni/Rubini (La Dolce Vita), cinema-022=MacLaine/Kubelik (The Apartment), music-021=Rosetta Tharpe (Gospel Train), music-022=Big Mama Thornton (Hound Dog 1953 original). All 4 match writer-v2.json keys. No duplicates found: rg scan of quizzes/+next/content for RU+EN name/title variants gave zero hits except 'Ширли Маклейн' as an unrelated distractor in prep_film_actors_2.json (Tiffany's/Holly Golightly) - confirms sources-v2.md's own finding, not new. V1's 2 cinema duplicates (Sunset Blvd/Norma Desmond, Conversation/Harry Caul) confirmed replaced; V1's guitarist-cue and session-date issues confirmed fixed in V2.\n\nLive-verified primary sources: AFI catalog page fully confirms cinema-022 (cast, written-for-Lemmon, Brief Encounter inspiration, NY/LA shoot, forced perspective). BFI pages confirm cinema-021 (cast, Rubini name, paparazzi origin, Trevi, Via Veneto studio build, Christ-statue opening). Smithsonian Folkways PDF (opened via Read, not WebFetch which returned binary) confirms music-022: Thornton's own words date Hound Dog to 1953, Leiber/Stoller/Johnny Otis/Peacock, and the 1966 Muddy Waters band credits. All directly_supported.\n\nCould NOT verify: catalog.rockhall.com (music-021's cited catalog source) returned 403 on every attempt (WebFetch + archive.org) - cannot confirm author's 'opened successfully' claim; recording as unavailable, not invented.\n\nFACTUAL CONCERN, reason for rework (error_count=1): music-021 premise 'альбом Gospel Train, изданный Mercury Wing в 1956 году' is likely inaccurate. English Wikipedia's Gospel Train (album) article gives the original 1956 release as plain Mercury Records MG-20201, no Wing. Wing Records only became Mercury's budget LP-reissue imprint from August 1958 (per Wing Records history); a Wing pressing (MGW-12235) is almost certainly a later reissue, not the 1956 original. Could not open Rock Hall's catalog page to see if the error originates there. Recommend citing 'Mercury' for the 1956 original, or correcting the year if Wing is kept, with a source that isn't 403'd.\n\nEditorial note, not counted as error: cinema-021's character 'Марчелло Рубини' shares its first name with correct actor 'Марчелло Мастроянни' - real Fellini-intentional fact, but lets a player pattern-match without film knowledge; worth noting for future items.\n\nLimitations: did not re-verify Rock Hall Thornton page beyond spot-checked claims; no code/build/integration touched, V1/Next4D untouched."
+  },
+  "actual_report": "Both reviews are submitted to the hub. Summary:\n\n**V2 task (task-c3036b596fda4cff9bf237cfb36c649a) — verdict REWORK, error_count 1**\n\nIndependent blind solve (before reading any keys) matched all four writer-v2.json answers: La Dolce Vita/Mastroianni-Rubini, The Apartment/MacLaine-Kubelik, Gospel Train/Rosetta Tharpe, Hound Dog 1953/Big Mama Thornton. Live-verified against AFI, BFI, and a Smithsonian Folkways PDF — all directly supported, including the fixes V2 made vs. V1 (duplicates replaced, guitarist cue removed, session-date conflation resolved). No duplicate facts found in a repo-wide RU/EN scan.\n\nOne real factual problem found: music-021's premise \"альбом Gospel Train, изданный **Mercury Wing** в 1956 году\" is very likely wrong — English Wikipedia gives the original 1956 release as plain **Mercury MG-20201**; Wing only became Mercury's budget-reissue imprint from **1958**, so a Wing pressing is almost certainly a later reissue, not the 1956 original. I couldn't open the Rock Hall catalog page myself (403 on every attempt) to see whether that's where the error originated.\n\nSecondary editorial note (not an error): \"Марчелло Рубини\" shares a first name with \"Марчелло Мастроянни,\" letting a player pattern-match the answer without film knowledge.\n\n**V1 task (task-dfd17b0c3f7c4231b13ea1c2a24ca386) — confirmed REWORK, error_count 2**\n\nDirectly read prep_film_actors_2.json lines 309 and 439 — both duplicate facts (Sunset Boulevard/Norma Desmond, The Conversation/Harry Caul) are real, confirming Root's findings rather than just accepting the claim.\n\nRoot controls the actual correction/integration; I made no file edits.",
+  "limits": [
+    "Actual raw REWORK retained; V3 recheck separate",
+    "Not integrated or published; no whole-bank certification"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "result": "PASS",
+  "archive_sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+  "exact_runtime_paths": 296,
+  "retained_paths_verified": [
+    "next/content/home-alone-1-part-1/bundle.json",
+    "next/content/theme-harry-potter/bundle.json",
+    "next/content/theme-harry-potter/draft.json",
+    "next/content/theme-harry-potter/manifest.json",
+    "next/content/cinema-encore-20261011/bundle.json",
+    "next/content/music-encore-20261011/bundle.json",
+    "next/content/planet-paradoxes-20261010/bundle.json",
+    "api"
+  ],
+  "changed_paths": [
+    "checksums.txt",
+    "cutover.sh",
+    "expected-staging-revisions.json",
+    "next/apps/quiz_app/assets/catalog.json",
+    "next/apps/quiz_app/assets/study/question-articles.json",
+    "next/content/cinema-people-20261011/bundle.json",
+    "next/content/cinema-people-20261011/draft.json",
+    "next/content/cinema-people-20261011/manifest.json",
+    "next/content/music-people-20261011/bundle.json",
+    "next/content/music-people-20261011/draft.json",
+    "next/content/music-people-20261011/manifest.json",
+    "quizzes/Cinema/People/cinema_people_20261011.json",
+    "quizzes/MusicPeople/music_people_20261011.json",
+    "rehearse.py",
+    "release-values.yaml",
+    "runtime-bundles.json",
+    "web/assets/assets/catalog.json",
+    "web/assets/assets/study/question-articles.json",
+    "web/flutter_bootstrap.js",
+    "web/main.dart.js",
+    "web/version.json"
+  ],
+  "version": {
+    "buildId": "quiz-2026.10.12-culture-f219916",
+    "commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4028,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 226,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "5dd403547220c96b9a7abade2eaef56c2b19051f29723974a18f3625fd431610",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "study_modules": [
+    {
+      "id": "geography-countries",
+      "questions": 20
+    },
+    {
+      "id": "geography-maps",
+      "questions": 20
+    },
+    {
+      "id": "greek-mythology",
+      "questions": 20
+    },
+    {
+      "id": "history",
+      "questions": 20
+    },
+    {
+      "id": "nature",
+      "questions": 20
+    },
+    {
+      "id": "nature-evolution",
+      "questions": 20
+    }
+  ],
+  "study_catalog_same_as_base": true,
+  "limits": [
+    "No browser, rehearsal, execution review or publication acceptance"
+  ]
+}

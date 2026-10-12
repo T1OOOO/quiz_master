@@ -1,0 +1,191 @@
+{
+  "schema": "quiz-release-evidence/v1",
+  "task_id": "task-1efad0ac3641432bb62c1af4cf4032bc",
+  "run_label": "next4d-release/session-d5b5861b",
+  "package_status": "LOCAL_PACKAGE_READY_FOR_INDEPENDENT_REVIEW",
+  "publication_status": "NOT_PUBLISHED",
+  "source": {
+    "build_id": "quiz-2026.10.12-culture-f219916",
+    "commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "note": "Later ae09ed2 and 43852a4 are documentation/operational follow-ups and are intentionally excluded from release source/version metadata."
+  },
+  "baseline": {
+    "image": "docker.io/library/quiz-master@sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+    "base_stage": "C:\\ap\\quiz_master\\.run\\culture_next4c_release_20261012\\v2\\quiz-2026.10.12-culture-42a2aaf",
+    "base_file_members": 296
+  },
+  "package": {
+    "version": {
+      "buildId": "quiz-2026.10.12-culture-f219916",
+      "commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+      "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+      "local_build": true,
+      "packs": 131,
+      "questions": 4028,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 226,
+      "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "main_dart_js_sha256": "5dd403547220c96b9a7abade2eaef56c2b19051f29723974a18f3625fd431610",
+      "taxonomy_id": "qm-tags-v1",
+      "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+      "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+    },
+    "stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\quiz-2026.10.12-culture-f219916",
+    "archive": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\quiz-2026.10.12-culture-f219916.tar.gz",
+    "sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+    "baseline_image": "docker.io/library/quiz-master@sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+    "file_members": 296,
+    "tar_members": 296,
+    "manifest_sha256": "2bdab8fa7a28c208b05e5383c114ade5d70661ba5485edde7ebadf87efee724c",
+    "build_log_sha256": "bb92b2ab8a9a2d38bd1f5314a920da2e31fbf416fc41cbda108d6883ed0678d1",
+    "build_exit": 0
+  },
+  "fresh_flutter_build": {
+    "command": "flutter build web --release --no-pub --output C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\web-fresh --dart-define=QM_BUILD_ID=quiz-2026.10.12-culture-f219916 --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org",
+    "workdir": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+    "exit": 0,
+    "duration_seconds": 273.9,
+    "log": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\flutter-production-build.log",
+    "log_sha256": "bb92b2ab8a9a2d38bd1f5314a920da2e31fbf416fc41cbda108d6883ed0678d1",
+    "output": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\web-fresh",
+    "warning": "Flutter emitted its existing MaterialIcons/Cupertino font-family warning; compilation still completed successfully."
+  },
+  "stage": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\quiz-2026.10.12-culture-f219916",
+    "packs": 131,
+    "questions": 4028,
+    "question_articles": 226,
+    "study_modules": 6,
+    "study_questions": 120,
+    "people_questions": {
+      "cinema-people-20261011": 20,
+      "music-people-20261011": 20
+    },
+    "file_members": 296,
+    "overlay_paths": [
+      "quizzes/Cinema/People/cinema_people_20261011.json",
+      "quizzes/MusicPeople/music_people_20261011.json",
+      "next/content/cinema-people-20261011/{draft,manifest,bundle}.json",
+      "next/content/music-people-20261011/{draft,manifest,bundle}.json",
+      "next/apps/quiz_app/assets/catalog.json",
+      "next/apps/quiz_app/assets/study/question-articles.json",
+      "web (fresh production output)"
+    ],
+    "derived_metadata": [
+      "runtime-bundles.json",
+      "expected-staging-revisions.json",
+      "web/version.json",
+      "cutover.sh",
+      "rehearse.py",
+      "release-values.yaml",
+      "checksums.txt"
+    ]
+  },
+  "runtime_reuse": {
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "root_read_only_scope_proof": "Lead reported a native Git diff from 42a2aaf4ed66698d3f7303b716bbac36913ff139 to f21991673f11e4113873ef3b58bfe87fbbb910a6: only two *_test.go count fixtures under next/server; Flutter lib/pubspec.yaml/pubspec.lock and runtime web/go dependency paths had no changes. This package independently verified the staged API binary hash."
+  },
+  "guard_checks": {
+    "cutover_build_id": "quiz-2026.10.12-culture-f219916",
+    "cutover_baseline_equals_package_baseline": true,
+    "cutover_source_commit_guard": "f21991673f11e4113873ef3b58bfe87fbbb910a6",
+    "dynamic_build_regex": "quiz-2026.10.12-culture-[0-9a-f]{7}",
+    "rollback_api_path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-42a2aaf/api",
+    "rollback_api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "cutover_syntax": "native Git Bash bash -n exit 0",
+    "rehearse_syntax": "Python ast.parse exit 0"
+  },
+  "preservation": {
+    "exact_base_path_set": true,
+    "known_prior_runtime_canonical_paths_unchanged": {
+      "next/content/home-alone-1-part-1/bundle.json": "58540f20607cf0d4294788a9e039b9797a9861ed3375e0aefcbd680461bf3746",
+      "next/content/theme-harry-potter/bundle.json": "83c17017ad29e732bf2e21917eb0fb6edaab57666e0b3f6cee9da3a01e32d06b",
+      "next/content/theme-harry-potter/draft.json": "aecb1306c65e6f2432eb249e3364ded7c15c08e23aafa211c5ff5cf740645484",
+      "next/content/theme-harry-potter/manifest.json": "88dbe8c0a5f746072ca090df94fa5522e1ac33e7189012594a46f7404162870a",
+      "next/content/cinema-encore-20261011/bundle.json": "81a8264e13009861cec83157107ecd3ad9db3ec6e3f6141cd5178eb7b3529d01",
+      "next/content/music-encore-20261011/bundle.json": "adf507dbc8b75e2fed0c08f4a401b8a07da8f4b38903db3d0cd5829600643364",
+      "next/content/planet-paradoxes-20261010/bundle.json": "467f4b0d5d8112435d688cf5865f43317ae465d5a194fb7820378865715141d3"
+    },
+    "note": "Those seven files remain byte-identical to the accepted prior runtime base; they are disclosed runtime/Git alignment follow-up material, not changed by this package."
+  },
+  "archive_validation": {
+    "archive_sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+    "archive_bytes": 47471256,
+    "file_members": 296,
+    "tar_members": 296,
+    "flat_paths": true,
+    "no_links": true,
+    "no_bytecode": true,
+    "base_path_set_equal": true,
+    "changed_paths_from_base": [
+      "checksums.txt",
+      "cutover.sh",
+      "expected-staging-revisions.json",
+      "next/apps/quiz_app/assets/catalog.json",
+      "next/apps/quiz_app/assets/study/question-articles.json",
+      "next/content/cinema-people-20261011/bundle.json",
+      "next/content/cinema-people-20261011/draft.json",
+      "next/content/cinema-people-20261011/manifest.json",
+      "next/content/music-people-20261011/bundle.json",
+      "next/content/music-people-20261011/draft.json",
+      "next/content/music-people-20261011/manifest.json",
+      "quizzes/Cinema/People/cinema_people_20261011.json",
+      "quizzes/MusicPeople/music_people_20261011.json",
+      "rehearse.py",
+      "release-values.yaml",
+      "runtime-bundles.json",
+      "web/assets/assets/catalog.json",
+      "web/assets/assets/study/question-articles.json",
+      "web/flutter_bootstrap.js",
+      "web/main.dart.js",
+      "web/version.json"
+    ],
+    "changed_paths_count": 21,
+    "preserved_runtime_canonical_hashes": {
+      "next/content/home-alone-1-part-1/bundle.json": "58540f20607cf0d4294788a9e039b9797a9861ed3375e0aefcbd680461bf3746",
+      "next/content/theme-harry-potter/bundle.json": "83c17017ad29e732bf2e21917eb0fb6edaab57666e0b3f6cee9da3a01e32d06b",
+      "next/content/theme-harry-potter/draft.json": "aecb1306c65e6f2432eb249e3364ded7c15c08e23aafa211c5ff5cf740645484",
+      "next/content/theme-harry-potter/manifest.json": "88dbe8c0a5f746072ca090df94fa5522e1ac33e7189012594a46f7404162870a",
+      "next/content/cinema-encore-20261011/bundle.json": "81a8264e13009861cec83157107ecd3ad9db3ec6e3f6141cd5178eb7b3529d01",
+      "next/content/music-encore-20261011/bundle.json": "adf507dbc8b75e2fed0c08f4a401b8a07da8f4b38903db3d0cd5829600643364",
+      "next/content/planet-paradoxes-20261010/bundle.json": "467f4b0d5d8112435d688cf5865f43317ae465d5a194fb7820378865715141d3"
+    },
+    "build_log_sha256": "bb92b2ab8a9a2d38bd1f5314a920da2e31fbf416fc41cbda108d6883ed0678d1",
+    "build_exit": 0,
+    "cutover_baseline_matches_package": true
+  },
+  "post_freeze_validation": {
+    "post_freeze": true,
+    "stage_file_members": 296,
+    "archive_file_members": 296,
+    "checksums_verified": 295,
+    "archive_sha256": "67b6872578b85f94b5cc9718ff98c129817bb412ecc6d79d03932d2127ec7007",
+    "manifest_sha256": "2bdab8fa7a28c208b05e5383c114ade5d70661ba5485edde7ebadf87efee724c",
+    "guard_equals_package_baseline": true,
+    "source_commit": "f21991673f11e4113873ef3b58bfe87fbbb910a6"
+  },
+  "transient_correction": {
+    "initial_fresh_web_extra": "web/.last_build_id",
+    "action": "Excluded that transient file from the staged package without rebuilding. Final staged and archive path sets are the exact 296 base relative paths.",
+    "rebuild_count": 1
+  },
+  "limits": {
+    "not_run": [
+      "full Go tests",
+      "Flutter test suite",
+      "browser QA",
+      "SSH/server operations",
+      "deployment",
+      "Git operations"
+    ],
+    "reason": "Task assigned a local immutable package only; lead owns independent review, browser, server and publication gates."
+  },
+  "review_required": {
+    "different_provider_static_package_review": true,
+    "lead_execution_and_publication_gates": true
+  }
+}

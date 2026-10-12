@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Four valid schema-consistent drafts and articles, actual institutional access/claim ledger and dedup evidence, lightweight self-check actualexit/hash proof, freeze pending independent review. No integration or approval claimed.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT5_20261012"
+    ],
+    "assignee": "session-fa7d8e6143c84c17a35c337941b6b398",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read full English WORK_PACKET_EN.md in allowed directory, which supplies context, ownership, schema, prior failures, source/copyright/duplicate checks and exact restrictions. Own ONLY writer-v1.json and sources-v1.md: four original Russian candidates (CinemaPeople021/022, MusicPeople021/022), four matching120–180word miniarticles, at least2institutional URLs each. Four balanced options/no giveaways, varied correctpositions, supported additional facts, realistic difficulty estimates. Current source131/4028/226 and20questions perPeoplepack; Next4D package remains frozen/separate. No productsource/Git/build/tests/browserQA/server/deploy/children/schedulers. Truthful Hub actualactivity and submitted frozenhashes; differentprovider review required. You are not alone, preserve foreignfiles.",
+    "created_at": 1791827816.593358,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-dfd17b0c3f7c4231b13ea1c2a24ca386",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "PowerShell structural assertion in C:\\ap\\quiz_master exited 0.",
+        "Exactly four items; each has four options, two source URLs, and one editorial key.",
+        "Miniarticle word counts: cinema-people-021=120, cinema-people-022=122, music-people-021=123, music-people-022=122.",
+        "Key positions rotate 2, 4, 1, 3.",
+        "Eight institutional pages opened successfully on 2026-10-12; access status and item-level claim mapping are recorded.",
+        "Scoped duplicate search found no match for selected subjects in next/content and the Next5 task directory."
+      ],
+      "files": [
+        {
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/writer-v1.json",
+          "sha256": "8da1bbfc8c9ca2abc8248e8249c950115c44b9ea07cb44620af5039be15893f0"
+        },
+        {
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/sources-v1.md",
+          "sha256": "40a551db041523b7b14a23ce9bb8538f9e716a77f989ef208aa07b4fb4a342b8"
+        }
+      ],
+      "label": "culture_next5_writer",
+      "publication_claimed": false,
+      "review_required": "independent different-provider factual/editorial review before integration",
+      "status": "draft_complete_pending_independent_review"
+    },
+    "root_task_id": "task-dfd17b0c3f7c4231b13ea1c2a24ca386",
+    "run_id": "run-dc286c3fa6944a9e86fa2045d8f39b86",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next5 four varied cinema/music questions with miniarticles and verified institutional sources",
+    "version": 4,
+    "reviewer": "session-1ac8e6d9c56b48018bf21092d66b665d",
+    "review_note": "Independent Claude Sonnet 5 confirmation 2026-10-12, read-only, not re-litigating V2. I directly read quizzes/Preparation/prep_film_actors_2.json lines 306-315 and 436-446: line 309 asks 'Бульвар Сансет (1950) кто сыграл Норма Десмонд?' and line 439 asks 'Разговор (1974) кто сыграл Гарри Кол?' - these are the exact actor/character facts V1's cinema-people-021 (Sunset Boulevard/Norma Desmond) and cinema-people-022 (The Conversation/Harry Caul) duplicated, confirming Root's ROOT_V1_FINDINGS_EN.md finding #1/#2 is accurate, not just asserted. I independently confirm V1 remains correctly unaccepted on this basis (error_count=2 for the two duplicate items); music-022's 1952-recording/1953-release conflation was not re-checked here since V2 already superseded it. V1 stays historical/frozen; this is read-only confirmation, no V1 file changes made."
+  },
+  "actual_report": "Both reviews are submitted to the hub. Summary:\n\n**V2 task (task-c3036b596fda4cff9bf237cfb36c649a) — verdict REWORK, error_count 1**\n\nIndependent blind solve (before reading any keys) matched all four writer-v2.json answers: La Dolce Vita/Mastroianni-Rubini, The Apartment/MacLaine-Kubelik, Gospel Train/Rosetta Tharpe, Hound Dog 1953/Big Mama Thornton. Live-verified against AFI, BFI, and a Smithsonian Folkways PDF — all directly supported, including the fixes V2 made vs. V1 (duplicates replaced, guitarist cue removed, session-date conflation resolved). No duplicate facts found in a repo-wide RU/EN scan.\n\nOne real factual problem found: music-021's premise \"альбом Gospel Train, изданный **Mercury Wing** в 1956 году\" is very likely wrong — English Wikipedia gives the original 1956 release as plain **Mercury MG-20201**; Wing only became Mercury's budget-reissue imprint from **1958**, so a Wing pressing is almost certainly a later reissue, not the 1956 original. I couldn't open the Rock Hall catalog page myself (403 on every attempt) to see whether that's where the error originated.\n\nSecondary editorial note (not an error): \"Марчелло Рубини\" shares a first name with \"Марчелло Мастроянни,\" letting a player pattern-match the answer without film knowledge.\n\n**V1 task (task-dfd17b0c3f7c4231b13ea1c2a24ca386) — confirmed REWORK, error_count 2**\n\nDirectly read prep_film_actors_2.json lines 309 and 439 — both duplicate facts (Sunset Boulevard/Norma Desmond, The Conversation/Harry Caul) are real, confirming Root's findings rather than just accepting the claim.\n\nRoot controls the actual correction/integration; I made no file edits.",
+  "limits": [
+    "Actual raw REWORK retained; V3 recheck separate",
+    "Not integrated or published; no whole-bank certification"
+  ]
+}
