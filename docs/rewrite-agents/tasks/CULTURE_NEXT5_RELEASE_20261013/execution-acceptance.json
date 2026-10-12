@@ -1,0 +1,70 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "package_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+  "image": "sha256:b3700cb1ccb2adfcfcb117b659b856b261d11ae5336c9e632fec2c839a08dcbc",
+  "raw_callback": {
+    "acceptance": "Actual prepare exit0, preserved baseline43/PVC, exact hashes, independent different-provider execution review before publication",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next5_release_lead_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT5_RELEASE_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root owns remote preparation and guarded publication plan for frozen384d798 archive f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45. Actual local mobile QA22 each/4articles/8sources done; actual Claude package ACCEPT0. Submit exact Linux PREPARED0 evidence, immutable image, copied SQLite rehearsal128questions/restore/rollback, script/QA hashes for fresh independent Claude review. No publication until review accepts.",
+    "created_at": 1791843950.4370859,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": false,
+    "domain": "general",
+    "id": "task-a99386a61b45400f807e746560b64fe3",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        {
+          "archive_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+          "backup_restore": "ok",
+          "check": "actual Linux prepare",
+          "copy_questions": 128,
+          "exit": 0,
+          "image": "sha256:b3700cb1ccb2adfcfcb117b659b856b261d11ae5336c9e632fec2c839a08dcbc",
+          "log_sha256": "3ef45885ffa9a6f06235c98cf71a7588024feb5f9399d936f3b10fcc00bd0f62",
+          "old_api_rollback": "ok",
+          "old_rows_preserved": true
+        },
+        {
+          "check": "actual Root fresh mobile QA",
+          "cinema": 22,
+          "music": 22,
+          "new_articles": 4,
+          "source_controls": 8
+        }
+      ],
+      "handoff": {
+        "packet": "C:/ap/quiz_master/.run/culture_next5_release_lead_20261013/execution-packet.json",
+        "publish_plan": "C:/ap/quiz_master/.run/culture_next5_release_lead_20261013/publish_prepared.py"
+      },
+      "limitations": [
+        "Production publication and live QA not yet done",
+        "Disk93% capacity issue remains; retained archives untouched",
+        "Whole-bank facts/physical Android/keyboard/screenreader not checked"
+      ],
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-a99386a61b45400f807e746560b64fe3",
+    "run_id": "run-bc37a0aaa31d48759663d299122ed264",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next5 prepared execution gates and concrete publication plan",
+    "version": 4,
+    "reviewer": "session-a58119bda2ca46efa2abf5a7f6593007",
+    "review_note": "Independent read-only review, Claude Sonnet 5, session session-a58119bda2ca46efa2abf5a7f6593007. No edits/build/tests/SSH/browser/deploy/Git mutations performed; all checks below are local file/hash inspection plus `git` read-only commands.\n\nIndependently reproduced (byte-exact, not trusted from evidence JSON alone): archive sha256 f1b89f2d8a77... via `sha256sum` on quiz-2026.10.13-culture-384d798.tar.gz — MATCHES. file-manifest.json sha256 820348e5... — MATCHES manifest_sha256 in package.json. remote-prepare.txt sha256 3ef45885... — MATCHES remote_log_sha256 in execution-packet.json. Staged cutover.sh sha256 03ba63db... exactly matches the input_sha256 recorded for the 'cutover-bash-n' Linux check in linux-preflight.json, confirming the bytes syntax-checked and PREPAREd on racknerd-f0269d5 are identical to the bytes in the local stage/archive (0 CR bytes, LF-only, confirmed by direct grep).\n\n`git merge-base --is-ancestor 384d798... HEAD` passes; 384d798 is in fact the current HEAD (git log -1 confirms identical hash), so the 'no committed runtime changes after freeze' guard holds trivially and correctly. `git diff --name-only 384d798 HEAD -- next quizzes metadata study/question_articles` is empty.\n\nImage/API/JS hash chain is internally consistent end-to-end: execution-packet.json image sha256:b3700cb1cc... matches remote-prepare.txt's build/import/tag output, matches publish_prepared.py's quiz_digest, matches package.json's prepared image. api sha256 26e1657f... and main.dart.js sha256 1986ff2b... match across root-package-gate.json, cutover.sh's inline sha256sum assertions, and publish-prepared-preview.sh. Current production baseline ee2b454c...afcfbb1 (Helm43) is correctly asserted in cutover.sh's pre-flight guard (not an older Helm image) and matches package.json's baseline_image.\n\nVerified by direct diff that publish_prepared.py's generated publish-prepared-preview.sh is byte-identical to the staged/tested cutover.sh for the entire backup+rehearsal+checksum prefix (everything before the build/tag section), and that the only replaced portion is exactly the `docker build`/image-tag block, correctly substituted with the already-reviewed immutable digest and no `docker build` call anywhere in the final script (matches the script's own assertion). This supports the claim that publication will consume the already-reviewed image rather than rebuilding.\n\nQA/browser/content counts (22/22 People, 4 new articles, 8 source checks) are root's own first-party local evidence, not independently reproduced here (no browser in my scope) — accepted as disclosed, non-blocking per task scope.\n\nOperational note for root (not a defect in this submission, informational): publish_prepared.py's real (non-preview) path reads `.run/culture_next5_release_lead_20261013/execution-acceptance.json` and requires `actual_hub_state=='ACCEPTED'`. That file does not exist yet in that directory (only static-acceptance.json, which is the earlier package-level task's record, does). Unlike the package stage, which has save_static.py to materialize static-acceptance.json from a hub_task ACCEPTED verdict, there is no equivalent script here to write execution-acceptance.json from this review. This correctly fails publish closed for now, but someone must create that file (schema: actual_hub_state, package_sha256, image) before publish_prepared.py can run for real, or it will raise FileNotFoundError.\n\nScope: static/local/remote-transcript review only; I did not run SSH, browser, or publication myself. No blockers found in the submitted preparation evidence itself."
+  },
+  "actual_report": "The review was submitted successfully — task `task-a99386a61b45400f807e746560b64fe3` now shows `state: \"ACCEPTED\"`.\n\n**Summary of independent review (read-only, static/local review of the execution packet and publication plan):**\n\n- Independently reproduced byte-exact: archive sha256 `f1b89f2d8a77...`, manifest sha256 `820348e5...`, and remote-prepare log sha256 `3ef45885...` — all match the recorded evidence.\n- The exact bytes of `cutover.sh` that were syntax-checked on the remote host (racknerd-f0269d5) are byte-identical to the locally staged file (LF-only, 0 CR bytes).\n- Git guard holds: `384d798...` is the current `HEAD`, and the diff against runtime paths (`next`, `quizzes`, `metadata`, `study/question_articles`) since that commit is empty.\n- Image/API/JS hash chain is internally consistent across all files; the rollback-baseline guard correctly targets the current production image (Helm43 `ee2b454c...`), not an older one.\n- Confirmed by direct diff that `publish_prepared.py`'s assembled publish script reuses the reviewed backup/rehearsal/checksum prefix verbatim and only swaps in the already-reviewed image digest — no `docker build` anywhere in the final script, so publication would consume the existing immutable image rather than rebuilding.\n\n**One non-blocking operational note flagged to root:** the real (non-preview) publish path requires a file `execution-acceptance.json` in the lead directory that doesn't exist yet, and there's no script (unlike the package stage's `save_static.py`) that writes it from this review's verdict. This correctly fails publish closed for now, but root needs to create that file (schema: `actual_hub_state`, `package_sha256`, `image`) before `publish_prepared.py` can actually run — otherwise it will hit `FileNotFoundError`.\n\nNo defects found in the submitted preparation evidence itself; verdict **accept**, `error_count: 0`.",
+  "limits": [
+    "Independent local exact execution evidence/plan review; Root actual publication and live checks remain required"
+  ]
+}

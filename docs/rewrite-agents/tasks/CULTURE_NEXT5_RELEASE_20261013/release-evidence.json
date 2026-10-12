@@ -1,0 +1,128 @@
+{
+  "schema": "quiz-release-evidence/v1",
+  "task_id": "task-e801aac2b4844cabacaf93be3a1d78d0",
+  "status": "LOCAL_PACKAGE_FROZEN_PENDING_ROOT_REVIEW_AND_GATES",
+  "publication_status": "NOT_PUBLISHED",
+  "build_id": "quiz-2026.10.13-culture-384d798",
+  "source_commit": "384d798a8c681f4940448877f18900cfb511d04a",
+  "baseline": {
+    "stage": "C:\\ap\\quiz_master\\.run\\culture_next4d_release_20261012\\v3\\quiz-2026.10.12-culture-f219916",
+    "image": "docker.io/library/quiz-master@sha256:ee2b454c486c65d8e8ca7bc343f01736d78284871de39b62dc6260b19afcfbb1",
+    "file_members": 296,
+    "preserved_runtime_repairs": "Retained through baseline stage; six non-People runtime bundles exactly matched V3 before strict revisions were regenerated for the new stage path."
+  },
+  "stage": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\quiz-2026.10.13-culture-384d798",
+    "file_members": 296,
+    "archive": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\quiz-2026.10.13-culture-384d798.tar.gz",
+    "archive_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+    "tar_members": 296,
+    "file_manifest": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\file-manifest.json",
+    "file_manifest_sha256": "820348e56f9e6b6ac6fe4981c577977f6958b20485aad00fb20e6603bc75a7e0",
+    "path_safe_unique_regular_members": true,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "1986ff2b6c73766652eafadf37fb79e58deee89b1878d1af90a6c6c43ec9ade4",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "content": {
+    "packs": 131,
+    "questions": 4032,
+    "question_articles": 230,
+    "cinema_people_questions": 22,
+    "music_people_questions": 22,
+    "source_overlay_exact_paths": [
+      "quizzes/Cinema/People/cinema_people_20261011.json",
+      "quizzes/MusicPeople/music_people_20261011.json",
+      "next/content/cinema-people-20261011/draft.json",
+      "next/content/cinema-people-20261011/manifest.json",
+      "next/content/cinema-people-20261011/bundle.json",
+      "next/content/music-people-20261011/draft.json",
+      "next/content/music-people-20261011/manifest.json",
+      "next/content/music-people-20261011/bundle.json",
+      "next/apps/quiz_app/assets/catalog.json",
+      "next/apps/quiz_app/assets/study/question-articles.json"
+    ],
+    "new_question_ids": [
+      "cinema-people-021",
+      "cinema-people-022",
+      "music-people-021",
+      "music-people-022"
+    ],
+    "source_links": 8
+  },
+  "fixtures": {
+    "runtime_fixture_packs": 8,
+    "strict_revision_fixture_questions": 128,
+    "people_counts": {
+      "cinema-people-20261011": 22,
+      "music-people-20261011": 22
+    },
+    "new_absolute_staging_path": "/opt/quiz-master/releases/quiz-2026.10.13-culture-384d798",
+    "six_retained_runtime_bundles_exact": true,
+    "strict_revision_assertion_preserved": true,
+    "runtime_envelope_difference": "Runtime fixture exporter uses legacy API-import envelope 2026.10.11.duplicates; current canonical People bundles retain 2026.10.12.next5. Quiz DTOs, private grading and People private metadata match."
+  },
+  "builds": {
+    "initial_production": {
+      "status": "LOG_ONLY_NO_EXIT_MARKER",
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\flutter-production.log",
+      "log_sha256": "e2bb16ee2abf7b11df57a0d21addce6ab44d00739fe7bc190668fba419d6c881",
+      "reason": "cmd wrapper invoked flutter.bat without call; corrected rerun is authoritative"
+    },
+    "corrected_production": {
+      "exit": 0,
+      "duration_seconds": 90.5,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\flutter-production-v2.log",
+      "log_sha256": "c192dc912931a68c72fd7753c4324b871b3c6451da417d9ac98eb951b7a52a98",
+      "output": "web-fresh-v2",
+      "defines": {
+        "QM_BUILD_ID": "quiz-2026.10.13-culture-384d798",
+        "QM_API_BASE_URL": "https://quiz.kotopedia.org"
+      },
+      "main_dart_js_sha256": "1986ff2b6c73766652eafadf37fb79e58deee89b1878d1af90a6c6c43ec9ade4"
+    },
+    "qa": {
+      "exit": 0,
+      "duration_seconds": 75.6,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013\\flutter-qa.log",
+      "log_sha256": "13254cb948eba781534a20ca405912dc7cef9dad7a911a6d6a8d93a5645541b8",
+      "output": "qa-web-fresh",
+      "defines": {
+        "QM_BUILD_ID": "quiz-next5-local-384d798",
+        "QM_API_BASE_URL": "http://127.0.0.1:18089"
+      },
+      "not_packaged": true,
+      "main_dart_js_sha256": "895405a39f8765ec94505a16b41f222116d5fa2f2d90934747beaaac31880dc9",
+      "generated_version_json_sha256": "7bb13a06a0abc5c4c042eb3a12320c056de642d12c0f557651fb529a2890930d"
+    }
+  },
+  "script_checks": {
+    "cutover_lf": true,
+    "cutover_baseline_guard_matches_package_baseline": true,
+    "cutover_full_source_commit_guard": true,
+    "cutover_js_guard_count": 3,
+    "rehearse_people_article_ref_counts": 22
+  },
+  "local_checks": {
+    "stage_overlay_hashes_match_source": true,
+    "api_hash_match": true,
+    "taxonomy_hash_match": true,
+    "checksums_generated": true,
+    "archive_stream_validation": true,
+    "bash_n_cutover": "not_run: local bash resolves to WSL and no distribution is installed; root Linux gate remains required"
+  },
+  "not_run": [
+    "Linux staging/rehearsal",
+    "backup/restore or rollback",
+    "browser checks",
+    "server/SSH",
+    "deployment/publication",
+    "Android gates"
+  ],
+  "required_next": [
+    "Root independent package review",
+    "Root fresh QA API/browser checks",
+    "Root Linux bash syntax validation",
+    "Root remote Linux/rehearsal and release gates"
+  ]
+}

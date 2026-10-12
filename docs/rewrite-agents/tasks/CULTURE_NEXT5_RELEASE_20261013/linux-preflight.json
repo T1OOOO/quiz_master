@@ -1,0 +1,25 @@
+{
+  "archive_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+  "actual_target": "racknerd-f0269d5",
+  "checks": [
+    {
+      "check": "cutover-bash-n",
+      "actual_exit": 0,
+      "input_sha256": "03ba63dbe6ec1bb52a0d21089bae56e1ac0a63e10b21db06df171561edc50cf0",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "rehearse-python-compile",
+      "actual_exit": 0,
+      "input_sha256": "fcfd01764a66371e4ebb82e38edf3f106a108398294f2d599f35fccbe2b0cca8",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "retained-rollback-api",
+      "actual_exit": 0,
+      "input_sha256": null,
+      "output_sha256": "06feefbc82b9faa3ccb36111ebfcf0977dc135e6c1fe105b93a78ace3d6eb67d"
+    }
+  ],
+  "limits": "Read-only Linux syntax/provenance checks; no upload, rehearsal, container build or publication performed"
+}

@@ -1,0 +1,111 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "package_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+  "manifest_sha256": "820348e56f9e6b6ac6fe4981c577977f6958b20485aad00fb20e6603bc75a7e0",
+  "raw_callback": {
+    "acceptance": "FreshFlutterbuild0, immutablearchivechecksums/hashes/pathsafe,131/4032/230 People22each, retainedrepairs/infra/API parity, LF scripts and newpathstrictfixtures, frozen local evidence only; Root independentreview/browser/remote gates pending.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next5_release_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT5_RELEASE_20261013"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read docs/rewrite-agents/tasks/CULTURE_NEXT5_RELEASE_20261013/WORK_PACKET_EN.md. Finite localpackage only: actualfreshFlutterproductionbuild from384d798, preserveverifiedNext4D V3 baseline runtime7repairs/API/infra/study, update2People+reader/catalog/version/newpathstrictfixtures. Ownonlyignoredscratch and package/release-evidence JSON. No product/Git/SSH/browser/deploy/children. FreshREADY/offer then bounded work/freeze/actualselfchecks.",
+    "created_at": 1791839904.1213608,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-e801aac2b4844cabacaf93be3a1d78d0",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_paths": [
+        "C:/ap/quiz_master/.run/culture_next5_release_20261013",
+        "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT5_RELEASE_20261013/release-evidence.json"
+      ],
+      "evidence": [
+        {
+          "build_id": "quiz-2026.10.13-culture-384d798",
+          "check": "corrected_production_flutter_build",
+          "duration_seconds": 90.5,
+          "exit": 0,
+          "log_sha256": "c192dc912931a68c72fd7753c4324b871b3c6451da417d9ac98eb951b7a52a98",
+          "main_dart_js_sha256": "1986ff2b6c73766652eafadf37fb79e58deee89b1878d1af90a6c6c43ec9ade4",
+          "outcome": "pass",
+          "output": ".run/culture_next5_release_20261013/web-fresh-v2"
+        },
+        {
+          "api_base_url": "http://127.0.0.1:18089",
+          "build_id": "quiz-next5-local-384d798",
+          "check": "separate_local_qa_flutter_build",
+          "duration_seconds": 75.6,
+          "exit": 0,
+          "log_sha256": "13254cb948eba781534a20ca405912dc7cef9dad7a911a6d6a8d93a5645541b8",
+          "main_dart_js_sha256": "895405a39f8765ec94505a16b41f222116d5fa2f2d90934747beaaac31880dc9",
+          "not_packaged": true,
+          "outcome": "pass",
+          "output": ".run/culture_next5_release_20261013/qa-web-fresh"
+        },
+        {
+          "archive": ".run/culture_next5_release_20261013/quiz-2026.10.13-culture-384d798.tar.gz",
+          "archive_sha256": "f1b89f2d8a77c751dfd968a23b1c67ab791ea1957e7635850e55eb2358933e45",
+          "check": "immutable_local_package",
+          "file_members": 296,
+          "manifest_sha256": "820348e56f9e6b6ac6fe4981c577977f6958b20485aad00fb20e6603bc75a7e0",
+          "outcome": "pass",
+          "tar_members": 296,
+          "unique_path_safe_regular_members": true
+        },
+        {
+          "check": "content_and_runtime_fixture_shape",
+          "counts": {
+            "articles": 230,
+            "cinema_people": 22,
+            "music_people": 22,
+            "packs": 131,
+            "questions": 4032
+          },
+          "outcome": "pass",
+          "retained_runtime_repair_bundles_exact": 6,
+          "runtime_fixture_packs": 8,
+          "strict_staging_revision_fixtures": 128
+        }
+      ],
+      "handoff": {
+        "next_gate": "Root independent review, fresh QA API/browser, remote Linux/rehearsal and release gates",
+        "package_json": "C:/ap/quiz_master/.run/culture_next5_release_20261013/package.json",
+        "release_evidence": "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT5_RELEASE_20261013/release-evidence.json"
+      },
+      "limitations": [
+        "Initial production wrapper produced a successful build log but no exit marker because flutter.bat was called without `call`; original artifact/log retained as LOG_ONLY_NO_EXIT_MARKER, and the corrected rerun is authoritative.",
+        "Local bash -n could not run because bash resolved to WSL with no installed distribution. The package records LF cutover bytes; root Linux validation remains required."
+      ],
+      "not_run": [
+        "Linux staging/rehearsal",
+        "backup/restore or rollback",
+        "browser",
+        "SSH/server",
+        "deployment/publication",
+        "Android gates"
+      ],
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-e801aac2b4844cabacaf93be3a1d78d0",
+    "run_id": "run-9e4d8aff077245fb9c423470f3ee7b8d",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-l7c Next5 fresh Flutter Web retained-repair package",
+    "version": 4,
+    "reviewer": "session-e0181ef99f16472abfccadcb01251b74",
+    "review_note": "Independent read-only package review, Claude Sonnet 5, session session-e0181ef99f16472abfccadcb01251b74. Re-extracted quiz-2026.10.13-culture-384d798.tar.gz and independently recomputed: archive sha256 f1b89f2d8a77... MATCHES evidence; 296 regular tar members, all unique path-safe names, no absolute/traversal paths, no symlinks/hardlinks, single flat set of expected top-level entries (no nested roots). checksums.txt: all 295 content-file entries verified against extracted bytes (sha256sum -c, 0 failures). api binary sha256 26e1657f... matches both the frozen stage and the declared unchanged production API baseline. web/main.dart.js sha256 1986ff2b... matches evidence and cutover.sh guard. metadata/tags.v1.json (taxonomy) sha256 98f0199... matches. cutover.sh is LF-only (0 CR bytes) and its production-image rollback guard correctly asserts the CURRENT production image sha256 ee2b454c...afcfbb1 (Helm43), not the prior Helm42/f219916 image - matches required rollback baseline per task brief. Content: catalog.json has exactly 131 packs summing to 4032 questions; question-articles.json has 230 articles (226 preserved byte-identical from V3 baseline + exactly 4 new, 0 changed/removed, confirmed by direct id-level diff against .run/culture_next4d_release_20261012/v3/quiz-2026.10.12-culture-f219916). Catalog diff against same baseline: 129/131 packs byte-identical, only cinema-people-20261011 and music-people-20261011 changed (20->22 questions each, i.e. the stated 4 new IDs cinema-people-021/022, music-people-021/022), no packs added or removed. Full recursive diff of entire baseline vs new stage tree shows no unexpected/foreign files and no missing files - only the files plausibly tied to the version bump, the People content, and the rebuilt web artifacts changed. runtime-bundles.json: exactly 6 of 8 keys byte-identical (the non-People fixtures), 2 changed (People) - matches 'six retained runtime repairs' claim. expected-staging-revisions.json: all 8 keys changed hashes, but this is disclosed in evidence (runtime_envelope_difference, new_absolute_staging_path) and confirmed by me to be a path/envelope artifact only - the underlying quizzes/ source files for non-People quiz ids are 100% byte-identical to baseline (diff -rq quizzes/ shows only the two People json files differ anywhere in the whole source tree). QA build artifact (qa-web-fresh, API base 127.0.0.1:18089) is correctly absent from the packaged tar. Production image sha256 ee2b454c...afcfbb1 and API sha256 26e1657f... both tie out to the current production baseline, not an older Helm image. NON-BLOCKING WARNING for root to weigh: rehearse.py (Linux-only rehearsal script, not run by this local gate) still hardcodes its secondary rollback-API source path as /opt/quiz-master/releases/quiz-2026.10.12-culture-42a2aaf/api (two releases back), unchanged since the V3 baseline; it is harmless because the sha256 assertion on that binary still correctly equals the unchanged API hash 26e1657f..., but the path string itself was not bumped to reference the actual current production baseline and is worth a cosmetic fix before/while root runs the Linux gates. This is a static local package review only; I did not run Linux syntax/rehearsal, browser, backup/restore, SSH, deployment, or Android gates, and this is not a full-bank or independent factual content certification - scope matches the task brief's stated limits."
+  },
+  "actual_report": "The review was submitted successfully: task `task-e801aac2b4844cabacaf93be3a1d78d0` now shows `state: \"ACCEPTED\"` with my verdict and full note attached.\n\n**Summary of my independent review (read-only, local static package gate only):**\n\n- Re-extracted the archive and **independently recomputed** the archive SHA256 — matches the recorded `f1b89f2d8a77...`. 296 regular tar members, all unique/path-safe, no absolute paths, traversal, symlinks, or nested roots.\n- All 295 `checksums.txt` entries verified clean against the extracted bytes.\n- API binary, `main.dart.js`, and taxonomy file hashes all match evidence.\n- `cutover.sh` is LF-only and its rollback-baseline guard correctly asserts the **current production image** `sha256:ee2b454c...` (Helm43), not the older Helm42/f219916 image — satisfying the key rollback-baseline requirement.\n- Content counts verified by direct inspection: 131 packs / 4032 questions / 230 articles / 22+22 People, with 226 prior articles preserved byte-identical plus exactly 4 new ones, and only the two People catalog packs changed (20→22) with zero other packs touched.\n- Full recursive tree diff against the V3 baseline confirmed no foreign/unexpected files were packaged.\n- The QA-only build (`127.0.0.1:18089`) is correctly excluded from the packaged tar.\n\nOne **non-blocking warning** disclosed to root: `rehearse.py`'s secondary rollback-API check still hardcodes a stale two-releases-back path (`...-42a2aaf`), though its hash assertion still correctly matches the unchanged API binary — cosmetic, not a correctness bug.\n\nVerdict submitted: **accept**, `error_count: 0`, with the warning flagged for root's attention before Linux/browser/publication gates.",
+  "limits": [
+    "Static exact-package review only; browser/Linux syntax/rehearsal/execution/publication remain separate",
+    "Secondary rollback API compatibility check retains42a2aaf file path; binary hash unchanged and current rollback-image guard correctlytargetsHelm43. Verify retained remote API path exists before prepare; do not silently change accepted archive."
+  ]
+}
