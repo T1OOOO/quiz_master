@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "check": "full-go",
+      "command": [
+        "go",
+        "test",
+        "./next/server/...",
+        "-count=1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 91.86,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_20261012\\full-go.txt",
+      "log_sha256": "dfe9a080e3fcef89cb34a8e3e657780b9c40bc6d7cf91d162493f86e89bde87b"
+    },
+    {
+      "check": "full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 59.75,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_20261012\\full-flutter.txt",
+      "log_sha256": "7dcca9a5970236e593603fe759cb7f7a7f3053522fadae0f4fcb85b7bed51a88"
+    },
+    {
+      "check": "flutter-analyze",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 41.84,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next5_20261012\\flutter-analyze.txt",
+      "log_sha256": "e1acf57cef2b5b3bf6df08762b143b8489c2dd486d0830983b165d8026499f3d"
+    }
+  ],
+  "scope": "Actual Go/Flutter/analyzer after frozen Next5 integration and4032 fixture updates. Freshbuild/browser/publication not certified."
+}

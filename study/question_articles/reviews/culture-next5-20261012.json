@@ -1,0 +1,92 @@
+{
+  "reviewer": "Independent Claude Sonnet V3 supplied-packet source review",
+  "author": "CULTURE_NEXT5_WRITER_V3_20261012",
+  "input_sha256": "d50ef565a7e2f42c5510bd67ade35a0c162a9a19eee65c6a6319df6754e3b456",
+  "actual_hub_task": "task-1d2b55761c764e35969d09c9c54632cb",
+  "review_limits": [
+    "Claude accepted the frozen V3 prose and source-ledger correction scope; it did not review generated canonical question-reference revisions.",
+    "Question-reference revision hashes were added during this integration and require a separate different-provider binding review."
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-021",
+      "verdict": "accept",
+      "article_sha256": "2cd274b619e3317abafafce90262c166b0ed8518609a40e54a467535b5d86c52",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "British Film Institute — La Dolce Vita",
+          "url": "https://www.bfi.org.uk/film/85387dcd-04ae-50fe-b860-89be5a907115/la-dolce-vita",
+          "accessed": "2026-10-12",
+          "supports": "Мастроянни сыграл журналиста Марчелло Рубини; фильм вышел в 1960 году.; BFI связывает фильм с распространением слова paparazzi."
+        },
+        {
+          "title": "British Film Institute — La Dolce Vita Rome locations",
+          "url": "https://www.bfi.org.uk/features/dolce-vita-federico-fellini-rome-locations",
+          "accessed": "2026-10-12",
+          "supports": "Мастроянни сыграл журналиста Марчелло Рубини; фильм вышел в 1960 году.; В фильме есть статуя Христа над Римом, фонтан Треви и Виа Венето; улица преимущественно воссоздана в студии."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-022",
+      "verdict": "accept",
+      "article_sha256": "ab50f51edd76af63886cbc76d288ee70185f826be6301c48bc6decbb84962712",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "American Film Institute Catalog — The Apartment",
+          "url": "https://catalog.afi.com/Film/53080-THE-APARTMENT",
+          "accessed": "2026-10-12",
+          "supports": "Ширли Маклейн сыграла Фрэн Кубелик, Джек Леммон — Бадди Бакстера, Фред Макмюррей — Шелдрейка.; Уайлдер и Даймонд написали фильм для Леммона; источником вдохновения был персонаж из «Краткой встречи».; Ночные экстерьеры снимали в Нью-Йорке, а офисный интерьер построили в Лос-Анджелесе с принудительной перспективой."
+        },
+        {
+          "title": "AFI Silver — The Apartment",
+          "url": "https://silver.afi.com/movies/detail/0100002554/",
+          "accessed": "2026-10-12",
+          "supports": "Ширли Маклейн сыграла Фрэн Кубелик, Джек Леммон — Бадди Бакстера, Фред Макмюррей — Шелдрейка."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-021",
+      "verdict": "accept",
+      "article_sha256": "174c250bf2116b7625bcf0d58360d04bcbc2f9bf9d72e88dbe747155c15e4a70",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "Rock and Roll Hall of Fame — Sister Rosetta Tharpe",
+          "url": "https://rockhall.com/inductees/sister-rosetta-tharpe/",
+          "accessed": "2026-10-12",
+          "supports": "Rock Hall характеризует Тарп как гитаристку госпела с Gibson Les Paul Custom и описывает её выступление в Cotton Club осенью 1938 года."
+        },
+        {
+          "title": "Rock and Roll Hall of Fame catalogue — Gospel Train",
+          "url": "https://catalog.rockhall.com/rrhof-ais/Details/fullCatalogue/200039663",
+          "accessed": "2026-10-12",
+          "supports": "Тарп указана вокалисткой Gospel Train; каталог приводит названия композиций альбома."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-022",
+      "verdict": "accept",
+      "article_sha256": "93c9b5119862d5c7dc8bd7daa22de73088092380198e2464e95465fa6324ff16",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "Rock and Roll Hall of Fame — Big Mama Thornton",
+          "url": "https://rockhall.com/inductees/big-mama-thornton/",
+          "accessed": "2026-10-12",
+          "supports": "Rock Hall называет версию Торнтон оригинальной версией сингла Hound Dog 1953 года."
+        },
+        {
+          "title": "Smithsonian Folkways booklet — Hound Dog",
+          "url": "https://folkways-media.si.edu/docs/folkways/artwork/ARH09043.pdf",
+          "accessed": "2026-10-12",
+          "supports": "Буклет приписывает Либеру и Столлеру авторство песни и передаёт воспоминание Торнтон о работе с группой Джонни Отиса.; В буклете 1966 года Торнтон указана вокалисткой, а на некоторых треках — исполнительницей ударных и губной гармоники."
+        }
+      ]
+    }
+  ]
+}

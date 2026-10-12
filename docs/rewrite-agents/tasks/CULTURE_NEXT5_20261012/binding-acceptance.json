@@ -1,0 +1,82 @@
+{
+  "actual_fix_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Rawfinal legacySHA equals existingmanifest sourceSHA bothpacks, LFonly, semanticallyidentical oldsource and acceptedquestions. Updatedevidence actualselfcheck. No releasecertification.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\quizzes\\Cinema\\People\\cinema_people_20261011.json",
+      "C:\\ap\\quiz_master\\quizzes\\MusicPeople\\music_people_20261011.json",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT5_20261012\\integration-evidence.json"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Actual Claude binding taskf2b REWORK1 sourceSHA mismatch independently reproduced by Root. Bothmanifest sourceSHA equals LF-normalized final legacysourceSHA; currentactualfilesCRLF. Fix ONLY final legacybytes toLF using write_bytes, preserveJSONvalues. Do NOT setmanifestSHAtoWindowsCRLFhash becauseGitLinux source isLF. Update integration-evidence actualfix/fresh sourcehashselfcheck and outputhashes. PreserveactualearlierREWORKhistory. No other sourcechanges/fulltests/build/Git/SSH/browser/children. Root scopedactualClauderereviewafterfrozenfix.",
+    "created_at": 1791837529.5399795,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-30a2dac236274b759c52afb0d2bbd1c1",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_paths": [
+        "C:/ap/quiz_master/quizzes/Cinema/People/cinema_people_20261011.json",
+        "C:/ap/quiz_master/quizzes/MusicPeople/music_people_20261011.json",
+        "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/integration-evidence.json"
+      ],
+      "evidence": [
+        {
+          "carriage_returns": 0,
+          "check": "cinema_raw_source_binding",
+          "json_semantics_preserved": true,
+          "manifest_source_sha256_match": true,
+          "outcome": "pass",
+          "raw_sha256": "bd0420ab6c7e8e0fb862adf999e5b1e4861221a085656167a1d395c15d2956f4"
+        },
+        {
+          "carriage_returns": 0,
+          "check": "music_raw_source_binding",
+          "json_semantics_preserved": true,
+          "manifest_source_sha256_match": true,
+          "outcome": "pass",
+          "raw_sha256": "721d2354f24a0a7eaf676c52e6f794d2dade4104339014cecb2700c08058b24e"
+        },
+        {
+          "check": "evidence_record",
+          "outcome": "pass",
+          "path": "docs/rewrite-agents/tasks/CULTURE_NEXT5_20261012/integration-evidence.json",
+          "sha256": "e9dbc8dc264ab44744d7bf900159fc7bb88a1d4d4768e68f30444e01d7b3f240"
+        }
+      ],
+      "next_gate": "Root-scoped different-provider rereview and root-owned gates.",
+      "not_run": [
+        "full tests",
+        "build",
+        "browser",
+        "SSH/server",
+        "Git",
+        "deployment"
+      ],
+      "snapshot_limitation": "Original evidence snapshot SHA 3cde4d92cfa8c47beeb264fea481a9f8c9e46b8482c78241bd2213377a1f5a4f is unavailable locally. No reconstructed or mismatched v1 snapshot was written.",
+      "status": "completed_local_fix_pending_root_scoped_rereview"
+    },
+    "root_task_id": "task-30a2dac236274b759c52afb0d2bbd1c1",
+    "run_id": "run-05f312489c9b4a2683d91a7725355385",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-l7c Next5 fix final legacy LF provenance binding",
+    "version": 4,
+    "reviewer": "session-d17596fa824b4346800acf01fdb29c4d",
+    "review_note": "Independent read-only recheck of the LF-serialization fix, no files edited. Recomputed sha256 of both current legacy files directly: cinema file = bd0420ab6c7e8e0fb862adf999e5b1e4861221a085656167a1d395c15d2956f4, music file = 721d2354f24a0a7eaf676c52e6f794d2dade4104339014cecb2700c08058b24e. Both now exactly equal the respective manifest.json source_sha256 fields that I previously flagged as mismatched in REWORK1 - binding fixed. Confirmed both files are pure LF (0 CRLF pairs, 0 lone CR) by byte scan. git diff vs af3a802 on the two legacy files still shows only the same 28-line pure-append diff per file as in my original review; parsed JSON semantics identical (old 20 entries byte-identical, same 2 new entries each, same correct_answer indices). Confirmed manifest/draft/bundle/catalog.json/question-articles.json sha256 are byte-identical to the values already in integration-evidence.json and to what I reviewed previously - this fix touched only the two legacy files plus integration-evidence.json, as claimed; no manifest/canonical/catalog rewrite. Word counts remain 128/119/112/118 (whitespace split of writer-v3.json), correctly documented; the stale 126/121/120/121 figure stays only in the older claude-v3-acceptance.json record, not rewritten, as instructed. root-gates.json full-go/full-flutter/flutter-analyze are logged exit 0 with log hashes; not re-run by me, out of scope for this narrow recheck, not certifying build/UI/publication. My original REWORK (manifest source_sha256 provenance defect, error_count 1) stands as accurate history; this fix resolves exactly that defect via LF-only serialization of the two legacy files, nothing else. No edits/builds/tests/browser/SSH/Git mutations performed. Accept."
+  },
+  "actual_report": "Review submitted: **state: ACCEPTED, error_count: 0** for task-30a2dac236274b759c52afb0d2bbd1c1.\n\n**Verdict: ACCEPT.** The narrow LF-serialization fix resolves exactly the provenance defect I found in my prior REWORK: both legacy files' raw sha256 now equal their manifests' `source_sha256` (bd0420ab.../721d2354...), both files are byte-confirmed pure LF, and the fix touched nothing else — all manifest/draft/bundle/catalog.json/question-articles.json hashes remain byte-identical to what I reviewed before, and JSON semantics of the two legacy files are unchanged from my original review (same 22 entries, same correct-answer indices). My original REWORK history stands unaltered as an accurate record of what was wrong at the time.\n\nScope stays narrow as instructed: full Go/Flutter/analyzer gates are logged separately in root-gates.json (exit 0) but weren't re-run by me — this review doesn't certify build/UI/publication, only the binding fix.",
+  "integration_evidence_sha256": "e9dbc8dc264ab44744d7bf900159fc7bb88a1d4d4768e68f30444e01d7b3f240",
+  "previous_review": "Actual full binding review REWORK1, all other parity/privacy/bindings PASS; preserved binding-v1-rework.json. Actual same-context different-provider narrow LF fix accepted; original task history retained.",
+  "limits": [
+    "Canonical import and reader binding only; no browser/build/publication or full-bank factual certification",
+    "Original reviewed evidence bytes unavailable; recorded original SHA and actual REWORK preserved, no reconstructed snapshot claimed"
+  ]
+}
