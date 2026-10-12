@@ -1,0 +1,335 @@
+{
+  "verified_at_utc": "2026-10-12T08:00:54.814391+00:00",
+  "published_version": {
+    "buildId": "quiz-2026.10.12-culture-7d7a163",
+    "commit": "7d7a163cc2b8b9232d0d1210593d68851b8859e2",
+    "source_commit": "7d7a163cc2b8b9232d0d1210593d68851b8859e2",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4016,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 214,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "f75f570a335d9aea7344053b55743eb5a1ed4dc6e4b42bf37860c5a5f23d0037",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "package_sha256": "963506713317c279bb1b4490b4f52eee59d68445cc8526ac99c7d3d10179af66",
+  "helm_revision": 38,
+  "image": "sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-7d7a163.tar",
+  "durable_archive_sha256": "a2952cf70bff4ebb5f0fe0f781e9f346329ab2aa9549a8f04223673b6449bdd9",
+  "static_review": {
+    "actual_hub_state": "ACCEPTED",
+    "task_id": "task-b07a5578709b4668b65972e97727a6a9",
+    "reviewer": "session-446d630d09864042b8070a71665ee9f2",
+    "event_id": 30496,
+    "package_sha256": "963506713317c279bb1b4490b4f52eee59d68445cc8526ac99c7d3d10179af66",
+    "actual_cli_exit": 0,
+    "review_note": "static checks pass: archive sha 9635067133... matches package.json, flat layout, no links/bytecode, 296 staged files, counts 131/4016/214 match evidence, fresh web js f75f570a... and unchanged api 26e1657f... match stage shas, fixtures 112q/14+14 people, old 212 articles/13 questions preserved, cutover.sh+rehearse.py guards present (mode, hostname, image/pvc identity, sha256, re.escape)",
+    "limits": [
+      "Original Haiku returned prose without callback; Sonnet resume performed actual callback.",
+      "Fresh JS changed from baseline; API unchanged. Original Haiku report contained incorrect unchanged-JS claim and invented timestamp, superseded by actual callback.",
+      "Static inspection does not execute server rehearsal or publication."
+    ]
+  },
+  "execution_review": {
+    "actual_hub_state": "ACCEPTED",
+    "task_id": "task-5d7859ba247d48ef88b17133992992ab",
+    "reviewer": "session-517ce0cb192d4798bd9758cfc4e86dea",
+    "actual_hub_event": 30539,
+    "package_sha256": "963506713317c279bb1b4490b4f52eee59d68445cc8526ac99c7d3d10179af66",
+    "image": "sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+    "actual_final_cli_exit": 0,
+    "review_note": "Verified package/archive sha256 (9635067...), remote-prepare.txt log sha256, and both local QA answer-file sha256 (music/cinema, 14/14) all match execution-packet.json claims; source_commit matches current repo HEAD. Durable archive on remote host not independently verifiable locally. Packet honestly discloses unexecuted scope: no actual publish/live browser verification, AFI source not clicked, fresh main.dart.js not yet QA'd live.",
+    "limits": [
+      "Initial execution reviewer timeout180s after invalid list scans; resumed Sonnet actual callback accepted.",
+      "Reviewer did not SSH; durable archive verified by lead server command.",
+      "Published exact production-JS mobile QA remains pending."
+    ]
+  },
+  "public_verification": {
+    "main.dart.js": "f75f570a335d9aea7344053b55743eb5a1ed4dc6e4b42bf37860c5a5f23d0037",
+    "assets/assets/catalog.json": "76066a4c9a1bd98811b96464f583ee5e1fe9a0dc35f514e22cbfaaba820520a0",
+    "assets/assets/study/question-articles.json": "38557533f5e607057a563d56432b5c04e1052d5b55ef1f0836f1985997433d44",
+    "repaired_questions": [
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-54",
+        "revision": {
+          "number": 1,
+          "sha256": "988e62fbb5c94c10d86bb41975136188becdab26302ca331d2871e32c93335b1"
+        },
+        "stem": "Любовь к запахам называется",
+        "options": [
+          {
+            "option_id": "q-philias-100-54-opt-1",
+            "text": "Осмофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-2",
+            "text": "Ольфактофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-3",
+            "text": "Офрезиофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-4",
+            "text": "Ароматофилия"
+          },
+          {
+            "option_id": "q-philias-100-54-opt-5",
+            "text": "Бромидрофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 5,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "philias-lifestyle-part-1",
+        "question_id": "q-philias-100-59",
+        "revision": {
+          "number": 1,
+          "sha256": "d6db109169542120ae95148ae34923026595f1f9986bd29085552ba04621c344"
+        },
+        "stem": "Любовь к красному цвету — это",
+        "options": [
+          {
+            "option_id": "q-philias-100-59-opt-1",
+            "text": "Гематофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-2",
+            "text": "Эритрофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-3",
+            "text": "Эреутофилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-4",
+            "text": "Руброфилия"
+          },
+          {
+            "option_id": "q-philias-100-59-opt-5",
+            "text": "Розофилия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Philias/philias_lifestyle_part_1.json"
+        },
+        "answer_kind": "single_choice"
+      },
+      {
+        "quiz_id": "phobias-nature",
+        "question_id": "q-phobias-part-8-20",
+        "revision": {
+          "number": 1,
+          "sha256": "dc3382adea3f953ce1e05c2fb77ad8f8bda3e51482b784407bd0bb714250c275"
+        },
+        "stem": "Как называется интенсивный страх огня?",
+        "options": [
+          {
+            "option_id": "q-phobias-part-8-20-opt-1",
+            "text": "Астрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-2",
+            "text": "Пирофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-3",
+            "text": "Акрофобия"
+          },
+          {
+            "option_id": "q-phobias-part-8-20-opt-4",
+            "text": "Клаустрофобия"
+          }
+        ],
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "source": {
+          "uri": "/app/quizzes/Psychology/phobias_nature.json"
+        },
+        "answer_kind": "single_choice"
+      }
+    ],
+    "phobias_new_revisions": 9,
+    "home_alone_exact_questions": 25,
+    "version": {
+      "buildId": "quiz-2026.10.12-culture-7d7a163",
+      "commit": "7d7a163cc2b8b9232d0d1210593d68851b8859e2",
+      "source_commit": "7d7a163cc2b8b9232d0d1210593d68851b8859e2",
+      "local_build": true,
+      "packs": 131,
+      "questions": 4016,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 214,
+      "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+      "main_dart_js_sha256": "f75f570a335d9aea7344053b55743eb5a1ed4dc6e4b42bf37860c5a5f23d0037",
+      "taxonomy_id": "qm-tags-v1",
+      "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+      "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+    },
+    "live_question_article_bindings": 93
+  },
+  "published_mobile_qa": {
+    "cinema": {
+      "score": 14,
+      "questions": 14,
+      "viewport": [
+        390,
+        844
+      ],
+      "answer_evidence_sha256": "965ecf193ca5733fc0661e0a9cb89a73548beb33245a4876e824545714ee65fc",
+      "screenshot_hashes": {
+        "live-cinema-people-014.png": "1ec8ddf489e1dd36eaef6b77962a630e698511a75eac8c28c7dd88d31f34fd6f",
+        "live-hoffmann-article.png": "1cd65487ced1225aecfb87aea9b290bd8c5a83aa6762af59ba07e48718195daa"
+      },
+      "scope": "Observed UI buttons selected using canonical source keys; grading and flow proof, independent fact reviews separately recorded."
+    },
+    "music": {
+      "score": 14,
+      "questions": 14,
+      "viewport": [
+        390,
+        844
+      ],
+      "answer_evidence_sha256": "d8de3465914f326745402d2363be660577a73b8e4d4d5d7239f28af7e220fc2f",
+      "screenshot_hashes": {
+        "live-music-people-014.png": "da3f0e346c72d42c940b330df9470790a5073207b2cca16609ebb4be004513fb",
+        "live-kate-article.png": "0d35a1d72eb8980870b2018cbdfa8548e165d0315376db9315e87bb91cd7bc3b"
+      },
+      "scope": "Observed UI buttons selected using canonical source keys; grading and flow proof, independent fact reviews separately recorded."
+    }
+  },
+  "server_gates": {
+    "prepare_exit": 0,
+    "publish_exit": 0,
+    "health_exit": 0,
+    "backup_restore": "PASS",
+    "copy_fixture_questions": 112,
+    "old_rows_preserved": true,
+    "copy_feedback_lifecycle": "PASS",
+    "old_api_rollback": "PASS",
+    "same_pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "ready_replicas": 1,
+    "available_replicas": 1,
+    "node_pressures": false
+  },
+  "feedback": {
+    "columns": [
+      "id",
+      "participant_id",
+      "request_id",
+      "payload_digest",
+      "type",
+      "item_ids",
+      "comment",
+      "context",
+      "screenshot",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "count": 26,
+    "status_counts": [
+      [
+        "open",
+        26
+      ]
+    ],
+    "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13"
+  },
+  "logs_sha256": {
+    "remote-prepare.txt": "195e303785138a79c9b9969aeee0cf131d25ea008fc2ee4c7bf8776f6e1241df",
+    "publish.txt": "4e0cc4497327e559045bda338791a71a35919fb772753c8c675ca22b6f655058",
+    "final-health.txt": "64d5528e1a41effc8860964d7c292f24bfebdd8a5e787e43e335e207a52ad181"
+  },
+  "source_gates": {
+    "counts": {
+      "packs": 131,
+      "questions": 4016,
+      "articles": 214
+    },
+    "actual_binding_acceptance_event": 30387,
+    "full_go_exit": 0,
+    "flutter_tests": 115,
+    "flutter_test_exit": 0,
+    "analyzer": "No issues found",
+    "source_changes": "Two accepted questions/articles plus neutral People descriptions; three existing count fixtures adjusted. No application implementation changed.",
+    "runtime_reload": "DTD discovery found no active app; hot reload attempt could not connect. Only test fixtures changed in Dart.",
+    "local_browser": "In progress with reused previously compiled QA UI; Dart source/dependency equality asserted, fresh4016/214assets copied. No production writes.",
+    "limits": [
+      "Package, server rehearsal, release approval and published browser gates pending.",
+      "26 real feedback reports unchanged/open.",
+      "No physical screen reader or Android APK check."
+    ],
+    "go-final.log_sha256": "125e4e15cbf525098c2649bc0f17a2e8addcd6835c2b8d181b5c0e80e4be6ebf",
+    "go-final.exit.txt_sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "flutter-tests.log_sha256": "f7383d3a7ac93d7494f91bdb0f1b853a62255edeae11c681ef0fed2680fa1020",
+    "flutter-tests.exit.txt_sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "flutter-analyze.log_sha256": "3df0cc7d5c2b51838d221349b0c63e6c7d7d1b6e414dce3ae9ad4b6158c96771"
+  },
+  "preserved": {
+    "old_people_questions_each": 13,
+    "prior_articles": 212,
+    "unrelated_catalog_rows": 129,
+    "foreign_file_hashes": 69
+  },
+  "local_source_click_scope": {
+    "viewport": [
+      390,
+      844
+    ],
+    "proofs": {
+      "music": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next2_integration_20261012\\local-music-answers.json",
+        "sha256": "61b7018846b53dd4793937d53a95fb9450740ea74ac3b5392604b07c22b546ea",
+        "score": 14,
+        "question_count": 14
+      },
+      "cinema": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next2_integration_20261012\\local-cinema-answers.json",
+        "sha256": "76e62912640ee72ebcbad9d936b6912a253b780d7f2b960c1670eb087239f799",
+        "score": 14,
+        "question_count": 14
+      }
+    },
+    "new_questions_visible_options": 4,
+    "no_spoken_option_ids": true,
+    "both_question_screenshots_viewed": true,
+    "both_article_screenshots_viewed": true,
+    "source_click_targets": [
+      "https://www.katebush.com/hounds-of-love/",
+      "https://music.katebush.com/buy/hounds-of-love/",
+      "https://www.bfi.org.uk/features/tales-hoffmann-exclusive-materials-making-powell-pressburger-masterpiece"
+    ],
+    "source_click_limit": "Kate Bush and BFI readable page headings verified. Fish People target URL opened; no UI body read claimed. AFI not clicked in this QA; native research encountered403 while lead earlier fetched it.",
+    "browser_closed": true,
+    "api_proxy_stopped": true
+  },
+  "limits": [
+    "Full-bank factual and answer-option audit remains open.",
+    "26 real feedback reports remain open; no report status changed.",
+    "AFI native source fetch403; lead earlier web fetch succeeded. Local QA did not click AFI.",
+    "Physical screenreader and Android APK were not checked.",
+    "Local QA reused unchanged Dart/deps compilation; published browser QA used fresh production JS."
+  ],
+  "process_corrections": [
+    "Short source metadata corrected to exact40hex before server upload; original archive retained.",
+    "Lead publication values guard stale short hash corrected before independent execution review/publication.",
+    "Initial Haiku static prose omitted callback, invented timestamp and misstated JS unchanged; actual Sonnet callback30496 supersedes it.",
+    "Initial execution reviewer timed out180s after invalid task-list scans; resumed reviewer actual callback30539 and exit0."
+  ]
+}
