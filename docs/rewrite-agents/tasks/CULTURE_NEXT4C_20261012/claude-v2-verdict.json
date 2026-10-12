@@ -1,0 +1,47 @@
+{
+  "task_id": "task-4203c866522b420188061d5e01593918",
+  "actual_hub_state": "ACCEPTED",
+  "reviewer": "session-bf432f38126f4910916ee33cac4961d2",
+  "review_note": "Independent Claude (anthropic/claude-sonnet-5) review of root-v2.json. SHA256 of root-v2.json independently recomputed and matches exactly: 7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3. Candidate questions/options/keys unchanged from writer-v1 (confirmed by diff against writer-v1.json) — no answer-meaning change. Independently opened all three new/changed sources: (1) BFI 'Kim Novak: 10 essential films' confirms Novak plays the 'Madeleine/Judy' dual role in Vertigo, corroborating the corrected distractor_reasoning that Madeleine is Novak's character, not Bergman's — the false-Bergman claim and the article's prior misattribution are both gone from v2, and the Casablanca marriage-chronology wording is now present-tense ('жена лидера Сопротивления', no 'позже становится'), resolving both v1 REWORK items. (2) BFI 'Tokyo Story: anatomy of a classic' directly states Noriko is the widowed daughter-in-law of the son (Shoji) killed in the war — this fully supports the previously-uncited war-widow claim now in the claim ledger. (3) Songwriters Hall of Fame Willie Dixon profile directly credits Dixon as writer and Muddy Waters as first/hit performer of Hoochie Coochie Man, a sound replacement for the LOC overview page that failed for both root and me. Also independently verified the new Casablanca article additions (Michael Curtiz as director, Vichy-controlled Morocco setting during WWII) against the same cited BFI Casablanca page — both directly supported. No residual factual, chronology, or sourcing errors found in any of the four items' article/explanation/distractor_reasoning/claim_ledger. Noting for the record per the task's framing: my earlier 403 on the old LOC registry-overview URL and root's 'Internal Error' on the same URL are my/root's own access observations at the time, not a claim that the native writer's original eight-successful-opens report was fabricated; v2 correctly resolves the gap by substituting a source I could independently open rather than relitigating that discrepancy. AFI search-only corroboration is correctly excluded from the public source list, consistent with 'search result, not opened page.' Draft-only; no canonical import, build, or publication implied by this acceptance.",
+  "input_sha256": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Actual different-provider source/options review callback for exact RootV2 draft, no unsupported claims or two correctanswers; original V1failure remains preserved.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Four corrected draft questions/articles. Preserve writerV1REWORK. RootV2 fixes Casablanca article/distractor attribution and marriage chronology; adds actually opened BFI Tokyo anatomy for war widow detail; replaces failed generalLOCoverview with actually opened Songwriters Hall of Fame page. Candidate keys unchanged; difficultyestimates only. Draft-only no canonical/source release change. Independent Claude must verify exact V2hash/allclaims/sourceaccess and no remaining falseattributions before import.",
+    "created_at": 1791813178.8452108,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-4203c866522b420188061d5e01593918",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "checks": "Root4structuralPASS, articles108/110/107/105words, oldcandidateoptions/keysunchanged. Casablanca article ANDprivateMadeleinerationale corrected; BFIactualTokyoanatomyadded; failedLOCoverviewreplacedSongwritersHallactualopened; oldmislabelledledgerremoved.",
+      "evidence": [
+        "root-v2-checks.json",
+        "REWORK_V2_EN.md"
+      ],
+      "input": "docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/root-v2.json",
+      "limitations": "Draft-only, noimport/publication. ActualnativeV1REWORK andPeople34auditACCEPT preserved; independentcorrectedgate required.",
+      "sha256": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3",
+      "status": "READY_FOR_INDEPENDENT_REVIEW"
+    },
+    "root_task_id": "task-4203c866522b420188061d5e01593918",
+    "run_id": "run-ecc02379b35a452988db1a21ae90732c",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next4C corrected Root V2 independent gate (Beads quiz_master-3vw)",
+    "version": 4,
+    "reviewer": "session-bf432f38126f4910916ee33cac4961d2",
+    "review_note": "Independent Claude (anthropic/claude-sonnet-5) review of root-v2.json. SHA256 of root-v2.json independently recomputed and matches exactly: 7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3. Candidate questions/options/keys unchanged from writer-v1 (confirmed by diff against writer-v1.json) — no answer-meaning change. Independently opened all three new/changed sources: (1) BFI 'Kim Novak: 10 essential films' confirms Novak plays the 'Madeleine/Judy' dual role in Vertigo, corroborating the corrected distractor_reasoning that Madeleine is Novak's character, not Bergman's — the false-Bergman claim and the article's prior misattribution are both gone from v2, and the Casablanca marriage-chronology wording is now present-tense ('жена лидера Сопротивления', no 'позже становится'), resolving both v1 REWORK items. (2) BFI 'Tokyo Story: anatomy of a classic' directly states Noriko is the widowed daughter-in-law of the son (Shoji) killed in the war — this fully supports the previously-uncited war-widow claim now in the claim ledger. (3) Songwriters Hall of Fame Willie Dixon profile directly credits Dixon as writer and Muddy Waters as first/hit performer of Hoochie Coochie Man, a sound replacement for the LOC overview page that failed for both root and me. Also independently verified the new Casablanca article additions (Michael Curtiz as director, Vichy-controlled Morocco setting during WWII) against the same cited BFI Casablanca page — both directly supported. No residual factual, chronology, or sourcing errors found in any of the four items' article/explanation/distractor_reasoning/claim_ledger. Noting for the record per the task's framing: my earlier 403 on the old LOC registry-overview URL and root's 'Internal Error' on the same URL are my/root's own access observations at the time, not a claim that the native writer's original eight-successful-opens report was fabricated; v2 correctly resolves the gap by substituting a source I could independently open rather than relitigating that discrepancy. AFI search-only corroboration is correctly excluded from the public source list, consistent with 'search result, not opened page.' Draft-only; no canonical import, build, or publication implied by this acceptance."
+  },
+  "scope": "Exact draft/report review only; no canonical import or published update"
+}

@@ -1,0 +1,58 @@
+{
+  "status": "ACCEPTED_DRAFTS_AND_FROZEN_OPTION_PROPOSALS",
+  "new_drafts": 4,
+  "new_miniarticles": 4,
+  "existing_questions_editorially_inspected": 34,
+  "approved_option_proposals": 4,
+  "reviews": {
+    "claude-v1-rework.json": {
+      "state": "REWORK",
+      "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+      "input_sha256": "0c68bc807de36fb256e055ef2584a7e8b59c6476799dc17031fb8d1064d1da61"
+    },
+    "claude-audit-acceptance.json": {
+      "state": "ACCEPTED",
+      "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+      "input_sha256": "81a1dedd6a8bb164ab61f850a0182faaafb656e765841a28fec2e9660f8bf4ae"
+    },
+    "claude-v2-verdict.json": {
+      "state": "ACCEPTED",
+      "reviewer": "session-bf432f38126f4910916ee33cac4961d2",
+      "input_sha256": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3"
+    }
+  },
+  "current_production": {
+    "build": "quiz-2026.10.12-culture-939f231",
+    "helm_revision": 41,
+    "questions": 4022,
+    "miniarticles": 220
+  },
+  "production_changes_in_this_checkpoint": false,
+  "successor_integration_task": "task-08bc23f70f5d493a9b6a59219c88da29",
+  "next_gates": [
+    "Canonical import/parity and independent binding review",
+    "Appropriate tests/fresh build/staged restore/rollback",
+    "Independent release acceptance and exact live browser verification"
+  ],
+  "limits": [
+    "No whole-bank factual certification",
+    "No Android or physical screen-reader verification",
+    "Disk capacity95% follow-up still open",
+    "Native role selection did not verify cheaper model override"
+  ],
+  "evidence_hashes": {
+    "approved-option-changes.json": "3dbb53cbec3546d3721d66703633c9ab40fed1d3b49d77e839da6f50086da8aa",
+    "candidate.json": "05d76cbe061b15de5c10ad9539864a20b145f97c6a9823305aa8d20d80967aa6",
+    "claude-audit-acceptance.json": "d9df8978c2b97fda4bf56fe7a35b24cc758ae653313a9e3aa6c5fcd6502d1278",
+    "claude-v1-rework.json": "60cc96c024ac96da36e855725386c56b4fcf6e4cb47303b54fd20ae3ccd69a94",
+    "claude-v2-verdict.json": "4b227513941bda882e5d5e18926ea6db40a8ca77adad874960512f0a6bf5142f",
+    "existing-culture-stems.json": "3e5ed881333172d789ae85549884435bc375ccbcb495f545612a3d0fa7a90cd8",
+    "feedback-inventory.json": "84b10bee0a11211bdf9e0ce9d600fb13c7c3f8ee4d4854f99959de9af32bcac7",
+    "people34-option-audit.json": "81a1dedd6a8bb164ab61f850a0182faaafb656e765841a28fec2e9660f8bf4ae",
+    "root-checks.json": "4426c90c122448ff2fd9caaf8d45a2ae212fe47f0b6cfd3f0f40b9ef813ed707",
+    "root-v2-candidate.json": "05d76cbe061b15de5c10ad9539864a20b145f97c6a9823305aa8d20d80967aa6",
+    "root-v2-checks.json": "587c4a87a0fb924d3392ebe763fc9b69f8bf9779c6d74451f6b9c2032d3fc42d",
+    "root-v2.json": "7f22fb4f3943c8115eafc6bf880f7f1bcb82569c4f4caa17d952678cb90c59e3",
+    "writer-v1.json": "0c68bc807de36fb256e055ef2584a7e8b59c6476799dc17031fb8d1064d1da61"
+  }
+}

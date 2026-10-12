@@ -1,0 +1,22 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "author": "session-5646e79bac0748e5bd6b0ea3a0eb901a",
+  "task_id": "task-7855db38f797480db5aae53e7e96edde",
+  "scope": {"bundles": 2, "questions_inspected": 34, "candidate_first": true, "candidate_answers_matching_private_keys": "34/34 (author report, not source certification)"},
+  "findings": [
+    {"question_id":"cinema-people-006","key":"Маргарет Сиксел (opt-2)","priority":"P2","current_options":["Дженни Бивен","Маргарет Сиксел","Джон Сил","Колин Гибсон"],"defect":"Три дистрактора известны по другим профессиям в том же фильме, поэтому правильный ответ — единственный монтажёр.","proposed_parallel_options":["Тельма Скунмейкер","Маргарет Сиксел","Салли Менке","Энн В. Коутс"],"answer_meaning_source_verification_required":false},
+    {"question_id":"cinema-people-009","key":"Роберт Краскер (opt-2)","priority":"P2","current_options":["Антон Карас","Роберт Краскер","Грэм Грин","Александр Корда"],"defect":"Все неверные варианты относятся к иным ролям фильма, поэтому ответ угадывается по профессии.","proposed_parallel_options":["Джек Кардифф","Роберт Краскер","Фредди Фрэнсис","Дуглас Слокомб"],"answer_meaning_source_verification_required":false},
+    {"question_id":"cinema-people-015","key":"Для наблюдения за нюансами общения при анимации персонажей (opt-2)","priority":"P3","current_options":["Для автоматического переноса движений на цифровые модели","Для наблюдения за нюансами общения при анимации персонажей","Для создания текстур внешности цифровых персонажей","Для синтеза новых реплик голосами исполнителей"],"defect":"Правильный вариант самый длинный и единственный описывает человеческое взаимодействие.","proposed_parallel_options":["Чтобы переносить движения актёров на цифровых персонажей","Чтобы аниматоры видели нюансы взаимодействия актёров","Чтобы создавать текстуры лиц цифровых персонажей","Чтобы синтезировать реплики голосами актёров"],"answer_meaning_source_verification_required":false},
+    {"question_id":"music-people-007","key":"A-Tisket, A-Tasket (opt-4)","priority":"P2","current_options":["Judy","How High the Moon","Summertime","A-Tisket, A-Tasket"],"defect":"Слово «детскую» делает единственную детскую песенку среди трёх стандартов явным ответом.","proposed_parallel_options":["Mary Had a Little Lamb","Twinkle, Twinkle, Little Star","Pop Goes the Weasel","A-Tisket, A-Tasket"],"answer_meaning_source_verification_required":false}
+  ],
+  "reorder_only": [
+    {"question_ids":["cinema-people-002","cinema-people-003"],"priority":"P3","defect":"Два подряд вопроса о двух актёрских «Оскарах» фильма «Пианино».","proposal":"Перенести cinema-people-003 после cinema-people-010."},
+    {"question_ids":["cinema-people-004","cinema-people-005"],"priority":"P3","defect":"Соседние вопросы проверяют лучший фильм и режиссуру одного «Оскара» 2020 года.","proposal":"Перенести cinema-people-005 после cinema-people-012."},
+    {"question_ids":["cinema-people-008","cinema-people-009"],"priority":"P3","defect":"Подряд идут режиссёр и оператор «Третьего человека».","proposal":"Перенести cinema-people-009 после cinema-people-012."},
+    {"question_ids":["music-people-006","music-people-007"],"priority":"P3","defect":"Два соседних вопроса об Элле Фицджеральд.","proposal":"Перенести music-people-007 после music-people-011."},
+    {"question_ids":["music-people-008","music-people-009","music-people-010"],"priority":"P3","defect":"Три вопроса в близком диапазоне используют один формат Rock & Roll Hall of Fame.","proposal":"Перенести music-people-009 после music-people-013, а music-people-010 после music-people-015."}
+  ],
+  "checks": {"command":"PowerShell ConvertFrom-Json structural audit","result":"17 questions per bundle; every question has four distinct option texts; invalid_option_sets=0","sha256":{"cinema":"e762924a12097822b1238eccde82dc73eabf3ce17724b71957daa7c3a7d4dd21","music":"5048d9ae14d6df35f2b0f7898cc6a4751a94734c3f2bc1568b9f58e07bb54bf4"}},
+  "remaining_risks": ["Editorial answer-quality audit only; no source URLs opened.","No answer/key meaning changed or production edits made.","Different-provider reviewer must check proposed replacements before application."],
+  "usage":"not exposed"
+}

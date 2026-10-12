@@ -1,0 +1,172 @@
+{
+  "task_id": "task-7855db38f797480db5aae53e7e96edde",
+  "actual_hub_state": "ACCEPTED",
+  "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+  "review_note": "Independent Claude (anthropic/claude-sonnet-5) review of people34-option-audit.json against the two released People17 bundles. This is editorial answer-quality audit only (read-only, no source URLs opened, no key/meaning claims) and it stays within that scope: no proposed change alters the established correct answer's meaning, none introduces a defensible alternative key, none collapses distinct options into synonyms. Findings are sound editorial judgment: cinema-people-006/009 distractors are guessable by profession-domain alone (3 non-editors/non-cinematographers among 4 options) — proposed replacements swap in other real, verifiable editors/cinematographers from different films (Schoonmaker, Menke, Coates; Cardiff, Francis, Slocombe), preserving parallel plausibility without re-grading the question. cinema-people-015's correct option is flagged as the only human-interaction-themed and longest text — a legitimate length/content giveaway. music-people-007's 'детскую' (children's) qualifier makes the one children's song among three standards an obvious tell — valid. Reorder-only proposals (separating adjacent same-ceremony/same-theme/same-format questions) are cosmetic pacing fixes, correctly marked P3 and not conflated with factual defects. Structural self-check (17/17 per bundle, 4 distinct options, checksums) is consistent with the stated scope. No rework needed before this report is used as input to a future editorial pass; note the audit's own 'remaining_risks' correctly flags that a different-provider reviewer (this review) must check proposed replacements before application — done here, no objections raised.",
+  "input_sha256": "81a1dedd6a8bb164ab61f850a0182faaafb656e765841a28fec2e9660f8bf4ae",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "All34 inspected, concrete findings prioritized and estimates distinguished from source-backed facts; independent different-provider review before applying proposals.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\next\\content\\cinema-people-20261011",
+      "C:\\ap\\quiz_master\\next\\content\\music-people-20261011"
+    ],
+    "assignee": "session-5646e79bac0748e5bd6b0ea3a0eb901a",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Read-only audit of the 17 cinema and17music People questions. Focus accidental cues, overly long correct choices, parenthetical hints, grammatical mismatch, two defensible answers, repetition. Bounded report with questionIDs, exact current options, specific defect and minimally equivalent replacement proposals. No edits/canonical/keys publication/build/deploy. Existing source-backed facts preserved. No whole-bank certification.",
+    "created_at": 1791812328.0233972,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-7855db38f797480db5aae53e7e96edde",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [],
+      "evidence": [
+        "PowerShell ConvertFrom-Json structural pass: each bundle has 17 questions; every question has four distinct option texts; invalid_option_sets=0.",
+        "SHA-256 cinema E762924A12097822B1238ECCDE82DC73EABF3CE17724B71957DAA7C3A7D4DD21; music 5048D9AE14D6DF35F2B0F7898CC6A4751A94734C3F2BC1568B9F58E07BB54BF4."
+      ],
+      "findings": [
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "Дженни Бивен",
+            "Маргарет Сиксел",
+            "Джон Сил",
+            "Колин Гибсон"
+          ],
+          "defect": "Три неверных варианта известны по другим профессиям в этом же фильме (костюмы, операторская работа, художник-постановщик); роль «монтаж» делает правильный вариант единственным монтажёром.",
+          "key": "Маргарет Сиксел (opt-2)",
+          "priority": "P2",
+          "proposed_parallel_options": [
+            "Тельма Скунмейкер",
+            "Маргарет Сиксел",
+            "Салли Менке",
+            "Энн В. Коутс"
+          ],
+          "question_id": "cinema-people-006"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "Антон Карас",
+            "Роберт Краскер",
+            "Грэм Грин",
+            "Александр Корда"
+          ],
+          "defect": "Три дистрактора принадлежат к заведомо иным ролям фильма (музыка, сценарий, продюсирование), поэтому вопрос решается по профессиям, а не по оператору.",
+          "key": "Роберт Краскер (opt-2)",
+          "priority": "P2",
+          "proposed_parallel_options": [
+            "Джек Кардифф",
+            "Роберт Краскер",
+            "Фредди Фрэнсис",
+            "Дуглас Слокомб"
+          ],
+          "question_id": "cinema-people-009"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "Для автоматического переноса движений на цифровые модели",
+            "Для наблюдения за нюансами общения при анимации персонажей",
+            "Для создания текстур внешности цифровых персонажей",
+            "Для синтеза новых реплик голосами исполнителей"
+          ],
+          "defect": "Правильный ответ самый длинный и единственный описывает человеческое взаимодействие; остальные три почти исключительно технические функции.",
+          "key": "Для наблюдения за нюансами общения при анимации персонажей (opt-2)",
+          "priority": "P3",
+          "proposed_parallel_options": [
+            "Чтобы переносить движения актёров на цифровых персонажей",
+            "Чтобы аниматоры видели нюансы взаимодействия актёров",
+            "Чтобы создавать текстуры лиц цифровых персонажей",
+            "Чтобы синтезировать реплики голосами актёров"
+          ],
+          "question_id": "cinema-people-015"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "Judy",
+            "How High the Moon",
+            "Summertime",
+            "A-Tisket, A-Tasket"
+          ],
+          "defect": "Слово «детскую» делает единственную детскую песенку среди трёх джазовых стандартов явным ответом.",
+          "key": "A-Tisket, A-Tasket (opt-4)",
+          "priority": "P2",
+          "proposed_parallel_options": [
+            "Mary Had a Little Lamb",
+            "Twinkle, Twinkle, Little Star",
+            "Pop Goes the Weasel",
+            "A-Tisket, A-Tasket"
+          ],
+          "question_id": "music-people-007"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "Анна Пэкуин | Холли Хантер | Эмма Томпсон | Дебра Уингер",
+            "Холли Хантер | Рози Перес | Анна Пэкуин | Эмма Томпсон"
+          ],
+          "defect": "Два подряд вопроса о двух актёрских «Оскарах» одного фильма «Пианино»; второй получает сильную подсказку от первого.",
+          "key": "Холли Хантер (opt-2) / Анна Пэкуин (opt-3)",
+          "priority": "P3",
+          "proposed_parallel_options": "Без изменения вариантов: перенести один вопрос после cinema-people-010.",
+          "question_id": "cinema-people-002 / cinema-people-003"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": [
+            "1917 | Джокер | Однажды… в Голливуде | Паразиты",
+            "Пон Джун-хо | Сэм Мендес | Мартин Скорсезе | Тодд Филлипс"
+          ],
+          "defect": "Соседние вопросы проверяют лучший фильм и режиссуру одного «Оскара» 2020; первый фактически называет фильм для второго.",
+          "key": "Паразиты (opt-4) / Пон Джун-хо (opt-1)",
+          "priority": "P3",
+          "proposed_parallel_options": "Без изменения вариантов: перенести cinema-people-005 после cinema-people-012.",
+          "question_id": "cinema-people-004 / cinema-people-005"
+        },
+        {
+          "answer_meaning_source_verification": false,
+          "current_options": "См. точные варианты в bundle.json; повторяемые кластеры соответственно «Третий человек», Элла Фицджеральд, Rock & Roll Hall of Fame.",
+          "defect": "Серии примыкающих вопросов о одном фильме, одном исполнителе или одном институте снижают разнообразие и позволяют переносить контекст.",
+          "key": "Кэрол Рид (opt-4) / Роберт Краскер (opt-2); Танцевать (opt-3) / A-Tisket, A-Tasket (opt-4); Брюс Спрингстин (opt-1) / 1996 (opt-2) / Диана Росс (opt-4)",
+          "priority": "P3",
+          "proposed_parallel_options": "Варианты не менять; разнести элементы по банку. Для минимальной перестановки: cinema-people-009 после 012; music-people-007 после 011; music-people-009 после 013 и music-people-010 после 015.",
+          "question_id": "cinema-people-008 / cinema-people-009; music-people-006 / music-people-007; music-people-008 / music-people-009 / music-people-010"
+        }
+      ],
+      "label": "people34-option-audit-codex",
+      "limitations": [
+        "This is an answer-quality audit, not fact certification. No source URL was opened and no proposed answer/key changes were made.",
+        "Proposed distractors and ordering require different-provider review before application."
+      ],
+      "routine_review": "Остальные 27 позиций не дали конкретного дефекта по длине, грамматике, подсказке в скобках, параллельности вариантов или очевидной второй трактовке в ограниченном editorial audit.",
+      "scope": {
+        "candidate_first": true,
+        "files": [
+          "C:\\ap\\quiz_master\\next\\content\\cinema-people-20261011\\bundle.json",
+          "C:\\ap\\quiz_master\\next\\content\\music-people-20261011\\bundle.json"
+        ],
+        "key_comparison": "34/34 independent candidate answers matched the private keys",
+        "questions_inspected": 34
+      },
+      "sources_opened": 0,
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-7855db38f797480db5aae53e7e96edde",
+    "run_id": "run-66b94d6a4c424f90b409df7b457d726f",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "People34 answer-quality audit (Beads quiz_master-3vw)",
+    "version": 4,
+    "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+    "review_note": "Independent Claude (anthropic/claude-sonnet-5) review of people34-option-audit.json against the two released People17 bundles. This is editorial answer-quality audit only (read-only, no source URLs opened, no key/meaning claims) and it stays within that scope: no proposed change alters the established correct answer's meaning, none introduces a defensible alternative key, none collapses distinct options into synonyms. Findings are sound editorial judgment: cinema-people-006/009 distractors are guessable by profession-domain alone (3 non-editors/non-cinematographers among 4 options) — proposed replacements swap in other real, verifiable editors/cinematographers from different films (Schoonmaker, Menke, Coates; Cardiff, Francis, Slocombe), preserving parallel plausibility without re-grading the question. cinema-people-015's correct option is flagged as the only human-interaction-themed and longest text — a legitimate length/content giveaway. music-people-007's 'детскую' (children's) qualifier makes the one children's song among three standards an obvious tell — valid. Reorder-only proposals (separating adjacent same-ceremony/same-theme/same-format questions) are cosmetic pacing fixes, correctly marked P3 and not conflated with factual defects. Structural self-check (17/17 per bundle, 4 distinct options, checksums) is consistent with the stated scope. No rework needed before this report is used as input to a future editorial pass; note the audit's own 'remaining_risks' correctly flags that a different-provider reviewer (this review) must check proposed replacements before application — done here, no objections raised."
+  },
+  "scope": "Exact draft/report review only; no canonical import or published update"
+}

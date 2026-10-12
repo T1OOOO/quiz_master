@@ -1,0 +1,69 @@
+{
+  "task_id": "task-5cffc2812d6e4bfdbe30d04bbd92db12",
+  "actual_hub_state": "REWORK",
+  "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+  "review_note": "Independent Claude (anthropic/claude-sonnet-5) review. Core keys confirmed correct by independently opening primary sources: Hara=Noriko (BFI Tokyo Story), Bergman=Ilsa (BFI Casablanca), Redding wrote/first recorded Respect 1965, Franklin 1967 (LOC blog), Dixon wrote Hoochie Coochie Man for Waters (LOC PDF metadata + established fact). No answer-meaning change needed. REWORK items: (1) FACTUAL ERROR in cinema-02 distractor_reasoning and article body: 'Мадлен Эльстер' is claimed to be 'another Bergman role' / from Notorious — false. Independently verified via BFI's own 'Ingrid Bergman: 10 essential films' list (no Vertigo) plus general knowledge: Madeleine Elster is Kim Novak's character in Hitchcock's Vertigo, not an Ingrid Bergman role at all. Fix the article sentence ('Имена Мадлен, Алисия и Паула относятся к другим ролям Бергман') and the distractor_reasoning entry, or swap this distractor for a genuine Bergman role (e.g. Karin from Autumn Sonata). (2) cinema-01 article claims Noriko is 'вдова их погибшего на войне сына' (war-widow detail); neither cited BFI nor Criterion URL states this per my independent fetch of the BFI page (confirms root's observation). Add a supporting citation or remove/soften the claim. (3) cinema-02 wording 'позже героиня оказывается женой... Ласло' implies the marriage happened after/because of the Paris affair; BFI's own description uses present tense ('now the wife of a resistance leader') — she is already married when the rekindled affair is shown. Reword to avoid false chronology (confirms root's concern independently). (4) sources-v1.md overstates access: I independently attempted the second music-02 LOC registry-overview URL and got HTTP 403 Forbidden; root independently got 'Internal Error' on the same URL. Two independent reviewers failed to open it — sources-v1.md's claim that 'all eight URLs were actually opened' is not accurate for this one. Downgrade its role to uncorroborated context, not a verified second source. Access/claim-support documentation otherwise solid; no invented citations found elsewhere.",
+  "input_sha256": "0c68bc807de36fb256e055ef2584a7e8b59c6476799dc17031fb8d1064d1da61",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Four original bounded drafts with actual source access and no duplicate released facts; finite output checked independently before any integration.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012"
+    ],
+    "assignee": "session-fa7d8e6143c84c17a35c337941b6b398",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Bounded four Russian question/miniarticle draft expansion: two cinema/actors, two music/singers, new substantive concepts, no Oscars/Grammy winner recall. Existing People17 packs must be checked for duplicates. Exclusive writer ownership only docs/rewrite-agents/tasks/CULTURE_NEXT4C_20261012/writer-v1.json and sources-v1.md. Candidate separate from editorial key. 4 plausible comparable options, estimated1..10 difficulty, useful100..150word article, two actually opened primary URLs, claim ledger,distractor rationales, sourceaccess failures honestly reported. No canonical edits/builds/deploy/children. Root reviews independently.",
+    "created_at": 1791812297.494529,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-5cffc2812d6e4bfdbe30d04bbd92db12",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012\\writer-v1.json",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4C_20261012\\sources-v1.md"
+      ],
+      "evidence": [
+        {
+          "kind": "source_access",
+          "result": "Actually opened eight source pages on 2026-10-12: BFI Tokyo Story; Criterion Tokyo Story; BFI Casablanca; BFI Ingrid Bergman; Library of Congress Respect; Rock Hall Aretha; Library of Congress Hoochie Coochie Man PDF; Library of Congress Registry overview. sources-v1.md records access status."
+        },
+        {
+          "command": "PowerShell ConvertFrom-Json plus regex word count",
+          "kind": "local_validation",
+          "result": "Valid JSON; candidate=4 and editorial=4; each question has four options, two source URLs and two claim-ledger entries. Article word counts: 104, 100, 106, 103."
+        },
+        {
+          "kind": "duplicate_scope",
+          "result": "Read the two current People17 bundles and the supplied 74-stem culture inventory. No stem duplicates; rejected studio/device and award-recall approaches."
+        }
+      ],
+      "remaining_risks": [
+        "Cinema sources are film institutions/distributor catalogues rather than original production records; music-02 uses two different Library of Congress Registry pages.",
+        "No independent fact check or integration has occurred."
+      ],
+      "sha256": {
+        "sources-v1.md": "6C036BA0DCAE3B0FBF4BE0991FE0C26BD5CFDB64E0CCAE77C4909CF8EBAF9639",
+        "writer-v1.json": "0C68BC807DE36FB256E055EF2584A7E8B59C6476799DC17031FB8D1064D1DA61"
+      },
+      "status": "DONE",
+      "summary": "Exactly four original Russian drafts: two cinema/actors and two music/singers. Candidate is separated from the editorial key. Drafts are unintegrated and require independent review.",
+      "usage": "No model cost/usage exposure available.",
+      "writer_label": "culture_next4c_writer"
+    },
+    "root_task_id": "task-5cffc2812d6e4bfdbe30d04bbd92db12",
+    "run_id": "run-782cc42b947240dea66ade00aca02af6",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Culture next4C source-backed draft expansion (Beads quiz_master-3vw)",
+    "version": 4,
+    "reviewer": "session-3dfe3eee61ed4e21aade359fd1dc7746",
+    "review_note": "Independent Claude (anthropic/claude-sonnet-5) review. Core keys confirmed correct by independently opening primary sources: Hara=Noriko (BFI Tokyo Story), Bergman=Ilsa (BFI Casablanca), Redding wrote/first recorded Respect 1965, Franklin 1967 (LOC blog), Dixon wrote Hoochie Coochie Man for Waters (LOC PDF metadata + established fact). No answer-meaning change needed. REWORK items: (1) FACTUAL ERROR in cinema-02 distractor_reasoning and article body: 'Мадлен Эльстер' is claimed to be 'another Bergman role' / from Notorious — false. Independently verified via BFI's own 'Ingrid Bergman: 10 essential films' list (no Vertigo) plus general knowledge: Madeleine Elster is Kim Novak's character in Hitchcock's Vertigo, not an Ingrid Bergman role at all. Fix the article sentence ('Имена Мадлен, Алисия и Паула относятся к другим ролям Бергман') and the distractor_reasoning entry, or swap this distractor for a genuine Bergman role (e.g. Karin from Autumn Sonata). (2) cinema-01 article claims Noriko is 'вдова их погибшего на войне сына' (war-widow detail); neither cited BFI nor Criterion URL states this per my independent fetch of the BFI page (confirms root's observation). Add a supporting citation or remove/soften the claim. (3) cinema-02 wording 'позже героиня оказывается женой... Ласло' implies the marriage happened after/because of the Paris affair; BFI's own description uses present tense ('now the wife of a resistance leader') — she is already married when the rekindled affair is shown. Reword to avoid false chronology (confirms root's concern independently). (4) sources-v1.md overstates access: I independently attempted the second music-02 LOC registry-overview URL and got HTTP 403 Forbidden; root independently got 'Internal Error' on the same URL. Two independent reviewers failed to open it — sources-v1.md's claim that 'all eight URLs were actually opened' is not accurate for this one. Downgrade its role to uncorroborated context, not a verified second source. Access/claim-support documentation otherwise solid; no invented citations found elsewhere."
+  },
+  "scope": "Exact draft/report review only; no canonical import or published update"
+}
