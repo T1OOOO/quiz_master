@@ -1,0 +1,167 @@
+{
+  "task_id": "task-760dab3537954558b2949e270658f82e",
+  "packet_label": "culture-next4d-integration-20261012",
+  "baseline": "d771e5b",
+  "frozen_input": {
+    "writer_v3": "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/writer-v3.json",
+    "sha256": "333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9",
+    "claude_review": "claude-v3-accept.json",
+    "claude_task": "task-717789f59fb74ceabdeb6e9108362d0e"
+  },
+  "scope": {
+    "additions": [
+      "cinema-people-020",
+      "music-people-020"
+    ],
+    "counts": {
+      "packs": 131,
+      "questions": 4028,
+      "articles": 226,
+      "cinema_people": 20,
+      "music_people": 20
+    },
+    "unchanged_claims": [
+      "38 prior People legacy/canonical public DTO entries and private grading/revisions",
+      "224 prior reader articles",
+      "129 unrelated catalog rows"
+    ]
+  },
+  "new_bindings": {
+    "cinema-people-20261011": {
+      "new_revision": "566ffcecfd6c4db663d784db24ddaecea307473076058549a6d5e71cb8311c2c",
+      "private_correct_option_id": "cinema-people-020-opt-1",
+      "public_keys": [
+        "answer_kind",
+        "difficulty",
+        "difficulty_level",
+        "options",
+        "question_id",
+        "quiz_id",
+        "revision",
+        "source",
+        "stem"
+      ],
+      "new_source_uri": "/app/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    "music-people-20261011": {
+      "new_revision": "e83cf6c260c3d3738b847b62c454dcbaf3bcb59582e38ec3f382e8d8127dd953",
+      "private_correct_option_id": "music-people-020-opt-2",
+      "public_keys": [
+        "answer_kind",
+        "difficulty",
+        "difficulty_level",
+        "options",
+        "question_id",
+        "quiz_id",
+        "revision",
+        "source",
+        "stem"
+      ],
+      "new_source_uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
+    }
+  },
+  "article_content": {
+    "draft": "study/question_articles/drafts/culture-next4d-20261012.json",
+    "review": "study/question_articles/reviews/culture-next4d-20261012.json",
+    "article_hashes": {
+      "quiz:cinema-people-20261011:cinema-people-020": "c74408a0d85f7da7ca16365b8fc615f6c2b440dcdd7d32d75af4b02509f2d205",
+      "quiz:music-people-20261011:music-people-020": "953ff9360b148d25b3070e1b3b7f97b0910084152d95f0264c9e258ea325905a"
+    },
+    "source_urls": 4,
+    "v3_declared_word_count_each": 112,
+    "python_split_word_count_each": 106,
+    "word_count_note": "Frozen accepted V3 prose was copied exactly. Python split count is still above the exporter minimum of 100, but differs from the packet declaration; no prose was changed to mask that discrepancy."
+  },
+  "checks": [
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 C:/ap/quiz_master Cinema/People/cinema_people_20261011.json .run/culture_next4d_integration_20261012/stage-cinema 2026.10.12.next4d 2026-10-12T00:00:00Z",
+      "exit": 0,
+      "result": "20 questions; stable app URI; frozen taxonomy"
+    },
+    {
+      "command": "go run ./next/server/.run/culture_next2_binding_20261012 C:/ap/quiz_master MusicPeople/music_people_20261011.json .run/culture_next4d_integration_20261012/stage-music 2026.10.12.next4d 2026-10-12T00:00:00Z",
+      "exit": 0,
+      "result": "20 questions; stable app URI; frozen taxonomy"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl catalog --in quizzes --out next/apps/quiz_app/assets/catalog.json --taxonomy metadata/tags.v1.json --force",
+      "exit": 0,
+      "result": "catalog: 131 packs"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl validate --taxonomy metadata/tags.v1.json --in [two drafts and matching bundles]",
+      "exit": 1,
+      "result": "Expected CLI duplicate_id when a draft and its matching bundle share a quiz ID in one validate batch; no content defect was reported."
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl validate --taxonomy metadata/tags.v1.json --in next/content/cinema-people-20261011/draft.json next/content/music-people-20261011/draft.json",
+      "exit": 0,
+      "result": "both 20-question drafts valid"
+    },
+    {
+      "command": "go run -p=1 ./next/server/cmd/quizctl validate --taxonomy metadata/tags.v1.json --in next/content/cinema-people-20261011/bundle.json next/content/music-people-20261011/bundle.json",
+      "exit": 0,
+      "result": "both 20-question bundles valid"
+    },
+    {
+      "command": "python study/question_articles/build.py --write",
+      "exit": 0,
+      "result": "226 independently reviewed mini articles; bindings and source metadata checked"
+    },
+    {
+      "command": "python study/question_articles/build.py --check",
+      "exit": 0,
+      "result": "226 independently reviewed mini articles; bindings and source metadata checked"
+    },
+    {
+      "command": "python structural parity from .run/culture_next4d_integration_20261012/pre-snapshot.json",
+      "exit": 0,
+      "result": "31 assertions passed; old records/articles/catalog rows retained as stated"
+    },
+    {
+      "command": "rg -n -C 1 \"4026|4028\" three assigned count fixtures; direct literal replacement",
+      "exit": 0,
+      "result": "three expected totals changed from 4026 to 4028; no full tests run by assignment."
+    }
+  ],
+  "parity_report": ".run/culture_next4d_integration_20261012/final-parity.json",
+  "hashes": {
+    "quizzes/Cinema/People/cinema_people_20261011.json": "feaeaf1e7be8238c929b0d862b94f11edb2146895b266c55dea5f396de72ff99",
+    "quizzes/MusicPeople/music_people_20261011.json": "3f64515d39a9331194b51e36298f1064ebfb491d82f8b05b644cf3e4994106fe",
+    "next/content/cinema-people-20261011/draft.json": "0702c751e49b7e3f4b10d4db686a401ba5b4ca28c8af93a5ddeef7d651a5c39c",
+    "next/content/cinema-people-20261011/manifest.json": "58b2d13a7fcb74d74da13df2cbb3a13c07d68cfdfcfdc9725ec8783626ca3d30",
+    "next/content/cinema-people-20261011/bundle.json": "0ac8f1178daa0ca11808b1bcc62b5e4c22ca9857718bc9fa10555e311ac563f9",
+    "next/content/music-people-20261011/draft.json": "9b3880d2778756c7b3c357b7b9134a397a55c6cabfbf3fa7f9c1ca3b3f568cde",
+    "next/content/music-people-20261011/manifest.json": "837a3cf3c96c035e1d47cec00f36c244a2ddca03c8c360d55c255e534266760f",
+    "next/content/music-people-20261011/bundle.json": "f20b74dd14ec70f46655c344be9ea237d76c5427786388ffebdfdbdea5edd64b",
+    "next/apps/quiz_app/assets/catalog.json": "7a682d2373dbbd3425dda13549dbd273c24435bcc7a6b9b2d72ae220733b4112",
+    "next/apps/quiz_app/assets/study/question-articles.json": "7272408c7aec457b6e5e7c63320934338aae4bdd7d8de96097ebcad3bbd98f2d",
+    "study/question_articles/drafts/culture-next4d-20261012.json": "24062ec2ef4164d5c5045e6ac6780cce974fc26fc8d9c545985481116f4b3702",
+    "study/question_articles/reviews/culture-next4d-20261012.json": "921b37ccfc780df18e71ce608111e9ae48635530d87cb44caeddea63c18c45c8",
+    "next/server/cmd/quizctl/catalog_test.go": "342691c7035dfce7af2eb8ec1f320e1a807fe083ec97d0f12c52834839feac37",
+    "next/server/internal/sqlite/collection_test.go": "28be4f4cf05430248c7e3d8f4d37c5ad6d000aba1f19c0972559fe4812d4bba6",
+    "next/apps/quiz_app/test/discovery_test.dart": "97c085288d4cfafbd5ad9460c159d32d1f7f03a80dbfba2794ed83d72d5f2e6f"
+  },
+  "limitations": [
+    "No full Go/Flutter tests, build, browser, SSH, Git, deployment, or publication were run.",
+    "The supplied Claude V3 acceptance reviewed frozen prose/source material, not generated canonical revision bindings; different-provider binding review remains required.",
+    "No new editorial tag IDs were added because frozen V3 supplies no tag assignment. Legacy difficulty 6 imported through the supported medium/difficulty_level 6 representation.",
+    "The first staged URI parity assertion and first final parity script had local checker-shape/path construction mistakes; corrected reruns passed and no source/canonical data was changed by either failed checker."
+  ],
+  "count_fixture_update": {
+    "reason": "Target total changed from 4026 to 4028 after the two accepted additions.",
+    "files": [
+      "next/server/cmd/quizctl/catalog_test.go",
+      "next/server/internal/sqlite/collection_test.go",
+      "next/apps/quiz_app/test/discovery_test.dart"
+    ],
+    "replacement": "4026 -> 4028 only",
+    "hashes": {
+      "next/server/cmd/quizctl/catalog_test.go": "342691c7035dfce7af2eb8ec1f320e1a807fe083ec97d0f12c52834839feac37",
+      "next/server/internal/sqlite/collection_test.go": "28be4f4cf05430248c7e3d8f4d37c5ad6d000aba1f19c0972559fe4812d4bba6",
+      "next/apps/quiz_app/test/discovery_test.dart": "97c085288d4cfafbd5ad9460c159d32d1f7f03a80dbfba2794ed83d72d5f2e6f"
+    },
+    "tests_run": false,
+    "test_limit": "Root owns full Go/Flutter gates after integration freeze."
+  }
+}

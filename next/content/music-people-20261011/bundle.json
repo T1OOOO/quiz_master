@@ -1,6 +1,6 @@
 {
-  "bundle_sha256": "20f3879543be3490a4587b4d098efc0dc6e8bdd08f03391703cf649b1a61c41a",
-  "bundle_version": "2026.10.12.next4c",
+  "bundle_sha256": "bbbc8f7efad01ec0256eceaef1b2bfc12fc181431c05f3bb81640bc2d6fefb07",
+  "bundle_version": "2026.10.12.next4d",
   "contract": "quiz-contract/v1",
   "private_grading": {
     "music-people-001": {
@@ -59,6 +59,9 @@
     },
     "music-people-019": {
       "correct_option_id": "music-people-019-opt-1"
+    },
+    "music-people-020": {
+      "correct_option_id": "music-people-020-opt-2"
     }
   },
   "private_question_metadata": {
@@ -736,12 +739,45 @@
           "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
         },
         "stem": "Кто написал «I’m Your Hoochie Coochie Man», ставшую хитом в исполнении Мадди Уотерса?"
+      },
+      {
+        "answer_kind": "single_choice",
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "options": [
+          {
+            "option_id": "music-people-020-opt-1",
+            "text": "Ма Рейни"
+          },
+          {
+            "option_id": "music-people-020-opt-2",
+            "text": "Бесси Смит"
+          },
+          {
+            "option_id": "music-people-020-opt-3",
+            "text": "Этель Уотерс"
+          },
+          {
+            "option_id": "music-people-020-opt-4",
+            "text": "Айда Кокс"
+          }
+        ],
+        "question_id": "music-people-020",
+        "quiz_id": "music-people-20261011",
+        "revision": {
+          "number": 1,
+          "sha256": "e83cf6c260c3d3738b847b62c454dcbaf3bcb59582e38ec3f382e8d8127dd953"
+        },
+        "source": {
+          "uri": "/app/quizzes/MusicPeople/music_people_20261011.json"
+        },
+        "stem": "Какая певица исполнила «Down Hearted Blues» в записи 1923 года?"
       }
     ],
     "quiz_id": "music-people-20261011",
     "revision": {
       "number": 1,
-      "sha256": "d4280a5b93718670237ece4c342930ffafa3a2304e9b20804ac2a4e1a5754ccb"
+      "sha256": "b01b569e347b3505bd34e523dcfadcc79d44d2d6a7caf148a27e194461f2c0bb"
     }
   },
   "taxonomy_ref": {

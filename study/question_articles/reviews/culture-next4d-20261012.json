@@ -1,0 +1,52 @@
+{
+  "reviewer": "Independent Claude Sonnet V3 supplied-packet source review",
+  "author": "CULTURE_NEXT4D_ROOT_V3_20261012",
+  "input_sha256": "333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9",
+  "actual_hub_task": "task-717789f59fb74ceabdeb6e9108362d0e",
+  "review_limits": [
+    "Claude accepted frozen V3 prose, source URLs and claim corrections; its changed-scope review did not review generated canonical revision bindings.",
+    "Question-reference revision hashes were added during this integration and require a separate different-provider binding review."
+  ],
+  "articles": [
+    {
+      "article_id": "quiz:cinema-people-20261011:cinema-people-020",
+      "verdict": "accept",
+      "article_sha256": "c74408a0d85f7da7ca16365b8fc615f6c2b440dcdd7d32d75af4b02509f2d205",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "American Film Institute Catalog",
+          "url": "https://catalog.afi.com/Film/55317-A-WOMAN-UNDER-THE-INFLUENCE",
+          "accessed": "2026-10-12",
+          "supports": "1974 date; cast credits for Gena Rowlands/Mabel Longhetti and Peter Falk/Nick Longhetti; Cassavetes as writer-director; actual family-casting roles."
+        },
+        {
+          "title": "AFI Silver Theatre and Cultural Center",
+          "url": "https://silver.afi.com/movies/detail/0100004818/",
+          "accessed": "2026-10-12",
+          "supports": "Mabel is played by Gena Rowlands, Nick by Peter Falk, and they are parents of three children; identifies Cassavetes and 1974."
+        }
+      ]
+    },
+    {
+      "article_id": "quiz:music-people-20261011:music-people-020",
+      "verdict": "accept",
+      "article_sha256": "953ff9360b148d25b3070e1b3b7f97b0910084152d95f0264c9e258ea325905a",
+      "note": "Frozen V3 editorial/source acceptance; canonical binding metadata remains a separate review.",
+      "checked_sources": [
+        {
+          "title": "U.S. National Park Service",
+          "url": "https://www.nps.gov/locations/lowermsdeltaregion/bessie-smith.htm",
+          "accessed": "2026-10-12",
+          "supports": "16 February 1923 recording, Clarence Williams accompaniment, prior Alberta Hunter recording, sales context, early career, touring and Columbia recording history."
+        },
+        {
+          "title": "Rock and Roll Hall of Fame",
+          "url": "https://rockhall.com/inductees/bessie-smith/?flavour=full",
+          "accessed": "2026-10-12",
+          "supports": "Empress of the Blues epithet, apprenticeship under Ma Rainey, and emphasis on Smith's voice."
+        }
+      ]
+    }
+  ]
+}

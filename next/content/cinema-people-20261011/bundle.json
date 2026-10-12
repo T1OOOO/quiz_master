@@ -1,6 +1,6 @@
 {
-  "bundle_sha256": "13790cd65c2b03c2d0818cb6e336582d4266cb17c0bee5f79167e43dde989381",
-  "bundle_version": "2026.10.12.next4c",
+  "bundle_sha256": "bb04ea5b485d2108cc6355f364d42869fe7d757f83e45773cd6523575bf45ff8",
+  "bundle_version": "2026.10.12.next4d",
   "contract": "quiz-contract/v1",
   "private_grading": {
     "cinema-people-001": {
@@ -59,6 +59,9 @@
     },
     "cinema-people-019": {
       "correct_option_id": "cinema-people-019-opt-1"
+    },
+    "cinema-people-020": {
+      "correct_option_id": "cinema-people-020-opt-1"
     }
   },
   "private_question_metadata": {
@@ -752,12 +755,45 @@
           "uri": "/app/quizzes/Cinema/People/cinema_people_20261011.json"
         },
         "stem": "Как зовут героиню Ингрид Бергман в «Касабланке», бывшую возлюбленную Рика Блейна?"
+      },
+      {
+        "answer_kind": "single_choice",
+        "difficulty": "medium",
+        "difficulty_level": 6,
+        "options": [
+          {
+            "option_id": "cinema-people-020-opt-1",
+            "text": "Джина Роулендс"
+          },
+          {
+            "option_id": "cinema-people-020-opt-2",
+            "text": "Джилл Клейберг"
+          },
+          {
+            "option_id": "cinema-people-020-opt-3",
+            "text": "Джеральдин Чаплин"
+          },
+          {
+            "option_id": "cinema-people-020-opt-4",
+            "text": "Дайан Китон"
+          }
+        ],
+        "question_id": "cinema-people-020",
+        "quiz_id": "cinema-people-20261011",
+        "revision": {
+          "number": 1,
+          "sha256": "566ffcecfd6c4db663d784db24ddaecea307473076058549a6d5e71cb8311c2c"
+        },
+        "source": {
+          "uri": "/app/quizzes/Cinema/People/cinema_people_20261011.json"
+        },
+        "stem": "Какая актриса сыграла Мейбл Лонгетти в фильме Джона Кассаветиса «Женщина под влиянием»?"
       }
     ],
     "quiz_id": "cinema-people-20261011",
     "revision": {
       "number": 1,
-      "sha256": "c1e88b7e7ebda5f0ab2f588a3c4e42d0067e0bbae736e937bbe88d35be5ed4a6"
+      "sha256": "38730faf5d3b7355b843907201ee70cdbd0c328afd2d36d9209bdfb323efa174"
     }
   },
   "taxonomy_ref": {

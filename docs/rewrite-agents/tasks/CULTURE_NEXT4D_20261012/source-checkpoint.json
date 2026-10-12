@@ -1,0 +1,89 @@
+{
+  "status": "SOURCE_INTEGRATED_ACCEPTED_GATES_PASS_UNPUBLISHED",
+  "baseline": "d771e5b",
+  "counts": {
+    "packs": 131,
+    "questions": 4028,
+    "articles": 226,
+    "people_each": 20
+  },
+  "binding_review": "ActualClaudeACCEPT; initialtimeout/resumedCLI0; false foreign-file attribution independentlycorrected withoutrewritingcallback",
+  "parity": {
+    "baseline": "d771e5b",
+    "result": "PASS",
+    "counts": {
+      "packs": 131,
+      "questions": 4028,
+      "articles": 226,
+      "people_each": 20
+    },
+    "old_dtos_and_keys_exact": 38,
+    "old_reader_rows_exact": 224,
+    "unrelated_catalog_rows_exact": 129,
+    "new_articles_exact_accepted_v3": 2,
+    "new_source_links": 4,
+    "difficulty": "6 editorial estimate, not calibrated",
+    "scope": "Root structural/binding/parity checks; no release/live/whole-bank fact certification"
+  },
+  "gates": {
+    "checks": [
+      {
+        "check": "full-go",
+        "command": [
+          "go",
+          "test",
+          "./next/server/...",
+          "-count=1"
+        ],
+        "cwd": "C:\\ap\\quiz_master",
+        "actual_exit": 0,
+        "elapsed_seconds": 62.09,
+        "log": "C:\\ap\\quiz_master\\.run\\culture_next4d_20261012\\full-go.txt",
+        "log_sha256": "ca6e9f70b017d0c3a26e183d9f4ac17585b82d2005b7f944d34d14d19719c95a"
+      },
+      {
+        "check": "full-flutter",
+        "command": [
+          "cmd",
+          "/c",
+          "flutter",
+          "test"
+        ],
+        "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+        "actual_exit": 0,
+        "elapsed_seconds": 49.25,
+        "log": "C:\\ap\\quiz_master\\.run\\culture_next4d_20261012\\full-flutter.txt",
+        "log_sha256": "f062e448f25aa1a0def6bbeb7a186884b58854015373098cd240137bd2c602b5"
+      },
+      {
+        "check": "flutter-analyze",
+        "command": [
+          "cmd",
+          "/c",
+          "flutter",
+          "analyze"
+        ],
+        "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+        "actual_exit": 0,
+        "elapsed_seconds": 19.6,
+        "log": "C:\\ap\\quiz_master\\.run\\culture_next4d_20261012\\flutter-analyze.txt",
+        "log_sha256": "0e0b69062beeb64d9a3a7a3d4202638c7ea998d99e5281fa1fa9e5e5cebb9da6"
+      }
+    ],
+    "scope": "Actual Go/Flutter/analyzer after frozen Next4D integration and4028 fixture updates. Freshbuild/browser/publication not certified."
+  },
+  "production": "Helm42/source42a2aaf/131packs4026questions224articles unchanged",
+  "remaining": [
+    "Freshwebbuild/exactruntimepackage",
+    "Browser20/20 andnewarticle/source checks",
+    "Static/executiondifferentproviderreview",
+    "Copyrehearsalbackuprestore/rollback andauthorizedpublication",
+    "Liveexactversion/105bindings/newJS/browser/feedbackpreservation"
+  ],
+  "limits": [
+    "No wholebankfacts orAndroid certification",
+    "NoNext4D deployment claimed",
+    "Pre-existing7runtimecanonicalfile differences require deliberatepreservation/disclosure; seeacceptedalignmentplan and2ln.1",
+    "All69foreignfilehashes preserved; notstaged"
+  ]
+}

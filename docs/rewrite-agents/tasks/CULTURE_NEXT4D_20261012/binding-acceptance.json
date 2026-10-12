@@ -1,0 +1,109 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": "Exactly2accepted additions, nonzeroMusicindex preserved, alloldcontent/keys/reader/catalogrows exact,131/4028/226, validtaxonomy/contracts/newrefSHA/sourceURLs, no grading/public leak, realchecks/hashes/exclusivepaths; independentbindingreview required.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT4D_20261012",
+      "C:\\ap\\quiz_master\\quizzes\\Cinema\\People\\cinema_people_20261011.json",
+      "C:\\ap\\quiz_master\\quizzes\\MusicPeople\\music_people_20261011.json",
+      "C:\\ap\\quiz_master\\next\\content\\cinema-people-20261011",
+      "C:\\ap\\quiz_master\\next\\content\\music-people-20261011",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+      "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+      "C:\\ap\\quiz_master\\next\\server\\cmd\\quizctl\\catalog_test.go",
+      "C:\\ap\\quiz_master\\next\\server\\internal\\sqlite\\collection_test.go",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\discovery_test.dart",
+      "C:\\ap\\quiz_master\\.run"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root-authorized bounded integration baseline d771e5b. Read CULTURE_NEXT4D_20261012/writer-v3.json (SHA333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9), claude-v3-accept.json/draft-checkpoint-v3.json. Exactly1new item perCinemaPeople/MusicPeople: cinema-people-020/music-people-020;20each,131packs4028questions226articles. Preserve all38oldDTOs/privatekeys/metadata/revisions and224oldarticles exactly;129unrelatedcatalogrows exact. Use existing quizctl import/validate/build and article exporter, stable /app source URI and frozen taxonomy. Keep publicDTO free of grading keys; copy accepted article titles/bodies/4URLs exactly and bind to actualnewrevisionSHAs. Import legacy difficulty6 as estimate using existing supportedmetadata/tags only; no invented calibration/tags. OwnONLY2legacyfiles,2canonicalpackdirectories,catalog+readerassets,new study/question_articles/drafts/culture-next4d-20261012.json and reviews counterpart, countfixtures catalog_test.go/collection_test.go/discovery_test.dart ifstrictlyneeded, and integration-evidence.json inNext4Ddocs; isolatedignored .run staging. No other draft rewrites, libDart/API/code/dependencies/CI/foreigncontent20/privatecleanup/build/browser/SSH/Git/deploy/children/schedulers. You are notalone; preserveotheredits. Run only contentvalidators/exporter andstructuralparity; Root runsfulltests/review/release. Submit exactchangedfiles, commands/exits/hashes andlimitations; freezeownedwrites beforeRootreview.",
+    "created_at": 1791823910.4449377,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-760dab3537954558b2949e270658f82e",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "quizzes/Cinema/People/cinema_people_20261011.json",
+        "quizzes/MusicPeople/music_people_20261011.json",
+        "next/content/cinema-people-20261011/{draft,manifest,bundle}.json",
+        "next/content/music-people-20261011/{draft,manifest,bundle}.json",
+        "next/apps/quiz_app/assets/catalog.json",
+        "next/apps/quiz_app/assets/study/question-articles.json",
+        "study/question_articles/drafts/culture-next4d-20261012.json",
+        "study/question_articles/reviews/culture-next4d-20261012.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT4D_20261012/integration-evidence.json"
+      ],
+      "checks": [
+        {
+          "command": "two existing culture_next2 binding-helper imports",
+          "exit": 0,
+          "result": "20 questions each; frozen taxonomy and stable /app URIs"
+        },
+        {
+          "command": "quizctl catalog --taxonomy metadata/tags.v1.json",
+          "exit": 0,
+          "result": "131 packs"
+        },
+        {
+          "command": "quizctl validate drafts batch",
+          "exit": 0,
+          "result": "two 20-question drafts valid"
+        },
+        {
+          "command": "quizctl validate bundles batch",
+          "exit": 0,
+          "result": "two 20-question bundles valid"
+        },
+        {
+          "command": "python study/question_articles/build.py --write and --check",
+          "exit": 0,
+          "result": "226 accepted articles; revision bindings and source metadata valid"
+        },
+        {
+          "command": "final rehash against parity evidence",
+          "exit": 0,
+          "result": "12 owned data/article files still match recorded hashes"
+        }
+      ],
+      "evidence": [
+        "integration evidence SHA-256 7fa22872928f9205d677565aefeb698248e0535fd99b102da3505ac094c84e0e",
+        "staged and final structural parity: .run/culture_next4d_integration_20261012/final-parity.json (31 assertions pass)",
+        "new revisions: cinema 566ffcecfd6c4db663d784db24ddaecea307473076058549a6d5e71cb8311c2c; music e83cf6c260c3d3738b847b62c454dcbaf3bcb59582e38ec3f382e8d8127dd953",
+        "frozen V3 input SHA-256 333d575fca46cabe47d94618a3f651a39e1e91e9939805befe2c565a28c6b9e9"
+      ],
+      "limitations": [
+        "The first mixed draft+bundle validate command returned the expected duplicate quiz-id guard; separate draft/bundle validations passed.",
+        "V3 prose was copied exactly; its packet says 112 words while Python split yields 106 for each, above the exporter minimum; evidence records this without altering prose.",
+        "Independent V3 acceptance did not cover generated canonical binding metadata; different-provider binding review remains required.",
+        "No full Go/Flutter tests, build, browser, SSH, Git, deployment, or publication work was run or claimed."
+      ],
+      "packet_label": "culture-next4d-integration-20261012",
+      "summary": "Added cinema-people-020 and music-people-020 with 20 questions each; catalog totals 131/4028 and reader total 226. Music private grading is music-people-020-opt-2 and the public DTO contains no grading fields. All 38 prior People entries, 224 prior articles, and 129 unrelated catalog rows passed structural parity."
+    },
+    "root_task_id": "task-760dab3537954558b2949e270658f82e",
+    "run_id": "run-35bb42477985463eb7071ccf892400f0",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "3vw Next4D integrate two accepted questions and articles",
+    "version": 4,
+    "reviewer": "session-4eed93c52c6145c08ca7a2efc801a142",
+    "review_note": "Independent read-only binding/import review (Claude Sonnet 5), fresh reads/hashes this session, not trusting author-JSON claims. All 15 files in integration-evidence.json hashes reproduced exactly via sha256sum, incl. writer-v3.json=333d575f...28c6b9e9. sources-v3.md full hash f424866b938ee...37f7de8d699 matches root-v3-structural-check.json; claude-v3-accept.json's prose has a 1-char typo in its abbreviated quote (f424866f vs actual f424866b) -- cosmetic only, not used for any real binding. Direct reads confirm: cinema-people-020/music-people-020 legacy text/options/correct_answer/explanation match accepted V3 verbatim; index0->opt-1 and index1->opt-2 private grading confirmed; public DTOs expose exactly the 9 claimed keys with no grading field; source.uri stays /app/...; difficulty_level 6 uses existing taxonomy only. Reader articles: 226 total, diffed byte-for-byte vs git show d771e5b -- prior 224 untouched, exactly 2 new IDs added with verbatim V3 title/body/4 URLs, no grading/options fields in any article. Catalog: 131 packs/4028 questions; diffed vs d771e5b -- only the two People packs moved 19->20, other 129 rows byte-identical. Per-question diff: 19+19=38 prior DTO+grading entries byte-identical. Count-fixture diff is exactly literal 4026->4028 in the 3 named files. root-gates.json's full-go/full-flutter/flutter-analyze logs exist at claimed paths, hashes match, and I grepped them for FAIL/FAILED with no hits -- genuine passing runs, not fabricated. ONE DEFECT: study/check_reader.py (listed as modified in this task's own scope) contains unrelated changes -- 4 new reader catalog modules (cinema-connections, music-connections, literature-connections, everyday-science-connections; module count 6->10) that appear nowhere in integration-evidence.json, root-parity.json or root-gates.json and are outside the stated Next4D scope (which is limited to the 2 People questions). This violates the stated constraint 'no runtime/API/dependency/CI or foreign files changed' and should be split out of this change set or explicitly documented before this is treated as a clean, scoped integration. Limits: this is the import/binding review only, not a new blind fact solve (reused the already-accepted V3 fact review) and not a release/UI/Android/whole-bank certification. Did not run any build/test/browser/SSH myself; verified existing logs read-only. Recommendation: isolate/remove the unrelated check_reader.py reader-module changes from this integration's diff (or document why they belong here) before treating the change set as fully scoped; all Next4D-specific binding/hash/parity checks themselves pass cleanly."
+  },
+  "actual_report": "Review submitted and recorded in the hub (task-760dab3537954558b2949e270658f82e is now `ACCEPTED`, verdict **accept**, error_count 1).\n\n**Independently verified (all computed myself, not taken from author JSON):**\n- `writer-v3.json` sha256 matches exactly (`333d575f…28c6b9e9`); `sources-v3.md` full hash matches `root-v3-structural-check.json` (note: `claude-v3-accept.json`'s prose has a harmless 1-char typo in its abbreviated hash quote — not used for any real binding).\n- All 15 files in `integration-evidence.json`'s hash table reproduce exactly via `sha256sum`.\n- `cinema-people-020` / `music-people-020` legacy text/options/correct_answer/explanation match the accepted V3 verbatim; mapping confirmed: cinema index0→`opt-1`, music index1→`opt-2`.\n- Public DTOs expose only the 9 claimed keys, no grading field; private grading/correct-option bindings match; `source.uri` stays `/app/...`; difficulty 6 uses existing taxonomy only.\n- Reader articles: 226 total, byte-diffed against `d771e5b` — prior 224 untouched, exactly 2 new entries added with verbatim V3 title/body/4 URLs, no grading/options fields.\n- Catalog: 131 packs / 4028 questions, diffed against baseline — only the two People packs moved 19→20; other 129 rows and the 38 prior per-question DTO+grading entries are byte-identical.\n- Count-fixture diff in the 3 named test files is exactly the literal `4026→4028` replacement.\n- `root-gates.json`'s full-go/full-flutter/flutter-analyze logs exist at the claimed paths, hashes match, and I grepped them myself for FAIL — genuinely clean, not fabricated.\n\n**One defect found (error_count=1):** `study/check_reader.py` — listed as modified in this session's scope but outside this task's own `allowed_paths` — contains unrelated changes (4 new reader catalog modules: `cinema-connections`, `music-connections`, `literature-connections`, `everyday-science-connections`; module count 6→10) that appear in none of the Next4D evidence files and violate the \"no foreign files changed\" constraint. Recommended it be split out or explicitly documented.\n\n**Not certified** (out of scope per your instructions): release, build, browser/Android UI, or all-4028-fact bank audit — this was an import/binding review only.",
+  "integration_evidence_sha256": "650672ec612f8bde45c389cdd244cfaa8d048759ff40d20cca918e07190c3d09",
+  "initial_run": "Timed out300s; no acceptance assumed; resumed actualexit0/callback",
+  "limits": [
+    "Import/binding review only, not live/build/Android/wholebank certification",
+    "Reviewer error_count1 concerns pre-existing foreign file; see independently verified attribution addendum"
+  ]
+}
