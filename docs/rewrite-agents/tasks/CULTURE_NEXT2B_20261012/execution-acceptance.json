@@ -1,0 +1,56 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-87eb7300ed224a77bd6dd72d9d4e61ee",
+  "reviewer": "session-1f571a129a7c46eaa3f9be74a285e595",
+  "review_note": "Independent execution/publication-plan review (Claude, read-only, no SSH/build/deploy/browse performed by this review). prepare_remote.py correctly gates scp/ssh on static-acceptance.json having actual_hub_state=ACCEPTED and package_sha256 matching package.json (confirmed: task-1ead6faff..., sha ffd22dea... matches). remote-prepare.txt sha256 41a43ee0... matches execution-packet.json remote_log_sha256 exactly (recomputed locally). Log shows actual remote execution, not inferred: hostname/PVC/baseline-image guard in cutover.sh checked against ee09f1289... (matches package.json baseline_image), checksums.txt verification, api/js sha256 grep-checks (26e1657f.../a6393a07...) both pass, sqlite backup+restore ('integrity':'ok','restore':'ok'), rehearse.py migration test ('migration':'ok', original_rows_preserved=true) \u2014 recomputed from rehearse.py source: attempt_bundles is the only table allowed to grow and by exactly 131 (one bundle-cache row per existing pack from catalog warmup calls), explicitly asserted in source (after[3]-before[3]==131); all other 5 tables (participants/sessions/attempts/attempt_questions/attempt_answers) are asserted byte-identical in row count and superset-preserving in content hashes \u2014 this is cache population, not content mutation, and is guarded by an explicit assertion, not a silent side effect. Old-API rollback is a real test against the actual prior binary quiz-2026.10.12-culture-variety-b015251/api (matches release-evidence.json old_api_rollback_path), not just a path reference. Feedback lifecycle is submit\u2192resolve\u2192delete (copy-only, cleaned up, no residual overlap). Helm lint --strict and kubectl apply --dry-run=server both ran and passed per the log; cutover.sh exits before helm upgrade in mode=prepare (confirmed by reading the script), so no mutation to the live Deployment occurred yet. publish_prepared.py's generated publish script contains no 'docker build' (image is reused by digest sha256:98317653...) and is only previewed/bash -n syntax-checked in the reviewed script text \u2014 actual publish execution is separate and still pending, correctly not claimed here. All 10 local-browser-evidence/execution-packet QA artifact hashes (2 answer jsons, 4 screenshots, 2 modal jsons, feedback-restored.json, qa-web/main.dart.js) recomputed directly from disk and match exactly; both People packs show literal '\u0421\u0447\u0451\u0442: 17' with 17 answers each. qa-web/main.dart.js (1cfb7480...) correctly differs from the fresh production main.dart.js (a6393a07...) \u2014 QA reused reader4207 compiled JS as claimed, not a fresh local compile; four (not five) source-link controls claimed, matching the BFI-corroboration caveat. No discrepancies found. Remaining gaps correctly left unclaimed by the packet: actual helm upgrade/publish execution, published-JS QA, and physical Android/screen-reader verification \u2014 all still pending and out of scope for this review.",
+  "package_sha256": "ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78",
+  "image": "sha256:98317653087b76920c6396d8d1a1e88ae3cbec8b7f39b461fc87108ca15086fc",
+  "scope": "Actual prepared execution and exact publication script, public verification remains separate",
+  "actual_cli_exit": 0,
+  "raw_callback": {
+    "acceptance": [
+      "Prepared executionlog hash and actual guards/rehearsal preserved oldrows inspected",
+      "Exact alreadyreviewed immutable image consumed without rebuild; actualstatic/input checks",
+      "LocalQA proof scope honest; no publishedclaim until later verification"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next2b_release_lead_20261012",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Prepared exact source939f231 package archiveffd22dea and immutable image98317653. Static actualClaude accepted, remote hostname/currentbaseline/PVC/checksums/fresh backuprestore/copy118/oldrows/oldAPIrollback and Dockerimport/lint/serverdryrun actual0. LocalPeople17/17x2,2newquestion+2readerscreens4sourcecontrols/noFBoverlay/restore proofs. Independent Claude must inspect exact executionpacket/log/package and publish_prepared.py before authorized real Helm upgrade. Root owns executionevidence/publication; no new source changes.",
+    "created_at": 1791810691.0062966,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-87eb7300ed224a77bd6dd72d9d4e61ee",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "C:/ap/quiz_master/.run/culture_next2b_release_lead_20261012/execution-packet.json",
+        "C:/ap/quiz_master/.run/culture_next2b_release_lead_20261012/remote-prepare.txt",
+        "C:/ap/quiz_master/.run/culture_next2b_release_lead_20261012/publish_prepared.py",
+        "C:/ap/quiz_master/docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/local-browser-evidence.json"
+      ],
+      "limits": [
+        "No publication yet, exact publicnewJS browser verification pending",
+        "LocalQA compilation reused identical libDart with freshdata; no physicalAndroid/screenreader certification"
+      ],
+      "package_sha256": "ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78",
+      "summary": "Actual prepared exact source939f231 packageffd22dea/image98317653. Backup restore/integrity, copy118/oldrows/feedbackcopy/oldAPI rollback and import/lint/serverdryrun actual0. Local17/17x2 images+modal proofs hashbound. Publication consumes reviewed immutable image withoutrebuild, fresh backuprehearsal, current baseline/fullcommit pins."
+    },
+    "root_task_id": "task-87eb7300ed224a77bd6dd72d9d4e61ee",
+    "run_id": "run-5b48b7889a42400bb31728df28bb1d76",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Review prepared Next2B execution and exact publication plan",
+    "version": 4,
+    "reviewer": "session-1f571a129a7c46eaa3f9be74a285e595",
+    "review_note": "Independent execution/publication-plan review (Claude, read-only, no SSH/build/deploy/browse performed by this review). prepare_remote.py correctly gates scp/ssh on static-acceptance.json having actual_hub_state=ACCEPTED and package_sha256 matching package.json (confirmed: task-1ead6faff..., sha ffd22dea... matches). remote-prepare.txt sha256 41a43ee0... matches execution-packet.json remote_log_sha256 exactly (recomputed locally). Log shows actual remote execution, not inferred: hostname/PVC/baseline-image guard in cutover.sh checked against ee09f1289... (matches package.json baseline_image), checksums.txt verification, api/js sha256 grep-checks (26e1657f.../a6393a07...) both pass, sqlite backup+restore ('integrity':'ok','restore':'ok'), rehearse.py migration test ('migration':'ok', original_rows_preserved=true) \u2014 recomputed from rehearse.py source: attempt_bundles is the only table allowed to grow and by exactly 131 (one bundle-cache row per existing pack from catalog warmup calls), explicitly asserted in source (after[3]-before[3]==131); all other 5 tables (participants/sessions/attempts/attempt_questions/attempt_answers) are asserted byte-identical in row count and superset-preserving in content hashes \u2014 this is cache population, not content mutation, and is guarded by an explicit assertion, not a silent side effect. Old-API rollback is a real test against the actual prior binary quiz-2026.10.12-culture-variety-b015251/api (matches release-evidence.json old_api_rollback_path), not just a path reference. Feedback lifecycle is submit\u2192resolve\u2192delete (copy-only, cleaned up, no residual overlap). Helm lint --strict and kubectl apply --dry-run=server both ran and passed per the log; cutover.sh exits before helm upgrade in mode=prepare (confirmed by reading the script), so no mutation to the live Deployment occurred yet. publish_prepared.py's generated publish script contains no 'docker build' (image is reused by digest sha256:98317653...) and is only previewed/bash -n syntax-checked in the reviewed script text \u2014 actual publish execution is separate and still pending, correctly not claimed here. All 10 local-browser-evidence/execution-packet QA artifact hashes (2 answer jsons, 4 screenshots, 2 modal jsons, feedback-restored.json, qa-web/main.dart.js) recomputed directly from disk and match exactly; both People packs show literal '\u0421\u0447\u0451\u0442: 17' with 17 answers each. qa-web/main.dart.js (1cfb7480...) correctly differs from the fresh production main.dart.js (a6393a07...) \u2014 QA reused reader4207 compiled JS as claimed, not a fresh local compile; four (not five) source-link controls claimed, matching the BFI-corroboration caveat. No discrepancies found. Remaining gaps correctly left unclaimed by the packet: actual helm upgrade/publish execution, published-JS QA, and physical Android/screen-reader verification \u2014 all still pending and out of scope for this review."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-1ead6faff49d4493a43533bb302a4ec3",
+  "reviewer": "session-003669f0adc24dd48d550434eeecca25",
+  "review_note": "Independent static review (Claude, read-only). Verified directly against artifacts, not inferred from source: fast_archive_check.py (read-only) passed \u2014 archive sha256 ffd22dea... matches package.json, 297/297 members, flat root, no bytecode/links. API binary at stage sha256 26e1657f... is byte-identical to the prior verified reader4207 API binary (direct sha256sum comparison of both files) \u2014 confirms API/libDart/dependencies unchanged claim. Fresh web-production/main.dart.js sha256 a6393a07... matches package.json/release-evidence.json exactly. Counts recomputed from live repo artifacts, not claims: catalog.json has exactly 131 packs summing to 4022 questions_count; question-articles.json has exactly 220 article entries; cinema-people-20261011 and music-people-20261011 both show questions_count=17. runtime-bundles.json (sha256 d09f3bde... matches release-evidence.json) contains exactly 8 fixture packs totaling 118 questions (verified by summing quiz.questions per pack). expected-staging-revisions.json sha256 1cdaed23... matches claim. All four root-gates.json log_sha256 values (full-go, discovery-corpus-targeted, full-flutter, flutter-analyze) match the actual log files byte-for-byte, with each actual_exit=0 \u2014 gate results are evidence-backed, not source-inferred. baseline_image in package.json (ee09f1289...) equals stage.baseline_image in release-evidence.json with guard_equals_package_baseline=true; this is a value-consistency check only \u2014 cutover.sh/rehearse.py execution itself, hostname/PVC/backup-restore/rollback rehearsal and production publication remain outside this repo's static artifacts and are correctly flagged by the packet as Root-owned, unexecuted-by-this-review items, not inferred as done. No discrepancies found in any recomputed hash or count. This static package approval does not constitute publication/deployment approval.",
+  "package_sha256": "ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78",
+  "source_commit": "939f231fd3ce2e498fb2563137555831b3aa4bae",
+  "scope": "Static exact package only; no execution or publication implied",
+  "process_limit": "Initial180second process timeout; final actual CLIexit0 callback supplies acceptance. No preliminary prose used as acceptance.",
+  "raw_callback": {
+    "acceptance": [
+      "FreshproductionFlutter actual0, exact sourcefullcommit/build/packageidentity",
+      "131/4022/220/17each/8fixture118counts and APIhash/taxonomy/privacy/export checks",
+      "Flat no-link/no-bytecode exact archive, checksum/syntax and current-image guard verified"
+    ],
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT2B_20261012"
+    ],
+    "assignee": "session-d5b5861bba66413692b5871e05c2fc4b",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Source939f231 contains exact accepted culture2 questions/articles, stable131packs4022questions220articles/People17. Actual Claude source and binding accept, RootfullGo116Flutter/analyzer pass (one stale discovery corpus fixture fixed). Build freshproductionweb and stage exact currentsource using prior accepted reader4207 pipeline. API/Dartlib/dependencies unchanged (testfixture/sourceassets only), existing LinuxAPI26e1657 and corrected priorreaderbaseline stage can be reused withhash assertions. Baseline deployed reader imageee09f1289bcf2cab54ee5b8366cd7142bd133fdd3975ecc89d47300db4b5fb51. Fixture8packs118questions; preserve8fixture metadata/revisions and actualoldAPI rollback. Own only fresh .run/culture_next2b_release_20261012 and release-evidence.json. NoSSH/deploy/Git/source edits; Root browser and static/execution reviews separate. Await exact full sourcecommit and offer before build.",
+    "created_at": 1791808544.9724033,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-1ead6faff49d4493a43533bb302a4ec3",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT2B_20261012/release-evidence.json sha256 5efc3a97c61fa5eeff33638642497fcc7b1983b70dd6b5948fc1d11b8f3614bc",
+        ".run/culture_next2b_release_20261012/package.json sha256 972e811f14b0a6d29a1d5559ee29ddd997ec1c324f6289546f7d5ea19f95d9c1",
+        "archive sha256 ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78; Flutter build exit 0; fixture generator exit 0; archive streaming/checksum/guard assertions passed"
+      ],
+      "status": "READY_FOR_INDEPENDENT_STATIC_REVIEW",
+      "summary": "Created isolated Next2B package with fresh production Flutter artifact, current accepted source/canonical/assets, 8 fixture packs/118 questions, full source metadata, guard assertion and streaming archive validation. No deployment or publication."
+    },
+    "root_task_id": "task-1ead6faff49d4493a43533bb302a4ec3",
+    "run_id": "run-5ae7013e605740d8a12cc486b29a9123",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Build exact accepted Next2B production release package",
+    "version": 4,
+    "reviewer": "session-003669f0adc24dd48d550434eeecca25",
+    "review_note": "Independent static review (Claude, read-only). Verified directly against artifacts, not inferred from source: fast_archive_check.py (read-only) passed \u2014 archive sha256 ffd22dea... matches package.json, 297/297 members, flat root, no bytecode/links. API binary at stage sha256 26e1657f... is byte-identical to the prior verified reader4207 API binary (direct sha256sum comparison of both files) \u2014 confirms API/libDart/dependencies unchanged claim. Fresh web-production/main.dart.js sha256 a6393a07... matches package.json/release-evidence.json exactly. Counts recomputed from live repo artifacts, not claims: catalog.json has exactly 131 packs summing to 4022 questions_count; question-articles.json has exactly 220 article entries; cinema-people-20261011 and music-people-20261011 both show questions_count=17. runtime-bundles.json (sha256 d09f3bde... matches release-evidence.json) contains exactly 8 fixture packs totaling 118 questions (verified by summing quiz.questions per pack). expected-staging-revisions.json sha256 1cdaed23... matches claim. All four root-gates.json log_sha256 values (full-go, discovery-corpus-targeted, full-flutter, flutter-analyze) match the actual log files byte-for-byte, with each actual_exit=0 \u2014 gate results are evidence-backed, not source-inferred. baseline_image in package.json (ee09f1289...) equals stage.baseline_image in release-evidence.json with guard_equals_package_baseline=true; this is a value-consistency check only \u2014 cutover.sh/rehearse.py execution itself, hostname/PVC/backup-restore/rollback rehearsal and production publication remain outside this repo's static artifacts and are correctly flagged by the packet as Root-owned, unexecuted-by-this-review items, not inferred as done. No discrepancies found in any recomputed hash or count. This static package approval does not constitute publication/deployment approval."
+  }
+}

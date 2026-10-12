@@ -1,0 +1,55 @@
+{
+  "task_id": "task-1ead6faff49d4493a43533bb302a4ec3",
+  "status": "READY_FOR_INDEPENDENT_STATIC_REVIEW",
+  "build_id": "quiz-2026.10.12-culture-939f231",
+  "source_commit": "939f231fd3ce2e498fb2563137555831b3aa4bae",
+  "counts": {
+    "packs": 131,
+    "questions": 4022,
+    "articles": 220,
+    "cinema_people": 17,
+    "music_people": 17,
+    "runtime_fixture_packs": 8,
+    "runtime_fixture_questions": 118
+  },
+  "flutter": {
+    "command": "flutter build web --release --output C:\\ap\\quiz_master\\.run\\culture_next2b_release_20261012\\web-production --dart-define=QM_BUILD_ID=quiz-2026.10.12-culture-939f231 --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org",
+    "exit_code": 0,
+    "compile_duration_seconds": 273.4,
+    "js_sha256": "a6393a075253ac20bcfb886da4e41bdd760f134ccdab4141c09e7e3070b52e0b",
+    "warnings": "Wasm dry-run informational warning; existing CupertinoIcons font warning; MaterialIcons tree-shaking notice."
+  },
+  "fixtures": {
+    "generator": "go run ./next/server/.run/culture_next2_release_20261012 ... quiz-2026.10.12-culture-939f231",
+    "exit_code": 0,
+    "packs": 8,
+    "questions": 118,
+    "runtime_bundles_sha256": "d09f3bde41389ff8185e5eb14f225cf24f52cea2c4897f466c1b8c34952abe44",
+    "staging_revisions_sha256": "1cdaed23fcda85b68fbb97e76b7177b0f91b1eed7140791f0090ba6646477592",
+    "grading_and_revision_bindings_verified": true
+  },
+  "archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next2b_release_20261012\\quiz-2026.10.12-culture-939f231.tar.gz",
+    "sha256": "ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78",
+    "bytes": 47962385,
+    "members": 297,
+    "files": 297,
+    "checksums_entries": 296,
+    "verification": "streaming tar.gz validation passed; flat root; no bytecode or links"
+  },
+  "stage": {
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "js_sha256": "a6393a075253ac20bcfb886da4e41bdd760f134ccdab4141c09e7e3070b52e0b",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "baseline_image": "docker.io/library/quiz-master@sha256:ee09f1289bcf2cab54ee5b8366cd7142bd133fdd3975ecc89d47300db4b5fb51",
+    "guard_equals_package_baseline": true,
+    "dynamic_full_build_regex": true,
+    "main_dart_js_guards": 3,
+    "bash_syntax": "passed",
+    "rehearse_syntax": "passed",
+    "old_api_rollback_path": "quiz-2026.10.12-culture-variety-b015251/api"
+  },
+  "package_sha256": "972e811f14b0a6d29a1d5559ee29ddd997ec1c324f6289546f7d5ea19f95d9c1",
+  "release": "No SSH, server call, deployment, publication, or acceptance claim. Root owns external review and release gates."
+}

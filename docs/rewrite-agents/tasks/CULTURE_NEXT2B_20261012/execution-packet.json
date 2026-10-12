@@ -1,0 +1,66 @@
+{
+  "package_sha256": "ffd22dea3d6263f35d474f840ec3d0e3448c46b815e27fe1ded8fe0d439b7d78",
+  "build": "quiz-2026.10.12-culture-939f231",
+  "source_commit": "939f231fd3ce2e498fb2563137555831b3aa4bae",
+  "image": "sha256:98317653087b76920c6396d8d1a1e88ae3cbec8b7f39b461fc87108ca15086fc",
+  "values": "quiz-2026.10.12-culture-939f231-cutover-20261012T130621Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "41a43ee0d10eca23042cf1a3484167726e8a7f629561ca12f6c15d50369e9e34",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-939f231.tar",
+  "durable_archive_sha256": "2a5dd9cf799064e77aaf96531fa6b684f65518d18f93efaaffe3138990029eb5",
+  "actual_copy_rehearsal": {
+    "packs": 8,
+    "questions": 118,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_mobile_qa": {
+    "viewport": [
+      390,
+      844
+    ],
+    "proofs": {
+      "music": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-music-answers.json",
+        "sha256": "ff623d89800ccd1f900caec9bd14564d3975617f17258610b298e0c7a4d0f95f",
+        "score": 17,
+        "question_count": 17
+      },
+      "cinema": {
+        "path": "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-cinema-answers.json",
+        "sha256": "688ff38fec052c9e380a962ff15c9e164a5740b6c8a1150fc2007b9eb8134dde",
+        "score": 17,
+        "question_count": 17
+      }
+    },
+    "new_questions_visible_options": 4,
+    "no_spoken_option_ids": true,
+    "both_question_screenshots_viewed": true,
+    "both_article_screenshots_viewed": true,
+    "source_link_checks": "All four new article source-link controls visible in snapshots; no browser navigation to external sources claimed in this QA. Primary sources separately opened by Root and editorial Claude.",
+    "browser_closed": true,
+    "api_proxy_stopped": true
+  },
+  "not_claimed": [
+    "Published culture release/browser verification",
+    "All bank facts reviewed",
+    "Physical screen reader verification",
+    "Android APK validation"
+  ],
+  "qa_limit": "Local browser reused verified reader4207 localhost QA compilation with unchanged lib Dart/dependencies/API, replacing catalog/reader assets and disposable canonical API data. Test-only discovery fixture changed; fresh production JS separately built. Exact published new-JS QA remains required.",
+  "local_qa_artifact_hashes": {
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-cinema-answers.json": "688ff38fec052c9e380a962ff15c9e164a5740b6c8a1150fc2007b9eb8134dde",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-music-answers.json": "ff623d89800ccd1f900caec9bd14564d3975617f17258610b298e0c7a4d0f95f",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-cinema-people-017.png": "490ae4135d4c7bce25c041d3f3e0293224b87aa9a244e21ed03f6f9e67cfae12",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-music-people-017.png": "2d924d52134ae1d09695a78ff5f8b5e30ab8aebac5a83bacc5743ef3027279fd",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-cinema-017-article.png": "d9b29d1bc44e611e1bc8a3a383f8626e00c1fdb353d8781b5aef35c24956885f",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-music-017-article.png": "c2a33a47121e2264e34a2c281684b0e6a9bc4a51556ecc5ec550eb4890a63934",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-cinema-017-modal.json": "710aecf871acd23e81b7adf2efab8845329304737e50ec15d8f909e086c8b207",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-music-017-modal.json": "d73e6859525a24fc0a7cca1b8d613738115a0ea445a1796b695597a8b8773d59",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\local-feedback-restored.json": "3d6805614c1c4657d2c0f2b540562370faf9e41fbe7a25a3ed9707768aca783b",
+    "C:\\ap\\quiz_master\\.run\\culture_next2b_browser_20261012\\qa-web\\main.dart.js": "1cfb74804bdc53336db483c9f068a273317add95a902dc81e4ef770b668ce8c4"
+  }
+}
