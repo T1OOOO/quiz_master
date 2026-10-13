@@ -1,0 +1,52 @@
+{
+  "frozen_source": "f79555e0659f0c20b86064b446ac582de323b2e9",
+  "build_id": "quiz-2026.10.13-music-craft-f79555e",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\music_craft_release_20261013\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.13-music-craft-f79555e",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 70.88,
+      "output": "C:\\ap\\quiz_master\\.run\\music_craft_release_20261013\\production-web",
+      "log_sha256": "71837a9689b7420ee2b3aac5e44ccf876a0730fe61fc926395857044454ab42b",
+      "main_dart_js_sha256": "fe9b2c66ed9c7b01ad5325616ff6a4fd8402c653b9fe97705b450a96ccaf8380",
+      "frozen_assets_byte_identical": true
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\music_craft_release_20261013\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-music-craft-local-f79555e",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:18093"
+      ],
+      "elapsed_seconds": 65.24,
+      "output": "C:\\ap\\quiz_master\\.run\\music_craft_release_20261013\\qa-web",
+      "log_sha256": "14426ee7e3f5236d032357a96582025a22c47630d4647573ee5f42627eca8513",
+      "main_dart_js_sha256": "6508e72fb563697af182654e7b5eb39cc6bf6e120247cbfffbd2b901d513acad",
+      "frozen_assets_byte_identical": true
+    }
+  ]
+}

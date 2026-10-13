@@ -1,0 +1,171 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-4be465ba9adf4a5ba1f3b910e738cc0e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4be465ba9adf4a5ba1f3b910e738cc0e",
+          "verdict": "accept",
+          "note": "Independent Claude review, read-only, workspace C:/ap/quiz_master. Inspected actual code in docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/ (prepare_music_craft_release.py, prepare_remote.py, publish_prepared.py, negative_checks.py, save_execution_acceptance.py, README.md) and the generated local package in .run/music_craft_controller_repair_20261013/. I independently re-ran `negative_checks.py` myself (not just trusted REPORT.json) and reproduced all 21 PASS lines verbatim, including package_sha256 ae4768f4...30f9f7, producer/prepare/publisher controller hashes, 307 archive members, and 148 reconstructed staging revisions.\n\nThis resolves all four findings from the prior REWORK verdict:\n1) main() no longer has an unconditional fail(); it performs real work mirroring Film Craft's pattern - extracts and hash-verifies the prior immutable archive, reads frozen Git blobs via `git show <commit>:<path>` (never the mutable tree), verifies compiled Flutter JS/assets against pinned production/QA hashes, preserves all 132 prior catalog rows / 248 article objects / 9 cache entries exactly, appends only the 4 new Music Craft rows/cache entry, writes a deterministic checksums.txt, and builds a verified tar.gz (status PREPARED_NOT_EXECUTED). Publication/SSH/image/Helm remain entirely absent from this path.\n2) All *_sha256 fields (archive, manifest, per-file, JS, catalog, Reader) are checked against real sha256_file()/git blob bytes throughout producer.py, prepare_remote.validate_package, and publish_prepared.prepare - none are shape-only.\n3) publish_prepared.py now has a fully worked prepare()/publish_script(), gated behind real pre-conditions (package status, build/source/JS/count pins, execution packet binding, require_actual_acceptance with reviewer!=assignee binding, copied-DB rehearsal fields 10/148/55/203/11/old_rows_preserved, browser-proof gates, publisher source hash self-check, git-ancestor/no-drift check). Default and --preview are read-only; --publish is reachable only after every gate and is not invoked by this task. No dead/unreachable stub remains.\n4) negative_checks.py now exercises 16 distinct validate()-style rejection branches individually (tampered raw answer/tags/stem, canonical title drift, revision corruption, staged metadata tamper, old catalog/article object changed, old cache tampered, wrong baseline archive, wrong compiled JS, missing acceptance/review/execution-packet, invented status-only acceptance, missing preparation-only anchor) plus real Bash-mode branch checks proving cutover.sh accepts only `prepare` and the rendered publish script accepts only `publish`. I confirmed each PASS independently.\n\nAll baseline/target pins (BASELINE_ARCHIVE_SHA256, BASELINE_IMAGE, PVC_UID, BASELINE_SOURCE_COMMIT, FROZEN_COMMIT, PRODUCTION_JS_SHA256, QA_JS_SHA256, counts 133/4052/252 and 132/4048/248/9->10) match the task brief exactly, not invented. `git diff --check` on the worker dir is clean (files are new/untracked, no whitespace issues); frozen-commit f79555e0659f0c20b86064b446ac582de323b2e9 verified to exist in this repo. save_execution_acceptance.py only writes an acceptance record when it parses a genuine hub_task review/accept tool_use+tool_result pair matching the exact task_id with a non-error final result - it cannot be satisfied by a status-only field (verified by the 'acceptance writer rejects missing real callback' negative test).\n\nScope of this ACCEPT: the senior's controller/package implementation only (producer, prepare-only remote validator, publish-only publisher, negative-check suite, this package's local evidence). It does NOT certify future QA/browser gates, remote rehearsal, image build, Helm cutover, or published UI - those remain separate, still-pending gates per the worker's own README and REPORT.json limitations section, which I confirm are accurately disclosed, not silently skipped."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Concrete runnable adaptation with exactknownfrozen source/compiledpins, no causalitydeadlock on outputs",
+          "Actualfile/gitblob checks, oldobject preservation, source rawruntime parity andpublication safety gates retained",
+          "Localpositive staging/negative guards actuallytested; independentdifferentproviderreview stillrequired before use"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker"
+        ],
+        "assignee": "session-7113297504a54d349f749a63059e4e62",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Take sole ownership of MUSIC_CRAFT_RELEASE worker files after previous bounded helper stopped with unsafe intermediate refactor. Prior actual Claude controller review REWORK4; do not trustcurrent intermediate files. Complete specialized runnable adaptation of actual previousFilmCraft controllers to currentHelm49 baseline/targetf79555e. Allsource/raw/canonical/export hashes andrevs nowfrozen source-inputs.json; actual production+QA compiledhashes/root-builds.json ready. Hardcode knownfrozen pins ifsimplest; do not inventfutureimage/archive outputs or requirethosebeforeproducercreates them. Implement real localextract/verify/stage/archive + gatedremote-preparation/cutover code, unexecutedbyworker. Onlylead executes after actual code andfrozen package acceptance. Preserve allold132rows/248articles/9cache/API/PVC/nginx; target133/4052/252/10cache; copiedDB203grading/11history. Meaningful negativechecks/actuallocalpositive packageprepare allowedonlynewownscratch .run/music_craft_controller_repair_20261013; noSSH/server/build/browser/Git/otherapp edits. Report exactremainingcause afterboundedattempt; novalidatorstub claimingcomplete.",
+        "created_at": 1791922101.6799712,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-4be465ba9adf4a5ba1f3b910e738cc0e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_local_evidence": "C:\\ap\\quiz_master\\.run\\music_craft_controller_repair_20261013\\local-verification.json",
+          "build_id": "quiz-2026.10.13-music-craft-f79555e",
+          "changed_file_sha256": {
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\README.md": "a1fe5c7e50e530fa6909096fbbc454fbc3dc0a9e697d940b11ebb4351eb8b592",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\negative_checks.py": "8347e0e21a5a19c7d1aad50e1c290ed3a0f8e339adaef62bc636ee59df188f8b",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\prepare_music_craft_release.py": "a8640b1dcbb32cd18b591a23b5cb61d56e1425f1b98c31c63c8986a0cf37a74b",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\prepare_remote.py": "35b9b6c1ea777f30ae5ea920f8718bcbae9dcb098143176b7aacd596c77be683",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\publish_prepared.py": "4e9ae3b7630c5e1daa107446e3342953c9c4262579449fdc8636f215204687b5",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\save_execution_acceptance.py": "92340a23e1921f73c16b62e59afab7ef072e8075d68bc1497021cd6e54a57871"
+          },
+          "checks": [
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/prepare_music_craft_release.py --repo C:/ap/quiz_master --frozen-commit f79555e0659f0c20b86064b446ac582de323b2e9 --production-web C:/ap/quiz_master/.run/music_craft_release_20261013/production-web --qa-web C:/ap/quiz_master/.run/music_craft_release_20261013/qa-web --output-root C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1 --prior-archive C:/ap/quiz_master/.run/film_craft_runtime_release_20261013/package-v1/quiz-2026.10.13-film-craft-adf95a5.tar.gz",
+              "result": "Actual extract/verify/stage/archive produced package; no remote or image operation."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/negative_checks.py --package-json C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1/package-preparation.json --scratch C:/ap/quiz_master/.run/music_craft_controller_repair_20261013",
+              "result": "Actual checksum/Git/stage/archive parity, 148 reconstructed revisions, deterministic rearchive, 16 negative guards, four actual native Bash mode branches; final package restored and verified."
+            },
+            {
+              "actual_green_exit": 0,
+              "actual_red_exit": 1,
+              "command": "python .run/music_craft_controller_repair_20261013/publisher_mode_regression.py",
+              "result": "Observed inherited prepare-only publisher defect, then confirmed separate publish-only rendering after exact one-anchor fix."
+            },
+            {
+              "actual_exit": 0,
+              "command": "compile all five owned Python files; git diff --check -- docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker",
+              "result": "Syntax and whitespace checks passed."
+            },
+            {
+              "reference": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/REPORT.json",
+              "sha256": "b33fabd0cecdd9d017a7bfb157bd5037ba2a45c05be109c218b592f13f55b11a"
+            }
+          ],
+          "evidence": [
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/prepare_music_craft_release.py --repo C:/ap/quiz_master --frozen-commit f79555e0659f0c20b86064b446ac582de323b2e9 --production-web C:/ap/quiz_master/.run/music_craft_release_20261013/production-web --qa-web C:/ap/quiz_master/.run/music_craft_release_20261013/qa-web --output-root C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1 --prior-archive C:/ap/quiz_master/.run/film_craft_runtime_release_20261013/package-v1/quiz-2026.10.13-film-craft-adf95a5.tar.gz",
+              "result": "Actual extract/verify/stage/archive produced package; no remote or image operation."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/negative_checks.py --package-json C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1/package-preparation.json --scratch C:/ap/quiz_master/.run/music_craft_controller_repair_20261013",
+              "result": "Actual checksum/Git/stage/archive parity, 148 reconstructed revisions, deterministic rearchive, 16 negative guards, four actual native Bash mode branches; final package restored and verified."
+            },
+            {
+              "actual_green_exit": 0,
+              "actual_red_exit": 1,
+              "command": "python .run/music_craft_controller_repair_20261013/publisher_mode_regression.py",
+              "result": "Observed inherited prepare-only publisher defect, then confirmed separate publish-only rendering after exact one-anchor fix."
+            },
+            {
+              "actual_exit": 0,
+              "command": "compile all five owned Python files; git diff --check -- docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker",
+              "result": "Syntax and whitespace checks passed."
+            },
+            {
+              "reference": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/REPORT.json",
+              "sha256": "b33fabd0cecdd9d017a7bfb157bd5037ba2a45c05be109c218b592f13f55b11a"
+            }
+          ],
+          "hub_session_id": "session-7113297504a54d349f749a63059e4e62",
+          "hub_task_id": "task-4be465ba9adf4a5ba1f3b910e738cc0e",
+          "limitations": [
+            "Independent different-provider review remains required before Root remote preparation.",
+            "Actual local browser and Root screenshot/source verification are separate required gates.",
+            "Future image/archive/backup/rehearsal/Helm outputs must come from actual successful preparation, followed by separate actual execution acceptance.",
+            "No approval callback or acceptance artifact was invented or written.",
+            "Source integration and browser evidence remain lead/other-worker owned; unrelated files preserved."
+          ],
+          "not_run": [
+            "Remote preparation/SSH/SCP",
+            "Docker/image construction",
+            "Copied database rehearsal and rollback",
+            "Helm/server checks",
+            "Browser/Android checks",
+            "Publication",
+            "Independent review of this final submission",
+            "Git index/commit/push"
+          ],
+          "package": {
+            "archive": "C:\\ap\\quiz_master\\.run\\music_craft_controller_repair_20261013\\package-v1\\quiz-2026.10.13-music-craft-f79555e.tar.gz",
+            "counts": {
+              "baseline_cache_entries": 9,
+              "home_alone_questions": 25,
+              "music_craft_questions": 4,
+              "packs": 133,
+              "preserved_article_objects": 248,
+              "preserved_catalog_rows": 132,
+              "preserved_questions": 4048,
+              "questions": 4052,
+              "reader_articles": 252,
+              "runtime_cache_entries": 10,
+              "staging_canonical_questions": 148
+            },
+            "file_members": 307,
+            "manifest_sha256": "028e13add82706d74eb3fe9ed4e5c95eceadebb7b4200f7c308ad81fff839db6",
+            "record": "C:\\ap\\quiz_master\\.run\\music_craft_controller_repair_20261013\\package-v1\\package-preparation.json",
+            "sha256": "ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7",
+            "stage": "C:\\ap\\quiz_master\\.run\\music_craft_controller_repair_20261013\\package-v1\\quiz-2026.10.13-music-craft-f79555e",
+            "tar_members": 307
+          },
+          "resolved_defects": [
+            "Unsafe validator stub replaced with actual reviewed Film Craft producer/publisher adaptation.",
+            "Exact Music source/production/QA pins replace stale Film pins.",
+            "Nine baseline caches and 132 old catalog/248 old Reader objects preserved.",
+            "Raw option/key/tag/URI/private/public parity required before packaging.",
+            "Copied database script expects 203 graded questions and 11 finished histories including NewYear55.",
+            "Staged cutover is prepare-only; separate publisher render is publish-only.",
+            "Future code/package/QA acceptance and exact complete execution acceptance remain genuine gates."
+          ],
+          "runtime_identity": "codex/gpt-6.1-sol (self-reported)",
+          "source_commit": "f79555e0659f0c20b86064b446ac582de323b2e9",
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-4be465ba9adf4a5ba1f3b910e738cc0e",
+        "run_id": "run-048f9398c6ee4676b124bf047be114f9",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad senior repair executable music release controllers from frozen source",
+        "version": 4,
+        "reviewer": "session-31af0697b86046139d2f1ebfbbaaa6ea",
+        "review_note": "Independent Claude review, read-only, workspace C:/ap/quiz_master. Inspected actual code in docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/ (prepare_music_craft_release.py, prepare_remote.py, publish_prepared.py, negative_checks.py, save_execution_acceptance.py, README.md) and the generated local package in .run/music_craft_controller_repair_20261013/. I independently re-ran `negative_checks.py` myself (not just trusted REPORT.json) and reproduced all 21 PASS lines verbatim, including package_sha256 ae4768f4...30f9f7, producer/prepare/publisher controller hashes, 307 archive members, and 148 reconstructed staging revisions.\n\nThis resolves all four findings from the prior REWORK verdict:\n1) main() no longer has an unconditional fail(); it performs real work mirroring Film Craft's pattern - extracts and hash-verifies the prior immutable archive, reads frozen Git blobs via `git show <commit>:<path>` (never the mutable tree), verifies compiled Flutter JS/assets against pinned production/QA hashes, preserves all 132 prior catalog rows / 248 article objects / 9 cache entries exactly, appends only the 4 new Music Craft rows/cache entry, writes a deterministic checksums.txt, and builds a verified tar.gz (status PREPARED_NOT_EXECUTED). Publication/SSH/image/Helm remain entirely absent from this path.\n2) All *_sha256 fields (archive, manifest, per-file, JS, catalog, Reader) are checked against real sha256_file()/git blob bytes throughout producer.py, prepare_remote.validate_package, and publish_prepared.prepare - none are shape-only.\n3) publish_prepared.py now has a fully worked prepare()/publish_script(), gated behind real pre-conditions (package status, build/source/JS/count pins, execution packet binding, require_actual_acceptance with reviewer!=assignee binding, copied-DB rehearsal fields 10/148/55/203/11/old_rows_preserved, browser-proof gates, publisher source hash self-check, git-ancestor/no-drift check). Default and --preview are read-only; --publish is reachable only after every gate and is not invoked by this task. No dead/unreachable stub remains.\n4) negative_checks.py now exercises 16 distinct validate()-style rejection branches individually (tampered raw answer/tags/stem, canonical title drift, revision corruption, staged metadata tamper, old catalog/article object changed, old cache tampered, wrong baseline archive, wrong compiled JS, missing acceptance/review/execution-packet, invented status-only acceptance, missing preparation-only anchor) plus real Bash-mode branch checks proving cutover.sh accepts only `prepare` and the rendered publish script accepts only `publish`. I confirmed each PASS independently.\n\nAll baseline/target pins (BASELINE_ARCHIVE_SHA256, BASELINE_IMAGE, PVC_UID, BASELINE_SOURCE_COMMIT, FROZEN_COMMIT, PRODUCTION_JS_SHA256, QA_JS_SHA256, counts 133/4052/252 and 132/4048/248/9->10) match the task brief exactly, not invented. `git diff --check` on the worker dir is clean (files are new/untracked, no whitespace issues); frozen-commit f79555e0659f0c20b86064b446ac582de323b2e9 verified to exist in this repo. save_execution_acceptance.py only writes an acceptance record when it parses a genuine hub_task review/accept tool_use+tool_result pair matching the exact task_id with a non-error final result - it cannot be satisfied by a status-only field (verified by the 'acceptance writer rejects missing real callback' negative test).\n\nScope of this ACCEPT: the senior's controller/package implementation only (producer, prepare-only remote validator, publish-only publisher, negative-check suite, this package's local evidence). It does NOT certify future QA/browser gates, remote rehearsal, image build, Helm cutover, or published UI - those remain separate, still-pending gates per the worker's own README and REPORT.json limitations section, which I confirm are accurately disclosed, not silently skipped."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The callback succeeded: `\"state\":\"ACCEPTED\"`, reviewer = my session, assignee = the Codex worker session, verdict accept recorded with the full evidence note.\n\n## Findings summary (plain English)\n\nThe senior Codex worker's resubmission genuinely fixes all four issues from the prior failed review:\n\n1. **No more unconditional failure** — `prepare_music_craft_release.py` now does real work: extracts and hash-verifies the frozen Film Craft archive, reads frozen Git blobs (never the mutable working tree), checks compiled Flutter JS/assets, preserves all 132 old catalog rows / 248 articles / 9 cache entries, appends only the 4 new Music Craft items, and builds a verified, byte-deterministic tar.gz.\n2. **Hashes are real, not shape-only** — every `*_sha256` field is checked against actual file/git-blob bytes.\n3. **Publisher is a real, gated implementation** — `publish_prepared.py` has a fully worked `prepare()`/`publish_script()`, locked behind package/execution/acceptance/browser-proof checks; defaults stay read-only; `--publish` is reachable only after every gate (and isn't invoked by this task).\n4. **Negative tests are now thorough** — 16 individual tamper/rejection cases plus real Bash-mode branch checks proving the shell only runs `prepare` in this script and only `publish` in the rendered one.\n\nI didn't just trust the submitted report — I re-ran `negative_checks.py` myself against the actual on-disk package and reproduced all 21 pass lines and hashes exactly, and confirmed the frozen commit and baseline/target pins match the task brief precisely.\n\n**Verdict: ACCEPT**, scoped only to this controller/package implementation — it does not certify future QA, remote rehearsal, image build, Helm cutover, or the published UI, which remain separate pending gates (as the worker's own README/REPORT.json correctly disclose).",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4e3616bac294a84a54a2ede2073dca2f2e3457731e0b5997ba8636af9e11db43",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

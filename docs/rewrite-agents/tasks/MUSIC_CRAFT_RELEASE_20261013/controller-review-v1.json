@@ -1,0 +1,98 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-2a6712d92d534ee4a09f7788d8f386be": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-2a6712d92d534ee4a09f7788d8f386be",
+          "verdict": "rework",
+          "note": "Independent review vs. the reviewed Film Craft producer/publisher precedent. Baseline pins (build_id/source_commit/archive_sha256/image/counts) are verified real, matching published HANDOFF.md -- not fabricated. However the implementation is a shape-validator stub, not a conforming producer: (1) prepare_music_craft_release.py's main() unconditionally calls fail() after validate() regardless of outcome -- I constructed a fully well-formed manifest and confirmed it can never succeed, so this is 'do not implement execution', not 'do not execute in this worker'; Film Craft's equivalent actually extracts/copies/verifies/archives when given correct inputs and only gates the remote cutover separately. (2) require_hash() only checks SHA-256 regex shape, never verifies any value against real file/git-blob content (Film Craft's sha256_file/git_bytes pattern does). (3) publish_prepared.py has zero implemented gates (backup/rollback/image pin/preservation/copied-DB/public-verification/no-ETag-conditional) -- just an immediate RuntimeError for both --preview and --publish, unlike Film Craft's worked-but-gated publisher. (4) negative_checks.py exercises only 'file missing' and 'one fully-valid manifest' outcomes, never any of validate()'s ~9 individual rejection branches; I manually tampered 6 individual fields (altered target count, placeholder status, stale Helm48 baseline, incomplete review, bad hash format, fully valid) directly against the script and confirmed each currently raises correctly, but the repo's own tests do not prove this and would miss a regression. Full detail in host_hub message id 37588. Bounded, non-speculative rework: (a) remove the unconditional final fail() and implement real staging (extract/copy/verify real frozen content by hash/git-blob, append cache, write checksums, archive) mirroring Film Craft's pattern, keeping only the remote/irreversible cutover gated to a separate authorized publisher; (b) verify the five *_sha256 manifest fields against real bytes, not just hex shape; (c) implement publish_prepared.py's required gates as real --publish-gated logic analogous to Film Craft's publisher, even while --publish itself stays unused; (d) add individual-branch negative tests for each validate() rejection case. This review certifies only the current draft worker files; no package/deployment approval.",
+          "error_count": 4
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Current Helm49 image/archive/sourcebaseline explicit; no staleHelm48 guards",
+          "Inert controller validates exact frozen target inputs, oldobject preservation and mandatory actual acceptance callbacks",
+          "Static checks/negative checks with actual evidence; no serverexecution or publication claim"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker"
+        ],
+        "assignee": "session-14062dc60c6d4142afe5e7ac23f645dd",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Independent parallel ownership only MUSIC_CRAFT_RELEASE_20261013/worker controller/scripts and docs; no execution/SSH/browser/build/publication/Git/app edits. Adapt existing reviewed FILM_CRAFT_RUNTIME_RELEASE controller producer/publisher to current actual published baseline Helm49 buildquiz-2026.10.13-film-craft-adf95a5 archiveSHA5ed5fdf6a6cbe2d7521544573bee9fc25afdf0053ad6eedd0fff8377e3654c85 image6d2a206a6994b792bcc08fb0c05b5f36cbcb8c6983a6b76088a63471ab75daa6. Future target app133packs4052questions252articles with old132rows248articles9runtime cacheobjects preserved, adds music-craft4 only. Content worker separately integrates exact4items. Do not use placeholder approvals or hashes; unknown target commit/hashes must fail closed or require explicit validated input. Producer/publisher inert until actual independent reviews, compiledFlutter/source parity, copiedDB203grading10+NewYear? Existing9+new1+NewYear=>11history. Identify all counts/pins; preserve conditionalnoETag staleJS guard/API/PVC/backup/rollback/publication gates. No appcode changes. Report actual selftests and limitations. Need follow-up accepted frozen exact package before server action.",
+        "created_at": 1791919458.9189942,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-2a6712d92d534ee4a09f7788d8f386be",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "baseline_verified": {
+            "archive_sha256": "5ed5fdf6a6cbe2d7521544573bee9fc25afdf0053ad6eedd0fff8377e3654c85",
+            "build": "quiz-2026.10.13-film-craft-adf95a5",
+            "image": "docker.io/library/quiz-master@sha256:6d2a206a6994b792bcc08fb0c05b5f36cbcb8c6983a6b76088a63471ab75daa6",
+            "source_commit": "adf95a57594158308c94ee2bff1cb5ca9c9c0684"
+          },
+          "changed_files": [
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/prepare_music_craft_release.py",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/publish_prepared.py",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/negative_checks.py",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker/README.md"
+          ],
+          "evidence": [
+            {
+              "command": "python docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\negative_checks.py",
+              "cwd": "C:\\ap\\quiz_master",
+              "result": "PASS: rejects missing manifest; a structurally complete frozen manifest reaches the deliberate not-prepared stop; publisher preview is rejected; publisher source contains no ssh/helm/docker/flutter/subprocess.run."
+            },
+            {
+              "command": "python docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\worker\\prepare_music_craft_release.py --frozen-manifest ignored --self-test",
+              "cwd": "C:\\ap\\quiz_master",
+              "result": "PASS; writes none; baseline quiz-2026.10.13-film-craft-adf95a5; target 133/4052/252; cache entries 9->10."
+            },
+            {
+              "command": "git diff --check -- docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/worker",
+              "cwd": "C:\\ap\\quiz_master",
+              "result": "PASS (exit 0)."
+            }
+          ],
+          "packet_label": "music-craft-release-20261013",
+          "remaining_risks": [
+            "No future Music Craft commit, exact compiled/source hashes, package hash, or independent review callback exists; controller deliberately fails closed.",
+            "No package staging, builds, server access, SSH, Helm, browser, copied-DB rehearsal, publication, Git index operation, commit, or push was performed.",
+            "Task is ready for independent review only; it is not acceptance or production publication."
+          ],
+          "sha256": {
+            "README.md": "06E7FEBC863D2F9B052245817FC59AD778650D892FA2C18DB9332FA009BA7D31",
+            "negative_checks.py": "4B3EF134FC9DE58EE9640D61C8A0E52E9042D016593FF5007F1A2D696DD1920F",
+            "prepare_music_craft_release.py": "A8D9D4CA097B48E9231A8EFED3B8A607CE90A3D583D6F805230083A595F99652",
+            "publish_prepared.py": "E41956FDF1DB6E0CD7AB22B5A1579E528190FBCE035E5849E4B672CB33BD66D0"
+          },
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-2a6712d92d534ee4a09f7788d8f386be",
+        "run_id": "run-b6db2762c914401b8d9b291749976c85",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad prepare inert music-craft release producer with current Helm49 baseline",
+        "version": 4,
+        "reviewer": "session-ee68e40092ec4ab7a63535fabce335a3",
+        "review_note": "Independent review vs. the reviewed Film Craft producer/publisher precedent. Baseline pins (build_id/source_commit/archive_sha256/image/counts) are verified real, matching published HANDOFF.md -- not fabricated. However the implementation is a shape-validator stub, not a conforming producer: (1) prepare_music_craft_release.py's main() unconditionally calls fail() after validate() regardless of outcome -- I constructed a fully well-formed manifest and confirmed it can never succeed, so this is 'do not implement execution', not 'do not execute in this worker'; Film Craft's equivalent actually extracts/copies/verifies/archives when given correct inputs and only gates the remote cutover separately. (2) require_hash() only checks SHA-256 regex shape, never verifies any value against real file/git-blob content (Film Craft's sha256_file/git_bytes pattern does). (3) publish_prepared.py has zero implemented gates (backup/rollback/image pin/preservation/copied-DB/public-verification/no-ETag-conditional) -- just an immediate RuntimeError for both --preview and --publish, unlike Film Craft's worked-but-gated publisher. (4) negative_checks.py exercises only 'file missing' and 'one fully-valid manifest' outcomes, never any of validate()'s ~9 individual rejection branches; I manually tampered 6 individual fields (altered target count, placeholder status, stale Helm48 baseline, incomplete review, bad hash format, fully valid) directly against the script and confirmed each currently raises correctly, but the repo's own tests do not prove this and would miss a regression. Full detail in host_hub message id 37588. Bounded, non-speculative rework: (a) remove the unconditional final fail() and implement real staging (extract/copy/verify real frozen content by hash/git-blob, append cache, write checksums, archive) mirroring Film Craft's pattern, keeping only the remote/irreversible cutover gated to a separate authorized publisher; (b) verify the five *_sha256 manifest fields against real bytes, not just hex shape; (c) implement publish_prepared.py's required gates as real --publish-gated logic analogous to Film Craft's publisher, even while --publish itself stays unused; (d) add individual-branch negative tests for each validate() rejection case. This review certifies only the current draft worker files; no package/deployment approval."
+      }
+    }
+  },
+  "review_messages": [
+    "Independent read-only review of MUSIC_CRAFT_RELEASE_20261013/worker, compared directly against the previously reviewed FILM_CRAFT_RUNTIME_RELEASE_20261013 producer/publisher pair and published HANDOFF.md.\n\nBASELINE PINS ARE REAL (not invented): build_id quiz-2026.10.13-film-craft-adf95a5, source_commit adf95a57594158308c94ee2bff1cb5ca9c9c0684, archive_sha256 5ed5fdf6...654c85, image sha256:6d2a206a...75daa6, counts 132/4048/248 all match HANDOFF.md's published Helm49 figures verbatim. Target math (132+1=133 packs, 4048+4=4052 questions, 248+4=252 articles, 9+1=10 runtime cache) is internally consistent.\n\nVERDICT: this is a shape-validator stub, not a useful concrete producer, and does NOT meet the assignment's explicit bar ('must become runnable by the authorized lead once those concrete prerequisites exist'). Four concrete issues:\n\n1) prepare_music_craft_release.py's main() calls validate(load(manifest)) and then UNCONDITIONALLY calls fail('intentionally not prepared...') regardless of whether validate() succeeded. I manually constructed a fully well-formed manifest (correct baseline dict, correct target dict, all contract strings, valid-format commit/hashes, correct status) and confirmed it still raises every time -- there is no input, however genuine, that lets this script ever stage anything. That is 'do not implement execution', not 'do not execute in this worker': Film Craft's prepare_film_craft_release.py, by contrast, actually extracts the prior archive, copies/verifies real frozen git blobs by hash, appends the runtime cache, writes checksums, and builds a verified tar.gz when given correct inputs (status PREPARED_NOT_EXECUTED) -- it only defers the remote SSH/Helm/kubectl cutover to a separately gated publisher. Music Craft's version defers/disables staging itself, which is a materially smaller and non-conforming deliverable.\n\n2) require_hash() only checks SHA256 regex format, never compares against any real file or git blob -- package_sha256/main_dart_js_sha256/catalog_sha256/reader_sha256/review_evidence_sha256 are accepted as long as they look like hex, with zero content verification. Film Craft's equivalent (sha256_file, git_bytes + hash checks against FROZEN_FILM_FILES/FROZEN_CATALOG_SHA256/etc.) verifies real bytes. Music Craft has no such mechanism at all, so 'hash' fields are currently decorative.\n\n3) publish_prepared.py is a 2-branch stub: --preview or --publish immediately raise RuntimeError, nothing else. None of the README's required future gates (fresh backup, tested rollback, image pin, old-source preservation, copied-DB grading/history, public verification, no-ETag-conditional) exist as implemented logic anywhere, even inert/unreachable. Film Craft's publisher, by contrast, has a fully worked prepare()/publish_script() that performs real local validation and script assembly and is gated behind an explicit, currently-unused --publish branch with an explanatory comment that it isn't invoked by this task. Music Craft's publisher has no equivalent implementation to gate.\n\n4) negative_checks.py only exercises 'manifest file missing' and 'one fully-valid manifest' (which only reaches the always-on final fail). It does not test any of validate()'s ~9 individual rejection branches (wrong baseline dict, stale Helm48 build_id, altered target counts, placeholder status, mismatched contract strings, incomplete review, invalid commit format). I independently ran six manual tamper cases (altered target count, placeholder status, stale Helm48 baseline, incomplete review, bad hash format, fully valid) directly against prepare_music_craft_release.py myself and confirmed each currently raises the correct distinct error -- so the validate() logic itself is sound today -- but the repository's own test suite does not prove this and would not catch a regression in any single branch. This is exactly the kind of self-test gap the task asked me to flag: PASS here does not constitute coverage of the stated rejection behaviors.\n\nBOUNDED CONCRETE REWORK (does not require guessing any future commit/image/hash): (a) remove the unconditional fail() in main() and implement real staging mirroring Film Craft's pattern -- read/verify real frozen content via git blobs and real sha256_file checks once a genuinely frozen manifest supplies real paths/commit, then extract/copy/append-cache/write-checksums/archive, keeping the remote/irreversible cutover itself gated to a separate, explicitly-authorized publisher (same split Film Craft already uses); (b) make the five *_sha256 manifest fields verified against real bytes, not just hex-shape; (c) implement publish_prepared.py's required gates (backup/rollback/image pin/preservation/copied-DB/public-verification/no-ETag-conditional) as real, --publish-gated logic analogous to the Film Craft publisher, even if --publish itself stays unused by this worker; (d) add negative_checks.py cases for each individual validate() rejection branch (one tampered field at a time) so the suite actually proves the rejection logic instead of only proving two aggregate outcomes.\n\nRecommend REWORK."
+  ],
+  "report": "Review submitted — `task-2a6712d92d534ee4a09f7788d8f386be` is now in `REWORK` state.\n\n**Finding:** This is a shape-validator stub, not a conforming producer/publisher. The baseline pins (build ID, source commit, archive/image hashes, counts) are genuinely correct against the published Helm49 release — not fabricated. But:\n\n1. `prepare_music_craft_release.py` unconditionally fails *after* successful validation, no matter what — I built a fully well-formed manifest and confirmed it can never succeed. That's \"execution never implemented,\" not \"execution deferred,\" unlike Film Craft's producer, which actually stages/archives given correct inputs and only gates the remote cutover separately.\n2. Its hash fields are checked for format only, never against real file/git-blob content.\n3. `publish_prepared.py` has zero implemented gates — just an immediate failure for any flag, with none of the backup/rollback/image-pin/preservation/copied-DB/public-verification logic the task and README require, even as inert code.\n4. `negative_checks.py` never exercises the ~9 individual rejection branches in `validate()` — I manually tampered 6 fields myself and confirmed the logic is currently sound, but the repo's own tests don't prove it.\n\nSent a bounded, concrete rework plan (mirror Film Craft's extract/verify/stage pattern, keep only the remote cutover gated, add per-branch negative tests) that doesn't require guessing any future commit/image/hash. Full detail sent via hub message id 37588.",
+  "trace_sha256": "0b57e7f3de07c0f362a0ec09c3bf1e8ead6485c8cc6fedf6120e4465b8b59302",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
