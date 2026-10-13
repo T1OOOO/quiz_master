@@ -1,0 +1,1349 @@
+{
+  "source_algorithm": [
+    "next/server/internal/content/validate.go:DraftFromBundle",
+    "next/server/internal/content/canonical.go:hashWithout/Rehash"
+  ],
+  "questions": 132,
+  "old_fixture_matches": 0,
+  "expected_staging_revisions": {
+    "cinema-encore-20261011": {
+      "cinema-encore-001": {
+        "number": 1,
+        "sha256": "bddc6092dd88bacf4ba7a13483d35b7c1c91f968ad16d15f3f711e04e450e22b"
+      },
+      "cinema-encore-002": {
+        "number": 1,
+        "sha256": "ddc9f766f7091d350a5b792453671616ebf25502e2bdcdf9300f0d42e620e7eb"
+      },
+      "cinema-encore-003": {
+        "number": 1,
+        "sha256": "5a586a5be91f975336cf2208c8556deb7922150faa5bf9b886867e2d1f3a55e9"
+      },
+      "cinema-encore-004": {
+        "number": 1,
+        "sha256": "b30d203e34fca70ff6c2e2311d7da4e5868f580fbf7393b74bca33a810648b55"
+      },
+      "cinema-encore-005": {
+        "number": 1,
+        "sha256": "f0b56c11b5ad0f34eaa495ff60e58b9c12ac480fafa4c83aa6f35b6c2bb37930"
+      },
+      "cinema-encore-006": {
+        "number": 1,
+        "sha256": "41456994ee94236abdf97ccdd1339509c617fefff1af550b7e96f1d47fab4e58"
+      },
+      "cinema-encore-007": {
+        "number": 1,
+        "sha256": "b515e9b9d95503102687bbd994b00d3a2a7bb68c89fb2d7802a0e42485d47032"
+      },
+      "cinema-encore-008": {
+        "number": 1,
+        "sha256": "480fc10f0ab3dd04ba304753d9258702faf50d2be1c1ec29795b2cadb3a76ee4"
+      },
+      "cinema-encore-009": {
+        "number": 1,
+        "sha256": "db2834cc88b897c8f10ef17eaa1da9301995356f665f3ccf8ed4e047c615f98c"
+      },
+      "cinema-encore-010": {
+        "number": 1,
+        "sha256": "0eccf2c6c7c23093b1ec7685e560c18fd7ffffcde2eb18be50f684810e5c3c91"
+      }
+    },
+    "cinema-people-20261011": {
+      "cinema-people-001": {
+        "number": 1,
+        "sha256": "6f56585ea9012c2b32ed27e0e6e9e3f99ee8b08a7e194ce2a1e5eac800e92c2a"
+      },
+      "cinema-people-002": {
+        "number": 1,
+        "sha256": "2acd9731ea42936d53863c1b682b3885f08689b86c4a428538ee0fae969c5699"
+      },
+      "cinema-people-003": {
+        "number": 1,
+        "sha256": "7c0a430fb2e3856eea0d7cd7934876c1fce5ed4915822add3b6bcca7ef117d4c"
+      },
+      "cinema-people-004": {
+        "number": 1,
+        "sha256": "d2a5dbf06339445954f9c40c9bad945bdbefed18abdabc26afe4ac983ce33cdf"
+      },
+      "cinema-people-005": {
+        "number": 1,
+        "sha256": "f796823f9bfcb9cddd71c0aa5a561ee5f787dc3aa5231aad8467e4b5bfa33408"
+      },
+      "cinema-people-006": {
+        "number": 1,
+        "sha256": "3c78db83d79aaf55ffe5a23099402ebcbe983dd302d3f5e8ff5d1d3f16fa6847"
+      },
+      "cinema-people-007": {
+        "number": 1,
+        "sha256": "45bd3b3107970a3fa22b630304929c6f09331fbec7729582d46b93a0eecdd2ca"
+      },
+      "cinema-people-008": {
+        "number": 1,
+        "sha256": "17f7a0e4b1eaa3534fab75d76abeb813cb43daa0295b5a4e5547748f4871a43d"
+      },
+      "cinema-people-009": {
+        "number": 1,
+        "sha256": "18f5e6c9cc43b83105896b82a272f846ced237f6031ae0ded5dc97e89d8ae02f"
+      },
+      "cinema-people-010": {
+        "number": 1,
+        "sha256": "2711f5b7f77ef315b2da4e71d3a18e87798265269351ebcea17db6e7660c7cca"
+      },
+      "cinema-people-011": {
+        "number": 1,
+        "sha256": "2cfa054f12facfe500c995ae984968ca6fb2298629400748cc2630602778b58f"
+      },
+      "cinema-people-012": {
+        "number": 1,
+        "sha256": "370368570a0fe227d95312c0388f31fefa94f3a35555f2ade0ba1cca5b42bec3"
+      },
+      "cinema-people-013": {
+        "number": 1,
+        "sha256": "0f3609da193cf86e4223b82918662d2cf07ecbb568e851d7dbf7de8e6af30abb"
+      },
+      "cinema-people-014": {
+        "number": 1,
+        "sha256": "b183f919844c9108fed906d5caf100679b6115f931dfa4ce5889e812a26ebc66"
+      },
+      "cinema-people-015": {
+        "number": 1,
+        "sha256": "1bdda905b26d39e028f1954089fe63573ab96f33da5e0295204d863f674c1015"
+      },
+      "cinema-people-016": {
+        "number": 1,
+        "sha256": "a17650271c2c288799386e7567be93fb2815edeb985f85fed191e24305135c78"
+      },
+      "cinema-people-017": {
+        "number": 1,
+        "sha256": "ef5fa75b72604d7474a13916390da6cae31540f5e4482a7deaf96f2ae2da4f3a"
+      },
+      "cinema-people-018": {
+        "number": 1,
+        "sha256": "65d625fcb14b66c042da349eae783bc5dfa5e3f250c85e9ce9f36b7bb870742a"
+      },
+      "cinema-people-019": {
+        "number": 1,
+        "sha256": "30e71f6aadbe6323b9d2d8a00a909bd89041cd63d4dd7a6e8b54280406d15ed0"
+      },
+      "cinema-people-020": {
+        "number": 1,
+        "sha256": "12c552e33c7e5c9f08d83905342ca309de38f9e3cc925abc19465c3cb5375cae"
+      },
+      "cinema-people-021": {
+        "number": 1,
+        "sha256": "af8437bdff968b8d016b3b347cb350dfa23cbe0ae7a370683c2ff19b0ec864bd"
+      },
+      "cinema-people-022": {
+        "number": 1,
+        "sha256": "968b90fe366483813e83611a2c8b30550421fd3e7ed1cff6d709eb13f8874119"
+      },
+      "cinema-people-023": {
+        "number": 1,
+        "sha256": "53617b4d6086cd244db05a4ba0b67e8d91a4f4c6a84ca1a85d39f6134235f418"
+      },
+      "cinema-people-024": {
+        "number": 1,
+        "sha256": "59facaa583642755499c82558bc8884320e1457aef91232831b227fa0c0d10c8"
+      }
+    },
+    "home-alone-1-part-1": {
+      "q-ha1-p1-1": {
+        "number": 1,
+        "sha256": "e8ba0239e50c6c13c647f45c2d609ee5ad5fd3e46543ccf9afa46f51e770cf26"
+      },
+      "q-ha1-p1-2": {
+        "number": 1,
+        "sha256": "560e8792d2398daee0dcd9267ac94343d3677c0286f158b50a92fddcfad7c883"
+      },
+      "q-ha1-p1-3": {
+        "number": 1,
+        "sha256": "4f1c8f79e7b7fc342b3d41c5258868391d69940cbac6e72dfcb016943a8e8f0f"
+      },
+      "q-ha1-p1-4": {
+        "number": 1,
+        "sha256": "96fad280b5b430901e5d4323ce0d91a3ef90d4d9753b13e47ac3998bfbfe56d5"
+      },
+      "q-ha1-p1-5": {
+        "number": 1,
+        "sha256": "71b58012c120184c6866cdd9f8d9bd26c2486f6ec0438b3127c73e35d1f6a6c8"
+      },
+      "q-ha1-p1-6": {
+        "number": 1,
+        "sha256": "6107c01d3c2804decf362b762afcf896b3359630c04c12ad59fd2c8397b82c2a"
+      },
+      "q-ha1-p1-7": {
+        "number": 1,
+        "sha256": "c346d8baa04d0aa8eab8ddd52cec1f0217827fb3ce7e376de5a5471227b47812"
+      },
+      "q-ha1-p1-8": {
+        "number": 1,
+        "sha256": "eb0dc226c0e565a30ffd35f9d15dd44ebef2fd71f86de63a119950495147b42a"
+      },
+      "q-ha1-p1-9": {
+        "number": 1,
+        "sha256": "9186f2038acdfb26ad5f804c114abba09387f472b4af358e8e7515eecfba7337"
+      },
+      "q-ha1-p1-10": {
+        "number": 1,
+        "sha256": "8626823d753fe2b24e1b16af3d1c8d1210fbceb3a2286ee121c50f9894173bb6"
+      },
+      "q-ha1-p1-11": {
+        "number": 1,
+        "sha256": "c1e8b462ec3370451f3d95af2443537846fe68aaf83268326bc05a6db72aa41d"
+      },
+      "q-ha1-p1-12": {
+        "number": 1,
+        "sha256": "5e2e96a65713d100c3c4d425714aca9ad115091a03bbfbe5e928f722ab74e6dc"
+      },
+      "q-ha1-p1-13": {
+        "number": 1,
+        "sha256": "bd547256707112c5233fac1366066feafa36714808e0736e9edef29c0aeb4ca7"
+      },
+      "q-ha1-p1-14": {
+        "number": 1,
+        "sha256": "e83790436af7d05fb8bcdcfdf0df9d6ec5f25a1263b32c650432a434067669d6"
+      },
+      "q-ha1-p1-15": {
+        "number": 1,
+        "sha256": "4eb19bb68046609a718398764da18badb40d9dab1e2de2d5198ef286d4decfb8"
+      },
+      "q-ha1-p1-16": {
+        "number": 1,
+        "sha256": "68a791d01c7c0184befab3391a44d03baa590e049f5c700e0ab47be121339886"
+      },
+      "q-ha1-p1-17": {
+        "number": 1,
+        "sha256": "64fa38f2697e68fafc7801150c5fec397767ee510e93229bf51bec1db27ef8ad"
+      },
+      "q-ha1-p1-18": {
+        "number": 1,
+        "sha256": "638bb82c455afde5899d6a9ad2c10f52bf3dfc3e5ac9db7ad9cd947d5b323b41"
+      },
+      "q-ha1-p1-19": {
+        "number": 1,
+        "sha256": "01150762ad2906e4c5df7f487a482c24c2381c46615926b7367cae0ebcd165bb"
+      },
+      "q-ha1-p1-20": {
+        "number": 1,
+        "sha256": "9e6f197cb3385cf0cb0c924559028334b274b4d69084d76ada514dc4b5e0fd51"
+      },
+      "q-ha1-p1-21": {
+        "number": 1,
+        "sha256": "280408755fb38d4c69f72ddf1bc02eac4ec4a33f9091ac812202906844bfbb69"
+      },
+      "q-ha1-p1-22": {
+        "number": 1,
+        "sha256": "82a3ac7a98fc707ee253e826fecdb76077d392f97c6b95f7fb4c811a2adc1f86"
+      },
+      "q-ha1-p1-23": {
+        "number": 1,
+        "sha256": "be11f1e18e0c1fe4871158146d3a7baa46267cf82bb379bbb29db0f04191c8d1"
+      },
+      "q-ha1-p1-24": {
+        "number": 1,
+        "sha256": "09c7d248e2558b821e8a63edad837f661eac921049d78413cb88010c024c8440"
+      },
+      "q-ha1-p1-25": {
+        "number": 1,
+        "sha256": "2f145d6978b3e9016cc2a18d0027e73afc94a57d12f7438b38ca8f137366ebec"
+      }
+    },
+    "music-encore-20261011": {
+      "music-encore-001": {
+        "number": 1,
+        "sha256": "ffdbc96292525c0c1ebb97b3844e644c6064bb20877479c672cf94042ce330fa"
+      },
+      "music-encore-002": {
+        "number": 1,
+        "sha256": "b0b079aa5c2b3507e8c5c3c0794206d1e3ebc91872ec3c2a972ecee3ffc6251c"
+      },
+      "music-encore-003": {
+        "number": 1,
+        "sha256": "5e541e79ec5c3461ad1a6408a5f1ca089d5ba64a14007507e0a3bb2be4302890"
+      },
+      "music-encore-004": {
+        "number": 1,
+        "sha256": "2d31698102e225357c24e41a6464dcec4dc14c8409d4d521cb46be34da798e00"
+      },
+      "music-encore-005": {
+        "number": 1,
+        "sha256": "c8f7d1dc025ed198dde467d89a8e69c2183e3a5aa5f63c206c5583b2bd635601"
+      },
+      "music-encore-006": {
+        "number": 1,
+        "sha256": "763a6f94ec3b5e62cbc5b66c501e40256823cbeddd1020d9b778e586483db058"
+      },
+      "music-encore-007": {
+        "number": 1,
+        "sha256": "456dc465d3a0e601589ac9ca92faac44f667377f7b22759106cdbb47dfbf7ef1"
+      },
+      "music-encore-008": {
+        "number": 1,
+        "sha256": "822f4d7b8478ca184bd02e27cd0d7077f8b4e411f6642a616d3d02e312cea791"
+      },
+      "music-encore-009": {
+        "number": 1,
+        "sha256": "e6ed57b8d9db60da1b0341a56d9d1013dc9e43ec9649b5316597098d2f9829da"
+      },
+      "music-encore-010": {
+        "number": 1,
+        "sha256": "28e250989e17aab8edea3c00d8bb09f470e37c3e516bea35de0f4b2d7252fd66"
+      }
+    },
+    "music-people-20261011": {
+      "music-people-001": {
+        "number": 1,
+        "sha256": "9a234febebe2bb174894ca5fd28d869d985402a07ad7ca90484098dbd9f85823"
+      },
+      "music-people-002": {
+        "number": 1,
+        "sha256": "ba851a4cb041eef06d6e8c788ae52748cf9b26bbffb8aeb5965016616f2f9119"
+      },
+      "music-people-003": {
+        "number": 1,
+        "sha256": "6054d28c306828f728002ef3a834dde7ec2e4f042670bade80e472700afb10c5"
+      },
+      "music-people-004": {
+        "number": 1,
+        "sha256": "d78d4d7360d24d4fc2ac3c2bf1a56e0c3545e7adb2bc33fa67362ce93e579763"
+      },
+      "music-people-005": {
+        "number": 1,
+        "sha256": "868e1abea16486bb882af5b3ccb1e6c83fa0aa67dec90d31ba2052242e5c680d"
+      },
+      "music-people-006": {
+        "number": 1,
+        "sha256": "782c2dc082346819879c01f5bd5f2ad8d9d56759c68b5eeb7f3adb66e6c09ce9"
+      },
+      "music-people-007": {
+        "number": 1,
+        "sha256": "6ae3f180a8a8a6f2413d520075c914a9fc4c3d29c8963b3a41c72e67700e47f5"
+      },
+      "music-people-008": {
+        "number": 1,
+        "sha256": "346e4a2108a40037db4d12a84cbba1e0aada8bbb3c310abaa047c3b3814b9073"
+      },
+      "music-people-009": {
+        "number": 1,
+        "sha256": "1b1fb6e5442690eb0f1f9f170ff2089b3b1bc03c10238e50f90de93c68f52bf8"
+      },
+      "music-people-010": {
+        "number": 1,
+        "sha256": "b2ab623debc5a9c5239389a87abf2521ddcc69d30af2db5913be38482a9a6823"
+      },
+      "music-people-011": {
+        "number": 1,
+        "sha256": "1c949be7bf6bfd979a586946cffac6305feabe743edcb7ea21f0d3d8640d0454"
+      },
+      "music-people-012": {
+        "number": 1,
+        "sha256": "b1061e02870b95fe7c0a53b4c68f3a14738ec868d80289344d19ecae0cf4d92a"
+      },
+      "music-people-013": {
+        "number": 1,
+        "sha256": "03d301f17f06bfa666a4e182c95a9d6d0a107d8693f86cab71e8b5209a39d04d"
+      },
+      "music-people-014": {
+        "number": 1,
+        "sha256": "7db1bbaca34b85b9311a4816ed8e8ca376484bf94138301c20846cf0b15e1c15"
+      },
+      "music-people-015": {
+        "number": 1,
+        "sha256": "7ca3502ec6afb5c52f58870339566be8d105b5f0ef40b683f9b9b14f05bbac9d"
+      },
+      "music-people-016": {
+        "number": 1,
+        "sha256": "b69730ce23848833e1747a1eecbb28a510e54aff7c9e8184b3b12e3a2c3642d5"
+      },
+      "music-people-017": {
+        "number": 1,
+        "sha256": "79d160e4d7e47da739084d44a03ea1651f1a7924b9c595fc846102d827b32b9f"
+      },
+      "music-people-018": {
+        "number": 1,
+        "sha256": "574cf92a7b8755acc5ac029c99765d44682faa653589da6546ef30cdd5fd3f11"
+      },
+      "music-people-019": {
+        "number": 1,
+        "sha256": "b4316050b2dc5c08c42e6da5bf02d5acbf904a8a8c2406d1a52cca5efeb02d00"
+      },
+      "music-people-020": {
+        "number": 1,
+        "sha256": "1561b75fcfd437a6e6f547faa80b3b3100d639d66bb5f58133ed8ab38a6c52e3"
+      },
+      "music-people-021": {
+        "number": 1,
+        "sha256": "73a52c38287d94e3abc21d9df7c317005eb9a37f49e331d1ccd1579ab385b54f"
+      },
+      "music-people-022": {
+        "number": 1,
+        "sha256": "01b439c44e20fe27bf40fa82a38cd5cb0c4b0a39b1c136213737401fac92d5da"
+      },
+      "music-people-023": {
+        "number": 1,
+        "sha256": "7d75f38fc33a9ee8b3c80d49716b8acbb2717f129faf3b9e5a488fae55ba8ef2"
+      },
+      "music-people-024": {
+        "number": 1,
+        "sha256": "516f4a133de19a0e31ef57375f945a6cc8f32acb789bbe5f465b0805b21e7919"
+      }
+    },
+    "philias-lifestyle-part-1": {
+      "q-philias-100-50": {
+        "number": 1,
+        "sha256": "214bbc35bfb38d32457773972b5dbd3dc3ecf1418bd66631c1d30c8ce6f31d76"
+      },
+      "q-philias-100-51": {
+        "number": 1,
+        "sha256": "940650c496fa41815947c42445dc74d252fe77cac4926621215eb1c581bf887e"
+      },
+      "q-philias-100-52": {
+        "number": 1,
+        "sha256": "c92b8341ba5e0c6592fabf7c1c18851957b00dc0330ee18f1b48af834a316155"
+      },
+      "q-philias-100-53": {
+        "number": 1,
+        "sha256": "e4ffaf79b6648b9be62fe213082137d1e9a77e2c3e34391f454387adc0f9eb99"
+      },
+      "q-philias-100-54": {
+        "number": 1,
+        "sha256": "46e3e23f9245f2464c37de4af6f23c39844e5e247e93aa2d53d06480784e1173"
+      },
+      "q-philias-100-55": {
+        "number": 1,
+        "sha256": "6327b12cf3bc640c49d3e21e9cf4cf4fcaa0b089d2c20576c5a0b6fcb0e548fd"
+      },
+      "q-philias-100-56": {
+        "number": 1,
+        "sha256": "627d0f72969abdce67719e94be7c2a8b5986a3dda45574d1bca8604116413b63"
+      },
+      "q-philias-100-57": {
+        "number": 1,
+        "sha256": "511a1baecf0d945b43a992fc8377bddc0d7505d18059f78ff798fd5d20df4326"
+      },
+      "q-philias-100-59": {
+        "number": 1,
+        "sha256": "fb1ed52967524949e1283c25d560f578f7b5dfd145d1147e586a6f2057649105"
+      },
+      "q-philias-100-81": {
+        "number": 1,
+        "sha256": "5690449c8eda9faa1124659e6ed82afa525d7fe9b1734461030f92ad4bd679d6"
+      },
+      "q-philias-100-90": {
+        "number": 1,
+        "sha256": "a4f0c359becea66d90501ab2a8f5a905127c885d6a345d849a0fcc804afede4e"
+      },
+      "q-philias-100-91": {
+        "number": 1,
+        "sha256": "63895fbfa9d5e1f263fb3e726648b8bb3707ddf3a15a2c96c7d777489fc0125f"
+      },
+      "q-philias-200-34": {
+        "number": 1,
+        "sha256": "108db2be5fd7d71cc0aa1fa6de2f07294c24b9cb5ed40cb340a82c91aa1a531c"
+      },
+      "q-philias-200-46": {
+        "number": 1,
+        "sha256": "b2cb579a156c491ab2f22f8ea7a261050317a83626fb49421cec54bf489256f4"
+      },
+      "q-philias-200-47": {
+        "number": 1,
+        "sha256": "babbcdd5a35d062ac2d384ed9914b84afc1bd22c63b1e21d146f12f4cae58bbe"
+      },
+      "q-philias-200-48": {
+        "number": 1,
+        "sha256": "a30c1287f1e3c2aaa91022f30fc52db4dbe0398dfa24f75fcc5d8ca59cbcf10b"
+      },
+      "q-philias-200-49": {
+        "number": 1,
+        "sha256": "53fdc585fd542272528680a355fb88d64e5b8d1bc2449b275f8732d32eefec8f"
+      },
+      "q-philias-300-5": {
+        "number": 1,
+        "sha256": "a176981c3a942ddf5b8a37c293a4d331116c17b7c775aef264f70a2d607ff44b"
+      },
+      "q-philias-300-52": {
+        "number": 1,
+        "sha256": "b39e4727bfba08cd7dcfe59fa30a8e607e1a4aa9ad32e5d927061c6ecd9b72e6"
+      },
+      "q-philias-300-93": {
+        "number": 1,
+        "sha256": "5e6f4f2f01fb02f1435a9cde3f194581c66487c29e8e7331eb83f967e84ba9e4"
+      }
+    },
+    "phobias-nature": {
+      "q-phobias-part-1-2": {
+        "number": 1,
+        "sha256": "f93a54be5b633ca0830454a9571e296bad0aaded6bef38e806e2b67b1b8dceec"
+      },
+      "q-phobias-part-1-4": {
+        "number": 1,
+        "sha256": "20a1cc65cb71c0e22b42ab3e42aeb3c7525abb3972c340c6dc2c5fafd079e660"
+      },
+      "q-phobias-part-4-7": {
+        "number": 1,
+        "sha256": "c3203524219f9cefe4da11fb6513ff23d42cd28c915cc78cbfafa9b5a12e5f76"
+      },
+      "q-phobias-part-5-25": {
+        "number": 1,
+        "sha256": "702b2d7bc6880341b7b80e2b39171851e5bae4c4c52f7df256257d7354130255"
+      },
+      "q-phobias-part-7-9": {
+        "number": 1,
+        "sha256": "df981ff096af0674b25d6c33d0a997a95c97e36306c29bd5796a859f82f51c20"
+      },
+      "q-phobias-part-8-11": {
+        "number": 1,
+        "sha256": "9dff1290edac689395b86af308af17b3693bce1258af22463861d1b0dfe62c2e"
+      },
+      "q-phobias-part-8-20": {
+        "number": 1,
+        "sha256": "e67bfd3a6fec97ec3e1dd4fbc581dd03a3c576b07154be2c8c2adb71c11d5f65"
+      },
+      "q-phobias-part-8-25": {
+        "number": 1,
+        "sha256": "fe3bd5dcc8b23c9350624d164a0957460c1df2a118fc92794f0fb70519304032"
+      },
+      "q-phobias-part-9-8": {
+        "number": 1,
+        "sha256": "ebf673188b2f9ccafc410819d4617ff50dacd6cbad977d6e05127b7db116e5be"
+      }
+    },
+    "planet-paradoxes-20261010": {
+      "planet-paradox-001": {
+        "number": 1,
+        "sha256": "c866c47bbc99e62b151242ed9854166380c77143b493bea8e1b539416d99b283"
+      },
+      "planet-paradox-002": {
+        "number": 1,
+        "sha256": "f46cf9e63c2b83f8537ba172adfb5c7004d673c93bce636c00006ec214bce92d"
+      },
+      "planet-paradox-003": {
+        "number": 1,
+        "sha256": "7f6eb54566be86378057182d87ca3052b77843b485ef4473a2cfd792c6f77d38"
+      },
+      "planet-paradox-004": {
+        "number": 1,
+        "sha256": "0f6254da46e9f4945dee4683497f5f33f53c7397906cef3edcb351a38a9da6ca"
+      },
+      "planet-paradox-005": {
+        "number": 1,
+        "sha256": "8cd50d4ef749e0c3393b9e7a765d730f74cc5b5f87c26655728133706d95ca1b"
+      },
+      "planet-paradox-006": {
+        "number": 1,
+        "sha256": "7d777d8cc68160de7e9f48c325a89fd43174d9c1777f7ce1d9ccf50add84343a"
+      },
+      "planet-paradox-007": {
+        "number": 1,
+        "sha256": "0c78bbc0da49b44c168a6b5f7a0ffc8e9a84495037fc3895bcb7e581ef760682"
+      },
+      "planet-paradox-008": {
+        "number": 1,
+        "sha256": "6848c2de16bd80bda92bcd96f298055d131e69630d9366372f385e744b98c78e"
+      },
+      "planet-paradox-009": {
+        "number": 1,
+        "sha256": "f5deb82cfe44f74ba43b018d3ef88580b39377d608e95ffff407cf1882d94fe7"
+      },
+      "planet-paradox-010": {
+        "number": 1,
+        "sha256": "266d3cf31bd8411e5b00d60eee2c77116a1f85c72294ab6c9bf315ae7217052d"
+      }
+    }
+  },
+  "per_question": [
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-001",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-002",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-003",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-004",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-005",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-006",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-007",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-008",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-009",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-010",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-001",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-002",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-003",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-004",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-005",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-006",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-007",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-008",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-009",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-010",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-011",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-012",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-013",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-014",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-015",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-016",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-017",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-018",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-019",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-020",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-021",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-022",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-023",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-024",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-1",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-2",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-3",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-4",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-5",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-6",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-7",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-8",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-9",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-10",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-11",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-12",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-13",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-14",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-15",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-16",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-17",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-18",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-19",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-20",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-21",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-22",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-23",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-24",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-25",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-001",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-002",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-003",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-004",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-005",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-006",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-007",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-008",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-009",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-010",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-001",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-002",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-003",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-004",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-005",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-006",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-007",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-008",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-009",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-010",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-011",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-012",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-013",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-014",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-015",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-016",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-017",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-018",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-019",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-020",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-021",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-022",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-023",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-024",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-50",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-51",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-52",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-53",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-54",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-55",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-56",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-57",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-59",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-81",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-90",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-91",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-34",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-46",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-47",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-48",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-49",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-5",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-52",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-93",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-2",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-4",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-4-7",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-5-25",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-7-9",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-11",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-20",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-25",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-9-8",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-001",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-002",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-003",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-004",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-005",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-006",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-007",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-008",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-009",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-010",
+      "published_private_revision_verified": true,
+      "old_fixture_matches": false
+    }
+  ],
+  "limits": "Derived from frozen private canonical bundle; no values copied from observed staging API."
+}

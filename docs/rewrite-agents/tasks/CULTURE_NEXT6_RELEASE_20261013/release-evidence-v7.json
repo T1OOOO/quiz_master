@@ -1,0 +1,20 @@
+{
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "original_v6_archive_sha256": "04ed7163fab6ab61e4d0d7caeaa44175cf12abf146c9d3b660b5333f6cfad79c",
+  "archive_sha256": "adb49338059c8c7ed39480dd95e0d2d230f9ecda35e0aac3e7746b67e3d4f3fe",
+  "changed_vs_v6": [
+    "web/version.json",
+    "checksums.txt"
+  ],
+  "prior_compiler_metadata": {
+    "app_name": "quiz_app",
+    "version": "1.0.0",
+    "build_number": "1",
+    "package_name": "quiz_app"
+  },
+  "actual_stage_version_equals_release_version": true,
+  "actual_gnu_sha256sum_exit": 0,
+  "unchanged_compiled_js_api_and_reader": true,
+  "failure_scope": "Actual V6prepare exited1 at metadata buildId before backup/rehearsal/API/image/Helm. Only our new nonlive release directory uploaded; baseline production unchanged.",
+  "status": "PENDING_INDEPENDENT_STATIC_REVIEW_BEFORE_OWN_CANDIDATE_REPAIR_NO_PUBLICATION"
+}

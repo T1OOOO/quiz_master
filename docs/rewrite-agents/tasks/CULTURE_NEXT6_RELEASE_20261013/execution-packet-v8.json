@@ -1,0 +1,28 @@
+{
+  "package_sha256": "f1c8df8edb9b73f7b84dd2ea6bacfc1d80082df8eff97bd287e768b7bdfd140c",
+  "build": "quiz-2026.10.13-culture-328f2f8",
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "image": "sha256:ea74211683953e5e865ecc668aed2052fb032d77f4509b2b6461c1b30707a804",
+  "values": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032127Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "dce1ab0810e2b328f8554e652215f0662102b372d3be78443ab339171737fa7d",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.13-culture-328f2f8.tar",
+  "durable_archive_sha256": "522ce6ecb54d72151d7d3d117fdb818e790652d32ad525a1f3a73831969713a6",
+  "actual_copy_rehearsal": {
+    "canonical_packs": 8,
+    "canonical_questions": 132,
+    "newyear_questions": 55,
+    "total_graded": 187,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_browser_evidence_sha256": "57b1aaca5850f93c6162d811a8ed5f363008039813dce15a21d329a5ec74cc9f",
+  "not_claimed": [
+    "Publication/liveverification",
+    "Wholebankfacts/physicalAndroid/keyboard/screenreader"
+  ],
+  "publish_script_sha256": "f2a6e62e665a8f79a5068757fdfb3509caa014869ce86616224a8e138a105913"
+}

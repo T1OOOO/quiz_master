@@ -1,0 +1,62 @@
+{
+  "writer_sha256": "ab2973cac130fab187ad2ac651cb8061d90023e02369c32bbfd9cba0ae057d72",
+  "key_text_alignment": 8,
+  "balanced_indexes": true,
+  "findings": [
+    {
+      "id": "music-people-025",
+      "kind": "duplicate_source_urls",
+      "urls": [
+        "https://rockhall.com/inductees/chaka-khan/",
+        "https://rockhall.com/inductees/chaka-khan/"
+      ]
+    },
+    {
+      "id": "music-people-025",
+      "kind": "answer_clue",
+      "note": "Album Chaka repeats the distinctive intended answer name Chaka Khan inside the stem."
+    },
+    {
+      "id": "music-people-026",
+      "kind": "duplicate_source_urls",
+      "urls": [
+        "https://rockhall.com/inductees/dionne-warwick/",
+        "https://rockhall.com/inductees/dionne-warwick/"
+      ]
+    },
+    {
+      "id": "music-people-027",
+      "kind": "duplicate_source_urls",
+      "urls": [
+        "https://rockhall.com/inductees/celia-cruz/",
+        "https://rockhall.com/inductees/celia-cruz/"
+      ]
+    },
+    {
+      "id": "music-people-028",
+      "kind": "duplicate_source_urls",
+      "urls": [
+        "https://rockhall.com/inductees/chaka-khan/",
+        "https://rockhall.com/inductees/chaka-khan/"
+      ]
+    },
+    {
+      "kind": "variety",
+      "note": "Three of four cinema questions025/027/028 use In the Mood for Love; two of four music questions025/028 use Chaka Khan."
+    },
+    {
+      "kind": "pedagogy",
+      "note": "Articles contain validation/instruction filler about what the question asks and why the answer is checkable, instead of teaching the topic."
+    },
+    {
+      "kind": "duplicate_scope",
+      "note": "Ledger cites old Next6 root screen131/4032/230, not actual current131/4036/234 raw corpus; independent current normalized screen still required."
+    },
+    {
+      "kind": "date_to_verify",
+      "note": "Beau travail article claims1998. Verify actual primary film-year context before any factual conclusion."
+    }
+  ],
+  "gate": "REWORK_REQUIRED_BEFORE_ACCEPTANCE",
+  "limits": "Root structural/editorial findings only; actual independent primary-source/blind fact review follows. No V1 integration."
+}

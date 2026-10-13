@@ -1,0 +1,7 @@
+# Review evidence and protocol limits
+
+V1 drafts remain unaccepted and unintegrated. Existing actual Claude substantive source/blind-answer review and corrected corpus duplicate findings are retained. A successful prose review does not establish a Hub review callback.
+
+The same-context callback follow-up ended at180s timeout after 'team membership required': each new official Claude CLI process has its own fresh MCP session, including with --resume. Root next used a fresh context; its first prompt was rejected as overly directing expected verdicts. Root revised the assignment to verify-first and decide independently. That fresh reviewer connected and joined truthfully, paged actual submissions and performed current-corpus searches, but its360s bound expired without final result or review callback. No successful callback, ACCEPT or complete final report is claimed for these attempts. These are finite Root-owned CLI attempts, not active helper sessions now.
+
+Root's actual duplicate evidence still blocks release of V1: cinema025/026/028 duplicate existing cinema-encore006/008/007 (including Beau Travail title aliases), all four music URL pairs repeat one URL, Chaka album clue/repeated artist and question-validation article filler. See actual structural report and original prose review. A new V2 draft packet requires corrections, current corpus checks and actual distinct primary source access. It is draft authority only. Independent review remains required after a completed V2 submission.

@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 597023,
+    "stop_reason": "end_turn",
+    "session_id": "43f9d4cc-69f6-4c55-8a26-08e81f3342b7",
+    "total_cost_usd": 1.8534672,
+    "usage": {
+      "input_tokens": 24,
+      "cache_creation_input_tokens": 25622,
+      "cache_read_input_tokens": 1398355,
+      "output_tokens": 8060,
+      "output_tokens_details": {
+        "thinking_tokens": 3209
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 25622,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 634,
+          "cache_read_input_tokens": 126686,
+          "cache_creation_input_tokens": 3940,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 3940
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 126,
+        "outputTokens": 45120,
+        "thinkingTokens": 13853,
+        "cacheReadInputTokens": 4687776,
+        "cacheCreationInputTokens": 116115,
+        "webSearchRequests": 0,
+        "costUSD": 1.8534672,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 18,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted — task `task-2e3707d024844a7e9dacd094f25c71b5` (V6) is now **ACCEPTED**.\n\n**Verdict: Accept, 0 errors** — both rehearsal-script corrections verified correct against actual source, not guessed.\n\n**Confirmed:**\n- Archive hash, 296 members, byte-identical to V5 except `rehearse.py`/`checksums.txt`; `cutover.sh` untouched, all 3 JS guards still correct.\n- `checksums.txt` LF-only, `sha256sum -c` exits 0 (295 OK) when I ran it myself; manifest hash matches claim.\n- **DTO field fix**: read `next/server/internal/attempts/reveals.go` directly — `Reveal.CorrectAnswer` is tagged `json:\"correct_answer\"`, and `CorrectAnswer.OptionID` is tagged `json:\"option_id\"`. So the real path is `correct_answer.option_id`. V5's script asserted the nonexistent `reveal['correct_option_id']`; V6 correctly fixes both occurrences to `reveal['correct_answer']['option_id']`.\n- **History-count fix**: traced the script's own control flow (not executed) — 8 attempts created/finished in the quiz-ID loop, plus 1 separate NewYear attempt = 9 completed attempts before the `/v1/history` check. V5's `==8` was wrong; V6's `==9` is correct.\n- Exactly 3 lines changed in `rehearse.py` (108, 109, 127) — matches the claimed \"2 DTO fixes + 1 history-count fix,\" nothing else touched; the strict 55/53-row NewYear source-hash assertions are untouched.\n\nPending (unchanged, Root-owned, not certified here): actual copied-data execution, Linux cutover, browser, Helm/Docker, publication.",
+    "ttft_ms": 3389,
+    "type": "result",
+    "duration_ms": 121915,
+    "uuid": "471c2aea-65a5-4d4b-aa61-ba00438b81eb",
+    "ttft_stream_ms": 2805,
+    "time_to_request_ms": 1117,
+    "first_content_frame_ms": 2810,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+}

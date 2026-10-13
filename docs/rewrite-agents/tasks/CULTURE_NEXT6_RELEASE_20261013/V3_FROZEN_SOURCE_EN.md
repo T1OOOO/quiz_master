@@ -1,0 +1,7 @@
+# V3 frozen Reader-repaired source
+
+Root pushed source328f2f8 (resolve full SHA with git rev-parse HEAD and verify origin parity). Target build ID quiz-2026.10.13-culture-328f2f8. Four runtime statuses now accepted; actual Root121Flutter/analyzer gates and actual independent Claude Hub task3c8319 ACCEPT/error_count0/CLI0. New Go runtime unchanged. Preserve original b9296af V1/V2 immutable artifacts.
+
+Execute V3_REQUIRED_GATES_EN.md and V2_FIX_PACKET_EN.md corrections using fresh V3 directories and NEW build/source guard identity. Reuse only independently hash-proven unchanged LinuxAPI; fresh production+localQA Flutter builds required for this source, explicit API defines. Do not call old build output fresh. Validate every packaged Reader row accepted and exact4new bindings; this criterion must be in self-check evidence. Stage source/runtime assets identical to current repaired source except seven alreadypublished intentional canonical corrections preserved from actual baseline.
+
+Native packager owns only .run/culture_next6_release_20261013/v3 and package-v3.json/release-evidence-v3.json in this docs directory. Preserve current package.json/release-evidence.json as V2 history; don't overwrite them or original raw stage/archive. No runtime source edits, Git, server/browser/SSH/upload/deploy/children. Root owns static review, actual local browser, remote copy/data/release gates and publication. Submit actual built/frozen verified files and report exact hash/paths plus honest pending gates.

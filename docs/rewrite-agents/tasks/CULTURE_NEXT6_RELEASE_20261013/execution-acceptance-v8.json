@@ -1,0 +1,50 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "package_sha256": "f1c8df8edb9b73f7b84dd2ea6bacfc1d80082df8eff97bd287e768b7bdfd140c",
+  "image": "sha256:ea74211683953e5e865ecc668aed2052fb032d77f4509b2b6461c1b30707a804",
+  "raw_callback": {
+    "acceptance": "Independent exact execution evidence hashes and reviewed immutableimage publication plan; currentbaseline/PVC/lock/freshbackup/copyrehearse/durableimagehash/sourcefreeze/atomicHelm/exactpublicmetadataJS guards. Actual liveverification pending.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT6_RELEASE_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root actual prepare exit0: copy backuprestore, strict132canonical+55NewYear=187grading, oldrows preserved, fakefeedback lifecycle COPY ONLY, oldAPI rollback, immutableimage ea742, GNU/API/JS/nginx/lint/serverdryrun. Actual source328 mobile48answers/fourarticleReader sheets,121Flutter/analyzer0, staticV8 ClaudeACCEPT0. Own executionpacket/publishpreviews/evidence only, production still44. Differentproviderexecutionreview required beforepublication.",
+    "created_at": 1791861790.685192,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-e91dee8280cc4d20aa6971bec9a3a5b9",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_RELEASE_20261013/execution-packet-v8.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_RELEASE_20261013/remote-prepare-v8-log.txt",
+        ".run/culture_next6_root_20261013/publish-prepared-preview.sh",
+        ".run/culture_next6_root_20261013/publish_prepared.py"
+      ],
+      "limits": [
+        "Nopublication yet; actualpublished UI/liveverification pending."
+      ],
+      "summary": "Actual preparedV8 exit0; strict187grading and preserveddata, imageea742/lint/dryrun. Concrete previewsyntax0 immutableimage plan. Live remains44 until executionreview."
+    },
+    "root_task_id": "task-e91dee8280cc4d20aa6971bec9a3a5b9",
+    "run_id": "run-328838ebb42c4ae6852abbb3c20072a5",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "qlk V8 prepared execution and exact publication plan",
+    "version": 4,
+    "reviewer": "session-6c9c488e5ed2495a9384c2542f9d87a5",
+    "review_note": "Independent READ-ONLY execution review of the actual V8 remote prepare run. Verdict: ACCEPT, 0 errors.\n\nRecomputed every claimed hash myself: remote-prepare.txt sha256=dce1ab0810... matches remote_log_sha256; publish-prepared-preview.sh sha256=f2a6e62e665... matches publish_script_sha256; local-browser-v3/evidence.json sha256=57b1aaca5850... matches local_browser_evidence_sha256; root/package.json matches package-v8.json (f1c8df8e...140c) exactly. remote-prepare-v8.txt == remote-prepare.txt == docs copy, byte-identical.\n\nRead prepare_remote_v8.py directly: it asserts my prior v8-static-hub-proof.json state=='ACCEPTED' before touching the remote host (confirms my earlier ACCEPT was a real gate); pre-flight SSH guard re-verifies baseline Helm44 image b3700cb1..., PVC UID 7fc2428f..., that the old V7 archive on disk still hashes to adb49338... (preserved), and V8 tar doesn't already exist remotely; it then extracts ONLY expected-staging-revisions.json and checksums.txt from the V8 tar (--strip-components=1, explicit 2-file list) -- confirms 'repair only two files' at the wire level, not a full redeploy; re-verifies checksums before/after; bash -n/py-compile syntax-checks cutover.sh/rehearse.py; only then runs `bash cutover.sh prepare`.\n\nRead the actual prepare transcript end-to-end: exit 0; checksum/API/JS guards OK; backup+restore ok; migration summary shows original_rows_preserved:true with only attempt_bundles growing by exactly 131 (bundle-cache warmup, matching cutover.sh's own assertion) -- traced against rehearse.py's table-diff logic and confirmed this is the pre-rehearsal snapshot point, not data loss; docker image manifest sha256:ea74211683953e5e865ecc668aed2052fb032d77f4509b2b6461c1b30707a804 matches execution-packet.json; durable archive hash 522ce6ecb54d... matches exactly; helm lint/template/dry-run succeeded; script ends 'PREPARED ... mode=prepare' -- no publish occurred.\n\nPublish-path safety verified via publish_prepared.py: requires a separate execution-acceptance.json with ACCEPTED state before a real (non-preview) run -- confirmed this file does NOT yet exist (listed the dir myself). The '--preview' run that actually executed only does `ssh ... bash -n` syntax validation and exits before any real publish call. The generated publish-prepared-preview.sh is cutover.sh's reviewed prefix plus an append that consumes the already-built image/durable-archive hashes via sha256sum -c/k3s ctr images ls grep, with no 'docker build' present -- confirms no rebuild.\n\nCross-checked supporting evidence: server-baseline.json shows ~10.98GB free/89% used/no pressure, matching claim; feedback-final-inventory.json shows count=26, all status 'open', matching '26 open feedback'; flutter analyze transcripts both end 'No issues found!' exit 0; local-browser-v3/evidence.json shows 48 UI answers, 24/24 scores, 4 article sheets, 8 source controls, feedback cancel each -- matches claims, and publish_prepared.py independently re-asserts these same fields as its own gate.\n\nLimits: read-only review of already-produced logs/scripts/hashes -- did not execute/SSH/build/deploy or touch any live system; did not rebuild the docker image/durable archive to re-derive their hashes, only cross-checked internal consistency between transcript and claims. Production Helm44/image b3700cb1... and the live site remain unchanged; actual publication, post-publication verification, and the 26 open feedback items remain pending and are NOT certified here."
+  },
+  "actual_report": "Review submitted — task `task-e91dee8280cc4d20aa6971bec9a3a5b9` (V8 prepared execution) is now **ACCEPTED**.\n\n**Verdict: Accept, 0 errors** — this was a genuine execution review, not just a static package check, and everything held up.\n\n**Key findings:**\n- Recomputed every claimed hash myself (remote log, publish script, browser evidence, package.json) — all matched exactly.\n- Read `prepare_remote_v8.py` directly: it requires my prior V8 static ACCEPT as a precondition, re-verifies baseline/PVC/old-archive integrity before touching anything, and patches **only** `expected-staging-revisions.json` + `checksums.txt` on the remote host (confirmed at the wire level, not a full redeploy).\n- Traced the actual prepare transcript end-to-end: backup/restore succeeded, the \"immutable rows\" migration summary checks out against `rehearse.py`'s real table-diff logic (only `attempt_bundles` grows by exactly 131, which is expected cache warmup, not data loss), image digest `ea74211...` and durable archive hash `522ce6e...` match the execution packet exactly, Helm lint/dry-run succeeded, and the script explicitly stopped in `mode=prepare` — no publish occurred.\n- Confirmed `execution-acceptance.json` (the gate `publish_prepared.py` needs for a real, non-preview publish) **does not exist yet** — the run that executed was `--preview` only (remote `bash -n` syntax check, no SSH publish call). The generated publish script reuses the already-built image/archive hashes with no `docker build` present.\n- Cross-checked disk capacity, 26 open feedback items, Flutter analyze (0 issues), and browser evidence fields — all matched the claims.\n\nProduction (Helm44, image `b3700cb1...`) remains unchanged; actual publication and post-publication verification are still pending and not certified by this review.",
+  "limits": [
+    "Actual publication and liveverification remainRootownedpending"
+  ]
+}

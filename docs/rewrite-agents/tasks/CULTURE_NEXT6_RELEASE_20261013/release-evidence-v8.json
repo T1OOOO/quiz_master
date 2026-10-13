@@ -1,0 +1,16 @@
+{
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "archive_sha256": "f1c8df8edb9b73f7b84dd2ea6bacfc1d80082df8eff97bd287e768b7bdfd140c",
+  "changed_vs_v7": [
+    "checksums.txt",
+    "expected-staging-revisions.json"
+  ],
+  "actual_gnu_sha256sum_exit": 0,
+  "published_private_hashes_independently_reproduced": 132,
+  "staging_uri_changes": 132,
+  "source_algorithm": [
+    "next/server/internal/content/validate.go:DraftFromBundle",
+    "next/server/internal/content/canonical.go:hashWithout/Rehash"
+  ],
+  "limits": "Static independent review pending; actual prepare failed V7 on fixture, production Helm44 unchanged; no observed API hash copied."
+}

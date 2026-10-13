@@ -1,0 +1,223 @@
+You are the Gemini editorial adviser for Quiz Master. The lead controls integration and publication. The product uses Flutter/Dart and a Go authoritative API. This is a finite read-only text critique, not factual certification. The following eight draft questions/articles are unaccepted and unintegrated. Each should have four plausible comparable options, no obvious name/length/parenthesis clues, useful 100-150-word teaching prose, two distinct relevant primary source references and good variety. Do not browse, run commands, inspect workspace, edit files, deploy, message others or spawn children: all needed text is inline. Managed Hub workers do not have MCP/delegation capabilities; report to the lead through the returned worker result. Assess only the supplied text, state primary sources and whole-corpus duplicates are unverified. Return a concrete English report with overall quality rating, per-item issues, option fairness, teaching value, concentration risks, five prioritized fixes and five interesting future quiz themes. Do not stop with acknowledgement or a plan. Do not claim tests, exact counts or source access you did not perform.
+
+{
+  "label": "culture-next7-writer-v2",
+  "language": "ru",
+  "status": "draft_pending_independent_review",
+  "candidate": {
+    "questions": [
+      {
+        "id": "cinema-people-025",
+        "area": "cinema_actors",
+        "text": "Какой актёр сыграл Чоу Мо-вана в «Любовном настроении»?",
+        "options": [
+          "Лесли Чун",
+          "Чоу Юньфат",
+          "Тони Люн",
+          "Энди Лау"
+        ],
+        "difficulty": 6,
+        "tag_ids": [
+          "cinema"
+        ]
+      },
+      {
+        "id": "cinema-people-026",
+        "area": "cinema_directors",
+        "text": "Кто поставил фильм «Дочери пыли»?",
+        "options": [
+          "Шерил Дунье",
+          "Джули Дэш",
+          "Ава Дюверней",
+          "Каси Леммонс"
+        ],
+        "difficulty": 6,
+        "tag_ids": [
+          "cinema"
+        ]
+      },
+      {
+        "id": "cinema-people-027",
+        "area": "cinema_directors",
+        "text": "Кто снял фильм «Наездник»?",
+        "options": [
+          "Келли Райхардт",
+          "Дебра Граник",
+          "Хлоя Чжао",
+          "София Коппола"
+        ],
+        "difficulty": 7,
+        "tag_ids": [
+          "cinema"
+        ]
+      },
+      {
+        "id": "cinema-people-028",
+        "area": "cinema_actors",
+        "text": "Кто сыграл Брэйди Блэкберна в «Наезднике»?",
+        "options": [
+          "Тим Джандро",
+          "Джон Редди",
+          "Лэйн Скотт",
+          "Брэйди Джандро"
+        ],
+        "difficulty": 7,
+        "tag_ids": [
+          "cinema"
+        ]
+      },
+      {
+        "id": "music-people-025",
+        "area": "music_singers",
+        "text": "Какая певица была ведущим голосом Sonora Matancera?",
+        "options": [
+          "Селия Крус",
+          "Омара Портуондо",
+          "Ла Лупе",
+          "Мерседес Соса"
+        ],
+        "difficulty": 6,
+        "tag_ids": [
+          "music"
+        ]
+      },
+      {
+        "id": "music-people-026",
+        "area": "music_singers",
+        "text": "Какая певица записала «Walk On By» в сотрудничестве с Бёртом Бакараком и Хэлом Дэвидом?",
+        "options": [
+          "Диана Росс",
+          "Дайон Уорвик",
+          "Глэдис Найт",
+          "Арета Франклин"
+        ],
+        "difficulty": 6,
+        "tag_ids": [
+          "music"
+        ]
+      },
+      {
+        "id": "music-people-027",
+        "area": "music_singers",
+        "text": "Какая певица записала «I'm Every Woman» для альбома Chaka?",
+        "options": [
+          "Донна Саммер",
+          "Глория Гейнор",
+          "Натали Коул",
+          "Чака Хан"
+        ],
+        "difficulty": 5,
+        "tag_ids": [
+          "music"
+        ]
+      },
+      {
+        "id": "music-people-028",
+        "area": "music_singers",
+        "text": "Какая певица написала «Jolene» и «I Will Always Love You»?",
+        "options": [
+          "Лоретта Линн",
+          "Эммилу Харрис",
+          "Тэмми Уайнетт",
+          "Долли Партон"
+        ],
+        "difficulty": 5,
+        "tag_ids": [
+          "music"
+        ]
+      }
+    ]
+  },
+  "editorial": {
+    "items": [
+      {
+        "id": "cinema-people-025",
+        "correct_answer": 2,
+        "correct_answer_text": "Тони Люн",
+        "article_title": "Чоу Мо-ван",
+        "article_body": "BFI указывает Тони Люна среди исполнителей «Любовного настроения». В отдельном материале института его персонаж назван Чоу Мо-ваном, соседом Су Личжэнь. История начинается с подозрения в измене супругов, но строится не на быстром признании, а на паузах и несказанном. Вонг Кар-вай использует повторяющиеся встречи и городской ритм, чтобы показать одиночество героев. В финальной линии Чоу приезжает к Ангкор-Вату и доверяет тайну отверстию в древнем храме. Поэтому имя актёра связывается с конкретной ролью и эмоциональным устройством фильма. Мэгги Чун играет Су Личжэнь, а Тони Люн — Чоу Мо-вана.",
+        "source_urls": [
+          "https://www.bfi.org.uk/film/1b8c3bcb-842f-5ba2-90ee-39b6b40b7c21/in-the-mood-for-love",
+          "https://www.bfi.org.uk/features/mood-love-wong-kar-wai-emotion"
+        ]
+      },
+      {
+        "id": "cinema-people-026",
+        "correct_answer": 1,
+        "correct_answer_text": "Джули Дэш",
+        "article_title": "Семья Пизантов",
+        "article_body": "BFI указывает Джули Дэш как режиссёра «Дочерей пыли». Фильм рассказывает о семье Пизантов на морских островах Южной Каролины в начале XX века. В центре — несколько поколений женщин и вопрос, оставаться ли на земле предков или уезжать на материк. Институт связывает картину с культурой гулла, памятью и миграцией. Визуальный язык фильма строится на пейзаже, жестах и коллективном рассказе, а Артур Джафа указан как оператор и сопродюсер. BFI также отмечает влияние картины на Lemonade Бейонсе. Поэтому имя Дэш открывает тему независимого кино и способов показывать историю через семейную память.",
+        "source_urls": [
+          "https://www.bfi.org.uk/film/21bc3d80-a4fa-59dd-a64c-bc349a1d5aec/daughters-of-the-dust",
+          "https://www.bfi.org.uk/features/beyonce-lemonade-julie-dash-daughters-dust"
+        ]
+      },
+      {
+        "id": "cinema-people-027",
+        "correct_answer": 2,
+        "correct_answer_text": "Хлоя Чжао",
+        "article_title": "Хлоя Чжао и прерия",
+        "article_body": "BFI называет Хлою Чжао режиссёром и сценаристом «Наездника». Фильм следует за молодым ковбоем после тяжёлой травмы головы и разворачивается в американской прерии. В карточке рядом с Чжао названы Брэйди, Тим и Лилли Джандро. Это помогает отличить авторскую роль режиссёра от экранных ролей участников. История сосредоточена на попытке героя заново определить себя, когда привычное будущее, связанное с верховой ездой, оказывается под вопросом. Чжао работает с ландшафтом и повседневными деталями, а не превращает сюжет в спортивную сенсацию. Правильный ответ — Хлоя Чжао.",
+        "source_urls": [
+          "https://www.bfi.org.uk/film/3a634941-a180-503e-b644-6c2e1150112b/the-rider",
+          "https://www.bfi.org.uk/features/chloe-zhao-nomadland-profile"
+        ]
+      },
+      {
+        "id": "cinema-people-028",
+        "correct_answer": 3,
+        "correct_answer_text": "Брэйди Джандро",
+        "article_title": "Брэйди Джандро на экране",
+        "article_body": "BFI перечисляет Брэйди Джандро среди участников «Наездника» Хлои Чжао. Его экранный герой — Брэйди Блэкберн, молодой ковбой, которому после травмы приходится переосмыслить будущее. Вопрос полезен тем, что отделяет имя персонажа от имени исполнителя. Рядом в карточке BFI указаны Тим и Лилли Джандро, поэтому семейные связи в фильме становятся частью его фактуры. Чжао названа режиссёром и сценаристом, но не играет героя. Картина использует конкретный ландшафт, работу с лошадьми и повседневную речь для рассказа о восстановлении. Верный ответ — Брэйди Джандро, а не другие участники съёмочной группы.",
+        "source_urls": [
+          "https://www.bfi.org.uk/film/3a634941-a180-503e-b644-6c2e1150112b/the-rider",
+          "https://www.bfi.org.uk/features/chloe-zhao-nomadland-profile"
+        ]
+      },
+      {
+        "id": "music-people-025",
+        "correct_answer": 0,
+        "correct_answer_text": "Селия Крус",
+        "article_title": "Голос Sonora Matancera",
+        "article_body": "Смитсоновский музей называет Селию Крус ведущей певицей афрокубинского оркестра Sonora Matancera. Эта работа стала её большим прорывом до дальнейшей сольной карьеры. Смитсоновский обзор также показывает Крус как артистку, помогавшую популяризировать сальсу в США и сохранявшую связь с кубинской культурой. Вопрос проверяет связь певицы с конкретным коллективом, а не знание общего титула «королева сальсы». Sonora Matancera была оркестром, а не псевдонимом Крус. Позднее она продолжила карьеру самостоятельно, но ранняя работа в ансамбле остаётся важной частью её биографии. Поэтому источники связывают правильный ответ именно с Селией Крус.",
+        "source_urls": [
+          "https://nmaahc.si.edu/latinx/celia-cruz",
+          "https://www.si.edu/spotlight/celia-cruz-salsa"
+        ]
+      },
+      {
+        "id": "music-people-026",
+        "correct_answer": 1,
+        "correct_answer_text": "Дайон Уорвик",
+        "article_title": "Исполнительница и авторы",
+        "article_body": "Rock and Roll Hall of Fame помещает Дайон Уорвик в контекст сотрудничества с Бёртом Бакараком и Хэлом Дэвидом. Среди связанных с этим творческим союзом песен музей называет «Walk On By». Здесь важно различать роли: Бакарак и Дэвид образуют авторский союз, а Уорвик исполняет запись. Такой пример показывает, почему в поп-музыке автор и певец не всегда один человек. Профиль Rock Hall описывает её длительную карьеру и широкий репертуар. Другие варианты тоже известные певицы, однако источники не связывают их с этим конкретным трио и песней. Верный ответ — Дайон Уорвик.",
+        "source_urls": [
+          "https://rockhall.com/inductees/dionne-warwick/",
+          "https://www.dionnewarwick.com/"
+        ]
+      },
+      {
+        "id": "music-people-027",
+        "correct_answer": 3,
+        "correct_answer_text": "Чака Хан",
+        "article_title": "Сольный этап Чаки Хан",
+        "article_body": "Rock and Roll Hall of Fame связывает Чаку Хан сначала с Rufus, а затем с её сольными записями. В музейном профиле «I'm Every Woman» указана среди важных песен альбома Chaka. Это помогает различить группу, сольный альбом и исполнительницу. Хан стала заметной фигурой в соуле, фанке и поп-музыке, но вопрос ограничен одной записью, чтобы не смешивать разные периоды карьеры. Официальный сайт артистки даёт второй путь к её каталогу. Другие варианты относятся к известным певицам той же эпохи, однако профиль Rock Hall не связывает их с Chaka и этой композицией. Поэтому правильный ответ — Чака Хан.",
+        "source_urls": [
+          "https://rockhall.com/inductees/chaka-khan/",
+          "https://chakakhan.com/"
+        ]
+      },
+      {
+        "id": "music-people-028",
+        "correct_answer": 3,
+        "correct_answer_text": "Долли Партон",
+        "article_title": "Долли Партон как автор",
+        "article_body": "Библиотека Конгресса отмечает, что Долли Партон написала две свои самые известные песни — «Jolene» и «I Will Always Love You». Вопрос проверяет авторство, а не имя поздней кавер-исполнительницы или название альбома. Партон важна здесь как певица и автор песен одновременно. Её официальный сайт сохраняет биографический и каталоговый контекст, а Library of Congress прямо связывает обе композиции с её авторством. В популярной музыке знаменитая последующая версия может заслонить автора оригинала, поэтому такое различение особенно полезно. Эти две разные песни показывают широту её работы. Верный ответ — Долли Партон.",
+        "source_urls": [
+          "https://www.loc.gov/item/lcm20250708/",
+          "https://dollyparton.com/"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "input_sha256": "45895c2544e36a7b30eca432da38be0f79ba8ac6ad89a337ab276ddbf216b6e8",
+  "rows": [
+    {
+      "id": "cinema-people-025",
+      "key": 2,
+      "key_text_matches": true,
+      "article_words": 86,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": false
+    },
+    {
+      "id": "cinema-people-026",
+      "key": 1,
+      "key_text_matches": true,
+      "article_words": 88,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": false
+    },
+    {
+      "id": "cinema-people-027",
+      "key": 2,
+      "key_text_matches": true,
+      "article_words": 80,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": false
+    },
+    {
+      "id": "cinema-people-028",
+      "key": 3,
+      "key_text_matches": true,
+      "article_words": 85,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": true
+    },
+    {
+      "id": "music-people-025",
+      "key": 0,
+      "key_text_matches": true,
+      "article_words": 85,
+      "distinct_urls": 2,
+      "question_filler": true,
+      "answer_filler": false
+    },
+    {
+      "id": "music-people-026",
+      "key": 1,
+      "key_text_matches": true,
+      "article_words": 88,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": true
+    },
+    {
+      "id": "music-people-027",
+      "key": 3,
+      "key_text_matches": true,
+      "article_words": 94,
+      "distinct_urls": 2,
+      "question_filler": false,
+      "answer_filler": false
+    },
+    {
+      "id": "music-people-028",
+      "key": 3,
+      "key_text_matches": true,
+      "article_words": 87,
+      "distinct_urls": 2,
+      "question_filler": true,
+      "answer_filler": true
+    }
+  ],
+  "keys_by_pack": {
+    "cinema": [
+      2,
+      1,
+      2,
+      3
+    ],
+    "music": [
+      0,
+      1,
+      3,
+      3
+    ]
+  },
+  "verdict": "REWORK_REQUIRED_NOT_INTEGRATED",
+  "verified_findings": [
+    "Cinema keys2,1,2,3 andMusic0,1,3,3 are not balanced0..3 despite author validation claim.",
+    "All8articles80..94words violate100..150 requirement.",
+    "Chaka album giveaway remains unchanged despite explicit replacement requirement.",
+    "Question/answer-validation filler remains; withinbatch2Rider concentration needs variety.",
+    "Source ledger generic openedpages claim lacks peritem actual access evidence; primaryURLs require independent open before fact acceptance."
+  ],
+  "limits": "Root structural review; no HTTP source certification, no full-bank facts or accepted draft claim"
+}

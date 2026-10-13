@@ -1,0 +1,45 @@
+{
+  "actual_cli_exit": 0,
+  "actual_report": "Review submitted — task `task-8a8d71284cd146789d7a8350fe83f58d` (V8) is now **ACCEPTED**.\n\n**Verdict: Accept, 0 errors** — this time I didn't just check Root's script output, I independently reconstructed the entire hash derivation from scratch against the real Go source and bundle data.\n\n**Confirmed:**\n- V7's actual failure log: exit 1, backup/restore succeeded (`integrity: ok, restore: ok`), then `AssertionError: Strict staging revision mismatch` — failure is after backup/restore, before image/Helm/publication, exactly as claimed.\n- Read the real Go source (`canonical.go` Canonical/hashWithout, `validate.go` DraftFromBundle, `types.go` Question struct tags) and confirmed the Python digest algorithm in `derive_revisions_v8.py` matches it exactly — not guessed.\n- **Full independent recomputation** (my own script, not Root's) across all 132 questions from the actual `bundle.json` files: 132/132 reconstructed digests match the published private revision hash; after rewriting only `source.uri`, 0/132 match V7's old fixture (confirms it was wrong for all 132) and **132/132 match V8's packaged fixture** — confirming the new fixture is independently correct, not just self-consistent with Root's script.\n- Archive hash, 296 members match; `diff -rq` V7 vs V8 shows only `checksums.txt` and `expected-staging-revisions.json` changed — `cutover.sh`, `rehearse.py`, `web/version.json` byte-identical.\n- `checksums.txt` LF-only, `sha256sum -c` exits 0 (295 OK) when I ran it myself; manifest hash matches claim.\n\nPending (unchanged, Root-owned): actual prepare execution, image/Helm, browser, publication. Baseline production unaffected.",
+  "raw_callback": {
+    "acceptance": "132 published revisions verified; exact target sourceURI independent derived fixture; GNU295checksums; only fixture/checksums changed. Different provider static review then actualprepare/execution review.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013",
+      "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT6_RELEASE_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root owns V8 fixture/checksums/evidence only. V7 actual copy-only prepare strict revision assertion failed. Reconstruct private question hash per Go DraftFromBundle/Rehash, reproduce all132 published revisions before URI-only staging hash transformation. Preserve originals. No live publication until reviewed execution gates.",
+    "created_at": 1791861347.2564163,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-8a8d71284cd146789d7a8350fe83f58d",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_RELEASE_20261013/revision-derivation-v8.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_RELEASE_20261013/package-v8.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT6_RELEASE_20261013/release-evidence-v8.json"
+      ],
+      "limits": [
+        "Static independent review and actual execution pending; production Helm44 unchanged."
+      ],
+      "summary": "V8 independent derivation all132 published private hashes, exact URI-only staging transform. All295 GNU checksums exit0; V7/V8 diff fixture/checksums only."
+    },
+    "root_task_id": "task-8a8d71284cd146789d7a8350fe83f58d",
+    "run_id": "run-69951530be4e441d98016ca5b6cc7f50",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "qlk V8 staging revision fixture repair",
+    "version": 4,
+    "reviewer": "session-9ac57330cff849e6b208b26743feb4db",
+    "review_note": "Independent review of V8 (package-v8.json/release-evidence-v8.json vs preserved V7, plus the actual V7 failure log and primary Go source). Verdict: ACCEPT, 0 errors -- I reconstructed the entire hash derivation myself from scratch (not by re-running Root's script) and it fully confirms the claims.\n\nFailure confirmed: read .run/culture_next6_root_20261013/remote-prepare-v7.txt/exit.json -- actual_exit=1. Log shows 'api: OK'/'web/main.dart.js: OK', then a successful backup/restore line ({'backup':...,'integrity':'ok','restore':'ok','counts':[111,684,252]}), THEN AssertionError 'Strict staging revision mismatch' inside the generated rehearse-*.py at the per-question revision check -- i.e. failure is after backup/restore, before any image build/Helm/publication step. Matches claimed failure scope exactly.\n\nAlgorithm verified against actual Go source: read next/server/internal/content/canonical.go (Canonical/hashWithout: sorted-key compact JSON, literal UTF-8 non-ASCII, sha256) and validate.go (DraftFromBundle: builds the private Question from the same public field values plus injected Grading/EditorialTagIDs) and types.go (Question json tags: question_id, revision, stem, options, difficulty, difficulty_level, editorial_tag_ids, context_tag_ids, source, media, answer_kind, grading). derive_revisions_v8.py's python digest() (json.dumps sort_keys=True, ensure_ascii=False, compact separators + sha256) and its field reconstruction (pop quiz_id/revision, inject grading/editorial_tag_ids) match this Go algorithm exactly, not guessed.\n\nIndependent full recomputation (own script, not Root's derive_revisions_v8.py, against the actual bundle.json files under the frozen stage): iterated all 132 questions across all 10 affected quiz_ids. Results: 132/132 reconstructed private-draft digests match each question's published revision.sha256 (validates the reconstruction logic itself against real data) -- then rewriting only source.uri to /opt/quiz-master/releases/quiz-2026.10.13-culture-328f2f8/quizzes/... and rehashing gives 0/132 matches against V7's old expected-staging-revisions.json (confirms 'all132 wrong for staging URI' / old_fixture_matches=0) and 132/132 matches against V8's packaged expected-staging-revisions.json (confirms the new fixture is correct, not just self-consistent with Root's own script).\n\nArchive/scope checks: recomputed archive sha256 = f1c8df8e...140c, matches claim; 296 members, byte-identical sorted list to V7. diff -rq across fully extracted V7 vs V8 trees: ONLY checksums.txt and expected-staging-revisions.json differ; cmp confirms cutover.sh, rehearse.py, and web/version.json are byte-identical to V7 -- no regression to JS guards, rehearsal assertions, or the version-metadata fix from prior revisions. checksums.txt remains LF-only (file confirms plain ASCII); ran sha256sum -c myself against the extracted V8 tree: exits 0, all 295 files OK; manifest_sha256 claim (ed73a53f68...) matches recomputed hash exactly.\n\nNo observed-API-value copying detected: all 132 new hash values were independently reproducible purely from the frozen private canonical bundle plus the known buildId string, with no dependency on any live/staging API response.\n\nLimits: did not execute rehearse.py, cutover.sh, or any backup/API/image/Helm/kubectl step; did not touch Linux cutover execution, browser, or publication gates -- all remain pending Root-owned work as explicitly scoped. Root's V7 failure confirms only a non-live staging/backup-restore cycle was touched; baseline production Helm44/image b3700cb1... is unaffected. No edits to any V3-V8 archive. Only read-only tar extraction, diff, cmp, file(1), sha256sum/sha256sum -c, direct Go-source reading, and my own from-scratch Python hash recomputation against already-produced bundle data were used; no build/test/browser/server/Git-mutation/upload/deploy actions were taken."
+  },
+  "limits": "Static artifact gate only; actual copy-only rehearsal and execution/publication pending."
+}

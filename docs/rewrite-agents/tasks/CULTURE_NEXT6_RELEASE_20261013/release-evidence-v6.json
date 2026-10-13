@@ -1,0 +1,20 @@
+{
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "original_v5_archive_sha256": "886f626f334e40be711b9904fd7c6766c38a214175fbf87510ae46810eb8c3dc",
+  "archive_sha256": "04ed7163fab6ab61e4d0d7caeaa44175cf12abf146c9d3b660b5333f6cfad79c",
+  "changed_vs_v5": [
+    "rehearse.py",
+    "checksums.txt"
+  ],
+  "public_dto_field_fixes": 2,
+  "expected_completed_histories": 9,
+  "actual_primary_contracts": [
+    "next/server/internal/attempts/reveals.go:CorrectAnswer/Reveal",
+    "next/server/internal/attempts/rules.go:Receipt"
+  ],
+  "actual_gnu_sha256sum_exit": 0,
+  "checksum_log_sha256": "8ad01fb56646366788f7ead71d983cb5cf7d80e11b3e3956afcd545dd204d31b",
+  "preserved_strict55_newyear_and_old53_asserts": true,
+  "build_reuse": "Only copied-data rehearsal assertions changed; originalfreshcompiledcorrect-app source328f2f8 production/QA artifacts unchanged",
+  "status": "PENDING_INDEPENDENT_STATIC_REVIEW_NO_UPLOAD_NO_PUBLICATION"
+}

@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 682173,
+    "stop_reason": "end_turn",
+    "session_id": "43f9d4cc-69f6-4c55-8a26-08e81f3342b7",
+    "total_cost_usd": 2.2669221999999998,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 16510,
+      "cache_read_input_tokens": 1377775,
+      "output_tokens": 7182,
+      "output_tokens_details": {
+        "thinking_tokens": 2133
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 16510,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 668,
+          "cache_read_input_tokens": 142107,
+          "cache_creation_input_tokens": 5029,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 5029
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 146,
+        "outputTokens": 52302,
+        "thinkingTokens": 15986,
+        "cacheReadInputTokens": 6065551,
+        "cacheCreationInputTokens": 132625,
+        "webSearchRequests": 0,
+        "costUSD": 2.2669221999999998,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 13,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted — task `task-fd7f540216d04965992a02062b9ef445` (V7) is now **ACCEPTED**.\n\n**Verdict: Accept, 0 errors**\n\n**Confirmed independently:**\n- V6's actual `remote-prepare-v6.txt` shows exit 1 with `KeyError: 'buildId'` right after `api: OK` / `web/main.dart.js: OK` — backup/rehearsal/image/Helm never ran. Root cause: V6's `web/version.json` was generic Flutter plugin metadata `{app_name, version, build_number, package_name}` — no `buildId` at all.\n- V7's `web/version.json` now has exactly the 14 required fields, all matching `package-v7.json`'s `version` object byte-for-byte — satisfies the exact assertions `cutover.sh` checks (buildId/commit/source_commit/packs/questions/question_articles).\n- `diff -rq` V6 vs V7: only `web/version.json` and `checksums.txt` changed; `cmp` confirms `cutover.sh`, `rehearse.py`, the API binary, and `main.dart.js` are all byte-identical — no regression to the compiled JS/API/reader/rehearsal/cutover guards.\n- `checksums.txt` is LF-only, `sha256sum -c` exits 0 (295/295 OK) when I ran it myself; manifest hash matches claim; archive hash matches claim; 296 members identical to V6.\n- Grepped `next/apps/quiz_app/lib` for `PackageInfo`/`package_info`: zero matches, and `web/version.json` isn't referenced in app code — confirms this is a pure packaging-metadata fix with no runtime behavior change, as claimed.\n\nPending (unchanged, Root-owned, not certified here): actual backup/API/rehearsal execution, Docker/Helm, Linux cutover, browser, publication. Baseline production image/PVC untouched per Root's own scoped claim.",
+    "ttft_ms": 3436,
+    "type": "result",
+    "duration_ms": 111603,
+    "uuid": "76a5d3bf-b015-4ab5-9038-599c3c2061ed",
+    "ttft_stream_ms": 2952,
+    "time_to_request_ms": 1301,
+    "first_content_frame_ms": 2953,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+}

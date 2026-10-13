@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 492921,
+    "stop_reason": "end_turn",
+    "session_id": "43f9d4cc-69f6-4c55-8a26-08e81f3342b7",
+    "total_cost_usd": 1.3906602000000003,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 15325,
+      "cache_read_input_tokens": 959365,
+      "output_tokens": 5224,
+      "output_tokens_details": {
+        "thinking_tokens": 625
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 15325,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 630,
+          "cache_read_input_tokens": 101476,
+          "cache_creation_input_tokens": 3528,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 3528
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 102,
+        "outputTokens": 37060,
+        "thinkingTokens": 10644,
+        "cacheReadInputTokens": 3289421,
+        "cacheCreationInputTokens": 90493,
+        "webSearchRequests": 0,
+        "costUSD": 1.3906602000000003,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 14,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted — task `task-4ef79a210a5a4819abdd8e4bfe59bff4` is now **ACCEPTED** (V5, state: `ACCEPTED`).\n\n**Verdict: Accept, 0 errors** — the CRLF manifest defect I flagged in V4 is confirmed fixed, nothing else regressed.\n\n**Independently verified:**\n- Archive hash `886f626f...8c3dc` matches exactly; 296 members, byte-identical to V4/V3.\n- `diff -rq` V4 vs V5: only `checksums.txt` differs; `cmp` confirms `cutover.sh` is byte-identical to V4, so the 3 corrected JS-hash guards (lines 16/48/74, `7fe815...`) remain intact.\n- `checksums.txt` is now plain LF (`file` confirms); normalized diff shows the same hash values as V4 — only line endings changed, not content.\n- Ran `sha256sum -c checksums.txt` myself: **exits 0**, all 295 files OK — the defect that would have aborted `cutover.sh` at line 14 is resolved.\n- `manifest_sha256` and `checksum_log_sha256` claims both match my independently recomputed hashes exactly, including a byte-for-byte match of my own `sha256sum -c` run log against Root's claimed log hash — strong corroboration the reported run is real, not fabricated.\n\nSince V4's other 294 files (reader catalog, taxonomy, NewYear fixtures, baseline image) were already confirmed identical to the verified V3, no re-check was needed there.\n\n**Not certified by this review** (explicitly out of scope, Root-owned): the local-browser-v3 QA evidence — read for context and spot-checked 3/13 file hashes (all matched), but full browser/Android/Linux-deploy/Helm/publication gates remain separate pending work.",
+    "ttft_ms": 5252,
+    "type": "result",
+    "duration_ms": 100886,
+    "uuid": "4434f55d-88b6-49cc-8c2b-11e941136571",
+    "ttft_stream_ms": 4075,
+    "time_to_request_ms": 1487,
+    "first_content_frame_ms": 4086,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+}

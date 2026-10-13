@@ -1,0 +1,68 @@
+{
+  "task": "task-ef69db13659141238beab0c5feccca24",
+  "run": "run-b6fe892279f44d75bdf92a794d6a0dbe",
+  "package": "package-v3.json",
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "build_id": "quiz-2026.10.13-culture-328f2f8",
+  "fresh_builds": {
+    "production": {
+      "exit": 0,
+      "seconds": 73.6,
+      "js_sha256": "7fe815841d43e057042aa76e18508c8648fb59111cb941ac8c36bd30cdee331b"
+    },
+    "qa": {
+      "exit": 0,
+      "seconds": 68.7,
+      "js_sha256": "b5ece434f0c1906f4a41139877f104b3783f78e520e3b01ec921faf985534b4b"
+    }
+  },
+  "packaged_archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\v3\\quiz-2026.10.13-culture-328f2f8-v3.tar.gz",
+    "sha256": "4a4f839a3b19aa059dfa460bfb07e373bafd73d064687b9bb7b9af1d07c9c588",
+    "members": 296,
+    "pathsafe": true,
+    "hash_mismatches": []
+  },
+  "catalog_gate": {
+    "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+    "build_id": "quiz-2026.10.13-culture-328f2f8",
+    "packs": 131,
+    "questions": 4036,
+    "articles": 234,
+    "all_reader_rows_accepted": true,
+    "new_reader_ids": [
+      "quiz:cinema-people-20261011:cinema-people-023",
+      "quiz:cinema-people-20261011:cinema-people-024",
+      "quiz:music-people-20261011:music-people-023",
+      "quiz:music-people-20261011:music-people-024"
+    ],
+    "new_reader_source_links_each": 2,
+    "production_js_sha256": "7fe815841d43e057042aa76e18508c8648fb59111cb941ac8c36bd30cdee331b",
+    "qa_js_sha256": "b5ece434f0c1906f4a41139877f104b3783f78e520e3b01ec921faf985534b4b",
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "checksummed_files": 295,
+    "stage_file_count": 296,
+    "archive_file_members": 296,
+    "archive_path_safe": true,
+    "archive_hash": "4a4f839a3b19aa059dfa460bfb07e373bafd73d064687b9bb7b9af1d07c9c588",
+    "manifest_sha256": "f53cf12a38982db4c2a3c096ddebf143077a20b7dff9a6ec3e91293d2d2ca8f3",
+    "hash_mismatches": [],
+    "production_build_exit": 0,
+    "qa_build_exit": 0,
+    "production_build_seconds": 73.6,
+    "qa_build_seconds": 68.7,
+    "qa_output": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\v3\\web-production-next",
+    "qa_output_packaging": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\v3\\qa-web-next",
+    "qa_not_packaged": true,
+    "source_status_check": "PASS"
+  },
+  "stage_file_count": 296,
+  "checksummed_files": 295,
+  "manifest_sha256": "f53cf12a38982db4c2a3c096ddebf143077a20b7dff9a6ec3e91293d2d2ca8f3",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "publication_status": "NOT_PUBLISHED",
+  "notes": [
+    "V1 and V2 historical blocked artifacts preserved",
+    "The initial legacy flutter app build outputs remain in V3 scratch for traceability; final packaged stage uses fresh builds from next/apps/quiz_app, which contains the V3 Reader assets."
+  ]
+}

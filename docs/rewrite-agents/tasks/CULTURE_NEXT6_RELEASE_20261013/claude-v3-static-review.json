@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 252692,
+    "stop_reason": "end_turn",
+    "session_id": "43f9d4cc-69f6-4c55-8a26-08e81f3342b7",
+    "total_cost_usd": 0.5875574,
+    "usage": {
+      "input_tokens": 48,
+      "cache_creation_input_tokens": 48181,
+      "cache_read_input_tokens": 1053537,
+      "output_tokens": 18403,
+      "output_tokens_details": {
+        "thinking_tokens": 5966
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 48181,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 537,
+          "cache_read_input_tokens": 59284,
+          "cache_creation_input_tokens": 3408,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 3408
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 48,
+        "outputTokens": 18403,
+        "cacheReadInputTokens": 1053537,
+        "cacheCreationInputTokens": 48181,
+        "webSearchRequests": 0,
+        "costUSD": 0.5875574,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 5966,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 34,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted successfully — task `task-ef69db13659141238beab0c5feccca24` is now **ACCEPTED**.\n\n**Verdict: Accept (1 minor documentation inaccuracy, no blocking defects)**\n\nIndependently verified by hashing/extracting the actual files (no builds/tests/deploys run):\n- Archive sha256, member count (296), and manifest hash (checksums.txt, 295 lines) all match claims exactly.\n- Extracted `web/main.dart.js` from the archive → `7fe815...` (fresh production hash), confirming the packaged artifact is correct and the stale QA build (`b5ece4...`) is not packaged.\n- Reader catalog directly inspected: 234 rows, 0 non-accepted, all 4 new article IDs present/accepted with 2 sources each — exact match.\n- Static player-facing `catalog.json` carries only pack metadata, no question/answer content — no private-answer leak.\n- Confirmed the `cutover.sh` stale-hash blocker is real (`b2a176...` vs. the fresh `7fe815...`).\n\nOne correction flagged: `ROOT_V3_SCRIPT_BLOCKER_EN.md` says the stale hash appears in \"two active places,\" but it actually appears in **three** — lines 16, 48, *and* 74 (a post-publish curl check against the live site). This doesn't change the block/fail conclusion, just undercounts it.\n\nNewYear/copied-DB, backup/restore/rollback, Helm, and browser gates were correctly disclosed as pending Root-owned work, not falsely claimed complete.",
+    "ttft_ms": 3415,
+    "type": "result",
+    "duration_ms": 401661,
+    "uuid": "fa1deb69-f203-4fd6-a4f8-be07c03b663e",
+    "ttft_stream_ms": 2705,
+    "time_to_request_ms": 1096,
+    "first_content_frame_ms": 2706,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+}

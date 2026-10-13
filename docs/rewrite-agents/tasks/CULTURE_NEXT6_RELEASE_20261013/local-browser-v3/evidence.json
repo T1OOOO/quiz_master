@@ -1,0 +1,53 @@
+{
+  "source_commit": "328f2f8e82ade7e99491207e956281751ee6ea4e",
+  "actual_viewport": "390x844x1,mobile,touch",
+  "media_modes": {
+    "cinema": "light",
+    "music": "dark"
+  },
+  "filename_note": "cinema filenames retain system-dark label from original harness, actual trace consistently shows light. Music actually dark.",
+  "actual_knownkey_ui_answers": 48,
+  "scores_visually_verified": {
+    "cinema": 24,
+    "music": 24
+  },
+  "new_article_sheets_opened_closed": 4,
+  "source_controls_rendered": {
+    "cinema": 4,
+    "music": 4
+  },
+  "feedback_open_cancel_each": true,
+  "feedback_submit_requests": 0,
+  "own_second_sdk_exit": 0,
+  "own_first_sdk_exit": 1,
+  "first_sdk_failure": "IPC read raced incomplete requestJSON; requestatomicwrite/clientretry corrected in own harness; failedtrace preserved, no productfix or acceptance claim from failed run.",
+  "wrapper_exits": [
+    0,
+    0
+  ],
+  "ports_free": [
+    18089,
+    18092
+  ],
+  "limits": [
+    "QA WindowsAPI unchangedruntime/hashreuse proven, no fresh Windowscompileclaim",
+    "Source controls rendered; no newexternal sourcewindow opened in this localV3run",
+    "Physical Android/keyboard/screenreader/fullbankfacts unchecked",
+    "No production mutation or release acceptance from this UI check"
+  ],
+  "files": {
+    "cinema-article-23.jpeg": "16314df7319dc43c3434134ae6f9f751f4becf9e196ea793fb28ef76ce0b2b28",
+    "cinema-article-24.jpeg": "1de75e0bd79f856e0be569608498b7208b53ac8a5715f94bcd0df01cc8115849",
+    "cinema-feedback-system-dark.jpeg": "8400595c5b2c56d506bcb99660654bc7a63047e2c6d1411dd7c64a19d978d55a",
+    "cinema-result-system-dark.jpeg": "d15f2d6f726d1bbaf3d328d73fa3425fb00e832e4cfec0bcd0692b6392edad07",
+    "cinema-trace-dark-flow.json": "33da879b34fdf44f0b089dd610d50f057b0ea5a8792d58e7dff1ca6131a8b38c",
+    "cleanup-cinema.json": "49870a4818851b7c05ed5961a06078d12049b175bb7bf374ab73b15b8b143d06",
+    "cleanup-music.json": "8e943fc395f452846d6e4ab07feac448841821671daa600bcde40cfb360b20e6",
+    "music-article-23.jpeg": "f90b279ef6069efe0e98a39e3ad330eee5014004b98705fd260dc7c3a6e95c5a",
+    "music-article-24.jpeg": "9911f9c9675e1f4627834acebc0669fa1dd3f727eaebe6374811a34b07d12807",
+    "music-feedback-system-dark.jpeg": "be56c8cdb4d3a234a6b2cc535ac26edc4e70b9d4d8d35d14f267099b556b4554",
+    "music-result-system-dark.jpeg": "58ca79680880784fcd36d76073f9463fb1ea4859a13ab9a5d886b3f7fd8379f7",
+    "music-trace-dark-flow.json": "eb8a418cc5f5c9f6bc579bd03c183f507a76df73743f9fb33ffc4daf16416564",
+    "preparation.json": "fedceb5eac35c320dbac87241e0143639efd4620c03946ab462df76bdc49ca6a"
+  }
+}

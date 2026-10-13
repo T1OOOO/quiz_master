@@ -1,0 +1,115 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 148127,
+    "stop_reason": "end_turn",
+    "session_id": "d507582d-832b-415c-b42c-845ecae3b953",
+    "total_cost_usd": 0.3342846,
+    "usage": {
+      "input_tokens": 26,
+      "cache_creation_input_tokens": 33025,
+      "cache_read_input_tokens": 438558,
+      "output_tokens": 9682,
+      "output_tokens_details": {
+        "thinking_tokens": 4326
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 33025,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 459,
+          "cache_read_input_tokens": 43507,
+          "cache_creation_input_tokens": 4029,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 4029
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 26,
+        "outputTokens": 9682,
+        "cacheReadInputTokens": 438558,
+        "cacheCreationInputTokens": 33025,
+        "webSearchRequests": 0,
+        "costUSD": 0.3166836,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 4326,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 16051,
+        "outputTokens": 310,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.017601000000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 18,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted. Verdict: **REWORK** (5 errors), task `task-cc61b318080f4a3b8885df7e2dd8642d` now in state `REWORK`.\n\nIndependently verified findings (not just trusting Root's review):\n1. **Key balance false** — writer's own evidence claimed \"balanced 0..3 in both packs,\" but actual values are cinema `[2,1,2,3]` and music `[0,1,3,3]` — both unbalanced.\n2. **All 8 articles under the 100-150 word requirement** (80-94 words, counted directly).\n3. **Chaka Khan giveaway not fixed** — question literally names the album \"Chaka\" while the answer is \"Чака Хан,\" the exact defect the requirements doc told the writer to remove.\n4. **Question/answer-validation filler persists** in several articles instead of teaching content (e.g., \"Вопрос проверяет авторство, а не имя...\").\n5. **Source ledger is generic/batch-level**, not per-item, and itself admits artist-site URLs weren't independently opened.\n\nSpot-checked 3 of 16 source URLs via WebFetch: the Rock Hall and (second) BFI pages did support their cited facts, but that doesn't cure the structural defects above — full 16-source certification wasn't attempted, consistent with the read-only scope. No edits, integration, or runtime actions were taken.",
+    "ttft_ms": 7731,
+    "type": "result",
+    "duration_ms": 165325,
+    "uuid": "909a5a55-7eeb-493e-9d82-7ec21f2cf626",
+    "ttft_stream_ms": 3319,
+    "time_to_request_ms": 1433,
+    "first_content_frame_ms": 3320,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "scope": "Independent structural/source-spot-check REWORK5;3of16URLsopened,no fullfacts/integration certification"
+}

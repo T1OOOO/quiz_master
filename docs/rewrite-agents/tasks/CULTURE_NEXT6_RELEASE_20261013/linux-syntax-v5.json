@@ -1,0 +1,18 @@
+{
+  "archive_sha256": "886f626f334e40be711b9904fd7c6766c38a214175fbf87510ae46810eb8c3dc",
+  "checks": [
+    {
+      "file": "cutover.sh",
+      "sha256": "665fedc29e17ca39540c441e6c27f2b434813e9999d092c38cfa5809ac2089eb",
+      "actual_ssh_syntax_exit": 0,
+      "stdout": ""
+    },
+    {
+      "file": "rehearse.py",
+      "sha256": "218723e0eaa078f35225cc600935864d24654f555c012aced7cac42af60aa095",
+      "actual_ssh_syntax_exit": 0,
+      "stdout": "Python AST syntax PASS\n"
+    }
+  ],
+  "scope": "Actual remote Linux bash -n/Python AST parse from stdin; read-only, no files uploaded and no script/runtime/API/deployment executed."
+}
