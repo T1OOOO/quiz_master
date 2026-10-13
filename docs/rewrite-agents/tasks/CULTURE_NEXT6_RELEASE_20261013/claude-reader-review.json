@@ -1,0 +1,101 @@
+{
+  "actual_cli_exit": 0,
+  "actual_result": {
+    "duration_api_ms": 282662,
+    "stop_reason": "end_turn",
+    "session_id": "502d1073-10b7-4ef5-8ab4-a8e14168f00f",
+    "total_cost_usd": 1.0238590000000003,
+    "usage": {
+      "input_tokens": 76,
+      "cache_creation_input_tokens": 97682,
+      "cache_read_input_tokens": 2270945,
+      "output_tokens": 17879,
+      "output_tokens_details": {
+        "thinking_tokens": 6980
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 97682,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 755,
+          "cache_read_input_tokens": 108914,
+          "cache_creation_input_tokens": 3279,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 3279
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 76,
+        "outputTokens": 17879,
+        "cacheReadInputTokens": 2270945,
+        "cacheCreationInputTokens": 97682,
+        "webSearchRequests": 0,
+        "costUSD": 1.0238590000000003,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 6980,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 46,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted and task-3c8319abc2e64e9e98b4446ee92890c5 is now **ACCEPTED**.\n\n**Verdict: ACCEPT, error_count 0** — independently verified read-only from actual files, no edits/build/tests/browser/Git run:\n\n- `git diff` confirms exactly 4 one-line status flips (`draft`→`accepted`) in `question-articles.json` for cinema-people-023/024 and music-people-023/024, nothing else touched. All 234 catalog rows are now `accepted`, zero drafts remain.\n- `question_articles_test.dart` diff is purely additive (+38/−0): one new test decodes the real packaged asset via `rootBundle` + `tester.runAsync`, asserts count==234 and the 4 exact `(quiz_id, question_id, revision_sha256)` bindings — all 4 hashes match the JSON's `question_refs` exactly.\n- `question_articles.dart` confirms fail-closed semantics: any non-`accepted` row throws `FormatException('unreviewed article')` with no per-item catch, so one draft row rejects the *whole* 234-article catalog — the actual root cause of the broken Reader links, consistent with the earlier Next6 release-packaging review.\n- `.run/culture_next6_root_20261013/reader-red.txt` is a genuine RED at the right point in the timeline (test write 04:03:55 → RED 04:04:27 → status fix 04:04:32 → GREEN flutter test 04:05:02 \"All tests passed!\" → clean analyze 04:05:17), and both log hashes match `reader-root-gates.json`.\n- Content acceptance of the 4 rows is backed by `study/question_articles/reviews/culture-next6-20261013.json` plus a separate prior cross-provider binding review that already validated the revision-hash bindings.\n- No GREEN/build/UI/release claims are made by this task, and none are endorsed here — `reader-root-gates.json` itself states fresh build/UI/remote gates are still pending, and the related Next6 release package remains `REWORK_REQUIRED` for unrelated packaging-script defects (not certified by this review).\n\nNo blockers found; the status repair is correctly scoped and faithfully evidenced.",
+    "ttft_ms": 7225,
+    "type": "result",
+    "duration_ms": 322973,
+    "uuid": "444c5070-f109-4a12-ad7d-b7223909d429",
+    "ttft_stream_ms": 6492,
+    "time_to_request_ms": 1906,
+    "first_content_frame_ms": 6492,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "limits": "Scoped runtime status/test review; freshbuild/UI/release gates pending"
+}

@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "check": "reader-full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 29.63,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013\\reader-full-flutter.txt",
+      "log_sha256": "5267b61f8d2d4d0203d502b56d720f61f4273f3a145521a5e2d67f32222b1aca"
+    },
+    {
+      "check": "reader-flutter-analyze",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 14.81,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next6_root_20261013\\reader-flutter-analyze.txt",
+      "log_sha256": "458f97127558c7a6bf6245cb3bec6dcb118524e34f600c4ecc83bf110d7abb3c"
+    }
+  ],
+  "scope": "Real packaged reader acceptance-status integration repair; no Dart runtime code changed. Freshbuild/UI/remote gates pending."
+}

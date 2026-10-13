@@ -1,0 +1,26 @@
+{
+  "package_sha256": "827e355dc4efa27ed634dd8cfb7075d9957bdd868b9e06e5d675c6868ab3538c",
+  "actual_archive_sha_verified": true,
+  "findings": [
+    {
+      "file": "web/version.json and package.json",
+      "defect": "Canonical taxonomy digest confused with raw file digest.",
+      "actual": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+      "required": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+    },
+    {
+      "file": "rehearse.py",
+      "defect": "Strict article binding counts still22 despite new24questions/articles perPeople pack."
+    },
+    {
+      "file": "rehearse.py",
+      "defect": "No copy-only current importer/API grading/revision assertions for either NewYear repair. Separate native source-equality file is static fixture proof, not staged scoring."
+    },
+    {
+      "file": "cutover.sh",
+      "defect": "Old Next5 build/source identity remains in active release script."
+    }
+  ],
+  "gate": "REWORK_REQUIRED_NO_UPLOAD_NO_PUBLICATION",
+  "limits": "Root structural package checks, not independent review or Linux/API execution. Preserve immutable V1 archive and raw worker report."
+}

@@ -1,0 +1,101 @@
+{
+  "actual_cli_exit": 0,
+  "actual_cli_result": {
+    "duration_api_ms": 178410,
+    "stop_reason": "end_turn",
+    "session_id": "eda5230a-ccc8-47ba-b251-580cb453c46c",
+    "total_cost_usd": 0.585619,
+    "usage": {
+      "input_tokens": 28,
+      "cache_creation_input_tokens": 75969,
+      "cache_read_input_tokens": 770085,
+      "output_tokens": 12767,
+      "output_tokens_details": {
+        "thinking_tokens": 6373
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 75969,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 593,
+          "cache_read_input_tokens": 82961,
+          "cache_creation_input_tokens": 7519,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 7519
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-sonnet-5": {
+        "inputTokens": 28,
+        "outputTokens": 12767,
+        "cacheReadInputTokens": 770085,
+        "cacheCreationInputTokens": 75969,
+        "webSearchRequests": 0,
+        "costUSD": 0.585619,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 6373,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 20,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "Review submitted successfully: task-0fbfe887 is now in state `REWORK` with `error_count: 4`.\n\n**Verdict: REWORK (4 confirmed defects, gate stays `REWORK_REQUIRED_NO_UPLOAD_NO_PUBLICATION`)**\n\nIndependently reproduced as correct (not just trusted): archive SHA-256, 296-member/path-safe tar, both `main.dart.js` hashes, build exit codes, self-check counts (131/4036/234, People 24 each, 230 old articles preserved), and the NewYear 29/36-only repair diff.\n\nIndependently re-derived 4 real defects (matching Root's own `root-v1-package-rework.json`, confirmed from scratch by reading the actual files, not from prose):\n1. `package.json`/`release-evidence.json` — `taxonomy_sha256` holds the raw file digest (`98f0199...`) instead of the canonical digest (`07e4bbb5...`) that every prior accepted release used for that field.\n2. Staged `rehearse.py` still hardcodes article-ref count `22` for the People packs, stale against this package's own `people_each=24`.\n3. Same `rehearse.py` has no NewYear coverage at all — the two repaired rows aren't exercised by the real cutover smoke test, only by a disconnected static fixture.\n4. Staged `cutover.sh` is substantively still the old Next5 script (old build id, old commit, old 4032/230 counts, old JS hash, old Helm43 baseline image) — if run, it would validate/deploy the wrong artifact.\n\nThis was strictly read-only (hashing, tar listing, file reads) — no builds, tests, server, browser, git, or deploy actions were taken, and nothing was uploaded or published.",
+    "ttft_ms": 23708,
+    "type": "result",
+    "duration_ms": 364316,
+    "uuid": "93ccd0b0-2520-4b8f-929e-33d6cbd078aa",
+    "ttft_stream_ms": 3457,
+    "time_to_request_ms": 2009,
+    "first_content_frame_ms": 3458,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "scope": "Independent static review; actual Hub REWORK4, no server execution/publication"
+}

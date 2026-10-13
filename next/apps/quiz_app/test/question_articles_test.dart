@@ -187,4 +187,42 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(TextButton), findsNothing);
   });
+
+  testWidgets(
+    'packaged article catalog decodes every accepted article and binds Next6 People questions',
+    (tester) async {
+      final articles = QuestionArticles.decode(
+        (await tester.runAsync(
+          () => rootBundle.loadString(questionArticlesAsset),
+        ))!,
+      );
+
+      expect(articles.articles, hasLength(234));
+      for (final (quizId, questionId, revision) in [
+        (
+          'cinema-people-20261011',
+          'cinema-people-023',
+          'c53894526896b8cffe6777777cd8be05b3bf3b2213f7d0bec18c3561cff82b77',
+        ),
+        (
+          'cinema-people-20261011',
+          'cinema-people-024',
+          '78398be43b68d4c34abcc6c5331546ab91b40b785e6902ef6d7cc23e513597cd',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-023',
+          'f1a31357b68a88404397480179c67134bca0360f5bbf7b93d714014ca366444c',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-024',
+          '3a911b0bc4a22b21800832398e4516da4e99001ddad8df40e3de4077e92f134e',
+        ),
+      ]) {
+        expect(articles.forQuestion(quizId, questionId, revision), isNotNull);
+      }
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

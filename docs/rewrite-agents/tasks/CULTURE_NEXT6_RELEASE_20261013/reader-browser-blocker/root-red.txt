@@ -1,0 +1,55 @@
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 96.0.0 (109.0.0 available)
+  analyzer 10.2.0 (14.5.0 available)
+  build 4.0.7 (4.0.11 available)
+  build_runner 2.15.1 (2.16.2 available)
+  built_collection 5.1.1 (5.1.2 available)
+  dart_style 3.1.7 (3.1.13 available)
+  freezed 3.2.5 (4.0.2 available)
+  go_router 17.5.0 (18.0.2 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  package_config 2.2.0 (3.0.0 available)
+  source_gen 4.2.4 (4.3.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+Got dependencies!
+14 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart
+00:00 +0: packaged article catalog decodes every accepted article and binds Next6 People questions
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following FormatException was thrown running a test:
+unreviewed article
+
+When the exception was thrown, this was the stack:
+#0      new QuestionArticle.fromJson (package:quiz_app/question_articles.dart:45:7)
+#1      new QuestionArticles.decode.<anonymous closure> (package:quiz_app/question_articles.dart:86:31)
+#2      MappedListIterable.elementAt (dart:_internal/iterable.dart:443:31)
+#3      ListIterator.moveNext (dart:_internal/iterable.dart:372:26)
+#4      new _GrowableList._ofEfficientLengthIterable (dart:core-patch/growable_array.dart:194:27)
+#5      new _GrowableList.of (dart:core-patch/growable_array.dart:154:28)
+#6      new List.of (dart:core-patch/array_patch.dart:39:18)
+#7      ListIterable.toList (dart:_internal/iterable.dart:224:7)
+#8      new QuestionArticles.decode (package:quiz_app/question_articles.dart:88:10)
+#9      main.<anonymous closure> (file:///C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart:194:41)
+<asynchronous suspension>
+#10     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#11     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  packaged article catalog decodes every accepted article and binds Next6 People questions
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: packaged article catalog decodes every accepted article and binds Next6 People questions [E]
+  Test failed. See exception logs above.
+  The test description was: packaged article catalog decodes every accepted article and binds Next6 People questions
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: packaged article catalog decodes every accepted article and binds Next6 People questions

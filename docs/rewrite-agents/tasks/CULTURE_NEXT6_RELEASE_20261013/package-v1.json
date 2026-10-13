@@ -1,0 +1,76 @@
+{
+  "version": {
+    "buildId": "quiz-2026.10.13-culture-b9296af",
+    "commit": "b9296afb0374da2a36f2425c843d91e0cfa36f15",
+    "source_commit": "b9296afb0374da2a36f2425c843d91e0cfa36f15",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4036,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 234,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "b2a176e337c4cf970deee7dbffbb0f4ecb49f3d59584da9af1a8b2974a9b5085",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "stage": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\quiz-2026.10.13-culture-b9296af",
+  "archive": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\quiz-2026.10.13-culture-b9296af.tar.gz",
+  "sha256": "827e355dc4efa27ed634dd8cfb7075d9957bdd868b9e06e5d675c6868ab3538c",
+  "baseline_image": "docker.io/library/quiz-master@sha256:b3700cb1ccb2adfcfcb117b659b856b261d11ae5336c9e632fec2c839a08dcbc",
+  "file_members": 296,
+  "tar_members": 296,
+  "manifest_sha256": "a24a9fd14edd80e29a20e953d95b3141a67e0b1920b3fea80e3615b93ce984d9",
+  "expected_staging_revisions_sha256": "f7f8dc6a0357f5aa2d26cf06eadb18ad7c127b8f89a08de4a7b4f1c2b680b8d5",
+  "runtime_bundles_sha256": "645bd0b4e905d60afebb3e01fbe7a72918a89efd40d07804649bb91302c5b1f6",
+  "production_build": {
+    "exit": 0,
+    "duration_seconds": 79.0,
+    "log": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\prod-build.log",
+    "log_sha256": "50950b0fad3692d10ca1aca3e19312975b8d98d246767752865718f883b35d22",
+    "output": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\web-fresh",
+    "defines": {
+      "QM_BUILD_ID": "quiz-2026.10.13-culture-b9296af",
+      "QM_API_BASE_URL": "https://quiz.kotopedia.org"
+    },
+    "main_dart_js_sha256": "b2a176e337c4cf970deee7dbffbb0f4ecb49f3d59584da9af1a8b2974a9b5085"
+  },
+  "qa_build": {
+    "exit": 0,
+    "duration_seconds": 75.7,
+    "log": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\qa-build.log",
+    "log_sha256": "658f4172cb1a643f50c448a1fa63f3314e7a2b5edd021a47072b831fd69c00e6",
+    "output": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\qa-web-fresh",
+    "defines": {
+      "QM_BUILD_ID": "quiz-next6-local-b9296af",
+      "QM_API_BASE_URL": "http://127.0.0.1:18089"
+    },
+    "not_packaged": true,
+    "main_dart_js_sha256": "2a678ca84ba8c02eced848663ab4b5035d3a2ca50e4e5265661db25e4a98a295",
+    "generated_version_json_sha256": "7bb13a06a0abc5c4c042eb3a12320c056de642d12c0f557651fb529a2890930d"
+  },
+  "self_check": {
+    "script": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\package-selfcheck.py",
+    "result": "PASS",
+    "stage_file_count": 296,
+    "checksummed_files": 295,
+    "packs": 131,
+    "questions": 4036,
+    "articles": 234,
+    "people_each": 24,
+    "runtime_fixture_questions": 132,
+    "old_articles_preserved": 230
+  },
+  "newyear_repair_rehearsal": {
+    "path": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\newyear-repair-rehearsal.json",
+    "sha256": "701ba61f554f48d19d3eca7dd9fa3a5a8c71dc4702c030211f850174416b06b1",
+    "scope": "direct legacy source/import fixture proof only; no server execution"
+  },
+  "limits": [
+    "No server/browser/SSH/deployment/publication gate executed by this packager",
+    "Physical Android, keyboard/screenreader and full factual-bank certification remain unchecked",
+    "QA artifact is local-only and not publishable",
+    "Actual API routing identity unverified"
+  ]
+}
