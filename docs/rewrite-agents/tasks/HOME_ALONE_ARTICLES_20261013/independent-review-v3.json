@@ -1,0 +1,30 @@
+{
+  "verdict": "ACCEPT",
+  "actual_exit": 0,
+  "reviewer_cli_session": "680ab631-f0df-44dd-b38d-d22517ca609b",
+  "reviewer_hub_session": "session-8cbad9fea9dc453cae294c0357479843",
+  "input_sha256": "b734f5c0b06d29d1607b6d62098ee85c854953e960ce47b4b80b96268292c7ff",
+  "trace_sha256": "ceadf129420fa381f13ca04844477ed0648987973993cdb49b69193f865d2832",
+  "review_text": "**ACCEPT.**\n\nThe v3 diff is exactly what it claims to be: the only change from v2 is the one interpretive sentence, now explicitly hedged (\"Историю можно прочитать...\" / \"В таком прочтении...\") instead of stated as flat fact. Confirmed by word-level diff — title, source_links, status, and q2 (whole object) are all byte-identical to v2. Hash `b734f5c0…92c7ff` matches the given SHA and `structural-v3.json`'s `input_sha256`. Independently recomputed word count = 164/160, matching the files exactly.\n\nNo new factual claim was introduced, so no source re-fetch was needed — the Apple TV static-shell limitation from my v2 review stands unchanged and untouched. Sent the verdict and findings to Root via `hub_message`.",
+  "hub_verdict_dispatch": [
+    {
+      "action": "send",
+      "arguments": {
+        "to": "session-3b6f35a19e9747059e7ee2ade281438a",
+        "text": "Independent DELTA review of v3 (fresh inspection, read-only, no edits/builds/tests/git/sources re-fetched). VERDICT: ACCEPT.\n\nHash: writer-v3.json sha256=b734f5c0b06d29d1607b6d62098ee85c854953e960ce47b4b80b96268292c7ff (matches given SHA and structural-v3.json's input_sha256, recomputed directly). source-evidence-v3.md sha256=0962be4c6c5edec0bac2ae0071476fa6475fd44a22dfc6777e96f5a1dfb82c5f.\n\nDirect diff v2->v3 (word-level sequence match on body_ru): the ONLY change is the interpretation sentence - 'Поэтому история держится не только на проделках..., но и на перемене... Этот переход...' -> 'Историю можно прочитать не только как череду проделок..., но и как перемену... В таком прочтении переход...'. Title, source_links, status, question_refs all byte-identical to v2. q2 confirmed fully identical object (==) between v2 and v3 - untouched. No new factual/source claim was introduced, so no source re-fetch was needed or performed; this matches 'Историю можно прочитать' / 'В таком прочтении' being pure interpretation-qualifier phrasing, not new content.\n\nThis directly resolves my only actionable v2 finding (unqualified thematic claim stated as flat fact). Everything else I verified in v2 - hash chain, structural gate scope, source support for all factual claims on the 20th Century Studios page, q2 preservation - still holds unchanged in v3.\n\nWord count: independently recomputed with the gate's exact regex -> q1=164, q2=160, matching structural-v3.json/source-evidence-v3.md exactly (within 150-190 and the gate's 140-210).\n\nRetained limitation, unchanged: Apple TV URL citations are unchanged from v2, and I did not re-fetch - my earlier finding stands that a bounded static fetch of tv.apple.com returns only its JS-rendered storefront shell, not the cited cast/synopsis content; V1's original independent full-page finding for that source remains the only direct confirmation on record, distinct from my own access. No new factual claim in v3 required re-checking this.\n\nThis is source/editorial draft acceptance only - no runtime publication, binding/export, or formal Hub task-state claim implied; formal resubmission is still unavailable per your note."
+      }
+    }
+  ],
+  "formal_task_acceptance": false,
+  "limits": [
+    "Independent exact-hash source/editorial draft acceptance; not runtime publication",
+    "Formal native task resubmission denied; preserve explicit workflow limitation",
+    "Apple TV delta fetch yielded storefront shell; prior actual V1 independent full-page evidence separately retained"
+  ],
+  "hub_message_delivery": {
+    "actual_tool_result": {
+      "id": 36692
+    },
+    "evidence": "Final independent reviewer trace tool_result confirms delivered Hub verdict, not merely intended dispatch"
+  }
+}

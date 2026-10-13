@@ -1,0 +1,16 @@
+{
+  "actual_initial_exit": "timeout",
+  "actual_recovery_exit": 0,
+  "reviewer_cli_session": "680ab631-f0df-44dd-b38d-d22517ca609b",
+  "input_sha256": "384129ec3f4bc1d4b678ae5531897ec03af2d6c2211f6b7a3bc2380a2c4c1cd9",
+  "review_text": "Sent. Here's the final independent review:\n\n**Hashes verified independently:** `writer-v2.json` sha256 = `384129ec…c1cd9` (matches the frozen writer SHA and `structural-v2.json`'s `input_sha256`). `source-evidence-v2.md` sha256 = `6cf29b60…17fe79a` (matches the given ledger hash). Both recomputed directly, not trusted from the files' own claims.\n\n**Answers:** Independently derived Q1=Кевин, Q2=В Париж before reading the writer files — match.\n\n**Structural:** Recomputed the gate's exact word-count regex myself → q1=161, q2=160, matching the files exactly. q2 title/body/source_links confirmed byte-identical to v1 via direct diff. q1's quiz-mechanics/verification language (the v1 blocker) is fully gone.\n\n**Source access:** Both q1 URLs returned HTTP 200. `family.20thcenturystudios.com/movies/home-alone` delivered real content that directly supports every q1 v2 claim (Kevin McAllister, Chicago, France trip, Columbus/Hughes, Harry & Marv, cast list), plus an embedded French-locale blob independently confirming \"Paris.\" **Limitation:** `tv.apple.com`'s page is a JS-rendered SPA — my bounded static fetch (two attempts, different headers) got only the generic storefront shell with none of the claimed content, so I could not personally reconfirm the Apple TV-sourced claims today; I only referenced V1's prior independent finding as such, not as my own access.\n\n**Editorial finding:** q1 v2 adds one unqualified story-analysis sentence (Kevin's dependence→responsibility arc) stated as flat fact rather than marked as interpretation, which the brief explicitly requires. Everything else (credits framing, sourcing, scope, q2 preservation) is sound.\n\n**Task-state limitation:** I didn't paginate the hub task list further per instruction; the only record I can see shows the task still at state=REWORK. I can't confirm it's currently SUBMITTED, so I sent this as independent report content via `hub_message`, not a formal `hub_task` review.\n\n**My own call:** closer to accept-with-one-small-fix than full rework, but the interpretation-qualification gap is real and unresolved — flagged for whoever adjudicates.",
+  "formal_hub_acceptance": false,
+  "trace_sha256": {
+    "claude-v2.jsonl": "3e43d2454740e193b897f7348c1d89e16c99fd48ce0cdc9917a2c39b75cdf3fc",
+    "claude-v2-recovery.jsonl": "6baeb686c0ad7211178c41f7c9d60f445ae37d8bfe6c93f6342cc8d5bba92f60"
+  },
+  "limits": [
+    "Interpretation qualification finding unresolved at V2; V3 mechanically corrects it",
+    "Exact-hash independent report does not fake formal task acceptance or publication"
+  ]
+}

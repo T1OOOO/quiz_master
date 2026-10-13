@@ -1,0 +1,63 @@
+{
+  "hub_record": {
+    "acceptance": "Frozen2draftrows, exact supplied refs, useful original articles/sourceledger/hashes/wordcounts; independent factual review separate. No publication claim.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_ARTICLES_20261013"
+    ],
+    "assignee": "session-0f8aa4104c6741b9876bfe3b63bb5349",
+    "author": "session-b24d91883dea42328bb1732e12e71334",
+    "body": "Native writer owns writer-v1.json and source-evidence-v1.md only. Two existing HomeAlone1990 q-ha1-p1-1/2 missing miniarticles, use candidate-input published refs, Russian150-190words/two accessed primarysources each. Original cinema/geography learning, no fanlore. Preserve Git/runtime metadata drift for later binding; no source/runtime edits/tests/build/browser/SSH/Git/children.",
+    "created_at": 1791889991.2953973,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-55e3b2830fb3446d8e9c892f8a28d2fc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_ARTICLES_20261013\\writer-v1.json",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_ARTICLES_20261013\\source-evidence-v1.md"
+      ],
+      "evidence": [
+        {
+          "kind": "contract_check",
+          "result": "JSON parsed; exact published refs retained; q-ha1-p1-1=159 words with 2 links; q-ha1-p1-2=164 words with 3 links; all rows draft."
+        },
+        {
+          "kind": "source_access",
+          "result": "Actually opened 20th Century Studios Home Alone, Apple TV Home Alone, and 20th Century Studios Home Alone 2 pages on 2026-10-13; source-evidence ledger maps each claim."
+        },
+        {
+          "kind": "command",
+          "result": "PowerShell draft contract assertion and git diff --check scoped to owned files both passed."
+        }
+      ],
+      "limitations": [
+        "No independent factual/editorial review yet.",
+        "Published runtime /app metadata hashes intentionally differ from older Git hashes; later binding/export must use the immutable published records.",
+        "No publication, source acceptance, build, browser, or deployment verification was performed."
+      ],
+      "sha256": {
+        "source-evidence-v1.md": "3060455A7D5F392C0220DBAD02BA97479E4FF9D328E880D51DE731F443597F4A",
+        "writer-v1.json": "BCFF83492C94617FD1974574089CB6175D50D65F97237B07DD310ED8CCBAEE47"
+      },
+      "summary": "Two original Russian Reader article drafts are frozen for independent review; no canonical/runtime/publication changes."
+    },
+    "root_task_id": "task-55e3b2830fb3446d8e9c892f8a28d2fc",
+    "run_id": "run-a8fafbf58777459aaf020bfa5b911e3a",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-d8e73135f8404c4d93a59cd22a9efaab",
+    "title": "quiz_master-b1p two Home Alone question-linked source-backed article drafts",
+    "version": 4,
+    "reviewer": "session-ac468888fd364bc0b27bf7cbaddfbd09",
+    "review_note": "Independent answers (before reading writer-v1.json): Q1 q-ha1-p1-1 = Кевин. Q2 q-ha1-p1-2 = В Париж. Both match writer's answers.\n\nHashes (sha256): candidate-input.json=11929df7..ede75b; writer-v1.json=bcff8349..aee47 (= structural-v1.json's input_sha256, confirming it validated this exact writer file); source-evidence-v1.md=3060455a..597f4a; structural-v1.json=71d06608..db244c. Revision bindings use the published hashes from candidate-input.json, not the older git_runtime_difference git hashes — correct, no reversion to Git canonical.\n\nSource access: fetched all 3 cited URLs directly via urllib (no snippets, no auth bypass) — all HTTP 200. 20thcenturystudios.com/home-alone confirms Kevin McCallister, Chicago, France trip, dir. Chris Columbus, writer John Hughes, 1990-11-16. tv.apple.com/home-alone confirms Macaulay Culkin as Kevin, explicit 'family trip to Paris'. 20thcenturystudios.com/home-alone-2 confirms 1992, family to Florida, Kevin to New York. Every claim in both articles traces to real page content; no fan lore/unsupported props found.\n\nStructural: both draft, 2-3 sources each, revisions correctly bound. Independent word recount = 157/160, matching structural-v1.json and within 150-190. MINOR: source-evidence-v1.md ledger claims 159/164 words — wrong, should be corrected (not itself blocking since real counts are in-range).\n\nBLOCKING (confirms Root's flag on q-ha1-p1-1): this article spends roughly half its body on a 'how to verify the answer / avoid confusing Kevin with Buzz or Fuller' section — quiz-mechanics/distractor-avoidance framing, not new educational content, and repeats 'Кевин' 5x in 157 words. Violates the packet's explicit instruction against 'padding explaining how to choose quiz answers or check sources.' Fix: replace that section with sourced substantive content (e.g. Culkin casting/career context, or more film premise/production detail), keep the director/writer paragraph.\n\nq-ha1-p1-2 is NOT flagged: Paris-vs-France specificity, Kevin/family route contrast, and first-film-vs-sequel (Florida/New York) distinction are genuine, well-qualified, source-supported story/geography content.\n\nVerdict: REWORK — rewrite q-ha1-p1-1 body per above; fix word-count ledger in source-evidence-v1.md. q-ha1-p1-2 and all hashes/status/bindings are acceptable as-is."
+  },
+  "actual_exit": 0,
+  "trace_sha256": "4eee8d72afa82fbb7cc67bee30d0b5dfbe167ecf5539d4284cb064abb53079c4",
+  "review_text": "Review submitted and recorded as **REWORK** on `task-55e3b2830fb3446d8e9c892f8a28d2fc`.\n\n**Independent answers (before opening writer's files):** Q1 = Кевин; Q2 = В Париж — both match the writer's drafts.\n\n**Source access:** all 3 cited URLs (20th Century Studios Home Alone/Home Alone 2 pages, Apple TV Home Alone page) fetched directly via bounded `urllib` — all HTTP 200, no snippets/cache, no auth bypass. Every claim in both articles is actually supported by the live page content.\n\n**Hashes:** independently computed sha256 for all 5 task files; writer-v1.json's hash matches structural-v1.json's `input_sha256`, confirming the structural gate validated the exact frozen writer file; revision bindings correctly use the published `/app` hashes, not the stale Git hashes.\n\n**Findings:**\n- Confirmed Root's flag: `q-ha1-p1-1` (Kevin article) spends roughly half its 157 words on \"how to verify the answer / avoid confusing Kevin with Buzz or Fuller\" — quiz-mechanics framing rather than new educational content, with \"Кевин\" repeated 5×. This violates the packet's explicit instruction against mechanics/sourcing padding. Needs rewrite.\n- `q-ha1-p1-2` (Paris article) is solid — the Paris-vs-France specificity and first-film-vs-sequel (Florida/New York) contrast are genuine, well-qualified, sourced content.\n- Minor: `source-evidence-v1.md` ledger reports 159/164 words; my independent recount and structural-v1.json both say 157/160. Not blocking (still in 150–190 range) but should be corrected.\n\nNo files were edited, no builds/tests/git mutations run, no children spawned — read-only review only.",
+  "writer_sha256": "bcff83492c94617fd1974574089cb6175d50d65f97237b07dd310ed8ccbaee47"
+}
