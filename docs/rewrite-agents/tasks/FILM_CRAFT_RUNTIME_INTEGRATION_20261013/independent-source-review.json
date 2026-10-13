@@ -1,0 +1,95 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-025f6d1a4ed84fe8acf0dd8abbf4a8e0": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-025f6d1a4ed84fe8acf0dd8abbf4a8e0",
+          "verdict": "accept",
+          "note": "Independently verified: sha256 of all 5 working-tree files (raw/draft/bundle/manifest/reader-draft) match repair-evidence.json final_file_sha256 exactly. git diff vs baseline c74253fe16e7ddf50d81fd884a2606483808448d confirms the ONLY changes are: (1) raw quiz gains the 3 pre-existing editorial_tag_ids (domain:arts/domain:screen/topic:film-production) on all 4 questions, (2) draft/bundle drop source.title (now URI-only, matches runtime /app path) and get re-derived revision sha256, (3) manifest content identical (source_explanation/options unchanged) aside from source_sha256 following raw file change, (4) Reader drafts only update revision_sha256, with article body/source_links/titles byte-identical (confirmed via before/after nonbinding hashes in repair-evidence.json). Private grading (correct_option_id), stems, options, difficulty, answer_kind all byte-identical to baseline \u2014 no semantic/editorial drift. normalize_runtime_uri.py and apply_and_verify.py both hard-fail (SystemExit) on any unexpected source/tag/field mismatch, which is a sound safety guard. ACCEPT \u2014 binding repair is exact and scoped as claimed."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Raw/runtime/canonical exactequivalence proof",
+          "Four Reader revisions map",
+          "No stems/answers/articleprose changed"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizzes\\Preparation\\film_craft_20261013.json",
+          "C:\\ap\\quiz_master\\next\\content\\film-craft-20261013",
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\film-craft-20261013.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RUNTIME_REPAIR_20261013"
+        ],
+        "assignee": "session-9cf3f2fa57c4460cb9d6944ad6f740c2",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "Exclusive native files rawFilm source + next/content/film-craft-20261013 + Readerdraftfragment + FILM_CRAFT_RUNTIME_REPAIR_20261013 docs. Preserve allprose/options/grading/difficulty. Actualserverv3 blockednew4revision mismatch only; canonical addsmanualsource.title+editorialtags absentraw. Addexactexistingtags raw; derive actualquizctl import/build canonical sourceURI/app only no manualtitle. Update Reader4refs; actualnormalizeimport==canonical hashes/privatekey compare, no prosechanges. Root owns assets/tests/catalog/review acceptance. No server/browser/buildFlutter/Gitmutation/deploy/children.",
+        "created_at": 1791912620.2507024,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-025f6d1a4ed84fe8acf0dd8abbf4a8e0",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "quizzes/Preparation/film_craft_20261013.json",
+            "next/content/film-craft-20261013/draft.json",
+            "next/content/film-craft-20261013/bundle.json",
+            "next/content/film-craft-20261013/manifest.json",
+            "study/question_articles/drafts/film-craft-20261013.json",
+            "docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_REPAIR_20261013/"
+          ],
+          "evidence": [
+            {
+              "kind": "check",
+              "reference": "go run -p=1 ./next/server/cmd/quizctl validate --in next/content/film-craft-20261013/draft.json --taxonomy metadata/tags.v1.json",
+              "result": "valid film-craft-20261013: 4 questions"
+            },
+            {
+              "kind": "check",
+              "reference": "go run -p=1 ./next/server/cmd/quizctl validate --in next/content/film-craft-20261013/bundle.json --taxonomy metadata/tags.v1.json",
+              "result": "valid film-craft-20261013: 4 questions"
+            },
+            {
+              "kind": "check",
+              "reference": "go run -p=1 ./next/server/cmd/quizctl build ... && quizctl diff ...",
+              "result": "bundle_sha256 1bfd324bcac5c74287531fa0ea27ec20b967f456719cbb46672cd26e71f9c67b; no changes"
+            },
+            {
+              "kind": "file",
+              "reference": "docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_REPAIR_20261013/repair-evidence.json",
+              "result": "records public/private revision identity, unchanged source explanations, and unchanged Reader body/source-link/nonbinding hashes"
+            }
+          ],
+          "limitations": "Windows ImportWithTaxonomy preserves the host input path. The task evidence explicitly normalizes only that URI to the runtime /app path then rehashes; runtime-container import remains release-owner verification.",
+          "new_reader_refs": [
+            "33cc65a230ea288796e495d51e9d9034894711005ba822bff3999326e2d8e444",
+            "e49bcb500592de3552b2bcb4042e345d341983228d2c3b9f52be0c0733aeb4c3",
+            "c6f5e00a14e3740db81cbaff646341193a24795d48fe01f7c84f2bc56d69e674",
+            "4e4261c14d3a5e4b4e5e81a07cb5a4ff7065020059ee11ff4041fe4af967f3f0"
+          ],
+          "status": "DONE",
+          "summary": "Film Craft raw tags/canonical runtime-equivalent repair and Reader bindings are ready for independent review; no publication or acceptance claimed."
+        },
+        "root_task_id": "task-025f6d1a4ed84fe8acf0dd8abbf4a8e0",
+        "run_id": "run-c21ef3592da44985900ebf654d78a4f1",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i repair Film canonical/raw runtime equivalence",
+        "version": 4,
+        "reviewer": "session-487ec5b0040343eb83af22fc6c824679",
+        "review_note": "Independently verified: sha256 of all 5 working-tree files (raw/draft/bundle/manifest/reader-draft) match repair-evidence.json final_file_sha256 exactly. git diff vs baseline c74253fe16e7ddf50d81fd884a2606483808448d confirms the ONLY changes are: (1) raw quiz gains the 3 pre-existing editorial_tag_ids (domain:arts/domain:screen/topic:film-production) on all 4 questions, (2) draft/bundle drop source.title (now URI-only, matches runtime /app path) and get re-derived revision sha256, (3) manifest content identical (source_explanation/options unchanged) aside from source_sha256 following raw file change, (4) Reader drafts only update revision_sha256, with article body/source_links/titles byte-identical (confirmed via before/after nonbinding hashes in repair-evidence.json). Private grading (correct_option_id), stems, options, difficulty, answer_kind all byte-identical to baseline \u2014 no semantic/editorial drift. normalize_runtime_uri.py and apply_and_verify.py both hard-fail (SystemExit) on any unexpected source/tag/field mismatch, which is a sound safety guard. ACCEPT \u2014 binding repair is exact and scoped as claimed."
+      },
+      "success": true
+    }
+  },
+  "report": "Task **task-025f6d1a4ed84fe8acf0dd8abbf4a8e0** is now `ACCEPTED`.\n\n**Verdict: ACCEPT.** Independent read-only verification confirmed:\n- All 5 current working-tree file hashes (raw quiz, draft, bundle, manifest, Reader draft) exactly match `repair-evidence.json`'s `final_file_sha256`.\n- `git diff` against baseline commit `c74253fe16e7ddf50d81fd884a2606483808448d` shows only the claimed changes: raw file gains its 3 pre-existing editorial tags; draft/bundle drop `source.title` (URI-only, runtime `/app` path) with re-derived revisions; manifest content unchanged aside from the expected `source_sha256` shift; Reader drafts only update `revision_sha256`.\n- Private grading (`correct_option_id`), stems, options, difficulty, and answer_kind are byte-identical to baseline \u2014 no semantic/editorial drift.\n- `normalize_runtime_uri.py`/`apply_and_verify.py` hard-fail on any unexpected mismatch, a sound guard.\n\nThis review covers the binding repair only \u2014 image build/cutover, catalog acceptance, and publish remain separate gates per the task's own stated scope.",
+  "trace_sha256": "12e4301a8d0815c6d711a117af0fdd0ddb69c016431df1817ed99ff8ea34c013",
+  "scope": "Exact raw/canonical runtime parity and four changed Reader bindings accepted. Frozen rebuild and release still separately gated."
+}
