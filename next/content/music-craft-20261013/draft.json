@@ -1,0 +1,78 @@
+{
+  "contract": "quiz-contract/v1",
+  "locale": "ru",
+  "questions": [
+    {
+      "answer_kind": "single_choice",
+      "difficulty": "easy",
+      "difficulty_level": 3,
+      "editorial_tag_ids": ["domain:arts"],
+      "grading": {"correct_option_id": "music-craft-pilot-001-opt-1"},
+      "options": [
+        {"option_id": "music-craft-pilot-001-opt-1", "text": "Панораму"},
+        {"option_id": "music-craft-pilot-001-opt-2", "text": "Темп"},
+        {"option_id": "music-craft-pilot-001-opt-3", "text": "Транспозицию"},
+        {"option_id": "music-craft-pilot-001-opt-4", "text": "Соло"}
+      ],
+      "question_id": "music-craft-pilot-001",
+      "revision": {"number": 1, "sha256": "77da33ef926035876257a74d005499a645eca08a2cfd63376192a834a01523b0"},
+      "source": {"uri": "/app/quizzes/MusicPeople/music_craft_20261013.json"},
+      "stem": "В миксе гитару нужно расположить левее, не меняя её высоту тона и не выключая дорожку. Какой регулятор следует изменить?"
+    },
+    {
+      "answer_kind": "single_choice",
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "editorial_tag_ids": ["domain:arts"],
+      "grading": {"correct_option_id": "music-craft-pilot-002-opt-2"},
+      "options": [
+        {"option_id": "music-craft-pilot-002-opt-1", "text": "Добавить дорожку возврата"},
+        {"option_id": "music-craft-pilot-002-opt-2", "text": "Передвинуть warp-маркер к доле"},
+        {"option_id": "music-craft-pilot-002-opt-3", "text": "Включить запись наложением"},
+        {"option_id": "music-craft-pilot-002-opt-4", "text": "Переключить дорожку в соло"}
+      ],
+      "question_id": "music-craft-pilot-002",
+      "revision": {"number": 1, "sha256": "83e6da706ac7928cfa0585909ccafa90d94700b86b2406793a2213e26469f4d2"},
+      "source": {"uri": "/app/quizzes/MusicPeople/music_craft_20261013.json"},
+      "stem": "В Ableton Live первый удар бочки в импортированном лупе запаздывает относительно первой доли сетки. Какое действие привяжет этот момент к нужной доле?"
+    },
+    {
+      "answer_kind": "single_choice",
+      "difficulty": "easy",
+      "difficulty_level": 3,
+      "editorial_tag_ids": ["domain:arts"],
+      "grading": {"correct_option_id": "music-craft-pilot-003-opt-3"},
+      "options": [
+        {"option_id": "music-craft-pilot-003-opt-1", "text": "Шок-маунт"},
+        {"option_id": "music-craft-pilot-003-opt-2", "text": "Метроном"},
+        {"option_id": "music-craft-pilot-003-opt-3", "text": "Поп-фильтр"},
+        {"option_id": "music-craft-pilot-003-opt-4", "text": "Фейдер"}
+      ],
+      "question_id": "music-craft-pilot-003",
+      "revision": {"number": 1, "sha256": "138727d30013be9205712ed14cc43bfbd35cc04dabaf517dba29202c6b851f44"},
+      "source": {"uri": "/app/quizzes/MusicPeople/music_craft_20261013.json"},
+      "stem": "При близкой записи вокала согласные «п» и «б» дают резкие воздушные хлопки. Что ставят между певцом и микрофоном, чтобы ослабить их?"
+    },
+    {
+      "answer_kind": "single_choice",
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "editorial_tag_ids": ["domain:arts"],
+      "grading": {"correct_option_id": "music-craft-pilot-004-opt-4"},
+      "options": [
+        {"option_id": "music-craft-pilot-004-opt-1", "text": "Панорамирование"},
+        {"option_id": "music-craft-pilot-004-opt-2", "text": "Наложение"},
+        {"option_id": "music-craft-pilot-004-opt-3", "text": "Тюнинг"},
+        {"option_id": "music-craft-pilot-004-opt-4", "text": "Сэмплирование"}
+      ],
+      "question_id": "music-craft-pilot-004",
+      "revision": {"number": 1, "sha256": "909bde5e81e0a4dc6fc9ffabab1eda9cad804d13c7e0a8153f69ed4c2c643965"},
+      "source": {"uri": "/app/quizzes/MusicPeople/music_craft_20261013.json"},
+      "stem": "Продюсер берёт короткую ранее записанную фразу, меняет её ритм и использует как материал новой композиции. Как называется этот приём?"
+    }
+  ],
+  "quiz_id": "music-craft-20261013",
+  "revision": {"number": 1, "sha256": "7db8b96a786efa4d9b853488973e916046ea6dd3d229cec8beb233add3960fb7"},
+  "state": "draft",
+  "taxonomy_ref": {"taxonomy_id": "qm-tags-v1", "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"}
+}

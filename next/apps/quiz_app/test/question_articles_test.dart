@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged articles bind People, Film Craft and published Home Alone revisions',
+    'packaged articles bind People, Film Craft, Music Craft and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,28 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(248));
+      expect(articles.articles, hasLength(252));
       for (final (quizId, questionId, revision) in [
+        (
+          'music-craft-20261013',
+          'music-craft-pilot-001',
+          '77da33ef926035876257a74d005499a645eca08a2cfd63376192a834a01523b0',
+        ),
+        (
+          'music-craft-20261013',
+          'music-craft-pilot-002',
+          '83e6da706ac7928cfa0585909ccafa90d94700b86b2406793a2213e26469f4d2',
+        ),
+        (
+          'music-craft-20261013',
+          'music-craft-pilot-003',
+          '138727d30013be9205712ed14cc43bfbd35cc04dabaf517dba29202c6b851f44',
+        ),
+        (
+          'music-craft-20261013',
+          'music-craft-pilot-004',
+          '909bde5e81e0a4dc6fc9ffabab1eda9cad804d13c7e0a8153f69ed4c2c643965',
+        ),
         (
           'film-craft-20261013',
           'film-craft-pilot-001',

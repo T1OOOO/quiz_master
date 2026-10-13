@@ -1,0 +1,99 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d553cc1bf54640e1bc22b7354e284954": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d553cc1bf54640e1bc22b7354e284954",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only re-verification, all checks self-performed this session.\n\nPREREQS: candidate.json sha256=c1e0dfdf...209d976, editorial.json sha256=43718cf0...2ebaf06 confirmed on disk, matching citation-correction.json's new_sha256 and ACCEPTED task-2c39889376bf48fe85bc743279001c71 (hub_message history + independent-citation-review.json agree). task-1c84942879034a04925f824a69007ea6 also ACCEPT.\n\nRAW IMPORT: music_craft_20261013.json sha256=ee695966...86fd5a6a matches evidence.json raw_sha256. All 4 stems/options/correct_answer/explanation/difficulty/tags programmatically diffed vs candidate+editorial: zero mismatches; correct_answer indices 0/1/2/3 map to editorial a/b/c/d correctly.\n\nCANONICAL: recomputed draft.json=1063c2e9...fdcbcf116, bundle.json=a0564cd4...9d11df9, manifest.json=271db68a...607be012, reader draft=e465b362...ab0c8e342, rebuilt.json=a0564cd4...9d11df9 (byte-identical to bundle, confirms zero-diff rebuild) -- all match evidence.json's output_file_sha256 exactly. source.uri=/app/quizzes/MusicPeople/music_craft_20261013.json, no title field, in every draft/bundle question. Public bundle quiz object has no grading field anywhere; grading only under separate private_grading key, option ids match public options. manifest.source_sha256 matches raw file; option source_index 0-3 maps 1:1 to -opt-1..4; source_explanation matches editorial verbatim x4.\n\nREADER: parsed each editorial article_ru (### heading / body / Источники: footer) and diffed vs reader draft title_ru/body_ru: zero mismatches x4. All 8 source records (2/article) preserved -- url, supported_claim->supports, accessed_on identical. question_refs stable id, correct quiz_id, revision_sha256 byte-equal to draft.json x4.\n\nFULL CANONICAL ARTICLE HASHES (sha256 of json.dumps(article, sort_keys=True, ensure_ascii=False, separators=(',',':'))):\npilot-001=a73037ef8fa95e7067654bc232f06dca89233509648449ecda021e20472bfe39\npilot-002=3c9453c712a036b46e9bf62c0069aaccbff4c5625cb9fd4b998b514a3c7b609a\npilot-003=792ca92bfb8375f159fb8457f41745aaf691e8c8830dc2ca4f0d6cbf23624202\npilot-004=63b332241458f8136a29f4ceec13f235298c929ec96c51be9bc15ffe956ce029\n\nOUT OF SCOPE: untracked MUSIC_CRAFT_RELEASE_20261013/ dir exists alongside but not inspected -- separate executor/task, not covered by this verdict.\n\nACCEPT certifies only raw import + canonical draft/bundle/manifest + Reader draft binding as inspected. No export, container grading, Flutter, browser or publication certified."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Exact reviewed four stems/options/keys/prose/sourceURLs preserved",
+          "Raw imported canonical runtime SourceURI-only/tag parity and stable IDs verified",
+          "Validated deterministic rebuild and exact four Reader revision bindings; no unrelated modifications"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizzes\\MusicPeople",
+          "C:\\ap\\quiz_master\\next\\content\\music-craft-20261013",
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_INTEGRATION_20261013"
+        ],
+        "assignee": "session-f7d3c2c73a814443b924ab1eea956921",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Dependency: both actual draft review task1c849 and citation repair task2c398 must be ACCEPTED before offer/work. Integrate exact four candidate/editorial items into new raw quizzes/MusicPeople/music_craft_20261013.json and next/content/music-craft-20261013/{draft,bundle,manifest}.json via actual quizctl ImportWithTaxonomy, URI-only source normalized to /app/quizzes/MusicPeople/music_craft_20261013.json then Go rebuild. Include existing sorted editorialtags in raw to preserve runtime parity. Build question-linked Reader draft study/question_articles/drafts/music-craft-20261013.json with exact public revision refs, original prose and8sources. Own only these exact new files and MUSIC_CRAFT_INTEGRATION evidence; parent directories listed because broker requires existingpaths. No otherpacks, taxonomy, Readerreview/export/cache/catalog/Flutter/Git/deploy edits. Actual meaningful validation and public/private key/revision identity proof required. Lead owns independent review/export/release.",
+        "created_at": 1791919368.7405374,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-d553cc1bf54640e1bc22b7354e284954",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "quizzes/MusicPeople/music_craft_20261013.json",
+            "next/content/music-craft-20261013/draft.json",
+            "next/content/music-craft-20261013/bundle.json",
+            "next/content/music-craft-20261013/manifest.json",
+            "study/question_articles/drafts/music-craft-20261013.json",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/evidence.json",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/rebuilt.json"
+          ],
+          "evidence": [
+            "Reviewed editorial SHA-256 43718cf06b8760fa52a8ccbca48e9bd04249a81671b5812090bb7d61c2ebaf06 and prerequisite review hashes are recorded in evidence.json.",
+            "quizctl import with metadata/tags.v1.json produced 4-question pack; all source objects normalize to URI-only /app/quizzes/MusicPeople/music_craft_20261013.json.",
+            "Fresh `quizctl validate` passed for draft and bundle; deterministic rebuild bundle SHA-256 ed16b51069b402725a0bb8fc087583ec694bb5a2b91a28f8d59bb37657c80272; quizctl diff returned `no changes`.",
+            "Fresh structural proof passed four exact candidate/editorial/raw/manifest/draft/bundle/Reader identities, private/public separation, key mappings, and Reader revision bindings."
+          ],
+          "output_hashes": {
+            "bundle": "a0564cd494e9b3ceb017252e2261b6d48147b01af881469bdfabbb2529d11df9",
+            "draft": "1063c2e9f15adae6e2d321757dbfd65c908aac130b9b06f35d7cf91fdcbcf116",
+            "manifest": "271db68af27bd0adefab61fce6f1ccacc500acb5c2eb5855d15d4f1f607be012",
+            "raw": "ee69596678dd237c4cee4f0d7ecc308aaa76b4004c40ca7b47fb261786fd5a6a",
+            "reader": "e465b3622f3b8b64c3f0eb0a1a12fb2ea2b9b8e6821296a0350d1c5ab0c8e342"
+          },
+          "packet_label": "MUSIC_CRAFT_INTEGRATION_20261013",
+          "remaining_risks": [
+            "Implementation evidence only: independent integration review, export/catalog/cache work, and publication remain lead-owned gates.",
+            "No repository-wide or unrelated tests were run; validation was limited to the assigned pack and its deterministic rebuild."
+          ],
+          "status": "DONE"
+        },
+        "root_task_id": "task-d553cc1bf54640e1bc22b7354e284954",
+        "run_id": "run-c1690c0bceb24a3ea86e283420a1caff",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad integrate independently reviewed music craft raw/canonical/Reader drafts",
+        "version": 4,
+        "reviewer": "session-39235177bc394cc592f4d159b86828e6",
+        "review_note": "Independent read-only re-verification, all checks self-performed this session.\n\nPREREQS: candidate.json sha256=c1e0dfdf...209d976, editorial.json sha256=43718cf0...2ebaf06 confirmed on disk, matching citation-correction.json's new_sha256 and ACCEPTED task-2c39889376bf48fe85bc743279001c71 (hub_message history + independent-citation-review.json agree). task-1c84942879034a04925f824a69007ea6 also ACCEPT.\n\nRAW IMPORT: music_craft_20261013.json sha256=ee695966...86fd5a6a matches evidence.json raw_sha256. All 4 stems/options/correct_answer/explanation/difficulty/tags programmatically diffed vs candidate+editorial: zero mismatches; correct_answer indices 0/1/2/3 map to editorial a/b/c/d correctly.\n\nCANONICAL: recomputed draft.json=1063c2e9...fdcbcf116, bundle.json=a0564cd4...9d11df9, manifest.json=271db68a...607be012, reader draft=e465b362...ab0c8e342, rebuilt.json=a0564cd4...9d11df9 (byte-identical to bundle, confirms zero-diff rebuild) -- all match evidence.json's output_file_sha256 exactly. source.uri=/app/quizzes/MusicPeople/music_craft_20261013.json, no title field, in every draft/bundle question. Public bundle quiz object has no grading field anywhere; grading only under separate private_grading key, option ids match public options. manifest.source_sha256 matches raw file; option source_index 0-3 maps 1:1 to -opt-1..4; source_explanation matches editorial verbatim x4.\n\nREADER: parsed each editorial article_ru (### heading / body / Источники: footer) and diffed vs reader draft title_ru/body_ru: zero mismatches x4. All 8 source records (2/article) preserved -- url, supported_claim->supports, accessed_on identical. question_refs stable id, correct quiz_id, revision_sha256 byte-equal to draft.json x4.\n\nFULL CANONICAL ARTICLE HASHES (sha256 of json.dumps(article, sort_keys=True, ensure_ascii=False, separators=(',',':'))):\npilot-001=a73037ef8fa95e7067654bc232f06dca89233509648449ecda021e20472bfe39\npilot-002=3c9453c712a036b46e9bf62c0069aaccbff4c5625cb9fd4b998b514a3c7b609a\npilot-003=792ca92bfb8375f159fb8457f41745aaf691e8c8830dc2ca4f0d6cbf23624202\npilot-004=63b332241458f8136a29f4ceec13f235298c929ec96c51be9bc15ffe956ce029\n\nOUT OF SCOPE: untracked MUSIC_CRAFT_RELEASE_20261013/ dir exists alongside but not inspected -- separate executor/task, not covered by this verdict.\n\nACCEPT certifies only raw import + canonical draft/bundle/manifest + Reader draft binding as inspected. No export, container grading, Flutter, browser or publication certified."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully — task-d553cc1bf54640e1bc22b7354e284954 is now **ACCEPTED** (state confirmed by the hub response).\n\n**Verdict: ACCEPT, error_count: 0**\n\nSummary of what I independently verified (all computed myself, not trusted from evidence.json):\n- Prereqs: `candidate.json`/`editorial.json` hashes on disk match the citation-correction record and both prerequisite tasks (task1c849, task2c398) show ACCEPT in hub history.\n- Raw import `music_craft_20261013.json` hash matches evidence; all 4 stems/options/correct answers/explanations/difficulty/tags programmatically diffed against candidate+editorial with zero mismatches.\n- Canonical `draft.json`, `bundle.json`, `manifest.json`, Reader draft, and `rebuilt.json` hashes all recomputed and match evidence.json exactly; `rebuilt.json` is byte-identical to `bundle.json` (zero-diff rebuild confirmed). Public bundle object exposes no grading; grading lives only in the separate `private_grading` key.\n- Reader draft: all 4 titles/bodies parsed from `article_ru` match exactly; all 8 source records (url/support/access-date) preserved; all 4 `question_refs` bind the correct revision hashes from `draft.json`.\n- Computed the four full canonical article hashes (sha256 of sorted-key JSON) and included them in the hub note for the downstream compiler.\n- Flagged out-of-scope: an untracked `MUSIC_CRAFT_RELEASE_20261013/` directory exists alongside but was not inspected — belongs to a separate release-controller task.\n\nNo edits, builds, or publication actions were taken — this was read-only inspection only.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-d553cc1bf54640e1bc22b7354e284954",
+      "error": "team membership required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-d553cc1bf54640e1bc22b7354e284954",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "282f30e7c2cc4ba523e0d56ce43a2b1176e2a007bbeff98ae92785ffa8ed9a9e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated.",
+  "first_cli_exit": "timeout",
+  "first_trace_sha256": "be7414193b24a441d3210c3b7f9e57c58daafeed0312b9282fa0b2189fa803d6"
+}

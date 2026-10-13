@@ -1,0 +1,61 @@
+{
+  "scope": "music-craft raw import, runtime URI normalization, canonical bundle, and Reader draft",
+  "inputs": {
+    "candidate_sha256": "c1e0dfdf517d318cd93f8334418435c52b239f34580c5efaf9dfb6285209d976",
+    "editorial_sha256": "43718cf06b8760fa52a8ccbca48e9bd04249a81671b5812090bb7d61c2ebaf06",
+    "independent_review_sha256": "913723d92335c76da3c988510128e27e13389628cf00b98732bb43a63d6dce31",
+    "independent_citation_review_sha256": "489baeae765c86097cd1d47b0ee7a44a005ca89c9218c13f7b9156c995d949b0"
+  },
+  "import": {
+    "command": "go run -p=1 ./next/server/cmd/quizctl import --in quizzes/MusicPeople/music_craft_20261013.json --out next/content/music-craft-20261013 --taxonomy metadata/tags.v1.json",
+    "result": "imported music-craft-20261013: 4 questions",
+    "raw_sha256": "ee69596678dd237c4cee4f0d7ecc308aaa76b4004c40ca7b47fb261786fd5a6a",
+    "sorted_editorial_tag_ids": ["domain:arts"]
+  },
+  "runtime_normalization": {
+    "method": "quizctl ImportWithTaxonomy followed only by host-to-runtime source URI substitution and canonical contract rehash",
+    "local_source_uri": "quizzes/MusicPeople/music_craft_20261013.json",
+    "runtime_source_uri": "/app/quizzes/MusicPeople/music_craft_20261013.json",
+    "source_object_uri_only": true,
+    "source_title_absent": true,
+    "question_revisions": {
+      "music-craft-pilot-001": "77da33ef926035876257a74d005499a645eca08a2cfd63376192a834a01523b0",
+      "music-craft-pilot-002": "83e6da706ac7928cfa0585909ccafa90d94700b86b2406793a2213e26469f4d2",
+      "music-craft-pilot-003": "138727d30013be9205712ed14cc43bfbd35cc04dabaf517dba29202c6b851f44",
+      "music-craft-pilot-004": "909bde5e81e0a4dc6fc9ffabab1eda9cad804d13c7e0a8153f69ed4c2c643965"
+    },
+    "draft_revision": "7db8b96a786efa4d9b853488973e916046ea6dd3d229cec8beb233add3960fb7"
+  },
+  "validation": {
+    "draft_validate": "go run -p=1 ./next/server/cmd/quizctl validate --in next/content/music-craft-20261013/draft.json --taxonomy metadata/tags.v1.json",
+    "bundle_validate": "go run -p=1 ./next/server/cmd/quizctl validate --in next/content/music-craft-20261013/bundle.json --taxonomy metadata/tags.v1.json",
+    "deterministic_rebuild": "go run -p=1 ./next/server/cmd/quizctl build --in next/content/music-craft-20261013/draft.json --out docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/rebuilt.json --version 2026.10.13.music-craft-v1 --published-at 2026-10-13T16:00:00Z --taxonomy metadata/tags.v1.json",
+    "diff": "go run -p=1 ./next/server/cmd/quizctl diff --before next/content/music-craft-20261013/bundle.json --after docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/rebuilt.json",
+    "result": "all commands exited 0; both validations reported 4 questions; diff reported no changes",
+    "bundle_sha256": "ed16b51069b402725a0bb8fc087583ec694bb5a2b91a28f8d59bb37657c80272"
+  },
+  "preservation_proof": {
+    "title": "Музыка: секреты студии",
+    "category": "Музыка",
+    "candidate_stems_and_options_exact": true,
+    "editorial_private_keys_exact": true,
+    "editorial_explanations_difficulties_and_sorted_tags_exact": true,
+    "manifest_source_explanations_and_option_mappings_exact": true,
+    "reader_article_prose_exact_after_schema_title_and_source_extraction": true,
+    "reader_eight_source_urls_exact": true,
+    "reader_question_refs": "four, each bound to the matching current public question revision",
+    "draft_public_revision_identity": true,
+    "reader_public_revision_identity": true,
+    "private_grading_and_private_metadata_cover_all_four_questions": true,
+    "public_questions_contain_no_grading": true,
+    "manifest_source_sha_matches_raw": true
+  },
+  "output_file_sha256": {
+    "draft": "1063c2e9f15adae6e2d321757dbfd65c908aac130b9b06f35d7cf91fdcbcf116",
+    "bundle": "a0564cd494e9b3ceb017252e2261b6d48147b01af881469bdfabbb2529d11df9",
+    "manifest": "271db68af27bd0adefab61fce6f1ccacc500acb5c2eb5855d15d4f1f607be012",
+    "reader_draft": "e465b3622f3b8b64c3f0eb0a1a12fb2ea2b9b8e6821296a0350d1c5ab0c8e342",
+    "deterministic_rebuild": "a0564cd494e9b3ceb017252e2261b6d48147b01af881469bdfabbb2529d11df9"
+  },
+  "status": "implementation evidence only; independent integration review, exports, catalog/cache work, and publication remain lead-owned gates"
+}

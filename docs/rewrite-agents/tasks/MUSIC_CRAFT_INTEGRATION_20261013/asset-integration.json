@@ -1,0 +1,70 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "catalog",
+        "--in",
+        "quizzes",
+        "--out",
+        "next/apps/quiz_app/assets/catalog.json",
+        "--force",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "actual_exit": 0,
+      "stdout": "catalog: 133 packs",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 252 independently reviewed mini articles; checked bindings, review hashes and source metadata",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 252 independently reviewed mini articles; checked bindings, review hashes and source metadata",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_*.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.148s\n\nOK"
+    }
+  ],
+  "actual_counts": [
+    133,
+    4052,
+    252
+  ],
+  "prior_132_catalog_and_248_articles_unchanged": true,
+  "actual_article_acceptance_task": "task-d553cc1bf54640e1bc22b7354e284954",
+  "asset_sha256": {
+    "catalog": "c661eb24ba698178512d029c139f2c35ee6ac9e6e2a2da810a2fd75f8b3947c1",
+    "Reader": "552db05d3527b7d6ae3e4bae53a7c8ca60af006ee5d0425e0c2715f0befd7753"
+  },
+  "scope": "Locally integrated accepted content; compiled build, copied-container grading, browser and production publication remain separately gated."
+}
