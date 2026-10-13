@@ -1,0 +1,60 @@
+{
+  "status": "RELEASE_HELD_PENDING_REPAIR_AND_NEW_GATES",
+  "frozen_source": "b80deb12844aa786e9e0351273eab3f525ddce27",
+  "changes": [
+    {
+      "article_id": "question:acting-craft-pilot-002",
+      "before_sha256": "256cbe16bd4c987e3e30aaaac33db8957ebd5d3066c57f9767fcd4c2a0476279",
+      "after_sha256": "530a11e270d46ffd20b1874b95f5e433ef31a505e8e065022e8cf0f6aefb07ba"
+    },
+    {
+      "article_id": "question:acting-craft-pilot-005",
+      "before_sha256": "3c9675868d9a88dd0c30b6f4ea4f61c32eecfacd66b773768f162f1d1f34272b",
+      "after_sha256": "3d3e03c40ded754dd2fc3c2f7a30da486509ebf6d8b6f25c904d357967b31766"
+    },
+    {
+      "article_id": "question:acting-craft-pilot-007",
+      "before_sha256": "d4b4d87086992a1706a01d840c613b77c95a8ae1eb7d1c88dd2ba25c29cbaf0a",
+      "after_sha256": "4c9a312f9b1b122865dbdb1dc0d4ad3894bdf4cc3ff49107bead275aa3d7872f"
+    },
+    {
+      "article_id": "question:acting-craft-pilot-008",
+      "before_sha256": "580f2a50d6e83bae36dd60e68222b59afd0551e154cb180650b8bc98bb80c37b",
+      "after_sha256": "df53978e6dd14fe88b2dcc1ebefe7d5b6d338f9814607957b7b2b2071f85a0e9"
+    }
+  ],
+  "all_article_sha256": {
+    "question:acting-craft-pilot-001": "886ded886f21a10056c24645ef14b22de095f6680fedcf89242c4f9f7a7222ad",
+    "question:acting-craft-pilot-002": "530a11e270d46ffd20b1874b95f5e433ef31a505e8e065022e8cf0f6aefb07ba",
+    "question:acting-craft-pilot-003": "479780f569e75707460cb1f699a276591470aa75fb8fdc3ce682c87eee350230",
+    "question:acting-craft-pilot-004": "32a6edd125b796dffe90131e019adfb530e8506d473f544327cbeca3b975e270",
+    "question:acting-craft-pilot-005": "3d3e03c40ded754dd2fc3c2f7a30da486509ebf6d8b6f25c904d357967b31766",
+    "question:acting-craft-pilot-006": "5d34fc0aee263723bd5a262dade267ed10a85e2b52be0b9db085c3365ee36a85",
+    "question:acting-craft-pilot-007": "4c9a312f9b1b122865dbdb1dc0d4ad3894bdf4cc3ff49107bead275aa3d7872f",
+    "question:acting-craft-pilot-008": "df53978e6dd14fe88b2dcc1ebefe7d5b6d338f9814607957b7b2b2071f85a0e9"
+  },
+  "actual_ui_score": 8,
+  "own_attempt": "a-029465b5-337d-41de-9584-1fdcb52ab3c5",
+  "actual_answer_rows": 8,
+  "feedback_submissions": 0,
+  "ports_free": [
+    19090,
+    19093
+  ],
+  "owned_pids_gone": {
+    "server_pid": 40816,
+    "api_pid": 31888
+  },
+  "fixture_shutdown": {
+    "actual_api_pid": 31888,
+    "actual_api_exit": 1,
+    "stop_seen": true
+  },
+  "browser_actual_close_exit": 0,
+  "limits": [
+    "Desktop Chrome390x844 touch0; no physical Android claim",
+    "First Q1 footer snapshot was at article top; recovered footer verified from result",
+    "First article-close polling was early; real Q1 resumed manually and Q2-Q8 repaired flow exited0",
+    "Q2/Q5/Q7/Q8 literal newline text is a real visually observed defect; old package is held"
+  ]
+}

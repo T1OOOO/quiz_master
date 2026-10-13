@@ -1,0 +1,57 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-6d0cbcea40434b2bb175a376cd5716ac": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6d0cbcea40434b2bb175a376cd5716ac",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Verified proposed-draft.json vs study/question_articles/drafts/acting-craft-20261014.json: articles 001/003/004/006 byte-identical; 002/005/007/008 each had exactly one literal 4-char '\\n\\n' artifact (backslash-n-backslash-n) replaced with two real newline chars, no other field changed (confirmed by direct string-diff and field-by-field comparison). No literal artifacts remain in proposed text. Canonical SHA256 (sort_keys, compact separators, ensure_ascii=False, UTF-8) per article: 001=886ded886f21a10056c24645ef14b22de095f6680fedcf89242c4f9f7a7222ad, 002=530a11e270d46ffd20b1874b95f5e433ef31a505e8e065022e8cf0f6aefb07ba, 003=479780f569e75707460cb1f699a276591470aa75fb8fdc3ce682c87eee350230, 004=32a6edd125b796dffe90131e019adfb530e8506d473f544327cbeca3b975e270, 005=3d3e03c40ded754dd2fc3c2f7a30da486509ebf6d8b6f25c904d357967b31766, 006=5d34fc0aee263723bd5a262dade267ed10a85e2b52be0b9db085c3365ee36a85, 007=4c9a312f9b1b122865dbdb1dc0d4ad3894bdf4cc3ff49107bead275aa3d7872f, 008=df53978e6dd14fe88b2dcc1ebefe7d5b6d338f9814607957b7b2b2071f85a0e9. All eight match proposal-evidence.json after_sha256/all_article_sha256 exactly. This is a text repair only; does not certify any compiled build or production."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual screenshot evidence retained; exact delta replaces only4 literal separators with real paragraph breaks. Independently reviewed canonical article hashes; no invented acceptance or prior evidence rewrite.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\acting-craft-20261014.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root observed literal backslash-n-backslash-n in article bodies Q002/005/007/008 on real390x844 local Flutter browser. Repair only those decoded body separators to real newlines; preserve all factual words, URLs, refs, question keys, immutable prior reviewed candidate/editorial, and all other articles. Independently Claude review exact proposal and article hashes before applying/exporting. b80 package held, no production changes.",
+        "created_at": 1791930842.8418403,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-6d0cbcea40434b2bb175a376cd5716ac",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/proposed-draft.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/proposal-evidence.json"
+          ],
+          "summary": "Actual local Flutter QA score8, all8questions fit and16sourcecontrols visible. Four literal paragraph escape defects found; exact proposed fourbody newline-only repair, canonicalhashes, independent ownattemptSQL and shutdown proof. Held b80 release. Proposal not yet applied/exported; prior factual/review evidence immutable."
+        },
+        "root_task_id": "task-6d0cbcea40434b2bb175a376cd5716ac",
+        "run_id": "run-da35ba1ace084a74a16620bed4513510",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Actor Reader literal newline repair after actual browser QA",
+        "version": 4,
+        "reviewer": "session-30b82656129f47f69c6d2df36fd099ac",
+        "review_note": "Verified proposed-draft.json vs study/question_articles/drafts/acting-craft-20261014.json: articles 001/003/004/006 byte-identical; 002/005/007/008 each had exactly one literal 4-char '\\n\\n' artifact (backslash-n-backslash-n) replaced with two real newline chars, no other field changed (confirmed by direct string-diff and field-by-field comparison). No literal artifacts remain in proposed text. Canonical SHA256 (sort_keys, compact separators, ensure_ascii=False, UTF-8) per article: 001=886ded886f21a10056c24645ef14b22de095f6680fedcf89242c4f9f7a7222ad, 002=530a11e270d46ffd20b1874b95f5e433ef31a505e8e065022e8cf0f6aefb07ba, 003=479780f569e75707460cb1f699a276591470aa75fb8fdc3ce682c87eee350230, 004=32a6edd125b796dffe90131e019adfb530e8506d473f544327cbeca3b975e270, 005=3d3e03c40ded754dd2fc3c2f7a30da486509ebf6d8b6f25c904d357967b31766, 006=5d34fc0aee263723bd5a262dade267ed10a85e2b52be0b9db085c3365ee36a85, 007=4c9a312f9b1b122865dbdb1dc0d4ad3894bdf4cc3ff49107bead275aa3d7872f, 008=df53978e6dd14fe88b2dcc1ebefe7d5b6d338f9814607957b7b2b2071f85a0e9. All eight match proposal-evidence.json after_sha256/all_article_sha256 exactly. This is a text repair only; does not certify any compiled build or production."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three review callbacks were submitted and recorded by the hub (states now ACCEPTED, ACCEPTED, REWORK respectively, matching my verdicts).\n\n## Summary\n\n**task-6d0cbcea (newline repair)** — **ACCEPT**. Verified all 8 proposed articles: 001/003/004/006 byte-identical to current; 002/005/007/008 each had exactly one literal `\\n\\n` escape artifact replaced by real newlines, nothing else changed. All 8 canonical SHA256 hashes match the evidence file exactly (listed in the callback note).\n\n**task-c4698ea (controller package)** — **ACCEPT**, scoped to controller correctness and held-package integrity. Independently recomputed all file hashes and the archive hash — all match `file-freeze.json`. Read all 5 Python scripts in full: clean prepare/publish separation (no `helm upgrade` in prepare path, single mode-guard flip), hash-pinned inputs, path-traversal-safe archiving, real independent-review-callback requirement (distinct reviewer/assignee) before unlocking remote/publish steps, and solid negative-test coverage with proper cleanup. I re-ran `negative_checks.py` myself; it correctly failed on the \"runtime source changed\" guard, and I confirmed via git status and a hub message that this is due to unrelated in-progress edits to `study/question_articles/build.py`/`test_build.py` from a separate task — the guard worked correctly, not a defect. Package still freezes pre-newline-repair content, so a repackage will be needed later.\n\n**task-0fdbda53 (original incomplete v1)** — **REWORK**. It staged against the wrong baseline (Film Craft, not Music Craft), yielding 132/4048/248/9 and only 4 of 8 Acting Craft questions — never reached the correct baseline or full question set, and produced no usable package.\n\nOne note: a hub peer message asked me to also review a 4th task (task-bdbcd3fd...) about a new Reader validation guard. That was outside the scope you gave me, so I did not touch it — flagging it to you in case you want it reviewed separately.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "22c3c74395de60f06f2d86a96c84bedb566b1357c5db1f23f6c3c7f1c2773594",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

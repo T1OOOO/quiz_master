@@ -1,0 +1,53 @@
+{
+  "frozen_source": "b80deb12844aa786e9e0351273eab3f525ddce27",
+  "build_id": "quiz-2026.10.14-acting-craft-b80deb1",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\acting_craft_release_20261014\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.14-acting-craft-b80deb1",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 71.61,
+      "output": "C:\\ap\\quiz_master\\.run\\acting_craft_release_20261014\\production-web",
+      "log_sha256": "89001324c2ff06e670b07917c884fa779e59a776d1b3465fbe1fade8acc4de84",
+      "main_dart_js_sha256": "c92ec7cd0c53040d425c5fa97f904baa0b60b74ec2f0248837a5de601bcff1f0",
+      "frozen_assets_byte_identical": true
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\acting_craft_release_20261014\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.14-acting-craft-b80deb1",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:19090"
+      ],
+      "elapsed_seconds": 66.34,
+      "output": "C:\\ap\\quiz_master\\.run\\acting_craft_release_20261014\\qa-web",
+      "log_sha256": "30ed187978e2bf469d7f70cf3ece1659e754bf2bdbdb1ca9af994ee2a5387e7e",
+      "main_dart_js_sha256": "716177c0496b31a95d701ebf6045fb6e4a60330c9882e25c2faf826a5b04844f",
+      "frozen_assets_byte_identical": true
+    }
+  ],
+  "scope": "Actual compiled Flutter builds only; browser/cache/copy-grading/production remain separately gated."
+}

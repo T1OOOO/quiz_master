@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-dc7e617ca11e453dbb8e20731eee44ad": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-dc7e617ca11e453dbb8e20731eee44ad",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independently verified the newline-only repair end to end. (1) drafts/acting-craft-20261014.json is byte-identical to docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/proposed-draft.json (json.tool diff empty). (2) Recomputed all 8 canonical article_sha256 hashes directly via build.article_hash() from the current draft: all 8 match reviews/acting-craft-20261014-review.json exactly, all verdict=accept, and author(session-aca46...)!=reviewer(session-30b82...), review_task_id=task-6d0cbcea... as claimed. (3) Compared exported next/apps/quiz_app/assets/study/question-articles.json against commit b80deb1: article count unchanged (260), only the 4 Actor articles (pilot-002/005/007/008) changed, only the body_ru field changed in each, and normalizing old body_ru (literal \\\\n -> real newline) makes it byte-identical to the new body_ru -- confirming only the literal paragraph separator changed, no wording/URL/ref/key/tag edits anywhere in the 260-article export. (4) Ran all 5 Python tests fresh (pass) and `python study/question_articles/build.py --check` (PASS: 260 articles). (5) Read .run/acting_craft_browser_20261014/repaired-flutter-reader.log.txt: 6 Flutter reader tests, all passed ('+6: All tests passed!'), consistent with the claim. (6) Read ROOT_BROWSER_FINDINGS_EN.md: content is consistent with the diffs inspected, explicitly scopes the defect/fix to the 4 literal-escape articles, states old b80/binaries are held and makes no publication/Android/full-fact-certification claims -- matches instructions. No discrepancies found between claimed and actual evidence. This review covers only the source/export integrity described; it does not certify Android, production publication, or unrelated facts, consistent with the task's own disclaimer."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact proposed-draft application, eighthashes realcallback, fournewline-onlybodydiffs,256objects preserved,260compilerexport/check0,5Pythontests and6FlutterReader tests pass; genuine different-provider callback.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root applied exactly independently accepted task6d0 proposal; regenerated Reader260 and bound reviewmetadata to actualClaude18 hashes. Exactly4Actor bodies newline-only changed,256otherarticles identical to b80. Verify real accepted callback/hashbindings/compilerexport and meaningfultests; production held, no publication claimed.",
+        "created_at": 1791931255.0571818,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-dc7e617ca11e453dbb8e20731eee44ad",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/applied-export-evidence.json",
+            "C:/ap/quiz_master/.run/acting_craft_browser_20261014/repaired-flutter-reader.log.txt",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/independent-repair-review.json"
+          ],
+          "summary": "Accepted exact proposalapplied; realClaude18 hashesboundinreviewmetadata; compiler260write/check0;5Python tests0; sixFlutterReader testsactual0 log.256oldarticleobjects unchanged, fournewline-onlychanges. b80 releaseheld; newsourcecommit/build/repackage/QA next."
+        },
+        "root_task_id": "task-dc7e617ca11e453dbb8e20731eee44ad",
+        "run_id": "run-a475287dedff4afb9989ef8db021f377",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Verify applied accepted Actor newline repair and regenerated Reader asset",
+        "version": 4,
+        "reviewer": "session-4b8453a5956c4ec4aa71e0d1635f7e02",
+        "review_note": "Independently verified the newline-only repair end to end. (1) drafts/acting-craft-20261014.json is byte-identical to docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/newline-repair/proposed-draft.json (json.tool diff empty). (2) Recomputed all 8 canonical article_sha256 hashes directly via build.article_hash() from the current draft: all 8 match reviews/acting-craft-20261014-review.json exactly, all verdict=accept, and author(session-aca46...)!=reviewer(session-30b82...), review_task_id=task-6d0cbcea... as claimed. (3) Compared exported next/apps/quiz_app/assets/study/question-articles.json against commit b80deb1: article count unchanged (260), only the 4 Actor articles (pilot-002/005/007/008) changed, only the body_ru field changed in each, and normalizing old body_ru (literal \\\\n -> real newline) makes it byte-identical to the new body_ru -- confirming only the literal paragraph separator changed, no wording/URL/ref/key/tag edits anywhere in the 260-article export. (4) Ran all 5 Python tests fresh (pass) and `python study/question_articles/build.py --check` (PASS: 260 articles). (5) Read .run/acting_craft_browser_20261014/repaired-flutter-reader.log.txt: 6 Flutter reader tests, all passed ('+6: All tests passed!'), consistent with the claim. (6) Read ROOT_BROWSER_FINDINGS_EN.md: content is consistent with the diffs inspected, explicitly scopes the defect/fix to the 4 literal-escape articles, states old b80/binaries are held and makes no publication/Android/full-fact-certification claims -- matches instructions. No discrepancies found between claimed and actual evidence. This review covers only the source/export integrity described; it does not certify Android, production publication, or unrelated facts, consistent with the task's own disclaimer."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks reviewed and submitted as **ACCEPTED** with error_count 0.\n\n**task-bdbcd3fd1d3542758e329d9eca1d3325** (newline-guard validation) — accepted. Independently reproduced the red→green test transition, confirmed the one-line guard rejects literal `\\n\\n` escapes while real newlines pass, and confirmed scope is minimal (no unrelated refactor).\n\n**task-dc7e617ca11e453dbb8e20731eee44ad** (applied Actor repair) — accepted. Independently recomputed all 8 article hashes, confirmed the draft matches proposed-draft.json exactly, confirmed the export diff against b80deb1 touches only the 4 affected `body_ru` fields (literal-separator-only, 260 articles unchanged otherwise), and confirmed the 5 Python tests and 6 Flutter reader tests pass from the actual logs.\n\nBoth review notes explicitly flag that production publication, Android verification, and full fact certification remain outstanding and were not claimed. I did not edit any files, trigger a release, or touch the shared broker — this was read-only verification plus hub_task review callbacks as instructed.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "32d746851397efcb521dcaa9137bc422d7fecf6b1f9906be804d96464d1f6f83",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

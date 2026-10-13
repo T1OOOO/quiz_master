@@ -52,6 +52,23 @@ class BundleResolutionTests(unittest.TestCase):
             with patch.object(build, 'ROOT', root), patch.object(build, 'HERE', here):
                 self.assertEqual(['article-1'], [a['id'] for a in build.export()['articles']])
 
+    def test_literal_paragraph_escape_is_rejected_even_after_review(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            here = self.export_fixture(root, snapshot_revision='a' * 64, canonical_revision='a' * 64)
+            draft_path = here / 'drafts' / 'draft.json'
+            draft = json.loads(draft_path.read_text())
+            article = draft['articles'][0]
+            article['body_ru'] += r'\n\nAnother paragraph.'
+            draft_path.write_text(json.dumps(draft), encoding='utf-8')
+            review_path = here / 'reviews' / 'review.json'
+            review = json.loads(review_path.read_text())
+            review['articles'][0]['article_sha256'] = build.article_hash(article)
+            review_path.write_text(json.dumps(review), encoding='utf-8')
+            with patch.object(build, 'ROOT', root), patch.object(build, 'HERE', here):
+                with self.assertRaisesRegex(ValueError, 'literal paragraph escape'):
+                    build.export()
+
 
 if __name__ == '__main__':
     unittest.main()

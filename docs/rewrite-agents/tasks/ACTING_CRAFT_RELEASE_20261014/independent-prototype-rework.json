@@ -1,0 +1,82 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-0fdbda53bcf046e2919ae3b37a64b893": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-0fdbda53bcf046e2919ae3b37a64b893",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Reviewed worker-v1-incomplete/REPORT.json. It staged against the Film Craft prior archive (not Music Craft), producing baseline guard counts of 132 preserved catalog rows / 4048 preserved questions / 248 preserved article objects / 9 baseline cache entries, and only 4 Acting Craft questions packaged (not 8) -- it never reached the accepted 133/4052/252/10 Helm50 baseline or the full 8-question Acting Craft set. No usable, independently reviewable package resulted (self-reported as DONE_WITH_CONCERNS with the wrong baseline pinned and copied-DB rehearsal expectations stated as 212 graded/11 finished, not the now-accepted 211/12). Superseded by task-c4698ea11915497e8f8ade1ce5104e1f's package-v2, which starts from the correct Music Craft baseline and reaches 133/4052/252/10 -> 134/4060/260/11 with all 8 Acting Craft questions. Marking REWORK (not ACCEPT) to reflect that this submission did not produce a publishable or even baseline-correct package; history preserved as-is in worker-v1-incomplete per instructions, no files modified."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Runnable specializedcontrollers frozenactualpins afterRootbuilds, oldbaseline50,target1344060260",
+          "Exactallowed4titlechanges/allotheroldobjects preserved, new8 canonicalcache immutable",
+          "Actuallocal packageverify/guardnegative/bashmode tests, nofakeapproval/evidence",
+          "Root-only remote/live mutatingflags guarded, actualreview/coreQA required"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker",
+          "C:\\ap\\quiz_master\\.run\\acting_craft_controller_20261014"
+        ],
+        "assignee": "session-15d436d2b73b404ea1aee76057e04875",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Adapt actual accepted MusicCraft producer/prepare/publisher/negativeguard tests into NEW Actor release worker folder. No Git/app/source/docsRootproof/remote mutations. Baseline realHelm50 Music buildf79555e/imageb94a3993 archiveae4768f4 metadata1334052252, ten cachepacks148questions. Target frozen sourceb80deb12844aa786e9e0351273eab3f525ddce27 buildquiz-2026.10.14-acting-craft-b80deb1:1344060260, elevencachepacks156questions plusNewYear55 =>211grades12practices. Preserveallold133catalogrows/10cacheobjects/unchangedAPI/PVC/Nginx and248articleobjects;4Music articles exactacceptedSourceTitles8-only allowed changes, append8Actorarticles. Root production/QA compile running; awaitactual root-builds hashes beforefinalpins. No fakeacceptedreviews/browserproof/image/backup/Grading evidence, no remoteexecution. Rootqa19090 officialCLI local8question/article/fourlabelchecks lifecycle schema actualclose0/inactive insteadofSDK. Existingguardpublish-only modefixmandatory. Runlocalpackage/tests afterRootbuildslotfree, negativesmeaningful andbashmodepreservation; own onlynewworker/.runactorcontroller. Independent actualClaudemustreviewcode/package thenRootQA/execution/publicationseparategates. FullEnglishpacket inagentprompt.",
+        "created_at": 1791929567.527622,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-0fdbda53bcf046e2919ae3b37a64b893",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/prepare_acting_craft_release.py",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/prepare_remote.py",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/publish_prepared.py",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/negative_checks.py",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/README.md",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker/REPORT.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -m py_compile <all worker .py files>",
+              "result": "exit 0 after renamed producer import adaptation"
+            },
+            {
+              "command": "python .../prepare_acting_craft_release.py --repo C:/ap/quiz_master --frozen-commit b80... --production-web .run/acting_craft_release_20261014/production-web --qa-web ... --output-root .run/acting_craft_controller_20261014/package-v2 --prior-archive .run/music_craft_controller_repair_20261013/package-v1/quiz-2026.10.13-music-craft-f79555e.tar.gz",
+              "result": "exit 1: baseline-count guard mismatch; no package archive created"
+            }
+          ],
+          "note": "No remote, app/source, git-index, Beads, server, browser, or feedback mutation.",
+          "remaining_risks": [
+            "Files are incomplete mechanical adaptation and are not release-ready.",
+            "No meaningful local positive/negative package test completed.",
+            "No independent review, QA/browser proof, copied DB rehearsal, remote preparation, image build, execution review, or publication occurred."
+          ],
+          "status": "BLOCKED"
+        },
+        "root_task_id": "task-0fdbda53bcf046e2919ae3b37a64b893",
+        "run_id": "run-f8548696b41e48a0896fae9f8b55f675",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-5zd finite Acting Craft release controller/package adaptation",
+        "version": 4,
+        "reviewer": "session-30b82656129f47f69c6d2df36fd099ac",
+        "review_note": "Reviewed worker-v1-incomplete/REPORT.json. It staged against the Film Craft prior archive (not Music Craft), producing baseline guard counts of 132 preserved catalog rows / 4048 preserved questions / 248 preserved article objects / 9 baseline cache entries, and only 4 Acting Craft questions packaged (not 8) -- it never reached the accepted 133/4052/252/10 Helm50 baseline or the full 8-question Acting Craft set. No usable, independently reviewable package resulted (self-reported as DONE_WITH_CONCERNS with the wrong baseline pinned and copied-DB rehearsal expectations stated as 212 graded/11 finished, not the now-accepted 211/12). Superseded by task-c4698ea11915497e8f8ade1ce5104e1f's package-v2, which starts from the correct Music Craft baseline and reaches 133/4052/252/10 -> 134/4060/260/11 with all 8 Acting Craft questions. Marking REWORK (not ACCEPT) to reflect that this submission did not produce a publishable or even baseline-correct package; history preserved as-is in worker-v1-incomplete per instructions, no files modified."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three review callbacks were submitted and recorded by the hub (states now ACCEPTED, ACCEPTED, REWORK respectively, matching my verdicts).\n\n## Summary\n\n**task-6d0cbcea (newline repair)** — **ACCEPT**. Verified all 8 proposed articles: 001/003/004/006 byte-identical to current; 002/005/007/008 each had exactly one literal `\\n\\n` escape artifact replaced by real newlines, nothing else changed. All 8 canonical SHA256 hashes match the evidence file exactly (listed in the callback note).\n\n**task-c4698ea (controller package)** — **ACCEPT**, scoped to controller correctness and held-package integrity. Independently recomputed all file hashes and the archive hash — all match `file-freeze.json`. Read all 5 Python scripts in full: clean prepare/publish separation (no `helm upgrade` in prepare path, single mode-guard flip), hash-pinned inputs, path-traversal-safe archiving, real independent-review-callback requirement (distinct reviewer/assignee) before unlocking remote/publish steps, and solid negative-test coverage with proper cleanup. I re-ran `negative_checks.py` myself; it correctly failed on the \"runtime source changed\" guard, and I confirmed via git status and a hub message that this is due to unrelated in-progress edits to `study/question_articles/build.py`/`test_build.py` from a separate task — the guard worked correctly, not a defect. Package still freezes pre-newline-repair content, so a repackage will be needed later.\n\n**task-0fdbda53 (original incomplete v1)** — **REWORK**. It staged against the wrong baseline (Film Craft, not Music Craft), yielding 132/4048/248/9 and only 4 of 8 Acting Craft questions — never reached the correct baseline or full question set, and produced no usable package.\n\nOne note: a hub peer message asked me to also review a 4th task (task-bdbcd3fd...) about a new Reader validation guard. That was outside the scope you gave me, so I did not touch it — flagging it to you in case you want it reviewed separately.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "22c3c74395de60f06f2d86a96c84bedb566b1357c5db1f23f6c3c7f1c2773594",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-13T22:37:24.038880+00:00",
+  "command": [
+    "eval",
+    "performance.getEntriesByType(\"resource\").map(e=>new URL(e.name).pathname).filter(p=>p.includes(\"/v1/attempts/\"))"
+  ],
+  "actual_exit": 0,
+  "stdout": "[\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/answers\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/feedback/music-craft-pilot-001\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/answers\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/feedback/music-craft-pilot-002\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/answers\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/feedback/music-craft-pilot-003\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/answers\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/feedback/music-craft-pilot-004\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/finish\",\n  \"/v1/attempts/a-5bd49e27-0d32-4481-82bb-0f9d08acb451/reveals\"\n]\n",
+  "stderr": ""
+}

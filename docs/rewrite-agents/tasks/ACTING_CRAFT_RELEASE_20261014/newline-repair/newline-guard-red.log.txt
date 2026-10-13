@@ -1,0 +1,14 @@
+.F...
+======================================================================
+FAIL: test_literal_paragraph_escape_is_rejected_even_after_review (test_build.BundleResolutionTests.test_literal_paragraph_escape_is_rejected_even_after_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\study\question_articles\test_build.py", line 69, in test_literal_paragraph_escape_is_rejected_even_after_review
+    with self.assertRaisesRegex(ValueError, 'literal paragraph escape'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.129s
+
+FAILED (failures=1)

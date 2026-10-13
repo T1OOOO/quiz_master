@@ -54,6 +54,7 @@ def export():
             for field in ('title_ru', 'body_ru'):
                 require(isinstance(article.get(field), str) and article[field].strip(), f'{aid}: {field}')
             require(len(article['body_ru'].split()) >= 100, f'{aid}: substantive article required')
+            require(r'\n\n' not in article['body_ru'], f'{aid}: literal paragraph escape; use actual newlines')
             sources = article['source_links']
             require(2 <= len(sources) <= 5, f'{aid}: 2-5 checked sources required')
             urls = set()

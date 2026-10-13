@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-13T22:28:38.235073+00:00",
+  "command": [
+    "eval",
+    "performance.getEntriesByType(\"resource\").map(e=>new URL(e.name).pathname).filter(p=>p.includes(\"/v1/attempts/\"))"
+  ],
+  "actual_exit": 0,
+  "stdout": "[\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-001\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-002\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-003\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-004\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-005\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-006\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-007\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/answers\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/feedback/acting-craft-pilot-008\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/finish\",\n  \"/v1/attempts/a-029465b5-337d-41de-9584-1fdcb52ab3c5/reveals\"\n]\n",
+  "stderr": ""
+}

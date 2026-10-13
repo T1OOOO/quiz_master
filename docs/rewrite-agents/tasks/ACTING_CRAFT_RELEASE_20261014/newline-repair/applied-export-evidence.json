@@ -1,0 +1,50 @@
+{
+  "actual_review_task": "task-6d0cbcea40434b2bb175a376cd5716ac",
+  "actual_old_article_objects_unchanged": 256,
+  "exact_newline_only_article_ids": [
+    "question:acting-craft-pilot-002",
+    "question:acting-craft-pilot-005",
+    "question:acting-craft-pilot-007",
+    "question:acting-craft-pilot-008"
+  ],
+  "all_question_answers_refs_urls_unchanged": true,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 260 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 260 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_*.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.160s\n\nOK\n"
+    }
+  ],
+  "current_reader_sha256": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633",
+  "scope": "Actual source repair/export only. Held b80 binaries/packages remain immutable; new source/build/package/QA/release gates pending."
+}
