@@ -1,0 +1,7 @@
+The c74253f candidate was not published. Preparation v1 stopped on an inherited cache-growth assertion; preparation v3 corrected cache growth and rollback history but stopped on exact Film Craft question revisions before building an image. Both backups passed SQLite integrity and restoration checks; the production image remained Helm48/8e3c6bd.
+
+Read-only copied-database diagnosis found zero revision mismatches in all eight earlier canonical packs and four mismatches in the new Film Craft pack. Its canonical draft manually added `source.title` and editorial tags while the raw source lacked those tags. Production imports raw questions with a URI-only source object. The local canonical fixture therefore failed to represent the production importer.
+
+The correction belongs in the content pipeline: retain all stems, options, answer keys, difficulty and article prose; add the existing tags to the raw source; derive canonical questions from the actual importer; update the four Reader revision bindings and obtain independent acceptance. Freeze and rebuild that corrected application before another package/rehearsal/publication gate. Do not weaken the exact staging revision check or treat the failed candidate as prepared.
+
+Failed v1 directory/archive are preserved under the explicit `.failed-v1-171556Z` names. Failed v3 remains at the original c74253f release path with its copied rehearsal and backup. Neither failure changed real feedback status or published application content.

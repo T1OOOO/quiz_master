@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-13T18:40:44.616336+00:00",
+  "ready": 1,
+  "available": 1,
+  "image": "docker.io/library/quiz-master@sha256:8e3c6bd77ab94945093e2ca4394d8364cca9e306b91c791ce2b4461d2a0f0018",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "pvc_phase": "Bound",
+  "disk_free_bytes": 8485142528,
+  "pressure": [
+    {
+      "node": "racknerd-f0269d5",
+      "type": "MemoryPressure",
+      "status": "False"
+    },
+    {
+      "node": "racknerd-f0269d5",
+      "type": "DiskPressure",
+      "status": "False"
+    },
+    {
+      "node": "racknerd-f0269d5",
+      "type": "PIDPressure",
+      "status": "False"
+    }
+  ],
+  "helm": [
+    {
+      "name": "quiz-master",
+      "namespace": "quiz-master",
+      "revision": "48",
+      "updated": "2026-10-13 17:20:06.70738312 +0300 +03",
+      "status": "deployed",
+      "chart": "quiz-master-0.1.0",
+      "app_version": ""
+    }
+  ],
+  "rehearsal_port_free": true
+}

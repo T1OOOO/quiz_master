@@ -1,0 +1,56 @@
+{
+  "frozen_source": "c74253fe16e7ddf50d81fd884a2606483808448d",
+  "build_id": "quiz-2026.10.13-film-craft-c74253f",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.13-film-craft-c74253f",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 81.17,
+      "output": "C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\production-web",
+      "log_sha256": "e27675610d0ee32a84260ba04579d2957c9f3dc63e54bc357fb76bb50c3bd97e",
+      "main_dart_js_sha256": "646ec761865694df76d046d698f49609eee0237f95b3f558a757c7391515ba8f",
+      "frozen_assets_byte_identical": true
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-film-craft-local-c74253f",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:18090"
+      ],
+      "elapsed_seconds": 78.57,
+      "output": "C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\qa-web",
+      "log_sha256": "00272761027b718b83d435041982cec3aea342bc37dde1cd18bdb26fd434a51c",
+      "main_dart_js_sha256": "150a6a9984f44485dac6b5f0d9e37e8b50f3cbc206a03906f435787127b0105a",
+      "frozen_assets_byte_identical": true
+    }
+  ],
+  "scope": "Fresh Flutter Web production and isolated QA compiler outputs, with frozen132/4048/248 assets. Package/browser/copiedDB/release/publication gates separate.",
+  "limits": [
+    "No physical Android build/device or hot reload claim."
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-efbe02a898db48e284ea605f6acf8e28": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-efbe02a898db48e284ea605f6acf8e28",
+          "verdict": "accept",
+          "note": "Read-only review of prepare_film_craft_release.py, prepare_remote.py, package-v1.json, package-root-verification.json, and staged cutover.sh/rehearse.py. Guards are real and consistent: hash/count checks for catalog(132/4048), Reader(248), baseline preservation (131/4044/244), frozen commit pin adf95a5, archive/image/PVC pins match staged files. prepare_remote.py stays inert pending static-review.json + browser-proof.json (absent here) and performs remote guard checks (hostname/image/PVC/free-disk/absent-target) before any prepare-only cutover. publish_prepared.py requires explicit --publish and is unused here. No publication or execution occurred. ACCEPT as code/local-artifact prerequisite only; QA/visual verification and publish remain separate gates."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Exact frozen sourceandarchivepins",
+          "Oldobjects preserved actualpositive/negativechecks",
+          "Preparation inert until actualQA andstaticapproval; publication separate"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RUNTIME_RELEASE_20261013"
+        ],
+        "assignee": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "Actual accepted runtime-source/binding repair025f frozen/pushedadf95. Freshprod+QAFlutterbuild0; archive5ed5fd producer8a109 correctnewsourceReaderd561/JS c883, baselineHelm48/8e unchanged. Root actual tar/checksum/allold131metadata244articles andraw4044/canonical8 preserved;9cache/1324048/248 and3negativecases. Inert prepare_remote.py requires actual staticapproval/hashpins and actual clean localQA4beforetransfer/copyDB/preparation. NativeQA is separatelyrunning; this task requests CODE/LOCALPACKAGE review only, no fabricated QA or permissiontopublish. No oldfailedc742candidate reuse; failedtargets retained; newadf sourceusesnewabsentliteralserverpath. Review before Root actualprepareafterQA.",
+        "created_at": 1791913744.057419,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-efbe02a898db48e284ea605f6acf8e28",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/package-v1.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/package-root-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/prepare_remote.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_INTEGRATION_20261013/root-builds.json"
+          ],
+          "summary": "Actualnewpackage5ed5/rootpreservation+negativegates. CODE/localartifact review only; QA independentactualtaskpending, prepare unexecuted."
+        },
+        "root_task_id": "task-efbe02a898db48e284ea605f6acf8e28",
+        "run_id": "run-84fc2a752cff4eceae11fb3e97e770bd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i exact corrected adf95 release package and inert preparation controller",
+        "version": 4,
+        "reviewer": "session-2de9b50d0a534b7c8e0dfdb1f8631e0a",
+        "review_note": "Read-only review of prepare_film_craft_release.py, prepare_remote.py, package-v1.json, package-root-verification.json, and staged cutover.sh/rehearse.py. Guards are real and consistent: hash/count checks for catalog(132/4048), Reader(248), baseline preservation (131/4044/244), frozen commit pin adf95a5, archive/image/PVC pins match staged files. prepare_remote.py stays inert pending static-review.json + browser-proof.json (absent here) and performs remote guard checks (hostname/image/PVC/free-disk/absent-target) before any prepare-only cutover. publish_prepared.py requires explicit --publish and is unused here. No publication or execution occurred. ACCEPT as code/local-artifact prerequisite only; QA/visual verification and publish remain separate gates."
+      },
+      "success": true
+    },
+    "task-831fe91bc8f841c3b25561ec96969017": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-831fe91bc8f841c3b25561ec96969017",
+          "verdict": "accept",
+          "note": "Independent read-only verification: browser-proof.json/qa-lifecycle-clarification.json/root-local-browser-verification.json match raw fixtures. Proxy log shows finish+reveals=200, no feedback POST. SQLite aggregate: 1 attempt status=finished server_score=4, 4 attempt_questions/4 attempt_answers, feedback_reports=0. lifecycle-evidence.json + sdk2/ready.json(client_pid 1228 isolated headless)+stopped.json(own_client_shutdown_requested=true) confirm clean_qa_flow_actual_exit=0, clean_sdk2_actual_exit correctly recorded as null (not fabricated 0), STOP acknowledged only, no child PID list invented. UI trace (film-craft-trace-dark-flow.json) confirms 4 questions, article sheets with 2 source links each (oscars.org/oscars.org; oscars.org/connect.avid.com), console 0 errors/0 warnings/2 issue notices. prepare_remote.py/publish_prepared.py reviewed read-only, not executed; publish_prepared.py gates require the corrected honest fields and independent ACCEPTED execution-acceptance before any remote action. Correction is truthful, not a weakening of gates."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "ActualUI and Rootvisual/data evidence",
+          "Unknownexitstruthful; actualcleanup/ports",
+          "Exactcorrectedconditionalprepareguard acceptedbeforeexecution"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RUNTIME_RELEASE_20261013"
+        ],
+        "assignee": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "ActualnativeUIpassed4answers/4articles/serverSQLite4/HTTPfinishreveal200/noPOST/console0/issue2. Root visuallyallquestion/sourcefooter+score4 andverifieddata/hash/proxy/ports/parentsgone. Native clarified originalSDK0/serverwrapper0wereunobserved: onlyqaflowexit0observed; server/APIforcedcleanup, SDKSTOPack. Originalnativeproof preserved; Rootcorrected unknownexits andactualcleanup inventory0matchingisolatedNodeChrome/SDKclient1228gone. Exactnewpreparepublisherqa guards require observedflow0, freshsource, STOPack,fixturegone,rootvisual/hash proof; do not fabricateprocess0. Archive5ed/prod8a/newfrozenadfunchanged. Review currentQAandguardcorrection before prepare. OldQA task177 shouldREWORK lifecycleclaim errors only, UIevidence valid. No remote executionyet.",
+        "created_at": 1791914358.5048757,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-831fe91bc8f841c3b25561ec96969017",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/browser-proof.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/qa-lifecycle-clarification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/root-local-browser-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/prepare_remote.py"
+          ],
+          "summary": "Root validated actuallocal UI/data/visual and clarifiedunobserved lifecycleexits. Inertupdatedguardawaitsactualindepapproval; archive/sourceunchanged."
+        },
+        "root_task_id": "task-831fe91bc8f841c3b25561ec96969017",
+        "run_id": "run-b53c6a85e48e40f09142dae6bb087e19",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i honest local QA lifecycle correction and prepare gate",
+        "version": 4,
+        "reviewer": "session-899673dd03ca48dcbcd312d24aacfa3a",
+        "review_note": "Independent read-only verification: browser-proof.json/qa-lifecycle-clarification.json/root-local-browser-verification.json match raw fixtures. Proxy log shows finish+reveals=200, no feedback POST. SQLite aggregate: 1 attempt status=finished server_score=4, 4 attempt_questions/4 attempt_answers, feedback_reports=0. lifecycle-evidence.json + sdk2/ready.json(client_pid 1228 isolated headless)+stopped.json(own_client_shutdown_requested=true) confirm clean_qa_flow_actual_exit=0, clean_sdk2_actual_exit correctly recorded as null (not fabricated 0), STOP acknowledged only, no child PID list invented. UI trace (film-craft-trace-dark-flow.json) confirms 4 questions, article sheets with 2 source links each (oscars.org/oscars.org; oscars.org/connect.avid.com), console 0 errors/0 warnings/2 issue notices. prepare_remote.py/publish_prepared.py reviewed read-only, not executed; publish_prepared.py gates require the corrected honest fields and independent ACCEPTED execution-acceptance before any remote action. Correction is truthful, not a weakening of gates."
+      },
+      "success": true
+    },
+    "task-177a74c0877d462884b95a7c5c7b43b6": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-177a74c0877d462884b95a7c5c7b43b6",
+          "verdict": "rework",
+          "error_count": 2,
+          "note": "REWORK limited to two inaccurate lifecycle claims in native-browser-proof-before-clarification.json: clean_sdk2_actual_exit and clean_qa_wrapper_actual_exit were both recorded as 0, but raw fixtures (lifecycle-evidence.json api_exit_code='not observed after intentional termination'; sdk2/stopped.json only shows own_client_shutdown_requested=true) show only the qa_clean_flow.py wrapper exit was actually observed as 0 \u2014 SDK/server exits were force-terminated and never observed. This is corrected in browser-proof.json (clean_sdk2_actual_exit=null, remaining_limits documents the unobserved exits) and superseded by ACCEPTED task-831fe91bc8f841c3b25561ec96969017. UI/data observations in the native proof (4 questions/answers, 4 article sheets with 2 source controls each, server_score 4, feedback_submissions 0, finish/reveals HTTP 200, console 0 errors/0 warnings/2 issue notices) remain independently verified against film-craft-trace-dark-flow.json, debug-proxy.log and the local-browser-film-craft.sqlite aggregate counts \u2014 no new UI run required."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Actual fresh mobile4answer4article score4",
+          "No feedbackPOST/local only",
+          "Owned lifecycle cleanup evidence no guesses"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\film_craft_runtime_browser_20261013",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RUNTIME_RELEASE_20261013"
+        ],
+        "assignee": "session-04128589997e4f82970a20c129627ca5",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "ExclusiveQM_QA owns .run/film_craft_runtime_browser_20261013 and runtime_release/local-browser plusbrowser-proof.json ONLY. Freshactualprod/QAFlutterbuild0/frozen sourceadf95. Adapt existingisolatedlocalharness/copiedcanonicalfixture+exactexistingAPI4ee. Mobile390x844x1 actual4answers4articles2sources each/pause resume/FinishHTTP200/serverSQLite4/console0/no feedbackPOST. OwnboundedSDK/wrapper900s; closeownprocesses,recordPIDsgone/portsfree. No source/Git/remote/children/schedulers. Rootwillvisuallyinspect actualimages; prodcopiedDB/release separate. Do notwaitforlease userqueuewaived. Allpaths/tasksfullcontextpreviousprompt.",
+        "created_at": 1791913769.3559625,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-177a74c0877d462884b95a7c5c7b43b6",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            ".run/film_craft_runtime_browser_20261013/content/film-craft-20261013/bundle.json",
+            ".run/film_craft_runtime_browser_20261013/content/film-craft-20261013/manifest.json",
+            ".run/film_craft_runtime_browser_20261013/tags.v1.json",
+            ".run/film_craft_runtime_browser_20261013/qa-web/**",
+            ".run/film_craft_runtime_browser_20261013/qa-api.exe",
+            ".run/film_craft_runtime_browser_20261013/local_browser_server2.py",
+            ".run/film_craft_runtime_browser_20261013/isolated_mcp_browser2.py",
+            ".run/film_craft_runtime_browser_20261013/op2.py",
+            ".run/film_craft_runtime_browser_20261013/qa_clean_flow.py",
+            ".run/film_craft_runtime_browser_20261013/film-craft-trace-dark-flow.json",
+            ".run/film_craft_runtime_browser_20261013/debug-proxy.log",
+            ".run/film_craft_runtime_browser_20261013/local-browser-film-craft.sqlite",
+            ".run/film_craft_runtime_browser_20261013/lifecycle-evidence.json",
+            "docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/local-browser/**",
+            "docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/browser-proof.json"
+          ],
+          "evidence": [
+            {
+              "kind": "build",
+              "result": "QA main.dart.js SHA256 973B299BF5AA26B8266BF1CAA42DD4C114789145146757766D3CAFCE66006A38; frozen source adf95a57594158308c94ee2bff1cb5ca9c9c0684; qa-api SHA256 4EE698107118A45C5DA45BF87E1FAA687540DC282DD0059341D9C402A6AEDB4A."
+            },
+            {
+              "kind": "ui",
+              "result": "390x844x1 mobile touch flow; labels answered \u0424\u043e\u043b\u0438 / ADR / J-\u0441\u043a\u043b\u0435\u0439\u043a\u0430 / \u041f\u0435\u0440\u0435\u043c\u0435\u0441\u0442\u0438\u0442\u044c \u043a\u0443\u043a\u043b\u0443 \u0438 \u0441\u043d\u044f\u0442\u044c \u043a\u0430\u0434\u0440; article sheets 4 opened and closed; 2 source controls each; pause/resume each."
+            },
+            {
+              "kind": "http",
+              "result": "finish 200; reveals 200; answer and feedback GET requests 200; proxy log contains no /v1/reports POST."
+            },
+            {
+              "kind": "sqlite",
+              "result": "local-browser-film-craft.sqlite authoritative attempts row finished with score 4; 4 attempt_answers; feedback_reports count 0."
+            },
+            {
+              "kind": "console",
+              "result": "Chrome console errors 0, warnings 0; issue notices 2 (deprecated feature and missing form id/name), recorded honestly."
+            },
+            {
+              "kind": "cleanup",
+              "result": "SDK STOP acknowledged; owned server/API tree intentionally terminated; owned process tree gone; ports 18090 and 18093 verified free; lifecycle evidence records PIDs."
+            },
+            {
+              "kind": "artifacts",
+              "result": "Fresh question/article/source/pause/results screenshots and trace saved in assigned local-browser path; screenshots visually inspected locally."
+            }
+          ],
+          "remaining_risks": [
+            "Root visual inspection of all fresh screenshots is pending; no publication or acceptance claim."
+          ],
+          "runtime_identity": "codex/gpt-6.1-sol; Hub session-04128589997e4f82970a20c129627ca5; task task-177a74c0877d462884b95a7c5c7b43b6; run run-b6de9d747fe14ff0a3f0c9cde0a80653",
+          "sha256": {
+            "browser-proof.json": "pending recompute after submit artifact write",
+            "proxy_log": "037AD8FEDB91F36846B1D9FA0C797A900161A1BECD607B95C0F1E81DD335DE97",
+            "sqlite": "BA62705ABCC9BE11B214057FBA984703B9FE8AD4A36C9C0B7762B7FA61345E68",
+            "trace": "536C98780133C78621811F30ADC52492ED835F3A701BFF2BF55D97230FCF534F"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Fresh isolated local mobile QA completed on corrected adf95 runtime. Four real answers, four article opens/closes, two source controls per article, pause/resume for each, finish/reveals HTTP 200, authoritative SQLite score 4, no feedback report writes. Root visual inspection remains pending."
+        },
+        "root_task_id": "task-177a74c0877d462884b95a7c5c7b43b6",
+        "run_id": "run-b6de9d747fe14ff0a3f0c9cde0a80653",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i fresh local mobile QA for corrected adf95 Film craft",
+        "version": 4,
+        "reviewer": "session-899673dd03ca48dcbcd312d24aacfa3a",
+        "review_note": "REWORK limited to two inaccurate lifecycle claims in native-browser-proof-before-clarification.json: clean_sdk2_actual_exit and clean_qa_wrapper_actual_exit were both recorded as 0, but raw fixtures (lifecycle-evidence.json api_exit_code='not observed after intentional termination'; sdk2/stopped.json only shows own_client_shutdown_requested=true) show only the qa_clean_flow.py wrapper exit was actually observed as 0 \u2014 SDK/server exits were force-terminated and never observed. This is corrected in browser-proof.json (clean_sdk2_actual_exit=null, remaining_limits documents the unobserved exits) and superseded by ACCEPTED task-831fe91bc8f841c3b25561ec96969017. UI/data observations in the native proof (4 questions/answers, 4 article sheets with 2 source controls each, server_score 4, feedback_submissions 0, finish/reveals HTTP 200, console 0 errors/0 warnings/2 issue notices) remain independently verified against film-craft-trace-dark-flow.json, debug-proxy.log and the local-browser-film-craft.sqlite aggregate counts \u2014 no new UI run required."
+      },
+      "success": true
+    }
+  },
+  "reports": [
+    {
+      "actual_cli_exit": 0,
+      "trace_sha256": "8379bfa9bf98f1da489ef4ef70a7f7ba26e9d1146f3622e22da43c441841f28d",
+      "report": "Task **ACCEPTED** (recorded on host_hub, task-efbe02a898db48e284ea605f6acf8e28, now version 4).\n\nReview summary: Verified actual files, not just the task's claims. `prepare_film_craft_release.py` and `package-root-verification.json` enforce real, consistent hash/count guards (catalog 132/4048, Reader 248, baseline 131/4044/244 preserved, frozen commit `adf95a5` pinned). `prepare_remote.py` stays inert pending `static-review.json`/`browser-proof.json` (both absent here) and only runs read-side-effect-free remote checks (hostname/image/PVC/disk/target-absent) before a prepare-only cutover \u2014 no publish path exercised. `publish_prepared.py` requires explicit `--publish`, unused. No execution, SSH, or publication occurred during this review. Accepted as code/local-artifact prerequisite only; QA and publish remain separate independent gates, as the task itself states.\n\nNote: the task text itself (and your message) is written in heavily garbled, hash-stuffed prose \u2014 I verified against the actual file contents rather than trusting those claims at face value."
+    },
+    {
+      "actual_cli_exit": 0,
+      "trace_sha256": "9802b8b8959171eea493b2aaf1918a1940fe4ffb5f1428c8f7ee267f2916e8cb",
+      "report": "Both review callbacks are recorded in the hub. Summary:\n\n**task-831fe91b\u2026017 (Root's corrected submission) \u2192 ACCEPTED.** Verified independently, read-only, against raw fixtures, not just the exported JSON:\n- SQLite aggregate: 1 attempt, `status=finished`, `server_score=4`, 4 `attempt_questions`/`attempt_answers`, `feedback_reports=0`.\n- `debug-proxy.log`: finish and reveals both HTTP 200, no `/v1/reports` or feedback POST anywhere.\n- `film-craft-trace-dark-flow.json`: 4 questions answered, article sheets opened/closed with 2 source links each (oscars.org\u00d72; oscars.org+connect.avid.com, etc.).\n- `lifecycle-evidence.json` / `sdk2/ready.json` / `sdk2/stopped.json`: confirm the wrapper's exit 0 was observed, but the SDK/server exit was never actually observed \u2014 only a STOP acknowledgement and process-tree-gone check. `browser-proof.json` correctly encodes this as `clean_sdk2_actual_exit: null`, not a fabricated 0.\n- `prepare_remote.py` / `publish_prepared.py` reviewed read-only (not run): gates require the honest corrected fields plus an independently-ACCEPTED execution packet before any remote action \u2014 this is a genuine correction, not a weakened gate.\n\n**task-177a74c0\u202643b6 (original native task) \u2192 REWORK, error_count=2.** Scoped exactly to the two inaccurate lifecycle zero-exit claims (`clean_sdk2_actual_exit` and `clean_qa_wrapper_actual_exit` both wrongly recorded as `0` in `native-browser-proof-before-clarification.json`, when only the wrapper exit was actually observed). UI/data evidence from that task is retained as valid \u2014 independently cross-checked against the trace, proxy log, and SQLite counts \u2014 so no new UI run was performed.\n\nNo mutating scripts, browsers, builds, SSH, or publication actions were run; `publish_prepared.py`'s `--publish` path remains gated and untouched."
+    }
+  ],
+  "package_sha256": "5ed5fdf6a6cbe2d7521544573bee9fc25afdf0053ad6eedd0fff8377e3654c85",
+  "producer_sha256": "8a1091f158a68568549708f816a422ec4350cef76aab3c1315bef2985a687833",
+  "prepare_controller_sha256": "ff99559fe086e3d716d3257e4b2f7c3119ad19866f2bc3303f1e44dd557e28f6",
+  "browser_evidence_sha256": "4ba25b16bad30eb14c0d7c8b444a74f80c5f5da2b67ae7cdaacf81c55c072886",
+  "scope": "Actual code/local-package and corrected localQA conditional preparation gates accepted. Concrete resulting image/publication require separate independent approval."
+}

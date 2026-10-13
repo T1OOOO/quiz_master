@@ -1,0 +1,27 @@
+{
+  "failed_v1_archive": "e6a26225619149708c8fb2c3ac93a42cadf095efb68c9b6d9136549a20163083",
+  "actual_prepare_exit": 1,
+  "diagnosis": {
+    "before_after": [
+      {
+        "path": "/opt/quiz-master/backups/quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+        "integrity": "ok",
+        "cache_rows": 257
+      },
+      {
+        "path": "/opt/quiz-master/releases/quiz-2026.10.13-film-craft-c74253f/rehearsal-quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z/quiz.sqlite",
+        "integrity": "ok",
+        "cache_rows": 389
+      }
+    ],
+    "delta": 132
+  },
+  "root_cause": "Producer added pack132 but inherited rehearsal guard demanded131 cache imports. Actual copied database delta132 and integrityok. Production untouched; preparation stopped before image build.",
+  "v2_changed_files": [
+    "checksums.txt",
+    "rehearse.py"
+  ],
+  "new_archive_sha256": "6c016f7aa708e419af7afef13ccccec4c49e1a8c6806df7f9fa56b82ed25d621",
+  "producer_sha256": "9ec4037cbaba4a5a6d436c2ecc9981b980c1e8f6b62f75f0872a27aeceedc767",
+  "source_and_compiled_assets_unchanged": true
+}

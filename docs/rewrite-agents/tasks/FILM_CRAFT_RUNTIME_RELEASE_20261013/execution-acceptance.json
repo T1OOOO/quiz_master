@@ -1,0 +1,63 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "actual_review": {
+    "call": {
+      "action": "review",
+      "arguments": {
+        "task_id": "task-fae2e3a4efa646f6bf2b47f286f71901",
+        "verdict": "accept",
+        "note": "Independent read-only review (Claude/Sonnet 5). Verified directly: sha256(publish_prepared.py)=8df38b18d5...e09e30ba8d41 matches execution-packet.json publisher_controller_sha256; sha256(publish-prepared-preview.sh)=48b10b972e...fb76be763e0 matches publish_script_sha256 pin -- no publisher/shell bytes changed since the prior REWORK review (confirmed real and distinct-session via hub_message search, id 37320). save_execution_acceptance.py is a sound fail-closed writer: it asserts actual_exit==0 from a session exit file, then scans the actual session trace JSONL for a real tool_result from hub_task review with action=review, matching task_id, verdict=accept, non-error, and a parsed response with id==task_id and state==ACCEPTED; absent that, it writes nothing. It also binds package_sha256 from execution-packet.json to package-current.json's archive_sha256 before writing. It contains no SSH/publish/deploy call. publish_prepared.py's --publish path remains gated: requires execution-acceptance.json with actual_hub_state==ACCEPTED, re-verifies all package/image/script/controller/QA hashes and frozen-source git ancestry, refuses if source changed after the frozen commit, and only then runs the already-reviewed SSH publish command; default/--preview modes stay local and read-only. This is a legitimate approval handoff, not a bypass -- it cannot be satisfied by hand-writing the artifact or by a hallucinated acceptance.",
+        "error_count": 0
+      }
+    },
+    "actual_response": {
+      "acceptance": [
+        "Actual prepared image/copyDB/backup evidence",
+        "Exact reviewed publisher source and shell hash",
+        "Consumes immutable image, fresh backup and atomic upgrade, no rebuild"
+      ],
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RUNTIME_RELEASE_20261013"
+      ],
+      "assignee": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+      "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+      "body": "The corrected adf95 candidate completed remote preparation with actual exit0. Copied database rehearsal checked132 imports,9 canonical packs144 questions plus55NewYear questions,10finished practice attempts, preserved original rows and feedback lifecycle, SQLite integrity, oldAPIrollback. Prepared immutable image6d2a, imagearchivea9a674, backup0600integrityok, Helm lint/template/server dryrun passed; app production remains oldHelm48/8e. Exact inert publisher/script and execution-packet now ready for independent final review. Requires currentQA correction acceptance, source/asset/archive/image/log hashes, no runtime changes afterfrozen source, fresh backup/rehearsal/capacity and consumes preparedimage without rebuild before atomicHelm. Public verification follows separately. No publication yet.",
+      "created_at": 1791915614.6180565,
+      "depth": 0,
+      "difficulty": 3,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-fae2e3a4efa646f6bf2b47f286f71901",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "evidence": [
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/EXECUTION_ACCEPTANCE_HANDOFF.md",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/save_execution_acceptance.py",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/execution-packet.json",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RUNTIME_RELEASE_20261013/publish-prepared-preview.sh"
+        ],
+        "summary": "Review1 verified everyhash/source guard and exactshell; futureapproval file intentionally absent. Added concrete approvalwriter requiring actual independentACCEPTED callback before writingexecution-acceptance. Publisher/shell/image/source remainunchanged. No fakeacceptance or publication."
+      },
+      "review_note": "Independent read-only review (Claude/Sonnet 5). Verified directly: sha256(publish_prepared.py)=8df38b18d5...e09e30ba8d41 matches execution-packet.json publisher_controller_sha256; sha256(publish-prepared-preview.sh)=48b10b972e...fb76be763e0 matches publish_script_sha256 pin -- no publisher/shell bytes changed since the prior REWORK review (confirmed real and distinct-session via hub_message search, id 37320). save_execution_acceptance.py is a sound fail-closed writer: it asserts actual_exit==0 from a session exit file, then scans the actual session trace JSONL for a real tool_result from hub_task review with action=review, matching task_id, verdict=accept, non-error, and a parsed response with id==task_id and state==ACCEPTED; absent that, it writes nothing. It also binds package_sha256 from execution-packet.json to package-current.json's archive_sha256 before writing. It contains no SSH/publish/deploy call. publish_prepared.py's --publish path remains gated: requires execution-acceptance.json with actual_hub_state==ACCEPTED, re-verifies all package/image/script/controller/QA hashes and frozen-source git ancestry, refuses if source changed after the frozen commit, and only then runs the already-reviewed SSH publish command; default/--preview modes stay local and read-only. This is a legitimate approval handoff, not a bypass -- it cannot be satisfied by hand-writing the artifact or by a hallucinated acceptance.",
+      "reviewer": "session-474942a0186040f8903bff93a28668dc",
+      "root_task_id": "task-fae2e3a4efa646f6bf2b47f286f71901",
+      "run_id": "run-ae0a89734a1c411d89530e31ccb35dcb",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+      "title": "quiz_master-51i prepared immutable image and exact publication command",
+      "version": 7
+    }
+  },
+  "package_sha256": "5ed5fdf6a6cbe2d7521544573bee9fc25afdf0053ad6eedd0fff8377e3654c85",
+  "image": "sha256:6d2a206a6994b792bcc08fb0c05b5f36cbcb8c6983a6b76088a63471ab75daa6",
+  "publish_script_sha256": "48b10b972e66d59cdd048f553d6f4848e8af4d64374abdd757ef4fb76be763e0",
+  "publisher_controller_sha256": "8df38b18d512eb967f811ce13461f8c67fa1989f94e42d5a8ef7e09e30ba8d41",
+  "local_browser_evidence_sha256": "4ba25b16bad30eb14c0d7c8b444a74f80c5f5da2b67ae7cdaacf81c55c072886",
+  "report": "## Review recorded: ACCEPTED\n\nCallback from `host_hub`: `task-fae2e3a4efa646f6bf2b47f286f71901`, `run-ae0a89734a1c411d89530e31ccb35dcb`, `state: \"ACCEPTED\"`, reviewer `session-474942a0186040f8903bff93a28668dc` (this session), `version: 7`.\n\n**What I actually checked, not just read:**\n- Hashed `publish_prepared.py` and `publish-prepared-preview.sh` directly \u2014 they match `publisher_controller_sha256` and `publish_script_sha256` in `execution-packet.json` exactly. No publisher/shell bytes changed since the prior review.\n- Confirmed in the real broker (not the task text) via `hub_message search` that a genuine prior `REWORK` verdict (message 37320) was recorded by a *different* session on this same task \u2014 the handoff's claim about a prior independent review is corroborated by actual broker records, not just asserted.\n- Read `save_execution_acceptance.py` line by line: it only writes `execution-acceptance.json` if the session trace contains a real `tool_result` for a `hub_task review` call with this exact `task_id`, `verdict=accept`, non-error, and a parsed response with `state==\"ACCEPTED\"` \u2014 i.e. it requires a genuine broker-confirmed acceptance, not a hand-typed or hallucinated one. It also binds the package hash and contains no SSH/deploy call.\n- Read `publish_prepared.py`'s `--publish` path: it still independently re-verifies all package/image/script/controller/QA hashes and frozen-source git ancestry, refuses on source drift, and only then runs the already-reviewed SSH command \u2014 gated behind an explicit flag not exercised here.\n\nThis matched the pattern of a fail-closed approval handoff rather than a bypass, so I recorded `accept` with that reasoning in the note (above). I did not edit, build, publish, SSH, or spawn anything \u2014 only `hub_connect`, `hub_team join`, `hub_message search`, file hashing/reading, and the one `hub_task review` call.",
+  "trace_sha256": "b05ba87de28d731e739d74b5e68d5b12cac330ca57491122a94e212654199bbb",
+  "scope": "Independent approval of this exact prepared image/publication command; public execution and verification follow separately."
+}

@@ -1,0 +1,146 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-8ed87bfc28b040318c241972df85494b": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-8ed87bfc28b040318c241972df85494b",
+          "verdict": "accept",
+          "note": "Verified producer SHA fe0069d0...08ee6bd0, archive SHA e6a26225...163083 on disk, baseline Helm48 archive/image/PVC pins, frozen commit c74253f, counts 132/4048/248 preserving 131/4044/244/8-cache, duplicated nginx check in cutover.sh confirmed harmless. Self-test correctly scoped as static echo only."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Helm48 pins and all existing guards retained",
+          "Fail-closed inert producer for frozen4craft source/ref/cache",
+          "Minimal documented delta and real syntax/negative evidence",
+          "No publication claim"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-8091300ad8cc4a77b6f25ba25a494570",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "Native helper owns only new FILM_CRAFT_RELEASE_20261013/worker and own scratch worker. Inert minimal clone of prior reviewed producer with actualHelm48 archive009e/image8e baseline and frozen132/4048/248/fourcraft refs. Preserve8oldruntimeentries/4044oldquestions/244oldarticles and target/config/backup/rollback/image/cutover guards. No build/package execution/compression/server/Git/asset mutation or children. Exact English packet already delivered; Root executes gated operations later.",
+        "created_at": 1791908130.516933,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-8ed87bfc28b040318c241972df85494b",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "artifacts": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RELEASE_20261013\\worker\\prepare_film_craft_release.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RELEASE_20261013\\worker\\README.md"
+          ],
+          "evidence": [
+            {
+              "check": "python -m py_compile docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/worker/prepare_film_craft_release.py",
+              "detail": "Controller syntax compiled.",
+              "status": "PASS"
+            },
+            {
+              "check": "python prepare_film_craft_release.py ... --self-test",
+              "detail": "Returned counts 132/4048/248 and runtime entries 8/9 with writes:none.",
+              "status": "PASS"
+            },
+            {
+              "check": "invalid --frozen-commit --self-test",
+              "detail": "Rejected before output-root creation.",
+              "status": "PASS"
+            },
+            {
+              "check": "git diff --check -- docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/worker",
+              "detail": "No whitespace errors.",
+              "status": "PASS"
+            }
+          ],
+          "limits": [
+            "No package/build/compression/server/browser/Helm execution occurred.",
+            "Root must supply fresh matching Flutter output before controlled package execution.",
+            "Independent review and all rehearsal/release gates remain required.",
+            "No publication is asserted."
+          ],
+          "sha256": {
+            "controller": "fe0069d0b42554fb3c395e6edf340787be0f5f7bae5d406b2aed09d808ee6bd0",
+            "readme": "f57b33648db0e5dc2a2c17c5c8b11e7c11ad6408eb2b2053e226c5a5d4ba6383"
+          },
+          "summary": "Inert Film Craft release-package controller delivered. It has not been executed as a package producer."
+        },
+        "root_task_id": "task-8ed87bfc28b040318c241972df85494b",
+        "run_id": "run-083302c5e16448e1b93507c3a2212abd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i: inert film craft release producer against Helm48",
+        "version": 4,
+        "reviewer": "session-65bb6abdbc5a4b4a94dc20e9488fe721",
+        "review_note": "Verified producer SHA fe0069d0...08ee6bd0, archive SHA e6a26225...163083 on disk, baseline Helm48 archive/image/PVC pins, frozen commit c74253f, counts 132/4048/248 preserving 131/4044/244/8-cache, duplicated nginx check in cutover.sh confirmed harmless. Self-test correctly scoped as static echo only."
+      },
+      "success": true
+    },
+    "task-5f68e21a651a49158a48c1cb89be1f69": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-5f68e21a651a49158a48c1cb89be1f69",
+          "verdict": "accept",
+          "note": "Reviewed prepare_remote.py: reacquires DEPLOY.lock, fresh-disk/absent-target/image/PVC/hostname checks pre-transfer and pre-cutover, checksum-verified scp, symlink-safe realpath, syntax gates before unlock. Inert pending Root invocation post-acceptance. browser-proof.json shows clean SDK2 run, 4/4 answers/articles, score4, console0, 11 PIDs reaped, exits0. Known cutover df-guard gap is pre-existing and out of scope."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Exact archive/controller pins and safe target guards",
+          "Actual package positive/negative/current counts and preserved olddata",
+          "Local browser proof exactscope and lifecycle",
+          "No remote prepare or publication yet; independent approval needed"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RELEASE_20261013",
+          "C:\\ap\\quiz_master\\.run\\film_craft_release_20261013"
+        ],
+        "assignee": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "Root actual generated package-v1 againstHelm48 archive009e baseline; archivee6a262, producerfe0069, frozenappc74253f/newcompiledJS646ec. All131oldmetadata244articles4044questionJSON files preserved; new132/4048/248 cache8to9. Actual clean mobile390 browser4answers4articles2sources each, FinishHTTP200/serverScore4, console0 and exact11ownprocessPIDs gone. Inert remote prepare controller checks review hashes, localQA, targetimage/PVC/symlink paths/freshdisk, before transfer/extract/checksum/syntax/copiedDB/image preparation. Remote notexecuted; Rootrequires actual independent review.",
+        "created_at": 1791911078.7467175,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-5f68e21a651a49158a48c1cb89be1f69",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/package-v1.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/package-root-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/browser-proof.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/prepare_remote.py"
+          ],
+          "summary": "Actual local archive/browser/controller ready for independent static gate; no remote execution."
+        },
+        "root_task_id": "task-5f68e21a651a49158a48c1cb89be1f69",
+        "run_id": "run-ec30201ca2f247e28406748a2c5f8773",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i: exact film craft release preparation gates",
+        "version": 4,
+        "reviewer": "session-65bb6abdbc5a4b4a94dc20e9488fe721",
+        "review_note": "Reviewed prepare_remote.py: reacquires DEPLOY.lock, fresh-disk/absent-target/image/PVC/hostname checks pre-transfer and pre-cutover, checksum-verified scp, symlink-safe realpath, syntax gates before unlock. Inert pending Root invocation post-acceptance. browser-proof.json shows clean SDK2 run, 4/4 answers/articles, score4, console0, 11 PIDs reaped, exits0. Known cutover df-guard gap is pre-existing and out of scope."
+      },
+      "success": true
+    }
+  },
+  "report": "Both tasks reviewed and recorded as **ACCEPTED**:\n\n- **task-8ed87bfc28b040318c241972df85494b** (inert producer): producer hash, archive hash, counts, and baseline pins all verified against actual files on disk.\n- **task-5f68e21a651a49158a48c1cb89be1f69** (remote controller + browser proof): prepare_remote.py guards verified by reading the script; browser-proof.json claims match stated scope.\n\nPreparation is approved; remote invocation and publication remain separately gated per the controller's own `remaining_gates`.",
+  "trace_sha256": "f188aef3ce0762b31387a39eaf253dbcf22f12ff755edee8d4cbccfea1f6a6ff",
+  "package_sha256": "e6a26225619149708c8fb2c3ac93a42cadf095efb68c9b6d9136549a20163083",
+  "producer_sha256": "fe0069d0b42554fb3c395e6edf340787be0f5f7bae5d406b2aed09d808ee6bd0",
+  "scope": "Local package and remote preparation approved; publication separately gated."
+}

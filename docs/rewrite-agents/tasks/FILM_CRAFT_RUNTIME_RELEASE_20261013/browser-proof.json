@@ -1,0 +1,64 @@
+{
+  "frozen_source": {
+    "git_revision": "adf95a57594158308c94ee2bff1cb5ca9c9c0684",
+    "qa_main_dart_js_sha256": "973B299BF5AA26B8266BF1CAA42DD4C114789145146757766D3CAFCE66006A38",
+    "api_sha256": "4EE698107118A45C5DA45BF87E1FAA687540DC282DD0059341D9C402A6AEDB4A",
+    "bundle_sha256": "E582313D7C94376ECDB12BFDC7D34E0C43562D5BC74206DB8DB045ED1A6E4427",
+    "manifest_sha256": "054BE48D197A6D64C45FB958898933238F827341126781BC94CA83D9DA71D540"
+  },
+  "actual_viewport": "390x844x1,mobile,touch",
+  "actual_clean_ui_answers": 4,
+  "actual_clean_server_score": 4,
+  "new_article_sheets_opened_closed": 4,
+  "source_controls_each": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "feedback_submissions": 0,
+  "http_finish_status": 200,
+  "http_reveals_status": 200,
+  "console_errors": 0,
+  "console_warnings": 0,
+  "console_issues": 2,
+  "no_external_source_navigation": true,
+  "clean_sdk2_actual_exit": null,
+  "ports18090_18093_free": true,
+  "proof_artifacts": {
+    "trace_sha256": "536C98780133C78621811F30ADC52492ED835F3A701BFF2BF55D97230FCF534F",
+    "proxy_log_sha256": "037AD8FEDB91F36846B1D9FA0C797A900161A1BECD607B95C0F1E81DD335DE97",
+    "sqlite_sha256": "BA62705ABCC9BE11B214057FBA984703B9FE8AD4A36C9C0B7762B7FA61345E68",
+    "screenshots": "local-browser/question-1..4, article-1..4, article-1..4-sources, feedback-1..4-paused, results-mobile390.jpeg"
+  },
+  "lifecycle": {
+    "server_pid": 39556,
+    "server_child_pid": 14432,
+    "api_pid": 4688,
+    "sdk_wrapper_pid": 28900,
+    "intentional_stop": true,
+    "process_tree_gone_verified": true,
+    "api_exit_code": "terminated_intentionally; Windows exit code not observed",
+    "browser_mcp_stop_evidence": ".run/film_craft_runtime_browser_20261013/sdk2/stopped.json",
+    "sdk_client_pid": 1228,
+    "sdk_exit_code": "not observed; STOP acknowledged and process disappearance checked",
+    "node_chrome_child_pid_list": "not captured; no child PID claim"
+  },
+  "root_visual_inspection": "completed: all4questions/options fit390x844, all4sourcefooters and finalscore4 inspected",
+  "scope": "local-only QA fixture; no production navigation or publication claim",
+  "remaining_limits": [
+    "Server/API intentionally force terminated and exit codes not observed. Only QA flow exit0 observed; SDKSTOP ack observed, SDK exitcode unknown.",
+    "No reliable Node/Chrome childPIDlist captured; Root direct inventory found no matching isolated headless server/browser processes.",
+    "Two issue notices: deprecated feature and missing form id/name; console errors/warnings0.",
+    "Local canonical fixture only; actual raw runtime/container parity remains copiedDBreleasegate."
+  ],
+  "clean_qa_flow_actual_exit": 0,
+  "clean_sdk2_stop_acknowledged": true,
+  "fixture_processes_gone_verified": true,
+  "root_cleanup_check": {
+    "sdk_client1228_gone": true,
+    "isolated_headless_devtools_node_count": 0,
+    "isolated_devtools_chrome_count": 0,
+    "method": "Read-only CIM process inventory; no unrelated processes stopped."
+  }
+}

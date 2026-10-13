@@ -1,0 +1,56 @@
+{
+  "frozen_source": "adf95a57594158308c94ee2bff1cb5ca9c9c0684",
+  "build_id": "quiz-2026.10.13-film-craft-adf95a5",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\film_craft_runtime_release_20261013\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.13-film-craft-adf95a5",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 73.95,
+      "output": "C:\\ap\\quiz_master\\.run\\film_craft_runtime_release_20261013\\production-web",
+      "log_sha256": "01f3e9af8dc866b47ae1da113cb0d72f89cd3bf1167666bb22d00b6857b15612",
+      "main_dart_js_sha256": "c883c9032972fc729feffe33034cd84f5b0f3e8297ae3364257fce6be4fa2296",
+      "frozen_assets_byte_identical": true
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\film_craft_runtime_release_20261013\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-film-craft-local-adf95a5",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:18090"
+      ],
+      "elapsed_seconds": 71.84,
+      "output": "C:\\ap\\quiz_master\\.run\\film_craft_runtime_release_20261013\\qa-web",
+      "log_sha256": "c4e7a6e354696556b73f12b9a3158c4f1b61fe6fe7210fb17ed4c4f588a9dadd",
+      "main_dart_js_sha256": "973b299bf5aa26b8266bf1caa42dd4c114789145146757766d3cafce66006a38",
+      "frozen_assets_byte_identical": true
+    }
+  ],
+  "scope": "Fresh Flutter Web production and isolated QA compiler outputs, with frozen132/4048/248 assets. Package/browser/copiedDB/release/publication gates separate.",
+  "limits": [
+    "No physical Android build/device or hot reload claim."
+  ]
+}

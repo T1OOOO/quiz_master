@@ -1,0 +1,61 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-dda0b9ed349349238eea3b1d917fc67e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-dda0b9ed349349238eea3b1d917fc67e",
+          "verdict": "accept",
+          "note": "Verified on disk: v3 vs v1 staged dirs differ only in rehearse.py/checksums.txt (diff -rq confirmed). rehearse.py correctly updates bundle-cache guard 131->132 and history assertion 9->10. v2 only fixed 131->132, leaving history==9 stale (confirmed via diff) - v3's extra fix is real. package-v3-root-verification.json shows matching hashes, 132/4048/248 counts, negative cases intact. prepare_remote_v3.py read-only verified: gated on absent static-review-v3.json (inert), preserves failed v1 via rename not delete, runs cutover.sh prepare only, no Helm upgrade/publish. No fabrication detected."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Bothactualstale guards corrected withoutappchanges",
+          "Exactv3preservation",
+          "Safeownfailedv1 preservation andpreparationonly"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FILM_CRAFT_RELEASE_20261013"
+        ],
+        "assignee": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "author": "session-b1fd7c3d689446bdbbdce68f9f34d26e",
+        "body": "Final correction after v1 actual failed cache131 assertion: actualcopydelta132; Root also found stale rollback-history9 since ninecanonical plusnewyear=>10. Producer now validates oneanchor each and adjusts132/10. Actual regenerated v3 onlyrehearse/checksums differfromv1, same frozenappc74253f andcompiledassets. Package6c016f, producer9ec403, currentpackagev3; allpositive/negative preservation gates rerun. prepare_remote_v3 preserves failedownv1underlock/checksum/identity realpath before corrected retry, no publication. LocalQA accepted. Review actual artifact files and exactsubmission exported submitted-v3-task.json; no historypaging needed.",
+        "created_at": 1791912204.7886138,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-dda0b9ed349349238eea3b1d917fc67e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/package-current.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/package-v3-root-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_RELEASE_20261013/prepare_remote_v3.py"
+          ],
+          "summary": "Finallocalv3correction verified; remote retry notrun. Includesactualfailedv1proof andRootadditionalhistoryguardrepair."
+        },
+        "root_task_id": "task-dda0b9ed349349238eea3b1d917fc67e",
+        "run_id": "run-478867850dcb4c37a29269116e436c41",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-b10f69af564741c497e6b597c3e51d3d",
+        "title": "quiz_master-51i final v3 minimal rehearsal repair and preparation retry",
+        "version": 4,
+        "reviewer": "session-81f39da54787446aabf6252ec4c190ee",
+        "review_note": "Verified on disk: v3 vs v1 staged dirs differ only in rehearse.py/checksums.txt (diff -rq confirmed). rehearse.py correctly updates bundle-cache guard 131->132 and history assertion 9->10. v2 only fixed 131->132, leaving history==9 stale (confirmed via diff) - v3's extra fix is real. package-v3-root-verification.json shows matching hashes, 132/4048/248 counts, negative cases intact. prepare_remote_v3.py read-only verified: gated on absent static-review-v3.json (inert), preserves failed v1 via rename not delete, runs cutover.sh prepare only, no Helm upgrade/publish. No fabrication detected."
+      },
+      "success": true
+    }
+  },
+  "report": "Both verdicts recorded.\n\n**Review: task-dda0b9ed (v3) \u2014 ACCEPT.** Staged v3 vs v1 differ only in `rehearse.py`/`checksums.txt` (verified via `diff -rq`); the guard fixes (bundle-cache 131\u2192132, history 9\u219210) are real and correct. Hash/count verification files match. `prepare_remote_v3.py` is read-only verified: gated on absent `static-review-v3.json` (currently inert), preserves failed v1 by rename (no deletion), runs `cutover.sh prepare` only \u2014 no Helm upgrade or publish step. No fabrication found.\n\n**Review: task-ba743367 (v2) \u2014 REWORK.** Confirmed by diff that v2 fixed only the 131\u2192132 guard and left the history assertion stale at 9; v3 is the actual fix.",
+  "trace_sha256": "43bbbec68449fbe14cfd3c0dffc0ab12fcf86e25141b1984114dc2f41800359a",
+  "package_sha256": "6c016f7aa708e419af7afef13ccccec4c49e1a8c6806df7f9fa56b82ed25d621",
+  "producer_sha256": "9ec4037cbaba4a5a6d436c2ecc9981b980c1e8f6b62f75f0872a27aeceedc767",
+  "scope": "Local package and remote preparation approved; publication separately gated."
+}

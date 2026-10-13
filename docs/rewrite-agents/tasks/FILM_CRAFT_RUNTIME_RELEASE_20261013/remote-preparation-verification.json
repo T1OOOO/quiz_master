@@ -1,0 +1,36 @@
+{
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T180438Z.sqlite",
+  "backup_sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      123,
+      123,
+      695,
+      257,
+      15237,
+      1422
+    ],
+    "post_migration_counts": [
+      123,
+      123,
+      695,
+      389,
+      15237,
+      1422
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok"
+  },
+  "copied_db_rehearsal_sha256": "e49b9f32a02e3b5ebbca05c36c29536ae9df4bc5d70eb3f8ab5eb20b3d34f584",
+  "copy_rehearsal_finished_trials": 10,
+  "copy_rehearsal_score_sum": 199,
+  "helm_dryrun_sha256": "0b26042cb9091f91e558b328b6a4a43256996dce9da5c5d067450e6d414fd769",
+  "durable_archive_sha256": "a9a674a644d3ba2955210673e01e401fa9cdfd541a6f6d8aa6986c2d73eccbf3",
+  "disk_free_bytes": 7532523520,
+  "checked_utc": "2026-10-13T18:08:25.142416+00:00"
+}
