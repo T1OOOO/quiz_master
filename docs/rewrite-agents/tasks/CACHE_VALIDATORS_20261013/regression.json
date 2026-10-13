@@ -1,0 +1,210 @@
+{
+  "image": "quiz-master:quiz-2026.10.13-culture-e437661",
+  "docker_image_id": "sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+  "checks": [
+    {
+      "mode": "baseline",
+      "config_sha256": "ef294b23f292244102f0a501ba198ef01dd4aa0f01839fac3495d82691743c1f",
+      "syntax_check": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful",
+      "fixtures": [
+        {
+          "path": "version.json",
+          "length": 11,
+          "mtime": 0,
+          "initial_headers": {
+            "Server": "nginx",
+            "Date": "Tue, 13 Oct 2026 08:10:58 GMT",
+            "Content-Type": "application/json",
+            "Content-Length": "11",
+            "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "Connection": "close",
+            "ETag": "\"0-b\"",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "no-cache",
+            "Accept-Ranges": "bytes"
+          },
+          "conditional_checks": [
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\""
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "request_headers": {
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\"",
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          ]
+        },
+        {
+          "path": "main.dart.js",
+          "length": 11,
+          "mtime": 0,
+          "initial_headers": {
+            "Server": "nginx",
+            "Date": "Tue, 13 Oct 2026 08:10:58 GMT",
+            "Content-Type": "application/javascript",
+            "Content-Length": "11",
+            "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "Connection": "close",
+            "ETag": "\"0-b\"",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "no-cache",
+            "Accept-Ranges": "bytes"
+          },
+          "conditional_checks": [
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\""
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "request_headers": {
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\"",
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 304,
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "fixed",
+      "config_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+      "syntax_check": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful",
+      "fixtures": [
+        {
+          "path": "version.json",
+          "length": 11,
+          "mtime": 0,
+          "initial_headers": {
+            "Server": "nginx",
+            "Date": "Tue, 13 Oct 2026 08:11:00 GMT",
+            "Content-Type": "application/json",
+            "Content-Length": "11",
+            "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "Connection": "close",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "no-cache",
+            "Accept-Ranges": "bytes"
+          },
+          "conditional_checks": [
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\""
+              },
+              "status": 200,
+              "body_sha256": "49c987621f206f09e5fbe23b516b55a36f838cb14867961f1d84a554d3a35b6b"
+            },
+            {
+              "request_headers": {
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 200,
+              "body_sha256": "49c987621f206f09e5fbe23b516b55a36f838cb14867961f1d84a554d3a35b6b"
+            },
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\"",
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 200,
+              "body_sha256": "49c987621f206f09e5fbe23b516b55a36f838cb14867961f1d84a554d3a35b6b"
+            }
+          ]
+        },
+        {
+          "path": "main.dart.js",
+          "length": 11,
+          "mtime": 0,
+          "initial_headers": {
+            "Server": "nginx",
+            "Date": "Tue, 13 Oct 2026 08:11:00 GMT",
+            "Content-Type": "application/javascript",
+            "Content-Length": "11",
+            "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "Connection": "close",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Cache-Control": "no-cache",
+            "Accept-Ranges": "bytes"
+          },
+          "conditional_checks": [
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\""
+              },
+              "status": 200,
+              "body_sha256": "fe8cc314a5e15695aaf3f6665dea5cb1113a3b3d06f2388a5d1e5e20690b458d"
+            },
+            {
+              "request_headers": {
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 200,
+              "body_sha256": "fe8cc314a5e15695aaf3f6665dea5cb1113a3b3d06f2388a5d1e5e20690b458d"
+            },
+            {
+              "request_headers": {
+                "If-None-Match": "\"0-b\"",
+                "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"
+              },
+              "status": 200,
+              "body_sha256": "fe8cc314a5e15695aaf3f6665dea5cb1113a3b3d06f2388a5d1e5e20690b458d"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Synthetic equal-length static fixtures; no API, database or browser interaction",
+    "Disposable loopback containers only; production deployment unchanged"
+  ],
+  "production_before": {
+    "image": "docker.io/library/quiz-master@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+    "ready": 1,
+    "available": 1,
+    "deployment_generation": 45
+  },
+  "production_after": {
+    "image": "docker.io/library/quiz-master@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+    "ready": 1,
+    "available": 1,
+    "deployment_generation": 45
+  }
+}

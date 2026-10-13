@@ -1,0 +1,72 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-3bad1bb3966d4b77978781b0e1b191fd",
+  "reviewer": "session-6ca43773c8a548bab516d3cd3350e96a",
+  "hub_record": {
+    "acceptance": "Exact copied configuration except three added lines, LF bytes, handoff with hashes and honest runtime test limitation. Different-provider review required.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\next\\infra\\production",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CACHE_VALIDATORS_20261013"
+    ],
+    "assignee": "session-2eafc9acce9741b7961381688510565c",
+    "author": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "body": "Copy published Helm46 nginx.conf into tracked next/infra/production/nginx.conf; add only etag off and if_modified_since off plus one reason comment. Own only config and named CONFIG_HANDOFF_EN.md; no tests/build/SSH/Git/children. Root owns real isolated conditional-request regression and release. Project queue waiver applies.",
+    "created_at": 1791878535.93889,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-3bad1bb3966d4b77978781b0e1b191fd",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "next/infra/production/nginx.conf",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/CONFIG_HANDOFF_EN.md"
+      ],
+      "evidence": [
+        {
+          "handoff_sha256": "778D89E22DCC22EC72533EE541F866386B73D33828DE5DEE4DBAF39C464BE699",
+          "kind": "hashes",
+          "source_sha256": "EF294B23F292244102F0A501BA198EF01DD4AA0F01839FAC3495D82691743C1F",
+          "target_sha256": "E9ADD812A138010E443463ACB455295103DC69886CA32CD17DAFBCCFA676D6BC"
+        },
+        {
+          "kind": "exact_copy_check",
+          "result": "UTF-8 normalized source text equals target after removing exactly the one explanatory comment and etag off/if_modified_since off lines."
+        },
+        {
+          "kind": "line_endings",
+          "result": "Target LF; source published artifact had CRLF and was normalized to LF as required."
+        },
+        {
+          "kind": "scope",
+          "result": "No builds, tests, SSH, browser, Git operations or other files."
+        }
+      ],
+      "remaining_risks": [
+        "Runtime ETag/If-Modified-Since conditional-request checks were not run; Root owns them.",
+        "Independent different-provider review pending."
+      ],
+      "runtime_identity": "codex/gpt-5; session-2eafc9acce9741b7961381688510565c",
+      "status": "DONE_WITH_CONCERNS",
+      "summary": "READY for independent review; exact config copy with requested validator directives and handoff doc."
+    },
+    "root_task_id": "task-3bad1bb3966d4b77978781b0e1b191fd",
+    "run_id": "run-2b0974c9e6b0404c850c09f7dc99546a",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-3757c89ef50e4ffa8ae5e721b711ce4b",
+    "title": "quiz_master-74t exact Nginx validator correction",
+    "version": 4,
+    "reviewer": "session-6ca43773c8a548bab516d3cd3350e96a",
+    "review_note": "Independent re-verification by Claude Sonnet 5 (read-only, local checks, no Docker/MCP delegation). nginx.conf: byte-for-byte diff against .run/culture_next7_release_root_20261013/package-v2/quiz-2026.10.13-culture-e437661/nginx.conf confirms the only delta is one explanatory comment plus `etag off;`/`if_modified_since off;` immediately before Cache-Control; every proxy route (/v1/reports, /v1/, health checks, version.json, SPA fallback), security header, and client_max_body_size limit is untouched. Locally recomputed sha256 of both files matches the baseline/fixed config_sha256 values recorded in regression.json exactly (ef294b23... and e9add812...), independently confirming the evidence was produced from these exact files, not substituted. check_cache_validators.py correctly reproduces the bug class: two equal-length, mtime-zero fixtures (version.json, main.dart.js) are rewritten to new equal-length content, and under the baseline config all three conditional-header combinations (If-None-Match, If-Modified-Since, both) return false 304 with empty bodies -- a real repro of stale-ETag/mtime collision, not a synthetic assertion. Under the fixed config the same three combinations all return 200 with the updated bytes, and ETag is absent while the five expected security/cache headers are still asserted present in every response. The script is appropriately isolated: --pull=never, --network=none for syntax check, read-only root with tmpfs /tmp, loopback-only publish, named container removed in a finally block, image inspected but never pulled/replaced. production_before/production_after in regression.json show an unchanged image digest, ready/available counts and deployment_generation (45), supporting the claim that no production rollout occurred. Scope is clean: git status shows only next/infra/production/ (nginx.conf, README.md, Dockerfile.cache-hotfix, check_cache_validators.py) and docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/ as new/untracked, no application, content, or database files touched. harness-v1-error.txt is a plausible, consistent record of a prior unescaped-newline Python syntax failure, not a masked real failure. Dockerfile.cache-hotfix is a minimal FROM-existing-base + COPY-config-only layer, consistent with the configuration-only release proposal (new image digest/Helm revision, unchanged application build identity) -- reviewed only as a proposal, not executed. Limitations of my review: I did not run Docker or the script myself (read-only mandate), did not inspect the live production cluster, and did not review root task task-1d3c57e523074692953b8e4c38c74714 (release preparation), per instructions. Verdict: accept -- the nginx diff matches the stated intent exactly, and the regression test credibly reproduces false 304s pre-fix and correct 200s with updated bytes post-fix for both conditional headers on two independent equal-length/mtime-collision assets."
+  },
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "trace_sha256": "e913f798e4bbca04d93a2dfea484c1b60c2535c4294938ff2502daf6516c70b6",
+  "review_text": "Review complete. I independently verified and recorded an **accept** verdict for task-3bad1bb3966d4b77978781b0e1b191fd (team-3757c89ef50e4ffa8ae5e721b711ce4b), now in state `ACCEPTED`.\n\n**What I checked:**\n- `next/infra/production/nginx.conf` vs the original package nginx.conf: byte-diff shows exactly one comment + `etag off;` + `if_modified_since off;` added, nothing else changed (routes, headers, limits all identical). Recomputed SHA-256 of both files locally and they match the `config_sha256` values baked into `regression.json` (`ef294b23...` baseline, `e9add812...` fixed), so the evidence wasn't produced from substituted files.\n- `check_cache_validators.py`: genuinely reproduces the bug — two equal-length, mtime-zeroed fixtures (`version.json`, `main.dart.js`) get rewritten to new equal-length content; under the old config all three conditional-header combos (If-None-Match / If-Modified-Since / both) return a false `304` with empty body; under the fixed config the same three combos return `200` with the new bytes. Security/cache headers are asserted present in every response; container is isolated (`--pull=never`, `--network=none` for syntax check, read-only mount, tmpfs, loopback-only, cleaned up in `finally`).\n- `regression.json`'s `production_before`/`production_after` show an unchanged image digest and deployment generation — consistent with \"no release occurred.\"\n- Scope: only files under `next/infra/production/` and the task's own handoff doc dir are new/untracked — no content/DB/application changes.\n- `Dockerfile.cache-hotfix` (config-only release proposal) is a minimal `FROM <verified base> + COPY nginx.conf` layer — reasonable as a proposal; I did not execute or endorse running the release itself.\n\n**Limits of my review:** read-only, no Docker/tests run by me, didn't touch the live cluster, and per instructions I did not review the broader root task task-1d3c57e523074692953b8e4c38c74714 (release prep) — that remains open for later.",
+  "limits": [
+    "Source/regression/proposed image layer review only; no execution or publication approval"
+  ]
+}
