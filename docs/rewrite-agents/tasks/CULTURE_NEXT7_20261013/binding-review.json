@@ -1,0 +1,114 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "8exactapproved questions/articles keys cinema2/1/3/0 music0/1/3/2; canonicalprivate/public/revision/Readerbindings; oldobjectsunchanged; actual counts/content/key/privacy/Readerchecks with evidence. DONE notpublication.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\quizzes\\Cinema\\People\\cinema_people_20261011.json",
+      "C:\\ap\\quiz_master\\quizzes\\MusicPeople\\music_people_20261011.json",
+      "C:\\ap\\quiz_master\\next\\content\\cinema-people-20261011",
+      "C:\\ap\\quiz_master\\next\\content\\music-people-20261011",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+      "C:\\ap\\quiz_master\\study\\question_articles",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_20261013",
+      "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013"
+    ],
+    "assignee": "session-211702d7d7fa4aa59792a6d7bc512c48",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Finite8question integration from exact V4 SHA4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082 and actualClaude57 ACCEPT0. Read V4_INTEGRATION_PACKET_EN.md. Own ONLY twoPeoplelegacy/canonicaltriplets, Reader/catalog assets,new8studyprovenance, matchingReaderregression242count/newbindings,newintegrationevidence/scratch. Preserve old48People public/private/metadata/revisions,234Reader and129unrelatedcatalog. Expected131/4044/242 People28each study6/120. Actual quizctl pipeline validation, production/app URI, LFlegacy serialization, nonzero keys, acceptedRuntimeReaderstatus and privategrading/no public answer-tags. NoGitindex/commit/push/browser/SSH/deploy/children; preserveforeignfiles. Actualscopedchecks submit; differentproviderbindingreview beforeRootrelease.",
+    "created_at": 1791866208.4839237,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-c98dedafadb9456ebfeb9fd08a81ddf2",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "quizzes/Cinema/People/cinema_people_20261011.json",
+        "quizzes/MusicPeople/music_people_20261011.json",
+        "next/content/cinema-people-20261011/{draft.json,manifest.json,bundle.json}",
+        "next/content/music-people-20261011/{draft.json,manifest.json,bundle.json}",
+        "next/apps/quiz_app/assets/catalog.json",
+        "next/apps/quiz_app/assets/study/question-articles.json",
+        "next/apps/quiz_app/test/question_articles_test.dart",
+        "study/question_articles/drafts/culture-next7-{cinema,music}-people-025..028.json",
+        "study/question_articles/reviews/culture-next7-20261013.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/INTEGRATION_EVIDENCE_EN.md",
+        ".run/culture_next7_integration_20261013/integration-evidence.json"
+      ],
+      "evidence": [
+        {
+          "command": "Get-FileHash writer-v4.json",
+          "cwd": "C:\\ap\\quiz_master",
+          "exit": 0,
+          "result": "SHA256 4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082"
+        },
+        {
+          "command": "quizctl import/validate/build scoped People triplets with metadata/tags.v1.json",
+          "cwd": "C:\\ap\\quiz_master",
+          "exit": 0,
+          "result": "both canonical drafts and bundles validate at 28 questions; deterministic production /app/quizzes URIs restored and rehashed"
+        },
+        {
+          "command": "quizctl catalog --taxonomy metadata/tags.v1.json --in quizzes --out assets/catalog.json --force",
+          "cwd": "C:\\ap\\quiz_master",
+          "exit": 0,
+          "result": "131 packs"
+        },
+        {
+          "command": "python study/question_articles/build.py --write; --check",
+          "cwd": "C:\\ap\\quiz_master",
+          "exit": 0,
+          "result": "242 independently reviewed accepted articles with exact bindings"
+        },
+        {
+          "command": "flutter test test/question_articles_test.dart",
+          "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+          "exit": 0,
+          "result": "6 tests passed; asserts 242 entries and all eight new exact revision bindings"
+        },
+        {
+          "command": "scoped integration evidence script; JSON parse; git diff --check",
+          "cwd": "C:\\ap\\quiz_master",
+          "exit": 0,
+          "result": "48 old People public/private values, 234 old Reader entries, 129 unrelated catalog entries preserved; totals 131/4044/242, People 28 each, study 6/120; no whitespace errors"
+        }
+      ],
+      "hashes": {
+        "cinema_bundle": "b1c7e9ebaa09271714103b5b337c1c593a1f84f8efca8458b1e854a4a18c7cdf",
+        "music_bundle": "2520b8aad90266f1816bb3bf97c99f4e48f871299fc97caa6a5677a6169392b9",
+        "reader_asset": "3ba9cf629abd72d65a784acfb8dd7f190a81718aec1594c9b316f64f204b9a03",
+        "writer_v4": "4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082"
+      },
+      "limitations": [
+        "No publication, deployment, browser, full Go/Flutter/analyzer gate, or release claim.",
+        "Independent different-provider V4 content review is referenced from claude-v4-review.json; this submission is ready for the required integration review."
+      ],
+      "status": "DONE",
+      "worker_label": "next7-integrate-v4"
+    },
+    "root_task_id": "task-c98dedafadb9456ebfeb9fd08a81ddf2",
+    "run_id": "run-d31619403b6145acbf382fc16f4020c3",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "quiz_master-jrd Next7 V4 deterministic integration",
+    "version": 4,
+    "reviewer": "session-9ffec9039e344514903a57ad1a64be64",
+    "review_note": "Independent Claude Sonnet 5 read-only review of Next7 V4 integration against git baseline 2d5ca11. writer-v4.json sha256 4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082 confirmed, matches the already-accepted claude-v4-review.json (8/8 accept). Root's three final gates (root-gates.json) all actual_exit=0; recomputed sha256 of all three .run logs locally, they match exactly. Disclosed recovery history is genuine, not concealed: root-gates-first.json shows full-go actual_exit=1 (log hash matches), root-gates-second.json shows full-go passed but full-flutter actual_exit=1 (log hash matches), ROOT_GATE_RECOVERY_EN.md truthfully describes both failures plus the harness's utf8-sig->utf-8-sig fix (confirmed in root_parity.py source). git diff on the three fixtures shows only 4036->4044 changed in catalog_test.go, collection_test.go, discovery_test.dart. I independently reconstructed the full parity claim with my own from-scratch script (temp path, no repo writes): catalog unchanged except both People packs 24->28 (28 each), 131 packs/4044 questions; question-articles.json old 234 entries byte-identical, new total 242, confirmed LF-only (no CRLF) after the reported normalization, same content/hashes as before; both People source files LF-only with old 24 rows byte-identical to baseline, new 025-028 rows match writer-v4 text/options/correct_answer; bundle.json files preserve all old private_grading/metadata, new rows have /app/quizzes/ URIs, private correct_option_id aligns with editorial correct_answer (spot-checked cinema-people-026), no grading/correct_answer leak into public objects; each new question's Reader binding is status=accepted with matching revision_sha256/title/body/source_links; NewYear file byte-identical; all 69 foreign files hash-match. Manifest source_sha256 for both triplets matches raw LF source files exactly. Correct-answer indexes exactly cinema 2,1,3,0 / music 0,1,3,2, balanced. All 8 new Reader provenance drafts re-hashed and match the 8 accept verdicts in study/question_articles/reviews/culture-next7-20261013.json exactly. question_articles_test.dart diff adds exactly 8 new revision bindings, 234->242, nothing else; this suite already passed in full-flutter.txt (121 tests). Fact/source content (V4) and the fact-audit-v3-v2 correction were already independently accepted earlier by this same provider; not re-reviewed here. No edits, builds, browser, SSH, deploy, Git mutations, or children used -- read-only diff/hash/JSON inspection plus one local verification script writing only to a temp path outside the repo. Scope: accepts the integration work-product only (canonical triplet correctness, private/public separation, Reader binding, root gate evidence); not a release, publication, or whole-bank/Android/browser certification."
+  },
+  "actual_report": "Review callback succeeded — `task-c98dedafadb9456ebfeb9fd08a81ddf2` is now `state: ACCEPTED` (version 4), verdict `accept`, error_count 0.\n\n**Summary:** Both review assignments are complete.\n\n- **task-a7588… (fact-audit-v3-v2)**: already `ACCEPTED` by a prior Claude session — confirmed via the task record itself, not re-reviewed to avoid duplication. That review verified the v2 correction precisely resolves the one flagged gap (boilerplate sentence in cinema-026/027/028, music-025; cinema-026 ACCEPT→REVISE; totals 0/8/0; everything else byte-identical).\n- **task-c98de… (Next7 V4 integration)**: just submitted and callback accepted (`accept`, error_count 0). Independently re-verified: all three root gates still exit 0 with matching log hashes, the CRLF→LF normalization didn't change JSON content/hashes, parity script output unchanged (131 packs/4044 questions/242 articles, PASS), and my own from-scratch recomputation of the full parity chain (catalog, both People triplets, bundle private/public separation, Reader bindings, foreign-file hashes, manifest SHAs) still checks out exactly as before.\n\nPublication remains a separate, un-started gate.",
+  "raw_trace_sha256": "9d3d2bde0f6b8cd267e27e050b34b5ec3f1b0281f4cdf2ab114d6a2040c71ae3",
+  "prior_resumed_review_exit": "timeout after 480s; original trace preserved; audit report callback accepted before timeout, source integration not accepted by that attempt",
+  "prior_trace_sha256": "b20fd722b9e58b955464c36772ce2adb74e2d76a77f8c3ddef7fee6235e2707d",
+  "limits": [
+    "Audit report and local V4 source integration scopes only",
+    "Fresh builds/browser/package/copied DB/release/publication gates separate",
+    "No whole-bank factual or physical Android certification"
+  ]
+}

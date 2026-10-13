@@ -1,0 +1,182 @@
+{
+  "label": "next7_v3_fact_audit_v2",
+  "status": "DONE_WITH_CONCERNS",
+  "audited_at": "2026-10-13",
+  "reviewer": {
+    "runtime_identity": "codex/gpt-6.1-sol; self-reported, unverified",
+    "hub_session": "session-f81aca412ffc48eea2ae2e06b2aa7e7f"
+  },
+  "derived_from": {
+    "original_report": "fact-audit-v3.json",
+    "original_report_sha256": "B51AA5E4C904CA14AEE1011553EC90E8972CA9F5C074F1905306AE579083CF4A",
+    "review_feedback": "claude-native-v3-audit-review.json",
+    "correction_scope": "This V2 corrects the original report's missed duplicated boilerplate in four V3 article bodies. It reuses the original blind answers, source-access ledger, duplicate check, factual findings, and word counts; it makes no new external retrieval or broad factual certification."
+  },
+  "scope": {
+    "draft": "writer-v3.json",
+    "draft_sha256": "48ACD545D1FE0A7C6BC5D524018583C36390E6B7BB0E70670AF36433B6D476F3",
+    "candidate_first_rule": "candidate-facing-v3.json was read and solved before writer-v3.json or its editorial key was opened",
+    "blind_answers_in_candidate_order": [
+      { "id": "cinema-people-025", "answer": "Тони Люн Чиу-вай", "option_index": 2 },
+      { "id": "cinema-people-026", "answer": "Джули Дэш", "option_index": 1 },
+      { "id": "cinema-people-027", "answer": "Хлоя Чжао", "option_index": 3 },
+      { "id": "cinema-people-028", "answer": "Ялица Апарисио", "option_index": 0 },
+      { "id": "music-people-025", "answer": "Селия Крус", "option_index": 0 },
+      { "id": "music-people-026", "answer": "Дайон Уорвик", "option_index": 1 },
+      { "id": "music-people-027", "answer": "Чака Хан", "option_index": 3 },
+      { "id": "music-people-028", "answer": "Долли Партон", "option_index": 2 }
+    ],
+    "blind_key_comparison": "All eight independently selected options match the private editorial key. This is evidence of answer agreement, not publication approval."
+  },
+  "source_access_summary": {
+    "original_urls_attempted": 16,
+    "opened": 8,
+    "unavailable_to_retrieval": 8,
+    "important_limit": "Unavailable here describes this actual retrieval attempt (HTTP/tool failure or inaccessible URL); it does not certify that a URL is a dead link.",
+    "known_grammy_access_failures": [
+      "https://www.grammy.com/artists/dionne-warwick/7640",
+      "https://www.grammy.com/artists/chaka-khan/11830",
+      "https://www.grammy.com/artists/dolly-parton/5610"
+    ],
+    "ledger_status": "incomplete: the three Grammy URLs were all inaccessible through the actual retrieval tool, and five other original URLs also failed or were inaccessible. Suitable alternatives are recorded per item where opened."
+  },
+  "corpus_duplicate_check": {
+    "files_read": [
+      "quizzes/Cinema/People/cinema_people_20261011.json",
+      "quizzes/MusicPeople/music_people_20261011.json"
+    ],
+    "counts": { "cinema_people": 24, "music_people": 24 },
+    "result": "No exact duplicate among the eight new stems. music-people-028 has a material partial knowledge-point overlap with existing music-people-005: both centre Dolly Parton and I Will Always Love You; the new question adds Jolene and asks authorship, so it is not an exact duplicate but needs editorial replacement or a distinct song pair."
+  },
+  "boilerplate_correction": {
+    "exact_sentence": "Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.",
+    "local_direct_read_occurrences": [
+      "cinema-people-026",
+      "cinema-people-027",
+      "cinema-people-028",
+      "music-people-025"
+    ],
+    "finding": "The sentence is duplicated across four otherwise distinct article bodies and adds generic meta-commentary instead of item-specific, source-supported learning value. Its presence changes cinema-people-026 from ACCEPT to REVISE and adds a removal requirement to the other three affected items."
+  },
+  "items": [
+    {
+      "id": "cinema-people-025",
+      "verdict": "REVISE",
+      "key_check": "Tony Leung Chiu-wai is uniquely correct; the four options are plausible Hong Kong actors and no distractor is defensible for Chow Mo-wan.",
+      "article_words": 96,
+      "finding": "The held V3 structural defect is confirmed: article_body is 96 whitespace-delimited words, below the stated 100-word minimum. The role, Su Li-zhen/Maggie Cheung, spouses' infidelity and Angkor Wat secret claims are supported by the opened BFI pages; the remaining stylistic description should be kept clearly interpretive.",
+      "original_sources": [
+        { "url": "https://www.bfi.org.uk/film/1b8c3bcb-842f-5ba2-90ee-39b6b40b7c21/in-the-mood-for-love", "access": "opened", "evidence": "Credits Tony Leung Chiu-wai and Maggie Cheung." },
+        { "url": "https://www.bfi.org.uk/features/mood-love-wong-kar-wai-emotion", "access": "opened", "evidence": "Identifies Chow Mo-wan as Tony Leung, neighbours Chow and Su, spouses' cheating, and Chow whispering a secret at Angkor Wat." }
+      ],
+      "required_change": "Add at least four meaningful, source-supported words rather than generic padding."
+    },
+    {
+      "id": "cinema-people-026",
+      "verdict": "REVISE",
+      "key_check": "Julie Dash is uniquely correct. The other three are directors, which makes them fair distractors without making the stem ambiguous.",
+      "article_words": 108,
+      "finding": "The opened BFI film page supports Dash as director, the Peazant family on South Carolina's Sea Islands around the turn of the twentieth century, the migration conflict, and Arthur Jafa as cinematographer/co-producer. The opened BFI feature supports the Gullah setting and Lemonade influence. The exact sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’ is duplicated across four V3 articles and is generic meta-padding rather than specific support; this pedagogical defect means the item cannot remain ACCEPT.",
+      "original_sources": [
+        { "url": "https://www.bfi.org.uk/film/21bc3d80-a4fa-59dd-a64c-bc349a1d5aec/daughters-of-the-dust", "access": "opened", "evidence": "Lines 12-24 cover setting, migration conflict, Julie Dash and Arthur Jafa." },
+        { "url": "https://www.bfi.org.uk/features/beyonce-lemonade-julie-dash-daughters-dust", "access": "opened", "evidence": "Lines 19-20 identify Dash and the film as a touchstone for Lemonade." }
+      ],
+      "required_change": "Remove the exact duplicated boilerplate sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’ rather than replace it with generic padding."
+    },
+    {
+      "id": "cinema-people-027",
+      "verdict": "REVISE",
+      "key_check": "Chloé Zhao is uniquely correct; the distractors are comparable contemporary directors but none directed The Rider.",
+      "article_words": 109,
+      "finding": "The BFI film page opens and names Zhao as director and writer. Its cited BFI Zhao profile was inaccessible in this retrieval, so it cannot serve as opened evidence. An opened BFI alternative confirms Brady Jandreau, the injury, family cast and Zhao's direction; replace the inaccessible URL in the source ledger. The article's claim about people close to this world is supportable when narrowed to the real Jandreau family/nonprofessional context. The exact sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’ is duplicated boilerplate and should be removed.",
+      "original_sources": [
+        { "url": "https://www.bfi.org.uk/film/3a634941-a180-503e-b644-6c2e1150112b/the-rider", "access": "opened", "evidence": "Lists Chloé Zhao as director and writer." },
+        { "url": "https://www.bfi.org.uk/features/chloe-zhao-nomadland-profile", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." }
+      ],
+      "opened_alternative": { "url": "https://www.bfi.org.uk/lists/10-great-autumnal-films-21st-century", "evidence": "Names Zhao as director and identifies Brady Jandreau, his brain injury, and real-life father Tim and sister Lilly." },
+      "required_change": "Replace the inaccessible original citation with the opened BFI alternative, specify the nonprofessional/real-family context instead of the broad unsupported wording, and remove the exact duplicated boilerplate sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’"
+    },
+    {
+      "id": "cinema-people-028",
+      "verdict": "REVISE",
+      "key_check": "Yalitza Aparicio is uniquely correct for Cleo; Marina de Tavira is a supporting-role nominee, so the wording 'главную роль' preserves a single best answer.",
+      "article_words": 106,
+      "finding": "The Academy page opens and lists Aparicio as a leading-actress nominee for Roma and de Tavira as supporting-actress nominee. The cited BFI Roma page was inaccessible, so the role claim needs a source replacement. The opened Netflix Media Center/Newsroom pages explicitly identify Cleo as Yalitza Aparicio and describe her as the domestic worker in early-1970s Mexico City. The album/pseudonym sentence is irrelevant filler and should be removed. The exact sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’ is also duplicated boilerplate and should be removed.",
+      "original_sources": [
+        { "url": "https://www.oscars.org/oscars/ceremonies/2019", "access": "opened", "evidence": "Lists Yalitza Aparicio/Roma under Actress in a Leading Role and Marina de Tavira/Roma under Supporting Role." },
+        { "url": "https://www.bfi.org.uk/film/36b901b9-27c7-594a-a560-897b1d7e5a36/roma", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." }
+      ],
+      "opened_alternative": { "url": "https://media.netflix.com/en/only-on-netflix/80240715", "evidence": "Official synopsis: Cleo is played by Yalitza Aparicio; she is a domestic worker for a Mexico City family." },
+      "required_change": "Replace the inaccessible BFI citation with the opened Netflix source, delete the unrelated album/pseudonym sentence, and remove the exact duplicated boilerplate sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’"
+    },
+    {
+      "id": "music-people-025",
+      "verdict": "REVISE",
+      "key_check": "Celia Cruz is uniquely correct. The alternatives are notable Latin singers but do not answer the Sonora Matancera lead-singer clue.",
+      "article_words": 107,
+      "finding": "Both cited Smithsonian URLs failed actual retrieval (one 500, one 404), so the article cannot continue to state that Smithsonian directly supports its claims on this audit evidence. An opened Rock Hall profile directly supports the core fact: Cruz became Sonora Matancera's lead singer and remained so for fifteen years. The source list must be repaired; the claims about her later solo career are supportable but should use an opened source. The exact sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’ is duplicated boilerplate and should be removed.",
+      "original_sources": [
+        { "url": "https://nmaahc.si.edu/latinx/celia-cruz", "access": "failed_http_500", "evidence": "The tool could not open the page; search index excerpt is not substituted for an actual open." },
+        { "url": "https://www.si.edu/spotlight/celia-cruz-salsa", "access": "failed_http_404", "evidence": "The tool returned 404; this does not certify the page is permanently dead." }
+      ],
+      "opened_alternative": { "url": "https://rockhall.com/inductees/celia-cruz/", "evidence": "States that Cruz got her break with Sonora Matancera and remained its lead singer for fifteen years, then moved to a solo career after immigration." },
+      "required_change": "Replace both unavailable URLs with the opened Rock Hall profile (or newly verified Smithsonian replacements), revise attribution from 'Smithsonian calls' accordingly, and remove the exact duplicated boilerplate sentence ‘Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.’"
+    },
+    {
+      "id": "music-people-026",
+      "verdict": "REVISE",
+      "key_check": "Dionne Warwick is uniquely correct. Rock Hall explicitly joins her to Bacharach-David and lists Walk On By; the other singers do not create a defensible competing answer.",
+      "article_words": 103,
+      "finding": "The central fact is well supported by the opened Rock Hall page: Warwick is the voice of Bacharach and David, and Walk On By is listed among her recordings. The cited Grammy URL was inaccessible; because the article invokes it for institutional context, either replace it with an actually opened authoritative source or remove that claim.",
+      "original_sources": [
+        { "url": "https://rockhall.com/inductees/dionne-warwick/", "access": "opened", "evidence": "Calls Warwick the voice of the Bacharach-David team and lists Walk On By on Make Way for Dionne Warwick (1964)." },
+        { "url": "https://www.grammy.com/artists/dionne-warwick/7640", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." }
+      ],
+      "required_change": "Repair or remove the Grammy-based institutional-context sentence; retain the Rock Hall evidence for the answer."
+    },
+    {
+      "id": "music-people-027",
+      "verdict": "REVISE",
+      "key_check": "Chaka Khan is uniquely correct. The Rock Hall profile links Rufus and I'm Every Woman directly; none of the other singers satisfies both clues.",
+      "article_words": 102,
+      "finding": "Rock Hall supports Khan's progression from Rufus to I'm Every Woman and dates the song to Chaka (1978). The cited Grammy URL was inaccessible, yet the article says its catalog provides context. Replace it with an opened source or remove that unsupported reference. The question correctly avoids confusing Khan's recording with authorship of the song.",
+      "original_sources": [
+        { "url": "https://rockhall.com/inductees/chaka-khan/", "access": "opened", "evidence": "States her evolution from Rufus to I'm Every Woman and lists the 1978 Chaka album." },
+        { "url": "https://www.grammy.com/artists/chaka-khan/11830", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." }
+      ],
+      "required_change": "Repair or remove the Grammy-context assertion."
+    },
+    {
+      "id": "music-people-028",
+      "verdict": "REVISE",
+      "key_check": "Dolly Parton is uniquely correct; all alternatives are country singers but none wrote both named songs.",
+      "article_words": 106,
+      "finding": "Both original URLs were inaccessible, including the Grammy URL. An opened Library of Congress Magazine page is a suitable authoritative alternative and directly says Parton wrote both Jolene and I Will Always Love You; an opened Library of Congress Copyright Office post independently establishes her authorship of I Will Always Love You. The source list needs replacement. This also partially overlaps existing music-people-005, which already tests Parton and I Will Always Love You.",
+      "original_sources": [
+        { "url": "https://www.loc.gov/item/lcm20250708/", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." },
+        { "url": "https://www.grammy.com/artists/dolly-parton/5610", "access": "unavailable_to_retrieval", "evidence": "Tool reported URL inaccessible; not certified dead." }
+      ],
+      "opened_alternatives": [
+        { "url": "https://lcm.loc.gov/issue/july-august-2025/grace-and-mystery/", "evidence": "States that Dolly Parton wrote Jolene and I Will Always Love You (with caution only about the 'same night' lore, which the draft does not claim)." },
+        { "url": "https://blogs.loc.gov/copyright/2023/03/celebrating-women-through-their-copyright-story-dolly-parton-and-whitney-houston/", "evidence": "States that Parton wrote and originally recorded I Will Always Love You and owns its musical composition." }
+      ],
+      "required_change": "Replace unavailable citations with the opened LOC alternatives and use a different Parton knowledge point or remove the I Will Always Love You overlap with music-people-005."
+    }
+  ],
+  "verdict_totals": { "ACCEPT": 0, "REVISE": 8, "REJECT": 0 },
+  "v2_validation_basis": {
+    "word_counts_reused_unchanged": {
+      "cinema-people-025": 96,
+      "cinema-people-026": 108,
+      "cinema-people-027": 109,
+      "cinema-people-028": 106,
+      "music-people-025": 107,
+      "music-people-026": 103,
+      "music-people-027": 102,
+      "music-people-028": 106
+    },
+    "new_external_source_access": false,
+    "new_full_factual_certification": false
+  },
+  "acceptance_limit": "This V2 is an independent correction of the frozen eight-item V3 audit report only. It does not approve publication, integration, the wider corpus, or any V4 material. A different-provider reviewer is still required before eventual content integration."
+}

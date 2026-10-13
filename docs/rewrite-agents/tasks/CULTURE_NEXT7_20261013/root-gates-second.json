@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "check": "full-go",
+      "command": [
+        "go",
+        "test",
+        "./next/server/...",
+        "-count=1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 61.25,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013\\full-go.txt",
+      "log_sha256": "4ae8f16fc69304e71ede0e43f1f19c44d9cf07b422d29c7bed2067352b44bfca"
+    },
+    {
+      "check": "full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 1,
+      "elapsed_seconds": 32.51,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013\\full-flutter.txt",
+      "log_sha256": "69f7f324ef669786ecf291f4cd97f53dca51765b494f7c0774dafaf5a1ff936c"
+    }
+  ],
+  "scope": "Frozen Next7 eight-question/article integration, unchanged NewYear, actual Go/Flutter/analyzer. Build/browser/publication separate, not certified."
+}

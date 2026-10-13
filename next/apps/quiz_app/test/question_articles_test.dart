@@ -197,7 +197,7 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(234));
+      expect(articles.articles, hasLength(242));
       for (final (quizId, questionId, revision) in [
         (
           'cinema-people-20261011',
@@ -219,6 +219,14 @@ void main() {
           'music-people-024',
           '3a911b0bc4a22b21800832398e4516da4e99001ddad8df40e3de4077e92f134e',
         ),
+        ('cinema-people-20261011', 'cinema-people-025', '292cbc7bc5b24c9c22e54ba0cd5a07f65f73de8790db7c840c0d4516d812b122'),
+        ('cinema-people-20261011', 'cinema-people-026', '46033cc1863ef688ed8c9b800562440d9f84b6b0b2d1d6ba6512ee58734720d8'),
+        ('cinema-people-20261011', 'cinema-people-027', '81b4ba41f106b1657417e46a573dce23d6a25bc81271e235123e4998a700fcbc'),
+        ('cinema-people-20261011', 'cinema-people-028', 'f4dc2f54d3a746ba95ab87199dc453973f397becdf7c3a137194474aecf3019e'),
+        ('music-people-20261011', 'music-people-025', '0430dbb8d3cf0ae89e71f0ebbacaaeb9ed18a4065bc3a24c77a2b143e2580751'),
+        ('music-people-20261011', 'music-people-026', 'f1d81789ae26481eb1bee36cac824bb92b80ad2d26bb6c61a6a3a8dae2ba6345'),
+        ('music-people-20261011', 'music-people-027', '89a853cf96189541e18bac0b5b0fb09dd670d7bf570faa7d772297044c875276'),
+        ('music-people-20261011', 'music-people-028', 'bf80338f46de0a08ce331d81228a97bd873af57c750dc7295d1163bc0b9d30d7'),
       ]) {
         expect(articles.forQuestion(quizId, questionId, revision), isNotNull);
       }

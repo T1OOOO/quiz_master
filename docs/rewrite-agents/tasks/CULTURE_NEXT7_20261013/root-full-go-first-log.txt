@@ -1,0 +1,18 @@
+ok  	quiz_master/next/server/cmd/api	0.615s
+--- FAIL: TestCatalogExportsWholeCorpusAsMetadataOnly (2.55s)
+    catalog_test.go:53: incomplete catalog: questions=4044
+FAIL
+FAIL	quiz_master/next/server/cmd/quizctl	12.362s
+ok  	quiz_master/next/server/internal/attempts	0.532s
+ok  	quiz_master/next/server/internal/config	0.267s
+ok  	quiz_master/next/server/internal/content	1.763s
+ok  	quiz_master/next/server/internal/httpapi	0.829s
+ok  	quiz_master/next/server/internal/identity	0.290s
+ok  	quiz_master/next/server/internal/migrate	0.330s
+ok  	quiz_master/next/server/internal/reports	0.622s
+--- FAIL: TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart (31.63s)
+    collection_test.go:105: questions=4044
+FAIL
+FAIL	quiz_master/next/server/internal/sqlite	33.099s
+ok  	quiz_master/next/server/internal/store	0.333s
+FAIL

@@ -1,0 +1,55 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "Actual blindanswer8 saved beforekeys; each8 original16URLs actually accessed/attempted and claim-specific evidence; everydistractor checked; exact draft hash, clear limits. No sourcefabrication/factacceptance frompartialchecks.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_20261013"
+    ],
+    "assignee": "session-f81aca412ffc48eea2ae2e06b2aa7e7f",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Finite read-only eight-draft audit, frozenV3 SHA48acd545d1fe0a7c6bc5d524018583c36390e6b7bb0e70670af36433b6d476f3. FIRST answer candidate-facing-v3.json without openingwriter/privatekeys; save blindanswers then comparewriter-v3.json and actualoriginal16sources. Review all8 keys/options ambiguity/firstrecording qualifiers/distractor giveaways, article claim support vsprimarysources, peritem URLs and corpusduplicates People24each. V3 Rootstructural REWORK02596words and ledgerincomplete acknowledged; no forced verdict/no acceptance from schema. Own new fact-audit-v3.json only, never editdraft/runtime; no build/browser/SSH/deploy/Git/children. Provide exact peritem accept/revise/reject+sources+access outcome, unavailable tool != deadURL. Differentprovider signoff still required before eventualcontentintegration. Actual ready/session ack/offeraccept required.",
+    "created_at": 1791862856.8104525,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-a7588ab8cc344f62a07b384151c2f2f6",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "artifact": "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/fact-audit-v3-v2.json",
+      "artifact_sha256": "6C909CEBF973655920DF8833C0DFD633A2362E9D6EE56C182EA15491C95493DD",
+      "correction": "Exact duplicated boilerplate identified in cinema-people-026/027/028 and music-people-025; all four receive removal requirements, and cinema-people-026 changes ACCEPT to REVISE.",
+      "evidence": [
+        "PowerShell ConvertFrom-Json parsed fact-audit-v3-v2.json; item_count=8.",
+        "Verdict check: accept_count=0, revise_count=8, reject_count=0; declared totals match.",
+        "Direct local writer-v3.json string check found the exact sentence in cinema-people-026, cinema-people-027, cinema-people-028, and music-people-025.",
+        "Comparison checks: original blind answers, source-access summary, source ledgers, duplicate check, and per-item word counts preserved.",
+        "SHA-256: original V3 B51AA5E4C904CA14AEE1011553EC90E8972CA9F5C074F1905306AE579083CF4A; V2 6C909CEBF973655920DF8833C0DFD633A2362E9D6EE56C182EA15491C95493DD; writer V3 48ACD545D1FE0A7C6BC5D524018583C36390E6B7BB0E70670AF36433B6D476F3."
+      ],
+      "limits": "No new network/source access or factual certification. Not publication or integration approval; independent review remains required.",
+      "status": "DONE_WITH_CONCERNS",
+      "validation": "Parsed 8 items; declared and observed totals ACCEPT=0, REVISE=8, REJECT=0. Original blind answers, source-access summary/ledgers, duplicate check, and word counts preserved. Original report hash matches B51AA5E4C904CA14AEE1011553EC90E8972CA9F5C074F1905306AE579083CF4A; frozen writer hash matches 48ACD545D1FE0A7C6BC5D524018583C36390E6B7BB0E70670AF36433B6D476F3."
+    },
+    "review_note": "Independent Claude Sonnet 5 re-review of fact-audit-v3-v2.json (sha256 6c909cebf973655920df8833c0dfd633a2362e9d6ee56c182ea15491c95493dd confirmed locally) against the prior fact-audit-v3.json and my own claude-native-v3-audit-review.json. Diffed both JSON files programmatically (no network): blind_answers_in_candidate_order, source_access_summary, corpus_duplicate_check, and all 8 per-item article_words counts are byte-identical between v1 and v2, confirming no fresh factual re-derivation was smuggled in, matching the stated 'new_external_source_access: false, new_full_factual_certification: false'. The only per-item verdict change is cinema-people-026 ACCEPT->REVISE; all other 7 verdicts unchanged. verdict_totals correctly updated from {ACCEPT:1,REVISE:7,REJECT:0} to {ACCEPT:0,REVISE:8,REJECT:0}. The new boilerplate_correction block names the exact sentence and exactly the 4 items I flagged (cinema-people-026, -027, -028, music-people-025); programmatic check of each item's finding/required_change text confirms the boilerplate sentence is mentioned in exactly those 4 items and not in the other 4 (cinema-025, music-026, -027, -028), i.e. no over- or under-correction. cinema-people-026's finding/required_change text now explicitly states the sentence is generic meta-padding and that this is why the item cannot remain ACCEPT. This fully and precisely addresses the single gap from my prior REWORK verdict. Accepting the audit work-product correction. Limits: this accepts the V2 audit report as a valid, accurate, complete correction of the specific defect raised -- it is not a V3 draft acceptance, not a publication/integration decision, and does not certify the wider corpus or any V4 material. No edits/build/test/browser/deploy/network calls made for this check.",
+    "reviewer": "session-4a8c6f3bda01461dbbd30431ab690c5f",
+    "root_task_id": "task-a7588ab8cc344f62a07b384151c2f2f6",
+    "run_id": "run-8fc6c92936af4da183b6ae975c3642f4",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "3vw Next7 V3 independent blind factual audit",
+    "version": 7
+  },
+  "actual_report": "Review callback succeeded — `task-c98dedafadb9456ebfeb9fd08a81ddf2` is now `state: ACCEPTED` (version 4), verdict `accept`, error_count 0.\n\n**Summary:** Both review assignments are complete.\n\n- **task-a7588… (fact-audit-v3-v2)**: already `ACCEPTED` by a prior Claude session — confirmed via the task record itself, not re-reviewed to avoid duplication. That review verified the v2 correction precisely resolves the one flagged gap (boilerplate sentence in cinema-026/027/028, music-025; cinema-026 ACCEPT→REVISE; totals 0/8/0; everything else byte-identical).\n- **task-c98de… (Next7 V4 integration)**: just submitted and callback accepted (`accept`, error_count 0). Independently re-verified: all three root gates still exit 0 with matching log hashes, the CRLF→LF normalization didn't change JSON content/hashes, parity script output unchanged (131 packs/4044 questions/242 articles, PASS), and my own from-scratch recomputation of the full parity chain (catalog, both People triplets, bundle private/public separation, Reader bindings, foreign-file hashes, manifest SHAs) still checks out exactly as before.\n\nPublication remains a separate, un-started gate.",
+  "raw_trace_sha256": "9d3d2bde0f6b8cd267e27e050b34b5ec3f1b0281f4cdf2ab114d6a2040c71ae3",
+  "prior_resumed_review_exit": "timeout after 480s; original trace preserved; audit report callback accepted before timeout, source integration not accepted by that attempt",
+  "prior_trace_sha256": "b20fd722b9e58b955464c36772ce2adb74e2d76a77f8c3ddef7fee6235e2707d",
+  "limits": [
+    "Audit report and local V4 source integration scopes only",
+    "Fresh builds/browser/package/copied DB/release/publication gates separate",
+    "No whole-bank factual or physical Android certification"
+  ]
+}

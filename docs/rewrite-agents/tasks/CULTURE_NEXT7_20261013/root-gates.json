@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "check": "full-go",
+      "command": [
+        "go",
+        "test",
+        "./next/server/...",
+        "-count=1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 61.25,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013\\full-go.txt",
+      "log_sha256": "4ae8f16fc69304e71ede0e43f1f19c44d9cf07b422d29c7bed2067352b44bfca"
+    },
+    {
+      "check": "full-flutter",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 28.32,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013\\full-flutter.txt",
+      "log_sha256": "d73bd31ba7b9cd6d08333ff1ea2fdd400a99a5e31039048c0ab5b1f9fe9920c7"
+    },
+    {
+      "check": "flutter-analyze",
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "analyze"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 17.56,
+      "log": "C:\\ap\\quiz_master\\.run\\culture_next7_integration_20261013\\flutter-analyze.txt",
+      "log_sha256": "e6da926d908867a1b44c8c53f17307cc8f36460a7795883c5f4e0ca24a92f26d"
+    }
+  ],
+  "scope": "Frozen Next7 eight-question/article integration, unchanged NewYear, actual Go/Flutter/analyzer. Build/browser/publication separate, not certified."
+}
