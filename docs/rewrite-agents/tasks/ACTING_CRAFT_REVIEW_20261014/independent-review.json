@@ -1,0 +1,103 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d0ed969e5633499599c2233debf025d7": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d0ed969e5633499599c2233debf025d7",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent re-derivation, no reliance on evidence.json claims.\n\n1) Inputs: confirmed candidate.json sha256=69f73ac2e685c1c3068e1f3fad85196c0f17b56fcde6df93cd3265cf020ff554 and editorial.json sha256=8642add1d5868c93f69504be9915dae21bb8c4266da23194c8078cb3220479e3 (byte hash of ACTING_CRAFT_PILOT_20261013 files) match the accepted v4 inputs; independent-review-v4.json confirms actual_hub_state ACCEPTED (error_count 0) for task-db6d05250b5946a3971c2db62c13df5d, not a rejected v1-v3 snapshot.\n\n2) quizzes/Cinema/acting_craft_20261014.json: all 8 stems/4 options/correct_answer indices (0,1,2,3,0,1,2,3)/explanations/difficulties (5,6,5,4,3,3,3,3) match candidate.json+editorial.json verbatim.\n\n3) Taxonomy: domain:arts and domain:screen (registered) preserved on all 8; topic:actors (registered, player_safe in metadata/tags.v1.json) added as authorized metadata derivation. Unregistered craft:makeup/craft:rehearsal/craft:movement correctly dropped, not invented, and explicitly documented per-question in integration-evidence.json 'unsupported_editorial_tags_not_propagated' and IMPLEMENTATION_PACKET_EN.md.\n\n4) next/content/acting-craft-20261014/bundle.json: public quiz.questions carry no correct_option_id/editorial_tag_ids (private_grading and private_question_metadata are separate top-level keys) — no answer leakage. source.uri on all 8 questions is exactly '/app/quizzes/Cinema/acting_craft_20261014.json', matching the Music Craft runtime convention.\n\n5) Deterministic rebuild parity: rebuilt-bundle.json is byte-identical (Python dict equality) to bundle.json.\n\n6) Independently recomputed sha256 of the four frozen files: raw a3fa8774...1963, draft 431384f3...969e, bundle 0378dfb4...3ee, manifest e0f79300...2c62 — all match integration-evidence.json/IMPLEMENTATION_PACKET_EN.md exactly.\n\n7) Reader draft (study/question_articles/drafts/acting-craft-20261014.json): all 8 titles extracted from the editorial '### heading' lines match title_ru; all 8 bodies preserve the editorial prose verbatim (checked by stripping headings and the trailing 'Источники:' source block, accounting for literal '\\n\\n' artifacts already present in the source editorial.json itself); all 16 source_links (url/title/supports/accessed) preserved exactly; question_refs bind each article to quiz_id acting-craft-20261014 with the exact revision_sha256 from bundle.json.\n\n8) Independently computed canonical JSON sha256 (UTF-8, ensure_ascii=false, sort_keys=true, separators=(',',':')) of all 8 full article objects:\nquestion:acting-craft-pilot-001: 886ded886f21a10056c24645ef14b22de095f6680fedcf89242c4f9f7a7222ad\nquestion:acting-craft-pilot-002: 256cbe16bd4c987e3e30aaaac33db8957ebd5d3066c57f9767fcd4c2a0476279\nquestion:acting-craft-pilot-003: 479780f569e75707460cb1f699a276591470aa75fb8fdc3ce682c87eee350230\nquestion:acting-craft-pilot-004: 32a6edd125b796dffe90131e019adfb530e8506d473f544327cbeca3b975e270\nquestion:acting-craft-pilot-005: 3c9675868d9a88dd0c30b6f4ea4f61c32eecfacd66b773768f162f1d1f34272b\nquestion:acting-craft-pilot-006: 5d34fc0aee263723bd5a262dade267ed10a85e2b52be0b9db085c3365ee36a85\nquestion:acting-craft-pilot-007: d4b4d87086992a1706a01d840c613b77c95a8ae1eb7d1c88dd2ba25c29cbaf0a\nquestion:acting-craft-pilot-008: 580f2a50d6e83bae36dd60e68222b59afd0551e154cb180650b8bc98bb80c37b\nAll 8 match integration-evidence.json canonical_article_sha256 exactly.\n\n9) Production counts untouched: no edits to catalog/cache/exports; only new files under quizzes/Cinema, next/content/acting-craft-20261014, study/question_articles/drafts and the ACTING_CRAFT_INTEGRATION_20261014 evidence folder. The unrelated Root-owned Music source-title-only change (task-f079377fa4c44f82b622713be4fb0119) is separate and not part of this worker's output.\n\nNo factual, structural, taxonomy, privacy, or hash defects found. ACCEPT (raw/canonical/Reader-draft integration scope only; export/cache/build/publication remain lead-owned gates)."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Exact accepted8questionkey/article/source parity",
+          "Actual deterministicvalidate/build/diff, no grading inpublic DTOs",
+          "8Readerrevisionrefs with fullarticlecanonicalSHA",
+          "Noexport/source/Git/deploy/foreignedits"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizzes\\Cinema",
+          "C:\\ap\\quiz_master\\next\\content",
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_INTEGRATION_20261014",
+          "C:\\ap\\quiz_master\\.run\\acting_craft_integration_20261014"
+        ],
+        "assignee": "session-ea2d2f3f9f144a3e8ff847a33dc23940",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Integrate accepted Actor8 v4 into NEW quizzes/Cinema/acting_craft_20261014.json,next/content/acting-craft-20261014,study/question_articles/drafts/acting-craft-20261014.json. Draft/bundle/manifest/Readerdraft only; noexports/catalog/tests/Git/deploy. Exact accepted candidate/editorial in ACTING_CRAFT_PILOT_20261013 and genuine independent-review-v4. Follow actual Musicexample runtimeURI /app/quizzes/Cinema/acting_craft_20261014.json and deterministicvalidation. Preserve133oldpacks/252articles; publish8factverified articles16links with descriptive titles. All keys/explanations/difficulty estimated exact, use onlyregistered taxonomy tags and document staletags. Exclusive ownership newfiles only, othersworking nochildren. StructuredactualHubsubmit/hashes andEnglishpacket agentprompt.",
+        "created_at": 1791927631.5003095,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-d0ed969e5633499599c2233debf025d7",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "quizzes/Cinema/acting_craft_20261014.json",
+            "next/content/acting-craft-20261014/draft.json",
+            "next/content/acting-craft-20261014/bundle.json",
+            "next/content/acting-craft-20261014/manifest.json",
+            "study/question_articles/drafts/acting-craft-20261014.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_INTEGRATION_20261014/rebuilt-bundle.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_INTEGRATION_20261014/integration-evidence.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_INTEGRATION_20261014/IMPLEMENTATION_PACKET_EN.md",
+            ".run/acting_craft_integration_20261014"
+          ],
+          "evidence": [
+            {
+              "command": "quizctl validate draft",
+              "result": "exit 0; 8 questions"
+            },
+            {
+              "command": "quizctl validate bundle",
+              "result": "exit 0; 8 questions"
+            },
+            {
+              "command": "quizctl build deterministic rebuild + diff",
+              "result": "both exit 0; bundle SHA af99508914afa77ac47861015dd5fb53ac0581f04a390698f174b43a87f89060; no changes"
+            },
+            {
+              "command": "python .run/acting_craft_integration_20261014/verify_integration.py",
+              "result": "exit 0; exact accepted parity, private/public privacy boundary, 8 revision refs, 16 links, and 8 canonical article hashes"
+            }
+          ],
+          "hashes": {
+            "bundle": "0378dfb462aee36b31d0026381e5d804c1fda410da5166a571150c13c480b3ee",
+            "draft": "431384f39ef4251f1c152b18b3e91d10bf084e7ad39ec2a9b7a232909e96969e",
+            "manifest": "e0f79300cb149778f81678d391785c30b41f6a86e26309e34b6b2570aef77c62",
+            "raw": "a3fa877452956691f048d1cd129756a64a6e94de23a09d7752680c6a4ed11963",
+            "reader_draft": "dc949de1780840797e22ff3a9ac4cc2e575c611dc821775dbd445a9ac321492f"
+          },
+          "label": "ActingCraftIntegration",
+          "remaining_risks": [
+            "Independent different-provider integration review remains required.",
+            "No Reader export, catalog/cache mutation, application build, release, deployment, or publication was performed."
+          ],
+          "scope": "Frozen local implementation evidence only; rejected v1-v3 inputs were not imported.",
+          "status": "DONE"
+        },
+        "root_task_id": "task-d0ed969e5633499599c2233debf025d7",
+        "run_id": "run-afe212799cf44f02bbbe4fe019535076",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-5zd Acting Craft8 integration",
+        "version": 4,
+        "reviewer": "session-def52faf39d949ff84832c0a0c4407dd",
+        "review_note": "Independent re-derivation, no reliance on evidence.json claims.\n\n1) Inputs: confirmed candidate.json sha256=69f73ac2e685c1c3068e1f3fad85196c0f17b56fcde6df93cd3265cf020ff554 and editorial.json sha256=8642add1d5868c93f69504be9915dae21bb8c4266da23194c8078cb3220479e3 (byte hash of ACTING_CRAFT_PILOT_20261013 files) match the accepted v4 inputs; independent-review-v4.json confirms actual_hub_state ACCEPTED (error_count 0) for task-db6d05250b5946a3971c2db62c13df5d, not a rejected v1-v3 snapshot.\n\n2) quizzes/Cinema/acting_craft_20261014.json: all 8 stems/4 options/correct_answer indices (0,1,2,3,0,1,2,3)/explanations/difficulties (5,6,5,4,3,3,3,3) match candidate.json+editorial.json verbatim.\n\n3) Taxonomy: domain:arts and domain:screen (registered) preserved on all 8; topic:actors (registered, player_safe in metadata/tags.v1.json) added as authorized metadata derivation. Unregistered craft:makeup/craft:rehearsal/craft:movement correctly dropped, not invented, and explicitly documented per-question in integration-evidence.json 'unsupported_editorial_tags_not_propagated' and IMPLEMENTATION_PACKET_EN.md.\n\n4) next/content/acting-craft-20261014/bundle.json: public quiz.questions carry no correct_option_id/editorial_tag_ids (private_grading and private_question_metadata are separate top-level keys) — no answer leakage. source.uri on all 8 questions is exactly '/app/quizzes/Cinema/acting_craft_20261014.json', matching the Music Craft runtime convention.\n\n5) Deterministic rebuild parity: rebuilt-bundle.json is byte-identical (Python dict equality) to bundle.json.\n\n6) Independently recomputed sha256 of the four frozen files: raw a3fa8774...1963, draft 431384f3...969e, bundle 0378dfb4...3ee, manifest e0f79300...2c62 — all match integration-evidence.json/IMPLEMENTATION_PACKET_EN.md exactly.\n\n7) Reader draft (study/question_articles/drafts/acting-craft-20261014.json): all 8 titles extracted from the editorial '### heading' lines match title_ru; all 8 bodies preserve the editorial prose verbatim (checked by stripping headings and the trailing 'Источники:' source block, accounting for literal '\\n\\n' artifacts already present in the source editorial.json itself); all 16 source_links (url/title/supports/accessed) preserved exactly; question_refs bind each article to quiz_id acting-craft-20261014 with the exact revision_sha256 from bundle.json.\n\n8) Independently computed canonical JSON sha256 (UTF-8, ensure_ascii=false, sort_keys=true, separators=(',',':')) of all 8 full article objects:\nquestion:acting-craft-pilot-001: 886ded886f21a10056c24645ef14b22de095f6680fedcf89242c4f9f7a7222ad\nquestion:acting-craft-pilot-002: 256cbe16bd4c987e3e30aaaac33db8957ebd5d3066c57f9767fcd4c2a0476279\nquestion:acting-craft-pilot-003: 479780f569e75707460cb1f699a276591470aa75fb8fdc3ce682c87eee350230\nquestion:acting-craft-pilot-004: 32a6edd125b796dffe90131e019adfb530e8506d473f544327cbeca3b975e270\nquestion:acting-craft-pilot-005: 3c9675868d9a88dd0c30b6f4ea4f61c32eecfacd66b773768f162f1d1f34272b\nquestion:acting-craft-pilot-006: 5d34fc0aee263723bd5a262dade267ed10a85e2b52be0b9db085c3365ee36a85\nquestion:acting-craft-pilot-007: d4b4d87086992a1706a01d840c613b77c95a8ae1eb7d1c88dd2ba25c29cbaf0a\nquestion:acting-craft-pilot-008: 580f2a50d6e83bae36dd60e68222b59afd0551e154cb180650b8bc98bb80c37b\nAll 8 match integration-evidence.json canonical_article_sha256 exactly.\n\n9) Production counts untouched: no edits to catalog/cache/exports; only new files under quizzes/Cinema, next/content/acting-craft-20261014, study/question_articles/drafts and the ACTING_CRAFT_INTEGRATION_20261014 evidence folder. The unrelated Root-owned Music source-title-only change (task-f079377fa4c44f82b622713be4fb0119) is separate and not part of this worker's output.\n\nNo factual, structural, taxonomy, privacy, or hash defects found. ACCEPT (raw/canonical/Reader-draft integration scope only; export/cache/build/publication remain lead-owned gates)."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Verdict: ACCEPT (error_count=0)** — recorded in host_hub; task-d0ed969e5633499599c2233debf025d7 is now `ACCEPTED`.\n\nAll eight questions' stems/options/correct indices/explanations/difficulties match the accepted candidate.json/editorial.json v4 inputs verbatim (hash-confirmed). Taxonomy handling is correct: registered `domain:arts`/`domain:screen` preserved, authorized `topic:actors` added, unregistered `craft:makeup`/`craft:rehearsal`/`craft:movement` correctly dropped and documented rather than invented. No answer leakage in the public bundle; runtime source URI matches the Music Craft convention. Deterministic rebuild is byte-identical, and all four frozen file hashes (raw/draft/bundle/manifest) match the claimed evidence exactly. All 16 Reader source links and 8 article bodies/titles were preserved verbatim from the accepted editorial prose, and I independently recomputed all 8 canonical article SHA256 values — they match integration-evidence.json exactly. Production counts (133 packs/4052 questions/252 articles) remain untouched; the unrelated Root-owned Music source-title change was correctly left alone.\n\nNo defects found — this is a clean accept, scoped to raw/canonical/Reader-draft integration only.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "e298632da62124d8f02a94863761dfb2f1b170ce7894e3f00fb573c86bd27dbc",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged articles bind People, Film Craft, Music Craft and published Home Alone revisions',
+    'packaged articles bind People, Film Craft, Music Craft, Acting Craft and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,48 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(252));
+      expect(articles.articles, hasLength(260));
       for (final (quizId, questionId, revision) in [
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-001',
+          '0b211637a8a29d0708a33567d11fafb113773ed89aef5ba8afdde46bf1c11e44',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-002',
+          '14df4c16dfc105fefdea35e733bdf1389b0f91debb950d7be65bde3252d468cd',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-003',
+          '0d0073db567749ebd64b1dcaf91ca62109346cb1c0d2483c858ab45945dabbb7',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-004',
+          '032702e68ba38fdedc73a698e880978c5c6fcd3331777485c8ab60380d72f49b',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-005',
+          '594bd4f212f5713593331b4099054fbf9439a287c44eeec4792142c1e00e038c',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-006',
+          '02adc130e3f8feab6b7e0b5dd021b33c4283af25fb6025aded5ed1a7ff627773',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-007',
+          '7003a49c4bf117f83cd508c7c48c064d5b26daa3322c27078d288d52d5954f2a',
+        ),
+        (
+          'acting-craft-20261014',
+          'acting-craft-pilot-008',
+          'e8561876f0dcbdc06dfe68f9ee9146913dc11b13a7fd2a98f840592984ef0fc0',
+        ),
         (
           'music-craft-20261013',
           'music-craft-pilot-001',

@@ -1,0 +1,72 @@
+{
+  "actual_counts": [
+    134,
+    4060,
+    260
+  ],
+  "prior_catalog_rows_unchanged": 133,
+  "prior_articles_unchanged": 248,
+  "four_prior_music_articles_only_reviewed_titles_changed": true,
+  "new_actor_articles": 8,
+  "commands": [
+    {
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "catalog",
+        "--in",
+        "quizzes",
+        "--out",
+        "next/apps/quiz_app/assets/catalog.json",
+        "--force",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "actual_exit": 0,
+      "stdout": "catalog: 134 packs\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 260 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 260 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_*.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.098s\n\nOK\n"
+    }
+  ],
+  "asset_sha256": {
+    "next/apps/quiz_app/assets/catalog.json": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+    "next/apps/quiz_app/assets/study/question-articles.json": "f805bb0157e35e864d26f6fa6927e3b242720aa1a5b239465a0aa12b0b1c911d"
+  },
+  "scope": "Local reviewed source exports only; compiled Flutter, API copied-DB grading/cache, browser and release gates remain pending. Production staysHelm50."
+}

@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "label": "fixture-before-update",
+      "actual_exit": 1
+    },
+    {
+      "label": "fixture-after-update",
+      "actual_exit": 0
+    }
+  ],
+  "initial_failure": "Existing fixture expected252; reviewed eight-article expansion intentionally exports260",
+  "existing_fixture_update": "260 articles and all8 actual accepted Actor question revision refs",
+  "passing_flutter_tests": 6,
+  "dart_app_code_changed": false,
+  "scope": "Meaningful packaged-article revision binding and reader widget checks. Compiled builds/public browser/deployment remain separate pending gates."
+}

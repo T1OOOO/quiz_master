@@ -1,0 +1,67 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-3fe0749393274a3b93c09740482c4ed4": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-3fe0749393274a3b93c09740482c4ed4",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent re-derivation, no reliance on asset-export.json/flutter-gates.json claims alone.\n\n1) Prerequisites: confirmed both referenced prerequisite tasks are genuinely ACCEPTED in the hub — task-d0ed969e5633499599c2233debf025d7 (Acting Craft 8-question integration) and task-f079377fa4c44f82b622713be4fb0119 (Music Craft 8 source-title fixes) — by reading their independent-review.json files directly, not summaries.\n\n2) study/question_articles/reviews/acting-craft-20261014-review.json and music-craft-20261013-review.json: all 12 article_sha256 values in these review files match byte-for-byte the canonical hashes independently recomputed inside the two prerequisite reviewers' own review_note text. Not fabricated, not copy-pasted guesses.\n\n3) Diffed current next/apps/quiz_app/assets/catalog.json against HEAD (18abacc): 133->134 rows, all 133 old rows byte-identical (set-subset check), exactly 1 new row added, with only public fields (category/description/questions_count/quiz_id/title) — no grading data.\n\n4) Diffed current .../assets/study/question-articles.json against HEAD: 252->260 articles. By id: 248 byte-identical, the 4 music-craft-pilot-00{1-4} articles differ ONLY in source_links[].title (2 titles each, nothing else), the 8 new acting-craft-pilot-00{1-8} articles are byte-identical to study/question_articles/drafts/acting-craft-20261014.json except status draft->accepted.\n\n5) Independently recomputed canonical SHA256 of the 8 new article objects as they sit in the draft file: all 8 match the accepted integration review's canonical_article_sha256 list exactly.\n\n6) Verified sha256 of the two shipped asset files matches asset-export.json's asset_sha256 claims exactly: catalog.json=77c496...3be37, question-articles.json=f805bb...0b1c911d.\n\n7) git diff --stat confirms only 3 files changed under next/apps/quiz_app/: catalog.json, assets/study/question-articles.json, test/question_articles_test.dart — no Dart implementation file touched, matching 'dart_app_code_changed: false'.\n\n8) question_articles_test.dart diff: expectation 252->260, with exactly 8 new (quiz_id, question_id, revision_sha256) tuples for acting-craft-20261014-pilot-001..008; I independently compared each expected revision_sha256 against question_refs[0].revision_sha256 actually stored in the live question-articles.json — all 8 match exactly.\n\n9) Checked next/content/acting-craft-20261014/bundle.json: public quiz.questions objects carry only answer_kind/difficulty/difficulty_level/options/question_id/quiz_id/revision/source/stem — no correct_option_id or editorial tags; grading lives only in the separate top-level private_grading key. No new grading fields leaked into public playable objects.\n\nNo factual, structural, hash, privacy, or count defects found. ACCEPT, scoped exactly as claimed: local source exports and test fixture update only; compiled Flutter, copied-DB grading/runtime cache, browser and production release remain separate pending gates (production stays Helm50 Music Craft; feedback26 remains open)."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Actual accepted prerequisite taskd0ed andf079, reviewhashesbound",
+          "Exact1344060260 exports/alloldobjects retainedexcept8reviewedtitles",
+          "SixFlutterpackagedbindings checked andfourPythonactual0",
+          "No broaderbank/browser/publicationclaims"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_REVIEW_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root exports independently accepted8Actorarticles plus reviewed4Music sourcetitles using existingcatalog/Reader compilers. Actual134packs4060questions260articles; prior133catalog/248Readerobjects unchanged and4onlytitles changed. Actual4Python+6Flutter article checks, oldcount252fixturefailed1 thenexact260+8revisionrefs updatedpassed0. No appDartcode/compiledbuild/cache/deploy changes. Different-provider mechanical parityreview required for Rootsourceexports/fixture.",
+        "created_at": 1791928848.0667555,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-3fe0749393274a3b93c09740482c4ed4",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_REVIEW_20261014/asset-export.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_REVIEW_20261014/flutter-gates.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_REVIEW_20261014/independent-review.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SOURCE_TITLES_20261014/independent-review.json"
+          ],
+          "summary": "Actual accepted Actor8+Music8title prerequisites bound; existingcompilers exported1344060260, old133catalog/248articles untouched,4onlyreviewedtitles changed. ActualPython4exit0 andFlutter6aftercount252→260fixture/root8refsupdateexit0. AppDartcode unchanged, nocache/build/publish."
+        },
+        "root_task_id": "task-3fe0749393274a3b93c09740482c4ed4",
+        "run_id": "run-ecea1318e5f348d39c687cd7ebf9a677",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-5zd Root accepted Reader/catalog export and packaged fixture",
+        "version": 4,
+        "reviewer": "session-9d139b1f5fa641e2897e39e7faade4db",
+        "review_note": "Independent re-derivation, no reliance on asset-export.json/flutter-gates.json claims alone.\n\n1) Prerequisites: confirmed both referenced prerequisite tasks are genuinely ACCEPTED in the hub — task-d0ed969e5633499599c2233debf025d7 (Acting Craft 8-question integration) and task-f079377fa4c44f82b622713be4fb0119 (Music Craft 8 source-title fixes) — by reading their independent-review.json files directly, not summaries.\n\n2) study/question_articles/reviews/acting-craft-20261014-review.json and music-craft-20261013-review.json: all 12 article_sha256 values in these review files match byte-for-byte the canonical hashes independently recomputed inside the two prerequisite reviewers' own review_note text. Not fabricated, not copy-pasted guesses.\n\n3) Diffed current next/apps/quiz_app/assets/catalog.json against HEAD (18abacc): 133->134 rows, all 133 old rows byte-identical (set-subset check), exactly 1 new row added, with only public fields (category/description/questions_count/quiz_id/title) — no grading data.\n\n4) Diffed current .../assets/study/question-articles.json against HEAD: 252->260 articles. By id: 248 byte-identical, the 4 music-craft-pilot-00{1-4} articles differ ONLY in source_links[].title (2 titles each, nothing else), the 8 new acting-craft-pilot-00{1-8} articles are byte-identical to study/question_articles/drafts/acting-craft-20261014.json except status draft->accepted.\n\n5) Independently recomputed canonical SHA256 of the 8 new article objects as they sit in the draft file: all 8 match the accepted integration review's canonical_article_sha256 list exactly.\n\n6) Verified sha256 of the two shipped asset files matches asset-export.json's asset_sha256 claims exactly: catalog.json=77c496...3be37, question-articles.json=f805bb...0b1c911d.\n\n7) git diff --stat confirms only 3 files changed under next/apps/quiz_app/: catalog.json, assets/study/question-articles.json, test/question_articles_test.dart — no Dart implementation file touched, matching 'dart_app_code_changed: false'.\n\n8) question_articles_test.dart diff: expectation 252->260, with exactly 8 new (quiz_id, question_id, revision_sha256) tuples for acting-craft-20261014-pilot-001..008; I independently compared each expected revision_sha256 against question_refs[0].revision_sha256 actually stored in the live question-articles.json — all 8 match exactly.\n\n9) Checked next/content/acting-craft-20261014/bundle.json: public quiz.questions objects carry only answer_kind/difficulty/difficulty_level/options/question_id/quiz_id/revision/source/stem — no correct_option_id or editorial tags; grading lives only in the separate top-level private_grading key. No new grading fields leaked into public playable objects.\n\nNo factual, structural, hash, privacy, or count defects found. ACCEPT, scoped exactly as claimed: local source exports and test fixture update only; compiled Flutter, copied-DB grading/runtime cache, browser and production release remain separate pending gates (production stays Helm50 Music Craft; feedback26 remains open)."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Verdict: ACCEPT (error_count=0)** — recorded in host_hub.\n\nIndependently re-derived every claim rather than trusting the export summaries:\n- Both prerequisite tasks (Acting Craft integration, Music Craft titles) confirmed genuinely ACCEPTED by reading their own review callback notes.\n- The two review JSON files' 12 article hashes trace byte-for-byte to those prerequisite reviewers' independently recomputed canonical hashes — not fabricated.\n- `catalog.json`: 133→134, all old rows untouched, 1 new row with only public fields.\n- `question-articles.json`: 252→260 — 248 byte-identical, 4 Music articles changed **only** in `source_links[].title`, 8 new Actor articles byte-identical to the accepted draft except `status: draft→accepted`; all 8 question_refs revision hashes match the test fixture exactly.\n- Shipped asset SHA256s match the claimed `asset_sha256` values exactly.\n- `git diff --stat` confirms only 3 files touched (catalog, articles asset, test fixture) — no Dart implementation changed.\n- `bundle.json` public questions carry no grading/answer fields; grading stays isolated in `private_grading`.\n\nNo defects found. Scope matches what was claimed: local source exports and test fixture only — compiled Flutter, copied-DB cache, browser, and production release remain separately gated.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "ad7258c2ad0fc8ab7d149608ca26793498dac94a2b310d53a9a48caa11085dcd",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

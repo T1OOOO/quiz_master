@@ -1,0 +1,66 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f079377fa4c44f82b622713be4fb0119": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f079377fa4c44f82b622713be4fb0119",
+          "verdict": "accept",
+          "note": "Verified by Claude Sonnet 5, independent re-derivation (no reliance on evidence.json claims).\n\n1) Diff scope: proposed-music-articles.json vs baseline music-craft-20261013.json differs ONLY in 8 source_links[].title fields (2 per article x 4 articles). All URLs, supports text, dates, body_ru, title_ru, question_refs/revision_sha256, tag_ids, target_refs, status identical (programmatic deep-equal check excluding title field).\n\n2) baseline_sha256 of raw file bytes = e465b3622f3b8b64c3f0eb0a1a12fb2ea2b9b8e6821296a0350d1c5ab0c8e342 — confirmed by direct hash of study/question_articles/drafts/music-craft-20261013.json.\n\n3) Canonical JSON (UTF-8, ensure_ascii=false, sort_keys=true, separators=(',',':')) SHA256 of each proposed article, independently recomputed and matching evidence.json's article_sha256 exactly:\n- question:music-craft-pilot-001: 168f894a745cec926ac410c1f73c2133570b77fae80f7f7879726919884ea8a6\n- question:music-craft-pilot-002: 61cf2878b8b8764b28fb09f511c9996a1668cf92331e3d6eaaa956f3eeed05ef\n- question:music-craft-pilot-003: cc6ac3bff860a01f5398478be8ab2cf97d7bac6e4c6b5c9a9f9e5655538e8f18\n- question:music-craft-pilot-004: 847e12493b3b2ac8ab5a9e1d0db0a282ece2a4cbbc2a8d5738749180e8098a45\n\n4) Live-fetched all 8 primary URLs (real HTTP GET, UA set, this session) and extracted actual <title>: all match the proposed titles exactly once the publisher suffix (' | Ableton', ' - HARMAN Anytime Help Center') is stripped and whitespace normalized. No other wording differences found:\n- /en/manual/mixing/ -> 'Mixing — Ableton Reference Manual Version 12' ✓\n- /en/manual/audio-fact-sheet/ -> 'Audio Fact Sheet — Ableton Reference Manual Version 12' ✓\n- /en/live-manual/11/audio-clips-tempo-and-warping/ -> 'Audio Clips, Tempo, and Warping — Ableton Reference Manual Version 11' ✓\n- /en/pages/the_bridge/tour/lesson/the_fastest_way_to_warp_a_track/ -> 'The Fastest Way to Warp a Track in Ableton Live' ✓ (response sha256 b310121ac3fc874d083beec0d8d74de2d9771cd2d5691db559470d28b77d7eee matches evidence.json exactly)\n- help.harmanpro.com/what-is-a-pop-filter-for -> 'Pop Filters and Microphones' ✓\n- /en/blog/loop-5-perspectives-on-sampling/ -> 'Loop: Five Perspectives on Sampling' ✓\n- /en/live-manual/11/live-concepts/ -> 'Live Concepts — Ableton Reference Manual Version 11' ✓\n- pubs.shure.com/view/guide/PGA27/en-US.pdf -> downloaded PDF (sha256 963d8c978b4813654f9bb7eb3cfd449c240d14eca1597c3769cf872b4fba5916, matches evidence.json exactly); extracted via pypdf: PDF metadata Title='PGA27' and page-1 heading text begins 'PGA27 / Large Diaphragm Side-Address Cardioid Condenser Microphone' — 'PGA27' as the proposed title is the genuine document heading, not an abbreviation error ✓\n\nNote: the 6 Ableton HTML pages' full-body response_sha256 in evidence.json do not all match my fresh fetch (dynamic/CDN content varies per request), but this is immaterial since only the <title> element is in scope and it matches exactly in every case. The Shure PDF and 'fastest way to warp' page hashes matched byte-for-byte.\n\nVerdict: ACCEPT. All 8 title changes are faithful to primary-source page/document titles with only publisher-suffix omission and whitespace normalization; no facts, claims, dates, or other fields were altered."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Eight actualprimarytitle labels distinguish eachsource",
+          "Exact baseline only source title fields changed",
+          "FullcanonicalarticleSHA4 and actual review callback"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SOURCE_TITLES_20261014",
+          "C:\\ap\\quiz_master\\.run\\source_titles_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root proposes source-title-only MusicCraft4 article update: eight original primarysource page/document titles, nofacts/URLs/bodies/questionrefs changed. HTTP200 evidence/browser source verified. Own docs SOURCE_TITLES_20261014/.run only; actual live drafts and exports remain frozen. Different-provider review beforeapplication; nofuturepublicationclaims.",
+        "created_at": 1791927755.729776,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-f079377fa4c44f82b622713be4fb0119",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SOURCE_TITLES_20261014/evidence.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SOURCE_TITLES_20261014/proposed-music-articles.json"
+          ],
+          "summary": "Eight official source/document titles fetched200, matched webprimarytitle headings and placed into four article proposal only. Exact only source_links.title changed; existingReaderdraft/export/review preserved. Fullfourarticle hashes in evidence; independentreviewrequired."
+        },
+        "root_task_id": "task-f079377fa4c44f82b622713be4fb0119",
+        "run_id": "run-bc8ff52261ed4e8898871d1f611658c5",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-z22 descriptive Reader source titles proposal",
+        "version": 4,
+        "reviewer": "session-225905fc37464297be08a1b363b7904d",
+        "review_note": "Verified by Claude Sonnet 5, independent re-derivation (no reliance on evidence.json claims).\n\n1) Diff scope: proposed-music-articles.json vs baseline music-craft-20261013.json differs ONLY in 8 source_links[].title fields (2 per article x 4 articles). All URLs, supports text, dates, body_ru, title_ru, question_refs/revision_sha256, tag_ids, target_refs, status identical (programmatic deep-equal check excluding title field).\n\n2) baseline_sha256 of raw file bytes = e465b3622f3b8b64c3f0eb0a1a12fb2ea2b9b8e6821296a0350d1c5ab0c8e342 — confirmed by direct hash of study/question_articles/drafts/music-craft-20261013.json.\n\n3) Canonical JSON (UTF-8, ensure_ascii=false, sort_keys=true, separators=(',',':')) SHA256 of each proposed article, independently recomputed and matching evidence.json's article_sha256 exactly:\n- question:music-craft-pilot-001: 168f894a745cec926ac410c1f73c2133570b77fae80f7f7879726919884ea8a6\n- question:music-craft-pilot-002: 61cf2878b8b8764b28fb09f511c9996a1668cf92331e3d6eaaa956f3eeed05ef\n- question:music-craft-pilot-003: cc6ac3bff860a01f5398478be8ab2cf97d7bac6e4c6b5c9a9f9e5655538e8f18\n- question:music-craft-pilot-004: 847e12493b3b2ac8ab5a9e1d0db0a282ece2a4cbbc2a8d5738749180e8098a45\n\n4) Live-fetched all 8 primary URLs (real HTTP GET, UA set, this session) and extracted actual <title>: all match the proposed titles exactly once the publisher suffix (' | Ableton', ' - HARMAN Anytime Help Center') is stripped and whitespace normalized. No other wording differences found:\n- /en/manual/mixing/ -> 'Mixing — Ableton Reference Manual Version 12' ✓\n- /en/manual/audio-fact-sheet/ -> 'Audio Fact Sheet — Ableton Reference Manual Version 12' ✓\n- /en/live-manual/11/audio-clips-tempo-and-warping/ -> 'Audio Clips, Tempo, and Warping — Ableton Reference Manual Version 11' ✓\n- /en/pages/the_bridge/tour/lesson/the_fastest_way_to_warp_a_track/ -> 'The Fastest Way to Warp a Track in Ableton Live' ✓ (response sha256 b310121ac3fc874d083beec0d8d74de2d9771cd2d5691db559470d28b77d7eee matches evidence.json exactly)\n- help.harmanpro.com/what-is-a-pop-filter-for -> 'Pop Filters and Microphones' ✓\n- /en/blog/loop-5-perspectives-on-sampling/ -> 'Loop: Five Perspectives on Sampling' ✓\n- /en/live-manual/11/live-concepts/ -> 'Live Concepts — Ableton Reference Manual Version 11' ✓\n- pubs.shure.com/view/guide/PGA27/en-US.pdf -> downloaded PDF (sha256 963d8c978b4813654f9bb7eb3cfd449c240d14eca1597c3769cf872b4fba5916, matches evidence.json exactly); extracted via pypdf: PDF metadata Title='PGA27' and page-1 heading text begins 'PGA27 / Large Diaphragm Side-Address Cardioid Condenser Microphone' — 'PGA27' as the proposed title is the genuine document heading, not an abbreviation error ✓\n\nNote: the 6 Ableton HTML pages' full-body response_sha256 in evidence.json do not all match my fresh fetch (dynamic/CDN content varies per request), but this is immaterial since only the <title> element is in scope and it matches exactly in every case. The Shure PDF and 'fastest way to warp' page hashes matched byte-for-byte.\n\nVerdict: ACCEPT. All 8 title changes are faithful to primary-source page/document titles with only publisher-suffix omission and whitespace normalization; no facts, claims, dates, or other fields were altered."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review complete — task `task-f079377fa4c44f82b622713be4fb0119` is now **ACCEPTED** in the hub.\n\n**Findings:**\n- Diff is exactly the 8 `source_links.title` fields across the 4 proposed articles; everything else (URLs, supports, dates, body/title text, revision refs, tags) is byte-identical to the baseline.\n- `baseline_sha256` (raw file bytes) confirmed: `e465b3622f3b8b64c3f0eb0a1a12fb2ea2b9b8e6821296a0350d1c5ab0c8e342`.\n- Independently recomputed canonical-JSON SHA256 for all 4 proposed articles — matched evidence.json's claims exactly (hashes included in the review note above).\n- Live-fetched all 8 primary URLs myself: every proposed title matches the page's actual `<title>` (publisher suffix stripped, whitespace normalized) — no wording was altered. The Shure PDF was downloaded and verified byte-for-byte (sha256 matches evidence.json); `pypdf` confirms both the PDF metadata title and the first-page heading are literally \"PGA27\", so that label is genuine, not an error.\n- One minor discrepancy noted but judged immaterial: evidence.json's recorded full-page `response_sha256` for 5 of the 6 Ableton HTML pages didn't match my fresh fetch — expected due to dynamic/CDN content — but the `<title>` element (the only thing in scope) matched in every case.\n\nNo mismatches found; this is a genuine accept, not a rubber stamp.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-f079377fa4c44f82b622713be4fb0119",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "e878629627637da7c926445d7f90a246171761a8d84a82a7e4285518fa7b645c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
