@@ -1,0 +1,60 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "package_sha256": "10e62998bc6d279c535b6cb860067d7755e934c4f5729505d0839fdd394ec60e",
+  "image": "sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+  "raw_callback": {
+    "acceptance": "Independent actual execution review callback with findings; acceptance only if exact prepared image and publisher evidence pass. Published verification remains separate.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\culture_next7_release_root_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_RELEASE_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Lead performed exact static-approved package preparation on authorized QuizMaster server. Review actual execution-packet.json, raw remote-prepare log and metadata, local mobile browser evidence, publisher and preview script. Separate provider must verify hashes, actual backup restore/195 copy-only grading/old rows/feedback/rollback/image/nginx/Helm dry-run results and publication guards. No publication has occurred; source e437661, baseline Helm45. Reviewer must not run SSH, tests, builds or deploy.",
+    "created_at": 1791869656.34841,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-59476952f0ab4e87aab0202080a4610d",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        {
+          "actual_exit": 0,
+          "check": "Exact static-accepted package remote preparation",
+          "reference": ".run/culture_next7_release_root_20261013/remote-prepare.txt",
+          "sha256": "8a7593d013aa1f510b0ec0271ae69c2a9f7ddb1196718d190943b1863b7716e3"
+        },
+        {
+          "check": "Local browser actual56UIanswers, two scores28,8articles, feedback cancellation",
+          "reference": "docs/rewrite-agents/tasks/CULTURE_NEXT7_RELEASE_20261013/local-browser-v2/evidence.json"
+        },
+        {
+          "actual_exit": 0,
+          "check": "Publisher Linux syntax preview, immutable prepared image",
+          "reference": "docs/rewrite-agents/tasks/CULTURE_NEXT7_RELEASE_20261013/execution-packet.json"
+        }
+      ],
+      "image": "sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+      "scope": "195 copied-database grading/backup restore/rollback/rows/feedback copy-only; image/nginx/lint/server dry-run. No publication yet."
+    },
+    "root_task_id": "task-59476952f0ab4e87aab0202080a4610d",
+    "run_id": "run-382f03632f7d4835bfda39bffdf341cf",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next7 copied-data and prepared-image execution gate",
+    "version": 4,
+    "reviewer": "session-b9ba7b3dc46943d194140ed699f74121",
+    "review_note": "Independent read-only review. Recomputed hashes, not trusted summaries: remote-prepare.txt (8a7593d0...), local-browser-v2/evidence.json (836b48db...), publish-prepared-preview.sh (b2905b8b...) and the package archive (10e62998...) all match execution-packet.json. Frozen commit e437661 is merge-base ancestor of HEAD; `git diff <frozen>..HEAD -- next quizzes metadata study/question_articles` is empty (HEAD==frozen commit now).\n\nTraced scripts, not just logs. remote-prepare-script.sh matches prepare_remote.py's generated guard+upload+extract+checksum+syntax-check; DEPLOY.lock is held only for that phase and released before `cutover.sh prepare` (own lock). cutover.sh checks baseline image/PVC before touching anything, verifies checksums.txt and api/main.dart.js hashes, asserts version.json metadata, then runs backup_sqlite.py + a per-run-renamed copy of rehearse.py against a fresh sandbox (never the raw 'rehearsal-final'/backup path). In rehearse.py: old_rows[t]<=current and equal counts for every table except attempt_bundles (+131) is asserted right after API startup, before any synthetic writes -- this is exactly what original/post_migration_counts in the log measure, so 'original rows preserved' is checked at the point that matters. Grading is exercised end-to-end for all 8 runtime quizzes (feedback.correct==True) and cross-checked against the controller's own expected-staging-revisions.json. NewYear: 53 untouched rows hash-verified, 2 corrected rows checked by id/answer/reveal; 55+140=195 total graded matches spec. Feedback lifecycle only hits the private rehearsal port, never production. Old-API rollback re-exercises the prior immutable binary against the migrated sandbox DB and re-reads /v1/history (len 9 = 8+1 NewYear) and one attempt byte-for-byte -- a real compatibility check.\n\npublish_prepared.py/publish-prepared-preview.sh: script body is cutover.sh's prefix (identity/lock/checksum/backup/rehearsal) verbatim up to the build line, diff-confirmed byte-identical, plus a tail that only re-verifies the recorded durable-archive hash, confirms image presence via `k3s ctr images ls` (no re-import), re-runs helm lint/template/dry-run against the same recorded digest, then `helm upgrade --atomic --wait --timeout 180s` + public version.json/JS-hash check. No docker build/save/import anywhere in the generated script -- it cannot rebuild. What actually ran was remote `bash -n` syntax-only (--preview short-circuits via SystemExit(0)); no publish.txt/publish-exit.json/execution-acceptance.json exist, confirming no real upgrade and no fabricated acceptance record. Real publish requires execution-acceptance.json with actual_hub_state=='ACCEPTED' matching package_sha256/image -- that file doesn't exist yet, so publication cannot proceed until this review is faithfully recorded there.\n\nNo material defect found. One non-blocking note: the publish gate is a local-file check, not a live hub query, so its integrity depends on the lead correctly transcribing this verdict -- consistent with HOST_HUB's single-OS-account trust boundary, but worth double-checking before use.\n\nLIMITS: read-only; did not SSH/execute/build/test/browse myself, relied on retained logs/scripts/recomputed hashes. Did not certify whole-bank facts, Android devices, keyboard fidelity, or screen readers. Did not witness actual publication."
+  },
+  "actual_report": "Review recorded: **ACCEPT, 0 errors** for `task-59476952f0ab4e87aab0202080a4610d` (Next7 copied-data and prepared-image execution gate).\n\n**Requirements compliance:** matches the stated acceptance criteria — exact prepared image consumed, hashes verified, copied-DB rehearsal evidence substantive, no publication occurred.\n\n**Independent verification performed:**\n- Recomputed and matched every hash in `execution-packet.json` (remote log, QA evidence, publish script, package archive) rather than trusting the summary.\n- Confirmed frozen commit `e437661` is still a git ancestor of HEAD with zero runtime-source drift since the freeze.\n- Traced `remote-prepare-script.sh` and `cutover.sh` line-by-line: lock scoping is correct (released before the next lock is taken), baseline image/PVC checked before any mutation, checksums/hashes verified before extraction is trusted.\n- Read `rehearse.py` in full: the \"original rows preserved\" assertion is checked at the right moment (right after API startup, before synthetic writes), and the `+131` `attempt_bundles` growth exactly explains the logged count delta — not a coincidence.\n- Confirmed grading is exercised end-to-end (not just asserted) for all 8 runtime quizzes plus the 55 NewYear questions (195 total), cross-checked against the earlier controller's `expected-staging-revisions.json`.\n- Confirmed the old-API rollback check is a real compatibility test against the migrated sandbox DB, not just a hash assertion.\n- Diffed `publish_prepared.py`'s generated script against the reviewed `cutover.sh`: the prepare-phase prefix is byte-identical; the publish tail contains no `docker build`/`save`/import — it structurally cannot rebuild, only consume the already-hashed immutable image.\n- Confirmed no `publish.txt`/`publish-exit.json`/`execution-acceptance.json` exist — nothing was actually published, and no acceptance record was pre-planted to bypass this gate.\n\n**Finding (non-blocking):** the publish gate checks a local `execution-acceptance.json` file rather than querying the hub live, so its integrity depends on the lead transcribing this verdict faithfully — consistent with the single-OS-account trust model in HOST_HUB.md, but worth the lead double-checking before use.\n\n**Verification limits:** read-only — no SSH/build/test/browser actions performed myself; relied on retained logs, scripts, and recomputed hashes for the remote host. Did not certify whole-bank facts, physical Android devices, keyboard fidelity, screen readers, or witness actual publication.",
+  "raw_trace_sha256": "092482ccbd028cbadbb235aec7cd1d80a4251e901cf461e1036f3400a91bfd02",
+  "limits": [
+    "Publication and live verification remain separate and pending"
+  ]
+}

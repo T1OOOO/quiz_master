@@ -1,0 +1,852 @@
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+        "annotations": {
+            "deployment.kubernetes.io/revision": "45",
+            "meta.helm.sh/release-name": "quiz-master",
+            "meta.helm.sh/release-namespace": "quiz-master"
+        },
+        "creationTimestamp": "2026-10-02T09:09:29Z",
+        "generation": 45,
+        "labels": {
+            "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "quiz-master",
+        "namespace": "quiz-master",
+        "resourceVersion": "2256886",
+        "uid": "2d71ccdc-f8b2-45f4-9814-40832dba2fa7"
+    },
+    "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+            "matchLabels": {
+                "app": "quiz-master"
+            }
+        },
+        "strategy": {
+            "type": "Recreate"
+        },
+        "template": {
+            "metadata": {
+                "annotations": {
+                    "quiz-master/build-id": "quiz-2026.10.13-culture-e437661"
+                },
+                "labels": {
+                    "app": "quiz-master"
+                }
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "command": [
+                            "/app/api"
+                        ],
+                        "env": [
+                            {
+                                "name": "QM_LISTEN_ADDR",
+                                "value": "127.0.0.1:8088"
+                            },
+                            {
+                                "name": "QM_DATABASE_URL",
+                                "value": "sqlite:../data/quiz.db"
+                            },
+                            {
+                                "name": "QM_CONTENT_BUNDLE_PATH",
+                                "value": "/app/quizzes"
+                            },
+                            {
+                                "name": "QM_CONTENT_MANIFEST_PATH",
+                                "value": "/app/next/content/home-alone-1-part-1/manifest.json"
+                            },
+                            {
+                                "name": "GOMAXPROCS",
+                                "value": "1"
+                            },
+                            {
+                                "name": "QM_FEEDBACK_ADMIN_TOKEN",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "token",
+                                        "name": "quiz-feedback-admin"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "docker.io/library/quiz-master@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/bin/busybox",
+                                    "wget",
+                                    "-q",
+                                    "-O",
+                                    "/dev/null",
+                                    "http://127.0.0.1:8088/health/live"
+                                ]
+                            },
+                            "failureThreshold": 3,
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "api",
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/bin/busybox",
+                                    "wget",
+                                    "-q",
+                                    "-O",
+                                    "/dev/null",
+                                    "http://127.0.0.1:8088/health/ready"
+                                ]
+                            },
+                            "failureThreshold": 3,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "50m",
+                                "memory": "64Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true
+                        },
+                        "startupProbe": {
+                            "exec": {
+                                "command": [
+                                    "/bin/busybox",
+                                    "wget",
+                                    "-q",
+                                    "-O",
+                                    "/dev/null",
+                                    "http://127.0.0.1:8088/health/ready"
+                                ]
+                            },
+                            "failureThreshold": 30,
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/data",
+                                "name": "data"
+                            }
+                        ],
+                        "workingDir": "/app"
+                    },
+                    {
+                        "command": [
+                            "nginx",
+                            "-g",
+                            "daemon off;"
+                        ],
+                        "image": "docker.io/library/quiz-master@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health/live",
+                                "port": "http",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 30,
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "web",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "http",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health/ready",
+                                "port": "http",
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "250m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "25m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 10001,
+                    "runAsGroup": 10001,
+                    "runAsNonRoot": true,
+                    "runAsUser": 10001,
+                    "seccompProfile": {
+                        "type": "RuntimeDefault"
+                    }
+                },
+                "terminationGracePeriodSeconds": 20,
+                "volumes": [
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "quiz-data"
+                        }
+                    },
+                    {
+                        "emptyDir": {
+                            "sizeLimit": "64Mi"
+                        },
+                        "name": "tmp"
+                    }
+                ]
+            }
+        }
+    },
+    "status": {
+        "availableReplicas": 1,
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-10-13T05:42:55Z",
+                "lastUpdateTime": "2026-10-13T05:42:55Z",
+                "message": "Deployment has minimum availability.",
+                "reason": "MinimumReplicasAvailable",
+                "status": "True",
+                "type": "Available"
+            },
+            {
+                "lastTransitionTime": "2026-10-02T09:09:29Z",
+                "lastUpdateTime": "2026-10-13T05:42:55Z",
+                "message": "ReplicaSet \"quiz-master-59b6bb8d44\" has successfully progressed.",
+                "reason": "NewReplicaSetAvailable",
+                "status": "True",
+                "type": "Progressing"
+            }
+        ],
+        "observedGeneration": 45,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+    }
+}
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "alpha.kubernetes.io/provided-node-ip": "192.3.164.184",
+                    "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"de:b5:bb:d4:45:b6\"}",
+                    "flannel.alpha.coreos.com/backend-type": "vxlan",
+                    "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+                    "flannel.alpha.coreos.com/public-ip": "192.3.164.184",
+                    "k3s.io/encryption-config-hash": "reencrypt_finished-0fe0ae5a90056401222966980dd4f53255df65f8f9528e13da1444f788064a9c",
+                    "k3s.io/hostname": "racknerd-f0269d5",
+                    "k3s.io/internal-ip": "192.3.164.184",
+                    "k3s.io/node-args": "[\"server\",\"--secrets-encryption\",\"true\",\"--disable\",\"traefik\",\"--write-kubeconfig-mode\",\"600\"]",
+                    "k3s.io/node-config-hash": "ZE4RUNL4AH5ZEHZG4IGQ2D62QK2QHA4HWC6AUFIFEEDLTTQLATRQ====",
+                    "k3s.io/node-env": "{}",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2026-09-07T16:49:01Z",
+                "finalizers": [
+                    "wrangler.cattle.io/node"
+                ],
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/instance-type": "k3s",
+                    "beta.kubernetes.io/os": "linux",
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/hostname": "racknerd-f0269d5",
+                    "kubernetes.io/os": "linux",
+                    "node-role.kubernetes.io/control-plane": "true",
+                    "node.kubernetes.io/instance-type": "k3s"
+                },
+                "name": "racknerd-f0269d5",
+                "resourceVersion": "2257194",
+                "uid": "49330dcf-9375-428d-ab9a-474635c4ad52"
+            },
+            "spec": {
+                "podCIDR": "10.42.0.0/24",
+                "podCIDRs": [
+                    "10.42.0.0/24"
+                ],
+                "providerID": "k3s://racknerd-f0269d5"
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "192.3.164.184",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "racknerd-f0269d5",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "cpu": "5",
+                    "ephemeral-storage": "97296315726",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "6067052Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "cpu": "5",
+                    "ephemeral-storage": "100016772Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "6067052Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2026-10-13T05:50:24Z",
+                        "lastTransitionTime": "2026-09-07T16:49:01Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-13T05:50:24Z",
+                        "lastTransitionTime": "2026-10-13T02:33:55Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-13T05:50:24Z",
+                        "lastTransitionTime": "2026-09-07T16:49:01Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-13T05:50:24Z",
+                        "lastTransitionTime": "2026-09-07T16:49:01Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "declaredFeatures": [
+                    "ExtendWebSocketsToKubelet",
+                    "InPlacePodLevelResourcesVerticalScaling",
+                    "InPlacePodVerticalScalingInitContainers",
+                    "RestartAllContainersOnContainerExits"
+                ],
+                "features": {
+                    "supplementalGroupsPolicy": true
+                },
+                "images": [
+                    {
+                        "names": [
+                            "docker.io/grafana/alloy@sha256:b8ec653c44235fbe910879145dac3597d66b0aaecf60bcbbe82580767771a839"
+                        ],
+                        "sizeBytes": 210777038
+                    },
+                    {
+                        "names": [
+                            "docker.io/grafana/grafana@sha256:2175aaa91c96733d86d31cf270d5310b278654b03f5718c59de12a865380a31f",
+                            "docker.io/grafana/grafana:12.3.1"
+                        ],
+                        "sizeBytes": 210410945
+                    },
+                    {
+                        "names": [
+                            "ghcr.io/t1oooo/ll-backend:backend-2026.10.11-20261011T060319832Z-dirty"
+                        ],
+                        "sizeBytes": 202284267
+                    },
+                    {
+                        "names": [
+                            "docker.io/chrislusf/seaweedfs@sha256:ce9e796f1fe6f06968f4c04bdaf8f678dad9c8acdfef3d244133d71bfa6bf882"
+                        ],
+                        "sizeBytes": 195241381
+                    },
+                    {
+                        "names": [
+                            "ghcr.io/t1oooo/ll-nlp-worker:nlp-recovery-2026.10.09-4185faab087"
+                        ],
+                        "sizeBytes": 158952339
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/ll-postgres:17.11-pgbackrest-2.58.0"
+                        ],
+                        "sizeBytes": 117842300
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-postgres@sha256:ad1cc82acd0b407655398fd668f7dea12bafcfa303262e8632ee61d2c432d30d",
+                            "docker.io/library/krug-postgres:runtime-recovery-20261010"
+                        ],
+                        "sizeBytes": 117842299
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/import-2026-10-12@sha256:c1cdc44976bb35277106768601db42380049696bc2859225dbc6639b464ab876"
+                        ],
+                        "sizeBytes": 111955784
+                    },
+                    {
+                        "names": [
+                            "quay.io/prometheus/prometheus@sha256:5ce7540c3c00ef4ab0c9d2c995c6a5b9c421f44b4a115d97a2c7af3b1c21cbb0",
+                            "quay.io/prometheus/prometheus:v3.14.0"
+                        ],
+                        "sizeBytes": 109369379
+                    },
+                    {
+                        "names": [
+                            "docker.io/stalwartlabs/stalwart@sha256:be215678796691bc39bdda918ecc50d14a9032a099a1d1950e51950aec7e2592",
+                            "docker.io/stalwartlabs/stalwart:v0.16.23"
+                        ],
+                        "sizeBytes": 104329282
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5",
+                            "docker.io/library/quiz-master:quiz-2026.10.13-culture-e437661"
+                        ],
+                        "sizeBytes": 73975659
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:ea74211683953e5e865ecc668aed2052fb032d77f4509b2b6461c1b30707a804",
+                            "docker.io/library/quiz-master:quiz-2026.10.13-culture-328f2f8"
+                        ],
+                        "sizeBytes": 73955446
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:b3700cb1ccb2adfcfcb117b659b856b261d11ae5336c9e632fec2c839a08dcbc",
+                            "docker.io/library/quiz-master:quiz-2026.10.13-culture-384d798"
+                        ],
+                        "sizeBytes": 73949430
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:ee2b454c486c65d8e8ca7bc343f01736d78284871de39b62dc6260b19afcfbb1",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-f219916"
+                        ],
+                        "sizeBytes": 73946066
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:cdb9092b1f3e232732d20960922996794ad252647f2c5bd928947e902f815db4",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-42a2aaf"
+                        ],
+                        "sizeBytes": 73944577
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:98317653087b76920c6396d8d1a1e88ae3cbec8b7f39b461fc87108ca15086fc",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-939f231"
+                        ],
+                        "sizeBytes": 73939643
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:044ad58832bf336b2443949e6beb2f8ed8e04c53802cd66ac232ce58401b9793",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-c15eefc"
+                        ],
+                        "sizeBytes": 73935663
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:ee09f1289bcf2cab54ee5b8366cd7142bd133fdd3975ecc89d47300db4b5fb51",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-reader-4207ef5"
+                        ],
+                        "sizeBytes": 73935638
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:e3f30bafb703aa38e18677c6a8cc12ab7af50dcc460614ae847098e264dcc2b5",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-7d7a163"
+                        ],
+                        "sizeBytes": 73924418
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:ba4315df2c10a95e6b1d4bea17df8b07cb75598635305bf08a07cd723c56ffd0",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-singers-1c9b534"
+                        ],
+                        "sizeBytes": 73740008
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:1c5bd37e71e2a67022d0f9d234b391d90ea5dd21d526358bf90cbb0583ea4774",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-actors-3556b59"
+                        ],
+                        "sizeBytes": 73739304
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:c75c4ed6f3570dd3b624eccb6ef572d501990433dbe836ecd837c93b496c97d6",
+                            "docker.io/library/quiz-master:quiz-2026.10.12-culture-variety-b015251"
+                        ],
+                        "sizeBytes": 73737678
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:5d41e68671f2ab8d3d01fe34a4a4b670f212d47000834c33913f2cc0e310861a",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-home-alone-e0d13f4"
+                        ],
+                        "sizeBytes": 73734509
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:b16fc180a449998e5b15297e33125654ba13ec3df67b6d25a1cc20f47957cbe8",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-phobias-1537ff5"
+                        ],
+                        "sizeBytes": 73730942
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:a3b9711e51e0711ded28bce268dab250d1bf8fe7ceff8a308939a271fc02db83",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-dedup-ddf47be"
+                        ],
+                        "sizeBytes": 73730077
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:0c6ba082bf21b85298c5743e88ba1f3d74f696c91038b02228055798241f2fa0",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-planets-d228c9e"
+                        ],
+                        "sizeBytes": 73722809
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:3e9402747c700298eb756b927c7f028894ed5d3ed7efb9a83ca48b0f82a35636",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-encore-317b339"
+                        ],
+                        "sizeBytes": 73711823
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:f746f1c06e567af4512a09004a1411a9b269beb782e45b1ef6a82ce984abcf8a",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-culture-ba80671"
+                        ],
+                        "sizeBytes": 73689703
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:528ac3e7e9fe05db1a7d8aa5d93013f72451734541fcebd7cdf668cf63adada9",
+                            "docker.io/library/quiz-master:quiz-2026.10.11-culture-486901a"
+                        ],
+                        "sizeBytes": 73689691
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/quiz-master@sha256:6115f4d218a9ed65e1a35999551e660535d5fbf6b14e4b2ab0e6fbf535165523",
+                            "docker.io/library/quiz-master@sha256:73eaffcec55099292af2c1c2ebb9e61a699091bd2a8c23ce3254782a27e0a739",
+                            "docker.io/library/quiz-master:quiz-2026.10.10-articles-3ec0a33"
+                        ],
+                        "sizeBytes": 73666482
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/import-2026-10-09@sha256:59eed73bec55ada9113045a8fdd4b7df89c8f96fbb732238a048317732a75202",
+                            "docker.io/library/quiz-master@sha256:de8c71716add4f88aa678abb8a7b05e1a649b3c94f86befd3a406c94662af4e2",
+                            "docker.io/library/quiz-master:quiz-2026.10.06-feedback-e0f89cf"
+                        ],
+                        "sizeBytes": 67473452
+                    },
+                    {
+                        "names": [
+                            "ghcr.io/t1oooo/ll-frontend:frontend-2026.10.13-020441-c64107611c-dirty-production"
+                        ],
+                        "sizeBytes": 60271199
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/traefik@sha256:f86a2cab1b5c649070c49f883c743dd32d8485a56e3368c5f93b9e91f1e91259"
+                        ],
+                        "sizeBytes": 55211119
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:2845b7cf8a4537165ff49e8a12e669197979aef8a7148942de6ee20eafe65603",
+                            "docker.io/library/krug-feedback:variety-expansion-20261011-8e614dc4649e"
+                        ],
+                        "sizeBytes": 47712008
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:f6f7c15fc8d6798eb12741c857631394154f7fa4fae45d721d9b6de70efad7e1",
+                            "docker.io/library/krug-feedback:variety-expansion-20261011-d27d8b28acd2"
+                        ],
+                        "sizeBytes": 47711755
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:345f4ad9858b00a80d2e518dc19b93f3bb015685f508666ebb8156928d6b35dc",
+                            "docker.io/library/krug-feedback:variety-expansion-20261011-d7a8742ad0ed"
+                        ],
+                        "sizeBytes": 47711583
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:313f3e591bd39c13cc32923a3e3dafcfe686895ec53e25180fd0032f34469e4f",
+                            "docker.io/library/krug-feedback@sha256:841d442a24418b601f0c956f338ab2351f7e93802036bdb83685058b57d9f38e",
+                            "docker.io/library/krug-feedback@sha256:f11bfd0d56bc4d9d54a0f9e50bb17beda6ae66c85e238ffed2b2207d371c5a0b",
+                            "docker.io/library/krug-feedback:variety-reader-fallback-20261011-8e614dc4649e",
+                            "docker.io/library/krug-feedback:variety-reader-fallback-20261011-d27d8b28acd2"
+                        ],
+                        "sizeBytes": 47689595
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:f95ffcee34b3b46ecf583331128c5a17451e52c7aa656a0705dfcee93d2e96b7",
+                            "docker.io/library/krug-feedback:party-expansion-20261010-6e669642b6ec"
+                        ],
+                        "sizeBytes": 47625160
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:58aaf5015d2d97549f41551d96eedf2f2041c412e8f303da2f67a99b1ae6ea12",
+                            "docker.io/library/krug-feedback:party-reader-fallback-20261010-6e669642b6ec"
+                        ],
+                        "sizeBytes": 47619403
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/krug-feedback@sha256:5fdbffcdb391b19dc3a9428f55dea111f3c07e734127f0856dca5b85cacbc6e9",
+                            "docker.io/library/krug-feedback:rules-adapted-20261008-ce41802f62e4"
+                        ],
+                        "sizeBytes": 47576259
+                    },
+                    {
+                        "names": [
+                            "docker.io/grafana/loki@sha256:44148ad243c07957113baea950ee5ba9b0c8eff8d7e38ff3cc1c0af705790945",
+                            "docker.io/grafana/loki:3.6.11"
+                        ],
+                        "sizeBytes": 43179679
+                    },
+                    {
+                        "names": [
+                            "docker.io/grafana/tempo@sha256:65a5789759435f1ef696f1953258b9bbdb18eb571d5ce711ff812d2e128288a4",
+                            "docker.io/grafana/tempo:2.9.0"
+                        ],
+                        "sizeBytes": 36423494
+                    },
+                    {
+                        "names": [
+                            "quay.io/jetstack/cert-manager-controller@sha256:70f532fd9cfde0b09d55687200942399d89838bc2d5d5b45152eb799a15912b8",
+                            "quay.io/jetstack/cert-manager-controller:v1.21.2"
+                        ],
+                        "sizeBytes": 24897549
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/mirrored-coredns-coredns@sha256:900f9c109f7a33545d3c811516e8376df9019147b750f5ce3e254468769176ea",
+                            "docker.io/rancher/mirrored-coredns-coredns:1.14.6"
+                        ],
+                        "sizeBytes": 23758055
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/mirrored-metrics-server@sha256:d9862115e7c7881280d3d75ca26bda8ffc0fc213315979575bf23ce9826205c0",
+                            "docker.io/rancher/mirrored-metrics-server:v0.9.0"
+                        ],
+                        "sizeBytes": 23258428
+                    },
+                    {
+                        "names": [
+                            "quay.io/jetstack/cert-manager-webhook@sha256:a60e2dac46dbb8a7f3df95c54ce941012f54c2fe022f0ee55aaa1ab40ed957ae",
+                            "quay.io/jetstack/cert-manager-webhook:v1.21.2"
+                        ],
+                        "sizeBytes": 19827800
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:42cfe3723a5f058171c627537fb57a3ea0f26e4380fa18555a95cb1a1b4cfc5b",
+                            "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.20.0"
+                        ],
+                        "sizeBytes": 19261896
+                    },
+                    {
+                        "names": [
+                            "quay.io/prometheus/blackbox-exporter@sha256:e753ff9f3fc458d02cca5eddab5a77e1c175eee484a8925ac7d524f04366c2fc",
+                            "quay.io/prometheus/blackbox-exporter:v0.28.0"
+                        ],
+                        "sizeBytes": 17578325
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf"
+                        ],
+                        "sizeBytes": 16276863
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/local-path-provisioner@sha256:e757967a5ec338f6a9b371c5a9688bedaa8c3578ea3dd4db329ea0084be0a86f",
+                            "docker.io/rancher/local-path-provisioner:v0.0.37"
+                        ],
+                        "sizeBytes": 15066012
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "f33efad1-cd41-4b4c-9ada-8d33a4af4b28",
+                    "containerRuntimeVersion": "containerd://2.3.4-k3s1.36",
+                    "kernelVersion": "6.8.0-134-generic",
+                    "kubeProxyVersion": "",
+                    "kubeletVersion": "v1.36.4+k3s1",
+                    "machineID": "6f9b28a107671d35d565db8d4fdf10a8",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 24.04.4 LTS",
+                    "swap": {
+                        "capacity": 3221221376
+                    },
+                    "systemUUID": "482cdefe-2c53-4d68-a0da-492479571806"
+                },
+                "runtimeHandlers": [
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": true,
+                            "userNamespaces": true
+                        },
+                        "name": ""
+                    },
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": true,
+                            "userNamespaces": true
+                        },
+                        "name": "runc"
+                    },
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": false,
+                            "userNamespaces": false
+                        },
+                        "name": "runhcs-wcow-process"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+{
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": {
+        "annotations": {
+            "helm.sh/resource-policy": "keep",
+            "meta.helm.sh/release-name": "quiz-master",
+            "meta.helm.sh/release-namespace": "quiz-master",
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "racknerd-f0269d5",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+        },
+        "creationTimestamp": "2026-10-02T09:09:29Z",
+        "finalizers": [
+            "kubernetes.io/pvc-protection"
+        ],
+        "labels": {
+            "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "quiz-data",
+        "namespace": "quiz-master",
+        "resourceVersion": "1612414",
+        "uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+    },
+    "spec": {
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "resources": {
+            "requests": {
+                "storage": "1Gi"
+            }
+        },
+        "storageClassName": "local-path",
+        "volumeMode": "Filesystem",
+        "volumeName": "pvc-7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+    },
+    "status": {
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "capacity": {
+            "storage": "1Gi"
+        },
+        "phase": "Bound"
+    }
+}
+Filesystem        1B-blocks        Used  Available Use% Mounted on
+/dev/vda2      102417174528 88179982336 9013018624  91% /
+/var/lib/rancher/k3s/agent/images/quiz-2026.10.13-culture-e437661.tar: OK
+{"feedback_status_counts": [["open", 26]]}

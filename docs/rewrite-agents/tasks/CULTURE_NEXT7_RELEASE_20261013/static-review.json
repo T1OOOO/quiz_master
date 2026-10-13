@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "Actual separate-provider static ACCEPT0 required for exact package hashes and guarded scripts. No execution/publication gate inferred.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_RELEASE_20261013",
+      "C:\\ap\\quiz_master\\.run\\culture_next7_release_root_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root actual package-v2 prepared from verified immutable priorV8 + frozen e437661 and fresh correct-app prod/QA builds. Counts131/4044/242. Independently check archive/manifest/allLF/custommetadata14fields/3JSguards/baselineHelm45ea742/Pvc,140 private-derived staging revisions, strict195copiedDBrehearsal script/no grading in web, unchanged older7runtime repairs/NewYear and actual source bindings. Nativecontrollerfour defects reworked/preserved; no remote execution/publication yet. Review actualtask9b controller too. Browser local390x844 light/dark56answers running separately. No new tests/build/browser/SSH/deploy/Git by reviewer.",
+    "created_at": 1791868760.3927655,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-95ee9f1a2b4945a08b95787e5d014afc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "canonical_revision_derivation": 140,
+      "counts": [
+        131,
+        4044,
+        242
+      ],
+      "evidence": [
+        {
+          "actual_exit": 0,
+          "check": "Local immutable package-v2 preparation",
+          "reference": "docs/rewrite-agents/tasks/CULTURE_NEXT7_RELEASE_20261013/package-v2.json",
+          "sha256": "10e62998bc6d279c535b6cb860067d7755e934c4f5729505d0839fdd394ec60e"
+        },
+        {
+          "actual_exit": 0,
+          "check": "Fresh correct-app production/QA Flutter Web builds",
+          "reference": "docs/rewrite-agents/tasks/CULTURE_NEXT7_RELEASE_20261013/root-builds.json"
+        },
+        {
+          "check": "Frozen source integration independent Claude acceptance, Go/Flutter/analyzer",
+          "reference": "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/binding-review.json"
+        }
+      ],
+      "scope": "Static gate only; no remote/image/publish claim; local mobileQA ongoing."
+    },
+    "root_task_id": "task-95ee9f1a2b4945a08b95787e5d014afc",
+    "run_id": "run-3983cc979ab84544b9131de250cd9c08",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "Next7 frozen Flutter content release package static gate",
+    "version": 4,
+    "reviewer": "session-c8021c3d2b5949bdb13acbde1a7bb3a9",
+    "review_note": "Independent review of the lead's package-v2 preparation (package-v2.json / root-builds.json / PREPARATION_HANDOFF_EN.md). All claims in the handoff check out against primary evidence rather than the JSON's own assertions: frozen commit is actual repo HEAD; archive/manifest/all-297-member hashes independently recomputed and match; package-v2 diffs against the prior immutable V8 archive scoped exactly to the 2 People packs + catalog/Reader + 3 guard files + web output + version.json, nothing else moved; counts 131/4044/242/28/140/55/195 all verified against frozen git content and the staging-revision proof file; production and QA Flutter builds both recorded actual_exit 0 with distinct API base URLs and were never packaged for QA; API binary reuse is justified (only test-fixture count assertions changed in Go source between V8 and the frozen commit, no production code/deps diff); question grading stays private (correct_option_id never appears in the public bundle); one private-revision hash independently reconstructed by hand matches the published revision sha256. The package-v1 failed attempt and the v1-v3 controller defect history (asset-path double-nesting, stale template guards) are genuinely retained on disk, not just claimed, and the current controller's fix is the only version consistent with the real Flutter build layout on disk. No defect found; the static gate has done its job. LIMITS: this is a read-only review of local files and recorded evidence only -- no edits/builds/tests/browser/SSH/deploy/Git mutation performed, consistent with my task scope. Remaining gates (Linux copied-DB rehearsal/rollback, image build/import, Helm lint/template/dry-run, isolated browser evidence, atomic publication and public verification) are correctly still open and are NOT certified by this review. This also does not certify all-bank facts, Android devices, or production publication."
+  },
+  "actual_report": "Both reviews recorded as ACCEPT. Summary:\n\n**task-9b88555275cd4152aa7eb457f0828ed8** (controller preparation) — ACCEPT, 0 errors.\n**task-95ee9f1a2b4945a08b95787e5d014afc** (package-v2 preparation) — ACCEPT, 0 errors.\n\n**Requirements compliance:** both deliverables match their stated acceptance criteria — the controller is LF-safe, protects paths, archives safely, and makes truthful remaining-gate claims; the prepared package has verified hashes and preserved prior repairs.\n\n**Independent verification performed** (not just trusting the JSON):\n- Frozen commit `e437661...` is actual repo HEAD.\n- Archive sha256, manifest sha256, and all 297 tar member hashes recomputed from scratch and matched.\n- Diffed the new archive byte-for-byte against the immutable V8 baseline — only the 2 People packs, catalog/Reader, 3 guard files, web output, and version.json changed; everything else (including prior runtime repairs) is untouched.\n- Counts (131/4044/242, 140+55=195) verified against `git show <frozen-commit>`, not the mutable tree.\n- Go source diff between V8 and frozen commit touches only test-fixture counts — API binary reuse is justified.\n- Correct answers (`private_grading`) never appear in the public bundle — grading privacy holds.\n- Hand-reconstructed one private-revision hash outside the controller — matched the published revision sha256.\n- Traced the v1→v4 controller history: v1's asset-path bug and v2/v3's incomplete fix were real; only the current version matches the actual Flutter build's `assets/assets/` nesting, confirmed against the real build on disk.\n\n**Findings:** no remaining defects found in either artifact.\n\n**Verification limits:** read-only — did not execute the controller, run builds/tests/browser checks, touch the Linux DB rehearsal, image/Helm pipeline, or SSH/deploy/Git. Those gates remain correctly open and uncertified by this review, as do upstream content-fact accuracy and production publication.",
+  "raw_trace_sha256": "fc71fce0829ebbb65ead9282b8283852cfe19cd5a6d00bbd9654f483f418cf99",
+  "package_sha256": "10e62998bc6d279c535b6cb860067d7755e934c4f5729505d0839fdd394ec60e",
+  "limits": [
+    "Local static package/controller gate only; copied DB/image/Helm/execution/publication gates separate",
+    "First compressed prompt reviewer refused without inspecting files; original trace retained, not counted as acceptance"
+  ]
+}
