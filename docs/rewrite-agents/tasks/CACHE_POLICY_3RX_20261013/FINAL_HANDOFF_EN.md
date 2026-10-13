@@ -1,0 +1,11 @@
+# Canonical full-package configuration gate completed
+
+`quiz_master-3rx` is closed. The native release helper's controller was independently reviewed and accepted by actual Claude session `session-e8c67512ce6e4f64a5d0ebffe912e7e9` for Hub task `task-16bf41f0a56f43d4ba601d33997e151f`. Source, archive and generated guard ordering were inspected independently; actual Hub receipt and exact producer hash are in `independent-review.json`.
+
+Root's full packaging/checksum/archive regression and Linux positive/negative staged/image checks passed. Historical producers were preserved. The new reviewed controller is tracked alongside its evidence and selected by the mandatory operational paragraph in `next/infra/production/README.md`. It must be used for the next release based on this immutable template, with fresh actual compiler outputs and all usual release gates. Regression packages using older compiler outputs are not deployment candidates.
+
+The first Claude review reached its 300-second bound after inspection and before its actual verdict was recorded. That timeout remains visible. A finite resumed review completed, exited zero and produced the real acceptance; no gate was inferred from the failed attempt. One non-blocking review observation remains documented: the JS insertion anchor accepts at least one occurrence, while the pinned immutable template actually has exactly one. Reconsider strict occurrence counting when that template is intentionally updated.
+
+Production remains the previously published Helm47 immutable image `fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f`; this tooling change required no deployment. Fresh secure feedback inventory is still 26 OPEN with aggregate hash `1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13`.
+
+In parallel, Root and a separately offered lighter explorer investigated `quiz_master-91v`. Browser keyboard probes reproduce an accessibility-target input discrepancy, but static source inspection found a stable controller/key and did not justify an application edit. Evidence and the explicit uncertainty are retained in `SEARCH_INPUT_91V_20261013/DIAGNOSIS_EN.md`; that issue stays OPEN for a trusted input-path comparison. The owned browser and both finite helpers completed; no ongoing helper activity is claimed.

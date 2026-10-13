@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "kind": "staged_config",
+      "fixture": "good",
+      "actual_exit": 0,
+      "output": "nginx.conf: OK\n"
+    },
+    {
+      "kind": "staged_config",
+      "fixture": "bad",
+      "actual_exit": 1,
+      "output": "nginx.conf: FAILED\nsha256sum: WARNING: 1 computed checksum did NOT match\n"
+    },
+    {
+      "kind": "built_image_config",
+      "fixture": "good",
+      "actual_exit": 0,
+      "output": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc  /etc/nginx/nginx.conf\n"
+    },
+    {
+      "kind": "built_image_config",
+      "fixture": "bad",
+      "actual_exit": 1,
+      "output": ""
+    }
+  ],
+  "production_before": {
+    "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f",
+    "generation": 46
+  },
+  "production_after": {
+    "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f",
+    "generation": 46
+  },
+  "scope": "Actual generated shell guard lines only; no cutover or production mutation",
+  "actual_exit": 0,
+  "full_cutover_bash_syntax_exit": 0
+}

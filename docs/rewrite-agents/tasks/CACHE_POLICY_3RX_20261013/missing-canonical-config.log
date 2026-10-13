@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\.run\cache_policy_3rx_20261013\prepare_snapshot_for_tests.py", line 443, in <module>
+    main()
+    ~~~~^^
+  File "C:\ap\quiz_master\.run\cache_policy_3rx_20261013\prepare_snapshot_for_tests.py", line 408, in main
+    nginx_config_sha256 = copy_and_check_nginx_config(args.repo, args.frozen_commit, stage)
+  File "C:\ap\quiz_master\.run\cache_policy_3rx_20261013\prepare_snapshot_for_tests.py", line 173, in copy_and_check_nginx_config
+    source = git_bytes(repo, commit, NGINX_CONFIG_PATH)
+  File "C:\ap\quiz_master\.run\cache_policy_3rx_20261013\prepare_snapshot_for_tests.py", line 151, in git_bytes
+    fail(f"frozen source is missing or unreadable: {relative}: {result.stderr.decode('utf-8', 'replace').strip()}")
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\.run\cache_policy_3rx_20261013\prepare_snapshot_for_tests.py", line 42, in fail
+    raise RuntimeError(message)
+RuntimeError: frozen source is missing or unreadable: next/infra/production/nginx.conf: fatal: path 'next/infra/production/nginx.conf' exists on disk, but not in 'e4376610968c66d2a7722893e9a4fb523dca89f5'

@@ -1,0 +1,73 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-16bf41f0a56f43d4ba601d33997e151f",
+  "reviewer": "session-e8c67512ce6e4f64a5d0ebffe912e7e9",
+  "hub_record": {
+    "acceptance": "New copied controller only intentional source/config/image guard/report differences against reviewed historical def4e233877e09221b51fef02b1beb26b64aecd3e4c6f0227f36598646e66a01. LF, honest no-runtime-tests handoff. Root separately validates fresh packaging, unsafe config rejection and actual Linux/image guard; no publication or fresh Flutter compilation claimed.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\.run\\cache_policy_3rx_20261013",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CACHE_POLICY_3RX_20261013"
+    ],
+    "assignee": "session-2f323d409f9c409693a1f47bc57adb0e",
+    "author": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "body": "Native release helper owns a new copy of reviewed controller, not historical artifacts. Copy canonical Nginx from supplied frozen Git SHA into stage; verify Dockerfile COPY; insert staged/built-image Nginx SHA checks before Helm mutation; preserve archive/checksum logic and old repairs. Current baseline Helm47 fa00bc8e. Root runs packaging positive/negative gates and independent Claude review.",
+    "created_at": 1791882434.5038085,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-16bf41f0a56f43d4ba601d33997e151f",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        ".run/cache_policy_3rx_20261013/prepare_next_package.py",
+        "docs/rewrite-agents/tasks/CACHE_POLICY_3RX_20261013/WORKER_HANDOFF_EN.md"
+      ],
+      "evidence": [
+        {
+          "kind": "static_delta",
+          "result": "Copied reviewed controller and limited intentional delta to frozen nginx config guard, stage copy, staged/built-image cutover hash checks, Helm47 baseline image, and package report field."
+        },
+        {
+          "kind": "lf_check",
+          "result": "Both owned files contain no CR bytes."
+        },
+        {
+          "kind": "template_inspection",
+          "result": "Verified deploy/quiz-preview/Dockerfile contains COPY nginx.conf /etc/nginx/nginx.conf; controller validates its staged equivalent."
+        }
+      ],
+      "limitations": [
+        "No runtime packaging, build, test, browser, image, Helm, or deployment command was run by this worker.",
+        "Root must execute positive frozen-1472f2a packaging, negative e437661 missing-config rejection, and Linux staged/built-image guard validation.",
+        "Existing compiler outputs are packaging fixtures only and do not claim a fresh deployable build."
+      ],
+      "runtime_identity": "codex/gpt-6.1-sol; packet label cache-release-gate-3rx",
+      "sha256": {
+        "WORKER_HANDOFF_EN.md": "4B57EF35ED12DBFDCC9BB9DF30BB445DE0ED7BAC6BAE3F1C1D6D9EA8440857D6",
+        "prepare_next_package.py": "EF9C75C1E5F8CB9F62479283059F264A3132EC54BF9BBCDB068D383C40051ED8"
+      },
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-16bf41f0a56f43d4ba601d33997e151f",
+    "run_id": "run-2d91cf6113ab4ce5a575590108bb5c98",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-3757c89ef50e4ffa8ae5e721b711ce4b",
+    "title": "quiz_master-3rx canonical Nginx configuration in the next owned full-package controller",
+    "version": 4,
+    "reviewer": "session-e8c67512ce6e4f64a5d0ebffe912e7e9",
+    "review_note": "Independently verified, not just read from proof files. Both hashes reproduced locally: producer ef9c75c1... (prepare_next_package.py) and historical def4e233... confirmed as a git-tracked blob reachable from commit 7f5ddc8 (git log --find-object) at docs/rewrite-agents/tasks/CULTURE_NEXT7_RELEASE_20261013/reviewed-package-controller.py (the .run/ path is gitignored/untracked but byte-identical). producer-diff.patch matches the real source. copy_and_check_nginx_config rejects missing frozen path, changed hash, missing Dockerfile, missing COPY line; nginx.conf is staged before write_checksums/archive, confirmed by untarring positive-v1 archive myself: 297 members, mtime epoch0, extracted nginx.conf hash matches NGINX_CONFIG_SHA256. Guard ordering confirmed by grepping the real generated cutover.sh: staged check line17, built-image check line48 right after docker build(47), before k3s import and before helm lint/template/dry-run/upgrade (67/68/69/73). missing-canonical-config.log traceback line numbers match prepare_next_package.py exactly; prepare_snapshot_for_tests.py used for the real runs hashes identically to the submitted controller. README.md diff is exactly the 2-line addition claimed and accurately describes real behavior. REQUIREMENTS: met -- config carried from frozen Git bytes, missing/changed config and missing COPY rejected, config in checksums/archive, hash reported, staged+image hashes asserted before Helm mutation, Helm47 pinned, prior guards preserved. CODE QUALITY: one minor nit -- patch_release_guards uses count(js_check)<1 instead of the sibling guards' strict !=1 as the nginx-check insertion anchor. Confirmed this anchor occurs exactly once in the real generated script, so NOT a blocker; latent fragility only if the pinned template ever gains a duplicate line. Recommend !=1 for consistency in a future change. LIMITS: did not execute cutover/Helm/Docker/DB myself; feedback-inventory.json treated as reported evidence, not re-queried against a live DB; did not rehash the full immutable baseline archive beyond its own passing self-check, whose extraction I inspected directly."
+  },
+  "producer_sha256": "ef9c75c1e5f8cb9f62479283059f264a3132ec54bf9bbcdb068d383c40051ed8",
+  "first_review_actual_exit": "timeout",
+  "recovery_actual_exit": 0,
+  "first_trace_sha256": "ab152feab4b625ff587e338352f03e9678f752e3aceac5a5301479c610d7f6d7",
+  "recovery_trace_sha256": "4ea1976f6f4bc3c288404582f04ebf03e3b7ba0e78a51d2cc96328401f640185",
+  "review_text": "Review submitted and recorded: task-16bf41f0a56f43d4ba601d33997e151f is now **ACCEPTED**.\n\n**Verdict: accept**\n\n**Requirements compliance — met.** Independently verified (not just trusting the proof JSON): both hashes reproduce locally (`ef9c75c1...` producer, `def4e233...` historical, the latter confirmed as a real git blob reachable from commit `7f5ddc8`); the nginx config is pulled from frozen Git bytes, rejects missing/changed config and missing Dockerfile `COPY`, lands in the final checksums/archive (verified by untarring the actual archive — 297 members, mtime epoch0, correct nginx.conf hash inside); and the staged + built-image hash checks sit in the generated `cutover.sh` (lines 17, 48) strictly before any Helm lint/template/dry-run/upgrade (lines 67–73) — confirmed by grepping the real generated script, not inferred.\n\n**Code quality — good**, one non-blocking nit: `patch_release_guards` anchors the nginx-check insertion with `count(js_check) < 1` instead of the sibling guards' strict `!= 1`. Confirmed that anchor occurs exactly once in the real output, so it's not a blocker — just a latent fragility if the pinned template ever grows a duplicate line. Recommended tightening to `!= 1` later, not required now.\n\n**Verification limits:** no cutover/Helm/Docker/DB execution performed myself; `feedback-inventory.json` treated as reported evidence, not re-queried live; the immutable baseline archive's own self-check was trusted rather than independently rehashed byte-for-byte beyond inspecting its extraction.",
+  "limits": [
+    "Producer/configuration gate only; no production publication or newly compiled release"
+  ]
+}

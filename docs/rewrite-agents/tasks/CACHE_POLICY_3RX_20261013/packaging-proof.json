@@ -1,0 +1,35 @@
+{
+  "producer_sha256": "ef9c75c1e5f8cb9f62479283059f264a3132ec54bf9bbcdb068d383c40051ed8",
+  "inputs": {
+    "historical_source_commit": "7f5ddc8acc4683138c0a68d0b924649e23ce3138",
+    "historical_controller_sha256": "def4e233877e09221b51fef02b1beb26b64aecd3e4c6f0227f36598646e66a01",
+    "source_commit_for_packaging_regression": "1472f2a0e56eb25b257eab5f97e503f87d7bd4a5",
+    "production_web": "C:\\ap\\quiz_master\\.run\\culture_next7_release_root_20261013\\production-web",
+    "qa_web": "C:\\ap\\quiz_master\\.run\\culture_next7_release_root_20261013\\qa-web",
+    "limits": [
+      "Existing verified Flutter outputs reused only to exercise packaging; these are not a newly compiled deployable release"
+    ]
+  },
+  "results": [
+    {
+      "case": "positive",
+      "actual_exit": 0,
+      "archive_sha256": "6c1af9d25af5eb0f01771c27ff999092f825985d1139bc2dd1bc57937b294fd5",
+      "nginx_config_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+      "file_members": 297,
+      "stage": "C:\\ap\\quiz_master\\.run\\cache_policy_3rx_20261013\\positive-v1\\quiz-2026.10.13-culture-1472f2a",
+      "all_staged_checksums_match": true,
+      "archive_config_exact_mtime_zero": true
+    },
+    {
+      "case": "missing-canonical-config",
+      "actual_exit": 1,
+      "unsafe_archive_absent": true,
+      "failure_tail": "en_commit, stage)\r\n  File \"C:\\ap\\quiz_master\\.run\\cache_policy_3rx_20261013\\prepare_snapshot_for_tests.py\", line 173, in copy_and_check_nginx_config\r\n    source = git_bytes(repo, commit, NGINX_CONFIG_PATH)\r\n  File \"C:\\ap\\quiz_master\\.run\\cache_policy_3rx_20261013\\prepare_snapshot_for_tests.py\", line 151, in git_bytes\r\n    fail(f\"frozen source is missing or unreadable: {relative}: {result.stderr.decode('utf-8', 'replace').strip()}\")\r\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\ap\\quiz_master\\.run\\cache_policy_3rx_20261013\\prepare_snapshot_for_tests.py\", line 42, in fail\r\n    raise RuntimeError(message)\r\nRuntimeError: frozen source is missing or unreadable: next/infra/production/nginx.conf: fatal: path 'next/infra/production/nginx.conf' exists on disk, but not in 'e4376610968c66d2a7722893e9a4fb523dca89f5'\r\n"
+    }
+  ],
+  "limits": [
+    "Packaging regression uses previously verified compiler outputs; not a newly built or deployable release",
+    "No production mutation, copied-DB grading or publication performed"
+  ]
+}
