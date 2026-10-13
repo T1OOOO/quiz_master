@@ -325,6 +325,11 @@ def patch_release_guards(stage: Path, build_id: str, frozen_commit: str, js_sha2
     text = cutover.read_text(encoding="utf-8")
     if text.count(BASELINE_BUILD) != 1:
         fail("cutover must contain exactly one V8 build guard")
+    old_build_regex = r"r'quiz-2026\.10\.13-culture-[0-9a-f]{7}'"
+    new_build_regex = r"r'quiz-2026\.10\.13-article-only-[0-9a-f]{7}'"
+    if text.count(old_build_regex) != 1:
+        fail("cutover must contain exactly one old culture build-prefix guard")
+    text = text.replace(old_build_regex, new_build_regex)
     old_js = "7fe815841d43e057042aa76e18508c8648fb59111cb941ac8c36bd30cdee331b"
     if text.count(old_js) != 3:
         fail("cutover must contain exactly three active JavaScript guards")

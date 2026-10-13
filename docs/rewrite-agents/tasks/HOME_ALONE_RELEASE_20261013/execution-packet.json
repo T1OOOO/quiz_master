@@ -1,0 +1,32 @@
+{
+  "package_sha256": "009e3c09fb72d82ddc9775b31e2774bc21f39da157607ba78732abb61eda7bf5",
+  "build": "quiz-2026.10.13-article-only-ffa2716",
+  "source_commit": "ffa271633279179391f83b7624d807ca29792939",
+  "image": "sha256:8e3c6bd77ab94945093e2ca4394d8364cca9e306b91c791ce2b4461d2a0f0018",
+  "values": "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "d316baa5a6a7d82fcfc7a1326730d5b25fe3d747faa65eb66b7a0bc1530ddaf0",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.13-article-only-ffa2716.tar",
+  "durable_archive_sha256": "f439c49cf2fcb8b9de7cdb585b2343eb356d334ac6bab37b9ab3c4b1e61a45a2",
+  "actual_copy_rehearsal": {
+    "canonical_packs": 8,
+    "canonical_questions": 140,
+    "home_alone_questions": 25,
+    "newyear_questions": 55,
+    "total_graded": 195,
+    "old_rows_preserved": true,
+    "backup_integrity_restore": "PASS",
+    "grading_article_bindings": "PASS",
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "local_browser_evidence_sha256": "ae684df75a933c3a9405580c7ba985e4f19badbaf5cf18851255c1da59301a15",
+  "prepare_controller_sha256": "e59d1578b5b8deffde524c3526384c05f3bd506381a8e67732a768305edb6844",
+  "publisher_controller_sha256": "27e5cb0f36e31658f647e03c592b99d3bc70bb18447bb78e0f9ac06c0f9762a4",
+  "limits": [
+    "Publication and live verification remain separate",
+    "No all-bank facts, physical Android or real feedback closure",
+    "Outer >4GB disk checks before prepare and fresh backup on publish; standalone cutover lacks internal disk admission"
+  ],
+  "publish_script_sha256": "90672e7ef414035733a9d057b6b46e6eddfe2e9c5a152b439525b09f73d65a36"
+}

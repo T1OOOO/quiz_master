@@ -12,8 +12,11 @@ source assets. It requires a later frozen integration commit plus independently
 created production and QA Flutter directories. Root owns those inputs and all
 execution gates.
 
-The output build name is `quiz-2026.10.13-article-only-<commit7>`. The prior
-V8 archive, its archive SHA guard, baseline image
+The output build name is `quiz-2026.10.13-article-only-<commit7>`. During
+cutover-template patching, the producer requires exactly one occurrence of the
+old strict `quiz-2026.10.13-culture-[0-9a-f]{7}` regex and replaces it with the
+equally strict `quiz-2026.10.13-article-only-[0-9a-f]{7}` regex. No other
+accepted build identifier is added or changed. The prior V8 archive, its archive SHA guard, baseline image
 `docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f`,
 canonical Nginx hash
 `e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc`, API

@@ -1,0 +1,899 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "build_id": "quiz-2026.10.13-article-only-ffa2716",
+  "frozen_commit": "ffa271633279179391f83b7624d807ca29792939",
+  "baseline_input": {
+    "archive": "C:\\ap\\quiz_master\\.run\\culture_next6_release_20261013\\v8\\quiz-2026.10.13-culture-328f2f8-v8.tar.gz",
+    "archive_sha256": "f1c8df8edb9b73f7b84dd2ea6bacfc1d80082df8eff97bd287e768b7bdfd140c",
+    "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+  },
+  "counts": {
+    "packs": 131,
+    "questions": 4044,
+    "reader_articles": 244,
+    "people_questions_each": 28,
+    "staging_canonical_questions": 140,
+    "home_alone_grading_questions": 25,
+    "newyear_copy_questions": 55,
+    "copy_grading_questions": 195
+  },
+  "metadata": {
+    "buildId": "quiz-2026.10.13-article-only-ffa2716",
+    "commit": "ffa271633279179391f83b7624d807ca29792939",
+    "source_commit": "ffa271633279179391f83b7624d807ca29792939",
+    "local_build": true,
+    "packs": 131,
+    "questions": 4044,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 244,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "b277d40969e197d8ee96830c836927432a631180609dd278d7e8ecf5c76001b9",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "frozen_source_assets": {
+    "catalog_json_sha256": "cd1dc4dc714917c33dd69fa171b6d52dfc750792c0d6b13dd1a464565d181ab0",
+    "question_articles_json_sha256": "98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433"
+  },
+  "nginx_config_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+  "qa_web_checked_not_packaged": "C:\\ap\\quiz_master\\.run\\home_alone_release_20261013\\qa-web",
+  "expected_staging_revision_proof": [
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-011",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-012",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-013",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-014",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-015",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-016",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-017",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-018",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-019",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-020",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-021",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-022",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-023",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-024",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-025",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-026",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-027",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-028",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-1",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-2",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-3",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-4",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-5",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-6",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-7",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-8",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-9",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-10",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-11",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-12",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-13",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-14",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-15",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-16",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-17",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-18",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-19",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-20",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-21",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-22",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-23",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-24",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-011",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-012",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-013",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-014",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-015",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-016",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-017",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-018",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-019",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-020",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-021",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-022",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-023",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-024",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-025",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-026",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-027",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-028",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-50",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-51",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-52",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-53",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-54",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-55",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-56",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-57",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-59",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-81",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-90",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-91",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-34",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-46",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-47",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-48",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-49",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-5",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-52",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-93",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-2",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-4",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-4-7",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-5-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-7-9",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-11",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-20",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-9-8",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716/quizzes/Science/planet_paradoxes_20261010.json"
+    }
+  ],
+  "stage": "C:\\ap\\quiz_master\\.run\\home_alone_release_20261013\\package-v1\\quiz-2026.10.13-article-only-ffa2716",
+  "archive": "C:\\ap\\quiz_master\\.run\\home_alone_release_20261013\\package-v1\\quiz-2026.10.13-article-only-ffa2716.tar.gz",
+  "archive_sha256": "ab59e41076ed51f619298640c256a1d468a2cb79351812328d5a9fda887de861",
+  "file_members": 297,
+  "tar_members": 297,
+  "manifest_sha256": "9ac71ed9cbad2c26ed562d00c64009b5a88e8e490eab686bbe89c839fb1e9a27",
+  "remaining_gates": [
+    "root static/execution review",
+    "Linux copied-DB rehearsal and rollback",
+    "image build/import, Helm lint/template/server dry-run",
+    "isolated browser evidence",
+    "authorized atomic production publication and public verification"
+  ]
+}
