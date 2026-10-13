@@ -1,0 +1,52 @@
+{
+  "actual_cli_exit": 0,
+  "draft_sha256": "4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082",
+  "actual_hub_state": "ACCEPTED",
+  "raw_callback": {
+    "acceptance": "8complete revisedquestions/articles2distinctprimaryURLs peritem, sourceclaim ledger/actualwordcounts/parity/duplicatecheck. Markreviewpending notapproved; no publicationfromstructuralpass.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_20261013"
+    ],
+    "assignee": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Root owns newwriter-v4.json/research-v4-root.json/structural-v4-root.json only; V1-V3 immutable. Correct short/meta-filled articles, narrow RomaCleo and Warwick1964/Rufus1978 clues withoutname leaks, replaceunavailableoriginalGrammy/LOC/BFI links with actuallyaccessedauthoritative2each. Preserve8keys/optionsbalance2each, privateeditorialonly. All100–150words fromsubstantivesourcedfacts, no padding boilerplate. ParallelnativefactcheckerV3report separateowner. Independentdifferentproviderfact/article/distractor review required beforeintegration. No runtime/build/browser/deploy/Git beyondownedstablecheckpoint.",
+    "created_at": 1791863018.8314378,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-57c81fe106c940f590129a7136f732bc",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/writer-v4.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/candidate-facing-v4.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/structural-v4-root.json",
+        "docs/rewrite-agents/tasks/CULTURE_NEXT7_20261013/research-v4-root.json"
+      ],
+      "limits": [
+        "IndependentClaude fact/article/distractor gate pending; NativeV3auditseparate; no integration/publication."
+      ],
+      "summary": "EightV4draft articles replaced with substantive112–119words and actual2primaryURLs each. Correctkeyparity/balance2each; narrowerRomaCleo/Warwick1964/Celia1950/Chaka1978 avoidsnameclues. OriginalV3frozen. No runtime changes."
+    },
+    "root_task_id": "task-57c81fe106c940f590129a7136f732bc",
+    "run_id": "run-0771baf5ebf54a21b5dacadd37ecd82f",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "3vw Root Next7 V4 source and article correction",
+    "version": 4,
+    "reviewer": "session-b9ff5ca693e545d3adb64524fbde1dfa",
+    "review_note": "Independent Claude Sonnet 5 review, writer-v4.json sha256 4a3922eefcc2be9d0cf1faf33d84a6aa6debfd8c3f9434708f4f894299d54082 confirmed locally. Blind answers from candidate-facing-v4.json alone, recorded before opening editorial content: 025=Tony Leung, 026=Julie Dash, 027=Chloe Zhao, 028=Yalitza Aparicio, music025=Celia Cruz, 026=Dionne Warwick, 027=Chaka Khan, 028=Dolly Parton -- all 8 match proposed keys exactly. Independently opened (not reused) all 16 primary source URLs via WebFetch: all OPEN_SUCCEEDED, each supports its article's specific claims (BFI pages for ITMFL/Daughters of the Dust/The Rider; oscars.org 91st ceremony + Netflix press for Roma; celiacruz.com+foundation for Sonora Matancera 1950; rockhall.com+officialcharts.com for Warwick, exact 22Apr1964/#9 peak confirmed; rockhall.com+chakakhan.com for Chaka 1978 Arif Mardin/Warner Bros/track1; dollyparton.com+whitneyhouston.com for Jolene/IWALY songwriter+producer credits). Beyond root's research: (1) re-attempted both Smithsonian URLs root flagged inaccessible, confirmed myself via WebFetch genuine HTTP 403; (2) since celiacruz.com/foundation are estate-affiliated not independent, used WebSearch to corroborate 1950 Sonora Matancera fact via Britannica Kids + National Women's History Museum, both confirm; (3) per instruction not to infer Jolene authorship from album placement, confirmed via WebSearch Dolly Parton is sole BMI-credited writer of both songs (wrote same day per her own account). All 32 options verified as real non-fabricated people; confirmed via WebSearch that Roma distractors Daniela Demesa and Veronica Garcia are real cast members (Sofi, Teresa), not invented -- no ambiguity, only Aparicio played Cleo. correct_answer index/text/options match for all 8 (verified programmatically), options unique, key position balanced 2x per index 0-3, article word counts independently recomputed as 112/119/112/113/115/118/116/114 matching structural claim. Duplicate check vs cinema_people_20261011.json and music_people_20261011.json (24 items each): no direct/rephrased duplicate questions. One non-blocking note: music-028 article reuses the Porter Wagoner farewell detail that is existing music-people-005's explanation; tested fact differs (authorship vs dedication reason) so not a duplicate question. Per-item: all 8 ACCEPT (025-028 cinema, 025-028 music). No unsupported facts/meta-filler found. Overall ACCEPT, all fact/article/options/source gates passed. Limits: single independent-provider review of this 8-item batch only, not full-bank certification, not structural/schema validation (separately gated), not integration/publication approval; no edits/build/test/browser/deploy made, draft left unmutated."
+  },
+  "actual_report": "The review submitted successfully — `task-57c81fe106c940f590129a7136f732bc` is now `state: ACCEPTED` with my review note attached as `reviewer: session-b9ff5ca693e545d3adb64524fbde1dfa`.\n\n**Summary of independent review (Claude Sonnet 5, task-57c81fe106c940f590129a7136f732bc, V4 draft, 8 items):**\n\n- Blind-answered all 8 questions from `candidate-facing-v4.json` before touching the key — all 8 matched the proposed answers exactly.\n- Independently fetched all 16 primary source URLs myself (not trusting root's claims) — all opened successfully and supported their articles' specific facts.\n- Went beyond root's gaps: confirmed the two Smithsonian URLs genuinely 403 (not a tool artifact), independently corroborated the Celia Cruz 1950 fact via Britannica/National Women's History Museum since the draft's own sources are estate-affiliated, and confirmed Dolly Parton's sole songwriting credit for both \"Jolene\" and \"I Will Always Love You\" via BMI/independent search rather than inferring it from album placement.\n- Verified all 32 options are real, non-fabricated people, including confirming the two less-familiar *Roma* distractors (Daniela Demesa, Verónica García) are actual cast members, not invented names.\n- Programmatically verified key/text/option parity, option uniqueness, balanced answer-position distribution, and word counts (112–119) for all 8 items.\n- Checked for duplicates against the two existing 24-item banks — no direct or rephrased duplicate questions; flagged one minor non-blocking content overlap (a shared supporting fact, not a duplicate question) for the editor's awareness.\n\nVerdict: **ACCEPT**, all 8 items pass fact/article/options/source gates, error_count 0. This is a review-only action — no files were edited, and publication/integration remains with the content agent and authorized editor.",
+  "root_disposition": "Accepted exact eight-item factual/article/options draft gate; no runtimeintegration/publication approval. Root also actually opened final16URLs. Shared PorterWagoner supportingdetail is not same testedfact (authorship vs dedication).",
+  "not_adopted": "Reviewer parenthetical same-day songwriting lore not present in V4; no same-day claim adopted or certified. Additional native V3 audit task remainsSUBMITTED awaiting differentprovider report review; Root sameproviderreview rejected byprotocol.",
+  "limits": [
+    "Single8-itembatch, notall-bankfacts/Android/UI/releasecertification",
+    "Model labels selfreported; vendorofficialCLI/provideractivity actual",
+    "ProductionHelm45/source328 remainsunchanged"
+  ]
+}

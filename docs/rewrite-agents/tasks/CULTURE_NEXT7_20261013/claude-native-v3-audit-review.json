@@ -1,0 +1,74 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "raw_callback": {
+    "acceptance": "Actual blindanswer8 saved beforekeys; each8 original16URLs actually accessed/attempted and claim-specific evidence; everydistractor checked; exact draft hash, clear limits. No sourcefabrication/factacceptance frompartialchecks.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_20261013"
+    ],
+    "assignee": "session-f81aca412ffc48eea2ae2e06b2aa7e7f",
+    "author": "session-3b969565efcc49e5a427bb8d51f90fc7",
+    "body": "Finite read-only eight-draft audit, frozenV3 SHA48acd545d1fe0a7c6bc5d524018583c36390e6b7bb0e70670af36433b6d476f3. FIRST answer candidate-facing-v3.json without openingwriter/privatekeys; save blindanswers then comparewriter-v3.json and actualoriginal16sources. Review all8 keys/options ambiguity/firstrecording qualifiers/distractor giveaways, article claim support vsprimarysources, peritem URLs and corpusduplicates People24each. V3 Rootstructural REWORK02596words and ledgerincomplete acknowledged; no forced verdict/no acceptance from schema. Own new fact-audit-v3.json only, never editdraft/runtime; no build/browser/SSH/deploy/Git/children. Provide exact peritem accept/revise/reject+sources+access outcome, unavailable tool != deadURL. Differentprovider signoff still required before eventualcontentintegration. Actual ready/session ack/offeraccept required.",
+    "created_at": 1791862856.8104525,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-a7588ab8cc344f62a07b384151c2f2f6",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CULTURE_NEXT7_20261013\\fact-audit-v3.json"
+      ],
+      "evidence": [
+        {
+          "kind": "blind_review",
+          "result": "Eight candidate answers fixed before private-key access; all match the editorial key."
+        },
+        {
+          "kind": "source_access",
+          "result": "Attempted all 16 original URLs: 8 opened and 8 retrieval-unavailable. All three Grammy URLs are unavailable in this tool and not certified dead; five other original URLs also failed/inaccessible. Opened authoritative alternatives are listed per item."
+        },
+        {
+          "kind": "corpus_check",
+          "result": "Read 24-question Cinema People and 24-question Music People packs. No exact duplicate; music-people-028 partially overlaps existing music-people-005 through Dolly Parton/I Will Always Love You."
+        },
+        {
+          "command": "PowerShell ConvertFrom-Json and Get-FileHash",
+          "kind": "validation",
+          "result": "Parsed OK; 8 items; verdicts ACCEPT=1, REVISE=7, REJECT=0; report SHA recorded."
+        }
+      ],
+      "remaining_risks": [
+        "cinema-people-025 article remains 96 words, below the 100-word structural threshold.",
+        "Seven items require editorial repair before acceptance, chiefly cited URLs unavailable to actual retrieval and article references to them.",
+        "Different-provider review remains required before any future content integration.",
+        "No publication, integration, build, browser, Git, deploy, or runtime action was performed."
+      ],
+      "runtime_identity": "codex/gpt-6.1-sol self-reported/unverified; session-f81aca412ffc48eea2ae2e06b2aa7e7f",
+      "sha256": {
+        "fact-audit-v3.json": "B51AA5E4C904CA14AEE1011553EC90E8972CA9F5C074F1905306AE579083CF4A",
+        "writer-v3.json": "48ACD545D1FE0A7C6BC5D524018583C36390E6B7BB0E70670AF36433B6D476F3"
+      },
+      "status": "DONE_WITH_CONCERNS",
+      "verdicts": {
+        "accept": 1,
+        "reject": 0,
+        "revise": 7
+      }
+    },
+    "root_task_id": "task-a7588ab8cc344f62a07b384151c2f2f6",
+    "run_id": "run-d015f775f94e4b6db86be439cbd2f80b",
+    "skills": [],
+    "state": "REWORK",
+    "team_id": "team-fab5ad65654a4e6e811c532dd448a9f0",
+    "title": "3vw Next7 V3 independent blind factual audit",
+    "version": 4,
+    "reviewer": "session-a5a2a4ff135848c78f062475406128a0",
+    "review_note": "Independent Claude Sonnet 5 review of fact-audit-v3.json (sha256 b51aa5e4c904ca14aee1011553ec90e8972ca9f5c074f1905306ae579083cf4a confirmed locally) against writer-v3.json (sha256 48acd545... confirmed) and candidate-facing-v3.json. This reviews the audit work-product only, not V3 content integration. Per the no-refetch guidance I did not re-open all 16 original URLs; I checked the report's internal consistency, arithmetic, and cross-referenced it against material already independently verified in my separate V4 review plus bounded re-reading of the raw writer-v3.json file (no network needed for this). Verified correct: blind-answer block matches candidate-facing-v3.json structure/options exactly, all 8 blind picks match the private key; source_access_summary arithmetic (8 opened/8 unavailable of 16) checks out exactly against the per-item original_sources/opened_alternative entries; word counts (96/108/109/106/107/103/102/106) match root-v3-structural-review.json's independently-computed values; key/text parity and option-uniqueness claims hold; duplicate-check finding re music-people-028 vs existing music-people-005 is accurate and matches my own separate corpus read. Two of the report's inaccessible-URL claims (chloe-zhao-nomadland-profile, bfi roma film page) are independently corroborated by a different document, research-v4-root.json, which hit the same two URLs as inaccessible on a separate attempt -- cross-session consistency, not just a single unverified claim. One discrepancy noted but not treated as an error per the task's own caveat: this audit reports the two Smithsonian URLs failed with HTTP 500 and 404, whereas my own separate WebFetch attempts (different session) got HTTP 403 on both -- differing exact codes across attempts/tools, consistent with 'unavailable here does not certify dead,' not evidence of fabrication. CONCRETE GAP (error_count=1): by directly re-reading writer-v3.json's raw article_body text (no network required), I found the exact sentence 'Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.' repeated verbatim across 4 of the 8 articles: cinema-people-026, cinema-people-027, cinema-people-028, and music-people-025. This is template/boilerplate padding carrying no item-specific sourced fact -- exactly the 'meta-filled padding' category the audit itself is supposed to catch per qm-fact-check SKILL.md. The audit's REVISE verdicts for 027/028/music-025 happen to be correct for other stated reasons (broken source links, filler sentences), so this gap doesn't flip their verdict, but it was never mentioned for any of the three. More importantly, the audit's sole ACCEPT verdict, cinema-people-026, explicitly states 'No factual correction found' despite this same boilerplate sentence being present in that article -- the ACCEPT is therefore incomplete: either the finding should disclose and address this padding sentence, or the verdict itself needs reconsideration. Requested rework: add this duplicated-sentence finding to the audit for all 4 affected items and revisit the cinema-people-026 ACCEPT in light of it. Everything else in the report (identity, source arithmetic, blind answers, word counts, duplicate check, verdict totals 1/7/0) is internally consistent and accurate; this is the one substantive gap. Limits: I did not re-fetch the 16 original URLs myself for this review (not required absent concrete uncertainty beyond the one noted code-mismatch); this review approves/rejects the audit work-product only, not V3 draft acceptance, publication, or wider corpus certification. No edits/build/test/browser/deploy made."
+  },
+  "actual_report": "Review submitted — `task-a7588ab8cc344f62a07b384151c2f2f6` is now `state: REWORK`.\n\n**Summary:** I reviewed the native V3 fact-audit report (`fact-audit-v3.json`, author = same codex provider as root, hence requiring this independent-provider check) against `writer-v3.json`, `candidate-facing-v3.json`, and `root-v3-structural-review.json`.\n\nMost of the audit checked out: blind-answer block matches the candidate file and private key, source-access arithmetic (8 opened/8 unavailable of 16) is internally consistent, word counts match root's own structural review, and two of its \"inaccessible\" URL claims are cross-corroborated by a separate document (`research-v4-root.json`) hitting the same dead ends independently.\n\n**Verdict: REWORK (error_count=1).** By re-reading the raw `writer-v3.json` text directly (no network needed), I found one identical boilerplate sentence — *\"Этот контекст помогает увидеть связь личной истории с художественным выбором авторов и исполнителей.\"* — pasted verbatim into 4 of the 8 articles (cinema-026, -027, -028, music-025). This is exactly the \"meta-filled padding\" the audit is supposed to catch, and it undermines the audit's sole **ACCEPT** verdict on cinema-026, which claimed \"no factual correction found\" despite containing this same content-free template line. I asked for this finding to be added and the cinema-026 verdict reconsidered.\n\nThis only judges the audit work-product's correctness — it doesn't approve V3 draft content, publication, or integration either way.",
+  "limits": "Native V3 AUDITREPORT gate only. Root V4 draft separate actualClaudeACCEPT0; this auditreport correction does not undo V4gate or approveheldV3."
+}
