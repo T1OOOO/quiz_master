@@ -1,0 +1,70 @@
+nginx.conf: OK
+Dockerfile.cache-hotfix: OK
+prepare.sh: OK
+source-commit.txt: OK
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.cache-hotfix
+#1 transferring dockerfile: 277B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${BASE_IMAGE} results in empty or invalid base image name (line 4)
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/quiz-master:quiz-2026.10.13-culture-e437661
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.74kB done
+#4 DONE 0.1s
+
+#5 [1/2] FROM docker.io/library/quiz-master:quiz-2026.10.13-culture-e437661@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5
+#5 resolve docker.io/library/quiz-master:quiz-2026.10.13-culture-e437661@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5
+#5 resolve docker.io/library/quiz-master:quiz-2026.10.13-culture-e437661@sha256:3079779783215975b119ef6a187a325ced1fd807a31b15b0c4cd090d0d2298d5 0.1s done
+#5 DONE 0.5s
+
+#6 [2/2] COPY nginx.conf /etc/nginx/nginx.conf
+#6 DONE 0.1s
+
+#7 exporting to image
+#7 exporting layers 0.1s done
+#7 exporting manifest sha256:e9639d2011350389a21bebc350edd263b5730df24f23ae508bd4521a893c7032 0.0s done
+#7 exporting config sha256:0e25cb8bafb1a48f7b13e5891001ce3bf01bf411396808978b142152337b2765 0.0s done
+#7 exporting attestation manifest sha256:60de806b9c834589b75ef712bd33db37357c61bd499082c0ac4555eb43b80d7b 0.0s done
+#7 exporting manifest list sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f 0.0s done
+#7 naming to docker.io/library/quiz-master:cache-20261013T082020Z-d851284 done
+#7 unpacking to docker.io/library/quiz-master:cache-20261013T082020Z-d851284 0.1s done
+#7 DONE 0.5s
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - InvalidDefaultArgInFrom: Default value for ARG ${BASE_IMAGE} results in empty or invalid base image name (line 4)
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+docker.io/library/quiz master:cache 2026	saved	
+application/vnd.oci.image.index.v1+json sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f
+Importing	elapsed: 8.3 s	total:   0.0 B	(0.0 B/s)	
+docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f
+==> Linting chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+Warning: resource networkpolicies/quiz-isolation is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+networkpolicy.networking.k8s.io/quiz-isolation configured (server dry run)
+Warning: resource persistentvolumeclaims/quiz-data is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+persistentvolumeclaim/quiz-data configured (server dry run)
+Warning: resource roles/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+role.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource rolebindings/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+rolebinding.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource services/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/quiz-master configured (server dry run)
+Warning: resource deployments/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/quiz-master configured (server dry run)
+Warning: resource ingresses/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+ingress.networking.k8s.io/quiz-master configured (server dry run)
+Warning: resource middlewares/quiz-rate-limit is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+middleware.traefik.io/quiz-rate-limit configured (server dry run)
+{"stage": "/opt/quiz-master/releases/cache-20261013T082020Z-d851284", "tag": "quiz-master:cache-20261013T082020Z-d851284", "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f", "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-master:cache-20261013T082020Z-d851284.tar", "durable_archive_sha256": "7412fd73558e81be73bece09b3330720018d507cb80ef624c435b7e503bf923b", "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc", "application_manifest_sha256": "c75c12dcd9984678e83b84e543565ead35c5532dcb73bb8db173e9085ef26a40", "application_file_count": 286, "values_sha256": "b36ef2bccee6f9af852b854f8aa13d219f574212c91fd271310911f0a8292e8b", "rendered_sha256": "8178d2c1b64605eef80766d313b7874d9fb8bd3e834726d4e10d50737b971478", "source_commit": "d851284394c996dcb84f55f139bb172a259f3846", "baseline_helm_revision": 46, "application_build_id": "quiz-2026.10.13-culture-e437661", "checks": ["base image hash before/after", "Nginx syntax", "all API/Web file hashes identical", "exact canonical config", "durable import", "strict Helm lint", "only two rendered image references changed", "server dry-run"], "limits": ["No publication performed", "No database migration or new Flutter/API build"]}
+

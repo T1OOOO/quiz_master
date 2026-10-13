@@ -1,0 +1,32 @@
+{
+  "stage": "/opt/quiz-master/releases/cache-20261013T082020Z-d851284",
+  "tag": "quiz-master:cache-20261013T082020Z-d851284",
+  "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-master:cache-20261013T082020Z-d851284.tar",
+  "durable_archive_sha256": "7412fd73558e81be73bece09b3330720018d507cb80ef624c435b7e503bf923b",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "application_manifest_sha256": "c75c12dcd9984678e83b84e543565ead35c5532dcb73bb8db173e9085ef26a40",
+  "application_file_count": 286,
+  "values_sha256": "b36ef2bccee6f9af852b854f8aa13d219f574212c91fd271310911f0a8292e8b",
+  "rendered_sha256": "8178d2c1b64605eef80766d313b7874d9fb8bd3e834726d4e10d50737b971478",
+  "source_commit": "d851284394c996dcb84f55f139bb172a259f3846",
+  "baseline_helm_revision": 46,
+  "application_build_id": "quiz-2026.10.13-culture-e437661",
+  "checks": [
+    "base image hash before/after",
+    "Nginx syntax",
+    "all API/Web file hashes identical",
+    "exact canonical config",
+    "durable import",
+    "strict Helm lint",
+    "only two rendered image references changed",
+    "server dry-run"
+  ],
+  "limits": [
+    "No publication performed",
+    "No database migration or new Flutter/API build"
+  ],
+  "publish_script_sha256": "446dc54954a441bb76cc80cd19102b46d9449fd46990d47db2831fc3a9efd155",
+  "prepare_log_sha256": "537a829872756fdaa28ec28d458ba82f70d9a9c285177d325a4b56e7f94fdf8e",
+  "source_review": "ACCEPTED"
+}

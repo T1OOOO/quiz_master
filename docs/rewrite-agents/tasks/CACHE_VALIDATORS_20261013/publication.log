@@ -1,0 +1,35 @@
+nginx.conf: OK
+Dockerfile.cache-hotfix: OK
+prepare.sh: OK
+source-commit.txt: OK
+candidate-values.json: OK
+candidate-rendered.yaml: OK
+candidate-application.sha256: OK
+/var/lib/rancher/k3s/agent/images/quiz-master:cache-20261013T082020Z-d851284.tar: OK
+/var/lib/rancher/k3s/agent/images/quiz-master:cache-20261013T082020Z-d851284.tar: OK
+Warning: resource networkpolicies/quiz-isolation is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+networkpolicy.networking.k8s.io/quiz-isolation configured (server dry run)
+Warning: resource persistentvolumeclaims/quiz-data is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+persistentvolumeclaim/quiz-data configured (server dry run)
+Warning: resource roles/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+role.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource rolebindings/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+rolebinding.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource services/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/quiz-master configured (server dry run)
+Warning: resource deployments/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/quiz-master configured (server dry run)
+Warning: resource ingresses/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+ingress.networking.k8s.io/quiz-master configured (server dry run)
+Warning: resource middlewares/quiz-rate-limit is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+middleware.traefik.io/quiz-rate-limit configured (server dry run)
+{"backup_integrity": "ok", "feedback_status_counts_at_backup": [["open", 26]]}
+Release "quiz-master" has been upgraded. Happy Helming!
+NAME: quiz-master
+LAST DEPLOYED: Tue Oct 13 11:33:56 2026
+NAMESPACE: quiz-master
+STATUS: deployed
+REVISION: 47
+TEST SUITE: None
+{"actual_publication": true, "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f", "helm_revision": 47, "conditional_checks": [{"path": "version.json", "headers": {"If-None-Match": "\"0-2b9\""}, "status": 200, "sha256": "ab10fff2706f1b65118445dae177df85eb19b65d44184c780fef04f078d00893"}, {"path": "version.json", "headers": {"If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "ab10fff2706f1b65118445dae177df85eb19b65d44184c780fef04f078d00893"}, {"path": "version.json", "headers": {"If-None-Match": "\"0-2b9\"", "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "ab10fff2706f1b65118445dae177df85eb19b65d44184c780fef04f078d00893"}, {"path": "main.dart.js", "headers": {"If-None-Match": "\"0-3a84c2\""}, "status": 200, "sha256": "31a69016354db1c23d69ba85348ee2ff1aedfb90372fd462018269903f453622"}, {"path": "main.dart.js", "headers": {"If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "31a69016354db1c23d69ba85348ee2ff1aedfb90372fd462018269903f453622"}, {"path": "main.dart.js", "headers": {"If-None-Match": "\"0-3a84c2\"", "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "31a69016354db1c23d69ba85348ee2ff1aedfb90372fd462018269903f453622"}, {"path": "assets/assets/catalog.json", "headers": {"If-None-Match": "\"0-8bad\""}, "status": 200, "sha256": "cd1dc4dc714917c33dd69fa171b6d52dfc750792c0d6b13dd1a464565d181ab0"}, {"path": "assets/assets/catalog.json", "headers": {"If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "cd1dc4dc714917c33dd69fa171b6d52dfc750792c0d6b13dd1a464565d181ab0"}, {"path": "assets/assets/catalog.json", "headers": {"If-None-Match": "\"0-8bad\"", "If-Modified-Since": "Thu, 01 Jan 1970 00:00:00 GMT"}, "status": 200, "sha256": "cd1dc4dc714917c33dd69fa171b6d52dfc750792c0d6b13dd1a464565d181ab0"}], "application_build_id": "quiz-2026.10.13-culture-e437661", "ready": 1, "available": 1, "database_migration": false}
+

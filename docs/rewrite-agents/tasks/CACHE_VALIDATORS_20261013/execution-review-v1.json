@@ -1,0 +1,52 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-1d3c57e523074692953b8e4c38c74714",
+  "reviewer": "session-d323fc4bcea244b49ffa8612e66d98ca",
+  "hub_record": {
+    "acceptance": "Real baseline equal-length mtime0 requests return304; fixed requests return200 updatedbytes for both validators; immutable image only config differs; syntax, Helm/server dryrun, baseline/PVC/health/rollback guards and independent execution review; publication remains separate.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\next\\infra\\production",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CACHE_VALIDATORS_20261013",
+      "C:\\ap\\quiz_master\\.run\\cache_validators_20261013"
+    ],
+    "assignee": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "author": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "body": "Lead owns isolated regression, immutable config-only image preparation, exact release packet and release gates. Native helper owns nginx.conf. Existing app assets/API/data stay byte-identical; new image changes only canonical Nginx config. Independent provider must review proof and exact prepared publication script before cutover.",
+    "created_at": 1791879092.0611455,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-1d3c57e523074692953b8e4c38c74714",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "next/infra/production/check_cache_validators.py",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/regression.json",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/REGRESSION_HANDOFF_EN.md"
+      ],
+      "limits": [
+        "No deployment performed; independent source review and exact prepared execution gate remain."
+      ],
+      "status": "DONE_WITH_CONCERNS",
+      "summary": "Real regression completed; configuration-only release preparation remains separate pending independent source review."
+    },
+    "root_task_id": "task-1d3c57e523074692953b8e4c38c74714",
+    "run_id": "run-4aa4e2d5af0e4f75ba81f5feb363b0db",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-3757c89ef50e4ffa8ae5e721b711ce4b",
+    "title": "quiz_master-74t real Nginx validator regression and configuration-only release preparation",
+    "version": 4,
+    "reviewer": "session-d323fc4bcea244b49ffa8612e66d98ca",
+    "review_note": "Independent review (Claude Sonnet 5, read-only, local hash/file inspection, no execution) of the supplemental packet in docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013 (prepared.json, reviewed-prepare.sh, reviewed-publication.sh, prepare.log, regression.json, source-review.json, feedback-inventory.json) plus committed source d851284 and next/infra/production/*.\n\nVerified myself: nginx.conf locally re-hashes to e9add812... matching prepared/regression 'fixed' config_sha256, LF-only; diff from the prior published config is exactly one comment + `etag off;`/`if_modified_since off;`, all routes/headers/limits untouched. reviewed-publication.sh re-hashes to c1989c29... (matches prepared.json publish_script_sha256); prepare.log re-hashes to 537a8298... (matches prepare_log_sha256); prepare.log's embedded JSON is byte-identical to prepared.json -- evidence is self-consistent, not substituted. Commit d851284 contains exactly the claimed canonical nginx.conf/Dockerfile/regression; the new prepared.json/scripts/feedback-inventory.json are untracked, consistent with 'prepared but not published'. source-review.json confirms task-3bad1bb3... (config copy) was independently ACCEPTED in the prior gate by a different Claude session.\n\nScripts: both guard exact hostname and flock the same lockfile (mutually exclusive fds 8/9); pin baseline image digest/PVC UID/Helm rev 46/disk/node readiness; verify base image ID unchanged before and after `docker build --network=none --pull=false` with explicit --build-arg (InvalidDefaultArgInFrom warning is expected/benign, caller supplies and verifies BASE_IMAGE); cmp all API/Web file hashes baseline vs candidate; extract+diff built image's live nginx.conf vs source; guard archive overwrite/symlinked image dir; validate imported digest format; assert rendered baseline vs candidate manifests differ in exactly the two image references (programmatic assert). Publication script re-verifies all hashes + durable-image.sha256, re-renders and cmp's against the already-reviewed rendered.yaml, takes a read-only sqlite3 URI backup with integrity_check (no restore), runs `helm upgrade --atomic --wait`. Its ERR trap only rolls back to rev 46 when post-upgrade state is exactly candidate-image@rev47; any other mismatch is left alone with a warning rather than guessed-at -- sound conservative precondition, correctly never restores the DB. Post-publish checks compare live bytes/headers at the real domain against previously checksummed prior-release files and resynthesize the old ETag scheme to prove stale validators no longer 304, directly targeting the regression.\n\nLimits (as disclosed): proves a correctly prepared, self-consistent execution gate, not that publication occurred (Helm still at rev 46/baseline image). TOCTOU window between base-image recheck and save/import is nonzero but mitigated by flock/single-operator assumption. No live /v1/ proxy check post-publish beyond config diff (in scope since those locations are provably untouched). No syntax/hash/control-flow bugs found in either script.\n\nVerdict: accept -- approves this prepared execution gate as sound and ready; does not certify publication already happened."
+  },
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "trace_sha256": "456f9ee3a81fb00ef6996eb918b01bd3a1de976f4179e9e5ec14a98ff4536d8c",
+  "review_text": "Review recorded as **ACCEPT** for task-1d3c57e523074692953b8e4c38c74714 in the hub (state now `ACCEPTED`).\n\nSummary of findings:\n- Verified the evidence myself (hashes, diffs, commit contents), not just the claims: `nginx.conf` locally re-hashes to `e9add812...` matching `prepared.json`/`regression.json`; `reviewed-publication.sh` and `prepare.log` locally re-hash to the exact values recorded inside `prepared.json`, so the evidence packet is self-consistent and not substituted.\n- The config diff is exactly one comment + `etag off;`/`if_modified_since off;`, nothing else touched.\n- Both scripts are well-guarded: hostname pin, mutual-exclusion flock, pre/post base-image-ID checks around the build, byte-for-byte app-file hash comparisons, exact-diff assertions on rendered Helm manifests (only the two image refs differ), read-only SQLite backup with integrity check and no DB restore, and a conservative rollback trap that only fires on an unambiguous candidate@rev47 state (otherwise it preserves state rather than guessing).\n- No syntax, hash-mismatch, or control-flow problems found. The `InvalidDefaultArgInFrom` Docker warning is expected/benign given the caller supplies and verifies `BASE_IMAGE`.\n- This accept approves the prepared execution gate as sound and ready — it does **not** certify that publication has actually happened (Helm is still at baseline revision 46).\n\nNo edits, builds, or deployment actions were performed; this was a read-only review as scoped.",
+  "limits": [
+    "Prepared execution v1 review only; no publication claim; two lead hardening corrections require delta review"
+  ]
+}

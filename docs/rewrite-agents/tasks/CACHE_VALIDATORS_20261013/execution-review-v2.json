@@ -1,0 +1,55 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "task_id": "task-88d6194bc1814cd9a5c2a8a57e1b3834",
+  "reviewer": "session-0eb9d1ddebf24d5c86b5f6a0c589b96c",
+  "hub_record": {
+    "acceptance": "Inspect v1/v2 diff, pinned archive/image, private backup creation, actual Bash syntax0/three Python compileblocks; exact new script SHA446dc54954a441bb76cc80cd19102b46d9449fd46990d47db2831fc3a9efd155. No publication claimed.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CACHE_VALIDATORS_20261013",
+      "C:\\ap\\quiz_master\\.run\\cache_validators_20261013"
+    ],
+    "assignee": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "author": "session-6f635d5a31c34ca996df6b80af659ef2",
+    "body": "Preparation/source independently accepted. Lead adds explicit pinned durable archive and imported image digest checks plus private0600/O_EXCL SQLite backup creation. Require independent exact delta review before publication; v1 preserved.",
+    "created_at": 1791880201.7675123,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-88d6194bc1814cd9a5c2a8a57e1b3834",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "evidence": [
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/reviewed-publication.sh",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/reviewed-publication-v1.sh",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/prepared.json",
+        "docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013/publication-syntax.json"
+      ],
+      "limits": [
+        "No publication yet."
+      ],
+      "status": "DONE_WITH_CONCERNS",
+      "summary": "Exact hardening delta syntax checked, independent delta review required before publication."
+    },
+    "root_task_id": "task-88d6194bc1814cd9a5c2a8a57e1b3834",
+    "run_id": "run-2c04eadb184b4455a5c7fe8503ffa263",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-3757c89ef50e4ffa8ae5e721b711ce4b",
+    "title": "quiz_master-74t exact publication hardening delta",
+    "version": 4,
+    "reviewer": "session-0eb9d1ddebf24d5c86b5f6a0c589b96c",
+    "review_note": "Independent read-only review (Claude Sonnet 5, no execution) of the hardening delta: reviewed-publication-v1.sh vs reviewed-publication.sh in docs/rewrite-agents/tasks/CACHE_VALIDATORS_20261013.\n\nVerified myself: reviewed-publication.sh re-hashes locally to 446dc549...bb76cc80cd19102b46d9449fd46990d47db2831fc3a9efd155, matching the stated frozen SHA and publication-syntax.json's publish_script_sha256 exactly. `bash -n` on the script passes; I statically extracted and py_compile'd all 3 Python heredoc blocks myself -- all 3 compile cleanly, matching publication-syntax.json's actual_bash_syntax_exit=0 / python_blocks_compiled=3 claims. prepared.json vs prepared-v1.json diff is exactly one field (publish_script_sha256 updated to the new hash); prepare.log is byte-identical (537a8298... unchanged) confirming the prepare/image stage was not re-run, consistent with 'source and prepared image unchanged, publication not run'. execution-review-v1.json is byte-for-byte my own prior accept review of task-1d3c57e5..., correctly retained, whose limits note flagged exactly these two corrections as pending.\n\nDiff content (confirmed via direct diff, not just the claim): (1) added `printf '%s  %s\\n' <durable_archive_sha256> <archive path> | sha256sum -c -` using the literal hash/path from prepared.json's durable_archive_sha256/durable_archive fields -- this pins the expected archive hash inside the hash-frozen script itself, closing the gap where publication previously only trusted the mutable durable-image.sha256 file written during prepare (which could in principle be altered on disk between prepare and publish without detection). (2) added `test \"$(k3s ctr images ls | awk -v ref=\"$quiz_image\" '$1==ref {print $3}')\" = sha256:fa00bc8e...` confirming the digest-named containerd ref created by prepare's `ctr images tag --force` still resolves to the exact expected digest at publish time -- column usage ($1 ref, $3 digest) is consistent with the same pattern already used in reviewed-prepare.sh. (3) SQLite backup now does `os.open(backup, O_CREAT|O_EXCL|O_WRONLY, 0o600)` before `sqlite3.connect`, replacing the old assert-then-connect pattern: O_EXCL eliminates the TOCTOU window between existence-check and file creation and (per POSIX) fails on a pre-existing symlink without following it, and 0o600 ensures the production DB backup is owner-only readable instead of relying on umask-determined connect()-time permissions. All three changes are additive guards only; rollback logic, helm upgrade invocation, conditional-request checks and the ERR trap are byte-identical to the already-accepted v1.\n\nMinor non-blocking observation: SQLite's own `-journal`/`-wal` sidecar files created during source.backup() are not explicitly chmod'd by this script and follow sqlite3's own default creation mode; this is unchanged from v1 and not a regression introduced by this delta.\n\nNo syntax, hash-mismatch, path-handling or control-flow problems found. Verdict: accept -- approves this exact hardened execution script; does not certify that publication has occurred."
+  },
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "trace_sha256": "366379d832d897dce05d064944b43fc660e890b8c75caf2461037120c5534631",
+  "review_text": "**Accepted** task-88d6194bc1814cd9a5c2a8a57e1b3834 in the hub.\n\nFindings:\n- `reviewed-publication.sh` re-hashes to `446dc549...` exactly — matches the stated frozen SHA and `publication-syntax.json`.\n- `bash -n` passes; I independently extracted and `py_compile`'d all 3 Python heredoc blocks myself — all compile cleanly, confirming the syntax claims rather than trusting them.\n- `prepared.json` vs `prepared-v1.json` differ in exactly one field (the updated script hash); `prepare.log` is byte-identical — confirms the prepare/image stage genuinely wasn't re-run.\n- Diff vs v1 is exactly the three claimed additive guards, nothing else touched (rollback/upgrade/conditional-check logic untouched):\n  1. Durable archive hash now pinned inline in the hash-frozen script itself (closes a TOCTOU-style trust gap on the mutable `durable-image.sha256` file).\n  2. New check that the digest-named containerd image ref still resolves to the expected digest at publish time.\n  3. SQLite backup file now created via `O_CREAT|O_EXCL|O_WRONLY, 0o600` before `sqlite3.connect` — eliminates the old check-then-create race and refuses to follow a pre-placed symlink, and ensures the DB backup isn't left world/group-readable.\n- One minor, non-blocking observation: SQLite's own journal/WAL sidecar files aren't explicitly chmod'd, but that's unchanged from v1 and not a regression from this delta.\n\nNo syntax, hash-mismatch, or control-flow issues found. This accept covers only this hardened script; publication still has not occurred.",
+  "limits": [
+    "Exact hardened execution gate accepted; actual publication remains separate"
+  ],
+  "publish_script_sha256": "446dc54954a441bb76cc80cd19102b46d9449fd46990d47db2831fc3a9efd155",
+  "image": "docker.io/library/quiz-master@sha256:fa00bc8e559ec5a02ed62903f7ed91c00540f11de0a16b0cddc5b15717f5317f",
+  "source_commit": "d851284394c996dcb84f55f139bb172a259f3846"
+}
