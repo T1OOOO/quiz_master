@@ -1,0 +1,22 @@
+{
+  "source_commit": "e212470",
+  "checks": [
+    {
+      "command": "go test -p=1 ./next/server/internal/content ./next/server/cmd/quizctl",
+      "actual_exit": 0,
+      "output": "ok quiz_master/next/server/internal/content (cached)\nok quiz_master/next/server/cmd/quizctl 11.335s",
+      "scope": "Existing content/import/build/quizctl behavior; generated Film Craft output is checked separately."
+    },
+    {
+      "command": "python .run/home_alone_release_20261013/feedback_inventory.py",
+      "actual_exit": 0,
+      "reports_count": 26,
+      "open_count": 26,
+      "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13",
+      "scope": "Read-only production aggregate; no raw feedback or status mutation."
+    }
+  ],
+  "canonical_or_runtime_changes": false,
+  "release_gate_passed": false,
+  "limits": ["No new Flutter build/browser or deployment in these baseline checks.", "Go structural checks do not certify all quiz facts."]
+}

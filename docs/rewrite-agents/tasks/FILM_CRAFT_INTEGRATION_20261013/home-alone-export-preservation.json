@@ -1,0 +1,19 @@
+{
+  "finding": "General Reader export omitted two published Home Alone rows because their reviewed runtime overlay had no standard draft/review/snapshot inputs.",
+  "exact_published_reader_sha256": "98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433",
+  "original_source_prose_ledger_equal": true,
+  "actual_source_review_cli_exit": 0,
+  "actual_source_review_verdict": "ACCEPT",
+  "captured_public_question_count": 25,
+  "no_private_grading_in_snapshot": true,
+  "two_exact_published_refs_match_live_public_revisions": true,
+  "new_standard_inputs": [
+    "study/question_articles/drafts/home-alone-published-20261013.json",
+    "study/question_articles/reviews/home-alone-published-20261013-review.json",
+    "study/question_articles/snapshots/home-alone-1-part-1.json"
+  ],
+  "limits": [
+    "Original editorial fact review scope retained, including Apple TV static-shell access limitation.",
+    "No new question, fact, prose or server update; fixes local export source completeness."
+  ]
+}

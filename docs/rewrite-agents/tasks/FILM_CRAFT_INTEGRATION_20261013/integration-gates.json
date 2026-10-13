@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {"command": "python -m unittest discover -s study/question_articles -p test_*.py", "actual_exit": 0, "tests_passed": 4},
+    {"command": "flutter test --no-pub test/question_articles_test.dart", "actual_exit": 0, "tests_passed": 6, "cwd": "next/apps/quiz_app"},
+    {"command": "go run -p=1 ./next/server/cmd/quizctl audit --in quizzes --taxonomy metadata/tags.v1.json", "actual_exit": 0, "files": 132, "questions": 4048, "ready": 132, "blocked": 0},
+    {"command": "python study/question_articles/build.py --check", "actual_exit": 0, "accepted_articles": 248}
+  ],
+  "resolved_failures": [
+    "The first general Reader export yielded246 rows: all four new Film Craft records were present, but the two Home Alone rows from the published runtime overlay lacked standard compiler inputs. Exact published rows and original independent source acceptance are now retained as draft/review inputs, with a live public grading-free25-question snapshot for their existing revisions. The unchanged244 prior rows are preserved and export/check now returns248.",
+    "The existing Flutter packaged-asset fixture expected244 records and failed against248. Updated the intentional release count and added four exact Film Craft revision fixtures; all six tests pass, including both existing published Home Alone refs and stale-ref rejection."
+  ],
+  "dart_tooling": {"dtd_discovery": "No running debug or DTD processes found", "production_dart_ui_code_changed": false, "test_fixture_changed": true, "runtime_hot_reload_claim": false},
+  "release_gate_passed": false,
+  "limits": ["No new browser/build/server publication from these checks.", "Structural audit does not certify all4048 facts or physical Android behavior."]
+}

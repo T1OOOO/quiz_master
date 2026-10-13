@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "catalog",
+        "--in",
+        "quizzes",
+        "--out",
+        "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+        "--force",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "actual_exit": 0,
+      "stdout": "catalog: 132 packs"
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 248 independently reviewed mini articles; checked bindings, review hashes and source metadata"
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 248 independently reviewed mini articles; checked bindings, review hashes and source metadata"
+    }
+  ],
+  "local_counts": {
+    "packs": 132,
+    "questions": 4048,
+    "accepted_reader_articles": 248
+  },
+  "existing_131_catalog_rows_and_244_articles_unchanged": true,
+  "asset_sha256": {
+    "catalog": "9196ca0592034e2a5f8e02099c1f3a8f5a10a60e8ee81222427cbe682034927e",
+    "Reader": "d06e01e33e8343951f48c7aa131a763128f216ad92bd2ab07717e4462f0870fc"
+  },
+  "private_grading_not_exported_in_catalog": true,
+  "server_counts_still_previous_until_release": true
+}

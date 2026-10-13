@@ -1,0 +1,18 @@
+{
+  "controller_sha256": "f10fb526c173003c0821cd216ce6441fd42f65cfd31ffab9ed55363f836e37c8",
+  "repeat_staging_v2_v3_byte_identical": true,
+  "refusal_cases": {
+    "existing_destination": {
+      "exit": 2,
+      "stderr": "film-craft preparation failed: refusing existing output directory: C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\worker\\staging-v3"
+    },
+    "live_destination": {
+      "exit": 2,
+      "stderr": "film-craft preparation failed: output directory must be below C:\\ap\\quiz_master\\.run\\film_craft_integration_20261013\\worker"
+    }
+  },
+  "no_staging_or_runtime_write_on_refusal": true,
+  "limits": [
+    "Preparation-only tests; canonical integration and release gates pending."
+  ]
+}

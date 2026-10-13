@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged article catalog binds People and published Home Alone revisions',
+    'packaged articles bind People, Film Craft and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,28 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(244));
+      expect(articles.articles, hasLength(248));
       for (final (quizId, questionId, revision) in [
+        (
+          'film-craft-20261013',
+          'film-craft-pilot-001',
+          '093553c2c41269bb61dc58cc5f0803eec1f5148c5f4c985986df7f5949197250',
+        ),
+        (
+          'film-craft-20261013',
+          'film-craft-pilot-002',
+          'ce6d841ded9303abb5b344bca44e8f2b1db10434994801e7974f1802ace11f17',
+        ),
+        (
+          'film-craft-20261013',
+          'film-craft-pilot-003',
+          '526e2de01af326181bceb5d4d8889de0618c4ea236bf94f61e7b8a7a838bb0ca',
+        ),
+        (
+          'film-craft-20261013',
+          'film-craft-pilot-004',
+          'aa6195c612e2b1d793209d4fa5a77069271ec2f2a765e7a6716c0ba0f6a153bc',
+        ),
         (
           'cinema-people-20261011',
           'cinema-people-023',
