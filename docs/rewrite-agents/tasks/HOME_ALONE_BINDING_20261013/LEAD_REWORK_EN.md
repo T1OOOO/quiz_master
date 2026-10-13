@@ -1,0 +1,5 @@
+# Actual source discrepancy before packaging tests
+
+Native package producer v1 SHA14cda280e1433d04927ecb8342d6008d9ef852a28c34af3c6386390f7437c94b was submitted but not independently accepted. Its handoff claimed it verified the242Reader baseline hash and preserved every row. Actual source had244status/count and twoHomeAlone-ref checks but no baselineReader hash or242row preservation guard. Root caught this by direct source inspection, not a claim of failing full package execution.
+
+The immutable V8 template is older234Reader; adding a242baseline assertion there would be incorrect. Requested smallest correction: pin frozen Reader bytes to98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433, produced by Root's actually executed hash-pinned Reader preparer. Root already verified first242article objects unchanged and two additions differ from accepted draft only in status. This pins all accepted content and prevents silent drift while retaining historical template protections. Correct handoff to distinguish template234 from current242baseline. No build, compiler or publication claim.

@@ -1,0 +1,43 @@
+{
+  "producer_sha256": "eb8526dd612ecc21f9fb96a52bb69f091aa67744689b0d98b80582d50c3197cb",
+  "output_sha256": "98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433",
+  "prior242_preserved": true,
+  "new_rows_only_status_changed": true,
+  "counts": 244,
+  "cases": [
+    {
+      "case": "reader-dry-run",
+      "actual_exit": 0,
+      "output": "PASS (dry run): 244 accepted Reader articles; output_sha256=98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433; not written\r\n"
+    },
+    {
+      "case": "reader-positive",
+      "actual_exit": 0,
+      "output": "PASS: wrote 244 accepted Reader articles to C:\\ap\\quiz_master\\.run\\home_alone_binding_20261013\\reader244-v1.json; output_sha256=98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433\r\n"
+    },
+    {
+      "case": "reader-overwrite",
+      "actual_exit": 1,
+      "output": " last):\r\n  File \"C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py\", line 234, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py\", line 219, in main\r\n    fail(f\"output already exists; refusing to overwrite: {args.output}\")\r\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py\", line 36, in fail\r\n    raise ValueError(message)\r\nValueError: output already exists; refusing to overwrite: C:\\ap\\quiz_master\\.run\\home_alone_binding_20261013\\reader244-v1.json\r\n"
+    },
+    {
+      "case": "reader-old-git-bundle",
+      "actual_exit": 1,
+      "output": "le published Home Alone bundle\")\r\n  File \"C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py\", line 49, in read_json_with_hash\r\n    fail(f\"{label}: SHA-256 mismatch; expected {expected_hash}, got {actual_hash}\")\r\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py\", line 36, in fail\r\n    raise ValueError(message)\r\nValueError: immutable published Home Alone bundle: SHA-256 mismatch; expected 58540f20607cf0d4294788a9e039b9797a9861ed3375e0aefcbd680461bf3746, got 0bcb87fecd1e7ae46dd9e7f3d17623f8b97cb00b06333ad0394c914c793b6229\r\n"
+    },
+    {
+      "case": "duplicate-article-validator",
+      "rejected": true,
+      "reason": "output: duplicate article id question:q-ha1-p1-1"
+    },
+    {
+      "case": "duplicate-question-ref-validator",
+      "rejected": true,
+      "reason": "output: duplicate question ref ('home-alone-1-part-1', 'q-ha1-p1-1', 'b0f0047c659e193d6790f6cc209cb1135650cab8f8a2f716fda3c20d0a6e787f')"
+    }
+  ],
+  "limits": [
+    "Non-runtime generated Reader fixture, no app asset import/build/browser/DB/image/publication gate",
+    "Old original task state not rewritten; exact V3 independent source acceptance separately retained"
+  ]
+}

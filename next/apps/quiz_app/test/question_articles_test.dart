@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged article catalog decodes every accepted article and binds Next6 People questions',
+    'packaged article catalog binds People and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,7 +197,7 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(242));
+      expect(articles.articles, hasLength(244));
       for (final (quizId, questionId, revision) in [
         (
           'cinema-people-20261011',
@@ -227,8 +227,28 @@ void main() {
         ('music-people-20261011', 'music-people-026', 'f1d81789ae26481eb1bee36cac824bb92b80ad2d26bb6c61a6a3a8dae2ba6345'),
         ('music-people-20261011', 'music-people-027', '89a853cf96189541e18bac0b5b0fb09dd670d7bf570faa7d772297044c875276'),
         ('music-people-20261011', 'music-people-028', 'bf80338f46de0a08ce331d81228a97bd873af57c750dc7295d1163bc0b9d30d7'),
+        (
+          'home-alone-1-part-1',
+          'q-ha1-p1-1',
+          'b0f0047c659e193d6790f6cc209cb1135650cab8f8a2f716fda3c20d0a6e787f',
+        ),
+        (
+          'home-alone-1-part-1',
+          'q-ha1-p1-2',
+          '0c4a99cddbb490c34f4918bac8f7ed1588b50acbd1ed6378fc8212ed5bf6005d',
+        ),
       ]) {
         expect(articles.forQuestion(quizId, questionId, revision), isNotNull);
+      }
+      // Older Git metadata hashes must not bind the published question articles.
+      for (final (questionId, staleRevision) in [
+        ('q-ha1-p1-1', '466089300173e855d67d300e59ab9fb945eeaf0a6c54b895b6ba28386470cca1'),
+        ('q-ha1-p1-2', 'a2f7bedd9a016ccbb8d4f71cf34ec529b5700d5d7d521b389a0e0612ad8e8b76'),
+      ]) {
+        expect(
+          articles.forQuestion('home-alone-1-part-1', questionId, staleRevision),
+          isNull,
+        );
       }
       expect(tester.takeException(), isNull);
     },

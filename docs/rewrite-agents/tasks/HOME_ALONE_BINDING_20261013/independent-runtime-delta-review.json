@@ -1,0 +1,13 @@
+{
+  "verdict": "ACCEPT",
+  "reviewer": "session-0de49cdeb4ff4b50a31fc741af357017",
+  "actual_exit": 0,
+  "hub_message_id": 36747,
+  "report": "Verdict sent to Root (message id 36747): **ACCEPT** for the local runtime asset+test delta.\n\nSummary of what was verified:\n- `question-articles.json`: pure append (64 ins / 0 del), working-tree hash `98f69869...21c433` matches the approved prep output exactly, and the prior committed blob hash `1eec259a...90aa0` matches the previously reviewed 242-row baseline exactly — confirming the prior rows are untouched.\n- `question_articles_test.dart`: all 12 existing People assertions preserved; new positive checks for the two exact published Home Alone revisions; new negative checks correctly target the actual old Git-metadata revision hashes (verified against `next/content/home-alone-1-part-1/bundle.json`), not placeholders.\n- No answer-key/`private_grading` data leaked into either file (zero matches on both).\n- Did not re-run flutter tests, build, or any other gate — relied on the two supplied test-log proof files, as instructed.",
+  "trace_sha256": "d0c536c75ef9c2528898ca668271e84786c5afa5af2a69bce2c7c4673d7d7749",
+  "asset_sha256": "98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433",
+  "test_sha256": "2bfd6f4b716dd42cbabb4aff71f84bbf0da6b59e17081c2119540fffa2507c55",
+  "limits": [
+    "Local runtimeasset/test acceptance only; fresh compiler/DB/image/browser/Helm/publishing remainseparate"
+  ]
+}

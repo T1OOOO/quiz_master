@@ -1,0 +1,59 @@
+{
+  "producer_sha256": "e20178598cd5a06c1e039fdfa31636dd20bd8daca9daf932042821d67cb469f6",
+  "fixture_archive_sha256": "9eb85605e82530e906618c6972020da677cc40b254c3d7fcad31a183fdf5db65",
+  "fixture_file_members": 297,
+  "counts": {
+    "packs": 131,
+    "questions": 4044,
+    "reader_articles": 244,
+    "people_questions_each": 28,
+    "staging_canonical_questions": 140,
+    "home_alone_grading_questions": 25,
+    "newyear_copy_questions": 55,
+    "copy_grading_questions": 195
+  },
+  "reader_fixture_sha256": "98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433",
+  "exact_nginx_preserved": true,
+  "exact25HomeAlone_bundle_preserved": true,
+  "all_stage_archive_checksums_verified": true,
+  "rehearsal_python_syntax_passed": true,
+  "same_count_changed_article_rejected": "frozen Reader source differs from the approved deterministic 244-record input",
+  "generated_branch_cases": [
+    {
+      "case": "home-alone-exact-two",
+      "accepted": true
+    },
+    {
+      "case": "home-alone-missing",
+      "accepted": false
+    },
+    {
+      "case": "home-alone-duplicate",
+      "accepted": false
+    },
+    {
+      "case": "home-alone-stale-ref",
+      "accepted": false
+    },
+    {
+      "case": "home-alone-live-stale",
+      "accepted": false
+    },
+    {
+      "case": "people-all28",
+      "accepted": true
+    },
+    {
+      "case": "people-incomplete-not-weakened",
+      "accepted": false
+    }
+  ],
+  "initial_harness_actual_exit": 1,
+  "initial_harness_failure": "Packaging completed and negative guard correctly rejected. Root harness incorrectly required hash/sha in descriptive error message; recovery validates exact actual rejection text. Producer unchanged.",
+  "recovery_actual_exit": 0,
+  "limits": [
+    "Fixture-only Git Reader substitution; all other frozen Git inputs and immutable template real",
+    "Old compiler output reused only as packaging fixture; archiveNOTdeployable",
+    "No staging DB/browser/image/Helm/production execution"
+  ]
+}

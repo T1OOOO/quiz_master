@@ -1,0 +1,128 @@
+{
+  "actual_hub_states": {
+    "task-af1eaf8c245045d0a1e01256dd9bcca5": "ACCEPTED",
+    "task-a9382075d61340d5aab62c0eb6288028": "ACCEPTED"
+  },
+  "reviewer": "session-0de49cdeb4ff4b50a31fc741af357017",
+  "actual_exit": 0,
+  "trace_sha256": "9975d13845530927292256279331e793a1fa9213bbef37adb6fc05e73f9d9d99",
+  "hub_records": [
+    {
+      "acceptance": "Deterministic hash-pinned244Reader output with exact published refs/uniqueness and correct schema status, preservation assertions and concrete Root validation commands; separate independent source/integration review required.",
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013"
+      ],
+      "assignee": "session-875eccf3d4684f2cbe335a174b62722f",
+      "author": "session-723103a1227f493db81e84d3bc100c47",
+      "body": "Content worker owns prepare_reader.py and WORKER_HANDOFF_EN.md in HomeAlone binding directory only. Exact independently accepted V3 hash and immutable published HomeAlone canonical; prior242 rows preserved; inert explicit no-overwrite output preparation; no runtime/Git/build/deploy. Record old task-state limitation without claiming formal acceptance. New finite owned assignment, fresh ready/offer required.",
+      "created_at": 1791893566.2502794,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-af1eaf8c245045d0a1e01256dd9bcca5",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\prepare_reader.py",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013\\WORKER_HANDOFF_EN.md"
+        ],
+        "evidence": [
+          {
+            "command": "python docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/prepare_reader.py --output docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/reader-output-do-not-create.json --dry-run",
+            "kind": "dry_run",
+            "result": "PASS: 244 accepted Reader articles; output_sha256=98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433; no output written."
+          },
+          {
+            "kind": "negative_guards",
+            "result": "Existing output rejected; old Git next/content/home-alone-1-part-1/bundle.json rejected because its SHA-256 is 0bcb87fecd1e7ae46dd9e7f3d17623f8b97cb00b06333ad0394c914c793b6229, not immutable published 58540f20607cf0d4294788a9e039b9797a9861ed3375e0aefcbd680461bf3746."
+          },
+          {
+            "command": "git diff --check -- docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/prepare_reader.py docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/WORKER_HANDOFF_EN.md",
+            "kind": "integrity",
+            "result": "exit 0"
+          }
+        ],
+        "remaining_risks": [
+          "Independent different-provider review of the preparation and fresh Root execution evidence remains mandatory.",
+          "Runtime integration, package/copy checks, build, browser, image/Helm, deployment and publication remain Root-owned separate gates.",
+          "Historical original task resubmission remained denied; this records no historical formal task acceptance or publication."
+        ],
+        "scope": "Only the two assigned new handoff files were added; no Git mutation, runtime edit, build, test suite, browser, SSH, deployment, or publication.",
+        "sha256": {
+          "WORKER_HANDOFF_EN.md": "bfdf56ea873d5653fc3acbd04cf0c40645cba291fb332010ed9faf56cbe5d123",
+          "prepare_reader.py": "eb8526dd612ecc21f9fb96a52bb69f091aa67744689b0d98b80582d50c3197cb"
+        },
+        "status": "DONE",
+        "worker_label": "home-alone-binding-preparer-20261013"
+      },
+      "root_task_id": "task-af1eaf8c245045d0a1e01256dd9bcca5",
+      "run_id": "run-781eb2cbc2ba4ed6a98a26b6a372134f",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-156a1218836341428d12dd99d617742f",
+      "title": "quiz_master-zmi prepare exact Home Alone Reader binding overlay",
+      "version": 4,
+      "reviewer": "session-0de49cdeb4ff4b50a31fc741af357017",
+      "review_note": "Independent Claude review (read-only). Verified byte-for-byte: prepare_reader.py sha256 eb8526dd...197cb and WORKER_HANDOFF_EN.md sha256 bfdf56ea...c197cb match submission; all four pinned inputs (baseline question-articles.json 1eec259a..., writer-v3.json b734f5c0..., independent-review-v3.json f7c92eee..., immutable bundle 58540f20...) match hardcoded hashes in the script. Ran `--dry-run`: reproduced claimed output_sha256 98f69869...21c433 with no file written. Ran overwrite guard against a pre-existing path: fails closed (exit 1, refuses to overwrite). Ran negative test pointing --published-bundle at the old Git next/content bundle: fails closed with the exact claimed mismatch (actual 0bcb87fe... vs expected 58540f20...). Code inspection confirms first-242-rows-unchanged assertion, duplicate article-id/question-ref fail-closed checks, and status-only diff enforcement for the two new rows. Only the two assigned files are touched; no runtime/Git mutation. Did not execute build/test/browser/DB/publish gates (out of scope for this review)."
+    },
+    {
+      "acceptance": "Frozen exactReader-hash guard delta, truthfuldocs and finalhashes submitted; independent Claude review later. No originaltaskacceptance claimed.",
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\HOME_ALONE_BINDING_20261013"
+      ],
+      "assignee": "session-a307bb9a1b544c6584829d6d1e785d3b",
+      "author": "session-723103a1227f493db81e84d3bc100c47",
+      "body": "Correction continuation of actual REWORK task343... (parent linkage denied running-parent-owner; not claimed child). Same release specialist owns prepare_article_package.py/PACKAGE_HANDOFF_EN.md only. Pin reviewed generated244Reader SHA98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433 beforeassetcopy, truthful242baselinevs234V8template docs, preserve otherguards. No tests/build/runtime/Git/deploy/children.",
+      "created_at": 1791894417.2759235,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-a9382075d61340d5aab62c0eb6288028",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [
+          "docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/prepare_article_package.py",
+          "docs/rewrite-agents/tasks/HOME_ALONE_BINDING_20261013/PACKAGE_HANDOFF_EN.md"
+        ],
+        "evidence": [
+          "Static source inspection: FROZEN_READER_SHA256 is 98f69869f0188cdc92ecd93c4fc7d269a71800bcb2263a25fb060721cf21c433 and hashes frozen source_reader_bytes before any Reader asset copy or parsing.",
+          "Documentation now distinguishes the 234-record immutable V8 template input from the separately reviewed deterministic 244-record Reader output; no 242 assertion was added to the extracted V8 stage.",
+          "The existing narrow Home Alone two-reference rehearsal patch and the all-25 runtime-cache preservation guard remain intact."
+        ],
+        "not_run": [
+          "No fixture execution, tests, build, runtime invocation, Git operation, browser, SSH, deployment, or child work."
+        ],
+        "remaining_risks": [
+          "Root-owned fixture gates and independent Claude review remain pending.",
+          "No integration, historical-task acceptance, schema acceptance, publication, or deployment is claimed."
+        ],
+        "sha256": {
+          "PACKAGE_HANDOFF_EN.md": "61da43fe8599127ae0ac3665c8e0a5868c86d85c5cf2e5f2499800fac07bac6d",
+          "prepare_article_package.py": "e20178598cd5a06c1e039fdfa31636dd20bd8daca9daf932042821d67cb469f6"
+        },
+        "status": "DONE"
+      },
+      "root_task_id": "task-a9382075d61340d5aab62c0eb6288028",
+      "run_id": "run-2774b355dd444078bea7cfe1e8803236",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-156a1218836341428d12dd99d617742f",
+      "title": "quiz_master-zmi correct exact244Reader hash preservation guard",
+      "version": 4,
+      "reviewer": "session-0de49cdeb4ff4b50a31fc741af357017",
+      "review_note": "Independent Claude review (read-only). Verified byte-for-byte: prepare_article_package.py sha256 e2017859...469f6 and PACKAGE_HANDOFF_EN.md sha256 61da43fe...07bac6d match submission. Diffed against ../CACHE_POLICY_3RX_20261013/prepare_next_package.py (source_clone_sha256 ef9c75c1... confirmed matching the file on disk): delta is narrow — 242→244 count assertions, new FROZEN_READER_SHA256 (98f69869...21c433) pin checked fail-closed before any asset copy, new Home Alone 25-question bundle+runtime-cache capture/preserve guard with byte-identical and count checks, and a rehearsal patch gated on `text.count(old_home_alone)!=1` before replacement — this correctly fixes the prior REWORK finding (task-34376221...) which was missing exactly this hash pin. The old V8-234 anchor check (`meta['question_articles']==234`, count-gated to exactly one occurrence) is left untouched, correctly distinguishing the immutable 234-record template from the new 242-baseline/244-output distinction documented in PACKAGE_HANDOFF_EN.md. All other pack/people/grading assertions in the else-branch are byte-identical to the source producer. Did not execute the producer, rehearsal, or any fixture/build/browser/deploy step — verification is by hash reproduction and static diff only, matching the submission's own stated scope limits."
+    }
+  ],
+  "report": "Both tasks are now recorded as `ACCEPTED` in the hub. Final report:\n\n**Independent review of Home Alone binding preparation — both tasks ACCEPT**\n\n- **task-af1eaf8c245045d0a1e01256dd9bcca5** (Reader prep, `prepare_reader.py`/`WORKER_HANDOFF_EN.md`): All claimed SHA-256 hashes — the two deliverable files and all four hard-pinned inputs (baseline Reader, V3 draft, independent review, immutable published bundle) — reproduce exactly on disk. Running the script's `--dry-run` independently reproduces the claimed output hash `98f69869...21c433` with no file written. Both negative guards (refuse-to-overwrite, reject stale/wrong immutable bundle) fail closed exactly as claimed, down to the exact mismatched hash. Code confirms the first 242 rows are byte-preserved and duplicate-id/ref validators exist. Scope stayed within the two owned files; no runtime/Git mutation.\n- **task-a9382075d61340d5aab62c0eb6288028** (corrected package producer, `prepare_article_package.py`/`PACKAGE_HANDOFF_EN.md`): Diffed against its stated source (`CACHE_POLICY_3RX_20261013/prepare_next_package.py`, clone hash confirmed). The delta is narrow and correctly fixes the prior REWORK finding: a new `FROZEN_READER_SHA256` pin is checked fail-closed before any asset copy, a Home Alone 25-question bundle/cache preservation guard was added, and the rehearsal patch is gated on an exactly-once anchor match before replacement. The old 234-record V8 template anchor is left untouched and correctly distinguished from the new 242/244 baseline in the docs. All other pack/people/grading assertions are byte-identical to the source.\n\nI did not execute the package producer, rehearsal, or any build/browser/deploy step (out of scope); verification was by independent hash reproduction, running the Reader script's dry-run/negative-guard cases, and static code diff. Reviews are now logged in host_hub against both task IDs with full detail in the `review_note` fields.",
+  "limits": [
+    "Independent preparation/source acceptance, not build/browser/DB/image/Helm/publication",
+    "Root preservation comparison is exact JSON-object equality of242existingrows, not a claim every raw file byte was preserved",
+    "Original b1p/343 tasks remainhistoricalREWORK; latestownedsubmittedpreparation tasksaccepted"
+  ]
+}
