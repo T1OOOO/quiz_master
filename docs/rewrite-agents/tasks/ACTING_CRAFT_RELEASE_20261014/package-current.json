@@ -1,0 +1,1000 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+  "frozen_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+  "baseline_input": {
+    "archive": "C:\\ap\\quiz_master\\.run\\music_craft_controller_repair_20261013\\package-v1\\quiz-2026.10.13-music-craft-f79555e.tar.gz",
+    "archive_sha256": "ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7",
+    "image": "docker.io/library/quiz-master@sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+  },
+  "counts": {
+    "packs": 134,
+    "questions": 4060,
+    "reader_articles": 260,
+    "preserved_catalog_rows": 133,
+    "preserved_questions": 4052,
+    "preserved_article_objects": 248,
+    "approved_music_title_articles": 4,
+    "approved_music_source_titles": 8,
+    "baseline_cache_entries": 10,
+    "runtime_cache_entries": 11,
+    "acting_craft_questions": 8,
+    "staging_canonical_questions": 156,
+    "home_alone_questions": 25
+  },
+  "metadata": {
+    "buildId": "quiz-2026.10.14-acting-craft-83748f5",
+    "commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+    "source_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+    "local_build": true,
+    "packs": 134,
+    "questions": 4060,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 260,
+    "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+    "main_dart_js_sha256": "a091340ebda85029c7f6d33fe382800d113feb9422c1b77f7647b6901223513a",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+  },
+  "frozen_source_assets": {
+    "catalog_json_sha256": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+    "question_articles_json_sha256": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633"
+  },
+  "nginx_config_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+  "qa_web_checked_not_packaged": "C:\\ap\\quiz_master\\.run\\acting_craft_release_repaired_20261014\\qa-web",
+  "expected_staging_revision_proof": [
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-encore-20261011",
+      "question_id": "cinema-encore-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_encore_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-011",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-012",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-013",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-014",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-015",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-016",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-017",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-018",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-019",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-020",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-021",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-022",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-023",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-024",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-025",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-026",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-027",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-028",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/People/cinema_people_20261011.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-1",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-2",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-3",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-4",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-5",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-6",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-7",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-8",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-9",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-10",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-11",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-12",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-13",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-14",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-15",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-16",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-17",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-18",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-19",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-20",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-21",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-22",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-23",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-24",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/HomeAlone/home_alone_1_part_1.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-encore-20261011",
+      "question_id": "music-encore-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_encore_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-011",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-012",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-013",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-014",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-015",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-016",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-017",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-018",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-019",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-020",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-021",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-022",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-023",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-024",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-025",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-026",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-027",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-028",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_people_20261011.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-50",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-51",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-52",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-53",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-54",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-55",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-56",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-57",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-59",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-81",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-90",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-100-91",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-34",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-46",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-47",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-48",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-200-49",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-5",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-52",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "philias-lifestyle-part-1",
+      "question_id": "q-philias-300-93",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Philias/philias_lifestyle_part_1.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-2",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-1-4",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-4-7",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-5-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-7-9",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-11",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-20",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-8-25",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "phobias-nature",
+      "question_id": "q-phobias-part-9-8",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Psychology/phobias_nature.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-009",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "planet-paradoxes-20261010",
+      "question_id": "planet-paradox-010",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Science/planet_paradoxes_20261010.json"
+    },
+    {
+      "quiz_id": "film-craft-20261013",
+      "question_id": "film-craft-pilot-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Preparation/film_craft_20261013.json"
+    },
+    {
+      "quiz_id": "film-craft-20261013",
+      "question_id": "film-craft-pilot-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Preparation/film_craft_20261013.json"
+    },
+    {
+      "quiz_id": "film-craft-20261013",
+      "question_id": "film-craft-pilot-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Preparation/film_craft_20261013.json"
+    },
+    {
+      "quiz_id": "film-craft-20261013",
+      "question_id": "film-craft-pilot-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Preparation/film_craft_20261013.json"
+    },
+    {
+      "quiz_id": "music-craft-20261013",
+      "question_id": "music-craft-pilot-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_craft_20261013.json"
+    },
+    {
+      "quiz_id": "music-craft-20261013",
+      "question_id": "music-craft-pilot-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_craft_20261013.json"
+    },
+    {
+      "quiz_id": "music-craft-20261013",
+      "question_id": "music-craft-pilot-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_craft_20261013.json"
+    },
+    {
+      "quiz_id": "music-craft-20261013",
+      "question_id": "music-craft-pilot-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/MusicPeople/music_craft_20261013.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-001",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-002",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-003",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-004",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-005",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-006",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-007",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    },
+    {
+      "quiz_id": "acting-craft-20261014",
+      "question_id": "acting-craft-pilot-008",
+      "published_private_revision_verified": true,
+      "staging_uri": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5/quizzes/Cinema/acting_craft_20261014.json"
+    }
+  ],
+  "stage": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\quiz-2026.10.14-acting-craft-83748f5",
+  "archive": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\quiz-2026.10.14-acting-craft-83748f5.tar.gz",
+  "archive_sha256": "9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934",
+  "file_members": 313,
+  "tar_members": 313,
+  "manifest_sha256": "5780fbf0ce58f9443fbb1411af878db3ed9702292d716bc7169d2b0f6a1f33b3",
+  "remaining_gates": [
+    "actual Root local browser/lifecycle proof",
+    "independent review",
+    "copied-DB rehearsal and rollback",
+    "image/Helm/server/browser gates",
+    "authorized publication"
+  ]
+}

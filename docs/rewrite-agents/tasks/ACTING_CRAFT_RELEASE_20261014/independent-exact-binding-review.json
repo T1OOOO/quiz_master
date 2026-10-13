@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-af3b025d9112420cb59cb65610408e7e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-af3b025d9112420cb59cb65610408e7e",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 binding review, verified directly from disk. All six full SHA256 digests recomputed myself and match exact-static-pins.json exactly: package_sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 (.run/acting_craft_controller_repaired_20261014/package-v1/quiz-2026.10.14-acting-craft-83748f5.tar.gz), producer_sha256=6886ab8ce68259dcf2c2de9067b38e862c9e23e3e0394f8232f678fded823fff (worker-repaired/prepare_acting_craft_release.py), prepare_controller_sha256=f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843 (worker-repaired/prepare_remote.py), publisher_controller_sha256=518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2 (worker-repaired/publish_prepared.py), browser_evidence_sha256=82fb08d23e713e466844b800a71edeb4d6cc9f0d3f72c829dde679cc4ca67b80 (browser-proof.json), root_browser_evidence_sha256=f635b0f5752c8da6100ebb7b94130d613ecc51bde9063ccfec6a70c0b85d2077 (root-local-browser-verification.json). All six also match .run/acting_craft_controller_repaired_20261014/file-freeze.json exactly, and the four controller files plus archive are the same ones already independently accepted in independent-repaired-controller-review.json (task-a9583cb78bb84d33b8a757c3b7097bd9, accept, error_count 0); the two browser evidence files are the same ones already independently accepted in independent-local-browser-review.json (task-731e17e06254488c81ad0a25e01dbc64, accept, error_count 0). No abridged hashes, no mismatches found. Terminology check: read .run/acting_craft_browser_repaired_20261014/server.py directly -- its finally block does `api.terminate(); code=api.wait(...)` and writes {actual_api_pid, actual_api_exit, stop_seen} to the per-pack cleanup JSON as data; the wrapper script itself does not sys.exit(code), so a child exit=1 from an intentional Windows terminate()/TerminateProcess does not propagate as the wrapper/terminal-tool's own exit code, which is recorded separately (observed exit0) by Root. Confirmed on disk: acting-craft-20261014-cleanup.json and music-craft-20261013-cleanup.json both show actual_api_exit:1, stop_seen:true; owned-pids files show server/api PIDs 17528/12568 (acting) and 27804/34708 (music), matching the PID set named in the task body (17528,12568,27804,34708, plus 39020,30900 for browser-CLI sessions elsewhere) -- these are real on-disk process IDs, distinct from any terminal exec_command/write_stdin session identifiers such as 67954/47519, which this review has no independent way to inspect (no access to prior terminal tool output from other sessions); that specific limitation is stated plainly rather than guessed at. Scope: this ACCEPT covers only the local hash-binding/clarification work in this task -- it does not certify remote preparation, copied-DB answer rehearsal, image builds, execution acceptance, or publication, all of which remain pending per the task's own acceptance criteria."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Real different-provider callback with allsixfullSHA256 digests, acceptedcode/package/QA unchanged after20, correct distinction betweenAPIprocess exit1 andserverwrapperterminalsession exit0; no fakeapproval or publicationclaims.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Genuine Claude20 accepted repaired controller/package a958 and localQA731. Callback abbreviated three controller hashes; Root exactpin binder safely refused rather than forming ambiguous bindings. Independently rehash six exact-static-pins.json artifacts, confirm accepted immutable review snapshots, full64charcallback pins. Clarify tooljob session identifiers67954/47519 versus actualprocessPIDs; cleanup actualAPI1 intentionalWindows, server wrapperactualexec exit0 separatelyobserved. Read-onlybindingreview no runtimechanges/remoteapproval.",
+        "created_at": 1791932584.6231802,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-af3b025d9112420cb59cb65610408e7e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/exact-static-pins.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/independent-repaired-controller-review.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/independent-local-browser-review.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/browser-proof.json"
+          ],
+          "summary": "Full64-character currentpins saved; actual20 reviews ACCEPTED, originals immutable. Rootbinder correctlyrefused abbreviatedcontrollercallback pins. Wrapper/API distinction documented via source/actualtooljob observations, requiresdifferentprovider fullbindings beforeprepare."
+        },
+        "root_task_id": "task-af3b025d9112420cb59cb65610408e7e",
+        "run_id": "run-2f22876d6e5e485b8a6f3736194ffd4f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Bind full digests of accepted local Actor release and clarify fixture exits",
+        "version": 4,
+        "reviewer": "session-2f9bd62ba2034d81baaf0f828de74188",
+        "review_note": "Independent Claude Sonnet 5 binding review, verified directly from disk. All six full SHA256 digests recomputed myself and match exact-static-pins.json exactly: package_sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 (.run/acting_craft_controller_repaired_20261014/package-v1/quiz-2026.10.14-acting-craft-83748f5.tar.gz), producer_sha256=6886ab8ce68259dcf2c2de9067b38e862c9e23e3e0394f8232f678fded823fff (worker-repaired/prepare_acting_craft_release.py), prepare_controller_sha256=f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843 (worker-repaired/prepare_remote.py), publisher_controller_sha256=518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2 (worker-repaired/publish_prepared.py), browser_evidence_sha256=82fb08d23e713e466844b800a71edeb4d6cc9f0d3f72c829dde679cc4ca67b80 (browser-proof.json), root_browser_evidence_sha256=f635b0f5752c8da6100ebb7b94130d613ecc51bde9063ccfec6a70c0b85d2077 (root-local-browser-verification.json). All six also match .run/acting_craft_controller_repaired_20261014/file-freeze.json exactly, and the four controller files plus archive are the same ones already independently accepted in independent-repaired-controller-review.json (task-a9583cb78bb84d33b8a757c3b7097bd9, accept, error_count 0); the two browser evidence files are the same ones already independently accepted in independent-local-browser-review.json (task-731e17e06254488c81ad0a25e01dbc64, accept, error_count 0). No abridged hashes, no mismatches found. Terminology check: read .run/acting_craft_browser_repaired_20261014/server.py directly -- its finally block does `api.terminate(); code=api.wait(...)` and writes {actual_api_pid, actual_api_exit, stop_seen} to the per-pack cleanup JSON as data; the wrapper script itself does not sys.exit(code), so a child exit=1 from an intentional Windows terminate()/TerminateProcess does not propagate as the wrapper/terminal-tool's own exit code, which is recorded separately (observed exit0) by Root. Confirmed on disk: acting-craft-20261014-cleanup.json and music-craft-20261013-cleanup.json both show actual_api_exit:1, stop_seen:true; owned-pids files show server/api PIDs 17528/12568 (acting) and 27804/34708 (music), matching the PID set named in the task body (17528,12568,27804,34708, plus 39020,30900 for browser-CLI sessions elsewhere) -- these are real on-disk process IDs, distinct from any terminal exec_command/write_stdin session identifiers such as 67954/47519, which this review has no independent way to inspect (no access to prior terminal tool output from other sessions); that specific limitation is stated plainly rather than guessed at. Scope: this ACCEPT covers only the local hash-binding/clarification work in this task -- it does not certify remote preparation, copied-DB answer rehearsal, image builds, execution acceptance, or publication, all of which remain pending per the task's own acceptance criteria."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and the task is now `ACCEPTED` (state updated, version 4).\n\n**Result:** ACCEPT for task-af3b025d9112420cb59cb65610408e7e.\n\n- All six SHA256 digests recomputed independently from disk match `exact-static-pins.json` exactly, and also match the immutable `file-freeze.json`.\n- Confirmed the hashed files are the same ones already covered by the genuine accepted callbacks `independent-repaired-controller-review.json` (task-a958...) and `independent-local-browser-review.json` (task-731...).\n- Verified the exit-code terminology from source: `server.py`'s `finally` block calls `api.terminate()` then records the child's `actual_api_exit` (1) as data in the cleanup JSON — it does not propagate as the wrapper's own exit code. Owned-pids files confirm real PIDs 17528/12568 (acting) and 27804/34708 (music), distinct from the terminal session identifiers 67954/47519 mentioned in the routing text — I flagged plainly that I have no independent way to inspect those terminal session IDs.\n- Scope limited explicitly to this local binding/clarification; remote prep, image builds, execution acceptance, and publication remain pending, as stated in the callback note.\n\nNo app, git, or Beads changes were made — this was read-only verification plus the hub review callback, per the task's constraints.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "967f8474bb0dd9012599bf40f3eea8f1472bf3ac1147c1609a4319c8ee930936",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

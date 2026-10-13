@@ -1,0 +1,53 @@
+{
+  "frozen_source": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+  "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\acting_craft_release_repaired_20261014\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.14-acting-craft-83748f5",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 72.06,
+      "output": "C:\\ap\\quiz_master\\.run\\acting_craft_release_repaired_20261014\\production-web",
+      "log_sha256": "2c9eab8c094d0db45d985c061f714bc7e947adc1d06b3c57f6d03a8aa7270632",
+      "main_dart_js_sha256": "a091340ebda85029c7f6d33fe382800d113feb9422c1b77f7647b6901223513a",
+      "frozen_assets_byte_identical": true
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\acting_craft_release_repaired_20261014\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.14-acting-craft-83748f5",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:19090"
+      ],
+      "elapsed_seconds": 72.5,
+      "output": "C:\\ap\\quiz_master\\.run\\acting_craft_release_repaired_20261014\\qa-web",
+      "log_sha256": "986c158fd82405b5f67aa9e6afc03477b5d2ab80d8b6af4f03d11dc13bc5da3d",
+      "main_dart_js_sha256": "de0e31b1db23eaf4bc19cebf499b77ca8fe8ce1599b9f7fd31073609575528eb",
+      "frozen_assets_byte_identical": true
+    }
+  ],
+  "scope": "Actual repaired-source Flutter outputs. Old b80 held artifacts immutable; actual current browser/package/rehearsal/publication remain gated."
+}

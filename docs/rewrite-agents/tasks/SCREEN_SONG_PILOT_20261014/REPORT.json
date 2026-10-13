@@ -1,0 +1,88 @@
+{
+  "schema_version": "screen-song-pilot-report/v2",
+  "status": "DRAFT_PENDING_INDEPENDENT_REVIEW",
+  "task_id": "task-4e2da7de87f048fbb77c6810a9acfe89",
+  "accessed_on": "2026-10-14",
+  "review_status": "v2 author correction only; an independent fact/answer review is still required",
+  "changed_from_v1": [
+    "Preserved candidate/editorial/REPORT/README/research v1 snapshots before v2 edits.",
+    "Q2 now asks about a single arrangement action and offers parallel actions; key remains b.",
+    "Q3 stem omits the title cue; all distractors are live-action production alternatives; key remains c.",
+    "Q4 replaces the unsupported Luis Almau rationale and option with Dessner’s supported role; key remains d.",
+    "Research records two attempts: 8 initial failures and 8 retry responses, with status, byte count, raw-byte SHA-256, retained files, and read support excerpts."
+  ],
+  "review_findings_and_disposition": [
+    {
+      "finding": "v1 reported unfetched citations as confirmed",
+      "disposition": "Corrected: v2 records the initial 0/8 success count, the retry 8/8 retained-response count, and marks partial responses."
+    },
+    {
+      "finding": "Q3 title cue and implausible animation distractor",
+      "disposition": "Corrected in candidate, explanation, and distractor rationales."
+    },
+    {
+      "finding": "Q2 mixed musical taxonomy",
+      "disposition": "Corrected to four parallel actions concerning the introduction."
+    },
+    {
+      "finding": "Unsupported Luis Almau assertion",
+      "disposition": "Removed; the distractor now identifies Dessner’s documented initial-idea role."
+    },
+    {
+      "finding": "Dedup was exact-only",
+      "disposition": "Disclosed below; no claim of semantic-bank clearance."
+    }
+  ],
+  "source_fetch_evidence": {
+    "initial_attempted": 8,
+    "initial_successful": 0,
+    "initial_failure_reason": "full urllib reads raised IncompleteRead; preserved in research-v2.json",
+    "retry_attempted": 8,
+    "retry_successful": 8,
+    "retry_response_kind": "HTTP 200 partial responses retained after IncompleteRead; each has over 2 MiB and was text-read for the recorded support excerpt"
+  },
+  "checks": {
+    "item_count": 4,
+    "options_per_item": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "key_positions": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "key_balance": {
+      "a": 1,
+      "b": 1,
+      "c": 1,
+      "d": 1
+    },
+    "article_word_counts_excluding_urls": [
+      160,
+      155,
+      158,
+      163
+    ],
+    "literal_backslash_n_n_in_decoded_articles": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "registered_tags_only": true
+  },
+  "dedup_limitations": "Performed bounded exact text searches for selected titles and stems in the existing quiz bank. This cannot establish semantic non-duplication; an independent reviewer should compare concepts and mechanisms before integration.",
+  "sha256": {
+    "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/candidate.json": "dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4",
+    "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/editorial.json": "b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b",
+    ".run/screen_song_pilot_20261014/research.json": "5b63c59d8f33e8e0d40a0b05c6a082dfd014fd8081d9cde210fd2db3a449d7b1"
+  },
+  "risks": [
+    "The retry retained large HTTP-200 partial responses after IncompleteRead; raw hashes and this qualification are retained for review.",
+    "No independent v2 review has been performed; draft is not accepted, integrated, or published."
+  ]
+}

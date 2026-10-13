@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-dc87563b023040c8abcc13226ce46fa2": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-dc87563b023040c8abcc13226ce46fa2",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only re-verification of published Acting Craft milestone (Helm rev 51, image sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961, source 83748f5a467092302184bcbeee1bd1d7d4b964fa, build quiz-2026.10.14-acting-craft-83748f5). SHA256 of reviewed files: public-verification.json=a6a91195e297c8bde68bd40f67218d2a636edfdc511b63a1e84b399921cb43d3, published-server-verification.json=8d7f3ed98a8bd0bc401baa9100d5979bb6abe6eb9d92cc3c398c7b4e823618f4, published-root-browser-verification.json=e72b190734d2a426d83e56d80d95872bbde2f488bbfb64b545a18050263b0cf4. Confirmed: publish-exit.json actual_exit=0; main.dart.js/question-articles.json sha256 match claimed a091340e.../af443be9...; Helm revision 51 deployed, PVC Bound, conditional GETs 200; all 307 entries in published-root-browser-verification.json artifact_sha256 (including all 26 PNGs) match the retained root-public-browser files byte-for-byte with zero mismatches/missing; visually inspected actor-q1-question.png, actor-q1-footer.png, actor-result.png — show 8-question Actor flow with two source links per footer, no literal paragraph-escape artifacts, score 8/8; own_attempts IDs/scores (a-695e389e.../8, a-18d20249.../4) match file claims; feedback inventory 26 OPEN rows, digest 1321177f... matches, no report submitted/closed. root-public-verifier.py independently encodes equivalent assertions (exit codes, helm revision, live_question_article_bindings=139, per-mode flow/console-error/PID checks, read-only sqlite query scoped to the two named attempt IDs only). BOUNDARY: this review session had no SSH or outbound network access, so it verified retained evidence and local file hashes only — it did not independently re-run the SSH query or re-fetch public HTTP endpoints live. ACCEPT certifies only this published Acting Craft milestone's artifact/browser/server verification as evidenced in the reviewed files; it does not certify all 4060 question facts, physical Android behavior, resolution of the 26 open feedback rows, or the four separately-accepted screen-song drafts (which remain outside this release pending integration)."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Real different-providercallback accepts exactpublished artifact identity,139refs/oldrepairs,new8card+articleUI/16sources andfourfriendlyMusictitles, ownSQLmatchingUI, feedbackunchanged/healthyserver; no newPOST/browser/deploy/otheruserdata needed. Fullhashbindings Rootpublicproof andmainpublicmetadata verified.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Authorized atomicpublish0 completedHelm51 exactimage039474..., source83748f5/1344060260. Root freshHTTPS publicchecks139API/articlebindings exactversion/JS/Readerbytes andcacheconditionals200/noETag, ownrealUIActor8/Music4 scores8/4 with12articles24sourcecontrols/zeroerrors/close0inactive, readonlyserveronlyownattemptSQL8/4,26OPENfeedbacksameSHA; healthyReady1Available1PVCBoundNoPressure6.75GBfree. Reviewactualpostpublicationproof independently andhonestboundary noallfactsAndroid/reportclosures.",
+        "created_at": 1791933936.0852644,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-dc87563b023040c8abcc13226ce46fa2",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/publish-exit.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/public-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/published-server-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/published-root-browser-verification.json"
+          ],
+          "summary": "ActualHelm51publication0, publicHTTPartifact/139revisionbindings0,12realUIcorrectanswers8/4/12articlefooters/0errors, exactownreadonlySQL8/4,26feedbackunchanged, nodeservicePVChealthy. Awaitgenuinepostpublishedreview; thenBeads5zd/z22closure/pushownedproofs."
+        },
+        "root_task_id": "task-dc87563b023040c8abcc13226ce46fa2",
+        "run_id": "run-be6e440f3c28465684eaa04ffb0adb8e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Independent published Actor51 artifact/browser/server verification",
+        "version": 4,
+        "reviewer": "session-b77c7a3a481e4ffba2af870e805210dc",
+        "review_note": "Independent read-only re-verification of published Acting Craft milestone (Helm rev 51, image sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961, source 83748f5a467092302184bcbeee1bd1d7d4b964fa, build quiz-2026.10.14-acting-craft-83748f5). SHA256 of reviewed files: public-verification.json=a6a91195e297c8bde68bd40f67218d2a636edfdc511b63a1e84b399921cb43d3, published-server-verification.json=8d7f3ed98a8bd0bc401baa9100d5979bb6abe6eb9d92cc3c398c7b4e823618f4, published-root-browser-verification.json=e72b190734d2a426d83e56d80d95872bbde2f488bbfb64b545a18050263b0cf4. Confirmed: publish-exit.json actual_exit=0; main.dart.js/question-articles.json sha256 match claimed a091340e.../af443be9...; Helm revision 51 deployed, PVC Bound, conditional GETs 200; all 307 entries in published-root-browser-verification.json artifact_sha256 (including all 26 PNGs) match the retained root-public-browser files byte-for-byte with zero mismatches/missing; visually inspected actor-q1-question.png, actor-q1-footer.png, actor-result.png — show 8-question Actor flow with two source links per footer, no literal paragraph-escape artifacts, score 8/8; own_attempts IDs/scores (a-695e389e.../8, a-18d20249.../4) match file claims; feedback inventory 26 OPEN rows, digest 1321177f... matches, no report submitted/closed. root-public-verifier.py independently encodes equivalent assertions (exit codes, helm revision, live_question_article_bindings=139, per-mode flow/console-error/PID checks, read-only sqlite query scoped to the two named attempt IDs only). BOUNDARY: this review session had no SSH or outbound network access, so it verified retained evidence and local file hashes only — it did not independently re-run the SSH query or re-fetch public HTTP endpoints live. ACCEPT certifies only this published Acting Craft milestone's artifact/browser/server verification as evidenced in the reviewed files; it does not certify all 4060 question facts, physical Android behavior, resolution of the 26 open feedback rows, or the four separately-accepted screen-song drafts (which remain outside this release pending integration)."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The review callback was submitted and accepted by host_hub — task `task-dc87563b023040c8abcc13226ce46fa2` is now `ACCEPTED`, reviewed by this session with `error_count: 0`.\n\n**Summary of independent verification:**\n- Connected to host_hub, joined `team-da46ad2bf3d846d493caaf3002114ff5`, located the task via message search (not global task pagination, per the scope).\n- Read the actual evidence files in `docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/` rather than trusting the narrative claims at face value.\n- Confirmed `publish-exit.json` exit 0, Helm revision 51/deployed, matching image SHA, and the exact `main.dart.js`/Reader SHA256 values.\n- Hashed all 307 entries in `published-root-browser-verification.json`'s manifest (26 PNGs + step JSONs) against the real files on disk — **zero mismatches**.\n- Visually inspected several screenshots (question card, article footer with two source links, score page) — consistent with the claimed 8 Actor / 4 Music flow, no paragraph-escape artifacts.\n- Cross-checked `root-public-verifier.py`, which independently encodes the same assertions (exit codes, Helm revision, live bindings count, per-mode flow/console-error/PID checks, scoped read-only SQL to the two named attempt IDs only).\n- Noted explicitly in the review that I had no SSH/network access this session, so I verified retained evidence and file hashes rather than re-running the live SSH query or public HTTP fetch myself.\n- Scoped the ACCEPT narrowly: it certifies this published milestone's artifact/browser/server verification only — not all 4060 question facts, physical Android behavior, the 26 open feedback rows, or the four pending screen-song drafts.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "551e156d259ab02481f8a23b88d9bc25e27f71068561821d206fed41aceb6e24",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

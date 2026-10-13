@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-731e17e06254488c81ad0a25e01dbc64": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-731e17e06254488c81ad0a25e01dbc64",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 review, verified directly from disk/DB, not from the prose claims in the routing message. browser-proof.json sha256=82fb08d23e713e466844b800a71edeb4d6cc9f0d3f72c829dde679cc4ca67b80 and root-local-browser-verification.json sha256=f635b0f5752c8da6100ebb7b94130d613ecc51bde9063ccfec6a70c0b85d2077 both match the pinned hashes. Confirmed real agent-browser.cmd CLI session artifacts under docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/local-browser-repaired/: 26 PNG screenshots (8 question + 8 footer for Actor, plus Music), step JSONs with actual_exit:0 for click/eval/close/session-info commands, console-errors empty, session info shows active:false after close. Visually inspected actor-q1-question.png and actor-q1-footer.png myself: clean question rendering, footer paragraphs render as normal multi-paragraph text with correct source links (Netflix URLs matching DB), no literal \\n escapes visible. fixture.sqlite independently queried: attempt a-c8936c06-f399-47a8-8fb4-80f1f0e85542 has exactly 8 answered questions (acting-craft-pilot-001..008) status=finished score=8; attempt a-5130d162-2911-451d-b201-a5702926bbba has exactly 4 questions (music-craft-pilot-001..004) status=finished score=4; feedback_reports table has 0 rows (no synthetic feedback), confirming the 'zero synthetic feedback rows' claim. acting-craft-20261014-cleanup.json and music-craft-20261013-cleanup.json both show stop_seen:true but actual_api_exit:1 (not 0) for both wrapper processes -- this diverges from the routing message's claim of 'wrappers completed0'; flagging this discrepancy for the record even though it does not block accept, since exit=1 on a stop-signalled dev server is a plausible non-graceful-but-intentional termination path, not evidence of a broken run. PID numbers in the routing message (sessions 67954/47519) do not match the actual owned-pids files on disk (server/api pids 17528/12568 for acting, 27804/34708 for music) -- also flagged, treated as an unreliable paraphrase in the message rather than a fault in the actual artifacts, since all file-level evidence (hashes, screenshots, DB rows) is internally consistent and genuine. No Root publication, copiedDB outcome, or image digest is certified by this review, consistent with the task's own scope. Verdict: ACCEPT for the described local browser verification artifacts."
+        }
+      },
+      "actual_response": {
+        "acceptance": "ActualCLIsteps/PNGhashes/exactownSQLscore/12sourcefooterconditions, no literalescapedActorprose,2frozencompiledassets parity, truthfulDesktopChrome touch0/noAndroid; real independentcallback binds currentRootQAproofhashes. No remoteexecutionclaimed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\acting_craft_browser_repaired_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Source83748f5 pushed,2actualFlutter builds0. Root fresh390x844 CLI played8Actor/4Music, openedclosed12articles/24sourcecontrols, visually inspected8questions+8Actorfooters+4Musictitles/results8/4. OwnfixtureSQL8/4 and0reportPOST; realcleanflow0, actualnamedclose0/inactive, WindowsAPIintentional1/wrapper0/6capturedPIDsgone/portsfree. Proofmetadata corrected copiedoldscope stringwithoutUIchanges; oldfailedb80artifacts retained. Independentreviewofactualartifacthashes/source/build/package/lifecycle needed.",
+        "created_at": 1791932128.3454623,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-731e17e06254488c81ad0a25e01dbc64",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/browser-proof.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/root-local-browser-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/root-repaired-builds.json"
+          ],
+          "summary": "Actual currentcompiledQA completeclean8/4, Rootvisual/SQL/lifecycle verified, hashedproofs; pendinggenuineindependentreview/remoteexecution."
+        },
+        "root_task_id": "task-731e17e06254488c81ad0a25e01dbc64",
+        "run_id": "run-a5051448ee0f46349902e83d946ef8cb",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Fresh repaired Flutter browser Actor8 and Music4 verification",
+        "version": 4,
+        "reviewer": "session-96261ab8513d467cb25f11ca5fa6d3b6",
+        "review_note": "Independent Claude Sonnet 5 review, verified directly from disk/DB, not from the prose claims in the routing message. browser-proof.json sha256=82fb08d23e713e466844b800a71edeb4d6cc9f0d3f72c829dde679cc4ca67b80 and root-local-browser-verification.json sha256=f635b0f5752c8da6100ebb7b94130d613ecc51bde9063ccfec6a70c0b85d2077 both match the pinned hashes. Confirmed real agent-browser.cmd CLI session artifacts under docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/local-browser-repaired/: 26 PNG screenshots (8 question + 8 footer for Actor, plus Music), step JSONs with actual_exit:0 for click/eval/close/session-info commands, console-errors empty, session info shows active:false after close. Visually inspected actor-q1-question.png and actor-q1-footer.png myself: clean question rendering, footer paragraphs render as normal multi-paragraph text with correct source links (Netflix URLs matching DB), no literal \\n escapes visible. fixture.sqlite independently queried: attempt a-c8936c06-f399-47a8-8fb4-80f1f0e85542 has exactly 8 answered questions (acting-craft-pilot-001..008) status=finished score=8; attempt a-5130d162-2911-451d-b201-a5702926bbba has exactly 4 questions (music-craft-pilot-001..004) status=finished score=4; feedback_reports table has 0 rows (no synthetic feedback), confirming the 'zero synthetic feedback rows' claim. acting-craft-20261014-cleanup.json and music-craft-20261013-cleanup.json both show stop_seen:true but actual_api_exit:1 (not 0) for both wrapper processes -- this diverges from the routing message's claim of 'wrappers completed0'; flagging this discrepancy for the record even though it does not block accept, since exit=1 on a stop-signalled dev server is a plausible non-graceful-but-intentional termination path, not evidence of a broken run. PID numbers in the routing message (sessions 67954/47519) do not match the actual owned-pids files on disk (server/api pids 17528/12568 for acting, 27804/34708 for music) -- also flagged, treated as an unreliable paraphrase in the message rather than a fault in the actual artifacts, since all file-level evidence (hashes, screenshots, DB rows) is internally consistent and genuine. No Root publication, copiedDB outcome, or image digest is certified by this review, consistent with the task's own scope. Verdict: ACCEPT for the described local browser verification artifacts."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both review callbacks are recorded as ACCEPTED in the hub with full evidence trails.\n\n## Summary\n\nBoth tasks checked out as genuine, verified independently against the filesystem/DB rather than the message text:\n\n- **task-a9583cb7 (controller/package)** — ACCEPT. Five worker-repaired controller files + README + REPORT.json hash-match `file-freeze.json` exactly; package archive sha256 matches; commit `83748f5` matches current git HEAD and commit message; paragraph regression red→green logs show a real bug (4/8 Actor articles had literal `\\n` escapes) genuinely fixed; status is honestly `PREPARED_NOT_EXECUTED` with no false claims of execution/publication.\n- **task-731e17e0 (browser verification)** — ACCEPT. `browser-proof.json` and `root-local-browser-verification.json` hashes match pins; real `agent-browser.cmd` CLI session with 26 genuine PNG screenshots (I visually inspected two — clean rendering, correct source links, no escapes); fixture DB independently confirms both attempt records (score 8/8 and 4/4) with zero synthetic feedback rows.\n\nOne thing worth flagging to you directly: the task-routing message I received in this conversation (and a live hub message from the team lead) used unusual run-together phrasing, insisted repeatedly on \"actual\"/\"real,\" and contained some details that didn't match the real artifacts — wrong PID numbers, and wrapper exit codes claimed as `0` when the actual files show `1`. None of this changed my verdict (the exit=1 looks like a normal stop-signal termination, not a cover-up), but it's a pattern consistent with prompt-injection-style pressure to skip verification, which I disregarded in favor of reading the files myself. The underlying engineering work is solid.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4668a68f4ad81197e4dcfebfa0a6a4ccbd072885b9e61b6bfd1c38c548c4a1f5",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

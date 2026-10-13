@@ -1,0 +1,38 @@
+{
+  "status": "DRAFT",
+  "cards": 4,
+  "options_per_card": 4,
+  "key_balance": {
+    "d": 1,
+    "a": 1,
+    "c": 1,
+    "b": 1
+  },
+  "article_words": [
+    157,
+    154,
+    156,
+    160
+  ],
+  "structural_errors": [],
+  "source_fetch_count": 8,
+  "dedup": "Exact title/stem search against quizzes for initial candidate topics returned no matches.",
+  "hashes": [
+    {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_PILOT_20261014\\candidate.json",
+      "sha256": "E04D3A2C135C676A439B18BFDC165C9BC6EDD705321D1FD0C2566ED3BACE2859"
+    },
+    {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_PILOT_20261014\\editorial.json",
+      "sha256": "B5F6B7850BEE3CADD3026C29AC66ED5C1DCD0F60C70012A5321DD918B328B05A"
+    },
+    {
+      "path": "C:\\ap\\quiz_master\\.run\\screen_song_pilot_20261014\\research.json",
+      "sha256": "8240343F7D8D8E9AD26088443DAFFAFA69156185C721F018EA172AD04ABFF8CA"
+    }
+  ],
+  "limitations": [
+    "Independent fact/answer review is still required.",
+    "Research evidence hashes cover retained evidence tokens because Web MCP does not export full page bodies."
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a9583cb78bb84d33b8a757c3b7097bd9": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a9583cb78bb84d33b8a757c3b7097bd9",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 review, verified directly from disk (not from task-text claims). source_commit 83748f5a467092302184bcbeee1bd1d7d4b964fa == current git HEAD, message matches 'Fix visually detected Actor article paragraph escapes and guard exports'. All 5 worker-repaired controller files + README.md + REPORT.json hash-match file-freeze.json exactly: negative_checks.py=e1b1139e...6b4f, prepare_acting_craft_release.py(producer)=6886ab8c...3fff, prepare_remote.py(prepare-controller)=f06a4034...d843, publish_prepared.py(publisher-controller)=518c823f...53c2, README.md=312d8bc6...ea1b, REPORT.json=b0725560...53d2. Package archive quiz-2026.10.14-acting-craft-83748f5.tar.gz sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 matches file-freeze.json and package-current.json (status PREPARED_NOT_EXECUTED, correctly not claiming execution). Counts verified: packs=134, questions=4060, reader_articles=260, preserved_catalog_rows=133, preserved_questions=4052, preserved_article_objects=248, approved_music_title_articles=4, staging_canonical_questions=156, runtime_cache_entries=11. paragraph_regression.py red/green logs confirm a real regression: red log shows AssertionError for 4 of 8 Actor articles (literal \\n escapes) before fix, green log shows PASS:8 after. negative-checks-final.log shows full PASS/FAIL matrix incl. correct prepare-vs-publish exit code separation (prepare: exit=0 prepare-mode, exit=1 publish-mode; publisher: inverse) and ends with honest status LOCAL_POSITIVE_AND_NEGATIVE_PASS, remote_calls=0, image_builds=0, approval_artifacts_written=0, and explicit remaining_gates list (independent code/package acceptance, local browser/root acceptance, lead remote prep/image evidence, execution acceptance, publication) -- none of these falsely claimed as done. No fabricated/placeholder acceptance found. Note: the hub message I received describing this task used unusual run-together phrasing and non-matching PID numbers vs on-disk evidence; I did not rely on that message, only on files I read and hashed myself. Verdict: ACCEPT for the prepare-stage controller/package work reviewed here; execution/publication remain correctly gated and are NOT covered by this review."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fresh actual package tiednewfrozenGit/build/assets, no literalescapedparagraphs; oldbaseline1334052252/10cache preserved and4onlyapprovedMusictitleexceptions;1344060260/11cache156, expected21112 NOTactualrehearsal.22negativechecks/fullBashbranchesactual0, ownfinalhashes/frozen report and realHubsubmission; Rootindependentreview/QA/remoteexecution remain.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired",
+          "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014"
+        ],
+        "assignee": "session-41597d217f2042edb6122ce750cdcca9",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root actual browser found four literalparagraph artifacts, genuineClaude18/19 repairs andguardaccepted, source83748f5a467092302184bcbeee1bd1d7d4b964fa pushed. Original c469 controllers accepted for heldb80 snapshot remainimmutable. OwnNEWworker-repaired/.run repaired only: clone5controllerfiles, retarget exact newsource/build83748f5 and hashpins fromGit, awaitRootactual2compiledoutputs root-repaired-builds.json, produce fresh313member package and22negativechecks, freeze report. No substantive algorithm changes withoutreport; preserveactual originalbaselineHelm50/rawnormalization/oldobjects/titleexceptions/security/realreviewgates. NoSSH/Docker/Git/Beads/browser/source mutation or children.",
+        "created_at": 1791931622.7511063,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-a9583cb78bb84d33b8a757c3b7097bd9",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_local_evidence": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\local-verification.json",
+          "approval_artifacts_written": 0,
+          "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+          "changed_file_sha256": {
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\README.md": "312d8bc6c9663755e4392098ed94891fe619b62f436b6519e492200c396fea1b",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\negative_checks.py": "e1b1139ee3d5a1b821e02cc0ea3adaa1f26e3f2d98762e2bb75b9b04831c6b4f",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\prepare_acting_craft_release.py": "6886ab8ce68259dcf2c2de9067b38e862c9e23e3e0394f8232f678fded823fff",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\prepare_remote.py": "f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\publish_prepared.py": "518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker-repaired\\save_execution_acceptance.py": "ce6c0ec5512f45608c2b341da91230ea85ec3adb5bbeaf728f9f7d38bd9e7841"
+          },
+          "checks": [
+            {
+              "actual_exit": 0,
+              "command": "Frozen Git83748f5 input comparison and both actual root-repaired-builds output hash verification",
+              "reference": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\actual-build-inputs.json",
+              "result": "Eight source-file Git/working hashes match; both actual Flutter exits0 and compiled byte pins verified before producer."
+            },
+            {
+              "actual_green_exit": 0,
+              "actual_red_exit": 1,
+              "command": "python .run/acting_craft_controller_repaired_20261014/paragraph_regression.py <heldb80export then repairedexport>",
+              "logs": [
+                "paragraph-red.log",
+                "paragraph-green.log"
+              ],
+              "result": "Old actual artifact rejected at002/005/007/008; repaired eight-article export accepted."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker-repaired/prepare_acting_craft_release.py --repo C:/ap/quiz_master --frozen-commit 83748f5a467092302184bcbeee1bd1d7d4b964fa --production-web C:/ap/quiz_master/.run/acting_craft_release_repaired_20261014/production-web --qa-web C:/ap/quiz_master/.run/acting_craft_release_repaired_20261014/qa-web --output-root C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014/package-v1 --prior-archive C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1/quiz-2026.10.13-music-craft-f79555e.tar.gz",
+              "log": "producer-final.log",
+              "result": "Actual fresh313-member archive generated and verified;134rawpacks4060questions;156 strict staging revisions."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker-repaired/negative_checks.py --package-json C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014/package-v1/package-preparation.json --scratch C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014",
+              "log": "negative-checks-final.log",
+              "result": "22 actualnegativeguards, repairedparagraphs and preservedoldobjects/titleexceptions, deterministicrearchive, full4shellsyntax and fourrealBashmodebranch exits0/1/1/0. Allscratchmutations restored."
+            },
+            {
+              "actual_exit": 0,
+              "command": "Compile five ownedPython files; prepare_remote --verify-package; default preparation and publish --preview with missingevidence",
+              "reference": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\cli-checks.json",
+              "result": "Pythoncompile passed; CLI package verification0; missingactualreview/execution stillrejectactualexit1."
+            },
+            {
+              "actual_exit": 0,
+              "command": "Read-only originalc469 file-freeze hash comparison",
+              "result": "All originalworker files byte-identical, oldheldpackage untouched."
+            }
+          ],
+          "controller_algorithm_changes": false,
+          "evidence": [
+            {
+              "actual_exit": 0,
+              "command": "Frozen Git83748f5 input comparison and both actual root-repaired-builds output hash verification",
+              "reference": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\actual-build-inputs.json",
+              "result": "Eight source-file Git/working hashes match; both actual Flutter exits0 and compiled byte pins verified before producer."
+            },
+            {
+              "actual_green_exit": 0,
+              "actual_red_exit": 1,
+              "command": "python .run/acting_craft_controller_repaired_20261014/paragraph_regression.py <heldb80export then repairedexport>",
+              "logs": [
+                "paragraph-red.log",
+                "paragraph-green.log"
+              ],
+              "result": "Old actual artifact rejected at002/005/007/008; repaired eight-article export accepted."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker-repaired/prepare_acting_craft_release.py --repo C:/ap/quiz_master --frozen-commit 83748f5a467092302184bcbeee1bd1d7d4b964fa --production-web C:/ap/quiz_master/.run/acting_craft_release_repaired_20261014/production-web --qa-web C:/ap/quiz_master/.run/acting_craft_release_repaired_20261014/qa-web --output-root C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014/package-v1 --prior-archive C:/ap/quiz_master/.run/music_craft_controller_repair_20261013/package-v1/quiz-2026.10.13-music-craft-f79555e.tar.gz",
+              "log": "producer-final.log",
+              "result": "Actual fresh313-member archive generated and verified;134rawpacks4060questions;156 strict staging revisions."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/worker-repaired/negative_checks.py --package-json C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014/package-v1/package-preparation.json --scratch C:/ap/quiz_master/.run/acting_craft_controller_repaired_20261014",
+              "log": "negative-checks-final.log",
+              "result": "22 actualnegativeguards, repairedparagraphs and preservedoldobjects/titleexceptions, deterministicrearchive, full4shellsyntax and fourrealBashmodebranch exits0/1/1/0. Allscratchmutations restored."
+            },
+            {
+              "actual_exit": 0,
+              "command": "Compile five ownedPython files; prepare_remote --verify-package; default preparation and publish --preview with missingevidence",
+              "reference": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\cli-checks.json",
+              "result": "Pythoncompile passed; CLI package verification0; missingactualreview/execution stillrejectactualexit1."
+            },
+            {
+              "actual_exit": 0,
+              "command": "Read-only originalc469 file-freeze hash comparison",
+              "result": "All originalworker files byte-identical, oldheldpackage untouched."
+            }
+          ],
+          "expected_rehearsal_not_run": {
+            "canonical_packs": 11,
+            "canonical_questions": 156,
+            "newyear_questions": 55,
+            "practice_finished": 12,
+            "total_graded": 211
+          },
+          "handoff": "NEWworker-repaired and package-v1 frozen; originalc469 untouched. README retains exactRootQA schema; actualWindowsAPI integerterminationexit accepted onlywithsuccessfulwrapper/allownedPIDgone/freeports. No releaseapproval seeded.",
+          "hub_run_id": "run-8be13c4b57b04cc3be9e132b63aec93c",
+          "hub_session_id": "session-41597d217f2042edb6122ce750cdcca9",
+          "hub_task_id": "task-a9583cb78bb84d33b8a757c3b7097bd9",
+          "image_builds": 0,
+          "new_negative_check": "Assert eightActor exported/draft bodies have no decodedliteralparagraph escape; no newacceptedrecord or QAartifact.",
+          "not_run": [
+            "Root repaired browser/fixture lifecycle check",
+            "Remote preparation/SSH/SCP",
+            "Docker/image",
+            "CopiedDB211grades12histories/feedbackcopy/oldAPIrollback",
+            "Helm/server/publication",
+            "Independent review of this newpackage/controllers",
+            "Git/Beads mutations"
+          ],
+          "package": {
+            "actual_raw_pack_count": 134,
+            "actual_raw_question_count": 4060,
+            "archive": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\quiz-2026.10.14-acting-craft-83748f5.tar.gz",
+            "counts": {
+              "acting_craft_questions": 8,
+              "approved_music_source_titles": 8,
+              "approved_music_title_articles": 4,
+              "baseline_cache_entries": 10,
+              "home_alone_questions": 25,
+              "packs": 134,
+              "preserved_article_objects": 248,
+              "preserved_catalog_rows": 133,
+              "preserved_questions": 4052,
+              "questions": 4060,
+              "reader_articles": 260,
+              "runtime_cache_entries": 11,
+              "staging_canonical_questions": 156
+            },
+            "file_members": 313,
+            "manifest_sha256": "5780fbf0ce58f9443fbb1411af878db3ed9702292d716bc7169d2b0f6a1f33b3",
+            "record": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\package-preparation.json",
+            "sha256": "9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934",
+            "stage": "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\quiz-2026.10.14-acting-craft-83748f5",
+            "tar_members": 313
+          },
+          "pins": {
+            "actor_article_refs": {
+              "acting-craft-pilot-001": "0b211637a8a29d0708a33567d11fafb113773ed89aef5ba8afdde46bf1c11e44",
+              "acting-craft-pilot-002": "14df4c16dfc105fefdea35e733bdf1389b0f91debb950d7be65bde3252d468cd",
+              "acting-craft-pilot-003": "0d0073db567749ebd64b1dcaf91ca62109346cb1c0d2483c858ab45945dabbb7",
+              "acting-craft-pilot-004": "032702e68ba38fdedc73a698e880978c5c6fcd3331777485c8ab60380d72f49b",
+              "acting-craft-pilot-005": "594bd4f212f5713593331b4099054fbf9439a287c44eeec4792142c1e00e038c",
+              "acting-craft-pilot-006": "02adc130e3f8feab6b7e0b5dd021b33c4283af25fb6025aded5ed1a7ff627773",
+              "acting-craft-pilot-007": "7003a49c4bf117f83cd508c7c48c064d5b26daa3322c27078d288d52d5954f2a",
+              "acting-craft-pilot-008": "e8561876f0dcbdc06dfe68f9ee9146913dc11b13a7fd2a98f840592984ef0fc0"
+            },
+            "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+            "baseline_archive_sha256": "ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7",
+            "baseline_build": "quiz-2026.10.13-music-craft-f79555e",
+            "baseline_image": "docker.io/library/quiz-master@sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7",
+            "baseline_source": "f79555e0659f0c20b86064b446ac582de323b2e9",
+            "catalog_sha256": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+            "frozen_actor_files": {
+              "next/apps/quiz_app/assets/catalog.json": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+              "next/apps/quiz_app/assets/study/question-articles.json": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633",
+              "next/content/acting-craft-20261014/bundle.json": "0378dfb462aee36b31d0026381e5d804c1fda410da5166a571150c13c480b3ee",
+              "next/content/acting-craft-20261014/draft.json": "431384f39ef4251f1c152b18b3e91d10bf084e7ad39ec2a9b7a232909e96969e",
+              "next/content/acting-craft-20261014/manifest.json": "e0f79300cb149778f81678d391785c30b41f6a86e26309e34b6b2570aef77c62",
+              "quizzes/Cinema/acting_craft_20261014.json": "a3fa877452956691f048d1cd129756a64a6e94de23a09d7752680c6a4ed11963",
+              "study/question_articles/drafts/acting-craft-20261014.json": "8a7ae4a69f1c233cadd186121046870a9e98305fbbd52d286bb79e5051c80079",
+              "study/question_articles/reviews/acting-craft-20261014-review.json": "c2bc08e008850a9d417f00c99f6d3c31c011aa21e46ef802913b3060292f17e2"
+            },
+            "music_title_proposal_sha256": "541004c607877ec33d1260cfaad7ab1aa08494872773c5677538caeeec31da47",
+            "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+            "normalized_actor_source_sha256": "5df21fce18ef2710d5b821eeb0a3ad3ca7d854146b0cccf479cdcaca688f8013",
+            "production_js_sha256": "a091340ebda85029c7f6d33fe382800d113feb9422c1b77f7647b6901223513a",
+            "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+            "qa_js_sha256": "de0e31b1db23eaf4bc19cebf499b77ca8fe8ce1599b9f7fd31073609575528eb",
+            "reader_sha256": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633"
+          },
+          "preserved_original_history": {
+            "held_archive_sha256": "609567a55f2bb5a54476ae00d51cf26dbc26a5d810ab96fe5fb38b50f9e55f46",
+            "held_source": "b80deb12844aa786e9e0351273eab3f525ddce27",
+            "old_worker_freeze_hashes_checked": true,
+            "worker": "docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014\\worker"
+          },
+          "remaining_gates": [
+            "Actualdifferent-providerreview of exactnewcontroller/packagehashes",
+            "RootactualrepairedQA8Actor4Music namedCLIandWindowsfixturelifecycle andseparateproofhashes",
+            "Rootactualsecurebackup/copiedDB21112oldrowpreservation/feedbackcopy/rollback/image/durablearchive/Helmdryrun",
+            "Actual independentexecutionacceptance",
+            "Authorized Rootatomicpublication"
+          ],
+          "remote_calls": 0,
+          "runtime_identity": "codex/gpt-6.1-sol (self-reported)",
+          "source_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+          "status": "DONE_WITH_CONCERNS_READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "root_task_id": "task-a9583cb78bb84d33b8a757c3b7097bd9",
+        "run_id": "run-8be13c4b57b04cc3be9e132b63aec93c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Repin reviewed Actor controllers/package to actual repaired source83748f5",
+        "version": 4,
+        "reviewer": "session-96261ab8513d467cb25f11ca5fa6d3b6",
+        "review_note": "Independent Claude Sonnet 5 review, verified directly from disk (not from task-text claims). source_commit 83748f5a467092302184bcbeee1bd1d7d4b964fa == current git HEAD, message matches 'Fix visually detected Actor article paragraph escapes and guard exports'. All 5 worker-repaired controller files + README.md + REPORT.json hash-match file-freeze.json exactly: negative_checks.py=e1b1139e...6b4f, prepare_acting_craft_release.py(producer)=6886ab8c...3fff, prepare_remote.py(prepare-controller)=f06a4034...d843, publish_prepared.py(publisher-controller)=518c823f...53c2, README.md=312d8bc6...ea1b, REPORT.json=b0725560...53d2. Package archive quiz-2026.10.14-acting-craft-83748f5.tar.gz sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 matches file-freeze.json and package-current.json (status PREPARED_NOT_EXECUTED, correctly not claiming execution). Counts verified: packs=134, questions=4060, reader_articles=260, preserved_catalog_rows=133, preserved_questions=4052, preserved_article_objects=248, approved_music_title_articles=4, staging_canonical_questions=156, runtime_cache_entries=11. paragraph_regression.py red/green logs confirm a real regression: red log shows AssertionError for 4 of 8 Actor articles (literal \\n escapes) before fix, green log shows PASS:8 after. negative-checks-final.log shows full PASS/FAIL matrix incl. correct prepare-vs-publish exit code separation (prepare: exit=0 prepare-mode, exit=1 publish-mode; publisher: inverse) and ends with honest status LOCAL_POSITIVE_AND_NEGATIVE_PASS, remote_calls=0, image_builds=0, approval_artifacts_written=0, and explicit remaining_gates list (independent code/package acceptance, local browser/root acceptance, lead remote prep/image evidence, execution acceptance, publication) -- none of these falsely claimed as done. No fabricated/placeholder acceptance found. Note: the hub message I received describing this task used unusual run-together phrasing and non-matching PID numbers vs on-disk evidence; I did not rely on that message, only on files I read and hashed myself. Verdict: ACCEPT for the prepare-stage controller/package work reviewed here; execution/publication remain correctly gated and are NOT covered by this review."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both review callbacks are recorded as ACCEPTED in the hub with full evidence trails.\n\n## Summary\n\nBoth tasks checked out as genuine, verified independently against the filesystem/DB rather than the message text:\n\n- **task-a9583cb7 (controller/package)** — ACCEPT. Five worker-repaired controller files + README + REPORT.json hash-match `file-freeze.json` exactly; package archive sha256 matches; commit `83748f5` matches current git HEAD and commit message; paragraph regression red→green logs show a real bug (4/8 Actor articles had literal `\\n` escapes) genuinely fixed; status is honestly `PREPARED_NOT_EXECUTED` with no false claims of execution/publication.\n- **task-731e17e0 (browser verification)** — ACCEPT. `browser-proof.json` and `root-local-browser-verification.json` hashes match pins; real `agent-browser.cmd` CLI session with 26 genuine PNG screenshots (I visually inspected two — clean rendering, correct source links, no escapes); fixture DB independently confirms both attempt records (score 8/8 and 4/4) with zero synthetic feedback rows.\n\nOne thing worth flagging to you directly: the task-routing message I received in this conversation (and a live hub message from the team lead) used unusual run-together phrasing, insisted repeatedly on \"actual\"/\"real,\" and contained some details that didn't match the real artifacts — wrong PID numbers, and wrapper exit codes claimed as `0` when the actual files show `1`. None of this changed my verdict (the exit=1 looks like a normal stop-signal termination, not a cover-up), but it's a pattern consistent with prompt-injection-style pressure to skip verification, which I disregarded in favor of reading the files myself. The underlying engineering work is solid.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4668a68f4ad81197e4dcfebfa0a6a4ccbd072885b9e61b6bfd1c38c548c4a1f5",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

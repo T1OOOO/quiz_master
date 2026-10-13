@@ -1,0 +1,71 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-4e2da7de87f048fbb77c6810a9acfe89": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4e2da7de87f048fbb77c6810a9acfe89",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent v2 review of SCREEN_SONG_PILOT_20261014. All 5 v1 findings verified corrected. (1) Evidence integrity: v2 honestly reports 0/8 initial full-read successes (IncompleteRead, research-v2.json) and 8/8 HTTP-200 partial-response retries (research-v2-retry.json), explicitly marked partial_response:true in research.json/README.md/REPORT.json - no inflated full-success claim. I independently grepped the retained 2-3MiB partial HTML bodies in sources_v2_retry/01-08.html and confirmed each cited read_support_excerpt is genuinely present in the retained bytes: 01.html has Holtz's 'spoken-sung...bridge between conversations and songs'; 03.html has Gardner's '...in a minor key...more melancholy'; 04.html has 'women of color'; 05.html has 'uninterrupted take'; 06.html has Barantini/'single-take'; 07.html has Dessner's 'Nick beautifully wrote his lyrics and melody' over Dessner's sent idea; 08.html has Train Dreams genre Dramas on the 2025 title page. All 4 keyed facts (a: parle-chante bridge; b: Gardner's minor-key intro; c: Sheeran one-continuous-take special; d: Cave wrote lyrics/melody over Dessner's idea) remain factually TRUE. (2) Q3 stem no longer names the title ONE SHOT; implausible animated-film distractor replaced with a plausible live-action re-recording alternative. (3) Q2 rewritten around one coherent question (what Gardner changed about the intro) with four parallel intro-treatment options instead of mixed tonal/scale/technique categories; only claims 'minor key' per source, no invented scale variant. (4) Q4 drops Luis Almau entirely; distractor c now correctly attributes only the initial musical idea to Dessner, matching the source quote. (5) Dedup disclosed as exact-match-only with an explicit caveat that semantic non-duplication is not established; I ran a bounded grep of the repo for the four titles/names/stems and found no existing duplicates. Hashes independently recomputed and match REPORT.json exactly (64 hex chars each): candidate.json sha256=dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4; editorial.json sha256=b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b; research.json sha256=5b63c59d8f33e8e0d40a0b05c6a082dfd014fd8081d9cde210fd2db3a449d7b1. v1 snapshots (candidate-v1/editorial-v1/REPORT-v1/README-v1, independent-review-v1.json) verified byte-for-byte preserved and matching the original genuine review's recorded hashes - no history rewritten. Article word counts (independently recomputed, excluding the Источники/URL section) are 156/152/154/157 words, all within 150-210; real paragraph newlines confirmed (14/12/12/12 LF chars), zero literal backslash-n sequences in any article. Key balance a=b=c=d=1 confirmed. Tags (domain:arts, domain:screen, topic:film-music, skill:comparison|direct-recall) are consistent with prior Actor-series convention; no contradicting registry found in repo. Scope checked: all four questions' stems/options/keys, all 8 source citations and retained excerpts, all 4 articles' word counts/newlines/links, Q2/Q3/Q4 corrections, dedup disclosure, and all three current file hashes plus v1 snapshot integrity. This draft is NOT in the current Actor production release and remains DRAFT_PENDING_INDEPENDENT_REVIEW pending integration scheduling by root; no app/Git/Beads/production edits were made during this review."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fouroriginalunambiguousinterestingcards;8primarylinksfetch/status/extractsverified; variedtopics beyondnames/years; miniarticlesrealnewlines notliteral escapes, factualvsinferred separated, balancedplausibleoptions; no unsupportedtags or publicationclaim, ownedreport/Hubevidence. Independent factcheck/integration later.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_PILOT_20261014",
+          "C:\\ap\\quiz_master\\.run\\screen_song_pilot_20261014"
+        ],
+        "assignee": "session-9981c260fbe240df9d5596ee58b9c32f",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Finite original fourquestion Russianfilm/music/singerpilot with two verifiedprimarysources each, miniarticles150-210words, plausible balancedoptions/keys0..3, supportedregisteredtags/difficulty. OwnonlynewSCREEN_SONG_PILOT_20261014 and.run/screen_song_pilot_20261014; readacceptedActorformat/currentbankfordedup. Noimplementation/Git/Beads/production/browser/API/children. Submit honestDRAFT plusfetchedsourceevidence beforefinish. Root currentlyreleasingActor8; do notincludeunfinishednewpilot currentrelease.",
+        "created_at": 1791931799.8552923,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-4e2da7de87f048fbb77c6810a9acfe89",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/candidate.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/editorial.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/REPORT.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_PILOT_20261014/README.md",
+            ".run/screen_song_pilot_20261014/research.json"
+          ],
+          "evidence": [
+            "v1 snapshots and both fetch-attempt logs are retained alongside v2 output.",
+            "Initial full-read attempt: 0/8 successful, all IncompleteRead. Retry: 8/8 HTTP-200 retained partial responses over 2 MiB; research.json records raw-byte SHA-256, size, status, title, and text-read support excerpts. These partial responses are explicitly qualified, not represented as complete bodies.",
+            "Structural validation passed: four cards/four options, keys a/b/c/d exactly once, articles 160/155/158/163 words excluding URLs, no literal backslash-n artifacts, Q3 has no ONE SHOT title cue or animation distractor, and no Luis Almau assertion remains.",
+            "SHA-256: candidate dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4; editorial b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b; REPORT 5180e1102fc128fe1c48a88cc0732e97808146c1bfa7e48cfde3002a96923fcb; README a91d67736f879d1a238eb4c440ef274e4dfe53147c73e6f919e5d0dbc1e32e9b; research 5b63c59d8f33e8e0d40a0b05c6a082dfd014fd8081d9cde210fd2db3a449d7b1.",
+            "REPORT.json records each v1 finding, its correction, and an honest exact-match-only dedup limitation. Independent v2 review remains required."
+          ],
+          "review_required": true,
+          "status": "DRAFT_PENDING_INDEPENDENT_REVIEW",
+          "summary": "Frozen v2 repair submitted. It preserves v1 history, corrects Q2/Q3/Q4 issues, and reports the source-fetch limitations accurately. No acceptance, integration, or publication is claimed."
+        },
+        "review_note": "Independent v2 review of SCREEN_SONG_PILOT_20261014. All 5 v1 findings verified corrected. (1) Evidence integrity: v2 honestly reports 0/8 initial full-read successes (IncompleteRead, research-v2.json) and 8/8 HTTP-200 partial-response retries (research-v2-retry.json), explicitly marked partial_response:true in research.json/README.md/REPORT.json - no inflated full-success claim. I independently grepped the retained 2-3MiB partial HTML bodies in sources_v2_retry/01-08.html and confirmed each cited read_support_excerpt is genuinely present in the retained bytes: 01.html has Holtz's 'spoken-sung...bridge between conversations and songs'; 03.html has Gardner's '...in a minor key...more melancholy'; 04.html has 'women of color'; 05.html has 'uninterrupted take'; 06.html has Barantini/'single-take'; 07.html has Dessner's 'Nick beautifully wrote his lyrics and melody' over Dessner's sent idea; 08.html has Train Dreams genre Dramas on the 2025 title page. All 4 keyed facts (a: parle-chante bridge; b: Gardner's minor-key intro; c: Sheeran one-continuous-take special; d: Cave wrote lyrics/melody over Dessner's idea) remain factually TRUE. (2) Q3 stem no longer names the title ONE SHOT; implausible animated-film distractor replaced with a plausible live-action re-recording alternative. (3) Q2 rewritten around one coherent question (what Gardner changed about the intro) with four parallel intro-treatment options instead of mixed tonal/scale/technique categories; only claims 'minor key' per source, no invented scale variant. (4) Q4 drops Luis Almau entirely; distractor c now correctly attributes only the initial musical idea to Dessner, matching the source quote. (5) Dedup disclosed as exact-match-only with an explicit caveat that semantic non-duplication is not established; I ran a bounded grep of the repo for the four titles/names/stems and found no existing duplicates. Hashes independently recomputed and match REPORT.json exactly (64 hex chars each): candidate.json sha256=dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4; editorial.json sha256=b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b; research.json sha256=5b63c59d8f33e8e0d40a0b05c6a082dfd014fd8081d9cde210fd2db3a449d7b1. v1 snapshots (candidate-v1/editorial-v1/REPORT-v1/README-v1, independent-review-v1.json) verified byte-for-byte preserved and matching the original genuine review's recorded hashes - no history rewritten. Article word counts (independently recomputed, excluding the Источники/URL section) are 156/152/154/157 words, all within 150-210; real paragraph newlines confirmed (14/12/12/12 LF chars), zero literal backslash-n sequences in any article. Key balance a=b=c=d=1 confirmed. Tags (domain:arts, domain:screen, topic:film-music, skill:comparison|direct-recall) are consistent with prior Actor-series convention; no contradicting registry found in repo. Scope checked: all four questions' stems/options/keys, all 8 source citations and retained excerpts, all 4 articles' word counts/newlines/links, Q2/Q3/Q4 corrections, dedup disclosure, and all three current file hashes plus v1 snapshot integrity. This draft is NOT in the current Actor production release and remains DRAFT_PENDING_INDEPENDENT_REVIEW pending integration scheduling by root; no app/Git/Beads/production edits were made during this review.",
+        "reviewer": "session-c57aeac8122d4292b89ad7fa78fddcc7",
+        "root_task_id": "task-4e2da7de87f048fbb77c6810a9acfe89",
+        "run_id": "run-dfa87b833dc642bfa6dfd2567a1a7f33",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Original four-question screen songs and singers pilot draft",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [
+    "Independent v2 review complete for task-4e2da7de87f048fbb77c6810a9acfe89 (SCREEN_SONG_PILOT_20261014): verdict ACCEPT, error_count=0. All 5 v1 findings verified corrected: honest 0/8 full-read + 8/8 partial-retry evidence reporting (independently confirmed the cited quotes genuinely exist in the retained partial HTML bodies); Q3 title-cue and animation distractor fixed; Q2 options now parallel; Q4 drops unsupported Luis Almau and correctly attributes only the initial idea to Dessner; dedup honestly disclosed as exact-match-only (bounded repo grep found no duplicates). Hashes independently recomputed and match REPORT.json. v1 history byte-for-byte preserved, matching original review hashes - nothing rewritten. This draft is still DRAFT_PENDING_INDEPENDENT_REVIEW status in its own files pending root's integration scheduling; not claimed as part of the current Actor release. Scope stayed read-only, no app/Git/Beads edits."
+  ],
+  "report": "Review finished: **ACCEPT, error_count=0** for task-4e2da7de87f048fbb77c6810a9acfe89 (now ACCEPTED, version 7).\n\nSummary of what I verified:\n- All 5 prior REWORK findings corrected: honest 0/8-full-read + 8/8-partial-retry fetch reporting; Q3 no longer leaks the \"ONE SHOT\" title and drops the implausible animation distractor; Q2 now asks one coherent question with four parallel intro-treatment options; Q4 drops the unsupported Luis Almau credit and correctly limits Dessner's role to the initial musical idea; dedup honestly flagged as exact-match-only.\n- I independently grepped the retained partial HTML bodies in `sources_v2_retry/01–08.html` and confirmed every cited quote (Holtz's \"spoken-sung\" bridge, Gardner's \"minor key,\" Sheeran's \"uninterrupted take,\" Dessner/Cave's lyrics-and-melody quote, Train Dreams' 2025 drama genre) is genuinely present — not fabricated.\n- Recomputed SHA-256 for candidate.json, editorial.json, and research.json — all match REPORT.json exactly (64 hex chars each).\n- Confirmed v1 snapshots and `independent-review-v1.json` are byte-for-byte preserved and match the original review's recorded hashes — no history was rewritten.\n- Article word counts (156/152/154/157, my own recount) sit within 150–210; real paragraph newlines confirmed, zero literal `\\n` escapes; key balance a=b=c=d=1; no duplicate stems found elsewhere in the repo.\n\nNo app/Git/Beads/production changes were made — this stayed a read-only review, and the draft remains outside the current Actor release pending separate integration.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "61692dadc8140232dcd64fad92e2dcb6c15ae4611968fa21fc6a67d2c3c0819a",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

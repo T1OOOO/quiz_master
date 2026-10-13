@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-13T23:23:52.369306+00:00",
+  "command": [
+    "eval",
+    "performance.getEntriesByType(\"resource\").map(e=>new URL(e.name).pathname).filter(p=>p.includes(\"/v1/attempts/\"))"
+  ],
+  "actual_exit": 0,
+  "stdout": "[\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/answers\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/feedback/music-craft-pilot-001\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/answers\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/feedback/music-craft-pilot-002\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/answers\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/feedback/music-craft-pilot-003\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/answers\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/feedback/music-craft-pilot-004\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/finish\",\n  \"/v1/attempts/a-18d20249-93d0-497a-9b2a-9b4dda2a8752/reveals\"\n]\n",
+  "stderr": ""
+}

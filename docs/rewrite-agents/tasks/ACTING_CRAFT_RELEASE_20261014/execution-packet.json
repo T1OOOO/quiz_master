@@ -1,0 +1,34 @@
+{
+  "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+  "source_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+  "package_sha256": "9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934",
+  "image": "sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961",
+  "values": "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log": "remote-prepare-log.txt",
+  "remote_log_sha256": "3aecb87abd4f2db9a951c2ee28a8fca120d26b35eece9dd9844256e796495255",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.14-acting-craft-83748f5.tar",
+  "durable_archive_sha256": "ae11582ea734404812c250ef044ccb51dc2e35f49263d88d1a42285c409dab35",
+  "backup_sha256": "1b6529bab3fe5bc96765b8bf9a46a894f4138ce1b58185487d66b1f30d9399d3",
+  "copied_db_rehearsal_sha256": "06096253874b16408ad534837969da973e76f7e8ffbf8e89fb66b812efa059da",
+  "df_sha256": "4397ea511b4c117d971dd4fb80437789a818eb937d4376141cd7876ab0821e24",
+  "helm_dryrun_sha256": "a750614b36bbdea731412fa33ef1e89027eadabeba0ce2e049f72b2fc9e7a8d6",
+  "local_browser_evidence_sha256": "82fb08d23e713e466844b800a71edeb4d6cc9f0d3f72c829dde679cc4ca67b80",
+  "publisher_controller_sha256": "518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2",
+  "prepare_controller_sha256": "f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843",
+  "actual_copy_rehearsal": {
+    "canonical_packs": 11,
+    "canonical_questions": 156,
+    "newyear_questions": 55,
+    "total_graded": 211,
+    "practice_finished": 12,
+    "old_rows_preserved": true,
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "limits": [
+    "Only preparation executed; publication and public verification remain separate.",
+    "No all-bank factual/Android certification or real feedback closure."
+  ],
+  "publish_script_sha256": "2dd3d2350f773dd8dab6f423928cb8327e2c9e45d9b5b3487eee050497ffc563"
+}

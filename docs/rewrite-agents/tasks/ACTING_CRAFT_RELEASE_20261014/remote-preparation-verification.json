@@ -1,0 +1,41 @@
+{
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite",
+  "backup_sha256": "1b6529bab3fe5bc96765b8bf9a46a894f4138ce1b58185487d66b1f30d9399d3",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      145,
+      145,
+      717,
+      259,
+      15325,
+      1458
+    ],
+    "post_migration_counts": [
+      145,
+      145,
+      717,
+      393,
+      15325,
+      1458
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 11,
+    "canonical_questions": 156,
+    "newyear_questions": 55,
+    "total_graded": 211,
+    "practice_finished": 12
+  },
+  "copied_db_rehearsal_sha256": "06096253874b16408ad534837969da973e76f7e8ffbf8e89fb66b812efa059da",
+  "copy_rehearsal_finished_trials": 12,
+  "copy_rehearsal_score_sum": 211,
+  "helm_dryrun_sha256": "a750614b36bbdea731412fa33ef1e89027eadabeba0ce2e049f72b2fc9e7a8d6",
+  "durable_archive_sha256": "ae11582ea734404812c250ef044ccb51dc2e35f49263d88d1a42285c409dab35",
+  "disk_free_bytes": 6948634624,
+  "checked_utc": "2026-10-13T23:10:23.953969+00:00"
+}

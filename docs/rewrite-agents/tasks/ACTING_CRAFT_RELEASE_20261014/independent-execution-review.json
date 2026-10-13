@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-9413e61356224533b5515157bcdfe04c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-9413e61356224533b5515157bcdfe04c",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 review for quiz-2026.10.14-acting-craft-83748f5, verified directly from disk/CLI, not from any prose claims in task text or in static-review.json (which contains text framed as a prior 'independent review' by me that I have no record of producing; I disregarded it as evidence and re-verified everything myself from scratch). Full 64-char digests I recomputed: execution-packet.json sha256=daad4d1ebb1ed999a200902e072893f8a257ab0a10c2ae1067242f7da59913ff; package archive (.run/acting_craft_controller_repaired_20261014/package-v1/quiz-2026.10.14-acting-craft-83748f5.tar.gz) sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 (matches execution-packet.package_sha256 and package-current.json archive_sha256); image=sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961 (matches execution-packet.image and is the exact digest named in remote-prepare-log.txt's final 'PREPARED build=... image=... mode=prepare' line); publish-prepared-preview.sh sha256=2dd3d2350f773dd8dab6f423928cb8327e2c9e45d9b5b3487eee050497ffc563 (matches execution-packet.publish_script_sha256, byte-identical to the file on disk). source_commit 83748f5a467092302184bcbeee1bd1d7d4b964fa equals current git HEAD on this machine. worker-repaired/publish_prepared.py (hash 518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2) and prepare_remote.py (f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843) recomputed and match execution-packet bindings. I read publish_prepared.py in full: it only ever invokes the remote SSH/helm-upgrade branch under explicit --publish, requires acceptance.actual_hub_state=='ACCEPTED', a matching execution_packet_sha256 binding to the complete packet, a different-provider acceptance, and a byte-for-byte prefix of the prepared cutover.sh with no 'docker build'/'flutter build'/'quizctl' before the image-pin line -- so publication stays gated on an execution-acceptance.json which does not yet exist on disk, confirming no publish has run. root-execution-collector.py performs only `bash -n` (syntax check) remotely, never executes the publish script. remote-prepare-log.txt (hash 3aecb87abd4f2db9a951c2ee28a8fca120d26b35eece9dd9844256e796495255, matches execution-packet.remote_log_sha256) shows a real docker buildx build producing the exact image manifest digest above, a durable k3s image archive import with matching sha256, and `helm template`/`kubectl apply --dry-run=server` output only (no 'helm upgrade', no live mutation) ending in the literal mode=prepare marker. remote-preparation-verification.json's copied-DB rehearsal counts (11 canonical packs/156 questions, 55 New Year, 211 total graded, 12 finished practice attempts, original_rows_preserved=true, feedback_lifecycle/old_api_rollback=ok) match execution-packet.actual_copy_rehearsal exactly. Verification boundary: I did not open a new SSH session to root@192.3.164.184 myself this turn; I relied on the already-collected, hash-bound local artifacts (remote-prepare-log.txt, remote-preparation-verification.json) produced by the prior authorized collector run, cross-checked for internal consistency rather than re-executing a live call against production infrastructure. Scope: this ACCEPT certifies that the prepared execution packet, image, package, and publish script are genuine, hash-consistent, and still correctly gated pre-publication -- it does not itself authorize or perform publication. Root may proceed to its own gated --publish invocation only after recording this acceptance with its own CLI exit 0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Differentprovider accepted callback verifies realoutputs/exacthashbindings/localQA/staticacceptance/frozenruntime/securebackup/rehearsal/noimage rebuild/atomicpublication safeguards. No invented approval; Root alone publishes onlyafter actualCLI0 and savedacceptance.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_RELEASE_20261014"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Actual authorized prepare0 produced exact image039474.../durablearchiveae115..., secure0600 backup/integrityrestore, copiedDB211gradedanswers/12histories/11canonical156+NY55, originalrowpreservation/feedbackcopyonly/oldAPIrollbackPASS, Helmserverdryrun0. Root collected hashes/read-onlyserververification and rendered exactpublishscript2dd3...; baselineMusicHelm50 stilllive. Reviewactualcompleteexecutionpacket, not expectedfields; no deployment byreviewer. Full64charcallbackbind preparedimage/packet/package/publishcommand.",
+        "created_at": 1791933065.3296504,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-9413e61356224533b5515157bcdfe04c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/execution-packet.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/remote-preparation-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/remote-prepare-log.txt",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/publish-prepared-preview.sh",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTING_CRAFT_RELEASE_20261014/static-review.json"
+          ],
+          "summary": "Actual prepare0/image/durablearchive/backup/copied211grade12histories/oldrowfeedbackcopyoldAPIPASS/Helmserverdryrun evidence collected, exactpublishscript rendered andbash-n0. No publication yet. Readyforindependentexactexecutionreview."
+        },
+        "root_task_id": "task-9413e61356224533b5515157bcdfe04c",
+        "run_id": "run-ba89ca0726ac4e01998a9af80bd3b181",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "Independent exact prepared Actor image and atomic publication execution review",
+        "version": 4,
+        "reviewer": "session-294fff0c1ee4438db70e184750cfa2c2",
+        "review_note": "Independent Claude Sonnet 5 review for quiz-2026.10.14-acting-craft-83748f5, verified directly from disk/CLI, not from any prose claims in task text or in static-review.json (which contains text framed as a prior 'independent review' by me that I have no record of producing; I disregarded it as evidence and re-verified everything myself from scratch). Full 64-char digests I recomputed: execution-packet.json sha256=daad4d1ebb1ed999a200902e072893f8a257ab0a10c2ae1067242f7da59913ff; package archive (.run/acting_craft_controller_repaired_20261014/package-v1/quiz-2026.10.14-acting-craft-83748f5.tar.gz) sha256=9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934 (matches execution-packet.package_sha256 and package-current.json archive_sha256); image=sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961 (matches execution-packet.image and is the exact digest named in remote-prepare-log.txt's final 'PREPARED build=... image=... mode=prepare' line); publish-prepared-preview.sh sha256=2dd3d2350f773dd8dab6f423928cb8327e2c9e45d9b5b3487eee050497ffc563 (matches execution-packet.publish_script_sha256, byte-identical to the file on disk). source_commit 83748f5a467092302184bcbeee1bd1d7d4b964fa equals current git HEAD on this machine. worker-repaired/publish_prepared.py (hash 518c823f9e0d41116ee46e67897fb8488e66d2ead3a6704ed586cba0f29253c2) and prepare_remote.py (f06a4034ff709b7b2bebc2fa1de6b759c96d3e014464c73a2947b3c17d34b843) recomputed and match execution-packet bindings. I read publish_prepared.py in full: it only ever invokes the remote SSH/helm-upgrade branch under explicit --publish, requires acceptance.actual_hub_state=='ACCEPTED', a matching execution_packet_sha256 binding to the complete packet, a different-provider acceptance, and a byte-for-byte prefix of the prepared cutover.sh with no 'docker build'/'flutter build'/'quizctl' before the image-pin line -- so publication stays gated on an execution-acceptance.json which does not yet exist on disk, confirming no publish has run. root-execution-collector.py performs only `bash -n` (syntax check) remotely, never executes the publish script. remote-prepare-log.txt (hash 3aecb87abd4f2db9a951c2ee28a8fca120d26b35eece9dd9844256e796495255, matches execution-packet.remote_log_sha256) shows a real docker buildx build producing the exact image manifest digest above, a durable k3s image archive import with matching sha256, and `helm template`/`kubectl apply --dry-run=server` output only (no 'helm upgrade', no live mutation) ending in the literal mode=prepare marker. remote-preparation-verification.json's copied-DB rehearsal counts (11 canonical packs/156 questions, 55 New Year, 211 total graded, 12 finished practice attempts, original_rows_preserved=true, feedback_lifecycle/old_api_rollback=ok) match execution-packet.actual_copy_rehearsal exactly. Verification boundary: I did not open a new SSH session to root@192.3.164.184 myself this turn; I relied on the already-collected, hash-bound local artifacts (remote-prepare-log.txt, remote-preparation-verification.json) produced by the prior authorized collector run, cross-checked for internal consistency rather than re-executing a live call against production infrastructure. Scope: this ACCEPT certifies that the prepared execution packet, image, package, and publish script are genuine, hash-consistent, and still correctly gated pre-publication -- it does not itself authorize or perform publication. Root may proceed to its own gated --publish invocation only after recording this acceptance with its own CLI exit 0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and the hub recorded it: task-9413e61356224533b5515157bcdfe04c is now `ACCEPTED`, reviewer `session-294fff0c1ee4438db70e184750cfa2c2` (this session).\n\n**Verdict: ACCEPT, error_count: 0**\n\nIndependently verified digests (recomputed myself from disk, not copied from task text):\n- `execution-packet.json` sha256 = `daad4d1ebb1ed999a200902e072893f8a257ab0a10c2ae1067242f7da59913ff`\n- package archive sha256 = `9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934`\n- image = `sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961`\n- publish script sha256 = `2dd3d2350f773dd8dab6f423928cb8327e2c9e45d9b5b3487eee050497ffc563`\n\nAll four match the execution packet's own bindings, `package-current.json`, and `remote-prepare-log.txt`'s literal `PREPARED build=... image=... mode=prepare` line. `source_commit` 83748f5a... equals current git HEAD. I read `publish_prepared.py` end-to-end: its remote/helm-upgrade branch only runs under explicit `--publish`, and is hard-gated on an `execution-acceptance.json` binding my exact packet hash plus a different-provider ACCEPTED state — that file doesn't exist on disk yet, so no publication has occurred.\n\nOne flag worth your attention: `static-review.json` contains text formatted as if it were my own prior \"independent review\" sessions — I have no record of producing those, so I disregarded that file entirely as evidence and re-verified everything from the raw artifacts (hashes, logs, source code) myself. Root may now proceed with its own gated, authorized `--publish` step; I did not run it and did not SSH into the production host myself this turn, relying instead on the already-collected, hash-bound local evidence from the prior authorized prepare run.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-9413e61356224533b5515157bcdfe04c",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "8fd10903cdb1368e63bb5194f894d61bb72abf3b7c897497e3ac8a34ffe11b3e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
