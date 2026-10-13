@@ -1,0 +1,25 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_review": {
+    "call": {
+      "action": "review",
+      "arguments": {
+        "task_id": "task-8b935ead0d2e4b00b8e4d8a6ba8a1bd6",
+        "verdict": "accept",
+        "note": "Verified: v3 vs v2 diff touches only item003 - two source URLs, attribution sentence, matching ledger supported_claims. Candidate.json byte-identical (diff + SHA match). Opened both replacement URLs: Adobe page explicitly distinguishes J-cut (next scene audio before image change) vs L-cut (previous audio carries over new video); Frame.io post by Reuben Evans confirms J-cut as audio starting slightly before linked clip. Attribution now correctly credits Frame.io author, not Adobe docs. Word count 180, within bound. No blockers."
+      }
+    },
+    "actual_response": "{\"acceptance\":\"Exact v3 hash/delta verified; different-provider actual review of source support and no semantic IDs/correctanswer clues, honest limits and primaryaccess; remains draft, canonical/release gates later.\",\"allowed_paths\":[\"C:\\\\ap\\\\quiz_master\\\\docs\\\\rewrite-agents\\\\tasks\\\\FILM_CRAFT_PILOT_20261013\\\\writer-v3\"],\"assignee\":\"session-5e648274bd214b84a839667c4dece54f\",\"author\":\"session-5e648274bd214b84a839667c4dece54f\",\"body\":\"Root copied frozen v2 to separate writer-v3; only article003 two URLs/support ledger and one attribution sentence changed. Actual Root opened Adobe CreativeCloud J/L definition and authoredFrame.io tutorial. All4 opaque candidate bytes/options/keys/meta and other3articles preserved. V2 review timed out with partial unparsed toolinput, no actual verdict; not accepted. Independent final short source/delta review now required; no runtime or publication changes.\",\"created_at\":1791904744.5282252,\"depth\":0,\"difficulty\":2,\"difficulty_explicit\":true,\"domain\":\"general\",\"id\":\"task-8b935ead0d2e4b00b8e4d8a6ba8a1bd6\",\"parent_task_id\":null,\"project_id\":\"project-b50d7d0cbbb84e3bbf9691469c747c8e\",\"requires_review\":true,\"result\":{\"evidence\":[\"C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_PILOT_20261013/writer-v3/CHANGELOG.md\",\"C:/ap/quiz_master/docs/rewrite-agents/tasks/FILM_CRAFT_PILOT_20261013/root-draft-v3-verification.json\"],\"summary\":\"V3 candidate unchanged5a94668; editorial6491db9 onlyarticle003 source URLs,ledger and one attribution sentence differ. Root opened both primarysources, structural4question/article contract passed; no source/publication approval until independent review.\"},\"root_task_id\":\"task-8b935ead0d2e4b00b8e4d8a6ba8a1bd6\",\"run_id\":\"run-04d4fa989bf644959341b243ec349dd2\",\"skills\":[],\"state\":\"ACCEPTED\",\"team_id\":\"team-cf555d2fd5984b1f81f96185d48ee25a\",\"title\":\"quiz_master-4gq Root v3 accessible source-only correction\",\"version\":4,\"reviewer\":\"session-4506000a8a024989ad378bb843dc9c1a\",\"review_note\":\"Verified: v3 vs v2 diff touches only item003 - two source URLs, attribution sentence, matching ledger supported_claims. Candidate.json byte-identical (diff + SHA match). Opened both replacement URLs: Adobe page explicitly distinguishes J-cut (next scene audio before image change) vs L-cut (previous audio carries over new video); Frame.io post by Reuben Evans confirms J-cut as audio starting slightly before linked clip. Attribution now correctly credits Frame.io author, not Adobe docs. Word count 180, within bound. No blockers.\"}",
+    "actual_accepted": true
+  },
+  "candidate_sha256": "5a94668f197da4b256ee1cce01e8f85655030e6a4d63c795a2298f415bbeeb59",
+  "editorial_sha256": "6491db9f97614857d385abed4edba75e0d9a2b3aea8832fec63d43bc48c7e83b",
+  "report": "Review submitted and recorded as **ACCEPTED** on `task-8b935ead0d2e4b00b8e4d8a6ba8a1bd6`.\n\n**Findings:** The v3 draft touches only item003's two source URLs, its attribution sentence, and the corresponding ledger `supported_claim` entries \u2014 confirmed by file diff and SHA match against the stated hashes. `candidate.json` is byte-identical to v2. Both replacement sources were opened directly and support the claims: Adobe's page explicitly distinguishes J-cut (next scene's audio before the image change) from L-cut (previous audio carries over the new video); the Frame.io post (author Reuben Evans) confirms the J-cut definition used in the attribution. Word count (180) stays within the 140\u2013220 bound. No blockers found; draft/publication gates remain separate as noted in the task.",
+  "trace_sha256": "0733bfa78b3dd444c3fdc70831a817d19d2a80f72897766557af1f2ff398e77b",
+  "limits": [
+    "Draft/source delta accepted; no canonical integration or publication",
+    "Original v1 REWORK preserved; V2 timedout incomplete toolinput never accepted",
+    "Gemini candidate solve independent of source certification; its confidence is not calibrated"
+  ]
+}

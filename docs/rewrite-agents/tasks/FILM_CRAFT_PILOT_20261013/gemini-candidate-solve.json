@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_nonempty_final_report": {
+    "task_id": "task-012f867f4141472bba4addb8a78eb8f8",
+    "offer_id": "offer-c5c31f4e99de456da01bf16cdb86b058",
+    "session_id": "session-5450150a94a94c4daed5e6a100217b6c",
+    "provenance": {
+      "candidate_hash_sha256": "5a94668f197da4b256ee1cce01e8f85655030e6a4d63c795a2298f415bbeeb59",
+      "hash_source": "Lead-supplied (Root independently audited; not recomputed by this helper session)",
+      "independent_hash_recomputed": false
+    },
+    "limits": [
+      "candidate-only solve",
+      "no primary-source or publication certification",
+      "no independent hash recomputation"
+    ],
+    "solutions": [
+      {
+        "id": "film-craft-pilot-001",
+        "selected_option_id": "a",
+        "reasoning": "Создание и синхронная запись бытовых шумов, шагов и звуков реквизита под видеоряд в кинопроизводстве называется фоли (Foley).",
+        "confidence": 1.0,
+        "ambiguity_or_uncertainty": "none"
+      },
+      {
+        "id": "film-craft-pilot-002",
+        "selected_option_id": "c",
+        "reasoning": "Повторная студийная запись актерских реплик с синхронизацией по губам для замены чернового звука называется ADR (Automated Dialogue Replacement).",
+        "confidence": 1.0,
+        "ambiguity_or_uncertainty": "none"
+      },
+      {
+        "id": "film-craft-pilot-003",
+        "selected_option_id": "a",
+        "reasoning": "Прием монтажа, когда звук следующей сцены вступает раньше появления ее видеоряда, называется J-cut (J-склейка).",
+        "confidence": 1.0,
+        "ambiguity_or_uncertainty": "none"
+      },
+      {
+        "id": "film-craft-pilot-004",
+        "selected_option_id": "a",
+        "reasoning": "В покадровой кукольной анимации (stop-motion) базовый повторяющийся цикл создания движения — микроперемещение куклы с последующей съемкой одного кадра.",
+        "confidence": 1.0,
+        "ambiguity_or_uncertainty": "none"
+      }
+    ],
+    "evidence": [
+      "Accepted offer offer-c5c31f4e99de456da01bf16cdb86b058 for task task-012f867f4141472bba4addb8a78eb8f8",
+      "Received 4 candidate questions from lead message 37012 with lead-supplied SHA256 5a94668f197da4b256ee1cce01e8f85655030e6a4d63c795a2298f415bbeeb59",
+      "Provided 4 candidate answers with reasoning, confidence, and uncertainty notes",
+      "No shell commands, no hash recomputation, no file edits, and no external queries executed"
+    ]
+  },
+  "four_answers_match_editorial": true,
+  "normal_report_after_ready_offer_accept_and_Hub_submission": true,
+  "first_attempt": "CLI0 with denied hashing/empty response was NOT a valid solve and not accepted. Its started task could not be cancelled through Hub; no broker state was edited.",
+  "confidence_limit": "Helper self-confidence1.0 is not calibrated or source evidence.",
+  "candidate_hash_independently_verified_by": "Root, not Gemini",
+  "trace_sha256": "c79ba6a65ff2623df7956483d0a0c1e52c0e419067989f56b54ccd77dcd47183",
+  "limits": [
+    "Candidate-only fresh-context solve; no primary-source/factual publication certification",
+    "No shell or hash-recomputation requirement in successful attempt",
+    "Two initial CLI argument errors and first empty report preserved in scratch; process0 alone never accepted"
+  ]
+}

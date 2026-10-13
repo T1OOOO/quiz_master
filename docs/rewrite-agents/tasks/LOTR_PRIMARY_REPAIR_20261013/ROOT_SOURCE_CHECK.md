@@ -1,0 +1,8 @@
+# Root source check, 2026-10-13
+
+Root independently opened the two Tolkien Estate pages cited for rk93/rk95, rather than relying on the native helper's access claim:
+
+- [Vincent Ferré: Is The Lord of the Rings an Adventure Story?](https://www.tolkienestate.com/writing/vincent-ferre-is-the-lord-of-the-rings-an-adventure-story/) reproduces an original passage near the Forbidden Pool naming Anduin in a valley, with Gondor's White Mountains beyond. This is support for that geographic description, not a blanket proof that every use of “Great River” means Anduin. The page as a whole is hosted literary criticism; its original-text excerpt is the evidence used.
+- [Christopher Tolkien: The Silmarillion](https://www.tolkienestate.com/writing/christopher-tolkien-the-silmarillion/) explicitly discusses the shared ending of the novels and names the Grey Havens/Mithlond in connection with the white ship. This supports a question scoped to the final departure and harbour. It does not verify all six existing distractors.
+
+The native report is useful source research, not a ready canonical repair. rk93 still needs a natural, sufficiently specific stem, and its Sirion explanation requires separate support or omission. rk95 should explicitly say “в финале романа”; replacing vague city wording with a harbour is an editorial clarification, not proof of a wrong key. rk96 remains held for book/film-version evidence. No original book edition, page number, film cut or timecode was inspected by Root in this pass. No canonical, grading, runtime or feedback status changed. Independent different-provider review is running.
