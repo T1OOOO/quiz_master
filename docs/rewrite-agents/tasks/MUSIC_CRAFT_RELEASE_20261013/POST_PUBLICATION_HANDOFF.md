@@ -1,0 +1,13 @@
+# Music Craft publication handoff
+
+Published build `quiz-2026.10.13-music-craft-f79555e`, source `f79555e0659f0c20b86064b446ac582de323b2e9`, Helm revision50. The four new questions in «Музыка: секреты студии» have four miniarticles and eight primary source links. Production contains133 packs,4052 questions and252 accepted Reader articles.
+
+The actual image is `docker.io/library/quiz-master@sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7`. Preparation rehearsed203 grades and11 finished histories on a copy, preserved old records, verified rollback, backup integrity and a durable imported image. Actual atomic Helm publication exited0. Post-publication static/API checks matched the compiled Flutter assets and131 live question/article revision bindings; older published repairs remained intact. Public cache-conditional requests returned fresh200 responses without ETags.
+
+Root recovered the public browser evidence after the native helper submitted concerns. A genuine390×844 browser flow finished with score4; read-only SQL for only the browser-observed own attempt verified finished status and four answer rows. Four source footers were visually checked. Q002 required a follow-up wheel scroll; the earlier incomplete photos remain in evidence. Pause/resume worked. Final owned named browser close exited0 and session info was inactive. Actual touch capability was0: this proves a mobile-width layout in desktop Chrome, not physical Android or touch emulation. Failed helper evidence remains separate and must not be described as passing.
+
+The26 real feedback reports remain open with unchanged aggregate SHA256 `1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13`. This content release does not resolve those reports or certify all4052 questions. No GitHub Actions ran.
+
+Next: Beads `quiz_master-5zd` tracks integrating the independently accepted Acting Craft8 draft (eight questions, eight articles,16 primary links). `ACTING_CRAFT_PILOT_20261013/independent-review-v4.json` contains the actual Claude callback after concrete repairs; rejected v1–v3 snapshots remain for audit and must not be imported. That draft is not yet public. Beads `quiz_master-z22` tracks improving source-button titles: generic identical Ableton labels should become the real page titles in a separately reviewed release. Broader library work remains `quiz_master-3vw`.
+
+For the next release, start from actual Helm50 and this image/build. Do not rerun the Music publisher, whose baseline guard expects49. Use fresh source/build/asset pins, backup and copied-database rehearsal, independent release checks, and public verification. Preserve foreign working-tree files and all open real feedback.

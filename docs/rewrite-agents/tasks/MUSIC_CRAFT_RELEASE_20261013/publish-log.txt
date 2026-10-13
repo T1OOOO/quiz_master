@@ -1,0 +1,35 @@
+api: OK
+web/main.dart.js: OK
+nginx.conf: OK
+nginx.conf: OK
+{'backup': '/opt/quiz-master/backups/quiz-2026.10.13-music-craft-f79555e-cutover-20261013T205131Z.sqlite', 'integrity': 'ok', 'restore': 'ok', 'counts': [125, 697, 258]}
+{"migration": "ok", "original_counts": [125, 125, 697, 258, 15245, 1426], "post_migration_counts": [125, 125, 697, 391, 15245, 1426], "original_rows_preserved": true, "integrity": "ok", "feedback_lifecycle": "ok", "old_api_rollback": "ok", "canonical_packs": 10, "canonical_questions": 148, "newyear_questions": 55, "total_graded": 203, "practice_finished": 11}
+/var/lib/rancher/k3s/agent/images/quiz-2026.10.13-music-craft-f79555e.tar: OK
+==> Linting chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+Warning: resource networkpolicies/quiz-isolation is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+networkpolicy.networking.k8s.io/quiz-isolation configured (server dry run)
+Warning: resource persistentvolumeclaims/quiz-data is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+persistentvolumeclaim/quiz-data configured (server dry run)
+Warning: resource roles/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+role.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource rolebindings/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+rolebinding.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource services/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/quiz-master configured (server dry run)
+Warning: resource deployments/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/quiz-master configured (server dry run)
+Warning: resource ingresses/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+ingress.networking.k8s.io/quiz-master configured (server dry run)
+Warning: resource middlewares/quiz-rate-limit is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+middleware.traefik.io/quiz-rate-limit configured (server dry run)
+Release "quiz-master" has been upgraded. Happy Helming!
+NAME: quiz-master
+LAST DEPLOYED: Tue Oct 13 23:52:00 2026
+NAMESPACE: quiz-master
+STATUS: deployed
+REVISION: 50
+TEST SUITE: None
+{'buildId': 'quiz-2026.10.13-music-craft-f79555e', 'commit': 'f79555e0659f0c20b86064b446ac582de323b2e9', 'source_commit': 'f79555e0659f0c20b86064b446ac582de323b2e9', 'local_build': True, 'packs': 133, 'questions': 4052, 'study_modules': 6, 'study_questions': 120, 'question_articles': 252, 'api_sha256': '26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01', 'main_dart_js_sha256': 'fe9b2c66ed9c7b01ad5325616ff6a4fd8402c653b9fe97705b450a96ccaf8380', 'taxonomy_id': 'qm-tags-v1', 'taxonomy_sha256': '07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151', 'taxonomy_file_sha256': '98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c'}

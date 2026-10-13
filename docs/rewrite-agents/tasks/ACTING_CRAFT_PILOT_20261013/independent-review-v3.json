@@ -1,0 +1,79 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-db6d05250b5946a3971c2db62c13df5d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Changed-scope recheck of v3 (hashes match: candidate 0857df74..., editorial 3d4796d9..., notes f68838ea...), same conversation, old Q2/Q5-8 keys already known from prior pass. Blind-recorded answers to the 3 fully new items before opening the key: Q1=a (rehearses on set), Q3=uncertain between 'read whole script' and 'start technical rehearsals', Q4=d (dance background) — all matched the claimed key once opened.\n\nAll 6 newly/changed-cited primary sources were actually fetched (urllib was truncating netflix.com responses with IncompleteRead; switched to requests, got clean 200s and full HTML for all 6):\n- Q1 Netflix Tudum 'Spend a Day with Penn Badgley' transcript verbatim: \"you come to set, you rehearse... I go to hair and makeup... and then I go in there, and then I rage\" — exactly supports key a) and the article's prayer/meditation detail. Table-read source also confirmed real and on-topic.\n- Q2: option b shortened to 'Останавливал производство', now comparable length to the three distractors — the previous 'conspicuously longer correct answer' issue is fixed. BFI quote re-verified, unchanged and accurate.\n- Q3 (Adolescence) Netflix Tudum article verbatim: \"Usually, by Wednesday of the rehearsal week, Barantini and the actors had finished the entire script... run it in its entirety as many times as we could\" — exactly supports key c). Second source confirms the real one-shot/three-week production structure.\n- Q4 (Jennifer Lopez, 'The Mother', dir. Niki Caro) Tudum article verbatim: \"Her ability to learn something in her body and execute it, it's from years – decades – of choreography\" (Caro) plus the sniper-rifle-by-feel detail — exactly supports key d).\n- Q5–Q8 are byte-identical to the previously accepted v2 content (diffed JSON confirms); already verified against Lucasfilm/Disney/Pixar primary sources in the prior round, not re-litigated.\nQ1/Q3/Q4 cluster concern from v2 is resolved: the four opening items no longer repeat the Moana/Vader source or character, and coverage-notes.md discloses the repair rationale accurately.\n\nOne remaining concrete defect, not yet fixed: Q4's film title is rendered in Russian as «Moей матери» in both the stem and the article heading, but the film's actual Russian title (confirmed via ru.wikipedia.org search) is «Мать» (2023, Jennifer Lopez, action-thriller). «Моей матери» is not a real title for this or any known J.Lo/Niki Caro film and would read as a mistranslation/typo to a Russian audience, even though the underlying facts and sourcing are otherwise accurate. Please correct every occurrence to «Мать» before acceptance.\n\nMinor non-blocking nitpick: Q6 article body is ~149 words by my count, just under the 150 floor; recommend a one-sentence trim/pad if the production's own word-count tool agrees, otherwise disregard.\n\nStructure check: 8 IDs, 4 options each, keys a,b,c,d,a,b,c,d (balanced 2 each), 2 distinct links per article, all other articles 150-230 words. No fabricated or unreachable citations found this pass."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Snapshot original v1 unchanged, only owned draft revised",
+          "First4 film/performance learningquestions with credible parallel distractors andinteresting original articles",
+          "Moana answer samegenderplausible alternatives; actual releasedvoicecreditduplicates checked",
+          "8balanced blind questions,8source-backedarticles2primarylinks; fullhash/evidence submit"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_PILOT_20261013"
+        ],
+        "assignee": "session-ac4b6fba63ce48488785a51e078d7724",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root inspected blind candidate; first4 are MetaHuman software workflow rather than engaging film/actor questions; Q001 has absurd coveringface/leavingframe distractors, Q002 lighting alternatives tooobvious, Q003 repeatsPerformancein stem/correctassetname. Q007 has one female answer among3men forfemalecharacter, stronggendergiveaway. Preserve previous submitted candidate/editorial/notes as v1-suffixed immutable snapshots in ownedfolder, then replace1-4 with variedfilm/actor/performance questions accessible withoutengine UI expertise and repairQ007 allsamegender plausiblevoiceactors. Reviewduplicates actualStarWars/Disney existingbanks forQ005-008. Retainonlysupportedoriginallearningobjectives, meaningful150-230wordarticles2primarylinks with realdescriptivepagetitles. Morevariety/inference, nojokedistractors/noidentifiernamecue. All8positions2each. OwnedonlyACTING_CRAFT_PILOT; fullTASK_ENstillapplies. Rootinspectionispreflight, actualdifferentproviderfactreviewstillneededbeforeacceptance. Noimports/Git/app/browser/server/children.",
+        "created_at": 1791924221.332565,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/candidate.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/editorial.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/coverage-notes.md",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/candidate-v2.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/editorial-v2.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/coverage-notes-v2.md"
+          ],
+          "evidence": [
+            "Created immutable v2 snapshots before edits: candidate-v2 8FAFAFE5B03E7F620E169E3C9CF0349AAEF8EF952D357DCEEABB0C8CA27DF072; editorial-v2 6247DD5E808ED58FA92539725FCDDDE28B5F63A3283BF655EE3E8930A962D4FA; notes-v2 E233174E80494DD91092E11DFB85767A712F5809EBA538B4D2AB069766958CF1.",
+            "Directly opened Netflix primary pages for You, Adolescence, and The Mother. Q001 now uses direct Badgley account, Q003 direct Barantini rehearsal account, and Q004 direct Caro/Lopez movement account.",
+            "Structural check PASS: 8 items; four options each; two distinct sources/item; articles 152–165 words; answer distribution a=2,b=2,c=2,d=2.",
+            "Current SHA-256: candidate 0857DF74F1F84FD7BFBD0D8C93C9A5772200F09B975A1D6B393FB37F62E586A9; editorial 3D4796D93506CE08CDDB2ACE0115E7BB2B4D6EB1466DFB65003267FB5C6A0ACD; notes F68838EA0C79836515571AC4A9417120DA0AF22B3D6D64CD2FD83F220AC12C8D."
+          ],
+          "review_required": true,
+          "status": "rework2_completed_pending_independent_review",
+          "summary": "Snapshot v2 retained. Replaced the ambiguous makeup question, diversified the former Moana/Vader cluster, and shortened Q002’s correct choice."
+        },
+        "review_note": "Changed-scope recheck of v3 (hashes match: candidate 0857df74..., editorial 3d4796d9..., notes f68838ea...), same conversation, old Q2/Q5-8 keys already known from prior pass. Blind-recorded answers to the 3 fully new items before opening the key: Q1=a (rehearses on set), Q3=uncertain between 'read whole script' and 'start technical rehearsals', Q4=d (dance background) — all matched the claimed key once opened.\n\nAll 6 newly/changed-cited primary sources were actually fetched (urllib was truncating netflix.com responses with IncompleteRead; switched to requests, got clean 200s and full HTML for all 6):\n- Q1 Netflix Tudum 'Spend a Day with Penn Badgley' transcript verbatim: \"you come to set, you rehearse... I go to hair and makeup... and then I go in there, and then I rage\" — exactly supports key a) and the article's prayer/meditation detail. Table-read source also confirmed real and on-topic.\n- Q2: option b shortened to 'Останавливал производство', now comparable length to the three distractors — the previous 'conspicuously longer correct answer' issue is fixed. BFI quote re-verified, unchanged and accurate.\n- Q3 (Adolescence) Netflix Tudum article verbatim: \"Usually, by Wednesday of the rehearsal week, Barantini and the actors had finished the entire script... run it in its entirety as many times as we could\" — exactly supports key c). Second source confirms the real one-shot/three-week production structure.\n- Q4 (Jennifer Lopez, 'The Mother', dir. Niki Caro) Tudum article verbatim: \"Her ability to learn something in her body and execute it, it's from years – decades – of choreography\" (Caro) plus the sniper-rifle-by-feel detail — exactly supports key d).\n- Q5–Q8 are byte-identical to the previously accepted v2 content (diffed JSON confirms); already verified against Lucasfilm/Disney/Pixar primary sources in the prior round, not re-litigated.\nQ1/Q3/Q4 cluster concern from v2 is resolved: the four opening items no longer repeat the Moana/Vader source or character, and coverage-notes.md discloses the repair rationale accurately.\n\nOne remaining concrete defect, not yet fixed: Q4's film title is rendered in Russian as «Moей матери» in both the stem and the article heading, but the film's actual Russian title (confirmed via ru.wikipedia.org search) is «Мать» (2023, Jennifer Lopez, action-thriller). «Моей матери» is not a real title for this or any known J.Lo/Niki Caro film and would read as a mistranslation/typo to a Russian audience, even though the underlying facts and sourcing are otherwise accurate. Please correct every occurrence to «Мать» before acceptance.\n\nMinor non-blocking nitpick: Q6 article body is ~149 words by my count, just under the 150 floor; recommend a one-sentence trim/pad if the production's own word-count tool agrees, otherwise disregard.\n\nStructure check: 8 IDs, 4 options each, keys a,b,c,d,a,b,c,d (balanced 2 each), 2 distinct links per article, all other articles 150-230 words. No fabricated or unreachable citations found this pass.",
+        "reviewer": "session-06e690a8b1b8474ca0ec814e202f6eed",
+        "root_task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "run_id": "run-5218e311b2ba479794d8464fb940d8e6",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-3vw revise acting craft interest and giveaway defects before fact review",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review callback submitted successfully — task is now `REWORK`.\n\n**Verdict: REWORK (error_count=1)**\n\nThe two prior blocking issues from v2 (Q1's shared/ambiguous Baker/Winston credit, and the Vader/Moana cluster) are genuinely resolved in v3 — all 6 newly/changed sources were fetched and verbatim-matched the claimed quotes (Badgley's rehearse→hair/makeup→rage account for Q1, Barantini's \"by Wednesday\" script-completion account for Q3, Caro's \"decades of choreography\" quote for Q4). Q2's correct option is no longer conspicuously longer. Q5–Q8 are byte-identical to the already-verified v2.\n\nOne concrete remaining defect: Q4 names the film «Моей матери» in both stem and article, but the film's actual Russian title (confirmed via ru.wikipedia.org) is «Мать» (2023, Jennifer Lopez/Niki Caro). The underlying facts and sourcing are accurate — just the title string needs correcting everywhere it appears. I flagged a non-blocking word-count nitpick on Q6 (~149 words, just under the 150 floor) as well.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "976e61cd137630c697badb55e15e370c225c99762292d953de9efc5ca9db7950",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

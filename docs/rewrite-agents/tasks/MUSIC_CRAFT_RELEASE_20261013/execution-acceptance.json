@@ -1,0 +1,66 @@
+{
+  "actual_hub_state": "ACCEPTED",
+  "actual_cli_exit": 0,
+  "actual_review": {
+    "call": {
+      "action": "review",
+      "arguments": {
+        "task_id": "task-506417e59ced4579aed8616554657142",
+        "verdict": "accept",
+        "error_count": 0,
+        "note": "Independent Claude review, read-only, workspace C:/ap/quiz_master. Inspected actual files in docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/ (not just claims).\n\nVerified directly: package-current.json status=PREPARED_NOT_EXECUTED, build_id quiz-2026.10.13-music-craft-f79555e, source_commit f79555e0659f0c20b86064b446ac582de323b2e9, counts packs/questions/question_articles=133/4052/252, baseline_input archive_sha256=5ed5fdf6...654c85, image sha256:6d2a206a...75daa6, pvc_uid 7fc2428f-4146-4c78-a26d-2347d9f3b7bf (all match prior accepted Film Craft/Helm49 baseline). Re-hashed the actual .tar.gz on disk myself: sha256=ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7, exact match to package_sha256/execution-packet.json.\n\nIndependently re-ran worker/negative_checks.py myself (not trusted output): reproduced all 21 PASS lines verbatim (same package/producer/prepare/publisher hashes, 307 archive members, 148 staging revisions, 0 remote calls/image builds/approval artifacts during this local run).\n\nRead worker/prepare_remote.py and worker/publish_prepared.py in full: both are real, non-stub implementations (resolves the earlier REWORK on task-2a6712d9...). publish_prepared.prepare() hard-gates on: package pins, execution-packet binding, require_actual_acceptance() requiring a genuine saved hub_task review/accept callback with reviewer != assignee and response.state==ACCEPTED, copied-DB rehearsal fields (10/148/55/203/11/old_rows_preserved/PASS/PASS), browser-proof gates, publisher self-hash check, git-ancestor/no-source-drift check. No docker build/flutter build/quizctl token present in the prepare-prefix or in publish-prepared-preview.sh; helm upgrade only appears behind an unused `quiz_mode=publish` branch not invoked by this task.\n\nHashed all 26 screenshot/snapshot artifacts referenced in browser-proof.json and root-local-browser-verification.json myself: 0 mismatches. Visually opened results-mobile390.jpeg (shows 'Счёт: 4') and article-2-sources-mobile390.jpeg (shows two www.ableton.com source links) — matches the claimed score=4/4 and source_controls_each=[2,2,2,2]. browser-proof.json/root-local-browser-verification.json self-hash to 781c4742...1f7d1 / 53a5f2c9...8ed7473, matching static-review.json and execution-packet.json bindings exactly.\n\nLight read-only SSH corroboration (root@192.3.164.184, no mutation): live kubectl deploy image is still baseline sha256:6d2a206a...75daa6 (no cutover occurred), PVC UID matches, durable archive on disk hashes to 14a5d5ba...03cf6 (exact match to execution-packet.json), backup file exists at the claimed path with mode 0600 and real size, staged release directory exists remotely with expected files. remote-prepare-log.txt independently matches: real docker buildx build, image import, Helm lint/template/server-dry-run, and the exact 'PREPARED build=...image=sha256:b94a399...f17d7...mode=prepare' line my own SSH check corroborates.\n\nexecution-acceptance.json correctly does not yet exist on disk — this task is genuinely the missing gate, not pre-filled.\n\nScope of this ACCEPT: the frozen prepare-only package, controllers, and this exact execution packet/publish-preview script as currently on disk (hashes above). No cutover, image build, Helm upgrade, or production mutation was performed by me. Publication itself, and any feedback-row closure, remain separate future gates per the task's own stated limits."
+      }
+    },
+    "actual_response": {
+      "acceptance": [
+        "Actual preparation0 and securebackup/integrity/oldrows/copy203grading11history/rollback evidence",
+        "Exact frozen package/controller/QA/source/image/archive/values/shell/Helm/PVC/disk pins",
+        "Genuine different-provider review of exact execution packet before authorized publication",
+        "No all-bank/Android claims or real feedback closure"
+      ],
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013"
+      ],
+      "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+      "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+      "body": "Root lead performs authorized prepare-only release after actual controller and mobile QA acceptance, verifies secure copiedDB203grades/11histories/oldrows/rollback/feedbackcopy, immutable image/archive/values/dryrun/backup/disk/PVC/currentHelm49. Root writes exact execution packet/rendered publisher script but does not cut over before a different-provider actual review of the complete frozen outputs. Independent Claude must inspect exact packet/script/code and callback. No GitHubActions or real feedback closure; all remote operations scoped to Quiz Master. Publication follows separately after acceptance.",
+      "created_at": 1791923814.55893,
+      "depth": 0,
+      "difficulty": 3,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-506417e59ced4579aed8616554657142",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "evidence": [
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/execution-packet.json",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/publish-prepared-preview.sh",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/remote-preparation-verification.json",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/remote-prepare-log.txt",
+          "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/static-review.json"
+        ],
+        "summary": "Root actual prepare-only completed exit0; copiedDB203grading/11finished, backup0600/integrity, preserved oldrows, feedbackcopy/oldAPIrollback PASS; immutableimageb94/archive14a5, actual Helm dryrun. No cutover. Exact execution packet and rendered publish script frozen for genuine independent review."
+      },
+      "root_task_id": "task-506417e59ced4579aed8616554657142",
+      "run_id": "run-f8d0618289b549f9a89e71190d156ec9",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+      "title": "quiz_master-0ad lead Music Craft prepared image and exact publication review",
+      "version": 4,
+      "reviewer": "session-fc77fbef13254f9780f9db521643adda",
+      "review_note": "Independent Claude review, read-only, workspace C:/ap/quiz_master. Inspected actual files in docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/ (not just claims).\n\nVerified directly: package-current.json status=PREPARED_NOT_EXECUTED, build_id quiz-2026.10.13-music-craft-f79555e, source_commit f79555e0659f0c20b86064b446ac582de323b2e9, counts packs/questions/question_articles=133/4052/252, baseline_input archive_sha256=5ed5fdf6...654c85, image sha256:6d2a206a...75daa6, pvc_uid 7fc2428f-4146-4c78-a26d-2347d9f3b7bf (all match prior accepted Film Craft/Helm49 baseline). Re-hashed the actual .tar.gz on disk myself: sha256=ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7, exact match to package_sha256/execution-packet.json.\n\nIndependently re-ran worker/negative_checks.py myself (not trusted output): reproduced all 21 PASS lines verbatim (same package/producer/prepare/publisher hashes, 307 archive members, 148 staging revisions, 0 remote calls/image builds/approval artifacts during this local run).\n\nRead worker/prepare_remote.py and worker/publish_prepared.py in full: both are real, non-stub implementations (resolves the earlier REWORK on task-2a6712d9...). publish_prepared.prepare() hard-gates on: package pins, execution-packet binding, require_actual_acceptance() requiring a genuine saved hub_task review/accept callback with reviewer != assignee and response.state==ACCEPTED, copied-DB rehearsal fields (10/148/55/203/11/old_rows_preserved/PASS/PASS), browser-proof gates, publisher self-hash check, git-ancestor/no-source-drift check. No docker build/flutter build/quizctl token present in the prepare-prefix or in publish-prepared-preview.sh; helm upgrade only appears behind an unused `quiz_mode=publish` branch not invoked by this task.\n\nHashed all 26 screenshot/snapshot artifacts referenced in browser-proof.json and root-local-browser-verification.json myself: 0 mismatches. Visually opened results-mobile390.jpeg (shows 'Счёт: 4') and article-2-sources-mobile390.jpeg (shows two www.ableton.com source links) — matches the claimed score=4/4 and source_controls_each=[2,2,2,2]. browser-proof.json/root-local-browser-verification.json self-hash to 781c4742...1f7d1 / 53a5f2c9...8ed7473, matching static-review.json and execution-packet.json bindings exactly.\n\nLight read-only SSH corroboration (root@192.3.164.184, no mutation): live kubectl deploy image is still baseline sha256:6d2a206a...75daa6 (no cutover occurred), PVC UID matches, durable archive on disk hashes to 14a5d5ba...03cf6 (exact match to execution-packet.json), backup file exists at the claimed path with mode 0600 and real size, staged release directory exists remotely with expected files. remote-prepare-log.txt independently matches: real docker buildx build, image import, Helm lint/template/server-dry-run, and the exact 'PREPARED build=...image=sha256:b94a399...f17d7...mode=prepare' line my own SSH check corroborates.\n\nexecution-acceptance.json correctly does not yet exist on disk — this task is genuinely the missing gate, not pre-filled.\n\nScope of this ACCEPT: the frozen prepare-only package, controllers, and this exact execution packet/publish-preview script as currently on disk (hashes above). No cutover, image build, Helm upgrade, or production mutation was performed by me. Publication itself, and any feedback-row closure, remain separate future gates per the task's own stated limits."
+    }
+  },
+  "execution_packet_sha256": "09b8c79b9d9e3ec36d3ce1fc3a54dbac6e2bef8c6db7b5ff6db74a00c7bbf939",
+  "package_sha256": "ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7",
+  "image": "sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7",
+  "publish_script_sha256": "80f2eb493bf507c47b16396b2d87760fda3f8d8ab5115f1e1b98fad9cd1d5f02",
+  "publisher_controller_sha256": "4e9ae3b7630c5e1daa107446e3342953c9c4262579449fdc8636f215204687b5",
+  "local_browser_evidence_sha256": "781c4742b216b6fb84f39e3ae3222e7f0aaf636e2f04df638a1770621851f7d1",
+  "trace_sha256": "27998f35029e413c64e75e15267e4687c7f7768ea06726675604d26c9054c2e9",
+  "report": "The review callback succeeded: `state: \"ACCEPTED\"`, reviewer `session-fc77fbef...` (me) distinct from assignee `session-aca46672...` (Root lead).\n\n## Summary\n\nI independently reviewed task-506417e59ced4579aed8616554657142 (Music Craft prepared release + publication-preview), reading actual files rather than trusting claims:\n\n- Re-hashed the immutable package archive on disk — matches `package_sha256` exactly.\n- Read `prepare_remote.py`/`publish_prepared.py` in full — real, gated implementations (the earlier REWORK stub issue is resolved), with `--publish` unreachable without a genuine prior independent-review callback.\n- Independently re-ran `negative_checks.py` myself — reproduced all 21 PASS lines.\n- Hashed all 26 browser-QA screenshots/snapshots myself (0 mismatches) and visually opened two of them, confirming \"Счёт: 4\" and two source links on article 2.\n- Did a light read-only SSH check against the remote host: live deployment is still on the unchanged baseline image, PVC UID matches, the durable image archive on disk hashes exactly as claimed, and the 0600 backup file exists — corroborating the prepare-only run without performing or risking any mutation.\n- Confirmed `execution-acceptance.json` did not exist yet, so this really was the missing gate, not a pre-filled formality.\n\nVerdict submitted: **accept**, error_count 0. No cutover, build, or production action was taken — only read-only verification. Publication itself remains a separate, still-gated step.",
+  "scope": "Actual independent acceptance of this exact prepared Music Craft image and publication command; no publication by this writer."
+}

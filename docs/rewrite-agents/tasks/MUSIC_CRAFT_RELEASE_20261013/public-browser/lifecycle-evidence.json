@@ -1,0 +1,29 @@
+{
+  "task": "task-45459414bf374ec5a76b10557e8f2616",
+  "target": "https://quiz.kotopedia.org/#/quiz/music-craft-20261013",
+  "viewport": "390x844 mobile touch",
+  "expected_build": "quiz-2026.10.13-music-craft-f79555e",
+  "source_commit": "f79555e0659f0c20b86064b446ac582de323b2e",
+  "correct_asset_probe": ".run/music_craft_public_browser_20261013/public-assets-snapshot.txt (all three status 200)",
+  "prior_observed_flow": "A prior public SDK run reached all four answer interactions, four KnowMore opens and results 4/4; its final own attempt ID was not captured.",
+  "repair_run": {"sdk_pid": 28296, "flow_exit_code": 1, "failure": "public URL rendered Catalog after two navigations; answer button Панораму was absent"},
+  "screenshots": {
+    "article_2_current": {"path": "public-browser/article-2-sources-mobile390.jpeg", "sha256": "bb6b9b6c61c149e5a32eeea15678b9666869c1775e6c23cd5c5bc81c809eea09", "visible_footer": false, "note": "failed rerun overwrote this file with an answer dialog"},
+    "results_prior": {"path": "public-browser/results-mobile390.jpeg", "prior_observed": true}
+  },
+  "lifecycle": {
+    "alive_tree": ".run/music_craft_public_browser_20261013/process-tree-alive.json",
+    "quiescence": ".run/music_craft_public_browser_20261013/process-quiescence.json",
+    "all_owned_processes_gone": true,
+    "stop_ack": false,
+    "stop_ack_reason": "SDK exited code 1 before STOP request; stopped.json was absent",
+    "sdk_exit": ".run/music_craft_public_browser_20261013/sdk-exit.json"
+  },
+  "attempt_ids": [],
+  "feedback": "No feedback form interaction or report submission was performed.",
+  "limitations": [
+    "No claim of four visible public source footers or server attempt-row verification is made from this repair run.",
+    "agent-browser startup previously hung; official isolated SDK fallback was used.",
+    "No Android or production mutation was performed."
+  ]
+}

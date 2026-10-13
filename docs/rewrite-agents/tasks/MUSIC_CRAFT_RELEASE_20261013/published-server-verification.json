@@ -1,0 +1,36 @@
+{
+  "actual_ssh_exit": 0,
+  "image": "docker.io/library/quiz-master@sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7",
+  "ready_replicas": 1,
+  "available_replicas": 1,
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "pvc_phase": "Bound",
+  "helm": {
+    "revision": 50,
+    "status": "deployed"
+  },
+  "node_ready_no_pressure": true,
+  "disk_available_bytes": 7690280960,
+  "disk_used_percent": "93%",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "conditional_requests": {
+    "version.json": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "687c86a3c8b07944bae957c034b5e2a6f56811fe1058d87fa0e8a0ba95efa6d2"
+    },
+    "main.dart.js": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "fe9b2c66ed9c7b01ad5325616ff6a4fd8402c653b9fe97705b450a96ccaf8380"
+    },
+    "assets/assets/study/question-articles.json": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "552db05d3527b7d6ae3e4bae53a7c8ca60af006ee5d0425e0c2715f0befd7753"
+    }
+  },
+  "limits": [
+    "No all-bank facts, physical Android or real feedback closure"
+  ]
+}

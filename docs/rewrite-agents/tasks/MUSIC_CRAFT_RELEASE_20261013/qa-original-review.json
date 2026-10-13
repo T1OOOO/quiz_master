@@ -1,0 +1,85 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-ef1a03eb56a047348f6a720e6c4c5887": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+          "task_id": "task-ef1a03eb56a047348f6a720e6c4c5887",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only verification of original QA task (compiled mobile browser + fixture grading). Verified: frozen source f79555e0...323b2e9 exists in git (git cat-file confirms real commit). Compiled QA JS sha256 6508e72f...513acad matches actual .run/music_craft_browser_20261013/qa-web/main.dart.js on disk. All 26 screenshot/snapshot artifact hashes in browser-proof.json match actual files byte-for-byte. SQLite fixture DB (local-browser-music-craft.sqlite, hash-verified) independently queried: two finished attempts (a-0f78f68f.., a-c4425fe9..) both server_score=4 with 4 answer rows each, feedback_reports=0 — matches claimed 4/4 score and no feedback POSTs. Results screenshot shows 'Счёт: 4' confirming visual/DB agreement. Limitations honestly disclosed and retained, not erased: original first-attempt static-asset 404s are preserved in server.stderr.log (26 occurrences), and the task correctly deferred clean SDK/server exit-code confirmation and the article-2 footer gap to the bounded follow-up repair task rather than claiming unearned success. No fabricated evidence found."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Four actual compiled mobile questions and four exact article/source bindings exercised",
+          "Authoritative fixture score4 with four answers and no feedback submission",
+          "Exact compiled asset hashes and actual lifecycle/ownprocess cleanup evidence; screenshots for independent Rootvisual review"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\music_craft_browser_20261013",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_INTEGRATION_20261013\\local-browser"
+        ],
+        "assignee": "session-8da9adb6e88c408eb24950bcb1e2a99e",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Use fresh isolated browser and disposable Go API/SQLite fixture for music-craft-20261013, four questions/four articles. Frozen QA web is .run/music_craft_release_20261013/qa-web, mainSHA6508e72fb563697af182654e7b5eb39cc6bf6e120247cbfffbd2b901d513acad; assets match committed sourcef79555e. Own only music_craft_browser scratch/local-browser evidence. Prefer agent-browser skill; if unavailable use prior official isolated ChromeDevtools MCP SDK pattern with fresh files/session, not stale readiness markers. Four actual shuffled answers, all4 KnowMore bodies/sourcefooters/close/pause, results4/4 plus actual fixture SQLite verification, no reports POST. Viewport390x844 touch, capture screenshots for Rootvisualreview. Reuse unchanged QA API binary only after exacthash check4ee698107118a45c5da45bf87e1faa687540dc282dd0059341d9c402a6aedb4a. No production/Git/app/source changes. Capture own process tree while alive; close only own processes and report actually observed lifecycle exitcodes/ports, never guess server/SDK exit0. Submit real evidence and limitations; no publication or Android claim.",
+        "created_at": 1791922316.8015277,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ef1a03eb56a047348f6a720e6c4c5887",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            ".run/music_craft_browser_20261013/**",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/local-browser/**"
+          ],
+          "evidence": [
+            "Frozen main.dart.js SHA256 6508E72FB563697AF182654E7B5EB39CC6BF6E120247CBFFFBD2B901D513ACAD",
+            "Reused qa-api.exe SHA256 4EE698107118A45C5DA45BF87E1FAA687540DC282DD0059341D9C402A6AEDB4A",
+            "Fresh mobile390x844 touch flow used all four exact answers, opened 4 articles, scrolled to 2 source controls each, paused/resumed after close x4, and finished 4/4",
+            "Finished SQLite attempt has server_score=4 and four answer rows; feedback_reports has 0 rows; two unfinished retries retained",
+            "Initial fixture 404 setup failure is preserved in server.stderr.log; after fixture asset repair, fresh rerun static requests returned 200; no /v1/reports POST",
+            "Screenshots, trace, process-tree snapshot, and cleanup evidence are in owned paths; ports have no LISTENING rows after cleanup"
+          ],
+          "remaining_risks": [
+            "SDK/API exit codes are unknown because controlled STOP/stop-marker made processes disappear before exit status was observable; no exit0 guessed",
+            "No physical Android, production publication, or acceptance claim"
+          ],
+          "sha256": {
+            "lifecycle": "C72114AB164D61AD53AB97C28ED032F99B5F54D2AA7614B547CD292FB37E9B06",
+            "sqlite": "72F066B8B37441F91F293B51E488C69136BE85A45C0FF038DE5EB26DE18166FC",
+            "trace": "87479109950F84458156E8CDE3A2C233F0C237BBAEF0BAA50AE32666F12"
+          },
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-ef1a03eb56a047348f6a720e6c4c5887",
+        "run_id": "run-972d9537d1f241678bfb62cda6cd4540",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad compiled mobile browser and real fixture grading checks",
+        "version": 4,
+        "reviewer": "session-b4a229bb768242c0b543a27ecc1c6daf",
+        "review_note": "Independent read-only verification of original QA task (compiled mobile browser + fixture grading). Verified: frozen source f79555e0...323b2e9 exists in git (git cat-file confirms real commit). Compiled QA JS sha256 6508e72f...513acad matches actual .run/music_craft_browser_20261013/qa-web/main.dart.js on disk. All 26 screenshot/snapshot artifact hashes in browser-proof.json match actual files byte-for-byte. SQLite fixture DB (local-browser-music-craft.sqlite, hash-verified) independently queried: two finished attempts (a-0f78f68f.., a-c4425fe9..) both server_score=4 with 4 answer rows each, feedback_reports=0 — matches claimed 4/4 score and no feedback POSTs. Results screenshot shows 'Счёт: 4' confirming visual/DB agreement. Limitations honestly disclosed and retained, not erased: original first-attempt static-asset 404s are preserved in server.stderr.log (26 occurrences), and the task correctly deferred clean SDK/server exit-code confirmation and the article-2 footer gap to the bounded follow-up repair task rather than claiming unearned success. No fabricated evidence found."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED` with the independent review notes attached. Both submissions' own listed evidence lined up with what I independently re-verified on disk (git commit, file hashes, SQLite query, visual screenshot inspection, exit codes, netstat) — nothing was fabricated or contradicted.\n\nSummary:\n- **task-ef1a03eb… (original QA task): ACCEPT.** Real fixture score 4/4 confirmed via independent SQLite query; all hashes verified; original 404 setup failure honestly preserved, not erased.\n- **task-584cb40b… (repair task): ACCEPT.** Repair genuinely fixed the article-2 footer gap (visually confirmed) and the unobserved-exit gap (exit_code 0 for both SDK and server, STOP ack file present, ports confirmed free via netstat).\n\nThis review covered QA/preparation readiness only — it doesn't certify remote rehearsal, image/Helm cutover, or public UI release, per the scope given.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-ef1a03eb56a047348f6a720e6c4c5887",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "2259b500b9f84fe4a855b73e17c4383834a68efb1e74eb365bb7984220e34b56",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

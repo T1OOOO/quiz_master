@@ -1,0 +1,9 @@
+{
+  "command": ["open", "https://quiz.kotopedia.org/#/quiz/music-craft-20261013"],
+  "runner": ".run/music_craft_root_public_20261014/step.py",
+  "actual_wrapper_exit": 1,
+  "reason": "subprocess.TimeoutExpired after 40 seconds; captured pipe did not finish until owned browser closed",
+  "browser_navigation_result": "Subsequent real page snapshots and answer/article controls were available; no successful open exit is claimed",
+  "final_cleanup": "second-close.json actual CLI exit0 followed by quiescence.json inactive named session",
+  "scope": "Second pass recovered Q002 visible footer; first pass already produced finished own score4 attempt"
+}

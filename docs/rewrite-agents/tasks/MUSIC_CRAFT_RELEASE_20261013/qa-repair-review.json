@@ -1,0 +1,91 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-584cb40b936341c6a4e5a3700c2e6b6e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+          "task_id": "task-584cb40b936341c6a4e5a3700c2e6b6e",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only verification of repair task (Music Craft QA footer + observed lifecycle proof). Verified repair-sdk2-exit.json and repair-server2-exit.json both show exit_code 0 (clean, not the prior run's unknown/unobserved exits). sdk_repair/stopped.json confirms genuine own_client_shutdown_requested:true (real STOP ack, not a claim). repair-netstat-after.txt shows no LISTENING sockets on 18090/18093, only TIME_WAIT remnants, matching the claimed port-free/process-gone state. music-craft-trace-repair.json, repaired sqlite copy, repair-process-tree-alive.json and repair-netstat-after.txt all hash-match the values recorded in lifecycle-evidence.json and root-local-browser-verification.json. Visually inspected docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/local-browser/article-2-sources-mobile390.jpeg directly: it now shows the 'Источники и дальнейшее чтение' footer with two www.ableton.com source links, resolving the specific gap the original run left open (previously-missing footer visibility). All four articles report 2 source controls each, consistent across browser-proof.json, root-local-browser-verification.json and the lifecycle record. No unobserved exit was substituted for an observed one, and no evidence file was found to contradict the recorded claims. Scope respected: read-only verification only, no remote preparation, publication, source edits, or process/browser actions taken."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Article2 screenshot actually shows two source controls",
+          "Actual observable flow exit0, STOP acknowledgement and owned process/port cleanup",
+          "Exact compiled/source hashes and authoritative fixture4 answer rows score4; no feedback POST",
+          "No invented exit codes or production actions"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\music_craft_browser_20261013",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_INTEGRATION_20261013\\local-browser"
+        ],
+        "assignee": "session-8da9adb6e88c408eb24950bcb1e2a99e",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Bounded follow-up of task-ef1a03eb56a047348f6a720e6c4c5887. Own only existing .run/music_craft_browser_20261013 and MUSIC_CRAFT_INTEGRATION_20261013/local-browser. Capture visible article2 source footer, actual flow process exit and SDK STOP acknowledgment, fresh PID tree/quiescence, exact frozen hashes/source. Preserve old evidence. Use fresh isolated fixture if required; no production, source, Git or children. Unknown exits stay unknown. Provide genuine sufficient proof, submit with evidence, independent review remains separate.",
+        "created_at": 1791923209.8503103,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-584cb40b936341c6a4e5a3700c2e6b6e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            ".run/music_craft_browser_20261013/**",
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/local-browser/article-2-sources-mobile390.jpeg"
+          ],
+          "evidence": [
+            "Repair flow process exited observed code 0",
+            "Article 2 source-footer screenshot visibly shows heading and both www.ableton.com source controls",
+            "Machine evidence records source_controls_per_article [2,2,2,2] and total 8",
+            "SDK STOP acknowledgement exists at sdk_repair/stopped.json; wrapper observed SDK exit_code 0",
+            "Server wrapper observed exit_code 0; repair-netstat-after.txt has no LISTENING sockets on 18090 or 18093",
+            "repair-process-tree-alive.json captured owned API/server/SDK/official Chrome DevTools process tree while alive",
+            "Frozen compiled main/API hashes remain 6508e72fb563697af182654e7b5eb39cc6bf6e120247cbfffbd2b901d513acad and 4ee698107118a45c5da45bf87e1faa687540dc282dd0059341d9c402a6aedb4a; source commit f79555e0659f0c20b86064b446ac582de323b2e",
+            "No feedback POST or production calls; first-run evidence preserved"
+          ],
+          "remaining_risks": [
+            "No physical Android run",
+            "No production publication or acceptance claim",
+            "Original first-run lifecycle fields remain preserved as unknown; follow-up wrapper provides separate observed exit 0 evidence"
+          ],
+          "sha256": {
+            "lifecycle_evidence": "0e41353a64bd4c81f19ca10c78f2e9097c967af45c76d80c510a1f9b5974eaff",
+            "netstat": "18880d1e40759abec9db88296296984e76befee2307425363eef02aac5cf976c",
+            "process_tree": "b884b23213e4773cb67c553187035e047d9418c6b29d72ba2f6ecddc942e0ef1",
+            "repair_trace": "a5f6ceb60084a41e1670a2aaf77d5549b7d886890f326bda08049e000b6626a0",
+            "sqlite": "a5c4adf9f550ff2a7bdcbb6da7042da64dbc9550b0d4ace6d1c6caa61a4b627f"
+          },
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-584cb40b936341c6a4e5a3700c2e6b6e",
+        "run_id": "run-8849554036f44a39a6b527354102bb11",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad finish Music Craft QA footer and observed lifecycle proof",
+        "version": 4,
+        "reviewer": "session-b4a229bb768242c0b543a27ecc1c6daf",
+        "review_note": "Independent read-only verification of repair task (Music Craft QA footer + observed lifecycle proof). Verified repair-sdk2-exit.json and repair-server2-exit.json both show exit_code 0 (clean, not the prior run's unknown/unobserved exits). sdk_repair/stopped.json confirms genuine own_client_shutdown_requested:true (real STOP ack, not a claim). repair-netstat-after.txt shows no LISTENING sockets on 18090/18093, only TIME_WAIT remnants, matching the claimed port-free/process-gone state. music-craft-trace-repair.json, repaired sqlite copy, repair-process-tree-alive.json and repair-netstat-after.txt all hash-match the values recorded in lifecycle-evidence.json and root-local-browser-verification.json. Visually inspected docs/rewrite-agents/tasks/MUSIC_CRAFT_INTEGRATION_20261013/local-browser/article-2-sources-mobile390.jpeg directly: it now shows the 'Источники и дальнейшее чтение' footer with two www.ableton.com source links, resolving the specific gap the original run left open (previously-missing footer visibility). All four articles report 2 source controls each, consistent across browser-proof.json, root-local-browser-verification.json and the lifecycle record. No unobserved exit was substituted for an observed one, and no evidence file was found to contradict the recorded claims. Scope respected: read-only verification only, no remote preparation, publication, source edits, or process/browser actions taken."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED` with the independent review notes attached. Both submissions' own listed evidence lined up with what I independently re-verified on disk (git commit, file hashes, SQLite query, visual screenshot inspection, exit codes, netstat) — nothing was fabricated or contradicted.\n\nSummary:\n- **task-ef1a03eb… (original QA task): ACCEPT.** Real fixture score 4/4 confirmed via independent SQLite query; all hashes verified; original 404 setup failure honestly preserved, not erased.\n- **task-584cb40b… (repair task): ACCEPT.** Repair genuinely fixed the article-2 footer gap (visually confirmed) and the unobserved-exit gap (exit_code 0 for both SDK and server, STOP ack file present, ports confirmed free via netstat).\n\nThis review covered QA/preparation readiness only — it doesn't certify remote rehearsal, image/Helm cutover, or public UI release, per the scope given.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-584cb40b936341c6a4e5a3700c2e6b6e",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "2259b500b9f84fe4a855b73e17c4383834a68efb1e74eb365bb7984220e34b56",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

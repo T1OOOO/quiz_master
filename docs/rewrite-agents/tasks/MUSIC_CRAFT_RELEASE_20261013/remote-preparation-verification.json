@@ -1,0 +1,41 @@
+{
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite",
+  "backup_sha256": "165652e171180dc42e19322ee11f951a6ec1359578bfea839a4461aee99314ae",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      125,
+      125,
+      697,
+      258,
+      15245,
+      1426
+    ],
+    "post_migration_counts": [
+      125,
+      125,
+      697,
+      391,
+      15245,
+      1426
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 10,
+    "canonical_questions": 148,
+    "newyear_questions": 55,
+    "total_graded": 203,
+    "practice_finished": 11
+  },
+  "copied_db_rehearsal_sha256": "6a3dced26a7247828e7afce8f4dc1134abcc43eef973d6c7868f59a2ce84004a",
+  "copy_rehearsal_finished_trials": 11,
+  "copy_rehearsal_score_sum": 203,
+  "helm_dryrun_sha256": "dee4db14a3d574c59aa8cfef8ac4d3a9cafcf2fb3020f3b692ecc5eab8fca71a",
+  "durable_archive_sha256": "14a5d5badcbcb6f927eae44bb6a1c266353294a32843b84ec3d9359dfa503cf6",
+  "disk_free_bytes": 7749390336,
+  "checked_utc": "2026-10-13T20:44:31.275381+00:00"
+}

@@ -1,0 +1,81 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-45459414bf374ec5a76b10557e8f2616": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-45459414bf374ec5a76b10557e8f2616",
+          "verdict": "rework",
+          "note": "Verified public-browser/lifecycle-evidence.json and article-2-sources-mobile390.jpeg. Confirmed defects: attempt_ids is an empty array (no own attempt ID captured), lifecycle.stop_ack is false with stop_ack_reason noting the SDK exited before STOP (no clean SDK shutdown acknowledgement), and the claimed source-footer screenshot article-2-sources-mobile390.jpeg actually shows an answer-feedback dialog (—\"Неверно\"/Incorrect—) from a failed repair run, not a source footer — file's own note confirms \"failed rerun overwrote this file with an answer dialog\". repair_run shows flow_exit_code 1 with the answer button missing after navigation. These confirm the task's own stated limitations (no four visible public source footers, no server attempt-row verification claimed). Root's replacement (task-13ee1a2251044cce8be5ae388cd81fbf, accepted) supersedes this only for release-proof purposes and does not retroactively validate this task's evidence. Recording rework."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Exactactualpublicnewbuild/main/catalog/Reader pins andfreshisolated390touchUI",
+          "Fouranswerscorrect,fourKnowMore/sourcefooters2each,pause/resume,final4/4",
+          "OnlyownattemptIDreturned,no auth/rawfeedback/otherusers exported,zeroPOSTreports",
+          "Observedflow/lifecycle/ownedquiescence/screenshot evidence; noAndroid/allbankclaim"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\music_craft_public_browser_20261013",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\public-browser"
+        ],
+        "assignee": "session-8da9adb6e88c408eb24950bcb1e2a99e",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Fresh actual production390x844touch browser playthrough after Root confirms actual Music Craft publication. Own ONLY .run/music_craft_public_browser_20261013 and MUSIC_CRAFT_RELEASE/public-browser. Full EnglishPUBLIC_BROWSER_EN follows. Reuse stable SDK architecture only; new context/paths/flags/PIDs, nofixture/API/serverports. Actual4shuffledUIanswers/4matchingarticles/2sources each/score4; exactpublicversion/assetSHA, collect onlyownanonymousattemptID forRootread-onlyDBverification. No real feedbackPOST/closure, no otherparticipants/rawtokens/remoteprocess/Git/source changes. OnlyRootviewsDB. Observeactualflowexit/STOPack/ownPIDsgone. Noinventedexits. WaitforRootactualpublishconfirmation beforequizinteraction. Latergenuineindependentreviewneeded.",
+        "created_at": 1791924723.8688688,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-45459414bf374ec5a76b10557e8f2616",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "check": "Correct public asset probe",
+              "result": "PASS: /main.dart.js, /assets/assets/catalog.json, /assets/assets/study/question-articles.json all status 200; reference .run/music_craft_public_browser_20261013/public-assets-snapshot.txt"
+            },
+            {
+              "check": "Fresh repair SDK lifecycle",
+              "result": "CONCERN: PID 28296 captured alive in process-tree-alive.json; flow exit code 1 and sdk-exit pid matches; quiescence all captured PIDs gone; STOP ACK absent because SDK exited before STOP request"
+            },
+            {
+              "check": "Public UI repair",
+              "result": "BLOCKED: public URL rendered Catalog after two navigations, no Панораму button; current article2 image is dialog SHA bb6b9b6c61c149e5a32eeea15678b9666869c1775e6c23cd5c5bc81c809eea09, not footer evidence"
+            },
+            {
+              "check": "Attempt/report safety",
+              "result": "PASS: no feedback/report interaction; attempt ID list empty because none was captured; no production mutation or Android"
+            }
+          ],
+          "references": [
+            "docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/public-browser/lifecycle-evidence.json",
+            ".run/music_craft_public_browser_20261013/process-tree-alive.json",
+            ".run/music_craft_public_browser_20261013/process-quiescence.json",
+            ".run/music_craft_public_browser_20261013/sdk-exit.json"
+          ],
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-45459414bf374ec5a76b10557e8f2616",
+        "run_id": "run-a215012858444835856f65b4bb189ef1",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad fresh published Music Craft mobile playthrough",
+        "version": 4,
+        "reviewer": "session-b88647189b9f431bba1676c85b8673a2",
+        "review_note": "Verified public-browser/lifecycle-evidence.json and article-2-sources-mobile390.jpeg. Confirmed defects: attempt_ids is an empty array (no own attempt ID captured), lifecycle.stop_ack is false with stop_ack_reason noting the SDK exited before STOP (no clean SDK shutdown acknowledgement), and the claimed source-footer screenshot article-2-sources-mobile390.jpeg actually shows an answer-feedback dialog (—\"Неверно\"/Incorrect—) from a failed repair run, not a source footer — file's own note confirms \"failed rerun overwrote this file with an answer dialog\". repair_run shows flow_exit_code 1 with the answer button missing after navigation. These confirm the task's own stated limitations (no four visible public source footers, no server attempt-row verification claimed). Root's replacement (task-13ee1a2251044cce8be5ae388cd81fbf, accepted) supersedes this only for release-proof purposes and does not retroactively validate this task's evidence. Recording rework."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are recorded in host_hub.\n\n**Task 1 (task-13ee1a2251044cce8be5ae388cd81fbf) — ACCEPT**\nRoot's replacement proof checks out: all five screenshot hashes in `proof.json` match the actual files exactly, and visual inspection confirms four genuine Flutter article source footers (Q1/Q2/Q4 ableton.com, Q3 harmanpro.com/shure) plus a results screen showing score 4 with four rows. The own-attempt record (finished, score 4, 4 rows) is consistent, close events show clean exit 0, and all disclosed scope limits (no touch certification, Q002 required a second wheel pass, one wrapper timeout) match the evidence honestly.\n\n**Task 2 (task-45459414bf374ec5a76b10557e8f2616) — REWORK**\nConfirmed as defective: `attempt_ids` is empty, `stop_ack` is false (SDK exited before STOP), and the supposed `article-2-sources-mobile390.jpeg` source-footer screenshot is actually an \"Неверно\" answer-feedback dialog from a failed repair run — the file's own metadata admits this. Root's accepted replacement supersedes it only for release-proof purposes, not retroactively.\n\nNo source, deployment, or feedback-queue changes were made; only the two review verdicts were submitted to host_hub.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0ba9fdde2b3d65acf5843425430aac379d21d215a47f6f4702f22a3b83e1d1ba",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

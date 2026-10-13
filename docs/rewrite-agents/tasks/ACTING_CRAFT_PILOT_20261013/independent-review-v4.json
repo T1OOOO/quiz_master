@@ -1,0 +1,78 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-db6d05250b5946a3971c2db62c13df5d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Narrow repair recheck of v4 against immutable v3 (same resumed conversation; not re-litigating already-verified Q1/Q2/Q3/Q5-8 facts). Hashes match exactly: candidate 69f73ac2..., editorial 8642add1.... Diffed v3 vs v4 JSON: only candidate Q4 and editorial Q4+Q6 changed, everything else byte-identical to the already-accepted v3 content.\n\nQ4 title fix verified: stem and article now read «The Mother» instead of the invented «Моей матери»; this matches the film's real original title. Re-fetched both Q4 Netflix Tudum sources live: source 1's og:title/hero heading is exactly \"Jennifer Lopez’s Dance Moves Helped Her Train as an Assassin for ‘The Mother’\" (matches editorial's cited title verbatim); source 2's <title>/<h1> tag is exactly \"Who Is Lucy Paez? Watch Her Audition to Play Zoe in 'The Mother'\" (also matches verbatim — that page additionally has a different og:title/hero headline, but the cited string is a real, present title field on the page, not fabricated). Underlying Caro/Lopez choreography quote and key d) were already verified in the prior pass and are unchanged.\n\nQ6 word-count fix verified: article now 182 words (recount), up from ~149, by adding one paragraph naming Bobby Moynihan and Jon Hamm as fellow cast members alongside Piper Curda. Re-fetched movies.disney.com/hoppers live: both names are present on the real page alongside Curda, Kathy Najimy and Dave Franco — claim is accurate, not invented.\n\nFull-set recheck: 8 IDs, 4 options each, keys a,b,c,d,a,b,c,d (2 each), 2 links per article, all 8 articles now 150–230 words (156–182 range). No remaining factual, sourcing, or structural defects found. Both items flagged in the prior REWORK are resolved; accepting this 8-item draft (review scope only, not runtime/publication)."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Snapshot original v1 unchanged, only owned draft revised",
+          "First4 film/performance learningquestions with credible parallel distractors andinteresting original articles",
+          "Moana answer samegenderplausible alternatives; actual releasedvoicecreditduplicates checked",
+          "8balanced blind questions,8source-backedarticles2primarylinks; fullhash/evidence submit"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_PILOT_20261013"
+        ],
+        "assignee": "session-ac4b6fba63ce48488785a51e078d7724",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root inspected blind candidate; first4 are MetaHuman software workflow rather than engaging film/actor questions; Q001 has absurd coveringface/leavingframe distractors, Q002 lighting alternatives tooobvious, Q003 repeatsPerformancein stem/correctassetname. Q007 has one female answer among3men forfemalecharacter, stronggendergiveaway. Preserve previous submitted candidate/editorial/notes as v1-suffixed immutable snapshots in ownedfolder, then replace1-4 with variedfilm/actor/performance questions accessible withoutengine UI expertise and repairQ007 allsamegender plausiblevoiceactors. Reviewduplicates actualStarWars/Disney existingbanks forQ005-008. Retainonlysupportedoriginallearningobjectives, meaningful150-230wordarticles2primarylinks with realdescriptivepagetitles. Morevariety/inference, nojokedistractors/noidentifiernamecue. All8positions2each. OwnedonlyACTING_CRAFT_PILOT; fullTASK_ENstillapplies. Rootinspectionispreflight, actualdifferentproviderfactreviewstillneededbeforeacceptance. Noimports/Git/app/browser/server/children.",
+        "created_at": 1791924221.332565,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/candidate.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/editorial.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/candidate-v3.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/editorial-v3.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/coverage-notes-v3.md"
+          ],
+          "evidence": [
+            "Immutable v3 snapshots: candidate-v3 0857DF74F1F84FD7BFBD0D8C93C9A5772200F09B975A1D6B393FB37F62E586A9; editorial-v3 3D4796D93506CE08CDDB2ACE0115E7BB2B4D6EB1466DFB65003267FB5C6A0ACD; notes-v3 F68838EA0C79836515571AC4A9417120DA0AF22B3D6D64CD2FD83F220AC12C8D.",
+            "Q004 uses The Mother, directly verified on both opened Netflix primary URLs. Source metadata now preserves full page titles.",
+            "Structural check PASS: 8 items, four options each, two distinct URLs/item, articles 158–185 words, key distribution a=2 b=2 c=2 d=2. Search found no obsolete Моей матери text.",
+            "Current SHA-256: candidate 69F73AC2E685C1C3068E1F3FAD85196C0F17B56FCDE6DF93CD3265CF020FF554; editorial 8642ADD1D5868C93F69504BE9915DAE21BB8C4266DA23194C8078CB3220479E3; notes F68838EA0C79836515571AC4A9417120DA0AF22B3D6D64CD2FD83F220AC12C8D."
+          ],
+          "review_required": true,
+          "status": "rework3_completed_pending_independent_review",
+          "summary": "v3 snapshot retained. Corrected Q004 to the directly verified original English title The Mother and expanded Q006 with official cast-page context."
+        },
+        "review_note": "Narrow repair recheck of v4 against immutable v3 (same resumed conversation; not re-litigating already-verified Q1/Q2/Q3/Q5-8 facts). Hashes match exactly: candidate 69f73ac2..., editorial 8642add1.... Diffed v3 vs v4 JSON: only candidate Q4 and editorial Q4+Q6 changed, everything else byte-identical to the already-accepted v3 content.\n\nQ4 title fix verified: stem and article now read «The Mother» instead of the invented «Моей матери»; this matches the film's real original title. Re-fetched both Q4 Netflix Tudum sources live: source 1's og:title/hero heading is exactly \"Jennifer Lopez’s Dance Moves Helped Her Train as an Assassin for ‘The Mother’\" (matches editorial's cited title verbatim); source 2's <title>/<h1> tag is exactly \"Who Is Lucy Paez? Watch Her Audition to Play Zoe in 'The Mother'\" (also matches verbatim — that page additionally has a different og:title/hero headline, but the cited string is a real, present title field on the page, not fabricated). Underlying Caro/Lopez choreography quote and key d) were already verified in the prior pass and are unchanged.\n\nQ6 word-count fix verified: article now 182 words (recount), up from ~149, by adding one paragraph naming Bobby Moynihan and Jon Hamm as fellow cast members alongside Piper Curda. Re-fetched movies.disney.com/hoppers live: both names are present on the real page alongside Curda, Kathy Najimy and Dave Franco — claim is accurate, not invented.\n\nFull-set recheck: 8 IDs, 4 options each, keys a,b,c,d,a,b,c,d (2 each), 2 links per article, all 8 articles now 150–230 words (156–182 range). No remaining factual, sourcing, or structural defects found. Both items flagged in the prior REWORK are resolved; accepting this 8-item draft (review scope only, not runtime/publication).",
+        "reviewer": "session-db44abe3f17e40b1b1f91b43cf3d0674",
+        "root_task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "run_id": "run-92e034dce4cf45938983e9151e338b7a",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-3vw revise acting craft interest and giveaway defects before fact review",
+        "version": 10
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Verdict: ACCEPT (error_count=0)** — callback submitted, task state is now `ACCEPTED`.\n\nBoth prior defects are confirmed fixed in v4:\n- Q4's title is now the real original \"The Mother\" (verified against both Netflix Tudum sources' live `<title>`/`og:title` fields, which match verbatim).\n- Q6 is now 182 words (was ~149) with a new claim naming Bobby Moynihan and Jon Hamm as fellow cast — verified present on the live Disney Hoppers page alongside Curda.\n\nFull-set structural recheck (8 IDs, 4 options each, keys balanced 2/2/2/2, 2 links/article, 150–230 words throughout) passes, and nothing else regressed relative to the already-verified v3 content.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "a4b7c9128c2635b79b3adfea07f6fc6cdc65c5a483affea24b202a3d3f1b4fb4",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

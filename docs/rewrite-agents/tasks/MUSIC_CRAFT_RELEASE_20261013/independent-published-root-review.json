@@ -1,0 +1,61 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-13ee1a2251044cce8be5ae388cd81fbf": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-13ee1a2251044cce8be5ae388cd81fbf",
+          "verdict": "accept",
+          "note": "Verified root-public-browser/proof.json: all artifact hash claims checked against actual sha256 of q1-footer.png, q2-footer-wheel.png, q3-footer.png, q4-footer.png, result.png — all five match exactly. Visually inspected all five images: Q1-Q4 each show a distinct Flutter article bottom-sheet at 390x844 with a genuine \"Источники и дальнейшее чтение\" source footer (Q1/Q2/Q4 ableton.com, Q3 harmanpro/shure), result.png shows Счёт: 4 with four distinct answer rows matching claimed score. close.json/second-close.json show actual_exit 0 confirming clean browser shutdown. own-attempt-verification.json corroborates own_attempt_id a-35d2c153-192b-4d6e-9fc3-1311d962ef0e, status finished, server_score 4, answer_rows 4, read_only true — consistent with proof.json. Scope limits (no touch certification, Q002 footer recovery via second pass, one wrapper timeout, no all-bank audit, native task not superseded beyond release proof) are honestly disclosed and match the artifacts. Accepting as valid replacement public browser evidence for the release."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Actualfreshnamedpublicversion/source/compiledpinsandproperUIreal4/4flow",
+          "Fourvisiblesourcefooters2each/screenshots/ownattemptIDandSQLcorroboration",
+          "Noauthheaders/privatefeedbackexportorPOSTreports; actualownedbrowserclose evidence",
+          "ActualdifferentproviderreviewofRootrecoveryproof"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\music_craft_root_public_20261014",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSIC_CRAFT_RELEASE_20261013\\root-public-browser"
+        ],
+        "assignee": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Original nativepublicQA submittedwithconcerns: earlierreal4/4and4articleopens butfootersnotvisiblescreenshots, failedSDKrerun overwroteQ2frame/missingcontrolcatalog andSDKexit1/noSTOP/ownattemptID. Rootusespurpose-builtagent-browserfreshnamedisolatedheadlesssession, ownnewpaths only, reproducesproper390pxactualquiznavigation andscrollcontrols, fouranswers/articles/sourcefooters4/4 plusonlyownattemptIDsanitizedforauthoritativeSQL. Preservehelperfailedproofs; noAppsource/Git/feedbackPOSTchanges. Actual independentreviewafterRootproof.",
+        "created_at": 1791926118.046227,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-13ee1a2251044cce8be5ae388cd81fbf",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/root-public-browser/proof.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MUSIC_CRAFT_RELEASE_20261013/root-public-browser/own-attempt-verification.json"
+          ],
+          "summary": "Root recovered actual public Flutter UI run at390x844: real clicks, score4, exact own finished attempt/four answer rows via read-only SSH, all four source footers visually inspected (Q002 mouse-wheel follow-up), pause/resume and actual owned browser close/inactive. Honest touch0/timeout/native failure limitations retained. Actual26 real feedback unchanged. Different-provider review pending."
+        },
+        "root_task_id": "task-13ee1a2251044cce8be5ae388cd81fbf",
+        "run_id": "run-22ad7bbf48e9429ea42c0d6013065785",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-0ad Root recover exact published browser proof after failed helper rerun",
+        "version": 4,
+        "reviewer": "session-b88647189b9f431bba1676c85b8673a2",
+        "review_note": "Verified root-public-browser/proof.json: all artifact hash claims checked against actual sha256 of q1-footer.png, q2-footer-wheel.png, q3-footer.png, q4-footer.png, result.png — all five match exactly. Visually inspected all five images: Q1-Q4 each show a distinct Flutter article bottom-sheet at 390x844 with a genuine \"Источники и дальнейшее чтение\" source footer (Q1/Q2/Q4 ableton.com, Q3 harmanpro/shure), result.png shows Счёт: 4 with four distinct answer rows matching claimed score. close.json/second-close.json show actual_exit 0 confirming clean browser shutdown. own-attempt-verification.json corroborates own_attempt_id a-35d2c153-192b-4d6e-9fc3-1311d962ef0e, status finished, server_score 4, answer_rows 4, read_only true — consistent with proof.json. Scope limits (no touch certification, Q002 footer recovery via second pass, one wrapper timeout, no all-bank audit, native task not superseded beyond release proof) are honestly disclosed and match the artifacts. Accepting as valid replacement public browser evidence for the release."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are recorded in host_hub.\n\n**Task 1 (task-13ee1a2251044cce8be5ae388cd81fbf) — ACCEPT**\nRoot's replacement proof checks out: all five screenshot hashes in `proof.json` match the actual files exactly, and visual inspection confirms four genuine Flutter article source footers (Q1/Q2/Q4 ableton.com, Q3 harmanpro.com/shure) plus a results screen showing score 4 with four rows. The own-attempt record (finished, score 4, 4 rows) is consistent, close events show clean exit 0, and all disclosed scope limits (no touch certification, Q002 required a second wheel pass, one wrapper timeout) match the evidence honestly.\n\n**Task 2 (task-45459414bf374ec5a76b10557e8f2616) — REWORK**\nConfirmed as defective: `attempt_ids` is empty, `stop_ack` is false (SDK exited before STOP), and the supposed `article-2-sources-mobile390.jpeg` source-footer screenshot is actually an \"Неверно\" answer-feedback dialog from a failed repair run — the file's own metadata admits this. Root's accepted replacement supersedes it only for release-proof purposes, not retroactively.\n\nNo source, deployment, or feedback-queue changes were made; only the two review verdicts were submitted to host_hub.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0ba9fdde2b3d65acf5843425430aac379d21d215a47f6f4702f22a3b83e1d1ba",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

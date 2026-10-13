@@ -1,0 +1,34 @@
+{
+  "build_id": "quiz-2026.10.13-music-craft-f79555e",
+  "source_commit": "f79555e0659f0c20b86064b446ac582de323b2e9",
+  "package_sha256": "ae4768f4a73d94976066f24bc80dcc31636d449428660706a91154c84930f9f7",
+  "image": "sha256:b94a399359f87024f5b00a53c47852a3e8f90f1ba6f4bb861385e9c2655f17d7",
+  "values": "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z-values.yaml",
+  "remote_prepare_exit": 0,
+  "remote_log": "remote-prepare-log.txt",
+  "remote_log_sha256": "539c48cd34e3d2307ae51e23629b819ce2ab6cafcf6ceeb3f03a13c83f5c5086",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.13-music-craft-f79555e.tar",
+  "durable_archive_sha256": "14a5d5badcbcb6f927eae44bb6a1c266353294a32843b84ec3d9359dfa503cf6",
+  "backup_sha256": "165652e171180dc42e19322ee11f951a6ec1359578bfea839a4461aee99314ae",
+  "copied_db_rehearsal_sha256": "6a3dced26a7247828e7afce8f4dc1134abcc43eef973d6c7868f59a2ce84004a",
+  "df_sha256": "09e8e60949a5c24a6a79ba033d6dea6bf483cf8e35e4cd6161010c678833ac9b",
+  "helm_dryrun_sha256": "dee4db14a3d574c59aa8cfef8ac4d3a9cafcf2fb3020f3b692ecc5eab8fca71a",
+  "local_browser_evidence_sha256": "781c4742b216b6fb84f39e3ae3222e7f0aaf636e2f04df638a1770621851f7d1",
+  "publisher_controller_sha256": "4e9ae3b7630c5e1daa107446e3342953c9c4262579449fdc8636f215204687b5",
+  "prepare_controller_sha256": "35b9b6c1ea777f30ae5ea920f8718bcbae9dcb098143176b7aacd596c77be683",
+  "actual_copy_rehearsal": {
+    "canonical_packs": 10,
+    "canonical_questions": 148,
+    "newyear_questions": 55,
+    "total_graded": 203,
+    "practice_finished": 11,
+    "old_rows_preserved": true,
+    "feedback_lifecycle_copy_only": "PASS",
+    "old_api_rollback": "PASS"
+  },
+  "limits": [
+    "Only preparation executed; publication and public verification remain separate.",
+    "No all-bank factual/Android certification or real feedback closure."
+  ],
+  "publish_script_sha256": "80f2eb493bf507c47b16396b2d87760fda3f8d8ab5115f1e1b98fad9cd1d5f02"
+}

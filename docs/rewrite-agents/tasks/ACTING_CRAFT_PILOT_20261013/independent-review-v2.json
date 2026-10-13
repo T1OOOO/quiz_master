@@ -1,0 +1,70 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-db6d05250b5946a3971c2db62c13df5d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+          "verdict": "rework",
+          "error_count": 2,
+          "note": "Blind solve before opening key: Q1 I guessed Stan Winston (c), Q2=b, Q3=c, Q4=d, Q5=a, Q6=unsure (new film), Q7=c, Q8=d. Opened editorial.json after.\n\nQ1 BLOCKING DEFECT (confirmed against primary/secondary sources, not fixed from v1's root concern): editorial names option a) Rick Baker as sole correct key. English Wikipedia's production background for 'The Autobiography of Miss Jane Pittman' states the aging transformation (ages 23–110) used 'realistic special effects makeup by Stan Winston AND Rick Baker' — a joint credit. Stan Winston's own Wikipedia bio confirms he won an Emmy specifically 'for 1974's The Autobiography of Miss Jane Pittman.' Rick Baker's filmography independently lists him as 'makeup creator: Miss Tyson' on the same film. So option c) Stan Winston, offered as a wrong distractor, is also a documented, Emmy-recognized credit on this exact production — this reproduces precisely the 'uniquely attributable' ambiguity Root flagged pre-rework, just with the labels swapped. Additionally the cited oscars.org source (https://www.oscars.org/news/studio-rick-baker-master-makeup) returns 403 live and has ZERO Wayback Machine snapshots ever; the real Academy Rick Baker bio page (oscars.org/collection-highlights/rick-baker) does not mention Miss Jane Pittman at all — the citation looks fabricated/unverifiable, not an opened source. The stem's '41-year-old Cicely Tyson' is also an unqualified fact where (a) Wikipedia's own account says age 23 at start, and (b) Tyson's real birth year/age was famously disputed for decades — exactly the 'disputed ages' risk the brief asked to preserve, not state flatly. Recommend: drop or substantially rewrite Q1, or restate as a two-credit fact with a genuinely distinguishing distractor set, backed by a real, opened citation.\n\nSecondary concern (coverage/variety, not disclosed in coverage-notes.md): Q4 and Q5 both mine the identical single quote/paragraph on starwars.com about James Earl Jones and Vader's voice — verified accurate via direct fetch, but it's the same source and closely related knowledge point reused across 2 of 8 items. Q3 and Q7 both center on Moana (casting criteria vs. voice credit). Together 4 of 8 items cluster on just two character/franchise topics, undercutting the requested topical variety; coverage-notes.md does not disclose or justify this reuse.\n\nVerified accurate via opened primary sources, no other issues found: Q2 (BFI 'John and Gena' — exact quote on Cassavetes shutting production for rewrites/rehearsals matches), Q3 (Disney 'brave, inquisitive, and confident' + strong singing matches exactly), Q4/Q5 (starwars.com direct quote on strict intonation boundaries + Lucasfilm crediting Jones matches exactly), Q6 (movies.disney.com/hoppers confirms Piper Curda as Mabel and the named distractor actors appear on the same page), Q7/Q8 are well-established, uncontroversial credits (Cravalho/Beatriz).\n\nFile checked: docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/{TASK_EN.md,candidate.json,editorial.json,coverage-notes.md}."
+        }
+      },
+      "actual_response": {
+        "acceptance": [
+          "Snapshot original v1 unchanged, only owned draft revised",
+          "First4 film/performance learningquestions with credible parallel distractors andinteresting original articles",
+          "Moana answer samegenderplausible alternatives; actual releasedvoicecreditduplicates checked",
+          "8balanced blind questions,8source-backedarticles2primarylinks; fullhash/evidence submit"
+        ],
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTING_CRAFT_PILOT_20261013"
+        ],
+        "assignee": "session-ac4b6fba63ce48488785a51e078d7724",
+        "author": "session-aca466722e684fdfbe2d3f5e40fb5cfb",
+        "body": "Root inspected blind candidate; first4 are MetaHuman software workflow rather than engaging film/actor questions; Q001 has absurd coveringface/leavingframe distractors, Q002 lighting alternatives tooobvious, Q003 repeatsPerformancein stem/correctassetname. Q007 has one female answer among3men forfemalecharacter, stronggendergiveaway. Preserve previous submitted candidate/editorial/notes as v1-suffixed immutable snapshots in ownedfolder, then replace1-4 with variedfilm/actor/performance questions accessible withoutengine UI expertise and repairQ007 allsamegender plausiblevoiceactors. Reviewduplicates actualStarWars/Disney existingbanks forQ005-008. Retainonlysupportedoriginallearningobjectives, meaningful150-230wordarticles2primarylinks with realdescriptivepagetitles. Morevariety/inference, nojokedistractors/noidentifiernamecue. All8positions2each. OwnedonlyACTING_CRAFT_PILOT; fullTASK_ENstillapplies. Rootinspectionispreflight, actualdifferentproviderfactreviewstillneededbeforeacceptance. Noimports/Git/app/browser/server/children.",
+        "created_at": 1791924221.332565,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/candidate.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/editorial.json",
+            "docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/coverage-notes.md"
+          ],
+          "evidence": [
+            "Structural check PASS: 8 candidate + 8 editorial items; four options each; two distinct source URLs/item; articles 150–160 words; key distribution a=2 b=2 c=2 d=2.",
+            "Current SHA-256: candidate 8FAFAFE5B03E7F620E169E3C9CF0349AAEF8EF952D357DCEEABB0C8CA27DF072; editorial 6247DD5E808ED58FA92539725FCDDDE28B5F63A3283BF655EE3E8930A962D4FA; coverage notes E233174E80494DD91092E11DFB85767A712F5809EBA538B4D2AB069766958CF1.",
+            "Immutable v1 snapshot hashes: candidate CB62A06354451D9E5ACF254FA7E032E191A2300AECDC3085C51A3F9402074D35; editorial 64F523A8D80BA78CB9178E34C7C9BD1035DA0842418344F6FF81CBCF2070A43E; notes AB146E483C01594FD614450E6D97DD0F26C0BE40C400454FEBB51098A703AC76.",
+            "Opened sources: Academy pages, BFI features, Walt Disney Company Moana materials, Lucasfilm Vader materials; retained Disney/Pixar Hoppers and Disney Encanto evidence. Duplicate screening read released Star Wars and preparation banks; coverage-notes records the paths."
+          ],
+          "review_required": true,
+          "status": "completed_pending_independent_review",
+          "summary": "Revised Q001–004, repaired Q007 evidence, retained v1 snapshots, and checked duplicate overlap for Q005–008."
+        },
+        "root_task_id": "task-db6d05250b5946a3971c2db62c13df5d",
+        "run_id": "run-53af5ccac0b04e2896b6b46b9356e094",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-da46ad2bf3d846d493caaf3002114ff5",
+        "title": "quiz_master-3vw revise acting craft interest and giveaway defects before fact review",
+        "version": 4,
+        "reviewer": "session-ec59fb55bde64db18dbfc835e5714c59",
+        "review_note": "Blind solve before opening key: Q1 I guessed Stan Winston (c), Q2=b, Q3=c, Q4=d, Q5=a, Q6=unsure (new film), Q7=c, Q8=d. Opened editorial.json after.\n\nQ1 BLOCKING DEFECT (confirmed against primary/secondary sources, not fixed from v1's root concern): editorial names option a) Rick Baker as sole correct key. English Wikipedia's production background for 'The Autobiography of Miss Jane Pittman' states the aging transformation (ages 23–110) used 'realistic special effects makeup by Stan Winston AND Rick Baker' — a joint credit. Stan Winston's own Wikipedia bio confirms he won an Emmy specifically 'for 1974's The Autobiography of Miss Jane Pittman.' Rick Baker's filmography independently lists him as 'makeup creator: Miss Tyson' on the same film. So option c) Stan Winston, offered as a wrong distractor, is also a documented, Emmy-recognized credit on this exact production — this reproduces precisely the 'uniquely attributable' ambiguity Root flagged pre-rework, just with the labels swapped. Additionally the cited oscars.org source (https://www.oscars.org/news/studio-rick-baker-master-makeup) returns 403 live and has ZERO Wayback Machine snapshots ever; the real Academy Rick Baker bio page (oscars.org/collection-highlights/rick-baker) does not mention Miss Jane Pittman at all — the citation looks fabricated/unverifiable, not an opened source. The stem's '41-year-old Cicely Tyson' is also an unqualified fact where (a) Wikipedia's own account says age 23 at start, and (b) Tyson's real birth year/age was famously disputed for decades — exactly the 'disputed ages' risk the brief asked to preserve, not state flatly. Recommend: drop or substantially rewrite Q1, or restate as a two-credit fact with a genuinely distinguishing distractor set, backed by a real, opened citation.\n\nSecondary concern (coverage/variety, not disclosed in coverage-notes.md): Q4 and Q5 both mine the identical single quote/paragraph on starwars.com about James Earl Jones and Vader's voice — verified accurate via direct fetch, but it's the same source and closely related knowledge point reused across 2 of 8 items. Q3 and Q7 both center on Moana (casting criteria vs. voice credit). Together 4 of 8 items cluster on just two character/franchise topics, undercutting the requested topical variety; coverage-notes.md does not disclose or justify this reuse.\n\nVerified accurate via opened primary sources, no other issues found: Q2 (BFI 'John and Gena' — exact quote on Cassavetes shutting production for rewrites/rehearsals matches), Q3 (Disney 'brave, inquisitive, and confident' + strong singing matches exactly), Q4/Q5 (starwars.com direct quote on strict intonation boundaries + Lucasfilm crediting Jones matches exactly), Q6 (movies.disney.com/hoppers confirms Piper Curda as Mabel and the named distractor actors appear on the same page), Q7/Q8 are well-established, uncontroversial credits (Cravalho/Beatriz).\n\nFile checked: docs/rewrite-agents/tasks/ACTING_CRAFT_PILOT_20261013/{TASK_EN.md,candidate.json,editorial.json,coverage-notes.md}."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The callback submitted successfully — task state is now `REWORK`.\n\n**Verdict: REWORK (error_count=2)**\n\nKey finding: Q1's correct key (Rick Baker) is not uniquely attributable — Wikipedia's production background for *The Autobiography of Miss Jane Pittman* credits the aging makeup to **both** Stan Winston and Rick Baker jointly, and Stan Winston's own bio confirms he won an Emmy specifically for that film. So option \"c\" (Stan Winston), listed as a wrong distractor, is actually a documented correct answer too — this reproduces exactly the ambiguity Root flagged before rework. The cited oscars.org source also appears unverifiable (403 live, zero Wayback snapshots), and the stem's \"41-year-old Cicely Tyson\" states a disputed age as flat fact.\n\nSecondary, undisclosed concern: Q3/Q7 both center on Moana and Q4/Q5 both mine the same single starwars.com quote about Vader's voice — 4 of 8 items cluster on just two topics.\n\nThe other 6 items (Q2, Q3, Q4, Q5, Q6, Q7/Q8) checked out against directly opened primary sources (BFI, Disney, Lucasfilm, Pixar's Hoppers page). Full reasoning and citations are in the callback note sent to Root.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "646b4643cfed04861e00460495ddebe56288b0919310402bf2d2e6c2f1f63263",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
