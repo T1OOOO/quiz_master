@@ -1,0 +1,23 @@
+{
+  "actual_full_hashes": {
+    "public-verification.json": "90a8f478020fbf644ad2ead9ebc0ca4365670c6b49d7040bd322ea558f997538",
+    "published-server-verification.json": "a67b684a6a07176817e1f66f2563e4eec9a47bf39f3cf785ef6b185fdceb6640",
+    "published-root-browser-verification.json": "08e4154263dae41983d05d35e664ec65cf71f69e5b62f4b54f50dd49be838913"
+  },
+  "actual_independent_hash_command_results": [
+    {
+      "command": "cd \"C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014\" && sha256sum public-verification.json published-server-verification.json published-root-browser-verification.json",
+      "actual_result": "90a8f478020fbf644ad2ead9ebc0ca4365670c6b49d7040bd322ea558f997538 *public-verification.json\na67b684a6a07176817e1f66f2563e4eec9a47bf39f3cf785ef6b185fdceb6640 *published-server-verification.json\n08e4154263dae41983d05d35e664ec65cf71f69e5b62f4b54f50dd49be838913 *published-root-browser-verification.json"
+    },
+    {
+      "command": "cd \"C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014\" && sha256sum public-verification.json",
+      "actual_result": "90a8f478020fbf644ad2ead9ebc0ca4365670c6b49d7040bd322ea558f997538 *public-verification.json"
+    },
+    {
+      "command": "cd \"C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/root-public-browser\" && sha256sum song-q1-question.png song-q1-footer.png song-q2-question.png song-q2-footer.png song-q3-question.png song-q3-footer.png song-q4-question.png song-q4-footer.png song-result.png song-flow-summary.json song-result.json song-close.json inactive.json errors.json activesession.json song-own-attempt-paths.json song-metrics.json",
+      "actual_result": "fc244d72f9ceb90ae98305fd0aad988ed17b9dfb8291c6ccf0e026fbd3112e81 *song-q1-question.png\n20e971b848e9024b34b25fde571485f28f9ea751c859631f89825c202c7df5d6 *song-q1-footer.png\n72a183c51366212b7ef4617d68c07a6e7ba4fe0a412277780ff28511bcf26fce *song-q2-question.png\n9352aeda16d0676e6f384a3f023a31740297b161c02b4d746a7d7a90b42f63aa *song-q2-footer.png\n3cae6ef4a8dca49b754a74a02b0f5a41416458cd4cf809f7d5123e8820bfc3c1 *song-q3-question.png\ne0ec9a6a8409c547a07a1f1e904d67ac6d5df40d9c5b0cd6382f84c30810e6bb *song-q3-footer.png\nb017dc2f84b3a6572614af69b4dedbe9dfba7428f6ef50cdf114eecb4aad23ce *song-q4-question.png\n0c820256cc0fb6658390bd75e1d7d6daafb1e0ae5fc62e475ec11bba0c9e5ff4 *song-q4-footer.png\n87b6a0abbbf0b805bdd2bec48c5443dbcc92a88d0029d4ce59e59fdde5bdbad6 *song-result.png\ne262b88062ef373d521b4c5e1e2de2b17592d8cc304f522aafcc385726273f87 *song-flow-summary.json\n71d44c86121bdb77e459855159357f735fae01471f5446f57ae2161248fddf05 *song-result.json\n2c85e6c0a9a2ed4873c57d088b88f96c847ad758cebbd6eb327bdfe3efe04621 *song-close.json\nbaa919f4d6f700be37cd8251ffeb5c678587f504ddd277d510f53bb1876281c2 *inactive.json\n26bbdf344299f19e48dd8009ee6fe084d89e190d168e2dc7df75e48214ceef62 *errors.json\nf523fcb4975482e0608ade65852c09d0f76aa0477f5e7f2f79f045c3936e4765 *activesession.json\n99e6094c51fecf0a97eb04954dd305586de478d36fcc5835edc7bed0533dc885 *song-own-attempt-paths.json\nad921995d739b82e357344a7f6de42edeceb822b6d0a547135b67d08791bfcc7 *song-metrics.json"
+    }
+  ],
+  "trace_sha256": "7472f0b8bee5f616e384634cad4425953c26dfa4f5326d0a2176c562e0f1294e",
+  "scope": "Actual successful independent sha256sum outputs bind all3 files. Reviewer prose omitted full Rootbrowser digest; no digest is invented or expanded from that prose."
+}

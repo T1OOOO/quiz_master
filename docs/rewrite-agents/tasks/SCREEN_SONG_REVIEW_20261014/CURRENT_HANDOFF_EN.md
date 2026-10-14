@@ -1,5 +1,7 @@
 Screen Song source milestone — 2026-10-14
 
+LATEST STATUS: Screen Song is published as Helm52 and independently reviewed. `../SCREEN_SONG_RELEASE_20261014/PUBLISHED_HANDOFF_EN.md` supersedes historical pending/Actor51 status below. Four new questions, four mini articles and eight primary links are live; actual public browser/server score4/4. Existing26feedback reports and broader backlog remain open. LOTR wording proposals remain held research.
+
 Frozen runtime source: 6866608bd7c20ceff2b454970b315eaee86329a9, pushed on codex/quiz-v2 with [skip ci]. Local exports contain135packs,4064questions,264Reader articles. All prior134catalog rows and260Reader objects are unchanged. Four new questions each have an explanation, a mini article, two primary source links, registered tags and revision bindings.
 
 Actual Gemini candidate-only review found two answer cues: a French term translation and a singer profession cue. V3 repaired these. Genuine Claude source/editorial approval, Go import/validate/build/diff, Python builder write/check and5tests, Flutter Reader6tests passed. The initial unsorted-tag import failure remains recorded.

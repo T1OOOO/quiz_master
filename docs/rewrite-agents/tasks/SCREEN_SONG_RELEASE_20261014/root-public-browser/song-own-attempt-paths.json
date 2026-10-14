@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-14T03:08:09.023974+00:00",
+  "command": [
+    "eval",
+    "performance.getEntriesByType(\"resource\").map(e=>new URL(e.name).pathname).filter(p=>p.includes(\"/v1/attempts/\"))"
+  ],
+  "actual_exit": 0,
+  "stdout": "[\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/answers\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/feedback/screen-song-pilot-001\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/answers\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/feedback/screen-song-pilot-002\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/answers\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/feedback/screen-song-pilot-003\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/answers\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/feedback/screen-song-pilot-004\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/finish\",\n  \"/v1/attempts/a-893043c5-e71b-4149-8ab3-d51a29f5898e/reveals\"\n]\n",
+  "stderr": ""
+}

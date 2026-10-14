@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-4c2bb3916d194b37a2735eab2fc32510": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4c2bb3916d194b37a2735eab2fc32510",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only artifact review (Claude Sonnet 5, different provider from assignee). Verified by direct inspection, not by trusting the narrative in the task body: (1) sha256sum on the three top-level verification files matches the self-reported digests inside published-root-browser-verification.json exactly: public-verification.json=90a8f478020fbf644ad2ead9ebc0ca4365670c6b49d7040bd322ea558f997538, published-server-verification.json=a67b684a6a07176817e1f66f2563e4eec9a47bf39f3cf785ef6b185fdceb6640 (both cross-referenced as public_artifact_verification_sha256/public_server_verification_sha256 fields). (2) All 17 spot-checked root-public-browser/* artifact_sha256 entries (4x question.png, 4x footer.png, result.png, song-flow-summary/result/close/inactive/errors/activesession/song-own-attempt-paths/song-metrics.json) match my own sha256sum of the actual files byte-for-byte. (3) Visually opened all 4 song-qN-question.png and song-qN-footer.png plus song-result.png myself (not inferred from captions): Q1-Q4 stems/options and both source-footer citations per question (Netflix articles with real excerpt text) render correctly in the UI, and song-result.png shows Счёт: 4 with all 4 chosen answers and footnotes listed - matching the claimed actual_public_ui_scores=[4] and own-attempt server_score=4/saved_answers=4. (4) viewport.json/activesession.json/inactive.json content matches claimed 390x844 dpr1 touch0, PID 42028 active mid-flow then gone by close, zero console errors (errors.json stdout empty). (5) published-server-verification.json content (image digest, Helm revision 52, PVC bound, main.dart.js/catalog/question-articles sha256) is internally consistent with public-verification.json's version block and package-current.json's frozen metadata (commit 6866608, counts 135/4064/264). (6) publish-exit.json records actual_exit:0 for publish_prepared.py --publish; package-current.json (status PREPARED_NOT_EXECUTED) correctly documents the pre-publish packaging stage only and is not in conflict with the later publish-exit. No tampering or caption-only fabrication found in the files I opened. Limits/not independently done by me: did not re-run SSH/Helm/kubectl, did not relaunch a browser (used only the frozen JSON/PNG artifacts already on disk), did not recompute hashes for every one of the ~100 remaining root-public-browser files beyond the 17 I selected (q1-q4 flow + result + lifecycle files), did not independently inspect copied-DB rehearsal or feedback table contents beyond the aggregate reports_sha256/status_counts already in the file. This review covers only the already-submitted publication-verification task per instructions; I did not call hub_task list."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Different-provider exact published3verification fileSHA acceptance with clear artifact-review scope; meaningful mismatches rework. Then pgy may close, broader work remains open.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_REVIEW_20261014"
+        ],
+        "assignee": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "author": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "body": "Actual publication0, Helm52 imagea97,135/4064/264,143livearticle bindings, Ready/Available/PVC/noPressure7.92GB. Actual public browser fourquestions/articles8sourcebuttons/UI4 andexactownSQL4/4, normalactiveclose0/inactive/noerrors.26OPENsamehash retained. Independent artifact/proof review only; no remote/browser mutation or false allbank certification. Known taskID no global list/pagination.",
+        "created_at": 1791947670.262503,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-4c2bb3916d194b37a2735eab2fc32510",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/public-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/published-server-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/published-root-browser-verification.json"
+          ],
+          "summary": "Actual publicUI4/ownSQL4savedanswers finished;143refs exactfullassets imagea97 Helm52 Ready1Available1PVCBoundnoPressure7.92GB. Public namedbrowser normalclose0/inactivePID42028gone,noerrors/nofeedbackPOST. Actual26OPENsamehash. Proofs require independent artifact-review beforepgyclose."
+        },
+        "root_task_id": "task-4c2bb3916d194b37a2735eab2fc32510",
+        "run_id": "run-4295a078d7fa4edf9c80eaad6223da61",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-daf7a160a06e4dd296b441c1bb3dd160",
+        "title": "Screen Song actual published HTTPS/API/browser independent verification",
+        "version": 4,
+        "reviewer": "session-e1cdc705c6b845828b7ff84c4ba63590",
+        "review_note": "Independent read-only artifact review (Claude Sonnet 5, different provider from assignee). Verified by direct inspection, not by trusting the narrative in the task body: (1) sha256sum on the three top-level verification files matches the self-reported digests inside published-root-browser-verification.json exactly: public-verification.json=90a8f478020fbf644ad2ead9ebc0ca4365670c6b49d7040bd322ea558f997538, published-server-verification.json=a67b684a6a07176817e1f66f2563e4eec9a47bf39f3cf785ef6b185fdceb6640 (both cross-referenced as public_artifact_verification_sha256/public_server_verification_sha256 fields). (2) All 17 spot-checked root-public-browser/* artifact_sha256 entries (4x question.png, 4x footer.png, result.png, song-flow-summary/result/close/inactive/errors/activesession/song-own-attempt-paths/song-metrics.json) match my own sha256sum of the actual files byte-for-byte. (3) Visually opened all 4 song-qN-question.png and song-qN-footer.png plus song-result.png myself (not inferred from captions): Q1-Q4 stems/options and both source-footer citations per question (Netflix articles with real excerpt text) render correctly in the UI, and song-result.png shows Счёт: 4 with all 4 chosen answers and footnotes listed - matching the claimed actual_public_ui_scores=[4] and own-attempt server_score=4/saved_answers=4. (4) viewport.json/activesession.json/inactive.json content matches claimed 390x844 dpr1 touch0, PID 42028 active mid-flow then gone by close, zero console errors (errors.json stdout empty). (5) published-server-verification.json content (image digest, Helm revision 52, PVC bound, main.dart.js/catalog/question-articles sha256) is internally consistent with public-verification.json's version block and package-current.json's frozen metadata (commit 6866608, counts 135/4064/264). (6) publish-exit.json records actual_exit:0 for publish_prepared.py --publish; package-current.json (status PREPARED_NOT_EXECUTED) correctly documents the pre-publish packaging stage only and is not in conflict with the later publish-exit. No tampering or caption-only fabrication found in the files I opened. Limits/not independently done by me: did not re-run SSH/Helm/kubectl, did not relaunch a browser (used only the frozen JSON/PNG artifacts already on disk), did not recompute hashes for every one of the ~100 remaining root-public-browser files beyond the 17 I selected (q1-q4 flow + result + lifecycle files), did not independently inspect copied-DB rehearsal or feedback table contents beyond the aggregate reports_sha256/status_counts already in the file. This review covers only the already-submitted publication-verification task per instructions; I did not call hub_task list."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The review was submitted and recorded as **ACCEPTED** (task-4c2bb3916d194b37a2735eab2fc32510, reviewer session-e1cdc705c6b845828b7ff84c4ba63590).\n\n**Verdict: ACCEPT, error_count=0.**\n\nWhat I independently verified (reading files directly, not trusting the task-body narrative):\n- `sha256sum` on `public-verification.json` and `published-server-verification.json` matched the digests self-reported inside `published-root-browser-verification.json` exactly.\n- All 17 spot-checked `root-public-browser/*` artifacts (all 4 question screenshots, all 4 footer screenshots, the result screenshot, and the key JSON lifecycle/metrics files) matched their claimed per-file `artifact_sha256` entries byte-for-byte.\n- I opened all 4 question/footer PNGs and the result PNG myself: the stems, options, Netflix source citations, and the final `Счёт: 4` result screen all genuinely show what's claimed — not just captions.\n- `viewport.json`, `activesession.json` (PID 42028 active mid-flow), `inactive.json` (PID gone, session inactive after close), and `errors.json` (empty stdout) are internally consistent with the claimed browser lifecycle and error-free session.\n- `published-server-verification.json` (image digest, Helm revision 52, PVC bound) lines up with `public-verification.json`'s version block and `package-current.json`'s frozen build metadata (commit `6866608...`, counts 135/4064/264).\n- `publish-exit.json` shows `actual_exit: 0` for the real `--publish` run; `package-current.json`'s `PREPARED_NOT_EXECUTED` status correctly reflects the earlier packaging stage and doesn't conflict with it.\n\n**Limits I disclosed in the review note:** I didn't re-run SSH/Helm/kubectl or relaunch a browser myself — this was a review of the frozen artifacts already on disk. I didn't hash every one of the ~100 remaining `root-public-browser` files beyond the 17 I selected, and didn't independently inspect the feedback table's row contents beyond the aggregate hash/counts.\n\nI did not pursue the LOTR wording-pilot review in this turn — let me know if you'd like me to continue with that separately.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7472f0b8bee5f616e384634cad4425953c26dfa4f5326d0a2176c562e0f1294e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
