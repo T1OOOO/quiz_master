@@ -1,0 +1,103 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-eacecade1e4a40aa872354e1b39fca88": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-eacecade1e4a40aa872354e1b39fca88",
+          "verdict": "accept",
+          "note": "Independent read-only review of next/server/internal/content/import_identity_test.go against import.go, types.go, the real lotr_return_king_bts_100.json fixture, manifest.json, and the three worker/root evidence files. Findings: (1) Defaults - test strips revision_number/option_ids from q93/q95 via a temp file built from the real fixture (decoder.UseNumber, in-place map mutation, re-marshal), then asserts Revision.Number==1 and positional option id 'lotr-rk-95-opt-4'; this matches import.go's literal defaulting logic (revisionNumber:=1 at L173; oid fallback 'qid-opt-i+1' at L225). (2) Retained option5/answer identity - after re-adding revision_number:2 and q95 option_ids [...opt-1,2,3,5], the test asserts CorrectOptionID=='lotr-rk-95-opt-2', matching the real fixture's correct_answer:1 pointing at option_ids[1]; confirmed against the actual committed JSON (lines 1435-1458) and manifest.json, whose lotr-rk-95 entry already has exactly this opt-1/2/3/5 mapping with source_sha256 equal to the verification.json 'verified_raw_sha256' (case differs only in hex casing). (3) Revision 2 for both q93/q95 - asserted directly, consistent with explicit revision_number handling. (4) 98 non-target objects/mappings - loop asserts reflect.DeepEqual on Draft.Questions and Manifest.Questions for all non-target indices, with an explicit unchanged==98 count; index alignment holds because question order is never reordered, only two map values are mutated in place before marshal. (5) Malformed inputs - the 12 subtests (option_ids null/wrong-type/wrong-length/duplicate/blank/illegal; revision_number null/wrong-type/zero/negative/fractional/overflow) each map cleanly onto concrete branches in import.go (type assertion failures, len mismatch, seenOptionIDs/idPattern checks, integer() json.Number.Int64() failure modes, number<=0 guard), and Code(err) checks the right error kind. Limits of this review: read-only, no test execution performed by me - I verified logic by static inspection of import.go/types.go against the fixture bytes, not by running go test; I could not locate the shared 'legacyBase' fixture and 'importText' helper used by the malformed-values subtests (no grep/glob/bash tool available in this session) so I could not independently confirm that fixture has exactly one '\"correct_answer\":2' occurrence and 4 options matching the 'question-two-opt-*' ids in the subtest table - this is inferred, not directly observed. worker/verification.json's reported go test pass and root-full-go-checks.json's full-suite pass are reported execution evidence from the submitter/root, not something I re-ran or independently witnessed. Given the directly observable evidence (source code logic, real fixture bytes, manifest bytes) is internally consistent and the test's assertions are meaningful (not tautological), I accept this change. Publication remains a separate later gate per the task's own stated limitations."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Meaningful same-temp-path absence/explicit identity checks pass after raw integration; exact hashes/output; independent review before landing.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\server\\internal\\content\\import_identity_test.go",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RUNTIME_METADATA_20261014\\worker"
+        ],
+        "assignee": "session-01d4329ba62e4186aaec1d8ffd804ad8",
+        "author": "session-9207a79845344c15bf190817f73a4e6c",
+        "body": "Execute LOTR_RUNTIME_METADATA_20261014/TEST_PACKET_EN.md. Own only import_identity_test.go and worker receipts. Explicit temporary absent-field baseline for targets; unchanged identity/default/malformed/98-preservation assertions. No source/corpus/Root edits or children.",
+        "created_at": 1791966758.3801064,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-eacecade1e4a40aa872354e1b39fca88",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "next/server/internal/content/import_identity_test.go",
+            "docs/rewrite-agents/tasks/LOTR_RUNTIME_METADATA_20261014/worker/REPORT.md",
+            "docs/rewrite-agents/tasks/LOTR_RUNTIME_METADATA_20261014/worker/verification.json"
+          ],
+          "evidence": [
+            {
+              "kind": "root_raw_ready",
+              "raw_sha256": "C6F6CBF899DE42E197B5D041C6F9206207CAF28624DA9DDEBDEA540CDDB8B7E6",
+              "result": "Root reported only revision2 on q93/q95 and q95 option IDs 1,2,3,5; quizctl import 100 exit0."
+            },
+            {
+              "command": "gofmt -w 'internal/content/import_identity_test.go'",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 0,
+              "kind": "format",
+              "output": ""
+            },
+            {
+              "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 0,
+              "kind": "targeted_test",
+              "output": "ok  \\tquiz_master/next/server/internal/content\\t1.168s",
+              "wall_time_seconds": 6.9067881
+            },
+            {
+              "kind": "receipt_validation",
+              "result": "worker/verification.json parsed successfully"
+            }
+          ],
+          "limitations": [
+            "Root owns full quality gates, canonical/API rebuild, candidate-image runtime validation, freeze, and publication.",
+            "Passing targeted unit test is not publication approval."
+          ],
+          "not_run": [
+            "full content tests",
+            "quizctl tests",
+            "other Go tests",
+            "builds",
+            "browser checks",
+            "deployment"
+          ],
+          "runtime_identity": "codex/gpt-6.1-sol; host_hub session-01d4329ba62e4186aaec1d8ffd804ad8",
+          "sha256": {
+            "docs/rewrite-agents/tasks/LOTR_RUNTIME_METADATA_20261014/worker/REPORT.md": "9A50A767C764BC70DD0E066CF2E6F6DC811876330A8C8802829DF0B79F6C1E82",
+            "docs/rewrite-agents/tasks/LOTR_RUNTIME_METADATA_20261014/worker/verification.json": "12965AC1A663B2C8BD0B547C2A8A0B050E38FA9FBF7FFCE2653EB15792EF0E12",
+            "next/server/internal/content/import_identity_test.go": "DDD7F6BE121BE766EA4B4C63EEA3AAE16D96A3ABBCFF492B71A9233AE6F08F19",
+            "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "C6F6CBF899DE42E197B5D041C6F9206207CAF28624DA9DDEBDEA540CDDB8B7E6"
+          },
+          "status": "DONE",
+          "summary": "Actual-fixture test now constructs its absent-field baseline by UseNumber-decoding the source, deleting only option_ids/revision_number on q93/q95, and importing that baseline before restoring reviewed metadata to the same object and same temp source path."
+        },
+        "root_task_id": "task-eacecade1e4a40aa872354e1b39fca88",
+        "run_id": "run-b765a131c8e54cbe8916fc826189369f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-577a5941db814aee8b4bae58f3ab1d27",
+        "title": "qc8 importer fixture baseline independent of integrated raw metadata",
+        "version": 4,
+        "reviewer": "session-a5519b0f8f6146ceb051929ae3dad88d",
+        "review_note": "Independent read-only review of next/server/internal/content/import_identity_test.go against import.go, types.go, the real lotr_return_king_bts_100.json fixture, manifest.json, and the three worker/root evidence files. Findings: (1) Defaults - test strips revision_number/option_ids from q93/q95 via a temp file built from the real fixture (decoder.UseNumber, in-place map mutation, re-marshal), then asserts Revision.Number==1 and positional option id 'lotr-rk-95-opt-4'; this matches import.go's literal defaulting logic (revisionNumber:=1 at L173; oid fallback 'qid-opt-i+1' at L225). (2) Retained option5/answer identity - after re-adding revision_number:2 and q95 option_ids [...opt-1,2,3,5], the test asserts CorrectOptionID=='lotr-rk-95-opt-2', matching the real fixture's correct_answer:1 pointing at option_ids[1]; confirmed against the actual committed JSON (lines 1435-1458) and manifest.json, whose lotr-rk-95 entry already has exactly this opt-1/2/3/5 mapping with source_sha256 equal to the verification.json 'verified_raw_sha256' (case differs only in hex casing). (3) Revision 2 for both q93/q95 - asserted directly, consistent with explicit revision_number handling. (4) 98 non-target objects/mappings - loop asserts reflect.DeepEqual on Draft.Questions and Manifest.Questions for all non-target indices, with an explicit unchanged==98 count; index alignment holds because question order is never reordered, only two map values are mutated in place before marshal. (5) Malformed inputs - the 12 subtests (option_ids null/wrong-type/wrong-length/duplicate/blank/illegal; revision_number null/wrong-type/zero/negative/fractional/overflow) each map cleanly onto concrete branches in import.go (type assertion failures, len mismatch, seenOptionIDs/idPattern checks, integer() json.Number.Int64() failure modes, number<=0 guard), and Code(err) checks the right error kind. Limits of this review: read-only, no test execution performed by me - I verified logic by static inspection of import.go/types.go against the fixture bytes, not by running go test; I could not locate the shared 'legacyBase' fixture and 'importText' helper used by the malformed-values subtests (no grep/glob/bash tool available in this session) so I could not independently confirm that fixture has exactly one '\"correct_answer\":2' occurrence and 4 options matching the 'question-two-opt-*' ids in the subtest table - this is inferred, not directly observed. worker/verification.json's reported go test pass and root-full-go-checks.json's full-suite pass are reported execution evidence from the submitter/root, not something I re-ran or independently witnessed. Given the directly observable evidence (source code logic, real fixture bytes, manifest bytes) is internally consistent and the test's assertions are meaningful (not tautological), I accept this change. Publication remains a separate later gate per the task's own stated limitations."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as **ACCEPTED** in host_hub for `task-eacecade1e4a40aa872354e1b39fca88`.\n\nSummary of findings:\n- Verified the test's defaults/retained-identity/revision/answer-identity assertions against `import.go`'s actual validation logic and the real committed `lotr_return_king_bts_100.json` + `manifest.json` — all consistent, non-tautological checks.\n- The 98-unchanged-questions comparison and the 12 malformed-input subtests also map cleanly onto concrete code branches.\n- Disclosed limits: no test execution by me (relied on static code inspection only), and this session had no grep/glob/bash tool, so I could not locate/confirm the shared `legacyBase` fixture and `importText` helper used by the malformed-value subtests — that part is inferred from code behavior, not directly observed. Reported go-test passes in the worker/root evidence files are the submitter's claims, not something I reran.\n\nNo further action taken; publication remains a separate gate as the task itself states.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "8bdc3e36c86011b04b1146d0b87ce65d785af105fce4e36e633ad79536d08ccc",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

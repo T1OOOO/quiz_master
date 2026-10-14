@@ -1,0 +1,48 @@
+{
+  "status": "LOCAL_METADATA_INTEGRATED_NOT_PUBLISHED",
+  "raw_sha256": "c6f6cbf899de42e197b5d041c6f9206207caf28624da9ddebdea540cddb8b7e6",
+  "raw_baseline_sha256": "41d17284e4c947a3fa0b4dde2ee72cacdd7552789cb6c51951c96cf4b86e3877",
+  "only_two_metadata_targets": [
+    "lotr_rk_93",
+    "lotr_rk_95"
+  ],
+  "raw_98_non_targets_exact": true,
+  "raw_target_existing_fields_exact": true,
+  "canonical_import_all_100_question_objects_and_draft_exact": true,
+  "manifest_only_source_sha256_changed": true,
+  "manifest_sha256": "34b13f2bb6bc7c957653c2a6e9618b19bcfe9b219c628b81bb6f550cf8414017",
+  "question_revisions": {
+    "lotr-rk-93": {
+      "number": 2,
+      "sha256": "dc3c5b2b3b119a472993d32ae4c0321eea64532904956dad26075507cd362fa7"
+    },
+    "lotr-rk-95": {
+      "number": 2,
+      "sha256": "a359dc8245a34bbafbf4c21b8fa096f13a49597196bee92885026e973d0f948e"
+    }
+  },
+  "actual_import": {
+    "command": [
+      "go",
+      "run",
+      "./next/server/cmd/quizctl",
+      "import",
+      "--in",
+      "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json",
+      "--out",
+      "C:\\ap\\quiz_master\\.run\\lotr_runtime_metadata_20261014\\imported",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "exit": 0,
+    "stdout": "imported lotr-return-king-bts-100: 100 questions; source_sha256 c6f6cbf899de42e197b5d041c6f9206207caf28624da9ddebdea540cddb8b7e6\n",
+    "stderr": ""
+  },
+  "unchanged_artifacts": {
+    "next/content/lotr-return-king-bts-100/draft.json": "1a5934780727b92bdb524c37137f819be53e7e948be0bdb5bba44c8f346741d7",
+    "next/content/lotr-return-king-bts-100/bundle.json": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2",
+    "study/question_articles/snapshots/lotr-return-king-bts-100.json": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38",
+    "next/apps/quiz_app/assets/study/question-articles.json": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419"
+  },
+  "remaining": "New Linux API/component freeze, true image /app-loader Reader145/API98 preservation, copied DB restore/rollback/execution review and publication."
+}

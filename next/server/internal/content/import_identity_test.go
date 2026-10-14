@@ -20,8 +20,27 @@ func TestImportExplicitQuestionIdentityMetadata(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	var raw map[string]any
+	decoder := json.NewDecoder(strings.NewReader(string(source)))
+	decoder.UseNumber()
+	if err = decoder.Decode(&raw); err != nil {
+		t.Fatal(err)
+	}
+	for _, value := range raw["questions"].([]any) {
+		question := value.(map[string]any)
+		switch question["id"] {
+		case "lotr_rk_93", "lotr_rk_95":
+			delete(question, "option_ids")
+			delete(question, "revision_number")
+		}
+	}
+	withoutIdentity, err := json.Marshal(raw)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	path := filepath.Join(t.TempDir(), "lotr_return_king_bts_100.json")
-	if err = os.WriteFile(path, source, 0600); err != nil {
+	if err = os.WriteFile(path, withoutIdentity, 0600); err != nil {
 		t.Fatal(err)
 	}
 	before, beforeManifest, err := ImportWithTaxonomy(path, taxonomy)
@@ -37,12 +56,6 @@ func TestImportExplicitQuestionIdentityMetadata(t *testing.T) {
 		t.Fatalf("absent option_ids did not keep positional ID: %q", got)
 	}
 
-	var raw map[string]any
-	decoder := json.NewDecoder(strings.NewReader(string(source)))
-	decoder.UseNumber()
-	if err = decoder.Decode(&raw); err != nil {
-		t.Fatal(err)
-	}
 	for _, value := range raw["questions"].([]any) {
 		question := value.(map[string]any)
 		switch question["id"] {

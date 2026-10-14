@@ -1,0 +1,16 @@
+# Completed metadata integration and next release gate
+
+Root and the finite native helper completed the first two stages recorded in the prior checkpoint. The actual raw source now carries revision_number2 only on93/95 and option_ids1,2,3,5 only on95. Raw98 non-target objects and every target wording/label/answer/explanation stayed exact. The actual Go quizctl import, using the same relative source URI, produced a draft EXACTLY equal to the previously accepted100-question canonical draft. Only canonical manifest source_sha256 changed. Canonical draft/bundle, runtime snapshot, all266Reader articles and catalog bytes remain unchanged.
+
+The fixture regression now explicitly constructs its metadata-absent target baseline in temporary memory before importing twice at the same path. The native targeted post-integration check passed0; Root ran the complete local Go suite after raw integration and all packages passed0. Receipts and exact hashes are present. Different-provider review must accept both submitted source/test tasks before landing. A fresh production read-only preflight still shows Helm52,135/4064/264 and26OPENfeedback with the same aggregate hash; no feedback status or live files were changed.
+
+Root completed a bounded Linux/amd64 pure-Go cross-build of the actual API with trimpath/buildvcsfalse. Its receipt identifies the API-code checkpoint and local artifact separately from the uncommitted corpus. Do not infer container execution or publication from cross-compilation. Actual build exited0 and produced ELF f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850,22,988,817bytes; verify receipt/source bindings before consuming it.
+
+Remaining finite work after source freeze:
+
+1. Refresh release producer/controller version, real frozen source/API/component/build pins and metadata deliberately. Existing9194 data-only archive5af96c52 retains oldAPI26e and is HELD, not deployable approval. Preserve historical source reviews/receipts; do not replace their exact hashes silently.
+2. Build/check actual candidate image from the new API and integrated raw. The real /app directory-mode loader must return unmodified question DTOs with q93/q95revision2, q95retainedopt5 and correct keyopt2, all98otherpublic question objects/revisions exact and145playableReader bindings. DTO source/revision normalization in the old host rehearsal is NOT proof of this gate.147totalReaderrefs includes2unchanged non-catalog study refs.
+3. Use only a copied SQLite database for rehearsal. Verify existing rows/snapshots/history, DBrestore/rollback and exact owned process/container cleanup. Keep baseline52image/PVC/nginx/client pins and guard current target state again immediately before mutation.
+4. Complete compiled Flutter/client/image/browser and independent execution review, then already-authorized cutover and exact published verification. Close only relevant real feedback after published proof. No GitHub Actions, recursive workers/schedulers, unrelated project leases/processes or blanket staging.
+
+quiz_master-kc8/1wy stay in progress until the real runtime/publication gates and broader source-backed LOTR backlog are complete. This checkpoint fixes source-loader identity for the two already reviewed repairs; it does not certify all98remainingfacts or all4064questions.

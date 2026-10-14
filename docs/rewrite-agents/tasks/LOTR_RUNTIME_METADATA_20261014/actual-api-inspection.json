@@ -1,0 +1,15 @@
+{
+  "command": [
+    "go",
+    "version",
+    "-m",
+    "api-linux-amd64"
+  ],
+  "actual_exit": 0,
+  "stdout": "C:\\ap\\quiz_master\\.run\\lotr_runtime_metadata_20261014\\api-linux-amd64: go1.27.0\n\tpath\tquiz_master/next/server/cmd/api\n\tmod\tquiz_master\t(devel)\t\n\tdep\tgithub.com/dustin/go-humanize\tv1.0.1\th1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkpeCY=\n\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=\n\tdep\tgithub.com/jackc/pgpassfile\tv1.0.0\th1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=\n\tdep\tgithub.com/jackc/pgservicefile\tv0.0.0-20240606120523-5a60cdf6a761\th1:iCEnooe7UlwOQYpKFhBabPMi4aNAfoODPEFNiAnClxo=\n\tdep\tgithub.com/jackc/pgx/v5\tv5.9.1\th1:uwrxJXBnx76nyISkhr33kQLlUqjv7et7b9FjCen/tdc=\n\tdep\tgithub.com/jackc/puddle/v2\tv2.2.2\th1:PR8nw+E/1w0GLuRFSmiioY6UooMp6KJv0/61nB7icHo=\n\tdep\tgithub.com/remyoudompheng/bigfft\tv0.0.0-20230129092748-24d4a6f8daec\th1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=\n\tdep\tgithub.com/santhosh-tekuri/jsonschema/v6\tv6.0.1\th1:PKK9DyHxif4LZo+uQSgXNqs0jj5+xZwwfKHgph2lxBw=\n\tdep\tgolang.org/x/sync\tv0.19.0\th1:vV+1eWNmZ5geRlYjzm2adRgW2/mcpevXNg50YZtPCE4=\n\tdep\tgolang.org/x/sys\tv0.41.0\th1:Ivj+2Cp/ylzLiEU89QhWblYnOE9zerudt9Ftecq2C6k=\n\tdep\tgolang.org/x/text\tv0.34.0\th1:oL/Qq0Kdaqxa1KbNeMKwQq0reLCCaFtqu2eNuSeNHbk=\n\tdep\tmodernc.org/mathutil\tv1.7.1\th1:GCZVGXdaN8gTqB1Mf/usp1Y/hSqgI2vAGGP4jZMCxOU=\n\tdep\tmodernc.org/memory\tv1.11.0\th1:o4QC8aMQzmcwCK3t3Ux/ZHmwFPzE6hf2Y5LbkRs+hbI=\n\tdep\tmodernc.org/sqlite\tv1.33.0\th1:WWkA/T2G17okiLGgKAj4/RMIvgyMT19yQ038160IeYk=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tDefaultGODEBUG=cryptocustomrand=1,tlssecpmlkem=0,tracebacklabels=0,urlstrictcolons=0,x509sslcertoverrideplatform=0\n\tbuild\tCGO_ENABLED=0\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n",
+  "only_server_difference_from_api_code_checkpoint": [
+    "next/server/internal/content/import_identity_test.go"
+  ],
+  "untracked_go_inputs": [],
+  "scope": "Observed cross-build metadata and API code checkpoint parity; not runtime image or release acceptance"
+}

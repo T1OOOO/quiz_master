@@ -1,0 +1,72 @@
+{
+  "schema_version": "quiz-master-worker-verification/v1",
+  "task_id": "task-eacecade1e4a40aa872354e1b39fca88",
+  "status": "DONE",
+  "runtime_identity": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-01d4329ba62e4186aaec1d8ffd804ad8"
+  },
+  "changed_files": [
+    "next/server/internal/content/import_identity_test.go"
+  ],
+  "root_raw_ready": {
+    "reported_change": "revision_number 2 on q93/q95 and explicit q95 option IDs 1,2,3,5 only",
+    "reported_quizctl_import_questions": 100,
+    "reported_quizctl_import_exit_code": 0,
+    "verified_raw_sha256": "C6F6CBF899DE42E197B5D041C6F9206207CAF28624DA9DDEBDEA540CDDB8B7E6"
+  },
+  "test_adjustment": {
+    "decode_uses_json_number": true,
+    "baseline_removed_fields": [
+      "lotr_rk_93.revision_number",
+      "lotr_rk_93.option_ids",
+      "lotr_rk_95.revision_number",
+      "lotr_rk_95.option_ids"
+    ],
+    "one_temporary_source_path": true,
+    "explicit_metadata_readded_to_same_decoded_object": true,
+    "preserved_assertions": [
+      "absent-field defaults",
+      "q95 opt5 identity",
+      "q95 grade opt2",
+      "q93/q95 revision2",
+      "manifest source-index/canonical-ID mapping",
+      "98 unchanged non-target questions and mappings",
+      "malformed metadata guards"
+    ]
+  },
+  "commands": [
+    {
+      "phase": "FORMAT",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "gofmt -w 'internal/content/import_identity_test.go'",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "phase": "TARGETED",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+      "exit_code": 0,
+      "wall_time_seconds": 6.9067881,
+      "output": "ok  \tquiz_master/next/server/internal/content\t1.168s"
+    }
+  ],
+  "sha256": {
+    "next/server/internal/content/import_identity_test.go": "DDD7F6BE121BE766EA4B4C63EEA3AAE16D96A3ABBCFF492B71A9233AE6F08F19",
+    "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "C6F6CBF899DE42E197B5D041C6F9206207CAF28624DA9DDEBDEA540CDDB8B7E6"
+  },
+  "not_run": [
+    "full content tests",
+    "quizctl tests",
+    "other Go tests",
+    "builds",
+    "browser checks",
+    "deployment"
+  ],
+  "limitations": [
+    "Root owns full quality gates, canonical/API component rebuild, runtime candidate-image validation, freeze, and publication.",
+    "A passing targeted unit test is not publication approval."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-p=1",
+    "./..."
+  ],
+  "cwd": "C:\\ap\\quiz_master\\next\\server",
+  "actual_exit": 0,
+  "stdout": "ok  \tquiz_master/next/server/cmd/api\t(cached)\nok  \tquiz_master/next/server/cmd/quizctl\t13.899s\nok  \tquiz_master/next/server/internal/attempts\t(cached)\nok  \tquiz_master/next/server/internal/config\t(cached)\nok  \tquiz_master/next/server/internal/content\t3.159s\nok  \tquiz_master/next/server/internal/httpapi\t(cached)\nok  \tquiz_master/next/server/internal/identity\t(cached)\nok  \tquiz_master/next/server/internal/migrate\t(cached)\nok  \tquiz_master/next/server/internal/reports\t(cached)\nok  \tquiz_master/next/server/internal/sqlite\t53.928s\nok  \tquiz_master/next/server/internal/store\t(cached)\n",
+  "stderr": "",
+  "source_sha256": {
+    "next/server/internal/content/import_identity_test.go": "ddd7f6be121be766ea4b4c63eea3aae16d96a3abbcff492b71a9233ae6f08f19",
+    "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "c6f6cbf899de42e197b5d041c6f9206207caf28624da9ddebdea540cddb8b7e6",
+    "next/content/lotr-return-king-bts-100/manifest.json": "34b13f2bb6bc7c957653c2a6e9618b19bcfe9b219c628b81bb6f550cf8414017"
+  },
+  "scope": "Full local Go suite after actual metadata integration; not publication"
+}
