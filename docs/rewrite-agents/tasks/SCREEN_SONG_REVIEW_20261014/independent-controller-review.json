@@ -1,0 +1,105 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-6607c0340adb4b909a4894f2f3041183": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+          "verdict": "rework",
+          "note": "Static review only; no package/browser/db/server build run. Read prepare_screen_song_release.py, prepare_remote.py, publish_prepared.py, save_execution_acceptance.py, negative_checks.py, test_pins.py, test_receipt_counts.py, README.md, REPORT.json. Ran pure tests (test_receipt_counts.py, test_pins.py) — 5/5 pass. Target/preserved count separation (135/4064/264 vs 134/4060/260), 11->12 cache append, 160-canonical staging revisions, Actor51-only-addition guard (no Music-title exception), archive zip-slip safety, nginx/API/js SHA pinning, and source/build/review binding are implemented and fail-closed as described.\n\nCONCRETE DEFECT (reproduced): load_required_pins (prepare_screen_song_release.py:71) only rejects BASELINE_SOURCE_COMMIT 83748f5..., 'b80deb1...', or commits starting '25be93a'. It does NOT reject the actual current Screen Song checkpoint commit 6866608bd7c20ceff2b454970b315eaee86329a9 (branch HEAD), though README.md says the controller rejects reuse of 'the current checkpoint' as the target. I called load_required_pins with frozen_commit=6866608... via inert_complete_pins: it passed the identity check and only failed later on an unrelated missing-review-file error, proving the current checkpoint is not blocked by this guard. negative_checks.py/test_pins.py only test rejection of the Actor51 baseline commit, never 6866608/b80deb1/25be93a. Other hash-bound checks (actual build evidence, real review files, reviewer!=assignee) add some defense-in-depth, but the documented identity guard itself does not do what README claims, and the gap is untested.\n\nRecommendation: add 6866608bd7c20ceff2b454970b315eaee86329a9 to the rejected-commit set (or use an ancestry check) and add a negative test for it before accepting this as closing the loop README promises.\n\nNo other defects found in preservation guards, remote staging/rehearsal/backup/rollback gating, or publish-only-reviewed-packet binding. No package, build, browser, SSH, or publish action was run or fabricated."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual corrected receipt fields and independent pure test targeting target/baseline counts; no fake pins or publication proof.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+          "C:\\ap\\quiz_master\\.run\\screen_song_controller_resumed_20261014"
+        ],
+        "assignee": "session-02994380c5a545b1b0e810ecad3bf131",
+        "author": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "body": "Exclusive worker-resumed ownership: receipt target packs/questions/articles currently stale Actor51 values. Correct target135/4064/264 only, preserve baseline134/4060/260 and snapshot, meaningful pure receipt test. No package/build/browser/SSH/Git/Beads/publication.",
+        "created_at": 1791943800.4450817,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6607c0340adb4b909a4894f2f3041183",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/prepare_screen_song_release.py",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/test_receipt_counts.py",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/REPORT.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/REPORT.pre-target-count-correction.json",
+            ".run/screen_song_controller_resumed_20261014/local-verification.json",
+            ".run/screen_song_controller_resumed_20261014/local-verification.pre-target-count-correction.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -m unittest -v test_receipt_counts.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+              "exit_code": 0,
+              "result": "1 pure target-vs-preserved baseline count test passed."
+            },
+            {
+              "command": "python negative_checks.py; python -m unittest -v test_pins.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+              "exit_code": 0,
+              "result": "Existing pure guard checks still passed: five controllers compile and four pin tests pass."
+            },
+            {
+              "command": "python -m json.tool REPORT.json; python -m json.tool C:\\ap\\quiz_master\\.run\\screen_song_controller_resumed_20261014\\local-verification.json",
+              "exit_code": 0,
+              "result": "Current report and receipt JSON valid."
+            }
+          ],
+          "hashes": {
+            "REPORT.json": "16f3b0b566760e89960fe5e250f285761cfe87acf8ba018ab4307565cf600e7c",
+            "local-verification.json": "8ff49289c4e756c63c969bc0cae50cc91f2886bbc9dc8470c8b3c449650d6eec",
+            "prepare_screen_song_release.py": "8ca76d1e020e3ae823de6630565362389388345108acafe3e98bbbb539882b10",
+            "test_receipt_counts.py": "88120470a20e9baef0e3be634b30a8b661e3e1cb34eb9dc1aecf82fae721bc38"
+          },
+          "remaining_concerns": [
+            "No package receipt was emitted or exercised. Fresh build/release pins and all independent/Root-owned release gates remain pending."
+          ],
+          "status": "DONE",
+          "summary": "Corrected only future package receipt target counts to 135/4064/264, while retaining explicit preserved Actor51 counts 134/4060/260. Added a pure contract test and retained pre-correction snapshots."
+        },
+        "root_task_id": "task-6607c0340adb4b909a4894f2f3041183",
+        "run_id": "run-bbe567bee7214c30818cf8bacd8d480b",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-daf7a160a06e4dd296b441c1bb3dd160",
+        "title": "Correct Screen Song package receipt target counts",
+        "version": 4,
+        "reviewer": "session-3ae71d5637b841e386b84fd77f932e6b",
+        "review_note": "Static review only; no package/browser/db/server build run. Read prepare_screen_song_release.py, prepare_remote.py, publish_prepared.py, save_execution_acceptance.py, negative_checks.py, test_pins.py, test_receipt_counts.py, README.md, REPORT.json. Ran pure tests (test_receipt_counts.py, test_pins.py) — 5/5 pass. Target/preserved count separation (135/4064/264 vs 134/4060/260), 11->12 cache append, 160-canonical staging revisions, Actor51-only-addition guard (no Music-title exception), archive zip-slip safety, nginx/API/js SHA pinning, and source/build/review binding are implemented and fail-closed as described.\n\nCONCRETE DEFECT (reproduced): load_required_pins (prepare_screen_song_release.py:71) only rejects BASELINE_SOURCE_COMMIT 83748f5..., 'b80deb1...', or commits starting '25be93a'. It does NOT reject the actual current Screen Song checkpoint commit 6866608bd7c20ceff2b454970b315eaee86329a9 (branch HEAD), though README.md says the controller rejects reuse of 'the current checkpoint' as the target. I called load_required_pins with frozen_commit=6866608... via inert_complete_pins: it passed the identity check and only failed later on an unrelated missing-review-file error, proving the current checkpoint is not blocked by this guard. negative_checks.py/test_pins.py only test rejection of the Actor51 baseline commit, never 6866608/b80deb1/25be93a. Other hash-bound checks (actual build evidence, real review files, reviewer!=assignee) add some defense-in-depth, but the documented identity guard itself does not do what README claims, and the gap is untested.\n\nRecommendation: add 6866608bd7c20ceff2b454970b315eaee86329a9 to the rejected-commit set (or use an ancestry check) and add a negative test for it before accepting this as closing the loop README promises.\n\nNo other defects found in preservation guards, remote staging/rehearsal/backup/rollback gating, or publish-only-reviewed-packet binding. No package, build, browser, SSH, or publish action was run or fabricated."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully. State is now `REWORK`.\n\n## Summary\n\nReviewed task-6607 (Screen Song local release controllers, worker-resumed folder) via static analysis only — read all five controllers plus README/REPORT.json, and ran the pure tests (`test_receipt_counts.py`, `test_pins.py`, 5/5 pass).\n\n**Verdict: rework**, with one concrete, reproduced defect:\n\nThe \"fresh final Screen Song source\" identity guard in `load_required_pins` (prepare_screen_song_release.py:71) rejects the Actor51 baseline commit (`83748f5...`) and two specific prior rework commits (`b80deb1...`, `25be93a...`), but **does not reject the actual current branch HEAD commit** `6866608bd7c20ceff2b454970b315eaee86329a9` — even though README.md explicitly promises the controller rejects reuse of \"the current checkpoint\" as the release target. I reproduced this directly: feeding `frozen_commit=6866608...` into `load_required_pins` sailed past the identity check and only failed later on an unrelated missing-review-file error. The negative test suite never exercises this specific commit either.\n\nOther guards (count separation, cache append, archive zip-slip safety, Actor51-only-addition/no-Music-title-exception, source/build/review hash binding, remote staging/rehearsal/rollback gating, publish-only-reviewed-packet) all checked out as fail-closed and correctly implemented — no other defects found.\n\nNo package, build, browser, SSH, or publish action was run; this was static controller review only, as scoped.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+      "error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    },
+    {
+      "action": "review",
+      "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "73a81a696bb51eec774a2d76dedd1412c7cee33ede3dda4d8e0ad460a8240ee2",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

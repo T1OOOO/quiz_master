@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-14T02:17:27.292434+00:00",
+  "command": [
+    "eval",
+    "performance.getEntriesByType(\"resource\").map(e=>new URL(e.name).pathname).filter(p=>p.includes(\"/v1/attempts/\"))"
+  ],
+  "actual_exit": 0,
+  "stdout": "[\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/answers\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/feedback/screen-song-pilot-001\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/answers\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/feedback/screen-song-pilot-002\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/answers\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/feedback/screen-song-pilot-003\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/answers\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/feedback/screen-song-pilot-004\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/finish\",\n  \"/v1/attempts/a-28ce2155-df90-46d3-bbd9-c23321ba421d/reveals\"\n]\n",
+  "stderr": ""
+}
