@@ -1,0 +1,66 @@
+{
+  "status": "V3_PREPARED_FOR_INDEPENDENT_REVIEW",
+  "scope": "Source-only Reader successor controller. No archive preparation, image/database runtime, browser, deploy, remote, Git, or publication action was executed by this worker.",
+  "hub": {
+    "label": "reader-release-successor-rra",
+    "session": "session-39f15915ba7049cb8acbb2d0c2e19164",
+    "rework_run": "run-904251cbcedb45199326a86c40bc48ef"
+  },
+  "frozen_source": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+  "baseline": {
+    "build": "quiz-2026.10.14-mixed-ecac092",
+    "archive_sha256": "ede81db6dfa1dfb2c0f61e53d4749d378a8fe00467f87ebb3fda353d161e8ead",
+    "image": "docker.io/library/quiz-master@sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+    "api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc"
+  },
+  "reader_target": {
+    "prior_articles": 266,
+    "articles": 272,
+    "added_ids": [
+      "question:pub-connections-001",
+      "question:pub-connections-002",
+      "question:pub-connections-006",
+      "question:pub-connections-011",
+      "question:pub-connections-012",
+      "question:pub-connections-016"
+    ],
+    "refs": {
+      "total": 153,
+      "playable": 151,
+      "known_noncatalog": 2
+    }
+  },
+  "implemented_gates": [
+    "Hash-bound build receipt, source review, browser proof, prior Reader data, and successor Reader data.",
+    "Actual production main.dart.js digest matched to its receipt; QA digest matched to browser proof and excluded from the staged overlay.",
+    "Baseline archive verification/extraction, baseline checksum verification, regenerated checksums, and verified output tar through established house helpers.",
+    "Unchanged 136-row/4084-question catalog plus immutable API/Nginx byte checks.",
+    "Staged house runtime verifier and cutover invocation with Reader counts 272/153/151, retaining copied-DB, HTTP DTO, grading/reveal, cleanup, rollback and port-release checks."
+  ],
+  "checks": [
+    {
+      "command": "python -B -m unittest -v test_reader_release.py",
+      "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+      "exit_code": 0,
+      "result": "5 pure boundary tests passed"
+    },
+    {
+      "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+      "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+      "exit_code": 0
+    }
+  ],
+  "file_sha256": {
+    "prepare_reader_release.py": "a738088f8807b1c189b8ebaec266974da1cf1fd1c37f2fef8fd6fc1996712446",
+    "verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2",
+    "test_reader_release.py": "f81f9e653e10b2eca6367fd286c499e29f107963bdec2811ff608ef2f20e3d72",
+    "README.md": "c9b2dc5c91ca3502c1a5709c6be120f95eea027f8eaaaac75bf5b52722069c8e"
+  },
+  "remaining_gates": [
+    "A different-provider review of this rework is required before any controller execution.",
+    "Root-owned execution must provide a complete hash-pinned input manifest and produce a real stage/archive receipt.",
+    "The real candidate image must pass the delegated copied-DB verifier before any publication decision.",
+    "Root retains independent execution and publication verification."
+  ]
+}

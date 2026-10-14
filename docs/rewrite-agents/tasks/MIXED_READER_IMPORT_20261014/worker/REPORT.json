@@ -1,0 +1,83 @@
+{
+  "status": "SOURCE_ACCEPTED_LOCAL_PACKAGE_PREPARED_NOT_PUBLISHED",
+  "author_session": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+  "task": "task-ae09e4064b1546198a1c5d791f539b16",
+  "previous_worker_submission": "Historical V3 report preserved separately; Root took ownership after worker declared completion and native runtime reset. Current source hashes supersede old submitted hashes.",
+  "changes": [
+    "Fixed actual missing NONCATALOG helper attribute and verified151 exact bindings against frozen Git snapshots",
+    "Restored actual build receipt and QA/browser/cleanup provenance; froze complete69-file Web trees",
+    "Bound current Reader/catalog to actual frozen Git bytes and archived baseline Reader bytes",
+    "Bound controller plus house dependency hashes to actual different-provider acceptance",
+    "Replaced synthetic gates/tests with real archived gate, actual house inject_version and executed metadata gate; retained prepare-only cutover, actual53 image and rollback API/checksum"
+  ],
+  "checks": [
+    {
+      "command": "python -B -m unittest -v test_reader_release.py",
+      "actual_exit": 0,
+      "tests": 4,
+      "elapsed_seconds": 12.787
+    },
+    {
+      "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+      "actual_exit": 0
+    }
+  ],
+  "reviewed_source_candidates": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\prepare_reader_release.py": "8f4e38e5aeaf8d957d3a2ca715abf6c28f3e6bf3ecac9550359778e82ad1be89",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\test_reader_release.py": "094100960bddb92fb8d6cac60462aff2a7b827044434d1c442f1ff4d051543ac",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb"
+  },
+  "remaining": [
+    "Independent remote helper source acceptance",
+    "Actual immutable candidate/copyDB/restore/rollback and execution review",
+    "Authorized publication and normalTLS/mobile verification"
+  ],
+  "runtime_execution": false,
+  "production_unchanged": "Helm53 Reader266; frozen17 six Reader articles local272",
+  "actual_source_acceptances": [
+    "independent-release-source-review-v4.json",
+    "independent-lf-source-review.json"
+  ],
+  "actual_package": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "build_id": "quiz-2026.10.14-reader-17be4ce",
+    "frozen_commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+    "archive": ".run\\reader_import_20261014\\package-v2\\quiz-2026.10.14-reader-17be4ce.tar.gz",
+    "archive_sha256": "052791b502cc068c57831473ff200cbd8fdc756018942c500508ca81a0b7f872",
+    "file_members": 327,
+    "counts": {
+      "packs": 136,
+      "questions": 4084,
+      "reader_articles": 272,
+      "total_refs": 153,
+      "refs": {
+        "total": 153,
+        "playable": 151,
+        "noncatalog": 2
+      }
+    },
+    "qa_checked_not_packaged": "C:\\ap\\quiz_master\\.run\\reader_import_20261014\\qa-web",
+    "actual_producer_exit": 0,
+    "linux_shell_lf": true,
+    "actual_archived_metadata": {
+      "buildId": "quiz-2026.10.14-reader-17be4ce",
+      "commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+      "source_commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+      "local_build": true,
+      "packs": 136,
+      "questions": 4084,
+      "study_modules": 6,
+      "study_questions": 120,
+      "question_articles": 272,
+      "api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+      "main_dart_js_sha256": "8dd33980259b5e72b9a2cb208b993d3613812a3e1d874540be360bdcd526aa27",
+      "taxonomy_id": "qm-tags-v1",
+      "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+      "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c"
+    },
+    "scope": "Local immutable package only; not uploaded/executed/published"
+  }
+}

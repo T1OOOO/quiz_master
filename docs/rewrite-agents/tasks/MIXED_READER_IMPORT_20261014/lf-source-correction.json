@@ -1,0 +1,20 @@
+{
+  "status": "ROOT_LF_CORRECTION_PENDING_REVIEW",
+  "task_id": "task-e8a6b67594f343c695169d80a751657e",
+  "previous_source_acceptance": "independent-release-source-review-v4.json",
+  "exact_delta_reconstructed_to_accepted_hashes": true,
+  "changed_code": "Two write_text calls replaced by explicit UTF8 write_bytes; one byte-level LF assertion added",
+  "focused_red_actual_exit": 1,
+  "full_four_tests_actual_exit": 0,
+  "full_four_tests_elapsed_seconds": 8.256,
+  "reviewed_source_candidates": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\prepare_reader_release.py": "8f4e38e5aeaf8d957d3a2ca715abf6c28f3e6bf3ecac9550359778e82ad1be89",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\test_reader_release.py": "094100960bddb92fb8d6cac60462aff2a7b827044434d1c442f1ff4d051543ac",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb"
+  },
+  "runtime_execution": false,
+  "package_v1": "QUARANTINED, not uploaded"
+}

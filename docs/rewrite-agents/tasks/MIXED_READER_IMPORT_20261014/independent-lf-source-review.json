@@ -1,0 +1,86 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e8a6b67594f343c695169d80a751657e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e8a6b67594f343c695169d80a751657e",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent source-only review by Claude Sonnet 5 (session-326653dc968141d4bad5ddcc42611cc0). Scope: current on-disk LF-correction delta only, per prior accepted independent-release-source-review-v4.json; no execution/build/browser/publish. Recomputed all 6 dependency SHA-256 hashes myself (sha256sum on C:/ap/quiz_master): prepare_reader_release.py=8f4e38e5aeaf8d957d3a2ca715abf6c28f3e6bf3ecac9550359778e82ad1be89 verify_reader_candidate.py=c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2 test_reader_release.py=094100960bddb92fb8d6cac60462aff2a7b827044434d1c442f1ff4d051543ac prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0 verify_candidate_runtime.py=dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca test_verify_candidate_runtime.py=9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb -- all 6 match lf-source-correction.json/lf-validation.json exactly. Confirmed the claimed delta by reading the actual diff: prepare_reader_release.py install_runtime_verifier() has exactly two write_text->write_bytes((...).encode('utf-8')) replacements (cutover.sh line 128, rehearse.py line 133), and test_reader_release.py adds exactly one byte-level regression assertion: self.assertNotIn(b'\\r\\n',(stage/'cutover.sh').read_bytes(),'Linux shell script must use LF') at line 42. Ran both real suites myself (not trusting prior claims): test_reader_release.py 4/4 pass in 5.38s; test_verify_candidate_runtime.py (house, MIXED_RELEASE_20261014/worker) 14/14 pass in 0.042s = 18/18. py_compile clean on all 6 files. Verified prior guards remain unweakened by grep: helm-upgrade rejection, BASELINE_CUTOVER_IMAGE/PVC_UID/API/Nginx pin checks, prior-266/147 bound, successor-153/151/2 bound are all still enforced via require(...) in prepare_reader_release.py. Fix is correct and minimal: Path.write_text() on Windows translates '\\n'->os.linesep (CRLF) even with encoding set, because newline defaults to universal-newlines translation; write_bytes() with an explicit UTF-8-encoded payload bypasses that translation entirely, so this is the right root-cause fix for a cross-platform (Windows authoring host, Linux target) LF requirement, not a cosmetic patch. Limitation: did not attempt an isolated 'revert the fix and show test fails' rebuild, since the test module resolves a fixed external archive path (C:/Users/.run/mixed_release_20261014/...) that breaks when the worker files are copied to a scratch dir outside the repo; judged unnecessary since the assertion's intent is unambiguous by inspection and the real in-place suite run already exercises it end-to-end. No new findings beyond lf-validation.json; full prior-source findings in independent-release-source-review-v4.json remain accepted as-is, no repeat whole-project audit performed. Acceptance is prepare-only source review; does not cover execution, package-v2 creation, or publication."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual independent different-provider source acceptance of minimal Windows LFfix with focusedred/green and full4test0 evidence/new6hashes. No remoteexecution orpublication claim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Actual locallyproduced package-v1 had76CRLFsequences inLinuxcutover.sh dueWindowswrite_text. Quarantined, no upload. Rootchangedexacttwo scriptwrites towrite_bytes UTF8 plus actualbyte-level LFtest. Existing source4 accepted6dependencies. Requirefiniteindependentreview exact2line source/testdelta and newcomplete6hashmap beforepackage-v2; preserve allguards/metadata/rollback/prepare-only behavior.",
+        "created_at": 1791987214.614042,
+        "depth": 1,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e8a6b67594f343c695169d80a751657e",
+        "parent_task_id": "task-da32996765774004bfff917b76811b1a",
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/lf-validation.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -B -m unittest -v test_reader_release.py",
+              "cwd": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "exit": 0,
+              "result": "4 passed; 7.639s test time, 7.809s elapsed"
+            },
+            {
+              "command": "python -B -m unittest -v test_verify_candidate_runtime.py",
+              "cwd": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker",
+              "exit": 0,
+              "result": "14 passed; 0.052s test time, 0.313s elapsed"
+            },
+            {
+              "kind": "hashes",
+              "result": "All six SHA-256 values match reviewed_source_candidates and prior current-file map"
+            },
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/lf-validation.json",
+              "sha256": "5CA281C75A41AB304D97B40920B064DAEBA871467938AC5E51457E8872CC3A94"
+            }
+          ],
+          "limitations": [
+            "No runtime execution, package-v2 build, upload or publication performed or claimed.",
+            "Separate actual Claude source acceptance remains required.",
+            "Initial wrong-directory legacy invocation exited 1; corrected owning-directory invocation passed 14/14 and is recorded in report."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Finite independent local source QA accepted for this scope: fresh 4/4 Reader tests and 14/14 legacy verifier tests passed; all six current dependency hashes exactly match packet reconstruction."
+        },
+        "root_task_id": "task-da32996765774004bfff917b76811b1a",
+        "run_id": "run-60ca9c834ab7422f83ba6fc7f4bcd743",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Verify deterministic LF in Linux release scripts",
+        "version": 4,
+        "reviewer": "session-326653dc968141d4bad5ddcc42611cc0",
+        "review_note": "Independent source-only review by Claude Sonnet 5 (session-326653dc968141d4bad5ddcc42611cc0). Scope: current on-disk LF-correction delta only, per prior accepted independent-release-source-review-v4.json; no execution/build/browser/publish. Recomputed all 6 dependency SHA-256 hashes myself (sha256sum on C:/ap/quiz_master): prepare_reader_release.py=8f4e38e5aeaf8d957d3a2ca715abf6c28f3e6bf3ecac9550359778e82ad1be89 verify_reader_candidate.py=c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2 test_reader_release.py=094100960bddb92fb8d6cac60462aff2a7b827044434d1c442f1ff4d051543ac prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0 verify_candidate_runtime.py=dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca test_verify_candidate_runtime.py=9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb -- all 6 match lf-source-correction.json/lf-validation.json exactly. Confirmed the claimed delta by reading the actual diff: prepare_reader_release.py install_runtime_verifier() has exactly two write_text->write_bytes((...).encode('utf-8')) replacements (cutover.sh line 128, rehearse.py line 133), and test_reader_release.py adds exactly one byte-level regression assertion: self.assertNotIn(b'\\r\\n',(stage/'cutover.sh').read_bytes(),'Linux shell script must use LF') at line 42. Ran both real suites myself (not trusting prior claims): test_reader_release.py 4/4 pass in 5.38s; test_verify_candidate_runtime.py (house, MIXED_RELEASE_20261014/worker) 14/14 pass in 0.042s = 18/18. py_compile clean on all 6 files. Verified prior guards remain unweakened by grep: helm-upgrade rejection, BASELINE_CUTOVER_IMAGE/PVC_UID/API/Nginx pin checks, prior-266/147 bound, successor-153/151/2 bound are all still enforced via require(...) in prepare_reader_release.py. Fix is correct and minimal: Path.write_text() on Windows translates '\\n'->os.linesep (CRLF) even with encoding set, because newline defaults to universal-newlines translation; write_bytes() with an explicit UTF-8-encoded payload bypasses that translation entirely, so this is the right root-cause fix for a cross-platform (Windows authoring host, Linux target) LF requirement, not a cosmetic patch. Limitation: did not attempt an isolated 'revert the fix and show test fails' rebuild, since the test module resolves a fixed external archive path (C:/Users/.run/mixed_release_20261014/...) that breaks when the worker files are copied to a scratch dir outside the repo; judged unnecessary since the assertion's intent is unambiguous by inspection and the real in-place suite run already exercises it end-to-end. No new findings beyond lf-validation.json; full prior-source findings in independent-release-source-review-v4.json remain accepted as-is, no repeat whole-project audit performed. Acceptance is prepare-only source review; does not cover execution, package-v2 creation, or publication."
+      }
+    }
+  },
+  "review_messages": [
+    "To session-27aed86cfdf24a7ca4f3872e17b6d4b4 (Root): task-e8a6b67594f343c695169d80a751657e independently reviewed and ACCEPTED, error_count 0 (run-60ca9c834ab7422f83ba6fc7f4bcd743, now ACCEPTED v4). I recomputed all 6 dependency SHA-256 hashes myself directly on C:/ap/quiz_master (not trusting lf-validation.json's figures) and they match exactly: prepare_reader_release.py=8f4e38e5aeaf8d957d3a2ca715abf6c28f3e6bf3ecac9550359778e82ad1be89, verify_reader_candidate.py=c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2, test_reader_release.py=094100960bddb92fb8d6cac60462aff2a7b827044434d1c442f1ff4d051543ac, prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0, verify_candidate_runtime.py=dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca, test_verify_candidate_runtime.py=9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb. Confirmed by reading the real diff that the delta is exactly the two claimed write_text->write_bytes(...encode('utf-8')) replacements in install_runtime_verifier (cutover.sh, rehearse.py) plus the one byte-level assertNotIn(b'\\r\\n', ...) regression test. Ran both real suites myself in place: 4/4 (test_reader_release.py) + 14/14 (test_verify_candidate_runtime.py) = 18/18 pass. py_compile clean on all 6. Prior guards (helm-upgrade rejection, image/API/PVC pins, 266/147 prior bound, 153/151/2 successor bound) all still enforced. Full note posted via hub_task review. Scope: source-only, no execution/package-v2/publication claimed or performed by me."
+  ],
+  "report": "Review complete and submitted.\n\n**Verdict: ACCEPT, error_count 0** — posted via `hub_task review` on `task-e8a6b67594f343c695169d80a751657e` (now state `ACCEPTED`, version 4, run `run-60ca9c834ab7422f83ba6fc7f4bcd743`), relayed to Root (`session-27aed86cfdf24a7ca4f3872e17b6d4b4`).\n\nKey points, all independently verified rather than taken on trust:\n- Recomputed all 6 dependency SHA-256 hashes myself (`sha256sum` on the real files) — exact match to `lf-source-correction.json` / `lf-validation.json`.\n- Read the actual diff: the delta is genuinely just two `write_text` → `write_bytes((...).encode('utf-8'))` replacements in `install_runtime_verifier()` (`prepare_reader_release.py` lines 128/133, for `cutover.sh` and `rehearse.py`), plus one new byte-level test, `assertNotIn(b'\\r\\n', ..., 'Linux shell script must use LF')` in `test_reader_release.py:42`.\n- Ran both real suites myself in place: 4/4 and 14/14 (18/18) passing. `py_compile` clean on all six files.\n- Confirmed by grep that prior guards (helm-upgrade rejection, image/API/PVC pins, 266/147 prior bound, 153/151/2 successor bound) are all still enforced — scope wasn't weakened.\n- This is the correct root-cause fix, not cosmetic: `Path.write_text()` on Windows applies universal-newline translation (`\\n`→CRLF) by default even with `encoding` set; `write_bytes()` on an already-UTF-8-encoded payload bypasses that entirely.\n\nOne limitation I disclosed in the review note: I didn't attempt an isolated \"revert the fix, show the test fails\" rebuild, since the test module hardcodes an external archive path that breaks when copied to a scratch directory — judged unnecessary given the assertion's intent is unambiguous and the in-place suite run already exercises it end-to-end.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "e88aa8c3ba57030d7b688272a32111dfab22a4884ab8b4853047b6c446917f9e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

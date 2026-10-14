@@ -1,0 +1,41 @@
+{
+  "status": "ROOT_CORRECTED_PENDING_INDEPENDENT_SOURCE_REVIEW",
+  "author_session": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+  "task": "task-ae09e4064b1546198a1c5d791f539b16",
+  "previous_worker_submission": "Historical V3 report preserved separately; Root took ownership after worker declared completion and native runtime reset. Current source hashes supersede old submitted hashes.",
+  "changes": [
+    "Fixed actual missing NONCATALOG helper attribute and verified151 exact bindings against frozen Git snapshots",
+    "Restored actual build receipt and QA/browser/cleanup provenance; froze complete69-file Web trees",
+    "Bound current Reader/catalog to actual frozen Git bytes and archived baseline Reader bytes",
+    "Bound controller plus house dependency hashes to actual different-provider acceptance",
+    "Replaced synthetic gates/tests with real archived gate, actual house inject_version and executed metadata gate; retained prepare-only cutover, actual53 image and rollback API/checksum"
+  ],
+  "checks": [
+    {
+      "command": "python -B -m unittest -v test_reader_release.py",
+      "actual_exit": 0,
+      "tests": 4,
+      "elapsed_seconds": 12.787
+    },
+    {
+      "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+      "actual_exit": 0
+    }
+  ],
+  "reviewed_source_candidates": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\prepare_reader_release.py": "07a8d40156657e31c00ad9f3de47e9697d7ca525d833a2971035806e8c08e431",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\test_reader_release.py": "275d32f32a9127ebc5da6e9f093d0dfb81d53a4aebdee5411c7584a0632c9864",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb"
+  },
+  "remaining": [
+    "Actual fresh independent source review",
+    "Local archive producer execution with accepted hash-pinned manifest",
+    "Immutable candidate image/copyDB/restore/rollback and independent execution review",
+    "Authorized publication and normalTLS/public mobile verification"
+  ],
+  "runtime_execution": false,
+  "production_unchanged": "Helm53 Reader266; frozen17 six Reader articles local272"
+}

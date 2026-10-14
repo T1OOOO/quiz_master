@@ -1,0 +1,96 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-ae09e4064b1546198a1c5d791f539b16": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent source-only review by session-e19b1afcdcfd4ce2ae3da017910d3aa7 (Claude Sonnet 5). Scope: current Root-corrected files, no build/image/browser/publish execution. All 6 dependency file hashes recomputed independently and match reviewed_source_candidates in REPORT.json exactly. py_compile clean on all 6. test_reader_release.py: 4/4 pass (6.6s), including a real subprocess execution of the extracted cutover metadata gate against fixture dirs (not a self-assert stub; flips returncode on corrupted question_articles). House test_verify_candidate_runtime.py: 14/14 pass (0.05s, pure, no docker). Fixes verified vs prior REWORK(5): (1) NONCATALOG_READER_REFS AttributeError fixed -- prepare_reader_release.py binds it via verify_reader_candidate.load_house(), which loads verify_candidate_runtime.py (where the list lives), separate from house() which loads prepare_lotr_package.py. (2) verify_reader_candidate.py no longer reimplements counting -- it runpy's house verify_candidate_runtime.py as __main__ with --expected-reader-articles 272/153/151 args; wrapper functions call house functions with same overrides, no fork. (3) main() is prepare-only end to end: traced every call in prepare()/house main() -- hash checks, tar extraction, string rewrites of cutover.sh/rehearse.py, re-archive via tarfile/gzip; no docker/helm/browser call anywhere; explicit guard rejects 'helm upgrade' text. Baseline pins (archive ede81d.., image 2d1ea6.., API f4d695.., nginx e9add8.., PVC 7fc2428f.., commit 17be4ce..) match claims; git cat-file/log confirm 17be4ce is real. QA excluded from package (hash-checked only, never copied); production_web!=qa_web enforced. Reader counts 266/147->272/153(151 playable+2 noncatalog) bound to browser-proof hashes and real git-derived revision map. Controller-review gate requires cross-provider author!=reviewer and an exact 6-file hash map; not fabricated in source, consistent with Root creating it only after my real callback. LIMITATIONS: did not execute full prepare()/main() against real pins/build/browser/docker evidence (none supplied, out of this review's finite scope); relied on static reading plus unit tests. No image/copiedDB/deployment claim made. SHA-256: prepare_reader_release.py=07a8d40156657e31c00ad9f3de47e9697d7ca525d833a2971035806e8c08e431 verify_reader_candidate.py=c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2 test_reader_release.py=275d32f32a9127ebc5da6e9f093d0dfb81d53a4aebdee5411c7584a0632c9864 prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0 verify_candidate_runtime.py=dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca test_verify_candidate_runtime.py=9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal reviewed-source successor with exactpins, provenance+archive protections, old266identity/sixrefdelta, staleproof/QA pollution guards, realcandidateAPI/copiedDB/rollback/cleanup gates retained; actualpuretestreceipts+hashes; no runtime executionclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-39f15915ba7049cb8acbb2d0c2e19164",
+        "author": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "body": "Execute MIXED_READER_IMPORT_20261014/RELEASE_WORKER_PACKET_EN.md. Own onlynewworker/. Reusehousehelpers; exactprior53archiveede81/image2d1/API f4; Reader266->272 refs153/151/2; preserveallquestions/API/data/schema, prepare-only immutableproducer+realcandidateverifier adaptation withpureboundarytests. NoGit/remote/build/browser/deploy/children. IndependentsourcereviewbeforeRootexecution.",
+        "created_at": 1791982056.0999386,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "dependencies": [
+            "Root-owned MIXED_RELEASE verifier count plumbing (unchanged)",
+            "frozen-web-trees.json sha256 3d0f5912968932c3fcf286de6ddc01f12d23ba15a513d78dea2ecde28f61fe95"
+          ],
+          "evidence": [
+            {
+              "command": "python -B -m unittest -v test_reader_release.py",
+              "kind": "test",
+              "result": "4 passed"
+            },
+            {
+              "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+              "kind": "compile",
+              "result": "exit 0"
+            },
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/REPORT.json"
+            }
+          ],
+          "hashes": {
+            "README.md": "c9b2dc5c91ca3502c1a5709c6be120f95eea027f8eaaaac75bf5b52722069c8e",
+            "prepare_reader_release.py": "a738088f8807b1c189b8ebaec266974da1cf1fd1c37f2fef8fd6fc1996712446",
+            "test_reader_release.py": "d28e2ae932e1d8ff43d239dcd81a0a72cbb9ff151d5306a391226325dcef01d4",
+            "verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2"
+          },
+          "risks": [
+            "Requires new different-provider source review.",
+            "No archive/image/runtime execution claimed."
+          ],
+          "status": "ready_for_different_provider_review",
+          "summary": "V3 fixes V2 findings: real house inject_version metadata gate, archive-byte-bound prior Reader, exact production/QA tree manifests, actual acceptance receipt semantics, and actual53 cutover/rehearsal rollback guards. No execution performed."
+        },
+        "review_note": "Independent source-only review by session-e19b1afcdcfd4ce2ae3da017910d3aa7 (Claude Sonnet 5). Scope: current Root-corrected files, no build/image/browser/publish execution. All 6 dependency file hashes recomputed independently and match reviewed_source_candidates in REPORT.json exactly. py_compile clean on all 6. test_reader_release.py: 4/4 pass (6.6s), including a real subprocess execution of the extracted cutover metadata gate against fixture dirs (not a self-assert stub; flips returncode on corrupted question_articles). House test_verify_candidate_runtime.py: 14/14 pass (0.05s, pure, no docker). Fixes verified vs prior REWORK(5): (1) NONCATALOG_READER_REFS AttributeError fixed -- prepare_reader_release.py binds it via verify_reader_candidate.load_house(), which loads verify_candidate_runtime.py (where the list lives), separate from house() which loads prepare_lotr_package.py. (2) verify_reader_candidate.py no longer reimplements counting -- it runpy's house verify_candidate_runtime.py as __main__ with --expected-reader-articles 272/153/151 args; wrapper functions call house functions with same overrides, no fork. (3) main() is prepare-only end to end: traced every call in prepare()/house main() -- hash checks, tar extraction, string rewrites of cutover.sh/rehearse.py, re-archive via tarfile/gzip; no docker/helm/browser call anywhere; explicit guard rejects 'helm upgrade' text. Baseline pins (archive ede81d.., image 2d1ea6.., API f4d695.., nginx e9add8.., PVC 7fc2428f.., commit 17be4ce..) match claims; git cat-file/log confirm 17be4ce is real. QA excluded from package (hash-checked only, never copied); production_web!=qa_web enforced. Reader counts 266/147->272/153(151 playable+2 noncatalog) bound to browser-proof hashes and real git-derived revision map. Controller-review gate requires cross-provider author!=reviewer and an exact 6-file hash map; not fabricated in source, consistent with Root creating it only after my real callback. LIMITATIONS: did not execute full prepare()/main() against real pins/build/browser/docker evidence (none supplied, out of this review's finite scope); relied on static reading plus unit tests. No image/copiedDB/deployment claim made. SHA-256: prepare_reader_release.py=07a8d40156657e31c00ad9f3de47e9697d7ca525d833a2971035806e8c08e431 verify_reader_candidate.py=c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2 test_reader_release.py=275d32f32a9127ebc5da6e9f093d0dfb81d53a4aebdee5411c7584a0632c9864 prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0 verify_candidate_runtime.py=dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca test_verify_candidate_runtime.py=9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+        "reviewer": "session-e19b1afcdcfd4ce2ae3da017910d3aa7",
+        "root_task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "run_id": "run-385575c8f4f84b9190c65b32b639f64b",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-d7619abca9114fb5a2717735d8988522",
+        "title": "Implement finite Reader-only release successor preserving Helm53 baseline",
+        "version": 10
+      }
+    }
+  },
+  "review_messages": [
+    "To session-27aed86cfdf24a7ca4f3872e17b6d4b4 (Root): task-ae09e4064b1546198a1c5d791f539b16 independent source-only review complete -- ACCEPT, error_count 0. All 6 reviewed_source_candidates hashes from root-source-corrections.json/worker/REPORT.json recomputed and verified bit-for-bit. 4 worker + 14 house pure tests pass (18/18). Both prior REWORK findings (missing NONCATALOG binding, forked verify_reader_candidate counting) confirmed fixed. main() in both prepare_reader_release.py and house prepare_lotr_package.py traced end-to-end as prepare-only, no docker/helm/browser/publish. Full note + SHA-256s posted via hub_task review on task-ae09e4064b1546198a1c5d791f539b16 (run-385575c8f4f84b9190c65b32b639f64b, now state ACCEPTED). Note: task.result still carries stale V3 hashes for prepare_reader_release.py/test_reader_release.py -- my review is against the CURRENT on-disk files, matching your root-source-corrections.json, not that stale record. Acceptance is source-only; does not cover image/copiedDB/deployment. Stopping here per finite review scope."
+  ],
+  "report": "Review complete. Summary:\n\n**Verdict: ACCEPT, error_count 0** — posted via `hub_task review` on task-ae09e4064b1546198a1c5d791f539b16 (now state `ACCEPTED`), and relayed to Root (session-27aed86cfdf24a7ca4f3872e17b6d4b4).\n\nKey findings:\n- All 6 dependency files' SHA-256 hashes recomputed and matched exactly against `root-source-corrections.json`.\n- Both prior REWORK defects (missing `NONCATALOG_READER_REFS` binding; forked reimplementation in `verify_reader_candidate.py`) are genuinely fixed, confirmed by reading source, not just trusting claims.\n- 4 worker + 14 house tests pass (18/18), including a real subprocess execution of the cutover metadata gate (not a self-assert stub).\n- `main()` in both the Reader controller and the house `prepare_lotr_package.py` traced end-to-end as prepare-only — no docker/helm/browser/publish calls anywhere.\n- Baseline pins (archive/image/API/nginx/PVC/frozen-commit hashes) all match claims; frozen commit verified to exist in actual git history.\n\nLimitations stated in the review: no execution of the full `prepare()`/`main()` path against real pins/build/browser/docker evidence (none supplied, out of this finite source-review's scope) — correctness there rests on static reading plus the unit tests. This acceptance is source-only and does not cover image/copiedDB/deployment.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+      "error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "4339efa2ef636abb25f9e34561dad18c3cd8d2f5810c3f3a624db63b4e3b828c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

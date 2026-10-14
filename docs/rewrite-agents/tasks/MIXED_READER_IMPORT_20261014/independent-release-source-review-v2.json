@@ -1,0 +1,93 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-ae09e4064b1546198a1c5d791f539b16": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+          "verdict": "rework",
+          "error_count": 4,
+          "note": "REWORK (V2). Verified by reading all worker files + Root's verify_candidate_runtime.py/test diff, running tests myself (5/5 worker + 14/14 house, exit 0), recomputing file_sha256 (matches REPORT.json), and extracting the pinned prior archive to recompute its SHA-256: ede81db6...8ead -- matches. All 5 V1 findings are genuinely RESOLVED: main() now builds a real stage+archive via the actual house module (helper.verify_safe_archive/extract_immutable/archive_and_verify), verify_inputs()+verify_preserved() are on the real call path, verify_reader_candidate.py's CLI runs the real house main() via runpy (full DTO/grading/reveal unchanged) plus Reader-count overrides, and Root's count-plumbing diff keeps old 266/147/145 defaults with a correct consistency guard. New concrete defects, not caught by passing tests: (1) CRITICAL, prepare_reader_release.py:127-140 install_runtime_verifier(). I extracted the real archived cutover.sh: its ONE metadata heredoc asserts meta['buildId'], meta['commit']/['source_commit'], meta['packs']==136, meta['questions']==4084, meta['question_articles']==266 against web/version.json -- the sole production gate binding deployed build/source/counts. V2 replaces it with assertions on meta['app_name']/['package_name']/['version']/['build_number'], fields absent from version.json's real 14-key schema (confirmed via inject_version() in MIXED_RELEASE_20261014/worker/prepare_lotr_package.py). Net effect: successor cutover drops real buildId/commit/packs/questions/question_articles validation and checks a schema that never matches -- answers the packet's own question (production version.json needs explicit successor metadata: buildId==BUILD_ID, commit==FROZEN_COMMIT, packs==136, questions==4084, question_articles==272), currently absent. (2) HIGH, prepare():146-168/verify_reader_delta(). 'Prior 266 unchanged' is only self-consistency between caller-supplied prior_reader/current_reader pins; the archive's own extracted Reader file digest (captured in verify_preserved's 'before' map) is never compared to pins['prior_reader'], and READER_SOURCE is in the allowed-changed set, so a fabricated prior_reader passes silently -- baseline Reader is merely supplied by caller, not bound to the archive. (3) MEDIUM, verify_inputs():82-87/prepare():162. Only web/main.dart.js is hash-bound to the build receipt; shutil.copytree of production_web is otherwise unverified -- other production Web assets (service worker, index.html, any web-bundled Reader/catalog copy) are unproven. (4) MEDIUM, test_reader_release.py ~99-103: the roundtrip test's fake cutover.sh uses a bare non-executable 'meta[\"question_articles\"]==266' expression instead of the real 4-field assert block, and only checks substring membership -- this synthetic fixture concealed finding (1). Positive: scope restraint, honest DONE_WITH_CONCERNS status, hashes check out elsewhere, Root's diff is clean. Minimal fix: rewrite the replacement gate to assert the real schema fields with successor values; bind prior_reader to the archive's own extracted READER_SOURCE before overwrite; hash-pin the full production_web tree, not just main.dart.js; replace the synthetic fixture with one matching the real archive bytes. Do not accept until the real-archive cutover gate is verified end to end."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal reviewed-source successor with exactpins, provenance+archive protections, old266identity/sixrefdelta, staleproof/QA pollution guards, realcandidateAPI/copiedDB/rollback/cleanup gates retained; actualpuretestreceipts+hashes; no runtime executionclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-39f15915ba7049cb8acbb2d0c2e19164",
+        "author": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "body": "Execute MIXED_READER_IMPORT_20261014/RELEASE_WORKER_PACKET_EN.md. Own onlynewworker/. Reusehousehelpers; exactprior53archiveede81/image2d1/API f4; Reader266->272 refs153/151/2; preserveallquestions/API/data/schema, prepare-only immutableproducer+realcandidateverifier adaptation withpureboundarytests. NoGit/remote/build/browser/deploy/children. IndependentsourcereviewbeforeRootexecution.",
+        "created_at": 1791982056.0999386,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "dependencies": [
+            "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_lotr_package.py",
+            "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/verify_candidate_runtime.py (Root-owned 14-test verifier count plumbing)"
+          ],
+          "evidence": [
+            {
+              "command": "python -B -m unittest -v test_reader_release.py",
+              "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "kind": "test",
+              "result": "5 passed"
+            },
+            {
+              "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+              "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "kind": "compile",
+              "result": "exit 0"
+            },
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/REPORT.json"
+            }
+          ],
+          "hashes": {
+            "README.md": "c9b2dc5c91ca3502c1a5709c6be120f95eea027f8eaaaac75bf5b52722069c8e",
+            "prepare_reader_release.py": "f1ceb29c9f7da8aa68099a46fbe00fd7477e16361b87f2f1e774e002d4a49f6c",
+            "test_reader_release.py": "87ce6cc5920c5a8d53e0634e0a11d26856954584ffc857960a54269517bc8ae5",
+            "verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2"
+          },
+          "risks": [
+            "Different-provider review required before execution.",
+            "Root must produce a real output manifest before execution."
+          ],
+          "status": "ready_for_different_provider_review",
+          "summary": "Rework completed in owned worker/ scope. Hash-bound stage/archive controller reuses house archive helpers, preserves nonweb provenance, overlays verified production web, and stages the copied-DB runtime verifier with Reader 272/153/151 overrides. Pure checks pass; no execution or publication performed."
+        },
+        "review_note": "REWORK (V2). Verified by reading all worker files + Root's verify_candidate_runtime.py/test diff, running tests myself (5/5 worker + 14/14 house, exit 0), recomputing file_sha256 (matches REPORT.json), and extracting the pinned prior archive to recompute its SHA-256: ede81db6...8ead -- matches. All 5 V1 findings are genuinely RESOLVED: main() now builds a real stage+archive via the actual house module (helper.verify_safe_archive/extract_immutable/archive_and_verify), verify_inputs()+verify_preserved() are on the real call path, verify_reader_candidate.py's CLI runs the real house main() via runpy (full DTO/grading/reveal unchanged) plus Reader-count overrides, and Root's count-plumbing diff keeps old 266/147/145 defaults with a correct consistency guard. New concrete defects, not caught by passing tests: (1) CRITICAL, prepare_reader_release.py:127-140 install_runtime_verifier(). I extracted the real archived cutover.sh: its ONE metadata heredoc asserts meta['buildId'], meta['commit']/['source_commit'], meta['packs']==136, meta['questions']==4084, meta['question_articles']==266 against web/version.json -- the sole production gate binding deployed build/source/counts. V2 replaces it with assertions on meta['app_name']/['package_name']/['version']/['build_number'], fields absent from version.json's real 14-key schema (confirmed via inject_version() in MIXED_RELEASE_20261014/worker/prepare_lotr_package.py). Net effect: successor cutover drops real buildId/commit/packs/questions/question_articles validation and checks a schema that never matches -- answers the packet's own question (production version.json needs explicit successor metadata: buildId==BUILD_ID, commit==FROZEN_COMMIT, packs==136, questions==4084, question_articles==272), currently absent. (2) HIGH, prepare():146-168/verify_reader_delta(). 'Prior 266 unchanged' is only self-consistency between caller-supplied prior_reader/current_reader pins; the archive's own extracted Reader file digest (captured in verify_preserved's 'before' map) is never compared to pins['prior_reader'], and READER_SOURCE is in the allowed-changed set, so a fabricated prior_reader passes silently -- baseline Reader is merely supplied by caller, not bound to the archive. (3) MEDIUM, verify_inputs():82-87/prepare():162. Only web/main.dart.js is hash-bound to the build receipt; shutil.copytree of production_web is otherwise unverified -- other production Web assets (service worker, index.html, any web-bundled Reader/catalog copy) are unproven. (4) MEDIUM, test_reader_release.py ~99-103: the roundtrip test's fake cutover.sh uses a bare non-executable 'meta[\"question_articles\"]==266' expression instead of the real 4-field assert block, and only checks substring membership -- this synthetic fixture concealed finding (1). Positive: scope restraint, honest DONE_WITH_CONCERNS status, hashes check out elsewhere, Root's diff is clean. Minimal fix: rewrite the replacement gate to assert the real schema fields with successor values; bind prior_reader to the archive's own extracted READER_SOURCE before overwrite; hash-pin the full production_web tree, not just main.dart.js; replace the synthetic fixture with one matching the real archive bytes. Do not accept until the real-archive cutover gate is verified end to end.",
+        "reviewer": "session-345a703d16e241279970f07cbf18a7c4",
+        "root_task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "run_id": "run-904251cbcedb45199326a86c40bc48ef",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-d7619abca9114fb5a2717735d8988522",
+        "title": "Implement finite Reader-only release successor preserving Helm53 baseline",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [
+    "Reviewed task-ae09e4064b1546198a1c5d791f539b16 (Reader release successor V2) as session-345a703d16e241279970f07cbf18a7c4 (Claude Sonnet 5). Verdict REWORK, error_count 4, full note posted to hub_task. Independently verified: 5/5 worker tests + 14/14 house tests pass (ran myself), file_sha256 in REPORT.json all match recomputation, and the pinned prior archive's real SHA-256 (extracted directly) matches ede81db6...8ead. All 5 of the first review's findings are genuinely resolved -- main() now builds a real stage+archive and delegates to the actual house module instead of forking it, and Root's verify_candidate_runtime.py count-plumbing diff keeps the old 266/147/145 defaults with a consistency guard, which is correct. But I extracted the real archived cutover.sh and found a new regression the tests don't catch: install_runtime_verifier() in prepare_reader_release.py replaces the ONE real production cutover gate (which asserts meta['buildId'], meta['commit']/['source_commit'], meta['packs']==136, meta['questions']==4084, meta['question_articles']==266 against web/version.json) with assertions on meta['app_name']/['package_name']/['version']/['build_number'] -- fields that don't exist anywhere in version.json's real 14-key schema. The successor cutover ends up with NO real buildId/commit/packs/questions/question_articles validation at deploy time. Also found: the 'prior 266 articles unchanged' guarantee is only self-consistency between caller-supplied prior_reader/current_reader JSON pins, never cross-checked against the archive's own extracted Reader file; only main.dart.js (not the rest of production_web) is hash-bound to the build receipt; and the unit test fixture for this path uses a fake, non-representative cutover.sh so it never exercises the real gate content. Concrete minimal fixes are in the hub note. Source-approval only -- no runtime execution authorized by this review."
+  ],
+  "report": "Review posted successfully to task-ae09e4064b1546198a1c5d791f539b16 (now state REWORK, version 7), and the summary message went to session-aa6ffd699e314d54bf0ef13a24fbcfef. Stopping here as instructed.\n\n**Verdict: REWORK (error_count 4), reviewer session-345a703d16e241279970f07cbf18a7c4 (Claude Sonnet 5)**\n\nAll 5 issues from the first review are genuinely fixed in V2 — real stage/archive production, real house-module delegation (no more dead code or forks), and Root's count-plumbing diff in `verify_candidate_runtime.py` is clean (keeps old 266/147/145 defaults, adds explicit kwargs with a consistency guard).\n\nNew defects found by extracting and diffing the real pinned archive (`ede81db6...8ead`, hash confirmed) against the prepared output:\n\n1. **Critical** — `prepare_reader_release.py:127-140`: the real cutover.sh's one production metadata gate (`buildId`/`commit`/`source_commit`/`packs==136`/`questions==4084`/`question_articles==266`) gets replaced with assertions on `app_name`/`package_name`/`version`/`build_number` — fields that don't exist anywhere in `version.json`'s real schema. The successor cutover ends up with **no** real build/source/count validation at deploy time.\n2. **High** — the \"prior 266 articles unchanged\" guarantee is only self-consistency between caller-supplied JSON pins; it's never cross-checked against the archive's own extracted Reader file, so a fabricated `prior_reader` pin would pass silently.\n3. **Medium** — only `main.dart.js` is hash-bound to the build receipt; the rest of the production web tree is copied with zero verification.\n4. **Medium** — the unit test's fake cutover.sh fixture doesn't resemble the real gate, so it concealed finding (1).\n\nFull details are in the hub task note and the message to the lead. No edits, execution, or publication were performed — source review only.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "90cbddd922d1dab15e74dc608e227ceae01f42e15a3715c40b713ee7cfd7d1ab",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

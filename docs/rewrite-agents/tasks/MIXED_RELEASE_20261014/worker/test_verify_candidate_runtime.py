@@ -281,5 +281,38 @@ class GradingAndReceiptGuards(unittest.TestCase):
         self.assertEqual(command[-2:], ["quiz-master:test", "/app/api"])
 
 
+class ReaderSuccessorReceiptTests(unittest.TestCase):
+    def test_successor_counts_require_explicit_parameters_and_keep_other_guards(self):
+        receipt = {
+            "schema_version": v.RECEIPT_SCHEMA,
+            "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+            "image": "quiz-master:reader-test",
+            "target_api_sha256": v.TARGET_API_SHA256,
+            "source_db_unchanged": True,
+            "container_cleanup": True,
+            "scratch_cleanup": True,
+            "port_released": True,
+            "http": {"lotr_questions": 100, "non_target_questions": 98, "target_questions": 2, "packs": 136, "questions": 4084},
+            "reader": {"articles": 272, "total_refs": 153, "playable_refs": 151, "noncatalog_refs": 2},
+            "grading": {"answered": 100, "server_score": 100, "reveals_after_finish": 100},
+            "target_revisions": copy.deepcopy(v.REPAIRED),
+            "mixed_questions": 20,
+            "mixed_grading": {"answered": 20, "server_score": 20, "reveals_after_finish": 20},
+        }
+        with self.assertRaisesRegex(RuntimeError, "Reader"):
+            v.verify_runtime_receipt(receipt, receipt["image"], expected_packs=136, expected_questions=4084)
+        arguments = {"expected_packs": 136, "expected_questions": 4084, "expected_articles": 272, "expected_total_refs": 153, "expected_playable_refs": 151}
+        v.verify_runtime_receipt(receipt, receipt["image"], **arguments)
+        for field in ("port_released", "source_db_unchanged", "container_cleanup", "scratch_cleanup"):
+            altered = copy.deepcopy(receipt)
+            altered[field] = False
+            with self.assertRaisesRegex(RuntimeError, "cleanup"):
+                v.verify_runtime_receipt(altered, receipt["image"], **arguments)
+        altered = copy.deepcopy(receipt)
+        altered["reader"]["total_refs"] = 152
+        with self.assertRaisesRegex(RuntimeError, "Reader"):
+            v.verify_runtime_receipt(altered, receipt["image"], **arguments)
+
+
 if __name__ == "__main__":
     unittest.main()

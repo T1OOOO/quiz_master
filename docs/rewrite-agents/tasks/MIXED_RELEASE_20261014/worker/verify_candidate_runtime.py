@@ -140,7 +140,7 @@ def verify_grading_result(attempt, finish, reveals, runtime):
     return {'answered': len(questions), 'server_score': len(questions), 'reveals_after_finish': len(questions)}
 
 
-def verify_runtime_receipt(receipt, image, *, expected_packs=135, expected_questions=4064):
+def verify_runtime_receipt(receipt, image, *, expected_packs=135, expected_questions=4064, expected_articles=266, expected_total_refs=147, expected_playable_refs=145):
     forbidden = {'private_grading', 'correct_option_id', 'correct_answer', 'token', 'reveals'}
     def safe(value):
         if isinstance(value, dict):
@@ -154,7 +154,7 @@ def verify_runtime_receipt(receipt, image, *, expected_packs=135, expected_quest
     require(receipt.get('schema_version') == RECEIPT_SCHEMA and receipt.get('status') == 'VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED' and receipt.get('image') == image and receipt.get('target_api_sha256') == TARGET_API_SHA256, 'runtime gate evidence identity differs')
     require(all(receipt.get(key) is True for key in ('source_db_unchanged', 'container_cleanup', 'scratch_cleanup', 'port_released')), 'runtime gate evidence cleanup differs')
     require(receipt.get('http') == {'lotr_questions': 100, 'non_target_questions': 98, 'target_questions': 2, 'packs': expected_packs, 'questions': expected_questions}, 'runtime gate evidence HTTP differs')
-    require(receipt.get('reader') == {'articles': 266, 'total_refs': 147, 'playable_refs': 145, 'noncatalog_refs': 2}, 'runtime gate evidence Reader differs')
+    require(receipt.get('reader') == {'articles': expected_articles, 'total_refs': expected_total_refs, 'playable_refs': expected_playable_refs, 'noncatalog_refs': 2}, 'runtime gate evidence Reader differs')
     require(receipt.get('grading') == {'answered': 100, 'server_score': 100, 'reveals_after_finish': 100} and receipt.get('target_revisions') == REPAIRED, 'runtime gate evidence grading differs')
     if (expected_packs, expected_questions) == (136, 4084):
         require(receipt.get('mixed_questions') == 20 and receipt.get('mixed_grading') == {'answered': 20, 'server_score': 20, 'reveals_after_finish': 20}, 'runtime gate evidence mixed grading differs')
@@ -186,7 +186,12 @@ def main():
     parser.add_argument('--port', type=int, default=18091)
     parser.add_argument('--expected-packs', type=int, required=True)
     parser.add_argument('--expected-questions', type=int, required=True)
+    parser.add_argument('--expected-reader-articles', type=int, default=266)
+    parser.add_argument('--expected-reader-total-refs', type=int, default=147)
+    parser.add_argument('--expected-reader-playable-refs', type=int, default=145)
     args = parser.parse_args()
+    require(args.expected_reader_articles > 0 and args.expected_reader_playable_refs > 0 and args.expected_reader_total_refs == args.expected_reader_playable_refs + len(NONCATALOG_READER_REFS), 'invalid expected Reader counts')
+    reader_counts = {'expected_articles': args.expected_reader_articles, 'expected_total_refs': args.expected_reader_total_refs, 'expected_playable_refs': args.expected_reader_playable_refs}
     stage = args.stage.resolve()
     require(stage == Path.cwd().resolve() and stage.parent == Path('/opt/quiz-master/releases'), 'runtime stage boundary differs')
     require(args.source_db.resolve().parent == Path('/opt/quiz-master/backups') and args.source_db.is_file(), 'copied DB source boundary differs')
@@ -243,7 +248,7 @@ def main():
         responses = {row['quiz_id']: request('/v1/catalog?quiz_id=' + urllib.parse.quote(row['quiz_id'], safe='')) for row in catalog}
         lotr = verify_lotr_catalog(responses[QUIZ_ID], runtime, baseline)
         corpus = verify_catalog_collection(catalog, responses, expected_packs=version['packs'], expected_questions=version['questions'])
-        bindings = verify_reader_bindings(reader, responses)
+        bindings = verify_reader_bindings(reader, responses, **reader_counts)
         mixed = read_json(stage / 'next/content/pub-connections-20261014/bundle.json')
         verify_public_catalog(responses['pub-connections-20261014'], mixed)
         guest = request('/v1/guests', {'display_name': 'Candidate runtime verification'}, expect=201)
@@ -291,7 +296,7 @@ def main():
     with socket.create_server(('127.0.0.1', args.port)) as probe:
         pass
     evidence.update(source_db_unchanged=True, container_cleanup=True, scratch_cleanup=True, port_released=True)
-    verify_runtime_receipt(evidence, args.image, expected_packs=version['packs'], expected_questions=version['questions'])
+    verify_runtime_receipt(evidence, args.image, expected_packs=version['packs'], expected_questions=version['questions'], **reader_counts)
     with args.output.open('x', encoding='utf-8') as output:
         json.dump(evidence, output, ensure_ascii=False, indent=2)
         output.write('\n')
