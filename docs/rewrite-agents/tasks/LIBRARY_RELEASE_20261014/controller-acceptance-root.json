@@ -1,0 +1,75 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c3e8ae33288347d497490feca3466db5": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c3e8ae33288347d497490feca3466db5",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 review, verified from scratch (not reused from prior task-69cb385b REWORK notes).\n\npy_compile of all 3 executables: clean (prior IndentationError fixed). controller_sources() now correctly points at MIXED_RELEASE_20261014/worker (prior wrong-directory FileNotFoundError bug fixed); all 9 paths exist, test asserts len==9.\n\nRan python -m unittest -v test_library_release.py test_prepare_library_remote.py directly: 13/13 OK in ~18s (REPORT.json claims 76.466s elapsed on the original run; harmless timing variance, not a correctness issue).\n\nIndependently recomputed sha256 of all 9 files REPORT.json lists under source_dependency_sha256: all 9 match exactly.\n\nCross-checked repo state: FROZEN_COMMIT 09b19cc... is a real commit (git cat-file confirms). Current next/apps/quiz_app/assets/study/question-articles.json actually has 278 articles / 159 total question_refs, matching the code's hardcoded invariants exactly \u2014 not fabricated. Web-tree verification (file_tree/verify_web_tree) is exact-membership (rejects missing or extra files; covered by test). Rollback/rehearsal patch preserves the archived baseline root+checksums while updating the mixed-ref assertion 6\u219212 by exact string replacement with a fail-closed count check. Prepare-only guards (no 'helm upgrade' string, LF-only shell, prepare-only marker) are enforced in both the local producer and prepare_library_remote.py's validate_package. Historical MIXED_RELEASE_20261014 modules are read-only/untouched and reused via dynamic import, not duplicated.\n\nLimitation worth flagging to Root (not a code defect): verify_browser_cleanup() correctly pins exact session/namespace strings and requires self-consistent pid/port fields (tested negatively per-field), and the official close failure itself (exit=1) is substantiated by browserclose.json/raw inside the hash-verified native-command-evidence.zip. However, the zip contains only browser CLI transcripts (open/eval/close/quiz flow) \u2014 no tasklist/Get-Process/netstat-style raw log exists anywhere in the task folder to independently corroborate verified_daemon_pid, previously_verified_chrome_pid, checked_owned_pids, ports_closed, or native_processes_absent. The controller code is appropriately fail-closed against malformed/tampered claims, but cannot detect a well-formed-but-fabricated cleanup record since no raw process/port evidence backs those specific fields. Recommend Root capture a raw process/port-check log before treating this alternate cleanup path as fully proven, ahead of any remote step.\n\nScope respected: read-only review, no repo edits, no build/browser/deploy/SSH. Does not approve runtime or publication."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual positive archivedReader54 prepare-only controls adapt to library09b19cc/Reader278 with12mixedrefs and strictpins. Focused negativeguards meaningful, executablemodules import/CLI. Freshdifferentprovider acceptedsource/dependencyhashes. No publicationclaim untilactualgates.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root takes exclusive worker-module ownership after completed authors/freshClaudeREWORK. Implement actual complete54->55 producer/candidate/remote adapting approvedhousefunctions; correct syntax/dependency/oldbaseline/rehearsal/guardissues, actual archived54 boundedfixtures and tests, bindings/rootstagehashes/feedback/Webtree/privatehistory/rollback preserved. FrozenUI09b19cc actualWebbuilds+mobile20/20+sixReader proofready. No remote before exactsource/dependency independentClaudeacceptance and all runtimegates. No GitHubActions/queue/foreignresources.",
+        "created_at": 1792007195.3220472,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c3e8ae33288347d497490feca3466db5",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "python -m unittest -v test_library_release.py test_prepare_library_remote.py",
+              "exit": 0,
+              "result": "13 tests passed in76.466s; actual archived54 fixtures and trust-boundary negatives"
+            }
+          ],
+          "published": false,
+          "report": "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/worker/REPORT.json",
+          "status": "SOURCE_READY_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-c3e8ae33288347d497490feca3466db5",
+        "run_id": "run-7b3c4b8321554276901baf1a819df542",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Root repair and verify actual library immutable-release controllers",
+        "version": 4,
+        "reviewer": "session-f0d054e653e8459b9a4db7accfd164f1",
+        "review_note": "Independent Claude Sonnet 5 review, verified from scratch (not reused from prior task-69cb385b REWORK notes).\n\npy_compile of all 3 executables: clean (prior IndentationError fixed). controller_sources() now correctly points at MIXED_RELEASE_20261014/worker (prior wrong-directory FileNotFoundError bug fixed); all 9 paths exist, test asserts len==9.\n\nRan python -m unittest -v test_library_release.py test_prepare_library_remote.py directly: 13/13 OK in ~18s (REPORT.json claims 76.466s elapsed on the original run; harmless timing variance, not a correctness issue).\n\nIndependently recomputed sha256 of all 9 files REPORT.json lists under source_dependency_sha256: all 9 match exactly.\n\nCross-checked repo state: FROZEN_COMMIT 09b19cc... is a real commit (git cat-file confirms). Current next/apps/quiz_app/assets/study/question-articles.json actually has 278 articles / 159 total question_refs, matching the code's hardcoded invariants exactly \u2014 not fabricated. Web-tree verification (file_tree/verify_web_tree) is exact-membership (rejects missing or extra files; covered by test). Rollback/rehearsal patch preserves the archived baseline root+checksums while updating the mixed-ref assertion 6\u219212 by exact string replacement with a fail-closed count check. Prepare-only guards (no 'helm upgrade' string, LF-only shell, prepare-only marker) are enforced in both the local producer and prepare_library_remote.py's validate_package. Historical MIXED_RELEASE_20261014 modules are read-only/untouched and reused via dynamic import, not duplicated.\n\nLimitation worth flagging to Root (not a code defect): verify_browser_cleanup() correctly pins exact session/namespace strings and requires self-consistent pid/port fields (tested negatively per-field), and the official close failure itself (exit=1) is substantiated by browserclose.json/raw inside the hash-verified native-command-evidence.zip. However, the zip contains only browser CLI transcripts (open/eval/close/quiz flow) \u2014 no tasklist/Get-Process/netstat-style raw log exists anywhere in the task folder to independently corroborate verified_daemon_pid, previously_verified_chrome_pid, checked_owned_pids, ports_closed, or native_processes_absent. The controller code is appropriately fail-closed against malformed/tampered claims, but cannot detect a well-formed-but-fabricated cleanup record since no raw process/port evidence backs those specific fields. Recommend Root capture a raw process/port-check log before treating this alternate cleanup path as fully proven, ahead of any remote step.\n\nScope respected: read-only review, no repo edits, no build/browser/deploy/SSH. Does not approve runtime or publication."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The review was recorded on the Hub: task-c3e8ae33288347d497490feca3466db5 is now state **ACCEPTED** (version 4), reviewed by this session.\n\n## Summary\n\n**Verdict: ACCEPT** (error_count: 0)\n\n**Hub verification:** Connected as claude-sonnet-5-review, joined team-a32157792ef74ebda086a7f97cc7abb1, confirmed via the Hub's own task record (not the pasted packet text) that task-c3e8ae33288347d497490feca3466db5 was SUBMITTED, requires_review=true, scoped exclusively to `.../LIBRARY_RELEASE_20261014/worker`, result status `SOURCE_READY_NOT_PUBLISHED`, published=false.\n\n**Independent findings:**\n- `py_compile` of all three executables: clean \u2014 the prior task's blocking `IndentationError` is fixed.\n- `controller_sources()` now points at the correct `MIXED_RELEASE_20261014/worker` directory (prior wrong-path `FileNotFoundError` bug fixed); all 9 pinned paths exist.\n- Ran `python -m unittest -v test_library_release.py test_prepare_library_remote.py` myself: **13/13 passed in ~18s** (REPORT.json claims 76.466s \u2014 harmless timing variance, not a correctness issue).\n- Independently recomputed SHA-256 of all 9 files in REPORT.json's `source_dependency_sha256`: **all 9 match exactly**.\n- Cross-checked against live repo state: `FROZEN_COMMIT` 09b19cc is a real commit; the actual `question-articles.json` has 278 articles / 159 refs, matching the code's hardcoded invariants \u2014 not fabricated.\n- Web-tree, rollback/rehearsal patching, and prepare-only/no-helm-upgrade guards are all enforced correctly and tested against real archived fixtures.\n- Historical house modules are read-only/untouched, reused via dynamic import.\n\n**Flagged limitation (not a blocking defect):** The alternate browser-cleanup check (`verify_browser_cleanup`) correctly pins exact session/namespace strings and fails closed on tampered fields (tested), and the *close failure itself* (exit=1) is backed by a hash-verified raw log. But no raw tasklist/netstat-style evidence exists anywhere in the task folder to independently corroborate the claimed PIDs/ports being closed \u2014 only self-reported JSON. I recommended Root capture real process/port-check logs before treating that path as fully proven, ahead of any remote step.\n\n**Limitations of this review:** source-only, read-only; no build, browser, SSH, or deploy was run; this does not approve runtime execution or publication.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "a17e7eb61c0f27ba609475ffe3a1c9220d07b5056778a6b34867b2423c0e1b85",
+  "scope": "Source review of prepare-only controllers; no execution or publication. Runtime/image/copiedDB and deployment approval remain outside this review.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\prepare_library_release.py": "ef8dcd47a03906ee1dbf5d15666067892c8f0e50c8e6d6c0326e487b6085a381",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\test_prepare_library_remote.py": "dec4dcc0adfec981f319fcca34572a6099795d91b45941b4fd31bdadee610e8e",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\prepare_library_remote.py": "2cd0fdfc1a68a4f1e5f27b530d5c9c2d1a3530570fae62f0a037febac653a9e6",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\verify_library_candidate.py": "dc6f035dd4666af7e65f924d2079aedf9c45e9115a95b179b17e63d07512bfed",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\test_library_release.py": "39119a6bdd2ad6f198ddbe3b5c926ede1ec05d88ee311d5d33190cf2813f884f",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  }
+}

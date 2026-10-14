@@ -1,0 +1,53 @@
+{
+  "status": "ROOT_SOURCE_READY_FOR_INDEPENDENT_REVIEW_NOT_PUBLISHED",
+  "task_id": "task-c3e8ae33288347d497490feca3466db5",
+  "owner": "Root; prior authors finished/frozen; no concurrent writer",
+  "frozen_source": "09b19cc2d0fa8463a3e53e9a5f51981e657e2a48",
+  "build_id": "quiz-2026.10.14-library-09b19cc",
+  "baseline_build": "quiz-2026.10.14-reader-17be4ce",
+  "baseline_helm_revision": 54,
+  "successor_helm_revision": 55,
+  "baseline_archive_sha256": "a67c8afa9d18dfe67c4651f50a84c0337998150d5236e9babfed551a212cfb6a",
+  "source_dependency_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\prepare_library_release.py": "ef8dcd47a03906ee1dbf5d15666067892c8f0e50c8e6d6c0326e487b6085a381",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\test_prepare_library_remote.py": "dec4dcc0adfec981f319fcca34572a6099795d91b45941b4fd31bdadee610e8e",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\prepare_library_remote.py": "2cd0fdfc1a68a4f1e5f27b530d5c9c2d1a3530570fae62f0a037febac653a9e6",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\verify_library_candidate.py": "dc6f035dd4666af7e65f924d2079aedf9c45e9115a95b179b17e63d07512bfed",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\test_library_release.py": "39119a6bdd2ad6f198ddbe3b5c926ede1ec05d88ee311d5d33190cf2813f884f",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "checks": [
+    {
+      "command": "python -m unittest -v test_library_release.py test_prepare_library_remote.py",
+      "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker",
+      "actual_exit": 0,
+      "tests": 13,
+      "elapsed_seconds": 76.466
+    },
+    {
+      "command": "python -m py_compile prepare_library_release.py prepare_library_remote.py verify_library_candidate.py",
+      "actual_exit": 0
+    },
+    {
+      "command": "Three executable CLI --help smoke checks",
+      "actual_exit": 0
+    }
+  ],
+  "actual_checks_scope": [
+    "Real archived Reader54 control scripts adapted in a small temporary stage; generated metadata gate executed with actual successor identity, rejecting prior article count. LinuxLF enforced.",
+    "Real prior272/current278, exact six additions/159refs/157playable/two exact noncatalog verified using house frozen revision map; changed old article, wrong quiz and duplicates rejected.",
+    "Private URI/root revision hashes regenerated using house function, stale prior map rejected.",
+    "Full-tree mutation and bootstrap corruption rejected; actual54 remote guards/prepare-only/noHelmupgrade and collection157ref/history/rollback checks preserved.",
+    "Official browser-close1 plus exact owned native-process and port quiescence requires explicit correct namespace/session/PIDs/evidence; negative identity/quiescence/foreign-mutation flags rejected.",
+    "All seven frozen catalog/Reader/new artwork assets must match Git and both actual compiled outputs."
+  ],
+  "changes": "Repaired actual copied producer syntax and dependency paths; adapted real archived54 image/JS/rollback/mixed12 guards, removed non-producing prototype/mirror tests after preserving an ignored diagnostic copy. Historical source modules untouched.",
+  "limits": [
+    "Independent exact source/dependency acceptance pending.",
+    "Actual archive/image/copiedDB/runtime/remote/execution/publication NOT_RUN for this successor.",
+    "Production remains54 Reader272/all29feedbackOPEN; source Reader278, no question/key changes, Greek002 pilot excluded."
+  ]
+}
