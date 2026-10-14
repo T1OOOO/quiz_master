@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-14T16:08:40.438467+00:00",
+  "status": "PUBLISHED_HTTPS_VERIFIED",
+  "normal_tls": true,
+  "assets": {
+    "/version.json": {
+      "status": 200,
+      "sha256": "ec2cbd1226fa3e0394486d4599f90884458cb39a4a0841261174a33a0f89b094"
+    },
+    "/main.dart.js": {
+      "status": 200,
+      "sha256": "8dd33980259b5e72b9a2cb208b993d3613812a3e1d874540be360bdcd526aa27"
+    },
+    "/assets/assets/catalog.json": {
+      "status": 200,
+      "sha256": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618"
+    },
+    "/assets/assets/study/question-articles.json": {
+      "status": 200,
+      "sha256": "41b7f73493aa96e6153b3a1ff2cf522ead47d8b2c5e7b3240ec95b2f9b4e8e82"
+    }
+  },
+  "health_ready": true,
+  "packs": 136,
+  "questions": 4084,
+  "reader_articles": 272,
+  "playable_refs_checked": 151,
+  "known_noncatalog_refs": [
+    {
+      "quiz_id": "study-geography-countries",
+      "question_id": "study-geography-countries-001",
+      "revision_sha256": "4f6f8946ad7c86d3a7e3076e00243321bdffeca8c2671f8a69f6b9b8ef456bb9"
+    },
+    {
+      "quiz_id": "study-geography-countries",
+      "question_id": "study-geography-countries-002",
+      "revision_sha256": "89ed172a4b2ebd6dd18857069a879e261cca05516a1a1b3deb4fe566eb2c44a6"
+    }
+  ],
+  "source_commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+  "scope": "Actual public TLS bytes and every playable Reader revision; browser and server history checks separate"
+}

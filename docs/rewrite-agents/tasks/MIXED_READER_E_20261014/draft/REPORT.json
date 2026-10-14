@@ -1,0 +1,15 @@
+{
+  "packet":"MIXED_READER_E_20261014",
+  "status":"DRAFT_UNREVIEWED",
+  "runtime_identity":"openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411",
+  "scope":"Three draft miniarticles only; no import, publication, build, or whole-bank audit.",
+  "question_refs":[
+    {"id":"question:pub-connections-008","quiz_id":"pub-connections-20261014","question_id":"pub-connections-008","revision_sha256":"a1a1eca62947e3d5d3132258b27f9aa797bcd96160eb0ff3b2e3ea291685b61f"},
+    {"id":"question:pub-connections-013","quiz_id":"pub-connections-20261014","question_id":"pub-connections-013","revision_sha256":"99749857f6bf288bb46962b0c40d5e5264304811190e61c7d241f0e0176d88ba"},
+    {"id":"question:pub-connections-009","quiz_id":"pub-connections-20261014","question_id":"pub-connections-009","revision_sha256":"8ab130918f1ba0f1dce1b71538c9ae8461d8fedfd0b354d0cb5481de152a37cc"}
+  ],
+  "source_counts":{"question:pub-connections-008":2,"question:pub-connections-013":2,"question:pub-connections-009":2},
+  "checks":[{"command":"PowerShell JSON/ref/word/source/paragraph check","cwd":"C:/ap/quiz_master","exit_code":0,"result":"008=181 words/2 sources/3 paragraphs; 013=201/2/3; 009=188/2/3; all exact revision refs matched."},{"command":"Get-FileHash -Algorithm SHA256 E draft outputs","cwd":"C:/ap/quiz_master","exit_code":0}],
+  "limitations":["The two literary Project Gutenberg texts were directly read, but their opened pages do not establish a facsimile source edition; the drafts avoid unsupported edition claims.","Independent fact review remains required.","No import, runtime verification, publication, or whole-bank audit was performed."],
+  "hashes":{"articles.json":"8BE9C5E22702946A3B3C18DA9618CF07E2D5D76E8188AF5421A5D743C1DD810C","SOURCES.md":"9BF79C5F703D48FC489F497327CB5AF2389B6DFC68E970001BAFEE66888EB0D7","REPORT.json_pre_hash_record":"PENDING_FINAL_HASH"}
+}

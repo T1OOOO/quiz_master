@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Домой Quiz Master Открыть меню навигации Смешанный квиз: связи и логика Все вопросы 0 1/20 Отправить отзыв"
+    - generic
+      - generic
+        - button "Назад" [ref=e75]
+        - button "Домой" [ref=e76]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e77]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "0"
+        - StaticText "1/20"
+        - group
+          - group "Граф Орлок, немецкое немое кино и 1922 год: какой роман лежит в основе «Носферату» Мурнау?"
+            - button "«Дракула»" [disabled, ref=e78]
+            - button "«Франкенштейн»" [disabled, ref=e79]
+            - button "«Странная история доктора Джекила и мистера Хайда»" [disabled, ref=e80]
+            - button "«Портрет Дориана Грея»" [disabled, ref=e81]
+      - button "Отправить отзыв" [ref=e2]

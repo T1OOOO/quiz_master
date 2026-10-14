@@ -1,0 +1,39 @@
+{
+  "helm_revision": 54,
+  "helm_status": "deployed",
+  "images": {
+    "api": "docker.io/library/quiz-master@sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4",
+    "web": "docker.io/library/quiz-master@sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4"
+  },
+  "ready": 1,
+  "available": 1,
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "node_ready_no_pressure": true,
+  "disk_free_bytes": 6577991680,
+  "backup_sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+  "preserved_old_rows": {
+    "participants": 150,
+    "sessions": 150,
+    "attempt_bundles": 263,
+    "attempt_questions": 15363,
+    "attempt_answers": 1496,
+    "feedback_reports": 26,
+    "finished_attempts": 87
+  },
+  "all_old_attempt_ids_preserved": true,
+  "live_integrity": "ok",
+  "feedback": {
+    "count": 26,
+    "status_counts": [
+      [
+        "open",
+        26
+      ]
+    ],
+    "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13"
+  },
+  "scope": "Actual postpublication immutablecomponent/PVC/history/cache/feedback preservation; real open attempts may legitimately finish.",
+  "actual_ssh_exit": 0
+}

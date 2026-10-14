@@ -1,0 +1,67 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-da32996765774004bfff917b76811b1a": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-da32996765774004bfff917b76811b1a",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 read-only postpublication receipt review (provider distinct from Codex root/assignee). Verified exactly the 10 named files, no broad scan. published-server-verification.json: Helm revision 54 deployed, image sha256:ac4fd762... for both api/web, ready/available 1, actual_ssh_exit 0, preserved_old_rows (150 participants, 150 sessions, 263 attempt_bundles, 15363 attempt_questions, 26 feedback all status 'open'), all_old_attempt_ids_preserved true. published-https-verification.json: normal_tls true, reader_articles=272, playable_refs_checked=151, known_noncatalog_refs=2 (study-geography-countries-001/002), source_commit=17be4ce7..., version.json/main.dart.js/catalog/question-articles all HTTP 200 with hashes. browser-proof.json: viewport [390,844], helm_revision 54, frozen_source 17be4ce7..., 6 articles with footer screenshots/source-link counts, scope explicitly distinguishes this compiled production UI run from earlier local QA; limitations disclose Chrome-mobile-not-physical-Android, no whole-bank audit, question001 verified from finished result after an automation timing race (not live paused reveal), source links seen but not clicked. pub54v2-summary.json confirms 20/20 selected by text not position; result-after-article1.txt (Russian UI) shows 'Счёт: 20' consistent with that. execution-acceptance.json/independent-execution-review.json: prior subtask task-be2b564 ACCEPTED, reviewer session-1e49b8a470234ea7bdabe65133e09fd1 distinct from assignee session-fbc82a7da83042a483ae3a8f8dbd860c, confirming execution-acceptance.json did not exist pre-publication (gate real) and nothing was published prematurely. publish-exit.json actual_exit 0; publish-log.txt shows api/web/nginx/image OK, backup integrity/restore ok, counts [150,722,263], exactly one 'helm upgrade', REVISION 54, PUBLISHED marker line with matching image/build/backup names. HANDOFF.md narrative matches all of the above verbatim, including the 3 unpublished D-drafts tracked under quiz_master-jf8 and the disclosed 15-vs-16 source-link prose discrepancy (non-blocking). All required invariants hold; no contradictions found. Limitations: did not rerun server/browser/SSH myself (receipts only), did not open the project's full hub_task record (output exceeded tool size limits; relied on hub_message search to confirm task id/title/lifecycle plus the named evidence files), no physical Android or whole-bank fact audit performed by me either. Accept the Root submission as an accurate, internally consistent postpublication receipt for Helm54/image ac4fd762/source17be4ce."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual bounded source acceptance, immutable archive/image/source/DB/runtime/restore/rollback/cleanup proofs, independent actualexecution acceptance and normalTLS/public UI identity afterauthorizedpublication; no inherited52 or stalepasses. Beadsbt7 remainsopenuntilpublishedsix.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014",
+          "C:\\ap\\quiz_master\\.run\\reader_import_20261014"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root owns source corrections and actual execution for frozen17be4ce Reader272 successor to realHelm53 baselinearchiveede81/image2d1. Wait actualdifferent-provider sourceacceptance/hashclosure beforelocalproducer; actualbuild/QA/mobile6proofexist. Preserve136/4084 allquestions/API/history/feedback/PVC; verifyrealcandidate/copiedDB151refs/restore/rollback/noncecleanup then actualindependentexecutionreview beforepublication. NoGitHubActions/perworkerschedulers/sharedbroker orforeignresourceschanges. CurrentRootsession27aed lead newfinite team afterMCPrefresh; originalteam historyleftintact.",
+        "created_at": 1791986639.053674,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-da32996765774004bfff917b76811b1a",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "build_id": "quiz-2026.10.14-reader-17be4ce",
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-server-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-https-verification.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/browser-proof.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/execution-acceptance.json"
+          ],
+          "image": "sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4",
+          "limits": [
+            "No whole-bank fact audit or physical Android device check.",
+            "Three further source-reviewed drafts remain unpublished under quiz_master-jf8;26 real feedback remain open."
+          ],
+          "source_commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+          "status": "PUBLISHED_VERIFIED",
+          "summary": "Six question-linked Reader articles published as Helm54 after genuine source and execution reviews. Both real inherited rehearsal defects were fixed with red/green regressions; failed first stage retained/quarantined. Current Reader272 and all151 playable refs verified through normal TLS, actual mobile20of20 and6dialogs inspected, browser closed. Old rows/history/PVC/API/Nginx and26 real OPEN feedback preserved."
+        },
+        "root_task_id": "task-da32996765774004bfff917b76811b1a",
+        "run_id": "run-8b3403c8763a4c03a3407fa8097374ae",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Execute source-reviewed Reader-only package and release gates",
+        "version": 4,
+        "reviewer": "session-27e2606458b941aaa508981e548ab978",
+        "review_note": "Independent Claude Sonnet 5 read-only postpublication receipt review (provider distinct from Codex root/assignee). Verified exactly the 10 named files, no broad scan. published-server-verification.json: Helm revision 54 deployed, image sha256:ac4fd762... for both api/web, ready/available 1, actual_ssh_exit 0, preserved_old_rows (150 participants, 150 sessions, 263 attempt_bundles, 15363 attempt_questions, 26 feedback all status 'open'), all_old_attempt_ids_preserved true. published-https-verification.json: normal_tls true, reader_articles=272, playable_refs_checked=151, known_noncatalog_refs=2 (study-geography-countries-001/002), source_commit=17be4ce7..., version.json/main.dart.js/catalog/question-articles all HTTP 200 with hashes. browser-proof.json: viewport [390,844], helm_revision 54, frozen_source 17be4ce7..., 6 articles with footer screenshots/source-link counts, scope explicitly distinguishes this compiled production UI run from earlier local QA; limitations disclose Chrome-mobile-not-physical-Android, no whole-bank audit, question001 verified from finished result after an automation timing race (not live paused reveal), source links seen but not clicked. pub54v2-summary.json confirms 20/20 selected by text not position; result-after-article1.txt (Russian UI) shows 'Счёт: 20' consistent with that. execution-acceptance.json/independent-execution-review.json: prior subtask task-be2b564 ACCEPTED, reviewer session-1e49b8a470234ea7bdabe65133e09fd1 distinct from assignee session-fbc82a7da83042a483ae3a8f8dbd860c, confirming execution-acceptance.json did not exist pre-publication (gate real) and nothing was published prematurely. publish-exit.json actual_exit 0; publish-log.txt shows api/web/nginx/image OK, backup integrity/restore ok, counts [150,722,263], exactly one 'helm upgrade', REVISION 54, PUBLISHED marker line with matching image/build/backup names. HANDOFF.md narrative matches all of the above verbatim, including the 3 unpublished D-drafts tracked under quiz_master-jf8 and the disclosed 15-vs-16 source-link prose discrepancy (non-blocking). All required invariants hold; no contradictions found. Limitations: did not rerun server/browser/SSH myself (receipts only), did not open the project's full hub_task record (output exceeded tool size limits; relied on hub_message search to confirm task id/title/lifecycle plus the named evidence files), no physical Android or whole-bank fact audit performed by me either. Accept the Root submission as an accurate, internally consistent postpublication receipt for Helm54/image ac4fd762/source17be4ce."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded: Hub state **ACCEPTED**, reviewer `session-27e2606458b941aaa508981e548ab978` (Claude Sonnet 5, provider distinct from the Codex root/assignee `session-27aed86cfdf24a7ca4f3872e17b6d4b4`), task `task-da32996765774004bfff917b76811b1a`.\n\n**Verdict: Accept**, with limitations.\n\nWhat checked out against the 10 named evidence files:\n- Actual Helm 54, image `sha256:ac4fd762...`, source commit `17be4ce7...` consistent across server/https/browser proofs — not merely prepared state.\n- TLS proof: 272 Reader articles, 151 playable refs checked, exactly 2 known noncatalog refs (study-geography-countries-001/002).\n- Server proof: old sessions/history/PVC/API/Nginx preserved, 26 real feedback reports all still `open`, SSH exit 0.\n- Browser proof: real mobile 390×844 compiled production UI, 20/20 visible score, 6 Reader dialogs/footers, explicitly scoped apart from earlier local QA.\n- Disclosed limitations match the claims exactly: question001 read from finished result after an automation timing race (not live paused reveal), source links seen but not clicked, no physical Android, no whole-bank audit.\n- `execution-acceptance.json` / `independent-execution-review.json` show the prior subtask (`task-be2b564`) genuinely reviewed by a different Claude session than the assignee — confirms the publish gate was real, not bypassed.\n- `publish-exit.json` exit 0; `publish-log.txt` shows exactly one `helm upgrade`, REVISION 54, matching PUBLISHED marker.\n- HANDOFF.md matches all of this, including the 3 unpublished D-drafts tracked under `quiz_master-jf8`.\n\n**My own limitations:** I did not rerun server/browser/SSH — receipts only. I could not pull the full raw root-task record via `hub_task list` (output exceeded the tool's size cap on every filter attempt); I confirmed the task's identity and lifecycle (created → accepted → submitted) via `hub_message search` instead, then reviewed its actual `result` block once returned by the `review` call. No physical-Android or whole-bank fact audit was performed by me, matching the disclosed scope.\n\nNo edits, builds, SSH, browser launches, or further tasks were performed — stopping here as instructed.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "819e65976514b0f23c7fd9142f1cfb8cf9b9fe7a5eeb2a11b308d72d551d6274",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,69 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-3a1a993916084d8386a053ef548fcc31": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-3a1a993916084d8386a053ef548fcc31",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independently recomputed from raw runtime-bundles.json (sha256 aef3ef5a1ab53a82728e2238c5586c84190974afe74d8e6c37653810b960e885, verified byte-for-byte match). Pack/question counts confirm 14 packs / 280 questions (280/4084 = 6.856% coverage, correctly disclosed as a subset, not a whole-bank audit). All 280 private_grading entries resolve to an existing option_id in their question's options (0 missing, 0 mismatched, 0 extra), matching the report exactly. Recomputed the parenthetical-overlap regex and length heuristic independently: found the identical 4 parenthetical candidates (q-ha1-p1-8 gap=14/ratio=1.378/len=51, q-ha1-p1-12 gap=36/ratio=2.714/len=57, q-ha1-p1-18 gap=17/ratio=1.85/len=37, q-ha1-p1-20 gap=12/ratio=1.5/len=36) and 0 length-only candidates (all correct-option lengths are under the 100-char floor, so none qualify even though two have ratio>=1.35). 0 duplicate-normalized distractors confirmed. The report correctly distinguishes parenthetical-overlap from length-only and does not conflate them. The 100-char threshold is explicitly disclosed as a conservative gate in aggregate_results.length_rule, and findings' assessments correctly avoid claiming factual verification or proposing key changes, consistent with the audit's non-factual, editorial-candidate framing. Limitations section correctly scopes this as a heuristic subset audit, not whole-bank or factual verification, and correctly states no production/application/Git state was touched. No claim here implies production (Helm54/Reader272) findings changed. One residual gap: the recorded check commands embed PowerShell here-string literals piped to `python -`, which are not directly reproducible as written outside PowerShell (needs re-quoting for bash); this is a minor reproducibility note, not a correctness defect, since I independently re-derived equivalent Python directly against the same file and got identical results.",
+          "error_categories": []
+        }
+      },
+      "actual_response": {
+        "acceptance": "Explicit actual subset coverage against4084, reproducible input hash/counts and prioritized evidence. No whole-bank fact-pass claim or automatic key change.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ANSWER_OPTION_AUDIT_20261014"
+        ],
+        "assignee": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Read full English ANSWER_OPTION_AUDIT_20261014/PACKET_EN.md. Read-only existing package-v3/runtime-bundles.json; actual subset counts/source hash, private_grading lookup not option position. Flag parenthetical hints, atypical correct-answer length, duplicate alternatives, inspect top15 and distinguish heuristic candidates from true defects. Own only REPORT.json. No edits to questions/keys/app/export, no browser, SSH, builds, Git or helpers. Factual correctness and whole-bank coverage are separate. Submit actual evidence; Root separately reviews/fixes.",
+        "created_at": 1791997670.5562246,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-3a1a993916084d8386a053ef548fcc31",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "check": "Python frozen-package audit",
+              "details": "14 packs, 280 questions, all 280 private_grading mappings resolved; 4 parenthetical candidates; 0 duplicate/length-only/style candidates; input SHA-256 aef3ef5a1ab53a82728e2238c5586c84190974afe74d8e6c37653810b960e885",
+              "exit_code": 0
+            },
+            {
+              "check": "PowerShell ConvertFrom-Json report validation",
+              "details": "REPORT.json parsed; report SHA-256 a56527360051bc3f3298ce982cb0f6ff6ec58bf572c3f09b768ae7f5a5a4749b",
+              "exit_code": 0
+            }
+          ],
+          "limitations": "Heuristic candidates only; no factual verification or key changes.",
+          "report_path": "docs/rewrite-agents/tasks/ANSWER_OPTION_AUDIT_20261014/REPORT.json",
+          "report_sha256": "a56527360051bc3f3298ce982cb0f6ff6ec58bf572c3f09b768ae7f5a5a4749b",
+          "scope": "280/4084 questions (6.856%)",
+          "status": "DONE_WITH_CANDIDATES"
+        },
+        "root_task_id": "task-3a1a993916084d8386a053ef548fcc31",
+        "run_id": "run-7572fde2f8d14f079fc017f6908c6eb5",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Audit canonical answer options for giveaway candidates",
+        "version": 4,
+        "reviewer": "session-c2a78b5f714841baa9444bb91a0155b1",
+        "review_note": "Independently recomputed from raw runtime-bundles.json (sha256 aef3ef5a1ab53a82728e2238c5586c84190974afe74d8e6c37653810b960e885, verified byte-for-byte match). Pack/question counts confirm 14 packs / 280 questions (280/4084 = 6.856% coverage, correctly disclosed as a subset, not a whole-bank audit). All 280 private_grading entries resolve to an existing option_id in their question's options (0 missing, 0 mismatched, 0 extra), matching the report exactly. Recomputed the parenthetical-overlap regex and length heuristic independently: found the identical 4 parenthetical candidates (q-ha1-p1-8 gap=14/ratio=1.378/len=51, q-ha1-p1-12 gap=36/ratio=2.714/len=57, q-ha1-p1-18 gap=17/ratio=1.85/len=37, q-ha1-p1-20 gap=12/ratio=1.5/len=36) and 0 length-only candidates (all correct-option lengths are under the 100-char floor, so none qualify even though two have ratio>=1.35). 0 duplicate-normalized distractors confirmed. The report correctly distinguishes parenthetical-overlap from length-only and does not conflate them. The 100-char threshold is explicitly disclosed as a conservative gate in aggregate_results.length_rule, and findings' assessments correctly avoid claiming factual verification or proposing key changes, consistent with the audit's non-factual, editorial-candidate framing. Limitations section correctly scopes this as a heuristic subset audit, not whole-bank or factual verification, and correctly states no production/application/Git state was touched. No claim here implies production (Helm54/Reader272) findings changed. One residual gap: the recorded check commands embed PowerShell here-string literals piped to `python -`, which are not directly reproducible as written outside PowerShell (needs re-quoting for bash); this is a minor reproducibility note, not a correctness defect, since I independently re-derived equivalent Python directly against the same file and got identical results."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully: task state is now **ACCEPTED**.\n\n```json\n{\n  \"verdict\": \"accept\",\n  \"scope\": \"280/4084 questions (6.856%) — frozen canonical subset, not whole-bank audit\",\n  \"report_sha256_reported_in_task\": \"a56527360051bc3f3298ce982cb0f6ff6ec58bf572c3f09b768ae7f5a5a4749b\",\n  \"input_sha256_verified\": \"aef3ef5a1ab53a82728e2238c5586c84190974afe74d8e6c37653810b960e885\",\n  \"recomputed_checks\": {\n    \"packs\": 14,\n    \"questions\": 280,\n    \"private_grading_entries\": 280,\n    \"missing\": 0,\n    \"mismatch\": 0,\n    \"extra\": 0,\n    \"parenthetical_candidates\": [\n      {\"question_id\": \"q-ha1-p1-8\", \"gap\": 14, \"ratio\": 1.378, \"correct_len\": 51},\n      {\"question_id\": \"q-ha1-p1-12\", \"gap\": 36, \"ratio\": 2.714, \"correct_len\": 57},\n      {\"question_id\": \"q-ha1-p1-18\", \"gap\": 17, \"ratio\": 1.85, \"correct_len\": 37},\n      {\"question_id\": \"q-ha1-p1-20\", \"gap\": 12, \"ratio\": 1.5, \"correct_len\": 36}\n    ],\n    \"length_only_candidates\": 0,\n    \"duplicate_normalized_alternatives\": 0\n  },\n  \"factual_audit_limitation\": \"This is a heuristic/structural audit (parenthetical overlap, length skew, duplicates) on a 280/4084 subset. It does not verify factual correctness of any answer key and does not imply production (Helm54/Reader272, already independently verified) changed.\",\n  \"hub_review_result\": {\n    \"action\": \"mcp__host_hub__hub_task review\",\n    \"task_id\": \"task-3a1a993916084d8386a053ef548fcc31\",\n    \"verdict_sent\": \"accept\",\n    \"error_count_sent\": 0,\n    \"resulting_state\": \"ACCEPTED\",\n    \"note_chars\": 2104\n  }\n}\n```\n\nIndependent recomputation matched the report exactly on every axis (hash, counts, grading resolution, the four findings' gap/ratio/length values, and the zero-counts for length-only, duplicates, and extras). The report correctly disclosed the 100-char threshold as conservative and kept parenthetical-overlap distinct from length-only, without overclaiming factual verification or production impact. Noted one minor, non-blocking reproducibility gap: the logged check commands use PowerShell here-string syntax piped to `python -`, which doesn't run as-written in a POSIX shell (I independently reran equivalent Python directly and got identical results, so this didn't affect the accept decision).",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "3bfa4cedcc8fe64988568ec4cb720f378d300550d815e2fd43302ef05e966f4e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

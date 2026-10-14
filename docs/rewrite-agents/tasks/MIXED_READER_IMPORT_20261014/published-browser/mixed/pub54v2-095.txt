@@ -1,0 +1,13 @@
+- generic
+  - generic "Диалоговое окно"
+    - generic "Диалоговое окно"
+      - button "Закрыть" [ref=e205]
+      - StaticText "«Окно во двор»: расследование из одной комнаты"
+      - button "Закрыть статью" [ref=e206]
+      - group
+        - textbox [disabled, ref=e209]
+        - textbox [disabled, ref=e210]
+        - textbox [disabled, ref=e211]
+        - StaticText "Источники и дальнейшее чтение"
+        - button "AFI Catalog: Rear Window catalog.afi.com" [ref=e207]
+        - button "Yale Film Archive: Rear Window program web.library.yale.edu" [ref=e208]

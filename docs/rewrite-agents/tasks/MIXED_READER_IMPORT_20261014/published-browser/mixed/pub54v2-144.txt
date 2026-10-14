@@ -1,0 +1,13 @@
+- generic
+  - generic "Диалоговое окно"
+    - generic "Диалоговое окно"
+      - button "Закрыть" [ref=e276]
+      - StaticText "Когда экрану понадобился голос"
+      - button "Закрыть статью" [ref=e277]
+      - group
+        - textbox [disabled, ref=e280]
+        - textbox [disabled, ref=e281]
+        - textbox [disabled, ref=e282]
+        - StaticText "Источники и дальнейшее чтение"
+        - button "AFI Catalog: Singin' in the Rain catalog.afi.com" [ref=e278]
+        - button "Academy: Singin' in the Rain www.oscars.org" [ref=e279]

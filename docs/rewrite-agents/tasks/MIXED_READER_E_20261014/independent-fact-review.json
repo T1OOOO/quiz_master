@@ -1,0 +1,87 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-317bbabf31a942688394b5a41d2320b8": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-317bbabf31a942688394b5a41d2320b8",
+          "verdict": "accept",
+          "note": "Independent Claude Sonnet 5 recheck of all 3 owned files (articles.json, SOURCES.md, REPORT.json) plus PACKET_EN.md and the public snapshot. Current file hashes match submitted report exactly: articles.json 8BE9C5...10C, SOURCES.md 9BF79C...EB0D7, REPORT.json F3D319...A73. Snapshot pub-connections-20261014.json whole-file SHA256 recomputed as e0d6ed56...9239 1, matches packet's claimed hash. All 3 revision_sha256 in articles.json question_refs match the live snapshot's quiz.questions[*].revision.sha256 exactly for 008/013/009; quiz_id correct. Recounted body words independently: 008=181 (report says 181, match), 013=204 (report says 201, off by 3), 009=190 (report says 188, off by 2) - all still inside required 150-220 range, so only minor reporting imprecision, not a gate failure. Each article has 2 source_links (2-3 required) and 3 paragraphs by blank-line split, matching report. Fetched and read actual primary sources myself, independent of the report: Gutenberg eBook 12 (Through the Looking-Glass) confirms Alice is the White Queen's Pawn starting on the second square, 11-move win diagram, promotion at eighth square - matches article 008, does not conflate with Alice in Wonderland. Gutenberg eBook 42 (Jekyll and Hyde) confirms Utterson is 'the lawyer', held but refused to draft Jekyll's will, Hyde inherits on death or 3-month disappearance - matches article 013, correctly distinguishes Utterson from the narrator/Lanyon and from Hyde as will-drafter. NASA's Webb sunshield and 'how does Webb stay cold' pages confirm infrared heat sensitivity, L2 Sun/Earth/Moon shielding, 5 non-touching layers radiating heat, passive cooling to ~40K, MIRI's separate active cryocooler not shared by other instruments - matches article 009, correctly hedges that the shield is not the only cooling method aboard. No unsupported 1871/1886 edition claims; SOURCES.md correctly flags that limitation. Status remains DRAFT_UNREVIEWED; git status confirms no D-drafts, canonical/export, or published Reader files touched by this task (only PACKET_EN.md add plus untracked draft/ dir). My own limitation: web fetches were summarized by an intermediate model rather than raw-diffed against Gutenberg/NASA HTML, and I did not re-verify private_grading/private_question_metadata beyond the three target revisions. Accept as accurate, source-backed, correctly scoped."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Three source-backed draft miniarticles with exact public refs, real source-reading evidence and local structural checks. Independent fact review and publication separate.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_E_20261014\\draft"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Read full English packet MIXED_READER_E_20261014/PACKET_EN.md. Exactly pub-connections008/013/009,150–220 original Russian words each,2–3 actually opened primary sources, exact frozen refs, DRAFT_UNREVIEWED. Own only E/draft articles.json SOURCES.md REPORT.json. Preserve published Flutter54/Reader272 and Ddrafts. No helpers, app edits, imports, Git, builds, SSH, browser automation or publication. Submit actual source evidence/checks/hashes; Root later independently fact-reviews.",
+        "created_at": 1791996252.3265297,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-317bbabf31a942688394b5a41d2320b8",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_E_20261014\\draft\\articles.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_E_20261014\\draft\\SOURCES.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_E_20261014\\draft\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "kind": "source_opening",
+              "result": "Actually opened Project Gutenberg full texts for Through the Looking-Glass (eBook 12) and Jekyll/Hyde (eBook 42), their record pages, and two NASA Webb mission pages. SOURCES.md records exact claims and edition limitations."
+            },
+            {
+              "command": "PowerShell JSON/ref/word/source/paragraph check",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "008=181 words/2 sources/3 paragraphs; 013=201/2/3; 009=188/2/3; exact snapshot revision refs matched."
+            }
+          ],
+          "limitations": [
+            "Literary drafts identify the actual Project Gutenberg electronic editions and do not make unsupported historical-printing claims.",
+            "Independent fact/answer review remains required.",
+            "No import, runtime verification, publication, or whole-bank audit was performed."
+          ],
+          "runtime_identity": "openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411",
+          "sha256": {
+            "REPORT.json": "F3D319C901FFD3B731222BE514904E28EC0AF8734564A9ACAC8D3ED834890A73",
+            "SOURCES.md": "9BF79C5F703D48FC489F497327CB5AF2389B6DFC68E970001BAFEE66888EB0D7",
+            "articles.json": "8BE9C5E22702946A3B3C18DA9618CF07E2D5D76E8188AF5421A5D743C1DD810C"
+          },
+          "status": "DONE",
+          "summary": "READY for independent review; DRAFT_UNREVIEWED only, not published."
+        },
+        "root_task_id": "task-317bbabf31a942688394b5a41d2320b8",
+        "run_id": "run-2c60148951b14eec80ff80eb4c2ca05f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Draft three question-linked Alice, Jekyll and Webb educational articles",
+        "version": 4,
+        "reviewer": "session-af5bb9da7bb3417ca394b7b22e8a4493",
+        "review_note": "Independent Claude Sonnet 5 recheck of all 3 owned files (articles.json, SOURCES.md, REPORT.json) plus PACKET_EN.md and the public snapshot. Current file hashes match submitted report exactly: articles.json 8BE9C5...10C, SOURCES.md 9BF79C...EB0D7, REPORT.json F3D319...A73. Snapshot pub-connections-20261014.json whole-file SHA256 recomputed as e0d6ed56...9239 1, matches packet's claimed hash. All 3 revision_sha256 in articles.json question_refs match the live snapshot's quiz.questions[*].revision.sha256 exactly for 008/013/009; quiz_id correct. Recounted body words independently: 008=181 (report says 181, match), 013=204 (report says 201, off by 3), 009=190 (report says 188, off by 2) - all still inside required 150-220 range, so only minor reporting imprecision, not a gate failure. Each article has 2 source_links (2-3 required) and 3 paragraphs by blank-line split, matching report. Fetched and read actual primary sources myself, independent of the report: Gutenberg eBook 12 (Through the Looking-Glass) confirms Alice is the White Queen's Pawn starting on the second square, 11-move win diagram, promotion at eighth square - matches article 008, does not conflate with Alice in Wonderland. Gutenberg eBook 42 (Jekyll and Hyde) confirms Utterson is 'the lawyer', held but refused to draft Jekyll's will, Hyde inherits on death or 3-month disappearance - matches article 013, correctly distinguishes Utterson from the narrator/Lanyon and from Hyde as will-drafter. NASA's Webb sunshield and 'how does Webb stay cold' pages confirm infrared heat sensitivity, L2 Sun/Earth/Moon shielding, 5 non-touching layers radiating heat, passive cooling to ~40K, MIRI's separate active cryocooler not shared by other instruments - matches article 009, correctly hedges that the shield is not the only cooling method aboard. No unsupported 1871/1886 edition claims; SOURCES.md correctly flags that limitation. Status remains DRAFT_UNREVIEWED; git status confirms no D-drafts, canonical/export, or published Reader files touched by this task (only PACKET_EN.md add plus untracked draft/ dir). My own limitation: web fetches were summarized by an intermediate model rather than raw-diffed against Gutenberg/NASA HTML, and I did not re-verify private_grading/private_question_metadata beyond the three target revisions. Accept as accurate, source-backed, correctly scoped."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as ACCEPTED (version 4).\n\n**Summary**: Independently fact-checked the three Reader drafts in `MIXED_READER_E_20261014/draft` against primary sources and the live question snapshot.\n\n- Hashes, revision refs, quiz_id, word counts (150–220), source counts (2 each), and paragraph structure all verified directly against current files — matched the report, with a minor ~2–3 word discrepancy in the report's own counts (still within range, not a gate failure).\n- Fetched and read the actual primary sources: Gutenberg #12 (Through the Looking-Glass — chess diagram, White Queen's Pawn, 2nd→8th square), Gutenberg #42 (Jekyll & Hyde — Utterson \"the lawyer,\" will custody, Hyde's inheritance terms), and NASA's two Webb sunshield pages (L2 shielding, 5-layer passive radiative cooling, MIRI's separate cryocooler). All literary/scientific claims held up; no conflation of Alice's two books, no narrator/character mixups, no passive/active cooling confusion.\n- Confirmed scope was respected: only the three owned draft files changed, status remains `DRAFT_UNREVIEWED`, no D-drafts or published Reader files touched.\n\nVerdict: **accept**, recorded in Hub with the full evidence note. Stopping here per task scope.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-317bbabf31a942688394b5a41d2320b8",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "c89607523ab400f722de667144a82752c922ee6e6dfc2cea1c0c22855ce4db36",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

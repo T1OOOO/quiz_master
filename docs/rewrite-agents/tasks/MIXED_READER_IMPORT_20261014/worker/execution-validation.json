@@ -1,0 +1,90 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "task-be2b564da07e4ae2afb5ed053d66143c",
+  "run_id": "run-a1b4cee2b5504881b2c7a9af4876461e",
+  "reviewer": {
+    "label": "reader-lf-validator-e14",
+    "session_id": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "team_id": "team-a32157792ef74ebda086a7f97cc7abb1"
+  },
+  "workspace": "C:\\ap\\quiz_master",
+  "scope": "Read-only local validation of the actual remote-v2 receipt/logs, package-v3 and inert publication preview; no SSH, publication, build, image or script edits.",
+  "hashes": {
+    "source_commit": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+    "package_v3_archive": "A67C8AFA9D18DFE67C4651F50A84C0337998150D5236E9BABFED551A212CFB6A",
+    "image": "sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4",
+    "durable_archive": "ee77b4ccd5b9e05668e7759b8399c8943825f34181b3b480564d941097443812",
+    "values": "b16795efc754631beef907153dfe83a0f245d1d2d33149579082ead102116b0c",
+    "backup": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+    "candidate_runtime": "dc3eb5b658f86024a7809fe76f7880bdd420e21e223cf81228935098f83db95f",
+    "helm_dryrun": "a4a26d81d55b90a7614c8bebefc87a5ddd23db21532a5e99983a59ab9cc7dc7b",
+    "remote_prepare_log": "5cb3a2ac095ac29e1b7f863217064e111dfb3b772ccdacbbb096cccaa5e2723b",
+    "publish_preview": "336c5035e7f2773d0200b57ac359ec64b02bf02c5ac94faa278aae1e98ea8f25",
+    "execution_packet": "E58D4A8F5DEF2E37525FC91D8289D731C0B88F9CA4B0F759C980B4D11C215B77"
+  },
+  "receipt_validation": {
+    "remote_guard_exit": 0,
+    "remote_prepare_exit": 0,
+    "remote_collect_exit": 0,
+    "prepare_marker": "PREPARED build=quiz-2026.10.14-reader-17be4ce image=sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4 values=quiz-2026.10.14-reader-17be4ce-cutover-20261014T155409Z-values.yaml mode=prepare",
+    "copied_db": {
+      "migration": "ok",
+      "original_rows_preserved": true,
+      "integrity": "ok",
+      "feedback_lifecycle": "ok",
+      "old_api_rollback": "ok",
+      "canonical_packs": 14,
+      "canonical_questions": 280,
+      "newyear_questions": 55,
+      "total_graded": 335,
+      "practice_finished": 15,
+      "backup_mode": "0600",
+      "backup_integrity": "ok"
+    },
+    "candidate_runtime": {
+      "image_id": "sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4",
+      "lotr_questions": 100,
+      "grading_server_score": 100,
+      "mixed_answered": 20,
+      "mixed_server_score": 20,
+      "reader_articles": 272,
+      "reader_total_refs": 153,
+      "reader_playable_refs": 151,
+      "reader_noncatalog_refs": 2,
+      "source_db_unchanged": true,
+      "container_cleanup": true,
+      "scratch_cleanup": true,
+      "port_released": true
+    },
+    "baseline_helm_revision": 53,
+    "disk_free_bytes": 6761725952,
+    "status": "PREPARED_NOT_PUBLISHED"
+  },
+  "publish_preview_static_checks": {
+    "explicit_publish_gate": true,
+    "candidate_digest_bound": true,
+    "baseline_helm_53_check": true,
+    "one_atomic_helm_upgrade": true,
+    "private_backup": true,
+    "server_dry_run": true,
+    "helm_template_and_lint": true,
+    "durable_archive_hash_check": true,
+    "values_hash_check": true,
+    "tls_version_check": true,
+    "tls_main_js_check": true,
+    "tls_reader_articles_check": true,
+    "docker_build_absent": true,
+    "helm_upgrade_count": 1
+  },
+  "verdict": "ACCEPT for read-only actual execution receipt and inert publication-preview validation",
+  "remaining_risks": [
+    "Remote receipt and logs are validated locally; remote execution was not rerun.",
+    "Publication preview was inspected only and was not executed; no publication claim is made.",
+    "Separate Claude execution review remains required."
+  ],
+  "changed_files": [
+    "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/execution-validation.json"
+  ]
+}

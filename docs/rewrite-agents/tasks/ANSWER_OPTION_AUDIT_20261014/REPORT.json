@@ -1,0 +1,111 @@
+{
+  "status": "DONE_WITH_CANDIDATES",
+  "task_id": "task-3a1a993916084d8386a053ef548fcc31",
+  "run_id": "run-7572fde2f8d14f079fc017f6908c6eb5",
+  "reviewer": {
+    "agent_label": "reader-lf-validator-e14",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-fbc82a7da83042a483ae3a8f8dbd860c"
+  },
+  "scope": {
+    "input": ".run/reader_import_20261014/package-v3/quiz-2026.10.14-reader-17be4ce/runtime-bundles.json",
+    "input_sha256": "aef3ef5a1ab53a82728e2238c5586c84190974afe74d8e6c37653810b960e885",
+    "packs": 14,
+    "questions": 280,
+    "expected_bank_questions": 4084,
+    "coverage": "280/4084",
+    "coverage_percent": 6.856,
+    "private_grading_entries": 280,
+    "private_grading_question_id_missing": 0,
+    "private_grading_option_id_mismatch": 0,
+    "private_grading_extra_question_ids": 0
+  },
+  "checks": [
+    {
+      "command": "@'\nimport json,re\nfrom pathlib import Path\np=Path('.run/reader_import_20261014/package-v3/quiz-2026.10.14-reader-17be4ce/runtime-bundles.json'); d=json.loads(p.read_text(encoding='utf-8')); miss=mis=extra=par=dup=style=length=0\nfor b in d.values():\n  qs=b['quiz']['questions']; pg=b['private_grading']; qids={q['question_id'] for q in qs}\n  extra += len(set(pg)-qids)\n  for q in qs:\n    rec=pg.get(q['question_id']); miss += int(not rec); oid=rec['correct_option_id'] if rec else None; om={o['option_id']:o for o in q['options']}; mis += int(oid not in om); c=om[oid]['text'] if oid in om else ''; opts=[o['text'] for o in q['options']]; norm=[re.sub(r'\\s+',' ',x.strip().casefold()) for x in opts]; dup += int(len(norm)!=len(set(norm))); style += int(bool(re.search(r'[.!?]$',c)) and not any(re.search(r'[.!?]$',x) for x in opts if x!=c)); ds=[x for x in opts if x!=c]; gap=len(c)-max(map(len,ds)); ratio=len(c)/max(map(len,ds)); par += int(bool(re.search(r'\\([^\\n)]{2,}\\)',c))); length += int(len(c)>=100 and (gap>=45 or ratio>=1.35))\nprint('packs',len(d),'questions',sum(len(b['quiz']['questions']) for b in d.values()),'missing',miss,'mismatch',mis,'extra',extra,'parenthetical',par,'duplicate',dup,'style',style,'length_only',length)\n'@ | python -",
+      "cwd": "C:\\ap\\quiz_master",
+      "exit_code": 0,
+      "result": "14 packs and 280 questions loaded; all 280 private-grading IDs resolved to an existing option; no missing, mismatched or extra grading IDs; 4 parenthetical candidates; 0 duplicate-normalized alternatives; 0 punctuation-style candidates; 0 length-only candidates"
+    },
+    {
+      "command": "@'\nimport json\nfrom pathlib import Path\np=Path('.run/reader_import_20261014/package-v3/quiz-2026.10.14-reader-17be4ce/runtime-bundles.json'); d=json.loads(p.read_text(encoding='utf-8')); rows=[]\nfor b in d.values():\n  for q in b['quiz']['questions']:\n    c=next(o['text'] for o in q['options'] if o['option_id']==b['private_grading'][q['question_id']]['correct_option_id']); ds=[o['text'] for o in q['options'] if o['text']!=c]; rows.append((len(c)-max(map(len,ds)),len(c)/max(map(len,ds)),q['question_id']))\nprint(sorted(rows,reverse=True)[:10])\n'@ | python -",
+      "cwd": "C:\\ap\\quiz_master",
+      "exit_code": 0,
+      "result": "The largest observed gap was 36 characters and the largest ratio was 2.714x; both belong to a parenthetical candidate whose correct text is only 57 characters. The conservative length rule required correct length >=100 plus gap >=45 or ratio >=1.35, so no length-only item qualified."
+    },
+    {
+      "command": "Get-Content -Raw docs/rewrite-agents/tasks/ANSWER_OPTION_AUDIT_20261014/REPORT.json | ConvertFrom-Json",
+      "cwd": "C:\\ap\\quiz_master",
+      "exit_code": 0,
+      "result": "Report JSON parsed successfully"
+    }
+  ],
+  "findings": [
+    {
+      "rank": 1,
+      "category": "parenthetical_explanation",
+      "severity": "candidate",
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-12",
+      "correct_option_id": "q-ha1-p1-12-opt-2",
+      "correct_option": "Убийца с лопатой из Саут-Бенда (South Bend Shovel Slayer)",
+      "other_options": ["Убийца с лопатой", "Снежный маньяк", "Чикагский потрошитель", "Старый могильщик", "Ледяной убийца"],
+      "evidence": "Correct text contains a parenthetical English name and is 36 characters longer than the longest distractor.",
+      "assessment": "The parenthetical may clarify a proper name rather than give away the answer; editorial/source review is required."
+    },
+    {
+      "rank": 2,
+      "category": "parenthetical_explanation",
+      "severity": "candidate",
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-18",
+      "correct_option_id": "q-ha1-p1-18-opt-3",
+      "correct_option": "Стеклянные снежные шары (Snow Globes)",
+      "other_options": ["Золотые часы", "Монеты", "Фарфоровые статуэтки", "Серебряные ложки", "Хрустальные бокалы"],
+      "evidence": "Correct text contains an English parenthetical and is 17 characters longer than the longest distractor.",
+      "assessment": "Likely a translation/proper-label clarification, but it is a possible style giveaway and needs editorial review."
+    },
+    {
+      "rank": 3,
+      "category": "parenthetical_explanation",
+      "severity": "candidate",
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-20",
+      "correct_option_id": "q-ha1-p1-20-opt-3",
+      "correct_option": "Мальчик (сын арт-директора) в парике",
+      "other_options": ["Реальная девушка актера", "Дочь режиссера", "Молодая актриса массовки", "Сестра Маколея Калкина", "Компьютерная графика"],
+      "evidence": "Correct text contains a descriptive parenthetical; no duplicate alternatives or terminal-punctuation mismatch were found.",
+      "assessment": "The parenthetical may be substantive context rather than a giveaway; verify against the source before any rewrite."
+    },
+    {
+      "rank": 4,
+      "category": "parenthetical_explanation",
+      "severity": "candidate",
+      "quiz_id": "home-alone-1-part-1",
+      "question_id": "q-ha1-p1-8",
+      "correct_option_id": "q-ha1-p1-8-opt-1",
+      "correct_option": "Ни одной (статуя упала на машину, пиццы он удержал)",
+      "other_options": ["Одну", "Все, что были в руках", "Он не сбивал их, он уронил их на снег", "Шесть", "Две"],
+      "evidence": "Correct text contains a detailed parenthetical explanation and is 14 characters longer than the longest distractor.",
+      "assessment": "This may explain an apparent scene ambiguity, but the extra detail can signal the key; editorial/source review is required."
+    }
+  ],
+  "aggregate_results": {
+    "parenthetical_correct_options": 4,
+    "conspicuous_length_only": 0,
+    "length_rule": "correct text length >=100 and (gap versus longest distractor >=45 characters or ratio versus longest distractor >=1.35); parenthetical overlap is reported separately",
+    "duplicate_normalized_alternatives": 0,
+    "answer_style_inconsistencies": 0,
+    "candidate_findings_reported": 4,
+    "top15_limit_respected": true
+  },
+  "limitations": [
+    "This is a heuristic audit of the frozen 280-question package subset, not a whole-bank audit or factual verification of any answer.",
+    "Stored private_grading IDs were used only to identify the canonical keyed option; their presence does not establish factual correctness.",
+    "Parentheticals and length differences are candidates for editorial/source review, not automatic defects or grounds to change keys.",
+    "The >=100 correct-text-length gate is deliberately conservative and can miss shorter answer giveaways; this finite audit does not establish absence of such issues.",
+    "No questions, keys, imports, application code, tests, builds, exports, Git state, remote systems or publication state were changed."
+  ],
+  "changed_files": ["docs/rewrite-agents/tasks/ANSWER_OPTION_AUDIT_20261014/REPORT.json"]
+}

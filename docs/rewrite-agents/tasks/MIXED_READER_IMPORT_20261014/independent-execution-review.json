@@ -1,0 +1,80 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-be2b564da07e4ae2afb5ed053d66143c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-be2b564da07e4ae2afb5ed053d66143c",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 read-only recheck. Recomputed hashes: execution-packet.json E58D4A8F..., publish-preview.sh 336c5035... (matches packet's publish_script_sha256), package-v3 archive A67C8AFA... (matches), render_reader_publish.py 420619fb... (matches packet's publication_renderer_sha256), publish_reader.py fe16d263... (not in packet, used as self-hash only), execution-validation.json B58396... (matches submitted report hash). remote-v2 guard/prepare/collect exits all 0; remote-prepare-log.txt sha256 5cb3a2ac... matches claimed remote_log_sha256 and its PREPARED marker line matches verbatim. backup_sqlite.py confirmed touches backup+restore-proof with mode 0600 (private backup real). publish-preview.sh correctly checks baseline Helm revision==53 (not stale 52), exactly one 'helm upgrade --atomic', PVC/host/image hashes, durable-archive/values/dry-run hashes, and TLS-served version.json/main.dart.js/question-articles.json hashes matching actual-flutter-builds.json's production main_dart_js_sha256. publish_reader.py (not executed) requires a real execution-acceptance.json with self-hash of itself, exact packet/script/package/image bindings, and reviewer!=assignee before SSH; that file does not yet exist, confirming nothing published. First failed prep (remote-preparation-v1, exit 1, package 052791b5...) is a distinct quarantined package, not conflated with current a67c8afa... Reviewed independent-staging-fix-review-final.json: genuine prior Hub ACCEPT with reviewer session distinct from assignee, 10/10 tests, 9 hashes recomputed independently of the submitted worker report, prepare_remote_reader.py hash 7b2b7b19... matches both that review and remote-v2's helper_source_sha256. Limitations: did not rerun remote execution or browser session myself (logs/receipts only); did not execute publish-preview.sh or publish_reader.py per scope. Accept the task-be2b564 worker's read-only validation as accurate and well-evidenced."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual independent local receipt/log/hash validation, not runtime rerun or publication approval. Exact execution-packet and publish-script hashes.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite read-only local QA of actual remote-v2 proof and its logs, immutable package-v3, frozen source17/mobile proof and newly rendered publication script. Check actual335 graded copied DB/15 finishes/rollback/backup integrity, candidate100+20 grades and all151 playable Reader refs, cleanup/source DB unchanged, durable image, baseline53 and exact source/package/image hashes. The inert publish-preview.sh must target that exact image from baseline53, one atomic Helm upgrade, private new backup, dryrun hash checks and normal TLS asset verification. Own only worker/execution-validation.json. No SSH, actual publication, edits to scripts, builds or children. Distinct Claude review follows.",
+        "created_at": 1791993390.410676,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-be2b564da07e4ae2afb5ed053d66143c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/execution-validation.json"
+          ],
+          "evidence": [
+            {
+              "kind": "receipt",
+              "result": "remote guard/prepare/collect exits 0; prepare marker exact; copied DB 335 graded/15 finished with integrity, rollback and 0600 backup; candidate 100+20 grades, 151 playable refs, cleanup/source DB unchanged."
+            },
+            {
+              "kind": "hashes",
+              "result": "Package-v3 archive A67C8AFA..., image sha256:ac4fd762..., durable archive ee77b4..., values/backup/runtime/dryrun/log/publish hashes recorded."
+            },
+            {
+              "kind": "publish_preview",
+              "result": "Explicit publish gate, candidate digest, baseline Helm 53, exactly one atomic helm upgrade, private backup, server dry-run, hash-bound checks and TLS checks; no execution."
+            },
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/execution-validation.json",
+              "sha256": "B58396296C86232B15A1E11AAD8F44D819F31A5625381274F4D164309800A666"
+            }
+          ],
+          "limitations": [
+            "Receipt/log validation is local and remote execution was not rerun.",
+            "Publication preview was not executed; no publication claim.",
+            "Separate Claude execution review remains required."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Read-only validation of actual remote-v2 execution receipt/logs and inert publication preview complete. Exits are 0; receipt facts, exact package/image/durable hashes, candidate grading/ref counts, cleanup, baseline53 and one atomic publication step are internally consistent."
+        },
+        "root_task_id": "task-be2b564da07e4ae2afb5ed053d66143c",
+        "run_id": "run-a1b4cee2b5504881b2c7a9af4876461e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Check actual Reader candidate execution and inert publication packet",
+        "version": 4,
+        "reviewer": "session-1e49b8a470234ea7bdabe65133e09fd1",
+        "review_note": "Independent Claude Sonnet 5 read-only recheck. Recomputed hashes: execution-packet.json E58D4A8F..., publish-preview.sh 336c5035... (matches packet's publish_script_sha256), package-v3 archive A67C8AFA... (matches), render_reader_publish.py 420619fb... (matches packet's publication_renderer_sha256), publish_reader.py fe16d263... (not in packet, used as self-hash only), execution-validation.json B58396... (matches submitted report hash). remote-v2 guard/prepare/collect exits all 0; remote-prepare-log.txt sha256 5cb3a2ac... matches claimed remote_log_sha256 and its PREPARED marker line matches verbatim. backup_sqlite.py confirmed touches backup+restore-proof with mode 0600 (private backup real). publish-preview.sh correctly checks baseline Helm revision==53 (not stale 52), exactly one 'helm upgrade --atomic', PVC/host/image hashes, durable-archive/values/dry-run hashes, and TLS-served version.json/main.dart.js/question-articles.json hashes matching actual-flutter-builds.json's production main_dart_js_sha256. publish_reader.py (not executed) requires a real execution-acceptance.json with self-hash of itself, exact packet/script/package/image bindings, and reviewer!=assignee before SSH; that file does not yet exist, confirming nothing published. First failed prep (remote-preparation-v1, exit 1, package 052791b5...) is a distinct quarantined package, not conflated with current a67c8afa... Reviewed independent-staging-fix-review-final.json: genuine prior Hub ACCEPT with reviewer session distinct from assignee, 10/10 tests, 9 hashes recomputed independently of the submitted worker report, prepare_remote_reader.py hash 7b2b7b19... matches both that review and remote-v2's helper_source_sha256. Limitations: did not rerun remote execution or browser session myself (logs/receipts only); did not execute publish-preview.sh or publish_reader.py per scope. Accept the task-be2b564 worker's read-only validation as accurate and well-evidenced."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "## Verdict: Accept\n\nIndependently verified `task-be2b564da07e4ae2afb5ed053d66143c` (worker's read-only execution-validation) — Hub callback recorded as `ACCEPTED`, reviewer `session-1e49b8a470234ea7bdabe65133e09fd1` (distinct from assignee).\n\n**What I checked and confirmed by direct hash/content recomputation, not by trusting the report:**\n- All key file hashes match claims: `execution-packet.json`, `publish-preview.sh` (336c5035…), `package-v3` archive (A67C8AFA…), `render_reader_publish.py` (420619fb…), and the worker's own `execution-validation.json` (B58396…).\n- remote-v2 guard/prepare/collect exits are genuinely `0`; `remote-prepare-log.txt` hash matches and its `PREPARED` marker line is byte-identical to the claim.\n- `backup_sqlite.py` genuinely creates the backup + independent restore-proof with mode `0600` — the \"private new backup\" claim is real, not just asserted.\n- `publish-preview.sh` targets baseline Helm revision `53` (rejects stale `52`), runs exactly one `--atomic` Helm upgrade, checks PVC/host/image/durable-archive/values/dry-run hashes, and the TLS-served asset checks (version.json/main.dart.js/question-articles.json) line up with `actual-flutter-builds.json`'s real production hash.\n- `publish_reader.py` (not executed, as instructed) correctly gates on a self-hash of itself plus exact packet/script/package/image bindings and `reviewer != assignee` in a not-yet-existing `execution-acceptance.json` — confirms nothing has been published.\n- The first failed preparation (`remote-preparation-v1`, exit 1, package `052791b5…`) is a genuinely distinct, quarantined package — not conflated with the current passing `a67c8afa…` run.\n- `independent-staging-fix-review-final.json` is a real prior Hub accept (distinct reviewer, 10/10 tests, 9 hashes recomputed) that covers the current `prepare_remote_reader.py` bytes.\n\n**Limitations:** I did not rerun remote execution or the browser session myself (verified logs/receipts only); I did not execute `publish-preview.sh` or `publish_reader.py`, per scope. Acceptance covers only the reviewed read-only validation of the current packet — actual publication still requires the real independent execution callback, Root's one atomic Helm upgrade under existing authorization, and post-publish health/history/feedback/browser verification.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "13f4f4f3528cddce80bb0f778c498198fc6a1257316840806557cfe38dfbe437",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

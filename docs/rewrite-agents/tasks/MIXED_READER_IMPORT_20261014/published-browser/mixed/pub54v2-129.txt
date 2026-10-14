@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e256]
+        - button "Домой" [ref=e257]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e258]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "70"
+        - StaticText "15/20"
+        - group
+          - group "Одновременно запустили песочные часы на 7 и на 11 минут. Их не переворачивают. Сколько времени пройдёт между опустошением первых и вторых часов?"
+            - button "7 минут" [ref=e259]
+            - button "4 минуты" [ref=e260]
+            - button "11 минут" [ref=e261]
+            - button "18 минут" [ref=e262]
+      - button "Отправить отзыв" [ref=e255]

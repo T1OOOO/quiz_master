@@ -1,0 +1,75 @@
+{
+  "schema_version": "qm-reader-published-browser/v1",
+  "status": "VERIFIED",
+  "origin": "https://quiz.kotopedia.org",
+  "frozen_source": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+  "helm_revision": 54,
+  "viewport": [
+    390,
+    844
+  ],
+  "actual_visible_score": 20,
+  "mixed_questions": 20,
+  "articles": [
+    {
+      "question_id": "pub-connections-001",
+      "title_seen": true,
+      "source_links_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-001-footer.png",
+      "screenshot_sha256": "914bccab8d3f935002de500e6d75bf6afc8a41580e4e9d51deea998462ff227d",
+      "opened_from": "result review"
+    },
+    {
+      "question_id": "pub-connections-002",
+      "title_seen": true,
+      "source_links_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-002-footer.png",
+      "screenshot_sha256": "a9518712bb666bb9c090c36f8f451eebd9c366f96265ed67df535369e4ab6b8a",
+      "opened_from": "paused answer reveal"
+    },
+    {
+      "question_id": "pub-connections-006",
+      "title_seen": true,
+      "source_links_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-006-footer.png",
+      "screenshot_sha256": "4747333ddefffc4d6a4263f6e3efacba6588549c39bcecb5a12db4c88d18d21c",
+      "opened_from": "paused answer reveal"
+    },
+    {
+      "question_id": "pub-connections-011",
+      "title_seen": true,
+      "source_links_seen": 2,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-011-footer.png",
+      "screenshot_sha256": "5d77ef23553d77516c570640258631166d82e5d568d7457343ce5265cb1c83b6",
+      "opened_from": "paused answer reveal"
+    },
+    {
+      "question_id": "pub-connections-012",
+      "title_seen": true,
+      "source_links_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-012-footer.png",
+      "screenshot_sha256": "b7f867ef7a5cfe42905f83f9c319c052c1439dce8b9ac636072d058383328a11",
+      "opened_from": "paused answer reveal"
+    },
+    {
+      "question_id": "pub-connections-016",
+      "title_seen": true,
+      "source_links_seen": 2,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/published-browser/mixed/pub54v2-article-pub-connections-016-footer.png",
+      "screenshot_sha256": "cbda0c9d9315fa56d473e4a4bac8f50ec921a21e35fa3e7650081a9b3f61b2a2",
+      "opened_from": "paused answer reveal"
+    }
+  ],
+  "browser_session": "reader-17be-production-54",
+  "actual_browser_close_exit": 0,
+  "browser_close_observed": "Browser closed",
+  "actual_native_ui_runner_exit": 0,
+  "public_https_proof_sha256": "72a4c853b8750fb9e26467c6152b9d1707cb31c38fa4195efbf688c989b17463",
+  "scope": "Actual compiled Flutter production UI: six Reader dialogs/footer source links/closing,20 correct answers and result preserved after final article. Root visually inspected six footer screenshots.",
+  "limitations": [
+    "Chrome mobile viewport, not a physical Android device or whole-bank fact audit.",
+    "Typed MCP browser startup was cancelled after no response; own official CLI session was recovered after daemon version mismatch and closed. No foreign browser touched.",
+    "Initial automation snapshot preceded network reveal; bounded genuine-control wait fixed the runner. Question001 article verified from the finished result review; no application code fix claimed.",
+    "Source links were visible, not clicked during this public UI run; earlier independent editorial source reading is separate."
+  ]
+}
