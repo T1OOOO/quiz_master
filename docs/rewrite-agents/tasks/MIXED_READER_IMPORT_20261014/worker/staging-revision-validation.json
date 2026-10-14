@@ -1,0 +1,50 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "task-f2b313aa69e54ba585f567f8a129a299",
+  "run_id": "run-9405e33718294861aff330586070fc42",
+  "reviewer": {
+    "label": "reader-lf-validator-e14",
+    "session_id": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "team_id": "team-a32157792ef74ebda086a7f97cc7abb1"
+  },
+  "workspace": "C:\\ap\\quiz_master",
+  "scope": "Finite local QA of Reader staging-revision regeneration after the real rehearsal stale-map failure; no remote, image, SSH/SCP, package preview or publication work.",
+  "checks": [
+    {
+      "command": "python -B -m unittest -v test_reader_release test_prepare_remote_reader",
+      "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker",
+      "exit": 0,
+      "elapsed_seconds": 16.585,
+      "result": "10/10 passed: 5 producer tests and 5 remote-helper tests."
+    },
+    {
+      "case": "test_staging_revisions_bind_current_root_and_reject_prior_map",
+      "result": "Uses real archived runtime-bundles.json and old expected-staging-revisions.json from mixed-release package-v5; old map is rejected, regenerated map passes verification, differs from old map, and the pub-connections question hash equals house canonical(private_revision_input) after release-root URI substitution."
+    }
+  ],
+  "source_hashes": {
+    "producer_and_dependencies": {
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/prepare_reader_release.py": "3D27C1A61856F0993B4892B224AD3AF73E682991B9AEBAC2FF2F93B3302B7B69",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/verify_reader_candidate.py": "C78F92FC08F28F414FBDE2C97C675B404C6B65AD29437D3078C55EF17C6569F2",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/test_reader_release.py": "9705AC19F7D8EC2A4B8A56C36BB8EA4C7B926A7ADEA4937592844D8DB4CE2A7D",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_lotr_package.py": "C9E4DC75574232A8F36F6AC1EE3E7A6039C398E721641335C54F4FB07332D0E0",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/verify_candidate_runtime.py": "DFD07F90C71E3106E0A73BAAC120921C59458111457F74AB1D67E64490A2AFCA",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/test_verify_candidate_runtime.py": "9269DEEBE4E65FE522D97E1C7D7AC20BDBC07AFEF808BCD1095A895C888EECEB"
+    },
+    "remote_helpers": {
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/prepare_remote_reader.py": "7B2B7B190609CF97E679697FDA75FA5DBC481AF4B9DB7E449ADD0F7387929E8D",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/test_prepare_remote_reader.py": "70497820A7D2B89127ECCDBA26DC8A575E5E6310A2E021E0AC0BAB155374C5D4",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_remote_mixed.py": "0D6F1D25438C06C889E41BF52E1EB982C266E6640FBA610B8BC1DF837BDF1103"
+    }
+  },
+  "verdict": "ACCEPT for finite local staging-revision QA",
+  "remaining_risks": [
+    "No remote preparation, SSH/SCP, image build, package-v2 preview or publication was executed or approved.",
+    "Distinct Claude source review remains a release gate."
+  ],
+  "changed_files": [
+    "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/staging-revision-validation.json"
+  ]
+}

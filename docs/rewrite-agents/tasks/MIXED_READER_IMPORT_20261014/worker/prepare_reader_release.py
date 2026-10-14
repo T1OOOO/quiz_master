@@ -99,9 +99,17 @@ def verify_prior_reader(stage,prior_path):
 def verify_catalog(stage):
  catalog=read(stage/CATALOG_SOURCE); require(isinstance(catalog,list) and len(catalog)==136 and len({x.get('quiz_id') for x in catalog})==136 and sum(x.get('questions_count',0) for x in catalog)==4084,'catalog differs from 136/4084')
 
+def install_staging_revisions(stage,helper):
+ expected,_=helper.expected_staging_revisions_from_bundles(read(stage/'runtime-bundles.json'),BUILD_ID)
+ helper.write_json_lf(stage/'expected-staging-revisions.json',expected)
+
+def verify_staging_revisions(stage,helper):
+ expected,_=helper.expected_staging_revisions_from_bundles(read(stage/'runtime-bundles.json'),BUILD_ID)
+ require(read(stage/'expected-staging-revisions.json')==expected,'staging revisions bind a different release root')
+
 def verify_preserved(before,stage):
  after={p.relative_to(stage).as_posix():digest(p) for p in stage.rglob('*') if p.is_file()}; changed={p for p in before if before[p]!=after.get(p)}|set(after)-set(before)
- allowed={READER_SOURCE,'cutover.sh','rehearse.py','verify_candidate_runtime.py','checksums.txt','web/version.json'}; require({p for p in changed if not p.startswith('web/')}<=allowed,'Reader-only stage altered nonweb data/API/Nginx/schema bytes')
+ allowed={READER_SOURCE,'cutover.sh','rehearse.py','verify_candidate_runtime.py','expected-staging-revisions.json','checksums.txt','web/version.json'}; require({p for p in changed if not p.startswith('web/')}<=allowed,'Reader-only stage altered nonweb data/API/Nginx/schema bytes')
  require(digest(stage/'api')==API_SHA256 and digest(stage/'nginx.conf')==NGINX_SHA256,'Reader-only stage altered API/Nginx')
 
 def install_runtime_verifier(stage,helper,production_hash):
@@ -130,6 +138,8 @@ PY'''
  old_root='/opt/quiz-master/releases/quiz-2026.10.14-screen-song-6866608'; old_api='26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01'; old_checks='edab308766bd30ca0717b4c8971d0e2a8c638b88336e067dc56b47f90780ee52'
  require(body.count(old_root)==1 and body.count(old_api)==1 and body.count(old_checks)==1,'stale52 rollback guard differs')
  baseline_checks=digest(stage/'checksums.txt'); body=body.replace(old_root,f'/opt/quiz-master/releases/{BASELINE_BUILD}').replace(old_api,API_SHA256).replace(old_checks,baseline_checks)
+ old='assert len(matches)==0 and len(expected_questions)==20'; require(body.count(old)==1,'mixed rehearsal article contract differs')
+ body=body.replace(old,"assert len(matches)==6 and len(expected_questions)==20\n   assert {ref['question_id']:ref['revision_sha256'] for ref in matches}=={q['question_id']:q['revision']['sha256'] for q in live['quiz']['questions'] if q['question_id'] in {ref['question_id'] for ref in matches}}",1)
  rehearsal.write_bytes(body.encode('utf-8')); (stage/'api').chmod(0o755); cutover.chmod(0o755)
 
 def prepare(pins,archive,output):
@@ -139,7 +149,7 @@ def prepare(pins,archive,output):
  helper.extract_immutable(archive,output/BUILD_ID); stage=output/BUILD_ID; helper.verify_checksum_manifest(stage); target=stage/READER_SOURCE
  verify_prior_reader(stage,prior_path)
  before={p.relative_to(stage).as_posix():digest(p) for p in stage.rglob('*') if p.is_file()}; shutil.rmtree(stage/'web'); shutil.copytree(pins['production_web'],stage/'web'); target.write_bytes(Path(pins['current_reader']['path']).read_bytes())
- production_hash=digest(stage/'web/main.dart.js'); install_runtime_verifier(stage,helper,production_hash); verify_catalog(stage); verify_preserved(before,stage); helper.write_checksums(stage); artifact,sha,members=helper.archive_and_verify(stage,output)
+ production_hash=digest(stage/'web/main.dart.js'); install_runtime_verifier(stage,helper,production_hash); install_staging_revisions(stage,helper); verify_staging_revisions(stage,helper); verify_catalog(stage); verify_preserved(before,stage); helper.write_checksums(stage); artifact,sha,members=helper.archive_and_verify(stage,output)
  result={'status':'PREPARED_NOT_EXECUTED','build_id':BUILD_ID,'frozen_commit':FROZEN_COMMIT,'archive':str(artifact),'archive_sha256':sha,'file_members':members,'counts':{**counts,'refs':{'total':153,'playable':151,'noncatalog':2}},'qa_checked_not_packaged':pins['qa_web']}; (output/'package-preparation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); return result
 def main():
  p=argparse.ArgumentParser(); p.add_argument('--pins',type=Path,required=True); p.add_argument('--prior-archive',type=Path,required=True); p.add_argument('--output-root',type=Path,required=True); a=p.parse_args(); print(json.dumps(prepare(read(a.pins),a.prior_archive,a.output_root),ensure_ascii=False))

@@ -1,0 +1,54 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "task-af58960627924cef8c2cd1018386719d",
+  "run_id": "run-ac2bc4a1a72940639a88897d647b7af2",
+  "reviewer": {
+    "label": "reader-lf-validator-e14",
+    "session_id": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "team_id": "team-a32157792ef74ebda086a7f97cc7abb1"
+  },
+  "workspace": "C:\\ap\\quiz_master",
+  "scope": "Finite local QA of final Reader harness corrections; no code edits, build, remote, package generation, image or publication work.",
+  "checks": [
+    {
+      "command": "python -B -m unittest -v test_reader_release test_prepare_remote_reader",
+      "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker",
+      "exit": 0,
+      "elapsed_seconds": 15.804,
+      "result": "10/10 passed: 5 producer tests and 5 remote-helper tests."
+    },
+    {
+      "case": "test_actual_archived_cutover_gate_executes_with_real_successor_metadata",
+      "result": "Extracts the actual archived rehearsal clause, builds matches from the current Reader article source, executes the pub-connections branch with six canonical refs successfully, then rejects a tampered first revision with AssertionError. Also verifies the six-article metadata gate and prepare-only guards."
+    },
+    {
+      "case": "test_staging_revisions_bind_current_root_and_reject_prior_map",
+      "result": "Archived prior staging map is rejected, regenerated from archived runtime-bundles, verified, differs from the prior map, and matches the house canonical private revision hash."
+    }
+  ],
+  "source_hashes": {
+    "producer_and_dependencies": {
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/prepare_reader_release.py": "9D6F6CE42E343A458C41A1F3AC5F416B595B89D0BABD4EAA312273E0167091B4",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/verify_reader_candidate.py": "C78F92FC08F28F414FBDE2C97C675B404C6B65AD29437D3078C55EF17C6569F2",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/test_reader_release.py": "A1971E51F9ECCB3F3C585B15E99124DD8570C10C10780CCB3CBEAF4C9D4B3C1F",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_lotr_package.py": "C9E4DC75574232A8F36F6AC1EE3E7A6039C398E721641335C54F4FB07332D0E0",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/verify_candidate_runtime.py": "DFD07F90C71E3106E0A73BAAC120921C59458111457F74AB1D67E64490A2AFCA",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/test_verify_candidate_runtime.py": "9269DEEBE4E65FE522D97E1C7D7AC20BDBC07AFEF808BCD1095A895C888EECEB"
+    },
+    "remote_helpers": {
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/prepare_remote_reader.py": "7B2B7B190609CF97E679697FDA75FA5DBC481AF4B9DB7E449ADD0F7387929E8D",
+      "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/test_prepare_remote_reader.py": "70497820A7D2B89127ECCDBA26DC8A575E5E6310A2E021E0AC0BAB155374C5D4",
+      "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_remote_mixed.py": "0D6F1D25438C06C889E41BF52E1EB982C266E6640FBA610B8BC1DF837BDF1103"
+    }
+  },
+  "verdict": "ACCEPT for finite local harness QA",
+  "remaining_risks": [
+    "No remote, image, runtime, package generation or publication execution was performed or approved.",
+    "Separate Claude source review of final bytes remains required."
+  ],
+  "changed_files": [
+    "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/staging-revision-validation-v2.json"
+  ]
+}

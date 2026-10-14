@@ -1,4 +1,4 @@
-import copy, json, re, subprocess, tempfile, unittest, tarfile
+import copy, json, re, subprocess, tempfile, unittest, tarfile, textwrap
 from pathlib import Path
 import prepare_reader_release as r
 
@@ -16,6 +16,24 @@ def readers():
     return prior,current,browser
 
 class ReaderReleaseTests(unittest.TestCase):
+    def test_staging_revisions_bind_current_root_and_reject_prior_map(self):
+        with tempfile.TemporaryDirectory() as d:
+            stage=Path(d)
+            for name in ['runtime-bundles.json','expected-staging-revisions.json']:
+                (stage/name).write_bytes(archived(name))
+            helper=r.house()
+            with self.assertRaisesRegex(RuntimeError,'staging revisions'):
+                r.verify_staging_revisions(stage,helper)
+            r.install_staging_revisions(stage,helper)
+            r.verify_staging_revisions(stage,helper)
+            actual=r.read(stage/'expected-staging-revisions.json')
+            self.assertNotEqual(actual,json.loads(archived('expected-staging-revisions.json')))
+            bundle=r.read(stage/'runtime-bundles.json')['pub-connections-20261014']
+            public=bundle['quiz']['questions'][0]
+            private=helper.private_revision_input(bundle,public)
+            private['source']['uri']=private['source']['uri'].replace('/app/quizzes/',f'/opt/quiz-master/releases/{r.BUILD_ID}/quizzes/',1)
+            self.assertEqual(actual[bundle['quiz']['quiz_id']][public['question_id']]['sha256'],helper.canonical(private))
+
     def test_real_reader_delta_uses_real_house_revision_and_noncatalog_contract(self):
         prior,current,browser=readers()
         self.assertEqual(r.verify_reader_delta(prior,current,browser,r.house())['total_refs'],153)
@@ -50,6 +68,14 @@ class ReaderReleaseTests(unittest.TestCase):
             self.assertIn(r.BASELINE_IMAGE,cutover); self.assertNotIn(r.BASELINE_CUTOVER_IMAGE,cutover)
             self.assertIn('/opt/quiz-master/releases/'+r.BASELINE_BUILD,body); self.assertIn(old_checks,body); self.assertNotIn('26e1657fd6259',body)
             self.assertIn('--expected-reader-articles 272',cutover)
+            clause=textwrap.dedent(body.split("elif qid=='pub-connections-20261014':",1)[1].split('  else:',1)[0])
+            bundle=json.loads(archived('runtime-bundles.json'))['pub-connections-20261014']
+            articles=json.loads((REPO/r.READER_SOURCE).read_bytes())['articles']
+            matches=[ref for article in articles for ref in article['question_refs'] if ref['quiz_id']=='pub-connections-20261014']
+            context={'bundle':bundle,'matches':matches,'expected_questions':bundle['quiz']['questions'],'live':{'quiz':bundle['quiz']}}
+            exec(clause,context)
+            bad=copy.deepcopy(context); bad['matches'][0]['revision_sha256']='0'*64
+            with self.assertRaises(AssertionError):exec(clause,bad)
 
     def test_prior_reader_is_bound_to_extracted_bytes(self):
         with tempfile.TemporaryDirectory() as d:

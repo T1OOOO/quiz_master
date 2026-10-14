@@ -1,0 +1,102 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-af58960627924cef8c2cd1018386719d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-af58960627924cef8c2cd1018386719d",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 source-only recheck, read-only, no edits/SSH/package/Docker/Helm/git writes. Verified HEAD diff: prepare_reader_release.py adds install/verify_staging_revisions(stage,helper) reusing house expected_staging_revisions_from_bundles(runtime-bundles.json,BUILD_ID) (current Reader BUILD_ID, not the stale mixed root), added to verify_preserved's allowed set; install_runtime_verifier's rehearse.py patch now replaces the exact archived 'assert len(matches)==0' pub-connections clause with len(matches)==6 plus a canonical {question_id:revision_sha256} equality check against live quiz questions, fail-closed (one tampered ref raises AssertionError, confirmed by test_actual_archived_cutover_gate_executes_with_real_successor_metadata executing the real archived clause via exec). test_reader_release.py's new test_staging_revisions_bind_current_root_and_reject_prior_map rejects the archived prior map, regenerates it, and matches the house canonical private-revision hash. prepare_remote_reader.py (untracked, hash now 7b2b7b19...e8d, differs from independent-remote-helper-review.json's f5e7cef8... so that prior approval does not cover current bytes) adds reader.verify_staging_revisions(stage,helper) in validate_package before upload, matching remote-preparation-v1's actual documented failure ('Strict staging revision mismatch'). Ran python -m unittest -v test_reader_release test_prepare_remote_reader from worker/: 10/10 passed. All 9 required hashes (prepare_reader_release.py, verify_reader_candidate.py, test_reader_release.py, MIXED_RELEASE_20261014 prepare_lotr_package.py/verify_candidate_runtime.py/test_verify_candidate_runtime.py, prepare_remote_reader.py, test_prepare_remote_reader.py, prepare_remote_mixed.py) independently recomputed and match current working-tree bytes exactly. Limitations: source/local-test review only; no remote runtime, SSH/SCP, package generation or publication approval; independent-staging-fix-review-v1.json (map-only) and independent-remote-helper-review.json are superseded for current hashes by this review."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual10 tests and current9 source hashes; independent Claude source review separately required. No image, runtime or publication approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-fbc82a7da83042a483ae3a8f8dbd860c",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite local QA only. Root reused house map regeneration and fixed inherited pub-connections rehearsal zero-refs assertion to six exact canonical refs. Existing real archived-script test now executes that actual clause with current six refs and rejects a wrong revision. Run ten producer/helper tests, record current six dependency and three helper hashes. Own only worker/staging-revision-validation-v2.json. No edits to code, remote preparation, package generation or publication.",
+        "created_at": 1791992684.128657,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-af58960627924cef8c2cd1018386719d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/staging-revision-validation-v2.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -B -m unittest -v test_reader_release test_prepare_remote_reader",
+              "cwd": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "exit": 0,
+              "result": "10 passed; elapsed 15.804s"
+            },
+            {
+              "kind": "actual_rehearsal_clause",
+              "result": "Archived generated clause executed with six current canonical refs; tampered first revision raised AssertionError."
+            },
+            {
+              "kind": "staging_map_regression",
+              "result": "Archived old map rejected; regenerated map verified and house canonical private hash matched."
+            },
+            {
+              "kind": "hashes",
+              "result": "Current six producer/dependency and three helper SHA-256 values recorded."
+            },
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/staging-revision-validation-v2.json",
+              "sha256": "D08AD19E94677AAFB277369EA147246408BBA433E6B101E014CC019D06AB76E9"
+            }
+          ],
+          "limitations": [
+            "No remote, image, runtime, package generation or publication execution.",
+            "Separate Claude source review remains required."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Final finite harness QA passed: combined producer and remote-helper suites 10/10; actual archived pub-connections rehearsal clause accepts six canonical refs and rejects a tampered revision; staging map regression passes."
+        },
+        "root_task_id": "task-af58960627924cef8c2cd1018386719d",
+        "run_id": "run-ac2bc4a1a72940639a88897d647b7af2",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Validate final Reader harness corrections for current staging root and six refs",
+        "version": 4,
+        "reviewer": "session-970361005e3d4710ac13b49ed35e093c",
+        "review_note": "Independent Claude Sonnet 5 source-only recheck, read-only, no edits/SSH/package/Docker/Helm/git writes. Verified HEAD diff: prepare_reader_release.py adds install/verify_staging_revisions(stage,helper) reusing house expected_staging_revisions_from_bundles(runtime-bundles.json,BUILD_ID) (current Reader BUILD_ID, not the stale mixed root), added to verify_preserved's allowed set; install_runtime_verifier's rehearse.py patch now replaces the exact archived 'assert len(matches)==0' pub-connections clause with len(matches)==6 plus a canonical {question_id:revision_sha256} equality check against live quiz questions, fail-closed (one tampered ref raises AssertionError, confirmed by test_actual_archived_cutover_gate_executes_with_real_successor_metadata executing the real archived clause via exec). test_reader_release.py's new test_staging_revisions_bind_current_root_and_reject_prior_map rejects the archived prior map, regenerates it, and matches the house canonical private-revision hash. prepare_remote_reader.py (untracked, hash now 7b2b7b19...e8d, differs from independent-remote-helper-review.json's f5e7cef8... so that prior approval does not cover current bytes) adds reader.verify_staging_revisions(stage,helper) in validate_package before upload, matching remote-preparation-v1's actual documented failure ('Strict staging revision mismatch'). Ran python -m unittest -v test_reader_release test_prepare_remote_reader from worker/: 10/10 passed. All 9 required hashes (prepare_reader_release.py, verify_reader_candidate.py, test_reader_release.py, MIXED_RELEASE_20261014 prepare_lotr_package.py/verify_candidate_runtime.py/test_verify_candidate_runtime.py, prepare_remote_reader.py, test_prepare_remote_reader.py, prepare_remote_mixed.py) independently recomputed and match current working-tree bytes exactly. Limitations: source/local-test review only; no remote runtime, SSH/SCP, package generation or publication approval; independent-staging-fix-review-v1.json (map-only) and independent-remote-helper-review.json are superseded for current hashes by this review."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded successfully: task-af58960627924cef8c2cd1018386719d is now ACCEPTED on the Hub.\n\n**Verdict: Accept (source-only).**\n\nBoth inherited harness issues are correctly fixed with minimal diffs:\n1. **Staging-revision root** \u2014 `prepare_reader_release.py` now reuses the house's existing `expected_staging_revisions_from_bundles(runtime-bundles.json, BUILD_ID)` to generate and then re-verify `expected-staging-revisions.json`, bound to the *current* Reader `BUILD_ID`, not the stale mixed-release root. `prepare_remote_reader.py` independently calls `verify_staging_revisions` again before upload. This matches the real documented remote failure in `remote-preparation-v1` (\"Strict staging revision mismatch\").\n2. **Rehearsal assertion** \u2014 the archived `rehearse.py` pub-connections clause (`assert len(matches)==0`) is replaced with `len(matches)==6` plus a canonical `{question_id: revision_sha256}` equality check. `test_actual_archived_cutover_gate_executes_with_real_successor_metadata` executes the real archived clause via `exec` with live bundle data and confirms it fails closed when a ref is tampered.\n\nIndependently recomputed all 9 required SHA-256 hashes \u2014 all match current working-tree bytes exactly. Ran `python -m unittest -v test_reader_release test_prepare_remote_reader`: **10/10 passed**. Noted that `prepare_remote_reader.py`'s current hash (`7b2b7b19\u2026`) differs from the one in `independent-remote-helper-review.json` (`f5e7cef8\u2026`), so that prior approval doesn't cover current bytes \u2014 I reviewed the current file directly rather than relying on it, and it's sound (adds exactly the `verify_staging_revisions` call needed for fix #1).\n\nScope stayed source/test-only \u2014 no edits, SSH/SCP, package generation, Docker/Helm, or git writes. No remote-runtime or publication approval is implied by this review.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-af58960627924cef8c2cd1018386719d",
+      "error": "Command failed with no output"
+    }
+  ],
+  "trace_sha256": "a9137e2a82c2d147fdf655ee660db9a7d6371c8d851a614504dede661b1305df",
+  "scope": "prepare-only source review; no execution or publication",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\prepare_reader_release.py": "9d6f6ce42e343a458c41a1f3ac5f416b595b89d0babd4eaa312273e0167091b4",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\verify_reader_candidate.py": "c78f92fc08f28f414fbde2c97c675b404c6b65ad29437d3078c55ef17c6569f2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker\\test_reader_release.py": "a1971e51f9eccb3f3c585b15e99124dd8570c10c10780ccb3cbeaf4c9d4b3c1f",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb"
+  }
+}
