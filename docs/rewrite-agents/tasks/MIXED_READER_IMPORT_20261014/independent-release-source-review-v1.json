@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-ae09e4064b1546198a1c5d791f539b16": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+          "verdict": "rework",
+          "error_count": 5,
+          "note": "REWORK. Verified by reading all 4 worker files + AST of main() + diff against house helpers in MIXED_RELEASE_20261014/worker, then running the 5 unit tests myself (all pass, exit 0). Passing tests is NOT runtime evidence here because main() never exercises 2 of the 3 safety-critical functions. Concrete findings: (1) main() in prepare_reader_release.py only calls safe_archive()+verify_provenance(); it never calls verify_prepare_proofs() or verify_preserved_stage_hashes(), and argparse has no --proofs/--stage flags at all. Both functions are fully written and unit-tested in isolation but are dead code on the real CLI path, so running this tool as documented enforces NO review/browser-proof binding and NO API/Nginx/data-byte preservation guard -- exactly the two gates the packet calls out as mandatory. (2) main() never constructs any stage directory or output archive; it only validates 4 JSON inputs + the prior archive's hash/membership -- no immutable stage is ever produced. (3) _legacy() (loader for house prepare_lotr_package.py) is defined but never called anywhere -- the 'reuse established primitives, do not fork' comment is aspirational. safe_archive()/validate_archive_members() in prepare_reader_release.py is instead a near-duplicate reimplementation of the house verify_safe_archive()/validate_archive_members(members, prefix_name), i.e. forked, not reused. (4) verify_reader_candidate.py reimplements ref/article counting from scratch instead of calling house verify_candidate_runtime.verify_reader_bindings(reader, responses, expected_articles=, expected_total_refs=, expected_playable_refs=), which already takes those exact kwargs for this reuse case. (5) verify_receipt() in verify_reader_candidate.py only trusts externally supplied booleans (source_db_unchanged, rollback_verified, container_cleanup, scratch_cleanup, port_released) and never calls house verify_runtime_receipt/verify_grading_result; unmodified-API-DTO and real grading/reveal-rule checks required by the packet are absent entirely -- not reused, not reimplemented, not checked. Positive: REPORT.json is honest (status DONE_WITH_CONCERNS, lists these as remaining_gates, no fabricated proofs), file_sha256 claims verified correct by recomputation, scope restraint (no real container/docker execution) is appropriate. Minimal fix path reusing house primitives: wire verify_prepare_proofs/verify_preserved_stage_hashes into main() with real CLI args; replace the forked archive validator with a direct call to house verify_safe_archive(); replace the reimplemented binding check with house verify_reader_bindings(..., expected_articles=272, expected_total_refs=153, expected_playable_refs=151); add DTO/grading/reveal checks via house verify_runtime_receipt/verify_grading_result rather than trusting raw booleans. Do not accept until main() actually enforces the proof-binding and stage-preservation gates it already implements but never calls."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal reviewed-source successor with exactpins, provenance+archive protections, old266identity/sixrefdelta, staleproof/QA pollution guards, realcandidateAPI/copiedDB/rollback/cleanup gates retained; actualpuretestreceipts+hashes; no runtime executionclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014\\worker"
+        ],
+        "assignee": "session-39f15915ba7049cb8acbb2d0c2e19164",
+        "author": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "body": "Execute MIXED_READER_IMPORT_20261014/RELEASE_WORKER_PACKET_EN.md. Own onlynewworker/. Reusehousehelpers; exactprior53archiveede81/image2d1/API f4; Reader266->272 refs153/151/2; preserveallquestions/API/data/schema, prepare-only immutableproducer+realcandidateverifier adaptation withpureboundarytests. NoGit/remote/build/browser/deploy/children. IndependentsourcereviewbeforeRootexecution.",
+        "created_at": 1791982056.0999386,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/prepare_reader_release.py",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/verify_reader_candidate.py",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/test_reader_release.py",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/README.md",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/REPORT.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -B -m unittest -v test_reader_release.py",
+              "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "exit_code": 0,
+              "result": "5 pure boundary tests passed"
+            },
+            {
+              "command": "python -B -m py_compile prepare_reader_release.py verify_reader_candidate.py test_reader_release.py",
+              "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker",
+              "exit_code": 0
+            },
+            {
+              "command": "Get-FileHash .run/mixed_release_20261014/package-v5/quiz-2026.10.14-mixed-ecac092.tar.gz -Algorithm SHA256",
+              "cwd": "C:/ap/quiz_master",
+              "exit_code": 0,
+              "result": "ede81db6dfa1dfb2c0f61e53d4749d378a8fe00467f87ebb3fda353d161e8ead"
+            }
+          ],
+          "remaining_gates": [
+            "different-provider source review before execution",
+            "browser proof",
+            "actual candidate copied-DB/rollback/cleanup gate",
+            "independent execution review and Root publication verification"
+          ],
+          "report": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/worker/REPORT.json",
+          "sha256": {
+            "README.md": "8d0426d39362ca1c5c9b171fb71a46610ac4cfcb9aefe6a13f04385242097f3a",
+            "REPORT.json": "a48c01d8cfbfadc865815bbaac1c04772107793c8867dbbd47620f0f4055c399",
+            "prepare_reader_release.py": "77686cf57ee7e9bbf85d17e2ff3f2b1269feb42683a47d3250ad31d475582951",
+            "test_reader_release.py": "850eb2910a16d4a359d7ee1f99039d5589ce78bbd01a303baa204d0a44a6e2b3",
+            "verify_reader_candidate.py": "8d86f7fcb8146fc5fdb1c2612b37b903d689d7e4a8dfa75e214e7719481bcae4"
+          },
+          "status": "DONE_WITH_CONCERNS"
+        },
+        "root_task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+        "run_id": "run-13c3a5ffed764a35878577a8191d37c6",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-d7619abca9114fb5a2717735d8988522",
+        "title": "Implement finite Reader-only release successor preserving Helm53 baseline",
+        "version": 4,
+        "reviewer": "session-baa37dce56bc4c19bee9d59f1f746085",
+        "review_note": "REWORK. Verified by reading all 4 worker files + AST of main() + diff against house helpers in MIXED_RELEASE_20261014/worker, then running the 5 unit tests myself (all pass, exit 0). Passing tests is NOT runtime evidence here because main() never exercises 2 of the 3 safety-critical functions. Concrete findings: (1) main() in prepare_reader_release.py only calls safe_archive()+verify_provenance(); it never calls verify_prepare_proofs() or verify_preserved_stage_hashes(), and argparse has no --proofs/--stage flags at all. Both functions are fully written and unit-tested in isolation but are dead code on the real CLI path, so running this tool as documented enforces NO review/browser-proof binding and NO API/Nginx/data-byte preservation guard -- exactly the two gates the packet calls out as mandatory. (2) main() never constructs any stage directory or output archive; it only validates 4 JSON inputs + the prior archive's hash/membership -- no immutable stage is ever produced. (3) _legacy() (loader for house prepare_lotr_package.py) is defined but never called anywhere -- the 'reuse established primitives, do not fork' comment is aspirational. safe_archive()/validate_archive_members() in prepare_reader_release.py is instead a near-duplicate reimplementation of the house verify_safe_archive()/validate_archive_members(members, prefix_name), i.e. forked, not reused. (4) verify_reader_candidate.py reimplements ref/article counting from scratch instead of calling house verify_candidate_runtime.verify_reader_bindings(reader, responses, expected_articles=, expected_total_refs=, expected_playable_refs=), which already takes those exact kwargs for this reuse case. (5) verify_receipt() in verify_reader_candidate.py only trusts externally supplied booleans (source_db_unchanged, rollback_verified, container_cleanup, scratch_cleanup, port_released) and never calls house verify_runtime_receipt/verify_grading_result; unmodified-API-DTO and real grading/reveal-rule checks required by the packet are absent entirely -- not reused, not reimplemented, not checked. Positive: REPORT.json is honest (status DONE_WITH_CONCERNS, lists these as remaining_gates, no fabricated proofs), file_sha256 claims verified correct by recomputation, scope restraint (no real container/docker execution) is appropriate. Minimal fix path reusing house primitives: wire verify_prepare_proofs/verify_preserved_stage_hashes into main() with real CLI args; replace the forked archive validator with a direct call to house verify_safe_archive(); replace the reimplemented binding check with house verify_reader_bindings(..., expected_articles=272, expected_total_refs=153, expected_playable_refs=151); add DTO/grading/reveal checks via house verify_runtime_receipt/verify_grading_result rather than trusting raw booleans. Do not accept until main() actually enforces the proof-binding and stage-preservation gates it already implements but never calls."
+      }
+    }
+  },
+  "review_messages": [
+    "Reviewed task-ae09e4064b1546198a1c5d791f539b16 (Reader release worker) as session-baa37dce56bc4c19bee9d59f1f746085, verdict REWORK, error_count 5, hub_task review posted with full findings. Short version: the two safety-critical functions required by the packet -- verify_prepare_proofs (review/browser evidence binding, QA-vs-production distinctness) and verify_preserved_stage_hashes (API/Nginx/data-byte preservation) -- are fully written and unit-tested in isolation but main() never calls either; argparse has no flags to even feed them. So the 5 passing unittest cases are not evidence the real CLI enforces those gates -- I ran the tests myself (5/5 pass) and then read main()'s AST to confirm this. Also: _legacy() (the house prepare_lotr_package.py loader) is defined but never called -- archive validation is a forked reimplementation, not reuse. verify_reader_candidate.py reimplements ref/article counting instead of calling house verify_candidate_runtime.verify_reader_bindings(expected_articles=, expected_total_refs=, expected_playable_refs=), which already supports exactly this parameterization, and verify_receipt() only trusts externally supplied booleans (rollback/cleanup/port-release) with no DTO/grading/reveal checks at all. REPORT.json itself is honest about remaining gates and file hashes check out. Minimal fix is wiring in the two unused functions + calling the house parameterized checkers instead of forking them -- no new framework needed."
+  ],
+  "report": "Review posted successfully (verdict required lowercase `\"rework\"`). The task is now in `state: REWORK` with my full note attached, and my summary was already sent to the lead session.\n\n**Summary**: I reviewed task-ae09e4064b1546198a1c5d791f539b16 and returned **REWORK** (error_count 5). Core problem: the two safety-critical functions (`verify_prepare_proofs` — review/browser proof binding, and `verify_preserved_stage_hashes` — API/Nginx/data preservation) are implemented and pass unit tests in isolation, but `main()` never calls either and has no CLI flags to feed them — they're dead code on the real path. Separately, the \"reuse house helpers\" instruction wasn't honored: `_legacy()` is defined but unused, archive validation and Reader-ref binding are forked reimplementations instead of calls into the parameterized house functions in `MIXED_RELEASE_20261014/worker`, and the candidate receipt verifier only trusts externally-supplied booleans with no DTO/grading/reveal checks. REPORT.json itself is honest about remaining gaps. Posted to hub with concrete, minimal fixes (wire the two unused functions into `main()`, call house `verify_safe_archive`/`verify_reader_bindings` instead of forking them). No files were modified — this was a read-only review as instructed.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-ae09e4064b1546198a1c5d791f539b16",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "fb2347e2e599c4fb9293d2710bff113d222abdecf0baf572d0a2472599c481d8",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e51]
+        - button "Домой" [ref=e52]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e53]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "5"
+        - StaticText "2/20"
+        - group
+          - group "В симфоническом оркестре нет фортепиано, а перед репетицией звучит опорное «ля». Какой из этих инструментов традиционно даёт эту ноту для настройки?"
+            - button "Флейта" [ref=e54]
+            - button "Фагот" [ref=e55]
+            - button "Гобой" [ref=e56]
+            - button "Валторна" [ref=e57]
+      - button "Отправить отзыв" [ref=e50]

@@ -1,0 +1,77 @@
+{
+  "schema_version": "qm-reader-browser-proof/v1",
+  "status": "VERIFIED",
+  "frozen_source": "17be4ce706cc27956c09d362cc5dc5803dd53570",
+  "build_id": "quiz-2026.10.14-reader-17be4ce",
+  "viewport": [
+    390,
+    844
+  ],
+  "articles": [
+    {
+      "question_id": "pub-connections-001",
+      "revision_sha256": "ffba665c01970729b668367173aeeee8845eb9f02e69c64e91348c360efce2cd",
+      "title_seen": true,
+      "source_link_count_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/article1-footer.png",
+      "screenshot_sha256": "9daef6d1d5367938415cb9e8d33f2a83dfcdabcc9dd8e9325eac30646cf18855"
+    },
+    {
+      "question_id": "pub-connections-002",
+      "revision_sha256": "9eaffd1c9f2c770a9715d03726cdecfded33942fca0255e0628a5defd1b8a119",
+      "title_seen": true,
+      "source_link_count_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/reader6v2-article-pub-connections-002-footer.png",
+      "screenshot_sha256": "5a0f0259adb5090835b4dfcdb560de0949c2aaffdc6767f6cf7e60ec65b3fc21"
+    },
+    {
+      "question_id": "pub-connections-006",
+      "revision_sha256": "a030f84979262904b5bb397e627c72d9240f2b5e4354b2fd51638b1d39dda53f",
+      "title_seen": true,
+      "source_link_count_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/reader6v2-article-pub-connections-006-footer.png",
+      "screenshot_sha256": "59288b2d6aed43a498ef507c0d6f945aa7a1caae378588d89d53878c0b4f4e23"
+    },
+    {
+      "question_id": "pub-connections-011",
+      "revision_sha256": "d7c001f99efe5b784e85f2577023973bd7d089e1441b32093e59c29cd60a2d8a",
+      "title_seen": true,
+      "source_link_count_seen": 2,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/reader6v2-article-pub-connections-011-footer.png",
+      "screenshot_sha256": "b2f26abd4c4321b321b0d0070ca664dd0a592273bc57c45b78441e512be9ecce"
+    },
+    {
+      "question_id": "pub-connections-012",
+      "revision_sha256": "ac9b02a66246a4cf541382703812e2b69a24120cc236158c2419f8b74439a862",
+      "title_seen": true,
+      "source_link_count_seen": 3,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/reader6v2-article-pub-connections-012-footer.png",
+      "screenshot_sha256": "67a4330e52fdb1f1afdb278d2b650716dea88d76c52d6bd7bf28a0a7f5199919"
+    },
+    {
+      "question_id": "pub-connections-016",
+      "revision_sha256": "40464345526c4665cf7ef2b79adf9a19f3afc661a4bfcfd3ebe62232569befba",
+      "title_seen": true,
+      "source_link_count_seen": 2,
+      "footer_screenshot": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/local-browser/mixed/reader6v2-article-pub-connections-016-footer.png",
+      "screenshot_sha256": "bcdd9c0f47540f0cf59a0135942bb34ccb8acd118e2a440c4532c8c0f375e1a2"
+    }
+  ],
+  "actual_visible_score": 20,
+  "mixed_question_count": 20,
+  "browser_inactive": true,
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "browser_close_actual_exit": 0,
+  "qa_server_actual_exit": 0,
+  "api_termination_exit": 1,
+  "source_runtime_sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391",
+  "qa_web_main_sha256": "894bd58c54ce1e9b5c0b2873b0810e5df702dad7e235e9cbd78dbee3ff81e547",
+  "limits": [
+    "Controlled real Go mixed20 bundle and compiled frozen Flutter QA client, not immutable image /app/quizzes full-source151binding proof.",
+    "Initial harness focus argument and immediate dialog snapshot failed; corrected quoting and bounded actual-title wait. No application code fix claimed."
+  ],
+  "scope": "Actual six mobile Reader dialogs, complete footers/closing, paused quiz recovery and visible20of20 result. Root visually inspected all six screenshots; source links were independently read in earlier editorial work."
+}

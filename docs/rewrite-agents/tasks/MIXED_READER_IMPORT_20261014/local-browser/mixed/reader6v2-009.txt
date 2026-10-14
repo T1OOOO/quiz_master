@@ -1,0 +1,14 @@
+- generic
+  - generic "Диалоговое окно"
+    - generic "Диалоговое окно"
+      - button "Закрыть" [ref=e61]
+      - StaticText "Зачем оркестру один звук"
+      - button "Закрыть статью" [ref=e62]
+      - group
+        - textbox [disabled, ref=e66]
+        - textbox [disabled, ref=e67]
+        - textbox [disabled, ref=e68]
+        - StaticText "Источники и дальнейшее чтение"
+        - button "Berliner Philharmoniker: Concerto for Oboe and Small Orchestra www.berliner-philharmoniker.de" [ref=e63]
+        - button "Tonhalle-Orchester Zürich: The concert pitch ‘A’ www.tonhalleorchester.ch" [ref=e64]
+        - button "Richardson Symphony Orchestra FAQ richardsonsymphony.org" [ref=e65]

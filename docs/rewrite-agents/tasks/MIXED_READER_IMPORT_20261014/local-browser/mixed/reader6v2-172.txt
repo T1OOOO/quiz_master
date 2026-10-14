@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e284]
+        - button "Домой" [ref=e285]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e286]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "95"
+        - StaticText "20/20"
+        - group
+          - group "Четыре команды набрали разные баллы. «Альфа» выше «Беты», «Бета» выше «Гаммы», а «Дельта» ниже «Альфы», но выше «Беты». Кто занял третье место?"
+            - button "«Гамма»" [ref=e287]
+            - button "«Бета»" [ref=e288]
+            - button "«Альфа»" [ref=e289]
+            - button "«Дельта»" [ref=e290]
+      - button "Отправить отзыв" [ref=e283]

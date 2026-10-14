@@ -1,0 +1,14 @@
+- generic
+  - generic "Диалоговое окно"
+    - generic "Диалоговое окно"
+      - button "Закрыть" [ref=e193]
+      - StaticText "Одинаковые клавиши, разный способ звучать"
+      - button "Закрыть статью" [ref=e194]
+      - group
+        - textbox [disabled, ref=e198]
+        - textbox [disabled, ref=e199]
+        - textbox [disabled, ref=e200]
+        - StaticText "Источники и дальнейшее чтение"
+        - button "Yamaha: Piano Structure www.yamaha.com" [ref=e195]
+        - button "Yamaha: Evolution of the Modern Piano hub.yamaha.com" [ref=e196]
+        - button "The Met: Keyboard Instruments resources.metmuseum.org" [ref=e197]
