@@ -1,0 +1,55 @@
+{
+  "utc": "2026-10-14T07:08:31.618977+00:00",
+  "worker_sha256": {
+    "prepare_lotr_release.py": "3acaaa23f574593e495930a41bdf033da23526d66265c3b424b7e5e307f67fa1",
+    "test_prepare_lotr_release.py": "0657c104987ac8090cdf26a649209433035b4b51c56dff6d064cbef97f7d4260",
+    "README.md": "5665572e65e9c28336f8d3dae1ca6e646a8c92e6c7eea350333ab844997dfed5",
+    "REPORT.md": "dd58f6ab557edde9a76d3d73c1eccb54653dddc1b4cde441dbb45dc4d914f316"
+  },
+  "root_actual_checks": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_prepare_lotr_release.py"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\worker",
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "test_actual_runtime_projection_and_snapshot_pass (test_prepare_lotr_release.NegativeGuards.test_actual_runtime_projection_and_snapshot_pass) ... ok\ntest_actual_target_counts_and_browser_receipts_pass (test_prepare_lotr_release.NegativeGuards.test_actual_target_counts_and_browser_receipts_pass) ... ok\ntest_cache_rejects_existing_lotr_entry (test_prepare_lotr_release.NegativeGuards.test_cache_rejects_existing_lotr_entry) ... ok\ntest_changed_catalog_and_count_are_rejected (test_prepare_lotr_release.NegativeGuards.test_changed_catalog_and_count_are_rejected) ... ok\ntest_changed_old_article_is_rejected (test_prepare_lotr_release.NegativeGuards.test_changed_old_article_is_rejected) ... ok\ntest_missing_pins_fail_closed (test_prepare_lotr_release.NegativeGuards.test_missing_pins_fail_closed) ... ok\ntest_mutated_retained_key_is_rejected (test_prepare_lotr_release.NegativeGuards.test_mutated_retained_key_is_rejected) ... ok\ntest_mutated_snapshot_is_rejected (test_prepare_lotr_release.NegativeGuards.test_mutated_snapshot_is_rejected) ... ok\ntest_mutated_unchanged_question_is_rejected (test_prepare_lotr_release.NegativeGuards.test_mutated_unchanged_question_is_rejected) ... ok\ntest_q95_fourth_option_must_be_retained_old_option_five (test_prepare_lotr_release.NegativeGuards.test_q95_fourth_option_must_be_retained_old_option_five) ... ok\ntest_source_constants_are_exact (test_prepare_lotr_release.NegativeGuards.test_source_constants_are_exact) ... ok\ntest_wrong_baseline_is_rejected (test_prepare_lotr_release.NegativeGuards.test_wrong_baseline_is_rejected) ... ok\ntest_wrong_runtime_shape_is_rejected (test_prepare_lotr_release.NegativeGuards.test_wrong_runtime_shape_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.207s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\worker\\prepare_lotr_release.py",
+        "--pins",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\root-validator-pins.json",
+        "--prior-archive",
+        "C:\\ap\\quiz_master\\.run\\screen_song_package_20261014\\package-v1\\quiz-2026.10.14-screen-song-6866608.tar.gz",
+        "--baseline-cache",
+        "C:\\ap\\quiz_master\\.run\\lotr_browser_20261014\\baseline-runtime-bundles.json"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "{\"status\": \"VALIDATED_NOT_PREPARED\", \"build_id\": \"quiz-2026.10.14-lotr-rk-repair-9194f61\", \"counts\": {\"packs\": 135, \"questions\": 4064, \"reader_articles\": 266}}\n",
+      "stderr": ""
+    }
+  ],
+  "pins_sha256": "5e74d938806a45d36b942f1eeb53e9b95d304ebc5d4f58a604a78ee79ae22ff0",
+  "scope": "Inert validator checks only, VALIDATED_NOT_PREPARED; no package/rehearsal/deploy",
+  "earlier_root_pin_failures": [
+    {
+      "actual_exit": 1,
+      "chunk": "4f7709",
+      "reason": "Root missing catalog source pin"
+    },
+    {
+      "actual_exit": 1,
+      "chunk": "1dab96",
+      "reason": "Root Reader source pin used backslash key; normalized frozen Git source pins"
+    }
+  ]
+}

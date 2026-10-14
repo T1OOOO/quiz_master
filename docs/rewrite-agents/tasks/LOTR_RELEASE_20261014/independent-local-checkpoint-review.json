@@ -1,0 +1,80 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-24726176ea2f47fab00f1b33e6c63577": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-24726176ea2f47fab00f1b33e6c63577",
+          "verdict": "accept",
+          "note": "Independent read-only review of the local Flutter build + local-browser checkpoint, scope limited exactly as specified (no package/deploy/DB-rollback/production approval reviewed or implied).\n\nChecked: actual-flutter-builds.json (frozen_source 9194f61, build_id quiz-2026.10.14-lotr-rk-repair-9194f61, two Flutter web builds — production and qa — both actual_exit 0, frozen_assets_byte_identical true). browser-proof.json (390x844 viewport, attempt finished, server_score 2/2, answers for lotr-rk-93/lotr-rk-95 tied to question_revision sha256 4c90.../36e5..., source_footer_buttons 4, browser_close_actual_exit 0, browser_inactive true, qa_server_actual_exit 0, ports_closed [19090,19093], feedback_records_created 0). result.json/article-one.json/article-two.json accessibility snapshots show score 2, correct answers Андуин/Митлонд with matching article titles and 2+2=4 source footer links. requests.jsonl shows a clean attempt lifecycle (catalog→guest→attempt→2x answer/feedback→finish→reveals, all 200/201). public-baseline-refresh.json confirms the public 100-question baseline is unchanged from Screen Song 52 and candidate_published is false, i.e. no production publish occurred.\n\nIndependently opened initial.png, article-one.png, article-two.png and result.png (my Read tool can render PNGs) and they visually match the accessibility-tree snapshots and the JSON claims: same question text/options, same two article bodies with the same two source links each, same final score screen with both answers and explanations.\n\nLimits/honesty: I did not recompute any sha256 myself — the hashes in the proofs are Root's bindings, not independently verified by me, per task scope. I did not rerun the Flutter build or the browser session; I'm relying on the recorded exit codes/logs. api_cleanup.actual_api_exit is 1 (nonzero) despite stop_seen=true and ports_closed being correct — worth Root double-checking, but it does not contradict the checkpoint's own claims (browser_inactive true, server closed) and is outside what this checkpoint claims to guarantee. The RELEASE_PACKET_EN.md's option-identity-preservation claim (old opt5 at new raw index 3) and the 98/135/4064/264 object-count claims were not independently verified here — no corresponding proof file was in my reading scope. This review covers only the local checkpoint files listed in my task scope, not the release packet's broader production gates.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent provider inspects actual receipts and limitations; verifies source/build binding and browser proof consistency without fabricating commands. Preserve ScreenSong52 public baseline and26openfeedback.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\actual-flutter-builds.json"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Review actual two source9194 Flutter receipts, local390x844 compiled Flutter/Go practice2/2, both Reader article/source footer screenshots and semantic receipts, exact local SQL refs/score and cleanup, with honest initial wrapper/timer failures. Scope local build/browser only; no package/Pythonbridge/copiedDB/production approval.",
+        "created_at": 1791961153.040046,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-24726176ea2f47fab00f1b33e6c63577",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/actual-flutter-builds.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/local-browser/browser-proof.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/local-browser/requests.jsonl",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/public-baseline-refresh.json"
+          ],
+          "next": "Independent localcheckpoint review then corrected releasevalidator/package/rehearsal gates.",
+          "risks": [
+            "ProductionPythonbridge/copiedDB/package/rollback not verified",
+            "PhysicalAndroid not tested",
+            "Releasevalidatorv1REWORK"
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Actual source9194 twoFlutter builds0; localcompiledFlutter/Go390x844 practicefinished2/2, bothReader/fourfooterlinks, actualSQLrefsandcleanup. Initialwrapperabortedexit1/firstpausemissedexit1 honest. No production approval.",
+          "tests": [
+            {
+              "actual_exit": 0,
+              "name": "FlutterproductionandQA"
+            },
+            {
+              "actual_exit": 0,
+              "name": "LocalUIserverSQLscore2/2"
+            },
+            {
+              "actual_exit": 0,
+              "name": "Browserclose/APIservercleanup"
+            }
+          ]
+        },
+        "root_task_id": "task-24726176ea2f47fab00f1b33e6c63577",
+        "run_id": "run-ded0a88329ea4e4da9fea33f24a3f5dd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-47e3dc04883f497caae95521f125f93a",
+        "title": "Root actual LOTR Flutter build and local browser checkpoint",
+        "version": 4,
+        "reviewer": "session-ce12e69aaf7c4f12b6ff392cc44f2f0a",
+        "review_note": "Independent read-only review of the local Flutter build + local-browser checkpoint, scope limited exactly as specified (no package/deploy/DB-rollback/production approval reviewed or implied).\n\nChecked: actual-flutter-builds.json (frozen_source 9194f61, build_id quiz-2026.10.14-lotr-rk-repair-9194f61, two Flutter web builds — production and qa — both actual_exit 0, frozen_assets_byte_identical true). browser-proof.json (390x844 viewport, attempt finished, server_score 2/2, answers for lotr-rk-93/lotr-rk-95 tied to question_revision sha256 4c90.../36e5..., source_footer_buttons 4, browser_close_actual_exit 0, browser_inactive true, qa_server_actual_exit 0, ports_closed [19090,19093], feedback_records_created 0). result.json/article-one.json/article-two.json accessibility snapshots show score 2, correct answers Андуин/Митлонд with matching article titles and 2+2=4 source footer links. requests.jsonl shows a clean attempt lifecycle (catalog→guest→attempt→2x answer/feedback→finish→reveals, all 200/201). public-baseline-refresh.json confirms the public 100-question baseline is unchanged from Screen Song 52 and candidate_published is false, i.e. no production publish occurred.\n\nIndependently opened initial.png, article-one.png, article-two.png and result.png (my Read tool can render PNGs) and they visually match the accessibility-tree snapshots and the JSON claims: same question text/options, same two article bodies with the same two source links each, same final score screen with both answers and explanations.\n\nLimits/honesty: I did not recompute any sha256 myself — the hashes in the proofs are Root's bindings, not independently verified by me, per task scope. I did not rerun the Flutter build or the browser session; I'm relying on the recorded exit codes/logs. api_cleanup.actual_api_exit is 1 (nonzero) despite stop_seen=true and ports_closed being correct — worth Root double-checking, but it does not contradict the checkpoint's own claims (browser_inactive true, server closed) and is outside what this checkpoint claims to guarantee. The RELEASE_PACKET_EN.md's option-identity-preservation claim (old opt5 at new raw index 3) and the 98/135/4064/264 object-count claims were not independently verified here — no corresponding proof file was in my reading scope. This review covers only the local checkpoint files listed in my task scope, not the release packet's broader production gates."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded and the task state is now `ACCEPTED` with my note attached (task-24726176ea2f47fab00f1b33e6c63577).\n\n**Verdict: accept, scope = local checkpoint only.**\n\n- Flutter builds (production + qa): both `actual_exit 0`, frozen source `9194f61`, `frozen_assets_byte_identical: true`.\n- Browser checkpoint: 390x844 viewport, attempt finished, server score 2/2, both answers tied to the stated question-revision hashes, 4 source-footer buttons (2+2 across the two articles), clean request lifecycle in `requests.jsonl`, browser/API server cleanup reported with ports closed.\n- I independently opened all four PNGs (`initial/article-one/article-two/result.png`) — my Read tool can render images — and they visually match the accessibility-tree snapshots and JSON claims (same questions, same two article bodies with matching source links, same final score screen).\n- Public baseline check confirms the 100-question production catalog is unchanged and nothing was published.\n\nLimits I flagged in the review note: I didn't recompute any sha256 myself (treated as Root's bindings per scope), didn't rerun the build/browser session myself, and noted `api_cleanup.actual_api_exit: 1` as a minor nonzero-exit anomaly worth Root's attention (doesn't contradict the checkpoint's own cleanup claims). The release packet's broader option-identity and object-count claims (98/135/4064/264) weren't in my file scope, so I didn't verify those — out of bounds for this checkpoint review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "8c2459c8ce71b31306b31b49be040c841ffceafbd948d76eb214d767dc339087",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,75 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-62351b34b90441dab28f3045b084e903": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-62351b34b90441dab28f3045b084e903",
+          "verdict": "rework",
+          "note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} plus root-validator-checks.json, root-validator-pins.json and independent-controller-v1-review.json (prior v1 verdict). Scope: bounded inert validator only; not a package/browser/DB/rollback/execution/cutover approval, and I did not recompute hashes or rerun tests per instructions.\n\nNo side effects found: main() only reads JSON, opens the prior archive read-only via tarfile.getmembers() for member-name inspection (no extractall), and prints a status line. No subprocess, network, SSH, Docker, Git, Flutter, write, or DB calls anywhere in the file.\n\nv1 blocker IS fixed: verify_asset_rows (lines 156-168) now actually checks len(catalog)==135, sum(questions_count)==4064, len(reader)==266, old_catalog==135/old_reader==264, catalog_by_id exact equality (all 135 rows preserved), and reader_by_id preservation of all 264 prior objects with exactly 2 new keys. The counts (135/4064/266) are genuinely enforced, not just printed as before.\n\nv1 minor fragility IS fixed: the lotr-rk-95 fourth-option check is now an explicit `len(q95[\"options\"]) != 4` plus `options[3].get(\"option_id\") != \"lotr-rk-95-opt-5\"` (line 209) instead of the old options[-1] proxy.\n\nNEW gap found (blocking): pins[\"source_assets\"] declares 9 frozen source file hashes (review json, question-articles.json, dart test, catalog.json, raw quiz json, draft.json, manifest.json, bundle.json, snapshot json). load_release_pins() only checks these for path-safety and SHA-256 *format*, never against actual file bytes (lines 104-110). verify_assets() (the only place that hashes real files against source_assets) checks exactly 2 of the 9 declared paths against disk: catalog.json and question-articles.json (lines 146-150). The remaining 7 declared paths -- including the raw repaired quiz source (quizzes/Cinema/LOTR/lotr_return_king_bts_100.json), draft.json, manifest.json, bundle.json, the source review json, and the Dart test file -- are never hash-verified against actual bytes anywhere in the script. (reader_snapshot's path happens to coincide with one source_assets entry but is checked via the separate reader_snapshot pin loop, not via source_assets.) This means a tampered draft/manifest/bundle/raw-source/review file would pass validation undetected, despite README/packet claims of 'full frozen source asset pins'.\n\nEverything else inspected holds up: frozen source/build identity, ScreenSong52 infra baseline tuple exact-match, required-pin-keys fail-closed gate, hash-bound build/source/export/browser evidence verification, safe tar member-path guard, 12-to-13 append-only cache with byte-identical preservation of prior 12 entries, exact two repaired revision hashes + /app source URI, retained option IDs (lotr-rk-93-opt-6, lotr-rk-95-opt-5) and lotr-rk-95-opt-2 grading, reader_snapshot == runtime full-equality binding, and 98-of-100 untouched public question preservation via canonical-projection equality.\n\nVerdict: REWORK -- extend verify_assets (or load_release_pins) to hash-verify all 9 declared source_assets paths against disk, not just catalog.json/question-articles.json, before resubmitting. No package/copiedDB/Python-bridge/rollback/execution/cutover approval given or implied.",
+          "error_count": 1
+        }
+      },
+      "actual_response": {
+        "acceptance": "Inspect final worker bytes and Root actualfresh commands/hashes; genuine provider accept/rework exactinertvalidator scope only. Require actual-schema positive/mutated negative135/4064/266/old264objects/all135rows/exactq95fourtholdopt5 and snapshot/runtime98 preservation. No productionapproval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Independent review of final native worker revision after actualClaude44v1REWORK. Root observed actual13tests, finalmain realpins/source9194/twoFlutter/browser2/2/frozenScreenSong52 archive/cache12/old264Reader/all135catalog gates; no package/deploy effects. v1reviewcannotapprovechangedbytes. Workerfiles-only responsibility alreadycompleted; Root owns verification/checkpoint.",
+        "created_at": 1791961690.0418813,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-62351b34b90441dab28f3045b084e903",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/test_prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/root-validator-checks.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/root-validator-pins.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/independent-controller-v1-review.json"
+          ],
+          "next": "Fresh independent provider review exactfinalvalidatorbytes then later package/rehearsal/execution gates.",
+          "risks": [
+            "No actual immutable package/copiedDB/rehearsal/cutover",
+            "EarlierRootpinmissingcatalog/backslashReader errors exit1 retained"
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Native author finished final13tests0 and fullinertmain0; Root independentlyreran13tests/main0, pinned unchangedworkerbytes3acaaa/0657/dd58 after actualv1Claude44REWORK. Frozen9194 actual135/4064/266, baseline264/all135 preservation,98public runtime preservation, retainedq95oldopt5/rawindex3, snapshot/runtime and actualclosedbrowser receipts. VALIDATED_NOT_PREPARED only; no package/deploy.",
+          "tests": [
+            {
+              "actual_exit": 0,
+              "name": "Rootactual13unittests"
+            },
+            {
+              "actual_exit": 0,
+              "name": "Rootactualinertmainrealpinsbaselinearchive/cache12"
+            }
+          ]
+        },
+        "root_task_id": "task-62351b34b90441dab28f3045b084e903",
+        "run_id": "run-a40a75c4e4604ec6b8f9bc52af04066b",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-47e3dc04883f497caae95521f125f93a",
+        "title": "Fresh review: revised LOTR inert release validator real-schema preservation gates",
+        "version": 4,
+        "reviewer": "session-68f118a29d4c4de48f00899c1cb3c115",
+        "review_note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} plus root-validator-checks.json, root-validator-pins.json and independent-controller-v1-review.json (prior v1 verdict). Scope: bounded inert validator only; not a package/browser/DB/rollback/execution/cutover approval, and I did not recompute hashes or rerun tests per instructions.\n\nNo side effects found: main() only reads JSON, opens the prior archive read-only via tarfile.getmembers() for member-name inspection (no extractall), and prints a status line. No subprocess, network, SSH, Docker, Git, Flutter, write, or DB calls anywhere in the file.\n\nv1 blocker IS fixed: verify_asset_rows (lines 156-168) now actually checks len(catalog)==135, sum(questions_count)==4064, len(reader)==266, old_catalog==135/old_reader==264, catalog_by_id exact equality (all 135 rows preserved), and reader_by_id preservation of all 264 prior objects with exactly 2 new keys. The counts (135/4064/266) are genuinely enforced, not just printed as before.\n\nv1 minor fragility IS fixed: the lotr-rk-95 fourth-option check is now an explicit `len(q95[\"options\"]) != 4` plus `options[3].get(\"option_id\") != \"lotr-rk-95-opt-5\"` (line 209) instead of the old options[-1] proxy.\n\nNEW gap found (blocking): pins[\"source_assets\"] declares 9 frozen source file hashes (review json, question-articles.json, dart test, catalog.json, raw quiz json, draft.json, manifest.json, bundle.json, snapshot json). load_release_pins() only checks these for path-safety and SHA-256 *format*, never against actual file bytes (lines 104-110). verify_assets() (the only place that hashes real files against source_assets) checks exactly 2 of the 9 declared paths against disk: catalog.json and question-articles.json (lines 146-150). The remaining 7 declared paths -- including the raw repaired quiz source (quizzes/Cinema/LOTR/lotr_return_king_bts_100.json), draft.json, manifest.json, bundle.json, the source review json, and the Dart test file -- are never hash-verified against actual bytes anywhere in the script. (reader_snapshot's path happens to coincide with one source_assets entry but is checked via the separate reader_snapshot pin loop, not via source_assets.) This means a tampered draft/manifest/bundle/raw-source/review file would pass validation undetected, despite README/packet claims of 'full frozen source asset pins'.\n\nEverything else inspected holds up: frozen source/build identity, ScreenSong52 infra baseline tuple exact-match, required-pin-keys fail-closed gate, hash-bound build/source/export/browser evidence verification, safe tar member-path guard, 12-to-13 append-only cache with byte-identical preservation of prior 12 entries, exact two repaired revision hashes + /app source URI, retained option IDs (lotr-rk-93-opt-6, lotr-rk-95-opt-5) and lotr-rk-95-opt-2 grading, reader_snapshot == runtime full-equality binding, and 98-of-100 untouched public question preservation via canonical-projection equality.\n\nVerdict: REWORK -- extend verify_assets (or load_release_pins) to hash-verify all 9 declared source_assets paths against disk, not just catalog.json/question-articles.json, before resubmitting. No package/copiedDB/Python-bridge/rollback/execution/cutover approval given or implied."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted: **REWORK**, task-62351b34b90441dab28f3045b084e903.\n\n**Summary of findings** (read-only, no hashes recomputed, no tests rerun, no package/DB/browser/execution/cutover approval given):\n\n- No side effects confirmed: the worker only reads JSON and inspects (never extracts) the archive via `tarfile.getmembers()`; no subprocess/network/SSH/Docker/Git/write/DB calls anywhere.\n- The prior v1 blocker (135/4064/266 and 264-Reader preservation counts being unenforced) is now genuinely fixed — `verify_asset_rows` checks all of it.\n- The prior v1 minor fragility (implicit `options[-1]` proxy for the q95 fourth option) is also fixed with an explicit length + index-3 check.\n- **New blocking gap**: `pins[\"source_assets\"]` declares 9 frozen file hashes, but only 2 of them (`catalog.json`, `question-articles.json`) are ever hash-verified against actual disk bytes. The other 7 — including the raw repaired quiz source, `draft.json`, `manifest.json`, `bundle.json`, the source-review JSON, and the Dart test file — are checked only for path-safety/hash-format, never against real file content. A tampered copy of any of those 7 would pass validation silently.\n\nRecommended next step for the worker: extend `verify_assets` to hash-check all 9 declared `source_assets` paths, not just two, then resubmit for a fresh review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "5489853aa6a97ca55c42c1dc711e14c07e851eb226619d818d9f722d2a700a3b",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

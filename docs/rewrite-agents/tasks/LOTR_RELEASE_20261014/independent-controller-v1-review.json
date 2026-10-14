@@ -1,0 +1,88 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-0d70efad6fde49138e26e7a9b9b5cbf8": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-0d70efad6fde49138e26e7a9b9b5cbf8",
+          "verdict": "rework",
+          "note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} against RELEASE_PACKET_EN.md. Scope: bounded validator only; not a package/browser/rehearsal/deployment approval.\n\nNo side effects confirmed: main() only reads JSON/pin files and opens the prior archive with tarfile for member-name inspection (no extractall); no subprocess, network, SSH, Docker, Git, Flutter, or write calls anywhere in the file. py_compile and unittest claims in REPORT.md match what the code can plausibly produce (did not re-run or recompute hashes per instructions).\n\nCorrectly implemented and fail-closed: frozen source/build id pins (TARGET_SOURCE/BUILD_ID), ScreenSong52 baseline tuple (archive sha256/image/api/nginx/pvc) exact-match, required-pin-keys fail-closed check, build evidence hash binding for production/qa Flutter receipts, safe tar member-path guard (absolute/'..'/backslash/dup-name/prefix), 12-to-13 append-only cache (len==12, key absent, result len==13, all 12 prior objects byte-equal preserved), exact two repaired revision hashes (lotr-rk-93/95) and /app source URI, retained option IDs (lotr-rk-93-opt-6, lotr-rk-95-opt-5) and lotr-rk-95-opt-2 grading, Reader snapshot binding of both repaired revisions, and 98-of-100 untouched public question preservation via canonical-projection equality.\n\nBlocker found: the packet (and README) claim the controller enforces the '135/4064/266 target counts' and 'prior264 Reader... preservation', but COUNTS = {packs:135, questions:4064, reader_articles:266} (line 35) is defined and only ever used in the final print() status line (line 217) - it is never compared against any pin, input file, or computed value. There is no check anywhere in the file of total pack count, total question count, or total/prior Reader article count (e.g. no assertion that reader_snapshot has 264 prior preserved objects growing to 266, no 135 catalog-row check). This is a real verification gap: the required fail-closed preservation guard for the library-wide counts and Reader catalog size is absent, so a pin/runtime bundle that silently changed those totals would be accepted. No test in test_prepare_lotr_release.py exercises this either.\n\nMinor fragility (not blocking by itself): the q95 retained-option check uses options[-1] as a proxy for packet's 'opt5 at raw index 3'; only holds if q95 always has exactly 4 options, with no explicit length check pinning that.\n\nVerdict: REWORK - restore/implement the missing 135/4064/266 and Reader-article-count (264 prior/266 total) fail-closed checks before re-submitting; everything else inspected holds up. Did not fabricate test runs or recompute SHA-256 values; findings are based on static reading of the two worker files only.",
+          "error_count": 1
+        }
+      },
+      "actual_response": {
+        "acceptance": "Inert boundedreleasecontrollerwithnegativeguards/preservation/runtimekey/ref invariants andactualpuretestproof; no release/executionapproval claimed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014"
+        ],
+        "assignee": "session-fd12ae13b63f43a286acf0d37ab1cfa4",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Own ONLY LOTR_RELEASE_20261014/worker/ afteroffer. ReadRootRELEASE_PACKET_EN.md/fullcollaborationpacket. SmalladaptationpreviousreviewedScreenSongcontrollertoactualScreenSong52baseline/archive64e50/imagea97/API26e/nginxe9/PVC7fc. Targetsource9194/buildlotr-rk-repair9194; cache12→13 addingexactreviewedruntimeprojection100questions;135/4064/266; preserveprior12cacheentries/all264Readerobjects/all135catalogrows/98servedLOT Rqhashes. Correct95newraw3→oldopt5/keyopt2, /appsourceURIexact2Readerrefs4c90/36e5. Failclosedwrongoldbaseline/pins/source/assets/reviews/missingQA; syntheticnegativeguardtestslabellednoactualapprovalfabrication. Rootownsactualpins/package/browser/DB/SSH/deploy/Git. No packagebuild/prep/Flutter/browser/SSH/docker/Git/children/schedulers. Pureboundedguardtestsallowedcompileridle. Returnactualhashes/testexits/limits forindependentreview.",
+        "created_at": 1791960057.8742533,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-0d70efad6fde49138e26e7a9b9b5cbf8",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/test_prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/README.md",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/REPORT.md"
+          ],
+          "evidence": [
+            {
+              "command": "python -m py_compile prepare_lotr_release.py test_prepare_lotr_release.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\worker",
+              "exit_code": 0
+            },
+            {
+              "command": "python -m unittest -v test_prepare_lotr_release.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\worker",
+              "exit_code": 0,
+              "result": "5 synthetic negative guard tests passed"
+            }
+          ],
+          "limitations": [
+            "No package preparation, build, Flutter, browser, database, SSH, Docker, Git, deployment, publication, or acceptance was run.",
+            "Controller remains intentionally blocked without Root's real qm-lotr-release-pins/v1 evidence."
+          ],
+          "sha256": {
+            "README.md": "e7619890e1606ae997990e6e96ef207568f5c5573b755b1706874c0f156418ad",
+            "REPORT.md": "ae6bc71d5976ca7a784c756b5ee9aff7e7ed1fa12b9383b40a92b73eea4b9102",
+            "prepare_lotr_release.py": "bf03d1a3073b3a2f9ab2b3b63fa3c7f630d602a62cd54e5983ee332219a94c7e",
+            "test_prepare_lotr_release.py": "e7b55dfc9c57142e446daac5be9a466f2ce8ed65eef535af513b0a759769a601"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "worker_label": "lotr-release-controller"
+        },
+        "root_task_id": "task-0d70efad6fde49138e26e7a9b9b5cbf8",
+        "run_id": "run-dbdf219d3c5c41f1bce1fea846f3b655",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-47e3dc04883f497caae95521f125f93a",
+        "title": "quiz_master-1wy: finite fail-closed LOTR release package controller",
+        "version": 4,
+        "reviewer": "session-8cccc672043046ef9f5d236affc3f627",
+        "review_note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} against RELEASE_PACKET_EN.md. Scope: bounded validator only; not a package/browser/rehearsal/deployment approval.\n\nNo side effects confirmed: main() only reads JSON/pin files and opens the prior archive with tarfile for member-name inspection (no extractall); no subprocess, network, SSH, Docker, Git, Flutter, or write calls anywhere in the file. py_compile and unittest claims in REPORT.md match what the code can plausibly produce (did not re-run or recompute hashes per instructions).\n\nCorrectly implemented and fail-closed: frozen source/build id pins (TARGET_SOURCE/BUILD_ID), ScreenSong52 baseline tuple (archive sha256/image/api/nginx/pvc) exact-match, required-pin-keys fail-closed check, build evidence hash binding for production/qa Flutter receipts, safe tar member-path guard (absolute/'..'/backslash/dup-name/prefix), 12-to-13 append-only cache (len==12, key absent, result len==13, all 12 prior objects byte-equal preserved), exact two repaired revision hashes (lotr-rk-93/95) and /app source URI, retained option IDs (lotr-rk-93-opt-6, lotr-rk-95-opt-5) and lotr-rk-95-opt-2 grading, Reader snapshot binding of both repaired revisions, and 98-of-100 untouched public question preservation via canonical-projection equality.\n\nBlocker found: the packet (and README) claim the controller enforces the '135/4064/266 target counts' and 'prior264 Reader... preservation', but COUNTS = {packs:135, questions:4064, reader_articles:266} (line 35) is defined and only ever used in the final print() status line (line 217) - it is never compared against any pin, input file, or computed value. There is no check anywhere in the file of total pack count, total question count, or total/prior Reader article count (e.g. no assertion that reader_snapshot has 264 prior preserved objects growing to 266, no 135 catalog-row check). This is a real verification gap: the required fail-closed preservation guard for the library-wide counts and Reader catalog size is absent, so a pin/runtime bundle that silently changed those totals would be accepted. No test in test_prepare_lotr_release.py exercises this either.\n\nMinor fragility (not blocking by itself): the q95 retained-option check uses options[-1] as a proxy for packet's 'opt5 at raw index 3'; only holds if q95 always has exactly 4 options, with no explicit length check pinning that.\n\nVerdict: REWORK - restore/implement the missing 135/4064/266 and Reader-article-count (264 prior/266 total) fail-closed checks before re-submitting; everything else inspected holds up. Did not fabricate test runs or recompute SHA-256 values; findings are based on static reading of the two worker files only."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully; task `task-0d70efad6fde49138e26e7a9b9b5cbf8` is now in state **REWORK**.\n\n**Report**\n\nI independently reviewed `worker/{prepare_lotr_release.py, test_prepare_lotr_release.py, README.md, REPORT.md}` against `RELEASE_PACKET_EN.md`, scope limited to the bounded validator only.\n\n**Confirmed clean:**\n- No release side effects: `main()` only reads JSON/pin files and inspects (never extracts) the prior tar archive — no subprocess, network, SSH, Docker, Git, Flutter, or write calls anywhere.\n- Fail-closed checks that are correctly implemented: frozen source/build identity, exact ScreenSong52 infra baseline tuple (archive/image/API/nginx/PVC), required-pin-keys gate, hash-bound build/source/export/browser evidence, safe tar member-path guard, 12→13 append-only cache with byte-identical preservation of the prior 12 entries, exact two repaired revision hashes + `/app` source URI, retained option IDs and grading, Reader snapshot binding for both repairs, and 98-of-100 untouched public question preservation.\n\n**Blocker (reason for REWORK):** `COUNTS = {packs:135, questions:4064, reader_articles:266}` is defined but only ever used in the final printed status line — it's never checked against any pin or input. There is no fail-closed guard anywhere for total pack/question counts or Reader article count preservation (264 prior → 266), despite both the README and the release packet claiming this is enforced. No test covers it either.\n\n**Minor fragility noted (non-blocking):** the `lotr-rk-95` retained-option check uses `options[-1]` as a stand-in for \"raw index 3,\" which only holds if that question always has exactly 4 options — no explicit length pin.\n\nNo hashes were recomputed and no tests were fabricated or rerun beyond reading the reported evidence. Next step is for the controller author to add the missing count/Reader-preservation checks and resubmit.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-0d70efad6fde49138e26e7a9b9b5cbf8",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "a8d99e521fe786a6f294c6945e2e166eb0e24851cda941036dcf3c7a6596d0b9",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

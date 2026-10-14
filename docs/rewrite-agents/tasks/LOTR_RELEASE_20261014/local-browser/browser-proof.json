@@ -1,0 +1,65 @@
+{
+  "schema_version": "qm-browser-proof/v1",
+  "scope": "Local compiled Flutter Web 390x844; actual Go controlled runtime projection, not production bridge/release approval",
+  "frozen_source": "9194f61face75d03862003942ef55fae34aeec72",
+  "build_id": "quiz-2026.10.14-lotr-rk-repair-9194f61",
+  "attempt": {
+    "id": "a-0148bdec-80ba-4b16-8134-0004d89dfd2e",
+    "status": "finished",
+    "server_score": 2
+  },
+  "answers": [
+    {
+      "question_id": "lotr-rk-93",
+      "answer": "{\"option_id\":\"lotr-rk-93-opt-6\"}",
+      "receipt": "{\"receipt_id\":\"r-5a3f9788-553d-4594-97d4-b6d33d37f0de\",\"attempt_id\":\"a-0148bdec-80ba-4b16-8134-0004d89dfd2e\",\"participant_id\":\"p-502a95cf599c16e9e1629e329fb3575c\",\"question_id\":\"lotr-rk-93\",\"question_revision\":{\"number\":2,\"sha256\":\"4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4\"},\"accepted_at\":\"2026-10-14T06:53:20.8802411Z\"}"
+    },
+    {
+      "question_id": "lotr-rk-95",
+      "answer": "{\"option_id\":\"lotr-rk-95-opt-2\"}",
+      "receipt": "{\"receipt_id\":\"r-d64de3c6-a86b-48f1-bcb5-a65563c03870\",\"attempt_id\":\"a-0148bdec-80ba-4b16-8134-0004d89dfd2e\",\"participant_id\":\"p-502a95cf599c16e9e1629e329fb3575c\",\"question_id\":\"lotr-rk-95\",\"question_revision\":{\"number\":2,\"sha256\":\"36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513\"},\"accepted_at\":\"2026-10-14T06:53:45.3941523Z\"}"
+    }
+  ],
+  "question_refs": [
+    {
+      "question_id": "lotr-rk-93",
+      "revision": "{\"number\":2,\"sha256\":\"4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4\"}"
+    },
+    {
+      "question_id": "lotr-rk-95",
+      "revision": "{\"number\":2,\"sha256\":\"36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513\"}"
+    }
+  ],
+  "articles_opened": [
+    "question:lotr-rk-93",
+    "question:lotr-rk-95"
+  ],
+  "source_footer_buttons": 4,
+  "visual_review": [
+    "initial.png",
+    "article-one.png",
+    "article-two.png",
+    "result.png"
+  ],
+  "browser_close_actual_exit": 0,
+  "browser_close_chunk": "050e9e",
+  "browser_inactive": true,
+  "qa_server_actual_exit": 0,
+  "qa_server_chunk": "26a6ca",
+  "api_cleanup": {
+    "actual_api_pid": 41912,
+    "actual_api_exit": 1,
+    "stop_seen": true
+  },
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "feedback_records_created": 0,
+  "limits": [
+    "Initial Python open wrapper was aborted, exit1; actual browser session was recovered and used.",
+    "First pause click missed timer, exit1; article93 checked from finished result.",
+    "Second question inspected via actual semantics, no separate card screenshot.",
+    "No physical Android device or production validation."
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-88b432bbc5264394a55982eeb4c0e286": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-88b432bbc5264394a55982eeb4c0e286",
+          "verdict": "accept",
+          "note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} plus root-validator-checks.json, root-validator-pins.json and independent-controller-v2-review.json (prior REWORK verdict). Scope: bounded inert validator only; not a package/browser/DB/rollback/execution/cutover approval. I reviewed Root's recorded actual test/validation receipts and the real source files; I did not independently recompute hashes or rerun tests.\n\nThe v2 blocker is fixed: verify_assets() now iterates `for relative, expected in declared.items()` over ALL entries of pins['source_assets'] (9 declared files), resolving each path under the repo root (PurePosixPath safety checks: no absolute path, no '..', no backslash, plus target.is_relative_to(repo) escape guard) and comparing sha256_file(target) against the pinned hash. This replaces the prior version that only checked 2 of 9 declared assets (catalog.json, question-articles.json). test_all_nine_declared_source_assets_pass asserts len(pins['source_assets'])==9 and exercises verify_assets against the real root-validator-pins.json. test_tampered_declared_raw_asset_is_rejected tampers RAW_PATH ('quizzes/Cinema/LOTR/lotr_return_king_bts_100.json', one of the 7 previously-unverified files, the raw repaired quiz source) and asserts rejection with the exact 'frozen source asset differs' message -- directly closing the gap the v2 reviewer flagged.\n\nAll previously-accepted guards remain intact and unchanged: 135/4064/266 target counts, 135 catalog rows + 264 Reader objects preserved exactly (plus 2 new), 98-of-100 untouched public question projections, exact two repaired revision hashes + /app source URI, retained lotr-rk-93-opt-6/lotr-rk-95-opt-5 option IDs and lotr-rk-95-opt-2 grading, reader_snapshot==runtime full-equality binding, 12-to-13 append-only cache preservation, safe tar member-path guard (archive opened read-only via tarfile.getmembers(), never extractall), and fail-closed required-pin-key gate.\n\nNo package, network, database, deployment, subprocess, SSH, Docker, Git-mutation, or other write effect exists anywhere in the script -- only json/hashlib/tarfile reads and one final print of {status: VALIDATED_NOT_PREPARED, ...}. Tests read real nine-file inputs (real pins, real runtime/public/snapshot/browser-proof/catalog/Reader files) and apply narrowly scoped synthetic negative mutations only; one scratch tempfile is used solely for a synthetic malformed-pins fixture, nothing written outside temp.\n\nVerdict: ACCEPT, bounded to this inert VALIDATED_NOT_PREPARED validator. No package, copied-DB rehearsal/rollback, deployment, or production-verification approval given or implied."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fresh differentprovider inspects finalsource/test diffs/actualRootchecks/hashes; accepts only inertvalidator when missing fullsource guard fixed and tests meaningful. No fabricated command/hash/browser claims; no package/copiedDB/rehearsal/deploy approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Narrow final revision after realv1/v2ClaudeREWORK: require Root9 source assetpins and verify ALL diskbytes safelywithinworkspace, preserve runtime98/q95/snapshot/library guards and meaningful tamperedraw negative test. Root will run exactfinal tests/full inert main realinputs and bindsha. No package output or live operations.",
+        "created_at": 1791961998.2433023,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-88b432bbc5264394a55982eeb4c0e286",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/worker/test_prepare_lotr_release.py",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/root-validator-checks.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/root-validator-checks-v2.json",
+            "docs/rewrite-agents/tasks/LOTR_RELEASE_20261014/independent-controller-v2-review.json"
+          ],
+          "next": "Freshv3independentreview then ownedcheckpointpush; later package/rehearsal/release gates.",
+          "risks": [
+            "Package/copyDB/Pythonbridge/rollback/execution/cutover remain gated"
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Finalnativeworker01accfae/a1c989, now all9declaredsource assets diskhashguard/resolvedpathboundary+tamperedraw negative15tests; actualRoot independently15tests/main0, source9194,135/4064/266, unchangedworkerbytes recorded. Historical44/46REWORK retained. VALIDATED_NOT_PREPARED only.",
+          "tests": [
+            {
+              "actual_exit": 0,
+              "name": "ActualRoot15tests"
+            },
+            {
+              "actual_exit": 0,
+              "name": "ActualRootfullinertmain9pins/archive/cache12"
+            }
+          ]
+        },
+        "root_task_id": "task-88b432bbc5264394a55982eeb4c0e286",
+        "run_id": "run-4947660a77ff45ad83e486dbf351c82e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-47e3dc04883f497caae95521f125f93a",
+        "title": "LOTR validator v3: enforce all declared source bytes after real46 rework",
+        "version": 4,
+        "reviewer": "session-4a7589deb1cc4a6a9b161cb0a6a27ab9",
+        "review_note": "Independent read-only review of worker/{prepare_lotr_release.py,test_prepare_lotr_release.py,README.md,REPORT.md} plus root-validator-checks.json, root-validator-pins.json and independent-controller-v2-review.json (prior REWORK verdict). Scope: bounded inert validator only; not a package/browser/DB/rollback/execution/cutover approval. I reviewed Root's recorded actual test/validation receipts and the real source files; I did not independently recompute hashes or rerun tests.\n\nThe v2 blocker is fixed: verify_assets() now iterates `for relative, expected in declared.items()` over ALL entries of pins['source_assets'] (9 declared files), resolving each path under the repo root (PurePosixPath safety checks: no absolute path, no '..', no backslash, plus target.is_relative_to(repo) escape guard) and comparing sha256_file(target) against the pinned hash. This replaces the prior version that only checked 2 of 9 declared assets (catalog.json, question-articles.json). test_all_nine_declared_source_assets_pass asserts len(pins['source_assets'])==9 and exercises verify_assets against the real root-validator-pins.json. test_tampered_declared_raw_asset_is_rejected tampers RAW_PATH ('quizzes/Cinema/LOTR/lotr_return_king_bts_100.json', one of the 7 previously-unverified files, the raw repaired quiz source) and asserts rejection with the exact 'frozen source asset differs' message -- directly closing the gap the v2 reviewer flagged.\n\nAll previously-accepted guards remain intact and unchanged: 135/4064/266 target counts, 135 catalog rows + 264 Reader objects preserved exactly (plus 2 new), 98-of-100 untouched public question projections, exact two repaired revision hashes + /app source URI, retained lotr-rk-93-opt-6/lotr-rk-95-opt-5 option IDs and lotr-rk-95-opt-2 grading, reader_snapshot==runtime full-equality binding, 12-to-13 append-only cache preservation, safe tar member-path guard (archive opened read-only via tarfile.getmembers(), never extractall), and fail-closed required-pin-key gate.\n\nNo package, network, database, deployment, subprocess, SSH, Docker, Git-mutation, or other write effect exists anywhere in the script -- only json/hashlib/tarfile reads and one final print of {status: VALIDATED_NOT_PREPARED, ...}. Tests read real nine-file inputs (real pins, real runtime/public/snapshot/browser-proof/catalog/Reader files) and apply narrowly scoped synthetic negative mutations only; one scratch tempfile is used solely for a synthetic malformed-pins fixture, nothing written outside temp.\n\nVerdict: ACCEPT, bounded to this inert VALIDATED_NOT_PREPARED validator. No package, copied-DB rehearsal/rollback, deployment, or production-verification approval given or implied."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded: **ACCEPT** for task-88b432bbc5264394a55982eeb4c0e286, state now `ACCEPTED`.\n\nThe previously flagged gap (only 2 of 9 declared `source_assets` were hash-checked) is fixed — `verify_assets()` now hashes all 9 declared files against disk with path-escape guards, and `test_tampered_declared_raw_asset_is_rejected` proves the raw quiz-source pin is actually enforced. All prior preservation/runtime guards remain intact, and the script still has zero package/network/DB/deployment/write side effects — output stays `VALIDATED_NOT_PREPARED`. Acceptance is bounded to this inert validator only; package, DB rehearsal, rollback, and deployment remain separately gated.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "f7902e95ceaabc7ed634dccacf36e279217dd74aeafcc28f11a8d0954db4c1f9",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
