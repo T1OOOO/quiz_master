@@ -1,0 +1,69 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-04189480fc914a01a5442e26fb27e991": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-04189480fc914a01a5442e26fb27e991",
+          "verdict": "rework",
+          "note": "Independent review of v2-candidate.json, v2-editorial.json, v2-evidence.md (LOTR_WORDING_PILOT_20261014).\n\nSHA256 of the three draft files: NOT COMPUTED. Every Bash invocation beyond trivial echo (python3 hashlib, certutil, powershell Get-FileHash, python3 urllib fetch) was denied by this session's sandbox. Per task instructions (no retry loops, no permission bypass after a denial) I stopped once that pattern was confirmed and did not try other tools as a workaround. Consequence: I also could NOT independently open the two primary Tolkien Estate pages; I am not relying on the author's access claim as my own access, so I cannot personally confirm the exact quoted wording this session.\n\nBlind-solve (done before reading v2-editorial.json): rk_93 = Anduin (river beneath a large vale with Ered Nimrais/White Mountains of Gondor visible beyond); rk_95 = Mithlond/Grey Havens (harbor of the white ship's final departure). Both match the private key in v2-editorial.json. This is my own background-knowledge corroboration, not primary-source verification.\n\nItem rk_93: old->new mapping is explicit 1:1 for all 6 options; null private IDs are correctly flagged as 'not supplied', not invented. Options are parallel (all river names), no length/grammar giveaway. The v1 contradiction phrase is gone; mini-article reads as lore-only, no workflow/test prose. Difficulty 4, registered tags only. VERIFIED by me: none of the primary facts (could not open the Ferre page). Of 2 source_links, only 1 (Ferre) is claimed by the writer's own evidence.md to establish the key; the maps page is explicitly supplementary-only. So this item supplies 1 directly-supporting link, not the requested 2 - flag as an unmet count, not treat as satisfied.\n\nItem rk_95: same clean 1:1 mapping and null-ID handling. Difficulty 5, registered tags only. No v1 contradiction/workflow prose. VERIFIED by me: none of the primary facts (could not open the Christopher Tolkien/Silmarillion page). Same 1-of-2 link shortfall: only the Silmarillion page is claimed to establish the key; the Shippey page is supplementary-only. Evidence.md itself flags unresolved option-type mixing (Pelargir/Edhellond read as harbors, Tirion/Alqualonde as cities, Lindon as a region) - a genuine pedagogy concern the writer has not cured, only disclosed.\n\nOverall: structural hygiene (mapping, null-ID honesty, tag/difficulty registration, removed v1 contradiction and workflow prose) is good and better than v1. But I did not and could not independently verify the two load-bearing primary-source quotes this session, and two pre-existing writer-disclosed gaps remain open: (1) each item has only 1 of the requested 2 directly-supporting links, (2) rk95's distractor type-mixing is unresolved. Per the fact-check skill, 'if facts/options are unsupported, use rework rather than ceremonial acceptance' - marking rework. This is not a claim that the content is wrong; it is a claim that I have not verified it and known gaps remain. rk96 correctly stays held; not evaluated here. No edits, Git, build, browser or publication actions were taken by me."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Two structurally coherent candidate/editorial records with primary source evidence, explicit option mappings, no editorial instructions in learning text; honest held facts, ready for independent review.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014"
+        ],
+        "assignee": "session-34055d8f11b84cc08094363411111e6a",
+        "author": "session-4eea935d7d084bc8a18df1fdf68d9856",
+        "body": "Finite native writer assignment. Read ROOT_HOLD_EN.md, INPUT_LOOKUP_EN.md and prior RK93_RK95_WORDING_PROPOSALS.md. Own only new v2-candidate.json, v2-editorial.json, v2-evidence.md within LOTR_WORDING_PILOT_20261014. Exactly2 current rk93/rk95 proposals. Candidate excludes keys/sources/explanations; private editorial carries old current refs/new stem/options/explicitmapping, unique answer, why-wrong, numeric1–10difficulty/registeredtags, explanation and150–200wordoriginal Russianminiarticle2actualopenedprimarylinks. Replace workflowprose/contradiction. Four paralleloptionspreferred; do not claimunsupported distractorfacts. rk96hold. No raw/canonical/runtime/Git/Beads/SSH/build/children/publication. Preserve others. Return changedpaths/SHA/actualsourceaccess/limits; independent factualreview needed.",
+        "created_at": 1791949611.4960356,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-04189480fc914a01a5442e26fb27e991",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "JSON parse and structural check passed: exactly 2 candidate/editorial items; 6 candidate choices and 6 explicit old-to-new mappings per item; 2 links per article; 4 registered tags per item; difficulty 4/5.",
+            "Article checks passed: rk93 158 Russian word tokens; rk95 155; declared counts match; scan found no editorial/test/release wording in the article fields.",
+            "Candidate privacy check passed: candidate file contains no private_answer_key, explanation, source_links, or mini_article field.",
+            "Reopened 2026-10-14: Tolkien Estate Ferré lines 73-75 names Anduin and White Mountains; Christopher Tolkien lines 60-63,72 names Grey Havens/Mithlond and distinguishes First/Third Ages. Opened Maps lines 51,60-65 and Shippey lines 57-60 as supplementary contextual links.",
+            "SHA-256: v2-candidate.json 7390DB67ACB7FEC3C381109F03123C68DD6E0136AB59A9276152EB9BAD52910A; v2-editorial.json 88FC27C9A69C6ED35834D6AFFF1F9BE27218CF148A90F290C7CEE99ADA131EE9; v2-evidence.md AFA9D867DF8DB1DA40B531767A0F45B1173EF3500EC6581FDCA9AEA38A3EB224."
+          ],
+          "files": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v2-candidate.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v2-editorial.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v2-evidence.md"
+          ],
+          "risks": [
+            "rk95 retains the frozen six-choice mixed-type list; the scoped final-departure wording makes Mithlond unique in the direct evidence, but the option-type problem is not cured and needs independent review.",
+            "The two direct answer proofs are public Estate excerpts only; no all-bank certification is claimed.",
+            "rk96 remains held pending an authorized edition and named official film cut."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Created exactly two v2 candidate questions plus private editorial records and evidence. Both direct Estate source passages were reopened. rk95 inherited mixed option types remain a named review concern; rk96 remains held."
+        },
+        "root_task_id": "task-04189480fc914a01a5442e26fb27e991",
+        "run_id": "run-071bb82e62c9424f946ae3af2fc988b8",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-b80e67036e1042faad38e2dd9b09a051",
+        "title": "quiz_master-1wy: two LOTR v2 candidate and article draft repairs",
+        "version": 4,
+        "reviewer": "session-843d9048ed6c4e7c83be2f9446b4e58f",
+        "review_note": "Independent review of v2-candidate.json, v2-editorial.json, v2-evidence.md (LOTR_WORDING_PILOT_20261014).\n\nSHA256 of the three draft files: NOT COMPUTED. Every Bash invocation beyond trivial echo (python3 hashlib, certutil, powershell Get-FileHash, python3 urllib fetch) was denied by this session's sandbox. Per task instructions (no retry loops, no permission bypass after a denial) I stopped once that pattern was confirmed and did not try other tools as a workaround. Consequence: I also could NOT independently open the two primary Tolkien Estate pages; I am not relying on the author's access claim as my own access, so I cannot personally confirm the exact quoted wording this session.\n\nBlind-solve (done before reading v2-editorial.json): rk_93 = Anduin (river beneath a large vale with Ered Nimrais/White Mountains of Gondor visible beyond); rk_95 = Mithlond/Grey Havens (harbor of the white ship's final departure). Both match the private key in v2-editorial.json. This is my own background-knowledge corroboration, not primary-source verification.\n\nItem rk_93: old->new mapping is explicit 1:1 for all 6 options; null private IDs are correctly flagged as 'not supplied', not invented. Options are parallel (all river names), no length/grammar giveaway. The v1 contradiction phrase is gone; mini-article reads as lore-only, no workflow/test prose. Difficulty 4, registered tags only. VERIFIED by me: none of the primary facts (could not open the Ferre page). Of 2 source_links, only 1 (Ferre) is claimed by the writer's own evidence.md to establish the key; the maps page is explicitly supplementary-only. So this item supplies 1 directly-supporting link, not the requested 2 - flag as an unmet count, not treat as satisfied.\n\nItem rk_95: same clean 1:1 mapping and null-ID handling. Difficulty 5, registered tags only. No v1 contradiction/workflow prose. VERIFIED by me: none of the primary facts (could not open the Christopher Tolkien/Silmarillion page). Same 1-of-2 link shortfall: only the Silmarillion page is claimed to establish the key; the Shippey page is supplementary-only. Evidence.md itself flags unresolved option-type mixing (Pelargir/Edhellond read as harbors, Tirion/Alqualonde as cities, Lindon as a region) - a genuine pedagogy concern the writer has not cured, only disclosed.\n\nOverall: structural hygiene (mapping, null-ID honesty, tag/difficulty registration, removed v1 contradiction and workflow prose) is good and better than v1. But I did not and could not independently verify the two load-bearing primary-source quotes this session, and two pre-existing writer-disclosed gaps remain open: (1) each item has only 1 of the requested 2 directly-supporting links, (2) rk95's distractor type-mixing is unresolved. Per the fact-check skill, 'if facts/options are unsupported, use rework rather than ceremonial acceptance' - marking rework. This is not a claim that the content is wrong; it is a claim that I have not verified it and known gaps remain. rk96 correctly stays held; not evaluated here. No edits, Git, build, browser or publication actions were taken by me."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted with verdict **rework**, task state now `REWORK`.\n\n**What I actually did:** read v2-candidate.json and blind-solved both items (Anduin / Mithlond) before touching v2-editorial.json, v2-evidence.md, INPUT_LOOKUP_EN.md, ROOT_HOLD_EN.md and V2_REVIEW_REQUEST_EN.md — my blind answers matched the private key, which is useful corroboration but not primary-source verification.\n\n**What I could not do, and why:** every Bash call beyond a trivial `echo` — `python3 -c urllib.request...`, `certutil`, `python3 hashlib`, `powershell Get-FileHash` — was denied by this session's sandbox. Per the task's own rule (\"no retry loops, no permission bypass after a denied call\"), I stopped after confirming that pattern rather than reaching for another tool to work around it. That means I did **not** independently open the Tolkien Estate pages and did **not** self-compute SHA256 of the three draft files — I reported that honestly in the hub review note instead of fabricating hashes or a verified-source claim.\n\n**Findings beyond the access gap**, both already partly flagged by the writer's own evidence.md:\n- Each item supplies only 1 of the 2 requested directly-supporting source links (the second link in each pair is explicitly supplementary-only, not answer-establishing) — an unmet count, not a satisfied requirement.\n- rk_95's six options still mix types (harbors/cities/a region), disclosed but not cured.\n- Structural hygiene is otherwise good: explicit 1:1 old→new option mappings, honest null private-IDs, v1's contradiction phrase and workflow prose are gone, tags/difficulty are registered values.\n\nNet: rework, not acceptance — I have unverified facts and two known open gaps, and ceremonial acceptance isn't appropriate here. rk96 stays held, untouched. No edits, Git, build, browser, or publication actions were taken.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "3cbc24128f03bc51ab238bcdac603912e241b043c264c60eb94e64e4b548dfd9",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
