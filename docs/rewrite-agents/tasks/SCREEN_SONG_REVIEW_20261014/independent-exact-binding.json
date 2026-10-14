@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e56a479b16c64665999959b825a308f4": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e56a479b16c64665999959b825a308f4",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independently recomputed SHA-256 for all 7 items in exact-binding-inputs.json and all match exactly: candidate.json=8e66a411f9ad05e7da7e74f9e52844d0e76049dcffc84bc33e60e04b3987a0f5, editorial.json=765895959bc42e5f4ffe8abac47c43554520eb2b58a29c2b02b155cd4d6c3ceb, REPORT.json=270270764d402a93ab4cb9724fb32ee2d2db1f312b447e0aa0e23da3934ec9f7, converter proposal.py=0870dd16d513468af1225508dbd516b11f4bcb292eed4388a606d5f4bf40fb7e, Root wrapper apply_reviewed_v3.py (both the live .run copy and the archived docs copy, byte-identical)=004bf2726d19b067d419f3584957cfe9894d97c446fbd12e9636b1993da017c6, independent-v3-review.json=8a650619ed764b51ab31267522ef110fa91b10c1c1801cc7636e0bf365611cd9, independent-proposal-review.json=770fea4e64b456963a9749be7cfefcb77de4ca88a45e29d2e47d8cc31242a5ac. Confirmed independent-v3-review.json genuinely accepted task-625137f2 with reviewer!=assignee and embeds candidate/editorial hashes (not the REPORT.json hash) in its review_note, and independent-proposal-review.json genuinely accepted task-64a7414e with reviewer!=assignee, 8/8 tests and preview run, 6 changed-file hashes verified, but likewise does not state the converter's own full hash in its review_note prose -- matching the disclosed omissions. Statically reviewed root_apply_reviewed_v3.py (not executed): it hard-binds this review (task-e56a479b) and the two prior reviews by assignee!=reviewer and embedded hash checks, loads the frozen proposal.py purely for its make_proposal(candidate, editorial, tags) function (no other code path used), asserts the current baseline is 134 packs/4060 questions/260 reader articles and that the four target output paths (raw quiz file, next/content/screen-song-20261014/*, reader draft, scratch projection) do not yet exist, then requires the real quizctl import/validate/build/diff round trip to reproduce byte-identical draft/manifest/bundle against the frozen converter's own projection (including a second rebuild+diff for determinism), verifies private grading/editorial_tag_ids are stripped from the public bundle and that private_grading option-id binding matches the draft order, and finally reconfirms the existing 134 raw files and the catalog/question-articles assets are byte-unchanged before writing only the new raw/draft/manifest/bundle/reader-draft outputs and its own evidence file. No export, approval-metadata, browser, Git/Beads, or release call is present anywhere in the script. One non-blocking finding: write(raw, data['raw']) on line 25 happens before the quizctl subprocess calls on lines 29-39; if any later assert or subprocess call fails, the new raw file (and possibly a partial next/content/screen-song-20261014 directory from the import step) would be left on disk with no try/finally cleanup -- recoverable by deleting the new paths since the existing 134/4060/260 baseline is separately verified untouched, but Root should clean up and re-verify baseline after any failed run before retrying. Scope of this accept is exactly the binding verification and this guarded local-conversion wrapper's static safety; it authorizes neither the live quizctl run nor any resulting integration/export/release, which remain independently gated steps."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Full64 SHA256 of v3 candidate/editorial/REPORT, frozen converter, minimal Root apply script, and original actual review proofs in genuine callback; inspect source guard and absent-output collisions, official Go validation/build/diff and corpus-preservation checks. State exact scope, no publication/QA approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_REVIEW_20261014",
+          "C:\\ap\\quiz_master\\.run\\screen_song_integration_20261014"
+        ],
+        "assignee": "session-ece0104125624381be27172bfb0f6f67",
+        "author": "session-ece0104125624381be27172bfb0f6f67",
+        "body": "Independent exact full-hash binding of actual Claude26 accepted v3 source and held inert converter, plus minimal Root wrapper that requires genuine source/structural review before applying, authoritative quizctl parity and no export/publication. Original callbacks lacked requested REPORT/script full pins; Root guard stopped before side effects. Review wrapper reuse only pure make_proposal with v3 inputs; archive CLI remains held. No root-source rework or fake acceptance.",
+        "created_at": 1791936288.2638524,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e56a479b16c64665999959b825a308f4",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/exact-binding-inputs.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/root_apply_reviewed_v3.py",
+            ".run/screen_song_integration_20261014/apply_reviewed_v3.py"
+          ],
+          "summary": "Original guard failed before any live writes because callbacks omitted requested full report/script pins. New minimal Root apply wrapper still requires actual source and converter review plus a separately genuine exact binding, authoritative official quizctl parity and preservation. New gate not yet accepted."
+        },
+        "root_task_id": "task-e56a479b16c64665999959b825a308f4",
+        "run_id": "run-40f6a8824695473b942e707ba396ef2c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-2b1b65a3284e47ff970efd153f542e6b",
+        "title": "quiz_master-pgy: exact binding of accepted v3 and Root apply guard",
+        "version": 4,
+        "reviewer": "session-d1a881b3ca40477f82e4f03a2e0bb476",
+        "review_note": "Independently recomputed SHA-256 for all 7 items in exact-binding-inputs.json and all match exactly: candidate.json=8e66a411f9ad05e7da7e74f9e52844d0e76049dcffc84bc33e60e04b3987a0f5, editorial.json=765895959bc42e5f4ffe8abac47c43554520eb2b58a29c2b02b155cd4d6c3ceb, REPORT.json=270270764d402a93ab4cb9724fb32ee2d2db1f312b447e0aa0e23da3934ec9f7, converter proposal.py=0870dd16d513468af1225508dbd516b11f4bcb292eed4388a606d5f4bf40fb7e, Root wrapper apply_reviewed_v3.py (both the live .run copy and the archived docs copy, byte-identical)=004bf2726d19b067d419f3584957cfe9894d97c446fbd12e9636b1993da017c6, independent-v3-review.json=8a650619ed764b51ab31267522ef110fa91b10c1c1801cc7636e0bf365611cd9, independent-proposal-review.json=770fea4e64b456963a9749be7cfefcb77de4ca88a45e29d2e47d8cc31242a5ac. Confirmed independent-v3-review.json genuinely accepted task-625137f2 with reviewer!=assignee and embeds candidate/editorial hashes (not the REPORT.json hash) in its review_note, and independent-proposal-review.json genuinely accepted task-64a7414e with reviewer!=assignee, 8/8 tests and preview run, 6 changed-file hashes verified, but likewise does not state the converter's own full hash in its review_note prose -- matching the disclosed omissions. Statically reviewed root_apply_reviewed_v3.py (not executed): it hard-binds this review (task-e56a479b) and the two prior reviews by assignee!=reviewer and embedded hash checks, loads the frozen proposal.py purely for its make_proposal(candidate, editorial, tags) function (no other code path used), asserts the current baseline is 134 packs/4060 questions/260 reader articles and that the four target output paths (raw quiz file, next/content/screen-song-20261014/*, reader draft, scratch projection) do not yet exist, then requires the real quizctl import/validate/build/diff round trip to reproduce byte-identical draft/manifest/bundle against the frozen converter's own projection (including a second rebuild+diff for determinism), verifies private grading/editorial_tag_ids are stripped from the public bundle and that private_grading option-id binding matches the draft order, and finally reconfirms the existing 134 raw files and the catalog/question-articles assets are byte-unchanged before writing only the new raw/draft/manifest/bundle/reader-draft outputs and its own evidence file. No export, approval-metadata, browser, Git/Beads, or release call is present anywhere in the script. One non-blocking finding: write(raw, data['raw']) on line 25 happens before the quizctl subprocess calls on lines 29-39; if any later assert or subprocess call fails, the new raw file (and possibly a partial next/content/screen-song-20261014 directory from the import step) would be left on disk with no try/finally cleanup -- recoverable by deleting the new paths since the existing 134/4060/260 baseline is separately verified untouched, but Root should clean up and re-verify baseline after any failed run before retrying. Scope of this accept is exactly the binding verification and this guarded local-conversion wrapper's static safety; it authorizes neither the live quizctl run nor any resulting integration/export/release, which remain independently gated steps."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and accepted (task-e56a479b16c64665999959b825a308f4, state ACCEPTED).\n\n**Summary:** Independently recomputed SHA-256 for all 7 items in `exact-binding-inputs.json` — all matched exactly (full digests for v3 candidate.json, editorial.json, REPORT.json, converter proposal.py, Root wrapper apply_reviewed_v3.py, and both prior acceptance-proof files are in the submitted review note). Confirmed the two prior Claude26 reviews are genuine ACCEPTED callbacks with reviewer≠assignee, and confirmed each omitted the specific full hash the task described (REPORT.json hash, converter hash) in their review-note prose. Statically reviewed `root_apply_reviewed_v3.py` without executing it: it only reuses the frozen converter's pure `make_proposal` function, binds this exact review by hash, requires real quizctl import/validate/build/diff parity plus a determinism rebuild+diff, strips private fields from the public bundle, and reconfirms the existing 134/4060/260 baseline is untouched before writing only the four new raw/canonical/Reader drafts plus its evidence file — no export, browser, Git/Beads, or release call.\n\nOne non-blocking finding noted in the review: the script writes the new raw quiz file before running the quizctl subprocess steps, so a mid-run failure would leave an orphaned new file (and possibly a partial new content directory) with no try/finally cleanup — recoverable since it never touches the existing baseline, but Root should delete any such orphan and re-verify baseline counts before retrying.\n\nVerdict: **accept**, error_count 0. Scope stated explicitly as exact-binding verification plus this guarded local-conversion wrapper's static safety only — it authorizes neither a live quizctl run nor any resulting integration/export/release, which remain independently gated. No files, git, beads, builds, browsers, or executions were performed; this was a read-only review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "01d45e247f5ddf57996afee51227ba7be52b2de059c1025b17d3bdea89315104",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

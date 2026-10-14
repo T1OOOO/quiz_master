@@ -1,0 +1,20 @@
+[
+  {
+    "actual_exit": 1,
+    "command": [
+      "go",
+      "run",
+      "-p=1",
+      "./next/server/cmd/quizctl",
+      "import",
+      "--in",
+      "quizzes/Cinema/screen_song_20261014.json",
+      "--out",
+      "next/content/screen-song-20261014",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "stderr": "quizctl: tag_ids: quizzes/Cinema/screen_song_20261014.json#/questions/0 (screen-song-pilot-001)\nexit status 2\n",
+    "stdout": ""
+  }
+]

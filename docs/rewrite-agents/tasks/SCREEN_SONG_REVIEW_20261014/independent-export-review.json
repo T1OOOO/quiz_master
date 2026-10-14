@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-7872dbff832a40c78643397dded5bf0a": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-7872dbff832a40c78643397dded5bf0a",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review of Screen Song export (screen-song-20261014), reading exact files only, no builds/browser/edits. Cross-file consistency: quizzes/Cinema/screen_song_20261014.json (4 questions, correct_answer 0/1/2/3) matches draft.json/bundle.json grading.correct_option_id (opt-1/opt-2/opt-3/opt-4) and manifest.json's source_index mapping; stems, options, explanations, editorial_tag_ids (comparison/comparison/direct-recall/comparison) and difficulty (7 hard, 6/4/6 medium) all consistent across the 3 files. bundle.json's public quiz.questions correctly omits correct_option_id (only present in private_grading/private_question_metadata) — no answer leak. catalog.json: 135 packs total, new screen-song-20261014 entry (4 questions) present alongside 134 pre-existing rows (count consistent with claimed 134 unchanged + 1 new). question-articles.json: 264 articles total, 4 new screen-song-pilot-00{1-4} articles, status=accepted, 2 source_links each (8 total), tag_ids matching the quiz's editorial_tag_ids, question_refs.revision_sha256 exactly matching draft/bundle revision hashes. Reader draft (study/question_articles/drafts/screen-song-20261014.json) has real multi-paragraph bodies with blank-line breaks, 2 Netflix source links each. Flutter fixture (question_articles_test.dart) explicitly binds all 4 screen-song-pilot question/revision pairs. HASHES: I independently recomputed sha256 (Python hashlib, byte-for-byte) for all 8 files named in asset_sha256/output_sha256 in actual-v3-export.json and actual-v3-integration.json (bundle.json, draft.json, manifest.json, screen_song_20261014.json, Reader draft, catalog.json, question-articles.json, question_articles_test.dart) — all 8 match exactly. CRITICALLY: I also independently recomputed the 4 canonical_article_sha256 per-article sub-hashes using build.py's exact formula (sha256 of json.dumps(article, ensure_ascii=False, sort_keys=True, separators=(',',':'))) applied to the live Reader draft file — all 4 match exactly (c952f18e.../35f861e8.../1173f280.../41c3945b...). This closes the gap the prior reviewer (independent-actual-integration.json) explicitly flagged as unresolved/unverified due to sandbox denial of inline interpreters; my sandbox permitted read-only Python heredoc execution (no writes, no builds, no network), so I was able to independently confirm these sub-hashes rather than merely trust Root's derivation from the whole-file hash. NOT independently reproduced: old-baseline (134-row catalog / 260-article Reader) byte-identity against commit 25be93a5 (a `git show ... > file` redirect was denied by the sandbox as a write/workaround and I did not retry); I rely on the prior reviewer's confirmed match plus my own count-based consistency check (135 = 134+1, 264 = 260+4). Did not execute quizctl/go/flutter/browser, did not fetch the cited Netflix URLs myself, did not edit any files. Evidence file sha256 (independent-actual-integration.json, read via this session): not separately computed by me since its content was reviewed verbatim; the integration evidence hashes I verified are the 8 live-file hashes above, all matching actual-v3-integration.json/actual-v3-export.json exactly. This is a read-only review only; no publication/deployment authorization is implied or granted."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Different-provider actual report and review callback for exact exported assets. No browser/build/deployment certification.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_REVIEW_20261014",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets",
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart"
+        ],
+        "assignee": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "author": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "body": "Root applied genuine reviewed v3 source conversion and exported four articles/questions. Read actual-v3-export.json, recovered review and exact output assets/fixture. Check preservation, canonical metadata binding and honest prior reviewer limits. Different-provider static review only; no release approval.",
+        "created_at": 1791943445.7992885,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-7872dbff832a40c78643397dded5bf0a",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/actual-v3-export.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/independent-actual-integration.json"
+          ],
+          "summary": "Actual135/4064/264 exports; Go catalog0, Python write/check0/5tests, Flutter Reader6tests0. prior134/260 unchanged; no release."
+        },
+        "root_task_id": "task-7872dbff832a40c78643397dded5bf0a",
+        "run_id": "run-33834651a49444b1ab9132062a07495a",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-daf7a160a06e4dd296b441c1bb3dd160",
+        "title": "Screen Song actual exported assets independent review",
+        "version": 4,
+        "reviewer": "session-7040833c68ea4717bc543f28927584c3",
+        "review_note": "Independent read-only review of Screen Song export (screen-song-20261014), reading exact files only, no builds/browser/edits. Cross-file consistency: quizzes/Cinema/screen_song_20261014.json (4 questions, correct_answer 0/1/2/3) matches draft.json/bundle.json grading.correct_option_id (opt-1/opt-2/opt-3/opt-4) and manifest.json's source_index mapping; stems, options, explanations, editorial_tag_ids (comparison/comparison/direct-recall/comparison) and difficulty (7 hard, 6/4/6 medium) all consistent across the 3 files. bundle.json's public quiz.questions correctly omits correct_option_id (only present in private_grading/private_question_metadata) — no answer leak. catalog.json: 135 packs total, new screen-song-20261014 entry (4 questions) present alongside 134 pre-existing rows (count consistent with claimed 134 unchanged + 1 new). question-articles.json: 264 articles total, 4 new screen-song-pilot-00{1-4} articles, status=accepted, 2 source_links each (8 total), tag_ids matching the quiz's editorial_tag_ids, question_refs.revision_sha256 exactly matching draft/bundle revision hashes. Reader draft (study/question_articles/drafts/screen-song-20261014.json) has real multi-paragraph bodies with blank-line breaks, 2 Netflix source links each. Flutter fixture (question_articles_test.dart) explicitly binds all 4 screen-song-pilot question/revision pairs. HASHES: I independently recomputed sha256 (Python hashlib, byte-for-byte) for all 8 files named in asset_sha256/output_sha256 in actual-v3-export.json and actual-v3-integration.json (bundle.json, draft.json, manifest.json, screen_song_20261014.json, Reader draft, catalog.json, question-articles.json, question_articles_test.dart) — all 8 match exactly. CRITICALLY: I also independently recomputed the 4 canonical_article_sha256 per-article sub-hashes using build.py's exact formula (sha256 of json.dumps(article, ensure_ascii=False, sort_keys=True, separators=(',',':'))) applied to the live Reader draft file — all 4 match exactly (c952f18e.../35f861e8.../1173f280.../41c3945b...). This closes the gap the prior reviewer (independent-actual-integration.json) explicitly flagged as unresolved/unverified due to sandbox denial of inline interpreters; my sandbox permitted read-only Python heredoc execution (no writes, no builds, no network), so I was able to independently confirm these sub-hashes rather than merely trust Root's derivation from the whole-file hash. NOT independently reproduced: old-baseline (134-row catalog / 260-article Reader) byte-identity against commit 25be93a5 (a `git show ... > file` redirect was denied by the sandbox as a write/workaround and I did not retry); I rely on the prior reviewer's confirmed match plus my own count-based consistency check (135 = 134+1, 264 = 260+4). Did not execute quizctl/go/flutter/browser, did not fetch the cited Netflix URLs myself, did not edit any files. Evidence file sha256 (independent-actual-integration.json, read via this session): not separately computed by me since its content was reviewed verbatim; the integration evidence hashes I verified are the 8 live-file hashes above, all matching actual-v3-integration.json/actual-v3-export.json exactly. This is a read-only review only; no publication/deployment authorization is implied or granted."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as ACCEPTED (task-7872dbff832a40c78643397dded5bf0a).\n\n**Final report — independent review of Screen Song export (screen-song-20261014)**\n\n**Verdict: ACCEPT, error_count=0.**\n\n- Cross-file consistency confirmed across `quizzes/Cinema/screen_song_20261014.json`, `next/content/screen-song-20261014/{draft,bundle,manifest}.json`: question text, options, correct-answer index↔option-id mapping, explanations, tags, and difficulty bands all match. `bundle.json`'s public `quiz.questions` correctly withholds the answer key (only in `private_grading`/`private_question_metadata`) — no leak.\n- `catalog.json`: 135 packs, new pack present with its 4 questions; `question-articles.json`: 264 articles, 4 new accepted Screen Song articles with 2 source links each, `revision_sha256` exactly matching the quiz revisions. Flutter fixture explicitly binds all 4 question/revision pairs.\n- I independently recomputed SHA-256 for all 8 files named in the evidence (`bundle.json`, `draft.json`, `manifest.json`, the quiz source, the Reader draft, `catalog.json`, `question-articles.json`, the Dart fixture) via read-only Python — **all 8 matched exactly**.\n- Most significant finding: I independently recomputed the 4 per-article `canonical_article_sha256` sub-hashes using `build.py`'s exact formula, applied to the live Reader draft — **all 4 matched**. This closes the gap the prior reviewer explicitly flagged as unresolved (they were denied inline-interpreter execution; my sandbox permitted read-only Python heredocs, so I did not hit that same wall).\n\n**Actual limits of this review:**\n- Did not execute quizctl/go, Python `--write`/`--check`, Flutter tests, or any browser/build/SSH — relied on the prior recorded command receipts for those, not my own execution.\n- Did not independently refetch the cited Netflix source URLs.\n- Could not reproduce the old-baseline (134-catalog-row / 260-Reader-article) byte-identity against commit `25be93a5` myself — a `git show ... > file` redirect was denied by the sandbox as a write/workaround, and per instructions I did not retry alternate interpreters. I relied on the prior reviewer's confirmed match plus a count-based consistency check (135 = 134+1, 264 = 260+4).\n- This is read-only review evidence only — no publication or deployment authorization is implied or granted.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "abd96650105f6f1c494e6858a621b512067628dda43f1dbd343e9a53b6e5c3d1",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

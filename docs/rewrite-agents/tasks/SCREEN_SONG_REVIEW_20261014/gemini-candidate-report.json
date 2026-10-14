@@ -1,0 +1,64 @@
+{
+  "actual_cli_exit": 0,
+  "actual_final_report": {
+    "task_id": "task-0a86baff0d314469be78edf74669af7a",
+    "offer_id": "offer-f83e0c85945849cb962d37d82049cb11",
+    "evaluator": "gemini-candidate-solver (Gemini 3.8 Flash)",
+    "session_id": "session-182685aa1a744fa386f16e486582992b",
+    "lead_session_id": "session-ece0104125624381be27172bfb0f6f67",
+    "candidate_sha256": "dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4",
+    "hash_verification": "lead-supplied, not independently recomputed",
+    "mode": "knowledge-only finite candidate solve without hidden keys or external sources",
+    "disclaimers": {
+      "knowledge_only": true,
+      "primary_source_checked": false,
+      "hash_recomputed": false,
+      "build_ui_publication_certified": false
+    },
+    "items": [
+      {
+        "id": "screen-song-pilot-001",
+        "selected_option_id": "a",
+        "reasoning": "Parlé-chanté (spoken-singing) is a technique used in French musical cinema to seamlessly transition between spoken dialogue and singing without abrupt breaks.",
+        "confidence": 0.95,
+        "ambiguity_giveaway": "Clear giveaway: 'parlé-chanté' literally means 'spoken-sung', which directly maps to option (a) 'Связывать разговор и пение'."
+      },
+      {
+        "id": "screen-song-pilot-002",
+        "selected_option_id": "b",
+        "reasoning": "Bobbie-Jane Gardner re-orchestrated Alicia Keys' 'If I Ain't Got You' intro into a dramatic minor key for 'Queen Charlotte: A Bridgerton Story'.",
+        "confidence": 0.85,
+        "ambiguity_giveaway": "Binary pair contrast between (a) and (b) (major vs minor) highlights the key choice to the test taker."
+      },
+      {
+        "id": "screen-song-pilot-003",
+        "selected_option_id": "c",
+        "reasoning": "The musical special features Ed Sheeran walking through NYC performing in one continuous take (single-shot oner).",
+        "confidence": 0.9,
+        "ambiguity_giveaway": "Genre meta-giveaway: shooting in a single continuous take ('одним непрерывным дублем') is the classic trivia-worthy artistic accomplishment."
+      },
+      {
+        "id": "screen-song-pilot-004",
+        "selected_option_id": "d",
+        "reasoning": "Nick Cave wrote lyrics and vocal melody over Bryce Dessner's instrumental musical idea for 'Train Dreams'.",
+        "confidence": 0.8,
+        "ambiguity_giveaway": "Option (c) Bryce Dessner is partially ruled out by the prompt stem ('поверх идеи Брайса Десснера'); options (a) and (b) are director/actor, making musician Nick Cave (d) stand out, though director lyric-writing remains a slight distractor."
+      }
+    ],
+    "evidence": [
+      "Accepted offer offer-f83e0c85945849cb962d37d82049cb11 before solve",
+      "Evaluated 4 candidate questions strictly from knowledge",
+      "Identified candidate answers and detailed giveaways/ambiguities",
+      "Zero file mutations, zero shell commands, zero network requests, zero child processes"
+    ]
+  },
+  "all_four_selected_keys_match": true,
+  "candidate_hash_root_verified": "dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4",
+  "trace_sha256": "b7e500ec351ba342c2d8aa7bed405532c961af18e2ecb85ccaea2925c508c185",
+  "scope": "Candidate-only report. Confidence is uncalibrated. No primary-source, UI or publication certification. Actual successful Hub submission remains independently inspectable in the retained trace.",
+  "first_attempt": {
+    "actual_cli_exit": 0,
+    "outcome": "NEEDS_CONTEXT; no solved report; offer withdrawn, not accepted as work",
+    "trace_sha256": "ba66f6c25058683ac7ffcf903443fee6931ef1248ffea48af31219be579894b2"
+  }
+}

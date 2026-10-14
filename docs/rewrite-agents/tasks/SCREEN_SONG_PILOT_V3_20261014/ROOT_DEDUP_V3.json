@@ -1,0 +1,40 @@
+{
+  "v3_candidate_sha256": "8e66a411f9ad05e7da7e74f9e52844d0e76049dcffc84bc33e60e04b3987a0f5",
+  "actual_raw_pack_count": 134,
+  "actual_stem_count": 4060,
+  "exact_normalized_stem_matches": {
+    "screen-song-pilot-001": [],
+    "screen-song-pilot-002": [],
+    "screen-song-pilot-003": [],
+    "screen-song-pilot-004": []
+  },
+  "changed_q001_nearest_adjacencies": [
+    {
+      "id": "film-craft-pilot-001",
+      "stem": "Как называется работа, когда для экрана заново исполняют шаги, шорох одежды и звуки реквизита, синхронизируя их с кадром?",
+      "options": [
+        "Фоли",
+        "ADR",
+        "Войсовер",
+        "Амбиенс"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": "film-craft-pilot-002",
+      "stem": "После съёмок актёр повторно записывает реплику, глядя на сцену, чтобы заменить шумную дорожку и совместить слова с губами. Как называется этот процесс?",
+      "options": [
+        "Фоли",
+        "Диалоговый монтаж",
+        "ADR",
+        "Звуковая библиотека"
+      ],
+      "correct_answer": 2
+    }
+  ],
+  "decision": "Q001 now asks a particular production goal: matching ADR dialogue tone/timbre to songs in Emilia Perez. Existing Film Craft001 asks the name Foley and002 asks the name ADR for noise/lip synchronization. They share sound-production vocabulary but do not share the keyed fact. Other three v3 questions preserve the former bounded review context.",
+  "limits": [
+    "Exact sweep is not full semantic certification of 4060 questions.",
+    "Rechecked the two specific ADR/Foley adjacencies after Q001 changed; did not claim a new full 84-stem semantic review."
+  ]
+}

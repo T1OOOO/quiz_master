@@ -1,0 +1,211 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-64a7414eaa7c47778a69a7bdf62858c3": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-64a7414eaa7c47778a69a7bdf62858c3",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Reviewed the frozen SCREEN_SONG_INTEGRATION_20261014 INERT proposal. Read proposal.py, test_proposal.py, REPORT.json, HOLD_EN.md, README.md, duplicate-inspection.json. Independently ran: `python -m unittest discover ... test_proposal.py` (all 8 tests pass) and `python proposal.py` in no-arg preview mode (prints INERT_PREVIEW_ONLY, keys [0,1,2,3], planned_counts 135/4064/264, made no writes). proposal.py hardcodes INPUT_HASHES to the v2 candidate/editorial hashes (dd843139...4bc, b930b1e6...3b) — I independently recomputed sha256 of SCREEN_SONG_PILOT_20261014/candidate.json and editorial.json and both match; the script is provably pinned to the accepted v2 draft, not the new v3 fork. accepted_review() correctly requires a genuine ACCEPTED hub callback binding both input hashes in the review_note and rejects a bare status stub (covered by test_status_stub_cannot_substitute_for_real_review and I confirm independent-review-v2.json does contain a real reviewer≠assignee ACCEPTED callback with both hashes embedded). safe_output() confines writes to WORK/SCRATCH only; before/after baseline() snapshot of 134/4060/260 is checked for equality after writing proposal files, guarding against live mutation. Article conversion (article_parts) rejects literal \\n and enforces exact heading/footer structure; projections correctly split private (grading, editorial_tag_ids) from public bundle fields. Recomputed sha256 of all 6 changed task files (HOLD_EN.md, README.md, REPORT-v1-pre-hold.json, duplicate-inspection.json, proposal.py, test_proposal.py) and all match REPORT.json's changed_file_sha256 exactly. duplicate-inspection.json's bounded 134-pack/84-stem sweep is disclosed as non-exhaustive, and its one real overlap (card003 vs acting-craft-pilot-003, both involving Barantini) is honestly flagged as topic adjacency, not a duplicate. HOLD_EN.md and README.md are explicit that this is a data projection only (no quizctl import/validate/build/diff executed, 0 live files written, 0 builds executed per REPORT.json) and that it cannot be used with the new v3 pins without a fresh proposal/review — it does not claim live integration or release approval. No defects found beyond the disclosed, intentional hold."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact input SHA pins and genuine independent v2 acceptance; coherent four raw/canonical/Reader conversion; real newlines; balanced 0..3 keys; registered tags; safe inert source URI normalization; no runtime mutations; credible bounded duplicate report and reproducible tests; honest pending independent proposal review.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014",
+          "C:\\ap\\quiz_master\\.run\\screen_song_integration_worker_20261014"
+        ],
+        "assignee": "session-63fc2d4bab6c444c850a1526ef597498",
+        "author": "session-ece0104125624381be27172bfb0f6f67",
+        "body": "Prepare inert integration script and evidence using accepted SCREEN_SONG_PILOT_20261014 v2. Preserve frozen inputs/history. Only owned new docs and scratch. No live raw/canonical/Reader mutations, Git/Beads/build/browser/SSH or children. Root will apply reviewed proposal. Registered taxonomy tags only; retain exact text/options/keys/articles/URLs. Inspect bounded nearest topics across existing bank and disclose semantic dedup limits. Existing Actor51 baseline: 134 packs,4060 questions,260 articles. Read Actor integration formats. Produce explicit commands and live-file ownership request.",
+        "created_at": 1791935069.786116,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-64a7414eaa7c47778a69a7bdf62858c3",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "acceptance_artifacts_written": 0,
+          "actual_prerequisite_review_task": "task-4e2da7de87f048fbb77c6810a9acfe89",
+          "all_accepted_tags_registered_and_retained": true,
+          "answer_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "article_count": 4,
+          "baseline_counts": {
+            "packs": 134,
+            "questions": 4060,
+            "reader_articles": 260
+          },
+          "builds_executed": 0,
+          "canonical_draft_article_sha256": {
+            "question:screen-song-pilot-001": "27b82df716b61f929c86a12016de227277a73e7bcf6e626e477aada6691ca04c",
+            "question:screen-song-pilot-002": "a47dd619a5b981d1f964ef6bc8f0e3243d8c6a01ddd9512a4af1697035439e5f",
+            "question:screen-song-pilot-003": "c092e2560e3ea8b3c732c0a183984ede91026f95c04f0d512027ff16b8979e12",
+            "question:screen-song-pilot-004": "75f9576ad9deae50fe113aae7c658a1114c9a802784c312661cd35d93fb7f668"
+          },
+          "changed_file_sha256": {
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\HOLD_EN.md": "2a5a5a220f01884fbddaf45ab28c1a51aac003a4918aafaecce27826a0e24272",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\README.md": "90d97b622124eee6603abe7c19e630caffb7e508661f66427f8e17ebbc87d9bc",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\REPORT-v1-pre-hold.json": "fe0048e829130353c1d4cba121cda04670ee67ea241a918acf845528b8cb3ef4",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\duplicate-inspection.json": "6a1d25f3661006fbfd2a29eafd8729b66996541dbca3aaf9fcc45ad8c1944a3f",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\proposal.py": "0870dd16d513468af1225508dbd516b11f4bcb292eed4388a606d5f4bf40fb7e",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\test_proposal.py": "6dae3a7db2ffa3822fe63b136fff28c9dd18fd77b32916c2ba7d5d0b9da8067c"
+          },
+          "duplicate_inspection": {
+            "entity_matches": {
+              "screen-song-pilot-001": 0,
+              "screen-song-pilot-002": 0,
+              "screen-song-pilot-003": 1,
+              "screen-song-pilot-004": 0
+            },
+            "limit": "This combines a 134-pack/4060-question exact/entity sweep with manual inspection of84 nearest-topic stems. It is not a complete semantic audit of all4060 questions or a new factual/source certification. Existing narrative context can overlap.",
+            "nearest_packs": 7,
+            "nearest_stems": 84,
+            "new_stem_matches": 0,
+            "raw_packs": 134,
+            "raw_questions": 4060
+          },
+          "epoch": 1,
+          "evidence": [
+            {
+              "actual_green_exit": 0,
+              "actual_red_exit": 1,
+              "command": "python -m unittest discover -s docs/rewrite-agents/tasks/SCREEN_SONG_INTEGRATION_20261014 -p test_proposal.py -v",
+              "logs": [
+                "tests-red.log",
+                "tests-green.log"
+              ],
+              "result": "Eight tests failed for the missing conversion/guards, then all eight passed."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python docs/rewrite-agents/tasks/SCREEN_SONG_INTEGRATION_20261014/proposal.py",
+              "log": "preview.log",
+              "result": "Read-only preview verified exact input hashes, actual v2 callback, registry and current baseline."
+            },
+            {
+              "actual_exit": 0,
+              "command": "proposal.py --output-root .run/screen_song_integration_worker_20261014/proposal-v1, repeated with proposal-v2",
+              "logs": [
+                "proposal-v1.log",
+                "proposal-v2.log"
+              ],
+              "result": "Two actual inert conversions; all six JSON files byte-identical; live raw/catalog/Reader snapshots unchanged."
+            },
+            {
+              "actual_exit": 0,
+              "command": "Bounded pure local checks against existing Actor live file, an incorrect in-memory input pin and existing owned output",
+              "reference": "C:\\ap\\quiz_master\\.run\\screen_song_integration_worker_20261014\\local-checks.json",
+              "result": "Each collision/hash/no-clobber guard rejected before output. The canonical helper reproduced eight actual Actor question revisions and its draft revision. No live file was written."
+            },
+            {
+              "actual_exit": 0,
+              "command": "python .run/screen_song_integration_worker_20261014/inspect_duplicates.py",
+              "reference": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\duplicate-inspection.json",
+              "result": "134 packs/4060 questions swept for stems/entities;84 nearest-topic stems inspected; no same keyed knowledge point found within that bounded comparison."
+            }
+          ],
+          "hold": {
+            "live_integration_permitted": false,
+            "pre_hold_report_sha256": "fe0048e829130353c1d4cba121cda04670ee67ea241a918acf845528b8cb3ef4",
+            "reported_findings": {
+              "screen-song-pilot-001": "French translation gives away the answer.",
+              "screen-song-pilot-004": "The stem rules out Dessner and the musician stands out against a director and actor."
+            },
+            "reported_solve": "4/4, candidate-only; not source certification",
+            "required_next_step": "Root arranges exact v3 repairs and genuine independent re-review before any live apply. The accepted v2 inputs and frozen script are preserved.",
+            "source": "Root direct message describing actual Gemini candidate-only report"
+          },
+          "hub_run_id": "run-fc02f0140d9a40ad910fcf1fc2392010",
+          "hub_session_id": "session-63fc2d4bab6c444c850a1526ef597498",
+          "hub_task_id": "task-64a7414eaa7c47778a69a7bdf62858c3",
+          "input_sha256": {
+            "candidate.json": "dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4",
+            "editorial.json": "b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b",
+            "independent-review-v2.json": "2ebed6f16385ed6bc650dc59fabd73d356856cce10b0d5be63e50b79af50128c"
+          },
+          "live_baseline_snapshot_reference": "C:\\ap\\quiz_master\\.run\\screen_song_integration_worker_20261014\\proposal-v1\\proposal-evidence.json",
+          "live_files_written": 0,
+          "not_run": [
+            "Official quizctl import/validate/build/diff",
+            "Live raw/canonical/Reader integration",
+            "Catalog/Reader export and Flutter fixture mutation",
+            "New independent proposal or integration acceptance",
+            "App builds, runtime cache/rehearsal, browser, release or publication",
+            "Git/Beads/SSH operations"
+          ],
+          "planned_counts_not_published": {
+            "packs": 135,
+            "questions": 4064,
+            "reader_articles": 264
+          },
+          "projected_question_revisions_not_authoritative": {
+            "screen-song-pilot-001": "481e762aa752349a6ec41223ca0cec40f30d06465e22dd8c508093a98dea5009",
+            "screen-song-pilot-002": "a55f8eceab0e9acdff1cb47c3197d73d93af82d5183e8ae492bce34fa68bd3d4",
+            "screen-song-pilot-003": "fb6ba616e24f288c5e58c6cbff9efdb962679232cc4b0fef0370836cb85408f4",
+            "screen-song-pilot-004": "df649f2d0af1c82e3798849a9b7fa10e0d03072c2c605be96d3b7df3c77531f6"
+          },
+          "proposal_evidence_sha256": "e08e06c53dedeae3995f75f931632d928adb026b3d2f04f7c5ead3cfb6517dd2",
+          "proposal_file_sha256": {
+            "next/content/screen-song-20261014/bundle-projection.json": "b1e806a3dd07eec6f2aae161503e9ead6ff55aed2787218c2697c42a19e9387b",
+            "next/content/screen-song-20261014/draft.json": "a5d92d2090e791476cb4c93f3501d1510bdb2bad747510a3a8687ca1612ed424",
+            "next/content/screen-song-20261014/manifest.json": "8d553e9728b42506e3bb005a85732cdfa7631dafcb0f007d0bf4da1010b0d721",
+            "quizzes/Cinema/screen_song_20261014.json": "94da04f287c5294bcc9e8cb6fcecb9abb7fbefe44872ec4b263753c611479b0d",
+            "study/question_articles/drafts/screen-song-20261014.json": "041ce92efc3d6dd7054ec93bae30af67a3cf002533dce37c85ba7dd4f4b5489c"
+          },
+          "proposal_root": "C:\\ap\\quiz_master\\.run\\screen_song_integration_worker_20261014\\proposal-v1",
+          "question_count": 4,
+          "quizctl_commands_executed": 0,
+          "reader_heading_conversion": "Move the first heading to title, strip only ### markers from subsequent headings and retain their words, move exact source footer URLs to source controls. Prose, real paragraph separators and source records are preserved.",
+          "remaining_gates": [
+            "Editorial/candidate v3 repair and genuine independent re-review; all live integration held",
+            "Independent review of this exact inert script/proposal and current ambiguity findings",
+            "Root authorized new live ownership and actual quizctl import/normalize/validate/build/diff",
+            "Actual independent integration callback and final article hashes",
+            "Root export/preservation/fixture/compiler/Flutter checks",
+            "Separate runtime/browser/release gates if requested"
+          ],
+          "root_reported_checkpoint_not_rechecked_with_git": "25be93a",
+          "runtime_identity": "codex/gpt-6.1-sol (self-reported)",
+          "script": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_INTEGRATION_20261014\\proposal.py",
+          "source_evidence_limit": "The existing accepted v2 factual review reports eight partial HTTP200 source responses. This worker read that actual review but did not fetch or recertify sources.",
+          "source_link_count": 8,
+          "source_uri": "/app/quizzes/Cinema/screen_song_20261014.json",
+          "status": "INERT_V1_COMPLETE_HELD_FOR_EDITORIAL_V3",
+          "taxonomy_and_baseline_sha256": {
+            "metadata/tags.v1.json": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+            "next/apps/quiz_app/assets/catalog.json": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+            "next/apps/quiz_app/assets/study/question-articles.json": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633"
+          },
+          "team_id": "team-2b1b65a3284e47ff970efd153f542e6b"
+        },
+        "root_task_id": "task-64a7414eaa7c47778a69a7bdf62858c3",
+        "run_id": "run-fc02f0140d9a40ad910fcf1fc2392010",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-2b1b65a3284e47ff970efd153f542e6b",
+        "title": "quiz_master-pgy: Screen Song four-card integration proposal",
+        "version": 4,
+        "reviewer": "session-a3beb1d7f24c4da780f15f961b9788ed",
+        "review_note": "Reviewed the frozen SCREEN_SONG_INTEGRATION_20261014 INERT proposal. Read proposal.py, test_proposal.py, REPORT.json, HOLD_EN.md, README.md, duplicate-inspection.json. Independently ran: `python -m unittest discover ... test_proposal.py` (all 8 tests pass) and `python proposal.py` in no-arg preview mode (prints INERT_PREVIEW_ONLY, keys [0,1,2,3], planned_counts 135/4064/264, made no writes). proposal.py hardcodes INPUT_HASHES to the v2 candidate/editorial hashes (dd843139...4bc, b930b1e6...3b) — I independently recomputed sha256 of SCREEN_SONG_PILOT_20261014/candidate.json and editorial.json and both match; the script is provably pinned to the accepted v2 draft, not the new v3 fork. accepted_review() correctly requires a genuine ACCEPTED hub callback binding both input hashes in the review_note and rejects a bare status stub (covered by test_status_stub_cannot_substitute_for_real_review and I confirm independent-review-v2.json does contain a real reviewer≠assignee ACCEPTED callback with both hashes embedded). safe_output() confines writes to WORK/SCRATCH only; before/after baseline() snapshot of 134/4060/260 is checked for equality after writing proposal files, guarding against live mutation. Article conversion (article_parts) rejects literal \\n and enforces exact heading/footer structure; projections correctly split private (grading, editorial_tag_ids) from public bundle fields. Recomputed sha256 of all 6 changed task files (HOLD_EN.md, README.md, REPORT-v1-pre-hold.json, duplicate-inspection.json, proposal.py, test_proposal.py) and all match REPORT.json's changed_file_sha256 exactly. duplicate-inspection.json's bounded 134-pack/84-stem sweep is disclosed as non-exhaustive, and its one real overlap (card003 vs acting-craft-pilot-003, both involving Barantini) is honestly flagged as topic adjacency, not a duplicate. HOLD_EN.md and README.md are explicit that this is a data projection only (no quizctl import/validate/build/diff executed, 0 live files written, 0 builds executed per REPORT.json) and that it cannot be used with the new v3 pins without a fresh proposal/review — it does not claim live integration or release approval. No defects found beyond the disclosed, intentional hold."
+      }
+    }
+  },
+  "review_messages": [
+    "Claude review complete, all three ACCEPT (error_count=0): task-625137f2 (v3 draft, cards 001/004 verified via retained HTML quotes, card002/003/articles/URLs byte-identical to v2), task-64a7414e (INERT proposal: 8/8 tests pass, preview run confirms inert+pinned to v2 not v3, all 6 changed-file hashes match REPORT.json), task-0a86baff (Gemini candidate-only report: jsonl result verbatim matches saved report, model=gemini-3.8-flash-medium, no thought/signature leak, first NEEDS_CONTEXT attempt correctly discarded). No app/Git/Beads/production edits made; production remains Actor Helm51."
+  ],
+  "report": "All three reviews are submitted and accepted:\n\n1. **task-625137f2** (v3 draft) — accept, error_count=0. Verified via direct JSON diff that only cards 001/004 changed, 002/003 and all article bodies/URLs are byte-identical to v2. The ADR-retakes and Cave/Dessner quotes used for the new facts were independently confirmed verbatim in the retained partial HTML snapshots.\n2. **task-64a7414e** (INERT integration proposal) — accept, error_count=0. Ran the 8-test suite (all pass) and the read-only preview (confirmed inert, pinned to v2 hashes not v3). Recomputed all 6 changed-file hashes — all match REPORT.json.\n3. **task-0a86baff** (Gemini candidate-only report) — accept, error_count=0. Confirmed the jsonl's SUCCESS result verbatim matches the saved report, correct model self-label, no thought/signature leakage, and the earlier NEEDS_CONTEXT attempt was correctly discarded.\n\nNo app/Git/Beads/production changes were made — purely read-only review plus bounded local test runs. Root has been notified via host_hub.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "a86e6197293df768f0efc3f19bac61b699d9b3aa11ffe27ad759b3cca606b5d6",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

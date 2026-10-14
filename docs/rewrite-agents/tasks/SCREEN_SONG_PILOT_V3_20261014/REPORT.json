@@ -1,0 +1,55 @@
+{
+  "status": "DRAFT_PENDING_INDEPENDENT_REVIEW",
+  "task_id": "task-625137f2f5e64b4fab50fe24dedebadb",
+  "original_v2_sha256": {
+    "candidate.json": "dd843139167a1a32316925983a35d53b4b77bf53463e69096f7754f221e74bc4",
+    "editorial.json": "b930b1e6d091b28ff1740944612d3a3e62517a64a9dc609612c20db5549d5b3b",
+    "independent-review-v2.json": "2ebed6f16385ed6bc650dc59fabd73d356856cce10b0d5be63e50b79af50128c"
+  },
+  "v3_sha256": {
+    "candidate.json": "8e66a411f9ad05e7da7e74f9e52844d0e76049dcffc84bc33e60e04b3987a0f5",
+    "editorial.json": "765895959bc42e5f4ffe8abac47c43554520eb2b58a29c2b02b155cd4d6c3ceb"
+  },
+  "changed_items": [
+    "screen-song-pilot-001",
+    "screen-song-pilot-004"
+  ],
+  "unchanged_items": [
+    "screen-song-pilot-002",
+    "screen-song-pilot-003"
+  ],
+  "all_four_article_bodies_and_source_urls_unchanged": true,
+  "key_ids_unchanged": {
+    "screen-song-pilot-001": "a",
+    "screen-song-pilot-002": "b",
+    "screen-song-pilot-003": "c",
+    "screen-song-pilot-004": "d"
+  },
+  "actual_primary_reads": [
+    {
+      "url": "https://www.netflix.com/tudum/articles/emilia-perez-sound-design?inapp=true",
+      "method": "Root web open, rendered primary article, ADR-retakes passage",
+      "supports": "Tone and timbre matching with songs; scoped to some cases"
+    },
+    {
+      "url": "https://www.netflix.com/tudum/articles/bryce-dessner-train-dreams-composer-interview",
+      "method": "Root web open/find, rendered primary interview, Cave collaboration passage",
+      "supports": "Dessner expressly attributes lyrics and melody over his musical idea to Cave"
+    }
+  ],
+  "rejected_request": {
+    "url": "https://www.netflix.com/tudum/articles/train-dreams-music-interview",
+    "result": "Web internal error; guessed alias supplies no evidence; actual ledger URL read instead"
+  },
+  "gemini_finding_triage": {
+    "001": "Repair real definition/translation clue by asking another already discussed, newly reread primary-source fact: the ADR matching purpose.",
+    "004": "Repair profession/stem elimination cue; all four choices are musicians and Dessner remains a plausible collaborator.",
+    "002": "Keep parallel arrangement choices. A major/minor pair is not itself proof of a giveaway or multiple true answers.",
+    "003": "Keep title-free production-method question. A trivia-style accomplishment being notable is not itself an answer clue."
+  },
+  "limits": [
+    "No acceptance, raw/canonical/Reader integration, catalog export, builds, browser or production changes.",
+    "Existing v1/v2 content and evidence remain immutable.",
+    "No fabricated full-body download or independent Gemini source verification."
+  ]
+}

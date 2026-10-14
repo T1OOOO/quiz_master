@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged articles bind People, Film Craft, Music Craft, Acting Craft and published Home Alone revisions',
+    'packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,28 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(260));
+      expect(articles.articles, hasLength(264));
       for (final (quizId, questionId, revision) in [
+        (
+          'screen-song-20261014',
+          'screen-song-pilot-001',
+          '150814dc4fa8b6eab222527a95bd02966a728fcfd623bbd87f45256bad48ea53',
+        ),
+        (
+          'screen-song-20261014',
+          'screen-song-pilot-002',
+          '7f9acdf2804c824d19c5ce3391965d5c365baf5f8b51c8c2d4e18f43fdcba6c6',
+        ),
+        (
+          'screen-song-20261014',
+          'screen-song-pilot-003',
+          '4fdb4066ef242a4c40b8d5d7ef56d136fc2a407b47a217d03ec3b03a25357593',
+        ),
+        (
+          'screen-song-20261014',
+          'screen-song-pilot-004',
+          '21c67a6b079acb30dcd1830ae3654ccae0044079452af685b6bb969d3a3e80fb',
+        ),
         (
           'acting-craft-20261014',
           'acting-craft-pilot-001',
@@ -299,14 +319,46 @@ void main() {
           'music-people-024',
           '3a911b0bc4a22b21800832398e4516da4e99001ddad8df40e3de4077e92f134e',
         ),
-        ('cinema-people-20261011', 'cinema-people-025', '292cbc7bc5b24c9c22e54ba0cd5a07f65f73de8790db7c840c0d4516d812b122'),
-        ('cinema-people-20261011', 'cinema-people-026', '46033cc1863ef688ed8c9b800562440d9f84b6b0b2d1d6ba6512ee58734720d8'),
-        ('cinema-people-20261011', 'cinema-people-027', '81b4ba41f106b1657417e46a573dce23d6a25bc81271e235123e4998a700fcbc'),
-        ('cinema-people-20261011', 'cinema-people-028', 'f4dc2f54d3a746ba95ab87199dc453973f397becdf7c3a137194474aecf3019e'),
-        ('music-people-20261011', 'music-people-025', '0430dbb8d3cf0ae89e71f0ebbacaaeb9ed18a4065bc3a24c77a2b143e2580751'),
-        ('music-people-20261011', 'music-people-026', 'f1d81789ae26481eb1bee36cac824bb92b80ad2d26bb6c61a6a3a8dae2ba6345'),
-        ('music-people-20261011', 'music-people-027', '89a853cf96189541e18bac0b5b0fb09dd670d7bf570faa7d772297044c875276'),
-        ('music-people-20261011', 'music-people-028', 'bf80338f46de0a08ce331d81228a97bd873af57c750dc7295d1163bc0b9d30d7'),
+        (
+          'cinema-people-20261011',
+          'cinema-people-025',
+          '292cbc7bc5b24c9c22e54ba0cd5a07f65f73de8790db7c840c0d4516d812b122',
+        ),
+        (
+          'cinema-people-20261011',
+          'cinema-people-026',
+          '46033cc1863ef688ed8c9b800562440d9f84b6b0b2d1d6ba6512ee58734720d8',
+        ),
+        (
+          'cinema-people-20261011',
+          'cinema-people-027',
+          '81b4ba41f106b1657417e46a573dce23d6a25bc81271e235123e4998a700fcbc',
+        ),
+        (
+          'cinema-people-20261011',
+          'cinema-people-028',
+          'f4dc2f54d3a746ba95ab87199dc453973f397becdf7c3a137194474aecf3019e',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-025',
+          '0430dbb8d3cf0ae89e71f0ebbacaaeb9ed18a4065bc3a24c77a2b143e2580751',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-026',
+          'f1d81789ae26481eb1bee36cac824bb92b80ad2d26bb6c61a6a3a8dae2ba6345',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-027',
+          '89a853cf96189541e18bac0b5b0fb09dd670d7bf570faa7d772297044c875276',
+        ),
+        (
+          'music-people-20261011',
+          'music-people-028',
+          'bf80338f46de0a08ce331d81228a97bd873af57c750dc7295d1163bc0b9d30d7',
+        ),
         (
           'home-alone-1-part-1',
           'q-ha1-p1-1',
@@ -322,11 +374,21 @@ void main() {
       }
       // Older Git metadata hashes must not bind the published question articles.
       for (final (questionId, staleRevision) in [
-        ('q-ha1-p1-1', '466089300173e855d67d300e59ab9fb945eeaf0a6c54b895b6ba28386470cca1'),
-        ('q-ha1-p1-2', 'a2f7bedd9a016ccbb8d4f71cf34ec529b5700d5d7d521b389a0e0612ad8e8b76'),
+        (
+          'q-ha1-p1-1',
+          '466089300173e855d67d300e59ab9fb945eeaf0a6c54b895b6ba28386470cca1',
+        ),
+        (
+          'q-ha1-p1-2',
+          'a2f7bedd9a016ccbb8d4f71cf34ec529b5700d5d7d521b389a0e0612ad8e8b76',
+        ),
       ]) {
         expect(
-          articles.forQuestion('home-alone-1-part-1', questionId, staleRevision),
+          articles.forQuestion(
+            'home-alone-1-part-1',
+            questionId,
+            staleRevision,
+          ),
           isNull,
         );
       }

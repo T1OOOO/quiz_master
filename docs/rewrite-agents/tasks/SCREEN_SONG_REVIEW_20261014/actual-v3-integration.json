@@ -1,0 +1,207 @@
+{
+  "actual_unsorted_import_exit": 1,
+  "authoritative_quizctl_matches_inert_projection": true,
+  "canonical_article_sha256": {
+    "question:screen-song-pilot-001": "c952f18eb7014f6cc92ce8c71f4fd14abd4fc3f449b2394401e0352053d1f92d",
+    "question:screen-song-pilot-002": "35f861e8511010706efdb2fde933e3303e87c1d83df2257a441d7c6a9d676c4e",
+    "question:screen-song-pilot-003": "1173f28086ca94fc5565ad54a96691dd8cba04cb01cc8f6864846dedc8141301",
+    "question:screen-song-pilot-004": "41c3945b93169d857f97c2f830c5518fe9354959ddb41c57691369b8a0343709"
+  },
+  "commands": [
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "import",
+        "--in",
+        "quizzes/Cinema/screen_song_20261014.json",
+        "--out",
+        "next/content/screen-song-20261014",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "stderr": "",
+      "stdout": "imported screen-song-20261014: 4 questions; source_sha256 2feed41b983f5091b31677b04f9c3cd94b84cfcec57d1acbad19f99641f8b21b\n"
+    },
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "validate",
+        "--in",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\draft.json",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "stderr": "",
+      "stdout": "valid screen-song-20261014: 4 questions\n"
+    },
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "build",
+        "--in",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\draft.json",
+        "--version",
+        "2026.10.14.screen-song-v1",
+        "--published-at",
+        "2026-10-14T00:00:00Z",
+        "--taxonomy",
+        "metadata/tags.v1.json",
+        "--out",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\bundle.json"
+      ],
+      "stderr": "",
+      "stdout": "built screen-song-20261014: 4 questions; bundle_sha256 e56b972773c789b6496145dea730fb8aa62bb72f0ff8729cfb708c2200dffd71\n"
+    },
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "validate",
+        "--in",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\bundle.json",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "stderr": "",
+      "stdout": "valid screen-song-20261014: 4 questions\n"
+    },
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "build",
+        "--in",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\draft.json",
+        "--version",
+        "2026.10.14.screen-song-v1",
+        "--published-at",
+        "2026-10-14T00:00:00Z",
+        "--taxonomy",
+        "metadata/tags.v1.json",
+        "--out",
+        "C:\\ap\\quiz_master\\.run\\screen_song_integration_20261014\\v3-rebuilt-bundle.json"
+      ],
+      "stderr": "",
+      "stdout": "built screen-song-20261014: 4 questions; bundle_sha256 e56b972773c789b6496145dea730fb8aa62bb72f0ff8729cfb708c2200dffd71\n"
+    },
+    {
+      "actual_exit": 0,
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "diff",
+        "--before",
+        "C:\\ap\\quiz_master\\next\\content\\screen-song-20261014\\bundle.json",
+        "--after",
+        "C:\\ap\\quiz_master\\.run\\screen_song_integration_20261014\\v3-rebuilt-bundle.json"
+      ],
+      "stderr": "",
+      "stdout": "no changes\n"
+    }
+  ],
+  "failed_raw_preserved_sha256": "6579ead0a845b62a5d16644577a5a4d5d1b11d98bf45d2440b99450db8d3d4e0",
+  "input_sha256": {
+    "REPORT.json": "270270764d402a93ab4cb9724fb32ee2d2db1f312b447e0aa0e23da3934ec9f7",
+    "candidate.json": "8e66a411f9ad05e7da7e74f9e52844d0e76049dcffc84bc33e60e04b3987a0f5",
+    "editorial.json": "765895959bc42e5f4ffe8abac47c43554520eb2b58a29c2b02b155cd4d6c3ceb"
+  },
+  "keys_balanced_and_private": true,
+  "metadata_normalization": {
+    "screen-song-pilot-001": {
+      "converted": [
+        "domain:arts",
+        "domain:screen",
+        "skill:comparison",
+        "topic:film-music"
+      ],
+      "source": [
+        "domain:arts",
+        "domain:screen",
+        "topic:film-music",
+        "skill:comparison"
+      ]
+    },
+    "screen-song-pilot-002": {
+      "converted": [
+        "domain:arts",
+        "domain:screen",
+        "skill:comparison",
+        "topic:film-music"
+      ],
+      "source": [
+        "domain:arts",
+        "domain:screen",
+        "topic:film-music",
+        "skill:comparison"
+      ]
+    },
+    "screen-song-pilot-003": {
+      "converted": [
+        "domain:arts",
+        "domain:screen",
+        "skill:direct-recall",
+        "topic:film-music"
+      ],
+      "source": [
+        "domain:arts",
+        "domain:screen",
+        "topic:film-music",
+        "skill:direct-recall"
+      ]
+    },
+    "screen-song-pilot-004": {
+      "converted": [
+        "domain:arts",
+        "domain:screen",
+        "skill:comparison",
+        "topic:film-music"
+      ],
+      "source": [
+        "domain:arts",
+        "domain:screen",
+        "topic:film-music",
+        "skill:comparison"
+      ]
+    }
+  },
+  "old_catalog_and_reader_unchanged": {
+    "next/apps/quiz_app/assets/catalog.json": "77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377",
+    "next/apps/quiz_app/assets/study/question-articles.json": "af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633"
+  },
+  "old_raw_files_unchanged": 134,
+  "output_sha256": {
+    "next/content/screen-song-20261014/bundle.json": "260924a88c9537d64aa54cc0b759d2f3cf77a172a27839df5d54b707514e6d9f",
+    "next/content/screen-song-20261014/draft.json": "910f0f33ffbe6d9bb88d32539455274534a0a59687969930d016efaa9d194805",
+    "next/content/screen-song-20261014/manifest.json": "4dd4d25f2a31516c20b8b0da481b58b06e6fd9e5b6475e7216e48bf86891c787",
+    "quizzes/Cinema/screen_song_20261014.json": "2feed41b983f5091b31677b04f9c3cd94b84cfcec57d1acbad19f99641f8b21b",
+    "study/question_articles/drafts/screen-song-20261014.json": "48a9d3cd0d0d599245a249da2a8c1eb1bb8ee7683a70dab023de22589b34cec8"
+  },
+  "question_revisions": {
+    "screen-song-pilot-001": "150814dc4fa8b6eab222527a95bd02966a728fcfd623bbd87f45256bad48ea53",
+    "screen-song-pilot-002": "7f9acdf2804c824d19c5ce3391965d5c365baf5f8b51c8c2d4e18f43fdcba6c6",
+    "screen-song-pilot-003": "4fdb4066ef242a4c40b8d5d7ef56d136fc2a407b47a217d03ec3b03a25357593",
+    "screen-song-pilot-004": "21c67a6b079acb30dcd1830ae3654ccae0044079452af685b6bb969d3a3e80fb"
+  },
+  "root_contract_repair_separately_pending_result_review": true,
+  "scope": "Actual reviewed-v3 raw/canonical/Reader drafts only. Catalog/Reader exported assets remain unchanged; no build/browser/production change."
+}

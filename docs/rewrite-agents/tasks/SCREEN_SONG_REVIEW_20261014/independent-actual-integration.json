@@ -1,0 +1,76 @@
+{
+  "actual_cli_exit": 0,
+  "cli_exit_scope": "Successful resumed final report delivery only; original review process timed out after its successful callback.",
+  "original_cli_exit": "timeout",
+  "actual_resume_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-b3db2fb1428a4723adaa944ed413ebeb": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-b3db2fb1428a4723adaa944ed413ebeb",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review of screen-song-20261014 (candidate/editorial -> quizzes/Cinema/screen_song_20261014.json -> next/content/.../{draft,manifest,bundle}.json -> study/.../screen-song-20261014.json). Cross-file consistency confirmed: stems, 4 options, correct answer index/option id, explanations, difficulty bands (7/hard,6/4/6 medium per taxonomy.go difficultyBand) and editorial_tag_ids match across all 5 files; option-index<->opt-N<->legacy-index mapping correct in manifest. Tag order: all 4 tag arrays strictly lexically increasing, satisfying taxonomy.go validateTagIDs -- matches the described sort repair. Private grading correctly absent from bundle.json's public quiz.questions (only in private_grading/private_question_metadata); draft.json's inline grading is the pre-build internal format, not the public DTO. Articles: real blank-line paragraph breaks, 2 source_links each (8 total), question_refs.revision_sha256 matches draft/bundle revisions exactly. Hashes (sha256sum, recomputed by me): all 5 output_sha256 in actual-v3-integration.json match live files; integration-evidence file sha256=6523cfc047fce59eea270d0878bd335477a4e01ba6fae6b7c496ed26a4cdfe4f; repair script sha256=9acbdff7d5f8925c1481e1b08da8abdd210db3b8b70e720955bb250e8bf48981; failed-unsorted-raw.json matches claimed preserved hash. Baseline catalog(134 packs/4060 q)=77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377 and reader(260 articles)=af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633 both byte-match claimed unchanged baseline; no new export. Reviewed prior independent-v3-review.json/independent-exact-binding.json: genuine reviewer!=assignee acceptances, disclosed limits consistent with ROOT_DEDUP_V3.json's bounded-sweep scope. NOT VERIFIED: sandbox denied script execution/writes (python3 -c, node -e, heredocs), so I could not reproduce the 4 canonical_article_sha256 digests byte-for-byte via jq; whole-file reader hash matches exactly so content itself is not in doubt, but I flag this as an unresolved tooling-parity gap, not a confirmed defect. I did not fetch the cited Netflix sources myself (relied on prior recorded checks) and did not run quizctl/go/build/browser/export. 4 canonical_article_sha256 (unverified by me, taken from actual-v3-integration.json): c952f18eb7014f6cc92ce8c71f4fd14abd4fc3f449b2394401e0352053d1f92d, 35f861e8511010706efdb2fde933e3303e87c1d83df2257a441d7c6a9d676c4e, 1173f28086ca94fc5565ad54a96691dd8cba04cb01cc8f6864846dedc8141301, 41c3945b93169d857f97c2f830c5518fe9354959ddb41c57691369b8a0343709."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual official Go command exits0 and deterministicparity, exact v3 text/options/keys/explanations/registeredtags, no private grading in publicquestion DTO, four real-newline miniarticles/eightlinks bound to authoritative4questionrevisions; prior134/4060/260 assets remain unchanged; genuine different-provider review with full output/article hashes before export.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizzes\\Cinema",
+          "C:\\ap\\quiz_master\\next\\content",
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_REVIEW_20261014",
+          "C:\\ap\\quiz_master\\.run\\screen_song_integration_20261014"
+        ],
+        "assignee": "session-ece0104125624381be27172bfb0f6f67",
+        "author": "session-ece0104125624381be27172bfb0f6f67",
+        "body": "Root guarded application only after genuine Claude26 source/proposal approval and Claude27 exact binding. Own only new quizzes/Cinema/screen_song_20261014.json, next/content/screen-song-20261014/{draft,bundle,manifest}.json and study/question_articles/drafts/screen-song-20261014.json plus own review evidence. No old raw/canonical/article edits; no export or approval-metadata until actual resulting integration independently reviewed. Run official quizctl import, runtimeURI-only normalization, validate/build/deterministicdiff, all4key/privateDTO/source/article exactness, preserve134oldraw and oldcatalogReader assets.",
+        "created_at": 1791936420.6095114,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-b3db2fb1428a4723adaa944ed413ebeb",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/actual-v3-integration.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/actual-unsorted-import-failure.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014/root_continue_sorted_v3.py",
+            "quizzes/Cinema/screen_song_20261014.json",
+            "next/content/screen-song-20261014/draft.json",
+            "next/content/screen-song-20261014/manifest.json",
+            "next/content/screen-song-20261014/bundle.json",
+            "study/question_articles/drafts/screen-song-20261014.json"
+          ],
+          "summary": "Actual official quizctl import initially rejected unsorted tag arrays (registered names, wrong canonical order). Preserved original failure/unsortedraw, applied only converted-tag lexicographic normalization preserving memberships and accepted sourcefiles. Actual import/validate/build/rebuild/diff now all0, authoritative draft/manifest/bundle exactly match projection; four source-bound Reader drafts created. Prior134raw/catalog134/Reader260 unchanged. No export, builds/browser or production; resulting independent review pending."
+        },
+        "root_task_id": "task-b3db2fb1428a4723adaa944ed413ebeb",
+        "run_id": "run-5617445a001044bb9a38f54cb9fc8d6e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-2b1b65a3284e47ff970efd153f542e6b",
+        "title": "quiz_master-pgy: actual v3 raw canonical Reader integration",
+        "version": 4,
+        "reviewer": "session-713f93591ed64c75ac09ba2fda184630",
+        "review_note": "Independent read-only review of screen-song-20261014 (candidate/editorial -> quizzes/Cinema/screen_song_20261014.json -> next/content/.../{draft,manifest,bundle}.json -> study/.../screen-song-20261014.json). Cross-file consistency confirmed: stems, 4 options, correct answer index/option id, explanations, difficulty bands (7/hard,6/4/6 medium per taxonomy.go difficultyBand) and editorial_tag_ids match across all 5 files; option-index<->opt-N<->legacy-index mapping correct in manifest. Tag order: all 4 tag arrays strictly lexically increasing, satisfying taxonomy.go validateTagIDs -- matches the described sort repair. Private grading correctly absent from bundle.json's public quiz.questions (only in private_grading/private_question_metadata); draft.json's inline grading is the pre-build internal format, not the public DTO. Articles: real blank-line paragraph breaks, 2 source_links each (8 total), question_refs.revision_sha256 matches draft/bundle revisions exactly. Hashes (sha256sum, recomputed by me): all 5 output_sha256 in actual-v3-integration.json match live files; integration-evidence file sha256=6523cfc047fce59eea270d0878bd335477a4e01ba6fae6b7c496ed26a4cdfe4f; repair script sha256=9acbdff7d5f8925c1481e1b08da8abdd210db3b8b70e720955bb250e8bf48981; failed-unsorted-raw.json matches claimed preserved hash. Baseline catalog(134 packs/4060 q)=77c496394c4089a8895eb180b61592807e4c37ea15b81cb54eecc0be303be377 and reader(260 articles)=af443be9c529dc61c30a3edd9b51327e084dccfd2a69dc88d44aac152b1b4633 both byte-match claimed unchanged baseline; no new export. Reviewed prior independent-v3-review.json/independent-exact-binding.json: genuine reviewer!=assignee acceptances, disclosed limits consistent with ROOT_DEDUP_V3.json's bounded-sweep scope. NOT VERIFIED: sandbox denied script execution/writes (python3 -c, node -e, heredocs), so I could not reproduce the 4 canonical_article_sha256 digests byte-for-byte via jq; whole-file reader hash matches exactly so content itself is not in doubt, but I flag this as an unresolved tooling-parity gap, not a confirmed defect. I did not fetch the cited Netflix sources myself (relied on prior recorded checks) and did not run quizctl/go/build/browser/export. 4 canonical_article_sha256 (unverified by me, taken from actual-v3-integration.json): c952f18eb7014f6cc92ce8c71f4fd14abd4fc3f449b2394401e0352053d1f92d, 35f861e8511010706efdb2fde933e3303e87c1d83df2257a441d7c6a9d676c4e, 1173f28086ca94fc5565ad54a96691dd8cba04cb01cc8f6864846dedc8141301, 41c3945b93169d857f97c2f830c5518fe9354959ddb41c57691369b8a0343709."
+      }
+    }
+  },
+  "report": "I can't send via `hub_message` in this session — permission is denied outright (not a length issue; even a short message was blocked). I won't retry or attempt a workaround. Here is the final report directly, which you can relay to the lead session if needed:\n\n**Final report — independent review of task-b3db2fb1428a4723adaa944ed413ebeb**\n\nThe review was already submitted and recorded as **ACCEPTED** (verdict=accept, error_count=0) earlier in this session — not repeating that review action.\n\nI do **not** claim the original quizctl CLI run completed successfully; I never executed quizctl/go/build/browser myself — only read files and ran `sha256sum`/`jq`/`grep` for static, read-only verification.\n\n**New this turn — canonical article hash attempt:** I tried again to independently compute `sha256(json.dumps(article, ensure_ascii=False, sort_keys=True, separators=(',',':')))` for the four articles in `study/question_articles/drafts/screen-song-20261014.json`. This sandbox denies all inline-interpreter execution — `python3 -c`, a python heredoc, `node -e`, and `perl -e` are all rejected outright (\"Permission to use Bash has been denied\"), and file writes are disabled, so I cannot run the exact Python snippet. My closest substitute (`jq -S -c '.articles[N]' | sha256sum`, tried with and without stripping jq's trailing newline) did **not** reproduce the four digests recorded in `actual-v3-integration.json`'s `canonical_article_sha256` (c952f18e…, 35f861e8…, 1173f280…, 41c3945b…). I cannot tell whether that's a real discrepancy or just a jq-vs-Python serialization difference I couldn't isolate without running Python. The whole reader-draft **file** hash (48a9d3cd0d0d…) does match the claimed value exactly via `sha256sum`, so the article content itself is confirmed byte-correct — only the per-article canonical sub-hash remains unverified by me.\n\n**Explicit qualifier retained:** the four `canonical_article_sha256` values are taken from `actual-v3-integration.json`, **not independently verified** by me.\n\nEverything else from my earlier review stands unchanged: question/choice/answer-key/explanation/difficulty/tag consistency across all five files; strictly lexically sorted tag arrays per `taxonomy.go` `validateTagIDs`; private grading correctly absent from `bundle.json`'s public `quiz.questions`; four articles with real paragraph breaks, 8 source links total, and `question_refs.revision_sha256` matching draft/bundle revisions; all five `output_sha256` plus the integration-evidence and repair-script hashes independently recomputed and matched; 134-pack/4060-question/260-article baseline independently hash-confirmed unchanged. No export or deployment observed or performed by me.",
+  "original_trace_sha256": "c42543c20da06f0263ad19fa1744c9e9de991e7beb7db962320025c73d3b9c69",
+  "resume_trace_sha256": "24c8dd7dd5921dd9c89924c10d137bab5ea12a187508e27d253f4c3be407fbd3",
+  "reviewed_whole_file_hashes": {
+    "next/content/screen-song-20261014/bundle.json": "260924a88c9537d64aa54cc0b759d2f3cf77a172a27839df5d54b707514e6d9f",
+    "next/content/screen-song-20261014/draft.json": "910f0f33ffbe6d9bb88d32539455274534a0a59687969930d016efaa9d194805",
+    "next/content/screen-song-20261014/manifest.json": "4dd4d25f2a31516c20b8b0da481b58b06e6fd9e5b6475e7216e48bf86891c787",
+    "quizzes/Cinema/screen_song_20261014.json": "2feed41b983f5091b31677b04f9c3cd94b84cfcec57d1acbad19f99641f8b21b",
+    "study/question_articles/drafts/screen-song-20261014.json": "48a9d3cd0d0d599245a249da2a8c1eb1bb8ee7683a70dab023de22589b34cec8"
+  },
+  "canonical_article_hash_scope": "Root computes per-article canonical hashes from the independently byte-hash-verified whole Reader draft. Reviewer explicitly did not verify these sub-hashes; jq serialization mismatch is unresolved. Whole file content and factual/editorial reviews are accepted.",
+  "scope": "Source conversion only; exports and deployment remain separately gated."
+}

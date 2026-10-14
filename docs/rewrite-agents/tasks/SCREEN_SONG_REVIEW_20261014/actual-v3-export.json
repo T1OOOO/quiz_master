@@ -1,0 +1,105 @@
+{
+  "actual_counts": [
+    135,
+    4064,
+    264
+  ],
+  "all_prior_catalog_rows_unchanged": 134,
+  "all_prior_reader_objects_unchanged": 260,
+  "new_screen_song_articles": 4,
+  "new_source_links": 8,
+  "actual_review_task": "task-b3db2fb1428a4723adaa944ed413ebeb",
+  "commands": [
+    {
+      "command": [
+        "go",
+        "run",
+        "-p=1",
+        "./next/server/cmd/quizctl",
+        "catalog",
+        "--in",
+        "quizzes",
+        "--out",
+        "next/apps/quiz_app/assets/catalog.json",
+        "--force",
+        "--taxonomy",
+        "metadata/tags.v1.json"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "catalog: 135 packs\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "PASS: 264 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "PASS: 264 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_*.py"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.148s\n\nOK\n"
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "dart",
+        "format",
+        "test/question_articles_test.dart"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "stdout": "Formatted test/question_articles_test.dart\nFormatted 1 file (1 changed) in 0.02 seconds.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test",
+        "--no-pub",
+        "test/question_articles_test.dart"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "stdout": "00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart\n00:00 +0: articles match exact quiz revision, not only a reusable question ID\n00:00 +1: drafts, duplicate articles and unsafe source schemes fail closed\n00:00 +2: mobile reader pauses before opening and puts checked links at the end\n00:02 +3: reader stays above shell feedback and restores it on close\n00:02 +4: missing article does not suggest an unwritten article\n00:02 +5: packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song and published Home Alone revisions\n00:02 +6: All tests passed!\n",
+      "stderr": ""
+    }
+  ],
+  "asset_sha256": {
+    "next/apps/quiz_app/assets/catalog.json": "43b90ee84800cc13f23eec9d43baa05cec28a74bd31c6d3ef6a1a9d335b17a41",
+    "next/apps/quiz_app/assets/study/question-articles.json": "a58255548240b489873d8ad944522a53757454627081b76e11d6031f35776c14",
+    "next/apps/quiz_app/test/question_articles_test.dart": "6b17a956db3c07f2a64d53ea752ab4f5d8870436c3cc9e2271ab4421d897c22f"
+  },
+  "scope": "Actual source exports and Python/Flutter Reader gates only; compiled builds, browser and production release remain pending."
+}
