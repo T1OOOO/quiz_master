@@ -1,0 +1,25 @@
+{
+  "command": [
+    "python",
+    "-B",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker\\prepare_lotr_package.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\package-pins.json",
+    "--repo",
+    "C:\\ap\\quiz_master",
+    "--frozen-commit",
+    "9194f61face75d03862003942ef55fae34aeec72",
+    "--production-web",
+    "C:\\ap\\quiz_master\\.run\\lotr_build_20261014\\production-web",
+    "--qa-web",
+    "C:\\ap\\quiz_master\\.run\\lotr_build_20261014\\qa-web",
+    "--prior-archive",
+    "C:\\ap\\quiz_master\\.run\\screen_song_package_20261014\\package-v1\\quiz-2026.10.14-screen-song-6866608.tar.gz",
+    "--output-root",
+    "C:\\ap\\quiz_master\\.run\\lotr_package_20261014\\package-v1"
+  ],
+  "actual_exit": 0,
+  "stdout": "{\"status\": \"PREPARED_NOT_EXECUTED\", \"build_id\": \"quiz-2026.10.14-lotr-rk-repair-9194f61\", \"stage\": \"C:\\\\ap\\\\quiz_master\\\\.run\\\\lotr_package_20261014\\\\package-v1\\\\quiz-2026.10.14-lotr-rk-repair-9194f61\", \"archive\": \"C:\\\\ap\\\\quiz_master\\\\.run\\\\lotr_package_20261014\\\\package-v1\\\\quiz-2026.10.14-lotr-rk-repair-9194f61.tar.gz\", \"archive_sha256\": \"5af96c52ec0131e4d82f0d10095a85fce6980372687273dc9f49377bc0e9b0d0\", \"counts\": {\"packs\": 135, \"questions\": 4064, \"reader_articles\": 266, \"preserved_catalog_rows\": 135, \"preserved_questions\": 4064, \"preserved_reader_articles\": 264, \"baseline_cache_entries\": 12, \"runtime_cache_entries\": 13, \"staging_canonical_questions_before\": 160, \"staging_canonical_questions\": 260, \"accepted_question_article_bindings_before\": 143, \"accepted_question_article_bindings\": 145, \"repaired_questions\": 2}}\n",
+  "stderr": "",
+  "scope": "Local immutable data package only. Runtime API loader gate is open; no remote preparation or publication authorized by this result."
+}

@@ -1,0 +1,69 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f944cdb7b25a4ca4b734d995d35322e3": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f944cdb7b25a4ca4b734d995d35322e3",
+          "verdict": "accept",
+          "note": "source_sha256=72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17. Verified collection_test.go: only the three hardcoded expectations changed (131/4044/131 -> 135/4064/135 at lines 60, 104, 114). Independently recounted next/apps/quiz_app/assets/catalog.json by hand: 135 quiz_id entries summing to exactly 4064 questions_count, matching current/published catalog. All other assertions in TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart are unchanged: per-pack CatalogFor/StartQuiz bundle-hash and snapshot-count checks, early-reveal ErrForbidden, per-answer grading against PrivateGrading with PayloadDigest, Finish history/score equality, foreign-history ErrForbidden, restart ListHistory count, and the bad-selection ErrValidation case. root-sqlite-fixture-checks.json RED/GREEN matches claimed: failing run shows packs=135 (old fixture expected 131) at 6.99s/9.359s, fixed run green at 95.680s. root-full-go-checks.json exists (not pending): full `go test -p=1 ./...` exit 0, sqlite package 37.515s, and its recorded source_sha256 for collection_test.go matches this review's binding exactly. NEXT_STAGES_EN.md confirms scope: only these three hardcoded numbers changed; grading/history/source-loading/forbidden-reveal/restart checks remain intact; it also flags that the importer identity test currently assumes raw metadata is absent and will need an explicit temporary absent-field baseline before real q93/q95 metadata is integrated (separate, correctly-deferred next stage). No execution performed by this review; read-only verification only."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual RED failure packs135, exact published/current corpus135/4064 proof, actual GREEN all-pack SQLite regression and independent review. No weaker dynamic counts.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\server\\internal\\sqlite\\collection_test.go",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_IDENTITY_API_20261014"
+        ],
+        "assignee": "session-e5d2b26c009149ac9c066ce946d226ee",
+        "author": "session-e5d2b26c009149ac9c066ce946d226ee",
+        "body": "Root full Go suite exposed stale selected-pack fixture count131/4044/history131. Own only internal/sqlite/collection_test.go counts, prove actual corpus135/4064 and retain all-pack grading/history/privacy/restart checks. Independent Claude review required; no publication scope.",
+        "created_at": 1791966189.930897,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-f944cdb7b25a4ca4b734d995d35322e3",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "Root actual full-suite RED exit1 collection_test.go:61 packs135",
+            "Root actual SQLite GREEN exit0 95.680s",
+            "docs/rewrite-agents/tasks/LOTR_IDENTITY_API_20261014/root-sqlite-fixture-checks.json"
+          ],
+          "next": "Independent Claude review of exact three-line diff.",
+          "risks": [
+            "No publication or runtime claim; fullsuite followup currently running."
+          ],
+          "source_sha256": "72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17",
+          "status": "DONE",
+          "summary": "Three stale hardcoded corpus expectations reconciled to published/current135/4064/135. All-pack grading, privacy, history and restart assertions retained."
+        },
+        "root_task_id": "task-f944cdb7b25a4ca4b734d995d35322e3",
+        "run_id": "run-3f007e641f274820ab161f1eaf2eeec6",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-590b6fd2ceb3456c8209d0fc3d8c8657",
+        "title": "Reconcile selected-pack SQLite regression with published 135-pack corpus",
+        "version": 4,
+        "reviewer": "session-648d820b074a4adbb9908392f0c60d49",
+        "review_note": "source_sha256=72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17. Verified collection_test.go: only the three hardcoded expectations changed (131/4044/131 -> 135/4064/135 at lines 60, 104, 114). Independently recounted next/apps/quiz_app/assets/catalog.json by hand: 135 quiz_id entries summing to exactly 4064 questions_count, matching current/published catalog. All other assertions in TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart are unchanged: per-pack CatalogFor/StartQuiz bundle-hash and snapshot-count checks, early-reveal ErrForbidden, per-answer grading against PrivateGrading with PayloadDigest, Finish history/score equality, foreign-history ErrForbidden, restart ListHistory count, and the bad-selection ErrValidation case. root-sqlite-fixture-checks.json RED/GREEN matches claimed: failing run shows packs=135 (old fixture expected 131) at 6.99s/9.359s, fixed run green at 95.680s. root-full-go-checks.json exists (not pending): full `go test -p=1 ./...` exit 0, sqlite package 37.515s, and its recorded source_sha256 for collection_test.go matches this review's binding exactly. NEXT_STAGES_EN.md confirms scope: only these three hardcoded numbers changed; grading/history/source-loading/forbidden-reveal/restart checks remain intact; it also flags that the importer identity test currently assumes raw metadata is absent and will need an explicit temporary absent-field baseline before real q93/q95 metadata is integrated (separate, correctly-deferred next stage). No execution performed by this review; read-only verification only."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded as **ACCEPTED** on `task-f944cdb7b25a4ca4b734d995d35322e3`, bound to source_sha256 `72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17`.\n\n**Findings:**\n- `collection_test.go` diff is exactly the three claimed hardcoded numbers (lines 60, 104, 114): `131/4044/131` → `135/4064/135`. All other assertions untouched — per-pack bundle-hash/snapshot checks, early-reveal `ErrForbidden`, grading against `PrivateGrading` via `PayloadDigest`, Finish history/score equality, foreign-history `ErrForbidden`, restart `ListHistory` count, and the bad-selection `ErrValidation` case all remain meaningful and intact.\n- Hand-recounted `next/apps/quiz_app/assets/catalog.json`: 135 `quiz_id` entries summing to exactly 4064 `questions_count` — independently confirms the new numbers against the actual catalog.\n- `root-sqlite-fixture-checks.json` RED/GREEN record matches the claim: RED shows `packs=135` against the old 131-expectation fixture; GREEN run passed in 95.680s.\n- `root-full-go-checks.json` exists (not pending): full `go test -p=1 ./...` exit 0, sqlite package 37.515s, and its embedded `source_sha256` for `collection_test.go` matches this review's binding exactly — wider Go followup is confirmed complete, not still running.\n- `NEXT_STAGES_EN.md` confirms scope matches (only the three numbers changed) and separately flags a real next-stage gap: the importer identity test currently assumes raw metadata is absent and will need an explicit temporary absent-field baseline constructed before real q93/q95 metadata is integrated — correctly deferred, not part of this change.\n\nNo test execution was performed by this review; verification was read-only file inspection plus independent arithmetic. No publication-scope claims made.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-f944cdb7b25a4ca4b734d995d35322e3",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "3b3bb3b73e9e3314fe30f28479e52342018ba3437bbab4d7c3d7b1601507692c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

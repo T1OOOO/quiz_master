@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-14T07:32:30.640397+00:00",
+  "actual_ssh_exit": 0,
+  "target_hostname": "racknerd-f0269d5",
+  "image": "docker.io/library/quiz-master@sha256:a97cf777b2015c595fd1307017246a2806cce597e0233da75e496a433761e074",
+  "ready_replicas": 1,
+  "available_replicas": 1,
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "pvc_phase": "Bound",
+  "helm": {
+    "revision": 52,
+    "status": "deployed"
+  },
+  "node_ready_no_pressure": true,
+  "disk_available_bytes": 8956809216,
+  "disk_used_percent": "91%",
+  "public_baseline_assets": {
+    "version.json": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "5b6ea501a7856294ae87f3e00805aad15e94d323825c21a68c9cc5a926b401b2"
+    },
+    "main.dart.js": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "aed8b728b1d019b86432075f96c6fec48414fc8351079c1f9c53519e0e4373e9"
+    },
+    "assets/assets/study/question-articles.json": {
+      "status": 200,
+      "etag_absent": true,
+      "sha256": "a58255548240b489873d8ad944522a53757454627081b76e11d6031f35776c14"
+    }
+  },
+  "feedback": {
+    "count": 26,
+    "status_counts": [
+      [
+        "open",
+        26
+      ]
+    ],
+    "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13",
+    "unchanged": true
+  },
+  "scope": "Read-only current production/feedback preflight; no publication"
+}

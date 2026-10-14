@@ -123,7 +123,7 @@ func ImportWithTaxonomy(path string, taxonomy *Taxonomy) (Draft, Manifest, error
 		if !ok {
 			return fail("invalid_json", where)
 		}
-		if e = allowed(q, "id type difficulty editorial_tag_ids context_tag_ids text options correct_answer correct_multi explanation media", where); e != nil {
+		if e = allowed(q, "id type difficulty editorial_tag_ids context_tag_ids text options option_ids revision_number correct_answer correct_multi explanation media", where); e != nil {
 			return Draft{}, Manifest{}, e
 		}
 		qSource, ok := nonblank(q["id"])
@@ -152,6 +152,31 @@ func ImportWithTaxonomy(path string, taxonomy *Taxonomy) (Draft, Manifest, error
 		rawOptions, ok := q["options"].([]any)
 		if !ok || len(rawOptions) < 4 || len(rawOptions) > 6 {
 			return fail("option_count", where)
+		}
+		var explicitOptionIDs []string
+		if raw, exists := q["option_ids"]; exists {
+			values, ok := raw.([]any)
+			if !ok || len(values) != len(rawOptions) {
+				return fail("option_ids", where+"/option_ids")
+			}
+			explicitOptionIDs = make([]string, len(values))
+			seenOptionIDs := map[string]bool{}
+			for i, value := range values {
+				id, ok := nonblank(value)
+				if !ok || !idPattern.MatchString(id) || seenOptionIDs[id] {
+					return fail("option_ids", where+"/option_ids")
+				}
+				seenOptionIDs[id] = true
+				explicitOptionIDs[i] = id
+			}
+		}
+		revisionNumber := 1
+		if raw, exists := q["revision_number"]; exists {
+			number, ok := integer(raw)
+			if !ok || number <= 0 {
+				return fail("revision_number", where+"/revision_number")
+			}
+			revisionNumber = number
 		}
 		answer, ok := integer(q["correct_answer"])
 		if !ok || answer < 0 || answer >= len(rawOptions) {
@@ -198,13 +223,15 @@ func ImportWithTaxonomy(path string, taxonomy *Taxonomy) (Draft, Manifest, error
 				return fail("option_blank", where)
 			}
 			oid := fmt.Sprintf("%s-opt-%d", qid, i+1)
-			if !idPattern.MatchString(oid) {
+			if explicitOptionIDs != nil {
+				oid = explicitOptionIDs[i]
+			} else if !idPattern.MatchString(oid) {
 				oid = fmt.Sprintf("opt-%d", i+1)
 			}
 			options[i] = Option{OptionID: oid, Text: text}
 			mapping.Options[i] = OptionMap{SourceIndex: i, CanonicalID: oid}
 		}
-		question := Question{QuestionID: qid, Revision: Revision{Number: 1}, Stem: stem, Options: options, Difficulty: difficulty, DifficultyLevel: difficultyLevel, EditorialTagIDs: editorialTagIDs, ContextTagIDs: contextTagIDs, Source: map[string]string{"uri": sourcePath}, AnswerKind: "single_choice", Grading: Grading{CorrectOptionID: options[answer].OptionID}}
+		question := Question{QuestionID: qid, Revision: Revision{Number: revisionNumber}, Stem: stem, Options: options, Difficulty: difficulty, DifficultyLevel: difficultyLevel, EditorialTagIDs: editorialTagIDs, ContextTagIDs: contextTagIDs, Source: map[string]string{"uri": sourcePath}, AnswerKind: "single_choice", Grading: Grading{CorrectOptionID: options[answer].OptionID}}
 		if raw, exists := q["media"]; exists {
 			entries, ok := raw.([]any)
 			if !ok {

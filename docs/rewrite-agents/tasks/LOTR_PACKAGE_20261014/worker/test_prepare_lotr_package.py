@@ -1,0 +1,200 @@
+"""Pure regression guards for the immutable LOTR package producer."""
+from __future__ import annotations
+
+import copy
+import json
+import tarfile
+import tempfile
+import unittest
+from pathlib import Path
+
+import prepare_lotr_package as p
+
+
+ROOT = Path(__file__).resolve().parents[5]
+BASELINE = ROOT / ".run/screen_song_package_20261014/package-v1/quiz-2026.10.14-screen-song-6866608"
+PILOT = ROOT / "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014"
+
+
+def load(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+class FrozenContentGuards(unittest.TestCase):
+    def actual_runtime_inputs(self):
+        return (
+            load(PILOT / "integration-runtime-bundle.json"),
+            load(PILOT / "integration-public-baseline.json"),
+            load(ROOT / "study/question_articles/snapshots/lotr-return-king-bts-100.json"),
+        )
+
+    def test_actual_two_question_repair_preserves_other_raw_and_public_questions(self):
+        runtime, public, snapshot = self.actual_runtime_inputs()
+        old_raw = load(BASELINE / p.RAW_PATH)
+        new_raw = load(ROOT / p.RAW_PATH)
+        p.verify_raw_repair(old_raw, new_raw, runtime)
+        p.verify_runtime_projection(runtime, public, snapshot)
+
+    def test_raw_non_target_mutation_is_rejected(self):
+        runtime, _, _ = self.actual_runtime_inputs()
+        old_raw = load(BASELINE / p.RAW_PATH)
+        new_raw = copy.deepcopy(load(ROOT / p.RAW_PATH))
+        new_raw["questions"][0]["text"] += " synthetic mutation"
+        with self.assertRaisesRegex(RuntimeError, "98 non-target raw"):
+            p.verify_raw_repair(old_raw, new_raw, runtime)
+
+    def test_local_canonical_bundle_preserves_98_questions_keys_and_revisions(self):
+        old_bundle = load(BASELINE / p.TARGET_CONTENT_ROOT / "bundle.json")
+        new_bundle = load(ROOT / p.TARGET_CONTENT_ROOT / "bundle.json")
+        p.verify_local_canonical_repair(old_bundle, new_bundle)
+        mutated = copy.deepcopy(new_bundle)
+        mutated["private_grading"]["lotr-rk-1"]["correct_option_id"] = "lotr-rk-1-opt-99"
+        with self.assertRaisesRegex(RuntimeError, "98 non-target local private keys"):
+            p.verify_local_canonical_repair(old_bundle, mutated)
+
+    def test_retained_option_and_private_keys_are_enforced(self):
+        runtime, public, snapshot = self.actual_runtime_inputs()
+        wrong_option = copy.deepcopy(runtime)
+        wrong_option["quiz"]["questions"][94]["options"][3]["option_id"] = "lotr-rk-95-opt-4"
+        with self.assertRaisesRegex(RuntimeError, "retained option identifiers"):
+            p.verify_runtime_projection(wrong_option, public, snapshot)
+        wrong_key = copy.deepcopy(runtime)
+        wrong_key["private_grading"]["lotr-rk-93"]["correct_option_id"] = "lotr-rk-93-opt-1"
+        with self.assertRaisesRegex(RuntimeError, "retained correct options"):
+            p.verify_runtime_projection(wrong_key, public, snapshot)
+
+    def test_reader_and_catalog_preserve_baseline_and_add_exact_two_bindings(self):
+        old_catalog = p.as_rows(load(BASELINE / "web/assets/assets/catalog.json"), "baseline catalog")
+        old_reader = p.as_rows(load(BASELINE / "web/assets/assets/study/question-articles.json"), "baseline Reader")
+        catalog = p.as_rows(load(ROOT / "next/apps/quiz_app/assets/catalog.json"), "target catalog")
+        reader = p.as_rows(load(ROOT / "next/apps/quiz_app/assets/study/question-articles.json"), "target Reader")
+        counts = p.verify_asset_rows(catalog, reader, old_catalog, old_reader)
+        self.assertEqual(counts, {"packs": 135, "questions": 4064, "reader_articles": 266})
+
+    def test_changed_old_reader_object_is_rejected(self):
+        old_catalog = p.as_rows(load(BASELINE / "web/assets/assets/catalog.json"), "baseline catalog")
+        old_reader = p.as_rows(load(BASELINE / "web/assets/assets/study/question-articles.json"), "baseline Reader")
+        catalog = p.as_rows(load(ROOT / "next/apps/quiz_app/assets/catalog.json"), "target catalog")
+        reader = copy.deepcopy(p.as_rows(load(ROOT / "next/apps/quiz_app/assets/study/question-articles.json"), "target Reader"))
+        reader[0]["title_ru"] += " synthetic mutation"
+        with self.assertRaisesRegex(RuntimeError, "prior 264 Reader"):
+            p.verify_asset_rows(catalog, reader, old_catalog, old_reader)
+
+
+class RuntimeAndReceiptGuards(unittest.TestCase):
+    def test_exact_runtime_cache_append_and_staging_revision_counts(self):
+        baseline_cache = load(BASELINE / "runtime-bundles.json")
+        runtime = load(PILOT / "integration-runtime-bundle.json")
+        target_cache = p.append_only_cache(baseline_cache, runtime)
+        self.assertEqual((len(baseline_cache), len(target_cache)), (12, 13))
+        expected, proof = p.expected_staging_revisions_from_bundles(target_cache, p.BUILD_ID)
+        self.assertEqual(sum(len(rows) for rows in expected.values()), 260)
+        self.assertEqual(len(proof), 260)
+
+    def test_existing_target_cache_entry_is_rejected(self):
+        baseline_cache = load(BASELINE / "runtime-bundles.json")
+        baseline_cache[p.QUIZ_ID] = {}
+        with self.assertRaisesRegex(RuntimeError, "twelve prior entries"):
+            p.append_only_cache(baseline_cache, {})
+
+    def test_frozen_question_map_computes_143_to_145_exact_bindings(self):
+        documents = []
+        for path in sorted((ROOT / "next/content").glob("*/bundle.json")):
+            documents.append(load(path))
+        for path in sorted((ROOT / "study/question_articles/snapshots").glob("*.json")):
+            documents.append(load(path))
+        revision_map = p.revision_map_from_documents(documents)
+        old_reader = p.as_rows(load(BASELINE / "web/assets/assets/study/question-articles.json"), "baseline Reader")
+        reader = p.as_rows(load(ROOT / "next/apps/quiz_app/assets/study/question-articles.json"), "target Reader")
+        self.assertEqual(p.count_exact_article_bindings(old_reader, revision_map), 143)
+        self.assertEqual(p.count_exact_article_bindings(reader, revision_map), 145)
+
+
+class PreparedScriptGuards(unittest.TestCase):
+    def test_cutover_patch_keeps_prepare_only_infrastructure_guards(self):
+        baseline = (BASELINE / "cutover.sh").read_text(encoding="utf-8")
+        patched = p.patch_cutover_text(baseline, "3" * 64)
+        self.assertIn(f"quiz_build={p.BUILD_ID}", patched)
+        self.assertIn(p.TARGET_SOURCE, patched)
+        self.assertIn(p.BASELINE_IMAGE, patched)
+        self.assertIn("meta['packs']==135 and meta['questions']==4064 and meta['question_articles']==266", patched)
+        self.assertIn("[[ \"$quiz_mode\" = prepare ]]", patched)
+        self.assertNotIn("helm upgrade", patched)
+        self.assertEqual(patched.count("exit 0\n"), 1)
+        for pin in (p.API_SHA256, p.NGINX_SHA256, p.PVC_UID):
+            self.assertIn(pin, patched)
+
+    def test_rehearsal_patch_adds_existing_pack_without_dropping_db_or_rollback_guards(self):
+        baseline = (BASELINE / "rehearse.py").read_text(encoding="utf-8")
+        patched = p.patch_rehearsal_text(baseline)
+        compile(patched, "rehearse.py", "exec")
+        self.assertEqual(patched.count("'lotr-return-king-bts-100'"), 4)
+        self.assertIn("assert graded==315 and finished==14", patched)
+        self.assertIn("==14\n assert req('/v1/history/'", patched)
+        self.assertIn("'canonical_packs':13,'canonical_questions':260", patched)
+        for guard in ("old_rows[t] <= current", "pragma integrity_check", "old_api_rollback", "after[3]-before[3]==135"):
+            self.assertIn(guard, patched)
+
+    def test_values_patch_uses_verified_screen_song_image_and_target_build(self):
+        baseline = (BASELINE / "release-values.yaml").read_text(encoding="utf-8")
+        self.assertEqual(
+            p.patch_values_text(baseline),
+            f"image: {p.BASELINE_IMAGE}\nbuildId: {p.BUILD_ID}\n\nfeedbackAdminSecret: quiz-feedback-admin\n",
+        )
+
+
+class BoundaryGuards(unittest.TestCase):
+    def test_archive_members_reject_traversal_duplicate_and_wrong_prefix(self):
+        safe = [tarfile.TarInfo(f"{p.BASELINE_BUILD}/api"), tarfile.TarInfo(f"{p.BASELINE_BUILD}/web/index.html")]
+        for member in safe:
+            member.type = tarfile.REGTYPE
+        p.validate_archive_members(safe, p.BASELINE_BUILD)
+        cases = [
+            safe + [safe[0]],
+            [tarfile.TarInfo(f"{p.BASELINE_BUILD}/../escape")],
+            [tarfile.TarInfo("other/api")],
+        ]
+        for members in cases:
+            for member in members:
+                member.type = tarfile.REGTYPE
+            with self.assertRaisesRegex(RuntimeError, "unsafe or unexpected archive member"):
+                p.validate_archive_members(members, p.BASELINE_BUILD)
+
+    def test_output_root_must_be_new(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            missing = root / "new-output"
+            p.require_new_output_root(missing)
+            root.joinpath("existing-empty").mkdir()
+            with self.assertRaisesRegex(RuntimeError, "must not already exist"):
+                p.require_new_output_root(root / "existing-empty")
+
+    def test_controller_review_requires_distinct_provider_and_exact_source_hashes(self):
+        expected = {
+            "prepare_lotr_package.py": "1" * 64,
+            "test_prepare_lotr_package.py": "2" * 64,
+            "README.md": "3" * 64,
+        }
+        review = {
+            "schema_version": "qm-lotr-package-controller-review/v1",
+            "actual_cli_exit": 0,
+            "actual_hub_state": "ACCEPTED",
+            "actual_reviews": {"task-review": {"verdict": "accept"}},
+            "author_provider": "openai",
+            "reviewer_provider": "claude",
+            "reviewed_worker_sha256": expected,
+            "scope": "prepare-only package producer source review; no execution or publication",
+        }
+        p.verify_controller_review(review, expected)
+        same_provider = copy.deepcopy(review)
+        same_provider["reviewer_provider"] = "openai"
+        with self.assertRaisesRegex(RuntimeError, "different provider"):
+            p.verify_controller_review(same_provider, expected)
+        wrong_hash = copy.deepcopy(review)
+        wrong_hash["reviewed_worker_sha256"]["README.md"] = "4" * 64
+        with self.assertRaisesRegex(RuntimeError, "source hashes"):
+            p.verify_controller_review(wrong_hash, expected)
+
+
+if __name__ == "__main__":
+    unittest.main()

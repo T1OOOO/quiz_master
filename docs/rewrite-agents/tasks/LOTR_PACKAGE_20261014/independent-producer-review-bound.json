@@ -1,0 +1,112 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1ee202578d11446693e236bba6871a95": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1ee202578d11446693e236bba6871a95",
+          "verdict": "accept",
+          "note": "Independent read-only review of worker/{prepare_lotr_package.py,test_prepare_lotr_package.py,README.md} plus root-producer-source-checks.json, actual-baseline-reader-bindings.json, actual-api-artifact.json. Did not execute anything or compute SHA-256 myself; relying on Root-supplied evidence.\n\nRoot-supplied bindings (worker_sha256 from root-producer-source-checks.json, utc 2026-10-14T07:51:02Z, unittest exit 0, 15/15 tests OK):\nprepare_lotr_package.py=85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6\ntest_prepare_lotr_package.py=1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b\nREADME.md=42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6\n\nVerified against the packet narrative: 135/4064/264->266 counts enforced by verify_asset_rows; raw/local repairs restricted to exactly questions 93/95 (verify_raw_repair, verify_local_canonical_repair fail on any other index); q93 retains opt-6 (Anduin) as correct, q95 retains 4 options with opt-5 (Alqualonde) as index3 and opt-2 (Mithlond) as correct - matches packet text exactly; LOCAL_REPAIRED dc3c.../a359... vs REPAIRED(runtime) 4c90.../36e5... divergence matches the stated /app-source-URI hashing difference; runtime cache append enforced 12->13 with byte-identical old entries (append_only_cache); 143->145 accepted bindings computed via count_exact_article_bindings against a frozen git revision map, not hardcoded; plus actual-baseline-reader-bindings.json's 145 total/143 matched (+2 new accepted LOTR refs) arithmetically reconciles to the packet's 147 total/145 matched/2 unchanged-study-refs claim. Archive/path safety (validate_archive_members blocks traversal, absolute paths, backslashes, duplicates, wrong prefix), output-root-must-be-new and extract-must-not-exist guards, and prepare-only guards on cutover.sh (single exit 0, no 'helm upgrade', required infra-pin substrings preserved) and rehearse.py (DB/rollback guard strings asserted present, byte-compiled) all check out. API bytes are never modified, only hash-pinned (API_SHA256 checked in verify_baseline_stage); consistent with actual-api-artifact.json confirming the frozen API is a Go ELF binary and that Python rehearsal is tooling, not the implementation - the script does not claim any staging-API/Reader semantic-comparison gate as passed; result.status='PREPARED_NOT_EXECUTED' and an explicit remaining_gates list names Root-owned copied-DB rehearsal/rollback, image/Helm/server/browser verification, and publication as still open. expected-staging-revisions.json projects /app->/opt and recomputes canonical hashes rather than reusing raw hashes, matching the given warning that normalized DTO comparison does not itself prove raw staging-API hashes match the compiled Reader.\n\nMinor nit, not blocking: in main(), result['counts']['staging_canonical_questions_before'] is a literal 160 (prepare_lotr_package.py line ~871) rather than a value computed in code. It is mathematically forced by other asserted invariants (len(target_cache)==13 with sum==260, and the LOTR bundle always contributing exactly 100 canonical rows via question_map's len==100 check, so baseline-only must be 260-100=160) and is informational metadata only - no fail() path depends on it - but it reads as exactly the 'untested constant' pattern the packet asked producers to avoid. Suggest Root ask for an explicit computed derivation (e.g. sum over the 12 baseline-only bundle entries) in a follow-up, not a reason to reject this submission.\n\nScope respected: no package/cutover/rehearsal/image/browser/publication execution attempted by me or, per evidence, by the producer. Verdict: accept."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Real pure checks and exact immutable final source hashes; source review by independent provider before Root package preparation. No stale Actor51 assumptions or bypassed generic guards; compute counts and bound exact runtime Reader revisions.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker"
+        ],
+        "assignee": "session-5700819f8e474af9ad3e6e1b194a954d",
+        "author": "session-e5d2b26c009149ac9c066ce946d226ee",
+        "body": "Implement the finite assignment in C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_PACKAGE_20261014/PACKAGE_PACKET_EN.md. Own worker/ only; no SSH/build/browser/package execution/Git/deploy/children. Reuse actual ScreenSong worker-resumed producer, preserve baseline52, frozen9194, runtime13 and old264/all135/98 invariants. Stop before independent review.",
+        "created_at": 1791962982.7047303,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1ee202578d11446693e236bba6871a95",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/LOTR_PACKAGE_20261014/worker/prepare_lotr_package.py",
+            "docs/rewrite-agents/tasks/LOTR_PACKAGE_20261014/worker/test_prepare_lotr_package.py",
+            "docs/rewrite-agents/tasks/LOTR_PACKAGE_20261014/worker/README.md"
+          ],
+          "evidence": [
+            {
+              "actual_exit": 0,
+              "command": "python -B -m unittest -v test_prepare_lotr_package.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker",
+              "result": "15 tests passed"
+            },
+            {
+              "actual_exit": 0,
+              "command": "python -B -c \"import ast,pathlib; ... ast.parse(...)\"",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker",
+              "result": "AST_OK"
+            },
+            {
+              "actual_exit": 0,
+              "command": "git diff --check -- docs/rewrite-agents/tasks/LOTR_PACKAGE_20261014/worker",
+              "cwd": "C:\\ap\\quiz_master",
+              "result": "no output"
+            },
+            {
+              "actual_exit": 0,
+              "command": "load_release_pins(existing root-validator-pins.json)",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker",
+              "result": "EXPECTED_FAIL_CLOSED: complete package release pins are required"
+            }
+          ],
+          "limits": [
+            "Producer main was not executed by this worker.",
+            "Root must obtain different-provider source review and create augmented package pins bound to these exact hashes.",
+            "Package, copied-DB rehearsal, rollback, image/Helm/server/browser gates, publication, and post-publication checks remain Root-owned."
+          ],
+          "sha256": {
+            "README.md": "42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6",
+            "prepare_lotr_package.py": "85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6",
+            "test_prepare_lotr_package.py": "1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b"
+          },
+          "status": "DONE",
+          "summary": "Prepare-only immutable LOTR producer and pure guards are source-frozen for independent review. No package or live operation was executed.",
+          "verified_contracts": [
+            "ScreenSong52 archive/source/image/API/nginx/PVC pins",
+            "135 packs / 4064 questions / 264-to-266 Reader objects",
+            "all 135 catalog rows and prior 264 Reader objects preserved",
+            "98 non-target raw, local canonical/private, and served public questions preserved",
+            "q93 opt6/Anduin and q95 opt2/Mithlond with retained opt5/Alqualonde",
+            "exact reviewed runtime bundle appended cache 12-to-13",
+            "staging revisions computed 160-to-260",
+            "exact accepted article bindings computed 143-to-145",
+            "prepare-only cutover and copied-DB rehearsal/rollback guards retained"
+          ]
+        },
+        "root_task_id": "task-1ee202578d11446693e236bba6871a95",
+        "run_id": "run-2e2d7afc42314df58bc91a13b29d00bf",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-590b6fd2ceb3456c8209d0fc3d8c8657",
+        "title": "quiz_master-1wy: actual immutable LOTR prepare-only producer",
+        "version": 4,
+        "reviewer": "session-11f67d1247a045b3b163e0213ef3a66a",
+        "review_note": "Independent read-only review of worker/{prepare_lotr_package.py,test_prepare_lotr_package.py,README.md} plus root-producer-source-checks.json, actual-baseline-reader-bindings.json, actual-api-artifact.json. Did not execute anything or compute SHA-256 myself; relying on Root-supplied evidence.\n\nRoot-supplied bindings (worker_sha256 from root-producer-source-checks.json, utc 2026-10-14T07:51:02Z, unittest exit 0, 15/15 tests OK):\nprepare_lotr_package.py=85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6\ntest_prepare_lotr_package.py=1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b\nREADME.md=42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6\n\nVerified against the packet narrative: 135/4064/264->266 counts enforced by verify_asset_rows; raw/local repairs restricted to exactly questions 93/95 (verify_raw_repair, verify_local_canonical_repair fail on any other index); q93 retains opt-6 (Anduin) as correct, q95 retains 4 options with opt-5 (Alqualonde) as index3 and opt-2 (Mithlond) as correct - matches packet text exactly; LOCAL_REPAIRED dc3c.../a359... vs REPAIRED(runtime) 4c90.../36e5... divergence matches the stated /app-source-URI hashing difference; runtime cache append enforced 12->13 with byte-identical old entries (append_only_cache); 143->145 accepted bindings computed via count_exact_article_bindings against a frozen git revision map, not hardcoded; plus actual-baseline-reader-bindings.json's 145 total/143 matched (+2 new accepted LOTR refs) arithmetically reconciles to the packet's 147 total/145 matched/2 unchanged-study-refs claim. Archive/path safety (validate_archive_members blocks traversal, absolute paths, backslashes, duplicates, wrong prefix), output-root-must-be-new and extract-must-not-exist guards, and prepare-only guards on cutover.sh (single exit 0, no 'helm upgrade', required infra-pin substrings preserved) and rehearse.py (DB/rollback guard strings asserted present, byte-compiled) all check out. API bytes are never modified, only hash-pinned (API_SHA256 checked in verify_baseline_stage); consistent with actual-api-artifact.json confirming the frozen API is a Go ELF binary and that Python rehearsal is tooling, not the implementation - the script does not claim any staging-API/Reader semantic-comparison gate as passed; result.status='PREPARED_NOT_EXECUTED' and an explicit remaining_gates list names Root-owned copied-DB rehearsal/rollback, image/Helm/server/browser verification, and publication as still open. expected-staging-revisions.json projects /app->/opt and recomputes canonical hashes rather than reusing raw hashes, matching the given warning that normalized DTO comparison does not itself prove raw staging-API hashes match the compiled Reader.\n\nMinor nit, not blocking: in main(), result['counts']['staging_canonical_questions_before'] is a literal 160 (prepare_lotr_package.py line ~871) rather than a value computed in code. It is mathematically forced by other asserted invariants (len(target_cache)==13 with sum==260, and the LOTR bundle always contributing exactly 100 canonical rows via question_map's len==100 check, so baseline-only must be 260-100=160) and is informational metadata only - no fail() path depends on it - but it reads as exactly the 'untested constant' pattern the packet asked producers to avoid. Suggest Root ask for an explicit computed derivation (e.g. sum over the 12 baseline-only bundle entries) in a follow-up, not a reason to reject this submission.\n\nScope respected: no package/cutover/rehearsal/image/browser/publication execution attempted by me or, per evidence, by the producer. Verdict: accept."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted: **accept**, with one minor non-blocking nit flagged for a follow-up.\n\nSummary of findings:\n- Cross-checked the prepare-only producer's guards against the packet's exact claims (135/4064/264\u2192266 counts, cache 12\u219213, repairs restricted to questions 93/95, retained option/grading identities, 143\u2192145\u2192147 reader-binding arithmetic, path-safety, prepare-only cutover/rehearsal invariants) \u2014 all verified consistent in code.\n- Confirmed the script never modifies the frozen Go-ELF API binary (only hash-pins it) and never claims the staging-API/Reader semantic-comparison gate has passed; output explicitly marks status `PREPARED_NOT_EXECUTED` with remaining Root-owned gates listed.\n- Flagged one nit: `staging_canonical_questions_before = 160` is a hardcoded literal rather than code-computed, though it's mathematically forced by other asserted invariants \u2014 informational only, not gating logic, so not blocking.\n- Included the three Root-supplied worker SHA-256 hashes verbatim in the Hub note as requested; did not execute anything or compute hashes myself.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "8671af61421595a6838340acb9bd254f97e3cbf464c9c1f3f87a8730e020351c",
+  "scope": "prepare-only source review; no execution or publication; actual callback and Root-supplied byte bindings, not independently recomputed hashes",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "prepare_lotr_package.py": "85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6",
+    "test_prepare_lotr_package.py": "1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b",
+    "README.md": "42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6"
+  }
+}

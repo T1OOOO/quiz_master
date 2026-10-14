@@ -1,0 +1,129 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e080b3c3bd4c4301b0a57b3632490e4d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e080b3c3bd4c4301b0a57b3632490e4d",
+          "verdict": "accept",
+          "note": "Supplied bindings: import.go 53a2bda07c3fccf0342578d0884a27b7995832f4dfd9a57fd856ef62cf8aa1ec; import_identity_test.go 560f9652d87ca75c579c21a973dfea0dc3ca498d1e5e2c09da5db3136d7fe013.\n\nCorrectness: option_ids/revision_number added to the per-question allowed-key whitelist (import.go:126); loader/overlay untouched, matching scope.\n- Absent-field defaults verified against code: revisionNumber stays 1 (173-180); option IDs stay positional %s-opt-%d with existing long-ID fallback to opt-%d (225-230), gated strictly behind explicitOptionIDs!=nil.\n- option_ids validation (156-172) rejects null/wrong-type ([]any assertion fails), wrong length, and per-element dup/blank/illegal IDs via nonblank+idPattern+seen-set — covers all 6 malformed cases.\n- revision_number validation (174-180, via existing integer() at 51-61) rejects null/wrong-type (json.Number assertion fails), zero/negative (number<=0), fractional and int64-overflow (both fail Int64() parse) — covers all 6 cases.\n- Grading.CorrectOptionID = options[answer].OptionID (234, unchanged) now naturally resolves through the explicit ID; OptionMap keeps SourceIndex:i, CanonicalID:oid (232) with the same resolved oid.\n- Verified against the actual fixture quizzes/Cinema/LOTR/lotr_return_king_bts_100.json: q95 has only 4 raw options, correct_answer=1, so default 4th-option ID is lotr-rk-95-opt-4; the test's explicit override to opt-1/2/3/5 is a real identity change (not a no-op), matching the packet's described opt-5 retention.\n- Only these two fields were added to the whitelist; no other contract/grading/source field changed, consistent with the 98-unchanged-question claim.\n\nCompat/security: Error still carries only code+path. Source URI remains filepath.ToSlash(filepath.Clean(path)), unchanged. No new deps, no loader changes.\n\nTests: import_identity_test.go has a real RED-style identity/compat test (temp copy of the real fixture; asserts absent defaults, explicit overrides, and 98 unchanged non-target questions+manifest mappings) plus a 12-case table-driven malformed-value rejection test. Assertions trace correctly against the implementation above.\n\nReview limits (explicit): Read-only access, no shell/grep/dir-listing tool — did not run go test/gofmt/quizctl myself; worker's reported RED(unknown_field)/GREEN/full-package exit codes are relayed from the task packet, not independently reproduced. Could not find REPORT.md or verification.json under docs/rewrite-agents/tasks/LOTR_IDENTITY_API_20261014/worker/ (paths did not exist). Could not locate the sibling test file defining legacyBase/importText (no dir-listing/grep tool available); verified the malformed-value assertions directly against import.go's validation branches instead, which is sufficient since each branch is self-contained. This covers only the local importer unit change, not image/API/Reader publication; raw corpus remains unintegrated per the packet.\n\nVerdict: accept — minimal, scoped to owned files, defaults preserved exactly, non-trivial fixture-based test."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual failing regression before the fix and passing meaningful tests afterward; explicit q95 opt5/gradeopt2 and revision2;98 non-target questions unchanged at the same source URI. Stop with exact source hashes for independent provider review. Passing import tests do not approve runtime or publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\server\\internal\\content",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_IDENTITY_API_20261014\\worker"
+        ],
+        "assignee": "session-01d4329ba62e4186aaec1d8ffd804ad8",
+        "author": "session-e5d2b26c009149ac9c066ce946d226ee",
+        "body": "Read and execute LOTR_IDENTITY_API_20261014/BACKEND_PACKET_EN.md. Own only content/import.go, import_test.go or a new import_identity_test.go, and worker/ proofs. Add optional raw option_ids and revision_number with unchanged defaults, meaningful red/green, malformed metadata guards and98-question preservation. No corpus, collection, API config, CI, Beads, Git, remote, binary build, package or deployment changes.",
+        "created_at": 1791965348.9077911,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e080b3c3bd4c4301b0a57b3632490e4d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "next/server/internal/content/import.go",
+            "next/server/internal/content/import_identity_test.go"
+          ],
+          "evidence": [
+            {
+              "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 1,
+              "kind": "RED",
+              "result": "Expected failure: valid actual-LOTR metadata and all malformed cases returned unknown_field before importer support."
+            },
+            {
+              "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 0,
+              "kind": "GREEN",
+              "result": "ok; real 100-question fixture, target identity/revisions, 98 unchanged objects/mappings, defaults, and malformed guards."
+            },
+            {
+              "command": "go test -p=1 ./internal/content -count=1",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 0,
+              "kind": "package_test",
+              "result": "ok (2.024s package time)"
+            },
+            {
+              "command": "go test -p=1 ./cmd/quizctl -count=1",
+              "cwd": "C:/ap/quiz_master/next/server",
+              "exit_code": 0,
+              "kind": "quizctl_test",
+              "result": "ok (15.948s package time)"
+            },
+            {
+              "command": "gofmt owned files; git diff --check -- next/server/internal/content/import.go next/server/internal/content/import_identity_test.go",
+              "cwd": "C:/ap/quiz_master",
+              "exit_code": 0,
+              "kind": "format_diff",
+              "result": "No whitespace errors; Git emitted only the configured LF-to-CRLF advisory for import.go."
+            }
+          ],
+          "limitations": [
+            "No actual corpus, collection, configuration, controller, Beads, Git index/commit/push, CI, Linux build, package, browser, Docker, SSH, or deployment change.",
+            "Source URI remains filepath.Clean(path); this change does not resolve staging-path hash differences.",
+            "Root must add the two raw metadata fields to the corpus, rebuild canonical metadata/API component, and run the unmodified candidate-image API/Reader runtime gate.",
+            "Passing importer and quizctl tests are not publication approval; independent Claude review remains required."
+          ],
+          "requirements": {
+            "lotr_q95_correct_option_id": "lotr-rk-95-opt-2",
+            "lotr_q95_option_ids": [
+              "lotr-rk-95-opt-1",
+              "lotr-rk-95-opt-2",
+              "lotr-rk-95-opt-3",
+              "lotr-rk-95-opt-5"
+            ],
+            "lotr_target_revisions": {
+              "lotr-rk-93": 2,
+              "lotr-rk-95": 2
+            },
+            "malformed_guards": [
+              "option_ids null/wrong type/wrong length/duplicate/blank/illegal",
+              "revision_number null/wrong type/zero/negative/fractional/overflow"
+            ],
+            "non_target_same_path_comparison": 98
+          },
+          "runtime_identity": "codex/gpt-6.1-sol; host_hub session-01d4329ba62e4186aaec1d8ffd804ad8",
+          "sha256": {
+            "next/server/internal/content/import.go": "53A2BDA07C3FCCF0342578D0884A27B7995832F4DFD9A57FD856EF62CF8AA1EC",
+            "next/server/internal/content/import_identity_test.go": "560F9652D87CA75C579C21A973DFEA0DC3CA498D1E5E2C09DA5DB3136D7FE013"
+          },
+          "status": "DONE",
+          "summary": "Optional raw question option_ids and revision_number are imported strictly. Absent fields retain positional IDs, long-ID fallback, and revision 1. Explicit IDs drive Option, grading, and QuestionMap; explicit positive revisions drive Question.Revision.Number."
+        },
+        "root_task_id": "task-e080b3c3bd4c4301b0a57b3632490e4d",
+        "run_id": "run-acb1c2f25d2a4a96b7865ce6d7decaeb",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-590b6fd2ceb3456c8209d0fc3d8c8657",
+        "title": "quiz_master-kc8: optional stable raw option and revision metadata",
+        "version": 4,
+        "reviewer": "session-6f6f5c1311e149298dcee616373c8341",
+        "review_note": "Supplied bindings: import.go 53a2bda07c3fccf0342578d0884a27b7995832f4dfd9a57fd856ef62cf8aa1ec; import_identity_test.go 560f9652d87ca75c579c21a973dfea0dc3ca498d1e5e2c09da5db3136d7fe013.\n\nCorrectness: option_ids/revision_number added to the per-question allowed-key whitelist (import.go:126); loader/overlay untouched, matching scope.\n- Absent-field defaults verified against code: revisionNumber stays 1 (173-180); option IDs stay positional %s-opt-%d with existing long-ID fallback to opt-%d (225-230), gated strictly behind explicitOptionIDs!=nil.\n- option_ids validation (156-172) rejects null/wrong-type ([]any assertion fails), wrong length, and per-element dup/blank/illegal IDs via nonblank+idPattern+seen-set — covers all 6 malformed cases.\n- revision_number validation (174-180, via existing integer() at 51-61) rejects null/wrong-type (json.Number assertion fails), zero/negative (number<=0), fractional and int64-overflow (both fail Int64() parse) — covers all 6 cases.\n- Grading.CorrectOptionID = options[answer].OptionID (234, unchanged) now naturally resolves through the explicit ID; OptionMap keeps SourceIndex:i, CanonicalID:oid (232) with the same resolved oid.\n- Verified against the actual fixture quizzes/Cinema/LOTR/lotr_return_king_bts_100.json: q95 has only 4 raw options, correct_answer=1, so default 4th-option ID is lotr-rk-95-opt-4; the test's explicit override to opt-1/2/3/5 is a real identity change (not a no-op), matching the packet's described opt-5 retention.\n- Only these two fields were added to the whitelist; no other contract/grading/source field changed, consistent with the 98-unchanged-question claim.\n\nCompat/security: Error still carries only code+path. Source URI remains filepath.ToSlash(filepath.Clean(path)), unchanged. No new deps, no loader changes.\n\nTests: import_identity_test.go has a real RED-style identity/compat test (temp copy of the real fixture; asserts absent defaults, explicit overrides, and 98 unchanged non-target questions+manifest mappings) plus a 12-case table-driven malformed-value rejection test. Assertions trace correctly against the implementation above.\n\nReview limits (explicit): Read-only access, no shell/grep/dir-listing tool — did not run go test/gofmt/quizctl myself; worker's reported RED(unknown_field)/GREEN/full-package exit codes are relayed from the task packet, not independently reproduced. Could not find REPORT.md or verification.json under docs/rewrite-agents/tasks/LOTR_IDENTITY_API_20261014/worker/ (paths did not exist). Could not locate the sibling test file defining legacyBase/importText (no dir-listing/grep tool available); verified the malformed-value assertions directly against import.go's validation branches instead, which is sufficient since each branch is self-contained. This covers only the local importer unit change, not image/API/Reader publication; raw corpus remains unintegrated per the packet.\n\nVerdict: accept — minimal, scoped to owned files, defaults preserved exactly, non-trivial fixture-based test."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and accepted on `task-e080b3c3bd4c4301b0a57b3632490e4d`.\n\n**Verdict: accept**\n\nKey findings:\n- `import.go` correctly whitelists `option_ids`/`revision_number`, preserves absent-field defaults exactly (revision 1, positional option IDs with the existing long-ID fallback), and rejects every malformed-value case (null, wrong type, wrong length, duplicate/blank/illegal IDs, zero/negative/fractional/overflow revisions) via existing `idPattern`/`integer()` helpers.\n- Verified against the real fixture (`quizzes/Cinema/LOTR/lotr_return_king_bts_100.json`): q95 genuinely has 4 options with `correct_answer=1`, so the test's explicit override to opt-1/2/3/5 is a real identity change, not a no-op — matches the packet's described opt-5 retention and `CorrectOptionID`/`QuestionMap` resolve correctly through it.\n- Scope stayed within `import.go` + `import_identity_test.go`; no loader/corpus/API changes.\n\nReview limits (explicitly flagged in the hub note too): I had read-only access with no shell, grep, or directory-listing tool, so I could not run `go test`/`gofmt`/`quizctl` myself — the worker's RED/GREEN/package exit codes are relayed from the task packet, not independently reproduced. `REPORT.md`/`verification.json` did not exist under the worker directory. I also couldn't locate the sibling test file defining `legacyBase`/`importText` without a directory-listing tool, so I verified the malformed-value assertions directly against `import.go`'s validation branches instead. This review covers only the local importer unit-level change, not image/API/Reader publication, and the raw corpus remains unintegrated.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-e080b3c3bd4c4301b0a57b3632490e4d",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "193f5477fd7374c778aa28966389706bb3ada53d234ba64315d8d8f8b9be3df0",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-14T07:51:02.898415+00:00",
+  "worker_sha256": {
+    "prepare_lotr_package.py": "85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6",
+    "test_prepare_lotr_package.py": "1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b",
+    "README.md": "42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6"
+  },
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_prepare_lotr_package.py"
+  ],
+  "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\worker",
+  "actual_exit": 0,
+  "stdout": "",
+  "stderr": "test_archive_members_reject_traversal_duplicate_and_wrong_prefix (test_prepare_lotr_package.BoundaryGuards.test_archive_members_reject_traversal_duplicate_and_wrong_prefix) ... ok\ntest_controller_review_requires_distinct_provider_and_exact_source_hashes (test_prepare_lotr_package.BoundaryGuards.test_controller_review_requires_distinct_provider_and_exact_source_hashes) ... ok\ntest_output_root_must_be_new (test_prepare_lotr_package.BoundaryGuards.test_output_root_must_be_new) ... ok\ntest_actual_two_question_repair_preserves_other_raw_and_public_questions (test_prepare_lotr_package.FrozenContentGuards.test_actual_two_question_repair_preserves_other_raw_and_public_questions) ... ok\ntest_changed_old_reader_object_is_rejected (test_prepare_lotr_package.FrozenContentGuards.test_changed_old_reader_object_is_rejected) ... ok\ntest_local_canonical_bundle_preserves_98_questions_keys_and_revisions (test_prepare_lotr_package.FrozenContentGuards.test_local_canonical_bundle_preserves_98_questions_keys_and_revisions) ... ok\ntest_raw_non_target_mutation_is_rejected (test_prepare_lotr_package.FrozenContentGuards.test_raw_non_target_mutation_is_rejected) ... ok\ntest_reader_and_catalog_preserve_baseline_and_add_exact_two_bindings (test_prepare_lotr_package.FrozenContentGuards.test_reader_and_catalog_preserve_baseline_and_add_exact_two_bindings) ... ok\ntest_retained_option_and_private_keys_are_enforced (test_prepare_lotr_package.FrozenContentGuards.test_retained_option_and_private_keys_are_enforced) ... ok\ntest_cutover_patch_keeps_prepare_only_infrastructure_guards (test_prepare_lotr_package.PreparedScriptGuards.test_cutover_patch_keeps_prepare_only_infrastructure_guards) ... ok\ntest_rehearsal_patch_adds_existing_pack_without_dropping_db_or_rollback_guards (test_prepare_lotr_package.PreparedScriptGuards.test_rehearsal_patch_adds_existing_pack_without_dropping_db_or_rollback_guards) ... ok\ntest_values_patch_uses_verified_screen_song_image_and_target_build (test_prepare_lotr_package.PreparedScriptGuards.test_values_patch_uses_verified_screen_song_image_and_target_build) ... ok\ntest_exact_runtime_cache_append_and_staging_revision_counts (test_prepare_lotr_package.RuntimeAndReceiptGuards.test_exact_runtime_cache_append_and_staging_revision_counts) ... ok\ntest_existing_target_cache_entry_is_rejected (test_prepare_lotr_package.RuntimeAndReceiptGuards.test_existing_target_cache_entry_is_rejected) ... ok\ntest_frozen_question_map_computes_143_to_145_exact_bindings (test_prepare_lotr_package.RuntimeAndReceiptGuards.test_frozen_question_map_computes_143_to_145_exact_bindings) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.137s\n\nOK\n",
+  "scope": "Actual source/pure guards only; producer not executed, no package/live operations"
+}

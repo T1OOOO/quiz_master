@@ -1,0 +1,86 @@
+{
+  "schema_version": "quiz-master-worker-verification/v1",
+  "task_id": "task-e080b3c3bd4c4301b0a57b3632490e4d",
+  "status": "DONE",
+  "runtime_identity": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-01d4329ba62e4186aaec1d8ffd804ad8"
+  },
+  "changed_files": [
+    "next/server/internal/content/import.go",
+    "next/server/internal/content/import_identity_test.go"
+  ],
+  "requirements": {
+    "lotr_q95_option_ids": [
+      "lotr-rk-95-opt-1",
+      "lotr-rk-95-opt-2",
+      "lotr-rk-95-opt-3",
+      "lotr-rk-95-opt-5"
+    ],
+    "lotr_q95_correct_option_id": "lotr-rk-95-opt-2",
+    "lotr_target_revisions": {
+      "lotr-rk-93": 2,
+      "lotr-rk-95": 2
+    },
+    "non_target_same_source_path_question_and_manifest_comparisons": 98,
+    "absent_fields_preserve_legacy_defaults": true,
+    "malformed_option_ids_rejected": [
+      "null",
+      "wrong_type",
+      "wrong_length",
+      "duplicate",
+      "blank",
+      "illegal"
+    ],
+    "malformed_revision_numbers_rejected": [
+      "null",
+      "wrong_type",
+      "zero",
+      "negative",
+      "fractional",
+      "overflow"
+    ]
+  },
+  "commands": [
+    {
+      "phase": "RED",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+      "exit_code": 1,
+      "expected_failure": true,
+      "output": "--- FAIL: TestImportExplicitQuestionIdentityMetadata (0.06s)\n    import_identity_test.go:70: unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadata2121847304\\001\\lotr_return_king_bts_100.json#/questions/92\n--- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues (0.12s)\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_IDs_null (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2614820522\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_IDs_wrong_type (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2593426216\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_IDs_wrong_length (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues850627694\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_IDs_duplicate (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues253785775\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_ID_blank (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues3446716139\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/option_ID_illegal (0.01s)\n        import_identity_test.go:140: want option_ids, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues256213229\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_null (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues472303196\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_wrong_type (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2240650581\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_zero (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2607325588\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_negative (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues3084328146\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_fractional (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2375902219\\001\\legacy.json#/questions/0\n    --- FAIL: TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues/revision_overflow (0.01s)\n        import_identity_test.go:140: want revision_number, got unknown_field: C:\\Users\\ALEXEY~1\\AppData\\Local\\Temp\\TestImportExplicitQuestionIdentityMetadataRejectsMalformedValues2269519424\\001\\legacy.json#/questions/0\nFAIL\nFAIL\tquiz_master/next/server/internal/content\t1.065s\nFAIL"
+    },
+    {
+      "phase": "GREEN",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "go test -p=1 ./internal/content -run '^TestImportExplicitQuestionIdentityMetadata' -count=1",
+      "exit_code": 0,
+      "output": "ok  \tquiz_master/next/server/internal/content\t0.944s"
+    },
+    {
+      "phase": "FULL_CONTENT",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "go test -p=1 ./internal/content -count=1",
+      "exit_code": 0,
+      "output": "ok  \tquiz_master/next/server/internal/content\t2.024s"
+    },
+    {
+      "phase": "QUIZCTL",
+      "cwd": "C:/ap/quiz_master/next/server",
+      "command": "go test -p=1 ./cmd/quizctl -count=1",
+      "exit_code": 0,
+      "output": "ok  \tquiz_master/next/server/cmd/quizctl\t15.948s"
+    }
+  ],
+  "sha256": {
+    "next/server/internal/content/import.go": "53A2BDA07C3FCCF0342578D0884A27B7995832F4DFD9A57FD856EF62CF8AA1EC",
+    "next/server/internal/content/import_identity_test.go": "560F9652D87CA75C579C21A973DFEA0DC3CA498D1E5E2C09DA5DB3136D7FE013"
+  },
+  "limitations": [
+    "Source URI remains filepath.Clean(path); staging-path hash differences are not fixed or claimed fixed.",
+    "No corpus, collection, configuration, controller, Beads, Git mutation, CI, Linux build, package, browser, Docker, SSH, or deployment change was made.",
+    "Root must integrate raw metadata, rebuild canonical metadata and the API component, and run the unmodified candidate-image API/Reader runtime gate.",
+    "Passing importer tests are not publication approval; independent Claude review remains required."
+  ]
+}

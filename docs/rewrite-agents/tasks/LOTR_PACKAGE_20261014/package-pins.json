@@ -1,0 +1,70 @@
+{
+  "schema_version": "qm-lotr-release-pins/v1",
+  "frozen_commit": "9194f61face75d03862003942ef55fae34aeec72",
+  "build_id": "quiz-2026.10.14-lotr-rk-repair-9194f61",
+  "baseline_archive_sha256": "64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df",
+  "baseline_image": "docker.io/library/quiz-master@sha256:a97cf777b2015c595fd1307017246a2806cce597e0233da75e496a433761e074",
+  "api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "source_assets": {
+    "study/question_articles/reviews/lotr-return-king-repair-20261014-review.json": "80ac628e0c3dba07d01e5adcd7bc9d027a843524fc0b5f27106afd047e819c3c",
+    "next/apps/quiz_app/assets/study/question-articles.json": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419",
+    "next/apps/quiz_app/test/question_articles_test.dart": "9003a957dd798139c598d024ecd650134cfb6ee4cb8a4d20d95cfe192389a332",
+    "next/apps/quiz_app/assets/catalog.json": "43b90ee84800cc13f23eec9d43baa05cec28a74bd31c6d3ef6a1a9d335b17a41",
+    "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "41d17284e4c947a3fa0b4dde2ee72cacdd7552789cb6c51951c96cf4b86e3877",
+    "next/content/lotr-return-king-bts-100/draft.json": "1a5934780727b92bdb524c37137f819be53e7e948be0bdb5bba44c8f346741d7",
+    "next/content/lotr-return-king-bts-100/manifest.json": "d563a5bb7b01f6a0337d2742c165b0510db0a15b4f457b8da237f770106e65b1",
+    "next/content/lotr-return-king-bts-100/bundle.json": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2",
+    "study/question_articles/snapshots/lotr-return-king-bts-100.json": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38"
+  },
+  "runtime_bundle": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\integration-runtime-bundle.json",
+    "sha256": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38"
+  },
+  "public_baseline": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\integration-public-baseline.json",
+    "sha256": "42f96a2efa7257360fa0a054bb31acee46c7f63a850ac37fb8869687f0557856"
+  },
+  "reader_snapshot": {
+    "path": "C:\\ap\\quiz_master\\study\\question_articles\\snapshots\\lotr-return-king-bts-100.json",
+    "sha256": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38"
+  },
+  "build_evidence": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\actual-flutter-builds.json",
+    "sha256": "8eb56b6a809953a5cd3a292e824aa7e2b2c3ec7436a8384c4b5dca0ba2556e1a"
+  },
+  "source_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\independent-canonical-integration-review.json",
+    "sha256": "d80110dcee4b113e83a95eab537b39aadd77895dadba0a74e0b2ed8847067038"
+  },
+  "export_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\independent-reader-export-review.json",
+    "sha256": "65e44df7b7fea15d0f6d071b8fd0e464c795c8ea20d6d5bad6824ccbc046d4bc"
+  },
+  "browser_proof": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RELEASE_20261014\\local-browser\\browser-proof.json",
+    "sha256": "0adaf37ec84959d405824a4107101fdb03e9c97075138cf26fd299e3f1258d42"
+  },
+  "production_web": "C:\\ap\\quiz_master\\.run\\lotr_build_20261014\\production-web",
+  "qa_web": "C:\\ap\\quiz_master\\.run\\lotr_build_20261014\\qa-web",
+  "baseline_catalog": {
+    "path": "C:\\ap\\quiz_master\\.run\\lotr_browser_20261014\\baseline-catalog.json",
+    "sha256": "43b90ee84800cc13f23eec9d43baa05cec28a74bd31c6d3ef6a1a9d335b17a41"
+  },
+  "baseline_reader": {
+    "path": "C:\\ap\\quiz_master\\.run\\lotr_browser_20261014\\baseline-reader.json",
+    "sha256": "a58255548240b489873d8ad944522a53757454627081b76e11d6031f35776c14"
+  },
+  "repo": "C:\\ap\\quiz_master",
+  "scope": "Immutable local prepare inputs only. Runtime loader/image/Reader gate blocks publication until solved.",
+  "package_controller_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_PACKAGE_20261014\\independent-producer-review-bound.json",
+    "sha256": "f2e34819329b64c750039944b05699e509852c4662c2b39081b8b9e511c248c3"
+  },
+  "package_controller_source_sha256": {
+    "prepare_lotr_package.py": "85b1e3a0f497a0e32716a95a38aaa24f3b35e30d48c6292c78886ad4481de3b6",
+    "test_prepare_lotr_package.py": "1951895e0f43c933f75b54ebd57b8f962539ee7c9e9409443de6894e0193256b",
+    "README.md": "42bf6d3a4b509d30cdd7a3ec47aff3a97b80452b9faed291b3a18549d1a4ace6"
+  }
+}

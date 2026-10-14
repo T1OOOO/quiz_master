@@ -1,0 +1,18 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-p=1",
+    "./..."
+  ],
+  "cwd": "C:\\ap\\quiz_master\\next\\server",
+  "actual_exit": 0,
+  "stdout": "ok  \tquiz_master/next/server/cmd/api\t(cached)\nok  \tquiz_master/next/server/cmd/quizctl\t(cached)\nok  \tquiz_master/next/server/internal/attempts\t(cached)\nok  \tquiz_master/next/server/internal/config\t(cached)\nok  \tquiz_master/next/server/internal/content\t(cached)\nok  \tquiz_master/next/server/internal/httpapi\t(cached)\nok  \tquiz_master/next/server/internal/identity\t(cached)\nok  \tquiz_master/next/server/internal/migrate\t(cached)\nok  \tquiz_master/next/server/internal/reports\t(cached)\nok  \tquiz_master/next/server/internal/sqlite\t37.515s\nok  \tquiz_master/next/server/internal/store\t(cached)\n",
+  "stderr": "",
+  "source_sha256": {
+    "next/server/internal/sqlite/collection_test.go": "72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17",
+    "next/server/internal/content/import.go": "53a2bda07c3fccf0342578d0884a27b7995832f4dfd9a57fd856ef62cf8aa1ec",
+    "next/server/internal/content/import_identity_test.go": "560f9652d87ca75c579c21a973dfea0dc3ca498d1e5e2c09da5db3136d7fe013"
+  },
+  "scope": "Actual complete local Go suite, not Linux image/API/Reader or publication"
+}

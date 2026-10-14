@@ -1,0 +1,25 @@
+{
+  "scope": "Root actual all-pack SQLite integration fixture reconciliation only, not publication",
+  "task_id": "task-f944cdb7b25a4ca4b734d995d35322e3",
+  "current_catalog": {
+    "packs": 135,
+    "questions": 4064
+  },
+  "source_sha256": "72c7adab40cadd463beca379b8d7b303eb0bf65e0ed4c7a031e3c343a45caf17",
+  "actual_checks": [
+    {
+      "command": "go test -p=1 ./...",
+      "actual_exit": 1,
+      "phase": "RED broader suite",
+      "failure_output": "--- FAIL: TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart (6.99s)\n    collection_test.go:61: packs=135\nFAIL\nFAIL quiz_master/next/server/internal/sqlite 9.359s",
+      "limitation": "Other packages passed, including content and quizctl; this records the actual failing package excerpt, not full stdout."
+    },
+    {
+      "command": "go test -p=1 ./internal/sqlite -count=1",
+      "actual_exit": 0,
+      "phase": "GREEN after three expectation changes",
+      "stdout": "ok  \tquiz_master/next/server/internal/sqlite\t95.680s\n"
+    }
+  ],
+  "change": "Only hardcoded expectations131/4044/131 to135/4064/135; all grading/history/privacy/restart assertions remain."
+}
