@@ -1,0 +1,33 @@
+{
+  "status": "DRAFT_UNREVIEWED",
+  "task_id": "task-d4de68d0fd014aba8dfbf4718d66ea83",
+  "revision_note": {
+    "previous_articles_json_sha256": "59a900ac9f16405b7c8fb02a1ae56c377bf20d58d8cb9dd0b5e90cd37ec1e1b3",
+    "change": "Qualified the predominant Rear Window viewpoint after direct Yale Film Archive evidence; replaced the generic Registry index with the Yale PDF and removed the generic Library of Congress source from article 016.",
+    "independent_recheck_required": true
+  },
+  "runtime_bundle": {
+    "path": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/mixed-runtime-bundle.json",
+    "sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391",
+    "quiz_id": "pub-connections-20261014",
+    "revision_number": 1,
+    "revision_sha256": "ab6a3dce5395b2db2a78684c7ab8682f27ca16992dde8d19c326e694abc782f6"
+  },
+  "articles": [
+    {"id": "question:pub-connections-011", "word_count": 170, "source_link_count": 2, "runtime_ref": {"quiz_id": "pub-connections-20261014", "question_id": "pub-connections-011", "revision_sha256": "d7c001f99efe5b784e85f2577023973bd7d089e1441b32093e59c29cd60a2d8a"}},
+    {"id": "question:pub-connections-012", "word_count": 153, "source_link_count": 3, "runtime_ref": {"quiz_id": "pub-connections-20261014", "question_id": "pub-connections-012", "revision_sha256": "ac9b02a66246a4cf541382703812e2b69a24120cc236158c2419f8b74439a862"}},
+    {"id": "question:pub-connections-016", "word_count": 167, "source_link_count": 2, "runtime_ref": {"quiz_id": "pub-connections-20261014", "question_id": "pub-connections-016", "revision_sha256": "40464345526c4665cf7ef2b79adf9a19f3afc661a4bfcfd3ebe62232569befba"}}
+  ],
+  "source_access": {
+    "access_date": "2026-10-14",
+    "opened_directly": ["AFI Rear Window", "Yale Film Archive Rear Window PDF", "Yamaha Piano", "Yamaha piano history", "AFI Singin' in the Rain", "Academy Singin' in the Rain"],
+    "official_result_excerpt_only": ["Met Keyboard Instruments PDF"],
+    "limitations": "The Met PDF could not be fully opened because the reader reported a 23 MB size limit; its cited mechanics should be reopened by the independent reviewer before import."
+  },
+  "hashes": {
+    "articles_json_sha256": "203bde2937fe787a7f87a9d785295127041c3a2abfbe2f8e662f0da4f23ea3c7",
+    "sources_md_sha256": "6c5e67e4d8b1157c7ddbd9ff968b801c5e167dd24f150360caf56224b9667d77"
+  },
+  "checks": {"articles_json_parses": true, "word_count_method": "Unicode-letter token count over body_ru", "all_word_counts_within_150_190": true, "all_source_link_counts_within_2_3": true, "all_article_statuses_draft_unreviewed": true},
+  "limits": ["Independent source review is required before import or publication.", "No canonical, application, deployment, or publication change was made."]
+}

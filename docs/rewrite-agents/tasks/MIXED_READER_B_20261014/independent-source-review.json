@@ -1,0 +1,78 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d4de68d0fd014aba8dfbf4718d66ea83": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d4de68d0fd014aba8dfbf4718d66ea83",
+          "verdict": "accept",
+          "note": "Second-round independent review of the bounded correction in MIXED_READER_B_20261014/draft (task-d4de68d0fd014aba8dfbf4718d66ea83). Scope: these three draft article texts only — no opinion on MIXED_RELEASE import, runtime bundle, browser rendering, or deployment.\n\nCorrected claim (pub-connections-011, Rear Window): I independently opened the actual Yale Film Archive PDF (web.library.yale.edu/sites/default/files/files/YFARearWindow.pdf) directly, not an excerpt. Exact program-note text: \"REAR WINDOW begins with shots of the apartments while Jeff is asleep, establishing us as voyeurs on our own... Throughout, Hitchcock compels our identification with Jeff through an extensive use of point-of-view shots... With rare exceptions, we see the apartments only as they can be seen from Jeff's room.\" This precisely supports the revised body's qualified claim (predominant-but-not-absolute POV, opening shots during Jeff's sleep as the stated exception) and corrects the prior overstated absolute (root-editorial-finding.json's concern was valid and has been properly addressed, not just reworded). AFI Catalog page (fetched directly) independently confirms the broken-leg photographer, courtyard observation, and the telephoto-duplicating lens setup cited in the same article.\n\npub-connections-016: removal of the generic LOC registry link leaves AFI + Oscars.org, both fetched directly and fully supporting the body's specific claims (Lina mouthing words while Kathy sings from behind the curtain at the premiere; AFI's own framing of the piece as a silent-to-sound transition narrative). No loss of support from dropping the LOC link.\n\npub-connections-012: unchanged by this revision. Piano hammer-strike and harpsichord jack/plectrum-pluck mechanics confirmed via Yamaha pages (consistent with the prior reviewer's direct fetch); the specific jack-tongue-swivel/damper return detail cited to the Met PDF could not be opened by me either (10MB tool limit / 403), same limitation the writer and SOURCES.md already disclose honestly — but I independently corroborated that exact mechanism (tongue swivels past the string on key release, felt damper mutes it) via other reputable sources, so the underlying fact is not in doubt even though the specific cited Met PDF text remains unread by any reviewer. This is a disclosed, non-blocking access limitation, not a factual error, and the claim is not load-bearing (Yamaha sources alone already support the article's core comparison).\n\nSOURCES.md footer accurately reflects the current source set (Yale PDF added/opened directly for 011, LOC removed from 016, Met PDF limitation still honestly flagged). question_refs/revision_sha256 for all three articles match mixed-runtime-bundle.json exactly.\n\nVerdict: ACCEPT. The revised bytes correctly implement the root-editorial-finding correction with accurate, directly-verified primary-source support. v1's acceptance does not bind these revised bytes — this is an independent re-verification of the new text specifically.\n\nSource-access limitations (for the record): the Met Bulletin PDF remains unverifiable by direct read in this session (size/403), same as previously disclosed; this does not block acceptance since the cited mechanism is independently corroborable elsewhere and is redundant to the Yamaha sources already supporting the article. All other 7 of 8 cited sources across the three articles were opened directly by me this session.\n\nScope reminder: this accept covers only the three draft article texts in MIXED_READER_B_20261014/draft; it is not approval of any import, runtime bundle change, browser rendering, or deployment step."
+        }
+      },
+      "actual_response": {
+        "acceptance": "ActualYaleaccess, corrected011 withoutuniversalviewerclaim, specificfooterlinks, allrefs unchanged, refreshedhashes/wordcounts, independentrecheckrequired.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_B_20261014\\draft"
+        ],
+        "assignee": "session-eefb2277f2694bceb59cc775b935bbc1",
+        "author": "session-01a07db921124cba89fa913cdea9e81a",
+        "body": "Read MIXED_READER_B_20261014/root-editorial-finding.json. Original independent v1 accepted but missed an absolute contradicted by actual Yale Film Archive program PDF. Own draft only: qualify predominant viewpoint in011, link preciseYale source (replacegenericLOCindex), removegenericLOCindexfrom016 retaining2directverifiedprimarylinks. Preserve012body and all exactquestionRefs. ReopenactualYalePDF, update wordcounts/hashes/reportsourceaccess limits; add revision note bindingprevioushash. Noimports/Git/otherrelease edits.",
+        "created_at": 1791977405.7648108,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-d4de68d0fd014aba8dfbf4718d66ea83",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "PowerShell JSON/schema, Unicode Russian word-count, source-count, and frozen runtime-ref validation",
+              "kind": "check",
+              "outcome": "Pass: refs exact; words 170/153/167; sources 2/3/2."
+            },
+            {
+              "kind": "hash",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/articles.json",
+              "sha256": "203bde2937fe787a7f87a9d785295127041c3a2abfbe2f8e662f0da4f23ea3c7"
+            },
+            {
+              "kind": "report",
+              "outcome": "Revision note binds prior articles hash 59a900ac9f16405b7c8fb02a1ae56c377bf20d58d8cb9dd0b5e90cd37ec1e1b3; Met PDF 23 MB limitation retained; independent recheck required.",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/REPORT.json"
+            }
+          ],
+          "files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/articles.json",
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/SOURCES.md",
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/REPORT.json"
+          ],
+          "publication_claim": false,
+          "review_required": true,
+          "status": "DRAFT_UNREVIEWED",
+          "summary": "Bounded correction submitted for independent recheck: qualified article 011’s point-of-view claim using direct Yale Film Archive evidence, replaced generic LOC index with Yale, removed generic LOC index from 016, and preserved article 012 body and runtime refs."
+        },
+        "root_task_id": "task-d4de68d0fd014aba8dfbf4718d66ea83",
+        "run_id": "run-14149f6a15b2409e846214ebc7763116",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9dc3a655fa69451bb6fa72a1a6eeab47",
+        "title": "Narrow Rear Window article viewpoint after Root primary-source finding",
+        "version": 4,
+        "reviewer": "session-45b3e0d98f684c7097da3420f71cf00f",
+        "review_note": "Second-round independent review of the bounded correction in MIXED_READER_B_20261014/draft (task-d4de68d0fd014aba8dfbf4718d66ea83). Scope: these three draft article texts only — no opinion on MIXED_RELEASE import, runtime bundle, browser rendering, or deployment.\n\nCorrected claim (pub-connections-011, Rear Window): I independently opened the actual Yale Film Archive PDF (web.library.yale.edu/sites/default/files/files/YFARearWindow.pdf) directly, not an excerpt. Exact program-note text: \"REAR WINDOW begins with shots of the apartments while Jeff is asleep, establishing us as voyeurs on our own... Throughout, Hitchcock compels our identification with Jeff through an extensive use of point-of-view shots... With rare exceptions, we see the apartments only as they can be seen from Jeff's room.\" This precisely supports the revised body's qualified claim (predominant-but-not-absolute POV, opening shots during Jeff's sleep as the stated exception) and corrects the prior overstated absolute (root-editorial-finding.json's concern was valid and has been properly addressed, not just reworded). AFI Catalog page (fetched directly) independently confirms the broken-leg photographer, courtyard observation, and the telephoto-duplicating lens setup cited in the same article.\n\npub-connections-016: removal of the generic LOC registry link leaves AFI + Oscars.org, both fetched directly and fully supporting the body's specific claims (Lina mouthing words while Kathy sings from behind the curtain at the premiere; AFI's own framing of the piece as a silent-to-sound transition narrative). No loss of support from dropping the LOC link.\n\npub-connections-012: unchanged by this revision. Piano hammer-strike and harpsichord jack/plectrum-pluck mechanics confirmed via Yamaha pages (consistent with the prior reviewer's direct fetch); the specific jack-tongue-swivel/damper return detail cited to the Met PDF could not be opened by me either (10MB tool limit / 403), same limitation the writer and SOURCES.md already disclose honestly — but I independently corroborated that exact mechanism (tongue swivels past the string on key release, felt damper mutes it) via other reputable sources, so the underlying fact is not in doubt even though the specific cited Met PDF text remains unread by any reviewer. This is a disclosed, non-blocking access limitation, not a factual error, and the claim is not load-bearing (Yamaha sources alone already support the article's core comparison).\n\nSOURCES.md footer accurately reflects the current source set (Yale PDF added/opened directly for 011, LOC removed from 016, Met PDF limitation still honestly flagged). question_refs/revision_sha256 for all three articles match mixed-runtime-bundle.json exactly.\n\nVerdict: ACCEPT. The revised bytes correctly implement the root-editorial-finding correction with accurate, directly-verified primary-source support. v1's acceptance does not bind these revised bytes — this is an independent re-verification of the new text specifically.\n\nSource-access limitations (for the record): the Met Bulletin PDF remains unverifiable by direct read in this session (size/403), same as previously disclosed; this does not block acceptance since the cited mechanism is independently corroborable elsewhere and is redundant to the Yamaha sources already supporting the article. All other 7 of 8 cited sources across the three articles were opened directly by me this session.\n\nScope reminder: this accept covers only the three draft article texts in MIXED_READER_B_20261014/draft; it is not approval of any import, runtime bundle change, browser rendering, or deployment step."
+      }
+    }
+  },
+  "review_messages": [
+    "Second-round independent review of task-d4de68d0fd014aba8dfbf4718d66ea83 (bounded correction) — verdict: ACCEPT. Scope strictly limited to the 3 draft article texts in MIXED_READER_B_20261014/draft; no import/runtime/browser/deployment approval implied.\n\n- pub-connections-011 (Rear Window): I opened the actual Yale Film Archive PDF directly (not an excerpt). Its exact text — \"begins with shots of the apartments while Jeff is asleep... With rare exceptions, we see the apartments only as they can be seen from Jeff's room\" — precisely supports the revised qualified claim and resolves root-editorial-finding.json's concern. AFI page (direct fetch) also confirms broken-leg photographer / courtyard / telephoto-lens POV.\n- pub-connections-016: dropping the generic LOC link leaves AFI + Oscars.org, both directly fetched and fully supporting the body (Lina-mouths/Kathy-sings premiere scene; silent-to-sound framing).\n- pub-connections-012: unchanged; Yamaha mechanics confirmed. Met Bulletin PDF still inaccessible to me (10MB/403), same disclosed limitation as before — non-blocking since the cited jack/tongue/damper detail is independently corroborable elsewhere and redundant to the already-sufficient Yamaha sources.\n\nAll question_refs/revision_sha256 match mixed-runtime-bundle.json exactly. SOURCES.md footer accurately reflects the current source set. Full findings + exact URLs are in the hub_task review note on task-d4de68d0fd014aba8dfbf4718d66ea83."
+  ],
+  "report": "Review complete and submitted.\n\n**Verdict: ACCEPT** (task-d4de68d0fd014aba8dfbf4718d66ea83), scoped strictly to the three draft articles in `MIXED_READER_B_20261014/draft` — no import/runtime/browser/deployment approval implied.\n\nKey finding: I opened the actual Yale Film Archive PDF directly (not an excerpt) and its exact wording — \"begins with shots of the apartments while Jeff is asleep... With rare exceptions, we see the apartments only as they can be seen from Jeff's room\" — precisely matches the revised, qualified claim in article 011, correctly resolving `root-editorial-finding.json`'s concern about the prior overstated absolute. AFI and Oscars.org sources for 011/016 were fetched directly and confirmed. Article 012 is unchanged; its one remaining gap (the Met Bulletin PDF, still unreadable to me — 10MB tool limit/403) is a disclosed, non-blocking limitation since that detail is independently corroborable and redundant to the sufficient Yamaha sources.\n\nReview note and summary message were sent to the lead session (session-01a07db921124cba89fa913cdea9e81a) with full source URLs. No files were edited, no import/deployment action taken.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "67c44b8d15766b232210d513d1c787bb2cda0e1e32c93a469e8b4a37ed22a4d2",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

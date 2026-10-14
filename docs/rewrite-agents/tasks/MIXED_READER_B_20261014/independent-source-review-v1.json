@@ -1,0 +1,78 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f2f2bd44e4d44672905ebd178bf3f552": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f2f2bd44e4d44672905ebd178bf3f552",
+          "verdict": "accept",
+          "note": "Independent review of 3 draft articles in MIXED_READER_B_20261014/draft only (articles.json/SOURCES.md/REPORT.json). Verdict applies ONLY to these three article texts; no opinion/approval given on MIXED_RELEASE import, runtime bundle, browser rendering, or deployment, which remain the other lead's scope.\n\npub-connections-011 (Rear Window) — ACCEPT. question_ref/revision_sha256 matches mixed-runtime-bundle.json exactly (opt-1 'Окно во двор' is correct_option_id). Directly fetched AFI Catalog page confirms: Jeffries is a magazine photographer with a broken leg confined to his apartment, watches neighbors through the rear window, suspects a traveling salesman of murder, and most shots use lenses (incl. a 10-inch lens) duplicating a telephoto/binocular POV — matches article's POV-storytelling claim exactly. LOC film-registry page returned HTTP 403 to direct fetch (writer's SOURCES.md already flagged this); independently confirmed via web search snippet (loc.gov/blogs 'Reading the Film Registry: Rear Window' by John Belton) describing Jeffries as a globe-trotting photojournalist with a broken leg who watches neighbors with binoculars — matches the article's cited claim.\n\npub-connections-012 (piano vs harpsichord) — ACCEPT. question_ref/revision_sha256 matches bundle (opt-3 'Фортепиано ударяет, клавесин щиплет' is correct). Both Yamaha pages fetched directly and confirm hammer-strikes-string for piano with keystroke force controlling hammer speed/volume, and jack-with-quill-plectrum plucking for harpsichord. Met PDF returned HTTP 403 to direct fetch (same limitation the writer disclosed); confirmed via search that the cited Met Bulletin v.47 no.1 (1989) is a real, relevant publication on keyboard-instrument jack/plectrum/damper mechanics. Since the Yamaha sources alone already fully support every claim in the body, the Met citation is redundant corroboration, not load-bearing — no correction required.\n\npub-connections-016 (Singin' in the Rain) — ACCEPT. question_ref/revision_sha256 matches bundle (opt-1 'От немого кино к звуковому' is correct). AFI page fetched directly confirms Kathy Selden's voice dubbing Lina Lamont and the premiere scene where Lina mouths the words while Kathy actually sings behind the curtain — matches the article's specific claim. Oscars.org page fetched directly: 'bumpy transition from silent to talking motion pictures' — matches. LOC page 403'd on direct fetch; independently confirmed via search snippet describing the film as a 1920s Hollywood silent-to-sound satire, first-year (1989) National Film Registry selection — matches article's framing.\n\nAll three bodies correctly distinguish sourced fact from reasonable visual/narrative interpretation (e.g. article 011's POV-tension analysis, article 012's framing that keyboards 'just transmit hand motion'). No factual, date, name, or mechanism errors found. Word counts (162/153/167) and source-link counts (2/3/3) match REPORT.json's stated ranges on inspection.\n\nSource-access limitations: 3 of 8 cited pages (LOC Rear Window, LOC Singin' in the Rain, Met PDF) returned HTTP 403 to this session's direct fetch too, consistent with the writer's own disclosed limitation. I did not rely on the writer's excerpt for these — I independently re-derived the same facts via web search against different outlets (loc.gov blog essay, Met publication listings) before accepting.\n\nScope reminder: this accept covers only the 3 draft article texts reviewed above, not the mixed-runtime-bundle.json, any import/publish step, or anything outside MIXED_READER_B_20261014/draft."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual verified primary sources, accurate teaching context, exactquestionRefs, wordcounts and hashes, no application/publication changes.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_B_20261014\\draft"
+        ],
+        "assignee": "session-eefb2277f2694bceb59cc775b935bbc1",
+        "author": "session-01a07db921124cba89fa913cdea9e81a",
+        "body": "Execute MIXED_READER_B_20261014/PACKET_EN.md, own onlydraft/. Questions011 RearWindow,012piano/harpsichord,016SinginintheRain. Original150-190words each,2-3live primary links, exactfrozenruntimeRefs. Independentreview aftersubmission; noimports/Git/children.",
+        "created_at": 1791976939.5110369,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-f2f2bd44e4d44672905ebd178bf3f552",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "PowerShell JSON parse plus Unicode word count, source-link count, and runtime-ref comparison",
+              "kind": "check",
+              "outcome": "pass: 011=162 words/2 sources; 012=153/3; 016=167/3; exact refs match frozen bundle"
+            },
+            {
+              "kind": "hash",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/articles.json",
+              "sha256": "59a900ac9f16405b7c8fb02a1ae56c377bf20d58d8cb9dd0b5e90cd37ec1e1b3"
+            },
+            {
+              "kind": "report",
+              "outcome": "Source-access limitations recorded; DRAFT_UNREVIEWED; no publication claim",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/REPORT.json"
+            }
+          ],
+          "files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/articles.json",
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/SOURCES.md",
+            "docs/rewrite-agents/tasks/MIXED_READER_B_20261014/draft/REPORT.json"
+          ],
+          "publication_claim": false,
+          "review_required": true,
+          "status": "DRAFT_UNREVIEWED",
+          "summary": "Three bounded Russian Reader drafts completed; independent fact/source review remains required."
+        },
+        "root_task_id": "task-f2f2bd44e4d44672905ebd178bf3f552",
+        "run_id": "run-0d8a137e91374fe0a821e112a26db3ac",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9dc3a655fa69451bb6fa72a1a6eeab47",
+        "title": "Three more mixed film/music Reader drafts",
+        "version": 4,
+        "reviewer": "session-6db69e0ea46a45ee977f2faefce8ea8b",
+        "review_note": "Independent review of 3 draft articles in MIXED_READER_B_20261014/draft only (articles.json/SOURCES.md/REPORT.json). Verdict applies ONLY to these three article texts; no opinion/approval given on MIXED_RELEASE import, runtime bundle, browser rendering, or deployment, which remain the other lead's scope.\n\npub-connections-011 (Rear Window) — ACCEPT. question_ref/revision_sha256 matches mixed-runtime-bundle.json exactly (opt-1 'Окно во двор' is correct_option_id). Directly fetched AFI Catalog page confirms: Jeffries is a magazine photographer with a broken leg confined to his apartment, watches neighbors through the rear window, suspects a traveling salesman of murder, and most shots use lenses (incl. a 10-inch lens) duplicating a telephoto/binocular POV — matches article's POV-storytelling claim exactly. LOC film-registry page returned HTTP 403 to direct fetch (writer's SOURCES.md already flagged this); independently confirmed via web search snippet (loc.gov/blogs 'Reading the Film Registry: Rear Window' by John Belton) describing Jeffries as a globe-trotting photojournalist with a broken leg who watches neighbors with binoculars — matches the article's cited claim.\n\npub-connections-012 (piano vs harpsichord) — ACCEPT. question_ref/revision_sha256 matches bundle (opt-3 'Фортепиано ударяет, клавесин щиплет' is correct). Both Yamaha pages fetched directly and confirm hammer-strikes-string for piano with keystroke force controlling hammer speed/volume, and jack-with-quill-plectrum plucking for harpsichord. Met PDF returned HTTP 403 to direct fetch (same limitation the writer disclosed); confirmed via search that the cited Met Bulletin v.47 no.1 (1989) is a real, relevant publication on keyboard-instrument jack/plectrum/damper mechanics. Since the Yamaha sources alone already fully support every claim in the body, the Met citation is redundant corroboration, not load-bearing — no correction required.\n\npub-connections-016 (Singin' in the Rain) — ACCEPT. question_ref/revision_sha256 matches bundle (opt-1 'От немого кино к звуковому' is correct). AFI page fetched directly confirms Kathy Selden's voice dubbing Lina Lamont and the premiere scene where Lina mouths the words while Kathy actually sings behind the curtain — matches the article's specific claim. Oscars.org page fetched directly: 'bumpy transition from silent to talking motion pictures' — matches. LOC page 403'd on direct fetch; independently confirmed via search snippet describing the film as a 1920s Hollywood silent-to-sound satire, first-year (1989) National Film Registry selection — matches article's framing.\n\nAll three bodies correctly distinguish sourced fact from reasonable visual/narrative interpretation (e.g. article 011's POV-tension analysis, article 012's framing that keyboards 'just transmit hand motion'). No factual, date, name, or mechanism errors found. Word counts (162/153/167) and source-link counts (2/3/3) match REPORT.json's stated ranges on inspection.\n\nSource-access limitations: 3 of 8 cited pages (LOC Rear Window, LOC Singin' in the Rain, Met PDF) returned HTTP 403 to this session's direct fetch too, consistent with the writer's own disclosed limitation. I did not rely on the writer's excerpt for these — I independently re-derived the same facts via web search against different outlets (loc.gov blog essay, Met publication listings) before accepting.\n\nScope reminder: this accept covers only the 3 draft article texts reviewed above, not the mixed-runtime-bundle.json, any import/publish step, or anything outside MIXED_READER_B_20261014/draft."
+      }
+    }
+  },
+  "review_messages": [
+    "Independent review of task-f2f2bd44e4d44672905ebd178bf3f552 (3 drafts in MIXED_READER_B_20261014/draft) — verdict: ACCEPT all three. Scope: this accept covers ONLY the three draft article texts; no approval of MIXED_RELEASE import, runtime bundle, browser rendering, or deployment.\n\n- pub-connections-011 (Rear Window): question_ref/sha matches mixed-runtime-bundle.json (opt-1 correct). AFI page fetched directly, confirms broken-leg photographer, courtyard observation, telephoto/binocular POV lensing — matches body exactly.\n- pub-connections-012 (piano/harpsichord): sha matches (opt-3 correct). Both Yamaha pages fetched directly, fully confirm hammer-strike vs plectrum-pluck + dynamics claims.\n- pub-connections-016 (Singin' in the Rain): sha matches (opt-1 correct). AFI + Oscars pages fetched directly, confirm Kathy-dubs-Lina premiere scene and silent-to-sound framing.\n\nSource-access limitation: 3 of 8 cited pages (LOC Rear Window, LOC Singin' in the Rain, Met keyboard-instruments PDF) returned HTTP 403 to my direct fetch too — same limitation the writer already disclosed in SOURCES.md. I did not take the writer's word for these: independently re-verified the same facts via web search against other outlets (loc.gov blog essay by John Belton on Rear Window; LOC/registry summaries on Singin' in the Rain; Met publication listing) before accepting. No factual/date/name/mechanism errors found in any of the three bodies; all correctly separate sourced fact from reasonable interpretation. Full findings + exact URLs are in the hub_task review note on task-f2f2bd44e4d44672905ebd178bf3f552."
+  ],
+  "report": "Review complete. Summary:\n\n**Verdict: ACCEPT all three draft articles** in `MIXED_READER_B_20261014/draft` (task-f2f2bd44e4d44672905ebd178bf3f552).\n\n- **pub-connections-011 (Rear Window)**: question_ref/revision_sha256 matches the frozen runtime bundle exactly; AFI Catalog page fetched directly confirms photographer-with-broken-leg, courtyard observation, telephoto/binocular POV lensing.\n- **pub-connections-012 (piano vs harpsichord)**: sha matches; both Yamaha pages fetched directly fully confirm hammer-strike vs plectrum-pluck mechanics and touch-dynamics claim.\n- **pub-connections-016 (Singin' in the Rain)**: sha matches; AFI + Oscars pages fetched directly confirm the Kathy-dubs-Lina premiere scene and silent-to-sound framing.\n\n3 of 8 cited sources (two LOC pages, the Met PDF) returned HTTP 403 to my own fetch too — I didn't take the writer's excerpts on faith, I independently re-confirmed the same facts via web search against other outlets before accepting. No factual, date, name, or mechanism errors found; this accept is scoped strictly to these three article texts, not to any import/runtime/deployment decision. Review submitted via `hub_task review` and summary sent to the lead session.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "92ce1d0edcad6cb5ebc5a548354504a4be1cae336f833d36675eb3a54f27ccec",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
