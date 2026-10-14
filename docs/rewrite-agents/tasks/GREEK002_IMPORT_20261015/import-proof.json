@@ -1,0 +1,36 @@
+{
+  "status": "SOURCE_IMPORTED_NOT_PUBLISHED",
+  "old_articles": 278,
+  "new_articles": 279,
+  "all_old278_objects_identical": true,
+  "new_article_id": "question:greek-002",
+  "article_hash": "f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73",
+  "draft_sha256": "8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae",
+  "export_sha256": "89d237d09f6f2a7830257b390c4adcc09c0694f53f5f87495934ff472f13a8a5",
+  "actual_builder_exit": 0,
+  "actual_builder_stdout": "PASS: 279 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+  "question_keys_revisions_changed": false,
+  "published_baseline": "Helm58 Reader278",
+  "callback_note_field_anomaly": "Full factual findings in actual notes toolargument retained, Hubreview_note empty; final integration review must use exact note field before completion.",
+  "focused_flutter_tests": {
+    "actual_exit": 0,
+    "command": [
+      "cmd",
+      "/d",
+      "/c",
+      "flutter",
+      "test",
+      "--no-pub",
+      "test/question_articles_test.dart"
+    ],
+    "elapsed_seconds": 27.03
+  },
+  "python_builder_tests": {
+    "command": "python -m unittest discover -s study/question_articles -p test_build.py",
+    "actual_exit": 0,
+    "tests": 3
+  },
+  "fixture_update": "Expected packaged count278->279; exactGreek002revision tuple added. Original failure retained;6/6pass afterupdate.",
+  "dependency_bootstrap": "Missingignored.dart_tool/package_config.json caused firsttestfailure; flutterpubget--offline--enforce-lockfile actual0 restored existing pinneddependencies; pubspec/lock unchanged.",
+  "question_bundles_keys_metadata_diff_empty": true
+}

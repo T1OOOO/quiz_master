@@ -1,0 +1,12 @@
+{
+  "original_trace_sha256": "cc9cf87c28bb0ed4f611c39414a42b3fbd64de4091693a8fbe6958bb65d41dee",
+  "json_only_trace_sha256": "c5835b7ebdc00667c67a52fe177fcd2ec6d7ca8866b07adeaca300b2fdc512f3",
+  "actual_exit": 0,
+  "omitted_non_json_lines": [
+    {
+      "line": 176,
+      "text": "SessionEnd hook [node \"${CLAUDE_PLUGIN_ROOT}/scripts/session-lifecycle-hook.mjs\" SessionEnd] failed: Hook cancelled"
+    }
+  ],
+  "scope": "Removed one appended SessionEnd hook cancellation warning only; actual JSON calls/results untouched. Original ignored trace retained."
+}

@@ -197,8 +197,13 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(278));
+      expect(articles.articles, hasLength(279));
       for (final (quizId, questionId, revision) in [
+        (
+          'prep-greek-mythology',
+          'greek-002',
+          'e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e',
+        ),
         (
           'pub-connections-20261014',
           'pub-connections-001',

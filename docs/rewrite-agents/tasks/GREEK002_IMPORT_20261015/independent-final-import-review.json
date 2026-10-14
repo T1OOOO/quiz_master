@@ -1,0 +1,62 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e89fe59294f440dea3f711ac9cde3131": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e89fe59294f440dea3f711ac9cde3131",
+          "verdict": "accept",
+          "note": "Independently re-verified the GREEK002 import against live files, git HEAD, and build/test output. (1) Export diff: parsed both next/apps/quiz_app/assets/study/question-articles.json (working tree, 279 articles) and `git show HEAD:...` (278 articles) as JSON; all 278 prior article objects are byte-identical (0 diffs), only question:greek-002 was added, nothing removed — matches import-proof.json's all_old278_objects_identical:true. (2) Hashes recomputed and matched exactly: draft_sha256 8b37a77b...3f48ae; export_sha256 89d237d0...13a8a5; article_hash via build.py's own hashlib.sha256(json.dumps(article,sort_keys=True,...)) recomputed independently = f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73, matching import-proof.json, the review file, and the factual reviewer's notes. (3) bundle.json: greek-002 revision.sha256 = e441297a...e87fe7e matches the draft's question_refs exactly; private_grading.greek-002.correct_option_id = greek-002-opt-2 = Сðºðµð¹ð½ð¾ð½ (Poseidon), matching both the draft's claimed answer and the factual reviewer's independent solve. Stem (sea god, temple at Cape Sounion) is a well-established historical fact consistent with Poseidon; the Met/This-is-Athens/British-Museum sourcing described in the reviewer's notes is plausible and internally consistent with known facts, though I did not re-fetch the URLs myself. (4) Builder/tests: `python study/question_articles/build.py --check` -> PASS, 279 articles. `python -m unittest discover -s study/question_articles -p test_build.py` -> 3/3 OK. `flutter test --no-pub test/question_articles_test.dart` (run directly, flutter on PATH; cmd /d /c wrapper produced no output in this shell) -> 6/6 passed, matching the expected 278->279 count bump and the exact greek-002 revision tuple added to test/question_articles_test.dart (git diff confirms only that insertion, +6/-1 lines). (5) Broker review_note anomaly: task-aa94be7df7df4c9f80c0ee84412190ee's stored review_note is indeed empty (API field 'notes' vs 'note' mismatch), but the full substantive factual review survives in the call.arguments.notes and in the top-level 'report' field of independent-canonical-fact-review.json — I read and assessed that text directly rather than treating the empty broker field as either approval or a defect. (6) Nothing is committed to git; HEAD is still 594ee2c0 with 278 articles, so production (Helm58/278) is unaffected; this review establishes readiness of the draft/import artifacts only, not publication. No discrepancies found. Limitations: did not independently WebFetch the cited Met/This-is-Athens/British Museum pages (no network/helper calls made in this review per scope); relying on the documented reviewer process plus my own domain knowledge that Poseidon's temple at Cape Sounion is historically well-established.",
+          "article_id": "question:greek-002"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exactfresh factsreceipt/draft/article/exporthashes equality; no API/key/revisionchanges, all278oldobjects unchanged, real housebuilder+Python3tests+Flutter6tests gates. Actual substantive note callback, sourceonly NOTPUBLISHED.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\greek002-distractors-20261015.json",
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews\\greek002-distractors-20261015-review.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\GREEK002_IMPORT_20261015"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root canonical import of exactfreshClaude factaccepted Greek002 toReader279. Onlynewdraft/review/exportchanged, all278existingobjects unchanged. Priorfactualcallback genuineaccept but arguments.notes ignoredHubnote; substantivefullfindings retained. Need independent final sourceintegrationreview with correctnote field, plusnative structural taskbe6 audit different-providerreview.",
+        "created_at": 1792021236.9854264,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-e89fe59294f440dea3f711ac9cde3131",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/GREEK002_IMPORT_20261015",
+            "study/question_articles/drafts/greek002-distractors-20261015.json",
+            "study/question_articles/reviews/greek002-distractors-20261015-review.json",
+            "next/apps/quiz_app/assets/study/question-articles.json",
+            "next/apps/quiz_app/test/question_articles_test.dart"
+          ],
+          "summary": "Greek002source279 only; freshfactreceiptbinds exactlyraw8b37/canonicalf72; allold278objectsequal; oldquestionbundles/keys/metadataunchanged. Pythonbuilder3pass; actualFlutter6pass afterpinnedofflinebootstrap and countfixture279/exactGreekrevision. Allfailedattemptsretained. Nativeauditbe6SUBMITTED needsdifferent-providerreview."
+        },
+        "root_task_id": "task-e89fe59294f440dea3f711ac9cde3131",
+        "run_id": "run-68392d1809db409a9a33710d0a5b63cb",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Greek002 final reviewed source import279",
+        "version": 4,
+        "reviewer": "session-8e14f3657e82487e974d14b850e6572f",
+        "review_note": "Independently re-verified the GREEK002 import against live files, git HEAD, and build/test output. (1) Export diff: parsed both next/apps/quiz_app/assets/study/question-articles.json (working tree, 279 articles) and `git show HEAD:...` (278 articles) as JSON; all 278 prior article objects are byte-identical (0 diffs), only question:greek-002 was added, nothing removed — matches import-proof.json's all_old278_objects_identical:true. (2) Hashes recomputed and matched exactly: draft_sha256 8b37a77b...3f48ae; export_sha256 89d237d0...13a8a5; article_hash via build.py's own hashlib.sha256(json.dumps(article,sort_keys=True,...)) recomputed independently = f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73, matching import-proof.json, the review file, and the factual reviewer's notes. (3) bundle.json: greek-002 revision.sha256 = e441297a...e87fe7e matches the draft's question_refs exactly; private_grading.greek-002.correct_option_id = greek-002-opt-2 = Сðºðµð¹ð½ð¾ð½ (Poseidon), matching both the draft's claimed answer and the factual reviewer's independent solve. Stem (sea god, temple at Cape Sounion) is a well-established historical fact consistent with Poseidon; the Met/This-is-Athens/British-Museum sourcing described in the reviewer's notes is plausible and internally consistent with known facts, though I did not re-fetch the URLs myself. (4) Builder/tests: `python study/question_articles/build.py --check` -> PASS, 279 articles. `python -m unittest discover -s study/question_articles -p test_build.py` -> 3/3 OK. `flutter test --no-pub test/question_articles_test.dart` (run directly, flutter on PATH; cmd /d /c wrapper produced no output in this shell) -> 6/6 passed, matching the expected 278->279 count bump and the exact greek-002 revision tuple added to test/question_articles_test.dart (git diff confirms only that insertion, +6/-1 lines). (5) Broker review_note anomaly: task-aa94be7df7df4c9f80c0ee84412190ee's stored review_note is indeed empty (API field 'notes' vs 'note' mismatch), but the full substantive factual review survives in the call.arguments.notes and in the top-level 'report' field of independent-canonical-fact-review.json — I read and assessed that text directly rather than treating the empty broker field as either approval or a defect. (6) Nothing is committed to git; HEAD is still 594ee2c0 with 278 articles, so production (Helm58/278) is unaffected; this review establishes readiness of the draft/import artifacts only, not publication. No discrepancies found. Limitations: did not independently WebFetch the cited Met/This-is-Athens/British Museum pages (no network/helper calls made in this review per scope); relying on the documented reviewer process plus my own domain knowledge that Poseidon's temple at Cape Sounion is historically well-established."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews submitted successfully with full `review_note` content confirmed in the response (note my Cyrillic text got mojibake-encoded in transit — harmless, the English content is intact).\n\n## Review Report\n\n**Connected to host_hub** as Claude Sonnet 5, joined `team-a32157792ef74ebda086a7f97cc7abb1` (epoch 1), ready. No edits, helper spawns, or publication were performed.\n\n### task-be6eb0d0 — structural-audit.json → **ACCEPT**\nRecomputed all five SHA256 hashes in `structural-audit.json` against live files and git HEAD — all matched exactly (canonical draft, source draft, bundle, 278-article export). The export hash (`7fc2b6a1...`) equals `git show HEAD:...question-articles.json` exactly, confirming the 278-article/no-Greek002 snapshot is still accurate. The audit correctly scopes itself as structural-only and doesn't overreach into factual approval (appropriate, since the same helper wrote the original pilot).\n\n### task-e89fe592 — import review → **ACCEPT**\n- All 278 prior export articles parsed as byte-identical between working tree (279) and git HEAD (278); only `question:greek-002` was added, nothing removed/changed.\n- `article_hash` independently recomputed via `build.py`'s own canonical-JSON SHA256 method → `f72ca89f...e41d73`, matching import-proof, review file, and reviewer notes.\n- `bundle.json`: revision hash and `private_grading.greek-002.correct_option_id = greek-002-opt-2` (Poseidon) match the draft's claimed answer — a well-established historical fact (Temple of Poseidon, Cape Sounion).\n- `python study/question_articles/build.py --check` → PASS (279 articles); `test_build.py` → 3/3 OK; `flutter test --no-pub test/question_articles_test.dart` → 6/6 passed (the `cmd /d /c` wrapper produced no output in this shell, so I ran `flutter` directly, which is on PATH).\n- `question_articles_test.dart` diff is exactly the 278→279 bump plus the one Greek002 revision tuple.\n- Confirmed the `review_note` broker anomaly (empty due to `notes` vs `note` field mismatch) but assessed the substantive factual findings preserved in the original tool arguments/report directly — they are sound and well-sourced.\n- Nothing is committed to git; HEAD remains `594ee2c0` at 278 articles, so production (Helm58) is unaffected. This review establishes artifact readiness only, not publication.\n\n**Limitation carried forward:** I did not independently re-fetch the cited Met/This-is-Athens/British Museum source URLs (read-only, no network calls per scope) — relying on the documented reviewer process plus my own domain corroboration.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "c5835b7ebdc00667c67a52fe177fcd2ec6d7ca8866b07adeaca300b2fdc512f3",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

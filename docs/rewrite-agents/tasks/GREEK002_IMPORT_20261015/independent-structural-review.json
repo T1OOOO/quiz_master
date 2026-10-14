@@ -1,0 +1,80 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-be6eb0d02a064614be6abac0146bbc45": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-be6eb0d02a064614be6abac0146bbc45",
+          "verdict": "accept",
+          "note": "Independently re-verified structural-audit.json (GREEK002_IMPORT_20261015) against live files and git HEAD. All reported SHA256 hashes recomputed and matched exactly: canonical_draft 8b37a77b...3f48ae, source_draft 8907031b...dfb9f596, bundle 51dacd7b...5ed49a6d, export(278) 7fc2b6a1...b07c31abd74. The export hash equals both the current git HEAD content and the current working-tree export's pre-import state (git show HEAD:...question-articles.json), confirming the audit's 278-article, greek002_present:false snapshot is still accurate and untampered. `python study/question_articles/build.py --check` currently passes on 279 articles (post-import state), consistent with the audit's own PASS claim about the 278-article pre-import state it covered. The audit is explicitly scoped as structural-only ('no factual/editorial approval... was performed') and correctly flags that this helper authored the original pilot, so its own audit is structural evidence, not independent factual approval — it does not overreach its claims. No discrepancies found between the JSON's claims and the actual file bytes, git history, or builder output. Limitation: this review only confirms structural/hash consistency as stated; it establishes nothing about Greek002's factual correctness (covered separately by the import review) and nothing about production, which remains Helm58/278 articles since nothing here is committed to git.",
+          "article_id": "question:greek-002"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Report exactdraftarticle/sourceexporthashes and actualref/options binding, old278unchanged housebuildercheck; boundedcommands evidence,no privatekeys inpublicmetadata. Submit forRootcheck.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\GREEK002_IMPORT_20261015"
+        ],
+        "assignee": "session-e8d8d4b56a8f4ab0937f43107a99600f",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Native helper read-only structural audit of newGreek002canonical-shaped draft, actualquestionrefs/options and housebuilder skipsunrevieweddraft. Own onlynewauditreport folder. No canonical/review/export edits orfactsapproval; Claudeindependentreviewrunsseparately. Need truthful ready identity tolead foroffer.",
+        "created_at": 1792020749.3450112,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-be6eb0d02a064614be6abac0146bbc45",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\GREEK002_IMPORT_20261015\\structural-audit.json"
+          ],
+          "evidence": [
+            {
+              "command": "Python JSON comparison of canonical/source/bundle/export",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "structural_check",
+              "result": "PASS: canonical SHA256 8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae equals source draft SHA256 8907031b536f71dc56c91efc45101b1dbee74a7b67636208eba92411fdb9f596 modulo status only; exact public Greek002 ref/options; no Greek002 in the 278-article export SHA256 7fc2b6a1bac73847f75de1c5617cf055d645eb6a1466c9780477bc07c31abd74."
+            },
+            {
+              "command": "python study/question_articles/build.py --check",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "house_check",
+              "result": "PASS: 278 independently reviewed mini articles; checked bindings, review hashes and source metadata. Unreviewed Greek002 was skipped and export unchanged."
+            },
+            {
+              "kind": "hash",
+              "result": "audit SHA256 62E5255318269FA81533E6D07A68F511CA98F1B7ADA413B84DDFEAE919CBAF75; public bundle SHA256 51dacd7bf9e6aea3a1e5311c749712d4669570b153c00a8299ad062c5ed49a6d."
+            }
+          ],
+          "limitations": [
+            "No private grading material included.",
+            "No fact approval, canonical/review/export edit, or publication performed."
+          ],
+          "status": "DONE",
+          "summary": "READY: structural prerequisite audit complete; Greek002 canonical draft remains unreviewed and skipped, export unchanged at Reader278."
+        },
+        "root_task_id": "task-be6eb0d02a064614be6abac0146bbc45",
+        "run_id": "run-900886a423214d16a7bad9b20abddf5d",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Greek002 structural import prerequisite audit",
+        "version": 4,
+        "reviewer": "session-8e14f3657e82487e974d14b850e6572f",
+        "review_note": "Independently re-verified structural-audit.json (GREEK002_IMPORT_20261015) against live files and git HEAD. All reported SHA256 hashes recomputed and matched exactly: canonical_draft 8b37a77b...3f48ae, source_draft 8907031b...dfb9f596, bundle 51dacd7b...5ed49a6d, export(278) 7fc2b6a1...b07c31abd74. The export hash equals both the current git HEAD content and the current working-tree export's pre-import state (git show HEAD:...question-articles.json), confirming the audit's 278-article, greek002_present:false snapshot is still accurate and untampered. `python study/question_articles/build.py --check` currently passes on 279 articles (post-import state), consistent with the audit's own PASS claim about the 278-article pre-import state it covered. The audit is explicitly scoped as structural-only ('no factual/editorial approval... was performed') and correctly flags that this helper authored the original pilot, so its own audit is structural evidence, not independent factual approval — it does not overreach its claims. No discrepancies found between the JSON's claims and the actual file bytes, git history, or builder output. Limitation: this review only confirms structural/hash consistency as stated; it establishes nothing about Greek002's factual correctness (covered separately by the import review) and nothing about production, which remains Helm58/278 articles since nothing here is committed to git."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews submitted successfully with full `review_note` content confirmed in the response (note my Cyrillic text got mojibake-encoded in transit — harmless, the English content is intact).\n\n## Review Report\n\n**Connected to host_hub** as Claude Sonnet 5, joined `team-a32157792ef74ebda086a7f97cc7abb1` (epoch 1), ready. No edits, helper spawns, or publication were performed.\n\n### task-be6eb0d0 — structural-audit.json → **ACCEPT**\nRecomputed all five SHA256 hashes in `structural-audit.json` against live files and git HEAD — all matched exactly (canonical draft, source draft, bundle, 278-article export). The export hash (`7fc2b6a1...`) equals `git show HEAD:...question-articles.json` exactly, confirming the 278-article/no-Greek002 snapshot is still accurate. The audit correctly scopes itself as structural-only and doesn't overreach into factual approval (appropriate, since the same helper wrote the original pilot).\n\n### task-e89fe592 — import review → **ACCEPT**\n- All 278 prior export articles parsed as byte-identical between working tree (279) and git HEAD (278); only `question:greek-002` was added, nothing removed/changed.\n- `article_hash` independently recomputed via `build.py`'s own canonical-JSON SHA256 method → `f72ca89f...e41d73`, matching import-proof, review file, and reviewer notes.\n- `bundle.json`: revision hash and `private_grading.greek-002.correct_option_id = greek-002-opt-2` (Poseidon) match the draft's claimed answer — a well-established historical fact (Temple of Poseidon, Cape Sounion).\n- `python study/question_articles/build.py --check` → PASS (279 articles); `test_build.py` → 3/3 OK; `flutter test --no-pub test/question_articles_test.dart` → 6/6 passed (the `cmd /d /c` wrapper produced no output in this shell, so I ran `flutter` directly, which is on PATH).\n- `question_articles_test.dart` diff is exactly the 278→279 bump plus the one Greek002 revision tuple.\n- Confirmed the `review_note` broker anomaly (empty due to `notes` vs `note` field mismatch) but assessed the substantive factual findings preserved in the original tool arguments/report directly — they are sound and well-sourced.\n- Nothing is committed to git; HEAD remains `594ee2c0` at 278 articles, so production (Helm58) is unaffected. This review establishes artifact readiness only, not publication.\n\n**Limitation carried forward:** I did not independently re-fetch the cited Met/This-is-Athens/British Museum source URLs (read-only, no network calls per scope) — relying on the documented reviewer process plus my own domain corroboration.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "c5835b7ebdc00667c67a52fe177fcd2ec6d7ca8866b07adeaca300b2fdc512f3",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

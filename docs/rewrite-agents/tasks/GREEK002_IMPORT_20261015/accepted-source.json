@@ -1,0 +1,19 @@
+{
+  "status": "SOURCE_ACCEPTED_NOT_PUBLISHED",
+  "source_hashes": {
+    "study/question_articles/drafts/greek002-distractors-20261015.json": "8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae",
+    "study/question_articles/reviews/greek002-distractors-20261015-review.json": "08a7963136d260f1ed8740de29e6addb8465d276164c5fab6991ef2decc3eb29",
+    "next/apps/quiz_app/assets/study/question-articles.json": "89d237d09f6f2a7830257b390c4adcc09c0694f53f5f87495934ff472f13a8a5",
+    "next/apps/quiz_app/test/question_articles_test.dart": "e53d6522feacfdd0540fe98761d4c8fe97c928f150f3d68e7e5ee60a3772ec55"
+  },
+  "actual_final_callback_task": "task-e89fe59294f440dea3f711ac9cde3131",
+  "actual_structural_callback_task": "task-be6eb0d02a064614be6abac0146bbc45",
+  "independent_final_receipt_sha256": "a8da08c2ba37b262e2d3816fc300e3ff0a3c8fdf2ae03f10b45fb3a2eeb74a0c",
+  "independent_structural_receipt_sha256": "ca4ca5bf5e129d06f8da30f0c5c94187c7aea0b54471bbf89462e7bcdf1ed96f",
+  "source_articles": 279,
+  "published_articles": 278,
+  "published_helm_revision": 58,
+  "limitations": [
+    "One question pilot only, not whole-bank coverage. No compiled browser or production release for article279 yet. British Museum direct fetch403 disclosed; original factual reviewer corroborated institutional catalogue extracts/mirror. Final integration reviewer did not re-fetch facts sources. Original notes-vs-note callback anomaly preserved; final two correct note callbacks are substantive. One appended SessionEnd hook warning retained via raw trace hash and extraction record."
+  ]
+}

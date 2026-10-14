@@ -1,0 +1,68 @@
+{
+  "packet": "GREEK002_IMPORT_20261015",
+  "status": "STRUCTURAL_AUDIT_READY_NOT_PUBLISHED",
+  "scope": "Structural prerequisite audit only; no content fact approval, canonical/review/export edits, or publication.",
+  "canonical_draft": {
+    "path": "study/question_articles/drafts/greek002-distractors-20261015.json",
+    "sha256": "8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae",
+    "schema_version": "qm-question-articles/v1",
+    "article_id": "question:greek-002",
+    "article_status": "draft",
+    "source_equivalence": "Canonical article equals DISTRACTOR_GREEK002_20261014/articles.json article modulo only DRAFT_UNREVIEWED -> draft."
+  },
+  "source_draft": {
+    "path": "docs/rewrite-agents/tasks/DISTRACTOR_GREEK002_20261014/articles.json",
+    "sha256": "8907031b536f71dc56c91efc45101b1dbee74a7b67636208eba92411fdb9f596",
+    "article_status": "DRAFT_UNREVIEWED"
+  },
+  "public_question_binding": {
+    "bundle_path": "next/content/prep-greek-mythology/bundle.json",
+    "bundle_sha256": "51dacd7bf9e6aea3a1e5311c749712d4669570b153c00a8299ad062c5ed49a6d",
+    "quiz_id": "prep-greek-mythology",
+    "question_id": "greek-002",
+    "revision_sha256": "e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e",
+    "options": [
+      {
+        "option_id": "greek-002-opt-1",
+        "text": "Гефест"
+      },
+      {
+        "option_id": "greek-002-opt-2",
+        "text": "Посейдон"
+      },
+      {
+        "option_id": "greek-002-opt-3",
+        "text": "Арес"
+      },
+      {
+        "option_id": "greek-002-opt-4",
+        "text": "Дионис"
+      }
+    ]
+  },
+  "export": {
+    "path": "next/apps/quiz_app/assets/study/question-articles.json",
+    "sha256": "7fc2b6a1bac73847f75de1c5617cf055d645eb6a1466c9780477bc07c31abd74",
+    "article_count": 278,
+    "greek002_present": false
+  },
+  "checks": [
+    {
+      "command": "Python JSON comparison of canonical draft/source draft/bundle/export",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0,
+      "result": "PASS: schema valid; canonical object exactly equals source object modulo status; exact public question ref/options; Greek002 absent from 278-article export."
+    },
+    {
+      "command": "python study/question_articles/build.py --check",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0,
+      "result": "PASS: 278 independently reviewed mini articles; checked bindings, review hashes and source metadata. The unreviewed Greek002 draft was skipped and export remained 278."
+    }
+  ],
+  "limitations": [
+    "No private_grading values are included in this public structural audit.",
+    "No factual/editorial approval, review acceptance, canonical import, export modification, test beyond build.py --check, or publication was performed."
+  ],
+  "runtime_identity": "openai/gpt-6.1-sol; session-e8d8d4b56a8f4ab0937f43107a99600f"
+}

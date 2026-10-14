@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-aa94be7df7df4c9f80c0ee84412190ee": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-aa94be7df7df4c9f80c0ee84412190ee",
+          "verdict": "accept",
+          "notes": "Independent solve before key: stem (greek-002, sea deity worshipped at temple on Cape Sounion) resolves to Poseidon on the public question/options alone (Sounion's Doric temple is universally the Poseidon temple; none of Hephaestus/Ares/Dionysus have a sea or Sounion association). Compared to private_grading in bundle.json: correct_option_id=greek-002-opt-2 (Посейдон) — matches. question_refs.revision_sha256 (e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e) matches bundle.json greek-002 revision exactly; question/options unchanged.\n\nHashes (study/question_articles/build.py article_hash, canonical JSON dump of the article object): f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73. Raw draft file bytes SHA256: 8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae.\n\nSource check (WebFetch/WebSearch): Met 'Greek Gods and Religious Practices' essay confirms Poseidon=sea, Hephaestus=metalworking, Ares=war, Dionysus=wine/theater, as the draft claims. This is Athens page confirms the Sounion temple is dedicated to Poseidon, on the Attic coast, and historically a seaward landmark/watchtower for ships approaching Piraeus — matches the draft's geography/visibility claim. British Museum catalogue entries (direct fetch 403, corroborated via indexed mirror/search extracts per the draft's disclosed access limitation, consistent with SOURCES.md note): amphora 1839,1109.1 shows Poseidon with trident and Hephaestus with double axe; calyx-krater 1856,1213.1 shows Ares in helmet, cuirass, chiton, greaves, mantle, shield and spear (matches the draft's itemized list); amphora 1861,0425.50 shows Dionysus with ivy wreath/branch and Poseidon with trident. All four headed sections (Poseidon/Hephaestus/Ares/Dionysus) are substantively taught and each claim is supported by a source; no unsupported absolutes, no invented licenses, no extensive verbatim quoting (paraphrase throughout). Greek-vs-Roman naming caveats (Neptune/Vulcan/Mars/Bacchus) are accurate and correctly scoped to the Greek question. No answer ambiguity: Poseidon is the only option tied to sea/Sounion.\n\nbuild.py gate checks (manually verified, not run as import/publish): status=draft, body_ru word count 571 (>=100), no literal backslash-n paragraph-escape bug (real newlines present), 5 source_links (within 2-5 range), all HTTPS with title/supports/accessed, question_refs revision matches bundle.\n\nVerdict: accept. No rework needed; sources support all four explanations and the revision/options match the live bundle.",
+          "article_id": "question:greek-002",
+          "article_sha256": "f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73"
+        }
+      },
+      "actual_response": {
+        "acceptance": "ActualnewClaude review callback with exactdraft SHA256 and article canonicalhash, source evidence/limitations; independently solve question andcheck all4 explanatory sections. No guessedfacts or keychanges.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\greek002-distractors-20261015.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Review one canonical-shaped draft forGreek002 after prior pilotreview placeholder-note anomaly. Actualnewdraft statusdraft, contentunchanged. Fresh source-backed factual/answer/distractor review before export279. No edits/import/deploy.",
+        "created_at": 1792020722.9584634,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-aa94be7df7df4c9f80c0ee84412190ee",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "study/question_articles/drafts/greek002-distractors-20261015.json",
+            "docs/rewrite-agents/tasks/DISTRACTOR_GREEK002_20261014/articles.json",
+            "docs/rewrite-agents/tasks/DISTRACTOR_GREEK002_20261014/SOURCES.md"
+          ],
+          "summary": "One canonical-shaped Greek002 pilot, statusnormalizeddraft only; body/refs/sourcesunchanged. Export278unchanged, production58unchanged. Requires fresh exactcanonicalhash sourcefactreview before import279."
+        },
+        "root_task_id": "task-aa94be7df7df4c9f80c0ee84412190ee",
+        "run_id": "run-9e889b66da8e421cad7c0221daf1c35f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Independent fresh canonical Greek002 distractor article review",
+        "version": 4,
+        "reviewer": "session-72819b6c399841b4b862c171276e094b",
+        "review_note": ""
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as accepted. Summary:\n\n- **Independent solve**: from public stem/options alone, Poseidon is the only option tied to the sea/Cape Sounion temple — matches `private_grading` (`greek-002-opt-2`), and the draft's `question_refs.revision_sha256` matches the live bundle exactly.\n- **Hashes**: `article_hash` (canonical JSON per `build.py`) = `f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73`; raw draft file bytes SHA256 = `8b37a77bb2f1da221f65e449af111a11efee17ea1bcedddaed3a2438a83f48ae`.\n- **Sources**: Met essay and This is Athens fetched directly and confirmed the claims; the three British Museum pages returned 403 on direct fetch (as disclosed in the draft's `SOURCES.md`) but were corroborated via an Oxford CARC mirror and search-indexed catalogue extracts — all matched the draft's attribute descriptions (Poseidon's trident, Hephaestus's double axe, Ares's full panoply, Dionysus's ivy).\n- **Quality gates**: all four headed sections substantively taught, no unsupported absolutes or invented quotes, correct Greek/Roman name scoping, and `build.py` structural requirements (word count, newline encoding, 2–5 sourced links, revision match) all check out.\n\nVerdict: **accept**, no rework needed. No files were edited, imported, or published.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "16c6571c76616415553f007af75832e0ffac31a9c6ee8a9be0e0d7cce6c48aa5",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
