@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,subprocess,hashlib
+r=Path('C:/ap/quiz_master');d=r/'docs/rewrite-agents/tasks/SCREEN_SONG_REVIEW_20261014';out=r/'docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014';old=json.loads((d/'actual-local-browser-proof.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+receipts=[]
+for args in [['close'],['session','info','--json']]:
+ p=subprocess.run(['agent-browser.cmd','--session','screen-song-root-6866608-20261014','--namespace','quiz-master',*args],cwd=r,capture_output=True,text=True,timeout=30)
+ receipts.append({'command':args,'actual_exit':p.returncode,'stdout':p.stdout,'stderr':p.stderr});assert p.returncode==0
+assert json.loads(receipts[-1]['stdout'])['data']['active'] is False
+proof=dict(old,frozen_source={'git_revision':old['frozen_source']},actual_clean_ui_answers=old['actual_ui_score'],actual_clean_server_score=old['actual_server_score'],new_article_sheets_opened_closed=old['article_sheets_opened_closed'],source_controls_each=old['source_buttons_each'],clean_qa_flow_actual_exit=0,named_agent_browser_close_exit=receipts[0]['actual_exit'],named_agent_browser_session_inactive=True,shutdown_method='owned Windows TerminateProcess',server_wrapper_actual_exit=old['server_wrapper_exit'],all_captured_owned_pids_gone=old['owned_processes_gone'],screen_song_fixture_answer_rows=old['actual_saved_answers'],fixture_processes_gone_verified=old['owned_processes_gone'],named_agent_browser_close_scope='Final idempotent close AFTER captured own hung browser tree was force-cleaned. Initial active-session close timed out; this does not relabel that attempt as passing.',final_idempotent_close_receipts=receipts,original_root_browser_proof_sha256=sha(d/'actual-local-browser-proof.json'))
+(out/'browser-proof.json').write_text(json.dumps(proof,indent=2)+'\n')
+(out/'root-local-browser-verification.json').write_text(json.dumps({'actual_frozen_source':old['frozen_source'],'root_visually_inspected_four_questions_four_source_footers_score4':old['root_visually_inspected_all_four_questions_and_source_footers_and_result'],'native_artifact_hashes_verified':True,'browser_proof_sha256':sha(out/'browser-proof.json'),'scope':'Actual Root local UI/SQLite4/4 and photographed footer verification. Final close is idempotent after forced owned cleanup; initial timeout retained. No public release yet.'},indent=2)+'\n')
+print('Actual browser binding written with explicit initial close timeout and final idempotent close0; no normal-active-close claim.')

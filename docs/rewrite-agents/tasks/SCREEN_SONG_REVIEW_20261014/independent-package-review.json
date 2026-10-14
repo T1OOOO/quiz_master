@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e6d2a8b0cb9a4521bc47037422030977": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e6d2a8b0cb9a4521bc47037422030977",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review of exact Screen Song release/QA files, different-provider (Claude Sonnet 5). Verified: ArchiveSHA64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df (sha256sum on actual .tar.gz, matches claim). release-pins.json sha256=d8255bd8e85776e0fccdc22cbeb2da09d04e0871250fd2c3e0bcf92324de00ff (matches package-current.json's release_pins_sha256 cross-ref). package-current.json sha256=7b3e14ee42014588c498ef47eb986b895434a2de558d13d54e5d1a03fe00677a. browser-proof.json sha256=020a00fca36bf1c9f348e33bc487893336c05d31b1231844ce48cc26fdd3b6f3 (matches root-local-browser-verification.json's browser_proof_sha256 cross-ref). root-local-browser-verification.json sha256=742741a7fbd0751e4a05a584748e18c4e4038b155c9cc46508df982da4e9ecae. Also independently confirmed build_evidence_sha256, source_review.sha256, export_review.sha256 in release-pins.json all exactly match actual-flutter-builds.json/independent-actual-integration.json/independent-export-review.json live files. Ran the explicitly-permitted read-only `prepare_remote.py --verify-package` (no SSH/prepare/publish) -> LOCAL_PACKAGE_VERIFIED with matching archive_sha256; this independently re-derives archive/stage/manifest member-by-member parity, binary/asset pins, raw/canonical/private-grading URI-only revision parity, and confirms no runtime source changed since the frozen commit via git diff. Counts consistent everywhere: target 135/4064/264, preserved baseline 134/4060/260, cache 11->12, staging_canonical_questions=160 (matches instructed targets; rehearsal's 55 New Year/215 graded/13 histories correctly NOT claimed done, listed under remaining_gates). Read prepare_screen_song_release.py/prepare_remote.py/publish_prepared.py/save_execution_acceptance.py directly: prepare-only guard enforced (exactly one 'quiz_mode=prepare' anchor, no 'helm upgrade' in prefix), real publish path requires execution-packet.json/execution-acceptance.json (absent) plus independent different-provider acceptance binding publish_script_sha256 before any helm upgrade/curl verification - no premature-publish risk found. Browser lifecycle evidence is honest: initial active-session close/session-info timeout is disclosed and explicitly NOT relabeled as a passing close; only the final idempotent close (after forced cleanup of the captured own 36408 descendant tree, PIDs/ports confirmed gone) returns 0/inactive - matches instructions, no fabricated clean initial close. Prior different-provider source/export reviews (independent-actual-integration.json, independent-export-review.json) are ACCEPTED with reviewer!=assignee and their evidence hashes match the pins. One residual gap I did not re-close myself: the 4 canonical_article_sha256 per-article sub-hashes were not recomputed by me this turn; I rely on the existing two-reviewer chain (first flagged unresolved due to sandbox limits, second independently recomputed and matched) rather than a fresh derivation. Not certified by this review: copied-DB rehearsal, image/Helm/server rehearsal, or any public HTTPS/production publication - all still gated and correctly unexecuted."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Different-provider actual package/code/localQA acceptance with archive/fullpins/browser/fullfile review hashes, concrete defects if any. Does not certify unexecuted copiedDB or remote image.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_REVIEW_20261014",
+          "C:\\ap\\quiz_master\\.run\\screen_song_package_20261014\\package-v1"
+        ],
+        "assignee": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "author": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "body": "Root built real package64e50bf... from frozen686, two actual Flutter outputs, accepted source/export/controller reviews. Actual RootUI/SQLite4/4, articles8sourcebuttons, original browserclose timeout/forcedownedcleanup retained and finalidempotentclose0/inactive. Independently review exact package, full pins, preservation/private grading and honest lifecycle scope; no remote preparation or publication yet.",
+        "created_at": 1791945205.8453574,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e6d2a8b0cb9a4521bc47037422030977",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/package-current.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/release-pins.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/browser-proof.json"
+          ],
+          "summary": "Actual immutable package archive64e50bf9... target135/4064/264 runtime12/160, preserves prior134/4060/260 cache11. Actual --verify-package0; source686 pushed; twoFlutterbuilds0; RootUI andSQLite4/4, all4footers inspected. Initialactivebrowserclose timeout preserved, ownedtreeforced cleanup verified; final idempotentclose0+inactive. No prepare/DBimage/pub yet."
+        },
+        "root_task_id": "task-e6d2a8b0cb9a4521bc47037422030977",
+        "run_id": "run-726306c28db1400488b84fcf34f86fc3",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-daf7a160a06e4dd296b441c1bb3dd160",
+        "title": "Screen Song immutable package and actual local QA release review",
+        "version": 4,
+        "reviewer": "session-c3e7feb1de01415b851c795a15c9a894",
+        "review_note": "Independent read-only review of exact Screen Song release/QA files, different-provider (Claude Sonnet 5). Verified: ArchiveSHA64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df (sha256sum on actual .tar.gz, matches claim). release-pins.json sha256=d8255bd8e85776e0fccdc22cbeb2da09d04e0871250fd2c3e0bcf92324de00ff (matches package-current.json's release_pins_sha256 cross-ref). package-current.json sha256=7b3e14ee42014588c498ef47eb986b895434a2de558d13d54e5d1a03fe00677a. browser-proof.json sha256=020a00fca36bf1c9f348e33bc487893336c05d31b1231844ce48cc26fdd3b6f3 (matches root-local-browser-verification.json's browser_proof_sha256 cross-ref). root-local-browser-verification.json sha256=742741a7fbd0751e4a05a584748e18c4e4038b155c9cc46508df982da4e9ecae. Also independently confirmed build_evidence_sha256, source_review.sha256, export_review.sha256 in release-pins.json all exactly match actual-flutter-builds.json/independent-actual-integration.json/independent-export-review.json live files. Ran the explicitly-permitted read-only `prepare_remote.py --verify-package` (no SSH/prepare/publish) -> LOCAL_PACKAGE_VERIFIED with matching archive_sha256; this independently re-derives archive/stage/manifest member-by-member parity, binary/asset pins, raw/canonical/private-grading URI-only revision parity, and confirms no runtime source changed since the frozen commit via git diff. Counts consistent everywhere: target 135/4064/264, preserved baseline 134/4060/260, cache 11->12, staging_canonical_questions=160 (matches instructed targets; rehearsal's 55 New Year/215 graded/13 histories correctly NOT claimed done, listed under remaining_gates). Read prepare_screen_song_release.py/prepare_remote.py/publish_prepared.py/save_execution_acceptance.py directly: prepare-only guard enforced (exactly one 'quiz_mode=prepare' anchor, no 'helm upgrade' in prefix), real publish path requires execution-packet.json/execution-acceptance.json (absent) plus independent different-provider acceptance binding publish_script_sha256 before any helm upgrade/curl verification - no premature-publish risk found. Browser lifecycle evidence is honest: initial active-session close/session-info timeout is disclosed and explicitly NOT relabeled as a passing close; only the final idempotent close (after forced cleanup of the captured own 36408 descendant tree, PIDs/ports confirmed gone) returns 0/inactive - matches instructions, no fabricated clean initial close. Prior different-provider source/export reviews (independent-actual-integration.json, independent-export-review.json) are ACCEPTED with reviewer!=assignee and their evidence hashes match the pins. One residual gap I did not re-close myself: the 4 canonical_article_sha256 per-article sub-hashes were not recomputed by me this turn; I rely on the existing two-reviewer chain (first flagged unresolved due to sandbox limits, second independently recomputed and matched) rather than a fresh derivation. Not certified by this review: copied-DB rehearsal, image/Helm/server rehearsal, or any public HTTPS/production publication - all still gated and correctly unexecuted."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as **ACCEPTED** (task-e6d2a8b0cb9a4521bc47037422030977, version 4, reviewer session-c3e7feb1de01415b851c795a15c9a894).\n\n**Verdict: ACCEPT, error_count=0.**\n\nIndependently verified (no edits/SSH/browser/rebuild/images/DB/publication touched):\n- Archive SHA matches exactly: `64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df` (computed via `sha256sum` on the actual `.tar.gz`).\n- `release-pins.json` sha256 `d8255bd8...` and `browser-proof.json` sha256 `020a00fc...` both cross-check against their references in `package-current.json`/`root-local-browser-verification.json`.\n- `package-current.json` sha256 `7b3e14ee...`, `root-local-browser-verification.json` sha256 `742741a7...`.\n- `build_evidence_sha256`, `source_review.sha256`, `export_review.sha256` in `release-pins.json` all match the live review/build files exactly.\n- Ran the explicitly-permitted read-only `prepare_remote.py --verify-package` → `LOCAL_PACKAGE_VERIFIED`, re-deriving archive/stage/manifest parity, binary/asset pins, raw↔canonical↔private-grading URI-only revision parity, and confirming no source drift since the frozen commit.\n- Counts consistent everywhere (135/4064/264 target, 134/4060/260 preserved, cache 11→12, 160 canonical staging questions); the rehearsal's 55 New Year/215 graded/13 histories is correctly **not** claimed as done.\n- Read the controller scripts directly: prepare-only guard enforced, real publish is gated behind execution-acceptance artifacts that don't yet exist plus independent acceptance binding the publish script hash — no premature-publish risk.\n- Browser lifecycle evidence is honestly reported: the initial active-session close/session-info timeout is disclosed, not relabeled as a pass; only the final idempotent close after forced cleanup returns 0/inactive.\n\nOne disclosed limitation: I did not personally recompute the 4 `canonical_article_sha256` per-article sub-hashes this turn — I relied on the existing two-reviewer chain (one flagged it unresolved, the next independently recomputed and matched it). Nothing here certifies the unexecuted copied-DB rehearsal, image/Helm rehearsal, or public HTTPS publication.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "6317910ffcb407828b7dc81490c4ee8910bc209c43e33e445addbf00890c88b9",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

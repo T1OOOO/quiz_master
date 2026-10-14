@@ -1,0 +1,41 @@
+{
+  "status": "LOCAL_PURE_GUARDS_PASS",
+  "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+  "commands": [
+    {
+      "command": "python negative_checks.py",
+      "exit_code": 0,
+      "result": "Five controllers compiled; missing pins reject; a fully shaped inert Actor51 fixture reaches and rejects at 'fresh final Screen Song source'; a fully shaped inert malformed digest fixture reaches and rejects at 'full SHA256'; no target pins were embedded or loaded."
+    },
+    {
+      "command": "python -m unittest -v test_pins.py",
+      "exit_code": 0,
+      "result": "5 tests passed: missing file and incomplete pins remain distinct; fully shaped Actor51 fixture rejects specifically at 'fresh final Screen Song source'; fully shaped malformed digest fixture rejects specifically at 'full SHA256'; genuine fresh 6866608 source reaches the deliberately absent real-review-file gate and is not accepted."
+    },
+    {
+      "command": "python -m unittest -v test_receipt_counts.py",
+      "exit_code": 0,
+      "result": "1 pure test passed: future receipt target counts are 135/4064/264 and distinct from preserved Actor51 134/4060/260 fields."
+    }
+  ],
+  "controller_sha256": {
+    "negative_checks.py": "915175e6f980c015debfd5e1fb12beb5d01b715db33a100c8181c13dc8321023",
+    "prepare_remote.py": "e6567ccc3186e8302cf8c53d9f279f5257b8ffc79c942153d372db3f542ada37",
+    "prepare_screen_song_release.py": "8ca76d1e020e3ae823de6630565362389388345108acafe3e98bbbb539882b10",
+    "publish_prepared.py": "b54c2aa5191fae08679793c90b0a53dbb1cda7a1f3576c0ea3c3d933b9f5e179",
+    "save_execution_acceptance.py": "83478cdea42b9f8841ffa9cdbf3a6cf460c6b6f97616256ff90b493aaa4771e7",
+    "test_pins.py": "d4e06c148e49a96f1eb0ae6dbb7ae6cb074704c5c7b6d821c885343b8dbcbbfa",
+    "test_receipt_counts.py": "88120470a20e9baef0e3be634b30a8b661e3e1cb34eb9dc1aecf82fae721bc38"
+  },
+  "operations_not_run": [
+    "package", "build", "browser", "SSH", "database", "image", "Helm", "publication", "Git", "Beads"
+  ],
+  "remaining_gates": [
+    "fresh source, export, asset, production/QA build, and independent review pins",
+    "independent controller review",
+    "Root-owned package and release gates"
+  ],
+  "pre_rework_snapshot": "local-verification.pre-pin-fixture-rework.json",
+  "pre_target_count_correction_snapshot": "local-verification.pre-target-count-correction.json",
+  "fixture_scope": "All shaped fixtures are inert invalid pin objects. No accepted review proof, build output, valid package, or release operation was created."
+}

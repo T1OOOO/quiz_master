@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed\\prepare_screen_song_release.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\release-pins.json",
+    "--repo",
+    "C:\\ap\\quiz_master",
+    "--frozen-commit",
+    "6866608bd7c20ceff2b454970b315eaee86329a9",
+    "--production-web",
+    "C:\\ap\\quiz_master\\.run\\screen_song_build_20261014\\production-web",
+    "--qa-web",
+    "C:\\ap\\quiz_master\\.run\\screen_song_build_20261014\\qa-web",
+    "--output-root",
+    "C:\\ap\\quiz_master\\.run\\screen_song_package_20261014\\package-v1",
+    "--prior-archive",
+    "C:\\ap\\quiz_master\\.run\\acting_craft_controller_repaired_20261014\\package-v1\\quiz-2026.10.14-acting-craft-83748f5.tar.gz"
+  ],
+  "actual_exit": 0,
+  "stdout": "{\"status\": \"PREPARED_NOT_EXECUTED\", \"build_id\": \"quiz-2026.10.14-screen-song-6866608\", \"stage\": \"C:\\\\ap\\\\quiz_master\\\\.run\\\\screen_song_package_20261014\\\\package-v1\\\\quiz-2026.10.14-screen-song-6866608\", \"archive\": \"C:\\\\ap\\\\quiz_master\\\\.run\\\\screen_song_package_20261014\\\\package-v1\\\\quiz-2026.10.14-screen-song-6866608.tar.gz\", \"archive_sha256\": \"64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df\", \"counts\": {\"packs\": 135, \"questions\": 4064, \"reader_articles\": 264, \"preserved_catalog_rows\": 134, \"preserved_questions\": 4060, \"preserved_article_objects\": 260, \"baseline_cache_entries\": 11, \"runtime_cache_entries\": 12, \"screen_song_questions\": 4, \"staging_canonical_questions\": 160, \"home_alone_questions\": 25}}\n",
+  "stderr": ""
+}

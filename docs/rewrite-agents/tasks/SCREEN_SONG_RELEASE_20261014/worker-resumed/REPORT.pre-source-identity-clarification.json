@@ -1,0 +1,49 @@
+{
+  "status": "CONTROLLERS_READY_PINS_WITHHELD",
+  "scope": "Fail-closed local controller preparation only; no package or release operation was run.",
+  "baseline": {
+    "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+    "source_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+    "archive_sha256": "9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934",
+    "image": "docker.io/library/quiz-master@sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961"
+  },
+  "expected_target_only": {
+    "packs": 135,
+    "questions": 4064,
+    "reader_articles": 264,
+    "runtime_caches": 12,
+    "canonical_questions": 160,
+    "graded_questions": 215,
+    "practice_histories": 13
+  },
+  "preservation_guards": {
+    "catalog_rows": 134,
+    "reader_articles": 260,
+    "runtime_caches": 11,
+    "music_title_exceptions": false
+  },
+  "required_before_package": [
+    "fresh full source, asset, build, and review pins",
+    "actual independent source/export review",
+    "actual production and QA build evidence"
+  ],
+  "not_performed": [
+    "source mutation", "package creation", "Go or Dart build", "browser run",
+    "SSH, database, image, Helm, publication, Git, Beads, or acceptance write"
+  ],
+  "pin_fixture_rework": {
+    "pre_rework_snapshot": "REPORT.pre-pin-fixture-rework.json",
+    "reason": "The first negative fixtures stopped at incomplete shape checks and did not prove the intended source-reuse or SHA guards.",
+    "current_checks": [
+      "Actor51 fully shaped inert fixture rejects with fresh final Screen Song source",
+      "fully shaped inert non-hash fixture rejects with full SHA256"
+    ],
+    "positive_package_or_review_proof_created": false
+  },
+  "target_receipt_count_correction": {
+    "pre_correction_snapshot": "REPORT.pre-target-count-correction.json",
+    "target_counts": {"packs": 135, "questions": 4064, "reader_articles": 264},
+    "preserved_baseline_counts": {"catalog_rows": 134, "questions": 4060, "reader_articles": 260},
+    "scope": "Only the future package receipt's target fields changed. No package was created."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite",
+  "backup_sha256": "33f26c5620de2270d29d6b30158e3fbb02a7cd8fc6de345edd627b0edcfa45dc",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      147,
+      147,
+      719,
+      260,
+      15337,
+      1470
+    ],
+    "post_migration_counts": [
+      147,
+      147,
+      719,
+      395,
+      15337,
+      1470
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 12,
+    "canonical_questions": 160,
+    "newyear_questions": 55,
+    "total_graded": 215,
+    "practice_finished": 13
+  },
+  "copied_db_rehearsal_sha256": "54d3396213922f21ce72c1eb2ec850de999b093edfdaafd908723435f0a70f30",
+  "copy_rehearsal_finished_trials": 13,
+  "copy_rehearsal_score_sum": 215,
+  "helm_dryrun_sha256": "833f3d1e1f031facc2b0fc0ba6954ecee0f05df05ddf662a34cca733b8fedc2c",
+  "durable_archive_sha256": "df721bb780a7d4253dd6c5fa529cf2c1a389ae2c95b7794cb3145bff0a03dacb",
+  "disk_free_bytes": 7933739008,
+  "checked_utc": "2026-10-14T02:51:06.249805+00:00"
+}

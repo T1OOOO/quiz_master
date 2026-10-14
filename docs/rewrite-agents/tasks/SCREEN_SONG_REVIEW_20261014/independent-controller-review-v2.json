@@ -1,0 +1,96 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-6607c0340adb4b909a4894f2f3041183": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+          "verdict": "accept",
+          "note": "Reconsidered after clarification; earlier REWORK preserved as history, now superseded. Confirmed via diff (prior turn): prepare_screen_song_release.py's identity guard in load_required_pins is unchanged since my first pass — it excludes only BASELINE_SOURCE_COMMIT 83748f5 (Actor51), 'b80deb1...' (Actor-lineage checkpoint), and commits starting '25be93a' (named pre-integration checkpoint); it never blocked 6866608 generically. My earlier verdict wrongly read the old README wording as requiring 6866608 to be blocked. Updated README.md/REPORT.json now correctly state the guard excludes only Actor51 + 25be93a, and deliberately permits a fresh, independently reviewed source such as 6866608 subject to later real review/build/export gates — matching the code's actual unchanged behavior. New test_pins.py::test_fresh_reviewed_source_reaches_real_review_gate asserts frozen_commit=6866608bd7c20ceff2b454970b315eaee86329a9 passes identity and then fails closed with FileNotFoundError on the deliberately-absent review path, matching what I reproduced by hand in my first review. No fake proof, no new blacklist; code logic unchanged, only docs/tests corrected to describe it accurately. I did not re-run the pure tests in this resumed turn (no Bash tool available here) and am not inventing file hashes I did not compute myself. Did not audit independent-export-review.json/actual-flutter-builds.json/actual-local-browser-proof.json (separate folder/gate, out of scope); not certifying remote behavior, source/build/browser, or any package/publish action. Accepting: the gap I originally flagged was a documentation/expectation mismatch versus the already-correct code, not a code defect."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual corrected receipt fields and independent pure test targeting target/baseline counts; no fake pins or publication proof.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+          "C:\\ap\\quiz_master\\.run\\screen_song_controller_resumed_20261014"
+        ],
+        "assignee": "session-2444194421b34ea4aeb749a7451bbe49",
+        "author": "session-0c2f0c4df6dd4ce3b84533e4080bbbee",
+        "body": "Exclusive worker-resumed ownership: receipt target packs/questions/articles currently stale Actor51 values. Correct target135/4064/264 only, preserve baseline134/4060/260 and snapshot, meaningful pure receipt test. No package/build/browser/SSH/Git/Beads/publication.",
+        "created_at": 1791943800.4450817,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6607c0340adb4b909a4894f2f3041183",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/README.md",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/test_pins.py",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/REPORT.json",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/README.pre-source-identity-clarification.md",
+            "docs/rewrite-agents/tasks/SCREEN_SONG_RELEASE_20261014/worker-resumed/REPORT.pre-source-identity-clarification.json",
+            ".run/screen_song_controller_resumed_20261014/local-verification.json",
+            ".run/screen_song_controller_resumed_20261014/local-verification.pre-source-identity-clarification.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -m unittest -v test_pins.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+              "exit_code": 0,
+              "result": "5 tests passed, including inert 6866608 source identity reaching FileNotFoundError at the deliberate missing real-review path."
+            },
+            {
+              "command": "python negative_checks.py; python -m unittest -v test_receipt_counts.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\SCREEN_SONG_RELEASE_20261014\\worker-resumed",
+              "exit_code": 0,
+              "result": "Existing pure guards and target-vs-baseline receipt count test passed."
+            },
+            {
+              "command": "python -m json.tool REPORT.json; python -m json.tool C:\\ap\\quiz_master\\.run\\screen_song_controller_resumed_20261014\\local-verification.json",
+              "exit_code": 0,
+              "result": "Current report and receipt JSON valid."
+            }
+          ],
+          "hashes": {
+            "README.md": "5d6ec7526b6aae1920cc827de1fe80ea7f46d554082d5eb6d341c6054e1dda52",
+            "REPORT.json": "d1472afbe5cd1df39af51a10b58c517b0bcb88f762f552c01041fb42cd997f99",
+            "local-verification.json": "aebca039970e8201c2caf53c644278f2c9bd48e810300f2d0d487a1e61a2b0c5",
+            "test_pins.py": "d4e06c148e49a96f1eb0ae6dbb7ae6cb074704c5c7b6d821c885343b8dbcbbfa"
+          },
+          "remaining_concerns": [
+            "Fresh actual release pins and later Root-owned package/release gates were not exercised. Inert test supplies no review or acceptance proof."
+          ],
+          "status": "DONE",
+          "summary": "Clarified source terminology without blacklisting legitimate accepted Screen Song source 6866608. Added an inert test proving it passes identity validation only to fail at the absent real-review evidence gate."
+        },
+        "review_note": "Reconsidered after clarification; earlier REWORK preserved as history, now superseded. Confirmed via diff (prior turn): prepare_screen_song_release.py's identity guard in load_required_pins is unchanged since my first pass — it excludes only BASELINE_SOURCE_COMMIT 83748f5 (Actor51), 'b80deb1...' (Actor-lineage checkpoint), and commits starting '25be93a' (named pre-integration checkpoint); it never blocked 6866608 generically. My earlier verdict wrongly read the old README wording as requiring 6866608 to be blocked. Updated README.md/REPORT.json now correctly state the guard excludes only Actor51 + 25be93a, and deliberately permits a fresh, independently reviewed source such as 6866608 subject to later real review/build/export gates — matching the code's actual unchanged behavior. New test_pins.py::test_fresh_reviewed_source_reaches_real_review_gate asserts frozen_commit=6866608bd7c20ceff2b454970b315eaee86329a9 passes identity and then fails closed with FileNotFoundError on the deliberately-absent review path, matching what I reproduced by hand in my first review. No fake proof, no new blacklist; code logic unchanged, only docs/tests corrected to describe it accurately. I did not re-run the pure tests in this resumed turn (no Bash tool available here) and am not inventing file hashes I did not compute myself. Did not audit independent-export-review.json/actual-flutter-builds.json/actual-local-browser-proof.json (separate folder/gate, out of scope); not certifying remote behavior, source/build/browser, or any package/publish action. Accepting: the gap I originally flagged was a documentation/expectation mismatch versus the already-correct code, not a code defect.",
+        "reviewer": "session-66f7249e7ae844d2a686b87ba3ff351d",
+        "root_task_id": "task-6607c0340adb4b909a4894f2f3041183",
+        "run_id": "run-e9095e8db9dd4d81bc31bae6907b1212",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-daf7a160a06e4dd296b441c1bb3dd160",
+        "title": "Correct Screen Song package receipt target counts",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The review was submitted successfully via host_hub. Task state is now **ACCEPTED**.\n\n## Final report\n\n- **Verdict: accept** (task-6607c0340adb4b909a4894f2f3041183), state now `ACCEPTED`, version 7.\n- The host_hub tool was available this turn and the review submission succeeded (after re-joining the team, which was required: the fresh session needed `hub_connect` + `hub_team join` before `hub_task review` would accept it).\n- My prior REWORK verdict is preserved in task history, not erased; this accept supersedes it based on the clarified intent.\n- Basis for acceptance, from static review only (no Bash/interpreter execution available or attempted this turn, no fabricated hashes, no re-run tests):\n  - Diff done in an earlier turn showed `prepare_screen_song_release.py`'s identity guard in `load_required_pins` is unchanged: it excludes only `BASELINE_SOURCE_COMMIT` (`83748f5...`, Actor51), `b80deb1...` (Actor-lineage), and commits starting `25be93a` (named pre-integration checkpoint). It never generically blocked `6866608...`.\n  - My original REWORK rested on reading the old README text (\"rejects... the current checkpoint\") as requiring `6866608` to be blocked. The updated README.md/REPORT.json now state the guard intentionally excludes only Actor51 + the named `25be93a` checkpoint and permits a genuinely fresh, independently reviewed source like `6866608`, contingent on later real review/build/export gates — matching the code's actual behavior.\n  - The new `test_pins.py::test_fresh_reviewed_source_reaches_real_review_gate` asserts `frozen_commit=6866608bd7c20ceff2b454970b315eaee86329a9` passes identity validation and then fails closed with `FileNotFoundError` at the deliberately-absent review path — consistent with my earlier manual reproduction.\n  - No fake proof or new blacklist was added; only docs/tests were corrected.\n- Explicitly **not certified**: source/build/browser/remote correctness, or the contents of `independent-export-review.json`, `actual-flutter-builds.json`, `actual-local-browser-proof.json` (separate folder/gate, out of scope for this controller-only review). No package, build, SSH, or publish action was taken.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-6607c0340adb4b909a4894f2f3041183",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "37ceec0705d64a7e7489c79ea0f054b27dad9892533897a3b915fa3e350690e1",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

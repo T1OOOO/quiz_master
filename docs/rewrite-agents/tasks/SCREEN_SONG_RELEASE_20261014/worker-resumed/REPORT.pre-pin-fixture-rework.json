@@ -1,0 +1,34 @@
+{
+  "status": "CONTROLLERS_READY_PINS_WITHHELD",
+  "scope": "Fail-closed local controller preparation only; no package or release operation was run.",
+  "baseline": {
+    "build_id": "quiz-2026.10.14-acting-craft-83748f5",
+    "source_commit": "83748f5a467092302184bcbeee1bd1d7d4b964fa",
+    "archive_sha256": "9d9fdb8dff8ec88b51c8adcd987a093a3a10150cb7c6f7e667c89f416933c934",
+    "image": "docker.io/library/quiz-master@sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961"
+  },
+  "expected_target_only": {
+    "packs": 135,
+    "questions": 4064,
+    "reader_articles": 264,
+    "runtime_caches": 12,
+    "canonical_questions": 160,
+    "graded_questions": 215,
+    "practice_histories": 13
+  },
+  "preservation_guards": {
+    "catalog_rows": 134,
+    "reader_articles": 260,
+    "runtime_caches": 11,
+    "music_title_exceptions": false
+  },
+  "required_before_package": [
+    "fresh full source, asset, build, and review pins",
+    "actual independent source/export review",
+    "actual production and QA build evidence"
+  ],
+  "not_performed": [
+    "source mutation", "package creation", "Go or Dart build", "browser run",
+    "SSH, database, image, Helm, publication, Git, Beads, or acceptance write"
+  ]
+}
