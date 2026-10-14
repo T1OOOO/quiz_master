@@ -1,0 +1,61 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c3b090a1d3e144ff9c7b76f15a26c094": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c3b090a1d3e144ff9c7b76f15a26c094",
+          "verdict": "accept",
+          "note": "Independent fact-check of GEMINI_EIGHT_FACT_AUDIT_20261014, all 8 items re-verified via separate sources (not oscars.org, which remains blocked for both agents).\n\n1. cinema-people-001 (Spirited Away, 75th Oscars 2003 Animated Feature): CORRECT. Confirmed via Wikipedia \"75th Academy Awards\" + Hollywood Reporter; beat Ice Age/Lilo & Stitch/Spirit/Treasure Planet. Gemini's UNVERIFIED_SOURCE_BLOCKED status for oscars.org was honest, not overclaimed; resolvable via these alternates.\n2. cinema-people-005 (Bong Joon-ho, Best Director 92nd Oscars): CORRECT. Confirmed via Seattle Times/Consequence; beat Mendes/Scorsese/Phillips/Tarantino. Same oscars.org block, same resolution.\n3. cinema-people-013 (Gary Oldman as Dracula, 1992): CORRECT. Cast mapping (Ryder=Mina, Hopkins=Van Helsing, Reeves=Harker) matches IMDb/Fandom cross-check.\n4. cinema-people-021 (Mastroianni as journalist, La Dolce Vita): CORRECT. Wikipedia/BFI confirm Marcello Rubini is a tabloid journalist. Gemini's \"editorial concern\" (character forename matches option text) is a fair observation, not an error.\n5. music-people-001 (Aretha Franklin, first woman in Rock Hall, 1987): CORRECT, confirmed via History.com/AmericanSongwriter/Britannica independent of rockhall.com.\n6. music-people-005 (I Will Always Love You → Porter Wagoner): CORRECT, confirmed via Wikipedia/Newsweek.\n7. music-people-013 (Freddie Mercury born Farrokh Bulsara): CORRECT, confirmed via Wikipedia/Biography.com.\n8. music-people-021 (Sister Rosetta Tharpe, Gospel Train incl. Jericho + Precious Memories): CORRECT, Discogs/Wikipedia tracklist confirms both tracks on this album.\n\nNo factual or answer-key errors found in any of the 8 items; binding-check.json key/revision matches also hold.\n\nOne real but minor quality issue the report understates: its per-item \"heuristics\" character-length ranges are imprecise, e.g. item 1 claims options span \"13–19 characters\" but actual Cyrillic counts span 11–20; item 3 claims \"10–14\" but actual span is 10–15. Not an answer error, but the report states this as a checked fact with false precision — flag for correction, not rework.\n\nHub submission failure (session-owner mismatch after MCP restart) is corroborated by binding-check.json; no fabricated callback found. Scope: 8 items only, no bank-wide audit performed, no files/questions changed.\n\nReport hash verified present: c0467e482a420c6dc58cffa3d077d1f02b6cde8203638f85e382df9bd9745a46.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent evidence-based verdict on8findings, refs, primarysource access andoptions. Two blocked items resolved or explicit remaininguncertainty. No unsupported certainty, fakeHubcallback or publishededits.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\GEMINI_EIGHT_FACT_AUDIT_20261014"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root collected a genuine Gemini3.8Flash report for8published film/actor/music questions using MCPfetch. Six facts reportedverified andtwo sourceblocked; no factualerrors asserted, one editorialconcern. Actual report andeightitemsnapshot in GEMINI_EIGHT_FACT_AUDIT_20261014. Hubsubmissionfailed because MCPsession restarted; report NOT_ACCEPTED and not an all-bank audit. Prepare independentClaude factualreview of exact8 canonicalrefs, propersourceaccess, alloptions andarticles; resolveblockedtwo using primary/institutional alternatives orkeepunverified. No canonical/keys/Reader/UI/deploy changes.",
+        "created_at": 1792012158.646265,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c3b090a1d3e144ff9c7b76f15a26c094",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "Compare eight exact quiz/question/revision references and private answer keys",
+              "exit": 0,
+              "result": "8/8 matched; facts remain unaccepted"
+            }
+          ],
+          "limits": "Gemini primary-source claims6verified/2blocked require independent review; originalHub submitfailedidentity restart, notfaked.",
+          "report": "docs/rewrite-agents/tasks/GEMINI_EIGHT_FACT_AUDIT_20261014/gemini-report.json",
+          "status": "GEMINI_REPORT_COLLECTED_NOT_FACT_ACCEPTED"
+        },
+        "root_task_id": "task-c3b090a1d3e144ff9c7b76f15a26c094",
+        "run_id": "run-0462daddaa314be685d95cf33fb9f57b",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Verify Gemini eight-question audit and two blocked sources",
+        "version": 4,
+        "reviewer": "session-f0dd19b90eee46d9a99f8f691f91f332",
+        "review_note": "Independent fact-check of GEMINI_EIGHT_FACT_AUDIT_20261014, all 8 items re-verified via separate sources (not oscars.org, which remains blocked for both agents).\n\n1. cinema-people-001 (Spirited Away, 75th Oscars 2003 Animated Feature): CORRECT. Confirmed via Wikipedia \"75th Academy Awards\" + Hollywood Reporter; beat Ice Age/Lilo & Stitch/Spirit/Treasure Planet. Gemini's UNVERIFIED_SOURCE_BLOCKED status for oscars.org was honest, not overclaimed; resolvable via these alternates.\n2. cinema-people-005 (Bong Joon-ho, Best Director 92nd Oscars): CORRECT. Confirmed via Seattle Times/Consequence; beat Mendes/Scorsese/Phillips/Tarantino. Same oscars.org block, same resolution.\n3. cinema-people-013 (Gary Oldman as Dracula, 1992): CORRECT. Cast mapping (Ryder=Mina, Hopkins=Van Helsing, Reeves=Harker) matches IMDb/Fandom cross-check.\n4. cinema-people-021 (Mastroianni as journalist, La Dolce Vita): CORRECT. Wikipedia/BFI confirm Marcello Rubini is a tabloid journalist. Gemini's \"editorial concern\" (character forename matches option text) is a fair observation, not an error.\n5. music-people-001 (Aretha Franklin, first woman in Rock Hall, 1987): CORRECT, confirmed via History.com/AmericanSongwriter/Britannica independent of rockhall.com.\n6. music-people-005 (I Will Always Love You → Porter Wagoner): CORRECT, confirmed via Wikipedia/Newsweek.\n7. music-people-013 (Freddie Mercury born Farrokh Bulsara): CORRECT, confirmed via Wikipedia/Biography.com.\n8. music-people-021 (Sister Rosetta Tharpe, Gospel Train incl. Jericho + Precious Memories): CORRECT, Discogs/Wikipedia tracklist confirms both tracks on this album.\n\nNo factual or answer-key errors found in any of the 8 items; binding-check.json key/revision matches also hold.\n\nOne real but minor quality issue the report understates: its per-item \"heuristics\" character-length ranges are imprecise, e.g. item 1 claims options span \"13–19 characters\" but actual Cyrillic counts span 11–20; item 3 claims \"10–14\" but actual span is 10–15. Not an answer error, but the report states this as a checked fact with false precision — flag for correction, not rework.\n\nHub submission failure (session-owner mismatch after MCP restart) is corroborated by binding-check.json; no fabricated callback found. Scope: 8 items only, no bank-wide audit performed, no files/questions changed.\n\nReport hash verified present: c0467e482a420c6dc58cffa3d077d1f02b6cde8203638f85e382df9bd9745a46."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted to host_hub with verdict **accept** (task-c3b090a1d3e144ff9c7b76f15a26c094, state now ACCEPTED).\n\n**Findings:** All 8 items independently re-verified correct via sources other than Gemini's (Wikipedia, Hollywood Reporter, Seattle Times, Newsweek, Discogs, etc.), including the two oscars.org-blocked items (Spirited Away 2003, Bong Joon-ho 2020), which I was able to resolve via alternate institutional/secondary sources. No answer-key, option, or article errors found; binding-check.json's key/revision matches hold.\n\nOne minor quality gap: Gemini's \"heuristics\" claims about option character-length ranges are imprecise (e.g., claimed 13–19 chars for item 1, actual Cyrillic count is 11–20) — a false-precision issue, not a factual/key error, worth a correction note but not rework.\n\nThe disclosed Hub submission failure (session-owner mismatch after restart) checks out against binding-check.json — no fabricated callback. This was a read-only, 8-item spot audit; no bank-wide review, no edits, no file/question changes were made.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "79148bb0abe0a6882466dccf4ce7ab52a2c2b33e89d0603a1926e0b63bd80d85",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

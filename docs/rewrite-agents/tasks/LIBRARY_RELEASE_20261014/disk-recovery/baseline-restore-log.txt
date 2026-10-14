@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Короткие викторины: кино, гастрономия, природа и другие темы.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Quiz Master">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Quiz Master</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
+Rollback was a success! Happy Helming!
+{"name":"quiz-master","info":{"first_deployed":"2026-10-02T12:09:28.383714055+03:00","last_deployed":"2026-10-15T00:25:52.359274852+03:00","deleted":"","description":"Rollback to 54","status":"deployed"},"config":{"buildId":"quiz-2026.10.14-reader-17be4ce","feedbackAdminSecret":"quiz-feedback-admin","image":"docker.io/library/quiz-master@sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4"},"manifest":"---\n# Source: quiz-master/templates/app.yaml\napiVersion: networking.k8s.io/v1\r\nkind: NetworkPolicy\r\nmetadata: {name: quiz-isolation}\r\nspec:\r\n  podSelector: {matchLabels: {app: quiz-master}}\r\n  policyTypes: [Ingress, Egress]\r\n  ingress:\r\n    - from:\r\n        - namespaceSelector:\r\n            matchLabels: {kubernetes.io/metadata.name: ingress-system}\r\n      ports: [{protocol: TCP, port: 8080}]\r\n  egress: []\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: v1\r\nkind: PersistentVolumeClaim\r\nmetadata:\r\n  name: quiz-data\r\n  annotations:\r\n    helm.sh/resource-policy: keep\r\nspec:\r\n  accessModes: [ReadWriteOnce]\r\n  storageClassName: \"local-path\"\r\n  resources:\r\n    requests:\r\n      storage: \"1Gi\"\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: rbac.authorization.k8s.io/v1\r\nkind: Role\r\nmetadata: {name: traefik-ingress-reader}\r\nrules:\r\n  - apiGroups: [\"\"]\r\n    resources: [configmaps, services, secrets]\r\n    verbs: [get, list, watch]\r\n  - apiGroups: [\"\"]\r\n    resources: [pods]\r\n    verbs: [get]\r\n  - apiGroups: [discovery.k8s.io]\r\n    resources: [endpointslices]\r\n    verbs: [list, watch]\r\n  - apiGroups: [networking.k8s.io]\r\n    resources: [ingresses]\r\n    verbs: [get, list, watch]\r\n  - apiGroups: [networking.k8s.io]\r\n    resources: [ingresses/status]\r\n    verbs: [update]\r\n  - apiGroups: [traefik.io]\r\n    resources: [ingressroutes, ingressroutetcps, ingressrouteudps, middlewares, middlewaretcps, tlsoptions, tlsstores, traefikservices, serverstransports, serverstransporttcps]\r\n    verbs: [get, list, watch]\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: rbac.authorization.k8s.io/v1\r\nkind: RoleBinding\r\nmetadata: {name: traefik-ingress-reader}\r\nroleRef: {apiGroup: rbac.authorization.k8s.io, kind: Role, name: traefik-ingress-reader}\r\nsubjects:\r\n  - {kind: ServiceAccount, name: traefik, namespace: ingress-system}\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: v1\r\nkind: Service\r\nmetadata: {name: quiz-master}\r\nspec:\r\n  selector: {app: quiz-master}\r\n  ports: [{name: http, port: 80, targetPort: http}]\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: apps/v1\r\nkind: Deployment\r\nmetadata:\r\n  name: quiz-master\r\nspec:\r\n  replicas: 1\r\n  strategy:\r\n    type: Recreate\r\n  selector:\r\n    matchLabels: {app: quiz-master}\r\n  template:\r\n    metadata:\r\n      labels: {app: quiz-master}\r\n      annotations:\r\n        quiz-master/build-id: \"quiz-2026.10.14-reader-17be4ce\"\r\n    spec:\r\n      automountServiceAccountToken: false\r\n      terminationGracePeriodSeconds: 20\r\n      securityContext:\r\n        runAsNonRoot: true\r\n        runAsUser: 10001\r\n        runAsGroup: 10001\r\n        fsGroup: 10001\r\n        seccompProfile: {type: RuntimeDefault}\r\n      containers:\r\n        - name: api\r\n          image: \"docker.io/library/quiz-master@sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4\"\r\n          imagePullPolicy: IfNotPresent\r\n          command: [/app/api]\r\n          workingDir: /app\r\n          env:\r\n            - {name: QM_LISTEN_ADDR, value: \"127.0.0.1:8088\"}\r\n            - {name: QM_DATABASE_URL, value: \"sqlite:../data/quiz.db\"}\r\n            - {name: QM_CONTENT_BUNDLE_PATH, value: \"/app/quizzes\"}\r\n            - {name: QM_CONTENT_MANIFEST_PATH, value: \"/app/next/content/home-alone-1-part-1/manifest.json\"}\r\n            - {name: GOMAXPROCS, value: \"1\"}\r\n            - name: QM_FEEDBACK_ADMIN_TOKEN\r\n              valueFrom:\r\n                secretKeyRef:\r\n                  name: \"quiz-feedback-admin\"\r\n                  key: token\r\n          securityContext:\r\n            allowPrivilegeEscalation: false\r\n            readOnlyRootFilesystem: true\r\n            capabilities: {drop: [ALL]}\r\n          resources:\r\n            requests: {cpu: 50m, memory: 64Mi}\r\n            limits: {cpu: 500m, memory: 256Mi}\r\n          startupProbe:\r\n            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, \"http://127.0.0.1:8088/health/ready\"]}\r\n            periodSeconds: 2\r\n            failureThreshold: 30\r\n          readinessProbe:\r\n            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, \"http://127.0.0.1:8088/health/ready\"]}\r\n            periodSeconds: 10\r\n          livenessProbe:\r\n            exec: {command: [/bin/busybox, wget, -q, -O, /dev/null, \"http://127.0.0.1:8088/health/live\"]}\r\n            periodSeconds: 20\r\n          volumeMounts: [{name: data, mountPath: /data}]\r\n        - name: web\r\n          image: \"docker.io/library/quiz-master@sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4\"\r\n          imagePullPolicy: IfNotPresent\r\n          command: [nginx, -g, \"daemon off;\"]\r\n          ports: [{name: http, containerPort: 8080}]\r\n          securityContext:\r\n            allowPrivilegeEscalation: false\r\n            readOnlyRootFilesystem: true\r\n            capabilities: {drop: [ALL]}\r\n          resources:\r\n            requests: {cpu: 25m, memory: 32Mi}\r\n            limits: {cpu: 250m, memory: 128Mi}\r\n          readinessProbe:\r\n            httpGet: {path: /health/ready, port: http}\r\n            periodSeconds: 10\r\n          livenessProbe:\r\n            httpGet: {path: /health/live, port: http}\r\n            initialDelaySeconds: 30\r\n            periodSeconds: 20\r\n          volumeMounts: [{name: tmp, mountPath: /tmp}]\r\n      volumes:\r\n        - name: data\r\n          persistentVolumeClaim: {claimName: quiz-data}\r\n        - name: tmp\r\n          emptyDir: {sizeLimit: 64Mi}\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: networking.k8s.io/v1\r\nkind: Ingress\r\nmetadata:\r\n  name: quiz-master\r\n  annotations:\r\n    cert-manager.io/cluster-issuer: \"letsencrypt\"\r\n    traefik.ingress.kubernetes.io/router.entrypoints: websecure\r\n    traefik.ingress.kubernetes.io/router.middlewares: quiz-master-quiz-rate-limit@kubernetescrd\r\nspec:\r\n  ingressClassName: \"traefik\"\r\n  tls:\r\n    - hosts: [\"quiz.kotopedia.org\"]\r\n      secretName: quiz-master-tls\r\n  rules:\r\n    - host: \"quiz.kotopedia.org\"\r\n      http:\r\n        paths:\r\n          - path: /\r\n            pathType: Prefix\r\n            backend:\r\n              service: {name: quiz-master, port: {name: http}}\n---\n# Source: quiz-master/templates/app.yaml\napiVersion: traefik.io/v1alpha1\r\nkind: Middleware\r\nmetadata: {name: quiz-rate-limit}\r\nspec:\r\n  rateLimit: {average: 20, burst: 40}\n","version":57,"namespace":"quiz-master"}

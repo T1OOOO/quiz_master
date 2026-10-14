@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-b2d22c6a0e794191bced5b9dc4b4b5b5": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-b2d22c6a0e794191bced5b9dc4b4b5b5",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Reviewed release_disk_guard.py + test_release_disk_guard.py standalone (not yet wired into old publisher). SHA256: release_disk_guard.py=9ff152103eee99f229d2c16fa785d8b02690a4885c955bf1620c6d0bfd195aec; test_release_disk_guard.py=689aada7c6b95292ec0d7d07d83e35c635c47d0c4e8f94d0024f324427e23f77. Ran `python -m unittest test_release_disk_guard -v` locally: 3/3 tests pass (healthy_headroom, old_four_gigabyte_guard_is_insufficient, pressure_not_ready_missing_and_taint). validate() correctly requires Ready=True, DiskPressure=False, and absence of node.kubernetes.io/disk-pressure taint per node, raising AssertionError (not swallowed) on any node missing/failing a condition or on empty node list. Headroom guard is max(total//5, 4_000_000_000) i.e. 20% of disk or 4GB floor, a real improvement over the old flat 4GB-only check (test proves 5GB avail on 100GB total now fails where old guard would pass). __main__ block correctly calls GET https://quiz.kotopedia.org/health/ready and asserts status==200 and empty body. Gap: only validate() has unit coverage; the live kubectl/disk_usage/urllib wiring in __main__ is exercised only via disk-recovery/ evidence, not unit tests. Cross-checked disk-recovery/ evidence: disk-guard-live.txt + disk-guard-live-exit.json show actual guard run exiting 1 with AssertionError: Insufficient disk headroom, matching recovery-status.json (guard_actual_exit=1, status=BASELINE_RESTORED_CANDIDATE_NOT_PUBLISHED). feedback-after-restore.json shows all 29 feedback rows status=open, matching recovery-status.json's all_29_feedback_preserved_open=true -- consistent, no discrepancy found. baseline-restore-exit.json, owned-disk-recovery-exit.json, owned-docker-tag-recovery-exit.json all show actual_exit=0, consistent with a clean rollback to helm revision 57. LIMITATIONS (must be stated, not glossed over): this guard is a point-in-time check only -- it cannot guarantee against concurrent disk consumption by other processes/pods between the check and the actual image pull/write, and its 20%/4GB thresholds are a hardcoded assumption, not read from the node's actual kubelet --eviction-hard/--eviction-soft imagefs.available config, so it will mismatch any cluster with non-default kubelet thresholds. This review covers the script quality only. Per recovery-status.json, historical publication approval54 is obsolete after recovery57; this review does NOT approve publication, and the guard is not yet integrated into the old publisher.",
+          "errors": []
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent Claude review of exact guard bytes and tests, actual callback and explicit limitations; no publication approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root recovered Quiz Master baseline as Helm57 after DiskPressure eviction and failed upgrade55/rollback56. Review minimal read-only preflight guard and tests; no deployment, no file edits. Verify preserved feedback and honest blocked retry record.",
+        "created_at": 1792013230.7180238,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-b2d22c6a0e794191bced5b9dc4b4b5b5",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/release_disk_guard.py",
+            "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/test_release_disk_guard.py",
+            "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/recovery-status.json",
+            "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/disk-recovery"
+          ],
+          "summary": "Standalone read-only disk guard: 3 tests pass; live guard refuses insufficient headroom. Baseline Helm57 restored, all29 feedback unchanged. Not integrated into old historical publisher; no retry approved."
+        },
+        "root_task_id": "task-b2d22c6a0e794191bced5b9dc4b4b5b5",
+        "run_id": "run-0b3ec4fde5354b40aa9107c05b5c1b64",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Review release disk guard and production recovery evidence",
+        "version": 4,
+        "reviewer": "session-99188e82cf8843cd86c9cbcd40bec360",
+        "review_note": "Reviewed release_disk_guard.py + test_release_disk_guard.py standalone (not yet wired into old publisher). SHA256: release_disk_guard.py=9ff152103eee99f229d2c16fa785d8b02690a4885c955bf1620c6d0bfd195aec; test_release_disk_guard.py=689aada7c6b95292ec0d7d07d83e35c635c47d0c4e8f94d0024f324427e23f77. Ran `python -m unittest test_release_disk_guard -v` locally: 3/3 tests pass (healthy_headroom, old_four_gigabyte_guard_is_insufficient, pressure_not_ready_missing_and_taint). validate() correctly requires Ready=True, DiskPressure=False, and absence of node.kubernetes.io/disk-pressure taint per node, raising AssertionError (not swallowed) on any node missing/failing a condition or on empty node list. Headroom guard is max(total//5, 4_000_000_000) i.e. 20% of disk or 4GB floor, a real improvement over the old flat 4GB-only check (test proves 5GB avail on 100GB total now fails where old guard would pass). __main__ block correctly calls GET https://quiz.kotopedia.org/health/ready and asserts status==200 and empty body. Gap: only validate() has unit coverage; the live kubectl/disk_usage/urllib wiring in __main__ is exercised only via disk-recovery/ evidence, not unit tests. Cross-checked disk-recovery/ evidence: disk-guard-live.txt + disk-guard-live-exit.json show actual guard run exiting 1 with AssertionError: Insufficient disk headroom, matching recovery-status.json (guard_actual_exit=1, status=BASELINE_RESTORED_CANDIDATE_NOT_PUBLISHED). feedback-after-restore.json shows all 29 feedback rows status=open, matching recovery-status.json's all_29_feedback_preserved_open=true -- consistent, no discrepancy found. baseline-restore-exit.json, owned-disk-recovery-exit.json, owned-docker-tag-recovery-exit.json all show actual_exit=0, consistent with a clean rollback to helm revision 57. LIMITATIONS (must be stated, not glossed over): this guard is a point-in-time check only -- it cannot guarantee against concurrent disk consumption by other processes/pods between the check and the actual image pull/write, and its 20%/4GB thresholds are a hardcoded assumption, not read from the node's actual kubelet --eviction-hard/--eviction-soft imagefs.available config, so it will mismatch any cluster with non-default kubelet thresholds. This review covers the script quality only. Per recovery-status.json, historical publication approval54 is obsolete after recovery57; this review does NOT approve publication, and the guard is not yet integrated into the old publisher."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and accepted by the hub (state: ACCEPTED).\n\n```json\n{\n  \"task_id\": \"task-b2d22c6a0e794191bced5b9dc4b4b5b5\",\n  \"verdict\": \"accept\",\n  \"tests\": \"3/3 passed (python -m unittest test_release_disk_guard)\",\n  \"sha256\": {\n    \"release_disk_guard.py\": \"9ff152103eee99f229d2c16fa785d8b02690a4885c955bf1620c6d0bfd195aec\",\n    \"test_release_disk_guard.py\": \"689aada7c6b95292ec0d7d07d83e35c635c47d0c4e8f94d0024f324427e23f77\"\n  },\n  \"findings\": \"validate() correctly checks Ready/DiskPressure/taint per node and 20%-or-4GB headroom (improvement over old flat 4GB); /health/ready check requires status 200 and empty body; disk-recovery evidence shows guard_actual_exit=1 matching recovery-status.json; 29/29 feedback rows confirmed open in both recovery-status.json and feedback-after-restore.json\",\n  \"limitations_stated\": \"guard is point-in-time only, cannot prevent concurrent disk consumption between check and image pull, and hardcodes 20%/4GB thresholds rather than reading actual kubelet eviction config\",\n  \"publication_approved\": false,\n  \"note\": \"standalone preflight script, not yet integrated into old publisher; approval54 obsolete after recovery57\"\n}\n```",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "45a41903b7269acbcdc8f44de12674e85cc321b9e16a00c9e66fdff11ef52751",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

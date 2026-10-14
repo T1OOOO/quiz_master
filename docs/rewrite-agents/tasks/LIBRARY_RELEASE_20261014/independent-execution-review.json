@@ -1,0 +1,63 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1b436d92277c476f8d741a6e2b109eee": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1b436d92277c476f8d741a6e2b109eee",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 execution review, verified from scratch via host_hub (not from pasted text). Confirmed task-1b436d92277c476f8d741a6e2b109eee genuinely SUBMITTED, assignee=author=session-27aed86cfdf24a7ca4f3872e17b6d4b4, scope docs/.../LIBRARY_RELEASE_20261014. Confirmed prior source/dependency review (task-c3e8ae33288347d497490feca3466db5) is genuinely ACCEPTED on the hub (reviewer session-f0d054e653e8459b9a4db7accfd164f1, error_count 0) - source acceptance alone, correctly treated as insufficient here.\n\nIndependently recomputed sha256 of: publish-preview.sh(45a6a64e2...), remote-prepare-log.txt(4954150e3...), render_library_publish.py(67208a24...), prepare_library_remote.py/test_prepare_library_remote.py/prepare_remote_mixed.py, browser-proof.json(5b9649ba0...), package archive quiz-2026.10.14-library-09b19cc.tar.gz(7d9d6c647...) - ALL MATCH execution-packet.json/remote-preparation-verification.json. Executor publish_library.py actual sha256=9dffa0838bb5a3b1320abe4db81adc295e119d51bc8ca33bc34b7bee422835a8 (not previously pinned; recorded here as its own hash per task instructions - not executed).\n\nremote-guard/prepare/collect exit=0 (remote-v1). native-quiescence-check.log is genuine raw corroboration (tasklist PID 37584/49136 absent, ports 19090/19093 no listeners) for the browser-cleanup claim a prior review flagged as unverified - gap now resolved. Flutter production build main.dart.js sha256 0c34332e3... matches exactly what publish-preview.sh checks at publish time. git diff 09b19cc..HEAD over next/quizzes/metadata/study/question_articles is empty - no drift since freeze. Live repo question-articles.json actually has 278 articles/159 refs, matching claimed counts exactly (not fabricated). No execution-acceptance.json, publish-log.txt or publish-exit.json exist - confirms genuinely PREPARED_NOT_PUBLISHED, no premature publish.\n\nInspected (not executed) publish_library.py: correctly gates on this exact hub ACCEPT with assignee!=reviewer plus exact packet/script/archive/image hash equality before any SSH/helm step; then does fresh backup, helm lint/template/dry-run, one atomic helm upgrade --atomic --wait, and HTTPS post-verification. No bypass found.\n\nLimitations: did not independently recount full 136-pack/4084-question catalog (relied on receipt-internal consistency + prior accepted review); browser proof's own stated scope is mixed20 fixture only, not all 136 packs or the raw container image. Read-only review only; no builds/browser/SSH/deploy/edits performed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent actual execution acceptance of exact packet/script/archive/image/executor and preserved baseline54/feedback/all data, or concrete rework. Source acceptance alone insufficient. No reviewer builds/browser/SSH/deploy/edit, no actualpublicationclaimed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Root has actually prepared the immutable library candidate from baseline54. Review exact local/remote receipts and inert publication script/executor. Archive7d9d6c64763a64b811d942a9df3cdc489a4fc39a11ac8d628165e0636649791f, image4878f824f4b0fb23fa20a8f246541ca4dfa7a1750715f64176cfba4faead0a50, source09b19cc/library09b19cc. Actual remote guard/prepare/collector exits0;335 copied-data graded/15finishes with oldAPIrollback/history preserved, raw image100LOT+20mixed scored fully and all157 Readerbindings checked; backup0600/integrityok, durableimage/dryrun/cache/sourceDBunchanged/cleanup. Root creates publication self-hash executor and frozen packet; different-provider must inspect actual logs andsourcehashes beforeRootpublishes. No review presumed.",
+        "created_at": 1792011285.172205,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1b436d92277c476f8d741a6e2b109eee",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "Reviewed remote prepare and collector",
+              "exit": 0,
+              "result": "335 copied-data answers/15 finishes, immutable raw image100LOT+20mixed and157exact Reader refs, rollback/history unchanged, backup0600, dry-run/durable image verified"
+            }
+          ],
+          "executor": ".run/library_release_20261014/publish_library.py",
+          "packet": "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/execution-packet.json",
+          "published": false,
+          "script": "docs/rewrite-agents/tasks/LIBRARY_RELEASE_20261014/publish-preview.sh",
+          "status": "PREPARED_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-1b436d92277c476f8d741a6e2b109eee",
+        "run_id": "run-2fc0ca8ca68e47feb04f8a39c529266a",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Independent execution review for prepared library release55",
+        "version": 4,
+        "reviewer": "session-49d7f2bff3014591b7c2d548c1571269",
+        "review_note": "Independent Claude Sonnet 5 execution review, verified from scratch via host_hub (not from pasted text). Confirmed task-1b436d92277c476f8d741a6e2b109eee genuinely SUBMITTED, assignee=author=session-27aed86cfdf24a7ca4f3872e17b6d4b4, scope docs/.../LIBRARY_RELEASE_20261014. Confirmed prior source/dependency review (task-c3e8ae33288347d497490feca3466db5) is genuinely ACCEPTED on the hub (reviewer session-f0d054e653e8459b9a4db7accfd164f1, error_count 0) - source acceptance alone, correctly treated as insufficient here.\n\nIndependently recomputed sha256 of: publish-preview.sh(45a6a64e2...), remote-prepare-log.txt(4954150e3...), render_library_publish.py(67208a24...), prepare_library_remote.py/test_prepare_library_remote.py/prepare_remote_mixed.py, browser-proof.json(5b9649ba0...), package archive quiz-2026.10.14-library-09b19cc.tar.gz(7d9d6c647...) - ALL MATCH execution-packet.json/remote-preparation-verification.json. Executor publish_library.py actual sha256=9dffa0838bb5a3b1320abe4db81adc295e119d51bc8ca33bc34b7bee422835a8 (not previously pinned; recorded here as its own hash per task instructions - not executed).\n\nremote-guard/prepare/collect exit=0 (remote-v1). native-quiescence-check.log is genuine raw corroboration (tasklist PID 37584/49136 absent, ports 19090/19093 no listeners) for the browser-cleanup claim a prior review flagged as unverified - gap now resolved. Flutter production build main.dart.js sha256 0c34332e3... matches exactly what publish-preview.sh checks at publish time. git diff 09b19cc..HEAD over next/quizzes/metadata/study/question_articles is empty - no drift since freeze. Live repo question-articles.json actually has 278 articles/159 refs, matching claimed counts exactly (not fabricated). No execution-acceptance.json, publish-log.txt or publish-exit.json exist - confirms genuinely PREPARED_NOT_PUBLISHED, no premature publish.\n\nInspected (not executed) publish_library.py: correctly gates on this exact hub ACCEPT with assignee!=reviewer plus exact packet/script/archive/image hash equality before any SSH/helm step; then does fresh backup, helm lint/template/dry-run, one atomic helm upgrade --atomic --wait, and HTTPS post-verification. No bypass found.\n\nLimitations: did not independently recount full 136-pack/4084-question catalog (relied on receipt-internal consistency + prior accepted review); browser proof's own stated scope is mixed20 fixture only, not all 136 packs or the raw container image. Read-only review only; no builds/browser/SSH/deploy/edits performed."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "## Review complete — verdict: **ACCEPT**\n\nTask `task-1b436d92277c476f8d741a6e2b109eee` (\"Independent execution review for prepared library release55\") is now `ACCEPTED` (version 4) on `host_hub`, reviewed by my session `session-49d7f2bff3014591b7c2d548c1571269` (Claude Sonnet 5, provider anthropic), team `team-a32157792ef74ebda086a7f97cc7abb1`.\n\n**What I did:** Connected to host_hub with my real identity/workspace, joined the team, pulled the actual task record straight from the hub (not from pasted text — I had to page through task history by `created_at` to find it, since `list`/`candidates` filters didn't narrow results). Verified the prior source/dependency review (`task-c3e8ae33...`) is genuinely `ACCEPTED` on the hub, not just claimed.\n\n**Independently recomputed and matched** sha256 for: `publish-preview.sh`, `remote-prepare-log.txt`, `render_library_publish.py`, the three worker helper files, `browser-proof.json`, and the package archive (`7d9d6c64...`) — all matched the pinned values in `execution-packet.json`/`remote-preparation-verification.json`. Also hashed the publication executor `publish_library.py` itself (`9dffa083...`, previously unpinned) and recorded it in the review note as requested, without executing it.\n\n**Corroborated against the live repo, not just receipts:** `git diff` between the frozen commit and HEAD over the protected paths is empty (no drift); `next/apps/quiz_app/assets/study/question-articles.json` actually has 278 articles / 159 refs, matching claims exactly; the production Flutter build's `main.dart.js` hash matches what `publish-preview.sh` checks at publish time; `native-quiescence-check.log` is genuine raw tasklist/netstat evidence that resolves a gap a prior review had flagged as unverified (browser-cleanup PIDs/ports).\n\n**Confirmed no premature action:** no `execution-acceptance.json`, `publish-log.txt`, or `publish-exit.json` exist — the release is genuinely `PREPARED_NOT_PUBLISHED`. Inspected (did not run) `publish_library.py`: it correctly gates the SSH/Helm publish step on an exact hub ACCEPT from a different session plus exact hash equality of packet/script/archive/image — no bypass found.\n\n**Limitations I flagged in the review note:** I didn't independently recount the full 136-pack/4,084-question catalog (relied on receipt-internal consistency plus the prior accepted review); the browser proof's own disclosed scope is a mixed20 fixture, not all 136 packs or the raw container image. This was a read-only review — no builds, browser, SSH, deploy, or repo edits were performed, and I did not run the publication step myself.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "b552a87afabd56b0a84101fa36f33abaf417c1fb52f76e40185f4a35b3ec3dc6",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

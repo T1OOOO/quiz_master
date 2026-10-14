@@ -1,0 +1,501 @@
+{
+  "session": {
+    "current_session_id": "session-22d29c4ad1fb41edafee222ebacc1468",
+    "accepted_run_session_id": "session-164d5f62e3dd420d8865863f0cf917a0",
+    "provider": "antigravity",
+    "model": "gemini-3.8-flash",
+    "identity_status": "DIFFERENT_SESSION_AFTER_SERVER_RESTART"
+  },
+  "task_id": "task-e4268d5835944ac394d041e11a0ed0b5",
+  "run_id": "run-1ef4d21948a14112bc09a256ebd9fc80",
+  "hub_submission_result": {
+    "submitted": false,
+    "error": "running task owner/assignee required",
+    "reason": "Task was accepted by session-164d5f62e3dd420d8865863f0cf917a0 in the prior turn. An MCP server restart spawned a new connection session-22d29c4ad1fb41edafee222ebacc1468, which host_hub rejects as not the assigned running task owner."
+  },
+  "audit_summary": {
+    "total_questions": 8,
+    "verified_with_primary_sources": 6,
+    "unverified_due_to_access_blocks": 2,
+    "factual_errors_found": 0,
+    "editorial_concerns": 1
+  },
+  "questions": [
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-001",
+      "revision_sha256": "40fcdc839ef38248b739c8b2c2281fb2c87e8e9e3958b2d3bbe50530873d1a35",
+      "stem": "Какой фильм получил «Оскар» за лучший анимационный полнометражный фильм на церемонии 2003 года?",
+      "correct_answer": {
+        "correct_option_id": "cinema-people-001-opt-1",
+        "text": "Унесённые призраками"
+      },
+      "answer_verification": {
+        "status": "UNVERIFIED_SOURCE_BLOCKED",
+        "intended_key_match": true,
+        "detail": "Consistent with historical records and matching Reader article, but marked UNVERIFIED via direct primary fetch because oscars.org returned HTTP 403 on robots.txt for autonomous MCP fetching."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "cinema-people-001-opt-1",
+            "text": "Унесённые призраками",
+            "role": "Correct answer (75th Academy Awards winner, March 2003)"
+          },
+          {
+            "option_id": "cinema-people-001-opt-2",
+            "text": "Ледниковый период",
+            "role": "Plausible distractor (actual 2003 Oscar nominee for 2002 releases)"
+          },
+          {
+            "option_id": "cinema-people-001-opt-3",
+            "text": "Лило и Стич",
+            "role": "Plausible distractor (actual 2003 Oscar nominee for 2002 releases)"
+          },
+          {
+            "option_id": "cinema-people-001-opt-4",
+            "text": "Планета сокровищ",
+            "role": "Plausible distractor (actual 2003 Oscar nominee for 2002 releases)"
+          }
+        ],
+        "plausibility": "Excellent. All four options are real nominees from the same category at the 75th ceremony. A fifth nominee, 'Spirit: Stallion of the Cimarron', is accurately noted in the reader article.",
+        "heuristics": "Lengths are well-balanced (13–19 characters); no parenthetical hints, no stylistic outliers."
+      },
+      "article_assessment": {
+        "article_id": "quiz:cinema-people-20261011:cinema-people-001",
+        "title_ru": "«Унесённые призраками» на 75-й церемонии",
+        "assessment": "Accurately distinguishes the ceremony date (March 23, 2003) from film release year (2002). Clarifies that while Hayao Miyazaki is named in Academy records, the award belongs to the feature film itself."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/2003/Z?qt-honorees=1",
+          "accessed": false,
+          "limitations": "Blocked: oscars.org returned HTTP 403 on robots.txt for autonomous MCP fetch.",
+          "supported_claims": "N/A"
+        }
+      ],
+      "recommended_changes": "None. Keep existing text and distractors."
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-005",
+      "revision_sha256": "ac8d05f432750b20363943b57d63aeef19132d26062361209c7a9330fe46d014",
+      "stem": "Кто получил «Оскар» за режиссуру фильма «Паразиты»?",
+      "correct_answer": {
+        "correct_option_id": "cinema-people-005-opt-1",
+        "text": "Пон Джун-хо"
+      },
+      "answer_verification": {
+        "status": "UNVERIFIED_SOURCE_BLOCKED",
+        "intended_key_match": true,
+        "detail": "Consistent with historical records and matching Reader article, but marked UNVERIFIED via direct primary fetch because oscars.org returned HTTP 403 on robots.txt for autonomous MCP fetching."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "cinema-people-005-opt-1",
+            "text": "Пон Джун-хо",
+            "role": "Correct answer (Best Director winner, 92nd Academy Awards 2020)"
+          },
+          {
+            "option_id": "cinema-people-005-opt-2",
+            "text": "Сэм Мендес",
+            "role": "Plausible distractor (nominated for '1917' at 92nd Oscars)"
+          },
+          {
+            "option_id": "cinema-people-005-opt-3",
+            "text": "Мартин Скорсезе",
+            "role": "Plausible distractor (nominated for 'The Irishman' at 92nd Oscars)"
+          },
+          {
+            "option_id": "cinema-people-005-opt-4",
+            "text": "Тодд Филлипс",
+            "role": "Plausible distractor (nominated for 'Joker' at 92nd Oscars)"
+          }
+        ],
+        "plausibility": "High. All 4 choices were nominated for Directing at the 92nd Academy Awards (along with Quentin Tarantino).",
+        "heuristics": "Homogeneous names, uniform structure, no parenthetical or grammatical clues."
+      },
+      "article_assessment": {
+        "article_id": "quiz:cinema-people-20261011:cinema-people-005",
+        "title_ru": "Пон Джун-хо: режиссура среди наград «Паразитов»",
+        "assessment": "Pedagogically strong. Distinguishes Best Picture (credited to producers/film) from Directing (credited to Bong Joon Ho), lists all four of the film's Oscar wins, and names the competing directing nominees."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/2020/R",
+          "accessed": false,
+          "limitations": "Blocked: oscars.org returned HTTP 403 on robots.txt for autonomous MCP fetch.",
+          "supported_claims": "N/A"
+        }
+      ],
+      "recommended_changes": "None. Distractor selection and factual basis are sound."
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-013",
+      "revision_sha256": "08d98099c5cb854321ab72a3290003f917b1ba89c510da7bb9cf09e359e563e2",
+      "stem": "Кто исполнил роль Дракулы в фильме Фрэнсиса Форда Копполы «Дракула Брэма Стокера» 1992 года?",
+      "correct_answer": {
+        "correct_option_id": "cinema-people-013-opt-2",
+        "text": "Гэри Олдман"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via AFI Catalog (ID 67037) and Sony Pictures official film page: Gary Oldman stars as Count Dracula / Vlad Draculea in Francis Ford Coppola's 1992 production."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "cinema-people-013-opt-1",
+            "text": "Киану Ривз",
+            "role": "Plausible distractor (Jonathan Harker in the same film)"
+          },
+          {
+            "option_id": "cinema-people-013-opt-2",
+            "text": "Гэри Олдман",
+            "role": "Correct answer (Count Dracula)"
+          },
+          {
+            "option_id": "cinema-people-013-opt-3",
+            "text": "Энтони Хопкинс",
+            "role": "Plausible distractor (Professor Abraham Van Helsing in the same film)"
+          },
+          {
+            "option_id": "cinema-people-013-opt-4",
+            "text": "Ричард Э. Грант",
+            "role": "Plausible distractor (Dr. Jack Seward in the same film)"
+          }
+        ],
+        "plausibility": "Exceptional. All options are prominent actors from the same 1992 ensemble cast, preventing trivial process of elimination by era or genre.",
+        "heuristics": "Balanced lengths (10–14 characters), grammatically identical nominative Russian forms, no parentheticals."
+      },
+      "article_assessment": {
+        "article_id": "quiz:cinema-people-20261011:cinema-people-013",
+        "title_ru": "Дракула в версии Копполы",
+        "assessment": "Accurately maps each actor to their role in the film per the AFI Catalog and Sony Pictures archival descriptions."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/67037",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Coppola directed 1992 film; Gary Oldman cast as Dracula; Winona Ryder as Mina; Anthony Hopkins as Van Helsing; Keanu Reeves as Harker."
+        },
+        {
+          "url": "https://www.sonypictures.com/movies/bramstokersdracula",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "1992 Columbia Pictures release; highlights Gary Oldman's metamorphosis as Dracula alongside Ryder and Hopkins."
+        }
+      ],
+      "recommended_changes": "None."
+    },
+    {
+      "quiz_id": "cinema-people-20261011",
+      "question_id": "cinema-people-021",
+      "revision_sha256": "2c6b4c9576205e72b423e4fe51eef825aabf6b04b4bd904d8b8b352952be9108",
+      "stem": "Какой актёр сыграл журналиста в фильме Федерико Феллини «Сладкая жизнь»?",
+      "correct_answer": {
+        "correct_option_id": "cinema-people-021-opt-2",
+        "text": "Марчелло Мастроянни"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via BFI feature and catalog entry: Marcello Mastroianni plays tabloid journalist Marcello Rubini in Federico Fellini's 1960 'La dolce vita'."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "cinema-people-021-opt-1",
+            "text": "Витторио Гассман",
+            "role": "Plausible distractor (leading Italian dramatic/comedy star of the era)"
+          },
+          {
+            "option_id": "cinema-people-021-opt-2",
+            "text": "Марчелло Мастроянни",
+            "role": "Correct answer (Marcello Rubini)"
+          },
+          {
+            "option_id": "cinema-people-021-opt-3",
+            "text": "Альберто Сорди",
+            "role": "Plausible distractor (leading Italian star; starred in Fellini's 'I Vitelloni')"
+          },
+          {
+            "option_id": "cinema-people-021-opt-4",
+            "text": "Нино Манфреди",
+            "role": "Plausible distractor (leading Italian comedy/drama star of the era)"
+          }
+        ],
+        "plausibility": "High. The four choices represent the top four leading actors of Italian post-war cinema.",
+        "heuristics": "Minor editorial note: The character's name in the film is Marcello Rubini, so a test-taker knowing the character name has a slight naming hint, though the role and character were written specifically by Fellini for Mastroianni."
+      },
+      "article_assessment": {
+        "article_id": "quiz:cinema-people-20261011:cinema-people-021",
+        "title_ru": "Неделя Марчелло в Риме",
+        "assessment": "Rich and accurate. Details the 7-episode narrative arc, the Trevi Fountain and Via Veneto studio recreation, the co-stars (Anita Ekberg, Anouk Aimée), and how the character of Paparazzo introduced the word into global vocabulary."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://www.bfi.org.uk/film/85387dcd-04ae-50fe-b860-89be5a907115/la-dolce-vita",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Fellini directed 1960 film; Marcello Mastroianni plays tabloid journalist; co-stars Anita Ekberg and Anouk Aimée; origin of 'paparazzi'."
+        },
+        {
+          "url": "https://www.bfi.org.uk/features/dolce-vita-federico-fellini-rome-locations",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Marcello Rubini (Marcello Mastroianni) navigates Rome over seven episodes; details Parco degli Acquedotti, Fontana del Nettuno, and Trevi sequences."
+        }
+      ],
+      "recommended_changes": "None."
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-001",
+      "revision_sha256": "b2991adee756879aaf8448aed6b14d3c9f4e39285707ea7a084c8fe33eee96ab",
+      "stem": "Кто стала первой женщиной, введённой в Rock & Roll Hall of Fame?",
+      "correct_answer": {
+        "correct_option_id": "music-people-001-opt-2",
+        "text": "Арета Франклин"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via Rock & Roll Hall of Fame official inductee page and 1987 class roster: Aretha Franklin was inducted in 1987 as the first woman in the institution's history."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "music-people-001-opt-1",
+            "text": "Тина Тёрнер",
+            "role": "Plausible distractor (inducted with Ike Turner in 1991, solo in 2021)"
+          },
+          {
+            "option_id": "music-people-001-opt-2",
+            "text": "Арета Франклин",
+            "role": "Correct answer (inducted 1987)"
+          },
+          {
+            "option_id": "music-people-001-opt-3",
+            "text": "Джанис Джоплин",
+            "role": "Plausible distractor (inducted in 1995)"
+          },
+          {
+            "option_id": "music-people-001-opt-4",
+            "text": "Патти Смит",
+            "role": "Plausible distractor (inducted in 2007)"
+          }
+        ],
+        "plausibility": "Strong. All four are inducted female rock/soul icons. Roster checks confirm the inaugural 1986 class had zero women, making 1987's induction of Franklin the historical first.",
+        "heuristics": "Lengths are completely uniform (11–14 characters), 2 words each, no parentheticals."
+      },
+      "article_assessment": {
+        "article_id": "quiz:music-people-20261011:music-people-001",
+        "title_ru": "Первая женщина в Rock Hall",
+        "assessment": "Accurately frames the question as an institutional milestone (1987) rather than subjective praise, citing her 1967 recording of 'Respect'."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://rockhall.com/inductees/aretha-franklin/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Aretha Franklin was the first woman inducted into the Rock & Roll Hall of Fame (class of 1987)."
+        },
+        {
+          "url": "https://rockhall.com/inductees/classes/1987/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Aretha Franklin is the sole female inductee of the 1987 class; 1986 inaugural class contained no female inductees."
+        }
+      ],
+      "recommended_changes": "None."
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-005",
+      "revision_sha256": "1a367d78e14954792708428e5230be28e1d9f84465585a087bb98166aeee5770",
+      "stem": "Кому Долли Партон посвятила I Will Always Love You как прощальный подарок после завершения дуэта?",
+      "correct_answer": {
+        "correct_option_id": "music-people-005-opt-2",
+        "text": "Портеру Вагонеру"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via Rock & Roll Hall of Fame Dolly Parton inductee page: written in 1973 as a parting gift to TV star Porter Wagoner upon ending their 7-year duet partnership."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "music-people-005-opt-1",
+            "text": "Кенни Роджерсу",
+            "role": "Plausible distractor (celebrated duet partner on 'Islands in the Stream')"
+          },
+          {
+            "option_id": "music-people-005-opt-2",
+            "text": "Портеру Вагонеру",
+            "role": "Correct answer (7-year TV duet partner)"
+          },
+          {
+            "option_id": "music-people-005-opt-3",
+            "text": "Карлу Дину",
+            "role": "Plausible distractor (Dolly Parton's husband)"
+          },
+          {
+            "option_id": "music-people-005-opt-4",
+            "text": "Джонни Кэшу",
+            "role": "Plausible distractor (legendary country contemporary)"
+          }
+        ],
+        "plausibility": "Very high. The stem contains the vital qualifier 'после завершения дуэта', cleanly distinguishing Porter Wagoner from her husband Carl Dean and later collaborator Kenny Rogers.",
+        "heuristics": "Consistent dative case endings in Russian, balanced option lengths, no parentheticals."
+      },
+      "article_assessment": {
+        "article_id": "quiz:music-people-20261011:music-people-005",
+        "title_ru": "Прощальная песня Долли Партон",
+        "assessment": "Accurately traces the song's genesis in 1973, its initial release on the 1974 'Jolene' LP, its 1982 chart return, and Whitney Houston's 1992 cover."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://rockhall.com/inductees/dolly-parton/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "In 1973 ended seven-year partnership as Porter Wagoner's duet partner; parting gift was 'I Will Always Love You'."
+        },
+        {
+          "url": "https://www.dollyparton.com/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Confirms Parton's official career milestones and discography."
+        }
+      ],
+      "recommended_changes": "None."
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-013",
+      "revision_sha256": "67cc9525c484d2210f4855a5e1410aeb0418320d0e6a923ae4e7b5255b4c63f9",
+      "stem": "Под каким именем родился Фредди Меркьюри?",
+      "correct_answer": {
+        "correct_option_id": "music-people-013-opt-3",
+        "text": "Фаррух Булсара"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via Queen Online and Freddie Mercury Official Biography: born Farrokh Bulsara on September 5, 1946 in Zanzibar."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "music-people-013-opt-1",
+            "text": "Роджер Меддоуз-Тейлор",
+            "role": "Plausible distractor (full birth name of Queen drummer Roger Taylor)"
+          },
+          {
+            "option_id": "music-people-013-opt-2",
+            "text": "Брайан Гарольд Мэй",
+            "role": "Plausible distractor (full birth name of Queen guitarist Brian May)"
+          },
+          {
+            "option_id": "music-people-013-opt-3",
+            "text": "Фаррух Булсара",
+            "role": "Correct answer (birth name of Freddie Mercury)"
+          },
+          {
+            "option_id": "music-people-013-opt-4",
+            "text": "Джон Ричард Дикон",
+            "role": "Plausible distractor (full birth name of Queen bassist John Deacon)"
+          }
+        ],
+        "plausibility": "Clever craft. The distractors are the real middle-and-full names of his three Queen bandmates, providing an authentic cohort of names that tests genuine biographical knowledge without artificial filler.",
+        "heuristics": "Matched 3-word/2-word Russian transliterated names; no giveaway length differences."
+      },
+      "article_assessment": {
+        "article_id": "quiz:music-people-20261011:music-people-013",
+        "title_ru": "Имя до сцены",
+        "assessment": "Accurately recounts his birth in Zanzibar to Bomi and Jer Bulsara, schooling at St. Peter's in India, 1964 move to Middlesex, and study at Ealing College of Art."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://www.queenonline.com/freddie_mercury",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Real Name: Farrokh Bulsara; born Zanzibar September 5, 1946; family moved to Middlesex in 1964; studied at Ealing College of Art; joined with Roger Taylor, Brian May, John Deacon."
+        },
+        {
+          "url": "https://freddiemercury.com/bio/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Born Farrokh Bulsara on September 5, 1946 on the island of Zanzibar; piano lessons at St Peter's school."
+        }
+      ],
+      "recommended_changes": "None."
+    },
+    {
+      "quiz_id": "music-people-20261011",
+      "question_id": "music-people-021",
+      "revision_sha256": "2e86864d2495e192a5c846a5325da47109e9186202f76b144cfbe79774c5b212",
+      "stem": "Какая певица записала альбом Gospel Train с композициями Jericho и Precious Memories?",
+      "correct_answer": {
+        "correct_option_id": "music-people-021-opt-1",
+        "text": "Розетта Тарп"
+      },
+      "answer_verification": {
+        "status": "VERIFIED",
+        "intended_key_match": true,
+        "detail": "Directly confirmed via Rock & Roll Hall of Fame inductee profile and Library & Archives catalogue record 200039663: Sister Rosetta Tharpe recorded the album 'Gospel train' (1956), featuring 'Jericho' and 'Precious memories'."
+      },
+      "all_options_assessment": {
+        "options": [
+          {
+            "option_id": "music-people-021-opt-1",
+            "text": "Розетта Тарп",
+            "role": "Correct answer (Sister Rosetta Tharpe, 1956 album)"
+          },
+          {
+            "option_id": "music-people-021-opt-2",
+            "text": "Махалия Джексон",
+            "role": "Plausible distractor (foremost gospel singer of the same era)"
+          },
+          {
+            "option_id": "music-people-021-opt-3",
+            "text": "Мейвис Стейплс",
+            "role": "Plausible distractor (prominent gospel and soul singer, The Staple Singers)"
+          },
+          {
+            "option_id": "music-people-021-opt-4",
+            "text": "Арета Франклин",
+            "role": "Plausible distractor (recorded landmark gospel albums e.g. Amazing Grace)"
+          }
+        ],
+        "plausibility": "Excellent. All four are preeminent Black female gospel and soul artists. Jackson, Staples, and Franklin recorded extensive gospel catalogs, making them natural and plausible distractors for a gospel train concept.",
+        "heuristics": "Consistent naming, matching length, no giveaways."
+      },
+      "article_assessment": {
+        "article_id": "quiz:music-people-20261011:music-people-021",
+        "title_ru": "Gospel Train и гитара Розетты Тарп",
+        "assessment": "Accurately covers her guitar pioneer status (Gibson Les Paul Custom), her 1938 Cotton Club performance, and the tracklist of 'Gospel train'."
+      },
+      "sources_accessed": [
+        {
+          "url": "https://rockhall.com/inductees/sister-rosetta-tharpe/",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Characterizes Tharpe as rock & roll's first guitar heroine, Gibson Les Paul Custom, and 1938 Cotton Club appearance."
+        },
+        {
+          "url": "https://catalog.rockhall.com/rrhof-ais/Details/fullCatalogue/200039663",
+          "accessed": true,
+          "limitations": "None.",
+          "supported_claims": "Rock Hall catalog entry for 'Gospel train', Statement of Responsibility: Sister Rosetta Tharpe; tracklist contains 'Jericho' and 'Precious memories'."
+        }
+      ],
+      "recommended_changes": "None."
+    }
+  ]
+}

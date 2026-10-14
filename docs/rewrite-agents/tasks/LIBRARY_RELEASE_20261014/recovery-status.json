@@ -1,0 +1,15 @@
+{
+  "status": "BASELINE_RESTORED_CANDIDATE_NOT_PUBLISHED",
+  "helm_revision": 57,
+  "helm_status": "deployed",
+  "build": "quiz-2026.10.14-reader-17be4ce",
+  "articles": 272,
+  "candidate_articles": 278,
+  "failed_upgrade": 55,
+  "failed_atomic_rollback": 56,
+  "all_29_feedback_preserved_open": true,
+  "guard_actual_exit": 1,
+  "guard_failure": "Insufficient disk headroom",
+  "issue": "quiz_master-7sw",
+  "next": "Require stable disk headroom, rebind publication to baseline57, fresh independent execution review, increase SSH timeout to cover upgrade plus rollback, then verify public mobile browser. Current preview54 and acceptance are historical and must not be reused."
+}

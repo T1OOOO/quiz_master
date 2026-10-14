@@ -1,0 +1,11 @@
+{
+  "status": "PUBLICATION_FAILED_NOT_PUBLISHED",
+  "actual_publication_wrapper_exit": 1,
+  "failure": "Atomic upgrade55 timed out because shared server DiskPressure taint prevented scheduling; rollback56 also unable to schedule. SSH wrapper300s timed out; not interpreted as success.",
+  "published_candidate_verified": false,
+  "production_image_retained": "sha256:ac4fd7624a22762d2c169c748b8553e1fd31247db7125038b0c72e0afec9bdd4",
+  "feedback_count": 29,
+  "feedback_statuses": "allOPEN unchanged",
+  "recovery": "Archive and hash-verify only obsolete QuizMaster extracted releases; preserve54/53/candidate directories, original compressed archives and all DB backups. No shared taint/broker/foreign resource changes.",
+  "remaining": "Restore healthy old service and independently re-review a new baseline before retrying candidate"
+}
