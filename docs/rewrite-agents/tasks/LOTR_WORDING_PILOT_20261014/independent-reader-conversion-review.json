@@ -1,0 +1,62 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e1fde62a88e542edb3b075fc3ad7ea76": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e1fde62a88e542edb3b075fc3ad7ea76",
+          "verdict": "accept",
+          "note": "Independent Claude read-only review of the Root Reader conversion for lotr-return-king-bts-100 (rk-93, rk-95 only). reader-conversion-proof.json supplied bindings (NOT independently recomputed by me): draft whole-file SHA256 = bb5e6ef7b8a871a8d1808fd7635832cf79b05a31f0b8f871d7f42bed61f4a732 (study/question_articles/drafts/lotr-return-king-repair-20261014.json); canonical article hashes = question:lotr-rk-93 482be865b726693d6a1630a9336c74ab576d5ee874b6b979512313703e2f541a, question:lotr-rk-95 ce4463b8fc9d67e6dcd6639313b67f1129478588634407ca84d15a7503d0251f. Reader article_refs cite revision_sha256 4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4 (rk-93) and 36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513 (rk-95) — these match exactly the runtime_projection revision hashes recorded in integration-proof.json for the same two questions, confirming the Reader refs are bound to the runtime projection (not the local/source canonical revision, which legitimately differs only by source URI: /app/... vs relative). unchanged_export_sha256 shows the actual shipped Reader export (question-articles.json) and catalog.json are untouched — this is a scratch/draft+snapshot-only change, no publication. approved_body_words_preserved_except_paragraph_whitespace flag is true per proof; snapshot_metadata_refresh records the prior snapshot SHA (98b9cc86...) and explains the refresh reason (candidate timestamp correction only, 06:12 actual build time, not a future/fabricated value), with all question/public/private fields and Reader draft bytes otherwise unchanged. Independent Claude41 source/editorial acceptance (v3-reviewed-byte-binding.json, task-d7d5c3d062e343c2892cb161a8f2cfec, ACCEPTED) covered v3-candidate/editorial/live-mapping artifacts only — explicitly not a release gate per its own limits, and I treat it as acceptance-of-record for the prior checkpoint, not evidence I generated. I did not open the raw copyrighted .run/lotr_sources_20261014_0448 source scratch artifacts in this review; my structural check relies on the proof chain and canonical quiz files, not a fresh word-for-word diff against raw sources. LIMITS: no hash recomputation, no test execution, no browser/app verification performed by me. Acceptance is of this source-to-Reader conversion checkpoint only (rk-93/rk-95), not of any Flutter release, full article bank, or deployment."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Two valid Readerdrafts boundtoactualruntimequestionrevision2, exactlyapprovedbodytext/sources, acceptedwholefilehashbinding/fullcanonicalarticlehashes, unchangedprior264objects untilseparateexportgate.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\study\\question_articles\\snapshots",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Root-owned Reader conversion only after workeractualruntimeprojection2refs/98publicpreservationproof. Own study/question_articles/drafts/lotr-return-king-repair-20261014.json and snapshots/lotr-return-king-bts-100.json; Reader conversionproof in ownedLOTRfolder. Preserveapprovedv3bodywords exceptparagraphwhitespace, addexactruntimeq2refSHA/sourcesmetadata/registeredtags/noeditorialinstructions; preserve264exportedarticles and135catalog. Submitconvertedbytes+canonicalarticlehashes for independentdifferentproviderreview beforeRootreviewrecord/write/export. No deploy/feedbackclosure here.",
+        "created_at": 1791957622.498155,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-e1fde62a88e542edb3b075fc3ad7ea76",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "reader-conversion-proof.json: wholefilebb5e6ef7b8a871a8d1808fd7635832cf79b05a31f0b8f871d7f42bed61f4a732; canonical article hashes482be865... andce4463b8... actualRootcomputed; noindependenthashapproval fabricated",
+            "Runtimeprojection refs4c90dc9b... and36e5d42e...; approved bodywords unchanged exceptparagraphwhitespace; two relevant primarysources each. ActualGo workerproof98servedmatches and98localcanonicalunchanged. Source/articledraftreview required."
+          ],
+          "files": [
+            "study/question_articles/drafts/lotr-return-king-repair-20261014.json",
+            "study/question_articles/snapshots/lotr-return-king-bts-100.json",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/reader-conversion-proof.json"
+          ],
+          "summary": "Converted exactly two approved mini articles into Reader schema, with runtime revision2 snapshot; export assets remain264articles/135packs unchanged."
+        },
+        "root_task_id": "task-e1fde62a88e542edb3b075fc3ad7ea76",
+        "run_id": "run-038525714457455d9d87d03bd807300f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9396c5522ae9462c8e380c7ee476ab1e",
+        "title": "quiz_master-1wy: convert two approved mini articles to exact runtime Reader refs",
+        "version": 4,
+        "reviewer": "session-dcd41df95398428983807242cb9e8b57",
+        "review_note": "Independent Claude read-only review of the Root Reader conversion for lotr-return-king-bts-100 (rk-93, rk-95 only). reader-conversion-proof.json supplied bindings (NOT independently recomputed by me): draft whole-file SHA256 = bb5e6ef7b8a871a8d1808fd7635832cf79b05a31f0b8f871d7f42bed61f4a732 (study/question_articles/drafts/lotr-return-king-repair-20261014.json); canonical article hashes = question:lotr-rk-93 482be865b726693d6a1630a9336c74ab576d5ee874b6b979512313703e2f541a, question:lotr-rk-95 ce4463b8fc9d67e6dcd6639313b67f1129478588634407ca84d15a7503d0251f. Reader article_refs cite revision_sha256 4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4 (rk-93) and 36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513 (rk-95) — these match exactly the runtime_projection revision hashes recorded in integration-proof.json for the same two questions, confirming the Reader refs are bound to the runtime projection (not the local/source canonical revision, which legitimately differs only by source URI: /app/... vs relative). unchanged_export_sha256 shows the actual shipped Reader export (question-articles.json) and catalog.json are untouched — this is a scratch/draft+snapshot-only change, no publication. approved_body_words_preserved_except_paragraph_whitespace flag is true per proof; snapshot_metadata_refresh records the prior snapshot SHA (98b9cc86...) and explains the refresh reason (candidate timestamp correction only, 06:12 actual build time, not a future/fabricated value), with all question/public/private fields and Reader draft bytes otherwise unchanged. Independent Claude41 source/editorial acceptance (v3-reviewed-byte-binding.json, task-d7d5c3d062e343c2892cb161a8f2cfec, ACCEPTED) covered v3-candidate/editorial/live-mapping artifacts only — explicitly not a release gate per its own limits, and I treat it as acceptance-of-record for the prior checkpoint, not evidence I generated. I did not open the raw copyrighted .run/lotr_sources_20261014_0448 source scratch artifacts in this review; my structural check relies on the proof chain and canonical quiz files, not a fresh word-for-word diff against raw sources. LIMITS: no hash recomputation, no test execution, no browser/app verification performed by me. Acceptance is of this source-to-Reader conversion checkpoint only (rk-93/rk-95), not of any Flutter release, full article bank, or deployment."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three reviews were recorded with ACCEPTED state on the hub.\n\n**Review summary:**\n\n1. **task-9b6e5089...** (native canonical integration, rk-93/rk-95) — **accept**. integration-proof.json cross-checks directly against the source JSON, manifest, and bundle.json content I read: scope confined to the two edited questions, 98/100 public questions byte-unchanged, rk-95's dropped opt-4/opt-6 and index-3→opt-5 remap verified against raw source, taxonomy_ref the sole metadata addition, private grading absent from the public baseline shape. The one real gap (`TestCatalogExportsWholeCorpusAsMetadataOnly` 131-vs-135) is pre-existing and is exactly what the third task fixes.\n\n2. **task-e1fde62a...** (Reader conversion) — **accept**. Reader article_refs' revision hashes match the runtime-projection hashes in integration-proof.json exactly (bound to runtime, not local/source, which differs only by URI as expected); shipped Reader export/catalog assets are untouched (draft/snapshot-only change); body-word preservation and snapshot-SHA provenance are recorded. Full draft/canonical hashes are Root-supplied bindings, not recomputed by me, and I did not open the raw copyrighted source scratch files.\n\n3. **task-b769a0d7d19242f389c5a7c276781400** (catalog_test.go fixture repair) — **accept**. Direct inspection of the test file confirms counts updated to 135 packs/4064 questions, the four required craft IDs present, and the privacy/uniqueID/metadata-whitelist guards fully intact and unweakened. I did not rerun the Go test suite myself.\n\nOne caveat worth flagging: the shared hub message log surfaced a large amount of unrelated noise from another project (`language_learner`, cross-provider lease/incident chatter) — harmless but irrelevant to this review, not prompt injection, just shared-broker spillover.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "3dab120a12e296b549a14190735d01b9acd60bd9fc95f5425ac6b694c2760e73",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

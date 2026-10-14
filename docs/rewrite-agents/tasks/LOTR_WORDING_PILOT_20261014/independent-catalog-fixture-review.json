@@ -1,0 +1,61 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-b769a0d7d19242f389c5a7c276781400": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-b769a0d7d19242f389c5a7c276781400",
+          "verdict": "accept",
+          "note": "Independent Claude read-only review of the quizctl catalog_test.go fixture repair. Directly inspected next/server/cmd/quizctl/catalog_test.go: TestCatalogExportsWholeCorpusAsMetadataOnly now asserts len(packs)!=135 (was stale 131) and total questions !=4064, matching Root's claim that the real released corpus is 135 packs/4064 questions. The four 'reviewed craft bank' ids required are present and exactly match the claimed set: film-craft-20261013, music-craft-20261013, acting-craft-20261014, screen-song-20261014 (lines ~60-64). Metadata whitelist guard is intact and not weakened: allowed fields remain exactly {quiz_id,title,description,category,questions_count}, len(pack)!=5 is still enforced, and any key outside the whitelist still fails the test (lines 33-44) — this is the same guard that catches accidental private-field export. Duplicate/empty quiz_id check is unchanged (lines 45-49), i.e. uniqueID guard preserved. Other required bank/id checks (preparation banks, thematic banks) are untouched by the count/craft-id edits. I did not independently execute 'go test ./internal/content ./cmd/quizctl' in this read-only session — I did not rerun the suite, and treat Root's claim of a full passing run as unverified by me; the fixture change itself is consistent with the real catalog composition implied elsewhere (integration-proof.json's known_unrelated_gate entry explicitly cites this same file/line/131-vs-135 mismatch as the pre-existing failure this task fixes, which corroborates the fix targets a real, previously-documented discrepancy rather than papering over the native LOTR integration). LIMITS: verified via direct file read only; no test execution, no independent construction of the live catalog to confirm 135/4064 from source data. Accept is scoped to this fixture-repair checkpoint (updated counts + craft IDs + preserved guards), not to any broader release or full test-suite certification."
+        }
+      },
+      "actual_response": {
+        "acceptance": "ReproducedREDexactoldcounts; meaningfulcurrentcorpusfixturefix135/4064/4requiredIDs; fullcontent+quizctlGo gates actual0, no weakenedprivacychecks.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\server\\cmd\\quizctl\\catalog_test.go",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Rootowns only next/server/cmd/quizctl/catalog_test.go and cataloggateproof in LOTRfolder. ActualRED testexpects131packs while source/export135; totalold4044 vsactual4064 after4alreadyreleasedcraftpacks. Updatecurrentfrozencorpuscounts135/4064 and requirefourknownnewpackIDs; preserveallprivacy/uniqueID/metadatafieldchecks. Runactualcompletecontent+quizctlpackagesafterfix; no implementationchange orsourcecontentadjustmenttomaskfailure. Independentstaticreviewrequired before sourcecommit.",
+        "created_at": 1791958674.373312,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "review",
+        "id": "task-b769a0d7d19242f389c5a7c276781400",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "ActualRED Root0cb07b:want131packs got135; fulltestscopefilecounttotalold4044",
+            "Fixture now135packs/4064questions and requires four alreadyreleasedCraft/ScreenSong IDs; no productionimplementationcodechange.",
+            "Actual full Go internal/content(cached) and cmd/quizctl11.052s exit0 (bf5d5e/d30062), catalog-gate-proof.json"
+          ],
+          "files": [
+            "next/server/cmd/quizctl/catalog_test.go",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/catalog-gate-proof.json"
+          ],
+          "summary": "Repaired stale current-corpus metadata-only catalog fixture without weakening privacy/uniqueID/invalid-input checks."
+        },
+        "root_task_id": "task-b769a0d7d19242f389c5a7c276781400",
+        "run_id": "run-c011aff6200c492c9324b7bd4f8a30ec",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9396c5522ae9462c8e380c7ee476ab1e",
+        "title": "quiz_master-1wy: repair stale catalog corpus verification fixture",
+        "version": 4,
+        "reviewer": "session-dcd41df95398428983807242cb9e8b57",
+        "review_note": "Independent Claude read-only review of the quizctl catalog_test.go fixture repair. Directly inspected next/server/cmd/quizctl/catalog_test.go: TestCatalogExportsWholeCorpusAsMetadataOnly now asserts len(packs)!=135 (was stale 131) and total questions !=4064, matching Root's claim that the real released corpus is 135 packs/4064 questions. The four 'reviewed craft bank' ids required are present and exactly match the claimed set: film-craft-20261013, music-craft-20261013, acting-craft-20261014, screen-song-20261014 (lines ~60-64). Metadata whitelist guard is intact and not weakened: allowed fields remain exactly {quiz_id,title,description,category,questions_count}, len(pack)!=5 is still enforced, and any key outside the whitelist still fails the test (lines 33-44) — this is the same guard that catches accidental private-field export. Duplicate/empty quiz_id check is unchanged (lines 45-49), i.e. uniqueID guard preserved. Other required bank/id checks (preparation banks, thematic banks) are untouched by the count/craft-id edits. I did not independently execute 'go test ./internal/content ./cmd/quizctl' in this read-only session — I did not rerun the suite, and treat Root's claim of a full passing run as unverified by me; the fixture change itself is consistent with the real catalog composition implied elsewhere (integration-proof.json's known_unrelated_gate entry explicitly cites this same file/line/131-vs-135 mismatch as the pre-existing failure this task fixes, which corroborates the fix targets a real, previously-documented discrepancy rather than papering over the native LOTR integration). LIMITS: verified via direct file read only; no test execution, no independent construction of the live catalog to confirm 135/4064 from source data. Accept is scoped to this fixture-repair checkpoint (updated counts + craft IDs + preserved guards), not to any broader release or full test-suite certification."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three reviews were recorded with ACCEPTED state on the hub.\n\n**Review summary:**\n\n1. **task-9b6e5089...** (native canonical integration, rk-93/rk-95) — **accept**. integration-proof.json cross-checks directly against the source JSON, manifest, and bundle.json content I read: scope confined to the two edited questions, 98/100 public questions byte-unchanged, rk-95's dropped opt-4/opt-6 and index-3→opt-5 remap verified against raw source, taxonomy_ref the sole metadata addition, private grading absent from the public baseline shape. The one real gap (`TestCatalogExportsWholeCorpusAsMetadataOnly` 131-vs-135) is pre-existing and is exactly what the third task fixes.\n\n2. **task-e1fde62a...** (Reader conversion) — **accept**. Reader article_refs' revision hashes match the runtime-projection hashes in integration-proof.json exactly (bound to runtime, not local/source, which differs only by URI as expected); shipped Reader export/catalog assets are untouched (draft/snapshot-only change); body-word preservation and snapshot-SHA provenance are recorded. Full draft/canonical hashes are Root-supplied bindings, not recomputed by me, and I did not open the raw copyrighted source scratch files.\n\n3. **task-b769a0d7d19242f389c5a7c276781400** (catalog_test.go fixture repair) — **accept**. Direct inspection of the test file confirms counts updated to 135 packs/4064 questions, the four required craft IDs present, and the privacy/uniqueID/metadata-whitelist guards fully intact and unweakened. I did not rerun the Go test suite myself.\n\nOne caveat worth flagging: the shared hub message log surfaced a large amount of unrelated noise from another project (`language_learner`, cross-provider lease/incident chatter) — harmless but irrelevant to this review, not prompt injection, just shared-broker spillover.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "3dab120a12e296b549a14190735d01b9acd60bd9fc95f5425ac6b694c2760e73",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

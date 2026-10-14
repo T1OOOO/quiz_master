@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f0b1c325f0d44eaab26a9b87907011ae": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f0b1c325f0d44eaab26a9b87907011ae",
+          "verdict": "accept",
+          "note": "Independent read-only review of the Reader export checkpoint (lotr-rk-93/95 -> question-articles.json). Directly read reader-export-proof.json, reader-conversion-proof.json, draft/review JSON, and the actual exported next/apps/quiz_app/assets/study/question-articles.json entries for both questions. Confirmed in the real export bytes: status=accepted (was draft in the source draft file); revision_sha256 bound to the RUNTIME projection hashes 4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4 (rk-93) and 36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513 (rk-95) -- not the local candidate hashes dc3c5b2b.../a359dc82... cited in the earlier integration review, consistent with the claimed runtime-not-local binding. body_ru text and paragraph breaks (\\n\\n) in the export match the draft byte-for-byte in the portions I read; source_links URLs/titles/supports also match. next/apps/quiz_app/test/question_articles_test.dart directly asserts articles.hasLength(266) and binds exactly these two revision hashes alongside the other known-accepted packs (Screen Song, Acting/Music/Film Craft, Cinema/Music People, Home Alone), plus a negative check rejecting stale Home Alone git-metadata hashes -- this is real test coverage, not just a proof-file claim. SUPPLIED (Root) bindings I did NOT independently recompute: output_sha256 in reader-export-proof.json -- study/question_articles/reviews/lotr-return-king-repair-20261014-review.json=80ac628e0c3dba07d01e5adcd7bc9d027a843524fc0b5f27106afd047e819c3c; next/apps/quiz_app/assets/study/question-articles.json=efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419; next/apps/quiz_app/test/question_articles_test.dart=9003a957dd798139c598d024ecd650134cfb6ee4cb8a4d20d95cfe192389a332. Also supplied/unverified by me: actual_counts [135,4064,266], prior264articles_unchanged, all135catalog_rows_unchanged, and the python/flutter command exit codes and stdout (5 Python unit tests OK, Flutter test +0..+6 all passed) in reader-export-proof.json commands[] -- I did not rerun any build/test/hash command myself (read-only session, no shell). I did not diff the full 266-entry export against a prior snapshot to independently reconfirm the other 264 articles are byte-unchanged, nor did I open next/apps/quiz_app/assets/catalog.json. LIMITS / SCOPE: this accept covers the source-to-export checkpoint for lotr-rk-93/lotr-rk-95 only (draft->accepted status flip, runtime hash binding, body/source preservation, widget-test coverage of the packaged references and count). It is NOT an approval of any Flutter release, local browser run, copied-DB rehearsal, production cache, or deployment -- those remain separately gated per the proof's own stated scope."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual source/export2newReaderrecords exactapprovedhashes/refs; prior264preserved andall135catalogrows unchanged; actualPython/Flutter checks0; independentexportinspection before freeze/build.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014"
+        ],
+        "assignee": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Root Reader export after actualdifferent-provider integration/conversion/fixtureACCEPTED42. Own Readerreviewrecord/assetsquestion-articles.json/testquestion_articles_test.dart and exportproof. Export266articles whileprior264objects/all135catalogrows unchanged; two refs runtime4c90/36e5 exact; Go full0/Pythonbuildwrite+check+tests0/Flutter6Readerchecks0. Independentlyinspectexactexport/acceptedbindings/Rootcomputedfilehashes/new2fixturerefs/count266/privacy; noindependenttest/hashclaims without execution. No productionrelease orallbankapproval.",
+        "created_at": 1791959331.1469674,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "review",
+        "id": "task-f0b1c325f0d44eaab26a9b87907011ae",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "reader-export-proof.json fullcommands/exits/SHA includesactualwrite/check/Pythonunittest0/Fluttertest0",
+            "independent-reader-conversion-review.json actualClaude42callbackACCEPTED/exit0; suppliedhashbindingsRootverified",
+            "catalog-gate-proof.json actualGoRED→fullcontent/quizctlGREEN"
+          ],
+          "files": [
+            "study/question_articles/reviews/lotr-return-king-repair-20261014-review.json",
+            "next/apps/quiz_app/assets/study/question-articles.json",
+            "next/apps/quiz_app/test/question_articles_test.dart",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/reader-export-proof.json"
+          ],
+          "summary": "Actual Readerexport266 aftergenuineacceptedconversion;134othercatalog+targetrow unchanged(all135)/allprior264Readerobjects unchanged. Addednew2runtimeexactref fixturechecks; actualPython5tests andFlutter6Readerwidgettests0."
+        },
+        "root_task_id": "task-f0b1c325f0d44eaab26a9b87907011ae",
+        "run_id": "run-3d8e293a28f541e693157b7b04e3cd8f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9396c5522ae9462c8e380c7ee476ab1e",
+        "title": "quiz_master-1wy: reviewed two-article export and widget binding verification",
+        "version": 4,
+        "reviewer": "session-822720f009ae4c81ab354ee25c0f4afa",
+        "review_note": "Independent read-only review of the Reader export checkpoint (lotr-rk-93/95 -> question-articles.json). Directly read reader-export-proof.json, reader-conversion-proof.json, draft/review JSON, and the actual exported next/apps/quiz_app/assets/study/question-articles.json entries for both questions. Confirmed in the real export bytes: status=accepted (was draft in the source draft file); revision_sha256 bound to the RUNTIME projection hashes 4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4 (rk-93) and 36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513 (rk-95) -- not the local candidate hashes dc3c5b2b.../a359dc82... cited in the earlier integration review, consistent with the claimed runtime-not-local binding. body_ru text and paragraph breaks (\\n\\n) in the export match the draft byte-for-byte in the portions I read; source_links URLs/titles/supports also match. next/apps/quiz_app/test/question_articles_test.dart directly asserts articles.hasLength(266) and binds exactly these two revision hashes alongside the other known-accepted packs (Screen Song, Acting/Music/Film Craft, Cinema/Music People, Home Alone), plus a negative check rejecting stale Home Alone git-metadata hashes -- this is real test coverage, not just a proof-file claim. SUPPLIED (Root) bindings I did NOT independently recompute: output_sha256 in reader-export-proof.json -- study/question_articles/reviews/lotr-return-king-repair-20261014-review.json=80ac628e0c3dba07d01e5adcd7bc9d027a843524fc0b5f27106afd047e819c3c; next/apps/quiz_app/assets/study/question-articles.json=efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419; next/apps/quiz_app/test/question_articles_test.dart=9003a957dd798139c598d024ecd650134cfb6ee4cb8a4d20d95cfe192389a332. Also supplied/unverified by me: actual_counts [135,4064,266], prior264articles_unchanged, all135catalog_rows_unchanged, and the python/flutter command exit codes and stdout (5 Python unit tests OK, Flutter test +0..+6 all passed) in reader-export-proof.json commands[] -- I did not rerun any build/test/hash command myself (read-only session, no shell). I did not diff the full 266-entry export against a prior snapshot to independently reconfirm the other 264 articles are byte-unchanged, nor did I open next/apps/quiz_app/assets/catalog.json. LIMITS / SCOPE: this accept covers the source-to-export checkpoint for lotr-rk-93/lotr-rk-95 only (draft->accepted status flip, runtime hash binding, body/source preservation, widget-test coverage of the packaged references and count). It is NOT an approval of any Flutter release, local browser run, copied-DB rehearsal, production cache, or deployment -- those remain separately gated per the proof's own stated scope."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded: **accept**, submitted to `task-f0b1c325f0d44eaab26a9b87907011ae` on team `team-9396c5522ae9462c8e380c7ee476ab1e` (state now `ACCEPTED`).\n\n**Independent inspection summary:**\n\n- Read `reader-export-proof.json`, `reader-conversion-proof.json`, `independent-reader-conversion-review.json`, `independent-canonical-integration-review.json`, `independent-catalog-fixture-review.json`, `catalog-gate-proof.json`.\n- Read `study/question_articles/reviews/lotr-return-king-repair-20261014-review.json`, the draft (`lotr-return-king-repair-20261014.json`), and the first part of `snapshots/lotr-return-king-bts-100.json`.\n- Directly located and read the `question:lotr-rk-93` and `question:lotr-rk-95` entries inside the actual shipped `next/apps/quiz_app/assets/study/question-articles.json` (via offset-paged reads — the file is too large for one read).\n- Read `next/apps/quiz_app/test/question_articles_test.dart` in full.\n\n**What I verified myself, in the actual files:**\n- Export entries flipped `status: draft → accepted`, body/paragraph text and source_links byte-identical to the draft for both questions.\n- `revision_sha256` in the export is the runtime pair `4c90dc9b…` / `36e5d42e…`, not the local `dc3c…`/`a359…` hashes from the integration proof.\n- The Dart test asserts `hasLength(266)` and binds exactly those two hashes alongside other already-accepted packs, plus a negative check against stale hashes.\n\n**What I did not verify (Root-supplied, unrecomputed by me):** the `output_sha256` values in `reader-export-proof.json` (review file, export json, test dart file), the `actual_counts [135, 4064, 266]`, `prior264articles_unchanged`, `all135catalog_rows_unchanged`, and all Python/Flutter command exit codes/stdout — no shell/test execution was performed in this session. I did not diff the other 264 export entries byte-for-byte against a prior snapshot, and did not open `catalog.json`.\n\nScope of acceptance: the source→export checkpoint for rk-93/rk-95 only — not a Flutter release, browser run, copied-DB rehearsal, production cache, or deployment approval.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "c361fe5406ac961d0edb942c10e74b2b86b75544634d5afa7daf184df0bf37aa",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

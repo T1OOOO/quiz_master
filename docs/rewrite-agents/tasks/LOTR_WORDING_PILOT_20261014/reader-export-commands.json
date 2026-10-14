@@ -1,0 +1,67 @@
+[
+  {
+    "command": [
+      "python",
+      "study/question_articles/build.py",
+      "--write"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "stdout": "PASS: 266 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "study/question_articles/build.py",
+      "--check"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "stdout": "PASS: 266 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "study/question_articles",
+      "-p",
+      "test_*.py"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "stdout": "",
+    "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.126s\n\nOK\n"
+  },
+  {
+    "command": [
+      "cmd",
+      "/c",
+      "dart",
+      "format",
+      "test/question_articles_test.dart"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+    "actual_exit": 0,
+    "stdout": "Formatted 1 file (0 changed) in 0.04 seconds.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmd",
+      "/c",
+      "flutter",
+      "test",
+      "--no-pub",
+      "test/question_articles_test.dart"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+    "actual_exit": 0,
+    "stdout": "00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart\n00:00 +0: articles match exact quiz revision, not only a reusable question ID\n00:00 +1: drafts, duplicate articles and unsafe source schemes fail closed\n00:00 +2: mobile reader pauses before opening and puts checked links at the end\n00:01 +3: reader stays above shell feedback and restores it on close\n00:02 +4: missing article does not suggest an unwritten article\n00:02 +5: packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, LOTR repair and published Home Alone revisions\n00:02 +6: All tests passed!\n",
+    "stderr": ""
+  }
+]

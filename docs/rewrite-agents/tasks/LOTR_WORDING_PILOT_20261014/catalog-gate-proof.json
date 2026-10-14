@@ -1,0 +1,17 @@
+{
+  "scope": "Root existing catalog fixture repair; no product implementation change",
+  "red": {
+    "command": "go test -p=1 ./next/server/cmd/quizctl -run '^TestCatalogExportsWholeCorpusAsMetadataOnly$' -count=1",
+    "actual_exit": 1,
+    "actual_output": "catalog_test.go:31: want 131 packs, got 135",
+    "tool_chunk_id": "0cb07b"
+  },
+  "change": "Current frozen corpus135packs/4064questions; add required Film Craft, Music Craft, Acting Craft and Screen Song IDs. Keep exact five metadata fields, unique IDs, private-field exclusion and invalid-collection checks.",
+  "green": {
+    "command": "go test -p=1 ./next/server/internal/content ./next/server/cmd/quizctl",
+    "actual_exit": 0,
+    "actual_output": "internal/content (cached); cmd/quizctl 11.052s",
+    "tool_chunk_ids": ["bf5d5e", "d30062"]
+  },
+  "limits": ["Root execution evidence, not independent rerun", "Does not certify facts in all135packs"]
+}

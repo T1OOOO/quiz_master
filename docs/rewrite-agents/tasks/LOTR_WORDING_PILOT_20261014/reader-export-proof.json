@@ -1,0 +1,94 @@
+{
+  "actual_counts": [
+    135,
+    4064,
+    266
+  ],
+  "prior264articles_unchanged": true,
+  "all135catalog_rows_unchanged": true,
+  "new2runtime_revision_bound_articles": [
+    {
+      "quiz_id": "lotr-return-king-bts-100",
+      "question_id": "lotr-rk-93",
+      "revision_sha256": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4"
+    },
+    {
+      "quiz_id": "lotr-return-king-bts-100",
+      "question_id": "lotr-rk-95",
+      "revision_sha256": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "PASS: 266 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "PASS: 266 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_*.py"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.126s\n\nOK\n"
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "dart",
+        "format",
+        "test/question_articles_test.dart"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "stdout": "Formatted 1 file (0 changed) in 0.04 seconds.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test",
+        "--no-pub",
+        "test/question_articles_test.dart"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "stdout": "00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart\n00:00 +0: articles match exact quiz revision, not only a reusable question ID\n00:00 +1: drafts, duplicate articles and unsafe source schemes fail closed\n00:00 +2: mobile reader pauses before opening and puts checked links at the end\n00:01 +3: reader stays above shell feedback and restores it on close\n00:02 +4: missing article does not suggest an unwritten article\n00:02 +5: packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, LOTR repair and published Home Alone revisions\n00:02 +6: All tests passed!\n",
+      "stderr": ""
+    }
+  ],
+  "output_sha256": {
+    "study\\question_articles\\reviews\\lotr-return-king-repair-20261014-review.json": "80ac628e0c3dba07d01e5adcd7bc9d027a843524fc0b5f27106afd047e819c3c",
+    "next\\apps\\quiz_app\\assets\\study\\question-articles.json": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419",
+    "next\\apps\\quiz_app\\test\\question_articles_test.dart": "9003a957dd798139c598d024ecd650134cfb6ee4cb8a4d20d95cfe192389a332"
+  },
+  "scope": "Actual Reader export and bounded validators/widget tests; builds/browser/rehearsal/production cache still gated"
+}

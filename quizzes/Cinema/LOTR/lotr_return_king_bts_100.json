@@ -3,6 +3,10 @@
   "title": "Властелин Колец: Возвращение Короля и Создание",
   "description": "Финал трилогии: осада Минас Тирита, Ородруин, книга и фильм «Возвращение короля».",
   "category": "Кино",
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
   "questions": [
     {
       "id": "lotr_rk_1",
@@ -1387,7 +1391,20 @@
     {
       "id": "lotr_rk_93",
       "type": "choice",
-      "text": "Как называется Великая река Средиземья?",
+      "difficulty": 4,
+      "editorial_tag_ids": [
+        "domain:geography",
+        "era:middle-earth-third-age",
+        "franchise:middle-earth",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:geography",
+        "era:middle-earth-third-age",
+        "franchise:middle-earth",
+        "topic:lore"
+      ],
+      "text": "Какая река названа в ночном пейзаже, где внизу лежит большая долина, а вдали видны Белые горы Гондора?",
       "options": [
         "Изен",
         "Сирион",
@@ -1397,7 +1414,7 @@
         "Андуин"
       ],
       "correct_answer": 5,
-      "explanation": "Андуин в книге называется Великой рекой."
+      "explanation": "В этом ночном пейзаже названы воды Андуина; за большой долиной видны Эред Нимрайс — Белые горы Гондора."
     },
     {
       "id": "lotr_rk_94",
@@ -1417,17 +1434,28 @@
     {
       "id": "lotr_rk_95",
       "type": "choice",
-      "text": "В каком городе находились 'Белые Корабли' эльфов?",
+      "difficulty": 5,
+      "editorial_tag_ids": [
+        "domain:literature",
+        "era:middle-earth-third-age",
+        "franchise:middle-earth",
+        "topic:lore"
+      ],
+      "context_tag_ids": [
+        "domain:literature",
+        "era:middle-earth-third-age",
+        "franchise:middle-earth",
+        "topic:lore"
+      ],
+      "text": "Из какого места в финале «Властелина колец» вышел белый корабль?",
       "options": [
         "Пеларгир",
         "Митлонд",
         "Эделлонд",
-        "Тирион",
-        "Альквалонде",
-        "Линдон"
+        "Альквалонде"
       ],
       "correct_answer": 1,
-      "explanation": "Митлонд."
+      "explanation": "В последней главе белый корабль отправляется из Серых Гаваней; Tolkien Estate называет Митлонд местом, откуда он вышел."
     },
     {
       "id": "lotr_rk_96",

@@ -1,0 +1,95 @@
+{
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "scope": {
+    "changed_raw_ids": ["lotr_rk_93", "lotr_rk_95"],
+    "changed_canonical_ids": ["lotr-rk-93", "lotr-rk-95"],
+    "held_ids": ["lotr_rk_96"],
+    "authorized_metadata_exception": {
+      "taxonomy_id": "qm-tags-v1",
+      "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+    }
+  },
+  "counts": {
+    "raw_questions": 100,
+    "canonical_questions": 100,
+    "unchanged_local_public_questions": 98,
+    "changed_non_target_public_question_ids": [],
+    "changed_non_target_private_grading_ids": [],
+    "runtime_baseline_exact_public_matches_excluding_targets": 98,
+    "runtime_baseline_mismatches_excluding_targets": 0
+  },
+  "local_candidate": {
+    "bundle_version": "lotr-wording-pilot-2026.10.14-v3",
+    "published_at": "2026-10-14T06:12:00Z",
+    "bundle_sha256": "07c988b847447ab3402653283c2f462aa9b80f21de21bcc58408b67960d73ad7",
+    "files_sha256": {
+      "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "41d17284e4c947a3fa0b4dde2ee72cacdd7552789cb6c51951c96cf4b86e3877",
+      "next/content/lotr-return-king-bts-100/draft.json": "1a5934780727b92bdb524c37137f819be53e7e948be0bdb5bba44c8f346741d7",
+      "next/content/lotr-return-king-bts-100/manifest.json": "d563a5bb7b01f6a0337d2742c165b0510db0a15b4f457b8da237f770106e65b1",
+      "next/content/lotr-return-king-bts-100/bundle.json": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2"
+    },
+    "questions": {
+      "lotr-rk-93": {
+        "revision": {"number": 2, "sha256": "dc3c5b2b3b119a472993d32ae4c0321eea64532904956dad26075507cd362fa7"},
+        "correct_option_id": "lotr-rk-93-opt-6",
+        "option_ids": ["lotr-rk-93-opt-1", "lotr-rk-93-opt-2", "lotr-rk-93-opt-3", "lotr-rk-93-opt-4", "lotr-rk-93-opt-5", "lotr-rk-93-opt-6"]
+      },
+      "lotr-rk-95": {
+        "revision": {"number": 2, "sha256": "a359dc8245a34bbafbf4c21b8fa096f13a49597196bee92885026e973d0f948e"},
+        "correct_option_id": "lotr-rk-95-opt-2",
+        "manifest_option_mapping": [
+          {"source_index": 0, "canonical_id": "lotr-rk-95-opt-1"},
+          {"source_index": 1, "canonical_id": "lotr-rk-95-opt-2"},
+          {"source_index": 2, "canonical_id": "lotr-rk-95-opt-3"},
+          {"source_index": 3, "canonical_id": "lotr-rk-95-opt-5"}
+        ],
+        "dropped_canonical_option_ids": ["lotr-rk-95-opt-4", "lotr-rk-95-opt-6"]
+      }
+    }
+  },
+  "runtime_projection": {
+    "source_uri": "/app/quizzes/Cinema/LOTR/lotr_return_king_bts_100.json",
+    "bundle_path": "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/integration-runtime-bundle.json",
+    "bundle_version": "lotr-wording-pilot-2026.10.14-v3-runtime-projection",
+    "published_at": "2026-10-14T06:12:00Z",
+    "bundle_sha256": "d0ef1ae3af36b3191d96ea722262a842011c118bd85585d6e3c0af3d920d8278",
+    "file_sha256": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38",
+    "questions": {
+      "lotr-rk-93": {"revision": {"number": 2, "sha256": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4"}},
+      "lotr-rk-95": {"revision": {"number": 2, "sha256": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"}}
+    }
+  },
+  "gates": [
+    {"command": "quizctl validate draft with frozen taxonomy", "exit_code": 0},
+    {"command": "quizctl build local candidate with explicit version and timestamp", "exit_code": 0},
+    {"command": "quizctl validate local candidate bundle with frozen taxonomy", "exit_code": 0},
+    {"command": "quizctl import raw source with frozen taxonomy", "exit_code": 0},
+    {"command": "quizctl diff frozen old bundle to local candidate", "exit_code": 1, "expected": "semantic differences"},
+    {"command": "repeat explicit build byte-comparison", "exit_code": 0},
+    {"command": "quizctl validate runtime projection bundle with frozen taxonomy", "exit_code": 0},
+    {"command": "go test ./internal/content", "exit_code": 0},
+    {"command": "targeted quizctl tests", "exit_code": 0},
+    {"command": "go test ./internal/content ./cmd/quizctl", "exit_code": 1, "expected": false, "detail": "TestCatalogExportsWholeCorpusAsMetadataOnly expects 131 packs but observed 135"}
+  ],
+  "timestamp_rework_gates": [
+    {"command": "quizctl build local candidate with published_at 2026-10-14T06:12:00Z", "exit_code": 0, "bundle_sha256": "07c988b847447ab3402653283c2f462aa9b80f21de21bcc58408b67960d73ad7"},
+    {"command": "quizctl validate local candidate bundle with frozen taxonomy", "exit_code": 0},
+    {"command": "actual Go runtime projection rehash and 98-question public baseline comparison", "exit_code": 0, "exact_matches": 98, "mismatches": 0},
+    {"command": "repeat local explicit build byte comparison", "exit_code": 0, "candidate_file_sha256": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2", "repeat_file_sha256": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2"},
+    {"command": "quizctl build runtime projection with published_at 2026-10-14T06:12:00Z", "exit_code": 0, "bundle_sha256": "d0ef1ae3af36b3191d96ea722262a842011c118bd85585d6e3c0af3d920d8278"},
+    {"command": "quizctl validate runtime projection bundle with frozen taxonomy", "exit_code": 0},
+    {"command": "local candidate public-question preservation comparison", "exit_code": 0, "old_count": 100, "new_count": 100, "unchanged_non_targets": 98, "changed_non_targets": []},
+    {"command": "quizctl diff frozen old bundle to timestamp-rebuilt local candidate", "exit_code": 1, "expected": "semantic differences limited to rk93, rk95, quiz revision, and bundle revision"}
+  ],
+  "known_unrelated_gate": {
+    "command": "go test ./internal/content ./cmd/quizctl",
+    "result": "not rerun in timestamp-only rework; prior failure retained for Root-owned repair",
+    "failure_location": "next/server/cmd/quizctl/catalog_test.go:31",
+    "detail": "TestCatalogExportsWholeCorpusAsMetadataOnly expects 131 packs but observed 135"
+  },
+  "limits": [
+    "The V3 source/editorial acceptance does not approve publication or release.",
+    "No Reader records, app assets, runtime cache, Git operation, commit, deployment, or release action is included.",
+    "Runtime projection is a review artifact; it does not replace local-source canonical artifacts."
+  ]
+}

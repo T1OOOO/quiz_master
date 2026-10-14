@@ -1,0 +1,74 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-9b6e5089d7be4066a8180b1d2d0bfbe5": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-9b6e5089d7be4066a8180b1d2d0bfbe5",
+          "verdict": "accept",
+          "note": "Independent Claude read-only review of native canonical integration. integration-proof.json confirms scope limited to lotr_rk_93/lotr_rk_95 (raw) = lotr-rk-93/lotr-rk-95 (canonical); rk_96 held/untouched. 98/100 public questions and all private_grading ids outside the two targets are byte-unchanged (unchanged_local_public_questions=98, changed_non_target_public/private ids=[]). draft.json/bundle.json inspected directly: bundle_sha256 07c988b847447ab3402653283c2f462aa9b80f21de21bcc58408b67960d73ad7 and published_at 2026-10-14T06:12:00Z match integration-proof.json local_candidate exactly (supplied binding, not recomputed by me). rk-95 drop of opt-4/opt-6 and source_index 3→canonical opt-5 remapping match the raw source (4 options, correct_answer=1→opt-2) and manifest mapping. rk-93 revision now number=2 with correct_option_id opt-6, matching raw correct_answer=5 (Андуин). taxonomy_ref addition (qm-tags-v1) is the sole authorized metadata exception; no other metadata drift observed in the portions read. Runtime projection (source_uri /app/...) revision hashes for rk-93/rk-95 differ from local candidate revision hashes only by source URI binding, consistent with legitimate source/runtime divergence; runtime_baseline_exact_public_matches_excluding_targets=98/98. Private grading/editorial_tag_ids for rk-93/rk-95 are confined to bundle.json's private_question_metadata and private_grading blocks, not present in the public API baseline question shape I inspected (stem/options/revision/source/difficulty/answer_kind only). Known unrelated failure: go test ./internal/content ./cmd/quizctl fails on TestCatalogExportsWholeCorpusAsMetadataOnly (131 vs 135 packs) — explicitly logged as pre-existing/Root-owned, not caused by this change, and is the subject of a separate fixture-repair task I reviewed separately. Timestamp-only rework (06:12 vs an earlier future 12:00 claim) is documented and does not re-certify anything beyond this checkpoint. LIMITS: I did not execute quizctl/go test myself (read-only session); I verified structural/hash consistency across supplied proof + source files, not independent hash recomputation. This acceptance covers the source/content-contract integration checkpoint only — no Flutter release, deployment, or full-bank certification is implied."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Validated actualtwoitemcanonicalpatch with exactretainedoptionIDs/nonzeroanswerparity,98unchangedquestions, newrefs/realGoRehash/build/diff/tests and stablefilehashes; independentintegrationreview required.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizzes\\Cinema\\LOTR\\lotr_return_king_bts_100.json",
+          "C:\\ap\\quiz_master\\next\\content\\lotr-return-king-bts-100",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014",
+          "C:\\ap\\quiz_master\\next\\server"
+        ],
+        "assignee": "session-7fd7d528f1434648b85daa8b8eb14203",
+        "author": "session-a9e37a4738a444aebd1733ad225e1c1a",
+        "body": "Finite canonical integration per Root collaborationpacket and INTEGRATION_PLAN_EN.md. Own ONLY raw lotr_return_king_bts_100.json; next/content/lotr-return-king-bts-100 draft/manifest/bundle; integration-*report/helpers in LOTR_WORDING_PILOT_20261014; ignorednext/server/.run Rehashhelper. Preserveother98raw/canonicalobjects/hash/revisions andpackmetadata. V3 editorial/source independentlyaccepted; integrate2stems/explanations/difficulty4/5/tags; rk95fourchoicesstableIDs1,2,3,5(correct2), manifestnewrawindex3→oldopt5, dropsold4/6. Incrementonlyeditedrevisions1→2; useactualGoRehash and quizctlvalidate/build/validate/diff/contenttests; freezeoldbaseline first. No Reader/assets/Git/Beads/SSH/Flutter/browser/deploy/children. Userresourcequeuewaivedprojectonly; fileownershipexclusive. Returnactualexits/SHAs/questionrefs/preservationproof, notpublicationclaim.",
+        "created_at": 1791957251.101522,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-9b6e5089d7be4066a8180b1d2d0bfbe5",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "local quizctl build exit 0; bundle sha 07c988b847447ab3402653283c2f462aa9b80f21de21bcc58408b67960d73ad7",
+            "local quizctl validate exit 0; full candidate file sha 0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2",
+            "runtime quizctl build and validate exit 0; bundle sha d0ef1ae3af36b3191d96ea722262a842011c118bd85585d6e3c0af3d920d8278; file sha 7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38",
+            "repeat local explicit build byte-identical",
+            "actual Go runtime projection reports 98 unchanged public matches and 0 mismatches; local old/new public comparison has 100 questions each, 98 unchanged non-targets, zero changed IDs",
+            "local refs unchanged: rk93 2:dc3c5b2b3b119a472993d32ae4c0321eea64532904956dad26075507cd362fa7; rk95 2:a359dc8245a34bbafbf4c21b8fa096f13a49597196bee92885026e973d0f948e",
+            "runtime refs unchanged: rk93 2:4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4; rk95 2:36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+          ],
+          "files": [
+            "next/content/lotr-return-king-bts-100/bundle.json",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/integration-runtime-bundle.json",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/integration-proof.json",
+            "docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/integration-proof-20261014.md"
+          ],
+          "risks": [
+            "No independent integration review or publication approval.",
+            "Prior full combined Go test remains an unrelated known failure at next/server/cmd/quizctl/catalog_test.go:31 (expected 131 packs, observed 135); it was not rerun in this timestamp-only rework."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Timestamp-only rework completed. Rebuilt local and runtime projection candidate bundles at frozen published_at 2026-10-14T06:12:00Z; no question payload changes."
+        },
+        "review_note": "Independent Claude read-only review of native canonical integration. integration-proof.json confirms scope limited to lotr_rk_93/lotr_rk_95 (raw) = lotr-rk-93/lotr-rk-95 (canonical); rk_96 held/untouched. 98/100 public questions and all private_grading ids outside the two targets are byte-unchanged (unchanged_local_public_questions=98, changed_non_target_public/private ids=[]). draft.json/bundle.json inspected directly: bundle_sha256 07c988b847447ab3402653283c2f462aa9b80f21de21bcc58408b67960d73ad7 and published_at 2026-10-14T06:12:00Z match integration-proof.json local_candidate exactly (supplied binding, not recomputed by me). rk-95 drop of opt-4/opt-6 and source_index 3→canonical opt-5 remapping match the raw source (4 options, correct_answer=1→opt-2) and manifest mapping. rk-93 revision now number=2 with correct_option_id opt-6, matching raw correct_answer=5 (Андуин). taxonomy_ref addition (qm-tags-v1) is the sole authorized metadata exception; no other metadata drift observed in the portions read. Runtime projection (source_uri /app/...) revision hashes for rk-93/rk-95 differ from local candidate revision hashes only by source URI binding, consistent with legitimate source/runtime divergence; runtime_baseline_exact_public_matches_excluding_targets=98/98. Private grading/editorial_tag_ids for rk-93/rk-95 are confined to bundle.json's private_question_metadata and private_grading blocks, not present in the public API baseline question shape I inspected (stem/options/revision/source/difficulty/answer_kind only). Known unrelated failure: go test ./internal/content ./cmd/quizctl fails on TestCatalogExportsWholeCorpusAsMetadataOnly (131 vs 135 packs) — explicitly logged as pre-existing/Root-owned, not caused by this change, and is the subject of a separate fixture-repair task I reviewed separately. Timestamp-only rework (06:12 vs an earlier future 12:00 claim) is documented and does not re-certify anything beyond this checkpoint. LIMITS: I did not execute quizctl/go test myself (read-only session); I verified structural/hash consistency across supplied proof + source files, not independent hash recomputation. This acceptance covers the source/content-contract integration checkpoint only — no Flutter release, deployment, or full-bank certification is implied.",
+        "reviewer": "session-dcd41df95398428983807242cb9e8b57",
+        "root_task_id": "task-9b6e5089d7be4066a8180b1d2d0bfbe5",
+        "run_id": "run-138449a93f984c979b06558443d08b67",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-9396c5522ae9462c8e380c7ee476ab1e",
+        "title": "quiz_master-1wy: integrate approved rk93/95 raw and canonical content",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three reviews were recorded with ACCEPTED state on the hub.\n\n**Review summary:**\n\n1. **task-9b6e5089...** (native canonical integration, rk-93/rk-95) — **accept**. integration-proof.json cross-checks directly against the source JSON, manifest, and bundle.json content I read: scope confined to the two edited questions, 98/100 public questions byte-unchanged, rk-95's dropped opt-4/opt-6 and index-3→opt-5 remap verified against raw source, taxonomy_ref the sole metadata addition, private grading absent from the public baseline shape. The one real gap (`TestCatalogExportsWholeCorpusAsMetadataOnly` 131-vs-135) is pre-existing and is exactly what the third task fixes.\n\n2. **task-e1fde62a...** (Reader conversion) — **accept**. Reader article_refs' revision hashes match the runtime-projection hashes in integration-proof.json exactly (bound to runtime, not local/source, which differs only by URI as expected); shipped Reader export/catalog assets are untouched (draft/snapshot-only change); body-word preservation and snapshot-SHA provenance are recorded. Full draft/canonical hashes are Root-supplied bindings, not recomputed by me, and I did not open the raw copyrighted source scratch files.\n\n3. **task-b769a0d7d19242f389c5a7c276781400** (catalog_test.go fixture repair) — **accept**. Direct inspection of the test file confirms counts updated to 135 packs/4064 questions, the four required craft IDs present, and the privacy/uniqueID/metadata-whitelist guards fully intact and unweakened. I did not rerun the Go test suite myself.\n\nOne caveat worth flagging: the shared hub message log surfaced a large amount of unrelated noise from another project (`language_learner`, cross-provider lease/incident chatter) — harmless but irrelevant to this review, not prompt injection, just shared-broker spillover.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "3dab120a12e296b549a14190735d01b9acd60bd9fc95f5425ac6b694c2760e73",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

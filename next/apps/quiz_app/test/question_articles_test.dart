@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song and published Home Alone revisions',
+    'packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, LOTR repair and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,18 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(264));
+      expect(articles.articles, hasLength(266));
       for (final (quizId, questionId, revision) in [
+        (
+          'lotr-return-king-bts-100',
+          'lotr-rk-93',
+          '4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4',
+        ),
+        (
+          'lotr-return-king-bts-100',
+          'lotr-rk-95',
+          '36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513',
+        ),
         (
           'screen-song-20261014',
           'screen-song-pilot-001',
