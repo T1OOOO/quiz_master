@@ -1,0 +1,85 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-75486ed26f944b1a9c05d95dcfcdb8a6": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-75486ed26f944b1a9c05d95dcfcdb8a6",
+          "verdict": "accept",
+          "note": "Independent Claude fact review of the 3 MIXED_READER_20261014/draft articles only (001 Nosferatu, 002 oboe tuning, 006 Metropolis). Scope limited strictly to these three drafts — no import/browser/runtime/publication approval implied.\n\nMethod: opened each primary source URL directly (Murnau-Stiftung, filmportal.de, Berliner Philharmoniker, Tonhalle-Orchester Zürich, Richardson Symphony FAQ) and compared claims verbatim; cross-checked each question_refs revision_sha256 in articles.json against docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/mixed-runtime-bundle.json (stems, options, private_grading correct_option_id). All three revision hashes and correct answers match exactly (001->Дракула, 002->Гобой, 006->Метрополис).\n\npub-connections-001 (Nosferatu): Berlin premiere 4 March 1922, Murnau director, Stoker/Dracula source, Hutter/Orlok name changes, Wisborg setting, Galeen screenplay, and expressionism+literature+theater+European painting synthesis claim all directly confirmed on cited Murnau-Stiftung and filmportal.de pages. ACCEPT.\n\npub-connections-002 (oboe tuning): Berliner Philharmoniker confirms oboe gives the tuning note before every concert; Tonhalle Zürich confirms the clear/overtone-rich/penetrating tone and 442 Hz Swiss reference pitch; Richardson Symphony FAQ confirms steady pitch/audibility. Article correctly hedges 'traditionally' instead of a universal rule, and correctly frames 442 Hz as a local example, not a universal figure. ACCEPT.\n\npub-connections-006 (Metropolis): Murnau-Stiftung confirms German premiere 10 Jan 1927, Fritz Lang, vertical class geography (rulers above / workers in underground city), Rotwang giving the robot Maria's likeness, and false robot-Maria inciting the worker riot/flood chain of events. filmportal.de confirms Brigitte Helm's dual Maria/Maschinenmensch role, silent b/w format. Murnau-Stiftung 100-year page confirms 2008 Buenos Aires print discovery and 2010 Berlinale restoration premiere. Human-Maria vs robot-Maria distinction is accurately drawn. ACCEPT.\n\nAll three articles factually sound, each claim traceable to a cited source, each adds context beyond the bare correct answer without unsourced overreach. No inaccessible pages; no unverifiable statements found. Acceptance restricted to these three draft articles only — not import/browser/runtime/deployment approval.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual primarysource access+meaningful teachingcontext, precisequestionRef/hash/wordcounts; unrevieweddraftlabel; no publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_20261014\\draft"
+        ],
+        "assignee": "session-eefb2277f2694bceb59cc775b935bbc1",
+        "author": "session-4210109c9e274aa48dc8fab667c8c326",
+        "body": "Execute MIXED_READER_20261014/PACKET_EN.md; own onlydraft/. Three150-190word Russianminiarticles001Nosferatu,002oboe,006Metropolis tiedtoactualruntimeRefs and2-3verifiedprimarylinks. Draftonly, no canonicalchanges/Git/children. Independentsource reviewlater.",
+        "created_at": 1791974619.4388356,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-75486ed26f944b1a9c05d95dcfcdb8a6",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "PowerShell JSON parse plus Unicode word count, source-link count, and runtime-ref comparison",
+              "kind": "check",
+              "outcome": "pass: 001=153 words/3 sources; 002=152/3; 006=165/3; all refs match frozen bundle"
+            },
+            {
+              "kind": "hash",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_20261014/draft/articles.json",
+              "sha256": "568652cb5f3a56caf3c8c5cae219bed6e798e1ba15c17af47f7060af9e97f321"
+            },
+            {
+              "kind": "report",
+              "outcome": "DRAFT_UNREVIEWED; no publication claim",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_20261014/draft/REPORT.json"
+            }
+          ],
+          "files": [
+            "docs/rewrite-agents/tasks/MIXED_READER_20261014/draft/articles.json",
+            "docs/rewrite-agents/tasks/MIXED_READER_20261014/draft/SOURCES.md",
+            "docs/rewrite-agents/tasks/MIXED_READER_20261014/draft/REPORT.json"
+          ],
+          "publication_claim": false,
+          "review_required": true,
+          "status": "DRAFT_UNREVIEWED",
+          "summary": "Three bounded Russian Reader drafts written; independent source review remains required."
+        },
+        "root_task_id": "task-75486ed26f944b1a9c05d95dcfcdb8a6",
+        "run_id": "run-b5619e0823624c19b8b574f4c15e7fd1",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-1bee53fa6698489baa34391b7d145517",
+        "title": "Three source-backed film/music mixed Reader drafts",
+        "version": 4,
+        "reviewer": "session-e77158332cd34230ab89ed7fea18d6de",
+        "review_note": "Independent Claude fact review of the 3 MIXED_READER_20261014/draft articles only (001 Nosferatu, 002 oboe tuning, 006 Metropolis). Scope limited strictly to these three drafts — no import/browser/runtime/publication approval implied.\n\nMethod: opened each primary source URL directly (Murnau-Stiftung, filmportal.de, Berliner Philharmoniker, Tonhalle-Orchester Zürich, Richardson Symphony FAQ) and compared claims verbatim; cross-checked each question_refs revision_sha256 in articles.json against docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/mixed-runtime-bundle.json (stems, options, private_grading correct_option_id). All three revision hashes and correct answers match exactly (001->Дракула, 002->Гобой, 006->Метрополис).\n\npub-connections-001 (Nosferatu): Berlin premiere 4 March 1922, Murnau director, Stoker/Dracula source, Hutter/Orlok name changes, Wisborg setting, Galeen screenplay, and expressionism+literature+theater+European painting synthesis claim all directly confirmed on cited Murnau-Stiftung and filmportal.de pages. ACCEPT.\n\npub-connections-002 (oboe tuning): Berliner Philharmoniker confirms oboe gives the tuning note before every concert; Tonhalle Zürich confirms the clear/overtone-rich/penetrating tone and 442 Hz Swiss reference pitch; Richardson Symphony FAQ confirms steady pitch/audibility. Article correctly hedges 'traditionally' instead of a universal rule, and correctly frames 442 Hz as a local example, not a universal figure. ACCEPT.\n\npub-connections-006 (Metropolis): Murnau-Stiftung confirms German premiere 10 Jan 1927, Fritz Lang, vertical class geography (rulers above / workers in underground city), Rotwang giving the robot Maria's likeness, and false robot-Maria inciting the worker riot/flood chain of events. filmportal.de confirms Brigitte Helm's dual Maria/Maschinenmensch role, silent b/w format. Murnau-Stiftung 100-year page confirms 2008 Buenos Aires print discovery and 2010 Berlinale restoration premiere. Human-Maria vs robot-Maria distinction is accurately drawn. ACCEPT.\n\nAll three articles factually sound, each claim traceable to a cited source, each adds context beyond the bare correct answer without unsourced overreach. No inaccessible pages; no unverifiable statements found. Acceptance restricted to these three draft articles only — not import/browser/runtime/deployment approval."
+      }
+    }
+  },
+  "review_messages": [
+    "Fact review complete for task-75486ed26f944b1a9c05d95dcfcdb8a6 (3 MIXED_READER_20261014/draft articles only; no import/browser/runtime/publication scope). Verdict: ACCEPT all three.\n\n001 Nosferatu: Berlin premiere 4 Mar 1922, Murnau director, Stoker/Dracula source, Hutter/Orlok renaming, Wisborg setting, Galeen screenplay, expressionism+literature+theater+painting synthesis — all confirmed verbatim on murnau-stiftung.de/movie/674, murnau-stiftung.de/news/100-geburtstag-nosferatu, filmportal.de/person/henrik-galeen_a56d379381f0411297981ff64d9c7309.\n002 Oboe tuning: Berliner Philharmoniker confirms oboe gives tuning note pre-concert; Tonhalle Zürich confirms clear/overtone-rich/penetrating tone + 442 Hz Swiss reference pitch (correctly presented as local, not universal); Richardson Symphony FAQ confirms steady pitch/audibility. Article hedges 'traditionally' appropriately.\n003(006) Metropolis: murnau-stiftung.de/movie/106 and /metropolis-100 confirm 10 Jan 1927 Berlin premiere, Fritz Lang, vertical social layout, Rotwang giving the robot Maria's likeness, false Maria inciting the worker riot/flood chain of events, 2008 Buenos Aires print discovery, 2010 Berlinale restoration. filmportal.de confirms Brigitte Helm's dual Maria/Maschinenmensch role and silent b/w format. Human-Maria vs robot distinction is clearly and accurately drawn.\n\nAll question_refs revision_sha256 in articles.json match mixed-runtime-bundle.json exactly (stems + correct_option_id for 001/002/006). No inaccessible sources, no unverifiable statements, no corrections required. Acceptance is scoped strictly to these three drafts, not import/browser/runtime/deployment. Submitted hub_task review=accept."
+  ],
+  "report": "Task is now ACCEPTED (state: ACCEPTED). Review and notification to session-f5447087068b4258addfd990629a86b8 both completed.\n\n## Summary\n\nIndependently fact-checked all three MIXED_READER_20261014/draft articles by fetching each cited primary source directly:\n\n- **pub-connections-001 (Nosferatu)**: premiere date, director, Stoker/Dracula source, Hutter/Orlok renaming, Wisborg setting, Galeen screenplay, and expressionism/literature/theater/painting synthesis claim all confirmed verbatim.\n- **pub-connections-002 (oboe tuning)**: oboe-gives-tuning-note claim, acoustic rationale, and 442 Hz Swiss reference pitch all confirmed; article correctly avoids overgeneralizing the tradition as universal law.\n- **pub-connections-006 (Metropolis)**: premiere date, director, city's vertical class layout, Rotwang giving the robot Maria's likeness, false-Maria-incites-riot plot point, Brigitte Helm's dual role, and the 2008 Buenos Aires print/2010 restoration all confirmed; human-Maria-vs-robot distinction is accurate.\n\nAlso verified all three `question_refs` revision_sha256 values in `articles.json` match `mixed-runtime-bundle.json` exactly, including correct answers. No inaccessible sources, no unverifiable claims, no corrections needed. Verdict: **ACCEPT**, scoped only to these three drafts — not import/browser/runtime/deployment approval. Submitted via `hub_task review` and summarized to the requesting session via `hub_message`.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-75486ed26f944b1a9c05d95dcfcdb8a6",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "8b833fbddebdccbe5608ccf1598b03fe82c2db32e72a3158ed4fa30f5eaf5c8b",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

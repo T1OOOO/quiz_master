@@ -1,0 +1,64 @@
+{
+  "status": "DRAFT_UNREVIEWED",
+  "task_id": "task-75486ed26f944b1a9c05d95dcfcdb8a6",
+  "scope": "Three question-linked Russian miniarticles only; no canonical content, application, publication, or release changes.",
+  "runtime_bundle": {
+    "path": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/mixed-runtime-bundle.json",
+    "sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391",
+    "quiz_id": "pub-connections-20261014",
+    "revision_number": 1,
+    "revision_sha256": "ab6a3dce5395b2db2a78684c7ab8682f27ca16992dde8d19c326e694abc782f6"
+  },
+  "articles": [
+    {
+      "id": "question:pub-connections-001",
+      "word_count": 153,
+      "source_link_count": 3,
+      "runtime_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-001",
+        "revision_sha256": "ffba665c01970729b668367173aeeee8845eb9f02e69c64e91348c360efce2cd"
+      }
+    },
+    {
+      "id": "question:pub-connections-002",
+      "word_count": 152,
+      "source_link_count": 3,
+      "runtime_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-002",
+        "revision_sha256": "9eaffd1c9f2c770a9715d03726cdecfded33942fca0255e0628a5defd1b8a119"
+      }
+    },
+    {
+      "id": "question:pub-connections-006",
+      "word_count": 165,
+      "source_link_count": 3,
+      "runtime_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-006",
+        "revision_sha256": "a030f84979262904b5bb397e627c72d9240f2b5e4354b2fd51638b1d39dda53f"
+      }
+    }
+  ],
+  "source_access": {
+    "access_date": "2026-10-14",
+    "method": "Opened and checked official foundation, national film catalogue, and orchestra pages; the exact links and supported facts are in SOURCES.md.",
+    "blocked_sources": []
+  },
+  "hashes": {
+    "articles_json_sha256": "568652cb5f3a56caf3c8c5cae219bed6e798e1ba15c17af47f7060af9e97f321",
+    "sources_md_sha256": "209354b6defc4ffaf8d45af9df582f331f30ca510bb0835696b89e80aca4b33d"
+  },
+  "checks": {
+    "articles_json_parses": true,
+    "word_count_method": "Unicode-letter token count over body_ru",
+    "all_word_counts_within_150_190": true,
+    "all_articles_have_2_to_3_source_links": true,
+    "all_articles_are_draft_unreviewed": true
+  },
+  "limits": [
+    "Independent source/fact review is required before import or publication.",
+    "This report records draft evidence only and does not claim editorial acceptance or release publication."
+  ]
+}
