@@ -1,0 +1,74 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-d8648c90b665478d8dea5b689d8285ed": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d8648c90b665478d8dea5b689d8285ed",
+          "verdict": "rework",
+          "error_count": 7,
+          "note": "REWORK. library_release_controller.py imports stdlib only (hashlib/json/re/pathlib) — zero calls into prepare_lotr_package.py, verify_candidate_runtime.py, prepare_reader_release.py, verify_reader_candidate.py, or prepare_remote_reader.py. This is an isolated new guard module, not an adaptation of the immutable house producer/candidate/remote-preparation controllers as the packet requires.\n\nCritical: staging_revisions() (lines 93-101) does NOT reuse expected_staging_revisions_from_bundles (prepare_lotr_package.py:507). The real house function reconstructs each private revision, rebinds its source URI to /opt/quiz-master/releases/{build_id}/..., and recomputes the sha256 over that rebound private dict — i.e. the hash is bound to the new root/build_id. The submitted function just copies question['revision']['sha256'] verbatim per quiz_id; build_id is only regex-validated, never incorporated into any hash. This reproduces exactly the prior failure mode the review brief warns about (copied old revision values that don't bind the new source root), and no test exercises staging_revisions at all.\n\nOther gaps vs PACKET_EN.md: (1) no duplicate-article detection anywhere; (2) validate_inputs() checks pins['counts'] by dict equality against a hardcoded EXPECTED literal — playable/catalog/mixed_refs(12) are never derived/verified from actual bundle/article data, only articles+refs are (via validate_reader_delta); 'noncatalog' isn't modeled at all; (3) no frozen new-Web-tree manifest/member-count validation (packet explicitly rejects blindly retaining 327 members); (4) no candidate/image/feedback/history/rollback gate code or references. Test suite is only the 2 reported tests (reader-delta immutability, freeze/shell guards) — both pass as claimed (python -m unittest: OK), and REPORT.json's sha256 values match the actual files, so evidence given is truthful for what it covers, but it doesn't cover validate_inputs, staging_revisions, or the missing areas above. Missing-receipt NOT_RUN status is a legitimate, correctly-stated limitation, not the issue — the issue is the implementation itself doesn't adapt or bind to the existing release machinery. Please rework to actually call/adapt the house staging-revision and candidate/runtime verification functions, add real duplicate/mixed-ref/Web-manifest checks, and cover them with negative tests."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Small audited adaptation of existing producer/reader candidate and remote preparation controllers; no bypass of any guard. Meaningful bounded tests reject old counts/stale web/source hashes, preserve old272, exact six additions and12mixed refs, regenerate staging hashes and LinuxLF scripts. Source-only report with actual tests, pins/known gaps; no claim actual package or production published before Root has frozen build and independent review.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-ca2d0ac7514d414d85fff2d00ef28908",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite source-only preparation for release after current Flutter UI acceptance. Use existing reviewed Reader/mixed producers and verifiers; preserve historical scripts. New owned LIBRARY_RELEASE_20261014/worker files only. Baseline actual Helm54 reader17be, archivea67, imageac4, Reader272/153/151; successor Reader278/159/157 with exact six D/E additions and unchanged old272. Accept actual frozen commit/build id from pinned receipt; Root supplies after source commit. Keep all guards, staging hash regeneration, rehearsal12mixed refs, LF, web manifests, API/Nginx/PVC preservation. No actual builds/image/SSH/deploy/Git or helpers. Independent source review and real runtime gates later.",
+        "created_at": 1792003934.7894819,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-d8648c90b665478d8dea5b689d8285ed",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\library_release_controller.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\test_library_release_controller.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "command": "python -m unittest test_library_release_controller.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker",
+              "exit": 0,
+              "result": "2 tests passed"
+            },
+            {
+              "command": "JSON parse REPORT.json",
+              "exit": 0
+            }
+          ],
+          "published": false,
+          "remaining_risks": [
+            "Actual frozen commit/build receipt was not supplied; actual package preparation is NOT_RUN.",
+            "Independent source review and Root-owned release gates remain required."
+          ],
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        },
+        "root_task_id": "task-d8648c90b665478d8dea5b689d8285ed",
+        "run_id": "run-db19a91f3c344908b7fb4e0a5fc9b779",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Adapt existing immutable Reader release tooling for library UI and DE6 successor",
+        "version": 4,
+        "reviewer": "session-7a62bd98d247447688e3038598757e2e",
+        "review_note": "REWORK. library_release_controller.py imports stdlib only (hashlib/json/re/pathlib) — zero calls into prepare_lotr_package.py, verify_candidate_runtime.py, prepare_reader_release.py, verify_reader_candidate.py, or prepare_remote_reader.py. This is an isolated new guard module, not an adaptation of the immutable house producer/candidate/remote-preparation controllers as the packet requires.\n\nCritical: staging_revisions() (lines 93-101) does NOT reuse expected_staging_revisions_from_bundles (prepare_lotr_package.py:507). The real house function reconstructs each private revision, rebinds its source URI to /opt/quiz-master/releases/{build_id}/..., and recomputes the sha256 over that rebound private dict — i.e. the hash is bound to the new root/build_id. The submitted function just copies question['revision']['sha256'] verbatim per quiz_id; build_id is only regex-validated, never incorporated into any hash. This reproduces exactly the prior failure mode the review brief warns about (copied old revision values that don't bind the new source root), and no test exercises staging_revisions at all.\n\nOther gaps vs PACKET_EN.md: (1) no duplicate-article detection anywhere; (2) validate_inputs() checks pins['counts'] by dict equality against a hardcoded EXPECTED literal — playable/catalog/mixed_refs(12) are never derived/verified from actual bundle/article data, only articles+refs are (via validate_reader_delta); 'noncatalog' isn't modeled at all; (3) no frozen new-Web-tree manifest/member-count validation (packet explicitly rejects blindly retaining 327 members); (4) no candidate/image/feedback/history/rollback gate code or references. Test suite is only the 2 reported tests (reader-delta immutability, freeze/shell guards) — both pass as claimed (python -m unittest: OK), and REPORT.json's sha256 values match the actual files, so evidence given is truthful for what it covers, but it doesn't cover validate_inputs, staging_revisions, or the missing areas above. Missing-receipt NOT_RUN status is a legitimate, correctly-stated limitation, not the issue — the issue is the implementation itself doesn't adapt or bind to the existing release machinery. Please rework to actually call/adapt the house staging-revision and candidate/runtime verification functions, add real duplicate/mixed-ref/Web-manifest checks, and cover them with negative tests."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted: task moved to REWORK state (version 4), reviewer session recorded.\n\n**Verdict: REWORK** (error_count: 7)\n\nFindings:\n- `library_release_controller.py` imports only stdlib (`hashlib`, `json`, `re`, `pathlib`) — zero calls into any of the actual house modules (`prepare_lotr_package.py`, `verify_candidate_runtime.py`, `prepare_reader_release.py`, `verify_reader_candidate.py`, `prepare_remote_reader.py`). It's an isolated new module, not an adaptation.\n- **Critical**: its `staging_revisions()` just copies `question.revision.sha256` verbatim and only regex-validates `build_id` — it never calls the real `expected_staging_revisions_from_bundles` (which rebinds each private revision's source URI to the new build root and recomputes the hash over that). This is exactly the \"copied old revision values ignoring build_id\" failure the review brief warned about, and no test touches this function.\n- No duplicate-article detection; `playable`/`catalog`/`mixed_refs` (12) are checked only as dict-literal equality against a hardcoded `EXPECTED`, never derived from real data; no Web-asset manifest/member-count validation; no candidate/image/feedback/history/rollback gate code at all.\n- What *is* there is honest: the 2 reported tests do pass (`python -m unittest`: OK), REPORT.json's sha256 hashes match the real files, and the \"frozen receipt missing → NOT_RUN\" limitation is correctly, non-fabricated.\n\nSent this as the `hub_task review` note so the author gets concrete rework targets.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "cd856470c780497b72d01202ecd8a4b37fac98a4c28812e111cd3813c6d3f8e2",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,69 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-69cb385b729f48b59736c3ccceaf3294": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-69cb385b729f48b59736c3ccceaf3294",
+          "verdict": "rework",
+          "error_count": 4,
+          "note": "Independent Claude Sonnet 5 source review, not reused from prior task-d8648c90 REWORK notes (different gaps).\n\nBLOCKING: prepare_library_release.py does not compile. `python -m py_compile prepare_library_release.py` -> IndentationError line 121 (4-space indent inside a function whose other lines use 1-space indent, e.g. lines 115-120). A second identically-inconsistent 4-space line exists at ~153 in the same file, unreached by the parser but same defect class. Since prepare_library_remote.py does `import prepare_library_release as reader`, both the producer AND the remote-prepare module are unimportable. The submitted test command (`python -m unittest test_library_release_controller.py`) only imports library_release_controller.py, which never imports either broken file, so '4/4 OK' is true but doesn't demonstrate the actual producer/remote adaptation even loads.\n\nBLOCKING: verify_inputs()'s controller/dependency pin set (prepare_library_release.py ~88-91) builds `known = {own/name for name in ('prepare_reader_release.py','verify_reader_candidate.py','test_reader_release.py')}` with `own = Path(__file__).parent` (LIBRARY_RELEASE_20261014/worker). Verified directly: those 3 files actually live in MIXED_READER_IMPORT_20261014/worker, not this worker dir. digest() on them will raise FileNotFoundError the first time this real guard executes, not a clean require() failure.\n\nGenuine progress over the prior REWORK (verified independently): library_release_controller.py now delegates staging_revisions() to house().expected_staging_revisions_from_bundles (test mocks and asserts the call); validate_projection derives catalog/refs/playable/mixed(12) counts from actual bundle/article data and models noncatalog via verify_candidate_runtime.NONCATALOG_READER_REFS (confirmed exactly 2 entries, 157+2=159 invariant holds in the house file); validate_web_manifest/file_tree add real Web-tree member/hash checking that was entirely absent before; duplicate IDs/refs now fail via dict-collapse and set-uniqueness checks.\n\nMinor: REPORT.json on disk is stale (still shows prior submission's status/hashes, not regenerated this round). verify_library_candidate.py --help text says 'Reader counts 272/153/151' but the script actually passes 278/159/157. controller.validate_prepare_only is unit-tested but never called from preflight(); the real CRLF/helm-upgrade guard lives only in prepare_library_release.py's own inline checks.\n\nVerdict: rework. The syntax error alone means 'complete executable' is false - the producer/remote files cannot be imported. Fix the two indentation breaks, point the dependency-pin set at the correct MIXED_READER_IMPORT_20261014/worker files, regenerate REPORT.json, and add a test that actually imports/py_compiles prepare_library_release.py and prepare_library_remote.py so this class of defect cannot pass silently again."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Executable actualhouse CLI/produce/candidate/remote pipeline54->55. Preserve allhash/rootstage/rollback/feedback/privatehistory/Webmanifest guards. Positive exactnewfreeze/newrootstagehash and negativeoldarticle/duplicate/wrongrefs/staleWeb/baseline/CRLF tests. Actualsource/dependencyhashes and tests, precise NOT_PUBLISHEDreport. Preserveoldhistoricalmodules/foreignchanges.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\worker"
+        ],
+        "assignee": "session-35d93a5d9aeb40629124495247f24b6e",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite corrective source implementation difficulty3. Previous taskd864 is SUBMITTED but NOT_ACCEPTED: author explicitly reports inherited mixed53 baseline remains; startedtasks cannotbecancelled. Previous authorfinished/frozen, exclusiveownershiptransferred byRoot for corrective newtask. Own only LIBRARY_RELEASE_20261014/worker. Read PACKET_EN.md, independent-controller-review-v1.json and independent-controller-review-attempt-v2.json, currentactualcopies, actualReader54/a67 archive and existingrealhousefunctions. Complete realminimalproducer/candidate/remote adaptation54->55 frozen09b19cc/library09b19cc Reader278/159/157 exactD/E6+12mixedrefs; no decorativepreflight/import-only solution. Root production+QA Webbuilds actual0, RootcompiledsameoriginGo/browserQA nowrunning. No heavy/build/browser/SSH/Git/schedulers/helpers. Actuallysubmitcomplete source and meaningfultestsfor independentClaude review beforeRootprepare.",
+        "created_at": 1792006257.823909,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-69cb385b729f48b59736c3ccceaf3294",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "library_release_controller.py",
+            "prepare_library_release.py",
+            "prepare_library_remote.py",
+            "test_library_release_controller.py"
+          ],
+          "evidence": [
+            "python -m unittest -v test_library_release_controller.py => 4/4 OK",
+            "Controller rejects duplicate rows, wrong refs, stale baseline, CRLF, and wrong build regex.",
+            "Producer now uses Reader54 baseline archive SHA/image pins, Reader278/159/157 verifier counts, and 54->55 remote rollback guards.",
+            "Remote validation baseline path is .run/reader_import_20261014/package-v3/quiz-2026.10.14-reader-17be4ce.tar.gz."
+          ],
+          "limitations": [
+            "No heavy build/browser/SSH/Git/remote execution per packet.",
+            "Full archived control fixture execution remains Root gate."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Source adaptation complete and NOT_PUBLISHED; ready for independent Claude review."
+        },
+        "root_task_id": "task-69cb385b729f48b59736c3ccceaf3294",
+        "run_id": "run-58e95c9e730643009af66ebcf24c7e09",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Complete executable library successor controllers against actual Reader54 baseline",
+        "version": 4,
+        "reviewer": "session-54c6620e62b649269b1fea6bd2d278c0",
+        "review_note": "Independent Claude Sonnet 5 source review, not reused from prior task-d8648c90 REWORK notes (different gaps).\n\nBLOCKING: prepare_library_release.py does not compile. `python -m py_compile prepare_library_release.py` -> IndentationError line 121 (4-space indent inside a function whose other lines use 1-space indent, e.g. lines 115-120). A second identically-inconsistent 4-space line exists at ~153 in the same file, unreached by the parser but same defect class. Since prepare_library_remote.py does `import prepare_library_release as reader`, both the producer AND the remote-prepare module are unimportable. The submitted test command (`python -m unittest test_library_release_controller.py`) only imports library_release_controller.py, which never imports either broken file, so '4/4 OK' is true but doesn't demonstrate the actual producer/remote adaptation even loads.\n\nBLOCKING: verify_inputs()'s controller/dependency pin set (prepare_library_release.py ~88-91) builds `known = {own/name for name in ('prepare_reader_release.py','verify_reader_candidate.py','test_reader_release.py')}` with `own = Path(__file__).parent` (LIBRARY_RELEASE_20261014/worker). Verified directly: those 3 files actually live in MIXED_READER_IMPORT_20261014/worker, not this worker dir. digest() on them will raise FileNotFoundError the first time this real guard executes, not a clean require() failure.\n\nGenuine progress over the prior REWORK (verified independently): library_release_controller.py now delegates staging_revisions() to house().expected_staging_revisions_from_bundles (test mocks and asserts the call); validate_projection derives catalog/refs/playable/mixed(12) counts from actual bundle/article data and models noncatalog via verify_candidate_runtime.NONCATALOG_READER_REFS (confirmed exactly 2 entries, 157+2=159 invariant holds in the house file); validate_web_manifest/file_tree add real Web-tree member/hash checking that was entirely absent before; duplicate IDs/refs now fail via dict-collapse and set-uniqueness checks.\n\nMinor: REPORT.json on disk is stale (still shows prior submission's status/hashes, not regenerated this round). verify_library_candidate.py --help text says 'Reader counts 272/153/151' but the script actually passes 278/159/157. controller.validate_prepare_only is unit-tested but never called from preflight(); the real CRLF/helm-upgrade guard lives only in prepare_library_release.py's own inline checks.\n\nVerdict: rework. The syntax error alone means 'complete executable' is false - the producer/remote files cannot be imported. Fix the two indentation breaks, point the dependency-pin set at the correct MIXED_READER_IMPORT_20261014/worker files, regenerate REPORT.json, and add a test that actually imports/py_compiles prepare_library_release.py and prepare_library_remote.py so this class of defect cannot pass silently again."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as **REWORK** for task-69cb385b729f48b59736c3ccceaf3294.\n\n**Summary of what I did:** I did not take the garbled instruction block's claims at face value. I connected to `host_hub`, joined the team, and located the real task (it does exist, distinct from the prior `task-d8648c90` which was genuinely reviewed REWORK by another session). I then read the actual current source rather than reusing old findings.\n\n**Verdict: REWORK, error_count 4.**\n- Two **blocking** defects, both independently reproduced: `prepare_library_release.py` has a real `IndentationError` (line 121, confirmed with `py_compile`) that makes it — and `prepare_library_remote.py`, which imports it — unimportable; and a dependency-pin set in the same file points at three house files (`prepare_reader_release.py`, `verify_reader_candidate.py`, `test_reader_release.py`) using the wrong directory, so it would raise `FileNotFoundError` the moment that guard actually runs. The reported \"4/4 tests passed\" only exercises `library_release_controller.py`, which never touches either broken file.\n- Genuine, verified progress over the prior rework was also credited: real delegation to the house `expected_staging_revisions_from_bundles`, data-derived counts, noncatalog modeling, Web-manifest hashing, and duplicate detection — none of this was assumed, each was checked against the actual house files.\n- Minor notes: stale `REPORT.json`, a cosmetic help-text mismatch, and dead code in `validate_prepare_only`.\n\nNo repo edits were made, consistent with the bounded review scope.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "c3d6e459a789819b50ba7a67e8601aad1e82b6d0fa1a5e707bcf76777991d6ac",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

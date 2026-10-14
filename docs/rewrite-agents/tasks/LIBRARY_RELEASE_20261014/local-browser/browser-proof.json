@@ -1,0 +1,119 @@
+{
+  "status": "VERIFIED",
+  "frozen_source": "09b19cc2d0fa8463a3e53e9a5f51981e657e2a48",
+  "build_id": "quiz-2026.10.14-library-09b19cc",
+  "qa_web_main_sha256": "be93088a7633dc1c2e018f59a9a81049e2d5a2b698d95620e96e8df236aceb0e",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "controlled_real_go_fixture_questions": 20,
+  "actual_visible_score": "20/20",
+  "articles": [
+    {
+      "question_id": "pub-connections-003",
+      "revision_sha256": "f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0",
+      "article_id": "question:pub-connections-003",
+      "source_links_count": 3,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-003-footer.png",
+      "footer_image_sha256": "65a981205ff35946a7d2e2c073132e76e78cb154ddf35a863ea27be34396b0df"
+    },
+    {
+      "question_id": "pub-connections-007",
+      "revision_sha256": "7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e",
+      "article_id": "question:pub-connections-007",
+      "source_links_count": 2,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-007-footer.png",
+      "footer_image_sha256": "e38185ec487d5c88cde83a1a262a677ea5351645ec36d042ff264802b855acc4"
+    },
+    {
+      "question_id": "pub-connections-008",
+      "revision_sha256": "a1a1eca62947e3d5d3132258b27f9aa797bcd96160eb0ff3b2e3ea291685b61f",
+      "article_id": "question:pub-connections-008",
+      "source_links_count": 2,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-008-footer.png",
+      "footer_image_sha256": "98f888e067c3528471b7b72a391445c562603bfd6a86d6153c1e2042afdc0a6b"
+    },
+    {
+      "question_id": "pub-connections-009",
+      "revision_sha256": "8ab130918f1ba0f1dce1b71538c9ae8461d8fedfd0b354d0cb5481de152a37cc",
+      "article_id": "question:pub-connections-009",
+      "source_links_count": 2,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-009-footer.png",
+      "footer_image_sha256": "2b2fe30687f757dea666862e2334aafd075a48e6cfd7ce7b0e9295bad7457dd8"
+    },
+    {
+      "question_id": "pub-connections-013",
+      "revision_sha256": "99749857f6bf288bb46962b0c40d5e5264304811190e61c7d241f0e0176d88ba",
+      "article_id": "question:pub-connections-013",
+      "source_links_count": 2,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-013-footer.png",
+      "footer_image_sha256": "ad64c7c2e8bb3c2392658e33df679d98d3599bc5bb960dc0dca56717fcced65d"
+    },
+    {
+      "question_id": "pub-connections-017",
+      "revision_sha256": "eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955",
+      "article_id": "question:pub-connections-017",
+      "source_links_count": 3,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\LIBRARY_RELEASE_20261014\\local-browser\\mixed\\library20batchwait-article-pub-connections-017-footer.png",
+      "footer_image_sha256": "baf3deeda4b3eea9b24f09de14f56cd4bde652aad4f7c7f089a6cf5db0ccbafa"
+    }
+  ],
+  "library_visuals_observed": [
+    "home",
+    "cinema",
+    "geography",
+    "flags"
+  ],
+  "bounded_artwork_scope": "Specific local artwork restored for four subtopics; other subtopics including actors/directors/craft still use root fallback. No claim unique artwork for all themes.",
+  "browser_inactive": true,
+  "browser_close_actual_exit": 1,
+  "browser_cleanup": {
+    "actual_cleanup_exit": 0,
+    "verified_daemon_pid": 37584,
+    "foreign_processes_changed": false,
+    "previously_verified_chrome_pid": 49136,
+    "method": "Official close returned1. Exact own pidfile/native daemon/directChrome parent verified. CIM retained exited Chrome record although Get-Process showed it absent; stopped only remaining own daemon and verified native processes for all captured own descendants absent",
+    "session": "library-09b19cc-local-mixed",
+    "inactive": true,
+    "checked_owned_pids": [
+      37584,
+      49136,
+      49136,
+      46580,
+      30784,
+      8272,
+      33884
+    ],
+    "namespace": "quiz-master",
+    "native_processes_absent": true,
+    "ports_closed": [
+      19090,
+      19093
+    ],
+    "owned_go_cleanup": {
+      "actual_api_pid": 37144,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    }
+  },
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "api_static_server_actual_exit": 0,
+  "browser_errors": [],
+  "harness_limitations": [
+    "Separate CLI calls missed the existing two-second auto-advance timer. Failed first pass retained. Native batch with explicit wait-for-Pause followed by actual Pause click fixed the harness, without app code or timer changes.",
+    "Successful scored attempt selected first question correctly in the earlier batch whose pause lookup failed before dialog mounted; final native run resumed from question2 and visibly finished20/20. All six new article dialogs were checked in this same completed attempt.",
+    "Official named browser close attempt timed out/failed1; exact owned pidfile/native daemon/Chrome parent verified. CIM retained exited Chrome record; native process API confirmed it absent. Root stopped only remaining owned daemon and verified captured native descendants and ports absent.",
+    "Controlled fixture contains mixed20 only; no claim all136 live quizzes graded or raw immutable image tested here."
+  ],
+  "production": "Actual read-only SSH baseline54, all29 feedbackOPEN; no release or feedback mutation performed"
+}

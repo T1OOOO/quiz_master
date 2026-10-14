@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_NOT_EXECUTED_NOT_PUBLISHED",
+  "command": "python -m py_compile prepare_library_release.py prepare_library_remote.py verify_library_candidate.py",
+  "actual_exit": 1,
+  "error": "IndentationError: unexpected indent at prepare_library_release.py line121",
+  "source_sha256": "da4f73cbfa1d9338b48afea24dacd13d329d8757d3e07faa8f861718a6b6c652",
+  "scope": "Root actual syntax gate; four passing guard-only tests do not validate actual copied producer. Independent source review required."
+}
