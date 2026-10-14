@@ -1,0 +1,23 @@
+{
+  "status": "BEFORE_FIX_OBSERVED",
+  "origin": "https://quiz.kotopedia.org",
+  "build": "quiz-2026.10.14-reader-17be4ce",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "observations": [
+    "After actual image loading, Actors/Directors/Craft folder covers all use cinema category picture",
+    "Visible quiz card omits a cover image",
+    "Shared Christmas background is visible"
+  ],
+  "asset_loading": "Actual category JPEGs and home-alone BG fetched in resource timing, about1.4s; early blank screenshot was BEFORE loading and is not a settled-state defect proof.",
+  "browser_errors": "none observed",
+  "actual_browser_closed": true,
+  "screenshot_sha256": "fba7b3371ac3c8e7d6931dbfc9064c116d5964439a62eeeedc08f6b839a99784",
+  "feedback_posted": false,
+  "actual_url": "https://quiz.kotopedia.org/library#/library?folder=%D0%9A%D0%B8%D0%BD%D0%BE",
+  "logical_route": "/library?folder=\u041a\u0438\u043d\u043e",
+  "browser_close": "Official own-session close timed out. Own named pidfile31880 and process identities verified; Chrome42752 exited before Stop-Process, nameddaemon31880 stopped successfully. Subsequent process check found neither PID alive. No other session/process targeted.",
+  "browser_close_actual_exit": 1
+}

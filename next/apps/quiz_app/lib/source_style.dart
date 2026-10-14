@@ -19,36 +19,36 @@ class SourceScaffold extends ConsumerWidget {
       children: [
         Positioned.fill(
           child: Image.asset(
-            'assets/home-alone-bg.jpg',
+            'assets/library-bg-v1.png',
             fit: BoxFit.cover,
             cacheWidth: 1024,
             excludeFromSemantics: true,
           ),
         ),
-        const Positioned.fill(child: ColoredBox(color: Color(0x99502f1c))),
+        const Positioned.fill(child: ColoredBox(color: Color(0x66122f31))),
         Theme(
           data: _theme(Brightness.light).copyWith(
             colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xffe8791b),
-              surface: const Color(0xffead9bf),
+              seedColor: const Color(0xff2d7d7b),
+              surface: const Color(0xffedf1e8),
             ),
             scaffoldBackgroundColor: Colors.transparent,
             textTheme: _theme(Brightness.light).textTheme.apply(
-              bodyColor: const Color(0xff655444),
-              displayColor: const Color(0xff655444),
+              bodyColor: const Color(0xff193b3c),
+              displayColor: const Color(0xff193b3c),
             ),
             cardTheme: CardThemeData(
-              color: const Color(0xffead9bf),
+              color: const Color(0xffedf1e8),
               elevation: 2,
-              shadowColor: const Color(0x38603612),
+              shadowColor: const Color(0x38122f31),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(27),
-                side: const BorderSide(color: Color(0xfff5e6cf), width: 2),
+                side: const BorderSide(color: Color(0xffd4e4dc), width: 2),
               ),
             ),
             inputDecorationTheme: InputDecorationTheme(
               filled: true,
-              fillColor: const Color(0xffead9bf),
+              fillColor: const Color(0xffedf1e8),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -257,26 +257,11 @@ class SourceFolderCard extends StatelessWidget {
   final String? coverAsset;
   @override
   Widget build(BuildContext context) {
-    final cover = switch (category.split('/').first) {
-      'Гастрономия' => 'food',
-      'Кино' => 'cinema',
-      'Новый Год' => 'holiday',
-      'Природа' => 'nature',
-      'Психология' => 'psychology',
-      'Филии' => 'philias',
-      'Филология' => 'philology',
-      'Литература' => 'philology',
-      'География' => 'geography',
-      'Музыка' => 'music',
-      'История' => 'history',
-      'Мифология' => 'mythology',
-      _ => 'nature',
-    };
     return Material(
-      color: const Color(0xffead9bf),
+      color: const Color(0xffedf1e8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
-        side: const BorderSide(color: Color(0xfff5e6cf), width: 2),
+        side: const BorderSide(color: Color(0xffd4e4dc), width: 2),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -286,7 +271,7 @@ class SourceFolderCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              coverAsset ?? 'assets/categories/$cover.jpg',
+              coverAsset ?? categoryCoverAsset(category),
               height: coverHeight,
               fit: BoxFit.cover,
               cacheWidth: 600,
@@ -301,7 +286,7 @@ class SourceFolderCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Color(0xff655444),
+                  color: Color(0xff193b3c),
                   fontSize: coverHeight < 112 ? 14 : 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -312,4 +297,33 @@ class SourceFolderCard extends StatelessWidget {
       ),
     );
   }
+}
+
+String categoryCoverAsset(String category) {
+  const topicCovers = {
+    'География/Столицы': 'assets/categories/geography-capitals.png',
+    'География/Флаги': 'assets/categories/geography-flags.png',
+    'Мифология/Греция': 'assets/categories/mythology-greece.png',
+    'История/Искусство': 'assets/categories/history-art.png',
+  };
+  for (final entry in topicCovers.entries) {
+    if (category == entry.key || category.startsWith('${entry.key}/')) {
+      return entry.value;
+    }
+  }
+  final cover = switch (category.split('/').first) {
+    'Гастрономия' => 'food',
+    'Кино' => 'cinema',
+    'Новый Год' => 'holiday',
+    'Природа' => 'nature',
+    'Психология' => 'psychology',
+    'Филии' => 'philias',
+    'Филология' || 'Литература' => 'philology',
+    'География' => 'geography',
+    'Музыка' => 'music',
+    'История' => 'history',
+    'Мифология' => 'mythology',
+    _ => 'nature',
+  };
+  return 'assets/categories/$cover.jpg';
 }

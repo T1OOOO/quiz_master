@@ -1,0 +1,83 @@
+{
+  "packet_label": "ui-7ebd753a-codex",
+  "task_id": "task-7ebd753a6047451db73ee265f3d67c0e",
+  "status": "READY_NOT_PUBLISHED",
+  "base_revision": "1107a105625aed867b34c06cb7f85e1f148eb267",
+  "changed_files": [
+    "next/apps/quiz_app/lib/source_style.dart",
+    "next/apps/quiz_app/lib/discovery.dart",
+    "next/apps/quiz_app/pubspec.yaml",
+    "next/apps/quiz_app/test/discovery_test.dart",
+    "next/apps/quiz_app/assets/categories/geography-capitals.png",
+    "next/apps/quiz_app/assets/categories/geography-flags.png",
+    "next/apps/quiz_app/assets/categories/mythology-greece.png",
+    "next/apps/quiz_app/assets/categories/history-art.png"
+  ],
+  "root_owned_input": {
+    "path": "next/apps/quiz_app/assets/library-bg-v1.png",
+    "sha256": "0AF26FC92BFA578899C63662653E38B9861D18D0D77B889AB96A7EBCB694BDED",
+    "usage": "Declared in pubspec and rendered by SourceScaffold. The image bytes were created by Root."
+  },
+  "topic_asset_provenance": [
+    {
+      "source": "study/assets/geography-maps-hero.png",
+      "destination": "next/apps/quiz_app/assets/categories/geography-capitals.png",
+      "sha256": "82B95F992FAD2032028F8B7FA4F6AA5EC1863B969AD6AADDDB0DA4A64176FE5A",
+      "byte_identical": true
+    },
+    {
+      "source": "study/assets/geography-countries-hero.png",
+      "destination": "next/apps/quiz_app/assets/categories/geography-flags.png",
+      "sha256": "865760BDAA81DA6295F6A22AE2AFAC3A1216ECF865C78833FD9286956835A6F6",
+      "byte_identical": true
+    },
+    {
+      "source": "study/assets/greek-mythology-hero.png",
+      "destination": "next/apps/quiz_app/assets/categories/mythology-greece.png",
+      "sha256": "9F102B023C10CE4AB72A892F847085D563E1E6A4741FC6287F265BCD317F5CD2",
+      "byte_identical": true
+    },
+    {
+      "source": "study/assets/history-hero.png",
+      "destination": "next/apps/quiz_app/assets/categories/history-art.png",
+      "sha256": "76B735C70E8BABA534BF2E2B67C513B4E1604EA283D201A602A439F7A75571F4",
+      "byte_identical": true
+    }
+  ],
+  "behavior": [
+    "SourceScaffold uses the supplied nonseasonal library background with a teal overlay and high-contrast cream/teal surfaces.",
+    "Folder resolution now receives its full nested path and deterministically selects available topic artwork before a stable root-category fallback.",
+    "Every visible quiz result has a compact full-width category/topic header, preserving the full text width for long titles while retaining the existing ListTile tap and round actions."
+  ],
+  "checks": [
+    {
+      "command": "flutter analyze lib/source_style.dart lib/discovery.dart test/discovery_test.dart",
+      "cwd": "C:/ap/quiz_master/next/apps/quiz_app",
+      "result": "PASS: No issues found."
+    },
+    {
+      "command": "flutter test test/discovery_test.dart",
+      "cwd": "C:/ap/quiz_master/next/apps/quiz_app",
+      "result": "PASS: 8 tests. Includes shared background, exact-node topic/fallback resolution, search-result image, deep-link breadcrumbs, 320x738 and 361x738 at 1.5 text scale, long LOTR title availability, and non-null quiz/round actions."
+    },
+    {
+      "command": "git diff --check",
+      "cwd": "C:/ap/quiz_master",
+      "result": "PASS exit 0; Git emitted existing Windows LF-to-CRLF conversion warnings."
+    }
+  ],
+  "sha256": {
+    "lib/source_style.dart": "976082ECB4BAEEFE8EBCE2443D69B2C77A80C804F502DE48B4B31B56E04E88E0",
+    "lib/discovery.dart": "4568AFAC31B383A1ABC73139EE365F53F4E00BC740770B7AD6EC07F319F15D64",
+    "pubspec.yaml": "5CD14A07DAF341D25F2E907DFC404B20C47DFA55A514C872447F90F133A51EC4",
+    "test/discovery_test.dart": "2983406DAA72C84CFE54299BAC4100F5E9496BDF75B5DE075D9C8F36106A03EF",
+    "assets/categories/geography-capitals.png": "82B95F992FAD2032028F8B7FA4F6AA5EC1863B969AD6AADDDB0DA4A64176FE5A",
+    "assets/categories/geography-flags.png": "865760BDAA81DA6295F6A22AE2AFAC3A1216ECF865C78833FD9286956835A6F6",
+    "assets/categories/mythology-greece.png": "9F102B023C10CE4AB72A892F847085D563E1E6A4741FC6287F265BCD317F5CD2",
+    "assets/categories/history-art.png": "76B735C70E8BABA534BF2E2B67C513B4E1604EA283D201A602A439F7A75571F4"
+  },
+  "remaining_risks": [
+    "No browser, full build, hot reload, release, or feedback submission was run by this worker; Root owns those gates.",
+    "Only existing local artwork was reused. Dedicated topic art covers capitals, flags, Greek mythology, and history/art; cinema and other categories without local topic art intentionally use the stable category fallback."
+  ]
+}

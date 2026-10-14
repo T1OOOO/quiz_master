@@ -1,0 +1,98 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-7ebd753a6047451db73ee265f3d67c0e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-7ebd753a6047451db73ee265f3d67c0e",
+          "verdict": "accept",
+          "note": "Recomputed sha256 for all 5 source/test files + 4 copied assets: exact match to REPORT.json claims. Copied assets byte-identical to study/assets originals (sha256 equal). library-bg-v1.png matches generated-background.json hash. flutter analyze (3 files): no issues. flutter test discovery_test.dart: 8/8 pass. Reader suite (question_articles_test.dart, 6 tests): 6/6 pass, no regression from shared SourceScaffold change. git diff --check exit 0 (only pre-existing CRLF warnings). categoryCoverAsset exact-node/slash-descendant logic verified correct and test-covered (geography-capitals vs unrelated 'СтолицыЛайф' prefix does not false-match). Nested folder category path now joins full path, fixing lost subtopic art. Quiz card image header is decorative (excludeFromSemantics), ListTile/ActionChip tap targets intact at 320/361x738 with 1.5x text scale. Scope respected: only owned files touched, no schema/state framework added. Minor non-blocking nit: pubspec.yaml still declares assets/home-alone-bg.jpg which appears no longer referenced anywhere in lib/ (dead asset declaration, not a defect). Browser/build/release gates correctly left to Root per NOT_PUBLISHED status; debug browser proofs correctly caveated as non-production evidence.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Meaningful topic/quiz covers from existingassets with deterministic fallback, broadcategory rootsstillwork, nonseasonalbackground declaredandrendered; noNewYeardefault globally, preserveHolidaycategoryintentionally. Narrowmobile361x738/textscale accessibility/search/round/route behavior tested and actualfocusedchecks; independent review + browser/compiledreleasegates byRoot; NOT_PUBLISHED.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\source_style.dart",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\discovery.dart",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\pubspec.yaml",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\discovery_test.dart",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\categories",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LIBRARY_VISUAL_FEEDBACK_20261014"
+        ],
+        "assignee": "session-bd13fb6820524e709e8c180a4e364477",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Beads0wc actual new feedback27/28. Read full English packet to follow. Actual/library DiscoveryPage visible quiz cards lack images; nested folder category cover selection broadcategory loses topic-specific oldart. Inspect existingoriginalQuizMastercovers and reuse matching assetfiles only. Root generates own new nonseasonal BG atassets/library-bg-v1.png. UIowner source_style/discovery/pubspec/targetedtests+ownedtopicfiles. PreserveReader278 allAPI/questionref/runtimehistory. No Git/SSH/deploy/helper/reviewer identityfabrication. Existing LL actual UIpatterns read-only. Exactpathownership/noconcurrentwriters.",
+        "created_at": 1792001761.9097476,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-7ebd753a6047451db73ee265f3d67c0e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "next/apps/quiz_app/lib/source_style.dart",
+            "next/apps/quiz_app/lib/discovery.dart",
+            "next/apps/quiz_app/pubspec.yaml",
+            "next/apps/quiz_app/test/discovery_test.dart",
+            "next/apps/quiz_app/assets/categories/geography-capitals.png",
+            "next/apps/quiz_app/assets/categories/geography-flags.png",
+            "next/apps/quiz_app/assets/categories/mythology-greece.png",
+            "next/apps/quiz_app/assets/categories/history-art.png",
+            "docs/rewrite-agents/tasks/LIBRARY_VISUAL_FEEDBACK_20261014/worker-ui/REPORT.json",
+            "docs/rewrite-agents/tasks/LIBRARY_VISUAL_FEEDBACK_20261014/worker-ui/checks.txt"
+          ],
+          "evidence": [
+            {
+              "command": "flutter analyze lib/source_style.dart lib/discovery.dart test/discovery_test.dart",
+              "cwd": "C:/ap/quiz_master/next/apps/quiz_app",
+              "exit_code": 0,
+              "result": "No issues found."
+            },
+            {
+              "command": "flutter test test/discovery_test.dart",
+              "cwd": "C:/ap/quiz_master/next/apps/quiz_app",
+              "exit_code": 0,
+              "result": "8 tests passed."
+            },
+            {
+              "command": "git diff --check",
+              "cwd": "C:/ap/quiz_master",
+              "exit_code": 0,
+              "result": "Only Windows LF-to-CRLF warnings."
+            }
+          ],
+          "label": "ui-7ebd753a-codex",
+          "report": "docs/rewrite-agents/tasks/LIBRARY_VISUAL_FEEDBACK_20261014/worker-ui/REPORT.json",
+          "report_sha256": "66E7BBA849F2051D255B575CC67F7B890E8F29F29059CABD1DC0EAC8092B544B",
+          "risks": [
+            "No browser, hot reload, full build, release, feedback submission, or independent review was run by this worker.",
+            "Only categories with original local topic art receive specific topic covers; the remaining categories use a stable root fallback."
+          ],
+          "status": "READY_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-7ebd753a6047451db73ee265f3d67c0e",
+        "run_id": "run-da195c2deeaa419fb88a51c877828a06",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Restore Flutter library artwork and nonseasonal scaffold with bounded UI fixes",
+        "version": 4,
+        "reviewer": "session-301ddcae4ef44c4b86158188c44c99e5",
+        "review_note": "Recomputed sha256 for all 5 source/test files + 4 copied assets: exact match to REPORT.json claims. Copied assets byte-identical to study/assets originals (sha256 equal). library-bg-v1.png matches generated-background.json hash. flutter analyze (3 files): no issues. flutter test discovery_test.dart: 8/8 pass. Reader suite (question_articles_test.dart, 6 tests): 6/6 pass, no regression from shared SourceScaffold change. git diff --check exit 0 (only pre-existing CRLF warnings). categoryCoverAsset exact-node/slash-descendant logic verified correct and test-covered (geography-capitals vs unrelated 'СтолицыЛайф' prefix does not false-match). Nested folder category path now joins full path, fixing lost subtopic art. Quiz card image header is decorative (excludeFromSemantics), ListTile/ActionChip tap targets intact at 320/361x738 with 1.5x text scale. Scope respected: only owned files touched, no schema/state framework added. Minor non-blocking nit: pubspec.yaml still declares assets/home-alone-bg.jpg which appears no longer referenced anywhere in lib/ (dead asset declaration, not a defect). Browser/build/release gates correctly left to Root per NOT_PUBLISHED status; debug browser proofs correctly caveated as non-production evidence."
+      }
+    }
+  },
+  "review_messages": [
+    "Note on task-7ebd753a review (already ACCEPTED): the task record's own result.report_sha256 (66e7bba8...544b) does not match the sha256 I independently recomputed for worker-ui/REPORT.json right now (626a7676...92e2bd, confirmed with both sha256sum and python hashlib, 4505 bytes). All 9 per-file hashes *inside* REPORT.json (5 source/test files + 4 assets) matched the live filesystem exactly, so the reviewed content is sound. The report_sha256 field in the task metadata itself appears stale/mismatched -- flagging for whoever owns task bookkeeping, not re-opening the content verdict."
+  ],
+  "report": "Review complete. Final summary:\n\n```json\n{\n  \"session_id\": \"session-301ddcae4ef44c4b86158188c44c99e5\",\n  \"task_id\": \"task-7ebd753a6047451db73ee265f3d67c0e\",\n  \"verdict\": \"accept\",\n  \"error_count\": 0,\n  \"checks\": [\n    {\"cmd\": \"flutter analyze lib/source_style.dart lib/discovery.dart test/discovery_test.dart\", \"exit\": 0, \"result\": \"No issues found\"},\n    {\"cmd\": \"flutter test test/discovery_test.dart\", \"exit\": 0, \"result\": \"8/8 passed\"},\n    {\"cmd\": \"flutter test test/question_articles_test.dart (Reader)\", \"exit\": 0, \"result\": \"6/6 passed, no regression from shared SourceScaffold\"},\n    {\"cmd\": \"git diff --check\", \"exit\": 0, \"result\": \"only pre-existing CRLF warnings\"}\n  ],\n  \"file_sha256_recomputed\": {\n    \"lib/source_style.dart\": \"976082ecb4baeefe8ebce2443d69b2c77a80c804f502de48b4b31b56e04e88e0\",\n    \"lib/discovery.dart\": \"4568afac31b383a1abc73139ee365f53f4e00bc740770b7ad6ec07f319f15d64\",\n    \"pubspec.yaml\": \"5cd14a07daf341d25f2e907dfc404b20c47dfa55a514c872447f90f133a51ec4\",\n    \"test/discovery_test.dart\": \"2983406daa72c84cfe54299bac4100f5e9496bdf75b5de075d9c8f36106a03ef\",\n    \"assets/categories/geography-capitals.png\": \"82b95f992fad2032028f8b7fa4f6aa5ec1863b969ad6aadddb0da4a64176fe5a\",\n    \"assets/categories/geography-flags.png\": \"865760bdaa81da6295f6a22ae2afac3a1216ecf865c78833fd9286956835a6f6\",\n    \"assets/categories/mythology-greece.png\": \"9f102b023c10ce4ab72a892f847085d563e1e6a4741fc6287f265bcd317f5cd2\",\n    \"assets/categories/history-art.png\": \"76b735c70e8baba534bf2e2b67c513b4e1604ea283d201a602a439f7a75571f4\",\n    \"assets/library-bg-v1.png\": \"0af26fc92bfa578899c63662653e38b9861d18d0d77b889ab96a7ebcb694bded\"\n  },\n  \"worker_ui_REPORT.json_sha256_recomputed\": \"626a767658c1afd5a2cd5f40331176dd9f90c3abf5a85d5855d3fed89a92e2bd\",\n  \"discrepancy\": \"task metadata's result.report_sha256 (66e7bba8...544b) does not match the above recomputed value — flagged to team via hub_message, does not affect content verdict\",\n  \"findings\": [\n    \"All 9 declared hashes matched the live filesystem exactly; copied assets are byte-identical to study/assets originals\",\n    \"categoryCoverAsset exact-node/slash-descendant matching verified correct and test-covered (no unrelated prefix false-matches)\",\n    \"Nested folder category path now joins full path, fixing lost subtopic cover art\",\n    \"Quiz card header image is decorative (excludeFromSemantics); ListTile/ActionChip tap targets intact at 320–361×738 with 1.5x text scale\",\n    \"Scope respected: only exclusively-owned files touched, no schema/state-framework additions\",\n    \"Minor non-blocking nit: pubspec.yaml still declares assets/home-alone-bg.jpg, which no longer appears referenced in lib/\"\n  ],\n  \"limitations\": \"No browser/build/release verification performed (out of scope, correctly left to Root per NOT_PUBLISHED status); debug browser proofs correctly caveated as non-production evidence; all 29 feedback items remain OPEN pending published verification.\",\n  \"callback\": \"hub_task review submitted: verdict=accept, state=ACCEPTED\"\n}\n```\n\nTask **task-7ebd753a** was accepted: source/asset hashes, focused Flutter analyze/discovery tests, and the Reader suite all check out, and the cover-resolution logic is correctly scoped. One anomaly was flagged to the team (not to the content review): the task's stored `report_sha256` metadata doesn't match what I independently recomputed for `REPORT.json` right now — worth someone checking the hub's bookkeeping, but it doesn't affect the file-content verdict since every per-file hash inside the report matched the live files.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "5eb4460348879e53ac0fd24d3c1690edc556e45460869810ecfd60e82f5e42e4",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

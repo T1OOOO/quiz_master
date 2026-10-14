@@ -317,9 +317,11 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                           : (sortedFolders.length > 8
                                                 ? 72
                                                 : 112),
-                                      category: widget.folder.isEmpty
-                                          ? folder
-                                          : widget.folder,
+                                      category: [
+                                        if (widget.folder.isNotEmpty)
+                                          widget.folder,
+                                        folder,
+                                      ].join('/'),
                                       onTap: () => context.go(
                                         _location(
                                           [
@@ -344,6 +346,14 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                           clipBehavior: Clip.antiAlias,
                           child: Column(
                             children: [
+                              Image.asset(
+                                categoryCoverAsset(pack.category),
+                                width: double.infinity,
+                                height: 96,
+                                fit: BoxFit.cover,
+                                cacheWidth: 600,
+                                excludeFromSemantics: true,
+                              ),
                               ListTile(
                                 key: Key('pack-${pack.id}'),
                                 isThreeLine: true,

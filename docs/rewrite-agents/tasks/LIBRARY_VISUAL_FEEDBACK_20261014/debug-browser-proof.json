@@ -1,0 +1,38 @@
+{
+  "status": "DEBUG_UI_OBSERVED_NOT_RELEASE_GATE",
+  "origin": "http://127.0.0.1:19191",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "source": "Current worker UI files plus existing locally reviewed Reader278; not a frozen compiled release",
+  "observations": [
+    "Generated nonseasonal teal background replaces Christmas scene",
+    "Distinct capitals/flags topic cards observed with actual reused art",
+    "Quiz card now has a full-width image header; description/round chips remain readable"
+  ],
+  "navigation": "Real category and flag-category navigation passed; opening flag195 quiz reached load-error screen under localdebug API setup. Cause not asserted; controlled same-origin Go API/compiledQA still required. No production failure claimed.",
+  "debug_tools": [
+    "Actual Flutter web-server hot restart succeeded in2036ms",
+    "DTD discovered and connected to owned QuizMaster workspace",
+    "Actual MCP hot_reload succeeded; runtime errors query reported none before flag navigation"
+  ],
+  "debug_limitations": [
+    "Initial local open returned EOF; actual named session subsequently showed correct URL and app",
+    "Console retained disposed EngineFlutterView assertion from debug restart; no release/production claim based on debug artifacts"
+  ],
+  "screenshots_sha256": {
+    "home": "bc3ac0d27089bdd0451d706aaf29c23f7d08e4d0d4c78a38d26caa036bf10eb0",
+    "cinema": "1e7cc0c77fd26b8c3d1b441e0e4451a0dfb577478ca61ab863f3bfec27b7704c",
+    "geography": "9516dbafc66a98863d66cf89fd066b2285b54cd8e2401d9ccedba0ea038c647e",
+    "flags": "72b590c9432fae7ef970e440a80443d128f802e03b6bda40d09795ad93975e94"
+  },
+  "browser_active": false,
+  "debug_server_active": false,
+  "production": "Helm54 Reader272 unchanged; all29 real feedback OPEN at actual inspection",
+  "debug_server_actual_exit": 0,
+  "debug_port_closed": 19191,
+  "browser_close_actual_exit": 1,
+  "browser_cleanup_method": "Official named-session close timed out; verified its own pidfile30716 and native daemon/directChrome identities, cleaned only those owned processes. No foreign sessions touched.",
+  "flag_followup": "Separate normal HTTPS public catalog GET returned200 with195questions for prep-flags-world; debug load error is not treated as a published catalog failure."
+}

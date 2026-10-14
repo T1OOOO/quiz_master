@@ -4,6 +4,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  test('category cover resolver uses topic art and a stable fallback', () {
+    expect(
+      categoryCoverAsset('География/Столицы'),
+      'assets/categories/geography-capitals.png',
+    );
+    expect(
+      categoryCoverAsset('Мифология/Греция/Боги'),
+      'assets/categories/mythology-greece.png',
+    );
+    expect(
+      categoryCoverAsset('География/СтолицыЛайф'),
+      'assets/categories/geography.jpg',
+    );
+    expect(categoryCoverAsset('Неизвестное'), 'assets/categories/nature.jpg');
+  });
+
   for (final height in [568.0, 768.0]) {
     testWidgets(
       'twelve category cards fit a desktop screen of height $height',
@@ -85,6 +101,13 @@ void main() {
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (widget) =>
+            widget is Image && _assetName(widget) == 'assets/library-bg-v1.png',
+      ),
+      findsOneWidget,
+    );
     expect(find.text('136 quizzes · 4084 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
@@ -108,6 +131,19 @@ void main() {
     await tester.enterText(find.byKey(const Key('catalog-search')), 'Столицы');
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('pack-prep-capitals-1')), findsOneWidget);
+    final capitalsCover = tester.widget<Image>(
+      find.descendant(
+        of: find.ancestor(
+          of: find.byKey(const Key('pack-prep-capitals-1')),
+          matching: find.byType(Card),
+        ),
+        matching: find.byType(Image),
+      ),
+    );
+    expect(
+      _assetName(capitalsCover),
+      'assets/categories/geography-capitals.png',
+    );
 
     await tester.enterText(find.byKey(const Key('catalog-search')), 'сыр');
     await tester.pumpAndSettle();
@@ -160,6 +196,73 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('folder-Кино')), findsOneWidget);
   });
+
+  testWidgets('narrow text-scaled catalog keeps its quiz card actionable', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320, 738);
+    tester.view.devicePixelRatio = 1;
+    tester.platformDispatcher.textScaleFactorTestValue = 1.5;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+    await _pumpDiscovery(
+      tester,
+      '/library?q=%D0%A1%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8B',
+    );
+    final card = find.byKey(const Key('pack-prep-capitals-1'));
+    expect(card, findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.ancestor(of: card, matching: find.byType(Card)),
+        matching: find.byType(Image),
+      ),
+      findsOneWidget,
+    );
+    final round = find.descendant(
+      of: find.ancestor(of: card, matching: find.byType(Card)),
+      matching: find.byType(ActionChip),
+    );
+    expect(tester.widget<ActionChip>(round).onPressed, isNotNull);
+    expect(tester.widget<ListTile>(card).onTap, isNotNull);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'long LOTR title remains available on a narrow text-scaled card',
+    (tester) async {
+      tester.view.physicalSize = const Size(361, 738);
+      tester.view.devicePixelRatio = 1;
+      tester.platformDispatcher.textScaleFactorTestValue = 1.5;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+      await _pumpDiscovery(
+        tester,
+        '/library?q=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5',
+      );
+      expect(
+        find.byKey(const Key('pack-lotr-return-king-bts-100')),
+        findsOneWidget,
+      );
+      expect(
+        find.text('Властелин Колец: Возвращение Короля и Создание'),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+}
+
+String? _assetName(Image image) {
+  final provider = image.image;
+  if (provider is AssetImage) return provider.assetName;
+  if (provider is ResizeImage && provider.imageProvider is AssetImage) {
+    return (provider.imageProvider as AssetImage).assetName;
+  }
+  return null;
 }
 
 Future<void> _pumpDiscovery(WidgetTester tester, String location) async {
