@@ -197,7 +197,7 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(272));
+      expect(articles.articles, hasLength(278));
       for (final (quizId, questionId, revision) in [
         (
           'pub-connections-20261014',
@@ -228,6 +228,36 @@ void main() {
           'pub-connections-20261014',
           'pub-connections-016',
           '40464345526c4665cf7ef2b79adf9a19f3afc661a4bfcfd3ebe62232569befba',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-003',
+          'f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-007',
+          '7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-017',
+          'eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-008',
+          'a1a1eca62947e3d5d3132258b27f9aa797bcd96160eb0ff3b2e3ea291685b61f',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-013',
+          '99749857f6bf288bb46962b0c40d5e5264304811190e61c7d241f0e0176d88ba',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-009',
+          '8ab130918f1ba0f1dce1b71538c9ae8461d8fedfd0b354d0cb5481de152a37cc',
         ),
         (
           'lotr-return-king-bts-100',

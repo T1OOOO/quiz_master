@@ -1,0 +1,78 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1d732e3f65584dc9b0b5719f5681332b": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1d732e3f65584dc9b0b5719f5681332b",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude Sonnet 5 source-integration review (session-1e0d9be7e8b5467eaee5939f650d3a99, hub_connect name claude-reader-de-review). Recomputed SHA256 directly, not trusting labels: D/articles.json=31a8cf0257a65059a56918ae0c318ccbe9065e96b1f83473a43cd4f07e141113, E/articles.json=8be9c5e22702946a3b3c18da9618cf07e2d5d76e8188af5421a5d743c1dd810c, canonical draft=33c2fcab9f2f4aa04199e060db2d62be31bbe91a2170eadef3ab60003d138d93, snapshot=e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391 - all match worker REPORT.json and prior receipts exactly. Recomputed article_hash for all six objects by importing study/question_articles/build.py directly (not reusing submitted values): 003=6906e3498138add2c1c39d2743edd3f171e61b7617897766b5ef384ddc22c01c, 007=eb2d795aaf8845e04d196dec9633417046328226c436789b7c390ef0f361ac74, 017=00327b2849c279068665852e7f5c0a8007e0405c9523502a6c859a57b9ef471b, 008=b02ea799f78f57207ed6d5c2f717a05a8a651f9e434716c17f681c66da69c716, 013=ae34f62c60d9fe4c5a0a006935e134dba66d3d5d91a435fd4fcd667f939f92ca, 009=2482697567f223d94f6ce33422341220bd4395db72614dc8e44aef0533fe77dd - all match the worker's recorded article_hash exactly. Confirmed exactly six IDs (003,007,017,008,009,013), each canonical object equal to its D/E source object field-for-field except the sole transformation status DRAFT_UNREVIEWED->draft. Confirmed zero ID collisions against the live 272-article next/apps/quiz_app/assets/study/question-articles.json and zero overlap with the prior six-article batch (001,002,006,011,012,016). Confirmed all six question_refs (quiz_id/question_id/revision_sha256) match the frozen snapshot study/question_articles/snapshots/pub-connections-20261014.json exactly. Disclosure carried forward, not treated as fact evidence: the D fact-review receipt (independent-fact-review-final.json) shows its first hub_task review call executed for real with a literal placeholder note ('placeholder-check') before genuine findings were attached; the actual substantive ACCEPT evidence is the separate correction message with primary-source re-derivation (Gutenberg 41445, Oxford, AFI) posted after that slip, which I weighted as the real basis, not the placeholder call itself. E receipt (independent-fact-review.json) shows ordinary real source acceptance with primary sources opened directly (Gutenberg 12, Gutenberg 42, NASA Webb pages), no placeholder issue. Scope confirmed UNDER2500 characters: this is the worker's two-file canonical-draft-preparation task only (drafts/pub-connections-de-six-20261014.json + worker/REPORT.json), not new fact research, not export, not build, not publication. No canonical acceptance review file was created by the worker, correctly deferred to Root. Status remains NOT_PUBLISHED: build.py export/--check and Flutter asset regeneration were not run by me and are Root's gated next step. Limitations: read-only Python/hash checks only; did not re-open external web sources myself (relied on the D/E receipts' own disclosed primary-source fetches); did not run study/question_articles/build.py --check or any test/build command."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Six source-equivalent D/E articles added with real prior factual evidence; 278 deterministic export, old272 preserved, actual focused checks and hashes, independent integration review before canonical acceptance, NOT_PUBLISHED.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite integration for Beads jf8/3tt. Current production Helm54/Reader272; no deployment here. Preserve all272 current objects, exact question refs, all unrelated work. English packet follows before offer. No fact/key/question revision changes; no Git/SSH/browser/other helpers. House builder and focused tests required.",
+        "created_at": 1791998438.3567953,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1d732e3f65584dc9b0b5719f5681332b",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\pub-connections-de-six-20261014.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_DE_IMPORT_20261014\\worker\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "command": "Python source-equivalence/collision/frozen-ref/builder-hash verification",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "PASS: six canonical objects equal D/E inputs modulo only DRAFT_UNREVIEWED -> draft; zero collisions against 272 existing Reader articles; all six snapshot revisions exact; all six build.py article_hash values match REPORT."
+            },
+            {
+              "kind": "hashes",
+              "result": "canonical draft SHA256 33C2FCAB9F2F4AA04199E060DB2D62BE31BBE91A2170EADEF3AB60003D138D93; REPORT SHA256 E51F5E287F29657B4A87F89F0F50CB51DA886AD2D4B39E99960480CD5DA54A24"
+            }
+          ],
+          "limitations": [
+            "No new fact review claimed; D receipt placeholder-callback disclosure retained by reference.",
+            "No export, focused tests, production asset changes, canonical acceptance, or publication performed."
+          ],
+          "status": "DONE",
+          "summary": "READY for independent integration review: canonical DE-six draft prepared from fact-accepted source drafts, NOT_PUBLISHED."
+        },
+        "root_task_id": "task-1d732e3f65584dc9b0b5719f5681332b",
+        "run_id": "run-1877a6aa278b4c42a9018fdd56ebedff",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Canonical import of six fact-accepted D/E Reader drafts",
+        "version": 4,
+        "reviewer": "session-1e0d9be7e8b5467eaee5939f650d3a99",
+        "review_note": "Independent Claude Sonnet 5 source-integration review (session-1e0d9be7e8b5467eaee5939f650d3a99, hub_connect name claude-reader-de-review). Recomputed SHA256 directly, not trusting labels: D/articles.json=31a8cf0257a65059a56918ae0c318ccbe9065e96b1f83473a43cd4f07e141113, E/articles.json=8be9c5e22702946a3b3c18da9618cf07e2d5d76e8188af5421a5d743c1dd810c, canonical draft=33c2fcab9f2f4aa04199e060db2d62be31bbe91a2170eadef3ab60003d138d93, snapshot=e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391 - all match worker REPORT.json and prior receipts exactly. Recomputed article_hash for all six objects by importing study/question_articles/build.py directly (not reusing submitted values): 003=6906e3498138add2c1c39d2743edd3f171e61b7617897766b5ef384ddc22c01c, 007=eb2d795aaf8845e04d196dec9633417046328226c436789b7c390ef0f361ac74, 017=00327b2849c279068665852e7f5c0a8007e0405c9523502a6c859a57b9ef471b, 008=b02ea799f78f57207ed6d5c2f717a05a8a651f9e434716c17f681c66da69c716, 013=ae34f62c60d9fe4c5a0a006935e134dba66d3d5d91a435fd4fcd667f939f92ca, 009=2482697567f223d94f6ce33422341220bd4395db72614dc8e44aef0533fe77dd - all match the worker's recorded article_hash exactly. Confirmed exactly six IDs (003,007,017,008,009,013), each canonical object equal to its D/E source object field-for-field except the sole transformation status DRAFT_UNREVIEWED->draft. Confirmed zero ID collisions against the live 272-article next/apps/quiz_app/assets/study/question-articles.json and zero overlap with the prior six-article batch (001,002,006,011,012,016). Confirmed all six question_refs (quiz_id/question_id/revision_sha256) match the frozen snapshot study/question_articles/snapshots/pub-connections-20261014.json exactly. Disclosure carried forward, not treated as fact evidence: the D fact-review receipt (independent-fact-review-final.json) shows its first hub_task review call executed for real with a literal placeholder note ('placeholder-check') before genuine findings were attached; the actual substantive ACCEPT evidence is the separate correction message with primary-source re-derivation (Gutenberg 41445, Oxford, AFI) posted after that slip, which I weighted as the real basis, not the placeholder call itself. E receipt (independent-fact-review.json) shows ordinary real source acceptance with primary sources opened directly (Gutenberg 12, Gutenberg 42, NASA Webb pages), no placeholder issue. Scope confirmed UNDER2500 characters: this is the worker's two-file canonical-draft-preparation task only (drafts/pub-connections-de-six-20261014.json + worker/REPORT.json), not new fact research, not export, not build, not publication. No canonical acceptance review file was created by the worker, correctly deferred to Root. Status remains NOT_PUBLISHED: build.py export/--check and Flutter asset regeneration were not run by me and are Root's gated next step. Limitations: read-only Python/hash checks only; did not re-open external web sources myself (relied on the D/E receipts' own disclosed primary-source fetches); did not run study/question_articles/build.py --check or any test/build command."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as ACCEPTED on host_hub. Here's the final JSON deliverable:\n\n```json\n{\n  \"verdict\": \"accept\",\n  \"reviewer_session_id\": \"session-1e0d9be7e8b5467eaee5939f650d3a99\",\n  \"canonical_draft_path\": \"study/question_articles/drafts/pub-connections-de-six-20261014.json\",\n  \"canonical_draft_sha256_final_recheck\": \"33c2fcab9f2f4aa04199e060db2d62be31bbe91a2170eadef3ab60003d138d93\",\n  \"article_hashes_recomputed_via_build.article_hash\": {\n    \"question:pub-connections-003\": \"6906e3498138add2c1c39d2743edd3f171e61b7617897766b5ef384ddc22c01c\",\n    \"question:pub-connections-007\": \"eb2d795aaf8845e04d196dec9633417046328226c436789b7c390ef0f361ac74\",\n    \"question:pub-connections-017\": \"00327b2849c279068665852e7f5c0a8007e0405c9523502a6c859a57b9ef471b\",\n    \"question:pub-connections-008\": \"b02ea799f78f57207ed6d5c2f717a05a8a651f9e434716c17f681c66da69c716\",\n    \"question:pub-connections-013\": \"ae34f62c60d9fe4c5a0a006935e134dba66d3d5d91a435fd4fcd667f939f92ca\",\n    \"question:pub-connections-009\": \"2482697567f223d94f6ce33422341220bd4395db72614dc8e44aef0533fe77dd\"\n  },\n  \"prior_receipt_hashes_confirmed\": {\n    \"D_articles.json_sha256\": \"31a8cf0257a65059a56918ae0c318ccbe9065e96b1f83473a43cd4f07e141113\",\n    \"E_articles.json_sha256\": \"8be9c5e22702946a3b3c18da9618cf07e2d5d76e8188af5421a5d743c1dd810c\",\n    \"snapshot_pub_connections_20261014_sha256\": \"e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391\"\n  },\n  \"comparison_checks\": {\n    \"exact_six_ids_present\": true,\n    \"ids\": [\"pub-connections-003\",\"pub-connections-007\",\"pub-connections-017\",\"pub-connections-008\",\"pub-connections-013\",\"pub-connections-009\"],\n    \"sole_transformation_is_status_DRAFT_UNREVIEWED_to_draft\": true,\n    \"equal_modulo_status_vs_D_E_sources\": true,\n    \"collisions_with_existing_272\": [],\n    \"overlap_with_prior_six_batch_001_002_006_011_012_016\": false,\n    \"question_refs_match_frozen_snapshot\": true,\n    \"article_hash_matches_worker_report\": true,\n    \"file_sha256_matches_worker_report_and_prior_receipts\": true\n  },\n  \"callback_disclosure\": \"D receipt's first hub_task review call executed for real with a literal placeholder note ('placeholder-check') before genuine findings were attached, setting ACCEPTED prematurely. The placeholder itself is not fact evidence. The actual substantive basis is the separate correction message posted after that slip, containing genuine independent primary-source re-derivation (Gutenberg 41445, Oxford, AFI). I weighted only that correction as evidence, not the placeholder call. E receipt had no such issue — ordinary real source acceptance.\",\n  \"scope_confirmed\": \"UNDER2500 characters, exactly the worker's two owned files (canonical draft + worker/REPORT.json); not new fact research, not export, not build, not publication.\",\n  \"status\": \"NOT_PUBLISHED\",\n  \"export_and_tests\": \"pending — Root's gated next step; build.py --check / Flutter test regeneration were not run by me and are explicitly out of this review's scope\",\n  \"limitations\": [\n    \"Read-only Python/hash verification only; no external web sources re-fetched by me (relied on D/E receipts' own disclosed primary-source fetches).\",\n    \"Did not run study/question_articles/build.py --check or any build/test command.\",\n    \"Task record for task-1d732e3f65584dc9b0b5719f5681332b was not reachable via paginated hub_task list (545 total tasks); confirmed via hub_task candidates and the review call itself, which returned the full task record.\"\n  ]\n}\n```\n\nAll checks passed independently: file hashes, recomputed `article_hash` via `build.py`, exact six IDs, zero collisions with the live 272 or prior six-batch, exact frozen refs, and byte-for-byte equivalence modulo the single status transform. The D-receipt placeholder-callback was disclosed and excluded from the evidentiary basis, as instructed. Export/build/publication remain correctly out of scope and pending.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "d09cdf40cfe8a9e8fda3efdfa04969748cc21737e04cd4b80b6ff665ed9b97f3",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

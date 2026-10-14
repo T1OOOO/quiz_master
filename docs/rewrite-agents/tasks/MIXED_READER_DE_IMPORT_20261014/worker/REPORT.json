@@ -1,0 +1,105 @@
+{
+  "packet": "MIXED_READER_DE_IMPORT_20261014",
+  "status": "NOT_PUBLISHED",
+  "scope": "Canonical draft preparation only. Independent integration review, export, focused tests, canonical acceptance, and publication remain outside this worker scope.",
+  "source_inputs": {
+    "mixed_reader_d_articles_sha256": "31a8cf0257a65059a56918ae0c318ccbe9065e96b1f83473a43cd4f07e141113",
+    "mixed_reader_e_articles_sha256": "8be9c5e22702946a3b3c18da9618cf07e2d5d76e8188af5421a5d743c1dd810c",
+    "d_fact_review_receipt": "docs/rewrite-agents/tasks/MIXED_READER_D_20261014/independent-fact-review-final.json",
+    "e_fact_review_receipt": "docs/rewrite-agents/tasks/MIXED_READER_E_20261014/independent-fact-review.json",
+    "d_review_disclosure": "D receipt records an accidental placeholder callback before the documented substantive independent ACCEPT evidence; disclosure retained by reference, no replacement review asserted."
+  },
+  "articles": [
+    {
+      "article_id": "question:pub-connections-003",
+      "article_hash": "6906e3498138add2c1c39d2743edd3f171e61b7617897766b5ef384ddc22c01c",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-003",
+        "revision_sha256": "f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0"
+      }
+    },
+    {
+      "article_id": "question:pub-connections-007",
+      "article_hash": "eb2d795aaf8845e04d196dec9633417046328226c436789b7c390ef0f361ac74",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-007",
+        "revision_sha256": "7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e"
+      }
+    },
+    {
+      "article_id": "question:pub-connections-017",
+      "article_hash": "00327b2849c279068665852e7f5c0a8007e0405c9523502a6c859a57b9ef471b",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-017",
+        "revision_sha256": "eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955"
+      }
+    },
+    {
+      "article_id": "question:pub-connections-008",
+      "article_hash": "b02ea799f78f57207ed6d5c2f717a05a8a651f9e434716c17f681c66da69c716",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-008",
+        "revision_sha256": "a1a1eca62947e3d5d3132258b27f9aa797bcd96160eb0ff3b2e3ea291685b61f"
+      }
+    },
+    {
+      "article_id": "question:pub-connections-013",
+      "article_hash": "ae34f62c60d9fe4c5a0a006935e134dba66d3d5d91a435fd4fcd667f939f92ca",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-013",
+        "revision_sha256": "99749857f6bf288bb46962b0c40d5e5264304811190e61c7d241f0e0176d88ba"
+      }
+    },
+    {
+      "article_id": "question:pub-connections-009",
+      "article_hash": "2482697567f223d94f6ce33422341220bd4395db72614dc8e44aef0533fe77dd",
+      "status": "draft",
+      "question_ref": {
+        "quiz_id": "pub-connections-20261014",
+        "question_id": "pub-connections-009",
+        "revision_sha256": "8ab130918f1ba0f1dce1b71538c9ae8461d8fedfd0b354d0cb5481de152a37cc"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "command": "Python JSON structural comparison of D/E inputs and canonical draft",
+      "exit_code": 0,
+      "result": "Six IDs in D then E source order; every canonical object equals its source object after the sole status transformation DRAFT_UNREVIEWED -> draft."
+    },
+    {
+      "command": "Python comparison to next/apps/quiz_app/assets/study/question-articles.json",
+      "exit_code": 0,
+      "result": "No ID collisions with the existing 272 Reader articles."
+    },
+    {
+      "command": "Python comparison to study/question_articles/snapshots/pub-connections-20261014.json",
+      "exit_code": 0,
+      "result": "All six quiz_id/question_id/revision_sha256 references match the frozen snapshot."
+    },
+    {
+      "command": "Python import of study/question_articles/build.py and article_hash(article)",
+      "exit_code": 0,
+      "result": "Recorded the house builder article_hash for all six canonical draft articles."
+    }
+  ],
+  "hashes": {
+    "canonical_draft_sha256": "33c2fcab9f2f4aa04199e060db2d62be31bbe91a2170eadef3ab60003d138d93",
+    "snapshot_pub_connections_20261014_sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391"
+  },
+  "runtime_identity": "openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411",
+  "limitations": [
+    "No new fact review was performed or claimed.",
+    "No export, test, production asset edit, canonical acceptance, or publication was performed."
+  ]
+}

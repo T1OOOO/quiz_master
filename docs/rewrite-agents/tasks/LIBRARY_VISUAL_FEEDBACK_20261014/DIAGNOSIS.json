@@ -1,0 +1,83 @@
+{
+  "status": "OPEN_DIAGNOSIS",
+  "scope": "read-only Flutter library visual diagnosis",
+  "reports": [
+    "Topic-specific artwork is absent from /library at 361x738 dark production viewport.",
+    "User wants a more intentional visual language inspired by Language Learner.",
+    "The New Year/holiday treatment is out of season."
+  ],
+  "evidence": {
+    "library": {
+      "file": "next/apps/quiz_app/lib/main.dart",
+      "lines": "135-144",
+      "finding": "The production next app starts at /library and routes it to DiscoveryPage, not StudyLibraryPage. DiscoveryPage is implemented in next/apps/quiz_app/lib/discovery.dart and renders catalog packs/folders through SourceFolderCard."
+    },
+    "study_library": {
+      "file": "next/apps/quiz_app/lib/study_pages.dart",
+      "lines": "300-378",
+      "finding": "The separate /study route renders StudyModule cards and passes coverAsset=assets/study/<module.id>-hero.png. This is not the production /library route, but it shares SourceFolderCard."
+    },
+    "quiz_library_art": {
+      "file": "next/apps/quiz_app/lib/source_style.dart",
+      "lines": "248-289",
+      "finding": "SourceFolderCard selects a category cover from assets/categories/<category>.jpg when coverAsset is absent. Discovery catalog metadata has category/title/description/count but no cover field, so /library cannot select topic-specific artwork from metadata; it only gets broad category fallback art."
+    },
+    "asset_manifest": {
+      "files": [
+        "next/apps/quiz_app/pubspec.yaml:68-74",
+        "next/apps/quiz_app/assets/categories/",
+        "next/apps/quiz_app/assets/study/"
+      ],
+      "finding": "pubspec.yaml declares catalog.json, home-alone-bg.jpg, categories/, study/, and quizipedia/. Existing study art is a small fixed set of topic heroes (nature, history, Greek mythology, geography variants), and category art is finite. No generated build AssetManifest was present in the checkout. The repository also contains bg_quiz_illustrated.png and bg_soft_premium.png at assets root, but they are unreferenced by next/apps/quiz_app and are not declared in pubspec.yaml, so they cannot be treated as shipped production assets."
+    },
+    "card_and_theme": {
+      "files": [
+        "next/apps/quiz_app/lib/main.dart",
+        "next/apps/quiz_app/lib/source_style.dart"
+      ],
+      "finding": "The compiled next successor uses ThemeMode.system with a teal Material 3 seed. SourceScaffold paints home-alone-bg.jpg with a brown overlay and a light paper subtheme for source/study pages. SourceFolderCard contains a New Year category mapping, but no seasonal theme initializer or persistence in this successor. The legacy flutter/lib/core/theme/theme_provider.dart defaults to holiday, but it is not imported by next/apps/quiz_app and must not be treated as the production cause without deployment evidence."
+    },
+    "language_learner_reference": {
+      "files": [
+        "C:/Users/Alexey_Matvienko/AntigravitiProjects/language_learner/lib/core/utils/category_covers.dart",
+        "C:/Users/Alexey_Matvienko/AntigravitiProjects/language_learner/lib/core/constants/cover_manifest.dart",
+        "C:/Users/Alexey_Matvienko/AntigravitiProjects/language_learner/lib/features/home/presentation/widgets/home_grid_card.dart",
+        "C:/Users/Alexey_Matvienko/AntigravitiProjects/language_learner/lib/features/story/presentation/screens/stories_catalog_screen.dart",
+        "C:/Users/Alexey_Matvienko/AntigravitiProjects/language_learner/lib/core/api/v2/dto.dart"
+      ],
+      "finding": "Language Learner uses a centralized category-cover resolver with deterministic general fallback, a manifest that normalizes cover paths, reusable image-backed HomeGridCard, and explicit cover_image metadata on story DTO/catalog cards. These are concrete patterns for Quiz Master: put cover metadata in catalog, resolve centrally, validate paths, and retain a safe fallback."
+    }
+  },
+  "diagnosis": {
+    "root_cause": "The actual /library route is DiscoveryPage. Its catalog DTO has no cover metadata and SourceFolderCard resolves only broad category assets/categories/<cover>.jpg, so topic-specific artwork cannot appear there. The /study route separately has per-module hero paths but incomplete hero coverage. The next successor has no holiday default theme; seasonal appearance is currently attributable only to category/source-shell artwork unless production differs from these files.",
+    "uncertainty": "Without the actual production bundle, this diagnosis cannot determine whether production omitted files during packaging versus the source catalog simply lacking corresponding hero assets."
+  },
+    "smallest_complete_change": "Reuse the already declared nonseasonal category artwork and make SourceFolderCard's fallback deterministic; remove any holiday mapping from the library presentation if it is selected for general content. Only add optional cover metadata if topic-specific artwork is required after checking the catalog/service contract. Keep /study hero resolution separate and preserve IDs/routes. The unreferenced bg_quiz_illustrated.png and bg_soft_premium.png would require an explicit pubspec/reference decision before use.",
+  "affected_surface": [
+    "next/apps/quiz_app/lib/study_pages.dart",
+    "next/apps/quiz_app/lib/source_style.dart",
+    "next/apps/quiz_app/assets/manifest.json",
+    "next/apps/quiz_app/assets/study/",
+    "next/apps/quiz_app/test/study_test.dart",
+    "next/apps/quiz_app/test/widget_test.dart",
+    "next/apps/quiz_app/lib/main.dart",
+    "next/apps/quiz_app/lib/discovery.dart",
+    "next/apps/quiz_app/lib/source_style.dart",
+    "next/apps/quiz_app/assets/catalog.json",
+    "next/apps/quiz_app/assets/categories/",
+    "next/apps/quiz_app/test/discovery_test.dart",
+    "next/apps/quiz_app/test/widget_test.dart"
+  ],
+  "accessibility_and_narrow_screen": "Keep each card semantic button-labelled by its title, maintain readable contrast over art, and retain the existing 1-column breakpoint at <=480 logical pixels; verify at 361x738 with text scaling and missing-image fallback.",
+  "art_scope": "Existing suitable art is available only for the listed study hero files. New generated nonseasonal artwork is necessary for uncovered topics if topic-specific imagery is required; no artwork was generated in this diagnosis.",
+  "verification_plan": [
+    "Unit/widget test resolver coverage: known hero, missing hero fallback, and stable metadata mapping.",
+    "Static asset/package check that every resolved asset exists in the manifest.",
+    "Flutter Web visual check at 361x738 dark mode and desktop width, including no New Year-only decoration and readable labels.",
+    "Production verification remains OPEN until the actual published build is checked."
+  ],
+  "limitations": [
+    "No browser, build, test, SSH, helper, or external-worker activity performed.",
+    "No claim that production currently contains or serves any newly generated artwork."
+  ]
+}

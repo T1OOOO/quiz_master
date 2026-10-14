@@ -1,0 +1,43 @@
+{
+  "status": "GATES_PASSED_NOT_PUBLISHED",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 0.78,
+      "log": "builder-log.txt"
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "flutter",
+        "test",
+        "--no-pub",
+        "test/question_articles_test.dart"
+      ],
+      "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+      "actual_exit": 0,
+      "elapsed_seconds": 21.35,
+      "log": "reader-flutter-log.txt"
+    }
+  ],
+  "baseline_articles": 272,
+  "current_articles": 278,
+  "old_objects_preserved": true,
+  "new_exact_ref_fixtures": 6,
+  "mixed_articles": 12,
+  "source_hashes": {
+    "next/apps/quiz_app/assets/study/question-articles.json": "7fc2b6a1bac73847f75de1c5617cf055d645eb6a1466c9780477bc07c31abd74",
+    "next/apps/quiz_app/test/question_articles_test.dart": "bdda06fc07b3741a79481542e957a1eb3cf9903541c6b3ae124574c3d6c32d42",
+    "study/question_articles/drafts/pub-connections-de-six-20261014.json": "33c2fcab9f2f4aa04199e060db2d62be31bbe91a2170eadef3ab60003d138d93",
+    "study/question_articles/reviews/pub-connections-de-six-20261014-review.json": "7b1054f80022ad16ab7ff731a2105e14196121d85ad2abc138253044bd1fed61"
+  },
+  "production": "Helm54 / Reader272; no new build/browser/remote mutation in this source task",
+  "new_feedback": "29 reports OPEN, three newly triaged; no closure or UI fix claimed"
+}
