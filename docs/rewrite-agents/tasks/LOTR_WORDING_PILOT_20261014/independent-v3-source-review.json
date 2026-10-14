@@ -1,0 +1,68 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d7d5c3d062e343c2892cb161a8f2cfec": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d7d5c3d062e343c2892cb161a8f2cfec",
+          "verdict": "accept",
+          "note": "Independent read-only review (no shell, no HTTP/hash computation performed by me; provenance of .run/lotr_sources_20261014_0448 supplied by lead, I only inspected the captured text/HTML and compared sha256 strings as printed). Blind-solved v3-candidate.json before opening v3-editorial.json: both guesses (rk93=Андуин, rk95=Митлонд) matched the private key independently.\n\nrk93: ferre-text.txt directly quotes the exact scene — 'cool night-waters of the Anduin ... peaks of Ered Nimrais, the White Mountains of the Realm of Gondor' — uniquely naming Anduin in that valley/White-Mountains-at-night passage. The other five options (Изен, Сирион, Бруинен, Брендивайн, Гландуин) do not appear in this passage; note Бруинен does appear elsewhere on the same page (Rivendell terrace scene) but the editorial correctly scoped the claim to the specific quoted scene rather than the whole article, so no conflation. Single-best-answer holds. maps-text.txt is accurately used only as supplementary context (Book 5 Rohan/Gondor/Mordor map claim matches the text).\n\nrk95: christopher-text.txt states the white ship 'sailed out of Mithlond' in the final departure passage, directly supporting Митлонд. The v3 drop of Тирион (inland Valinorean city, never a departure point, not in any captured source) and Линдон (the surrounding region, whose retention would have created real answer ambiguity since Mithlond sits inside Lindon) is a genuine improvement, not just a cosmetic cut. Rewording the stem from 'city where the White Ships were located' to 'place the white ship departed from in the finale' removes a false premise in the original raw item (not every surviving option was a harbour/city). Remaining distractors (Пеларгир, Эделлонд, Альквалонде) are plausible elf/Gondor-adjacent places not named in the captured sources as the departure point — no contradiction found, and the non-applicability claims are appropriately narrow (silent-omission based, not overclaiming broader lore facts). shippey-text.txt is used correctly as supplementary-only context ('imaginative continent' line matches verbatim-equivalent paraphrase).\n\nCross-file ID/hash audit: live-mapping-0448.json raw_items/correct_answer indices (5 for rk93, 1 for rk95) match editorial.json's old_raw_index/old_raw_text for both items; old_to_new option mapping for rk95 correctly preserves raw indices 0,1,2,4 and explicitly marks 3 and 5 dropped with stated reasons. canonical_question_revision_sha256 values in editorial.json match the revision.sha256 strings in live-mapping-0448.json for both items (string comparison only, not recomputed). Candidate.json correctly withholds grading/correct_option_id (no key leak to the player-facing file).\n\nNo unsupported facts, no duplicate/ambiguous correct answers, no giveaway wording found in either item. Difficulty (4, 5) and tags look reasonable, not independently re-derived. Limits: scope was only rk93/rk95 per v3-evidence.md; rk96 out of scope. This is an editorial/source-backed acceptance only, not import, publication, or a judgment on the wider answer bank."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Two stable v3draft records, cured95mixedregiontypeissue, exact liveold→newfullIDmapping and droppedslots, independently reviewable primarysource claims. No release approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014"
+        ],
+        "assignee": "session-34055d8f11b84cc08094363411111e6a",
+        "author": "session-f602528b1aaa4528a8f27b45d9894e69",
+        "body": "Own only new v3-candidate.json,v3-editorial.json,v3-evidence.md in LOTR_WORDING_PILOT_20261014. Use supplied live-mapping-0448.json for exact current raw Russianbytes/fullprivateoptionIDs/canonicalrevision. Preserve v1/v2. rk95 removeTirion(index3)/Lindon(index5), keep four existing choices indices0,1,2,4; narrower place-name finalwhite-ship stem, do not assert alloptions harbours. Explicitdrop/preserve mapping with correctMithlond unchanged. rk93 sixparallelrivers retained. Source-scoped whywrong and interesting miniarticles150–200words/2relevantopenedprimarylinks/numericdifficulty/registeredtags; accurate articlefacts, noeditorialprose. Previously39REWORK remainshistory. No raw/canonical/runtime/Git/Beads/SSH/build/children/publication. Independent factual/source-artifactreview later.",
+        "created_at": 1791953442.7771978,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-d7d5c3d062e343c2892cb161a8f2cfec",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "Structural verification passed: exactly 2 candidate/editorial records; candidate exposes no private/editorial fields; rk93 has 6 options; rk95 has 4 options; rk95 drops live raw slots 3 and 5 exactly.",
+            "Every editorial old raw text matches live-mapping-0448.json at its old raw index; full canonical option IDs follow the live records; raw whole-file SHA-256 recorded as da496ad3af3dcf3e33276639bd63b64a84de421229fb77f97d8c295e13571f5c.",
+            "Article validation passed: rk93 158 tokens, rk95 155 tokens; each has 2 cached Estate links. Cache manifest reports HTTP 200 for all four captures. Cached search confirmed Anduin in ferre.html and Mithlond in christopher.html.",
+            "SHA-256: v3-candidate.json 24533433A62CEDDBEDFD462626F23C4D92E197D19388332920C214316734EA53; v3-editorial.json 0960C129D157AE9D11BDFC8396EDEC59D7B6DB6FB001E5E1A611F9605C48E7F0; v3-evidence.md 31BBED34760B68856DC30D4CEB78E79122F7980CA0B3A0C5ED70B9AF82825163."
+          ],
+          "files": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v3-candidate.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v3-editorial.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_WORDING_PILOT_20261014/v3-evidence.md"
+          ],
+          "risks": [
+            "The direct public Estate excerpt uniquely supports Mithlond for the final departure, but it does not independently certify a shared ontology for the retained distractors; the v3 stem asks only for a place.",
+            "Only cache-manifest and source-artifact evidence is reported here; no fresh reviewer HTTP/hash run is claimed.",
+            "rk96 remains held pending an authorized edition and named official film cut; independent cross-provider review is still required."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Created immutable v3 drafts for rk93 and rk95. rk95 now has a four-place choice set with exact live full-ID mapping and explicit dropped Tirion/Lindon slots; the stem makes no harbour-type assertion. rk93 retains its six river choices."
+        },
+        "root_task_id": "task-d7d5c3d062e343c2892cb161a8f2cfec",
+        "run_id": "run-e803535bc2c94ca78bd1e2f60d2e61d9",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-40852b583b6444ffa6c401a61c0efd2e",
+        "title": "quiz_master-1wy: final two-item v3 option/mapping repair",
+        "version": 4,
+        "reviewer": "session-1bd4a6e1d18540489d582ebe2090840e",
+        "review_note": "Independent read-only review (no shell, no HTTP/hash computation performed by me; provenance of .run/lotr_sources_20261014_0448 supplied by lead, I only inspected the captured text/HTML and compared sha256 strings as printed). Blind-solved v3-candidate.json before opening v3-editorial.json: both guesses (rk93=Андуин, rk95=Митлонд) matched the private key independently.\n\nrk93: ferre-text.txt directly quotes the exact scene — 'cool night-waters of the Anduin ... peaks of Ered Nimrais, the White Mountains of the Realm of Gondor' — uniquely naming Anduin in that valley/White-Mountains-at-night passage. The other five options (Изен, Сирион, Бруинен, Брендивайн, Гландуин) do not appear in this passage; note Бруинен does appear elsewhere on the same page (Rivendell terrace scene) but the editorial correctly scoped the claim to the specific quoted scene rather than the whole article, so no conflation. Single-best-answer holds. maps-text.txt is accurately used only as supplementary context (Book 5 Rohan/Gondor/Mordor map claim matches the text).\n\nrk95: christopher-text.txt states the white ship 'sailed out of Mithlond' in the final departure passage, directly supporting Митлонд. The v3 drop of Тирион (inland Valinorean city, never a departure point, not in any captured source) and Линдон (the surrounding region, whose retention would have created real answer ambiguity since Mithlond sits inside Lindon) is a genuine improvement, not just a cosmetic cut. Rewording the stem from 'city where the White Ships were located' to 'place the white ship departed from in the finale' removes a false premise in the original raw item (not every surviving option was a harbour/city). Remaining distractors (Пеларгир, Эделлонд, Альквалонде) are plausible elf/Gondor-adjacent places not named in the captured sources as the departure point — no contradiction found, and the non-applicability claims are appropriately narrow (silent-omission based, not overclaiming broader lore facts). shippey-text.txt is used correctly as supplementary-only context ('imaginative continent' line matches verbatim-equivalent paraphrase).\n\nCross-file ID/hash audit: live-mapping-0448.json raw_items/correct_answer indices (5 for rk93, 1 for rk95) match editorial.json's old_raw_index/old_raw_text for both items; old_to_new option mapping for rk95 correctly preserves raw indices 0,1,2,4 and explicitly marks 3 and 5 dropped with stated reasons. canonical_question_revision_sha256 values in editorial.json match the revision.sha256 strings in live-mapping-0448.json for both items (string comparison only, not recomputed). Candidate.json correctly withholds grading/correct_option_id (no key leak to the player-facing file).\n\nNo unsupported facts, no duplicate/ambiguous correct answers, no giveaway wording found in either item. Difficulty (4, 5) and tags look reasonable, not independently re-derived. Limits: scope was only rk93/rk95 per v3-evidence.md; rk96 out of scope. This is an editorial/source-backed acceptance only, not import, publication, or a judgment on the wider answer bank."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The review was submitted and recorded (state: ACCEPTED, status DONE_WITH_CONCERNS carrying forward the stated risks/limits).\n\n## Summary\n\nI independently reviewed task-d7d5c3d062e343c2892cb161a8f2cfec (rk93, rk95) by reading the files myself rather than trusting the stated conclusions:\n\n- **Blind-solved** v3-candidate.json before opening the key — both my guesses (Андуин, Митлонд) matched independently.\n- **Verified against actual source text** (not just the evidence summary): ferre-text.txt directly contains \"cool night-waters of the Anduin ... White Mountains of the Realm of Gondor\" for rk93; christopher-text.txt directly contains \"sailed out of Mithlond\" for rk95. Both answers are genuinely supported by the primary text, not just asserted.\n- **Caught and checked** one subtlety the evidence doc didn't flag: Бруинен also appears on the ferre.html page, but in an unrelated Rivendell passage — the editorial correctly scoped its claim to the specific quoted scene, so no conflation occurred.\n- **Audited the ID/hash chain** across candidate → editorial → live-mapping by string comparison (not recomputation) — raw indices, dropped-option reasoning for rk95 (Tirion/Lindon), and revision hashes all matched consistently.\n- Submitted `accept` with a full evidence-based note, explicitly stating I did not perform any HTTP fetch or hash computation myself — provenance of the `.run/` capture was supplied by the lead, I only read the resulting bytes.\n\nI did not just accept the pre-stated conclusions from the task description — I independently confirmed them against primary text, and flagged where I'd verified vs. where I was trusting supplied provenance.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "377c7568f87e57219b6746da6c8f329468380dea47c524c534e9c53544b40c19",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
