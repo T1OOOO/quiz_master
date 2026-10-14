@@ -1,0 +1,25 @@
+{
+  "packet": "MIXED_READER_D_20261014",
+  "status": "DRAFT_UNREVIEWED",
+  "scope": "Three source-only Russian miniarticle drafts; no import, publication, or whole-bank audit.",
+  "question_refs": [
+    {"id": "question:pub-connections-003", "quiz_id": "pub-connections-20261014", "question_id": "pub-connections-003", "revision_sha256": "f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0"},
+    {"id": "question:pub-connections-007", "quiz_id": "pub-connections-20261014", "question_id": "pub-connections-007", "revision_sha256": "7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e"},
+    {"id": "question:pub-connections-017", "quiz_id": "pub-connections-20261014", "question_id": "pub-connections-017", "revision_sha256": "eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955"}
+  ],
+  "source_counts": {"question:pub-connections-003": 3, "question:pub-connections-007": 2, "question:pub-connections-017": 3},
+  "checks": [
+    {"command": "PowerShell ConvertFrom-Json articles.json and REPORT.json; local word/source/ref-count check", "cwd": "C:/ap/quiz_master", "exit_code": 0, "result": "003=193 words/3 sources; 007=176 words/2 sources; 017=173 words/3 sources; all exact revision refs matched."},
+    {"command": "Get-FileHash -Algorithm SHA256 draft/articles.json, draft/SOURCES.md, draft/REPORT.json", "cwd": "C:/ap/quiz_master", "exit_code": 0}
+  ],
+  "limitations": [
+    "The Project Gutenberg 1818 text is an electronic transcription prepared from a photo-reprint; Oxford and AFI pages are institutional explanatory/catalog sources, not additional primary texts.",
+    "The music sources are direct manufacturer educational documentation; independent fact review remains required.",
+    "No import, canonical/export change, runtime validation, publication, or whole-question-bank audit was performed."
+  ],
+  "hashes": {
+    "articles.json": "31A8CF0257A65059A56918AE0C318CCBE9065E96B1F83473A43CD4F07E141113",
+    "SOURCES.md": "35D243F5FFBE00ADA2679FFDBE1DDCD3AC715A5EB79C6D2DE2AE325D74BDA231",
+    "REPORT.json_pre_hash_record": "8A0C52C9B8A2F4C198AFA3541B5A662681BFE4576B6521A237E4BD5ADE752191"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-c49b4f34ca7f48978e9a18fc824462fb": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Independent fact/editorial review of MIXED_READER_D_20261014 (articles 003 Frankenstein, 007 saxophone, 017 flute). Reviewer session-7bbfdda9032043afa78f530e64e811c5.\n\nVERDICT: REWORK (1 confirmed factual error; otherwise accurate, well-sourced, correctly refs-matched).\n\nRevision hashes verified exactly against study/question_articles/snapshots/pub-connections-20261014.json: 003=f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0 OK, 007=7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e OK, 017=eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955 OK. quiz_id/question_id match; all three DRAFT_UNREVIEWED.\n\nERROR (article 003): confirmed via Project Gutenberg 1818 text (gutenberg.org/files/84/84-h/84-h.htm, accessed 2026-10-14) that the draft's claim 'Роберт Уолтон адресует письмо «Victor Frankenstein»' is wrong. Walton's opening letters are addressed 'To Mrs. Saville, England' (his sister Margaret Saville) — Victor is never the addressee; he is a rescued stranger whose spoken narrative Walton records within those same letters. This is exactly the risk flagged in the task brief. Minimal fix: 'письма Роберта Уолтона адресованы его сестре Маргарет Сэвилл, а внутри этих писем сам Виктор рассказывает Уолтону, как попытался произвести жизнь.' No other change needed in that paragraph.\n\nCONFIRMED ACCURATE on independent primary-source check: creature unnamed in 1818 text (Gutenberg + Oxford page); anonymous 1818 edition and Prometheus subtitle (Oxford page); AFI Catalog 1931 film credits Colin Clive as 'Henry Frankenstein' and Karloff as 'The Monster', correctly distinguished from the novel (checked directly on AFI catalog page). Saxophone: single-reed mechanism, brass-but-woodwind classification, Adolphe Sax/1840s, clarinet fingering/embouchure similarity — all match Yamaha 'Woodwind Family Explained' and 'Structure of the Saxophone' pages verbatim. Flute: lip/embouchure edge-tone mechanism, contrast with reed instruments and with recorder end-blown design — match Yamaha 'Structure of the Flute' and 'Woodwind Family Explained'; minor note: draft's phrase 'ветряной канал' (duct) for the recorder is a reasonable gloss, not a literal quote from the cited Yamaha wording ('blown from the end') — not an error, just imprecise sourcing.\n\nNo answer-option hints/duplicate alternatives, no long copyrighted quotes, source variety and primary-source emphasis all look correct on inspection. REPORT.json's word/source counts (187/176/173 words; 3/2/3 sources) were not independently recomputed (no shell access this session) but are plausible on reading.\n\nScope: 3-article spot review only, not a whole-bank/publication audit. Access limitation: University of Virginia source page returned blank on WebFetch and could not be verified directly; Project Gutenberg's equivalent public-domain 1818 text was used instead for the Walton-letter check."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Three original question-linked miniarticles with exact published revisions, real source reading/claim evidence, localstructural checks and hashfrozen submission. Sourceonlydraft; no publication orwholebank audit claims.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite writing task: exact mixedpub refs003/007/017,150-220 Russianwords each,2-3 actuallyopened primarysources, statusDRAFT_UNREVIEWED. Root newDpacket supersedeslostnativeCwriter task for thisscope; own ONLYMIXED_READER_D_20261014/draft; preserveCfiles/oldtask andfrozen6release. ActualHubconnect/teamready/offers/submit/hashes; nochildren/Git/imports/build/browser/remote/publication. Rootlaterdifferent-provider factreview.",
+        "created_at": 1791986722.908997,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\articles.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\SOURCES.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "kind": "source_opening",
+              "result": "Opened full HTTPS pages: University of Virginia 1818 Frankenstein text; University of Oxford Frankenstein overview; AFI 1931 Frankenstein catalog; Yamaha saxophone mechanism; Yamaha woodwind family; Yamaha flute mechanism. SOURCE.md records claim mapping and access limitations."
+            },
+            {
+              "command": "PowerShell ConvertFrom-Json articles.json and REPORT.json; local word/source/ref-count check",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "003=187 words/3 sources; 007=176 words/2 sources; 017=173 words/3 sources; all exact question revisions matched."
+            }
+          ],
+          "limitations": [
+            "Independent, different-provider source review remains required.",
+            "No import, canonical/export edit, publication, build, browser check, or whole-bank audit was performed."
+          ],
+          "runtime_identity": "openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411",
+          "sha256": {
+            "REPORT.json": "8A0C52C9B8A2F4C198AFA3541B5A662681BFE4576B6521A237E4BD5ADE752191",
+            "SOURCES.md": "29CBFF049F3F6A22C676E033B58511685E218A941B402934B1C0A457215EFB2E",
+            "articles.json": "1879FE5A93EBCE7222CDFA78A86B166EE459DA700C2173782A978D021B19F2C5"
+          },
+          "status": "DONE",
+          "summary": "READY for independent review; these are DRAFT_UNREVIEWED articles only, not published."
+        },
+        "root_task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+        "run_id": "run-fc2c72146ca74f8ea84caba957f32eac",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Write three source-backed music and Frankenstein draft articles",
+        "version": 4,
+        "reviewer": "session-7bbfdda9032043afa78f530e64e811c5",
+        "review_note": "Independent fact/editorial review of MIXED_READER_D_20261014 (articles 003 Frankenstein, 007 saxophone, 017 flute). Reviewer session-7bbfdda9032043afa78f530e64e811c5.\n\nVERDICT: REWORK (1 confirmed factual error; otherwise accurate, well-sourced, correctly refs-matched).\n\nRevision hashes verified exactly against study/question_articles/snapshots/pub-connections-20261014.json: 003=f26602052411e5247cf6f19bb676f44162fa3ac92e4e59ff580c28e5f0a92df0 OK, 007=7676adc903b69189ec1e9d7eeefc63150dd2ec62d0acf1ec1b8e503e8fdbef5e OK, 017=eedded3c69f8327f9c8b5e7f299eaa5fa6876718f39020f2a6aecdc151aa8955 OK. quiz_id/question_id match; all three DRAFT_UNREVIEWED.\n\nERROR (article 003): confirmed via Project Gutenberg 1818 text (gutenberg.org/files/84/84-h/84-h.htm, accessed 2026-10-14) that the draft's claim 'Роберт Уолтон адресует письмо «Victor Frankenstein»' is wrong. Walton's opening letters are addressed 'To Mrs. Saville, England' (his sister Margaret Saville) — Victor is never the addressee; he is a rescued stranger whose spoken narrative Walton records within those same letters. This is exactly the risk flagged in the task brief. Minimal fix: 'письма Роберта Уолтона адресованы его сестре Маргарет Сэвилл, а внутри этих писем сам Виктор рассказывает Уолтону, как попытался произвести жизнь.' No other change needed in that paragraph.\n\nCONFIRMED ACCURATE on independent primary-source check: creature unnamed in 1818 text (Gutenberg + Oxford page); anonymous 1818 edition and Prometheus subtitle (Oxford page); AFI Catalog 1931 film credits Colin Clive as 'Henry Frankenstein' and Karloff as 'The Monster', correctly distinguished from the novel (checked directly on AFI catalog page). Saxophone: single-reed mechanism, brass-but-woodwind classification, Adolphe Sax/1840s, clarinet fingering/embouchure similarity — all match Yamaha 'Woodwind Family Explained' and 'Structure of the Saxophone' pages verbatim. Flute: lip/embouchure edge-tone mechanism, contrast with reed instruments and with recorder end-blown design — match Yamaha 'Structure of the Flute' and 'Woodwind Family Explained'; minor note: draft's phrase 'ветряной канал' (duct) for the recorder is a reasonable gloss, not a literal quote from the cited Yamaha wording ('blown from the end') — not an error, just imprecise sourcing.\n\nNo answer-option hints/duplicate alternatives, no long copyrighted quotes, source variety and primary-source emphasis all look correct on inspection. REPORT.json's word/source counts (187/176/173 words; 3/2/3 sources) were not independently recomputed (no shell access this session) but are plausible on reading.\n\nScope: 3-article spot review only, not a whole-bank/publication audit. Access limitation: University of Virginia source page returned blank on WebFetch and could not be verified directly; Project Gutenberg's equivalent public-domain 1818 text was used instead for the Walton-letter check."
+      }
+    }
+  },
+  "review_messages": [
+    "Independent reviewer session-7bbfdda9032043afa78f530e64e811c5 ready for task-c49b4f34ca7f48978e9a18fc824462fb (editorial/source review of MIXED_READER_D_20261014 drafts). Requesting offer.",
+    "task-c49b4f34ca7f48978e9a18fc824462fb reviewed: verdict REWORK, error_count=1. Finding: article 003 wrongly states Robert Walton addresses his opening letter to 'Victor Frankenstein'; primary text (Gutenberg 1818 ed.) confirms letters are addressed to his sister Margaret/Mrs. Saville, never to Victor. Minimal one-sentence fix proposed in the review note. Articles 007/017 (sax/flute) and the rest of 003 (unnamed creature, anonymous 1818 ed., Prometheus theme, 1931 AFI film credits Henry Frankenstein/The Monster) checked against primary/authoritative sources and are accurate. Revision SHA256 for all three (003/007/017) match the published snapshot exactly. Full note left on the task review. Stopping here per scope (3-article spot review only)."
+  ],
+  "report": "Review complete and reported to Root.\n\n**Verdict: REWORK** (1 confirmed factual error out of 3 articles)\n\n- **Article 003 (Frankenstein)** — error found: the draft claims \"Robert Walton addresses his letter to 'Victor Frankenstein'.\" Checked against Project Gutenberg's 1818 text — Walton's opening letters are addressed \"To Mrs. Saville, England\" (his sister Margaret), not to Victor. Victor is a rescued stranger whose spoken narrative Walton records within those same letters. Proposed a minimal one-sentence fix in the task review note. All other claims in that article (unnamed creature, anonymous 1818 edition, Prometheus theme, 1931 AFI film crediting \"Henry Frankenstein\"/\"The Monster\") checked out against Oxford and AFI Catalog pages.\n- **Articles 007 (saxophone) and 017 (flute)** — all substantive claims (single-reed mechanism, brass-but-woodwind classification, Adolphe Sax/1840s, clarinet comparison, flute embouchure/edge-tone mechanism, recorder contrast) verified against Yamaha's instrument-guide pages and are accurate.\n- Revision SHA256 for all three articles matched the published snapshot exactly; status fields correct; no answer-option hints, duplicate alternatives, or long quotes found.\n\nReview note and verdict submitted via `hub_task review`; summary sent to Root (session-27aed86cfdf24a7ca4f3872e17b6d4b4). Stopping here per scope (finite 3-article review, no edits made).",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+      "error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+      "error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+      "error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "action": "review",
+      "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "0402c8390dddf06d0bedde9acb70bbee192c9cec9779553639267b6ceb9f2eed",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,12 @@
+/opt/quiz-master/releases/quiz-2026.10.14-reader-17be4ce.tar.gz.upload-e84899b4b6f547da8d448b421593f928: OK
+api: OK
+web/main.dart.js: OK
+nginx.conf: OK
+nginx.conf: OK
+<stdin>:5: SyntaxWarning: invalid escape sequence '\-'
+{'backup': '/opt/quiz-master/backups/quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite', 'integrity': 'ok', 'restore': 'ok', 'counts': [150, 722, 263]}
+Traceback (most recent call last):
+  File "/opt/quiz-master/releases/quiz-2026.10.14-reader-17be4ce/rehearse-quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.py", line 63, in <module>
+    assert actual['revision']==json.loads((root/'expected-staging-revisions.json').read_text())[qid][actual['question_id']], 'Strict staging revision mismatch'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Strict staging revision mismatch

@@ -1,0 +1,58 @@
+{
+  "status": "PREPARATION_FAILED_NOT_PUBLISHED",
+  "actual_remote_guard_exit": 0,
+  "actual_remote_prepare_exit": 1,
+  "failed_gate": "Copied-database rehearsal: Strict staging revision mismatch at rehearse.py line63",
+  "package_sha256": "052791b502cc068c57831473ff200cbd8fdc756018942c500508ca81a0b7f872",
+  "production_after_failure": {
+    "utc": "2026-10-14T15:33:38.018107+00:00",
+    "actual_ssh_exit": 0,
+    "target_hostname": "racknerd-f0269d5",
+    "image": "docker.io/library/quiz-master@sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+    "ready_replicas": 1,
+    "available_replicas": 1,
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "pvc_phase": "Bound",
+    "helm": {
+      "revision": 53,
+      "status": "deployed"
+    },
+    "node_ready_no_pressure": true,
+    "disk_available_bytes": 7582281728,
+    "disk_used_percent": "93%",
+    "public_baseline_assets": {
+      "version.json": {
+        "status": 200,
+        "etag_absent": true,
+        "sha256": "5bd39c6a2aa4fa34eebc8da9fde10c520733c6ff2d05e8613af32a30e9fb78c1"
+      },
+      "main.dart.js": {
+        "status": 200,
+        "etag_absent": true,
+        "sha256": "25bc17ea0e2901bb1e64213ae8c719e7104a14db279b9b923946d996bb26b18c"
+      },
+      "assets/assets/study/question-articles.json": {
+        "status": 200,
+        "etag_absent": true,
+        "sha256": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419"
+      }
+    },
+    "feedback": {
+      "count": 26,
+      "status_counts": [
+        [
+          "open",
+          26
+        ]
+      ],
+      "reports_sha256": "1321177f7fea41271bc0123f3dd67a6abd5242abdb1b7b58ff08c2047880fb13",
+      "unchanged": true
+    },
+    "scope": "Read-only current production/feedback preflight; no publication"
+  },
+  "no_helm_upgrade": true,
+  "candidate_image_verification": "NOT_REACHED",
+  "staging_and_backup": "Retained; no deletion or retries against an existing stage",
+  "next_issue": "quiz_master-bt7",
+  "extra_drafts_issue": "quiz_master-jf8"
+}

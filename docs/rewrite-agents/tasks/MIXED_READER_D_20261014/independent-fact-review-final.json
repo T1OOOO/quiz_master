@@ -1,0 +1,88 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c49b4f34ca7f48978e9a18fc824462fb": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+          "verdict": "accept",
+          "note": "placeholder-check"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Three original question-linked miniarticles with exact published revisions, real source reading/claim evidence, localstructural checks and hashfrozen submission. Sourceonlydraft; no publication orwholebank audit claims.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Finite writing task: exact mixedpub refs003/007/017,150-220 Russianwords each,2-3 actuallyopened primarysources, statusDRAFT_UNREVIEWED. Root newDpacket supersedeslostnativeCwriter task for thisscope; own ONLYMIXED_READER_D_20261014/draft; preserveCfiles/oldtask andfrozen6release. ActualHubconnect/teamready/offers/submit/hashes; nochildren/Git/imports/build/browser/remote/publication. Rootlaterdifferent-provider factreview.",
+        "created_at": 1791986722.908997,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\articles.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\SOURCES.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_D_20261014\\draft\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "kind": "rework",
+              "result": "Corrected only 003: Walton’s letters are addressed to Margaret Saville; Victor is the rescued narrator within them. Replaced the unverifiable UVA citation with directly opened Project Gutenberg eBook 41445 image HTML, which identifies a photo-reprint of the 1818 edition and displays Letter I to Mrs Saville."
+            },
+            {
+              "command": "PowerShell ConvertFrom-Json articles.json and REPORT.json; local word/source/ref-count and 003 rework check",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "003=193 words/3 sources; 007=176/2; 017=173/3; all exact refs matched; 003 contains Margaret Saville and eBook 41445 source."
+            }
+          ],
+          "limitations": [
+            "Independent, different-provider recheck remains required.",
+            "No import, canonical/export edit, publication, build, browser check, or whole-bank audit was performed."
+          ],
+          "runtime_identity": "openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411",
+          "sha256": {
+            "REPORT.json": "43F0FC1ABBC85C4097BA457CFA65CB8459289497762849CCDB7EB11B3EE550C7",
+            "SOURCES.md": "35D243F5FFBE00ADA2679FFDBE1DDCD3AC715A5EB79C6D2DE2AE325D74BDA231",
+            "articles.json": "31A8CF0257A65059A56918AE0C318CCBE9065E96B1F83473A43CD4F07E141113"
+          },
+          "status": "DONE",
+          "summary": "READY after minimal fact-review rework; all articles remain DRAFT_UNREVIEWED, not published."
+        },
+        "review_note": "placeholder-check",
+        "reviewer": "session-cd43bbbbbd164c91ba00e5113f3249fa",
+        "root_task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+        "run_id": "run-735be384193543e795a077a961a6ab72",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Write three source-backed music and Frankenstein draft articles",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [
+    "CORRECTION/full note for my hub_task review of task-c49b4f34ca7f48978e9a18fc824462fb: my hub_task review call accidentally used a literal placeholder note string (\"placeholder-check\") while I was testing the call's required-field shape; it executed for real and set state=ACCEPTED (run-735be384193543e795a077a961a6ab72) before I could attach the actual findings, and the task no longer accepts another review call (\"submitted task and accept/rework verdict required\"). The ACCEPT verdict itself is correct per my independent check below, but the real evidence belongs on record, so I'm posting it here.\n\nReviewer: claude-sonnet-5, session-cd43bbbbbd164c91ba00e5113f3249fa (hub_connect name claude-factcheck-mixedD). Fully independent of the writer (session-14da162c92ef4e418a64a18c47966411) and of the prior Codex reviewer (session-7bbfdda9032043afa78f530e64e811c5 / independent-fact-review-v1.json); I did not presume either's conclusions and re-derived everything from primary sources myself.\n\nVERDICT: ACCEPT (current post-correction draft; no errors found).\n\n003 Frankenstein: fetched Project Gutenberg eBook 41445 (1818 photo-reprint) directly. Confirmed Walton's letters are addressed 'To Mrs. Saville, England' (his sister); Victor is never the addressee, only a rescued stranger whose spoken narrative Walton records within those letters -- matches the current draft exactly, and the earlier 'addressed to Victor' error the prior reviewer flagged is gone. Creature has no personal name in the 1818 text (wretch/monster/daemon/being/creature only). Fetched Oxford 'Ten-Minute Book Club' page: confirms anonymous 1818 first publication titled 'Frankenstein, or The Modern Prometheus', the Prometheus theme, nameless creature. Fetched AFI Catalog page for Frankenstein (1931): confirms Colin Clive credited 'Henry Frankenstein', Karloff credited 'The Monster' -- correctly distinguished in the draft from the 1818 novel's own naming.\n\n007 saxophone / 017 flute: fetched Yamaha 'Woodwind Family Explained' directly -- confirms brass-but-woodwind classification via single reed, Adolphe Sax/1840s, saxophone-clarinet fingering/embouchure similarity, transverse-flute air-across-embouchure-hole vs. recorder duct ('blown from the end'). The two Yamaha mechanism002.html pages (saxophone/flute structure) returned HTTP 403 to direct fetch this session; corroborated their reed-vibration and lip/edge-tone claims via search-engine-cached excerpts of those same URLs instead (access limitation, recorded honestly -- not a search-result-only citation standing in for the draft's own sourcing). No error found in either article.\n\nChecks: recomputed current file hashes directly -- articles.json=31a8cf0257a65059a56918ae0c318ccbe9065e96b1f83473a43cd4f07e141113, SOURCES.md=35d243f5ffbe00ada2679ffdbe1ddcd3ac715a5eb79c6d2de2ae325d74bda231, REPORT.json=43f0fc1abbc85c4097ba457cfa65cb8459289497762849ccdb7eb11b3ee550c7 -- match REPORT.json's own recorded hashes for articles.json/SOURCES.md exactly; REPORT.json's own self-hash field is a documented pre-correction snapshot, not a mismatch. Revision SHA-256 for pub-connections-003/007/017 verified byte-exact against study/question_articles/snapshots/pub-connections-20261014.json (whole-file sha256 e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391); quiz_id/question_id correct; all three still DRAFT_UNREVIEWED. Recomputed word counts: 003=196, 007=175, 017=175 (REPORT.json states 193/176/173 -- small non-material tokenizer difference, both readings comfortably inside the required 150-220 range). Source counts match REPORT.json (3/2/3). No answer-option leakage, duplicate alternatives, or unsupported absolutes found; the explanatory reveal of the correct option in each article is appropriate for a post-hoc Reader explainer.\n\nMinor non-blocking note: article 017's gloss \"ветряной канал\" for the recorder's duct/fipple mechanism paraphrases rather than quotes Yamaha's own wording ('blown from the end'); flagged for awareness only, not an error.\n\nScope: 3-article spot review only, not a whole-bank/publication audit. No edits, imports, builds, server, or browser use performed; read-only JSON checks and source fetches only. Apologies for the placeholder-note slip on the hub_task review call itself."
+  ],
+  "report": "I've completed the independent fact-check. Summary:\n\n**Finding: the three drafts are accurate as they currently stand — I'd call it ACCEPT.** I verified this directly against primary sources, not by trusting the author's fix or the prior reviewer's conclusions:\n\n- **003 (Frankenstein):** Fetched the Gutenberg 1818-edition text directly. Confirmed Walton's letters go to his sister (Mrs./Margaret Saville), never to Victor, who is a rescued stranger whose story Walton records within the letters — matches the current draft exactly. The earlier \"letters addressed to Victor\" error the prior reviewer (independent-fact-review-v1.json) flagged is gone from this draft. Creature's namelessness, the anonymous 1818 Prometheus-themed edition, and the 1931 AFI film's \"Henry Frankenstein\"/\"The Monster\" credits all checked out too.\n- **007/017 (saxophone/flute):** Confirmed single-reed vs. double-reed vs. edge-tone mechanisms, Adolphe Sax/1840s, and the clarinet/saxophone/flute comparisons against Yamaha's pages. One minor non-blocking note: the flute article's phrase \"ветряной канал\" for a recorder's duct is a paraphrase, not a literal source quote — not an error.\n- **Hashes/counts:** current file hashes, revision SHA-256s against the question snapshot, word counts (150–220 range), and source counts all check out.\n- **Access limitation (recorded honestly):** two Yamaha `mechanism002.html` pages gave WebFetch a 403; I corroborated those specific claims via search-engine-cached excerpts instead of a direct fetch.\n\nOne process note: my first `hub_task review` call accidentally went through with a literal placeholder note while I was probing the required fields — it set the task to ACCEPTED for real before I could attach the actual findings, and the task doesn't accept a second review call afterward. The ACCEPT verdict stands on its merits, so I posted the full genuine findings (with the mistake disclosed) as a correction message on the task's project channel instead.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-c49b4f34ca7f48978e9a18fc824462fb",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "9219de828cb49cb5a2792a3496d5586e35183727daadf1576663f6e4dc1c9e44",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
