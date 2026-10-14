@@ -1,0 +1,74 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e463f8105d2349a4ac41b0c797337169": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e463f8105d2349a4ac41b0c797337169",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review of the final six-article export + Flutter fixture integration, by my own recomputation against the actual files:\n\n1. Export diff: current next/apps/quiz_app/assets/study/question-articles.json vs git HEAD: all 266 prior articles byte-identical, exactly 6 new ids added (pub-connections-001/002/006/011/012/016), total=272.\n\n2. Each new article is byte-identical to the canonical draft except status: draft->accepted (matches the recorded accept in reviews/pub-connections-six-20261014-review.json).\n\n3. No private/grading fields in exported articles (recursively scanned for answer/correct/grading keys) - private_grading/private_question_metadata live only in the build-input snapshot, not the shipped asset.\n\n4. Snapshot sha256 = e0d6ed56...9f2391, matches conversion-proof.json/integration-proof.json - same already-published bundle, unaltered.\n\n5. All 6 question_refs[].revision_sha256 match the snapshot's quiz.questions[*].revision.sha256 exactly (recomputed directly from the snapshot file).\n\n6. All 15 source_links use https and point to reputable domains (murnau-stiftung.de, filmportal.de, berliner-philharmoniker.de, tonhalleorchester.ch, catalog.afi.com, yale.edu, yamaha.com, metmuseum.org, oscars.org, richardsonsymphony.org).\n\n7. git diff on test/question_articles_test.dart: only expected title text, count 266->272, and 6 new precise (quiz_id,question_id,revision_sha256) fixtures matching real exported hashes; all prior fixtures/behaviors untouched.\n\n8. Read (not re-ran) actual-reader-flutter-test.json: exit 0, 6 tests passed including updated 'Mixed' test name.\n\nLimitation: did not re-fact-check article body claims myself (relies on prior recorded independent-source-review accepts); did not personally re-execute flutter test. Verified: export integrity, no answer-key leakage, revision-ref correctness, source URL safety, test-fixture diff scope.\n\nVerdict: ACCEPT, limited to this final local source integration step. Does not authorize publication, browser/image checks, DB copy, or rollback gating."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual independent finaldata/testdiff review; six additions exactlyacceptedcanonical, old266objects preserved, no answerkeys/unsafeURLs, recordedReadercheck and6Fluttertestexit0; bounded accept/rework onlyintegration.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014",
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart"
+        ],
+        "assignee": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "author": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "body": "Final local integration after accepted task7a. Existingbuilder exported272articles; all266priorobjects unchanged; sixexactpublishedruntimeRefs. ExistingFlutterReaderfixture adds sixexact refs/count272; actualtargetedReader suite6passed. Independentlyreviewfinalexport/canonicalreview/snapshot/testdiff/evidence againstGitHEADb180baseline. No runtimecode/API/questions changed; no builds/edits/Git/deploy byreviewer. Releasegates remainseparate.",
+        "created_at": 1791981392.4737916,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e463f8105d2349a4ac41b0c797337169",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "kind": "report",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/integration-proof.json"
+            },
+            {
+              "actual_exit": 0,
+              "kind": "test",
+              "path": "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/actual-reader-flutter-test.json"
+            }
+          ],
+          "summary": "Actualbuildercheck272 andprior266identical,6newrefs exact; actualFlutterReader suite6passed. Pendingfinalintegrationreview, no newpublication."
+        },
+        "root_task_id": "task-e463f8105d2349a4ac41b0c797337169",
+        "run_id": "run-6955ad54b88a4b1ab234ccf0ab5c27fe",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-d7619abca9114fb5a2717735d8988522",
+        "title": "Final six-article export and Flutter fixture review",
+        "version": 4,
+        "reviewer": "session-7b9d02266d934d249220b508c49bc46c",
+        "review_note": "Independent review of the final six-article export + Flutter fixture integration, by my own recomputation against the actual files:\n\n1. Export diff: current next/apps/quiz_app/assets/study/question-articles.json vs git HEAD: all 266 prior articles byte-identical, exactly 6 new ids added (pub-connections-001/002/006/011/012/016), total=272.\n\n2. Each new article is byte-identical to the canonical draft except status: draft->accepted (matches the recorded accept in reviews/pub-connections-six-20261014-review.json).\n\n3. No private/grading fields in exported articles (recursively scanned for answer/correct/grading keys) - private_grading/private_question_metadata live only in the build-input snapshot, not the shipped asset.\n\n4. Snapshot sha256 = e0d6ed56...9f2391, matches conversion-proof.json/integration-proof.json - same already-published bundle, unaltered.\n\n5. All 6 question_refs[].revision_sha256 match the snapshot's quiz.questions[*].revision.sha256 exactly (recomputed directly from the snapshot file).\n\n6. All 15 source_links use https and point to reputable domains (murnau-stiftung.de, filmportal.de, berliner-philharmoniker.de, tonhalleorchester.ch, catalog.afi.com, yale.edu, yamaha.com, metmuseum.org, oscars.org, richardsonsymphony.org).\n\n7. git diff on test/question_articles_test.dart: only expected title text, count 266->272, and 6 new precise (quiz_id,question_id,revision_sha256) fixtures matching real exported hashes; all prior fixtures/behaviors untouched.\n\n8. Read (not re-ran) actual-reader-flutter-test.json: exit 0, 6 tests passed including updated 'Mixed' test name.\n\nLimitation: did not re-fact-check article body claims myself (relies on prior recorded independent-source-review accepts); did not personally re-execute flutter test. Verified: export integrity, no answer-key leakage, revision-ref correctness, source URL safety, test-fixture diff scope.\n\nVerdict: ACCEPT, limited to this final local source integration step. Does not authorize publication, browser/image checks, DB copy, or rollback gating."
+      }
+    }
+  },
+  "review_messages": [
+    "Independent review complete (reviewer session-7b9d02266d934d249220b508c49bc46c, Claude Sonnet 5). Verdict: ACCEPT, error_count=0 on task-e463f8105d2349a4ac41b0c797337169 ('Final six-article export and Flutter fixture review'), submitted via hub_task review.\n\nRecomputed independently against actual repo files (not trusted from proof JSONs alone): export diff shows all 266 prior articles byte-identical to git HEAD, exactly 6 new ids added (pub-connections-001/002/006/011/012/016), total 272; each new article matches the canonical draft byte-for-byte except the expected status draft->accepted; no answer-key/grading fields present in exported articles (private_grading/private_question_metadata live only in the build-input snapshot); snapshot sha256 unchanged (e0d6ed56...9f2391, same already-published bundle); all 6 question_refs.revision_sha256 match the snapshot's actual question revisions exactly; all 15 source_links are https and point to reputable domains; git diff on test/question_articles_test.dart is scoped to exactly the expected title/count(266->272)/6 fixture additions with prior test behavior retained; read (did not re-execute) the recorded Flutter receipt showing 6 tests passed.\n\nLimits: I did not re-fact-check article body real-world claims (relies on prior recorded independent-source-review accepts) and did not personally re-run flutter test. This acceptance is strictly limited to this final local source integration step - it does not authorize publication, browser/image checks, DB copy, or rollback gating, which remain separately gated."
+  ],
+  "report": "## Review complete — ACCEPT\n\n**Verdict: ACCEPT** (error_count=0) on `task-e463f8105d2349a4ac41b0c797337169`, submitted via `hub_task review` and summarized to `session-aa6ffd699e314d54bf0ef13a24fbcfef`.\n\nIndependently recomputed findings against the actual repo state (not taken on trust from proof files):\n- **Export diff**: all 266 prior articles in `next/apps/quiz_app/assets/study/question-articles.json` are byte-identical to git HEAD; exactly 6 new ids added; total now 272.\n- **Content fidelity**: each new article matches the canonical draft byte-for-byte except the expected `status: draft → accepted`.\n- **No leakage**: no answer-key/grading fields in exported articles; `private_grading`/`private_question_metadata` exist only in the build-input snapshot, never shipped.\n- **Snapshot integrity**: unchanged sha256, same already-published bundle.\n- **Revision refs**: all 6 `question_refs.revision_sha256` match the snapshot's actual question revisions exactly.\n- **Source safety**: all 15 source links are https, reputable archival/museum/catalog domains.\n- **Test diff**: scoped exactly to title text, count 266→272, and 6 precise new fixtures; all prior test behavior retained.\n- Read (did not re-execute) the recorded Flutter receipt: 6 tests passed.\n\n**Limits stated in the review**: I didn't re-fact-check the article bodies' real-world claims (relies on the prior independent-source-review chain) and didn't personally re-run `flutter test`. Acceptance is strictly limited to this local integration step — publication, browser/image checks, DB copy, and rollback gating remain separately gated.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-e463f8105d2349a4ac41b0c797337169",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "2163b46087345c784064ffba5733ada7aa5532764f3b1f6ab030ab70bbfd0c2a",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

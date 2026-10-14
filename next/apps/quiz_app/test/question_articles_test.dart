@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets(
-    'packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, LOTR repair and published Home Alone revisions',
+    'packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, Mixed, LOTR repair and published Home Alone revisions',
     (tester) async {
       final articles = QuestionArticles.decode(
         (await tester.runAsync(
@@ -197,8 +197,38 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(266));
+      expect(articles.articles, hasLength(272));
       for (final (quizId, questionId, revision) in [
+        (
+          'pub-connections-20261014',
+          'pub-connections-001',
+          'ffba665c01970729b668367173aeeee8845eb9f02e69c64e91348c360efce2cd',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-002',
+          '9eaffd1c9f2c770a9715d03726cdecfded33942fca0255e0628a5defd1b8a119',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-006',
+          'a030f84979262904b5bb397e627c72d9240f2b5e4354b2fd51638b1d39dda53f',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-011',
+          'd7c001f99efe5b784e85f2577023973bd7d089e1441b32093e59c29cd60a2d8a',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-012',
+          'ac9b02a66246a4cf541382703812e2b69a24120cc236158c2419f8b74439a862',
+        ),
+        (
+          'pub-connections-20261014',
+          'pub-connections-016',
+          '40464345526c4665cf7ef2b79adf9a19f3afc661a4bfcfd3ebe62232569befba',
+        ),
         (
           'lotr-return-king-bts-100',
           'lotr-rk-93',

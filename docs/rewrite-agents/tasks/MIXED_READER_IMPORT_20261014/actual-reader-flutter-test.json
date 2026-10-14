@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cmd",
+    "/c",
+    "flutter",
+    "test",
+    "--no-pub",
+    "test/question_articles_test.dart"
+  ],
+  "actual_exit": 0,
+  "stdout": "00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart\n00:00 +0: articles match exact quiz revision, not only a reusable question ID\n00:00 +1: drafts, duplicate articles and unsafe source schemes fail closed\n00:00 +2: mobile reader pauses before opening and puts checked links at the end\n00:01 +3: reader stays above shell feedback and restores it on close\n00:01 +4: missing article does not suggest an unwritten article\n00:01 +5: packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, Mixed, LOTR repair and published Home Alone revisions\n00:01 +6: All tests passed!\n",
+  "stderr": "",
+  "scope": "Actual affected Reader suite after six accepted article imports"
+}

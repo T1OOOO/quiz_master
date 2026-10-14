@@ -1,0 +1,76 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-7a626fd110f0492c8e65fc505349499c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-7a626fd110f0492c8e65fc505349499c",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent integration review of the 6-article status-only conversion (MIXED_READER_IMPORT_20261014), by my own recomputation, not by trusting Root's proof files:\n\n1. Source hashes: sha256 of MIXED_READER_20261014/draft/articles.json (568652cb...97f321) and MIXED_READER_B_20261014/draft/articles.json (203bde29...23ea3c7) match the task's accepted-source hashes exactly.\n\n2. Sole-transformation check: for all 6 articles (001,002,006,011,012,016) I recomputed build.py's own article_hash() on both original and candidate objects; all original/canonical sha256 values in conversion-proof.json matched. Field diff (status popped, rest compared) confirmed status DRAFT_UNREVIEWED->draft is the ONLY changed field in every article; body/title/tags/refs/sources/id all byte-identical.\n\n3. canonical-review-candidate.json's article_sha256 matches the draft file's current hash for all 6.\n\n4. Exactly 6 unique ids, 3 per batch, no overlap.\n\n5. Runtime refs: each article's question_refs revision_sha256 matches the corresponding question's revision.sha256 in the frozen snapshot for all 6, exact.\n\n6. Snapshot/bundle equality: sha256(snapshots/pub-connections-20261014.json) = sha256(MIXED_RELEASE_20261014/mixed-runtime-bundle.json) = e0d6ed56...9f2391, matching conversion-proof's snapshot_sha256 — same already-published bundle, not altered.\n\n7. No answer-key fields in any of the 6 candidate articles; question_refs hold only quiz_id/question_id/revision_sha256.\n\n8. Export: ran build.export() read-only (no --write). Count = 266; none of the 6 candidates are included, because build.py only includes 'accept' verdicts and these are still 'pending'. Correctly unchanged pending this review.\n\n9. independent-source-review.json (B) hash 203bde29... matches current file and documents the article011 correction after root-editorial-finding.json; v1's hash 59a900ac... is pre-correction and correctly superseded. Confirmed article011's current text uses the corrected qualified claim. root-met-primary-access.json is Root's own PDF-access record, not independent-reviewer evidence — treated accordingly.\n\nLimitation: I did not re-fact-check the article bodies' real-world claims myself (relied on recorded independent-source-review accepts for that); I independently verified only integration integrity (hashes, sole-field-change, refs, snapshot equality, no answer-key leakage, export count=266).\n\nVerdict: ACCEPT. Conversion is exactly a status-field edit on 6 correctly-identified articles, no runtime/export side effects yet. Not a release/publication authorization."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual independent status-only semantic comparison, exactarticlehashes/runtimebindings, no priorReaderchanges, noprivatekeys exported; concrete accept/rework limitedto6integration.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_READER_IMPORT_20261014",
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\pub-connections-six-20261014.json",
+          "C:\\ap\\quiz_master\\study\\question_articles\\snapshots\\pub-connections-20261014.json"
+        ],
+        "assignee": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "author": "session-aa6ffd699e314d54bf0ef13a24fbcfef",
+        "body": "Root prepared six canonicaldraft articles and mixed runtime snapshot via existingbuilder. Inspect MIXED_READER_IMPORT_20261014/conversion-proof.json and canonical-review-candidate.json, study/question_articles/drafts/pub-connections-six-20261014.json and snapshots/pub-connections-20261014.json. Changes only statusDRAFT_UNREVIEWED->draft; all266exportobjects preserved beforeacceptance. Independentintegrationreviewrequired beforeRootwritesreviewacceptance/export. No newfactualclaims/clientcode/APIchanges.",
+        "created_at": 1791980849.365996,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-7a626fd110f0492c8e65fc505349499c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "actual_exit": 0,
+              "command": "python .run/mixed_release_20261014/prepare_reader_import.py",
+              "kind": "check",
+              "outcome": "Sixstatus-onlyconversions; exportstill266; exactsourcehashes and runtime snapshot"
+            }
+          ],
+          "files": [
+            "study/question_articles/drafts/pub-connections-six-20261014.json",
+            "study/question_articles/snapshots/pub-connections-20261014.json",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/conversion-proof.json",
+            "docs/rewrite-agents/tasks/MIXED_READER_IMPORT_20261014/canonical-review-candidate.json"
+          ],
+          "summary": "Root actualstatus-onlycanonicalpreparation0, unacceptedexportunchanged266, sixcanonicalarticlehashmappings and exacte0mixedpublishedsnapshot. Pendingindependentreview."
+        },
+        "root_task_id": "task-7a626fd110f0492c8e65fc505349499c",
+        "run_id": "run-c308cd3e7348488f9035e5c0fafd30ca",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-d7619abca9114fb5a2717735d8988522",
+        "title": "Review six prepared status-only Reader conversions",
+        "version": 4,
+        "reviewer": "session-ad2392db45284a738a89c71b324729ef",
+        "review_note": "Independent integration review of the 6-article status-only conversion (MIXED_READER_IMPORT_20261014), by my own recomputation, not by trusting Root's proof files:\n\n1. Source hashes: sha256 of MIXED_READER_20261014/draft/articles.json (568652cb...97f321) and MIXED_READER_B_20261014/draft/articles.json (203bde29...23ea3c7) match the task's accepted-source hashes exactly.\n\n2. Sole-transformation check: for all 6 articles (001,002,006,011,012,016) I recomputed build.py's own article_hash() on both original and candidate objects; all original/canonical sha256 values in conversion-proof.json matched. Field diff (status popped, rest compared) confirmed status DRAFT_UNREVIEWED->draft is the ONLY changed field in every article; body/title/tags/refs/sources/id all byte-identical.\n\n3. canonical-review-candidate.json's article_sha256 matches the draft file's current hash for all 6.\n\n4. Exactly 6 unique ids, 3 per batch, no overlap.\n\n5. Runtime refs: each article's question_refs revision_sha256 matches the corresponding question's revision.sha256 in the frozen snapshot for all 6, exact.\n\n6. Snapshot/bundle equality: sha256(snapshots/pub-connections-20261014.json) = sha256(MIXED_RELEASE_20261014/mixed-runtime-bundle.json) = e0d6ed56...9f2391, matching conversion-proof's snapshot_sha256 — same already-published bundle, not altered.\n\n7. No answer-key fields in any of the 6 candidate articles; question_refs hold only quiz_id/question_id/revision_sha256.\n\n8. Export: ran build.export() read-only (no --write). Count = 266; none of the 6 candidates are included, because build.py only includes 'accept' verdicts and these are still 'pending'. Correctly unchanged pending this review.\n\n9. independent-source-review.json (B) hash 203bde29... matches current file and documents the article011 correction after root-editorial-finding.json; v1's hash 59a900ac... is pre-correction and correctly superseded. Confirmed article011's current text uses the corrected qualified claim. root-met-primary-access.json is Root's own PDF-access record, not independent-reviewer evidence — treated accordingly.\n\nLimitation: I did not re-fact-check the article bodies' real-world claims myself (relied on recorded independent-source-review accepts for that); I independently verified only integration integrity (hashes, sole-field-change, refs, snapshot equality, no answer-key leakage, export count=266).\n\nVerdict: ACCEPT. Conversion is exactly a status-field edit on 6 correctly-identified articles, no runtime/export side effects yet. Not a release/publication authorization."
+      }
+    }
+  },
+  "review_messages": [
+    "Reviewer session-ad2392db45284a738a89c71b324729ef (Claude Sonnet 5): completed independent integration review of task-7a626fd110f0492c8e65fc505349499c. Verdict: ACCEPT, error_count=0 (submitted via hub_task review).\n\nIndependently recomputed (not trusted from Root's proof files): both A/B source file hashes match; build.py's own article_hash() recomputed on all 6 original vs candidate articles confirms status DRAFT_UNREVIEWED->draft is the ONLY changed field, every other field byte-identical; canonical-review-candidate.json hashes match current draft bytes; 6 unique ids confirmed (001,002,006 / 011,012,016, no overlap); all question_refs revision_sha256 match the frozen snapshot exactly; sha256(snapshot)=sha256(mixed-runtime-bundle.json) confirming same already-published bundle; no answer-key fields present in any candidate article; ran build.export() read-only (no --write) and confirmed count=266 with none of the 6 candidates included (correctly still pending). Also cross-checked that MIXED_READER_B's independent-source-review.json (hash 203bde29...) corresponds to the corrected article011 text, correctly superseding the pre-correction v1 report (hash 59a900ac...); root-met-primary-access.json was treated as Root's own access record, not independent-reviewer evidence.\n\nLimitation: did not personally re-fact-check the underlying real-world claims in article bodies (dates/film facts) — relied on the already-recorded independent-source-review accept notes for that. My own verification was limited to integration/transformation integrity. This acceptance does not authorize release/publication or certify full question-bank correctness."
+  ],
+  "report": "Review complete. Summary:\n\n**Verdict: ACCEPT** on `task-7a626fd110f0492c8e65fc505349499c`, submitted via `hub_task review` with `error_count: 0`, and sent to lead session `session-aa6ffd699e314d54bf0ef13a24fbcfef`.\n\nIndependently recomputed findings (not taken on trust from Root's proof files):\n- Both A/B source `articles.json` hashes match the claimed values exactly.\n- Recomputed `build.py`'s own `article_hash()` on all 6 original vs. candidate articles: confirmed `status: DRAFT_UNREVIEWED → draft` is the **sole** change in every one; body/title/tags/refs/sources/id all byte-identical.\n- `canonical-review-candidate.json` hashes match the current draft file bytes for all 6.\n- Exactly 6 unique ids (001, 002, 006 from batch A; 011, 012, 016 from batch B), no overlap.\n- All `question_refs.revision_sha256` match the frozen runtime snapshot exactly.\n- `sha256(snapshot) == sha256(mixed-runtime-bundle.json)` — confirms it's the same already-published bundle, unaltered.\n- No answer-key fields in any candidate article.\n- Ran `build.export()` read-only (no `--write`): count is **266**, and none of the 6 pending candidates are included — correct, since export only pulls `accept`-verdict reviews.\n- Confirmed `independent-source-review.json` (B) corresponds to the corrected article011 text (post `root-editorial-finding.json`), correctly superseding the pre-correction v1 report; `root-met-primary-access.json` treated as Root's own access record, not independent-reviewer evidence, per instructions.\n\n**Limitation I flagged in the review note:** I did not personally re-fact-check the real-world claims in the article bodies (premiere dates, film/music facts) — that relies on the already-recorded independent-source-review accepts. My own verification covered integration/transformation integrity only, and this accept does not authorize release or certify full question-bank correctness.\n\nStopping here as instructed — this was a finite review task.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-7a626fd110f0492c8e65fc505349499c",
+      "error": "rated task review requires a concrete note (10..4000 characters)"
+    }
+  ],
+  "trace_sha256": "cf82d8f931ca548a74d0019059caa809258a458caff9930ab85b8af70f159137",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
