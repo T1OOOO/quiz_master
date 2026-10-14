@@ -21,6 +21,7 @@ BASELINE_ARCHIVE_SHA256 = "64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262
 BASELINE_IMAGE = "docker.io/library/quiz-master@sha256:a97cf777b2015c595fd1307017246a2806cce597e0233da75e496a433761e074"
 BASELINE_CUTOVER_IMAGE = "docker.io/library/quiz-master@sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961"
 BASELINE_MAIN_DART_JS_SHA256 = "aed8b728b1d019b86432075f96c6fec48414fc8351079c1f9c53519e0e4373e9"
+BASELINE_CHECKSUMS_SHA256 = "edab308766bd30ca0717b4c8971d0e2a8c638b88336e067dc56b47f90780ee52"
 BASELINE_API_SHA256 = "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01"
 TARGET_API_SHA256 = "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850"
 TARGET_API_BYTES = 22988817
@@ -789,7 +790,7 @@ def assert_preserved_stage(stage: Path, baseline: dict[str, Any], runtime: dict[
 def patch_cutover_text(body: str, production_js_sha256: str, *, mixed: bool = False) -> str:
     require_hash(production_js_sha256, "production JavaScript")
     body = replace_once(body, f"quiz_build={BASELINE_BUILD}", f"quiz_build={BUILD_ID}")
-    body = replace_once(body, r"r'quiz-2026\.10\.14-screen-song-[0-9a-f]{7}'", "r" + repr(re.escape(BUILD_ID)))
+    body = replace_once(body, r"r'quiz-2026\.10\.14-screen-song-[0-9a-f]{7}'", repr(re.escape(BUILD_ID)))
     body = replace_once(body, BASELINE_SOURCE, TARGET_SOURCE, 2)
     body = replace_once(body, BASELINE_MAIN_DART_JS_SHA256, production_js_sha256, 2)
     body = replace_once(body, BASELINE_CUTOVER_IMAGE, BASELINE_IMAGE)
@@ -855,6 +856,21 @@ def patch_rehearsal_text(body: str, *, mixed: bool = False) -> str:
         body = replace_once(body, "assert len(req('/v1/history',token=token))==14", "assert len(req('/v1/history',token=token))==15")
         body = replace_once(body, "'canonical_packs':13,'canonical_questions':260", "'canonical_packs':14,'canonical_questions':280")
         body = replace_once(body, 'after[3]-before[3]==135', 'after[3]-before[3]==136')
+    rollback_preflight = (
+        f"baseline_root=pathlib.Path('/opt/quiz-master/releases/{BASELINE_BUILD}')\n"
+        "assert baseline_root.resolve()==baseline_root\n"
+        "baseline_checksums=baseline_root/'checksums.txt'\n"
+        f"assert hashlib.sha256(baseline_checksums.read_bytes()).hexdigest()=='{BASELINE_CHECKSUMS_SHA256}'\n"
+        "for baseline_line in baseline_checksums.read_text().splitlines():\n"
+        " baseline_digest,baseline_relative=baseline_line.split('  ',1)\n"
+        " baseline_file=baseline_root/baseline_relative\n"
+        " assert baseline_file.resolve().is_relative_to(baseline_root) and not baseline_file.is_symlink()\n"
+        " assert hashlib.sha256(baseline_file.read_bytes()).hexdigest()==baseline_digest\n"
+    )
+    body = replace_once(body, "rollback=sandbox/'rollback-api'", rollback_preflight + "rollback=sandbox/'rollback-api'")
+    body = replace_once(body, "shutil.copyfile('/opt/quiz-master/releases/quiz-2026.10.12-culture-42a2aaf/api',rollback)", "shutil.copyfile(baseline_root/'api',rollback)")
+    baseline_env = "env.update({'QM_CONTENT_BUNDLE_PATH':str(baseline_root/'quizzes'),'QM_CONTENT_MANIFEST_PATH':str(baseline_root/'next/content/home-alone-1-part-1/manifest.json'),'QM_CONTENT_TAXONOMY_PATH':str(baseline_root/'metadata/tags.v1.json')})\n"
+    body = replace_once(body, 'p=start(rollback)', baseline_env + 'p=start(rollback)')
     compile(body, "rehearse.py", "exec")
     return body.replace("\r\n", "\n")
 

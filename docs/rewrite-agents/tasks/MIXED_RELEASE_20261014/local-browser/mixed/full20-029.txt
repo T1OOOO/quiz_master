@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e42]
+        - button "Домой" [ref=e43]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e44]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "20"
+        - StaticText "5/20"
+        - group
+          - group "В команде шесть игроков. Каждый один раз обсуждает ответ наедине с каждым из остальных. Сколько разных пар проведёт такое обсуждение?"
+            - button "18" [ref=e45]
+            - button "12" [ref=e46]
+            - button "15" [ref=e47]
+            - button "30" [ref=e48]
+      - button "Отправить отзыв" [ref=e41]

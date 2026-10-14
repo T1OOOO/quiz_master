@@ -1,0 +1,15 @@
+{
+  "command": [
+    "go",
+    "build",
+    "-p=1",
+    "-trimpath",
+    "-buildvcs=false",
+    "-o",
+    "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\qa-api.exe",
+    "./cmd/api"
+  ],
+  "actual_exit": 0,
+  "artifact_sha256": "28995a288b5c2c27ae5740b4e36f25a87f3c5a3cd8b1b028fc5004cf226450f0",
+  "scope": "Actual WindowsAPI for narrow browser fixtures; controlled2LOTR or full20mixed, notfullsourceimageLoader gate."
+}

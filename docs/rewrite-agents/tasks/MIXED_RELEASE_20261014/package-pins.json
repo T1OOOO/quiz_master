@@ -1,0 +1,97 @@
+{
+  "schema_version": "qm-mixed-release-pins/v1",
+  "frozen_commit": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+  "build_id": "quiz-2026.10.14-mixed-ecac092",
+  "baseline_archive_sha256": "64e50bf9f49bd1287b0964f234cb9545508b878315e8fd577c262dc5c5ade6df",
+  "baseline_image": "docker.io/library/quiz-master@sha256:a97cf777b2015c595fd1307017246a2806cce597e0233da75e496a433761e074",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "source_assets": {
+    "study/question_articles/reviews/lotr-return-king-repair-20261014-review.json": "80ac628e0c3dba07d01e5adcd7bc9d027a843524fc0b5f27106afd047e819c3c",
+    "next/apps/quiz_app/assets/study/question-articles.json": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419",
+    "next/apps/quiz_app/test/question_articles_test.dart": "9003a957dd798139c598d024ecd650134cfb6ee4cb8a4d20d95cfe192389a332",
+    "next/apps/quiz_app/assets/catalog.json": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618",
+    "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json": "c6f6cbf899de42e197b5d041c6f9206207caf28624da9ddebdea540cddb8b7e6",
+    "next/content/lotr-return-king-bts-100/draft.json": "1a5934780727b92bdb524c37137f819be53e7e948be0bdb5bba44c8f346741d7",
+    "next/content/lotr-return-king-bts-100/manifest.json": "34b13f2bb6bc7c957653c2a6e9618b19bcfe9b219c628b81bb6f550cf8414017",
+    "next/content/lotr-return-king-bts-100/bundle.json": "0493caf17023d7e470f8c28b8dbb782ba0309c5d21141dffff8dd9c16ff190b2",
+    "study/question_articles/snapshots/lotr-return-king-bts-100.json": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38",
+    "quizzes/Preparation/pub_connections_20261014.json": "a014331442faf116fc0f210fb9038cf7c2990b7723d35e0c504b992964d72f5b",
+    "next/content/pub-connections-20261014/draft.json": "89b81efa98abc014e74a60dc1c551b134027f077e8a3be3cdebffaf3c442d48c",
+    "next/content/pub-connections-20261014/manifest.json": "ffda40c574897f829435908ddd1001e88b3d9a3947856680d14e21e4d5a9e384",
+    "next/content/pub-connections-20261014/bundle.json": "0d27c54877df37639fc16f91aa65b0f7830f06fc31fdf3fbfacc5cb14f08b9a6"
+  },
+  "runtime_bundle": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\integration-runtime-bundle.json",
+    "sha256": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38"
+  },
+  "public_baseline": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\integration-public-baseline.json",
+    "sha256": "42f96a2efa7257360fa0a054bb31acee46c7f63a850ac37fb8869687f0557856"
+  },
+  "reader_snapshot": {
+    "path": "C:\\ap\\quiz_master\\study\\question_articles\\snapshots\\lotr-return-king-bts-100.json",
+    "sha256": "7f7fcc19aab983691c445771e3dd3833ca2f70c7f280cbb927b2c90e19093c38"
+  },
+  "build_evidence": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\actual-flutter-builds.json",
+    "sha256": "527c8b8dbfe8ce8537f70ba6e4732982a46f83c2006cd546271bb82c5d8dc0bf"
+  },
+  "source_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_RUNTIME_METADATA_20261014\\independent-integration-review.json",
+    "sha256": "83231cc2df008d5fb5ccb62210a457abb926112d0d7b0ccfe32cb8884f6047a0"
+  },
+  "export_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\LOTR_WORDING_PILOT_20261014\\independent-reader-export-review.json",
+    "sha256": "65e44df7b7fea15d0f6d071b8fd0e464c795c8ea20d6d5bad6824ccbc046d4bc"
+  },
+  "browser_proof": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\browser-proof.json",
+    "sha256": "484ba7dd22c14e94741f1daf873b6a948ed82630a0c880b95d8a4ab27084556e"
+  },
+  "production_web": "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\production-web",
+  "qa_web": "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\qa-web",
+  "baseline_catalog": {
+    "path": "C:\\ap\\quiz_master\\.run\\lotr_browser_20261014\\baseline-catalog.json",
+    "sha256": "43b90ee84800cc13f23eec9d43baa05cec28a74bd31c6d3ef6a1a9d335b17a41"
+  },
+  "baseline_reader": {
+    "path": "C:\\ap\\quiz_master\\.run\\lotr_browser_20261014\\baseline-reader.json",
+    "sha256": "a58255548240b489873d8ad944522a53757454627081b76e11d6031f35776c14"
+  },
+  "repo": "C:\\ap\\quiz_master",
+  "scope": "Exact actual source/artifact/browser inputs for prepare-only package; execution and publication not yet verified.",
+  "package_controller_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\independent-integration-controller-v2.json",
+    "sha256": "7560ace84e29054870573600bae5ac38996b9acf6ac3a0ac6503ce2f182135d4"
+  },
+  "package_controller_source_sha256": {
+    "prepare_lotr_package.py": "743041e40825fc6c7d595d94a3936aa1242cf51f83f18fbd95164c7c3f65b8ad",
+    "test_prepare_lotr_package.py": "26b3e19a60e66497450398e1d4f63361bc153cb0184dae71886a2b17a12d02b5",
+    "verify_candidate_runtime.py": "9496b55cc68093cf1297881536d21091884e714bb8c2e2335811b15cb90d4d88",
+    "test_verify_candidate_runtime.py": "d382d248b21fbba841d5e02f5dd6df8e5021d1e7b6922233b3ee614e36c38571",
+    "README.md": "342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b"
+  },
+  "baseline_api_sha256": "26e1657fd6259bdbbef9178cbe9343b775406d91c56cb9661d302ad530ab6f01",
+  "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+  "target_api": {
+    "path": "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\api-linux-amd64",
+    "sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850"
+  },
+  "target_api_build": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\actual-linux-api-build.json",
+    "sha256": "cb1dbc74a2ffca71cfa1e12a09bd5d07a5c438454b07c6e4af2b4fc2298a31de"
+  },
+  "target_api_inspection": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\final-api-inspection.json",
+    "sha256": "020460c71202a8fb3416316eaac4bec20920c254c6a45d1c693124c2e5778387"
+  },
+  "mixed_runtime_bundle": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\mixed-runtime-bundle.json",
+    "sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391"
+  },
+  "mixed_source_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\independent-integration-controller-v2.json",
+    "sha256": "7560ace84e29054870573600bae5ac38996b9acf6ac3a0ac6503ce2f182135d4"
+  }
+}

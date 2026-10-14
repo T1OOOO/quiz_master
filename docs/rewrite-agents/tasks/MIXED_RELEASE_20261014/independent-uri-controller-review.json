@@ -1,0 +1,75 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c01fd3ba00044ce6917dc898a3094907": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c01fd3ba00044ce6917dc898a3094907",
+          "verdict": "accept",
+          "note": "ACCEPT, static source-only review of the current verify_candidate_runtime.py/test_verify_candidate_runtime.py delta + REPORT.json; prior 3 producer files (prepare_lotr_package.py, test_prepare_lotr_package.py, README.md) and both remote helper files are confirmed byte-unchanged since the accepted task-25c3 review (directory listing shows only verify_candidate_runtime.py, test_verify_candidate_runtime.py and REPORT.json have newer mtimes this round). ALL 7 ACTUAL DIGESTS, independently recomputed via read-only Python hashlib (Bash, no edits, no execution): prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, test_prepare_lotr_package.py=14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26, test_verify_candidate_runtime.py=b2f9fcb4cd8e9d10ab3abf7f00bef113c08616cf1e796dd8b244816d45c6938d, verify_candidate_runtime.py=a97332c51b38cce247f80659624f52de9f5429f65cff28fce1f57cf13a3cdffa, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4. All 7 match REPORT.json (5) and REMOTE_HELPER_REPORT.json (2) exactly, byte-for-byte; no repeat of the earlier CRLF-report mismatch pattern. ROOT CAUSE AND FIX VERIFIED BY DIRECT READ (not execution): the actual remote candidate-image startup failure is explained correctly by Go's net/url semantics -- a URI written as 'sqlite:/verify/quiz.sqlite' (leading slash right after the scheme colon) parses with an empty Opaque and a Path of '/verify/quiz.sqlite', but the server's configFromEnv SQLite branch requires url.Opaque to be nonempty, so startup was rejected. The fix in build_docker_run_command changes QM_DATABASE_URL to the relative/opaque form 'sqlite:verify/quiz.sqlite' (no leading slash -> Go classifies it as Opaque='verify/quiz.sqlite'), moves the bind mount destination from /verify to /app/verify, and adds an explicit --workdir /app so the relative sqlite path resolves under /app as intended; QM_CONTENT_BUNDLE_PATH stays /app/quizzes and the real /app/api entrypoint is unchanged, so the already-accepted raw-image/content-path behavior is preserved untouched. Also added: safe_startup_logs(), which truncates to the last 16384 chars and redacts any line matching token|authorization|bearer|secret|password|private_grading|correct_answer|correct_option (case-insensitive) before it is ever written to disk; and a new except Exception block in main() that captures 'docker logs --tail 40' only after confirming the container's nonce label still matches ownership, writes the sanitized diagnostic to <output>.failure.json (never promoted to a verified receipt), then re-raises the original exception unchanged, with the existing finally-based container/scratch cleanup still running afterward exactly as before. TWO NEW TESTS VERIFIED BY READ: test_candidate_sqlite_url_uses_opaque_relative_path_and_exact_mount parses the generated QM_DATABASE_URL with urllib.parse.urlsplit, asserts the path does not start with '/' (the Opaque-vs-Path distinction the Go server cares about), asserts the exact value 'sqlite:verify/quiz.sqlite', and checks the /app/verify mount and /app --workdir; test_failed_startup_diagnostic_redacts_tokens_and_keeps_actual_failure feeds safe_startup_logs() a line with the real failure text plus Authorization/Bearer, an admin token, and a correct_option_id, and asserts the real failure text survives while all three secrets are absent from the result. TEST COUNT independently recounted from source: test_prepare_lotr_package.py unchanged at 24, test_verify_candidate_runtime.py grew from 10 to 12 (the two new tests above), test_prepare_remote_mixed.py unchanged at 4; total 24+12+4=40, matching REPORT.json green_evidence.tests=40 exactly. NOTED BUT NOT INDEPENDENTLY VERIFIED: REPORT.json's root_owned_diagnostic block (Root-executed same-image relative-URI health check, image sha256:07d6038219feb87fa39fa4fe97eee7ed583321841ab0802c92a4c18b95e36e93, HTTP 200/running/exit 0) is Root-owned external evidence, not reproduced by this reviewer (no SSH/execution in this round's scope), and the report itself correctly flags it as 'health-only command diagnosis, not full runtime gate or publication acceptance' -- I have not verified the diagnostic logs themselves, only read the summary. No other issue found. Scope of this accept is strictly the static source-harness review of the described delta plus full 7-file hash reconfirmation; it carries no execution or publication approval. task-71063b85a9b84f249f14550febd2e33a (the actual remote execution/publication attempt that hit this exact SQLite-opaque-URI failure) is reviewed separately as REWORK and is not touched by this accept."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Differentprovider actualreview exact5producer+2helper bytes, new2verifier source/test delta preserves all136/4084/120grade/145Reader/privatecleanup gates. Redactedfailurediagnostic only; noexecution/publicationacceptance.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Staticreview minimal verifier URI/workdir/mount fix and failurelog capture after actualimageAPIexit1. Existingappconfig deliberatelyopaque; keepapp unchanged. Rootsameimageactualcorrected health200.",
+        "created_at": 1791977296.8447335,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-c01fd3ba00044ce6917dc898a3094907",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "worker/REPORT.json",
+            "candidate-diagnostic-relative-v3-log.json"
+          ],
+          "remaining": [
+            "exact5currentcontrollerreview",
+            "package-v4/fullrawimagegate/publication"
+          ],
+          "root_actual_diagnostic": "CorrectedrelativeURI sameimage07 health200/running, noncecleanup; notfullgate",
+          "scope": "Verifiersourceonly noexecutionapproval",
+          "source_fix": "Explicitworkdir/app, /app/verifycopiedDBmount, opaque sqlite:verify/quiz.sqlite; startupfailedlogs redacted beforeownedcleanup; preservesunmodifiedcandidate and120grade+Reader145 gates.",
+          "status": "READY_STATIC_REVIEW",
+          "tests": {
+            "count": 40,
+            "elapsed": 1.262,
+            "root_actual_exit": 0
+          }
+        },
+        "root_task_id": "task-c01fd3ba00044ce6917dc898a3094907",
+        "run_id": "run-c84fcbb4fdaa44048dc84d5e7978bed0",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Mixed candidate verifier SQLite URI correction",
+        "version": 4,
+        "reviewer": "session-57bcfa5a7d264d02b3f04feac5083e77",
+        "review_note": "ACCEPT, static source-only review of the current verify_candidate_runtime.py/test_verify_candidate_runtime.py delta + REPORT.json; prior 3 producer files (prepare_lotr_package.py, test_prepare_lotr_package.py, README.md) and both remote helper files are confirmed byte-unchanged since the accepted task-25c3 review (directory listing shows only verify_candidate_runtime.py, test_verify_candidate_runtime.py and REPORT.json have newer mtimes this round). ALL 7 ACTUAL DIGESTS, independently recomputed via read-only Python hashlib (Bash, no edits, no execution): prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, test_prepare_lotr_package.py=14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26, test_verify_candidate_runtime.py=b2f9fcb4cd8e9d10ab3abf7f00bef113c08616cf1e796dd8b244816d45c6938d, verify_candidate_runtime.py=a97332c51b38cce247f80659624f52de9f5429f65cff28fce1f57cf13a3cdffa, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4. All 7 match REPORT.json (5) and REMOTE_HELPER_REPORT.json (2) exactly, byte-for-byte; no repeat of the earlier CRLF-report mismatch pattern. ROOT CAUSE AND FIX VERIFIED BY DIRECT READ (not execution): the actual remote candidate-image startup failure is explained correctly by Go's net/url semantics -- a URI written as 'sqlite:/verify/quiz.sqlite' (leading slash right after the scheme colon) parses with an empty Opaque and a Path of '/verify/quiz.sqlite', but the server's configFromEnv SQLite branch requires url.Opaque to be nonempty, so startup was rejected. The fix in build_docker_run_command changes QM_DATABASE_URL to the relative/opaque form 'sqlite:verify/quiz.sqlite' (no leading slash -> Go classifies it as Opaque='verify/quiz.sqlite'), moves the bind mount destination from /verify to /app/verify, and adds an explicit --workdir /app so the relative sqlite path resolves under /app as intended; QM_CONTENT_BUNDLE_PATH stays /app/quizzes and the real /app/api entrypoint is unchanged, so the already-accepted raw-image/content-path behavior is preserved untouched. Also added: safe_startup_logs(), which truncates to the last 16384 chars and redacts any line matching token|authorization|bearer|secret|password|private_grading|correct_answer|correct_option (case-insensitive) before it is ever written to disk; and a new except Exception block in main() that captures 'docker logs --tail 40' only after confirming the container's nonce label still matches ownership, writes the sanitized diagnostic to <output>.failure.json (never promoted to a verified receipt), then re-raises the original exception unchanged, with the existing finally-based container/scratch cleanup still running afterward exactly as before. TWO NEW TESTS VERIFIED BY READ: test_candidate_sqlite_url_uses_opaque_relative_path_and_exact_mount parses the generated QM_DATABASE_URL with urllib.parse.urlsplit, asserts the path does not start with '/' (the Opaque-vs-Path distinction the Go server cares about), asserts the exact value 'sqlite:verify/quiz.sqlite', and checks the /app/verify mount and /app --workdir; test_failed_startup_diagnostic_redacts_tokens_and_keeps_actual_failure feeds safe_startup_logs() a line with the real failure text plus Authorization/Bearer, an admin token, and a correct_option_id, and asserts the real failure text survives while all three secrets are absent from the result. TEST COUNT independently recounted from source: test_prepare_lotr_package.py unchanged at 24, test_verify_candidate_runtime.py grew from 10 to 12 (the two new tests above), test_prepare_remote_mixed.py unchanged at 4; total 24+12+4=40, matching REPORT.json green_evidence.tests=40 exactly. NOTED BUT NOT INDEPENDENTLY VERIFIED: REPORT.json's root_owned_diagnostic block (Root-executed same-image relative-URI health check, image sha256:07d6038219feb87fa39fa4fe97eee7ed583321841ab0802c92a4c18b95e36e93, HTTP 200/running/exit 0) is Root-owned external evidence, not reproduced by this reviewer (no SSH/execution in this round's scope), and the report itself correctly flags it as 'health-only command diagnosis, not full runtime gate or publication acceptance' -- I have not verified the diagnostic logs themselves, only read the summary. No other issue found. Scope of this accept is strictly the static source-harness review of the described delta plus full 7-file hash reconfirmation; it carries no execution or publication approval. task-71063b85a9b84f249f14550febd2e33a (the actual remote execution/publication attempt that hit this exact SQLite-opaque-URI failure) is reviewed separately as REWORK and is not touched by this accept."
+      }
+    }
+  },
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "actual_model": "claude-sonnet-5",
+  "scope": "Prepare-only static current source and actual local browser review; no execution or publication.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "reviewed_worker_sha256": {
+    "prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "test_prepare_lotr_package.py": "14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26",
+    "verify_candidate_runtime.py": "a97332c51b38cce247f80659624f52de9f5429f65cff28fce1f57cf13a3cdffa",
+    "test_verify_candidate_runtime.py": "b2f9fcb4cd8e9d10ab3abf7f00bef113c08616cf1e796dd8b244816d45c6938d",
+    "README.md": "342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b"
+  }
+}

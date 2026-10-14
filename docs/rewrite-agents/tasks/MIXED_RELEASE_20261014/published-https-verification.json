@@ -1,0 +1,49 @@
+{
+  "status": "VERIFIED_PUBLIC_HTTPS",
+  "utc": "2026-10-14T12:04:13.158888+00:00",
+  "build_id": "quiz-2026.10.14-mixed-ecac092",
+  "source_commit": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+  "assets": {
+    "version.json": {
+      "status": 200,
+      "normal_tls": true,
+      "etag_absent": true,
+      "sha256": "5bd39c6a2aa4fa34eebc8da9fde10c520733c6ff2d05e8613af32a30e9fb78c1"
+    },
+    "main.dart.js": {
+      "status": 200,
+      "normal_tls": true,
+      "etag_absent": true,
+      "sha256": "25bc17ea0e2901bb1e64213ae8c719e7104a14db279b9b923946d996bb26b18c"
+    },
+    "assets/assets/catalog.json": {
+      "status": 200,
+      "normal_tls": true,
+      "etag_absent": true,
+      "sha256": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618"
+    },
+    "assets/assets/study/question-articles.json": {
+      "status": 200,
+      "normal_tls": true,
+      "etag_absent": true,
+      "sha256": "efe902040347192eebc3c494e42b672ae1c3832c784bd51e9ca14f28378cd419"
+    }
+  },
+  "http": {
+    "packs": 136,
+    "questions": 4084
+  },
+  "reader": {
+    "articles": 266,
+    "total_refs": 147,
+    "playable_refs": 145,
+    "noncatalog_refs": 2
+  },
+  "lotr": {
+    "questions": 100,
+    "non_target_questions": 98,
+    "target_questions": 2
+  },
+  "mixed_public_questions": 20,
+  "scope": "Actual normalTLS conditionalassets and unmodifiedpublicHTTP all136; grade120 candidateimage proof and genuine publicUI20 separate."
+}

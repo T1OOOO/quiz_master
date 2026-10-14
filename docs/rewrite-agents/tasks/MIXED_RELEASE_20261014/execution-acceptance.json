@@ -1,0 +1,150 @@
+{
+  "schema_version": "qm-mixed-execution-review/v1",
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-0bca3f42e2ba403a8a914821dbc3b9f4": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-0bca3f42e2ba403a8a914821dbc3b9f4",
+          "verdict": "accept",
+          "note": "ACCEPT (approval of the tested prepare-only release packet + publisher script; NOT a claim of publication). Independently recomputed sha256 (sha256sum, no edits/execution) of every artifact named in this review request, verifying the full hash chain render_publish.py builds: execution-packet.json=03558c40d9dad8ffc235e091d8e5dc42a956c307557ae3c181a1d51b760394f3 (self-hash, the artifact under review); publish-preview.sh=478f3be4ce234f5f1ba494b65ec0dc6b6358f14a9f799e4e19a1d687cd095ec2 matches packet's publish_script_sha256; package-preparation.json=80065b8a4c2ffe6d59510a321be188f6b3be5438349edfd26e8961ca66e2d87c matches packet's package_receipt_sha256; render_publish.py=56178f03862fe62432361d1b3e12f40a2c90e5d619ff73e802b123063d5cf93e matches packet's publication_renderer_sha256; browser-proof.json=484ba7dd22c14e94741f1daf873b6a948ed82630a0c880b95d8a4ab27084556e matches packet's local_browser_sha256; independent-port-controller-review.json=35281942e875f8dbb1a4a8405639c75585bdc62cbd9f27f84e25086568ac6e61 matches both package-pins-v5.json's package_controller_review hash and package-preparation.json's controller_review_sha256; package-pins-v5.json=19994f931a3cbc4a62c1def3f6f90335d9ebc26cc6c9a1d70316336b3cf1153e matches package-preparation.json's release_pins_sha256. All cross-references are exact matches -- no stale or substituted artifacts. Read render_publish.py source directly: it generates publish-preview.sh by taking the already-executed prepare script's literal prefix (asserting 'docker build'/'backup_sqlite' are absent from that prefix, i.e. no build/mutation logic sneaks into publish), flips the single prepare-vs-publish mode gate, then appends checks sourced only from the already-recorded, already-hashed remote-preparation-verification.json/package-preparation.json values (image digest, values filename+hash, durable archive hash, helm dry-run hash, target api hash) -- so the publish script cannot diverge from the inspected/rehearsed immutable image and values without changing its own hash. Verified by reading publish-preview.sh line-by-line: immutable image=sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727 and durable archive=ee7c913e5b75764452488f39b18ce3b2d0e34bf0767070112c2e979dcf666d68 at /var/lib/rancher/k3s/agent/images/quiz-2026.10.14-mixed-ecac092.tar are pinned by sha256sum -c against the same values recorded in execution-packet.json; cutover guards present and read directly: flock -n on /opt/quiz-master/DEPLOY.lock (concurrency), baseline deploy image + PVC uid assertion before upgrade (live-version/rollback-base guard), helm revision==52 status==deployed check, disk-free>4GB check immediately before a fresh python3 backup_sqlite.py backup, helm lint --strict + helm template re-hash-checked against the pre-approved dry-run, kubectl apply --dry-run=server, then a single helm upgrade --atomic --wait --timeout 180s (auto-rollback on failure), followed by post-upgrade image/version.json/main.dart.js/question-articles.json checks. main.dart.js hash in the script (25bc17ea0e2901bb1e64213ae8c719e7104a14db279b9b923946d996bb26b18c) matches actual-flutter-builds.json's independently-reported production build hash, and question-articles.json hash matches package-pins-v5.json's source_assets entry -- build output and source pins agree. copied_db_rehearsal in execution-packet.json shows only the catalog-count column changed (261->397, i.e. the new mixed questions), every other table's row count is byte-identical before/after migration, with integrity/feedback_lifecycle/old_api_rollback all 'ok' -- preservation of existing history/feedback is evidenced, not merely asserted. Candidate runtime block shows source_db_unchanged/container_cleanup/scratch_cleanup/port_released all true and grading 100/100/100 plus mixed 20/20/20, consistent with local-browser/browser-proof.json's independently-recorded receipts (revision-hash-pinned per question, so a swapped/stale question would show a different receipt hash) and with the already-accepted port-reuse-probe fix in independent-port-controller-review.json (recomputed its hash too; it matches package-pins-v5.json's pinned copy, so that accept is bound to the same unchanged source). LIMITS OF THIS REVIEW: read-only -- I did not execute flutter/helm/kubectl/the browser, did not reproduce the LOTR/mixed grading run or the remote prepare run myself, and did not verify hashes of every one of the ~140 individual quiz JSON files listed in package-preparation.json's revision-proof table (spot-checked only the hashes actually enforced by publish-preview.sh's guard conditions: image, values, durable archive, api, main.dart.js, nginx.conf, question-articles.json). I could not load the full hub_task object (body/result fields) for this task_id via hub_task list/candidates on this host -- the list response exceeds this session's tool output limit and the saved overflow file lives outside the project sandbox my Bash access is confined to; I relied on hub_message search (task.created/accepted/submitted events, no prior rework) plus the on-disk evidence files themselves. I am not attesting to anything about the live remote host (racknerd-f0269d5) beyond what these recorded, hash-matched artifacts state -- publication itself has not happened and public verification remains a separate, later step. Minor non-blocking note: publish-preview.sh echoes the nginx.conf checksum twice (harmless duplicate, not a correctness issue)."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Differentprovider actualreview exactsuccess image136/4084/266,145Readerrefs,120grades,copyDB14/280/335/15 +baseline26e rollback,noncecleanup/sourcebackup/PVC/Helm52 preserved, exactarchive/values/rendered/publishhashes; notclaimpublished. Also REWORK previousfailed710.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Actualnew package-v5 with reviewedrollback/URI/port fixes. Review completecandidate/DB receipts, fixedimage/values/archivedchecksums, and inert exactpublisher preview before authorizedactualcutover. Separate oldfailed710 remainsSUBMITTED nofalsepass.",
+        "created_at": 1791978375.2222648,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-0bca3f42e2ba403a8a914821dbc3b9f4",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_inert_bash_syntax_exit": 0,
+          "actual_remote_collect_exit": 0,
+          "actual_remote_prepare_exit": 0,
+          "archive_sha256": "ede81db6dfa1dfb2c0f61e53d4749d378a8fe00467f87ebb3fda353d161e8ead",
+          "copy_rehearsal": {
+            "baseline_api_rollback": true,
+            "canonical_packs": 14,
+            "canonical_questions": 280,
+            "feedback_copy_only": true,
+            "old_rows_preserved": true,
+            "practice_finished": 15,
+            "total_graded": 335
+          },
+          "evidence": [
+            "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/execution-packet.json",
+            "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/publish-preview.sh",
+            ".run/mixed_release_20261014/remote-prepare-v4/remote-preparation-verification.json",
+            ".run/mixed_release_20261014/package-v5/package-preparation.json"
+          ],
+          "image": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+          "remaining": [
+            "Independent exactexecutionpacket/publishscript acceptance",
+            "freshbaselineguard+authorizedHelmcutover",
+            "publicnormalTLS/nativeUI/serverpreservation+independentreview",
+            "scopedproofGitpush/ownBeads33mclose"
+          ],
+          "runtime": {
+            "articles": 266,
+            "container_scratch_port_cleanup": true,
+            "grades": 120,
+            "packs": 136,
+            "playable_refs": 145,
+            "questions": 4084,
+            "source_db_unchanged": true
+          },
+          "scope": "Actual package-v5 preparation +inert exactpublish script only",
+          "source": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+          "status": "READY_EXECUTION_REVIEW_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-0bca3f42e2ba403a8a914821dbc3b9f4",
+        "run_id": "run-3ca7cf4380d64507bb5ac946518da075",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Mixed final immutable candidate and publication execution gate",
+        "version": 4,
+        "reviewer": "session-be0aca392c704daa99c9a083b41837f4",
+        "review_note": "ACCEPT (approval of the tested prepare-only release packet + publisher script; NOT a claim of publication). Independently recomputed sha256 (sha256sum, no edits/execution) of every artifact named in this review request, verifying the full hash chain render_publish.py builds: execution-packet.json=03558c40d9dad8ffc235e091d8e5dc42a956c307557ae3c181a1d51b760394f3 (self-hash, the artifact under review); publish-preview.sh=478f3be4ce234f5f1ba494b65ec0dc6b6358f14a9f799e4e19a1d687cd095ec2 matches packet's publish_script_sha256; package-preparation.json=80065b8a4c2ffe6d59510a321be188f6b3be5438349edfd26e8961ca66e2d87c matches packet's package_receipt_sha256; render_publish.py=56178f03862fe62432361d1b3e12f40a2c90e5d619ff73e802b123063d5cf93e matches packet's publication_renderer_sha256; browser-proof.json=484ba7dd22c14e94741f1daf873b6a948ed82630a0c880b95d8a4ab27084556e matches packet's local_browser_sha256; independent-port-controller-review.json=35281942e875f8dbb1a4a8405639c75585bdc62cbd9f27f84e25086568ac6e61 matches both package-pins-v5.json's package_controller_review hash and package-preparation.json's controller_review_sha256; package-pins-v5.json=19994f931a3cbc4a62c1def3f6f90335d9ebc26cc6c9a1d70316336b3cf1153e matches package-preparation.json's release_pins_sha256. All cross-references are exact matches -- no stale or substituted artifacts. Read render_publish.py source directly: it generates publish-preview.sh by taking the already-executed prepare script's literal prefix (asserting 'docker build'/'backup_sqlite' are absent from that prefix, i.e. no build/mutation logic sneaks into publish), flips the single prepare-vs-publish mode gate, then appends checks sourced only from the already-recorded, already-hashed remote-preparation-verification.json/package-preparation.json values (image digest, values filename+hash, durable archive hash, helm dry-run hash, target api hash) -- so the publish script cannot diverge from the inspected/rehearsed immutable image and values without changing its own hash. Verified by reading publish-preview.sh line-by-line: immutable image=sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727 and durable archive=ee7c913e5b75764452488f39b18ce3b2d0e34bf0767070112c2e979dcf666d68 at /var/lib/rancher/k3s/agent/images/quiz-2026.10.14-mixed-ecac092.tar are pinned by sha256sum -c against the same values recorded in execution-packet.json; cutover guards present and read directly: flock -n on /opt/quiz-master/DEPLOY.lock (concurrency), baseline deploy image + PVC uid assertion before upgrade (live-version/rollback-base guard), helm revision==52 status==deployed check, disk-free>4GB check immediately before a fresh python3 backup_sqlite.py backup, helm lint --strict + helm template re-hash-checked against the pre-approved dry-run, kubectl apply --dry-run=server, then a single helm upgrade --atomic --wait --timeout 180s (auto-rollback on failure), followed by post-upgrade image/version.json/main.dart.js/question-articles.json checks. main.dart.js hash in the script (25bc17ea0e2901bb1e64213ae8c719e7104a14db279b9b923946d996bb26b18c) matches actual-flutter-builds.json's independently-reported production build hash, and question-articles.json hash matches package-pins-v5.json's source_assets entry -- build output and source pins agree. copied_db_rehearsal in execution-packet.json shows only the catalog-count column changed (261->397, i.e. the new mixed questions), every other table's row count is byte-identical before/after migration, with integrity/feedback_lifecycle/old_api_rollback all 'ok' -- preservation of existing history/feedback is evidenced, not merely asserted. Candidate runtime block shows source_db_unchanged/container_cleanup/scratch_cleanup/port_released all true and grading 100/100/100 plus mixed 20/20/20, consistent with local-browser/browser-proof.json's independently-recorded receipts (revision-hash-pinned per question, so a swapped/stale question would show a different receipt hash) and with the already-accepted port-reuse-probe fix in independent-port-controller-review.json (recomputed its hash too; it matches package-pins-v5.json's pinned copy, so that accept is bound to the same unchanged source). LIMITS OF THIS REVIEW: read-only -- I did not execute flutter/helm/kubectl/the browser, did not reproduce the LOTR/mixed grading run or the remote prepare run myself, and did not verify hashes of every one of the ~140 individual quiz JSON files listed in package-preparation.json's revision-proof table (spot-checked only the hashes actually enforced by publish-preview.sh's guard conditions: image, values, durable archive, api, main.dart.js, nginx.conf, question-articles.json). I could not load the full hub_task object (body/result fields) for this task_id via hub_task list/candidates on this host -- the list response exceeds this session's tool output limit and the saved overflow file lives outside the project sandbox my Bash access is confined to; I relied on hub_message search (task.created/accepted/submitted events, no prior rework) plus the on-disk evidence files themselves. I am not attesting to anything about the live remote host (racknerd-f0269d5) beyond what these recorded, hash-matched artifacts state -- publication itself has not happened and public verification remains a separate, later step. Minor non-blocking note: publish-preview.sh echoes the nginx.conf checksum twice (harmless duplicate, not a correctness issue)."
+      }
+    },
+    "task-71063b85a9b84f249f14550febd2e33a": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-71063b85a9b84f249f14550febd2e33a",
+          "verdict": "rework",
+          "note": "REWORK -- this is the separate, earlier submitted record for the mixed candidate/copied-database execution gate, distinct from task-0bca3f42e2ba403a8a914821dbc3b9f4. Per hub_message history I independently read (kind:task.reviewed events on this task_id), this record was already reviewed REWORK twice (by session-4c75f287a8dc4d1cbfd48b4b8c5d3711 and session-57bcfa5a7d264d02b3f04feac5083e77) across its resubmissions, with no accept ever logged against it. I am recording rework on this record to reflect that logged outcome and am not upgrading it to accept on the basis that a later, separate task (task-0bca3f42e2ba403a8a914821dbc3b9f4) subsequently passed independent review -- that later success does not retroactively fix this failed run's own evidence. I did not re-derive the original failure cause beyond what the hub log already shows (two independent REWORK verdicts); the full task body/result for this id was not retrievable in this session due to hub_task list output exceeding this session's tool size limit, and the overflow file saved by the harness is outside the path my Bash access is sandboxed to, so I did not attempt to dig further per this task's own closed/rejected status."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual immutableimage136/4084/266, LOT100with98preserved+mixed20grades,145playableReader refs, DB14/280/335/15 rollback/preservation, exactsource/archive/values/render/hash, sourcebackupcleanup preserved and freshHelm52/PVC. Differentprovider review exactexecutionpacket/publishscript; notclaimpublished.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Review actual package-v2 preparation and remote raw image/DB evidence plus inert exactpublish script. No publication yet. Root authorized publish after independentexecutedartifact review.",
+        "created_at": 1791976259.3454592,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-71063b85a9b84f249f14550febd2e33a",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_remote_exit": 1,
+          "completed": "CopyDB14/280/335/15rollback0; actualverifier progressed pastall136/Reader145/grades100+20/hash/noncecleanup but receiptabsent, notclaimfullgatePASS.",
+          "evidence": [
+            "remote-prepare-v3/remote-prepare-log.txt",
+            "actualss currentnoListener"
+          ],
+          "finding": "Final plainbind cannotdistinguish recentTCP TIME_WAIT fromactiveListener; strengthen portreuseproof to stdlib socket.create_server LISTEN whichreusesTIME_WAIT and rejectsactiveListener. OfficialPython primarydocs verified.",
+          "remaining": [
+            "Reviewedminimalcreate_server source/test",
+            "newpackage/replayexactgate",
+            "independentexecutionreview/publication"
+          ],
+          "scope": "Package-v4 rawimagechecks andgrading reachedcleanup thenplainbindEADDRINUSE; no receipt/imageimport/publication",
+          "status": "REWORK_REQUIRED"
+        },
+        "review_note": "REWORK -- this is the separate, earlier submitted record for the mixed candidate/copied-database execution gate, distinct from task-0bca3f42e2ba403a8a914821dbc3b9f4. Per hub_message history I independently read (kind:task.reviewed events on this task_id), this record was already reviewed REWORK twice (by session-4c75f287a8dc4d1cbfd48b4b8c5d3711 and session-57bcfa5a7d264d02b3f04feac5083e77) across its resubmissions, with no accept ever logged against it. I am recording rework on this record to reflect that logged outcome and am not upgrading it to accept on the basis that a later, separate task (task-0bca3f42e2ba403a8a914821dbc3b9f4) subsequently passed independent review -- that later success does not retroactively fix this failed run's own evidence. I did not re-derive the original failure cause beyond what the hub log already shows (two independent REWORK verdicts); the full task body/result for this id was not retrievable in this session due to hub_task list output exceeding this session's tool size limit, and the overflow file saved by the harness is outside the path my Bash access is sandboxed to, so I did not attempt to dig further per this task's own closed/rejected status.",
+        "reviewer": "session-be0aca392c704daa99c9a083b41837f4",
+        "root_task_id": "task-71063b85a9b84f249f14550febd2e33a",
+        "run_id": "run-b799334bb0d74b9183e701c64a9bfe29",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Mixed actual candidate and copied database execution gate",
+        "version": 10
+      }
+    }
+  },
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "execution_packet_sha256": "03558c40d9dad8ffc235e091d8e5dc42a956c307557ae3c181a1d51b760394f3",
+  "publish_script_sha256": "478f3be4ce234f5f1ba494b65ec0dc6b6358f14a9f799e4e19a1d687cd095ec2",
+  "package_sha256": "ede81db6dfa1dfb2c0f61e53d4749d378a8fe00467f87ebb3fda353d161e8ead",
+  "image": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+  "scope": "Actual logged candidate/copiedDB preparation and exact immutable publisher script review; publication not yet executed.",
+  "limits": [
+    "Reviewer independently hashed the named evidence files and read publisher. No independent replay of remote commands/browser, and no direct hash of every raw quiz JSON. Archive identity is bound through independently hashed execution/package receipts; Root actual uploaded archive checksum was verified."
+  ],
+  "report": "Both reviews are submitted. Summary:\n\n**task-0bca3f42e2ba403a8a914821dbc3b9f4 (final immutable candidate + publication execution gate): ACCEPT**\nIndependently recomputed sha256 of every named artifact — execution-packet.json, publish-preview.sh, package-preparation.json, remote-preparation-verification.json, render_publish.py, browser-proof.json, independent-port-controller-review.json, package-pins-v5.json. The whole hash chain cross-references exactly (packet's embedded hashes match the actual files; render_publish.py's own logic ties the publish script to the already-recorded immutable image/values/archive hashes). Read publish-preview.sh directly and confirmed it enforces concurrency lock, baseline-image/PVC guard, live Helm revision check, fresh pre-upgrade backup, atomic `helm upgrade --atomic --wait`, and post-upgrade checksum verification. The DB migration rehearsal shows only the catalog table changed row count — all other tables byte-identical, confirming history/feedback preservation. This is approval of the tested, hash-bound release packet and publisher script — **not** a claim that publication occurred.\n\n**task-71063b85a9b84f249f14550febd2e33a (earlier failed attempt): REWORK**\nPer the hub log this record was already reviewed REWORK twice (plain-bind port check falsely rejected TIME_WAIT), with no accept ever logged. Kept as rework per your instruction rather than letting the later successful task retroactively launder it.\n\nLimits: read-only review, no execution; I couldn't load the full hub_task object for either ID (host tool-output size limit, overflow file outside my sandboxed path) so I relied on message-log metadata plus the on-disk evidence files; I didn't hash every one of the ~140 individual quiz JSON files, only the ones publish-preview.sh actually enforces."
+}

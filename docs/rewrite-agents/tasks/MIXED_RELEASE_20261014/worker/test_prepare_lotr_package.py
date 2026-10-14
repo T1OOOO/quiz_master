@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import copy
 import json
+import re
+import pathlib
 import tarfile
 import tempfile
 import unittest
@@ -162,6 +164,37 @@ class RuntimeAndReceiptGuards(unittest.TestCase):
 
 
 class PreparedScriptGuards(unittest.TestCase):
+    def test_generated_rollback_uses_verified_baseline_assets_with_expanded_copied_db(self):
+        body = p.patch_rehearsal_text((BASELINE / 'rehearse.py').read_text(encoding='utf-8'), mixed=True)
+        prefix = body.split('# Previous immutable API', 1)[1].split('\n', 1)[1].split('rollback=sandbox', 1)[0]
+        self.assertIn('baseline_root=', prefix)
+        preflight = prefix.replace("pathlib.Path('/opt/quiz-master/releases/" + p.BASELINE_BUILD + "')", 'pathlib.Path(' + repr(str(BASELINE.resolve())) + ')')
+        exec(compile(preflight, 'generated-baseline-preflight', 'exec'), {'pathlib': pathlib, 'hashlib': __import__('hashlib')})
+        self.assertIn("shutil.copyfile(baseline_root/'api',rollback)", body)
+        self.assertIn(p.BASELINE_API_SHA256, body)
+        env_line = next(line for line in body.splitlines() if line.startswith("env.update({'QM_CONTENT_BUNDLE_PATH':str(baseline_root"))
+        env = {'QM_DATABASE_URL': 'sqlite:copied-expanded.sqlite', 'QM_CONTENT_BUNDLE_PATH': '/new/quizzes'}
+        exec(compile(env_line, 'generated-baseline-env', 'exec'), {'env': env, 'baseline_root': BASELINE})
+        self.assertEqual(env['QM_DATABASE_URL'], 'sqlite:copied-expanded.sqlite')
+        self.assertEqual(env['QM_CONTENT_BUNDLE_PATH'], str(BASELINE / 'quizzes'))
+        self.assertEqual(env['QM_CONTENT_MANIFEST_PATH'], str(BASELINE / 'next/content/home-alone-1-part-1/manifest.json'))
+        self.assertEqual(env['QM_CONTENT_TAXONOMY_PATH'], str(BASELINE / 'metadata/tags.v1.json'))
+        with tempfile.TemporaryDirectory() as directory:
+            fake = Path(directory)
+            (fake / 'checksums.txt').write_text('changed baseline checksum manifest')
+            wrong = prefix.replace("pathlib.Path('/opt/quiz-master/releases/" + p.BASELINE_BUILD + "')", 'pathlib.Path(' + repr(str(fake)) + ')')
+            with self.assertRaises(AssertionError):
+                exec(compile(wrong, 'wrong-baseline-preflight', 'exec'), {'pathlib': pathlib, 'hashlib': __import__('hashlib')})
+
+    def test_generated_cutover_python_regex_accepts_exact_plain_build(self):
+        shell = p.patch_cutover_text((BASELINE / 'cutover.sh').read_text(encoding='utf-8'), '3' * 64, mixed=True)
+        line = next(line for line in shell.splitlines() if line.startswith('assert re.fullmatch('))
+        code = compile(line, 'generated-cutover-build-guard', 'exec')
+        exec(code, {'re': re, 'build': p.BUILD_ID})
+        for invalid in (p.BUILD_ID + '-extra', p.BUILD_ID.replace('.', 'X', 1)):
+            with self.assertRaises(AssertionError):
+                exec(code, {'re': re, 'build': invalid})
+
     def test_api_provenance_allows_only_three_exact_noncompiled_tests(self):
         expected = ['next/server/cmd/quizctl/catalog_test.go', 'next/server/internal/content/import_identity_test.go', 'next/server/internal/sqlite/collection_test.go']
         p.verify_api_changed_paths(expected)

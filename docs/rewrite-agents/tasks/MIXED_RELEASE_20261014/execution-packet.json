@@ -1,0 +1,101 @@
+{
+  "build_id": "quiz-2026.10.14-mixed-ecac092",
+  "image": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+  "values": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T114748Z-values.yaml",
+  "values_sha256": "1d1923fee844152b96b0117217dd04017e477621713aa8279cb2b08a867cc84f",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.14-mixed-ecac092-cutover-20261014T114748Z.sqlite",
+  "backup_sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      148,
+      148,
+      720,
+      261,
+      15341,
+      1474
+    ],
+    "post_migration_counts": [
+      148,
+      148,
+      720,
+      397,
+      15341,
+      1474
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "2510ba47f7132287a67f454fd7365058ce0acd0973fb39aed4054e53f2dee18b",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.14-mixed-ecac092",
+    "image_id": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 266,
+      "total_refs": 147,
+      "playable_refs": 145,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "06be335544ea33481f72eb30c8127ecc805a8adaa0bcb39f39b6edf9c45a9235",
+  "helm_dryrun_sha256": "9406b6b036ff30ff37701477f3e15cb59871815339e5c6d427b7a7bf8757c7c0",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.14-mixed-ecac092.tar",
+  "durable_archive_sha256": "ee7c913e5b75764452488f39b18ce3b2d0e34bf0767070112c2e979dcf666d68",
+  "disk_free_bytes": 8082948096,
+  "baseline_helm_revision": 52,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+  "package_sha256": "ede81db6dfa1dfb2c0f61e53d4749d378a8fe00467f87ebb3fda353d161e8ead",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "4f456e84331e497f0195d02146516288760606bff788c4fa0c5e1de9d027c07b",
+  "helper_source_sha256": {
+    "test_prepare_remote_mixed.py": "9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4",
+    "prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "helper_review_sha256": "27e360b81f7b0f417a4b3d1fa7924ad38f178fbcd1ec340f8edece3c04119d3d",
+  "limits": [
+    "Preparation only; independent execution acceptance/publication/public verification remain separate."
+  ],
+  "publish_script_sha256": "478f3be4ce234f5f1ba494b65ec0dc6b6358f14a9f799e4e19a1d687cd095ec2",
+  "package_receipt_sha256": "80065b8a4c2ffe6d59510a321be188f6b3be5438349edfd26e8961ca66e2d87c",
+  "local_browser_sha256": "484ba7dd22c14e94741f1daf873b6a948ed82630a0c880b95d8a4ab27084556e",
+  "publication_renderer_sha256": "56178f03862fe62432361d1b3e12f40a2c90e5d619ff73e802b123063d5cf93e"
+}

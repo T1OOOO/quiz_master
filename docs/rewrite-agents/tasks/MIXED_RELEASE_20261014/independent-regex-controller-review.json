@@ -1,0 +1,75 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-407c4c9f62184cdda16cc0d51ff94e2e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-407c4c9f62184cdda16cc0d51ff94e2e",
+          "verdict": "accept",
+          "note": "ACCEPT, closing out the prior REWORK: independently recomputed SHA-256 of the exact 7 files once this round via read-only Python hashlib (Bash, no edits, no execution), and ALL 7 now match the resubmitted evidence exactly. ALL 7 ACTUAL DIGESTS: prepare_lotr_package.py=d70ed17a136de95f5c6142d7bb5b7f9429abe3b43fb6ed490cf7346e104fddcd, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, test_prepare_lotr_package.py=11feff7987843a558403683dbb3dca6be5ce04e1a1f902984321f84164cd7d80, test_verify_candidate_runtime.py=d382d248b21fbba841d5e02f5dd6df8e5021d1e7b6922233b3ee614e36c38571, verify_candidate_runtime.py=9496b55cc68093cf1297881536d21091884e714bb8c2e2335811b15cb90d4d88, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4. Cross-check: the 5 controller-file digests match worker/REPORT.json's updated sha256 block exactly (byte-for-byte, including prepare_lotr_package.py and test_prepare_lotr_package.py, the two that previously disagreed); the 2 helper-file digests match REMOTE_HELPER_REPORT.json's helper_sha256 block exactly, as they did in the prior round. Root's explanation for the prior mismatch is accepted as correct and is now independently confirmed rather than merely claimed: REPORT.json's own notes state the two files are Windows-CRLF on disk, and the earlier report's hash had been computed against a normalized-LF representation -- same source content, different byte serialization, no semantic drift. Since my hash is computed directly against the real on-disk bytes (as is the one now published in REPORT.json), there is no longer any disk-vs-report disagreement to flag. Test count also now consistent: REPORT.json green_evidence.tests=37 (0.315s, exit 0) matches REMOTE_HELPER_REPORT.json's test_evidence.tests=37 exactly, resolving the prior round's 36-vs-37 discrepancy. No new source read beyond REPORT.json/REMOTE_HELPER_REPORT.json and the 7 hash recomputations was needed this round, since local-browser/browser-proof.json, final-api-inspection.json and package-pins.json were already independently verified against their pinned hashes in the immediately preceding review round and are unchanged. No other issue found. Scope of this accept remains exactly as before: prepare-only static source review of the 7 files plus local-browser evidence already checked; it carries no execution or publication approval. task-ce47cfb8a6ed42ee8c178a6f168ea936 (the main release/publication task) correctly remains in REWORK from the prior round for the package-v1 regex defect and is intentionally not re-reviewed here."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Differentprovider actual review exact7sourcehashes, realregex regression, localbrowserproof honestcleanup, prepare-only remote helper failclosed. Mainactualrelease task must REWORK, not accepted publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Root source review only: generated package-v1 regex defect reproduced, corrected one-line producer+regression; review current5controller files and new prepare_remote_mixed.py/test_prepare_remote_mixed.py, actual browserproof/pins. No execution/publication acceptance.",
+        "created_at": 1791975633.0364764,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-407c4c9f62184cdda16cc0d51ff94e2e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "worker/REPORT.json exactcurrentbytes",
+            "worker/REMOTE_HELPER_REPORT.json current2hashes"
+          ],
+          "fix": "Report refreshed actualCRLFdiskhashes producerd70/test11fe; LFnormalized equals original797/2f, no semantic source delta",
+          "remaining": [
+            "actualproducer-v2",
+            "realimage/DBgate",
+            "authorizedpublication"
+          ],
+          "scope": "Static7currenthashes andhonestbrowseronly",
+          "status": "READY_FOR_REVIEW",
+          "tests": {
+            "actual_exit": 0,
+            "count": 37,
+            "elapsed": 0.315
+          }
+        },
+        "review_note": "ACCEPT, closing out the prior REWORK: independently recomputed SHA-256 of the exact 7 files once this round via read-only Python hashlib (Bash, no edits, no execution), and ALL 7 now match the resubmitted evidence exactly. ALL 7 ACTUAL DIGESTS: prepare_lotr_package.py=d70ed17a136de95f5c6142d7bb5b7f9429abe3b43fb6ed490cf7346e104fddcd, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, test_prepare_lotr_package.py=11feff7987843a558403683dbb3dca6be5ce04e1a1f902984321f84164cd7d80, test_verify_candidate_runtime.py=d382d248b21fbba841d5e02f5dd6df8e5021d1e7b6922233b3ee614e36c38571, verify_candidate_runtime.py=9496b55cc68093cf1297881536d21091884e714bb8c2e2335811b15cb90d4d88, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4. Cross-check: the 5 controller-file digests match worker/REPORT.json's updated sha256 block exactly (byte-for-byte, including prepare_lotr_package.py and test_prepare_lotr_package.py, the two that previously disagreed); the 2 helper-file digests match REMOTE_HELPER_REPORT.json's helper_sha256 block exactly, as they did in the prior round. Root's explanation for the prior mismatch is accepted as correct and is now independently confirmed rather than merely claimed: REPORT.json's own notes state the two files are Windows-CRLF on disk, and the earlier report's hash had been computed against a normalized-LF representation -- same source content, different byte serialization, no semantic drift. Since my hash is computed directly against the real on-disk bytes (as is the one now published in REPORT.json), there is no longer any disk-vs-report disagreement to flag. Test count also now consistent: REPORT.json green_evidence.tests=37 (0.315s, exit 0) matches REMOTE_HELPER_REPORT.json's test_evidence.tests=37 exactly, resolving the prior round's 36-vs-37 discrepancy. No new source read beyond REPORT.json/REMOTE_HELPER_REPORT.json and the 7 hash recomputations was needed this round, since local-browser/browser-proof.json, final-api-inspection.json and package-pins.json were already independently verified against their pinned hashes in the immediately preceding review round and are unchanged. No other issue found. Scope of this accept remains exactly as before: prepare-only static source review of the 7 files plus local-browser evidence already checked; it carries no execution or publication approval. task-ce47cfb8a6ed42ee8c178a6f168ea936 (the main release/publication task) correctly remains in REWORK from the prior round for the package-v1 regex defect and is intentionally not re-reviewed here.",
+        "reviewer": "session-ebc275a973a4497e96fe53982c77b474",
+        "root_task_id": "task-407c4c9f62184cdda16cc0d51ff94e2e",
+        "run_id": "run-f00784f74034449b8825535570e6503e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Mixed producer regex fix and bounded remote helper source review",
+        "version": 7
+      }
+    }
+  },
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "actual_model": "claude-sonnet-5",
+  "scope": "Prepare-only static current source and actual local browser review; no execution or publication.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "reviewed_worker_sha256": {
+    "prepare_lotr_package.py": "d70ed17a136de95f5c6142d7bb5b7f9429abe3b43fb6ed490cf7346e104fddcd",
+    "test_prepare_lotr_package.py": "11feff7987843a558403683dbb3dca6be5ce04e1a1f902984321f84164cd7d80",
+    "verify_candidate_runtime.py": "9496b55cc68093cf1297881536d21091884e714bb8c2e2335811b15cb90d4d88",
+    "test_verify_candidate_runtime.py": "d382d248b21fbba841d5e02f5dd6df8e5021d1e7b6922233b3ee614e36c38571",
+    "README.md": "342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b"
+  }
+}

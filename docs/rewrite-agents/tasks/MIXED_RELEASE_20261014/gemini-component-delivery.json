@@ -1,0 +1,26 @@
+{
+  "actual_exit": 3,
+  "official_command": [
+    "C:/Users/Alexey_Matvienko/AppData/Local/agy/bin/agy.EXE",
+    "--input-format",
+    "stream-json",
+    "--output-format",
+    "stream-json",
+    "--mode",
+    "plan",
+    "--sandbox",
+    "--model",
+    "gemini-3.8-flash-medium"
+  ],
+  "selected_model": "gemini-3.8-flash-medium",
+  "trace_sha256": "d54de4e0e18a44a991eb0b15613edef4f5e9f88f97dc195ca14e902c716d71c9",
+  "managed_prior": "Own queued TELEMETRY_UNKNOWN job canceledbeforelaunch; no modelcall inferred",
+  "scope": "Finite independent readonly advisory delivery, not sourceHubacceptance or publication",
+  "status": "BLOCKED_PROVIDER_CREDITS",
+  "actual_error": "Your AI credits balance is too low to continue.",
+  "provider_error_code": 429,
+  "provider_status": "RESOURCE_EXHAUSTED",
+  "actual_usage_total_tokens": 0,
+  "actual_independent_report": false,
+  "followup": "Do not retry unchanged provider state; continue native/Claude authorized work. Gemini audit requires account credits restored."
+}

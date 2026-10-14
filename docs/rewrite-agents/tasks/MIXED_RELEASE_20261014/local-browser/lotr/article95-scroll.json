@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-14T10:39:37.058053+00:00",
+  "command": [
+    "eval",
+    "JSON.stringify(Array.from(document.querySelectorAll(\"*\")).filter(e=>e.scrollHeight>e.clientHeight+50&&e.clientHeight>0).map(e=>({tag:e.tagName,id:e.id,role:e.getAttribute(\"role\"),height:e.clientHeight,scroll:e.scrollHeight})))"
+  ],
+  "actual_exit": 0,
+  "stdout": "\"[{\\\"tag\\\":\\\"FLT-SEMANTICS\\\",\\\"id\\\":\\\"flt-semantic-node-260\\\",\\\"role\\\":\\\"group\\\",\\\"height\\\":679,\\\"scroll\\\":1102}]\"\n",
+  "stderr": ""
+}

@@ -1,0 +1,13 @@
+- generic
+  - generic "Диалоговое окно"
+    - generic "Диалоговое окно"
+      - button "Закрыть" [ref=e41]
+      - StaticText "Митлонд: последнее прощание"
+      - button "Закрыть статью" [ref=e42]
+      - group
+        - textbox [disabled, ref=e45]
+        - textbox [disabled, ref=e46]
+        - textbox [disabled, ref=e47]
+        - StaticText "Источники и дальнейшее чтение"
+        - button "Christopher Tolkien: The Silmarillion www.tolkienestate.com" [ref=e43]
+        - button "Tom Shippey: The Lord of the Rings, Book of the Century www.tolkienestate.com" [ref=e44]

@@ -1,0 +1,88 @@
+{
+  "schema_version": "qm-browser-proof/v1",
+  "frozen_source": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+  "build_id": "quiz-2026.10.14-mixed-ecac092",
+  "scope": "Actual compiled frozenWeb390x844 and realGo; controlledLOT2 and fullmixed20. Not rawimage-loader or production proof.",
+  "attempts": {
+    "lotr": {
+      "id": "a-67163ffb-cf3e-4626-8321-4257d9f1d4d0",
+      "status": "finished",
+      "server_score": 2
+    },
+    "mixed": {
+      "id": "a-459fa06b-a4ae-4008-a915-051a476000a8",
+      "status": "finished",
+      "server_score": 20
+    }
+  },
+  "answers": [
+    {
+      "question_id": "lotr-rk-95",
+      "answer": "{\"option_id\":\"lotr-rk-95-opt-2\"}",
+      "receipt": "{\"receipt_id\":\"r-64e00aae-bdd6-48bd-a129-0fc4143606df\",\"attempt_id\":\"a-67163ffb-cf3e-4626-8321-4257d9f1d4d0\",\"participant_id\":\"p-df797f54ef7b99d47f8acb67f3e2e72f\",\"question_id\":\"lotr-rk-95\",\"question_revision\":{\"number\":2,\"sha256\":\"36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513\"},\"accepted_at\":\"2026-10-14T10:46:15.99794Z\"}"
+    },
+    {
+      "question_id": "lotr-rk-93",
+      "answer": "{\"option_id\":\"lotr-rk-93-opt-6\"}",
+      "receipt": "{\"receipt_id\":\"r-f15a2279-1073-483a-9799-74f1c8632b95\",\"attempt_id\":\"a-67163ffb-cf3e-4626-8321-4257d9f1d4d0\",\"participant_id\":\"p-df797f54ef7b99d47f8acb67f3e2e72f\",\"question_id\":\"lotr-rk-93\",\"question_revision\":{\"number\":2,\"sha256\":\"4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4\"},\"accepted_at\":\"2026-10-14T10:43:10.2921379Z\"}"
+    }
+  ],
+  "articles_opened": [
+    "question:lotr-rk-93",
+    "question:lotr-rk-95"
+  ],
+  "mixed_ui": {
+    "answered_question_ids": [
+      "pub-connections-001",
+      "pub-connections-002",
+      "pub-connections-003",
+      "pub-connections-004",
+      "pub-connections-005",
+      "pub-connections-006",
+      "pub-connections-007",
+      "pub-connections-008",
+      "pub-connections-009",
+      "pub-connections-010",
+      "pub-connections-011",
+      "pub-connections-012",
+      "pub-connections-013",
+      "pub-connections-014",
+      "pub-connections-015",
+      "pub-connections-016",
+      "pub-connections-017",
+      "pub-connections-018",
+      "pub-connections-019",
+      "pub-connections-020"
+    ],
+    "selected_by_correct_text_not_position": true,
+    "expected_score": 20,
+    "visible_result_score_confirmed": true,
+    "scope": "Actual native browser UI on compiledfrozenWeb; controlledLOT2/fullmixed20, realGo, not rawimage proof"
+  },
+  "browser_inactive": true,
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "browser_close_actual_exit": 0,
+  "qa_server_actual_exit": 0,
+  "api_cleanup": {
+    "lotr": {
+      "actual_api_pid": 38380,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    },
+    "mixed": {
+      "actual_api_pid": 35104,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    }
+  },
+  "limitations": [
+    "Initial LOT wrong visible ordinal caused score1; positive fresh attempt selected by correct text and scored2. No content mismatch.",
+    "Initial browser close timed out actualexit1; exact owned daemon43452 stopped, documented recovery close exit0 and inactive. Chrome child43776 gone.",
+    "Windows API termination exit1 expected; server wrappers actualexit0 separately observed.",
+    "Initial MCP open returned no result; CLI actual successful UI retained.",
+    "Mixed initial close also timed out exit1; exact sessionPID36804 stopped; recovery close0/inactive verified. No unrelated session stopped."
+  ]
+}

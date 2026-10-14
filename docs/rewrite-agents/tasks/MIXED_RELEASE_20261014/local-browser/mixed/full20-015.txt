@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e22]
+        - button "Домой" [ref=e23]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e24]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "10"
+        - StaticText "3/20"
+        - group
+          - group "В романе Мэри Шелли фамилия Франкенштейн принадлежит прежде всего кому?"
+            - button "Капитану корабля" [ref=e25]
+            - button "Созданному существу" [ref=e26]
+            - button "Создателю существа" [ref=e27]
+            - button "Судье на процессе" [ref=e28]
+      - button "Отправить отзыв" [ref=e21]

@@ -13,24 +13,28 @@
     "Missing20mixed-grade receipt evidence was incorrectly accepted; new test observed failure before fix.",
     "Unsafe Windows-drive and archive alias members were accepted; regression failed before path boundary fix.",
     "Exact two-path API provenance guard test failed before adaptation; final guard rejects production.go, arbitrary other_test.go and missing known test path.",
-    "Actual current mixed canonical bundle fixture (difficulty_level5) failed before optional public DTO projection implementation; missing/changed difficulty_level and extra private fields now rejected. Three-path provenance case also failed before exact allowlist adaptation."
+    "Actual current mixed canonical bundle fixture (difficulty_level5) failed before optional public DTO projection implementation; missing/changed difficulty_level and extra private fields now rejected. Three-path provenance case also failed before exact allowlist adaptation.",
+    "Actual generated build regex regression executed extracted Python assert against plain BUILD_ID; observed AssertionError from raw-prefix plus repr double escaping. Removed raw prefix; exact build passes while extra suffix and dot substitution fail.",
+    "Generated rollback harness regression failed because no baseline_root preflight or baseline content environment was present. Actual remote parent evidence shows target grading335/15 completed but old26e startup rejected newraw metadata. Local regression now executes exact baseline preflight successfully, rejects changed checksum manifest, and executes environment switch proving copied database URL stays unchanged.",
+    "Opaque SQLite URI regression rejected prior sqlite:/verify/quiz.sqlite absolute Path before command fix; relative opaque URI, /app/verify mount and explicit /app workdir now pass. Diagnostic sanitizer missing before implementation; now retains actual startup error and removes token/private-bearing lines.",
+    "Both actual extracted pre/post port-check bodies executed locally: old socket.bind had SO_ACCEPTCONN0 and failed listening-probe regression before minimal create_server replacement. New probes listen, close, reject an actual active listener and succeed after listener closure."
   ],
   "green_evidence": {
     "cwd": "C:/ap/quiz_master/docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker",
     "command": "python -B -m unittest discover -v",
     "actual_exit": 0,
-    "tests": 32,
+    "tests": 41,
     "failures": 0,
     "errors": 0,
-    "elapsed_reported_seconds": 0.435,
-    "kind": "Pure boundary tests, some using existing frozen repository receipts and source content; no actual candidate-image evidence"
+    "elapsed_reported_seconds": 1.604,
+    "kind": "Boundary tests plus actual short Windows loopback port tests; no actual candidate-image execution by worker"
   },
   "sha256": {
-    "prepare_lotr_package.py": "743041e40825fc6c7d595d94a3936aa1242cf51f83f18fbd95164c7c3f65b8ad",
+    "prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
     "README.md": "342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b",
-    "test_prepare_lotr_package.py": "26b3e19a60e66497450398e1d4f63361bc153cb0184dae71886a2b17a12d02b5",
-    "test_verify_candidate_runtime.py": "d382d248b21fbba841d5e02f5dd6df8e5021d1e7b6922233b3ee614e36c38571",
-    "verify_candidate_runtime.py": "9496b55cc68093cf1297881536d21091884e714bb8c2e2335811b15cb90d4d88"
+    "test_prepare_lotr_package.py": "14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26",
+    "test_verify_candidate_runtime.py": "ad6dfa7668871f36279aecf5af8c49eb03222cf44b9e09aea37cb549cf30c1d3",
+    "verify_candidate_runtime.py": "f99fe91e04a8fd8e4c14375d3242df5d6f2dce8b58ed4de7564fe229cb4ef356"
   },
   "remaining_gates": [
     "Root final mixed source integration and pins; actual new mixed /app runtime bundle and actual accepted mixed source review pin",
@@ -45,6 +49,29 @@
     "Historical producer/files/receipts were preserved; only new worker scope edited.",
     "No actual image success, peer acceptance, build success, deployment or publication is claimed.",
     "Root-authorized integration adaptation permits exactly import_identity_test.go plus sqlite/collection_test.go in actual final frozen server diff and actual inspection receipt. Legacy receipt preserved; Root must issue new two-path inspection proof.",
-    "Final guard requires exactly catalog_test.go, import_identity_test.go, collection_test.go; arbitrary production or other test paths still fail. SQLite unfinished reveal policy inspected directly: Reveals->GetHistory status=finished restriction->ErrForbidden->HTTP404. Replaced incorrect400 gate with exact404; no remote call performed."
-  ]
+    "Final guard requires exactly catalog_test.go, import_identity_test.go, collection_test.go; arbitrary production or other test paths still fail. SQLite unfinished reveal policy inspected directly: Reveals->GetHistory status=finished restriction->ErrForbidden->HTTP404. Replaced incorrect400 gate with exact404; no remote call performed.",
+    "Failed package-v1 retained by Root; fresh independent controller hashes/review and new package-v2 required before execution. Remote helper source is separate and unreviewed; no helper execution.",
+    "Root refresh after independentreview: source2files WindowsCRLF actualbytes pinned, normalizedLF equals priorreportedhash; no semanticdelta. Actual Root37tests0.315s exit0. Priorreport retained in reviewertrace.",
+    "Rollback source investigation: baseline686 raw importer excludes revision_number/option_ids; SQLite eagerly imports directory selected by QM_CONTENT_BUNDLE_PATH. Fix only generated rollback harness: exact ScreenSong52 binary/assets, all baseline checksums verified against immutable64e archive manifestSHAedab308766bd30ca0717b4c8971d0e2a8c638b88336e067dc56b47f90780ee52; copied expandedDB retained. Candidate DTO gate unchanged. Root retains failedpackage-v2/failedremote; fresh independent source review and newpackage required. Worker performed no SSH/execution.",
+    "Authoritative config.go SQLite branch requires url.Opaque nonempty, so candidate mount changed only to /app/verify and QM_DATABASE_URL=sqlite:verify/quiz.sqlite with --workdir /app. Real /app/api and raw /app/quizzes remain unchanged. On gate failure, before nonce-owned cleanup, bounded40-line Docker startup logs are captured best-effort into new output.failure.json; sensitive lines redacted; failure never promoted to verified receipt. Application configuration and private keys unchanged; no SSH/image execution by worker. Root must diagnose actual sameimage command and refresh independent source review before new package.",
+    "Source frozen after40puretests. Root actual sameimmutableimage relativeURI diagnostic receipt confirms HTTP200/running/exit0; fresh package-v4 and complete raw image DTO/Reader/100+20 grading gate remain required, health alone is not PASS.",
+    "Both port checks now use direct socket.create_server contexts without new production abstraction. Official Python socket.create_server docs state POSIX SO_REUSEADDR permits TIME_WAIT reuse; active listener check remains enforced by bind/listen. LinuxTIME_WAIT controlled test remains Root-owned; no SSH/image execution by worker. No DTO/Reader/grade/hash/nonce cleanup gate was relaxed. Root must refresh exact verifier review and rerun full actual gate for receipt.",
+    "Root finalactualbyte refresh: WindowsCRLF verifier f99fe91e/testad6dfa76; LFnormalized exactprior ed09/244c, no semanticdelta. Root41tests0/0.513s, bindLinuxproof0."
+  ],
+  "root_owned_diagnostic": {
+    "evidence": "C:/ap/quiz_master/.run/mixed_release_20261014/candidate-diagnostic-relative-v3-log.json",
+    "exit_evidence": "C:/ap/quiz_master/.run/mixed_release_20261014/candidate-diagnostic-relative-v3-exit.json",
+    "actual_exit": 0,
+    "same_image": "sha256:07d6038219feb87fa39fa4fe97eee7ed583321841ab0802c92a4c18b95e36e93",
+    "health_status": 200,
+    "container_running": true,
+    "startup_logs": "",
+    "scope": "Root executed, worker read actual saved evidence; health-only command diagnosis, not full runtime gate or publication acceptance."
+  },
+  "port_check_primary_source": "https://docs.python.org/3/library/socket.html#socket.create_server",
+  "root_owned_linux_port_proof": {
+    "evidence": "C:/ap/quiz_master/.run/mixed_release_20261014/port-reuse-proof-log.json",
+    "exit_evidence": "C:/ap/quiz_master/.run/mixed_release_20261014/port-reuse-proof-exit.json",
+    "scope": "Root actual controlled Linux TCP proof; worker source frozen and proof read only. Demonstrates own TIME_WAIT plainbind rejection, create_server reuse/listen, and active listener rejection; not publication acceptance."
+  }
 }

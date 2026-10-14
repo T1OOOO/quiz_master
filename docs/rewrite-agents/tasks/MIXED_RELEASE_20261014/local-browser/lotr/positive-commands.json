@@ -1,0 +1,118 @@
+[
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-001.txt"
+  },
+  {
+    "command": [
+      "screenshot",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-lotr-rk-93.png"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-002.txt"
+  },
+  {
+    "command": [
+      "click",
+      "@e102"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-003.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-004.txt"
+  },
+  {
+    "command": [
+      "click",
+      "@e107"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-005.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-006.txt"
+  },
+  {
+    "command": [
+      "click",
+      "@e108"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-007.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-008.txt"
+  },
+  {
+    "command": [
+      "eval",
+      "JSON.stringify(Array.from(document.querySelectorAll(\"*\")).filter(e=>e.scrollHeight>e.clientHeight+50&&e.clientHeight>0).map(e=>e.id))"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-009.txt"
+  },
+  {
+    "command": [
+      "scroll",
+      "down",
+      "700",
+      "--selector",
+      "#flt-semantic-node-298"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-010.txt"
+  },
+  {
+    "command": [
+      "screenshot",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-article-lotr-rk-93-footer.png"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-011.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-012.txt"
+  },
+  {
+    "command": [
+      "click",
+      "@e111"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-013.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-014.txt"
+  },
+  {
+    "command": [
+      "snapshot"
+    ],
+    "actual_exit": 0,
+    "artifact": "docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\local-browser\\lotr\\positive-015.txt"
+  }
+]

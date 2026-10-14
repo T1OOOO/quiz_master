@@ -164,12 +164,17 @@ def build_docker_run_command(*, image, container_name, ownership_nonce, work_dir
     require(re.fullmatch(r'qm-lotr-runtime-[a-z0-9]+', container_name) and re.fullmatch(r'[a-z0-9]+', ownership_nonce), 'unsafe container ownership')
     require(PurePosixPath(work_dir).is_absolute() and '..' not in PurePosixPath(work_dir).parts and 1024 <= port <= 65535, 'unsafe runtime directory/port')
     return ['docker', 'run', '--detach', '--name', container_name, '--label', 'qm.runtime.nonce=' + ownership_nonce,
-            '--network', 'host', '--read-only', '--user', '10001:10001', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
-            '--tmpfs', '/tmp:rw,noexec,nosuid,size=16m', '--mount', f'type=bind,src={work_dir},dst=/verify',
+            '--network', 'host', '--read-only', '--workdir', '/app', '--user', '10001:10001', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+            '--tmpfs', '/tmp:rw,noexec,nosuid,size=16m', '--mount', f'type=bind,src={work_dir},dst=/app/verify',
             '-e', f'QM_LISTEN_ADDR=127.0.0.1:{port}', '-e', 'QM_CONTENT_BUNDLE_PATH=/app/quizzes',
             '-e', 'QM_CONTENT_MANIFEST_PATH=/app/next/content/home-alone-1-part-1/manifest.json',
-            '-e', 'QM_CONTENT_TAXONOMY_PATH=/app/metadata/tags.v1.json', '-e', 'QM_DATABASE_URL=sqlite:/verify/quiz.sqlite',
+            '-e', 'QM_CONTENT_TAXONOMY_PATH=/app/metadata/tags.v1.json', '-e', 'QM_DATABASE_URL=sqlite:verify/quiz.sqlite',
             '-e', 'GOMAXPROCS=1', '--entrypoint', '', image, '/app/api']
+
+
+def safe_startup_logs(raw):
+    sensitive = re.compile(r'token|authorization|bearer|secret|password|private_grading|correct_answer|correct_option', re.IGNORECASE)
+    return '\n'.join('[REDACTED sensitive startup line]' if sensitive.search(line) else line for line in raw[-16384:].splitlines())
 
 
 def main():
@@ -196,8 +201,8 @@ def main():
     reader = read_json(stage / 'web/assets/assets/study/question-articles.json')['articles']
     version = read_json(stage / 'web/version.json')
     require((args.expected_packs, args.expected_questions) == (136, 4084) and (version['packs'], version['questions']) == (136, 4084), 'candidate target counts differ')
-    with socket.socket() as probe:
-        probe.bind(('127.0.0.1', args.port))
+    with socket.create_server(('127.0.0.1', args.port)) as probe:
+        pass
     image_id = subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', args.image], text=True, timeout=15).strip()
     api_hash = subprocess.check_output(['docker', 'run', '--rm', '--network=none', '--read-only', '--entrypoint', 'sha256sum', image_id, '/app/api'], text=True, timeout=30).split()[0]
     require(api_hash == TARGET_API_SHA256, 'candidate image API hash differs')
@@ -260,6 +265,19 @@ def main():
                     'target_api_sha256': api_hash, 'target_revisions': copy.deepcopy(REPAIRED),
                     'http': {'lotr_questions': lotr['questions'], 'non_target_questions': lotr['non_target_questions'], 'target_questions': lotr['target_questions'], **corpus},
                     'reader': bindings, 'grading': grading, 'mixed_grading': mixed_grading, 'mixed_questions': len(indexed_questions(mixed))}
+    except Exception as error:
+        # Preserve bounded diagnostic evidence before removing the nonce-owned container.
+        try:
+            owner = subprocess.run(['docker', 'inspect', '--format', '{{index .Config.Labels "qm.runtime.nonce"}}', name], text=True, capture_output=True, timeout=15)
+            if owner.returncode == 0 and owner.stdout.strip() == nonce:
+                logs = subprocess.run(['docker', 'logs', '--tail', '40', name], text=True, capture_output=True, timeout=15)
+                diagnostic = {'status': 'CANDIDATE_FAILED_NOT_VERIFIED', 'image_id': image_id, 'container_name': name, 'error_type': type(error).__name__, 'logs_actual_exit': logs.returncode, 'startup_logs': safe_startup_logs(logs.stdout + logs.stderr)}
+                with args.output.with_name(args.output.name + '.failure.json').open('x', encoding='utf-8') as output:
+                    json.dump(diagnostic, output, ensure_ascii=False, indent=2)
+                    output.write('\n')
+        except Exception:
+            pass
+        raise
     finally:
         inspection = subprocess.run(['docker', 'inspect', '--format', '{{index .Config.Labels "qm.runtime.nonce"}}', name], text=True, capture_output=True, timeout=15)
         if inspection.returncode == 0:
@@ -270,8 +288,8 @@ def main():
         require(work.parent == stage and work.name == 'runtime-' + nonce and (work / 'nonce').read_text() == nonce, 'scratch cleanup ownership differs')
         shutil.rmtree(work)
     require(sha_file(args.source_db) == source_hash, 'source backup database changed')
-    with socket.socket() as probe:
-        probe.bind(('127.0.0.1', args.port))
+    with socket.create_server(('127.0.0.1', args.port)) as probe:
+        pass
     evidence.update(source_db_unchanged=True, container_cleanup=True, scratch_cleanup=True, port_released=True)
     verify_runtime_receipt(evidence, args.image, expected_packs=version['packs'], expected_questions=version['questions'])
     with args.output.open('x', encoding='utf-8') as output:

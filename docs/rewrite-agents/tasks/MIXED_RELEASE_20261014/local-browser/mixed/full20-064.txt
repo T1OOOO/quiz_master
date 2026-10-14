@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e92]
+        - button "Домой" [ref=e93]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e94]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "45"
+        - StaticText "10/20"
+        - group
+          - group "В непрозрачном мешке много красных, синих и зелёных жетонов. Сколько жетонов нужно вынуть вслепую без возвращения, чтобы гарантированно получить хотя бы два одного цвета?"
+            - button "6" [ref=e95]
+            - button "2" [ref=e96]
+            - button "4" [ref=e97]
+            - button "3" [ref=e98]
+      - button "Отправить отзыв" [ref=e91]

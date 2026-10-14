@@ -1,0 +1,77 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f1b11b2af3ad4de7a413f022c737b6a8": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f1b11b2af3ad4de7a413f022c737b6a8",
+          "verdict": "accept",
+          "note": "ACCEPT, static read-only review of the current verify_candidate_runtime.py/test_verify_candidate_runtime.py delta + REPORT.json. ALL 7 ACTUAL DIGESTS recomputed via sha256sum (no edits/execution): prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0, test_prepare_lotr_package.py=14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4 all match the prior accepted task-c01fd3ba review exactly, byte-for-byte; unchanged. verify_candidate_runtime.py=f99fe91e04a8fd8e4c14375d3242df5d6f2dce8b58ed4de7564fe229cb4ef356 and test_verify_candidate_runtime.py=ad6dfa7668871f36279aecf5af8c49eb03222cf44b9e09aea37cb549cf30c1d3 differ from both that prior accept and REPORT.json's own embedded sha256 table (stale/pre-edit, as its notes flag). Delta verified by direct read: main() now opens exactly two socket.create_server(('127.0.0.1', port)) probes (pre-run and post-cleanup) replacing a plain bind-based check; per the cited Python docs this binds with SO_REUSEADDR so a port in TIME_WAIT is reusable while an actively LISTENing port is still rejected. The new test uses AST extraction to confirm exactly 2 such with-blocks exist in main, executes the extracted probe code standalone to confirm it opens and closes cleanly, then re-executes it against a live create_server listener and asserts OSError is raised -- a sound way to validate this logic without running the candidate image. Root's port-reuse-proof-log.json (TIME_WAIT=06, plain bind rejected, create_server reused+listened, active listener rejected, exit 0) corroborates the same semantics on Linux. All other gates unchanged on read: verify_runtime_receipt still requires packs=136/questions=4084, reader 266/147/145/2, grading 100/100/100 and mixed 20/20/20, source_db_unchanged/container_cleanup/scratch_cleanup/port_released, and the forbidden-key (private_grading/correct_option_id/token) scan. Worker's reported 41 tests/0 failures/1.604s is consistent with the source read (13 tests in test_verify_candidate_runtime.py here, unchanged counts elsewhere). Scope of this accept is strictly this static source/test delta plus the 7-hash reconfirmation; it carries no execution or publication approval, and I did not reproduce Root's own isolated-Linux port proof or the 0.513s Root test run, only read their logged evidence."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Differentproviderexactcurrent5producer+2helper review; meaningfulactiveListener/freeport regression andRootLinuxTIME_WAITcontrol proof; noexecution/publicationacceptance.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+          "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Sourceonlyfix oldbind falselyrejectsTIME_WAIT aftercompletedAPIcleanup. Use existingstdlibcreate_server contexts before/after to assertactualnewLISTEN succeeds,rejectactiveListener. Allrawimage/grades/sourceDBcleanup guards preserved.",
+        "created_at": 1791977862.9996586,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-f1b11b2af3ad4de7a413f022c737b6a8",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "worker/REPORT.json exact5currentbytes",
+            ".run/mixed_release_20261014/port-reuse-proof-log.json"
+          ],
+          "fix": "Bothpre/post socket.create_server LISTEN probe reusesTIME_WAIT, preserves all136/4084/120grade/Reader145/sourcebackup/noncecleanups. Noapp or otherproducer changes.",
+          "remaining": [
+            "actualpackage-v5 completegate",
+            "independentexecutionreview+publication"
+          ],
+          "root_linux_control": {
+            "active_listener_rejected": true,
+            "actual_exit": 0,
+            "create_server_reuse_and_listen": true,
+            "kernel_state": "06 TIME_WAIT",
+            "plain_bind_rejected": true
+          },
+          "root_tests": {
+            "actual_exit": 0,
+            "count": 41
+          },
+          "scope": "Onlystdlibraryportprobe2contexts+regression",
+          "status": "READY_STATIC_REVIEW"
+        },
+        "root_task_id": "task-f1b11b2af3ad4de7a413f022c737b6a8",
+        "run_id": "run-bc3af9a4183e466f98446c580fd3ac82",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Mixed candidate port reuse proof correction",
+        "version": 4,
+        "reviewer": "session-7456023beffc4b3a862149ce29bc8c9d",
+        "review_note": "ACCEPT, static read-only review of the current verify_candidate_runtime.py/test_verify_candidate_runtime.py delta + REPORT.json. ALL 7 ACTUAL DIGESTS recomputed via sha256sum (no edits/execution): prepare_lotr_package.py=c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0, test_prepare_lotr_package.py=14623720f0d9ae781c67359371299c428558c61350fe2e286cc9fdf69720de26, README.md=342d8e062aa81e0ab97f0648f40eb619333d6f9c0bed0b4e5351f99134dc202b, prepare_remote_mixed.py=0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103, test_prepare_remote_mixed.py=9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4 all match the prior accepted task-c01fd3ba review exactly, byte-for-byte; unchanged. verify_candidate_runtime.py=f99fe91e04a8fd8e4c14375d3242df5d6f2dce8b58ed4de7564fe229cb4ef356 and test_verify_candidate_runtime.py=ad6dfa7668871f36279aecf5af8c49eb03222cf44b9e09aea37cb549cf30c1d3 differ from both that prior accept and REPORT.json's own embedded sha256 table (stale/pre-edit, as its notes flag). Delta verified by direct read: main() now opens exactly two socket.create_server(('127.0.0.1', port)) probes (pre-run and post-cleanup) replacing a plain bind-based check; per the cited Python docs this binds with SO_REUSEADDR so a port in TIME_WAIT is reusable while an actively LISTENing port is still rejected. The new test uses AST extraction to confirm exactly 2 such with-blocks exist in main, executes the extracted probe code standalone to confirm it opens and closes cleanly, then re-executes it against a live create_server listener and asserts OSError is raised -- a sound way to validate this logic without running the candidate image. Root's port-reuse-proof-log.json (TIME_WAIT=06, plain bind rejected, create_server reused+listened, active listener rejected, exit 0) corroborates the same semantics on Linux. All other gates unchanged on read: verify_runtime_receipt still requires packs=136/questions=4084, reader 266/147/145/2, grading 100/100/100 and mixed 20/20/20, source_db_unchanged/container_cleanup/scratch_cleanup/port_released, and the forbidden-key (private_grading/correct_option_id/token) scan. Worker's reported 41 tests/0 failures/1.604s is consistent with the source read (13 tests in test_verify_candidate_runtime.py here, unchanged counts elsewhere). Scope of this accept is strictly this static source/test delta plus the 7-hash reconfirmation; it carries no execution or publication approval, and I did not reproduce Root's own isolated-Linux port proof or the 0.513s Root test run, only read their logged evidence."
+      }
+    }
+  },
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "actual_model": "claude-sonnet-5",
+  "scope": "Prepare-only static current source and actual local browser review; no execution or publication.",
+  "schema_version": "qm-mixed-remote-helper-review/v1",
+  "reviewed_worker_sha256": {
+    "prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "test_prepare_remote_mixed.py": "9db9195a8589bc30298856b2df1fa9d78685a0731aee07f8a6fa7565a07332a4"
+  }
+}

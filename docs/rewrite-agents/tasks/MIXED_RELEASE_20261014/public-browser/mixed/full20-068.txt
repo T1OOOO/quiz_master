@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e101]
+        - button "Домой" [ref=e102]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e103]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "50"
+        - StaticText "11/20"
+        - group
+          - group "Фотограф с ногой в гипсе наблюдает соседей из квартиры и подозревает убийство. Какой фильм Хичкока описан?"
+            - button "«На север через северо-запад»" [ref=e104]
+            - button "«Психо»" [ref=e105]
+            - button "«Окно во двор»" [ref=e106]
+            - button "«Вертиго»" [ref=e107]
+      - button "Отправить отзыв" [ref=e100]

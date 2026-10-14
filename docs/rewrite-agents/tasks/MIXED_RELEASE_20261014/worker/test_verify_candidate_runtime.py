@@ -5,6 +5,11 @@ import copy
 import unittest
 import json
 from pathlib import Path
+import urllib.parse
+import ast
+import inspect
+import socket
+from types import SimpleNamespace
 
 import verify_candidate_runtime as v
 
@@ -155,6 +160,43 @@ class CorpusAndReaderGuards(unittest.TestCase):
 
 
 class GradingAndReceiptGuards(unittest.TestCase):
+    def test_actual_pre_and_post_port_checks_listen_close_and_reject_live_listener(self):
+        tree = ast.parse(inspect.getsource(v.main))
+        probes = [node for node in ast.walk(tree) if isinstance(node, ast.With) and any(isinstance(item.context_expr, ast.Call) and isinstance(item.context_expr.func, ast.Attribute) and isinstance(item.context_expr.func.value, ast.Name) and item.context_expr.func.value.id == 'socket' for item in node.items)]
+        self.assertEqual(len(probes), 2)
+        for original in probes:
+            code = copy.deepcopy(original)
+            code.body += ast.parse("assert probe.getsockopt(socket.SOL_SOCKET,socket.SO_ACCEPTCONN)==1\nchecked_address=probe.getsockname()\n").body
+            compiled = compile(ast.fix_missing_locations(ast.Module(body=[code], type_ignores=[])), 'actual-candidate-port-probe', 'exec')
+            namespace = {'socket': socket, 'args': SimpleNamespace(port=0)}
+            exec(compiled, namespace)
+            self.assertEqual(namespace['probe'].fileno(), -1)
+            with socket.create_server(namespace['checked_address']) as listener:
+                namespace['args'].port = listener.getsockname()[1]
+                with self.assertRaises(OSError):
+                    exec(compiled, namespace)
+            exec(compiled, namespace)
+            self.assertEqual(namespace['probe'].fileno(), -1)
+
+    def test_candidate_sqlite_url_uses_opaque_relative_path_and_exact_mount(self):
+        command = v.build_docker_run_command(image='quiz:test', container_name='qm-lotr-runtime-abc', ownership_nonce='abc', work_dir='/opt/quiz-master/releases/build/runtime-abc', port=18091)
+        value = next(arg.removeprefix('QM_DATABASE_URL=') for arg in command if arg.startswith('QM_DATABASE_URL='))
+        parsed = urllib.parse.urlsplit(value)
+        self.assertEqual(parsed.scheme, 'sqlite')
+        self.assertFalse(parsed.netloc or parsed.query or parsed.fragment)
+        self.assertFalse(parsed.path.startswith('/'), 'Go url.Parse must classify SQLite payload as Opaque, not absolute Path')
+        self.assertEqual(value, 'sqlite:verify/quiz.sqlite')
+        self.assertIn('type=bind,src=/opt/quiz-master/releases/build/runtime-abc,dst=/app/verify', command)
+        self.assertEqual(command[command.index('--workdir') + 1], '/app')
+
+    def test_failed_startup_diagnostic_redacts_tokens_and_keeps_actual_failure(self):
+        raw = 'QM_DATABASE_URL SQLite path is invalid\nAuthorization: Bearer secret-value\nQM_FEEDBACK_ADMIN_TOKEN=private-value\ncorrect_option_id=private-key\n'
+        safe = v.safe_startup_logs(raw)
+        self.assertIn('QM_DATABASE_URL SQLite path is invalid', safe)
+        self.assertNotIn('secret-value', safe)
+        self.assertNotIn('private-value', safe)
+        self.assertNotIn('private-key', safe)
+
     def test_mixed_receipt_requires_exact_20_graded_answers(self):
         receipt = {
             'schema_version': v.RECEIPT_SCHEMA, 'status': 'VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED', 'image': 'quiz:test',
@@ -235,7 +277,7 @@ class GradingAndReceiptGuards(unittest.TestCase):
         self.assertIn("--read-only", rendered)
         self.assertIn("QM_LISTEN_ADDR=127.0.0.1:18091", command)
         self.assertIn("QM_CONTENT_BUNDLE_PATH=/app/quizzes", command)
-        self.assertIn("QM_DATABASE_URL=sqlite:/verify/quiz.sqlite", command)
+        self.assertIn("QM_DATABASE_URL=sqlite:verify/quiz.sqlite", command)
         self.assertEqual(command[-2:], ["quiz-master:test", "/app/api"])
 
 

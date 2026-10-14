@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e3]
+        - button "Домой" [ref=e4]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e5]
+        - StaticText "Смешанный квиз: связи и логика"
+        - StaticText "Все вопросы"
+        - progressbar "0"
+        - StaticText "1/20"
+        - group
+          - group "Граф Орлок, немецкое немое кино и 1922 год: какой роман лежит в основе «Носферату» Мурнау?"
+            - button "«Портрет Дориана Грея»" [ref=e6]
+            - button "«Странная история доктора Джекила и мистера Хайда»" [ref=e7]
+            - button "«Дракула»" [ref=e8]
+            - button "«Франкенштейн»" [ref=e9]
+      - button "Отправить отзыв" [ref=e2]

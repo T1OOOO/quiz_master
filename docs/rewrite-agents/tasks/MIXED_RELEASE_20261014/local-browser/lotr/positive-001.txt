@@ -1,0 +1,21 @@
+- generic
+  - generic "Назад Домой Quiz Master Открыть меню навигации Властелин Колец: Возвращение Короля и Создание Все вопросы 0 1/2 Отправить отзыв"
+    - generic
+      - generic
+        - button "Назад" [ref=e91]
+        - button "Домой" [ref=e92]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e93]
+        - StaticText "Властелин Колец: Возвращение Короля и Создание"
+        - StaticText "Все вопросы"
+        - progressbar "0"
+        - StaticText "1/2"
+        - group
+          - group "Какая река названа в ночном пейзаже, где внизу лежит большая долина, а вдали видны Белые горы Гондора?"
+            - button "Бруинен" [ref=e101]
+            - button "Андуин" [ref=e102]
+            - button "Сирион" [ref=e103]
+            - button "Гландуин" [ref=e104]
+            - button "Изен" [ref=e105]
+            - button "Брендивайн" [ref=e106]
+      - button "Отправить отзыв" [ref=e90]
