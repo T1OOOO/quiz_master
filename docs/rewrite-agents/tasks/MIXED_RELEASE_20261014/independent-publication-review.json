@@ -1,0 +1,111 @@
+{
+  "schema_version": "qm-mixed-publication-review/v1",
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_review": {
+    "call": {
+      "action": "review",
+      "arguments": {
+        "task_id": "task-ce47cfb8a6ed42ee8c178a6f168ea936",
+        "verdict": "accept",
+        "note": "ACCEPT (published mixed release, final independent review). Independently recomputed sha256 of the five named artifacts (sha256sum, read-only, no edits): publish-log.txt=bfd31b4434b4c93189002ca156a61ef36cc72f945511d74373da7c1cd900a88a; publish-exit.json=98786e9bf1c92169749dc597a0edb6a805b5e5d93f3f6f20633ad86038f4861e; published-https-verification.json=e094373dde06398a4269fcdfbe22931636c77dcd66f2f79d90f259410e70e370; published-server-verification.json=f34c34aeaf2d95324875327f64ac12018da7fd3568fb165f799446338eccde41; public-browser/browser-proof.json=29493a8eb7387c3714f637897651e5d420d943a2ccd43d89daa4ee6368d4166d. publish-log.txt shows helm upgrade succeeded to REVISION 53 with PUBLISHED build=quiz-2026.10.14-mixed-ecac092 image=sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727; published-server-verification.json independently confirms helm_revision=53/deployed and the identical image sha on both api and web. published-https-verification.json reports http.packs=136, http.questions=4084, reader.articles=266 -- matches the claimed public counts exactly, and build_id/source_commit match ecac092a9ab9af5ac39b4879b8249675b3cca9a2 (frozen source) across all files. published-server-verification.json's preserved_old_rows (participants=148, sessions=148, attempt_bundles=261, feedback_reports=26, status all 'open') matches the claimed '26 existing feedback reports preserved' and all_old_attempt_ids_preserved=true. public-browser/browser-proof.json shows a real SQL-backed attempt for the mixed quiz (server_score=20, 20 answer receipts each carrying a question_revision.sha256) and for LOTR (server_score=2, 2 receipts at question_revision.number=2, i.e. the repaired revision) with public_ui_scores.mixed=20/lotr_medium=2 and browser_close_actual_exit mixed=0/lotr=0, browser_inactive=true. I opened full20-result.png and targets-result.png directly: both show 'Счёт: 20' and 'Счёт: 2' respectively on the live Quiz Master UI, consistent with the JSON. I opened both footer screenshots (targets-article-lotr-rk-93-footer.png, -95-footer.png): both show real sourced article content linked to Tolkien Estate, consistent with the 'linked articles' claim. git-checkpoint.json's checkpoint hash b180364ddc36fe4b54ab5e0f8b01fa8bb66e1323 matches the full hash of commit b180364 I independently resolved with `git log`; `git status` confirms branch codex/quiz-v2 is up to date with origin/codex/quiz-v2 (0 ahead/behind), and cd300da (the later metadata-only checkpoint-record commit referenced in git-checkpoint.json's own scope note) is present on top of it in the pushed log. execution-acceptance.json (the earlier prepare-only gate review) is consistent with, and chains into, this publication: same image sha, same runtime counts (articles=266, packs=136, questions=4084) reported at the prepare stage. hub_message search confirms this task (task-ce47cfb8a6ed42ee8c178a6f168ea936, 'Actual immutable mixed ecac release and published verification') went through one prior REWORK cycle (msg 39912, reviewer session-7c5ce06318f44673a1c364f5607c458e) before this resubmission; I did not re-derive the original rework cause (only the snippet was retrievable, not the full note) since the current evidence set is internally consistent and independently verifiable on its own terms. CONCRETE FINDING (non-blocking): publish-log.txt line 7's pre-upgrade backup/restore check logs an unlabeled counts array [148, 720, 261]; the first and third values match published-server-verification.json's preserved_old_rows.participants(148) and attempt_bundles(261), but the middle value (720) does not match preserved_old_rows.sessions(148) or any other single labeled field I could identify -- the log line gives no field names, so I cannot confirm what table '720' refers to or rule out a mismatch. This doesn't contradict the labeled, cross-matching published-server-verification.json figures, but the evidence chain would be stronger with a labeled pre-upgrade backup manifest. LIMITS OF THIS REVIEW: read-only, no mutation. I could NOT independently fetch the live HTTPS site myself (https://quiz.kotopedia.org) or hash the live version.json/main.dart.js/catalog.json/question-articles.json against published-https-verification.json's claimed sha256 values -- outbound network access is blocked in this Bash sandbox for every form I tried (piped, headers-only, single curl), so the public-HTTPS asset-identity claim rests on the evidence file's own self-reported hashes, not an independent refetch. I also could not read the full hub_task record for this task_id (hub_task list exceeds this session's tool output size limit; the overflow file is saved outside this project's Bash sandbox path, so I could not grep/python it open either) -- I relied on hub_message search plus the on-disk evidence files, same constraint the prior reviewer of the prepare-only gate hit. I did not verify Android devices or bank-fact content, per the task's own stated scope. Within those limits, the publication evidence is internally consistent, hash-chained, and matches the live-UI screenshots and git state independently."
+      }
+    },
+    "actual_response": {
+      "acceptance": "Real reviewed publication136/4084/266, allbaseline data/historyfeedback preserved, exact owned cleanup, freshnormalTLS public verification and push.",
+      "allowed_paths": [
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014",
+        "C:\\ap\\quiz_master\\.run\\mixed_release_20261014"
+      ],
+      "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+      "author": "session-b216550fd9e5460897bb83b9411d3f06",
+      "body": "Sourcegate accepted. Frozenappsourceecac092, tracker-onlye854 corrected scope. Actualfresh2Webbuilds, localbrowsercontrolledLOT2/fullmixed20, prepareproducer, copiedDBrehearsal/restore/rollback, unmodified candidateimage APIall100+20 and145Readerbindings, independent executionreview then authorized publicationHTTPS/browser. Preserveallforeign69 and197localBeadsobjects, baselineHelm52 untilcutover.",
+      "created_at": 1791974819.3027215,
+      "depth": 0,
+      "difficulty": 1,
+      "difficulty_explicit": false,
+      "domain": "general",
+      "id": "task-ce47cfb8a6ed42ee8c178a6f168ea936",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "actual_publish_exit": 0,
+        "build_id": "quiz-2026.10.14-mixed-ecac092",
+        "evidence": [
+          "publish-exit.json",
+          "published-https-verification.json",
+          "published-server-verification.json",
+          "public-browser/browser-proof.json",
+          "execution-acceptance.json",
+          "git-checkpoint.json",
+          "own-issue-closure.json"
+        ],
+        "git": {
+          "own_issue": "quiz_master-33m",
+          "own_issue_closed": true,
+          "source_and_proof_checkpoint_pushed": "b180364ddc36fe4b54ab5e0f8b01fa8bb66e1323",
+          "upstream_ahead": 0,
+          "upstream_behind": 0
+        },
+        "helm_revision": 53,
+        "image": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+        "limits": [
+          "Web verified; no physicalAndroid/all-bank factual certification",
+          "Independent final acceptance receipt will be pushed as metadata after callback; app/image unchanged"
+        ],
+        "preservation": {
+          "feedback_count": 26,
+          "feedback_digest_unchanged": true,
+          "feedback_open": 26,
+          "foreign_file_hashes": 69,
+          "old_attempt_ids": true,
+          "old_data_rows": true,
+          "old_finished_history": true,
+          "pvc_unchanged": true,
+          "unrelated_local_beads_objects": 197
+        },
+        "public": {
+          "articles": 266,
+          "browsers_closed_and_inactive": true,
+          "conditional_https_200_exact_assets": true,
+          "linked_articles_opened": 2,
+          "lotr_native_ui_and_sql_score": 2,
+          "mixed_native_ui_and_sql_score": 20,
+          "packs": 136,
+          "playable_refs": 145,
+          "questions": 4084
+        },
+        "source_commit": "ecac092a9ab9af5ac39b4879b8249675b3cca9a2",
+        "status": "PUBLISHED_AND_VERIFIED_READY_FINAL_REVIEW",
+        "url": "https://quiz.kotopedia.org"
+      },
+      "review_note": "ACCEPT (published mixed release, final independent review). Independently recomputed sha256 of the five named artifacts (sha256sum, read-only, no edits): publish-log.txt=bfd31b4434b4c93189002ca156a61ef36cc72f945511d74373da7c1cd900a88a; publish-exit.json=98786e9bf1c92169749dc597a0edb6a805b5e5d93f3f6f20633ad86038f4861e; published-https-verification.json=e094373dde06398a4269fcdfbe22931636c77dcd66f2f79d90f259410e70e370; published-server-verification.json=f34c34aeaf2d95324875327f64ac12018da7fd3568fb165f799446338eccde41; public-browser/browser-proof.json=29493a8eb7387c3714f637897651e5d420d943a2ccd43d89daa4ee6368d4166d. publish-log.txt shows helm upgrade succeeded to REVISION 53 with PUBLISHED build=quiz-2026.10.14-mixed-ecac092 image=sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727; published-server-verification.json independently confirms helm_revision=53/deployed and the identical image sha on both api and web. published-https-verification.json reports http.packs=136, http.questions=4084, reader.articles=266 -- matches the claimed public counts exactly, and build_id/source_commit match ecac092a9ab9af5ac39b4879b8249675b3cca9a2 (frozen source) across all files. published-server-verification.json's preserved_old_rows (participants=148, sessions=148, attempt_bundles=261, feedback_reports=26, status all 'open') matches the claimed '26 existing feedback reports preserved' and all_old_attempt_ids_preserved=true. public-browser/browser-proof.json shows a real SQL-backed attempt for the mixed quiz (server_score=20, 20 answer receipts each carrying a question_revision.sha256) and for LOTR (server_score=2, 2 receipts at question_revision.number=2, i.e. the repaired revision) with public_ui_scores.mixed=20/lotr_medium=2 and browser_close_actual_exit mixed=0/lotr=0, browser_inactive=true. I opened full20-result.png and targets-result.png directly: both show 'Счёт: 20' and 'Счёт: 2' respectively on the live Quiz Master UI, consistent with the JSON. I opened both footer screenshots (targets-article-lotr-rk-93-footer.png, -95-footer.png): both show real sourced article content linked to Tolkien Estate, consistent with the 'linked articles' claim. git-checkpoint.json's checkpoint hash b180364ddc36fe4b54ab5e0f8b01fa8bb66e1323 matches the full hash of commit b180364 I independently resolved with `git log`; `git status` confirms branch codex/quiz-v2 is up to date with origin/codex/quiz-v2 (0 ahead/behind), and cd300da (the later metadata-only checkpoint-record commit referenced in git-checkpoint.json's own scope note) is present on top of it in the pushed log. execution-acceptance.json (the earlier prepare-only gate review) is consistent with, and chains into, this publication: same image sha, same runtime counts (articles=266, packs=136, questions=4084) reported at the prepare stage. hub_message search confirms this task (task-ce47cfb8a6ed42ee8c178a6f168ea936, 'Actual immutable mixed ecac release and published verification') went through one prior REWORK cycle (msg 39912, reviewer session-7c5ce06318f44673a1c364f5607c458e) before this resubmission; I did not re-derive the original rework cause (only the snippet was retrievable, not the full note) since the current evidence set is internally consistent and independently verifiable on its own terms. CONCRETE FINDING (non-blocking): publish-log.txt line 7's pre-upgrade backup/restore check logs an unlabeled counts array [148, 720, 261]; the first and third values match published-server-verification.json's preserved_old_rows.participants(148) and attempt_bundles(261), but the middle value (720) does not match preserved_old_rows.sessions(148) or any other single labeled field I could identify -- the log line gives no field names, so I cannot confirm what table '720' refers to or rule out a mismatch. This doesn't contradict the labeled, cross-matching published-server-verification.json figures, but the evidence chain would be stronger with a labeled pre-upgrade backup manifest. LIMITS OF THIS REVIEW: read-only, no mutation. I could NOT independently fetch the live HTTPS site myself (https://quiz.kotopedia.org) or hash the live version.json/main.dart.js/catalog.json/question-articles.json against published-https-verification.json's claimed sha256 values -- outbound network access is blocked in this Bash sandbox for every form I tried (piped, headers-only, single curl), so the public-HTTPS asset-identity claim rests on the evidence file's own self-reported hashes, not an independent refetch. I also could not read the full hub_task record for this task_id (hub_task list exceeds this session's tool output size limit; the overflow file is saved outside this project's Bash sandbox path, so I could not grep/python it open either) -- I relied on hub_message search plus the on-disk evidence files, same constraint the prior reviewer of the prepare-only gate hit. I did not verify Android devices or bank-fact content, per the task's own stated scope. Within those limits, the publication evidence is internally consistent, hash-chained, and matches the live-UI screenshots and git state independently.",
+      "reviewer": "session-1448498dbb1941fe97e945897a8a4883",
+      "root_task_id": "task-ce47cfb8a6ed42ee8c178a6f168ea936",
+      "run_id": "run-d6445f75d0b64f469589b068425c2bbc",
+      "skills": [],
+      "state": "ACCEPTED",
+      "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+      "title": "Actual immutable mixed ecac release and published verification",
+      "version": 7
+    }
+  },
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "reviewed_publication_sha256": {
+    "publish-log.txt": "bfd31b4434b4c93189002ca156a61ef36cc72f945511d74373da7c1cd900a88a",
+    "publish-exit.json": "98786e9bf1c92169749dc597a0edb6a805b5e5d93f3f6f20633ad86038f4861e",
+    "published-https-verification.json": "e094373dde06398a4269fcdfbe22931636c77dcd66f2f79d90f259410e70e370",
+    "published-server-verification.json": "f34c34aeaf2d95324875327f64ac12018da7fd3568fb165f799446338eccde41",
+    "public-browser/browser-proof.json": "29493a8eb7387c3714f637897651e5d420d943a2ccd43d89daa4ee6368d4166d"
+  },
+  "status": "PUBLISHED_VERIFIED_AND_INDEPENDENTLY_REVIEWED",
+  "scope": "Actual final delivery review of published artifact, native UI/SQL receipts, preserved data and pushed Git checkpoint.",
+  "limits": [
+    "Reviewer read screenshots and independently hashed evidence; its sandbox blocked independent network refetch. Root actual normalTLS all136/API/assets and SSH preservation checks passed.",
+    "Reviewer flagged unlabeled backup count720; exact backup code enumerates participants, attempts, attempt_bundles. Separate Root clarification binds those labels to actual backup SQL.",
+    "No physicalAndroid or all-bank factual certification."
+  ],
+  "report": "Review recorded and task accepted on the hub (task-ce47cfb8a6ed42ee8c178a6f168ea936, now state ACCEPTED, version 7).\n\n## Review callback: ACCEPT\n\n**Hashes of the four main verification files + browser-proof.json (sha256sum, independently computed):**\n- `publish-log.txt` = `bfd31b4434b4c93189002ca156a61ef36cc72f945511d74373da7c1cd900a88a`\n- `publish-exit.json` = `98786e9bf1c92169749dc597a0edb6a805b5e5d93f3f6f20633ad86038f4861e`\n- `published-https-verification.json` = `e094373dde06398a4269fcdfbe22931636c77dcd66f2f79d90f259410e70e370`\n- `published-server-verification.json` = `f34c34aeaf2d95324875327f64ac12018da7fd3568fb165f799446338eccde41`\n- `public-browser/browser-proof.json` = `29493a8eb7387c3714f637897651e5d420d943a2ccd43d89daa4ee6368d4166d`\n\n**What checked out:** Helm revision 53/deployed with the claimed image sha across `publish-log.txt` and `published-server-verification.json`; live public counts (136 packs / 4084 questions / 266 Reader articles) match exactly; 26 feedback reports and all old attempt IDs preserved per labeled fields; mixed quiz SQL+UI score 20 (20 revision-bound receipts) and LOTR medium-filter score 2 (2 receipts at the repaired revision) — screenshots show \"Счёт: 20\" and \"Счёт: 2\" on the live UI, and both LOTR footer screenshots show real linked Tolkien Estate sources; browsers closed cleanly and inactive; git checkpoint hash `b180364...` matches the actual commit, branch is pushed and 0 ahead/behind origin.\n\n**Concrete finding (non-blocking):** `publish-log.txt` line 7's pre-upgrade backup/restore check logs an unlabeled `counts: [148, 720, 261]`. The first and third values match `preserved_old_rows.participants`/`attempt_bundles`, but the middle value (720) doesn't match `sessions` (148) or any other labeled field I could find — the log gives no field names, so I can't confirm what table 720 refers to.\n\n**Limits of this review:** Bash network access was blocked in this sandbox for every form I tried, so I could not independently refetch the live HTTPS site or hash its assets against the claimed values — that claim rests on the evidence file's self-reported hashes. I also couldn't load the full hub_task record (output exceeds this session's tool limit; overflow file sits outside this project's Bash sandbox), so I relied on `hub_message` search plus on-disk evidence, same constraint the earlier prepare-gate reviewer hit. No Android device or bank-fact verification, per the task's stated scope."
+}
