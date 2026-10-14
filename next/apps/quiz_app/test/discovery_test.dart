@@ -85,14 +85,24 @@ void main() {
   ) async {
     await _pumpDiscovery(tester, '/library');
     expect(find.byKey(const Key('catalog-search')), findsOneWidget);
-    expect(find.text('131 quizzes · 4044 questions'), findsOneWidget);
+    expect(find.text('136 quizzes · 4084 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(
         of: find.byType(SourceFolderCard),
         matching: find.byType(Image),
       ),
-      findsNWidgets(14),
+      findsNWidgets(15),
+    );
+
+    await tester.enterText(
+      find.byKey(const Key('catalog-search')),
+      'Смешанный',
+    );
+    await tester.pumpAndSettle();
+    expect(
+      find.byKey(const Key('pack-pub-connections-20261014')),
+      findsOneWidget,
     );
 
     await tester.enterText(find.byKey(const Key('catalog-search')), 'Столицы');

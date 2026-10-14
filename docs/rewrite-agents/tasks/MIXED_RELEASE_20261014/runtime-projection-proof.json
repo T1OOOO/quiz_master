@@ -1,0 +1,23 @@
+{
+  "actual_cli_exit": 0,
+  "command": [
+    "go",
+    "run",
+    "-p=1",
+    "./next/server/cmd/quizctl",
+    "build",
+    "--in",
+    "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\runtime-draft.json",
+    "--out",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\mixed-runtime-bundle.json",
+    "--version",
+    "source-v1",
+    "--published-at",
+    "2026-10-02T00:00:00Z",
+    "--taxonomy",
+    "metadata/tags.v1.json"
+  ],
+  "expected_source_uri": "/app/quizzes/Preparation/pub_connections_20261014.json",
+  "sha256": "e0d6ed5622e59f6594a82431e658cfe3fb70c9962f2129572194d838439f2391",
+  "scope": "Expected /app projection, validated by real Go canonical build; unmodified candidate image HTTP gate still REQUIRED. Not runtime execution."
+}

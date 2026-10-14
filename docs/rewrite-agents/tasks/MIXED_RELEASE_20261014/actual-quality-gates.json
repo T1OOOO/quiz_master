@@ -1,0 +1,40 @@
+[
+  {
+    "command": [
+      "go",
+      "test",
+      "-p=1",
+      "./internal/sqlite",
+      "-run",
+      "^TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart$",
+      "-count=1"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\server",
+    "actual_exit": 0,
+    "stdout": "ok  \tquiz_master/next/server/internal/sqlite\t153.206s\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "go",
+      "test",
+      "-p=1",
+      "./..."
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\server",
+    "actual_exit": 0,
+    "stdout": "ok  \tquiz_master/next/server/cmd/api\t(cached)\nok  \tquiz_master/next/server/cmd/quizctl\t47.512s\nok  \tquiz_master/next/server/internal/attempts\t(cached)\nok  \tquiz_master/next/server/internal/config\t(cached)\nok  \tquiz_master/next/server/internal/content\t(cached)\nok  \tquiz_master/next/server/internal/httpapi\t(cached)\nok  \tquiz_master/next/server/internal/identity\t(cached)\nok  \tquiz_master/next/server/internal/migrate\t(cached)\nok  \tquiz_master/next/server/internal/reports\t(cached)\nok  \tquiz_master/next/server/internal/sqlite\t(cached)\nok  \tquiz_master/next/server/internal/store\t(cached)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "study/question_articles/build.py",
+      "--check"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "stdout": "PASS: 266 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+    "stderr": ""
+  }
+]

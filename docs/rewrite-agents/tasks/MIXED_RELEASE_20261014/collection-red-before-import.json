@@ -1,0 +1,15 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-p=1",
+    "./internal/sqlite",
+    "-run",
+    "^TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart$",
+    "-count=1"
+  ],
+  "actual_exit": 1,
+  "stdout": "--- FAIL: TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart (9.11s)\n    collection_test.go:61: packs=135\nFAIL\nFAIL\tquiz_master/next/server/internal/sqlite\t10.471s\nFAIL\n",
+  "stderr": "",
+  "scope": "Expected RED before new20 pack integration: fixture expects136/4084 while corpus135/4064"
+}

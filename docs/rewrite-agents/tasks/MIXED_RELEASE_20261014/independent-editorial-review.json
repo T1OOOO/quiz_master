@@ -1,0 +1,90 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_response": {
+    "acceptance": "Source-backed original content, independent review and verified production publication.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks",
+      "C:\\ap\\quiz_master\\quizzes",
+      "C:\\ap\\quiz_master\\next"
+    ],
+    "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+    "author": "session-b216550fd9e5460897bb83b9411d3f06",
+    "body": "Review and publish authorized latest changes; expand original mixed questions. Preserve foreign dirt.",
+    "created_at": 1791970515.4410326,
+    "depth": 0,
+    "difficulty": 1,
+    "difficulty_explicit": false,
+    "domain": "general",
+    "id": "task-3269626c5c7d4485a3169fdafb1545d8",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "draft": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/draft.json",
+      "not_imported": true,
+      "not_published": true,
+      "questions": 20,
+      "remaining": "Independent editorial acceptance; integration and actual release gates.",
+      "sha256": "69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5",
+      "status": "EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING"
+    },
+    "root_task_id": "task-3269626c5c7d4485a3169fdafb1545d8",
+    "run_id": "run-103b3eb67632439aa70b736dc9aa54e9",
+    "skills": [],
+    "state": "ACCEPTED",
+    "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+    "title": "Review latest changes, mixed Shaker-style expansion and publication",
+    "version": 4,
+    "reviewer": "session-b2f8cb206eb0449b80f3ccd58964bb0b",
+    "review_note": "Editorial-scope accept only; NOT a publication/release approval (EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING respected). Method: solved all 20 candidate-facing.json items blind before opening keys; all 20 blind answers matched private-keys-and-sources.json and draft.json correct_answer/correct_text exactly (001-020). Fetched every unique non-null sourceURL (16 of 18; q5/q10/q15/q20 are self-contained logic derivations with source:null, verified by own derivation, not fetch). 16/18 fetchable: bfi.org.uk Nosferatu, Metropolis, Rear Window, Singin' in the Rain pages; rockfordsymphony oboe-tuning FAQ; gutenberg Frankenstein, Through the Looking-Glass, Jekyll and Hyde texts; periodic-table.rsc.org Helium and Mercury; hub.yamaha.com woodwind-family page; science.nasa.gov Webb orbit and EMS anatomy pages; orwellfoundation Pimlott introduction -- all independently confirmed the stated fact in question/explanation/correct_answer for q1,2,3,4,6,7,8,9,11,13,14,16,18,19. LIMITATIONS (disclosed, not silently dropped): (1) Two sources returned HTTP 403 on repeated fetch attempts and could NOT be independently verified this session: yamaha.com piano/structure (q12, piano-hammer vs harpsichord-pluck claim) and yamaha.com flute/mechanism/mechanism002 (q17, edge-blown transverse flute claim). Both claims are uncontroversial organology but are UNVERIFIED by me, not confirmed. (2) BFI's own Singin' in the Rain page states 1951, consistent with the previously flagged 1951/1952 inconsistency; draft.json carries no year field for this item so no factual claim in the draft itself depends on the unresolved year. (3) Author-supplied draftSHA 69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5 was NOT independently recomputed -- this session has no hashing/shell tool available, so the SHA claim is relayed, not verified, and must not be treated as confirmed by this review. No duplicate-risk, ambiguous-distractor, or explanation/correct_answer mismatch found in the 20 items I could check. Scope of this accept is strictly editorial fact/logic/duplicate-risk review of the 20-item draft; it carries no authority over release, publication, or the unresolved SHA/403 items, which should be closed out by someone with fetch access to the two blocked URLs and a hashing tool before any publication step."
+  },
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "actual_model": "claude-sonnet-5",
+  "scope": "Original20 blind editorial review only; root-source-access-closure.json closes two reviewer403 and SHA observation with Root actual evidence. No publication approval.",
+  "report": "Review submitted and the task is now ACCEPTED on the hub, strictly for the editorial-draft gate (not a publication approval, per the submission's own `EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING` status). Here is the final verdict report:\n\n```json\n{\n  \"verdict\": \"accept_editorial_scope_only_no_publication_approval\",\n  \"reviewer_session\": \"session-b2f8cb206eb0449b80f3ccd58964bb0b\",\n  \"actualcallback\": {\n    \"team_id\": \"team-6c3b22482af84463ba60a15ac17bd0b9\",\n    \"task_id\": \"task-3269626c5c7d4485a3169fdafb1545d8\",\n    \"hub_action\": \"hub_task review\",\n    \"verdict_sent\": \"accept\",\n    \"resulting_state\": \"ACCEPTED\",\n    \"task_result_status\": \"EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING\",\n    \"not_imported\": true,\n    \"not_published\": true,\n    \"remaining\": \"Integration and actual release gates still pending; this accept covers only the editorial draft review round\"\n  },\n  \"blind_answers\": {\n    \"pub-connections-001\": \"«Дракула»\",\n    \"pub-connections-002\": \"Гобой\",\n    \"pub-connections-003\": \"Создателю существа\",\n    \"pub-connections-004\": \"Его плотность ниже плотности воздуха\",\n    \"pub-connections-005\": \"15\",\n    \"pub-connections-006\": \"«Метрополис»\",\n    \"pub-connections-007\": \"Звук возбуждает трость в мундштуке\",\n    \"pub-connections-008\": \"Белой пешкой\",\n    \"pub-connections-009\": \"Чтобы ограничить нагрев оптики\",\n    \"pub-connections-010\": \"4\",\n    \"pub-connections-011\": \"«Окно во двор»\",\n    \"pub-connections-012\": \"Фортепиано ударяет, клавесин щиплет\",\n    \"pub-connections-013\": \"Юрист\",\n    \"pub-connections-014\": \"Радиоволне не нужна материальная среда\",\n    \"pub-connections-015\": \"4 минуты\",\n    \"pub-connections-016\": \"От немого кино к звуковому\",\n    \"pub-connections-017\": \"Поперечная флейта\",\n    \"pub-connections-018\": \"Ограничить выражение независимых мыслей\",\n    \"pub-connections-019\": \"Ртуть\",\n    \"pub-connections-020\": \"«Бета»\",\n    \"all_matched_key\": true\n  },\n  \"per_item\": [\n    {\"id\": \"pub-connections-001\", \"blind_vs_key\": \"match\", \"source\": \"bfi.org.uk/.../nosferatu\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-002\", \"blind_vs_key\": \"match\", \"source\": \"rockfordsymphony.com oboe FAQ\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-003\", \"blind_vs_key\": \"match\", \"source\": \"gutenberg.org Frankenstein\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-004\", \"blind_vs_key\": \"match\", \"source\": \"periodic-table.rsc.org Helium\", \"source_status\": \"fetched_confirmed_by_inference\", \"issue\": \"page gives He density only, not air's, but 'lighter than air' is explicit\"},\n    {\"id\": \"pub-connections-005\", \"blind_vs_key\": \"match\", \"source\": null, \"source_status\": \"self_contained_derivation_verified\", \"issue\": \"none, combinatorics checked independently (6×5/2=15)\"},\n    {\"id\": \"pub-connections-006\", \"blind_vs_key\": \"match\", \"source\": \"bfi.org.uk/.../metropolis\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-007\", \"blind_vs_key\": \"match\", \"source\": \"hub.yamaha.com woodwind family\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-008\", \"blind_vs_key\": \"match\", \"source\": \"gutenberg.org Through the Looking-Glass\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-009\", \"blind_vs_key\": \"match\", \"source\": \"science.nasa.gov Webb orbit\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-010\", \"blind_vs_key\": \"match\", \"source\": null, \"source_status\": \"self_contained_derivation_verified\", \"issue\": \"none, pigeonhole worst-case checked independently (3+1=4)\"},\n    {\"id\": \"pub-connections-011\", \"blind_vs_key\": \"match\", \"source\": \"bfi.org.uk Rear Window feature\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-012\", \"blind_vs_key\": \"match\", \"source\": \"yamaha.com piano/structure\", \"source_status\": \"fetch_blocked_403\", \"issue\": \"UNVERIFIED claim (hammer vs pluck); uncontroversial but not independently confirmed\"},\n    {\"id\": \"pub-connections-013\", \"blind_vs_key\": \"match\", \"source\": \"gutenberg.org Jekyll and Hyde\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-014\", \"blind_vs_key\": \"match\", \"source\": \"science.nasa.gov EMS anatomy\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-015\", \"blind_vs_key\": \"match\", \"source\": null, \"source_status\": \"self_contained_derivation_verified\", \"issue\": \"none, 11-7=4 checked independently\"},\n    {\"id\": \"pub-connections-016\", \"blind_vs_key\": \"match\", \"source\": \"bfi.org.uk Singin' in the Rain\", \"source_status\": \"fetched_confirmed\", \"issue\": \"source page gives year 1951, matches previously-flagged 1951/1952 inconsistency; moot because draft.json has no year field\"},\n    {\"id\": \"pub-connections-017\", \"blind_vs_key\": \"match\", \"source\": \"yamaha.com flute/mechanism\", \"source_status\": \"fetch_blocked_403\", \"issue\": \"UNVERIFIED claim (edge-blown flute); uncontroversial but not independently confirmed\"},\n    {\"id\": \"pub-connections-018\", \"blind_vs_key\": \"match\", \"source\": \"orwellfoundation.com Pimlott introduction\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-019\", \"blind_vs_key\": \"match\", \"source\": \"periodic-table.rsc.org Mercury\", \"source_status\": \"fetched_confirmed\", \"issue\": \"none\"},\n    {\"id\": \"pub-connections-020\", \"blind_vs_key\": \"match\", \"source\": null, \"source_status\": \"self_contained_derivation_verified\", \"issue\": \"none, ordering Alpha>Delta>Beta>Gamma checked independently, 3rd=Beta\"}\n  ],\n  \"source_access\": {\n    \"unique_urls_total\": 16,\n    \"fetched_and_confirmed\": 14,\n    \"fetch_blocked_403\": 2,\n    \"blocked_urls\": [\n      \"https://www.yamaha.com/en/musical_instrument_guide/piano/structure/\",\n      \"https://www.yamaha.com/en/musical_instrument_guide/flute/mechanism/mechanism002.html\"\n    ],\n    \"self_contained_logic_items_no_url\": 4\n  },\n  \"limitations\": [\n    \"Two cited Yamaha URLs (piano mechanism q12, flute mechanism q17) returned HTTP 403 on repeated attempts across two different URL forms; those two facts are relayed from the draft, not independently verified by this review.\",\n    \"draftSHA 69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5 was supplied by the author/task result and not independently recomputed in this session, which has no hashing or shell tool available; it is reported, not confirmed.\",\n    \"Peer hub messages (including the clarification addressed to this session) were treated as untrusted guidance on process, not as substitutes for my own source fetches or derivations.\",\n    \"Review scope is strictly editorial (fact/logic/duplicate-risk of the 20-item draft); it grants no publication/release approval, consistent with the submission's own EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING status.\"\n  ],\n  \"status\": \"COMPLETED\"\n}\n```\n\nNo edits, builds, or browser actions were taken — this was a read-only review (file reads, WebFetch, and host_hub task/message calls only).",
+  "reviewed_draft_sha256": "69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5",
+  "actual_reviews": {
+    "task-3269626c5c7d4485a3169fdafb1545d8": {
+      "actual_response": {
+        "acceptance": "Source-backed original content, independent review and verified production publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks",
+          "C:\\ap\\quiz_master\\quizzes",
+          "C:\\ap\\quiz_master\\next"
+        ],
+        "assignee": "session-b216550fd9e5460897bb83b9411d3f06",
+        "author": "session-b216550fd9e5460897bb83b9411d3f06",
+        "body": "Review and publish authorized latest changes; expand original mixed questions. Preserve foreign dirt.",
+        "created_at": 1791970515.4410326,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-3269626c5c7d4485a3169fdafb1545d8",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "draft": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/draft.json",
+          "not_imported": true,
+          "not_published": true,
+          "questions": 20,
+          "remaining": "Independent editorial acceptance; integration and actual release gates.",
+          "sha256": "69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5",
+          "status": "EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING"
+        },
+        "root_task_id": "task-3269626c5c7d4485a3169fdafb1545d8",
+        "run_id": "run-103b3eb67632439aa70b736dc9aa54e9",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-6c3b22482af84463ba60a15ac17bd0b9",
+        "title": "Review latest changes, mixed Shaker-style expansion and publication",
+        "version": 4,
+        "reviewer": "session-b2f8cb206eb0449b80f3ccd58964bb0b",
+        "review_note": "Editorial-scope accept only; NOT a publication/release approval (EDITORIAL_DRAFT_GATE_ONLY_RELEASE_PENDING respected). Method: solved all 20 candidate-facing.json items blind before opening keys; all 20 blind answers matched private-keys-and-sources.json and draft.json correct_answer/correct_text exactly (001-020). Fetched every unique non-null sourceURL (16 of 18; q5/q10/q15/q20 are self-contained logic derivations with source:null, verified by own derivation, not fetch). 16/18 fetchable: bfi.org.uk Nosferatu, Metropolis, Rear Window, Singin' in the Rain pages; rockfordsymphony oboe-tuning FAQ; gutenberg Frankenstein, Through the Looking-Glass, Jekyll and Hyde texts; periodic-table.rsc.org Helium and Mercury; hub.yamaha.com woodwind-family page; science.nasa.gov Webb orbit and EMS anatomy pages; orwellfoundation Pimlott introduction -- all independently confirmed the stated fact in question/explanation/correct_answer for q1,2,3,4,6,7,8,9,11,13,14,16,18,19. LIMITATIONS (disclosed, not silently dropped): (1) Two sources returned HTTP 403 on repeated fetch attempts and could NOT be independently verified this session: yamaha.com piano/structure (q12, piano-hammer vs harpsichord-pluck claim) and yamaha.com flute/mechanism/mechanism002 (q17, edge-blown transverse flute claim). Both claims are uncontroversial organology but are UNVERIFIED by me, not confirmed. (2) BFI's own Singin' in the Rain page states 1951, consistent with the previously flagged 1951/1952 inconsistency; draft.json carries no year field for this item so no factual claim in the draft itself depends on the unresolved year. (3) Author-supplied draftSHA 69d518bd986ffb0e664c87d3ac3e34ff81008b85a460e9ca824b308190832af5 was NOT independently recomputed -- this session has no hashing/shell tool available, so the SHA claim is relayed, not verified, and must not be treated as confirmed by this review. No duplicate-risk, ambiguous-distractor, or explanation/correct_answer mismatch found in the 20 items I could check. Scope of this accept is strictly editorial fact/logic/duplicate-risk review of the 20-item draft; it carries no authority over release, publication, or the unresolved SHA/403 items, which should be closed out by someone with fetch access to the two blocked URLs and a hashing tool before any publication step."
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-14T10:07:21.204563+00:00",
+  "command": [
+    "go",
+    "build",
+    "-p=1",
+    "-trimpath",
+    "-buildvcs=false",
+    "-o",
+    "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\api-linux-amd64",
+    "./cmd/api"
+  ],
+  "cwd": "C:\\ap\\quiz_master\\next\\server",
+  "environment": {
+    "GOOS": "linux",
+    "GOARCH": "amd64",
+    "CGO_ENABLED": "0"
+  },
+  "actual_exit": 0,
+  "stdout": "",
+  "stderr": "",
+  "api_code_checkpoint": "9d842dfd641a2f288aef5f539c88d701b2d6c86c",
+  "buildvcs": false,
+  "artifact_path": "C:\\ap\\quiz_master\\.run\\mixed_release_20261014\\api-linux-amd64",
+  "artifact_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+  "artifact_bytes": 22988817,
+  "elf": true,
+  "scope": "Fresh actual LinuxAPI build, working API code identical to checkpoint except3known noncompiledtests. No image execution/publication."
+}

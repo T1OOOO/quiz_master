@@ -27,8 +27,8 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 	if err := json.Unmarshal(data, &packs); err != nil {
 		t.Fatal(err)
 	}
-	if len(packs) != 135 {
-		t.Fatalf("want 135 packs, got %d", len(packs))
+	if len(packs) != 136 {
+		t.Fatalf("want 136 packs, got %d", len(packs))
 	}
 	allowed := map[string]bool{"quiz_id": true, "title": true, "description": true, "category": true, "questions_count": true}
 	ids := map[string]bool{}
@@ -49,7 +49,7 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 		ids[id] = true
 		total += int(pack["questions_count"].(float64))
 	}
-	if total != 4064 || !ids["planet-paradoxes-20261010"] || !ids["prep-wave20-paintings"] || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] || !ids["prep-flags-world"] {
+	if total != 4084 || !ids["planet-paradoxes-20261010"] || !ids["prep-wave20-paintings"] || !ids["gastronomy-cheeses-and-dairy"] || !ids["prep-capitals-1"] || !ids["prep-film-actors-1"] || !ids["prep-capitals-world"] || !ids["prep-film-directors-1"] || !ids["prep-flags-world"] {
 		t.Fatalf("incomplete catalog: questions=%d", total)
 	}
 	for _, id := range []string{"preparation-books-classic", "preparation-books-modern", "prep-musicals", "prep-ballet", "prep-opera", "prep-compositions", "prep-history-events", "prep-greek-mythology", "prep-norse-mythology", "prep-folklore", "prep-film-actors-2", "cinema-encore-20261011", "music-encore-20261011"} {
@@ -57,7 +57,7 @@ func TestCatalogExportsWholeCorpusAsMetadataOnly(t *testing.T) {
 			t.Fatalf("missing preparation bank %s", id)
 		}
 	}
-	for _, id := range []string{"film-craft-20261013", "music-craft-20261013", "acting-craft-20261014", "screen-song-20261014"} {
+	for _, id := range []string{"film-craft-20261013", "music-craft-20261013", "acting-craft-20261014", "screen-song-20261014", "pub-connections-20261014"} {
 		if !ids[id] {
 			t.Fatalf("missing reviewed craft bank %s", id)
 		}

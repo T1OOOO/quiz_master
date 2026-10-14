@@ -1,0 +1,79 @@
+[
+  {
+    "command": [
+      "go",
+      "run",
+      "-p=1",
+      "./next/server/cmd/quizctl",
+      "import",
+      "--in",
+      "quizzes/Preparation/pub_connections_20261014.json",
+      "--out",
+      "next/content/pub-connections-20261014",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "actual_exit": 1,
+    "stdout": "",
+    "stderr": "quizctl: taxonomy_reference: pub-connections-20261014\nexit status 2\n"
+  },
+  {
+    "command": [
+      "go",
+      "run",
+      "-p=1",
+      "./next/server/cmd/quizctl",
+      "import",
+      "--in",
+      "quizzes/Preparation/pub_connections_20261014.json",
+      "--out",
+      "next/content/pub-connections-20261014",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "actual_exit": 0,
+    "stdout": "imported pub-connections-20261014: 20 questions; source_sha256 f9cf8e0dbc533db2de0f33926ed6e653d180deba0e6f19dddc1bf4b4c6215d6f\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "go",
+      "run",
+      "-p=1",
+      "./next/server/cmd/quizctl",
+      "build",
+      "--in",
+      "next/content/pub-connections-20261014/draft.json",
+      "--out",
+      "next/content/pub-connections-20261014/bundle.json",
+      "--version",
+      "2026.10.14.mixed20",
+      "--published-at",
+      "2026-10-14T11:30:00Z",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "actual_exit": 0,
+    "stdout": "built pub-connections-20261014: 20 questions; bundle_sha256 a46644947acc51370113696514a8f5e883e1fa76a4641f5ee140dc79699cffcf\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "go",
+      "run",
+      "-p=1",
+      "./next/server/cmd/quizctl",
+      "catalog",
+      "--in",
+      "quizzes",
+      "--out",
+      "next/apps/quiz_app/assets/catalog.json",
+      "--force",
+      "--taxonomy",
+      "metadata/tags.v1.json"
+    ],
+    "actual_exit": 0,
+    "stdout": "catalog: 136 packs\n",
+    "stderr": ""
+  }
+]

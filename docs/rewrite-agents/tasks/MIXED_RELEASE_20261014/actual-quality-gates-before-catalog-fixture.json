@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "go",
+      "test",
+      "-p=1",
+      "./internal/sqlite",
+      "-run",
+      "^TestSourceCollectionStartsEverySelectedPackAndSurvivesRestart$",
+      "-count=1"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\server",
+    "actual_exit": 0,
+    "stdout": "ok  \tquiz_master/next/server/internal/sqlite\t50.664s\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "go",
+      "test",
+      "-p=1",
+      "./..."
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\server",
+    "actual_exit": 1,
+    "stdout": "ok  \tquiz_master/next/server/cmd/api\t(cached)\n--- FAIL: TestCatalogExportsWholeCorpusAsMetadataOnly (1.87s)\n    catalog_test.go:31: want 135 packs, got 136\nFAIL\nFAIL\tquiz_master/next/server/cmd/quizctl\t13.517s\nok  \tquiz_master/next/server/internal/attempts\t(cached)\nok  \tquiz_master/next/server/internal/config\t(cached)\nok  \tquiz_master/next/server/internal/content\t(cached)\nok  \tquiz_master/next/server/internal/httpapi\t(cached)\nok  \tquiz_master/next/server/internal/identity\t(cached)\nok  \tquiz_master/next/server/internal/migrate\t(cached)\nok  \tquiz_master/next/server/internal/reports\t(cached)\nok  \tquiz_master/next/server/internal/sqlite\t48.295s\nok  \tquiz_master/next/server/internal/store\t(cached)\nFAIL\n",
+    "stderr": ""
+  }
+]
