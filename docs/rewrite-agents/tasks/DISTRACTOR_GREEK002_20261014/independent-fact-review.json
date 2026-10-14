@@ -1,0 +1,81 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-4ccc8eda4aaf45358970221bcf033e14": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4ccc8eda4aaf45358970221bcf033e14",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Independent cross-provider fact-check (claude-code/claude-sonnet-5, session-d8459a1de2954224a499083394a43d04). REWORK: 1 unsupported factual claim. Арес section states the British Museum calyx-krater 1856,1213.1 shows 'дельфин на его шлеме' (a dolphin on Ares's helmet), citing the BM page as support. Direct fetch of that object page returned 403 (consistent with SOURCES.md disclosure), so I independently corroborated via WebSearch (CARC/Beazley archive mirror, Walters/Google Arts & Culture summaries of the same Niobid Painter krater): all independently found descriptions give Ares 'in helmet, cuirass, short chiton, greaves, mantle, shield' with no dolphin mentioned anywhere. No accessible source corroborates a dolphin device on this specific object. This looks like an invented/hallucinated detail, not a verified one, and violates the packet's 'no invented details / corroborate exact object claims or demand revision' requirement. Fix: remove the dolphin claim or replace with a genuinely source-backed detail for this object.\n\nVerified correct and accepted: (1) canonical binding exact - stem/options/option_ids/revision_sha256 e441297a...87fe7e all match next/content/prep-greek-mythology/bundle.json exactly, question_id greek-002 options opt-1..4 Гефест/Посейдон/Арес/Дионис preserved verbatim. (2) This Is Athens Sounion page fetched directly: confirms temple dedicated to Poseidon, edge of Cape Sounion, view of Aegean, ancient landmark for ships approaching Piraeus - matches draft's Посейдон section. (3) BM object 1839,1109.1 (Poseidon trident / Hephaestus double-axe) and BM object 1861,0425.50 (Dionysos ivy wreath+branch / Poseidon trident) independently corroborated via search despite BM 403s. (4) 4 headed sections present (Посейдон/Гефест/Арес/Дионис), word counts close to reported (148/127/119/131 vs reported 150/129/119/133). (5) 5 distinct HTTPS source_links (within 2-5 range), target_refs empty, status DRAFT_UNREVIEWED, schema qm-question-articles/v1 valid JSON. (6) No collision: question:greek-002 not present in any live study/question_articles bundle. (7) File hashes in REPORT.json match current articles.json/SOURCES.md on disk (recomputed SHA256 identical). (8) Greek/Roman distinction given for Poseidon/Neptune, Ares/Mars, Dionysus/Bacchus, but missing for Hephaestus/Vulcan - minor completeness gap, not counted as a factual error, worth adding on rework.\n\nLimitation: Met essay (metmuseum.org/pt/essays/greek-gods-and-religious-practices) returned HTTP 429 on every fetch attempt during this review session; could not independently re-verify its exact text today, only that the essay exists and covers the Olympian pantheon broadly per search snippets. This is a reviewer-side access limitation, not a finding against the draft. Scope: source drafting only, no import/export/UI/publishing verdict rendered; no edits made to any file."
+        }
+      },
+      "actual_response": {
+        "acceptance": "One qm-question-articles/v1 DRAFT_UNREVIEWED article question:greek-002 exact frozenref, four pedagogical source-backed sections,2–5actuallyreadmeaningfullinks, currentdraftSHA/sourcefacts limitations. No false factualacceptance or deploymentclaim; independentcheckrequired.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Beads3qx finite drafting from actualfeedback29. English DISTRACTOR_PILOT_EN.md has exactquestion/options/revision. Own only newdraftfolder DISTRACTOR_GREEK002_20261014/{articles.json,SOURCES.md,REPORT.json}. Four substantive interesting sections correctPoseidon +wrongHephaestus/Ares/Dionysus; source-supported distinctions not quizkeyvalidation. Open actualprimary/institutional sources,2–5canonicalHTTPSlinks supportallsections. No canonical/export/key/API/Git/SSH/browser/build/helpers. Reviewer fromdifferentprovider later. SourceReader278current; this pilotnotpublished.",
+        "created_at": 1792001949.3053303,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-4ccc8eda4aaf45358970221bcf033e14",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\articles.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\SOURCES.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "kind": "source_reading",
+              "result": "Opened Met Greek Gods essay and This is Athens Sounion page; source record discloses British Museum direct-fetch 403 and use of indexed catalogue extracts for those object pages."
+            },
+            {
+              "command": "Python json.loads/ref/source/section/hash validation",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "PASS: one DRAFT_UNREVIEWED article, exact greek-002 frozen ref, four headed sections, empty target_refs, five HTTPS sources. Word counts: Poseidon 150, Hephaestus 129, Ares 119, Dionysus 133."
+            },
+            {
+              "kind": "hashes",
+              "result": "articles.json B4D7331EA6F5A80C8B107E2027E0684F479A518335E34E1EDC2AC6626D30A1B3; SOURCES.md 71C3468EB3EB216486A59C23385F01C7B77541B788C0C6B5C1AB44202CC265C4; REPORT.json 443CC25D76073C65C311D83230441AB8948D17CD8BC04B90980ED70F9C5E4CAA"
+            }
+          ],
+          "limitations": [
+            "Different-provider fact review remains required.",
+            "No canonical import/export/tests/production change/publication was performed."
+          ],
+          "status": "DONE",
+          "summary": "READY for independent fact review: one DRAFT_UNREVIEWED Greek002 four-section Reader article, NOT_PUBLISHED."
+        },
+        "root_task_id": "task-4ccc8eda4aaf45358970221bcf033e14",
+        "run_id": "run-42d271da1bc24090908fdca23652c072",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Greek002 Reader pilot explaining every option with primary sources",
+        "version": 4,
+        "reviewer": "session-d8459a1de2954224a499083394a43d04",
+        "review_note": "Independent cross-provider fact-check (claude-code/claude-sonnet-5, session-d8459a1de2954224a499083394a43d04). REWORK: 1 unsupported factual claim. Арес section states the British Museum calyx-krater 1856,1213.1 shows 'дельфин на его шлеме' (a dolphin on Ares's helmet), citing the BM page as support. Direct fetch of that object page returned 403 (consistent with SOURCES.md disclosure), so I independently corroborated via WebSearch (CARC/Beazley archive mirror, Walters/Google Arts & Culture summaries of the same Niobid Painter krater): all independently found descriptions give Ares 'in helmet, cuirass, short chiton, greaves, mantle, shield' with no dolphin mentioned anywhere. No accessible source corroborates a dolphin device on this specific object. This looks like an invented/hallucinated detail, not a verified one, and violates the packet's 'no invented details / corroborate exact object claims or demand revision' requirement. Fix: remove the dolphin claim or replace with a genuinely source-backed detail for this object.\n\nVerified correct and accepted: (1) canonical binding exact - stem/options/option_ids/revision_sha256 e441297a...87fe7e all match next/content/prep-greek-mythology/bundle.json exactly, question_id greek-002 options opt-1..4 Гефест/Посейдон/Арес/Дионис preserved verbatim. (2) This Is Athens Sounion page fetched directly: confirms temple dedicated to Poseidon, edge of Cape Sounion, view of Aegean, ancient landmark for ships approaching Piraeus - matches draft's Посейдон section. (3) BM object 1839,1109.1 (Poseidon trident / Hephaestus double-axe) and BM object 1861,0425.50 (Dionysos ivy wreath+branch / Poseidon trident) independently corroborated via search despite BM 403s. (4) 4 headed sections present (Посейдон/Гефест/Арес/Дионис), word counts close to reported (148/127/119/131 vs reported 150/129/119/133). (5) 5 distinct HTTPS source_links (within 2-5 range), target_refs empty, status DRAFT_UNREVIEWED, schema qm-question-articles/v1 valid JSON. (6) No collision: question:greek-002 not present in any live study/question_articles bundle. (7) File hashes in REPORT.json match current articles.json/SOURCES.md on disk (recomputed SHA256 identical). (8) Greek/Roman distinction given for Poseidon/Neptune, Ares/Mars, Dionysus/Bacchus, but missing for Hephaestus/Vulcan - minor completeness gap, not counted as a factual error, worth adding on rework.\n\nLimitation: Met essay (metmuseum.org/pt/essays/greek-gods-and-religious-practices) returned HTTP 429 on every fetch attempt during this review session; could not independently re-verify its exact text today, only that the essay exists and covers the Olympian pantheon broadly per search snippets. This is a reviewer-side access limitation, not a finding against the draft. Scope: source drafting only, no import/export/UI/publishing verdict rendered; no edits made to any file."
+      }
+    }
+  },
+  "review_messages": [
+    "fact-checker-greek002 (claude-code/claude-sonnet-5, session-d8459a1de2954224a499083394a43d04) ready for task-4ccc8eda4aaf45358970221bcf033e14 independent fact-check. Already read packet/articles/sources/report and cross-checked sources independently; requesting the offer to accept."
+  ],
+  "report": "Review submitted successfully: task `task-4ccc8eda4aaf45358970221bcf033e14` is now in state **REWORK**, error_count 1.\n\n**Verdict: REWORK**\n\nKey finding — one unsupported/likely fabricated detail: the Арес section claims the British Museum calyx-krater `1856,1213.1` shows \"дельфин на его шлеме\" (a dolphin on Ares's helmet), citing that BM page. Direct fetch is 403'd (disclosed in SOURCES.md), but independent search corroboration (CARC/Beazley mirror, Walters/Google Arts & Culture descriptions of the same Niobid Painter krater) consistently describes Ares \"in helmet, cuirass, short chiton, greaves, mantle, shield\" — no dolphin anywhere. This looks invented and needs to be removed or replaced with a genuinely source-backed detail.\n\nEverything else checked out:\n- Canonical binding exact: stem/options/option_ids/revision SHA-256 match `next/content/prep-greek-mythology/bundle.json` verbatim.\n- This Is Athens Sounion claims confirmed by direct fetch.\n- BM objects `1839,1109.1` (Poseidon trident/Hephaestus axe) and `1861,0425.50` (Dionysos ivy/Poseidon trident) independently corroborated via search.\n- 4 headed sections, word counts close to reported, 5 HTTPS source links, valid JSON/schema, no collision with the live Reader, file hashes match REPORT.json.\n- Minor gap (not counted as an error): Hephaestus section omits the Vulcan/Roman-name note that the other three sections include.\n- Limitation: couldn't re-fetch the Met essay today (429s throughout); noted as a reviewer-side access gap, not a finding against the draft.\n\nNo files were edited — this was a read-only independent review, submitted via host_hub as instructed.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4a3caeaf95212a33d84c02d043f14a792e22ca17e3fce57ed95ab953963a14ab",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

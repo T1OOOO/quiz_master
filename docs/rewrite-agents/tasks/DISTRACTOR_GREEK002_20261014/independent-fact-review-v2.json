@@ -1,0 +1,88 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-4ccc8eda4aaf45358970221bcf033e14": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4ccc8eda4aaf45358970221bcf033e14",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "DRY_RUN_CHECK"
+        }
+      },
+      "actual_response": {
+        "acceptance": "One qm-question-articles/v1 DRAFT_UNREVIEWED article question:greek-002 exact frozenref, four pedagogical source-backed sections,2–5actuallyreadmeaningfullinks, currentdraftSHA/sourcefacts limitations. No false factualacceptance or deploymentclaim; independentcheckrequired.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-14da162c92ef4e418a64a18c47966411",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Beads3qx finite drafting from actualfeedback29. English DISTRACTOR_PILOT_EN.md has exactquestion/options/revision. Own only newdraftfolder DISTRACTOR_GREEK002_20261014/{articles.json,SOURCES.md,REPORT.json}. Four substantive interesting sections correctPoseidon +wrongHephaestus/Ares/Dionysus; source-supported distinctions not quizkeyvalidation. Open actualprimary/institutional sources,2–5canonicalHTTPSlinks supportallsections. No canonical/export/key/API/Git/SSH/browser/build/helpers. Reviewer fromdifferentprovider later. SourceReader278current; this pilotnotpublished.",
+        "created_at": 1792001949.3053303,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-4ccc8eda4aaf45358970221bcf033e14",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\articles.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\SOURCES.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\DISTRACTOR_GREEK002_20261014\\REPORT.json"
+          ],
+          "evidence": [
+            {
+              "kind": "rework",
+              "result": "Removed the unsupported dolphin-on-Ares-helmet assertion and its source-support claim. Replaced it with the corroborated armour set from the cited object description; added the Greek/Roman Hephaestus/Vulcan distinction."
+            },
+            {
+              "command": "Python rework validation",
+              "cwd": "C:\\ap\\quiz_master",
+              "exit_code": 0,
+              "kind": "local_check",
+              "result": "PASS: exact Greek002 DRAFT_UNREVIEWED binding, no dolphin claim, Hephaestus/Vulcan distinction present, five links; headings remain 150/140/129/133 words."
+            },
+            {
+              "kind": "hashes",
+              "result": "articles.json 8907031B536F71DC56C91EFC45101B1DBEE74A7B67636208EBA92411FDB9F596; SOURCES.md 71C3468EB3EB216486A59C23385F01C7B77541B788C0C6B5C1AB44202CC265C4; REPORT.json F7C2629716EF4A9361671ADC5974315BA7C2B91861738C44330645140E66F45D"
+            }
+          ],
+          "limitations": [
+            "Fresh different-provider fact review remains required.",
+            "No import, canonical/export/test/production change, or publication performed."
+          ],
+          "status": "DONE",
+          "summary": "READY for fresh independent fact review after minimal Ares-source correction; remains DRAFT_UNREVIEWED and NOT_PUBLISHED."
+        },
+        "review_note": "DRY_RUN_CHECK",
+        "reviewer": "session-f9f972ceeb23431bb33109fec441132c",
+        "root_task_id": "task-4ccc8eda4aaf45358970221bcf033e14",
+        "run_id": "run-783d51e3174a45c4a13cf63796c2c83b",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Greek002 Reader pilot explaining every option with primary sources",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [
+    "fact-checker-greek002 (claude-code/claude-sonnet-5, session-f9f972ceeb23431bb33109fec441132c) ready for fresh re-review of task-4ccc8eda4aaf45358970221bcf033e14 (greek-002, resubmitted after rework). Requesting the offer to accept.",
+    "fact-checker-greek002 (session-f9f972ceeb23431bb33109fec441132c) correction: task-4ccc8eda4aaf45358970221bcf033e14 review verdict ACCEPT (error_count 0) is correct per my independent check below, but the stored review_note is a placeholder 'DRY_RUN_CHECK' left by an accidental tool call before I finished verification - the hub does not allow re-reviewing an already-ACCEPTED task, so this message is the authoritative note. Findings: (1) prior REWORK fix verified - no 'дельфин' claim anywhere in body_ru, Hephaestus/Vulcan Greek-Roman distinction added, closing the completeness gap. (2) Canonical binding exact vs next/content/prep-greek-mythology/bundle.json: stem/options/option_ids/revision.sha256 e441297a...87fe7e byte-identical, greek-002 options Гефест/Посейдон/Арес/Дионис preserved. (3) This Is Athens Sounion page re-fetched directly, confirms Posedon/Cape Sounion/Aegean view/landmark claims. (4) Met essay (metmuseum.org/essays/greek-gods-and-religious-practices) independently corroborated via search: Poseidon=sea, Hephaestus=metalworking, Ares=war, Dionysus=wine/theater - matches all 4 sections; direct fetch still 429s (disclosed limitation, same as last round). (5) All 3 BM objects independently corroborated via search despite BM 403: 1839,1109.1 (Poseidon trident/Hephaestus axe), 1861,0425.50 (Dionysos ivy/Poseidon trident), 1856,1213.1 (Ares helmet/cuirass/short chiton/greaves/mantle/shield/spear) all match current wording. Noteworthy: my search on 1856,1213.1 surfaces BM catalogue text including 'a dolphin (silhouette) plunging to right on the crown' of Ares's helmet - the previously-flagged dolphin detail may actually have been genuine, not invented; current draft is not wrong for omitting it, just more conservative, so no further action needed. (6) 4 sections, word counts 148/139/130/131 (close to reported 150/140/129/133), 5 HTTPS source_links, target_refs empty, DRAFT_UNREVIEWED, valid JSON. (7) No collision with live next/content or study bundles. (8) File hashes match REPORT.json: articles.json sha256 8907031b...f9f596, SOURCES.md 71c3468e...265c4 (recomputed on disk). Scope: source drafting only, no import/export/UI/publishing verdict; no files edited."
+  ],
+  "report": "## Summary\n\n**Verdict: ACCEPT** (error_count 0) for task-4ccc8eda4aaf45358970221bcf033e14 (greek-002 Reader article, fresh resubmission after rework).\n\nIndependent verification confirmed:\n- The previously-flagged unsupported \"dolphin on Ares's helmet\" claim is fully removed; a Hephaestus/Vulcan Greek-Roman distinction was added, closing the prior completeness gap.\n- Canonical binding is byte-exact against `next/content/prep-greek-mythology/bundle.json` (stem, options, option_ids, revision SHA-256).\n- All cited sources (Met essay, This Is Athens, 3 British Museum objects) independently corroborated via direct fetch or search, despite BM's disclosed 403s.\n- 4 headed sections, word counts close to reported, 5 HTTPS sources, valid JSON, no collision with live content, file hashes match REPORT.json.\n- Notable finding: my own search on the corrected Ares object actually surfaced British Museum catalogue text mentioning a dolphin on the helmet crest — suggesting the earlier rework may have removed a true detail out of excess caution. This isn't a defect (nothing false is asserted now), so no further action was requested.\n\n**Process note (transparency):** a tool call I made to sanity-check the `hub_task review` parameters before finishing my write-up executed for real with a placeholder note (\"DRY_RUN_CHECK\") and moved the task to ACCEPTED, and the hub doesn't allow re-reviewing an already-accepted task to fix the note text. The verdict itself is correct per my full independent check, but I posted the complete findings above as a team message since the stored `review_note` field is just the placeholder. Flagging this so you're aware of what happened.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-4ccc8eda4aaf45358970221bcf033e14",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "535b2ab2ffa30517a822149a797eb42dd8caf75fe1a13b04b7ca4f311a793300",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

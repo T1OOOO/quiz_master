@@ -1,0 +1,44 @@
+{
+  "packet": "DISTRACTOR_GREEK002_20261014",
+  "status": "DRAFT_UNREVIEWED / NOT_PUBLISHED",
+  "question_ref": {
+    "quiz_id": "prep-greek-mythology",
+    "question_id": "greek-002",
+    "revision_sha256": "e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e"
+  },
+  "sections": {
+    "Посейдон": 150,
+    "Гефест": 140,
+    "Арес": 129,
+    "Дионис": 133
+  },
+  "source_coverage": "Poseidon/Sounion: Met and This is Athens; Hephaestus: Met and British Museum amphora; Ares: Met and British Museum calyx-krater, with only its corroborated armour description; Dionysus: Met and British Museum amphora.",
+  "checks": [
+    {
+      "command": "Python json.loads plus structure/ref/source/section check",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0,
+      "result": "One article, four required headed sections, exact frozen ref, target_refs empty, five HTTPS source links."
+    },
+    {
+      "command": "Get-FileHash SHA256 articles.json SOURCES.md",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0
+    },
+    {
+      "command": "2026-10-14 minimal rework: remove unsupported Ares dolphin claim and revalidate JSON/ref/source/section structure",
+      "cwd": "C:/ap/quiz_master",
+      "exit_code": 0,
+      "result": "Removed the unsupported dolphin-on-helmet sentence and source support text; retained only corroborated armour attributes. Added Greek/Roman Hephaestus/Vulcan distinction."
+    }
+  ],
+  "limitations": [
+    "Met and This is Athens pages were opened directly. British Museum direct-fetch 403 remains disclosed; its indexed catalogue extracts support only the listed object descriptions. The former Ares dolphin claim was removed after independent rework.",
+    "No independent fact review, canonical import, export, test, production edit, or publication was performed."
+  ],
+  "hashes": {
+    "articles.json": "8907031B536F71DC56C91EFC45101B1DBEE74A7B67636208EBA92411FDB9F596",
+    "SOURCES.md": "71C3468EB3EB216486A59C23385F01C7B77541B788C0C6B5C1AB44202CC265C4"
+  },
+  "runtime_identity": "openai/gpt-6.1-sol; session-14da162c92ef4e418a64a18c47966411"
+}
