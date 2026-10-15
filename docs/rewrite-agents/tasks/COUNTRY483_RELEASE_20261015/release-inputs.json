@@ -1,0 +1,95 @@
+{
+  "schema_version": "qm-country483-release-inputs/v1",
+  "recorded_utc": "2026-10-15T20:36:36.326310+00:00",
+  "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+  "evidence_checkpoint": "cfda66fb5aa9118b23e50c95749e8a0c19b70145",
+  "build_id": "quiz-2026.10.15-country483-3c22818",
+  "baseline": {
+    "build_id": "quiz-2026.10.15-reader303-14b7da4",
+    "helm_revision": 63,
+    "image": "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "feedback_count": 29,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e"
+  },
+  "prior_archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\package-v2\\quiz-2026.10.15-reader303-14b7da4.tar.gz",
+    "sha256": "0df5f4496ab163a0cbeefaedce2c62af8d7d8b322b19dd41c4bc16e50cc79a0b",
+    "bytes": 60989154,
+    "uncompressed_bytes": 108100423
+  },
+  "capacity": {
+    "available_bytes": 21167591424,
+    "total_bytes": 102417174528,
+    "strict_floor_minimum_bytes": 20483434906,
+    "headroom_above_strict_floor_bytes": 684156518,
+    "remote_peak_certified": false
+  },
+  "web_roots": {
+    "production": "C:\\ap\\quiz_master\\.run\\country483_runtime_20261015\\production-web",
+    "qa": "C:\\ap\\quiz_master\\.run\\country483_runtime_20261015\\qa-web"
+  },
+  "proofs": {
+    "docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/native-source-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY_LABELS_483_20261015\\native-source-review.json",
+      "sha256": "5308803d4d9c74b13139eadb3b5d75df1ea12df53474e1755231f9293fee224d"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/integration-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY_LABELS_483_20261015\\integration-review.json",
+      "sha256": "49d26dbdee25158962ce0db1e55a535a3ef1ec629fb10816ecc34c1db0399440"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/actual-flutter-builds.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015\\actual-flutter-builds.json",
+      "sha256": "43a32a6fecebd1f8e95a08ad6f696014c7c1116eb2e29491ef20c97f6de166b8"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/browser-proof.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015\\browser-proof.json",
+      "sha256": "164c6a9e42d2e6e652c02baf8f944743109126f2a03513aa5db7f2d9d94feb6e"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/review-inputs.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015\\review-inputs.json",
+      "sha256": "058cb443ff3acf6e6af7fedd369e0636592bace5556b737714ecd8bfdedb6735"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/independent-runtime-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015\\independent-runtime-review.json",
+      "sha256": "703dfa050f64960a2fb28bc49c3c1cc01e623215e0c2bbfe329d784a696e5400"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/final-checks.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015\\final-checks.json",
+      "sha256": "d13612759c241a43454d253df914572bf0062916c6ab9ee93c9f44a33aab397a"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/production-baseline.jsonl": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\production-baseline.jsonl",
+      "sha256": "2d92e8bcccd14da3a53d10b2e0c5ded00ec1fd0c354bccfc0473c06ca19235b7"
+    },
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/baseline-exit.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\baseline-exit.json",
+      "sha256": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472"
+    },
+    "next/apps/quiz_app/assets/quizipedia/catalog.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\catalog.json",
+      "sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc"
+    },
+    "next/apps/quiz_app/assets/quizipedia/manifest.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\manifest.json",
+      "sha256": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+    },
+    "next/apps/quiz_app/assets/catalog.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "sha256": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618"
+    },
+    "next/apps/quiz_app/assets/study/question-articles.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "sha256": "84f0cac186aa95c6abf910a396b88201e25cdf67a388130956f7548c4c567733"
+    }
+  },
+  "counts": {
+    "packs": 136,
+    "questions": 4084,
+    "reader_articles": 303,
+    "reader_refs": 184,
+    "playable_refs": 182,
+    "noncatalog_refs": 2
+  },
+  "publication_performed": false
+}

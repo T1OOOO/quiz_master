@@ -1,0 +1,64 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-ba977daca1a8416a855563f8fa717e97": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ba977daca1a8416a855563f8fa717e97",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local files only; I did not witness Root's SSH/capacity checks live. Recomputed sha256 for all 29 review-inputs.json entries: 0 mismatches/missing. Cross-checked release-inputs.json baseline/proof pins against the actually accepted runtime evidence (source 3c22818, build id, Helm63/image/PVC/29-feedback digest) — consistent. Independently ran the unit suite (13/13 pass) and --verify (exit0, output matches package-preparation.json and REPORT.md exactly: 332 members, archive sha 15eb5d57..., 9 changed paths, unchanged API/Nginx/quiz/reader counts). Capacity headroom (~652MB above strict 20% floor) is Root's local record, not independently verified by me, and is correctly disclosed as remote-peak-uncertified. No remote preparation/image/rehearsal/publication claimed or performed. ACCEPT. Bound to 29-file review-inputs.json sha256 0e1f02cf04393ae6a4b16fb7557551f47a65e86d314eea5b3aa5342e34ba0c1d; test exit0, verify exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fresh actual63/303/29OPEN baseline, exact accepted source/build/browser pins and bounded capacity evidence. Native unit/dry-package evidence independently reviewed, source hashes frozen, owned stable work committed/pushed. Package stage is local and never misrepresented as image/rehearsal/publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015",
+          "C:\\ap\\quiz_master\\.run\\country483_release_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns COUNTRY483_RELEASE_20261015 outside worker/ and ignored matching runtime outside worker/. Native a1f40196 owns worker folders only until frozen. Preserve all old Reader303 and accepted Country483 runtime evidence. Refresh read-only production baseline and feedback digest, pin actual source/build/browser/review inputs for the pure atlas-label release, inspect native adapter and local package, record content preservation and remaining remote gates. No app/content source edits, shared resources or GitHub Actions. Do not execute any remote preparation/publication before independent code/evidence acceptance. Beads/Git integration owned by Root; keep483 and all real feedback open until published verification. Actual current image/PVC/strict20% baseline must be used, no stale62 assumptions. Gemini remains unavailable; no quota retry.",
+        "created_at": 1792096547.2461452,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ba977daca1a8416a855563f8fa717e97",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/review-inputs.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/integration-evidence.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/REPORT.md"
+          ],
+          "summary": "Pinned13 source/proof inputs and current63 baseline; actual read-only checks retain all29feedbackOPEN. Native local package332members/9allowedchangedpaths, archive15eb5d57. Root inspected producer and ran actual --verify CLI0; source/app/101oldreleaseinputs/69foreignhashes preserved. Native13tests0, positiveprepare0, verify0, Bashsyntax0, publish mode correctly refused1 and six actual mutations restored/refused. Source frozen;29-file review manifest binds package receipt, worker and baseline evidence. No remote preparation/image/rehearsal/publication; peak disk footprint remains uncertified."
+        },
+        "root_task_id": "task-ba977daca1a8416a855563f8fa717e97",
+        "run_id": "run-18b9df13111243969723d910d074ae98",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: bind current baseline and local release-package evidence",
+        "version": 4,
+        "reviewer": "session-0c914d297d4f4f24a2a6b7610fdebe04",
+        "review_note": "Independent Claude review, local files only; I did not witness Root's SSH/capacity checks live. Recomputed sha256 for all 29 review-inputs.json entries: 0 mismatches/missing. Cross-checked release-inputs.json baseline/proof pins against the actually accepted runtime evidence (source 3c22818, build id, Helm63/image/PVC/29-feedback digest) — consistent. Independently ran the unit suite (13/13 pass) and --verify (exit0, output matches package-preparation.json and REPORT.md exactly: 332 members, archive sha 15eb5d57..., 9 changed paths, unchanged API/Nginx/quiz/reader counts). Capacity headroom (~652MB above strict 20% floor) is Root's local record, not independently verified by me, and is correctly disclosed as remote-peak-uncertified. No remote preparation/image/rehearsal/publication claimed or performed. ACCEPT. Bound to 29-file review-inputs.json sha256 0e1f02cf04393ae6a4b16fb7557551f47a65e86d314eea5b3aa5342e34ba0c1d; test exit0, verify exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`.\n\n**task-a1f401964fd4405bb7584efa14d2fdb8 (native worker code)** — ACCEPT. The adapter (`prepare_country483.py`) is carefully fail-closed: hash-pinned dependencies, no network/SSH/Docker/`helm upgrade` calls anywhere, output path validated against symlink/junction/traversal/pre-existing-dir escape, archive membership and permissions checked byte-for-byte. I ran the unit suite and the `--verify` command myself rather than trusting the claims:\n- `python -B -m unittest discover ... -v` → **13/13 passed**\n- `python -B prepare_country483.py --verify package-v1/package-preparation.json` → **exit 0**, output matches the receipt exactly (332 members, archive sha `15eb5d57...`, 9 changed paths confined to the atlas catalog/manifest, compiled web build artifacts, `cutover.sh`/`rehearse.py`, `checksums.txt`)\n\nI did not personally re-run the separate 6-mutation live-corruption replay (`negative-package-checks.json`); my own unit-test run covers functionally equivalent fail-closed paths (anchor drift, binary mutation, stale baseline/image, archive traversal), all passing.\n\n**task-ba977daca1a8416a855563f8fa717e97 (Root baseline/package binding)** — ACCEPT. Recomputed sha256 for all 29 pinned review-inputs.json entries myself (0 mismatches/missing), and cross-checked the baseline/proof pins against the already-accepted runtime evidence — internally consistent. I did not witness Root's SSH/capacity checks live; that's correctly disclosed in the evidence as a local record, with remote peak capacity explicitly uncertified.\n\nNo defects found in either task. No remote preparation, image build, Helm upgrade, SSH, or publication occurred — this remains a local, prepare-only artifact; issue 483 stays open pending a separately reviewed remote/publication packet.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-ba977daca1a8416a855563f8fa717e97",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "f9cddcea49b566f7bcd0d820cbc9baedec7b5c83e1e3028b362b102f06c0a9ee",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

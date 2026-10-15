@@ -1,0 +1,101 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a1f401964fd4405bb7584efa14d2fdb8": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a1f401964fd4405bb7584efa14d2fdb8",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local-only. Read prepare_country483.py/test_country483_release.py in full: fail-closed, hash-pinned dependencies, no network/SSH/Docker/helm-upgrade calls, output path validated against traversal/symlink/existing-dir escape, archive membership/permissions validated. Ran `python -B -m unittest discover ... test_country483_release.py -v` myself: 13/13 passed (matches claim). Ran `--verify package-v1/package-preparation.json` myself: exit 0, JSON matches receipt exactly (332 members, archive sha 15eb5d57..., 9 changed paths limited to catalog.json/manifest.json/web build artifacts/cutover.sh/rehearse.py/checksums.txt). Did not personally re-run the separate 6-mutation negative-package-checks.json replay; relied on my own unit-test run covering equivalent anchor-drift/binary-mutation/stale-baseline/traversal refusals, all of which passed. No source/evidence edits performed by me. ACCEPT. Bound to 29-file review-inputs.json sha256 0e1f02cf04393ae6a4b16fb7557551f47a65e86d314eea5b3aa5342e34ba0c1d."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal reviewed prepare-only adapter/tests; actual local unit commands and exits, safe local package dry run if possible; exact content-preservation/11label delta and current63 guard proof. No remote execution, image/rehearsal/publication claim. Root independently reviews source and obtains different-provider acceptance before remote use.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\worker",
+          "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "You own ONLY docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker and .run/country483_release_20261015/worker. Root owns the surrounding release packet, baseline/acceptance pins, Git/Beads and any remote operations. You are not alone; preserve unrelated work. Create the smallest local prepare-only adapter for the accepted Country483 Flutter artifacts, reusing existing Reader303/house safe archive, checksum, runtime-revision and release guard functions. Existing current package .run/reader303_release_20261015/package-v2/quiz-2026.10.15-reader303-14b7da4.tar.gz SHA0df5f4496ab163a0cbeefaedce2c62af8d7d8b322b19dd41c4bc16e50cc79a0b. Baseline is Reader303/Helm63, BOTH images docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14, same PVC. Frozen app source3c2281815b768271d9110f2d28fa415c0eefe06c; build quiz-2026.10.15-country483-3c22818. Accepted actual builds and browser proof in COUNTRY483_RUNTIME_20261015; outputs .run/country483_runtime_20261015/{production-web,qa-web}, actual official Claude task96da accepted CLI0/error0. Source/integration reviews in COUNTRY_LABELS_483_20261015. Pin and verify the exact evidence before preparing. Data delta is only11country name_ru labels and mirrored atlas manifest in web assets; same136packs4084questions/keys, reader303/184refs182playable2noncatalog. Preserve API SHA f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850, Nginx e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc, all quizzes/readers/taxonomy/schema/runtime bundle bytes. No article additions or assertions of new Linux candidate. Retarget old prepare-only controls to exact baseline63/currentimage and new build/source/mainJS hash, same strict >20% containerd disk/node/PVC/29OPEN fullrow digest guards, unchanged backup/rollback and copied-DB rehearsal requirements. No helm upgrade in prepare controls. Prefer reuse over a new deployment framework. Guard every scripted replacement; fail closed for stale/mutated proof, prior archive, unrelated content delta, unsafe archive/output, altered binaries or old baseline. Meaningful small unit regressions and positive local dry preparation are authorized, no Flutter rebuild or remote/server/network actions. Do not alter any old frozen files. No children/Git/shared cleanup/Gemini retry. Submit exact source/evidence hashes and limitations, freeze then stop for independent Claude review.",
+        "created_at": 1792096470.9394844,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-a1f401964fd4405bb7584efa14d2fdb8",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/REPORT.md",
+              "sha256": "aa07660f024fa3916da2d1b7a9dee9d37659c1e01b4db0d55106b76f2301cbfd"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/evidence.json",
+              "sha256": "b2605e1ab3f4495ae231d20e1b1903313569005e256f2046c471d5b91874a0a3"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py",
+              "sha256": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/test_country483_release.py",
+              "sha256": "bd07d6bb6d1cc3188aef2c6b386d94cfca3680cdd13a01919b1ce6a029b7b0db"
+            },
+            {
+              "file_members": 332,
+              "path": "C:/ap/quiz_master/.run/country483_release_20261015/worker/package-v1/quiz-2026.10.15-country483-3c22818.tar.gz",
+              "sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416"
+            },
+            {
+              "local_only": true,
+              "path": "C:/ap/quiz_master/.run/country483_release_20261015/worker/package-v1/package-preparation.json",
+              "remote_preparation_performed": false,
+              "sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_release_20261015/worker/final-check-results.json",
+              "result": "13tests exit0; independentverify0; Bashsyntax0; publicationmode refused exit1 beforehostoperations"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_release_20261015/worker/negative-package-checks.json",
+              "result": "6mutations refused; originalbytes restored; finalrealverify passed"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_release_20261015/worker/guard-red.json",
+              "result": "Actual old62 guard fails current63 requirement exit1; retained raw failure."
+            }
+          ],
+          "status": "DONE",
+          "summary": "Frozen minimal local-only Country483 producer and13-test suite. Actual positive local package/independentverify0, Bashsyntax0, publish-mode refusal1, six package/stage/receipt mutations rejected and restored, finalpackage valid.332members; exactly9changed paths including only11atlas name_ru labels+atlas manifest and reviewed compiled/control/version bytes. Allquiz/Reader/API/Nginx/schema/runtime content bytes preserved. No server/candidate/preparation/publication claim; newcontroller review and remotepeak/candidateatlas checks remain Root-owned."
+        },
+        "root_task_id": "task-a1f401964fd4405bb7584efa14d2fdb8",
+        "run_id": "run-05847090ff524e37b316d92cf5cd113f",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: prepare minimal asset-only successor release adapter",
+        "version": 4,
+        "reviewer": "session-0c914d297d4f4f24a2a6b7610fdebe04",
+        "review_note": "Independent Claude review, local-only. Read prepare_country483.py/test_country483_release.py in full: fail-closed, hash-pinned dependencies, no network/SSH/Docker/helm-upgrade calls, output path validated against traversal/symlink/existing-dir escape, archive membership/permissions validated. Ran `python -B -m unittest discover ... test_country483_release.py -v` myself: 13/13 passed (matches claim). Ran `--verify package-v1/package-preparation.json` myself: exit 0, JSON matches receipt exactly (332 members, archive sha 15eb5d57..., 9 changed paths limited to catalog.json/manifest.json/web build artifacts/cutover.sh/rehearse.py/checksums.txt). Did not personally re-run the separate 6-mutation negative-package-checks.json replay; relied on my own unit-test run covering equivalent anchor-drift/binary-mutation/stale-baseline/traversal refusals, all of which passed. No source/evidence edits performed by me. ACCEPT. Bound to 29-file review-inputs.json sha256 0e1f02cf04393ae6a4b16fb7557551f47a65e86d314eea5b3aa5342e34ba0c1d."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`.\n\n**task-a1f401964fd4405bb7584efa14d2fdb8 (native worker code)** — ACCEPT. The adapter (`prepare_country483.py`) is carefully fail-closed: hash-pinned dependencies, no network/SSH/Docker/`helm upgrade` calls anywhere, output path validated against symlink/junction/traversal/pre-existing-dir escape, archive membership and permissions checked byte-for-byte. I ran the unit suite and the `--verify` command myself rather than trusting the claims:\n- `python -B -m unittest discover ... -v` → **13/13 passed**\n- `python -B prepare_country483.py --verify package-v1/package-preparation.json` → **exit 0**, output matches the receipt exactly (332 members, archive sha `15eb5d57...`, 9 changed paths confined to the atlas catalog/manifest, compiled web build artifacts, `cutover.sh`/`rehearse.py`, `checksums.txt`)\n\nI did not personally re-run the separate 6-mutation live-corruption replay (`negative-package-checks.json`); my own unit-test run covers functionally equivalent fail-closed paths (anchor drift, binary mutation, stale baseline/image, archive traversal), all passing.\n\n**task-ba977daca1a8416a855563f8fa717e97 (Root baseline/package binding)** — ACCEPT. Recomputed sha256 for all 29 pinned review-inputs.json entries myself (0 mismatches/missing), and cross-checked the baseline/proof pins against the already-accepted runtime evidence — internally consistent. I did not witness Root's SSH/capacity checks live; that's correctly disclosed in the evidence as a local record, with remote peak capacity explicitly uncertified.\n\nNo defects found in either task. No remote preparation, image build, Helm upgrade, SSH, or publication occurred — this remains a local, prepare-only artifact; issue 483 stays open pending a separately reviewed remote/publication packet.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-a1f401964fd4405bb7584efa14d2fdb8",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "f9cddcea49b566f7bcd0d820cbc9baedec7b5c83e1e3028b362b102f06c0a9ee",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

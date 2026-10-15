@@ -1,0 +1,52 @@
+{
+  "status": "LOCAL_PACKAGE_VERIFIED_PENDING_INDEPENDENT_REVIEW",
+  "root_verify_command": [
+    "python",
+    "-B",
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py",
+    "--verify",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json"
+  ],
+  "actual_exit": 0,
+  "observed_exec_elapsed_seconds": 7.52,
+  "stdout_matches_package_receipt": true,
+  "archive_sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+  "archive_bytes": 60989538,
+  "receipt_sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2",
+  "file_members": 332,
+  "exact_changed_paths": [
+    "checksums.txt",
+    "cutover.sh",
+    "expected-staging-revisions.json",
+    "rehearse.py",
+    "web/.last_build_id",
+    "web/assets/assets/quizipedia/catalog.json",
+    "web/assets/assets/quizipedia/manifest.json",
+    "web/main.dart.js",
+    "web/version.json"
+  ],
+  "counts": {
+    "packs": 136,
+    "questions": 4084,
+    "reader_articles": 303,
+    "reader_refs": 184,
+    "playable_refs": 182,
+    "noncatalog_refs": 2
+  },
+  "worker_source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76",
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/test_country483_release.py": "bd07d6bb6d1cc3188aef2c6b386d94cfca3680cdd13a01919b1ce6a029b7b0db"
+  },
+  "old_reader303_inputs_preserved": 101,
+  "foreign_hashes_preserved": 69,
+  "app_source_unchanged": true,
+  "remote_preparation_performed": false,
+  "capacity_peak_certified": false,
+  "remaining": [
+    "Independent adapter/package review",
+    "Fresh reviewed remote packet with exact candidate atlas hash checks",
+    "Image and copied-DB rehearsal/rollback/capacity gates",
+    "Independent execution review and publication",
+    "Published country search verification before issue483 closure"
+  ]
+}

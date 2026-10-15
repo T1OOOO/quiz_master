@@ -1,0 +1,206 @@
+{
+  "status": "DONE_FOR_INDEPENDENT_REVIEW",
+  "hub_task": "task-a1f401964fd4405bb7584efa14d2fdb8",
+  "hub_run": "run-05847090ff524e37b316d92cf5cd113f",
+  "source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76",
+    "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/test_country483_release.py": "bd07d6bb6d1cc3188aef2c6b386d94cfca3680cdd13a01919b1ce6a029b7b0db"
+  },
+  "historical_dependencies_sha256": {
+    "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc"
+  },
+  "root_release_inputs": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\release-inputs.json",
+    "sha256": "bfc85e10404b9bf82971c0e406c022c11ae256bf22aff89c24d0d0eb81725cdb"
+  },
+  "package": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "local_only": true,
+    "build_id": "quiz-2026.10.15-country483-3c22818",
+    "frozen_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+    "release_inputs_sha256": "bfc85e10404b9bf82971c0e406c022c11ae256bf22aff89c24d0d0eb81725cdb",
+    "archive": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818.tar.gz",
+    "archive_sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+    "file_members": 332,
+    "counts": {
+      "packs": 136,
+      "questions": 4084,
+      "reader_articles": 303,
+      "reader_refs": 184,
+      "playable_refs": 182,
+      "noncatalog_refs": 2
+    },
+    "changed_paths": [
+      "checksums.txt",
+      "cutover.sh",
+      "expected-staging-revisions.json",
+      "rehearse.py",
+      "web/.last_build_id",
+      "web/assets/assets/quizipedia/catalog.json",
+      "web/assets/assets/quizipedia/manifest.json",
+      "web/main.dart.js",
+      "web/version.json"
+    ],
+    "unchanged_nonweb_content": true,
+    "baseline_helm_revision": 63,
+    "baseline_image": "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+    "baseline_checksums_sha256": "06d3ff4fca6a5b9265164459c25e4abcdc8e4c2cf753c5d1768595d457de1304",
+    "controller_source_sha256": {
+      "prepare_country483.py": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76",
+      "test_country483_release.py": "bd07d6bb6d1cc3188aef2c6b386d94cfca3680cdd13a01919b1ce6a029b7b0db"
+    },
+    "dependencies_sha256": {
+      "MIXED_RELEASE_20261014/worker/prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+      "READER303_RELEASE_20261015/release-worker/reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc"
+    },
+    "checksums_sha256": "423e8acf6967be596760f6bf472420907ebc47597a16d95d90270815162daa9b",
+    "qa_checked_not_packaged": "C:\\ap\\quiz_master\\.run\\country483_runtime_20261015\\qa-web",
+    "remote_preparation_performed": false,
+    "execution_approval_required": true,
+    "remote_peak_certified": false
+  },
+  "package_receipt": {
+    "path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json",
+    "sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2"
+  },
+  "checks": [
+    {
+      "label": "unit-final",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\worker",
+        "-p",
+        "test_country483_release.py",
+        "-v"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 2.97,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\unit-final.log",
+      "stdout_sha256": "f6546607353c956c03603c23d5331acb26f21d5e58a9788bf28765c7145658d7"
+    },
+    {
+      "label": "verify-local-package",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\worker\\prepare_country483.py",
+        "--verify",
+        "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 4.96,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\verify-local-package.log",
+      "stdout_sha256": "7b35174f7ae60ccc4fcbe54cb583e3d666115cc14f7ddf15778427be6d6ad4f8"
+    },
+    {
+      "label": "bash-syntax",
+      "command": [
+        "C:/Program Files/Git/bin/bash.exe",
+        "-n",
+        "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818\\cutover.sh"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 0.12,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\bash-syntax.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "publication-mode-refused",
+      "command": [
+        "C:/Program Files/Git/bin/bash.exe",
+        "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818\\cutover.sh",
+        "publish"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 1,
+      "elapsed_seconds": 0.16,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\publication-mode-refused.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "negative_checks": {
+    "actual_exit": 0,
+    "checks": [
+      {
+        "mutation": "api",
+        "refused": true,
+        "error": "unrelated content/binary/Reader/schema change: api"
+      },
+      {
+        "mutation": "next/apps/quiz_app/assets/study/question-articles.json",
+        "refused": true,
+        "error": "unrelated content/binary/Reader/schema change: next/apps/quiz_app/assets/study/question-articles.json"
+      },
+      {
+        "mutation": "cutover.sh",
+        "refused": true,
+        "error": "local prepare/rehearsal guards drifted"
+      },
+      {
+        "mutation": "receipt.archive_sha256",
+        "refused": true,
+        "error": "local archive differs"
+      },
+      {
+        "mutation": "receipt.file_members",
+        "refused": true,
+        "error": "archive/stage membership or bytes differ"
+      },
+      {
+        "mutation": "receipt.frozen_commit",
+        "refused": true,
+        "error": "local receipt identity/claims differ"
+      }
+    ],
+    "all_original_bytes_restored": true,
+    "final_real_package_verification": true
+  },
+  "prepare": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      "docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py",
+      "--output-root",
+      "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "elapsed_seconds": 17.03,
+    "stdout_sha256": "7b35174f7ae60ccc4fcbe54cb583e3d666115cc14f7ddf15778427be6d6ad4f8"
+  },
+  "red": {
+    "command": [
+      "C:/Python314/python.exe",
+      ".run\\country483_release_20261015\\worker\\red_current_baseline.py"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 1
+  },
+  "raw_evidence_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\guard-red.log": "d46b65e1bf0a66177c4b980b1a2896497873a85f5ce162489d9c97d9528767a0",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\guard-red.json": "df6045d6c983d3e50c2ece7c74b18445d3a1486c9e753d3097fb1ad20993cf3a",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\unit-attempt01.log": "303a1b929c5915f694c26480be3d5ab51c608dee4cf55e70e8b9dd5f2a251e24",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\unit-attempt01.json": "21b00834e084468956c3a59da8ddc34a7f70f3d4634db44f2d5599e11465f876",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\unit-final.log": "f6546607353c956c03603c23d5331acb26f21d5e58a9788bf28765c7145658d7",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\verify-local-package.log": "7b35174f7ae60ccc4fcbe54cb583e3d666115cc14f7ddf15778427be6d6ad4f8",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\bash-syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\publication-mode-refused.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\final-check-results.json": "593055e87e6b738a3e1a561ca58bc2fa826976113976f58974e384f2eeddfeef",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\prepare-attempt01.log": "7b35174f7ae60ccc4fcbe54cb583e3d666115cc14f7ddf15778427be6d6ad4f8",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\prepare-attempt01.json": "c728f9e50550b7cafc819d9ddf8c5eb09084b2f7ecff6fa6d489348aa89da5b7",
+    "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\negative-package-checks.json": "ab8b5c6b67a56ebdddf618a6d05914e8ea5a390e564caf5c68549f99a474489a"
+  },
+  "remote_preparation_performed": false,
+  "publication_performed": false,
+  "new_controller_review_pending": true,
+  "remote_peak_certified": false
+}
