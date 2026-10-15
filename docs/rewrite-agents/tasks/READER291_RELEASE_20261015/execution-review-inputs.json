@@ -19,5 +19,21 @@
     "remote-collect-log.txt": "ed3947b874e9158312295f0514c96991d6c425a1b88384c9bcee658ef389119c",
     "remote-preparation-verification.json": "4b6349973a2ce2e9dd6ec98ec94cd98c0d7982a2eff23d73eb83931fe760b03a"
   },
-  "scope": "Actual first preparation and collector each exited0. Candidate HTTP, copied DB grading, rollback and durable image verified. No Helm upgrade yet; exact independent pre-execution acceptance required."
+  "scope": "Actual first preparation and collector each exited0. Candidate HTTP, copied DB grading, rollback and durable image verified. No Helm upgrade yet; exact independent pre-execution acceptance required.",
+  "capacity_repair": {
+    "outcome_path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\capacity-repair-outcome.json",
+    "outcome_sha256": "85a5feb96ba009e3c2a1bac01c0c9fd2d27406429347d871eb6b7763a4073d5a",
+    "archive_evidence_sha256": {
+      "source-review.json": "96081f0034f555ebb0116c55e4bb0f3fd4f43055e0e69245de60b9f9dc5b7185",
+      "approval-inputs.json": "b1e6979821f961f7e12cd37af93e12f65590acb7ea2415373506f4213a72fd30",
+      "plan.json": "b4401aa91d65d0004bf0374fc79b305e2698cf69732aa2fd77fc433f61355919",
+      "copy-receipt.json": "de842ef85d26bd6ef5eb14a9732951f5d27bbaff1036ea05320b517229f82bb1",
+      "execution-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+      "execution-stdout.jsonl": "a2fc9c2e53abe1c15aa2782a2c80c5475a35a258a36c96ae5bf3e9849343960a",
+      "readback.sh": "655f261a5e7121af887c33ca4a4f659157cde2950ad77726d743cb3f985917b5",
+      "readback-exit.json": "a6ffb40ed2e7bf8edd9a8fe35a9aebe44d1d5698f3f9cadda402f1597906b304",
+      "readback-stdout.jsonl": "894387d1ea7f4957c2cbb7c2b8f6d214639ffa75ce0906f86e4466a4ea579449"
+    },
+    "scope": "Actual8 archive offload and fresh readback both0,16protectedfiles/loadedimageinventories/current60/PVC/29feedback preserved. Independent outcome review is part of this exact publication gate. Fresh strict20percent required again before backup and upgrade."
+  }
 }
