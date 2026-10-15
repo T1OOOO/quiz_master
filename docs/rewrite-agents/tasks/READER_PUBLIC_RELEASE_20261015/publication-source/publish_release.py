@@ -10,5 +10,13 @@ callback=a['actual_reviews']['task-25944ceb58344d32958bf3e43788c86c'];assert cal
 assert h(Path(p['archive']))==p['archive_sha256']
 for pair in [('06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b','HEAD'),('06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b',)]:
  assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
-script=(d/'publish-preview.sh').read_bytes();result=subprocess.run(['ssh','-i','C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519','root@192.3.164.184','bash -s -- publish'],input=script,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
-(d/'publish-log.txt').write_bytes(result.stdout);(d/'publish-exit.json').write_text(json.dumps({'actual_exit':result.returncode}));print(result.stdout.decode(errors='replace'));assert result.returncode==0
+script=(d/'publish-preview.sh').read_bytes();output=b'';code='not_started'
+try:
+ result=subprocess.run(['ssh','-i','C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519','root@192.3.164.184','bash -s -- publish'],input=script,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=600)
+ output=result.stdout;code=result.returncode
+except subprocess.TimeoutExpired as exc:
+ output=exc.stdout or b'';code='timeout'
+ raise
+finally:
+ (d/'publish-log.txt').write_bytes(output);(d/'publish-exit.json').write_text(json.dumps({'actual_exit':code}))
+print(output.decode(errors='replace'));assert code==0

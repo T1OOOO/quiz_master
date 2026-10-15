@@ -4,7 +4,7 @@
   "execution_packet_sha256": "39e88ddacf7da0670c6668521bb9249e4c7d108e77d53794d618e7e930c97e73",
   "publish_script_sha256": "9a01341607fcd11bbba94e8965e001619568607eb8a2b1c6577b16a87b1f9454",
   "publication_renderer_sha256": "0260ea9162f32cf96e4ed41a1bcdb1926f571fd43cac157b8239dc42f0239cf6",
-  "publication_executor_sha256": "fe8844c6fcdbaf1ead2c28d18eeb246a9fdd8e9f1fb40db500fa21b858f7afc5",
+  "publication_executor_sha256": "eb10f4e1757c548a578163f7f347b2520fb1567cf4dafe2f771b37210feb8f69",
   "package_sha256": "6ddd12317732d0fa5bf87f8a80ff24e7ef71b50a233d7d65fa4249421a6c79ab",
   "image": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
   "actual_publish_script_syntax_exit": 0,
@@ -22,5 +22,14 @@
     "remote-collect-log.txt": "a83c36d1bb80fe3c56a9fe9414b7f203e460a8da5784e93ee1c0f1f2ee8df26b",
     "remote-collect-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5"
   },
-  "scope": "Initial prepare1 retained; exact reviewed remaining import/values/dryrun suffix resumed0 and original collector0. No Helm upgrade. Independent execution review must inspect and accept this complete chain before publication."
+  "scope": "Initial prepare1 retained; exact reviewed remaining import/values/dryrun suffix resumed0 and original collector0. No Helm upgrade. Independent execution review must inspect and accept this complete chain before publication.",
+  "executor_regression": {
+    "actual_exit": 0,
+    "cases": [
+      "success",
+      "nonzero",
+      "timeout"
+    ],
+    "remote_execution": false
+  }
 }
