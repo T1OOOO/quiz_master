@@ -1,0 +1,36 @@
+test_executor_rejects_unaccepted_review_before_ssh (test_offload.OffloadTests.test_executor_rejects_unaccepted_review_before_ssh) ... ok
+test_executor_rejects_unbound_manifest_before_ssh (test_offload.OffloadTests.test_executor_rejects_unbound_manifest_before_ssh) ... ok
+test_executor_wrong_copy_transfer_or_old_logs_fail_before_ssh (test_offload.OffloadTests.test_executor_wrong_copy_transfer_or_old_logs_fail_before_ssh) ... ok
+test_generated_actual_script_is_bash_valid_and_prepares_no_release (test_offload.OffloadTests.test_generated_actual_script_is_bash_valid_and_prepares_no_release) ... ok
+test_hash_and_each_metadata_field_are_enforced (test_offload.OffloadTests.test_hash_and_each_metadata_field_are_enforced) ... ok
+test_invalid_last_file_preserves_whole_batch (test_offload.OffloadTests.test_invalid_last_file_preserves_whole_batch) ... ok
+test_inventory_additions_allowed_removals_or_retags_rejected (test_offload.OffloadTests.test_inventory_additions_allowed_removals_or_retags_rejected) ... ok
+test_inventory_summary_does_not_disclose_foreign_registry_names (test_offload.OffloadTests.test_inventory_summary_does_not_disclose_foreign_registry_names) ... ok
+test_live_preflight_guards_allow_cleanup_below20_but_reject_state_drift (test_offload.OffloadTests.test_live_preflight_guards_allow_cleanup_below20_but_reject_state_drift) ... {"helm_revision": 61, "status": "deployed", "images": ["docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228", "docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228"], "available_replicas": 1, "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf", "feedback_count": 29, "all_open": true, "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e", "node_ready": true, "disk_pressure": false, "blocking_taints": false, "disk_available": 19, "disk_total": 100, "disk_at_least20percent": false, "https_readiness_status": 200, "backup_mode": "0600", "backup_integrity": "ok"}
+ok
+test_loaded_inventory_captures_reference_digest_and_image_id (test_offload.OffloadTests.test_loaded_inventory_captures_reference_digest_and_image_id) ... ok
+test_only_exact_files_removed (test_offload.OffloadTests.test_only_exact_files_removed) ... {"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916.recovery-20261015.tar.gz", "bytes": 21}
+ok
+test_optimized_modes_are_rejected (test_offload.OffloadTests.test_optimized_modes_are_rejected) ... ok
+test_per_unlink_revalidation_detects_second_file_drift (test_offload.OffloadTests.test_per_unlink_revalidation_detects_second_file_drift) ... {"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916.recovery-20261015.tar.gz", "bytes": 21}
+ok
+test_real_plan_and_exact_recovery_only_filter (test_offload.OffloadTests.test_real_plan_and_exact_recovery_only_filter) ... ok
+test_rejects_duplicate_path (test_offload.OffloadTests.test_rejects_duplicate_path) ... ok
+test_rejects_metadata_change (test_offload.OffloadTests.test_rejects_metadata_change) ... ok
+test_rejects_protected_package (test_offload.OffloadTests.test_rejects_protected_package) ... ok
+test_rejects_symlink_before_open (test_offload.OffloadTests.test_rejects_symlink_before_open) ... ok
+test_rejects_traversal (test_offload.OffloadTests.test_rejects_traversal) ... ok
+test_snapshot_follows_batch_and_first_per_file_validation (test_offload.OffloadTests.test_snapshot_follows_batch_and_first_per_file_validation) ... {"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916.recovery-20261015.tar.gz", "bytes": 21}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-culture-e437661.recovery-20261015.tar.gz", "bytes": 21}
+ok
+test_actual_failure_and_external_source_hashes_bind_without_git (test_resume_prepare.ResumeTests.test_actual_failure_and_external_source_hashes_bind_without_git) ... ok
+test_changed_external_source_set_fails_before_operations (test_resume_prepare.ResumeTests.test_changed_external_source_set_fails_before_operations) ... ok
+test_guard_and_script_keep_strict_gate_package_candidate_and_old_logs (test_resume_prepare.ResumeTests.test_guard_and_script_keep_strict_gate_package_candidate_and_old_logs) ... ok
+test_resume_timeout_keeps_partial_output_and_timeout_exit_without_collector (test_resume_prepare.ResumeTests.test_resume_timeout_keeps_partial_output_and_timeout_exit_without_collector) ... ok
+test_unaccepted_resume_and_existing_evidence_fail_before_ssh (test_resume_prepare.ResumeTests.test_unaccepted_resume_and_existing_evidence_fail_before_ssh) ... ok
+test_wrong_failed_run_image_or_evidence_rejected (test_resume_prepare.ResumeTests.test_wrong_failed_run_image_or_evidence_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.898s
+
+OK

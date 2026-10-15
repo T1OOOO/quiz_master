@@ -1,0 +1,81 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-42c16dbd80cd461f8dd54cb512a30641": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-42c16dbd80cd461f8dd54cb512a30641",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT. Independently recomputed approval-inputs sha256 033962290bf1179ca0ebe23d281d0f65bda0d35bde69c03664e11c199ba4259b -- matches manifest and executor's binding check. All 13 pinned files, 15 external source-input pins, and worker-freeze-sha256.json rehashed byte-for-byte: exact matches. plan.json: 12 unique entries, 1,255,033,357 bytes, matches EXPECTED_NAMES/EXPECTED_TOTAL_BYTES in offload.py. protected-hashes.json: 19 entries (17 prior + candidate package + failed-run backup), matches PROTECTED_HASHES constant exactly. offload.sh is byte-identical to a fresh generate.render(plan, protected); bash -n OK. Ran resume_prepare.validate() locally against real sourceA/package/failed-v1 on disk (no SSH): passes; archive_sha256 01ddc3ee... and candidate sha256:faef7c1c... consistent. render_script() guard/script pass bash -n and embedded Python compiles; preserves failed-v1 evidence, releases DEPLOY.lock before cutover.sh, requires new run != failed run. Reran full offline suite independently: 26/26 pass, matches tests.log/json. Tests are behavioral not literal-string: traversal, symlink, protected-package overlap, duplicate path, each dev/ino/mtime/size/sha256 field, whole-batch-then-per-unlink drift, optimized-Python refusal, image-preservation (additions ok/removals rejected), registry-name redaction, preflight drift on every guarded field, unaccepted-review/unbound-manifest gating before SSH, wrong failed-run/image/evidence rejection, timeout preserving partial output without invoking collector. No SSH/Git/build/browser/Beads/child operation performed by worker; no remote unlink yet; no candidate import/Helm upgrade; resume stops at PREPARED_NOT_PUBLISHED. Scope: exact-12 package offload plus guarded Reader299 preparation continuation only -- not publication, which needs a separate review. error_count 0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Small complete exact12 recovery-package offload source/tests/generator/executor plus strict fresh continuation of verified stage, preserving old failed receipts and all release guards. Meaningful negative checks. Root alone executes after verified actual copies and genuine exact review.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\package-offload-v3"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Source only; no SSH, Git, Beads, builds, browser or children. Actual remote-v1 preparation exited1 at strict20percent preflight after candidate faef7c1c7486c437ed569a457dc71ad690342d4cd7010be143caa5bfcc2885f1 passed actual100LOTR/20mixed/299Reader checks. Production61/both0f/PVC/full29OPEN/ReadyHTTPS unchanged; available20325752832/102417174528. Root owns actual12 old .recovery-20261015.tar.gz package plan/copies/protected hashes and execution. Reuse accepted PACKAGE_OFFLOAD_20261015 and archive-offload-v2 primitives for exact regular nonlink/fullhash/devino/mtime wholebatch/perfile, real accepted manifest/copies before SSH, PythonO refusal, no blind repeat, projectlock/fullcurrent61/PVC/fullfeedback/health/17protected hashes and live image identity preservation allowing additions. Strict paths /opt/quiz-master/releases and only exact12 selected recovery packages; no stages/DB/backups/images/current/recent/candidate/otherproject edits. Also minimal separate source-only continuation adapter for existing frozenstage, reusing original stage cutover.sh prepare and accepted collection_script after freshstrict20. Require actual failed-v1 evidence/package/candidate/checksums, fresh own output dir/run, no upload/extract/receipt repoint or sourceA edits. Original frozen cutoverprepare with fresh backup/rehearsal is acceptable; never pretend failedv1 succeeded. No execution until new genuine different-provider review. Root provides actual inputs, never fabricate them.",
+        "created_at": 1792065828.1787093,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-42c16dbd80cd461f8dd54cb512a30641",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "offload.py",
+            "execute.py",
+            "generate.py",
+            "resume_prepare.py",
+            "test_offload.py",
+            "test_resume_prepare.py",
+            "offload.sh",
+            "source-input-sha256.json",
+            "source-sha256.json",
+            "README.md",
+            "REPORT.md",
+            "tests.log",
+            "tests.json",
+            "actual-local-copy-verification.json",
+            "worker-freeze-sha256.json"
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/package-offload-v3/REPORT.md and worker-freeze-sha256.json document complete scope, pins, gates and remaining Root execution.",
+            "Actual final26 offline tests exit0 in1.898 seconds, including timeout partial-output retention, honest timeout exit and no collector call.",
+            "Actual pure physical twelve-copy validation exit0, count12/1255033357 bytes; actual-local-copy-verification.json retains exact plan and receipt hashes.",
+            "Actual generated cleanup shell Bash syntax0; resume/guard rendered Bash syntax and embedded Python compilation0. SourceA/dependency/failed-v1 hashes verified without Git by worker.",
+            "Root actual final local preview exit0 using real accepted sourceA, package and failed-v1 schema, reverified all12 copies and final source unchanged; root-local-preview.json. No SSH.",
+            "Root exact13-file approval manifest SHA256 033962290bf1179ca0ebe23d281d0f65bda0d35bde69c03664e11c199ba4259b. No file in this manifest changed after Root freeze.",
+            "resume_prepare.py SHA256 7baf4cc6abb9e8fc704e43e8eb673e1bb34216e4647ff6e042f6cd6c1fb3ba48; offload.sh SHA256 9c2a877f3e43e738cc881351f673e8fa428fd471c29c615188918854c6df5519. Exact seven source hashes are in source-sha256.json;15 immutable external pins in source-input-sha256.json.",
+            "Strict greater-than20percent sourceA preflight and all original stage/package/candidate/failed-log/backup bindings retained. Existing original cutover prepare creates fresh run/backup/rehearsal and actual new collector; failed-v1 never repointed.",
+            "Root-owned plan/copy/protected/reference JSON, accepted sourceA and old failed-v1 evidence unchanged. No SSH/Git/build/browser/live deletion/Beads/child operation by worker. Actual cleanup, new preparation, readback and independent execution/publication reviews remain."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Exact twelve-recovery-package cleanup source and strict fresh Reader299 preparation continuation are frozen. Actual source-only gates passed; Root owns independent approval and all remote operations."
+        },
+        "root_task_id": "task-42c16dbd80cd461f8dd54cb512a30641",
+        "run_id": "run-805925a3d2324985a1f0950e13029168",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "Guard exact old recovery-package offload and safe Reader299 preparation continuation",
+        "version": 4,
+        "reviewer": "session-bf20c1c8b0744570a7fcdd68511347e3",
+        "review_note": "ACCEPT. Independently recomputed approval-inputs sha256 033962290bf1179ca0ebe23d281d0f65bda0d35bde69c03664e11c199ba4259b -- matches manifest and executor's binding check. All 13 pinned files, 15 external source-input pins, and worker-freeze-sha256.json rehashed byte-for-byte: exact matches. plan.json: 12 unique entries, 1,255,033,357 bytes, matches EXPECTED_NAMES/EXPECTED_TOTAL_BYTES in offload.py. protected-hashes.json: 19 entries (17 prior + candidate package + failed-run backup), matches PROTECTED_HASHES constant exactly. offload.sh is byte-identical to a fresh generate.render(plan, protected); bash -n OK. Ran resume_prepare.validate() locally against real sourceA/package/failed-v1 on disk (no SSH): passes; archive_sha256 01ddc3ee... and candidate sha256:faef7c1c... consistent. render_script() guard/script pass bash -n and embedded Python compiles; preserves failed-v1 evidence, releases DEPLOY.lock before cutover.sh, requires new run != failed run. Reran full offline suite independently: 26/26 pass, matches tests.log/json. Tests are behavioral not literal-string: traversal, symlink, protected-package overlap, duplicate path, each dev/ino/mtime/size/sha256 field, whole-batch-then-per-unlink drift, optimized-Python refusal, image-preservation (additions ok/removals rejected), registry-name redaction, preflight drift on every guarded field, unaccepted-review/unbound-manifest gating before SSH, wrong failed-run/image/evidence rejection, timeout preserving partial output without invoking collector. No SSH/Git/build/browser/Beads/child operation performed by worker; no remote unlink yet; no candidate import/Helm upgrade; resume stops at PREPARED_NOT_PUBLISHED. Scope: exact-12 package offload plus guarded Reader299 preparation continuation only -- not publication, which needs a separate review. error_count 0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review callback submitted successfully: state is now **ACCEPTED**, reviewer `session-bf20c1c8b0744570a7fcdd68511347e3` (mine, distinct from assignee `session-293ef5f514b24416b57853188e8bf5ce`), `error_count: 0`.\n\n**Final report**\n\n- **Task**: `task-42c16dbd80cd461f8dd54cb512a30641`, run `run-805925a3d2324985a1f0950e13029168` — package-offload-v3 + Reader299 preparation-continuation adapter.\n- **Verdict**: ACCEPT, error_count 0, scoped to exact-12 package offload + guarded preparation continuation only — not publication.\n- **Approval digest**: `approval-inputs sha256 033962290bf1179ca0ebe23d281d0f65bda0d35bde69c03664e11c199ba4259b`, independently recomputed from the current manifest and matching every file it pins (13 packet files, 15 external source-input pins, worker-freeze-sha256.json).\n- **Checks performed**: recomputed all manifest/plan/protected hashes; confirmed plan.json's 12 unique entries sum to 1,255,033,357 bytes and protected-hashes.json's 19 entries match the code constant; confirmed offload.sh is a byte-identical deterministic render and passes `bash -n`; ran `resume_prepare.validate()` locally against real sourceA/package/failed-v1 evidence (no SSH) and confirmed render_script() output passes bash syntax and Python compilation; independently reran the full 26-test offline suite (pass, matches tests.log/json) and read the test bodies to confirm they assert real behavioral boundaries, not literal strings.\n- **No edits, SSH, network, builds, Git mutations, or children were performed.** No acceptance files were created and no activity RPC was issued after the callback, per instructions.\n\nRoot now owns execution: cleanup, fresh remote-v2 preparation, readback, and the separate mandatory image/packet/shell review before any publication.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "19967391b6e0170b7d0e9faefff8a23015b599dda4888068e4db23d2ee790ee8",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

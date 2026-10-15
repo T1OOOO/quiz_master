@@ -1,0 +1,19 @@
+{"helm_revision": 61, "status": "deployed", "images": ["docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228", "docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228"], "available_replicas": 1, "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf", "feedback_count": 29, "all_open": true, "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e", "node_ready": true, "disk_pressure": false, "blocking_taints": false, "disk_available": 20284698624, "disk_total": 102417174528, "disk_at_least20percent": false, "https_readiness_status": 200, "backup_mode": "0600", "backup_integrity": "ok"}
+{"protected_files_verified": 19}
+{"loaded_images_before": {"containerd": {"count": 205, "sha256": "080f4253c7eba994d6d906d9811218ab410d03cb0d2363e9e96086e687a6bee3"}, "docker": {"count": 50, "sha256": "94fc7caeca53ced8d85256d178d3ac28ece77911c013bbfd65ab89f1dc494ba6"}}}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.06-feedback-e0f89cf.recovery-20261015.tar.gz", "bytes": 142342234}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.11-home-alone-e0d13f4.recovery-20261015.tar.gz", "bytes": 138469827}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-culture-328f2f8.recovery-20261015.tar.gz", "bytes": 105283222}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-42a2aaf.recovery-20261015.tar.gz", "bytes": 104732220}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-music-craft-f79555e.recovery-20261015.tar.gz", "bytes": 96017786}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-film-craft-adf95a5.recovery-20261015.tar.gz", "bytes": 95968469}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-article-only-ffa2716.recovery-20261015.tar.gz", "bytes": 95912066}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-culture-e437661.recovery-20261015.tar.gz", "bytes": 95734144}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.13-culture-384d798.recovery-20261015.tar.gz", "bytes": 95311730}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916.recovery-20261015.tar.gz", "bytes": 95227340}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.12-culture-939f231.recovery-20261015.tar.gz", "bytes": 95047115}
+{"removed": "/opt/quiz-master/releases/quiz-2026.10.12-reader-4207ef5.recovery-20261015.tar.gz", "bytes": 94987204}
+{"preexisting_loaded_images_preserved": true, "loaded_images_after": {"containerd": {"count": 205, "sha256": "080f4253c7eba994d6d906d9811218ab410d03cb0d2363e9e96086e687a6bee3"}, "docker": {"count": 50, "sha256": "94fc7caeca53ced8d85256d178d3ac28ece77911c013bbfd65ab89f1dc494ba6"}}, "loaded_images_added": {"containerd": 0, "docker": 0}}
+{"protected_files_verified": 19}
+{"helm_revision": 61, "status": "deployed", "images": ["docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228", "docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228"], "available_replicas": 1, "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf", "feedback_count": 29, "all_open": true, "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e", "node_ready": true, "disk_pressure": false, "blocking_taints": false, "disk_available": 21538856960, "disk_total": 102417174528, "disk_at_least20percent": true, "https_readiness_status": 200, "backup_mode": "0600", "backup_integrity": "ok"}
+{"status": "RECOVERY_PACKAGES_OFFLOADED", "removed_count": 12, "removed_bytes": 1255033357, "release_preparation_capacity_gate_still_required": true, "disk_available": 21538856960, "disk_total": 102417174528}
