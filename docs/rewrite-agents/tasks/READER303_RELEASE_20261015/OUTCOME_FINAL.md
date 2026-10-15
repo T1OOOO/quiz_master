@@ -1,0 +1,11 @@
+# Reader303 release closeout
+
+Reader303 is published and this release milestone is complete. The human-authorized single atomic publication exited0 at Helm63. Root actually verified the public Flutter bytes/Reader303/four new musical article bindings, fresh live server/PVC/node/strict20percent/backup checks and mobile361x738 catalog/map/article/feedback-cancel UI. All29 real feedback remain OPEN with the same full-row digest.
+
+Independent official Claude exact source/packet task6fc9 and recorded-outcome task65488430 both ended with actualCLI0/ACCEPT/error0. The latter independently rehashed all101 files and the manifest6d953259d7fb48230463c7810e369ad6d3778090bd0a35bd8ea4bcf8295bdd93, checked the pushed164605e8 checkpoint, private browser identity binding and guard-source hashes. Its scope is explicitly local evidence consistency; it did not independently witness liveSSH/HTTP. Actual network/UI observations are Root's retained receipts. No independent live-server certification is claimed.
+
+Historical PUBLISHED_STATUS.md and its101 reviewed inputs remain byte-unchanged, including its then-pending closeout sentence. This later document and published-outcome-review.json supersede that status without rewriting the reviewed evidence. Original failed preparations/collector, reviewer pause, corrected wrong-pathspec REWORK, CLI syntax/close failures and failed cleanup audits remain intact.
+
+This batch adds four mini-articles to existing questions, yielding303 articles/184refs/182playable;136packs4084questions/options/keys remain unchanged. Four new article readers passed the earlier isolated compiledFlutter/realGo browser fixture, while production smoke submitted no quiz attempt or feedback. All13 captured native browser identities were audited inactive after exact named-daemon cleanup. Android, physical screen-reader, all4084-question factual certification and ten study modules remain outside this milestone.
+
+Next work stays tracked:3qx coverage,9e0 whole-bank facts/options,7sw retention/capacity and483 mixed-language country names. No real feedback was closed merely because this release shipped. All owned stable work and this final receipt are committed/pushed; unrelated working files and69 preserved untracked hashes stay untouched.
