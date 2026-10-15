@@ -1,0 +1,109 @@
+{
+  "status": "PUBLISHED_MOBILE_SMOKE_VERIFIED",
+  "build_id": "quiz-2026.10.15-reader303-14b7da4",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "named_session": "reader303-published",
+  "namespace": "quiz-master",
+  "commands": 35,
+  "all_ui_actions_after_harness_argument_correction_passed": true,
+  "console_errors": [],
+  "actual_ui": [
+    "136-pack4084-question catalog",
+    "navigation drawer and Quizipedia four mode categories",
+    "local unrated map study: search France, select, orange highlight, focus country",
+    "France article: four headings/two primary source controls/no textareas",
+    "feedback open/disabled empty submit/cancel and restored control"
+  ],
+  "visual_inspection": [
+    "home.png",
+    "france.png",
+    "france-focused.png"
+  ],
+  "image_sha256": {
+    "home.png": "5a6024989f588698d707b5426bdcfae7e5b78142357c9a14e3d322be91859f07",
+    "france.png": "71a02c7c3c799065492eeb97f2fb84026b36c01025fec4d6e84bf8c472cc0793",
+    "france-focused.png": "6e661911a9f4bade88d0dd5d49193cc4b6391975abfd4cbc1cef07c6c58f0b18"
+  },
+  "native_cleanup": {
+    "inactive": true,
+    "namespace": "quiz-master",
+    "rows": [
+      {
+        "outcome": "absent",
+        "pid": 55564
+      },
+      {
+        "outcome": "native_absent_after_cim_read",
+        "pid": 40596
+      },
+      {
+        "outcome": "absent",
+        "pid": 56480
+      },
+      {
+        "outcome": "native_absent_after_cim_read",
+        "pid": 40204
+      },
+      {
+        "outcome": "absent",
+        "pid": 44816
+      },
+      {
+        "outcome": "absent",
+        "pid": 52736
+      },
+      {
+        "outcome": "absent",
+        "pid": 43684
+      },
+      {
+        "outcome": "absent",
+        "pid": 51088
+      },
+      {
+        "outcome": "absent",
+        "pid": 51004
+      },
+      {
+        "outcome": "native_absent_after_cim_read",
+        "pid": 59620
+      },
+      {
+        "outcome": "absent",
+        "pid": 40224
+      },
+      {
+        "outcome": "absent",
+        "pid": 67996
+      },
+      {
+        "outcome": "absent",
+        "pid": 69132
+      }
+    ],
+    "actual_exit": 0,
+    "session": "reader303-published"
+  },
+  "fallback_cleanup": {
+    "cim_ticks_compared_only_to_cim_ticks": true,
+    "session": "reader303-published",
+    "native_ticks_compared_only_to_native_ticks": true,
+    "other_processes_changed": false,
+    "named_pidfile_verified": true,
+    "actual_exit": 0,
+    "full_command_verified": true,
+    "native_has_exited": true,
+    "pid": 55564,
+    "namespace": "quiz-master"
+  },
+  "quiz_or_feedback_post_submitted": false,
+  "limits": [
+    "One unquoted PowerShell @ref lost its argument; original CLI exit1 retained, corrected quoted ref and real DOM accessibility activation succeeded.",
+    "Official close timed out/exit1; exact captured named original daemon55564 native/CIM timestamps and command separately verified, stopped only that daemon; all13 captured native identities now inactive. First cleanup audits retained; v2 handles only native ArgumentException for an exited process after a stale CIM row.",
+    "Published smoke used catalog/map/article/feedback cancel only. Four new musical article result readers were exercised previously against the real isolated Go fixture and exact compiled QA build; published bytes/references/sources verified by public GET. No production quiz attempt or feedback submission.",
+    "Minor mixed-language country fallback recorded as quiz_master-483. Android, physical screen reader and all4084-question facts not certified."
+  ]
+}

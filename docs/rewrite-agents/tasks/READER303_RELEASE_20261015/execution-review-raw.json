@@ -1,0 +1,63 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-6fc9fde6056a4a8c878b5d5a69baf496": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Prior REWORK blocker retracted after independent re-check: I re-ran the diff myself with the narrower pathspec (next quizzes metadata study/question_articles) against both HEAD and the live worktree - both empty. I independently confirmed publish_release.py line 28 literally uses that exact pathspec (git diff --name-only ... -- next quizzes metadata study/question_articles), not a broad 'study'. study/check_reader.py, study/drafts/, study/research/, study/WAVE3_PACKET.md sit outside that scope - my earlier blocker used too broad a path; not a real defect. Guard/scope unchanged, same 7/7 tests still pass.\n\nIndependently recomputed sha256 for all 26 files in publication-review-inputs.json myself (scripted, not eyeballed): 0 mismatches, 0 missing. Package archive quiz-2026.10.15-reader303-14b7da4.tar.gz exists, sha256=0df5f4496ab163a0cbeefaedce2c62af8d7d8b322b19dd41c4bc16e50cc79a0b (matches), opened it myself with tarfile: exactly 332 members, all regular files (0 dirs/symlinks/other), no absolute or '..' paths - genuinely safe. frozen_commit in the receipt matches 14b7da43.\n\nBrowser evidence (READER303_BROWSER_20261015): independent-original-review-INVALIDATED.json and FINAL.md genuinely exist and consistently mark the original audit invalid vs the corrected proof-v2/3d369 attestation as qualifying - documentation is internally consistent; I did not re-verify every screenshot/log byte myself.\n\nNot witnessed live by me (logged only, no SSH performed): original remote prepare/collector exit/log contents, and current live Helm/disk/PVC state - Root's own live gates remain required before any real publish.\n\nexecution-packet sha256 215fc97db46cf191b37c3f6e6bc952c2672425eeb15d44f108fad96540cad039; shell(publish-preview.sh) sha256 c4afd5a7dac3e9c7fdccdb4a552297903f014797779af9598b6701f0ea205d80; executor(publish_release.py) sha256 57d8b5d0922395140a11c53e78b2b2291e2a09771feb57143837d4c9ce7053d6. ACCEPT, error_count=0, on this exact inert source/packet. No publication performed or authorized by me; actual outcome remains separate and future."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent cross-provider review actualCLI0/ACCEPT/error0, exact execution-packet literal SHA; source renderer/executor + package + successful actualprep proof + previous browser proof all hash-bound. Existing20offload/45source tests and published baseline preserved. Actual publication/outcome future and separate.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns inert render/packet and unchanged existing publication executor. Fresh original readonly collector0 after exact reviewed capacityrepair0. Original remote prepare171054Z actual0/old collector1 immutable; new readonly recollection only yields successful prep receipt. Package0df/image6c/frozen14b/Reader303184182/335grades15practice/backuprestore/oldAPIrollback/durableimport/serverdryrun qualified. Independent Claude actualCLI0/ACCEPT/error0 must bind literal execution-packet sha256 FULL before Root may publish. Review exact backup/lint/template/serverdryrun/atomicupgrade/readiness/publicbyte hashes/current62/29OPEN/PVC/strict20 guards. No rebuild/rehearsal. This task is SOURCE/EXACT INERT EXECUTION PACKET ONLY; future actual publication not prerequisite to acceptance. No execution by reviewer.",
+        "created_at": 1792086895.922987,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/frozen-app-scope-verification.json",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-review-rework-v2.json",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-review-inputs.json"
+          ],
+          "summary": "REWORK response: independently repeat exact executor git pathspec. Both frozen..HEAD and frozen..worktree commands0/empty for next quizzes metadata study/question_articles; foreign study/check_reader.py,drafts,research,WAVE3_PACKET are outside it and preserved. No source/guard/packet/package changes; prior REWORK retained. Same technical reviewer resumes full package/prep checks and own verdict. No publication."
+        },
+        "review_note": "Prior REWORK blocker retracted after independent re-check: I re-ran the diff myself with the narrower pathspec (next quizzes metadata study/question_articles) against both HEAD and the live worktree - both empty. I independently confirmed publish_release.py line 28 literally uses that exact pathspec (git diff --name-only ... -- next quizzes metadata study/question_articles), not a broad 'study'. study/check_reader.py, study/drafts/, study/research/, study/WAVE3_PACKET.md sit outside that scope - my earlier blocker used too broad a path; not a real defect. Guard/scope unchanged, same 7/7 tests still pass.\n\nIndependently recomputed sha256 for all 26 files in publication-review-inputs.json myself (scripted, not eyeballed): 0 mismatches, 0 missing. Package archive quiz-2026.10.15-reader303-14b7da4.tar.gz exists, sha256=0df5f4496ab163a0cbeefaedce2c62af8d7d8b322b19dd41c4bc16e50cc79a0b (matches), opened it myself with tarfile: exactly 332 members, all regular files (0 dirs/symlinks/other), no absolute or '..' paths - genuinely safe. frozen_commit in the receipt matches 14b7da43.\n\nBrowser evidence (READER303_BROWSER_20261015): independent-original-review-INVALIDATED.json and FINAL.md genuinely exist and consistently mark the original audit invalid vs the corrected proof-v2/3d369 attestation as qualifying - documentation is internally consistent; I did not re-verify every screenshot/log byte myself.\n\nNot witnessed live by me (logged only, no SSH performed): original remote prepare/collector exit/log contents, and current live Helm/disk/PVC state - Root's own live gates remain required before any real publish.\n\nexecution-packet sha256 215fc97db46cf191b37c3f6e6bc952c2672425eeb15d44f108fad96540cad039; shell(publish-preview.sh) sha256 c4afd5a7dac3e9c7fdccdb4a552297903f014797779af9598b6701f0ea205d80; executor(publish_release.py) sha256 57d8b5d0922395140a11c53e78b2b2291e2a09771feb57143837d4c9ce7053d6. ACCEPT, error_count=0, on this exact inert source/packet. No publication performed or authorized by me; actual outcome remains separate and future.",
+        "reviewer": "session-c9573369310c405584d378ae3260e723",
+        "root_task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+        "run_id": "run-acbabcb6fa7e4c9e99071f4ac0a323a2",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-3qx: review exact prepared Reader303 atomic publication packet",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "task-6fc9fde6 now **ACCEPT**, error_count 0 — my earlier blocker was a false positive (wrong pathspec); re-verified with the executor's actual scope, all 26 manifest hashes, the 332-member package archive, and the pinned packet/shell/executor hashes myself, all genuinely checked out. Both tasks now carry final, independently-computed verdicts with no SSH, edits, or publication performed.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "a8f8d6ee64e4d459f429f1725fa3978a8fad4d0263958c00fa50ac2958b1ebcb",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

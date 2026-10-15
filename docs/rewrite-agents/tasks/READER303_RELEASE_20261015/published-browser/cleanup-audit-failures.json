@@ -1,0 +1,8 @@
+{
+  "first_audit_actual_exit": 1,
+  "first_reason": "Captured original daemon55564 still alive; exact named identity subsequently stopped.",
+  "second_audit_actual_exit": 1,
+  "second_reason": "CIM returned transient40596 entry but native GetProcessById correctly reported it no longer running. No false inactive claim; v2 accepts only the native ArgumentException absence case, all other errors fail.",
+  "original_source": "identity.ps1",
+  "v2_source": "identity-v2.ps1"
+}

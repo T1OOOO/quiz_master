@@ -1,0 +1,64 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1689a581d9af4463a8c292c46dc45417": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1689a581d9af4463a8c292c46dc45417",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independently recomputed sha256 of all key artifacts myself (did not trust embedded claims): approval-inputs.json=8e2c6bf2...(match), stage-offload-v2.sh=a12b72df...(match, rendered from plan-v2.json), stage-offload.sh=731d17df...(match, earlier v1/plan.json - this resolves an apparent two-hash mismatch between files, not a defect), worker/stage_offload.py=c307bd4c..., test_stage_offload.py=0e058e6d..., plan.json=5c064d44.... All match claimed digests. Ran offline tests myself: worker/test_stage_offload.py 15/15 pass, test_execute.py 5/5 pass (20 total matches claim). Source review confirms: no shutil.rmtree anywhere, flock -n 8 on /opt/quiz-master/DEPLOY.lock, hostname pin to racknerd-f0269d5, O_NOFOLLOW hashing, cmdline/submount guards, strict capacity-floor logic, all exercised by tests. GUARD_SHA256 pinned in stage_offload.py (7d8637d9...) matches docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/offload.py byte-for-byte - the guard chain is a real, previously-existing file, not fabricated.\n\nNOT verified by me: the claimed remote execution (3568 entries removed, free 19.69GB->21.78GB, Helm/PVC/image counts) exists only as execution-exit.json/execution-stdout.jsonl on disk - internally self-consistent but I performed no live SSH/remote check (declined, out of scope for a technical review). Treat those figures as logged, not independently witnessed.\n\nACCEPT (error_count=0) for the source/script/plan/test evidence actually under review; no defects found in what I verified. Remote execution outcome remains unverified by me."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual execution0/full exact removal receipt, strict20percent plus1GiB final capacity, protected resources/image identities/current62/full29digest preserved. Independent outcome review required. Do not claim publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root only. After genuine independent task396cb callback ACCEPT/error0 and actual CLI0, run exact frozen execute.py once. Rehash17 inputs, nine private full cold copies plus original failed package and fresh private ACL; exact pinned script under DEPLOY.lock. Preserve current62, all29OPEN/full digest, complete prepared303 stage,30 protected files and every preexisting image identity. No broad prune/build/rehearsal/publication. Retain actual exit/logs even on failure; no blind retry. Then original read-only remote-v2 collector may be recollected into fresh evidence only.",
+        "created_at": 1792086693.7534313,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1689a581d9af4463a8c292c46dc45417",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/execution-exit.json",
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/execution-stdout.jsonl",
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/source-review.json"
+          ],
+          "summary": "Exact reviewed offload actual0:3568 pinned entries/2085027840 allocated bytes, available19694510080 ->21778485248 of102417174528, strict20percent+1GiB passes. All9 private copies +old failedpackage rehashed twice; current62/29OPEN/full digest,30 protected files and complete prepared303 preserved. All213containerd/52Docker identities unchanged,0added. Original readonly collector now running separately, no build/rehearsal/publication."
+        },
+        "root_task_id": "task-1689a581d9af4463a8c292c46dc45417",
+        "run_id": "run-27e3efd9bc8648b3b7705adddd281ad3",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: execute independently approved nine-stage offload and collect outcome",
+        "version": 4,
+        "reviewer": "session-a914b0798a9c4565a8d61e3e694be7a0",
+        "review_note": "Independently recomputed sha256 of all key artifacts myself (did not trust embedded claims): approval-inputs.json=8e2c6bf2...(match), stage-offload-v2.sh=a12b72df...(match, rendered from plan-v2.json), stage-offload.sh=731d17df...(match, earlier v1/plan.json - this resolves an apparent two-hash mismatch between files, not a defect), worker/stage_offload.py=c307bd4c..., test_stage_offload.py=0e058e6d..., plan.json=5c064d44.... All match claimed digests. Ran offline tests myself: worker/test_stage_offload.py 15/15 pass, test_execute.py 5/5 pass (20 total matches claim). Source review confirms: no shutil.rmtree anywhere, flock -n 8 on /opt/quiz-master/DEPLOY.lock, hostname pin to racknerd-f0269d5, O_NOFOLLOW hashing, cmdline/submount guards, strict capacity-floor logic, all exercised by tests. GUARD_SHA256 pinned in stage_offload.py (7d8637d9...) matches docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/offload.py byte-for-byte - the guard chain is a real, previously-existing file, not fabricated.\n\nNOT verified by me: the claimed remote execution (3568 entries removed, free 19.69GB->21.78GB, Helm/PVC/image counts) exists only as execution-exit.json/execution-stdout.jsonl on disk - internally self-consistent but I performed no live SSH/remote check (declined, out of scope for a technical review). Treat those figures as logged, not independently witnessed.\n\nACCEPT (error_count=0) for the source/script/plan/test evidence actually under review; no defects found in what I verified. Remote execution outcome remains unverified by me."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both review callbacks submitted; task is complete, no further action taken.\n\n- **task-1689a581** (capacity offload): **ACCEPT**, error_count 0. I recomputed every key hash myself, ran all 20 offline tests locally, verified the guard chain against the actual pre-existing file byte-for-byte. The claimed remote deletion/disk numbers exist only as logs — I declined to SSH to verify them live, and said so explicitly in the note.\n- **task-6fc9fde6** (publication packet): **REWORK**, error_count 1. The three demanded hashes genuinely matched and 7/7 guard tests passed, but I found the worktree is not actually clean against the frozen commit for the paths the packet claims are empty (uncommitted `study/check_reader.py` change + untracked WAVE3 files) — a real blocker, not something I was told to find.\n\nNo SSH, edits, or publication actions were performed; both notes explicitly state they authorize nothing.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-1689a581d9af4463a8c292c46dc45417",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "3f3215fe5fde97cc557646af5f32cd4f462b6948e506bca94508c17b581cea19",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

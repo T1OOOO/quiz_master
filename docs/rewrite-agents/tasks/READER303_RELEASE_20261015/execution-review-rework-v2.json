@@ -1,0 +1,63 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-6fc9fde6056a4a8c878b5d5a69baf496": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Independently recomputed hashes myself rather than trusting supplied values: execution-packet.json sha256=215fc97db46cf191b37c3f6e6bc952c2672425eeb15d44f108fad96540cad039 (match). publish-preview.sh sha256=c4afd5a7dac3e9c7fdccdb4a552297903f014797779af9598b6701f0ea205d80 (match). publication-source/publish_release.py sha256=57d8b5d0922395140a11c53e78b2b2291e2a09771feb57143837d4c9ce7053d6 (match). All three demanded digests are genuinely correct on disk right now, not parroted. Ran publication-source/test_publication_guards.py myself: 7/7 pass, guards correctly refuse repeat/stale/unaccepted-receipt/optimized-python paths before reaching git/SSH.\n\nBLOCKER: packet assumes source diffs for next/quizzes/metadata/study/question_articles vs frozen 14b7da43 are empty in HEAD AND worktree. `git diff 14b7da43..HEAD` for those paths is empty, but the live worktree is NOT clean: study/check_reader.py has an uncommitted edit (expected module count 6->10, adding cinema/music/literature/everyday-science-connections modules), plus untracked study/WAVE3_PACKET.md, study/drafts/wave3/, study/research/. This contradicts the packet's 'empty diff' premise - current source state includes unreviewed changes outside this packet's stated scope.\n\nNot checked by me: full package member/receipt hashes beyond the three pinned above, and no live server/SSH check was performed (declined - out of scope for a technical review). No source edits made by me.\n\nVerdict: REWORK (error_count=1) - resolve/explain the non-empty worktree diff (commit, stash, or scope it out) and resubmit; the three pinned hashes and all 7 guard tests are otherwise sound. This note authorizes nothing; no publication is approved and none occurred."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent cross-provider review actualCLI0/ACCEPT/error0, exact execution-packet literal SHA; source renderer/executor + package + successful actualprep proof + previous browser proof all hash-bound. Existing20offload/45source tests and published baseline preserved. Actual publication/outcome future and separate.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns inert render/packet and unchanged existing publication executor. Fresh original readonly collector0 after exact reviewed capacityrepair0. Original remote prepare171054Z actual0/old collector1 immutable; new readonly recollection only yields successful prep receipt. Package0df/image6c/frozen14b/Reader303184182/335grades15practice/backuprestore/oldAPIrollback/durableimport/serverdryrun qualified. Independent Claude actualCLI0/ACCEPT/error0 must bind literal execution-packet sha256 FULL before Root may publish. Review exact backup/lint/template/serverdryrun/atomicupgrade/readiness/publicbyte hashes/current62/29OPEN/PVC/strict20 guards. No rebuild/rehearsal. This task is SOURCE/EXACT INERT EXECUTION PACKET ONLY; future actual publication not prerequisite to acceptance. No execution by reviewer.",
+        "created_at": 1792086895.922987,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-review-inputs.json",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-packet.json",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/recollection-v3/remote-preparation-verification.json"
+          ],
+          "summary": "Exact inert publication packet frozen SHA215fc97db46cf191b37c3f6e6bc952c2672425eeb15d44f108fad96540cad039. Original prepare0/335grades15practice/image6c preserved; original collector1 retained, exact original readonly recollection0 yields prep receipt with21779111936free. Capacity exactoffload actual0 independent source/packet accepted, all resources unchanged. Existing renderer/executor unchanged after45source tests/review; runtime/app frozen14b. No publication yet."
+        },
+        "root_task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+        "run_id": "run-7b279576155242f4b7d6172bb5716acb",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-3qx: review exact prepared Reader303 atomic publication packet",
+        "version": 4,
+        "reviewer": "session-a914b0798a9c4565a8d61e3e694be7a0",
+        "review_note": "Independently recomputed hashes myself rather than trusting supplied values: execution-packet.json sha256=215fc97db46cf191b37c3f6e6bc952c2672425eeb15d44f108fad96540cad039 (match). publish-preview.sh sha256=c4afd5a7dac3e9c7fdccdb4a552297903f014797779af9598b6701f0ea205d80 (match). publication-source/publish_release.py sha256=57d8b5d0922395140a11c53e78b2b2291e2a09771feb57143837d4c9ce7053d6 (match). All three demanded digests are genuinely correct on disk right now, not parroted. Ran publication-source/test_publication_guards.py myself: 7/7 pass, guards correctly refuse repeat/stale/unaccepted-receipt/optimized-python paths before reaching git/SSH.\n\nBLOCKER: packet assumes source diffs for next/quizzes/metadata/study/question_articles vs frozen 14b7da43 are empty in HEAD AND worktree. `git diff 14b7da43..HEAD` for those paths is empty, but the live worktree is NOT clean: study/check_reader.py has an uncommitted edit (expected module count 6->10, adding cinema/music/literature/everyday-science-connections modules), plus untracked study/WAVE3_PACKET.md, study/drafts/wave3/, study/research/. This contradicts the packet's 'empty diff' premise - current source state includes unreviewed changes outside this packet's stated scope.\n\nNot checked by me: full package member/receipt hashes beyond the three pinned above, and no live server/SSH check was performed (declined - out of scope for a technical review). No source edits made by me.\n\nVerdict: REWORK (error_count=1) - resolve/explain the non-empty worktree diff (commit, stash, or scope it out) and resubmit; the three pinned hashes and all 7 guard tests are otherwise sound. This note authorizes nothing; no publication is approved and none occurred."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both review callbacks submitted; task is complete, no further action taken.\n\n- **task-1689a581** (capacity offload): **ACCEPT**, error_count 0. I recomputed every key hash myself, ran all 20 offline tests locally, verified the guard chain against the actual pre-existing file byte-for-byte. The claimed remote deletion/disk numbers exist only as logs — I declined to SSH to verify them live, and said so explicitly in the note.\n- **task-6fc9fde6** (publication packet): **REWORK**, error_count 1. The three demanded hashes genuinely matched and 7/7 guard tests passed, but I found the worktree is not actually clean against the frozen commit for the paths the packet claims are empty (uncommitted `study/check_reader.py` change + untracked WAVE3 files) — a real blocker, not something I was told to find.\n\nNo SSH, edits, or publication actions were performed; both notes explicitly state they authorize nothing.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-6fc9fde6056a4a8c878b5d5a69baf496",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "3f3215fe5fde97cc557646af5f32cd4f462b6948e506bca94508c17b581cea19",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

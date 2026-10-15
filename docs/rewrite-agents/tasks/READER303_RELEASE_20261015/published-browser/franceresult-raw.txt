@@ -1,0 +1,11 @@
+- generic
+  - generic
+    - alertdialog
+      - generic "Оповещение"
+        - StaticText "Найти страну"
+        - generic
+          - textbox "Название страны" [ref=e47]: Франция
+            - StaticText "Франция"
+          - group
+            - button "Франция" [ref=e48]
+        - button "Отмена" [ref=e46]

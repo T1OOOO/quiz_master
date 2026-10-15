@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--name-only",
+        "14b7da43c3e43642d60859f5053ee6d809c2379e",
+        "HEAD",
+        "--",
+        "next",
+        "quizzes",
+        "metadata",
+        "study/question_articles"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--name-only",
+        "14b7da43c3e43642d60859f5053ee6d809c2379e",
+        "--",
+        "next",
+        "quizzes",
+        "metadata",
+        "study/question_articles"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "exact_executor_lines": "for pair in [(frozen,HEAD),(frozen,)]: git diff --name-only *pair -- next quizzes metadata study/question_articles",
+  "foreign_path": "study/check_reader.py",
+  "foreign_is_outside_scope": true,
+  "foreign_worktree_sha256": "080fac971adc026a82f210f11ec80bece14d2e9220f60e0a8ce49f33aa95273a",
+  "foreign_change_preserved": true,
+  "explanation": "The exact pathspec is study/question_articles, not the entire study directory. Untracked study/drafts,study/research,WAVE3_PACKET.md and tracked study/check_reader.py are outside it and are not packaged/rebuilt by this frozen release."
+}

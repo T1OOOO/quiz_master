@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-15T18:13:50.026891+00:00",
+  "command": [
+    "eval",
+    "(() => {const p=document.querySelector('flt-semantics-placeholder'); if(!p) return {placeholder:false}; p.click(); return {placeholder:true};})()"
+  ],
+  "actual_exit": 0,
+  "timed_out": false,
+  "stdout": "{\n  \"placeholder\": true\n}\n"
+}
