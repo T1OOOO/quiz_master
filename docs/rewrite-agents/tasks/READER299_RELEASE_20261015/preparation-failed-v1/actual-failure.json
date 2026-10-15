@@ -1,0 +1,51 @@
+{
+  "actual_exit": 1,
+  "status": "CANDIDATE_VERIFIED_PREPARATION_STOPPED_BEFORE_IMPORT_OR_PUBLICATION",
+  "candidate": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader299-9c670e9",
+    "image_id": "sha256:faef7c1c7486c437ed569a457dc71ad690342d4cd7010be143caa5bfcc2885f1",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 299,
+      "total_refs": 180,
+      "playable_refs": 178,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "evidence_sha256": {
+    "remote-guard-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "remote-guard-log.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote-prepare-script.sh": "6a69cd74bf2d7c8382a18dba602c60e860802c2cee0409290a40dbb027384dc4",
+    "remote-prepare-exit.json": "b8b9eab68203e851595708abb4b126cf54287e1f9e50567afdba91f84e264de1",
+    "remote-prepare-log.txt": "92d2fe04137d9d8ba29dfb294963b8994ece18443fa2388822dace2c30864ff7"
+  },
+  "reason": "Actual post-candidate strict20percent preflight failed; followup read-only state shows20325752832/102417174528, stillbaseline61/full29OPEN. No PREPARED marker or collector receipt exists. Resume must use a fresh evidence directory and rerun full gates; original failure immutable."
+}

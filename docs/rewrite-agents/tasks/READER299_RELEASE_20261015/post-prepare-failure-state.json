@@ -1,0 +1,6 @@
+{
+  "actual_exit": 0,
+  "stdout": "{\"helm_revision\": 61, \"status\": \"deployed\", \"images\": [\"docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228\", \"docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228\"], \"available_replicas\": 1, \"pvc_uid\": \"7fc2428f-4146-4c78-a26d-2347d9f3b7bf\", \"feedback_count\": 29, \"all_open\": true, \"feedback_sha256\": \"452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e\", \"node_ready\": true, \"disk_pressure\": false, \"blocking_taints\": false, \"disk_available\": 20325752832, \"disk_total\": 102417174528, \"disk_at_least20percent\": false, \"https_readiness_status\": 200, \"backup_mode\": \"0600\", \"backup_integrity\": \"ok\"}\n{\"candidate_image\": \"sha256:faef7c1c7486c437ed569a457dc71ad690342d4cd7010be143caa5bfcc2885f1\", \"candidate_size\": 262366051, \"candidate_stage_exists\": true, \"candidate_durable_archive_exists\": false}\n",
+  "stderr": "",
+  "scope": "Read-only exact61/currentfeedback/node/space/backup and owned candidate existence/image metadata after failure. No mutation."
+}
