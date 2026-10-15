@@ -1,0 +1,60 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-cdae0e54d7d343bb85a8f6f754e37e3f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-cdae0e54d7d343bb85a8f6f754e37e3f",
+          "verdict": "accept",
+          "note": "Independent fresh-Claude read-only audit of the completed Reader publication, no browser/SSH/renderer/executor/deploy/edit/commit. I verified evidence on disk myself, not just trusted prior review text.\n\nVerified directly: sha256sum of publication-source/publish_release.py == eb10f4e1757c...f69, matching the pinned publication_executor_sha256 in execution-acceptance.json and independent-execution-review.json. git cat-file -t on 06dfa0bca56c... confirms the frozen source commit exists in this repo. publish-exit.json actual_exit=0. publish-log.txt shows a real Helm transcript: dry-run warnings are pre-existing last-applied-configuration annotation notices (not failures), ending 'Release quiz-master has been upgraded... REVISION: 59... STATUS: deployed', with fresh backup quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z and integrity/restore recorded ok. published-server-verification.jsonl independently confirms preflight (NodeReady, DiskPressureFalse, no taint, 20.6GB/20.3%% free, HTTPS 200) and post-deploy state (helm_revision 59, deployed, both containers on image sha256:95ad1112..., 1 replica, PVC 7fc2428f... unchanged, 29 feedback all OPEN with unchanged hash). published-http-verification.json matches: source06, 136 packs/4084 questions/279 articles, main.dart.js and reader bundle hashes recorded, Greek002 bound revision 038a7a4..., public GET only (no quiz/guest/attempt created). published-browser/browser-proof.json shows a fresh post-publish Chrome session (361x738) through the real Explore UI opening the existing thyroid Reader article (not Greek002 itself) with 0 empty textareas, 2 source controls, 0 uncaught errors, and a read-only PID/name/creation-time cleanup check (no process kills). Screenshots present with recorded hashes.\n\nScope correctly limited and disclosed: Greek002 content itself was validated separately via the isolated 20-question game and export/public-DTO equality, not by starting a production quiz; this is explicit and consistent across files. All 29 feedback items remain open (none closed). No Android/screen-reader testing, consistent with disclosed limits. STATUS_EN.md matches the artifact contents and does not overstate scope.\n\nNo inconsistencies found between the independent prior reviews (preparation/execution) and the actual completed-publication artifacts I inspected myself. Accepting: evidence supports exactly the outcome claimed for this publication.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actualpublish0/Helm59bothimages95/HTTPmetaJSReader279Greek038a/public20equal/HTTPSReady20percent/fresh0600backupintegrity/PVCfeedbackconservation. ActualpublishedFlutterReaderbodyStaticText noemptytextarea,sourcefooter,close0/nativeownedidentitiesabsent, no browsererrors. Differentproviderinspectevidence scope; reports honestlimitations.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015"
+        ],
+        "assignee": "session-6cb6cfd1c1d54fcb824cc044e2d38930",
+        "author": "session-6cb6cfd1c1d54fcb824cc044e2d38930",
+        "body": "Root owns read-only published metadata/server/Flutter browser verification after actual accepted execution. Exact59/image95/buildreader06/PVC unchanged/all29feedbackOPEN unchangedhash. LocalQA20=19/20 plus actualcandidate100/20 andpublishedexistinganatomyReader361x738StaticText/0textarea/sourcefooter/close. Noquizstarted. Independent Claude source/evidence review required; no reviewer network/mutation, no claim fullbank/Android/screenreader. RootupdateBeads andpushafterreview.",
+        "created_at": 1792036111.4742754,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-cdae0e54d7d343bb85a8f6f754e37e3f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/publish-exit.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/publish-log.txt",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/published-http-verification.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/published-server-verification.jsonl",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/published-browser/browser-proof.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/published-browser/mixed/released-article-tree.json"
+          ],
+          "scope": "Actualpublished59bothimages95,1364084Reader279/Greek038a/exportb05/JS719/public20equalsactualQAfixture,HTTPS200/PVCunchanged/freshbackup0600integrityok/29feedbackOPENsameSHA. FreshFluttermobile361738normalExploreanatomyReader:StaticTextbody/0textarea/2sources/footer/close/errorsnone/officialclose0nativeaudit0; all21releasedcommands0. Greek002itselfviaexactpublicassets+local20game, notproductionquiz. NoAndroid/hardwarescreenreader test; nofullbankclaims."
+        },
+        "root_task_id": "task-cdae0e54d7d343bb85a8f6f754e37e3f",
+        "run_id": "run-b124ee3760fb4747a1ac3630c943870c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-10f0dc952c4c4627b1ee870e12df05aa",
+        "title": "Verify actual published Reader59 evidence and preserve feedback",
+        "version": 4,
+        "reviewer": "session-c9ef15558cfa4c6e8bf1419f32f557af",
+        "review_note": "Independent fresh-Claude read-only audit of the completed Reader publication, no browser/SSH/renderer/executor/deploy/edit/commit. I verified evidence on disk myself, not just trusted prior review text.\n\nVerified directly: sha256sum of publication-source/publish_release.py == eb10f4e1757c...f69, matching the pinned publication_executor_sha256 in execution-acceptance.json and independent-execution-review.json. git cat-file -t on 06dfa0bca56c... confirms the frozen source commit exists in this repo. publish-exit.json actual_exit=0. publish-log.txt shows a real Helm transcript: dry-run warnings are pre-existing last-applied-configuration annotation notices (not failures), ending 'Release quiz-master has been upgraded... REVISION: 59... STATUS: deployed', with fresh backup quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z and integrity/restore recorded ok. published-server-verification.jsonl independently confirms preflight (NodeReady, DiskPressureFalse, no taint, 20.6GB/20.3%% free, HTTPS 200) and post-deploy state (helm_revision 59, deployed, both containers on image sha256:95ad1112..., 1 replica, PVC 7fc2428f... unchanged, 29 feedback all OPEN with unchanged hash). published-http-verification.json matches: source06, 136 packs/4084 questions/279 articles, main.dart.js and reader bundle hashes recorded, Greek002 bound revision 038a7a4..., public GET only (no quiz/guest/attempt created). published-browser/browser-proof.json shows a fresh post-publish Chrome session (361x738) through the real Explore UI opening the existing thyroid Reader article (not Greek002 itself) with 0 empty textareas, 2 source controls, 0 uncaught errors, and a read-only PID/name/creation-time cleanup check (no process kills). Screenshots present with recorded hashes.\n\nScope correctly limited and disclosed: Greek002 content itself was validated separately via the isolated 20-question game and export/public-DTO equality, not by starting a production quiz; this is explicit and consistent across files. All 29 feedback items remain open (none closed). No Android/screen-reader testing, consistent with disclosed limits. STATUS_EN.md matches the artifact contents and does not overstate scope.\n\nNo inconsistencies found between the independent prior reviews (preparation/execution) and the actual completed-publication artifacts I inspected myself. Accepting: evidence supports exactly the outcome claimed for this publication."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded: `task-cdae0e54d7d343bb85a8f6f754e37e3f` → **ACCEPTED**, version 4.\n\n**Summary:** I independently re-verified the publication evidence rather than trusting the dense claim text alone — recomputed `publish_release.py`'s sha256 (matches the pinned executor hash), confirmed the frozen source commit exists via `git cat-file`, and read the raw `publish-log.txt`/`*.jsonl` artifacts myself: Helm revision 59 deployed with both containers on the pinned image, fresh backup with integrity/restore OK, HTTP metadata matching (source06, 4084 questions, Reader 279, Greek002 bound revision), browser proof opening the existing thyroid article cleanly, and all 29 feedback items still OPEN with unchanged hash. Scope limits (Greek002 validated only via isolated game + DTO equality, no Android/screen-reader testing) are consistently disclosed, not hidden. Accepted.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "fe842ecf9849ce42c2d9646fe33a7d1ef2362440f2a94245a3602aebb72fc11e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
