@@ -1,0 +1,49 @@
+[
+  {
+    "label": "export-check",
+    "command": [
+      "python",
+      "study/question_articles/build.py",
+      "--check"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "elapsed_seconds": 0.45,
+    "raw_log": "export-check.log"
+  },
+  {
+    "label": "export-regressions",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "study/question_articles",
+      "-p",
+      "test_build.py",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "elapsed_seconds": 0.53,
+    "raw_log": "export-regressions.log"
+  },
+  {
+    "label": "flutter-article-regressions",
+    "command": [
+      "cmd",
+      "/d",
+      "/c",
+      "flutter",
+      "test",
+      "--no-pub",
+      "--concurrency=1",
+      "test/question_articles_test.dart"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+    "actual_exit": 1,
+    "elapsed_seconds": 20.2,
+    "raw_log": "flutter-article-regressions.log"
+  }
+]

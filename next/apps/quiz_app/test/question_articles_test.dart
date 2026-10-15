@@ -229,7 +229,7 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(299));
+      expect(articles.articles, hasLength(303));
       for (final (quizId, questionId, revision) in [
         (
           'prep-film-actors-1',
@@ -425,6 +425,26 @@ void main() {
           'screen-song-20261014',
           'screen-song-pilot-004',
           '21c67a6b079acb30dcd1830ae3654ccae0044079452af685b6bb969d3a3e80fb',
+        ),
+        (
+          'prep-musicals',
+          'music-oct3-001',
+          '2d8969bca1bd9d13ade9f5cc89c4badf493848e6f38b373e0f5065ca42c437a3',
+        ),
+        (
+          'prep-musicals',
+          'music-oct3-002',
+          '0569057496b738706c10d86e9ecf9fe25362179ff177c45d2130e95372949a6c',
+        ),
+        (
+          'prep-musicals',
+          'music-oct3-003',
+          '027b355042b37af474e7e0bc20f5d5009d97c6d8f19fbff40d1af1e7736cf705',
+        ),
+        (
+          'prep-musicals',
+          'music-oct3-019',
+          '11b7a04b78a9b527fbd8e2b4309c9f81025899f2d5ee95827b4ffc9edaff4bc6',
         ),
         (
           'acting-craft-20261014',

@@ -1,0 +1,66 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-6a6ebc0baaaf416888cf8bc6c468a403": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6a6ebc0baaaf416888cf8bc6c468a403",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review-inputs.json sha256 (computed, not trusted): 5041142a877e4c62aac530476a3ba366a41912fb422e012a74eaf0ef2bc1b432. All 19 manifest files hash-match exactly. Diff vs pinned baseline 14d8929f10bb99661e5b4cfccc9641634906ea70 touches only question-articles.json (+4 objects) and the test fixture; all 299 prior article objects byte-identical, no question/option/key/API/UI/schema change. New objects equal draft bytes/sources/refs except status (draft->accepted); review file's 4 article_sha256 values independently recomputed via study/question_articles/build.py:article_hash() and match draft exactly; reviewer session-37e31... and author/assignee session-b7d4... are distinct. All 4 revision_sha256 tuples match study/question_articles/snapshots/prep-musicals.json. total question_refs recount=184 matches claim. checks.json/export-check.log/export-regressions.log confirm exporter PASS + 3/3 unit tests; flutter-article-regressions.log shows honest old RED1 (exit1 on 299 assert), flutter-green-receipt.json is a fresh full-output GREEN (exit0) after native's GREEN lacked raw log. No publication/build/browser/deploy claimed. No issues found."
+        }
+      },
+      "actual_response": {
+        "acceptance": "303 local reader items, prior299 unchanged, four refs match actual public DTOs and canonical perarticle review hashes, appropriate tests0, genuine source review provenance, no deployment claim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root owns exact new review file study/question_articles/reviews/musicals-four-20261015.json, generated next/apps/quiz_app/assets/study/question-articles.json and docs/rewrite-agents/tasks/MUSICALS_FOUR_INTEGRATION_20261015. Bind genuine accepted native task37224/run43df/Claude37e31 CLI0 receipt to exact draft3f20d2f0. Use existing article_hash canonical function, independent author/reviewer IDs and checked source evidence. Preserve draft bytes, prior299 entire article objects and allquestion/option/key/API/UI/catalog/study source. No publication. Run exporter, relevant meaningful tests, exact public musical DTO snapshot parity and new4revision/2sources/4sections checks. Different-provider integration review required.",
+        "created_at": 1792073697.2318196,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6a6ebc0baaaf416888cf8bc6c468a403",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "study/question_articles/reviews/musicals-four-20261015.json",
+            "next/apps/quiz_app/assets/study/question-articles.json",
+            "docs/rewrite-agents/tasks/MUSICALS_FOUR_INTEGRATION_20261015"
+          ],
+          "evidence": [
+            "docs/rewrite-agents/tasks/MUSICALS_FOUR_INTEGRATION_20261015/review-inputs.json",
+            "docs/rewrite-agents/tasks/MUSICALS_FOUR_INTEGRATION_20261015/integration-verification.json",
+            "docs/rewrite-agents/tasks/MUSICALS_FOUR_INTEGRATION_20261015/flutter-green-receipt.json"
+          ],
+          "run_id": "run-af555206619f48cba52512957bd32aab",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Local303 export with exact accepted4musical hashes, all prior299 article objects unchanged, live public quiz DTO equals snapshot, actual Python3tests/export0 and Root retained Flutter7 GREEN0 after honest old299 count RED1. New fixture task05b submitted separately. No production Dart/API/quizzes/options/keys changes. No build/candidate/browser/deployment; actual public remains299. Advisory release path8de and fresh current62 publish-backup SHA recorded."
+        },
+        "root_task_id": "task-6a6ebc0baaaf416888cf8bc6c468a403",
+        "run_id": "run-af555206619f48cba52512957bd32aab",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-3qx: admit four fact-accepted musical articles and export Reader303",
+        "version": 4,
+        "reviewer": "session-a8de34a8b276472cad9ad4581332c14e",
+        "review_note": "Independent review-inputs.json sha256 (computed, not trusted): 5041142a877e4c62aac530476a3ba366a41912fb422e012a74eaf0ef2bc1b432. All 19 manifest files hash-match exactly. Diff vs pinned baseline 14d8929f10bb99661e5b4cfccc9641634906ea70 touches only question-articles.json (+4 objects) and the test fixture; all 299 prior article objects byte-identical, no question/option/key/API/UI/schema change. New objects equal draft bytes/sources/refs except status (draft->accepted); review file's 4 article_sha256 values independently recomputed via study/question_articles/build.py:article_hash() and match draft exactly; reviewer session-37e31... and author/assignee session-b7d4... are distinct. All 4 revision_sha256 tuples match study/question_articles/snapshots/prep-musicals.json. total question_refs recount=184 matches claim. checks.json/export-check.log/export-regressions.log confirm exporter PASS + 3/3 unit tests; flutter-article-regressions.log shows honest old RED1 (exit1 on 299 assert), flutter-green-receipt.json is a fresh full-output GREEN (exit0) after native's GREEN lacked raw log. No publication/build/browser/deploy claimed. No issues found."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three tasks reviewed and accepted.\n\n**Final report**\n\n1. **Integration (`task-6a6e...`)** — ACCEPT, error_count 0. All 19 referenced files hash-match the manifest exactly; diff vs pinned baseline `14d8929f` touches only `question-articles.json` (+4 objects, all 299 prior objects byte-identical) and the test fixture; new objects equal draft bytes/sources/refs except status; the review file's 4 `article_sha256` values independently recomputed via `article_hash()` match the draft; reviewer/author sessions are distinct; all 4 revision hashes match the tracked snapshot; exporter/unit-test logs show genuine PASS, honest old RED1, and a fresh full-output GREEN. No publication/build/deploy claimed.\n\n2. **Fixture (`task-05b4...`)** — ACCEPT, error_count 0. Diff is exactly a count bump (299→303) plus 4 appended tuples to the existing loop, no other assertions touched, no production Dart changed; tuples verified against both the asset file and the snapshot.\n\n3. **Advisory audit (`task-8de9...`)** — ACCEPT, error_count 0, as an accurate proposal only (explicitly not READY/execution/publication approval). Its concrete claims (hardcoded `ARTICLE_IDS`, ref counts, fixture scores) were spot-checked against the real Reader299 source files and matched.\n\nNo rework was needed on any of the three; all claims checked out against independently recomputed evidence rather than trusted self-reports.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "896f03a0be77454a0fc7906becc7ed1e14c0989ba91ee37d429d29e944c2e95c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

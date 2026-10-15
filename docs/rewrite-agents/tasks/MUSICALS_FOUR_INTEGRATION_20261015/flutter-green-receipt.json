@@ -1,0 +1,20 @@
+{
+  "command": [
+    "cmd",
+    "/d",
+    "/c",
+    "flutter",
+    "test",
+    "--no-pub",
+    "--concurrency=1",
+    "test/question_articles_test.dart"
+  ],
+  "cwd": "C:\\ap\\quiz_master\\next\\apps\\quiz_app",
+  "actual_exit": 0,
+  "elapsed_seconds": 18.29,
+  "reason_for_fresh_run": "Native GREEN run honestly had no retained raw stdout/stderr; capture actual complete output for independent integration review.",
+  "fixture_sha256": "0c5c4fa77007c7b9536d0490b592875b3efd7af0dec1b27efd208eb1e5d25e36",
+  "raw_log": "flutter-article-regressions-green.log",
+  "raw_log_sha256": "3d868202e2d69fb6b30eed9ba838bbca86f035874afab17f67df5d4413bc4c76",
+  "live_reload": "No running debug app/DTD discovered; production Dart unchanged, test fixture only."
+}
