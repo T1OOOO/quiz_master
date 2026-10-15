@@ -1,5 +1,11 @@
 # quiz_master
 
+The current production application uses Flutter in `next/apps/quiz_app` and Go in
+`next/server`. See the [production release runbook](docs/rewrite-agents/RELEASE_RUNBOOK_EN.md)
+before preparing or publishing an update. The split-service instructions below
+describe the legacy stack; `scripts/deploy_server.sh` builds its Expo/systemd
+deployment and must not be used for the current Kubernetes deployment.
+
 `quiz_master` runs as a split backend:
 
 - `server` is the public gateway for quiz, auth, and websocket flows

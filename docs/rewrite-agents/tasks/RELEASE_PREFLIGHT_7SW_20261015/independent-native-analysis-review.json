@@ -1,0 +1,97 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-76ff435d7e174d6eb79b2c61db953d1f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-76ff435d7e174d6eb79b2c61db953d1f",
+          "verdict": "accept",
+          "note": "Independently corroborated: scripts/deploy_server.sh is a legacy systemd/Expo script (deploys to /var/www/quiz_master, no k3s/Helm involvement) and Taskfile.yml contains no deploy/k3s/helm target (grep found zero matches). This confirms the native analysis's core claim: no current supported shared k3s deployment entrypoint exists in this repo. Consistent with RELEASE_RUNBOOK_EN.md's explicit statement that there is no supported shared deployment command yet and that this gap is tracked in quiz_master-7sw/qqx. Verdict: accept.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact file/function/caller/test pointers and honest limits. Preserve unrelatedchanges, reviewed archive sourcehashes, allotherprojectresources. No execution claims.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master"
+        ],
+        "assignee": "session-c925756a4d904e8583de1007602dca24",
+        "author": "session-ef5a3aa3d4534532819c7f207fdfc91d",
+        "body": "Finite read-only task for native public_release_controller. Identify actual current nonhistorical deployment/preparation entrypoint/callers/tests for strict pre-imagebuild NodeReady/DiskPressureFalse/no blockingtaint/schedulable/f_bavail>=20percent/HTTPS guard. Do not mutate immutable historical reviewed helper source/hash chains. No edits/tests/build/browser/SSH/processcleanup/helpers/children/commit. Report minimal integration or no livecaller. Root implements only concrete currentcaller, notunusedabstraction.",
+        "created_at": 1792036632.9717572,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-76ff435d7e174d6eb79b2c61db953d1f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "kind": "current_release_instance",
+              "lines": "38-49,141-179",
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_remote.py",
+              "result": "Current release-specific CLI main creates remote_scripts(), executes guard first via ssh(guard, 40), then only uploads and executes the generated prepare script. It is a concrete caller but is hash-bound to Reader/source06/baseline58 and not a shared future entrypoint."
+            },
+            {
+              "kind": "guard_injection",
+              "lines": "166-170",
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_release.py",
+              "result": "Generated cutover.sh inserts quiz_preflight after flock, immediately before docker build, and immediately before durable k3s image archive/import path."
+            },
+            {
+              "kind": "guard_contract",
+              "lines": "3-24",
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\reader638_guard.py",
+              "result": "Existing concrete guard verifies one Ready/DiskPressure=False node, not unschedulable, no NoSchedule/NoExecute taint, statvfs f_bavail >=20%, and HTTPS ready200, plus release-specific Helm/image/PVC pins."
+            },
+            {
+              "kind": "test",
+              "lines": "75-103",
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py",
+              "result": "Existing unit test executes the embedded guard and rejects 19% free space, not-ready, disk pressure, taint, cordon, wrong image/Helm, and multiple nodes."
+            },
+            {
+              "kind": "stale_paths",
+              "lines": "1-47",
+              "path": "C:\\ap\\quiz_master\\scripts\\deploy_server.sh",
+              "result": "Legacy root/systemd deployment builds obsolete optional mobile Expo and Go binary directly, copies resources, restarts systemd/nginx; it has no Kubernetes/Helm/containerd path to guard and its mutation behavior makes it unsuitable as a supported release entrypoint."
+            },
+            {
+              "kind": "stale_paths",
+              "lines": "1-43",
+              "path": "C:\\ap\\quiz_master\\Taskfile.yml",
+              "result": "No deploy task; its web tasks refer to React web/ and Flutter tasks use flutter/, while current release is next/apps/quiz_app. Existing P03 report records this unsupported state as tracked by quiz_master-qqx."
+            }
+          ],
+          "limitations": [
+            "No shell, browser, SSH, build, test, process, or file mutation was performed.",
+            "The current Reader controller cannot be reused unchanged because it pins historical baseline Helm58/image/PVC/source identity; it is evidence, not a future generic controller.",
+            "Beads quiz_master-qqx already tracks stale Taskfile/build_deploy paths; this review recommends no duplicate documentation rewrite absent a supported replacement."
+          ],
+          "minimal_proposal": "Do not edit the archived MIXED_RELEASE_20261014 helpers or the accepted Reader worker hashes. For the next release-specific controller, copy the proven guard behavior into its newly frozen prepare producer and invoke it (1) as the remote preflight before upload/build and (2) in generated cutover.sh immediately before docker build and before k3s image import, then carry forward the existing executable boundary test. Do not create a shared abstraction until a real shared supported release caller is introduced.",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Read-only architecture review: no supported shared deployment/preparation entrypoint exists. The only concrete strict guard is frozen to the Reader59 release and must not be modified; stale scripts cannot receive a safe small guard integration."
+        },
+        "root_task_id": "task-76ff435d7e174d6eb79b2c61db953d1f",
+        "run_id": "run-ee76c3936d6c4494933756eaaeea9dfd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-e3f0010cf5f643d4bbabb62d49d3a4d5",
+        "title": "quiz_master-7sw current preparation entrypoint and guard integration",
+        "version": 4,
+        "reviewer": "session-b4e3cc53860b4466b9efc81d8a1d724f",
+        "review_note": "Independently corroborated: scripts/deploy_server.sh is a legacy systemd/Expo script (deploys to /var/www/quiz_master, no k3s/Helm involvement) and Taskfile.yml contains no deploy/k3s/helm target (grep found zero matches). This confirms the native analysis's core claim: no current supported shared k3s deployment entrypoint exists in this repo. Consistent with RELEASE_RUNBOOK_EN.md's explicit statement that there is no supported shared deployment command yet and that this gap is tracked in quiz_master-7sw/qqx. Verdict: accept."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are now recorded (`ACCEPTED`). Summary:\n\n**task-88b70185 (README notice + runbook + evidence folder): accept**\n- README diff is exactly the claimed 6-line notice; recomputed sha256 of README.md and RELEASE_RUNBOOK_EN.md matched `checks.json` byte-for-byte.\n- All 5 local links resolve; runbook content is internally consistent (20.1% disk-available math, shared image digest, feedback/backup state).\n- `bd show` confirmed `quiz_master-7sw` is `in_progress` and `quiz_master-qqx` is `open` — not falsely closed, matching the \"deferred, not resolved\" claim.\n- No app/controller code or archived worker scripts touched.\n\n**task-76ff435d (native entrypoint analysis): accept**\n- Independently verified `scripts/deploy_server.sh` is a legacy systemd/Expo script with no k3s/Helm path, and `Taskfile.yml` has zero deploy/k3s/helm targets — corroborating \"no current supported shared k3s entrypoint exists.\"\n\nNo deviations found; nothing to flag as wrong. Session is otherwise done (read-only audit, no code changes to push).",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "b5b29357038bfa445b0368d0e7204e02744247e2245486c3debaee8ccff910bf",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

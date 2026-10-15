@@ -1,0 +1,60 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-88b70185889a43928acef8de76df39de": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-88b70185889a43928acef8de76df39de",
+          "verdict": "accept",
+          "note": "Independently verified. README diff is exactly the claimed 6-line notice (git diff --cached), pointing to RELEASE_RUNBOOK_EN.md and correctly flagging deploy_server.sh/Taskfile.yml as non-current. Recomputed sha256 for README.md and RELEASE_RUNBOOK_EN.md locally; both match checks.json exactly. All 5 local links in runbook/README resolve to existing files. Runbook content is accurate: no shared deploy command claimed, explicit warning against replaying 58-pinned controllers against 59, disk/node/HTTPS guard math checks out (20595404800/102417174528 ≈ 20.1% ≥ 20%), both Helm images share digest sha256:95ad1112..., feedback 29/OPEN unchanged, backup 0600/integrity ok. kubelet.json is read-only configz (exit 0) with only 6 disk-related fields retained, consistent with runbook's 'inspect live config, don't assume historical thresholds' framing. bd quiz_master-7sw is in_progress and quiz_master-qqx is open (not closed), matching the claim that shared entrypoint work remains deferred, not silently resolved. No app/controller code touched; archived worker scripts under READER_PUBLIC_RELEASE_20261015 untouched. Scope matches: doc/evidence only, no new guard implementation claimed. Verdict: accept.",
+          "error_count": 0
+        }
+      },
+      "actual_response": {
+        "acceptance": "Clear currentFlutter+Go/sourcepath vs legacyreadme, no replaying baseline58 scripts against59, f_bavail20percent plus actualconfig/backup/restore/hash/independentreview/beforebuildimportandpublish ordering, noActions/noqueue override. Linktargets and unchangedsourcehashchecks, truthfulnoAndroid/newproductionchanges.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\README.md",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents"
+        ],
+        "assignee": "session-ef5a3aa3d4534532819c7f207fdfc91d",
+        "author": "session-ef5a3aa3d4534532819c7f207fdfc91d",
+        "body": "Root owns README.md top productionnotice and docs/rewrite-agents/RELEASE_RUNBOOK_EN.md plus RELEASE_PREFLIGHT_7SW_20261015 evidence. Native read-only task76ff confirms no sharedsupportedentrypoint; archivedReader59 guard/test isreferenceonly, oldscriptssystemdExpo notcurrentk3s. Do notpatchimmutablehelperhashes orcreateunusedabstraction. Recordactualreadonlykubeletconfig andhealthyfeedbackconservation; explicitfuturecontrollerguardsandnewreviewrequired. No productionmutation/deploy/codeguardclaim. IndependentClaude doc/source review required; qqx/7swremainopen for implementation/entrypointwork.",
+        "created_at": 1792036825.589559,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-88b70185889a43928acef8de76df39de",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "README.md new current-production notice",
+            "docs/rewrite-agents/RELEASE_RUNBOOK_EN.md",
+            "docs/rewrite-agents/tasks/RELEASE_PREFLIGHT_7SW_20261015/checks.json",
+            "docs/rewrite-agents/tasks/RELEASE_PREFLIGHT_7SW_20261015/kubelet.json",
+            "docs/rewrite-agents/tasks/RELEASE_PREFLIGHT_7SW_20261015/production-refresh.jsonl"
+          ],
+          "scope": "Doc-only frontdoor correction, no newunusedguard/no archivedworker edits/no productionmutation. Current59healthy/29feedbackunchanged/read-onlyconfigz5percent hard,10percentminreclaim,GC85/80 captured. ExistingReader59 guardplacement/test reuse explicitlyonlynewbaselinecontroller +freshreview. Link/hashchecks0; implementation/sharedentrypoint remains7sw/qqx open. Native76ff submittedread-only no current sharedentrypoint."
+        },
+        "root_task_id": "task-88b70185889a43928acef8de76df39de",
+        "run_id": "run-0408fd5bf51d4cf9a83aac53155f7f78",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-e3f0010cf5f643d4bbabb62d49d3a4d5",
+        "title": "quiz_master-7sw document the supported frozen-controller release path",
+        "version": 4,
+        "reviewer": "session-b4e3cc53860b4466b9efc81d8a1d724f",
+        "review_note": "Independently verified. README diff is exactly the claimed 6-line notice (git diff --cached), pointing to RELEASE_RUNBOOK_EN.md and correctly flagging deploy_server.sh/Taskfile.yml as non-current. Recomputed sha256 for README.md and RELEASE_RUNBOOK_EN.md locally; both match checks.json exactly. All 5 local links in runbook/README resolve to existing files. Runbook content is accurate: no shared deploy command claimed, explicit warning against replaying 58-pinned controllers against 59, disk/node/HTTPS guard math checks out (20595404800/102417174528 ≈ 20.1% ≥ 20%), both Helm images share digest sha256:95ad1112..., feedback 29/OPEN unchanged, backup 0600/integrity ok. kubelet.json is read-only configz (exit 0) with only 6 disk-related fields retained, consistent with runbook's 'inspect live config, don't assume historical thresholds' framing. bd quiz_master-7sw is in_progress and quiz_master-qqx is open (not closed), matching the claim that shared entrypoint work remains deferred, not silently resolved. No app/controller code touched; archived worker scripts under READER_PUBLIC_RELEASE_20261015 untouched. Scope matches: doc/evidence only, no new guard implementation claimed. Verdict: accept."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are now recorded (`ACCEPTED`). Summary:\n\n**task-88b70185 (README notice + runbook + evidence folder): accept**\n- README diff is exactly the claimed 6-line notice; recomputed sha256 of README.md and RELEASE_RUNBOOK_EN.md matched `checks.json` byte-for-byte.\n- All 5 local links resolve; runbook content is internally consistent (20.1% disk-available math, shared image digest, feedback/backup state).\n- `bd show` confirmed `quiz_master-7sw` is `in_progress` and `quiz_master-qqx` is `open` — not falsely closed, matching the \"deferred, not resolved\" claim.\n- No app/controller code or archived worker scripts touched.\n\n**task-76ff435d (native entrypoint analysis): accept**\n- Independently verified `scripts/deploy_server.sh` is a legacy systemd/Expo script with no k3s/Helm path, and `Taskfile.yml` has zero deploy/k3s/helm targets — corroborating \"no current supported shared k3s entrypoint exists.\"\n\nNo deviations found; nothing to flag as wrong. Session is otherwise done (read-only audit, no code changes to push).",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "b5b29357038bfa445b0368d0e7204e02744247e2245486c3debaee8ccff910bf",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
