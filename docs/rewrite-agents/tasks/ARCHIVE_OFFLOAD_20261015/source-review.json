@@ -1,0 +1,64 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-979f715e9ad542dd8d85e351c2074c0f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-979f715e9ad542dd8d85e351c2074c0f",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT: source + copies only; NOT executed removal, recovered headroom or publication.\n\nReviewer session-a470082a68d5410fb23386db4dbd382d (claude-opus-5) != assignee session-0ef8598319714ed1b54a0069d18386df.\n\napproval-inputs sha256 b1e6979821f961f7e12cd37af93e12f65590acb7ea2415373506f4213a72fd30\n\n1. Recomputed all 8 pinned digests, all match approval-inputs.json (4b9cabce, 5d79a006, a61e7bd9, e6dde43f, b4401aa9, de842ef8, ddef093c, 1c9a128a). receipt.plan_sha256 == actual plan.json digest.\n2. Rehashed all 8 local copies: every sha256/size matches plan.json and copy-receipt.json; remote paths match; 8 unique paths; scp_exit 0 each; sizes sum to exactly 591301120; dir holds exactly 8 files, gitignored (.gitignore:212).\n3. Shell unlink block (offload.sh 44-103) byte-identical to offload.py. Exactly one .unlink() in the file, in an 8-entry loop gated by assert len==8 and the byte sum. No glob/rglob/iterdir/rmtree/shutil/rm/rmi/image rm/prune/systemctl/restart anywhere.\n4. Per-entry chain: parent==ROOT, name not in PROTECTED(5), PATTERN .tar 10.02-10.13 (tightened from 1[0-4]), str(logical)==path blocks traversal, not symlink, S_ISREG, dev/ino/size/mtime pinned, O_NOFOLLOW open, fstat before+after digest, final lstat+symlink recheck. Whole batch validated before the first unlink, then revalidated immediately before each unlink.\n5. Both modules raise on not __debug__ above all logic; rerun confirms both fail under -O. Shell unsets PYTHONOPTIMIZE/PYTHONSTARTUP, pins hostname 3x, holds existing DEPLOY.lock on fd 8 via flock -n for the whole script (children inherit).\n6. Pre/post byte-identical: health 9-26 == 130-147; protected+inventory 29-41 == 113-125. All 4 protected literals == protected-hashes.json (16 files). Both inventory asserts == image-inventory.json (containerd 201, docker 47) via read-only list commands.\n7. Fetched official v1.36.4+k3s1 watcher.go: digest b59869f0eed4200d2488ebe1bf2f9887dfe66f74db0cd3a53dc0431a5c0f8f7c matches evidence; missing-file branch byte-identical, only delete(filesCache,key)+syncCache; pruneCache touches cache entries only; no image-delete call in the file.\n8. Reran fixtures: 11/11 OK; bash -n OK; all 5 embedded python blocks compile; tests stdout/stderr digests match tests.json. No source-review.json or execution-* logs exist.\n\nNon-blocking: 'all_open'==29 printed not asserted (covered by the pinned full-row sha); unlink by path, not unlinkat(fd); exec 8> truncates DEPLOY.lock. Last two match the accepted precedent."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual9+localnegativefixturetests, no-op-under-python-O guard, exact8localcopies/plan/hashmanifest and newgenuinedifferentprovider callback beforeunlink; protectedcurrent/rollback/candidatefiles/loadedimages/feedback preserved. No publication authority.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ARCHIVE_OFFLOAD_20261015"
+        ],
+        "assignee": "session-0ef8598319714ed1b54a0069d18386df",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Finite source and later execution gate for8oldownproject compressed-layer Docker-save .tar archive files in /var/lib/rancher/k3s/agent/images, datesOct12only,591301120bytes. No containerd/Dockerimage deletion, noimagesprune, noK3srestart/config, no stages/DB/otherprojects touched. Root copies all8 offserver+verifiesSHA before separate actualOpus source acceptance. Reuse accepted PACKAGE_OFFLOAD_20261015 core/executor/tests; adapt exactROOT/pattern<=13/protectedlatest61candidate+current60/59/58/failed17be,8count/bytes/newtask. KeepcurrentHelm60/PVC/29OPENfeedback andall16protectedhashes, loadedimageinventorybefore/after; no servermutationbeforegenuineacceptance. Needcapacity before authorizedReader291publication, candidateprepared0 butonly~49MBoverstrict20% threshold. Worker owns only offload.py/test_offload.py/execute.py/REPORT_EN.md withinnewARCHIVE folder; Root ownsplan/copyreceipt/shell/manifest/proofs. NoSSH/build/browser/Git/Beads/children.",
+        "created_at": 1792054163.233621,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-979f715e9ad542dd8d85e351c2074c0f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changes": [
+            "Created the guarded archive unlinker, executor callback/copy gate, fixture tests, and truthful source-only report.",
+            "Enforces .tar-only historical image naming, exact plan count/bytes/date in the executor, protected archive exclusions, whole-batch plus pre-unlink identity/hash checks, and optimized-Python refusal."
+          ],
+          "evidence": [
+            "python -m unittest -v test_offload.py: exit 0; Ran 11 tests in 0.452s; OK.",
+            "python -m py_compile offload.py execute.py test_offload.py: exit 0."
+          ],
+          "risks": [
+            "Independent source review, Root-owned plan/copy/evidence, and a genuine callback remain required before any unlink.",
+            "No SSH, server mutation, image-store change, build, browser, Git, or publication action occurred."
+          ],
+          "summary": "[archive-offload-controller] Source-only exact-eight archive offload gate is ready for independent review."
+        },
+        "root_task_id": "task-979f715e9ad542dd8d85e351c2074c0f",
+        "run_id": "run-f76fece1235c48daba6e4d648df6855a",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Exact eight historical Quiz Master image archive offload source gate",
+        "version": 4,
+        "reviewer": "session-a470082a68d5410fb23386db4dbd382d",
+        "review_note": "ACCEPT: source + copies only; NOT executed removal, recovered headroom or publication.\n\nReviewer session-a470082a68d5410fb23386db4dbd382d (claude-opus-5) != assignee session-0ef8598319714ed1b54a0069d18386df.\n\napproval-inputs sha256 b1e6979821f961f7e12cd37af93e12f65590acb7ea2415373506f4213a72fd30\n\n1. Recomputed all 8 pinned digests, all match approval-inputs.json (4b9cabce, 5d79a006, a61e7bd9, e6dde43f, b4401aa9, de842ef8, ddef093c, 1c9a128a). receipt.plan_sha256 == actual plan.json digest.\n2. Rehashed all 8 local copies: every sha256/size matches plan.json and copy-receipt.json; remote paths match; 8 unique paths; scp_exit 0 each; sizes sum to exactly 591301120; dir holds exactly 8 files, gitignored (.gitignore:212).\n3. Shell unlink block (offload.sh 44-103) byte-identical to offload.py. Exactly one .unlink() in the file, in an 8-entry loop gated by assert len==8 and the byte sum. No glob/rglob/iterdir/rmtree/shutil/rm/rmi/image rm/prune/systemctl/restart anywhere.\n4. Per-entry chain: parent==ROOT, name not in PROTECTED(5), PATTERN .tar 10.02-10.13 (tightened from 1[0-4]), str(logical)==path blocks traversal, not symlink, S_ISREG, dev/ino/size/mtime pinned, O_NOFOLLOW open, fstat before+after digest, final lstat+symlink recheck. Whole batch validated before the first unlink, then revalidated immediately before each unlink.\n5. Both modules raise on not __debug__ above all logic; rerun confirms both fail under -O. Shell unsets PYTHONOPTIMIZE/PYTHONSTARTUP, pins hostname 3x, holds existing DEPLOY.lock on fd 8 via flock -n for the whole script (children inherit).\n6. Pre/post byte-identical: health 9-26 == 130-147; protected+inventory 29-41 == 113-125. All 4 protected literals == protected-hashes.json (16 files). Both inventory asserts == image-inventory.json (containerd 201, docker 47) via read-only list commands.\n7. Fetched official v1.36.4+k3s1 watcher.go: digest b59869f0eed4200d2488ebe1bf2f9887dfe66f74db0cd3a53dc0431a5c0f8f7c matches evidence; missing-file branch byte-identical, only delete(filesCache,key)+syncCache; pruneCache touches cache entries only; no image-delete call in the file.\n8. Reran fixtures: 11/11 OK; bash -n OK; all 5 embedded python blocks compile; tests stdout/stderr digests match tests.json. No source-review.json or execution-* logs exist.\n\nNon-blocking: 'all_open'==29 printed not asserted (covered by the pinned full-row sha); unlink by path, not unlinkat(fd); exec 8> truncates DEPLOY.lock. Last two match the accepted precedent."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Verdict recorded: ACCEPT** — task `task-979f715e9ad542dd8d85e351c2074c0f` is now `ACCEPTED` (version 4, reviewer `session-a470082a68d5410fb23386db4dbd382d`). Note was 2492 chars and carries `approval-inputs sha256 b1e6979821f961f7e12cd37af93e12f65590acb7ea2415373506f4213a72fd30`.\n\n## What I verified independently\n\n**Hashes.** All eight pinned source/input digests recomputed and match `approval-inputs.json` exactly. `copy-receipt.json.plan_sha256` equals the actual `plan.json` digest.\n\n**The eight copies.** Rehashed all eight `.tar` files in `.run/actor291_release_20261015/archive-offload/offloaded/`. Every sha256 and size matches both `plan.json` and the receipt; remote paths match; eight unique paths; `scp_exit: 0` on all eight; sizes sum to exactly 591,301,120; the directory holds exactly eight files and is ignored via `.gitignore:212`.\n\n**Removal safety.** The shell's inlined core (`offload.sh:44-103`) is byte-identical to `offload.py` (clean diff). The file contains exactly one `.unlink()`, inside an eight-entry loop guarded by `assert len(entries)==8` and the byte sum. No glob, iterdir, rmtree, shutil, `rm`, `rmi`, `image rm`, `prune`, `systemctl` or restart anywhere. Per entry: exact normalized parent, not in PROTECTED (5 names), pattern narrowed to `.tar` dates 10.02–10.13 (tightened from `1[0-4]`), `str(logical)==entry['path']` kills traversal, non-symlink, `S_ISREG`, dev/ino/size/mtime pinned, `O_NOFOLLOW` open, `fstat` both before and after the digest, final `lstat` + symlink recheck. Whole batch validated before the first unlink, then revalidated immediately before each one.\n\n**Guards.** Both modules raise on `not __debug__` above all logic — the rerun of the `-O` test confirms both fail before logic. The shell unsets `PYTHONOPTIMIZE`/`PYTHONSTARTUP`, pins the hostname three times, and holds the existing `DEPLOY.lock` on fd 8 via `flock -n` for the whole script, inherited by every heredoc child.\n\n**Before/after symmetry.** Health block lines 9-26 is byte-identical to 130-147; protected+inventory 29-41 identical to 113-125. All four protected dict literals equal `protected-hashes.json` (16 files). Both inventory assertions equal `image-inventory.json` (containerd 201, docker 47) using read-only list commands.\n\n**K3s scope.** I fetched the official `v1.36.4+k3s1` `watcher.go`; its digest matches `k3s-source-evidence.json` exactly, and the missing-file branch is byte-identical to the recorded text. That branch only does `delete(w.filesCache, key)` + `syncCache` + return; `pruneCache` prunes cache entries only; there is no image-delete call in the file. Combined with the runtime inventory guard, archive removal cannot delete loaded images.\n\n**Tests rerun.** 11/11 pass; `bash -n` clean; all five embedded Python blocks compile; `tests-stdout.txt`/`tests-stderr.txt` digests match `tests.json`. Neither `source-review.json` nor any `execution-*` log exists, so the no-prior-execution gate is live.\n\n## Non-blocking observations (in the note)\n- `'all_open': ...==29` is printed, not asserted — but the pinned full-row sha256 covers `status`, so any change to the OPEN set fails the assert.\n- Unlink is by path rather than `unlinkat` on the verified fd; residual TOCTOU in a root-owned directory under the held lock, same as the accepted precedent.\n- `exec 8>` truncates `DEPLOY.lock`, also as in the precedent.\n\nI wrote no approval files, ran no SSH/execute/build/browser action, made no Git or file changes, and my acceptance certifies the source and copied artifacts only — not executed removal, recovered headroom, or Reader291 publication.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "e566d530938d3e4bef73c1489f58a97e7337bef21ac5a4b5f68da978c8cac35c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

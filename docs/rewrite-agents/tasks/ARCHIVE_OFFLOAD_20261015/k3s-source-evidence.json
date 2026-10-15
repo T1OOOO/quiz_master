@@ -1,0 +1,8 @@
+{
+  "installed_version": "v1.36.4+k3s1",
+  "installed_commit": "4dedb15b",
+  "official_source_url": "https://raw.githubusercontent.com/k3s-io/k3s/v1.36.4+k3s1/pkg/agent/containerd/watcher.go",
+  "source_sha256": "b59869f0eed4200d2488ebe1bf2f9887dfe66f74db0cd3a53dc0431a5c0f8f7c",
+  "remove_branch": "\tif os.IsNotExist(err) {\n\t\t// if the whole images dir was removed, reset the fileinfo cache\n\t\tif key == w.cfg.Images {\n\t\t\tw.filesCache = make(map[string]*fileInfo)\n\t\t\tdefer w.syncCache()\n\t\t\treturn nil\n\t\t}\n\n\t\tif !isFileSupported(key) {\n\t\t\treturn nil\n\t\t}\n\n\t\tdelete(w.filesCache, key)\n\t\tdefer w.syncCache()\n\t\treturn nil\n\t} else if err != nil {\n\t\treturn errors.WithMessagef(err, \"failed to get fileinfo for image event %s\", key)",
+  "scope": "Primary source evidence for watcher file-removal handling only; actual loaded image inventories still protected independently."
+}

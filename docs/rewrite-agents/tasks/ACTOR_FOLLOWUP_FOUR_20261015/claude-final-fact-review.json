@@ -1,0 +1,71 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a145c7719d2d4c35bdc55dbc8d896070": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review by Claude (Sonnet 5), follow-up after REWORK run-69374954776f4795987daabc4e4d43dc. Verified current draft.json raw SHA-256 ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d matches handoff.json and the assignment. Re-solved all four questions independently before reading the draft: 013 Audrey Tautou, 014 Elijah Wood, 015 Ivana Baquero, 016 Heath Ledger -- all match the draft's answers and public question_refs sha256 (unchanged, cross-checked against the live snapshot). Opened every cited source myself:\n013: BFI film record + BFI Paris-locations feature, both load; confirm Tautou=Amelie, cafe job, found keepsake box, Montmartre, Nino=Kassovitz, 5 Oscar noms, European Film of the Year. Prior catalogue-filler language is gone.\n014: official Frodo press release (first cast member, >1yr NZ shoot) + AFI Catalog 53926, both load; precisely credit Wood/Astin/Monaghan/Boyd to their hobbit roles.\n015: unchanged by this revision, re-verified: Academy screening record + 2007 ceremony page still load and support Baquero=Ofelia, Verdu=Mercedes, 3 Oscar wins.\n016: Academy 2009 ceremony page (Ledger's win, editing/sound/VFX noms) + AFI Catalog 55498, both load; precisely credit Ledger=Joker, Bale=Batman, Eckhart=Dent, Murphy=Scarecrow. The Warner sinkhole link is gone.\nAll four articles: 4 headings, 2 working authoritative links, 131-137 words, no catalogue-filler repetition, each teaches >=2 concrete facts beyond the bare answer.\nComputed via study/question_articles/build.py article_hash (import only, no export run): 013 bd5d8f0889352843b258bb918490c80fc74b3b07ae110a6664535864b7915519, 014 e5dc061a71af9bc714ad20595d5c22f96e266862cdba2d39a6e89d17e160ed65, 015 d3b73bde3e9a7c606f2cfc1273329b96b82c4ec4c6a56ffbf8b7d8039c5f5043, 016 ddbc081c211347747891263da65a0aa54292080d35e83ffc4eccda70992b447b. Batch hash (sha256 of ordered article_hash list): 4530da60d7d05e46cbf453a19cf0c4985963a6f1e36ba40f7338fb3dffa3e323.\nLimits: read-only web fetches only; relied on extracted text, not full raw HTML diffing. This verdict does not authorize import, build, or publication -- the release remains frozen separately."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fouractualdraftarticles boundtoexactcurrentpublicquestionrevisions;2openedsources/ledger each, no unsupportedfiller orambiguousadaptations;rawhash/handoff+actualHubsubmission, notfactaccepted/imported/published.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-767ebd4851e541b0ba48014d280e4cd5",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Bounded draft-only writer: exactexisting public prep-film-actors-1 questionscinema-oct3-013..016, originalRussianminiarticles4headed130–220words,2genuinelyopenedauthoritativesources each andclaimledgercoveringcorrect+distractorfacts. Followexistingapprovedactor8draftschema/refs butfreshprose. Noquestion/key/optionschanges, imports/assets/tests/build/browser/Git/Beads/SSH/children. Ownonlynewstudy/question_articles/drafts/cinema-actors-followup-four-20261015.json andnewACTOR_FOLLOWUP_FOUR_20261015 docs folder. Frozenpublic20snapshot ae38b61a...5422. Root/Opuscriticalreleasegatesrunparallel within3turncap. Draftonlyindependentreviewlater.",
+        "created_at": 1792050954.0420237,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\draft.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\source-ledger.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\handoff.json"
+          ],
+          "draft_sha256": "ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d",
+          "evidence": [
+            "Final draft SHA-256: ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d; handoff.json matches it.",
+            "Fresh PowerShell JSON/binding validation passed: 4 draft articles, source snapshot SHA-256 ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422, all exact question revisions bound, 4 headings/article, 2 source links/article, 131/132/134/137 substantive-word counts.",
+            "Directly opened working BFI, TheOneRing, AFI, Academy/PST sources; source-ledger.md records URLs, claim coverage and access limits. Broken Academy collection, TheOneRing archive, and Warner sinkhole links were removed from draft.json."
+          ],
+          "remaining_risks": "Draft only. A new independent review by a different provider remains mandatory; this submission does not claim factual acceptance, import, publication, or release.",
+          "status": "DONE"
+        },
+        "review_note": "Independent review by Claude (Sonnet 5), follow-up after REWORK run-69374954776f4795987daabc4e4d43dc. Verified current draft.json raw SHA-256 ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d matches handoff.json and the assignment. Re-solved all four questions independently before reading the draft: 013 Audrey Tautou, 014 Elijah Wood, 015 Ivana Baquero, 016 Heath Ledger -- all match the draft's answers and public question_refs sha256 (unchanged, cross-checked against the live snapshot). Opened every cited source myself:\n013: BFI film record + BFI Paris-locations feature, both load; confirm Tautou=Amelie, cafe job, found keepsake box, Montmartre, Nino=Kassovitz, 5 Oscar noms, European Film of the Year. Prior catalogue-filler language is gone.\n014: official Frodo press release (first cast member, >1yr NZ shoot) + AFI Catalog 53926, both load; precisely credit Wood/Astin/Monaghan/Boyd to their hobbit roles.\n015: unchanged by this revision, re-verified: Academy screening record + 2007 ceremony page still load and support Baquero=Ofelia, Verdu=Mercedes, 3 Oscar wins.\n016: Academy 2009 ceremony page (Ledger's win, editing/sound/VFX noms) + AFI Catalog 55498, both load; precisely credit Ledger=Joker, Bale=Batman, Eckhart=Dent, Murphy=Scarecrow. The Warner sinkhole link is gone.\nAll four articles: 4 headings, 2 working authoritative links, 131-137 words, no catalogue-filler repetition, each teaches >=2 concrete facts beyond the bare answer.\nComputed via study/question_articles/build.py article_hash (import only, no export run): 013 bd5d8f0889352843b258bb918490c80fc74b3b07ae110a6664535864b7915519, 014 e5dc061a71af9bc714ad20595d5c22f96e266862cdba2d39a6e89d17e160ed65, 015 d3b73bde3e9a7c606f2cfc1273329b96b82c4ec4c6a56ffbf8b7d8039c5f5043, 016 ddbc081c211347747891263da65a0aa54292080d35e83ffc4eccda70992b447b. Batch hash (sha256 of ordered article_hash list): 4530da60d7d05e46cbf453a19cf0c4985963a6f1e36ba40f7338fb3dffa3e323.\nLimits: read-only web fetches only; relied on extracted text, not full raw HTML diffing. This verdict does not authorize import, build, or publication -- the release remains frozen separately.",
+        "reviewer": "session-df6a783ab5f047d2abd5c7422d12ea3a",
+        "root_task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "run_id": "run-0e9fcebfa5694abebf4728fcae28b68b",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "3qx draft four source-backed actor articles013-016 while Reader291 release gates run",
+        "version": 13
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review callback succeeded: task state is now **`ACCEPTED`** on `run-0e9fcebfa5694abebf4728fcae28b68b`.\n\n## Report\n\n**Raw SHA-256 confirmed:** `ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d` — matches handoff.json and the assignment.\n\n**Independent answers re-confirmed** before reading the draft: 013 Audrey Tautou, 014 Elijah Wood, 015 Ivana Baquero, 016 Heath Ledger — all match the draft and the public question_refs sha256 (unchanged).\n\n**Sources personally opened and verified:**\n- **013:** BFI film record + BFI Paris-locations feature — both load; confirm Tautou=Amélie, café job, found keepsake box, Montmartre, Nino=Kassovitz, 5 Oscar nominations, European Film of the Year. The old dead Academy-collection links and catalogue-filler prose are gone.\n- **014:** official Frodo press release + AFI Catalog 53926 — both load; precisely credit Wood/Astin/Monaghan/Boyd to their hobbit roles, plus the >1-year New Zealand shoot detail.\n- **015:** unchanged by this revision, re-verified: Academy screening page + 2007 ceremony page still load and support Baquero=Ofelia, Verdú=Mercedes, 3 Oscar wins.\n- **016:** Academy 2009 ceremony page (Ledger's win, editing/sound/VFX nominations) + AFI Catalog 55498 — both load; precisely credit Ledger=Joker, Bale=Batman, Eckhart=Dent, Murphy=Scarecrow. The broken Warner sinkhole link is gone.\n\n**Normalized hashes** (via `study/question_articles/build.py` `article_hash`, import-only, no export run): 013 `bd5d8f08…915519`, 014 `e5dc061a…0ed65`, 015 `d3b73bde…5043`, 016 `ddbc081c…92b447b`; batch hash `4530da60d7d05e46cbf453a19cf0c4985963a6f1e36ba40f7338fb3dffa3e323`.\n\n**Verdict:** ACCEPT, error_count 0 — all four articles now have 4 headings, 2 working authoritative links, 131–137 words, no catalogue-filler, and ≥2 concrete contextual facts beyond the bare answer each.\n\n**Limits:** review relied on read-only web fetches and extracted text (not full raw HTML diffing). This acceptance does **not** authorize import, build, or publication — the release remains frozen separately, per the assignment scope.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "49f2729cbf6164463a6a8424defedac9021087c74b395ef517363fa779f0632f",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

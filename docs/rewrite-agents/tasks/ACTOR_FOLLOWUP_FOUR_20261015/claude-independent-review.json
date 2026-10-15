@@ -1,0 +1,64 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-a145c7719d2d4c35bdc55dbc8d896070": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+          "verdict": "rework",
+          "error_count": 4,
+          "note": "Independent review by Claude (Sonnet 5). Draft hash confirmed c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc (matches task spec). Pre-read answers confirmed correct for all 4 questions: 013 Audrey Tautou, 014 Elijah Wood, 015 Ivana Baquero, 016 Heath Ledger — all match the draft's stated answers. Structure/length are fine (4 headings each, ~128-140 words, within range). REWORK required for sourcing, not the core facts:\n(1) Article 013: BOTH cited Academy Digital Collections URLs (ids 6216 and 6369) 301-redirect to a generic landing page (academycollection.org) with no retrievable Amélie/Tautou record — neither link actually supports its claim. Replace with a resolvable source (e.g. BFI's Amélie page confirms Tautou in the lead role, or an AMPAS awards-database record that actually loads).\n(2) Article 016: second source (wbpinewmedia.warnerbros.com .../cb.html) redirects through a third-party 'infoblox.com' sinkhole domain — not a working, inspectable Warner Bros. page. The oscars.org 81st-ceremony source is fine and verified (confirms Ledger's Supporting Actor win and editing/sound/visual-effects nominations), but the second link needs a real replacement (studio press kit via a reachable URL, AFI, or BAFTA).\n(3) Article 014: first source (theonering.net official Frodo press release) verified directly and fully supports the 'first cast member' and 'shot back-to-back in New Zealand' claims — good. Second source (archives.theonering.net/movie/cast.html) could not be independently fetched in this session (connection refused); I could only corroborate the hobbit cast via a secondary search snippet, not a direct visit. Flag for the author to confirm this URL is currently live, or swap to a reachable mirror.\n(4) Process defect: handoff.json declares sha256 07176102937b3dadd4fd685d9376c9b59d320700f1bbe058fe7589c1410a4995 for draft.json, but the file's actual current hash is c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc (the hash the task itself cites). handoff.json is stale and should be regenerated after the latest prose revision.\nArticle 015 verified clean: both pstlala.oscars.org and oscars.org/ceremonies/2007/P sources load and support the cast (Baquero as Ofelia, Verdú in cast) and the three-Oscar claim.\nNote on prior Gemini REWORK in this directory: did not inherit its findings as verified; re-checked everything above independently against sources I actually opened."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fouractualdraftarticles boundtoexactcurrentpublicquestionrevisions;2openedsources/ledger each, no unsupportedfiller orambiguousadaptations;rawhash/handoff+actualHubsubmission, notfactaccepted/imported/published.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-cd4d095fbcdd42479e0fbc730cee0907",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Bounded draft-only writer: exactexisting public prep-film-actors-1 questionscinema-oct3-013..016, originalRussianminiarticles4headed130–220words,2genuinelyopenedauthoritativesources each andclaimledgercoveringcorrect+distractorfacts. Followexistingapprovedactor8draftschema/refs butfreshprose. Noquestion/key/optionschanges, imports/assets/tests/build/browser/Git/Beads/SSH/children. Ownonlynewstudy/question_articles/drafts/cinema-actors-followup-four-20261015.json andnewACTOR_FOLLOWUP_FOUR_20261015 docs folder. Frozenpublic20snapshot ae38b61a...5422. Root/Opuscriticalreleasegatesrunparallel within3turncap. Draftonlyindependentreviewlater.",
+        "created_at": 1792050954.0420237,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/draft.json",
+            "docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/draft-before-quality-rework.json"
+          ],
+          "evidence": [
+            "Preserved prior raw draft bytes in draft-before-quality-rework.json.",
+            "All four updated articles have 4 headings, 2 source links, and word counts 139,137,136,143.",
+            "Academy and source evidence remains documented in source-ledger.md."
+          ],
+          "remaining_risks": "Draft only; independent factual review required; no import/publication claimed.",
+          "sha256": "C881295223F6F0A1343C2EF3E1E642E61B8004AE6209166E789E6903773DEECC",
+          "status": "DONE"
+        },
+        "review_note": "Independent review by Claude (Sonnet 5). Draft hash confirmed c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc (matches task spec). Pre-read answers confirmed correct for all 4 questions: 013 Audrey Tautou, 014 Elijah Wood, 015 Ivana Baquero, 016 Heath Ledger — all match the draft's stated answers. Structure/length are fine (4 headings each, ~128-140 words, within range). REWORK required for sourcing, not the core facts:\n(1) Article 013: BOTH cited Academy Digital Collections URLs (ids 6216 and 6369) 301-redirect to a generic landing page (academycollection.org) with no retrievable Amélie/Tautou record — neither link actually supports its claim. Replace with a resolvable source (e.g. BFI's Amélie page confirms Tautou in the lead role, or an AMPAS awards-database record that actually loads).\n(2) Article 016: second source (wbpinewmedia.warnerbros.com .../cb.html) redirects through a third-party 'infoblox.com' sinkhole domain — not a working, inspectable Warner Bros. page. The oscars.org 81st-ceremony source is fine and verified (confirms Ledger's Supporting Actor win and editing/sound/visual-effects nominations), but the second link needs a real replacement (studio press kit via a reachable URL, AFI, or BAFTA).\n(3) Article 014: first source (theonering.net official Frodo press release) verified directly and fully supports the 'first cast member' and 'shot back-to-back in New Zealand' claims — good. Second source (archives.theonering.net/movie/cast.html) could not be independently fetched in this session (connection refused); I could only corroborate the hobbit cast via a secondary search snippet, not a direct visit. Flag for the author to confirm this URL is currently live, or swap to a reachable mirror.\n(4) Process defect: handoff.json declares sha256 07176102937b3dadd4fd685d9376c9b59d320700f1bbe058fe7589c1410a4995 for draft.json, but the file's actual current hash is c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc (the hash the task itself cites). handoff.json is stale and should be regenerated after the latest prose revision.\nArticle 015 verified clean: both pstlala.oscars.org and oscars.org/ceremonies/2007/P sources load and support the cast (Baquero as Ofelia, Verdú in cast) and the three-Oscar claim.\nNote on prior Gemini REWORK in this directory: did not inherit its findings as verified; re-checked everything above independently against sources I actually opened.",
+        "reviewer": "session-6d8b7fdb094d4c729b5a569b300b6a7a",
+        "root_task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "run_id": "run-69374954776f4795987daabc4e4d43dc",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "3qx draft four source-backed actor articles013-016 while Reader291 release gates run",
+        "version": 10
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review callback recorded successfully: verdict **REWORK**, `error_count: 4`, task state now shows `REWORK`.\n\n## Report\n\n**Independent answers (solved before reading the draft):** 013 Audrey Tautou · 014 Elijah Wood · 015 Ivana Baquero · 016 Heath Ledger — all four match the draft's stated answers.\n\n**Hash check:** draft.json's actual SHA-256 is `c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc`, matching the task's stated hash. `handoff.json` cites a different, stale hash (`0717…`) — process defect, needs regenerating.\n\n**Sources actually opened and verdicts:**\n- **013 (Amélie/Tautou):** Both cited Academy Digital Collections URLs 301-redirect to a generic `academycollection.org` landing page — no retrievable record for this film. Neither link supports the claim as cited, even though the underlying fact is true and independently confirmable (e.g. BFI's Amélie page). **Defect.**\n- **014 (Frodo/Wood):** First source (TheOneRing.net official press release) verified directly — supports \"first cast member\" and \"shot back-to-back in New Zealand.\" Second source (`archives.theonering.net/movie/cast.html`) refused connection in my session; I could only corroborate via a search-engine snippet, not a direct visit. Flagged as unverifiable, not confirmed broken.\n- **015 (Ofelia/Baquero):** Both sources (`pstlala.oscars.org`, `oscars.org/ceremonies/2007/P`) loaded cleanly and support the cast list and \"three Oscars\" claim. Clean.\n- **016 (Joker/Ledger):** `oscars.org/ceremonies/2009` verified — confirms Ledger's win and the editing/sound/visual-effects nominations. Second source (Warner Bros. publicity page) redirects through a third-party `infoblox.com` sinkhole domain, i.e., not an accessible, inspectable page. **Defect.**\n\n**Verification limits:** I did not follow the infoblox redirect further (looked like a DNS sinkhole, not real content). I could not reach `archives.theonering.net` directly from this session (connection refused), so that one source is unconfirmed rather than disproven. I did not inherit the prior Gemini report's claims — everything above reflects links I opened myself.\n\nVerdict is REWORK because two of four articles cite at least one source link that doesn't actually resolve to supporting content, even though the core trivia facts themselves check out. Task `task-a145c7719d2d4c35bdc55dbc8d896070` now shows `state: REWORK` with my note attached for the author.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "cda6fded47f27c618e6aee693c3c089af6896efda1677898102e078d99b235aa",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

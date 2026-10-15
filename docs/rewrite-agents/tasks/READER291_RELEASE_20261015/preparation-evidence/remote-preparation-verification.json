@@ -1,0 +1,99 @@
+{
+  "build_id": "quiz-2026.10.15-reader291-3482af9",
+  "image": "sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228",
+  "values": "quiz-2026.10.15-reader291-3482af9-cutover-20261015T084302Z-values.yaml",
+  "values_sha256": "53f77283f65b00387ec3d3f7fe30a278e5c2a324d27506fa976ab14861cd3f7f",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.15-reader291-3482af9-cutover-20261015T084302Z.sqlite",
+  "backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "e5431954162e3dea0f7050bac8f3248f704d4c76a4ab5b4fa49229c4d1d8bfc8",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader291-3482af9",
+    "image_id": "sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 291,
+      "total_refs": 172,
+      "playable_refs": 170,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "fa7cf95888d31bb4a0513012d93baf955611b9f36c36f15994f05caa61819a1f",
+  "helm_dryrun_sha256": "61194251e41088773f5e2b3da7b448d074f5a69f6caeb4343cb9a049d7824b98",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader291-3482af9.tar",
+  "durable_archive_sha256": "e20d542615a12f07883b828dc166170948817dc723f5da7686ce63aa9b22400b",
+  "disk_free_bytes": 20534464512,
+  "baseline_helm_revision": 60,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "3482af9a8b7b7119f14069a791a77b36a8014c49",
+  "package_sha256": "d926a276aeb60f2cd7181a2d0322f7ef0b16ec5d32863ab0afe1c6517b2e23ad",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "86bb8bbd4178e7181e4893b5c50c1e377ef8e1102fc9711ef8fe0fef05c2ab94",
+  "helper_source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\prepare_reader291_remote.py": "bedd69aff765592246b4973bd338a89e1858cf7be7acd3e51e85cefd4c8c6672",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\test_prepare_reader291_remote.py": "bb51405c4fe06dd81a2d2db2e6d4d12eb0a6f7474d90b771c865b5c7eaa31228",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\reader291_guard.py": "5847bbcbbccce11bca011039006cc58288254f2f6792bad9f09dae1a9e13efed"
+  },
+  "helper_review_sha256": "9d50d483a8aa21c38ef5774c803052c5c75c13f826ec5a53e4e2caa601e6bb50",
+  "limits": [
+    "Preparation only; actual independent execution review and publication checks remain."
+  ]
+}

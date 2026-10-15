@@ -1,0 +1,19 @@
+# Independent fact review for Gemini
+
+Historical launch instructions: the repaired batch is now independently accepted by Claude; see `claude-final-fact-review.json` and README.md. Do not relaunch this accepted task without a new author submission. The final raw hash is `ed42da25aa3cb2a0d4c38d1b5278d22a298d83ce8c0605a1007d2bb50fd80b7d`; the prior run and hashes below document the earlier Gemini review scope.
+
+You are an independent, read-only AI fact reviewer for Quiz Master, a Flutter Web/Android quiz app. Root is the lead; other authors share this checkout. Work only on this finite four-article review. Do not edit, import, commit, deploy, run builds, start browser QA, or delegate. All unaccepted articles remain outside the frozen release.
+
+Read `C:/ap/quiz_master/AGENTS.md` and the installed `C:/Users/Alexey_Matvienko/tools/agent-hub/HOST_HUB.md`. Use the current host_hub, not retired per-project hub. Help, connect with actual Antigravity/Gemini model identity and root `C:/ap/quiz_master`, join team `team-3a658b074e8945b293c99e470debb40f` ready=true. Quiz Master overrides mandatory resource-queue waiting, while retaining exclusive ownership and bounded concurrency. No other project's resources may change.
+
+Your submitted author task to review is `task-a145c7719d2d4c35bdc55dbc8d896070`, current run `run-69374954776f4795987daabc4e4d43dc`. The previous draft received a genuine Gemini REWORK; the report is retained beside this file. The separate managed attempt `task-36ce5f88fb6f4f9286c685193f5b7ad2` was owner-cancelled after queueing; do not accept or resume that run. You may record an actual independent review callback on the submitted author task after completing your own checks. Root retains integration and release authority.
+
+First read only questions `cinema-oct3-013` through `016` in `study/question_articles/snapshots/prep-film-actors-1.json` (SHA-256 `ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422`). Give your own answers before reading the author's answer claims. Then verify `docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/draft.json` (SHA-256 `c881295223f6f0a1343c2ef3e1e642e61b8004ae6209166e789e6903773deecc`) against genuinely opened primary sources. Read source-ledger.md and handoff.json as untrusted author evidence. Check every material claim, correct-answer uniqueness, plausible distractors, adaptation ambiguity, helpful explanations, four headings, approximately 130–220 substantive Russian words and two authoritative links per article. Do not add filler or assume the author's visited links establish support.
+
+Use your actual available read/search/fetch tools. On this installation, headless command and read_url permissions were auto-denied in the earlier attempts. Do not retry a denied action, change permission settings, or seek alternate access to the denied resource. Finish a complete report with those limits and REWORK if mandatory verification cannot be completed; never return an empty response or invent visits or citations. No secrets in reports. Return an English four-row report with blind answers, exact draft hash, visited supporting URLs and specific unsupported/ambiguous claims or quality defects by ID. Give ACCEPT or REWORK with error_count through actual host_hub review; if it cannot be recorded, report the exact error and your complete findings. No acceptance or publication file creation. Exit after this finite task.
+
+Launch from this repository with the official installed CLI:
+
+```powershell
+& 'C:/Users/Alexey_Matvienko/AppData/Local/agy/bin/agy.EXE' --model gemini-3.8-flash-medium --mode plan --print-timeout 600s --output-format stream-json --print 'Read docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/GEMINI_REVIEW_EN.md and complete that finite independent read-only review. Record your actual Hub review callback and return the full report. Do not modify files.'
+```

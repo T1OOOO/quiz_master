@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\prepare_reader291_remote.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\.run\\actor291_release_20261015\\release-pins-v1.json",
+    "--package",
+    "C:\\ap\\quiz_master\\.run\\actor291_release_20261015\\package-v1\\package-preparation.json",
+    "--helper-review",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\remote-helper-acceptance.json",
+    "--evidence-dir",
+    "C:\\ap\\quiz_master\\.run\\actor291_release_20261015\\remote-v1",
+    "--prepare"
+  ],
+  "actual_exit": 0,
+  "scope": "Guarded candidate preparation only. No Helm upgrade. Strict20percent at all preparation boundaries; current60/PVC/29feedback protected."
+}

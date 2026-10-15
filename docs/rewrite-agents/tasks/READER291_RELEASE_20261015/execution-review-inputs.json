@@ -1,0 +1,23 @@
+{
+  "status": "EXACT_EXECUTION_INPUTS_PENDING_GENUINE_REVIEW_NOT_PUBLISHED",
+  "task_id": "task-6b7a853757414cafa7ef1ec2e02acdcc",
+  "execution_packet_sha256": "569695b0c2879fcb20b33f6a3b7b72ef0a5a26b23a84accbf1fba44698da5267",
+  "publish_script_sha256": "e6fcc2578ae9d5de7657d41ef5f8926bf42469b1a4ea97040cbbcb29b76311b9",
+  "publication_renderer_sha256": "b7286c34a7aeb1e80a3a8949bb32b7391ad9374da361a8c0f1d2f39d3e5e057a",
+  "publication_executor_sha256": "e93f2dc665a064da46c3b9f685c1fb6a24462d42bffc549cdaf50708ce1086d4",
+  "package_sha256": "d926a276aeb60f2cd7181a2d0322f7ef0b16ec5d32863ab0afe1c6517b2e23ad",
+  "image": "sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228",
+  "actual_publish_script_syntax_exit": 0,
+  "preparation_evidence_sha256": {
+    "remote-guard-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "remote-guard-log.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote-prepare-script.sh": "561d4f213365504a182d53fe43153dd6d5495b11aae257bf7057aa45b49a477c",
+    "remote-prepare-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "remote-prepare-log.txt": "86bb8bbd4178e7181e4893b5c50c1e377ef8e1102fc9711ef8fe0fef05c2ab94",
+    "remote-collect-script.sh": "43d2bb996b422beef18408cdfcccfe37f9abc26bcfd00f75fcf91180499bb4a6",
+    "remote-collect-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "remote-collect-log.txt": "ed3947b874e9158312295f0514c96991d6c425a1b88384c9bcee658ef389119c",
+    "remote-preparation-verification.json": "4b6349973a2ce2e9dd6ec98ec94cd98c0d7982a2eff23d73eb83931fe760b03a"
+  },
+  "scope": "Actual first preparation and collector each exited0. Candidate HTTP, copied DB grading, rollback and durable image verified. No Helm upgrade yet; exact independent pre-execution acceptance required."
+}

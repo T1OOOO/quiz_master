@@ -1,0 +1,73 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "provider": "antigravity",
+  "requested_model": "gemini-3.8-flash-medium",
+  "model_identity_verified_by_vendor_response": false,
+  "actual_reviews": [
+    {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "error_count": 4,
+          "note": "REWORK: Raw SHA not independently recomputed (command denied; Root verified). External URL verification auto-denied, so primary source validation is incomplete. Blind answers match (013: Tautou, 014: Wood, 015: Baquero, 016: Ledger). Repetitive structural filler noted in explanations.",
+          "task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+          "verdict": "rework"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fouractualdraftarticles boundtoexactcurrentpublicquestionrevisions;2openedsources/ledger each, no unsupportedfiller orambiguousadaptations;rawhash/handoff+actualHubsubmission, notfactaccepted/imported/published.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-cd4d095fbcdd42479e0fbc730cee0907",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Bounded draft-only writer: exactexisting public prep-film-actors-1 questionscinema-oct3-013..016, originalRussianminiarticles4headed130–220words,2genuinelyopenedauthoritativesources each andclaimledgercoveringcorrect+distractorfacts. Followexistingapprovedactor8draftschema/refs butfreshprose. Noquestion/key/optionschanges, imports/assets/tests/build/browser/Git/Beads/SSH/children. Ownonlynewstudy/question_articles/drafts/cinema-actors-followup-four-20261015.json andnewACTOR_FOLLOWUP_FOUR_20261015 docs folder. Frozenpublic20snapshot ae38b61a...5422. Root/Opuscriticalreleasegatesrunparallel within3turncap. Draftonlyindependentreviewlater.",
+        "created_at": 1792050954.0420237,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\draft.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\source-ledger.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FOLLOWUP_FOUR_20261015\\handoff.json"
+          ],
+          "evidence": [
+            "PowerShell ConvertFrom-Json: JSON_PARSE_OK; exactly four records.",
+            "Word counts 013=140, 014=132, 015=136, 016=139; each has exactly four headings and two source links.",
+            "Original unaccepted study draft moved out; source path absent.",
+            "source-ledger.md and handoff.json identify opened-source evidence and independent factual-review requirement."
+          ],
+          "remaining_risks": "Draft only. Independent fact/answer review remains required; no acceptance, import, or publication claimed.",
+          "removed_file": "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\cinema-actors-followup-four-20261015.json",
+          "sha256": "07176102937b3dadd4fd685d9376c9b59d320700f1bbe058fe7589c1410a4995",
+          "status": "DONE"
+        },
+        "review_note": "REWORK: Raw SHA not independently recomputed (command denied; Root verified). External URL verification auto-denied, so primary source validation is incomplete. Blind answers match (013: Tautou, 014: Wood, 015: Baquero, 016: Ledger). Repetitive structural filler noted in explanations.",
+        "reviewer": "session-42975e1e6d3b41db9fbeaab91203205d",
+        "root_task_id": "task-a145c7719d2d4c35bdc55dbc8d896070",
+        "run_id": "run-e50fac85762446f1b74fc1498ce92709",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "3qx draft four source-backed actor articles013-016 while Reader291 release gates run",
+        "version": 7
+      }
+    }
+  ],
+  "trace_sha256": "1dcbb790aee915abebb738eaefb320edeb12d89be1687aa0a9fe55f243933f55",
+  "report": "# Independent Fact-Check & Quality Review Report\n\n**Task Reviewed**: [`task-a145c7719d2d4c35bdc55dbc8d896070`](file:///C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/GEMINI_REVIEW_EN.md) (Run: `run-e50fac85762446f1b74fc1498ce92709`)  \n**Draft Artifact**: [`docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/draft.json`](file:///C:/ap/quiz_master/docs/rewrite-agents/tasks/ACTOR_FOLLOWUP_FOUR_20261015/draft.json)  \n**Questions Snapshot**: [`study/question_articles/snapshots/prep-film-actors-1.json`](file:///C:/ap/quiz_master/study/question_articles/snapshots/prep-film-actors-1.json)  \n**Host Hub Review Verdict**: **`REWORK`** (`error_count: 4`, recorded on Host Hub by session `session-42975e1e6d3b41db9fbeaab91203205d`)\n\n---\n\n## 1. Integrity & Environment Verification Statement\n\n- **File SHA-256 Hashes**:\n  - `draft.json`: Author declared `07176102937b3dadd4fd685d9376c9b59d320700f1bbe058fe7589c1410a4995`.\n  - `prep-film-actors-1.json`: Task declared `ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422`.\n  - *Explicit Notice*: Raw SHA-256 hashes were **NOT** independently recomputed in this review turn (shell command execution was auto-denied by environment permissions; Root separately verified them).\n- **Source Verification Status**:\n  - Direct HTTP fetches via `read_url` were auto-denied by environment sandbox policies.\n  - *Explicit Notice*: The author's external source links were **NOT** independently verified via network fetch in this turn. Facts are evaluated against known cinematic ground truth and local content consistency. As required by task guidelines, unverified external URLs necessitate a verdict of **`REWORK`**.\n\n---\n\n## 2. Four-Row Article Fact-Check & Quality Review\n\n| Question ID & Target | Blind Solve Answer | Author Claim & Distractors | Known Ground Truth vs. Uncertainties / Sources | Quality & Text Issues (Boilerplate / Filler) | Status / Verdict |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **`cinema-oct3-013`**<br>Film: *Amélie* (2001)<br>Role: Amélie Poulain | **`cinema-oct3-013-opt-1`**<br>(Одри Тоту / Audrey Tautou) | **Claimed**: Audrey Tautou.<br>**Distractors**: Marion Cotillard, Vanessa Paradis, Isabelle Huppert. | **Known**: Audrey Tautou is the undisputed lead of *Le Fabuleux Destin d'Amélie Poulain* (dir. Jean-Pierre Jeunet). Cotillard starred in Jeunet's *Un long dimanche de fiançailles* with Tautou.<br>**Uncertain / Unverified**: Oscars digital collection download endpoints (`digitalcollections.oscars.org/.../6216/download` and `.../6369/download`) not verified via fetch. | **Formulaic / Repetitive**: Section `## Связка` leans heavily on boilerplate meta-commentary (\"Академический каталог важен здесь именно как запись состава...\"). Word count: 140 words. | **REWORK**<br>(Sources unverified via network fetch) |\n| **`cinema-oct3-014`**<br>Film: *The Lord of the Rings: The Fellowship of the Ring* (2001)<br>Role: Frodo Baggins | **`cinema-oct3-014-opt-2`**<br>(Элайджа Вуд / Elijah Wood) | **Claimed**: Elijah Wood.<br>**Distractors**: Sean Astin (Sam), Dominic Monaghan (Merry), Billy Boyd (Pippin). | **Known**: Elijah Wood is uniquely the actor for Frodo Baggins. Astin, Monaghan, and Boyd accurately represent the other three companion Hobbits of the Fellowship.<br>**Uncertain / Unverified**: TheOneRing press release and cast archive links (`theonering.net/...`) not verified via fetch. | **Formulaic / Repetitive**: Distractor breakdown is clean, but `## Связка` repeats the casting release premise (\"Сообщение о кастинге фиксирует Вуда как Фродо ещё до производства...\"). Word count: 132 words. | **REWORK**<br>(Sources unverified via network fetch) |\n| **`cinema-oct3-015`**<br>Film: *Pan's Labyrinth* (2006)<br>Role: Ofelia | **`cinema-oct3-015-opt-3`**<br>(Ивана Бакеро / Ivana Baquero) | **Claimed**: Ivana Baquero.<br>**Distractors**: Maribel Verdú (Mercedes), Elena Anaya, Penélope Cruz. | **Known**: Ivana Baquero played Ofelia in Guillermo del Toro's *El laberinto del fauno* and won the Goya Award for Best New Actress. Maribel Verdú played Mercedes.<br>**Uncertain / Unverified**: Oscars screening page (`pstlala.oscars.org/...`) and 2007 awards record not verified via fetch. | **Quality Issue**: `## Различение` claims Elena Anaya and Penélope Cruz \"do not appear in the Academy's actor list,\" which uses source-omission as an in-universe distinction rather than explaining who they are. Word count: 136 words. | **REWORK**<br>(Sources unverified via network fetch) |\n| **`cinema-oct3-016`**<br>Film: *The Dark Knight* (2008)<br>Role: Joker | **`cinema-oct3-016-opt-4`**<br>(Хит Леджер / Heath Ledger) | **Claimed**: Heath Ledger.<br>**Distractors**: Christian Bale (Batman), Aaron Eckhart (Harvey Dent), Cillian Murphy (Jonathan Crane / Scarecrow). | **Known**: Heath Ledger posthumously won the Academy Award for Best Supporting Actor for playing the Joker. Bale was Batman, Eckhart was Dent, Murphy was Crane.<br>**Uncertain / Unverified**: Warner Bros. press materials link (`wbpinewmedia.warnerbros.com/...`) and Oscars 2009 page not verified via fetch. | **Quality Issue**: The distinction for Cillian Murphy correctly notes his franchise role as Jonathan Crane, but `## Связка` again reverts to meta-structural filler regarding the pairs. Word count: 139 words. | **REWORK**<br>(Sources unverified via network fetch) |\n\n---\n\n## 3. Detailed Quality & Pedagogical Findings\n\n1. **Answer Correctness & Uniqueness**:\n   - All 4 target answers in `draft.json` match ground truth and our independent blind solve.\n   - All distractors are historically plausible and unambiguous (they belong to the exact same production or related contemporary cinema).\n2. **Pedagogical Structure & Heading Requirements**:\n   - Each draft article adheres to the required four-heading layout: `## Роль`, `## Деталь`, `## Различение`, and `## Связка`.\n   - Length conforms to the target substantive bounds (132–140 words, within the ~130–220 range).\n3. **Repetitive Boilerplate & Weak Distinctions**:\n   - Across all four drafts, the `## Связка` section relies on mechanical template language (e.g., discussing \"academic catalog\" or \"casting notice\" rather than reinforcing organic mnemonic connections for learners).\n   - In `cinema-oct3-015`, dismissing Cruz and Anaya solely on the basis of not being in an Academy screening list is an artificial artifact of source citation rather than substantive distinction.\n4. **Source Verification Gate**:\n   - Because network fetches to external sources were denied by the execution sandbox, external primary sources cannot be declared verified by this agent. In accordance with project instructions (\"If a source is inaccessible report uncertainty and REWORK rather than inventing support\"), this review concludes with **`REWORK`**.\n\n---\n\n## 4. Host Hub Callback Status\n\n- **API Called**: `hub_task` (`action: \"review\"`)\n- **Task ID**: `task-a145c7719d2d4c35bdc55dbc8d896070`\n- **Resulting State**: `REWORK`\n- **Reviewer**: `session-42975e1e6d3b41db9fbeaab91203205d`\n- **Session State**: Transitioned to `COMPLETED`\n- **Workspace State**: Read-only; zero files created or modified.\n",
+  "limits": [
+    "RawSHA not independently recomputed by Gemini; Root verified actual071761 bytes.",
+    "External URL permission auto-denied; no external fact-check gate passed.",
+    "Earlier attempts01/02 CLI0 had empty responses after command/read_url denials, explicitly not accepted reviews."
+  ],
+  "published": false
+}
