@@ -1,0 +1,13 @@
+# Reader299 and inline result feedback: actual publication
+
+Published once after genuine independent execution approval. Actual shell and native executor exited0; Helm62 is DEPLOYED with both containers on sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4. Buildquiz-2026.10.15-reader299-9c670e9, source9c670e90ac0547eb9d276d6190a87a71680b7fd2. Fresh publish backup /opt/quiz-master/backups/quiz-2026.10.15-reader299-9c670e9-publish-20261015T124056Z.sqlite is0600, integrity/restore passed.
+
+Actual public GET verification confirms version and compiled Flutter bytes match the frozen production package; Reader SHA cfb7188dd04e076fefc5fa0e537684fe7a01a8e36e75f017409f96c928a333f4 contains299articles and exact8new actor bodies/bindings/two sources each. Public20actor questions match the captured snapshot. Catalog remains136packs/4084questions. Existing291article objects, API/Nginx/schema/questions/options/keys were preserved.
+
+Fresh server checks before and after live browser use confirm62/bothimages, original boundPVC, Ready/noDiskPressure/no blocking taints, HTTPS200, all29feedbackOPEN with unchanged full-row SHA452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e, and publish-backup integrity/mode. Latest available20,989,059,072/102,417,174,528bytes is strictly above20%.
+
+The361x738live browser check navigated home/library/geography material to readable source controls, opened/cancelled the global feedback form and reported no browser errors. Root viewed actual home/footer PNGs. Exact8new article dialogs and inline result-feedback behavior were exercised in compiled local QA; live checks did not start a production quiz attempt. See published-browser/browser-proof.json for the precise evidence and limits.
+
+Browser tooling limitations are retained: typed open did not return; officialCLI recovered a daemon-version mismatch; the offscreen public Flutter accessibility placeholder needed a DOM click; bounded close recorded1. Root then stopped only the exact captured named daemon after PID-file/creation/command checks. Final native audit0 confirms15captured identities inactive and named session quiescent. No unrelated process was changed. The accepted publication shell retains its frozen trailing blank line; other source whitespace checks and actual Bash syntax passed.
+
+The original failed-v1 prepare, all cold copies and independently reviewed cleanup/continuation records are retained. This release does not certify Android, physical screen readers, the entire question bank, every requested module or all feedback. Independent published-outcome review is the remaining verification gate;5nc stays open until that acceptance, while broader3qx/7sw/9e0 remain open.

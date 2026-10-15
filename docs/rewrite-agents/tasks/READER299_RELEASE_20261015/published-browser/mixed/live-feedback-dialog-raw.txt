@@ -1,0 +1,12 @@
+- generic
+  - generic
+    - alertdialog
+      - generic "Оповещение"
+        - group
+          - button "Проблема приложения" [expanded=false, ref=e60]
+          - generic
+            - textbox "Комментарий" [ref=e62]
+            - StaticText "Осталось 5 000 символов"
+          - checkbox "Прикрепить снимок экрана" [checked=false, ref=e61]
+        - button "Отмена" [ref=e58]
+        - button "Отправить" [disabled, ref=e59]

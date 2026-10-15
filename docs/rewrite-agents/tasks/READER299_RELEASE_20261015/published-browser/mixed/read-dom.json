@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-15T12:49:23.463443+00:00",
+  "command": [
+    "eval",
+    "JSON.stringify({textareas:document.querySelectorAll(\"textarea\").length,scrollers:Array.from(document.querySelectorAll(\"*\")).filter(e=>e.id&&e.tagName===\"FLT-SEMANTICS\"&&getComputedStyle(e).overflowY===\"scroll\"&&e.scrollHeight>e.clientHeight+50&&e.clientHeight>0).map(e=>({id:e.id,height:e.clientHeight,scroll:e.scrollHeight}))})"
+  ],
+  "actual_exit": 0,
+  "stdout": "\"{\\\"textareas\\\":0,\\\"scrollers\\\":[{\\\"id\\\":\\\"flt-semantic-node-118\\\",\\\"height\\\":630,\\\"scroll\\\":23035}]}\"\n",
+  "stderr": ""
+}

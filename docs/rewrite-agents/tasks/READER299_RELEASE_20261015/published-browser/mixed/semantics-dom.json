@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-15T12:47:50.110956+00:00",
+  "command": [
+    "eval",
+    "JSON.stringify(Array.from(document.querySelectorAll(\"flt-semantics-placeholder\")).map(e=>({html:e.outerHTML,rect:e.getBoundingClientRect().toJSON()})))"
+  ],
+  "actual_exit": 0,
+  "stdout": "\"[{\\\"html\\\":\\\"<flt-semantics-placeholder role=\\\\\\\"button\\\\\\\" aria-live=\\\\\\\"polite\\\\\\\" tabindex=\\\\\\\"0\\\\\\\" aria-label=\\\\\\\"Enable accessibility\\\\\\\" style=\\\\\\\"position: absolute; left: -1px; top: -1px; width: 1px; height: 1px;\\\\\\\"></flt-semantics-placeholder>\\\",\\\"rect\\\":{\\\"x\\\":-1,\\\"y\\\":-1,\\\"width\\\":1,\\\"height\\\":1,\\\"top\\\":-1,\\\"right\\\":0,\\\"bottom\\\":0,\\\"left\\\":-1}}]\"\n",
+  "stderr": ""
+}

@@ -1,0 +1,17 @@
+$ErrorActionPreference = 'Stop'
+$quizCapturePath = 'C:/ap/quiz_master/.run/reader299_release_20261015/published-browser-owned-processes.json'
+$quizCaptured = @(Get-Content -LiteralPath $quizCapturePath -Raw | ConvertFrom-Json)
+$quizDaemonRows = @($quizCaptured | Where-Object Name -EQ 'agent-browser-win32-x64.exe')
+if ($quizDaemonRows.Count -ne 1) { throw 'Expected one captured owned daemon' }
+$quizDaemonEntry = $quizDaemonRows[0]
+$quizDaemonId = [int]$quizDaemonEntry.ProcessId
+$quizPidPath = 'C:/Users/Alexey_Matvienko/.agent-browser/namespaces/quiz-master/run/reader299-published-mixed.pid'
+if ([int](Get-Content -LiteralPath $quizPidPath -Raw).Trim() -ne $quizDaemonId) { throw 'Named session pid changed' }
+$quizCurrent = Get-CimInstance Win32_Process -Filter "ProcessId=$quizDaemonId"
+if (-not $quizCurrent) { throw 'Identity disappeared; run audit instead' }
+if ($quizCurrent.Name -ne $quizDaemonEntry.Name -or $quizCurrent.CommandLine -ne $quizDaemonEntry.CommandLine -or ([datetime]$quizCurrent.CreationDate).ToUniversalTime().Ticks -ne ([datetime]$quizDaemonEntry.CreationDate).ToUniversalTime().Ticks) { throw 'Captured identity changed' }
+$quizStopped = $false
+$quizOwnedProcess = [System.Diagnostics.Process]::GetProcessById($quizDaemonId)
+if (-not $quizOwnedProcess.HasExited) { Stop-Process -Id $quizDaemonId -Force; $quizStopped = $true }
+@{actual_exit=0;session='reader299-published-mixed';namespace='quiz-master';exact_pid_file_identity_verified=$true;creation_time_and_command_verified=$true;captured_daemon_only=$quizDaemonId;stop_requested=$quizStopped;foreign_processes_changed=$false;reason='Official close returned1 and exact captured daemon remained active; captured Chrome descendants were already inactive.'} | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-browser/native-daemon-stop.json -Encoding utf8
+Write-Output 'Stopped only the captured named daemon after exact identity checks; follow with audit.'

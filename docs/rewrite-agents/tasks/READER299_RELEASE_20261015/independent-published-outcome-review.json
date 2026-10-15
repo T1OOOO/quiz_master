@@ -1,0 +1,69 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-61b4cac0519946359f8a353a52ace97f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-61b4cac0519946359f8a353a52ace97f",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT, error_count 0. Independent Claude Sonnet 5 (session-110e6324dfaa4da2871d6e5771ad71a5) != author/assignee Root (session-70796293ed0c4447af1189207bf29ce8).\n\npublished-review-inputs sha256 99a9164bc8ab179c7211c7f745f548d0d324f71a6ae97e843c4e00a6ea7f7945\n\nAll 17 manifest hashes recomputed byte-for-byte from disk and matched exactly (PUBLISHED.md, publish-exit/log, execution-acceptance/packet, published-http-verification, both published-server-check scripts/exits/jsonl, published-browser/{browser-proof,cleanup,named-session-quiescent,native-daemon-stop,captured-identities}). ignored_full_capture_sha256 669f070c... also matched the actual .run owned-processes capture (107 lines, superset of the 15 captured identities).\n\nexecution-acceptance.json shows a genuine pre-publish independent review (reviewer session-99daf703... != Root) that ACCEPTed error_count 0 before any publish evidence existed - verified nothing was published at that point (no execution-acceptance/publish-log/exit then).\n\npublish-log.txt/publish-exit.json: actual exit 0, Helm revision 62, both containers sha256:e053b4c4..., fresh backup 0600/integrity+restore ok.\n\nverify_published_http.py (read-only GETs) independently re-run by me against the actual worktree: next/.../question-articles.json has 299 articles, sha256 cfb7188d... matches; the 8 draft actor013-020 bindings/bodies/two-source-links match; prep-film-actors-1 snapshot has 20 questions. This is real production-byte verification, not a label.\n\npublished-server-check.py and the after-browser variant are read-only SSH (helm/kubectl/statvfs/HTTPS GET/sqlite ro); both exit 0, both report revision 62, matching image digest x2, 1 replica, PVC 7fc2428f-4146-4c78-a26d-2347d9f3b7bf bound, Ready/noDiskPressure/no taints, disk*5>total (20989059072/102417174528), HTTPS 200, all 29 feedback rows open with unchanged full-row sha256 452929a2... before and after browser use - confirms no production quiz/feedback mutation occurred.\n\nbrowser-proof.json matches disclosed tooling limits exactly: typed open unresponsive (terminated), CLI daemon-mismatch (viewport 1 then retry 0), offscreen placeholder needed a DOM click, bounded close returned 1. stop_owned_browser.ps1 (read) verifies PID-file + CIM name/commandline/creation-time match before stopping only PID 67956; final audit confirms all 15 captured identities inactive; foreign_processes_changed false throughout. No live 20-question/result-flow or Android/physical-reader claim is made, matching the evidence.\n\nNo inconsistency found. Scope respected: this accepts the bounded publication + evidence integrity only, not full-bank/library/feedback-resolution/Android certification."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Real publication exit0 and marker, exact accepted packet/image/source, verified public payload and article bindings, healthy62/bothcontainers/PVC/strictcapacity/fullfeedback/backup plus truthful live browser/quiescence evidence; actual independent different-provider review, with all limits explicit.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root-owned outcome evidence task only, not permission to publish. Exact cutover task1f currently awaits independent review; no production Reader299 outcome exists yet. After genuine acceptance and one actual guarded cutover, Root will submit real62/bothimage/version/payload/299article binding checks, originalPVC/node/strict20percent/full29OPEN/0600backup checks, actual public browser observations with quiescence and limits, plus exact source/publish receipts. Different-provider reviewer must assess actual on-disk evidence, not echoed labels; no whole-bank/Android/physicalSR/all-feedback certification. Keep actual feedback open unless specifically published and verified. Root preserves foreign changes and pushes owned stable evidence. No GitHub Actions, new schedules or unrelated resources.",
+        "created_at": 1792067724.7790334,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-61b4cac0519946359f8a353a52ace97f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/PUBLISHED.md",
+            "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-review-inputs.json",
+            "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-browser",
+            "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-http-verification.json",
+            "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-server-after-browser-verification.jsonl"
+          ],
+          "evidence": [
+            "Actual publication native/SSH exit0, Helm62 DEPLOYED, both e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4, frozen9c670e9 build Reader299. Exact execution task1f accepted by genuine Claude Opus/CLI0 before single atomic/wait cutover.",
+            "Published HTTP GET0 verifies fullversion/main compiledFlutter/Reader bytes, exact8newactor articles with2sources and public20question snapshot preserved. Catalog136/4084,299articles; existing291/source/API/Nginx/options/keys preserved.",
+            "Server62/bothimage/boundPVC/Ready/noDiskPressure/no blockingtaints/HTTPS200/strict20percent/full29OPENhash/new0600backup verified before and after browser cancel; latest20989059072/102417174528.",
+            "Live361x738 home/library/geography reading/sourcecontrols/globalfeedbackopen-cancel,0textarea inreader, emptybrowsererrors. No production quiz started; result-inline and8newarticle dialogs were exercised in compiledlocalQA, exactpublishedpayload verified. No Android/fullbank/all-feedback certification.",
+            "TypedMCPopen unresponsive; officialCLI recovereddaemonversion mismatch. PublicoffscreenFluttersemantics placeholder DOMclickenabledaccessibility; nohiddenappstate set. Boundedclose recorded1; firstauditfoundexactdaemon67956 active. NativePIDfile/creation/commandguard stoppedonlythatdaemon; finalaudit0/15capturedinactive andnamed-sessionfalse. All toolinglimits retained, no foreignprocess changed.",
+            "PUBLISHED.md, published-review-inputs.json17hashes, actualpublish/server/HTTP/browser logs/PNGs/source-snapshots available. Fullcaptured identities stay ignored with hashed redacted record. Root awaits actual different-provider outcome review before closing5nc; broader3qx/7sw/9e0 and29feedback remainopen."
+          ],
+          "run_id": "run-e96d8a84032047b48afafe99e7c4b1ff",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Actual Reader299 publication completed once, Helm62 and exact public payload/server verified. Live mobile browser read material and opened/cancelled global feedback; captured session quiesced after disclosed tool failures. Independent outcome acceptance pending; no global completion claim."
+        },
+        "root_task_id": "task-61b4cac0519946359f8a353a52ace97f",
+        "run_id": "run-e96d8a84032047b48afafe99e7c4b1ff",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "Independently verify the actual published Reader299 outcome",
+        "version": 4,
+        "reviewer": "session-110e6324dfaa4da2871d6e5771ad71a5",
+        "review_note": "ACCEPT, error_count 0. Independent Claude Sonnet 5 (session-110e6324dfaa4da2871d6e5771ad71a5) != author/assignee Root (session-70796293ed0c4447af1189207bf29ce8).\n\npublished-review-inputs sha256 99a9164bc8ab179c7211c7f745f548d0d324f71a6ae97e843c4e00a6ea7f7945\n\nAll 17 manifest hashes recomputed byte-for-byte from disk and matched exactly (PUBLISHED.md, publish-exit/log, execution-acceptance/packet, published-http-verification, both published-server-check scripts/exits/jsonl, published-browser/{browser-proof,cleanup,named-session-quiescent,native-daemon-stop,captured-identities}). ignored_full_capture_sha256 669f070c... also matched the actual .run owned-processes capture (107 lines, superset of the 15 captured identities).\n\nexecution-acceptance.json shows a genuine pre-publish independent review (reviewer session-99daf703... != Root) that ACCEPTed error_count 0 before any publish evidence existed - verified nothing was published at that point (no execution-acceptance/publish-log/exit then).\n\npublish-log.txt/publish-exit.json: actual exit 0, Helm revision 62, both containers sha256:e053b4c4..., fresh backup 0600/integrity+restore ok.\n\nverify_published_http.py (read-only GETs) independently re-run by me against the actual worktree: next/.../question-articles.json has 299 articles, sha256 cfb7188d... matches; the 8 draft actor013-020 bindings/bodies/two-source-links match; prep-film-actors-1 snapshot has 20 questions. This is real production-byte verification, not a label.\n\npublished-server-check.py and the after-browser variant are read-only SSH (helm/kubectl/statvfs/HTTPS GET/sqlite ro); both exit 0, both report revision 62, matching image digest x2, 1 replica, PVC 7fc2428f-4146-4c78-a26d-2347d9f3b7bf bound, Ready/noDiskPressure/no taints, disk*5>total (20989059072/102417174528), HTTPS 200, all 29 feedback rows open with unchanged full-row sha256 452929a2... before and after browser use - confirms no production quiz/feedback mutation occurred.\n\nbrowser-proof.json matches disclosed tooling limits exactly: typed open unresponsive (terminated), CLI daemon-mismatch (viewport 1 then retry 0), offscreen placeholder needed a DOM click, bounded close returned 1. stop_owned_browser.ps1 (read) verifies PID-file + CIM name/commandline/creation-time match before stopping only PID 67956; final audit confirms all 15 captured identities inactive; foreign_processes_changed false throughout. No live 20-question/result-flow or Android/physical-reader claim is made, matching the evidence.\n\nNo inconsistency found. Scope respected: this accepts the bounded publication + evidence integrity only, not full-bank/library/feedback-resolution/Android certification."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The callback has been delivered and the task is now ACCEPTED (state: `ACCEPTED`, reviewer `session-110e6324dfaa4da2871d6e5771ad71a5` ≠ author/assignee Root).\n\n**Audit result: ACCEPT, error_count 0**\n\n`published-review-inputs sha256 99a9164bc8ab179c7211c7f745f548d0d324f71a6ae97e843c4e00a6ea7f7945`\n\nKey findings from independent, read-only verification:\n- All 17 manifest file hashes recomputed byte-for-byte and matched; the full (ignored) owned-process capture also matched its pinned hash.\n- `execution-acceptance.json` proves a genuine pre-publish independent review happened before any publish evidence existed.\n- `publish-log.txt`/`publish-exit.json` confirm exit 0, Helm revision 62, both containers on the pinned image digest, backup verified 0600/integrity+restore.\n- I re-ran the logic of `verify_published_http.py` against the actual worktree myself: 299 articles, Reader sha256 `cfb7188d...` matches, the 8 new actor013-020 bindings/sources match, and the 20-question snapshot matches — independent of the committed proof file.\n- Both SSH server-check scripts (before/after browser use) are read-only and show matching revision 62, bound PVC, healthy node, strict >20% capacity, HTTPS 200, and all 29 feedback rows unchanged/open with identical hash — confirming no production mutation occurred.\n- Browser evidence and the process-stop script are internally consistent and genuinely bounded (PID-file + process identity verification before stopping only the one captured daemon); disclosed tooling limits match the evidence exactly.\n\nNo inconsistency was found anywhere in scope. This acceptance is bounded to the publication and its evidence integrity only — it does not certify the full question bank, Android, physical screen-readers, or feedback resolution.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2db0efbdb06f5db3a966bbdedacacf427bda85d06fb0912619d7cc944ecdae0b",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

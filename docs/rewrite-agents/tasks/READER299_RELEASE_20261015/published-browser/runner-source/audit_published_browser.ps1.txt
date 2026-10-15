@@ -1,0 +1,30 @@
+$ErrorActionPreference = 'Stop'
+$quizCapture = 'C:/ap/quiz_master/.run/reader299_release_20261015/published-browser-owned-processes.json'
+$quizEntries = @(Get-Content -LiteralPath $quizCapture -Raw | ConvertFrom-Json)
+if ($quizEntries.Count -lt 2) { throw 'Missing captured browser identities' }
+$quizActive = @()
+$quizRetained = @()
+foreach ($quizEntry in $quizEntries) {
+    $quizCurrent = Get-CimInstance Win32_Process -Filter "ProcessId=$($quizEntry.ProcessId)"
+    if (-not $quizCurrent) { continue }
+    $quizOriginalTime = ([datetime]$quizEntry.CreationDate).ToUniversalTime().Ticks
+    $quizCurrentTime = ([datetime]$quizCurrent.CreationDate).ToUniversalTime().Ticks
+    if ($quizCurrent.Name -ne $quizEntry.Name -or $quizOriginalTime -ne $quizCurrentTime) { continue }
+    try { $quizProcess = [System.Diagnostics.Process]::GetProcessById([int]$quizEntry.ProcessId) }
+    catch [System.ArgumentException] { continue }
+    if ($quizProcess.HasExited) { $quizRetained += [int]$quizEntry.ProcessId }
+    else { $quizActive += [int]$quizEntry.ProcessId }
+}
+if ($quizActive.Count -gt 0) { throw "Captured browser identities still execute: $($quizActive -join ',')" }
+$quizResult = @{
+    actual_exit = 0
+    session = 'reader299-published-mixed'
+    namespace = 'quiz-master'
+    captured_browser_identities_inactive = $true
+    raw_pid_absence_claimed = $false
+    captured_identities = $quizEntries.Count
+    terminated_windows_objects_retained = $quizRetained
+    foreign_processes_changed = $false
+}
+$quizResult | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-browser/cleanup.json -Encoding utf8
+$quizResult | ConvertTo-Json -Depth 4
