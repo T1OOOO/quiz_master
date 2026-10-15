@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\archive-offload-v2",
+    "-p",
+    "test*.py",
+    "-v"
+  ],
+  "cwd": "C:\\ap\\quiz_master",
+  "actual_exit": 0,
+  "finished_utc": "2026-10-15T11:43:03.878677+00:00",
+  "scope": "Offline temporary-file and mocked command tests only. Any removed markers refer only to temporary fixture files, not remote operations. No SSH, Git, live deletion, loaded-image mutation or production database operation."
+}

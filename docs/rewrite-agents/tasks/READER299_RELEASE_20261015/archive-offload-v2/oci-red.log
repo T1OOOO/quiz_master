@@ -1,0 +1,18 @@
+test_executor_accepts_exact_oci_index_annotations (test_offload.OffloadTests.test_executor_accepts_exact_oci_index_annotations) ... FAIL
+
+======================================================================
+FAIL: test_executor_accepts_exact_oci_index_annotations (test_offload.OffloadTests.test_executor_accepts_exact_oci_index_annotations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER299_RELEASE_20261015\archive-offload-v2\test_offload.py", line 212, in test_executor_accepts_exact_oci_index_annotations
+    execute.verify_copies(plan,receipt,execute.digest(docs/'plan.json'),legacy)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER299_RELEASE_20261015\archive-offload-v2\execute.py", line 49, in verify_copies
+    assert len(manifests) == 1 and manifests[0].isfile() and manifests[0].size < 1024 * 1024
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+----------------------------------------------------------------------
+Ran 1 test in 0.190s
+
+FAILED (failures=1)

@@ -1,0 +1,5 @@
+{
+  "check": "Accepted V1 filename guard rejects required legacy Quiz Master archive. Historical source unchanged.",
+  "actual_exit": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import sys;sys.path.insert(0,'docs/rewrite-agents/tasks/READER299_RELEASE_20261015/archive-offload');from offload import PATTERN;assert PATTERN.fullmatch('quiz-master-abcdef0-1234.tar')\n                                                                                                                                            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+}

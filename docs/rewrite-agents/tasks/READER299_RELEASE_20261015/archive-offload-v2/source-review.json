@@ -1,0 +1,79 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-0459cb3e71224b04877a433b4223581a": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-0459cb3e71224b04877a433b4223581a",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review of archive-offload-v2 (current corrected state, not the preserved pre-oci-fix snapshot). Verified: (1) all 10 approval-inputs.json hashes match actual file bytes on disk; (2) plan.json has exactly 19 entries / 1397289472 bytes, first 10 = prior approved dated names, next 9 match quiz-master-<7hex>-<4hex>.tar and equal legacy-project-references.json keys exactly, zero overlap with the 5 protected tar paths; (3) protected-hashes.json has 17 entries matching offload.py's embedded PROTECTED_HASHES verbatim; (4) copy-receipt.json's 19 rows (exit 0, kind in scp/sftp-reget/ssh-gzip-tar) match plan.json size/sha256 per entry; (5) independently re-hashed all 19 physical local cold copies on disk against plan.json, zero mismatches; (6) independently re-rendered generate.render(plan, protected) and it is byte-identical to committed offload.sh; (7) offload.py's verify-before-any-unlink, per-file TOCTOU re-check (dev/ino/size/mtime, O_NOFOLLOW), pre-unlink image snapshot with preexisting-subset-of-after check (additions allowed), 17-protected-hash re-check, and production preflight (Helm61, image digest, PVC uid, node Ready/no taints, HTTPS 200, feedback SHA, backup mode+integrity) are all sound; (8) execute.py's validate_inputs requires a real source-review.json bound to this exact Hub task's ACCEPTED state with reviewer != assignee and this note's digest -- that file does not yet exist, confirming no SSH/execution has occurred; (9) confirmed via hub_message search this task's create/accept/submit lineage is genuine; (10) confirmed the task's submitted evidence hashes (REPORT.md, worker-freeze-sha256.json) match the preserved pre-oci-fix/ snapshot exactly while current files reflect the later OCI-fallback correction, with offload.sh unchanged between both -- consistent with the stated history; (11) independently re-ran the offline suite: 30/30 tests pass, exit 0. No SSH, Git, deletion, image mutation, child agent or build performed by this reviewer -- only local hash reads and offline unittest. No defects found. approval-inputs sha256 cf106c2f6d22ccb86e2f6a10888ff43d193ec5533cbc234693152ede303878fa"
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimalcomplete19exactarchivecleanup source reusingvalidatedprimitives, liveimagebefore/aftersubsetcondition tests; noactualdelete/sourceapprovalclaim. Rootfillsactualfrozenplan anddifferentproviderreview beforeoneexec.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\archive-offload-v2"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "FullRootdirectbrief applies. Sourceonly NEWarchive-offload-v2 dir; Rootownsactual19manifest/copies/protected17/hashreceipts. Previous10packet independentlyaccepted butactualexecFAILED BEFOREunlink on203->205containerd/48->49Docker frozeninventory drift; preservedlogsimmutable. Free19.699GB below20%;19files =10priorcopied+9legacy quiz-master-7hex-4hex.tar fromsameprojectimagesroot. Reuseacceptedsourceprimitive/execute/test, minimallegacynameextension+exact19count/totalpins andfreshbefore/afterimageSETsubset preservation allowingonlyadditions. Frozenoldglobalhashcomparisonremovedonlyforlegitimateexternaladditions; no preexistingimagesremoved, no imagecommandsmutate. PreserveprojectDEPLOYlock,current61both0f/PVC/full29OPENhash/Ready/notaints/HTTPS/protected17hashes,regularnonlink/fullhash/devino/mtimewholebatch+perfileunlink. No stages/DB/backups/packages/processes/sharedprojectschange. Cleanupmaystartbelow20; laterreleasefreshstrict>20 remains. Source/tests/generator only; noSSH/Git/Beads/renderwithfakeunknownplan/children. Rootprovidesactualcopiestransferkindscpsftpregetssh-gzip-tar; executorhonest0exit andactualfutureindependentreview fullapprovalmanifest beforeanySSH. Negativefixturetestsincludingadditionsallowed/removalsrejected; defaultsrefuseunknown/oldlogs/PythonO. Completepreservedguards, nothollowshell.",
+        "created_at": 1792064124.869628,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-0459cb3e71224b04877a433b4223581a",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "offload.py",
+            "execute.py",
+            "generate.py",
+            "test_offload.py",
+            "offload.sh",
+            "README.md",
+            "REPORT.md",
+            "source-sha256.json",
+            "worker-freeze-sha256.json",
+            "tests.log",
+            "tests.json",
+            "inherited-red.json"
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/archive-offload-v2/REPORT.md SHA256 bd4b7e2b3521b91a24b207218169d292f335f9b7979a12b1f289a7cc5ba7a0ea",
+            "worker-freeze-sha256.json SHA256 91e32cfeef89c72ae1008728175e620151e77145a714506c80f4a643bbf8c6c4",
+            "source-sha256.json pins offload.py/execute.py/generate.py/test_offload.py/offload.sh. Exact rendered shell SHA256 5d5b16b56ddd7c64745d08baa11a39f6d1468757236aa8d389b8cbd3a9ec920e.",
+            "Actual final offline tests:28 passed, actual exit0,4.156 seconds. Actual generated Bash syntax exit0. Test removed markers concern temporary fixture files only.",
+            "Actual Root plan19 and1397289472 bytes, original ten names plus nine legacy, protected five names and17 full hashes preserved. Root-owned input JSON and old failed evidence untouched.",
+            "Meaningful negative checks cover paths/names/hash/metadata/nonlinks/batch/per-unlink drift, inventory additions versus removals, privacy, actual generator plan bounds, all production state/feedback/backup guards, optimized Python and executor approval/copy/log gates before SSH.",
+            "Exact ten-file approval manifest includes legacy-project-references.json; executor reads local legacy Docker manifests and binds project refs/filename commit. Local copies rehashed twice; old and new owned copy roots supported.",
+            "No SSH, Git, Beads, real deletion, loaded-image mutation or child agent. Root completes real manifest/review/execution/readback and fresh strict release capacity gate."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Frozen exact nineteen-archive V2 source, generator and rendered shell. Fresh loaded-image snapshot under project lock permits additions and rejects missing preexisting references. Root-only actual review and execution remain."
+        },
+        "root_task_id": "task-0459cb3e71224b04877a433b4223581a",
+        "run_id": "run-83ae718d46d0440ca44c49c873b6d043",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "Repair capacity cleanup for nineteen verified old QuizMaster archives with live image snapshots",
+        "version": 4,
+        "reviewer": "session-2e1055b510844473ab938821df24e1d2",
+        "review_note": "Independent review of archive-offload-v2 (current corrected state, not the preserved pre-oci-fix snapshot). Verified: (1) all 10 approval-inputs.json hashes match actual file bytes on disk; (2) plan.json has exactly 19 entries / 1397289472 bytes, first 10 = prior approved dated names, next 9 match quiz-master-<7hex>-<4hex>.tar and equal legacy-project-references.json keys exactly, zero overlap with the 5 protected tar paths; (3) protected-hashes.json has 17 entries matching offload.py's embedded PROTECTED_HASHES verbatim; (4) copy-receipt.json's 19 rows (exit 0, kind in scp/sftp-reget/ssh-gzip-tar) match plan.json size/sha256 per entry; (5) independently re-hashed all 19 physical local cold copies on disk against plan.json, zero mismatches; (6) independently re-rendered generate.render(plan, protected) and it is byte-identical to committed offload.sh; (7) offload.py's verify-before-any-unlink, per-file TOCTOU re-check (dev/ino/size/mtime, O_NOFOLLOW), pre-unlink image snapshot with preexisting-subset-of-after check (additions allowed), 17-protected-hash re-check, and production preflight (Helm61, image digest, PVC uid, node Ready/no taints, HTTPS 200, feedback SHA, backup mode+integrity) are all sound; (8) execute.py's validate_inputs requires a real source-review.json bound to this exact Hub task's ACCEPTED state with reviewer != assignee and this note's digest -- that file does not yet exist, confirming no SSH/execution has occurred; (9) confirmed via hub_message search this task's create/accept/submit lineage is genuine; (10) confirmed the task's submitted evidence hashes (REPORT.md, worker-freeze-sha256.json) match the preserved pre-oci-fix/ snapshot exactly while current files reflect the later OCI-fallback correction, with offload.sh unchanged between both -- consistent with the stated history; (11) independently re-ran the offline suite: 30/30 tests pass, exit 0. No SSH, Git, deletion, image mutation, child agent or build performed by this reviewer -- only local hash reads and offline unittest. No defects found. approval-inputs sha256 cf106c2f6d22ccb86e2f6a10888ff43d193ec5533cbc234693152ede303878fa"
+      }
+    }
+  },
+  "review_messages": [
+    "Independent review of task-0459cb3e71224b04877a433b4223581a (archive-offload-v2): ACCEPTED, error_count 0. Verified all 10 approval-inputs.json hashes, 19-entry plan.json totals/names/no-protected-overlap, 19/19 local copies rehashed clean, generate.py render byte-identical to offload.sh, offload.py safety primitives (TOCTOU, image-preservation, protected hashes, preflight), and 30/30 offline tests independently re-run. approval-inputs sha256 cf106c2f6d22ccb86e2f6a10888ff43d193ec5533cbc234693152ede303878fa. No SSH/deletion/execution performed by reviewer."
+  ],
+  "report": "## Final report\n\n**Verdict: ACCEPT, error_count 0** — submitted via `hub_task review` on `task-0459cb3e71224b04877a433b4223581a`; task state is now `ACCEPTED`.\n\n**What I independently verified (local hash reads + offline unit tests only — no edits, SSH, deletion, builds, or child agents):**\n- All 10 `approval-inputs.json` hashes match the actual files on disk; the manifest's own sha256 is `cf106c2f6d22ccb86e2f6a10888ff43d193ec5533cbc234693152ede303878fa` (64 hex chars) — I computed this myself rather than trusting the value floated in my task context, which was malformed (63 chars, missing a digit).\n- `plan.json`: exactly 19 entries / 1,397,289,472 bytes; first 10 are the prior approved dated names, the other 9 match `quiz-master-<7hex>-<4hex>.tar` and equal `legacy-project-references.json`'s keys exactly; zero overlap with the 5 protected tar paths.\n- `protected-hashes.json` (17 entries) matches `offload.py`'s embedded constant verbatim.\n- `copy-receipt.json`'s 19 rows all have `transfer_exit=0`, allowed transfer kinds, and match `plan.json` size/sha256 per entry.\n- Re-hashed all 19 physical local cold copies on disk myself — zero mismatches against `plan.json`.\n- Re-executed `generate.render(plan, protected)` from source and it is byte-identical to the committed `offload.sh`.\n- Reviewed `offload.py`/`execute.py` safety logic: verify-all-before-any-unlink, TOCTOU-safe per-file re-checks, pre-unlink image snapshot requiring preexisting identities remain a subset of after (additions allowed), protected-hash re-checks, and full production preflight — all sound.\n- `execute.py` requires a genuine `source-review.json` bound to this exact Hub task's `ACCEPTED` state before it will run SSH; that file doesn't exist yet, confirming no execution has occurred.\n- Confirmed via `hub_message search` this task's create→accept→submit lineage is real, and that the task's originally submitted evidence hashes match the preserved `pre-oci-fix/` snapshot while current files reflect a later, consistent OCI-fallback correction.\n- Independently re-ran the offline suite: 30/30 tests pass, exit 0.\n\nNo defects found. Sent a short confirmation to the hub team; Root owns the actual execution and capacity decision from here.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "379c74445438c863938440ac24a0b66d19c75148202b0fc2e21c1af9f69fb599",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

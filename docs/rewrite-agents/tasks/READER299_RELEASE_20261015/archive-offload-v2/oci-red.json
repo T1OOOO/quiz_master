@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "test_offload.OffloadTests.test_executor_accepts_exact_oci_index_annotations",
+    "-v"
+  ],
+  "actual_exit": 1,
+  "scope": "Expected red: original submitted executor rejects a valid temporary OCI index.json archive before SSH. No real input or remote operation."
+}
