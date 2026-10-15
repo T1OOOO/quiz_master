@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f94667c470fd484a8787668e401bbf84": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f94667c470fd484a8787668e401bbf84",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH. Recomputed sha256 for all 131 manifest entries: 0 mismatches. Independently bulk-validated plan.json: 185 entries/74 preserved/111 aliases/47 groups/52 unique states/32 protected exclusions/4,795,174,912 allocated reclaim all match exactly in Python, and confirmed this plan's 185-file universe equals the prior accepted plan's preserved-185 set exactly (no replay of the removed 29, no scope creep). Verified remaining111.sh (e28a3f9a...) and isolated-posix-PENDING.sh hashes myself and ran bash -n on both (pass). Cross-checked the recorded actual Linux fixture run: 12/12 cases pass in 11.711s, exact test names matching posix_fixture.py's MultiAliasTests, real but non-production temp-directory content (8192-byte fresh SQLite files, production_paths_used=false) — internally consistent with the source I read, though not witnessed live by me. No defects found. ACCEPT — authorizes only the exact reviewed 111-alias cleanup under the stated strict20+2GiB/1GiB-growth gates; no preparation retry, image build, or publication is approved by this review. Bound to 131-file manifest sha256 a9f4fc1c959dc7fbca3b82ff4cf91c6a6d500f8a81ae90307f3d0b55db97fc6a; Linux 12/12 exit0, portable 19/19 exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact185/111/74/52/47/32 source/data/guard/script binding, actualmeaningfulportable+Linuxfixturechecks and genuineindependentClaude exactpacketreview beforeunlink; no execution/publish claim, stableownedsource pushed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\remaining",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns capacity/remaining outsideworker and ignoredscratch outside remaining-worker. Nativec00 owns worker. Previous29operation finishedallunlink/data/image/baselineguards thenreturned1reservepostcondition; b3btruthfuloutcomereviewseparate. Rootnewimmutableplan f5155427 uses185verifiedremainingmetadata:47SHA groups/111samebytealiases/74fullprivatebackups retainingall52states/all29explicitretention/32resources. Expected4,795,174,912allocatedreclaim, actualpoststrict20+2GiB andbounded1GiBgrowthbudget are explicitnewphasepolicy basedobserved506MBdiscrepancy; neverrelabelfirstfailureorweakenmandatorystrict20floor. Bindexactsource/protection/input/names/actualtempfixtures/baseline/fullmapping andgenuineClaude reviewbeforeanynewunlink. Rootownsallrealtests/execution/Git/Beads, privateDBbytesneverexport. Preserveallold38/101/12manifests/source/failurelogs/foreignfiles, cannotreplayoldplan. No actualfurthercleanup/prep/image/publish inpacketstage. Existingcorrectatlas-v2 futurecode remainsseparateuntilfinalactualcapacityoutcomereview.",
+        "created_at": 1792102226.1859374,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-f94667c470fd484a8787668e401bbf84",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/review-inputs.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/ROOT_REVIEW_EN.md",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/linux-fixture/exit.json"
+          ],
+          "summary": "Root verified exact185 initial->74 retained/111 samebyte aliases/47groups/all52states/32protected exclusion. Read full worker/physical house loop. Actual isolated Linux12/12 exit0 in11.711s, including multialiasGREEN/leakRED/no unlink on lastgroup corruption/noPIDskip.19portable/2syntax/compile/determinism worker evidence. Frozen packet with precise e28a production script; previous29 actualexit1 preserved. Newoperation not executed; awaiting genuineClaude review beforeunlink."
+        },
+        "root_task_id": "task-f94667c470fd484a8787668e401bbf84",
+        "run_id": "run-6f6c8f51ec824161a3556f1a292c5ad0",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: bind complete remaining duplicate-state retention packet",
+        "version": 4,
+        "reviewer": "session-b507f430cf7440b4a4e7a2a422b9c4dd",
+        "review_note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH. Recomputed sha256 for all 131 manifest entries: 0 mismatches. Independently bulk-validated plan.json: 185 entries/74 preserved/111 aliases/47 groups/52 unique states/32 protected exclusions/4,795,174,912 allocated reclaim all match exactly in Python, and confirmed this plan's 185-file universe equals the prior accepted plan's preserved-185 set exactly (no replay of the removed 29, no scope creep). Verified remaining111.sh (e28a3f9a...) and isolated-posix-PENDING.sh hashes myself and ran bash -n on both (pass). Cross-checked the recorded actual Linux fixture run: 12/12 cases pass in 11.711s, exact test names matching posix_fixture.py's MultiAliasTests, real but non-production temp-directory content (8192-byte fresh SQLite files, production_paths_used=false) — internally consistent with the source I read, though not witnessed live by me. No defects found. ACCEPT — authorizes only the exact reviewed 111-alias cleanup under the stated strict20+2GiB/1GiB-growth gates; no preparation retry, image build, or publication is approved by this review. Bound to 131-file manifest sha256 a9f4fc1c959dc7fbca3b82ff4cf91c6a6d500f8a81ae90307f3d0b55db97fc6a; Linux 12/12 exit0, portable 19/19 exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`.\n\n**Key findings:**\n\n**Manifest** — all 131 files rehashed, 0 mismatches, manifest SHA matches claim exactly.\n\n**Code soundness (task-c00ba35, native worker)** — The most notable change in this packet is that the per-alias validation hook (`checked()`) *completely replaces* the pinned house module's own `check()` function (via `env['check']=checked`), rather than wrapping it. I traced this carefully: the replacement's single `verify_entry()` call does a fresh `lstat()` and compares a fuller fingerprint (bytes/dev/ino/mtime_ns/mode/uid/gid/nlink/allocated_bytes) than the original house check (which only checked mode/nlink/uid), uses an O_NOFOLLOW open with double TOCTOU re-verification around the hash read, and checks for journal sidecars — objectively **more** thorough than the original 3-separate-reads pattern it replaces, not a weakening. The `NAME` regex was also narrowed from a date pattern to an exact disjunction of the 158 selected names.\n\n**Plan integrity** — I bulk-validated `plan.json` programmatically rather than trusting prose: 185 entries/74 preserved/111 aliases/47 groups/52 unique states/32 protected exclusions/4,795,174,912 reclaim bytes all match exactly, zero overlap with protected resources, and — critically — I confirmed this plan's 185-file universe is **exactly** the prior accepted plan's `preserved` set (no replay of the already-removed 29, no scope creep).\n\n**Tests I ran myself**: 19/19 portable tests pass; `bash -n` passes on both generated scripts (hashes match claims exactly: `e28a3f9a...` and `71d6ea7a...`).\n\n**Linux evidence (task-f94667c, Root)** — the recorded 12/12 pass in 11.711s matches the exact test names in `posix_fixture.py`, and the removal records show tiny (8192-byte) fresh temp-directory SQLite content, not production data — internally consistent, though I did not witness Root's live SSH myself (disclosed in both notes).\n\nNo defects found in either task. Both acceptances authorize only the exact reviewed 111-alias cleanup under the new strict-20%+2GiB/1GiB-growth-tolerance policy — no preparation retry, image build, or publication is approved by this review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2651c5afbb6efedca5f7f9930187a5d8afbd6859481f66155b5289b81f98a1b5",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,87 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c00ba35afa2d4f82ac88ff2936b47dfa": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c00ba35afa2d4f82ac88ff2936b47dfa",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local source only. Recomputed sha256 for all 131 review-inputs.json entries: 0 mismatches, manifest sha matches claim. Read remaining_adapter.py in full: env['check']=checked fully replaces the pinned house's internal check() with one verify_entry() call (O_NOFOLLOW open, dev/ino/mtime/mode/uid/gid/nlink+hash fingerprint, double TOCTOU recheck) — objectively stronger than the original's 3 separate reads, not a weakening; confirmed house/guard text reused from the already-accepted adapter-v2 (digest match c32104d2/17c604f7, 1 house+2 preflight closes). NAME allowlist is a disjunction of exactly the 158 selected keeper/alias names (verified programmatically), not a date pattern. Bulk-validated plan.json myself: 185/74/111/47/52/32/4795174912/158 all exact, 0 mismatches, 0 overlap with protected resources, and the new 185-entry universe is EXACTLY the old plan's preserved set (no replay of the already-removed 29). Ran the 19 portable tests myself: 19/19 pass. Verified both generated script hashes and ran bash -n myself: both pass. New capacity policy (strict20+2GiB, 1GiB growth tolerance) genuinely tightens headroom vs the prior 1GiB/64MiB, while accounting for the previously-observed ~506MB unexplained discrepancy — not a floor weakening. No defects found. ACCEPT; authorizes only the exact reviewed 111-alias packet, no prep/image/publication. Bound to 131-file manifest sha256 a9f4fc1c959dc7fbca3b82ff4cf91c6a6d500f8a81ae90307f3d0b55db97fc6a; portable tests exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Small reusedhouse-core finite185/111/74/52/47 packet bound toRootplan/protectedmaps; allprivacy/trust/baseline/state/loadedidentity/capacityguards retained, explicit3contextclosures, actuallocaltests/render/syntax and safeLinuxfixture. No actualcleanup/network/publication. IndependentClaude exactpacketreviewrequired.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\remaining\\worker",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native owns ONLY capacity/remaining/worker under COUNTRY483_REMOTE_20261015 and ignoredremaining-worker scratch. Root owns remaining/plan.json SHA f5155427154539df181dbc9f526eabe551ef59f85639ecbd5be8f3b0755e3436, allinputs/operations. Prioraccepted6be3cleanup actuallyremoved29aliases, verified185backups/52states/32resources/loadedimages/healthy63, thenreturned1 ONLYfinalreserve: free21200871424 vs20%+1GiB21557176730; strict20passed,506105856allocationdiscrepancyfrombefore+reclaim. Freshfree21082243072. No retry/image/publish. Do NOTreplayold214plan. Newexactplan groups47,aliases111,preserved74,total185,all52states; everyaliasbyteidenticalretainedrawkeeper,all29explicitretention/current303/rollback299/Country483forensics and32resources excluded. Expected4795174912allocatedreclaim. Newphase conservative actualfinalstrict20+2GiB and explicit1GiB growthbudget (oldoperationfailedunchanged64MiB/1GiBcondition, notrelabeled). Prefer minimal composition: reuse pinned v1physical/no-follow/journal/process/parent/32protected/loadedimage validators and patchedv2 house+preflight closures; house fullvalidation/removal loop unchanged. Newruntime check hook may use one completeO_NOFOLLOW fingerprint+fullSHA percall instead of redundant3reads, onlyifallpreviousprivacy/ownership/name/metadata/journal/processvalidation retained. Exactimmutableallowlist ofaliases+keepers replacesdatedNAME restriction; do notwidenarbitraryCLIinput. Full185initial/all74final metadatahashes+52state/protection, allgroups/names/keepers beforefirstunlink+perfile, freshcurrent63/bothimage/PVC/node/HTTPS/full29OPEN+loadedIDs snapshotbeforefirstunlink andpost, flushed alias->keeper/hash mapping. All3ownedreadonlySQLitecontexts mustclose. NoPIDskip. Source localrender/verify only, no network/executionflags. Source/plan/schema/count/hash/retention/dynamicmultialiasguards meaningfulportabletests and rendered isolatedPOSIXmulti-alias integrationfixture (Rootruns), syntax/compile/evidence. No productionDBcontent export. Source/old38/101/previousv2/f36/Rootatlas filesimmutable. NoSSH/Git/Beads/children/sharedcleanup. Freeze/submithashes/actualexits/limitations, thenstop forrealClaude exactpacketreview beforeanynewunlink. Notalone.",
+        "created_at": 1792102088.7527602,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c00ba35afa2d4f82ac88ff2936b47dfa",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/remaining_adapter.py",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/test_remaining.py",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/posix_fixture.py",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/REPORT_EN.md",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/test-results.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/source-map.json"
+          ],
+          "evidence": [
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/source-map.json",
+              "result": "24 frozen source/input/output/raw-command-evidence files rehashed successfully immediately before submission.",
+              "sha256": "8368253a3e3bc44b5c9b3fbcd97cb9be29c924b2d6156ac832c5671cdb8ddb84"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/remaining/worker/test-results.json",
+              "result": "19 portable tests actual0; renderer actual0; two Bash syntax actual0; two embedded blocks compile; deterministic render; optimized-Python refusal actual1/no output.",
+              "sha256": "1719dd6453d6b80ea4183c5103ddad3b2c5a045de95beab9b621f7a4694680d1"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/remaining-worker/preview-v1/remaining111.sh",
+              "result": "Inert exact packet, full 185-plan plus32 protection binding; not remotely executed.",
+              "sha256": "e28a3f9aa05b1c071f5c28b31742b7bac32c119ffefbe6b8a255e2f275cecad1"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/remaining-worker/preview-v1/isolated-posix-PENDING.sh",
+              "result": "12 isolated actual-POSIX cases rendered/compiled; execution PENDING Root. No pass claim.",
+              "sha256": "71d6ea7a11ede0ddcba9f24686b1cdf02e621b65a89b1ebc8206c782702777db"
+            }
+          ],
+          "remaining_concerns": [
+            "Root must run isolated POSIX fixture, obtain genuine different-provider review of final exact packet, and independently bind any future execution. Release peak capacity remains uncertified."
+          ],
+          "status": "DONE",
+          "summary": "Frozen local-only exact111 remaining-alias packet: 185 initial /47 groups/74 preserved/52 states, full physical/protected/process guards, three SQLite closes, strict20+2GiB and explicit1GiB growth limit. Actual19 portable tests0, render0, two Bash syntax0, two embedded Python compiles, deterministic independent renders, optimized Python refuses1. POSIX12 fixture PENDING actual Root run. No SSH, cleanup, preparation, image or publication. Prior29 removed/failed-reserve operation and history unchanged."
+        },
+        "root_task_id": "task-c00ba35afa2d4f82ac88ff2936b47dfa",
+        "run_id": "run-049e2075a6c04fffbf0dad9ae5297c5e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: exact remaining cold-duplicate packet with full state retention",
+        "version": 4,
+        "reviewer": "session-b507f430cf7440b4a4e7a2a422b9c4dd",
+        "review_note": "Independent Claude review, local source only. Recomputed sha256 for all 131 review-inputs.json entries: 0 mismatches, manifest sha matches claim. Read remaining_adapter.py in full: env['check']=checked fully replaces the pinned house's internal check() with one verify_entry() call (O_NOFOLLOW open, dev/ino/mtime/mode/uid/gid/nlink+hash fingerprint, double TOCTOU recheck) — objectively stronger than the original's 3 separate reads, not a weakening; confirmed house/guard text reused from the already-accepted adapter-v2 (digest match c32104d2/17c604f7, 1 house+2 preflight closes). NAME allowlist is a disjunction of exactly the 158 selected keeper/alias names (verified programmatically), not a date pattern. Bulk-validated plan.json myself: 185/74/111/47/52/32/4795174912/158 all exact, 0 mismatches, 0 overlap with protected resources, and the new 185-entry universe is EXACTLY the old plan's preserved set (no replay of the already-removed 29). Ran the 19 portable tests myself: 19/19 pass. Verified both generated script hashes and ran bash -n myself: both pass. New capacity policy (strict20+2GiB, 1GiB growth tolerance) genuinely tightens headroom vs the prior 1GiB/64MiB, while accounting for the previously-observed ~506MB unexplained discrepancy — not a floor weakening. No defects found. ACCEPT; authorizes only the exact reviewed 111-alias packet, no prep/image/publication. Bound to 131-file manifest sha256 a9f4fc1c959dc7fbca3b82ff4cf91c6a6d500f8a81ae90307f3d0b55db97fc6a; portable tests exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`.\n\n**Key findings:**\n\n**Manifest** — all 131 files rehashed, 0 mismatches, manifest SHA matches claim exactly.\n\n**Code soundness (task-c00ba35, native worker)** — The most notable change in this packet is that the per-alias validation hook (`checked()`) *completely replaces* the pinned house module's own `check()` function (via `env['check']=checked`), rather than wrapping it. I traced this carefully: the replacement's single `verify_entry()` call does a fresh `lstat()` and compares a fuller fingerprint (bytes/dev/ino/mtime_ns/mode/uid/gid/nlink/allocated_bytes) than the original house check (which only checked mode/nlink/uid), uses an O_NOFOLLOW open with double TOCTOU re-verification around the hash read, and checks for journal sidecars — objectively **more** thorough than the original 3-separate-reads pattern it replaces, not a weakening. The `NAME` regex was also narrowed from a date pattern to an exact disjunction of the 158 selected names.\n\n**Plan integrity** — I bulk-validated `plan.json` programmatically rather than trusting prose: 185 entries/74 preserved/111 aliases/47 groups/52 unique states/32 protected exclusions/4,795,174,912 reclaim bytes all match exactly, zero overlap with protected resources, and — critically — I confirmed this plan's 185-file universe is **exactly** the prior accepted plan's `preserved` set (no replay of the already-removed 29, no scope creep).\n\n**Tests I ran myself**: 19/19 portable tests pass; `bash -n` passes on both generated scripts (hashes match claims exactly: `e28a3f9a...` and `71d6ea7a...`).\n\n**Linux evidence (task-f94667c, Root)** — the recorded 12/12 pass in 11.711s matches the exact test names in `posix_fixture.py`, and the removal records show tiny (8192-byte) fresh temp-directory SQLite content, not production data — internally consistent, though I did not witness Root's live SSH myself (disclosed in both notes).\n\nNo defects found in either task. Both acceptances authorize only the exact reviewed 111-alias cleanup under the new strict-20%+2GiB/1GiB-growth-tolerance policy — no preparation retry, image build, or publication is approved by this review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2651c5afbb6efedca5f7f9930187a5d8afbd6859481f66155b5289b81f98a1b5",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

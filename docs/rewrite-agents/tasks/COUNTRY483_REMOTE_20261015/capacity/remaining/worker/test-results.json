@@ -1,0 +1,96 @@
+{
+  "status": "LOCAL_CHECKS_PASS",
+  "actual_commands": [
+    {
+      "name": "portable19",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\remaining\\worker",
+        "-p",
+        "test_remaining.py",
+        "-v"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\portable19.stdout.log",
+      "stdout_sha256": "c887a84e30005934b6501b20c7df47edcbb97b135d0b3cbc0c8abb5555cb4ca6"
+    },
+    {
+      "name": "deterministic-render",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\remaining\\worker\\remaining_adapter.py",
+        "--output-root",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\preview-v2"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\deterministic-render.stdout.log",
+      "stdout_sha256": "df8c0d58b70fdf33a0188c5cc0b639915a0ca4ba4484cb570ca7c44cadea60e1"
+    },
+    {
+      "name": "bash-remaining111.sh",
+      "command": [
+        "C:/Program Files/Git/bin/bash.exe",
+        "-n",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\preview-v1\\remaining111.sh"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\bash-remaining111.sh.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "bash-isolated-posix-PENDING.sh",
+      "command": [
+        "C:/Program Files/Git/bin/bash.exe",
+        "-n",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\preview-v1\\isolated-posix-PENDING.sh"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\bash-isolated-posix-PENDING.sh.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "optimized-refusal",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-O",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\remaining\\worker\\remaining_adapter.py",
+        "--output-root",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\optimized-must-not-exist"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 1,
+      "expected_exit": 1,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remaining-worker\\optimized-refusal.stdout.log",
+      "stdout_sha256": "bc22d85a2eb6b7236a8b31f17765db6de5f2e23edd598328412dfce233e530c8"
+    }
+  ],
+  "source_sha256": {
+    "posix_fixture.py": "2e530c1d6d1551fa1edf84ce4fc4d084afdeb5a33a76d3c567648e29ac690ff7",
+    "remaining_adapter.py": "c6696923737a47b5776f1011d78180e0c5bead92fabd0b6118a8f7160fe0fdfe",
+    "test_remaining.py": "4f7a5a461d23fe54e24bc392f361470f5351a3d7877af1c6009154073c36614b"
+  },
+  "deterministic_two_process_render": true,
+  "embedded_python_compile_count": 2,
+  "bash_syntax_count": 2,
+  "portable_tests": 19,
+  "portable_actual_exit": 0,
+  "posix_fixture_cases": 12,
+  "posix_fixture_actual_execution": "PENDING_ROOT",
+  "actual_cleanup_performed": false,
+  "old_plan_replayed": false
+}
