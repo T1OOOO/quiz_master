@@ -1,0 +1,7 @@
+# Final exact attestation task binding
+
+The genuine corrective Opus review accepted5f2 but filed two explicitly nonblocking limitations as error_count2. Its same-conversation follow-up independently classified those as limitations rather than correctness errors and tried error_count0; the broker refused mutation of a terminal task. All actual callbacks, refusals and historical acceptance are retained. Root did not fabricate an amended response or relax the zero-error gate.
+
+New actual task3d369 supplies a fresh genuine attestation of the same unchanged178-file corrective QA packet. The producer and its matching fixture change ONLY the expected review task literal5f2 to3d369. Their original EOL bytes are preserved, every other byte identical; before snapshots retained here. All other11 source/dependency files are unchanged. Existing31preparation and6publication suites reran0 against finalbytes. No assertion, validation or publication guard was loosened. No new UI run is claimed.
+
+Task2c was too narrowly scoped to the producer file; cancellation of RUNNING was refused, so it was submitted as superseded scope-only. Task74 has the correct worker-directory scope and owns final verification/independent review of both literals. Its body prematurely said cancelled; this paragraph and actual Hub messages correct that. Neither2c nor old1c approval can certify final13hashes by itself. Independent final exactdiff acceptance remains required before package generation. Disk/cold-copy/release gates remain separate; no publication.

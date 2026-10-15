@@ -1,0 +1,18 @@
+{
+  "actual_exit": 1,
+  "command": [
+    "python",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_release.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-pins-v1.json",
+    "--prior-archive",
+    "C:\\ap\\quiz_master\\.run\\reader299_release_20261015\\package-v1\\quiz-2026.10.15-reader299-9c670e9.tar.gz",
+    "--output-root",
+    "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\package-v1"
+  ],
+  "duration_seconds": 2.369,
+  "pins_sha256": "023cbaebccddeb7e111ea42a47f4be1b0475b6a2171aba8cfeb1759e90990844",
+  "stdout_path": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\package-producer-v1.log",
+  "stdout_sha256": "7b61a643153c67505f1d63c1c08b3128c4b13d328ef0508d82d23d96223ab9d6",
+  "scope": "Actuallocalpackageonly; no remoteexecution/publication"
+}

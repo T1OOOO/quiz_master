@@ -1,0 +1,38 @@
+{
+  "schema_version": "qm-reader303-controller-source-review/v2",
+  "task_id": "task-1c41179daa5a45639f986600d5b893e9",
+  "held_prior_task": "task-0ff95e02b5a14a8797f5698576e54792",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_release.py": "ac7329c23787485eda3fcfc0b70812fd44c156789d5208b7eb3405c627000d3b",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_reader303_release.py": "c5390fa5ce5c7a6da6773e94b3069d01ca0fec4e3e29ea7fb42c00cfdd195452",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\publish_release.py": "ad3c2cac740e1e5d44321d80cc6ba3f1d15c638329adbff43580dbdaeaf1ede2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\render_publication.py": "34b2ca90580fe45be8e81254bc0702171307b47829badc704d49d5a941d9fbbf",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\test_publication_guards.py": "bb25e15b8ee108fbf03d0bdcb32725a84694389eddc66253c0da4260fbc98bab",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "files": {
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/controller-tests-v2.json": "e42bcf0f9a5b9d0a663256ad38982464ab1f325f48139a577fb5d7249e6bdd33",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/precision-red-exit.json": "7c0fbf6dd3c9d4d7e089f4ec8bcaaf97b45cd915fcb5a199f9da2a4a351082c1",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/precision-red-tests.log": "04667225ef56304642364b31b9ae6abcadaecab413688d5a8fa9be8701e4d5eb",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/preparation-tests-v2.log": "94fa4739ae73f5099348f7613ee38cd73bf949ff83440f978f21134be758b0d4",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/publish_release.py": "ad3c2cac740e1e5d44321d80cc6ba3f1d15c638329adbff43580dbdaeaf1ede2",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/render_publication.py": "34b2ca90580fe45be8e81254bc0702171307b47829badc704d49d5a941d9fbbf",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/test_publication_guards.py": "bb25e15b8ee108fbf03d0bdcb32725a84694389eddc66253c0da4260fbc98bab",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-tests-v2.log": "c09e8583d28fbd68b0c49885e7096b02c4788781305a4f80f1f84a0f93e371f1",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/README.md": "2b343d5ec1ca939ebe722b4ad282b2fb556f2730ac9a649b8a6551cd7da9922d",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/controller-source-sha256.json": "3e57ce265ee35b16a773da6430d92a49cca10f4b6fa2e1c777dc1a5eb5aa8001",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_release.py": "ac7329c23787485eda3fcfc0b70812fd44c156789d5208b7eb3405c627000d3b",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/test_reader303_release.py": "c5390fa5ce5c7a6da6773e94b3069d01ca0fec4e3e29ea7fb42c00cfdd195452",
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700"
+  }
+}

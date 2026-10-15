@@ -1,0 +1,109 @@
+test_superseding_browser_review_rejects_real_invalidated_acceptance (test_reader303_release.ReaderReleaseTests.test_superseding_browser_review_rejects_real_invalidated_acceptance) ... FAIL
+test_old_cleanup_and_missing_precision_guards_are_rejected (test_reader303_release.ReaderReleaseTests.test_old_cleanup_and_missing_precision_guards_are_rejected) ... FAIL
+test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) ... 
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='NativeCreationTicks') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='CimCreationTicks') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='command_sha256') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='ProcessId') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='CreationDate') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='corrected-daemon-cleanup-v2.json', field='captured_daemon_pid') ... FAIL
+  test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='cleanup-v2.json', field='captured_identities') ... FAIL
+test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) ... FAIL
+
+======================================================================
+FAIL: test_superseding_browser_review_rejects_real_invalidated_acceptance (test_reader303_release.ReaderReleaseTests.test_superseding_browser_review_rejects_real_invalidated_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 72, in test_superseding_browser_review_rejects_real_invalidated_acceptance
+    self.assertEqual(r.BROWSER_REVIEW_TASK,'task-5f2ed81bc57142fab1a26f5a3b81fd9c')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'task-1e5d2a0e78e94caabb83a26bf6cd4a66' != 'task-5f2ed81bc57142fab1a26f5a3b81fd9c'
+- task-1e5d2a0e78e94caabb83a26bf6cd4a66
++ task-5f2ed81bc57142fab1a26f5a3b81fd9c
+
+
+======================================================================
+FAIL: test_old_cleanup_and_missing_precision_guards_are_rejected (test_reader303_release.ReaderReleaseTests.test_old_cleanup_and_missing_precision_guards_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 81, in test_old_cleanup_and_missing_precision_guards_are_rejected
+    with self.assertRaisesRegex(RuntimeError,'corrected|precision|quiescence'):r.verify_browser_cleanup(old)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='NativeCreationTicks')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='CimCreationTicks')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='command_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='ProcessId')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='calibrated-daemon-identity-v2.json', field='CreationDate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='corrected-daemon-cleanup-v2.json', field='captured_daemon_pid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data) (file='cleanup-v2.json', field='captured_identities')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 104, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with self.subTest(file=file,field=field),patch.object(r,'read',side_effect=read),self.assertRaises(RuntimeError):
+                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data (test_reader303_release.ReaderReleaseTests.test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 109, in test_corrected_identity_receipts_reject_missing_mismatched_or_truncated_data
+    with patch.object(r,'read',side_effect=missing),self.assertRaises(FileNotFoundError):r.verify_browser_cleanup(proof)
+                                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: FileNotFoundError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.012s
+
+FAILED (failures=10)

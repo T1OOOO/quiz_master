@@ -1,0 +1,63 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-5f2ed81bc57142fab1a26f5a3b81fd9c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-5f2ed81bc57142fab1a26f5a3b81fd9c",
+          "verdict": "accept",
+          "error_count": 2,
+          "note": "Independent corrective review, read-only, SHA256 self-computed. review-inputs-v2.json: 178/178 hash-match (0 mismatch/missing); manifest SHA256=1735d21f0497292380687b482d71a6252be604a5e6f1b7ebc121a1f8c3600c9d. Original 170 byte-identical, 0 dropped, 8 added; review-inputs.json=a2637f34...301c59.\nROOT CAUSE FROM SOURCE: capture_published_browser.ps1 under PS5.1 wrote /Date(1792077726313)/ (ms); audit_published_browser.ps1 cast that to ticks 639276745263130000 and compared exact .Ticks to live CIM 639276745263134600 (delta 4600), then continue: silently skipped all 16, so cleanup.json inactive:true was VACUOUS. browser-fullprecision-recapture.json 18:33:40 captured LIVE pid 68116, same command SHA cd92aa31, 7.5min after cleanup.json 18:26:06 claimed quiescence. fallback-cleanup.json absent => original stop threw before mutation.\nCORRECTION PROVEN: CIM ...4600 (mult 10) vs native ...4608, delta 8 (0-9), equal at floor/10; (CIM-621355968000000000)//10000=1792077726313=original /Date()/ ms; original==fresh command SHA; private_capture_sha256 4123b426 matches real raw capture; cleanup-v2 16 rows==captured set, all absent; nested blocks==cleanup-v2/corrected-daemon-cleanup-v2; supersedes pin==85f07bdb.\nMY LIVE READ-ONLY CHECK (nothing killed): all 16 PIDs no CIM instance, GetProcessById NOT_FOUND; ports 19090/19093 no listener; foreign agent-browser 51360 untouched.\nUI UNCHANGED: v1/v2 differ only in browser_cleanup, harness_limitations, supersedes pin. 0/4; 001/002/003/019; 4 sections/2 links/0 textareas; errors[]; feedback GET only, no POST; f93a..c54==frozen-web-trees qa main.dart.js; 14b7da43. Misleading no_guarded_fallback field removed.\ntask-1e5d2a0e78e94caabb83a26bf6cd4a66 ACCEPT IS SUPERSEDED AND INVALID AS RELEASE APPROVAL; historical only.\n2 non-blocking: corrected guard script not persisted (pre-stop recheck outcome-verified only); stale reader303-four-mixed.pid names dead 68116. Capacity <20% still blocks release; no controller approved here."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fresh corrective packet/manifest raw observations and calibrated identity/actual stop/finalaudit; actualnativecleanup preserved; alloriginalUIevidence hashes stillmatch; new review approval supersedes old1e5d for publication. No deploy claim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_BROWSER_20261015"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root found original accepted1e5d cleanup evidence false-negative: WindowsPowerShell5 originalCapture serialized milliseconds; audit7 compared exactticks and skipped live daemon68116. Preserve original170manifest/proof/actualClaudeaccept as INVALID superseded, never use original1e5d acceptance for release. Actual corrected own daemon stop with fullcommand/originalmillisecond plus separate CIMmicroseconds/native100ns exactbeforestop; final16inactive/portsclosed. Actual UI0/4/all4articles unchanged. New independent exact corrective review required, acknowledge original audit+reviewmiss.",
+        "created_at": 1792078542.3178575,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-5f2ed81bc57142fab1a26f5a3b81fd9c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/*v2*",
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/CORRECTION_V2.md"
+          ],
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/review-inputs-v2.json",
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/browser-proof-v2.json",
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/corrected-daemon-cleanup-v2.json"
+          ],
+          "run_id": "run-fd53426df175475d977b8bdcce6b00d9",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Original audit and actualoldSonnetACCEPT1e5d invalidated for release due Rootdiscovered timestamp precision false-negative. Actual onlynameddaemon68116 stopped after originalmillisecond/fullcommandmatch and separateexactnative100ns/CIMmicrosecond calibrated pins; corrected final16identitiesinactive/portsclosed. Actual original0/4article/UI receipts170hashes unchanged. Newcorrectiveapproval required; no deploy."
+        },
+        "root_task_id": "task-5f2ed81bc57142fab1a26f5a3b81fd9c",
+        "run_id": "run-fd53426df175475d977b8bdcce6b00d9",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-3qx: correct Reader303 browser quiescence precision error and supersede original approval",
+        "version": 4,
+        "reviewer": "session-c7ae30e20c3a469eb03f811b04e3bb5a",
+        "review_note": "Independent corrective review, read-only, SHA256 self-computed. review-inputs-v2.json: 178/178 hash-match (0 mismatch/missing); manifest SHA256=1735d21f0497292380687b482d71a6252be604a5e6f1b7ebc121a1f8c3600c9d. Original 170 byte-identical, 0 dropped, 8 added; review-inputs.json=a2637f34...301c59.\nROOT CAUSE FROM SOURCE: capture_published_browser.ps1 under PS5.1 wrote /Date(1792077726313)/ (ms); audit_published_browser.ps1 cast that to ticks 639276745263130000 and compared exact .Ticks to live CIM 639276745263134600 (delta 4600), then continue: silently skipped all 16, so cleanup.json inactive:true was VACUOUS. browser-fullprecision-recapture.json 18:33:40 captured LIVE pid 68116, same command SHA cd92aa31, 7.5min after cleanup.json 18:26:06 claimed quiescence. fallback-cleanup.json absent => original stop threw before mutation.\nCORRECTION PROVEN: CIM ...4600 (mult 10) vs native ...4608, delta 8 (0-9), equal at floor/10; (CIM-621355968000000000)//10000=1792077726313=original /Date()/ ms; original==fresh command SHA; private_capture_sha256 4123b426 matches real raw capture; cleanup-v2 16 rows==captured set, all absent; nested blocks==cleanup-v2/corrected-daemon-cleanup-v2; supersedes pin==85f07bdb.\nMY LIVE READ-ONLY CHECK (nothing killed): all 16 PIDs no CIM instance, GetProcessById NOT_FOUND; ports 19090/19093 no listener; foreign agent-browser 51360 untouched.\nUI UNCHANGED: v1/v2 differ only in browser_cleanup, harness_limitations, supersedes pin. 0/4; 001/002/003/019; 4 sections/2 links/0 textareas; errors[]; feedback GET only, no POST; f93a..c54==frozen-web-trees qa main.dart.js; 14b7da43. Misleading no_guarded_fallback field removed.\ntask-1e5d2a0e78e94caabb83a26bf6cd4a66 ACCEPT IS SUPERSEDED AND INVALID AS RELEASE APPROVAL; historical only.\n2 non-blocking: corrected guard script not persisted (pre-stop recheck outcome-verified only); stale reader303-four-mixed.pid names dead 68116. Capacity <20% still blocks release; no controller approved here."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**`task-5f2ed81bc57142fab1a26f5a3b81fd9c` → ACCEPTED** (error_count 2, reviewer `session-c7ae30e20c3a469eb03f811b04e3bb5a`).\n\n**v2 manifest SHA-256 (computed myself): `1735d21f0497292380687b482d71a6252be604a5e6f1b7ebc121a1f8c3600c9d`** — 178/178 files hash-match, 0 missing. The original 170 entries are byte-identical, none dropped, exactly 8 added.\n\n**The bug, reproduced from source rather than from booleans.** `capture_published_browser.ps1` ran `ConvertTo-Json` under PowerShell 5.1, serializing `CreationDate` as `/Date(1792077726313)/` — millisecond precision. `audit_published_browser.ps1` cast that to ticks `639276745263130000` and compared it exactly against live CIM `639276745263134600`. The 4600-tick delta tripped `continue`, which silently skips instead of flagging. That branch skipped **all 16** identities, so `cleanup.json`'s `captured_browser_identities_inactive: true` was vacuous — it evaluated nothing and carries no per-row data.\n\nTwo artifacts nail the false positive independently of anyone's assertion:\n- `browser-fullprecision-recapture.json` (18:33:40) captured pid 68116 **live**, with the same command SHA `cd92aa31` — 7.5 minutes *after* `cleanup.json` (18:26:06) declared quiescence.\n- `fallback-cleanup.json` does not exist, confirming the original guarded stop threw before any mutation.\n\n**Correction verified arithmetically:** CIM `…4600` is a multiple of 10; native `…4608` differs by 8 ticks (within 0–9); equal at `floor(ticks/10)`; `(CIM − 621355968000000000)//10000 = 1792077726313`, exactly the original `/Date()/` value. `private_capture_sha256 4123b426…` matches the real raw private capture. `cleanup-v2.json`'s 16 rows equal the captured identity set with all outcomes `absent`, and the nested proof blocks are identical to the standalone receipts.\n\n**My own read-only live check** (nothing killed): all 16 PIDs have no CIM instance and `GetProcessById` returns NOT_FOUND; ports 19090/19093 have no listener. A foreign `agent-browser` daemon (pid 51360, started 12:29, outside the captured ownership tree) is still running and untouched — consistent with `foreign_processes_changed: false`.\n\n**UI scope held.** `browser-proof.json` vs `-v2` differ only in `browser_cleanup`, `harness_limitations`, and the added `supersedes_invalid_proof_sha256` (which correctly pins `85f07bdb…`). The misleading `no_guarded_fallback_process_stop_performed` field is gone. 0/4, articles 001/002/003/019, 4 sections / 2 source links / 0 textareas, `errors: []`, and all four feedback requests GET-200 with no POST.\n\n**The old `task-1e5d…` ACCEPT (error_count 0) is superseded and invalid as release approval.** It was a genuine review, but it rested on the vacuous audit; it stands only as preserved historical evidence.\n\nTwo non-blocking gaps I logged: the corrected guard/stop script was run inline and never persisted (only the buggy v1 `.ps1` files are on disk), so `exact_native_creation_ticks_rechecked_before_stop` is outcome-verified rather than code-auditable; and `reader303-four-mixed.pid` is stale, still naming dead pid 68116.\n\nCapacity below 20% remains a separate, unresolved release gate. I approved only this task — no controller task is approved by this review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "90e4b3bfa828afee47386f0d7105900b02af08ec0df519821300382c6c635158",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

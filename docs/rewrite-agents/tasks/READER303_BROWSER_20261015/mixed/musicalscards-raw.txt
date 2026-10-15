@@ -1,0 +1,18 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e3]
+        - button "Домой" [ref=e4]
+        - StaticText "Quiz Master"
+        - StaticText "Выбирайте тему. Играйте короткими раундами."
+        - button "Открыть меню навигации" [ref=e5]
+        - group
+          - generic
+            - textbox "Викторин: 136 · вопросов: 4084 Поиск по названию, описанию или категории" [ref=e41]
+            - button "Все категории" [ref=e6]
+            - button "Музыка" [ref=e33]
+            - button "Мюзиклы" [ref=e42]
+            - button "Музыка: полный пакет — Мюзиклы 20 вопросов о композиторах мюзиклов. Вопросов: 20" [ref=e43]
+              - checkbox "Раунд 1 · 20 вопросов" [checked=false, ref=e44]
+      - button "Отправить отзыв" [ref=e2]

@@ -1,0 +1,5 @@
+# Actual four-musical browser QA
+
+The compiled Flutter QA build from frozen14b source passed the four-question isolated Go API flow at361x738: visible0/4, all four article sections and two source controls per article, no editable textareas, inline feedback open/cancel and History global feedback restored, no runtime errors. Root viewed the result and four article footers.
+
+The original timestamp audit and genuine old1e5 acceptance are invalidated and retained. Corrected native calibration/guarded own-daemon stop plus final16-identity audit are independently verified. New final attestation3d369 is genuine ACCEPT/error0/CLI0 over unchanged178-file correction packet. Terminal5f2 acceptance/error2 remains untouched; genuine failed amendment and semantic clarification preserved. Two limitations remain explicit: the corrected guard was run inline, and its dead named pidfile remains stale. No historical pre-reviewed stop-script certificate, Android, physical screen-reader or published verification is claimed.

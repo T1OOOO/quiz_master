@@ -1,0 +1,61 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1e5d2a0e78e94caabb83a26bf6cd4a66": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1e5d2a0e78e94caabb83a26bf6cd4a66",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review of browser-only evidence, SHA256 self-computed. All 170 review-inputs.json files hash-match (0 mismatches, 0 missing); manifest sha256=a2637f34c6b7ee69953af99aef27ff4bf970c54de8c8234111b41ea64b301c59. qa_web_main_sha256 f93a01cc...c54 matches frozen-web-trees.json qa tree main.dart.js exactly; frozen_source 14b7da43 matches accepted build commit. Verified: visible score 0/4 (result.png 'Счёт: 0'); all 4 articles (001/002/003/019) show 4 headed sections, 2 source-link buttons, 0 textareas (eval count:0 x4, footer screenshots show no clipping/overlap); inline feedback dialog opened then Cancel clicked (no Отправить/submit), api-requests.jsonl has no feedback POST; History retains global 'Отправить отзыв' button. Harness-failure claims corroborated by raw logs: search.json fill failed -> found.json shows category-button navigation used instead; history.json stale @e128 ref failed -> history2.json @e143 succeeded; close.json exit1/timed_out=true. errors command empty in runtime-errors.json and final-errors.json. owned-browser-identities.json lists exactly 16 identities matching captured_identities:16; ports-closed.json/cleanup.json show ports 19090/19093 closed, Go API exit1 intentional terminate, wrapper exit0. fresh-baseline.json: Helm62, 29/29 OPEN, disk 20234747904/102417174528 below strict 20% floor -> correctly blocks publication, none claimed. Scope respected: no source/execution/deployment claims, no grading dump, no secrets. Accepting these browser observations only."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Fresh actual four-musical proof with raw logs/screenshots/observed failures and owned cleanup, exact frozen compiled hashes; limitations explicit; no Linux/published/Android certification.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_BROWSER_20261015"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root actual browser QA against independently accepted frozen source14b and qa-web-v2; real isolated Go API, exact four captured musical question/options/private grading/question revisions, subset quiz revision recomputed. Verify all four article sections/source controls/mobile361x738 and actual0/4, inline feedback open/cancel/history global control restore, browser errors and owned cleanup. No production mutation. Distinct Claude review of raw evidence required.",
+        "created_at": 1792077920.7403026,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1e5d2a0e78e94caabb83a26bf6cd4a66",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015"
+          ],
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/review-inputs.json",
+            "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/browser-proof.json"
+          ],
+          "run_id": "run-e507cb5900494d318225d10be1fa59af",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Actual compiled QA four-musical0/4; all4article sections/two source controls/no textarea and mobilefooters viewed; inlinefeedback/history controls verified/errors empty;16captured owned identitiesinactive/portsclosed. Officialclose timeout1, refused guardedcleanup and shell/ref failures honestly retained. Production62/299/all29OPEN; freshdiskbelow20% so no publication."
+        },
+        "root_task_id": "task-1e5d2a0e78e94caabb83a26bf6cd4a66",
+        "run_id": "run-e507cb5900494d318225d10be1fa59af",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-3qx: actual compiled Reader303 four-musical browser acceptance",
+        "version": 4,
+        "reviewer": "session-e55ff98418314e2492ce273d4fbd70b1",
+        "review_note": "Independent read-only review of browser-only evidence, SHA256 self-computed. All 170 review-inputs.json files hash-match (0 mismatches, 0 missing); manifest sha256=a2637f34c6b7ee69953af99aef27ff4bf970c54de8c8234111b41ea64b301c59. qa_web_main_sha256 f93a01cc...c54 matches frozen-web-trees.json qa tree main.dart.js exactly; frozen_source 14b7da43 matches accepted build commit. Verified: visible score 0/4 (result.png 'Счёт: 0'); all 4 articles (001/002/003/019) show 4 headed sections, 2 source-link buttons, 0 textareas (eval count:0 x4, footer screenshots show no clipping/overlap); inline feedback dialog opened then Cancel clicked (no Отправить/submit), api-requests.jsonl has no feedback POST; History retains global 'Отправить отзыв' button. Harness-failure claims corroborated by raw logs: search.json fill failed -> found.json shows category-button navigation used instead; history.json stale @e128 ref failed -> history2.json @e143 succeeded; close.json exit1/timed_out=true. errors command empty in runtime-errors.json and final-errors.json. owned-browser-identities.json lists exactly 16 identities matching captured_identities:16; ports-closed.json/cleanup.json show ports 19090/19093 closed, Go API exit1 intentional terminate, wrapper exit0. fresh-baseline.json: Helm62, 29/29 OPEN, disk 20234747904/102417174528 below strict 20% floor -> correctly blocks publication, none claimed. Scope respected: no source/execution/deployment claims, no grading dump, no secrets. Accepting these browser observations only."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review complete and submitted — task `task-1e5d2a0e78e94caabb83a26bf6cd4a66` is now **ACCEPTED** (error_count: 0).\n\n**Summary of independent verification:**\n- Recomputed SHA256 for all 170 files in `review-inputs.json`: 0 mismatches, 0 missing. Manifest digest: `a2637f34...301c59`.\n- `qa_web_main_sha256` in `browser-proof.json` matches `frozen-web-trees.json`'s `qa` tree `main.dart.js` exactly, and `frozen_source` 14b7da43 matches the accepted build commit — confirms the QA ran against the correct frozen build, not production.\n- Cross-checked claims against raw artifacts: 0/4 score, 4 sections + 2 source links + 0 textareas per article (×4), footer screenshots show no overlap, inline feedback opened then cancelled (no submit button pressed, no feedback POST in `api-requests.jsonl`), global feedback button persists in History.\n- Corroborated every harness-failure claim against raw logs (search fallback to category nav, stale History ref retry, close timeout).\n- Cleanup/identity/port evidence (16 identities, ports 19090/19093 closed, Go API intentional exit1) and the fresh baseline (62/299, 29/29 OPEN, disk below 20%) are consistent and correctly block publication.\n\nNo discrepancies found. The review approved browser observations only, per scope.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7d0ee59a8bdb3b20f536c9a4ef3e0b606a876bb71718f96c965e839ef0923ea0",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

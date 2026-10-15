@@ -1,0 +1,92 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-0ff95e02b5a14a8797f5698576e54792": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-0ff95e02b5a14a8797f5698576e54792",
+          "verdict": "rework",
+          "error_count": 2,
+          "note": "REWORK (independent read-only source review, Claude Opus 5). The held v1 submission does NOT pass; its own frozen bytes carry the invalid cleanup dependency.\n\nERROR 1 (blocking, verified in preserved v1 bytes): v1 prepare_reader303_release.py sha256 66034cea21c52023cca673c0d986a0de2fed2882c7f923d82bb16104ae19bc1e sets BROWSER_REVIEW_TASK='task-1e5d2a0e78e94caabb83a26bf6cd4a66' and pins browser_proof to READER303_BROWSER_20261015/browser-proof.json. That acceptance was invalidated by Root: the PowerShell5 /Date(epochmillis)/ capture was compared against an exact-tick audit that skipped still-live daemon PID 68116. I confirmed the dependency is genuinely invalid-yet-superficially-valid: independent-original-review-INVALIDATED.json is a fully formed accept (actual_hub_state=ACCEPTED, actual_cli_exit=0, verdict=accept, error_count=0, reviewer!=assignee) for task-1e5d, so v1's verify_acceptance would have passed it. A release prepared under v1 would bind unproven quiescence.\n\nERROR 2 (blocking): v1 had no corrected-precision guards at all - no browser_cleanup_sha256 four-receipt pin map, no original_cleanup_audit_invalidated / corrected_full_precision_identity_audit requirement, no CIM-vs-native tick calibration arithmetic, no 16 PID/name identity reconciliation, and it still tolerated the obsolete no_guarded_fallback_process_stop_performed claim. v1 render_publication.py sha256 aa154fa6fa30e194bd964e3b80a73b9b3c60e4dc2c2173c8cc809628e7d6a54c bound local_browser_sha256 to the superseded browser-proof.json.\n\nv1's 32 passing offline tests do not establish quiescence; they asserted the invalid binding. I am not claiming v1 source otherwise failed - its other guards (62/e053/PVC/API/Nginx, 136/4084, 303/184/182/2, strict >20%, copied-DB 335/15, rollback, durable import, Helm server dry-run) read as sound and are carried forward unchanged. All nine v1 source hashes remain preserved and byte-verified in .run/reader303_release_20261015/controller-worker/v1. Superseded by corrective task-1c41179daa5a45639f986600d5b893e9, which I reviewed separately. No approval file written; no package, preparation, publication or deployment authorized."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Nine bounded controller/test files; focused guard tests with actual raw output; old files untouched; exact14b source/v2build and62baseline pins; honest unperformed QA/preparation; complete English handoff.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Implement accepted advisory READER303_RELEASE_PATH_20261015 in nine new files under READER303_RELEASE_20261015/release-worker and publication-source. Exclusive helper ownership. Immutable Reader299 history untouched. Root handles actual browser QA. No production mutation, deployments, builds, commits or child agents. Preserve all unrelated changes. New exact source and execution review required before release.",
+        "created_at": 1792077606.4269006,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-0ff95e02b5a14a8797f5698576e54792",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changes": [
+            "Source 14b7da43c3e43642d60859f5053ee6d809c2379e and build quiz-2026.10.15-reader303-14b7da4 are fixed. Current protected baseline is Helm62 with both containers e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4; the archived cutover image 0f24677d... is treated separately and replaced only at exact expected anchors.",
+            "Producer preserves all299 old Reader objects and136packs/4084questions, requires exactly musical001/002/003/019 additions,303articles/184refs/182playable/2same noncatalog, exact frozen source assets and full production/QA trees. Only actual successful production-web-v2/qa-web-v2 and actual-flutter-builds-v2.json are accepted; the failed original output is refused.",
+            "Real source/fact/build acceptance task bindings are checked. browser_review is now mandatory for actual task-1e5d2a0e78e94caabb83a26bf6cd4a66. Browser proof is fixed to READER303_BROWSER_20261015/browser-proof.json. Real four-question0/4 proof, eight visible controls, image hashes, snapshot8680... and exact revisions are verified. Cleanup requires the actual dynamic captured-identity audit; actual close1 plus all16inactive is accepted without claiming a fallback daemon stop. Windows API intentional terminate exit1 is preserved as an observed integer with stop_seen, while server-wrapper exit0 and both ports closed remain required.",
+            "Archive SHA/membership/bytes/executable modes, fresh output path, checksums, unchanged API/Nginx/raw data, current299 rollback root/checksums34229f..., exact staging revisions and original mixed12/20 copied-DB clauses are retained. Remote validator reconstructs scripts from the actual immutable299 baseline and repeats all source/package/tree/count checks.",
+            "Prepare-only and publish-only branches remain distinct. Revision62/image/PVC/Ready/noDiskPressure/no blocking taints/HTTPS/full29OPEN hash and strict greater-than20percent available reserve gates remain. Copied-DB335grades/15histories, restore, old API rollback, backup, durable image and Helm lint/template/server dry-run collectors remain unchanged in substance.",
+            "Remote SSH helper now retains partial combined stdout and actual_exit='timeout' before rethrowing; it cannot write a prepared verification on that path. Publication refuses existing execution logs, optimized Python, unaccepted or unbound execution reviews and the old299 execution task before Git/SSH. Rendering is inert and checked with the actual adapted archive prefix; final publication remains one atomic Helm upgrade after fresh backup and preflights."
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_release.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_remote.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/reader303_guard.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/verify_reader303_candidate.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/test_reader303_release.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/test_prepare_reader303_remote.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/render_publication.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/publish_release.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/test_publication_guards.py",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/controller-and-dependency-sha256.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/source-sha256.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/test-results.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/preparation-tests.log SHA25647e15d8dc3b2bc017b821306c9a8b47f80c02b22aaacae5c99e8a3a68272d5bc",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/publication-tests.log SHA256a86832f755d8788a5430e04303a9bb092095f14503bef0fd45584d8ab0c5cc55"
+          ],
+          "handoff": [
+            "Root must create new pins.json using the existing bound path/SHA format. Required source_review task6a6ebc0..., reader_review task37224c..., build_review taskc148163c..., browser_review task1e5d2a0... must be genuine ACCEPTED callbacks. Bind actual v2 build receipt/tree, prior Reader extracted from archive01dd..., current Reader/assets and actual browser proof. controller_source_sha256 covers the six new release-worker files plus four unchanged MIXED dependencies, exactly as controller_sources() returns.",
+            "Root must obtain different-provider exact controller/dependency review before running prepare_reader303_release.py with --pins, --prior-archive and a fresh --output-root. I did not run the producer or Git-backed source checks. No package archive SHA or candidate image is guessed.",
+            "Root must review the actual resulting package and remote helper sources. prepare_reader303_remote.py defaults to local preview; actual --prepare additionally needs --helper-review and a new --evidence-dir. Do not retry into existing stage/evidence after a partial operation without a separately reviewed resume adapter.",
+            "Only after actual successful preparation, Root writes preparation-receipt-pin.json {path,sha256}. Its path must be under .run/reader303_release_20261015 and name remote-preparation-verification.json. render_publication.py then creates a new execution-packet and inert publish script. It does not infer an old run or repoint old receipts.",
+            "Fresh execution-acceptance.json must include execution_review_task_id matching a new task-[32hex], actual different-provider review callback, exact packet/script/package/image/executor hashes and packet digest in the callback note. The old299 execution task is explicitly rejected. Root alone runs publish_release.py after real exact execution approval.",
+            "Current measured disk20234747904/102417174528 is below the strict floor. This source grants no capacity waiver and performs no cleanup. Root must resolve capacity through its separate reviewed scope and prove fresh strict headroom before actual preparation. The source task itself is complete and ready for independent review."
+          ],
+          "limitations": "Same-provider implementation and local verification only; independent acceptance remains pending. No child agents, SSH, builds, browser, deployment, Git or Beads changes. Exactly nine tracked source files and the specifically authorized controller-worker scratch were written. Historical299 and all Root/foreign files were preserved.",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Implemented and froze exactly nine Reader303 controller/test files by adapting the accepted Reader299 primitives. All 26 preparation tests and all 6 publication tests passed with actual exit 0. This is source preparation for independent review; no package, candidate, remote preparation or publication was executed.",
+          "verification": [
+            "Final preparation suite: python -m unittest discover -s docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker -p test*.py -v;26tests;15.190s;actual exit0.",
+            "Final publication suite: python -m unittest discover -s docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source -p test*.py -v;6tests;1.282s;actual exit0.",
+            "Tests exercised actual immutable299 archive adaptation, Bash syntax and rejected mode branches, metadata, revision binding, old-object mutation, wrong/duplicate refs, proof/footer/tree/archive/API/raw/missing-pin guards, actual successfulv2 trees and review callbacks, capacity19/20 refusal and21 acceptance, node/image/PVC/fullfeedback drift, timeout partial-log retention, stale/self/mismatched execution approval and publish-only renderer.",
+            "Earlier local failures were missing not-yet-recorded browser proof and two unit-fixture import/hash setup errors; those were corrected without operational mutations. Final raw logs are retained. Unit fixtures are synthetic and do not assert operational PREPARED/PUBLISHED results."
+          ]
+        },
+        "root_task_id": "task-0ff95e02b5a14a8797f5698576e54792",
+        "run_id": "run-dfe92aa97ab54b04a9177c746b7306c6",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-7sw: implement bounded Reader303 controllers from verified62 baseline",
+        "version": 4,
+        "reviewer": "session-f792ddddd2f747e0875dae439c86442b",
+        "review_note": "REWORK (independent read-only source review, Claude Opus 5). The held v1 submission does NOT pass; its own frozen bytes carry the invalid cleanup dependency.\n\nERROR 1 (blocking, verified in preserved v1 bytes): v1 prepare_reader303_release.py sha256 66034cea21c52023cca673c0d986a0de2fed2882c7f923d82bb16104ae19bc1e sets BROWSER_REVIEW_TASK='task-1e5d2a0e78e94caabb83a26bf6cd4a66' and pins browser_proof to READER303_BROWSER_20261015/browser-proof.json. That acceptance was invalidated by Root: the PowerShell5 /Date(epochmillis)/ capture was compared against an exact-tick audit that skipped still-live daemon PID 68116. I confirmed the dependency is genuinely invalid-yet-superficially-valid: independent-original-review-INVALIDATED.json is a fully formed accept (actual_hub_state=ACCEPTED, actual_cli_exit=0, verdict=accept, error_count=0, reviewer!=assignee) for task-1e5d, so v1's verify_acceptance would have passed it. A release prepared under v1 would bind unproven quiescence.\n\nERROR 2 (blocking): v1 had no corrected-precision guards at all - no browser_cleanup_sha256 four-receipt pin map, no original_cleanup_audit_invalidated / corrected_full_precision_identity_audit requirement, no CIM-vs-native tick calibration arithmetic, no 16 PID/name identity reconciliation, and it still tolerated the obsolete no_guarded_fallback_process_stop_performed claim. v1 render_publication.py sha256 aa154fa6fa30e194bd964e3b80a73b9b3c60e4dc2c2173c8cc809628e7d6a54c bound local_browser_sha256 to the superseded browser-proof.json.\n\nv1's 32 passing offline tests do not establish quiescence; they asserted the invalid binding. I am not claiming v1 source otherwise failed - its other guards (62/e053/PVC/API/Nginx, 136/4084, 303/184/182/2, strict >20%, copied-DB 335/15, rollback, durable import, Helm server dry-run) read as sound and are carried forward unchanged. All nine v1 source hashes remain preserved and byte-verified in .run/reader303_release_20261015/controller-worker/v1. Superseded by corrective task-1c41179daa5a45639f986600d5b893e9, which I reviewed separately. No approval file written; no package, preparation, publication or deployment authorized."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews returned. Final state: `task-0ff95e02…` → **REWORK** (2 errors), `task-1c41179d…` → **ACCEPTED** (0 errors).\n\n## What I verified\n\n**Hashes (all recomputed myself)** — 16/16 packet files and 13/13 source/dependency files match; 0 mismatches, 0 missing. `controller-source-sha256.json` is byte-identical in content to `reviewed_worker_sha256` and equals `controller_sources()` exactly.\n- `controller-review-inputs.json` = `8a1c24a84a6c2dd514008d00a06d9099c42333decfe6bce02f082a87ffab705c`\n- map digest = `3e57ce265ee35b16a773da6430d92a49cca10f4b6fa2e1c777dc1a5eb5aa8001`\n\n**The precision correction is real, not cosmetic.** I ran `verify_browser_cleanup` against the actual receipts: `browser-proof-v2.json` passes, `browser-proof.json` is rejected. The critical point — `independent-original-review-INVALIDATED.json` is a *fully valid* acceptance (ACCEPTED / exit 0 / accept / error_count 0 / reviewer≠assignee) for 1e5d, and the new source still rejects it purely on task-ID binding. Arithmetic checks out against real data: CIM `639276745263134600` (%10==0), native `639276745263134608` (8 ticks), and `(CIM−621355968000000000)//10000 == 1792077726313` == the captured `/Date(1792077726313)/`. 16 identities, all `absent`. Guards compare whole receipt objects, not booleans.\n\n**Tests I reran:** 31 preparation (17.359s, exit 0) and 6 publication (2.045s, exit 0), no skips, no failures. RED evidence is genuine — 3 tests, 10 failing subchecks, exit 1.\n\n**Freeze:** exactly three files differ from v1 (producer, producer tests, renderer); all nine v1 byte copies match their recorded v1 hashes; the diffs contain only the correction.\n\nOne detail worth flagging as a positive: the archived 299 `cutover.sh` really does contain `0f246…` twice — once inside the old `quiz_preflight` body and once at the image anchor. `once()` only holds because the preflight body is replaced *first*, and the code guards that ordering with an explicit definition-count check. `BASELINE_CUTOVER_IMAGE` genuinely must stay separate from `BASELINE_IMAGE`.\n\n**What this does not approve:** source only. Not candidate, preparation or execution approval, and not QA approval for `task-5f2ed81b` (separate, in progress) — I inspected that evidence for scope only. The package cannot run until that corrective QA review is genuinely accepted and these hash pins still match. The server is still below the strict 20% floor, so preparation remains gated regardless.\n\nNo files written, no Git/Beads mutation, no network, no builds or controller execution, no `main()` invoked.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0fd2ebb50774f74316d2a8b41b846fd8e2ed02efa7ad0d10c6ff4f1d3e5cb0fc",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

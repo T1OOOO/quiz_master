@@ -1,0 +1,116 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-1c41179daa5a45639f986600d5b893e9": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-1c41179daa5a45639f986600d5b893e9",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT - independent read-only exact source review (Claude Opus 5, different provider from Codex author session-293ef5...). Scope: prepare-only source audit, no execution or publication authorized.\n\nBINDING: controller-review-inputs.json sha256 8a1c24a84a6c2dd514008d00a06d9099c42333decfe6bce02f082a87ffab705c. reviewed_worker_sha256 map digest (release-worker/controller-source-sha256.json, byte-identical content) 3e57ce265ee35b16a773da6430d92a49cca10f4b6fa2e1c777dc1a5eb5aa8001. I recomputed all 16 packet file hashes and all 13 source/dependency hashes myself: 16/16 and 13/13 match, 0 mismatches, 0 missing; the map equals controller_sources() exactly.\n\nPRECISION CORRECTION VERIFIED: BROWSER_REVIEW_TASK='task-5f2ed81bc57142fab1a26f5a3b81fd9c'; proof pinned to browser-proof-v2.json. I ran verify_browser_cleanup on the real receipts: browser-proof-v2 PASSES; the old browser-proof.json is REJECTED ('corrected precision audit must supersede the invalid original proof'). The genuine fully-valid 1e5d accept (independent-original-review-INVALIDATED.json: ACCEPTED/exit0/accept/error_count0/reviewer!=assignee) is still rejected on task-ID binding - exactly the required behaviour. Guards bind receipts, not booleans: audit==cleanup-v2.json, daemon==corrected-daemon-cleanup-v2.json, plus a four-path browser_cleanup_sha256 pin map (missing/extra/wrong-hash all fail). Real arithmetic confirmed: 16 identities, 16 unique PID/name pairs all outcome=absent, daemon PID 68116, CIM 639276745263134600 (%10==0) and native 639276745263134608 separately pinned, diff 8 ticks (<10); (CIM-621355968000000000)//10000==1792077726313 == captured /Date(1792077726313)/; integer-only ISO recompute. no_guarded_fallback_process_stop_performed is refused.\n\nTESTS RERUN BY ME: 31 preparation tests 17.359s exit 0; 6 publication tests 2.045s exit 0; 0 skips, 0 failures. RED evidence genuine: 3 targeted tests, 10 failing subchecks, actual exit 1 against v1.\n\nFREEZE: exactly 3 files differ from v1 (producer, producer tests, renderer); all 9 v1 byte copies match their v1 hashes; diffs contain only the correction.\n\nOTHER GATES SPOT-VERIFIED: baseline 62/e053 both containers, PVC 7fc2428f, API f4d695..850, Nginx e9add8..6bc; BASELINE_CUTOVER_IMAGE correctly kept separate - archived cutover.sh really has 0f246 twice (1 inside the replaced preflight body, 1 at the once() anchor), 3 old-JS-hash and 3 bare quiz_preflight anchors all confirmed. Baseline archive 01ddc3ee, 332 members, checksums 34229f27. Strict >20% statvfs gate in guard/prepare/collector/publish, no waiver. Copied-DB (14,280,55,335,15) and practice==(15,335) - never 339. 303/184/182/2, whole-object 299 preservation, music 001/002/003/019, 136/4084. v2 builds only (74 files each, exit 0); failed original receipt refused. Remote keeps partial stdout + actual_exit='timeout' then reraises; fresh nonce/non-existent evidence dir. Renderer: hash-pinned new remote-preparation-verification.json, one prepare->publish flip, fresh 0600 backup (archive backup_sqlite.py touch(mode=0o600,exist_ok=False)), one atomic helm upgrade, exact version/JS/Reader checks, no build or rehearsal. Executor refuses -O, existing logs, source drift, and old299 task-1f1ca79d.\n\nNOT APPROVED HERE: this is source acceptance only - not candidate, preparation or execution approval, and not QA approval for task-5f2ed81b (separate, in progress). The package cannot run until that corrective QA review is genuinely accepted and these source hash pins still match. No approval file written; no release, package, SSH or deploy performed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Old invalidcleanup proof or review refused; corrected paired identity/ticks/command receipts accepted only with new genuine corrective review; focusednegative tests actual0; full English handoff/oldv1preserved.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Followup to held0ff95. Preserve ninev1bytes in ignoredcontroller-worker/v1 then correct producer/negative tests. Require new corrective browser review5f2ed81bc57142fab1a26f5a3b81fd9c and browser-proof-v2 actualcorrected16inactive/exactnativeguardeddaemonstop; reject old1e5d acceptance and initialtruncatedtimestamps/falseno-fallback proof. Full nine/dependency hashfreeze and testsrawlogs. No package/SSH/deploy/build/Git/children. Root owns QA artifacts and independent review.",
+        "created_at": 1792078575.1883507,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-1c41179daa5a45639f986600d5b893e9",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "cause": "The original PowerShell5 capture serialized creation timestamps at millisecond precision. A later exact-tick audit incorrectly skipped the still-active original daemon when CIM/native precision differed. Root invalidated the original proof and original actual review; the original submission and its32 passing tests do not establish actual quiescence.",
+          "correction": [
+            "Before editing, verified all nine frozenv1 source SHA256 values and preserved their exact raw bytes plus original maps/logs/results in .run/reader303_release_20261015/controller-worker/v1. Nothing in immutable Reader299 or Root/foreign evidence was edited.",
+            "BROWSER_REVIEW_TASK now requires genuine task-5f2ed81bc57142fab1a26f5a3b81fd9c acceptance. The real but invalidated original task-1e5d2a0e78e94caabb83a26bf6cd4a66 ACCEPTED receipt is explicitly rejected by the expected task binding. Producer path is fixed to READER303_BROWSER_20261015/browser-proof-v2.json; renderer binds this v2 proof into the future execution packet.",
+            "Corrected proof must declare original_cleanup_audit_invalidated=true and corrected_full_precision_identity_audit=true, and must bind the SHA256 of the preserved invalid original proof. The final nested audit and exact daemon cleanup must equal actual cleanup-v2.json and corrected-daemon-cleanup-v2.json. Missing old no-fallback data cannot substitute for corrected receipts; the obsolete no_guarded_fallback_process_stop_performed field is refused.",
+            "All16 audit PID/name pairs must match the original unique captured identity set, with16 actual absent outcomes. The daemon PID/name and command SHA256 must match the original capture and calibrated-daemon-identity-v2.json. Corrected cleanup must record actualexit0, onlycaptured stop, foreignchangesfalse, original millisecond/fullcommand validation, separately calibrated clocks, and exact native creation-tick recheck before stop. No release controller stops a process.",
+            "Both CIM and native tick strings must exactly match their calibration/cleanup receipts. CIM precision must be a multiple of10ticks; native-CIM must be0through9ticks. The actual8tick difference is accepted. Original /Date(epochMilliseconds)/ is parsed and compared using(CimTicks-621355968000000000)//10000. The calibration ISO timestamp is recomputed from CIM ticks without floating-point rounding.",
+            "Pins now additionally require browser_cleanup_sha256: an exact map of four absolute paths to actual fullSHA256: cleanup-v2.json, corrected-daemon-cleanup-v2.json, calibrated-daemon-identity-v2.json, owned-browser-identities.json. Missing/extra/wronghash maps fail before output or remote side effects.",
+            "All existing source14b, successfulv2 build/tree, baseline62/e053, unchanged299/catalog/raw/API/PVC, strictgreater-than20percent, copiedDB/rollback/backup/durable/Helm and exactnewexecutionapproval guards remain intact. This correction introduces no cleanup or capacity waiver."
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_release.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/test_reader303_release.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/render_publication.py",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/v1",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/precision-red-tests.log",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/precision-red-exit.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/preparation-tests-v2.log",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/publication-tests-v2.log",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/test-results-v2.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/source-sha256-v2.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/controller-worker/controller-and-dependency-sha256-v2.json",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_BROWSER_20261015/browser-proof-v2.json"
+          ],
+          "handoff": "Root should review the new13-file source/dependency map, obtain independent exact corrective browser and controller acceptances, then create fresh pins with the new browser_review/proof-v2/four-receipt map. Never use the invalidated old browser review. All earlier package/remote/execution/publish handoff requirements remain, including preparation-receipt-pin.json and fresh execution_review_task_id. Root alone may produce/prepare/publish after real reviews and capacity gates. Current remote capacity was below20percent at the last supplied observation, so actualpreparation remains gated on fresh strict headroom.",
+          "limitations": "Native source implementation and offline validation only; not different-provider acceptance, runtime quiescence certification or execution approval. Original invalid proof/review/history preserved. Exactly nine owned tracked source paths and authorized ignored scratch were used; no edits after this freeze.",
+          "source_sha256": {
+            "publication-source/publish_release.py": "ad3c2cac740e1e5d44321d80cc6ba3f1d15c638329adbff43580dbdaeaf1ede2",
+            "publication-source/render_publication.py": "34b2ca90580fe45be8e81254bc0702171307b47829badc704d49d5a941d9fbbf",
+            "publication-source/test_publication_guards.py": "bb25e15b8ee108fbf03d0bdcb32725a84694389eddc66253c0da4260fbc98bab",
+            "release-worker/prepare_reader303_release.py": "ac7329c23787485eda3fcfc0b70812fd44c156789d5208b7eb3405c627000d3b",
+            "release-worker/prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+            "release-worker/reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+            "release-worker/test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+            "release-worker/test_reader303_release.py": "c5390fa5ce5c7a6da6773e94b3069d01ca0fec4e3e29ea7fb42c00cfdd195452",
+            "release-worker/verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Completed the bounded Reader303 precision correction and froze all nine source files. Only the producer, producer tests and publication renderer changed from preserved v1. Final31 preparation tests and6 publication tests passed with actual exit0. No package, SSH, build, browser, Git, deployment or child-agent operation occurred.",
+          "verification": [
+            "RED regression retained precision-red-tests.log and precision-red-exit.json: three targeted tests, ten failing subchecks, actualexit1 against v1 behavior before implementation.",
+            "The same targeted regression tests then passed. Added meaningful negatives for the genuine invalidated acceptance, oldproof, missing corrected flags, missing calibration, absent or mismatched external receipts, wrong command/PID/timestamp/ticks, incomplete identityset and missing/extra/wronghash pins.",
+            "Additional paired-data tests keep nested and external tick receipts mutually consistent while introducing invalid native/CIM precision or original millisecond mismatch; these are still rejected by arithmetic validation.",
+            "Final preparation suite31tests,16.512s,actualexit0; final publication suite6tests,1.925s,actualexit0. Actual full stdout and exact commands/exits are in test-results-v2.json and the two v2logs. No skips.",
+            "Preparation logSHA25694fa4739ae73f5099348f7613ee38cd73bf949ff83440f978f21134be758b0d4; publication logSHA256c09e8583d28fbd68b0c49885e7096b02c4788781305a4f80f1f84a0f93e371f1."
+          ]
+        },
+        "root_task_id": "task-1c41179daa5a45639f986600d5b893e9",
+        "run_id": "run-d9d7a07c9ded47d8aa9ddde9be7bb43c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-7sw: bind corrected Reader303 native quiescence and superseding browser review",
+        "version": 4,
+        "reviewer": "session-f792ddddd2f747e0875dae439c86442b",
+        "review_note": "ACCEPT - independent read-only exact source review (Claude Opus 5, different provider from Codex author session-293ef5...). Scope: prepare-only source audit, no execution or publication authorized.\n\nBINDING: controller-review-inputs.json sha256 8a1c24a84a6c2dd514008d00a06d9099c42333decfe6bce02f082a87ffab705c. reviewed_worker_sha256 map digest (release-worker/controller-source-sha256.json, byte-identical content) 3e57ce265ee35b16a773da6430d92a49cca10f4b6fa2e1c777dc1a5eb5aa8001. I recomputed all 16 packet file hashes and all 13 source/dependency hashes myself: 16/16 and 13/13 match, 0 mismatches, 0 missing; the map equals controller_sources() exactly.\n\nPRECISION CORRECTION VERIFIED: BROWSER_REVIEW_TASK='task-5f2ed81bc57142fab1a26f5a3b81fd9c'; proof pinned to browser-proof-v2.json. I ran verify_browser_cleanup on the real receipts: browser-proof-v2 PASSES; the old browser-proof.json is REJECTED ('corrected precision audit must supersede the invalid original proof'). The genuine fully-valid 1e5d accept (independent-original-review-INVALIDATED.json: ACCEPTED/exit0/accept/error_count0/reviewer!=assignee) is still rejected on task-ID binding - exactly the required behaviour. Guards bind receipts, not booleans: audit==cleanup-v2.json, daemon==corrected-daemon-cleanup-v2.json, plus a four-path browser_cleanup_sha256 pin map (missing/extra/wrong-hash all fail). Real arithmetic confirmed: 16 identities, 16 unique PID/name pairs all outcome=absent, daemon PID 68116, CIM 639276745263134600 (%10==0) and native 639276745263134608 separately pinned, diff 8 ticks (<10); (CIM-621355968000000000)//10000==1792077726313 == captured /Date(1792077726313)/; integer-only ISO recompute. no_guarded_fallback_process_stop_performed is refused.\n\nTESTS RERUN BY ME: 31 preparation tests 17.359s exit 0; 6 publication tests 2.045s exit 0; 0 skips, 0 failures. RED evidence genuine: 3 targeted tests, 10 failing subchecks, actual exit 1 against v1.\n\nFREEZE: exactly 3 files differ from v1 (producer, producer tests, renderer); all 9 v1 byte copies match their v1 hashes; diffs contain only the correction.\n\nOTHER GATES SPOT-VERIFIED: baseline 62/e053 both containers, PVC 7fc2428f, API f4d695..850, Nginx e9add8..6bc; BASELINE_CUTOVER_IMAGE correctly kept separate - archived cutover.sh really has 0f246 twice (1 inside the replaced preflight body, 1 at the once() anchor), 3 old-JS-hash and 3 bare quiz_preflight anchors all confirmed. Baseline archive 01ddc3ee, 332 members, checksums 34229f27. Strict >20% statvfs gate in guard/prepare/collector/publish, no waiver. Copied-DB (14,280,55,335,15) and practice==(15,335) - never 339. 303/184/182/2, whole-object 299 preservation, music 001/002/003/019, 136/4084. v2 builds only (74 files each, exit 0); failed original receipt refused. Remote keeps partial stdout + actual_exit='timeout' then reraises; fresh nonce/non-existent evidence dir. Renderer: hash-pinned new remote-preparation-verification.json, one prepare->publish flip, fresh 0600 backup (archive backup_sqlite.py touch(mode=0o600,exist_ok=False)), one atomic helm upgrade, exact version/JS/Reader checks, no build or rehearsal. Executor refuses -O, existing logs, source drift, and old299 task-1f1ca79d.\n\nNOT APPROVED HERE: this is source acceptance only - not candidate, preparation or execution approval, and not QA approval for task-5f2ed81b (separate, in progress). The package cannot run until that corrective QA review is genuinely accepted and these source hash pins still match. No approval file written; no release, package, SSH or deploy performed."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews returned. Final state: `task-0ff95e02…` → **REWORK** (2 errors), `task-1c41179d…` → **ACCEPTED** (0 errors).\n\n## What I verified\n\n**Hashes (all recomputed myself)** — 16/16 packet files and 13/13 source/dependency files match; 0 mismatches, 0 missing. `controller-source-sha256.json` is byte-identical in content to `reviewed_worker_sha256` and equals `controller_sources()` exactly.\n- `controller-review-inputs.json` = `8a1c24a84a6c2dd514008d00a06d9099c42333decfe6bce02f082a87ffab705c`\n- map digest = `3e57ce265ee35b16a773da6430d92a49cca10f4b6fa2e1c777dc1a5eb5aa8001`\n\n**The precision correction is real, not cosmetic.** I ran `verify_browser_cleanup` against the actual receipts: `browser-proof-v2.json` passes, `browser-proof.json` is rejected. The critical point — `independent-original-review-INVALIDATED.json` is a *fully valid* acceptance (ACCEPTED / exit 0 / accept / error_count 0 / reviewer≠assignee) for 1e5d, and the new source still rejects it purely on task-ID binding. Arithmetic checks out against real data: CIM `639276745263134600` (%10==0), native `639276745263134608` (8 ticks), and `(CIM−621355968000000000)//10000 == 1792077726313` == the captured `/Date(1792077726313)/`. 16 identities, all `absent`. Guards compare whole receipt objects, not booleans.\n\n**Tests I reran:** 31 preparation (17.359s, exit 0) and 6 publication (2.045s, exit 0), no skips, no failures. RED evidence is genuine — 3 tests, 10 failing subchecks, exit 1.\n\n**Freeze:** exactly three files differ from v1 (producer, producer tests, renderer); all nine v1 byte copies match their recorded v1 hashes; the diffs contain only the correction.\n\nOne detail worth flagging as a positive: the archived 299 `cutover.sh` really does contain `0f246…` twice — once inside the old `quiz_preflight` body and once at the image anchor. `once()` only holds because the preflight body is replaced *first*, and the code guards that ordering with an explicit definition-count check. `BASELINE_CUTOVER_IMAGE` genuinely must stay separate from `BASELINE_IMAGE`.\n\n**What this does not approve:** source only. Not candidate, preparation or execution approval, and not QA approval for `task-5f2ed81b` (separate, in progress) — I inspected that evidence for scope only. The package cannot run until that corrective QA review is genuinely accepted and these hash pins still match. The server is still below the strict 20% floor, so preparation remains gated regardless.\n\nNo files written, no Git/Beads mutation, no network, no builds or controller execution, no `main()` invoked.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0fd2ebb50774f74316d2a8b41b846fd8e2ed02efa7ad0d10c6ff4f1d3e5cb0fc",
+  "scope": "prepare-only source acceptance; no execution or publication; separate actual candidate and exact execution gates remain mandatory.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_release.py": "ac7329c23787485eda3fcfc0b70812fd44c156789d5208b7eb3405c627000d3b",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_reader303_release.py": "c5390fa5ce5c7a6da6773e94b3069d01ca0fec4e3e29ea7fb42c00cfdd195452",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\publish_release.py": "ad3c2cac740e1e5d44321d80cc6ba3f1d15c638329adbff43580dbdaeaf1ede2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\render_publication.py": "34b2ca90580fe45be8e81254bc0702171307b47829badc704d49d5a941d9fbbf",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\test_publication_guards.py": "bb25e15b8ee108fbf03d0bdcb32725a84694389eddc66253c0da4260fbc98bab",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "label": "preparation",
+    "command": [
+      "C:\\Python314\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker",
+      "-p",
+      "test*.py",
+      "-v"
+    ],
+    "actual_exit": 0,
+    "tests": 31,
+    "log": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\controller-worker\\preparation-tests-v2.log",
+    "log_sha256": "94fa4739ae73f5099348f7613ee38cd73bf949ff83440f978f21134be758b0d4"
+  },
+  {
+    "label": "publication",
+    "command": [
+      "C:\\Python314\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source",
+      "-p",
+      "test*.py",
+      "-v"
+    ],
+    "actual_exit": 0,
+    "tests": 6,
+    "log": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\controller-worker\\publication-tests-v2.log",
+    "log_sha256": "c09e8583d28fbd68b0c49885e7096b02c4788781305a4f80f1f84a0f93e371f1"
+  }
+]

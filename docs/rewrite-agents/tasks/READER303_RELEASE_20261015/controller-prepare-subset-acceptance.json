@@ -1,0 +1,90 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-74a52ab6ad82416490188333ef8cfc44": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-74a52ab6ad82416490188333ef8cfc44",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review, SHA256 self-computed. controller-review-inputs-v3.json=392267790539a8c3384a40f151dac5e4d85e40fe953eadb0dea282ef359eedc9 (matches claim). New map release-worker/controller-source-sha256-v3.json=a3edf3f80c2db4a5163476964320b654a4a055478f3f3303a20ea3d9d96589a7 (self-computed, matches manifest entry). All 13 source/dependency hashes verified match, 0 mismatch/missing; old map controller-source-sha256.json (3e57ce2...) still pins the pre-rebind hashes bound to 5f2, confirming nothing else moved. Diffed both before/after pairs byte-for-byte via first/last-diff-index scan: exactly 2 files changed, each exactly one 31-byte contiguous span (old task UUID 5f2ed81b...fd9 -> new 3d369f36...5fe), LF-only EOL preserved on both sides, every other byte identical. Fixture assertion test_reader303_release.py:72 matches producer constant prepare_reader303_release.py:23 exactly. preparation-tests-v3-final.log (31 tests) and publication-tests-v3-final.log (6 tests): all ok, 0 skips, 0 failures. independent-final-attestation.json shows genuine accept/error_count0/cli_exit0 for task-3d369...; old task-5f2... remains ACCEPTED/error_count2 untouched, broker-refused amendment preserved verbatim; task-1e5d... remains superseded/invalid as release approval. task-2c2a3cd7... (narrower scope) correctly superseded by this wider-scope task. No guard logic touched outside the literal rebind; no execution/package/publication claimed or performed here. The two flagged items (inline guard not persisted, stale pid 68116) are correctly non-blocking limitations, not correctness defects. 0 correctness defects found in this 2-literal+13-hash scope."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exactlytwo1line source/testexpectationchanges and allother12mapentriesunchanged except2files; actualtests0, exactnewQAanddifferentproviderfinalsourceapproval; noexecutionclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root rebinds BROWSER_REVIEW_TASK5f2->3d369 plus matchingtestexpectation in acceptedv2; callersearchfoundtesthardcodesliteral, cancelledtoo-narrowscope2c beforeedits. Terminalbroker5f2nonblockingcountfieldcorrection requiresnewreal3dattestation overidentical178evidence; no proof or guardlogicchange. Preservev2source/maps/actualapproval, run31+6 andfreezefinal13map; independentreviewbeforerun. No remoteaction.",
+        "created_at": 1792079800.3028762,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-74a52ab6ad82416490188333ef8cfc44",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/controller-review-inputs-v3.json",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/ATTESTATION_REBIND.md",
+            "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/controller-tests-v3.json"
+          ],
+          "run_id": "run-f09829e27c4641d8b5be8cec52ad449c",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Exactly2review-task literal byte spans changed: producerconstant+matchingfixture5f2->3d369, originalEOLpreserved; other11source/deps unchanged. Final31prep+6pubtests0. Oldactual1c sourceacceptance preservedv2; neednewdifferentproviderexact13hashattestation. Brokerrefused2ccancel; supersededscoperecordretained. No package/remoteexecute."
+        },
+        "root_task_id": "task-74a52ab6ad82416490188333ef8cfc44",
+        "run_id": "run-f09829e27c4641d8b5be8cec52ad449c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-7sw: final browser task binding and matching guard fixture",
+        "version": 4,
+        "reviewer": "session-5e15eefe8de445ba93bf6ba61c5cf44f",
+        "review_note": "Independent read-only review, SHA256 self-computed. controller-review-inputs-v3.json=392267790539a8c3384a40f151dac5e4d85e40fe953eadb0dea282ef359eedc9 (matches claim). New map release-worker/controller-source-sha256-v3.json=a3edf3f80c2db4a5163476964320b654a4a055478f3f3303a20ea3d9d96589a7 (self-computed, matches manifest entry). All 13 source/dependency hashes verified match, 0 mismatch/missing; old map controller-source-sha256.json (3e57ce2...) still pins the pre-rebind hashes bound to 5f2, confirming nothing else moved. Diffed both before/after pairs byte-for-byte via first/last-diff-index scan: exactly 2 files changed, each exactly one 31-byte contiguous span (old task UUID 5f2ed81b...fd9 -> new 3d369f36...5fe), LF-only EOL preserved on both sides, every other byte identical. Fixture assertion test_reader303_release.py:72 matches producer constant prepare_reader303_release.py:23 exactly. preparation-tests-v3-final.log (31 tests) and publication-tests-v3-final.log (6 tests): all ok, 0 skips, 0 failures. independent-final-attestation.json shows genuine accept/error_count0/cli_exit0 for task-3d369...; old task-5f2... remains ACCEPTED/error_count2 untouched, broker-refused amendment preserved verbatim; task-1e5d... remains superseded/invalid as release approval. task-2c2a3cd7... (narrower scope) correctly superseded by this wider-scope task. No guard logic touched outside the literal rebind; no execution/package/publication claimed or performed here. The two flagged items (inline guard not persisted, stale pid 68116) are correctly non-blocking limitations, not correctness defects. 0 correctness defects found in this 2-literal+13-hash scope."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Task `task-74a52ab6ad82416490188333ef8cfc44` → **ACCEPTED, error_count: 0** (version 4, reviewer `session-5e15eefe8de445ba93bf6ba61c5cf44f`).\n\n**Verified independently (read-only, no edits/execution):**\n- `controller-review-inputs-v3.json` SHA256 self-computed = `392267790539a8c3384a40f151dac5e4d85e40fe953eadb0dea282ef359eedc9` — matches.\n- All 13 source/dependency hashes and all 9 packet/map/log hashes recomputed myself — 0 mismatches, 0 missing.\n- Byte-level diff of both before/after pairs confirmed exactly 2 files changed, each a single 31-byte contiguous span (old task UUID `5f2ed81b…` → new `3d369f36…`), LF-only EOLs preserved, every other byte identical.\n- Fixture assertion and producer constant now consistently bound to `task-3d369f36…`.\n- 31 preparation + 6 publication test logs: all `ok`, 0 skips, 0 failures.\n- `independent-final-attestation.json` shows a genuine accept/error_count 0/CLI exit 0 for the new attestation task; the old terminal `task-5f2…` remains ACCEPTED/error_count 2 untouched (broker correctly refused amendment); `task-1e5d…` remains superseded/invalid; the narrower-scope `task-2c2a3cd7…` is correctly superseded by this task.\n- The two flagged items (inline guard not persisted, stale PID 68116) are genuinely non-blocking limitations, not correctness defects — agreed, not counted as errors.\n\nNo correctness defects found within this 2-literal + 13-hash scope. Nothing was executed, packaged, or published; this review covers only the source/test binding itself.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "15a7f8d213241125e32cbf513ac10525b70cc254c7f70ab68e09453d5c8609a3",
+  "scope": "prepare-only source acceptance of exact current13hashes; no execution or publication; actual candidate and exact execution gates remain required.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_reader303_release.py": "f5972b09f637e9d755466a0b15afc58e9ae4c9a837ad505ed4516259a7106ed7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_release.py": "2874056be7a6c3c4b155e864eab7d5ded24d24e627e0726ebe587bc6f0bfe656",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7"
+  },
+  "full_approved_source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_release.py": "2874056be7a6c3c4b155e864eab7d5ded24d24e627e0726ebe587bc6f0bfe656",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_reader303_release.py": "f5972b09f637e9d755466a0b15afc58e9ae4c9a837ad505ed4516259a7106ed7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\verify_reader303_candidate.py": "4559a212b5ec2f612c2746fd91858c04287e47466906412ddb3ceb4a9e2a3700",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\publish_release.py": "ad3c2cac740e1e5d44321d80cc6ba3f1d15c638329adbff43580dbdaeaf1ede2",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\render_publication.py": "34b2ca90580fe45be8e81254bc0702171307b47829badc704d49d5a941d9fbbf",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\publication-source\\test_publication_guards.py": "bb25e15b8ee108fbf03d0bdcb32725a84694389eddc66253c0da4260fbc98bab",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "derived_subset_note": "Root selected the10prepare/controller dependencies from genuine13-source approval; actual callback/report unchanged. Publication3remain in full approved13 and separatelybound publication gates."
+}

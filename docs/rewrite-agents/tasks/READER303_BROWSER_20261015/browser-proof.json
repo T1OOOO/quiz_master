@@ -1,0 +1,129 @@
+{
+  "status": "VERIFIED",
+  "frozen_source": "14b7da43c3e43642d60859f5053ee6d809c2379e",
+  "build_id": "quiz-2026.10.15-reader303-14b7da4",
+  "qa_web_main_sha256": "f93a01cc6feaed52a1cf5feb10a77e4e54d4cf55401d29b8ad91a9f514678c54",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "controlled_real_go_fixture_questions": 4,
+  "actual_visible_score": "0/4",
+  "intentional_wrong_question_ids": [
+    "music-oct3-001",
+    "music-oct3-002",
+    "music-oct3-003",
+    "music-oct3-019"
+  ],
+  "articles": [
+    {
+      "question_id": "music-oct3-001",
+      "article_id": "question:music-oct3-001",
+      "revision_sha256": "2d8969bca1bd9d13ade9f5cc89c4badf493848e6f38b373e0f5065ca42c437a3",
+      "source_links_count": 2,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/mixed/music-oct3-001-article-footer.png",
+      "footer_image_sha256": "b8e6244592b6d8e2cdb7c6bdd44e4dde1de3bb692e003f81a17daa64f0c903ff"
+    },
+    {
+      "question_id": "music-oct3-002",
+      "article_id": "question:music-oct3-002",
+      "revision_sha256": "0569057496b738706c10d86e9ecf9fe25362179ff177c45d2130e95372949a6c",
+      "source_links_count": 2,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/mixed/music-oct3-002-article-footer.png",
+      "footer_image_sha256": "325a2bb75004bde8d43c15d187fd0e104e5eef353ea75bafea434fa5e5840da7"
+    },
+    {
+      "question_id": "music-oct3-003",
+      "article_id": "question:music-oct3-003",
+      "revision_sha256": "027b355042b37af474e7e0bc20f5d5009d97c6d8f19fbff40d1af1e7736cf705",
+      "source_links_count": 2,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/mixed/music-oct3-003-article-footer.png",
+      "footer_image_sha256": "a39b01d73cdee8fb4a3f60ad6774282b287a8fc6613af34db60706d8ac2dacb5"
+    },
+    {
+      "question_id": "music-oct3-019",
+      "article_id": "question:music-oct3-019",
+      "revision_sha256": "11b7a04b78a9b527fbd8e2b4309c9f81025899f2d5ee95827b4ffc9edaff4bc6",
+      "source_links_count": 2,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs/rewrite-agents/tasks/READER303_BROWSER_20261015/mixed/music-oct3-019-article-footer.png",
+      "footer_image_sha256": "a6aa40b54f798e3364f26e4af9bc3b2d7ff074bae894641371ebd9e55296805a"
+    }
+  ],
+  "browser_inactive": true,
+  "browser_close_actual_exit": 1,
+  "browser_cleanup": {
+    "actual_cleanup_exit": 0,
+    "session": "reader303-four-mixed",
+    "namespace": "quiz-master",
+    "inactive": true,
+    "native_processes_inactive": true,
+    "captured_identities": 16,
+    "captured_identity_audit": {
+      "session": "reader303-four-mixed",
+      "captured_identities": 16,
+      "terminated_windows_objects_retained": [],
+      "actual_exit": 0,
+      "namespace": "quiz-master",
+      "foreign_processes_changed": false,
+      "captured_browser_identities_inactive": true,
+      "raw_pid_absence_claimed": false
+    },
+    "foreign_processes_changed": false,
+    "ports_closed": [
+      19090,
+      19093
+    ],
+    "owned_go_cleanup": {
+      "actual_api_pid": 62356,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    },
+    "official_close_timed_out": true,
+    "guarded_stop_refused_identity_change": true,
+    "no_guarded_fallback_process_stop_performed": true
+  },
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "api_static_server_actual_exit": 0,
+  "actual_ui_play_exit": 0,
+  "browser_errors": [],
+  "result_feedback": {
+    "inline_dialog_open_cancel_verified": true,
+    "history_global_feedback_restored": true
+  },
+  "public_dto_equivalence": {
+    "questions": 4,
+    "question_options_and_question_revisions_equal_captured_production_snapshot": true,
+    "subset_quiz_revision_recomputed": true,
+    "snapshot_sha256": "8680eefcb2046102e433be525df2557f6e410c919973b924da587dc1b87e20cc"
+  },
+  "root_visual_inspection": {
+    "result_and_all_four_article_footers_viewed": true,
+    "overlap_observed": false,
+    "footer_source_controls_visible": true
+  },
+  "harness_limitations": [
+    "Initial search command lost an unquoted PowerShell @ref; quoted retry worked; use category navigation actually observed.",
+    "One stale History ref failed after dialog cancellation; fresh snapshot/ref click succeeded; failure retained.",
+    "Official close timed out and exited1; guard correctly refused changed/inactive daemon. Native audit then confirmed all16captured identities inactive, without a fallback kill.",
+    "First cleanup invocation under Windows PowerShell5 nested JSON arrays and failed before mutation; rerun under workspace PowerShell7 used captured array correctly.",
+    "Go API exit1 from intentional Windows terminate, stop_seen true; server wrapper exit0.",
+    "Four-question isolated fixture preserves exact public question/options/private grading/question revisions; subset quiz revision differs from full20 quiz.",
+    "Source controls checked visible and accessible; external website tab navigation not repeated; all8primary URLs were fetched in the genuine prior fact review."
+  ],
+  "scope": "Actual compiled Flutter Web release QA with isolated Go API; no immutable Linux image, publication, Android or physical screen-reader certification."
+}
