@@ -1,0 +1,112 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e749d651cc234509b4bbfb9ca13f77d3": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e749d651cc234509b4bbfb9ca13f77d3",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Read-only planning handoff. No application code/tests/builds/deploys touched by this review.\n\nIndependently verified by sha256 (not just trusting the JSON): prepare_country483.py, render_remote.py, render_publication.py, publish_release.py all match the inspection's claimed hashes; cutover.sh/rehearse.py exist; prepare_lotr_package.py hash matches both the inspection and package-preparation.json's own dependencies_sha256. The frozen Country483 baseline archive quiz-2026.10.15-country483-3c22818.tar.gz (58MB) hash-verified exactly against both the inspection's claim and package-preparation.json's archive_sha256 - confirms the prior package's baseline is intact. New NVN production-web/main.dart.js hash also matches.\n\nThe inspection correctly discloses it produces no archive/candidate/preparation/publication, and explicitly flags that Country483's verify_inputs expects separate production+QA builds with full trees - a real open gate it does not claim closed for NVN. Its own 'next_actual_gates' item appropriately defers actual packaging/QA/publication work rather than overclaiming readiness.\n\nLimits: did not re-derive the dense compressed-prose fragments (e.g. partial 'f4d695'/'e9add' hashes, live Helm/cluster state, atlas label-equality logic) beyond file/archive hash checks; no SSH or cluster access used.\n\nVerdict: ACCEPT as a planning document only - it is NOT a readiness certification for any NVN build/candidate/deploy, consistent with its own disclosure. error_count 0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Concise exact paths and pins/gates for next release; preserve frozen artifacts; no claims of new package/candidate/deploy.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\country483_release_20261015",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native senior read-only inspection of accepted Country483 package/publication framework. Identify minimal existing script adaptations for NVN source5c5a5d9/currentlive64/dc230; no edits or operations.",
+        "created_at": 1792107818.5319693,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e749d651cc234509b4bbfb9ca13f77d3",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "finding": "Current published64/image dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00, original PVC7fc2428f,29OPEN digest452929a2. Exact next baseline archive .run/country483_release_20261015/worker/package-v1/quiz-2026.10.15-country483-3c22818.tar.gz SHA15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416,332members,checksums423e8acf6967be596760f6bf472420907ebc47597a16d95d90270815162daa9b. Preserve this archive/currentstage/durable /var/lib/rancher/k3s/agent/images/quiz-2026.10.15-country483-3c22818.tar SHA1de7a78482e9dc66590057c6e5117d7666fe9c32ff9846f3f8eaf5ed4fc7f7d4 and current/immediate rollback images/backups.",
+              "kind": "baseline_and_package",
+              "paths": [
+                "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication/FINAL.md",
+                "C:/ap/quiz_master/.run/country483_release_20261015/worker/package-v1/package-preparation.json"
+              ]
+            },
+            {
+              "finding": "Fresh NVN-specific copy/adapter; keep pinned MIXED_RELEASE_20261014/worker/prepare_lotr_package.py house extraction/archive/checksum/version/runtime functions and unchanged payload/count validation. Retarget BASE_BUILD/source/archive/checksums to publishedCountry483; target source5c5a5d9b91d8b1100f7a5e60156b2f4b827bc4d1/buildquiz-2026.10.16-nvn-5c5a5d9/workroot/proofpaths/newJS. Actual .run/nvn_footer_20261016/production-web/main.dart.js SHAd32a7b929bd7533dfce2c09abf473aae72cf28eabc5f1ef04b6ee448b291ace3; oldJS845bda5a18381599b2db7eae384b07d6447daaa6976628a3a119ea722af7b522. Replace Country-specific verify_label_delta with exact atlas catalog+manifest equality toCountry483; no labels transition occurs inNVN. Tighten payload delta to cutover.sh,rehearse.py,expected-staging-revisions.json,checksums.txt,web/.last_build_id,web/main.dart.js,web/version.json (expected7; actualtree mustprove/no silentwidening). Preserve all raw/canonical/Reader/schema/API f4d695.../Nginxe9add... and136/4084,303/184/182/2.",
+              "kind": "producer_minimal_changes",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_RELEASE_20261015/worker/prepare_country483.py",
+              "sha256": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76"
+            },
+            {
+              "finding": "Retarget current63→64 and6c603→dc230 in freshpreflight. Do not blindly change OLD_IMAGE constant in old helper that still reads Reader30362/e053 guard: derive pinned Country483 preflight then replace exact63/6c anchors once; replace whole cutover preflight to avoid stale override. Remaining outside-function baseline image anchor6c→dc230; oldbuild/source/JS→NVN with exactcounts. Rehearsal currently checks Reader303 baseline_root and06d3 checksums; change freshcopy to /opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818 and423e checksums. Keep original-row/feedback/restore/APIrollback and335graded/15histories, musicals5 and exact Reader refs. New canonical staging revisions/manifest derived by existinghouse function.",
+              "kind": "control_and_rehearsal",
+              "paths": [
+                "C:/ap/quiz_master/.run/country483_release_20261015/worker/package-v1/quiz-2026.10.15-country483-3c22818/cutover.sh",
+                "C:/ap/quiz_master/.run/country483_release_20261015/worker/package-v1/quiz-2026.10.15-country483-3c22818/rehearse.py"
+              ]
+            },
+            {
+              "finding": "Reuse functions remote_scripts(),collection_script(), actual corrected atlas root /usr/share/nginx/html, new absent stage/uploadnonce/newoutputpaths. Adapt source/build/package/checksum/proof/schema/QA pins andbaseline63→64 everywhere guard/collector/receipt. Original renderer /app/web paths are historicalwrong; use correctedroot directly innewcopy. Reuse immutable MIXED_RELEASE_20261014/worker/prepare_remote_mixed.py underlying transfer/prepare house functions with pinneddependencies; no oldfailed resume script or cleanup plan replay. New actual modeprepare only, mutex, env-uPython, strict20 pre/post, originalPVC/full29OPEN/node/HTTPS, freshbackuprestore335/15, actualcandidateRuntime100+20 and unchangedReadercounts, statelessatlas2hashes, durableimport, Helm lint/template/serverdryrun. Actual image/run/durable/receipt hashes remain unknown until real0 outcomes. Do not substitute Country483 candidate receipts.",
+              "kind": "remote_preparation_and_collection",
+              "paths": [
+                "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/worker/render_remote.py",
+                "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/atlas-v2/correct_atlas_paths.py"
+              ],
+              "sha256": "54ea8a9e03b8621d8279a3af92334aab337f0e97d19a85838e1b5b6f0162e6f2"
+            },
+            {
+              "finding": "Fresh NVN copies; retarget source/build/package/remotework/Rootpublication paths, correctedcollector binding andnewQA. Baseline64/post65/currentrollbackdc230 replaces63/post64/6c. Keep four path+SHA receipt pins, actualprepare/collector exit0+stdout marker/finalJSON/source binding, actualruntime+atlas evidence, new exactdifferent-provider execution review/packet/script/executor hash, source drift next/quizzes/metadata/study/question_articles/quizipedia, existingoutput/log refusal/timeout preservation. Keep oneatomicwaitingupgrade, freshbackup/lint/template/serverdryrun/no rebuild; publicversion/newJS/unchangedReader/atlas twohashchecks beforePUBLISHED.",
+              "hashes": [
+                "2de9c6bb87b5e2bf002f2114ef1434767a43670cd1c8b1d4ea1af9a0c451ec8c",
+                "0239dcefb334f64621c3f4d10bd8c72fb78707d9a5b032b8c263c22877fb9c0d"
+              ],
+              "kind": "publication_reuse",
+              "paths": [
+                "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication-source/render_publication.py",
+                "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication-source/publish_release.py"
+              ]
+            },
+            {
+              "finding": "Order: source review accept+freeze source5c; pin actualproduction build0/fulltree; obtain NVN compiled-release UI/cleanup evidence (hotreload proof is source-debug evidence). Existing Country483 verify_inputs requires separateproduction+QA builds with fulltrees; either supply fresh NVN QA build/proof too or explicitlyreview a narrower truthful singlecompiledproduction-fixture contract, never reuse oldCountryQA or hardcoded13identity counts. Independent newcontroller/package review; localproducer+verify; fresh baseline64/capacity>20 and exactremotepacket review; actualnewcandidate preparation/rehearsal/runtime/atlas/collector0; newexactpublication review; publish and actualmobile361x738/desktop longfooter+feedback/nonoverlap outcome. PreviousCountry483 FINAL remaining-NVN note is historical; newsourcefix does not establish publishedNVN until those actualgates.",
+              "kind": "next_actual_gates"
+            }
+          ],
+          "remaining_concerns": [
+            "No NVN archive/candidate/preparation/publication exists from this inspection. New QA/build/tree/receipt/review hashes must come from actual Root evidence. No broad cleanup or frozen-plan replay is authorized."
+          ],
+          "status": "DONE",
+          "summary": "Read-only finite NVN successor handoff complete; no files edited/tests/builds/network/Git run. Use fresh fixed adapters over accepted Country483 producer, remote render/collector and publication-source; no replay of frozen release/capacity plans. Exact source/build/live64 and newproductionJS pins identified; retain all counts/binaries/atlas and actual candidate/review gates."
+        },
+        "root_task_id": "task-e749d651cc234509b4bbfb9ca13f77d3",
+        "run_id": "run-6fa9e6f936714ea496b249ad29756d97",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-nvn next-release source reuse inspection",
+        "version": 4,
+        "reviewer": "session-e6798a6049b54259a78105a50d4928ae",
+        "review_note": "Read-only planning handoff. No application code/tests/builds/deploys touched by this review.\n\nIndependently verified by sha256 (not just trusting the JSON): prepare_country483.py, render_remote.py, render_publication.py, publish_release.py all match the inspection's claimed hashes; cutover.sh/rehearse.py exist; prepare_lotr_package.py hash matches both the inspection and package-preparation.json's own dependencies_sha256. The frozen Country483 baseline archive quiz-2026.10.15-country483-3c22818.tar.gz (58MB) hash-verified exactly against both the inspection's claim and package-preparation.json's archive_sha256 - confirms the prior package's baseline is intact. New NVN production-web/main.dart.js hash also matches.\n\nThe inspection correctly discloses it produces no archive/candidate/preparation/publication, and explicitly flags that Country483's verify_inputs expects separate production+QA builds with full trees - a real open gate it does not claim closed for NVN. Its own 'next_actual_gates' item appropriately defers actual packaging/QA/publication work rather than overclaiming readiness.\n\nLimits: did not re-derive the dense compressed-prose fragments (e.g. partial 'f4d695'/'e9add' hashes, live Helm/cluster state, atlas label-equality logic) beyond file/archive hash checks; no SSH or cluster access used.\n\nVerdict: ACCEPT as a planning document only - it is NOT a readiness certification for any NVN build/candidate/deploy, consistent with its own disclosure. error_count 0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "## Re-review summary\n\n**task-530e00d17fb643c7853f65222fde7570 (Flutter footer fix): ACCEPT (upgraded from REWORK)**\n\nThe evidence gap I flagged is resolved. I independently verified, not just trusted the claims:\n- `recheck-inputs.json`: 7/7 files sha256-match.\n- `exact-final-red.json`'s `baseline_source_sha256` matches `git show 5c5a5d9^:.../quizipedia.dart` exactly (the real pre-fix padding) and `final_test_sha256` matches the actually-committed `feedback_test.dart` exactly.\n- Run against that exact pair: both `at 1.0x text`/`at 2.0x text` cases fail the overlap assertion (exit 1), the other 3 feedback tests pass.\n- `fixed_source_sha256` matches the committed fix exactly; after byte-for-byte restore, the same test file passes 5/5.\n\nThis is now a genuine hash-pinned RED→GREEN pair against the real pre-/post-fix source, not an earlier simplified variant. One unverifiable procedural claim (QA build timing) doesn't affect correctness. error_count: 0.\n\n**task-e749d651cc234509b4bbfb9ca13f77d3 (next-release reuse inspection): ACCEPT**\n\nIndependently sha256-verified the referenced scripts (`prepare_country483.py`, `render_remote.py`, `render_publication.py`, `publish_release.py`, `prepare_lotr_package.py` cross-checked against `package-preparation.json`'s own `dependencies_sha256`), and hashed the 58MB frozen Country483 baseline archive myself — it matches exactly. The new NVN JS artifact hash also matches. It's correctly scoped as planning-only (no candidate/build/deploy), and honestly flags that Country483's `verify_inputs` still requires separate production+QA builds — a real open gate for NVN publication, not papered over. error_count: 0.\n\nBoth reviews delivered via `hub_task review` and recorded as `ACCEPTED`; session set back to IDLE. Neither acceptance certifies any future deployment — that remains separately gated, as both evidence packets themselves state.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-e749d651cc234509b4bbfb9ca13f77d3",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "f90c695838353b946bbe9ebc0fd2f146f6c853bfff70aa9f983e32f55c8f98d4",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

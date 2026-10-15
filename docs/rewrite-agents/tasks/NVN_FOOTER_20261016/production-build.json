@@ -1,0 +1,17 @@
+{
+  "command": [
+    "flutter",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--pwa-strategy=none",
+    "--no-wasm-dry-run",
+    "--output",
+    "C:/ap/quiz_master/.run/nvn_footer_20261016/production-web",
+    "--dart-define=QM_BUILD_ID=quiz-2026.10.16-nvn-5c5a5d9",
+    "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+  ],
+  "actual_exit": 0,
+  "seconds": 95.14
+}

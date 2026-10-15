@@ -1,0 +1,61 @@
+00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart
+00:00 +0: map footer stays clear of feedback at 1.0x text
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The selected country must remain readable beside feedback.
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart:55:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart line 55
+The test description was:
+  map footer stays clear of feedback at 1.0x text
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -1: map footer stays clear of feedback at 1.0x text [E]
+  Test failed. See exception logs above.
+  The test description was: map footer stays clear of feedback at 1.0x text
+  
+00:04 +0 -1: map footer stays clear of feedback at 2.0x text
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The selected country must remain readable beside feedback.
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart:55:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart line 55
+The test description was:
+  map footer stays clear of feedback at 2.0x text
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +0 -2: map footer stays clear of feedback at 2.0x text [E]
+  Test failed. See exception logs above.
+  The test description was: map footer stays clear of feedback at 2.0x text
+  
+00:05 +0 -2: global feedback button is available on the library route
+00:06 +1 -2: operator page has no feedback capture button
+00:06 +2 -2: failed send keeps text and reuses request id on retry
+00:08 +3 -2: Some tests failed.
+
+Failing tests:
+  C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart: map footer stays clear of feedback at 1.0x text
+  C:/ap/quiz_master/next/apps/quiz_app/test/feedback_test.dart: map footer stays clear of feedback at 2.0x text

@@ -1,0 +1,63 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-530e00d17fb643c7853f65222fde7570": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-530e00d17fb643c7853f65222fde7570",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Requirements-compliance: ACCEPT (evidence gap resolved). Code-quality: ACCEPT (unchanged).\n\nrecheck-inputs.json: 7/7 files sha256-verified. RED_FINAL_TEST_EN.md matches disclosed scope; original report/manifest/REWORK note untouched.\n\nexact-final-red.json: final_test_sha256=ad6bbe89... matches committed feedback_test.dart (git 5c5a5d9) exactly. baseline_source_sha256=2e9f16e4... matches `git show 5c5a5d9^:.../quizipedia.dart` exactly (verified myself) - the real pre-fix padding. Run against that exact pair: both 'at 1.0x text' and 'at 2.0x text' fail the overlap assert (exit1); the other 3 feedback tests pass - matches RED_FINAL_TEST_EN.md's claim precisely.\n\nfixed_source_sha256=2adcdf1b... matches committed quizipedia.dart exactly; exact-final-green.json/log: same test file, 5/5 pass after byte-for-byte restore.\n\nThis directly closes my prior finding: the exact shipped, scale/safe-inset-aware regression now has a verified, hash-pinned RED->GREEN pair against the real pre-fix/post-fix source, not just an earlier simpler variant.\n\nNot independently verifiable: 'concurrent_qa_build_completed_before_source_swap' is a procedural claim with no artifact to check; doesn't affect RED/GREEN correctness. No deployment/Android/production claim made or certified by this evidence.\n\nVerdict: ACCEPT. error_count 0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Meaningful Flutter geometry regression RED then GREEN; minimal accessible fix; focused test/analyze; independent Claude review. Issue remains open until publication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns minimal Flutter fix and focused tests for published narrow-screen map footer/feedback overlap. Native diagnosis read-only. Preserve foreign content and frozen Country483 evidence.",
+        "created_at": 1792106982.926118,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-530e00d17fb643c7853f65222fde7570",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/NVN_FOOTER_20261016/RED_FINAL_TEST_EN.md",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/NVN_FOOTER_20261016/recheck-inputs.json"
+          ],
+          "summary": "Evidence-only rework complete: exact committed parameterized test against pre-fix5c^ source after QA build0; both1x/2x intended overlap failures,3otherfeedbackpassed. Exact fixed source restored byte-for-byte; unchanged final test then5GREEN0. Original initial-iteration RED/review preserved and gap disclosed. App source5c5a5d9 unchanged; no deployment."
+        },
+        "review_note": "Requirements-compliance: ACCEPT (evidence gap resolved). Code-quality: ACCEPT (unchanged).\n\nrecheck-inputs.json: 7/7 files sha256-verified. RED_FINAL_TEST_EN.md matches disclosed scope; original report/manifest/REWORK note untouched.\n\nexact-final-red.json: final_test_sha256=ad6bbe89... matches committed feedback_test.dart (git 5c5a5d9) exactly. baseline_source_sha256=2e9f16e4... matches `git show 5c5a5d9^:.../quizipedia.dart` exactly (verified myself) - the real pre-fix padding. Run against that exact pair: both 'at 1.0x text' and 'at 2.0x text' fail the overlap assert (exit1); the other 3 feedback tests pass - matches RED_FINAL_TEST_EN.md's claim precisely.\n\nfixed_source_sha256=2adcdf1b... matches committed quizipedia.dart exactly; exact-final-green.json/log: same test file, 5/5 pass after byte-for-byte restore.\n\nThis directly closes my prior finding: the exact shipped, scale/safe-inset-aware regression now has a verified, hash-pinned RED->GREEN pair against the real pre-fix/post-fix source, not just an earlier simpler variant.\n\nNot independently verifiable: 'concurrent_qa_build_completed_before_source_swap' is a procedural claim with no artifact to check; doesn't affect RED/GREEN correctness. No deployment/Android/production claim made or certified by this evidence.\n\nVerdict: ACCEPT. error_count 0.",
+        "reviewer": "session-e6798a6049b54259a78105a50d4928ae",
+        "root_task_id": "task-530e00d17fb643c7853f65222fde7570",
+        "run_id": "run-65c66a9eb6364123b9feb04e74c323dd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-nvn Flutter footer overlap fix and regression",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "## Re-review summary\n\n**task-530e00d17fb643c7853f65222fde7570 (Flutter footer fix): ACCEPT (upgraded from REWORK)**\n\nThe evidence gap I flagged is resolved. I independently verified, not just trusted the claims:\n- `recheck-inputs.json`: 7/7 files sha256-match.\n- `exact-final-red.json`'s `baseline_source_sha256` matches `git show 5c5a5d9^:.../quizipedia.dart` exactly (the real pre-fix padding) and `final_test_sha256` matches the actually-committed `feedback_test.dart` exactly.\n- Run against that exact pair: both `at 1.0x text`/`at 2.0x text` cases fail the overlap assertion (exit 1), the other 3 feedback tests pass.\n- `fixed_source_sha256` matches the committed fix exactly; after byte-for-byte restore, the same test file passes 5/5.\n\nThis is now a genuine hash-pinned RED→GREEN pair against the real pre-/post-fix source, not an earlier simplified variant. One unverifiable procedural claim (QA build timing) doesn't affect correctness. error_count: 0.\n\n**task-e749d651cc234509b4bbfb9ca13f77d3 (next-release reuse inspection): ACCEPT**\n\nIndependently sha256-verified the referenced scripts (`prepare_country483.py`, `render_remote.py`, `render_publication.py`, `publish_release.py`, `prepare_lotr_package.py` cross-checked against `package-preparation.json`'s own `dependencies_sha256`), and hashed the 58MB frozen Country483 baseline archive myself — it matches exactly. The new NVN JS artifact hash also matches. It's correctly scoped as planning-only (no candidate/build/deploy), and honestly flags that Country483's `verify_inputs` still requires separate production+QA builds — a real open gate for NVN publication, not papered over. error_count: 0.\n\nBoth reviews delivered via `hub_task review` and recorded as `ACCEPTED`; session set back to IDLE. Neither acceptance certifies any future deployment — that remains separately gated, as both evidence packets themselves state.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-530e00d17fb643c7853f65222fde7570",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "f90c695838353b946bbe9ebc0fd2f146f6c853bfff70aa9f983e32f55c8f98d4",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

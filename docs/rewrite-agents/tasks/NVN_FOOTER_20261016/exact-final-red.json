@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmd",
+    "/d",
+    "/c",
+    "flutter",
+    "test",
+    "--no-pub",
+    "test/feedback_test.dart",
+    "--reporter",
+    "expanded"
+  ],
+  "actual_exit": 1,
+  "seconds": 17.13,
+  "final_test_sha256": "ad6bbe8906375ea09f6ceef449f4ecff3793503555f50fe02ddf8510325fc474",
+  "baseline_source_commit": "5c5a5d9^",
+  "baseline_source_sha256": "2e9f16e49d2b5f97cd1f364c1a71de59b1be42fd0d41136a1bb9933ef3813815",
+  "fixed_source_sha256": "2adcdf1ba10bb6402ffcf9831ef09da34f221b48ea2a078f94fe77b27c69a0db",
+  "exact_fixed_source_restored": true,
+  "concurrent_qa_build_completed_before_source_swap": true
+}
