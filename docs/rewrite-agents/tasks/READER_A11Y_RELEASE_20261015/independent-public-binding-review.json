@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-28c834f913634f748c0ec25b4e9a74d6": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-28c834f913634f748c0ec25b4e9a74d6",
+          "verdict": "accept",
+          "note": "Independently verified the exact source-binding change only. Draft study/question_articles/drafts/greek002-distractors-20261015.json sha256=22825adb619bb32aa39d86550522afa5496164a21d15547bd4812c1598880d02 (matches claim); git diff vs HEAD touches only question_refs[0].revision_sha256 (e441297...e7e -> 038a7a7...5d5d), body_ru/title_ru/tag_ids/target_refs/source_links byte-identical. Recomputed article_hash() myself: before=f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73 (matches prior accepted review sha in study/question_articles/reviews/greek002-distractors-20261015-review.json), after=824f91975ca51fc33e56cb95fc6c15b15676dea5dae4e6bb75085371fef77f98 — both match task claim exactly. Snapshot study/question_articles/snapshots/prep-greek-mythology.json sha256=d09e712df0c3a07b1e07368ebce2a9722bf829239e6cc4864935fb564869d537, 20 public DTOs, greek-002 revision.sha256=038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d, no answer_key/correct_option_id present (public-safe). I independently performed a read-only GET https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology myself just now (2026-10-15): HTTP 200, byte-identical sha256=d09e712d...537, confirming the snapshot is the actual current raw public runtime, not a stale/local fixture. Canonical bundle next/content/prep-greek-mythology/bundle.json still carries the old e441297... revision and source.uri without leading '/app', confirming the legacy/live divergence is real and limited to source.uri, difficulty_level, revision as claimed — stem/options for greek-002 are identical across canonical and live. Confirmed build.py (lines ~79-87) and frozen_revision_map() in prepare_lotr_package.py both treat study/question_articles/snapshots/<qid>.json as an override ahead of next/content/<qid>/bundle.json, so this is existing, reviewed mechanism, not new behavior. Accepting ONLY this source-binding metadata correction (question_refs[0].revision_sha256 + supporting public snapshot). This acceptance does NOT cover export/manifest regeneration, build, candidate image, or runtime/publication — those remain pending and require Root to run export()/manifest update after this acceptance, followed by a fresh independent post-check of the regenerated export, build, candidate image, runtime health and publication gates before any deployment is approved."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual public GET captured with UTC/hash/no private fields; exactly one article revision changed; body/sources unchanged; genuine different-provider changed-scope review and builder/export checks before source acceptance. Candidate deployment not implied.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015"
+        ],
+        "assignee": "session-a7626a531e504588a53bcfcc285c69f3",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Root owns only capture of public Greek20 DTO snapshot, Greek002 article reference and independent review manifest, generated Reader export, README and evidence. Preserve all question content, API behavior, prior278 articles and strict immutable runtime gate. Source fix only; fresh build and publication require later gates. Existing failed638 candidate remains unpublished.",
+        "created_at": 1792030878.6309655,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "code",
+        "id": "task-28c834f913634f748c0ec25b4e9a74d6",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "details": "Real public GET captured20DTOs; only Greek002 article revision changed. Existing build.py snapshot precedence preserved. Do not accept runtime/publication: actual638 image failed, prior278 retained; independent reviewer must verify scoped diff/facts unchanged and exact hashes before reviewmanifest/export update.",
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/public-binding-repair.json",
+            "study/question_articles/snapshots/prep-greek-mythology.json",
+            "study/question_articles/drafts/greek002-distractors-20261015.json"
+          ],
+          "status": "SOURCE_BINDING_REPAIR_PENDING_REVIEW_EXPORT_NOT_YET_REGENERATED"
+        },
+        "root_task_id": "task-28c834f913634f748c0ec25b4e9a74d6",
+        "run_id": "run-a73f42e134e34a15a6995f390695ea83",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "Bind Greek002 article through supported captured public snapshot",
+        "version": 4,
+        "reviewer": "session-710e228b94bb439c838ba928a0a89155",
+        "review_note": "Independently verified the exact source-binding change only. Draft study/question_articles/drafts/greek002-distractors-20261015.json sha256=22825adb619bb32aa39d86550522afa5496164a21d15547bd4812c1598880d02 (matches claim); git diff vs HEAD touches only question_refs[0].revision_sha256 (e441297...e7e -> 038a7a7...5d5d), body_ru/title_ru/tag_ids/target_refs/source_links byte-identical. Recomputed article_hash() myself: before=f72ca89f17e6068188553fe588cdcdfe9b9a0cf7bdc2f7aba81ec96d17e41d73 (matches prior accepted review sha in study/question_articles/reviews/greek002-distractors-20261015-review.json), after=824f91975ca51fc33e56cb95fc6c15b15676dea5dae4e6bb75085371fef77f98 — both match task claim exactly. Snapshot study/question_articles/snapshots/prep-greek-mythology.json sha256=d09e712df0c3a07b1e07368ebce2a9722bf829239e6cc4864935fb564869d537, 20 public DTOs, greek-002 revision.sha256=038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d, no answer_key/correct_option_id present (public-safe). I independently performed a read-only GET https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology myself just now (2026-10-15): HTTP 200, byte-identical sha256=d09e712d...537, confirming the snapshot is the actual current raw public runtime, not a stale/local fixture. Canonical bundle next/content/prep-greek-mythology/bundle.json still carries the old e441297... revision and source.uri without leading '/app', confirming the legacy/live divergence is real and limited to source.uri, difficulty_level, revision as claimed — stem/options for greek-002 are identical across canonical and live. Confirmed build.py (lines ~79-87) and frozen_revision_map() in prepare_lotr_package.py both treat study/question_articles/snapshots/<qid>.json as an override ahead of next/content/<qid>/bundle.json, so this is existing, reviewed mechanism, not new behavior. Accepting ONLY this source-binding metadata correction (question_refs[0].revision_sha256 + supporting public snapshot). This acceptance does NOT cover export/manifest regeneration, build, candidate image, or runtime/publication — those remain pending and require Root to run export()/manifest update after this acceptance, followed by a fresh independent post-check of the regenerated export, build, candidate image, runtime health and publication gates before any deployment is approved."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three verdicts submitted successfully to the hub.\n\n**Verification summary (read-only, no files edited):**\n\n- **task-28c834f913634f748c0ec25b4e9a74d6 → ACCEPT** (metadata only). Independently recomputed hashes: draft `22825adb...02`, before-article `f72ca89f...73` (matches the prior accepted review record), after-article `824f91975...98` — all exactly match the claimed values. `git diff` confirms the change is isolated to `question_refs[0].revision_sha256`. I personally ran a fresh read-only GET against `https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology` — HTTP 200, sha256 `d09e712d...537`, byte-identical to the snapshot, confirming it's live raw runtime, not a stale fixture. Confirmed `build.py` and `frozen_revision_map()` already treat snapshots as the override ahead of canonical bundles (pre-existing mechanism). Acceptance explicitly excludes export/manifest regeneration and any build/runtime/publication gates — those need a fresh independent post-check after Root regenerates.\n\n- **task-7dc04b29c90741e6b2f85fba865e52ce → REWORK**. No executable packet/runtime receipt exists; `post-failed-candidate-health.json` shows `CANDIDATE_FAILED_NOT_VERIFIED`, container absent, `published: false`, production unchanged on Helm 58. No publication approved.\n\n- **task-a9b18db2630141d09a2ae6dc70e716e1 → ACCEPT** (read-only explorer analysis). Independently re-derived its diagnosis against the canonical bundle and live catalog myself rather than trusting its output — all claimed fields/hashes matched exactly.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "86981d36347a3c080a0dc6c99b544f9b77116117fb902ffd188a6e22b9199123",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,58 @@
+{
+  "status": "ROOT_IMPLEMENTED_SOURCE_READY_FOR_INDEPENDENT_REVIEW_NOT_EXECUTED",
+  "task_id": "task-ef59d78f9d174a499bf2934ec462b986",
+  "owner": "Root; native helper explicitly stopped and handed off incomplete v2. Root has exclusive worker ownership.",
+  "frozen_source": "63847958fdde804f97366e1be04645269a4d42cc",
+  "build_id": "quiz-2026.10.15-reader-6384795",
+  "baseline_helm_revision": 58,
+  "baseline_build": "quiz-2026.10.14-library-09b19cc",
+  "baseline_archive_sha256": "7d9d6c64763a64b811d942a9df3cdc489a4fc39a11ac8d628165e0636649791f",
+  "source_dependency_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\verify_reader638_candidate.py": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\prepare_reader638_release.py": "adb95e6ff624ca69e80c7cda8d809ee2edc6047240deda689f604d7017f1d3cc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\test_reader638_release.py": "a439a39edee9573bdd434dc988f74b3fb7ea0106220c578e136e0ceaf328a6c2"
+  },
+  "checks": [
+    {
+      "command": "python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py",
+      "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker",
+      "actual_exit": 0,
+      "tests": 14,
+      "elapsed_seconds": 24.644,
+      "after_check_change": "test method name cosmetic157to158 only"
+    },
+    {
+      "command": "python -m py_compile prepare_reader638_release.py prepare_reader638_remote.py verify_reader638_candidate.py reader638_guard.py test_reader638_release.py test_prepare_reader638_remote.py",
+      "actual_exit": 0
+    },
+    {
+      "command": "Three concrete executable CLI --help commands",
+      "actual_exit": 0
+    }
+  ],
+  "actual_scope": [
+    "Full immutable package producer and remote validation/collection/prepare-only CLI adapted from frozen Library house source, no metadata-printer shortcut.",
+    "Actual archived58 cutover/rehearsal/checksums controls used by fixture; generated real metadata gate executes, rejects stale article count; preserves API/nginx/PVC and mixed12/20grading contract.",
+    "Real prior278/current279 delta, all old objects identical, canonicalGreek002 revision,160unique refs,158frozenplayable and2exactknownnoncatalog. Negative duplicate/changedold/wrongquiz/revision/browser evidence checks.",
+    "Complete frozen Web trees and bootstrap corruption gate retained. Staging revision map regenerated to new release root. Exact dependency source/hash and genuine review gates retained.",
+    "Exact owned browser namespace/session/daemon/Chrome+native cleanup for close1; foreign/active/wrong identity evidence rejected.",
+    "Actual preflight Python executed with boundary fixtures:20%available pass,19%fail, Readyfalse/DiskPressuretrue/taint/cordon/wrongimage/wrongHelm/multiple nodes rejected. Uses f_bavail. Embedded beforeimagebuild/import and prepare entry; publication still needs own sameguard at finalexecution."
+  ],
+  "prior_failures": [
+    "Genuine Claude v1 REWORK recorded in independent-controller-review-v1.json: metadata-only producer and missing realvalidation/collection/CLI.",
+    "Native attempted incomplete v2, explicitly handed off without source acceptance; originals preserved in ignored .run/reader_a11y_release_20261015/controller-v2-incomplete. Oldtask670da6e submitted INCOMPLETE_HANDOFF_TO_ROOT.",
+    "One Root test-generator invocation used wrong workingdirectory; generator did not write and old stale tests failed imports. Corrected rootpath, then concrete14tests passed; not counted as source regression proof."
+  ],
+  "limits": [
+    "Different-provider exact source/dependency acceptance pending. No actual archive prepared yet; no source/image/copiedDB/remote/execution/publication approval inferred.",
+    "Actual bothFlutterbuilds0 and local compiledGreek20 score19/20 with4accessiblearticle sections/0textareas are separately recorded in local-browser/browser-proof.json.",
+    "Production remainsHelm58Reader278 and all29feedbackOPEN; no external mutations in this work."
+  ]
+}

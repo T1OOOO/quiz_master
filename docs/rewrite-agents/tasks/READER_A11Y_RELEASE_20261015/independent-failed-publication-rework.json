@@ -1,0 +1,57 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-7dc04b29c90741e6b2f85fba865e52ce": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-7dc04b29c90741e6b2f85fba865e52ce",
+          "verdict": "rework",
+          "note": "Historical publication-execution submission for Greek002 has no valid executable packet or runtime receipt to accept: docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/post-failed-candidate-health.json records candidate_failures[0].status=CANDIDATE_FAILED_NOT_VERIFIED (image sha256:ce89f080...5c9), owned_container_absent=true, published=false, and production stayed on the prior unchanged Helm revision 58 (image sha256:4878f824...ad0a50). Strict candidate runtime gates correctly failed because the article still referenced canonical revision e441297... while raw image/public runtime served 038a7a47...5d5d — that binding mismatch is the real root cause, and no deployment should be or was approved on this submission. Marking REWORK: no publication is approved from this task; a successor must start from the now-corrected source binding (see task-28c834f913634f748c0ec25b4e9a74d6, accepted separately for metadata only), then run a fresh build, fresh candidate image, fresh runtime health check and fresh publication gate end-to-end before any new publication attempt is reviewed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual prepared immutable image and durablehash, copy-only DBrehearsal/rollback and100LOTR20mixedgrading receipts, counts279160158, RootfrozenpackageSHAe253 explicit. Renderedpublication script has one guarded atomicHelmupgrade from58, exactimage/values/archive/sourcechecksums, currentNodeReady/DiskPressureFalse/schedulable/f_bavail20percent/HTTPSready repeatedimmediatelybeforeupgrade, owned0600backup, expectedpublished metadata/JS/Readerhashes. ExactexecutorSHA bound to genuine different-provider accept. No newdataquestion/key changes, preservePVC/users/feedback. Publicationverification and openfeedback remainafterexecution.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\publication-source",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015"
+        ],
+        "assignee": "session-a7626a531e504588a53bcfcc285c69f3",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Root owns exact future publication renderer/executor/packet for frozen6384795. Independent source controller acceptance taskef59 complete; actual local immutable archivee253..332members produced and validated, real freshbothFlutterbuilds0 and mobileGreek20score19/20Reader4StaticText0textarea verified. Remote prepare currently running with source-approved helper, guarded against healthybaseline58/image4878, copiedDB/runtime required. Submit only after actual remote receipts and rendered inert script exist. No automatic publication approval; genuine Claude exact packet/script/archive/image/runtime/executor review then execute inside user authorization.",
+        "created_at": 1792030381.1860886,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-7dc04b29c90741e6b2f85fba865e52ce",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "details": "Actual prepare guard0 and Docker build0; immutable runtime Greek002 article revision mismatch stopped preparation before publication. Production Helm58 healthy HTTP200; owned failed container absent. Publication source remains unexecuted; requires corrected snapshot binding and new frozen build.",
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/post-failed-candidate-health.json",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/greek002-binding-diagnosis.json"
+          ],
+          "status": "BLOCKED_BY_ACTUAL_CANDIDATE_RUNTIME_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-7dc04b29c90741e6b2f85fba865e52ce",
+        "run_id": "run-a8a221f9496c49b29808a22215a5ba34",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "quiz_master-1nm / actual638 publication execution packet",
+        "version": 4,
+        "reviewer": "session-710e228b94bb439c838ba928a0a89155",
+        "review_note": "Historical publication-execution submission for Greek002 has no valid executable packet or runtime receipt to accept: docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/post-failed-candidate-health.json records candidate_failures[0].status=CANDIDATE_FAILED_NOT_VERIFIED (image sha256:ce89f080...5c9), owned_container_absent=true, published=false, and production stayed on the prior unchanged Helm revision 58 (image sha256:4878f824...ad0a50). Strict candidate runtime gates correctly failed because the article still referenced canonical revision e441297... while raw image/public runtime served 038a7a47...5d5d — that binding mismatch is the real root cause, and no deployment should be or was approved on this submission. Marking REWORK: no publication is approved from this task; a successor must start from the now-corrected source binding (see task-28c834f913634f748c0ec25b4e9a74d6, accepted separately for metadata only), then run a fresh build, fresh candidate image, fresh runtime health check and fresh publication gate end-to-end before any new publication attempt is reviewed."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three verdicts submitted successfully to the hub.\n\n**Verification summary (read-only, no files edited):**\n\n- **task-28c834f913634f748c0ec25b4e9a74d6 → ACCEPT** (metadata only). Independently recomputed hashes: draft `22825adb...02`, before-article `f72ca89f...73` (matches the prior accepted review record), after-article `824f91975...98` — all exactly match the claimed values. `git diff` confirms the change is isolated to `question_refs[0].revision_sha256`. I personally ran a fresh read-only GET against `https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology` — HTTP 200, sha256 `d09e712d...537`, byte-identical to the snapshot, confirming it's live raw runtime, not a stale fixture. Confirmed `build.py` and `frozen_revision_map()` already treat snapshots as the override ahead of canonical bundles (pre-existing mechanism). Acceptance explicitly excludes export/manifest regeneration and any build/runtime/publication gates — those need a fresh independent post-check after Root regenerates.\n\n- **task-7dc04b29c90741e6b2f85fba865e52ce → REWORK**. No executable packet/runtime receipt exists; `post-failed-candidate-health.json` shows `CANDIDATE_FAILED_NOT_VERIFIED`, container absent, `published: false`, production unchanged on Helm 58. No publication approved.\n\n- **task-a9b18db2630141d09a2ae6dc70e716e1 → ACCEPT** (read-only explorer analysis). Independently re-derived its diagnosis against the canonical bundle and live catalog myself rather than trusting its output — all claimed fields/hashes matched exactly.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "86981d36347a3c080a0dc6c99b544f9b77116117fb902ffd188a6e22b9199123",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

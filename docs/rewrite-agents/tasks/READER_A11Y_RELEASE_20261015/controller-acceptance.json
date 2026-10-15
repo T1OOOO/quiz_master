@@ -1,0 +1,71 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-ef59d78f9d174a499bf2934ec462b986": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ef59d78f9d174a499bf2934ec462b986",
+          "verdict": "accept",
+          "note": "Independent Claude source review (read-only, no execution): recomputed all 10 reported SHA-256 dependency/source hashes against the actual files on disk \u2014 all match exactly (the task brief's garbled-looking longer digit strings were prose concatenation artifacts, not real hash mismatches). Verified the baseline archive independently: C:\\ap\\quiz_master\\.run\\library_release_20261014\\package-v1\\quiz-2026.10.14-library-09b19cc.tar.gz hashes to 7d9d6c64763a64b811d942a9df3cdc489a4fc39a11ac8d628165e0636649791f with exactly 332 tar members, matching REPORT.json. Ran `python -m py_compile` on all six worker modules (clean) and `python -m unittest test_reader638_release.py test_prepare_reader638_remote.py` (14/14 pass in 21.4s, consistent with the reported 24.6s). Read prepare_reader638_release.py, prepare_reader638_remote.py, verify_reader638_candidate.py and reader638_guard.py in full and compared against the house producer (prepare_lotr_package.py) it wraps: this is a genuine adaptation, not a metadata stub \u2014 it dynamically loads the house module, enforces hash pins on every frozen asset/web tree/build receipt, extracts+re-archives the immutable package with checksum-manifest and membership verification, rewrites cutover.sh/rehearse.py exactly once per literal via a `once()` guard (preventing silent double-substitution), and verifies the Reader delta (278\u2192279, 160 total/158 playable/2 noncatalog refs, greek-002 binding) against real JSON fixtures rather than hardcoded constants. reader638_guard.py's preflight correctly checks f_bavail-based disk headroom (>=20%), single-node Ready/DiskPressure=False/no blocking taints/no cordon, exact baseline image/PVC/replica count, and HTTPS readiness, and is wired into both the local prepare path (install_runtime_verifier) and the remote cutover/collection scripts before image build/import, matching the claimed scope. Read test_preflight_executes_available_space_and_target_node_guards: it genuinely execs the real embedded shell-Python against fixture subprocess/statvfs/urlopen boundaries (19% space, not-ready, disk-pressure, taint, cordon, wrong-image, wrong-helm, two-nodes all correctly rejected) rather than re-implementing the guard logic for the test. Separately compared the preserved controller-v2-incomplete snapshot: it has no main()/CLI entry point, is 69 lines vs Root's 194, does crude unguarded double string-replacement of version==54/52 literals (no single-occurrence enforcement), and performs no independent archive/stage/membership or frozen-asset-byte verification of its own \u2014 confirming the 'missing actual58 installer adaptation' characterization is accurate, and that Root's submission is a materially more complete rewrite, not a cosmetic wrapper. This review covers source only; package/runtime/image/publication execution remains out of scope and unapproved here."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual archived58 controls adapted and locally exercised; exact pinned frozen-input/review/hash/archive/checksum producer with positive/negative corruption/duplicate/ref guards. Actual CLI/baseline image58/collection279counts/20percentf_bavail,targetnodehealth/readiness boundary. Preserve raw runtime100LOTR20mixed and cleanup/privateDB gates. Genuine freshClaude exactdependency/source acceptance mandatory before actualpackage use; source review not execution approval.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker"
+        ],
+        "assignee": "session-a7626a531e504588a53bcfcc285c69f3",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Root takeover after real Claude REWORK and native incomplete first fix. Native helper explicitly stopped; Root now exclusive owner worker directory. Replace incomplete metadata/delegation wrappers with concrete executable current-baseline58 package producer/validation/collection/CLI, reusing frozen house code. Source63847958fdde804f97366e1be04645269a4d42cc buildquiz-2026.10.15-reader-6384795, current58image4878 and archive7d9d..332files. Complete exact278to279Reader160refs158playable2knownnoncatalog; preserve API/nginx/PVC/catalog/grades/nonweb data. Already actual freshbothbuilds0 and compiledmobileGreek20score19/20,all4bodyStaticText0textareas and quiescence0. No remote writes until genuine source/rehearsal/execution approvals.",
+        "created_at": 1792029281.533902,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ef59d78f9d174a499bf2934ec462b986",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/REPORT.json",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/independent-controller-review-v1.json",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/local-browser/browser-proof.json"
+          ],
+          "summary": "Root replaced incomplete wrappers with real hash-bound archive producer/CLI and remote validation/collection/prepare-only CLI using actual58 archived controls.14real scoped behavioral tests pass, py_compile and3CLIhelp checks0. New preflight targets58/image/PVC/available20percent and nodehealth beforeimagework. Source-only; no actualarchive or remote prep/publication approval. Native earlier review genuinelyREWORK and incompletehandoff retained."
+        },
+        "root_task_id": "task-ef59d78f9d174a499bf2934ec462b986",
+        "run_id": "run-1e204a2e0ae14c8d9a705612fc2cf254",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "quiz_master-1nm / Root complete actual638 archive and remote controllers",
+        "version": 4,
+        "reviewer": "session-644edde5b6c2446fbd9178ac92d1675f",
+        "review_note": "Independent Claude source review (read-only, no execution): recomputed all 10 reported SHA-256 dependency/source hashes against the actual files on disk \u2014 all match exactly (the task brief's garbled-looking longer digit strings were prose concatenation artifacts, not real hash mismatches). Verified the baseline archive independently: C:\\ap\\quiz_master\\.run\\library_release_20261014\\package-v1\\quiz-2026.10.14-library-09b19cc.tar.gz hashes to 7d9d6c64763a64b811d942a9df3cdc489a4fc39a11ac8d628165e0636649791f with exactly 332 tar members, matching REPORT.json. Ran `python -m py_compile` on all six worker modules (clean) and `python -m unittest test_reader638_release.py test_prepare_reader638_remote.py` (14/14 pass in 21.4s, consistent with the reported 24.6s). Read prepare_reader638_release.py, prepare_reader638_remote.py, verify_reader638_candidate.py and reader638_guard.py in full and compared against the house producer (prepare_lotr_package.py) it wraps: this is a genuine adaptation, not a metadata stub \u2014 it dynamically loads the house module, enforces hash pins on every frozen asset/web tree/build receipt, extracts+re-archives the immutable package with checksum-manifest and membership verification, rewrites cutover.sh/rehearse.py exactly once per literal via a `once()` guard (preventing silent double-substitution), and verifies the Reader delta (278\u2192279, 160 total/158 playable/2 noncatalog refs, greek-002 binding) against real JSON fixtures rather than hardcoded constants. reader638_guard.py's preflight correctly checks f_bavail-based disk headroom (>=20%), single-node Ready/DiskPressure=False/no blocking taints/no cordon, exact baseline image/PVC/replica count, and HTTPS readiness, and is wired into both the local prepare path (install_runtime_verifier) and the remote cutover/collection scripts before image build/import, matching the claimed scope. Read test_preflight_executes_available_space_and_target_node_guards: it genuinely execs the real embedded shell-Python against fixture subprocess/statvfs/urlopen boundaries (19% space, not-ready, disk-pressure, taint, cordon, wrong-image, wrong-helm, two-nodes all correctly rejected) rather than re-implementing the guard logic for the test. Separately compared the preserved controller-v2-incomplete snapshot: it has no main()/CLI entry point, is 69 lines vs Root's 194, does crude unguarded double string-replacement of version==54/52 literals (no single-occurrence enforcement), and performs no independent archive/stage/membership or frozen-asset-byte verification of its own \u2014 confirming the 'missing actual58 installer adaptation' characterization is accurate, and that Root's submission is a materially more complete rewrite, not a cosmetic wrapper. This review covers source only; package/runtime/image/publication execution remains out of scope and unapproved here."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are submitted and recorded by the hub:\n\n- **task-ef59d78f9d174a499bf2934ec462b986** (Root's Reader638 release controllers): **ACCEPTED**, source-only. All 10 reported hashes, the baseline archive hash/member count, py_compile, and the 14-test suite were independently recomputed/re-run and matched. Code review confirmed genuine adaptation of the house producer (hash-pinned, checksum-verified, single-occurrence-guarded) rather than a metadata stub, and the guard's node/disk/image preflight is real and tested with real fixture boundaries.\n- **task-670da6e315ad459286d7c7db84b4be41** (original native-helper task): **REWORK**, noting its incomplete v2 handoff (no CLI entry point, unguarded string replacement, no independent archive/membership verification) is superseded by Root's accepted rewrite.\n\nNo execution, build, package creation, or publication was performed \u2014 this was source review only, as scoped.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4718a8e44a60428738fed3de64193a36cbc6f51272db58dfeeb7c38554158e85",
+  "scope": "Source review of prepare-only controllers; no execution or publication approval. Actual package/image/copiedDB and publication gates remain separate.",
+  "schema_version": "qm-lotr-package-controller-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\verify_reader638_candidate.py": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\prepare_reader638_release.py": "adb95e6ff624ca69e80c7cda8d809ee2edc6047240deda689f604d7017f1d3cc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker\\test_reader638_release.py": "a439a39edee9573bdd434dc988f74b3fb7ea0106220c578e136e0ceaf328a6c2"
+  }
+}

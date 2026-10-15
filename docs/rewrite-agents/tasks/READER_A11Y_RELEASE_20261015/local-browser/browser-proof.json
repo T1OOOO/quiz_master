@@ -1,0 +1,97 @@
+{
+  "status": "VERIFIED",
+  "frozen_source": "63847958fdde804f97366e1be04645269a4d42cc",
+  "build_id": "quiz-2026.10.15-reader-6384795",
+  "qa_web_main_sha256": "aa77e2460b9b521ec1baf83b34eada2d1361d1b9df77a01693c29c775f70ade6",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "controlled_real_go_fixture_questions": 20,
+  "actual_visible_score": "19/20",
+  "intentional_wrong_answer": {
+    "question_id": "greek-002",
+    "selected_text": "Гефест",
+    "correct_text": "Посейдон"
+  },
+  "articles": [
+    {
+      "question_id": "greek-002",
+      "revision_sha256": "e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e",
+      "article_id": "question:greek-002",
+      "source_links_count": 5,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\local-browser\\mixed\\article-footer.png",
+      "footer_image_sha256": "e7458354153872e93531e9d851a820f6aaed870ee07a6fdcae981514d7682961"
+    }
+  ],
+  "screenshots": {
+    "article-top.png": "2b62ed559d7b471aed101f5e91e57ba5cf7be897f7584e23813896bae09fd0ce",
+    "article-middle.png": "b4ef6cc4e45a56a80799c7d281f86db47fb230ceeb192075f8ce8d29fd9c8acb",
+    "article-footer.png": "e7458354153872e93531e9d851a820f6aaed870ee07a6fdcae981514d7682961",
+    "resumed20-result.png": "99ce627c960889b4d0cc0a672d78beb707b1744ac62dbd414eac588283b27d79"
+  },
+  "browser_inactive": true,
+  "browser_close_actual_exit": 1,
+  "browser_cleanup": {
+    "actual_cleanup_exit": 0,
+    "verified_daemon_pid": 41148,
+    "previously_verified_chrome_pid": 26252,
+    "checked_owned_pids": [
+      41148,
+      26252,
+      33748,
+      29836,
+      6264,
+      41284,
+      44464,
+      22040,
+      51820,
+      29248,
+      43840,
+      51260,
+      2044,
+      38724,
+      27900
+    ],
+    "session": "reader638-local-mixed",
+    "namespace": "quiz-master",
+    "inactive": true,
+    "native_processes_absent": true,
+    "foreign_processes_changed": false,
+    "ports_closed": [
+      19090,
+      19093
+    ],
+    "owned_go_cleanup": {
+      "actual_api_pid": 41948,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    },
+    "method": "Official close1, captured Chrome tree all native-absent; exact own pidfile+daemon commandline+creation verified then only own daemon stopped. Actual nativeaudit0 checks capturedbrowser15+Go41948+server2568 absent."
+  },
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "api_static_server_actual_exit": 0,
+  "browser_errors": [],
+  "native_quiescence_audit": {
+    "actual_exit": 0,
+    "script_sha256": "141473f7fa1c1e920d0185717ca398e44b5d8fe6ffbc65770a6003374e87cc38",
+    "log_sha256": "3dc2ccbc127bd5a3687b38687644bbc61359e0b9375677b7c2696f07010aed09"
+  },
+  "harness_limitations": [
+    "Initial viewport command used obsolete CLI syntax; real set viewport361738 succeeded and actual inner dimensions checked.",
+    "Initial PowerShell at-ref argument was expanded; quoted snapshotref worked.",
+    "Full accessible body adds BODY/FLUTTER-VIEW overflow wrappers. Old harness incorrectly assumed every overflow element was the Reader scrollnode. Inspected actual overflow, selected real FLT-SEMANTICS overflow:scroll node, verified article top/middle/footer and resumed from two already submitted questions. No app change or duplicate scored answers.",
+    "Official close1 requires explicit verified own-process cleanup, native audit0 and port checks; never treated as close0."
+  ],
+  "limitations": [
+    "Controlled canonical Greek20 local actualAPI; not all136catalog quizzes or Linuximmutableimage loader verification.",
+    "No Android or NVDA/VoiceOver session. AX semantics and visible compiled mobile UI were tested.",
+    "No deployment, remote preparation or real feedback writes. Production remainsHelm58Reader278."
+  ]
+}

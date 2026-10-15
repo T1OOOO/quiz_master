@@ -1,0 +1,31 @@
+{
+  "helm_revision": 58,
+  "status": "deployed",
+  "images": [
+    "docker.io/library/quiz-master@sha256:4878f824f4b0fb23fa20a8f246541ca4dfa7a1750715f64176cfba4faead0a50",
+    "docker.io/library/quiz-master@sha256:4878f824f4b0fb23fa20a8f246541ca4dfa7a1750715f64176cfba4faead0a50"
+  ],
+  "available_replicas": 1,
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "disk_available_bytes": 20657991680,
+  "disk_total_bytes": 102417174528,
+  "disk20percent": true,
+  "https_ready": 200,
+  "candidate_failures": [
+    {
+      "receipt_file": "quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z-candidate-runtime.json.failure.json",
+      "status": "CANDIDATE_FAILED_NOT_VERIFIED",
+      "error_type": "RuntimeError",
+      "image_id": "sha256:ce89f0800f112fdab4700e9f0af71b454eaba0337c24cf42d868cd4adfb0d5c9",
+      "owned_container_absent": true
+    }
+  ],
+  "candidate_scratch_directories": [],
+  "published": false,
+  "actual_ssh_exit": 0
+}

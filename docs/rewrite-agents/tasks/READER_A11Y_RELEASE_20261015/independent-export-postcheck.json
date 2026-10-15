@@ -1,0 +1,60 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c45b58fc007740fd8f66dcb79fad648d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c45b58fc007740fd8f66dcb79fad648d",
+          "verdict": "accept",
+          "note": "Independently recomputed every hash myself rather than trusting the submission: draft sha256=22825adb...02, review-manifest file study/question_articles/reviews/greek002-distractors-20261015-review.json sha256=a5fab05d...4f, export next/apps/quiz_app/assets/study/question-articles.json sha256=b05cffdd...28, snapshot study/question_articles/snapshots/prep-greek-mythology.json sha256=d09e712d...37 - all four match the claimed values exactly. `git diff HEAD` on both the draft and the export shows a single scoped change in each (question_refs[0].revision_sha256: e441297...e7e -> 038a7a7...5d5d), nothing else touched. Ran `python study/question_articles/build.py --check` myself: exit 0, 'PASS: 279 independently reviewed mini articles'; export has 279 articles total, confirming 278 prior objects untouched plus the one reviewed change. Read review-manifest JSON: prior_fact_review block is preserved verbatim under the new top-level review, and reviewer (session-710e228b94bb439c838ba928a0a89155) differs from the task author/lead (session-a7626a531e504588a53bcfcc285c69f3), satisfying the fresh-reviewer requirement. Inspected the snapshot directly: no answer_key/correct_option_id/correct_option/answer_index fields present - public-safe. This acceptance is source-only, as scoped: it covers the article/export/manifest data change and does not approve any build, candidate image, runtime, or publication step, which per the evidence (public-binding-export-check.json, public-binding-repair.json) remain NOT_RUN/NOT_PUBLISHED and must go through their own separate gates."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual builder check0; genuine sourceacceptance reference matches afterarticleSHA; original factualaccept preserved; export279 onlyreference changed; capturedsnapshot publicsafe. Fresh differentprovider callback exact export/manifestSHA; releasepending explicit.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015"
+        ],
+        "assignee": "session-a7626a531e504588a53bcfcc285c69f3",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Root recorded genuine Claude sourcebinding acceptance and regenerated existing export. Only Greek002 exact reference changes to served038a, prior278 objects preserved. Independently verify actual receipt chain, updated reviewmanifest hashes, build.py --check and prior278 conservation. Source only; no build/runtime/publication approval.",
+        "created_at": 1792031271.2551131,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "review",
+        "id": "task-c45b58fc007740fd8f66dcb79fad648d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_checks": "build.py --write0 --check0; 279articles;278unchanged; onlyGreek002 revisionreference. Genuinefactsreviewpreserved. No freshimage/build/publication.",
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/independent-public-binding-review.json",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/public-binding-export-check.json"
+          ],
+          "export_sha256": "b05cffdd277af88618db52da4fbb4d3b2ae369b849b87ba847b8d491b9eb8828",
+          "review_manifest_sha256": "a5fab05d147ef6e76111cee312c988224594ec4aca18071f273603b36c27a74f",
+          "status": "SOURCE_EXPORT_READY_FOR_INDEPENDENT_POSTCHECK_NOT_PUBLISHED"
+        },
+        "root_task_id": "task-c45b58fc007740fd8f66dcb79fad648d",
+        "run_id": "run-69cea6e638d240d992a03a549717fc54",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "Post-check regenerated Greek002 public-binding manifest and Reader export",
+        "version": 4,
+        "reviewer": "session-5984929942504530b4409fcd329caaaf",
+        "review_note": "Independently recomputed every hash myself rather than trusting the submission: draft sha256=22825adb...02, review-manifest file study/question_articles/reviews/greek002-distractors-20261015-review.json sha256=a5fab05d...4f, export next/apps/quiz_app/assets/study/question-articles.json sha256=b05cffdd...28, snapshot study/question_articles/snapshots/prep-greek-mythology.json sha256=d09e712d...37 - all four match the claimed values exactly. `git diff HEAD` on both the draft and the export shows a single scoped change in each (question_refs[0].revision_sha256: e441297...e7e -> 038a7a7...5d5d), nothing else touched. Ran `python study/question_articles/build.py --check` myself: exit 0, 'PASS: 279 independently reviewed mini articles'; export has 279 articles total, confirming 278 prior objects untouched plus the one reviewed change. Read review-manifest JSON: prior_fact_review block is preserved verbatim under the new top-level review, and reviewer (session-710e228b94bb439c838ba928a0a89155) differs from the task author/lead (session-a7626a531e504588a53bcfcc285c69f3), satisfying the fresh-reviewer requirement. Inspected the snapshot directly: no answer_key/correct_option_id/correct_option/answer_index fields present - public-safe. This acceptance is source-only, as scoped: it covers the article/export/manifest data change and does not approve any build, candidate image, runtime, or publication step, which per the evidence (public-binding-export-check.json, public-binding-repair.json) remain NOT_RUN/NOT_PUBLISHED and must go through their own separate gates."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and recorded as `state: ACCEPTED` on task-c45b58fc007740fd8f66dcb79fad648d.\n\n**Verdict: accept** (source-only).\n\nI independently recomputed, rather than trusted, all four hashes:\n- draft `22825adb...02`\n- review manifest `a5fab05d...4f`\n- export `b05cffdd...28`\n- snapshot `d09e712d...37`\n\nAll matched the claims exactly. `git diff HEAD` on both draft and export showed a single-field change each (`question_refs[0].revision_sha256`), build.py `--check` passed (exit 0, 279 articles, 278 unchanged), the review file's `prior_fact_review` block was preserved verbatim, the reviewer session differed from the task author/lead, and the snapshot had no answer-key/grading fields. No build, image, runtime, or publication step was touched or approved — those remain pending separate gates per the evidence files.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "ccdc2c3f6825326a98bb0b858b6ab4364e4f635c06dfc043d58430b84deeb7ca",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

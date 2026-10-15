@@ -1,0 +1,52 @@
+{
+  "frozen_source": "63847958fdde804f97366e1be04645269a4d42cc",
+  "build_id": "quiz-2026.10.15-reader-6384795",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\reader_a11y_release_20261015\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.15-reader-6384795",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "output": "C:\\ap\\quiz_master\\.run\\reader_a11y_release_20261015\\production-web",
+      "main_dart_js_sha256": "6b2ef2d9adff65a14c3251a07cc3563a04b522b2118da51be563dcd61d9a73f7",
+      "frozen_assets_byte_identical": true,
+      "elapsed_seconds": 261.11
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\reader_a11y_release_20261015\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.15-reader-6384795",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:19090"
+      ],
+      "output": "C:\\ap\\quiz_master\\.run\\reader_a11y_release_20261015\\qa-web",
+      "main_dart_js_sha256": "aa77e2460b9b521ec1baf83b34eada2d1361d1b9df77a01693c29c775f70ade6",
+      "frozen_assets_byte_identical": true,
+      "elapsed_seconds": 252.29
+    }
+  ]
+}

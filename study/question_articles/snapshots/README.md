@@ -14,3 +14,5 @@ national etiquette. Do not manufacture article facts to justify an existing key.
 
 
 The 2026-10-11 repair also captured lotr, prep-ballet, prep-musicals, `theme-harry-potter`, and `theme-terminator` from their public catalog endpoints. These exact served DTOs take precedence over legacy canonical bundles when resolving non-Study question references; canonical bundles remain the fallback when no snapshot is tracked.
+
+The 2026-10-15 Greek002 repair captured `prep-greek-mythology.json` from https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology. The public DTO revision includes served difficulty and source metadata that differ from the canonical import; this snapshot preserves the actual question, options and difficulty. Capture UTC and SHA-256 are recorded in `docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/public-binding-repair.json`.

@@ -1,0 +1,33 @@
+{
+  "status": "SOURCE_EXPORT_CHECKED_PENDING_INDEPENDENT_POSTCHECK_NOT_PUBLISHED",
+  "source_acceptance_task": "task-28c834f913634f748c0ec25b4e9a74d6",
+  "reviewer": "session-710e228b94bb439c838ba928a0a89155",
+  "actual_checks": [
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 279 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 279 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    }
+  ],
+  "articles": 279,
+  "prior_articles_identical": 278,
+  "only_export_change": "Greek002 question reference revision",
+  "export_sha256": "b05cffdd277af88618db52da4fbb4d3b2ae369b849b87ba847b8d491b9eb8828",
+  "review_manifest_sha256": "a5fab05d147ef6e76111cee312c988224594ec4aca18071f273603b36c27a74f",
+  "new_build_image_runtime_publication": "NOT_RUN"
+}

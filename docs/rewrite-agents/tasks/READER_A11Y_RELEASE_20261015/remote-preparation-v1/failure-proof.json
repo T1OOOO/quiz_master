@@ -1,0 +1,78 @@
+{
+  "status": "ACTUAL_IMMUTABLE_RUNTIME_FAILED_NOT_PUBLISHED",
+  "package_sha256": "e253eeecfbb84f199e947e5e4a2ffc7db48450b1982e2f871dd37edf8becf8b0",
+  "frozen_source": "63847958fdde804f97366e1be04645269a4d42cc",
+  "remote_guard_actual_exit": 0,
+  "remote_prepare_actual_exit": 1,
+  "copied_database_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "docker_build_and_api_nginx_js_hashes": "PASSED_BEFORE_RUNTIME_FAILURE",
+  "failed_gate": "verify_candidate_runtime.py:116 strict exact Reader revision binding",
+  "candidate_100_lotr_20_mixed_grading": "NOT_REACHED_BINDINGS_RUN_FIRST",
+  "candidate_k3s_import_and_helm_upgrade": "NOT_REACHED",
+  "production_after_failure": {
+    "helm_revision": 58,
+    "status": "deployed",
+    "images": [
+      "docker.io/library/quiz-master@sha256:4878f824f4b0fb23fa20a8f246541ca4dfa7a1750715f64176cfba4faead0a50",
+      "docker.io/library/quiz-master@sha256:4878f824f4b0fb23fa20a8f246541ca4dfa7a1750715f64176cfba4faead0a50"
+    ],
+    "available_replicas": 1,
+    "node_conditions": {
+      "MemoryPressure": "False",
+      "DiskPressure": "False",
+      "PIDPressure": "False",
+      "Ready": "True"
+    },
+    "disk_available_bytes": 20657991680,
+    "disk_total_bytes": 102417174528,
+    "disk20percent": true,
+    "https_ready": 200,
+    "candidate_failures": [
+      {
+        "receipt_file": "quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z-candidate-runtime.json.failure.json",
+        "status": "CANDIDATE_FAILED_NOT_VERIFIED",
+        "error_type": "RuntimeError",
+        "image_id": "sha256:ce89f0800f112fdab4700e9f0af71b454eaba0337c24cf42d868cd4adfb0d5c9",
+        "owned_container_absent": true
+      }
+    ],
+    "candidate_scratch_directories": [],
+    "published": false,
+    "actual_ssh_exit": 0
+  },
+  "owned_stage_image_archive_and_backup": "Retained; no shared prune or foreign resource cleanup",
+  "logs": {
+    "remote-guard-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "remote-guard-log.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote-prepare-exit.json": "b8b9eab68203e851595708abb4b126cf54287e1f9e50567afdba91f84e264de1",
+    "remote-prepare-log.txt": "c489733d6b9c1777478f31adedceae885a791c47f5c40dccd933734e3a2f8185",
+    "remote-prepare-script.sh": "e639a2383bad2113493f4d0988f8b015956970996c255470d67a8d04cacc16ba"
+  }
+}

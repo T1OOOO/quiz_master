@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python",
+    "study/question_articles/build.py",
+    "--check"
+  ],
+  "expected_rejection": "changed article hash has not received a new independent acceptance yet",
+  "actual_exit": 1,
+  "actual_stderr": "Traceback (most recent call last):\n  File \"C:\\ap\\quiz_master\\study\\question_articles\\build.py\", line 120, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\ap\\quiz_master\\study\\question_articles\\build.py\", line 110, in main\n    data = export()\n  File \"C:\\ap\\quiz_master\\study\\question_articles\\build.py\", line 52, in export\n    require(verdict.get('article_sha256') == article_hash(article), f'{aid}: reviewed text changed')\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\ap\\quiz_master\\study\\question_articles\\build.py\", line 23, in require\n    raise ValueError(message)\nValueError: question:greek-002: reviewed text changed\n",
+  "passed_negative_check": true
+}

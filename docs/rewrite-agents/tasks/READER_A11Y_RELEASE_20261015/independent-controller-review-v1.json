@@ -1,0 +1,89 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-670da6e315ad459286d7c7db84b4be41": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-670da6e315ad459286d7c7db84b4be41",
+          "verdict": "rework",
+          "note": "Independently read all five files plus their real \"house\" dependencies (prepare_library_release.py, prepare_library_remote.py, verify_candidate_runtime.py) for comparison; ran the 3 tests (all pass, hashes match REPORT_EN.md exactly: prepare_reader638_release cfd3ef6a..., prepare_reader638_remote bed18e60..., verify_reader638_candidate 0e85db23..., test_reader638_release 6a28e653...). Both of Root's preliminary questions are confirmed real defects, not just open questions. (1) prepare_reader638_release.py's package_metadata()/verify_reader_delta() only recompute article/ref counts from two bare JSON lists and return a dict of mostly hardcoded identity strings (BASELINE_ARCHIVE_SHA256/BASELINE_IMAGE etc. are literal constants, never checked against anything); it never calls bound_json/verify_inputs/extract_immutable/archive_and_verify, never touches a Web/review/checksum pin, and never produces an archive. load_library() is defined at line 47 but is never called anywhere in the file - dead code implying reuse that doesn't happen. This is a metadata printer, not a package producer. (2) prepare_reader638_remote.py only patches two literal strings ('version==54 and status=\"deployed\"' / 'version==52 ...') inside the guard/script text returned by the real house remote_scripts(), and renames the build id string. It has no main(), no CLI, no SSH/scp orchestration, and critically no collection_script() and no validate_package() at all - the real library version's collection_script() (which rewrites x[\"version\"]==52, 'baseline_helm_revision':52, and the expected_packs/expected_questions/expected_articles/expected_total_refs/expected_playable_refs call) has no Reader-638 counterpart whatsoever, so the collection/count consumers that bind the final receipt to 279/160/158 are never adapted. validate_package()'s archive-hash, checksum-manifest, stage/archive-membership, and release-metadata checks are likewise entirely absent, so nothing in this submission could actually verify or execute a real release. REPORT_EN.md's own wording ('renders only prepare-time scripts') is an accurate admission of this gap but the acceptance criteria required reaching the collection/count consumers, which this does not do. The 3 passing tests only exercise the count-math and string-presence helpers (package_metadata, verify_reader_delta, preflight_python content, expected_runtime_args), never a package producer, archive, or remote execution path, so they cannot stand in for the missing implementation. Recommend: reuse the real house flow analogous to prepare_library_release.prepare()/prepare_library_remote.validate_package()/collection_script() - i.e. actually extract/stage/archive with checksum verification in the release script, and add validate_package + collection_script + a real main() to the remote script - before this is accepted as an executable minimally-reused package producer and remote adaptation."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal package/remote wrappers enforce baseline58 exactsource/build/assets; Reader278to279 preserveold278;160refs158playable2existingnoncatalog. Disk20percent,Ready,DiskPressureFalse,noblockingtaints,HTTPSreadiness beforeimagework andpublication. PreserveAPI/nginx/PVC/100LOTR20mixedgrading/noncecleanup. Pythonpositive/negativechecks andsourcehashes. Submissiononly,nopublication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker"
+        ],
+        "assignee": "session-fd1c301ab55b43438f217f6f6cc42921",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Local-only controller implementation. Exclusive ownership docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker. Source63847958fdde804f97366e1be04645269a4d42cc buildquiz-2026.10.15-reader-6384795. BaselineHelm58 library09b19cc image4878. Reuse accepted house flow and Greek remoteplan; full English packet supplied on launch. No networkmutation, production, commits, browser/Flutterbuilds, otherpaths or children. Rootbuilds andQA. Userwaived QMresourcequeue. Independentreviewrequired.",
+        "created_at": 1792028042.100567,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-670da6e315ad459286d7c7db84b4be41",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "build_id": "quiz-2026.10.15-reader-6384795",
+          "changed_files": [
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/prepare_reader638_release.py",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/prepare_reader638_remote.py",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/verify_reader638_candidate.py",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/test_reader638_release.py",
+            "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/REPORT_EN.md"
+          ],
+          "evidence": [
+            {
+              "command": "python -m unittest test_reader638_release.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker",
+              "exit": 0,
+              "result": "3 passed"
+            },
+            {
+              "command": "python -m py_compile prepare_reader638_release.py prepare_reader638_remote.py verify_reader638_candidate.py test_reader638_release.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker",
+              "exit": 0
+            },
+            {
+              "command": "git diff --check -- .",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker",
+              "exit": 0
+            }
+          ],
+          "limitations": [
+            "No archive/image/DB/SSH/remote execution/publication/browser/Flutter build performed.",
+            "Requires Root's frozen Web receipts and independent different-provider review before execution."
+          ],
+          "report": "docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker/REPORT_EN.md",
+          "sha256": {
+            "prepare_reader638_release": "cfd3ef6acef2ff5d8622aa3491f08f7f6194c2215090b053a61f4130e9dbf010",
+            "prepare_reader638_remote": "bed18e60326fab2c6f53c707ffc772073d12acc6d2239c73469ab5fe60022ec3",
+            "test_reader638_release": "6a28e6531d56f779253348e3c0e608c83a038e788b5c620784b6cc17e52722d8",
+            "verify_reader638_candidate": "0e85db23b74e078508f9f21fe567f5d5e3c40e03591cce504706d0d503c5e196"
+          },
+          "source": "63847958fdde804f97366e1be04645269a4d42cc",
+          "status": "DONE"
+        },
+        "root_task_id": "task-670da6e315ad459286d7c7db84b4be41",
+        "run_id": "run-de22840cb9bb4a4595b2e2b455e110fd",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "quiz_master-1nm: prepare6384795 Reader successor controllers",
+        "version": 4,
+        "reviewer": "session-60066816487244b48722663794b107a7",
+        "review_note": "Independently read all five files plus their real \"house\" dependencies (prepare_library_release.py, prepare_library_remote.py, verify_candidate_runtime.py) for comparison; ran the 3 tests (all pass, hashes match REPORT_EN.md exactly: prepare_reader638_release cfd3ef6a..., prepare_reader638_remote bed18e60..., verify_reader638_candidate 0e85db23..., test_reader638_release 6a28e653...). Both of Root's preliminary questions are confirmed real defects, not just open questions. (1) prepare_reader638_release.py's package_metadata()/verify_reader_delta() only recompute article/ref counts from two bare JSON lists and return a dict of mostly hardcoded identity strings (BASELINE_ARCHIVE_SHA256/BASELINE_IMAGE etc. are literal constants, never checked against anything); it never calls bound_json/verify_inputs/extract_immutable/archive_and_verify, never touches a Web/review/checksum pin, and never produces an archive. load_library() is defined at line 47 but is never called anywhere in the file - dead code implying reuse that doesn't happen. This is a metadata printer, not a package producer. (2) prepare_reader638_remote.py only patches two literal strings ('version==54 and status=\"deployed\"' / 'version==52 ...') inside the guard/script text returned by the real house remote_scripts(), and renames the build id string. It has no main(), no CLI, no SSH/scp orchestration, and critically no collection_script() and no validate_package() at all - the real library version's collection_script() (which rewrites x[\"version\"]==52, 'baseline_helm_revision':52, and the expected_packs/expected_questions/expected_articles/expected_total_refs/expected_playable_refs call) has no Reader-638 counterpart whatsoever, so the collection/count consumers that bind the final receipt to 279/160/158 are never adapted. validate_package()'s archive-hash, checksum-manifest, stage/archive-membership, and release-metadata checks are likewise entirely absent, so nothing in this submission could actually verify or execute a real release. REPORT_EN.md's own wording ('renders only prepare-time scripts') is an accurate admission of this gap but the acceptance criteria required reaching the collection/count consumers, which this does not do. The 3 passing tests only exercise the count-math and string-presence helpers (package_metadata, verify_reader_delta, preflight_python content, expected_runtime_args), never a package producer, archive, or remote execution path, so they cannot stand in for the missing implementation. Recommend: reuse the real house flow analogous to prepare_library_release.prepare()/prepare_library_remote.validate_package()/collection_script() - i.e. actually extract/stage/archive with checksum verification in the release script, and add validate_package + collection_script + a real main() to the remote script - before this is accepted as an executable minimally-reused package producer and remote adaptation."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted: **REWORK**.\n\nBoth of Root's preliminary suspicions checked out as confirmed defects:\n\n1. **`prepare_reader638_release.py`** doesn't invoke any package producer — it only recomputes article/ref counts from two JSON files and returns a dict of hardcoded identity strings. It never calls the house's `verify_inputs`/`extract_immutable`/`archive_and_verify`, never checks a Web/review/checksum pin, and never creates an archive. `load_library()` is defined but dead — never called.\n\n2. **`prepare_reader638_remote.py`** only string-replaces two `version==54/52` literals and the build id inside the inherited guard/script text. It has no `main()`, no `collection_script()`, and no `validate_package()` — so the collection/count consumers that actually bind the final receipt to 279/160/158 are never touched, and there's no real execution entry point at all.\n\nAll reported SHA-256 hashes matched the actual files, and the 3 tests genuinely pass — but they only exercise count-math/string-presence helpers, never the missing archive/collection/execution logic, so they can't substitute for the incomplete implementation. Full findings and a concrete remediation path (mirror `prepare_library_release.prepare()` / `prepare_library_remote.validate_package()`/`collection_script()`) are recorded in the review note on `task-670da6e315ad459286d7c7db84b4be41`.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "25dbf2462dbb9f5a8e99f1cdbed1f9d4735417e5065421f8e004c78ed273274d",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

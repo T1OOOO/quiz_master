@@ -1,0 +1,80 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a9b18db2630141d09a2ae6dc70e716e1": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a9b18db2630141d09a2ae6dc70e716e1",
+          "verdict": "accept",
+          "note": "Independently re-derived the explorer's diagnosis rather than trusting it: compared docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/greek002-binding-diagnosis.json against next/content/prep-greek-mythology/bundle.json (canonical: revision.sha256=e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e, source.uri='quizzes/Preparation/prep_greek_mythology.json', no difficulty_level field) and against study/question_articles/snapshots/prep-greek-mythology.json / my own fresh GET of the live public catalog (revision.sha256=038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d, source.uri='/app/quizzes/Preparation/prep_greek_mythology.json', difficulty_level=2). All three differing_public_fields (difficulty_level, source, revision) and both listed sha values match exactly; stem/options for greek-002 are identical in both documents, confirming no question/answer content changed. This is same-provider analysis, not an independent source acceptance — our binding-metadata acceptance stands separately on task-28c834f913634f748c0ec25b4e9a74d6."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Identify which metadata/source fields determine mismatch, canonical/snapshot/export files and concrete tool needed to reconcile. Distinguish key/wording unchanged frommetadata revision. Suggest exactsource-backed regression/gate for authoritative runtime, no weakeningknownnoncatalog gate orblindhashoverride. Root handles serverhealth/failedcandidate cleanup; do notduplicate runtime resource work.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\server",
+          "C:\\ap\\quiz_master\\next\\content\\prep-greek-mythology",
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\metadata",
+          "C:\\ap\\quiz_master\\quizzes\\Preparation\\prep_greek_mythology.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015"
+        ],
+        "assignee": "session-9608ac6c9042482abada6fb29f5c2d6a",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Read-only code question; no edits or remote mutations. Actual638 candidate validation failed Reader revision binding beforeHelmupgrade. Public live prep-greek-mythology Greek002 revision038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d versus canonical next/content revisione441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e. Public fields same exceptdifficulty_level2 live versusnullcanonical, sourceURI/app/quizzes/...versusrelative, revisionSHA. Determine exact hashing/import/snapshot pipeline and smallest correct sync for article binding withoutgrading/textchanges. Findings/code pointers and actual regeneration command, no implementation. Evidence diagnosisjson in release docs.",
+        "created_at": 1792030552.4646297,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "code",
+        "id": "task-a9b18db2630141d09a2ae6dc70e716e1",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "detail": "Non-Study resolution checks snapshots/{quiz_id}.json before next/content/{quiz_id}/bundle.json and requires exact question_id/revision.sha256.",
+              "kind": "code_reference",
+              "path": "study/question_articles/build.py"
+            },
+            {
+              "detail": "Documents full public /v1/catalog?quiz_id=... DTO snapshots and runtime precedence.",
+              "kind": "code_reference",
+              "path": "study/question_articles/snapshots/README.md"
+            },
+            {
+              "detail": "frozen_revision_map and count_exact_article_bindings at lines 551-577; snapshots override canonical duplicate keys.",
+              "kind": "code_reference",
+              "path": "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_lotr_package.py"
+            },
+            {
+              "command": "curl.exe --fail --silent --show-error --location --output study/question_articles/snapshots/prep-greek-mythology.json \"https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology\"",
+              "detail": "Existing direct capture mechanism; record URL/time/file SHA separately.",
+              "kind": "capture_command"
+            }
+          ],
+          "session_id": "session-9608ac6c9042482abada6fb29f5c2d6a",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Read-only analysis completed before offer acceptance; no edits/build/SSH. Greek002 can bind live 038a... through the existing public snapshot pipeline while preserving canonical/API/raw fields and difficulty_level 2."
+        },
+        "root_task_id": "task-a9b18db2630141d09a2ae6dc70e716e1",
+        "run_id": "run-f4d044aa1ab04b6496860268d904ddfd",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "quiz_master-1nm / diagnoseGreek002 canonical versus actual runtime revision",
+        "version": 4,
+        "reviewer": "session-710e228b94bb439c838ba928a0a89155",
+        "review_note": "Independently re-derived the explorer's diagnosis rather than trusting it: compared docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/greek002-binding-diagnosis.json against next/content/prep-greek-mythology/bundle.json (canonical: revision.sha256=e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e, source.uri='quizzes/Preparation/prep_greek_mythology.json', no difficulty_level field) and against study/question_articles/snapshots/prep-greek-mythology.json / my own fresh GET of the live public catalog (revision.sha256=038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d, source.uri='/app/quizzes/Preparation/prep_greek_mythology.json', difficulty_level=2). All three differing_public_fields (difficulty_level, source, revision) and both listed sha values match exactly; stem/options for greek-002 are identical in both documents, confirming no question/answer content changed. This is same-provider analysis, not an independent source acceptance — our binding-metadata acceptance stands separately on task-28c834f913634f748c0ec25b4e9a74d6."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three verdicts submitted successfully to the hub.\n\n**Verification summary (read-only, no files edited):**\n\n- **task-28c834f913634f748c0ec25b4e9a74d6 → ACCEPT** (metadata only). Independently recomputed hashes: draft `22825adb...02`, before-article `f72ca89f...73` (matches the prior accepted review record), after-article `824f91975...98` — all exactly match the claimed values. `git diff` confirms the change is isolated to `question_refs[0].revision_sha256`. I personally ran a fresh read-only GET against `https://quiz.kotopedia.org/v1/catalog?quiz_id=prep-greek-mythology` — HTTP 200, sha256 `d09e712d...537`, byte-identical to the snapshot, confirming it's live raw runtime, not a stale fixture. Confirmed `build.py` and `frozen_revision_map()` already treat snapshots as the override ahead of canonical bundles (pre-existing mechanism). Acceptance explicitly excludes export/manifest regeneration and any build/runtime/publication gates — those need a fresh independent post-check after Root regenerates.\n\n- **task-7dc04b29c90741e6b2f85fba865e52ce → REWORK**. No executable packet/runtime receipt exists; `post-failed-candidate-health.json` shows `CANDIDATE_FAILED_NOT_VERIFIED`, container absent, `published: false`, production unchanged on Helm 58. No publication approved.\n\n- **task-a9b18db2630141d09a2ae6dc70e716e1 → ACCEPT** (read-only explorer analysis). Independently re-derived its diagnosis against the canonical bundle and live catalog myself rather than trusting its output — all claimed fields/hashes matched exactly.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "86981d36347a3c080a0dc6c99b544f9b77116117fb902ffd188a6e22b9199123",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

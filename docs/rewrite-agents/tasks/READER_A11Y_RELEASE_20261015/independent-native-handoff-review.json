@@ -1,0 +1,77 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-670da6e315ad459286d7c7db84b4be41": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-670da6e315ad459286d7c7db84b4be41",
+          "verdict": "rework",
+          "note": "Independently inspected the preserved incomplete handoff snapshot (.run/reader_a11y_release_20261015/controller-v2-incomplete/prepare_reader638_remote.py, 69 lines): it defines validate_package/collection_script/remote_scripts but has no main()/CLI entry point, performs only crude unguarded string-replacement of 'version==54'/'version==52' literals (no single-occurrence/require guard, risking silent double-substitution), and does no independent archive-hash/stage-membership/frozen-asset-byte verification of its own — it just delegates to the house module and checks build_id equality. This confirms the handoff was genuinely incomplete (not just procedurally abandoned), consistent with the prior REWORK finding on v1 (metadata-only producer, no package production/collection/validation path). This task's INCOMPLETE_HANDOFF_TO_ROOT submission is superseded by Root's independently-reviewed and materially more complete rewrite at task-ef59d78f9d174a499bf2934ec462b986 (accepted separately, source-only). Marking rework rather than accepting on Root's later code, per the superseding task."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal package/remote wrappers enforce baseline58 exactsource/build/assets; Reader278to279 preserveold278;160refs158playable2existingnoncatalog. Disk20percent,Ready,DiskPressureFalse,noblockingtaints,HTTPSreadiness beforeimagework andpublication. PreserveAPI/nginx/PVC/100LOTR20mixedgrading/noncecleanup. Pythonpositive/negativechecks andsourcehashes. Submissiononly,nopublication.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_RELEASE_20261015\\worker"
+        ],
+        "assignee": "session-fd1c301ab55b43438f217f6f6cc42921",
+        "author": "session-a7626a531e504588a53bcfcc285c69f3",
+        "body": "Local-only controller implementation. Exclusive ownership docs/rewrite-agents/tasks/READER_A11Y_RELEASE_20261015/worker. Source63847958fdde804f97366e1be04645269a4d42cc buildquiz-2026.10.15-reader-6384795. BaselineHelm58 library09b19cc image4878. Reuse accepted house flow and Greek remoteplan; full English packet supplied on launch. No networkmutation, production, commits, browser/Flutterbuilds, otherpaths or children. Rootbuilds andQA. Userwaived QMresourcequeue. Independentreviewrequired.",
+        "created_at": 1792028042.100567,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-670da6e315ad459286d7c7db84b4be41",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "command": "python -m unittest test_reader638_release.py",
+              "result": "3 passed; count/preflight helper coverage only, not package/runtime acceptance"
+            },
+            {
+              "command": "python -m py_compile prepare_reader638_release.py prepare_reader638_remote.py verify_reader638_candidate.py test_reader638_release.py",
+              "result": "exit 0"
+            },
+            {
+              "command": "python -c collection_script smoke assertion",
+              "result": "exit 0; only rendered collection count replacement"
+            }
+          ],
+          "missing": [
+            "Behavioral fixture against the archived Helm58 cutover/rehearse/checksum controls.",
+            "Actual guarded package production and package validation evidence.",
+            "Fresh independent review of any completed controller."
+          ],
+          "publication": "No archive, remote action, deployment, or publication was performed or accepted.",
+          "saved_source": ".run/reader_a11y_release_20261015/controller-v2-incomplete",
+          "sha256": {
+            "prepare_reader638_release": "6008133e30a261b2fd955603a6d0f3ab3996ce64c344b53279d837aeff899749",
+            "prepare_reader638_remote": "f4428d36d087b67e24f94cfa1e163af9a6277b9e85bdb570f4e9135f9eed576f"
+          },
+          "status": "INCOMPLETE_HANDOFF_TO_ROOT",
+          "summary": "Root took exclusive ownership after the first independent review found v1 non-executable. My v2 added package/collection entry points but did not prove the archived Helm58 installer adaptation."
+        },
+        "review_note": "Independently inspected the preserved incomplete handoff snapshot (.run/reader_a11y_release_20261015/controller-v2-incomplete/prepare_reader638_remote.py, 69 lines): it defines validate_package/collection_script/remote_scripts but has no main()/CLI entry point, performs only crude unguarded string-replacement of 'version==54'/'version==52' literals (no single-occurrence/require guard, risking silent double-substitution), and does no independent archive-hash/stage-membership/frozen-asset-byte verification of its own — it just delegates to the house module and checks build_id equality. This confirms the handoff was genuinely incomplete (not just procedurally abandoned), consistent with the prior REWORK finding on v1 (metadata-only producer, no package production/collection/validation path). This task's INCOMPLETE_HANDOFF_TO_ROOT submission is superseded by Root's independently-reviewed and materially more complete rewrite at task-ef59d78f9d174a499bf2934ec462b986 (accepted separately, source-only). Marking rework rather than accepting on Root's later code, per the superseding task.",
+        "reviewer": "session-644edde5b6c2446fbd9178ac92d1675f",
+        "root_task_id": "task-670da6e315ad459286d7c7db84b4be41",
+        "run_id": "run-9c61de14723c40a793ef1ac13402a558",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-100919fc93c84cda99b17c1dc385dba9",
+        "title": "quiz_master-1nm: prepare6384795 Reader successor controllers",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are submitted and recorded by the hub:\n\n- **task-ef59d78f9d174a499bf2934ec462b986** (Root's Reader638 release controllers): **ACCEPTED**, source-only. All 10 reported hashes, the baseline archive hash/member count, py_compile, and the 14-test suite were independently recomputed/re-run and matched. Code review confirmed genuine adaptation of the house producer (hash-pinned, checksum-verified, single-occurrence-guarded) rather than a metadata stub, and the guard's node/disk/image preflight is real and tested with real fixture boundaries.\n- **task-670da6e315ad459286d7c7db84b4be41** (original native-helper task): **REWORK**, noting its incomplete v2 handoff (no CLI entry point, unguarded string replacement, no independent archive/membership verification) is superseded by Root's accepted rewrite.\n\nNo execution, build, package creation, or publication was performed — this was source review only, as scoped.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "4718a8e44a60428738fed3de64193a36cbc6f51272db58dfeeb7c38554158e85",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
