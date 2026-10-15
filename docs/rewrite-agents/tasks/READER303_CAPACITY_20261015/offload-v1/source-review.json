@@ -1,0 +1,101 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-6cb78640e3504ebd88aae1ff99f609d7": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-6cb78640e3504ebd88aae1ff99f609d7",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Read-only review, Claude Opus 5, task-6cb78640 only; 0 correctness defects. approval-inputs sha256 151dfaffd118d948ff1544efea5211dd6d9eebfb06bd043b27694a62c5094647 self-computed; all 9 manifest inputs rehashed and match. render() recomputed twice = 27587B 108326dc..., identical to offload.sh. validate_plan: exactly 28 unique /opt/quiz-master/releases/*.tar.gz names, 1518083884B, dev/ino/mtime_ns real Python ints (27/28 non-100ns-rounded), zero protected path/name overlap, full 23 PROTECTED_HASHES equality. All 28 local cold copies re-verified: regular, nlink1, no symlink, parent=.run/.../offload-v1/copies, receipt order/size/sha == plan, 24 scp + 4 sftp-reget, every transfer_exit 0, total 1518083884B; execute.verify_copies passes. Ownership covers exactly those 28 hashes: chart+Flutter web+Linux API ELF+quiz payload, no extraction; cutover observational after the retained layout-check failure. I reran the suite: 15 tests, exit 0, no skips; RED exit1 kept; prior-v1 5b147 bytes preserved, unused. root-readonly-preflight.py core is byte-identical to offload.py plus hostname assert and only preflight/verify_protected/check_capacity/loaded_images; remove_verified/run_offload never called; no execution logs, no source-review.json. Sole mutation is os.unlink after all-28 batch verify plus per-entry re-verify under stable parent dev/ino; sqlite mode=ro, image inventory subset-preserving, no prune/removal, no helm/kubectl/package mutation, no release-floor waiver. Before-below-20% expected; projected and actual both strict >20%+1GiB with 64MiB growth bound. Limitations, not defects: projected margin ~90MB, avail fell ~77MB in 28min, so the fresh pre-unlink recheck must hold; 600s SSH timeout unmeasured against ~2x hashing; post gate can only fail after unlink, copies retained; 9404416B .partial in copies is outside plan/receipt. Scope: approves Root's single guarded exact-28 offload only, not Reader303 publication/candidate/source. I did no SSH/unlink/edit/Git/deploy."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Complete renderable pre/post remote guardsource andexecutor, actualSCP receiptsupported, exactsource/test/plan/copymanifest andnewreviewbinding; focusedmeaningful negatives actualpass; noexecutionclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_CAPACITY_20261015\\offload-v1"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Take exclusive3offload files from finished5b skeleton; preservev1ignoredbytes. Implement actual full baseline62/23protected/28exactmetadata+hash/O_NOFOLLOW/nlink1 pre/post guard/render and exactapproval-bound executor. Root copies viaSCP, no helper SSH/remote action. Originalsourceincomplete held, newauthor293; newtask mustbindreview/assignee. Offline negatives with validplans and actualrawlogs. No foreign/project/stage/DB/backups/images/processchanges.",
+        "created_at": 1792079227.0495849,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-6cb78640e3504ebd88aae1ff99f609d7",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changes": [
+            "Preserved prior three raw source bytes and SHA256 map under .run/reader303_release_20261015/offload-v1/worker-v2/prior-v1 before editing. Root plan/protected/copies/receipt and all other source/evidence were preserved.",
+            "offload.py now has render(plan,protected), embedding the complete reviewed module and exact plan into Linux shell with host racknerd-f0269d5 check, PYTHONOPTIMIZE unset and project DEPLOY.lock held. Frozen28names/1518083884bytes and all23protected path/hash pairs are exact constants from Root's current plan/protected evidence. Duplicate, wrongname, path traversal, hash and noninteger metadata are rejected.",
+            "Full baseline pre/post code reuses the Reader299 offload recipe, updated to real62/deployed/bothimagee053, original BoundPVC, one available replica, single Ready/noDiskPressure/no cordon/no blocking taints node, HTTPS200, all29OPEN feedback/fullrowSHA4529..., current299 publish-backup0600/integrity and shared measured filesystem. Feedback and backup SQLite connections are explicitly read-only.",
+            "All23 protected files are hash-verified before and after. Every candidate is regular,nlink1,nonsymlink with exactdev/inode/size/mtime/hash and O_NOFOLLOW descriptor hashing. Stable parent device/inode and canonical nonsymlink parent are checked through batch validation and every immediate pre-unlink verification. All28 are validated before the first unlink; each is hashed again immediately before its unlink.",
+            "Loaded image sets are captured under the project lock immediately before unlink and compared afterward as preservation subsets, permitting external additions but rejecting removal of any preexisting image/reference. Only counts/digests/additioncounts are printed; unrelated tags/registry names stay in memory. There are no image mutation commands.",
+            "Cleanup may begin below20percent. Fresh immediately-before-unlink projected reserve must strictly exceed20percent plus1GiB. Actual post-reserve must also strictly exceed20percent plus1GiB, total filesystem size must match, and observed available bytes must be at least pre+1518083884-64MiB. Both raw observed states are retained; no live measurements are invented.",
+            "execute.py now accepts actual SCP receipts plus prior supported ssh-tar/sftp-reget formats. It verifies all28 local regular,nlink1,nonsymlink files under the exact copies directory, exact receipt mapping/sizes/hashes/transferexit0 and stable metadata. Copies and every frozen source/evidence input are rehashed immediately before execution.",
+            "Exact INPUT_FILES has nine members: offload.py,execute.py,test_offload.py,plan.json,protected-hashes.json,copy-receipt.json,tests.json,tests-stdout.txt,offload.sh. Missing/extra manifest inputs, source drift, wrong rendered bytes, unaccepted/oldtask/selfreview/wrongassignee/unbound callbacks are refused before SSH. The callback must bind new task-6cb78640e3504ebd88aae1ff99f609d7, assignee session293, literal approval-inputs SHA and genuine accepted review response.",
+            "Executor refuses optimized Python and preexisting execution logs. One SSH invocation uses established ll_deploy_ed25519 key, BatchMode=yes and ConnectTimeout15. Timeout preserves partial stdout/stderr and exact timeout exit receipt; any repeat sees existing evidence and refuses. No missing reviewed script placeholder remains."
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/offload.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/execute.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/test_offload.py",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/prior-v1",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/red-tests.log",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/tests-stdout.txt",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/tests.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/freeze.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/offload-v1/worker-v2/offload-preview.sh"
+          ],
+          "handoff": [
+            "Root should copy the unchanged final worker-v2/tests-stdout.txt and tests.json into the owned docs offload-v1 directory. tests.json contains actual_exit,tests,stdout_sha256,exact three-source SHA map and command; executor requires those hashes/count and an actual successful unittest summary.",
+            "After all28copies and the real copy-receipt.json exist, Root should run pure execute.verify_copies(plan,receipt,actual_plan_sha) locally. Root then saves offload.render(plan,protected) exactly as offload.sh, verifies its deterministic SHA and creates approval-inputs.json with exactly the nine INPUT_FILES and actual full hashes.",
+            "Root obtains genuine different-provider source review on new task6cb with assignee293 and literal 'approval-inputs sha256 <actualmanifesthash>' in the actual review note. Save the genuine callback/CLI0 in source-review.json. No review or live copy receipt was fabricated here.",
+            "Root alone may run execute.py after that review. If any execution/timeout/nonzero receipt exists, inspect the retained before/per-file/after logs and state; do not blindly retry or delete/repoint the evidence. A separately reviewed resume decision is required.",
+            "Actual publication preparation remains a separate gate, including fresh strict reserve after offload. Passing local tests/render does not establish actual reclaimed capacity or production readiness."
+          ],
+          "limitations": "Native implementation/offline verification only, not different-provider approval or actual cleanup evidence. Root's actual28copy receipt was still pending at last supplied status. Exactly three owned source files and ignoredworker-v2 were written; no edits after freeze.",
+          "pins": {
+            "plan_sha256": "213c8198cd13497d23a87b8d3b94a3c6ebd49dc85f2c855125d96cd4701b5a9f",
+            "protected_sha256": "66f84623827506202e65e15cd6583ec45620a0b65ea49636be9bbd37907e29f1",
+            "rendered_shell_sha256": "108326dc24d7f411b5ec0a0ec0db174334fedcc9d620e6aae6907daccee87c13"
+          },
+          "source_sha256": {
+            "execute.py": "f065a76dd9efd9697175e874ffb1f428ff5624a928cf05e688de1d18c02eb42e",
+            "offload.py": "7d8637d9a646f306aa41cf90a496d3216933a4f0b8c717cc2db5b9c3e41c66d5",
+            "test_offload.py": "7278a541ab703b24dfa7810e06afe3df2688f1a788390e3dae40704ae036e1a8"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Completed and froze the three-file Reader303 exact28 cold-offload implementation. Fifteen offline tests passed with actual exit0. The renderer is complete and inert; the executor requires actual verified copies and a fresh exact independent review before its one Root-only SSH operation. No actual copy, SSH, unlink, deployment, build, Git or child-agent operation was performed.",
+          "verification": [
+            "Initial RED8test run retained red-tests.log/red-exit.json: actualexit1,threefailures/threeerrors exposing missing names/types/protected/render/capacity/inventory guards.",
+            "Final15tests in1.942s,actualexit0,no skips. Raw test output SHA2563b9e42c270b73683e580a45918a3462c40180604e1b8c062e6bf6c766bd7f8fb.",
+            "Tests begin with the actual valid28plan then mutate names/paths/metadata/duplicates/protection. They exercise physical local file metadata/hash/nlink and parent drift, all-before/per-unlink refusal, strict projected/post capacity boundaries and64MiB bound, inventory subset preservation/additions, actual preflight branches under mocks, pre/post orchestration and private-name redaction.",
+            "Copy tests use28small physical unit files to isolate copy validation; actual1.5GB Root copies were not verified by this worker. Executor tests use clearly synthetic temporary approval fixtures with mocked copies/SSH, exercise exactmanifest/currenttask/callback/source/rawtest binding and wrong-copy refusal. Timeout tests preserve actual temporary log bytes and prove no automatic retry.",
+            "Actual frozen plan/protected rendered locally to27587bytes; Bash-n and embeddedPython compile passed. No rendered remote code was executed. Source hashes were checked unchanged before/after final tests.",
+            "A Windows8.3temporary path initially failed the canonical-directory boundary; the test fixture was resolved to its full native path. The guard itself was retained."
+          ]
+        },
+        "root_task_id": "task-6cb78640e3504ebd88aae1ff99f609d7",
+        "run_id": "run-5effe86a9faf468fb0cf5a5aba334422",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "quiz_master-7sw: complete exact28 cold offload adapter and real guard source",
+        "version": 4,
+        "reviewer": "session-b6610b6e9cba4cdaac3aa8d20d33eff1",
+        "review_note": "Read-only review, Claude Opus 5, task-6cb78640 only; 0 correctness defects. approval-inputs sha256 151dfaffd118d948ff1544efea5211dd6d9eebfb06bd043b27694a62c5094647 self-computed; all 9 manifest inputs rehashed and match. render() recomputed twice = 27587B 108326dc..., identical to offload.sh. validate_plan: exactly 28 unique /opt/quiz-master/releases/*.tar.gz names, 1518083884B, dev/ino/mtime_ns real Python ints (27/28 non-100ns-rounded), zero protected path/name overlap, full 23 PROTECTED_HASHES equality. All 28 local cold copies re-verified: regular, nlink1, no symlink, parent=.run/.../offload-v1/copies, receipt order/size/sha == plan, 24 scp + 4 sftp-reget, every transfer_exit 0, total 1518083884B; execute.verify_copies passes. Ownership covers exactly those 28 hashes: chart+Flutter web+Linux API ELF+quiz payload, no extraction; cutover observational after the retained layout-check failure. I reran the suite: 15 tests, exit 0, no skips; RED exit1 kept; prior-v1 5b147 bytes preserved, unused. root-readonly-preflight.py core is byte-identical to offload.py plus hostname assert and only preflight/verify_protected/check_capacity/loaded_images; remove_verified/run_offload never called; no execution logs, no source-review.json. Sole mutation is os.unlink after all-28 batch verify plus per-entry re-verify under stable parent dev/ino; sqlite mode=ro, image inventory subset-preserving, no prune/removal, no helm/kubectl/package mutation, no release-floor waiver. Before-below-20% expected; projected and actual both strict >20%+1GiB with 64MiB growth bound. Limitations, not defects: projected margin ~90MB, avail fell ~77MB in 28min, so the fresh pre-unlink recheck must hold; 600s SSH timeout unmeasured against ~2x hashing; post gate can only fail after unlink, copies retained; 9404416B .partial in copies is outside plan/receipt. Scope: approves Root's single guarded exact-28 offload only, not Reader303 publication/candidate/source. I did no SSH/unlink/edit/Git/deploy."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**ACCEPT, error_count 0** — task-6cb78640e3504ebd88aae1ff99f609d7 is now `ACCEPTED`, reviewer `session-b6610b6e9cba4cdaac3aa8d20d33eff1` (≠ assignee `session-293ef5…`), review note carries the literal `approval-inputs sha256 151dfaffd118d948ff1544efea5211dd6d9eebfb06bd043b27694a62c5094647`.\n\n## What I verified myself\n\n**Manifest chain** — all 9 `approval-inputs.json` entries rehashed and match; the manifest's own SHA256 is exactly `151dfaf…4647`.\n\n**Render determinism** — `offload.render(plan,protected)` recomputed twice: 27587 bytes, `108326dc…`, byte-identical to `offload.sh`.\n\n**Plan** — `validate_plan` accepts exactly 28 unique direct `/opt/quiz-master/releases/*.tar.gz` entries summing to 1,518,083,884; `dev`/`ino`/`mtime_ns`/`size` are genuine Python ints (27/28 not 100 ns-rounded → real Linux `st_mtime_ns`, not the old PowerShell v2 values); zero path/name overlap with the full 23-entry `PROTECTED_HASHES`; single `dev` 64770.\n\n**28 cold copies** — independently rehashed all 1.5 GB: regular, nlink 1, no symlink, parent = `.run/…/offload-v1/copies`, receipt order/size/SHA == plan, 24 `scp` + 4 `sftp-reget`, every `transfer_exit` 0, total exactly 1,518,083,884. `execute.verify_copies` passes. Ownership evidence covers exactly those 28 hashes (chart + Flutter web + Linux API ELF + quiz payload, no extraction); the rejected cutover-layout assumption is retained as a failure record and `cutover_present` is observational (22/6).\n\n**Tests** — reran the suite: 15 tests, exit 0, no skips. RED `exit 1` log retained; `prior-v1` 5b147 bytes preserved byte-for-byte and unused (different hashes).\n\n**No execution yet** — `root-readonly-preflight.py`'s core is byte-identical to `offload.py` plus a hostname assert, with only `preflight`/`verify_protected`/`check_capacity`/`loaded_images` at module level; `remove_verified`/`run_offload` are defined but never called. No `source-review.json`, no `execution-*` logs exist. The sole mutating call anywhere in the rendered script is `os.unlink` at line 87, after all-28 batch verification plus per-entry re-verification under stable parent dev/ino. SQLite is `mode=ro`, image inventory is subset-preserving, no prune/removal, no helm/kubectl/package mutation, no release-floor waiver.\n\n## Limitations recorded (not correctness errors)\n\n- Projected reserve clears 20 % + 1 GiB by only ~90 MB, and observed available fell ~77 MB between the 15:40Z inventory and the 16:08Z preflight — the fresh immediately-before-unlink recheck is what must hold.\n- 600 s SSH timeout is unmeasured against ~2× hashing of the 28 plus 2× the 23 protected files.\n- The post-capacity gate can only fail *after* the unlinks; recovery rests on the retained local copies.\n- A 9,404,416-byte `.partial` from the first copy timeout sits in the copies dir, outside plan/receipt — disposition is a separate decision.\n\nScope of this approval: Root's single guarded exact-28 offload execution only — not Reader303 publication, candidate, or source. I performed no SSH, unlink, edit, Git, or deploy.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "678f62fb5e8ca3a3663f760417cab23f41e2ddbc8ab2cb145b612f8a8463b435",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

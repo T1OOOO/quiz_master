@@ -37,8 +37,9 @@ class PublicationGuards(unittest.TestCase):
                     'actual_reviews':{task:{'actual_response':{'state':'ACCEPTED','assignee':'native','reviewer':'independent','id':task},
                     'call':{'action':'review','arguments':{'verdict':'accept','task_id':task,'error_count':0,
                     'note':'execution-packet sha256 '+digest}}}}}
-        packet={'publish_script_sha256':digest,'package_sha256':digest,'image':acceptance['image']}
-        package={'archive_sha256':digest,'archive':'inert-unit-fixture.tar.gz'}
+        package_path=Path('C:/ap/quiz_master/.run/reader303_release_20261015/package-v2/package-preparation.json')
+        packet={'publish_script_sha256':digest,'package_sha256':digest,'image':acceptance['image'],'package_receipt_path':str(package_path.resolve()),'package_receipt_sha256':digest,'build_id':'quiz-2026.10.15-reader303-14b7da4','source_commit':'14b7da43c3e43642d60859f5053ee6d809c2379e'}
+        package={'archive_sha256':digest,'archive':str(package_path.parent/'quiz-2026.10.15-reader303-14b7da4.tar.gz'),'build_id':packet['build_id'],'frozen_commit':packet['source_commit'],'status':'PREPARED_NOT_EXECUTED'}
         for mutation in ('old_task','wrong_callback','self_review','wrong_executor','wrong_package'):
             a=copy.deepcopy(acceptance)
             if mutation=='old_task':a['execution_review_task_id']='task-1f1ca79d0de24c93954406a82768c20f'
@@ -46,7 +47,7 @@ class PublicationGuards(unittest.TestCase):
             if mutation=='self_review':a['actual_reviews'][task]['actual_response']['reviewer']='native'
             if mutation=='wrong_executor':a['publication_executor_sha256']='0'*64
             if mutation=='wrong_package':a['package_sha256']='0'*64
-            documents={'execution-acceptance.json':a,'execution-packet.json':packet,'package-preparation.json':package}
+            documents={'execution-acceptance.json':a,'execution-packet.json':packet,'package-preparation.json':package,'package-receipt-pin.json':{'path':str(package_path),'sha256':digest}}
             def read(path):return json.dumps(documents.get(path.name,{})).encode()
             with self.subTest(mutation=mutation),patch.object(Path,'exists',return_value=False),patch.object(Path,'is_symlink',return_value=False),patch.object(Path,'read_bytes',read),patch.object(hashlib,'sha256') as hashed,patch.object(subprocess,'run') as ssh,patch.object(subprocess,'check_output') as git:
                 hashed.return_value.hexdigest.return_value=digest
@@ -75,13 +76,18 @@ class PublicationGuards(unittest.TestCase):
                  'remote_prepare_exit':0,'package_sha256':'a'*64,'candidate_runtime':{'reader':{'articles':303,'total_refs':184,'playable_refs':182,'noncatalog_refs':2}},
                  'durable_archive_sha256':'d'*64,'durable_archive':'/var/lib/rancher/k3s/agent/images/'+reader.BUILD_ID+'.tar',
                  'values_sha256':'e'*64,'helm_dryrun_sha256':'f'*64}
-        package={'archive':str(work/'package-v1'/(reader.BUILD_ID+'.tar.gz')),'build_id':reader.BUILD_ID,'frozen_commit':reader.FROZEN_COMMIT,'archive_sha256':'a'*64}
-        data={work/'package-v1/package-preparation.json':json.dumps(package).encode(),receipt_path:json.dumps(receipt).encode()}
+        package={'archive':str(work/'package-v2'/(reader.BUILD_ID+'.tar.gz')),'build_id':reader.BUILD_ID,'frozen_commit':reader.FROZEN_COMMIT,'archive_sha256':'a'*64}
+        package_path=work/'package-v2/package-preparation.json'
+        data={package_path:json.dumps(package).encode(),receipt_path:json.dumps(receipt).encode()}
+        data[docs/'package-receipt-pin.json']=json.dumps({'path':str(package_path),'sha256':hashlib.sha256(data[package_path]).hexdigest()}).encode()
         data[docs/'preparation-receipt-pin.json']=json.dumps({'path':str(receipt_path),'sha256':hashlib.sha256(data[receipt_path]).hexdigest()}).encode()
         writes={}
         def read(path):return data.get(path,b'unit payload')
         with patch.object(Path,'read_bytes',read),patch.object(Path,'read_text',return_value=cutover),patch.object(Path,'write_bytes',lambda path,value:writes.__setitem__(path,value)),patch.object(Path,'write_text',lambda path,value,**kw:writes.__setitem__(path,value.encode())):
             with redirect_stdout(io.StringIO()):module.main()
+        packet=json.loads(writes[docs/'execution-packet.json'])
+        self.assertEqual(packet['package_receipt_path'],str(package_path.resolve()))
+        self.assertEqual(packet['package_receipt_sha256'],hashlib.sha256(data[package_path]).hexdigest())
         shell=writes[docs/'publish-preview.sh'].decode()
         self.assertIn('version"]==62',shell);self.assertIn(reader.BASELINE_IMAGE,shell)
         self.assertIn('f_bavail',shell);self.assertIn('[[ "$quiz_mode" = publish ]]',shell)
@@ -90,11 +96,54 @@ class PublicationGuards(unittest.TestCase):
         self.assertNotIn('docker build',shell);self.assertNotIn('bash cutover.sh prepare',shell)
         check=subprocess.run(['C:/Program Files/Git/bin/bash.exe','-n'],input=shell.encode(),capture_output=True)
         self.assertEqual(check.returncode,0,check.stderr.decode())
+        valid_pin=data[docs/'package-receipt-pin.json']
+        for bad_pin in ({'path':'C:/unrelated/package-preparation.json','sha256':'a'*64},
+                        {'path':str(package_path.with_name('wrong.json')),'sha256':'a'*64},
+                        {'path':str(package_path),'sha256':'0'*64}):
+            data[docs/'package-receipt-pin.json']=json.dumps(bad_pin).encode()
+            with self.subTest(pin=bad_pin),patch.object(Path,'read_bytes',read),patch.object(Path,'write_bytes') as write:
+                with self.assertRaisesRegex(AssertionError,'package receipt pin'):module.main()
+            write.assert_not_called()
+        data[docs/'package-receipt-pin.json']=valid_pin
         data[receipt_path]=json.dumps(dict(receipt,source_commit='0'*40)).encode();writes.clear()
         data[docs/'preparation-receipt-pin.json']=json.dumps({'path':str(receipt_path),'sha256':hashlib.sha256(data[receipt_path]).hexdigest()}).encode()
         with patch.object(Path,'read_bytes',read),patch.object(Path,'write_bytes') as write:
             with self.assertRaises(AssertionError):module.main()
         write.assert_not_called()
+
+    def test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash(self):
+        source=ROOT/'publish_release.py';payload=source.read_text();digest='a'*64
+        path=Path('C:/ap/quiz_master/.run/reader303_release_20261015/package-v2/package-preparation.json').resolve()
+        task='task-'+'b'*32;build='quiz-2026.10.15-reader303-14b7da4';commit='14b7da43c3e43642d60859f5053ee6d809c2379e'
+        packet={'build_id':build,'source_commit':commit,'package_receipt_path':str(path),'package_receipt_sha256':digest,'publish_script_sha256':digest,'package_sha256':digest,'image':'sha256:'+'c'*64}
+        package={'build_id':build,'frozen_commit':commit,'archive':str(path.parent/(build+'.tar.gz')),'archive_sha256':digest,'status':'PREPARED_NOT_EXECUTED'}
+        acceptance={'actual_hub_state':'ACCEPTED','actual_cli_exit':0,'reviewer_provider':'claude','publication_executor_sha256':digest,'execution_packet_sha256':digest,'publish_script_sha256':digest,'package_sha256':digest,'image':packet['image'],'execution_review_task_id':task,
+                    'actual_reviews':{task:{'actual_response':{'state':'ACCEPTED','assignee':'native','reviewer':'independent','id':task},'call':{'action':'review','arguments':{'verdict':'accept','task_id':task,'error_count':0,'note':'execution-packet sha256 '+digest}}}}}
+        original={'execution-acceptance.json':acceptance,'execution-packet.json':packet,'package-preparation.json':package,'package-receipt-pin.json':{'path':str(path),'sha256':digest}}
+        for mutation in ('valid','pin_path','pin_hash','packet_path','packet_hash','outside','wrong_name','wrong_build','wrong_source','archive_parent'):
+            documents=copy.deepcopy(original)
+            if mutation=='pin_path':documents['package-receipt-pin.json']['path']=str(path.parent.parent/'package-v1/package-preparation.json')
+            if mutation=='pin_hash':documents['package-receipt-pin.json']['sha256']='0'*64
+            if mutation=='packet_path':documents['execution-packet.json']['package_receipt_path']=str(path.parent.parent/'package-v1/package-preparation.json')
+            if mutation=='packet_hash':documents['execution-packet.json']['package_receipt_sha256']='0'*64
+            if mutation=='outside':documents['package-receipt-pin.json']['path']='C:/unrelated/package-preparation.json'
+            if mutation=='wrong_name':documents['package-receipt-pin.json']['path']=str(path.with_name('wrong.json'))
+            if mutation=='wrong_build':documents['package-preparation.json']['build_id']='old-build'
+            if mutation=='wrong_source':documents['package-preparation.json']['frozen_commit']='0'*40
+            if mutation=='archive_parent':documents['package-preparation.json']['archive']=str(path.parent.parent/'package-v1'/(build+'.tar.gz'))
+            seen=[]
+            def read(p):
+                seen.append(p)
+                return json.dumps(documents.get(p.name,{})).encode()
+            with self.subTest(mutation=mutation),patch.object(Path,'exists',return_value=False),patch.object(Path,'is_symlink',return_value=False),patch.object(Path,'read_bytes',read),patch.object(hashlib,'sha256') as h,patch.object(subprocess,'run') as ssh,patch.object(subprocess,'check_output',side_effect=RuntimeError('unit Git boundary reached')) as git:
+                h.return_value.hexdigest.return_value=digest
+                if mutation=='valid':
+                    with self.assertRaisesRegex(RuntimeError,'Git boundary reached'):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                    git.assert_called_once();self.assertIn(path,seen)
+                else:
+                    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                    git.assert_not_called()
+            ssh.assert_not_called()
 
     def test_existing_execution_logs_refuse_a_repeat_before_receipts_or_ssh(self):
         source=ROOT/'publish_release.py'

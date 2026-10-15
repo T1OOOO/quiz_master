@@ -1,0 +1,12 @@
+ssh -o BatchMode=yes -o ConnectTimeout=15 root@192.3.164.184 <remote read-only inventory script recorded in this directory>
+---REMOTE SCRIPT---
+set -eu
+echo '== DF =='
+df -B1 /
+echo '== RELEASE_ARCHIVES =='
+find /opt/quiz-master/releases -maxdepth 1 -type f -name '*.tar.gz' -printf '%T@|%s|%p\n' | sort -n
+echo '== IMAGE_ARCHIVES =='
+find /var/lib/rancher/k3s/agent/images -maxdepth 1 -type f -name 'quiz*.tar' -printf '%T@|%s|%p\n' | sort -n
+echo '== SCOPED_DU =='
+du -sb /opt/quiz-master/releases /opt/quiz-master/backups /var/lib/rancher/k3s/agent/images
+echo '== COMPLETE =='

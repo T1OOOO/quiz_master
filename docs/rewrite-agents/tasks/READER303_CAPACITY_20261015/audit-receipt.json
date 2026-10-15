@@ -1,0 +1,41 @@
+{
+  "audit_utc": "2026-10-15T15:27:20.4016725Z",
+  "remote": "root@192.3.164.184",
+  "filesystem": {
+    "strict_20_percent_bytes": 20483434906,
+    "deficit_bytes": 255003034,
+    "total_bytes": 102417174528,
+    "used_bytes": 76964569088,
+    "available_bytes": 20228431872
+  },
+  "current62": {
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "image": "docker.io/library/quiz-master@sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4",
+    "helm_revision": 62
+  },
+  "candidates": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.12-culture-c15eefc.recovery-20261015.tar.gz",
+      "bytes": 94923615,
+      "dev": 64770,
+      "inode": 398167,
+      "sha256": "7979e969218d5d1fd1e9b721f803d6896195d76b36fd0df9b0faf2c02d9efb4c"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.04-lotr-e38bb24.recovery-20261015.tar.gz",
+      "bytes": 82267466,
+      "dev": 64770,
+      "inode": 398625,
+      "sha256": "51b6745e14fc02948d3c503ce3760b97869c6d20e241091c43ff1cbe12727d8f"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.04-study-3ebba4e.recovery-20261015.tar.gz",
+      "bytes": 81870212,
+      "dev": 64770,
+      "inode": 398626,
+      "sha256": "6806dd9b306071ed3a1281d209626d2bd5540f1e9d3508d6c7f1a6c9bba30c0b"
+    }
+  ],
+  "candidate_total_bytes": 259061293,
+  "status": "READ_ONLY_AUDIT_ONLY_NO_COPY_OR_REMOVAL"
+}

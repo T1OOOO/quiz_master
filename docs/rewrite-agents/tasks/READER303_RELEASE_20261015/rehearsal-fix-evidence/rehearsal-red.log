@@ -1,0 +1,17 @@
+test_actual_rehearsal_static_musical_count_and_revision_binding (test_reader303_release.ReaderReleaseTests.test_actual_rehearsal_static_musical_count_and_revision_binding) ... ERROR
+
+======================================================================
+ERROR: test_actual_rehearsal_static_musical_count_and_revision_binding (test_reader303_release.ReaderReleaseTests.test_actual_rehearsal_static_musical_count_and_revision_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 320, in test_actual_rehearsal_static_musical_count_and_revision_binding
+    old=archived('rehearse.py').decode();old_gate=bindings(old)
+                                                  ~~~~~~~~^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\release-worker\test_reader303_release.py", line 318, in bindings
+    start=body.index('   assert len(refs)==')
+ValueError: substring not found
+
+----------------------------------------------------------------------
+Ran 1 test in 1.568s
+
+FAILED (errors=1)

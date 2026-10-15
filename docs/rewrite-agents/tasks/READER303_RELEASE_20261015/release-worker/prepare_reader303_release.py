@@ -269,6 +269,10 @@ PY'''
  old_checks='b347996fd9486a860f518efc1d6ebdc8a657dd24f5dee00b53218b65a58f3fc9'
  require(body.count(old_root)==1 and body.count(old_checks)==1 and API_SHA256 in body,'archived Reader299 rollback controls differ')
  body=body.replace(old_root,f'/opt/quiz-master/releases/{BASELINE_BUILD}').replace(old_checks,digest(stage/'checksums.txt'))
+ old_article_counts="{'lotr':3,'prep-ballet':1,'prep-musicals':1,'theme-harry-potter':10,'theme-terminator':10}"
+ new_article_counts="{'lotr':3,'prep-ballet':1,'prep-musicals':5,'theme-harry-potter':10,'theme-terminator':10}"
+ require(body.count(old_article_counts)==1,'archived Reader299 static article-count contract differs')
+ body=body.replace(old_article_counts,new_article_counts,1)
  require('assert len(matches)==12 and len(expected_questions)==20' in body,'preserved mixed12/20 rehearsal missing')
  rehearsal.write_bytes(body.encode('utf-8'));(stage/'api').chmod(0o755);cutover.chmod(0o755)
 

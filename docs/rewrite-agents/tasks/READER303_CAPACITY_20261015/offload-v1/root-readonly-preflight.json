@@ -1,0 +1,7 @@
+{
+  "actual_exit": 0,
+  "utc": "2026-10-15T16:08:22.925318+00:00",
+  "stdout": "{\"helm_revision\": 62, \"status\": \"deployed\", \"images\": [\"docker.io/library/quiz-master@sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4\", \"docker.io/library/quiz-master@sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4\"], \"available_replicas\": 1, \"pvc_uid\": \"7fc2428f-4146-4c78-a26d-2347d9f3b7bf\", \"feedback_count\": 29, \"all_open\": true, \"feedback_sha256\": \"452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e\", \"node_ready\": true, \"disk_pressure\": false, \"blocking_taints\": false, \"disk_available\": 20128874496, \"disk_total\": 102417174528, \"disk_at_least20percent\": false, \"https_readiness_status\": 200, \"backup_mode\": \"0600\", \"backup_integrity\": \"ok\"}\n{\"protected_files_verified\": 23}\n{\"read_only_preflight\": true, \"projected_reserve_over20percent_plus1GiB\": true, \"loaded_image_inventory\": {\"containerd\": {\"count\": 210, \"sha256\": \"3925166e79d77c1dc25b3cbba7d7f80be58cff0219f8e1444d40ce803404981c\"}, \"docker\": {\"count\": 51, \"sha256\": \"677e4699aef04ca31a1b6cc8e3414ffaddc28601a93b1bd46922e6adcb593843\"}}}\n",
+  "stderr": "",
+  "scope": "Read-only preflight,23protectedhashes,projectedcapacity,imageinventoryonly; remove_verified/run_offload never called; no lock/unlink/deploy"
+}

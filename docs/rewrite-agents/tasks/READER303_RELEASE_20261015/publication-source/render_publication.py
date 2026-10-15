@@ -8,10 +8,13 @@ def main():
     r=Path('C:/ap/quiz_master');w=r/'.run/reader303_release_20261015';d=r/'docs/rewrite-agents/tasks/READER303_RELEASE_20261015'
     def load(p):return json.loads(p.read_bytes())
     def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-    p=load(w/'package-v1/package-preparation.json')
+    package_pin=load(d/'package-receipt-pin.json');package_receipt=Path(package_pin['path']).resolve()
+    assert package_receipt.is_relative_to(w.resolve()) and package_receipt.name=='package-preparation.json' and h(package_receipt)==package_pin['sha256'],'actual package receipt pin differs'
+    p=load(package_receipt)
     receipt_pin=load(d/'preparation-receipt-pin.json');receipt=Path(receipt_pin['path']).resolve()
     assert receipt.is_relative_to(w.resolve()) and receipt.name=='remote-preparation-verification.json' and h(receipt)==receipt_pin['sha256'],'actual new preparation receipt pin differs'
     e=load(receipt);stage=(r/Path(p['archive'])).parent/p['build_id'];b=p['build_id'];image=e['image'];values=e['values']
+    assert Path(p['archive']).resolve().parent==package_receipt.parent and Path(p['archive']).name==b+'.tar.gz','package archive/receipt boundary differs'
     assert b==e['build_id']=='quiz-2026.10.15-reader303-14b7da4' and p['frozen_commit']==e['source_commit']=='14b7da43c3e43642d60859f5053ee6d809c2379e'
     assert e['status']=='PREPARED_NOT_PUBLISHED' and e['remote_prepare_exit']==0 and e['package_sha256']==p['archive_sha256'] and re.fullmatch('sha256:[0-9a-f]{64}',image)
     assert e['candidate_runtime']['reader']=={'articles':303,'total_refs':184,'playable_refs':182,'noncatalog_refs':2}
@@ -44,7 +47,7 @@ def main():
     '''
     assert shell.count('helm upgrade')==1 and all(x not in shell for x in ['docker build','flutter build','rehearse-'])
     (d/'publish-preview.sh').write_bytes(shell.encode())
-    out=dict(e,publish_script_sha256=h(d/'publish-preview.sh'),package_receipt_sha256=h(w/'package-v1/package-preparation.json'),local_browser_sha256=h(r/'docs/rewrite-agents/tasks/READER303_BROWSER_20261015/browser-proof-v2.json'),publication_renderer_sha256=h(Path(__file__)),preparation_receipt_sha256=h(receipt),preparation_receipt_path=str(receipt))
+    out=dict(e,publish_script_sha256=h(d/'publish-preview.sh'),package_receipt_sha256=h(package_receipt),package_receipt_path=str(package_receipt),local_browser_sha256=h(r/'docs/rewrite-agents/tasks/READER303_BROWSER_20261015/browser-proof-v2.json'),publication_renderer_sha256=h(Path(__file__)),preparation_receipt_sha256=h(receipt),preparation_receipt_path=str(receipt))
     (d/'execution-packet.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf8');print('Actual executionpacket bound to prepare receipt and inert publication script.')
 
 if __name__ == '__main__':

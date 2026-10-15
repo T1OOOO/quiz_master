@@ -1,0 +1,21 @@
+{
+  "actual_exit": 1,
+  "command": [
+    "python",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-pins-v2.json",
+    "--package",
+    "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\package-v1\\package-preparation.json",
+    "--helper-review",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\remote-helper-acceptance.json",
+    "--evidence-dir",
+    "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\remote-v1",
+    "--prepare"
+  ],
+  "duration_seconds": 92.043,
+  "stdout_path": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\remote-preparation-wrapper-v1.log",
+  "stdout_sha256": "0c7188b387970eb8fff466fb559829e1a4e070ba8122fa490b4e0563733fd1e4",
+  "evidence_dir": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\remote-v1",
+  "scope": "Guardedpreparationonly; nohelmupgrade/publication; preservefailure/partialbytes"
+}

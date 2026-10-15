@@ -1,0 +1,228 @@
+test_actual_adapted_prefix_renders_publish_only_and_rejects_wrong_receipt (test_publication_guards.PublicationGuards.test_actual_adapted_prefix_renders_publish_only_and_rejects_wrong_receipt) ... ERROR
+test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) ... 
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='valid') ... FAIL
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='pin_path') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='pin_hash') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='packet_path') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='packet_hash') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='outside') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_name') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_build') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_source') ... ERROR
+  test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='archive_parent') ... ERROR
+
+======================================================================
+ERROR: test_actual_adapted_prefix_renders_publish_only_and_rejects_wrong_receipt (test_publication_guards.PublicationGuards.test_actual_adapted_prefix_renders_publish_only_and_rejects_wrong_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 87, in test_actual_adapted_prefix_renders_publish_only_and_rejects_wrong_receipt
+    with redirect_stdout(io.StringIO()):module.main()
+                                        ~~~~~~~~~~~^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\render_publication.py", line 11, in main
+    p=load(w/'package-v1/package-preparation.json')
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\render_publication.py", line 9, in load
+    def load(p):return json.loads(p.read_bytes())
+                       ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\json\__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Python314\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\json\decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='pin_path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='pin_hash')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='packet_path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='packet_hash')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_name')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_build')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='wrong_source')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+ERROR: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='archive_parent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 135, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    with self.assertRaises(AssertionError):exec(compile(payload,str(source),'exec'),{'__name__':'__main__','__file__':str(source)})
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\publish_release.py", line 21, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only',*pair,'--','next','quizzes','metadata','study/question_articles'],cwd=r).strip()
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\unittest\mock.py", line 1241, in _execute_mock_call
+    raise effect
+RuntimeError: unit Git boundary reached
+
+======================================================================
+FAIL: test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash (test_publication_guards.PublicationGuards.test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash) (mutation='valid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER303_RELEASE_20261015\publication-source\test_publication_guards.py", line 133, in test_pinned_fresh_package_executor_reaches_git_only_with_matching_path_and_hash
+    git.assert_called_once();self.assertIn(path,seen)
+                             ~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: WindowsPath('C:/ap/quiz_master/.run/reader303_release_20261015/package-v2/package-preparation.json') not found in [WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-acceptance.json'), WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-packet.json'), WindowsPath('C:/ap/quiz_master/.run/reader303_release_20261015/package-v1/package-preparation.json'), WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publication-source/publish_release.py'), WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-packet.json'), WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/publish-preview.sh'), WindowsPath('C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/execution-packet.json'), WindowsPath('C:/ap/quiz_master/.run/reader303_release_20261015/package-v2/quiz-2026.10.15-reader303-14b7da4.tar.gz')]
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.746s
+
+FAILED (failures=1, errors=10)

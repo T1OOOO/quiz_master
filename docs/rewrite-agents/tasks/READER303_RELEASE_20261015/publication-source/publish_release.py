@@ -8,7 +8,14 @@ if any((d/name).exists() or (d/name).is_symlink() for name in ('publish-log.txt'
  raise RuntimeError('existing publication evidence; inspect outcome before any repeat')
 def read(p):return json.loads(p.read_bytes())
 def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-a=read(d/'execution-acceptance.json');e=read(d/'execution-packet.json');p=read(w/'package-v1/package-preparation.json');assert a['actual_hub_state']=='ACCEPTED' and a['actual_cli_exit']==0 and a['reviewer_provider']=='claude'
+a=read(d/'execution-acceptance.json');e=read(d/'execution-packet.json');assert a['actual_hub_state']=='ACCEPTED' and a['actual_cli_exit']==0 and a['reviewer_provider']=='claude'
+package_pin=read(d/'package-receipt-pin.json');package_receipt=Path(package_pin['path']).resolve()
+assert package_receipt.is_relative_to(w.resolve()) and package_receipt.name=='package-preparation.json' and h(package_receipt)==package_pin['sha256'],'actual package receipt pin differs'
+assert str(package_receipt)==e['package_receipt_path'] and package_pin['sha256']==e['package_receipt_sha256'],'reviewed package receipt path/hash differs'
+p=read(package_receipt)
+assert p['status']=='PREPARED_NOT_EXECUTED' and p['build_id']==e['build_id']=='quiz-2026.10.15-reader303-14b7da4'
+assert p['frozen_commit']==e['source_commit']=='14b7da43c3e43642d60859f5053ee6d809c2379e'
+assert Path(p['archive']).resolve().parent==package_receipt.parent and Path(p['archive']).name==p['build_id']+'.tar.gz','package archive/receipt boundary differs'
 assert a.get('publication_executor_sha256')==h(Path(__file__)), 'publication executor changed after review'
 assert a['execution_packet_sha256']==h(d/'execution-packet.json') and a['publish_script_sha256']==e['publish_script_sha256']==h(d/'publish-preview.sh') and a['package_sha256']==e['package_sha256']==p['archive_sha256'] and a['image']==e['image']
 task=a.get('execution_review_task_id','')

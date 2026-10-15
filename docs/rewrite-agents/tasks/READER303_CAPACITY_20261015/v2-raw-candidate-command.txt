@@ -1,0 +1,43 @@
+ssh -o BatchMode=yes -o ConnectTimeout=15 root@192.3.164.184 <28 direct read-only tar archives: os.stat, sha256sum, tar manifest RepoTags>
+---REMOTE SCRIPT---
+set -eu
+cat <<'LIST' | while IFS= read -r f
+do
+/opt/quiz-master/releases/failed-readiness-quiz-2026.10.11-encore-317b339-20261010T231811Z.tar.gz
+/opt/quiz-master/releases/rejected-quiz-2026.10.12-singers-1c9b534-identity-032842.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916-v2.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916-v3.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.13-culture-328f2f8-v7.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.13-culture-328f2f8-v8.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.13-film-craft-c74253f.failed-v1-171556Z.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.14-mixed-ecac092-failed-111030.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.14-mixed-ecac092-failed-112137.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.14-mixed-ecac092-failed-v4.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.14-reader-17be4ce-failed-20261014T153204Z.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-c15eefc.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916-v2-02e645a0.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.13-film-craft-c74253f.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.11-dedup-ddf47be-failed-fixture-aliasing.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.03-culture260-8c90873.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.04-lotr-e38bb24.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.04-study-3ebba4e.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.02-2327-5121fbd.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.02-2308-9359647.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-f219916-v1-67b68725.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-7d7a163.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-culture-variety-b015251.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.11-dedup-ddf47be.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-singers-1c9b534.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.12-actors-3556b59.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-2026.10.11-phobias-1537ff5.recovery-20261015.tar.gz
+/opt/quiz-master/releases/quiz-rounds20.tar.gz
+LIST
+  python3 -c 'import os,json,sys; s=os.stat(sys.argv[1]); print("META "+json.dumps({"path":sys.argv[1],"dev":s.st_dev,"inode":s.st_ino,"size":s.st_size,"mtime_ns":s.st_mtime_ns},sort_keys=True))' "$f"
+  sha256sum "$f"
+  if tar -tzf "$f" | grep -qx 'manifest.json'; then
+    tar -xOzf "$f" manifest.json | python3 -c 'import json,sys; x=json.load(sys.stdin); print("OWNER "+json.dumps([{ "Config":e.get("Config"), "RepoTags":e.get("RepoTags"), "Layers":e.get("Layers") } for e in x],sort_keys=True))'
+  else
+    echo 'OWNER {"manifest":"absent"}'
+  fi
+done
+echo '== COMPLETE =='

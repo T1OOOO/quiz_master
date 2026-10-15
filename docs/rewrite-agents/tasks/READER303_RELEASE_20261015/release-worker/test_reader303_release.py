@@ -309,6 +309,47 @@ class ReaderReleaseTests(unittest.TestCase):
             bad=copy.deepcopy(context); bad['matches'][0]['revision_sha256']='0'*64
             with self.assertRaises(AssertionError):exec(clause,bad)
 
+    def test_actual_rehearsal_static_musical_count_and_revision_binding(self):
+        prior=json.loads(archived(r.READER_SOURCE))['articles']
+        current=json.loads((REPO/r.READER_SOURCE).read_bytes())['articles']
+        snapshot=json.loads((REPO/'study/question_articles/snapshots/prep-musicals.json').read_bytes())
+        questions={q['question_id']:q['revision']['sha256'] for q in snapshot['quiz']['questions']}
+        def bindings(body):
+            lines=body.splitlines();start=next(i for i,line in enumerate(lines) if line.lstrip().startswith('assert len(refs)=='))
+            return textwrap.dedent('\n'.join(lines[start:start+2]))
+        old=archived('rehearse.py').decode();old_gate=bindings(old)
+        def refs(articles):return [ref for a in articles for ref in a['question_refs'] if ref['quiz_id']=='prep-musicals']
+        self.assertEqual(len(refs(prior)),1);self.assertEqual(len(refs(current)),5)
+        exec(old_gate,{'qid':'prep-musicals','refs':refs(prior),'questions':questions})
+        with self.assertRaises(AssertionError):exec(old_gate,{'qid':'prep-musicals','refs':refs(current),'questions':questions})
+        with tempfile.TemporaryDirectory() as directory:
+            stage=Path(directory);(stage/'api').touch();(stage/'web').mkdir();(stage/'web/main.dart.js').write_bytes(b'fixture JS')
+            for name in ('cutover.sh','rehearse.py','checksums.txt'):(stage/name).write_bytes(archived(name))
+            helper=r.house();helper.BUILD_ID=r.BUILD_ID;helper.TARGET_SOURCE=r.FROZEN_COMMIT;helper.TARGET_API_SHA256=r.API_SHA256
+            r.install_runtime_verifier(stage,helper,r.digest(stage/'web/main.dart.js'))
+            body=(stage/'rehearse.py').read_text();gate=bindings(body)
+            self.assertNotIn("'prep-musicals':1",body);self.assertEqual(body.count("'prep-musicals':5"),1)
+            self.assertIn("'lotr':3,'prep-ballet':1,'prep-musicals':5,'theme-harry-potter':10,'theme-terminator':10",body)
+            self.assertIn('assert graded==335 and finished==15',body)
+            expected=old.replace('/opt/quiz-master/releases/quiz-2026.10.15-reader291-3482af9','/opt/quiz-master/releases/'+r.BASELINE_BUILD).replace('b347996fd9486a860f518efc1d6ebdc8a657dd24f5dee00b53218b65a58f3fc9',r.digest(stage/'checksums.txt')).replace("'prep-musicals':1","'prep-musicals':5")
+            self.assertEqual(body,expected,'rehearsal changed beyond rollback pins and exact musical count')
+            exec(gate,{'qid':'prep-musicals','refs':refs(current),'questions':questions})
+            bad=copy.deepcopy(refs(current));bad[0]['revision_sha256']='0'*64
+            with self.assertRaises(AssertionError):exec(gate,{'qid':'prep-musicals','refs':bad,'questions':questions})
+            with self.assertRaises(AssertionError):exec(gate,{'qid':'prep-musicals','refs':refs(current)[:-1],'questions':questions})
+
+    def test_rehearsal_count_anchor_missing_or_duplicated_is_refused(self):
+        original=archived('rehearse.py').decode()
+        anchor="{'lotr':3,'prep-ballet':1,'prep-musicals':1,'theme-harry-potter':10,'theme-terminator':10}"
+        for body in (original.replace(anchor,anchor.replace("'prep-musicals':1","'prep-musicals':2")),original+'\n# '+anchor):
+            with tempfile.TemporaryDirectory() as directory:
+                stage=Path(directory);(stage/'api').touch();(stage/'web').mkdir();(stage/'web/main.dart.js').write_bytes(b'fixture JS')
+                for name in ('cutover.sh','checksums.txt'):(stage/name).write_bytes(archived(name))
+                (stage/'rehearse.py').write_bytes(body.encode())
+                helper=r.house();helper.BUILD_ID=r.BUILD_ID;helper.TARGET_SOURCE=r.FROZEN_COMMIT;helper.TARGET_API_SHA256=r.API_SHA256
+                with self.assertRaisesRegex(RuntimeError,'static article-count contract'):
+                    r.install_runtime_verifier(stage,helper,r.digest(stage/'web/main.dart.js'))
+
     def test_prior_reader_is_bound_to_extracted_bytes(self):
         with tempfile.TemporaryDirectory() as d:
             stage=Path(d)/'stage'; target=stage/r.READER_SOURCE; target.parent.mkdir(parents=True); target.write_bytes(archived(r.READER_SOURCE))

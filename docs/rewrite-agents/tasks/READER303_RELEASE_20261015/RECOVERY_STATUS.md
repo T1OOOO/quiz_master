@@ -1,0 +1,17 @@
+# Reader303 preparation recovery
+
+Production remains Helm62 / Reader299. The first Reader303 remote preparation failed before image construction: the archived rehearsal expected one musical question article, while the reviewed successor contains five. Its backup restored successfully; original package-v1, remote-v1, server stage, logs and backup remain preserved. No Reader303 publication occurred.
+
+The native senior corrected the single inherited count anchor and bound publication to an explicit package receipt path and SHA256, so a fresh package-v2 can replace the failed attempt without rewriting history. Actual preparation/publication suites passed 33 and 7 tests respectively. An independent Claude review is required before using these source changes.
+
+Root's fresh read-only server inspection recorded 420 directory/file identities, the exact old archive hash, the intact 0600 SQLite backup, no owned Reader303 images/containers/processes, and absent quarantine destinations. It verified current Helm62, both current image digests, PVC, healthy node/HTTPS and all29 feedback still OPEN with unchanged full-row digest. Disk available was 21,272,870,912 of 102,417,174,528 bytes. Full source/output/fingerprints are in failed-preparation-v1.
+
+The proposed recovery only renames the never-published failed stage and archive to fixed sibling .failed-20261015T162707Z paths, using Linux renameat2 NOREPLACE under this project's deployment lock. It checks full fingerprints and all23 protected current/rollback artifacts before and after. Five local guard tests passed; their Windows syscall mock does not certify Linux execution. Independent approval must bind the exact rendered script before Root executes it. The old backup stays in place.
+
+The forensic helper did not start: its existing Hub identity could not join the continuation team. Root performed the read-only work directly, without resetting the shared broker. The old never-started task56f6 remains historical; replacementda5 was cancelled. The senior's genuine completed taskc23 and the new independent reviewer are distinct from stale helper presence.
+
+The previously approved capacity recovery is complete: exactly28 old archives totaling1,518,083,884 bytes were copied locally and full-hash verified before removal. Cold copies remain protected. All23 protected artifacts and every preexisting loaded image/reference remained intact. That operation alone does not approve a new release.
+
+Next: independent source/quarantine review, preserving rename, fresh hash-bound package-v2 and remote preparation, candidate/backup/restore/rollback/image/dry-run gates, exact execution approval, one atomic publication, then published verification. All29 real feedback remain OPEN. This batch adds four articles to existing questions; it does not claim new questions, a complete4084-question audit, Android or Wasm certification.
+
+The first independent Opus attempt issued genuine ACCEPT/error0 callbacks for both source scopes, then hit the official900-second CLI timeout after those callbacks. This attempt does not qualify the required CLI0 gate; recovery-review-timeout-v1.json retains actual accepted and rejected callback responses and the failed trace digest. No remote mutation followed it. A fresh bounded Sonnet attestation will recheck the unchanged22 inputs and45 offline tests, return one new callback, and exit before any execution is allowed.

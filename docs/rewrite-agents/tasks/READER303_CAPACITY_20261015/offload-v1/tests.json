@@ -1,0 +1,21 @@
+{
+  "actual_exit": 0,
+  "tests": 15,
+  "stdout_sha256": "3b9e42c270b73683e580a45918a3462c40180604e1b8c062e6bf6c766bd7f8fb",
+  "source_sha256": {
+    "offload.py": "7d8637d9a646f306aa41cf90a496d3216933a4f0b8c717cc2db5b9c3e41c66d5",
+    "execute.py": "f065a76dd9efd9697175e874ffb1f428ff5624a928cf05e688de1d18c02eb42e",
+    "test_offload.py": "7278a541ab703b24dfa7810e06afe3df2688f1a788390e3dae40704ae036e1a8"
+  },
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_CAPACITY_20261015\\offload-v1",
+    "-p",
+    "test_offload.py",
+    "-v"
+  ]
+}
