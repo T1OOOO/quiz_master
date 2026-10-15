@@ -1,0 +1,20 @@
+{
+  "actual_exit": 0,
+  "review_manifest_sha256": "058cb443ff3acf6e6af7fedd369e0636592bace5556b737714ecd8bfdedb6735",
+  "reviewed_inputs_unchanged": 149,
+  "reader303_frozen_inputs_unchanged": 101,
+  "foreign_pinned_hashes_unchanged": 69,
+  "both_actual_reviews_accepted_cli0_error0": true,
+  "app_source_unchanged_since_frozen_build": true,
+  "publication_performed": false,
+  "git_whitespace_check": {
+    "all_paths_exit": 1,
+    "reason": "Two immutable raw Flutter logs retain the compiler progress line trailing spaces; preserved reviewed hashes.",
+    "all_other_paths_exit": 0,
+    "excluded_raw_logs": [
+      "production-build.log",
+      "qa-build.log"
+    ],
+    "windows_cr_at_eol": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "status": "LOCAL_FLUTTER_RUNTIME_VERIFIED_NOT_PUBLISHED",
+  "frozen_source": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+  "build_id": "quiz-2026.10.15-country483-3c22818",
+  "actual_build_exits": [
+    0,
+    0
+  ],
+  "post_browser_output_hashes_recomputed": 148,
+  "browser_commands": 61,
+  "actual_browser_failures": 0,
+  "named_browser": "country483-mixed",
+  "namespace": "quiz-master",
+  "viewports": [
+    {
+      "width": 361,
+      "height": 738
+    },
+    {
+      "width": 1280,
+      "height": 900
+    }
+  ],
+  "actual_ui": [
+    "All11Russian fallback full-name searches yielded matching localized result controls",
+    "Western Sahara and Greenland English searches yielded Russian visible labels",
+    "WesternSahara selection and country focus at361x738",
+    "LongFrenchSouthernTerritories label wraps visibly without clipping",
+    "RegisteredFrance control, selection/focus/zoom at1280x900"
+  ],
+  "root_viewed_screenshots": {
+    "russian-search.png": "f5c8cfbd45793277108b215f487a5dbd81b2f193adc1bb2c3429c5a891b05555",
+    "sahara-focused.png": "1e3f68ee7737fef0e9fd0289095769be896873cf43f531dcc2cff90a48ae3639",
+    "long-label.png": "df6cc1aee3d341363509f2d6d607000e4010f653e680385ad505e417dd097d9c",
+    "france-desktop.png": "a58bed4429b990ed65f9ae4fc9cb071e591350c23257aab99f8019512fd04c3f"
+  },
+  "runtime_errors": [],
+  "browser_close_actual_exit": 0,
+  "captured_native_identities_inactive": 13,
+  "fixture_wrapper_actual_exit": 0,
+  "api_sha256": "28995a288b5c2c27ae5740b4e36f25a87f3c5a3cd8b1b028fc5004cf226450f0",
+  "intentional_api_terminate_exit": 1,
+  "ports_closed": {
+    "19090": true,
+    "19093": true
+  },
+  "no_browser_api_post_or_feedback": true,
+  "compiled_map_catalog_sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc",
+  "compiled_reader_articles": 303,
+  "compiled_reader_sha256": "84f0cac186aa95c6abf910a396b88201e25cdf67a388130956f7548c4c567733",
+  "production_unchanged": "Read-only actual63/Reader303 baseline and29OPENsamefeedbackdigest; no server mutation in this task",
+  "limitations": [
+    "Runtime uses actual newFlutterQA build and existing isolated WindowsGo fixture, not a new immutable Linux candidate",
+    "No packaging/copyDB rehearsal/execution authorization for this build; issue483 remainsin_progress until publishedverification",
+    "No Android/Wasm/physicalscreenreader/fullquestionfact certification",
+    "BuildCLI retained existing deprecatedPWA option and Cupertino font-family warning; actualcommands both0 and rendered testedcontrols visible"
+  ]
+}

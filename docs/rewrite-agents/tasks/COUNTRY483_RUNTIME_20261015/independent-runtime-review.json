@@ -1,0 +1,59 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-96da0af0c5ef4d3da1b5a09e30a0cd8c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-96da0af0c5ef4d3da1b5a09e30a0cd8c",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review of local artifacts only; I did not observe a live server/SSH myself. Recomputed sha256 for all 149 review-inputs.json manifest entries and all 148 production-web/qa-web compiled output hashes: 0 mismatches, 0 missing, file counts 74+74 match claim. Independently confirmed via `git show 3c22818:...` (not from submitted evidence) that compiled assets/assets/quizipedia/catalog.json and assets/assets/study/question-articles.json are byte-identical to the frozen source commit — country catalog and reader/quiz content unchanged. Verified all 4 screenshot sha256 match browser-proof.json and visually inspected them: clean localized labels (e.g. Западная Сахара), long FSAT label wraps without clipping, France control renders normally at desktop. browser-commands.json: 61/61 exit 0 as claimed. baseline/preservation/fixture-cleanup files are internally consistent (Helm 63, 29 feedback open, ports closed, intentional API exit 1, no POSTs). No defects found. ACCEPT; note issue483 correctly remains open/unpublished. Bound to review-inputs.json sha256 058cb443ff3acf6e6af7fedd369e0636592bace5556b737714ecd8bfdedb6735."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual frozenFlutterassets/buildhashes, browserobservations and scoped nativecleanup evidence; independentdifferentprovider review before acceptance. No release/publication claims beyondactualoperations;483 staysopen untilpublished.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\.run\\country483_runtime_20261015",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RUNTIME_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns new .run/country483_runtime_20261015 and docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015; source frozen3c22818 already pushed and source reviews accepted. Use existing Flutter/Go browser house workflow, fresh isolated outputs/namedbrowser only. Native9729 discovers read-only existingcommands; no overlappingfiles. No edits to oldReader303 evidence, appsource, sharedbroker orotherresources. Build actual newFlutter QA/prod ifapplicable, test countrysearch Russianlabels/Englishsearch/selection/zoom mobile361x738 and desktop, retain screenshots/console/rawexits/nativeprocesscleanup. No production mutation until fullnewreleasegates independentacceptance. Gemini quota unchanged,no retry. Real29feedbackOPENsame digest fresh baseline63.",
+        "created_at": 1792092562.5864432,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-96da0af0c5ef4d3da1b5a09e30a0cd8c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/review-inputs.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/browser-proof.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/actual-flutter-builds.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_RUNTIME_20261015/native-workflow-discovery.json"
+          ],
+          "summary": "Actual newFlutter production57.57s/QA76.82s builds0,74files each;148outputhashes rechecked afterbrowser. Actual61CLIbrowsercommands0; all11Russiansearchlabels, EnglishWesternSahara/Greenland, registeredFrance; mobile361x738 search/selection/focus + longlabelwrap, desktop1280x900 focus/zoom; Root viewed4screenshots. Officialclose0,13capturednativeidentitiesinactive, fixturewrapper0/intentionalAPIterminate1/bothportsclosed/noAPIposts. Freshproduction63/303/29OPENunchanged. No package/rehearsal/publication;483remainsopen."
+        },
+        "root_task_id": "task-96da0af0c5ef4d3da1b5a09e30a0cd8c",
+        "run_id": "run-1ef58c4ca2c24ef68207fdd538836593",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: actual Flutter build and localized map browser verification",
+        "version": 4,
+        "reviewer": "session-c289e7b45b4c4785a55eb1f678c929a4",
+        "review_note": "Independent Claude review of local artifacts only; I did not observe a live server/SSH myself. Recomputed sha256 for all 149 review-inputs.json manifest entries and all 148 production-web/qa-web compiled output hashes: 0 mismatches, 0 missing, file counts 74+74 match claim. Independently confirmed via `git show 3c22818:...` (not from submitted evidence) that compiled assets/assets/quizipedia/catalog.json and assets/assets/study/question-articles.json are byte-identical to the frozen source commit — country catalog and reader/quiz content unchanged. Verified all 4 screenshot sha256 match browser-proof.json and visually inspected them: clean localized labels (e.g. Западная Сахара), long FSAT label wraps without clipping, France control renders normally at desktop. browser-commands.json: 61/61 exit 0 as claimed. baseline/preservation/fixture-cleanup files are internally consistent (Helm 63, 29 feedback open, ports closed, intentional API exit 1, no POSTs). No defects found. ACCEPT; note issue483 correctly remains open/unpublished. Bound to review-inputs.json sha256 058cb443ff3acf6e6af7fedd369e0636592bace5556b737714ecd8bfdedb6735."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`. Summary of the independent review:\n\n**task-97290998 (native discovery)** — ACCEPT. Recomputed the cited `qa-api.exe` sha256 myself (`28995a28...f0`) — matches, confirming it's the existing immutable Windows Go binary with no new compile. Cited commands/paths check out against files on disk.\n\n**task-96da0af0 (Flutter build + browser verification)** — ACCEPT. Independently:\n- Recomputed sha256 for all 149 `review-inputs.json` manifest entries and all 148 compiled output files in `production-web`/`qa-web` — 0 mismatches, 0 missing, 74+74 file counts correct.\n- Used `git show` at the frozen commit `3c22818` (not the submitted evidence) to confirm the compiled country catalog and reader/quiz article assets are byte-identical to source.\n- Verified all 4 screenshot hashes and viewed them — localized Russian labels render correctly, the long FSAT label wraps without clipping, France control is unaffected, no blocking UI defects.\n- Confirmed 61/61 browser commands exited 0, and cleanup/baseline files are internally consistent (ports closed, intentional API exit 1, no feedback POSTs, Helm 63/29-open-feedback unchanged).\n\nI did not observe a live server myself — this was a local-artifact review only, as scoped. Issue 483 correctly remains open/unpublished; no production mutation occurred.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7d0114774561d56e540cdd8eb12f1de93a46fe3ef167cbddaf63c44cb0f7123d",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
