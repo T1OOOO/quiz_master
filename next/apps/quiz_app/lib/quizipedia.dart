@@ -1021,7 +1021,8 @@ class _QuizGameState extends State<_QuizGame> {
           constraints: BoxConstraints(maxHeight: constraints.maxHeight * .38),
           child: SingleChildScrollView(
             key: const Key('map-details'),
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+            // Keep wrapped text and controls clear of the global feedback FAB.
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 72, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

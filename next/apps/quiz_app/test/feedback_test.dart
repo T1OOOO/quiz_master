@@ -2,8 +2,65 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/main.dart';
+import 'package:quiz_app/quizipedia.dart';
 
 void main() {
+  for (final scale in [1.0, 2.0]) {
+    testWidgets('map footer stays clear of feedback at ${scale}x text', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(361, 738);
+      tester.view.devicePixelRatio = 1;
+      tester.view.padding = const FakeViewPadding(right: 24, bottom: 24);
+      tester.platformDispatcher.textScaleFactorTestValue = scale;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetPadding);
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          const ProviderScope(
+            child: QuizApp(
+              initialLocation: '/quizipedia',
+              defaultLocale: Locale('ru'),
+            ),
+          ),
+        );
+        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
+          find.byWidgetPredicate(
+            (widget) => widget is FutureBuilder<QuizipediaCatalog>,
+          ),
+        );
+        await builder.future!.timeout(const Duration(seconds: 5));
+      });
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Карта и флаги'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const Key('map-country-search')));
+      await tester.tap(find.byKey(const Key('map-country-search')));
+      await tester.pumpAndSettle();
+      const name = 'Французские Южные и Антарктические территории';
+      await tester.enterText(find.byType(TextField), name);
+      await tester.pump();
+      await tester.tap(find.widgetWithText(ListTile, name));
+      await tester.pumpAndSettle();
+      final footerName = find.descendant(
+        of: find.byKey(const Key('map-details')),
+        matching: find.text(name),
+      );
+      await tester.ensureVisible(footerName);
+      await tester.pumpAndSettle();
+      final feedback = find.byType(FloatingActionButton);
+      expect(feedback, findsOneWidget);
+      expect(
+        tester.getRect(footerName).overlaps(tester.getRect(feedback)),
+        isFalse,
+        reason: 'The selected country must remain readable beside feedback.',
+      );
+      expect(tester.takeException(), isNull);
+    });
+  }
+
   testWidgets('global feedback button is available on the library route', (
     tester,
   ) async {
