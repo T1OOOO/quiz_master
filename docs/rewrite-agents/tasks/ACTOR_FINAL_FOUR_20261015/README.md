@@ -1,0 +1,5 @@
+# Final four actor articles017-020
+
+Native source repair submitted run `run-c72e11e4dc06460a80d03ba1ef88e987` and actual independent Claude Sonnet5 re-review accepted task `task-f2f5b02542094c898cc8793413bb0c5c`, error_count0/CLI0. First REWORK3 receipt is preserved honestly. Repaired017 uses directly readable Gaumont actor/Driss sources;019 replaces failed/sinkhole URL with directly readable BFI actor/Ki-woo source and retains KOFIC context. Prior018/020 objects are equal to preserved backup; no byte-identity claim about individual serialized objects. Exact raw/batch/article hashes and revision bindings reproduced independently.
+
+These four and accepted013-016 are future content only. Reader291 frozen3482 published005-012, not these. No new questions/options/keys or import/asset/publication claims. Next bounded work: integrate the eight accepted013-020 with exactrefs through existing builder/review contract, independently review export and run focused tests before a separate release.

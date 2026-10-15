@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-15T09:38:03.537095+00:00",
+  "command": [
+    "eval",
+    "JSON.stringify({textarea:document.querySelectorAll(\"textarea\").length,scrollers:[...document.querySelectorAll(\"flt-semantics\")].filter(e=>e.id&&getComputedStyle(e).overflowY===\"scroll\").map(e=>({id:e.id,height:e.clientHeight,scroll:e.scrollHeight}))})"
+  ],
+  "actual_exit": 0,
+  "stdout": "\"{\\\"textarea\\\":0,\\\"scrollers\\\":[{\\\"id\\\":\\\"flt-semantic-node-98\\\",\\\"height\\\":585,\\\"scroll\\\":1219}]}\"\n",
+  "stderr": ""
+}

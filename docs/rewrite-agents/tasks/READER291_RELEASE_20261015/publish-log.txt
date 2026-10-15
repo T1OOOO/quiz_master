@@ -1,0 +1,36 @@
+api: OK
+web/main.dart.js: OK
+nginx.conf: OK
+nginx.conf: OK
+/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader291-3482af9.tar: OK
+quiz-2026.10.15-reader291-3482af9-cutover-20261015T084302Z-values.yaml: OK
+{'backup': '/opt/quiz-master/backups/quiz-2026.10.15-reader291-3482af9-publish-20261015T093511Z.sqlite', 'integrity': 'ok', 'restore': 'ok', 'counts': [153, 727, 263]}
+==> Linting chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+quiz-2026.10.15-reader291-3482af9-publish-20261015T093511Z-rendered.yaml: OK
+Warning: resource networkpolicies/quiz-isolation is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+networkpolicy.networking.k8s.io/quiz-isolation configured (server dry run)
+Warning: resource persistentvolumeclaims/quiz-data is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+persistentvolumeclaim/quiz-data configured (server dry run)
+Warning: resource roles/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+role.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource rolebindings/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+rolebinding.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+Warning: resource services/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/quiz-master configured (server dry run)
+Warning: resource deployments/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/quiz-master configured (server dry run)
+Warning: resource ingresses/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+ingress.networking.k8s.io/quiz-master configured (server dry run)
+Warning: resource middlewares/quiz-rate-limit is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+middleware.traefik.io/quiz-rate-limit configured (server dry run)
+Release "quiz-master" has been upgraded. Happy Helming!
+NAME: quiz-master
+LAST DEPLOYED: Thu Oct 15 12:35:17 2026
+NAMESPACE: quiz-master
+STATUS: deployed
+REVISION: 61
+TEST SUITE: None
+PUBLISHED build=quiz-2026.10.15-reader291-3482af9 image=sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228 backup=quiz-2026.10.15-reader291-3482af9-publish-20261015T093511Z

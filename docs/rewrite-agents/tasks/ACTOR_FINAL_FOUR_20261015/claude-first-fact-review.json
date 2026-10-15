@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-f2f5b02542094c898cc8793413bb0c5c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f2f5b02542094c898cc8793413bb0c5c",
+          "verdict": "rework",
+          "error_count": 3,
+          "note": "Independent review (Claude Sonnet 5). Solved cinema-oct3-017..020 myself before reading draft: Omar Sy / Idina Menzel / Choi Woo-shik / Cillian Murphy — all match draft. Snapshot SHA256 ae38b61a...6175422 confirmed exact (sha256sum). Raw draft SHA256 c121e96e...f044e79 confirmed exact. Normalized SHA256 claim 70fec0cf...7319744e NOT reproducible: tried 6 variants of ConvertFrom-Json|ConvertTo-Json -Depth 100 (UTF8 GetBytes, UTF8+BOM, Out-File default UTF16LE, Out-File utf8/ascii, WriteAllText no/BOM); closest clean result 68d4bded...6a13ceb0 (UTF8 no BOM); none match claimed value. Per-article article_hash (import-only build.py, export() never called): 017=4cb30616...1e01a17f325, 018=3ffaddc7...a17e90409, 019=75be415d...1fdaafbec32ea, 020=0df1553b...bb85d51529. Headings(4) and word counts >=130 confirmed all four (my count 141/148/143/144 vs ledger 138/140/153/144, method differs, both within 130-220, non-blocking). SOURCE ISSUES: (1) article 019 source#1 https://parasite.official.film/watch: direct curl gets SSL handshake failure, WebFetch redirected through an infoblox sinkhole domain; not a confirmed directly-readable official page. Ledger admits it was reached 'through the search service' after direct fetch failed — conflicts with the no-search-snippet-as-visit rule. KOFIC (source#2) verified fine directly. (2) article 017 source#1 UniFrance PDF: blocked by Cloudflare 403 for me too; source#2 Académie des César page lists cast (Cluzet, Sy) and synopsis (Philippe/Driss) separately but does not pair actor to character in the retrieved text, so neither source as independently readable by me textually confirms 'Omar Sy = Driss', though the fact itself is well-established. Articles 018 (Disney/D23) and 020 (Universal/Oscars) verified directly and fully support all claims; Oppenheimer's stated '3h01m' is a defensible BBFC rounding (180m09s) but not verbatim in the Universal text I retrieved. Verdict: REWORK, error_count=3 (019 source#1 unverifiable/policy conflict; 017 source#1 blocked + source#2 lacks explicit pairing; handoff normalized_sha256 unreproducible). Recommend swapping 019's first source for a directly-fetchable authoritative page, and documenting/fixing the exact normalization procedure for the batch hash."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Four exact bound draft articles with genuinely opened primary sources, substantive contextual facts and readable prose, actual claim ledger and matching handoff hashes. No acceptance/import/publication claim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015"
+        ],
+        "assignee": "session-767ebd4851e541b0ba48014d280e4cd5",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Finite draft-only writing for the remaining four existing public prep-film-actors-1 questions cinema-oct3-017 through020. Read exact frozen public snapshot and approved ACTOR_FOLLOWUP_FOUR_20261015 style/source ledger. Write original Russian useful miniarticles, four headings, about130-220 substantive words and two genuinely accessible authoritative sources each. Include at least two interesting supported contextual facts beyond the bare correct answer; no repeated-answer/catalogue filler and no absence inferred from partial cast lists. Preserve exact question_refs revisions and existing question/options/keys. Only new docs/rewrite-agents/tasks/ACTOR_FINAL_FOUR_20261015/{draft.json,source-ledger.md,handoff.json}; keep unaccepted content out of all runtime paths. No imports, assets, Git, Beads, builds, browserQA, SSH, children or publication. Other agents work concurrently; preserve all their files. Real source visits and claim coverage, raw and normalized hashes, headings/wordcounts and actual submitted result. Different-provider review mandatory.",
+        "created_at": 1792054762.1189504,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-f2f5b02542094c898cc8793413bb0c5c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\draft.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\source-ledger.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\handoff.json"
+          ],
+          "evidence": [
+            "Fresh final validation passed: JSON parse; exactly four artifacts and four exact snapshot bindings; each article has four headings and two source links; word counts 138, 140, 153, and 144.",
+            "Final raw draft SHA-256: c121e96ed0d7c01bb89d6f7de53cb4e4aae3218d329c5b60b0989291fb044e79. Normalized JSON SHA-256: 70fec0cf6e3741d791d795b68526f6eba7a92a1b13a99ce6bc8a583f7319744e. Both values match handoff.json.",
+            "Source ledger records actual direct/inspection visits and access limits for UniFrance/Académie des César, Disney/D23, Parasite official/KOFIC, and Universal/Academy sources."
+          ],
+          "normalized_sha256": "70fec0cf6e3741d791d795b68526f6eba7a92a1b13a99ce6bc8a583f7319744e",
+          "raw_sha256": "c121e96ed0d7c01bb89d6f7de53cb4e4aae3218d329c5b60b0989291fb044e79",
+          "remaining_risks": "Draft only. Independent different-provider factual review is mandatory. No acceptance, import, publication, or release is claimed.",
+          "status": "DONE"
+        },
+        "root_task_id": "task-f2f5b02542094c898cc8793413bb0c5c",
+        "run_id": "run-f869c474b3e64a4fb159d91cc7330e89",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Draft the final four question-linked actor articles017-020",
+        "version": 4,
+        "reviewer": "session-23ce72b1424c45908855e2b06cc9d4a7",
+        "review_note": "Independent review (Claude Sonnet 5). Solved cinema-oct3-017..020 myself before reading draft: Omar Sy / Idina Menzel / Choi Woo-shik / Cillian Murphy — all match draft. Snapshot SHA256 ae38b61a...6175422 confirmed exact (sha256sum). Raw draft SHA256 c121e96e...f044e79 confirmed exact. Normalized SHA256 claim 70fec0cf...7319744e NOT reproducible: tried 6 variants of ConvertFrom-Json|ConvertTo-Json -Depth 100 (UTF8 GetBytes, UTF8+BOM, Out-File default UTF16LE, Out-File utf8/ascii, WriteAllText no/BOM); closest clean result 68d4bded...6a13ceb0 (UTF8 no BOM); none match claimed value. Per-article article_hash (import-only build.py, export() never called): 017=4cb30616...1e01a17f325, 018=3ffaddc7...a17e90409, 019=75be415d...1fdaafbec32ea, 020=0df1553b...bb85d51529. Headings(4) and word counts >=130 confirmed all four (my count 141/148/143/144 vs ledger 138/140/153/144, method differs, both within 130-220, non-blocking). SOURCE ISSUES: (1) article 019 source#1 https://parasite.official.film/watch: direct curl gets SSL handshake failure, WebFetch redirected through an infoblox sinkhole domain; not a confirmed directly-readable official page. Ledger admits it was reached 'through the search service' after direct fetch failed — conflicts with the no-search-snippet-as-visit rule. KOFIC (source#2) verified fine directly. (2) article 017 source#1 UniFrance PDF: blocked by Cloudflare 403 for me too; source#2 Académie des César page lists cast (Cluzet, Sy) and synopsis (Philippe/Driss) separately but does not pair actor to character in the retrieved text, so neither source as independently readable by me textually confirms 'Omar Sy = Driss', though the fact itself is well-established. Articles 018 (Disney/D23) and 020 (Universal/Oscars) verified directly and fully support all claims; Oppenheimer's stated '3h01m' is a defensible BBFC rounding (180m09s) but not verbatim in the Universal text I retrieved. Verdict: REWORK, error_count=3 (019 source#1 unverifiable/policy conflict; 017 source#1 blocked + source#2 lacks explicit pairing; handoff normalized_sha256 unreproducible). Recommend swapping 019's first source for a directly-fetchable authoritative page, and documenting/fixing the exact normalization procedure for the batch hash."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The broker confirmed `state: \"REWORK\"` — the review was accepted by the hub.\n\n## Summary\n\n**My four independent answers** (solved before reading the author's draft, matched the draft exactly): 017 Omar Sy, 018 Idina Menzel, 019 Choi Woo-shik, 020 Cillian Murphy.\n\n**Hashes:** snapshot SHA256 and raw draft SHA256 both matched exactly via `sha256sum`. Per-article `article_hash` computed via import-only of `build.py` (no `export()` call). The claimed `normalized_sha256` in `handoff.json` could **not** be reproduced — I tried 6 plausible PowerShell `ConvertFrom-Json`/`ConvertTo-Json -Depth 100` encoding variants, none matched.\n\n**Sources — real problems found on 2 of 4 articles:**\n- **019**: `https://parasite.official.film/watch` fails TLS handshake on direct `curl`, and WebFetch's redirect routed through an unrelated infoblox sinkhole domain — not a confirmed real page. The source-ledger itself admits it was reached \"through the search service\" after a direct fetch failure, which conflicts with the \"no search-snippet visits\" rule. KOFIC (second source) checked out fine.\n- **017**: UniFrance press-kit PDF is Cloudflare-blocked for me too (403); the Académie des César page lists cast and synopsis separately but never explicitly pairs Omar Sy with Driss in the retrieved text.\n- **018** and **020**: both sources opened directly and fully support all claims (Oppenheimer's \"3h01m\" is a defensible BBFC rounding of 180m09s, just not verbatim in the Universal press release).\n\nRecorded verdict **REWORK**, `error_count=3` (019's unverifiable source, 017's unverified pairing, unreproducible normalized hash), with the full callback note delivered to the broker. I did not touch the already-accepted earlier four tasks, made no edits/imports/exports/builds, and did no git writes.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "03cc6f3d6db551eb243c9a1b312cb986b43a53d4a35c4a5b01bea9cc5de17cd2",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

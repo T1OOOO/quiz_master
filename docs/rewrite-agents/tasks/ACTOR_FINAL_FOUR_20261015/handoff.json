@@ -1,0 +1,44 @@
+{
+  "status": "draft",
+  "draft_path": "docs/rewrite-agents/tasks/ACTOR_FINAL_FOUR_20261015/draft.json",
+  "pre_rework_backup_path": "docs/rewrite-agents/tasks/ACTOR_FINAL_FOUR_20261015/draft-before-source-rework.json",
+  "pre_rework_backup_raw_sha256": "c121e96ed0d7c01bb89d6f7de53cb4e4aae3218d329c5b60b0989291fb044e79",
+  "raw_sha256": "e3e8e982dcc5f5f34b3589858ec5e3551d9a8abcc4a48336103d986b1333dc79",
+  "normalized_batch_sha256": "4c8fdaf6963578e3636478d0a968c236d10af3a7de66584bf4790331aac2ded3",
+  "normalized_batch_hash_formula": "SHA256(json.dumps(articles, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8'))",
+  "article_hash_method": "Python import-only of study/question_articles/build.py followed by build.article_hash(article); export() was not called.",
+  "article_hashes": {
+    "question:cinema-oct3-017": "d28bd2dc60da88d353523f0066cc5a976bf5883ccf001d94f6a301fbb1c3665a",
+    "question:cinema-oct3-018": "3ffaddc7de1dc4cad93c7269788666ca48e1488e106d6166cd53f65a17e90409",
+    "question:cinema-oct3-019": "7c4a5b674ebd1e09daae97560103888667a50c1a4a47a4cc082fb3fe2d0c052f",
+    "question:cinema-oct3-020": "0df1553b42014f84b22074ef760673952eeace66d0b1392ce10cdbcb85d51529"
+  },
+  "snapshot_path": "study/question_articles/snapshots/prep-film-actors-1.json",
+  "snapshot_sha256": "ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422",
+  "article_ids": [
+    "question:cinema-oct3-017",
+    "question:cinema-oct3-018",
+    "question:cinema-oct3-019",
+    "question:cinema-oct3-020"
+  ],
+  "word_count_method": "Python str.split() over each body_ru string",
+  "word_counts": {
+    "question:cinema-oct3-017": 149,
+    "question:cinema-oct3-018": 148,
+    "question:cinema-oct3-019": 144,
+    "question:cinema-oct3-020": 144
+  },
+  "source_links_per_article": {
+    "question:cinema-oct3-017": 2,
+    "question:cinema-oct3-018": 2,
+    "question:cinema-oct3-019": 2,
+    "question:cinema-oct3-020": 2
+  },
+  "rework_scope": "Replaced only inaccessible or insufficient sources and prose for 017 and 019. Articles 018 and 020 were compared object-for-object with the c121 backup and are equal.",
+  "validation": [
+    "JSON parsed; exactly four expected article IDs, statuses, tag IDs, four headings and two source links each.",
+    "Every quiz_id/question_id/revision_sha256 binding matches the frozen snapshot.",
+    "The raw SHA-256, explicit normalized batch SHA-256 and all four build.article_hash values were recomputed after edits."
+  ],
+  "review_required": "independent different-provider factual review; not accepted, imported, or published"
+}

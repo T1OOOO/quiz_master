@@ -1,0 +1,66 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f2f5b02542094c898cc8793413bb0c5c": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f2f5b02542094c898cc8793413bb0c5c",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent re-review (Claude Sonnet 5), rework run-c72e11e4dc06460a80d03ba1ef88e987. Solved 017-020 blind from snapshot before reading draft: Omar Sy / Idina Menzel / Choi Woo-shik / Cillian Murphy — all match draft; no defensible distractor under wording. Recomputed via Python (import-only build.py, export() never called): raw_sha256 e3e8e982dcc5f5f34b3589858ec5e3551d9a8abcc4a48336103d986b1333dc79 matches; normalized_batch_sha256 (SHA256 of json.dumps(articles, ensure_ascii=False, sort_keys=True, separators=(',',':'))) 4c8fdaf6963578e3636478d0a968c236d10af3a7de66584bf4790331aac2ded3 matches; all four build.article_hash values match handoff exactly (017 d28bd2dc..3665a, 018 3ffaddc7..90409, 019 7c4a5b67..052f, 020 0df1553b..51529). snapshot_sha256 ae38b61a..6175422 matches; all 4 question_refs revision_sha256 bind exactly to snapshot. 018/020 are Python == byte-identical to draft-before-source-rework.json (raw c121e96e..f044e79 confirmed); 017/019 differ as expected (reworked). Headings=4, sources=2, word counts 149/148/144/144, all 130-220. SOURCES independently opened directly (not search snippets): Gaumont feature explicitly states 'Omar Sy a perdu dix kilos pour le role du jeune Driss' — an explicit actor+character pairing in one sentence — plus Cesar and box-office context; Gaumont film record confirms directors/2011/112min/cast/paragliding premise. BFI review explicitly pairs Choi Woo-shik=Ki-woo, Song Kang-ho=Ki-taek, Park So-dam=Ki-jung, Lee Sun-kyun=Mr. Park. KOFIC opened directly and worked fine for me (prior reviewer's connection error not reproduced) — English-tutor premise, Bong Joon-ho, 2019, social inequality, Cannes Palme d'Or confirmed. 018 (Disney/D23) and 020 (Universal/Oscars) unchanged, object-identical to the already-verified backup. Both prior REWORK defects (017 unpaired source, 019 sinkhole-redirected source, unreproducible normalized hash) are resolved; normalized hash now reproduces exactly via the Python formula. No edits/imports/exports/builds/git performed; draft-only review."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Four exact bound draft articles with genuinely opened primary sources, substantive contextual facts and readable prose, actual claim ledger and matching handoff hashes. No acceptance/import/publication claim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015"
+        ],
+        "assignee": "session-767ebd4851e541b0ba48014d280e4cd5",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Finite draft-only writing for the remaining four existing public prep-film-actors-1 questions cinema-oct3-017 through020. Read exact frozen public snapshot and approved ACTOR_FOLLOWUP_FOUR_20261015 style/source ledger. Write original Russian useful miniarticles, four headings, about130-220 substantive words and two genuinely accessible authoritative sources each. Include at least two interesting supported contextual facts beyond the bare correct answer; no repeated-answer/catalogue filler and no absence inferred from partial cast lists. Preserve exact question_refs revisions and existing question/options/keys. Only new docs/rewrite-agents/tasks/ACTOR_FINAL_FOUR_20261015/{draft.json,source-ledger.md,handoff.json}; keep unaccepted content out of all runtime paths. No imports, assets, Git, Beads, builds, browserQA, SSH, children or publication. Other agents work concurrently; preserve all their files. Real source visits and claim coverage, raw and normalized hashes, headings/wordcounts and actual submitted result. Different-provider review mandatory.",
+        "created_at": 1792054762.1189504,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "content",
+        "id": "task-f2f5b02542094c898cc8793413bb0c5c",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\draft.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\source-ledger.md",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\handoff.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_FOUR_20261015\\draft-before-source-rework.json"
+          ],
+          "evidence": [
+            "017 uses two directly opened Gaumont HTML pages; the feature explicitly pairs Omar Sy with young Driss. 019 replaces the dead parasite.official.film URL with a directly opened BFI page explicitly pairing Choi Woo-shik with Ki-woo; KOFIC remains for plot/film context with its direct-source access limitation recorded.",
+            "Read-only Python verification passed: raw SHA-256 e3e8e982dcc5f5f34b3589858ec5e3551d9a8abcc4a48336103d986b1333dc79; explicit canonical articles batch SHA-256 4c8fdaf6963578e3636478d0a968c236d10af3a7de66584bf4790331aac2ded3; all four build.article_hash values match handoff.",
+            "JSON/snapshot validation passed: four exact IDs and refs, draft status/tags, four headings, two links, and 130-220 words per article. 018 and 020 are object-equal to the c121 backup."
+          ],
+          "normalized_batch_sha256": "4c8fdaf6963578e3636478d0a968c236d10af3a7de66584bf4790331aac2ded3",
+          "raw_sha256": "e3e8e982dcc5f5f34b3589858ec5e3551d9a8abcc4a48336103d986b1333dc79",
+          "remaining_risks": "Draft only. KOFIC later fetch retry returned a connection error; the readable source pass is recorded, while BFI supplies the explicit 019 cast-role claim. Independent different-provider fact review remains mandatory. No import, build, publication, or acceptance is claimed.",
+          "status": "DONE"
+        },
+        "review_note": "Independent re-review (Claude Sonnet 5), rework run-c72e11e4dc06460a80d03ba1ef88e987. Solved 017-020 blind from snapshot before reading draft: Omar Sy / Idina Menzel / Choi Woo-shik / Cillian Murphy — all match draft; no defensible distractor under wording. Recomputed via Python (import-only build.py, export() never called): raw_sha256 e3e8e982dcc5f5f34b3589858ec5e3551d9a8abcc4a48336103d986b1333dc79 matches; normalized_batch_sha256 (SHA256 of json.dumps(articles, ensure_ascii=False, sort_keys=True, separators=(',',':'))) 4c8fdaf6963578e3636478d0a968c236d10af3a7de66584bf4790331aac2ded3 matches; all four build.article_hash values match handoff exactly (017 d28bd2dc..3665a, 018 3ffaddc7..90409, 019 7c4a5b67..052f, 020 0df1553b..51529). snapshot_sha256 ae38b61a..6175422 matches; all 4 question_refs revision_sha256 bind exactly to snapshot. 018/020 are Python == byte-identical to draft-before-source-rework.json (raw c121e96e..f044e79 confirmed); 017/019 differ as expected (reworked). Headings=4, sources=2, word counts 149/148/144/144, all 130-220. SOURCES independently opened directly (not search snippets): Gaumont feature explicitly states 'Omar Sy a perdu dix kilos pour le role du jeune Driss' — an explicit actor+character pairing in one sentence — plus Cesar and box-office context; Gaumont film record confirms directors/2011/112min/cast/paragliding premise. BFI review explicitly pairs Choi Woo-shik=Ki-woo, Song Kang-ho=Ki-taek, Park So-dam=Ki-jung, Lee Sun-kyun=Mr. Park. KOFIC opened directly and worked fine for me (prior reviewer's connection error not reproduced) — English-tutor premise, Bong Joon-ho, 2019, social inequality, Cannes Palme d'Or confirmed. 018 (Disney/D23) and 020 (Universal/Oscars) unchanged, object-identical to the already-verified backup. Both prior REWORK defects (017 unpaired source, 019 sinkhole-redirected source, unreproducible normalized hash) are resolved; normalized hash now reproduces exactly via the Python formula. No edits/imports/exports/builds/git performed; draft-only review.",
+        "reviewer": "session-c8c63e3e08c0459ebf0d772b1742ca15",
+        "root_task_id": "task-f2f5b02542094c898cc8793413bb0c5c",
+        "run_id": "run-c72e11e4dc06460a80d03ba1ef88e987",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Draft the final four question-linked actor articles017-020",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review complete and recorded. The hub confirmed `state: \"ACCEPTED\"` for task-f2f5b02542094c898cc8793413bb0c5c, run-c72e11e4dc06460a80d03ba1ef88e987.\n\n**Verification performed (no edits, no imports, read-only):**\n- Solved all four questions (017–020) independently from the snapshot before reading the draft: Omar Sy, Idina Menzel, Choi Woo-shik, Cillian Murphy — all matched the draft, no defensible distractor.\n- Recomputed with Python (import-only `build.py`, `export()` never called): raw SHA-256, the explicit normalized-batch SHA-256, and all four per-article `article_hash` values all reproduced exactly against `handoff.json`. Snapshot SHA-256 and all four `revision_sha256` bindings also matched exactly.\n- Confirmed articles 018/020 are `==` byte-identical to the preserved `draft-before-source-rework.json` backup (c121e96e…f044e79); 017/019 differ as expected since they were reworked.\n- Headings (4), source count (2), and word counts (149/148/144/144, all within 130–220) checked for every article.\n- Independently opened (not search snippets) the reworked sources: Gaumont's feature page explicitly states Omar Sy \"lost ten kilos for the role of young Driss\" (an explicit actor–character pairing) plus César/box-office context; Gaumont's film record confirmed directors, 2011, 112 min, cast, paragliding premise. BFI's review explicitly pairs Choi Woo-shik=Ki-woo, Song Kang-ho=Ki-taek, Park So-dam=Ki-jung, Lee Sun-kyun=Mr. Park. KOFIC opened fine for me directly (the prior reviewer's connection error didn't reproduce). Both previous REWORK defects (017's unpaired source, 019's sinkhole-redirected source, the unreproducible normalized hash) are resolved.\n\nVerdict: **accept, error_count=0**. This was a finite, read-only re-review — no files changed, nothing imported or published.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "1434601b9d7704075133f596a8c8b46a86ca07d536145e7cd7eaa6b9487020b2",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
