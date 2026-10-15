@@ -1,0 +1,90 @@
+{
+  "schema_version": "qm-country483-remote-inputs/v1",
+  "recorded_utc": "2026-10-15T20:53:52.572196+00:00",
+  "repo": "C:\\ap\\quiz_master",
+  "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+  "local_package_checkpoint": "e7817812d5c2455574a7fbbc8228a53976ddde99",
+  "build_id": "quiz-2026.10.15-country483-3c22818",
+  "nonce": "66fe6ea9640447beacc9aec8fe6166ac",
+  "local_proofs": {
+    "worker/prepare_country483.py": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\worker\\prepare_country483.py",
+      "sha256": "5b3ad3ddfd6141d4ace3c9269ef38cd594dfb0d7011621ec2048e199e433cc76"
+    },
+    "worker/test_country483_release.py": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\worker\\test_country483_release.py",
+      "sha256": "bd07d6bb6d1cc3188aef2c6b386d94cfca3680cdd13a01919b1ce6a029b7b0db"
+    },
+    "release-inputs.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\release-inputs.json",
+      "sha256": "bfc85e10404b9bf82971c0e406c022c11ae256bf22aff89c24d0d0eb81725cdb"
+    },
+    "review-inputs.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\review-inputs.json",
+      "sha256": "0e1f02cf04393ae6a4b16fb7557551f47a65e86d314eea5b3aa5342e34ba0c1d"
+    },
+    "independent-native-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\independent-native-review.json",
+      "sha256": "a4da80a52ec03be5c8a02d4a396a752ae89f56a4db7ba4412edc28989223e07b"
+    },
+    "independent-integration-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_RELEASE_20261015\\independent-integration-review.json",
+      "sha256": "d18013989f85667ac6eb24bd910c40fbb5577eb14535a635b930ca32a1e93b58"
+    }
+  },
+  "package_receipt": {
+    "path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json",
+    "sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2"
+  },
+  "archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818.tar.gz",
+    "sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+    "bytes": 60989538
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.15-reader303-14b7da4",
+    "helm_revision": 63,
+    "image": "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "feedback_count": 29,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e"
+  },
+  "counts": {
+    "packs": 136,
+    "questions": 4084,
+    "reader_articles": 303,
+    "reader_refs": 184,
+    "playable_refs": 182,
+    "noncatalog_refs": 2
+  },
+  "historical_renderers": {
+    "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/prepare_remote_mixed.py": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py",
+      "sha256": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+    },
+    "docs/rewrite-agents/tasks/READER303_RELEASE_20261015/release-worker/prepare_reader303_remote.py": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py",
+      "sha256": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8"
+    }
+  },
+  "atlas_assets": {
+    "catalog.json": {
+      "package_path": "web/assets/assets/quizipedia/catalog.json",
+      "image_path": "/app/web/assets/assets/quizipedia/catalog.json",
+      "public_path": "/assets/assets/quizipedia/catalog.json",
+      "sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc"
+    },
+    "manifest.json": {
+      "package_path": "web/assets/assets/quizipedia/manifest.json",
+      "image_path": "/app/web/assets/assets/quizipedia/manifest.json",
+      "public_path": "/assets/assets/quizipedia/manifest.json",
+      "sha256": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+    }
+  },
+  "ssh_target": "root@192.3.164.184",
+  "ssh_key_path": "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+  "remote_execution_authorized_by_this_file": false,
+  "remote_peak_certified": false,
+  "actual_candidate_image": null,
+  "collection_contract": "Render final collection using actual validated preparation run, immutable candidate image digest and durable archive digest. An inert local example is not candidate evidence."
+}

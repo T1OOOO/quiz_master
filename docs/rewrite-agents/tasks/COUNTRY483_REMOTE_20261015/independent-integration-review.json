@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-e028bbce7bd9480c8657c58cb70d22bd": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-e028bbce7bd9480c8657c58cb70d22bd",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local files only; I did not witness Root's SSH/rehash checks live. Recomputed sha256 for all 24 review-inputs.json entries myself: 0 mismatches/missing, manifest sha256 matches claim exactly (fef5a19d...). Cross-checked remote-inputs.json pins (source 3c22818, archive 15eb5d57, baseline Helm63/image/PVC/29-feedback, atlas asset hashes) against the already-accepted release package — consistent, actual_candidate_image is null and remote_execution_authorized_by_this_file is false. Independently ran the unit suite (12/12 pass) and `--verify-preview` myself: exit0, printed JSON matches preview.json exactly (nonce, upload_destination, artifact hashes, inert 2099/all-zero collector example, remote_execution_performed=false). No SSH/SCP/Docker/Helm command was executed by me or by the reviewed code path. No defects found. ACCEPT. Bound to 24-file review-inputs.json sha256 fef5a19dc648d871fb333a40899ca3b8be343a9eb163fdb5b59de60d853e745e; test exit0, verify-preview exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual exact local preview validation/syntax/test evidence; hash-bound current target/package/nonces/guards and candidate atlas receipt contract; genuine independent review of both native and Root packet before remote use. Explicitly local-only, final collector requires actual future outputs. Stable owned work committed/pushed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns COUNTRY483_REMOTE_20261015 outside worker and matching ignored directory outside worker. Native90e2 owns worker source/tests/rendering until frozen. Accepted local package e7817812, source3c22818, archive15eb5d57, current baseline63/Reader303/image6c603a84/PVC/29OPEN. Root pins remote-inputs.json, reviews exact local guard/preparation/collection rendering and stateless candidate atlas hash contract, verifies all source/package/target/nonce bindings and keeps execution separate. Do not edit accepted package/runtime or historical evidence. No SSH/SCP/Docker/Helm execution before different-provider code/packet review. No actual candidate image, rehearsal or publication is claimed by a preview. Beads/Git owned by Root; preserve other work and keep483/feedback open until published.",
+        "created_at": 1792097653.4531176,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-e028bbce7bd9480c8657c58cb70d22bd",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/integration-evidence.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/remote-inputs.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/review-inputs.json"
+          ],
+          "summary": "Bound native local remote-preview source to immutable accepted package/current63 baseline; Root actual verifier0, source inspected,101 old/69 foreign hashes preserved. No remote execution or candidate image. Independent review pending."
+        },
+        "root_task_id": "task-e028bbce7bd9480c8657c58cb70d22bd",
+        "run_id": "run-47dd0ff46814403597a52b8a6d3cab6e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: bind remote preview and candidate atlas verification contract",
+        "version": 4,
+        "reviewer": "session-3d979a86374a4008aecc4e4ce2807442",
+        "review_note": "Independent Claude review, local files only; I did not witness Root's SSH/rehash checks live. Recomputed sha256 for all 24 review-inputs.json entries myself: 0 mismatches/missing, manifest sha256 matches claim exactly (fef5a19d...). Cross-checked remote-inputs.json pins (source 3c22818, archive 15eb5d57, baseline Helm63/image/PVC/29-feedback, atlas asset hashes) against the already-accepted release package — consistent, actual_candidate_image is null and remote_execution_authorized_by_this_file is false. Independently ran the unit suite (12/12 pass) and `--verify-preview` myself: exit0, printed JSON matches preview.json exactly (nonce, upload_destination, artifact hashes, inert 2099/all-zero collector example, remote_execution_performed=false). No SSH/SCP/Docker/Helm command was executed by me or by the reviewed code path. No defects found. ACCEPT. Bound to 24-file review-inputs.json sha256 fef5a19dc648d871fb333a40899ca3b8be343a9eb163fdb5b59de60d853e745e; test exit0, verify-preview exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED`.\n\n**task-90e2d158 (native renderer/validator code)** — ACCEPT. `render_remote.py` only ever writes/reads local files — I traced every `subprocess.check_output` call in the module and confirmed all three occur solely inside triple-quoted text destined for a *future* remote script, never executed by this process. The CLI has no `--execute`/`--publish`/`--prepare` flag (tested, rejected). The stateless candidate-atlas check builds a `--network=none --read-only --cap-drop=ALL` non-root `docker run` with no bind mounts and a regex-pinned immutable image ID. I ran the suite myself: **12/12 tests pass** (57.8s), matching the claim exactly — this includes the author's `bash -n` and `compile()` checks on the generated scripts, which I didn't need to duplicate standalone since the test exercises them live.\n\n**task-e028bbce (Root baseline/preview binding)** — ACCEPT. Recomputed sha256 for all 24 manifest entries myself (0 mismatches, manifest hash matches claim exactly). Ran `--verify-preview` myself: **exit 0**, output matches `preview.json` byte-for-byte (nonce, upload destination, artifact hashes, inert 2099/all-zero collector example, `remote_execution_performed=false`). No SSH/SCP/Docker/Helm command was executed by me or by the reviewed code path.\n\nOne minor non-blocking note in both reviews: `remote-inputs.json` stores a real SSH target IP and deploy-key **path** (not key contents) in plaintext — a pre-existing house pattern, not newly introduced, and this file grants no execution authority on its own.\n\nUnperformed checks (disclosed in the review notes): I did not independently re-run the `bash -n`/`compile()` checks standalone outside the unit test, and I did not witness Root's own SSH/rehash checks live — those remain Root's local record. No remote execution, Docker build, SSH, or publication occurred.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0f7f3eb0499b5988af06a11d2d63ab51e688f01ab9649e2332c9c9df6a724c57",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

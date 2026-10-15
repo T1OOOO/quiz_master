@@ -1,0 +1,41 @@
+{
+  "status": "LOCAL_REMOTE_PREVIEW_VERIFIED_PENDING_INDEPENDENT_REVIEW",
+  "actual_root_verify_exit": 0,
+  "command": [
+    "C:/Python314/python.exe",
+    "-B",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/worker/render_remote.py",
+    "--verify-preview",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\preview.json"
+  ],
+  "inputs_sha256": "5d91042be65803abf07cb8ee3f97db259f6c99a7b0dd5784104c8c964c9dff11",
+  "preview_sha256": "51c39679ae6bb612e096483ea6334b2c96f23b78f5474e1b7183cb625f9c73e8",
+  "source_sha256": {
+    "render_remote.py": "54ea8a9e03b8621d8279a3af92334aab337f0e97d19a85838e1b5b6f0162e6f2",
+    "test_render_remote.py": "e9cd60eae303392c211e3b9c06f10c6e85c2bc3391407c72db80014e71b66e87"
+  },
+  "rendered_sha256": {
+    "guard.sh": "155b3e97b356c3ba661141b6eb23c748251ed780bca1719e7826c060fb20d827",
+    "prepare.sh": "e1ba86b78d78d55af93eaa495a6f31fabf42bebc2bec01e18bd5207940d3880a",
+    "collection-INERT-EXAMPLE.sh": "622162087d6299226987f5e2be6a31e08dcfb29c87025e44eef7c546cafb8353"
+  },
+  "old_reader303_inputs_preserved": 101,
+  "foreign_hashes_preserved": 69,
+  "root_source_inspection": [
+    "Accepted proof/package binding",
+    "Exact current63 preflight and full feedback digest",
+    "Existing house prepare-only and collector reuse",
+    "Stateless immutable-image atlas check and receipt binding",
+    "Inert collector example and no actual candidate",
+    "No CLI remote execution or publication mode"
+  ],
+  "remote_execution_performed": false,
+  "remote_peak_certified": false,
+  "actual_candidate_image": null,
+  "remaining": [
+    "Different-provider local code/packet review",
+    "Actual guarded remote preparation and collection",
+    "Independent execution review",
+    "Publication and public atlas/browser verification"
+  ]
+}

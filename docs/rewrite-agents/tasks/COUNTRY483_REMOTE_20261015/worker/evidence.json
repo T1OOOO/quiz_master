@@ -1,0 +1,265 @@
+{
+  "status": "DONE_FOR_INDEPENDENT_REVIEW",
+  "task_id": "task-90e2d158b2e14f7bba1f63a0a0f33ee9",
+  "run_id": "run-4dbec1abb57b4a18b0fe59ed510a94e4",
+  "source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/worker/render_remote.py": "54ea8a9e03b8621d8279a3af92334aab337f0e97d19a85838e1b5b6f0162e6f2",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/worker/test_render_remote.py": "e9cd60eae303392c211e3b9c06f10c6e85c2bc3391407c72db80014e71b66e87"
+  },
+  "remote_inputs": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\remote-inputs.json",
+    "sha256": "5d91042be65803abf07cb8ee3f97db259f6c99a7b0dd5784104c8c964c9dff11"
+  },
+  "artifacts_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\collection-INERT-EXAMPLE.sh": "622162087d6299226987f5e2be6a31e08dcfb29c87025e44eef7c546cafb8353",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\guard.sh": "155b3e97b356c3ba661141b6eb23c748251ed780bca1719e7826c060fb20d827",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\prepare.sh": "e1ba86b78d78d55af93eaa495a6f31fabf42bebc2bec01e18bd5207940d3880a",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\preview.json": "51c39679ae6bb612e096483ea6334b2c96f23b78f5474e1b7183cb625f9c73e8"
+  },
+  "preview": {
+    "status": "LOCAL_PREVIEW_ONLY",
+    "build_id": "quiz-2026.10.15-country483-3c22818",
+    "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+    "inputs_sha256": "5d91042be65803abf07cb8ee3f97db259f6c99a7b0dd5784104c8c964c9dff11",
+    "nonce": "66fe6ea9640447beacc9aec8fe6166ac",
+    "archive_sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+    "package_receipt_sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2",
+    "upload_destination": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818.tar.gz.upload-66fe6ea9640447beacc9aec8fe6166ac",
+    "source_sha256": {
+      "render_remote.py": "54ea8a9e03b8621d8279a3af92334aab337f0e97d19a85838e1b5b6f0162e6f2",
+      "test_render_remote.py": "e9cd60eae303392c211e3b9c06f10c6e85c2bc3391407c72db80014e71b66e87"
+    },
+    "artifacts_sha256": {
+      "guard.sh": "155b3e97b356c3ba661141b6eb23c748251ed780bca1719e7826c060fb20d827",
+      "prepare.sh": "e1ba86b78d78d55af93eaa495a6f31fabf42bebc2bec01e18bd5207940d3880a",
+      "collection-INERT-EXAMPLE.sh": "622162087d6299226987f5e2be6a31e08dcfb29c87025e44eef7c546cafb8353"
+    },
+    "commands": [
+      {
+        "label": "guard",
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "IdentitiesOnly=yes",
+          "-i",
+          "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+          "root@192.3.164.184",
+          "bash -s"
+        ],
+        "stdin": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\guard.sh",
+        "timeout_seconds": 40
+      },
+      {
+        "label": "upload",
+        "argv": [
+          "scp",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "IdentitiesOnly=yes",
+          "-i",
+          "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+          "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818.tar.gz",
+          "root@192.3.164.184:/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818.tar.gz.upload-66fe6ea9640447beacc9aec8fe6166ac"
+        ],
+        "timeout_seconds": 120
+      },
+      {
+        "label": "prepare",
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "IdentitiesOnly=yes",
+          "-i",
+          "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+          "root@192.3.164.184",
+          "bash -s"
+        ],
+        "stdin": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\prepare.sh",
+        "timeout_seconds": 600
+      }
+    ],
+    "actual_candidate_image": null,
+    "collection_example_only": true,
+    "inert_example_bindings": {
+      "run": "quiz-2026.10.15-country483-3c22818-cutover-20990101T000000Z",
+      "image": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "durable_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "later_collection_renderer": "collection_script(pins, local, actual_run, actual_immutable_image, actual_durable_sha256)",
+    "remote_execution_performed": false,
+    "execution_authorized": false,
+    "new_remote_helper_review_required": true,
+    "remote_peak_certified": false,
+    "publication_path": false
+  },
+  "unit": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/worker",
+      "-p",
+      "test_render_remote.py",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "elapsed_seconds": 52.11,
+    "stdout_sha256": "11936c617c09bbee558d99a48f5f19efc8eddc6970fa7da905f6735ac99f761c"
+  },
+  "preview_commands": [
+    {
+      "label": "local-preview",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\worker\\render_remote.py",
+        "--output-root",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 6.08,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\local-preview.log",
+      "stdout_sha256": "f55950fcad9021069f8c8e59802d6603b45cc7fb3b564d2bb56d36e4eacee3a8"
+    },
+    {
+      "label": "verify-preview",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\worker\\render_remote.py",
+        "--verify-preview",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\preview.json"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "elapsed_seconds": 7.82,
+      "stdout": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\verify-preview.log",
+      "stdout_sha256": "f55950fcad9021069f8c8e59802d6603b45cc7fb3b564d2bb56d36e4eacee3a8"
+    }
+  ],
+  "syntax_and_python": {
+    "actual_exit": 0,
+    "checks": [
+      {
+        "script": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\guard.sh",
+        "sha256": "155b3e97b356c3ba661141b6eb23c748251ed780bca1719e7826c060fb20d827",
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\guard.sh"
+        ],
+        "actual_exit": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compiled_python_blocks": [
+          {
+            "index": 1,
+            "heredoc": "QUIZ_PREFLIGHT",
+            "sha256": "0c0a237c67405707d53576e28713034d73d185e6c54e05955744ba5a695d4bd2",
+            "compile_exit": 0
+          }
+        ]
+      },
+      {
+        "script": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\prepare.sh",
+        "sha256": "e1ba86b78d78d55af93eaa495a6f31fabf42bebc2bec01e18bd5207940d3880a",
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\prepare.sh"
+        ],
+        "actual_exit": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compiled_python_blocks": [
+          {
+            "index": 1,
+            "heredoc": "QUIZ_PREFLIGHT",
+            "sha256": "0c0a237c67405707d53576e28713034d73d185e6c54e05955744ba5a695d4bd2",
+            "compile_exit": 0
+          },
+          {
+            "index": 2,
+            "heredoc": "QUIZ_PREFLIGHT",
+            "sha256": "0c0a237c67405707d53576e28713034d73d185e6c54e05955744ba5a695d4bd2",
+            "compile_exit": 0
+          },
+          {
+            "index": 3,
+            "heredoc": "COUNTRY483_ATLAS",
+            "sha256": "a0ff7e1d155101d5cd4717542abe6115eb3c10c4b8910c83399b454c6d6c73d4",
+            "compile_exit": 0
+          },
+          {
+            "index": 4,
+            "heredoc": "QUIZ_PREFLIGHT",
+            "sha256": "0c0a237c67405707d53576e28713034d73d185e6c54e05955744ba5a695d4bd2",
+            "compile_exit": 0
+          }
+        ]
+      },
+      {
+        "script": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\collection-INERT-EXAMPLE.sh",
+        "sha256": "622162087d6299226987f5e2be6a31e08dcfb29c87025e44eef7c546cafb8353",
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-v1\\collection-INERT-EXAMPLE.sh"
+        ],
+        "actual_exit": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compiled_python_blocks": [
+          {
+            "index": 1,
+            "heredoc": "QUIZ_PREFLIGHT",
+            "sha256": "0c0a237c67405707d53576e28713034d73d185e6c54e05955744ba5a695d4bd2",
+            "compile_exit": 0
+          },
+          {
+            "index": 2,
+            "heredoc": "PY",
+            "sha256": "c11aebc8a3f09de9678ebf32e5216544c1db22a6583f9f25d6a83a63aa0d048b",
+            "compile_exit": 0
+          }
+        ]
+      }
+    ],
+    "compiled_python_blocks": 7,
+    "no_generated_remote_code_executed": true
+  },
+  "red": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      ".run\\country483_remote_20261015\\worker\\red_stale_remote.py"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 1,
+    "stdout_sha256": "4bddd0b61de78d22b26296440785a2c1a87fa1fd3cf44e5a3e0bc947979172b4"
+  },
+  "raw_evidence_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\collection-INERT-EXAMPLE.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\guard.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\local-preview.log": "f55950fcad9021069f8c8e59802d6603b45cc7fb3b564d2bb56d36e4eacee3a8",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\prepare.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\preview-results.json": "6ae7bcb8e5e0ceebe46a5cea97b13a6d5ab502eb5fd0557f0a4a39acdca07356",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\red_stale_remote.py": "fc9e7bfea0e6ce28bfba184f5cf84c070e9b9942294b4b69a1fe262a7cbf1b75",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\stale-remote-red.json": "254659cc17e9134f03d147d6e66d787040c74072f208130e2e7d5e6d232a35da",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\stale-remote-red.log": "4bddd0b61de78d22b26296440785a2c1a87fa1fd3cf44e5a3e0bc947979172b4",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\syntax-and-python.json": "2e70f398b27122b39a67a48421ab425e48d7ec6edf40dd933288f68484926386",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\unit-attempt01.json": "5b37c9d0c9f15f59732dc9eba47de95a985fe8292204dedaf75869fd0628f1d4",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\unit-attempt01.log": "11936c617c09bbee558d99a48f5f19efc8eddc6970fa7da905f6735ac99f761c",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\worker\\verify-preview.log": "f55950fcad9021069f8c8e59802d6603b45cc7fb3b564d2bb56d36e4eacee3a8"
+  },
+  "no_remote_code_executed": true,
+  "new_helper_review_pending": true,
+  "actual_candidate_image": null
+}
