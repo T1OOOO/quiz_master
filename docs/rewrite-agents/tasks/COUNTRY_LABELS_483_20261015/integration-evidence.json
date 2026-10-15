@@ -1,0 +1,128 @@
+{
+  "actual_exit": 0,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "quizipedia/build_catalog.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "Built 177 background features; 20 6 6 88 learning targets\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "quizipedia",
+        "-p",
+        "test_catalog.py",
+        "-v"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "test_all_iau_constellations_present_with_single_serpens (test_catalog.CatalogTests.test_all_iau_constellations_present_with_single_serpens) ... ok\ntest_build_is_deterministic_and_matches_bundled_bytes (test_catalog.CatalogTests.test_build_is_deterministic_and_matches_bundled_bytes) ... ok\ntest_complete_country_join_without_geometry_loss (test_catalog.CatalogTests.test_complete_country_join_without_geometry_loss) ... ok\ntest_country_names_keep_registry_labels_and_localize_actual_background_source (test_catalog.CatalogTests.test_country_names_keep_registry_labels_and_localize_actual_background_source) ... ok\ntest_missing_or_invalid_background_russian_label_is_refused (test_catalog.CatalogTests.test_missing_or_invalid_background_russian_label_is_refused) ... ok\ntest_real_rasters_manifest_and_hotspot_image_space (test_catalog.CatalogTests.test_real_rasters_manifest_and_hotspot_image_space) ... ok\ntest_stars_retain_source_values_and_referenced_lines (test_catalog.CatalogTests.test_stars_retain_source_values_and_referenced_lines) ... ok\ntest_target_metadata_credit_and_tag_references (test_catalog.CatalogTests.test_target_metadata_credit_and_tag_references) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.752s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "study/question_articles/coverage.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "{\"packs\": 136, \"quiz_questions\": 4084, \"study_questions\": 120, \"visual_targets\": 277, \"counts\": {\"missing\": 4177, \"draft\": 0, \"accepted\": 304}}\n",
+      "stderr": ""
+    }
+  ],
+  "initial_full_regeneration_scope_check": {
+    "actual_exit": 1,
+    "reason": "Existing coverage is stale beyond this localization task: full regeneration adds76entries and changes194existing entries. Candidate preserved privately; reconciled only11owned country titles from generated catalog.",
+    "before_entries": 4405,
+    "candidate_entries": 4481,
+    "candidate_counts": {
+      "missing": 4177,
+      "draft": 0,
+      "accepted": 304
+    }
+  },
+  "coverage_title_changes": [
+    {
+      "id": "ne-sah",
+      "before": "Western Sahara",
+      "after": "Западная Сахара"
+    },
+    {
+      "id": "ne-flk",
+      "before": "Falkland Islands",
+      "after": "Фолклендские острова"
+    },
+    {
+      "id": "ne-grl",
+      "before": "Greenland",
+      "after": "Гренландия"
+    },
+    {
+      "id": "ne-atf",
+      "before": "French Southern and Antarctic Lands",
+      "after": "Французские Южные и Антарктические территории"
+    },
+    {
+      "id": "ne-pri",
+      "before": "Puerto Rico",
+      "after": "Пуэрто-Рико"
+    },
+    {
+      "id": "ne-ncl",
+      "before": "New Caledonia",
+      "after": "Новая Каледония"
+    },
+    {
+      "id": "ne-twn",
+      "before": "Taiwan",
+      "after": "Тайвань"
+    },
+    {
+      "id": "ne-ata",
+      "before": "Antarctica",
+      "after": "Антарктида"
+    },
+    {
+      "id": "ne-cyn",
+      "before": "Turkish Republic of Northern Cyprus",
+      "after": "Турецкая Республика Северного Кипра"
+    },
+    {
+      "id": "ne-sol",
+      "before": "Somaliland",
+      "after": "Сомалиленд"
+    },
+    {
+      "id": "ne-kos",
+      "before": "Kosovo",
+      "after": "Республика Косово"
+    }
+  ],
+  "coverage_counts_unchanged": {
+    "missing": 4198,
+    "draft": 0,
+    "accepted": 207
+  },
+  "mirrored_manifest_identical": true,
+  "native_frozen_bytes_preserved": true,
+  "foreign_preservation_after_reviewer_stash": {
+    "foreign_untracked_hashes_unchanged": 69,
+    "index_empty": true,
+    "stashes_empty": true
+  },
+  "sha256": {
+    "study/question_articles/coverage.json": "b75f8c5263c8c0c07a6d109afe5327617770e9dfa1daa11f9389b7069690ee0d",
+    "next/apps/quiz_app/assets/quizipedia/manifest.json": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+  },
+  "limitations": [
+    "Full coverage refresh remains outside483 and belongs to3qx backlog",
+    "No browser/Flutter runtime or deployment for483; production remains Reader303/Helm63 and483 remains in_progress",
+    "Claude source reviewer used git stash despite no-Git instructions; Root verified all69foreign untracked hashes intact, empty index/stashes and exact4native frozen hashes afterwards"
+  ]
+}

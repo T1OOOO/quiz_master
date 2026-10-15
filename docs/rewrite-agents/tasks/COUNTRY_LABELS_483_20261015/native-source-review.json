@@ -1,0 +1,94 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c01453fa983c45139c63c6764592ac5d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c01453fa983c45139c63c6764592ac5d",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review, native-review-inputs.json fullSHA256=[build_catalog.py aa76ed985c2467b9359070116cfa71c9439a796bfecdd5733ef2c275a6ca8ccc, test_catalog.py 440668296a1464f24618934c5fb3e5b5651b1306be58f5fd5b8de9abf69e0b99, manifest.json 226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7, catalog.json 09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc, REPORT.md a66dc6980b69cf20522ddccc228472cc46cc0893938276854530b3b74043ab80, evidence.json 33b3dc57f2114bc46938b05afcb79274e93f43861bf2c59f4a9b7cfe7a7f166e, source-label-pairs.json 890aafa09a813e550aeb5a6112fbfc127ed301db9cfb021f551a09ea54e81700] - all 7 recomputed and matched exactly. Scoped diff vs HEAD 209e88f is exactly 4 files, minimal: build_catalog.py (+3/-1, fail-fast on missing/non-string/blank NAME_RU for unregistered background features, fallback now uses NAME_RU not NAME_EN), test_catalog.py (+38, two new tests), manifest.json/catalog.json (data only). Registry-owned path (`names` truthy) untouched; fallback only triggers for background ids. Verified countries list order is 1:1 with world['features'], so test's zip(strict=True) pairing is sound. Ran suite myself: 8 tests, exit 0. Independently reproduced RED against pre-fix source (git stash): 6 failures incl. exact claimed Western Sahara/Западная Сахара mismatch and KeyError-on-missing-key case. Restored working tree to original state after stash round-trip (git autocrlf had flipped build_catalog.py to CRLF; reverted to LF, hash re-verified aa76ed98... exact match). 177 ids/order/geometry/English labels, 166 registry labels, 20 quiz targets, all other catalog sections untouched per diff+tests. Minor note (non-blocking): fallback uses bare `assert`, stripped under python -O; fine given this repo's test-driven non-optimized execution, but worth a non-assert check if build is ever run optimized. Source-only scope confirmed; mirrored next/ manifest.json correctly left untouched (Root-owned, separate integration step)."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Root reproducer proves current11Englishfallbacks; native RED/GREEN + existing Python catalog suite actual0, deterministic generator0, exact field-level delta11name_ru only, source177NAME_RU available, schema/checksums0. Source frozen with evidence; independent different-provider review before integration/issueclosure. No production claim; Root handles runtime/browser/release later.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\quizipedia\\build_catalog.py",
+          "C:\\ap\\quiz_master\\quizipedia\\test_catalog.py",
+          "C:\\ap\\quiz_master\\quizipedia\\manifest.json",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\catalog.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY_LABELS_483_20261015"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native senior owns ONLY quizipedia/build_catalog.py,quizipedia/test_catalog.py,next/apps/quiz_app/assets/quizipedia/catalog.json,quizipedia/manifest.json and docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/worker evidence. Root owns task/docs outsideworker, Beads, coverage metadata, integration/review/Git. Reader303 published63 is immutable; no oldreleaseevidence edits. Actual generator uses NAME_EN for registry-missing background features;11of177 name_ru values remainEnglish (Western Sahara etc). Existing acquired NaturalEarth world-source.json already has NAME_RU, so smallest shared source fix use it only for background fallback. Preserve177IDs/order/geometry/name_en,166 registry-owned names,20quiz-targetIDs/flags/tags/all other catalog sections. No country-status/identity/geometry policy changes. Meaningful regression RED on actual source for background fallback, GREEN after fix; fail closed on missing/invalid needed label if appropriate, avoid invented translations/dependencies. Deterministic rebuild manifest hash. No Dart/other source/foreign edits, no children/Git/build/deploy/sharedresources. User queue waiver applies. Actual complete baseline catalog copied to ignored evidence before edit, exact after comparison permit only11Russian labels+manifest digest. Submit rawcommands/exits/fullhashes. You are not alone; preserve unrelated changes.",
+        "created_at": 1792089155.2834532,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-c01453fa983c45139c63c6764592ac5d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "kind": "report",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/worker/REPORT.md",
+              "sha256": "a66dc6980b69cf20522ddccc228472cc46cc0893938276854530b3b74043ab80"
+            },
+            {
+              "kind": "evidence",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/worker/evidence.json",
+              "sha256": "33b3dc57f2114bc46938b05afcb79274e93f43861bf2c59f4a9b7cfe7a7f166e"
+            },
+            {
+              "kind": "checks",
+              "path": "C:/ap/quiz_master/.run/country_labels_483_20261015/worker",
+              "result": "RED exit1; GREEN8 tests exit0; two deterministic build()+encoded() results identical; exact11 name_ru delta."
+            },
+            {
+              "kind": "source",
+              "path": "quizipedia/build_catalog.py",
+              "sha256": "aa76ed985c2467b9359070116cfa71c9439a796bfecdd5733ef2c275a6ca8ccc"
+            },
+            {
+              "kind": "source",
+              "path": "quizipedia/test_catalog.py",
+              "sha256": "440668296a1464f24618934c5fb3e5b5651b1306be58f5fd5b8de9abf69e0b99"
+            },
+            {
+              "kind": "output",
+              "path": "quizipedia/manifest.json",
+              "sha256": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+            },
+            {
+              "kind": "output",
+              "path": "next/apps/quiz_app/assets/quizipedia/catalog.json",
+              "sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc"
+            }
+          ],
+          "status": "DONE",
+          "summary": "Frozen scoped country-label fix. Actual-source RED exit1; full catalog suite eight tests exit0. Exactly11 background name_ru changes, only manifest catalog digest changes. All177 IDs/English names/geometry/order,166 registered Russian names,20targets and all other sections preserved. Root must synchronize unowned mirrored asset manifest and run canonical CLI before integration; no independent acceptance or deployment claimed."
+        },
+        "root_task_id": "task-c01453fa983c45139c63c6764592ac5d",
+        "run_id": "run-f1b8044c39ea48c8ba8d65b6b91920d8",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: localize background country names from existing Natural Earth Russian labels",
+        "version": 4,
+        "reviewer": "session-6946ad173c414b09be9cdc9a6beadb3c",
+        "review_note": "Independent review, native-review-inputs.json fullSHA256=[build_catalog.py aa76ed985c2467b9359070116cfa71c9439a796bfecdd5733ef2c275a6ca8ccc, test_catalog.py 440668296a1464f24618934c5fb3e5b5651b1306be58f5fd5b8de9abf69e0b99, manifest.json 226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7, catalog.json 09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc, REPORT.md a66dc6980b69cf20522ddccc228472cc46cc0893938276854530b3b74043ab80, evidence.json 33b3dc57f2114bc46938b05afcb79274e93f43861bf2c59f4a9b7cfe7a7f166e, source-label-pairs.json 890aafa09a813e550aeb5a6112fbfc127ed301db9cfb021f551a09ea54e81700] - all 7 recomputed and matched exactly. Scoped diff vs HEAD 209e88f is exactly 4 files, minimal: build_catalog.py (+3/-1, fail-fast on missing/non-string/blank NAME_RU for unregistered background features, fallback now uses NAME_RU not NAME_EN), test_catalog.py (+38, two new tests), manifest.json/catalog.json (data only). Registry-owned path (`names` truthy) untouched; fallback only triggers for background ids. Verified countries list order is 1:1 with world['features'], so test's zip(strict=True) pairing is sound. Ran suite myself: 8 tests, exit 0. Independently reproduced RED against pre-fix source (git stash): 6 failures incl. exact claimed Western Sahara/Западная Сахара mismatch and KeyError-on-missing-key case. Restored working tree to original state after stash round-trip (git autocrlf had flipped build_catalog.py to CRLF; reverted to LF, hash re-verified aa76ed98... exact match). 177 ids/order/geometry/English labels, 166 registry labels, 20 quiz targets, all other catalog sections untouched per diff+tests. Minor note (non-blocking): fallback uses bare `assert`, stripped under python -O; fine given this repo's test-driven non-optimized execution, but worth a non-assert check if build is ever run optimized. Source-only scope confirmed; mirrored next/ manifest.json correctly left untouched (Root-owned, separate integration step)."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully — task-c01453 is now `ACCEPTED` with error_count 0.\n\n**Verdict: ACCEPT** for task-c01453fa983c45139c63c6764592ac5d (source-only scope).\n\nKey findings:\n- All 7 `native-review-inputs.json` hashes independently recomputed and matched exactly.\n- Scoped diff vs HEAD `209e88f` is minimal and exactly as claimed: `build_catalog.py` fail-fast fallback to `NAME_RU` for registry-missing background features, 2 new regression tests, data-only changes in `manifest.json`/`catalog.json`.\n- Reproduced RED myself against the pre-fix source (6 failures, matching claimed `Western Sahara`/`Западная Сахара` mismatch and the missing-key `KeyError` case) and GREEN on the fix (8 tests, exit 0).\n- Confirmed registry-owned path, IDs/order/geometry/English names, 166 registry labels, and 20 quiz targets are untouched.\n- One non-blocking note left in the review: the validation uses a bare `assert`, which is stripped under `python -O` — fine for this repo's normal test-driven execution, but worth hardening later if the build is ever run optimized.\n- During testing I used `git stash` to reproduce the baseline; `core.autocrlf` flipped `build_catalog.py` to CRLF on the pop — I detected this and reverted it to LF before finishing, re-verifying its hash matched the frozen `aa76ed98...` exactly, so no edits remain.\n\nThis review covers source only — Root's mirrored `next/` manifest sync and integration remain a separate step as the task plan specifies.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "65520d28d63d7ab4e00a6e7542f197f9ccec1ddf04996adebacc90fac1b69ce0",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

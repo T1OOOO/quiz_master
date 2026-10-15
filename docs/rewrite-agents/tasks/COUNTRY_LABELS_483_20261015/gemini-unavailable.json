@@ -1,0 +1,28 @@
+{
+  "actual_cli_exit": 3,
+  "actual_model_init": "gemini-3.8-flash-medium",
+  "actual_provider_result": {
+    "conversation_id": "aa8b55f1-8c13-4f14-9303-96ec9bef4447",
+    "status": "ERROR",
+    "response": "",
+    "error": "Your AI credits balance is too low to continue.",
+    "duration_seconds": 0,
+    "num_turns": 1,
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "non_json_trailer": [
+    "error: Your AI credits balance is too low to continue.",
+    "AGY_ERROR: {\"short_error\":\"RESOURCE_EXHAUSTED (code 429): Resource has been exhausted (e.g. check quota).\",\"status\":\"RESOURCE_EXHAUSTED\",\"error_code\":429,\"code_kind\":\"http\",\"retryable\":true,\"error_id\":\"31cbe79b-f6eb-416e-a356-9981f3812fe8-1-2008\"}"
+  ],
+  "trace_sha256": "a5c4b7acbf4a5fce6e000473186ed9e4f24c04db3211f7684d7db83269205d55",
+  "hub_session_connected": false,
+  "report_produced": false,
+  "task_cancelled_before_assignment": "task-1927c6f3ceb140d3bcf6c26e5432a63f",
+  "next_action": "No retries or credit/policy changes; continue native implementation and actual Claude review. Quota failure is not an editorial verdict."
+}

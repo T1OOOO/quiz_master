@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-bc814406f1ca4b4e8bb7331220799ee6": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-bc814406f1ca4b4e8bb7331220799ee6",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent integration-only review. integration-evidence.json SHA256=c7dddce3cee0ed45ab5ddd8ec71048567cfa4f3669bd029ba93a2b1aea924fb2 (recomputed, matches). python -m unittest discover -s quizipedia -p test_catalog.py -v: 8 tests, exit 0 (reproduced myself). Mirror check: next/apps/quiz_app/assets/quizipedia/manifest.json byte-equal to quizipedia/manifest.json (sha256 226f75de...2a45be7 both). coverage.json vs HEAD 209e88f and vs privately preserved .run/country_labels_483_20261015/coverage-before.json: entries len 4405 in all three, counts {missing:4198,draft:0,accepted:207} unchanged, schema_version/note unchanged, exactly 11 entries differ (indices verified), only the `title` field changed per entry (status/article_id/training/domain/kind untouched), no reordering (0 unexpected position diffs). target_ids of the 11 changes = {ne-sah,ne-flk,ne-grl,ne-atf,ne-pri,ne-ncl,ne-twn,ne-ata,ne-cyn,ne-sol,ne-kos}, matching integration-evidence.json's coverage_title_changes exactly. Native-owned files (build_catalog.py, test_catalog.py, quizipedia/manifest.json, next catalog.json) hashes independently recomputed and match the frozen native-source-review.json values exactly — integration did not touch native scope. No question/article payload changes. This is source-only localization scoped to 11 titles, not a global coverage refresh — confirmed correct per PLAN.md. Note: unrelated pre-existing tracked diffs (.beads/issues.jsonl, docs/rewrite-agents/content20/README.md, study/check_reader.py) exist in the working tree but are outside task-bc814/c014 ownership and untouched by this task; not a defect. No Git mutations performed; git show used for in-memory baseline only. No production/publication claim; Reader303 unaffected."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Native actual-source RED/GREEN and catalogsuite0; canonicalgeneration0/deterministic/mirroredmanifestidentical; coverageonly11titles changed; independent actualClaudeCLI0/error0 review. Source frozen and pushed, no productionfix claimed until published. Ownmetadata/evidence only, preserveotherwork.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY_LABELS_483_20261015",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\manifest.json",
+          "C:\\ap\\quiz_master\\study\\question_articles\\coverage.json"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015 outsideworker, mirrored next/apps/quiz_app/assets/quizipedia/manifest.json and study/question_articles/coverage.json. Native senior c014 owns generator/test/catalog/quizipedia manifest andworker evidence; do not overlap until freeze. Fresh production63/full29OPEN unchanged. After nativefreeze synchronize mirroredmanifest, canonical deterministic build/checks, exact11backgroundRussianlabels from acquired NAME_RU only; preserve all177IDs/geometry/Englishnames/166registrynames/20targets/Reader303/all4084questions. Independent realClaude source/evidence review before acceptedintegration. Keep483OPEN until publishedverification; never edit immutableReader303 evidence. No unrelatedchanges/GitHubActions. Commit/push owned stable source; record remaining runtime/release gates honestly.",
+        "created_at": 1792089298.0533419,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-bc814406f1ca4b4e8bb7331220799ee6",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/integration-evidence.json",
+            "docs/rewrite-agents/tasks/COUNTRY_LABELS_483_20261015/native-source-review.json"
+          ],
+          "summary": "Source-only483 integration: canonical generator0+8tests0; mirror equal; reconciled exactly11countrycoverage titles, no other metadata changes. Fullcoverage regeneration was broader stale data (76new/194changed), retained failure+candidate privately; fullrefresh deferred3qx. SourceClaudeACCEPT/CLI0; no483 runtime/publication claim;29feedbackOPEN."
+        },
+        "root_task_id": "task-bc814406f1ca4b4e8bb7331220799ee6",
+        "run_id": "run-9e5bdbeaf14e4e379f256f099e5993d1",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: integrate country-label manifest and review evidence",
+        "version": 4,
+        "reviewer": "session-98d7734fe8e24f55bf9cf524566c6d03",
+        "review_note": "Independent integration-only review. integration-evidence.json SHA256=c7dddce3cee0ed45ab5ddd8ec71048567cfa4f3669bd029ba93a2b1aea924fb2 (recomputed, matches). python -m unittest discover -s quizipedia -p test_catalog.py -v: 8 tests, exit 0 (reproduced myself). Mirror check: next/apps/quiz_app/assets/quizipedia/manifest.json byte-equal to quizipedia/manifest.json (sha256 226f75de...2a45be7 both). coverage.json vs HEAD 209e88f and vs privately preserved .run/country_labels_483_20261015/coverage-before.json: entries len 4405 in all three, counts {missing:4198,draft:0,accepted:207} unchanged, schema_version/note unchanged, exactly 11 entries differ (indices verified), only the `title` field changed per entry (status/article_id/training/domain/kind untouched), no reordering (0 unexpected position diffs). target_ids of the 11 changes = {ne-sah,ne-flk,ne-grl,ne-atf,ne-pri,ne-ncl,ne-twn,ne-ata,ne-cyn,ne-sol,ne-kos}, matching integration-evidence.json's coverage_title_changes exactly. Native-owned files (build_catalog.py, test_catalog.py, quizipedia/manifest.json, next catalog.json) hashes independently recomputed and match the frozen native-source-review.json values exactly — integration did not touch native scope. No question/article payload changes. This is source-only localization scoped to 11 titles, not a global coverage refresh — confirmed correct per PLAN.md. Note: unrelated pre-existing tracked diffs (.beads/issues.jsonl, docs/rewrite-agents/content20/README.md, study/check_reader.py) exist in the working tree but are outside task-bc814/c014 ownership and untouched by this task; not a defect. No Git mutations performed; git show used for in-memory baseline only. No production/publication claim; Reader303 unaffected."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and task-bc814406f1ca4b4e8bb7331220799ee6 is now `ACCEPTED`.\n\n**Verdict: ACCEPT, error_count 0**\n\nFindings:\n- `integration-evidence.json` SHA256 `c7dddce3...a924fb2` recomputed and matches.\n- `python -m unittest discover -s quizipedia -p test_catalog.py -v`: **8 tests, exit 0** (reproduced independently).\n- Mirrored `next/apps/quiz_app/assets/quizipedia/manifest.json` is byte-identical to `quizipedia/manifest.json` (same SHA256 `226f75de...2a45be7`).\n- `coverage.json` vs HEAD `209e88f` and vs the privately preserved `coverage-before.json`: entry count (4405), top-level counts, schema, and order are all unchanged; **exactly 11 entries differ**, and only the `title` field in each (status/article_id/training/domain/kind untouched). The 11 `target_id`s match `{ne-sah, ne-flk, ne-grl, ne-atf, ne-pri, ne-ncl, ne-twn, ne-ata, ne-cyn, ne-sol, ne-kos}` — exactly the `coverage_title_changes` claimed in the evidence file.\n- The 4 native-owned files (`build_catalog.py`, `test_catalog.py`, `quizipedia/manifest.json`, mirror `catalog.json`) hash exactly to the frozen values in `native-source-review.json` — integration did not touch native scope.\n- This is correctly source-only localization (11 titles), not a global coverage refresh, matching PLAN.md's intended scope.\n- Pre-existing unrelated tracked diffs (`.beads/issues.jsonl`, `docs/rewrite-agents/content20/README.md`, `study/check_reader.py`) are outside bc814/c014 ownership and were untouched — not a defect of this task.\n- No git mutations were performed during review (one stray temp-file write was caught and removed immediately; all subsequent baseline reads used `git show` piped in-memory).\n\nGemini receipt: unable to confirm — not attempted/claimed here, out of scope for this review. Production/Reader303/publication status is unaffected and not claimed. Push remains Root's step per PLAN.md.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "69cd9a433ab245f738e66ab2049a0af6d05b6e674c57f21819194ceccf5c5e92",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

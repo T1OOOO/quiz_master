@@ -3,6 +3,9 @@ import json
 import math
 from pathlib import Path
 import unittest
+from unittest.mock import patch
+import copy
+import build_catalog
 
 from PIL import Image
 
@@ -43,6 +46,41 @@ class CatalogTests(unittest.TestCase):
                     self.assertGreaterEqual(len(ring),4)
                     for point in ring:
                         self.assertTrue(all(math.isfinite(v) and 0<=v<=1 for v in point))
+
+    def test_country_names_keep_registry_labels_and_localize_actual_background_source(self):
+        source = load(BASE/'sources/world-source.json')
+        content = load(BASE/'content.json')
+        registry = {row['iso2']:row for row in load(ROOT/'docs/rewrite-agents/preparation-country-registry/countries.json')['countries']}
+        background = []
+        for feature,row in zip(source['features'],self.catalog['countries'],strict=True):
+            prop = feature['properties']
+            iso = content['geometry_exceptions'].get(prop['ADM0_A3'],prop['ISO_A2'])
+            if iso in registry:
+                self.assertEqual(registry[iso]['name_ru'],row['name_ru'])
+                continue
+            background.append(row)
+            self.assertEqual(prop['NAME_RU'],row['name_ru'],row['id'])
+            self.assertTrue(any('А' <= letter <= 'я' or letter in 'Ёё' for letter in row['name_ru']),row['id'])
+            self.assertEqual(prop['NAME_EN'],row['name_en'])
+            self.assertNotIn(row['id'],self.catalog['map_target_ids'])
+        self.assertEqual(11,len(background))
+        self.assertEqual('Западная Сахара',next(row['name_ru'] for row in background if row['id']=='ne-sah'))
+
+    def test_missing_or_invalid_background_russian_label_is_refused(self):
+        real_load = build_catalog.load
+        source = real_load(BASE/'sources/world-source.json')
+        for label in (None,42,'','   '):
+            altered = copy.deepcopy(source)
+            feature = next(f for f in altered['features'] if f['properties']['ADM0_A3']=='SAH')
+            feature['properties']['NAME_RU'] = label
+            def load_input(path):
+                return altered if path == BASE/'sources/world-source.json' else real_load(path)
+            with self.subTest(label=label),patch.object(build_catalog,'load',side_effect=load_input),self.assertRaises(AssertionError):
+                build()
+        altered = copy.deepcopy(source)
+        next(f for f in altered['features'] if f['properties']['ADM0_A3']=='SAH')['properties'].pop('NAME_RU')
+        with patch.object(build_catalog,'load',side_effect=lambda path: altered if path == BASE/'sources/world-source.json' else real_load(path)),self.assertRaises(KeyError):
+            build()
 
     def test_target_metadata_credit_and_tag_references(self):
         targets = [r for r in self.catalog['countries'] if r['id'] in self.catalog['map_target_ids']]

@@ -1,0 +1,239 @@
+{
+  "status": "FROZEN_FOR_INDEPENDENT_REVIEW",
+  "actual_local_checks_exit": 0,
+  "owned_source_sha256": {
+    "quizipedia/build_catalog.py": "aa76ed985c2467b9359070116cfa71c9439a796bfecdd5733ef2c275a6ca8ccc",
+    "quizipedia/test_catalog.py": "440668296a1464f24618934c5fb3e5b5651b1306be58f5fd5b8de9abf69e0b99",
+    "quizipedia/manifest.json": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7",
+    "next/apps/quiz_app/assets/quizipedia/catalog.json": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc"
+  },
+  "baseline": {
+    "source_sha256": {
+      "quizipedia/build_catalog.py": "f2c9ea5f4f5666fa22610b5d6e42de2632f2c97a958fccc103e600e47ea233cb",
+      "quizipedia/test_catalog.py": "64a52f1e2cb27b71f65567ab891b4062a275720c73f1e97b81dd98d6ee6eee22",
+      "quizipedia/manifest.json": "31b9cdd30810e46b62662abd131da63ce8f38093efe6fc9d1a613caa27d4e5c2",
+      "next/apps/quiz_app/assets/quizipedia/catalog.json": "5d687661f4f467339a3376848713bbcfb8292a54dfc49cc5f5fafbc33c8e0a8d"
+    },
+    "mirrored_asset_manifest_sha256": "31b9cdd30810e46b62662abd131da63ce8f38093efe6fc9d1a613caa27d4e5c2",
+    "countries": 177,
+    "registered": 166,
+    "background": [
+      {
+        "id": "ne-sah",
+        "name_en": "Western Sahara",
+        "before_name_ru": "Western Sahara",
+        "source_name_ru": "Западная Сахара"
+      },
+      {
+        "id": "ne-flk",
+        "name_en": "Falkland Islands",
+        "before_name_ru": "Falkland Islands",
+        "source_name_ru": "Фолклендские острова"
+      },
+      {
+        "id": "ne-grl",
+        "name_en": "Greenland",
+        "before_name_ru": "Greenland",
+        "source_name_ru": "Гренландия"
+      },
+      {
+        "id": "ne-atf",
+        "name_en": "French Southern and Antarctic Lands",
+        "before_name_ru": "French Southern and Antarctic Lands",
+        "source_name_ru": "Французские Южные и Антарктические территории"
+      },
+      {
+        "id": "ne-pri",
+        "name_en": "Puerto Rico",
+        "before_name_ru": "Puerto Rico",
+        "source_name_ru": "Пуэрто-Рико"
+      },
+      {
+        "id": "ne-ncl",
+        "name_en": "New Caledonia",
+        "before_name_ru": "New Caledonia",
+        "source_name_ru": "Новая Каледония"
+      },
+      {
+        "id": "ne-twn",
+        "name_en": "Taiwan",
+        "before_name_ru": "Taiwan",
+        "source_name_ru": "Тайвань"
+      },
+      {
+        "id": "ne-ata",
+        "name_en": "Antarctica",
+        "before_name_ru": "Antarctica",
+        "source_name_ru": "Антарктида"
+      },
+      {
+        "id": "ne-cyn",
+        "name_en": "Turkish Republic of Northern Cyprus",
+        "before_name_ru": "Turkish Republic of Northern Cyprus",
+        "source_name_ru": "Турецкая Республика Северного Кипра"
+      },
+      {
+        "id": "ne-sol",
+        "name_en": "Somaliland",
+        "before_name_ru": "Somaliland",
+        "source_name_ru": "Сомалиленд"
+      },
+      {
+        "id": "ne-kos",
+        "name_en": "Kosovo",
+        "before_name_ru": "Kosovo",
+        "source_name_ru": "Республика Косово"
+      }
+    ],
+    "map_target_ids": [
+      "CA",
+      "US",
+      "MX",
+      "BR",
+      "AR",
+      "CL",
+      "AU",
+      "CN",
+      "IN",
+      "JP",
+      "EG",
+      "ZA",
+      "FR",
+      "DE",
+      "IT",
+      "ES",
+      "GB",
+      "NO",
+      "SE",
+      "MG"
+    ],
+    "world_source_name_ru_count": 177,
+    "input_sha256": {
+      "quizipedia/sources/world-source.json": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "quizipedia/content.json": "ca0f92acffc7bd76424bb28c56c895f5f062de19eec76d4d4a97498fc449d947",
+      "docs/rewrite-agents/preparation-country-registry/countries.json": "78b1bb2d9fbfdb35033022dbdc94c34a89ad472a6cce835c5dd1ec2932f14b04"
+    }
+  },
+  "regression_red": {
+    "actual_exit": 1,
+    "command": [
+      "C:\\Python314\\python.exe",
+      "-m",
+      "unittest",
+      "test_catalog.CatalogTests.test_country_names_keep_registry_labels_and_localize_actual_background_source",
+      "test_catalog.CatalogTests.test_missing_or_invalid_background_russian_label_is_refused",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master\\quizipedia",
+    "stdout_sha256": "bf0f56790727c0a150c9338b2fcc92d3c271c876bdb5e9874225998a67f4891c"
+  },
+  "tests": {
+    "command": [
+      "C:\\Python314\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "quizipedia",
+      "-p",
+      "test_catalog.py",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "tests": 8,
+    "stdout_sha256": "1d045bbb32dde11bf8ea3819c50466cf53dc0a9132dda1c17b56864832231dee"
+  },
+  "field_diff": {
+    "status": "OWNED_OUTPUTS_REBUILT",
+    "actual_exit": 0,
+    "deterministic_two_builds_equal": true,
+    "catalog_sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc",
+    "countries": 177,
+    "registered_unchanged": 166,
+    "background_changed": 11,
+    "changes": [
+      {
+        "id": "ne-sah",
+        "field": "name_ru",
+        "before": "Western Sahara",
+        "after": "Западная Сахара"
+      },
+      {
+        "id": "ne-flk",
+        "field": "name_ru",
+        "before": "Falkland Islands",
+        "after": "Фолклендские острова"
+      },
+      {
+        "id": "ne-grl",
+        "field": "name_ru",
+        "before": "Greenland",
+        "after": "Гренландия"
+      },
+      {
+        "id": "ne-atf",
+        "field": "name_ru",
+        "before": "French Southern and Antarctic Lands",
+        "after": "Французские Южные и Антарктические территории"
+      },
+      {
+        "id": "ne-pri",
+        "field": "name_ru",
+        "before": "Puerto Rico",
+        "after": "Пуэрто-Рико"
+      },
+      {
+        "id": "ne-ncl",
+        "field": "name_ru",
+        "before": "New Caledonia",
+        "after": "Новая Каледония"
+      },
+      {
+        "id": "ne-twn",
+        "field": "name_ru",
+        "before": "Taiwan",
+        "after": "Тайвань"
+      },
+      {
+        "id": "ne-ata",
+        "field": "name_ru",
+        "before": "Antarctica",
+        "after": "Антарктида"
+      },
+      {
+        "id": "ne-cyn",
+        "field": "name_ru",
+        "before": "Turkish Republic of Northern Cyprus",
+        "after": "Турецкая Республика Северного Кипра"
+      },
+      {
+        "id": "ne-sol",
+        "field": "name_ru",
+        "before": "Somaliland",
+        "after": "Сомалиленд"
+      },
+      {
+        "id": "ne-kos",
+        "field": "name_ru",
+        "before": "Kosovo",
+        "after": "Республика Косово"
+      }
+    ],
+    "manifest_changed_fields": [
+      "generated_catalog_sha256"
+    ],
+    "other_country_fields_unchanged": true,
+    "country_order_and_ids_unchanged": true,
+    "all_other_sections_unchanged": true,
+    "all_20_targets_unchanged": true,
+    "acquired_source_and_registry_unchanged": true,
+    "mirrored_asset_manifest_untouched_root_owned": true
+  },
+  "root_followup": "Root must update next/apps/quiz_app/assets/quizipedia/manifest.json and run the canonical CLI/full synchronization check after this freeze. Worker intentionally did not write that unowned mirror.",
+  "limitations": [
+    "No browser or Flutter build",
+    "No deployment, Git, Beads or child agents",
+    "No live production claim; independent review and Root integration remain required"
+  ]
+}

@@ -35,7 +35,9 @@ def build():
         # Background-only political features are not part of the quiz identity scope.
         country_id = iso if iso in registry else 'ne-' + prop['ADM0_A3'].lower()
         names = registry.get(iso)
-        row = dict(id=country_id, name_ru=names['name_ru'] if names else prop['NAME_EN'],
+        if not names:
+            assert isinstance(prop['NAME_RU'], str) and prop['NAME_RU'].strip(), 'missing Russian background label: ' + country_id
+        row = dict(id=country_id, name_ru=names['name_ru'] if names else prop['NAME_RU'],
                    name_en=names['name_en'] if names else prop['NAME_EN'])
         geometry = feature['geometry']
         polygons = geometry['coordinates'] if geometry['type'] == 'MultiPolygon' else [geometry['coordinates']]
