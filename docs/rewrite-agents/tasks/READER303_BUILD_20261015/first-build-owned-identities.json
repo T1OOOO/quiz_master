@@ -1,0 +1,69 @@
+{
+  "scope": "Only captured timed-out first Reader303 compile process tree, not all same-named Dart processes",
+  "full_ignored_capture_sha256": "5f036f7118ae92e7ff7657b7834e9e27827f6569ac450a8840179506ae8769ac",
+  "captured": [
+    {
+      "id": 56504,
+      "parent_id": 60276,
+      "name": "cmd.exe",
+      "creation_time": "2026-10-15T17:35:11.462748+03:00",
+      "command_sha256": "bbb72900ed7409f94415f48fb3356663bef5c911f2c83c5137f108933f70c7b5"
+    },
+    {
+      "id": 66652,
+      "parent_id": 56504,
+      "name": "dart.exe",
+      "creation_time": "2026-10-15T17:35:12.954582+03:00",
+      "command_sha256": "981483750540ed7fab2762108f3ec7bbbc49b6e4f3e1cbb47531e1a386dfdfd1"
+    },
+    {
+      "id": 55432,
+      "parent_id": 66652,
+      "name": "dartvm.exe",
+      "creation_time": "2026-10-15T17:35:13.020158+03:00",
+      "command_sha256": "aee667a9c4f63886a0f5b2b1f59de366c5156f6d8447b58a6dad97a7e53e73c0"
+    },
+    {
+      "id": 70308,
+      "parent_id": 55432,
+      "name": "dart.exe",
+      "creation_time": "2026-10-15T17:35:26.721035+03:00",
+      "command_sha256": "a0bc377fa9688c82d05ec5fb96e352c39c170729b2a090857ae5b0f8282408c4"
+    },
+    {
+      "id": 51544,
+      "parent_id": 55432,
+      "name": "dart.exe",
+      "creation_time": "2026-10-15T17:36:58.266233+03:00",
+      "command_sha256": "9e1517edf2a1cdbf69bb3689cf01b467d2852e1a20bd787d8ab4f6fba7b305be"
+    },
+    {
+      "id": 55132,
+      "parent_id": 70308,
+      "name": "conhost.exe",
+      "creation_time": "2026-10-15T17:35:26.773876+03:00",
+      "command_sha256": "417222c4a0ecb4d60a457ebe8e26fddf3d5406bffb16a5c59af8eeb241beca51"
+    },
+    {
+      "id": 13444,
+      "parent_id": 70308,
+      "name": "dartaotruntime.exe",
+      "creation_time": "2026-10-15T17:35:26.941189+03:00",
+      "command_sha256": "089bdc942d279098183553c744087f71789c32e00e5d20a95d7fef5bec9f05ae"
+    },
+    {
+      "id": 64580,
+      "parent_id": 51544,
+      "name": "conhost.exe",
+      "creation_time": "2026-10-15T17:36:58.346363+03:00",
+      "command_sha256": "417222c4a0ecb4d60a457ebe8e26fddf3d5406bffb16a5c59af8eeb241beca51"
+    },
+    {
+      "id": 61800,
+      "parent_id": 13444,
+      "name": "conhost.exe",
+      "creation_time": "2026-10-15T17:35:26.984191+03:00",
+      "command_sha256": "417222c4a0ecb4d60a457ebe8e26fddf3d5406bffb16a5c59af8eeb241beca51"
+    }
+  ]
+}

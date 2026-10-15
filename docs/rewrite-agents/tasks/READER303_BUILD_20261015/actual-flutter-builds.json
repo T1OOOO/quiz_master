@@ -1,0 +1,28 @@
+{
+  "frozen_source": "14b7da43c3e43642d60859f5053ee6d809c2379e",
+  "build_id": "quiz-2026.10.15-reader303-14b7da4",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": "timeout",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.15-reader303-14b7da4",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "elapsed_seconds": 453.19,
+      "output": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\production-web"
+    }
+  ],
+  "status": "LOCAL_BUILD_EVIDENCE_NOT_A_RELEASE_APPROVAL"
+}
