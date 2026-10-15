@@ -229,12 +229,32 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(279));
+      expect(articles.articles, hasLength(283));
       for (final (quizId, questionId, revision) in [
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-001',
+          '85a75608861c6733833f9a0e09299ff80b726145492eddfa5d29ac420ee0b149',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-002',
+          '6301535ddb447e1e38f84cdc5ae9cc24adf48d9a4555133bb8408324f6b57d55',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-003',
+          '18627a36f2a3285754c84c7b276c8b563f1d6f75b9d97172ca5369fab7d95833',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-004',
+          '340a7b66c7b868aeac86ab3e2240b2bb50977d7a780cc847d4b92bf292e04f1f',
+        ),
         (
           'prep-greek-mythology',
           'greek-002',
-          'e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e',
+          '038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d',
         ),
         (
           'pub-connections-20261014',

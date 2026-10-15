@@ -1,0 +1,73 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-4d566e63e8fc4ac09c197ac9d6f2e067": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-4d566e63e8fc4ac09c197ac9d6f2e067",
+          "verdict": "accept",
+          "note": "Independent content-only review, 4 cinema-actor articles. BLIND_SOLVE (msg 43091, done before reading ledger) matched all 4 keys: 001=Vivien Leigh, 002=Takashi Shimura, 003=Al Pacino, 004=Harrison Ford. Verified via AFI/BFI/oscars.org/starwars.com direct fetch; awardsdatabase.oscars.org needs JS (fetch tool blocked) and criterion.com returned 403 to automated fetch -- underlying facts independently corroborated instead via oscars.org ceremony pages (Leigh Best Actress win, de Havilland supp. nom, Godfather Best Picture + Pacino/Caan/Duvall supp. noms) and WebSearch/Wikipedia/IMDb (Shimura=Kambei, Mifune=Kikuchiyo). Matsumura/Madadayo professor credit (cultural filmography source) independently corroborated via Wikipedia (Prof. Hyakken Uchida) -- no unqualified claim, no false-absence/cameo claim re Seven Samurai. Greer Garson's Chips-not-GWTW nomination confirmed. No parenthetical/length clues among options. Word counts 197-201 (band 180-280), one memory cue each, no generic padding. revision_sha256 for all 4 unchanged across draft/writer-snapshot/root-snapshot (stable q/options/keys). Tags correct. Sources 2-4 unique https each w/ title+supports+accessed. article_hash (build.py algorithm, independently computed, no builder invoked): full draft=6e348d79ad6264c6c26aa8f7226e38826b53e112bc034ff5c118b21bc807cf45; 001=2d7858a503915967a0050e507148da508f7edc8cfe127629fa6b25f287d08199; 002=58b48a00fbcf4dbeaac85b3e4768105c9ce660f3f016ff9e7a2aea4bb9b91012; 003=824ee66adb57f577eee8fdfeadd708c23e38c1ef91582d44be151d456af7b886; 004=9808ea68df69fc70342302e0c3f71dbae5c0e609b929a60fd7b2e73299751d66. Export (279 articles) confirmed to lack all 4, untouched. Content-only ACCEPT, all four; no build/deploy/write performed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actualprimarysourceaccess, originalsubstantiveRussian, correctpublicquestionbindings, exactexistingarticle schema/validtags. All4missing279export, no fabricatedfacts/access. Candidateonlyfile beforeprivateledger forindependentblindsolve. Submitactualpath/hashledger+sourceevidence. No publication claims.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015"
+        ],
+        "assignee": "session-6be3e9b8aa774a409a09d0b5b94972a3",
+        "author": "session-8877c6c8333e42c48645560f8ba0ee9f",
+        "body": "Nativewriter exclusive newstudy/question_articles/drafts/cinema-actors-20261015.json and ACTOR_ARTICLES_20261015/writer. Four existing prep-film-actors-1 questions cinema-oct3-001..004. ExactfullEnglishpacket in nativewriterlaunch; primarysource research,220-350RUwords/article,4headings,all3distractor distinctions,2-5checkedlinks. ActualpublicGETsnapshotandrefs stable currentrawrevisions, editorialledger+candidate-onlyseparate. Nevereditquestions/options/keys/assets/reviews/snapshots/Beads/otherfiles/deploy. Nochildren. Outputdraftonlyaftergenuineseparatereviewneeded.",
+        "created_at": 1792040200.6876764,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-4d566e63e8fc4ac09c197ac9d6f2e067",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "checks": [
+            "JSON parse/schema/id/status/ref/hash/count/word/source bounds passed",
+            "git diff --check passed"
+          ],
+          "evidence": [
+            {
+              "path": "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\cinema-actors-20261015.json",
+              "sha256": "25E9123B5E37C4922B33B375349A1A9CB02CA219564073E9661ABB00862B5DDB"
+            },
+            {
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015\\writer\\public-snapshot.json",
+              "sha256": "2A38A50DCCFC5B08311ADAD85095E301B79DFA3B1E9709628B9C05F3BD4F34E1"
+            },
+            {
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015\\writer\\factual-ledger.md",
+              "sha256": "224F747923ED537B0FAF94A6745740C173D3545A58AA278A0A9C1EF7601AE3E5"
+            }
+          ],
+          "label": "cinema-articles-writer-20261015",
+          "summary": "REWORK READY. Replaced generic quiz-taking padding with four substantive 193–197-word Russian cinema mini-articles, each with four headings and all three distractors meaningfully distinguished. Added source-backed distinctions for Hepburn/Tracy Lord (AFI) and Tatsuo Matsumura/professor in Madadayo; no assertion about Matsumura’s Seven Samurai presence or absence. Draft only; needs independent fact/answer/options review before integration."
+        },
+        "review_note": "Independent content-only review, 4 cinema-actor articles. BLIND_SOLVE (msg 43091, done before reading ledger) matched all 4 keys: 001=Vivien Leigh, 002=Takashi Shimura, 003=Al Pacino, 004=Harrison Ford. Verified via AFI/BFI/oscars.org/starwars.com direct fetch; awardsdatabase.oscars.org needs JS (fetch tool blocked) and criterion.com returned 403 to automated fetch -- underlying facts independently corroborated instead via oscars.org ceremony pages (Leigh Best Actress win, de Havilland supp. nom, Godfather Best Picture + Pacino/Caan/Duvall supp. noms) and WebSearch/Wikipedia/IMDb (Shimura=Kambei, Mifune=Kikuchiyo). Matsumura/Madadayo professor credit (cultural filmography source) independently corroborated via Wikipedia (Prof. Hyakken Uchida) -- no unqualified claim, no false-absence/cameo claim re Seven Samurai. Greer Garson's Chips-not-GWTW nomination confirmed. No parenthetical/length clues among options. Word counts 197-201 (band 180-280), one memory cue each, no generic padding. revision_sha256 for all 4 unchanged across draft/writer-snapshot/root-snapshot (stable q/options/keys). Tags correct. Sources 2-4 unique https each w/ title+supports+accessed. article_hash (build.py algorithm, independently computed, no builder invoked): full draft=6e348d79ad6264c6c26aa8f7226e38826b53e112bc034ff5c118b21bc807cf45; 001=2d7858a503915967a0050e507148da508f7edc8cfe127629fa6b25f287d08199; 002=58b48a00fbcf4dbeaac85b3e4768105c9ce660f3f016ff9e7a2aea4bb9b91012; 003=824ee66adb57f577eee8fdfeadd708c23e38c1ef91582d44be151d456af7b886; 004=9808ea68df69fc70342302e0c3f71dbae5c0e609b929a60fd7b2e73299751d66. Export (279 articles) confirmed to lack all 4, untouched. Content-only ACCEPT, all four; no build/deploy/write performed.",
+        "reviewer": "session-b4bce54eeac1421fa2c6856e568f451c",
+        "root_task_id": "task-4d566e63e8fc4ac09c197ac9d6f2e067",
+        "run_id": "run-87e7814fb5e3437d81b2831020b0a876",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3512fa97e9934fbf9a0de267d2d4a63f",
+        "title": "quiz_master-3qx four source-backed actor question articles",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [
+    "BLIND_SOLVE_BEFORE_LEDGER (task-4d566e63e8fc4ac09c197ac9d6f2e067, independent, before reading draft/ledger/snapshot):\ncinema-oct3-001 -> cinema-oct3-001-opt-2 (Вивьен Ли). Gone with the Wind (1939), Scarlett O'Hara played by Vivien Leigh.\ncinema-oct3-002 -> cinema-oct3-002-opt-1 (Такаси Симура). Seven Samurai (1954), Kambei Shimada played by Takashi Shimura.\ncinema-oct3-003 -> cinema-oct3-003-opt-3 (Аль Пачино). The Godfather (1972), Michael Corleone played by Al Pacino.\ncinema-oct3-004 -> cinema-oct3-004-opt-4 (Харрисон Форд). Star Wars Episode IV (1977), Han Solo played by Harrison Ford.\nProceeding to inspect draft/ledger/snapshot now."
+  ],
+  "report": "Review submitted and the task is now `ACCEPTED`. Summary for the record:\n\n**Task:** task-4d566e63e8fc4ac09c197ac9d6f2e067 — four cinema-actor mini-articles (cinema-oct3-001..004)\n**Verdict: ACCEPT, all four**\n\n**Blind solve (recorded before touching ledger/draft, hub message #43091):** Vivien Leigh / Takashi Shimura / Al Pacino / Harrison Ford — all four matched the writer's answer key exactly.\n\n**Fact-checking, by article:**\n- **001 (GWTW):** AFI confirmed Hepburn=Tracy Lord directly. The Oscars awards-database search URL couldn't be fetched (requires JS/cookies — a real limitation of my fetch tool, not inferred inaccessibility); I corroborated the same claims via the accessible `oscars.org/oscars/ceremonies/1940` page (Leigh won Best Actress, de Havilland got a supporting nomination, Fleming won Best Director) and confirmed via search that Garson's 1939 nomination was for *Goodbye, Mr. Chips*, not GWTW.\n- **002 (Seven Samurai):** Criterion URLs returned 403 to automated fetch. BFI confirmed Nakadai=Hidetora directly. I corroborated Shimura=Kambei/Mifune=Kikuchiyo via independent search (Wikipedia/IMDb). The Matsumura/Madadayo \"professor\" credit — flagged as a non-primary cultural-filmography source — got independent institutional corroboration (Wikipedia: plays Prof. Hyakken Uchida); the article makes no claim about his presence/absence in Seven Samurai itself, so no false-absence issue.\n- **003 (Godfather):** Confirmed via `oscars.org/oscars/ceremonies/1973` — Best Picture win, Pacino/Caan/Duvall all supporting-actor nominees.\n- **004 (Star Wars):** All four StarWars.com citations confirmed directly (Ford/Han, Hamill/Luke, Guinness/Obi-Wan, Han-vs-Lando distinction).\n\nNo parenthetical/length clues in any options, word counts 197–201 (within the 180–280 band), one memory cue per article, no generic padding. `revision_sha256` for all four questions is identical across the writer draft, writer snapshot, and the root's full 20-question snapshot — stems/options/keys are unchanged. The 279-entry export still lacks all four (confirmed, untouched). Independently computed `article_hash` (same algorithm as `build.py`, not invoked) for the full draft and each article are in the review note sent to the hub.\n\nNo production files, builds, or writes were touched — this was a read-only review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "fe7dfffdb7996a9b7fa27e0560ee1ef10a68eed5a2517f3eeac0c1b12e065e0e",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

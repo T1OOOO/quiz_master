@@ -1,0 +1,48 @@
+{
+  "status": "INTEGRATED_NOT_PUBLISHED",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "C:\\ap\\quiz_master\\study\\question_articles\\build.py",
+        "--write"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 283 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "C:\\ap\\quiz_master\\study\\question_articles\\build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 283 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\study\\question_articles",
+        "-p",
+        "test_build.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.221s\n\nOK\n"
+    }
+  ],
+  "old_articles": 279,
+  "new_articles": 283,
+  "question_refs": 164,
+  "old_279_unchanged": true,
+  "snapshot_full_public_questions": 20,
+  "draft_sha256": "25e9123b5e37c4922b33b375349a1a9cb02ca219564073e9661abb00862b5ddb",
+  "export_sha256": "6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8",
+  "no_question_option_key_or_API_edits": true
+}

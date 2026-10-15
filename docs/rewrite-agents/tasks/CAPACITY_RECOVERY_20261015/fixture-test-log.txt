@@ -1,0 +1,14 @@
+{"removed": "quiz-2026.10.12-fixture.restore-proof.sqlite", "restore_from": "quiz-2026.10.12-fixture.sqlite", "sha256": "bbb7bee24245da0c89d5194b6b06503f93e4230ede026d31e4a77b3876059df8", "bytes": 8192}
+test_changed_second_group_aborts_before_any_unlink (test_deduplicate.DedupTests.test_changed_second_group_aborts_before_any_unlink) ... ok
+test_current_and_traversal_names_rejected (test_deduplicate.DedupTests.test_current_and_traversal_names_rejected) ... ok
+test_duplicate_plan_name_rejected (test_deduplicate.DedupTests.test_duplicate_plan_name_rejected) ... ok
+test_hard_link_rejected (test_deduplicate.DedupTests.test_hard_link_rejected) ... ok
+test_identical_copy_removed_and_alias_restorable (test_deduplicate.DedupTests.test_identical_copy_removed_and_alias_restorable) ... ok
+test_live_journal_rejected (test_deduplicate.DedupTests.test_live_journal_rejected) ... ok
+test_nonprivate_copy_rejected (test_deduplicate.DedupTests.test_nonprivate_copy_rejected) ... ok
+test_symlink_rejected (test_deduplicate.DedupTests.test_symlink_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.059s
+
+OK
