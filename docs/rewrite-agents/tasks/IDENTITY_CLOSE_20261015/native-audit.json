@@ -1,0 +1,97 @@
+{
+  "acceptance": "Explicit recommendation close or keep open with exact requirement-to-evidence mapping and gaps; no claims of new tests or live UI verification.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015",
+    "C:\\ap\\quiz_master\\next\\server",
+    "C:\\ap\\quiz_master\\.beads"
+  ],
+  "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+  "author": "session-70796293ed0c4447af1189207bf29ce8",
+  "body": "Read-only bounded audit. kc8 Beads notes stop at revision52 although production revision62 was accepted and verified. Determine whether kc8 implementation and publication acceptance requirements are now satisfied from actual source/tests and existing immutable release evidence. No new tests/builds/browser/deploys; no issue mutation. Start docs/rewrite-agents/tasks/READER299_RELEASE_20261015/FINAL.md and linked precise evidence. Identify remaining requirements or exact closure evidence. Preserve foreign changes. Report concrete paths, distinguish historical runs from new checks. Production feedback just rechecked read-only:29 allOPEN and full-row hash unchanged.",
+  "created_at": 1792070265.165287,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "general",
+  "id": "task-0f597c53ac2c49b48517dcc03a004cd8",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "evidence": [
+      "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/FINAL.md",
+      "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/execution-packet.json",
+      "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/independent-published-outcome-review.json",
+      "C:/ap/quiz_master/docs/rewrite-agents/tasks/LOTR_IDENTITY_API_20261014/worker/verification.json",
+      "Read-only bd show quiz_master-kc8 and quiz_master-1wy; no issue mutation."
+    ],
+    "recommendation": "Close quiz_master-kc8 as implemented and published after adding a current evidence note. Revision52 notes are historical, superseded by actual Reader299 Helm62/source9c670e90. This same-provider native audit is advisory, not a new cross-provider acceptance.",
+    "remaining_gaps": [
+      "No technical blocker found for the bounded importer identity bug. kc8 still has an explicit dependency on in-progress quiz_master-1wy; Root should reconcile that issue relationship while keeping the broader factual audit open.",
+      "No new tests, builds, live requests, browser or deployment performed. Read-only evidence/source inspection and evidence hash recomputation only; historical test outcomes remain historical.",
+      "No current live full LOTR quiz attempt, Android, physical screen-reader or full-bank factual certification. These limits do not invalidate the actual unmodified-image identity gate; do not expand closure to1wy/9e0/all feedback.",
+      "Current real feedback29OPEN is unchanged; earlier26 count was a dated baseline, not an unresolved importer requirement."
+    ],
+    "requirement_to_evidence": [
+      {
+        "evidence": [
+          "next/server/internal/content/import.go:126-179,226-234 allows and strictly validates option_ids/revision_number; defaults positional IDs/revision1.",
+          "next/server/internal/content/import_identity_test.go:12-146 asserts absent defaults, retained q95 option5 at index3, correct keyopt2, revisions2, complete98 question+manifest equality and malformed cases.",
+          "next/server/internal/sqlite/collection.go:47 calls actual ImportWithTaxonomy in directory mode.",
+          "docs/rewrite-agents/tasks/LOTR_IDENTITY_API_20261014/worker/verification.json retains actual RED1/GREEN0/content0/quizctl0; root-full-go-checks.json actual complete Go0. Independent backend and SQLite review JSONs contain actual accepted distinct-reviewer callbacks."
+        ],
+        "requirement": "Minimal backwards-compatible raw importer identity metadata; default behavior, malformed values and98 untouched question/key/revision mappings preserved"
+      },
+      {
+        "evidence": [
+          "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json currently has metadata only lotr_rk_93 revision2 and lotr_rk_95 revision2 with opt1,2,3,5; inspected read-only."
+        ],
+        "requirement": "Actual corpus integration: only93/95 metadata, retained four q95 identities and revision2"
+      },
+      {
+        "evidence": [
+          "docs/rewrite-agents/tasks/LOTR_RUNTIME_METADATA_20261014/actual-linux-api-build.json actual exit0, Linux amd64 ELF22988817 bytes, SHA f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850; actual-api-inspection.json build metadata.",
+          "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/published-http-verification.json publicly binds that API SHA, frozen source9c670e90ac0547eb9d276d6190a87a71680b7fd2, build reader299 and production JS."
+        ],
+        "requirement": "Explicit updated component/source pins and actual Linux API build"
+      },
+      {
+        "evidence": [
+          "docs/rewrite-agents/tasks/MIXED_RELEASE_20261014/worker/verify_candidate_runtime.py:74-88 compares actual unmodified HTTP DTOs, q95 opt1,2,3,5, target revision2/hashes and98 exact prior objects;105+ checks every playable Reader ref;130+ scores/reveals against private grading.",
+          "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/execution-packet.json candidate_runtime is actual VERIFIED image e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4, LOTR100/98non-targets, exact two target hashes,100/100/reveals100, mixed20/20 and Reader299/180/178playable/2knownnoncatalog; no host DTO-rewrite gate."
+        ],
+        "requirement": "Unmodified actual image API/Reader; retained option5/revisions/98 objects and grading"
+      },
+      {
+        "evidence": [
+          "READER299_RELEASE_20261015/execution-packet.json copied_db_rehearsal integrity/migration/original_rows_preserved/feedback_lifecycle/old_api_rollback all successful,335 graded/15finished, backup0600/integrity and durable archive/Helm dry-run hashes.",
+          "READER299_RELEASE_20261015/execution-acceptance.json and independent-execution-review.json record actual task-1f1ca79d0de24c93954406a82768c20f ACCEPTED, CLI0/error_count0 and distinct reviewer."
+        ],
+        "requirement": "Copied DB restoration/original data/rollback gates before independent execution approval"
+      },
+      {
+        "evidence": [
+          "MIXED_RELEASE_20261014/local-browser/browser-proof.json records historical compiled Web+controlled realGo LOTR93/95 answers2/2, exact revision hashes and both articles opened; it explicitly does not claim raw image/production proof.",
+          "READER299_RELEASE_20261015/actual-flutter-builds.json has actual production/QA exit0; local-browser/browser-proof.json compiled8-actor subset; published-browser/browser-proof.json current live361x738 library/global feedback and cleanup. No fresh full production LOTR quiz flow claimed."
+        ],
+        "requirement": "Browser evidence with honest limits"
+      },
+      {
+        "evidence": [
+          "READER299_RELEASE_20261015/publish-exit.json actual0; published-server-after-browser-verification.jsonl Helm62 deployed, both images e053..., originalPVC, healthy service/node, strict capacity,29OPEN fullhash and0600backup integrity.",
+          "READER299_RELEASE_20261015/independent-published-outcome-review.json task-61b4cac0519946359f8a353a52ace97f actual CLI0/ACCEPTED/error_count0 distinct reviewer.",
+          "Recomputed all17 entries in published-review-inputs.json: zero mismatches. Manifest SHA99a9164bc8ab179c7211c7f745f548d0d324f71a6ae97e843c4e00a6ea7f7945. FINAL.md correctly records later acceptance while original PUBLISHED.md/manifest pending labels remain immutable historical snapshots."
+        ],
+        "requirement": "Actual publication and independent published verification"
+      }
+    ],
+    "status": "DONE"
+  },
+  "root_task_id": "task-0f597c53ac2c49b48517dcc03a004cd8",
+  "run_id": "run-5059f00983494b3b896fdfe9ba13191d",
+  "skills": [],
+  "state": "SUBMITTED",
+  "team_id": "team-c2049f3c642c44749060faa283a038b9",
+  "title": "quiz_master-kc8: reconcile legacy option identity issue with published Reader299 evidence",
+  "version": 3
+}

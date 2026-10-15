@@ -1,0 +1,65 @@
+{
+  "acceptance": "Four original nonduplicated mini-articles, exact public bindings, two live-checked primary citations each, useful factual prose and honest source limits. Draft only pending independent review.",
+  "allowed_paths": [
+    "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+  ],
+  "assignee": "session-b7d4818742584698afebaa421c66ffaa",
+  "author": "session-70796293ed0c4447af1189207bf29ce8",
+  "body": "Author exactly four Russian question-linked mini-articles for prep-musicals music-oct3-001,002,003,019. Current generated299 library has no question_refs for these exact IDs. Read public tracked snapshot and qm-quiz-writing skill; research official primary sources live. Own only study/question_articles/drafts/musicals-four-20261015.json and docs/rewrite-agents/tasks/MUSICALS_FOUR_20261015/author-notes.md. Match existing qm-question-articles/v1 schema and exact snapshot question revision hashes; status draft; tags from existing metadata only; 4 sections per article with useful context/clear distinction composer vs lyricist/book/film version, at least two directly supporting source links per article. Avoid boilerplate and unsupported claims. Existing schema example cinema-actors-final-eight-20261015.json. No canonical/generated content, answers, quizzes, API, UI, Beads or deploy changes. No children. Need independent fact review before integration. Return actual source checks/access dates, any blocked source, exact file hashes.",
+  "created_at": 1792070363.816826,
+  "depth": 0,
+  "difficulty": 2,
+  "difficulty_explicit": true,
+  "domain": "general",
+  "id": "task-37224c817ccd44049cb315ad90ea4906",
+  "parent_task_id": null,
+  "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+  "requires_review": true,
+  "result": {
+    "changed_files": [
+      "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\musicals-four-20261015.json",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MUSICALS_FOUR_20261015\\author-notes.md"
+    ],
+    "evidence": [
+      {
+        "kind": "source_check",
+        "result": "Opened two supporting primary/official creator, production, or composer sources for every article on 2026-10-15. Hamilton: hamiltonmusical.com and linmanuel.com; Phantom: andrewlloydwebber.com show/history and opera explainer; Les Misérables: london.lesmis.com creative and production-credit pages; Wicked: wickedthemusical.com and stephenschwartz.com."
+      },
+      {
+        "command": "PowerShell JSON parse/binding/tag/section/source/word-count validation in C:\\ap\\quiz_master",
+        "kind": "structural_validation",
+        "result": "PASS: schema qm-question-articles/v1; exactly 4 distinct expected IDs; statuses draft; exact snapshot revision hashes; existing tags only; 4 headings and 2 sources per article; Russian word counts 170, 177, 171, 173."
+      },
+      {
+        "command": "rg -l --fixed-strings question:<each owned ID> study/question_articles/drafts",
+        "kind": "duplicate_check",
+        "result": "PASS: each of the four IDs occurs only in study/question_articles/drafts/musicals-four-20261015.json."
+      },
+      {
+        "command": "git diff --check -- study/question_articles/drafts/musicals-four-20261015.json docs/rewrite-agents/tasks/MUSICALS_FOUR_20261015/author-notes.md",
+        "kind": "integrity",
+        "result": "PASS: no diff errors."
+      }
+    ],
+    "remaining_risks": [
+      "Independent fact review is still required before integration.",
+      "No source URL was blocked; claims intentionally distinguish stage authorship from source novels, orchestration, and film/adaptation credits."
+    ],
+    "sha256": {
+      "author-notes.md": "D5DEBC81F638077AC0167573CAA38DD4D719B910E3DC150B962AFA367721E8BD",
+      "musicals-four-20261015.json": "3F20D2F0C14D34185E6CB68CB9120E5623E75ED82B0BED381C51A8B81F47C3F1"
+    },
+    "status": "DONE",
+    "summary": "Four original Russian mini-article drafts are ready for independent factual review; not imported, generated, published, or accepted."
+  },
+  "review_note": "Independent fact review of musicals-four-20261015.json. Draft file sha256 (computed directly, not taken from author's self-report): 3f20d2f0c14d34185e6cb68cb9120e5623e75ed82b0bed381c51a8b81f47c3f1. This is FACTUAL DRAFT ACCEPTANCE ONLY — not integration, generated-catalog, publication, or deployment approval; the file remains an untouched draft. Solved candidate questions music-oct3-001/002/003/019 independently before reading the key: Lin-Manuel Miranda, Andrew Lloyd Webber, Claude-Michel Schonberg, Stephen Schwartz respectively — all match the existing options with no ambiguous distractor; options/questions were not edited. Live-fetched today (2026-10-15) all 8 cited primary URLs (hamiltonmusical.com/new-york/cast, linmanuel.com/project/hamilton, andrewlloydwebber.com show+opera-explainer pages, london.lesmis.com cast-creative + casting-news, wickedthemusical.com/the-story-of-wicked, stephenschwartz.com/works/wicked) and every specific claim in each article's 4 sections (book/music/lyrics credits, Chernow/Hugo/Leroux/Maguire source novels, orchestration vs composition distinction, 1986 Phantom London opening, stage-vs-Disney+/2024-film distinctions, Boublil/Kretzmer/Natel/Fenton/Nunn/Caird text-layer credits) is directly supported by the two linked sources named in that article, not just generally true. No source was blocked or inaccessible. Independently re-verified structure: 4 unique article IDs, 4 headings each, Russian word counts 170/177/171/173 (>100), 2 distinct source links per article, status draft, tags domain:arts/topic:musical-theatre both pre-existing elsewhere in the repo, and all 4 question_refs revision_sha256 values match study/question_articles/snapshots/prep-musicals.json exactly. Checked study/question_articles/drafts/*.json and coverage.json for duplicate bindings of these 4 question IDs: none found outside this draft; coverage.json still lists them as missing, consistent with no competing/generated article. No factual, sourcing, or structural flaw found; no rework requested.",
+  "reviewer": "session-37e31cd9060a48a0ba1070428f7e02ee",
+  "root_task_id": "task-37224c817ccd44049cb315ad90ea4906",
+  "run_id": "run-43df5627596c45cbb0a9d96ff7b53e96",
+  "skills": [],
+  "state": "ACCEPTED",
+  "team_id": "team-c2049f3c642c44749060faa283a038b9",
+  "title": "quiz_master-3qx: four uncovered musical composer mini-articles",
+  "version": 4
+}
