@@ -1,0 +1,68 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-98be7a80dbb44f06adfdd5f066859952": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-98be7a80dbb44f06adfdd5f066859952",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT archive-offload packet only (scope: 10 old tar copies, not Reader299 package/image/preparation/cutover). approval-inputs sha256 d77e28bcb27a1a6533434f90a43972e1b08993c55c24418ffc1b28928830fe71 independently recomputed from docs/rewrite-agents/tasks/READER299_RELEASE_20261015/archive-offload/approval-inputs.json, matches claim; all 8 listed file hashes (offload.py/test_offload.py/execute.py/offload.sh/plan.json/copy-receipt.json/protected-hashes.json/tests.json) independently recomputed and match. plan.json: exactly 10 entries, Oct12-14 window only, none in the 5-name PROTECTED set, total 739922944 bytes. Independently hashed all 10 local .run/.../offloaded copies: byte-for-byte match to plan.json+copy-receipt.json (size+sha256), sum=739922944. protected-hashes.json has exactly 17 entries; offload.sh/readback.sh assert current baseline61 (both images 0f24677d...), PVC 7fc2428f, node Ready/no DiskPressure/no blocking taints, HTTPS 200, feedback hash 452929a2..., backup 0600+integrity_check, and loaded containerd/docker image-inventory counts/hashes before and after, with no image/package/DB/backup/process mutation. offload.py/execute.py: fail-closed on unaccepted/unbound review (literal 'approval-inputs sha256 '+digest(manifest) required in accepted note), reject protected names/traversal/symlinks/metadata drift/duplicates, revalidate dev/ino/size/mtime+full hash immediately before each unlink, refuse -O optimized Python, refuse rerun if execution-stdout/stderr/exit already exist (none present - not executed remotely yet, consistent with README). Ran the 12 offline unit tests myself: exit 0, matches tests.json/tests-stdout.txt. Diffed against immutable ARCHIVE_OFFLOAD_20261015: only the regex window (13->14), embedded 10-entry plan/protected/inventory data, transfer_kind/transfer_exit schema, and task/path IDs changed; one added hardening (assert available>0); no guard weakened. Transfer narrative (5 scp + 5 sftp-reget after 6th SCP timeout) corroborated by copy-interruption.json/resume-source-check.json/sftp-6.txt/sftp-9.txt and copy-receipt.json transfer_kind split. No defects found. Limits: did not review task-1f1ca79d (future Reader299 cutover gate) or publication-source tasks - separate, out of scope. No execution performed by me."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exacttenfrozenremoteidentities/copiedhashes, protectedstateunchanged, sourceacceptance beforeonefiniteexec, readbackactualcapacity andnootherchanges.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015"
+        ],
+        "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Root-owned bounded capacityrepair. Freshfree20.389GB belowstrict20%of102.417GB, production61 healthy. Selectexact10oldnamedQuizMastertarfiles Oct12-14 excludingcurrent61/60/59/58/failed17protectedarchives andallDB/backups/packages/stages. Copytoignoredlocaloffload, verifyhash,size,regularnonlink/devino/mtime; freshcurrentbaseline61both0f/PVC/full29feedback/healthy/protectedarchiveandbackuphashes/sharedloadedimageinventorybeforeafter. Reuse reviewedARCHIVE_OFFLOAD_20261015 primitives minimalpatternwindow14extension guardedprotectedset. No Docker/containerddelete, nootherprojectresource/process/schema/datachanges. Independentdifferentprovideracceptance bindingapproval-inputs digest beforeexecution. Localnegativeguardtests and noexecuntilreview. Exacttenplan/datahashes recorded.",
+        "created_at": 1792061625.6589384,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-98be7a80dbb44f06adfdd5f066859952",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "InitialSCP6 timeout180s after5verified; preservedpartial, freshly reverifiedall10remoteidentities/hashes; officialSFTPregetactual0 completed6-10, finite runner0.",
+            "12negativeguardtests0 withobservedREDnewOct14casebeforepattern13to14fix; copiedreceipt reflectsactualscp/sftp transferkind+exit.",
+            "Exactplan/protected17files/sharedloadedimageinventory/baseline61both0f/PVC29OPENhash/Ready/HTTPSguardedbeforeafter; no images/packages/stages/DB/backups/processes/sharedprojectmutations.",
+            "ExecutorrequiresactualacceptedcallbackbindingfullapprovalinputshashbeforeSSH andlocalcopyfullreverification; executionhasnotrun."
+          ],
+          "limitations": [
+            "Differentprovider sourceapprovalrequired before exactonecleanup.",
+            "Actualfreespace mustremeasureaftercleanup; noReader299image/preparation/publication approval fromthis task.",
+            "Coldarchiveslocalignoredretained; recentrollbackfilesprotectedremote."
+          ],
+          "report": "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/archive-offload/README.md",
+          "run_id": "run-6a34da1af27c4e7bb438483f24df67ca",
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Exact10oldQuizMasterarchivecopies739922944bytes complete and fullhash verified; sourcepacket readyforindependentreview, NOremoteunlink yet."
+        },
+        "root_task_id": "task-98be7a80dbb44f06adfdd5f066859952",
+        "run_id": "run-6a34da1af27c4e7bb438483f24df67ca",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "Offload ten old Quiz Master image archives with exact verified copies",
+        "version": 4,
+        "reviewer": "session-0541d2330e5948c2bd5aeec6e0d6e1b5",
+        "review_note": "ACCEPT archive-offload packet only (scope: 10 old tar copies, not Reader299 package/image/preparation/cutover). approval-inputs sha256 d77e28bcb27a1a6533434f90a43972e1b08993c55c24418ffc1b28928830fe71 independently recomputed from docs/rewrite-agents/tasks/READER299_RELEASE_20261015/archive-offload/approval-inputs.json, matches claim; all 8 listed file hashes (offload.py/test_offload.py/execute.py/offload.sh/plan.json/copy-receipt.json/protected-hashes.json/tests.json) independently recomputed and match. plan.json: exactly 10 entries, Oct12-14 window only, none in the 5-name PROTECTED set, total 739922944 bytes. Independently hashed all 10 local .run/.../offloaded copies: byte-for-byte match to plan.json+copy-receipt.json (size+sha256), sum=739922944. protected-hashes.json has exactly 17 entries; offload.sh/readback.sh assert current baseline61 (both images 0f24677d...), PVC 7fc2428f, node Ready/no DiskPressure/no blocking taints, HTTPS 200, feedback hash 452929a2..., backup 0600+integrity_check, and loaded containerd/docker image-inventory counts/hashes before and after, with no image/package/DB/backup/process mutation. offload.py/execute.py: fail-closed on unaccepted/unbound review (literal 'approval-inputs sha256 '+digest(manifest) required in accepted note), reject protected names/traversal/symlinks/metadata drift/duplicates, revalidate dev/ino/size/mtime+full hash immediately before each unlink, refuse -O optimized Python, refuse rerun if execution-stdout/stderr/exit already exist (none present - not executed remotely yet, consistent with README). Ran the 12 offline unit tests myself: exit 0, matches tests.json/tests-stdout.txt. Diffed against immutable ARCHIVE_OFFLOAD_20261015: only the regex window (13->14), embedded 10-entry plan/protected/inventory data, transfer_kind/transfer_exit schema, and task/path IDs changed; one added hardening (assert available>0); no guard weakened. Transfer narrative (5 scp + 5 sftp-reget after 6th SCP timeout) corroborated by copy-interruption.json/resume-source-check.json/sftp-6.txt/sftp-9.txt and copy-receipt.json transfer_kind split. No defects found. Limits: did not review task-1f1ca79d (future Reader299 cutover gate) or publication-source tasks - separate, out of scope. No execution performed by me."
+      }
+    }
+  },
+  "review_messages": [
+    "Independent review of task-98be7a80 (archive-offload) complete: ACCEPT, error_count 0. approval-inputs sha256 d77e28bcb27a1a6533434f90a43972e1b08993c55c24418ffc1b28928830fe71 independently recomputed and matches; all 8 input hashes, 10 local copies (byte-for-byte), plan.json/protected-hashes.json (17 entries) and 12 offline tests reverified myself. Diff vs immutable ARCHIVE_OFFLOAD_20261015 shows only the stated minimal window/schema/baseline changes, no weakened guard. No execution performed; scope is archive-offload only, not Reader299 package/image/preparation/cutover."
+  ],
+  "report": "## Final report\n\n**Verdict: ACCEPT, error_count 0** for task-98be7a80dbb44f06adfdd5f066859952 (run-6a34da1af27c4e7bb438483f24df67ca), scope limited to the archive-offload packet only.\n\n**Independently verified (not just read):**\n- Recomputed sha256 of `approval-inputs.json` myself → `d77e28bcb27a1a6533434f90a43972e1b08993c55c24418ffc1b28928830fe71`, matching Root's observed value and the hash `execute.py` requires literally in the acceptance note.\n- Recomputed sha256 of all 8 listed inputs (offload.py, test_offload.py, execute.py, offload.sh, plan.json, copy-receipt.json, protected-hashes.json, tests.json) — all match the manifest.\n- Hashed all 10 local `.run/.../offloaded` copies myself: every size/sha256 matches `plan.json` and `copy-receipt.json`, total exactly 739,922,944 bytes.\n- `plan.json`: exactly 10 entries, all dated Oct 12–14, none overlapping the 5-name `PROTECTED` set. `protected-hashes.json`: exactly 17 entries, matching the \"seventeen\" claim.\n- Ran the 12 offline unit tests myself: exit 0, matching `tests.json`/`tests-stdout.txt`.\n- Diffed `offload.py`/`execute.py`/`offload.sh`/`readback.sh`/`test_offload.py` against the immutable `ARCHIVE_OFFLOAD_20261015` baseline: only the stated minimal changes (regex window 13→14, refreshed 10-entry plan/baseline61/image-inventory data, `transfer_kind`/`transfer_exit` schema, task/path IDs, plus one added hardening `assert available>0`). No guard was weakened.\n- `execute.py` fails closed on an unaccepted/unbound review, rejects protected names/traversal/symlinks/metadata drift/duplicates, and `offload.py` revalidates dev/ino/size/mtime+full hash immediately before each unlink. No `execution-stdout/stderr/exit` files exist yet — confirms nothing has executed remotely.\n- Partial-SCP/SFTP-reget narrative is corroborated by `copy-interruption.json`, `resume-source-check.json`, `sftp-6.txt`/`sftp-9.txt`, and the 5 scp + 5 sftp-reget split in `copy-receipt.json`.\n\n**Limits:** I reviewed only this archive-offload packet — not task-1f1ca79d (future Reader299 cutover gate) or the publication-source tasks, which are separate and out of scope. I performed no execution.\n\nThe callback (`hub_task review`, state now `ACCEPTED`) and a short hub message were sent; no other work was done this turn.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "c462e6b961e6462bff7a52bc479d91d449fc135b4253d6753f8b22f29cd752e4",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

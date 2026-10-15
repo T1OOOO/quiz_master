@@ -1,0 +1,37 @@
+{
+  "actual_exit": 0,
+  "native_session": 72188,
+  "command": [
+    "python",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-worker/prepare_reader299_release.py",
+    "--pins",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-pins-v1.json",
+    "--prior-archive",
+    ".run/actor291_release_20261015/package-v1/quiz-2026.10.15-reader291-3482af9.tar.gz",
+    "--output-root",
+    ".run/reader299_release_20261015/package-v1"
+  ],
+  "result": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "build_id": "quiz-2026.10.15-reader299-9c670e9",
+    "frozen_commit": "9c670e90ac0547eb9d276d6190a87a71680b7fd2",
+    "release_pins_canonical_sha256": "2d376caa323864149f78f2b2edc98ae83675a638ff968e7156e176a42a173dd2",
+    "archive": ".run\\reader299_release_20261015\\package-v1\\quiz-2026.10.15-reader299-9c670e9.tar.gz",
+    "archive_sha256": "01ddc3ee1cd7ef68376ec1dc84c06ad9c8ab88970995715edce3e631a5c7417d",
+    "file_members": 332,
+    "counts": {
+      "packs": 136,
+      "questions": 4084,
+      "reader_articles": 299,
+      "total_refs": 180,
+      "refs": {
+        "total": 180,
+        "playable": 178,
+        "noncatalog": 2
+      }
+    },
+    "qa_checked_not_packaged": "C:\\ap\\quiz_master\\.run\\reader299_release_20261015\\qa-web"
+  },
+  "archive_bytes": 60973734,
+  "scope": "Actual observed native producer exit0; local package only, no image/remote operation."
+}

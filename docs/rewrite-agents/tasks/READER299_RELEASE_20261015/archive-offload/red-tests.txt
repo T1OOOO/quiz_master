@@ -1,0 +1,21 @@
+{"removed": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.12-culture-f219916.tar", "bytes": 21}
+...F........
+======================================================================
+FAIL: test_oct14_nonprotected_archive_is_allowed (test_offload.OffloadTests.test_oct14_nonprotected_archive_is_allowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER299_RELEASE_20261015\archive-offload\test_offload.py", line 43, in test_oct14_nonprotected_archive_is_allowed
+    self.assertEqual(remove_verified([a], self.root), [a['path']])
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER299_RELEASE_20261015\archive-offload\offload.py", line 53, in remove_verified
+    verify(entry, root)
+    ~~~~~~^^^^^^^^^^^^^
+  File "C:\ap\quiz_master\docs\rewrite-agents\tasks\READER299_RELEASE_20261015\archive-offload\offload.py", line 30, in verify
+    assert PATTERN.fullmatch(logical.name) and str(logical) == entry['path']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.632s
+
+FAILED (failures=1)

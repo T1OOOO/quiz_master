@@ -1,0 +1,19 @@
+{
+  "actual_exit": 0,
+  "native_session": 74476,
+  "command": [
+    "python",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-worker/prepare_reader299_remote.py",
+    "--pins",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-pins-v1.json",
+    "--package",
+    ".run/reader299_release_20261015/package-v1/package-preparation.json"
+  ],
+  "result": {
+    "status": "LOCAL_PREVIEW_ONLY",
+    "build_id": "quiz-2026.10.15-reader299-9c670e9",
+    "archive_sha256": "01ddc3ee1cd7ef68376ec1dc84c06ad9c8ab88970995715edce3e631a5c7417d",
+    "remote_script_sha256": "59bda376433514dd473c5c847b67825b2c5ffab0e14d6d17c2badd719534a5ed"
+  },
+  "scope": "Actual local preview exit0. Nonce in this inert preview differs from future actual preparation invocation; no image or execution approval."
+}

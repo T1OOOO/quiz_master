@@ -1,0 +1,90 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-895ed4e75e69407a9d6389969a463f63": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-895ed4e75e69407a9d6389969a463f63",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT (independent Claude Opus 5, read-only). Approves running GUARDED PREPARATION only; NOT publication, image acceptance or cutover. All recomputed by me.\n\n* controller-source-sha256.json SHA256 de1c618c41c9c1ca8a18cd5fb57faebb8cc5926ba1e463aab1277619aa7e5142, all 10 entries = disk. remote-helper-source-sha256.json 63ac9e7b07f7000d24f4b2929cf7e2aa7013f4672df30920f27880c29c909b10, its 4-source subset = disk = hardcoded prepare list. freeze 29a839ca (14/14), REPORT af5f0137, observed-input 8/8 incl baseline tar d926a276.\n* From baseline tar + tree: prior 291/172; current 299; exactly 8 adds 013-020; the 291 unchanged; 180 total = 180 unique refs; 178 frozen-git bindings; 2 noncatalog; 136/4084.\n* Build receipts exit0; prod+QA trees 74 files each (not 148), hashes reproduce on disk; 7 frozen assets = git 9c670e90 bytes in both; QA JS = browser JS; prod != QA path; git diff 9c670e90 over next/quizzes/metadata/study empty. Ran unittest discover: 24/24 PASS.\n* Rendered guard/prepare/collect + patched cutover/rehearse: no helm upgrade/rollback, no kubectl mutation (only apply --dry-run=server), no alias/52/c4b5ba65/e41399b7/291-count residue; 1 preflight def + 3 calls; publish/upgrade modes exit1; bash -n clean, LF. Strict >20% containerd gate pre-upload, in prepare, in collect (available=20 fails in test), with Helm61/both 0f24677d/replica/PVC 7fc2428f/node-health/HTTPS200/29 OPEN + 452929a2 at all 3 boundaries. Collector asserts 0600 backup+integrity+isolated restore, original_rows_preserved, old_api_rollback, 335/15, durable tar hash, pinned values; rollback rebinds to reader291-3482af9. No -O/PYTHONOPTIMIZE anywhere. Historical 291/MIXED/deploy untouched.\n* Browser proof: 8 subsets 013-020, 0/8, 361x738, 4 sections/2 links/0 textarea, all 8 footers hash-verified by me, inline feedback + History; close exit1 / 13 inactive / ports closed; not 20-question/Android/screen-reader. Receipts bind real ACCEPTED task-a41210da and task-72e5b3fa, reviewer 6f6ef1f1 != assignee.\n\nNits: dead local own release.py:121; verify_helper_review omits error_count==0; scp logs no exit artifact.\n\nBlocker by design: 20.389/102.417GB = 19.91%, preflight fails closed; no preparation until capacity is independently repaired. Archive-offload task-98be7a80 (RUNNING) not reviewed here."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Complete minimally adapted299preparation source and tests, exacthashes/knownlimits; historical291unchanged, no remoteoperation. Root and differentprovider review required.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-70796293ed0c4447af1189207bf29ce8",
+        "body": "Use full direct nativebrief fromRoot. Minimum target-specific fresh adapters/copies allowed, genericframeworknotrequired. Reuse immutable prior291 reviewedprimitives with exactcountbaselineguards updated onlyinnewfiles. Own docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-worker only. Root owns browserproof/pins/SSH/Git/Beads. Actualsource9c670e90, buildreader2999c670e9, baseline61both0f,299/180/178 preserved291,full29feedbackhash4529...,API/nginxunchanged. Full8browserproof now docs/.../READER299_RELEASE_20261015/local-browser/browser-proof.json verifies compiledQA8exactpublicquestions, notfull20,score0,13ownedidentitiesinactive/portsclosed; do not fabricate20QA. Validate real independent source/integration receipts FEEDBACK5NC/ACTOR_FINAL_EIGHT_INTEGRATION. Existing291archive and builds paths directbrief. Local package/preparation generation only; noSSH/build/browser/actualdeploy/Git/Beads/children. Include negativeofflineguards, actualreceipt/hash/tree/source/291delta/schema/packagevalidation; remote Ready/noDiskPressure/PVC/current61both0f/fullfeedback/strict20percent/freshbackuprestore/durableimage/rollback/copiedDBHTTP/Helmlinttemplate dryrun gates allretained. No unsafeprototype reuse and noPREPARED onmissinggates. IndependentOpusreviewbeforeexecution.",
+        "created_at": 1792061258.6120186,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-895ed4e75e69407a9d6389969a463f63",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "prepare_reader299_release.py",
+            "prepare_reader299_remote.py",
+            "verify_reader299_candidate.py",
+            "reader299_guard.py",
+            "test_reader299_release.py",
+            "test_prepare_reader299_remote.py",
+            "README.md",
+            "REPORT.md",
+            "controller-source-sha256.json",
+            "remote-helper-source-sha256.json",
+            "observed-input-sha256.json",
+            "offline-tests.log",
+            "offline-tests.json",
+            "inherited-contract-red.json",
+            "freeze-sha256.json"
+          ],
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER299_RELEASE_20261015/release-worker/REPORT.md SHA256 af5f0137eb870f27f7eb8721e474249ba70e6ec72e04c5afb83aa82fe0a7572c",
+            "freeze-sha256.json SHA256 29a839cafbe890373c5774f6eb1169e37dea9ca2eb26c6244a464dfafc7975c1",
+            "offline-tests.json/log: 24 offline tests, actual exit 0, 16.727 seconds; native Bash syntax and non-prepare mode rejection included.",
+            "controller-source-sha256.json: exact ten executable/test/dependency source hashes. remote-helper-source-sha256.json: exact four helper review hashes.",
+            "Actual 8-question QA proof, score0/8, all8 footer hashes, 13 inactive identity audit, Windows API exit1/wrapper0 and closed QA ports verified locally.",
+            "Immutable Reader291 archive SHA and prior291 preservation, target299/180/178/2, unchanged136/4084/API/Nginx, stage controls and rollback bindings tested offline.",
+            "Root still owns real acceptance/pins, actual package production, remote capacity repair, actual preparation/runtime evidence and separate cutover review."
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Frozen Reader299 package and remote preparation adapters are ready for independent review. No package/image/remote PREPARED state claimed before actual Root review and execution."
+        },
+        "root_task_id": "task-895ed4e75e69407a9d6389969a463f63",
+        "run_id": "run-da946d0ef1b54d9a873edbcf7fe1129c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-c2049f3c642c44749060faa283a038b9",
+        "title": "Prepare strict Reader299 successor package and remote source adapters",
+        "version": 4,
+        "reviewer": "session-2655b67f868b4ad1b3e2a731c60788ff",
+        "review_note": "ACCEPT (independent Claude Opus 5, read-only). Approves running GUARDED PREPARATION only; NOT publication, image acceptance or cutover. All recomputed by me.\n\n* controller-source-sha256.json SHA256 de1c618c41c9c1ca8a18cd5fb57faebb8cc5926ba1e463aab1277619aa7e5142, all 10 entries = disk. remote-helper-source-sha256.json 63ac9e7b07f7000d24f4b2929cf7e2aa7013f4672df30920f27880c29c909b10, its 4-source subset = disk = hardcoded prepare list. freeze 29a839ca (14/14), REPORT af5f0137, observed-input 8/8 incl baseline tar d926a276.\n* From baseline tar + tree: prior 291/172; current 299; exactly 8 adds 013-020; the 291 unchanged; 180 total = 180 unique refs; 178 frozen-git bindings; 2 noncatalog; 136/4084.\n* Build receipts exit0; prod+QA trees 74 files each (not 148), hashes reproduce on disk; 7 frozen assets = git 9c670e90 bytes in both; QA JS = browser JS; prod != QA path; git diff 9c670e90 over next/quizzes/metadata/study empty. Ran unittest discover: 24/24 PASS.\n* Rendered guard/prepare/collect + patched cutover/rehearse: no helm upgrade/rollback, no kubectl mutation (only apply --dry-run=server), no alias/52/c4b5ba65/e41399b7/291-count residue; 1 preflight def + 3 calls; publish/upgrade modes exit1; bash -n clean, LF. Strict >20% containerd gate pre-upload, in prepare, in collect (available=20 fails in test), with Helm61/both 0f24677d/replica/PVC 7fc2428f/node-health/HTTPS200/29 OPEN + 452929a2 at all 3 boundaries. Collector asserts 0600 backup+integrity+isolated restore, original_rows_preserved, old_api_rollback, 335/15, durable tar hash, pinned values; rollback rebinds to reader291-3482af9. No -O/PYTHONOPTIMIZE anywhere. Historical 291/MIXED/deploy untouched.\n* Browser proof: 8 subsets 013-020, 0/8, 361x738, 4 sections/2 links/0 textarea, all 8 footers hash-verified by me, inline feedback + History; close exit1 / 13 inactive / ports closed; not 20-question/Android/screen-reader. Receipts bind real ACCEPTED task-a41210da and task-72e5b3fa, reviewer 6f6ef1f1 != assignee.\n\nNits: dead local own release.py:121; verify_helper_review omits error_count==0; scp logs no exit artifact.\n\nBlocker by design: 20.389/102.417GB = 19.91%, preflight fails closed; no preparation until capacity is independently repaired. Archive-offload task-98be7a80 (RUNNING) not reviewed here."
+      }
+    }
+  },
+  "report": "# Final review report — task-895ed4e75e69407a9d6389969a463f63\n\n## Status of this turn\n\nThe independent ACCEPT callback succeeded and is the actual recorded Hub state (reviewer `session-2655b67f868b4ad1b3e2a731c60788ff`, verdict accept, error_count 0, task version 4), carrying the full source-manifest note. The outer finite CLI process then **timed out after that successful callback**, while final session activity was being set. I make **no claim of a prior CLI exit 0** — the process outcome was a timeout, not a clean exit. No source changed in the interim. This turn only finalizes that already-completed review; it is **not** a fresh code review, not a re-review, and not a production review. No Hub calls, file edits, tests, builds, browser or SSH were performed in this turn.\n\n## Verdict\n\n**ACCEPT**, error_count 0. Requirements compliance: pass. Code quality: pass, with three non-blocking nits.\n\n## What I verified myself, not from the author's report\n\n**Manifests, independently recomputed:**\n- `controller-source-sha256.json` → SHA256 `de1c618c41c9c1ca8a18cd5fb57faebb8cc5926ba1e463aab1277619aa7e5142`; all **ten** mapping entries recomputed and equal to the files on disk.\n- `remote-helper-source-sha256.json` → SHA256 `63ac9e7b07f7000d24f4b2929cf7e2aa7013f4672df30920f27880c29c909b10`; its exact **four**-source subset matches disk and equals the hardcoded `--prepare` helper list.\n- `freeze-sha256.json` `29a839ca…7975c1` (14/14 entries match, plus itself = the 15 declared files); `REPORT.md` `af5f0137…a7572c`; `observed-input-sha256.json` 8/8 match including the immutable baseline tar `d926a276…`.\n\n**Content invariants, recomputed from the baseline tar and working tree:** prior 291 articles / 172 refs → current 299; exactly eight additions `cinema-oct3-013..020`; zero change to any of the 291 prior objects; 180 total refs equal to 180 unique refs; 178 exact frozen-git bindings; 2 known noncatalog refs contained in the set; catalog 136 packs / 4084 questions.\n\n**Builds, trees, tests:** both build receipts `actual_exit 0`; production and QA web trees are the actual **74 files each** — not a stale 148 — and every hash reproduces on disk; all seven frozen assets byte-identical to git `9c670e90` in both builds; QA JS equals the browser-proof JS; production and QA paths distinct; `git diff 9c670e90` over `next`/`quizzes`/`metadata`/`study/question_articles` empty. I ran the offline suite myself: **24 of 24 tests PASS** (a genuine independent run, matching the author's recorded 24). `py_compile` clean on all six reviewed modules. No archive member count is hardcoded; `file_members` is computed.\n\n**Guards, rendered and read offline:** no `helm upgrade` or `helm rollback`, no kubectl mutation (only `kubectl apply --dry-run=server`), and no `RENDER_ALIAS`/`52`/`c4b5ba65`/`e41399b7`/`(136,4084,291)`/`actors-d204f9b` residue in the guard, prepare, collect or patched `cutover.sh`. One preflight definition and three call sites; `publish`, `upgrade` and empty modes exit 1 with empty stdout; `bash -n` clean, LF only. The strict `>20%` containerd gate fires pre-upload, in prepare and in collect, each alongside Helm 61, both `0f24677d` containers, available replica, PVC `7fc2428f`, node health, HTTPS 200, and 29 OPEN feedback with full-row `452929a2`; a test proves `available=20` fails closed. The collector asserts `0600` backup, integrity, isolated restore, `original_rows_preserved`, `old_api_rollback`, 335/15, durable tar hash and pinned values/rendered digest. Rollback correctly rebinds to the `reader291-3482af9` root with that archive's own `checksums.txt`. No `-O` or `PYTHONOPTIMIZE` anywhere, so the heredoc assertions cannot be bypassed. Historical READER291/MIXED/`deploy` trees are untouched, and `inherited-contract-red.json` honestly records the 291 controller *rejecting* the 299 proof.\n\n**Receipts:** the source and integration receipts bind the genuinely ACCEPTED `task-a41210da…` and `task-72e5b3fa…`, with reviewer `6f6ef1f1…` distinct from the assignee in both, cross-checked against live Hub state.\n\n## Non-blocking nits\n\nDead local `own` at `prepare_reader299_release.py:121`; the inherited `verify_helper_review` omits the `error_count==0` requirement that the source-review path enforces; `scp` at `prepare_reader299_remote.py:182` writes no exit/log artifact unlike the `ssh()` helper. Also noted: the capacity gate now measures the containerd filesystem rather than the old absolute 4 GB floor on `/opt` — stronger on this single 102.417 GB filesystem.\n\n## Scope and prerequisites that remain\n\nThis is source approval to run **guarded preparation only**. It is **not** approval to publish, **not** approval to build or accept an image, and **not** approval to cut over; the generated cutover packet requires its own separate independent review. Before the producer may run, Root must still author the release pins and obtain a cross-provider `qm-lotr-package-controller-review/v1` receipt binding those exact ten hashes under prepare-only / no-execution / no-publication scope.\n\n**Capacity prerequisite:** the controller currently fails closed by design — 20.389 GB of 102.417 GB is 19.91%, below the strict >20% gate. No preparation may proceed until capacity is independently repaired and a fresh actual guard passes.\n\n## Explicit limitations\n\nThe browser evidence covers eight exact public question subsets `013-020` with score 0/8 at 361×738 — not a full 20-question run, not Android, and not physical screen-reader certification. The archive-offload packet `task-98be7a80` (state RUNNING, not submitted) was neither reviewed nor executed. No new fact audit or Flutter test was performed or needed. Backup, restore, copied-DB rehearsal, durable image, dry-run and cutover remain expected future runtime gates, not local results I observed. I took no SSH, build, browser, deploy, Git or shared-resource action at any point.",
+  "original_cli_exit": "timeout",
+  "finalization_cli_exit": 0,
+  "completion_mode": "Original independent review callback succeeded; outer CLI timed out during final session activity. Same official Claude conversation resumed and returned this genuine final report with exit0; original timeout is not relabeled.",
+  "trace_sha256": "4f2fa39162a8571b17202dfa7036690f32447acea5cf18fe92f9b1132a3b5b54",
+  "finalization_trace_sha256": "f33157fe1c8a7ced75f80f2857f2e84b423d6a45f37c68a292c47a9c44485eb7",
+  "scope": "Guarded prepare-only source approval; no execution or publication or candidate-image acceptance.",
+  "schema_version": "qm-mixed-remote-helper-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\prepare_reader299_remote.py": "8222c4fe4ca7890100592dc7ea74bf093be99c90de1c2f537d739760d11badbf",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\test_prepare_reader299_remote.py": "a82d65e13fade5afdf735425c0857dda8dd5abb041d7195a4ebebfc28a8b9e92",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\reader299_guard.py": "f32c5297f84381a1b23d053f13dc053f539c72627a3e1cec4f0f225ef1a89268",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  }
+}

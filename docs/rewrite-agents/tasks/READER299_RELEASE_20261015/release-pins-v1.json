@@ -1,0 +1,83 @@
+{
+  "frozen_commit": "9c670e90ac0547eb9d276d6190a87a71680b7fd2",
+  "baseline_image": "docker.io/library/quiz-master@sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228",
+  "api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+  "nginx_sha256": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "build_receipt": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\actual-flutter-builds.json",
+    "sha256": "338f49c06e619d467ee4753617a90d2db8b1d2af935b04c37508ef0072d89a18"
+  },
+  "source_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\FEEDBACK5NC_20261015\\independent-source-review.json",
+    "sha256": "fbe6b3a48fa98ccd8d543ca1d4711842f745ab431d9681c5f9b841720b1fecec"
+  },
+  "reader_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_EIGHT_INTEGRATION_20261015\\independent-integration-review.json",
+    "sha256": "15fd34f0735817ffa75782dfd6e77d8a5bc20d7846a170e24719ecf77978f62c"
+  },
+  "browser_proof": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\local-browser\\browser-proof.json",
+    "sha256": "5eb0c164df062c80e2d93ce224cf53d694c5528fa6735141192909d305068cb2"
+  },
+  "web_trees": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\frozen-web-trees.json",
+    "sha256": "3b2478b68c98d330ed420c5c51d10beeeec739f0718e427955569bb615005826"
+  },
+  "production_web": "C:\\ap\\quiz_master\\.run\\reader299_release_20261015\\production-web",
+  "qa_web": "C:\\ap\\quiz_master\\.run\\reader299_release_20261015\\qa-web",
+  "frozen_assets": {
+    "catalog": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "sha256": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618"
+    },
+    "reader": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "sha256": "cfb7188dd04e076fefc5fa0e537684fe7a01a8e36e75f017409f96c928a333f4"
+    },
+    "library_background": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\library-bg-v1.png",
+      "sha256": "0af26fc92bfa578899c63662653e38b9861d18d0d77b889ab96a7ebcb694bded"
+    },
+    "geography_capitals": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\categories\\geography-capitals.png",
+      "sha256": "82b95f992fad2032028f8b7fa4f6aa5ec1863b969ad6aadddb0da4a64176fe5a"
+    },
+    "geography_flags": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\categories\\geography-flags.png",
+      "sha256": "865760bdaa81da6295f6a22ae2afac3a1216ecf865c78833fd9286956835a6f6"
+    },
+    "mythology_greece": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\categories\\mythology-greece.png",
+      "sha256": "9f102b023c10ce4ab72a892f847085d563e1e6a4741fc6287f265bcd317f5cd2"
+    },
+    "history_art": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\categories\\history-art.png",
+      "sha256": "76b735c70e8baba534bf2e2b67c513b4e1604ea283d201a602a439f7a75571f4"
+    }
+  },
+  "current_reader": {
+    "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+    "sha256": "cfb7188dd04e076fefc5fa0e537684fe7a01a8e36e75f017409f96c928a333f4"
+  },
+  "prior_reader": {
+    "path": "C:\\ap\\quiz_master\\.run\\reader299_release_20261015\\baseline-reader.json",
+    "sha256": "dfe520221cbf15438cd449004c26fb82c52cd7d4ed0cfc9954b792aa97de142c"
+  },
+  "controller_review": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\controller-acceptance.json",
+    "sha256": "ffdf515ff14d19b6a16c3eb3770dd06b2e9639fb784e7b85870dda745035567f"
+  },
+  "controller_source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\prepare_reader299_release.py": "4dc0a2e2689c7cdf153c89d02cd76774e8e7730c42e6c1eda7401476409b234e",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\prepare_reader299_remote.py": "8222c4fe4ca7890100592dc7ea74bf093be99c90de1c2f537d739760d11badbf",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\reader299_guard.py": "f32c5297f84381a1b23d053f13dc053f539c72627a3e1cec4f0f225ef1a89268",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\test_prepare_reader299_remote.py": "a82d65e13fade5afdf735425c0857dda8dd5abb041d7195a4ebebfc28a8b9e92",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\test_reader299_release.py": "5108bc7fdd14bb6833daebcd67d76c0d56a69e77c7e0fa5d3cdd880c8fa088f8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER299_RELEASE_20261015\\release-worker\\verify_reader299_candidate.py": "e934ea8e55eb91584b97e8f40f0b467bfd7f197c34aa5e10a722ae7c3e8d7db9"
+  }
+}
