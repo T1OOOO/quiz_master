@@ -1,0 +1,23 @@
+Reader291 mechanical integration evidence
+
+Hub run: run-f9c1130e86244e05a52b6c8e56472724
+Accepted content receipt: task-ad42b81e680a4918ae28a8058dd6d182, state ACCEPTED
+Draft SHA256: 26d6db92e357b01c89ff07ed431a0c7133913e383660201d72c97befd4ddeefe
+Independent reviewer: anthropic/claude-sonnet-5; session-24d55b89fbff4133b033521006c595de
+Author: openai/gpt-6.1-sol; session-03d945f328204507b905dca8609ff7bf
+
+Checks (C:/ap/quiz_master):
+- python study/question_articles/build.py --write: PASS, 291 articles.
+- python study/question_articles/build.py --check: PASS, 291 independently reviewed articles.
+- python -m unittest study.question_articles.test_build: PASS, 3 tests.
+- cmd /d /c flutter test --no-pub test/question_articles_test.dart (next/apps/quiz_app): PASS, 7 tests.
+
+Generated asset SHA256: dfe520221cbf15438cd449004c26fb82c52cd7d4ed0cfc9954b792aa97de142c
+Canonical review SHA256: 9c462121adfc5c0efd3427f3c71f5630efab556a7b2b73c14b27531e33f0d289
+Asset counts: 291 articles; 120 target bindings; 172 question bindings; 292 total bindings.
+The prior 283 asset was saved before comparison at .run/actor_articles_20261015/package-v1/quiz-2026.10.15-actors-d204f9b/next/apps/quiz_app/assets/study/question-articles.json.
+Prior asset SHA256: 6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8
+Prior object preservation: all 283 prior objects matched by stable article ID byte-for-byte after generated export.
+New public question bindings: cinema-oct3-005 through cinema-oct3-012; revisions are asserted in test/question_articles_test.dart.
+
+This is local integration evidence only. No publication, release acceptance or deployment is claimed.

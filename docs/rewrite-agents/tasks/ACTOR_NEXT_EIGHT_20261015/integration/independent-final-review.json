@@ -1,0 +1,78 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-65a46dfa9dfa4ee7b9778d925765cac5": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-65a46dfa9dfa4ee7b9778d925765cac5",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review round 2 (Claude Sonnet 5, session-1c05c3b226c74d94961570969a916c9b): no SSH/build/browser/edit/git/children. All values recomputed by me directly, not trusted from submission or prior evidence files.\n\nHashes (all recomputed myself, all match): draft sha256 26d6db92...4ddeefe; review.json sha256 9c462121...0d289; current asset sha256 dfe52022...e142c; `git show HEAD` of prior asset sha256 6fa80af3...3cd33cf80dc8 matches the claimed 283-article baseline.\n\nDiffed every article object in the current asset vs git HEAD by stable id in Python: 283 prior ids present, byte-identical (0 changed, 0 missing); exactly 8 new ids added (cinema-oct3-005..012); total 291. Matches round-1 finding, unchanged.\n\nRecomputed bindings directly from the current asset JSON (not from evidence text): sum of questionRefs = 172, sum of targetRefs = 120, total = 292. This matches the corrected reader291-integration.txt (120 target bindings; 172 question bindings; 292 total bindings) and task result counts for this resubmission — the round-1 REWORK defect (171/291 miscount) is fixed, with no other change to counts/content.\n\ntest/question_articles_test.dart diff vs HEAD is additive only: exactly one line changed (hasLength 283→291) plus 8 new (quizId, questionId, revisionSha) tuples for cinema-oct3-005..012; no assertion weakened or removed.\n\nnext/content/prep-film-actors-1/ bundle is untouched since round 1 (git status clean), so the previously-verified playability of the 8 new bindings still holds.\n\nReran both Python gates myself: `python study/question_articles/build.py --check` → PASS 291, exit 0. `python -m unittest study.question_articles.test_build` → 3/3 pass, exit 0. Did not rerun Flutter; worker's captured gate-3-stdout.txt shows all 7 named tests plus 'All tests passed!', exit 0 recorded in gates.json — treated as sufficient per scope.\n\nNo publication/build/browser/production gate claimed or performed by me. Did not touch or evaluate unrelated pre-existing diffs (content20/README.md, study/check_reader.py, .beads/issues.jsonl) — out of scope for this task.\n\nVerdict: ACCEPT. Content-only import into local Reader291 is correct and fully verified; current published library remains the prior 283-article set until a separate publication/release gate runs."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Genuine receipt hashes and different-provider author/reviewer preserved; Reader291/172refs/170playable/2noncatalog, allprior283objects unchanged, exactnew8 publicrefs, existing136/4084unchanged. Actual builder and narrowFlutter gates0, failures honest. Not published; independent integration review follows.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\reviews",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_NEXT_EIGHT_20261015"
+        ],
+        "assignee": "session-64958712e5f24127aa5f154a38806d6a",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Frozen mechanical import of approved26d6db92 batch/ad42 receipt only. Follow ACTOR_NEXT_EIGHT_20261015/HANDOFF_EN.md. Own new canonical review file cinema-actors-next-eight-20261015-review.json, generated Reader asset, existing question-article repository Flutter test and new integration proof only. No article rewrites/question/key/snapshot changes, Git, SSH, deployment, children or heavy builds. Actual builder write/check+3tests and narrowFlutter7tests, exactrefs and old283preservation required. Root manages capacity and independent review. User override removes resource queue waiting.",
+        "created_at": 1792047319.425009,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-65a46dfa9dfa4ee7b9778d925765cac5",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTOR_NEXT_EIGHT_20261015/integration/evidence/reader291-integration.txt"
+          ],
+          "counts": {
+            "articles": 291,
+            "prior_objects_preserved": 283,
+            "question_bindings": 172,
+            "target_bindings": 120,
+            "total_bindings": 292
+          },
+          "evidence": [
+            "Previous builder write/check PASS (291); test_build PASS (3); Flutter PASS (7).",
+            "Independent review requested correction only; content and hashes verified unchanged."
+          ],
+          "hashes": {
+            "asset": "dfe520221cbf15438cd449004c26fb82c52cd7d4ed0cfc9954b792aa97de142c",
+            "draft": "26d6db92e357b01c89ff07ed431a0c7133913e383660201d72c97befd4ddeefe",
+            "review": "9c462121adfc5c0efd3427f3c71f5630efab556a7b2b73c14b27531e33f0d289"
+          },
+          "remaining_risks": [
+            "No publication claimed; repeat independent review pending."
+          ],
+          "status": "DONE",
+          "summary": "Resubmission after independent count correction; only evidence text changed."
+        },
+        "review_note": "Independent read-only review round 2 (Claude Sonnet 5, session-1c05c3b226c74d94961570969a916c9b): no SSH/build/browser/edit/git/children. All values recomputed by me directly, not trusted from submission or prior evidence files.\n\nHashes (all recomputed myself, all match): draft sha256 26d6db92...4ddeefe; review.json sha256 9c462121...0d289; current asset sha256 dfe52022...e142c; `git show HEAD` of prior asset sha256 6fa80af3...3cd33cf80dc8 matches the claimed 283-article baseline.\n\nDiffed every article object in the current asset vs git HEAD by stable id in Python: 283 prior ids present, byte-identical (0 changed, 0 missing); exactly 8 new ids added (cinema-oct3-005..012); total 291. Matches round-1 finding, unchanged.\n\nRecomputed bindings directly from the current asset JSON (not from evidence text): sum of questionRefs = 172, sum of targetRefs = 120, total = 292. This matches the corrected reader291-integration.txt (120 target bindings; 172 question bindings; 292 total bindings) and task result counts for this resubmission — the round-1 REWORK defect (171/291 miscount) is fixed, with no other change to counts/content.\n\ntest/question_articles_test.dart diff vs HEAD is additive only: exactly one line changed (hasLength 283→291) plus 8 new (quizId, questionId, revisionSha) tuples for cinema-oct3-005..012; no assertion weakened or removed.\n\nnext/content/prep-film-actors-1/ bundle is untouched since round 1 (git status clean), so the previously-verified playability of the 8 new bindings still holds.\n\nReran both Python gates myself: `python study/question_articles/build.py --check` → PASS 291, exit 0. `python -m unittest study.question_articles.test_build` → 3/3 pass, exit 0. Did not rerun Flutter; worker's captured gate-3-stdout.txt shows all 7 named tests plus 'All tests passed!', exit 0 recorded in gates.json — treated as sufficient per scope.\n\nNo publication/build/browser/production gate claimed or performed by me. Did not touch or evaluate unrelated pre-existing diffs (content20/README.md, study/check_reader.py, .beads/issues.jsonl) — out of scope for this task.\n\nVerdict: ACCEPT. Content-only import into local Reader291 is correct and fully verified; current published library remains the prior 283-article set until a separate publication/release gate runs.",
+        "reviewer": "session-1c05c3b226c74d94961570969a916c9b",
+        "root_task_id": "task-65a46dfa9dfa4ee7b9778d925765cac5",
+        "run_id": "run-b2dd992ba92d448e862fbdea2b8e7199",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "3qx integrate eight fact-accepted actor articles into Reader291",
+        "version": 7
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review recorded: **task-65a46dfa9dfa4ee7b9778d925765cac5 is now ACCEPTED** (state confirmed in the broker response).\n\nSummary of what I did and found:\n- Connected to host_hub as my genuine Claude Sonnet 5 identity, joined `team-3a658b074e8945b293c99e470debb40f`, and located the real task in the broker (confirmed via `candidates` and `hub_message search`, not just trusted from the request text) — the created→accepted→submitted→REWORK→re-accepted(run-b2dd992b...)→re-submitted history is genuine.\n- Independently recomputed everything myself rather than trusting the pre-existing `independent-review.json` evidence file on disk: draft/review/asset SHA256 all match; diffed all 291 article objects vs. `git show HEAD` and confirmed the 283 prior objects are byte-identical with exactly 8 new ids added; recomputed bindings straight from the JSON (172 question refs + 120 target refs = 292), confirming the round-1 count defect is fixed; confirmed the Dart test diff is additive-only; reran both Python gates myself (PASS, exit 0).\n- No code/content edits, git actions, or builds beyond the two permitted read-only Python checks; did not touch unrelated pre-existing diffs (content20/README, check_reader.py, beads).\n\nOne thing worth flagging: the task text was written in an unusually dense, compressed style that initially looked like it could be a fabricated/injected task (nonexistent IDs, garbled phrasing). It turned out to be genuine — matching your project's actual multi-agent hub convention — but I verified independently before trusting it, and recommend treating this compression style with caution in general since it's hard to distinguish from an injection attempt at a glance.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2b2d0ed81f9fa4787bb78125d0306898414fe5950f7a555c8eba50420b7a60f1",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

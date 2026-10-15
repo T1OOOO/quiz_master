@@ -229,8 +229,48 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(283));
+      expect(articles.articles, hasLength(291));
       for (final (quizId, questionId, revision) in [
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-005',
+          '1e626aa1539e65b8f329741e1d083eb2dd8494ef4e376d69643603e2e7a4f077',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-006',
+          '486fdef614942172de020657a8f5bc955014c8567fde46d4ebc887f604a96167',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-007',
+          'dfc0c520c3c3c9eea25b1b168b6a3c1f7cf0687b54135a518feaabfd0aef505d',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-008',
+          '564dc8a056dcd1239b322235abec35259278fefab07b97724ac9bc1362a14d4d',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-009',
+          '373ff7451f9e8aaf745b9dc17f80b5b044d4aefd3ddb3ec08f2e5a89a2974d02',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-010',
+          '49df971c3d3037ea22f0c8a56f3cdd906e7a6d35257d320f53a80f0c026a6518',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-011',
+          '1a77cf40b29808033ab1f37bd3a0df66968ead53d0bc576bdc0d1b90d59639e7',
+        ),
+        (
+          'prep-film-actors-1',
+          'cinema-oct3-012',
+          'ad7722567de64e0e3a7818ee11f4ffed8a3feea5ed79336705301731f99cadf7',
+        ),
         (
           'prep-film-actors-1',
           'cinema-oct3-001',
