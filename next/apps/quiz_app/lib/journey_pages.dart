@@ -266,6 +266,14 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                     onPressed: () => context.push('/history'),
                     child: Text(l10n.history),
                   ),
+                  TextButton.icon(
+                    key: const Key('result-feedback'),
+                    onPressed: () => context
+                        .findAncestorStateOfType<_FeedbackOverlayState>()
+                        ?._open(),
+                    icon: const Icon(Icons.support_agent),
+                    label: Text(l10n.feedbackSendFeedback),
+                  ),
                   for (final reveal in journey.reveals)
                     ExplanationPanel(reveal: reveal),
                 ] else ...[

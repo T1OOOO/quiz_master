@@ -143,28 +143,38 @@ class _FeedbackOverlayState extends ConsumerState<_FeedbackOverlay> {
   }
 
   @override
-  Widget build(BuildContext context) => ListenableBuilder(
-    listenable: widget.router.routeInformationProvider,
-    builder: (context, _) => Stack(
-      children: [
-        RepaintBoundary(key: _boundary, child: widget.child),
-        if (widget.router.routeInformationProvider.value.uri.path !=
-            '/feedback')
-          PositionedDirectional(
-            end: 12,
-            bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
-            child: SafeArea(
-              child: FloatingActionButton.small(
-                heroTag: 'feedback',
-                tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
-                onPressed: _opening ? null : _open,
-                child: const Icon(Icons.support_agent),
+  Widget build(BuildContext context) {
+    final finished = ref.watch(
+      journeyProvider.select((journey) => journey.finish != null),
+    );
+    return ListenableBuilder(
+      listenable: widget.router.routeInformationProvider,
+      builder: (context, _) => Stack(
+        children: [
+          RepaintBoundary(key: _boundary, child: widget.child),
+          if (widget.router.routeInformationProvider.value.uri.path !=
+                  '/feedback' &&
+              !(finished &&
+                  (widget.router.routeInformationProvider.value.uri.path ==
+                          '/' ||
+                      widget.router.routeInformationProvider.value.uri.path
+                          .startsWith('/quiz/'))))
+            PositionedDirectional(
+              end: 12,
+              bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
+              child: SafeArea(
+                child: FloatingActionButton.small(
+                  heroTag: 'feedback',
+                  tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
+                  onPressed: _opening ? null : _open,
+                  child: const Icon(Icons.support_agent),
+                ),
               ),
             ),
-          ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
 
 class _GlobalFeedbackDialog extends StatefulWidget {

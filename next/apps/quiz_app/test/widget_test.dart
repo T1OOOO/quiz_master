@@ -642,7 +642,20 @@ void main() {
       expect(find.text('Score: 25'), findsOneWidget);
       expect(find.text('Because question 1.'), findsOneWidget);
 
+      expect(find.byType(FloatingActionButton), findsNothing);
+      final resultFeedback = find.widgetWithText(TextButton, 'Send feedback');
+      await tester.ensureVisible(resultFeedback);
+      await tester.pumpAndSettle();
+      await tester.tap(resultFeedback);
+      await tester.pump(const Duration(seconds: 3));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+      await tester.tap(find.text('Cancel'));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsNothing);
+
       await tester.ensureVisible(find.text('History'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('History'));
       await tester.pumpAndSettle();
       expect(find.text('Score: 25'), findsOneWidget);

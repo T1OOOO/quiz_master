@@ -1,0 +1,47 @@
+{
+  "status": "DEBUG_UI_VERIFIED_NOT_PUBLISHED",
+  "viewport": [
+    361,
+    738
+  ],
+  "fixture_questions": 1,
+  "exact_public_question_id": "cinema-oct3-020",
+  "question_options_privatekey_revision_preserved": true,
+  "subset_quiz_revision_recomputed": true,
+  "actual_score": 0,
+  "intentionally_wrong_option_text": "Роберт Дауни-младший",
+  "new_article_opened": "question:cinema-oct3-020",
+  "article_headings_and_two_source_controls_visible": true,
+  "article_textarea_count": 0,
+  "result_feedback": "Inline action before explanations; no floating feedback over result text. Actual action opens existing dialog and cancellation returns without submission. History restores global feedback.",
+  "root_visual_inspection": "Root opened actual result.png and article-footer.png. Result action and answer paragraph do not overlap at361x738; both source cards accessible after scroll.",
+  "runtime_errors": [],
+  "hot_restart": "dart_flutter actualconnected target hot_restart succeeded",
+  "browser_initial_open_actual_failures": [
+    "open1 while firstdebugcompile incomplete",
+    "open-retry1 EOF/no response; effect not assumed. Subsequent snapshot confirmed accessibilityplaceholder and realapp before continuing."
+  ],
+  "initial_fixture_failure": "Go rejected stale overallquizrevision for subset before listening; recomputed onlysubsetquizrevision/bundlehash; exactquestion unchanged.",
+  "official_browser_close_actual_exit": 1,
+  "qa_wrapper_actual_exit": 0,
+  "owned_api_cleanup": {
+    "actual_api_pid": 3608,
+    "actual_api_exit": 1,
+    "stop_seen": true
+  },
+  "flutter_quit_actual_exit": 0,
+  "ports_closed": [
+    19090,
+    19093,
+    19098
+  ],
+  "limits": [
+    "Actualdebug/onequestionQA only; full25question result flow separately passed widgettest.",
+    "No releasebuild/image/production/Android/physicalscreenreader validation of this change.",
+    "Production61/Reader291 and all29realfeedback unchanged;5nc staysopen until publishedverification."
+  ],
+  "screenshots": {
+    "result.png": "3284dd7b5f1fe5b6e44596f3c9a1e9d4321388fc40241611ceecfef90fc23747",
+    "article-footer.png": "b85941df1a993c0f9597372d75b8bf417344df479bd01336586febaa5ffd670d"
+  }
+}
