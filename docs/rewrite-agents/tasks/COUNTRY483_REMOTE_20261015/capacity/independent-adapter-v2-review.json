@@ -1,0 +1,100 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-814995351f434563ac72febaebae7011": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-814995351f434563ac72febaebae7011",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local source only. Recomputed sha256 for all 101 manifest entries: 0 mismatches. compose_adapter.py pins+reverifies the old 38-file manifest and v1/f36 script bytes; AST-based close_contexts() wraps exactly 1 house + 2 preflight sqlite3.connect contexts in contextlib.closing, verified empty afterward. test_compose_adapter.py's own AST-dump comparison proves run_exact/no_process_use/verify_entry/verify_inventory/verify_protected/check_capacity/validate_plan/loaded_images/images_preserved are byte-identical before/after — I reran this test myself: 3/3 pass. linux_integration.py's two new cases are genuine temp-SQLite integration tests (not mocked): they exec()/eval() the actual extracted house/guard source against real connections, reproducing the 'active process' RED with the original leaking code and GREEN with closing-context code. Root's actual Linux run (16=8+6 original+2 new) returned exit0 per fixture-v3-actual logs; I cross-checked case names/counts against test source — exact match; did not witness the SSH session live. Generated script hashes and bash -n I verified myself. No defects. ACCEPT. Bound to manifest sha256 f39d717dd1174ff28d9d99f84ca212d189ce409ba8a27cc808f9cbcae400b6e8; portable tests exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "ExactownedSQLitehandles explicitlyclosed in1house+2preflight contexts, no guardweakening; immutablev1/sourceplanpreserved, meaningfulrealtempintegrationfixture pluslocalsyntax/tests/hashbindings. No productioncleanup. Crossproviderfinalreviewrequired.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\adapter-v2",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native owns ONLY capacity/adapter-v2 under COUNTRY483_REMOTE_20261015 and matching ignoredcapacity-adapter-v2 scratch. Preserve allold38sourceinputs/v1worker/fixtures/plan/protection/29cde script. Root owns surrounding packet/actualoperations. Source72 acceptedconditionallylocal; actual14Linuxfixture had13pass1error becausefixtureSQLitecontextleftFDopen. Rootproved contextfd1/closefd0 and house2-group reproduction actual0: unclosedhouse raisesownprocessguard beforeanyunlink, closinghouse passes2temporaryaliasremovals/2keepers. Saved capacity/fixture/house-lifetime-diagnosis*.jsonl/sh. ALSO selected reused preflight() has TWO readonlySQLite contexts (productionrows and rollbackbackupintegrity); both must close before next processguard. Do notexcludeownPID or weakenprocess/journalguards. Smallv2composition adapter reuses hash-pinned accepted v1 core, adds exactly guardedcontextlib.closing for house1 and preflight2 readonlyconnectcontexts, retains strictall214/29/185/52/32 andmetadatahash/loadedidentity/baseline/capacity/lock/mapping semantics. No edits to historical/v1 source; newrenderedscript/newproof explicitlybindoriginaldependencies+v2patchsource/hashes (do notclaimv1hashisactualpatchedsource). Reuse frozen fixture-v2f36 close correction; add meaningful real2-group tempLinuxintegration test preservingprocessguard and readonlykeeperidentity to exposeoriginalleak andproveclosedhouseworks; also validate bothpreflightSQLitecontextsuseclosing. Root will inspect/run isolatedtest understandingauthorizedtestscope; finalindependentClaude reviewsv2+fixtures/actualresults+Rootpacket beforeanyproductionunlink. Localmeaningfultests/render/syntax/compile and negativebinding receipts; no claimsLinuxpassed beforeRoot. NoSSH/network/Git/Beads/children/prodcleanup. Source1.4GBreclaimplan ded18/protected9052 unchanged; newpreview/scriptversion notoverwritingv1. Keep implementationminimal viahouse/core reuse, freeze/submithashes/exits/limitationsandstop. Notalone.",
+        "created_at": 1792100249.924576,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-814995351f434563ac72febaebae7011",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/REPORT.md",
+              "sha256": "8463122011dc7e348f4e32fc5862b1e7f0a0e0766dfd91810843bf09762fe28c"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/evidence.json",
+              "sha256": "6165429da26e786ef193ed4f60d67c8367b87c5c49b9431023ffb8961f581f0e"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/compose_adapter.py",
+              "sha256": "5bebdf180218b63592c8f944b41613dc9aa90f4e35a82efc664bf839fcd75cc5"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/linux_integration.py",
+              "sha256": "e69062c43c0442fad78880eb570e9615834eb7f7b9f9435a9cbb0a15fba0bf16"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/test_compose_adapter.py",
+              "sha256": "5ce20c490bc718f0553e8b1d5f89cd91d5eb28c3e380d643366dd3a4931a1af4"
+            },
+            {
+              "execution": "NOT_RUN",
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-adapter-v2/preview-v1/deduplicate-v2.sh",
+              "sha256": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb"
+            },
+            {
+              "linux16execution": "PENDING_ROOT",
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-adapter-v2/preview-v1/linux-integration-v2.sh",
+              "sha256": "787a2ea7d2227b63356f2e3e9641b562d05583a169f78a9e6f43968c90874d1c"
+            },
+            {
+              "patched_guard_sha256": "17c604f7bb718aa8e8f0af3b9cb42e24622cd1594f388805c8a94a8949e560cb",
+              "patched_house_sha256": "c32104d26bb7f8306742341f8c78005431783986460c9fae33348097cbd57524",
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-adapter-v2/preview-v1/receipt.json",
+              "sha256": "0df40198fd7ab0b381570efa0fd525a39436242dce8d1a4982aa8a1acc9620ae"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-adapter-v2/checks.json",
+              "result": "3portabletests actual0,localrender0; negativebinding/contextcount/freshoutput checks passed"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-adapter-v2/syntax.json",
+              "result": "2retainedBashsyntax0,2embeddedPythoncompile0; no generatedcodeexecuted"
+            }
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Frozen minimal v2 composition over pinned v1: exactly1house+2preflight readonly SQLite contexts use contextlib.closing. All38oldinputs, plan/protection, original29cde/f36 remain unchanged. Production guard/deletion/capacity/inventory/loadedidentity ASTs unchanged; no ownPIDskip. Explicitactualpatchedhouse/guard hashes.3portabletests0/render0/2Bashsyntax0/2Pythoncompile0. Linuxsuite16=PENDING Rootexecution: original14 plus real2group oldleak/no-unlink vs closed2alias+keeperidentity and bothpreflight contexts actualtempreadonlyconnection closure. No production cleanup/network/Git/children; finaldifferentprovider exactpacketreview required."
+        },
+        "root_task_id": "task-814995351f434563ac72febaebae7011",
+        "run_id": "run-b51075667e7a4ab2bddf87d3f31433a4",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: close owned SQLite handles before exact backup process guards",
+        "version": 4,
+        "reviewer": "session-1e8bcd4790ec40a585af2c1e3a97ba01",
+        "review_note": "Independent Claude review, local source only. Recomputed sha256 for all 101 manifest entries: 0 mismatches. compose_adapter.py pins+reverifies the old 38-file manifest and v1/f36 script bytes; AST-based close_contexts() wraps exactly 1 house + 2 preflight sqlite3.connect contexts in contextlib.closing, verified empty afterward. test_compose_adapter.py's own AST-dump comparison proves run_exact/no_process_use/verify_entry/verify_inventory/verify_protected/check_capacity/validate_plan/loaded_images/images_preserved are byte-identical before/after — I reran this test myself: 3/3 pass. linux_integration.py's two new cases are genuine temp-SQLite integration tests (not mocked): they exec()/eval() the actual extracted house/guard source against real connections, reproducing the 'active process' RED with the original leaking code and GREEN with closing-context code. Root's actual Linux run (16=8+6 original+2 new) returned exit0 per fixture-v3-actual logs; I cross-checked case names/counts against test source — exact match; did not witness the SSH session live. Generated script hashes and bash -n I verified myself. No defects. ACCEPT. Bound to manifest sha256 f39d717dd1174ff28d9d99f84ca212d189ce409ba8a27cc808f9cbcae400b6e8; portable tests exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "All three tasks are now `ACCEPTED`. Full report:\n\n**task-f36dd269 (fixture-v2, isolated-fixture connection close)** — ACCEPT. Minimal, anchor-verified edit (`FingerprintTests.setUp` wrapped in `contextlib.closing`), AST-proven to leave every other function byte-identical. I ran its 3 tests myself (3/3 pass).\n\n**task-814995 (adapter-v2, close 1 house + 2 preflight SQLite contexts)** — ACCEPT. AST-based patching verified to touch *only* the three targeted `sqlite3.connect` contexts; a self-contained AST-dump test proves 9 other production functions (`run_exact`, `verify_entry`, `check_capacity`, etc.) are unchanged. Its new integration tests are genuine temp-SQLite reproductions — not mocks — that execute the real extracted source and reproduce both the original RED (\"backup open by active process\") and the GREEN fix. I ran its 3 tests myself (3/3 pass) and independently verified the generated script hashes and `bash -n` syntax.\n\n**task-111cc8 (Root's final packet: plan binding, atlas path fix, execution gate)** — ACCEPT. The 29/185/52/32 plan invariants are unchanged (same hashes as the already-accepted v1 packet). I independently diffed the fixture-v3 \"uri→database\" parameter fix and confirmed it touches only 2 lines in the test file, with the production script hash unchanged. I verified the atlas path correction myself (grep confirmed 0 remaining `/app/web` occurrences, exactly 2 `/usr/share/nginx/html` in each derived script), ran its 2 tests (pass), and the real stateless image probe log genuinely supports the claimed Dockerfile root. `execution-plan.json` correctly gates the live cleanup command on all three task acceptances and discloses `cleanup_performed=false`/`new_candidate_image=null`.\n\nAcross all three: 101/101 manifest files rehashed with zero mismatches, 8/8 portable tests I ran myself passed, all generated shell scripts passed `bash -n` I ran myself, and the recorded Linux 16/16 pass logs were cross-checked line-by-line against the actual test source for internal consistency — though I did not witness Root's live SSH session myself, which I've disclosed in each note. No defects found; these three acceptances authorize only the exact, narrow, fully-reversible 29-alias dedup (every delete has a retained byte-identical keeper) — not any retry, image build, or publication.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "de5a47f024b232e4228cd14c396024c66a1ed2b390833ad37441d17454540f7d",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

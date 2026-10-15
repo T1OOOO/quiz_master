@@ -1,0 +1,187 @@
+{
+  "status": "DONE_FOR_REVIEW_LINUX_PENDING",
+  "task_id": "task-814995351f434563ac72febaebae7011",
+  "run_id": "run-b51075667e7a4ab2bddf87d3f31433a4",
+  "source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/compose_adapter.py": "5bebdf180218b63592c8f944b41613dc9aa90f4e35a82efc664bf839fcd75cc5",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/linux_integration.py": "e69062c43c0442fad78880eb570e9615834eb7f7b9f9435a9cbb0a15fba0bf16",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/adapter-v2/test_compose_adapter.py": "5ce20c490bc718f0553e8b1d5f89cd91d5eb28c3e380d643366dd3a4931a1af4"
+  },
+  "artifacts_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\deduplicate-v2.sh": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\linux-integration-v2.sh": "787a2ea7d2227b63356f2e3e9641b562d05583a169f78a9e6f43968c90874d1c",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\receipt.json": "0df40198fd7ab0b381570efa0fd525a39436242dce8d1a4982aa8a1acc9620ae"
+  },
+  "composition_receipt": {
+    "original_house_sha256": "8ba41de0db8cb0627bd5a49d87314236bca6e59e2f5504aa97db03ae99afcfb7",
+    "patched_house_sha256": "c32104d26bb7f8306742341f8c78005431783986460c9fae33348097cbd57524",
+    "original_guard_sha256": "a2c7b60630c635f869379130e47f359ae0bad23f3ed69e527a7e784d1d132ee4",
+    "patched_guard_sha256": "17c604f7bb718aa8e8f0af3b9cb42e24622cd1594f388805c8a94a8949e560cb",
+    "owned_contexts_closed": {
+      "house": 1,
+      "preflight": 2
+    },
+    "original_v1_sha256": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+    "original_f36_fixture_sha256": "d457162c7c98a70592cf753ac5d687d0c6aa7a4ed45d8efb1a8cfbd9843e474f",
+    "unchanged_plan_sha256": "ded18e94923b44ba5a4d5dda126b4b8aeea834b10c743965e9617706f0281d3f",
+    "unchanged_protection_sha256": "9052dc05fcf76728a1131cda567cd49c1e28c268c62f3e9dfb3a29e78e12a1bf",
+    "actual_house_source_changed": true,
+    "process_guard_unchanged": true,
+    "case_names": [
+      [
+        "DedupTests",
+        "test_identical_copy_removed_and_alias_restorable"
+      ],
+      [
+        "DedupTests",
+        "test_changed_second_group_aborts_before_any_unlink"
+      ],
+      [
+        "DedupTests",
+        "test_symlink_rejected"
+      ],
+      [
+        "DedupTests",
+        "test_current_and_traversal_names_rejected"
+      ],
+      [
+        "DedupTests",
+        "test_live_journal_rejected"
+      ],
+      [
+        "DedupTests",
+        "test_duplicate_plan_name_rejected"
+      ],
+      [
+        "DedupTests",
+        "test_nonprivate_copy_rejected"
+      ],
+      [
+        "DedupTests",
+        "test_hard_link_rejected"
+      ],
+      [
+        "FingerprintTests",
+        "test_positive_fingerprint"
+      ],
+      [
+        "FingerprintTests",
+        "test_hash_metadata_and_private_mode_drift"
+      ],
+      [
+        "FingerprintTests",
+        "test_journal_blocks"
+      ],
+      [
+        "FingerprintTests",
+        "test_hardlink_blocks"
+      ],
+      [
+        "FingerprintTests",
+        "test_symlink_blocks"
+      ],
+      [
+        "FingerprintTests",
+        "test_process_open_file_blocks"
+      ],
+      [
+        "LifetimeIntegrationTests",
+        "test_real_two_group_process_guard_red_green"
+      ],
+      [
+        "LifetimeIntegrationTests",
+        "test_both_preflight_readonly_contexts_close_real_connections"
+      ]
+    ],
+    "linux_tests": "PENDING_ROOT_EXECUTION",
+    "actual_cleanup_performed": false,
+    "deduplicate-v2.sh_sha256": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb",
+    "linux-integration-v2.sh_sha256": "787a2ea7d2227b63356f2e3e9641b562d05583a169f78a9e6f43968c90874d1c",
+    "status": "LOCAL_V2_RENDER_ONLY",
+    "source_sha256": {
+      "compose_adapter.py": "5bebdf180218b63592c8f944b41613dc9aa90f4e35a82efc664bf839fcd75cc5",
+      "linux_integration.py": "e69062c43c0442fad78880eb570e9615834eb7f7b9f9435a9cbb0a15fba0bf16",
+      "test_compose_adapter.py": "5ce20c490bc718f0553e8b1d5f89cd91d5eb28c3e380d643366dd3a4931a1af4"
+    },
+    "pinned_sources": {
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\worker\\dedup_adapter.py": "ce1a44f63ead662347f89d896a701d8b7f1b2a2e10a7317e08cc94de5238818d",
+      "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+      "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\fixture-v2\\preview-v1\\linux-fixture-v2.sh": "d457162c7c98a70592cf753ac5d687d0c6aa7a4ed45d8efb1a8cfbd9843e474f",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\fixture-v2\\assemble_fixture.py": "1788c7e115d0e61dfd7fa786174742c199cb4fd475fc1c95f01f8eab71ba3f30",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\source-review-inputs.json": "8d645d8989b34afc910ee75af17f3e9e3a9a4a43ac3fde731cce600d01f9d33e"
+    }
+  },
+  "checks": [
+    {
+      "label": "local-tests",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\adapter-v2",
+        "-p",
+        "test_compose_adapter.py",
+        "-v"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout_sha256": "87be95e93fae8e7915e0ecc96572180b601d454b944c4dbf5fdb640329e8b777"
+    },
+    {
+      "label": "local-render",
+      "command": [
+        "C:/Python314/python.exe",
+        "-B",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\adapter-v2\\compose_adapter.py",
+        "--output-root",
+        "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1"
+      ],
+      "cwd": "C:\\ap\\quiz_master",
+      "actual_exit": 0,
+      "stdout_sha256": "6a8a6fb9a3610f44dd867ca6b91dc84e3b08eb55f43b0e838d122c44760b4824"
+    }
+  ],
+  "syntax": {
+    "checks": [
+      {
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\deduplicate-v2.sh"
+        ],
+        "actual_exit": 0,
+        "embedded_python_compile_exit": 0,
+        "script_sha256": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\linux-integration-v2.sh"
+        ],
+        "actual_exit": 0,
+        "embedded_python_compile_exit": 0,
+        "script_sha256": "787a2ea7d2227b63356f2e3e9641b562d05583a169f78a9e6f43968c90874d1c",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "linux16_execution": "PENDING_NOT_RUN",
+    "production_execution": false
+  },
+  "raw_evidence_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\checks.json": "3acd8878cf98bcbb3831290d5c7b3de1b671fd267b6da2852740d5a36fdda9bd",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\deduplicate-v2.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\linux-integration-v2.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\local-render.log": "6a8a6fb9a3610f44dd867ca6b91dc84e3b08eb55f43b0e838d122c44760b4824",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\local-tests.log": "87be95e93fae8e7915e0ecc96572180b601d454b944c4dbf5fdb640329e8b777",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\syntax.json": "7a6dea1004f837d029a4dccfa0df10f0c00615793cb8db4b691acef6a6399474"
+  },
+  "linux_cases": 16,
+  "linux_execution": "PENDING_ROOT",
+  "production_cleanup_performed": false,
+  "new_independent_review_pending": true
+}

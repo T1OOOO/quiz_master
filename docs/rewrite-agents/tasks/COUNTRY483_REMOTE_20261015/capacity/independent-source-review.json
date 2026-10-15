@@ -1,0 +1,102 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-72e165e058f44fc38153046f1ccaf298": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-72e165e058f44fc38153046f1ccaf298",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local source only. Recomputed sha256 for all 38 source-review-inputs.json entries: 0 mismatches, manifest sha matches claim. dedup_adapter.py's CLI only renders text (--output-root); it compile()s but never exec()s run_exact — no direct unlink/docker/ssh call in the adapter itself. Verified pinned house deduplicate.py/offload.py hashes match HOUSE_SHA/GUARD_SHA/fixture-test hash exactly; read both in full: house loop validates every file before any unlink, rechecks keeper immediately before each duplicate delete, never touches the keeper; adapter's checked() hook re-verifies parent/name/bytes/sha/no-process-use/O_NOFOLLOW-fingerprint on every call plus a before/after capacity+loaded-image snapshot bracketing the first unlink (64MiB growth bound, images_preserved subset check). Bulk-validated plan.json/protected-resources.json in Python: 29 pairs, 185 preserved, 214 total entries, 52 unique SHA states, 1,408,114,688 reclaim bytes, 32 protected files — all match, zero overlap between the 29 deletion aliases and preserved/protected sets, all alias/keeper bytes identical. Ran the test suite myself: 8/8 pass. Ran bash -n on both generated scripts: both pass. The 14 POSIX-only fixture cases remain PENDING (cannot run on Windows); not counted as passing. Inspected resume-preparation.sh as context only (hash/syntax verified, no cleanup logic) but render NO verdict — belongs to task-111cc8, out of scope here. No actual cleanup/unlink/SSH/network occurred. ACCEPT as sound, reversible, narrowly-scoped source; execution still needs the Linux fixture run plus a later execution-evidence review. Bound to 38-file manifest sha256 8d645d8989b34afc910ee75af17f3e9e3a9a4a43ac3fde731cce600d01f9d33e; portable tests exit0."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Minimal house reuse, exact29alias185preserved52state plan binding, meaningful negative tests and syntax/hash evidence. No actual cleanup/execution/publication. Independent different-provider review required.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\worker",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native owns ONLY COUNTRY483_REMOTE_20261015/capacity/worker and its ignored capacity-worker scratch. Not alone; preserve others. Root owns immutable capacity/plan.json SHA ded18e94923b44ba5a4d5dda126b4b8aeea834b10c743965e9617706f0281d3f and all real operations. Fresh actual214 private Quiz backups,52 fullSHA/read-only-integrity states. Plan selects29 Oct13/14 restore-proof aliases, each byte-identical paired full private base keeper,1408114688 allocated bytes; preserve185 other backups and all52 states/current303/rollback299/Country483forensics/historical protected. Reuse hash-pinned CAPACITY_RECOVERY_20261015/deduplicate.py; adapt only strict Oct13/14 boundary and exact plan validation, no old source/plan changes. Small local renderer/core/tests and exact finite shell preview, no execute CLI/network/SSH/Git/Beads/children. Under DEPLOY.lock/hostname require current63/bothimages/PVCBound/nodeReady/noDiskPressure/no cordon/taints/HTTPS/full29feedback before/after. Cleanup baseline may be below floor; final strict20plus1GiB required, never inferred peak. Before first unlink validate full214 membership/metadata/hashes, no journals/process use, keeper integrity, no links/traversal; recheck perfile and preserve185others/all52states/loadedDocker-containerd identities/protectedresources afterward. Flush alias->keeper/hash removal mappings. No images/stages/otherproject changes. Meaningful local negative tests/syntax; POSIX tests needing Linux must be labelled pending and rendered as isolated temp-fixture script for Root after source acceptance. Freeze actual source/tests/rendered hashes/exits/evidence, submit and stop. Root executes only after genuine independent Claude exact source/packet review; private databases never exported/committed.",
+        "created_at": 1792099028.3621397,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-72e165e058f44fc38153046f1ccaf298",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/REPORT.md",
+              "sha256": "4831ef374d689cf99b2420f9cdd6c14008cf7c87513b98ab121ddd1142b3b0be"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/evidence.json",
+              "sha256": "13f071c061551911f0915b59b143c0cf50877eaa9a852f90268a0d7f23379491"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/dedup_adapter.py",
+              "sha256": "ce1a44f63ead662347f89d896a701d8b7f1b2a2e10a7317e08cc94de5238818d"
+            },
+            {
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/test_dedup_adapter.py",
+              "sha256": "db65e5b2442d8be35795f332b86eddb09727c1d19e3e71d08f5e25a17a620d6d"
+            },
+            {
+              "execution": "PENDING_NOT_RUN",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/linux_fixture_tests.py",
+              "sha256": "f29a300489cc909ddd5721c83beae7684efe4efbc76c0a722e5d22490f03942d"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/preview-v1/deduplicate.sh",
+              "sha256": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a"
+            },
+            {
+              "execution": "PENDING_NOT_RUN",
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/preview-v1/linux-fixture-PENDING.sh",
+              "sha256": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/preview-v1/preview.json",
+              "sha256": "e50e518a3932d245b7a45ad172c851d397ffd12a98dcb43465c393b02476952f"
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/portable-final-v2.json",
+              "result": "8portabletests actual0; no skippedtests. Earlier2WindowsPatherrors retainedportable-attempt01."
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/syntax.json",
+              "result": "2Bashsyntax0,2embeddedPythoncompile0. Neither generatedprogram executed."
+            },
+            {
+              "path": "C:/ap/quiz_master/.run/country483_remote_20261015/capacity-worker/render.json",
+              "result": "exactlocalrender0; no executionmode/network."
+            }
+          ],
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Frozen exact29 alias adapter using pinned house deletion loop with only strict Oct13/14 NAME boundary adaptation. Full214 prevalidation/185preservation/52states,32protectedfiles+parent, private no-follow perfile fingerprints/hash, journal/process guards, current63/full29feedback, final strict20+1GiB and64MiBgrowth, fresh immediate-before-first-unlink loadedimage snapshot/subsetpreservation.8portabletests0/render0/Bash2syntax0/Python2compile0. POSIX14temporarySQLite fixture cases explicitlyPENDING Rootafterreview; no actualcleanup orremoteactions. InitialRED and WindowsPath representationfailure retained. Genuine independent source/exactpacket acceptance required."
+        },
+        "root_task_id": "task-72e165e058f44fc38153046f1ccaf298",
+        "run_id": "run-99cce5faaa9d4394a03ee4e37f7c9918",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: exact duplicate restore-proof alias adapter",
+        "version": 4,
+        "reviewer": "session-210b16eef6c64cc69345e597f1dae30e",
+        "review_note": "Independent Claude review, local source only. Recomputed sha256 for all 38 source-review-inputs.json entries: 0 mismatches, manifest sha matches claim. dedup_adapter.py's CLI only renders text (--output-root); it compile()s but never exec()s run_exact — no direct unlink/docker/ssh call in the adapter itself. Verified pinned house deduplicate.py/offload.py hashes match HOUSE_SHA/GUARD_SHA/fixture-test hash exactly; read both in full: house loop validates every file before any unlink, rechecks keeper immediately before each duplicate delete, never touches the keeper; adapter's checked() hook re-verifies parent/name/bytes/sha/no-process-use/O_NOFOLLOW-fingerprint on every call plus a before/after capacity+loaded-image snapshot bracketing the first unlink (64MiB growth bound, images_preserved subset check). Bulk-validated plan.json/protected-resources.json in Python: 29 pairs, 185 preserved, 214 total entries, 52 unique SHA states, 1,408,114,688 reclaim bytes, 32 protected files — all match, zero overlap between the 29 deletion aliases and preserved/protected sets, all alias/keeper bytes identical. Ran the test suite myself: 8/8 pass. Ran bash -n on both generated scripts: both pass. The 14 POSIX-only fixture cases remain PENDING (cannot run on Windows); not counted as passing. Inspected resume-preparation.sh as context only (hash/syntax verified, no cleanup logic) but render NO verdict — belongs to task-111cc8, out of scope here. No actual cleanup/unlink/SSH/network occurred. ACCEPT as sound, reversible, narrowly-scoped source; execution still needs the Linux fixture run plus a later execution-evidence review. Bound to 38-file manifest sha256 8d645d8989b34afc910ee75af17f3e9e3a9a4a43ac3fde731cce600d01f9d33e; portable tests exit0."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "task-72e165e0 is now `ACCEPTED`.\n\n**Summary:** This is a careful, defense-in-depth adapter for an exact, narrowly-scoped backup dedup (29 byte-identical duplicate aliases, each with a retained paired keeper — fully reversible by copy). Key findings:\n\n- All 38 pinned files rehashed, 0 mismatches, manifest SHA matches claim exactly.\n- `dedup_adapter.py` only renders text via `--output-root`; it `compile()`s the generated program to syntax-check it but never `exec()`s it — confirmed no direct unlink/docker/ssh call in the adapter process itself.\n- The pinned house `deduplicate.py` (unchanged except one anchored regex swap, hash-verified) validates every file before any unlink, rechecks the keeper immediately before each duplicate delete, and never touches the keeper. The adapter wraps every call with its own re-verification (fingerprint, no active process/journal, O_NOFOLLOW read) plus a fresh before/after capacity and loaded-image snapshot bracketing the actual first unlink.\n- I bulk-validated `plan.json`/`protected-resources.json` myself in Python rather than trusting the claims: 29 pairs, 185 preserved, 214 total entries, 52 unique SHA states, 1,408,114,688 reclaim bytes, 32 protected files — all exactly match, with zero overlap between the deletion set and the preserved/protected sets.\n- I ran the portable test suite myself (8/8 pass) and `bash -n` on both generated scripts myself (both pass).\n- The 14 POSIX-only fixture cases correctly remain `PENDING` (can't run on Windows) and are not counted as passing, per the author's own honest disclosure of this limitation and an earlier RED/Windows-path hiccup.\n\nI also read `resume-preparation.sh` for context (hash and syntax verified, contains no cleanup/unlink logic) but issued **no verdict** on it — that belongs to task-111cc8, which remains out of scope and untouched per your instruction. No actual cleanup, unlink, SSH, or network activity occurred during this review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "5db432b83845be73382a7d92ffa679bbb3b129e8bd36fa4ef09863c4c48235b7",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

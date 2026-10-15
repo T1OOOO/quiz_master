@@ -1,0 +1,21 @@
+{
+  "actual_exit": 1,
+  "elapsed_seconds": 4.216,
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-i",
+    "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+    "root@192.3.164.184",
+    "bash -s"
+  ],
+  "script_sha256": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2",
+  "source_review_sha256": "b7e8ed6e510941f2cc15f3cd51c39930db4c3b98457244140408c63c292e57bf",
+  "stdout_sha256": "23e7f43f01c22a14d718943b2eaa24cdaad8d12bdca2e591c0c3c5762d20135b",
+  "stderr_sha256": "84effc2913d794dd91fcdff64a42cf47bab6b29f2664f8eb4d504406008e03e2",
+  "production_database_used": false,
+  "cleanup_performed": false
+}

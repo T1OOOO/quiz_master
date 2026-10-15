@@ -1,0 +1,21 @@
+test_changed_second_group_aborts_before_any_unlink (qm_isolated_fixture.DedupTests.test_changed_second_group_aborts_before_any_unlink) ... ok
+test_current_and_traversal_names_rejected (qm_isolated_fixture.DedupTests.test_current_and_traversal_names_rejected) ... ok
+test_duplicate_plan_name_rejected (qm_isolated_fixture.DedupTests.test_duplicate_plan_name_rejected) ... ok
+test_hard_link_rejected (qm_isolated_fixture.DedupTests.test_hard_link_rejected) ... ok
+test_identical_copy_removed_and_alias_restorable (qm_isolated_fixture.DedupTests.test_identical_copy_removed_and_alias_restorable) ... ok
+test_live_journal_rejected (qm_isolated_fixture.DedupTests.test_live_journal_rejected) ... ok
+test_nonprivate_copy_rejected (qm_isolated_fixture.DedupTests.test_nonprivate_copy_rejected) ... ok
+test_symlink_rejected (qm_isolated_fixture.DedupTests.test_symlink_rejected) ... ok
+test_hardlink_blocks (qm_isolated_fixture.FingerprintTests.test_hardlink_blocks) ... ok
+test_hash_metadata_and_private_mode_drift (qm_isolated_fixture.FingerprintTests.test_hash_metadata_and_private_mode_drift) ... ok
+test_journal_blocks (qm_isolated_fixture.FingerprintTests.test_journal_blocks) ... ok
+test_positive_fingerprint (qm_isolated_fixture.FingerprintTests.test_positive_fingerprint) ... ok
+test_process_open_file_blocks (qm_isolated_fixture.FingerprintTests.test_process_open_file_blocks) ... ok
+test_symlink_blocks (qm_isolated_fixture.FingerprintTests.test_symlink_blocks) ... ok
+test_both_preflight_readonly_contexts_close_real_connections (qm_isolated_fixture.LifetimeIntegrationTests.test_both_preflight_readonly_contexts_close_real_connections) ... ok
+test_real_two_group_process_guard_red_green (qm_isolated_fixture.LifetimeIntegrationTests.test_real_two_group_process_guard_red_green) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 4.167s
+
+OK

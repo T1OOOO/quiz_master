@@ -1,0 +1,39 @@
+{
+  "status": "ROOT_LOCAL_SOURCE_PACKET_CHECKED_PENDING_INDEPENDENT_SOURCE_REVIEW",
+  "source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/dedup_adapter.py": "ce1a44f63ead662347f89d896a701d8b7f1b2a2e10a7317e08cc94de5238818d",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/linux_fixture_tests.py": "f29a300489cc909ddd5721c83beae7684efe4efbc76c0a722e5d22490f03942d",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/test_dedup_adapter.py": "db65e5b2442d8be35795f332b86eddb09727c1d19e3e71d08f5e25a17a620d6d"
+  },
+  "artifacts_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\linux-fixture-PENDING.sh": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\preview.json": "e50e518a3932d245b7a45ad172c851d397ffd12a98dcb43465c393b02476952f"
+  },
+  "actual_plan_validation_exit": 0,
+  "actual_house_pin_and_anchor_validation_exit": 0,
+  "syntax_checks": [
+    {
+      "path": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh",
+      "sha256": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+      "actual_bash_syntax_exit": 0,
+      "compiled_python_blocks": 1
+    },
+    {
+      "path": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\linux-fixture-PENDING.sh",
+      "sha256": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2",
+      "actual_bash_syntax_exit": 0,
+      "compiled_python_blocks": 1
+    }
+  ],
+  "root_source_inspected": true,
+  "local_plan_counts": [
+    29,
+    185,
+    214,
+    52
+  ],
+  "posix_fixtures": "PENDING_ROOT_AFTER_INDEPENDENT_SOURCE_REVIEW",
+  "cleanup_performed": false,
+  "remote_peak_certified": false
+}

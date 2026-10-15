@@ -1,0 +1,18 @@
+{
+  "original_fixture_sha256": "787a2ea7d2227b63356f2e3e9641b562d05583a169f78a9e6f43968c90874d1c",
+  "corrected_fixture_sha256": "e8ddaddd704fe6b6707b89d5e7016835ebe1a02f88f3d94d0be08e7834ca08dd",
+  "exact_replacements": [
+    [
+      "def readonly(uri,**kwargs):",
+      "def readonly(database,**kwargs):"
+    ],
+    [
+      "self.assertIn('mode=ro',uri);self.assertEqual(kwargs,{'uri':True})",
+      "self.assertIn('mode=ro',database);self.assertEqual(kwargs,{'uri':True})"
+    ]
+  ],
+  "actual_bash_syntax_exit": 0,
+  "compiled_python_blocks": 1,
+  "production_script_unchanged_sha256": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb",
+  "linux_execution_performed": false
+}

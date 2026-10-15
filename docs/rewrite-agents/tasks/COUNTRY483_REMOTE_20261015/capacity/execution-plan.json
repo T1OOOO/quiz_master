@@ -1,0 +1,39 @@
+{
+  "status": "FROZEN_FUTURE_EXECUTION_REQUIRES_INDEPENDENT_ACCEPTANCE",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-i",
+    "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+    "root@192.3.164.184",
+    "bash -s"
+  ],
+  "stdin": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-adapter-v2\\preview-v1\\deduplicate-v2.sh",
+  "stdin_sha256": "6be3e396697dab7966718148c61ee780a50c81f66e83d41354ddbb9f19b606eb",
+  "timeout_seconds": 900,
+  "actual_fixture_exit": 0,
+  "actual_fixture_cases": 16,
+  "fixture_script_sha256": "e8ddaddd704fe6b6707b89d5e7016835ebe1a02f88f3d94d0be08e7834ca08dd",
+  "required_task_acceptances": [
+    "task-f36dd269891d4b119be67fa2bc3de4ae",
+    "task-814995351f434563ac72febaebae7011",
+    "task-111cc88883504f01ba52098f4b0e07ea"
+  ],
+  "required_manifest": "execution-review-inputs.json",
+  "aliases": 29,
+  "preserved_backups": 185,
+  "retained_states": 52,
+  "projected_allocated_reclaim": 1408114688,
+  "protected_files": 32,
+  "cleanup_performed": false,
+  "publication_path": false,
+  "limits": [
+    "Do not use old v1 script29cde",
+    "Keep all actual failures and private full keepers",
+    "Exact actual cleanup outcome review before corrected preparation retry",
+    "Corrected atlas image root derived from immutable Dockerfile and actual existing-image probe; actual new candidate still untested"
+  ]
+}

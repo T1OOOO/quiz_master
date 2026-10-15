@@ -1,0 +1,144 @@
+{
+  "status": "DONE_FOR_INDEPENDENT_REVIEW",
+  "task_id": "task-72e165e058f44fc38153046f1ccaf298",
+  "run_id": "run-99cce5faaa9d4394a03ee4e37f7c9918",
+  "source_sha256": {
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/dedup_adapter.py": "ce1a44f63ead662347f89d896a701d8b7f1b2a2e10a7317e08cc94de5238818d",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/linux_fixture_tests.py": "f29a300489cc909ddd5721c83beae7684efe4efbc76c0a722e5d22490f03942d",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/test_dedup_adapter.py": "db65e5b2442d8be35795f332b86eddb09727c1d19e3e71d08f5e25a17a620d6d"
+  },
+  "artifacts_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\linux-fixture-PENDING.sh": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\preview.json": "e50e518a3932d245b7a45ad172c851d397ffd12a98dcb43465c393b02476952f"
+  },
+  "preview": {
+    "status": "LOCAL_RENDER_ONLY",
+    "plan_sha256": "ded18e94923b44ba5a4d5dda126b4b8aeea834b10c743965e9617706f0281d3f",
+    "protected_sha256": "9052dc05fcf76728a1131cda567cd49c1e28c268c62f3e9dfb3a29e78e12a1bf",
+    "house_sha256": "2640bb0c0a5ed72dae96aeee56ca7e3df1831569c10a0649602f56fc2ed6fdb5",
+    "guard_sha256": "7d8637d9a646f306aa41cf90a496d3216933a4f0b8c717cc2db5b9c3e41c66d5",
+    "shell_sha256": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a",
+    "selected": 29,
+    "preserved": 185,
+    "unique_states": 52,
+    "allocated_reclaim": 1408114688,
+    "source_sha256": {
+      "dedup_adapter.py": "ce1a44f63ead662347f89d896a701d8b7f1b2a2e10a7317e08cc94de5238818d",
+      "linux_fixture_tests.py": "f29a300489cc909ddd5721c83beae7684efe4efbc76c0a722e5d22490f03942d",
+      "test_dedup_adapter.py": "db65e5b2442d8be35795f332b86eddb09727c1d19e3e71d08f5e25a17a620d6d"
+    },
+    "actual_cleanup_performed": false,
+    "execution_authorized": false,
+    "independent_review_required": true,
+    "posix_fixture_execution": "PENDING_ROOT_AFTER_REVIEW",
+    "fixture_sha256": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2"
+  },
+  "portable_tests": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker",
+      "-p",
+      "test_dedup_adapter.py",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "elapsed_seconds": 2.38,
+    "stdout_sha256": "46bc9fe50d67c8ce7307d699c8beed83c626fe98a981f7835d84065dbaf18588"
+  },
+  "initial_portable_failure": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker",
+      "-p",
+      "test_dedup_adapter.py",
+      "-v"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 1,
+    "elapsed_seconds": 1.27,
+    "stdout_sha256": "6db75e82d1c5c49698c815580046c9f0bb894304d1dca57e251cfb527269416b"
+  },
+  "render": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/worker/dedup_adapter.py",
+      "--output-root",
+      "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1"
+    ],
+    "cwd": "C:\\ap\\quiz_master",
+    "actual_exit": 0,
+    "stdout_sha256": "639bfa86cdb72e55e6aa3d0409c8ee32bd17b4e70e8e6b02621b186f3de6e6e1"
+  },
+  "syntax": {
+    "checks": [
+      {
+        "path": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh",
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\deduplicate.sh"
+        ],
+        "bash_exit": 0,
+        "python_compile_exit": 0,
+        "script_sha256": "29cde354cc9117288b7cc5afef110fc8ee5e7389a6946694bf07137a82c1299a"
+      },
+      {
+        "path": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\linux-fixture-PENDING.sh",
+        "command": [
+          "C:/Program Files/Git/bin/bash.exe",
+          "-n",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\preview-v1\\linux-fixture-PENDING.sh"
+        ],
+        "bash_exit": 0,
+        "python_compile_exit": 0,
+        "script_sha256": "66eab3363c78fd92e03f1429613f521494fdb99019cb943ca05b5319c094cab2"
+      }
+    ],
+    "linux_execution": "PENDING_NOT_RUN",
+    "no_actual_cleanup": true
+  },
+  "red": {
+    "command": [
+      "C:/Python314/python.exe",
+      "-B",
+      ".run\\country483_remote_20261015\\capacity-worker\\red_boundary.py"
+    ],
+    "actual_exit": 1
+  },
+  "raw_evidence_sha256": {
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\boundary-red.json": "89ce1ab6debc710e5640544b9374bad789fcb6f36aa17b647a2e9847c49210d1",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\boundary-red.log": "7e8fc688f42f3d76324c807b54be33a80f03af3f96135a7d1f7ca16e4c6ae530",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\deduplicate.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\linux-fixture-PENDING.sh.syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-attempt01.json": "41d146efea38ecae1676397a57f9713a713044c6f6c87a8a144f6fbedc5e3602",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-attempt01.log": "6db75e82d1c5c49698c815580046c9f0bb894304d1dca57e251cfb527269416b",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-final-v2.json": "2086e626f5eddf22231acd45879365f03be169a176333db993eb83eef0642a38",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-final-v2.log": "46bc9fe50d67c8ce7307d699c8beed83c626fe98a981f7835d84065dbaf18588",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-final.json": "f08ba9a7f6284770a62881d97db1702244ee310aacafe3ebdf381ac99b55bc2a",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\portable-final.log": "560b61b6945410fc0ad4b38f523a4057d4ed06efe33dc803c8bc1f408268d303",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\red_boundary.py": "6a7114b91cc8fb1ad230540ee237aff1c2700f4f2ccb4c4a58f09b27d8bd2412",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\render.json": "c428c88b80fe3d5a512507141585f652fab4bba9b7dade8f8bc2862854fc1ff6",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\render.log": "639bfa86cdb72e55e6aa3d0409c8ee32bd17b4e70e8e6b02621b186f3de6e6e1",
+    "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\capacity-worker\\syntax.json": "b5734ab0199f0353e327c0baf46347a60e3e66585436bb6ce28af83468866248"
+  },
+  "linux_fixture_tests": {
+    "count": 14,
+    "status": "PENDING_NOT_EXECUTED"
+  },
+  "actual_cleanup_performed": false,
+  "remote_peak_certified": false,
+  "independent_source_and_exact_packet_review_pending": true
+}

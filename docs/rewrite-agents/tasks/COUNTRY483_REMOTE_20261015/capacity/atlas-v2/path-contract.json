@@ -1,0 +1,16 @@
+{
+  "status": "LOCAL_CORRECTED_ATLAS_PATHS_NOT_EXECUTED",
+  "old_image_root": "/app/web/assets/assets/quizipedia/",
+  "new_image_root": "/usr/share/nginx/html/assets/assets/quizipedia/",
+  "reason": "Immutable Dockerfile COPY web /usr/share/nginx/html; no /app/web exists in the image",
+  "source_sha256": "dba111f870aa09129e68d329886c16efd75736a965da9ed067b28c2c476dc6e0",
+  "scripts_sha256": {
+    "resume-preparation-v2.sh": "0d6dc91aea513eb10afca4a4ef24a029938b93971fdbf4e638395a400f1aa5e4",
+    "collection-INERT-EXAMPLE-v2.sh": "6d7081ca04bd14ec2930f61c1bf1bb8d5bbcc346799f3cd4bcc7ec13f420f377"
+  },
+  "supersedes_only_legacy_atlas_image_path_metadata": true,
+  "original_inputs_preserved": true,
+  "actual_candidate_image": null,
+  "preparation_retry_performed": false,
+  "publication_performed": false
+}
