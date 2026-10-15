@@ -1,0 +1,15 @@
+Reproduced before repair (2026-10-15)
+cwd: C:\ap\quiz_master\docs\rewrite-agents\tasks\READER291_RELEASE_20261015\release-worker
+command: python -m unittest -v test_reader291_release.py test_prepare_reader291_remote.py
+exit: 1
+
+Ran 16 tests in 13.645s; FAILED (errors=5).
+
+Failures preserved from the inherited stale adaptation:
+- test_actual_archived_cutover_gate_executes_with_real_successor_metadata: archived59 prepare-only controls differ.
+- test_browser_revision_and_source_count_cannot_be_invented: empty browser article fixture caused IndexError.
+- test_duplicate_wrong_quiz_and_duplicate_browser_proof_fail: empty browser article fixture caused IndexError.
+- test_failed_browser_close_requires_exact_owned_quiescence: actor cleanup identity did not satisfy Reader291 identity.
+- test_real_reader_delta_uses_real_house_revision_and_noncatalog_contract: empty browser article fixture failed Reader291 reference validation.
+
+This artifact preserves the failing proof only. It is not a passing receipt or a publication record.

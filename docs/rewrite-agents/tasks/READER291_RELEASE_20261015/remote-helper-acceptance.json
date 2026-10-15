@@ -1,0 +1,88 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-56002575bcb24985a7c763b9a679cb0e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-56002575bcb24985a7c763b9a679cb0e",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent READ-ONLY re-review (Claude Opus 5, session-2ac79582e78a46ee819d486fafcde37e, continuation of session-82a32a8c; reviewer != assignee session-0ef85983). SUBMITTED v12 / run-bb90ef0179cd4f6dbeb640069fb7b00c.\n\nSCOPE: only the ten preparation controller dependencies. Publication scripts and all remote execution are excluded; Root's later publication adaptation is outside this review and not approved here.\n\nTEN-FILE MAP: all ten files rehash live to controller-source-delta.json; canonical aggregate recomputed by me = cbc925488e5b5d7947aeb9f9498965b04d720fb50f37f0b58a92f98f64c34b09.\n\nTESTS: 18/18, Ran 18 tests in 22.623s, OK, exit 0, reproduced. No SSH, build, browser, edits, Git writes or children.\n\nALL 3 PRIOR DEFECTS FIXED ON REAL INPUT, not fixtures:\n1. Score derived from exactly the 8 ids cinema-oct3-005..012; real proof 12/20; verify_reader_delta on real prior/current/proof/house passes with 291 articles, 172 refs, 170 playable, 2 known noncatalog; 16/20 raises; the result screenshot shows 12.\n2. Failed-close contract is native_processes_inactive, inactive and NOT absent: the real proof records inactive true with native_cim_absence_claimed false and carries no native_processes_absent field; verify_browser_cleanup(real proof) passes and the absent-only form raises (tested). Ports 19090/19093 closed, daemon 45128 and chrome 49812 owned, stop_seen, native audit exit 0. No PID-absence claim.\n3. Shared BASELINE_ARCHIVE resolves to the real Actor283 package, 60,958,196 B, 5ab6a34e...e04a2 == BASELINE_ARCHIVE_SHA256; used by the remote validator; tested.\n\nALSO RECOMPUTED: frozen 3482af9a = 291/172 vs d204f9b6 = 283/164, exactly 005..012 added, all 283 prior objects byte-identical; archived prior reader == git d204 bytes; both web trees rehash exactly (148 files); 7 frozen assets byte-identical in both builds; 29 screenshot hashes rehash; the 8 snapshots show four headings, 2 source links, zero textareas; cutover replay gives 1 preflight at 3 boundaries with the strict 20 percent guard, 291/172/170, c4b5ba65, no helm upgrade.\n\nLIMITS: no remote step re-run, no rebuild, no browser re-drive; verify_inputs cannot bind Root acceptance pins, which do not exist yet.\n\nVERDICT: ACCEPT, error_count 0. Source-only: authorizes no preparation, remote execution, image, cutover, production change or publication. Production stays Reader283 at Helm 60 / c4b5ba65 / d204f9b6."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual tests stdout+exit and exact frozen-source controller bindings; different-provider review still required. Narrow adapter only, no generic framework.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks",
+          "C:\\ap\\quiz_master\\.run"
+        ],
+        "assignee": "session-0ef8598319714ed1b54a0069d18386df",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Bounded native release helper. Own new docs/rewrite-agents/tasks/READER291_RELEASE_20261015/ source-only controller adapter and negative tests, and .run/reader291_release_20261015 scratch. Reuse accepted ACTOR_ARTICLES_20261015 controller/publication-source patterns; adapt exact currentHelm60 currentimagec4b5/source d204/Reader283 -> next291 target, preserve strict20% releasecapacity guard and current60/59/58rollback/DB29openfeedback. No SSH, builds, browser, edits outside ownership, Git/Beads, children or deploy. Root will supply frozen source after integrationACCEPTED+commitpush. All inputs frozen by hash; dryrun/controller16negative tests only. Do not invent publication receipt. User removed resourcequeue waiting.",
+        "created_at": 1792048458.6043525,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-56002575bcb24985a7c763b9a679cb0e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changes": [
+            "Current Reader291 browser proof is now the test fixture; score is derived from the exact eight deliberate wrong IDs and stale scores reject.",
+            "Failed-close validation now requires native_processes_inactive and rejects the deprecated absent-only field while retaining all owned-process and ports checks.",
+            "Shared BASELINE_ARCHIVE points at the actual Actor283 archive and is used by the remote validator; report includes provenance, stdout/exits, and the full controller source map."
+          ],
+          "evidence": [
+            "python -m unittest -v test_reader291_release.py test_prepare_reader291_remote.py: exit 0; Ran 18 tests in 23.151s; OK.",
+            "python -m py_compile prepare_reader291_release.py prepare_reader291_remote.py verify_reader291_candidate.py reader291_guard.py test_reader291_release.py test_prepare_reader291_remote.py: exit 0."
+          ],
+          "risks": [
+            "Root must re-pin controller_source_sha256 and controller_review in its source-freeze input before package preparation.",
+            "A different-provider review, Root Git/commit/push, build/browser/integration, and all execution/publication gates remain. No publication or acceptance claim."
+          ],
+          "summary": "[reader291-controller-repair] All three Opus rework findings fixed; controller is ready for another independent review."
+        },
+        "review_note": "Independent READ-ONLY re-review (Claude Opus 5, session-2ac79582e78a46ee819d486fafcde37e, continuation of session-82a32a8c; reviewer != assignee session-0ef85983). SUBMITTED v12 / run-bb90ef0179cd4f6dbeb640069fb7b00c.\n\nSCOPE: only the ten preparation controller dependencies. Publication scripts and all remote execution are excluded; Root's later publication adaptation is outside this review and not approved here.\n\nTEN-FILE MAP: all ten files rehash live to controller-source-delta.json; canonical aggregate recomputed by me = cbc925488e5b5d7947aeb9f9498965b04d720fb50f37f0b58a92f98f64c34b09.\n\nTESTS: 18/18, Ran 18 tests in 22.623s, OK, exit 0, reproduced. No SSH, build, browser, edits, Git writes or children.\n\nALL 3 PRIOR DEFECTS FIXED ON REAL INPUT, not fixtures:\n1. Score derived from exactly the 8 ids cinema-oct3-005..012; real proof 12/20; verify_reader_delta on real prior/current/proof/house passes with 291 articles, 172 refs, 170 playable, 2 known noncatalog; 16/20 raises; the result screenshot shows 12.\n2. Failed-close contract is native_processes_inactive, inactive and NOT absent: the real proof records inactive true with native_cim_absence_claimed false and carries no native_processes_absent field; verify_browser_cleanup(real proof) passes and the absent-only form raises (tested). Ports 19090/19093 closed, daemon 45128 and chrome 49812 owned, stop_seen, native audit exit 0. No PID-absence claim.\n3. Shared BASELINE_ARCHIVE resolves to the real Actor283 package, 60,958,196 B, 5ab6a34e...e04a2 == BASELINE_ARCHIVE_SHA256; used by the remote validator; tested.\n\nALSO RECOMPUTED: frozen 3482af9a = 291/172 vs d204f9b6 = 283/164, exactly 005..012 added, all 283 prior objects byte-identical; archived prior reader == git d204 bytes; both web trees rehash exactly (148 files); 7 frozen assets byte-identical in both builds; 29 screenshot hashes rehash; the 8 snapshots show four headings, 2 source links, zero textareas; cutover replay gives 1 preflight at 3 boundaries with the strict 20 percent guard, 291/172/170, c4b5ba65, no helm upgrade.\n\nLIMITS: no remote step re-run, no rebuild, no browser re-drive; verify_inputs cannot bind Root acceptance pins, which do not exist yet.\n\nVERDICT: ACCEPT, error_count 0. Source-only: authorizes no preparation, remote execution, image, cutover, production change or publication. Production stays Reader283 at Helm 60 / c4b5ba65 / d204f9b6.",
+        "reviewer": "session-2ac79582e78a46ee819d486fafcde37e",
+        "root_task_id": "task-56002575bcb24985a7c763b9a679cb0e",
+        "run_id": "run-bb90ef0179cd4f6dbeb640069fb7b00c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "3qx prepare Reader291 release controllers and negative tests only",
+        "version": 13
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Callback succeeded on the Hub: **ACCEPTED**, v13, reviewer `session-2ac79582\u2026` \u2260 assignee `session-0ef85983\u2026`, run `run-bb90ef01\u2026`, `error_count 0`.\n\n**Verdict: ACCEPT \u2014 0 errors.** Source-only, limited to the ten preparation controller dependencies.\n\n- Canonical ten-file aggregate recomputed by me: `cbc925488e5b5d7947aeb9f9498965b04d720fb50f37f0b58a92f98f64c34b09` (sha256 of the sorted compact map), and all ten files rehash live to `controller-source-delta.json`.\n- All three prior rework findings are genuinely fixed against the actual inputs, not fixtures: derived 12/20 score from the exact eight ids 005..012; `native_processes_inactive` as the truthful failed-close contract with the absent-only form rejected and no PID-absence claim; shared `BASELINE_ARCHIVE` bound to the real Actor283 package `5ab6a34e\u2026e04a2`.\n- 18/18 local tests reproduced (exit 0); 291/172/170 with 2 known noncatalog refs, 283 prior articles byte-identical, 148 web-tree files and 7 frozen assets rehashed, cutover replay with 1 preflight at 3 boundaries carrying the strict 20% guard.\n\nPublication scripts and every remote step were excluded from this review and are not approved. Limits stated in the callback: no remote re-run, no rebuild, no browser re-drive, and `verify_inputs` cannot bind Root's acceptance pins, which don't exist yet. Nothing here authorizes preparation, cutover or publication; production stays Reader283 at Helm 60 / c4b5ba65 / d204f9b6.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-56002575bcb24985a7c763b9a679cb0e",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "18a2ee75d9c1694b6cbc9778d77c2531e76e73da9bf2a10f6246c4c094a583f3",
+  "scope": "Prepare-only exact ten controller dependencies; no execution or publication. Publication sources excluded.",
+  "continuation_history": {
+    "first_attempt_actual_exit": "timeout",
+    "first_attempt_trace_sha256": "ac1da6d7f565c8eb2b8aaeb28c10caf8a85b2afdebcb9dd9218b64093e77ddd2",
+    "first_callback": "Rejected because note exceeded4000characters; no acceptance from that call.",
+    "actual_successful_continuation_exit": 0,
+    "scope": "Same reviewed source; continuation recomputedtenmap aggregate andrecordedgenuinecallback. Original18tests22.623s andfullreal-input/source/browserchecks preservedinfirsttrace."
+  },
+  "schema_version": "qm-mixed-remote-helper-review/v1",
+  "author_provider": "codex",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\prepare_reader291_remote.py": "bedd69aff765592246b4973bd338a89e1858cf7be7acd3e51e85cefd4c8c6672",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\test_prepare_reader291_remote.py": "bb51405c4fe06dd81a2d2db2e6d4d12eb0a6f7474d90b771c865b5c7eaa31228",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\reader291_guard.py": "5847bbcbbccce11bca011039006cc58288254f2f6792bad9f09dae1a9e13efed",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  }
+}

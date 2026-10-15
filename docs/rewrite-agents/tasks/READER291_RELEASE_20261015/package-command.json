@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015\\release-worker\\prepare_reader291_release.py",
+    "--pins",
+    "C:\\ap\\quiz_master\\.run\\actor291_release_20261015\\release-pins-v1.json",
+    "--prior-archive",
+    "C:\\ap\\quiz_master\\.run\\actor_articles_20261015\\package-v1\\quiz-2026.10.15-actors-d204f9b.tar.gz",
+    "--output-root",
+    "C:\\ap\\quiz_master\\.run\\actor291_release_20261015\\package-v1"
+  ],
+  "actual_exit": 0,
+  "scope": "Local hash-bound package preparation only; no SSH or publication."
+}
