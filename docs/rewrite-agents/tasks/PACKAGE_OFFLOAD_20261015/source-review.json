@@ -1,0 +1,68 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-f23e797ad2fd45938696186c1ea09354": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-f23e797ad2fd45938696186c1ea09354",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent READ-ONLY source review (Claude Opus 5, session-976e7fe5d1144a03afde6b6c5a181127). No SSH/SCP/execute.py/offload.sh run, no build/browser/git/children/remote op. Every value below I recomputed myself; nothing trusted from the submission.\n\napproval-inputs sha256 8801c72629a53a98c4d5a037aa1f29a2369911ec4df40ab47d9a042ca6eed53c\n\nHASHES: all 8 pinned files recomputed and match exactly (offload.py acdf3d13, test_offload.py e1035463, execute.py 884d3e3f, offload.sh c0700e92, plan.json e6feb98a, copy-receipt.json 08b3ffd9, protected-hashes.json de3ed3d4, tests.json 3c21102f). receipt.plan_sha256 == my plan.json digest.\n\nLOCAL COPIES: I rehashed all 35 copies in .run/actor291_release_20261015/offloaded myself, 1,583,875,913 bytes total, 0 mismatches; each size+sha256 agrees with BOTH plan entry and receipt, every local path/remote pair exact, all scp_exit 0, 35 unique locals and remotes, no symlinks, all resolve inside offloaded/. Dir holds 36 files: the 35 finals plus the retained quiz-2026.10.14-screen-song-6866608.tar.gz.partial (5,275,648 B) from the 180 s timeout. Separate suffix, not referenced by the receipt, so the retry's full 47,584,856 B file is the one verified; both histories intact, no remote unlink implied anywhere.\n\nPLAN BINDING: shell-embedded entries list is byte-equal to plan.json entries; embedded core is offload.py verbatim; both protected blocks identical to each other and to protected-hashes.json (11 files); pre/post health blocks identical. 35 entries, all /opt/quiz-master/releases/, all match the 02..14 pattern, no date-15 file, none in PROTECTED, 35 unique paths and 35 unique (dev,ino), sum exactly 1,583,875,913.\n\nCORE: traversal blocked (PurePosixPath keeps '..', parent!=ROOT), str(logical)==path blocks non-normalized forms, name taken from basename not raw path, lstat+S_ISREG+is_symlink before, O_NOFOLLOW open, (dev,ino,size,mtime_ns) matched on fstat before AND after hashing and on lstat after close, duplicates rejected, root must be a real non-symlink dir. All 35 validated before the first unlink, then re-verified at each unlink. unlink() only, no walk/glob/rmtree/force/prune, nothing outside releases/.\n\nFAILURE BEHAVIOUR: set -e + flock -n 8 on the existing DEPLOY.lock (project's house pattern) held for the whole script; any assert aborts before any unlink. execute.py gates on reviewer!=assignee, verdict accept, ACCEPTED state, CLI exit 0 and the manifest digest inside this note, revalidates all 8 sources and all 35 copies, refuses to start if prior execution evidence exists (no blind retry/clobber), writes actual_exit in finally, re-raises timeout, keeps stdout/stderr.\n\nTESTS: I reran only the local fixtures: 9/9 pass, exit 0; bash -n clean; all 5 embedded Python blocks compile. file_digest needs >=3.11, server 3.12.3 fits.\n\nNON-BLOCKING NOTES: (1) all remote safety is assert-based, so PYTHONOPTIMIZE/-O in the remote env would strip every check; blast radius stays the 35 frozen copied names and is restorable, but `if not __debug__: raise SystemExit(1)` would close it. (2) source-review.json is not self-pinnable; it must be the verbatim paired CLI record. (3) Irreducible sub-ms window between final verify and unlink, covered by the lock.\n\nVERDICT: ACCEPT. Correct, bounded, data-preserving, fails closed. This approves SOURCE ONLY: no cleanup has executed and no capacity has been recovered."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact static file list+SHA bindings, all35localcopies actualverified before unlink, no path/symlink/protected/mutation bypass; fixture negative tests, protected artifacts and production60/PVC/29feedback preserved; reviewer actual callback pins source/plan/script/copyreceipt/executor. This approval is not a claim cleanup executed.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks",
+          "C:\\ap\\quiz_master\\.run\\actor291_release_20261015"
+        ],
+        "assignee": "session-7b17d0722095473fa160d251eb85def2",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Root prepares finite offload of35 normal old ownproject /opt/quiz-master/releases/*.tar.gz packages totalling1583875913bytes. First copy every byte off-server into ignored local.run and verify SHA, then independent Opus approval of exact plan/core/tests/copyreceipt/inertscript/executor before unlinking only those35 regular files. Preserve all recovery/failed archives, all extracted stages, everyK3s image/archive, Dockerimages, current60/rollback59/protected58/old17be packages and all DBbackups. No server writes until accepted. Source/plan approval only; actual execution/outcome separately evidenced.",
+        "created_at": 1792047846.6642787,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-f23e797ad2fd45938696186c1ea09354",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/PACKAGE_OFFLOAD_20261015"
+          ],
+          "evidence": [
+            "PACKAGE_OFFLOAD_20261015/approval-inputs.json binds8 exactsource/plan/receipt/testfiles.",
+            "Nine fixturetests actualexit0; inert shell syntax+all5embeddedPythonblockscompile0; actualserverPython3.12.3.",
+            "copy-receipt.json has35completeSCPexit0copies+SHA/size/localrestoremap; firstmissing35thtimeout retained and retriedonlythatfilefreshdestination, finalall35verified.",
+            "Executor requires genuine different-provider ACCEPTEDcallback pinning exactmanifestSHA, then revalidatesall35localcopies beforeSSH. RemoteDEPLOY.lock, Helm60/bothc4/PVC/readiness/node/feedbackhash,11protectedhashes before+after, all35validatedbeforefirstunlink+eachidentity/hashrechecked."
+          ],
+          "risks": [
+            "NOremoval/recoveredcapacity claimed; independentOpussourcegate stillpending.",
+            "Capacityrepairmaystartbelow20% but releaseguard20% retained andactualratio reported.",
+            "Off-server35archivebytesignoredlocal; restoremapcommittedmetadataonly."
+          ],
+          "scope": "Exact35 oldnormalstaticpackages only,1583875913bytes alloffservercopied+SHAverified; 11protectedpackage/archive/backups pinned; currentHelm60/29OPENfeedback baseline; nootherprojects/Docker/K3simages/archives/stages/DBdeletion.",
+          "status": "SOURCE_READY_FOR_INDEPENDENT_REVIEW_NO_REMOTE_REMOVAL"
+        },
+        "root_task_id": "task-f23e797ad2fd45938696186c1ea09354",
+        "run_id": "run-920b838d6682493eb2d1982627200026",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "7sw exact old static package offload approval before server deletion",
+        "version": 4,
+        "reviewer": "session-976e7fe5d1144a03afde6b6c5a181127",
+        "review_note": "Independent READ-ONLY source review (Claude Opus 5, session-976e7fe5d1144a03afde6b6c5a181127). No SSH/SCP/execute.py/offload.sh run, no build/browser/git/children/remote op. Every value below I recomputed myself; nothing trusted from the submission.\n\napproval-inputs sha256 8801c72629a53a98c4d5a037aa1f29a2369911ec4df40ab47d9a042ca6eed53c\n\nHASHES: all 8 pinned files recomputed and match exactly (offload.py acdf3d13, test_offload.py e1035463, execute.py 884d3e3f, offload.sh c0700e92, plan.json e6feb98a, copy-receipt.json 08b3ffd9, protected-hashes.json de3ed3d4, tests.json 3c21102f). receipt.plan_sha256 == my plan.json digest.\n\nLOCAL COPIES: I rehashed all 35 copies in .run/actor291_release_20261015/offloaded myself, 1,583,875,913 bytes total, 0 mismatches; each size+sha256 agrees with BOTH plan entry and receipt, every local path/remote pair exact, all scp_exit 0, 35 unique locals and remotes, no symlinks, all resolve inside offloaded/. Dir holds 36 files: the 35 finals plus the retained quiz-2026.10.14-screen-song-6866608.tar.gz.partial (5,275,648 B) from the 180 s timeout. Separate suffix, not referenced by the receipt, so the retry's full 47,584,856 B file is the one verified; both histories intact, no remote unlink implied anywhere.\n\nPLAN BINDING: shell-embedded entries list is byte-equal to plan.json entries; embedded core is offload.py verbatim; both protected blocks identical to each other and to protected-hashes.json (11 files); pre/post health blocks identical. 35 entries, all /opt/quiz-master/releases/, all match the 02..14 pattern, no date-15 file, none in PROTECTED, 35 unique paths and 35 unique (dev,ino), sum exactly 1,583,875,913.\n\nCORE: traversal blocked (PurePosixPath keeps '..', parent!=ROOT), str(logical)==path blocks non-normalized forms, name taken from basename not raw path, lstat+S_ISREG+is_symlink before, O_NOFOLLOW open, (dev,ino,size,mtime_ns) matched on fstat before AND after hashing and on lstat after close, duplicates rejected, root must be a real non-symlink dir. All 35 validated before the first unlink, then re-verified at each unlink. unlink() only, no walk/glob/rmtree/force/prune, nothing outside releases/.\n\nFAILURE BEHAVIOUR: set -e + flock -n 8 on the existing DEPLOY.lock (project's house pattern) held for the whole script; any assert aborts before any unlink. execute.py gates on reviewer!=assignee, verdict accept, ACCEPTED state, CLI exit 0 and the manifest digest inside this note, revalidates all 8 sources and all 35 copies, refuses to start if prior execution evidence exists (no blind retry/clobber), writes actual_exit in finally, re-raises timeout, keeps stdout/stderr.\n\nTESTS: I reran only the local fixtures: 9/9 pass, exit 0; bash -n clean; all 5 embedded Python blocks compile. file_digest needs >=3.11, server 3.12.3 fits.\n\nNON-BLOCKING NOTES: (1) all remote safety is assert-based, so PYTHONOPTIMIZE/-O in the remote env would strip every check; blast radius stays the 35 frozen copied names and is restorable, but `if not __debug__: raise SystemExit(1)` would close it. (2) source-review.json is not self-pinnable; it must be the verbatim paired CLI record. (3) Irreducible sub-ms window between final verify and unlink, covered by the lock.\n\nVERDICT: ACCEPT. Correct, bounded, data-preserving, fails closed. This approves SOURCE ONLY: no cleanup has executed and no capacity has been recovered."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**ACCEPT** recorded on the hub: `task-f23e797ad2fd45938696186c1ea09354` → `state: ACCEPTED`, `version 4`, `reviewer: session-976e7fe5d1144a03afde6b6c5a181127` (my session) ≠ `assignee: session-7b17d07…` (Root). The note contains the required literal, so `execute.py` line 23 will bind.\n\nWhat I verified myself (read-only; no SSH/SCP/execute.py/offload.sh/build/browser/git):\n\n- **Hashes** — all 8 pinned files recomputed, exact match; `approval-inputs.json` itself is `8801c726…ed53c`; `copy-receipt.plan_sha256` equals my own `plan.json` digest.\n- **35 local copies** — rehashed every byte (1,583,875,913 total), **0 mismatches**; sizes/hashes agree with *both* plan and receipt, all `scp_exit 0`, no symlinks, all inside `offloaded/`. The directory has 36 files: 35 finals plus the retained `…screen-song-6866608.tar.gz.partial` (5,275,648 B) from the 180 s timeout — distinct suffix, not referenced by the receipt, so the verified file is the full 47,584,856 B retry. Both histories intact.\n- **Plan binding** — the `entries` list embedded in `offload.sh` is byte-equal to `plan.json`; the embedded core is `offload.py` verbatim; both protected blocks are identical to each other and to `protected-hashes.json` (11 files); pre/post health blocks identical. All 35 names match the 02..14 pattern, none protected, no date-15 file, 35 unique paths and 35 unique `(dev,ino)`, sum exactly 1,583,875,913.\n- **Core safety** — traversal rejected (`PurePosixPath` keeps `..`), non-normalized paths rejected, basename-only reconstruction, `lstat`+`S_ISREG`+`is_symlink`, `O_NOFOLLOW`, identity matched on `fstat` before *and* after hashing plus `lstat` after close, duplicates rejected. All 35 validated before the first unlink, each re-verified at unlink. `unlink()` only — no walk, glob, rmtree, force or prune.\n- **Tests** — reran only the local fixtures: 9/9, exit 0; `bash -n` clean; all 5 embedded Python blocks compile.\n\nThree non-blocking notes in the callback: remote safety is entirely `assert`-based (a stray `PYTHONOPTIMIZE` would strip it; blast radius stays the 35 copied names, restorable — `if not __debug__: raise SystemExit(1)` closes it); `source-review.json` can't self-pin, so it must be the verbatim paired CLI record; and the irreducible sub-millisecond verify→unlink window, covered by `DEPLOY.lock`. My earlier concern about `exec 8>` truncating the lock file turned out to be the project's existing house pattern across every cutover script, so I dropped it.\n\nThis approves **source only** — no cleanup has executed and no capacity has been recovered.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "b8fe89f03e85f32615a117d517d8dad2a820d6d5cf88a7f1555f7ecedb791ef7",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

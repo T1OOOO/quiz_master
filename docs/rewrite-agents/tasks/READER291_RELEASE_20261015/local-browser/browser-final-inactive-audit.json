@@ -1,0 +1,11 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "$ErrorActionPreference='Stop'; $items=@(Get-Process -Id 45128,49812,15608,50544,6320,36320,43168,28116,11252,11324,45544,48992,47616,29212 -ErrorAction SilentlyContinue); if(@($items | Where-Object {-not $_.HasExited}).Count){throw 'Captured browser PID still executing or reused; inspect'}; if(@(Get-NetTCPConnection -LocalPort 19090,19093 -State Listen -ErrorAction SilentlyContinue).Count){throw 'QA listener remains'}; [pscustomobject]@{actual_exit=0;all_captured_identities_inactive=$true;terminated_process_objects=@($items | ForEach-Object {$_.Id});ports_closed=@(19090,19093);processes_changed=$false} | ConvertTo-Json -Depth 3"
+  ],
+  "actual_exit": 0,
+  "stdout": "{\n    \"actual_exit\":  0,\n    \"all_captured_identities_inactive\":  true,\n    \"terminated_process_objects\":  [\n                                       49812,\n                                       50544\n                                   ],\n    \"ports_closed\":  [\n                         19090,\n                         19093\n                     ],\n    \"processes_changed\":  false\n}\n",
+  "stderr": ""
+}

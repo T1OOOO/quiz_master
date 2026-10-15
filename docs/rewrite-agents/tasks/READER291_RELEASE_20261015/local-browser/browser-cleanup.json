@@ -1,0 +1,78 @@
+{
+  "actual_cleanup_exit": 0,
+  "verified_daemon_pid": 45128,
+  "previously_verified_chrome_pid": 49812,
+  "checked_owned_pids": [
+    6320,
+    11252,
+    11324,
+    15608,
+    28116,
+    29212,
+    36320,
+    43168,
+    45128,
+    45544,
+    47616,
+    48992,
+    49812,
+    49908,
+    50544,
+    50688
+  ],
+  "session": "reader291-local-mixed",
+  "namespace": "quiz-master",
+  "inactive": true,
+  "native_processes_inactive": true,
+  "native_processes_inactive_means": "No captured process still executes; Windows can retain terminated objects with HasExited=true.",
+  "fallback": {
+    "actual_exit": 0,
+    "session": "reader291-local-mixed",
+    "namespace": "quiz-master",
+    "method": "Official named closes failed to acknowledge; only same-creation-time captured daemon stopped; all captured browser identities now exited or absent, with final native/port audit0",
+    "captured_daemon": 45128,
+    "checked_processes": [
+      6320,
+      11252,
+      11324,
+      15608,
+      28116,
+      29212,
+      36320,
+      43168,
+      45128,
+      45544,
+      47616,
+      48992,
+      49812,
+      50544
+    ],
+    "captured_identities_inactive": true,
+    "foreign_processes_changed": false,
+    "ports_closed": [
+      19090,
+      19093
+    ],
+    "official_close_exits": [
+      1,
+      1
+    ],
+    "terminated_process_objects": [
+      49812,
+      50544
+    ],
+    "native_cim_absence_claimed": false,
+    "scope": "Windows can retain terminated process objects with HasExited=true and no command line; no active browser identity or QA listener remains."
+  },
+  "foreign_processes_changed": false,
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "owned_go_cleanup": {
+    "actual_api_pid": 50688,
+    "actual_api_exit": 1,
+    "stop_seen": true
+  },
+  "method": "Official named close exits1 twice. Only exact captured daemon stopped after creation-time validation; native audit confirms all captured identities exited or absent and QA ports closed."
+}
