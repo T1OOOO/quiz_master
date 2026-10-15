@@ -1,0 +1,24 @@
+{
+  "command": {
+    "label": "upload",
+    "argv": [
+      "scp",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "IdentitiesOnly=yes",
+      "-i",
+      "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+      "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818.tar.gz",
+      "root@192.3.164.184:/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818.tar.gz.upload-66fe6ea9640447beacc9aec8fe6166ac"
+    ],
+    "timeout_seconds": 120
+  },
+  "actual_exit": 0,
+  "elapsed_seconds": 56.728,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "review_manifest_sha256": "fef5a19dc648d871fb333a40899ca3b8be343a9eb163fdb5b59de60d853e745e",
+  "source_checkpoint": "489f0a0bfddbf9a7ec61728204adcec0bc1f99ce",
+  "publication_performed": false
+}

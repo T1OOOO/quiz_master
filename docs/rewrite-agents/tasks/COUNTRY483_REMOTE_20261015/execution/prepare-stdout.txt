@@ -1,0 +1,24 @@
+/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818.tar.gz.upload-66fe6ea9640447beacc9aec8fe6166ac: OK
+api: OK
+web/main.dart.js: OK
+nginx.conf: OK
+nginx.conf: OK
+{'backup': '/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.sqlite', 'integrity': 'ok', 'restore': 'ok', 'counts': [153, 727, 263]}
+{"migration": "ok", "original_counts": [153, 153, 727, 263, 15452, 1541], "post_migration_counts": [153, 153, 727, 399, 15452, 1541], "original_rows_preserved": true, "integrity": "ok", "feedback_lifecycle": "ok", "old_api_rollback": "ok", "canonical_packs": 14, "canonical_questions": 280, "newyear_questions": 55, "total_graded": 335, "practice_finished": 15}
+Traceback (most recent call last):
+  File "<stdin>", line 17, in <module>
+AssertionError
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 228, in partial_apport_excepthook
+    return apport_excepthook(binary, exc_type, exc_obj, exc_tb)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 114, in apport_excepthook
+    report["ExecutableTimestamp"] = str(int(os.stat(binary).st_mtime))
+                                            ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/-'
+
+Original exception was:
+Traceback (most recent call last):
+  File "<stdin>", line 17, in <module>
+AssertionError

@@ -1,0 +1,66 @@
+{
+  "status": "PREPARATION_FAILED_STRICT_CAPACITY_BEFORE_IMAGE_BUILD",
+  "task_id": "task-e70eb734509a473ca1003d650d29aa88",
+  "source_checkpoint": "489f0a0bfddbf9a7ec61728204adcec0bc1f99ce",
+  "reviewed_manifest_sha256": "fef5a19dc648d871fb333a40899ca3b8be343a9eb163fdb5b59de60d853e745e",
+  "actual_guard_exit": 0,
+  "actual_upload_exit": 0,
+  "actual_prepare_exit": 1,
+  "failed_statement": {
+    "file": "cutover.sh",
+    "embedded_python_line": 17,
+    "expression": "assert usage.f_bavail*usage.f_frsize*5>usage.f_blocks*usage.f_frsize",
+    "location": "post-rehearsal preflight before docker build"
+  },
+  "completed": [
+    "Archive checksum verification",
+    "Secure backup and restore integrity",
+    "Copied database migration/row preservation/feedback lifecycle/API rollback",
+    "335 graded answers and15 practice histories"
+  ],
+  "not_performed": [
+    "Docker candidate build",
+    "Candidate API/atlas runtime check",
+    "Durable image creation/import",
+    "Helm preparation lint/template/dry-run",
+    "Publication"
+  ],
+  "production_snapshot": {
+    "available_bytes": 20383481856,
+    "total_bytes": 102417174528,
+    "strict20": false,
+    "minimum_bytes": 20483434906,
+    "headroom_bytes": -99953050,
+    "helm_revision": 63,
+    "helm_status": "deployed",
+    "images": [
+      "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+      "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14"
+    ],
+    "available_replicas": 1,
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "pvc_phase": "Bound",
+    "node_conditions": {
+      "MemoryPressure": "False",
+      "DiskPressure": "False",
+      "PIDPressure": "False",
+      "Ready": "True"
+    },
+    "https_readiness_status": 200,
+    "feedback_count": 29,
+    "feedback_open": 29,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e",
+    "owned_stage_allocated_bytes": 197144576,
+    "owned_backup_bytes": 49364992,
+    "owned_backup_mode": "0o600",
+    "candidate_image_inspect_exit": 1,
+    "candidate_image": null,
+    "candidate_runtime_receipts": 0,
+    "candidate_atlas_receipts": 0,
+    "durable_image_exists": false
+  },
+  "remote_peak_certified": false,
+  "publication_performed": false,
+  "capacity_floor_waived": false,
+  "owned_failed_artifacts_retained": true
+}
