@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-33d7b4855eb9495896e87decbbd6068f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-33d7b4855eb9495896e87decbbd6068f",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT (read-only, independent). Verified published outcome directly from disk against proof_directory docs/rewrite-agents/tasks/READER291_RELEASE_20261015 and PUBLISHED.md.\n\nPins confirmed: frozen commit 3482af9a8b7b7119f14069a791a77b36a8014c49; immutable image sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228 identical in release-pins-v1.json, publish-log.txt (REVISION: 61, deployed, PUBLISHED build=...image=...), and published-server-verification.jsonl for BOTH container slots. publish-exit.json actual_exit 0. Prior execution-acceptance.json (task-6b7a8537..., reviewer session-db6bef9f != assignee, ACCEPTED v4) correctly recorded pre-publish state as NOT yet published (Reader283/Helm60) -- preserved, not recreated.\n\npublished-http-verification.json: packs 136, questions 4084, question_articles 291, api_sha256 f4d69555...; all 8 actor articles cinema-oct3-005..012 present, sources:2 each, distinct revision hashes.\n\npublished-server-verification.jsonl: node Ready, no DiskPressure/taints, HTTPS 200, PVC uid 7fc2428f-4146-4c78-a26d-2347d9f3b7bf (= original), feedback_count 29 all OPEN, feedback_sha256 452929a2... unchanged from pre-publish, backup_mode 0600, backup_integrity ok. disk_available 21207920640/102417174528 = 20.70% >= 20% floor (margin ~691MB, thinner than pre-publish ~824MB after the new backup -- noted, not blocking).\n\npublished-browser/browser-proof.json: viewport [361,738], flow Home>Quizipedia>Endocrine>thyroid>Read more>scroll>close>return; body_static_text true, textarea_count 0, source_controls 2, runtime_errors []. CLI issues honestly scoped, confirmed from raw logs: menu-raw.txt shows unquoted-ref click usage-error failure; quoted retry @e4 actual_exit 0. close.json actual_exit 1 (official close); cleanup/native audit actual_exit 0, captured_identities 14, inactive true, raw_pid_absence_claimed false -- no absence overclaim.\n\nGap: could not retrieve the raw hub task-33d7b485... submission body (default task list page omits it); not blocking, the proof_directory files are the actual artifact. Correctly out of scope / still open: P3 feedback-FAB overlap 5nc, all 29 feedback OPEN, no Android/screen-reader check, articles 013-020 not imported, GitHub Actions not run.\n\nVerdict: ACCEPT."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual published evidence reproducible; genuine independent Claude outcome review with exact limits and real callback.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER291_RELEASE_20261015"
+        ],
+        "assignee": "session-dc4bef4e5b364a138746488eb94bf7e3",
+        "author": "session-dc4bef4e5b364a138746488eb94bf7e3",
+        "body": "Finite outcome review only: inspect actual publish exit/log, HTTP asset/article identity, server Helm61/new0fimage/PVC/backup/29OPEN feedback, mobile361x738 browser sourcefooter/close/runtimeerrors and actualprocessinactive proof. Preserve original execution approval task6b7 in original team. No writes/SSH/changes/feedbackclosure/children.",
+        "created_at": 1792057246.1078813,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-33d7b4855eb9495896e87decbbd6068f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "publish-exit.json actual0; publish-log.txt exact0fimage/61/newbackup",
+            "published-http-verification.json136packs4084questions291articles/all8actorbodiesandbindings",
+            "published-server-check-exit.json0 and verification.jsonl originalPVC29OPENfullhash0600backup/Ready20percent",
+            "published-browser/browser-proof.json + actualcommands/screenshots361x738/statictext/twosourcecards/scroll/close-return/noerrors/cleanup14inactive"
+          ],
+          "helm_revision": 61,
+          "limitations": [
+            "Unquoted firstref command1 then successful quoted retry retained; officialclose1, audit14identitiesinactive0",
+            "No all-bank factual, Android or physical screenreader certification; P3FAB5nc remains",
+            "Future013-020 outside frozen release; all29realfeedback remainOPEN"
+          ],
+          "published_build": "quiz-2026.10.15-reader291-3482af9",
+          "status": "DONE"
+        },
+        "root_task_id": "task-33d7b4855eb9495896e87decbbd6068f",
+        "run_id": "run-d9710c4edbc9427db65289529e52c605",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-65db1e8be3af4891a89c2c91698196d4",
+        "title": "Verify actual published Reader291 outcome",
+        "version": 4,
+        "reviewer": "session-312f7c88e00940b08ecb78f33f36b13d",
+        "review_note": "ACCEPT (read-only, independent). Verified published outcome directly from disk against proof_directory docs/rewrite-agents/tasks/READER291_RELEASE_20261015 and PUBLISHED.md.\n\nPins confirmed: frozen commit 3482af9a8b7b7119f14069a791a77b36a8014c49; immutable image sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228 identical in release-pins-v1.json, publish-log.txt (REVISION: 61, deployed, PUBLISHED build=...image=...), and published-server-verification.jsonl for BOTH container slots. publish-exit.json actual_exit 0. Prior execution-acceptance.json (task-6b7a8537..., reviewer session-db6bef9f != assignee, ACCEPTED v4) correctly recorded pre-publish state as NOT yet published (Reader283/Helm60) -- preserved, not recreated.\n\npublished-http-verification.json: packs 136, questions 4084, question_articles 291, api_sha256 f4d69555...; all 8 actor articles cinema-oct3-005..012 present, sources:2 each, distinct revision hashes.\n\npublished-server-verification.jsonl: node Ready, no DiskPressure/taints, HTTPS 200, PVC uid 7fc2428f-4146-4c78-a26d-2347d9f3b7bf (= original), feedback_count 29 all OPEN, feedback_sha256 452929a2... unchanged from pre-publish, backup_mode 0600, backup_integrity ok. disk_available 21207920640/102417174528 = 20.70% >= 20% floor (margin ~691MB, thinner than pre-publish ~824MB after the new backup -- noted, not blocking).\n\npublished-browser/browser-proof.json: viewport [361,738], flow Home>Quizipedia>Endocrine>thyroid>Read more>scroll>close>return; body_static_text true, textarea_count 0, source_controls 2, runtime_errors []. CLI issues honestly scoped, confirmed from raw logs: menu-raw.txt shows unquoted-ref click usage-error failure; quoted retry @e4 actual_exit 0. close.json actual_exit 1 (official close); cleanup/native audit actual_exit 0, captured_identities 14, inactive true, raw_pid_absence_claimed false -- no absence overclaim.\n\nGap: could not retrieve the raw hub task-33d7b485... submission body (default task list page omits it); not blocking, the proof_directory files are the actual artifact. Correctly out of scope / still open: P3 feedback-FAB overlap 5nc, all 29 feedback OPEN, no Android/screen-reader check, articles 013-020 not imported, GitHub Actions not run.\n\nVerdict: ACCEPT."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and accepted by the hub: **task-33d7b4855eb9495896e87decbbd6068f → ACCEPTED** (reviewer `session-312f7c88e00940b08ecb78f33f36b13d` ≠ assignee/author `session-dc4bef4e5b364a138746488eb94bf7e3`).\n\n**Findings** — I independently re-derived every pinned claim from the on-disk evidence in `docs/rewrite-agents/tasks/READER291_RELEASE_20261015/`:\n- `publish-exit.json` exit 0; `publish-log.txt` shows Helm REVISION 61, image `sha256:0f24677d8e499df9d21e80ce1dd50b8e830b37608c4c86e1c38e76ccc30d3228`, frozen commit `3482af9a...` — all identical in `release-pins-v1.json` and `published-server-verification.jsonl` (both container slots).\n- `published-http-verification.json`: 136 packs / 4084 questions / 291 articles, all 8 actor articles cinema-oct3-005…012 present (sources:2 each, distinct revision hashes).\n- `published-server-verification.jsonl`: node Ready, no disk pressure, HTTPS 200, original PVC uid, 29 feedback rows all OPEN with unchanged hash, 0600 backup with integrity \"ok\", disk at 20.70% (just above the 20% floor — noted as a thinner margin than pre-publish, not blocking).\n- `published-browser/browser-proof.json` + raw command logs: 361×738 viewport, static body text, two source controls, zero runtime errors; the known CLI quirks (unquoted-ref failure → quoted retry success; official close exit 1 → native identity audit exit 0 with 14 inactive, no \"absence\" overclaim) check out exactly against the raw logs and are honestly scoped.\n- Prior execution-acceptance (`task-6b7a8537...`) is correctly preserved as the separate pre-publish gate, not recreated.\n\nOne disclosed gap: I couldn't pull the raw hub submission body for this task (it wasn't in the default `hub_task list` page), but the proof-directory files are the actual artifact being verified, so this didn't block the review.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "bace021d0f5985ec4170e946d6465756d2d0936e35bbe92378d5dd4512712465",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
