@@ -1,0 +1,112 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-b32190e1ec804d20aeb668037dd0ee97": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-b32190e1ec804d20aeb668037dd0ee97",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent review of worker/stage_offload.py + test_stage_offload.py. Ran all 20 offline tests locally (15 worker + 5 execute boundary) -> OK, no mocks of unlink bypassed. validate_plan/verify_entry/verify_archive/assert_idle/stable_directory enforce: exact 9 trees + 10 archives only, fail-closed on symlink/hardlink(nlink!=1)/cross-device/path-escape/extra-member/duplicate, no process cmdline/cwd/exe or submount reference, parent dir identity (dev/ino/mode/uid/gid) re-checked immediately before each unlink, directory emptiness checked before rmdir, 30 protected files + prepared303 tree re-verified unchanged after removal, capacity check enforces >20%+1GiB both projected and final with 64MiB growth allowance, no shutil.rmtree/broad prune anywhere. render() refuses to embed a changed guard (GUARD_SHA256 pinned) and script compiles cleanly. Independently re-ran worker.verify_archive against the 9 local cold .tar.gz copies (full members, data sha256, mode/uid/gid, full gzip CRC via complete tarfile read) and they match plan-v2.json; old failed package local sha256 also matches. stage-offload-inputs sha256 8e2c6bf26f69e8b05b8dd7c7f01a51b56201883f4ebf30c94d284f0a84ae3b68. stage-offload-script sha256 a12b72df95f8616172ee26186ac0db400f8c651cb3e66d4f04dbaed1c673941a. No defects found; source-only acceptance, no execution performed by me."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actualguardtests/rawexits, frozen2sourcehashes, Englishhandoff. Newfresh independentClaude source+exactscript/copies review required before Root remoteunlink. Never weakenstrict20; repairs maystartbelowfloor but projected+actualmust >20percent+1GiB andallow64MiBgrowth. No falsePREPARED/publicationclaim.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\worker"
+        ],
+        "assignee": "session-293ef5f514b24416b57853188e8bf5ce",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Native293 owns ONLY2workerfiles stage_offload.py,test_stage_offload.py under READER303_STAGE_CAPACITY_20261015/worker. Root supplies exact9dirnames/entry schema/fullphysicalcoldcopies/protectedcurrent62+prepared303. Need complete validating boundedunlink/rmdir source notexecution; existing CAPACITY/offload.py preflight+full23protected+loadedinventory reused as unchangedsource injected before module. NoSSH/deletion/copy/build/Git/children. ExactcontractsentinHubmessage/collaboration; use minimalpublicABI validate_plan(plan), remove_cold(plan), render(plan,guard_source). Unitmeaningful alteredfile/parent/symlink/extraentry/coldhash/currentpreparedpathfail andpositive tmp fixture. Preserveotherchanges.",
+        "created_at": 1792084686.8197317,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-b32190e1ec804d20aeb668037dd0ee97",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_local_validation": {
+            "archives": 10,
+            "bash_syntax_actual_exit": 0,
+            "guard_normalized_text_sha256": "7d8637d9a646f306aa41cf90a496d3216933a4f0b8c717cc2db5b9c3e41c66d5",
+            "guard_raw_sha256": "7d8637d9a646f306aa41cf90a496d3216933a4f0b8c717cc2db5b9c3e41c66d5",
+            "plan_sha256": "5c064d440d868fbddd35710cbd088c1996d4493a2148adfbccaec517d409ed09",
+            "protected_files": 30,
+            "removal_entries": 3568,
+            "rendered_script_bytes": 1386657,
+            "rendered_script_sha256": "731d17df6cce46729da3b03757f3f78b175c269f5fb77a18d0b98a158ce1dbe7",
+            "runtime_or_copies_verified_by_worker": false,
+            "total_allocated_bytes": 2084999168,
+            "tree_entries": 3558,
+            "trees": 9
+          },
+          "evidence": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/worker/stage_offload.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/worker/test_stage_offload.py",
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/plan.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/freeze.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/tests.json",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/tests-stdout.txt",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/actual-preview.sh",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/actual-bash-syntax.log",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/first-plan-validation-error.txt",
+            "C:/ap/quiz_master/.run/reader303_release_20261015/stage-capacity-worker/component-order-contract-failure.txt"
+          ],
+          "handoff": [
+            "Root owns final plan, actual private cold archives, downloaded copies, complete physical-copy/member receipts and executor. This module intentionally does not require unavailable Windows cold copies during pure plan validation. Root executor must verify every actual local copy/member/hash, bind exact source/plan/guard/script/test receipts and obtain genuine fresh independent Claude review before any remote removal.",
+            "Call render(plan,guardPath.read_text()) and encode the returned string asUTF8. The normalized guard text digest is intentionally checked; separately bind the raw guard file SHA in the review manifest. At this freeze both happen to be7d8637..., recorded independently; do not edit the old guard.",
+            "Use the frozen actual-preview.sh only if Root's re-render exactly matches SHA731d17df... and all input hashes remain bound. Root should obtain exact independent source+script+physicalcopies review before its one authorized execution. Do not substitute the provisional inventory for the final8key plan.",
+            "Retain every partial/failed execution log and do not blindly retry after mutation. This source is not a resume controller. Any plan/fingerprint/copy drift or partial cleanup requires a separately reviewed decision.",
+            "After genuine successful offload, rerun fresh strict collection on the already prepared Reader303 candidate and bind its new receipt to the publication packet. Do not rebuild the prepared303 image. Real baseline/candidate/capacity/publication outcomes remain Root-owned."
+          ],
+          "implementation": [
+            "Public ABI is validate_plan(plan), remove_cold(plan), render(plan,guard_source). Only nine literal failed/rejected root names under /opt/quiz-master/releases are allowed, plus their nine cold archives and the exact old failed303archive. Normal/current/protected stage roots are refused.",
+            "Final schema is exact8keys. Every entry has the exact supplied file/directory field set, integer metadata, S_IMODE permissions and fileSHA256 only for regular nlink1 files. Tree paths must be unique, canonical, bounded and parent-complete, all on the frozen device. Archive path set is exactly10. The old failed303archive SHA is fixed from Root's genuine inventory.30protected path/hash pins are exact constants, and the complete normal prepared303tree is required.",
+            "Manifest ordering is not security-significant per Root clarification. Unique path-keyed membership and parent closure are enforced; actual filesystem path sets must match the entire manifest. Deletion order is independently computed. Unordered complete arrays pass; duplicates or missing parents fail.",
+            "remove_cold checks full parent/tree/archive fingerprints and process/mount absence before mutation. Each of the nine cold archives is independently streamed to verify complete unique safe regular/directory member sets, mode/uid/gid, exact leaf sizes and uncompressed SHA256 values against its corresponding tree. No extraction occurs.",
+            "Fingerprint hashing uses O_NOFOLLOW and descriptor/path metadata checks for dev/inode/type/size/mtime_ns/mode/nlink/uid/gid/blocks; it excludes access time so reading files cannot create a false drift failure. Every file is rehashed immediately before its exact unlink. Known parent dev/inode/mode/owner are checked before mutation and each operation. Only exact listed files are unlinked; directories are removed deepest-first only after verifying stable identity and actual emptiness. No rmtree, glob deletion or pruning is used.",
+            "Proc checks inspect cmdline/cwd/exe for all nine roots and reject active references; submounts under any root are rejected. Unrelated process arguments are never printed. The measured capacity filesystem must match both release/cold parents.",
+            "The unchanged accepted offload guard source is SHA-pinned and embedded before the new module under preserved aliases. It supplies real baseline62/deployed/bothimagee053/PVC/available1/Ready/noDiskPressure/taints/HTTPS/all29OPEN fullrowhash checks,23old protected checks, capacity logic and Docker/containerd inventory preservation. Actual normalizedtext SHA is pinned separately from the raw file input hash.",
+            "Rendering adds hostname racknerd-f0269d5, PYTHONOPTIMIZE refusal/unset and project DEPLOY.lock. Fresh pre/post baseline checks, all30protected files and entire prepared303tree fingerprints surround removal. Projected and actual reserve must strictly exceed20percent plus1GiB, same total filesystem, and actual available must be at least pre+allocatedreclaim-64MiB. Loaded image sets are taken immediately before removal under lock; all preexisting references/IDs must remain while additions are allowed. Only counts/digests/additioncounts are printed.",
+            "Prepared303stage/package/durable image/backup/values/render/runtime/rehearsal evidence are preserved; this source never rebuilds the already prepared image. Successful cleanup does not assert PREPARED or PUBLISHED; fresh release collection remains required."
+          ],
+          "limitations": "Native source implementation/local verification only, not independent approval, real cold-copy certification or actual capacity repair. Only two owned tracked sources and authorized ignored stage-capacity-worker scratch were written. Root plan/proofs, current303prepared artifacts and all unrelated work were preserved. No source edits after freeze.",
+          "source_sha256": {
+            "stage_offload.py": "c307bd4c1ee4160b3760a50cfde301bad35e3026176ecb5825a3eec9ebef54c3",
+            "test_stage_offload.py": "0e058e6dd4d24088e7de63df44f4290059e6b6913077efed5c7e431da03fa1f6"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Completed and froze the two-file exact failed-stage offload source and tests. Actual final Root plan validated and rendered locally;15offline tests passed with actualexit0. No Linux removal, SSH, real artifact packing/copying/deletion, build, Git, deployment or child-agent operation occurred. Root's actual local-copy verification and independent exact review remain execution prerequisites.",
+          "verification": [
+            "Final15tests in6.413s,actualexit0,no skips. Raw stdoutSHA2563b0076161d4f7e3a2c6731774929abe6f9640629c5f042172397f5e90ee6ed24; exact command/exits/source hashes in tests.json.",
+            "Positive temporary-tree fixture exercises actual nine-root/ten-archive primitive removal confined to a TemporaryDirectory and proves its prepared tree and30protected fixture files keep identical bytes/metadata. These are synthetic local unit fixtures, not production deletion evidence.",
+            "Negatives cover wrong/current prepared/normal root, duplicate/escaped path, wrong archive set, missing protection, wrong allocated total, changed file metadata/hash/nlink/owner, actual extra members, incomplete tar even with a rebound physical archive hash, changed parent identity, symlink/special file, cmdline/cwd/exe references and submounts.",
+            "A callback mutation with identical leaf size and restored mtime still fails the fresh SHA guard before any unlink. Both initial all-parent checks and per-entry checks are exercised.",
+            "Unchanged accepted guard capacity boundary tests reject equality at20percent plus1GiB and growth beyond64MiB. Inventory tests permit additions and reject missing preexisting image/reference. Orchestration tests verify fresh pre/post baseline/protection/inventory calls and no private foreign registry/tag names in output.",
+            "Actual final Root plan is validated and rendered in a dedicated test with production constants restored. The complete1.386MB rendered Python body compiles and Bash-n exits0; no remote body is executed.",
+            "Initial POSIX absolute-path validation on Windows and string-versus-component manifest sort assumptions were caught using the actual plan and preserved in first-plan-validation-error.txt/component-order-contract-failure.txt. Absolute POSIX paths now validate cross-host; Root explicitly clarified order independence without changing its plan or relaxing any identity/member guard."
+          ]
+        },
+        "root_task_id": "task-b32190e1ec804d20aeb668037dd0ee97",
+        "run_id": "run-3f55fad9b3ef417eae00d28c9a38384c",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: exact nine failed-stage cold offload source and guard tests",
+        "version": 4,
+        "reviewer": "session-adb850823a5f4f34b5872800fbb255b3",
+        "review_note": "Independent review of worker/stage_offload.py + test_stage_offload.py. Ran all 20 offline tests locally (15 worker + 5 execute boundary) -> OK, no mocks of unlink bypassed. validate_plan/verify_entry/verify_archive/assert_idle/stable_directory enforce: exact 9 trees + 10 archives only, fail-closed on symlink/hardlink(nlink!=1)/cross-device/path-escape/extra-member/duplicate, no process cmdline/cwd/exe or submount reference, parent dir identity (dev/ino/mode/uid/gid) re-checked immediately before each unlink, directory emptiness checked before rmdir, 30 protected files + prepared303 tree re-verified unchanged after removal, capacity check enforces >20%+1GiB both projected and final with 64MiB growth allowance, no shutil.rmtree/broad prune anywhere. render() refuses to embed a changed guard (GUARD_SHA256 pinned) and script compiles cleanly. Independently re-ran worker.verify_archive against the 9 local cold .tar.gz copies (full members, data sha256, mode/uid/gid, full gzip CRC via complete tarfile read) and they match plan-v2.json; old failed package local sha256 also matches. stage-offload-inputs sha256 8e2c6bf26f69e8b05b8dd7c7f01a51b56201883f4ebf30c94d284f0a84ae3b68. stage-offload-script sha256 a12b72df95f8616172ee26186ac0db400f8c651cb3e66d4f04dbaed1c673941a. No defects found; source-only acceptance, no execution performed by me."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED` with error_count 0 and the required SHA literals embedded in the Root396 note.\n\n**Summary:** Independently recomputed every hash in `approval-inputs.json` (manifest 8e2c6bf2... and script a12b72df...), confirmed `stage-offload-v2.sh` byte-equals `worker.render()` of the unchanged guard + plan-v2.json, ran all 20 offline tests locally (pass), and independently re-verified all 9 local cold archives + old failed package via `worker.verify_archive`/hashing — all matched, no defects, no execution evidence present. Submitted ACCEPT reviews for task-b321 (native source) and task-396 (Root packet) via `hub_task review`; no edits, SSH, or execution were performed.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "73f75194822a90ab2dd6da39583fec033bb31bd3f90977cd16b76e5cea715055",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

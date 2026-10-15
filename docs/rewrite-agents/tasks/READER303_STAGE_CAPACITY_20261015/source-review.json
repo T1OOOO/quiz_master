@@ -1,0 +1,57 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-396cb4cf2a9b476b8f1b0fefaaba2e9e": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-396cb4cf2a9b476b8f1b0fefaaba2e9e",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independently recomputed sha256 of approval-inputs.json (manifest) and stage-offload-v2.sh (rendered script) and all 17 referenced files against the manifest: all match. stage-offload-inputs sha256 8e2c6bf26f69e8b05b8dd7c7f01a51b56201883f4ebf30c94d284f0a84ae3b68. stage-offload-script sha256 a12b72df95f8616172ee26186ac0db400f8c651cb3e66d4f04dbaed1c673941a. Confirmed stage-offload-v2.sh byte-equals worker.render(plan-v2.json, unchanged offload-v1/offload.py guard text); guard file sha matches GUARD_SHA256 pinned in stage_offload.py, no shutil.rmtree, has flock -n 8 DEPLOY.lock and hostname pin. Ran the 20 recorded offline tests locally -> pass. Independently re-verified all 9 local cold archives (members/hash/mode/uid/gid/full gzip CRC) and the old failed package hash against plan-v2.json; copy-receipt shows no_deletion_yet=true and no execution-exit.json/stdout/stderr exist yet, consistent with 'not executed'. Safety boundaries hold: exact9 trees/10 archives only, protected 30 files + prepared303 tree re-verified, idle/submount guard, parent-identity recheck before each unlink, strict >20%+1GiB floor (projected and final) with 64MiB growth allowance, no current/rollback image removal, preexisting loaded images preserved. This exact reviewed offload may execute under existing user authorization; no publication approved. No defects found."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Reviewableexactsourceandrenderedscript fullhash+complete9tree/10fileplan; all9physicalprivatecoldtar/fullmemberdataSHA/modeuidgid verified andold03archivefullhash. Actualguardtests0. Genuine differentproviderClaude actualCLI0 andACCEPT/error0 callback withliteralinputs/scriptfullSHA, scopeexactoffload only/no publication. ActualRootunlink is FUTURE and NOT required toacceptthispacket.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "SOURCE AND EXACTEXECUTIONPACKET ONLY. Root executor/renderedscript/completeplan/physicalcoldcopies freezeafterRoot5218copies0+seniorb321tests0. IndependentClaude mustreviewallsource/data/current62+prepared303protection, actualCLI0/error0 callback bindsinputssha+scriptsHA beforeRootmayexecuteanyunlink. Exactly9inactivestages+10servercoldtarfiles; no current/rollbackdir/image/databaseoutsidefailedstages. Projected+actualstrict20+1GiB64MiBgrowth/currentpreparedtree+30protected/allloadedimageidentities. Replacescancelledneverstarted6b4packetwhoseacceptancemixedfutureexecution. Thisreview grants exactoffload action only underuserauth; no actualexecution/publicationclaimed. Actualoperation/outcome recordedseparatelyafterapproval.",
+        "created_at": 1792085321.0377777,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-396cb4cf2a9b476b8f1b0fefaaba2e9e",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/approval-inputs.json",
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/tests-v2.json",
+            "docs/rewrite-agents/tasks/READER303_STAGE_CAPACITY_20261015/copy-receipt.json"
+          ],
+          "summary": "Exact inert offload packet frozen. Manifest17 SHA8e2c6bf26f69e8b05b8dd7c7f01a51b56201883f4ebf30c94d284f0a84ae3b68; script a12b72df95f8616172ee26186ac0db400f8c651cb3e66d4f04dbaed1c673941a. Twenty tests0, nine physical full member checked copies plus old failed package, private ACL readback0. No removal executed. Independent exact action review required before Root-only executor."
+        },
+        "root_task_id": "task-396cb4cf2a9b476b8f1b0fefaaba2e9e",
+        "run_id": "run-6d71503b7dce47ca8e24722ffd8e4b1e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: freeze and independently review exact nine-stage cold offload packet",
+        "version": 4,
+        "reviewer": "session-adb850823a5f4f34b5872800fbb255b3",
+        "review_note": "Independently recomputed sha256 of approval-inputs.json (manifest) and stage-offload-v2.sh (rendered script) and all 17 referenced files against the manifest: all match. stage-offload-inputs sha256 8e2c6bf26f69e8b05b8dd7c7f01a51b56201883f4ebf30c94d284f0a84ae3b68. stage-offload-script sha256 a12b72df95f8616172ee26186ac0db400f8c651cb3e66d4f04dbaed1c673941a. Confirmed stage-offload-v2.sh byte-equals worker.render(plan-v2.json, unchanged offload-v1/offload.py guard text); guard file sha matches GUARD_SHA256 pinned in stage_offload.py, no shutil.rmtree, has flock -n 8 DEPLOY.lock and hostname pin. Ran the 20 recorded offline tests locally -> pass. Independently re-verified all 9 local cold archives (members/hash/mode/uid/gid/full gzip CRC) and the old failed package hash against plan-v2.json; copy-receipt shows no_deletion_yet=true and no execution-exit.json/stdout/stderr exist yet, consistent with 'not executed'. Safety boundaries hold: exact9 trees/10 archives only, protected 30 files + prepared303 tree re-verified, idle/submount guard, parent-identity recheck before each unlink, strict >20%+1GiB floor (projected and final) with 64MiB growth allowance, no current/rollback image removal, preexisting loaded images preserved. This exact reviewed offload may execute under existing user authorization; no publication approved. No defects found."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both tasks are now `ACCEPTED` with error_count 0 and the required SHA literals embedded in the Root396 note.\n\n**Summary:** Independently recomputed every hash in `approval-inputs.json` (manifest 8e2c6bf2... and script a12b72df...), confirmed `stage-offload-v2.sh` byte-equals `worker.render()` of the unchanged guard + plan-v2.json, ran all 20 offline tests locally (pass), and independently re-verified all 9 local cold archives + old failed package via `worker.verify_archive`/hashing — all matched, no defects, no execution evidence present. Submitted ACCEPT reviews for task-b321 (native source) and task-396 (Root packet) via `hub_task review`; no edits, SSH, or execution were performed.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "73f75194822a90ab2dd6da39583fec033bb31bd3f90977cd16b76e5cea715055",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

@@ -1,0 +1,62 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-86cd0126882a4e7196f0056f537f54a2": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-86cd0126882a4e7196f0056f537f54a2",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent read-only review, Claude Sonnet 5 (different provider from prior Opus review), task-86cd0126 only; 0 correctness defects found. All SHA256 self-computed from actual file bytes; peer/manifest claims not trusted blindly.\n\nMANIFEST: recovery-review-inputs.json (self sha256 96a9020387c108c58c4f2280f247a54a0ce0a21759704f80deccc42bd8277b5f) lists 22 entries. I rehashed all 22 source/evidence paths independently: 22/22 match, 0 missing, 0 drift.\n\nFULL 13 SOURCE MAP: the original 13 frozen release/publication/mixed-release hashes (release-worker x6, publication-source x3, MIXED_RELEASE_20261014 x4) are unchanged and match the manifest and the earlier genuine task-c23c3b1a callbacks.\n\nQUARANTINE SCRIPT: quarantine-script sha256 7041f1ca6d96e85eee5e2549817187aefbd0f29dda09573084d3d8d84e6f9791 (recomputed on quarantine-preview.sh, 134151 bytes, LF-only) matches manifest. AST/text-level trace of the rendered body: the only top-level executable call is move_failed(plan, Path('/opt/quiz-master/releases')), which performs exactly two renameat2(..., RENAME_NOREPLACE) sibling renames. run_offload, remove_verified and the os.unlink path are defined but never invoked anywhere at module scope - independently confirmed, not just repeated from the prior note.\n\nTESTS: ran the three offline suites directly - release-worker 33/33 ok, publication-source 7/7 ok, failed-preparation-v1 test_quarantine.py 5/5 ok. Total 45/45 pass, 0 failures.\n\nTIMEOUT RECORD: recovery-review-timeout-v1.json (trace_sha256 6bf9a1881294ecae7ecfc1aa99d969f0a58dfce0e50fa36ca83e64217401c208) correctly shows the prior genuine Opus accept/error0 callbacks were real but disqualified only because the official CLI hit a 900s timeout after they completed - preserved honestly, not reused as a substitute CLI success and not re-litigated here.\n\nSCOPE: this attestation covers source correctness and the two preserving sibling renames only. No publication, build, package, deploy, SSH, or execution approval is granted or implied. No source edits, remote actions, or memory updates performed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "ActualCLI0, newgenuineindependentACCEPT/error0 callback, unchanged22hashes and actual45tests0; exact7041script note. Prior900timeout retainedhonestly, no synthesizedCLI0.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Previous genuine Opus reviewed all22 hashes and actualc23/0bb callbacks ACCEPT/error0 but officialCLI hit900s timeout after callbacks; cannot qualify CLI0. Preserve entirefailedtrace and oldcallbacks. New different-provider Sonnet must independently verify all22actualhashes, inspect5sourcechanges + exact7041quarantinescript and completedOpusnotes for0defects, runoffline33+7+5 tests, give one exactnewcallback and exit promptly0. No source edits/remoteactions/memoryupdates. Full13source map and exactquarantineSHA must be bound. This freshattestation is approvalscopeonly, no execution/publicationclaim.",
+        "created_at": 1792083402.2165911,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-86cd0126882a4e7196f0056f537f54a2",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "checks": "22 actual hashes unchanged; full13source map/exact7041qscript unchanged; actual40+5tests0.",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/recovery-review-inputs.json"
+            },
+            {
+              "checks": "GenuineOpusacceptedcallbacks and failedoversizecallbacks preserved; actualCLI900stimeout disqualifies. Need fresh45tests/hash/sourceattestation; no sourcechanges/SSHexecution.",
+              "path": "C:/ap/quiz_master/docs/rewrite-agents/tasks/READER303_RELEASE_20261015/recovery-review-timeout-v1.json"
+            }
+          ],
+          "status": "FROZEN_FINAL_ATTESTATION_INPUTS_READY"
+        },
+        "root_task_id": "task-86cd0126882a4e7196f0056f537f54a2",
+        "run_id": "run-f978abe32ca347a7ab6cccdfab465727",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-3qx: final bounded Reader303 recovery source attestation after reviewer timeout",
+        "version": 4,
+        "reviewer": "session-6ba664f47cb741dfba0a96e064fafc89",
+        "review_note": "Independent read-only review, Claude Sonnet 5 (different provider from prior Opus review), task-86cd0126 only; 0 correctness defects found. All SHA256 self-computed from actual file bytes; peer/manifest claims not trusted blindly.\n\nMANIFEST: recovery-review-inputs.json (self sha256 96a9020387c108c58c4f2280f247a54a0ce0a21759704f80deccc42bd8277b5f) lists 22 entries. I rehashed all 22 source/evidence paths independently: 22/22 match, 0 missing, 0 drift.\n\nFULL 13 SOURCE MAP: the original 13 frozen release/publication/mixed-release hashes (release-worker x6, publication-source x3, MIXED_RELEASE_20261014 x4) are unchanged and match the manifest and the earlier genuine task-c23c3b1a callbacks.\n\nQUARANTINE SCRIPT: quarantine-script sha256 7041f1ca6d96e85eee5e2549817187aefbd0f29dda09573084d3d8d84e6f9791 (recomputed on quarantine-preview.sh, 134151 bytes, LF-only) matches manifest. AST/text-level trace of the rendered body: the only top-level executable call is move_failed(plan, Path('/opt/quiz-master/releases')), which performs exactly two renameat2(..., RENAME_NOREPLACE) sibling renames. run_offload, remove_verified and the os.unlink path are defined but never invoked anywhere at module scope - independently confirmed, not just repeated from the prior note.\n\nTESTS: ran the three offline suites directly - release-worker 33/33 ok, publication-source 7/7 ok, failed-preparation-v1 test_quarantine.py 5/5 ok. Total 45/45 pass, 0 failures.\n\nTIMEOUT RECORD: recovery-review-timeout-v1.json (trace_sha256 6bf9a1881294ecae7ecfc1aa99d969f0a58dfce0e50fa36ca83e64217401c208) correctly shows the prior genuine Opus accept/error0 callbacks were real but disqualified only because the official CLI hit a 900s timeout after they completed - preserved honestly, not reused as a substitute CLI success and not re-litigated here.\n\nSCOPE: this attestation covers source correctness and the two preserving sibling renames only. No publication, build, package, deploy, SSH, or execution approval is granted or implied. No source edits, remote actions, or memory updates performed."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted successfully: state is now `ACCEPTED` (version 4) with my note attached. Task finished — no further edits, memory writes, or cleanup per the brief.\n\n**Report:**\n- Rehashed all 22 manifest paths (recovery-review-inputs.json) — 22/22 match, including the full 13-file source map and the quarantine files.\n- `quarantine-preview.sh` sha256 `7041f1ca...e9791`, 134151 bytes, confirmed — AST-level trace shows the only top-level mutating call is `move_failed` (two `renameat2` NOREPLACE renames); `run_offload`/`remove_verified`/`os.unlink` are defined but never invoked.\n- Ran the three offline suites directly: release-worker 33/33, publication-source 7/7, failed-preparation-v1 `test_quarantine.py` 5/5 — 45/45 pass.\n- Submitted `hub_task review` with verdict **accept**, error_count 0 — task-86cd0126882a4e7196f0056f537f54a2 is now ACCEPTED.\n- Note: a shared `/tmp/note.txt` got clobbered by another concurrent agent process mid-task — avoided it by passing the note inline instead of via that file.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7053d691e1ea38c28ec2d59d199e106a8570f588850a01acd4b8492fae558fff",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

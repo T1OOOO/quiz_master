@@ -1,0 +1,102 @@
+{
+  "build_id": "quiz-2026.10.15-reader303-14b7da4",
+  "image": "sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+  "values": "quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z-values.yaml",
+  "values_sha256": "574a9278a4a202d1c8541b01e1cc23526c028bc1c883a099eb9986bc14d6053f",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.sqlite",
+  "backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "e5431954162e3dea0f7050bac8f3248f704d4c76a4ab5b4fa49229c4d1d8bfc8",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader303-14b7da4",
+    "image_id": "sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 303,
+      "total_refs": 184,
+      "playable_refs": 182,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "9cb1005af6f6f57c23288ef6f680a686eb6feb5b7a8e7c5d16d20b4b3b700c62",
+  "helm_dryrun_sha256": "d6b42f6c2f7536335caf1687e93298f370282f2b7da4014c3719d1d7a68dfe48",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader303-14b7da4.tar",
+  "durable_archive_sha256": "c86b4632f0826f9a5a7d92b772ba1744846f23ff08d2b46403c23d1c18153bd3",
+  "disk_free_bytes": 21779111936,
+  "baseline_helm_revision": 62,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "14b7da43c3e43642d60859f5053ee6d809c2379e",
+  "package_sha256": "0df5f4496ab163a0cbeefaedce2c62af8d7d8b322b19dd41c4bc16e50cc79a0b",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "78965c65f19335767a981d6f4e66f6eaf50a10ec8ead8327018288bd1eb1102a",
+  "helper_source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\prepare_reader303_remote.py": "89f5fc11b2205e26da920c0b188ecf6693b532d55d1c8945e3ef7d110c53fde8",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\test_prepare_reader303_remote.py": "cc98e9376ec0c49e9cb534ef37ff6f72287be2b30c0649eb0aa238e13f8dfda7",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_RELEASE_20261015\\release-worker\\reader303_guard.py": "877c6c37fcb1c94a5886298813dc7801da22d110e6d928cb9a1dd33795f64bcc",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "helper_review_sha256": "8f8fc83342bb4b33933037abbf00e1e70031aa305857d5b7b3a751559df2e35d",
+  "original_prepare_evidence": "C:\\ap\\quiz_master\\.run\\reader303_release_20261015\\remote-v2",
+  "prior_failed_collection_exit": 1,
+  "recollection_only": true,
+  "limits": [
+    "Original preparation0; failed original collector1 retained. Fresh original read-only collector0; no rebuild, rehearsal or publication. Exact publication review remains."
+  ]
+}

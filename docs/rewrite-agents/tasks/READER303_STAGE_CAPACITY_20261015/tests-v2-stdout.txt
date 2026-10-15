@@ -1,0 +1,31 @@
+test_actual_root_plan_validates_and_renders_without_runtime_operations (test_stage_offload.StageOffloadTests.test_actual_root_plan_validates_and_renders_without_runtime_operations) ... ok
+test_after_callback_changed_bytes_with_same_size_and_mtime_still_refused (test_stage_offload.StageOffloadTests.test_after_callback_changed_bytes_with_same_size_and_mtime_still_refused) ... ok
+test_entry_hash_metadata_and_nlink_drift_prevent_any_removal (test_stage_offload.StageOffloadTests.test_entry_hash_metadata_and_nlink_drift_prevent_any_removal) ... ok
+test_extra_actual_member_and_wrong_cold_hash_prevent_any_removal (test_stage_offload.StageOffloadTests.test_extra_actual_member_and_wrong_cold_hash_prevent_any_removal) ... ok
+test_incomplete_archive_rejected_even_if_its_physical_hash_is_rebound (test_stage_offload.StageOffloadTests.test_incomplete_archive_rejected_even_if_its_physical_hash_is_rebound) ... ok
+test_orchestration_uses_fresh_pre_post_guards_and_private_inventory_summaries (test_stage_offload.StageOffloadTests.test_orchestration_uses_fresh_pre_post_guards_and_private_inventory_summaries) ... ok
+test_parent_change_is_detected_immediately_before_unlink (test_stage_offload.StageOffloadTests.test_parent_change_is_detected_immediately_before_unlink) ... ok
+test_positive_removal_touches_only_isolated_fixture_and_preserves_prepared (test_stage_offload.StageOffloadTests.test_positive_removal_touches_only_isolated_fixture_and_preserves_prepared) ... ok
+test_process_command_cwd_exe_and_submount_guards (test_stage_offload.StageOffloadTests.test_process_command_cwd_exe_and_submount_guards) ... ok
+test_reject_wrong_root_prepared_root_duplicate_and_path_escape (test_stage_offload.StageOffloadTests.test_reject_wrong_root_prepared_root_duplicate_and_path_escape) ... ok
+test_render_guard_hash_imports_modes_and_embedded_python (test_stage_offload.StageOffloadTests.test_render_guard_hash_imports_modes_and_embedded_python) ... ok
+test_symlink_and_special_file_are_rejected (test_stage_offload.StageOffloadTests.test_symlink_and_special_file_are_rejected) ... ok
+test_unchanged_guard_capacity_boundaries_and_inventory_subset (test_stage_offload.StageOffloadTests.test_unchanged_guard_capacity_boundaries_and_inventory_subset) ... ok
+test_unordered_complete_manifest_is_accepted_but_duplicate_or_missing_parent_is_refused (test_stage_offload.StageOffloadTests.test_unordered_complete_manifest_is_accepted_but_duplicate_or_missing_parent_is_refused) ... ok
+test_valid_exact_tree_archive_contract_and_complete_tars (test_stage_offload.StageOffloadTests.test_valid_exact_tree_archive_contract_and_complete_tars) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 7.329s
+
+OK
+
+test_rehash_detects_changed_cold_copy (test_execute.PhysicalCopies.test_rehash_detects_changed_cold_copy) ... ok
+test_same_bytes_outside_private_root_rejected (test_execute.PhysicalCopies.test_same_bytes_outside_private_root_rejected) ... ok
+test_self_review_rejected (test_execute.ReviewBoundary.test_self_review_rejected) ... ok
+test_timeout_cannot_qualify_even_after_accepted_callback (test_execute.ReviewBoundary.test_timeout_cannot_qualify_even_after_accepted_callback) ... ok
+test_wrong_packet_or_script_rejected (test_execute.ReviewBoundary.test_wrong_packet_or_script_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.118s
+
+OK

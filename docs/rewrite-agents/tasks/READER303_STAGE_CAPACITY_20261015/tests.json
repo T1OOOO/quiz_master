@@ -1,0 +1,47 @@
+{
+  "actual_exit": 0,
+  "tests": 20,
+  "suites": [
+    {
+      "name": "stage-source",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\worker",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "actual_exit": 0,
+      "tests": 15,
+      "seconds": 7.314260599989211
+    },
+    {
+      "name": "executor",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015",
+        "-p",
+        "test_execute.py",
+        "-v"
+      ],
+      "actual_exit": 0,
+      "tests": 5,
+      "seconds": 0.4591747999947984
+    }
+  ],
+  "stdout_sha256": "6d1a9684e8308a90c64f46afc73557950611e6b0b4f331d2ebd0c4bcb9682d2f",
+  "source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\execute.py": "53908a9463df03bcab9609d32f1e111377d16081be93b3729569991cab101340",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\test_execute.py": "b7d1e826a2f3f7633d47017a16c2c62882faaed5ad54d3b7c350356352621b1f",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\worker\\stage_offload.py": "c307bd4c1ee4160b3760a50cfde301bad35e3026176ecb5825a3eec9ebef54c3",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER303_STAGE_CAPACITY_20261015\\worker\\test_stage_offload.py": "0e058e6dd4d24088e7de63df44f4290059e6b6913077efed5c7e431da03fa1f6"
+  }
+}

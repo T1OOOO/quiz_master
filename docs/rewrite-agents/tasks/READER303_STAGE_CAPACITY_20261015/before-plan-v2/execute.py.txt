@@ -1,0 +1,85 @@
+"""Root-only one-shot offload after exact independent review and physical cold-copy checks."""
+if not __debug__:
+    raise RuntimeError('stage offload executor refuses optimized Python')
+from pathlib import Path,PurePosixPath
+import hashlib,importlib.util,json,os,re,stat,subprocess
+ROOT=Path('C:/ap/quiz_master');DOCS=Path(__file__).resolve().parent
+COLD=ROOT/'.run/reader303_release_20261015/stage-coldcopies'
+OLD_COPY=ROOT/'.run/reader303_release_20261015/package-v1/quiz-2026.10.15-reader303-14b7da4.tar.gz'
+TASK='task-396cb4cf2a9b476b8f1b0fefaaba2e9e';AUTHOR='session-b2fcdfcaaa584683b9ef499317b7fa58'
+GUARD=ROOT/'docs/rewrite-agents/tasks/READER303_CAPACITY_20261015/offload-v1/offload.py'
+NAMES={'worker/stage_offload.py','worker/test_stage_offload.py','execute.py','test_execute.py','plan.json','copy-receipt.json','private-cold-acl.json','tests.json','tests-stdout.txt','stage-offload.sh','inventory.json','inventory-exit.json','packed-archives.json','pack-exit.json'}
+
+def read(p):return json.loads(p.read_bytes())
+def digest(p):
+    assert p.is_file() and not p.is_symlink()
+    before=p.stat();assert stat.S_ISREG(before.st_mode) and before.st_nlink==1
+    with p.open('rb') as stream:value=hashlib.file_digest(stream,'sha256').hexdigest()
+    after=p.stat();assert (before.st_dev,before.st_ino,before.st_size,before.st_mtime_ns)==(after.st_dev,after.st_ino,after.st_size,after.st_mtime_ns)
+    return value
+
+def verify_review(proof,inputs_sha,script_sha):
+    assert proof.get('actual_cli_exit')==0 and proof.get('actual_hub_state')=='ACCEPTED'
+    item=proof.get('actual_reviews',{}).get(TASK,{})
+    args=item.get('call',{}).get('arguments',{});reply=item.get('actual_response',{})
+    assert item.get('call',{}).get('action')=='review' and args.get('task_id')==TASK and args.get('verdict')=='accept' and args.get('error_count')==0
+    assert reply.get('id')==TASK and reply.get('state')=='ACCEPTED' and reply.get('assignee')==AUTHOR
+    assert reply.get('reviewer') and reply['reviewer']!=AUTHOR
+    assert 'stage-offload-inputs sha256 '+inputs_sha in args.get('note','')
+    assert 'stage-offload-script sha256 '+script_sha in args.get('note','')
+
+def verify_manifest(inputs):
+    assert set(inputs)=={str((DOCS/n).resolve()) for n in NAMES}|{str(GUARD.resolve())}
+    for p,sha in inputs.items():assert re.fullmatch('[0-9a-f]{64}',sha) and digest(Path(p))==sha,'reviewed input drift: '+p
+
+def verify_copies(plan,receipt):
+    assert receipt.get('actual_exit')==0 and len(receipt['copies'])==len(plan['trees'])==9 and len(plan['archives'])==10
+    assert COLD.is_dir() and not COLD.is_symlink() and COLD.resolve()==COLD.absolute()
+    expected={e['path']:e for e in plan['archives']};seen=set()
+    for tree,c in zip(plan['trees'],receipt['copies']):
+        remote=c['remote'];assert remote in expected and remote not in seen;seen.add(remote);e=expected[remote]
+        local=Path(c['local']);name=PurePosixPath(tree['root']).name+'.tar.gz'
+        assert local.parent==COLD and local.resolve().parent==COLD.resolve() and local.name==name==PurePosixPath(remote).name
+        assert local.stat().st_size==e['size']==c['bytes'] and digest(local)==e['sha256']==c['sha256']
+        assert c['actual_exit']==0 and c['members_verified']==len(tree['entries']) and c['permissions_and_ownership_verified'] is True and c['full_gzip_crc_verified'] is True
+    old=receipt['original_failed_package'];assert Path(old['local'])==OLD_COPY and old['remote'] in expected and old['remote'] not in seen
+    e=expected[old['remote']];assert OLD_COPY.stat().st_size==old['bytes']==e['size'] and digest(OLD_COPY)==old['sha256']==e['sha256']
+    assert len(seen|{old['remote']})==10
+
+def verify_acl():
+    assert os.name=='nt' and read(DOCS/'private-cold-acl.json')['independently_readback_verified'] is True
+    command="$p=Get-Acl -LiteralPath '"+str(COLD).replace("'","''")+"'; $sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value; $expected=@($sid,'S-1-5-18','S-1-5-32-544')|Sort-Object; $actual=@($p.Access|ForEach-Object{$_.IdentityReference.Translate([Security.Principal.SecurityIdentifier]).Value})|Sort-Object; if(-not $p.AreAccessRulesProtected -or (Compare-Object $actual $expected)){exit 1}; Write-Output 'PRIVATE_ACL_VERIFIED'"
+    p=subprocess.run(['pwsh','-NoProfile','-NonInteractive','-Command',command],capture_output=True,text=True,timeout=20)
+    assert p.returncode==0 and p.stdout.strip()=='PRIVATE_ACL_VERIFIED'
+
+def validate_inputs():
+    manifest=DOCS/'approval-inputs.json';inputs=read(manifest);script=DOCS/'stage-offload.sh'
+    verify_review(read(DOCS/'source-review.json'),digest(manifest),digest(script));verify_manifest(inputs)
+    spec=importlib.util.spec_from_file_location('stage_worker',DOCS/'worker/stage_offload.py');worker=importlib.util.module_from_spec(spec);spec.loader.exec_module(worker)
+    plan=read(DOCS/'plan.json');worker.validate_plan(plan)
+    assert script.read_bytes()==worker.render(plan,GUARD.read_text()).encode()
+    tests=read(DOCS/'tests.json');raw=(DOCS/'tests-stdout.txt').read_bytes()
+    assert tests['actual_exit']==0 and tests['tests']>=14 and tests['stdout_sha256']==hashlib.sha256(raw).hexdigest()
+    assert re.search(rb'\nOK\s*$',raw) and all(x['actual_exit']==0 for x in tests['suites'])
+    assert tests['source_sha256']=={str((DOCS/n).resolve()):inputs[str((DOCS/n).resolve())] for n in ('execute.py','test_execute.py','worker/stage_offload.py','worker/test_stage_offload.py')}
+    receipt=read(DOCS/'copy-receipt.json');verify_copies(plan,receipt);verify_acl()
+    return inputs,plan,receipt,digest(DOCS/'source-review.json'),digest(manifest)
+
+def main():
+    logs=[DOCS/n for n in ('execution-stdout.jsonl','execution-stderr.txt','execution-exit.json')]
+    assert not any(p.exists() or p.is_symlink() for p in logs),'Existing execution evidence: reconcile, never retry blindly'
+    inputs,plan,receipt,review_sha,manifest_sha=validate_inputs()
+    verify_manifest(inputs);verify_copies(plan,receipt);verify_acl()
+    assert digest(DOCS/'source-review.json')==review_sha and digest(DOCS/'approval-inputs.json')==manifest_sha
+    script=(DOCS/'stage-offload.sh').read_bytes();assert hashlib.sha256(script).hexdigest()==inputs[str((DOCS/'stage-offload.sh').resolve())]
+    code='not_started'
+    with logs[0].open('xb') as out,logs[1].open('xb') as err:
+        try:
+            p=subprocess.run(['ssh','-i','C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519','-o','BatchMode=yes','-o','ConnectTimeout=10','root@192.3.164.184','bash','-s'],input=script,stdout=out,stderr=err,timeout=600);code=p.returncode
+        except subprocess.TimeoutExpired:
+            code='timeout';raise
+        finally:logs[2].write_text(json.dumps({'actual_exit':code,'source_review_task':TASK,'review_sha256':review_sha,'inputs_sha256':manifest_sha})+'\n')
+    assert code==0,'Inspect retained partial evidence; no automatic retry'
+    print(json.dumps({'actual_exit':0,'local_cold_archives_rehashed':10}))
+
+if __name__=='__main__':main()

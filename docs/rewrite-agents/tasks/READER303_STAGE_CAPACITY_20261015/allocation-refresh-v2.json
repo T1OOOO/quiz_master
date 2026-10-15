@@ -1,0 +1,44 @@
+{
+  "previous_plan_sha256": "5c064d440d868fbddd35710cbd088c1996d4493a2148adfbccaec517d409ed09",
+  "new_plan_sha256": "9efbd81652894f13204051f7ba8f07359dbd07817ce1302a4be9471d3280573a",
+  "changed_only_allocation": [
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/failed-readiness-quiz-2026.10.11-encore-317b339-20261010T231811Z.tar.gz",
+      "blocks_before": 68886528,
+      "blocks_after": 68890624
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/quiz-2026.10.14-mixed-ecac092-failed-111030.tar.gz",
+      "blocks_before": 68308992,
+      "blocks_after": 68313088
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/quiz-2026.10.14-mixed-ecac092-failed-v4.tar.gz",
+      "blocks_before": 69476352,
+      "blocks_after": 69480448
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/quiz-2026.10.14-reader-17be4ce-failed-20261014T153204Z.tar.gz",
+      "blocks_before": 56233984,
+      "blocks_after": 56238080
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/quiz-2026.10.15-reader303-14b7da4.failed-20261015T162707Z.tar.gz",
+      "blocks_before": 69615616,
+      "blocks_after": 69619712
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/rejected-quiz-2026.10.12-actors-3556b59-staging-004924.tar.gz",
+      "blocks_before": 55271424,
+      "blocks_after": 55275520
+    },
+    {
+      "path": "/opt/quiz-master/stage-offload-20261015/rejected-quiz-2026.10.12-singers-1c9b534-identity-032842.tar.gz",
+      "blocks_before": 47423488,
+      "blocks_after": 47427584
+    }
+  ],
+  "payload_identity_mode_time_unchanged": true,
+  "all_tree_and_protected_fingerprints_unchanged": true,
+  "reason": "After closed gzip files settled, seven allocation counters gained4096B; fsync only our nine private cold archives, no payload writes/deletion. Original plan and failed preflight preserved."
+}
