@@ -1,0 +1,57 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-b3b177eba9a04e3b97703a8b6fd1adcc": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-b3b177eba9a04e3b97703a8b6fd1adcc",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH. Recomputed sha256 for all 12 outcome-review-inputs.json entries: 0 mismatches, manifest sha matches claim. Confirmed actual_exit=1 after 297.974s; stderr.txt traceback shows the real failure at run_exact->check_capacity->require, message 'actual20percent plus1GiB reserve unavailable', matching the exact source I reviewed and accepted. Cross-checked all 29 stdout.jsonl removal records against plan.json myself: every removed name/restore_from keeper/sha256/bytes matches the immutable plan exactly, 0 mismatches, 0 extra/missing. stdout line order (3 preflight snapshots + 1 before_unlink phase marker + 29 removals = 33 lines) matches the reviewed source's call sequence exactly. Independently recomputed capacity arithmetic: gain 902008832, discrepancy 506105856, floor 21557176730, strict20 true, +1GiB false, fresh shortfall 474933658 — all match the report, no causal claim asserted for the discrepancy (correctly disclosed as unproven). execute_exact_cleanup.py gates on manifest/script/git-checkpoint/prior-acceptance hashes before streaming the single reviewed 6be3e396 script via one ssh call; confirmed cacdd6b exists in local git log. No retry/image/publication/other-project action occurred. This is a sound, truthful stopped-outcome record: exact 29/29 removed, all retention/protection/capacity-floor-restoration guards passed, correctly halted (not claimed success) on the extra-reserve shortfall. ACCEPT as a truthful record only — not an operational gate pass. Bound to 12-file manifest sha256 50de6434d670a0161af541a979228c4460c634d9f4500b814547624128953587; exit1/29removed/strict20pass/extra1GiB-fail."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exactacceptedscript/101pins checked and actualexit/log/full29alias mappings and preservation/postcapacity outcome captured, or truthful failure. Crossprovider recorded-outcome review before future image/preparation.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns capacity/actual-cleanup under COUNTRY483_REMOTE_20261015 and matchingignoredscratch. Exact101packet f39d717d/source cacdd6b pushed; actualClaude ACCEPT/CLI0/error0 forf36/814/111. Stream ONLYreviewed6be3e396deduplicate-v2.sh once via execution-plan SSHargv/900s capture. Rehashall101+script/reviewproofs andactual16fixture0 first. Only29samebytealiases mayunlink;185fullrawbackups/all52states/32resources/loadedidentities/current63/bothimages/PVC/node/HTTPS/full29OPENmustpreserve, finalstrict20+1GiB/64MiBgrowthbound. Recordactualexits/fullflushedmapping/partialfailure; no retry/image/preparation/publication underthisstep. Neverold29cde or broadprune/sharedchanges. Submit genuine actualoutcome for independentClaude review beforeanycorrectedprepare retry. Preserveoldfailedsources/receipts/foreignfiles; no privateDBexport.",
+        "created_at": 1792101194.0151854,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-b3b177eba9a04e3b97703a8b6fd1adcc",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/actual-cleanup/outcome-analysis.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/capacity/actual-cleanup/outcome-review-inputs.json"
+          ],
+          "summary": "Actualaccepted6be3cleanup ran297.974s exit1 after removingALL29 exactaliases. Full185remaining/52states/32protected/loadedidentities/current63/bothimages/PVC/Ready/HTTPS/full29OPEN gates passed beforefinalcheck_capacity. Beforefree20298862592,after21200871424: strict20restored, extra1GiBreserveFAIL; expected1.408GB vsobserved902008832 gain leaves506105856unattributeddiscrepancy. All29mappingstosamerawkeepersverified. 64MiBgrowthassertnotreached. Freshfree21082243072 shows599MBheadroom below1GiB. No replay/retry/image/pub/otherprojectchanges. Separate exactremaining111duplicateplan4.795GB undernativec00 requiresnewsource/independentreview; no newunlinkyet."
+        },
+        "root_task_id": "task-b3b177eba9a04e3b97703a8b6fd1adcc",
+        "run_id": "run-a865c76fa741446fa26b7a85c5d2be54",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-7sw: execute accepted exact29 backup alias cleanup and record outcome",
+        "version": 4,
+        "reviewer": "session-095aeba100c949d6bef115479a365f93",
+        "review_note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH. Recomputed sha256 for all 12 outcome-review-inputs.json entries: 0 mismatches, manifest sha matches claim. Confirmed actual_exit=1 after 297.974s; stderr.txt traceback shows the real failure at run_exact->check_capacity->require, message 'actual20percent plus1GiB reserve unavailable', matching the exact source I reviewed and accepted. Cross-checked all 29 stdout.jsonl removal records against plan.json myself: every removed name/restore_from keeper/sha256/bytes matches the immutable plan exactly, 0 mismatches, 0 extra/missing. stdout line order (3 preflight snapshots + 1 before_unlink phase marker + 29 removals = 33 lines) matches the reviewed source's call sequence exactly. Independently recomputed capacity arithmetic: gain 902008832, discrepancy 506105856, floor 21557176730, strict20 true, +1GiB false, fresh shortfall 474933658 — all match the report, no causal claim asserted for the discrepancy (correctly disclosed as unproven). execute_exact_cleanup.py gates on manifest/script/git-checkpoint/prior-acceptance hashes before streaming the single reviewed 6be3e396 script via one ssh call; confirmed cacdd6b exists in local git log. No retry/image/publication/other-project action occurred. This is a sound, truthful stopped-outcome record: exact 29/29 removed, all retention/protection/capacity-floor-restoration guards passed, correctly halted (not claimed success) on the extra-reserve shortfall. ACCEPT as a truthful record only — not an operational gate pass. Bound to 12-file manifest sha256 50de6434d670a0161af541a979228c4460c634d9f4500b814547624128953587; exit1/29removed/strict20pass/extra1GiB-fail."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "task-b3b177 is now `ACCEPTED`.\n\n**Summary:** All 12 manifest files rehashed with zero mismatches. The recorded outcome is sound and truthful:\n\n- **Real failure, not success**: `actual_exit=1` after 297.974s; the `stderr.txt` traceback shows the failure at `run_exact → check_capacity → require`, raising exactly `'actual20percent plus1GiB reserve unavailable'` — the precise error message from the source code I reviewed and accepted in the prior turn.\n- **All 29 removals verified against the immutable plan**: I cross-checked every `stdout.jsonl` removal record (name, restore-from keeper, sha256, bytes) against `plan.json` myself — 0 mismatches, 0 extra/missing.\n- **Structural consistency**: the 33 stdout lines (3 preflight snapshots + 1 `before_unlink` phase marker + 29 removals) exactly match the call order in the source I already reviewed.\n- **Arithmetic independently recomputed**: gain 902,008,832 bytes, discrepancy 506,105,856, floor 21,557,176,730, strict-20% restored (true) but +1GiB reserve failed, fresh-probe shortfall 474,933,658 — every figure matches, and no unproven causal claim is made about the discrepancy.\n- **Executor is tightly gated**: `execute_exact_cleanup.py` verifies the manifest, the exact script hash, the git checkpoint (`cacdd6b`, confirmed present in local git log), and all three prior acceptances bound to the correct manifest hash — before streaming the single reviewed script over one SSH call. No other command, no retry, no image build, no publication.\n\nThis is a genuine stopped-outcome record: exactly 29/29 planned aliases removed, all retention/protection guards and the base capacity floor passed, and the operation correctly halted rather than claiming success when the extra 1GiB buffer wasn't met. I did not witness Root's live SSH session myself — that's disclosed in the review note. I did not touch the separate, still-`RUNNING` `task-c00ba35` (new remaining-duplicates plan), per your instruction — it remains unreviewed and unauthorized by this callback.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2be4014d85e021d4c471fc5617f26f30813cfda494cca6cd4efceaeb8f168c8c",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
