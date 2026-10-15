@@ -1,0 +1,38 @@
+{
+  "status": "SOURCE_ACCEPTED_DEBUG_BROWSER_LABELS_VERIFIED_NOT_PUBLISHED",
+  "observed_before": "Compiled967 Reader:12 disabled empty textarea nodes, no article body text in browser AX snapshot; title and5sourcecontrols present. WronganswerGreek002 explicitlyselectedHephaestus; final score19/20. All4article sections inspected visually.",
+  "root_cause": "MarkdownBody(selectable:true) uses SelectableText.rich. Installed flutter_markdown_plus1.0.12 builder normal path uses Text.rich.",
+  "change": "SelectionArea around MarkdownBody using normal text; selection retained across blocks. No dependencies, question keys, references or article text changed.",
+  "regression": "Actual semantic-label finder fails against pre-fix HEAD, then all7tests pass with fix, including longpress Copy menu. Earlier test harness mistakes (nearest semantics ancestor, obsolete SemanticsTester, late handle cleanup) retained transparently in logs.",
+  "red_exit": 1,
+  "green_exit": 0,
+  "source_sha256": {
+    "next/apps/quiz_app/lib/question_articles.dart": "7ab3ebd36d2689d78706269042bee93fb46115f103984d4de41e4087ad4ecd9e",
+    "next/apps/quiz_app/test/question_articles_test.dart": "a382df6204be9e565e9760f2825072b1a360617bfc711c57c27e6f80defb8a74"
+  },
+  "official_references": [
+    "https://pub.dev/packages/flutter_markdown_plus#selection",
+    "https://api.flutter.dev/flutter/material/SelectionArea-class.html"
+  ],
+  "limitations": [
+    "Production remains Helm58 Reader278. Both compiled967 builds predate fix and must not be released.",
+    "No Android, NVDA or VoiceOver check. Browser accessibility tree and widget semantics observed; debug preview is not full release-build certification.",
+    "Default DDC previews remained blank and hot reload/restart failed with HTML parsed as JSON. Standard old-module-format debug preview successfully rendered real Reader and readable labels. This is not a successful hot reload or release-build check."
+  ],
+  "browser_after": {
+    "viewport": "361x738",
+    "runtime": "Real Flutter debug preview of actual QuestionArticleReader and Reader279 asset; standard MaterialApp wrapper, not full app flow",
+    "empty_textareas": 0,
+    "all_four_sections_accessible_static_text": true,
+    "screenshot": "fixed-mobile.png",
+    "raw_evidence": "debug-browser.zip",
+    "actual_visual_inspection": true
+  },
+  "independent_review": {
+    "provider": "claude",
+    "task_id": "task-c886a4bf3c404bb0a077a4c816856775",
+    "actual_state": "ACCEPTED",
+    "scope": "Source-only; independently reran7tests and analysis. Final formatting-only test wrap then Root reran gates. Browser observation is Root evidence."
+  },
+  "cleanup": "cleanup.json"
+}

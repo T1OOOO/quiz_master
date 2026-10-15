@@ -1,0 +1,52 @@
+{
+  "frozen_source": "96719d4f34101bfd187cb0dc98bd371a06650245",
+  "build_id": "quiz-2026.10.15-greek-96719d4",
+  "checks": [
+    {
+      "label": "production",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\greek002_release_20261015\\production-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.15-greek-96719d4",
+        "--dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org"
+      ],
+      "output": "C:\\ap\\quiz_master\\.run\\greek002_release_20261015\\production-web",
+      "main_dart_js_sha256": "a2548e6d952c6f69d9d805e9b9b58d54dd927284e72b7bc0fc67463b127949ae",
+      "frozen_assets_byte_identical": true,
+      "elapsed_seconds": 355.13
+    },
+    {
+      "label": "qa",
+      "actual_exit": 0,
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--pwa-strategy=none",
+        "--output",
+        "C:\\ap\\quiz_master\\.run\\greek002_release_20261015\\qa-web",
+        "--dart-define=QM_BUILD_ID=quiz-2026.10.15-greek-96719d4",
+        "--dart-define=QM_API_BASE_URL=http://127.0.0.1:19090"
+      ],
+      "output": "C:\\ap\\quiz_master\\.run\\greek002_release_20261015\\qa-web",
+      "main_dart_js_sha256": "d387db70e1ab732cd0310807736debd5d4c87ae6514392f491411ce374e4c63b",
+      "frozen_assets_byte_identical": true,
+      "elapsed_seconds": 319.76
+    }
+  ]
+}

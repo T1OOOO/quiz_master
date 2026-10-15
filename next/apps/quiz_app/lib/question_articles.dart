@@ -241,20 +241,21 @@ class QuestionArticleReader extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      MarkdownBody(
-                        data: article.body,
-                        selectable: true,
-                        styleSheet: MarkdownStyleSheet.fromTheme(theme)
-                            .copyWith(
-                              p: theme.textTheme.bodyLarge!.copyWith(
-                                height: 1.55,
+                      SelectionArea(
+                        child: MarkdownBody(
+                          data: article.body,
+                          styleSheet: MarkdownStyleSheet.fromTheme(theme)
+                              .copyWith(
+                                p: theme.textTheme.bodyLarge!.copyWith(
+                                  height: 1.55,
+                                ),
+                                a: const TextStyle(
+                                  color: link,
+                                  decoration: TextDecoration.underline,
+                                ),
                               ),
-                              a: const TextStyle(
-                                color: link,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                        onTapLink: (_, url, _) => _openArticleSource(url),
+                          onTapLink: (_, url, _) => _openArticleSource(url),
+                        ),
                       ),
                       const SizedBox(height: 24),
                       Text(

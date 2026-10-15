@@ -1,0 +1,32 @@
+00:00 +0: loading C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart
+00:00 +0: articles match exact quiz revision, not only a reusable question ID
+00:00 +1: drafts, duplicate articles and unsafe source schemes fail closed
+00:00 +2: mobile reader pauses before opening and puts checked links at the end
+00:02 +3: article paragraphs expose readable labels and remain selectable
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+A SemanticsHandle was active at the end of the test.
+All SemanticsHandle instances must be disposed by calling dispose() on the SemanticsHandle.
+
+When the exception was thrown, this was the stack:
+#0      WidgetTester._verifySemanticsHandlesWereDisposed (package:flutter_test/src/widget_tester.dart:1074:7)
+#1      WidgetTester._endOfTestVerifications (package:flutter_test/src/widget_tester.dart:1063:5)
+#2      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1969:22)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  article paragraphs expose readable labels and remain selectable
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +3 -1: article paragraphs expose readable labels and remain selectable [E]
+  Test failed. See exception logs above.
+  The test description was: article paragraphs expose readable labels and remain selectable
+  
+00:03 +3 -1: reader stays above shell feedback and restores it on close
+00:04 +4 -1: missing article does not suggest an unwritten article
+00:04 +5 -1: packaged articles bind People, Film Craft, Music Craft, Acting Craft, Screen Song, Mixed, LOTR repair and published Home Alone revisions
+00:04 +6 -1: Some tests failed.
+
+Failing tests:
+  C:/ap/quiz_master/next/apps/quiz_app/test/question_articles_test.dart: article paragraphs expose readable labels and remain selectable

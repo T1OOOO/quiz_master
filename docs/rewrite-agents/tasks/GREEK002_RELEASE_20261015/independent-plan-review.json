@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d39b60009dcc4a3c9e0ff26130ed788f": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d39b60009dcc4a3c9e0ff26130ed788f",
+          "verdict": "accept",
+          "errors_found": 0,
+          "note": "Verified remote-reuse-plan.json + PLAN_NOTES_EN.md against prepare_library_remote.py, prepare_remote_mixed.py, verify_candidate_runtime.py, published58.json and accepted-source.json. Findings: (1) Baseline block (helm58, build quiz-2026.10.14-library-09b19cc, image sha256:4878f8...) matches published58.json exactly. (2) Successor Reader math is internally consistent and matches accepted-source.json: baseline 278 articles/159 refs/157 playable + 1 new article/1 playable ref = 279/160/158, with noncatalog staying at 2 (158+2=160), matching verify_candidate_runtime.py's current 2-entry NONCATALOG_READER_REFS list. Catalog 136 packs/4084 questions correctly held unchanged. (3) Helm-version adaptation chain is accurately traced: prepare_library_remote.py already rewrote the inherited mixed-release guard from version==52 to version==54; the plan correctly identifies that the Greek adaptation must move both the guard and collection-script assertions to version==58, not reuse either stale value. (4) The plan correctly flags prepare_remote_mixed.py's hardcoded 'df avail -gt 4000000000' (fixed 4GB) check as the thing to replace with a 20%-of-filesystem guard, and correctly identifies that Ready-node/DiskPressure/taint/HTTPS-readiness preflight checks do not yet exist in that script and must be added, not reused -- consistent with published58.json's own limitations line ('Preparation helper still needs disk guard before image build') and the stated production DiskPressure incident. (5) verify_candidate_runtime.py cross-checks are accurate: verify_catalog_collection/verify_reader_bindings signatures and param names match; verify_runtime_receipt's mixed branch really is gated on (136,4084) requiring exactly 20 mixed answers; main() really hardcodes (136,4084) for --expected-packs/--expected-questions, which is why the plan correctly scopes adaptation to only the Reader counts/CLI defaults and accepted noncatalog refs. (6) PLAN_NOTES_EN.md's correction of the shorthand label to question:greek-002 and instruction to retain the existing 2 noncatalog refs are both consistent with accepted-source.json ('accepted source import preserves every prior article object') and with the unchanged NONCATALOG_READER_REFS list. No factual errors found; 0 inaccuracies identified. Minor note (not an error): the plan's archive_sha256/archive_members fields for the baseline are not independently verifiable from published58.json or accepted-source.json alone (those files don't carry an archive hash), so that pair should be re-confirmed against the actual archive before any controller work relies on it. This is a read-only plan review only: acceptance here does not approve a controller, execution, image build, or deployment -- a newly reviewed controller/execution packet and different-provider review remain required before any remote action."
+        }
+      },
+      "actual_response": {
+        "acceptance": "List exact functions/constants/CLI flags and dependencies needing adaptation; preserve disk guard before image work, copiedDB/runtime/rollback/cleanup gates. Different-provider review required before any later execution.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\GREEK002_RELEASE_20261015"
+        ],
+        "assignee": "session-54895dfb04bd421d897a8113e5808440",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Read-only scoped codebase question: identify the smallest correct adaptations to existing remote prepare and runtime verifier for baseline Helm58/library09b19cc/image4878 and successor source96719d4 Reader279/160refs/158playable. Do not reread unrelated application code. Own only a short report in GREEK002_RELEASE_20261015. No edits to controllers, execution or deployment. Connect as ready and provide actual identity for offer.",
+        "created_at": 1792024578.6051714,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-d39b60009dcc4a3c9e0ff26130ed788f",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:/ap/quiz_master/docs/rewrite-agents/tasks/GREEK002_RELEASE_20261015/remote-reuse-plan.json"
+          ],
+          "evidence": [
+            "Read-only inspection of prepare_library_remote.py, prepare_remote_mixed.py and verify_candidate_runtime.py.",
+            "JSON parsed successfully with PowerShell ConvertFrom-Json.",
+            "Plan records exact functions/constants/CLI flags, Greek counts 279/160/158/2, catalog 136/4084, Helm58 baseline, image/archive identities, copied DB/100 LOTR/20 mixed grading, rollback and cleanup preservation.",
+            "Plan adds mandatory retry57 preflight requirements: >=20% available disk, Ready node, DiskPressure=False, no blocking taint, HTTPS readiness before image work and publication."
+          ],
+          "limitations": [
+            "No execution, SSH, image import/build, deployment, controller edits, or producer re-exploration performed.",
+            "Different-provider review remains required before any execution."
+          ],
+          "status": "DONE"
+        },
+        "root_task_id": "task-d39b60009dcc4a3c9e0ff26130ed788f",
+        "run_id": "run-9b5eaf4b3cd34dabb357fb96737e3812",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Greek002 release remote reuse plan",
+        "version": 4,
+        "reviewer": "session-f762f2f8760e418da4e3b43545feb8e8",
+        "review_note": "Verified remote-reuse-plan.json + PLAN_NOTES_EN.md against prepare_library_remote.py, prepare_remote_mixed.py, verify_candidate_runtime.py, published58.json and accepted-source.json. Findings: (1) Baseline block (helm58, build quiz-2026.10.14-library-09b19cc, image sha256:4878f8...) matches published58.json exactly. (2) Successor Reader math is internally consistent and matches accepted-source.json: baseline 278 articles/159 refs/157 playable + 1 new article/1 playable ref = 279/160/158, with noncatalog staying at 2 (158+2=160), matching verify_candidate_runtime.py's current 2-entry NONCATALOG_READER_REFS list. Catalog 136 packs/4084 questions correctly held unchanged. (3) Helm-version adaptation chain is accurately traced: prepare_library_remote.py already rewrote the inherited mixed-release guard from version==52 to version==54; the plan correctly identifies that the Greek adaptation must move both the guard and collection-script assertions to version==58, not reuse either stale value. (4) The plan correctly flags prepare_remote_mixed.py's hardcoded 'df avail -gt 4000000000' (fixed 4GB) check as the thing to replace with a 20%-of-filesystem guard, and correctly identifies that Ready-node/DiskPressure/taint/HTTPS-readiness preflight checks do not yet exist in that script and must be added, not reused -- consistent with published58.json's own limitations line ('Preparation helper still needs disk guard before image build') and the stated production DiskPressure incident. (5) verify_candidate_runtime.py cross-checks are accurate: verify_catalog_collection/verify_reader_bindings signatures and param names match; verify_runtime_receipt's mixed branch really is gated on (136,4084) requiring exactly 20 mixed answers; main() really hardcodes (136,4084) for --expected-packs/--expected-questions, which is why the plan correctly scopes adaptation to only the Reader counts/CLI defaults and accepted noncatalog refs. (6) PLAN_NOTES_EN.md's correction of the shorthand label to question:greek-002 and instruction to retain the existing 2 noncatalog refs are both consistent with accepted-source.json ('accepted source import preserves every prior article object') and with the unchanged NONCATALOG_READER_REFS list. No factual errors found; 0 inaccuracies identified. Minor note (not an error): the plan's archive_sha256/archive_members fields for the baseline are not independently verifiable from published58.json or accepted-source.json alone (those files don't carry an archive hash), so that pair should be re-confirmed against the actual archive before any controller work relies on it. This is a read-only plan review only: acceptance here does not approve a controller, execution, image build, or deployment -- a newly reviewed controller/execution packet and different-provider review remain required before any remote action."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and accepted. `review_note` came back populated (non-empty), confirming the server recorded it.\n\n**Summary:** task-d39b60009dcc4a3c9e0ff26130ed788f (Greek002 remote reuse plan) → **ACCEPT**, 0 errors found. I cross-checked `remote-reuse-plan.json`/`PLAN_NOTES_EN.md` against the three worker scripts, `published58.json`, and `accepted-source.json`: the Helm58/image4878 baseline matches exactly, the Reader math (278→279 articles, 159→160 refs, 157→158 playable, noncatalog held at 2) is internally consistent and matches the accepted-source numbers, the version==52→54→58 adaptation chain is correctly traced, the fixed-4GB-disk-guard replacement and new Kubernetes preflight checks are correctly identified as genuinely missing/needed (not already present), and the `verify_candidate_runtime.py` function signatures, the `(136,4084)` hardcode in `main()`, and the 20-mixed-answer gate were all confirmed in the actual source. Only a non-blocking note: the archive_sha256/archive_members fields can't be independently verified from the two JSON files alone and should be re-checked against the real archive before any controller relies on them. This acceptance covers the plan only — no controller, execution, or deployment was approved or run.\n\nReport hash: `independent_final_receipt_sha256` not applicable here (that's the Greek002 import's own receipt); for this review, the reviewed artifact's own identity is `remote-reuse-plan.json` with `schema_version qm-greek002-remote-reuse-plan/v1`, baseline `archive_sha256: 7d9d6c64763a64b811d942a9df3cdc489a4fc39a11ac8d628165e0636649791f`.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "0b6d6ba31bed6813311b29160e04fceac56f79cf6fe6dc0406f6c755fb6e7efb",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

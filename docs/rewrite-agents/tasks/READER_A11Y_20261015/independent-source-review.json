@@ -1,0 +1,65 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-c886a4bf3c404bb0a077a4c816856775": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-c886a4bf3c404bb0a077a4c816856775",
+          "verdict": "accept",
+          "note": "ACCEPT (source-only; browser/release gates stay closed).\n\nScope: next/apps/quiz_app/lib/question_articles.dart + test/question_articles_test.dart, uncommitted working-tree change.\n\nHashes verified against REPORT.json (docs/rewrite-agents/tasks/READER_A11Y_20261015/REPORT.json), computed independently via sha256sum:\n- lib/question_articles.dart: 7ab3ebd36d2689d78706269042bee93fb46115f103984d4de41e4087ad4ecd9e (match)\n- test/question_articles_test.dart: 065907054cff45b88ab7b03bd3116250f15ae5aa9c7b60b04358a6f9b98ed8ff (match)\n\nDiff inspected directly: MarkdownBody(selectable: true) replaced by SelectionArea(child: MarkdownBody(...)) with selectable param dropped, onTapLink preserved verbatim. This removes the SelectableText.rich path (which rendered as disabled empty TEXTAREA-equivalent nodes with no accessible text in the AX tree per the report's browser observation) in favor of MarkdownBody's normal Text.rich rendering, with selection supplied by the ancestor SelectionArea instead. This is the documented root cause and the fix directly addresses it — correct, minimal (single widget swap, no logic change), matches the cited flutter_markdown_plus 1.0.12 / SelectionArea official pattern. No dependency, pubspec, question data, or reference changes.\n\nRe-ran independently (not just trusting the report):\n- `flutter test test/question_articles_test.dart` -> all 7 tests pass, including the new 'article paragraphs expose readable labels and remain selectable' test (semantics.byLabel finds exactly 1 node, longpress shows Copy menu, no exceptions). Matches report's red/green claim for the current HEAD state.\n- `flutter analyze lib/question_articles.dart test/question_articles_test.dart` -> No issues found.\n- `dart format --output=none --set-exit-if-changed` on both files -> test file has one reformat-able line (`.articles.single` wrap); cosmetic only, not a correctness or accessibility issue. Non-blocking nit, worth a trivial follow-up formatting pass before commit.\n\nSecurity: unchanged — https-only source/link validation in QuestionArticle.fromJson and _openArticleSource is untouched by this diff.\nPerformance: negligible — one extra SelectionArea ancestor widget, no new allocations per rebuild.\nLink behavior: onTapLink wiring is unchanged and still passed through to MarkdownBody, so tap-to-open still takes precedence over text selection as before.\n\nDisclosed limitations accepted as stated, not independently re-verified by me: earlier harness mistakes (nearest-semantics-ancestor inspection, a removed test API attempt, delayed handle cleanup) are correctly excluded from the red/green proof; only the final red-tree and green-v3 runs count. I did not run or observe the browser/DTD preview, did not perform any compiled build, and make no claim about Helm58/Reader278 production or the pending compiled967 artifacts — those gates remain explicitly open per the task's own report and are out of scope for this review.\n\nVerdict: source change is ready to land as a source-level accessibility fix. Recommend a trivial dart-format pass on the test file before commit; no other changes requested."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Red then green regression for article body semantic label and non-text-field role, existing Reader tests pass, selection retained, independent Claude source review. Actual browser/hot reload checks before release.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\question_articles.dart",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\question_articles_test.dart",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_A11Y_20261015"
+        ],
+        "assignee": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "author": "session-27aed86cfdf24a7ca4f3872e17b6d4b4",
+        "body": "Observed actual compiled Flutter Reader body as12 empty disabled textarea nodes after wrong Greek002 answer; title and5source links accessible, visual body readable. Current MarkdownBody(selectable:true) uses SelectableText. Investigate supported SelectionArea with normal text, preserve selection, scrolling and link controls. Reproduce with meaningful semantics test, then independently review and verify browser. No deployment in this task.",
+        "created_at": 1792025973.308692,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": false,
+        "domain": "general",
+        "id": "task-c886a4bf3c404bb0a077a4c816856775",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_A11Y_20261015",
+            "next/apps/quiz_app/lib/question_articles.dart",
+            "next/apps/quiz_app/test/question_articles_test.dart",
+            "docs/rewrite-agents/tasks/GREEK002_RELEASE_20261015/local-browser/mixed"
+          ],
+          "summary": "Source fix uses supported SelectionArea around normal Markdown text. Proper whole-tree semantic-label test fails old HEAD and7/7tests pass after fix, preserving longpress Copy menu. Earlier harness mistakes retained. Actual compiled967 browser reproduced12 empty disabled textareas and manual Greek00219/20 path, all4sections visible. New debug preview pending; initial hot reload failed. Source review only, not browser/execution/deployment approval."
+        },
+        "root_task_id": "task-c886a4bf3c404bb0a077a4c816856775",
+        "run_id": "run-bda1441d90ff425494898a823623bf2e",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-a32157792ef74ebda086a7f97cc7abb1",
+        "title": "Restore readable article semantics while preserving selection",
+        "version": 4,
+        "reviewer": "session-05b529248cab4fbf98c40547deac506e",
+        "review_note": "ACCEPT (source-only; browser/release gates stay closed).\n\nScope: next/apps/quiz_app/lib/question_articles.dart + test/question_articles_test.dart, uncommitted working-tree change.\n\nHashes verified against REPORT.json (docs/rewrite-agents/tasks/READER_A11Y_20261015/REPORT.json), computed independently via sha256sum:\n- lib/question_articles.dart: 7ab3ebd36d2689d78706269042bee93fb46115f103984d4de41e4087ad4ecd9e (match)\n- test/question_articles_test.dart: 065907054cff45b88ab7b03bd3116250f15ae5aa9c7b60b04358a6f9b98ed8ff (match)\n\nDiff inspected directly: MarkdownBody(selectable: true) replaced by SelectionArea(child: MarkdownBody(...)) with selectable param dropped, onTapLink preserved verbatim. This removes the SelectableText.rich path (which rendered as disabled empty TEXTAREA-equivalent nodes with no accessible text in the AX tree per the report's browser observation) in favor of MarkdownBody's normal Text.rich rendering, with selection supplied by the ancestor SelectionArea instead. This is the documented root cause and the fix directly addresses it — correct, minimal (single widget swap, no logic change), matches the cited flutter_markdown_plus 1.0.12 / SelectionArea official pattern. No dependency, pubspec, question data, or reference changes.\n\nRe-ran independently (not just trusting the report):\n- `flutter test test/question_articles_test.dart` -> all 7 tests pass, including the new 'article paragraphs expose readable labels and remain selectable' test (semantics.byLabel finds exactly 1 node, longpress shows Copy menu, no exceptions). Matches report's red/green claim for the current HEAD state.\n- `flutter analyze lib/question_articles.dart test/question_articles_test.dart` -> No issues found.\n- `dart format --output=none --set-exit-if-changed` on both files -> test file has one reformat-able line (`.articles.single` wrap); cosmetic only, not a correctness or accessibility issue. Non-blocking nit, worth a trivial follow-up formatting pass before commit.\n\nSecurity: unchanged — https-only source/link validation in QuestionArticle.fromJson and _openArticleSource is untouched by this diff.\nPerformance: negligible — one extra SelectionArea ancestor widget, no new allocations per rebuild.\nLink behavior: onTapLink wiring is unchanged and still passed through to MarkdownBody, so tap-to-open still takes precedence over text selection as before.\n\nDisclosed limitations accepted as stated, not independently re-verified by me: earlier harness mistakes (nearest-semantics-ancestor inspection, a removed test API attempt, delayed handle cleanup) are correctly excluded from the red/green proof; only the final red-tree and green-v3 runs count. I did not run or observe the browser/DTD preview, did not perform any compiled build, and make no claim about Helm58/Reader278 production or the pending compiled967 artifacts — those gates remain explicitly open per the task's own report and are out of scope for this review.\n\nVerdict: source change is ready to land as a source-level accessibility fix. Recommend a trivial dart-format pass on the test file before commit; no other changes requested."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Review submitted and task is now `ACCEPTED` with the `review_note` field populated as required.\n\n**Summary:** Independently verified the Reader accessibility fix in `question_articles.dart` — SHA-256 hashes of both files matched the report exactly, the diff correctly swaps `MarkdownBody(selectable: true)` for `SelectionArea(child: MarkdownBody(...))` (removing the problematic `SelectableText.rich` path while preserving `onTapLink` and selection via the ancestor `SelectionArea`). I reran `flutter test` (7/7 pass, including the new semantics test) and `flutter analyze` (clean) myself rather than trusting the report alone; found one cosmetic `dart format` nit in the test file (non-blocking). Security, performance, and link behavior are unaffected. **Verdict: accept**, source-ready, with browser/release gates explicitly left open — I did not perform any browser check or build, per the task's own stated limitations.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-c886a4bf3c404bb0a077a4c816856775",
+      "error": "submitted task and accept/rework verdict required"
+    }
+  ],
+  "trace_sha256": "c0e771f47724ede259febca1b621dbf50993cb1a9b3af0023c3be9d9166f71d7",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

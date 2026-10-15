@@ -1,0 +1,29 @@
+{
+  "status": "COMPILED967_QA_COMPLETED_ACCESSIBILITY_DEFECT_FOUND_NOT_PUBLISHED",
+  "quiz": "prep-greek-mythology",
+  "questions": 20,
+  "intentional_wrong_choice": {
+    "question_id": "greek-002",
+    "selected_text": "Гефест",
+    "correct_text": "Посейдон"
+  },
+  "actual_score": "19/20",
+  "reader": {
+    "id": "question:greek-002",
+    "four_sections": "Manually inspected4screenshots; not a DOM heading assertion",
+    "five_source_controls_observed": true,
+    "accessibility_bug": "12disabled empty textarea nodes. Fixed source separately reviewed; oldcompiled967outputs obsolete."
+  },
+  "harness_limits": [
+    "Original pause assumption failed intentionally wrong dialog; resumed after manually inspecting real controls.",
+    "Search filtering was not validated. No claim search passed."
+  ],
+  "cleanup": {
+    "server_driver_exit": 0,
+    "api_terminated_exit": 1,
+    "stop_seen": true,
+    "browser_daemon_stopped_after_ownedChrome_exit": true
+  },
+  "production_unchanged": "Helm58 Reader278",
+  "raw_archive": "compiled967-local-browser.zip"
+}

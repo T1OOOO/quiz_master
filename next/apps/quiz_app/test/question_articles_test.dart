@@ -113,6 +113,38 @@ void main() {
     },
   );
 
+  testWidgets(
+    'article paragraphs expose readable labels and remain selectable',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      try {
+        const paragraph = 'Readable article paragraph.';
+        final data = article()..['body_ru'] = paragraph;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: QuestionArticleReader(
+                article: QuestionArticles.decode(catalog([data]))
+                    .articles
+                    .single,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.semantics.byLabel(paragraph).evaluate(), hasLength(1));
+        await tester.longPress(find.text(paragraph));
+        await tester.pumpAndSettle();
+        expect(find.text('Copy'), findsOneWidget);
+        await tester.pumpWidget(const SizedBox.shrink());
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
+      } finally {
+        semantics.dispose();
+      }
+    },
+  );
+
   testWidgets('reader stays above shell feedback and restores it on close', (
     tester,
   ) async {
