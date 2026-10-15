@@ -1,0 +1,51 @@
+{
+  "status": "ACTUAL_EXACT111_CLEANUP_PASS_NOT_RELEASE_PREPARED",
+  "actual_exit": 0,
+  "elapsed_seconds": 284.107,
+  "removed_aliases": 111,
+  "all_restore_mapping_fields_verified": true,
+  "preserved_full_private_backups": 74,
+  "unique_states_retained": 52,
+  "protected_files": 32,
+  "current_baseline_unchanged": {
+    "helm_revision": 63,
+    "status": "deployed",
+    "images": [
+      "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14",
+      "docker.io/library/quiz-master@sha256:6c603a840b01c9c4605eba234e4af3d95a3f52fff12e65d9904b563db5722f14"
+    ],
+    "available_replicas": 1,
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "feedback_count": 29,
+    "all_open": true,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e",
+    "node_ready": true,
+    "disk_pressure": false,
+    "blocking_taints": false,
+    "disk_available": 25829249024,
+    "disk_total": 102417174528,
+    "disk_at_least20percent": true,
+    "https_readiness_status": 200,
+    "backup_mode": "0600",
+    "backup_integrity": "ok"
+  },
+  "preexisting_loaded_images_preserved": true,
+  "loaded_image_additions": {
+    "containerd": 0,
+    "docker": 0
+  },
+  "before_available": 21039611904,
+  "after_available": 25829249024,
+  "expected_allocated_reclaim": 4795174912,
+  "actual_net_gain": 4789637120,
+  "unattributed_discrepancy": 5537792,
+  "strict20_floor": 20483434906,
+  "headroom_above_strict20": 5345814118,
+  "minimum_additional_reserve": 2147483648,
+  "maximum_unattributed_growth": 1073741824,
+  "all_capacity_conditions_passed": true,
+  "private_database_bytes_exported": false,
+  "preparation_retry_performed": false,
+  "publication_performed": false,
+  "remote_peak_certified": false
+}

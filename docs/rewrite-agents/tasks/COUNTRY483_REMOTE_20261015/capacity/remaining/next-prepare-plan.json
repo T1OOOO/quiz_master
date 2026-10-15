@@ -1,0 +1,24 @@
+{
+  "schema_version": "qm-country483-corrected-resume-envelope/v1",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-i",
+    "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+    "root@192.3.164.184",
+    "env -u PYTHONOPTIMIZE -u PYTHONSTARTUP bash -s"
+  ],
+  "stdin": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\capacity\\atlas-v2\\resume-preparation-v2.sh",
+  "stdin_sha256": "0d6dc91aea513eb10afca4a4ef24a029938b93971fdbf4e638395a400f1aa5e4",
+  "timeout_seconds": 900,
+  "required_before_execution": "Real Claude acceptance/CLI0/error0 of this exact outcome+envelope packet, committed/pushed owned evidence; rehash131sourcepacket/priorreviews/package and correctedatlas contract",
+  "existing_stage": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818",
+  "fresh_log": "prepare-resume-66fe6ea9640447beacc9aec8fe6166ac.log",
+  "production_baseline_revision": 63,
+  "publication_allowed": false,
+  "collector": "Only after actual retry exit0: corrected_atlas_paths.collection_script(actual_run,actual_image,actual_durable_sha256); persist actual collector transport exit and finalJSON independently; same env-u envelope; never inertexample or invented remote_prepare_exit",
+  "native_advisory_report_sha256": "16b41e47bb8f1aacee1dc3bf93f69e2924cde7b4d2ce48c93b0f8e0065c6772a"
+}
