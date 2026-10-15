@@ -1,0 +1,17 @@
+{
+  "actual_exit": 0,
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-i",
+    "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+    "root@192.3.164.184",
+    "env -u PYTHONOPTIMIZE -u PYTHONSTARTUP bash -s -- publish"
+  ],
+  "execution_packet_sha256": "91fabab62d132f57c76a827799499415a50aa1918eaec4253e39ba13a7f8cc2e",
+  "script_sha256": "67d987895930360d2a980ec98e65ba24a8b42f16e45c25cdee266e94a238359f",
+  "stdout_sha256": "c77f3310081ab83d34bfc400cd7e2e99e3c9b226d76e4d5afd8812d909cc9bc7"
+}

@@ -1,0 +1,58 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a10e61a5345b4436906525d133cc1797": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a10e61a5345b4436906525d133cc1797",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH/browser. Recomputed sha256 for all 354 outcome-review-inputs.json entries: 0 mismatches, manifest sha matches claim. publish-exit.json/publish-log.txt: real Helm output ('Release quiz-master has been upgraded. Happy Helming!', REVISION:64, STATUS:deployed), script hash matches my previously-accepted packet — its exit0 required publish_release.py's validate_acceptance() to pass, requiring my own real ACCEPT bound to the correct note, confirming the gate was genuinely used. published-http/server/after-browser checks: Helm64, both images dc230d8c, PVC Bound, strict20 true before/after browser (24.599GB then 24.580GB free), backup and restore-proof SHA identical (6794975...), counts 153/727/263/29 match exactly. published-browser-commands.json: 70 commands, exactly 1 nonzero exit (disclosed 'close' exit1/os10060) — matches claim precisely. Viewed all 4 screenshots myself: Russian labels render complete/correct in all views; confirmed the disclosed footer-overlap defect is genuinely visible in long-selected-mobile.png (green feedback button overlaps the wrapped footer label) — real, minor, correctly tracked as separate P2 quiz_master-nvn, not hidden or claimed fixed. No quiz/report submission actions; all29 feedback still OPEN per fresh digest. Harness failures (daemon restart, CIM identity race, close exit1) are consistent with the one observed nonzero command exit; did not forensically re-derive the full process narrative beyond that. No unsupported claims found. ACCEPT: recorded published outcome and limits verified locally. Bound to 354-file manifest sha256 e5f3ad9e196b8232ad81f2904636f62a2820f5b6a9432c283267fe0f2870aaca; publication exit0/Helm64/image dc230d8c."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exactacceptedpushedcandidate actualpublication0 and postpublication publichashes/UI/readiness/data/backup/PVC/feedback/capacity/processteardown evidence, or truthfulfailure; independentactualoutcomereview beforeclose/pushmilestone.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\publication",
+          "C:\\ap\\quiz_master\\.run\\country483_remote_20261015"
+        ],
+        "assignee": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "author": "session-b2fcdfcaaa584683b9ef499317b7fa58",
+        "body": "Root owns COUNTRY483_REMOTE_20261015/publication actualoutcome/browser and ignoredscratch. DO NOT EXECUTE until genuineClaude actualCLI0/error0 accepts nativec651source,actual5ebcandidate,NEW067 exactpublicationexecution packet91fabab+175manifest332e and owned source/proofs committed+pushed. Bindexecution-acceptance toactual067callback/fullBUILDpacket/executor0239/shell67d987/package15eb/imageactualdc230; rehash175+allactualtransport/package/sourceQA. Invokefixednativepublicationexecutor once, actual600stimeout/partiallogs no blindretry. Freshbackup,atomic63->64,fullPVC/node/strict20/full29OPEN andpublicversion/JS/Reader/atlas2hashgates required. Afteractual0 realisolatedagentbrowser mobile361x738/desktop1280x900 Russian11searches/WesternSahara+GreenlandEnglish/selectionfocus/longFrenchlabel/Francecontrol, screenshotsviewed,errorchecks, officialclose+ownprocessquiescence; no quizattempt/reportPOST or realfeedbackclosure. Capture freshSSH publishedmetadata/backup+restore/hash/current64+dc230/full29OPEN/1364084/Reader303/fullpublicasset hashes. Submitactualoutcome forindependentreview; close483onlyafterpublishedverification,broader7sw/3qx/9e0stayopen. Anyfailure inspectactualdeploymentstateinstead ofassumingrollback/replaying. Preserve foreign69hashes/alloldfrozenfiles/noActions.",
+        "created_at": 1792104438.7294843,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-a10e61a5345b4436906525d133cc1797",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication/outcome-review-inputs.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication/published-outcome-summary.json",
+            "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication/published-browser-verification.json"
+          ],
+          "summary": "ACTUAL publication EXIT0 from accepted/pushed35a0f11 exact67d987 shell/91fabab packet/real067callback. Helm64 deployed,bothdc230,oneReadyreplica,originalBoundPVC,publicversion/JS/Reader/atlas2hashes passed. Freshpublish230615Z privatebackup+independentrestore mode0600/integrity/identicalSHA/counts153/727/263/29. Freshafterbrowser64/full29OPEN/HTTPS/node/strict20 holds24.580GBfree. ActualpublishedFlutter70CLIcommands mobile361x738+desktop1280x900,all11Russiansearches,2Englishqueries,WesternSahara andFrance select/focus/zoom,4screenshotsviewed,0UI/runtimeerrors. Honestharnessissues: typedMCPopeninterrupted/versionrestart, captureCIMrace, closeCLI1/os10060; exactowned60628daemonfallback0 andall12nativeIDsquiescent, old3936absent/nochildren. NewP2quiz_master-nvn tracks FABcoveringduplicatelongfooterlabel; fullsearch/bannerlabelsvisible, notclaimedfixed. Noquiz/reportsubmitactions,no fullnetworkaudit.354filee5f3actualoutcomepacket;483/realfeedbackstillOPEN untilindependentreview."
+        },
+        "root_task_id": "task-a10e61a5345b4436906525d133cc1797",
+        "run_id": "run-edaaa3c000b24e1e8fe2801744f0a914",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-80cc71f5f2b8436f9af3839b693fb15e",
+        "title": "quiz_master-483: publish reviewed candidate and verify real map UI",
+        "version": 4,
+        "reviewer": "session-227b676b36834c258d663aa56a66a1e1",
+        "review_note": "Independent Claude review, local recorded evidence only; I did not witness Root's live SSH/browser. Recomputed sha256 for all 354 outcome-review-inputs.json entries: 0 mismatches, manifest sha matches claim. publish-exit.json/publish-log.txt: real Helm output ('Release quiz-master has been upgraded. Happy Helming!', REVISION:64, STATUS:deployed), script hash matches my previously-accepted packet — its exit0 required publish_release.py's validate_acceptance() to pass, requiring my own real ACCEPT bound to the correct note, confirming the gate was genuinely used. published-http/server/after-browser checks: Helm64, both images dc230d8c, PVC Bound, strict20 true before/after browser (24.599GB then 24.580GB free), backup and restore-proof SHA identical (6794975...), counts 153/727/263/29 match exactly. published-browser-commands.json: 70 commands, exactly 1 nonzero exit (disclosed 'close' exit1/os10060) — matches claim precisely. Viewed all 4 screenshots myself: Russian labels render complete/correct in all views; confirmed the disclosed footer-overlap defect is genuinely visible in long-selected-mobile.png (green feedback button overlaps the wrapped footer label) — real, minor, correctly tracked as separate P2 quiz_master-nvn, not hidden or claimed fixed. No quiz/report submission actions; all29 feedback still OPEN per fresh digest. Harness failures (daemon restart, CIM identity race, close exit1) are consistent with the one observed nonzero command exit; did not forensically re-derive the full process narrative beyond that. No unsupported claims found. ACCEPT: recorded published outcome and limits verified locally. Bound to 354-file manifest sha256 e5f3ad9e196b8232ad81f2904636f62a2820f5b6a9432c283267fe0f2870aaca; publication exit0/Helm64/image dc230d8c."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "task-a10e61a5 is now `ACCEPTED`.\n\n**Summary:** Country483 is genuinely published and the recorded outcome holds up under independent verification.\n\n- All 354 manifest files rehashed, 0 mismatches, manifest SHA matches claim.\n- `publish-exit.json`/`publish-log.txt` show a real Helm upgrade (`REVISION: 64`, `STATUS: deployed`, \"Happy Helming!\"), using the exact script hash I accepted last turn — and its `exit0` could only have happened because `publish_release.py`'s `validate_acceptance()` found my own real Hub ACCEPT correctly bound to the right note, confirming the review gate was genuinely enforced, not bypassed.\n- Fresh server checks (immediately after publish, and again after the browser session) both show Helm 64, both containers on image `dc230d8c...`, PVC Bound, strict-20% floor holding (24.599GB → 24.580GB free), and the new backup plus its independent restore-proof file have **identical** SHA-256 and matching row counts (153/727/263/29) — a genuine integrity-verified backup/restore pair.\n- Of 70 recorded browser CLI commands, exactly one had a nonzero exit — the disclosed `close` failure (`exit1/os10060`) — matching the honest harness-failure account precisely.\n- I viewed all four screenshots myself: all Russian country labels render complete and correctly wrapped. I specifically confirmed the disclosed footer-overlap defect is real and visible in `long-selected-mobile.png` (the green feedback button does partially overlap the wrapped footer label) — correctly disclosed, not hidden, and properly filed as a separate P2 ticket (`quiz_master-nvn`) rather than folded into issue483.\n- No quiz/report-submission UI actions occurred; all 29 real feedback rows remain OPEN per the fresh digest.\n\n**Limitations:** I reviewed local recorded evidence only — I did not witness Root's live SSH session or browser automation myself, and I did not forensically re-derive the full process/daemon-restart narrative beyond confirming it's consistent with the one observed nonzero exit code. No unsupported claims were found.\n\nRoot may now proceed to close issue483 per its own process; the broader backlog (7sw/3qx/9e0) and all real feedback remain open, and the new footer-overlay ticket is correctly left as a separate, unfixed follow-up.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "21709b3ce03c5963790de6489a05f0d6f971589abfc75a466ed1da12094f7132",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

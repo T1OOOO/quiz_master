@@ -1,0 +1,11 @@
+{
+  "id": "quiz_master-nvn",
+  "title": "Map study footer can be overlapped by floating feedback button on narrow screens",
+  "description": "Observed on the real published Country483 Flutter Web build at361x738. After selecting French Southern and Antarctic Territories, the full Russian label wraps correctly in the map banner and search result, but the floating feedback button partly covers the duplicate footer label. Evidence: docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication/browser/long-selected-mobile.png. Reserve horizontal/vertical space for the feedback control (including safe areas/text scaling) without hiding map/search/exit actions; verify a focused Flutter regression and mobile screenshot. This is a separately tracked visual follow-up, not a failure of the eleven Russian country-search fixes. No current app source changed for this finding.",
+  "status": "open",
+  "priority": 2,
+  "issue_type": "bug",
+  "created_at": "2026-10-16T02:17:47.7513187+03:00",
+  "created_by": "Alexey Matvienko",
+  "updated_at": "2026-10-16T02:17:47.7513187+03:00"
+}
