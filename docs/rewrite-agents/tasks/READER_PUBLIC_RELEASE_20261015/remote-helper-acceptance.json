@@ -1,0 +1,109 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-cc8016e370b841a786803480268cb2bc": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-cc8016e370b841a786803480268cb2bc",
+          "verdict": "accept",
+          "note": "Independent fresh-Claude source-only review (read-only, no execution): recomputed SHA-256 for all six worker modules and for REPORT.json itself against the files on disk in READER_PUBLIC_RELEASE_20261015/worker \u2014 all match REPORT.json exactly (prepare_reader638_release.py 801feb\u2026, prepare_reader638_remote.py 7a2867\u2026, reader638_guard.py 76df90\u2026, test_prepare_reader638_remote.py c2b456\u2026, test_reader638_release.py 51a2e2\u2026, verify_reader638_candidate.py 8f1e04\u2026; REPORT.json sha256 9d4123b1\u2026). Diffed all six modules against the prior accepted READER_A11Y_RELEASE_20261015/worker set: only prepare_reader638_release.py changes identity literals (FROZEN_COMMIT/BUILD_ID 06dfa0b, Greek002 expected revision 038a7a\u20265d5d, cleanup session 'reader06-local-mixed'); only test_reader638_release.py changes, adding a labeled synthetic 'failed_close' fixture (close_exit=1) that correctly does NOT raise (because local-browser/browser-proof.json's browser_cleanup dict already satisfies every quiescence field), then mutates that fixture's cleanup fields to assert RuntimeError('quiescence') \u2014 this is a legitimate close-1 code path test, not mislabeled as real runtime. The other 4 local files and the 4 MIXED_RELEASE_20261014 house modules are byte-identical (git status clean, diff empty). Independently called r.controller_sources(): returns exactly 10 paths \u2014 the 6 local worker modules plus reader638_guard's 4-module house set (test_verify_candidate_runtime.py, prepare_lotr_package.py, verify_candidate_runtime.py, prepare_remote_mixed.py) \u2014 matching the reported scope. Reran py_compile on all six modules (exit 0), all three --help commands (exit 0 each), and `python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py`: 14/14 passed in 19.5s locally (consistent with reported 23.514s), no failures. Verified the 279/160/158/2 article/ref counts and the baseline58/image4878/API f4d69555.../nginx e9add812.../PVC 7fc2428f pins are read from code constants matching REPORT.json and the archived prior review, and that Greek-002's noncatalog status is sourced from the unchanged house NONCATALOG_READER_REFS (not a new local exception) \u2014 Greek is not added to noncatalog. REPORT.json's own not_performed list (archive/remote/build/SSH/deploy/publication/commit/push) matches the actual file set present; no execution artifacts exist in this worker directory. Scope is prepare-only / source-ready; this review covers source compliance only and is not deployment or publication approval."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Root prioraccept all10 dependencies preserved or exactminimal freeze/reference changes; historical58 baseline/image4878/archive7d9 unchanged, newGreek038a botharticle/browser checks; full actualproducer/validation/collection; all14house regressiontests pass after realRootbrowserproof exists. Differentprovider changedscope acceptance before executable use.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker"
+        ],
+        "assignee": "session-c925756a4d904e8583de1007602dca24",
+        "author": "session-6cb6cfd1c1d54fcb824cc044e2d38930",
+        "body": "Finite worker owns ONLY docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/worker. Reuse Root accepted638 producer/remote verifier/tests preserving all gates. New fixed source06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b, buildquiz-2026.10.15-reader-06dfa0b, Greek002 served038a revision. Do not modify oldaccepted worker files. Root separately builds/tests/browser/owns release operations. Keep all source/browser/runtime/hash/DB/disk/node/PVC checks and independentreview gates. Return minimalchanged-scope diff plus ownhashes andactualtestswhenrootbrowserproofavailable. NoSSH/builds/commits/deploy or externalworkers.",
+        "created_at": 1792031959.3021123,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "code",
+        "id": "task-cc8016e370b841a786803480268cb2bc",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_release.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_remote.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\reader638_guard.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\verify_reader638_candidate.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_reader638_release.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\REPORT.json",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\REPORT_EN.md"
+          ],
+          "concerns": [
+            "Requires different-provider changed-scope source review before executable use.",
+            "Fresh browser proof validates actual close-0 path; unit test creates a labeled synthetic close-1 fixture solely to exercise full failed-close own-PID/quiescence guard."
+          ],
+          "evidence": [
+            {
+              "actual_exit": 0,
+              "command": "python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker",
+              "elapsed_seconds": 23.514,
+              "kind": "test",
+              "result": "OK",
+              "tests": 14
+            },
+            {
+              "actual_exit": 0,
+              "command": "python -m py_compile prepare_reader638_release.py prepare_reader638_remote.py verify_reader638_candidate.py reader638_guard.py test_reader638_release.py test_prepare_reader638_remote.py",
+              "cwd": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker",
+              "kind": "compile"
+            },
+            {
+              "kind": "browser_proof_binding",
+              "result": "Fresh Root proof status VERIFIED; source 06dfa0b\u2026032c9b; build quiz-2026.10.15-reader-06dfa0b; actual close exit 0; reader06-local-mixed; owned processes absent; foreign processes unchanged; ports [19090,19093]."
+            },
+            {
+              "kind": "report",
+              "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\REPORT.json",
+              "sha256": "9d4123b1b26bdb182e1fd1751d96645a4349bb6839faccadb873bdf54b8bca19"
+            }
+          ],
+          "source_sha256": {
+            "prepare_reader638_release_py": "801febb19f1999844075d33aba41080ab40ca8420310d60cb94e9b430668f1de",
+            "prepare_reader638_remote_py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+            "reader638_guard_py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+            "test_prepare_reader638_remote_py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+            "test_reader638_release_py": "51a2e209fc2162a3eac3a463c6ed29c9bc9f98fbb03651e5b228f9aa4a3ef8b5",
+            "verify_reader638_candidate_py": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Source-ready controller adaptation only. No archive, remote preparation, build, SSH, deployment, execution review, commit, push, or publication occurred."
+        },
+        "root_task_id": "task-cc8016e370b841a786803480268cb2bc",
+        "run_id": "run-2cd0e447ad51453c9e81df54d028b193",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-10f0dc952c4c4627b1ee870e12df05aa",
+        "title": "Adapt reviewed Reader controllers to corrected frozen06dfa0b source",
+        "version": 4,
+        "reviewer": "session-32de7b3c57b94a2ea52acd1bc906eef0",
+        "review_note": "Independent fresh-Claude source-only review (read-only, no execution): recomputed SHA-256 for all six worker modules and for REPORT.json itself against the files on disk in READER_PUBLIC_RELEASE_20261015/worker \u2014 all match REPORT.json exactly (prepare_reader638_release.py 801feb\u2026, prepare_reader638_remote.py 7a2867\u2026, reader638_guard.py 76df90\u2026, test_prepare_reader638_remote.py c2b456\u2026, test_reader638_release.py 51a2e2\u2026, verify_reader638_candidate.py 8f1e04\u2026; REPORT.json sha256 9d4123b1\u2026). Diffed all six modules against the prior accepted READER_A11Y_RELEASE_20261015/worker set: only prepare_reader638_release.py changes identity literals (FROZEN_COMMIT/BUILD_ID 06dfa0b, Greek002 expected revision 038a7a\u20265d5d, cleanup session 'reader06-local-mixed'); only test_reader638_release.py changes, adding a labeled synthetic 'failed_close' fixture (close_exit=1) that correctly does NOT raise (because local-browser/browser-proof.json's browser_cleanup dict already satisfies every quiescence field), then mutates that fixture's cleanup fields to assert RuntimeError('quiescence') \u2014 this is a legitimate close-1 code path test, not mislabeled as real runtime. The other 4 local files and the 4 MIXED_RELEASE_20261014 house modules are byte-identical (git status clean, diff empty). Independently called r.controller_sources(): returns exactly 10 paths \u2014 the 6 local worker modules plus reader638_guard's 4-module house set (test_verify_candidate_runtime.py, prepare_lotr_package.py, verify_candidate_runtime.py, prepare_remote_mixed.py) \u2014 matching the reported scope. Reran py_compile on all six modules (exit 0), all three --help commands (exit 0 each), and `python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py`: 14/14 passed in 19.5s locally (consistent with reported 23.514s), no failures. Verified the 279/160/158/2 article/ref counts and the baseline58/image4878/API f4d69555.../nginx e9add812.../PVC 7fc2428f pins are read from code constants matching REPORT.json and the archived prior review, and that Greek-002's noncatalog status is sourced from the unchanged house NONCATALOG_READER_REFS (not a new local exception) \u2014 Greek is not added to noncatalog. REPORT.json's own not_performed list (archive/remote/build/SSH/deploy/publication/commit/push) matches the actual file set present; no execution artifacts exist in this worker directory. Scope is prepare-only / source-ready; this review covers source compliance only and is not deployment or publication approval."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are recorded as ACCEPTED on the hub. Summary:\n\n- **task-cc8016e** (prepare-only controller adaptation): accepted. All 6 worker module hashes and REPORT.json hash independently recomputed and matched; diff against prior accepted set confirmed only the intended identity literals changed (frozen commit/build/Greek002 revision/cleanup session) plus the one new synthetic close-1 test fixture; the 4 house modules are byte-identical; `controller_sources()` independently returns the same 10 files; reran py_compile, `--help`\u00d73, and the 14-test suite myself (14/14 pass, 19.5s) \u2014 no execution/publication artifacts present.\n- **task-76e52** (fresh builds/browser proof): accepted. Cross-checked actual-flutter-builds.json, frozen-web-trees.json, local-public-dto-equivalence.json and browser-proof.json against each other \u2014 all hashes, revisions and the 74-file frozen trees are internally consistent, and the close-0 runtime proof is correctly kept distinct from the other task's synthetic close-1 unit fixture. Noted this is local/isolated evidence only, not immutable-image/Android/production verification, and doesn't itself authorize publication.\n\nNo source edits, builds, SSH, or deployment were performed by me \u2014 strictly read-only verification as scoped.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7be50353c0270f3f121a581530cbac71859f1f5de71d63a4ed035a0da2ac0cd0",
+  "scope": "Prepare-only exact changed-scope source review; no execution or publication approval. Actual image/runtime and publication gates remain separate.",
+  "schema_version": "qm-mixed-remote-helper-review/v1",
+  "author_provider": "openai",
+  "reviewer_provider": "claude",
+  "reviewed_worker_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "INSPECTED_ONLY_NOT_REMOVED",
+  "stage": "/opt/quiz-master/releases/quiz-2026.10.15-reader-6384795",
+  "stage_bytes": 195867460,
+  "archive": "/opt/quiz-master/releases/quiz-2026.10.15-reader-6384795.tar.gz",
+  "archive_bytes": 60939995,
+  "archive_sha256": "e253eeecfbb84f199e947e5e4a2ffc7db48450b1982e2f871dd37edf8becf8b0",
+  "owned_image_tag": "quiz-master:quiz-2026.10.15-reader-6384795",
+  "owned_image_id": "sha256:ce89f0800f112fdab4700e9f0af71b454eaba0337c24cf42d868cd4adfb0d5c9",
+  "dependent_docker_containers": 0,
+  "failed_container_absent": true,
+  "failure_receipt_name": "quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z-candidate-runtime.json.failure.json",
+  "failure_receipt": {
+    "status": "CANDIDATE_FAILED_NOT_VERIFIED",
+    "image_id": "sha256:ce89f0800f112fdab4700e9f0af71b454eaba0337c24cf42d868cd4adfb0d5c9",
+    "container_name": "qm-lotr-runtime-6b86cdb77f45463fb06537b648c4c7f7",
+    "error_type": "RuntimeError",
+    "logs_actual_exit": 0,
+    "startup_logs": ""
+  },
+  "backup_preserved": "/opt/quiz-master/backups/quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z.sqlite",
+  "production_helm": 58,
+  "disk_available_bytes": 20624523264,
+  "disk_total_bytes": 102417174528,
+  "actual_ssh_exit": 0
+}

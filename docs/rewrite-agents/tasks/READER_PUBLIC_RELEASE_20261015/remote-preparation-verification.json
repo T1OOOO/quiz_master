@@ -1,0 +1,107 @@
+{
+  "build_id": "quiz-2026.10.15-reader-06dfa0b",
+  "image": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
+  "values": "quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z-values.yaml",
+  "values_sha256": "6ce58bf2b3885868740d5f85f77112a4412349012b9f7ea7ed4ff126339cf5c9",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z.sqlite",
+  "backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "e5431954162e3dea0f7050bac8f3248f704d4c76a4ab5b4fa49229c4d1d8bfc8",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader-06dfa0b",
+    "image_id": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 279,
+      "total_refs": 160,
+      "playable_refs": 158,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "30e642bca54bd3f16a72aff705a254ac0423aabe3c6fceb98e9804a3f2f514d3",
+  "helm_dryrun_sha256": "64357e6b21d61aea7f24fc30f4394672f77656b6066de18c0a0db801ec1b089a",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader-06dfa0b.tar",
+  "durable_archive_sha256": "b8bd7bc5fb382f7860ce141d05e467b0b426429e4355212d44b3e50cbda61684",
+  "disk_free_bytes": 20750708736,
+  "baseline_helm_revision": 58,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+  "package_sha256": "6ddd12317732d0fa5bf87f8a80ff24e7ef71b50a233d7d65fa4249421a6c79ab",
+  "remote_prepare_exit": 0,
+  "initial_remote_prepare_exit": 1,
+  "resumed_preparation_exit": 0,
+  "remote_collect_exit": 0,
+  "initial_remote_log_sha256": "0505abb294809835cc8470046d2a1391abe666591c18a26a437bcf52c38e1664",
+  "remote_log_sha256": "c873e8dde51d4c138a66d608655ea0f1616bbdfa9fc0c0767849219fda5365c9",
+  "resume_script_sha256": "3243de74549ab839a952796844671cad3603637e24c61493f0562a7fa0016d3b",
+  "resume_contract_sha256": "60cf69209ae468063d375fd36031dec018634f9e278adfad389de3f6d0928b97",
+  "helper_source_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103"
+  },
+  "helper_review_sha256": "5fb8f8dcb2733bcae2e136f6b3120d09ee82a7078ebb5d171d2877ba97609782",
+  "limits": [
+    "Preparation only; genuine independent execution acceptance and publication verification remain.",
+    "Initial prepare exit1 was the preserved disk guard stop AFTER complete real candidate validation. After scoped owned-disk cleanup, the byte-identical reviewed import/values/dryrun suffix resumed with strict receipt/source/image/backup reuse checks and exit0. The final remote_prepare_exit0 denotes this successfully completed resumed preparation, never the initial failed attempt.",
+    "Unused Docker duplicate tags removed only after no dependent containers; all k3s images and exact candidate durable archive preserved. Current rehearsal DB and valid new0600 backup remain."
+  ]
+}

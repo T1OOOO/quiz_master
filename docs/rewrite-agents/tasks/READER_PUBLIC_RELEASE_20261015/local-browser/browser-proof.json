@@ -1,0 +1,100 @@
+{
+  "status": "VERIFIED",
+  "frozen_source": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+  "build_id": "quiz-2026.10.15-reader-06dfa0b",
+  "qa_web_main_sha256": "65837445758ddc2609a5b8b32678c4557d5dfae7dd4a3c9f1830ad1261472719",
+  "viewport": {
+    "width": 361,
+    "height": 738
+  },
+  "controlled_real_go_fixture_questions": 20,
+  "actual_visible_score": "19/20",
+  "intentional_wrong_answer": {
+    "question_id": "greek-002",
+    "selected_text": "\u0413\u0435\u0444\u0435\u0441\u0442",
+    "correct_text": "\u041f\u043e\u0441\u0435\u0439\u0434\u043e\u043d"
+  },
+  "articles": [
+    {
+      "question_id": "greek-002",
+      "revision_sha256": "038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d",
+      "article_id": "question:greek-002",
+      "source_links_count": 5,
+      "all_four_headed_sections_accessible": true,
+      "empty_textareas": 0,
+      "dialog_and_source_controls_confirmed": true,
+      "footer_image": "docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\local-browser\\mixed\\article-footer.png",
+      "footer_image_sha256": "3bf58c594ecdc6cc72780601c28050d56b0a2116c7d6aed9094526a4d366d613"
+    }
+  ],
+  "screenshots": {
+    "article-top.png": "2b62ed559d7b471aed101f5e91e57ba5cf7be897f7584e23813896bae09fd0ce",
+    "article-middle.png": "94f2773990086db38616ef2982edddc728a2d389156cb2b655508a6bf32777a5",
+    "article-footer.png": "3bf58c594ecdc6cc72780601c28050d56b0a2116c7d6aed9094526a4d366d613",
+    "release20-result.png": "99ce627c960889b4d0cc0a672d78beb707b1744ac62dbd414eac588283b27d79"
+  },
+  "browser_inactive": true,
+  "browser_close_actual_exit": 0,
+  "browser_cleanup": {
+    "actual_cleanup_exit": 0,
+    "owned_go_cleanup": {
+      "actual_api_pid": 41408,
+      "actual_api_exit": 1,
+      "stop_seen": true
+    },
+    "inactive": true,
+    "ports_closed": [
+      19090,
+      19093
+    ],
+    "foreign_processes_changed": false,
+    "session": "reader06-local-mixed",
+    "checked_owned_pids": [
+      33336,
+      27100,
+      42752,
+      42068,
+      43848,
+      30076,
+      29964,
+      36816,
+      45732,
+      7900,
+      7368,
+      48068,
+      11508,
+      41408
+    ],
+    "namespace": "quiz-master",
+    "verified_daemon_pid": 33336,
+    "method": "Official named browser close0; first strict audit detected transient Chrome shutdown and preserved a reused PID. Retry verified every captured own browser/Go/server PID absent and both ports closed. No manual process stop or foreign process change.",
+    "native_processes_absent": true,
+    "previously_verified_chrome_pid": 27100,
+    "daemon_stop_required": false
+  },
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "api_static_server_actual_exit": 0,
+  "actual_ui_play_exit": 0,
+  "browser_errors": [],
+  "native_quiescence_audit": {
+    "actual_exit": 0,
+    "script_sha256": "f4323342fa1367fe0f07ac61670cd5ae0c49389e0bdadf8106de5a7e48367578",
+    "log_sha256": "8523f201c9c2dd75647b6435fa149edcab78449ac24d54f7bacf1fd6791c6738"
+  },
+  "public_dto_equivalence": {
+    "actual_http_status": 200,
+    "quiz_questions_revision_and_content_equal_captured_production_snapshot": true,
+    "questions": 20,
+    "greek002_revision": "038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d",
+    "actual_public_response_sha256": "46604e5032b09271621ce87ea7c61842e5dcc05d8e5ace3543d773eac91396a2",
+    "scope": "Actual isolated local Go fixture full public quiz equals captured production quiz; not immutable Linux image runtime proof"
+  },
+  "harness_limitations": [
+    "AX-ref clicks on Flutter semantics placeholder did not enable semantics; DOM placeholder click did, with subsequent actual AX observations.",
+    "Initial strict cleanup detected transient Chrome children and a reused PID. It stopped no process; later exact own-PID/port audit passed."
+  ],
+  "scope": "Fresh06dfa0b compiled Flutter QA and actual isolated Go API whose full20 public quiz equals captured production snapshot038a; this is not immutable Linux image, Android or hardware screen-reader verification."
+}

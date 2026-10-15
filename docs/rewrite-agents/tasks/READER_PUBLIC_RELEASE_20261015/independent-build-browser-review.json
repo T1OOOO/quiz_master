@@ -1,0 +1,60 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-76e52cd716ac4c84999b8a3244245a9d": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-76e52cd716ac4c84999b8a3244245a9d",
+          "verdict": "accept",
+          "note": "Independent fresh-Claude evidence-only review (read-only, no build/browser/SSH rerun on my side): read actual-flutter-builds.json, frozen-web-trees.json, local-public-dto-equivalence.json and local-browser/browser-proof.json in READER_PUBLIC_RELEASE_20261015. Both fresh Flutter builds (production and qa targets) report actual_exit 0, elapsed 298.98s/284.66s, built against frozen_source 06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b / build_id quiz-2026.10.15-reader-06dfa0b. frozen-web-trees.json file_sha256 for both trees (74 files each) matches byte-for-byte on every non-environment-specific asset (favicon.png, flutter.js, flutter_bootstrap.js, flutter_service_worker.js, manifest.json, all canvaskit/*, all icons/*, all assets/* including catalog.json, category/study images, fonts and shaders) — only main.dart.js and .last_build_id differ between production and qa, which is the expected consequence of the different --dart-define QM_API_BASE_URL compile constant, not drift; main.dart.js hashes match the two main_dart_js_sha256 values in actual-flutter-builds.json exactly. local-public-dto-equivalence.json (status 200, questions=20, greek002_revision 038a7a…5d5d, actual_public_response_sha256 46604e50…) matches the embedded public_dto_equivalence block inside local-browser/browser-proof.json verbatim — consistent cross-file, not a one-off claim. browser-proof.json itself shows viewport 361x738, controlled_real_go_fixture_questions=20, actual_visible_score '19/20' with an intentional_wrong_answer recorded on greek-002 (Hephaestus vs Poseidon), all 4 article headings/body marked StaticText-accessible, empty_textareas=0, 5 source controls confirmed, 4 screenshot hashes recorded (top/middle/footer/result), browser_close_actual_exit=0 with a fully populated browser_cleanup block (native_processes_absent true, foreign_processes_changed false, both verified/previously-verified Chrome PIDs present in checked_owned_pids, owned_go_cleanup.stop_seen true, ports [19090,19093] closed) and an explicit method/harness_limitations note describing the first strict audit catching a transient Chrome shutdown + reused PID without killing anything, then a clean retry — so close-0 is the genuine recorded runtime result, matching how task-cc8016e's synthetic close-1 unit fixture was correctly kept separate and not conflated with this real proof. owned-failed-candidate-inventory.json and owned-failed-candidate-cleanup.json show Root's SSH-based removal was scoped to exactly the one prior failed candidate (stage/archive/image/tag/bytes all identical across inspect-then-remove, e.g. image sha256:ce89f080…, archive_sha256 e253eeec…, stage_bytes 195867460), with the sqlite backup preserved, shared_cache_pruned=false and other_projects_changed=false — consistent with a narrowly scoped, non-destructive cleanup of only Root's own failed candidate. Limits: this is local/isolated evidence (local Go fixture, local Chrome, local Flutter builds) and explicitly says so in its own 'scope' fields — it is not immutable Linux image, Android, hardware screen-reader, or production runtime verification, and does not by itself authorize package/image/publication execution, which remains separately gated per qm-release."
+        }
+      },
+      "actual_response": {
+        "acceptance": "BothactualFlutterbuilds0 sevenassetsfrozenexact andcompleteWebtrees. ActuallocalGoDTO exact public20snapshot038a beforebrowser. Real mobile361x738 game19/20 and article semantics/link/scroll/resume/cleanup proof. Independent controls before package.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015",
+          "C:\\ap\\quiz_master\\.run\\reader_public_release_20261015"
+        ],
+        "assignee": "session-6cb6cfd1c1d54fcb824cc044e2d38930",
+        "author": "session-6cb6cfd1c1d54fcb824cc044e2d38930",
+        "body": "Root owns new release evidence/build/browser fixtures outside worker dir. Frozen06dfa0b source/newbuild reader06, existing snapshot038a authority. Build production+QA separately, genuine20Greek played19/20 wrongHephaestus exact038a, all4articleheadings/StaticText/0textarea/5links andcleanup. Need actual public revision equivalent fixture; do not count oldcanonical e441. Preserve foreign files and production. No runtime deployment approval inferred.",
+        "created_at": 1792031990.3704574,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-76e52cd716ac4c84999b8a3244245a9d",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "actual_checks": "productionbuild0/QA0 sevenfrozenassets; actualpublicGoquiz20identicalcapturedruntime; realcompiledmobile361x738score19/20 intentionalGreek002Hephaestus, fourarticleStaticText sections,0textarea,5sources,top/middle/footer/screenshotsinspected, close0/nativeaudit0/portsclosed. Not immutableLinuximage/runtime/publication.",
+          "evidence": [
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/actual-flutter-builds.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/frozen-web-trees.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/local-browser/browser-proof.json",
+            "docs/rewrite-agents/tasks/READER_PUBLIC_RELEASE_20261015/local-public-dto-equivalence.json"
+          ],
+          "source": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+          "status": "FRESH_CORRECTED_BUILD_AND_BROWSER_VERIFIED_SOURCE_ONLY"
+        },
+        "root_task_id": "task-76e52cd716ac4c84999b8a3244245a9d",
+        "run_id": "run-2fe05077a06c42b3a1a5e78f23829fbb",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-10f0dc952c4c4627b1ee870e12df05aa",
+        "title": "Fresh corrected06 Flutter builds and public-revision browser proof",
+        "version": 4,
+        "reviewer": "session-32de7b3c57b94a2ea52acd1bc906eef0",
+        "review_note": "Independent fresh-Claude evidence-only review (read-only, no build/browser/SSH rerun on my side): read actual-flutter-builds.json, frozen-web-trees.json, local-public-dto-equivalence.json and local-browser/browser-proof.json in READER_PUBLIC_RELEASE_20261015. Both fresh Flutter builds (production and qa targets) report actual_exit 0, elapsed 298.98s/284.66s, built against frozen_source 06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b / build_id quiz-2026.10.15-reader-06dfa0b. frozen-web-trees.json file_sha256 for both trees (74 files each) matches byte-for-byte on every non-environment-specific asset (favicon.png, flutter.js, flutter_bootstrap.js, flutter_service_worker.js, manifest.json, all canvaskit/*, all icons/*, all assets/* including catalog.json, category/study images, fonts and shaders) — only main.dart.js and .last_build_id differ between production and qa, which is the expected consequence of the different --dart-define QM_API_BASE_URL compile constant, not drift; main.dart.js hashes match the two main_dart_js_sha256 values in actual-flutter-builds.json exactly. local-public-dto-equivalence.json (status 200, questions=20, greek002_revision 038a7a…5d5d, actual_public_response_sha256 46604e50…) matches the embedded public_dto_equivalence block inside local-browser/browser-proof.json verbatim — consistent cross-file, not a one-off claim. browser-proof.json itself shows viewport 361x738, controlled_real_go_fixture_questions=20, actual_visible_score '19/20' with an intentional_wrong_answer recorded on greek-002 (Hephaestus vs Poseidon), all 4 article headings/body marked StaticText-accessible, empty_textareas=0, 5 source controls confirmed, 4 screenshot hashes recorded (top/middle/footer/result), browser_close_actual_exit=0 with a fully populated browser_cleanup block (native_processes_absent true, foreign_processes_changed false, both verified/previously-verified Chrome PIDs present in checked_owned_pids, owned_go_cleanup.stop_seen true, ports [19090,19093] closed) and an explicit method/harness_limitations note describing the first strict audit catching a transient Chrome shutdown + reused PID without killing anything, then a clean retry — so close-0 is the genuine recorded runtime result, matching how task-cc8016e's synthetic close-1 unit fixture was correctly kept separate and not conflated with this real proof. owned-failed-candidate-inventory.json and owned-failed-candidate-cleanup.json show Root's SSH-based removal was scoped to exactly the one prior failed candidate (stage/archive/image/tag/bytes all identical across inspect-then-remove, e.g. image sha256:ce89f080…, archive_sha256 e253eeec…, stage_bytes 195867460), with the sqlite backup preserved, shared_cache_pruned=false and other_projects_changed=false — consistent with a narrowly scoped, non-destructive cleanup of only Root's own failed candidate. Limits: this is local/isolated evidence (local Go fixture, local Chrome, local Flutter builds) and explicitly says so in its own 'scope' fields — it is not immutable Linux image, Android, hardware screen-reader, or production runtime verification, and does not by itself authorize package/image/publication execution, which remains separately gated per qm-release."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "Both reviews are recorded as ACCEPTED on the hub. Summary:\n\n- **task-cc8016e** (prepare-only controller adaptation): accepted. All 6 worker module hashes and REPORT.json hash independently recomputed and matched; diff against prior accepted set confirmed only the intended identity literals changed (frozen commit/build/Greek002 revision/cleanup session) plus the one new synthetic close-1 test fixture; the 4 house modules are byte-identical; `controller_sources()` independently returns the same 10 files; reran py_compile, `--help`×3, and the 14-test suite myself (14/14 pass, 19.5s) — no execution/publication artifacts present.\n- **task-76e52** (fresh builds/browser proof): accepted. Cross-checked actual-flutter-builds.json, frozen-web-trees.json, local-public-dto-equivalence.json and browser-proof.json against each other — all hashes, revisions and the 74-file frozen trees are internally consistent, and the close-0 runtime proof is correctly kept distinct from the other task's synthetic close-1 unit fixture. Noted this is local/isolated evidence only, not immutable-image/Android/production verification, and doesn't itself authorize publication.\n\nNo source edits, builds, SSH, or deployment were performed by me — strictly read-only verification as scoped.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "7be50353c0270f3f121a581530cbac71859f1f5de71d63a4ed035a0da2ac0cd0",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

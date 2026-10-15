@@ -1,0 +1,26 @@
+{
+  "status": "EXACT_EXECUTION_INPUTS_PENDING_GENUINE_REVIEW_NOT_PUBLISHED",
+  "task_id": "task-25944ceb58344d32958bf3e43788c86c",
+  "execution_packet_sha256": "39e88ddacf7da0670c6668521bb9249e4c7d108e77d53794d618e7e930c97e73",
+  "publish_script_sha256": "9a01341607fcd11bbba94e8965e001619568607eb8a2b1c6577b16a87b1f9454",
+  "publication_renderer_sha256": "0260ea9162f32cf96e4ed41a1bcdb1926f571fd43cac157b8239dc42f0239cf6",
+  "publication_executor_sha256": "fe8844c6fcdbaf1ead2c28d18eeb246a9fdd8e9f1fb40db500fa21b858f7afc5",
+  "package_sha256": "6ddd12317732d0fa5bf87f8a80ff24e7ef71b50a233d7d65fa4249421a6c79ab",
+  "image": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
+  "actual_publish_script_syntax_exit": 0,
+  "preparation_evidence_sha256": {
+    "initial-guard-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "initial-prepare-exit.json": "b8b9eab68203e851595708abb4b126cf54287e1f9e50567afdba91f84e264de1",
+    "initial-prepare-log.txt": "0505abb294809835cc8470046d2a1391abe666591c18a26a437bcf52c38e1664",
+    "initial-prepare-wrapper.sh": "bcf7a1a15d9ddd4e662b9ce6ab6e388fe3519112de326c7b2295e373e79df603",
+    "resume-prepare.sh": "3243de74549ab839a952796844671cad3603637e24c61493f0562a7fa0016d3b",
+    "resume-prepare-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5",
+    "resume-prepare-log.txt": "c873e8dde51d4c138a66d608655ea0f1616bbdfa9fc0c0767849219fda5365c9",
+    "resume-syntax-exit.json": "ddd38988377caedc956861ccec4a0fd890ffa117f3ffac05a66ac26cf5fbeb00",
+    "release-imported-duplicate.sh": "ec45ca2757b0e0d7d696be0503426f4dd65d4ad74bc87e8067d824a302e2e171",
+    "remote-collect-script.sh": "4ed54403408532fbd835e6474217dbef32abfc7f600e8562076270ae84af0638",
+    "remote-collect-log.txt": "a83c36d1bb80fe3c56a9fe9414b7f203e460a8da5784e93ee1c0f1f2ee8df26b",
+    "remote-collect-exit.json": "ac402e57cc9c2e0ca0a3fe16d4959090bfaa023c6fa1b4dd328b65bad8ee9cf5"
+  },
+  "scope": "Initial prepare1 retained; exact reviewed remaining import/values/dryrun suffix resumed0 and original collector0. No Helm upgrade. Independent execution review must inspect and accept this complete chain before publication."
+}

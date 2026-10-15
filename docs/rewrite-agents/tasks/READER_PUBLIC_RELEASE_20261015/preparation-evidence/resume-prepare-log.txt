@@ -1,0 +1,32 @@
+api: OK
+web/main.dart.js: OK
+nginx.conf: OK
+nginx.conf: OK
+RESUME verified unchanged immutable source, real runtime100/20, copiedDB335 and backup; no rebuild or test bypass
+docker.io/library/quiz master:quiz 2026.	saved	
+application/vnd.oci.image.index.v1+json sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af
+Importing	elapsed: 12.1s	total:   0.0 B	(0.0 B/s)	
+b8bd7bc5fb382f7860ce141d05e467b0b426429e4355212d44b3e50cbda61684  /var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader-06dfa0b.tar
+docker.io/library/quiz-master@sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af
+==> Linting chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+networkpolicy.networking.k8s.io/quiz-isolation configured (server dry run)
+persistentvolumeclaim/quiz-data configured (server dry run)
+role.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+rolebinding.rbac.authorization.k8s.io/traefik-ingress-reader configured (server dry run)
+service/quiz-master configured (server dry run)
+deployment.apps/quiz-master configured (server dry run)
+ingress.networking.k8s.io/quiz-master configured (server dry run)
+middleware.traefik.io/quiz-rate-limit configured (server dry run)
+PREPARED build=quiz-2026.10.15-reader-06dfa0b image=sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af values=quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z-values.yaml mode=prepare
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+Warning: resource networkpolicies/quiz-isolation is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource persistentvolumeclaims/quiz-data is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource roles/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource rolebindings/traefik-ingress-reader is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource services/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource deployments/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource ingresses/quiz-master is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource middlewares/quiz-rate-limit is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.

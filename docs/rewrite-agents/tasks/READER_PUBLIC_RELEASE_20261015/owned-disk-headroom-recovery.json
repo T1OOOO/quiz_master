@@ -1,0 +1,22 @@
+{
+  "status": "REMOVED_ONLY_UNUSED_QUIZ_DOCKER_DUPLICATES_AND_IDENTICAL_OLD_OWN_BACKUP",
+  "removed_docker_tags": {
+    "quiz-master:quiz-2026.10.14-mixed-ecac092": "sha256:2d1ea6bcb0f92bf62b7173bb23ff0133cfd457ebd4746f08cbcdd73e3f221727",
+    "quiz-master:quiz-2026.10.14-screen-song-6866608": "sha256:a97cf777b2015c595fd1307017246a2806cce597e0233da75e496a433761e074",
+    "quiz-master:quiz-2026.10.14-acting-craft-83748f5": "sha256:039474ddb2feac0986908a7681c18fcf39cb716428e9c8acf199e8f9e044c961"
+  },
+  "removed_identical_backup": "/opt/quiz-master/backups/quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z.sqlite",
+  "retained_identical_current_backup": "/opt/quiz-master/backups/quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z.sqlite",
+  "retained_backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "all_k3s_images_unchanged": true,
+  "verified_candidate_image_preserved": "quiz-master:quiz-2026.10.15-reader-06dfa0b",
+  "disk_available_before": 20467695616,
+  "disk_available_after": 20909117440,
+  "disk_total": 102417174528,
+  "disk20percent": true,
+  "production_helm": 58,
+  "https_ready": 200,
+  "shared_cache_pruned": false,
+  "other_projects_changed": false,
+  "actual_ssh_exit": 0
+}

@@ -1,0 +1,12 @@
+{
+  "status": "EXACT_PREVIOUSLY_REVIEWED_PREPARE_TAIL_WITH_STRICT_REUSE_CHECKS",
+  "original_archive_sha256": "6ddd12317732d0fa5bf87f8a80ff24e7ef71b50a233d7d65fa4249421a6c79ab",
+  "original_cutover_sha256": "9f24ed9517dcac1ea4860b41c2677e930fba27cbe02eac19701a4a454242fb14",
+  "original_tail_sha256": "9387589c29aeca598a91f398822af1d7b2e02551e41f0988b8e2f45c3008f7c9",
+  "resume_script_sha256": "3243de74549ab839a952796844671cad3603637e24c61493f0562a7fa0016d3b",
+  "run": "quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z",
+  "expected_image": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
+  "initial_prepare_exit": 1,
+  "initial_stop": "Unchanged f_bavail20percent guard after verified candidate; no import or Helm upgrade reached",
+  "resumes_only": "The exact original durable save/import/tag/values/Helm dryrun suffix; no backup/rehearsal/image rebuild or Helm upgrade."
+}

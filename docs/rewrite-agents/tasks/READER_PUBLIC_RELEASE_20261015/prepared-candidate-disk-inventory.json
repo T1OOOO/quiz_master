@@ -1,0 +1,97 @@
+{
+  "status": "READ_ONLY_AFTER_SUCCESSFUL_RUNTIME_AND_FAILED_DISK_GUARD",
+  "run": "quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z",
+  "runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader-06dfa0b",
+    "image_id": "sha256:95ad1112d272b6cec48d517b350285ed560687cec4a8fc8f7d1b99e6d27cf2af",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 279,
+      "total_refs": 160,
+      "playable_refs": 158,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "disk_available": 20470980608,
+  "disk_total": 102417174528,
+  "disk20percent": false,
+  "largest_owned_stage_children": [
+    {
+      "name": "rehearsal-quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z",
+      "bytes": 87885841,
+      "directory": true
+    },
+    {
+      "name": "web",
+      "bytes": 78507536,
+      "directory": true
+    },
+    {
+      "name": "api",
+      "bytes": 22988817,
+      "directory": false
+    },
+    {
+      "name": "quizzes",
+      "bytes": 3143565,
+      "directory": true
+    },
+    {
+      "name": "next",
+      "bytes": 2352729,
+      "directory": true
+    },
+    {
+      "name": "runtime-bundles.json",
+      "bytes": 402775,
+      "directory": false
+    },
+    {
+      "name": "study",
+      "bytes": 143122,
+      "directory": true
+    },
+    {
+      "name": "runtime-public-baseline.json",
+      "bytes": 136619,
+      "directory": false
+    }
+  ],
+  "current_backup": "/opt/quiz-master/backups/quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z.sqlite",
+  "current_backup_bytes": 49364992,
+  "current_backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "old_638_backup_exists": true,
+  "old_638_backup_bytes": 49364992,
+  "old_638_backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "production_helm": 58,
+  "https_ready": 200,
+  "actual_ssh_exit": 0
+}

@@ -1,0 +1,22 @@
+{
+  "status": "SOURCE_READY_FOR_INDEPENDENT_REVIEW_NOT_EXECUTED",
+  "frozen_source": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+  "build_id": "quiz-2026.10.15-reader-06dfa0b",
+  "greek002_served_revision": "038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d",
+  "browser_cleanup_session": "reader06-local-mixed",
+  "source_sha256": {
+    "prepare_reader638_release.py": "801febb19f1999844075d33aba41080ab40ca8420310d60cb94e9b430668f1de",
+    "prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453",
+    "test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "test_reader638_release.py": "51a2e209fc2162a3eac3a463c6ed29c9bc9f98fbb03651e5b228f9aa4a3ef8b5",
+    "verify_reader638_candidate.py": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a"
+  },
+  "checks": [
+    {"command": "python -m py_compile prepare_reader638_release.py prepare_reader638_remote.py verify_reader638_candidate.py reader638_guard.py test_reader638_release.py test_prepare_reader638_remote.py", "actual_exit": 0},
+    {"command": "python prepare_reader638_release.py --help; python prepare_reader638_remote.py --help; python verify_reader638_candidate.py --help", "actual_exit": 0},
+    {"command": "python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py", "actual_exit": 0, "tests": 14, "elapsed_seconds": 23.514, "actual_stdout_tail": "Ran 14 tests in 23.514s\\n\\nOK"}
+  ],
+  "browser_proof": {"status": "VERIFIED", "browser_close_actual_exit": 0, "session": "reader06-local-mixed", "native_processes_absent": true, "foreign_processes_changed": false, "ports_closed": [19090, 19093]},
+  "not_performed": ["archive preparation", "remote preparation", "build", "SSH", "deployment", "publication", "commit", "push"]
+}

@@ -1,0 +1,67 @@
+{
+  "status": "EXACT_FROZEN_BINDING_DELTA_PENDING_REVIEW",
+  "frozen_source": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+  "build_id": "quiz-2026.10.15-reader-06dfa0b",
+  "source_dependency_sha256": {
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\test_verify_candidate_runtime.py": "9269deebe4e65fe522d97e1c7d7ac20bdbc07afef808bcd1095a895c888eeceb",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\verify_candidate_runtime.py": "dfd07f90c71e3106e0a73baac120921c59458111457f74ab1d67e64490a2afca",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_lotr_package.py": "c9e4dc75574232a8f36f6ac1ee3e7a6039c398e721641335c54f4fb07332d0e0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_release.py": "801febb19f1999844075d33aba41080ab40ca8420310d60cb94e9b430668f1de",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\prepare_reader638_remote.py": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_reader638_release.py": "51a2e209fc2162a3eac3a463c6ed29c9bc9f98fbb03651e5b228f9aa4a3ef8b5",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\MIXED_RELEASE_20261014\\worker\\prepare_remote_mixed.py": "0d6f1d25438c06c889e41bf52e1eb982c266e6640fba610b8bc1df837bdf1103",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\verify_reader638_candidate.py": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\test_prepare_reader638_remote.py": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0",
+    "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\READER_PUBLIC_RELEASE_20261015\\worker\\reader638_guard.py": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453"
+  },
+  "changes": {
+    "63847958fdde804f97366e1be04645269a4d42cc": "06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b",
+    "quiz-2026.10.15-reader-6384795": "quiz-2026.10.15-reader-06dfa0b",
+    "e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e": "038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d",
+    "reader638-local-mixed": "reader06-local-mixed"
+  },
+  "files": [
+    {
+      "file": "prepare_reader638_release.py",
+      "identical_to_accepted638": false,
+      "sha256": "801febb19f1999844075d33aba41080ab40ca8420310d60cb94e9b430668f1de"
+    },
+    {
+      "file": "prepare_reader638_remote.py",
+      "identical_to_accepted638": true,
+      "sha256": "7a286739d6d2d26e3c1ff34b3d433dc6063145552c4e3067ff542a8b48da675d"
+    },
+    {
+      "file": "reader638_guard.py",
+      "identical_to_accepted638": true,
+      "sha256": "76df90ddd5aec52354d7d3876ac0f71f2847951c9fac8c40ccd25bdb9d57c453"
+    },
+    {
+      "file": "test_prepare_reader638_remote.py",
+      "identical_to_accepted638": true,
+      "sha256": "c2b456a8ba272331e02476be201a22227906a26903a74dbe706e03c8cb3451d0"
+    },
+    {
+      "file": "test_reader638_release.py",
+      "identical_to_accepted638": false,
+      "sha256": "51a2e209fc2162a3eac3a463c6ed29c9bc9f98fbb03651e5b228f9aa4a3ef8b5"
+    },
+    {
+      "file": "verify_reader638_candidate.py",
+      "identical_to_accepted638": true,
+      "sha256": "8f1e049c5316bbcf486b66c88859daa3ac4806a8aae250faa38a5bc64c2f492a"
+    }
+  ],
+  "all_prior_source_and_dependency_hashes_still_match_actual_acceptance": true,
+  "source_diff": {
+    "prepare_reader638_release.py": "--- accepted638/prepare_reader638_release.py\n+++ corrected06/prepare_reader638_release.py\n@@ -11,7 +11,7 @@\n PVC_UID='7fc2428f-4146-4c78-a26d-2347d9f3b7bf'\n API_SHA256='f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850'\n NGINX_SHA256='e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc'\n-FROZEN_COMMIT='63847958fdde804f97366e1be04645269a4d42cc'; BUILD_ID='quiz-2026.10.15-reader-6384795'\n+FROZEN_COMMIT='06dfa0bca56c144e4f6c8c06cb1e7b258e032c9b'; BUILD_ID='quiz-2026.10.15-reader-06dfa0b'\n READER_SOURCE='next/apps/quiz_app/assets/study/question-articles.json'; CATALOG_SOURCE='next/apps/quiz_app/assets/catalog.json'\n FROZEN_ASSETS={'catalog':CATALOG_SOURCE,'reader':READER_SOURCE,'library_background':'next/apps/quiz_app/assets/library-bg-v1.png',\n               **{name.replace('-','_'):f'next/apps/quiz_app/assets/categories/{name}.png' for name in ('geography-capitals','geography-flags','mythology-greece','history-art')}}\n@@ -51,7 +51,7 @@\n  require(len(current)==len(new)==279 and set(new)-set(old)==ARTICLE_IDS,'Reader additions or duplicates differ')\n  require(all(new[k]==v for k,v in old.items()),'one of prior 278 Reader articles changed')\n  refs=new['question:greek-002'].get('question_refs',[])\n- expected=('prep-greek-mythology','greek-002','e441297ab473743e34633a90a13aa4a1f86b5e17a062185a9772a1ce5e87fe7e')\n+ expected=('prep-greek-mythology','greek-002','038a7a47982dd284760ac2183c58f29d6a054ad708f8139fd5e0b9f74a0e5d5d')\n  require(len(refs)==1 and tuple(refs[0].get(k) for k in ('quiz_id','question_id','revision_sha256'))==expected,'Greek002 reference differs')\n  proof=browser.get('articles',[])\n  require(len(proof)==1 and proof[0].get('article_id')=='question:greek-002' and proof[0].get('question_id')==expected[1] and proof[0].get('revision_sha256')==expected[2],'browser Greek002 reference differs')\n@@ -111,7 +111,7 @@\n  if browser.get('browser_close_actual_exit')==0: return\n  cleanup=browser.get('browser_cleanup',{})\n  require(browser.get('browser_close_actual_exit')==1 and cleanup.get('actual_cleanup_exit')==0 and\n-         cleanup.get('session')=='reader638-local-mixed' and cleanup.get('namespace')=='quiz-master' and\n+         cleanup.get('session')=='reader06-local-mixed' and cleanup.get('namespace')=='quiz-master' and\n          cleanup.get('inactive') is True and cleanup.get('native_processes_absent') is True and\n          cleanup.get('foreign_processes_changed') is False and cleanup.get('ports_closed')==[19090,19093] and\n          cleanup.get('verified_daemon_pid') in cleanup.get('checked_owned_pids',[]) and\n",
+    "test_reader638_release.py": "--- accepted638/test_reader638_release.py\n+++ corrected06/test_reader638_release.py\n@@ -65,8 +65,11 @@\n     def test_failed_browser_close_requires_exact_owned_quiescence(self):\n         proof=json.loads((Path(__file__).parents[1]/'local-browser/browser-proof.json').read_bytes())\n         r.verify_browser_cleanup(proof)\n+        # Synthetic failed-close fixture; the actual runtime proof records its own close result.\n+        failed_close=copy.deepcopy(proof); failed_close['browser_close_actual_exit']=1\n+        r.verify_browser_cleanup(failed_close)\n         for field,value in [('native_processes_absent',False),('foreign_processes_changed',True),('session','foreign'),('checked_owned_pids',[])]:\n-            bad=copy.deepcopy(proof); bad['browser_cleanup'][field]=value\n+            bad=copy.deepcopy(failed_close); bad['browser_cleanup'][field]=value\n             with self.assertRaisesRegex(RuntimeError,'quiescence'): r.verify_browser_cleanup(bad)\n \n     def test_review_dependency_paths_are_real_and_cover_executable_modules(self):\n"
+  },
+  "actual_behavioral_tests": {
+    "command": "python -m unittest -v test_reader638_release.py test_prepare_reader638_remote.py",
+    "actual_exit": 0,
+    "tests": 14,
+    "elapsed_seconds": 23.514,
+    "actual_stdout_tail": "Ran 14 tests in 23.514s\\n\\nOK"
+  }
+}

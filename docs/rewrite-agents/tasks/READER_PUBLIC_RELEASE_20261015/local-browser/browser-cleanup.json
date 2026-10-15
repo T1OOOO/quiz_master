@@ -1,0 +1,37 @@
+{
+  "actual_cleanup_exit": 0,
+  "owned_go_cleanup": {
+    "actual_api_pid": 41408,
+    "actual_api_exit": 1,
+    "stop_seen": true
+  },
+  "inactive": true,
+  "ports_closed": [
+    19090,
+    19093
+  ],
+  "foreign_processes_changed": false,
+  "session": "reader06-local-mixed",
+  "checked_owned_pids": [
+    33336,
+    27100,
+    42752,
+    42068,
+    43848,
+    30076,
+    29964,
+    36816,
+    45732,
+    7900,
+    7368,
+    48068,
+    11508,
+    41408
+  ],
+  "namespace": "quiz-master",
+  "verified_daemon_pid": 33336,
+  "method": "Official named browser close0; first strict audit detected transient Chrome shutdown and preserved a reused PID. Retry verified every captured own browser/Go/server PID absent and both ports closed. No manual process stop or foreign process change.",
+  "native_processes_absent": true,
+  "previously_verified_chrome_pid": 27100,
+  "daemon_stop_required": false
+}
