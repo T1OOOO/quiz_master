@@ -1,0 +1,11 @@
+# Publication source handoff
+
+The initial native task2805 invented a receipt schema and omitted live guards. Root rejected it during lead inspection; it was never rendered or executed with production inputs. The native repair5f then copied the accepted historical Reader291 renderer/executor into fresh target-specific files, adapting source/build/work paths, Helm61 and the future exact execution task ID. Historical files stayed untouched.
+
+Root took exclusive ownership after native handback under task1f1ca79d0de24c93954406a82768c20f (assignment only, not independent approval). Root observed two failing optimized-Python subcases, then added explicit optimized-Python refusal before imports/receipt reads to both modules. Three meaningful guard tests now pass: renderer import is inert, both optimized imports refuse, and an unaccepted execution receipt never reaches SSH or Git. These replace the native literal-string checks.
+
+The renderer deliberately inherits the actually prepared stage's complete prefix, including project lock and reviewed preflight, rather than recreating those guards from comments. It adds a fresh SQLite online backup, durable image/values/render hashes, Helm lint/template/server dry run, repeated preflight, one atomic upgrade and published byte readbacks. It must consume the actual package and remote-preparation receipt; none is fabricated for source approval. The executor requires the genuine future exact task1f acceptance plus executor/script/packet/package/image hashes and unchanged frozen runtime source before SSH.
+
+Root also observed the new repeat-execution guard fail before adding an early refusal when publication evidence exists. Four guard tests then passed (0.331 seconds). The executor now binds the actual zero-error review callback to the exact execution-packet digest, and the rendered post-upgrade check requires both containers to use the reviewed image plus an available replica and HTTPS readiness. These changes precede the exact independent execution review.
+
+The local producer and preview have passed. Actual remote preparation, concrete candidate rendering/syntax checks and independent review of the exact image/packet/shell/executor remain mandatory before publication. This source handoff is not execution acceptance.

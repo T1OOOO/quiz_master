@@ -1,0 +1,38 @@
+{
+  "status": "EXACT_EXECUTION_INPUTS_PENDING_GENUINE_REVIEW_NOT_PUBLISHED",
+  "task_id": "task-1f1ca79d0de24c93954406a82768c20f",
+  "execution_packet_sha256": "44d8b8965007c0fbd03e03540518ad68cc6c9380ce805ee0ad192b1c68c6e7df",
+  "publish_script_sha256": "994a76ed46019adaee7d6120345c8968a889d8ce047172c1bf69eda7a408b92f",
+  "publication_renderer_sha256": "dc3146cfa5c701a51ae34548e318a8742a781056303b00306f3e6316fda897f3",
+  "publication_executor_sha256": "e434d8aaaaad06886ec9ce0515c6023abbd5551e7e68786e2222af536c8c0444",
+  "package_sha256": "01ddc3ee1cd7ef68376ec1dc84c06ad9c8ab88970995715edce3e631a5c7417d",
+  "image": "sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4",
+  "actual_publish_script_syntax_exit": 0,
+  "preparation_evidence_sha256": {
+    "remote-resume-guard-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+    "remote-resume-guard-log.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote-resume-script.sh": "158c996a6e08797ec2c7feedb338bc21b5a0b2bbd69fd2d443475c09bb1e1334",
+    "remote-resume-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+    "remote-resume-log.txt": "59c2bd51c130f050be6f0472427369ca7306da12320baff7f7a98db6ed52fc30",
+    "remote-collect-script.sh": "e95fcbfa93eb490fda9e225430776190fd9726252e4a73d272a8024be16b8384",
+    "remote-collect-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+    "remote-collect-log.txt": "198b9ba9b5b77fbe03e4a897751b4248bdbcef987f229da4e07ecb0845c76018",
+    "remote-preparation-verification.json": "8caaf0b6221a07cb289979c9cc23165fec86cbf3dfed428054622d6eafb68c6c"
+  },
+  "scope": "Actual fresh preparation continuation and collector each exited0; failed-v1 evidence remains separate and immutable. Candidate HTTP, copied DB grading, rollback and durable image verified. No Helm upgrade yet; exact independent pre-execution acceptance required.",
+  "actual_capacity_and_failed_attempt_evidence_sha256": {
+    "archive-offload-v2/source-review.json": "d6639657c190da3ac99019422fa4f674493fd9bdd71c68a2cca151dd8df6f544",
+    "archive-offload-v2/approval-inputs.json": "cf106c2f6d22ccb86e2f6a10888ff43d193ec5533cbc234693152ede303878fa",
+    "archive-offload-v2/execution-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+    "archive-offload-v2/execution-stdout.jsonl": "c9a0aa1a771203ab84c740b30ebbb513256e0098e3a8761f26dd3f3334b35ea6",
+    "package-offload-v3/source-review.json": "e6fe87571409eea91ba2a5bc4f0f187228962a5e11d267aa2b793e3cfc57fb21",
+    "package-offload-v3/approval-inputs.json": "033962290bf1179ca0ebe23d281d0f65bda0d35bde69c03664e11c199ba4259b",
+    "package-offload-v3/execution-exit.json": "7949246e7548291a65daaa4a078248deca21aff117300c7f500dbeb6d0a51472",
+    "package-offload-v3/execution-stdout.jsonl": "fdc4671338260962f6b81dc672fde1fde446d38db4ecdbfe9572e47b49534c90",
+    "package-offload-v3/failed-stage-bindings.json": "921673401d5e8e225450f3e3ede66d9dc01125647d2885316f8bbbffc3acb562",
+    "preparation-failed-v1/actual-failure.json": "a15d369aff2bdc984b0250952f637232ef9f1480288ba947ff2f392aa7fb2ef6"
+  },
+  "publication_guard_tests_actual_exit": 0,
+  "publication_guard_test_count": 4,
+  "publication_guard_test_elapsed_seconds": 0.447
+}

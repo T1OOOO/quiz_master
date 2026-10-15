@@ -1,0 +1,99 @@
+{
+  "build_id": "quiz-2026.10.15-reader299-9c670e9",
+  "image": "sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4",
+  "values": "quiz-2026.10.15-reader299-9c670e9-cutover-20261015T122746Z-values.yaml",
+  "values_sha256": "52a88e38981a994bc3d04f0239b4454ac4935e88e6f04886214d050c18330f42",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.15-reader299-9c670e9-cutover-20261015T122746Z.sqlite",
+  "backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "e5431954162e3dea0f7050bac8f3248f704d4c76a4ab5b4fa49229c4d1d8bfc8",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-reader299-9c670e9",
+    "image_id": "sha256:e053b4c42c600a062d2dfff5c5152ccc70ff86b2d97b4f91b9784af7c8fc46d4",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 299,
+      "total_refs": 180,
+      "playable_refs": 178,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "7e63bbc1e9e6485cdf41a49d402f171908cc8fb463658b197bbb59f23edee7b1",
+  "helm_dryrun_sha256": "85f20fdac4e6e9b334b55c05f2e6b715469f92f4a612b47f1f5935aeb5ab372f",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-reader299-9c670e9.tar",
+  "durable_archive_sha256": "96b931aa9555ee83090a609235b181c884fb4e197bb3fb8c0510aa42da24d438",
+  "disk_free_bytes": 21124374528,
+  "baseline_helm_revision": 61,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "9c670e90ac0547eb9d276d6190a87a71680b7fd2",
+  "package_sha256": "01ddc3ee1cd7ef68376ec1dc84c06ad9c8ab88970995715edce3e631a5c7417d",
+  "remote_prepare_exit": 0,
+  "remote_log_sha256": "59c2bd51c130f050be6f0472427369ca7306da12320baff7f7a98db6ed52fc30",
+  "resumed_from_failed_run": "quiz-2026.10.15-reader299-9c670e9-cutover-20261015T115837Z",
+  "failed_binding_sha256": "921673401d5e8e225450f3e3ede66d9dc01125647d2885316f8bbbffc3acb562",
+  "source_review_sha256": "e6fe87571409eea91ba2a5bc4f0f187228962a5e11d267aa2b793e3cfc57fb21",
+  "limits": [
+    "New preparation only. Original failed-v1 evidence is immutable. Independent execution and publication review remain."
+  ],
+  "publish_script_sha256": "994a76ed46019adaee7d6120345c8968a889d8ce047172c1bf69eda7a408b92f",
+  "package_receipt_sha256": "a46d4f6bdd48058e7ebb3ac72640364120bacb8c1cab51862127df3bc8aac06e",
+  "local_browser_sha256": "5eb0c164df062c80e2d93ce224cf53d694c5528fa6735141192909d305068cb2",
+  "publication_renderer_sha256": "dc3146cfa5c701a51ae34548e318a8742a781056303b00306f3e6316fda897f3"
+}
