@@ -1,0 +1,80 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-a5851c6f55db4e0790c11423d93beefa": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-a5851c6f55db4e0790c11423d93beefa",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT - EXACT PRE-EXECUTION INPUTS ONLY, NOT A CLAIM THAT PUBLICATION HAPPENED. Independent Opus review, read-only: no SSH, build, browser, edit, cleanup or publication by me; publish-preview.sh never run.\n\nHASHES recomputed by me from the real files, all matching execution-review-inputs.json and the handoff: packet=4044ea9439822f68518eb40883f8b8071b0274d3d328d187d6ae557bb073f5a4; publish-preview.sh=50c0be977b07cffda3760414579416f90b7777d4980994b2cc6b2b9da5057b27; renderer=0434e892cea1479fef9d8032588d13a607cd1172f942946fa1fc4060cc8c0d04; executor=db33242b10061aa42f7233b531e2f334cdfe52e9494d3e804f16508754c9102b; package=5ab6a34ea49b4078d952a311cf5468999b4b696108d1b4b6d6c285b3b74e04a2; image=sha256:c4b5ba6564678b986bc74cb59b3d660e14bfc733a5633eab83c8d47cbffa4922. Archive quiz-2026.10.15-actors-d204f9b.tar.gz rehashed on disk equals the package hash. Reader59 predecessor archive 6ddd1231 verified present and equal to the preparation baseline. All 9 preparation-evidence files match their pins; guard/prepare/collect each record actual_exit 0; prepare log tail is PREPARED mode=prepare, server dry-run only, no helm upgrade.\n\nSCRIPT derivation checked, not trusted: publish-preview.sh is byte-prefixed by the actual cutover.sh preflight that exited 0, with only prepare->publish swapped; no docker/flutter build; one helm upgrade; three guard calls. Staged artifacts I rehashed equal the script literals: api f4d69555, main.dart.js 2db37564, question-articles.json 6fa80af3, nginx.conf e9add812; web/version.json satisfies every assertion (136/4084/283, commit d204f9b, taxonomy pins).\n\nORDER correct: guard, old image 95ad1112 + PVC 7fc2428f + helm 59 pins, checksums, guard, durable 04badd + values 3cb4faf + ctr digest, fresh 0600 backup, helm lint --strict, helm template == 08d65ea0, kubectl apply --dry-run=server, guard, then the single helm upgrade --atomic --wait --timeout 180s. 59/279 becomes 60/283 only after all of that. Disk guard unweakened and holding, thin: 20703801344*5=103519006720 >= 102417174528 (20.21%, ~1.10 GB headroom); the third guard runs after the fresh backup, so exhaustion fails closed before upgrade. Argless invocation exits non-zero under set -e: inert by default.\n\nCONTENT: export is 283 against baseline 279 with exactly cinema-oct3-001..004 added, all 279 prior article objects byte-identical, schema unchanged. HEAD == d204f9b69f941b51e41edcaed3bd9832a16e8035 and git diff over next/quizzes/metadata/study/question_articles is empty for both HEAD and worktree, so the executor source gate passes honestly. Executor refuses a changed own hash, any packet/script/package/image mismatch, a non-accepted callback or reviewer==assignee; SSH 600s > helm 180s leaves room for atomic rollback.\n\nNOT PUBLISHED: no execution-acceptance.json, publish-log.txt or publish-exit.json; published-browser empty. I wrote no acceptance file. Nits, non-blocking: remote-guard-log.txt is empty (e3b0c442), only its exit 0 recorded; nginx.conf checked twice.\n\nREMAINING POST-PUBLISH, not approved here: helm revision 60/deployed, live reader 283/164/162 and public actor-20 digest, API/PVC preservation, 29 feedback rows still OPEN, read-only mobile Reader recheck, owned cleanup. Limits preserved: future 8 drafts UNREVIEWED and outside the export; quiz_master-5nc (feedback button over result text) open and unfixed; no Android, physical screen-reader or whole-bank certification; no claim the UI is perfect. Approval covers exactly these inputs at these hashes."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Exact packet/script/executor/archive/image and source/build/browser/candidate/rollback bindings accepted by actual Claude callback, no stale baseline or weak safety guards. Approval only, not claim publication finished.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015"
+        ],
+        "assignee": "session-c925756a4d904e8583de1007602dca24",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Root prepares exact inert publication script and executor after actual remote candidate/copied DB/rollback gates. Different provider reviews exact hashes and actual evidence before production execution. No SSH or publication authorized to reviewer.",
+        "created_at": 1792044214.0196927,
+        "depth": 0,
+        "difficulty": 3,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-a5851c6f55db4e0790c11423d93beefa",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "docs/rewrite-agents/tasks/ACTOR_ARTICLES_20261015/preexecution-handoff.json"
+          ],
+          "evidence": [
+            {
+              "kind": "handoff_sha256",
+              "result": "preexecution-handoff.json=0c107375a139ce26d9507ee0216e5e2c109a043c5df286d6b37cf8708132eac2; hub run_id=run-93e2a74621cf47bc9f9907e145683065"
+            },
+            {
+              "kind": "artifact_match",
+              "result": "execution-packet=4044ea9439822f68518eb40883f8b8071b0274d3d328d187d6ae557bb073f5a4; publish-preview=50c0be977b07cffda3760414579416f90b7777d4980994b2cc6b2b9da5057b27; renderer=0434e892cea1479fef9d8032588d13a607cd1172f942946fa1fc4060cc8c0d04; executor=db33242b10061aa42f7233b531e2f334cdfe52e9494d3e804f16508754c9102b. Each equals execution-review-inputs.json."
+            },
+            {
+              "kind": "actual_recorded_evidence",
+              "result": "source d204f9b69f941b51e41edcaed3bd9832a16e8035; build quiz-2026.10.15-actors-d204f9b; package 5ab6a34ea49b4078d952a311cf5468999b4b696108d1b4b6d6c285b3b74e04a2; image sha256:c4b5ba6564678b986bc74cb59b3d660e14bfc733a5633eab83c8d47cbffa4922. Recorded bash syntax, remote guard, remote prepare, and remote collect exits are each 0."
+            }
+          ],
+          "risks": [
+            "Independent Opus execution review is still required.",
+            "No execution or publication was performed by this handoff."
+          ],
+          "summary": "Artifact handoff only for an independent execution review. It does not approve publication or claim publication occurred."
+        },
+        "root_task_id": "task-a5851c6f55db4e0790c11423d93beefa",
+        "run_id": "run-93e2a74621cf47bc9f9907e145683065",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Actor283 exact pre-execution packet independent approval",
+        "version": 4,
+        "reviewer": "session-cf857b6573d843e6882a35a489481e90",
+        "review_note": "ACCEPT - EXACT PRE-EXECUTION INPUTS ONLY, NOT A CLAIM THAT PUBLICATION HAPPENED. Independent Opus review, read-only: no SSH, build, browser, edit, cleanup or publication by me; publish-preview.sh never run.\n\nHASHES recomputed by me from the real files, all matching execution-review-inputs.json and the handoff: packet=4044ea9439822f68518eb40883f8b8071b0274d3d328d187d6ae557bb073f5a4; publish-preview.sh=50c0be977b07cffda3760414579416f90b7777d4980994b2cc6b2b9da5057b27; renderer=0434e892cea1479fef9d8032588d13a607cd1172f942946fa1fc4060cc8c0d04; executor=db33242b10061aa42f7233b531e2f334cdfe52e9494d3e804f16508754c9102b; package=5ab6a34ea49b4078d952a311cf5468999b4b696108d1b4b6d6c285b3b74e04a2; image=sha256:c4b5ba6564678b986bc74cb59b3d660e14bfc733a5633eab83c8d47cbffa4922. Archive quiz-2026.10.15-actors-d204f9b.tar.gz rehashed on disk equals the package hash. Reader59 predecessor archive 6ddd1231 verified present and equal to the preparation baseline. All 9 preparation-evidence files match their pins; guard/prepare/collect each record actual_exit 0; prepare log tail is PREPARED mode=prepare, server dry-run only, no helm upgrade.\n\nSCRIPT derivation checked, not trusted: publish-preview.sh is byte-prefixed by the actual cutover.sh preflight that exited 0, with only prepare->publish swapped; no docker/flutter build; one helm upgrade; three guard calls. Staged artifacts I rehashed equal the script literals: api f4d69555, main.dart.js 2db37564, question-articles.json 6fa80af3, nginx.conf e9add812; web/version.json satisfies every assertion (136/4084/283, commit d204f9b, taxonomy pins).\n\nORDER correct: guard, old image 95ad1112 + PVC 7fc2428f + helm 59 pins, checksums, guard, durable 04badd + values 3cb4faf + ctr digest, fresh 0600 backup, helm lint --strict, helm template == 08d65ea0, kubectl apply --dry-run=server, guard, then the single helm upgrade --atomic --wait --timeout 180s. 59/279 becomes 60/283 only after all of that. Disk guard unweakened and holding, thin: 20703801344*5=103519006720 >= 102417174528 (20.21%, ~1.10 GB headroom); the third guard runs after the fresh backup, so exhaustion fails closed before upgrade. Argless invocation exits non-zero under set -e: inert by default.\n\nCONTENT: export is 283 against baseline 279 with exactly cinema-oct3-001..004 added, all 279 prior article objects byte-identical, schema unchanged. HEAD == d204f9b69f941b51e41edcaed3bd9832a16e8035 and git diff over next/quizzes/metadata/study/question_articles is empty for both HEAD and worktree, so the executor source gate passes honestly. Executor refuses a changed own hash, any packet/script/package/image mismatch, a non-accepted callback or reviewer==assignee; SSH 600s > helm 180s leaves room for atomic rollback.\n\nNOT PUBLISHED: no execution-acceptance.json, publish-log.txt or publish-exit.json; published-browser empty. I wrote no acceptance file. Nits, non-blocking: remote-guard-log.txt is empty (e3b0c442), only its exit 0 recorded; nginx.conf checked twice.\n\nREMAINING POST-PUBLISH, not approved here: helm revision 60/deployed, live reader 283/164/162 and public actor-20 digest, API/PVC preservation, 29 feedback rows still OPEN, read-only mobile Reader recheck, owned cleanup. Limits preserved: future 8 drafts UNREVIEWED and outside the export; quiz_master-5nc (feedback button over result text) open and unfixed; no Android, physical screen-reader or whole-bank certification; no claim the UI is perfect. Approval covers exactly these inputs at these hashes."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Hub verdict: ACCEPT** — `task-a5851c6f55db4e0790c11423d93beefa` is now `ACCEPTED`, reviewer `session-cf857b65…` ≠ assignee `session-c925756a…`, so the executor's different-session callback gate will bind genuinely. Approval of exact execution inputs only; nothing was published.\n\n**What I recomputed myself (not read from the report)**\n\n- All four artifact hashes match the pins: packet `4044ea94`, `publish-preview.sh` `50c0be97`, renderer `0434e892`, executor `db33242b`. Handoff `0c107375` matches too.\n- Archive on disk rehashes to `5ab6a34e…` — the authorized value. Reader59 predecessor `6ddd1231…` verified present and equal to the preparation baseline, so the transformation really ran against the real 59 archive.\n- All 9 `preparation-evidence` files match their pins; guard/prepare/collect each record `actual_exit 0`; the prepare log ends `PREPARED … mode=prepare` with server dry-run only and no `helm upgrade`.\n- `publish-preview.sh` is byte-prefixed by the actual `cutover.sh` preflight that exited 0, with only `prepare`→`publish` swapped — the guard is the same code that already passed remotely, not a retyped copy. One `helm upgrade`, three guard calls, no docker/flutter build.\n- Staged package files rehash to exactly the literals in the script (`api f4d69555`, `main.dart.js 2db37564`, `question-articles.json 6fa80af3`, `nginx.conf e9add812`), and `web/version.json` satisfies every assertion.\n- Content delta is exactly four added articles `cinema-oct3-001..004`; all 279 prior article objects are byte-identical, schema unchanged. `HEAD == d204f9b…` and the content-path diffs are empty, so the executor's source gate passes honestly rather than vacuously.\n\n**Two things worth your attention**\n\nThe disk guard holds but is thin: `20703801344*5 = 103519006720 ≥ 102417174528` → 20.21%, about 1.10 GB of headroom. I left it untouched as instructed. The third guard runs *after* the fresh backup, so if the backup consumes that margin the run fails closed before the upgrade — liveness risk, not a safety risk.\n\n`remote-guard-log.txt` is empty (`e3b0c442` is the empty-string digest) and the guard's own script isn't in the evidence bundle, only its exit 0. Non-blocking, but the guard step is the one preparation phase with no reproducible transcript.\n\nScope I did not approve: the actual publication, helm revision 60, live reader 283/164/162, API/PVC preservation, 29 feedback rows still OPEN, mobile Reader recheck and cleanup. `quiz_master-5nc` (feedback button over result text) is open and unfixed; the future-8 drafts remain UNREVIEWED and outside the export. I created no acceptance file and removed my only scratch file.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "96e73e4022e4227a48e5bff3487e9cb7422152a923b41c590003208cadb5e22a",
+  "scope": "Actual independent approval of exact pre-execution artifacts only. Published verification follows separately.",
+  "publication_executor_sha256": "db33242b10061aa42f7233b531e2f334cdfe52e9494d3e804f16508754c9102b",
+  "execution_packet_sha256": "4044ea9439822f68518eb40883f8b8071b0274d3d328d187d6ae557bb073f5a4",
+  "publish_script_sha256": "50c0be977b07cffda3760414579416f90b7777d4980994b2cc6b2b9da5057b27",
+  "package_sha256": "5ab6a34ea49b4078d952a311cf5468999b4b696108d1b4b6d6c285b3b74e04a2",
+  "image": "sha256:c4b5ba6564678b986bc74cb59b3d660e14bfc733a5633eab83c8d47cbffa4922",
+  "reviewer_provider": "claude",
+  "author_provider": "codex"
+}

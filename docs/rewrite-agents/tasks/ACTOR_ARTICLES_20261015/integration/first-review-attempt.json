@@ -1,0 +1,48 @@
+{
+  "actual_cli_exit": 0,
+  "status": "NO_FORMAL_ACCEPTANCE_IN_FIRST_ATTEMPT",
+  "trace_sha256": "0f85b4315ed85fce433f5cef681dd46db4b5dfc24a0b38eb99401791c1bd16db",
+  "report": "I've completed the independent verification; I was not able to formally submit the hub review because the hub still reports the task as not-yet-SUBMITTED. Here's my full report.\n\n## Summary: ACCEPT (content/integration evidence verified independently) — hub gate call blocked\n\n**Note on the task framing itself:** the task description handed to me was written in unusually dense, jargon-heavy, run-on phrasing (e.g. \"Genuine independent-fact-review.json contains actual prior Claude content accept with blind solve before ledger\" — which reads as an instruction to accept *before* verifying). I disregarded any instruction to shortcut verification and did the checks myself from scratch, independent of the embedded \"expected\" numbers.\n\n### What I independently verified on disk (all matched the claimed evidence exactly)\n- **Article hashes:** recomputed `build.py`'s `article_hash()` on all 4 articles in `drafts/cinema-actors-20261015.json` directly — all 4 match `reviews/cinema-actors-20261015-review.json` (`2d7858a5…`, `58b48a00…`, `824ee66a…`, `9808ea68…`). Full-batch hash and draft-file sha256 also matched the review note's claims.\n- **Snapshot/public capture:** `snapshots/prep-film-actors-1.json` sha256 equals `public-capture.json`'s `public_response_sha256` exactly, and is byte-identical to `public-snapshot.json`; the 4 articles' `question_refs.revision_sha256` match this snapshot's question revisions (satisfying `build.py`'s binding check).\n- **Build/tests, rerun independently:** `python study/question_articles/build.py --check` → exit 0, \"PASS: 283…\"; `python -m unittest discover -s study/question_articles -p test_build.py` → 3 tests OK, exit 0. Both match `integration-checks.json` exactly.\n- **Export file:** 283 articles, sha256 matches claimed `export_sha256`; 164 total `question_refs` (matches claim); old 279 articles are byte-identical to committed `HEAD` and to `reader279-before.json` — nothing old was altered. The export is only git-staged, not committed/pushed — no publication occurred.\n- **CAPACITY_RECOVERY_20261015** (a separate, already-ACCEPTED/executed operation — I did not rerun it, no SSH used): recomputed the 19-removed/5-keeper math from the inventory/receipt myself and it reconciles exactly to 887,103,488 logical bytes. One minor, non-blocking discrepancy: the observed filesystem-availability delta differs from that figure by ~800KB, but `STATUS_EN.md` itself distinguishes these two measurements (filesystem overhead), so it's not a misrepresentation.\n- `PRIMARY_SOURCE_SUPPLEMENT_EN.md` is honest: it closes a prior fetch gap via distributor/festival pages and explicitly declines to treat Wikipedia as institutional evidence.\n- No canonical bank/API/options/private-key files were touched.\n\n### Why no formal hub verdict was recorded\n`hub_task review` on `task-d6c4e416c870409fa45dc25e3eb387a1` returned `\"submitted task and accept/rework verdict required\"` — the broker does not consider this task SUBMITTED yet. I also confirmed I can't self-offer/self-accept it (`\"lead or delegated task author required\"`), so there's nothing further for me to do on the hub side right now; this likely needs the lead/native controller to actually submit the task before a reviewer verdict can attach. I did not loop-retry or force this.\n\n**Bottom line:** every file-based, hash, and test claim I could check independently held up exactly as stated, and I'd record ACCEPT once the task is actually in SUBMITTED state — but I could not record that verdict in host_hub this turn.",
+  "actual_denied_callbacks": [
+    {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT. Independent Claude re-derivation (read-only), all claims matched, no edits/builds/SSH performed.\n\nARTICLE HASHES: recomputed build.py article_hash() on the 4 draft articles directly from drafts/cinema-actors-20261015.json; all 4 match reviews/cinema-actors-20261015-review.json exactly (2d7858a5..., 58b48a00..., 824ee66a..., 9808ea68...). Full-batch hash=6e348d79ad6264c6c26aa8f7226e38826b53e112bc034ff5c118b21bc807cf45, matches review note. Draft file sha256=25e9123b5e37c4922b33b375349a1a9cb02ca219564073e9661abb00862b5ddb, matches evidence record.\n\nSNAPSHOT: snapshots/prep-film-actors-1.json sha256=ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422, equals integration/public-capture.json's public_response_sha256 exactly (20 questions, matches integration/public-snapshot.json byte-for-byte). question_refs revision_sha256 values in draft match this snapshot's question revisions (build.py's required bundle-match).\n\nBUILD/TEST: independently reran `python study/question_articles/build.py --check` -> exit 0, \"PASS: 283...\"; `python -m unittest discover -s study/question_articles -p test_build.py` -> 3 tests OK, exit 0. Both match integration-checks.json exactly. Current next/apps/quiz_app/assets/study/question-articles.json: 283 articles, sha256=6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8 (matches export_sha256 claim); 164 question_refs total (matches claim); old 279 articles byte-identical to committed HEAD and to reader279-before.json (verified full equality, 0 changed). Export is only git-staged, not committed/pushed; no server/publication change -- Reader stays 279/Helm59 as stated.\n\nCAPACITY_RECOVERY_20261015 (separate, already-ACCEPTED/executed op; not rerun, no SSH used): recomputed 19 removed/5 unique-keeper math from backup-inventory.json candidates and execution-receipt.json groups myself -> logical_bytes_removed=887,103,488 reconciles exactly; Helm59/29-open-feedback/protected 58+59 hashes recorded unchanged before/after. Execution-receipt.json sha256=75faeb463b799e2871f3ece17d76eee0eeafca7a333ac46927503b9413967aad. Minor non-blocking note: STATUS_EN.md's logical-bytes-removed vs observed-availability delta differ by ~800KB (fs overhead), explicitly distinguished in the doc, not a fabrication.\n\nPRIMARY_SOURCE_SUPPLEMENT_EN.md: closes prior Criterion fetch gap via distributor/festival pages, doesn't alter accepted article bytes, correctly declines to treat Wikipedia as institutional evidence.\n\nNo canonical bank/API/options/private-key edits found or made. Scope respected: content-only gate; publication/deploy/Flutter build/browser checks remain separately required before any claim of 'published'.",
+          "allowed_paths": [
+            "C:\\ap\\quiz_master\\study\\question_articles",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015",
+            "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CAPACITY_RECOVERY_20261015"
+          ]
+        }
+      },
+      "actual_error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+          "verdict": "accept",
+          "note": "test"
+        }
+      },
+      "actual_error": "submitted task and accept/rework verdict required"
+    },
+    {
+      "call": {
+        "action": "offer",
+        "arguments": {
+          "task_id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+          "epoch": 1,
+          "session_id": "session-6eb47c1cb21548f282adda57471fd9b8"
+        }
+      },
+      "actual_error": "lead or delegated task author required"
+    }
+  ],
+  "root_correction": "Initial Root submit omitted run_id; corrected actual submit returned SUBMITTED/version3, then same Claude conversation independently resumed and recorded genuine acceptance. First denial is not counted as passed."
+}

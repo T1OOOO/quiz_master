@@ -1,0 +1,16 @@
+{
+  "scope": "Only ACTOR_ARTICLES_20261015 evidence and controller folder",
+  "initial_actual_check_exit": 1,
+  "initial_failure": "Index normalized accepted evidence bytes: actual-flutter-builds.json under inherited core.autocrlf=true",
+  "repair": "Added folder-local .gitattributes '* -text' and re-added only that folder with git add --renormalize",
+  "final_actual_check_exit": 0,
+  "staged_artifacts_equal_raw_worktree_bytes_at_check": 353,
+  "method": "For each indexed file in this folder, compare actual Git object id with SHA1(blob header plus exact raw worktree bytes)",
+  "application_source_or_published_package_changed": false,
+  "original_console_evidence_whitespace_retained": [
+    "preparation-evidence/remote-prepare-log.txt",
+    "production-build.txt",
+    "qa-build.txt",
+    "integration/flutter-reader-tests-stale-greek-failure.txt"
+  ]
+}

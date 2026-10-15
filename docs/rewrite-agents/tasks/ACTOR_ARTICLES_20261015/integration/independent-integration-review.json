@@ -1,0 +1,60 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-d6c4e416c870409fa45dc25e3eb387a1": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "ACCEPT. Independent Claude re-derivation (read-only), re-checked after Root's corrected submit (run-b2c661e6a0a34f648898739741c3cc43); source still d204f9b, no bytes changed since my first pass.\n\nHASHES (recomputed myself): draftRAW=25e9123b5e37c4922b33b375349a1a9cb02ca219564073e9661abb00862b5ddb; article_hash x4 match reviews/cinema-actors-20261015-review.json exactly; newReaderExport=6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8 (283 articles, 164 question_refs); fullsnapshot(prep-film-actors-1.json)=ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422, equals public-capture.json's response hash; capacityexecutionreceipt(execution-receipt.json)=75faeb463b799e2871f3ece17d76eee0eeafca7a333ac46927503b9413967aad, math (19 removed/5 keepers/887,103,488 logical bytes) reconciles from backup-inventory.json group data.\n\nPYTHON: reran `build.py --check` -> exit 0, \"PASS: 283...\"; `unittest discover -p test_build.py` -> 3 OK, exit 0. Both match integration-checks.json.\n\nFLUTTER: new evidence this round, both kept honestly distinct -- flutter-reader-tests-stale-greek-failure.json/.txt: actual_exit=1, 6 passed/1 failed (stale 279-count/public-revision assertion, first denied callback, NOT presented as success); flutter-reader-tests.json/.txt: actual_exit=0, \"+7: All tests passed!\" after updating the count/binding assertions for the 283 export. production-build.txt shows a clean `flutter test`/web build log, no errors.\n\nUnchanged from first pass: old 279 articles byte-identical to HEAD and reader279-before.json; export only git-staged, not committed/pushed; no server/publication change (Reader stays 279/Helm59); PRIMARY_SOURCE_SUPPLEMENT_EN.md doesn't alter accepted bytes; CAPACITY_RECOVERY_20261015 is a separate already-executed op, not rerun, no SSH used; no canonical bank/API/options/private-key edits found.\n\nLimits: read-only, no builds/SSH/browser run by me; Flutter/python outputs were pre-existing evidence files I inspected and hash-verified, not executed by me. Fresh browser/immutable-candidate/publication gates remain separately required before any 'published' claim."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Independent different-provider check exactaccepted4hashes/draft/review/full20binding/exportpreservation/tests; capacity outcome exact19/5/887103488 logical bytes andprotectedbackup/PVC/app/feedbackconservation. No publishednewcontent claim; freshbuild/browser/candidate/release separate.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_ARTICLES_20261015\\integration",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\CAPACITY_RECOVERY_20261015",
+          "C:\\ap\\quiz_master\\study\\question_articles",
+          "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json"
+        ],
+        "assignee": "session-7b17d0722095473fa160d251eb85def2",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Root owns article review transcription/full20publicsnapshot/generated283asset/integrationproof and CAPACITY_RECOVERY_20261015 outcome. Existing writer4d566 genuineClaude contentaccept independently solved first; finalrawdraft25e912 unchanged. Actualbuilderwrite/check+3tests0,old279unchanged. Capacity exactscript acceptedOpus thenactualSSH0 removed19aliases retained5states,29feedbackunchanged. Review concrete files/actualevidence only; no new cleanup/deploy/sourcewrite.",
+        "created_at": 1792041602.019044,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            "docs/rewrite-agents/tasks/ACTOR_ARTICLES_20261015/integration/integration-checks.json",
+            "docs/rewrite-agents/tasks/ACTOR_ARTICLES_20261015/integration/flutter-reader-tests.json",
+            "docs/rewrite-agents/tasks/CAPACITY_RECOVERY_20261015/execution-receipt.json"
+          ],
+          "summary": "Actual actor283 content integration, existing279 preserved; exact reviewed hashes/snapshot; Python3 and Flutter7 tests0. Capacity acceptedexactOpusscript executedSSH0,19identicalaliasesremoved5rawstatesretained andfeedback29OPENunchanged. Rootsource d204f9b pushed, productionstill59/279."
+        },
+        "root_task_id": "task-d6c4e416c870409fa45dc25e3eb387a1",
+        "run_id": "run-b2c661e6a0a34f648898739741c3cc43",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Root actor283 integration and completed capacity outcome independent gate",
+        "version": 4,
+        "reviewer": "session-70e456f912b64fe78f4136090e5ab0f5",
+        "review_note": "ACCEPT. Independent Claude re-derivation (read-only), re-checked after Root's corrected submit (run-b2c661e6a0a34f648898739741c3cc43); source still d204f9b, no bytes changed since my first pass.\n\nHASHES (recomputed myself): draftRAW=25e9123b5e37c4922b33b375349a1a9cb02ca219564073e9661abb00862b5ddb; article_hash x4 match reviews/cinema-actors-20261015-review.json exactly; newReaderExport=6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8 (283 articles, 164 question_refs); fullsnapshot(prep-film-actors-1.json)=ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422, equals public-capture.json's response hash; capacityexecutionreceipt(execution-receipt.json)=75faeb463b799e2871f3ece17d76eee0eeafca7a333ac46927503b9413967aad, math (19 removed/5 keepers/887,103,488 logical bytes) reconciles from backup-inventory.json group data.\n\nPYTHON: reran `build.py --check` -> exit 0, \"PASS: 283...\"; `unittest discover -p test_build.py` -> 3 OK, exit 0. Both match integration-checks.json.\n\nFLUTTER: new evidence this round, both kept honestly distinct -- flutter-reader-tests-stale-greek-failure.json/.txt: actual_exit=1, 6 passed/1 failed (stale 279-count/public-revision assertion, first denied callback, NOT presented as success); flutter-reader-tests.json/.txt: actual_exit=0, \"+7: All tests passed!\" after updating the count/binding assertions for the 283 export. production-build.txt shows a clean `flutter test`/web build log, no errors.\n\nUnchanged from first pass: old 279 articles byte-identical to HEAD and reader279-before.json; export only git-staged, not committed/pushed; no server/publication change (Reader stays 279/Helm59); PRIMARY_SOURCE_SUPPLEMENT_EN.md doesn't alter accepted bytes; CAPACITY_RECOVERY_20261015 is a separate already-executed op, not rerun, no SSH used; no canonical bank/API/options/private-key edits found.\n\nLimits: read-only, no builds/SSH/browser run by me; Flutter/python outputs were pre-existing evidence files I inspected and hash-verified, not executed by me. Fresh browser/immutable-candidate/publication gates remain separately required before any 'published' claim."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The hub call succeeded: **task-d6c4e416c870409fa45dc25e3eb387a1 → state ACCEPTED** (version 4, run-b2c661e6a0a34f648898739741c3cc43).\n\nHashes confirmed and bound in the review note:\n- **draftRAW:** `25e9123b5e37c4922b33b375349a1a9cb02ca219564073e9661abb00862b5ddb`\n- **newReaderExport:** `6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8` (283 articles, 164 question_refs)\n- **fullsnapshot (prep-film-actors-1.json):** `ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422`\n- **capacityexecutionreceipt:** `75faeb463b799e2871f3ece17d76eee0eeafca7a333ac46927503b9413967aad`\n\nEverything reconciled on re-check: no file bytes changed since my first pass (HEAD still `d204f9b`), `build.py --check` and `test_build.py` reran clean (exit 0 / 3 tests OK), and the new Flutter evidence was honest about its first failure — `flutter-reader-tests-stale-greek-failure.{json,txt}` (exit 1, 6 passed/1 failed on a stale 279-count assertion) was kept alongside the corrected `flutter-reader-tests.{json,txt}` (exit 0, 7/7 passed), not overwritten or disguised as a clean first try. Old 279 articles remain byte-identical; the export is staged but not published; CAPACITY_RECOVERY math (19 removed/5 keepers/887,103,488 bytes) still reconciles independently. Task complete, no further action taken.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "b1740bfaa3d2a5d6d5242a7cd9cca6432dd43d05beea66be1f996117788b08fc",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

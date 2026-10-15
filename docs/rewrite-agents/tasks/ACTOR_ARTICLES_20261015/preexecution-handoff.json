@@ -1,0 +1,23 @@
+{
+  "status": "ARTIFACT_HANDOFF_FOR_INDEPENDENT_EXECUTION_REVIEW_NOT_APPROVAL_NOT_PUBLISHED",
+  "hub_task_id": "task-a5851c6f55db4e0790c11423d93beefa",
+  "hub_run_id": "run-93e2a74621cf47bc9f9907e145683065",
+  "source_commit": "d204f9b69f941b51e41edcaed3bd9832a16e8035",
+  "build_id": "quiz-2026.10.15-actors-d204f9b",
+  "package_sha256": "5ab6a34ea49b4078d952a311cf5468999b4b696108d1b4b6d6c285b3b74e04a2",
+  "image": "sha256:c4b5ba6564678b986bc74cb59b3d660e14bfc733a5633eab83c8d47cbffa4922",
+  "artifact_sha256": {
+    "execution-packet.json": "4044ea9439822f68518eb40883f8b8071b0274d3d328d187d6ae557bb073f5a4",
+    "publish-preview.sh": "50c0be977b07cffda3760414579416f90b7777d4980994b2cc6b2b9da5057b27",
+    "publication-source/render_publication.py": "0434e892cea1479fef9d8032588d13a607cd1172f942946fa1fc4060cc8c0d04",
+    "publication-source/publish_release.py": "db33242b10061aa42f7233b531e2f334cdfe52e9494d3e804f16508754c9102b"
+  },
+  "recorded_actual_exits": {
+    "publish_preview_bash_syntax": 0,
+    "remote_guard": 0,
+    "remote_prepare": 0,
+    "remote_collect": 0
+  },
+  "inputs_match_execution_review_inputs": true,
+  "scope": "Artifact handoff only. Independent execution approval and publication remain pending."
+}
