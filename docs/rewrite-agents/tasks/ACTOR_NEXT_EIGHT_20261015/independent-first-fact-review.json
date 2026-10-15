@@ -1,0 +1,89 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "REWORK",
+  "actual_reviews": {
+    "task-9af8b0eab9cf402ebf1976968e399c2b": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-9af8b0eab9cf402ebf1976968e399c2b",
+          "verdict": "rework",
+          "error_count": 1,
+          "note": "Independent factual review, batch sha256 49492fa1f5bfa44b3dcde0f6cf691a2b170430daac6035919461209dd1739de9. Blind-solved all 8 (005 Weaver,006 Ford,007 Abraham,008 Foster,009 Neeson,010 Thurman,011 Winslet,012 Reeves) before reading draft/ledger; all correct, refs/hashes match snapshot. Opened AFI/Academy pages directly: 006,007,008,009,010,011,012 claims and distractor distinctions (Bridges/Selleck, Spall, Arquette x2/Roberts, Pfeiffer-absent, Pantoliano) all supported. 005 is NOT: AFI PersonDetails/240758 gives zero 'first leading role' characterization for Weaver/Ripley; that clause in the ## Деталь истории section is unsupported and must be removed before acceptance. 008 Pfeiffer note is accurate but optional enrichment only (AFI history: she was the salary-dropout frontrunner), not required. REWORK until 005 fixed and rechecked; do not approve as-is."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual8unique valid draftarticles exactpublicrefs, candidates noanswerleak, ledgeractualprimarysources/limitations, sourcehashes/counts. Independentfactgate stillrequired, no publication orreviewedexport inclusion.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks"
+        ],
+        "assignee": "session-f971934a1f744419adee13ccf61606ca",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Native creative writer owns ONLY newdraft cinema-actors-next-eight-20261015.json and ACTOR_NEXT_EIGHT_20261015/writer. Exactexisting prep-film-actors-1 cinema-oct3-005..012 fromfull20publicsnapshot. FullEnglishpacket sent writer;180-280 originalusefulRUwords4headings/all3distractor distinctions/2-5actualopenedprimary institutional links, validexistingtags; candidate-only blindsolvefile beforeprivateledger forfuturechecker. No genericcredit/quizadvicepadding, no falseabsence/cameo assertions. Keepcurrent283export/frozen d204 release untouched; no reviews/snapshots/asset/keys/Git/SSH/build/browser/deploy/children.",
+        "created_at": 1792043459.431686,
+        "depth": 0,
+        "difficulty": 2,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-9af8b0eab9cf402ebf1976968e399c2b",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "changed_files": [
+            "study/question_articles/drafts/cinema-actors-next-eight-20261015.json",
+            "docs/rewrite-agents/tasks/ACTOR_NEXT_EIGHT_20261015/writer/rejected-before-editor.json",
+            "docs/rewrite-agents/tasks/ACTOR_NEXT_EIGHT_20261015/writer/factual-ledger.md",
+            "docs/rewrite-agents/tasks/ACTOR_NEXT_EIGHT_20261015/writer/word-counts.json"
+          ],
+          "evidence": [
+            {
+              "command": "PowerShell ConvertFrom-Json plus structural assertions",
+              "result": "PASS: qm-question-articles/v1; 8 articles; exact one question_ref and empty target_refs each; exactly 4 headings; 2 source links per article; candidates/word-counts contain 8; candidate scan found no answer/correct/explanation/правиль fields."
+            },
+            {
+              "kind": "source_open",
+              "result": "Opened AFI catalog pages for Raiders, Amadeus, Silence, Schindler, Pulp, Titanic, Matrix, Weaver, Reeves, Goldstein, Big Lebowski, Last Crusade, and Academy ceremony/collection pages; ledger binds concrete claims and distinct distractor roles to URLs with access date."
+            }
+          ],
+          "limitations": [
+            "Bodies are concise (138–156 words excluding headings); root explicitly accepted source-supported shorter prose over padding.",
+            "Article 005 retains an earlier first-leading-role sentence that requires reviewer removal or independent confirmation; the ledger expressly does not support that assertion.",
+            "Alien AFI film URL and Abraham AFI person URL were inaccessible when opened; ledger records the limitation and uses separately opened AFI/Academy pages."
+          ],
+          "run_id": "run-fa1134a1c3724503ae0271a3413c3721",
+          "sha256": {
+            "candidates": "87F785B39A71F60E495E539C51405A2EE5DA6B26E3C669A15F57B4004B936F2F",
+            "draft": "49492FA1F5BFA44B3DCDE0F6CF691A2B170430DAAC6035919461209DD1739DE9",
+            "ledger": "2E9492863FC84C65709427F3F20CF3CFB447DE92AE8894A9C6C2F539068C3AE6",
+            "rejected_before_editor": "FF125BAB64E8AF1644840E2293635CE8345A64CB185A6187A07AAC9235CB13E9",
+            "word_counts": "D7811CDB5A8F1A60C15975CA314F55E046A9435C7C33031024085C0564F81A80"
+          },
+          "status": "DONE_WITH_CONCERNS",
+          "summary": "Eight unreviewed draft articles are ready for independent fact review only; no export, publication, review verdict, or integration claimed."
+        },
+        "review_note": "Independent factual review, batch sha256 49492fa1f5bfa44b3dcde0f6cf691a2b170430daac6035919461209dd1739de9. Blind-solved all 8 (005 Weaver,006 Ford,007 Abraham,008 Foster,009 Neeson,010 Thurman,011 Winslet,012 Reeves) before reading draft/ledger; all correct, refs/hashes match snapshot. Opened AFI/Academy pages directly: 006,007,008,009,010,011,012 claims and distractor distinctions (Bridges/Selleck, Spall, Arquette x2/Roberts, Pfeiffer-absent, Pantoliano) all supported. 005 is NOT: AFI PersonDetails/240758 gives zero 'first leading role' characterization for Weaver/Ripley; that clause in the ## Деталь истории section is unsupported and must be removed before acceptance. 008 Pfeiffer note is accurate but optional enrichment only (AFI history: she was the salary-dropout frontrunner), not required. REWORK until 005 fixed and rechecked; do not approve as-is.",
+        "reviewer": "session-e4609de364184f9787d2798a23f7e894",
+        "root_task_id": "task-9af8b0eab9cf402ebf1976968e399c2b",
+        "run_id": "run-fa1134a1c3724503ae0271a3413c3721",
+        "skills": [],
+        "state": "REWORK",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Next eight existing actor question linked articles, primary-source drafts only",
+        "version": 10
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "The hub_task review callback succeeded on retry (initial call failed with \"team membership required\" since this turn's session needed to rejoin the team first).\n\n**Recorded:** `task-9af8b0eab9cf402ebf1976968e399c2b` → **state: REWORK**, `run_id: run-fa1134a1c3724503ae0271a3413c3721`, batch sha256 `49492fa1f5bfa44b3dcde0f6cf691a2b170430daac6035919461209dd1739de9`, reviewer `session-e4609de364184f9787d2798a23f7e894`, version 10.\n\nThe task's own stored `result.limitations` independently corroborates my finding — it already flags \"Article 005 retains an earlier first-leading-role sentence that requires reviewer removal... the ledger expressly does not support that assertion.\" My review note is now attached: fix required in article 005 (remove the unsupported \"first leading role\" clause), 008's Pfeiffer note is optional enrichment only, and everything else is REWORK-blocking-free. No files touched, no other tasks listed or enumerated.",
+  "failed_callbacks_before_success": [
+    {
+      "action": "review",
+      "task_id": "task-9af8b0eab9cf402ebf1976968e399c2b",
+      "error": "team membership required"
+    }
+  ],
+  "trace_sha256": "b9e232f2693a9e3235a14e5a901b528aa2879f6e7e73c517949d398f4dd97162",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}

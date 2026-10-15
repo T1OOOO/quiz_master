@@ -1,0 +1,35 @@
+{
+  "status": "STRUCTURAL_GATES_PASSED_FUTURE_DRAFTS_NOT_INTEGRATED",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "study/question_articles/build.py",
+        "--check"
+      ],
+      "actual_exit": 0,
+      "stdout": "PASS: 283 independently reviewed mini articles; checked bindings, review hashes and source metadata\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/question_articles",
+        "-p",
+        "test_build.py"
+      ],
+      "actual_exit": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.155s\n\nOK\n"
+    }
+  ],
+  "draft_sha256": "26d6db92e357b01c89ff07ed431a0c7133913e383660201d72c97befd4ddeefe",
+  "reader_sha256": "6fa80af3ad71003d6deb51ca64e91ae736b2c7bece21039978830cd33cf80dc8",
+  "export_articles": 283,
+  "eight_future_articles_excluded": true,
+  "scope": "Read-only builder check and three builder tests. Independent factual acceptance remains a separate gate."
+}

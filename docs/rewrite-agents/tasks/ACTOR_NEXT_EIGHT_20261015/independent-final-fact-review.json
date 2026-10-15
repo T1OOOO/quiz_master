@@ -1,0 +1,73 @@
+{
+  "actual_cli_exit": 0,
+  "actual_hub_state": "ACCEPTED",
+  "actual_reviews": {
+    "task-ad42b81e680a4918ae28a8058dd6d182": {
+      "call": {
+        "action": "review",
+        "arguments": {
+          "task_id": "task-ad42b81e680a4918ae28a8058dd6d182",
+          "verdict": "accept",
+          "error_count": 0,
+          "note": "Independent accept, continuation of task-9af8b0eab9cf402ebf1976968e399c2b. Raw draft sha256 (verified myself): 26d6db92e357b01c89ff07ed431a0c7133913e383660201d72c97befd4ddeefe. Independent proof (not Root's script): swapping the new prefix back to the old one in these raw bytes reproduces my original reviewed sha256 49492fa1f5bfa44b3dcde0f6cf691a2b170430daac6035919461209dd1739de9 exactly, proving that one substring swap is the ONLY difference anywhere in the file; articles 006-012 and the rest of 005 are byte-identical to what I already fact-checked against AFI/Academy. Ledger cinema-oct3-005 entry now records removal of the unsupported first-leading-role attribution. Word counts: 005=142 (in 130-240), 006=152,007=138,008=141,009=154,010=155,011=152,012=151. 4 headings preserved per article; question_refs/revision hashes unchanged (guaranteed by the byte proof). Computed via study/question_articles/build.py article_hash, imported read-only (no --write): normalized batch sha256 7c13b17a53d9c82f349bc532cd05e96ec2d8a32f9c0d0b9b7622263dc754394d. Per-article: 005 c72a3e9706514322c6741e40d38c431726f4601b0a44e98a14c1784d16e00298, 006 46514699969fe2a761b82ac55d65a27bf6e5a4dec1f4c8faa08ef4996cfcd0eb, 007 9ffb7ecc67e899f1b066d26369a6f97c2384da3a7a114b3d4351887df8dd2961, 008 4b54b835262346790de46025dd96587b1d98545b647936bfc7f70ee983b8876d, 009 546a8309808109f3cf08a1c9266d3cf595e998c19227d84912d6003709d0b35e, 010 6b6acba321d995dd1f1df65e1e8672d15c1b0c0a1fcde66cf3173dbeec0fb971, 011 382e9c2faa0153af0a71c721f853fb87a712e5e1b8fb2a5e5481c52f0a835d07, 012 049e98a6e93db080f5485817ca6cb89c45c9189a9f69ae4c23a1062ffffc31b1. Original blind 8/8 solve and AFI/Academy source verification retained. 008 Pfeiffer enrichment deliberately deferred, non-blocking. Zero unresolved factual blockers. Content-only acceptance; integration/build/production (283 library) still pending, not claimed."
+        }
+      },
+      "actual_response": {
+        "acceptance": "Actual corrected26d6db92 rawbatch, reconstructed49492fa1 prior bytes described honestly, updated005 count/ledger, exactrefs/fourheadings/eightcandidatequestions; independent final Claude acceptance. Drafts remain unpublished/unintegrated; no application/export/key changes.",
+        "allowed_paths": [
+          "C:\\ap\\quiz_master\\study\\question_articles\\drafts\\cinema-actors-next-eight-20261015.json",
+          "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_NEXT_EIGHT_20261015\\writer"
+        ],
+        "assignee": "session-03d945f328204507b905dca8609ff7bf",
+        "author": "session-7b17d0722095473fa160d251eb85def2",
+        "body": "Continuation of old task9af8 after actual old worker sessionf971 disconnected and new session03 cannot submit oldrun. No broker edits or impersonation. Current corrected draft26d6db92, exact inverse prefix reconstructs prior independently reviewed49492fa1. Only005 unsupported first-leading-role attribution removed; seven article objects unchanged. Writer finalizes actual result/hash evidence under fresh accepted identity; no new research or content changes needed. Root owns runtime/publication, current283alreadyverified. Final independent Claude content review before integration.",
+        "created_at": 1792046690.172889,
+        "depth": 0,
+        "difficulty": 1,
+        "difficulty_explicit": true,
+        "domain": "general",
+        "id": "task-ad42b81e680a4918ae28a8058dd6d182",
+        "parent_task_id": null,
+        "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+        "requires_review": true,
+        "result": {
+          "evidence": [
+            {
+              "detail": "draft SHA256 26D6DB92E357B01C89FF07ED431A0C7133913E383660201D72C97BEFD4DDEEFE; Article 005 only prefix correction",
+              "kind": "hash"
+            },
+            {
+              "detail": "pre-final-fact-fix reconstructed after edit by inverse one-clause replacement, SHA256 49492FA1F5BFA44B3DCDE0F6CF691A2B170430DAAC6035919461209DD1739DE9",
+              "kind": "hash"
+            },
+            {
+              "detail": "PASS schema/8 records/four headings/refs-targets-sources/word counts; Articles 006-012 byte-equal predecessor; candidate no key fields",
+              "kind": "check"
+            },
+            {
+              "detail": "ledger 12BA87C40BA5F30D8200E1870DC693844380E9E1BB1696E074A5F3E6B8C1D0EC; counts 4152B4A85A4BE803B1DB44F25B611647C96FAD4CF524B92B64CD6D3EE88F7DE9; candidates 87F785B39A71F60E495E539C51405A2EE5DA6B26E3C669A15F57B4004B936F2F",
+              "kind": "hash"
+            }
+          ],
+          "run_id": "run-8d0b08a6413a43378aef03f51b37b8c3",
+          "status": "DONE",
+          "summary": "Article 005 fact-fix and evidence handoff complete; reconstructed predecessor explicitly identified as post-edit reconstruction. READY for independent review only."
+        },
+        "root_task_id": "task-ad42b81e680a4918ae28a8058dd6d182",
+        "run_id": "run-8d0b08a6413a43378aef03f51b37b8c3",
+        "skills": [],
+        "state": "ACCEPTED",
+        "team_id": "team-3a658b074e8945b293c99e470debb40f",
+        "title": "Finalize corrected eight actor article drafts after writer session recovery",
+        "version": 4,
+        "reviewer": "session-24d55b89fbff4133b033521006c595de",
+        "review_note": "Independent accept, continuation of task-9af8b0eab9cf402ebf1976968e399c2b. Raw draft sha256 (verified myself): 26d6db92e357b01c89ff07ed431a0c7133913e383660201d72c97befd4ddeefe. Independent proof (not Root's script): swapping the new prefix back to the old one in these raw bytes reproduces my original reviewed sha256 49492fa1f5bfa44b3dcde0f6cf691a2b170430daac6035919461209dd1739de9 exactly, proving that one substring swap is the ONLY difference anywhere in the file; articles 006-012 and the rest of 005 are byte-identical to what I already fact-checked against AFI/Academy. Ledger cinema-oct3-005 entry now records removal of the unsupported first-leading-role attribution. Word counts: 005=142 (in 130-240), 006=152,007=138,008=141,009=154,010=155,011=152,012=151. 4 headings preserved per article; question_refs/revision hashes unchanged (guaranteed by the byte proof). Computed via study/question_articles/build.py article_hash, imported read-only (no --write): normalized batch sha256 7c13b17a53d9c82f349bc532cd05e96ec2d8a32f9c0d0b9b7622263dc754394d. Per-article: 005 c72a3e9706514322c6741e40d38c431726f4601b0a44e98a14c1784d16e00298, 006 46514699969fe2a761b82ac55d65a27bf6e5a4dec1f4c8faa08ef4996cfcd0eb, 007 9ffb7ecc67e899f1b066d26369a6f97c2384da3a7a114b3d4351887df8dd2961, 008 4b54b835262346790de46025dd96587b1d98545b647936bfc7f70ee983b8876d, 009 546a8309808109f3cf08a1c9266d3cf595e998c19227d84912d6003709d0b35e, 010 6b6acba321d995dd1f1df65e1e8672d15c1b0c0a1fcde66cf3173dbeec0fb971, 011 382e9c2faa0153af0a71c721f853fb87a712e5e1b8fb2a5e5481c52f0a835d07, 012 049e98a6e93db080f5485817ca6cb89c45c9189a9f69ae4c23a1062ffffc31b1. Original blind 8/8 solve and AFI/Academy source verification retained. 008 Pfeiffer enrichment deliberately deferred, non-blocking. Zero unresolved factual blockers. Content-only acceptance; integration/build/production (283 library) still pending, not claimed."
+      }
+    }
+  },
+  "review_messages": [],
+  "report": "**Verdict: ACCEPT** — recorded on `task-ad42b81e680a4918ae28a8058dd6d182`, now `state: ACCEPTED`, version 4, reviewer `session-24d55b89fbff4133b033521006c595de`.\n\nIndependent verification performed (not borrowed from Root's script):\n- Raw draft sha256 `26d6db92...deefe` confirmed myself.\n- Byte-level proof: swapping the new prefix back to the old one reproduces my originally-reviewed sha256 `49492fa1...9de9` exactly — this guarantees the single clause swap in article 005 is the *only* difference anywhere in the file, so articles 006–012 are provably unchanged from what I already fact-checked against AFI/Academy.\n- Ledger's cinema-oct3-005 entry now documents removal of the unsupported \"first leading role\" attribution; word count 142 (within 130–240); 4 headings and all refs/hashes intact.\n- Computed per-article hashes via `build.py`'s `article_hash` (imported read-only, never run with `--write`): normalized batch `7c13b17a...394d`, with all eight per-article hashes included in the hub review note.\n\nZero remaining factual blockers; the Pfeiffer enrichment for 008 stays deliberately deferred as optional. This is content-only acceptance — integration, build, and the published 283-article library remain untouched and unclaimed by me.",
+  "failed_callbacks_before_success": [],
+  "trace_sha256": "2ace9ccf395c3465e9b3d4bcb4800f6495445eba8dee71cbe4e732881e1b7971",
+  "scope": "Exactly reviewed submitted task only; future publication remains separately gated."
+}
