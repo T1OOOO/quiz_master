@@ -1,0 +1,1149 @@
+{
+  "status": "LOGICAL_MAP_TO_FINAL74_KEEPERS_NOT_A_NEW_REMOTE_ACTION",
+  "removed_names": 140,
+  "multi_hop_original_mappings_resolved": 19,
+  "retained_backups": 74,
+  "unique_states": 52,
+  "method": "Copy the retained private raw keeper to recreate an old alias; verify SHA/bytes and keep mode0600. Prior29+remaining111 maps remain immutable; current rollback/production backups remain protected.",
+  "map": {
+    "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite",
+      "sha256": "50e1d903270a073f7f1042b31d6ad1723839ae10c0b5e3eeaaa465d18e8610ba",
+      "bytes": 48463872,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141933Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite",
+      "sha256": "50e1d903270a073f7f1042b31d6ad1723839ae10c0b5e3eeaaa465d18e8610ba",
+      "bytes": 48463872,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141933Z.sqlite",
+        "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite",
+      "sha256": "34354af18f7a095303e90b2e2a08bf4cc0bf2c390a90c3af587c47869b2acf26",
+      "bytes": 47661056,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032127Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite",
+      "sha256": "34354af18f7a095303e90b2e2a08bf4cc0bf2c390a90c3af587c47869b2acf26",
+      "bytes": 47661056,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032127Z.sqlite",
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032801Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite",
+      "sha256": "34354af18f7a095303e90b2e2a08bf4cc0bf2c390a90c3af587c47869b2acf26",
+      "bytes": 47661056,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032801Z.sqlite",
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite",
+      "sha256": "8b96b98a960b75eaffb8af6942d1f0db9300b89baf761b4bd825c061423f671f",
+      "bytes": 47398912,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-384d798-cutover-20261012T223343Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite",
+      "sha256": "8b96b98a960b75eaffb8af6942d1f0db9300b89baf761b4bd825c061423f671f",
+      "bytes": 47398912,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-384d798-cutover-20261012T223343Z.sqlite",
+        "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite",
+      "sha256": "2d0fe6ac2ac27d85ad69778f8f54b9b2ceaaa2fd75b992a097d18f1c3337b769",
+      "bytes": 48074752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-e437661-cutover-20261013T054156Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite",
+      "sha256": "2d0fe6ac2ac27d85ad69778f8f54b9b2ceaaa2fd75b992a097d18f1c3337b769",
+      "bytes": 48074752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-e437661-cutover-20261013T054156Z.sqlite",
+        "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T180438Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T180438Z.sqlite",
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T184052Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T184052Z.sqlite",
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T172642Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T172642Z.sqlite",
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite",
+      "sha256": "165652e171180dc42e19322ee11f951a6ec1359578bfea839a4461aee99314ae",
+      "bytes": 48586752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T205131Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite",
+      "sha256": "165652e171180dc42e19322ee11f951a6ec1359578bfea839a4461aee99314ae",
+      "bytes": 48586752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T205131Z.sqlite",
+        "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite",
+      "sha256": "1b6529bab3fe5bc96765b8bf9a46a894f4138ce1b58185487d66b1f30d9399d3",
+      "bytes": 48803840,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T231708Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite",
+      "sha256": "1b6529bab3fe5bc96765b8bf9a46a894f4138ce1b58185487d66b1f30d9399d3",
+      "bytes": 48803840,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T231708Z.sqlite",
+        "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-library-09b19cc-cutover-20261014T205022Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite",
+      "sha256": "c811bcfdc4af694b9f638f6901ba9360c04261bd9def7049049303d9e3d4b291",
+      "bytes": 49299456,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-library-09b19cc-cutover-20261014T205022Z.sqlite",
+        "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-library-09b19cc-publish-20261014T210634Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite",
+      "sha256": "c811bcfdc4af694b9f638f6901ba9360c04261bd9def7049049303d9e3d4b291",
+      "bytes": 49299456,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-library-09b19cc-publish-20261014T210634Z.sqlite",
+        "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T112137Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T112137Z.sqlite",
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T113355Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T113355Z.sqlite",
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T114748Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T114748Z.sqlite",
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-publish-20261014T120233Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-publish-20261014T120233Z.sqlite",
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite",
+      "sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+      "bytes": 49131520,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-reader-17be4ce-cutover-20261014T155409Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite",
+      "sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+      "bytes": 49131520,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T155409Z.sqlite",
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-reader-17be4ce-publish-20261014T160732Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite",
+      "sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+      "bytes": 49131520,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-reader-17be4ce-publish-20261014T160732Z.sqlite",
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite",
+      "sha256": "33f26c5620de2270d29d6b30158e3fbb02a7cd8fc6de345edd627b0edcfa45dc",
+      "bytes": 48861184,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-screen-song-6866608-cutover-20261014T030237Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite",
+      "sha256": "33f26c5620de2270d29d6b30158e3fbb02a7cd8fc6de345edd627b0edcfa45dc",
+      "bytes": 48861184,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-screen-song-6866608-cutover-20261014T030237Z.sqlite",
+        "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite",
+      "sha256": "010b9e7e8e55f749423f056c7104b4f5d1252316b977cad5ea85203c100279bc",
+      "bytes": 45891584,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-encore-317b339-cutover-20261010T232231Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite",
+      "sha256": "010b9e7e8e55f749423f056c7104b4f5d1252316b977cad5ea85203c100279bc",
+      "bytes": 45891584,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-encore-317b339-cutover-20261010T232231Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite",
+      "sha256": "010b9e7e8e55f749423f056c7104b4f5d1252316b977cad5ea85203c100279bc",
+      "bytes": 45891584,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-encore-317b339-cutover-20261010T231811Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-flags-42debe2.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-flags-42debe2.sqlite",
+      "sha256": "0716fc1218a5a8119e4f1d83cfb2182711255a995adffacfc213f1cd9fc2747a",
+      "bytes": 31391744,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-flags-42debe2.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-study-3ebba4e-preflight.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-study-3ebba4e-preflight.sqlite",
+      "sha256": "0a4ab013a560c227a0a06b4e5c670429ab9f097ff88451b206f634a535fcdc19",
+      "bytes": 32374784,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-study-3ebba4e-preflight.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-study-3ebba4e.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-study-3ebba4e-preflight.sqlite",
+      "sha256": "0a4ab013a560c227a0a06b4e5c670429ab9f097ff88451b206f634a535fcdc19",
+      "bytes": 32374784,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-study-3ebba4e-preflight.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-study-3ebba4e.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-study-3ebba4e-preflight.sqlite",
+      "sha256": "0a4ab013a560c227a0a06b4e5c670429ab9f097ff88451b206f634a535fcdc19",
+      "bytes": 32374784,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-study-3ebba4e-preflight.sqlite"
+      ]
+    },
+    "quiz-2026.10.02-2358-c3420d3.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.02-2358-c3420d3.sqlite",
+      "sha256": "118ead321a1b9356c1cb680be856f5b1d06d79f39c6a9dc3338dee5aa267299c",
+      "bytes": 21303296,
+      "original_mapping_chain": [
+        "quiz-2026.10.02-2358-c3420d3.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T205131Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite",
+      "sha256": "165652e171180dc42e19322ee11f951a6ec1359578bfea839a4461aee99314ae",
+      "bytes": 48586752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-music-craft-f79555e-cutover-20261013T204312Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T231708Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite",
+      "sha256": "1b6529bab3fe5bc96765b8bf9a46a894f4138ce1b58185487d66b1f30d9399d3",
+      "bytes": 48803840,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-acting-craft-83748f5-cutover-20261013T230853Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-e437661-cutover-20261013T054156Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite",
+      "sha256": "2d0fe6ac2ac27d85ad69778f8f54b9b2ceaaa2fd75b992a097d18f1c3337b769",
+      "bytes": 48074752,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-e437661-cutover-20261013T053106Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.05-quizipedia-486df89.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.05-quizipedia-486df89.sqlite",
+      "sha256": "31bb5d1a8cf6bd8881b9ebb67f4cb0c37c1289649f273a32acecf9e90595b012",
+      "bytes": 39378944,
+      "original_mapping_chain": [
+        "quiz-2026.10.05-quizipedia-486df89.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-screen-song-6866608-cutover-20261014T030237Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite",
+      "sha256": "33f26c5620de2270d29d6b30158e3fbb02a7cd8fc6de345edd627b0edcfa45dc",
+      "bytes": 48861184,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-screen-song-6866608-cutover-20261014T024810Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032127Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite",
+      "sha256": "34354af18f7a095303e90b2e2a08bf4cc0bf2c390a90c3af587c47869b2acf26",
+      "bytes": 47661056,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-328f2f8-cutover-20261013T032801Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite",
+      "sha256": "34354af18f7a095303e90b2e2a08bf4cc0bf2c390a90c3af587c47869b2acf26",
+      "bytes": 47661056,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-328f2f8-cutover-20261013T030432Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-thematic-61b47ea.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-thematic-61b47ea.sqlite",
+      "sha256": "37f3f588e5f09d7b7af13d77840ca12e686c48d84b332343e98d0223f0bba0d4",
+      "bytes": 37359616,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-thematic-61b47ea.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-reader-17be4ce-cutover-20261014T155409Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite",
+      "sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+      "bytes": 49131520,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-reader-17be4ce-publish-20261014T160732Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite",
+      "sha256": "396fc22e5d2c22cd63f6c0f374ecefd7ddc89bdb7e45ae9186e454d5369979f7",
+      "bytes": 49131520,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-reader-17be4ce-cutover-20261014T153204Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-library-420849f.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-library-420849f.sqlite",
+      "sha256": "3fa1a9d799db8b3dbfc352268dd2c9758561732c4c247c6c31f2ca85b147331a",
+      "bytes": 30650368,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-library-420849f.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-preparation-ef96a79.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-library-420849f.sqlite",
+      "sha256": "3fa1a9d799db8b3dbfc352268dd2c9758561732c4c247c6c31f2ca85b147331a",
+      "bytes": 30650368,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-library-420849f.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-preparation-ef96a79.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-library-420849f.sqlite",
+      "sha256": "3fa1a9d799db8b3dbfc352268dd2c9758561732c4c247c6c31f2ca85b147331a",
+      "bytes": 30650368,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-library-420849f.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T180438Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-adf95a5-cutover-20261013T184052Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T172642Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite",
+      "sha256": "407f858b42a6bc31626ff8146721d0e9508b661a8a261f3ad92b62165e7400e1",
+      "bytes": 48558080,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-film-craft-c74253f-cutover-20261013T171556Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.07-articles-30702d1-cutover-20261007T182820Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.07-articles-30702d1.sqlite",
+      "sha256": "410239e915c2291fc30a6c134ccc64799ecbf63b4cbf96c7e0ffd2977ef08130",
+      "bytes": 45481984,
+      "original_mapping_chain": [
+        "quiz-2026.10.07-articles-30702d1.sqlite"
+      ]
+    },
+    "quiz-2026.10.07-articles-30702d1-cutover-20261007T182820Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.07-articles-30702d1.sqlite",
+      "sha256": "410239e915c2291fc30a6c134ccc64799ecbf63b4cbf96c7e0ffd2977ef08130",
+      "bytes": 45481984,
+      "original_mapping_chain": [
+        "quiz-2026.10.07-articles-30702d1.sqlite"
+      ]
+    },
+    "quiz-2026.10.07-articles-30702d1.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.07-articles-30702d1.sqlite",
+      "sha256": "410239e915c2291fc30a6c134ccc64799ecbf63b4cbf96c7e0ffd2977ef08130",
+      "bytes": 45481984,
+      "original_mapping_chain": [
+        "quiz-2026.10.07-articles-30702d1.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141933Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite",
+      "sha256": "50e1d903270a073f7f1042b31d6ad1723839ae10c0b5e3eeaaa465d18e8610ba",
+      "bytes": 48463872,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-article-only-ffa2716-cutover-20261013T141205Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.15-actors-d204f9b-cutover-20261015T060417Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite",
+      "sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+      "bytes": 49364992,
+      "original_mapping_chain": [
+        "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.15-actors-d204f9b-cutover-20261015T060417Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite",
+      "sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+      "bytes": 49364992,
+      "original_mapping_chain": [
+        "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite",
+      "sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+      "bytes": 49364992,
+      "original_mapping_chain": [
+        "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.15-reader-06dfa0b-cutover-20261015T030942Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite",
+      "sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+      "bytes": 49364992,
+      "original_mapping_chain": [
+        "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.15-reader-6384795-cutover-20261015T021147Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite",
+      "sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+      "bytes": 49364992,
+      "original_mapping_chain": [
+        "quiz-2026.10.15-reader-06dfa0b-publish-20261015T034437Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite",
+      "sha256": "6b5c4bfc657c0ffde2d61fcc79e4b51cc107d8217cdb42b2642cd284a5f61fbb",
+      "bytes": 46166016,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094446Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite",
+      "sha256": "6b5c4bfc657c0ffde2d61fcc79e4b51cc107d8217cdb42b2642cd284a5f61fbb",
+      "bytes": 46166016,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094446Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite",
+      "sha256": "6b5c4bfc657c0ffde2d61fcc79e4b51cc107d8217cdb42b2642cd284a5f61fbb",
+      "bytes": 46166016,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094309Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-auto1s-ff91d0c.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-auto1s-ff91d0c.sqlite",
+      "sha256": "6cd35c35eb0ea3a4b57c446863ea98043cc923a6496a8c8034bb4469b94aba75",
+      "bytes": 30597120,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-auto1s-ff91d0c.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-0038-33f5cfc.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-0038-33f5cfc.sqlite",
+      "sha256": "7046f5b8a2f9ecb98fbc744eed4dad6656926e996be6beb9f46700f35b2d4e72",
+      "bytes": 25718784,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-0038-33f5cfc.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-capitals-ebab492.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-capitals-ebab492.sqlite",
+      "sha256": "72bf379782520ebed284232854fdb266e4a06c9d6318f6f91a1caf5908b80276",
+      "bytes": 30789632,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-capitals-ebab492.sqlite"
+      ]
+    },
+    "quiz-2026.10.06-feedback-e0f89cf.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.06-feedback-e0f89cf.sqlite",
+      "sha256": "73ec7f6a8cdf98f10487d2f43d895e0902fec3fc3a35c3ebe9fa26f2150bcae8",
+      "bytes": 39473152,
+      "original_mapping_chain": [
+        "quiz-2026.10.06-feedback-e0f89cf.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite",
+      "sha256": "7b9253fbfecb38aaae959dd780b1177b308d7893f0a60fa94b92ae738808ea34",
+      "bytes": 46125056,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055939Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite",
+      "sha256": "7b9253fbfecb38aaae959dd780b1177b308d7893f0a60fa94b92ae738808ea34",
+      "bytes": 46125056,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055939Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite",
+      "sha256": "7b9253fbfecb38aaae959dd780b1177b308d7893f0a60fa94b92ae738808ea34",
+      "bytes": 46125056,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T060502Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite",
+      "sha256": "7b9253fbfecb38aaae959dd780b1177b308d7893f0a60fa94b92ae738808ea34",
+      "bytes": 46125056,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T060502Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite",
+      "sha256": "7b9253fbfecb38aaae959dd780b1177b308d7893f0a60fa94b92ae738808ea34",
+      "bytes": 46125056,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-phobias-1537ff5-cutover-20261011T055401Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.02-2327-5121fbd.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.02-2327-5121fbd.sqlite",
+      "sha256": "7cbfe6c06c73b5774c6ba6b921e63e0aa229e96f43ff8e02e7913bca8715f482",
+      "bytes": 13635584,
+      "original_mapping_chain": [
+        "quiz-2026.10.02-2327-5121fbd.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-study-5536e77.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-study-5536e77.sqlite",
+      "sha256": "8250d537563d9c722480324da06f519f856b1d122a59af1e6ef2353289d13956",
+      "bytes": 32301056,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-study-5536e77.sqlite"
+      ]
+    },
+    "quiz-2026.10.02-2308-9359647.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.02-2308-9359647.sqlite",
+      "sha256": "88a4b72bfc237324e7ebdcd5986d3915a1d08bc309cc5095ec6f66bf5c6fec03",
+      "bytes": 561152,
+      "original_mapping_chain": [
+        "quiz-2026.10.02-2308-9359647.sqlite"
+      ]
+    },
+    "quiz-2026.10.13-culture-384d798-cutover-20261012T223343Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite",
+      "sha256": "8b96b98a960b75eaffb8af6942d1f0db9300b89baf761b4bd825c061423f671f",
+      "bytes": 47398912,
+      "original_mapping_chain": [
+        "quiz-2026.10.13-culture-384d798-cutover-20261012T222554Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite",
+      "sha256": "8ba97e64b233d6ac91411d026157a822761c28d4fe06be2997dfc61158e5f0bc",
+      "bytes": 45686784,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214438Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite",
+      "sha256": "8ba97e64b233d6ac91411d026157a822761c28d4fe06be2997dfc61158e5f0bc",
+      "bytes": 45686784,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214438Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite",
+      "sha256": "8ba97e64b233d6ac91411d026157a822761c28d4fe06be2997dfc61158e5f0bc",
+      "bytes": 45686784,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-2e3516f-cutover-20261010T214331Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite",
+      "sha256": "9f217892968111e96ca21d680553d929f45fb0fba5e521c5914312387f63deea",
+      "bytes": 47226880,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-f219916-cutover-20261012T193705Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite",
+      "sha256": "9f217892968111e96ca21d680553d929f45fb0fba5e521c5914312387f63deea",
+      "bytes": 47226880,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-f219916-cutover-20261012T193705Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite",
+      "sha256": "9f217892968111e96ca21d680553d929f45fb0fba5e521c5914312387f63deea",
+      "bytes": 47226880,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-f219916-cutover-20261012T194513Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite",
+      "sha256": "9f217892968111e96ca21d680553d929f45fb0fba5e521c5914312387f63deea",
+      "bytes": 47226880,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-f219916-cutover-20261012T194513Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite",
+      "sha256": "9f217892968111e96ca21d680553d929f45fb0fba5e521c5914312387f63deea",
+      "bytes": 47226880,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-f219916-cutover-20261012T191701Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite",
+      "sha256": "a1b9385900d76dab18a03272602e80d3fa12c4cab92b71289225fef1c73a5014",
+      "bytes": 46329856,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T233300Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite",
+      "sha256": "a1b9385900d76dab18a03272602e80d3fa12c4cab92b71289225fef1c73a5014",
+      "bytes": 46329856,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T233300Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite",
+      "sha256": "a1b9385900d76dab18a03272602e80d3fa12c4cab92b71289225fef1c73a5014",
+      "bytes": 46329856,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-culture-variety-b015251-cutover-20261011T231316Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T112137Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T113355Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-cutover-20261014T114748Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-mixed-ecac092-publish-20261014T120233Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite",
+      "sha256": "a49c4ea9745edf6304a47a92fb8261e624a5e14b0347864e1f6b24e3ab40f721",
+      "bytes": 48885760,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-mixed-ecac092-cutover-20261014T111030Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-486901a-cutover-20261010T221435Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-486901a-cutover-20261010T221435Z.sqlite",
+      "sha256": "aa8f6d8846e7eef63bc770a642fe130e84b130d02b4e0497871e45383c3369cb",
+      "bytes": 45756416,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-486901a-cutover-20261010T221435Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-culture260-8c90873.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-culture260-8c90873.sqlite",
+      "sha256": "b3ec9a50fb8e36c173b453ce6fcfdcdc6e7b9ece014bf147e76ae1b03e19ce8a",
+      "bytes": 32206848,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-culture260-8c90873.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-0245-6b5e2e6.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-0245-6b5e2e6.sqlite",
+      "sha256": "b56e2e74aeb422ff354ca2bed60747ead04f6e5f0bbfcda7bba67ff5ecf4cc83",
+      "bytes": 30408704,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-0245-6b5e2e6.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite",
+      "sha256": "c4688cf5cbbb66bae3d92d09e8df6f89b4388547a6fafcc783c8d93af345889d",
+      "bytes": 45948928,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-planets-d228c9e-cutover-20261011T025028Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite",
+      "sha256": "c4688cf5cbbb66bae3d92d09e8df6f89b4388547a6fafcc783c8d93af345889d",
+      "bytes": 45948928,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-planets-d228c9e-cutover-20261011T025028Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite",
+      "sha256": "c4688cf5cbbb66bae3d92d09e8df6f89b4388547a6fafcc783c8d93af345889d",
+      "bytes": 45948928,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-planets-d228c9e-strict.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite",
+      "sha256": "c4688cf5cbbb66bae3d92d09e8df6f89b4388547a6fafcc783c8d93af345889d",
+      "bytes": 45948928,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-planets-d228c9e-strict.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite",
+      "sha256": "c4688cf5cbbb66bae3d92d09e8df6f89b4388547a6fafcc783c8d93af345889d",
+      "bytes": 45948928,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-planets-d228c9e-cutover-20261011T023925Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-library-09b19cc-cutover-20261014T205022Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite",
+      "sha256": "c811bcfdc4af694b9f638f6901ba9360c04261bd9def7049049303d9e3d4b291",
+      "bytes": 49299456,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.14-library-09b19cc-publish-20261014T210634Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite",
+      "sha256": "c811bcfdc4af694b9f638f6901ba9360c04261bd9def7049049303d9e3d4b291",
+      "bytes": 49299456,
+      "original_mapping_chain": [
+        "quiz-2026.10.14-library-09b19cc-publish-20261014T223958Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-lotr-e38bb24.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-lotr-e38bb24.sqlite",
+      "sha256": "c88d5c8a0ac16eb97c3d6e42626213a75afa9b2e546b4904a68e14de61459a20",
+      "bytes": 37679104,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-lotr-e38bb24.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-0125-6326777.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-0125-6326777.sqlite",
+      "sha256": "cf4905a81ec082fb219daf079cc65ff0a6eef59c5e59064eaf571325c26f1056",
+      "bytes": 30224384,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-0125-6326777.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-culture-d5f070b.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-culture-d5f070b.sqlite",
+      "sha256": "e24c8bc41f663d8fc86ed241c5388890a00c2f9e138ef732c271f68f09114d6d",
+      "bytes": 31735808,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-culture-d5f070b.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite",
+      "sha256": "e9fc162faa9271d947922092ed8862118b6b0ddbbbb83dbdd49b4df51a279e2d",
+      "bytes": 46452736,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-singers-1c9b534-cutover-20261012T033933Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite",
+      "sha256": "e9fc162faa9271d947922092ed8862118b6b0ddbbbb83dbdd49b4df51a279e2d",
+      "bytes": 46452736,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-singers-1c9b534-cutover-20261012T033933Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite",
+      "sha256": "e9fc162faa9271d947922092ed8862118b6b0ddbbbb83dbdd49b4df51a279e2d",
+      "bytes": 46452736,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-singers-1c9b534-cutover-20261012T052814Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite",
+      "sha256": "e9fc162faa9271d947922092ed8862118b6b0ddbbbb83dbdd49b4df51a279e2d",
+      "bytes": 46452736,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-singers-1c9b534-cutover-20261012T052814Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite",
+      "sha256": "e9fc162faa9271d947922092ed8862118b6b0ddbbbb83dbdd49b4df51a279e2d",
+      "bytes": 46452736,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-singers-1c9b534-cutover-20261012T032842Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045312Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045312Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050137Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050137Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050534Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050534Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050935Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T050935Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T051315Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T051315Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite",
+      "sha256": "ef36329af4212d79291ec2ce8d299c818e9c3c8e7793119b080576288f870a21",
+      "bytes": 46047232,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-dedup-ddf47be-cutover-20261011T045044Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite",
+      "sha256": "f172b8aa16742ebaecf1bdced21e080711a173c58037b5d14e8822e920ab7d52",
+      "bytes": 45617152,
+      "original_mapping_chain": [
+        "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202822Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite",
+      "sha256": "f172b8aa16742ebaecf1bdced21e080711a173c58037b5d14e8822e920ab7d52",
+      "bytes": 45617152,
+      "original_mapping_chain": [
+        "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202822Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite",
+      "sha256": "f172b8aa16742ebaecf1bdced21e080711a173c58037b5d14e8822e920ab7d52",
+      "bytes": 45617152,
+      "original_mapping_chain": [
+        "quiz-2026.10.10-articles-3ec0a33-cutover-20261010T202716Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.04-mobile-e7a7617.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.04-mobile-e7a7617.sqlite",
+      "sha256": "f350e4aee2ce007f6880deb03c1325a9fa2de61e459d2a12077e64e08ddf8fca",
+      "bytes": 37244928,
+      "original_mapping_chain": [
+        "quiz-2026.10.04-mobile-e7a7617.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094710Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094710Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T211359Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T211359Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T212508Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T212508Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite",
+      "sha256": "f43cc9ebc7238d595152c3703518cf994524ef7981f8028b286660b2ff9c4c38",
+      "bytes": 46219264,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-home-alone-e0d13f4-cutover-20261011T094609Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite",
+      "sha256": "f4ea835104d2c59715212442a1b06d1b8d8230c4e6fb59ac445e61907a29265a",
+      "bytes": 46780416,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-reader-4207ef5-cutover-20261012T103017Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite",
+      "sha256": "f4ea835104d2c59715212442a1b06d1b8d8230c4e6fb59ac445e61907a29265a",
+      "bytes": 46780416,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.12-reader-4207ef5-cutover-20261012T103017Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite",
+      "sha256": "f4ea835104d2c59715212442a1b06d1b8d8230c4e6fb59ac445e61907a29265a",
+      "bytes": 46780416,
+      "original_mapping_chain": [
+        "quiz-2026.10.12-reader-4207ef5-cutover-20261012T102234Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.03-0042-33f5cfc.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.03-0042-33f5cfc.sqlite",
+      "sha256": "f86622684f515f8c773f3edf3195d81860f22e51f8519d21004ad6fc73dacae3",
+      "bytes": 25726976,
+      "original_mapping_chain": [
+        "quiz-2026.10.03-0042-33f5cfc.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite",
+      "sha256": "fb67ee5b78489e52512ab8c6cc11b207ccd466ddcb622a78cb316e6dea98c2f8",
+      "bytes": 45731840,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-ba80671-cutover-20261010T215653Z.restore-proof.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite",
+      "sha256": "fb67ee5b78489e52512ab8c6cc11b207ccd466ddcb622a78cb316e6dea98c2f8",
+      "bytes": 45731840,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite"
+      ]
+    },
+    "quiz-2026.10.11-culture-ba80671-cutover-20261010T215653Z.sqlite": {
+      "retained_keeper": "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite",
+      "sha256": "fb67ee5b78489e52512ab8c6cc11b207ccd466ddcb622a78cb316e6dea98c2f8",
+      "bytes": 45731840,
+      "original_mapping_chain": [
+        "quiz-2026.10.11-culture-ba80671-cutover-20261010T215308Z.sqlite"
+      ]
+    }
+  }
+}
