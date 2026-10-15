@@ -1,0 +1,16 @@
+{
+  "scope": "One-question isolated Go fixture for actual Flutterdebug UI; never production or full20score certification",
+  "public_question_and_revision_unchanged": true,
+  "qid": "cinema-oct3-020",
+  "api_binary_sha256": "28995a288b5c2c27ae5740b4e36f25a87f3c5a3cd8b1b028fc5004cf226450f0",
+  "new_fixture_bundle_sha256": "8921285b4132fc79c935cf5434885ac463a6d7b3431a7fa0ce1ffbe5e136a3ae",
+  "old_source_public_snapshot": "study/question_articles/snapshots/prep-film-actors-1.json",
+  "ports": [
+    19090,
+    19093,
+    19098
+  ],
+  "cors_origin_only": "http://127.0.0.1:19098",
+  "fixture_quiz_revision_recomputed_for_one_question_subset": "a32763a638dbd0ff4d3cad665019cf3b500b6e1754fd71479d468cd2b2bb93ac",
+  "initial_fixture_failure": "Go rejected stale overall20questionquizrevision for1questionsubset before listening. Recomputed onlysubsetquizrevision/bundlehash; exactquestionrevision/options/privatekey untouched."
+}

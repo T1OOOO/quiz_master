@@ -1,0 +1,88 @@
+{
+  "actual_submitted_task": {
+    "acceptance": "Actual existingcodepath inventory and smallest safe releaseproposal; explicitly say ifnogenericpath. Read-only finding only, no deploy/source acceptance.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master"
+    ],
+    "assignee": "session-cdb013cb80cb4ee296c65c04f83fc589",
+    "author": "session-70796293ed0c4447af1189207bf29ce8",
+    "body": "Read-only bounded repository research for current reviewed-source9c670e90, actualproduction61/Reader291. Find maintained generic local build/package/stage/backup/atomicHelm/verify entrypoint, distinguish from hardcodedperrelease copies. Report existingpaths/exactcommands/flags and gaps for fresh20percent guard,61/both0f/PVC/29OPENfeedback,newbackup/rollback/durablearchive. No source edits, Git/Beads writes, SSH, builds/tests/browser, workerlaunch or resources. Existing perrelease READER291 docs provide concreteacceptedgates; avoid inventing releaseflags or re-readingsecretconfigs. Root ownsall production/source decisions.",
+    "created_at": 1792059733.3839514,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-440c524182ee45c6a8e2779500ba3274",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [],
+      "checks": [
+        "Read-only scoped rg and file inspection in C:\\ap\\quiz_master; no SSH, build, test, browser, Git/Beads mutation, deploy or file change.",
+        "Reviewed PUBLISHED.md and execution/publish controller source to distinguish published historical evidence from reusable implementation."
+      ],
+      "evidence": [
+        {
+          "capability": "Reusable remote SQLite online backup plus integrity and isolated restore proof; invocation shape: python3 backup_sqlite.py /opt/quiz-master/backups/<new-run>.sqlite.",
+          "path": "deploy/quiz-preview/backup_sqlite.py"
+        },
+        {
+          "capability": "Historical runtime-only Helm flow, not generic: requires build ID matching ^quiz-2026.10.04-study-[a-f0-9]{7,12}$, asserts obsolete baseline image 6fd3e6d..., mutates release-values.yaml with sed, then runs Helm atomic upgrade.",
+          "path": "deploy/quiz-preview/release-study.sh"
+        },
+        {
+          "capability": "Reader291-specific packager: hardcodes frozen 3482af9, build quiz-2026.10.15-reader291-3482af9, baseline image c4b5ba65..., article/ref counts 291/172/170.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/release-worker/prepare_reader291_release.py"
+        },
+        {
+          "capability": "Reader291-specific remote preparer; requires --pins --package, with --prepare additionally requiring --helper-review and --evidence-dir; exact constants and staged archive path are tied to Reader291.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/release-worker/prepare_reader291_remote.py"
+        },
+        {
+          "capability": "Generates one Reader291 publication shell from fixed .run/actor291_release_20261015 inputs and explicitly asserts 3482af9/current Helm60.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/publication-source/render_publication.py"
+        },
+        {
+          "capability": "Executes the generated shell via SSH and writes Reader291 publication evidence; it is not a generic entrypoint.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/publication-source/publish_release.py"
+        },
+        {
+          "capability": "Actual Reader291 cutover script: fixed source/image/baseline 60; preflight checks 20% containerd free capacity, c4b5ba65 image, PVC UID 7fc2428f-4146-4c78-a26d-2347d9f3b7bf; makes fresh 0600 backup, checks durable tar and values hashes, server dry-run, then Helm --atomic --wait --timeout 180s.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/publish-preview.sh"
+        },
+        {
+          "capability": "Confirms historical outcome: Helm61, both containers 0f24677d..., PVC preserved, 29 feedback rows OPEN. It does not make the Reader291 shell safe for a new source.",
+          "path": "docs/rewrite-agents/tasks/READER291_RELEASE_20261015/PUBLISHED.md"
+        }
+      ],
+      "exact_non_generic_commands": [
+        "Historical only, do not use for current source: bash deploy/quiz-preview/release-study.sh <quiz-2026.10.04-study-...>.",
+        "Reader291 only, do not use for current source: python docs/rewrite-agents/tasks/READER291_RELEASE_20261015/publication-source/render_publication.py; python docs/rewrite-agents/tasks/READER291_RELEASE_20261015/publication-source/publish_release.py.",
+        "Reader291 generated shell's actual cutover flag is: bash publish-preview.sh publish; it must not be repointed by substitution because all source/image/review/hash guards are fixed Reader291 evidence."
+      ],
+      "finding": "No maintained generic local end-to-end build/package/stage/backup/atomic-Helm/publish entrypoint exists in the scoped paths. deploy/ supplies reusable backup/smoke primitives only; every complete production release controller found under docs/rewrite-agents/tasks is release-pinned.",
+      "recommended_safe_path": [
+        "Do not run any Reader291 controller for current source 9c670e90: its hardcoded source, build, baseline, artifact and review pins would either fail closed or deploy Reader291.",
+        "Use the reusable primitive only within a new target-specific reviewed package: fresh local artifacts and hashes, fresh remote prepare/rehearsal with current Helm61/image baseline and the required 20% guard, new 0600 online backup plus isolated restore, durable image archive, Helm lint/template/server dry-run, then exactly one locked Helm upgrade --atomic --wait --timeout 180s.",
+        "Require the fresh controller to preserve both current image containers, PVC UID, all 29 OPEN feedback/full hash, rollback package(s), and publish HTTP verification; independently review those exact generated inputs before execution."
+      ],
+      "risks": [
+        "The only near-generic release shell mutates its values file and asserts an obsolete 2026-10-04 build/baseline.",
+        "The Reader291 package's 20% guard has historically thin headroom; capacity must be measured fresh immediately before backup and upgrade.",
+        "No scoped maintained controller automatically carries forward 61/both current images, 29 OPEN feedback hash, rollback/durable archive or current 9c670e90 hashes."
+      ],
+      "runtime_identity": "codex/gpt-6.1-sol; session-cdb013cb80cb4ee296c65c04f83fc589",
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "root_task_id": "task-440c524182ee45c6a8e2779500ba3274",
+    "run_id": "run-59957f7e84f74488b1c297ea12999501",
+    "skills": [],
+    "state": "SUBMITTED",
+    "team_id": "team-c2049f3c642c44749060faa283a038b9",
+    "title": "Locate existing generic safe release path for299 and5nc",
+    "version": 3
+  },
+  "status": "READ_ONLY_ADVISORY_SUBMITTED_NOT_AN_EXECUTION_GATE",
+  "scope": "Actual native helper examined existingcode; no generic controller found, no command authorized/executed by this finding."
+}

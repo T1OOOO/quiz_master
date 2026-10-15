@@ -1,0 +1,105 @@
+[
+  {
+    "acceptance": "Exactly8accepted articles imported with canonical independent review provenance and preserved291oldobjects; deterministicexport/bindings/tests pass, realHubsubmitted result. Different-provider integration review stillrequired.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\study\\question_articles",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\ACTOR_FINAL_EIGHT_INTEGRATION_20261015"
+    ],
+    "assignee": "session-6c6233f55a8b4c46ac24d753a62606ae",
+    "author": "session-70796293ed0c4447af1189207bf29ce8",
+    "body": "Exact bounded integration only: import final accepted ACTOR_FOLLOWUP_FOUR_20261015 and ACTOR_FINAL_FOUR_20261015 drafts using genuine final Claude receipts, preserve all291existing articleobjects and exact public questionrefs/options/keys. Own new canonical draft/review files under study/question_articles, generated question-articles.json and docs/ACTOR_FINAL_EIGHT_INTEGRATION_20261015. Existing builder only; no schema or builder rewrite, other assets, API, Flutterlib, Beads/Git/SSH/release/children. Actual buildercheck and3existingPythonunittests allowed; Flutterheavytests onlyRoot. Exactly299articles/180questionrefs/178playable/2knownnoncatalog expected, recompute independently. Reconcile existingpublic20snapshot SHA ae38b61aacea958b5f773198f0fecf480e218508f857120e66bddec3d6175422. Verify acceptedfinalhashes, canonical author/reviewer distinct realidentity from receipts and provenance. Submit actual files/hashes/deltas/tests and knownlimits. Root5nc UI edit is disjoint; preserve foreignfiles.",
+    "created_at": 1792057932.9335885,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "content",
+    "id": "task-72e5b3fa139749fcbc4c78d8985a1a36",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "study/question_articles/reviews/cinema-actors-final-eight-20261015-review.json",
+        "docs/rewrite-agents/tasks/ACTOR_FINAL_EIGHT_INTEGRATION_20261015/INTEGRATION_REPORT.md"
+      ],
+      "evidence": [
+        "Corrected review author to the actual accepted-task assignee/session-767ebd4851e541b0ba48014d280e4cd5; retained Root/session-7b17d0722095473fa160d251eb85def2 as task_author and Claude reviewer identities.",
+        "python study/question_articles/build.py --check from C:\\ap\\quiz_master: PASS, 299 independently reviewed articles.",
+        "Canonical draft and generated catalog hashes are unchanged, proving all 8 article objects and generated 299-article asset bytes were preserved."
+      ],
+      "limitations": [
+        "Independent different-provider integration review remains required; this provenance rework is lead inspection, not approval.",
+        "No Flutter, browser, Git, Beads, or non-scoped check was run."
+      ],
+      "report": "docs/rewrite-agents/tasks/ACTOR_FINAL_EIGHT_INTEGRATION_20261015/INTEGRATION_REPORT.md",
+      "run_id": "run-f5bfa41269fc4c1ea128264c5ee1e60f",
+      "sha256": {
+        "canonical_draft_unchanged": "5bcc7beb3888c7f621f4d2c059b31174a1c93132f1393c4d30b83ce527b54f2b",
+        "canonical_review": "cc4785e6c34c7721c98abd36a55472325629efe27472efe126736250b091e440",
+        "generated_catalog_unchanged": "cfb7188dd04e076fefc5fa0e537684fe7a01a8e36e75f017409f96c928a333f4"
+      },
+      "status": "DONE_WITH_CONCERNS"
+    },
+    "review_note": "Lead source/provenance inspection (NOT independent-provider acceptance): canonical review author records task.author Root7b17, but both genuinely accepted finalfact tasks have actual content writer task.assignee session-767ebd4851e541b0ba48014d280e4cd5. Root authored task brief, not article text. Replace canonical author with actual writer767; preserve genuine reviewerdf6/c8identities and all article bytes. Update own integrationreport canonicalreviewSHA/provenance wording after buildercheck. No other source/runtimechanges. Independent Claude integration gate remains required.",
+    "reviewer": "session-70796293ed0c4447af1189207bf29ce8",
+    "root_task_id": "task-72e5b3fa139749fcbc4c78d8985a1a36",
+    "run_id": "run-f5bfa41269fc4c1ea128264c5ee1e60f",
+    "skills": [],
+    "state": "SUBMITTED",
+    "team_id": "team-c2049f3c642c44749060faa283a038b9",
+    "title": "Integrate eight independently accepted actor013-020 articles for3qx",
+    "version": 6
+  },
+  {
+    "acceptance": "Observed failing regression then focused tests pass; independentreview and releasegates separate.",
+    "allowed_paths": [
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\feedback.dart",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\journey_pages.dart",
+      "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\widget_test.dart",
+      "C:\\ap\\quiz_master\\docs"
+    ],
+    "assignee": "session-70796293ed0c4447af1189207bf29ce8",
+    "author": "session-70796293ed0c4447af1189207bf29ce8",
+    "body": "Root owns feedback.dart/journey_pages.dart/widget_test.dart, docs/FEEDBACK5NC_20261015. Existing screenshot proves floating globalfeedback overlays reviewparagraphs. Put feedback action inline inresult flow; suppress floating onlycompletedquizpage; reuse existing guarded_open/captureprivacy/retry. Preserve otherroutefeedback/history/back navigation/active4-6answers. Test existingreal25questionjourney failsbeforefix, thennoFAB/resultinlineopensdialog. No APIchange orfeedbackclosure beforepublishedverification.",
+    "created_at": 1792058175.8363547,
+    "depth": 0,
+    "difficulty": 2,
+    "difficulty_explicit": true,
+    "domain": "general",
+    "id": "task-a41210daa0404a8ab058a9f1090bfa7f",
+    "parent_task_id": null,
+    "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+    "requires_review": true,
+    "result": {
+      "changed_files": [
+        "next/apps/quiz_app/lib/feedback.dart",
+        "next/apps/quiz_app/lib/journey_pages.dart",
+        "next/apps/quiz_app/test/widget_test.dart"
+      ],
+      "evidence": [
+        "Observedred1 FloatingActionButtononresults; finalactual25questionregression0",
+        "33feedback/widgettests0 including6phoneanswers/textscale,7article299bindings0; DartscopedanalysisNoerrors",
+        "Actual361x738 localFlutterdebug+oneexactGoquestion020: wronganswer/article2sourcecards/score0/inlinefeedbackdialogcancel/Historyglobalfeedbackrestored; rootviewedscreenshots",
+        "ActualconnectedDTDhotrestart succeeded; Dart/browsererrorsnone",
+        "Officialclose1, exactowndaemonidentityvalidated/stopped;16capturedidentitiesinactive;ports19090/19093/19098closed"
+      ],
+      "limitations": [
+        "This is source/debug fix only, not releaseimage/production/Android/screenreader",
+        "Foreignmodifiedcheck_reader10vs6 remainsuntouched failing; unmodifiedtrackedHEADchecker7checks0; not claiming4newmodules",
+        "All29productionfeedback remainOPEN, actualHelm61 Reader291 unchanged;5nc staysinprogressuntilpublishedverification",
+        "Independentdifferentprovideracceptance stillrequired"
+      ],
+      "report": "docs/rewrite-agents/tasks/FEEDBACK5NC_20261015/README.md",
+      "source_commit": "9c670e9",
+      "status": "DONE"
+    },
+    "root_task_id": "task-a41210daa0404a8ab058a9f1090bfa7f",
+    "run_id": "run-c58a3eded28748a18045bb040c37692f",
+    "skills": [],
+    "state": "SUBMITTED",
+    "team_id": "team-c2049f3c642c44749060faa283a038b9",
+    "title": "Fix5nc result-review feedback overlap with inline result action",
+    "version": 3
+  }
+]

@@ -1,0 +1,19 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e2]
+        - button "Домой" [ref=e3]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e4]
+        - StaticText "Кино и актёры: роли в популярных фильмах"
+        - StaticText "Все вопросы"
+        - progressbar "0"
+        - StaticText "1/8"
+        - group
+          - group "Во французско-германском художественном фильме «Амели» (2001) кто сыграл Амели Пулен?"
+            - button "Изабель Юппер" [ref=e5]
+            - button "Ванесса Паради" [ref=e6]
+            - button "Марион Котийяр" [ref=e7]
+            - button "Одри Тоту" [ref=e8]
+      - button "Отправить отзыв" [ref=e1]

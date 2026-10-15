@@ -1,0 +1,21 @@
+{
+  "status": "SUPERSEDED_INCOMPLETE_NOT_EXECUTED",
+  "original_task": "task-8cfc93484d3f489da1ac53d1752f879e",
+  "repair_task": "task-f3d4ca23b121484dbb822eb4667b3724",
+  "actual_remote_execution": false,
+  "lead_review_only_not_independent_acceptance": true,
+  "archived_ignored_files_sha256": {
+    "deploy/quiz-preview/release_prepare.py": "93ec6b7f9103ae6f612da4765efbdaa16170f1b8166355e89b80c08cc88272d3",
+    "deploy/quiz-preview/test_release_prepare.py": "fb8a144f8e7eb59415067c1ab614b735f408176a4c823f420d0d70d2260ee35c",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/controller/release-plan.json": "5c4006a5a660956881d02903d83914a8a31403664e15e3f0eaf1ee8513fedad5",
+    "docs/rewrite-agents/tasks/READER299_RELEASE_20261015/controller/README_EN.md": "3e861d768fb74ae18cdcfb59a028e1ef33ee75b927890bc1d356ecea42649efc"
+  },
+  "blockers": [
+    "Receipt strings were not actual accepted task/run/hash validation.",
+    "Plan/artifact/tree/count/delta invariants were not enforced.",
+    "Generated remote script omitted full feedback, Ready/DiskPressure and durable image/rollback proof.",
+    "No package was produced; PREPARED could be emitted without complete prior preparation gates."
+  ],
+  "replacement_task": "task-895ed4e75e69407a9d6389969a463f63",
+  "disposition": "Removed only exact-hash untracked prototype files after worker stopped; historical release evidence untouched. Replacement uses strict target-specific adapters with independent review before execution."
+}
