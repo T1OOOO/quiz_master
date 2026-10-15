@@ -1,0 +1,24 @@
+{
+  "actual_exit": 0,
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-i",
+    "C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519",
+    "root@192.3.164.184",
+    "env -u PYTHONOPTIMIZE -u PYTHONSTARTUP bash -s"
+  ],
+  "elapsed_seconds": 9.637,
+  "script_sha256": "55086f5d9ed700bdc386c0860c7265f0a56ed07d454c5cf9ef6de6eca3c3cc2f",
+  "stdout_sha256": "4ad9e055bcf8ca9a8c8c844c5dac1036c958b51c3284b367f23d6273dba16147",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "publication_performed": false,
+  "build_id": "quiz-2026.10.15-country483-3c22818",
+  "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+  "image": "sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+  "run": "quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z",
+  "prepared_receipt_sha256": "6352671295c7834fa318517f383029aba3a74d7c6408c1378727f33651a62a81"
+}

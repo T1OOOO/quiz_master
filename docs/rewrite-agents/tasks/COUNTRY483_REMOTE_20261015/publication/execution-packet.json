@@ -1,0 +1,131 @@
+{
+  "build_id": "quiz-2026.10.15-country483-3c22818",
+  "image": "sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+  "values": "quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z-values.yaml",
+  "values_sha256": "0904bf80643a44297753c402a425cdaaea5d4146818fd12d8494850096526f00",
+  "backup_path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.sqlite",
+  "backup_sha256": "6794975864e19369f7e41188ad98de43244bd34153451d158115210a6e52bd21",
+  "backup_mode": "0600",
+  "backup_integrity": "ok",
+  "copied_db_rehearsal": {
+    "migration": "ok",
+    "original_counts": [
+      153,
+      153,
+      727,
+      263,
+      15452,
+      1541
+    ],
+    "post_migration_counts": [
+      153,
+      153,
+      727,
+      399,
+      15452,
+      1541
+    ],
+    "original_rows_preserved": true,
+    "integrity": "ok",
+    "feedback_lifecycle": "ok",
+    "old_api_rollback": "ok",
+    "canonical_packs": 14,
+    "canonical_questions": 280,
+    "newyear_questions": 55,
+    "total_graded": 335,
+    "practice_finished": 15
+  },
+  "copied_db_rehearsal_sha256": "e5431954162e3dea0f7050bac8f3248f704d4c76a4ab5b4fa49229c4d1d8bfc8",
+  "candidate_runtime": {
+    "schema_version": "qm-candidate-runtime/v1",
+    "status": "VERIFIED_CANDIDATE_IMAGE_NOT_PUBLISHED",
+    "image": "quiz-master:quiz-2026.10.15-country483-3c22818",
+    "image_id": "sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+    "target_api_sha256": "f4d69555623aab2b8e1468fccb65256abefc9823d65214799b7e1475d4d9c850",
+    "target_revisions": {
+      "lotr-rk-93": "4c90dc9b8f716e6de64e9153694ebb9576a024983cff098f8c16f4d7adf302e4",
+      "lotr-rk-95": "36e5d42e3e8a3f639c9249ede4a04fcb6186fa8e3a826325f4ec4998b20db513"
+    },
+    "http": {
+      "lotr_questions": 100,
+      "non_target_questions": 98,
+      "target_questions": 2,
+      "packs": 136,
+      "questions": 4084
+    },
+    "reader": {
+      "articles": 303,
+      "total_refs": 184,
+      "playable_refs": 182,
+      "noncatalog_refs": 2
+    },
+    "grading": {
+      "answered": 100,
+      "server_score": 100,
+      "reveals_after_finish": 100
+    },
+    "mixed_grading": {
+      "answered": 20,
+      "server_score": 20,
+      "reveals_after_finish": 20
+    },
+    "mixed_questions": 20,
+    "source_db_unchanged": true,
+    "container_cleanup": true,
+    "scratch_cleanup": true,
+    "port_released": true
+  },
+  "candidate_runtime_sha256": "6fcb46eb2b6cdf26b0edb71743eb6a73cbc4db0d36bd752af4d848af9cbc289e",
+  "helm_dryrun_sha256": "39065f7f83f4445fbd0b37dfae6e6d62589aa19f544cee1a3630c7d6a3ade0c1",
+  "durable_archive": "/var/lib/rancher/k3s/agent/images/quiz-2026.10.15-country483-3c22818.tar",
+  "durable_archive_sha256": "1de7a78482e9dc66590057c6e5117d7666fe9c32ff9846f3f8eaf5ed4fc7f7d4",
+  "disk_free_bytes": 25091457024,
+  "baseline_helm_revision": 63,
+  "status": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+  "package_sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+  "candidate_atlas": {
+    "actual_exit": 0,
+    "atlas_sha256": {
+      "/usr/share/nginx/html/assets/assets/quizipedia/catalog.json": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc",
+      "/usr/share/nginx/html/assets/assets/quizipedia/manifest.json": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+    },
+    "build_id": "quiz-2026.10.15-country483-3c22818",
+    "candidate_runtime_sha256": "6fcb46eb2b6cdf26b0edb71743eb6a73cbc4db0d36bd752af4d848af9cbc289e",
+    "image": "sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+    "package_checksums_sha256": "423e8acf6967be596760f6bf472420907ebc47597a16d95d90270815162daa9b",
+    "package_sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+    "production_db_mounted": false,
+    "run": "quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z",
+    "schema_version": "qm-country483-candidate-atlas/v1",
+    "source_commit": "3c2281815b768271d9110f2d28fa415c0eefe06c",
+    "stateless": true,
+    "status": "VERIFIED_CANDIDATE_ATLAS_NOT_PUBLISHED"
+  },
+  "candidate_atlas_sha256": "f828170d475659acbb1871ef52131c866f4c90d6925f9063ddf6c9bfbe98709a",
+  "publication_bindings": {
+    "package_receipt": {
+      "path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json",
+      "sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2"
+    },
+    "preparation_receipt": {
+      "path": "C:\\ap\\quiz_master\\.run\\country483_remote_20261015\\remote-preparation-verification.json",
+      "sha256": "6352671295c7834fa318517f383029aba3a74d7c6408c1378727f33651a62a81"
+    },
+    "preparation_execution": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\retry\\actual\\exit.json",
+      "sha256": "6a9011b7a3db974291e0bc2bc50a567ab18bcdcd20feccfa09b98ecffeae08c4"
+    },
+    "collection_execution": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\COUNTRY483_REMOTE_20261015\\retry\\collection\\exit.json",
+      "sha256": "db26f1aab519b5db9aa8b94b86e0e6be5cbf46c5eb0677ebedfa40e8e4dba711"
+    },
+    "local_browser_sha256": "164c6a9e42d2e6e652c02baf8f944743109126f2a03513aa5db7f2d9d94feb6e",
+    "corrected_renderer_sha256": "dba111f870aa09129e68d329886c16efd75736a965da9ed067b28c2c476dc6e0",
+    "collector_script_sha256": "55086f5d9ed700bdc386c0860c7265f0a56ed07d454c5cf9ef6de6eca3c3cc2f"
+  },
+  "publish_script_sha256": "67d987895930360d2a980ec98e65ba24a8b42f16e45c25cdee266e94a238359f",
+  "publication_renderer_sha256": "2de9c6bb87b5e2bf002f2114ef1434767a43670cd1c8b1d4ea1af9a0c451ec8c",
+  "package_receipt_path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\package-preparation.json",
+  "package_receipt_sha256": "0db2d3348c329b2d6afc75d944452e467947f47696dd4fd003797f66a856d4c2"
+}

@@ -1,0 +1,32 @@
+{
+  "status": "LOCAL_SOURCE_TESTS_PASS_NO_PUBLICATION",
+  "command": [
+    "C:/Python314/python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs/rewrite-agents/tasks/COUNTRY483_REMOTE_20261015/publication-source",
+    "-p",
+    "test_publication_guards.py",
+    "-v"
+  ],
+  "cwd": "C:\\ap\\quiz_master",
+  "actual_exit": 0,
+  "tests": 13,
+  "elapsed_seconds": 28.59,
+  "raw_stdout": "checks/attempt03.log",
+  "raw_stdout_sha256": "2ce697fac49066e22e84bfe6ede281208cb0f53e580e2ef35cb913212093679a",
+  "bash_syntax_actual_exit": 0,
+  "embedded_python_compile_count": 3,
+  "source_sha256": {
+    "publish_release.py": "0239dcefb334f64621c3f4d10bd8c72fb78707d9a5b032b8c263c22877fb9c0d",
+    "render_publication.py": "2de9c6bb87b5e2bf002f2114ef1434767a43670cd1c8b1d4ea1af9a0c451ec8c",
+    "test_publication_guards.py": "123f6c6b8bfaf4306e60adc0d3e9303f8bdc185dc1035aa85b18aed59512b456"
+  },
+  "actual_preparation_receipts": "PENDING_ROOT",
+  "actual_publication": false,
+  "git_commands_performed": false,
+  "ssh_performed": false
+}
