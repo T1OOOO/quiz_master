@@ -1,0 +1,11 @@
+# Root editorial completion
+
+The initial native writer submission c04a88 was rejected for repeated exam-tip padding, an irrelevant licensing paragraph, and weak direct source support. Its next meaningful rewrite was too short. This was repairable editorial work, not an external blocker. After explicit stop/handoff, Root took exclusive ownership of articles.json and WRITER_EN.md and completed every body. The checker retains separate report ownership.
+
+Final candidate SHA: 10d0632c928cc62ea650fb3ba5d1349445022847cd89ed012c2abcfe5006fdec. Nine bodies contain 180–193 whitespace words each and two functional source links. Each teaches authorship, substantial premise/setting and historical or musical context. Generic instructions about reading the Music credit and the licensing-territory digression were removed.
+
+Root actually inspected direct Concord show records for Evita, Sunset Boulevard, Chicago, Cabaret original and clean My Fair Lady; the official Leonard Bernstein work commentary; Rodgers & Hammerstein's Sound of Music page; ALW's Evita and Sunset pages; MTI My Fair Lady (redirect to /my-fair-lady-0), printable Rent /print/node/1157, printable Fiddler /print/node/801 and Fiddler billing /show-full-billing/801; and the official Pulitzer Jonathan Larson record. These are creator/licensor/award records, not fourteen independent news sources. Direct regular MTI Fiddler and Rent opens failed in Root's web tool; the printable records actually succeeded and are linked. An attempted /print/node/1036 also failed and was not used.
+
+Root caught and repaired a source-attribution error in its own first rewrite: the Pulitzer page supports the 1996 Drama award and Larson credits; the New York Theatre Workshop-to-Broadway history is attributed to MTI instead. No claim that the Pulitzer page specifies that production remains. The Bernstein tritone interpretation is explicitly attributed to the official-site commentary. The Sound of Music ending is presented as a theatrical plot, not a documented actual escape route.
+
+The full final file must receive independent native editorial review and local answer-key integrity checks before landing. Native review remains insufficient for different-provider release acceptance. No runtime registry, application asset, canonical question, frozen NVN input, production feedback or server state was edited.

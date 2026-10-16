@@ -1,0 +1,124 @@
+{
+  "schema_version": "qm-article-editorial-review/v1",
+  "task_id": "MUSICAL_COMPLETION_ARTICLES_20261016",
+  "reviewer": {
+    "label": "MUSICAL_COMPLETION_CHECKER-20261016",
+    "provider": "codex",
+    "mode": "independent_source_first"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/MUSICAL_COMPLETION_ARTICLES_20261016/articles.json",
+    "sha256": "10d0632c928cc62ea650fb3ba5d1349445022847cd89ed012c2abcfe5006fdec"
+  },
+  "items": [
+    {
+      "id": "question:music-oct3-013",
+      "question_revision_sha256": "5419c8c2a4133b1584a8574419823fed8d8a9c0e89c3958cf40cbff2aa8ff3d3",
+      "blind_answer": { "option_id": "music-oct3-013-opt-3", "text": "Эндрю Ллойд Уэббер" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Lloyd Webber composed and Rice wrote lyrics", "Eva/Argentina/Che framing", "1976 album, 1978 London stage opening, 1979 Broadway and 1996 film distinction"],
+      "sources_opened": ["https://www.concordtheatricals.com/p/44933/evita", "https://www.andrewlloydwebber.com/show/evita"],
+      "source_limits": "Publisher and composer pages support credits, synopsis, named numbers and listed production history; they are not a critical biography of Eva Perón."
+    },
+    {
+      "id": "question:music-oct3-015",
+      "question_revision_sha256": "8bfbeae9f131f8e7aa814a36f5822f3207aba56c4339af22299a37cc5c1da221",
+      "blind_answer": { "option_id": "music-oct3-015-opt-1", "text": "Эндрю Ллойд Уэббер" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Lloyd Webber music; Black and Hampton book/lyrics", "Wilder-film source and 1950s stage setting", "Norma as silent-screen star and Joe as indebted present-day screenwriter"],
+      "sources_opened": ["https://www.concordtheatricals.com/s/44761/sunset-boulevard-lloyd-webber?variantId=138567", "https://www.andrewlloydwebber.com/show/sunset-boulevard"],
+      "source_limits": "The rights-holder pages are reliable for the listed credits, synopsis, songs and period, but do not constitute film scholarship."
+    },
+    {
+      "id": "question:music-oct3-021",
+      "question_revision_sha256": "c8f806a878a7f6f278c540ef27423faa47d541a28b5f638dcd9f5f5f5c29f3b2",
+      "blind_answer": { "option_id": "music-oct3-021-opt-2", "text": "Леонард Бернстайн" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Bernstein music, Sondheim lyrics and Laurents book", "Robbins conception/directing/choreography and the revised Romeo-and-Juliet premise", "official tritone commentary, 1957 premiere and Symphonic Dances"],
+      "sources_opened": ["https://www.tonyawards.com/nominees/?lang=en&q=leonard+bernstein", "https://www.leonardbernstein.com/works/view/9/west-side-story"],
+      "source_limits": "The Tony listing and Bernstein estate page establish credits and official work history; the tritone interpretation is correctly presented as the site's commentary."
+    },
+    {
+      "id": "question:music-oct3-022",
+      "question_revision_sha256": "833f19860467e2ff3ae28225039b0b6a1033b1721b395008638268c0e3a74a0b",
+      "blind_answer": { "option_id": "music-oct3-022-opt-4", "text": "Джон Кандер" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Kander music; Ebb lyrics; Ebb and Fosse book; Watkins play source", "Roxie/Amos/Velma plot and 1920s setting", "1975 original opening and 936 performances; 1996 revival"],
+      "sources_opened": ["https://www.concordtheatricals.com/p/2746/chicago", "https://www.concordtheatricals.com/a/1824/john-kander"],
+      "source_limits": "The title page is the controlling source for the precise production chronology; the Kander profile is supplementary and is not used to override it."
+    },
+    {
+      "id": "question:music-oct3-023",
+      "question_revision_sha256": "8672169cffd119db5c196155cd55c10414d2bd29868335c277a65011cacaf7c7",
+      "blind_answer": { "option_id": "music-oct3-023-opt-1", "text": "Джон Кандер" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Kander music, Ebb lyrics and Masteroff book; Van Druten and Isherwood sources", "Berlin, Cliff/Sally and Schneider/Schultz synopsis", "Concord's 1966/1987/1998 version and song distinctions"],
+      "sources_opened": ["https://www.concordtheatricals.com/s/65746/cabaret-original-1966?variantId=123434", "https://www.concordtheatricals.com/a/1695/fred-ebb"],
+      "source_limits": "Concord's licensed-version page is authoritative for the specific version and song comparisons; it does not supply a complete production history of every revival."
+    },
+    {
+      "id": "question:music-oct3-024",
+      "question_revision_sha256": "3b017b934775aa4efb163e4996f062931db1cee0a5cec2025bedc380267ddcb8",
+      "blind_answer": { "option_id": "music-oct3-024-opt-3", "text": "Ричард Роджерс" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Rodgers music, Hammerstein lyrics, Lindsay/Crouse book and Trapp source", "Maria, the children, Captain von Trapp and Nazi annexation stage story", "1959 stage and 1965 film are expressly distinguished"],
+      "sources_opened": ["https://www.concordtheatricals.com/s/57263/the-sound-of-music?variantId=123668", "https://rodgersandhammerstein.com/show/the-sound-of-music/"],
+      "source_limits": "Publisher and official Rodgers & Hammerstein pages establish the musical's credited stage and screen framing; they are not a documentary source for the real family's route."
+    },
+    {
+      "id": "question:music-oct3-025",
+      "question_revision_sha256": "3a5599cc762a70b2aafa5c9f11f3f298acd9a4059f161bb5573a8baea58dfd29",
+      "blind_answer": { "option_id": "music-oct3-025-opt-1", "text": "Фредерик Лоу" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Loewe music; Lerner book and lyrics; Shaw/Pascal source framing", "Higgins and Eliza's Royal Opera House/Covent Garden meeting and phonetics premise", "named songs, Ascot, original cast and 2,717-performance run"],
+      "sources_opened": ["https://www.concordtheatricals.com/p/44655/my-fair-lady", "https://www.mtishows.com/my-fair-lady-0"],
+      "source_limits": "The two theatrical rights-holder pages support credits, synopsis, songs and original-production facts, not a full analysis of Shaw's play."
+    },
+    {
+      "id": "question:music-oct3-026",
+      "question_revision_sha256": "097b1c788947383c1ec98de83f2dd2b350ee47e9ad161ae97be9e5a51bf67351",
+      "blind_answer": { "option_id": "music-oct3-026-opt-4", "text": "Джерри Бок" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Bock music, Harnick lyrics, Stein book and Sholem Aleichem source", "Tevye/Golda/five daughters plot and departure from Anatevka", "Chagall inspiration, 1964 premiere and named numbers"],
+      "sources_opened": ["https://www.mtishows.com/print/node/801", "https://www.mtishows.com/show-full-billing/801"],
+      "source_limits": "MTI's print synopsis/history and billing page establish the licensed work's content and credits; they are not a scholarly edition of the Sholem Aleichem stories."
+    },
+    {
+      "id": "question:music-oct3-027",
+      "question_revision_sha256": "e8be6fca2abd5ec8b41cc8f6474abdbd86d7138ddb963cf98105da7208d6afff",
+      "blind_answer": { "option_id": "music-oct3-027-opt-2", "text": "Джонатан Ларсон" },
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Larson wrote book, music and lyrics", "La Bohème adaptation, East Village community and Mark/Roger plot", "1996 Drama Pulitzer; MTI, rather than Pulitzer, supports the NYTW-to-Broadway history"],
+      "sources_opened": ["https://www.mtishows.com/print/node/1157", "https://www.pulitzer.org/winners/jonathan-larson"],
+      "source_limits": "MTI supports the synopsis, credits and production path; the Pulitzer page supports the 1996 Drama prize and Larson attribution, not the NYTW production history."
+    }
+  ],
+  "structural_checks": {
+    "assigned_ids_only": true,
+    "question_revisions_match_candidate_file": true,
+    "body_word_counts": {
+      "method": "Unicode letter-or-digit token count with internal hyphen/apostrophe retained",
+      "min_required": 150,
+      "max_required": 220,
+      "counts": {
+        "question:music-oct3-013": 181,
+        "question:music-oct3-015": 187,
+        "question:music-oct3-021": 174,
+        "question:music-oct3-022": 179,
+        "question:music-oct3-023": 187,
+        "question:music-oct3-024": 187,
+        "question:music-oct3-025": 188,
+        "question:music-oct3-026": 186,
+        "question:music-oct3-027": 186
+      }
+    },
+    "sources_per_item": 2,
+    "source_titles_and_supports_present": true,
+    "source_access_dates_all_2026_10_16": true,
+    "required_tags_present": true,
+    "all_statuses_draft": true,
+    "all_target_refs_empty": true
+  },
+  "status": "accepted_for_draft",
+  "release_boundary": "This native same-provider editorial review accepts the pinned private drafts for the next internal gate only. It does not publish, release, or assert external-provider acceptance."
+}

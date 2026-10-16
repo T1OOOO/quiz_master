@@ -1,0 +1,40 @@
+{
+  "status": "rework_required",
+  "article_sha256": "90f3da77932514698c0be75a5efae7b5bccc068415be13bebe91850da2a603d2",
+  "word_counts": {
+    "question:music-oct3-013": 163,
+    "question:music-oct3-015": 168,
+    "question:music-oct3-021": 159,
+    "question:music-oct3-022": 166,
+    "question:music-oct3-023": 166,
+    "question:music-oct3-024": 163,
+    "question:music-oct3-025": 164,
+    "question:music-oct3-026": 157,
+    "question:music-oct3-027": 169
+  },
+  "findings": [
+    {
+      "id": "question:music-oct3-015",
+      "severity": "factual",
+      "finding": "Joe Gillis is a struggling contemporary screenwriter, not a former silent-era figure like Norma Desmond."
+    },
+    {
+      "id": "all nine",
+      "severity": "pedagogy",
+      "finding": "Repeated instructions on reading credits crowd out story/history. Add source-supported learning context, not answer padding."
+    },
+    {
+      "id": "question:music-oct3-025",
+      "severity": "relevance",
+      "finding": "Licensing-territory implementation paragraph does not help the learner; replace with sourced adaptation/premise context."
+    },
+    {
+      "id": "question:music-oct3-026",
+      "severity": "source-quality",
+      "finding": "Prefer direct title credit record over indirect Harnick/Perl biographies."
+    }
+  ],
+  "external_acceptance": false,
+  "publication_attempted": false,
+  "snapshot_note": "Root findings observed during in-progress authoring, before writer freeze. SHA/wordcounts bind the snapshot at recording time; they do not assert every finding remained in that moving snapshot. Final independent review binds only the final frozen SHA."
+}

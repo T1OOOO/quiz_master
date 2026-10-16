@@ -1,0 +1,9 @@
+# Nine remaining musical learning articles
+
+Root owns snapshots, scope, coverage, validation, key integrity and landing. Writer owns articles.json and WRITER_EN.md; checker owns REVIEW_EN.md and review.json. Preserve unrelated changes and frozen release inputs. No canonical, runtime, export registry or production edits.
+
+The actual current public prep-musicals pack has 20 questions: 001, 002, 003 and 011 through 027. Exact public revisions already bind five published articles and six private native-reviewed articles (CULTURE_ARTICLES_20261016 and STAGE_MUSICAL_ARTICLES_20261016). This batch covers the remaining nine: 013, 015 and 021 through 027. Completion means five published plus fifteen private drafts; it does not mean twenty published articles.
+
+Use candidate-questions.json without keys. Each original Russian article must teach 150–220 words, cite 2–5 actually inspected primary pages and preserve the exact public revision. Distinguish music, lyrics and theatrical book; qualify original stage versus later screen versions. Existing tags only: domain:arts and topic:musical-theatre. Record source title, concrete support and access date. Licensing records are not proof of copyright ownership; multiple pages from one organization are not independent reporting.
+
+Checker independently solves candidates from primary sources before reading articles or local answer keys. Then inspect final article claims and cite its complete SHA-256. Root compares blind answers against authorized local legacy keys only afterwards. Native editorial acceptance is private draft evidence, not different-provider release acceptance. Claude/Gemini reviews remain unavailable on documented actual quota failures; do not retry unchanged metadata. NVN inputs and runtime assets stay frozen; no archive, candidate or publication is authorized by these native draft reports.
