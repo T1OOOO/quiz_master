@@ -1,0 +1,13 @@
+# Source-diversity research checkpoint — 2026-10-16
+
+Issue quiz_master-nqb. Three actually opened non-AFI sources strengthen the evidence available for two existing private film articles: a BFI interview containing director Cameron’s retrospective casting account, Amblin’s producer film page, and the Academy’s1986 result record. The research specifies narrow supported claims and explicit limits. A separate native checker reopened all three and accepted them for research only. Source snapshot SHA-256: `0f2684e7f9c557bc7b3cb64c4e5619e022c2f9fbe8973f41acb0fc44e8b43370`.
+
+Proposed later source-link changes retain the relevant AFI movie records, replace the duplicate AFI person record, and use two total links for Terminator and three for Back to the Future. Root verified the deterministic link-only plan in memory; every body, question ref and other field stays identical. No candidate file was written or applied. Existing article bytes remain frozen at `59ab22a386ce0c39a3d2602c37330f69664106301657564da6b72e29d5e7a2c4`.
+
+The new sources do not validate all historical details. Keep AFI support for precise production/release dates, full casts and the five-week Stoltz recast duration. Do not confuse a1986 ceremony with a1986 film release, or a Sound Effects Editing win with a Sound win. Different organisations provide source diversity, not automatic independence of historical reporting: the interview is retrospective and the producer page is first-party publicity.
+
+Native review/report hashes and structural checks are in validation-final.json. The source JSON preserves its initial pending-review status as a frozen research snapshot; the final native verdict is authoritative only for the narrow research task. Root task task-5a6eb369108547f5bd3cfd56f22a9467 and checker task task-d8eb5d1983b642d5a93b6f62b80a9b70 still require genuine different-provider acceptance. This is not source acceptance for NVN, article publication approval or an accepted Reader registry record.
+
+Actual read-only production refresh passed:29real feedback rows unchanged/all open, readiness200, existing Helm64/image/PVC, strict disk floor and backup/restore integrity. No feedback was closed. Runtime303 and frozen NVN inputs are unchanged. No vendor retry, application build/browser, export, deployment or server write was performed.
+
+Next: have an actually available different provider review the frozen article and this addendum together; integrate approved source links in a new article revision; generate house sorted-key review hashes and verify exact public bindings/Reader preview before an authorized release. Preserve old evidence. The separately pending grammar repairs also require fresh public hashes and re-review for affected question articles.

@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-source-diversity-review/v1",
+  "task_id": "task-d8eb5d1983b642d5a93b6f62b80a9b70",
+  "reviewer": {
+    "label": "CINEMA_ICON_ARTICLES_checker",
+    "runtime_identity": "codex/gpt-6.1-sol",
+    "review_type": "same-provider native research review"
+  },
+  "reviewed_sources_sha256": "0f2684e7f9c557bc7b3cb64c4e5619e022c2f9fbe8973f41acb0fc44e8b43370",
+  "target_articles_sha256": "59ab22a386ce0c39a3d2602c37330f69664106301657564da6b72e29d5e7a2c4",
+  "sources": [
+    {
+      "id": "bfi-cameron-interview",
+      "url": "https://www.bfi.org.uk/interviews/terminator-james-cameron",
+      "verdict": "accepted_for_research_only",
+      "authority": "British Film Institute editorial interview; first-hand retrospective statements by director James Cameron",
+      "supported_claims": ["Cameron chose Schwarzenegger for the Terminator rather than Reese.", "Michael Biehn eventually played Reese."],
+      "limits": ["Not a contemporaneous production log.", "Does not establish the precise 1983 casting or February 1984 production dates.", "Does not establish the complete cast or Edward Furlong's absence."],
+      "relevant_to": ["question:prep-film-actors2-005"]
+    },
+    {
+      "id": "amblin-bttf",
+      "url": "https://amblin.com/movie/back-to-the-future/",
+      "verdict": "accepted_for_research_only",
+      "authority": "Official film-company publicity page; not independent historical reporting",
+      "supported_claims": ["Marty McFly is played by Michael J. Fox and Doc Brown by Christopher Lloyd.", "Robert Zemeckis and Bob Gale are credited as screenwriters.", "Marty travels from 1985 to 1955."],
+      "limits": ["Does not establish the five-week Stoltz recast duration.", "Does not establish the exact 3 July release date."],
+      "relevant_to": ["question:prep-film-actors2-006"]
+    },
+    {
+      "id": "academy-bttf1986",
+      "url": "https://www.oscars.org/oscars/ceremonies/1986",
+      "verdict": "accepted_for_research_only",
+      "authority": "Official award-granting institution result record",
+      "supported_claims": ["Back to the Future won Sound Effects Editing at the 1986 ceremony.", "Charles L. Campbell and Robert Rutledge received that award.", "The film was nominated for Sound, not awarded it.", "The 1986 ceremony honored films released in 1985."],
+      "limits": ["Ceremony year is not the film's release year.", "Does not support actor or casting-history claims."],
+      "relevant_to": ["question:prep-film-actors2-006"]
+    }
+  ],
+  "boundary": {
+    "all_article_claims_corroborated": false,
+    "article_or_source_link_edits": false,
+    "different_provider_acceptance": "pending",
+    "export": "pending",
+    "publication": "not_attempted"
+  },
+  "status": "DONE"
+}

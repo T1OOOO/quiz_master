@@ -1,0 +1,107 @@
+{
+  "schema_version": "qm-source-diversity-addendum/v1",
+  "status": "research_pending_native_and_external_review",
+  "accessed": "2026-10-16",
+  "target_file": "docs/rewrite-agents/tasks/CINEMA_ICON_ARTICLES_20261016/articles.json",
+  "target_sha256": "59ab22a386ce0c39a3d2602c37330f69664106301657564da6b72e29d5e7a2c4",
+  "sources": [
+    {
+      "id": "bfi-cameron-interview",
+      "organisation": "British Film Institute",
+      "url": "https://www.bfi.org.uk/interviews/terminator-james-cameron",
+      "title": "BFI: James Cameron on The Terminator",
+      "primary_basis": "First-hand retrospective interview with the film director; George Bass, 21 April 2021. Distinguish Cameron recollections from editorial framing.",
+      "access_method": "Actual web open and targeted full-page find; read lines 40–54.",
+      "supports": [
+        "Cameron recalls casting Schwarzenegger as the Terminator rather than Reese.",
+        "The interview identifies Michael Biehn with Reese."
+      ],
+      "limits": [
+        "Does not establish the frozen article precise 1983 casting or February 1984 shooting dates.",
+        "Does not replace the complete 1984 cast record or establish Furlong absence.",
+        "Retrospective recollection is not a contemporaneous production log."
+      ],
+      "source_link": {
+        "url": "https://www.bfi.org.uk/interviews/terminator-james-cameron",
+        "title": "BFI: Джеймс Кэмерон о «Терминаторе»",
+        "supports": "Режиссёр вспоминает выбор Шварценеггера на роль Терминатора; материал различает эту роль и Риза в исполнении Майкла Бина.",
+        "accessed": "2026-10-16"
+      }
+    },
+    {
+      "id": "amblin-bttf",
+      "organisation": "Amblin Entertainment",
+      "url": "https://amblin.com/movie/back-to-the-future/",
+      "title": "Amblin: Back to the Future (1985)",
+      "primary_basis": "Producer company official film page and credits; original publicity/film metadata rather than independent journalism.",
+      "access_method": "Actual web open and targeted full-page find; read cast/credits and synopsis lines 25–72.",
+      "supports": [
+        "Pairs Marty McFly with Michael J. Fox and Doc Brown with Christopher Lloyd.",
+        "Credits Robert Zemeckis and Bob Gale as screenwriters.",
+        "Describes Marty travelling from 1985 to 1955."
+      ],
+      "limits": [
+        "Does not verify the five-week Stoltz recast duration.",
+        "Does not establish the exact 3 July release date in inspected passage.",
+        "Distinct organisation from AFI, but publicity is not independent historical reporting."
+      ],
+      "source_link": {
+        "url": "https://amblin.com/movie/back-to-the-future/",
+        "title": "Amblin: «Назад в будущее» (1985)",
+        "supports": "Подтверждает пары Фокс—Марти и Ллойд—Док, авторов сценария Земекиса и Гейла, а также путешествие из 1985 в 1955 год.",
+        "accessed": "2026-10-16"
+      }
+    },
+    {
+      "id": "academy-bttf1986",
+      "organisation": "Academy of Motion Picture Arts and Sciences",
+      "url": "https://www.oscars.org/oscars/ceremonies/1986",
+      "title": "Academy: The 58th Academy Awards (1986)",
+      "primary_basis": "Award-granting institution official result record.",
+      "access_method": "Actual web open and targeted full-page find; read Sound Effects Editing winner lines 741–747 and film summary 867–874.",
+      "supports": [
+        "Back to the Future won Sound Effects Editing at the 1986 ceremony.",
+        "The winners are Charles L. Campbell and Robert Rutledge."
+      ],
+      "limits": [
+        "This category differs from Sound, for which the film was nominated rather than winning.",
+        "The 1986 ceremony recognises 1985 releases; it is not the release year."
+      ],
+      "source_link": {
+        "url": "https://www.oscars.org/oscars/ceremonies/1986",
+        "title": "Academy: 58-я церемония «Оскара» (1986)",
+        "supports": "Подтверждает победу «Назад в будущее» за монтаж звуковых эффектов; отделяет её от номинации за звук и от года выхода фильма.",
+        "accessed": "2026-10-16"
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "article_id": "question:prep-film-actors2-005",
+      "retain_url": "https://catalog.afi.com/Film/57224-THE-TERMINATOR",
+      "replace_url": "https://catalog.afi.com/Catalog/PersonDetails/223815",
+      "add_source_ids": [
+        "bfi-cameron-interview"
+      ],
+      "proposed_total_links": 2,
+      "body_change_proposed": false
+    },
+    {
+      "article_id": "question:prep-film-actors2-006",
+      "retain_url": "https://catalog.afi.com/Catalog/MovieDetails/55763",
+      "replace_url": "https://catalog.afi.com/Catalog/PersonDetails/244085",
+      "add_source_ids": [
+        "amblin-bttf",
+        "academy-bttf1986"
+      ],
+      "proposed_total_links": 3,
+      "body_change_proposed": false
+    }
+  ],
+  "boundary": {
+    "applied_to_articles": false,
+    "runtime_or_canonical_edits": false,
+    "genuine_different_provider_acceptance": "pending",
+    "house_review_hashes_need_regeneration_after_any_later_article_change": true
+  }
+}
