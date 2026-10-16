@@ -1,0 +1,72 @@
+{
+  "schema_version": "qm-question-article-editorial-review/v1",
+  "task_id": "task-6d40c6c02ca74a21a0228b4250327553",
+  "reviewer": {
+    "label": "CINEMA_ICON_ARTICLES_checker",
+    "runtime_identity": "codex/gpt-6.1-sol",
+    "review_type": "same-provider native editorial check"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "59ab22a386ce0c39a3d2602c37330f69664106301657564da6b72e29d5e7a2c4",
+    "record_hash_method": "SHA-256 of UTF-8 JSON.stringify(record)"
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-003",
+      "record_sha256": "9df8bde7146d08968ed4d2324607baee842a2a7c0f92b413302c7cbfb4333f24",
+      "question_revision_sha256": "c7fa9d1c89504484bef974d25513e84646f960a65aa0d84c03ad5075d60ce6ef",
+      "blind_answer": {"option_id": "prep-film-actors2-003-opt-3", "text": "Рой Шайдер"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Scheider is Martin Brody; Shaw is Quint; Dreyfuss is Hooper.", "Brody is a police chief, not a sheriff.", "Jaws won editing, original-score and sound Oscars and was nominated for Best Picture."],
+      "distractor_review": "No alternative answer: the two in-film distractors play Quint and Hooper; Martin Sheen is not in this cast.",
+      "rework": "Resolved: final frozen heading says police chief rather than sheriff.",
+      "sources_opened": ["https://catalog.afi.com/Catalog/moviedetails/55193", "https://www.oscars.org/oscars/ceremonies/1976"]
+    },
+    {
+      "id": "question:prep-film-actors2-004",
+      "record_sha256": "0cf3b9aa4bb60bdbf8be4623d5e30ef6ee112a13fe114d3113ea10c5e4d71c91",
+      "question_revision_sha256": "f63b8b0fd8e59f6d746df45ca8b4883719fdff93c83ba415e03d0c3ba3053fde",
+      "blind_answer": {"option_id": "prep-film-actors2-004-opt-4", "text": "Сильвестр Сталлоне"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Stallone plays Rocky Balboa and wrote the screenplay.", "Weathers, Shire and Young play Apollo Creed, Adrian and Paulie.", "Rocky won Best Picture and Directing; Stallone had acting and writing nominations."],
+      "distractor_review": "Every distractor is a real Rocky cast member but plays another character, so the answer remains unique.",
+      "sources_opened": ["https://catalog.afi.com/Catalog/MovieDetails/53862", "https://www.oscars.org/oscars/ceremonies/1977/R?qt-honorees=1"]
+    },
+    {
+      "id": "question:prep-film-actors2-005",
+      "record_sha256": "6e39d399edc48990953f00ee55c631729388d0db20e94a1727069c6a3e5f0039",
+      "question_revision_sha256": "f562cc1957ee2e8258e8dc93862e856cb5fd3d9ecc578b245aee018a90c651f1",
+      "blind_answer": {"option_id": "prep-film-actors2-005-opt-1", "text": "Арнольд Шварценеггер"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Schwarzenegger is credited as Terminator; Biehn is Kyle Reese; Hamilton is Sarah Connor; Henriksen is Hal Vukovich.", "The synopsis supports the Terminator/Reese time-arrival description.", "The revised Furlong sentence makes no unsupported later-sequel claim."],
+      "distractor_review": "Biehn and Henriksen play different characters in the 1984 film; Furlong is not a credited performer in this film.",
+      "sources_opened": ["https://catalog.afi.com/Film/57224-THE-TERMINATOR", "https://catalog.afi.com/Catalog/PersonDetails/223815"],
+      "source_diversity_note": "Both links are AFI records and are supplementary, not independent sources."
+    },
+    {
+      "id": "question:prep-film-actors2-006",
+      "record_sha256": "1b36a6fef4304087687a1255087c84e9dec0f054639a1d7df2242930ee7d4669",
+      "question_revision_sha256": "2048aea08b15f794e250e73d5f86b43272f5f833e486cda73de8da6d1370d9d5",
+      "blind_answer": {"option_id": "prep-film-actors2-006-opt-2", "text": "Майкл Дж. Фокс"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Fox is Marty McFly; Lloyd is Doc; Glover is George McFly.", "Stoltz was initially cast but replaced after five weeks, so Fox is the answer for the released film.", "The film was released in 1985 and won the Oscar for Sound Effects Editing."],
+      "distractor_review": "Stoltz is a defensible-looking distractor because of the discarded early footage, but the wording about the released 1985 film makes Fox uniquely correct.",
+      "sources_opened": ["https://catalog.afi.com/Catalog/MovieDetails/55763", "https://catalog.afi.com/Catalog/PersonDetails/244085"],
+      "source_diversity_note": "Both links are AFI records and are supplementary, not independent sources."
+    }
+  ],
+  "structural_checks": {
+    "four_records": true,
+    "exact_public_question_revisions": true,
+    "at_least_two_source_links_each": true,
+    "over_100_russian_words_each": true,
+    "plain_russian_and_option_explanations": true
+  },
+  "status": "DONE",
+  "release_boundary": {
+    "external_acceptance": "pending",
+    "export": "pending",
+    "publication": "not_attempted"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "pass_structural_only",
+  "article_sha256": "59ab22a386ce0c39a3d2602c37330f69664106301657564da6b72e29d5e7a2c4",
+  "articles": 4,
+  "word_counts": {
+    "question:prep-film-actors2-003": 192,
+    "question:prep-film-actors2-004": 185,
+    "question:prep-film-actors2-005": 179,
+    "question:prep-film-actors2-006": 188
+  },
+  "exact_public_refs": true,
+  "existing_tags_only": true,
+  "source_metadata_valid": true,
+  "runtime_and_frozen_inputs_unchanged": true,
+  "editorial_review": {
+    "verdict": "accepted_for_draft",
+    "report_sha256": "26124ff5b8d54f8e2bfb29bfb8a51d7cd30b32de77ee04777793bb71271515bb",
+    "report_markdown_sha256": "6fe5e5defe41db7ef9c52ce19dd99f95e61a863190652ce6a6641b25ee7aade9",
+    "different_provider_acceptance": false
+  },
+  "external_acceptance": "pending",
+  "publication": "not_attempted",
+  "repair_only_requested_heading": true,
+  "local_key_integrity_verified": 4,
+  "key_integrity_sha256": "819b00f8d6c9f6130db5d3dfcc234688daf420c735e832810714cfa71ec9b3cf",
+  "accepted_reader_check": {
+    "command": "python study/question_articles/build.py --check",
+    "actual_exit": 0,
+    "articles": 303
+  }
+}
