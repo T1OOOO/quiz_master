@@ -1,0 +1,78 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "actress-role-character-checker-20261016",
+    "hub_session_id": "session-4fdc00cbf9fd404a8ddb4133a3235f37",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-90e22c45e6ed446b83df17084d112385",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/ACTRESS_ROLE_ARTICLES_20261016/articles.json",
+    "sha256": "9e0dcd77ccdf9356b5282d9b13fb8cbeadeabcfd949374e56fc578af6e0cd7e7"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Two draft articles; exact public question revisions; existing tags; two displayed primary links each; whitespace word counts 199 and 204.",
+    "method": "Blind-solved each public candidate question from directly opened AFI primary catalog pages before reading the research or article files, then opened all four displayed article links and checked full bodies, bindings, answer ambiguity, and source support."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-023",
+      "question_revision_sha256": "8c6d4fc05cede4140c9823d24f9fa775b8b6aee7b6bf28901646f139b509111c",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-023-opt-1",
+        "text": "Кэтрин Хепбёрн"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Katharine Hepburn as Rose Sayer and Humphrey Bogart as Charlie Allnut; it identifies John Huston as director and C. S. Forester’s 1935 novel as the literary source.",
+        "AFI supports the 1914 German East Africa setting, Rose’s proposal to attack the Louisa, and the filming detail that close-up boat sections were reproduced on a large raft because the launch lacked camera space.",
+        "The official 24th Academy Awards ledger lists Bogart’s Actor win and The African Queen nominations for Hepburn (Actress), Huston (Directing), and Agee/Huston (Writing, Screenplay)."
+      ],
+      "distractor_review": "Lauren Bacall did not play Rose; she is only discussed in AFI production history as Bogart’s wife. Grace Kelly and Ingrid Bergman are unrelated to this role. Katharine Hepburn is the sole Rose Sayer option.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/50007-THE-AFRICAN-QUEEN",
+          "title": "AFI Catalog: The African Queen (1951)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1952",
+          "title": "The 24th Academy Awards | 1952",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-024",
+      "question_revision_sha256": "375cbc65c8b26951520a517ae2f603b0cae2d34473baed250a1e7ce42a37d794",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-024-opt-2",
+        "text": "Глория Свенсон"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Gloria Swanson as Norma Desmond and William Holden as Joe Gillis; it supports the offscreen narration, Norma’s former silent-star status, and the article’s distinction between character and performer biography.",
+        "AFI supports the Queen Kelly footage, Erich von Stroheim’s connection to both films, and the original morgue opening being cut after preview audiences laughed.",
+        "The official 23rd Academy Awards ledger supports Sunset Blvd.’s eleven nominations, three wins in art direction, music, and writing, plus Swanson’s Actress nomination."
+      ],
+      "distractor_review": "William Holden played Joe Gillis and Nancy Olson played Betty Schaefer. Bette Davis was an Actress nominee that year for All about Eve. Gloria Swanson alone played Norma Desmond.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/26513-SUNSET-BLVD",
+          "title": "AFI Catalog: Sunset Blvd. (1950)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1951",
+          "title": "The 23rd Academy Awards | 1951",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "release_boundary": "Both items are accepted_for_draft through independent native review. This report does not state or imply external-provider approval, export, release, or publication."
+}
