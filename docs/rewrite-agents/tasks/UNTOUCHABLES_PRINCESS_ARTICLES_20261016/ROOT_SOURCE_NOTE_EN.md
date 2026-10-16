@@ -1,0 +1,3 @@
+# Source caution, excluded from both article bodies
+
+The researcher flagged the AFI Untouchables history sentence listing Mean Streets among earlier De Palma/De Niro collaborations. Root independently opened AFI's Mean Streets Movie Club page (https://www.afi.com/news/mean-streets-afi-movie-club/) on2026-10-16; it credits Martin Scorsese as co-writer/director and De Niro as star. The flagged Untouchables sentence is not used in either article. The separate director credit does not by itself disprove every possible informal collaboration, so keep the research brief's word "erroneous" bounded: the collaboration claim is uncorroborated here, and no broader negative filmography claim is being certified. No change to article facts or answer keys is needed.

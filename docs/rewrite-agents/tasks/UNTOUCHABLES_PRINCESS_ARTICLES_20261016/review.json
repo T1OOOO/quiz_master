@@ -1,0 +1,99 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "untouchables-princess-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-c46d6bd729014217be2c36c451171c06",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/UNTOUCHABLES_PRINCESS_ARTICLES_20261016/articles.json",
+    "sha256": "e4636038c4e05b97457ad6b145b519633791ab796651a7edc3b7fd52f44880f2"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Two draft articles; exact public revisions; existing required tags; two displayed links each; whitespace word counts 220 and 213.",
+    "method": "Blind-solved the two candidates from directly opened AFI Catalog pages before reading research, draft, local key, or legacy material. Then opened all four exact displayed article links and reviewed each body claim, role binding, answer ambiguity, source relevance, and the frozen raw article hash."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-029",
+      "question_revision_sha256": "499d6865c9de8c0acdd72873358224ffb68482576d563a6747c49472e64f749b",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-029-opt-3",
+        "text": "Кевин Костнер"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI page credits Kevin Costner as Eliot Ness, Sean Connery as Jim Malone, Robert De Niro as Al Capone, and Andy Garcia as George Stone.",
+        "AFI supports the television-series and Ness-memoir connections, the fictional Catherine Ness and daughter, and the Union Station sequence’s originally planned hospital setting and Battleship Potemkin reference.",
+        "The official 60th Academy Awards ledger records Connery’s Supporting Actor win and the film’s Art Direction, Costume Design, and Original Score nominations."
+      ],
+      "distractor_review": "Sean Connery played Jim Malone, Robert De Niro played Al Capone, and Andy Garcia played George Stone. Kevin Costner alone played Eliot Ness in the stated 1987 film; the alternates are relevant cast members but do not make the role clue ambiguous.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/57873",
+          "title": "AFI Catalog: The Untouchables (1987)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1988",
+          "title": "The 60th Academy Awards | 1988",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-030",
+      "question_revision_sha256": "15c9afc8de24074632bd36c2733e9bee9a05968ac0b8bb102da9ba3e4eca98d6",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-030-opt-4",
+        "text": "Кэри Элвес"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI page credits Cary Elwes as Westley, Mandy Patinkin as Inigo Montoya, Chris Sarandon as Prince Humperdinck, Andre the Giant as Fezzik, and Robin Wright as Buttercup.",
+        "AFI and Criterion support the Peter Falk/Fred Savage framing roles, Rob Reiner’s direction, William Goldman’s screenplay from his 1973 novel, and the Zoo of Death to Pit of Despair adaptation change attributed to budget.",
+        "The exact displayed Criterion page credits Mark Knopfler for the music, alongside the cast, Reiner, and Goldman credits."
+      ],
+      "distractor_review": "Mandy Patinkin played Inigo Montoya, Chris Sarandon played Prince Humperdinck, and Andre the Giant played Fezzik. Cary Elwes alone played Westley; every alternate is a relevant cast member with a distinct named role.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/57788-THE-PRINCESS-BRIDE",
+          "title": "AFI Catalog: The Princess Bride (1987)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.criterion.com/films/29368-the-princess-bride",
+          "title": "The Princess Bride | The Criterion Collection",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "capacity_consistency": {
+    "verdict": "accepted_for_observation_only",
+    "reviewed_files": {
+      "CAPACITY_ADDENDUM_EN.md": "a9e889756d2567007eb60baba733579b0d4d8594852b62bedab8ede186547087",
+      "capacity-observation.json": "073ec88f0350fa8703a482dc0db4e8151e49514503a8d268bf5b397b6cdd77e6",
+      "disk-diagnosis.json": "64bc2ad3c4aadeda971192f52808afb4efd0cd97b1cb47d2583306833148e688"
+    },
+    "checked_math": [
+      "13521809408 / 102417174528 × 100 = 13.203% when rounded to three decimals.",
+      "ceil(20% of 102417174528 minus 13521809408) = 6961625498 bytes.",
+      "6961625498 + 1073741824 (1 GiB) + 67108864 (64 MiB) = 8102476186 bytes.",
+      "8102476186 minus 2231140352 = 5871335834 bytes shortfall.",
+      "/opt/ll changed by 1098608640 bytes; the three other sampled aggregates are unchanged."
+    ],
+    "observational_limits": "The records establish only the sampled values and arithmetic. The samples are non-atomic and do not establish a responsible process, exact files, the whole-filesystem cause, reclaimable bytes, or a growing subdirectory baseline.",
+    "mutation_or_authority": "None. This is not cleanup, copy, unlink, release, deploy, or controller approval."
+  },
+  "release_boundary": "Both question items are accepted_for_draft through independent native review. The capacity result is accepted_for_observation_only. Neither result states or implies external-provider approval, cleanup authority, export, release, or publication."
+}

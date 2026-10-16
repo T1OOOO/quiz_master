@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-question-article-blind-review/v1",
+  "status": "blind_answers_recorded",
+  "reviewer": {
+    "packet_label": "untouchables-princess-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-c46d6bd729014217be2c36c451171c06",
+  "reviewed_candidate": {
+    "path": "docs/rewrite-agents/tasks/UNTOUCHABLES_PRINCESS_ARTICLES_20261016/candidate-questions.json"
+  },
+  "reviewed_at": "2026-10-16",
+  "method": "Read candidate-questions.json only, then independently opened AFI Catalog primary pages before reading research, drafts, local keys, or legacy materials.",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-029",
+      "question_revision_sha256": "499d6865c9de8c0acdd72873358224ffb68482576d563a6747c49472e64f749b",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-029-opt-3",
+        "text": "Кевин Костнер"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Film/57873-THE-UNTOUCHABLES",
+        "title": "AFI Catalog: The Untouchables (1987)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Kevin Costner as Eliot Ness, Connery as Jim Malone, De Niro as Al Capone, and Garcia as George Stone."
+      },
+      "uniqueness": "Each alternate is a relevant cast member with a different named role."
+    },
+    {
+      "id": "question:prep-film-actors2-030",
+      "question_revision_sha256": "15c9afc8de24074632bd36c2733e9bee9a05968ac0b8bb102da9ba3e4eca98d6",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-030-opt-4",
+        "text": "Кэри Элвес"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Film/57788-THE-PRINCESS-BRIDE",
+        "title": "AFI Catalog: The Princess Bride (1987)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Cary Elwes as Westley; Patinkin as Inigo Montoya, Sarandon as Prince Humperdinck, and Andre the Giant as Fezzik."
+      },
+      "uniqueness": "Each alternate belongs to the cast but Cary Elwes alone is credited as Westley."
+    }
+  ],
+  "blind_boundary": "Candidate-only independent answers; no article-draft, release, publication, or external-approval claim."
+}

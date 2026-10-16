@@ -1,0 +1,46 @@
+{
+  "status": "read_only_comparison_not_cleanup_authority",
+  "previous_available_bytes": 14818934784,
+  "observed_available_bytes": 13521809408,
+  "observed_total_bytes": 102417174528,
+  "observed_percent": 13.203,
+  "decrease_available_bytes": 1297125376,
+  "strict20_pass": false,
+  "minimum_to_strict20_bytes": 6961625498,
+  "planning_target_with_1GiB_reserve_64MiB_growth_bytes": 8102476186,
+  "old_pool_historical_estimate_bytes": 2231140352,
+  "old_pool_shortfall_bytes": 5871335834,
+  "aggregate_comparison": [
+    {
+      "path": "/opt/ll",
+      "previous_allocated_bytes": 21235216384,
+      "observed_allocated_bytes": 22333825024,
+      "difference_bytes": 1098608640
+    },
+    {
+      "path": "/opt/quiz-master",
+      "previous_allocated_bytes": 7970795520,
+      "observed_allocated_bytes": 7970795520,
+      "difference_bytes": 0
+    },
+    {
+      "path": "/opt/detective-game",
+      "previous_allocated_bytes": 7362875392,
+      "observed_allocated_bytes": 7362875392,
+      "difference_bytes": 0
+    },
+    {
+      "path": "/opt/matrix",
+      "previous_allocated_bytes": 932954112,
+      "observed_allocated_bytes": 932954112,
+      "difference_bytes": 0
+    }
+  ],
+  "metadata_evidence_sha256": {
+    "previous_private_opt_observation": "70da11d9e8cdd447cf769459bffb79cbeabb058c0804713e891fe26eccebaf94",
+    "new_private_aggregate_observation": "bcf5a730b522bf2785c8622e923cba1dd8c7f854f4fcc41aff2c2dcb314a265f"
+  },
+  "limits": "Non-atomic metadata samples localize an observed directory delta, not the responsible process, exact newly written files, whole filesystem cause or reclaimable bytes. Subdirectory baseline absent.",
+  "mutation": false,
+  "cleanup_copy_unlink_deploy_attempted": false
+}
