@@ -1,0 +1,21 @@
+{
+  "status": "read_only_observation_no_cleanup_authority",
+  "previous_available_bytes": 19152347136,
+  "observed_available_bytes": 14818934784,
+  "observed_total_bytes": 102417174528,
+  "observed_percent": 14.469,
+  "decrease_available_bytes": 4333412352,
+  "minimum_to_strict20_bytes": 5664500122,
+  "planning_target_with_1GiB_reserve_64MiB_growth_bytes": 6805350810,
+  "old_candidate_pool_historical_estimate_bytes": 2231140352,
+  "old_pool_shortfall_against_new_target_bytes": 4574210458,
+  "known_paths_allocated_bytes": {
+    "/opt/quiz-master/releases": 4588285952,
+    "/opt/quiz-master/backups": 3382370304,
+    "/var/log": 691441664,
+    "/var/lib/rancher/k3s/agent/containerd": 12232785920
+  },
+  "global_growth_cause": "not established: no per-path baseline for remaining filesystem, and du/df observations are not atomic",
+  "mutation": false,
+  "cleanup_copy_unlink_deploy_attempted": false
+}

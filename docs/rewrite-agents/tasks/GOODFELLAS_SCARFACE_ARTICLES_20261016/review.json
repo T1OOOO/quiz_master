@@ -1,0 +1,98 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "goodfellas-scarface-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-a16a847078d24419b6b612e39a26b71a",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/GOODFELLAS_SCARFACE_ARTICLES_20261016/articles.json",
+    "sha256": "e56b143b17421443470cef39cc95e3e72e2d0d6f16e883a6a5377df94397b785"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Two draft articles; exact public question revisions; existing required tags; two displayed primary links each; whitespace word counts 220 and 215.",
+    "method": "Blind-solved the two candidates from directly opened AFI Catalog pages before reading any research, article draft, local key, or legacy file. Then opened all four exact displayed article links and reviewed every body claim, role binding, answer ambiguity, source relevance, and the frozen raw article hash."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-027",
+      "question_revision_sha256": "1d1cb0ef2c3cc0d483473bd0e3b3d9bd15ec42b6ba0588d90127159dcb372c42",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-027-opt-4",
+        "text": "Роберт Де Ниро"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Robert De Niro as James [\"Jimmy the Gent\"] Conway, Ray Liotta as Henry Hill, Joe Pesci as Tommy DeVito, and Lorraine Bracco as Karen Hill.",
+        "AFI supports the 1985 Wiseguy source book, Pileggi and Scorsese screenplay work, the Wiseguy/Wise Guys/Goodfellas title history, and De Niro directing Scorsese to Liotta while considering himself too old for Henry.",
+        "The official 63rd Academy Awards ledger lists Pesci’s Supporting Actor win for Good Fellas, Bracco’s Supporting Actress nomination, and De Niro’s Leading Actor nomination for Awakenings."
+      ],
+      "distractor_review": "Ray Liotta played Henry Hill, Joe Pesci played Tommy DeVito, and Lorraine Bracco played Karen Hill. Robert De Niro is the sole Jimmy Conway option; all distractors are relevant cast members but do not create role ambiguity.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/55206",
+          "title": "AFI Catalog: Goodfellas (1990)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1991",
+          "title": "The 63rd Academy Awards | 1991",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-028",
+      "question_revision_sha256": "22d894455d2876e9bba7f64ff6b699db02a52d6b06cadf82bdd84ddcaa35653d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-028-opt-1",
+        "text": "Аль Пачино"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI page credits Al Pacino as Tony Montana, Steven Bauer as Manny Ray, Michelle Pfeiffer as Elvira Hancock, Brian De Palma as director, and Oliver Stone as writer; the Universal page independently confirms the 1983 film, Pacino/Bauer/Pfeiffer cast, and De Palma direction.",
+        "AFI supports the 1932-film connection and the Hawks/Hecht dedication, plus the move of principal photography to Los Angeles and Santa Barbara after opposition in Miami; the body appropriately distinguishes a fictional character from a population.",
+        "AFI credits Giorgio Moroder for Tony’s Theme and credits Paul Engemann as performer, Moroder as music writer, and Pete Bellotte as lyricist for Scarface (Push It to the Limit)."
+      ],
+      "distractor_review": "Steven Bauer played Manny Ray and Michelle Pfeiffer played Elvira Hancock. Robert De Niro was considered during development but is not the credited performer. Al Pacino alone played Tony Montana in the stated 1983 film.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/68337",
+          "title": "AFI Catalog: Scarface (1983)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.universalpicturesathome.com/movies/scarface-1983",
+          "title": "Scarface (1983) | Universal Pictures At Home",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "capacity_consistency": {
+    "verdict": "accepted_for_observation_only",
+    "reviewed_files": {
+      "CAPACITY_ADDENDUM_EN.md": "70f623f582b482fb4fa3bacc17844777cbb9a457d32c074355f2594554b6d5ff",
+      "capacity-observation.json": "b1ccc8a993472b345ba95a917d8c71f554ee34ab3ca612d04cfb8cd67c557f51",
+      "disk-diagnosis.json": "ac62d920820b6155e33ae31c448dab7e9ad7f40967f8adcd5b70ae845edc9566"
+    },
+    "checked_math": [
+      "14818934784 / 102417174528 × 100 = 14.469% when rounded to three decimals.",
+      "ceil(20% of 102417174528 minus 14818934784) = 5664500122 bytes.",
+      "5664500122 + 1073741824 (1 GiB) + 67108864 (64 MiB) = 6805350810 bytes.",
+      "6805350810 minus 2231140352 = 4574210458 bytes shortfall."
+    ],
+    "observational_limits": "The records establish the sampled values and arithmetic, not the global cause of capacity decline or reclaimable space. Sampling is non-atomic; no cleanup, copying, unlinking, release, deploy, or controller authorization is present.",
+    "mutation_or_authority": "None. This is not operational approval."
+  },
+  "release_boundary": "Both question items are accepted_for_draft through independent native review. The capacity result is accepted_for_observation_only. Neither result states or implies external-provider approval, cleanup authorization, export, release, or publication."
+}

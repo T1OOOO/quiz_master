@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-question-article-blind-review/v1",
+  "status": "blind_answers_recorded",
+  "reviewer": {
+    "packet_label": "goodfellas-scarface-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-a16a847078d24419b6b612e39a26b71a",
+  "reviewed_candidate": {
+    "path": "docs/rewrite-agents/tasks/GOODFELLAS_SCARFACE_ARTICLES_20261016/candidate-questions.json"
+  },
+  "reviewed_at": "2026-10-16",
+  "method": "Read candidate-questions.json only, then independently opened AFI Catalog primary pages before reading any research, article draft, local key, or legacy material.",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-027",
+      "question_revision_sha256": "1d1cb0ef2c3cc0d483473bd0e3b3d9bd15ec42b6ba0588d90127159dcb372c42",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-027-opt-4",
+        "text": "Роберт Де Ниро"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Catalog/MovieDetails/55206",
+        "title": "AFI Catalog: Goodfellas (1990)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Robert De Niro as James [\"Jimmy the Gent\"] Conway; Liotta as Henry Hill, Pesci as Tommy DeVito, and Bracco as Karen Hill."
+      },
+      "uniqueness": "All four listed performers belong to the cast but only De Niro is credited as Jimmy Conway."
+    },
+    {
+      "id": "question:prep-film-actors2-028",
+      "question_revision_sha256": "22d894455d2876e9bba7f64ff6b699db02a52d6b06cadf82bdd84ddcaa35653d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-028-opt-1",
+        "text": "Аль Пачино"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Film/68337-SCARFACE?cxt=filmography",
+        "title": "AFI Catalog: Scarface (1983)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Al Pacino as Tony Montana; Steven Bauer as Manny Ray and Michelle Pfeiffer as Elvira Hancock."
+      },
+      "uniqueness": "Pacino is the sole Tony Montana option; Bauer and Pfeiffer play distinct named roles, and De Niro was considered but is not the credited performer."
+    }
+  ],
+  "blind_boundary": "This report records candidate-only independent answers. It makes no claim about the unpublished article drafts, external approval, release, or publication."
+}
