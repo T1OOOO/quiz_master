@@ -1,0 +1,134 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_private_draft",
+  "reviewer": {
+    "packet_label": "screen-role-character-checker-20261016",
+    "hub_session_id": "session-a31896f2ed614531b820ceed46221f29",
+    "runtime_identity": "codex/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-bd45006c7d8e46c1afa2d1863e3f6080",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/SCREEN_ROLE_ARTICLES_20261016/articles.json",
+    "sha256": "f206849d65e93f3d786d8f833dfec5cd1cb5ae75699d904a3fca3aaec90e0e55"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Four draft articles; exact question revisions; only existing tags; two displayed links each; whitespace word counts 193, 202, 199, 197.",
+    "method": "Blind-solved candidate questions before reading sources.json or articles.json, then opened and checked every displayed source URL and the frozen full bodies."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-015",
+      "question_revision_sha256": "a2f30dee77e787581aed29a526a5c018ae1aaf1672b0f24a65aca8d3bff1255d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-015-opt-4",
+        "text": "Одри Хепбёрн"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Audrey Hepburn as Holly Golightly and identifies the Capote 1958 novella adaptation.",
+        "AFI reports Marilyn Monroe as a contender during casting, correctly kept distinct from the final credit.",
+        "The Academy page records five nominations, two wins for Mancini's score and Moon River, and Hepburn as an Actress nominee rather than winner."
+      ],
+      "distractor_review": "Marilyn Monroe and Shirley MacLaine were candidates in the casting history, and Natalie Wood was not Holly. None is a defensible finished-film answer; the wording asks who played the role.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/22674-BREAKFAST-ATTIFFANYS",
+          "title": "AFI Catalog: Breakfast at Tiffany's (1961)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1962",
+          "title": "The 34th Academy Awards | 1962",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-016",
+      "question_revision_sha256": "2cd092c86024b784f509ba748ac138b0fd02d2b1dc85819587454b14fb52283d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-016-opt-2",
+        "text": "Роберт Де Ниро"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Robert De Niro as Travis Bickle and Paul Schrader and Martin Scorsese in their stated writing and directing roles.",
+        "AFI supports the taxi-driving preparation and attributes the mirror-scene improvisation account to Scorsese.",
+        "The Academy page identifies the 1977 ceremony as honoring 1976 releases and lists Taxi Driver nominations for film, Foster, and Herrmann; the body does not call them wins."
+      ],
+      "distractor_review": "Jodie Foster, Harvey Keitel, and Albert Brooks are cast members in different roles. Robert De Niro is the sole actor playing Travis Bickle.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/67969",
+          "title": "AFI Catalog: Taxi Driver (1976)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1977/A",
+          "title": "1977 Academy Awards | Oscars.org",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-017",
+      "question_revision_sha256": "8e33cf965a7eb3d1e309026fc9a32d50fc1cba6b349da0069861a740ec11ec79",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-017-opt-1",
+        "text": "Бетт Дейвис"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Bette Davis as Margo Channing and Anne Baxter as Eve Harrington.",
+        "AFI states that Addison DeWitt, Karen Richards, and Margo Channing intermittently provide voice-over narration.",
+        "AFI identifies Mary Orr's The Wisdom of Eve in Hearst's International-Cosmopolitan (May 1946); the Academy page records the cited Best Motion Picture, Directing, and black-and-white costume wins."
+      ],
+      "distractor_review": "Anne Baxter played Eve Harrington; Gloria Swanson and Joan Crawford do not play Margo Channing. Bette Davis is the unique answer.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/26204",
+          "title": "AFI Catalog: All About Eve (1950)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1951",
+          "title": "The 23rd Academy Awards | 1951",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-018",
+      "question_revision_sha256": "449e59f1eae4ff8fcb3c63326a8515b45820d1fa4a8c1158fc19a32fd590a727",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-018-opt-4",
+        "text": "Марлон Брандо"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Marlon Brando as Terry Malloy, a former boxer and longshoreman, and credits Kazan and Schulberg as stated.",
+        "AFI supports the Malcolm Johnson 1948 New York Sun series, Schulberg's waterfront research, and the qualification that the film remains fictional drama.",
+        "The Academy event page supports shooting on both sides of the Hudson, 12 nominations, eight wins, and the Brando and Kazan wins."
+      ],
+      "distractor_review": "Karl Malden played Father Barry, Rod Steiger played Charley Malloy, and Lee J. Cobb played Johnny Friendly. Only Marlon Brando played Terry Malloy.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/51286",
+          "title": "AFI Catalog: On the Waterfront (1954)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/events/waterfront",
+          "title": "On the Waterfront | Oscars.org",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "release_boundary": "Every verdict is accepted_for_draft through independent native source review only. This report does not state or imply external-provider approval, export, release, or publication."
+}
