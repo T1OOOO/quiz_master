@@ -1,0 +1,112 @@
+{
+  "schema_version": "qm-nvn-release-inputs/v1",
+  "recorded_utc": "2026-10-16T00:29:31.438882+00:00",
+  "source_commit": "5c5a5d9b91d8b1100f7a5e60156b2f4b827bc4d1",
+  "evidence_checkpoint": "1676ed5c4d59371bdc7515ecc02802ae3adf5671",
+  "build_id": "quiz-2026.10.16-nvn-5c5a5d9",
+  "baseline": {
+    "build_id": "quiz-2026.10.15-country483-3c22818",
+    "helm_revision": 64,
+    "image": "docker.io/library/quiz-master@sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "feedback_count": 29,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e"
+  },
+  "prior_archive": {
+    "path": "C:\\ap\\quiz_master\\.run\\country483_release_20261015\\worker\\package-v1\\quiz-2026.10.15-country483-3c22818.tar.gz",
+    "sha256": "15eb5d5710251b9aca4c2cee29bbd50822388435eeed618b3476f2b0b8841416",
+    "bytes": 60989538,
+    "uncompressed_bytes": 108100640,
+    "file_members": 332
+  },
+  "capacity": {
+    "available_bytes": 24433012736,
+    "total_bytes": 102417174528,
+    "strict_floor_minimum_bytes": 20483434906,
+    "headroom_above_strict_floor_bytes": 3949577830,
+    "remote_peak_certified": false
+  },
+  "web_roots": {
+    "production": "C:\\ap\\quiz_master\\.run\\nvn_footer_20261016\\production-web",
+    "qa": "C:\\ap\\quiz_master\\.run\\nvn_footer_20261016\\qa-web"
+  },
+  "proofs": {
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/production-build.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\production-build.json",
+      "sha256": "6edcaf25f4c0f06c8818e322065cb1b4cfe594954ef291a83ddfe0f10cf63f19"
+    },
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/qa-build.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\qa-build.json",
+      "sha256": "1bbea8f63a132b7c23a9601ef6409476cbb13f53fa057c62835825867a1042c5"
+    },
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/production-build-artifacts.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\production-build-artifacts.json",
+      "sha256": "9b71b41b7b8f94495aef2295c221e9209cd3401ff1426a44979fb3556227af9e"
+    },
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/qa-build-artifacts.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\qa-build-artifacts.json",
+      "sha256": "71b8c68d02baa050fc8a1d8b3a7b874a85edca38c25e7ee1b38e62d6e50d6b5f"
+    },
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/independent-source-recheck.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\independent-source-recheck.json",
+      "sha256": "977c08bfbcfe1278126c1ab095ee14546577f2c2c149e23d6539f7cbe4c9d440"
+    },
+    "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/independent-release-inspection-review.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\independent-release-inspection-review.json",
+      "sha256": "1275942fe46d670e2703a503eab070263cd6660c3828b6a37ada8d3aff6c8e8b"
+    },
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/production-baseline.jsonl": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\production-baseline.jsonl",
+      "sha256": "b3a4fc45e00c2869f3193f26c7aca7ab0c400d6e23ccf738c7c3ddacd7f52557"
+    },
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/baseline-exit.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\baseline-exit.json",
+      "sha256": "0bc77f64a00a56beeb6d98e11aaa30b7094b1ca331b3530aec3114a3c948d2e9"
+    },
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/baseline-readonly.sh": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\baseline-readonly.sh",
+      "sha256": "52c1177223e18926ced344c84e479189de6f174a59d79eadb8795451a0af7f9d"
+    },
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/runtime-proof.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime-proof.json",
+      "sha256": "23bbf70fb466e9d1fb1d88548ffbbaf22ccb95ce885016559add72175c05ca6d"
+    },
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/runtime-evidence-inputs.json": {
+      "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime-evidence-inputs.json",
+      "sha256": "7827d9152c0e5ce9f6d40999cbb22671e4de37f9a36292f252f72e263e866de5"
+    },
+    "next/apps/quiz_app/assets/quizipedia/catalog.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\catalog.json",
+      "sha256": "09ddb9adc380cb935d35ba6b2f5ea55b9ee6b5675b8c7c6c6cddf2c25679a7dc"
+    },
+    "next/apps/quiz_app/assets/quizipedia/manifest.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\quizipedia\\manifest.json",
+      "sha256": "226f75de88b696a4b173540abf7dc457cadcd91694f5113a60ee85f302a45be7"
+    },
+    "next/apps/quiz_app/assets/catalog.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\catalog.json",
+      "sha256": "9a597e34ce7d026be6de474eb549a8f679528df06b3c6df369fe690902f46618"
+    },
+    "next/apps/quiz_app/assets/study/question-articles.json": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\assets\\study\\question-articles.json",
+      "sha256": "84f0cac186aa95c6abf910a396b88201e25cdf67a388130956f7548c4c567733"
+    },
+    "next/apps/quiz_app/lib/quizipedia.dart": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\lib\\quizipedia.dart",
+      "sha256": "2adcdf1ba10bb6402ffcf9831ef09da34f221b48ea2a078f94fe77b27c69a0db"
+    },
+    "next/apps/quiz_app/test/feedback_test.dart": {
+      "path": "C:\\ap\\quiz_master\\next\\apps\\quiz_app\\test\\feedback_test.dart",
+      "sha256": "ad6bbe8906375ea09f6ceef449f4ecff3793503555f50fe02ddf8510325fc474"
+    }
+  },
+  "counts": {
+    "packs": 136,
+    "questions": 4084,
+    "reader_articles": 303,
+    "reader_refs": 184,
+    "playable_refs": 182,
+    "noncatalog_refs": 2
+  },
+  "publication_performed": false
+}

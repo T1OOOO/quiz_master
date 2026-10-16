@@ -1,0 +1,34 @@
+{
+  "status": "SOURCE_ONLY_CHECKS_PASS_NO_ARCHIVE_GENERATION",
+  "command": [
+    "C:/Python314/python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/worker",
+    "-p",
+    "test_nvn.py",
+    "-v"
+  ],
+  "cwd": "C:\\ap\\quiz_master",
+  "actual_exit": 0,
+  "tests": 16,
+  "elapsed_seconds": 3.221,
+  "raw_stdout": "C:\\ap\\quiz_master\\.run\\nvn_release_20261016\\worker\\source-attempt02.log",
+  "raw_stdout_sha256": "0b896a2f3c3c8445e4ef057ae7027d9397d2cd5521a758f688367597fbfe1076",
+  "verify_inputs_actual_exit": 0,
+  "verify_inputs_stdout": "C:\\ap\\quiz_master\\.run\\nvn_release_20261016\\worker\\verify-inputs-attempt02.log",
+  "verify_inputs_stdout_sha256": "23a62d1f681986588f2d943841e4a3f6a1ce0146a9fb10b81333e5a3a185ba5d",
+  "bash_syntax_actual_exit": 0,
+  "rehearsal_python_compile": true,
+  "archive_generated": false,
+  "controller_source_sha256": {
+    "prepare_nvn.py": "3942ba48a8cc18de23c18586490697d98f75a589216c40958c5fa2c43bd701e8",
+    "test_nvn.py": "66ea3ab8e973f706499a4fc827726b446a3671367b76efd0402e2a39ec1bbd69"
+  },
+  "release_inputs_sha256": "931b441a658962db1cc799f79280c070131664f58ee3c043c82700c7da738eb9",
+  "runtime_proof_sha256": "23bbf70fb466e9d1fb1d88548ffbbaf22ccb95ce885016559add72175c05ca6d",
+  "source_acceptance": "PENDING_GENUINE_ROOT_CALLBACK"
+}

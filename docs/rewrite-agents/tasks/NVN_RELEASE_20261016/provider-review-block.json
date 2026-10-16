@@ -1,0 +1,53 @@
+{
+  "status": "INDEPENDENT_REVIEW_PENDING_EXTERNAL_QUOTAS",
+  "claude": {
+    "actual_exit": 1,
+    "message": "You've hit your weekly limit \u00b7 resets Oct 18, 4am (Europe/Istanbul)",
+    "reset_local": "2026-10-18T04:00:00+03:00",
+    "trace_path": "C:\\ap\\quiz_master\\.run\\actor_articles_20261015\\nvn-package-source-review-01.jsonl",
+    "trace_sha256": "a797a19356a4827923df752aa8ab4d4d563fa79f09fcfa38a478c2f9ff3aa994",
+    "report": false,
+    "callback": false
+  },
+  "antigravity": {
+    "actual_exit": 3,
+    "model": "gemini-4-argon-medium",
+    "message": "Your AI credits balance is too low to continue.",
+    "total_tokens": 0,
+    "trace_path": "C:\\ap\\quiz_master\\.run\\nvn_release_20261016\\agy-source-review-02.jsonl",
+    "trace_sha256": "e21ee8f9645b83331315844b1da4455e7eb6119e62f667d0790cfddd6d21f456",
+    "report": false,
+    "callback": false
+  },
+  "initial_antigravity_cli_argument_attempt": {
+    "actual_exit": 2,
+    "reason": "Duration600 lacked required unit; corrected to600s before model call"
+  },
+  "managed_owner_cancellation": {
+    "cancel_requested": true,
+    "created_at": 1792110938.5681367,
+    "epoch": 1,
+    "exit_code": 1,
+    "generation": 2,
+    "id": "managed-9af8b53cf3b43dbcce7434ddeeba040ca0bfedfad6438d1c32035354e8ed5447",
+    "last_renewed": 1792110941.7431738,
+    "launch_id": "launch-6b98844b3e784d30b851cc94517d91fa",
+    "lease_id": "lease-bc50a256a0ea4e8cb4cf6ab9daf7d12a",
+    "model": "gemini-4-argon-medium",
+    "output_file": "C:\\Users\\Alexey_Matvienko\\.agent-hub\\runs\\run-c2c9daaa0701408b956e449f757ce61b\\output.jsonl",
+    "pid": 39868,
+    "provider": "antigravity",
+    "reason": "OWNER_CANCEL_REQUESTED",
+    "run_id": "run-c2c9daaa0701408b956e449f757ce61b",
+    "session_id": "session-edae14e7309e4e11acdd15fe4666fadf",
+    "started_at": 1792110941.743175,
+    "state": "SUBMITTED",
+    "task_id": "task-b6a88fad8d7c4453bbd16977978cf588"
+  },
+  "source_task": "task-5244c406521143dd98464b707aa46868",
+  "input_task": "task-5711bd89476242d2a732548735242ebc",
+  "source_acceptance_present": false,
+  "archive_generated": false,
+  "candidate_or_publication": false,
+  "automation_updated_to_avoid_unchanged_quota_retries": true
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": "qm-nvn-runtime/v1",
+  "frozen_source": "5c5a5d9b91d8b1100f7a5e60156b2f4b827bc4d1",
+  "build_id": "quiz-2026.10.16-nvn-5c5a5d9",
+  "builds": {
+    "production": {
+      "receipt": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\production-build.json",
+        "sha256": "6edcaf25f4c0f06c8818e322065cb1b4cfe594954ef291a83ddfe0f10cf63f19"
+      },
+      "artifacts": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\production-build-artifacts.json",
+        "sha256": "9b71b41b7b8f94495aef2295c221e9209cd3401ff1426a44979fb3556227af9e"
+      },
+      "log": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\production-build.log",
+        "sha256": "7abbcd5628c3445f1e3a2803b4822255750542ee9052207cbebde57cbba90364"
+      },
+      "root": "C:\\ap\\quiz_master\\.run\\nvn_footer_20261016\\production-web",
+      "file_count": 74,
+      "main_js_sha256": "d32a7b929bd7533dfce2c09abf473aae72cf28eabc5f1ef04b6ee448b291ace3",
+      "actual_exit": 0
+    },
+    "qa": {
+      "receipt": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\qa-build.json",
+        "sha256": "1bbea8f63a132b7c23a9601ef6409476cbb13f53fa057c62835825867a1042c5"
+      },
+      "artifacts": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\qa-build-artifacts.json",
+        "sha256": "71b8c68d02baa050fc8a1d8b3a7b874a85edca38c25e7ee1b38e62d6e50d6b5f"
+      },
+      "log": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\qa-build.log",
+        "sha256": "55d642233318c6823e5bda7f050a19c42e1dd399ef8a133701a60e32ffb0166c"
+      },
+      "root": "C:\\ap\\quiz_master\\.run\\nvn_footer_20261016\\qa-web",
+      "file_count": 74,
+      "main_js_sha256": "eae77d69cb9976ea4dc30e4a83ccfcd78da5cf40df7553911f18140b63afaa7f",
+      "actual_exit": 0
+    }
+  },
+  "browser": {
+    "production": {
+      "command_count": 17,
+      "successful_non_close_commands": true,
+      "official_close_actual_exit": 1,
+      "captured_identities_inactive": 13,
+      "cleanup": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\release-browser\\native-cleanup.json",
+        "sha256": "62162711b53a4aaf62cf59037f64faad8169151bb1049f8d9cfb622ba56b258b"
+      },
+      "errors": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\release-browser\\errors.json",
+        "sha256": "aad711ca42e4443facaed2599de72b6726b6e5f3be193819b3347985d5788d20"
+      },
+      "screenshots": [
+        {
+          "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_FOOTER_20261016\\release-browser\\mobile.png",
+          "sha256": "97e80de9d6bf4dd5a6284379c47e4e0c254f48f8b0cb149302dc4cd22bdd53cb"
+        }
+      ],
+      "root_viewed_screenshots": true
+    },
+    "qa": {
+      "command_count": 23,
+      "successful_non_close_commands": true,
+      "official_close_actual_exit": 0,
+      "captured_identities_inactive": 14,
+      "cleanup": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\browser\\native-cleanup.json",
+        "sha256": "f0a48bf593ecba991fbcb9ba726faebb5a6a60a295a3066fd859ed19bde9c2c8"
+      },
+      "errors": {
+        "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\browser\\errors.json",
+        "sha256": "c961f6d8153741d9ec587496719b6d59225bc3c0330de984d64d6a2ae172fb79"
+      },
+      "screenshots": [
+        {
+          "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\browser\\desktop.png",
+          "sha256": "27fcc3e4cf77b580216826e76446df8c68167863f69df10405a9b8fcd6b0bb7a"
+        },
+        {
+          "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\browser\\mobile.png",
+          "sha256": "97e80de9d6bf4dd5a6284379c47e4e0c254f48f8b0cb149302dc4cd22bdd53cb"
+        }
+      ],
+      "root_viewed_screenshots": true
+    }
+  },
+  "fixture_exit": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\fixture-exit.json",
+    "sha256": "95db1b21e48d5964c0b1c2d107d6c82a5a5cea6f9de4b87bf1102d063c61af3f"
+  },
+  "ports_closed": {
+    "19090": true,
+    "19093": true
+  },
+  "actual_fixture_wrapper_exit": 0,
+  "actual_fixture_api_terminate_exit": 1,
+  "fixture_proxy_post_count": 0,
+  "evidence_manifest": {
+    "path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime-evidence-inputs.json",
+    "sha256": "7827d9152c0e5ce9f6d40999cbb22671e4de37f9a36292f252f72e263e866de5"
+  },
+  "scope": "Actual compiled production and isolated QA Flutter Web UI only; no immutable Linux candidate or publication",
+  "limitations": [
+    "No Android/Wasm certification",
+    "Fixture is an isolated four-question public subset; full candidate rehearsal/runtime remain mandatory",
+    "Original production browser close1 required verified exact-owned-daemon fallback; fresh QA browser close0",
+    "Initial QA identity-script capture preserved old private capture after path-copy mismatch; corrected new path captured14 identities, no old capture overwritten",
+    "Fixture proxy logging is scoped; not a full external-network audit"
+  ]
+}
