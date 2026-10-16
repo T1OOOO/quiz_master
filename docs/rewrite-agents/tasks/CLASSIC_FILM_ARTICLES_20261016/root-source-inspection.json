@@ -1,0 +1,26 @@
+{
+  "scope": "Root source inspection; native independent report remains separate",
+  "article_sha256": "0ab30ebc7bf845ed412f0528b3e7feb2f75ce084782e584a5a43b56ad072a019",
+  "sources_sha256": "a6ae1983a26d0b7fa0d1d622b41be93ae8270e5df83a516b7b9169498936ab68",
+  "successful_open_batch": [
+    "https://catalog.afi.com/Catalog/MovieDetails/50652",
+    "https://www.oscars.org/oscars/ceremonies/1953/I",
+    "https://catalog.afi.com/Catalog/moviedetails/53017",
+    "https://www.oscars.org/collection-highlights/some-it-hot?page=1",
+    "https://catalog.afi.com/Catalog/moviedetails/23387",
+    "https://www.oscars.org/events/graduate-point-blank",
+    "https://catalog.afi.com/Catalog/moviedetails/22363",
+    "https://www.oscars.org/events/kill-mockingbird"
+  ],
+  "targeted_inspection": [
+    "1953 Academy ledger: two Singin in the Rain nominations; Jean Hagen and Lennie Hayton.",
+    "AFI53017 history:1951 German plot source; Florida scenes at Hotel del Coronado near San Diego.",
+    "AFI22363 history:Monroeville location rejected; period cottages moved to Universal lot; three Oscar wins.",
+    "Academy Graduate event:Benjamin/Mrs Robinson/Elaine credits; Panavision, Simon and Garfunkel, Nichols directing award."
+  ],
+  "limits": [
+    "Two later Academy re-open calls timed out; not represented as fresh successful fetches. Earlier full open and separate native researcher inspected them.",
+    "New uppercase MovieDetails find calls for53017/22363 failed; targeted inspection used successful original lowercase moviedetails reference. Native checker must verify exact displayed article URLs.",
+    "No changes to questions, keys, runtime Reader, frozen release inputs, or production."
+  ]
+}

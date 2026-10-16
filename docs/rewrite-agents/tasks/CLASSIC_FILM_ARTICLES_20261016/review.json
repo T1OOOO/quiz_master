@@ -1,0 +1,165 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_private_draft",
+  "reviewer": {
+    "packet_label": "classic-film-character-checker-20261016",
+    "hub_session_id": "session-ff3494c2918041b1a0ec735c5a808f27",
+    "runtime_identity": "codex/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-a61acc37f913467abaf61031b216259a",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/CLASSIC_FILM_ARTICLES_20261016/articles.json",
+    "sha256": "0ab30ebc7bf845ed412f0528b3e7feb2f75ce084782e584a5a43b56ad072a019"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "article_count": 4,
+    "structural_checks": [
+      "exact current public revisions",
+      "draft status",
+      "existing tag IDs",
+      "150-220 whitespace words including headings",
+      "2-5 source links per article",
+      "source metadata"
+    ],
+    "word_counts": {
+      "question:prep-film-actors2-011": 194,
+      "question:prep-film-actors2-012": 193,
+      "question:prep-film-actors2-013": 198,
+      "question:prep-film-actors2-014": 194
+    }
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-011",
+      "question_revision_sha256": "776b594280035ae54b5ff8101ee04aa0b8ab77e62d7692a5f2598a05ca84c298",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-011-opt-3",
+        "text": "Джин Келли"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        {
+          "claim": "Gene Kelly plays Don Lockwood; Donald O'Connor and Debbie Reynolds play Cosmo Brown and Kathy Selden.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Singin' in the Rain (1952)"]
+        },
+        {
+          "claim": "Kelly and Stanley Donen directed; Adolph Green and Betty Comden wrote; most songs predate the film, while Make 'Em Laugh and Moses were written for it.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Singin' in the Rain (1952)"]
+        },
+        {
+          "claim": "The title song occurs in the credits, Kelly's rain number, and the Dancing Cavalier premiere; Jean Hagen and Lennie Hayton received the film's two 1953 nominations.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Singin' in the Rain (1952)", "The 25th Academy Awards (1953)"]
+        }
+      ],
+      "distractor_review": "Donald O'Connor is Cosmo Brown and Debbie Reynolds is Kathy Selden; Fred Astaire is not in this film. Gene Kelly is the sole performer who plays Don Lockwood.",
+      "sources_opened": [
+        {"title": "AFI Catalog: Singin' in the Rain (1952)", "url": "https://catalog.afi.com/Catalog/MovieDetails/50652", "status": "opened"},
+        {"title": "The 25th Academy Awards (1953)", "url": "https://www.oscars.org/oscars/ceremonies/1953/I", "status": "opened"}
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-012",
+      "question_revision_sha256": "b48f61b56556ac71c3a6ad788b2dacbf61c28f8cc1005e9127a444816738282e",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-012-opt-4",
+        "text": "Мэрилин Монро"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        {
+          "claim": "Marilyn Monroe plays Sugar Kane Kowalczyk; Tony Curtis and Jack Lemmon play the two musicians who disguise themselves and join an all-female band to flee gangsters.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Some Like It Hot (1959)"]
+        },
+        {
+          "claim": "Billy Wilder and I. A. L. Diamond wrote the film; its plot derives from the 1951 German film Fanfaren der Liebe.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Some Like It Hot (1959)"]
+        },
+        {
+          "claim": "The Florida resort sequences were filmed at Hotel del Coronado near San Diego, California.",
+          "result": "supported",
+          "sources": ["AFI Catalog: Some Like It Hot (1959)"]
+        }
+      ],
+      "distractor_review": "Tony Curtis and Jack Lemmon are the disguised musicians; Shirley MacLaine is not in the film. Monroe alone plays Sugar Kane Kowalczyk.",
+      "sources_opened": [
+        {"title": "AFI Catalog: Some Like It Hot (1959)", "url": "https://catalog.afi.com/Catalog/MovieDetails/53017", "status": "opened"},
+        {"title": "Academy collection highlights: Some Like It Hot", "url": "https://www.oscars.org/collection-highlights/some-it-hot?page=1", "status": "open_limited"}
+      ],
+      "source_limits": [
+        {"url": "https://www.oscars.org/collection-highlights/some-it-hot?page=1", "status": "open_limited", "reason": "Direct review fetch timed out and automated fetching was refused by the Academy robots policy. AFI independently supports the claims used in this draft."}
+      ]
+    },
+    {
+      "id": "question:prep-film-actors2-013",
+      "question_revision_sha256": "5c7339499c20111a3a2a6b95fa1724b91ac248a5c7117d03f13ce20b189e274d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-013-opt-1",
+        "text": "Дастин Хоффман"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        {
+          "claim": "Dustin Hoffman plays Benjamin Braddock, Anne Bancroft plays Mrs. Robinson, and Katharine Ross plays Elaine Robinson.",
+          "result": "supported",
+          "sources": ["AFI Catalog: The Graduate (1967)", "Academy: The Graduate / Point Blank"]
+        },
+        {
+          "claim": "The film adapts Charles Webb's 1963 novel, with Calder Willingham and Buck Henry credited as screenwriters.",
+          "result": "supported",
+          "sources": ["AFI Catalog: The Graduate (1967)", "Academy: The Graduate / Point Blank"]
+        },
+        {
+          "claim": "The Academy page credits Panavision framing and Simon & Garfunkel songs and identifies Mike Nichols as the Best Directing winner, not Hoffman.",
+          "result": "supported",
+          "sources": ["Academy: The Graduate / Point Blank"]
+        }
+      ],
+      "distractor_review": "Anne Bancroft and Katharine Ross play Mrs. Robinson and Elaine; Robert Redford was not cast as Ben. Dustin Hoffman is the unique answer.",
+      "sources_opened": [
+        {"title": "AFI Catalog: The Graduate (1967)", "url": "https://catalog.afi.com/Catalog/MovieDetails/23387", "status": "opened"},
+        {"title": "Academy: The Graduate / Point Blank", "url": "https://www.oscars.org/events/graduate-point-blank", "status": "opened"}
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-014",
+      "question_revision_sha256": "e73a4284fc6a5100546544badd058b85262c4b5d71c1b8b63467035a5a273171",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-014-opt-3",
+        "text": "Грегори Пек"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        {
+          "claim": "Gregory Peck plays Atticus Finch, a Depression-era lawyer; the article accurately treats Tom Robinson's case and Scout's coming-of-age viewpoint as fictional-film content.",
+          "result": "supported",
+          "sources": ["AFI Catalog: To Kill a Mockingbird (1962)", "Academy: To Kill a Mockingbird"]
+        },
+        {
+          "claim": "The source novel is Harper Lee's 1960 To Kill a Mockingbird and Horton Foote wrote the screenplay.",
+          "result": "supported",
+          "sources": ["AFI Catalog: To Kill a Mockingbird (1962)"]
+        },
+        {
+          "claim": "Monroeville location filming was abandoned, period cottages were moved to Universal, and the film won Actor, Black-and-White Art Direction, and Adapted Screenplay.",
+          "result": "supported",
+          "sources": ["AFI Catalog: To Kill a Mockingbird (1962)", "Academy: To Kill a Mockingbird"]
+        }
+      ],
+      "distractor_review": "Robert Duvall plays Boo Radley and Brock Peters plays Tom Robinson; James Stewart is not in the film. Gregory Peck alone plays Atticus Finch.",
+      "sources_opened": [
+        {"title": "AFI Catalog: To Kill a Mockingbird (1962)", "url": "https://catalog.afi.com/Catalog/MovieDetails/22363", "status": "opened"},
+        {"title": "Academy: To Kill a Mockingbird", "url": "https://www.oscars.org/events/kill-mockingbird", "status": "opened_via_current_search_snapshot"}
+      ],
+      "source_limits": []
+    }
+  ],
+  "release_boundary": "Every verdict is accepted_for_draft based on native primary-source review. This result does not report external-provider approval, export, release, or publication."
+}
