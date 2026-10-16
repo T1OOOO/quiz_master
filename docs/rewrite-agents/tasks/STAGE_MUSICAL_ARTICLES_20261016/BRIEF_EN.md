@@ -1,0 +1,9 @@
+# Four stage-musical learning articles
+
+Issue quiz_master-0bz. Current public prep-musicals questions011/012/014/018 cover Cats, Jesus Christ Superstar, Starlight Express and Sweeney Todd. Author original Russian150–220word learning articles,2–5 actually inspected primary source links each, precise music/lyricist/librettist distinctions and original stage-version qualifiers. Teach context beyond a repeated composer name; verify all dates/awards/history rather than padding. Use existing domain:arts/topic:musical-theatre tags and Russian «либретто».
+
+Root owns snapshots/brief/scope/validation/key-integrity/finalhandoff and Beads/Git. Writer owns articles.json and WRITER_EN.md only; separate native checker owns REVIEW_EN.md and review.json only. Source snapshots contain actual public hashes and no answer keys. Local bundle hashes differ; do not substitute them. Exact article-ID duplicate search and registered/runtime binding checks were empty for the four selected IDs. Earlier private Sondheim articles016/017 remain frozen and are outside this batch.
+
+Native checker solves candidates independently before reviewing the writer and checks factual support, all option distinctions and exact final hash. Prefer different primary publishers where practical; two pages from one company are supplementary records, not independent reporting. Explicitly qualify retrospective/publicity sources and later revisions. Root later compares independent answers with authorized local legacy keys without public key export.
+
+No canonical/runtime/registry/previouspacket/NVN changes, no unavailable vendor retry, nested workers, GitHub Actions or publication. Same-provider native draft review is not genuine different-provider acceptance. Actual read-only server refresh passed with29unchanged/open real feedback, readiness200, existing64/image/PVC and backup integrity. Preserve frozen release inputs and all unrelated work.

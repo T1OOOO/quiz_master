@@ -1,0 +1,99 @@
+{
+  "schema_version": "qm-question-article-editorial-review/v1",
+  "task_id": "task-cd665158e86d4001ad609d62af7de8db",
+  "reviewer": {
+    "label": "CINEMA_ICON_ARTICLES_checker",
+    "runtime_identity": "codex/gpt-6.1-sol",
+    "review_type": "same-provider native editorial check"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "ec8bdc0008c7bcba83ea9d1ce1aa9f5a526cbc23233f2622e2dc0303e993a263",
+    "record_hash_method": "not recorded; whole frozen file SHA-256 is the review binding"
+  },
+  "items": [
+    {
+      "id": "question:music-oct3-011",
+      "question_revision_sha256": "314ad3b40c8a970e0d01eac0e75fb0284e79710dc595a534e26c429eb4e10772",
+      "blind_answer": {"option_id": "music-oct3-011-opt-1", "text": "Эндрю Ллойд Уэббер"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Andrew Lloyd Webber is credited for music; T. S. Eliot supplies the source poems.",
+        "Nunn and Stilgoe have only the specified additional-material credits, so they do not create another answer for music.",
+        "The original London production opened on 11 May 1981."
+      ],
+      "distractor_review": "The other listed people are composers from other works; no second option is credited with Cats music.",
+      "sources_opened": [
+        "https://www.concordtheatricals.com/s/44850/cats-lloyd-webber?variantId=138537",
+        "https://www.andrewlloydwebber.com/show/cats",
+        "https://www.tonyawards.com/winners/year/1983/category/any/show/cats/"
+      ],
+      "source_limits": "Concord is a licensing record and ALW is a creator-publisher chronology; the Tony archive separately supports the Broadway score credit."
+    },
+    {
+      "id": "question:music-oct3-012",
+      "question_revision_sha256": "dfb7c7734bfe9b65cd85588c3334ae42c7fbf321cfcccf94befc26668af5c3d6",
+      "blind_answer": {"option_id": "music-oct3-012-opt-2", "text": "Эндрю Ллойд Уэббер"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Andrew Lloyd Webber is credited for music and Tim Rice for lyrics.",
+        "The story is sung through, focused through Judas, and concerned with Jesus's final week.",
+        "The work developed first as a double album carried by music and lyrics without visual action or dialogue."
+      ],
+      "distractor_review": "All remaining options are different composers; none is credited with this score.",
+      "sources_opened": [
+        "https://www.concordtheatricals.com/s/44748/jesus-christ-superstar",
+        "https://www.andrewlloydwebber.com/show/jesus-christ-superstar"
+      ],
+      "source_limits": "The two opened pages are licensor and creator-publisher records; they substantiate credits and development, not independent reporting."
+    },
+    {
+      "id": "question:music-oct3-014",
+      "question_revision_sha256": "4ed701b098e2edcb98dd68c28c56d29d0548b684d35f7d4536430c4312ad219c",
+      "blind_answer": {"option_id": "music-oct3-014-opt-4", "text": "Эндрю Ллойд Уэббер"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Andrew Lloyd Webber is credited for music and Richard Stilgoe for lyrics.",
+        "Stilgoe joined the work in April 1982; early material was presented at Sydmonton on 10 July 1982.",
+        "The original London production opened on 27 March 1984."
+      ],
+      "distractor_review": "The three remaining options are composers from other works; none wrote Starlight Express music.",
+      "sources_opened": [
+        "https://www.andrewlloydwebber.com/show/starlight-express",
+        "https://www.concordtheatricals.com/p/44581/starlight-express-2024-lloyd-webber"
+      ],
+      "source_limits": "ALW supplies the chronology. Concord is explicitly the 2024 version and was used only as supplementary evidence for the music/lyrics split."
+    },
+    {
+      "id": "question:music-oct3-018",
+      "question_revision_sha256": "474b8a784405a8f273e7c206f30e23ad01b8d5829077325f8abd2c4e0057c34a",
+      "blind_answer": {"option_id": "music-oct3-018-opt-2", "text": "Стивен Сондхайм"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Stephen Sondheim is credited for music and lyrics; Hugh Wheeler is credited for the book/libretto.",
+        "The 1979 Tony archive separately records Wheeler's book and Sondheim's original-score credit.",
+        "MTI's original-Broadway-version synopsis supports the concise 19th-century London and revenge context added in the final repair."
+      ],
+      "distractor_review": "The other choices are composers/lyricists of other shows; none supplies both Sweeney Todd music and lyrics.",
+      "sources_opened": [
+        "https://www.mtishows.com/sweeney-todd",
+        "https://www.tonyawards.com/winners/year/1979/category/any/show/any/"
+      ],
+      "source_limits": "MTI is a licensor page; the Tony archive is separate award-record evidence for the credit division."
+    }
+  ],
+  "structural_checks": {
+    "four_records": true,
+    "exact_public_question_revisions": true,
+    "at_least_two_source_links_each": true,
+    "russian_word_counts": {"music-oct3-011": 177, "music-oct3-012": 168, "music-oct3-014": 180, "music-oct3-018": 178},
+    "plain_russian_and_option_explanations": true,
+    "final_repair_checked": true
+  },
+  "status": "DONE",
+  "release_boundary": {
+    "external_acceptance": "pending",
+    "export": "pending",
+    "publication": "not_attempted"
+  }
+}
