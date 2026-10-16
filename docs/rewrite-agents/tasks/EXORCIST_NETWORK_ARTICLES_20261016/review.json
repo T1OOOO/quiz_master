@@ -1,0 +1,88 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "exorcist-network-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-93d2355dd4934576916b681501a98a00",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/EXORCIST_NETWORK_ARTICLES_20261016/articles.json",
+    "sha256": "a1563d5892584be2dcebd74655be8785d6129b393c55c9786595cb0fdcf5b9d1"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Two draft articles; exact public revisions; existing required tags; two displayed primary links for 031 and three for 032; whitespace word counts 210 and 218.",
+    "method": "Blind-solved the two candidates from directly opened AFI Catalog pages before reading research, draft, local key, or legacy material. Then opened all five exact displayed article links and reviewed every body claim, role binding, answer ambiguity, source relevance, and the final frozen raw article hash."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-031",
+      "question_revision_sha256": "c757d53f64649dc283fdbc1b709e74ccf5ece7678c4b0da3fa83306db4b1e2c9",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-031-opt-2",
+        "text": "Эллен Бёрстин"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI page credits Ellen Burstyn as Chris MacNeil, Linda Blair as Regan MacNeil, Max von Sydow as Father Merrin, and Kitty Winn as Sharon.",
+        "AFI supports William Peter Blatty’s writing-for-the-screen and producer credits from his novel, William Friedkin’s directing credit, and the below-freezing Regan-room production method used to make actors’ breath visible.",
+        "The official 46th Academy Awards ledger lists Burstyn as an Actress nominee and Blair as a Supporting Actress nominee, and records The Exorcist wins for Sound and Writing based on material from another medium."
+      ],
+      "distractor_review": "Max von Sydow played Father Merrin, Linda Blair played Regan MacNeil, and Kitty Winn played Sharon. Ellen Burstyn alone played Chris MacNeil; each alternate is relevant cast but has a distinct named role.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/54970-THE-EXORCIST",
+          "title": "AFI Catalog: The Exorcist (1973)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1974",
+          "title": "The 46th Academy Awards | 1974",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-032",
+      "question_revision_sha256": "61fdd8dca5e62efeb5d0c299f497b6d922e2d252c5c7eed474c68aa76f1ba167",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-032-opt-1",
+        "text": "Питер Финч"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI page credits Peter Finch as Howard Beale, Faye Dunaway as Diana Christensen, William Holden as Max Schumacher, and Robert Duvall as Frank Hackett.",
+        "AFI supports Sidney Lumet’s directing credit, Paddy Chayefsky’s writing credit, the fictional United Broadcasting System setting, its Metro-Goldwyn-Mayer-building offices, and Chayefsky’s last-minute dialogue changes on set.",
+        "The official 49th Academy Awards ledger records Network’s four wins: Peter Finch, Faye Dunaway, Beatrice Straight, and Paddy Chayefsky. The separately displayed official Academy memorable-moments page explicitly identifies Finch as the first posthumous Oscar-winning performer and states that his widow accepted the award."
+      ],
+      "distractor_review": "Faye Dunaway played Diana Christensen, William Holden played Max Schumacher, and Robert Duvall played Frank Hackett. Peter Finch alone played Howard Beale; all alternatives are relevant cast members but create no role ambiguity.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/54924",
+          "title": "AFI Catalog: Network (1976)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1977",
+          "title": "The 49th Academy Awards | 1977",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1977/memorable-moments",
+          "title": "The 49th Academy Awards Memorable Moments | Oscars.org",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "release_boundary": "Both question items are accepted_for_draft through independent native review only. This result does not state or imply external-provider approval, export, release, or publication."
+}

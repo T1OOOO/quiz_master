@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-question-article-blind-review/v1",
+  "status": "blind_answers_recorded",
+  "reviewer": {
+    "packet_label": "exorcist-network-character-checker-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-93d2355dd4934576916b681501a98a00",
+  "reviewed_candidate": {
+    "path": "docs/rewrite-agents/tasks/EXORCIST_NETWORK_ARTICLES_20261016/candidate-questions.json"
+  },
+  "reviewed_at": "2026-10-16",
+  "method": "Read candidate-questions.json only, then independently opened AFI Catalog primary pages before reading research, drafts, local keys, or legacy materials.",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-031",
+      "question_revision_sha256": "c757d53f64649dc283fdbc1b709e74ccf5ece7678c4b0da3fa83306db4b1e2c9",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-031-opt-2",
+        "text": "Эллен Бёрстин"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Film/54970-THE-EXORCIST",
+        "title": "AFI Catalog: The Exorcist (1973)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Ellen Burstyn as Chris MacNeil, Max von Sydow as Father Merrin, Linda Blair as Regan MacNeil, and Kitty Winn as Sharon."
+      },
+      "uniqueness": "Each alternate is a relevant cast member with a different named role."
+    },
+    {
+      "id": "question:prep-film-actors2-032",
+      "question_revision_sha256": "61fdd8dca5e62efeb5d0c299f497b6d922e2d252c5c7eed474c68aa76f1ba167",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-032-opt-1",
+        "text": "Питер Финч"
+      },
+      "source": {
+        "url": "https://catalog.afi.com/Film/54924-NETWORK",
+        "title": "AFI Catalog: Network (1976)",
+        "accessed": "2026-10-16",
+        "evidence": "AFI credits Peter Finch as Howard Beale, Faye Dunaway as Diana Christensen, William Holden as Max Schumacher, and Robert Duvall as Frank Hackett."
+      },
+      "uniqueness": "Each alternate is a relevant cast member with a different named role."
+    }
+  ],
+  "blind_boundary": "Candidate-only independent answers; no article-draft, release, publication, or external-approval claim."
+}
