@@ -1,0 +1,18 @@
+{
+  "schema_version": "qm-question-article-blind-review/v1",
+  "status": "blind_answers_recorded",
+  "reviewer": {
+    "packet_label": "sting-conversation-character-checker-20261016",
+    "hub_session_id": "session-b49403e654714c8386afd8a44c8284ce",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-e7941ef04994482e8ff29dda3f20ed94",
+  "reviewed_candidate": {"path": "docs/rewrite-agents/tasks/STING_CONVERSATION_ARTICLES_20261016/candidate-questions.json"},
+  "reviewed_at": "2026-10-16",
+  "method": "Read candidate-questions.json only, then independently opened AFI Catalog primary pages before reading research, drafts, local keys, or legacy materials.",
+  "items": [
+    {"id": "question:prep-film-actors2-033", "question_revision_sha256": "faa1b29676f21a411b92e3c5bdb7834516b7ebabf795ba26f316d739fae52627", "blind_answer": {"option_id": "prep-film-actors2-033-opt-4", "text": "Пол Ньюман"}, "source": {"url": "https://catalog.afi.com/Film/54391-", "title": "AFI Catalog: The Sting (1973)", "accessed": "2026-10-16", "evidence": "AFI credits Paul Newman as Henry Gondorff, Robert Redford as Johnny Hooker, Robert Shaw as Doyle Lonnegan, and Charles Durning as Lt. Wm. Snyder."}, "uniqueness": "Each alternate is a relevant cast member with a different named role."},
+    {"id": "question:prep-film-actors2-034", "question_revision_sha256": "25ac1b2aadf450627e74bd281c40c7e2b9eafde23bdd9d0ecdd59659d13885e5", "blind_answer": {"option_id": "prep-film-actors2-034-opt-3", "text": "Джин Хэкмен"}, "source": {"url": "https://catalog.afi.com/Catalog/MovieDetails/53857", "title": "AFI Catalog: The Conversation (1974)", "accessed": "2026-10-16", "evidence": "AFI credits Gene Hackman as Harry Caul, John Cazale as Stan, Allen Garfield as Bernie Moran, and Harrison Ford as Martin Stet."}, "uniqueness": "Each alternate is a relevant cast member with a different named role."}
+  ],
+  "blind_boundary": "Candidate-only independent answers; no article-draft, release, publication, or external-approval claim."
+}
