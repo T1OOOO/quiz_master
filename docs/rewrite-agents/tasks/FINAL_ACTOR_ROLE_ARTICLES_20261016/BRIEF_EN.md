@@ -1,0 +1,7 @@
+# Final actor articles039–040
+
+Root coordinates quiz_master-xtd and writes original Russian articles, scope, validation, coverage, final and Git. Research Thelma & Louise (1991), Louise Sawyer; and One Flew Over the Cuckoo's Nest (1975), Randle Patrick McMurphy. Candidates and public snapshot are authoritative. Two150–220word RU articles,2–5 inspected primary links, exact revision refs, existing arts/screen/actors tags; private only. Preserve all runtime/NVN inputs.
+
+Researcher owns ONLY SOURCES_EN.md and sources.json; actual primary cast/production/award facts, all option mappings, cautions. Checker owns ONLY BLIND_REVIEW_EN.md/blind-review.json then REVIEW_EN.md/review.json. Persist blind source-based answers before drafts/local keys, wait Root frozen rawSHA for full claim/link/options/editorial check. Use prior four-role review schema with2items. Verify Academy counts from actual ledger, distinguish release and ceremony years. No medical claims based on fiction. Note wording inflections as editorial backlog, do not change canonical questions.
+
+You are not alone: preserve others' files. No children, builds, runtime edits, Git or external worker launches. Join current team readytrue, refresh ownIDLEheartbeat, DIRECT send Root actual sessionID before immediate offer. Accept before working and submit genuine evidence. Queue waived for this project only. No native review counts as different-provider acceptance. Claude/Gemini actual allowances remain exhausted; no retries. No publication.

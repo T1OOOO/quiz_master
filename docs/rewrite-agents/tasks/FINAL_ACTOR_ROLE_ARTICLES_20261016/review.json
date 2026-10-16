@@ -1,0 +1,100 @@
+{
+  "packet_label": "final-actor-role-character-checker-20261016",
+  "hub_task_id": "task-125bd3fea1e84c4c8005081c14bfa155",
+  "reviewer": {
+    "session_id": "session-0bc80cb0620e4925bd622a43e4fd060b",
+    "runtime_identity": "openai/Codex (model unavailable)"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/FINAL_ACTOR_ROLE_ARTICLES_20261016/articles.json",
+    "sha256": "6c11b663e93e4eaced48ebdf464f392fc70f884b2445d81e39bbc9f2a3dceec3"
+  },
+  "reviewed_on": "2026-10-17",
+  "status": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-039",
+      "question_revision_sha256": "0ad2fd242fd5a8050791687fb08c650c28d20019f76430cd0e931358a189d4ac",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-039-opt-2",
+        "text": "Сьюзан Сарандон"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Susan Sarandon as Louise [Elizabeth Sawyer], Geena Davis as Thelma Dickinson, Harvey Keitel as Hal Slocumbe, and credits Ridley Scott and Callie Khouri in the stated roles.",
+        "AFI's synopsis and history support the Arkansas departure and ensuing journey framing; the article presents this as a film-reading prompt, not an unsupported factual scene claim.",
+        "The Academy's 1992 ledger records Davis and Sarandon as Actress in a Leading Role nominees, Jodie Foster as winner for The Silence of the Lambs, and Khouri as Original Screenplay winner.",
+        "The Academy film roster visibly groups five categories but lists six individual nominee entries because Davis and Sarandon share the actress category. The article's six-nomination wording is supportable as individual nominee entries; it should not be read as six distinct categories."
+      ],
+      "distractor_review": "Davis played Thelma, Keitel played Hal, and Streep was only an earlier contender, not a final-cast Louise. Sarandon is the unique answer.",
+      "source_links_checked": [
+        {
+          "url": "https://catalog.afi.com/Film/59064-THELMA-LOUISE",
+          "title": "AFI Catalog: Thelma & Louise (1991)",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports cast, credits, release year, and journey setup"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1992",
+          "title": "The 64th Academy Awards | 1992",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports the category results and the five-category/six-individual-entry distinction"
+        }
+      ],
+      "source_limits": "Academy summary header says five nominations because it counts categories; the detailed roster contains six individual nominee entries. This is documented rather than silently treating the two counts as identical.",
+      "editorial_backlog": "Canonical stem uses awkward accusative inflection in «кто сыграл Луиза Сойер?»; no canonical edit is authorized."
+    },
+    {
+      "id": "question:prep-film-actors2-040",
+      "question_revision_sha256": "b47ddac473eb3f5f2f19247e820158e51d4fad6ec4214ccc61128d2fb6a09d7c",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-040-opt-4",
+        "text": "Джек Николсон"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The official Forman site credits Jack Nicholson as R. P. McMurphy, Fletcher as Nurse Ratched, De Vito as Martini, and Sampson as Chief Bromden.",
+        "The same site credits Forman, Kesey, Hauben, Goldman, Zaentz, and Douglas in the functions stated in the article.",
+        "Forman's documented account supports both Nicholson's preparation and the use of reaction shots; the article accurately turns these into viewing prompts without inventing a specific performance fact.",
+        "The Academy 1976 ledger records five wins for Best Picture, Directing, Actor, Actress, and Adapted Screenplay, including Nicholson and Fletcher acting wins. The fictional hospital setting is explicitly not presented as medical guidance."
+      ],
+      "distractor_review": "Fletcher is Nurse Ratched, De Vito is Martini, and Sampson is Chief Bromden. Nicholson is the only listed performer credited as Randle Patrick McMurphy.",
+      "source_links_checked": [
+        {
+          "url": "https://milosforman.com/en/movies/oneflew-over-the-cuckoos-nest",
+          "title": "Miloš Forman: One Flew Over the Cuckoo’s Nest",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports roles, production credits, Forman's recollection, and reaction-shot detail"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1976",
+          "title": "The 48th Academy Awards | 1976",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports nine nominations, five wins, and Nicholson/Fletcher results"
+        }
+      ],
+      "source_limits": "No source-access blocker. The Forman site is an official film page and was directly readable during this review.",
+      "editorial_backlog": "Canonical stem uses awkward accusative inflection in «кто сыграл Рэндл Патрик Макмёрфи?»; no canonical edit is authorized."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 2,
+    "question_refs_match_candidate_revisions": true,
+    "status": "draft for both",
+    "tag_ids": [
+      "domain:arts",
+      "domain:screen",
+      "topic:actors"
+    ],
+    "source_link_counts": [
+      2,
+      2
+    ],
+    "body_word_counts_whitespace": [
+      199,
+      195
+    ],
+    "word_count_method": "Split each body_ru on whitespace; headings are included."
+  },
+  "release_boundary": "Private native draft-review verdict only. It is not external-provider acceptance and makes no export, release, or publication claim."
+}

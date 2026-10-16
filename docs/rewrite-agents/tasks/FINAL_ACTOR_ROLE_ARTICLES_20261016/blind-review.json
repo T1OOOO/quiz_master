@@ -1,0 +1,50 @@
+{
+  "packet_label": "final-actor-role-character-checker-20261016",
+  "hub_task_id": "task-125bd3fea1e84c4c8005081c14bfa155",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json only; articles, research, and local keys were not read before these answers.",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-039",
+      "question_revision_sha256": "0ad2fd242fd5a8050791687fb08c650c28d20019f76430cd0e931358a189d4ac",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-039-opt-2",
+        "text": "Сьюзан Сарандон"
+      },
+      "reasoning": "AFI credits Susan Sarandon as Louise [Elizabeth Sawyer]; Geena Davis is Thelma Dickinson, and the other options do not play Louise.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/59064",
+          "title": "AFI Catalog: Thelma & Louise (1991)",
+          "accessed_on": "2026-10-17",
+          "supports": "Cast table credits Susan Sarandon as Louise [Elizabeth Sawyer]."
+        }
+      ],
+      "uniqueness": "One best answer: only Sarandon is credited as Louise Sawyer.",
+      "wording_backlog": "Russian stem has an accusative-form issue: «кто сыграл Луиза Сойер?»; preserve canonical question and log for editorial backlog."
+    },
+    {
+      "id": "question:prep-film-actors2-040",
+      "question_revision_sha256": "b47ddac473eb3f5f2f19247e820158e51d4fad6ec4214ccc61128d2fb6a09d7c",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-040-opt-4",
+        "text": "Джек Николсон"
+      },
+      "reasoning": "AFI credits Jack Nicholson as R. P. [Randle Patrick] McMurphy; the listed distractors portray other named characters.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/55189-ONE-FLEWOVERTHECUCKOOSNEST",
+          "title": "AFI Catalog: One Flew Over the Cuckoo's Nest (1975)",
+          "accessed_on": "2026-10-17",
+          "supports": "Cast table credits Jack Nicholson as R. P. [Randle Patrick] McMurphy."
+        }
+      ],
+      "uniqueness": "One best answer: only Nicholson is credited as Randle Patrick McMurphy.",
+      "wording_backlog": "Russian stem has an accusative-form issue: «кто сыграл Рэндл Патрик Макмёрфи?»; preserve canonical question and log for editorial backlog."
+    }
+  ],
+  "limitations": [
+    "This is a blind answer check only. The draft articles, research brief, and local keys remain unread until Root freezes the draft SHA."
+  ],
+  "release_boundary": "Private review evidence only; no publication, export, or external acceptance claim."
+}
