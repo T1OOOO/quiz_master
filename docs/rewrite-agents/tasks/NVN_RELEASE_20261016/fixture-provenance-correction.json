@@ -1,0 +1,13 @@
+{
+  "status": "HISTORICAL_NORMALIZED_TEXT_HASH_LABEL_CORRECTED_WITHOUT_ARTIFACT_MUTATION",
+  "historical_record_path": "C:\\ap\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_RELEASE_20261016\\runtime\\fixture-source.json",
+  "historical_record_sha256": "d237145ad7d4b23f2f7c7f408242c7b2919e5e8e158eda48bdc093583d48e319",
+  "field": "server.py.sha256",
+  "recorded_normalized_utf8_text_sha256": "e119355aa6ab8ca639bdde9dc3deccc6b8767a59f0f36b75b9cba63d1229eef7",
+  "actual_server_byte_sha256": "bdd49469d9ee8d8445f51e2f20c08af344e685b2a9fadd26d85afcaa55cecdd0",
+  "actual_runtime_copy_byte_sha256": "bdd49469d9ee8d8445f51e2f20c08af344e685b2a9fadd26d85afcaa55cecdd0",
+  "actual_raw_byte_manifest_already_correct": true,
+  "exact_prior_fixture_with_only_two_path_replacements": true,
+  "artifact_bytes_changed": false,
+  "explanation": "The earlier generic sha256 field was calculated from normalized text before Windows CRLF translation. The frozen103-entry runtime manifest already pins the correct actual bytes. Use its byte hash; do not interpret the historical field as a raw file checksum. The fixture creation helper is corrected for future runs; no capture or fixture was rewritten."
+}

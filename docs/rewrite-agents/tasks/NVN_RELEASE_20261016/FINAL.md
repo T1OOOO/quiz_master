@@ -24,6 +24,12 @@ Completed actual work:
   rehearsal Python compilation. Only seven final payload paths may change;
   atlas/Reader/API/content remain exact. Frozen source map is in `worker/`.
 
+Root also corrected a historical fixture-provenance field's meaning in
+`REVIEW_ADDENDUM_EN.md` and `fixture-provenance-correction.json`: that nested
+field stored normalized text SHA, while the immutable runtime manifest already
+bound the correct actual CRLF file bytes. Source/runtime bytes and all frozen
+input hashes remain unchanged. The pending reviewer must read this addendum.
+
 Independent controller/input review is genuinely pending. Source task
 `task-5244c406521143dd98464b707aa46868` and Root input task
 `task-5711bd89476242d2a732548735242ebc` remain SUBMITTED.
