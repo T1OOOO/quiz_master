@@ -1,0 +1,45 @@
+{
+  "article_sha256": "c1ecddb24135fdffb029ed06b2da33e9d6b01f7834dcc29c0b3770b4ea9b312a",
+  "sources_sha256": "d1a97cd92f411236fd0518e985e5cf7daeb7c10dc90624b87254e78546a5c528",
+  "source_brief_sha256": "acdc76e127c292968a6d9dc6902ac98727c66f10c023612e7b26fb105f2f4160",
+  "root_successfully_opened_displayed_links": [
+    "https://catalog.afi.com/Film/23857-west-sidestory",
+    "https://www.oscars.org/events/west-side-story-1961",
+    "https://catalog.afi.com/Film/51633-REBEL-WITHOUTACAUSE",
+    "https://www.oscars.org/collection-highlights/james-dean?page=1",
+    "https://catalog.afi.com/Catalog/moviedetails/53260",
+    "https://www.oscars.org/collection-highlights/alfred-hitchcock",
+    "https://catalog.afi.com/Film/27025-THE-MALTESE-FALCON",
+    "https://digitalcollections.oscars.org/digital/api/collection/p15759coll4/id/15625/download"
+  ],
+  "targeted_claims_inspected": [
+    "AFI23857: Wood/Maria and Nixon singing dub, choreographed opening, 2021Zegler.",
+    "AFI51633:24hourstory, three frames in police station, Griffith location.",
+    "AFI53260:Perkins casting/adaptation,1959Blochsource, Bass divided-line titles.",
+    "AFI27025:Bogart/SamuelSpade,1930novel,1931/1936earlierfilms, Huston first directing, Greenstreet screen debut.",
+    "Academy collection/WestSideStory event and Bogart1993PDF context."
+  ],
+  "source_correction": {
+    "initial_sources_sha256": "408f65c31b1f174a0af769c70fa907c271059f95463678e2f06ab79f168b3693",
+    "problem": "AcademyDean collection says lattertwofilms earned nominations, incorrectly implying Rebel; not used in article.",
+    "resolution": "Research owner removed endorsed claim and added1956EastofEden/1957Giant official ledgers, both opened independently by Root. Original collection remains for archive/location context.",
+    "article_body_changed": false
+  },
+  "access_limits": [
+    "Uppercase AFI23857 alias and canonicalURL failed Root; exact lowercase displayedURL then opened successfully.",
+    "AcademyBogart PDF firstopen returned1page22lines; a later find redirected to welcome page. Checker requested to inspect actual link; do not treat repeated redirect as PDF evidence."
+  ],
+  "publication_or_runtime_change": false,
+  "initial_article_sha256": "4dfdb614233f7f62a9c5c0baffc5a8a0f93ad879ced00e8193cdb45094958457",
+  "root_successfully_opened_final_displayed_links": [
+    "https://catalog.afi.com/Film/23857-west-sidestory",
+    "https://www.oscars.org/events/west-side-story-1961",
+    "https://catalog.afi.com/Film/51633-REBEL-WITHOUTACAUSE",
+    "https://www.oscars.org/collection-highlights/james-dean?page=1",
+    "https://catalog.afi.com/Catalog/moviedetails/53260",
+    "https://www.oscars.org/collection-highlights/alfred-hitchcock",
+    "https://catalog.afi.com/Film/27025-THE-MALTESE-FALCON",
+    "https://www.oscars.org/oscars/ceremonies/1942"
+  ],
+  "link_correction": "Initial reviewer rejected022legacyPDF redirect; Root changed only URL/title/supports to actual1942ledger. Focused recheckfb936 submitted all4accepted_for_draft at finalc1ecddb2. Initialreports and exact three-field delta proof preserved."
+}

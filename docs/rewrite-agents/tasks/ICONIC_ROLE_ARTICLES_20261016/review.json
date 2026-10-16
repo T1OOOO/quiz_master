@@ -1,0 +1,139 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "iconic-role-character-checker-20261016-recheck",
+    "hub_session_id": "session-acb3e2af3fd948f29f029f9cea10f23f",
+    "runtime_identity": "codex/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-fb93697d88f8401ea5e8d47285c5285e",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/ICONIC_ROLE_ARTICLES_20261016/articles.json",
+    "sha256": "c1ecddb24135fdffb029ed06b2da33e9d6b01f7834dcc29c0b3770b4ea9b312a"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Initial SHA 4dfdb614233f7f62a9c5c0baffc5a8a0f93ad879ced00e8193cdb45094958457 reconstructed exactly from stored initial bytes; final SHA c1ecddb24135fdffb029ed06b2da33e9d6b01f7834dcc29c0b3770b4ea9b312a. Parsed comparison found exactly three changes at question 022 source_links[1]: url, title, supports.",
+    "method": "Focused recheck: preserved blind answers from the initial independent review; compared both complete parsed article files; reopened the new displayed Academy URL and verified the exact supported nominations. Earlier full-body/source review remains recorded in REVIEW_INITIAL_EN.md and review-initial.json."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-019",
+      "question_revision_sha256": "fd370e5e16d0734e3746047a4ed6dee2df1c8585f089581f4025301f67a8c147",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-019-opt-3",
+        "text": "Натали Вуд"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Natalie Wood as Maria and confirms Marni Nixon dubbed Wood's singing voice.",
+        "AFI and the Academy page support the stage-musical basis, Jets-Sharks conflict, author credits, and the 1961 film's role distinctions.",
+        "AFI supports Rachel Zegler as Maria in the 2021 film, so the body accurately explains why the year matters."
+      ],
+      "distractor_review": "Rita Moreno played Anita, Richard Beymer played Tony, and Marni Nixon supplied Wood's singing voice. Natalie Wood is the only screen performer of Maria in the stated 1961 film.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/23857-west-sidestory",
+          "title": "AFI Catalog: West Side Story (1961)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/events/west-side-story-1961",
+          "title": "West Side Story (1961) | Oscars.org",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-020",
+      "question_revision_sha256": "fdba7756e13cff4baa811e79fd7a74da3852936ebd154599624d3b99c90e5d27",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-020-opt-1",
+        "text": "Джеймс Дин"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits James Dean as Jim Stark, Natalie Wood as Judy, Sal Mineo as Plato, and Nicholas Ray as director.",
+        "AFI supports the twenty-four-hour story span and the three-frame police-station staging.",
+        "AFI and the Academy collection support Griffith Observatory and the cited collection objects; the body makes no Oscar-nomination claim for Dean."
+      ],
+      "distractor_review": "Sal Mineo played Plato, Natalie Wood played Judy, and Dennis Hopper was a Goon. James Dean uniquely played Jim Stark.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/51633-REBEL-WITHOUTACAUSE",
+          "title": "AFI Catalog: Rebel Without a Cause (1955)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/collection-highlights/james-dean?page=1",
+          "title": "James Dean | Oscars.org",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [
+        {
+          "url": "https://www.oscars.org/collection-highlights/james-dean?page=1",
+          "reason": "The page's statement that the latter two of Dean's three films earned Oscar nominations is historically incorrect. The article does not repeat it and uses only the separately displayed collection/location material."
+        }
+      ]
+    },
+    {
+      "id": "question:prep-film-actors2-021",
+      "question_revision_sha256": "432ac32459296538482b7436b8415c3b8a6a02e39e69e713c4bd8c6cd8d5aa9e",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-021-opt-2",
+        "text": "Энтони Перкинс"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Anthony Perkins as Norman Bates, Hitchcock as director, and Joseph Stefano as writer; it identifies Bloch's 1959 novel as the source.",
+        "AFI supports the character adaptation, Perkins casting connection, and Saul Bass's opening-title design.",
+        "The Academy Hitchcock collection supports Psycho's place in the 1958–1963 period, censorship context, and innovative promotion."
+      ],
+      "distractor_review": "Vera Miles played Lila Crane, John Gavin played Sam Loomis, and Martin Balsam played Milton Arbogast. Anthony Perkins is the unique Norman Bates answer.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/53260",
+          "title": "AFI Catalog: Psycho (1960)",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/collection-highlights/alfred-hitchcock",
+          "title": "Alfred Hitchcock | Oscars.org",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-022",
+      "question_revision_sha256": "8c513397079e7b086c774433ee2e88ab68334c0b09ec156bb581b07e2fb8d30d",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-022-opt-3",
+        "text": "Хамфри Богарт"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "AFI credits Humphrey Bogart as Samuel Spade, Peter Lorre as Joel Cairo, and Sydney Greenstreet as Kasper Gutman.",
+        "AFI supports the 1930 Hammett novel, earlier Warner adaptations in 1931 and 1936, Huston's directorial debut, Greenstreet's film debut, and the nomination claims.",
+        "The new displayed Academy 14th-ceremony ledger opens directly and lists The Maltese Falcon nominations for Sydney Greenstreet (Actor in a Supporting Role), Warner Bros. (Outstanding Motion Picture), and John Huston (Writing, Screenplay)."
+      ],
+      "distractor_review": "Mary Astor played Brigid O'Shaughnessy, Peter Lorre played Joel Cairo, and Sydney Greenstreet played Kasper Gutman. Humphrey Bogart alone played Sam Spade.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/27025-THE-MALTESE-FALCON",
+          "title": "AFI Catalog: The Maltese Falcon (1941)",
+          "status": "opened_initial_review_unchanged_link"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1942",
+          "title": "The 14th Academy Awards | 1942",
+          "status": "opened_focused_recheck"
+        }
+      ],
+      "source_limits": []
+    }
+  ],
+  "release_boundary": "All four items are accepted_for_draft through independent native review. This report does not state or imply external-provider approval, export, release, or publication."
+}
