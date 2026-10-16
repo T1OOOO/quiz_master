@@ -1,0 +1,101 @@
+{
+  "packet_label": "opera-carmen-otello-character-checker-20261017",
+  "hub_task_id": "task-197384e6bfdc465ab60829022e41c83f",
+  "reviewer": {
+    "session_id": "session-b439ae6ce0f048fabca87f8363d8a131",
+    "runtime_identity": "openai/Codex (model unavailable)"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/OPERA_CARMEN_OTELLO_ARTICLES_20261017/articles.json",
+    "sha256": "c54ed354e6bd6ee5f497071967a5502978db06eb2d4b150dbf2fda760fbc5789"
+  },
+  "reviewed_on": "2026-10-17",
+  "status": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:music-oct3-007",
+      "question_revision_sha256": "53a272687ef82602590cbb86f7334b3c76e251cbfe704a601b856d0ee8709d4a",
+      "blind_answer": {
+        "option_id": "music-oct3-007-opt-3",
+        "text": "Жорж Бизе"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The directly opened final Opéra-Comique programme identifies Carmen as an opéra-comique in four acts by Georges Bizet, with libretto by Henri Meilhac and Ludovic Halévy after Mérimée, created on 3 March 1875 at Opéra-Comique.",
+        "The second directly opened Opéra-Comique page supports the account of source research without travel to Spain and supports Micaëla as an addition by Meilhac and Halévy.",
+        "The article correctly separates composer, librettists, literary source, Paris premiere, and Seville setting; it makes no false inference that the setting identifies the premiere country."
+      ],
+      "distractor_review": "Verdi, Mozart, and Puccini did not compose Carmen. Bizet is the only best answer; Meilhac and Halévy are correctly described as librettists rather than composers.",
+      "source_links_checked": [
+        {
+          "url": "https://www.opera-comique.com/sites/default/files/2023-04/2023_Programme_Carmen_Web.pdf",
+          "title": "Opéra-Comique: Carmen — programme 2023",
+          "accessed_on": "2026-10-17",
+          "result": "opened; primary programme supports composer, librettists, Mérimée source, four acts, premiere, and Seville"
+        },
+        {
+          "url": "https://www.opera-comique.com/fr/actualites/a-lire-avant-le-spectacle-carmen",
+          "title": "Opéra-Comique: À lire avant le spectacle — Carmen",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports authors' source research, no Spain travel, and Micaëla addition"
+        }
+      ],
+      "source_limits": "The initial friendly Carmen URL timed out twice in this review. Root replaced only that source field with this directly opened official programme; the final displayed URLs are usable."
+    },
+    {
+      "id": "question:music-oct3-008",
+      "question_revision_sha256": "611c2cb97e754ca5cf8febd45d5598237f28f6b1d04f4d187634bd8773ed1567",
+      "blind_answer": {
+        "option_id": "music-oct3-008-opt-1",
+        "text": "Джузеппе Верди"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "La Scala's historical page identifies Otello as created there on 5 February 1887 by Verdi, with Arrigo Boito as librettist, and describes the collaboration with Ricordi and Faccio.",
+        "La Scala's Otello page identifies Giuseppe Verdi, Arrigo Boito, and the work's four acts; its 1887 framing matches the article's disambiguating detail.",
+        "Royal Ballet and Opera Collections identifies Rossini's separate Otello (1816), names Francesco Berio di Salsa as its librettist, records the 4 December 1816 Naples world premiere, and identifies 6 July 1850 only as that institution's local premiere.",
+        "The article correctly distinguishes composer, librettist, work identity, world premiere, and local production history."
+      ],
+      "distractor_review": "The date and La Scala premise uniquely identify Verdi. Bizet, Mozart, and Puccini did not compose this Otello; Rossini's earlier 1816 work is a historically useful but explicitly distinct comparator.",
+      "source_links_checked": [
+        {
+          "url": "https://www.teatroallascala.org/it/media/la-scala-rivista-del-teatro/otello-una-storia-scaligera.html",
+          "title": "Teatro alla Scala: Otello, una storia scaligera",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports 5 February 1887, Verdi, Boito, Ricordi, and Faccio"
+        },
+        {
+          "url": "https://www.teatroallascala.org/it/stagione/2026-2027/opera/otello.html",
+          "title": "Teatro alla Scala: Otello",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports Giuseppe Verdi, Arrigo Boito, and four acts"
+        },
+        {
+          "url": "https://www.rohcollections.org.uk/work.aspx?genre=opera&letter=O&row=10&work=286",
+          "title": "Royal Ballet and Opera Collections: Otello (1816)",
+          "accessed_on": "2026-10-17",
+          "result": "opened; supports Rossini 1816, Naples world premiere, and 1850 local Royal Italian Opera premiere"
+        }
+      ],
+      "source_limits": "No source-access blocker. The Rossini collection entry is used only to clarify a different work and a local-premiere date."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 2,
+    "question_refs_match_candidate_revisions": true,
+    "status": "draft for both",
+    "tag_ids": [
+      "domain:arts"
+    ],
+    "source_link_counts": [
+      2,
+      3
+    ],
+    "body_word_counts_whitespace": [
+      203,
+      203
+    ],
+    "word_count_method": "Split each body_ru on whitespace; headings are included."
+  },
+  "release_boundary": "Private native draft-review verdict only. It is not external-provider acceptance and makes no export, release, or publication claim."
+}

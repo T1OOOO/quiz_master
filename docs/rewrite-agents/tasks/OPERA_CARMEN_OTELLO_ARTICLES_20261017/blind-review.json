@@ -1,0 +1,50 @@
+{
+  "packet_label": "opera-carmen-otello-character-checker-20261017",
+  "hub_task_id": "task-197384e6bfdc465ab60829022e41c83f",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json only; article drafts, research, and local keys were not read before these answers.",
+  "items": [
+    {
+      "id": "question:music-oct3-007",
+      "question_revision_sha256": "53a272687ef82602590cbb86f7334b3c76e251cbfe704a601b856d0ee8709d4a",
+      "blind_answer": {
+        "option_id": "music-oct3-007-opt-3",
+        "text": "Жорж Бизе"
+      },
+      "reasoning": "The official Opéra-Comique programme identifies Carmen as an opéra-comique in four acts by Georges Bizet; Meilhac and Halévy are librettists, not competing composers.",
+      "sources_opened": [
+        {
+          "url": "https://www.opera-comique.com/sites/default/files/2023-04/2023_Programme_Carmen_Web.pdf",
+          "title": "Opéra-Comique: Carmen programme",
+          "accessed_on": "2026-10-17",
+          "supports": "Composer, librettists, Mérimée source, and 3 March 1875 Opéra-Comique creation."
+        }
+      ],
+      "uniqueness": "Only Bizet composed Carmen; Verdi, Mozart, and Puccini did not compose this opera.",
+      "wording_backlog": []
+    },
+    {
+      "id": "question:music-oct3-008",
+      "question_revision_sha256": "611c2cb97e754ca5cf8febd45d5598237f28f6b1d04f4d187634bd8773ed1567",
+      "blind_answer": {
+        "option_id": "music-oct3-008-opt-1",
+        "text": "Джузеппе Верди"
+      },
+      "reasoning": "La Scala identifies its Otello as conceived for La Scala on 5 February 1887 by Verdi with libretto author Arrigo Boito. The date and venue disambiguate it from Rossini's 1816 Otello.",
+      "sources_opened": [
+        {
+          "url": "https://www.teatroallascala.org/it/media/la-scala-rivista-del-teatro/otello-una-storia-scaligera.html",
+          "title": "Teatro alla Scala: Otello, una storia scaligera",
+          "accessed_on": "2026-10-17",
+          "supports": "Verdi, Boito as librettist, La Scala, and 5 February 1887 premiere."
+        }
+      ],
+      "uniqueness": "The 1887 La Scala premise uniquely identifies Verdi's Otello; Bizet, Mozart, and Puccini are not plausible answers. Rossini's earlier 1816 Otello is a useful historical disambiguator but is not an option.",
+      "wording_backlog": []
+    }
+  ],
+  "limitations": [
+    "Blind phase opened only the two primary opera-house sources needed to answer the candidate questions."
+  ],
+  "release_boundary": "Private review evidence only; no publication, export, or external acceptance claim."
+}
