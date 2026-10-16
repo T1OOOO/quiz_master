@@ -1,0 +1,28 @@
+{
+  "status": "pass_structural_only",
+  "article_sha256": "12069ba2066852795735c8a0c8508ee789c13a46f1d8fcd35f0fa352a4367768",
+  "articles": 4,
+  "word_counts": {
+    "question:prep-film-actors2-001": 180,
+    "question:prep-film-actors2-002": 187,
+    "question:music-oct3-016": 185,
+    "question:music-oct3-017": 184
+  },
+  "exact_public_refs": true,
+  "existing_tags_only": true,
+  "source_metadata_valid": true,
+  "runtime_303_unchanged": true,
+  "frozen_nvn_inputs_unchanged": true,
+  "external_review": "pending",
+  "publication": "not_attempted",
+  "accepted_reader_export_check": {
+    "command": "python study/question_articles/build.py --check",
+    "actual_exit": 0,
+    "articles": 303
+  },
+  "native_editorial_review": {
+    "verdict": "accepted_for_draft",
+    "report_sha256": "dd6950ebdb880adec2d9c59710e4b585a9fa1af9fff120de0f1f0dab01245ba2",
+    "different_provider_acceptance": false
+  }
+}

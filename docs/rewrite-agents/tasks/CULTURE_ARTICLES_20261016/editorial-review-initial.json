@@ -1,0 +1,65 @@
+{
+  "schema_version": "qm-native-editorial-review/v1",
+  "reviewed_at": "2026-10-16",
+  "reviewer": {
+    "provider": "codex",
+    "session_id": "session-5f6ab83756a04d6c8a05132aad839178",
+    "scope": "same-provider editorial review only; not different-provider release acceptance"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/CULTURE_ARTICLES_20261016/articles.json",
+    "sha256": "ba4c8f7fa13dd0b202b4f43554df8c71644a18835e4aba06798c81daefa4e2c5"
+  },
+  "overall_verdict": "revise",
+  "publication_status": "pending_external_review_and_authorized_export",
+  "structural_checks": {
+    "articles": 4,
+    "unique_ids": 4,
+    "status_draft": true,
+    "public_question_refs_match": true,
+    "minimum_source_links_per_article": 2,
+    "russian_body_word_counts": {
+      "question:prep-film-actors2-001": 170,
+      "question:prep-film-actors2-002": 171,
+      "question:music-oct3-016": 167,
+      "question:music-oct3-017": 162
+    }
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-001",
+      "verdict": "revise",
+      "answer": "Judy Garland",
+      "fact_status": "AFI credits Garland as Dorothy Gale in the 1939 film; Shirley Temple was considered but did not play the completed role.",
+      "finding": "The factual answer, public revision binding, sources and distractor treatment are sound. Recast the unreferenced phrase about Dorothy's inner path as an explicit memory/reading aid, rather than a sourced factual claim."
+    },
+    {
+      "id": "question:prep-film-actors2-002",
+      "verdict": "revise",
+      "answer": "Humphrey Bogart",
+      "fact_status": "AFI credits Bogart as Rick Blaine; Henreid as Victor Laszlo and Rains as Louis Renault.",
+      "finding": "The article wrongly says the answer options contain all actors just named: Ingrid Bergman is mentioned but is not an option, while Cary Grant is an option but omitted. Describe the actual choices accurately. Flag the public stem separately: Russian requires accusative, «кто сыграл Рика Блейна?», but do not alter it in this article batch."
+    },
+    {
+      "id": "question:music-oct3-016",
+      "verdict": "revise",
+      "answer": "Stephen Sondheim",
+      "fact_status": "MTI credits James Lapine for book and Stephen Sondheim for music and lyrics; Library of Congress supports the 1986 workshop and 1987 Broadway opening dates.",
+      "finding": "Use Russian theatrical terminology «либретто (сцены и диалоги)» instead of a bare literal «книга». Mark the statement about melody and words as an interpretive learning lens, not a documented historical claim."
+    },
+    {
+      "id": "question:music-oct3-017",
+      "verdict": "revise",
+      "answer": "Stephen Sondheim",
+      "fact_status": "MTI credits George Furth for book and Stephen Sondheim for music and lyrics; Library of Congress supports the 26 April 1970 Broadway opening.",
+      "finding": "Use «либретто (сцены и диалоги)» for Furth's role. Mark or narrow the claim that the show is not a linear romance but a sequence of musical reflections: MTI supports the birthday premise and interactions, not that interpretive formulation as a direct fact."
+    }
+  ],
+  "sources_inspected": [
+    "https://catalog.afi.com/Catalog/moviedetails/7892?mobile-app=true&theme=false",
+    "https://catalog.afi.com/Film/27175-CASABLANCA",
+    "https://www.mtishows.com/into-the-woods",
+    "https://www.mtishows.com/company",
+    "https://tile.loc.gov/storage-services/service/gdc/gdcfindingaidpdfs/mu025009/mu025009.pdf"
+  ]
+}

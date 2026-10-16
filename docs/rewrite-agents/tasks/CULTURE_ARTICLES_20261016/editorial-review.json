@@ -1,0 +1,73 @@
+{
+  "schema_version": "qm-native-editorial-review/v1",
+  "reviewed_at": "2026-10-16",
+  "reviewer": {
+    "provider": "codex",
+    "session_id": "session-5f6ab83756a04d6c8a05132aad839178",
+    "scope": "same-provider editorial review only; not different-provider release acceptance"
+  },
+  "initial_review": {
+    "articles_sha256": "ba4c8f7fa13dd0b202b4f43554df8c71644a18835e4aba06798c81daefa4e2c5",
+    "verdict": "revise",
+    "findings": [
+      "Casablanca option discussion included Ingrid Bergman, who is not a candidate, and omitted Cary Grant, who is.",
+      "The two musical-theatre articles used the literal Russian term 'книга' where 'либретто (сцены и диалоги)' is clearer.",
+      "Learning interpretations needed to be explicitly labelled as interpretations rather than sourced historical facts."
+    ]
+  },
+  "final_recheck": {
+    "reviewed_file": {
+      "path": "docs/rewrite-agents/tasks/CULTURE_ARTICLES_20261016/articles.json",
+      "sha256": "12069ba2066852795735c8a0c8508ee789c13a46f1d8fcd35f0fa352a4367768"
+    },
+    "verdict": "accepted_for_draft",
+    "structural_checks": {
+      "articles": 4,
+      "unique_ids": 4,
+      "status_draft": true,
+      "public_question_refs_match": true,
+      "minimum_source_links_per_article": 2,
+      "minimum_russian_body_words": 100,
+      "all_articles_meet_minimum_word_count": true
+    },
+    "items": [
+      {
+        "id": "question:prep-film-actors2-001",
+        "verdict": "accept",
+        "answer": "Judy Garland",
+        "evidence": "AFI credits Garland as Dorothy Gale. The Shirley Temple note remains factual, and the inner-route wording is now explicitly a learning association."
+      },
+      {
+        "id": "question:prep-film-actors2-002",
+        "verdict": "accept",
+        "answer": "Humphrey Bogart",
+        "evidence": "AFI credits Bogart as Rick Blaine, Henreid as Victor Laszlo and Rains as Louis Renault. The revised text accurately distinguishes those two candidate distractors from non-candidate Ingrid Bergman and candidate Cary Grant."
+      },
+      {
+        "id": "question:music-oct3-016",
+        "verdict": "accept",
+        "answer": "Stephen Sondheim",
+        "evidence": "MTI credits Sondheim for music and lyrics and James Lapine for the book. The Russian article now explains the latter as 'либретто, то есть сцены и диалоги' and labels its learning lens."
+      },
+      {
+        "id": "question:music-oct3-017",
+        "verdict": "accept",
+        "answer": "Stephen Sondheim",
+        "evidence": "MTI credits Sondheim for music and lyrics and George Furth for the book. The Russian article now uses the same libretto clarification and labels the interpretive reading as a learning device."
+      }
+    ],
+    "known_out_of_scope_follow_up": {
+      "issue": "quiz_master-6t6",
+      "finding": "The authoritative public Casablanca stem needs the Russian accusative 'кто сыграл Рика Блейна?'. It is a canonical-question follow-up and was not changed in this article-only review."
+    }
+  },
+  "overall_verdict": "accepted_for_draft",
+  "publication_status": "pending_different_provider_review_and_authorized_export",
+  "sources_inspected": [
+    "https://catalog.afi.com/Catalog/moviedetails/7892?mobile-app=true&theme=false",
+    "https://catalog.afi.com/Film/27175-CASABLANCA",
+    "https://www.mtishows.com/into-the-woods",
+    "https://www.mtishows.com/company",
+    "https://tile.loc.gov/storage-services/service/gdc/gdcfindingaidpdfs/mu025009/mu025009.pdf"
+  ]
+}
