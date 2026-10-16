@@ -1,0 +1,16 @@
+{
+  "schema_version":"qm-question-article-blind-review/v1",
+  "status":"blind_answers_recorded",
+  "reviewer":{"packet_label":"four-screen-role-character-checker-20261016","hub_session_id":"session-b49403e654714c8386afd8a44c8284ce","runtime_identity":"openai/Codex (model unavailable)"},
+  "hub_task_id":"task-04a30d6146854f0db794551b7230b942",
+  "reviewed_candidate":{"path":"docs/rewrite-agents/tasks/FOUR_SCREEN_ROLE_ARTICLES_20261016/candidate-questions.json"},
+  "reviewed_at":"2026-10-16",
+  "method":"Read BRIEF_EN.md and candidate-questions.json, then independently opened AFI Catalog primary pages before reading research, drafts, local keys, or legacy materials.",
+  "items":[
+    {"id":"question:prep-film-actors2-035","question_revision_sha256":"fa8e35f9f46dded1d342bf7f9c4bc7247ae06f6c33324965e601a339294cd6f9","blind_answer":{"option_id":"prep-film-actors2-035-opt-2","text":"Тим Роббинс"},"source":{"url":"https://catalog.afi.com/Film/55199-THE-SHAWSHANK-REDEMPTION","title":"AFI Catalog: The Shawshank Redemption (1994)","accessed":"2026-10-16","evidence":"AFI credits Tim Robbins as Andy Dufresne; Freeman as Red, Gunton as Norton, and Sadler as Heywood."},"uniqueness":"Each alternate is a relevant cast member with a different named role."},
+    {"id":"question:prep-film-actors2-036","question_revision_sha256":"7e77b6ba3d84f28d2e192b3de4426da1c322459f0cad1368c11004555471550e","blind_answer":{"option_id":"prep-film-actors2-036-opt-4","text":"Джин Хэкмен"},"source":{"url":"https://catalog.afi.com/Film/53919-THE-FRENCHCONNECTION","title":"AFI Catalog: The French Connection (1971)","accessed":"2026-10-16","evidence":"AFI credits Gene Hackman as Jimmy Popeye Doyle; Rey as Charnier, Scheider as Russo, and Lo Bianco as Boca."},"uniqueness":"Each alternate is a relevant cast member with a different named role."},
+    {"id":"question:prep-film-actors2-037","question_revision_sha256":"ffcc432cf5a9c22d649d2b87d57ceb38bc2158c18750fa658420d8b6a3a13312","blind_answer":{"option_id":"prep-film-actors2-037-opt-1","text":"Джон Войт"},"source":{"url":"https://catalog.afi.com/Film/23889-","title":"AFI Catalog: Midnight Cowboy (1969)","accessed":"2026-10-16","evidence":"AFI credits Jon Voight as Joe Buck; Hoffman as Ratso Rizzo, Miles as Cass, and Vaccaro as Shirley."},"uniqueness":"Each alternate is a relevant cast member with a different named role."},
+    {"id":"question:prep-film-actors2-038","question_revision_sha256":"8667cb92c66f8a8294e5385540842a4c58253b3b139c6b70c9691896a1d86881","blind_answer":{"option_id":"prep-film-actors2-038-opt-3","text":"Том Круз"},"source":{"url":"https://catalog.afi.com/Film/57927-BORN-ON-THE-FOURTH-OF-JULY","title":"AFI Catalog: Born on the Fourth of July (1989)","accessed":"2026-10-16","evidence":"AFI credits Tom Cruise as Ron Kovic; Dafoe, Sedgwick, and Pacino are distinct cast/development names."},"uniqueness":"Tom Cruise alone is the credited performer as Ron Kovic; the choices do not create a competing role claim."}
+  ],
+  "blind_boundary":"Candidate-only independent answers; no article-draft, release, publication, or external-approval claim."
+}
