@@ -1,0 +1,49 @@
+{
+  "packet_label": "opera-flute-turandot-character-checker-20261017",
+  "hub_task_id": "task-32c46046171c4b7ca046d52ccb44b455",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json only; article drafts, research files, and local answer keys were not read before the answers below were recorded.",
+  "items": [
+    {
+      "id": "question:music-oct3-009",
+      "question_revision_sha256": "9652f9fa086fbb3387867843183ddd5b5a42ec10da37a12871756f8cd1de5796",
+      "blind_answer": {
+        "option_id": "music-oct3-009-opt-2",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "reasoning": "The Mozarteum identifies Die Zauberflöte, KV 620, as music by Wolfgang Amadé Mozart and separately credits Emanuel Schikaneder for the text.",
+      "uniqueness": "The other choices are composers of other operas; only Mozart fits the stated work and the composer role.",
+      "sources_opened": [
+        {
+          "url": "https://dme.mozarteum.at/libretti-edition/synopse.php?end=8&idwnma=7137&line=0&v1=420&v2=421",
+          "title": "Stiftung Mozarteum Salzburg: Libretti-Edition — Die Zauberflöte KV 620",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-010",
+      "question_revision_sha256": "e2c41cd78f4dd720521acb5c9b7104ecb46013d6214e9b9bd1e7a1d78df8b15e",
+      "blind_answer": {
+        "option_id": "music-oct3-010-opt-4",
+        "text": "Джакомо Пуччини"
+      },
+      "reasoning": "La Scala credits the music to Giacomo Puccini and says Franco Alfano completed the third act; the Puccini catalogue documents Alfano's later selection to complete the opera.",
+      "uniqueness": "The stem explicitly distinguishes the principal composer from the later completer, so Alfano is excluded and Puccini is the only fitting option.",
+      "sources_opened": [
+        {
+          "url": "https://www.teatroallascala.org/en/season/2025-2026/opera/turandot/index.html",
+          "title": "Teatro alla Scala: Turandot",
+          "accessed": "2026-10-17"
+        },
+        {
+          "url": "https://catalog.puccini.it/public/works/turandot/notes",
+          "title": "Giacomo Puccini Catalogue of the Works: Turandot notes",
+          "accessed": "2026-10-17"
+        }
+      ]
+    }
+  ],
+  "source_limits": "The review checked only the answer-relevant primary-source facts during the blind phase; it did not assess draft prose or all historical claims.",
+  "release_boundary": "Private native draft-review evidence only; it does not assert publication, release, or external acceptance."
+}

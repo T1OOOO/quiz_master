@@ -1,0 +1,7 @@
+# Root inspected primary sources and scope
+
+Root opened all four exact displayed URLs. The Mozarteum Foundation biography explicitly names Mozart's Magic Flute, dates its Vienna premiere30September1791, names Schikaneder/Papageno and Hofer/Queen of the Night, and describes Mozart conducting from the keyboard. Köchel's KV620 record calls it a two-act Singspiel, distinguishes workdating28September from premiere30September, and displays overture, aria and dialogue entries. The article does not conflate the dates. Viewer prompts are original interpretation exercises.
+
+La Scala's Turandot page credits Puccini, Alfano's completion of Act3, Adami/Simoni and threeacts/fivescenes, and dates the premiere25April1926. The Puccini research catalogue notes explicitly distinguish the first performance without any Alfano completion from the second and third performances with a revised Alfano ending. The article avoids any invented Toscanini speech or a claim that the whole completed version was heard on premiere night.
+
+These two private articles continue existing prep-opera coverage. No question wording, options, keys, canonical records, Flutter caller, fixture, config or export changes. Existing domain:arts only; preserve prior packets, runtime Reader and frozen NVN inputs. Appropriate gates are schema, exactrefs, body/source counts, reviewed rawSHA, independent private-key integrity and duplicate-free snapshot coverage. Native review does not satisfy external-provider release gates.

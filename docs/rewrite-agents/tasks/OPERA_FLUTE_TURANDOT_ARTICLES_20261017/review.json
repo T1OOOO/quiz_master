@@ -1,0 +1,102 @@
+{
+  "packet_label": "opera-flute-turandot-character-checker-20261017",
+  "hub_task_id": "task-32c46046171c4b7ca046d52ccb44b455",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/OPERA_FLUTE_TURANDOT_ARTICLES_20261017/articles.json",
+    "sha256": "551700b8d56fb10b715273ab10b17a603aeab5550fe25dc772f70ba1a907dce7"
+  },
+  "reviewer": {
+    "session_id": "session-eb54a27feed14ccba8ff1c6e1e3a0b0a",
+    "provider": "openai",
+    "model": "Codex",
+    "review_type": "independent fact, source, answer-ambiguity, and editorial review"
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:music-oct3-009",
+      "question_revision_sha256": "9652f9fa086fbb3387867843183ddd5b5a42ec10da37a12871756f8cd1de5796",
+      "blind_answer": {
+        "option_id": "music-oct3-009-opt-2",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Mozart is the composer of Die Zauberflöte / The Magic Flute, KV 620.",
+        "The work is a Singspiel in two acts and premiered at Vienna's Freihaus-Theater on 30 September 1791.",
+        "Emanuel Schikaneder was the theatre impresario and performed Papageno; Josepha Hofer sang the Queen of the Night; Mozart conducted the first performances from a keyboard.",
+        "The displayed Köchel entry lists an overture, aria, and spoken dialogue components."
+      ],
+      "distractor_review": "Bizet, Verdi, and Puccini do not compose this named work. The question asks for its composer, so the answer is unique and does not confuse Schikaneder's text or stage role with Mozart's music.",
+      "sources_opened": [
+        {
+          "url": "https://mozarteum.at/en/wolfgang-amade-mozart",
+          "title": "Mozarteum Foundation: Wolfgang Amadé Mozart",
+          "accessed": "2026-10-17",
+          "result": "opened; supports the premiere and first-performance personnel claims"
+        },
+        {
+          "url": "https://kv.mozarteum.at/de/work/die-zauberflote-7137",
+          "title": "Köchel Verzeichnis: KV 620 — Die Zauberflöte",
+          "accessed": "2026-10-17",
+          "result": "opened; supports KV number, form, first-performance entry, and listed work parts"
+        }
+      ],
+      "source_limits": "The review checked the linked institutional pages as displayed; it did not independently catalogue every historical performance or variant edition."
+    },
+    {
+      "id": "question:music-oct3-010",
+      "question_revision_sha256": "e2c41cd78f4dd720521acb5c9b7104ecb46013d6214e9b9bd1e7a1d78df8b15e",
+      "blind_answer": {
+        "option_id": "music-oct3-010-opt-4",
+        "text": "Джакомо Пуччини"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Puccini is the composer of Turandot and Alfano later completed its third act.",
+        "Adami and Simoni are the librettists; the work is described as three acts and five scenes.",
+        "The world premiere was at La Scala on 25 April 1926.",
+        "The first performance ended after Liù's death without an Alfano ending; the second and third used the revised Alfano ending."
+      ],
+      "distractor_review": "Bizet, Mozart, and Verdi are unrelated to Turandot's composition. Franco Alfano is deliberately named in the stem as a later completer, so he cannot displace Puccini as the principal-composer answer.",
+      "sources_opened": [
+        {
+          "url": "https://www.teatroallascala.org/en/season/2025-2026/opera/turandot/index.html",
+          "title": "Teatro alla Scala: Turandot",
+          "accessed": "2026-10-17",
+          "result": "opened; supports composer, Alfano, librettists, form, and premiere-date claims"
+        },
+        {
+          "url": "https://catalog.puccini.it/public/works/turandot/notes",
+          "title": "Giacomo Puccini — Catalog of the Works: Turandot, Notes",
+          "accessed": "2026-10-17",
+          "result": "opened; supports the unfinished score and first-versus-second/third-performance distinction"
+        }
+      ],
+      "source_limits": "The review checked the linked institutional pages as displayed; it did not evaluate every later edition or performance tradition."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 2,
+    "question_refs_match_candidate_revisions": true,
+    "statuses": [
+      "draft",
+      "draft"
+    ],
+    "tag_ids": [
+      "domain:arts"
+    ],
+    "source_link_counts": [
+      2,
+      2
+    ],
+    "body_word_counts_whitespace": [
+      197,
+      204
+    ],
+    "word_count_method": "Split each body_ru value on whitespace; headings are included, while title and metadata are excluded.",
+    "displayed_links_opened": 4,
+    "unsupported_premiere_anecdote_or_quote_found": false
+  },
+  "release_boundary": "accepted_for_draft is a private, native review result only. It is not publication, release, or external acceptance."
+}
