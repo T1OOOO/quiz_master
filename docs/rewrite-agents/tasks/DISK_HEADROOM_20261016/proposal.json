@@ -1,0 +1,198 @@
+{
+  "status": "research_proposal_only_not_executable_not_approved",
+  "issue": "quiz_master-1x1",
+  "observed": {
+    "disk_available": 19175731200,
+    "disk_total": 102417174528,
+    "available_percent": 18.723,
+    "strict20_pass": false,
+    "deficit_to20_bytes": 1307703706,
+    "conditions": {
+      "MemoryPressure": "False",
+      "DiskPressure": "False",
+      "PIDPressure": "False",
+      "Ready": "True"
+    },
+    "taints": [],
+    "helm_revision": 64,
+    "helm_status": "deployed",
+    "images": [
+      "docker.io/library/quiz-master@sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+      "docker.io/library/quiz-master@sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00"
+    ],
+    "replicas": 1,
+    "readiness": 200,
+    "feedback_count": 29,
+    "feedback_open": 29,
+    "feedback_sha256": "452929a2ea8dc34600eff8039571e2b0479ec7ad1ec52fa6e271b5c71008030e",
+    "mutation": false
+  },
+  "minimum_reclaim_to_strict20_bytes": 1307703706,
+  "planning_target_with1GiB_reserve_and64MiB_growth_bytes": 2448554394,
+  "candidate_directories": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.02-0857-ef419ae",
+      "observed_allocated_bytes": 91127808,
+      "observed_directory_mtime": "2026-10-02T09:09:05.029910+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.02-1759-585c4e2",
+      "observed_allocated_bytes": 79458304,
+      "observed_directory_mtime": "2026-10-02T15:01:20.818795+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.02-2358-c3420d3",
+      "observed_allocated_bytes": 68571136,
+      "observed_directory_mtime": "2026-10-02T21:03:11.370561+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-0038-33f5cfc",
+      "observed_allocated_bytes": 61382656,
+      "observed_directory_mtime": "2026-10-02T21:39:46.666168+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-0042-33f5cfc",
+      "observed_allocated_bytes": 61382656,
+      "observed_directory_mtime": "2026-10-02T21:42:32.321808+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-0125-6326777",
+      "observed_allocated_bytes": 61947904,
+      "observed_directory_mtime": "2026-10-02T22:40:55.991131+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-0245-6b5e2e6",
+      "observed_allocated_bytes": 61947904,
+      "observed_directory_mtime": "2026-10-02T23:44:49.574132+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-auto1s-ff91d0c",
+      "observed_allocated_bytes": 61956096,
+      "observed_directory_mtime": "2026-10-03T00:53:22.977307+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-capitals-ebab492",
+      "observed_allocated_bytes": 19042304,
+      "observed_directory_mtime": "2026-10-11T21:02:03.915233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-culture-d5f070b",
+      "observed_allocated_bytes": 87998464,
+      "observed_directory_mtime": "2026-10-03T07:50:39.588856+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-flags-42debe2",
+      "observed_allocated_bytes": 86343680,
+      "observed_directory_mtime": "2026-10-03T05:50:19.396704+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-library-420849f",
+      "observed_allocated_bytes": 61964288,
+      "observed_directory_mtime": "2026-10-03T01:31:19.058103+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.03-preparation-ef96a79",
+      "observed_allocated_bytes": 62021632,
+      "observed_directory_mtime": "2026-10-03T02:17:07.185232+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.04-mobile-e7a7617",
+      "observed_allocated_bytes": 81399808,
+      "observed_directory_mtime": "2026-10-04T10:49:46.232972+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.04-study-5536e77",
+      "observed_allocated_bytes": 20955136,
+      "observed_directory_mtime": "2026-10-11T21:02:03.938233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.04-thematic-61b47ea",
+      "observed_allocated_bytes": 19390464,
+      "observed_directory_mtime": "2026-10-11T21:02:03.965232+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.05-quizipedia-486df89",
+      "observed_allocated_bytes": 19927040,
+      "observed_directory_mtime": "2026-10-11T21:02:03.944233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.07-articles-30702d1",
+      "observed_allocated_bytes": 20393984,
+      "observed_directory_mtime": "2026-10-11T21:02:03.959233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.09-articles-f57191b",
+      "observed_allocated_bytes": 20344832,
+      "observed_directory_mtime": "2026-10-11T21:02:03.924233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.10-articles-3ec0a33",
+      "observed_allocated_bytes": 27783168,
+      "observed_directory_mtime": "2026-10-11T21:02:03.933233+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.11-culture-2e3516f",
+      "observed_allocated_bytes": 92782592,
+      "observed_directory_mtime": "2026-10-11T21:01:28.192973+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.11-culture-486901a",
+      "observed_allocated_bytes": 92766208,
+      "observed_directory_mtime": "2026-10-11T21:01:28.191972+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.11-culture-ba80671",
+      "observed_allocated_bytes": 92770304,
+      "observed_directory_mtime": "2026-10-11T21:01:28.193973+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.11-encore-317b339",
+      "observed_allocated_bytes": 92889088,
+      "observed_directory_mtime": "2026-10-11T21:01:28.187973+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.11-planets-d228c9e",
+      "observed_allocated_bytes": 93016064,
+      "observed_directory_mtime": "2026-10-11T21:01:28.161973+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.14-acting-craft-83748f5",
+      "observed_allocated_bytes": 254234624,
+      "observed_directory_mtime": "2026-10-13T23:17:35.279074+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.14-mixed-ecac092",
+      "observed_allocated_bytes": 182882304,
+      "observed_directory_mtime": "2026-10-14T12:02:34.891619+00:00"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.14-screen-song-6866608",
+      "observed_allocated_bytes": 254459904,
+      "observed_directory_mtime": "2026-10-14T03:03:05.452641+00:00"
+    }
+  ],
+  "observed_candidate_allocated_total_bytes": 2231140352,
+  "candidate_count": 28,
+  "planning_target_met_by_estimate": false,
+  "additional_estimated_bytes_needed": 217414042,
+  "all_eligible_historical_directories_count": 28,
+  "selection_rule": "Exact currently observed regular directories named quiz-2026.10.02 through14; oldest names first until observed allocation exceeds target. All October15 and later plus known Library09b19cc/failedReader17be4ce rollback directories excluded. This is not a deletion allowlist. If pool falls short, additional reviewed capacity is required.",
+  "protected": [
+    "All /opt/quiz-master/backups including published Country483 backup and restoreproof",
+    "Known rollback directories quiz-2026.10.14-library-09b19cc and quiz-2026.10.14-reader-17be4ce",
+    "Every October15+ release and current/rollback packages",
+    "All /opt/quiz-master/secrets, DEPLOY.lock, current PVC, runtime DB, Helm and services",
+    "Frozen NVN source/build/input/runtime evidence",
+    "All Docker/containerd loaded identities, images and unrelated projects/resources"
+  ],
+  "required_before_remote_mutation": [
+    "Genuine different-provider review of new exact source/input plan; native draft review cannot authorize cleanup.",
+    "Fresh file-level NOFOLLOW fingerprints, private-content-safe whole-tree manifest, journal/open-descriptor checks and protected-resource proofs.",
+    "Copy first to private cold storage outside server; verify every payload, tree metadata, archive checksum and an actual isolated restore. Do not allocate a large temporary archive on low-space server.",
+    "Fresh valid current64 preflight, exact ownership/quiescence and project deployment lock; no unproven retarget of older current63/current61 controllers.",
+    "Exact approved remove algorithm and fail-closed tests for directories, nested symlinks/hardlinks/path traversal. Existing regular-file-only eight-archive controller must not be extended by changing its paths.",
+    "After operation actual strict20percent+1GiB, allowedgrowth bound, protectedfiles/loadedimages/29feedback/productionhealth unchanged. No publication inferred."
+  ],
+  "remote_copy_or_unlink_attempted": false,
+  "cause_of_global_disk_growth": "not established; top-level observations are not attribution to another project"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "qm-disk-headroom-proposal-review/v1",
+  "status": "accepted_for_proposal_only",
+  "reviewer": {
+    "packet_label": "disk-headroom-proposal-reviewer-20261016",
+    "hub_session_id": "session-c86f0841df114f9c8869f5b502458a2c",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-5ddd3dd27d464ae0ab1e76f20de8bbd0",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/DISK_HEADROOM_20261016/proposal.json",
+    "sha256": "edef4994d488f4c2894d7a3c6cde9b86f2be396155bf7998704adfe96f9f8b70"
+  },
+  "reviewed_at": "2026-10-16",
+  "verdict": "accepted_for_proposal_only",
+  "checked_claims": [
+    {
+      "claim": "Frozen disk observation and strict-floor math",
+      "evidence": "19,175,731,200 / 102,417,174,528 = 18.723% to three decimals. Strictly exceeding total/5 requires 20,483,434,906 integer available bytes; the resulting deficit is 1,307,703,706 bytes.",
+      "verdict": "supported"
+    },
+    {
+      "claim": "Planning target and candidate total",
+      "evidence": "1,307,703,706 + 1,073,741,824 + 67,108,864 = 2,448,554,394 bytes. The 28 proposed directory estimates total 2,231,140,352 bytes, leaving an exact 217,414,042-byte shortfall.",
+      "verdict": "supported_but_insufficient"
+    },
+    {
+      "claim": "Candidate selection and protections",
+      "evidence": "The proposal enumerates only observed October 02-14 release directories and explicitly excludes Library09b19cc, failedReader17be4ce, every October15+ release, backups, current/rollback files, secrets, PVC, frozen inputs, loaded images, and unrelated resources.",
+      "verdict": "supported_as_selection_scope_only"
+    },
+    {
+      "claim": "Earlier-controller authority",
+      "evidence": "ARCHIVE_OFFLOAD_20261015 is limited to eight copied regular image tar files and refuses directories. COUNTRY483 capacity worker is a separate pinned backup-alias plan using historical current63 assumptions. Neither source authorizes this current64 directory-tree proposal.",
+      "verdict": "not_transferable"
+    },
+    {
+      "claim": "Global disk-growth attribution",
+      "evidence": "The inventory gives top-level observations only. Neither it nor the proposal establishes the cause of global disk growth.",
+      "verdict": "not_established"
+    }
+  ],
+  "observed_evidence": {
+    "frozen_available_percent": 18.723,
+    "latest_health_percent": 18.7,
+    "frozen_available_bytes": 19175731200,
+    "disk_total_bytes": 102417174528,
+    "strict20_deficit_bytes": 1307703706,
+    "planning_target_bytes": 2448554394,
+    "candidate_directory_count": 28,
+    "candidate_estimated_bytes": 2231140352,
+    "target_shortfall_bytes": 217414042,
+    "proposal_target_met_by_estimate": false,
+    "remote_copy_or_unlink_attempted": false,
+    "production_refresh_exit": 1,
+    "diagnostic_exit": 0,
+    "latest_health_observational_only": true
+  },
+  "limitations": [
+    "Directory-level allocated-byte estimates are not fresh payload fingerprints and do not prove reclaimable bytes.",
+    "No file-tree manifest, no-follow identity proof, copy receipt, payload/metadata/hash verification, isolated restore, quiescence/lock, current64 preflight, or approved removal implementation exists for this folder set.",
+    "No remote command, copy, unlink, cleanup, browser, child process, vendor retry, or runtime change was performed during this review.",
+    "The review is native and private; it cannot substitute for the required genuine different-provider source/input review."
+  ],
+  "required_before_any_operation": [
+    "Add and independently review enough eligible capacity to meet the strict deficit plus 1 GiB reserve and 64 MiB growth allowance.",
+    "Obtain fresh exact file-tree fingerprints, protected-resource proof, a private external copy, whole-payload/metadata/hash validation, and an isolated restore.",
+    "Use a fail-closed reviewed directory-tree implementation with no-follow handling for symlinks, hardlinks, traversal, and protected paths.",
+    "Bind a current64 preflight, project lock/quiescence, genuine different-provider source/input acceptance, and post-operation reserve/growth/protection/runtime/feedback/image proof."
+  ],
+  "release_boundary": "accepted_for_proposal_only is not executable cleanup, source/input approval, deletion authority, remote-command approval, release approval, or publication approval."
+}
