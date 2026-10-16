@@ -1,0 +1,87 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "accepted_for_draft",
+  "reviewer": {
+    "packet_label": "stewart-deniro-blind-reviewer-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-664a4f49b0554c11bf0174cb51247f04",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/STEWART_DENIRO_ARTICLES_20261016/articles-continuation.json",
+    "sha256": "ec352fbd930fed19b9bb52372cfdf5d360a6f54ad3feedf79a6daf42ae6bc2fb"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "structural_evidence": "Two draft continuation articles; historical scope preserved by continuation-scope.json; exact public question revisions; existing required tags; two displayed primary links each; whitespace word counts 208 and 220.",
+    "method": "Blind-solved the two public candidate questions from directly opened AFI catalog pages before reading research, articles, or keys. After the blind reports were committed, opened all four exact displayed article links and checked full bodies, role bindings, factual qualifiers, unique-answer ambiguity, source relevance, and the frozen raw file hash."
+  },
+  "items": [
+    {
+      "id": "question:prep-film-actors2-025",
+      "question_revision_sha256": "5df2e3cdf016fb65dbe9fe971076fd5d8a87ca9272b5e4af8724da97f21679b2",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-025-opt-3",
+        "text": "Джеймс Стюарт"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The displayed AFI Catalog page credits James Stewart as George Bailey, Donna Reed as Mary, Lionel Barrymore as Mr. Potter, and Henry Travers as Clarence.",
+        "AFI supports Stern's 1943 Christmas-card distribution of The Greatest Gift, Cary Grant's early connection, the RKO-to-Liberty project history, Stewart's first film after wartime service, Liberty Films' first production, Capra's direction, and the credited Goodrich/Hackett/Capra screenplay.",
+        "The displayed AFI spotlight supports the RKO Ranch/Encino Bedford Falls set, its three-block Main Street and 75 buildings, and the heat wave during winter-scene shooting."
+      ],
+      "distractor_review": "Donna Reed played Mary, Lionel Barrymore played Mr. Potter, and Henry Travers played Clarence. James Stewart alone played George Bailey; the stated film year rules out no competing screen version within the question.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/27682",
+          "title": "AFI Catalog: It's a Wonderful Life (1946)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.afi.com/news/its-a-wonderful-life-afi-catalog-spotlight/",
+          "title": "IT'S A WONDERFUL LIFE – AFI Catalog Spotlight",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-actors2-026",
+      "question_revision_sha256": "18d50a7c5612464e6745728953f450d889df50fefe821b2d56d793202fd0c40b",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-026-opt-4",
+        "text": "Роберт Де Ниро"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "The exact displayed AFI Catalog URL opens and credits Robert De Niro as Michael [Vronsky], Christopher Walken as Nick, John Savage as Steven, and John Cazale as Stan.",
+        "AFI supports the Clairton steel-town setup, the pre-war wedding and hunting sequence, the St. Theodosius Cathedral and Mount Baker locations, and Thailand/Bangkok representing Saigon.",
+        "The official 51st Academy Awards ledger lists The Deer Hunter's five wins—Best Picture, Directing, Supporting Actor, Film Editing, and Sound—plus Walken's supporting-actor win and De Niro's leading-actor nomination."
+      ],
+      "distractor_review": "Christopher Walken played Nick, John Savage played Steven, and John Cazale played Stan. Robert De Niro alone played Michael Vronsky, so the question has one best answer rather than merely a cast-membership clue.",
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/55192",
+          "title": "AFI Catalog: The Deer Hunter (1978)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        },
+        {
+          "url": "https://www.oscars.org/oscars/ceremonies/1979",
+          "title": "The 51st Academy Awards | 1979",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [
+        {
+          "url": "https://catalog.afi.com/Catalog/moviedetails/55192",
+          "reason": "AFI's history paragraph enumerates four Academy wins and omits Film Editing, although the displayed official Academy ledger confirms all five. The article's five-win statement is supported by its separately displayed Academy source."
+        }
+      ]
+    }
+  ],
+  "release_boundary": "Both items are accepted_for_draft through independent native review. This report does not state or imply external-provider approval, export, release, or publication."
+}

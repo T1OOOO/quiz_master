@@ -1,0 +1,48 @@
+{
+  "schema_version": "qm-question-blind-review/v1",
+  "status": "blind_complete",
+  "reviewer": {
+    "packet_label": "stewart-deniro-blind-reviewer-20261016",
+    "hub_session_id": "session-e3a21f77010a4ee1bd02c387c6067dbd",
+    "runtime_identity": "openai/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-664a4f49b0554c11bf0174cb51247f04",
+  "method": "Read candidate-questions.json only, then independently opened AFI primary catalog sources before reading research, drafts, or local keys.",
+  "items": [
+    {
+      "id": "question:prep-film-actors2-025",
+      "question_revision_sha256": "5df2e3cdf016fb65dbe9fe971076fd5d8a87ca9272b5e4af8724da97f21679b2",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-025-opt-3",
+        "text": "Джеймс Стюарт"
+      },
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Catalog/MovieDetails/27682",
+          "title": "AFI Catalog: It's a Wonderful Life (1946)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "uniqueness": "AFI assigns Stewart to George Bailey; Reed is Mary Hatch Bailey, Barrymore is Mr. Potter, and Travers is Clarence Oddbody."
+    },
+    {
+      "id": "question:prep-film-actors2-026",
+      "question_revision_sha256": "18d50a7c5612464e6745728953f450d889df50fefe821b2d56d793202fd0c40b",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-026-opt-4",
+        "text": "Роберт Де Ниро"
+      },
+      "sources_opened": [
+        {
+          "url": "https://catalog.afi.com/Film/55192-THE-DEERHUNTER",
+          "title": "AFI Catalog: The Deer Hunter (1978)",
+          "accessed": "2026-10-16",
+          "status": "opened"
+        }
+      ],
+      "uniqueness": "AFI assigns De Niro to Michael Vronsky; Walken is Nick, Savage is Steven, and Cazale is Stan."
+    }
+  ],
+  "release_boundary": "Blind review is private draft evidence only; it does not establish publication, release, or external acceptance."
+}
