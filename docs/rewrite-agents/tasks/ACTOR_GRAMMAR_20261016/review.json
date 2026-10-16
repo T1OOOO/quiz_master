@@ -1,0 +1,52 @@
+{
+  "schema_version": "qm-native-russian-grammar-review/v1",
+  "reviewed_at": "2026-10-16",
+  "reviewer": {
+    "provider": "codex",
+    "session_id": "session-5f6ab83756a04d6c8a05132aad839178",
+    "scope": "same-provider linguistic editorial review only; not external acceptance"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/ACTOR_GRAMMAR_20261016/proposals.json",
+    "sha256": "29beb8886db0e092d24415536d5732d94eab41a0b64dd16b603fd3fcdbde75ec"
+  },
+  "input_snapshot": {
+    "path": "docs/rewrite-agents/tasks/ACTOR_GRAMMAR_20261016/public-stems.json",
+    "sha256": "eca1392827b0cd581495af18a6f10ab0f8901870c7e4248d793bdef43dddafbd",
+    "questions": 40
+  },
+  "overall_verdict": "accepted_for_proposals_only",
+  "checks": {
+    "all_40_ids_accounted": true,
+    "all_40_public_revisions_match": true,
+    "before_text_matches_public_snapshot": true,
+    "titles_years_and_character_identities_unchanged": true,
+    "minimal_case_only_changes": true,
+    "accepted_changes": 32,
+    "accepted_unchanged": 8,
+    "uncertain_forms": []
+  },
+  "per_item_verdicts": {
+    "accept_change": [
+      "prep-film-actors2-002", "prep-film-actors2-003", "prep-film-actors2-005", "prep-film-actors2-006",
+      "prep-film-actors2-007", "prep-film-actors2-008", "prep-film-actors2-009", "prep-film-actors2-010",
+      "prep-film-actors2-011", "prep-film-actors2-013", "prep-film-actors2-014", "prep-film-actors2-016",
+      "prep-film-actors2-018", "prep-film-actors2-019", "prep-film-actors2-020", "prep-film-actors2-021",
+      "prep-film-actors2-022", "prep-film-actors2-024", "prep-film-actors2-025", "prep-film-actors2-026",
+      "prep-film-actors2-027", "prep-film-actors2-028", "prep-film-actors2-029", "prep-film-actors2-032",
+      "prep-film-actors2-033", "prep-film-actors2-034", "prep-film-actors2-035", "prep-film-actors2-036",
+      "prep-film-actors2-037", "prep-film-actors2-038", "prep-film-actors2-039", "prep-film-actors2-040"
+    ],
+    "accept_unchanged": [
+      "prep-film-actors2-001", "prep-film-actors2-004", "prep-film-actors2-012", "prep-film-actors2-015",
+      "prep-film-actors2-017", "prep-film-actors2-023", "prep-film-actors2-030", "prep-film-actors2-031"
+    ]
+  },
+  "linguistic_basis": "In 'кто сыграл ...?' the animate character expression takes accusative. The proposals correctly inflect declinable masculine and feminine character forms while leaving the presented invariant forms unchanged.",
+  "publication_status": "private_proposals_pending_different_provider_review_and_revision_safe_integration",
+  "out_of_scope": [
+    "factual correctness, answer keys and options",
+    "canonical question files, runtime assets, NVN inputs and exports",
+    "publication, deployment and external acceptance"
+  ]
+}
