@@ -1,0 +1,222 @@
+{
+  "schema_version": "qm-question-article-review/v1",
+  "status": "done_with_concerns",
+  "reviewer": {
+    "packet_label": "cinema-character-checker-20261016",
+    "hub_session_id": "session-1988a0bc654c48a9a339623f050dd76f",
+    "runtime_identity": "codex/gpt-6.1-sol"
+  },
+  "hub_task_id": "task-6f75128aa5cf4b36a3b63239f576793c",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/CINEMA_CHARACTER_ARTICLES_20261016/articles.json",
+    "sha256": "8baaa3f52d47dd3914f22303f43e86754a22c9778eff21658faba3ec62833ff1"
+  },
+  "reviewed_at": "2026-10-16",
+  "review_scope": {
+    "article_count": 4,
+    "structural_checks": [
+      "exact current public question revisions",
+      "status draft",
+      "existing tags only",
+      "150-220 Russian whitespace words per article",
+      "2-5 source links per article",
+      "source metadata present"
+    ],
+    "source_outcome": "8 cited links opened; 1 cited link timed out; its same-provider canonical AFI record opened"
+  },
+  "word_count_method": "Whitespace-delimited tokens over each complete rendered article body, including headings; frozen counts are 191, 196, 195, and 192 for questions 007-010.",
+  "claim_limits": "This review tests stated draft claims against the opened cited pages, not every production anecdote or a broader critical consensus. The sole access limitation is the timed-out 007 AFI source URL recorded in that item.",
+  "items": [
+    {
+      "id": "prep-film-actors2-007",
+      "question_revision_sha256": "e9c0453e6ea5461a695d495251e7d0d42c9227366f4dbb0fd77835f14f87d0f9",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-007-opt-2",
+        "text": "Том Хэнкс"
+      },
+      "verdict": "revise",
+      "checked_claims": [
+        {
+          "claim": "Tom Hanks plays adult Forrest; Michael Conner Humphreys plays young Forrest; Robin Wright and Gary Sinise play Jenny and Lt. Dan.",
+          "result": "supported",
+          "sources": [
+            "AFI Catalog, Forrest Gump (1994), canonical record"
+          ]
+        },
+        {
+          "claim": "The article's Groom/Roth credits, Savannah bench, South Carolina Vietnam locations, historical-footage compositing, digital ping-pong balls and Lt. Dan effects are factual production information.",
+          "result": "supported",
+          "sources": [
+            "AFI Catalog, Forrest Gump (1994), canonical record"
+          ]
+        },
+        {
+          "claim": "Hanks won the 1995 Academy Award for Actor in a Leading Role for Forrest Gump.",
+          "result": "supported",
+          "sources": [
+            "The 67th Academy Awards (1995)"
+          ]
+        }
+      ],
+      "distractor_review": "The intended clue asks for the adult lead. Michael Conner Humphreys is young Forrest; Robin Wright and Gary Sinise play different characters. Tom Hanks is the single best answer.",
+      "sources_opened": [
+        {
+          "title": "The 67th Academy Awards (1995)",
+          "url": "https://www.oscars.org/oscars/ceremonies/1995/memorable-moments",
+          "status": "opened"
+        },
+        {
+          "title": "AFI Catalog: Forrest Gump (1994), canonical record",
+          "url": "https://catalog.afi.com/Catalog/moviedetails/55201",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [
+        {
+          "url": "https://catalog.afi.com/Film/55201-FORREST-GUMP",
+          "status": "opened_failed",
+          "reason": "Direct inspection timed out. The same AFI record opened at the canonical catalog URL above."
+        }
+      ],
+      "required_rework": "Replace the timed-out AFI URL with https://catalog.afi.com/Catalog/moviedetails/55201, then freeze a new draft revision and recheck the source link."
+    },
+    {
+      "id": "prep-film-actors2-008",
+      "question_revision_sha256": "2c9b9cd0f29963bd7582f16e76a6c1e5fb3596b27a462b94c94509e98bea3714",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-008-opt-3",
+        "text": "Джек Николсон"
+      },
+      "verdict": "accept",
+      "checked_claims": [
+        {
+          "claim": "Nicholson plays Jack Torrance in Kubrick's 1980 film, with Duvall as Wendy and Lloyd as Danny; the plot's winter caretaker, Overlook, writing, isolation, and Hallorann/shining framing are supported.",
+          "result": "supported",
+          "sources": [
+            "AFI Catalog: The Shining (1980)",
+            "StephenKing.com: The Shining (film)"
+          ]
+        },
+        {
+          "claim": "Kubrick and Diane Johnson's screenplay credit, the 1997 Mick Garris/Steven Weber television adaptation, and the removal of the Wendy/manager epilogue are supported.",
+          "result": "supported",
+          "sources": [
+            "AFI Catalog: The Shining (1980)"
+          ]
+        }
+      ],
+      "distractor_review": "Shelley Duvall and Danny Lloyd are credited in different roles. Steven Weber is Jack Torrance in the 1997 television miniseries, not Kubrick's 1980 film. Jack Nicholson is uniquely correct.",
+      "sources_opened": [
+        {
+          "title": "AFI Catalog: The Shining (1980)",
+          "url": "https://catalog.afi.com/Catalog/moviedetails/67203",
+          "status": "opened"
+        },
+        {
+          "title": "StephenKing.com: The Shining (film)",
+          "url": "https://stephenking.com/works/movie/shining.html",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [],
+      "required_rework": null
+    },
+    {
+      "id": "prep-film-actors2-009",
+      "question_revision_sha256": "02d0ecb7bef213a43708693f984ee89ee32cb074bfc6cc067fe275cbd417ec06",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-009-opt-2",
+        "text": "Генри Томас"
+      },
+      "verdict": "accept",
+      "checked_claims": [
+        {
+          "claim": "Henry Thomas plays Elliott in Spielberg's 1982 film; the returning-home premise and Melissa Mathison/John Williams credits are supported.",
+          "result": "supported",
+          "sources": [
+            "AFI Catalog: E.T. the Extra-Terrestrial (1982)",
+            "Academy event: E.T. The Extra-Terrestrial"
+          ]
+        },
+        {
+          "claim": "The animatronics/sound account, Ben Burtt's E.T. voice, three Laird sound stages, and the working titles A Boy's Life and E.T. and Me are supported.",
+          "result": "supported",
+          "sources": [
+            "Academy event: E.T. The Extra-Terrestrial",
+            "AFI Catalog: E.T. the Extra-Terrestrial (1982)"
+          ]
+        }
+      ],
+      "distractor_review": "Drew Barrymore, Peter Coyote, and Robert MacNaughton are other credited performers/roles. The Elliott clue identifies Henry Thomas alone.",
+      "sources_opened": [
+        {
+          "title": "AFI Catalog: E.T. the Extra-Terrestrial (1982)",
+          "url": "https://catalog.afi.com/Catalog/moviedetails/67140",
+          "status": "opened"
+        },
+        {
+          "title": "Academy event: E.T. The Extra-Terrestrial",
+          "url": "https://www.oscars.org/events/et-extra-terrestrial",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [],
+      "required_rework": null
+    },
+    {
+      "id": "prep-film-actors2-010",
+      "question_revision_sha256": "68ce1528622f3f5d37f21f28c0aeb54895933868baf29f2986d5bd70ff5aaf19",
+      "blind_answer": {
+        "option_id": "prep-film-actors2-010-opt-2",
+        "text": "Чедвик Боузман"
+      },
+      "verdict": "accept",
+      "checked_claims": [
+        {
+          "claim": "Ryan Coogler directed the 2018 film; Chadwick Boseman plays T'Challa, and the article accurately identifies fictional Wakanda, Killmonger/Klaue, Okoye/Shuri/Everett Ross, and Wakanda's concealed technology.",
+          "result": "supported",
+          "sources": [
+            "BFI: Black Panther (2018)",
+            "BFI interview: Black Panther and Bond: Ryan Coogler on his influences",
+            "Academy event: The Art of Costume Design in Black Panther"
+          ]
+        },
+        {
+          "claim": "Ruth Carter's Afrofuturist blend of traditional and modern references, handmade and 3D-printed elements, and Costume Design Academy Award are supported.",
+          "result": "supported",
+          "sources": [
+            "Academy event: The Art of Costume Design in Black Panther"
+          ]
+        },
+        {
+          "claim": "The article presents the Mali and other references as Coogler's creative influences rather than as evidence that Wakanda is real.",
+          "result": "supported",
+          "sources": [
+            "BFI interview: Black Panther and Bond: Ryan Coogler on his influences"
+          ]
+        }
+      ],
+      "distractor_review": "Michael B. Jordan, Martin Freeman, and Winston Duke portray Killmonger, Everett Ross, and M'Baku respectively. They are plausible cast distractors but do not play T'Challa; Boseman is uniquely correct.",
+      "sources_opened": [
+        {
+          "title": "Academy event: The Art of Costume Design in Black Panther",
+          "url": "https://www.oscars.org/events/art-costume-design-black-panther-2018",
+          "status": "opened"
+        },
+        {
+          "title": "BFI: Black Panther (2018)",
+          "url": "https://www.bfi.org.uk/film/4ff2b7f1-f3e5-5eb8-b2a7-80c9623cd627/black-panther",
+          "status": "opened"
+        },
+        {
+          "title": "BFI interview: Black Panther and Bond: Ryan Coogler on his influences",
+          "url": "https://www.bfi.org.uk/interviews/black-panther-bond-ryan-coogler-influences",
+          "status": "opened"
+        }
+      ],
+      "source_limits": [],
+      "required_rework": null
+    }
+  ],
+  "release_boundary": "This review records source and draft findings only. It does not report external-provider acceptance, export, release, or publication."
+}

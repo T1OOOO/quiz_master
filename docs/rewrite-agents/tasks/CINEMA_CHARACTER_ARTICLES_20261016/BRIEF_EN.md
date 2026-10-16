@@ -1,0 +1,9 @@
+# Four character-linked cinema articles
+
+Root owns articles.json, snapshots, scope, validation, key integrity, final report, Beads and Git. Source researcher owns SOURCES_EN.md and sources.json. Independent checker owns REVIEW_EN.md and review.json. Preserve all other work. No canonical/runtime/registered export/frozen NVN edits.
+
+Read the actual public candidates: actor/role questions for Forrest Gump (1994), The Shining (1980), E.T. (1982) and Black Panther (2018), IDs007–010. Root writes four original Russian mini articles of150–220 words including headings: a brief precise credit, meaningful premise/setting and compelling supported story/history/craft context. Avoid repeated exam-tip padding, broad licensing digressions, unsupported awards totals and confusion with alternate adaptations. Include2–5 actually inspected primary links with title, concrete supports and accessed2026-10-16. Existing tags: domain:arts, domain:screen, topic:actors.
+
+The checker independently solves public options before reading the research brief or Root articles, then inspects every substantive claim at the actual final SHA. Root compares blind answers with authorized local legacy keys afterwards; keys never enter public DTOs. Native accepted_for_draft is not different-provider release acceptance. Current runtime Reader303 and NVN inputs stay frozen; no server upload until actual release gates pass.
+
+This new team continues after the previous lead MCP session disconnected and could not hand off. It does not reset pending vendor gates. Claude's actual weekly quota failure and Gemini's actual insufficient-credit failure remain unchanged; do not retry from optimistic metadata. Queue waiting is waived only for Quiz Master by the user; exclusive ownership and3-actual-turn bounded concurrency remain. No GitHub Actions, child agents or per-worker schedulers.
