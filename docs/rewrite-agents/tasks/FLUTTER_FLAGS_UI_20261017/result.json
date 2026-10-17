@@ -1,0 +1,33 @@
+{
+  "status": "pass_local_flutter_media_scope_only_pending_native_review",
+  "reported_question": "flag-c51d4e8",
+  "before": "reported-broken-mobile.png",
+  "after_mobile": "reported-mobile.png",
+  "after_desktop": "reported-desktop.png",
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1280,
+      960
+    ]
+  ],
+  "root_viewed_saved_screenshots": true,
+  "media_uris_original_in_payload": true,
+  "browser_transport_redirection_test_only": true,
+  "historical_qa_build_not_current_production": true,
+  "frozen_inputs_and_qa_files_unchanged_after": true,
+  "owned_browser_closed": true,
+  "owned_api_and_proxy_ports_closed": true,
+  "production_published": false,
+  "feedback_closed": 0,
+  "different_provider_acceptance": false,
+  "release_gates": "still blocked: different-provider acceptance and server disk >20% floor",
+  "limitations": [
+    "No current candidate build",
+    "No production nginx delivery proof",
+    "No Android or accessibility acceptance"
+  ]
+}

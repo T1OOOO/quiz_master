@@ -1,0 +1,51 @@
+{
+  "schema_version": "qm-native-evidence-review/v1",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-ed24806adbde4e3db173e86920819ddf",
+    "task_id": "task-1dedd7c6c99c48408ab48befe5a7df1f",
+    "run_id": "run-f0f2bb83b4a24f8da9bb83fec54ca8b1"
+  },
+  "requirements_compliance": "ACCEPT_LOCAL_FLUTTER_MEDIA_SCOPE_ONLY",
+  "code_quality": "ACCEPT_BOUNDED_QA_HARNESS",
+  "actionable_findings": [],
+  "review_inputs_sha256": "477308c27e65535313955b9d3ef889bcb147468d540d1ffa11b8efa4041ddd7f",
+  "evidence_files_checked": 135,
+  "evidence_hash_mismatches": [],
+  "frozen_web_files_checked": 74,
+  "frozen_web_hash_mismatches": [],
+  "immutable_api_sha256": "28995a288b5c2c27ae5740b4e36f25a87f3c5a3cd8b1b028fc5004cf226450f0",
+  "reported_question_id": "flag-c51d4e8",
+  "display_fields_match_public_snapshot": true,
+  "fixture_revision_matches_public_snapshot": false,
+  "public_snapshot_sha256": "1ca873bf223f13f69eb5ab30886a40d23f3817e2ee50f1f87d59ee68a9e24b4f",
+  "local_catalog_sha256": "1dc2fb653dbb71445ed7a4181657d933276008b2ed3d3d1e1207adb4bf187e47",
+  "transport": "xhr",
+  "transport_override_changes_public_payload_or_grading": false,
+  "viewed_screenshots": [
+    "broken-ui.png",
+    "reported-broken-mobile.png",
+    "reported-mobile.png",
+    "reported-desktop.png"
+  ],
+  "same_question_negative_and_positive_confirmed": true,
+  "verified_viewports": [[390, 844], [1280, 960]],
+  "cleanup": {
+    "saved_browser_close_success": true,
+    "saved_api_intentional_stop_exit": 1,
+    "ports_closed": "Root-reported in result.json and later self-checks.json for 19090/19093; not independently probed"
+  },
+  "reviewer_execution": ["read-only file and JSON inspection", "SHA-256 recomputation", "saved PNG viewing"],
+  "not_run": ["browser", "server", "tests", "build", "vendor CLI", "production probe", "Android", "accessibility check", "live cleanup probe"],
+  "limitations": [
+    "Historical frozen QA build and API, with different question revision metadata from public snapshot",
+    "No production nginx, container or current candidate verification",
+    "No independent scoring-correctness claim from status-only request logs",
+    "Initial setup failures and mislabeled negative capture are documented in run-notes.json",
+    "Saved production observation fails strict 20% disk floor"
+  ],
+  "different_provider_acceptance": false,
+  "production_release_accepted": false,
+  "feedback_closure_accepted": false
+}

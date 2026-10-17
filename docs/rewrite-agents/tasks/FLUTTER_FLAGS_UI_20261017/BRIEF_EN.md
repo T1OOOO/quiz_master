@@ -1,0 +1,7 @@
+# Actual Flutter flag rendering, isolated QA
+
+Continue the reported missing-flag reproduction with the frozen .run/nvn_footer_20261016/qa-web Flutter release build and an existing immutable Windows Go QA API binary. New work is under E:/Projects/quiz_master. C:/ap/quiz_master is now a junction to this root, not a separate checkout. Never edit historical frozen inputs, old receipts, runtime reader, or active foreign Flutter/Go WIP. No production mutation, feedback closure, release candidate/archive, external provider retry, or publication. Root owns QA fixture execution and named browser; helpers own disjoint reports only.
+
+A scoped exploratory helper first identifies the existing smallest fixture generation recipe and image transport. Own EXPLORATION_EN.md only after actual Hub offer/accept. Read-only source/artifact/metadata inspection; no compile, browser, server, children or vendorCLI. Existing .run/country483_runtime_20261015/fixture/server.py is reference only, do not execute its old ports/DB/stop paths.
+
+Later independent reviewer owns REVIEW_EN.md/review.json only. Inspect exact inputs, executed browser evidence, screenshots, negative control and all limitations. Native fixture acceptance is not nginx/container/published verification or different-provider release acceptance. No browser/build/tests by reviewer. Root records actual paths, hashes, statuses and cleanup.

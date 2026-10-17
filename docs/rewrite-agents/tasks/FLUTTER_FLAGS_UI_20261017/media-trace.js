@@ -1,0 +1,1 @@
+(() => { if (!window.__qmMediaQA) throw Error('QA instrumentation absent'); return {url:location.href, viewport:{width:innerWidth,height:innerHeight}, mode:window.__qmMediaQA.mode, requests:window.__qmMediaQA.requests}; })()
