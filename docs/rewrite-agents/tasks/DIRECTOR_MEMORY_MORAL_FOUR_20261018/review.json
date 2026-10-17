@@ -1,0 +1,156 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_MEMORY_MORAL_FOUR_20261018",
+  "hub_task_id": "task-1ad1e3b9392c4b3b9e9e473b93dbd807",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-18",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-71f004c5f43e412eafef471901b669c3"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "9582da34aec6c70522717456da4380509db5ec61b24a2727e0a23e182a39dd9a"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "00cfd4cf450cf3a66556b5e2889bc9084cb051785b1e7d0bb7aa679f1f2ba1d1"
+  },
+  "blind_answer_sha256": "d357b75bfd8dec6130cf1e0999b1a6ac93c766d9d16b78743644260ecfced18f",
+  "ordering": {
+    "candidate_first": true,
+    "new_independent_solve": true,
+    "inherited_blind": false,
+    "answers_frozen_before_article_and_writer_sources_access": true,
+    "private_canonical_keys_read": false,
+    "article_review_after_exact_writer_freeze": true
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-19",
+      "question_revision_sha256": "1a68f616dc2999cbb603f168056c76a28841fe9eaacb0744507654a55b742e28",
+      "blind_answer": {
+        "option_id": "prep-film-directors-19-opt-4",
+        "text": "Лариса Шепитько"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 192,
+      "checked_claims": [
+        "Mosfilm release-date field and BFI catalogue both display1976, with Shepitko directing and Klepikov/Shepitko writing. Article attributes these records without asserting exact premiere/completion or invalidating other year fields.",
+        "Bykov's Sotnikov as literary basis,1942occupiedBelarus, partisan provisions, capture/interrogation/torture and Schnittke music match studio record."
+      ],
+      "distractor_review": "Muratova, Asanova and Surikova are not the credited director. Exact dated title has one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Coercion/choice exercise separates demands, response and foreseeable consequences while allowing missing information and differing justified judgements.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/voskhozhdenie/",
+        "https://www.bfi.org.uk/film/e560b4da-20f1-5a08-8014-af61dd2903d9/the-ascent"
+      ],
+      "source_limits": [
+        "Two institutionally distinct sources support the specified shared credits/year; each page's additional claims remain limited to its own text.",
+        "No exact production-completion or premiere date established."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-20",
+      "question_revision_sha256": "dc2d167845bb20512beef7487e135f13b7abbbf696a98efdba49c9c0c7c52246",
+      "blind_answer": {
+        "option_id": "prep-film-directors-20-opt-3",
+        "text": "Андрей Тарковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 195,
+      "checked_claims": [
+        "1972work, Tarkovsky directing, Lem novel, Tarkovsky/Gorenshtein screenplay, Artemyev music and Yusov cinematography match studio credits.",
+        "Kelvin's station, unexplained events, deceased wife Hari and materialization as an open source question match synopsis; no other adaptation imported."
+      ],
+      "distractor_review": "Kalatozov, Khutsiev and Kozintsev are not the credited director. Exact dated title has one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Observation/hypothesis/emotion exercise stays interpretive, not scientific memory theory or documented intention.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/solyaris/"
+      ],
+      "source_limits": [
+        "One institutional source supports bounded article; no second institutional corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-21",
+      "question_revision_sha256": "fe55c3fd30b65ea7237cc1a580a67bdef0ffd6f37924fd22d7d0392e05293b9c",
+      "blind_answer": {
+        "option_id": "prep-film-directors-21-opt-3",
+        "text": "Орсон Уэллс"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 200,
+      "checked_claims": [
+        "BFI explicitly supports1941, Welles director/producer and co-writer with Herman J.Mankiewicz, and Welles playing Charles Foster Kane.",
+        "Inherited wealth/newspaper, power theme, nonchronological narration and fictionalized portrait are supported. Film is not presented as documentary biography."
+      ],
+      "distractor_review": "Wilder, Ford and Hitchcock are not the credited director. Exact dated title has one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Two-sequence exercise distinguishes event order and disclosure order without inventing scenes or imposing moral verdict.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/f4c92833-af39-5cd6-a41e-8df5933d0dc1/citizen-kane"
+      ],
+      "source_limits": [
+        "One institutional source supports bounded article; no second institutional corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-22",
+      "question_revision_sha256": "c174de7d7bc486ecb7d741bec54eaa31c1b7ca265e5b962f3bd0770e4436f4c2",
+      "blind_answer": {
+        "option_id": "prep-film-directors-22-opt-4",
+        "text": "Фрэнсис Форд Коппола"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "Exact Paramount.com film page and AFI support1972, Coppola director and Coppola/Puzo screenplay; studio directly identifies Puzo novel basis.",
+        "Studio synopsis supports Corleone family/crime/power and explicit cast entry MarlonBrando=DonVitoCorleone. Correct1972firstfilm, not sequel/revisedversion."
+      ],
+      "distractor_review": "Scorsese, Lumet and DePalma are not the credited director. Exact dated title has one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Help/loyalty/obligation exercise separates evidence and inference, avoiding universal family or documentary criminal-sociology claims.",
+      "sources_opened": [
+        "https://www.paramount.com/movies/the-godfather",
+        "https://catalog.afi.com/Catalog/moviedetails/54023"
+      ],
+      "source_limits": [
+        "Two institutionally distinct sources support the specified shared credits/year; each page's additional claims remain limited to its own text."
+      ]
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 6,
+    "total_cited_urls": 6,
+    "retrieval": "All six exact final URLs successfully opened and relevant supporting text read independently on2026-10-18. Mosfilm2andBFIKane read during blind phase; BFIAscent,Paramount.com andAFI read afterwriterfreeze.",
+    "failed_final_cited_retrievals": [],
+    "earlier_discovery_failure": {
+      "url": "https://www.paramountpictures.com/movies/the-godfather",
+      "result": "Blind-phase actual open redirected to corporate https://www.paramount.com/ and did not supply supporting film text; not used as evidence."
+    },
+    "distinct_successful_final_url": {
+      "url": "https://www.paramount.com/movies/the-godfather",
+      "result": "Successful actual film-page open with1972, synopsis, director/writer credits and explicitBrando/Vito cast mapping; not a corporate redirect."
+    },
+    "supplemental_blind_url": "https://www.bfi.org.uk/film/ccc481e1-f1c2-5b60-bbe7-77ad5645fb1a/the-godfather",
+    "root_captures_used": false
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "qualified_dates_and_versions": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Native same-provider private editorial evidence only; genuine different-provider acceptance and publication remain pending. No canonical key access or runtime/product/prior frozen changes."
+}

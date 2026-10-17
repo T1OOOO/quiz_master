@@ -1,0 +1,68 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_MEMORY_MORAL_FOUR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-71f004c5f43e412eafef471901b669c3"
+  },
+  "review_scope": "Private native same-provider evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-19",
+      "option_id": "prep-film-directors-19-opt-4",
+      "answer": "Лариса Шепитько",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/voskhozhdenie/",
+      "evidence": "Mosfilm explicitly credits Shepitko as director and displays1976 in its release-date field. Distinct screenplay credits; other festival/work-year labels would not alone invalidate this candidate.",
+      "retrieval": "Successful actual institutional web open and relevant supporting text read."
+    },
+    {
+      "question_id": "prep-film-directors-20",
+      "option_id": "prep-film-directors-20-opt-3",
+      "answer": "Андрей Тарковский",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/solyaris/",
+      "evidence": "Mosfilm explicitly credits Tarkovsky and1972, separately identifies Lem's literary source and Tarkovsky/Gorenshtein screenplay; identifies the1972 work.",
+      "retrieval": "Successful actual institutional web open and relevant supporting text read."
+    },
+    {
+      "question_id": "prep-film-directors-21",
+      "option_id": "prep-film-directors-21-opt-3",
+      "answer": "Орсон Уэллс",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/f4c92833-af39-5cd6-a41e-8df5933d0dc1/citizen-kane",
+      "evidence": "BFI explicitly lists1941USA and Directed by Orson Welles, separately screenplay/production/cast.",
+      "retrieval": "Successful actual institutional web open and relevant supporting text read."
+    },
+    {
+      "question_id": "prep-film-directors-22",
+      "option_id": "prep-film-directors-22-opt-4",
+      "answer": "Фрэнсис Форд Коппола",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/ccc481e1-f1c2-5b60-bbe7-77ad5645fb1a/the-godfather",
+      "evidence": "BFI explicitly lists1972USA and director Francis Ford Coppola; synopsis calls it first trilogy film, not sequel or later revision.",
+      "retrieval": "Successful actual institutional web open and relevant supporting text read."
+    }
+  ],
+  "candidate_assessment": "Four clean blind items; exact dated titles have one defensible offered director. No visible leak, no inferred date error or version substitution.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.paramountpictures.com/movies/the-godfather",
+      "result": "Actual web open redirected to corporate homepage https://www.paramount.com/; no film-specific supporting text. Rejected as evidence despite search snippet. Used actual readable BFI film page instead."
+    }
+  ]
+}
