@@ -1,0 +1,119 @@
+{
+  "packet_label": "opera-trovatore-tosca-character-checker-20261017",
+  "hub_task_id": "task-15fa8b5d9de5466185d2930a1061aaeb",
+  "reviewer": {
+    "session_id": "session-eb54a27feed14ccba8ff1c6e1e3a0b0a",
+    "provider": "openai",
+    "model": "Codex"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/OPERA_TROVATORE_TOSCA_20261017/articles.json",
+    "sha256": "91ed62cc785189ce1645d3f1b10cd7827b9374c4ccde807f5e2213164907e6ed"
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:music-oct3-049",
+      "question_revision_sha256": "5db4a2a724e0c37cc918620777abea4512c5ee2f1c0bf18f6242e0cadd790664",
+      "blind_answer": {
+        "option_id": "music-oct3-049-opt-1",
+        "text": "Джузеппе Верди"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Giuseppe Verdi is composer; Salvadore Cammarano is librettist; Il trovatore is in four parts.",
+        "The world premiere was at Rome's Teatro Apollo on 19 January 1853.",
+        "The literary source is Antonio García Gutiérrez's drama El trovador, performed in Madrid in 1836.",
+        "Cammarano died in 1852 and Leone Emanuele Bardare made later requested additions and changes.",
+        "The character and plot explanation correctly distinguishes Manrico, the Count di Luna, Leonora, and Azucena; named musical numbers are supported."
+      ],
+      "distractor_review": "Puccini, Rossini, and Wagner are all composers but none composed Il trovatore; the wording asks only who wrote its music, so there is one best answer.",
+      "sources_opened": [
+        {
+          "url": "https://www.teatrolafenice.it/en/event/trovatore_in_scenic_form/",
+          "title": "Teatro La Fenice: Il trovatore (in semi-scenic form)",
+          "accessed": "2026-10-17",
+          "finding": "Open; supports Verdi, Rome 1853, principal characters, Azucena, and the listed numbers."
+        },
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/il-trovatore/",
+          "title": "Archivio Storico del Teatro dell'Opera di Roma: Il Trovatore",
+          "accessed": "2026-10-17",
+          "finding": "Open; supports composer, librettist, four parts, premiere, characters, and literary source."
+        },
+        {
+          "url": "https://www.teatrolafenice.it/wp-content/uploads/2019/03/TROVATORE-IL.pdf",
+          "title": "Teatro La Fenice: Il trovatore, programme",
+          "accessed": "2026-10-17",
+          "finding": "Open, 172-page PDF; supports the 1836 Madrid drama, Cammarano/Bardare history, premiere, and plot discussion."
+        }
+      ],
+      "source_limits": "The programme title page calls El trovador a novel, but its substantive pages identify it as a drama; the review relies on those substantive pages. The interpretive listening prompt is pedagogical, not a factual historical claim."
+    },
+    {
+      "id": "question:music-oct3-050",
+      "question_revision_sha256": "71206556e8d11c37cc1f8a05c727250f17df68b2a479dfe6d1aefdb5ab5b2f29",
+      "blind_answer": {
+        "option_id": "music-oct3-050-opt-2",
+        "text": "Джакомо Пуччини"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Giacomo Puccini composed Tosca; Luigi Illica and Giuseppe Giacosa wrote the libretto from Victorien Sardou's drama.",
+        "The premiere was at Rome's Teatro Costanzi on 14 January 1900; the archive records 1896–99 and three acts.",
+        "Puccini saw Sardou's play with Sarah Bernhardt in 1889 and returned to sustained composition and orchestration from 1898.",
+        "The action is set in Rome in June 1800 and moves through Sant'Andrea della Valle, Palazzo Farnese, and Castel Sant'Angelo.",
+        "The article correctly separates story setting and locations from the opera's premiere date and theatre."
+      ],
+      "distractor_review": "Verdi, Rossini, and Bizet are all composers but none composed Tosca; the direct composer wording has one best answer.",
+      "sources_opened": [
+        {
+          "url": "https://www.puccinimuseum.org/giacomo-puccini/le-opere/tosca/",
+          "title": "Puccini Museum: Tosca",
+          "accessed": "2026-10-17",
+          "finding": "Open; supports creators, source drama, premiere, 1889 Sardou performance, and composition history."
+        },
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/tosca/",
+          "title": "Archivio Storico del Teatro dell'Opera di Roma: Tosca",
+          "accessed": "2026-10-17",
+          "finding": "Open; supports Puccini, 1896–99, three acts, premiere, and Sardou source."
+        },
+        {
+          "url": "https://www.operaroma.it/spettacoli/opera-tosca-2015/",
+          "title": "Teatro dell'Opera di Roma: Tosca",
+          "accessed": "2026-10-17",
+          "finding": "Opened with fetch after a web-extractor internal error; supports June 1800, all three locations, and the historical 1900 reconstruction."
+        }
+      ],
+      "source_limits": "The 2015 Teatro dell'Opera page was accessible through fetch but not the web extractor. Interpretive listening prompts are pedagogical rather than factual historical assertions."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 2,
+    "question_bindings_exact": true,
+    "statuses": [
+      "draft",
+      "draft"
+    ],
+    "tag_sets": [
+      [
+        "domain:arts"
+      ],
+      [
+        "domain:arts"
+      ]
+    ],
+    "source_link_counts": [
+      3,
+      3
+    ],
+    "body_word_counts_whitespace_including_headings": [
+      207,
+      199
+    ],
+    "required_word_range": "150-220"
+  },
+  "source_limits": "All six displayed institutional links were opened. One Tosca page required fetch after the web extractor failed; its supported claims were read there. The private review does not assert publication or external acceptance.",
+  "release_boundary": "accepted_for_draft is a private native recommendation only; publication and external release acceptance remain pending."
+}

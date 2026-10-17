@@ -1,0 +1,11 @@
+# Trovatore and Tosca private learning articles
+
+Two original Russian mini-articles now explain the current prep-opera composer questions049/050 through plot chronology and Rome stage geography. Each has three inspected institutional source links and an exact question revision reference. The writer produced207/199-word bodies; Root repaired an over-attributed source metadata claim after native review. Source pages, metadata repair and actual access limits are documented in this packet.
+
+The checker solved candidate-only questions before seeing draft/source/key files, then reviewed all displayed source links, factual claims, options and exact bindings. The final review must match the final article rawSHA; native accepted_for_draft is not external acceptance or publication. Structural validation and the local-key comparison receipts identify the exact final files. All validation is scoped to these two questions, not an audit of every quiz or production scoring.
+
+Fresh public catalogHTTP200 is byte-identical to the retained20-question snapshot. prep-opera now has10 private exact-bound articles and10 remaining questions without coverage;0 published articles in this pack. Existing musical and actor article packets, runtime reader and frozenNVN release inputs remain unchanged.
+
+Read-only production remains healthy atHTTP200, Helm64,1replica and unchanged29OPEN feedback rows. Disk17.425percent available fails the strictgreater20percent release gate (floor deficit2,637,154,714bytes). No evidence of a cleanup cause/safe recovery or permission to touch other projects was created. Claude/Gemini actual quota blockers and required genuine different-provider NVN524/Root571 acceptance remain pending; no retries, archive, candidate, canonical import, rebinding, deployment or feedback closure occurred.
+
+No Flutter/Dart application change was made, so app tests, hot reload, build and interactive browser QA were not run for this private content batch. Native content review does not satisfy external release gates. Beads quiz_master-v47 remains in_progress for external review and publication; quiz_master-1x1 records the current headroom observation. Root lands only this packet and these two owned Beads rows, preserving unrelated work.

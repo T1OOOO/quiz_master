@@ -1,0 +1,44 @@
+{
+  "packet_label": "opera-trovatore-tosca-character-checker-20261017",
+  "hub_task_id": "task-15fa8b5d9de5466185d2930a1061aaeb",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json and the listed public primary sources only; draft articles, research files, and local answer keys were not read before this record.",
+  "items": [
+    {
+      "id": "question:music-oct3-049",
+      "question_revision_sha256": "5db4a2a724e0c37cc918620777abea4512c5ee2f1c0bf18f6242e0cadd790664",
+      "blind_answer": {
+        "option_id": "music-oct3-049-opt-1",
+        "text": "Джузеппе Верди"
+      },
+      "reasoning": "The Teatro dell'Opera di Roma archive identifies Giuseppe Verdi as composer of Il trovatore and separately identifies Salvadore Cammarano as librettist.",
+      "uniqueness": "The three alternatives are other composers; the stem asks specifically for the music's composer.",
+      "sources_opened": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/il-trovatore/",
+          "title": "Archivio Storico Teatro dell'Opera di Roma — Il trovatore",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-050",
+      "question_revision_sha256": "71206556e8d11c37cc1f8a05c727250f17df68b2a479dfe6d1aefdb5ab5b2f29",
+      "blind_answer": {
+        "option_id": "music-oct3-050-opt-2",
+        "text": "Джакомо Пуччини"
+      },
+      "reasoning": "The Teatro dell'Opera di Roma archive identifies Giacomo Puccini as composer of Tosca and describes the work as an opera in three acts.",
+      "uniqueness": "The three alternatives are other composers; the stem asks specifically for the music's composer.",
+      "sources_opened": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/tosca/",
+          "title": "Archivio Storico Teatro dell'Opera di Roma — Tosca",
+          "accessed": "2026-10-17"
+        }
+      ]
+    }
+  ],
+  "source_limits": "The archive records establish composer attribution and limited work metadata. They do not by themselves establish every historical or production claim that may appear in later drafts.",
+  "release_boundary": "Private native fact-review evidence only; no publication, release, or external acceptance is asserted."
+}
