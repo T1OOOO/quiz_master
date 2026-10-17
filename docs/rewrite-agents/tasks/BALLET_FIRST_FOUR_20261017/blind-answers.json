@@ -1,0 +1,62 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "BALLET_FIRST_FOUR_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-21ff9264648340cbbaec411c2e3f8bfc"
+  },
+  "review_scope": "Private native editorial evidence only; different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "music-oct3-004",
+      "option_id": "music-oct3-004-opt-3",
+      "answer": "Пётр Чайковский",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/productions/swan-lake",
+      "evidence": "Birmingham Royal Ballet production credits list Music: Pyotr Ilyich Tchaikovsky, separately from choreography.",
+      "retrieval": "Successful web open; lines 44–55."
+    },
+    {
+      "question_id": "music-oct3-005",
+      "option_id": "music-oct3-005-opt-4",
+      "answer": "Адольф Адан",
+      "confidence": "high",
+      "source_url": "https://www.operadeparis.fr/en/season-25-26/ballet/giselle",
+      "evidence": "Paris Opera artistic team credits Adolphe Adam for Music and Coralli/Perrot for Choreography.",
+      "retrieval": "Successful web open and find; lines 366–379."
+    },
+    {
+      "question_id": "music-oct3-006",
+      "option_id": "music-oct3-006-opt-2",
+      "answer": "Игорь Стравинский",
+      "confidence": "high",
+      "source_url": "https://philharmonia.co.uk/whats-on/03-10-21-rites-santtu-conducts-stravinsky/",
+      "evidence": "Philharmonia programme identifies Stravinsky: The Rite of Spring and describes Stravinsky's ballet.",
+      "retrieval": "Successful web open; programme and description."
+    },
+    {
+      "question_id": "music-oct3-028",
+      "option_id": "music-oct3-028-opt-3",
+      "answer": "Пётр Чайковский",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/stories/announcing-tchaikovsky-classics-at-symphony-hall",
+      "evidence": "Birmingham Royal Ballet names Pyotr Ilyich Tchaikovsky and attributes the scores of Swan Lake and The Nutcracker to him.",
+      "retrieval": "Successful web open; line 50."
+    }
+  ],
+  "candidate_assessment": "All four composer questions have one defensible option under their wording; choreographer/version distinctions do not create alternative composer answers.",
+  "failed_retrievals": [
+    "https://www.rbo.org.uk/tickets-and-events/swan-lake-details",
+    "https://www.rbo.org.uk/tickets-and-events/the-nutcracker-details",
+    "https://www.mariinsky.ru/en/playbill/repertoire/ballet/lebedinoe_ozero",
+    "https://www.mariinsky.ru/en/playbill/repertoire/ballet/nutcracker"
+  ]
+}

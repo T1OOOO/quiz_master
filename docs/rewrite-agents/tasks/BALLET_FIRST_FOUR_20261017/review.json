@@ -1,0 +1,138 @@
+{
+  "packet_label": "ballet-first-four-factcheck-20261017",
+  "hub_task_id": "task-bd55316fb7864f6eb2d960c9c4e6efb4",
+  "review_type": "independent_private_native_fact_check",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-21ff9264648340cbbaec411c2e3f8bfc"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BALLET_FIRST_FOUR_20261017/articles.json",
+    "sha256": "f17fc56ccaede96da8e5e2d11e27969ab5d7ba9cc693693763b08d12be5c5e3f"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BALLET_FIRST_FOUR_20261017/SOURCES_EN.md",
+    "sha256": "f4273fcdbbad69a682b1584b0515ddfccd929d2caae817611e8e38d28ccea837"
+  },
+  "blind_answer_sha256": "2516c7f4b0d701b2fc34d3e3d115003f340c7e97af114c9d290e941a3123a7a9",
+  "checked_on": "2026-10-17",
+  "ordering": "Blind artifact saved and hash sent to Root before articles were read; private canonical keys never read by reviewer.",
+  "items": [
+    {
+      "id": "question:music-oct3-004",
+      "question_revision_sha256": "3d3779f7a2783101ecc3ddf72ee1bf79bfcbeeb8349ad2f21c7a07df94e59e6b",
+      "blind_answer": {
+        "option_id": "music-oct3-004-opt-3",
+        "text": "Пётр Чайковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 190,
+      "checked_claims": [
+        "Tchaikovsky composed the score; Petipa/Ivanov choreography is credited to 1895 and Sergeyev revision to 1950.",
+        "The 1877 Moscow premiere is distinct from the later St Petersburg staging.",
+        "The brief Odette/Odile/Siegfried account follows the cited theatre synopsis."
+      ],
+      "distractor_review": "Adam/Giselle, Delibes/Coppélia and Stravinsky/Rite are valid comparison pairs; none answers this stem.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/1/22/1_1900/",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/5/10/1_1700/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.bso.org/works/the-rite-of-spring"
+      ],
+      "source_limits": "Story is expressly limited to the theatre's account; no universal ending or problematic calendar-day claim is asserted."
+    },
+    {
+      "id": "question:music-oct3-005",
+      "question_revision_sha256": "ecb06ab315e76a3a540f4df8c496bc9980a77867854978df684ea09a13cad9f0",
+      "blind_answer": {
+        "option_id": "music-oct3-005-opt-4",
+        "text": "Адольф Адан"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 203,
+      "checked_claims": [
+        "Adam is credited separately from Coralli, Perrot and Petipa.",
+        "The source records Paris premiere on 28 June 1841 and Petipa's St Petersburg version in 1884.",
+        "The two-act betrayal, Wilis and dawn summary matches the cited production synopsis."
+      ],
+      "distractor_review": "Tchaikovsky/Swan Lake, Delibes/Coppélia and Stravinsky/Rite are correctly attributed; none is defensible for Giselle.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/5/10/1_1700/",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/1/22/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.bso.org/works/the-rite-of-spring"
+      ],
+      "source_limits": "Production plot is qualified; the article makes no claim about every Giselle staging."
+    },
+    {
+      "id": "question:music-oct3-006",
+      "question_revision_sha256": "3d4f17bda525f9597d0095653b24bd291c5c518c7cffe5db664d8b7859743289",
+      "blind_answer": {
+        "option_id": "music-oct3-006-opt-2",
+        "text": "Игорь Стравинский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 191,
+      "checked_claims": [
+        "BSO credits Stravinsky, Diaghilev, Nijinsky and Roerich in their distinct roles.",
+        "The stated Paris premiere, 29 May 1913, and Monteux conducting are supported.",
+        "Folk fragments, repeated/rearranged gestures, syncopation and metric shifts support the listening exercise."
+      ],
+      "distractor_review": "The other three offered composers are correctly connected to other ballets; no rival answer is defensible.",
+      "sources_opened": [
+        "https://www.bso.org/works/the-rite-of-spring",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/1/22/1_1900/",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/5/10/1_1700/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/"
+      ],
+      "source_limits": "Imagined ritual is a reasonable editorial inference from the composer's vision, not an ethnographic claim. The article avoids the source's disputed riot narrative."
+    },
+    {
+      "id": "question:music-oct3-028",
+      "question_revision_sha256": "6d2bdb6d22d1bc2d02cbb51394cd7791edaf8dd5a5a60ae239820a0945eba8cb",
+      "blind_answer": {
+        "option_id": "music-oct3-028-opt-3",
+        "text": "Пётр Чайковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 204,
+      "checked_claims": [
+        "The production page distinguishes Tchaikovsky's music, Hoffmann's literary basis and Aliev's choreography.",
+        "The premiere year/venue and celesta versus battle percussion cues are supported.",
+        "The history page attributes Romeo and Juliet to Prokofiev and Spartacus to Khachaturian."
+      ],
+      "distractor_review": "Prokofiev, Khachaturian and Stravinsky are plausible ballet names, but none composed this score.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/1/6/1_1400/",
+        "https://www.mariinsky.ru/en/about/history/mariinsky_theatre/",
+        "https://www.bso.org/works/the-rite-of-spring"
+      ],
+      "source_limits": "Only the premiere year is used; the source's day/calendar ambiguity and claim about first Russian use of celesta are not imported."
+    }
+  ],
+  "editorial_requirements": {
+    "exact_public_revisions": "pass; independently compared all four to candidate snapshot",
+    "statuses": "all draft",
+    "tags": "all domain:arts",
+    "target_refs": "all empty",
+    "word_count_method": "whitespace token count of body_ru",
+    "word_counts": [
+      190,
+      203,
+      191,
+      204
+    ],
+    "source_links_per_article": [
+      4,
+      4,
+      4,
+      3
+    ],
+    "factual_findings": [],
+    "pedagogy": "Each article explains the answer, distinguishes roles, supplies context and a listening prompt. Composer questions repeat the same task shape by frozen scope; articles add distinct historical, dramatic or timbral focus. Difficulty is an estimate, not fact-checked calibration."
+  },
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native editorial acceptance only. Writer and reviewer are both Codex; different-provider acceptance, publication and release remain pending.",
+  "not_checked": "No runtime assets, intended key files, full packet validator, application build, browser UI or deployment inspected or changed."
+}
