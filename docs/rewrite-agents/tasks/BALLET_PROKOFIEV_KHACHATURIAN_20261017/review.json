@@ -1,0 +1,141 @@
+{
+  "packet_label": "ballet-prokofiev-khachaturian-factcheck-20261017",
+  "hub_task_id": "task-e93dc3614c934281b4ca6202c716d05c",
+  "review_type": "independent_private_native_fact_check",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-8b937a7d9ce54af89cb295903a278e76"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BALLET_PROKOFIEV_KHACHATURIAN_20261017/articles.json",
+    "sha256": "350383d6770cfe6539051fcda9a8d79c6a7bca270c944169dff555d60e7fc99a"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BALLET_PROKOFIEV_KHACHATURIAN_20261017/SOURCES_EN.md",
+    "sha256": "790a14c3b9253b1e2825aca2af0d43db23b5f37d2f686198e44e102c5241edac"
+  },
+  "blind_answer_sha256": "e1089abb71fff400394b5fb6682204d1c4ba22a38f9a072f3fd97a6ac93c1926",
+  "checked_on": "2026-10-17",
+  "ordering": "Blind answers saved and hash sent to Root before article read; no private canonical key read.",
+  "items": [
+    {
+      "id": "question:music-oct3-029",
+      "question_revision_sha256": "d972795415feca5f3888ecfbf0e1e4c09aa2e9ccda27299a1fddb26db063cbc3",
+      "blind_answer": {
+        "option_id": "music-oct3-029-opt-1",
+        "text": "Пётр Чайковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 182,
+      "checked_claims": [
+        "Tchaikovsky music, Petipa choreography, Vsevolozhsky/Petipa libretto after Perrault are distinct credits.",
+        "1890 premiere and 1952 revision are separated correctly.",
+        "The detailed choreographic plan and qualified fairy/curse synopsis are supported."
+      ],
+      "distractor_review": "Prokofiev/Cinderella, Khachaturian/Spartacus and Delibes/Coppélia are correct comparison pairs. No competing offered answer.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/3/19/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/"
+      ],
+      "source_limits": "Premiere year avoids calendar-day ambiguity; the synopsis and optional listening prompt do not claim universal staging or feeling."
+    },
+    {
+      "id": "question:music-oct3-030",
+      "question_revision_sha256": "87c7389b90eb495d1e05010139ee01df40ada26f22c7cff3f2f80016708517d4",
+      "blind_answer": {
+        "option_id": "music-oct3-030-opt-2",
+        "text": "Сергей Прокофьев"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 193,
+      "checked_claims": [
+        "Prokofiev music, Shakespeare basis and Lavrovsky choreography are credited separately.",
+        "The 11 January 1940 date is specifically the Kirov production premiere.",
+        "LA Phil confirms Tchaikovsky's same-title orchestral fantasy overture; the theatre synopsis supplies the feud, ball and balcony."
+      ],
+      "distractor_review": "Tchaikovsky is a fair same-title distractor for the standard ballet score; the article explicitly explains the genre distinction. Khachaturian and Delibes are attributed to their own ballets.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/7/23/1_1900/",
+        "https://www.laphil.com/works/romeo-and-juliet-fantasy-overture",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/"
+      ],
+      "source_limits": "The theatre page inconsistently says 1938 in prose versus 1940 in credits. The article uses the identified production date and makes no world-premiere claim. Read the frozen stem as the standard named ballet score, not all possible choreography to same-title music."
+    },
+    {
+      "id": "question:music-oct3-031",
+      "question_revision_sha256": "85fab1f9ead729b1e48234fe9d4c2c7ac4fbca1d968ad3c0541787d783631b35",
+      "blind_answer": {
+        "option_id": "music-oct3-031-opt-3",
+        "text": "Сергей Прокофьев"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 208,
+      "checked_claims": [
+        "Prokofiev music, Volkov libretto after Perrault and Zakharov's 21 November 1945 Bolshoi premiere are supported.",
+        "The 2002 Mariinsky production is a separate event; lesson, ball, midnight and slipper match its synopsis.",
+        "Paris Opera confirms Rossini's La Cenerentola is an opera, not this Prokofiev ballet."
+      ],
+      "distractor_review": "Delibes, Khachaturian and Tchaikovsky comparison pairs are correct. None is composer of the specified Prokofiev score.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/",
+        "https://www.operadeparis.fr/en/season-25-26/opera/la-cenerentola",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/3/19/1_1900/"
+      ],
+      "source_limits": "Cinderella is not a globally unique musical title. The article expressly identifies Prokofiev's score and qualifies modern synopsis details."
+    },
+    {
+      "id": "question:music-oct3-032",
+      "question_revision_sha256": "d0944cef4a5ef2251f155a047772c9bf16a439e416f8abb140633d192f92c867",
+      "blind_answer": {
+        "option_id": "music-oct3-032-opt-4",
+        "text": "Арам Хачатурян"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 195,
+      "checked_claims": [
+        "Khachaturian music, Yakobson choreography and Volkov libretto match the theatre credits.",
+        "1956 premiere and 2010 revival are distinct.",
+        "Captivity, rebellion, Phrygia's mourning and the antique visual influences match this production's synopsis/essay."
+      ],
+      "distractor_review": "Prokofiev/Cinderella, Delibes/Coppélia and Tchaikovsky/Sleeping Beauty are supported and cannot replace Khachaturian here.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/3/19/1_1900/"
+      ],
+      "source_limits": "The article confines the choreography and plot to Yakobson's production and does not treat the stage story as a historical study."
+    }
+  ],
+  "editorial_requirements": {
+    "exact_public_revisions": "pass; independently compared to candidate snapshot",
+    "statuses": "all draft",
+    "tags": "all domain:arts",
+    "target_refs": "all empty",
+    "word_count_method": "whitespace token count of body_ru",
+    "word_counts": {
+      "question:music-oct3-029": 182,
+      "question:music-oct3-030": 193,
+      "question:music-oct3-031": 208,
+      "question:music-oct3-032": 195
+    },
+    "source_links_per_article": [
+      4,
+      4,
+      5,
+      4
+    ],
+    "source_retrieval": "All seven unique final URLs independently opened and relevant sections read; no search-only evidence used.",
+    "factual_findings": [],
+    "pedagogy": "Useful composer/choreographer and genre distinctions, fair linked distractors and optional listening observations. Question difficulty is not empirically calibrated."
+  },
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native editorial acceptance only. Writer and reviewer are Codex; genuine different-provider acceptance, publication and release remain pending.",
+  "not_checked": "Private intended keys, full packet validator, runtime, application build/UI/deployment and learner testing. Root owns integration/landing."
+}

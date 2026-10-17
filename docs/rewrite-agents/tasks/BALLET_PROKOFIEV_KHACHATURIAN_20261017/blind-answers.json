@@ -1,0 +1,64 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "BALLET_PROKOFIEV_KHACHATURIAN_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-8b937a7d9ce54af89cb295903a278e76"
+  },
+  "review_scope": "Private native editorial evidence only; different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "music-oct3-029",
+      "option_id": "music-oct3-029-opt-1",
+      "answer": "Пётр Чайковский",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/productions/the-sleeping-beauty",
+      "evidence": "BRB production credits name Pyotr Ilyich Tchaikovsky for music, separately from choreography.",
+      "retrieval": "Successful web open, lines49–56."
+    },
+    {
+      "question_id": "music-oct3-030",
+      "option_id": "music-oct3-030-opt-2",
+      "answer": "Сергей Прокофьев",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/profile/sergei-prokofiev",
+      "evidence": "BRB composer biography identifies Romeo and Juliet Op.64 among Prokofiev's ballets.",
+      "retrieval": "Successful web open, lines47–48.",
+      "wording_note": "Read as the standard named ballet score; distinguish Tchaikovsky's same-title concert overture in the article."
+    },
+    {
+      "question_id": "music-oct3-031",
+      "option_id": "music-oct3-031-opt-3",
+      "answer": "Сергей Прокофьев",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/productions/cinderella",
+      "evidence": "BRB Cinderella production credits Sergei Prokofiev for music and David Bintley for choreography.",
+      "retrieval": "Successful web open, lines44–51.",
+      "wording_note": "Common title is not unique across all musical history; the offered composers select the standard Prokofiev ballet."
+    },
+    {
+      "question_id": "music-oct3-032",
+      "option_id": "music-oct3-032-opt-4",
+      "answer": "Арам Хачатурян",
+      "confidence": "high",
+      "source_url": "https://prim.mariinsky.ru/en/playbill/playbill/2025/6/9/1_1900/",
+      "evidence": "Mariinsky Primorsky Spartacus credits identify Music by Aram Khachaturian.",
+      "retrieval": "Successful web open, lines21–24."
+    }
+  ],
+  "failed_retrievals": [
+    {
+      "url": "https://www.brb.org.uk/stories/announcing-tchaikovsky-classics-at-symphony-hall",
+      "result": "400 Timeout fetching during this blind phase; not used as current retrieval evidence."
+    }
+  ],
+  "candidate_assessment": "High-confidence standard-repertoire answers. No alternative offered composer credited for the named standard scores. Article must distinguish same-title concert/operatic works and avoid claiming titles are unique."
+}
