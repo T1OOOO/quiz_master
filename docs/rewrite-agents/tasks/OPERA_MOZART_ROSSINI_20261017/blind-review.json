@@ -1,0 +1,78 @@
+{
+  "packet_label": "opera-mozart-rossini-character-checker-20261017",
+  "hub_task_id": "task-9320e8c8e5264d698abf09fd89e58e36",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json and the listed public primary sources only; draft articles, research files, and local answer keys were not read before this record.",
+  "items": [
+    {
+      "id": "question:music-oct3-053",
+      "question_revision_sha256": "5b0ea68bf4afe3d7b17851fe0c865f126ea0e1ab49a994a0028e3e93979fba35",
+      "blind_answer": {
+        "option_id": "music-oct3-053-opt-2",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "reasoning": "The Digital Mozart Edition identifies Mozart as composer of Le nozze di Figaro KV 492, with Da Ponte as text author.",
+      "uniqueness": "Rossini, Verdi, and Tchaikovsky did not compose Mozart's Le nozze di Figaro.",
+      "sources_opened": [
+        {
+          "url": "https://dme.mozarteum.at/DME/libredition/single.php?end=202&idwnma=5677&line=0&v=1",
+          "title": "Stiftung Mozarteum Salzburg — Le nozze di Figaro KV 492",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-054",
+      "question_revision_sha256": "8d6c13a80a41d1fb8b8129915d099e27cc11cded9b784f64e9a68f86405a2032",
+      "blind_answer": {
+        "option_id": "music-oct3-054-opt-3",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "reasoning": "The Mozarteum Köchel catalogue identifies Mozart as composer of Don Giovanni KV 527, with Da Ponte as text author.",
+      "uniqueness": "Verdi, Rossini, and Puccini did not compose Mozart's Don Giovanni.",
+      "sources_opened": [
+        {
+          "url": "https://kv.mozarteum.at/de/work/il-dissoluto-punito-o-sia-il-don-giovanni-6065",
+          "title": "Stiftung Mozarteum Salzburg — Don Giovanni KV 527",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-055",
+      "question_revision_sha256": "c92789f4c85528b76e4c43b67d8d3315ea4627a51e6534057c265da02158d6d5",
+      "blind_answer": {
+        "option_id": "music-oct3-055-opt-4",
+        "text": "Джоаккино Россини"
+      },
+      "reasoning": "The Rome Opera archive identifies Rossini as composer, Sterbini as librettist, 1816 as the composition year, and the 20 February 1816 Rome premiere.",
+      "uniqueness": "The 1816 qualifier identifies Rossini's setting, distinct from other works on the Beaumarchais subject; Verdi, Mozart, and Puccini are not its composer.",
+      "sources_opened": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/il-barbiere-di-siviglia/",
+          "title": "Archivio Storico del Teatro dell'Opera di Roma — Il Barbiere di Siviglia",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-056",
+      "question_revision_sha256": "f4df9739533e6f9b0cda5e7c46e250aae9259188b74f470a1ac8e39ea80a8465",
+      "blind_answer": {
+        "option_id": "music-oct3-056-opt-1",
+        "text": "Пётр Чайковский"
+      },
+      "reasoning": "Tchaikovsky Research identifies Yevgeny Onegin as Tchaikovsky's work and distinguishes the 1879 Maly Theatre student staging from the first professional 1881 Bolshoi performance.",
+      "uniqueness": "Prokofiev, Verdi, and Rimsky-Korsakov did not compose Tchaikovsky's Yevgeny Onegin.",
+      "sources_opened": [
+        {
+          "url": "https://en.tchaikovsky-research.net/pages/Yevgeny_Onegin",
+          "title": "Tchaikovsky Research — Yevgeny Onegin",
+          "accessed": "2026-10-17"
+        }
+      ]
+    }
+  ],
+  "source_limits": "The source set establishes composer attribution and the main premiere/version distinctions. Any later draft claims about adaptation or individual scenes require displayed-source support.",
+  "release_boundary": "Private native fact-review evidence only; no publication, release, or external acceptance is asserted."
+}

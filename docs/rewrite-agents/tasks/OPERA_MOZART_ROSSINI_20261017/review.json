@@ -1,0 +1,150 @@
+{
+  "packet_label": "opera-mozart-rossini-character-checker-20261017",
+  "hub_task_id": "task-9320e8c8e5264d698abf09fd89e58e36",
+  "phase": "final_fact_and_editorial_review",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/OPERA_MOZART_ROSSINI_20261017/articles.json",
+    "sha256": "775c7c2e9d2cef8fb3d1fbcd0fafb3c757d45e44d9aa60a5b8aafa4eba4bc1eb"
+  },
+  "reviewer": {
+    "provider": "openai",
+    "model": "Codex",
+    "review_type": "independent native private fact review"
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:music-oct3-053",
+      "question_revision_sha256": "5b0ea68bf4afe3d7b17851fe0c865f126ea0e1ab49a994a0028e3e93979fba35",
+      "blind_answer": {
+        "option_id": "music-oct3-053-opt-2",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Mozart composed the music; Da Ponte wrote the libretto; Beaumarchais wrote the source play.",
+        "The 1 May 1786 Hofburgtheater premiere, four-act opera-buffa form, and Da Ponte-series distinction are source-supported.",
+        "The revised listener prompt discusses character knowledge and adaptation without retaining the unsupported Countess-aria attribution."
+      ],
+      "distractor_review": "The answer is uniquely Mozart. Da Ponte is the librettist, Beaumarchais the playwright, and Rossini, Verdi, and Tchaikovsky are not composers of this opera.",
+      "sources_opened": [
+        {
+          "url": "https://www.wiener-staatsoper.at/kalender/detail/le-nozze-di-figaro/2026-09-17/",
+          "title": "Wiener Staatsoper: Le nozze di Figaro",
+          "accessed": "2026-10-17",
+          "verified_support": "Mozart, Da Ponte, Beaumarchais, four acts, adaptation context, and 1 May 1786 Hofburgtheater premiere."
+        },
+        {
+          "url": "https://mozarteum.at/en/wolfgang-amade-mozart",
+          "title": "Salzburg Mozarteum Foundation: Wolfgang Amadeus Mozart",
+          "accessed": "2026-10-17",
+          "verified_support": "The Figaro, Don Giovanni, and Così fan tutte Da Ponte series and the adaptation's censorship context."
+        }
+      ],
+      "source_limits": "The Viennese page is a current production page, but its historical notes support the cited premiere and adaptation claims; no current-cast fact is used."
+    },
+    {
+      "id": "question:music-oct3-054",
+      "question_revision_sha256": "8d6c13a80a41d1fb8b8129915d099e27cc11cded9b784f64e9a68f86405a2032",
+      "blind_answer": {
+        "option_id": "music-oct3-054-opt-3",
+        "text": "Вольфганг Амадей Моцарт"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Mozart composed the music and Da Ponte wrote the libretto; the Prague premiere was on 29 October 1787.",
+        "Mozarteum explicitly identifies the work as dramma giocoso and reports Mozart's opera-buffa catalogue label.",
+        "Paris Opera independently describes the Prague 1787 creation and the comedy-drama mixture; the draft distinguishes a work's history from dates of a current staging."
+      ],
+      "distractor_review": "The answer is uniquely Mozart. Da Ponte is the librettist, while Verdi, Rossini, and Puccini did not compose Don Giovanni.",
+      "sources_opened": [
+        {
+          "url": "https://mozarteum.at/en/wolfgang-amade-mozart",
+          "title": "Salzburg Mozarteum Foundation: Wolfgang Amadeus Mozart",
+          "accessed": "2026-10-17",
+          "verified_support": "Da Ponte collaboration, 29 October 1787 Prague premiere, dramma giocoso, and Mozart's opera-buffa catalogue entry."
+        },
+        {
+          "url": "https://www.operadeparis.fr/saison-26-27/opera/don-giovanni",
+          "title": "Opéra national de Paris: Don Giovanni",
+          "accessed": "2026-10-17",
+          "verified_support": "Mozart, Da Ponte, Prague 1787, two-act dramma giocoso, and comedy-drama mixture."
+        }
+      ],
+      "source_limits": "The Paris page is tied to a contemporary production; the review uses it only for its historical work description and credits."
+    },
+    {
+      "id": "question:music-oct3-055",
+      "question_revision_sha256": "c92789f4c85528b76e4c43b67d8d3315ea4627a51e6534057c265da02158d6d5",
+      "blind_answer": {
+        "option_id": "music-oct3-055-opt-4",
+        "text": "Джоаккино Россини"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Rome Opera identifies Rossini, Sterbini, two acts, 1816, Beaumarchais's play, and the 20 February 1816 Teatro Argentina world premiere.",
+        "The Scala dossier supports the same-subject Paisiello comparison and the initial Almaviva, o sia L'inutile precauzione title.",
+        "The article correctly treats Rossini's and Paisiello's works as distinct operas sharing literary material."
+      ],
+      "distractor_review": "The 1816 qualifier makes Rossini uniquely correct. Sterbini is the librettist, Beaumarchais the playwright, and Mozart, Verdi, and Puccini are not composers of this 1816 opera.",
+      "sources_opened": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/il-barbiere-di-siviglia/",
+          "title": "Archivio Storico del Teatro dell'Opera di Roma: Il Barbiere di Siviglia",
+          "accessed": "2026-10-17",
+          "verified_support": "Rossini, Sterbini, two acts, 1816, Rome Teatro Argentina 20-II-1816, and Beaumarchais as literary source."
+        },
+        {
+          "url": "https://www.teatroallascala.org/static/upload/dis/dispensa-barbieredisiviglia-01.pdf",
+          "title": "Teatro alla Scala: Il barbiere di Siviglia educational dossier",
+          "accessed": "2026-10-17",
+          "verified_support": "Paisiello's earlier same-subject work, the 1816 premiere, the earlier Almaviva title, and comic-opera ensemble discussion."
+        }
+      ],
+      "source_limits": "The Scala PDF is an institutional educational dossier; the article uses it for documented historical comparison, not an unsupported premiere anecdote."
+    },
+    {
+      "id": "question:music-oct3-056",
+      "question_revision_sha256": "f4df9739533e6f9b0cda5e7c46e250aae9259188b74f470a1ac8e39ea80a8465",
+      "blind_answer": {
+        "option_id": "music-oct3-056-opt-1",
+        "text": "Пётр Чайковский"
+      },
+      "verdict": "accepted_for_draft",
+      "checked_claims": [
+        "Tchaikovsky composed the music; the libretto attribution to Tchaikovsky and Konstantin Shilovsky after Pushkin is supported.",
+        "The draft accurately distinguishes the 17/29 March 1879 Maly Theatre Conservatory-student staging from the 11/23 January 1881 first professional Bolshoi staging.",
+        "Mariinsky's synopsis supports the Tatiana letter and later meeting listening prompt; the ambiguous 1884 Mariinsky aside was removed."
+      ],
+      "distractor_review": "The answer is uniquely Tchaikovsky. Pushkin supplied the source novel and Shilovsky co-wrote the libretto; Prokofiev, Verdi, and Rimsky-Korsakov did not compose Eugene Onegin.",
+      "sources_opened": [
+        {
+          "url": "https://en.tchaikovsky-research.net/pages/Yevgeny_Onegin",
+          "title": "Tchaikovsky Research: Yevgeny Onegin",
+          "accessed": "2026-10-17",
+          "verified_support": "Composer, Pushkin source, lyrical-scenes designation, and the distinct 1879 student and 1881 professional Moscow staging dates."
+        },
+        {
+          "url": "https://www.mariinsky.ru/en/playbill/playbill/2026/6/6/3_1200/",
+          "title": "Mariinsky Theatre: Eugene Onegin",
+          "accessed": "2026-10-17",
+          "verified_support": "Tchaikovsky and Shilovsky credits after Pushkin, 17 March 1879 student world premiere, and the Tatiana/Onegin/Lensky synopsis used for the listener prompt."
+        }
+      ],
+      "source_limits": "The record avoids resolving the 1884 Mariinsky venue/date discrepancy found in institutional historical framing; only the independently supported 1879 and 1881 Moscow distinctions are used."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 4,
+    "article_ids_match_question_bindings": true,
+    "question_revision_bindings_exact": true,
+    "statuses": ["draft", "draft", "draft", "draft"],
+    "tag_sets": [["domain:arts"], ["domain:arts"], ["domain:arts"], ["domain:arts"]],
+    "source_link_counts": [2, 2, 2, 2],
+    "body_word_counts_whitespace": [181, 175, 187, 160],
+    "required_body_word_range": "150-220",
+    "trailing_markdown_double_spaces": false
+  },
+  "source_limits": "All eight displayed source links were opened on 2026-10-17. Current programme pages may change production-specific content; only their stated historical, credit, synopsis, or genre facts were used. No local answer key, research dossier, or draft article was read before the blind-answer record was persisted.",
+  "release_boundary": "accepted_for_draft is a private native review verdict only. It is not publication, release, deployment, or external-provider acceptance."
+}
