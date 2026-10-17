@@ -1,0 +1,141 @@
+{
+  "packet_label": "ballet-gayane-minkus-delibes-factcheck-20261017",
+  "hub_task_id": "task-4740432cdd7f44d082e4a4838b26640f",
+  "review_type": "independent_private_native_fact_check",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-1c0b33125a064e9f92ad44b79157a305"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BALLET_GAYANE_MINKUS_DELIBES_20261017/articles.json",
+    "sha256": "5d0efb7ea0ccd9e430ab1a7b8ab6e2f52cbbe25ae424fb38a0cfeba200768905"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BALLET_GAYANE_MINKUS_DELIBES_20261017/SOURCES_EN.md",
+    "sha256": "c4b9e0e002bf0285ac7feca24cfdceda992739846b26803fc3d23fffee3e6668"
+  },
+  "blind_answer_sha256": "1f13dd8745d6ab7a936172c9500fcc00b967d4f776eebee87e80e4c2f9ca6c1a",
+  "checked_on": "2026-10-17",
+  "ordering": "Blind answers saved and hash sent to Root before article access; reviewer never read private canonical keys.",
+  "items": [
+    {
+      "id": "question:music-oct3-033",
+      "question_revision_sha256": "b29295c3da4c1f4c3d6e4ea4aea4ee534497f62ac3f4bb049c9fdeb89de3267f",
+      "blind_answer": {
+        "option_id": "music-oct3-033-opt-1",
+        "text": "Арам Хачатурян"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 187,
+      "checked_claims": [
+        "Khachaturian authorship is distinguished from Derzhavin's libretto and Anisimova's choreography.",
+        "Happiness (1939), the 9 December 1942 Molotov premiere and later changed finale are distinguished.",
+        "The composer's museum account supports repeated figures and lyrical contrast in Sabre Dance."
+      ],
+      "distractor_review": "Minkus/Don Quixote, Delibes/Coppélia and Prokofiev/Cinderella are correctly attributed comparisons.",
+      "sources_opened": [
+        "https://www.khachaturian.am/eng/works/ballets_1.htm",
+        "https://www.mariinsky.ru/en/about/ww2/1942/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/"
+      ],
+      "source_limits": "The wartime chronicle supplies the precise date; the article avoids a universal plot or unspecified revision chronology. Composer reminiscence is paraphrased and attributed."
+    },
+    {
+      "id": "question:music-oct3-034",
+      "question_revision_sha256": "8d9ec910b70ce8aa9ccf254bce668fb9e9ddcae5ac4016e1cc30cc86180f79bd",
+      "blind_answer": {
+        "option_id": "music-oct3-034-opt-2",
+        "text": "Людвиг Минкус"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 190,
+      "checked_claims": [
+        "Minkus/Petipa's standard score and 1869 Moscow staging are explicitly identified.",
+        "Cervantes's novel, Petipa's libretto and Gorsky's choreography are separate credits.",
+        "The 1900/1902 versions and Kitri/Basilio-focused Barcelona synopsis match the institutional page."
+      ],
+      "distractor_review": "Delibes, Khachaturian and Prokofiev belong to other correctly attributed ballets, not the named original Minkus score.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.khachaturian.am/eng/works/ballets_1.htm",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/"
+      ],
+      "source_limits": "Original is bounded to the standard 1869 work; no claim of first-ever Cervantes ballet or unchanged music in every modern arrangement. This removes the frozen stem's broadest possible reading."
+    },
+    {
+      "id": "question:music-oct3-035",
+      "question_revision_sha256": "cd8dd9f73da3b6bb3baa7ed47bf4f88440f08567710dc94ee34a4b29feba43d0",
+      "blind_answer": {
+        "option_id": "music-oct3-035-opt-3",
+        "text": "Людвиг Минкус"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 198,
+      "checked_claims": [
+        "Mikhailovsky credits Minkus music, Petipa/Khudekov libretto and Duato choreography after Petipa.",
+        "4 October 2019 is explicitly this production's premiere.",
+        "The qualified Nikiya/Solor/Gamzatti, snake and sleeping Solor's shades synopsis is supported."
+      ],
+      "distractor_review": "Khachaturian/Gayane, Delibes/Coppélia and Prokofiev/Cinderella are supported; none displaces Minkus.",
+      "sources_opened": [
+        "https://mikhailovsky.ru/en/afisha/repertoire/la_bayadere_duato/",
+        "https://www.khachaturian.am/eng/works/ballets_1.htm",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/"
+      ],
+      "source_limits": "The article uses one named production and does not universalize its acts/ending or treat theatrical India as ethnography."
+    },
+    {
+      "id": "question:music-oct3-036",
+      "question_revision_sha256": "0ef20253fb89a03fb6397605a52b4883f17972834c2cd9351e6b351699a933cc",
+      "blind_answer": {
+        "option_id": "music-oct3-036-opt-4",
+        "text": "Лео Делиб"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 194,
+      "checked_claims": [
+        "Delibes music and Nuitter/Saint-Léon libretto after Hoffmann are distinct.",
+        "The 1870 Saint-Léon and 2024 Sergeev productions are correctly separated.",
+        "Magic spectacles, mechanical doubles and mixed dance/pantomime language match Sergeev's version."
+      ],
+      "distractor_review": "Minkus, Prokofiev and Khachaturian comparison pairs are correct; no rival composer option is defensible.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/18/2_1900/",
+        "https://www.khachaturian.am/eng/works/ballets_1.htm"
+      ],
+      "source_limits": "Modern plot details are expressly qualified. The listening prompt invites observation without asserting prescribed effects."
+    }
+  ],
+  "editorial_requirements": {
+    "exact_public_revisions": "pass; independently compared with candidate snapshot",
+    "statuses": "all draft",
+    "tags": "all domain:arts",
+    "target_refs": "all empty",
+    "word_count_method": "whitespace token count of body_ru",
+    "word_counts": {
+      "question:music-oct3-033": 187,
+      "question:music-oct3-034": 190,
+      "question:music-oct3-035": 198,
+      "question:music-oct3-036": 194
+    },
+    "source_links_per_article": [
+      5,
+      4,
+      4,
+      4
+    ],
+    "source_retrieval": "All six unique displayed final URLs independently opened and relevant sections read, including wartime chronology lines137–160.",
+    "factual_findings": [],
+    "pedagogy": "Articles explain answer roles and offer distinct stage/listening cues. Frozen questions share a composer-recall format; no empirical difficulty or learner testing claimed."
+  },
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native Codex editorial acceptance only. Genuine different-provider acceptance, publication and release remain pending.",
+  "not_checked": "Private keys, full packet validator, runtime, application build/UI/deployment or empirical difficulty calibration. Root owns integration and landing."
+}

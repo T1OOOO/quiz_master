@@ -1,0 +1,58 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "BALLET_GAYANE_MINKUS_DELIBES_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-1c0b33125a064e9f92ad44b79157a305"
+  },
+  "review_scope": "Private native editorial evidence only; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "music-oct3-033",
+      "option_id": "music-oct3-033-opt-1",
+      "answer": "Арам Хачатурян",
+      "confidence": "high",
+      "source_url": "https://www.arkansassymphony.org/wp-content/uploads/2024/02/2023-SS-Student-Journal-2024-02-19-LR.pdf",
+      "evidence": "Arkansas Symphony educational journal explicitly identifies Gayane as Khachaturian's ballet; only composer attribution used.",
+      "retrieval": "Successful actual PDF web open and text find; page25, lines931–934."
+    },
+    {
+      "question_id": "music-oct3-034",
+      "option_id": "music-oct3-034-opt-2",
+      "answer": "Людвиг Минкус",
+      "confidence": "high",
+      "source_url": "https://www.brb.org.uk/productions/don-quixote",
+      "evidence": "BRB separately credits Original music: Ludwig Minkus and later arrangement/additional sequence by Hans Vercauteren.",
+      "retrieval": "Successful actual web open, lines48–55.",
+      "wording_note": "Original means the standard Minkus/Petipa score, not the first-ever ballet adaptation of Cervantes."
+    },
+    {
+      "question_id": "music-oct3-035",
+      "option_id": "music-oct3-035-opt-3",
+      "answer": "Людвиг Минкус",
+      "confidence": "high",
+      "source_url": "https://www.operadeparis.fr/en/season-25-26/ballet/la-bayadere",
+      "evidence": "Paris Opera credits Ludwig Minkus for music, separately from Nureyev/Petipa choreography and Lanchbery arrangement.",
+      "retrieval": "Successful actual web open, lines450–472."
+    },
+    {
+      "question_id": "music-oct3-036",
+      "option_id": "music-oct3-036-opt-4",
+      "answer": "Лео Делиб",
+      "confidence": "high",
+      "source_url": "https://www.mariinsky.ru/en/playbill/playbill/2026/10/22/2_1900/",
+      "evidence": "Mariinsky production credits identify Music by Leo Delibes.",
+      "retrieval": "Successful actual web open; credits."
+    }
+  ],
+  "candidate_assessment": "All offered options give one standard-repertoire composer answer. Don Quixote original-score scope should be explicit in the article; arrangement/choreography credits do not transfer original authorship.",
+  "failed_retrievals": []
+}

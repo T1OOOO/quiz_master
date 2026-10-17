@@ -1,0 +1,6 @@
+# Ballet articles 033–036
+Four private Russian articles cover Gayane, the standard Minkus Don Quixote score, La Bayadere and Coppelia. Actual native writer and checker accepted fresh Hub offers and submitted their tasks. The checker froze independently sourced answers before reading drafts; Root compared local editorial keys afterwards: four matches and exact public stems/options. Six displayed institutional sources were opened by writer, checker and Root. Per-item native review accepts the exact article hash; final structural/ref/hash/key/pin checks pass.
+
+Coverage: one repository runtime asset, twelve private drafts, seven missing among twenty current public questions. This is not verified publication. Continue the seven missing refs under quiz_master-n506. Preserve earlier packets, runtime article reader and NVN inputs. External-provider acceptance and release gates remain pending; no production mutation or feedback closure.
+
+The next missing question038 visibly names Stravinsky in its stem. Bug quiz_master-rwdc tracks a minimal wording proposal; do not treat it as fixed or close production feedback until publication is verified. Rebind its future article if a source repair changes the question revision.
