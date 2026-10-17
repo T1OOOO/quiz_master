@@ -1,0 +1,38 @@
+{
+  "schema_version": "qm-native-review/v1",
+  "reviewer": "feedback43-backend-review-20261017",
+  "reviewed_at": "2026-10-17",
+  "scope": {
+    "type": "read_only",
+    "files": [
+      {"path": "next/server/internal/attempts/rules_test.go", "sha256": "0259D91C4D289101BDE619DE7EB2DF0698CA554EB77BA9BBD4B4A0F1ECDDB28F"},
+      {"path": "next/server/internal/attempts/service.go", "sha256": "7FA02C4310462A106C16DAF6C7A48D6EB0BD1FDF37AFEC2F945400AEDA296094"},
+      {"path": "next/server/internal/sqlite/attempts.go", "sha256": "32D86C72004B98C3C43035AA83E9036E7FB5CB75AFE127332EEB4E082F7EA106"},
+      {"path": "next/server/internal/sqlite/collection.go", "sha256": "EE0D6A525FB3B01AC0DA3B6A58ED713178A8C8554BF4DEFB8B9E70B4A69EA700"},
+      {"path": "next/server/internal/sqlite/metadata_replay_test.go", "sha256": "46C765E2A8D3615215A5F518D2988EDAB9B3E2C080E5578D8185CE6B4F9AE7F2"}
+    ],
+    "hashes_stable": true
+  },
+  "findings": [
+    {
+      "id": "backend-shuffle-001",
+      "severity": "P1",
+      "proven": true,
+      "path": "next/server/internal/attempts/difficulty_rounds_integration_test.go",
+      "lines": "103-105",
+      "title": "Whole-pack difficulty integration assertion still expects source order",
+      "trigger": "Injected reverse shuffler plus StartDifficultyQuiz without a round.",
+      "consequence": "The PostgreSQL tagged integration test deterministically fails after every-attempt shuffling is introduced.",
+      "correction": "Assert a permutation/no duplicates and the injected order rather than catalog index equality; then run the affected integration test after ownership is established."
+    }
+  ],
+  "requirements_verdict": "conditional_pass_source_inspection_only",
+  "code_quality_verdict": "not_ready_until_stale_integration_assertion_is_corrected",
+  "checks_not_run": [
+    "Go unit tests", "Go integration tests", "build", "browser or app checks", "private raw feedback access"
+  ],
+  "limitations": [
+    "No code was edited or adopted.",
+    "This is native review evidence only; external approval, publication, and deployment remain pending."
+  ]
+}

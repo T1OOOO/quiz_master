@@ -1,0 +1,45 @@
+{
+  "status": "pass_owned_offline_scope_only",
+  "actual_exit": 0,
+  "offline_result": {
+    "status": "pass_offline_only",
+    "valid_images": 195,
+    "checks": [
+      "closure",
+      "no_overwrite",
+      "HTML_rejected",
+      "missing_rejected",
+      "traversal_rejected",
+      "invalid_cache_no_output"
+    ],
+    "http_browser_container_checks": false,
+    "publication_attempted": false
+  },
+  "packet_files_sha256": {
+    "backend-review.json": "fea7f344360b48f0aa08597067c532a864775f9be4cc3327b91036c8fa0b21fe",
+    "BACKEND_REVIEW_EN.md": "2b6e6e147b6993859437c7392200ec0cf51ca68fb546938f3967508881254aad",
+    "BRIEF_EN.md": "a1761051e5615adeefac0af7f3af0ee48727ee78a703fc3b2feb32dc750f9b2c",
+    "check_flag_restoration.py": "f75431c623d527dbbd71c345a098a5f02e59cd7c5182a50371cad09de11fc69a",
+    "check_flag_tree.py": "879b7ce33a31ec8a34d37cd6e004153ead167ae619016fb5a315202edc49be28",
+    "flag-green-check.json": "6a7ebc71ef7436c811ef3fd284255f56f8540d69fa21e938ee50345af2d13657",
+    "flag-http-observation.json": "a19c9f00031fe40c22734076feacc9087868ba5d494efd71cd50753196f520bd",
+    "flag-red-check.json": "9c87c3f00ef09f05aecb5cb05b947443ff105a80eb7dd9a772092fe5c95c84d7",
+    "flag-restoration-checks.json": "7b5c485335dd4d194d6f1d1dbad2769ed4e372c40325d819d233e225404d7bdd",
+    "flag-review.json": "119734aa5aee0dab8300d0f6239d2492fd2800bb9634bce63d739092ec5506d3",
+    "flag-webroot-observation.json": "b33638a17cfbaaf797eeb82bc57ddead8f43ccc0e0688af5a0f29a1e28726c95",
+    "FLAG_REVIEW_EN.md": "62de53dd939b31fe60eaeda3fb7315b0b8e3322ea7dd40f442a2145c3c23f72a",
+    "production-observation.json": "bb7a7ac5d66716dbb3e49c5fa1e554d7616a96822189025926d2bef0a242e55d",
+    "scope.json": "4b4c1b42b0825765ca565de41c3bb2b78c3588e9f331b0518dc66e34a5f281d1",
+    "stage_flags.py": "d9c30ea49e6729aa7480e019a56b95735587a7de8526925c159149bf74215ebc",
+    "TRIAGE_EN.md": "304b80602e6da3de09183ea3fc6b9a8023fc0a09a68c484ee77508b53152f82f",
+    "ui-review.json": "a87ecad0b5b25f243fc3ae76bcc437695f85bff450c761b796e4296500b05a52",
+    "UI_REVIEW_EN.md": "181237242302c61911ab518ec328607487502aa8dfb77b8f319d8f7b5421a461"
+  },
+  "native_flag_review_sources_match": true,
+  "ui_review_incremental": true,
+  "all14_reports_mapped": true,
+  "frozen_pins_preserved": true,
+  "production_feedback_closed": false,
+  "product_tests_build_browser_run": false,
+  "publication_attempted": false
+}

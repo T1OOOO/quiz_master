@@ -1,0 +1,158 @@
+{
+  "packet_label": "feedback-43-ui-review-20261017",
+  "hub_task_id": "task-d7f09a209a1744fabd1354bb04719712",
+  "review_type": "native read-only incremental UI review",
+  "review_status": "incremental_requires_stable_recheck",
+  "requirements_compliance": "incomplete",
+  "code_quality": "conditionally coherent within reviewed WIP; not ready for adoption while ownership and source stability are unresolved",
+  "redacted_summary": {
+    "path": ".run/feedback_triage_20261017_0443/redacted-summary.json",
+    "sha256": "9481d04e643139fb732e163179c00b05396b8398f4c5d164012f34456a2c7350",
+    "records_reviewed": 14,
+    "raw_private_reports_read": false
+  },
+  "source_snapshots": {
+    "initial_utc": "2026-10-17T04:50:44.2121954Z",
+    "final_utc": "2026-10-17T04:52:18.0212150Z",
+    "changed_during_review": [
+      {
+        "path": "next/apps/quiz_app/lib/discovery.dart",
+        "initial_sha256": "8ef8f8d51383eddce296ed6b09e5587a5fb953b2a29585097886e8243cf37671",
+        "snapshot_sha256": "8f84e2fc2d90c2e89c1dbd1efeafc78727cda7d6f183323ab7655ed5a35008a1",
+        "post_report_validation_sha256": "7ba1836f922689ff4c3401385ea01c7deabdf051f97e2fb3deee402c4ada4c5a"
+      }
+    ],
+    "final_hashes": {
+      "next/apps/quiz_app/lib/discovery.dart": "8f84e2fc2d90c2e89c1dbd1efeafc78727cda7d6f183323ab7655ed5a35008a1",
+      "next/apps/quiz_app/lib/l10n/app_en.arb": "76fb11f041a3c118c2313a80a37d36a14bbf3d2f551d1c05e0419e524f2e3618",
+      "next/apps/quiz_app/lib/l10n/app_localizations.dart": "4d2930ebb6ad19ef5bdcc2bec316b94564ccbe85222e326e221c12ade6f91cd6",
+      "next/apps/quiz_app/lib/l10n/app_localizations_en.dart": "da04ef80edb31e0975864a0d3f1df93851d1211cd212fcb2894f40b9e34aaff7",
+      "next/apps/quiz_app/lib/l10n/app_localizations_ru.dart": "9b057b654a97084ad66da486ec1cad9f036becb94c32867c9869c6e2d34a4179",
+      "next/apps/quiz_app/lib/l10n/app_ru.arb": "86a61f4f78eb426d19a221d634480f96b0683c60bb1eb7146bb08e3d5931250a",
+      "next/apps/quiz_app/lib/main.dart": "a3000dc460ed0de1f0f8768136e37fc9e4f6baf892ee9ae140e03deb92a0633a",
+      "next/apps/quiz_app/test/discovery_test.dart": "bbd8da74043b134dcb020cce477d11f5b8915821325594f97bfcede603b4179d",
+      "next/apps/quiz_app/test/public_contract_and_cards_test.dart": "e2f80532da4f6b15b5c117471727bff58cbd02ccc2f1726414e3a4b1a5fb9e9b",
+      "next/apps/quiz_app/test/quizipedia_test.dart": "d7ecb66cc8dd5a4dc95e4dacf1fdf21d7f8d3d841c2fe4085e209787a0186566",
+      "next/apps/quiz_app/test/widget_test.dart": "afec2cd4aa639a8390468bceb860a88ae0bf69c191cc8cff9e5f5cc4edc85a7f"
+    }
+  },
+  "feedback_mapping": [
+    {
+      "report_ref": "312790d28c45",
+      "intent": "Remove unnecessary title search from library root",
+      "coverage": "covered_by_wip",
+      "evidence": "discovery.dart removes the TextField; discovery_test.dart asserts catalog-search and catalog-root are absent on the unfiltered root."
+    },
+    {
+      "report_ref": "794a1829c72e",
+      "intent": "Make round controls use available card width",
+      "coverage": "covered_by_wip",
+      "evidence": "discovery.dart _packCard uses width-calculated FilledButton rows; the narrow text-scale test checks the final multi-round button reaches the padded card edge."
+    },
+    {
+      "report_ref": "e8e906592b4e",
+      "intent": "Show answers for all variants",
+      "coverage": "partial_contract_limited",
+      "evidence": "QuestionCard marks correct option IDs and a selected incorrect option. Reveal carries one answer and explanation only, so per-option explanations are not representable by the current public DTO."
+    },
+    {
+      "report_ref": "a1846aa7cc56",
+      "intent": "Improve visual style by copying a neighbouring product",
+      "coverage": "non_actionable_as_stated",
+      "evidence": "The WIP changes density, card geometry, covers, and explanation hierarchy. No cross-project copying was reviewed or needed; the request has no measurable acceptance condition."
+    },
+    {
+      "report_ref": "7c4d40513b0f",
+      "intent": "Provide bottom navigation",
+      "coverage": "gap",
+      "finding": {
+        "severity": "medium",
+        "location": "next/apps/quiz_app/lib/source_style.dart:60-235",
+        "trigger": "Open library navigation on a compact device.",
+        "consequence": "The reviewed UI still exposes top navigation and a drawer only; no bottom NavigationBar exists.",
+        "smallest_adequate_correction": "Decide the destinations and back-stack behavior, then add an accessible, localized bottom navigation component with focused widget coverage."
+      }
+    },
+    {
+      "report_ref": "67758e7615f1",
+      "intent": "Shuffle questions on each run",
+      "coverage": "out_of_ui_scope",
+      "evidence": "No Flutter diff implements question ordering; this requires backend/attempt semantics review."
+    },
+    {
+      "report_ref": "e3d3fe3a2413",
+      "intent": "Show images in library",
+      "coverage": "existing_feature_not_browser_verified",
+      "evidence": "SourceFolderCard and pack cards render category assets. The WIP adjusts pack-cover height from 96 to 64 pixels, but no visual run was performed."
+    },
+    {
+      "report_ref": "f0cd53f04521",
+      "intent": "Make answer display clearer and less cramped",
+      "coverage": "covered_by_wip",
+      "evidence": "main.dart:623 separates a localized Correct answer label, enlarged answer text, explanation, and a left status border; source and widget assertions were inspected but not executed."
+    },
+    {
+      "report_ref": "d57b894bf47f",
+      "intent": "Show flag images",
+      "coverage": "existing_renderer_not_end_to_end_verified",
+      "evidence": "QuestionCard selects image media and _QuestionMedia renders an https image with loading/error semantics. This review did not make an HTTP image request or run the app; no conclusion about a particular production image is made."
+    },
+    {
+      "report_ref": "4c9d210bf414",
+      "intent": "Provide an interactive map for countries, flags, and capitals",
+      "coverage": "not_addressed_by_current_diff",
+      "evidence": "An existing Quizipedia route is reachable through the drawer, but this WIP adds no map capability and the requested breadth was not demonstrated."
+    },
+    {
+      "report_ref": "b136743363e9",
+      "intent": "Make categories easier to understand",
+      "coverage": "partial_existing_structure",
+      "evidence": "The library already shows category folders and covers. The WIP does not introduce a tested taxonomy or explanatory category metadata."
+    },
+    {
+      "report_ref": "756e6ca58cc7",
+      "intent": "Reduce unused whitespace",
+      "coverage": "covered_by_wip",
+      "evidence": "The diff shortens catalog spacing, card margins and image height, and removes the root search field. Visual adequacy remains unverified without a run."
+    },
+    {
+      "report_ref": "e2df779258dd",
+      "intent": "Group and name rounds by their content",
+      "coverage": "gap",
+      "finding": {
+        "severity": "medium",
+        "location": "next/apps/quiz_app/lib/discovery.dart:337-390",
+        "trigger": "Browse a pack with more than one round.",
+        "consequence": "Controls remain numeric Round N plus question count, so users cannot infer a round's subject before starting.",
+        "smallest_adequate_correction": "Add public round-title metadata or a defined derivation rule, then render and test those labels without exposing answers."
+      }
+    },
+    {
+      "report_ref": "fc91bbc18dd2",
+      "intent": "Start a one-round pack directly",
+      "coverage": "covered_by_wip",
+      "evidence": "_packCard omits controls when round count is one while the card routes to the pack; discovery_test.dart includes a one-round regression case."
+    }
+  ],
+  "checks": [
+    {
+      "command": "git -C C:\\ap\\quiz_master diff --check -- next/apps/quiz_app",
+      "result": "no diff-check diagnostics; Git emitted LF-to-CRLF working-copy warnings only"
+    },
+    {
+      "command": "read-only Get-FileHash before and after source inspection",
+      "result": "discovery.dart changed during review; all conclusions are incremental"
+    },
+    {
+      "command": "Flutter tests, builds, browser and image HTTP checks",
+      "result": "not run by packet constraint"
+    }
+  ],
+  "limitations": [
+    "The 14 sanitized comments are untrusted feedback signals, not executable requirements.",
+    "Unknown-owner dirty files were not edited, staged, reverted, or adopted.",
+    "No private raw reports, participant identifiers, request identifiers, or screenshot data were read.",
+    "No published behavior, deployment state, or closed-feedback status is asserted."
+  ],
+  "release_boundary": "This native read-only review neither accepts unknown-owner product work nor authorizes commit, adoption, publication, deployment, or closure of production feedback."
+}

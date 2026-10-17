@@ -1,0 +1,18 @@
+{
+  "command": "python docs/rewrite-agents/tasks/FEEDBACK_43_TRIAGE_20261017/check_flag_restoration.py",
+  "actual_exit": 0,
+  "result": {
+    "status": "pass_offline_only",
+    "valid_images": 195,
+    "checks": [
+      "closure",
+      "no_overwrite",
+      "HTML_rejected",
+      "missing_rejected",
+      "traversal_rejected",
+      "invalid_cache_no_output"
+    ],
+    "http_browser_container_checks": false,
+    "publication_attempted": false
+  }
+}
