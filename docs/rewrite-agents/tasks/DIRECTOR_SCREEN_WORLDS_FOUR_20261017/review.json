@@ -1,0 +1,152 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_SCREEN_WORLDS_FOUR_20261017",
+  "hub_task_id": "task-f8c958f100ad43c697cedc13da55e2d4",
+  "review_type": "independent_private_native_article_review_with_inherited_blind",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-b586b41149ad4deaa90cc334248b0039"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "bf67ee4f32f37a16b347be102df749a31512c9100092c801efc941e0c81c81fc"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "288361178e8bfc57674e9788b96782b7a8210f07f591a7c0fc9e1b2f0f806a95"
+  },
+  "blind_answer_sha256": "e34192f238283cb6c48c6bfe3eb05d88bdb7935696ed0789482f6210a0d00350",
+  "ordering": {
+    "inherited_blind": true,
+    "new_blind_solve_performed": false,
+    "origin_packet": "DIRECTOR_NEXT_SOURCE_20261017",
+    "origin_session_id": "session-81cdaa0a5cc644ac9eb31b6a0d72385f",
+    "original_answers_frozen_before_research_and_new_articles": true,
+    "copied_blind_hash_verified": true,
+    "blind_rewritten": false,
+    "private_canonical_keys_read": false,
+    "article_review_after_exact_writer_freeze": true
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-11",
+      "question_revision_sha256": "ad88331a2fcb2d4187a361e84d81cbb2373677e93fb281b96af310c52a06f04d",
+      "blind_answer": {
+        "option_id": "prep-film-directors-11-opt-3",
+        "text": "Георгий Данелия",
+        "inherited": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 194,
+      "checked_claims": [
+        "Both institutions support1986, Daneliya directing and shared screenplay with Revaz Gabriadze, Lebeshev cinematography and Kancheli music.",
+        "Studio supports two Earth travellers/unfamiliar customs parodying familiar customs; museum describes satire. Geography omitted; Revaz is not confused with cast member Levan."
+      ],
+      "distractor_review": "Ryazanov, Gaidai and Shakhnazarov are not the credited director. Exact dated title gives one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Optional customary-rule observation and analogy permit disagreement; no invented scene or single required interpretation.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/kin-dza-dza/",
+        "https://www.museikino.ru/exposition/films/kin-dza-dza/"
+      ],
+      "source_limits": [
+        "Two institutionally distinct sources support bounded used claims; geographic/source anecdote assertions deliberately omitted."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-12",
+      "question_revision_sha256": "d7dea625e30f095f505c64f64eb5eead2a620d29c86cda7ae90743b470be754e",
+      "blind_answer": {
+        "option_id": "prep-film-directors-12-opt-1",
+        "text": "Алла Сурикова",
+        "inherited": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 199,
+      "checked_claims": [
+        "1987, Surikova director, Akopov screenplay, Gladkov music and listed actors match studio record.",
+        "Fest, cowboy town, saloon screenings, Diana and Second's violent films match synopsis; no inferred actor-role or singing mappings."
+      ],
+      "distractor_review": "Mikhalkov, Daneliya and Shepitko are not the credited director. Exact dated title gives one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Audience-change discussion stays within fictional town and explicitly avoids universal real-audience claims; comparison exercise open.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/chelovek-s-bulvara-kaputsinov/"
+      ],
+      "source_limits": [
+        "Single producing-studio source; permitted1–5range, not independently corroborated by another institution."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-13",
+      "question_revision_sha256": "6687aa224ffe2ef909272bb6cea8f0a2b75dadea4c06f1e927d652a4f2f7de8a",
+      "blind_answer": {
+        "option_id": "prep-film-directors-13-opt-1",
+        "text": "Эльдар Рязанов",
+        "inherited": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 196,
+      "checked_claims": [
+        "1984, Ryazanov director/screenwriter and Ostrovsky's Without a Dowry as adaptation basis match studio record.",
+        "Heroine's love versus calculation premise, Petrov music, Alisov cinematography and Guzeeva/Mikhalkov cast match; no vocal/role assignment or literal-adaptation claim."
+      ],
+      "distractor_review": "Todorovsky, Panfilov and Motyl are not the credited director. Exact dated title gives one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Conditional play/film comparison distinguishes literary author, screenplay and screen direction without supplying invented examples.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/zhestokiy-romans/"
+      ],
+      "source_limits": [
+        "Single producing-studio source; permitted1–5range, not independently corroborated by another institution."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-14",
+      "question_revision_sha256": "fc1d628ea862aeaa31aaf8e3a01478c2737caac086d8ad308c55c1d2da0ef856",
+      "blind_answer": {
+        "option_id": "prep-film-directors-14-opt-3",
+        "text": "Георгий Данелия",
+        "inherited": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 200,
+      "checked_claims": [
+        "1977, Daneliya direction, screenplay Daneliya/Tokareva/Revaz Gabriadze, Kancheli music and named cast match credits.",
+        "Valiko/Mimino, village helicopter transport, Moscow ambition and international airline achievement match synopsis; happiness away from home is correctly left a question."
+      ],
+      "distractor_review": "Gaidai, Ryazanov and Shakhnazarov are not the credited director. Exact dated title gives one defensible offered answer; no visible answer leak.",
+      "pedagogy_review": "Professional goal versus belonging is offered as a reading, not director intention; flexible two-note exercise invites justification.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/mimino/"
+      ],
+      "source_limits": [
+        "Single producing-studio source; permitted1–5range, not independently corroborated by another institution."
+      ]
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 5,
+    "total_cited_urls": 5,
+    "retrieval": "All five exact final URLs actually reopened successfully with web tool and relevant credits/synopses read in this article-review session on2026-10-17, before writer freeze. Final file inspection confirmed the identical URL set. No inherited retrieval substituted for this session's opens.",
+    "failed_retrievals": [],
+    "root_captures_used": false
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "research_limits_followed": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native same-provider editorial review only; genuine different-provider acceptance and publication remain pending. No canonical keys read; no runtime/product changes. Inherited blind evidence is not represented as a second clean solve."
+}
