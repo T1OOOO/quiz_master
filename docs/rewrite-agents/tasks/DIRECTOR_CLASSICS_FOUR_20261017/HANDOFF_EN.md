@@ -1,0 +1,11 @@
+# Four classic director articles007–010
+
+Four original Russian private drafts cover MoscowDoesNotBelieveInTears,Devchata,GentlemenOfFortune andWhiteSunOfDesert. They use200/202/202/199words and1/1/1/2primarylinks,five unique institutionalURLs. Root actually retrieved/read all five final pages and all article bodies; additional Lenfilm material corroborates the1970release. Three articles rely on one institutional source each; no second corroboration is claimed.
+
+Actual native writer/checker accepted bounded Hub assignments. Checker source-verified four candidates before article access and froze answersfbeb76e5. Root compared local editorial keys afterwards:4/4match and exact public stems/options. Distinct interpretation exercises address three friends' trajectories,respect for a newcomer,a role within a role,and choices during a journey. They do not claim full-film viewing or measured difficulty. WhiteSun1969studio card versus March1970release is retained with attribution, not promoted to a false question-date bug. Sery directing is separated from Daneliya/Tokareva screenplay.
+
+Previous six director drafts and frozen inputs are preserved. Coverage after this batch:10private/30missing/0runtimeasset matches among40current public questions in carried inventory scope. This is private preparation, not verified publication. Continue at011under quiz_master-4koa; keep issue open for genuine external acceptance and published verification.
+
+Production readonly snapshot:43reports/43OPEN and same digest,Helm64/sameimage/oneavailable replica/readiness200,healthyconditions; disk16.059% still fails strict20% release gate. No production mutation,canonical/runtime/frozenNVN change,build/browser/deploy,archive/copy/unlink/prune,feedback closure or vendor-quota retry. Same-provider native draft evidence cannot stand in for genuine different-provider source/runtime release acceptance. ForeignWIP remains protected.
+
+Final native review accepted all four exact article/source hashes with no findings. review.json SHA256: 81816fca0e8008bd9587e4290cf729a6034b78deab60459f1e194c79c63aebd7. This is same-provider private-draft acceptance only. The Mosfilm card labels White Sun of the Desert 1969 while its anniversary account places release in late March 1970; the card field is not asserted to prove a production or completion year.

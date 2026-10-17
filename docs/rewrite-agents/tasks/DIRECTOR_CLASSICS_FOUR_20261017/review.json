@@ -1,0 +1,143 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_CLASSICS_FOUR_20261017",
+  "hub_task_id": "task-d6f2cd8c93da4b68a0f7daaed5a3066b",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-ac6f735d7ef74b748b1b44cca0571782"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "2fc2f42a0a284475d7578e905aff699cc275dcd4d0399be25a83aef59e08a3ac"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "3337f1fc91a5aa40f8fa69aa821cae48d0fd37fea1e71be8badd255755e292fb"
+  },
+  "blind_answer_sha256": "fbeb76e5195031cac56cb603fea992edb3d36047c52de9c9573f2aebf6eba1b3",
+  "ordering": {
+    "candidate_first": true,
+    "answers_frozen_before_article_access": true,
+    "private_canonical_keys_read": false
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-7",
+      "question_revision_sha256": "98e3fa8cbd964b03f97e64911698801ba7163abe9b0e4816ee28484c2a406ff0",
+      "blind_answer": {
+        "option_id": "prep-film-directors-7-opt-1",
+        "text": "Владимир Меньшов"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 200,
+      "checked_claims": [
+        "Menshov directing, Chernykh screenplay and named cast match studio record.",
+        "1950s Moscow, three arriving women, dormitory and friendship through years match synopsis; comparing life paths is explicitly optional analysis."
+      ],
+      "distractor_review": "Daneliya, Mikhalkov and Govorukhin are not the credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/moskva-slezam-ne-verit/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports the bounded article; allowed by1–5source brief. No second-source corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-8",
+      "question_revision_sha256": "eb6bac1a8e9d012a7b3a3b89c59fe7313c707470ea77e62ed367d6ea5c6bcbf6",
+      "blind_answer": {
+        "option_id": "prep-film-directors-8-opt-3",
+        "text": "Юрий Чулюкин"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "1961 card label, Chulyukin directing, Bedny screenplay and named performers match studio credits.",
+        "Cook Tosya's arrival, lumberjack settlement, Ilya's bet and genuine feeling after losing her match synopsis; respect/group-position reading is marked as analysis."
+      ],
+      "distractor_review": "Gaidai, Ryazanov and Daneliya are not the credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/devchata/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports the bounded article; allowed by1–5source brief. No second-source corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-9",
+      "question_revision_sha256": "50cceefb6affd75c4a63da546e247e1c21d4be8e44baf0900e2bf6374360796d",
+      "blind_answer": {
+        "option_id": "prep-film-directors-9-opt-4",
+        "text": "Александр Серый"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "1971, Sery directing and Daneliya/Tokareva screenplay are explicitly separate studio credits; named cast matches.",
+        "Kindergarten head Troshkin, resemblance to Dotsent, stolen helmet and police infiltration match synopsis; role-within-role exercise is interpretive."
+      ],
+      "distractor_review": "Daneliya is a genuine screenwriter of this film but not its credited director. Gaidai and Ryazanov are also not the credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/dzhentlmeny-udachi/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports the bounded article; allowed by1–5source brief. No second-source corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-10",
+      "question_revision_sha256": "78c947c53884a766bfcc9a2fc841fefaf65780d2506adbf6c183a4c40d641c8a",
+      "blind_answer": {
+        "option_id": "prep-film-directors-10-opt-2",
+        "text": "Владимир Мотыль"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 199,
+      "checked_claims": [
+        "Motyl directing, studio-listed screenwriters Yezhov/Ibragimbekov and composer Schwartz match credits; article attributes this list specifically to the studio card, not an exhaustive universal authorship claim.",
+        "Sukhov's homeward route through Turkestan after Civil War, Red Army detachment, Abdullah and nine threatened women match synopsis; anniversary text maps Kuznetsov to Sukhov.",
+        "Studio card displays1969 under its date-of-release field; studio anniversary article explicitly says lateMarch1970 screen release. Draft accurately reports both, without asserting a proven production/completion chronology or declaring either false."
+      ],
+      "distractor_review": "Mikhalkov and Panfilov are not the credited director. Konchalovsky's earlier planned/script involvement does not make him final credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/beloe-solntse-pustyni/",
+        "https://www.mosfilm.ru/about/news/k-50-letiyu-vykhoda-filma-beloe-solntse-pustyni/"
+      ],
+      "source_limits": [
+        "The two cited pages share studio provenance. Their1969/1970 metadata differ; article preserves exact source statements without claiming the1969 field is proven to mean production year."
+      ]
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 5,
+    "total_cited_urls": 5,
+    "retrieval": "All five exact cited URLs actually opened and relevant text read independently on2026-10-17; first three before blind freeze, final two after writer freeze.",
+    "failed_retrievals": [],
+    "supplemental_blind_sources": [
+      "https://www.lenfilm.ru/news/2020/03/50_let_Belomu_solntsu_pustyini",
+      "https://www.museikino.ru/exposition/films/beloe-solntse-pustyni/"
+    ],
+    "supplemental_support": "Both independently credit Motyl; Lenfilm explicitly supports30March1970release and Museum displays1969. Not substitutes for actual reading of both cited studio pages.",
+    "limits": "One initial Lenfilm text-find returned no match; subsequent contextual open returned its full relevant body. No cited URL failed retrieval."
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native same-provider editorial evidence only; genuine different-provider acceptance and publication pending. No canonical keys read or runtime/product changes."
+}

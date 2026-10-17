@@ -1,0 +1,67 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_CLASSICS_FOUR_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-ac6f735d7ef74b748b1b44cca0571782"
+  },
+  "review_scope": "Private native same-provider evidence only; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-7",
+      "option_id": "prep-film-directors-7-opt-1",
+      "answer": "Владимир Меньшов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/moskva-slezam-ne-verit/",
+      "evidence": "Studio record credits Menshov as director and labels the film 1979, separately naming Valentin Chernykh as screenwriter.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "prep-film-directors-8",
+      "option_id": "prep-film-directors-8-opt-3",
+      "answer": "Юрий Чулюкин",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/devchata/",
+      "evidence": "Studio record credits Chulyukin as director and dates the film 1961; Boris Bedny is separately credited as screenwriter.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "prep-film-directors-9",
+      "option_id": "prep-film-directors-9-opt-4",
+      "answer": "Александр Серый",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/dzhentlmeny-udachi/",
+      "evidence": "Studio record credits Sery as director and dates the film 1971; offered distractor Daneliya is a screenwriter with Viktoria Tokareva, not the credited director.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "prep-film-directors-10",
+      "option_id": "prep-film-directors-10-opt-2",
+      "answer": "Владимир Мотыль",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.lenfilm.ru/news/2020/03/50_let_Belomu_solntsu_pustyini",
+      "evidence": "Lenfilm explicitly identifies Motyl as director and theatrical release on30March1970. Museum of Cinema independently credits Motyl, while displaying a1969 work-year label; that is not evidence the1970 release qualifier is false.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    }
+  ],
+  "additional_primary_source": {
+    "url": "https://www.museikino.ru/exposition/films/beloe-solntse-pustyni/",
+    "supports": "Motyl director;1969 museum work-year label versus Lenfilm1970 release; planned Konchalovsky involvement does not make him credited final director.",
+    "retrieval": "Successful actual institutional web open."
+  },
+  "candidate_assessment": "Four clean blind items; one uniquely credited director among offered options, no visible answer leak. Role confusion in009 is resolved by distinct screenplay/director credits. In010 the candidate1970 date is supported by an explicit release source; source work-year differences do not change the answer.",
+  "failed_retrievals": [],
+  "retrieval_note": "An initial web find for the inflected Motyl name yielded no match; reopening Lenfilm with relevant line context returned full readable body including director and1970 release. No failed URL retrieval."
+}
