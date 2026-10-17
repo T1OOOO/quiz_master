@@ -1,0 +1,145 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_NEXT_SOURCE_20261017",
+  "hub_task_id": "task-0035287a90de4357b794a313874cb6af",
+  "review_type": "independent_private_native_source_research_review",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-81cdaa0a5cc644ac9eb31b6a0d72385f"
+  },
+  "reviewed_file": {
+    "path": "source-research.json",
+    "sha256": "c598b7993ce26860ac25e76f85b76aac5c2913598a9867e03559768366d943d1"
+  },
+  "blind_answer_sha256": "e34192f238283cb6c48c6bfe3eb05d88bdb7935696ed0789482f6210a0d00350",
+  "ordering": {
+    "candidate_first": true,
+    "answers_frozen_before_source_research_access": true,
+    "articles_read": false,
+    "private_canonical_keys_read": false
+  },
+  "items": [
+    {
+      "question_id": "prep-film-directors-11",
+      "question_revision_sha256": "ad88331a2fcb2d4187a361e84d81cbb2373677e93fb281b96af310c52a06f04d",
+      "blind_answer": {
+        "option_id": "prep-film-directors-11-opt-3",
+        "text": "Георгий Данелия"
+      },
+      "verdict": "accepted_for_research",
+      "checked_claims": [
+        "Both institutions support1986 and Daneliya director; screenplay Daneliya/Revaz Gabriadze, cinematography Pavel Lebeshev and music Kancheli.",
+        "Studio synopsis supports two Earth travellers and unfamiliar customs; museum explicitly describes satire."
+      ],
+      "distractor_review": "Ryazanov, Gaidai and Shakhnazarov are not the credited director. Dated title is unique among offered options; no visible leak or alternate defensible answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/kin-dza-dza/",
+        "https://www.museikino.ru/exposition/films/kin-dza-dza/"
+      ],
+      "editorial_limits_verified": [
+        "Do not import studio assertion that the title is a planet name: reviewed pages do not resolve fictional geography.",
+        "Revaz screenplay and Levan cast are distinct; no unverified character mappings, production anecdotes, awards or copied dialogue."
+      ],
+      "exercise_verdict": "Suitable as a proposed open interpretation, not an objective answer or verified director intention."
+    },
+    {
+      "question_id": "prep-film-directors-12",
+      "question_revision_sha256": "d7dea625e30f095f505c64f64eb5eead2a620d29c86cda7ae90743b470be754e",
+      "blind_answer": {
+        "option_id": "prep-film-directors-12-opt-1",
+        "text": "Алла Сурикова"
+      },
+      "verdict": "accepted_for_research",
+      "checked_claims": [
+        "1987, Surikova director, Akopov screenplay, Gladkov music and all named cast match studio record.",
+        "Johnny Fest, cowboy town, saloon screenings, Diana and Second match studio synopsis."
+      ],
+      "distractor_review": "Mikhalkov, Daneliya and Shepitko are not the credited director. Dated title is unique among offered options; no visible leak or alternate defensible answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/chelovek-s-bulvara-kaputsinov/"
+      ],
+      "editorial_limits_verified": [
+        "Single producing-studio source; no corroborating institution claimed.",
+        "Cast listing alone does not bind actors to characters or establish later similarly named film facts, production stories, prizes or lyrics."
+      ],
+      "exercise_verdict": "Suitable as a proposed open interpretation, not an objective answer or verified director intention."
+    },
+    {
+      "question_id": "prep-film-directors-13",
+      "question_revision_sha256": "6687aa224ffe2ef909272bb6cea8f0a2b75dadea4c06f1e927d652a4f2f7de8a",
+      "blind_answer": {
+        "option_id": "prep-film-directors-13-opt-1",
+        "text": "Эльдар Рязанов"
+      },
+      "verdict": "accepted_for_research",
+      "checked_claims": [
+        "1984, Ryazanov director/screenwriter, Petrov music, Alisov cinematography and Guzeeva/Mikhalkov cast match studio record.",
+        "Adaptation based on Ostrovsky's Without a Dowry is explicit; literary authorship does not imply screen direction."
+      ],
+      "distractor_review": "Todorovsky, Panfilov and Motyl are not the credited director. Dated title is unique among offered options; no visible leak or alternate defensible answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/zhestokiy-romans/"
+      ],
+      "editorial_limits_verified": [
+        "Single producing-studio source; no corroborating institution claimed.",
+        "No literal-adaptation, singing/voice, actor-role, exact production-history or critical-consensus conclusions follow from this record."
+      ],
+      "exercise_verdict": "Suitable as a proposed open interpretation, not an objective answer or verified director intention."
+    },
+    {
+      "question_id": "prep-film-directors-14",
+      "question_revision_sha256": "fc1d628ea862aeaa31aaf8e3a01478c2737caac086d8ad308c55c1d2da0ef856",
+      "blind_answer": {
+        "option_id": "prep-film-directors-14-opt-3",
+        "text": "Георгий Данелия"
+      },
+      "verdict": "accepted_for_research",
+      "checked_claims": [
+        "1977, Daneliya director; screenplay Daneliya/Tokareva/Revaz Gabriadze; Kancheli music and Kikabidze/Mkrtchyan cast match studio credits.",
+        "Valiko Mizandari/Mimino, helicopter service in home village and Moscow pursuit of larger aviation match synopsis."
+      ],
+      "distractor_review": "Gaidai, Ryazanov and Shakhnazarov are not the credited director. Dated title is unique among offered options; no visible leak or alternate defensible answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/mimino/"
+      ],
+      "editorial_limits_verified": [
+        "Single producing-studio source; no corroborating institution claimed.",
+        "Success versus belonging is a proposed reading, not proven director intention; no inferred actor-role/performance/production claims."
+      ],
+      "exercise_verdict": "Suitable as a proposed open interpretation, not an objective answer or verified director intention."
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_research_urls": 5,
+    "total_research_urls": 5,
+    "retrieval": "All five exact research URLs successfully opened and relevant text read independently with the web tool on2026-10-17. Blind used non-www studio URL for011; exact research www variant was additionally opened after freeze. Other three studio URLs were already read before freeze; museum read after freeze.",
+    "failed_retrievals": [],
+    "inherited_root_capture_used": false
+  },
+  "checks": {
+    "source_json_parses": true,
+    "four_exact_candidate_refs_match": true,
+    "five_unique_https_urls": true,
+    "status_private_source_research_not_articles": true,
+    "source_count_by_item": [
+      2,
+      1,
+      1,
+      1
+    ],
+    "no_article_content_review_claimed": true,
+    "no_coverage_increase_claimed": true,
+    "links_do_not_grant_media_reuse": true
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_research",
+  "limits": [
+    "Only011 has two institutionally distinct sources;012–014 have one producing-studio source each.",
+    "Filmcards and museum prose support the bounded listed facts, not every anecdote or promotional statement.",
+    "No articles exist in this assigned scope; article word count, final editorial prose and runtime coverage were not reviewed.",
+    "No full-film or scene-level viewing, private key comparison or genuine different-provider release acceptance performed."
+  ],
+  "release_boundary": "Native same-provider private source research review only; external acceptance pending. This report does not approve publication, produce completed articles or increase article coverage. Frozen research and runtime/canonical inputs unchanged."
+}

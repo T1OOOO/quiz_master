@@ -1,0 +1,62 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_NEXT_SOURCE_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-81cdaa0a5cc644ac9eb31b6a0d72385f"
+  },
+  "review_scope": "Private source research only, native same-provider; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "source_research_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_research": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-11",
+      "option_id": "prep-film-directors-11-opt-3",
+      "answer": "Георгий Данелия",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://mosfilm.ru/cinema/films/kin-dza-dza/",
+      "evidence": "Producing studio record explicitly credits Георгий Данелия as director and gives1986, separately identifying screenplay/cast roles.",
+      "retrieval": "Successful actual institutional web open and relevant credits/date read."
+    },
+    {
+      "question_id": "prep-film-directors-12",
+      "option_id": "prep-film-directors-12-opt-1",
+      "answer": "Алла Сурикова",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/chelovek-s-bulvara-kaputsinov/",
+      "evidence": "Producing studio record explicitly credits Алла Сурикова as director and gives1987, separately identifying screenplay/cast roles.",
+      "retrieval": "Successful actual institutional web open and relevant credits/date read."
+    },
+    {
+      "question_id": "prep-film-directors-13",
+      "option_id": "prep-film-directors-13-opt-1",
+      "answer": "Эльдар Рязанов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/zhestokiy-romans/",
+      "evidence": "Producing studio record explicitly credits Эльдар Рязанов as director and gives1984, separately identifying screenplay/cast roles.",
+      "retrieval": "Successful actual institutional web open and relevant credits/date read."
+    },
+    {
+      "question_id": "prep-film-directors-14",
+      "option_id": "prep-film-directors-14-opt-3",
+      "answer": "Георгий Данелия",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/mimino/",
+      "evidence": "Producing studio record explicitly credits Георгий Данелия as director and gives1977, separately identifying screenplay/cast roles.",
+      "retrieval": "Successful actual institutional web open and relevant credits/date read."
+    }
+  ],
+  "candidate_assessment": "All four exact dated titles have a unique credited director among options; no visible answer leak or alternate defensible offered answer.",
+  "failed_retrievals": []
+}

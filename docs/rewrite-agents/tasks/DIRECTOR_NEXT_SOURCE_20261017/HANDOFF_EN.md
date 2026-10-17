@@ -1,0 +1,13 @@
+# Director questions 011–014: source research only
+
+This packet prepares the next four missing director articles: Kin-dza-dza!, The Man from Boulevard des Capucines, A Cruel Romance and Mimino. Root retrieved and read the four producing-studio cards plus the Museum of Cinema page for the first film. The research records separate supported credits and synopsis facts from proposed interpretation exercises and facts still requiring evidence.
+
+This is not an article batch. Director coverage remains ten private drafts and thirty missing articles among forty public questions; no runtime bindings or published coverage are added. Write original Russian articles only after this source research passes native review, preserving exact question revisions. Reuse the preceding article schema and validator rather than inventing a content contract.
+
+In particular, do not copy the Kin-dza-dza! studio synopsis's identification of the title as a planet. Neither opened page resolves that fictional geography. Treat it as excluded from the proposed scope, not a proven correction. Do not infer actor-role or singing credits from cast lists. Only the first item has two distinct institutional sources; the remaining three rely on one producing-studio source each. No full-film viewing or measured difficulty is claimed.
+
+The native checker must solve the candidate-facing questions before opening Root's research and freeze its answers; Root then compares editorial keys locally. Review is native same-provider source research only, never different-provider release acceptance. Keep Beads quiz_master-4koa open for the remaining articles, external acceptance and eventual published verification.
+
+Production was observed read-only: same 43 reports, all OPEN, same row digest, Helm revision64, one available replica and readiness200. Disk free15.916% still fails the strict greater-than20% gate. No production mutation, feedback closure, builds/browser, quota retry, cleanup, candidate/archive or publication occurred. Frozen release inputs and unrelated changes remain protected.
+
+Final source-only native review accepted all four research records without findings, with actual independent reads of all five exact URLs. review.json SHA256 ffe6742d5819a10a636adf7945ebe2088e2366b4f7e79a866736c79ac75a6ef2. Root compared four frozen independent answers with local editorial keys afterwards: all match, with exact stems/options parity. Review and blind files are frozen; the helper is quiescent. Source-research.json retains its creation-time pending label; the final acceptance is recorded separately here and in review.json, without modifying reviewed bytes.
