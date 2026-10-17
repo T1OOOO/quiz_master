@@ -1,0 +1,21 @@
+{
+  "scope": "isolated local media QA only",
+  "browser_session": "qm-flags-20261017-0640",
+  "loopback_port": 59995,
+  "server_final_exit": 0,
+  "server_port_listener_count": 0,
+  "listener_check": "Get-NetTCPConnection -LocalPort59995 -StateListen returned no listeners; separate socket probe timed out and was not used as closure proof",
+  "browser_close_cli_success": true,
+  "setup_failures": [
+    "Initial piped-stdin server exited on EOF; restarted with owned PTY.",
+    "Initial MCP open returned no result within bounded wait; wrapper terminated; official CLI used named session.",
+    "Initial subprocess shell/stdin eval timed out after45seconds; no accepted result. Successful eval used official Node wrapper, base64 argument and consistent allowed-domain setting."
+  ],
+  "successful_execution": "browser-raw.json actual_exit0 success=true; browser-result.json stores195 verified images",
+  "visual_inspection": [
+    "Root viewed decoded-samples.png:12 flag images visible with no broken placeholders.",
+    "Root viewed reported-flag.png: reported Norway image visible,320x233."
+  ],
+  "flutter_or_container_acceptance": false,
+  "publication_attempted": false
+}

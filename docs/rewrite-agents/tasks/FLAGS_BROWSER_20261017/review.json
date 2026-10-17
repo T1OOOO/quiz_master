@@ -1,0 +1,77 @@
+{
+  "packet_label": "flags-browser-media-evidence-review-20261017",
+  "hub_task_id": "task-62aa17e3e8294086875540971cce0fad",
+  "review_type": "independent_private_media_qa_evidence_review",
+  "reviewed_inputs": {
+    "browser_check_js": "39135d64c5f1e67b8750145841053ebd77de9ba12d046c5af4b48b77e2c34ab7",
+    "browser_raw_json": "56131d713fde7cc6834ee4279161e6cc6deed64fe16390689a706d7b15715810",
+    "browser_result_json": "611841713a3807944b8165e8b67c77f5a2b428d18d54c9d873c3f1ed5e1172b0",
+    "catalog_identity_json": "041f3591d103493b7990287f8ce0b2812af05f3a5f18c7f4414d5e1af0bfeac7",
+    "decoded_samples_png": "b03529f59c70a2fe3a4db9cfe8ac4f274375b5a4263499e181eb4d6570c04d99",
+    "reported_flag_png": "2442e9bd162d3359acf0df1a58b93d1b16457cf1403635a0d1f2682910373e16",
+    "run_notes_json": "d1494c79e8c86024381541cb1d7169d4d58f4386aa5cec1a2f45f68041c6448e"
+  },
+  "requirements_verdict": {
+    "verdict": "accepted_for_media_qa_only",
+    "checks": [
+      {
+        "requirement": "All 195 catalog flag assets decode in Chromium with HTTP 200, image/png, expected SHA-256, and positive dimensions.",
+        "result": "pass",
+        "evidence": "browser-result.json records total 195, 195 unique URLs/digests, and positive dimensions; browser-raw.json has actual_exit 0 and success true."
+      },
+      {
+        "requirement": "Negative controls reject HTML and a missing flag.",
+        "result": "pass",
+        "evidence": "browser-result.json has html_rejected=true and missing_rejected=true."
+      },
+      {
+        "requirement": "The media set used by the run matches a fresh public catalog snapshot.",
+        "result": "pass",
+        "evidence": "catalog-identity.json records HTTP 200, 195 public questions, exact set match, and equal fresh/used raw SHA-256 values."
+      },
+      {
+        "requirement": "Saved receipts and screenshots are internally consistent.",
+        "result": "pass",
+        "evidence": "All review-input hashes matched; the parsed raw return's result equals browser-result.json; decoded-samples.png and reported-flag.png were viewed."
+      },
+      {
+        "requirement": "Root-owned local resources were cleaned up.",
+        "result": "pass",
+        "evidence": "run-notes.json records server exit 0, no listener on the loopback port, and successful named-browser close."
+      }
+    ]
+  },
+  "quality_verdict": {
+    "verdict": "adequate_for_isolated_asset_decode_evidence",
+    "strengths": [
+      "The browser script validates transport status, MIME, content digest, and actual bitmap decoding rather than relying on DOM image load alone.",
+      "The content-addressed filename and browser-computed SHA-256 bind each fetched response to the catalog media identity.",
+      "The negative controls cover a wrong MIME type and a missing resource; concurrency is bounded at eight."
+    ],
+    "limits": [
+      "The test uses an isolated loopback static server and does not exercise the Flutter client or production delivery stack.",
+      "The saved visual samples are corroborating evidence only; the complete 195-item proof is the structured Chromium result."
+    ]
+  },
+  "observed_result": {
+    "browser": "HeadlessChrome/152.0.0.0",
+    "total_decoded": 195,
+    "unique_urls": 195,
+    "unique_digests": 195,
+    "minimum_dimensions": {
+      "width": 320,
+      "height": 126
+    },
+    "max_concurrent_fetches": 8,
+    "negative_controls": {
+      "html_rejected": true,
+      "missing_rejected": true
+    },
+    "flutter_verified": false,
+    "container_verified": false,
+    "publication_attempted": false
+  },
+  "reviewer_execution": "No browser, server, test, build, child process, or vendor CLI was executed by this reviewer. Review used saved files, hash comparison, parsed-receipt consistency checks, and image viewing only.",
+  "overall_verdict": "accepted_for_media_qa_only",
+  "release_boundary": "This is not Flutter, nginx/container, deployment, feedback-resolution, release, external-acceptance, or publication approval."
+}

@@ -1,0 +1,5 @@
+# Browser decoding of restored flag media
+
+Root owns this packet, isolated loopback static server and named browser session. Assets are copied from prior verified flag restoration, not downloaded or transformed. Verify all195 exactcontentaddressed PNGs decode in Chromium, have positive natural dimensions, and preserve SHA256 over HTTP. This is media-only QA, not Flutter rendering, nginx/container acceptance, external acceptance, or publication. No product/frozenNVN edit, no production mutation, no realfeedbackclosure, no quota retry. Active foreign Flutter/Go work stays untouched.
+
+Independent native reviewer owns ONLY REVIEW_EN.md and review.json after actual Hubofferaccept. Inspect Root test scripts and receipts/screenshots, source hashes, count/dimension/digest assertions, negative controls and limits. Read-only PowerShell and viewing saved screenshots allowed; no browser, tests, build, child or vendorCLI run by reviewer. Do not treat browser decoder success as Flutter/publication acceptance. Root will provide exact frozen files after run.
