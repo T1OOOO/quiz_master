@@ -1,0 +1,11 @@
+# First director article pair
+
+Two private Russian miniarticles200/210words cover exact current public revisions for Stalker and Irony of Fate. Writer and candidate-first checker accepted finite Hub assignments. Blind source-verified answers were frozen before article access; Root compared authorized local editorial keys afterwards:2/2match and exact public stems/options. Five institutional URLs were retrieved and read by Root, including actual HTTPS200 fallback after two web-tool timeouts for the Mosfilm exposition page.
+
+Stalker separates Tarkovsky directing from Strugatsky literary/screenplay roles and the1979film from2025restoration. Irony separates the1975archive/creation date from1976release/firstTV; the studio exposition reference section supports1January1976, despite loose introductory prose on that page. No current question correction or intended-key change is proposed. Optional viewing exercises invite observation rather than a single interpretation.
+
+Coverage inventory is bounded to runtime article asset and32task/runtime files recorded in coverage-inventory.json, not an exhaustive claim about every legacy document location or published reader. Of40current public director questions,2now have private drafts and38remain in this scope. Continue under quiz_master-4koa. Keep quiz_master-rnk6 open until genuine external acceptance and published verification.
+
+No canonical/runtime/frozenNVN changes, build/browser/deploy or real feedback closure occurred. Production read-only capture remains43reports/43OPEN,Helm64/sameimage/readiness200; disk16.239% still fails strict20% release gate. Same-provider native editorial evidence is private preparation only; genuine different-provider source/input acceptance and authorized release gates remain pending. Foreign productWIP is preserved.
+
+Final native review ec6599ec accepts both exact article hashes. Reviewer directly retrieved4/5displayed sources and independently read Root-captured original HTML for the fifth (e0cd6dd9), with the limitation recorded. A separate actual official Mosfilm Gold channel open corroborated the television premiere. This is not five independent live retrieves or external release acceptance.

@@ -1,0 +1,41 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_FIRST_PAIR_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-f71495afc5cf42e4bec2a1e1d41f6f72"
+  },
+  "review_scope": "Private native editorial evidence only; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-1",
+      "option_id": "prep-film-directors-1-opt-3",
+      "answer": "Андрей Тарковский",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/stalker/",
+      "evidence": "Mosfilm film record credits Andrei Tarkovsky as director and dates Stalker to1979, separately listing Strugatsky screenwriters.",
+      "retrieval": "Successful actual institutional web open; lines90–108."
+    },
+    {
+      "question_id": "prep-film-directors-2",
+      "option_id": "prep-film-directors-2-opt-1",
+      "answer": "Эльдар Рязанов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://gosfilmofond.ru/films/253917/",
+      "evidence": "Gosfilmofond catalogue dates the film1975 and credits E.Ryazanov as director separately from screenwriter/actor roles.",
+      "retrieval": "Successful actual institutional web open; lines48–58."
+    }
+  ],
+  "candidate_assessment": "Both dated titles uniquely identify the film/director among offered options. No visible answer leak or alternate offered director.",
+  "failed_retrievals": []
+}

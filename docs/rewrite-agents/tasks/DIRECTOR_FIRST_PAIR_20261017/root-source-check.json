@@ -1,0 +1,23 @@
+{
+  "status": "pass_private_editorial_source_check",
+  "article_sha256": "c955878a030ea9d2b15af875014d4abf55b5242470c1e9ed09e314830c19aed1",
+  "accessed": "2026-10-17",
+  "urls_actually_retrieved_and_read_by_root": [
+    "https://gosfilmofond.ru/films/236361/",
+    "https://gosfilmofond.ru/films/253917/",
+    "https://mosfilm.ru/cinema/films/stalker/",
+    "https://www.mosfilm.ru/about/news/novaya-ekspozitsiya-v-ekskursionnom-marshrute/",
+    "https://www.mosfilm.ru/cinema/films/ironiya-sudby-ili-s-legkim-parom/"
+  ],
+  "method": "Four cited film pages opened using web tool; Mosfilm exposition page web tool timed out twice, then actual urllib HTTPS200 HTML parsed and chronology reference passage read.",
+  "checks": [
+    "Both complete article bodies read",
+    "Director versus writer/performer/crew credits supported",
+    "1979 film versus2025restoration distinguished",
+    "Irony archive1975 and release1976 supported; exposition reference passage distinguishes1975creation and1Jan1976TV",
+    "Optional viewing prompts are observations, not unique interpretations; no rating/audience/awards claims"
+  ],
+  "source_limits": "Mosfilm exposition introductory prose loosely calls1975screen release, while explicit reference section gives1975creation/1976TV; use qualified chronology only. Sources are not media reuse permission.",
+  "different_provider_acceptance": false,
+  "publication_attempted": false
+}

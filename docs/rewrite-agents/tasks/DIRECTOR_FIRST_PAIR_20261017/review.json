@@ -1,0 +1,113 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_FIRST_PAIR_20261017",
+  "hub_task_id": "task-ef9f8cdb0e614d2dae0c068cc5c53238",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-f71495afc5cf42e4bec2a1e1d41f6f72"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "c955878a030ea9d2b15af875014d4abf55b5242470c1e9ed09e314830c19aed1"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "9f1ab4a5fd2c74eae14185a28c7358c85e88184d3e306ab601e07f9361fb0fc2"
+  },
+  "blind_answer_sha256": "5cf66ba822b45d18664043102d8f65d933a91abe71974cb1f323a369f9bc50c7",
+  "ordering": {
+    "candidate_first": true,
+    "answers_frozen_before_article_access": true,
+    "private_canonical_keys_read": false
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-1",
+      "question_revision_sha256": "7046a4bb428a2d3306d84df3726375ced6ba2a3606f1c1e59b1e3f5a4806ed54",
+      "blind_answer": {
+        "option_id": "prep-film-directors-1-opt-3",
+        "text": "Андрей Тарковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 200,
+      "checked_claims": [
+        "Tarkovsky directed; Strugatskys wrote screenplay based on Roadside Picnic; roles are distinguished.",
+        "1979 film versus 2025 restoration; named cast, composer and cinematographer match Mosfilm credits.",
+        "Zone, guide, Writer, Professor and wish-associated Room match archival synopsis."
+      ],
+      "distractor_review": "German, Shepitko and Sokurov are not the credited director. Dated title uniquely identifies the work; no visible answer leak.",
+      "sources_opened": [
+        "https://mosfilm.ru/cinema/films/stalker/",
+        "https://gosfilmofond.ru/films/236361/"
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-directors-2",
+      "question_revision_sha256": "a1a9ee2c6418bc43d168a131434f5ad2452935fe88bd347fed412495873361ac",
+      "blind_answer": {
+        "option_id": "prep-film-directors-2-opt-1",
+        "text": "Эльдар Рязанов"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 210,
+      "checked_claims": [
+        "Ryazanov directed and co-wrote with Emil Braginsky; named cast matches archive.",
+        "Gosfilmofond gives 1975; studio film card gives release 1976. Root-captured original studio HTML explicitly distinguishes creation in 1975 from first Central Television showing on 1 January 1976.",
+        "Lukashin, Moscow/Leningrad and matching address/flat match archival synopsis; article does not generalize fictional locks to real housing."
+      ],
+      "distractor_review": "Gaidai, Daneliya and Menshov are not the credited director. The 1975 catalogue year does not create an alternative correct offered director.",
+      "sources_opened": [
+        "https://gosfilmofond.ru/films/253917/",
+        "https://www.mosfilm.ru/cinema/films/ironiya-sudby-ili-s-legkim-parom/"
+      ],
+      "source_limits": [
+        "Reviewer could not directly retrieve the cited exposition page. Read original HTML independently offline from Root's successful capture; corroborated premiere date through official Mosfilm Gold channel. Accepted with this explicitly recorded retrieval limitation."
+      ]
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 4,
+    "total_cited_urls": 5,
+    "failed_cited_url": "https://www.mosfilm.ru/about/news/novaya-ekspozitsiya-v-ekskursionnom-marshrute/",
+    "failed_methods": [
+      "web open timeout",
+      "fetch robots connection failure",
+      "Invoke-WebRequest timeout",
+      "Python urllib SSL handshake timeout",
+      "non-www web URL inaccessible"
+    ],
+    "root_capture": {
+      "path": ".run/heartbeat_20261017_1523/mosfilm-exposition-raw.html",
+      "sha256": "e0cd6dd9892112f0440d4527160d1cafa23d87403ca1237bf41cee76d7514c9f",
+      "status": "Root retrieved HTTP 200; reviewer read the captured original HTML offline, not an independent live retrieval",
+      "short_excerpt_capture_sha256": "325fd238c9a49f4157fd09fac0acf182771255828cfa5e922b1efb86695fdab3"
+    },
+    "supplemental_primary_source": {
+      "url": "https://t.me/s/mosfilmgold/6704",
+      "retrieval": "Successful actual web open of official Mosfilm Gold channel context; relevant text at line 137",
+      "supports": "First Soviet television showing on 1 January 1976"
+    },
+    "chronology_caveat": "Exposition introductory prose loosely refers to 1975 screen release; its explicit reference passage distinguishes creation and TV premiere. Article uses the explicit passage and does not repeat the loose introduction."
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "both_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "optional_viewing_prompts": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native same-provider editorial evidence only. Genuine different-provider acceptance and publication remain pending; no canonical keys, runtime or production inputs changed."
+}
