@@ -1,0 +1,123 @@
+{
+  "packet_label": "opera-russian-completion-factcheck-20261017",
+  "hub_task_id": "task-5087551b1e9b4dffafca925014861912",
+  "review_type": "independent_private_native_fact_check",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/OPERA_RUSSIAN_COMPLETION_20261017/articles.json",
+    "sha256": "f70ae33345f1d605f3b70a16a856b51d8f243b15260448b5a4df12bf15e02063"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/OPERA_RUSSIAN_COMPLETION_20261017/SOURCES_EN.md",
+    "sha256": "15e7b207f78911dcfd10d39f6e95100a728239710062f554327e45aeca50b07e"
+  },
+  "blind_answer_sha256": "e603bc51dcf6b1a234e0f7301d1682bbab1650e0b380d99a7f999df4b95e0fb8",
+  "checked_on": "2026-10-17",
+  "items": [
+    {
+      "id": "question:music-oct3-057",
+      "question_revision_sha256": "1eebca6161919c38550635e09c0558f21850ec451bf044ba727b94d94658aee7",
+      "blind_answer": {
+        "option_id": "music-oct3-057-opt-2",
+        "text": "Пётр Чайковский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 160,
+      "checked_claims": [
+        "Pyotr Tchaikovsky composed the opera; Modest Tchaikovsky wrote the libretto after Pushkin.",
+        "The opera has three acts and seven scenes and premiered at the Mariinsky Theatre on 19 December 1890.",
+        "The opera changes Liza from Pushkin's impoverished ward into the Countess's granddaughter and Prince Yeletsky's fiancée."
+      ],
+      "distractor_review": "The exact offered distractors are Modest Mussorgsky, Nikolai Rimsky-Korsakov, and Alexander Borodin. None is defensible as composer of this opera. The blind artifact's wording about Modest Tchaikovsky as a distractor was an explanatory mistake only; no answer binding changed.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/opera_conchall/pdame_gal/",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2026/4/12/1_1700/"
+      ],
+      "source_limits": "Both accessed institutional pages support the credited roles, form, premiere date, and Liza adaptation. No unlisted calendar-guide claim remains in the final body."
+    },
+    {
+      "id": "question:music-oct3-058",
+      "question_revision_sha256": "61516d5a5556eb4ba1cf44565448c2ae7a6053582249c047e9d11042106db96d",
+      "blind_answer": {
+        "option_id": "music-oct3-058-opt-3",
+        "text": "Модест Мусоргский"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 161,
+      "checked_claims": [
+        "Mussorgsky presented the first version in 1869, which was rejected before he revised the work.",
+        "Mussorgsky wrote his own libretto using Pushkin and Karamzin.",
+        "The revised work reached the Mariinsky stage in 1874; later editions do not replace the original 1869 authorship."
+      ],
+      "distractor_review": "Rimsky-Korsakov is the only potentially tempting option because he made a later edition, but the stem explicitly asks for the original 1869 version. Borodin and Tchaikovsky are not defensible.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/news1/2026/january/34/",
+        "https://www.mariinsky.ru/news1/2019/01/25_5/"
+      ],
+      "source_limits": "The opened Mariinsky news pages establish the version and premiere chronology. They are institutional historical summaries rather than score editions, so the review makes no claim beyond the stated authorship and chronology."
+    },
+    {
+      "id": "question:music-oct3-059",
+      "question_revision_sha256": "8c3a59e977b1f666b3eadc42baf13edbf19df3b307f6ff3e50c5a0e3f5efab98",
+      "blind_answer": {
+        "option_id": "music-oct3-059-opt-4",
+        "text": "Николай Римский-Корсаков"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 163,
+      "checked_claims": [
+        "Rimsky-Korsakov wrote both music and libretto after Ostrovsky's play.",
+        "The score was completed in late March 1881.",
+        "The 29 January/10 February 1882 dates name one Mariinsky premiere in old and new calendar styles."
+      ],
+      "distractor_review": "Ostrovsky is named only as literary source and is not an option; Borodin, Tchaikovsky, and Mussorgsky do not compete under a composer stem.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/playbill/repertoire/opera/snow_maiden/",
+        "https://www.mariinsky.ru/about/exhibitions/rk175/snow_maiden/"
+      ],
+      "source_limits": "The two Mariinsky pages support authorship, the libretto basis, synopsis, completion, and premiere. Calendar-style wording is limited to the source's paired dates."
+    },
+    {
+      "id": "question:music-oct3-060",
+      "question_revision_sha256": "192171ae9e590ef7a54479eac24cf2439673aa59c0035b8f957594060f33e06e",
+      "blind_answer": {
+        "option_id": "music-oct3-060-opt-4",
+        "text": "Александр Бородин"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 160,
+      "checked_claims": [
+        "Borodin wrote the music and adapted The Tale of Igor's Raid for the libretto while working on the opera for nearly eighteen years.",
+        "He died before completing it; Glazunov and Rimsky-Korsakov made material posthumous contributions.",
+        "The canonical 1890 Mariinsky version does not transfer original composer credit from Borodin."
+      ],
+      "distractor_review": "Glazunov and Rimsky-Korsakov are plausible only if the stem omits the principal-composer distinction; the wording expressly asks for the leading composer, while Tchaikovsky is unrelated.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/news1/2023/5/05_3/",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2025/5/9/1_1900/"
+      ],
+      "source_limits": "The opened institutional pages support Borodin's authorship and posthumous completion history. The final article avoids an unsupported assertion that Glazunov restored the overture from memory."
+    }
+  ],
+  "editorial_requirements": {
+    "exact_public_revisions": "pass",
+    "statuses": "all draft",
+    "tags": "all domain:arts",
+    "target_refs": "all empty",
+    "source_links_per_article": 2,
+    "word_count_method": "whitespace token count of body_ru",
+    "word_counts": {
+      "question:music-oct3-057": 160,
+      "question:music-oct3-058": 161,
+      "question:music-oct3-059": 163,
+      "question:music-oct3-060": 160
+    },
+    "coverage_expectation": "The packet validator's stated coverage target is 20 private drafts and zero published records."
+  },
+  "validate_py_review": {
+    "result": "reviewed_read_only",
+    "checked_logic": "The validator pins public revisions and prior inputs, validates article binding, word and source-link counts, and asserts coverage of 20 private drafts with zero published records.",
+    "limitation": "It performs structural checks only; this reviewer independently opened all eight final displayed URLs."
+  },
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native fact-check acceptance only. External review, publication, and release acceptance remain pending."
+}

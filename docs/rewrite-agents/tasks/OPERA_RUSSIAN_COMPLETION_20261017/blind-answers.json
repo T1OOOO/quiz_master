@@ -1,0 +1,83 @@
+{
+  "packet_label": "opera-russian-completion-factcheck-20261017",
+  "hub_task_id": "task-5087551b1e9b4dffafca925014861912",
+  "phase": "blind_candidate_factcheck",
+  "reviewed_input": "candidate-questions.json and independently opened official Mariinsky Theatre pages only. Writer articles, source dossiers, editorial keys, and local answer keys were not read before this freeze.",
+  "accessed_on": "2026-10-17",
+  "items": [
+    {
+      "id": "question:music-oct3-057",
+      "question_id": "music-oct3-057",
+      "question_revision_sha256": "1eebca6161919c38550635e09c0558f21850ec451bf044ba727b94d94658aee7",
+      "blind_answer": {
+        "option_id": "music-oct3-057-opt-2",
+        "text": "Пётр Чайковский"
+      },
+      "uniqueness": "Clear: the official page identifies Pyotr Tchaikovsky as the composer; Modest Tchaikovsky is the librettist, so the similarly named distractor does not answer the music question.",
+      "sources_opened": [
+        {
+          "title": "Пиковая дама — Приморская сцена Мариинского театра",
+          "url": "https://prim.mariinsky.ru/playbill/repertoire/opera/the_queen_of_spades/",
+          "accessed_on": "2026-10-17",
+          "evidence": "The official repertoire page identifies the music as Pyotr Tchaikovsky's and the libretto as Modest Tchaikovsky's after Pushkin."
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-058",
+      "question_id": "music-oct3-058",
+      "question_revision_sha256": "61516d5a5556eb4ba1cf44565448c2ae7a6053582249c047e9d11042106db96d",
+      "blind_answer": {
+        "option_id": "music-oct3-058-opt-3",
+        "text": "Модест Мусоргский"
+      },
+      "uniqueness": "Clear when the stem's original 1869 version is retained: the official account calls it Mussorgsky's first authorial version and separately identifies later Rimsky-Korsakov, Lamm, and Shostakovich versions or orchestrations.",
+      "sources_opened": [
+        {
+          "title": "Мариинский театр представляет премьеру «Бориса Годунова» в первой авторской редакции 1869 года",
+          "url": "https://www.mariinsky.ru/news1/2026/february/6/",
+          "accessed_on": "2026-10-17",
+          "evidence": "The official news item states that Mussorgsky proposed the first version in 1869 and distinguishes later versions and orchestrations."
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-059",
+      "question_id": "music-oct3-059",
+      "question_revision_sha256": "8c3a59e977b1f666b3eadc42baf13edbf19df3b307f6ff3e50c5a0e3f5efab98",
+      "blind_answer": {
+        "option_id": "music-oct3-059-opt-4",
+        "text": "Николай Римский-Корсаков"
+      },
+      "uniqueness": "Clear: the official exhibition says Rimsky-Korsakov completed the opera in March 1881 and describes it as his opera.",
+      "sources_opened": [
+        {
+          "title": "Снегурочка — выставка к 175-летию Н. А. Римского-Корсакова",
+          "url": "https://www.mariinsky.ru/about/exhibitions/rk175/snow_maiden/",
+          "accessed_on": "2026-10-17",
+          "evidence": "The official exhibition identifies The Snow Maiden as Rimsky-Korsakov's opera and dates its completion to March 1881."
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-060",
+      "question_id": "music-oct3-060",
+      "question_revision_sha256": "192171ae9e590ef7a54479eac24cf2439673aa59c0035b8f957594060f33e06e",
+      "blind_answer": {
+        "option_id": "music-oct3-060-opt-4",
+        "text": "Александр Бородин"
+      },
+      "uniqueness": "Clear if the wording remains 'leading composer': Borodin wrote and adapted the work but died before finishing it; Glazunov and Rimsky-Korsakov completed or orchestrated parts, so neither is its principal composer.",
+      "sources_opened": [
+        {
+          "title": "Только одно исполнение — опера «Князь Игорь» на Приморской сцене",
+          "url": "https://prim.mariinsky.ru/news1/2023/5/05_3/",
+          "accessed_on": "2026-10-17",
+          "evidence": "The official Mariinsky page names Alexander Borodin, says he wrote the opera for nearly eighteen years but did not finish it, and distinguishes Glazunov's and Rimsky-Korsakov's subsequent contributions."
+        }
+      ]
+    }
+  ],
+  "source_limits": "This is a candidate-only blind phase. It establishes authorship and the key version/completion distinctions from one official primary institutional page per item; it does not review any writer claim, metadata, or private intended answer.",
+  "release_boundary": "This is a private native fact-check record. It is neither external acceptance nor authorization to publish."
+}
