@@ -1,0 +1,254 @@
+{
+  "packet_label": "ballet-completion-factcheck-20261017",
+  "hub_task_id": "task-55b01eb560934ff6b3a3bef48207c275",
+  "review_type": "independent_private_native_fact_check",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-7c972af8fe844c7ba57bf4ff31730f6e"
+  },
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BALLET_COMPLETION_20261017/articles.json",
+    "sha256": "766e23f7e53ead4be0ce361baca73ec404d3ad898907198d932fc9ba8c01289e"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BALLET_COMPLETION_20261017/SOURCES_EN.md",
+    "sha256": "f35a8c62f0638013939e1dd98c871e9da5cb7c834c270b619642fd8d7eabc78a"
+  },
+  "blind_answer_sha256": "27be65d44d1f5ff8f9b4fde4e56af9cf5f333109e1fdaa897e595a7c869e5912",
+  "checked_on": "2026-10-17",
+  "ordering": "All seven source-verified answers frozen before article/proposal read; six clean candidate-only solves and038notblind due visible answer leak. Private canonical keys never read.",
+  "items": [
+    {
+      "id": "question:music-oct3-037",
+      "question_revision_sha256": "c2ae43157dd8fa7ef0b5478ee04577fe270a0c9b68b67928ac6e1d1bfaec2f3d",
+      "blind_answer": {
+        "option_id": "music-oct3-037-opt-1",
+        "text": "Лео Делиб",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 186,
+      "checked_claims": [
+        "Delibes's music, Mérante's 1876 choreography and Legris's version are distinguished.",
+        "Paris Opera supports the mythological characters, added prologue and enlarged male roles."
+      ],
+      "distractor_review": "Stravinsky/Firebird, Bartók/Wooden Prince and Khachaturian/Spartacus are correct.",
+      "sources_opened": [
+        "https://www.operadeparis.fr/saison-24-25/ballet/sylvia",
+        "https://www.bso.org/works/suite-from-the-firebird-1919-version",
+        "https://www.laphil.com/works/the-wooden-prince",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/"
+      ],
+      "source_limits": "Specific Legris staging is qualified; optional listening task imposes no emotion."
+    },
+    {
+      "id": "question:music-oct3-038",
+      "question_revision_sha256": "b1452982b68ef8b75a50116500789b3b99e4c526d4f9db0574fb9b3b73534d29",
+      "blind_answer": {
+        "option_id": "music-oct3-038-opt-2",
+        "text": "Игорь Стравинский",
+        "blind": false
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 181,
+      "checked_claims": [
+        "BSO supports Stravinsky music, Fokine scenario/choreography and Diaghilev commission.",
+        "The 25 June 1910 Paris ballet premiere is distinct from the 1919 suite.",
+        "Human/supernatural contrast and round/infernal dances support the listening prompt."
+      ],
+      "distractor_review": "Delibes, Bartók and Khachaturian comparisons are valid, but the frozen stem itself names Stravinsky.",
+      "sources_opened": [
+        "https://www.bso.org/works/suite-from-the-firebird-1919-version",
+        "https://www.operadeparis.fr/saison-24-25/ballet/sylvia",
+        "https://www.laphil.com/works/the-wooden-prince",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/"
+      ],
+      "source_limits": "Article accepted independently of the definite candidate answer leak. This item was source-verified, not clean blind."
+    },
+    {
+      "id": "question:music-oct3-039",
+      "question_revision_sha256": "f7da84e8568eb84ac26f4f38ac79adfd0fd4119aa7133160708d2a7d0cb815e7",
+      "blind_answer": {
+        "option_id": "music-oct3-039-opt-3",
+        "text": "Игорь Стравинский",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 181,
+      "checked_claims": [
+        "BSO supports Stravinsky, Fokine and Benois roles and the 13 June 1911 Paris premiere.",
+        "Its 1946 reorchestration versus 1947 publication label is correctly explained.",
+        "Piano/puppet genesis and public fairground versus private puppet world are supported."
+      ],
+      "distractor_review": "Bartók, Delibes and Khachaturian are tied correctly to other ballets; none competes here.",
+      "sources_opened": [
+        "https://www.bso.org/works/stravinsky-petrushka-1947-version",
+        "https://www.laphil.com/works/the-wooden-prince",
+        "https://www.operadeparis.fr/saison-24-25/ballet/sylvia",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/2/20/2_1900/"
+      ],
+      "source_limits": "The article attributes the 1946/1947 interpretation to BSO and avoids conflating revision with premiere."
+    },
+    {
+      "id": "question:music-oct3-041",
+      "question_revision_sha256": "5a2b063cb477445d502c684a349c2aaab79ed502f0b4ebae4c3d65b37622919a",
+      "blind_answer": {
+        "option_id": "music-oct3-041-opt-1",
+        "text": "Рейнгольд Глиэр",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 184,
+      "checked_claims": [
+        "The primary Philharmonia programme identifies Glière and conductor Boris Khaikin on 13 January 1975.",
+        "It lists Adagio, Procession and Dance with Swords from Red Poppy.",
+        "The article correctly distinguishes a concert excerpt programme from a complete ballet premiere."
+      ],
+      "distractor_review": "Shchedrin/Horse, Melikov/Legend and Minkus/standard Don Quixote are supported.",
+      "sources_opened": [
+        "https://100philharmonia.spb.ru/historical-poster/44953/",
+        "https://www.boosey.com/downloads/shchedrin_werkverzeichnis.pdf",
+        "https://www.mariinsky.ru/en/playbill/playbill/2025/6/19/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/"
+      ],
+      "source_limits": "Programme evidence is not used to invent premiere chronology or a universal plot."
+    },
+    {
+      "id": "question:music-oct3-042",
+      "question_revision_sha256": "3bffe25f2918ddd5422147ed8fece4b85bb0707167c1ea3c26a72a8d9206a340",
+      "blind_answer": {
+        "option_id": "music-oct3-042-opt-2",
+        "text": "Рейнгольд Глиэр",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 186,
+      "checked_claims": [
+        "Mariinsky credits Glière music and Abolimov libretto after Pushkin.",
+        "Zakharov's 14 March 1949 and Smekalov's 31 March 2016 premieres are distinct.",
+        "The qualified Evgeny/Parasha/flood, waltz and concluding hymn context is supported."
+      ],
+      "distractor_review": "Shchedrin, Melikov and Minkus comparisons are valid; no rival offered answer.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/playbill/playbill/2025/1/16/2_1900/",
+        "https://www.boosey.com/downloads/shchedrin_werkverzeichnis.pdf",
+        "https://www.mariinsky.ru/en/playbill/playbill/2025/6/19/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/"
+      ],
+      "source_limits": "Stage story is qualified, and a listening comparison is not a claim that every scene is festive."
+    },
+    {
+      "id": "question:music-oct3-043",
+      "question_revision_sha256": "fdfa2ffc6455e3e10d100830199b019a0a24717fe7ddd9a57e40edc28b14d2cc",
+      "blind_answer": {
+        "option_id": "music-oct3-043-opt-3",
+        "text": "Родион Щедрин",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 204,
+      "checked_claims": [
+        "Theatre credits Shchedrin music, Isaev libretto after Yershov.",
+        "Publisher PDF supports 4 March 1960 Bolshoi premiere; theatre supports 1960 and a separate 14 March 2009 production.",
+        "Ivan and the small helper match the named production synopsis."
+      ],
+      "distractor_review": "Minkus, Glière and Melikov comparisons are supported; composer remains Shchedrin despite disputed work-date labels.",
+      "sources_opened": [
+        "https://prim.mariinsky.ru/en/playbill/playbill/2024/2/1/1_1900/",
+        "https://www.boosey.com/downloads/shchedrin_werkverzeichnis.pdf",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/",
+        "https://www.mariinsky.ru/playbill/playbill/2025/1/16/2_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2025/6/19/1_1900/"
+      ],
+      "source_limits": "Online publisher entry /5078 labels the full ballet1955; publisher PDF labels it1956 and SuiteNo11955. 1955 is NOT proven false or exclusive to the suite. The article avoids settling that conflict; year proposal separately addresses clarity."
+    },
+    {
+      "id": "question:music-oct3-044",
+      "question_revision_sha256": "48be7c305b8f82ce3ccce0537d1a0947edf04d0ffd7a51cf6531267480adeed6",
+      "blind_answer": {
+        "option_id": "music-oct3-044-opt-4",
+        "text": "Ариф Меликов",
+        "blind": true
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 199,
+      "checked_claims": [
+        "Mariinsky credits Melikov, Hikmet, Grigorovich and Virsaladze and gives 23 March 1961 premiere.",
+        "The sisters/Ferkhad/water-channel story and old-book scenic design match its account.",
+        "Duet, monologue and trio contrasts are supported."
+      ],
+      "distractor_review": "Minkus/Don Quixote, Glière/Bronze Horseman and Shchedrin/Horse are correct comparison pairs.",
+      "sources_opened": [
+        "https://www.mariinsky.ru/en/playbill/playbill/2025/6/19/1_1900/",
+        "https://www.mariinsky.ru/en/playbill/playbill/2026/4/8/1_1900/",
+        "https://www.mariinsky.ru/playbill/playbill/2025/1/16/2_1900/",
+        "https://www.boosey.com/downloads/shchedrin_werkverzeichnis.pdf"
+      ],
+      "source_limits": "The plot and design are tied to this staging and do not claim documentary history."
+    }
+  ],
+  "question_repair_verdict": {
+    "verdict": "accepted_as_private_proposal",
+    "issue": "quiz_master-rwdc",
+    "question_id": "music-oct3-038",
+    "reviewed_proposal_sha256": "fbdd77311bf358a5b3a9db78aa88a47f22b808ce2f58080fb88ccc2c9510af61",
+    "after_stem": "Кто написал музыку к балету «Жар-птица»?",
+    "reason": "Removes the definite composer-name leak and identifies the ballet genre; Stravinsky remains uniquely supported among unchanged visible options.",
+    "read_after_blind_freeze": true,
+    "applied": false,
+    "requires_new_question_revision_and_article_rebind": true,
+    "publication_acceptance": false
+  },
+  "year_repair_verdict": {
+    "verdict": "accepted_as_private_clarification_proposal",
+    "issue": "quiz_master-owhu",
+    "question_id": "music-oct3-043",
+    "reviewed_proposal_sha256": "fa80cac9f38be33391e884827222df53e61cca07ae526615e99e907ab2f5ae6a",
+    "after_stem": "Кто написал музыку к балету «Конёк-Горбунок», премьера которого состоялась в Большом театре в 1960 году?",
+    "reason": "Uses independently corroborated stage-premiere event to identify Shchedrin's ballet without deciding the conflicting1955/1956 work dates.",
+    "source_urls": [
+      "https://www.boosey.com/downloads/shchedrin_werkverzeichnis.pdf",
+      "https://prim.mariinsky.ru/en/playbill/playbill/2024/2/1/1_1900/",
+      "https://www.boosey.com/cr/music/Rodion-Shchedrin-The-Little-Humpbacked-Horse/5078"
+    ],
+    "source_conflict": "Online full-ballet entry says1955; PDF full-ballet entry says1956 and SuiteNo1 says1955. Therefore1955 is not disproven and is not shown to belong only to a suite. Both primary PDF and theatre support1960 stage premiere.",
+    "blind_artifact_note": "Frozen blind artifact accurately records the online entry used during blind solving; its work-date wording must be read with this later documented source conflict.",
+    "read_after_blind_freeze": true,
+    "applied": false,
+    "requires_new_question_revision_and_article_rebind": true,
+    "publication_acceptance": false
+  },
+  "editorial_requirements": {
+    "exact_public_revisions": "pass; independently compared all seven against candidates",
+    "statuses": "all draft",
+    "tags": "all domain:arts",
+    "target_refs": "all empty",
+    "word_count_method": "whitespace token count of body_ru",
+    "word_counts": {
+      "question:music-oct3-037": 186,
+      "question:music-oct3-038": 181,
+      "question:music-oct3-039": 181,
+      "question:music-oct3-041": 184,
+      "question:music-oct3-042": 186,
+      "question:music-oct3-043": 204,
+      "question:music-oct3-044": 199
+    },
+    "source_links_per_article": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      4
+    ],
+    "source_retrieval": "All11unique final displayedURLs independently opened and relevant text read; publisherPDF pages18/22 text independently inspected, screenshots requested.",
+    "article_blockers": [],
+    "candidate_quality": "038definite answer leak requires revision;043date/premiere clarity concern from conflicting primary source labels, not proven false1955 date.",
+    "pedagogy": "Distinct contextual/listening cues and role/version explanations. Frozen questions remain composer recall; no empirical difficulty calibration."
+  },
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Seven private articles accepted as native Codex editorial evidence only. Neither candidate proposal is applied or published; both require new question revision and article rebinding. Genuine different-provider acceptance, publication and release remain pending.",
+  "not_checked": "Canonical key files, product/runtime inputs, full packet validator, build/UI/deployment and learner calibration. Root owns integration and landing."
+}

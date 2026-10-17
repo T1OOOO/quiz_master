@@ -1,0 +1,92 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "BALLET_COMPLETION_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-7c972af8fe844c7ba57bf4ff31730f6e"
+  },
+  "review_scope": "Private native editorial evidence; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "music-oct3-037",
+      "option_id": "music-oct3-037-opt-1",
+      "answer": "Лео Делиб",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.pnb.org/artists/leo-delibes/",
+      "evidence": "PNB composer biography lists Sylvia (1876) among Delibes's ballets.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "music-oct3-038",
+      "option_id": "music-oct3-038-opt-2",
+      "answer": "Игорь Стравинский",
+      "confidence": "high",
+      "blind": false,
+      "source_url": "https://www.pnb.org/repertory/firebird/",
+      "evidence": "PNB credits Stravinsky's Firebird (1910) music separately from choreography.",
+      "retrieval": "Successful actual institutional web open and relevant text read.",
+      "candidate_defect": "Public stem names Stravinsky, exposing its own answer. Independently source-verified but NOT a clean blind item; candidate requires wording repair."
+    },
+    {
+      "question_id": "music-oct3-039",
+      "option_id": "music-oct3-039-opt-3",
+      "answer": "Игорь Стравинский",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bso.org/works/stravinsky-petrushka-1947-version",
+      "evidence": "BSO identifies Igor Stravinsky as composer and distinguishes 1911 original from revised version.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "music-oct3-041",
+      "option_id": "music-oct3-041-opt-1",
+      "answer": "Рейнгольд Глиэр",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mariinsky.ru/playbill/playbill/2025/1/16/2_1900/",
+      "evidence": "Mariinsky institutional essay explicitly attributes the 1927 Red Poppy to Glière.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "music-oct3-042",
+      "option_id": "music-oct3-042-opt-2",
+      "answer": "Рейнгольд Глиэр",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mariinsky.ru/playbill/playbill/2025/1/16/2_1900/",
+      "evidence": "Mariinsky Bronze Horseman credits name Reinhold Glière for music.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "music-oct3-043",
+      "option_id": "music-oct3-043-opt-3",
+      "answer": "Родион Щедрин",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.boosey.com/cr/music/Rodion-Shchedrin-The-Little-Humpbacked-Horse/5078",
+      "evidence": "Publisher work entry identifies Shchedrin's ballet with work date1955; this is not evidence of a1955 stage premiere.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    },
+    {
+      "question_id": "music-oct3-044",
+      "option_id": "music-oct3-044-opt-4",
+      "answer": "Ариф Меликов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mariinsky.ru/en/playbill/playbill/2025/6/19/1_1900/",
+      "evidence": "Mariinsky Legend of Love credits identify Arif Melikov for music separately from Khikmet/Grigorovich.",
+      "retrieval": "Successful actual institutional web open and relevant text read."
+    }
+  ],
+  "candidate_assessment": "Six clean candidate-only solves plus one source-verified leaked-answer item038. Standard score authorship is clear among offered choices. 043's1955 qualifier identifies work dating, not a stage premiere.",
+  "failed_retrievals": []
+}

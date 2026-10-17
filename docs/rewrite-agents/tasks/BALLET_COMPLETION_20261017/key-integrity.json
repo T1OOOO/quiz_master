@@ -1,0 +1,58 @@
+{
+  "scope": "authorized editorial-only local key comparison AFTER independent blind freeze; no public API key read/export",
+  "blind_answer_sha256": "27be65d44d1f5ff8f9b4fde4e56af9cf5f333109e1fdaa897e595a7c869e5912",
+  "legacy_source_sha256": "b3703cff1c310775f216f2c6f2a5d28c36c775bacbc9bd2f191471acc3ad97f8",
+  "questions": [
+    {
+      "question_id": "music-oct3-037",
+      "public_revision_sha256": "c2ae43157dd8fa7ef0b5478ee04577fe270a0c9b68b67928ac6e1d1bfaec2f3d",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-038",
+      "public_revision_sha256": "b1452982b68ef8b75a50116500789b3b99e4c526d4f9db0574fb9b3b73534d29",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-039",
+      "public_revision_sha256": "f7da84e8568eb84ac26f4f38ac79adfd0fd4119aa7133160708d2a7d0cb815e7",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-041",
+      "public_revision_sha256": "5a2b063cb477445d502c684a349c2aaab79ed502f0b4ebae4c3d65b37622919a",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-042",
+      "public_revision_sha256": "3bffe25f2918ddd5422147ed8fece4b85bb0707167c1ea3c26a72a8d9206a340",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-043",
+      "public_revision_sha256": "fdfa2ffc6455e3e10d100830199b019a0a24717fe7ddd9a57e40edc28b14d2cc",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "music-oct3-044",
+      "public_revision_sha256": "48be7c305b8f82ce3ccce0537d1a0947edf04d0ffd7a51cf6531267480adeed6",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    }
+  ],
+  "production_scoring_exercised": false,
+  "candidate_independence": {
+    "clean_candidate_only_answers": 6,
+    "answer_leaked_in_candidate": [
+      "music-oct3-038"
+    ],
+    "all_seven_independently_source_verified": true,
+    "private_keys_read_by_checker": false
+  }
+}
