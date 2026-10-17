@@ -1,0 +1,44 @@
+{
+  "packet_label": "opera-puccini-pair-character-checker-20261017",
+  "hub_task_id": "task-0f9659c1c57941e1aa13a02b68a10846",
+  "phase": "blind_candidate_review",
+  "reviewed_input": "candidate-questions.json and the listed public primary sources only; draft articles, research files, and local answer keys were not read before this record.",
+  "items": [
+    {
+      "id": "question:music-oct3-051",
+      "question_revision_sha256": "25520ae28118895c9114227e6b98029cae44df53779000434af3cbb8b81ae00b",
+      "blind_answer": {
+        "option_id": "music-oct3-051-opt-3",
+        "text": "Джакомо Пуччини"
+      },
+      "reasoning": "The Puccini Museum identifies La Bohème as Puccini's four-scene opera with a libretto by Giuseppe Giacosa and Luigi Illica.",
+      "uniqueness": "Verdi, Rossini, and Wagner did not compose Puccini's La Bohème. The source documents a separate Leoncavallo opera on the same subject, so any later learning article must make the composer distinction explicit.",
+      "sources_opened": [
+        {
+          "url": "https://www.puccinimuseum.org/en/giacomo-puccini/le-opere/la-boheme/",
+          "title": "Puccini Museum — La Bohème",
+          "accessed": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "question:music-oct3-052",
+      "question_revision_sha256": "a4b25d6a43c065f533aceb0a9b6825d7fa3f2c2ede541c971bde7240cfc8da99",
+      "blind_answer": {
+        "option_id": "music-oct3-052-opt-4",
+        "text": "Джакомо Пуччини"
+      },
+      "reasoning": "The Puccini Museum identifies Madama Butterfly as Puccini's work and distinguishes the two-act 1904 first-performance version from later three-act and two-act/two-scene versions.",
+      "uniqueness": "Verdi, Rossini, and Bizet did not compose Madama Butterfly; the stem asks only for the music's composer.",
+      "sources_opened": [
+        {
+          "url": "https://www.puccinimuseum.org/en/giacomo-puccini/le-opere/madama-butterfly/",
+          "title": "Puccini Museum — Madama Butterfly",
+          "accessed": "2026-10-17"
+        }
+      ]
+    }
+  ],
+  "source_limits": "The single museum page per candidate establishes composer attribution and key version distinctions, but later draft-specific historical claims need their own displayed-source support.",
+  "release_boundary": "Private native fact-review evidence only; no publication, release, or external acceptance is asserted."
+}
