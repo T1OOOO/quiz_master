@@ -1,0 +1,145 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_CITY_TRUST_FOUR_20261017",
+  "hub_task_id": "task-3a3fe59323164688b6b77467415e30ae",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-35da7fbf333141a5918fe7f0f4388c4c"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "91c6eca84b6147162a1700525a59c6e7dec297d4f4670529194514f27bb61aa1"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "32b1d3d1f5205ea9603fd85765a8e171f5b109d53d830907893b019bf51810c8"
+  },
+  "blind_answer_sha256": "057f753035ed92a360e7e905a5917dfb40805ddb73e174fccc132455eca00bfa",
+  "ordering": {
+    "candidate_first": true,
+    "new_independent_solve": true,
+    "inherited_blind": false,
+    "answers_frozen_before_article_and_writer_sources_access": true,
+    "private_canonical_keys_read": false,
+    "article_review_after_exact_writer_freeze": true
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-15",
+      "question_revision_sha256": "823be3dd54276d4d2430635036c39c5d6dde160e98832ac978745c269f654a23",
+      "blind_answer": {
+        "option_id": "prep-film-directors-15-opt-2",
+        "text": "Георгий Данелия"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "1963 studio label, Daneliya director, Shpalikov screenplay, Petrov music, Yusov cinematography and named performers match studio credits.",
+        "Volodya's Siberian origin/transit visit, writer search, metro meeting with Kolka after night shift, shared day and helping encounters match synopsis."
+      ],
+      "distractor_review": "Kalatozov, Khutsiev and Smirnov are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Encounter-chain exercise asks for justified interpretation, not exact city reconstruction or claimed author intention.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/ya-shagayu-po-moskve/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports this bounded article; allowed by1–5source brief. No institutionally independent corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-16",
+      "question_revision_sha256": "d123b431717759050b397fcf500c77edc0fd5481a760f7436d9e7b2f38fa5193",
+      "blind_answer": {
+        "option_id": "prep-film-directors-16-opt-4",
+        "text": "Карен Шахназаров"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "1986, Shakhnazarov director and same-title novella author, card-listed Borodyansky screenplay, Artemyev music and Nemolyaev cinematography match source.",
+        "School graduate Ivan's entrance-exam failure, magazine courier work, first task, Katya's Moscow State University/student/family status and feeling match synopsis."
+      ],
+      "distractor_review": "Mikhalkov, Sokurov and Konchalovsky are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Prose specifically attributes screenplay field to the card without claiming exhaustive exclusive authorship. Conversation exercise conditionally asks about humour/evasion and does not invent a scene or diagnose a generation.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/kurer/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports this bounded article; allowed by1–5source brief. No institutionally independent corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-17",
+      "question_revision_sha256": "d5996542e7854e5e6b68169de891a057bda08b3ba4d394c591cfa5c973cd5538",
+      "blind_answer": {
+        "option_id": "prep-film-directors-17-opt-2",
+        "text": "Сергей Соловьёв"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 200,
+      "checked_claims": [
+        "1987, Solovyov direction, Solovyov/Livnev screenplay, Lebeshev cinematography and named cast match exact non-www studio URL.",
+        "1980s Yalta, Alika, older wealthy criminal Krymov, young musician Bananan and tragic relationship collision match synopsis; no inferred role/vocal assignments."
+      ],
+      "distractor_review": "Lungin, Todorovsky and Shakhnazarov are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Unequal-relationship analysis stays open, admits multiple causes and asks for observable support rather than a required psychological interpretation.",
+      "sources_opened": [
+        "https://mosfilm.ru/cinema/films/assa/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports this bounded article; allowed by1–5source brief. No institutionally independent corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-18",
+      "question_revision_sha256": "1a225964c2fc5a6397e593d5f6586c0e949fd16975c6aaedcfac9427f16302ef",
+      "blind_answer": {
+        "option_id": "prep-film-directors-18-opt-1",
+        "text": "Никита Михалков"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 203,
+      "checked_claims": [
+        "1974, Mikhalkov director/co-screenwriter with Volodarsky and cast member, Artemyev music and Lebeshev cinematography match source.",
+        "Civil War aftermath, hunger, gold intended to buy bread, train robbery, suspicion of surviving escort and recovery-to-prove-innocence premise match attributed studio synopsis."
+      ],
+      "distractor_review": "Daneliya, Ryazanov and German are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Trust exercise separates personal observation, hearsay and assumptions; no invented historical procedure, character assignment or single mandatory judgement.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh/"
+      ],
+      "source_limits": [
+        "One producing-studio source supports this bounded article; allowed by1–5source brief. No institutionally independent corroboration claimed."
+      ]
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 4,
+    "total_cited_urls": 4,
+    "retrieval": "All four exact final institutional HTTPS URLs actually opened successfully and relevant text read independently on2026-10-17. First three were used before blind freeze;018 used non-www in blind phase and exact final www after writer freeze. Assa's exact non-www final URL was read directly.",
+    "failed_retrievals": [],
+    "root_captures_used": false,
+    "url_variants_do_not_add_institutions": true,
+    "unique_institutions": 1
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Native same-provider private editorial evidence only; genuine different-provider acceptance and publication remain pending. No canonical keys read or runtime/product/prior frozen inputs changed."
+}

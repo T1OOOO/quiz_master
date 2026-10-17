@@ -1,0 +1,63 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_CITY_TRUST_FOUR_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-35da7fbf333141a5918fe7f0f4388c4c"
+  },
+  "review_scope": "Private native same-provider evidence only; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true,
+    "new_independent_solve": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-15",
+      "option_id": "prep-film-directors-15-opt-2",
+      "answer": "Георгий Данелия",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/ya-shagayu-po-moskve/",
+      "evidence": "Studio film record explicitly credits Георгий Данелия as director and gives1963; screenplay, cast and music appear as separate credits.",
+      "retrieval": "Successful actual institutional web open and relevant credit/year read."
+    },
+    {
+      "question_id": "prep-film-directors-16",
+      "option_id": "prep-film-directors-16-opt-4",
+      "answer": "Карен Шахназаров",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/kurer/",
+      "evidence": "Studio film record explicitly credits Карен Шахназаров as director and gives1986; screenplay, cast and music appear as separate credits.",
+      "retrieval": "Successful actual institutional web open and relevant credit/year read."
+    },
+    {
+      "question_id": "prep-film-directors-17",
+      "option_id": "prep-film-directors-17-opt-2",
+      "answer": "Сергей Соловьёв",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://mosfilm.ru/cinema/films/assa/",
+      "evidence": "Studio film record explicitly credits Сергей Соловьёв as director and gives1987; screenplay, cast and music appear as separate credits.",
+      "retrieval": "Successful actual institutional web open and relevant credit/year read."
+    },
+    {
+      "question_id": "prep-film-directors-18",
+      "option_id": "prep-film-directors-18-opt-1",
+      "answer": "Никита Михалков",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://mosfilm.ru/cinema/films/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh/",
+      "evidence": "Studio film record explicitly credits Никита Михалков as director and gives1974; screenplay, cast and music appear as separate credits.",
+      "retrieval": "Successful actual institutional web open and relevant credit/year read."
+    }
+  ],
+  "candidate_assessment": "All four exact dated titles uniquely identify a credited director among offered options. No visible leak or alternate defensible offered answer. Year fields are supported by studio records; no exact premiere chronology inferred.",
+  "failed_retrievals": []
+}
