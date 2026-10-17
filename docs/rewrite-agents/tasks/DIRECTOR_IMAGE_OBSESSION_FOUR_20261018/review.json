@@ -1,0 +1,108 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "DIRECTOR_IMAGE_OBSESSION_FOUR_20261018",
+  "task_id": "task-a9759c56110e44e2b75871159099c99b",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-6e03e6ba9c11491288243a4a88e10434"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "81583ffd7e44279755f55eef383282cf77b3dc6c798d995618bfe36b47814863"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "6a6ce3c837326868901863759be5a54c5ca46908a88bc9d33c2139ab09c47c1a"
+  },
+  "blind_answer_sha256": "503e325da44877ddb3d92deed6facf2f5d2ba94f64c58057352b72608d3bfc2e",
+  "ordering": {
+    "new_independent_solve": true,
+    "inherited_blind_answers": false,
+    "blind_frozen_before_articles_and_writer_sources": true,
+    "canonical_keys_read": false
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:prep-film-directors-27",
+      "question_revision_sha256": "4e040df699beeb9116e480a03a9ab0c36fd6f4ec4d3f9d185eeb677e4d6f6164",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-27-opt-3",
+      "word_count_whitespace": 207,
+      "checked_claims": "BFI supports the 1950 work, Wilder direction and credited screenplay collaborators, explicit Swanson/Norma and Holden/Joe mappings, former silent-star premise, mansion and comeback wish. Satirical Hollywood framing is attributed. Fictional Joe and real screenwriters are distinguished.",
+      "distractor_review": "Four distinct offered directors; institutional director credit uniquely selects the frozen blind option. No visible answer leak, role confusion or date/version ambiguity requiring a stem change. Canonical keys not read.",
+      "pedagogy_review": "Self-image versus reactions of others. Optional open observation, not a claimed viewing record or proven director intention; adds context beyond the answer.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/f43ad3dd-1b5b-5f19-aa10-5f29d8f33da2/sunset-blvd"
+      ],
+      "source_limit": "One BFI page, one institution; no independent institutional corroboration claimed."
+    },
+    {
+      "id": "question:prep-film-directors-28",
+      "question_revision_sha256": "54b0eab9523e2468bcb7d1a6422a654d6565da16d39a54dcf329fcf7b5cbebf2",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-28-opt-2",
+      "word_count_whitespace": 203,
+      "checked_claims": "BFI supports the 1956 work, Ford direction, Nugent writing, named cast and explicit Wayne/Ethan mapping. Search and revenge framing is attributed critical interpretation of the fictional protagonist, not evidence about Indigenous peoples.",
+      "distractor_review": "Four distinct offered directors; institutional director credit uniquely selects the frozen blind option. No visible answer leak, role confusion or date/version ambiguity requiring a stem change. Canonical keys not read.",
+      "pedagogy_review": "Stated rescue goal, conduct and spatial belonging. Optional open observation, not a claimed viewing record or proven director intention; adds context beyond the answer.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/cc32fc72-48ae-5450-886d-0d032a6986c5/the-searchers"
+      ],
+      "source_limit": "One BFI page, one institution; no independent institutional corroboration claimed."
+    },
+    {
+      "id": "question:prep-film-directors-29",
+      "question_revision_sha256": "6602ac2c8b91bf621ffdd5dfc380042e6f3c288ff5a4801c5f459e843ad98aaa",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-29-opt-4",
+      "word_count_whitespace": 198,
+      "checked_claims": "BFI supports the 1979 work, Coppola direction, Milius/Coppola writing names, Conrad source transposed to Vietnam and river journey to Kurtz. No runtime, precise release chronology, added scene or later Redux/Final Cut fact is inferred; duplicate source credits and producer fields are not reconstructed.",
+      "distractor_review": "Four distinct offered directors; institutional director credit uniquely selects the frozen blind option. No visible answer leak, role confusion or date/version ambiguity requiring a stem change. Canonical keys not read.",
+      "pedagogy_review": "Knowledge and interpretation during a journey. Optional open observation, not a claimed viewing record or proven director intention; adds context beyond the answer.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/732cc9f4-21a6-5356-bb18-9130f750f332/apocalypse-now"
+      ],
+      "source_limit": "One BFI page, one institution; no independent institutional corroboration claimed."
+    },
+    {
+      "id": "question:prep-film-directors-30",
+      "question_revision_sha256": "af896e5f41c41047169fdb0d1d72b8d3eb439561ed82eba5a3e1da1a88960eb9",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-30-opt-3",
+      "word_count_whitespace": 202,
+      "checked_claims": "BFI supports the 1980 work, Scorsese direction, Schrader/Martin memoir adaptation, explicit De Niro/La Motta and Pesci/Joey mappings, flashbacks, ring/family setting, Chapman cinematography and Schoonmaker editing. Adaptation is not asserted as independent biographical proof or clinical diagnosis.",
+      "distractor_review": "Four distinct offered directors; institutional director credit uniquely selects the frozen blind option. No visible answer leak, role confusion or date/version ambiguity requiring a stem change. Canonical keys not read.",
+      "pedagogy_review": "Movement and editing inside and outside the ring. Optional open observation, not a claimed viewing record or proven director intention; adds context beyond the answer.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/0caff9bf-8c22-568b-b70e-c211b22dba41/raging-bull"
+      ],
+      "source_limit": "One BFI page, one institution; no independent institutional corroboration claimed."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual web tool institutional opens and supporting text read; four final URLs identical to independently opened blind-phase URLs. Searchers and Raging Bull supporting prose refreshed after writer freeze. Sunset and Apocalypse supporting prose already read directly in this session.",
+    "actual_successful_unique_cited_urls": 4,
+    "institutions": 1,
+    "institution": "British Film Institute",
+    "failed_retrievals": [],
+    "redirects_counted_as_support": false,
+    "search_snippets_counted_as_reads": false
+  },
+  "checks": [
+    "Exact raw SHA256 gates passed for articles, sources and blind file.",
+    "Four exact candidate revision refs, IDs, draft statuses, arts tags and empty target refs.",
+    "All four bodies within 160–260 whitespace words; one HTTPS source each with accessed 2026-10-18.",
+    "All asserted factual claims and source supports checked against actual institutional text; role mappings explicit in prose.",
+    "Distinct contextual angles and optional exercises; interpretation separated from historical, biographical, group and clinical assertions."
+  ],
+  "findings": [],
+  "limits": [
+    "One source per article is allowed by the brief; all four sources belong to BFI.",
+    "Institutional catalogue years are work labels, not independently established completion or premiere dates.",
+    "No full-film viewing or detailed shot verification claimed. Exercises invite future observation.",
+    "Native same-provider private draft evidence only; genuine different-provider acceptance, publication and release acceptance remain pending."
+  ]
+}

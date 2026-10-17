@@ -1,0 +1,64 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_IMAGE_OBSESSION_FOUR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-6e03e6ba9c11491288243a4a88e10434"
+  },
+  "review_scope": "Native same-provider private evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-27",
+      "option_id": "prep-film-directors-27-opt-3",
+      "answer": "Билли Уайлдер",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/f43ad3dd-1b5b-5f19-aa10-5f29d8f33da2/sunset-blvd",
+      "evidence": "BFI explicitly lists1950 and Билли Уайлдер as director; writing/cast separately listed.",
+      "retrieval": "Successful actual institutional web open and relevant year/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-28",
+      "option_id": "prep-film-directors-28-opt-2",
+      "answer": "Джон Форд",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/cc32fc72-48ae-5450-886d-0d032a6986c5/the-searchers",
+      "evidence": "BFI explicitly lists1956 and Джон Форд as director; writing/cast separately listed.",
+      "retrieval": "Successful actual institutional web open and relevant year/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-29",
+      "option_id": "prep-film-directors-29-opt-4",
+      "answer": "Фрэнсис Форд Коппола",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/732cc9f4-21a6-5356-bb18-9130f750f332/apocalypse-now",
+      "evidence": "BFI explicitly lists1979 and Фрэнсис Форд Коппола as director; writing/cast separately listed.",
+      "retrieval": "Successful actual institutional web open and relevant year/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-30",
+      "option_id": "prep-film-directors-30-opt-3",
+      "answer": "Мартин Скорсезе",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/0caff9bf-8c22-568b-b70e-c211b22dba41/raging-bull",
+      "evidence": "BFI explicitly lists1980 and Мартин Скорсезе as director; writing/cast separately listed.",
+      "retrieval": "Successful actual institutional web open and relevant year/director text read."
+    }
+  ],
+  "candidate_assessment": "Four clean blind items, unique credited offered director for each dated title. ApocalypseNow1979 explicitly identified; no Redux/FinalCut runtime, scene or release facts inferred. No visible leak or date bug.",
+  "source_limits": "One institution in this blind phase; synopsis/critical character readings are not documentary historical or clinical evidence.",
+  "failed_retrievals": []
+}
