@@ -1,0 +1,71 @@
+{
+  "packet_label": "verdi-four-opera-character-checker-20261017",
+  "hub_task_id": "task-f626e55b670148799af46d996d0988e2",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/VERDI_FOUR_OPERA_ARTICLES_20261017/articles.json",
+    "sha256": "ede38e127a0e20aeb7a48444b57f6e7ec599157c83a2bb989d53d517058e74f2"
+  },
+  "reviewer": {
+    "session_id": "session-eb54a27feed14ccba8ff1c6e1e3a0b0a",
+    "provider": "openai",
+    "model": "Codex",
+    "review_type": "independent fact, source, answer-ambiguity, and editorial review"
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:music-oct3-045",
+      "question_revision_sha256": "e0e29cd77bad65b34f30ad4e11fe7a3a730f2e673e6609857bb4ba7e6d920a3c",
+      "blind_answer": {"option_id": "music-oct3-045-opt-1", "text": "Джузеппе Верди"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Verdi composed La traviata; Piave wrote its libretto; the source is Dumas fils's play.", "The work has three acts and premiered at La Fenice, Venice, on 6 March 1853.", "The requested historical setting differed from Verdi and Piave's desired contemporary setting."],
+      "distractor_review": "Puccini, Rossini, and Bizet did not compose La traviata; the wording asks only for its composer, yielding one answer.",
+      "sources_opened": [{"url": "https://www.teatrolafenice.it/en/event/giuseppe-verdi-la-traviata/", "title": "Teatro La Fenice: Verdi, La traviata", "accessed": "2026-10-17", "result": "opened"}, {"url": "https://corago.unibo.it/evento/Z000028201", "title": "Università di Bologna, Corago: La traviata, Venezia 1853", "accessed": "2026-10-17", "result": "opened"}],
+      "source_limits": "Checked the displayed institutional pages; no exhaustive performance-history audit was attempted."
+    },
+    {
+      "id": "question:music-oct3-046",
+      "question_revision_sha256": "a0d2c000ff50511ff7cc892f64043b79c51e9ca847a158670e6a64a29d947108",
+      "blind_answer": {"option_id": "music-oct3-046-opt-2", "text": "Джузеппе Верди"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Verdi composed Rigoletto and Piave wrote its libretto from Hugo's Le Roi s'amuse.", "The opera has three acts and premiered at La Fenice, Venice, on 11 March 1851.", "The sources support censorship context and the transformation from the French king in Hugo to the Duke of Mantua."],
+      "distractor_review": "Rossini, Wagner, and Puccini did not compose Rigoletto; its libretto and literary source are named separately, so they do not make the composer clue ambiguous.",
+      "sources_opened": [{"url": "https://www.teatrolafenice.it/en/event/rigoletto/", "title": "Teatro La Fenice: Rigoletto", "accessed": "2026-10-17", "result": "opened after the inaccessible Cini link was replaced"}, {"url": "https://www.teatrolafenice.it/wp-content/uploads/2025/02/Rigoletto_-2025_light.pdf", "title": "Teatro La Fenice: Rigoletto, programme 2025", "accessed": "2026-10-17", "result": "opened; 160-page PDF"}],
+      "source_limits": "The original Cini URL returned HTTP 403 in this review and was not relied upon; the final displayed La Fenice replacement and programme were checked."
+    },
+    {
+      "id": "question:music-oct3-047",
+      "question_revision_sha256": "8f07e76684771fad4953217cfe3e9de3babb9fd30b3e2d2a89764023c77a7880",
+      "blind_answer": {"option_id": "music-oct3-047-opt-3", "text": "Джузеппе Верди"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Verdi composed Aida; Ghislanzoni wrote the libretto; the work has four acts.", "The Cairo world premiere was 24 December 1871 and the La Scala Italian premiere was 8 February 1872.", "The stated character and voice-type facts agree with the Rome archive."],
+      "distractor_review": "Wagner, Puccini, and Rossini did not compose Aida. The question does not conflate composition with librettist, source author, or production staff.",
+      "sources_opened": [{"url": "https://teatroregioparma.it/spettacolo/aida/", "title": "Teatro Regio di Parma: Aida", "accessed": "2026-10-17", "result": "opened"}, {"url": "https://archiviostorico.operaroma.it/opera/aida/", "title": "Archivio Storico Teatro dell'Opera di Roma: Aida", "accessed": "2026-10-17", "result": "opened"}],
+      "source_limits": "Checked the supplied institutional records; no broader source-history reconstruction was attempted."
+    },
+    {
+      "id": "question:music-oct3-048",
+      "question_revision_sha256": "2164defae5c743ad98c2a4fe7fb46fdfd851ccadb8a5ce983718a0b4024f77b2",
+      "blind_answer": {"option_id": "music-oct3-048-opt-4", "text": "Джузеппе Верди"},
+      "verdict": "accepted_for_draft",
+      "checked_claims": ["Nabucodonosor/Nabucco is Verdi's opera, with a libretto by Temistocle Solera, in four acts and Italian.", "The world premiere was at La Scala on 9 March 1842.", "The Barcelona and Liceu dates are explicitly local premieres, not competing world-premiere claims."],
+      "distractor_review": "Bizet, Rossini, and Puccini did not compose the opera. Nabucodonosor and Nabucco are title variants for the same work, so the title wording does not introduce ambiguity.",
+      "sources_opened": [{"url": "https://www.teatroallascala.org/en/season/2025-2026/opera/nabucodonosor.html", "title": "Teatro alla Scala: Nabucodonosor", "accessed": "2026-10-17", "result": "opened"}, {"url": "https://annals.liceubarcelona.cat/llocca/FObra?idobra=74", "title": "Gran Teatre del Liceu: Nabucco, archive record", "accessed": "2026-10-17", "result": "opened"}],
+      "source_limits": "Checked the displayed institutional records; no unsupported claim about political symbolism or reception is accepted."
+    }
+  ],
+  "structural_checks": {
+    "article_count": 4,
+    "question_refs_match_candidate_revisions": true,
+    "statuses": ["draft", "draft", "draft", "draft"],
+    "tag_ids": ["domain:arts"],
+    "source_link_counts": [2, 2, 2, 2],
+    "body_word_counts_whitespace": [193, 202, 198, 201],
+    "word_count_method": "Split each body_ru value on whitespace; headings are included, while title and metadata are excluded.",
+    "displayed_links_opened": 8,
+    "aida_1881_error_found": false,
+    "unsupported_nabucco_political_myth_found": false,
+    "source_rework": "The initial Cini Rigoletto URL returned HTTP 403. Root replaced it with an accessible La Fenice URL and revised only article 046 source-dependent material before final review."
+  },
+  "release_boundary": "accepted_for_draft is a private, native review result only. It is not publication, release, or external acceptance."
+}
