@@ -1,0 +1,15 @@
+# Four private director articles 023–026
+
+Four original Russian miniarticles cover Jaws1975, Taxi Driver1976, Psycho1960 and Casablanca1942. Word counts202/204/205/198; source links2/1/1/1, five unique final primary URLs. Root actually opened/read all five exact final URLs and all four frozen article bodies/source supports, including AFI credit, synopsis and date fields. Sony's Taxi Driver page was additionally read but is not one of the five final citations. Jaws has two distinct institutions; the remaining articles each have one.
+
+The actual native checker independently solved all four new candidate-facing questions before any writer article/source-report access and froze blind SHA7096bc26fa7bbd71f6510284771408ae7f3cc80d46d85cdce599daf65b00b95d. Root compared local editorial keys only afterwards: four matches and exact public stem/options parity. No inherited solve is claimed; helpers did not read canonical keys. Writer/checker file ownership is disjoint and bounded.
+
+The articles offer distinct open exercises about complementary knowledge under threat, observation versus a character's view of a city, changing narrative hypotheses, and the possibilities available to people seeking escape. They do not establish director intention, objective psychological diagnoses or a universal audience response. No inferred actor-role/vocal mappings, copied dialogue/lyrics, unsupported awards/anecdotes or full-film viewing appear.
+
+Psycho is explicitly the1960 film. Its AFI record separates Hitchcock directing from JohnL.Russell cinematography. Casablanca's catalogue1942 work/November opening is not conflated with the23January1943 national release field recorded in the source report. Neither is used to declare the existing question erroneous or to modify a canonical stem. Narrative contexts remain fictional, not documentary historical claims.
+
+The carried forty-question director inventory reaches twenty-six private drafts and fourteen missing articles, with zero matches in the frozen runtime asset. This is private repository preparation only. Continue at question027 under quiz_master-4koa; preserve earlier packets and release inputs. Genuine different-provider acceptance and published verification remain separate gates.
+
+Fresh production observation was read-only: same43 reports/all OPEN/row digest, Helm64, one available replica and readiness200. Disk free16.068% fails the strict greater-than20% release gate. No production mutation, feedback closure, vendor-quota retry, build/browser, copy/unlink/prune, candidate/archive or deployment occurred. Foreign WIP remains protected. Native same-provider private draft evidence cannot replace external release acceptance.
+
+Final native exact-text review accepted all four articles without findings. review.json SHA256 9e5a971057d2ad3b3d18410b898919f7d7f912f5af9e14f63d248de984d1d375. The reviewer actually read all five exact cited URLs plus the supplemental Sony page, with no failures; date and credit qualifications were verified. Both helpers submitted and are quiescent, final files frozen. Native private acceptance does not satisfy genuine different-provider release acceptance.

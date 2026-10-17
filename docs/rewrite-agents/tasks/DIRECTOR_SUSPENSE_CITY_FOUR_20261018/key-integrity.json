@@ -1,0 +1,38 @@
+{
+  "scope": "authorized editorial-only local key comparison AFTER independent blind freeze; no public API key read/export",
+  "blind_answer_sha256": "7096bc26fa7bbd71f6510284771408ae7f3cc80d46d85cdce599daf65b00b95d",
+  "legacy_source_sha256": "3f1dbe3f82d71179f86d5dab3eb4242ecd3a4b8f316472c47c66bb1b1ab74187",
+  "questions": [
+    {
+      "question_id": "prep-film-directors-23",
+      "public_revision_sha256": "b992d51e6e4b885f3ba5684534db2058619e34f02692c28de070c61f7f9c80fb",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "prep-film-directors-24",
+      "public_revision_sha256": "1d79c282dc2a633110b7c0baa3f0f1e7b1a42667e6ba348d9363239b898bc254",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "prep-film-directors-25",
+      "public_revision_sha256": "22387142a4a997a6f2d92f74f4523becab58e8b70c4492fc699713794dcf3d66",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    },
+    {
+      "question_id": "prep-film-directors-26",
+      "public_revision_sha256": "d484eab3c94682498f5f24c055a1afd7ffbb350c7abc418e4656976b2cddd39b",
+      "blind_answer_matches_local_key": true,
+      "stem_and_options_match": true
+    }
+  ],
+  "production_scoring_exercised": false,
+  "candidate_independence": {
+    "clean_candidate_only_answers": 4,
+    "answer_leaked_in_candidate": [],
+    "all_four_independently_source_verified": true,
+    "private_keys_read_by_checker": false
+  }
+}

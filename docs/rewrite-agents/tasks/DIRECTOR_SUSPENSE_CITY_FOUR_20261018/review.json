@@ -1,0 +1,156 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_SUSPENSE_CITY_FOUR_20261018",
+  "hub_task_id": "task-a4670f6085c647219e59c4825af27150",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-18",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-9aa79df7a1744f89bfe1013908fbe009"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "ea62cbd94cec8f33c20b564d7aa269d68e545fb3333198ac154451f40be8ede6"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "31a0448ff733b450d4a062b2592f08d6c037b26fd78c1f3e375e9d8ac5914f4c"
+  },
+  "blind_answer_sha256": "7096bc26fa7bbd71f6510284771408ae7f3cc80d46d85cdce599daf65b00b95d",
+  "ordering": {
+    "candidate_first": true,
+    "new_independent_solve": true,
+    "inherited_blind": false,
+    "answers_frozen_before_article_and_writer_sources_access": true,
+    "private_canonical_keys_read": false,
+    "article_review_after_exact_writer_freeze": true
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-23",
+      "question_revision_sha256": "b992d51e6e4b885f3ba5684534db2058619e34f02692c28de070c61f7f9c80fb",
+      "blind_answer": {
+        "option_id": "prep-film-directors-23-opt-2",
+        "text": "Стивен Спилберг"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 202,
+      "checked_claims": [
+        "Both cited institutions support1975 and Spielberg directing; AFI lists Benchley/Gottlieb writers and named cast.",
+        "Universal synopsis explicitly supports Amity, great white shark and police-chief/marine-biologist/shark-hunter team."
+      ],
+      "distractor_review": "Lucas, Scott and Zemeckis are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Teamwork/grounds-for-decisions exercise remains optional; professions are not treated as fixed personality types or infallible authority.",
+      "sources_opened": [
+        "https://www.universalpicturesathome.com/movies/jaws",
+        "https://catalog.afi.com/Catalog/moviedetails/55193"
+      ],
+      "source_limits": [
+        "Two institutionally distinct sources support bounded claims."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-24",
+      "question_revision_sha256": "1d79c282dc2a633110b7c0baa3f0f1e7b1a42667e6ba348d9363239b898bc254",
+      "blind_answer": {
+        "option_id": "prep-film-directors-24-opt-1",
+        "text": "Мартин Скорсезе"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 204,
+      "checked_claims": [
+        "BFI supports1976, Scorsese director, Schrader screenplay, Herrmann score and named cast.",
+        "Travis as Vietnam veteran, taxi/nighttimeNewYork and steam/neon imagery match source. Clinical-sounding source labels are omitted."
+      ],
+      "distractor_review": "Coppola, DePalma and Lumet are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Separates description, character judgment and viewer impression without diagnosing a character or generalizing about veterans/city residents.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/d964bfb7-729b-5181-85f8-35b1bd3a21a3/taxi-driver"
+      ],
+      "source_limits": [
+        "One final cited institutional source supports bounded article; no second cited institution claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-25",
+      "question_revision_sha256": "22387142a4a997a6f2d92f74f4523becab58e8b70c4492fc699713794dcf3d66",
+      "blind_answer": {
+        "option_id": "prep-film-directors-25-opt-1",
+        "text": "Альфред Хичкок"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 205,
+      "checked_claims": [
+        "AFI explicitly identifies1960Psycho, Hitchcock director, Stefano writer, Russell cinematographer and Bloch's novel as literary source.",
+        "Entrusted cash, failure to deposit, departure, rain/missedturn and Norman's motel match synopsis. No remake or later plot revelation imported."
+      ],
+      "distractor_review": "Wilder, Huston and Preminger are not the credited director. Russell is expressly cinematographer, not director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Hypothesis exercise admits insufficient information and accommodates prior familiarity without rewarding spoiler guessing.",
+      "sources_opened": [
+        "https://catalog.afi.com/Catalog/moviedetails/53260"
+      ],
+      "source_limits": [
+        "One final cited institutional source supports bounded article; no second cited institution claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-26",
+      "question_revision_sha256": "d484eab3c94682498f5f24c055a1afd7ffbb350c7abc418e4656976b2cddd39b",
+      "blind_answer": {
+        "option_id": "prep-film-directors-26-opt-4",
+        "text": "Майкл Кёртис"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 198,
+      "checked_claims": [
+        "AFI supports1942catalogue label, Curtiz direction, Epstein/Epstein/Koch screenplay and named performers.",
+        "Wartime refugees, exitdocuments, RickBlaine's cafe, resistance leaderLaszlo and Ilsa arrival match fictional synopsis. No actor-role or vocal inference."
+      ],
+      "distractor_review": "Fleming, Hawks and Zinnemann are not the credited director. Exact dated title has one defensible offered answer; no visible leak.",
+      "pedagogy_review": "Refuge/choice exercise examines opportunities and coercion within fiction rather than claiming documentary history.",
+      "sources_opened": [
+        "https://catalog.afi.com/Film/27175-CASABLANCA"
+      ],
+      "source_limits": [
+        "One final cited institutional source supports bounded article; no second cited institution claimed."
+      ]
+    }
+  ],
+  "chronology_version_checks": {
+    "psycho": "Correct1960record. AFI separately lists releaseAugust1960 and NewYorkopening16June1960; no contradiction or remake attribution inferred.",
+    "casablanca": "AFI title1942, releasefield26November1942; premiereinformation NewYorkopening26November1942 and nationalrelease23January1943. Article attributes1942to catalogue and does not assert all release events occurred1942.",
+    "jaws_taxi": "1975/1976 exact works, no sequel/version substitution or unsupported premiere chronology."
+  },
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 5,
+    "total_cited_urls": 5,
+    "retrieval": "All five exact final institutional HTTPS URLs actually opened and relevant supporting text read independently on2026-10-18. BFI TaxiDriver read beforeblindfreeze; final Universal/AFI pages read afterwriterfreeze.",
+    "failed_retrievals": [],
+    "root_captures_used": false,
+    "supplemental_writer_report_url": {
+      "url": "https://www.sonypictures.com/movies/taxidriver",
+      "retrieval": "Successfully independently opened/read; promotional diagnostic phrasing observed and correctly omitted from article.",
+      "not_counted_as_final_article_citation": true
+    },
+    "blind_sources": "Four BFI records actually read before writerfiles; none treated as new institutional corroboration of each other."
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "qualified_dates_and_versions": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Native same-provider private editorial evidence only; genuine different-provider acceptance and publication pending. No canonical keys or runtime/product/prior frozen changes."
+}

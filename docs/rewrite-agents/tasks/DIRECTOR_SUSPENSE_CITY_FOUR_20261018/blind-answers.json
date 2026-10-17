@@ -1,0 +1,63 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_SUSPENSE_CITY_FOUR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-9aa79df7a1744f89bfe1013908fbe009"
+  },
+  "review_scope": "Native same-provider private evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-23",
+      "option_id": "prep-film-directors-23-opt-2",
+      "answer": "Стивен Спилберг",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/98b20662-5754-5b8a-8e69-38fbec0d85c2/jaws",
+      "evidence": "BFI film record explicitly lists1975 and Стивен Спилберг as director; separately identifies writing/production/cast roles.",
+      "retrieval": "Successful actual institutional web open; relevant date/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-24",
+      "option_id": "prep-film-directors-24-opt-1",
+      "answer": "Мартин Скорсезе",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/d964bfb7-729b-5181-85f8-35b1bd3a21a3/taxi-driver",
+      "evidence": "BFI film record explicitly lists1976 and Мартин Скорсезе as director; separately identifies writing/production/cast roles.",
+      "retrieval": "Successful actual institutional web open; relevant date/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-25",
+      "option_id": "prep-film-directors-25-opt-1",
+      "answer": "Альфред Хичкок",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/18313136-53d5-53d4-a89b-1d19d24a30f2/psycho",
+      "evidence": "BFI film record explicitly lists1960 and Альфред Хичкок as director; separately identifies writing/production/cast roles.",
+      "retrieval": "Successful actual institutional web open; relevant date/director text read."
+    },
+    {
+      "question_id": "prep-film-directors-26",
+      "option_id": "prep-film-directors-26-opt-4",
+      "answer": "Майкл Кёртис",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/61d5c0dc-151e-5c9c-92ef-4a3039aa82f2/casablanca",
+      "evidence": "BFI film record explicitly lists1942 and Майкл Кёртис as director; separately identifies writing/production/cast roles.",
+      "retrieval": "Successful actual institutional web open; relevant date/director text read."
+    }
+  ],
+  "candidate_assessment": "Four clean blind items, one defensible offered director per exact dated title. Psycho explicitly1960, no remake substitution. Catalogue years support the candidate qualifiers, no precise general-release/premiere inference. No visible answer leak.",
+  "failed_retrievals": []
+}
