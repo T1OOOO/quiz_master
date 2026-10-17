@@ -1,0 +1,133 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "packet_label": "DIRECTOR_COMEDY_FOUR_20261017",
+  "hub_task_id": "task-a77aa8f578fd428092ee93e69c69589a",
+  "review_type": "independent_private_native_fact_check",
+  "checked_on": "2026-10-17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2f610e2ed5494386a821d154433764d3"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "86ec810a3f39832de46759cc079dc580d02fec360e9cc7b374d45940a3db3c88"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "7eb49646df7f9104db4b3e514be33c8a0808a9841c61277b2d0e74e47cfb85a0"
+  },
+  "blind_answer_sha256": "39f01b3e7a404ebdfa03dc234007ff590cfa7d8542884c5e8440503da7f78d7f",
+  "ordering": {
+    "candidate_first": true,
+    "answers_frozen_before_article_access": true,
+    "private_canonical_keys_read": false
+  },
+  "items": [
+    {
+      "id": "question:prep-film-directors-3",
+      "question_revision_sha256": "fd0031e8319cb1bceaa7d12cbb372e981bb1a4421850c5252bcafb1ddf11f2c7",
+      "blind_answer": {
+        "option_id": "prep-film-directors-3-opt-4",
+        "text": "Леонид Гайдай"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 194,
+      "checked_claims": [
+        "Studio credits Gaidai as director and screenplay coauthor with Kostyukovsky and Slobodskoy; listed cast matches.",
+        "Three novellas linked by student Shurik, 1965 film and separate 2013 restoration match the source."
+      ],
+      "distractor_review": "Ryazanov, Daneliya and Surikova are not credited as director of this identified film. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/operatsiya-y-i-drugie-priklyucheniya-shurika/"
+      ],
+      "source_limits": [
+        "One primary institutional source supports this bounded article; allowed by the brief's 1–5 source range. No second-source corroboration claimed."
+      ]
+    },
+    {
+      "id": "question:prep-film-directors-4",
+      "question_revision_sha256": "1d9a3ead74c5ec489dc69d378167716a9aaf37a0fb6992e6b1bd6d28ae988dc1",
+      "blind_answer": {
+        "option_id": "prep-film-directors-4-opt-2",
+        "text": "Эльдар Рязанов"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 199,
+      "checked_claims": [
+        "1977, Ryazanov directing and shared screenplay with Braginsky, cast and promotion/courtship premise match studio film card.",
+        "Studio retrospective explicitly identifies the earlier Co-Workers play by Ryazanov and Braginsky."
+      ],
+      "distractor_review": "Mikhalkov, Konchalovsky and Daneliya are not the credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/sluzhebnyy-roman/",
+        "https://www.mosfilm.ru/about/news/24-marta-v-povtornyy-prokat-vykhodit-sluzhebnyy-roman/"
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-directors-5",
+      "question_revision_sha256": "b4359bbcd79fc3cace4fd0650f65fb69bcfa2fe5571cff35eeafdc247610c7ed",
+      "blind_answer": {
+        "option_id": "prep-film-directors-5-opt-2",
+        "text": "Владимир Меньшов"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 201,
+      "checked_claims": [
+        "1984, Menshov directing, Gurkin screenplay and named cast match studio credits.",
+        "Studio retrospective identifies Gurkin's same-title play; synopsis supports Vasily, Nadya, three children, dovecote, trip south and Raisa Zakharovna."
+      ],
+      "distractor_review": "Daneliya, Shakhnazarov and Todorovsky are not the credited director. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/lyubov-i-golubi/",
+        "https://www.mosfilm.ru/about/news/lyubov-i-golubi-v-povtornyy-prokat-vykhodit-otrestavrirovannaya-versiya-znamenitoy-kartiny/"
+      ],
+      "source_limits": []
+    },
+    {
+      "id": "question:prep-film-directors-6",
+      "question_revision_sha256": "75c3704ff95dff26f7635545d8103b3aa09a2c49c046adb4250e8b62d0067512",
+      "blind_answer": {
+        "option_id": "prep-film-directors-6-opt-4",
+        "text": "Леонид Гайдай"
+      },
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 197,
+      "checked_claims": [
+        "Studio and state archive both label the film 1968 and credit Gaidai, with the same three screenplay authors.",
+        "Mistaken courier identity and valuables in plaster match synopsis; archive explicitly maps Nikulin/Gorbunkov, Mironov/Kozodoev and Papanov/Lyolik."
+      ],
+      "distractor_review": "Ryazanov, Surikova and Kozakov are not the credited director. The studio and archive both support the candidate's 1968 year label; no exact premiere-day claim is made. No visible answer leak or alternate defensible offered answer.",
+      "sources_opened": [
+        "https://www.mosfilm.ru/cinema/films/brilliantovaya-ruka/",
+        "https://gosfilmofond.ru/films/147306/"
+      ],
+      "source_limits": []
+    }
+  ],
+  "retrieval_evidence": {
+    "directly_read_cited_urls": 7,
+    "total_cited_urls": 7,
+    "retrieval": "All seven exact cited institutional HTTPS URLs successfully opened and relevant text read with web tool on 2026-10-17. Four film cards were read before blind freeze; three additional citations read after writer freeze.",
+    "failed_retrievals": [],
+    "inherited_captures_used": false
+  },
+  "editorial_requirements": {
+    "schema": "qm-question-articles/v1",
+    "all_draft": true,
+    "domain_arts": true,
+    "empty_target_refs": true,
+    "exact_candidate_question_refs": true,
+    "russian_word_range_160_260": true,
+    "source_count_1_5_per_item": true,
+    "https_sources_and_access_dates": true,
+    "role_distinctions": true,
+    "distinct_optional_viewing_prompts": true,
+    "unsupported_reception_or_award_claims": false,
+    "full_film_viewing_claimed": false
+  },
+  "findings": [],
+  "overall_verdict": "accepted_for_draft",
+  "release_boundary": "Private native same-provider editorial evidence only. Genuine different-provider acceptance and publication remain pending. No private canonical keys read; no runtime or product changes."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_COMEDY_FOUR_20261017",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2f610e2ed5494386a821d154433764d3"
+  },
+  "review_scope": "Private native same-provider evidence only; genuine different-provider acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-17",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-3",
+      "option_id": "prep-film-directors-3-opt-4",
+      "answer": "Леонид Гайдай",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/operatsiya-y-i-drugie-priklyucheniya-shurika/",
+      "evidence": "The studio film record explicitly credits Леонид Гайдай as director and lists 1965; screenplay and cast are separate fields.",
+      "retrieval": "Successful actual institutional web open, director line 92 and year line 101."
+    },
+    {
+      "question_id": "prep-film-directors-4",
+      "option_id": "prep-film-directors-4-opt-2",
+      "answer": "Эльдар Рязанов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/sluzhebnyy-roman/",
+      "evidence": "The studio film record explicitly credits Эльдар Рязанов as director and lists 1977; screenplay and cast are separate fields.",
+      "retrieval": "Successful actual institutional web open, director line 92 and year line 101."
+    },
+    {
+      "question_id": "prep-film-directors-5",
+      "option_id": "prep-film-directors-5-opt-2",
+      "answer": "Владимир Меньшов",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/lyubov-i-golubi/",
+      "evidence": "The studio film record explicitly credits Владимир Меньшов as director and lists 1984; screenplay and cast are separate fields.",
+      "retrieval": "Successful actual institutional web open, director line 92 and year line 101."
+    },
+    {
+      "question_id": "prep-film-directors-6",
+      "option_id": "prep-film-directors-6-opt-4",
+      "answer": "Леонид Гайдай",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.mosfilm.ru/cinema/films/brilliantovaya-ruka/",
+      "evidence": "The studio film record explicitly credits Леонид Гайдай as director and lists 1968; screenplay and cast are separate fields.",
+      "retrieval": "Successful actual institutional web open, director line 92 and year line 101."
+    }
+  ],
+  "candidate_assessment": "All four exact dated titles identify one credited director among the offered options. No alternate defensible offered answer or visible answer leak. The 1968 label for Diamond Arm is supported by the studio record; no premise correction inferred from possible premiere-date differences.",
+  "failed_retrievals": []
+}
