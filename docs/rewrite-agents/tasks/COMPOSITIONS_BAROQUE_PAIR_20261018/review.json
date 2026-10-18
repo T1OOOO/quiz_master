@@ -1,0 +1,110 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "COMPOSITIONS_BAROQUE_PAIR_20261018",
+  "task_id": "task-1163b997fa9246c98a8b125759e8d99a",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-722366180da44d72a9e25866c349cce6"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "f67e21767c1909e7e386771643e24fcd4b7d5215306f7857dde5c592c1417f27"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "8007ca076e8df1754f87836a140d4ec99889b61a47e4bb37beb99b51351c773c"
+  },
+  "blind_answer_sha256": "e7462dfef1a99e05de36b7fd2fbcf671e284902c91bd59f9060f4a61f6cfbaeb",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Prior authorized full public-pack read exposed these exact public stems/options. Current brief supplies relevant boundaries. Fresh primary option/stem verification before current writer access is not a first-exposure clean blind solve.",
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:compositions008",
+      "question_revision_sha256": "cce643b81dd775e35b300abbed81162b19e96db43efcf8cf1e4da066a16f8152",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions008-opt-4",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 205,
+      "checked_claims": [
+        "ABS supports six works/BWV1046–1051, Bach/dedicatee distinction and dated dedicatory preface, not simultaneous composition of all six.",
+        "Exact solo groups in Nos.2 and5 and first-movement keyboard episode followed by returning opening material are supported. Examples justify multiple-soloist comparison without uniform scoring/movement claims."
+      ],
+      "distractor_review": "Handel, Vivaldi and Telemann are not the author of this exact six-concerto collection; the dedicatee and composer are separate roles.",
+      "pedagogy_review": "Original useful conditional exercises request concrete musical observations, not an actual-listening claim or compulsory emotional response. No intent inferred from impressions.",
+      "sources_opened": [
+        "https://americanbach.org/recordings/Bach-Brandenburgs/"
+      ],
+      "source_limits": "One final substantive source permitted by brief. No full score/recording inspected; recording continuo choices and speculative symbolism/intention are not generalized."
+    },
+    {
+      "id": "question:compositions009",
+      "question_revision_sha256": "29631909b7b60d777b16999924b4576c931447ffe9b64a5a9d8a54f60fc4e826",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions009-opt-2",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 210,
+      "checked_claims": [
+        "Handel musical authorship and Jennens biblical-text compilation/adaptation are distinguished from biblical authorship.",
+        "Boston Baroque supports1741 composition,1742 Dublin premiere, three parts/thematic summaries and qualified absence of ordinary acting characters.",
+        "Foundling explicitly supports1757 codicil bequest of score copy and parts, not composition/autograph date or contemporaneous physical transfer."
+      ],
+      "distractor_review": "Bach, Haydn and Mendelssohn do not fit this exact oratorio and documentary identification. Jennens text role is separate from music composition.",
+      "pedagogy_review": "Original useful conditional exercises request concrete musical observations, not an actual-listening claim or compulsory emotional response. No intent inferred from impressions.",
+      "sources_opened": [
+        "https://baroque.boston/handel-messiah",
+        "https://foundlingmuseum.org.uk/our-art-and-objects/gerald-coke-handel-collection/"
+      ],
+      "source_limits": "No composition-speed, success, impact or definitive-performance-version inference. Three-part summary is selective, not a purported exhaustive list of biblical themes."
+    }
+  ],
+  "historical_clause_assessment": {
+    "question_id": "compositions008",
+    "verdict": "supported_as_source_attribution_only",
+    "url": "https://bach.org/education/bwv-1046/",
+    "actual_read": true,
+    "finding": "Bethlehem page explicitly presents sending the collection as hoping for new employment. Thus the characterization is traceable in an institutional source, not independently proven sole intent. Root reports tracing this original editorial attribution; checker independently read the named source text, not private editorial keys.",
+    "limits": "Unspecified source in candidate is a provenance weakness; the actual explanatory characterization can be supported, but a rewrite asserting proven sole motive would require stronger evidence. No such motive assertion occurs in the article. Bethlehem internally conflicting blanket movement statements are excluded. No question repair applied or required for current article acceptance."
+  },
+  "retrieval_evidence": {
+    "method": "Actually opened/read all three exact final primary URLs after freeze and the supplemental Bethlehem clause page. Pre-writer NBS/LoC/Foundling object/Powerhouse supporting text also actually read.",
+    "actual_successful_unique_cited_urls": 3,
+    "source_counts": [
+      1,
+      2
+    ],
+    "additional_final_review_url": "https://bach.org/education/bwv-1046/",
+    "failed_retrievals": [],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false
+  },
+  "checks": [
+    "Raw frozen articles/SOURCES/blind hashes match before and after report writes.",
+    "Exact full IDs/current refs/draft/domain/empty targets/source supports/HTTPS/access dates checked.",
+    "205/210 whitespace words within160–260; all3final URLs supporting text actually read.",
+    "Every factual prose claim, source support, option and pedagogical boundary reviewed.",
+    "No canonical keys read; no production scoring exercised."
+  ],
+  "findings": [],
+  "limits": [
+    "Prior public exposure and informative brief boundaries retained clean_blind=false; fresh primary verification is not a clean first-exposure solve.",
+    "008 source-attribution caveat explicitly preserved; primary historical proof of sole employment intent is not certified.",
+    "No exhaustive plagiarism search, actual listening/full-score inspection or media-rights clearance performed.",
+    "Native same-provider private draft review only; external acceptance/publication pending."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "COMPOSITIONS_BAROQUE_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-722366180da44d72a9e25866c349cce6"
+  },
+  "review_scope": "Native same-provider private verification only; external acceptance pending.",
+  "accessed_on": "2026-10-18",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "exposure_note": "Prior authorized full public-pack read exposed these exact public stems/options. Current brief supplies relevant boundaries. Fresh primary option/stem verification before current writer access is not a first-exposure clean blind solve.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "answers": [
+    {
+      "question_id": "compositions008",
+      "option_id": "compositions008-opt-4",
+      "answer": "Иоганн Себастьян Бах",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "sources": [
+        {
+          "url": "https://www.bachvereniging.nl/nl/nl-brandenburgse-concerten",
+          "evidence": "Actual Netherlands Bach Society institutional programme text explicitly identifies Bach, six Brandenburg concertos, Margrave Christian Ludwig and characterizes sending as a new-job/open application."
+        },
+        {
+          "url": "https://blogs.loc.gov/music/2014/02/pondering-bachs-brandenburg-concertos/",
+          "evidence": "Actual Library of Congress programme discussion identifies six works/Bach/dedicated presentation score and quoted inscription; job dissatisfaction is explicitly interpretive, not a proven sole motive."
+        }
+      ],
+      "stem_assessment": "Unique composer answer. Job-application characterization exists in a named institutional source, so the attributed clause is supportable as interpretation. Candidate does not name the source: exact provenance of its unnamed source remains unverified here; do not certify documented psychological intent or exclusive motive.",
+      "distractor_review": "Handel, Vivaldi and Telemann are not the author of this exact six-concerto collection; the dedicatee and composer are separate roles."
+    },
+    {
+      "question_id": "compositions009",
+      "option_id": "compositions009-opt-2",
+      "answer": "Георг Фридрих Гендель",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "sources": [
+        {
+          "url": "https://foundlingmuseum.org.uk/object/belongings-handels-will/",
+          "evidence": "Actual museum object record names Handel, will1750 and later1757 codicil bequest containing the exact Messiah ownership wording in the stem."
+        },
+        {
+          "url": "https://collection.powerhouse.com.au/object/350685",
+          "evidence": "Actual museum manuscript record explicitly identifies Handel composition1741, separate Jennens text and Smith later transcription; physical copy not confused with composition."
+        }
+      ],
+      "stem_assessment": "Composition1741 and later will/codicil bequest are separate events. Foundling supplies the quoted attribution; the composition year has independent museum support.",
+      "distractor_review": "Bach, Haydn and Mendelssohn do not fit this exact oratorio and documentary identification. Jennens text role is separate from music composition."
+    }
+  ],
+  "retrieval": "All four primary URLs actually opened and supporting text read; no search snippets or homepage redirects counted as reads.",
+  "failed_retrievals": [],
+  "source_limits": "No actual listening/full-score inspection. No claims about sole employment motive, success, charity impact, exact duration, premiere date, first/last status or complete text authorship inferred. Original candidate source provenance not inspected before freeze."
+}
