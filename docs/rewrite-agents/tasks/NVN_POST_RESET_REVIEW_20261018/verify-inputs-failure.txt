@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 230, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 224, in main
+    if args.verify_inputs:result=verify_inputs(base)
+                                 ~~~~~~~~~~~~~^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 101, in verify_inputs
+    return validate_inputs(pins,base)
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 204, in validate_inputs
+    for relative,entry in pins['proofs'].items():bound(entry,REPO/relative)
+                                                 ~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 106, in bound
+    require(path.resolve().is_relative_to(REPO) and (expected is None or path.resolve()==expected.resolve()) and
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        all(not p.is_symlink() and not p.is_junction() for p in (path,*path.parents)) and path.is_file() and path.stat().st_nlink==1 and
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        sha(path)==entry['sha256'],'evidence path/hash/identity differs')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 31, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: evidence path/hash/identity differs

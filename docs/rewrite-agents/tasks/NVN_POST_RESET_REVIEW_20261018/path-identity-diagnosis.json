@@ -1,0 +1,184 @@
+{
+  "status": "FAIL_CURRENT_PATH_IDENTITY_NOT_BYTE_DRIFT",
+  "actual_exit": 1,
+  "input_sha256": "931b441a658962db1cc799f79280c070131664f58ee3c043c82700c7da738eb9",
+  "input_pins": [
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/production-build.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/qa-build.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/production-build-artifacts.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/qa-build-artifacts.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/independent-source-recheck.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_FOOTER_20261016/independent-release-inspection-review.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/production-baseline.jsonl",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/baseline-exit.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/baseline-readonly.sh",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/runtime-proof.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "docs/rewrite-agents/tasks/NVN_RELEASE_20261016/runtime-evidence-inputs.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/assets/quizipedia/catalog.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/assets/quizipedia/manifest.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/assets/catalog.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/assets/study/question-articles.json",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/lib/quizipedia.dart",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    },
+    {
+      "name": "next/apps/quiz_app/test/feedback_test.dart",
+      "exists": true,
+      "resolved_path_matches": true,
+      "hash_matches": true,
+      "junction_ancestors": [
+        "C:\\ap\\quiz_master"
+      ]
+    }
+  ],
+  "runtime_closure": {
+    "count": 103,
+    "all_hashes_match": true
+  },
+  "compiled_trees": {
+    "production": {
+      "count": 74,
+      "all_hashes_match": true
+    },
+    "qa": {
+      "count": 74,
+      "all_hashes_match": true
+    }
+  },
+  "root_alias": {
+    "path": "C:/ap/quiz_master",
+    "type": "Junction",
+    "resolved": "E:\\Projects\\quiz_master"
+  },
+  "cause": "bound() forbids junction ancestors; frozen absolute paths now traverse the moved workspace alias.",
+  "frozen_inputs_modified": false,
+  "source_acceptance_created": false,
+  "archive_generated": false,
+  "publication_attempted": false
+}

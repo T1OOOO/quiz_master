@@ -1,0 +1,44 @@
+test_actual_baseline_count_and_pins (test_nvn.NVNSourceTests.test_actual_baseline_count_and_pins) ... ok
+test_actual_control_and_rollback_retarget (test_nvn.NVNSourceTests.test_actual_control_and_rollback_retarget) ... ok
+test_actual_frozen_inputs_and_runtime_pass_without_archiving (test_nvn.NVNSourceTests.test_actual_frozen_inputs_and_runtime_pass_without_archiving) ... ERROR
+test_baseline_drift_strict_floor_and_restore_refused (test_nvn.NVNSourceTests.test_baseline_drift_strict_floor_and_restore_refused) ... ok
+test_control_anchor_drift_refused (test_nvn.NVNSourceTests.test_control_anchor_drift_refused) ... ok
+test_exact_seven_delta_and_unchanged_all_other_bytes (test_nvn.NVNSourceTests.test_exact_seven_delta_and_unchanged_all_other_bytes) ... ok
+test_import_has_no_file_or_archive_side_effect (test_nvn.NVNSourceTests.test_import_has_no_file_or_archive_side_effect) ... ok
+test_inherited_eleven_label_guard_red_then_unchanged_green (test_nvn.NVNSourceTests.test_inherited_eleven_label_guard_red_then_unchanged_green) ... ok
+test_member_removal_refused (test_nvn.NVNSourceTests.test_member_removal_refused) ... ok
+test_missing_proof_source_or_schema_refused (test_nvn.NVNSourceTests.test_missing_proof_source_or_schema_refused) ... ok
+test_no_prepare_without_source_acceptance (test_nvn.NVNSourceTests.test_no_prepare_without_source_acceptance) ... ok
+test_optimized_refusal_before_archive_calls (test_nvn.NVNSourceTests.test_optimized_refusal_before_archive_calls) ... ok
+test_output_outside_owned_scratch_refused (test_nvn.NVNSourceTests.test_output_outside_owned_scratch_refused) ... ok
+test_real_lifecycle_rejects_false_close_count_or_fixture_claim (test_nvn.NVNSourceTests.test_real_lifecycle_rejects_false_close_count_or_fixture_claim) ... ok
+test_root_input_digest_drift_rejected (test_nvn.NVNSourceTests.test_root_input_digest_drift_rejected) ... ok
+test_source_map_mismatch_rejected (test_nvn.NVNSourceTests.test_source_map_mismatch_rejected) ... ok
+
+======================================================================
+ERROR: test_actual_frozen_inputs_and_runtime_pass_without_archiving (test_nvn.NVNSourceTests.test_actual_frozen_inputs_and_runtime_pass_without_archiving)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\test_nvn.py", line 66, in test_actual_frozen_inputs_and_runtime_pass_without_archiving
+    pins=n.verify_inputs(self.base)
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 101, in verify_inputs
+    return validate_inputs(pins,base)
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 204, in validate_inputs
+    for relative,entry in pins['proofs'].items():bound(entry,REPO/relative)
+                                                 ~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 106, in bound
+    require(path.resolve().is_relative_to(REPO) and (expected is None or path.resolve()==expected.resolve()) and
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        all(not p.is_symlink() and not p.is_junction() for p in (path,*path.parents)) and path.is_file() and path.stat().st_nlink==1 and
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        sha(path)==entry['sha256'],'evidence path/hash/identity differs')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_RELEASE_20261016\worker\prepare_nvn.py", line 31, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: evidence path/hash/identity differs
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.222s
+
+FAILED (errors=1)
