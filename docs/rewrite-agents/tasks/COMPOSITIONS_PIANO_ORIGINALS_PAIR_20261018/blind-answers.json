@@ -1,0 +1,38 @@
+{
+  "schema": "qm-piano-originals-blind-answers/v1",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-a8bdb262831f42c4b636bd33cfc87747"
+  },
+  "clean_blind": false,
+  "blindness_note": "I read BRIEF_EN.md and candidate-questions.json before this freeze. The brief contains informative work and role cues, and earlier public exposure to these familiar works cannot be excluded. I did not inspect current writer articles, SOURCES_EN.md, or private/canonical keys before freezing these answers; the primary references below were opened independently.",
+  "checked_at_utc": "2026-10-19",
+  "items": [
+    {
+      "question_id": "compositions012",
+      "selected_option_id": "compositions012-opt-3",
+      "selected_text": "Клод Дебюсси",
+      "finding": "Henle credits Claude Debussy as composer of the solo-piano Suite bergamasque, and its listed movements place Clair de lune third after Prélude and Menuet. The BnF catalog credits Debussy as composer of the 1905 piano publication. No other offered composer is credited for that original work.",
+      "source_urls_opened": [
+        "https://www.henle.de/Suite-bergamasque/HN-381",
+        "https://www.henle.de/media/89/c7/c1/1690886061/0391-1690886061-sync.pdf",
+        "https://catalogue.bnf.fr/ark:/12148/cb429398667"
+      ],
+      "caveat": "Publication in 1905 is supported. Henle's product description and its scholarly preface disagree about the year of the sale/submission to Choudens (1890 versus 1891); do not claim a precise transaction year or equate 1890 with the final published version."
+    },
+    {
+      "question_id": "compositions013",
+      "selected_option_id": "compositions013-opt-4",
+      "selected_text": "Модест Мусоргский",
+      "finding": "Henle credits Modest Mussorgsky with the original solo-piano Pictures at an Exhibition inspired by the posthumous Hartmann exhibition; the Philharmonia identifies Maurice Ravel's version as an orchestration. Henle's scholarly preface distinguishes Rimsky-Korsakov's heavily revised 1886 first edition from Mussorgsky's autograph. Thus Ravel and Rimsky-Korsakov have later arrangement/editorial roles, not original authorship; Prokofiev is not credited.",
+      "source_urls_opened": [
+        "https://www.henle.de/Pictures-at-an-Exhibition/HN-477",
+        "https://www.henle.de/media/2b/89/f0/1690886055/0477-1690886055-sync.pdf",
+        "https://philharmonia.co.uk/pictures-at-an-exhibition-listening-guide/",
+        "https://blogs.loc.gov/nls-music-notes/2022/01/seeing-music-gnomus-and-baba-yaga-from-mussorgskys-pictures-at-an-exhibition/"
+      ],
+      "caveat": "Henle's product page and scholarly preface give conflicting birth years for Hartmann (1834 versus 1842); avoid his birth year. The prompt's contrast is secure without asserting an exact orchestration date or that Ravel made the only orchestration."
+    }
+  ]
+}

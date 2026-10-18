@@ -1,0 +1,58 @@
+{
+  "schema": "qm-question-articles-review/v1",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-a8bdb262831f42c4b636bd33cfc87747",
+    "same_provider_as_writer": true
+  },
+  "reviewed_at_utc": "2026-10-18T22:21:35Z",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_PIANO_ORIGINALS_PAIR_20261018/articles.json",
+    "sha256": "1d34efc54f06d7d1a2c49c83579ab5a804f8f530b7a993cd5370495672030232"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_PIANO_ORIGINALS_PAIR_20261018/SOURCES_EN.md",
+    "sha256": "9207d5db852e04fa6b50c71098ba29a490bca5b8ddf63e847079c230a7ac4db5"
+  },
+  "blind_answer_sha256": "f86e9f2cfb0b349b53e07f8af1d6f8126ba27fec194820a8d2dd29977a23bbff",
+  "clean_blind": false,
+  "blind_date_correction": "The frozen blind-answers.json says checked_at_utc=2026-10-19. That is the Europe/Istanbul local calendar date, not UTC. The actual UTC date at final review was 2026-10-18. The frozen answer file was left unchanged to preserve its hash and candidate-first provenance.",
+  "scope": "Private draft editorial review only; no canonical-key, publication, or different-provider acceptance claim.",
+  "items": [
+    {
+      "id": "question:compositions012",
+      "verdict": "accepted_for_draft",
+      "question_id": "compositions012",
+      "selected_option_id": "compositions012-opt-3",
+      "body_word_count_whitespace": 209,
+      "question_ref_verified": true,
+      "stem_and_options_verified": true,
+      "source_links_opened": [
+        "https://www.henle.de/Suite-bergamasque/HN-381",
+        "https://www.henle.de/media/89/c7/c1/1690886061/0391-1690886061-sync.pdf"
+      ],
+      "evidence": "Henle's Debussy edition is piano solo and lists Prélude, Menuet, Clair de lune, Passepied in order; its preface explicitly identifies Clair de lune as the third movement, says Debussy put 1890 on proofs, dates publication to 1905, and documents the earlier title Promenade sentimentale. The article keeps the early-work and print dates distinct. Its listening exercise is conditional and observational.",
+      "option_check": "Debussy alone is credited with the original in the opened edition; Ravel, Fauré, and Satie are not alternative composers of this specified piano movement.",
+      "limitations": "Both final supporting texts are from Henle. The draft avoids the product-description/preface discrepancy around the precise Choudens transaction date and does not assert a debated title-origin hypothesis."
+    },
+    {
+      "id": "question:compositions013",
+      "verdict": "accepted_for_draft",
+      "question_id": "compositions013",
+      "selected_option_id": "compositions013-opt-4",
+      "body_word_count_whitespace": 215,
+      "question_ref_verified": true,
+      "stem_and_options_verified": true,
+      "source_links_opened": [
+        "https://www.henle.de/Pictures-at-an-Exhibition/HN-477",
+        "https://www.clevelandorchestra.com/works/pictures-at-an-exhibition-mussorgsky"
+      ],
+      "evidence": "Henle credits Mussorgsky with the original solo-piano cycle, June 1874 and the posthumous Hartmann exhibition. Cleveland credits Mussorgsky as composer, describes the original piano suite and Ravel's 1922 orchestration, treats Promenade as a visitor's movement with links qualified to the first half, and assigns the Old Castle alto-saxophone melody specifically to Ravel's orchestration. The article preserves those roles and qualifications.",
+      "option_check": "Ravel is an orchestral arranger, not the original piano composer. Henle's scholarly preface separately documents Rimsky-Korsakov's later heavy revision of the 1886 first edition; that editorial role is not authorship. Prokofiev is not credited for the work.",
+      "limitations": "The draft omits Henle's conflicting Hartmann birth years and does not imply Ravel made the sole orchestration, that every image survives, or that every piece is linked by Promenade."
+    }
+  ],
+  "overall_verdict": "accepted_for_draft",
+  "publication_gate": "Requires genuine different-provider independent acceptance and authorized publication workflow."
+}

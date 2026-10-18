@@ -1,0 +1,9 @@
+# Private piano-originals pair
+
+Root authored exact current012/013 draft articles209/215words with four primary URLs actually read. Independent native reviewer verifies candidates/sources before current writer and Root key comparison, but informative brief/possible prior exposure is explicitly clean_blind=false. Original f86e9f2c freeze is preserved. Its checked_at_utc label uses local2026-10-19; actual UTC delivery/access was2026-10-18, recorded separately in freeze-provenance.json.
+
+Debussy1905publication is distinct from early1890proofdate and unspecified later changes. Product/preface disagree on Choudens transaction year, omitted. Both012sources are one publisher, explicit source-independence limitation. Mussorgsky original piano1874 versus Ravel1922orchestration/editor roles distinguished; Hartmann conflicting birthdates omitted. Promenade is not claimed between every pair of movements. Conditional listening exercises do not claim actual audio/score inspection.
+
+Native exact-text/source/options acceptance remains same-provider private evidence, not genuine different-provider release acceptance. quiz_master-962 stays open until external acceptance and published verification through current release gates. No questions/revisions, canonical/runtime/frozen changes, provider retries, candidate or deployment.
+
+Prior packet COMPOSITIONS_ORCHESTRAL_GESTURES_PAIR_20261018 remains unchanged. Its public010 one-by-one wording and Beads full synchronization remain follow-ups under961. Current tracking uses scoped no-db JSONL export, preserving foreign rows and177foreign tracked WIP paths. The prior SQLite import succeeded but automatic JSONL rename failed; no claim of full DB sync. Production observation here is read-only22:18UTC,43OPEN/samehash/Helm64/readiness200;14.153percent disk still fails strict>20. Do not bypass capacity/review gates or touch unrelated resources.
