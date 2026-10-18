@@ -1,0 +1,55 @@
+test_complete_historical_closure_without_release_acceptance (test_historical.HistoricalEvidenceTests.test_complete_historical_closure_without_release_acceptance) ... ok
+test_extra_missing_and_same_count_replacement_closure_refused (test_historical.HistoricalEvidenceTests.test_extra_missing_and_same_count_replacement_closure_refused) ... ok
+test_false_lifecycle_outcomes_refused (test_historical.HistoricalEvidenceTests.test_false_lifecycle_outcomes_refused) ... ok
+test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) ... 
+  test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='empty') ... FAIL
+  test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='missing') ... FAIL
+  test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='extra') ... FAIL
+  test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='kind') ... FAIL
+test_junction_and_hardlink_refused (test_historical.HistoricalEvidenceTests.test_junction_and_hardlink_refused) ... ok
+test_lifecycle_member_required_before_read (test_historical.HistoricalEvidenceTests.test_lifecycle_member_required_before_read) ... ok
+test_nested_stale_alias_refused (test_historical.HistoricalEvidenceTests.test_nested_stale_alias_refused) ... ok
+test_old_raw_alias_refused_and_canonical_original_accepted (test_historical.HistoricalEvidenceTests.test_old_raw_alias_refused_and_canonical_original_accepted) ... ok
+test_symlink_refused (test_historical.HistoricalEvidenceTests.test_symlink_refused) ... ok
+test_wrong_hash_and_outside_repository_refused (test_historical.HistoricalEvidenceTests.test_wrong_hash_and_outside_repository_refused) ... ok
+
+======================================================================
+FAIL: test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_EVIDENCE_20261018\worker\test_historical.py", line 145, in test_incomplete_or_misclassified_migration_refused
+    with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'exact migration'):
+                                          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_EVIDENCE_20261018\worker\test_historical.py", line 145, in test_incomplete_or_misclassified_migration_refused
+    with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'exact migration'):
+                                          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_EVIDENCE_20261018\worker\test_historical.py", line 145, in test_incomplete_or_misclassified_migration_refused
+    with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'exact migration'):
+                                          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_incomplete_or_misclassified_migration_refused (test_historical.HistoricalEvidenceTests.test_incomplete_or_misclassified_migration_refused) (mutation='kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_EVIDENCE_20261018\worker\test_historical.py", line 145, in test_incomplete_or_misclassified_migration_refused
+    with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'exact migration'):
+                                          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.282s
+
+FAILED (failures=4)

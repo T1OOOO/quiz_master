@@ -1,0 +1,16 @@
+test_complete_historical_closure_without_release_acceptance (test_historical.HistoricalEvidenceTests.test_complete_historical_closure_without_release_acceptance) ... FAIL
+
+======================================================================
+FAIL: test_complete_historical_closure_without_release_acceptance (test_historical.HistoricalEvidenceTests.test_complete_historical_closure_without_release_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_EVIDENCE_20261018\worker\test_historical.py", line 18, in test_complete_historical_closure_without_release_acceptance
+    self.assertEqual(result.returncode, 0, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0 : C:\Python314\python.exe: can't open file 'E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_CANONICAL_EVIDENCE_20261018\\worker\\verify_historical.py': [Errno 2] No such file or directory
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.181s
+
+FAILED (failures=1)
