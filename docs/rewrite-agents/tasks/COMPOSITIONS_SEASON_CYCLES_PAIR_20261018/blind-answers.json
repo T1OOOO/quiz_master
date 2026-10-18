@@ -1,0 +1,69 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "COMPOSITIONS_SEASON_CYCLES_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2bd5f60677d24653a884be5637df72a1"
+  },
+  "review_scope": "Native same-provider private verification only; not clean blind; external acceptance pending.",
+  "clean_blind": false,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Previous COMPOSITIONS_SOURCE_CUES_PAIR_20261018 post-freeze authorized public-pack read returned entire quiz, including exact001/002 stems/options. That prior public exposure predates this assignment. No keys or current writer prose read; fresh source verification is independent of current writer, but not first-ever blind candidate exposure.",
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "compositions001",
+      "option_id": "compositions001-opt-1",
+      "answer": "Антонио Вивальди",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "source_url": "https://nase-noty.cz/ctvero-rocnich-obdobi-le-quattro-stagioni",
+      "evidence": "Bare nreiter Praha actual publisher record names Vivaldi and lists all four concertos with op8/1–4 and RV269/315/293/297; one duplicated list typoRV3115 is not used. Listed edition is violin/piano reduction, not evidence that original was piano.",
+      "retrieval": "Fresh actual institutional supporting text read2026-10-18 before current writer files; prior public exposure disclosed."
+    },
+    {
+      "question_id": "compositions002",
+      "option_id": "compositions002-opt-2",
+      "answer": "Пётр Чайковский",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "source_url": "https://www.laphil.com/works/the-seasons-op-37a",
+      "evidence": "LA Phil actual work record names Tchaikovsky and op37a, solo piano and twelve monthly pieces; Henle actual edition corroborates piano solo/twelve months under variant37bis.",
+      "retrieval": "Fresh actual institutional supporting text read2026-10-18 before current writer files; prior public exposure disclosed."
+    }
+  ],
+  "additional_actual_supporting_reads": [
+    {
+      "url": "https://www.henle.de/The-Seasons-op.-37bis/HN-616",
+      "supports": "Tchaikovsky, piano solo, twelve month pictures;37bis variant distinguished from candidate37a."
+    }
+  ],
+  "candidate_assessment": "Both exact stems have a uniquely defensible offered composer. Shared seasonal title alone would be ambiguous; genre/instrument and catalogue identifiers disambiguate. Vivaldi/Glazunov are not defensible for the qualified Tchaikovsky solo piano cycle; Tchaikovsky/Bach/Handel do not match Vivaldi RV/op8 quartet. No keys read.",
+  "source_limits": "Publisher reduction must not be mistaken for original scoring. TypoRV3115 occurs once among duplicated Vivaldi contents; two entries correctly give315. Henle37bis variant not a contradictory work. LA Phil servant anecdote and evaluative biography not used. Extra Schott/Breitkopf pages were opened but no relevant extracted supporting text counted. No listening or score excerpts used.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.ricordi.com/~/media/Files/PDF/Ricordi/Critical%20Editions/Critical%20Editions_Catalogue_Vivaldi.pdf",
+      "error": "not accessible via web tool"
+    },
+    {
+      "url": "https://en.tchaikovsky-research.net/pages/The_Seasons",
+      "error": "internal retrieval error; snippets not counted"
+    },
+    {
+      "url": "https://www.tchaikovsky-research.net/en/Works/Piano/TH135.html",
+      "error": "404"
+    }
+  ]
+}

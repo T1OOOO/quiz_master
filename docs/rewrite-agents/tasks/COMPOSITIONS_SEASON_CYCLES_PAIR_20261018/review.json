@@ -1,0 +1,112 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "COMPOSITIONS_SEASON_CYCLES_PAIR_20261018",
+  "task_id": "task-f666789a8cad463382d0b2f0a2f26de9",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2bd5f60677d24653a884be5637df72a1"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "868c53e4bf0624ee0b79ae8ac6766c609893024448e2192cd4f626a077fde294"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "3d84d7ce60a9eff234f997412b46e4eaeca30051ab962c13f48cd01a08359025"
+  },
+  "blind_answer_sha256": "a7b243c7c5cb4a13f64370b6a4640935a70a746a52cf28d9d9694aa004ce356d",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Previous COMPOSITIONS_SOURCE_CUES_PAIR_20261018 post-freeze authorized public-pack read returned entire quiz, including exact001/002 stems/options. That prior public exposure predates this assignment. No keys or current writer prose read; fresh source verification is independent of current writer, but not first-ever blind candidate exposure.",
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:compositions001",
+      "question_revision_sha256": "a2a4021b9b02f6ca3c872ddc9061302d7530cacff5ec7a8109ac53fc6e16d87b",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions001-opt-1",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 202,
+      "checked_claims": "Henle and Barenreiter US explicitly confirm Vivaldi, four violin concertos and all Op8/1–4/RV269,315,293,297 seasonal mappings. Henle supports strings/continuo, prefatory poems and named musical images, plus separate reduction/orchestral material. Article does not assign poem authorship or confuse RV with seasonal order/original scoring with reduction.",
+      "distractor_review": "Unique offered composer under exact qualified work/instrument/catalogue description. Shared seasonal title does not make another offered composer defensible. No visible direct answer disclosure or option-duplication issue. Prior exposure limits blind claim, not independently read source evidence.",
+      "pedagogy_review": "Distinct context: concerto/ensemble/programmatic image for001; monthly piano cycle/edition labels for002. Original conditional listening/reading prompts distinguish observation from association and allow open outcomes; no actual hearing, score inspection or compulsory emotion asserted.",
+      "sources_opened": [
+        "https://www.henle.de/us/The-Four-Seasons/HN-3333",
+        "https://www.barenreiter.us/products/vivaldi-the-four-seasons-barenreiter"
+      ],
+      "source_limits": "Two distinct institutions/publishers per article; bounded catalogue/prose facts only, no media rights or scholarly chronology claimed."
+    },
+    {
+      "id": "question:compositions002",
+      "question_revision_sha256": "bd86a0784b14b00f9239f64d0dc28875255468dcbb240e6d54116a0c787a0e40",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions002-opt-2",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 205,
+      "checked_claims": "Henle and LA Phil support Tchaikovsky solo-piano cycle of twelve months. Named January/March/May/June titles are in Henle contents, with March/June corroborated by LA Phil. Henle37bis versus LA Phil37a is correctly attributed to same identified cycle, without invented numbering history. Composer/editors/fingering contributions distinguished; title-category observations are original interpretation.",
+      "distractor_review": "Unique offered composer under exact qualified work/instrument/catalogue description. Shared seasonal title does not make another offered composer defensible. No visible direct answer disclosure or option-duplication issue. Prior exposure limits blind claim, not independently read source evidence.",
+      "pedagogy_review": "Distinct context: concerto/ensemble/programmatic image for001; monthly piano cycle/edition labels for002. Original conditional listening/reading prompts distinguish observation from association and allow open outcomes; no actual hearing, score inspection or compulsory emotion asserted.",
+      "sources_opened": [
+        "https://www.henle.de/The-Seasons-op.-37bis/HN-616",
+        "https://www.laphil.com/works/the-seasons-op-37a"
+      ],
+      "source_limits": "Two distinct institutions/publishers per article; bounded catalogue/prose facts only, no media rights or scholarly chronology claimed."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Four final exact URLs actually opened and supporting text read this assignment. Henle HN616/LA Phil during fresh verification, Henle HN3333/Barenreiter US after exact freeze.",
+    "actual_successful_unique_cited_urls": 4,
+    "source_counts": [
+      2,
+      2
+    ],
+    "failed_retrievals": [
+      {
+        "url": "https://www.ricordi.com/~/media/Files/PDF/Ricordi/Critical%20Editions/Critical%20Editions_Catalogue_Vivaldi.pdf",
+        "error": "not accessible via web tool"
+      },
+      {
+        "url": "https://en.tchaikovsky-research.net/pages/The_Seasons",
+        "error": "internal retrieval error; snippets not counted"
+      },
+      {
+        "url": "https://www.tchaikovsky-research.net/en/Works/Piano/TH135.html",
+        "error": "404"
+      }
+    ],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false,
+    "limits": [
+      "Pre-freeze Czech publisher duplicateRV3115 typo is absent from final exact records; all four identifiers independently confirmed by both final records.",
+      "Only read source text counted; additional Schott/Breitkopf generic/extraction-heavy opens not relied on.",
+      "Henle37bis/LA Phil37a reported as edition/work labels, no invented chronology. LA Phil reminder anecdote/evaluative biography omitted."
+    ]
+  },
+  "checks": [
+    "Frozen raw article/source/answer hashes passed.",
+    "Exact two candidate refs/full article IDs/schema/draft/arts/empty targets passed.",
+    "All bodies160–260whitespace words, HTTPS/access2026-10-18/source counts2/2 passed.",
+    "All article and source-support claims checked; composer/catalogue/original instrumentation/reduction/editor distinction preserved.",
+    "Prose assessed as bounded factual paraphrase with original optional exercises; no excerpts, anecdotes, audience absolutes or licensing/scientific claims."
+  ],
+  "findings": [],
+  "limits": [
+    "clean_blind=false throughout: exact public stems/options previously exposed in authorized full public-pack read; fresh sources independently verified before current writer prose.",
+    "No keys read, listening, score inspection, exhaustive plagiarism search or production scoring claimed.",
+    "Native same-provider private draft evidence only; genuine different-provider acceptance/publication/release acceptance remain pending."
+  ]
+}
