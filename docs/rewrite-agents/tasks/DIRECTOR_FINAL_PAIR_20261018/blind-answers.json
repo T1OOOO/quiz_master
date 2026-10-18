@@ -1,0 +1,49 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_FINAL_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-0c7567b50a1d40f58f93d768b6f4767f"
+  },
+  "review_scope": "Native same-provider private evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-39",
+      "option_id": "prep-film-directors-39-opt-4",
+      "answer": "Грета Гервиг",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.sonypictures.com/movies/littlewomen",
+      "evidence": "Actual studio page read: explicit director and2019 work/release-year field.",
+      "retrieval": "Successful supporting primary web open2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-40",
+      "option_id": "prep-film-directors-40-opt-1",
+      "answer": "Джордан Пил",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.universalpicturesathome.com/movies/us",
+      "evidence": "Actual studio page read: explicit director and2019 work/release-year field.",
+      "retrieval": "Successful supporting primary web open2026-10-18."
+    }
+  ],
+  "candidate_assessment": "Two clean blind items, unique offered credited director for exact2019 film. Little Women explicitly2019 rather than1994 adaptation; Gerwig screenplay distinct from Alcott source. Us director distinct from actor. No visible leak or demonstrated date bug.",
+  "source_limits": "One studio source per answer. Us page copyright2018 differs from explicit Release Year2019; no premiere/completion inference or date-error claim. No cast-order role inference, full-film viewing, runtime or clinical/scientific/social-group claim.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.universalpictures.com/movies/us",
+      "error": "Actual web open404, excluded; distinct Universal AtHome page actually read successfully."
+    }
+  ]
+}

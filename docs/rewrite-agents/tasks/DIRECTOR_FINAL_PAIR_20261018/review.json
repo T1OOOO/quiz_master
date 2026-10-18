@@ -1,0 +1,93 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "DIRECTOR_FINAL_PAIR_20261018",
+  "task_id": "task-361da959e92448c398563b9ec57d3a7f",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-0c7567b50a1d40f58f93d768b6f4767f"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "de03a196a55f8c771ffe0dbf767723b08b147c63779b03ea63c9a703564e1bc8"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "ad43c40ed0e55085d402f57a7bac9a52f1def96ec5988f86f7baefd84ecd6a3b"
+  },
+  "blind_answer_sha256": "895490857e76224ddb417b19bf33c114fa7a3cccfb64d109a39beb9d91a4d4a8",
+  "ordering": {
+    "new_independent_solve": true,
+    "inherited_blind_answers": false,
+    "blind_frozen_before_articles_and_writer_sources": true,
+    "canonical_keys_read": false
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:prep-film-directors-39",
+      "question_revision_sha256": "10a1faf323a07fc918c01a5301b721ac92ec26126542e0d6ee34c660a999c78c",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-39-opt-4",
+      "word_count_whitespace": 209,
+      "checked_claims": "Sony and BFI explicitly identify2019 Gerwig direction/writing. Sony supports Alcott novel/other writings, four March sisters seeking individual paths and Jo reflecting across her fictional life. The article clearly separates literary source from screenplay and direction, identifies this adaptation and makes no unsourced comparison with other versions.",
+      "distractor_review": "Four distinct offered directors; actual primary direction credit uniquely selects frozen blind option for exact2019 work. No answer leak or defensible alternate option found. Canonical keys not read.",
+      "pedagogy_review": "Family closeness versus individual future choices, compared with later knowledge. Distinct contextual angle adds understanding beyond name recall. Optional exercise invites concrete observation and uncertainty, without claiming actual viewing, fabricated scene analysis, universal audience effects or proven author intention.",
+      "sources_opened": [
+        "https://www.sonypictures.com/movies/littlewomen",
+        "https://www.bfi.org.uk/film/422a0b7b-2294-5494-bc39-bd96d5eedf54/little-women"
+      ],
+      "source_limit": "Two distinct institutional sources, studio plus BFI; bounded credits/premise checks, not full-film or biographical validation."
+    },
+    {
+      "id": "question:prep-film-directors-40",
+      "question_revision_sha256": "08780d09557a76f0f9fa4e2a6a42b321412d006e9fef605aa7b91ef5b7957418",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-40-opt-1",
+      "word_count_whitespace": 201,
+      "checked_claims": "Universal AtHome explicitly identifies Peele direction and ReleaseYear2019; family facing its own doppelgangers supported. BFI supports vacation premise and directly pairs Nyongo with Adelaide in prose, not inferred from cast order. No ending/origins, real-group claim, diagnosis or scientific possibility asserted.",
+      "distractor_review": "Four distinct offered directors; actual primary direction credit uniquely selects frozen blind option for exact2019 work. No answer leak or defensible alternate option found. Canonical keys not read.",
+      "pedagogy_review": "Visible likeness versus behaviour and expectations in fictional horror. Distinct contextual angle adds understanding beyond name recall. Optional exercise invites concrete observation and uncertainty, without claiming actual viewing, fabricated scene analysis, universal audience effects or proven author intention.",
+      "sources_opened": [
+        "https://www.universalpicturesathome.com/movies/us",
+        "https://www.bfi.org.uk/lists/5-things-watch-weekend-22-24-march"
+      ],
+      "source_limit": "Two distinct institutional sources, studio plus BFI; bounded credits/premise checks, not full-film or biographical validation."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual supporting primary web opens: Sony Little Women and Universal AtHome Us during fresh blind phase, both BFI pages after exact writer freeze.",
+    "actual_successful_unique_cited_urls": 4,
+    "source_counts": [
+      2,
+      2
+    ],
+    "failed_retrievals": [
+      {
+        "url": "https://www.universalpictures.com/movies/us",
+        "error": "Actual web open404, excluded; distinct Universal AtHome page actually read successfully."
+      }
+    ],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false,
+    "limits": [
+      "Universal main /movies/us404 is excluded; distinct final AtHome URL actually read.",
+      "Us copyright2018 does not replace explicit ReleaseYear2019.",
+      "BFI promotional/quoted interpretations excluded; only premise and explicit Adelaide mapping used."
+    ]
+  },
+  "checks": [
+    "Frozen raw input SHA256 gates passed.",
+    "Two exact revision refs/full article IDs/schema/draft/arts/empty targets passed.",
+    "Bodies209/201whitespace words,2HTTPSsources each/access2026-10-18 passed.",
+    "All factual claims and source supports checked; director/screenplay/literary source/actor distinctions preserved.",
+    "Distinct original proposed exercises; no unverified later-cut scene/runtime, quote/lyric, award/anecdote, diagnosis or social-group generalization."
+  ],
+  "findings": [],
+  "limits": [
+    "No full-film viewing, exhaustive plagiarism search or detailed scene verification claimed. Prose assessed as bounded paraphrase and original proposed analysis.",
+    "Both dated works correctly identified; no exact premiere/completion history inferred.",
+    "Native same-provider private draft evidence only; genuine different-provider acceptance, publication and release acceptance pending."
+  ]
+}
