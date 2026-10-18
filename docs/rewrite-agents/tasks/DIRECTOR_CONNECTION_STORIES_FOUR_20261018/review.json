@@ -1,0 +1,129 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "DIRECTOR_CONNECTION_STORIES_FOUR_20261018",
+  "task_id": "task-15ee07432bc543818e63d01a68cdda17",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2ab8c3bd7aab42c7afdda5ed2e543006"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "7c4bd85f8770b1ce59a9e8e7ec3bd98205fe2b0cfa47982fe37d74c87a94246b"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "b93b7e480cc2be0f443d8cf3acc4e4106a5eef603ea9c341a7ebe6c46d4ca1ff"
+  },
+  "blind_answer_sha256": "bef968bbe0be4531ddc148f115b855f426b47b44e3475ad7b2290d9c1581b1e0",
+  "ordering": {
+    "new_independent_solve": true,
+    "inherited_blind_answers": false,
+    "blind_frozen_before_articles_and_writer_sources": true,
+    "canonical_keys_read": false
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:prep-film-directors-31",
+      "question_revision_sha256": "a41f36b8753c00c01c643e89b132b8f2be46ccae3d1ae1b0fe2e469cf2a6e19f",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-31-opt-1",
+      "word_count_whitespace": 200,
+      "checked_claims": "BFI explicitly supports 1982, Spielberg direction, Mathison screenplay and Spielberg/Kennedy producing. BFI Player synopsis supports the stranded alien, Elliott taking him into the family, government pursuit and return to his kind. Friendship versus helping someone leave is framed as open interpretation. No later-edition scenes or runtime imported.",
+      "distractor_review": "Four distinct offered directors; actual institutional director text uniquely selects the frozen blind option. No visible leak or defensible alternate offered director under the dated title. Canonical keys not read.",
+      "pedagogy_review": "Helping a friend versus keeping them nearby. Adds contextual understanding beyond naming the director; open optional exercise requires viewer evidence and permits uncertainty. No claimed full-film viewing or proven intention.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/227a3e6f-9fd9-557c-a7ce-5ca3057d443d/et-the-extra-terrestrial",
+        "https://player.bfi.org.uk/rentals/film/watch-et-the-extra-terrestrial-1982-online"
+      ],
+      "source_limit": "Two BFI pages are one institution."
+    },
+    {
+      "id": "question:prep-film-directors-32",
+      "question_revision_sha256": "9e2dcf5c63eb4415698c4586bc4076203f8f240130f77c5abf5f6599bba32a1c",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-32-opt-2",
+      "word_count_whitespace": 201,
+      "checked_claims": "BFI supports 1989, Lee direction/writing/producing, named cast and the hot Bedford-Stuyvesant Brooklyn setting, racial tensions and escalating local dispute. No cast-role inference, specific wall-photo claim or ethnic generalization appears. The moral discussion remains open character/film analysis.",
+      "distractor_review": "Four distinct offered directors; actual institutional director text uniquely selects the frozen blind option. No visible leak or defensible alternate offered director under the dated title. Canonical keys not read.",
+      "pedagogy_review": "Escalation, changing demands and possible alternatives. Adds contextual understanding beyond naming the director; open optional exercise requires viewer evidence and permits uncertainty. No claimed full-film viewing or proven intention.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/8e81a2c0-b1e4-51c4-b5da-93458d361dc3/do-the-right-thing"
+      ],
+      "source_limit": "One BFI source only, allowed by brief."
+    },
+    {
+      "id": "question:prep-film-directors-33",
+      "question_revision_sha256": "16b2d77adb985f79cdf219efe703179e9d96350f7a510d4a903ea395b156b795",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-33-opt-2",
+      "word_count_whitespace": 211,
+      "checked_claims": "BFI supports 1994, Tarantino direction, Bender producing, named cast and nonlinear interlinked stories. AFI explicitly separates Story by Tarantino/Avary from Screenplay Tarantino; the article preserves that distinction. AFI runtime165 and precise release field are excluded; no sole story authorship is inferred from direction.",
+      "distractor_review": "Four distinct offered directors; actual institutional director text uniquely selects the frozen blind option. No visible leak or defensible alternate offered director under the dated title. Canonical keys not read.",
+      "pedagogy_review": "Event order versus information order across linked stories. Adds contextual understanding beyond naming the director; open optional exercise requires viewer evidence and permits uncertainty. No claimed full-film viewing or proven intention.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/bd809f0e-d695-558b-bba3-cbdfbda41820/pulp-fiction",
+        "https://watch.afi.com/movie/pulp-fiction"
+      ],
+      "source_limit": "Two distinct institutions; bounded claim-specific support, no full historical/biographical validation."
+    },
+    {
+      "id": "question:prep-film-directors-34",
+      "question_revision_sha256": "9d48cf23530e026d7209912907fefad25c53b3728b76328496ce0b6adedd56d1",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-34-opt-3",
+      "word_count_whitespace": 198,
+      "checked_claims": "BFI supports 2003, Sofia Coppola direction/writing and producing with Ross Katz. Focus prose explicitly maps Murray/Bob and Johansson/Charlotte, Tokyo advertising visit and photographer husband/hotel circumstances. Friendship framing supported; silence/words analysis is optional, not a national or cultural generalization.",
+      "distractor_review": "Four distinct offered directors; actual institutional director text uniquely selects the frozen blind option. No visible leak or defensible alternate offered director under the dated title. Canonical keys not read.",
+      "pedagogy_review": "Words, silence and uncertainty in companionship. Adds contextual understanding beyond naming the director; open optional exercise requires viewer evidence and permits uncertainty. No claimed full-film viewing or proven intention.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/2e121295-a344-5e2b-a811-b00375b4b822/lost-in-translation",
+        "https://www.focusfeatures.com/article/lost-in-translation_15-anniversary"
+      ],
+      "source_limit": "Two distinct institutions; bounded claim-specific support, no full historical/biographical validation."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual institutional web opens and supporting text read. Three final URLs (Do the Right Thing BFI, Pulp Fiction BFI, Focus anniversary) already read directly in the fresh blind phase; four remaining final URLs read after writer freeze.",
+    "actual_successful_unique_cited_urls": 7,
+    "final_source_institutions": [
+      "BFI",
+      "AFI",
+      "Focus Features"
+    ],
+    "source_counts": [
+      2,
+      1,
+      2,
+      2
+    ],
+    "failed_retrievals": [
+      {
+        "url": "https://www.focusfeatures.com/lost_in_translation",
+        "error": "404 during blind phase; excluded from supporting reads and final citations."
+      }
+    ],
+    "limits": [
+      "BFI Player playback currently unavailable; synopsis and credits actually readable, not a failed supporting-text retrieval or viewing claim.",
+      "Universal E.T. mixed director field encountered during blind research; independently checked against Cinematheque, and final BFI record explicitly separates direction and screenplay. Universal is not a final citation.",
+      "AFI Watch Pulp Fiction has a suspect165-minute field; final article uses explicit story/screenplay credits only, not that runtime or precise release date."
+    ],
+    "redirects_counted_as_support": false,
+    "search_snippets_counted_as_reads": false
+  },
+  "checks": [
+    "Raw frozen article/source/blind SHA256 gates passed.",
+    "Four exact candidate revision refs, full article IDs, draft/domain:arts/empty targets passed.",
+    "All four bodies160–260whitespace words; HTTPS citations/access dates and source counts2/1/2/2 passed.",
+    "Every factual body/support claim checked against actually read source text; no cast-order role inference.",
+    "Distinct contextual angles, original optional exercises, fictional cultural/racial portrayals distinguished from real-group facts."
+  ],
+  "findings": [],
+  "limits": [
+    "No full-film viewing or detailed scene verification claimed.",
+    "Catalogue years identify works; exact premiere/completion history not independently inferred.",
+    "Native same-provider private draft evidence only; genuine different-provider acceptance, publication and release acceptance remain pending."
+  ]
+}

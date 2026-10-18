@@ -1,0 +1,15 @@
+# Four private director articles031–034
+
+Four original Russian miniarticles cover E.T.1982, Do the Right Thing1989, Pulp Fiction1994 and Lost in Translation2003. Word counts200/201/211/198; source links2/1/2/2, seven exact final cited institutional URLs. Root actually opened/read all seven and all final frozen bodies/source supports. E.T.'s two pages belong to one institution; Do the Right Thing has one institution; the other two have two.
+
+Native checker independently source-solved the four new candidates before writer-file or canonical-key access. Blind SHA bef968bbe0be4531ddc148f115b855f426b47b44e3475ad7b2290d9c1581b1e0 frozen first; Root subsequently compared local editorial keys: four matches and exact public stems/options. No inherited blind solve is claimed. Helpers' ownership remains disjoint.
+
+The articles offer different optional exercises about friendship and another person's needs, escalating disagreements, order of narrative information, and words versus silence. Fictional cultural portrayals do not establish ethnic/national generalizations. No full-film viewing, unsupported intention or universal audience response claimed. Root requested removal of internal verification phrasing/English credit in draft prose before final freeze. AFI's explicit Pulp Fiction Story by Tarantino/Avary versus Screenplay Tarantino supports a useful credit distinction. Sparse director/writer metadata does not establish exclusive story authorship.
+
+BFI E.T. credits and readable BFI Player synopsis are used separately. Playback unavailability is not a retrieval failure. Universal E.T.'s mixed Directed By field was additionally observed by Root, not imported into the article or used to infer co-direction. Root also read AFI Lost in Translation as supplemental evidence. Focus base/about URLs failed; the exact cited anniversary article was successfully read. Suspicious BFI pizzeria-wall wording was omitted without inventing a replacement or canonical bug.
+
+Coverage reaches thirty-four private director articles and six missing, zero in the frozen runtime asset. Continue at035 under quiz_master-4koa. Preserve previous packets, runtime/NVN pins and unrelated WIP. Native private evidence remains distinct from genuine different-provider acceptance and published verification.
+
+Fresh production observation was read-only:43 reports/all OPEN/same digest, Helm64, one available replica/readiness200; disk15.642% fails strict greater-than20%. No feedback closure, deployment, cleanup, archive/candidate, build/browser or quota retry occurred. Host Hub MCP later returned empty errors; authenticated official CLI using the same session identity remains available. No shared broker change/restart or other-project process/resource change performed.
+
+Final native exact-text review accepted all four without findings. review.json SHA256 da92912baf335165dac6cffe9c70ac89ec41e8a8ea1b77015cffbbd91c9435ee. All seven final cited URLs actually read by reviewer. Both helper tasks SUBMITTED and helpers quiescent; native private evidence only, genuine external release acceptance pending.

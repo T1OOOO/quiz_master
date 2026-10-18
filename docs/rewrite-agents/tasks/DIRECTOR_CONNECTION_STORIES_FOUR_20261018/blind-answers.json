@@ -1,0 +1,79 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_CONNECTION_STORIES_FOUR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-2ab8c3bd7aab42c7afdda5ed2e543006"
+  },
+  "review_scope": "Native same-provider private evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-31",
+      "option_id": "prep-film-directors-31-opt-1",
+      "answer": "Стивен Спилберг",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.cinematheque.qc.ca/en/cinema/e-t-the-extra-terrestrial/",
+      "evidence": "Actual institutional page read: dated film record explicitly identifies the offered person as director.",
+      "retrieval": "Successful actual web open and supporting text read on 2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-32",
+      "option_id": "prep-film-directors-32-opt-2",
+      "answer": "Спайк Ли",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/8e81a2c0-b1e4-51c4-b5da-93458d361dc3/do-the-right-thing",
+      "evidence": "Actual institutional page read: dated film record explicitly identifies the offered person as director.",
+      "retrieval": "Successful actual web open and supporting text read on 2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-33",
+      "option_id": "prep-film-directors-33-opt-2",
+      "answer": "Квентин Тарантино",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/bd809f0e-d695-558b-bba3-cbdfbda41820/pulp-fiction",
+      "evidence": "Actual institutional page read: dated film record explicitly identifies the offered person as director.",
+      "retrieval": "Successful actual web open and supporting text read on 2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-34",
+      "option_id": "prep-film-directors-34-opt-3",
+      "answer": "София Коппола",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://catalog.afi.com/Film/54274-LOST-IN-TRANSLATION",
+      "evidence": "Actual institutional page read: dated film record explicitly identifies the offered person as director.",
+      "retrieval": "Successful actual web open and supporting text read on 2026-10-18."
+    }
+  ],
+  "candidate_assessment": "Four clean blind items; unique credited offered director for each dated title. No visible answer leak or demonstrated date bug. Catalogue years not converted to exact premiere dates.",
+  "additional_actual_reads": [
+    {
+      "url": "https://www.universalpicturesathome.com/movies/et-the-extra-terrestrial",
+      "result": "Actual supporting page read; year 1982. Directed By field combines Steven Spielberg and Allen Daviau, so not used alone to establish the director. Cinematheque record independently gives Spielberg only."
+    },
+    {
+      "url": "https://www.focusfeatures.com/article/lost-in-translation_15-anniversary",
+      "result": "Actual studio article read: 2003 work, Coppola filmmaking and direct cast-role prose corroborate AFI director record."
+    }
+  ],
+  "source_limits": "BFI critical commentary and studio promotional language are not documentary proof of people/groups or audience effects. E.T. Universal mixed-credit field requires caution; no runtime or reissue claim inferred. AFI flags Lost in Translation outside its core1893–1993 period but supplies explicit director/year/history fields.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.focusfeatures.com/lost_in_translation",
+      "error": "Actual web open returned404 Not Found; not counted as supporting read."
+    }
+  ]
+}
