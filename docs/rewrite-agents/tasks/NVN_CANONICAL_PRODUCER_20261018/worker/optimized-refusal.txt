@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\prepare_canonical.py", line 258, in <module>
+    main()
+    ~~~~^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\prepare_canonical.py", line 254, in main
+    print(json.dumps(operate('prepare' if args.prepare else 'verify', args.prepare or args.verify), indent=2))
+                     ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\prepare_canonical.py", line 232, in operate
+    n, base, _ = authorize()
+                 ~~~~~~~~~^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\prepare_canonical.py", line 203, in authorize
+    require(sys.flags.optimize == 0, 'normal Python required')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\prepare_canonical.py", line 25, in require
+    raise ValueError(message)
+ValueError: normal Python required

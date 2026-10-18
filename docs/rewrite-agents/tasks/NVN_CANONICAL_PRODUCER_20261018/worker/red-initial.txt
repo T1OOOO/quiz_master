@@ -1,0 +1,15 @@
+test_no_output_without_source_acceptance (test_producer.ProducerTests.test_no_output_without_source_acceptance) ... FAIL
+
+======================================================================
+FAIL: test_no_output_without_source_acceptance (test_producer.ProducerTests.test_no_output_without_source_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 22, in test_no_output_without_source_acceptance
+    self.assertIn('source acceptance', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'source acceptance' not found in "C:\\Python314\\python.exe: can't open file 'E:\\\\Projects\\\\quiz_master\\\\docs\\\\rewrite-agents\\\\tasks\\\\NVN_CANONICAL_PRODUCER_20261018\\\\worker\\\\prepare_canonical.py': [Errno 2] No such file or directory\n"
+
+----------------------------------------------------------------------
+Ran 1 test in 0.079s
+
+FAILED (failures=1)

@@ -1,0 +1,26 @@
+test_mixed_integer_rework_and_bool_accept_are_refused (test_producer.CallbackConsistencyTests.test_mixed_integer_rework_and_bool_accept_are_refused) ... 
+  test_mixed_integer_rework_and_bool_accept_are_refused (test_producer.CallbackConsistencyTests.test_mixed_integer_rework_and_bool_accept_are_refused) (task='task-ee9fff0e84db45d1bec244612004c5a0') ... FAIL
+  test_mixed_integer_rework_and_bool_accept_are_refused (test_producer.CallbackConsistencyTests.test_mixed_integer_rework_and_bool_accept_are_refused) (task='task-dfaf1b322def4adfbc2f08a91082591b') ... FAIL
+
+======================================================================
+FAIL: test_mixed_integer_rework_and_bool_accept_are_refused (test_producer.CallbackConsistencyTests.test_mixed_integer_rework_and_bool_accept_are_refused) (task='task-ee9fff0e84db45d1bec244612004c5a0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 39, in test_mixed_integer_rework_and_bool_accept_are_refused
+    with self.subTest(task=task), self.assertRaises((ValueError, RuntimeError)):
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'ValueError'>, <class 'RuntimeError'>) not raised
+
+======================================================================
+FAIL: test_mixed_integer_rework_and_bool_accept_are_refused (test_producer.CallbackConsistencyTests.test_mixed_integer_rework_and_bool_accept_are_refused) (task='task-dfaf1b322def4adfbc2f08a91082591b')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 39, in test_mixed_integer_rework_and_bool_accept_are_refused
+    with self.subTest(task=task), self.assertRaises((ValueError, RuntimeError)):
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'ValueError'>, <class 'RuntimeError'>) not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.145s
+
+FAILED (failures=2)

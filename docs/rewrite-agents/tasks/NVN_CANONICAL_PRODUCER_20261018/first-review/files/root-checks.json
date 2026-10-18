@@ -1,0 +1,56 @@
+{
+  "executor": "Root",
+  "checks": [
+    {
+      "executor": "Root independent run",
+      "command": [
+        "C:\\Python315\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_CANONICAL_PRODUCER_20261018\\worker",
+        "-p",
+        "test_producer.py",
+        "-v"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 5.956,
+      "raw_log_byte_sha256": "347e7fdae0a784f322122d0f90705c6b4c0641f431d1586da732902786aac574"
+    },
+    {
+      "executor": "Root independent run",
+      "command": [
+        "C:/Program Files/Git/bin/bash.exe",
+        "-n",
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_CANONICAL_PRODUCER_20261018\\worker\\current-baseline-readonly.sh"
+      ],
+      "actual_exit": 0,
+      "elapsed_seconds": 0.099,
+      "raw_log_byte_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "executor": "Root independent run",
+      "command": [
+        "C:\\Python315\\python.exe",
+        "-O",
+        "-B",
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\NVN_CANONICAL_PRODUCER_20261018\\worker\\prepare_canonical.py",
+        "--prepare",
+        "E:\\Projects\\quiz_master\\.run\\heartbeat_20261018_0327\\root-optimized-must-not-exist"
+      ],
+      "actual_exit": 1,
+      "elapsed_seconds": 0.304,
+      "raw_log_byte_sha256": "10a7f2b5fc6c97c163c2bde55e58e185e539297e4d02d1445c3c1e90ea63e27c"
+    }
+  ],
+  "focused_tests": 14,
+  "collector_python_compile": true,
+  "source_files_unchanged": true,
+  "frozen_files_preserved": 165,
+  "foreign_tracked_preserved": 177,
+  "real_archive_generated": false,
+  "collector_executed": false,
+  "publication_attempted": false
+}

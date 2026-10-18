@@ -1,0 +1,137 @@
+test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) ... 
+  test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='schema_version') ... FAIL
+  test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='source_commit') ... FAIL
+  test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='build_id') ... FAIL
+  test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='feedback_count') ... FAIL
+test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) ... 
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='Ready') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='DiskPressure') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='MemoryPressure') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='PIDPressure') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='taints') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='unschedulable') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='open') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='mode') ... FAIL
+  test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='integrity') ... FAIL
+
+======================================================================
+FAIL: test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='schema_version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 246, in test_contract_fields_are_validated
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'contract'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='source_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 246, in test_contract_fields_are_validated
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'contract'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='build_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 246, in test_contract_fields_are_validated
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'contract'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_contract_fields_are_validated (test_producer.ProducerTests.test_contract_fields_are_validated) (field='feedback_count')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 246, in test_contract_fields_are_validated
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'contract'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='Ready')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='DiskPressure')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='MemoryPressure')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='PIDPressure')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='taints')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='unschedulable')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='open')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='mode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_raw_current_facts_cannot_hide_behind_claimed_flags (test_producer.ProducerTests.test_raw_current_facts_cannot_hide_behind_claimed_flags) (field='integrity')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Projects\quiz_master\docs\rewrite-agents\tasks\NVN_CANONICAL_PRODUCER_20261018\worker\test_producer.py", line 266, in test_raw_current_facts_cannot_hide_behind_claimed_flags
+    with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'raw'):
+                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.474s
+
+FAILED (failures=13)
