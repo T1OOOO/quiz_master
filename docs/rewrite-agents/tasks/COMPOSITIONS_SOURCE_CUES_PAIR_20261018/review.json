@@ -1,0 +1,164 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "COMPOSITIONS_SOURCE_CUES_PAIR_20261018",
+  "task_id": "task-8d5cf8ab012f46e4b3c2570e9b39d5bc",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-bb3b5d78417141deab81213dba051cbe"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "2e82874244024c83ee32018692547885281f36226df6544738f64740f516f044"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "0982522ed54cebc2534bb1e5f50ca9dcad7c3ada873c2d9a8d681f33791e5449"
+  },
+  "reviewed_proposals": {
+    "path": "wording-proposals.json",
+    "sha256": "6dde15553487750f98fd06065a60693ed08e16bef4456fd3fb03b013967ef098"
+  },
+  "reviewed_proposed_questions": {
+    "path": "proposed-questions.json",
+    "sha256": "e5830ce7f72490511c220b9a8c37ec5f3c029ad170c2b6c302010d6c34a650af"
+  },
+  "reviewed_public_snapshot": {
+    "path": "public-pack.json",
+    "sha256": "dec73ccfda4a2ecc10cdb9fca5eec2c651cb66b17985d763365245e92689127d"
+  },
+  "blind_answer_sha256": "74df2906b33150499b8afef2987cb3249dbeac9722da6105bb71899c8b809506",
+  "ordering": {
+    "proposed_questions_read": true,
+    "original_public_stems_read_before_freeze": false,
+    "public_pack_read_before_freeze": false,
+    "wording_proposals_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "hub_original_cue_history_read": false,
+    "new_independent_proposed_solve": true,
+    "clean_public_blind_solve": false
+  },
+  "exposure_note": "Neutral task/brief disclosed that original stems contain composer-name source cues, but their exact text and original packet were not read. No known earlier exposure to these original cue strings. This limited ordering claim concerns proposed questions only.",
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:compositions003",
+      "question_revision_sha256": "b76b079511bbdaef2b7f86924a080a1446de6218d8c6bb4e74d46a878ef8333f",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions003-opt-3",
+      "blind_scope": "unhinted proposed editorial candidate only; not clean published solve",
+      "word_count_whitespace": 198,
+      "checked_claims": "Beethoven-Haus confirms Beethoven, Symphony5/Cminor/op67 and four movement headings. LSO guide supports four-note opening rhythm recurring through movement1 including second-theme passage, related themes/variations in movement2 and horn restatement of opening motto in movement3. No fate legend, unsupported quotation, chronology or arrangement-author substitution included. Optional listening/score tasks are conditional.",
+      "distractor_review": "Four distinct offered composers. Exact work identifiers uniquely support frozen proposed answer; no alternative offered composer defensible. Options unchanged from published snapshot. Canonical keys not read.",
+      "pedagogy_review": "Useful distinct context: motivic development for003, title/character contrasts for016. Conditional original listening/score exercises invite evidence and uncertainty; no actual listening, universal effect or compulsory story claimed.",
+      "sources_opened": [
+        "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7NW5jwsM/Symphony%2Bno.%2B5%2B%26%2340%3BC%2Bminor%26%2341%3B%2Bop.%2B67",
+        "https://lso.shorthandstories.com/hsf-15-feb-2023/index.html"
+      ],
+      "published_cue_defect": "Beethoven-Haus in published attribution strongly cues the composer family name, even though it is a source institution rather than an explicit answer credit.",
+      "question_repair_verdict": "accepted_as_private_proposal_only",
+      "proposal_reason": "Neutral proposed wording removes source/composer cue while retaining unique work identity and unchanged options.",
+      "required_next_gates": [
+        "Actual new question revision assignment",
+        "Article rebinding to assigned new revision",
+        "Genuine external acceptance",
+        "Publication and verification of new public snapshot"
+      ]
+    },
+    {
+      "id": "question:compositions016",
+      "question_revision_sha256": "10b7cdcf13634be6e035f79ef07d906fd93e013d98d2aca2418655f1794dab04",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions016-opt-2",
+      "blind_scope": "unhinted proposed editorial candidate only; not clean published solve",
+      "word_count_whitespace": 199,
+      "checked_claims": "LSO explicitly identifies Holst orchestral suite ThePlanets and components. LPO track list supports seven ordered movements and Mars/BringerofWar, Venus/BringerofPeace, Neptune/Mystic subtitles; LPO prose supports supposed astrological characters and final fading wordless voices. Artistic associations not astronomy or scientific human influence. Album dates/duration not confused with work history; no complete instrumentation or arranger credit invented.",
+      "distractor_review": "Four distinct offered composers. Exact work identifiers uniquely support frozen proposed answer; no alternative offered composer defensible. Options unchanged from published snapshot. Canonical keys not read.",
+      "pedagogy_review": "Useful distinct context: motivic development for003, title/character contrasts for016. Conditional original listening/score exercises invite evidence and uncertainty; no actual listening, universal effect or compulsory story claimed.",
+      "sources_opened": [
+        "https://www.lso.co.uk/learn-and-discover/digital-activities-and-resources/the-planets/",
+        "https://lpo.org.uk/recording/holst-the-planets/"
+      ],
+      "published_cue_defect": "Holst, Gustav in published stem explicitly states the answer.",
+      "question_repair_verdict": "accepted_as_private_proposal_only",
+      "proposal_reason": "Neutral proposed wording removes source/composer cue while retaining unique work identity and unchanged options.",
+      "required_next_gates": [
+        "Actual new question revision assignment",
+        "Article rebinding to assigned new revision",
+        "Genuine external acceptance",
+        "Publication and verification of new public snapshot"
+      ]
+    }
+  ],
+  "question_repair_verdict": {
+    "verdict": "accepted_as_private_proposals_only",
+    "published_cue_defects_confirmed": 2,
+    "future_revision_assigned": false,
+    "articles_bound_to": "Exact old published origin_ref revisions, not proposed/future revisions",
+    "requires_new_revision_and_article_rebinding": true,
+    "published_questions_fixed": false
+  },
+  "retrieval_evidence": {
+    "method": "Four final exact primary URLs actually opened and relevant supporting text read. Beethoven-Haus during proposed blind solve; LSO concert guide, LSO Planets and LPO recording page after freeze.",
+    "actual_successful_unique_cited_urls": 4,
+    "source_counts": [
+      2,
+      2
+    ],
+    "institutions": [
+      "Beethoven-Haus",
+      "London Symphony Orchestra",
+      "London Philharmonic Orchestra"
+    ],
+    "failed_retrievals": [
+      {
+        "url": "https://www.schott-music.com/en/the-planets-no13105.html",
+        "error": "403 Forbidden actual open; excluded supporting read."
+      },
+      {
+        "url": "https://www.boosey.com/composer/Gustav%2BHolst",
+        "error": "404 actual open; excluded supporting read."
+      }
+    ],
+    "limits": [
+      "Beethoven encoded slug normalized to actual work record, not home page.",
+      "Only readable primary prose used; no score/music/recording consumed.",
+      "LPO album2009/2010 metadata not used for work chronology.",
+      "LSO guide extra-musical legends/finale description not imported; LSO Planets thumbnail alt text not used to establish order, which LPO tracklist supports."
+    ],
+    "search_snippets_counted_as_reads": false,
+    "corporate_redirects_counted_as_support": false
+  },
+  "checks": [
+    "Raw articles/source/blind SHA256 gates passed.",
+    "Two full article IDs and exact old origin refs, draft/arts/empty targets/schema passed.",
+    "Bodies198/199whitespace words,2HTTPSsources each/access2026-10-18 passed.",
+    "Original stems/revision hashes, unchanged options, proposed text and wording proposal parity verified.",
+    "All body/source-support claims checked; composer/work/genre/movement relations and artistic association limits preserved."
+  ],
+  "findings": [
+    {
+      "scope": "published_question",
+      "question_id": "compositions003",
+      "severity": "editorial",
+      "finding": "Beethoven-Haus in published attribution strongly cues the composer family name, even though it is a source institution rather than an explicit answer credit.",
+      "status": "private repair proposal accepted; public fix pending"
+    },
+    {
+      "scope": "published_question",
+      "question_id": "compositions016",
+      "severity": "editorial",
+      "finding": "Holst, Gustav in published stem explicitly states the answer.",
+      "status": "private repair proposal accepted; public fix pending"
+    }
+  ],
+  "article_blockers": [],
+  "limits": [
+    "Fresh independent proposed-candidate solve only; never a clean public blind solve of hinted originals.",
+    "No exhaustive plagiarism search, listening, score inspection, media licensing or release approval claimed.",
+    "Native same-provider private review only; genuine different-provider acceptance/new revision/rebinding/publication remain separate pending gates."
+  ]
+}

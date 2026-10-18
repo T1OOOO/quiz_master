@@ -1,0 +1,32 @@
+{
+  "schema_version": "qm-wording-proposals/v1",
+  "issue": "quiz_master-mtha",
+  "changes": [
+    {
+      "origin_ref": {
+        "quiz_id": "prep-compositions",
+        "question_id": "compositions003",
+        "revision_sha256": "b76b079511bbdaef2b7f86924a080a1446de6218d8c6bb4e74d46a878ef8333f"
+      },
+      "published_stem": "Кто написал Симфонию № 5 до минор, Op. 67, над которой, согласно каталогу Beethoven-Haus, работал в 1804–1808 годах?",
+      "proposed_stem": "Кто написал Симфонию № 5 до минор, Op. 67?",
+      "options_unchanged": true,
+      "reason": "Remove source attribution containing the sought composer name; identify the work directly.",
+      "publication_attempted": false
+    },
+    {
+      "origin_ref": {
+        "quiz_id": "prep-compositions",
+        "question_id": "compositions016",
+        "revision_sha256": "10b7cdcf13634be6e035f79ef07d906fd93e013d98d2aca2418655f1794dab04"
+      },
+      "published_stem": "Кто написал оркестровую сюиту `The Planets`, изданную Boosey & Hawkes как партитуру Holst, Gustav, и известную, в частности, частью `Mars`?",
+      "proposed_stem": "Кто написал оркестровую сюиту `The Planets` («Планеты»), одна из частей которой называется `Mars` («Марс»)?",
+      "options_unchanged": true,
+      "reason": "Remove source attribution containing the sought composer name; identify the work directly.",
+      "publication_attempted": false
+    }
+  ],
+  "new_revision_required_before_import": true,
+  "article_rebinding_required_after_new_revision": true
+}

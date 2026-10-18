@@ -1,0 +1,70 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "COMPOSITIONS_SOURCE_CUES_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-bb3b5d78417141deab81213dba051cbe"
+  },
+  "review_scope": "Native same-provider private evidence only; proposed-candidate solve, not clean public-stem solve; external acceptance pending.",
+  "ordering": {
+    "proposed_questions_read": true,
+    "original_public_stems_read_before_freeze": false,
+    "public_pack_read_before_freeze": false,
+    "wording_proposals_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "hub_original_cue_history_read": false,
+    "new_independent_proposed_solve": true,
+    "clean_public_blind_solve": false
+  },
+  "exposure_note": "Neutral task/brief disclosed that original stems contain composer-name source cues, but their exact text and original packet were not read. No known earlier exposure to these original cue strings. This limited ordering claim concerns proposed questions only.",
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "compositions003",
+      "origin_ref": {
+        "quiz_id": "prep-compositions",
+        "question_id": "compositions003",
+        "revision_sha256": "b76b079511bbdaef2b7f86924a080a1446de6218d8c6bb4e74d46a878ef8333f"
+      },
+      "option_id": "compositions003-opt-3",
+      "answer": "Людвиг ван Бетховен",
+      "confidence": "high",
+      "blind": true,
+      "blind_scope": "unhinted proposed editorial candidate only",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7NW5jwsM/Symphony%2Bno.%2B5%2B%26%2340%3BC%2Bminor%26%2341%3B%2Bop.%2B67",
+      "evidence": "Beethoven-Haus actual work record identifies Symphony5, Cminor,op67 and Beethoven authorship in composition prose; arrangements separately catalogued.",
+      "retrieval": "Actual primary institutional web open and supporting text read2026-10-18."
+    },
+    {
+      "question_id": "compositions016",
+      "origin_ref": {
+        "quiz_id": "prep-compositions",
+        "question_id": "compositions016",
+        "revision_sha256": "10b7cdcf13634be6e035f79ef07d906fd93e013d98d2aca2418655f1794dab04"
+      },
+      "option_id": "compositions016-opt-2",
+      "answer": "Густав Холст",
+      "confidence": "high",
+      "blind": true,
+      "blind_scope": "unhinted proposed editorial candidate only",
+      "source_url": "https://www.bso.org/works/the-planets",
+      "evidence": "BSO actual work page explicitly labels composer Gustav Holst, suite ThePlanets, orchestral scoring and movement Mars.",
+      "retrieval": "Actual primary institutional web open and supporting text read2026-10-18."
+    }
+  ],
+  "candidate_assessment": "Both proposed stems uniquely identify works with one defensible offered composer. Op67/Cminor distinguish Symphony5; orchestral suite ThePlanets and Mars distinguish Holst. No future revision assigned; origin_ref remains old published revision, not proposed revision.",
+  "source_limits": "One actual supporting institution per answer. Beethoven URL normalization lands on actual work record, not corporate home. No audio/score excerpts consumed, listening claimed, chronology/legend/general scientific inference needed. BSO mythological wording not used.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.schott-music.com/en/the-planets-no13105.html",
+      "error": "403 Forbidden actual open; excluded supporting read."
+    },
+    {
+      "url": "https://www.boosey.com/composer/Gustav%2BHolst",
+      "error": "404 actual open; excluded supporting read."
+    }
+  ]
+}
