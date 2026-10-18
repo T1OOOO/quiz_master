@@ -1,0 +1,54 @@
+{
+  "captured_by": "Root actual corrected-report Hub task list; original factual task preserved separately",
+  "different_provider_acceptance": false,
+  "tasks": [
+    {
+      "acceptance": [
+        "Only2reviewmetadatafiles corrected, blind/article/SOURCES preserved; exact64charhashbinding asserted",
+        "Actual newHubsubmission binds correctedreports, oldreportreceipt remainsimmutable"
+      ],
+      "allowed_paths": [
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\COMPOSITIONS_STORY_ANIMALS_PAIR_20261018"
+      ],
+      "assignee": "session-458b06d9938c4d7f82426db8b7a55172",
+      "author": "session-cbe9415498e24aee84856e9971c4bd21",
+      "body": "Finite exact metadata correction ONLY review.json and REVIEW_EN.md. Actual blind file remains4f65b951d1e5fdc5907437a7eb17b55f40cd02f8393064cbad5cb80bd6930f11, signed taskc97bbec4 mistakenly embeds63charhash. Root preserved first-review.json/FIRST_REVIEW_EN.md/first-review-hub-task.json; do not change preserved files, blind or articles/SOURCES. Replace only malformed metadata with independently computed actual rawfreezehash. Assert equality review.blind_answer_sha256 == actualblindSHA, length64; identical article/SOURCES hashes and unchanged factualverdict. Submit changed-reporthashes with explicit oldsubmission correction, thenquiesce. No researchrepeat/keys/outofscope changes.",
+      "created_at": 1792365752.1049666,
+      "depth": 0,
+      "difficulty": 1,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-c202f534272b4e84bf2b999910aa1369",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [
+          "docs/rewrite-agents/tasks/COMPOSITIONS_STORY_ANIMALS_PAIR_20261018/review.json",
+          "docs/rewrite-agents/tasks/COMPOSITIONS_STORY_ANIMALS_PAIR_20261018/REVIEW_EN.md"
+        ],
+        "evidence": [
+          "This submission supersedes only the blind-hash metadata in previously submitted task-c97bbec4d1054e6f92b65b54a62d0fd3; old report bytes and old Hub receipt were preserved separately by the lead.",
+          "Independently recomputed blind-answers.json raw SHA-256 as 4f65b951d1e5fdc5907437a7eb17b55f40cd02f8393064cbad5cb80bd6930f11, exactly 64 characters.",
+          "Asserted parsed review.json blind_answer_sha256 has length 64 and equals the recomputed raw blind hash; REVIEW_EN.md contains that hash and no malformed 63-character value.",
+          "Asserted article and SOURCES bindings in review.json remain the exact previously reviewed hashes, and independently rehashed the unchanged blind/article/SOURCES files and both corrected review files.",
+          "No factual verdict, source assessment, article text, blind answer, private key, or preserved prior receipt was changed."
+        ],
+        "hashes": {
+          "REVIEW_EN.md_corrected": "848d73f246f7614a4fa0aa67d8cd50e4fd4a8a12ac355e081019e432fdd3a312",
+          "SOURCES_EN.md_unchanged": "b8392706c909426d7d4f14aa3c59ae3f7966ba2252a189dde8fedf332abf1a15",
+          "articles.json_unchanged": "3457281cd9e01f09edf5a2150e878e2216428e761ff36973c0e860fbcca47a88",
+          "blind-answers.json_unchanged": "4f65b951d1e5fdc5907437a7eb17b55f40cd02f8393064cbad5cb80bd6930f11",
+          "review.json_corrected": "51c9934a6fffcf2a3a3c4db2da436b2f33efca5f5b7dd7a6b91dda767d19beb0"
+        }
+      },
+      "root_task_id": "task-c202f534272b4e84bf2b999910aa1369",
+      "run_id": "run-aac94f81d6964c258203f8d551c2aa8f",
+      "skills": [],
+      "state": "SUBMITTED",
+      "team_id": "team-86d9ef238dd84ff8af67d2c139094556",
+      "title": "quiz_master-963: correct review-only blind hash metadata",
+      "version": 3
+    }
+  ]
+}

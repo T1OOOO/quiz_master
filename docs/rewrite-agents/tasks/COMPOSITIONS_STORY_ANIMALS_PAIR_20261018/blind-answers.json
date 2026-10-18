@@ -1,0 +1,42 @@
+{
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-458b06d9938c4d7f82426db8b7a55172",
+    "hub_task_id": "task-c97bbec4d1054e6f92b65b54a62d0fd3"
+  },
+  "stage": "candidate_first_source_verified_before_current_writer_material_or_keys",
+  "clean_blind": false,
+  "exposure_note": "The informative BRIEF_EN.md named the works and composers, and prior public exposure is possible. No private keys or current writer articles were read before this freeze.",
+  "accessed_utc": "2026-10-18T23:19:43Z",
+  "answers": [
+    {
+      "question_id": "compositions014",
+      "revision_sha256": "261e865b43d727935979b0ffa29ef8f75361a017700545fd0d5b2163dba4b49e",
+      "selected_option_id": "compositions014-opt-1",
+      "answer": "Николай Римский-Корсаков",
+      "verdict": "accept",
+      "reason": "The Sofia Philharmonic and Mariinsky Theatre identify Rimsky-Korsakov as composer of the symphonic suite Scheherazade, Op. 35, completed in summer 1888 and based on episodes from One Thousand and One Nights. None of the other listed composers is credited with this exact work.",
+      "sources": [
+        "https://sofiaphilharmonic.com/en/works/nikolay-rimsky-korsakov-symphonic-suite-scheherazade-opus-35",
+        "https://prim.mariinsky.ru/en/playbill/playbill/2017/12/27/1_1900/"
+      ],
+      "source_caveat": "Avoid a precise unqualified premiere date: institutional pages give 22 October and 3 November 1888, reflecting calendar convention. Do not impose a literal scene or character mapping on every passage."
+    },
+    {
+      "question_id": "compositions015",
+      "revision_sha256": "ec284da8933b722c2b7d8dff71d366401a8693315661adf360f37baa817b0113",
+      "selected_option_id": "compositions015-opt-3",
+      "answer": "Камиль Сен-Санс",
+      "verdict": "accept",
+      "reason": "BnF identifies Saint-Saëns as composer, dates the work to February 1886, and describes its autograph manuscript in its Music Department collection. BnF also displays an autograph Aquarium page dated 1886. The other listed composers are not credited with this exact work.",
+      "sources": [
+        "https://editions.bnf.fr/index.php/camille-saint-saens-le-carnaval-des-animaux?page=1",
+        "https://catalogue.bnf.fr/ark:/12148/cb13918517c",
+        "https://www.bnf.fr/fr/les-collections-de-partitions",
+        "https://www.bnf.fr/fr/agenda/saint-saens-un-esprit-libre"
+      ],
+      "source_caveat": "BnF says the work was completed in February 1886 and separately discusses its autograph. The page does not independently date the physical manuscript's last stroke. Prefer 'work completed' over 'autograph completed' if precise wording matters. Do not confuse the 2018 facsimile publication date with composition."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "qm-private-question-article-review/v1",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-458b06d9938c4d7f82426db8b7a55172",
+    "hub_task_id": "task-c97bbec4d1054e6f92b65b54a62d0fd3"
+  },
+  "clean_blind": false,
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_STORY_ANIMALS_PAIR_20261018/articles.json",
+    "sha256": "3457281cd9e01f09edf5a2150e878e2216428e761ff36973c0e860fbcca47a88"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_STORY_ANIMALS_PAIR_20261018/SOURCES_EN.md",
+    "sha256": "b8392706c909426d7d4f14aa3c59ae3f7966ba2252a189dde8fedf332abf1a15"
+  },
+  "blind_answer_sha256": "4f65b951d1e5fdc5907437a7eb17b55f40cd02f8393064cbad5cb80bd6930f11",
+  "review_scope": "Independent native draft fact-check of candidate questions, exact final articles, options, every factual article claim, all five final source URLs, reference hashes, and educational exercises. No private answer key was read.",
+  "items": [
+    {
+      "id": "question:compositions014",
+      "question_id": "compositions014",
+      "revision_sha256": "261e865b43d727935979b0ffa29ef8f75361a017700545fd0d5b2163dba4b49e",
+      "verdict": "accepted_for_draft",
+      "article_word_count": 216,
+      "reason": "Rimsky-Korsakov, suite form and Op. 35, summer 1888 completion, Thousand and One Nights literary relation, four movements, returning motifs, violin storyteller association, and nonliteral theme reuse are all supported by the opened Boston Symphony Orchestra and LA Phil pages. The listening exercise is conditional and asks for interpretation rather than claiming that audio was examined. Exact quiz and revision references match the candidate. No other listed option is defensible for this exact work.",
+      "opened_sources": [
+        "https://www.bso.org/works/rimsky-korsakov-scheherazade",
+        "https://www.laphil.com/works/scheherazade"
+      ],
+      "caveat": "The institutions' precise premiere labels differ. Neither the article nor its source map asserts a premiere date. Do not infer a calendar conversion without a supporting source."
+    },
+    {
+      "id": "question:compositions015",
+      "question_id": "compositions015",
+      "revision_sha256": "ec284da8933b722c2b7d8dff71d366401a8693315661adf360f37baa817b0113",
+      "verdict": "accepted_for_draft",
+      "article_word_count": 213,
+      "reason": "BnF authority and editions pages support Saint-Saëns, February 1886 composition/completion of the work, fourteen pieces, the zoological-fantasy subtitle, Pianistes and Fossiles, the stated instrumental forces, and facsimile descriptions of autograph notation and drawings. BnF's music-collection page supports the provenance statement. The article explicitly separates the work's completion from subsequent editions and does not claim direct manuscript or audio inspection. The educational prompt separates observation from interpretation. Exact quiz and revision references match the candidate; no other listed composer is defensible for this exact work.",
+      "opened_sources": [
+        "https://catalogue.bnf.fr/ark:/12148/cb13918517c",
+        "https://editions.bnf.fr/index.php/camille-saint-saens-le-carnaval-des-animaux",
+        "https://www.bnf.fr/fr/les-collections-de-partitions"
+      ],
+      "caveat": "The public candidate stem says the autograph was completed in February 1886. The opened BnF pages date composition/completion of the work, while separately confirming the autograph and its collection. They do not independently date the physical manuscript's final stroke. Public question wording merits revision or stronger documentary evidence before publication; the draft article avoids the stronger claim."
+    }
+  ],
+  "overall_verdict": "accepted_for_draft",
+  "publication_gate": "Pending separate external/different-provider acceptance and public question stem review; this review does not authorize publication."
+}
