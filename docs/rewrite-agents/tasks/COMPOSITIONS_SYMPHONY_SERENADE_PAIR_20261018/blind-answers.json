@@ -1,0 +1,57 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "COMPOSITIONS_SYMPHONY_SERENADE_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-44f27f7091034cf8b8bb62bd30fce12b"
+  },
+  "review_scope": "Native same-provider private verification, not clean blind; external acceptance pending.",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Prior authorized COMPOSITIONS_SOURCE_CUES post-freeze full public-pack read exposed exact004/005 stems/options; brief also names relevant verification boundaries. No current writer prose/keys read. Fresh primary verification before writer is not first-ever clean blind exposure.",
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "compositions004",
+      "option_id": "compositions004-opt-4",
+      "answer": "Людвиг ван Бетховен",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "source_url": "https://www.beethoven.de/en/work/view/5556714292117504/",
+      "evidence": "Beethoven-Haus actual work record confirms Ninth,Dminor,op125, Beethoven composition and Schiller separately as text poet; finale heading links An die Freude.",
+      "retrieval": "Fresh actual primary supporting web text read2026-10-18 before current writer access."
+    },
+    {
+      "question_id": "compositions005",
+      "option_id": "compositions005-opt-1",
+      "answer": "Вольфганг Амадей Моцарт",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "source_url": "https://kv.mozarteum.at/de/work/eine-kleine-nachtmusik-6049",
+      "evidence": "Mozarteum actual KV525 record explicitly names Mozart composer, Gmajor/strings and catalogue entry10August1787; entry date not premiere/completion.",
+      "retrieval": "Fresh actual primary supporting web text read2026-10-18 before current writer access."
+    }
+  ],
+  "additional_actual_reads": [
+    {
+      "url": "https://www.bso.org/works/symphony-no-9-in-d-minor-op-125-cho",
+      "result": "Actually opened institutional work page; not needed to replace primary work identification."
+    }
+  ],
+  "candidate_assessment": "Unique offered composer for each exact work. Schiller text authorship is not musical authorship; Mozart KV/date/strings distinguishes offered alternatives. No direct answer leak or verified date bug in stems.",
+  "source_limits": "Mozarteum work known as Serenade but catalogue calls Divertimento/fragment; catalogue originally5movements vs missing minuet/surviving4 not conflated. No premiere/completion inference from entrydate, no first/last claims or intended occasion inferred. No listening, score/audio/text excerpts used.",
+  "failed_retrievals": []
+}

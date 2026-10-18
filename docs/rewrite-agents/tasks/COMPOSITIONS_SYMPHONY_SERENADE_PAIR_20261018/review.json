@@ -1,0 +1,100 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "COMPOSITIONS_SYMPHONY_SERENADE_PAIR_20261018",
+  "task_id": "task-3fd1f05f383943e8974e47fa90bf9223",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-44f27f7091034cf8b8bb62bd30fce12b"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "4a8b0cb1609d35f03dee8bb1c33bf6ba4da10070c17bd307674cb8d8ea668c9f"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "5c1ef703088e8bcbf3a8182f5d014c60a1559d81415ed23265995b5b276c52ca"
+  },
+  "blind_answer_sha256": "52a29fc605ce5957bbd92f94ba342b85871e13dd61a792fe6d6779e61adeb319",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Prior authorized COMPOSITIONS_SOURCE_CUES post-freeze full public-pack read exposed exact004/005 stems/options; brief also names relevant verification boundaries. No current writer prose/keys read. Fresh primary verification before writer is not first-ever clean blind exposure.",
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:compositions004",
+      "question_revision_sha256": "2051a41bcfc5a9f780cf99362df05393182c327c7fda3a80f531e90d11322bc0",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions004-opt-4",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 204,
+      "checked_claims": [
+        "Exact work, Beethoven authorship, vocal forces and Schiller text are supported. The introductory bass words are distinguished as Beethoven's.",
+        "Instrumental recollections, the bass-instrument theme and variations leading into vocal participation are supported."
+      ],
+      "distractor_review": "Exact work identification selects the frozen option uniquely among the supplied composers. No competing offered answer or verified date defect found.",
+      "pedagogy_review": "Original explanatory prose separates source facts from conditional listening/score exercises. No prescribed emotional response, actual listening claim, or unsupported occasion/intention inference.",
+      "sources_opened": [
+        "https://www.bso.org/works/symphony-no-9-in-d-minor-op-125-cho"
+      ],
+      "source_limits": "One substantive cited institutional source, permitted by brief; no claim of two-source corroboration."
+    },
+    {
+      "id": "question:compositions005",
+      "question_revision_sha256": "3bae72bd0c80c1612b333df6614e060503e68d82119644ff91627354982ac72c",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions005-opt-1",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 217,
+      "checked_claims": [
+        "Mozart, KV525, G major and string parts are supported; part names do not assert an exclusive player count.",
+        "10 August 1787 is explicitly the own-catalogue entry date, without a premiere inference.",
+        "Original five-part catalogue listing and four surviving movements are distinguished; missing first minuet and attributed Divertimento terminology are supported."
+      ],
+      "distractor_review": "Exact work identification selects the frozen option uniquely among the supplied composers. No competing offered answer or verified date defect found.",
+      "pedagogy_review": "Original explanatory prose separates source facts from conditional listening/score exercises. No prescribed emotional response, actual listening claim, or unsupported occasion/intention inference.",
+      "sources_opened": [
+        "https://kv.mozarteum.at/en/work/eine-kleine-nachtmusik-a-little-night-music-6049",
+        "https://www.henle.de/en/Divertimento-A-Little-Night-Music-K.-525/HN-1005"
+      ],
+      "source_limits": "Mozarteum first-publication chronology is internally inconsistent; neither publication date is used in the article. Henle supports title and part fields, not an inferred commission or original occasion."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual primary supporting web text read, not snippets; BSO refreshed in final review, exact English Mozarteum and Henle final URLs opened/read after freeze. Beethoven-Haus and German Mozarteum were additional pre-writer verification reads.",
+    "actual_successful_unique_cited_urls": 3,
+    "source_counts": [
+      1,
+      2
+    ],
+    "failed_retrievals": [],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false
+  },
+  "checks": [
+    "Raw frozen articles/SOURCES/blind SHA256 matched before reports and after writing.",
+    "All exact current question refs, full article IDs, draft/domain/empty targets and source date/HTTPS fields checked.",
+    "204/217 whitespace words within 160–260; all three final primary URLs actually read.",
+    "Every factual prose claim, source support description and offered option reviewed; exercises are conditional.",
+    "No canonical keys read; no production scoring exercised."
+  ],
+  "findings": [],
+  "limits": [
+    "Prior exact public stems/options exposure means clean_blind=false. Fresh source verification before current writer access is not a new first-exposure blind solve.",
+    "No exhaustive plagiarism search, full-score inspection or actual listening performed; no score/audio/lyrics/media reuse reviewed or authorized.",
+    "Native same-provider private draft review only. External different-provider acceptance and publication remain pending."
+  ]
+}
