@@ -1,0 +1,71 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "COMPOSITIONS_UNFINISHED_PAIR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-d49169d244fd4711906c1ea8d1c8f90e"
+  },
+  "review_scope": "Native same-provider private verification only; external acceptance pending.",
+  "accessed_on": "2026-10-18",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "exposure_note": "Prior authorized full public-pack read exposed exact public questions/options. Current brief also names verification boundaries. This is fresh independent primary-source option verification before current writer access, not a first-exposure clean blind solve.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "answers": [
+    {
+      "question_id": "compositions006",
+      "option_id": "compositions006-opt-3",
+      "answer": "Вольфганг Амадей Моцарт",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "sources": [
+        {
+          "url": "https://kv.mozarteum.at/de/work/requiem-in-d-7373",
+          "evidence": "Actual catalogue record KV626(1), D minor, unfinished; names Mozart composer and Sussmayr additions."
+        },
+        {
+          "url": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+          "evidence": "Actual NMA contents distinguishes Mozart fragment and Sussmayr-completed traditional form."
+        }
+      ],
+      "distractor_review": "Sussmayr is explicitly the completer in the qualified stem, not the main original composer. Salieri and Haydn do not fit this exact catalogue work. No alternative offered answer defensible under the role qualification."
+    },
+    {
+      "question_id": "compositions007",
+      "option_id": "compositions007-opt-2",
+      "answer": "Франц Шуберт",
+      "confidence": "high",
+      "blind": false,
+      "clean_blind": false,
+      "sources": [
+        {
+          "url": "https://schubert-ausgabe.de/en/edition/classification-and-status-of-edition/?detail=42",
+          "evidence": "Actual New Schubert Edition record identifies D759 B minor; lists third-movement fragment and short-score draft separately."
+        },
+        {
+          "url": "https://catalogue.bnf.fr/ark:/12148/cb47264858h",
+          "evidence": "Actual national library record names Schubert composer, D759, B minor and Unvollendete; third-movement autograph facsimile."
+        },
+        {
+          "url": "https://www.berliner-philharmoniker.de/en/programme-notes/franz-schubert-symphony-no-7-in-b-minor-d-759-unfinished/",
+          "evidence": "Actual institutional work essay directly identifies Franz Schubert/B minor/D759/Unfinished and lists two movements plus third sketch."
+        }
+      ],
+      "distractor_review": "D759 and key uniquely identify Schubert among Bruckner, Mozart and Mahler. Using D759 avoids a universal ordinal claim."
+    }
+  ],
+  "retrieval": "All five source URLs actually opened and supporting text read; no snippets or home-page redirects counted as reads.",
+  "failed_retrievals": [],
+  "source_limits": "No exact movement-by-movement Requiem authorship allocations inferred. No universal symphony number imposed, abandonment reason or reconstructed material asserted original. No actual listening/full score inspection; scholarly/source facts separated from evocative programme-note interpretations."
+}

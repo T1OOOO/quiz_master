@@ -1,0 +1,107 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "COMPOSITIONS_UNFINISHED_PAIR_20261018",
+  "task_id": "task-6629bebe99a040bd9f0768dc97f6806e",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-d49169d244fd4711906c1ea8d1c8f90e"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "6efead346de4957b1df64c94149e58c6387585d9eeee0670bf7fb8f0b44fa00d"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "aa4743e5599a6b20648a1ea818cfd58903d3127b8741cc5c05d61f4fed825b15"
+  },
+  "blind_answer_sha256": "ac26ad569bb0ed020477d822bd08eb72300e1d3285ea76c5d75c804d1a5049e4",
+  "clean_blind": false,
+  "prior_public_exposure": true,
+  "ordering": {
+    "candidate_questions_read": true,
+    "current_packet_public_pack_read_before_freeze": false,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "prior_public_stem_option_exposure": true,
+    "fresh_source_verification_before_current_writer_access": true,
+    "clean_blind": false
+  },
+  "exposure_note": "Prior authorized full public-pack read exposed exact public questions/options. Current brief also names verification boundaries. This is fresh independent primary-source option verification before current writer access, not a first-exposure clean blind solve.",
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:compositions006",
+      "question_revision_sha256": "22356d387a60594e3d918730b7c53b55c82c378ba2d4c3be452a07920837e41a",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions006-opt-3",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 206,
+      "checked_claims": [
+        "Mozart/KV626/D minor/unfinished/requiem mass and Sussmayr additions are explicitly distinguished in the catalogue. Version-specific dates are not imported.",
+        "Leisinger supports uneven readiness and vocal/bass versus orchestration distinction. Carus explicitly presents Robert Levin as another completer. Editorial work is not equated with composing missing music."
+      ],
+      "distractor_review": "Sussmayr is explicitly the completer in the qualified stem, not the main original composer. Salieri and Haydn do not fit this exact catalogue work. No alternative offered answer defensible under the role qualification.",
+      "pedagogy_review": "Original explanation and conditional exercises use concrete comparison; no claimed listening, prescribed emotion or inference of composer intention from a listening impression.",
+      "sources_opened": [
+        "https://kv.mozarteum.at/de/work/requiem-in-d-7373",
+        "https://blog.carus-verlag.com/en/choral-works-in-focus/mozarts-requiem-one-of-the-most-fascinating-fragments-in-music-history/"
+      ],
+      "source_limits": "No exact bar/movement authorship allocation, lost-sketch/oral-instruction conjecture or biographical legend imported."
+    },
+    {
+      "id": "question:compositions007",
+      "question_revision_sha256": "dce66319abac68ff7e75a36f659aa257b386058d66c9e043d0aafa74e4cce843",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "compositions007-opt-2",
+      "clean_blind": false,
+      "prior_public_exposure": true,
+      "word_count_whitespace": 216,
+      "checked_claims": [
+        "Schubert/B minor/D759 is exact; Berlin No.7 and Denver formerly No.8 labels are explicitly attributed, not universalized.",
+        "Two completed movement titles, unfinished Scherzo sketch and begun orchestration are supported; later additions are not treated as original completed movements.",
+        "Low-string opening, following oboe/clarinet line and E-major second movement are supported by Berlin; evocative metaphors and abandonment theories are excluded."
+      ],
+      "distractor_review": "D759 and key uniquely identify Schubert among Bruckner, Mozart and Mahler. Using D759 avoids a universal ordinal claim.",
+      "pedagogy_review": "Original explanation and conditional exercises use concrete comparison; no claimed listening, prescribed emotion or inference of composer intention from a listening impression.",
+      "sources_opened": [
+        "https://www.berliner-philharmoniker.de/en/programme-notes/franz-schubert-symphony-no-7-in-b-minor-d-759-unfinished/",
+        "https://www.breitkopf.us/collections/orchestra/products/schubert-symphony-no-7-in-b-minor-d-759-breitkopf",
+        "https://denverphilharmonic.org/program-notes-gloria/"
+      ],
+      "source_limits": "Denver used only for its identification heading; Berlin metaphors and source speculation about abandonment are not adopted. No assertion that an unfinished sketch is a completed third movement."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual supporting primary web text opened/read. Two final URLs were read pre-writer and refreshed after freeze; remaining three final URLs opened/read after freeze.",
+    "actual_successful_unique_cited_urls": 5,
+    "source_counts": [
+      2,
+      3
+    ],
+    "failed_retrievals": [],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false,
+    "additional_pre_writer_reads": [
+      "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+      "https://schubert-ausgabe.de/en/edition/classification-and-status-of-edition/?detail=42",
+      "https://catalogue.bnf.fr/ark:/12148/cb47264858h"
+    ]
+  },
+  "checks": [
+    "Raw articles/SOURCES/blind hashes match frozen inputs before and after report writes.",
+    "Exact full article IDs/current refs; draft/domain/empty targets; all final source support fields and HTTPS/accessed dates checked.",
+    "206/216 whitespace words, each within160–260; five final URLs supporting text actually read.",
+    "Every factual prose claim, option and source-support description reviewed; conditional exercises distinguished from reported observations.",
+    "Canonical keys not read; no production scoring exercised."
+  ],
+  "findings": [],
+  "limits": [
+    "Prior public full-pack exposure and informative brief boundaries disclosed; fresh source verification is not a clean first-exposure blind solve.",
+    "No actual listening, full-score inspection, exhaustive plagiarism search, or media-rights clearance performed. No excerpts/audio/lyrics reuse authorized.",
+    "Native same-provider private draft review only; external acceptance/publication pending."
+  ]
+}
