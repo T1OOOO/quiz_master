@@ -1,0 +1,11 @@
+# Private orchestral pair handoff
+
+Root authored exact-current-ref drafts010/011 (198/218words) from five actual primary URLs. Structural checks and frozen native source answers/local key comparison pass. Native final review is separately captured in review.json and its actual Hub receipt; this is same-provider private draft evidence only. No source-acceptance, runtime import, canonical revision, release candidate or publication occurred.
+
+Public010 still says musicians leave one by one. NAC Orchestra guide, printed page11/PDF index10, explicitly describes first two departing together. Track a separate actual canonical revision and rebind article before publication; do not invent a future hash or certify this old public stem. The existing article already cautions against uniform individual departures. Both composer answers match authorized local keys.
+
+Initial exact-text native review requested changing Rubinstein performer wording or adding another source. Root changed only performer to dancer in article and source memo; final changed-input recheck binds new hashes. All five final linked pages were actually read by Root and native reviewer. Source verification freeze7d7ff221 precedes reviewer current-writer access and Root keys, but informative brief makes clean_blind=false.
+
+Workspace temporarily disappeared and was observed restored. Historical stale native task7fa815fd had no report; it is not credited to the new reviewer. Two older tasks were cancelled unassigned; one new native attempt failed at model capacity before work. Actual final task97f82645 is the only current review task. No Claude/Gemini retries or shared infrastructure changes occurred.
+
+Beads issue quiz_master-961 remains open for external exact-text/source/options acceptance, public010 revision/publication and synchronization follow-up. SQLite import subsequently exited0 but automatic JSONL rename warned Access is denied. Owned JSONL row is tracked separately; foreign rows must remain byte-identical. Do not call database sync complete. Existing director/NVN release gates and all frozen pins remain mandatory. Latest server observation is production-observation-current.json; capacity still fails strict>20percent.

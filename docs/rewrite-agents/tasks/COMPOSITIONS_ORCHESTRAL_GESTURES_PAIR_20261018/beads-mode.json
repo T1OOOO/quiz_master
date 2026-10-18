@@ -1,0 +1,23 @@
+{
+  "mode": "documented bd --sandbox --no-db JSONL",
+  "database_sync": false,
+  "actual_observed_failure": "SQLite WAL initialization fails GetFileAttributesEx E:/Projects: path not found. Explicit --db also failed; --no-db sync --import-only invoked database import and failed. Both probes left JSONL byte-identical.",
+  "workspace_leaf_exists": true,
+  "parent_exists": false,
+  "database_file_exists": true,
+  "foreign_jsonl_before_create_sha256": "aaa6ac91e505da5104c28d13a56283c8f228e066a939929cd385a60a9f8e07ce",
+  "foreign_jsonl_excluding_owned_row_sha256": "aaa6ac91e505da5104c28d13a56283c8f228e066a939929cd385a60a9f8e07ce",
+  "database_repair_attempted": false,
+  "release_approval": false,
+  "follow_up_issue": "quiz_master-961",
+  "workspace_restored": true,
+  "parent_now_exists": true,
+  "subsequent_sqlite_import": {
+    "actual_exit": 0,
+    "created": 1,
+    "updated": 0,
+    "unchanged": 254,
+    "auto_flush_warning": "JSONL temporary-file rename Access is denied"
+  },
+  "follow_up": "JSONL tracking retained; final database synchronization/export remains pending, do not claim import alone completed all sync gates."
+}

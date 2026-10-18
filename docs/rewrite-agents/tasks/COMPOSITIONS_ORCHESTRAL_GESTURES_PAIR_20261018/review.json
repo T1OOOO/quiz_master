@@ -1,0 +1,79 @@
+{
+  "recorded_by": "Root transcribed actual read-only native Hub result; original preserved in hub-tasks.json",
+  "reviewer": {
+    "actual_model": "gpt-6.1-sol",
+    "hub_session_id": "session-f20c74891dfe48fa9066e44c64889b2e",
+    "identity_labels": "self_reported",
+    "provider": "codex",
+    "review_type": "native_same_provider_read_only"
+  },
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "995938bf7c532867b248493038970c83e9a8dc05a5eb2053f7e3b67f7c66650d"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "24398086adf8fc75bcbdc879b0f31a8be275871907b3f42cefa362e7c0dcc316"
+  },
+  "blind_answer_sha256": "7d7ff221fd901f605b935f9744b2ecfb58f697c73f175aceca9457e7267026d3",
+  "clean_blind": false,
+  "prior_exposure": "Assignment and brief disclosed Haydn/Ravel and source caveats before independent source check. Initial sequence: skill/brief/candidate questions, opened primary institution pages, froze answers, then after exact writer hashes read article/SOURCES. No canonical keys.",
+  "items": [
+    {
+      "answer_option_id": "compositions010-opt-4",
+      "article_id": "question:compositions010",
+      "question_id": "compositions010",
+      "quiz_id": "prep-compositions",
+      "reasons": [
+        "Joseph Haydn Foundation: Hob.I:45, F-sharp minor, 1772, separate chronological ordinal 55, Presto/Adagio finale.",
+        "LA Philharmonic: later Adagio, progressive departures, final two violins. Article warns against strictly one-by-one.",
+        "Haydn2032: origin account is anecdotal and intended persuasion is explicitly questioned. Article keeps that distinction.",
+        "Mozart, Beethoven and Schubert options are not defensible for exact work."
+      ],
+      "revision_sha256": "28bf3eb4dfef9d93e625136e7d29bc46366763407cec0b78f9de6e22ceb2b489",
+      "source_urls": [
+        "https://www.joseph-haydn.art/en/sinfoniae/45",
+        "https://www.laphil.com/works/symphony-no-45-farewell",
+        "https://www.haydn2032.com/en/projects/no9-laddio"
+      ],
+      "verdict": "accepted_for_draft",
+      "id": "question:compositions010"
+    },
+    {
+      "answer_option_id": "compositions011-opt-1",
+      "article_id": "question:compositions011",
+      "question_id": "compositions011",
+      "quiz_id": "prep-compositions",
+      "reasons": [
+        "Ravel Edition: Ravel, Rubinstein commission, ballet premiere 22 November 1928 at Paris Opera, distinct ballet-1928 and concert-1929 editions.",
+        "Corrected commissioner/dancer sentence directly supported by Ravel Edition and Tucson Symphony; no premiere choreography credit.",
+        "Tucson Symphony: two melodies, repeated rhythm, timbre/instrument changes, crescendo and late harmony/key departure.",
+        "Debussy, Stravinsky and Satie options do not fit exact work."
+      ],
+      "revision_sha256": "7eaed0eac7777bd7d10452b5d1d53ebfe1e446b4b3264326310109b4af009c2d",
+      "source_urls": [
+        "https://raveledition.com/bolero",
+        "https://www.tucsonsymphony.org/program-notes/ravel/bolero/"
+      ],
+      "verdict": "accepted_for_draft",
+      "id": "question:compositions011"
+    }
+  ],
+  "external_stem_issue": {
+    "question_id": "compositions010",
+    "reason": "Public по одному is overprecise: National Arts Centre Orchestra guide PDF zero-index page 10 / printed page 11 says first TWO leave together, then third and fourth. Use gradual/in turn via separate canonical revision. Draft article remains acceptable.",
+    "source_url": "https://naccnaca-education-pdf.s3.amazonaws.com/6578-teacherguide2_humourmusic_mar2014_2.pdf",
+    "verdict": "revise_before_publication"
+  },
+  "previous_review": {
+    "article_sha256": "1269f8f69a90370788882687b5c84d73bff84be42fdb2a352c431896a8ff6bb9",
+    "finding": "Rubinstein called performer, unsupported directly by final two citations",
+    "resolution": "Corrected to commissioner/dancer in article and SOURCES; Tucson calls her a dancer, Ravel Edition supports commission.",
+    "sources_sha256": "bd24b7a4024af62325955406a1e0bbd3f0d70460c2fb24d0bf98d5bc00c40c76"
+  },
+  "limitations": [
+    "Same-provider native private draft review; no different-provider acceptance or publication.",
+    "No canonical keys/files, audio, full scores/manuscripts, Git, Beads, tests, builds, server, provider launch or local edits."
+  ],
+  "different_provider_acceptance": false
+}

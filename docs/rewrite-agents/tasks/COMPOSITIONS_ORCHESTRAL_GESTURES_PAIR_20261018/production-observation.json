@@ -1,0 +1,25 @@
+{
+  "actual_exit": 0,
+  "script_raw_sha256": "330e03e69e4a6bc387afa28f8d02a51a5f98f3131fde925f4fd7f211e42fbe9c",
+  "read_only": true,
+  "release_baseline_certificate": false,
+  "observation": {
+    "observed_at_utc": "2026-10-18T12:45:45.765285+00:00",
+    "disk_available": 14568325120,
+    "disk_total": 102417174528,
+    "available_percent": 14.224,
+    "strict20_pass": false,
+    "helm_revision": 64,
+    "helm_status": "deployed",
+    "images": [
+      "docker.io/library/quiz-master@sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00",
+      "docker.io/library/quiz-master@sha256:dc230d8cec6d555c3f0e67f17a8bdab4452cb546cdf29b50c4c6395717ba8c00"
+    ],
+    "replicas": 1,
+    "readiness": 200,
+    "feedback_count": 43,
+    "feedback_open": 43,
+    "feedback_sha256": "58f336a3bec6034396b8af587e1268d1ad19f5983591dcac0b0778a2e4737157",
+    "mutation": false
+  }
+}

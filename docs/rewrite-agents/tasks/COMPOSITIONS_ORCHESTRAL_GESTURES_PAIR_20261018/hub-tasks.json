@@ -1,0 +1,112 @@
+{
+  "captured_by": "Root actual Hub list after native submission",
+  "different_provider_acceptance": false,
+  "tasks": [
+    {
+      "acceptance": [
+        "Exact final articles/SOURCES/freeze hashes and 2 item verdicts with source evidence",
+        "Truthful prior brief clean_blind=false, no canonical change, actual native Hub submission then quiescent"
+      ],
+      "allowed_paths": [
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\COMPOSITIONS_ORCHESTRAL_GESTURES_PAIR_20261018"
+      ],
+      "assignee": "session-f20c74891dfe48fa9066e44c64889b2e",
+      "author": "session-63fd5fdb8f3949f5b55c393ab4c64f25",
+      "body": "Read-only final recheck of changed article010/011 and SOURCES hashes995938bf.../24398086...; independently established source freeze7d7ff221 before current writer. Reuse actual prior5URL reads, check changedsentence/memo and exact bindings/options. Submit actual final structured evidence; no writes/keys/providers/server/Git/Beads/children. Existing public010stem overspecific separately revisebeforepublication. Native private only, externalacceptance pending.",
+      "created_at": 1792358672.5507412,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-97f82645652f470086232802407584e2",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "blind_freeze_sha256": "7d7ff221fd901f605b935f9744b2ecfb58f697c73f175aceca9457e7267026d3",
+        "blind_freeze_utf8_json": "{\"clean_blind\":false,\"items\":[{\"question_id\":\"compositions010\",\"option_id\":\"compositions010-opt-4\"},{\"question_id\":\"compositions011\",\"option_id\":\"compositions011-opt-1\"}]}",
+        "clean_blind": false,
+        "evidence": [
+          "SHA256 read-only Get-FileHash: articles.json 995938bf7c532867b248493038970c83e9a8dc05a5eb2053f7e3b67f7c66650d; SOURCES_EN.md 24398086adf8fc75bcbdc879b0f31a8be275871907b3f42cefa362e7c0dcc316.",
+          "All five final source URLs were actually opened and supporting text read; changed article sentence and SOURCES paragraph were re-read after correction.",
+          "Joseph Haydn Foundation exact record https://www.joseph-haydn.art/en/sinfoniae/45; LA Philharmonic finale account https://www.laphil.com/works/symphony-no-45-farewell; Haydn2032 critical origin discussion https://www.haydn2032.com/en/projects/no9-laddio.",
+          "Ravel Edition scholarly note https://raveledition.com/bolero; Tucson Symphony programme analysis https://www.tucsonsymphony.org/program-notes/ravel/bolero/.",
+          "National Arts Centre Orchestra study guide https://naccnaca-education-pdf.s3.amazonaws.com/6578-teacherguide2_humourmusic_mar2014_2.pdf printed p.11 says first two depart, then third/fourth."
+        ],
+        "external_stem_issue": {
+          "question_id": "compositions010",
+          "reason": "Public по одному is overprecise: National Arts Centre Orchestra guide PDF zero-index page 10 / printed page 11 says first TWO leave together, then third and fourth. Use gradual/in turn via separate canonical revision. Draft article remains acceptable.",
+          "source_url": "https://naccnaca-education-pdf.s3.amazonaws.com/6578-teacherguide2_humourmusic_mar2014_2.pdf",
+          "verdict": "revise_before_publication"
+        },
+        "items": [
+          {
+            "answer_option_id": "compositions010-opt-4",
+            "article_id": "question:compositions010",
+            "question_id": "compositions010",
+            "quiz_id": "prep-compositions",
+            "reasons": [
+              "Joseph Haydn Foundation: Hob.I:45, F-sharp minor, 1772, separate chronological ordinal 55, Presto/Adagio finale.",
+              "LA Philharmonic: later Adagio, progressive departures, final two violins. Article warns against strictly one-by-one.",
+              "Haydn2032: origin account is anecdotal and intended persuasion is explicitly questioned. Article keeps that distinction.",
+              "Mozart, Beethoven and Schubert options are not defensible for exact work."
+            ],
+            "revision_sha256": "28bf3eb4dfef9d93e625136e7d29bc46366763407cec0b78f9de6e22ceb2b489",
+            "source_urls": [
+              "https://www.joseph-haydn.art/en/sinfoniae/45",
+              "https://www.laphil.com/works/symphony-no-45-farewell",
+              "https://www.haydn2032.com/en/projects/no9-laddio"
+            ],
+            "verdict": "accepted_for_draft"
+          },
+          {
+            "answer_option_id": "compositions011-opt-1",
+            "article_id": "question:compositions011",
+            "question_id": "compositions011",
+            "quiz_id": "prep-compositions",
+            "reasons": [
+              "Ravel Edition: Ravel, Rubinstein commission, ballet premiere 22 November 1928 at Paris Opera, distinct ballet-1928 and concert-1929 editions.",
+              "Corrected commissioner/dancer sentence directly supported by Ravel Edition and Tucson Symphony; no premiere choreography credit.",
+              "Tucson Symphony: two melodies, repeated rhythm, timbre/instrument changes, crescendo and late harmony/key departure.",
+              "Debussy, Stravinsky and Satie options do not fit exact work."
+            ],
+            "revision_sha256": "7eaed0eac7777bd7d10452b5d1d53ebfe1e446b4b3264326310109b4af009c2d",
+            "source_urls": [
+              "https://raveledition.com/bolero",
+              "https://www.tucsonsymphony.org/program-notes/ravel/bolero/"
+            ],
+            "verdict": "accepted_for_draft"
+          }
+        ],
+        "limitations": [
+          "Same-provider native private draft review; no different-provider acceptance or publication.",
+          "No canonical keys/files, audio, full scores/manuscripts, Git, Beads, tests, builds, server, provider launch or local edits."
+        ],
+        "overall_verdict": "both_articles_accepted_for_draft_public_stem010_revision_required_before_publication",
+        "previous_review": {
+          "article_sha256": "1269f8f69a90370788882687b5c84d73bff84be42fdb2a352c431896a8ff6bb9",
+          "finding": "Rubinstein called performer, unsupported directly by final two citations",
+          "resolution": "Corrected to commissioner/dancer in article and SOURCES; Tucson calls her a dancer, Ravel Edition supports commission.",
+          "sources_sha256": "bd24b7a4024af62325955406a1e0bbd3f0d70460c2fb24d0bf98d5bc00c40c76"
+        },
+        "prior_exposure": "Assignment and brief disclosed Haydn/Ravel and source caveats before independent source check. Initial sequence: skill/brief/candidate questions, opened primary institution pages, froze answers, then after exact writer hashes read article/SOURCES. No canonical keys.",
+        "reviewed_file": "995938bf7c532867b248493038970c83e9a8dc05a5eb2053f7e3b67f7c66650d",
+        "reviewed_sources": "24398086adf8fc75bcbdc879b0f31a8be275871907b3f42cefa362e7c0dcc316",
+        "reviewer": {
+          "actual_model": "gpt-6.1-sol",
+          "hub_session_id": "session-f20c74891dfe48fa9066e44c64889b2e",
+          "identity_labels": "self_reported",
+          "provider": "codex",
+          "review_type": "native_same_provider_read_only"
+        }
+      },
+      "root_task_id": "task-97f82645652f470086232802407584e2",
+      "run_id": "run-77e5db73051f452e87ad06a57fbb7309",
+      "skills": [],
+      "state": "SUBMITTED",
+      "team_id": "team-372817697415485b816efb5833b5510c",
+      "title": "quiz_master-961: final exact-text native recheck after performer-to-dancer correction",
+      "version": 3
+    }
+  ]
+}
