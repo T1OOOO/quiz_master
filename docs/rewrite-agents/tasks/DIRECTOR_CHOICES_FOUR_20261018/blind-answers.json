@@ -1,0 +1,79 @@
+{
+  "schema_version": "qm-blind-answers/v1",
+  "batch_id": "DIRECTOR_CHOICES_FOUR_20261018",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-dc560027c7dc429da3f71ef26211ac82"
+  },
+  "review_scope": "Native same-provider private evidence only; external acceptance pending.",
+  "ordering": {
+    "candidate_questions_read": true,
+    "articles_read_before_freeze": false,
+    "writer_sources_read_before_freeze": false,
+    "private_canonical_keys_read": false,
+    "new_independent_solve": true,
+    "answers_frozen_before_articles": true
+  },
+  "accessed_on": "2026-10-18",
+  "answers": [
+    {
+      "question_id": "prep-film-directors-35",
+      "option_id": "prep-film-directors-35-opt-1",
+      "answer": "Дэвид Финчер",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/f6410738-e0d4-5af7-ac32-6f68a50ae3c8/the-social-network",
+      "evidence": "Actual primary institutional page explicitly identifies the offered director and dated work.",
+      "retrieval": "Successful actual web open and director/year text read on2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-36",
+      "option_id": "prep-film-directors-36-opt-4",
+      "answer": "Барри Дженкинс",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://a24films.com/films/moonlight",
+      "evidence": "Actual primary institutional page explicitly identifies the offered director and dated work.",
+      "retrieval": "Successful actual web open and director/year text read on2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-37",
+      "option_id": "prep-film-directors-37-opt-3",
+      "answer": "Джордан Пил",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://www.bfi.org.uk/film/81a56239-4e69-56b1-b2f0-128204576ae9/get-out",
+      "evidence": "Actual primary institutional page explicitly identifies the offered director and dated work.",
+      "retrieval": "Successful actual web open and director/year text read on2026-10-18."
+    },
+    {
+      "question_id": "prep-film-directors-38",
+      "option_id": "prep-film-directors-38-opt-2",
+      "answer": "Райан Куглер",
+      "confidence": "high",
+      "blind": true,
+      "source_url": "https://movies.disney.com/black-panther",
+      "evidence": "Actual primary institutional page explicitly identifies the offered director and dated work.",
+      "retrieval": "Successful actual web open and director/year text read on2026-10-18."
+    }
+  ],
+  "candidate_assessment": "Four clean blind items; unique credited offered director for each dated title. Sorkin is separately screenplay, not direction, for Social Network. Black Panther identified as2018 original, not sequel. No visible leak or demonstrated date bug.",
+  "additional_actual_reads": [
+    {
+      "url": "https://www.sonypictures.com/corp/press_releases/2011/01_11/010511_tsn.html",
+      "result": "Actual Sony primary press release read: Fincher director and Sorkin screenwriter explicitly separate; film based on Mezrich book. Marketing language and dramatized Facebook narrative not factual biography."
+    },
+    {
+      "url": "https://www.sonypictures.com/movies/thesocialnetwork",
+      "result": "Actual studio page opened; no new director proof needed beyond BFI and Sony press release."
+    }
+  ],
+  "source_limits": "Catalogue/work-year identifiers not exact premiere claims. A24 current page has runtime2H9M; not used for original2016 film claims. Disney exact release day not independently interpreted. Promotional/critical fictional portrayals not demographic or biographical proof.",
+  "failed_retrievals": [
+    {
+      "url": "https://www.universalpictures.com/movies/get-out",
+      "error": "Actual web open returned404; search result supporting text not counted as successful primary read. BFI film record independently read instead."
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "qm-independent-review/v1",
+  "batch_id": "DIRECTOR_CHOICES_FOUR_20261018",
+  "task_id": "task-2abfdc699f514e969ced466571a7cf43",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "session_id": "session-dc560027c7dc429da3f71ef26211ac82"
+  },
+  "checked_on": "2026-10-18",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "1615c4dde96935261f0f800b1da5537a0a4911b5eaa6550d1f1d4d1f6b4cf4da"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "a8f4cb8d452bc7bc6ea66ef4e27811af65505dd5a06115b7560c3ad8cfce6b85"
+  },
+  "blind_answer_sha256": "e0a78c221aad4050f8d6962a44c3ccc97b67de5866c51b7c92b332b8eb2cca7e",
+  "ordering": {
+    "new_independent_solve": true,
+    "inherited_blind_answers": false,
+    "blind_frozen_before_articles_and_writer_sources": true,
+    "canonical_keys_read": false
+  },
+  "overall_verdict": "accepted_for_draft",
+  "items": [
+    {
+      "id": "question:prep-film-directors-35",
+      "question_revision_sha256": "6561750214dcc20086f8276021261436c9e26f4a2302a8db88028b09a1c349a2",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-35-opt-1",
+      "word_count_whitespace": 200,
+      "checked_claims": "AFI explicitly separates Fincher direction, Sorkin screenplay and Cronenweth cinematography;2010 record. AFI synopsis supports Zuckerberg student projects, Saverin involvement and another platform proposal as film plot. Sony supports Facebook-founder premise. No dramatized biography or legal allegation promoted into verified history.",
+      "distractor_review": "Unique offered director under dated title; no visible leak or alternate defensible option. Sorkin screenplay distinguished from direction for035. No canonical keys read.",
+      "pedagogy_review": "Promises, contribution and recognition. Distinct contextual angle beyond name recall, optional evidence-based exercise with uncertainty permitted. No invented scene, viewing record, compulsory moral or proven director intention.",
+      "sources_opened": [
+        "https://catalog.afi.com/Catalog/moviedetails/66175",
+        "https://www.sonypictures.com/movies/thesocialnetwork"
+      ],
+      "source_limit": "Two institutions; each source used only for actually supported claims."
+    },
+    {
+      "id": "question:prep-film-directors-36",
+      "question_revision_sha256": "f99448295e7c83b04fdfde11fcd7ffe27fd044c94a5b98bfd6412ec2b482b2d9",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-36-opt-4",
+      "word_count_whitespace": 209,
+      "checked_claims": "A24 actual current page supports Jenkins directing/writing,2016, named cast without role inference, Chiron growing up in Miami, three chapters and community support/love. No sole literary-source authorship asserted; sexuality/identity not treated as a deterministic explanation or stereotype.",
+      "distractor_review": "Unique offered director under dated title; no visible leak or alternate defensible option. Sorkin screenplay distinguished from direction for035. No canonical keys read.",
+      "pedagogy_review": "Support across stages of growing up. Distinct contextual angle beyond name recall, optional evidence-based exercise with uncertainty permitted. No invented scene, viewing record, compulsory moral or proven director intention.",
+      "sources_opened": [
+        "https://a24films.com/films/moonlight"
+      ],
+      "source_limit": "One studio institution only, permitted by brief; no independent corroboration claimed."
+    },
+    {
+      "id": "question:prep-film-directors-37",
+      "question_revision_sha256": "6e94949f86e62f0ae3ddf1ad2f8e19a147a9d86e379bd5b358bc457afd3aad9a",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-37-opt-3",
+      "word_count_whitespace": 197,
+      "checked_claims": "BFI supports2017 and Peele direction/writing; Universal AtHome separately supports cast/year/director and Chris visiting his white girlfriend family estate, initial hospitality explanation and later disturbing discoveries. No cast-role mapping inferred; fictional motives not generalized to real racial groups.",
+      "distractor_review": "Unique offered director under dated title; no visible leak or alternate defensible option. Sorkin screenplay distinguished from direction for035. No canonical keys read.",
+      "pedagogy_review": "Hospitality, initial explanations and changing evidence. Distinct contextual angle beyond name recall, optional evidence-based exercise with uncertainty permitted. No invented scene, viewing record, compulsory moral or proven director intention.",
+      "sources_opened": [
+        "https://www.bfi.org.uk/film/81a56239-4e69-56b1-b2f0-128204576ae9/get-out",
+        "https://www.universalpicturesathome.com/movies/get-out"
+      ],
+      "source_limit": "Two institutions; each source used only for actually supported claims."
+    },
+    {
+      "id": "question:prep-film-directors-38",
+      "question_revision_sha256": "3b3eaddd754a7ff060e71aa59ddf641edae8ac5730507067b28f20f2b6b051e9",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-film-directors-38-opt-2",
+      "word_count_whitespace": 202,
+      "checked_claims": "Disney supports2018, Coogler direction and named cast; father death, TChalla return to Wakanda throne, advanced isolated nation, old enemy, conflict and allies are supported synopsis. First2018 film identified, no sequel credit/plot imported; Wakanda clearly fictional.",
+      "distractor_review": "Unique offered director under dated title; no visible leak or alternate defensible option. Sorkin screenplay distinguished from direction for035. No canonical keys read.",
+      "pedagogy_review": "Inherited title versus responsibility and consequences. Distinct contextual angle beyond name recall, optional evidence-based exercise with uncertainty permitted. No invented scene, viewing record, compulsory moral or proven director intention.",
+      "sources_opened": [
+        "https://movies.disney.com/black-panther"
+      ],
+      "source_limit": "One studio institution only, permitted by brief; no independent corroboration claimed."
+    }
+  ],
+  "retrieval_evidence": {
+    "method": "Actual web institutional opens/supporting text read: four final pages during fresh blind phase; AFI Social Network and Universal AtHome Get Out after writer freeze. Sony page supporting text also refreshed after freeze.",
+    "actual_successful_unique_cited_urls": 6,
+    "source_counts": [
+      2,
+      1,
+      2,
+      1
+    ],
+    "final_institutions": [
+      "AFI",
+      "Sony",
+      "A24",
+      "BFI",
+      "Universal",
+      "Disney"
+    ],
+    "failed_retrievals": [
+      {
+        "url": "https://www.universalpictures.com/movies/get-out",
+        "error": "Actual web open returned404; search result supporting text not counted as successful primary read. BFI film record independently read instead."
+      }
+    ],
+    "search_snippets_counted_as_reads": false,
+    "redirects_counted_as_support": false,
+    "limits": [
+      "Universal Pictures /movies/get-out404 is distinct from successful Universal Pictures AtHome final URL.",
+      "AFI post1993 record explicitly outside its core1893–1993 catalogue scope; actual credits/synopsis readable and used as institutional record.",
+      "A24 current runtime2H9M and Disney precise date field not used to infer original-cut runtime or universal premiere chronology."
+    ]
+  },
+  "checks": [
+    "Frozen raw SHA256 gates for article/source/blind passed.",
+    "Exact four candidate refs/full article IDs/schema/draft/arts/empty targets passed.",
+    "Bodies160–260words; HTTPS/access2026-10-18/source counts2/1/2/1 passed.",
+    "Every factual claim and displayed support compared with actual primary text; directions distinct from screenplay/cinematography/cast.",
+    "Bounded paraphrases plus distinct original optional exercises; no unsupported scene/award/anecdote, lyrics/dialogue, group generalization or biography proof."
+  ],
+  "findings": [],
+  "limits": [
+    "No full-film viewing, exhaustive plagiarism search or detailed scene verification claimed. Prose reviewed as original bounded paraphrase and proposed analysis, not copied dialogue.",
+    "Years identify original works; no later-cut scenes, durations, sequel facts or precise premiere claims inferred.",
+    "Native same-provider private draft review only; genuine different-provider acceptance, publication and release acceptance remain pending."
+  ]
+}
