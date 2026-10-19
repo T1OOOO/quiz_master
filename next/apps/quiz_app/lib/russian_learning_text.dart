@@ -292,8 +292,7 @@ const russianLearningTerms = <String, String>{
 };
 
 const russianSourceTitles = <String, String>{
-  'OpenStax Anatomy and Physiology 2e, 13.2: центральная нервная система':
-      'Издатель «ОпенСтакс»: анатомия и физиология, центральная нервная система',
+  'OpenStax Anatomy and Physiology 2e, 13.2: центральная нервная система': 'Издатель «ОпенСтакс»: анатомия и физиология, центральная нервная система',
   'FIPAT Terminologia Anatomica 2, официальный просмотрщик':
       'ФИПАТ: анатомическая терминология, второе издание',
   'OpenStax: череп': 'Издатель «ОпенСтакс»: череп',
@@ -507,5 +506,6 @@ const russianCreditAttributions = <String, String>{
   "endocrine": "Открытый учебник «ОпенСтакс», Томаш Кеберт и образовательный портал «Умимето». Схема преобразована в растровое изображение; содержание оригинала не изменено.",
 };
 String russianCreditAttribution(Map<String, dynamic> credit) =>
+    credit['attribution_ru'] as String? ??
     russianCreditAttributions[credit['id']] ??
     russianLearningText(credit['attribution'] as String);

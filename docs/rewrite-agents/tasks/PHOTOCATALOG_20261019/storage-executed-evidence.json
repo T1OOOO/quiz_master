@@ -1,0 +1,15 @@
+{
+  "plan_sha256": "06e2d5f044a8ecb653c9282e15c238dbb5f0999fda4ea3525616bd7b3e81268e",
+  "remote_targets_sha256": "6f043149465cedcbbce54cfc118fb35a1492eb6833960b7c263efb927aafabbc",
+  "archive_sha256": "5a3ef8d8098231127f19965ef2c11775835442b1b7b4330ba3fe77bb6c358bf3",
+  "applied": true,
+  "literal_targets": 11,
+  "archived_bytes": 402982822,
+  "all_images_live_PVC_server_backups_preserved": true,
+  "capacity_after_percent": 20.49925786447097,
+  "guarded_baseline": {
+    "helm": 72,
+    "deployment": 70
+  },
+  "note": "Historical helper return labels are stale; actual state guards enforce plan baseline72/70 and preflight independently confirms it."
+}

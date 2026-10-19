@@ -368,14 +368,19 @@ class QuizipediaSession {
     List<String> targets,
     this.optionFactory, {
     math.Random? random,
+    this.choiceCount = 4,
   }) : targets = List.unmodifiable(targets),
        _random = random ?? math.Random() {
     if (targets.isEmpty || targets.toSet().length != targets.length) {
       throw ArgumentError('unique targets required');
     }
+    if (choiceCount < 4 || choiceCount > 6) {
+      throw ArgumentError('four to six choices required');
+    }
     restart();
   }
   final List<String> targets;
+  final int choiceCount;
   final List<String> Function(String correct) optionFactory;
   final math.Random _random;
   final List<String> seen = [];
@@ -391,7 +396,7 @@ class QuizipediaSession {
     final candidates = optionFactory(current).toSet()..remove(current);
     if (candidates.length < 3) throw ArgumentError('four choices required');
     final distractors = candidates.toList()..shuffle(_random);
-    options = [current, ...distractors.take(3)]..shuffle(_random);
+    options = [current, ...distractors.take(choiceCount - 1)]..shuffle(_random);
     submitted = false;
   }
 
@@ -1048,7 +1053,7 @@ class _QuizGameState extends State<_QuizGame> {
         }
       }
       return candidates;
-    });
+    }, choiceCount: widget.module == _Module.landmarks ? 6 : 4);
     _exploreId = ids.first;
   }
 
@@ -1077,20 +1082,30 @@ class _QuizGameState extends State<_QuizGame> {
   bool get _reverse => _questionIndex.isOdd;
   bool get _submitted => widget.challenge && _session.submitted;
 
-  Future<ui.Image> _loadImage(String asset) =>
-      _images.putIfAbsent(asset, () async {
-        final data = await widget.bundle.load(asset);
-        final bytes = Uint8List.fromList(
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
-        );
-        final codec = await ui.instantiateImageCodec(bytes);
-        try {
-          final frame = await codec.getNextFrame();
-          return frame.image;
-        } finally {
-          codec.dispose();
-        }
+  Future<ui.Image> _loadImage(String asset) {
+    if (widget.module == _Module.landmarks &&
+        !_images.containsKey(asset) &&
+        _images.length >= 2) {
+      final old = _images.remove(_images.keys.first)!;
+      // Dispose after the old RawImage has left the rendered frame.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        old.then((image) => image.dispose(), onError: (Object _) {});
       });
+    }
+    return _images.putIfAbsent(asset, () async {
+      final data = await widget.bundle.load(asset);
+      final bytes = Uint8List.fromList(
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      );
+      final codec = await ui.instantiateImageCodec(bytes);
+      try {
+        final frame = await codec.getNextFrame();
+        return frame.image;
+      } finally {
+        codec.dispose();
+      }
+    });
+  }
 
   void _retryImage(String asset) => setState(() {
     _images.remove(asset);
@@ -1156,7 +1171,11 @@ class _QuizGameState extends State<_QuizGame> {
     };
     return Scaffold(
       appBar: AppBar(
-        title: Text(_moduleTitle(context, widget.module)),
+        title: Text(
+          widget.module == _Module.landmarks
+              ? _t(context, 'Photo catalog', 'Фотокаталог')
+              : _moduleTitle(context, widget.module),
+        ),
         actions: [
           FactPracticeAction(
             scope: switch (widget.module) {
@@ -1462,8 +1481,8 @@ class _QuizGameState extends State<_QuizGame> {
       return _reverse
           ? _t(
               context,
-              'Which city is this landmark in?',
-              'В каком городе находится эта достопримечательность?',
+              'Which city or settlement is this landmark in?',
+              'В каком городе или населённом пункте находится эта достопримечательность?',
             )
           : _t(context, 'Name this landmark', 'Назовите достопримечательность');
     }
@@ -1558,6 +1577,173 @@ class _QuizGameState extends State<_QuizGame> {
     );
   }
 
+  String _landmarkCountry(Map<String, dynamic> row) {
+    final countries = widget.catalog.countryRows.where(
+      (c) => c['id'] == row['country_iso2'],
+    );
+    return countries.isEmpty
+        ? row['country_iso2'] as String
+        : _localized(context, countries.first, 'name');
+  }
+
+  void _chooseLandmark(String id) => setState(() {
+    _exploreId = id;
+    _controller.value = Matrix4.identity();
+  });
+
+  Future<void> _pickLandmark() async {
+    var query = '';
+    String normalized(String text) => text.toLowerCase().replaceAll('ё', 'е');
+    final id = await showModalBottomSheet<String>(
+      context: context,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (context, setSheetState) {
+          final rows = _targets
+              .where(
+                (row) => normalized(
+                  '${_localized(context, row, 'name')} ${_localized(context, row, 'city')} ${_landmarkCountry(row)}',
+                ).contains(normalized(query)),
+              )
+              .toList();
+          return SafeArea(
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                top: 16,
+                bottom: MediaQuery.viewInsetsOf(context).bottom,
+              ),
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).height * .8,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            _t(context, 'Photo catalog', 'Фотокаталог'),
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: _t(context, 'Close', 'Закрыть'),
+                          onPressed: () => Navigator.pop(sheetContext),
+                          icon: const Icon(Icons.close),
+                        ),
+                      ],
+                    ),
+                    TextField(
+                      key: const Key('landmark-search'),
+                      onChanged: (value) => setSheetState(() => query = value),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        labelText: _t(
+                          context,
+                          'Name, city or country',
+                          'Название, город или страна',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: rows.isEmpty
+                          ? Center(
+                              child: Text(
+                                _t(
+                                  context,
+                                  'No matching photographs',
+                                  'Фотографий по запросу нет',
+                                ),
+                              ),
+                            )
+                          : ListView.builder(
+                              itemCount: rows.length,
+                              itemBuilder: (context, index) {
+                                final row = rows[index];
+                                return ListTile(
+                                  key: Key('landmark-choice-${row['id']}'),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 4,
+                                  ),
+                                  leading: SizedBox(
+                                    width: 64,
+                                    height: 56,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.asset(
+                                        row['image_asset'] as String,
+                                        bundle: widget.bundle,
+                                        scale: 1,
+                                        cacheWidth: 144,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (_, _, _) =>
+                                            const Icon(Icons.photo_outlined),
+                                      ),
+                                    ),
+                                  ),
+                                  title: Text(_localized(context, row, 'name')),
+                                  subtitle: Text(
+                                    '${_localized(context, row, 'city')} · ${_landmarkCountry(row)}',
+                                  ),
+                                  selected: row['id'] == _exploreId,
+                                  onTap: () => Navigator.pop(
+                                    sheetContext,
+                                    row['id'] as String,
+                                  ),
+                                );
+                              },
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+    if (mounted && id != null) _chooseLandmark(id);
+  }
+
+  Widget _landmarkControls() {
+    final index = _targets.indexWhere((r) => r['id'] == _exploreId);
+    return Row(
+      children: [
+        IconButton(
+          tooltip: _t(context, 'Previous photograph', 'Предыдущее фото'),
+          onPressed: () => _chooseLandmark(
+            _targets[(index - 1 + _targets.length) % _targets.length]['id']
+                as String,
+          ),
+          icon: const Icon(Icons.chevron_left),
+        ),
+        Expanded(
+          child: FilledButton.tonalIcon(
+            key: const Key('landmark-picker'),
+            onPressed: _pickLandmark,
+            icon: const Icon(Icons.photo_library_outlined),
+            label: Text(
+              _t(
+                context,
+                'Catalog: ${_targets.length} photos',
+                'Каталог: ${_targets.length} фото',
+              ),
+            ),
+          ),
+        ),
+        IconButton(
+          tooltip: _t(context, 'Next photograph', 'Следующее фото'),
+          onPressed: () => _chooseLandmark(
+            _targets[(index + 1) % _targets.length]['id'] as String,
+          ),
+          icon: const Icon(Icons.chevron_right),
+        ),
+      ],
+    );
+  }
+
   Widget _exploreControls() => Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
@@ -1569,34 +1755,58 @@ class _QuizGameState extends State<_QuizGame> {
         Text(
           _t(
             context,
-            'City: ${_localized(context, _current, 'city')}',
-            'Город: ${_localized(context, _current, 'city')}',
+            'Location: ${_localized(context, _current, 'city')}',
+            'Место: ${_localized(context, _current, 'city')}',
           ),
         ),
       const SizedBox(height: 8),
-      Wrap(
-        spacing: 8,
-        runSpacing: 8,
-        children: [
-          for (final row in _targets)
-            OutlinedButton(
-              onPressed: () {
-                setState(() {
-                  _exploreId = row['id'] as String;
-                  _starInfo = null;
-                  _controller.value = Matrix4.identity();
-                });
-              },
-              style: OutlinedButton.styleFrom(minimumSize: const Size(44, 44)),
-              child: Text(_localized(context, row, 'name')),
+      if (widget.module == _Module.landmarks) ...[
+        _landmarkControls(),
+        const SizedBox(height: 8),
+        FilledButton.icon(
+          key: const Key('landmark-photo-training'),
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => _QuizGame(
+                catalog: widget.catalog,
+                module: _Module.landmarks,
+                challenge: true,
+                bundle: widget.bundle,
+              ),
             ),
-        ],
-      ),
+          ),
+          icon: const Icon(Icons.quiz_outlined),
+          label: Text(_t(context, 'Recognize photographs', 'Узнавать по фото')),
+        ),
+      ] else
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final row in _targets)
+              OutlinedButton(
+                onPressed: () {
+                  setState(() {
+                    _exploreId = row['id'] as String;
+                    _starInfo = null;
+                    _controller.value = Matrix4.identity();
+                  });
+                },
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(44, 44),
+                ),
+                child: Text(_localized(context, row, 'name')),
+              ),
+          ],
+        ),
     ],
   );
 
   Widget _feedback() {
     final correct = _current;
+    final answer = widget.module == _Module.landmarks && _reverse
+        ? _localized(context, correct, 'city')
+        : _name(_currentId);
     return Semantics(
       liveRegion: true,
       child: Card(
@@ -1615,22 +1825,54 @@ class _QuizGameState extends State<_QuizGame> {
                     : _t(context, 'Incorrect', 'Неверно'),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
+              if (widget.module == _Module.landmarks &&
+                  _selected != null &&
+                  !_wasCorrect)
+                Text(
+                  _t(
+                    context,
+                    'Your answer: ${_reverse ? _localized(context, _row(_selected!), 'city') : _name(_selected!)}',
+                    'Ваш ответ: ${_reverse ? _localized(context, _row(_selected!), 'city') : _name(_selected!)}',
+                  ),
+                ),
               Text(
                 _t(
                   context,
-                  'Correct answer: ${_name(_currentId)}',
-                  'Правильный ответ: ${_name(_currentId)}',
+                  'Correct answer: $answer',
+                  'Правильный ответ: $answer',
                 ),
               ),
               if (widget.module == _Module.landmarks)
                 Text(
                   _t(
                     context,
-                    'City: ${_localized(context, correct, 'city')}',
-                    'Город: ${_localized(context, correct, 'city')}',
+                    'Location: ${_localized(context, correct, 'city')}',
+                    'Место: ${_localized(context, correct, 'city')}',
                   ),
                 ),
               Text(_localized(context, correct, 'explanation')),
+              if (widget.module == _Module.landmarks)
+                ExpansionTile(
+                  key: const Key('landmark-other-options'),
+                  title: Text(
+                    _t(
+                      context,
+                      'Other options explained',
+                      'Объяснения остальных вариантов',
+                    ),
+                  ),
+                  children: [
+                    for (final id in _session.options.where(
+                      (id) => id != _currentId,
+                    ))
+                      ListTile(
+                        title: Text(_name(id)),
+                        subtitle: Text(
+                          '${_localized(context, _row(id), 'city')} · ${_landmarkCountry(_row(id))}\n${_localized(context, _row(id), 'explanation')}',
+                        ),
+                      ),
+                  ],
+                ),
               _articleLink(),
               const SizedBox(height: 8),
               FilledButton(

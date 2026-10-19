@@ -1,0 +1,86 @@
+{
+  "accounting": {
+    "planned_total_bytes": 402982822
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-grid-9de2ad04",
+    "deployment_revision": "70",
+    "helm_deployed_revision": 72,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-grid-9de2ad04@sha256:0b46d13b5496a7d2388b3385476d4306b97709f843182407e5483b5996e643c8",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 71
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-photo-20261019",
+  "plan_only": true,
+  "purpose": "Archive only11 literal copied release72 stage inputs after verifying local archive. Keep all server backups, livePVC, all runtimeimages and metadata. Same reviewed algorithm; no pruning or threshold changes.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 85342609,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74887168,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 74887168,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 81948672,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-9de2ad04/rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}

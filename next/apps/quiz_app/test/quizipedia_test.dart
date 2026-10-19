@@ -553,6 +553,150 @@ void main() {
     },
   );
 
+  testWidgets('photo browsing evicts old full-size images', (tester) async {
+    final bundle = _PhotoBundle(fixture());
+    await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
+    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      await tester.tap(find.text('Landmark photographs'));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    });
+    await tester.pumpAndSettle();
+    for (var i = 0; i < 4; i++) {
+      await tester.ensureVisible(find.byTooltip('Next photograph'));
+      await tester.runAsync(() async {
+        await tester.tap(find.byTooltip('Next photograph'));
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+      });
+      await tester.pumpAndSettle();
+    }
+    expect(
+      bundle.photos.where((p) => p == 'assets/missing0.png'),
+      hasLength(2),
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('photo feedback explains every other option', (tester) async {
+    final data = fixture();
+    for (final row
+        in (data['landmarks'] as List).cast<Map<String, dynamic>>()) {
+      row['image_asset'] = 'assets/missing.png';
+    }
+    await tester.pumpWidget(
+      MaterialApp(home: QuizipediaPage(bundle: _Bundle(data))),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Training'));
+    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      await tester.tap(find.text('Landmark photographs'));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+    });
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byType(OutlinedButton).first);
+    await tester.tap(find.byType(OutlinedButton).first);
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Check'));
+    await tester.tap(find.text('Check'));
+    await tester.pumpAndSettle();
+    final others = find.byKey(const Key('landmark-other-options'));
+    await tester.ensureVisible(others);
+    await tester.tap(others);
+    await tester.pumpAndSettle();
+    expect(
+      find.descendant(
+        of: others,
+        matching: find.byWidgetPredicate(
+          (w) => w is ListTile && w.onTap == null,
+        ),
+      ),
+      findsNWidgets(3),
+    );
+    await tester.ensureVisible(find.text('Next'));
+    await tester.runAsync(() async {
+      await tester.tap(find.text('Next'));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+    });
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byType(OutlinedButton).first);
+    await tester.tap(find.byType(OutlinedButton).first);
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Check'));
+    await tester.tap(find.text('Check'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Correct answer: City'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  test('photo rounds offer six real choices with smaller-pool fallback', () {
+    final six = ['a', 'b', 'c', 'd', 'e', 'f'];
+    final round = QuizipediaSession(six, (_) => six, choiceCount: 6);
+    expect(round.options, hasLength(6));
+    expect(round.options.toSet(), hasLength(6));
+    expect(round.options, contains(round.current));
+    final four = six.take(4).toList();
+    expect(
+      QuizipediaSession(four, (_) => four, choiceCount: 6).options,
+      hasLength(4),
+    );
+  });
+
+  testWidgets('mobile landmark picker searches city and selects an object', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(361, 738);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final data = fixture();
+    for (final row
+        in (data['landmarks'] as List).cast<Map<String, dynamic>>()) {
+      row['image_asset'] = 'assets/missing.png';
+    }
+    await tester.pumpWidget(
+      MaterialApp(home: QuizipediaPage(bundle: _Bundle(data))),
+    );
+    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      await tester.tap(find.text('Landmark photographs'));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+    });
+    await tester.pumpAndSettle();
+    final picker = find.byKey(const Key('landmark-picker'));
+    await tester.ensureVisible(picker);
+    await tester.tap(picker);
+    await tester.pumpAndSettle();
+    tester.view.viewInsets = const FakeViewPadding(bottom: 280);
+    addTearDown(tester.view.resetViewInsets);
+    await tester.pump();
+    await tester.enterText(find.byKey(const Key('landmark-search')), 'City 3');
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('landmark-choice-landmark:3')), findsOneWidget);
+    expect(find.byKey(const Key('landmark-choice-landmark:0')), findsNothing);
+    await tester.tap(find.byKey(const Key('landmark-choice-landmark:3')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('landmark-search')), findsNothing);
+    expect(find.text('Location: City 3'), findsOneWidget);
+    expect(find.byKey(const Key('landmark-photo-training')), findsOneWidget);
+    await tester.ensureVisible(
+      find.byKey(const Key('landmark-photo-training')),
+    );
+    await tester.runAsync(() async {
+      await tester.tap(find.byKey(const Key('landmark-photo-training')));
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Name this landmark'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('narrow scaled home scrolls and missing photo blocks questions', (
     tester,
   ) async {
@@ -717,5 +861,18 @@ class _Bundle extends CachingAssetBundle {
     return ByteData.sublistView(
       Uint8List.fromList(utf8.encode(jsonEncode(catalog))),
     );
+  }
+}
+
+class _PhotoBundle extends _Bundle {
+  _PhotoBundle(super.catalog);
+  final photos = <String>[];
+  @override
+  Future<ByteData> load(String key) {
+    if (key.startsWith('assets/missing')) {
+      photos.add(key);
+      return super.load('assets/missing.png');
+    }
+    return super.load(key);
   }
 }
