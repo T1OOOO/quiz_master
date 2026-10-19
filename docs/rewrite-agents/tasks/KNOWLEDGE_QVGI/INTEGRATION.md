@@ -29,6 +29,11 @@ is `code-review.md`; factual corrections and sampled source verification are
 `fact-review.md`. Phone browser screenshots cover country flag layers,
 rank sorting and constellations in `../SKY_QVGI/`; history, film and actor details
 are in this folder. Dart hot reload succeeded and runtime errors were empty.
+The release browser also completed a Russian history answer check and the
+film → actor → film drill-down. A detached sparse checkout of implementation
+commit `0662f31d` passed all 39 focused tests without the shared checkout's
+unrelated edits (`clean-checkout-tests.log`). Full analyzer and release build
+passed; the build emitted the existing CupertinoIcons font-reference warning.
 
 The existing unrelated discovery, backend, content and legacy-deletion work
 was preserved. The pre-existing DiscoveryPage assertion in quizipedia_test.dart
