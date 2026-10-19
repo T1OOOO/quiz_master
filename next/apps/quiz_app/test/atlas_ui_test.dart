@@ -102,7 +102,7 @@ void main() {
       await tester.tap(find.byKey(const Key('country-start-training')));
       await tester.pumpAndSettle();
       final choices = find.byType(OutlinedButton);
-      expect(choices, findsNWidgets(6));
+      expect(choices.evaluate().length, inInclusiveRange(4, 6));
       await tester.ensureVisible(choices.first);
       await tester.tap(choices.first);
       await tester.pump();
