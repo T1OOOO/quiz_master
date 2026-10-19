@@ -24,20 +24,17 @@ void main() {
       expect(find.byKey(const Key('organ-map-card-brain')), findsOneWidget);
       expect(find.byKey(const Key('organ-map-target-brain')), findsOneWidget);
 
+      await tester.ensureVisible(find.byKey(const Key('organ-search')));
       await tester.enterText(find.byKey(const Key('organ-search')), 'pineal');
       await tester.pump();
-      await tester.tap(find.byKey(const Key('organ-map-card-pineal')));
+      await tester.ensureVisible(find.byKey(const Key('organ-list-pineal')));
+      await tester.tap(find.byKey(const Key('organ-list-pineal')));
       await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
       expect(
-        tester
-            .widget<ChoiceChip>(find.byKey(const Key('organ-map-card-pineal')))
-            .selected,
-        isTrue,
-      );
-      expect(
-        find.textContaining('no point on the orientation illustration'),
+        find.textContaining('see the card for location and function'),
         findsOneWidget,
       );
 

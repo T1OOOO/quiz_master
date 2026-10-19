@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -32,8 +32,17 @@
 
   <title>Quiz Master</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="startup.css">
 </head>
 <body>
+  <div id="app-startup" role="status" aria-live="polite">
+    <div class="startup-mark" aria-hidden="true">Q</div>
+    <h1>Quiz Master</h1>
+    <p id="startup-message">Загружаем квизы и учебные материалы…</p>
+    <div class="startup-spinner" aria-hidden="true"></div>
+    <button id="startup-retry" hidden>Повторить загрузку</button>
+    <noscript>Для работы приложения включите JavaScript в браузере.</noscript>
+  </div>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
@@ -42,6 +51,7 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="startup.js"></script>
+  <script id="flutter-startup" src="flutter_bootstrap.js" async></script>
 </body>
 </html>

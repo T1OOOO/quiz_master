@@ -102,6 +102,9 @@ void main() {
   ) async {
     await tester.pumpWidget(_app());
 
+    expect(find.byKey(const Key('constellation-search')), findsNothing);
+    await tester.tap(find.byKey(const Key('constellation-choose')));
+    await tester.pumpAndSettle();
     await tester.enterText(
       find.byKey(const Key('constellation-search')),
       'ursa',
@@ -112,6 +115,7 @@ void main() {
 
     await tester.tap(find.byKey(const Key('constellation-option-uma')));
     await tester.pumpAndSettle();
+    expect(find.byKey(const Key('constellation-search')), findsNothing);
     expect(find.text('Dubhe'), findsOneWidget);
     expect(
       find.text('The Great Bear contains the Big Dipper asterism.'),

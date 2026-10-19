@@ -101,78 +101,128 @@ class _QuizAppState extends ConsumerState<QuizApp> {
   }
 }
 
-ThemeData _theme(Brightness brightness) => ThemeData(
-  useMaterial3: true,
-  brightness: brightness,
-  colorSchemeSeed: const Color(0xff006b5f),
-);
-
-GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
-  initialLocation: initialLocation,
-  routes: [
-    // Keep global controls below the navigator's already-owned overlay.
-    ShellRoute(
-      builder: (context, state, child) =>
-          _MainNavigation(path: state.uri.path, child: child),
-      routes: [
-        GoRoute(
-          path: '/quizipedia',
-          builder: (context, _) =>
-              QuizipediaPage(onExit: () => context.go('/library')),
-        ),
-        GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
-        GoRoute(
-          path: '/study/:moduleId/practice',
-          builder: (_, state) =>
-              StudyPracticePage(moduleId: state.pathParameters['moduleId']!),
-        ),
-        GoRoute(
-          path: '/study/:moduleId',
-          builder: (_, state) =>
-              StudyArticlePage(moduleId: state.pathParameters['moduleId']!),
-        ),
-        GoRoute(
-          path: '/library',
-          builder: (_, state) => DiscoveryPage(
-            folder: state.uri.queryParameters['folder'] ?? '',
-            query: state.uri.queryParameters['q'] ?? '',
-            difficulty: difficultyBandFromWire(
-              state.uri.queryParameters['difficulty'],
-            ),
-          ),
-        ),
-        GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
-        GoRoute(
-          path: '/quiz/:quizId',
-          builder: (_, state) => CatalogPage(
-            key: ValueKey(state.uri.toString()),
-            quizId: state.pathParameters['quizId']!,
-            round: state.uri.queryParameters.containsKey('round')
-                ? int.tryParse(state.uri.queryParameters['round']!) ?? -1
-                : null,
-            difficulty: difficultyBandFromWire(
-              state.uri.queryParameters['difficulty'],
-            ),
-          ),
-        ),
-        GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
-        GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
-        GoRoute(
-          path: '/feedback',
-          builder: (_, _) => const FeedbackAdminPage(),
-        ),
-        GoRoute(
-          path: '/join/:inviteToken',
-          builder: (_, state) =>
-              JoinPage(token: state.pathParameters['inviteToken']!),
-        ),
-      ],
+ThemeData _theme(Brightness brightness) {
+  final dark = brightness == Brightness.dark;
+  final colors = ColorScheme.fromSeed(
+    seedColor: const Color(0xff477ab5),
+    brightness: brightness,
+    surface: dark ? const Color(0xff111923) : const Color(0xfff5f7fb),
+  );
+  return ThemeData(
+    useMaterial3: true,
+    brightness: brightness,
+    colorScheme: colors,
+    scaffoldBackgroundColor: colors.surface,
+    appBarTheme: AppBarTheme(
+      backgroundColor: colors.surface,
+      surfaceTintColor: Colors.transparent,
     ),
-  ],
-);
+    cardTheme: CardThemeData(
+      elevation: 0,
+      color: colors.surfaceContainerLow,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: colors.outlineVariant.withValues(alpha: .5)),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: colors.surfaceContainerLow,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    ),
+  );
+}
+
+GoRouter createRouter({String initialLocation = '/'}) {
+  final contentNavigator = GlobalKey<NavigatorState>();
+  return GoRouter(
+    initialLocation: initialLocation,
+    routes: [
+      // Keep global controls below the navigator's already-owned overlay.
+      ShellRoute(
+        navigatorKey: contentNavigator,
+        builder: (context, state, child) => _MainNavigation(
+          path: state.uri.path,
+          resetPages: () =>
+              contentNavigator.currentState?.popUntil((route) => route.isFirst),
+          child: child,
+        ),
+        routes: [
+          GoRoute(
+            path: '/quizipedia',
+            builder: (context, _) =>
+                QuizipediaPage(onExit: () => context.go('/library')),
+          ),
+          GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
+          GoRoute(
+            path: '/study/:moduleId/practice',
+            builder: (_, state) =>
+                StudyPracticePage(moduleId: state.pathParameters['moduleId']!),
+          ),
+          GoRoute(
+            path: '/study/:moduleId',
+            builder: (_, state) =>
+                StudyArticlePage(moduleId: state.pathParameters['moduleId']!),
+          ),
+          GoRoute(
+            path: '/library',
+            builder: (_, state) => DiscoveryPage(
+              folder: state.uri.queryParameters['folder'] ?? '',
+              query: state.uri.queryParameters['q'] ?? '',
+              difficulty: difficultyBandFromWire(
+                state.uri.queryParameters['difficulty'],
+              ),
+            ),
+          ),
+          GoRoute(path: '/', builder: (_, _) => const CatalogPage()),
+          GoRoute(
+            path: '/quiz/:quizId',
+            builder: (_, state) => CatalogPage(
+              key: ValueKey(state.uri.toString()),
+              quizId: state.pathParameters['quizId']!,
+              round: state.uri.queryParameters.containsKey('round')
+                  ? int.tryParse(state.uri.queryParameters['round']!) ?? -1
+                  : null,
+              difficulty: difficultyBandFromWire(
+                state.uri.queryParameters['difficulty'],
+              ),
+            ),
+          ),
+          GoRoute(path: '/gallery', builder: (_, _) => const GalleryPage()),
+          GoRoute(path: '/history', builder: (_, _) => const HistoryPage()),
+          GoRoute(
+            path: '/feedback',
+            builder: (_, _) => const FeedbackAdminPage(),
+          ),
+          GoRoute(
+            path: '/join/:inviteToken',
+            builder: (_, state) =>
+                JoinPage(token: state.pathParameters['inviteToken']!),
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
 class _MainNavigation extends StatelessWidget {
-  const _MainNavigation({required this.path, required this.child});
+  const _MainNavigation({
+    required this.path,
+    required this.child,
+    required this.resetPages,
+  });
+  final VoidCallback resetPages;
   final String path;
   final Widget child;
   @override
@@ -190,9 +240,15 @@ class _MainNavigation extends StatelessWidget {
                   : path.startsWith('/study')
                   ? 2
                   : 1,
-              onDestinationSelected: (index) => context.go(
-                const ['/quizipedia', '/library', '/study'][index],
-              ),
+              onDestinationSelected: (index) {
+                resetPages();
+                final target = const [
+                  '/quizipedia',
+                  '/library',
+                  '/study',
+                ][index];
+                if (path != target) context.go(target);
+              },
               destinations: [
                 NavigationDestination(
                   icon: const Icon(Icons.public),
@@ -425,7 +481,7 @@ class _QuestionCardState extends State<QuestionCard> {
                 onChanged: disabled ? null : (id) => _selectSingle(id!),
                 title: Text(
                   option.text,
-                  style: compact ? const TextStyle(fontSize: 16) : null,
+                  style: TextStyle(fontSize: compact ? 16 : null, color: Theme.of(context).colorScheme.onSurface),
                 ),
               ),
             ),
@@ -448,7 +504,7 @@ class _QuestionCardState extends State<QuestionCard> {
                 onChanged: disabled ? null : (_) => _toggleMultiple(option.id),
                 title: Text(
                   option.text,
-                  style: compact ? const TextStyle(fontSize: 16) : null,
+                  style: TextStyle(fontSize: compact ? 16 : null, color: Theme.of(context).colorScheme.onSurface),
                 ),
               ),
             ),
@@ -646,10 +702,10 @@ class _ChoiceControlState extends State<_ChoiceControl> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: widget.correct == true
-              ? const Color(0xffe2f3df)
+              ? Theme.of(context).colorScheme.tertiaryContainer
               : widget.correct == false && widget.selected
-              ? const Color(0xffffe2df)
-              : const Color(0x55fff7ee),
+              ? Theme.of(context).colorScheme.errorContainer
+              : Theme.of(context).colorScheme.surfaceContainerLow,
           border: Border.all(
             color: widget.correct == true
                 ? const Color(0xff81c784)
@@ -657,7 +713,7 @@ class _ChoiceControlState extends State<_ChoiceControl> {
                 ? const Color(0xffcf7770)
                 : _focused || widget.selected
                 ? Theme.of(context).colorScheme.primary
-                : const Color(0xffe0cdbc),
+                : Theme.of(context).colorScheme.outlineVariant,
             width: 1.2,
           ),
           borderRadius: BorderRadius.circular(16),

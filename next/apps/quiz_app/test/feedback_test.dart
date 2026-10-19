@@ -51,7 +51,7 @@ void main() {
       await tester.tap(find.widgetWithText(ActionChip, name));
       await tester.pumpAndSettle();
       final footerName = find.descendant(
-        of: find.byKey(const Key('map-details')),
+        of: find.byKey(const Key('country-selected-details')),
         matching: find.text(name),
       );
       await tester.ensureVisible(footerName);

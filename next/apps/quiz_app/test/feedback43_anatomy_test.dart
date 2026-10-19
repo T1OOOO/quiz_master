@@ -143,6 +143,30 @@ void main() {
   });
 
   testWidgets(
+    'major illustrated organs are all selectable before browsing the directory',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: OrganAtlasPage(bundle: _Bundle()),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-map-target-brain')), findsOneWidget);
+      expect(find.byKey(const Key('organ-map-target-heart')), findsOneWidget);
+      expect(find.byKey(const Key('organ-map-target-liver')), findsOneWidget);
+      expect(find.byKey(const Key('organ-directory')), findsOneWidget);
+      expect(find.byKey(const Key('organ-list-skeleton')), findsNothing);
+      await tester.tap(find.byKey(const Key('organ-map-target-heart')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
+      expect(find.text('Сердце'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
     'Russian atlas labels groups, searches Latin, and keeps unanchored groups honest',
     (tester) async {
       await tester.pumpWidget(
@@ -155,15 +179,17 @@ void main() {
       );
       await tester.pumpAndSettle();
 
+      await tester.ensureVisible(find.byKey(const Key('organ-filters')));
       await tester.tap(find.byKey(const Key('organ-filters')));
       await tester.pumpAndSettle();
       expect(find.text('Группа костей'), findsOneWidget);
       expect(find.text('Отдел мозга'), findsOneWidget);
 
+      await tester.ensureVisible(find.byKey(const Key('organ-search')));
       await tester.enterText(find.byKey(const Key('organ-search')), 'skeleton');
       await tester.pump();
       expect(find.byKey(const Key('organ-list-skeleton')), findsOneWidget);
-    await tester.ensureVisible(find.byKey(const Key('organ-list-skeleton')));
+      await tester.ensureVisible(find.byKey(const Key('organ-list-skeleton')));
       await tester.tap(find.byKey(const Key('organ-list-skeleton')));
       await tester.pumpAndSettle();
       expect(find.text('Костей в группе: 206'), findsOneWidget);

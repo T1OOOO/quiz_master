@@ -145,11 +145,17 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
     final compact = MediaQuery.sizeOf(context).height < 720;
     return SourceScaffold(
       compact: compact,
-      backgroundAsset: widget.folder.isEmpty
-          ? null
-          : categoryCoverAsset(widget.folder),
       body: catalog.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 16),
+              Text(l10n.loading),
+            ],
+          ),
+        ),
         error: (_, _) => Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -169,8 +175,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
           for (final pack in packs) {
             if (pack.questions < 20) continue;
             if (widget.difficulty != null &&
-                (pack.count(widget.difficulty!) ?? 0) <
-                    20) {
+                (pack.count(widget.difficulty!) ?? 0) < 20) {
               continue;
             }
             if (query.isNotEmpty) {
@@ -205,19 +210,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                     children: [
                       Text(
                         l10n.catalogInventory(
+                          packs.where((pack) => pack.questions >= 20).length,
                           packs
-                              .where(
-                                (pack) =>
-                                    pack.questions >=
-                                    20,
-                              )
-                              .length,
-                          packs
-                              .where(
-                                (pack) =>
-                                    pack.questions >=
-                                    20,
-                              )
+                              .where((pack) => pack.questions >= 20)
                               .fold(0, (total, pack) => total + pack.questions),
                         ),
                       ),
@@ -278,7 +273,10 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                       if (sortedFolders.isNotEmpty) ...[
                         Text(
                           l10n.categories,
-                          style: const TextStyle(color: _cream, fontSize: 18),
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 18,
+                          ),
                         ),
                         const SizedBox(height: 12),
                         LayoutBuilder(

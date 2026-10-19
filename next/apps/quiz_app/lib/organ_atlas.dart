@@ -96,21 +96,6 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   }
 
   OrganAtlas? _loadedAtlas;
-  void _fit() {
-    final width = MediaQuery.sizeOf(context).width - 32;
-    final scale = (width / 300).clamp(.6, 1.0);
-    setState(
-      () => _camera.value = Matrix4.identity()
-        ..translateByDouble(
-          (width - 300 * scale) / 2,
-          (430 - 430 * scale) / 2,
-          0,
-          1,
-        )
-        ..scaleByDouble(scale, scale, 1, 1),
-    );
-  }
-
   List<OrganStructure> _visible(OrganAtlas atlas) {
     final query = _search.text.trim().toLowerCase();
     return atlas.organs.where((item) {
@@ -229,46 +214,66 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
         atlas.organs.expand((item) => item.systemIds).toSet().toList()..sort();
     final kinds = atlas.organs.map((item) => item.kind).toSet().toList()
       ..sort();
+    final searching =
+        _search.text.trim().isNotEmpty ||
+        _region.isNotEmpty ||
+        _system.isNotEmpty ||
+        _kind.isNotEmpty;
+    final rows = [
+      for (final item in shown)
+        ListTile(
+          key: Key('organ-list-${item.id}'),
+          title: Text(_name(item)),
+          subtitle: Text(_filterLabel(context, item.kind)),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => _select(item),
+        ),
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(_t('Human organs and glands', 'Атлас органов и желёз')),
+        title: Text(_t('Human anatomy', 'Органы и системы')),
         actions: [
           FactPracticeAction(scope: 'organs', bundle: widget.bundle),
-          TextButton.icon(
+          IconButton(
+            tooltip: _t('Anatomy questions', 'Вопросы об органах'),
             onPressed: () => _start(atlas, shown),
             icon: const Icon(Icons.quiz_outlined),
-            label: Text(_t('Practice', 'Тренировка')),
           ),
         ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           key: const Key('organ-scroll'),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  tooltip: _t('Atlas scope', 'О схеме'),
-                  icon: const Icon(Icons.info_outline),
-                  onPressed: () => showDialog<void>(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text(_t('About this atlas', 'О схеме')),
-                      content: Text(
-                        '${_v(atlas.coverageNoteEn, atlas.coverageNoteRu)}\n\n${_t('Anterior overview only. The patient’s right is on your left. Deep, paired and distributed structures are represented by their sourced cards rather than invented surface anchors.', 'Только обзор спереди: правая сторона пациента слева от вас. Глубокие, парные и распределённые структуры показаны в карточках с источниками, без выдуманных поверхностных точек.')}',
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Text(_t('Close', 'Закрыть')),
-                        ),
-                      ],
-                    ),
+              _BodyMap(
+                controller: _camera,
+                organs: shown,
+                selected: _selected,
+                name: _name,
+                onSelected: _select,
+              ),
+              Wrap(
+                alignment: WrapAlignment.center,
+                children: [
+                  IconButton(
+                    tooltip: _t('Zoom in', 'Увеличить'),
+                    icon: const Icon(Icons.add),
+                    onPressed: () => _zoom(1.25),
                   ),
-                ),
+                  IconButton(
+                    tooltip: _t('Zoom out', 'Уменьшить'),
+                    icon: const Icon(Icons.remove),
+                    onPressed: () => _zoom(.8),
+                  ),
+                  TextButton.icon(
+                    onPressed: _reset,
+                    icon: const Icon(Icons.center_focus_strong),
+                    label: Text(_t('Fit', 'Вся схема')),
+                  ),
+                ],
               ),
               const SizedBox(height: 12),
               TextField(
@@ -276,23 +281,15 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                 controller: _search,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  border: const OutlineInputBorder(),
                   labelText: _t(
-                    'Search organs, glands and systems',
-                    'Поиск костей, органов и систем',
+                    'Search organs, glands and bones',
+                    'Найти орган, железу или кость',
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
               ExpansionTile(
                 key: const Key('organ-filters'),
-                title: Text(
-                  _t(
-                    'Filter by region, system or type',
-                    'Фильтры: область, система, тип',
-                  ),
-                ),
-                tilePadding: EdgeInsets.zero,
+                title: Text(_t('Filters', 'Фильтры')),
                 children: [
                   _Filters(
                     label: _t('Region', 'Область'),
@@ -314,73 +311,47 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              _BodyMap(
-                controller: _camera,
-                organs: shown,
-                selected: _selected,
-                name: _name,
-                onSelected: _select,
-              ),
-              Wrap(
-                children: [
-                  IconButton(
-                    tooltip: _t('Zoom in', 'Увеличить'),
-                    icon: const Icon(Icons.add),
-                    onPressed: () => _zoom(1.25),
-                  ),
-                  IconButton(
-                    tooltip: _t('Zoom out', 'Уменьшить'),
-                    icon: const Icon(Icons.remove),
-                    onPressed: () => _zoom(.8),
-                  ),
-                  TextButton.icon(
-                    onPressed: _fit,
-                    icon: const Icon(Icons.center_focus_strong),
-                    label: Text(_t('Fit', 'Вписать')),
-                  ),
-                  TextButton.icon(
-                    onPressed: _reset,
-                    icon: const Icon(Icons.replay),
-                    label: Text(_t('Reset', 'Сбросить')),
-                  ),
-                ],
-              ),
-              Text(
-                _t(
-                  'Pinch to zoom and drag the diagram. Selecting a structure never moves the camera.',
-                  'Масштабируйте щипком и перетаскивайте схему. Выбор структуры не меняет камеру.',
-                ),
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                _t('Accessible list', 'Доступный список'),
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
               if (shown.isEmpty)
                 Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(16),
                   child: Text(
-                    _t('No matching structures.', 'Нет подходящих структур.'),
+                    _t('No matching structures.', 'Ничего не найдено.'),
                   ),
                 ),
-              for (final item in shown)
-                Padding(
-                  padding: const EdgeInsets.only(top: 6),
-                  child: OutlinedButton(
-                    key: Key('organ-list-${item.id}'),
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size(44, 48),
-                      alignment: Alignment.centerLeft,
-                      backgroundColor: _selected?.id == item.id
-                          ? Theme.of(context).colorScheme.secondaryContainer
-                          : null,
+              if (searching)
+                ...rows
+              else
+                ExpansionTile(
+                  key: const Key('organ-directory'),
+                  title: Text(_t('All structures', 'Все структуры')),
+                  subtitle: Text(
+                    _t(
+                      'Organs, glands, bones and brain regions',
+                      'Органы, железы, кости и отделы мозга',
                     ),
-                    onPressed: () => _select(item),
-                    child: Text(_name(item)),
+                  ),
+                  trailing: Text('${shown.length}'),
+                  children: rows,
+                ),
+              TextButton.icon(
+                icon: const Icon(Icons.info_outline),
+                label: Text(_t('About the diagram', 'О схеме и источниках')),
+                onPressed: () => showDialog<void>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(_t('About this atlas', 'О схеме')),
+                    content: Text(
+                      _v(atlas.coverageNoteEn, atlas.coverageNoteRu),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(_t('Close', 'Закрыть')),
+                      ),
+                    ],
                   ),
                 ),
+              ),
             ],
           ),
         ),
@@ -635,120 +606,146 @@ class _BodyMap extends StatefulWidget {
 }
 
 class _BodyMapState extends State<_BodyMap> {
+  // Positions refer to the visible organs in the anterior overview image.
   static const _illustratedAnchors = <String, Offset>{
-    'brain': Offset(147, 28),
-    'thyroid': Offset(150, 114),
-    'lungs': Offset(150, 172),
-    'heart': Offset(162, 189),
-    'liver': Offset(126, 228),
-    'stomach': Offset(171, 237),
+    'brain': Offset(150, 28),
+    'thyroid': Offset(150, 118),
+    'lungs': Offset(112, 172),
+    'heart': Offset(165, 195),
+    'liver': Offset(120, 234),
+    'stomach': Offset(177, 250),
   };
-
   @override
   Widget build(BuildContext context) {
     final ru = Localizations.localeOf(context).languageCode == 'ru';
-    if (widget.organs.isEmpty) return const SizedBox.shrink();
-    final focused =
-        widget.selected != null &&
-            widget.organs.any((item) => item.id == widget.selected!.id)
-        ? widget.selected!
-        : widget.organs.firstWhere(
-            (item) => _illustratedAnchors.containsKey(item.id),
-            orElse: () => widget.organs.first,
-          );
-    final anchor = _illustratedAnchors[focused.id];
+    final targets = [
+      for (final id in _illustratedAnchors.keys)
+        ...widget.organs.where((item) => item.id == id),
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
           ru
-              ? 'Выберите структуру: карточка покажет точку на схеме, если она есть.'
-              : 'Choose a structure. Its card focuses the diagram when a location is available.',
-        ),
-        const SizedBox(height: 8),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (final item in widget.organs)
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(
-                    key: Key('organ-map-card-${item.id}'),
-                    label: Text(widget.name(item)),
-                    selected: item.id == focused.id,
-                    onSelected: (_) => widget.onSelected(item),
-                  ),
-                ),
-            ],
-          ),
+              ? 'Нажмите на орган на схеме или выберите его название.'
+              : 'Tap an organ on the diagram or choose its name.',
         ),
         const SizedBox(height: 8),
         SizedBox(
-          height: 430,
+          height: (MediaQuery.sizeOf(context).height * .55).clamp(300.0, 450.0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: ColoredBox(
-              color: Theme.of(context).colorScheme.surfaceContainerLow,
-              child: InteractiveViewer(
-                key: const Key('organ-map'),
-                transformationController: widget.controller,
-                minScale: .6,
-                maxScale: 5,
-                constrained: false,
-                boundaryMargin: const EdgeInsets.all(120),
-                child: SizedBox(
-                  width: 300,
-                  height: 430,
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        'assets/quizipedia/anatomy-orientation.png',
-                        width: 300,
-                        height: 430,
-                        fit: BoxFit.cover,
-                        semanticLabel: ru
-                            ? 'Ориентационный вид спереди'
-                            : 'Anterior orientation view',
-                      ),
-                      if (anchor != null)
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final scale = (box.maxWidth / 300).clamp(
+                  0.0,
+                  box.maxHeight / 450,
+                );
+                final left = (box.maxWidth - 300 * scale) / 2;
+                final top = (box.maxHeight - 450 * scale) / 2;
+                return InteractiveViewer(
+                  key: const Key('organ-map'),
+                  transformationController: widget.controller,
+                  minScale: .6,
+                  maxScale: 5,
+                  boundaryMargin: const EdgeInsets.all(120),
+                  child: SizedBox(
+                    width: box.maxWidth,
+                    height: box.maxHeight,
+                    child: Stack(
+                      children: [
                         Positioned(
-                          left: anchor.dx - 22,
-                          top: anchor.dy - 22,
-                          width: 44,
-                          height: 44,
-                          child: Tooltip(
-                            message: widget.name(focused),
-                            child: FilledButton(
-                              key: Key('organ-map-target-${focused.id}'),
-                              onPressed: () => widget.onSelected(focused),
-                              style: FilledButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                shape: const CircleBorder(),
-                              ),
-                              child: const Icon(Icons.ads_click, size: 20),
-                            ),
-                          ),
-                        )
-                      else
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(32),
-                            child: Text(
-                              ru
-                                  ? 'Для этой структуры нет точки на обзорной иллюстрации. Откройте карточку с источниками.'
-                                  : 'This structure has no point on the orientation illustration. Open its sourced card.',
-                              textAlign: TextAlign.center,
-                            ),
+                          left: left,
+                          top: top,
+                          width: 300 * scale,
+                          height: 450 * scale,
+                          child: Image.asset(
+                            'assets/quizipedia/anatomy-orientation.png',
+                            fit: BoxFit.contain,
+                            semanticLabel: ru
+                                ? 'Схема органов: вид спереди'
+                                : 'Anterior organ overview',
                           ),
                         ),
-                    ],
+                        for (var i = 0; i < targets.length; i++)
+                          Positioned(
+                            left:
+                                left +
+                                _illustratedAnchors[targets[i].id]!.dx * scale -
+                                22,
+                            top:
+                                top +
+                                _illustratedAnchors[targets[i].id]!.dy * scale -
+                                22,
+                            width: 44,
+                            height: 44,
+                            child: Tooltip(
+                              message: widget.name(targets[i]),
+                              child: Semantics(
+                                label: widget.name(targets[i]),
+                                child: IconButton(
+                                  key: Key('organ-map-target-${targets[i].id}'),
+                                  onPressed: () =>
+                                      widget.onSelected(targets[i]),
+                                  padding: EdgeInsets.zero,
+                                  icon: Container(
+                                    width: 24,
+                                    height: 24,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primaryContainer,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      '${i + 1}',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimaryContainer,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ),
         ),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 4,
+          runSpacing: 4,
+          children: [
+            for (var i = 0; i < targets.length; i++)
+              TextButton(
+                key: Key('organ-map-card-${targets[i].id}'),
+                onPressed: () => widget.onSelected(targets[i]),
+                child: Text('${i + 1}. ${widget.name(targets[i])}'),
+              ),
+          ],
+        ),
+        if (widget.selected != null &&
+            !_illustratedAnchors.containsKey(widget.selected!.id))
+          Text(
+            ru
+                ? '${widget.name(widget.selected!)}: расположение и функции — в карточке ниже.'
+                : '${widget.name(widget.selected!)}: see the card for location and function.',
+          ),
       ],
     );
   }

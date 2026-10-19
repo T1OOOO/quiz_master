@@ -22,18 +22,17 @@ void main() {
     );
   });
 
-  testWidgets('category library uses its current category cover as background', (
-    tester,
-  ) async {
-    await _pumpLibrary(
-      tester,
-      '/library?folder=%D0%93%D0%B5%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F',
-    );
-
-    final background = find.byKey(const Key('source-background'));
-    final image = tester.widget<Image>(background);
-    expect(_assetName(image), 'assets/categories/geography.jpg');
-  });
+  testWidgets(
+    'library keeps category artwork on cards, away from reading surfaces',
+    (tester) async {
+      await _pumpLibrary(
+        tester,
+        '/library?folder=%D0%93%D0%B5%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F',
+      );
+      expect(find.byKey(const Key('source-background')), findsNothing);
+      expect(find.text('Compact pack'), findsNothing);
+    },
+  );
 }
 
 Future<void> _pumpLibrary(WidgetTester tester, String location) async {
@@ -59,13 +58,4 @@ Future<void> _pumpLibrary(WidgetTester tester, String location) async {
     ),
   );
   await tester.pumpAndSettle();
-}
-
-String? _assetName(Image image) {
-  final provider = image.image;
-  if (provider is AssetImage) return provider.assetName;
-  if (provider is ResizeImage && provider.imageProvider is AssetImage) {
-    return (provider.imageProvider as AssetImage).assetName;
-  }
-  return null;
 }

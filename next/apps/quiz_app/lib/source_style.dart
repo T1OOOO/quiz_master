@@ -1,65 +1,22 @@
 part of 'main.dart';
 
-const _cream = Color(0xffe7d8c4);
-
 class SourceScaffold extends ConsumerWidget {
   const SourceScaffold({
     super.key,
     required this.body,
     this.compact = false,
     this.backLocation,
-    this.backgroundAsset,
   });
   final Widget body;
   final bool compact;
   final String? backLocation;
-  final String? backgroundAsset;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     return Stack(
       children: [
-        Positioned.fill(
-          child: Image.asset(
-            backgroundAsset ?? 'assets/library-bg-v1.png',
-            key: const Key('source-background'),
-            fit: BoxFit.cover,
-            cacheWidth: 1024,
-            excludeFromSemantics: true,
-          ),
-        ),
-        const Positioned.fill(child: ColoredBox(color: Color(0x66122f31))),
         Theme(
-          data: _theme(Brightness.light).copyWith(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff2d7d7b),
-              surface: const Color(0xffedf1e8),
-            ),
-            scaffoldBackgroundColor: Colors.transparent,
-            textTheme: _theme(Brightness.light).textTheme.apply(
-              bodyColor: const Color(0xff193b3c),
-              displayColor: const Color(0xff193b3c),
-            ),
-            cardTheme: CardThemeData(
-              color: const Color(0xffedf1e8),
-              elevation: 2,
-              shadowColor: const Color(0x38122f31),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(27),
-                side: const BorderSide(color: Color(0xffd4e4dc), width: 2),
-              ),
-            ),
-            inputDecorationTheme: InputDecorationTheme(
-              filled: true,
-              fillColor: const Color(0xffedf1e8),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(foregroundColor: _cream),
-            ),
-          ),
+          data: Theme.of(context),
           child: Scaffold(
             drawer: Drawer(
               child: SafeArea(
@@ -174,7 +131,10 @@ class SourceScaffold extends ConsumerWidget {
                                   ).toString(),
                                 );
                               },
-                              icon: const Icon(Icons.arrow_back, color: _cream),
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                             ),
                             IconButton(
                               key: const Key('nav-home'),
@@ -185,9 +145,9 @@ class SourceScaffold extends ConsumerWidget {
                                   ? 'Домой'
                                   : 'Home',
                               onPressed: () => context.go('/library'),
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.home_outlined,
-                                color: _cream,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                             Expanded(
@@ -197,7 +157,9 @@ class SourceScaffold extends ConsumerWidget {
                                   Text(
                                     'Quiz Master',
                                     style: TextStyle(
-                                      color: _cream,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface,
                                       fontSize: compact ? 17 : 24,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -211,7 +173,12 @@ class SourceScaffold extends ConsumerWidget {
                                     .openAppDrawerTooltip,
                                 onPressed: () =>
                                     Scaffold.of(context).openDrawer(),
-                                icon: const Icon(Icons.menu, color: _cream),
+                                icon: Icon(
+                                  Icons.menu,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface,
+                                ),
                               ),
                             ),
                           ],
@@ -221,7 +188,9 @@ class SourceScaffold extends ConsumerWidget {
                   ),
                   Expanded(
                     child: DefaultTextStyle.merge(
-                      style: const TextStyle(color: _cream),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                       child: body,
                     ),
                   ),
@@ -251,10 +220,10 @@ class SourceFolderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color(0xffedf1e8),
+      color: Theme.of(context).colorScheme.surfaceContainerLow,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-        side: const BorderSide(color: Color(0xffd4e4dc), width: 2),
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -279,7 +248,7 @@ class SourceFolderCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Color(0xff193b3c),
+                  color: Theme.of(context).colorScheme.onSurface,
                   fontSize: coverHeight < 112 ? 14 : 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -294,10 +263,10 @@ class SourceFolderCard extends StatelessWidget {
 
 String categoryCoverAsset(String category) {
   const topicCovers = {
-    'География/Столицы': 'assets/categories/geography-capitals.png',
-    'География/Флаги': 'assets/categories/geography-flags.png',
-    'Мифология/Греция': 'assets/categories/mythology-greece.png',
-    'История/Искусство': 'assets/categories/history-art.png',
+    'География/Столицы': 'assets/categories/geography-capitals-cover.webp',
+    'География/Флаги': 'assets/categories/geography-flags-cover.webp',
+    'Мифология/Греция': 'assets/categories/mythology-greece-cover.webp',
+    'История/Искусство': 'assets/categories/history-art-cover.webp',
   };
   for (final entry in topicCovers.entries) {
     if (category == entry.key || category.startsWith('${entry.key}/')) {

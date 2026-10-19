@@ -49,14 +49,13 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
       ..sort(
         (a, b) => (a['name_en'] as String).compareTo(b['name_en'] as String),
       );
-    _search.addListener(_onSearchChanged);
+    final orion = _constellations.indexWhere((row) => row['id'] == 'ori');
+    if (orion >= 0) _selectedIndex = orion;
   }
 
   @override
   void dispose() {
-    _search
-      ..removeListener(_onSearchChanged)
-      ..dispose();
+    _search.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -74,7 +73,53 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
     return '${row['name_en']} ${row['name_ru']}'.toLowerCase().contains(_query);
   }).toList();
 
-  void _onSearchChanged() => setState(() {});
+  Future<void> _choose() async {
+    _search.clear();
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (context, update) => SafeArea(
+          child: SizedBox(
+            height: MediaQuery.sizeOf(context).height * .78,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  TextField(
+                    key: const Key('constellation-search'),
+                    controller: _search,
+                    decoration: InputDecoration(
+                      labelText: _t('Find a constellation', 'Найти созвездие'),
+                      prefixIcon: const Icon(Icons.search),
+                    ),
+                    onChanged: (_) => update(() {}),
+                  ),
+                  const SizedBox(height: 8),
+                  Expanded(
+                    child: _ConstellationPicker(
+                      rows: _matches,
+                      selected: _selected['id'] as String,
+                      name: _name,
+                      onSelected: (row) {
+                        _select(row);
+                        Navigator.pop(sheetContext);
+                      },
+                      emptyLabel: _t(
+                        'No matching constellations',
+                        'Созвездия не найдены',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   void _select(Map<String, dynamic> row) {
     setState(() {
@@ -130,9 +175,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
   Widget build(BuildContext context) {
     if (_constellations.isEmpty) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(_t('Constellation atlas', 'Атлас созвездий')),
-        ),
+        appBar: AppBar(title: Text(_t('Constellations', 'Созвездия'))),
         body: Center(
           child: Text(_t('No constellation data', 'Нет данных о созвездиях')),
         ),
@@ -143,7 +186,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
     final lines = (row['lines'] as List).cast<List>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(_t('Constellation atlas', 'Атлас созвездий')),
+        title: Text(_t('Constellations', 'Созвездия')),
         actions: [
           const FactPracticeAction(scope: 'sky'),
           IconButton(
@@ -165,46 +208,13 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                _t('Explore · local unranked', 'Изучение · без рейтинга'),
-                style: Theme.of(context).textTheme.labelLarge,
+              OutlinedButton.icon(
+                key: const Key('constellation-choose'),
+                onPressed: _choose,
+                icon: const Icon(Icons.search),
+                label: Text(_name(row)),
               ),
-              const SizedBox(height: 8),
-              TextField(
-                key: const Key('constellation-search'),
-                controller: _search,
-                textInputAction: TextInputAction.search,
-                decoration: InputDecoration(
-                  labelText: _t('Find a constellation', 'Найти созвездие'),
-                  prefixIcon: const Icon(Icons.search),
-                  border: const OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 8),
-              _ConstellationPicker(
-                rows: _matches,
-                selected: row['id'] as String,
-                name: _name,
-                onSelected: _select,
-                emptyLabel: _t(
-                  'No matching constellations',
-                  'Созвездия не найдены',
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                _name(row),
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: 8),
-              _SkyControls(
-                names: _showNames,
-                lines: _showLines,
-                russian: _russian,
-                onNamesChanged: (value) => setState(() => _showNames = value),
-                onLinesChanged: (value) => setState(() => _showLines = value),
-              ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               _ConstellationCanvas(
                 controller: _controller,
                 stars: stars,
@@ -223,12 +233,12 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                 onReset: _reset,
                 russian: _russian,
               ),
-              Text(
-                _t(
-                  'Pinch to zoom, drag to move, or double-tap where you want to inspect.',
-                  'Сводите пальцы для масштаба, перетаскивайте карту или дважды коснитесь нужного места.',
-                ),
-                style: Theme.of(context).textTheme.bodySmall,
+              _SkyControls(
+                names: _showNames,
+                lines: _showLines,
+                russian: _russian,
+                onNamesChanged: (value) => setState(() => _showNames = value),
+                onLinesChanged: (value) => setState(() => _showLines = value),
               ),
               const SizedBox(height: 12),
               _StarList(
@@ -297,23 +307,20 @@ class _ConstellationPicker extends StatelessWidget {
     if (rows.isEmpty) {
       return Padding(padding: const EdgeInsets.all(8), child: Text(emptyLabel));
     }
-    return SizedBox(
-      height: 52,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: rows.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 8),
-        itemBuilder: (context, index) {
-          final row = rows[index];
-          final id = row['id'] as String;
-          return ChoiceChip(
-            key: Key('constellation-option-$id'),
-            label: Text(name(row), overflow: TextOverflow.ellipsis),
-            selected: id == selected,
-            onSelected: (_) => onSelected(row),
-          );
-        },
-      ),
+    final sorted = [...rows]..sort((a, b) => name(a).compareTo(name(b)));
+    return ListView.builder(
+      itemCount: sorted.length,
+      itemBuilder: (context, index) {
+        final row = sorted[index];
+        final id = row['id'] as String;
+        return ListTile(
+          key: Key('constellation-option-$id'),
+          title: Text(name(row)),
+          selected: id == selected,
+          trailing: id == selected ? const Icon(Icons.check) : null,
+          onTap: () => onSelected(row),
+        );
+      },
     );
   }
 }

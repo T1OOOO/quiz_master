@@ -58,10 +58,6 @@ void main() {
         expect(rect.height, greaterThanOrEqualTo(48));
         expect(rect.bottom, lessThanOrEqualTo(504));
       }
-      final hint = find.text(
-        'Перетаскивайте · сближайте пальцы · двойное касание для зума',
-      );
-      expect(tester.getRect(hint).bottom, lessThanOrEqualTo(504));
       final map = tester.widget<QuizipediaWorldMap>(
         find.byType(QuizipediaWorldMap),
       );

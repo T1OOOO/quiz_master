@@ -668,7 +668,9 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               ),
             ),
             const SizedBox(height: 16),
-            for (final module in _Module.values)
+            for (final module in _Module.values.where(
+              (module) => module != _Module.anatomy,
+            ))
               _themeCard(
                 title: _moduleTitle(context, module),
                 practiceScope: switch (module) {
@@ -809,8 +811,8 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   'culture' || 'people' => 'assets/categories/cinema.jpg',
                   'brands' => 'assets/categories/history.jpg',
                   'food' => 'assets/categories/food.jpg',
-                  'greek' ||
-                  'religions' => 'assets/categories/mythology-greece.png',
+                  'greek' || 'religions' =>
+                    'assets/categories/mythology-greece-cover.webp',
                   _ => null,
                 },
                 title: switch (section) {
@@ -1961,6 +1963,7 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.focusTarget,
     this.overlayLabels = const {},
     this.showFlags = false,
+    this.showSelectionLabel = true,
   });
   final List<QuizipediaFeature> features;
   final TransformationController controller;
@@ -1972,7 +1975,7 @@ class QuizipediaWorldMap extends StatefulWidget {
   /// A search result can request camera focus without revealing a quiz answer.
   final String? focusTarget;
   final Map<String, String> overlayLabels;
-  final bool showFlags;
+  final bool showFlags, showSelectionLabel;
 
   @override
   State<QuizipediaWorldMap> createState() => _QuizipediaWorldMapState();
@@ -1987,9 +1990,60 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   Animation<Matrix4>? _cameraFrames;
   Offset _doubleTapAt = Offset.zero;
 
+  final Map<String, ui.Image> _flags = {};
+  final Set<String> _requestedFlags = {};
+  late final Future<Set<String>> _flagAssets =
+      AssetManifest.loadFromAssetBundle(rootBundle)
+          .then((manifest) => manifest.listAssets().toSet());
+  Future<void> _loadFlags() async {
+    if (!widget.showFlags) return;
+    final assets = await _flagAssets;
+    if (!mounted) return;
+    final pending = widget.features
+        .where(
+          (f) =>
+              assets.contains(
+                'assets/quizipedia/flag-${f.id.toLowerCase()}.png',
+              ) &&
+              _requestedFlags.add(f.id),
+        )
+        .toList();
+    final loaded = await Future.wait(
+      pending.map((feature) async {
+        try {
+          final bytes = await rootBundle.load(
+            'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
+          );
+          final codec = await ui.instantiateImageCodec(
+            bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes),
+            targetWidth: 256,
+            allowUpscaling: false,
+          );
+          try {
+            return MapEntry(feature.id, (await codec.getNextFrame()).image);
+          } finally {
+            codec.dispose();
+          }
+        } on Exception {
+          return null;
+        }
+      }),
+    );
+    if (!mounted) {
+      for (final entry in loaded.nonNulls) {
+        entry.value.dispose();
+      }
+      return;
+    }
+    if (loaded.any((entry) => entry != null)) {
+      setState(() => _flags.addEntries(loaded.nonNulls));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    _loadFlags();
     _camera.addListener(() {
       widget.controller.value = _cameraFrames!.value;
     });
@@ -2003,6 +2057,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   @override
   void didUpdateWidget(covariant QuizipediaWorldMap oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _loadFlags();
     if (widget.focusTarget != null &&
         widget.focusTarget != oldWidget.focusTarget) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -2014,6 +2069,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   @override
   void dispose() {
     _camera.dispose();
+    for (final flag in _flags.values) {
+      flag.dispose();
+    }
     super.dispose();
   }
 
@@ -2176,24 +2234,30 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             0.0,
             bounds(rings.first).height * scene.height * scale,
           );
-          final labelWidth = math.min(72.0, countryWidth - 8);
-          final labelHeight = math.min(30.0, countryHeight - 6);
+          final isSelected = feature.id == widget.selected;
+          final labelWidth = isSelected
+              ? 120.0
+              : math.min(96.0, countryWidth - 6);
+          final labelHeight = isSelected
+              ? 38.0
+              : math.min(32.0, countryHeight - 4);
           if (labelWidth < 28 || labelHeight < 14) continue;
           // A bounding box may span sea or a neighbouring country's enclave.
           // Only show a label when its centre and corners fit the actual land.
           final halfWidth = labelWidth / (2 * scene.width * scale);
           final halfHeight = labelHeight / (2 * scene.height * scale);
           if (!feature.contains(QuizipediaPoint(center.dx, center.dy)) ||
-              [-1, 1].any(
-                (x) => [-1, 1].any(
-                  (y) => !feature.contains(
-                    QuizipediaPoint(
-                      center.dx + x * halfWidth,
-                      center.dy + y * halfHeight,
+              (!isSelected &&
+                  [-1, 1].any(
+                    (x) => [-1, 1].any(
+                      (y) => !feature.contains(
+                        QuizipediaPoint(
+                          center.dx + x * halfWidth,
+                          center.dy + y * halfHeight,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              )) {
+                  ))) {
             continue;
           }
           final rect = Rect.fromCenter(
@@ -2203,8 +2267,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           );
           if (rect.left < 0 ||
               rect.right > _view.width ||
-              rect.top < 58 ||
-              rect.bottom > _view.height - 90 ||
+              rect.top < 8 ||
+              rect.bottom > _view.height - 8 ||
               occupied.any((r) => r.overlaps(rect.inflate(3)))) {
             continue;
           }
@@ -2225,14 +2289,15 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                       )
                     : Text(
                         text,
-                        maxLines: 1,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 10,
+                        style: TextStyle(
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff173f57),
-                          shadows: [Shadow(color: Colors.white, blurRadius: 3)],
+                          color: Theme.of(context).colorScheme.onSurface,
+                          backgroundColor: Theme.of(context).colorScheme.surface
+                              .withValues(alpha: .94),
                         ),
                       ),
               ),
@@ -2280,26 +2345,27 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         ),
       );
       Widget zoomControls() => Material(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(12),
-        child: Row(
+        child: Flex(
+          direction: compactControls ? Axis.horizontal : Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
               tooltip: _t(context, 'Zoom in', 'Увеличить'),
-              icon: const Icon(Icons.add, color: Color(0xff173f57)),
+              icon: const Icon(Icons.add),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               onPressed: () => _zoom(1.5),
             ),
             IconButton(
               tooltip: _t(context, 'Zoom out', 'Уменьшить'),
-              icon: const Icon(Icons.remove, color: Color(0xff173f57)),
+              icon: const Icon(Icons.remove),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               onPressed: () => _zoom(1 / 1.5),
             ),
             IconButton(
               tooltip: _t(context, 'Reset view', 'Весь мир'),
-              icon: const Icon(Icons.public, color: Color(0xff173f57)),
+              icon: const Icon(Icons.public),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               onPressed: () => _moveCamera(Matrix4.identity()),
             ),
@@ -2309,29 +2375,17 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                 'Show selected country',
                 'Показать выбранную страну',
               ),
-              icon: const Icon(
-                Icons.center_focus_strong,
-                color: Color(0xff173f57),
-              ),
+              icon: const Icon(Icons.center_focus_strong),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               onPressed: selected == null ? null : () => _focus(),
             ),
           ],
         ),
       );
-      Widget gestureHint() => IgnorePointer(
-        child: Text(
-          _t(
-            context,
-            'Drag · pinch · double-tap to zoom',
-            'Перетаскивайте · сближайте пальцы · двойное касание для зума',
-          ),
-          textAlign: TextAlign.center,
-          style: const TextStyle(color: Color(0xff173f57), fontSize: 12),
-        ),
-      );
       return ColoredBox(
-        color: const Color(0xffd9edfc),
+        color: Theme.of(context).brightness == Brightness.dark
+            ? const Color(0xff101f2d)
+            : const Color(0xffd9edfc),
         child: Stack(
           children: [
             Positioned.fill(
@@ -2391,6 +2445,12 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                               size: scene,
                               painter: _MapPainter(
                                 features: widget.features,
+                                dark:
+                                    Theme.of(context).brightness ==
+                                    Brightness.dark,
+                                flags: widget.showFlags
+                                    ? Map.of(_flags)
+                                    : const {},
                                 highlighted: widget.highlighted,
                                 selected: widget.selected,
                                 correct: widget.correct,
@@ -2411,28 +2471,14 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                 ),
               ),
             ),
-            Positioned.fill(child: _factLabels(scene)),
-            if (compactControls)
-              Positioned(
-                top: 8,
-                left: 8,
-                right: 8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    selectionLabel(),
-                    const SizedBox(height: 4),
-                    zoomControls(),
-                    const SizedBox(height: 4),
-                    gestureHint(),
-                  ],
-                ),
-              )
-            else ...[
+            Positioned.fill(
+              child: widget.showFlags
+                  ? const SizedBox.shrink()
+                  : _factLabels(scene),
+            ),
+            if (widget.showSelectionLabel)
               Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
-              Positioned(bottom: 32, left: 8, child: zoomControls()),
-              Positioned(bottom: 8, left: 8, right: 8, child: gestureHint()),
-            ],
+            Positioned(bottom: 12, right: 12, child: zoomControls()),
           ],
         ),
       );
@@ -2443,6 +2489,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
 class _MapPainter extends CustomPainter {
   const _MapPainter({
     required this.features,
+    this.flags = const {},
+    this.dark = false,
     required this.highlighted,
     required this.selected,
     required this.correct,
@@ -2452,16 +2500,17 @@ class _MapPainter extends CustomPainter {
     required this.sceneScale,
   });
   final List<QuizipediaFeature> features;
+  final Map<String, ui.Image> flags;
   final String? highlighted, selected, correct;
   final List<String> numbers;
-  final bool showLabels, russian;
+  final bool showLabels, russian, dark;
   final double sceneScale;
 
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawRect(
       Offset.zero & size,
-      Paint()..color = const Color(0xffd9edfc),
+      Paint()..color = dark ? const Color(0xff101f2d) : const Color(0xffd9edfc),
     );
     for (final feature in features) {
       for (final polygon in feature.polygons) {
@@ -2476,27 +2525,65 @@ class _MapPainter extends CustomPainter {
         final fill = feature.id == correct
             ? const Color(0xff3caa70)
             : feature.id == selected
-            ? const Color(0xffffa335)
+            ? const Color(0xff467eaf)
             : feature.id == highlighted
-            ? const Color(0xff8167ce)
-            : const [
-                Color(0xffd6e7b5),
-                Color(0xfff2d7a4),
-                Color(0xffc4dfd0),
-                Color(0xffead2bd),
-                Color(0xffd9d7ec),
-                Color(0xfff2e5b6),
-              ][feature.id.codeUnits.fold<int>(0, (a, b) => a * 31 + b).abs() %
+            ? const Color(0xff537b9a)
+            : (dark
+                  ? const [
+                      Color(0xff253d50),
+                      Color(0xff294756),
+                      Color(0xff354356),
+                      Color(0xff344c51),
+                      Color(0xff354553),
+                      Color(0xff30414c),
+                    ]
+                  : const [
+                      Color(0xffd6e7b5),
+                      Color(0xfff2d7a4),
+                      Color(0xffc4dfd0),
+                      Color(0xffead2bd),
+                      Color(0xffd9d7ec),
+                      Color(0xfff2e5b6),
+                    ])[feature.id.codeUnits
+                      .fold<int>(0, (a, b) => a * 31 + b)
+                      .abs() %
                   6];
         canvas.drawPath(path, Paint()..color = fill);
+        final flag = flags[feature.id];
+        if (flag != null) {
+          canvas.save();
+          canvas.clipPath(path);
+          canvas.drawImageRect(
+            flag,
+            Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
+            path.getBounds(),
+            Paint()..filterQuality = FilterQuality.low,
+          );
+          canvas.restore();
+        }
+      }
+    }
+    for (final feature in [
+      ...features.where((f) => f.id != selected),
+      ...features.where((f) => f.id == selected),
+    ]) {
+      for (final polygon in feature.polygons) {
+        final path = Path()..fillType = PathFillType.evenOdd;
+        for (final ring in polygon) {
+          path.moveTo(ring.first.x * size.width, ring.first.y * size.height);
+          for (final point in ring.skip(1)) {
+            path.lineTo(point.x * size.width, point.y * size.height);
+          }
+          path.close();
+        }
         canvas.drawPath(
           path,
           Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = (feature.id == selected ? 1.2 : .45) / sceneScale
+            ..strokeWidth = (feature.id == selected ? 1.4 : .5) / sceneScale
             ..color = feature.id == selected
-                ? const Color(0xff513408)
-                : const Color(0xff81968b),
+                ? (dark ? const Color(0xff9bceff) : const Color(0xff194b7c))
+                : (dark ? const Color(0xff617b90) : const Color(0xff8296a4)),
         );
       }
     }
@@ -2547,6 +2634,8 @@ class _MapPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _MapPainter old) =>
       features != old.features ||
+      dark != old.dark ||
+      flags != old.flags ||
       highlighted != old.highlighted ||
       selected != old.selected ||
       correct != old.correct ||

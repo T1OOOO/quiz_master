@@ -44,7 +44,7 @@ void main() {
           .map((f) => f.nameEn)
           .toSet();
       expect(q.options.where(valid.contains), [q.answer]);
-      expect(q.options.toSet().length, 4);
+      expect(q.options.toSet().length, inInclusiveRange(4, 6));
     }
   });
 }

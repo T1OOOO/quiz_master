@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_app/l10n/app_localizations.dart';
 import 'package:quiz_app/main.dart';
+import 'package:quiz_app/quizipedia.dart';
 
 void main() {
   testWidgets(
@@ -263,44 +264,45 @@ void main() {
     expect(position.pixels, greaterThan(100));
     expect(tester.takeException(), isNull);
   });
-  testWidgets(
-    'correct overlay advances in two seconds without shifting question',
-    (tester) async {
-      final api = await _QuizTestServer.start();
-      final client = QuizApiClient(baseUri: api.baseUri);
-      client.dio.httpClientAdapter = _QuizTestAdapter(api);
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [quizApiProvider.overrideWithValue(client)],
-          child: const QuizApp(
-            initialLocation: '/quiz/quiz-many',
-            defaultLocale: Locale('en'),
-          ),
+  testWidgets('manual correct feedback leaves the question layout stable', (
+    tester,
+  ) async {
+    final api = await _QuizTestServer.start();
+    final client = QuizApiClient(baseUri: api.baseUri);
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(
+          initialLocation: '/quiz/quiz-many',
+          defaultLocale: Locale('en'),
         ),
-      );
-      await tester.pumpAndSettle();
-      final before = tester.getRect(find.byType(QuestionCard));
-      await tester.tap(find.text('Option 4'));
-      await tester.pumpAndSettle();
-      expect(find.byType(Dialog), findsOneWidget);
-      expect(find.text('Because question 1.'), findsOneWidget);
-      expect(tester.getRect(find.byType(QuestionCard)), before);
-      expect(
-        find.descendant(
-          of: find.byType(QuestionCard),
-          matching: find.text('Correct'),
-        ),
-        findsNothing,
-      );
-      // Dialog entrance has already elapsed during pumpAndSettle.
-      await tester.pump(const Duration(milliseconds: 100));
-      expect(find.text('Question 1'), findsOneWidget);
-      await tester.pump(const Duration(milliseconds: 1900));
-      await tester.pumpAndSettle();
-      expect(find.text('Question 2'), findsOneWidget);
-      expect(api.answerBodies, hasLength(1));
-    },
-  );
+      ),
+    );
+    await tester.pumpAndSettle();
+    final before = tester.getRect(find.byType(QuestionCard));
+    await tester.tap(find.text('Option 4'));
+    await tester.pumpAndSettle();
+    expect(find.byType(Dialog), findsOneWidget);
+    expect(find.text('Because question 1.'), findsOneWidget);
+    expect(tester.getRect(find.byType(QuestionCard)), before);
+    expect(
+      find.descendant(
+        of: find.byType(QuestionCard),
+        matching: find.text('Correct'),
+      ),
+      findsNothing,
+    );
+    // Dialog entrance has already elapsed during pumpAndSettle.
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.text('Question 1'), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 1900));
+    expect(find.text('Question 1'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('feedback-next')));
+    await tester.pumpAndSettle();
+    expect(find.text('Question 2'), findsOneWidget);
+    expect(api.answerBodies, hasLength(1));
+  });
   for (final size in [const Size(390, 640), const Size(1262, 576)]) {
     testWidgets('flag media keeps four choices stable at $size', (
       tester,
@@ -358,9 +360,10 @@ void main() {
   }
 
   testWidgets(
-    'correct feedback waits two seconds, has no continue and resumes',
+    'correct feedback waits for explicit Continue and advances immediately',
     (tester) async {
       final api = await _QuizTestServer.start();
+      addTearDown(api.close);
       final client = QuizApiClient(baseUri: api.baseUri);
       client.dio.httpClientAdapter = _QuizTestAdapter(api);
       await tester.pumpWidget(
@@ -375,27 +378,44 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Option 4'));
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('feedback-next')), findsNothing);
-      expect(
-        find.descendant(
-          of: find.byType(Dialog),
-          matching: find.byIcon(Icons.close),
-        ),
-        findsNothing,
-      );
-      await tester.tap(find.byKey(const Key('auto-pause')));
-      await tester.pump(const Duration(seconds: 4));
-      expect(find.text('Question 1'), findsOneWidget);
+      expect(find.byKey(const Key('feedback-next')), findsOneWidget);
+      expect(find.byKey(const Key('auto-pause')), findsNothing);
+      await tester.pump(const Duration(seconds: 5));
       expect(find.byType(Dialog), findsOneWidget);
-      expect(find.text('Because question 1.'), findsOneWidget);
-      await tester.tap(find.byKey(const Key('auto-resume')));
-      await tester.pump(const Duration(milliseconds: 1900));
       expect(find.text('Question 1'), findsOneWidget);
-      await tester.pump(const Duration(milliseconds: 100));
+      await tester.tap(find.byKey(const Key('feedback-next')));
       await tester.pumpAndSettle();
       expect(find.text('Question 2'), findsOneWidget);
     },
   );
+
+  testWidgets('reselecting Quizipedia closes the open atlas', (tester) async {
+    await tester.pumpWidget(
+      const ProviderScope(child: QuizApp(initialLocation: '/quizipedia')),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    final context = tester.element(find.byType(QuizipediaPage));
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => const Scaffold(body: Text('Nested atlas')),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    expect(find.text('Nested atlas'), findsOneWidget);
+    await tester.tap(
+      find.descendant(
+        of: find.byType(NavigationBar),
+        matching: find.text('Квизипедия'),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.text('Nested atlas'), findsNothing);
+    expect(find.byType(QuizipediaPage), findsOneWidget);
+  });
 
   testWidgets('practice tap checks once, feedback retry does not resubmit', (
     tester,
@@ -421,6 +441,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(api.answerBodies, hasLength(1));
     expect(find.text('Incorrect'), findsWidgets);
+    expect(find.byKey(const Key('feedback-your-answer')), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byKey(const Key('feedback-your-answer')),
+        matching: find.text('Option 1'),
+      ),
+      findsOneWidget,
+    );
     expect(find.text('Because question 1.'), findsOneWidget);
     expect(find.byType(Dialog), findsOneWidget);
     expect(find.byKey(const Key('feedback-next')), findsOneWidget);

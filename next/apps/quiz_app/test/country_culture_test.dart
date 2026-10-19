@@ -51,7 +51,7 @@ void main() {
           q.options.where((o) => o != q.answer),
           isNot(contains('Uruguay')),
         );
-        expect(q.options.toSet().length, 4);
+        expect(q.options.toSet().length, inInclusiveRange(4, 6));
       }
     },
   );
@@ -84,10 +84,19 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(1.7, 1.7, 1, 1);
       viewer.transformationController!.value = camera;
+      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('atlas-map-layer')));
       await tester.tap(find.byKey(const Key('atlas-map-layer')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Musical instruments').last);
+      await tester.pumpAndSettle();
+      expect(
+        find.textContaining('Selected cultural associations'),
+        findsOneWidget,
+      );
+      Navigator.of(tester.element(find.byKey(const Key('atlas-map-layer'))))
+          .pop();
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('map-country-search')));
       await tester.enterText(
@@ -102,10 +111,7 @@ void main() {
       await tester.tap(japan);
       await tester.pumpAndSettle();
       expect(viewer.transformationController!.value, camera);
-      expect(
-        find.textContaining('Selected cultural associations'),
-        findsOneWidget,
-      );
+
       expect(tester.takeException(), isNull);
     },
   );

@@ -1,3 +1,6 @@
+import 'dart:ui' as ui;
+
+import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/country_learning.dart';
@@ -14,6 +17,34 @@ const _catalog = QuizipediaCatalog(
 );
 
 void main() {
+  testWidgets(
+    'country map owns vertical drags and most of the phone viewport',
+    (tester) async {
+      tester.view.physicalSize = const Size(361, 738);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+        );
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 500));
+      });
+      await tester.pumpAndSettle();
+      final map = find.byKey(const Key('quizipedia-viewport'));
+      expect(tester.getSize(map).height, greaterThan(400));
+      final before = tester.getTopLeft(map);
+      final viewer = tester.widget<InteractiveViewer>(map);
+      final camera = viewer.transformationController!.value.clone();
+      await tester.drag(map, const Offset(0, -90));
+      await tester.pumpAndSettle();
+      expect(tester.getTopLeft(map), before);
+      expect(viewer.transformationController!.value, isNot(camera));
+      expect(tester.takeException(), isNull);
+    },
+  );
+
   testWidgets('country picker opens a searchable country sheet on a phone', (
     tester,
   ) async {
@@ -48,19 +79,22 @@ void main() {
       await Future<void>.delayed(const Duration(milliseconds: 500));
     });
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Train 10 questions'));
-    await tester.tap(find.text('Train 10 questions'));
+    await tester.ensureVisible(find.byKey(const Key('country-start-training')));
+    await tester.tap(find.byKey(const Key('country-start-training')));
     await tester.pumpAndSettle();
 
     await tester.tap(find.byType(OutlinedButton).first);
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('quizipedia-feedback')), findsOneWidget);
+    expect(find.textContaining('Your answer:'), findsOneWidget);
+    expect(find.byKey(const Key('country-answer-explanation')), findsOneWidget);
+    expect(find.textContaining('Review the country card'), findsNothing);
     expect(find.text('Next'), findsOneWidget);
     expect(find.text('Check'), findsNothing);
   });
 
   testWidgets(
-    'flag layer renders a compact country raster without moving camera',
+    'flag fills the country outline without leaking into the sea or moving camera',
     (tester) async {
       final controller = TransformationController(
         Matrix4.identity()..translateByDouble(-18, -12, 0, 1),
@@ -85,25 +119,102 @@ void main() {
       final camera = controller.value.clone();
       await tester.pumpWidget(
         MaterialApp(
-          home: SizedBox(
-            width: 320,
-            height: 300,
-            child: QuizipediaWorldMap(
-              features: const [france],
-              controller: controller,
-              onSelect: (_) {},
-              overlayLabels: const {'FR': 'France'},
-              showFlags: true,
+          home: Center(
+            child: RepaintBoundary(
+              key: const Key('flag-boundary'),
+              child: SizedBox(
+                width: 320,
+                height: 300,
+                child: QuizipediaWorldMap(
+                  features: const [
+                    france,
+                    QuizipediaFeature(
+                      id: 'NE-ATA',
+                      nameEn: 'Antarctica',
+                      nameRu: 'Антарктида',
+                      polygons: [],
+                    ),
+                  ],
+                  controller: controller,
+                  onSelect: (_) {},
+                  overlayLabels: const {'FR': 'France'},
+                  showFlags: true,
+                ),
+              ),
             ),
           ),
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('map-country-flag-fr')), findsOneWidget);
+      await tester.runAsync(() async {
+        await Future<void>.delayed(const Duration(milliseconds: 500));
+      });
+      await tester.pumpAndSettle();
+      final boundary = tester.renderObject<RenderRepaintBoundary>(
+        find.byKey(const Key('flag-boundary')),
+      );
+      await tester.runAsync(() async {
+        final image = await boundary.toImage(pixelRatio: 1);
+        final pixels = (await image.toByteData(
+          format: ui.ImageByteFormat.rawRgba,
+        ))!;
+        List<int> rgb(int x, int y) => [
+          for (var i = 0; i < 3; i++)
+            pixels.getUint8((y * image.width + x) * 4 + i),
+        ];
+        final land = rgb(60, 120), sea = rgb(30, 120);
+        expect(land[2], greaterThan(land[0] + 60));
+        expect(sea, rgb(20, 130));
+        expect(sea[0], greaterThan(land[0]));
+        image.dispose();
+      });
       expect(find.text('France'), findsNothing);
       expect(controller.value, camera);
     },
   );
+  testWidgets('a selected small country still shows its chosen fact layer', (
+    tester,
+  ) async {
+    final camera = TransformationController();
+    addTearDown(camera.dispose);
+    const country = QuizipediaFeature(
+      id: 'FR',
+      nameEn: 'France',
+      nameRu: 'Франция',
+      polygons: [
+        [
+          [
+            QuizipediaPoint(.48, .48),
+            QuizipediaPoint(.52, .48),
+            QuizipediaPoint(.52, .52),
+            QuizipediaPoint(.48, .52),
+            QuizipediaPoint(.48, .48),
+          ],
+        ],
+      ],
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Center(
+          child: SizedBox(
+            width: 361,
+            height: 440,
+            child: QuizipediaWorldMap(
+              features: const [country],
+              controller: camera,
+              selected: 'FR',
+              showSelectionLabel: false,
+              overlayLabels: const {'FR': 'Париж'},
+              onSelect: (_) {},
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Париж'), findsOneWidget);
+    expect(camera.value, Matrix4.identity());
+  });
   testWidgets('map omits labels over polygon holes', (tester) async {
     final controller = TransformationController();
     addTearDown(controller.dispose);

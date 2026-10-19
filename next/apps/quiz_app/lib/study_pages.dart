@@ -368,7 +368,9 @@ class StudyLibraryPage extends ConsumerWidget {
                         Text(
                           AppLocalizations.of(context)!.studyLibrary,
                           style: Theme.of(context).textTheme.headlineMedium
-                              ?.copyWith(color: _cream),
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                         ),
                         const SizedBox(height: 8),
                         Text(AppLocalizations.of(context)!.studyIntro),

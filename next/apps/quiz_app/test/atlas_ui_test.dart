@@ -48,6 +48,8 @@ void main() {
       Matrix4.identity(),
       reason: 'Country selection must preserve the user camera.',
     );
+    await tester.tap(find.byKey(const Key('country-selected-details')));
+    await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Official language source'));
     expect(find.text('Official language source'), findsOneWidget);
     expect(tester.takeException(), isNull);
@@ -94,11 +96,13 @@ void main() {
         await Future<void>.delayed(const Duration(milliseconds: 500));
       });
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('Train 10 questions'));
-      await tester.tap(find.text('Train 10 questions'));
+      await tester.ensureVisible(
+        find.byKey(const Key('country-start-training')),
+      );
+      await tester.tap(find.byKey(const Key('country-start-training')));
       await tester.pumpAndSettle();
       final choices = find.byType(OutlinedButton);
-      expect(choices, findsNWidgets(4));
+      expect(choices, findsNWidgets(6));
       await tester.ensureVisible(choices.first);
       await tester.tap(choices.first);
       await tester.pump();

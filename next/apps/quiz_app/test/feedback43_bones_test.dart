@@ -169,7 +169,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Тренировка'));
+      await tester.tap(find.byTooltip('Вопросы об органах'));
       await tester.pumpAndSettle();
       expect(
         find.text('Факты из карточек · вопросы с проверкой ответа'),

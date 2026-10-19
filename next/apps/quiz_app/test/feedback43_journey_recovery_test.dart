@@ -293,6 +293,8 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('question-navigation-menu')));
+      await tester.pumpAndSettle();
       expect(find.byKey(const Key('question-nav-0')), findsOneWidget);
       await tester.tap(find.byKey(const Key('question-nav-0')));
       await tester.pumpAndSettle();

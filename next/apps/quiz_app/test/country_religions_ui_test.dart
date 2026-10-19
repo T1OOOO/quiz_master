@@ -36,6 +36,8 @@ void main() {
         ..translateByDouble(-20, -10, 0, 1)
         ..scaleByDouble(1.8, 1.8, 1, 1);
       viewer.transformationController!.value = camera;
+      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('atlas-map-layer')));
       await tester.tap(find.byKey(const Key('atlas-map-layer')));
       await tester.pumpAndSettle();
@@ -46,6 +48,9 @@ void main() {
         findsOneWidget,
       );
       expect(viewer.transformationController!.value, camera);
+      Navigator.of(tester.element(find.byKey(const Key('atlas-map-layer'))))
+          .pop();
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('map-country-search')));
       await tester.enterText(
         find.byKey(const Key('map-country-search')),
@@ -76,6 +81,8 @@ void main() {
       await tester.tap(find.widgetWithText(ActionChip, 'France'));
       await tester.pumpAndSettle();
       expect(viewer.transformationController!.value, camera);
+      await tester.tap(find.byKey(const Key('country-selected-details')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(
         find.byKey(const Key('country-religion-details')),
       );

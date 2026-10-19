@@ -59,28 +59,21 @@ void main() {
       },
     );
   }
-  testWidgets(
-    'Quizipedia exposes full organ atlas alongside endocrine exercise',
-    (tester) async {
-      await tester.runAsync(() async {
-        await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
-        await tester.pump();
-        final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-        );
-        await catalog.future!;
-      });
-      await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(
-        find.text('Human organs and glands'),
-        200,
+  testWidgets('Quizipedia exposes a unified organ atlas', (tester) async {
+    await tester.runAsync(() async {
+      await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
+      await tester.pump();
+      final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
+        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
       );
-      expect(find.text('Human organs and glands'), findsOneWidget);
-      await tester.scrollUntilVisible(find.text('Endocrine system'), 200);
-      expect(find.text('Endocrine system'), findsOneWidget);
-      expect(tester.takeException(), isNull);
-    },
-  );
+      await catalog.future!;
+    });
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('Human organs and glands'), 200);
+    expect(find.text('Human organs and glands'), findsOneWidget);
+    expect(find.text('Endocrine system'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
 }
 
 class _Bundle extends CachingAssetBundle {

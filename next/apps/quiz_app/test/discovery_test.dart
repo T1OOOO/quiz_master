@@ -7,11 +7,11 @@ void main() {
   test('category cover resolver uses topic art and a stable fallback', () {
     expect(
       categoryCoverAsset('География/Столицы'),
-      'assets/categories/geography-capitals.png',
+      'assets/categories/geography-capitals-cover.webp',
     );
     expect(
       categoryCoverAsset('Мифология/Греция/Боги'),
-      'assets/categories/mythology-greece.png',
+      'assets/categories/mythology-greece-cover.webp',
     );
     expect(
       categoryCoverAsset('География/СтолицыЛайф'),
@@ -108,7 +108,7 @@ void main() {
         (widget) =>
             widget is Image && _assetName(widget) == 'assets/library-bg-v1.png',
       ),
-      findsOneWidget,
+      findsNothing,
     );
     expect(find.text('105 quizzes · 4520 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);

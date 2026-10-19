@@ -87,7 +87,7 @@ void main() {
         MaterialApp(home: OrganAtlasPage(bundle: _Bundle())),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Practice'));
+      await tester.tap(find.byTooltip('Anatomy questions'));
       await tester.pumpAndSettle();
       Future<void> answer(bool correct) async {
         final id = correct

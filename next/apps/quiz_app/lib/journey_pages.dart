@@ -48,7 +48,12 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         (widget.quizId == null ? null : playableQuizId(widget.quizId!));
     ref.listen(journeyProvider.select((s) => s.feedback), (previous, feedback) {
       if (feedback != null && feedback != previous) {
-        _showFeedback(context, feedback, controller.nextQuestion);
+        _showFeedback(
+          context,
+          feedback,
+          controller.nextQuestion,
+          _submittedAnswerText(journey),
+        );
       }
     });
     final pack = ref
@@ -58,9 +63,6 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         .where((p) => p.id == activeQuizId)
         .firstOrNull;
     final title = pack?.title ?? '';
-    final backgroundAsset = pack == null
-        ? null
-        : categoryCoverAsset(pack.category);
     if (widget.quizId != null &&
         attempt != null &&
         catalog != null &&
@@ -68,7 +70,6 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         !journey.loading) {
       return SourceScaffold(
         compact: true,
-        backgroundAsset: backgroundAsset,
         body: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 760),
@@ -141,8 +142,8 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                             .firstOrNull
                             ?.title ??
                         '',
-                    style: const TextStyle(
-                      color: _cream,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
@@ -225,8 +226,9 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                 ] else if (finish != null) ...[
                   Text(
                     l10n.score(finish.score),
-                    style: Theme.of(context).textTheme.headlineMedium
-                        ?.copyWith(color: _cream),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
                   if (journey.postFinishError != null)
                     _ErrorPanel(
@@ -307,11 +309,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     );
     return widget.quizId == null
         ? AppScaffold(title: l10n.catalogTitle, body: body)
-        : SourceScaffold(
-            compact: true,
-            backgroundAsset: backgroundAsset,
-            body: body,
-          );
+        : SourceScaffold(compact: true, body: body);
   }
 }
 
@@ -470,36 +468,58 @@ class _QuestionStep extends ConsumerWidget {
 
 class _QuestionNavigator extends ConsumerWidget {
   const _QuestionNavigator({required this.journey});
-
   final JourneyState journey;
-
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final attempt = journey.attempt!;
-    return Semantics(
-      label: _questionNavigatorLabel(context),
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          Row(
-            children: [
-              for (var index = 0; index < attempt.snapshots.length; index++)
-                Padding(
-                  padding: const EdgeInsets.only(right: 4),
-                  child: _QuestionNavigatorButton(
-                    index: index,
-                    selected: journey.index == index,
-                    progress: journey.progressAt(index),
-                    marked: journey.uncertainIndices.contains(index),
-                    enabled: !journey.submitting && journey.feedback == null,
-                  ),
+  Widget build(BuildContext context, WidgetRef ref) => TextButton.icon(
+    key: const Key('question-navigation-menu'),
+    icon: const Icon(Icons.grid_view_rounded, size: 19),
+    label: Text('${journey.index + 1} / ${journey.attempt!.snapshots.length}'),
+    onPressed: journey.submitting || journey.feedback != null
+        ? null
+        : () => showModalBottomSheet<void>(
+            context: context,
+            showDragHandle: true,
+            useSafeArea: true,
+            isScrollControlled: true,
+            builder: (context) => ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.sizeOf(context).height * .75,
+              ),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      _questionNavigatorLabel(context),
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (
+                          var index = 0;
+                          index < journey.attempt!.snapshots.length;
+                          index++
+                        )
+                          _QuestionNavigatorButton(
+                            index: index,
+                            selected: journey.index == index,
+                            progress: journey.progressAt(index),
+                            marked: journey.uncertainIndices.contains(index),
+                            enabled: true,
+                            onSelected: () => Navigator.pop(context),
+                          ),
+                      ],
+                    ),
+                  ],
                 ),
-            ],
+              ),
+            ),
           ),
-        ],
-      ),
-    );
-  }
+  );
 }
 
 class _QuestionNavigatorButton extends ConsumerWidget {
@@ -509,6 +529,7 @@ class _QuestionNavigatorButton extends ConsumerWidget {
     required this.progress,
     required this.enabled,
     required this.marked,
+    this.onSelected,
   });
 
   final int index;
@@ -516,6 +537,7 @@ class _QuestionNavigatorButton extends ConsumerWidget {
   final QuestionProgress progress;
   final bool enabled;
   final bool marked;
+  final VoidCallback? onSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Tooltip(
@@ -531,7 +553,10 @@ class _QuestionNavigatorButton extends ConsumerWidget {
               key: Key('question-nav-$index'),
               style: _questionNavigatorButtonStyle,
               onPressed: enabled
-                  ? () => ref.read(journeyProvider.notifier).goToQuestion(index)
+                  ? () {
+                      ref.read(journeyProvider.notifier).goToQuestion(index);
+                      onSelected?.call();
+                    }
                   : null,
               child: _questionNavigatorButtonContent(index, progress, marked),
             )
@@ -539,7 +564,10 @@ class _QuestionNavigatorButton extends ConsumerWidget {
               key: Key('question-nav-$index'),
               style: _questionNavigatorButtonStyle,
               onPressed: enabled
-                  ? () => ref.read(journeyProvider.notifier).goToQuestion(index)
+                  ? () {
+                      ref.read(journeyProvider.notifier).goToQuestion(index);
+                      onSelected?.call();
+                    }
                   : null,
               child: _questionNavigatorButtonContent(index, progress, marked),
             ),
@@ -593,170 +621,145 @@ String _feedbackLabel(BuildContext context, bool correct) =>
     ? (correct ? 'Верно' : 'Неверно')
     : (correct ? 'Correct' : 'Incorrect');
 
+String? _submittedAnswerText(JourneyState journey) {
+  final answer =
+      journey.sentByIndex[journey.index] ??
+      journey.stagedByIndex[journey.index];
+  final attempt = journey.attempt, catalog = journey.catalog;
+  if (answer is NormalizedTextAnswer) return answer.text;
+  if (attempt == null || catalog == null) return null;
+  final question = _orderedQuestion(catalog, attempt.snapshots[journey.index]);
+  final ids = switch (answer) {
+    SingleChoiceAnswer(:final optionId) => {optionId},
+    MultipleChoiceAnswer(:final optionIds) => optionIds,
+    _ => <String>{},
+  };
+  return question?.options
+      .where((option) => ids.contains(option.id))
+      .map((option) => option.text)
+      .join(', ');
+}
+
 void _showFeedback(
   BuildContext context,
   PracticeFeedback feedback,
   VoidCallback next,
+  String? answer,
 ) {
   showDialog<void>(
     context: context,
     barrierDismissible: false,
-    builder: (_) => _FeedbackDialog(feedback: feedback, next: next),
+    builder: (_) =>
+        _FeedbackDialog(feedback: feedback, next: next, answer: answer),
   );
 }
 
-class _FeedbackDialog extends StatefulWidget {
-  const _FeedbackDialog({required this.feedback, required this.next});
+class _FeedbackDialog extends StatelessWidget {
+  const _FeedbackDialog({
+    required this.feedback,
+    required this.next,
+    this.answer,
+  });
   final PracticeFeedback feedback;
   final VoidCallback next;
-
-  @override
-  State<_FeedbackDialog> createState() => _FeedbackDialogState();
-}
-
-class _FeedbackDialogState extends State<_FeedbackDialog>
-    with WidgetsBindingObserver {
-  static const _autoAdvanceSeconds = 2;
-  Timer? _advance;
-  int _seconds = _autoAdvanceSeconds;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    if (widget.feedback.correct) _resume();
-  }
-
-  void _pause() {
-    _advance?.cancel();
-    setState(() => _advance = null);
-  }
-
-  void _resume() {
-    _seconds = _autoAdvanceSeconds;
-    _advance = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (ModalRoute.of(context)?.isCurrent != true) {
-        _pause();
-      } else if (_seconds <= 1) {
-        _next();
-      } else {
-        setState(() => _seconds--);
-      }
-    });
-  }
-
-  void _next() {
-    _advance?.cancel();
-    Navigator.pop(context);
-    widget.next();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed && _advance != null) _pause();
-  }
-
-  @override
-  void dispose() {
-    _advance?.cancel();
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
+  final String? answer;
   @override
   Widget build(BuildContext context) {
-    final feedback = widget.feedback;
     final l10n = AppLocalizations.of(context)!;
+    final ru = Localizations.localeOf(context).languageCode == 'ru';
+    final colors = Theme.of(context).colorScheme;
+    void advance() {
+      Navigator.pop(context);
+      next();
+    }
+
     return PopScope(
       canPop: false,
-      child: Theme(
-        data: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xffe8791b),
-            surface: const Color(0xffead9bf),
+      child: Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: 600,
+            maxHeight: MediaQuery.sizeOf(context).height * .8,
           ),
-          textTheme: Theme.of(context).textTheme.apply(
-            bodyColor: const Color(0xff655444),
-            displayColor: const Color(0xff655444),
-          ),
-        ),
-        child: Dialog(
-          backgroundColor: const Color(0xffead9bf),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(27),
-          ),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: 600,
-              maxHeight: MediaQuery.sizeOf(context).height * .65,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          _feedbackLabel(context, feedback.correct),
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: feedback.correct
-                                ? const Color(0xff1e5e22)
-                                : const Color(0xffa52a2a),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      feedback.correct ? Icons.check_circle : Icons.cancel,
+                      color: feedback.correct
+                          ? const Color(0xff2d966a)
+                          : colors.error,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        _feedbackLabel(context, feedback.correct),
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    if (!feedback.correct)
+                      IconButton(
+                        tooltip: MaterialLocalizations.of(context)
+                            .closeButtonTooltip,
+                        onPressed: advance,
+                        icon: const Icon(Icons.close),
+                      ),
+                  ],
+                ),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (!feedback.correct &&
+                            answer != null &&
+                            answer!.isNotEmpty)
+                          Container(
+                            key: const Key('feedback-your-answer'),
+                            margin: const EdgeInsets.only(top: 12),
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: colors.errorContainer,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ru ? 'Ваш ответ' : 'Your answer',
+                                  style: TextStyle(
+                                    color: colors.onErrorContainer,
+                                  ),
+                                ),
+                                Text(
+                                  answer!,
+                                  style: TextStyle(
+                                    color: colors.onErrorContainer,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
-                      if (!feedback.correct)
-                        IconButton(
-                          tooltip: MaterialLocalizations.of(context)
-                              .closeButtonTooltip,
-                          onPressed: _next,
-                          icon: const Icon(Icons.close),
-                        ),
-                    ],
-                  ),
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: DefaultTextStyle.merge(
-                        style: const TextStyle(color: Color(0xff655444)),
-                        child: ExplanationPanel(
-                          reveal: feedback.reveal,
-                          onBeforeArticleOpen: _pause,
-                        ),
-                      ),
+                        ExplanationPanel(reveal: feedback.reveal),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  if (feedback.correct)
-                    TextButton.icon(
-                      key: Key(_advance == null ? 'auto-resume' : 'auto-pause'),
-                      onPressed: _advance == null
-                          ? () => setState(_resume)
-                          : _pause,
-                      icon: Icon(
-                        _advance == null ? Icons.play_arrow : Icons.pause,
-                      ),
-                      label: Text(
-                        _advance == null
-                            ? l10n.resumeAutoAdvance
-                            : l10n.autoAdvanceIn(_seconds),
-                      ),
-                    ),
-                  if (!feedback.correct)
-                    SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        key: const Key('feedback-next'),
-                        onPressed: _next,
-                        child: Text(l10n.continueLabel),
-                      ),
-                    ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                FilledButton(
+                  key: const Key('feedback-next'),
+                  onPressed: advance,
+                  child: Text(l10n.continueLabel),
+                ),
+              ],
             ),
           ),
         ),

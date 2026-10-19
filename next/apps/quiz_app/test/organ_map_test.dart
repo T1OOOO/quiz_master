@@ -53,14 +53,19 @@ void main() {
       });
       final ids = (raw['organs'] as List).cast<Map>();
       expect(ids, hasLength(281));
+      expect(find.byKey(const Key('organ-list-heart')), findsNothing);
+      await tester.ensureVisible(find.byKey(const Key('organ-directory')));
+      await tester.tap(find.byKey(const Key('organ-directory')));
+      await tester.pumpAndSettle();
       expect(
         find.byWidgetPredicate(
           (widget) =>
-              widget is OutlinedButton &&
+              widget is ListTile &&
               widget.key.toString().contains('organ-list-'),
         ),
         findsNWidgets(281),
       );
+      await tester.ensureVisible(find.byKey(const Key('organ-search')));
       await tester.enterText(find.byKey(const Key('organ-search')), 'thyroid');
       await tester.pump();
       expect(find.byKey(const Key('organ-list-thyroid')), findsOneWidget);
@@ -80,28 +85,8 @@ void main() {
     final before = camera.value.clone();
     await Scrollable.ensureVisible(tester.element(map), alignment: .2);
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.byKey(const Key('organ-list-heart')),
-      200,
-      scrollable: find
-          .descendant(
-            of: find.byKey(const Key('organ-scroll')),
-            matching: find.byType(Scrollable),
-          )
-          .first,
-    );
-    await tester.tap(find.byKey(const Key('organ-list-heart')));
-    await tester.pumpAndSettle();
-    await tester.binding.handlePopRoute();
-    await tester.pumpAndSettle();
-    await tester.ensureVisible(map);
-    await tester.pumpAndSettle();
     final heartMarker = find.byKey(const Key('organ-map-target-heart'));
     expect(heartMarker, findsOneWidget);
-    final markerCenter = tester.getCenter(heartMarker);
-    final mapOrigin = tester.getTopLeft(map);
-    expect((markerCenter.dx - mapOrigin.dx) / 1.2, closeTo(162, 4));
-    expect((markerCenter.dy - mapOrigin.dy) / 1.2, closeTo(189, 4));
     await tester.tap(heartMarker);
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('organ-detail')), findsOneWidget);

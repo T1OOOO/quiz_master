@@ -405,8 +405,11 @@ void main() {
       );
       await tester.pump(const Duration(milliseconds: 350));
       expect(
-        tester.widget<Text>(find.byKey(const Key('map-selection-label'))).data,
-        'Extra country',
+        find.descendant(
+          of: find.byKey(const Key('country-selected-details')),
+          matching: find.text('Extra country'),
+        ),
+        findsOneWidget,
       );
       expect(
         (tester.widget<CustomPaint>(map).painter as dynamic).selected,
@@ -534,32 +537,21 @@ void main() {
     expect(controller.value.getMaxScaleOnAxis(), closeTo(1, .000001));
   });
 
-  testWidgets('anatomy directions both reach the check step', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
-    );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Training'));
-    await tester.tap(find.text('Endocrine system'));
-    await tester.runAsync(() async {
-      await tester.pump();
-      await Future<void>.delayed(const Duration(milliseconds: 100));
-    });
-    await tester.pumpAndSettle();
-    expect(find.byKey(const Key('quizipedia-anatomy')), findsOneWidget);
-    await tester.ensureVisible(find.text('Check'));
-    await tester.tap(find.textContaining('Spot ').first);
-    await tester.pump();
-    await tester.ensureVisible(find.text('Check'));
-    await tester.tap(find.text('Check'));
-    await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Next'));
-    await tester.tap(find.text('Next'));
-    await tester.pumpAndSettle();
-    expect(find.text('Which gland is highlighted?'), findsOneWidget);
-    expect(find.textContaining('Name gland:'), findsWidgets);
-    expect(tester.takeException(), isNull);
-  });
+  testWidgets(
+    'endocrine learning is reached through the unified organ section',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Endocrine system'), findsNothing);
+      await tester.scrollUntilVisible(
+        find.text('Human organs and glands'),
+        200,
+      );
+      expect(find.text('Human organs and glands'), findsOneWidget);
+    },
+  );
 
   testWidgets('narrow scaled home scrolls and missing photo blocks questions', (
     tester,
