@@ -17,6 +17,7 @@ import 'knowledge_atlas.dart';
 import 'brand_atlas.dart';
 import 'food_atlas.dart';
 import 'belief_atlas.dart';
+import 'organ_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -619,6 +620,34 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   ),
                 ),
               ),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.accessibility_new),
+                title: Text(
+                  _t(
+                    context,
+                    'Human organs and glands',
+                    'Атлас органов и желёз',
+                  ),
+                ),
+                subtitle: Text(
+                  _t(
+                    context,
+                    'Body systems, functions and practice',
+                    'Системы организма, функции и тренировка',
+                  ),
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => OrganAtlasPage(
+                      bundle: widget.bundle,
+                      training: _challenge,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             for (final section in [
               'history',
               'culture',

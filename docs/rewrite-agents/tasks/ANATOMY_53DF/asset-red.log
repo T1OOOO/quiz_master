@@ -1,0 +1,16 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/organ_asset_test.dart
+00:00 +0: shipped anatomy covers major organs and named gland groups
+00:00 +0 -1: shipped anatomy covers major organs and named gland groups [E]
+  Unable to load asset: "assets/quizipedia/organ_atlas.json".
+  The asset does not exist or has empty data.
+  package:flutter/src/services/asset_bundle.dart 340:7   PlatformAssetBundle.load
+  package:flutter/src/services/asset_bundle.dart 92:33   AssetBundle.loadString
+  package:flutter/src/services/asset_bundle.dart 193:56  CachingAssetBundle.loadString.<fn>
+  dart:_compact_hash                                     _LinkedHashMapMixin.putIfAbsent
+  package:flutter/src/services/asset_bundle.dart 193:27  CachingAssetBundle.loadString
+  test\organ_asset_test.dart 8:46                        main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/organ_asset_test.dart: shipped anatomy covers major organs and named gland groups

@@ -32,6 +32,8 @@ void main() {
       });
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(find.text(section), 200);
+      await tester.ensureVisible(find.text(section));
+      await tester.pumpAndSettle();
       await tester.tap(find.text(section));
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('belief-search')), findsOneWidget);

@@ -1,0 +1,36 @@
+agent-browser doctor
+
+Environment
+  pass  CLI version 0.39.1 (windows x86_64)
+  pass  Home directory C:\Users\Alexey_Matvienko
+  pass  State and socket directory C:\Users\Alexey_Matvienko\.agent-browser
+  info  Disk free check unavailable on this platform
+
+Chrome
+  pass  152.0.7977.82 at C:\Users\Alexey_Matvienko\.agent-browser\browsers\chrome-152.0.7977.82\chrome.exe
+  info  Cache dir C:\Users\Alexey_Matvienko\.agent-browser\browsers
+  info  2 Chrome profile(s) at C:\Users\Alexey_Matvienko\AppData\Local\Google\Chrome\User Data
+
+Recording
+  pass  ffmpeg version 9.0.2-full_build-www.gyan.dev at C:\Users\Alexey_Matvienko\scoop\shims\ffmpeg.exe
+  pass  libvpx (.webm) and libx264 (.mp4) encoders available
+
+Daemons
+  pass  Session organs53df (pid 40684)
+
+Security
+  pass  Encryption key file present: C:\Users\Alexey_Matvienko\.agent-browser\.encryption-key
+  pass  1 saved state file(s)
+
+Providers
+  info  Browserless: BROWSERLESS_API_KEY not set
+  info  Browserbase: BROWSERBASE_API_KEY not set
+  info  Browser Use: BROWSER_USE_API_KEY not set
+  info  Kernel: KERNEL_API_KEY not set
+  info  AgentCore: no AWS credentials in env (AWS_ACCESS_KEY_ID / AWS_PROFILE)
+  info  AI_GATEWAY_API_KEY not set (chat command disabled)
+        fix: export AI_GATEWAY_API_KEY=gw_...
+
+Summary: 9 pass, 0 warn, 0 fail
+
+tip: Run with --fix to attempt repairs.

@@ -1,0 +1,2278 @@
+{
+  "schema_version": "qm-organ-atlas/v1",
+  "coverage_note_ru": "Учебная карта охватывает 52 крупных органа, названные железы и группы желёз. Она не является исчерпывающим перечнем всех микроскопических желёз или окончательным подсчётом органов человека.",
+  "coverage_note_en": "This learning map covers 52 major organs, named glands, and gland groups. It is not an exhaustive list of microscopic glands or a definitive count of human organs.",
+  "sources": [
+    {
+      "id": "openstax-endocrine",
+      "title": "OpenStax Anatomy and Physiology 2e, pituitary and hypothalamus",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-digestive",
+      "title": "OpenStax Anatomy and Physiology 2e, accessory organs in digestion",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-reproductive",
+      "title": "OpenStax Anatomy and Physiology 2e, reproductive-system review",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-chapter-review",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-urinary",
+      "title": "OpenStax Anatomy and Physiology 2e, gross anatomy of urine transport",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-2-gross-anatomy-of-urine-transport",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-respiratory",
+      "title": "OpenStax Anatomy and Physiology 2e, respiratory-system overview",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-skin",
+      "title": "OpenStax Anatomy and Physiology, accessory structures of the skin",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/5-2-accessory-structures-of-the-skin?query=extracellular+fluid",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "nhlbi-heart",
+      "title": "NHLBI, What the Heart Looks Like",
+      "url": "https://www.nhlbi.nih.gov/health/heart/anatomy",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "niddk-kidneys",
+      "title": "NIDDK, Your Kidneys and How They Work",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "nci-ovaries",
+      "title": "NCI SEER Training, Ovaries",
+      "url": "https://training.seer.cancer.gov/anatomy/reproductive/female/ovaries.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "nci-testes",
+      "title": "NCI SEER Training, Testes",
+      "url": "https://training.seer.cancer.gov/anatomy/reproductive/male/testes.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-skeleton",
+      "title": "OpenStax Anatomy and Physiology 2e, divisions of the skeletal system",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-1-divisions-of-the-skeletal-system",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-muscle",
+      "title": "OpenStax Anatomy and Physiology 2e, skeletal muscle",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-endocrine-review",
+      "title": "OpenStax Anatomy and Physiology 2e, endocrine chapter review",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-chapter-review",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-sensory",
+      "title": "OpenStax Anatomy and Physiology, sensory perception",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/14-1-sensory-perception",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-nervous",
+      "title": "OpenStax Anatomy and Physiology 2e, central nervous system",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-vessels",
+      "title": "OpenStax Anatomy and Physiology 2e, structure and function of blood vessels",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-lymphatic",
+      "title": "OpenStax Anatomy and Physiology 2e, anatomy of the lymphatic and immune systems",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-salivary",
+      "title": "OpenStax Anatomy and Physiology 2e, mouth, pharynx and esophagus",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-stomach",
+      "title": "OpenStax Anatomy and Physiology 2e, stomach",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-4-the-stomach",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-intestines",
+      "title": "OpenStax Anatomy and Physiology, small and large intestines",
+      "url": "https://openstax.org/books/anatomy-and-physiology/pages/23-5-the-small-and-large-intestines?query=levers",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "openstax-female-reproductive",
+      "title": "OpenStax Anatomy and Physiology 2e, anatomy and physiology of the ovarian reproductive system",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "organs": [
+    {
+      "id": "brain",
+      "name_ru": "Головной мозг",
+      "name_en": "Brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "organ",
+      "region": "head",
+      "position_ru": "В полости черепа.",
+      "position_en": "In the cranial cavity.",
+      "function_ru": "Обрабатывает информацию и координирует многие функции организма.",
+      "function_en": "Processes information and coordinates many body functions.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Гипоталамус — часть мозга с нервными и эндокринными функциями.",
+          "text_en": "The hypothalamus is a brain region with neural and endocrine functions.",
+          "source_ids": [
+            "openstax-endocrine",
+            "openstax-nervous"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine",
+        "openstax-nervous"
+      ]
+    },
+    {
+      "id": "spinal_cord",
+      "name_ru": "Спинной мозг",
+      "name_en": "Spinal cord",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "В позвоночном канале.",
+      "position_en": "In the vertebral canal.",
+      "function_ru": "Передаёт сигналы между мозгом и телом и участвует в рефлексах.",
+      "function_en": "Carries signals between brain and body and participates in reflexes.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Спинной мозг относится к центральной нервной системе.",
+          "text_en": "The spinal cord belongs to the central nervous system.",
+          "source_ids": [
+            "openstax-nervous"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-nervous"
+      ]
+    },
+    {
+      "id": "bones",
+      "name_ru": "Кости",
+      "name_en": "Bones",
+      "system_ids": [
+        "musculoskeletal"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "Составляют скелет по всему телу.",
+      "position_en": "Form the skeleton throughout the body.",
+      "function_ru": "Поддерживают тело, защищают органы и служат рычагами для движений.",
+      "function_en": "Support the body, protect organs, and provide levers for movement.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "У взрослого скелета обычно 206 костей; часть костей срастается в ходе развития.",
+          "text_en": "The adult skeleton usually has 206 bones; some bones fuse during development.",
+          "source_ids": [
+            "openstax-skeleton"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-skeleton"
+      ]
+    },
+    {
+      "id": "skeletal_muscles",
+      "name_ru": "Скелетные мышцы",
+      "name_en": "Skeletal muscles",
+      "system_ids": [
+        "musculoskeletal"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "Прикреплены к костям по всему телу.",
+      "position_en": "Attached to bones throughout the body.",
+      "function_ru": "Сокращаются для движения, поддержания позы и выработки тепла.",
+      "function_en": "Contract for movement, posture, and heat production.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Каждая скелетная мышца — орган из мышечных волокон, нервов, сосудов и соединительной ткани.",
+          "text_en": "Each skeletal muscle is an organ of muscle fibers, nerves, vessels, and connective tissue.",
+          "source_ids": [
+            "openstax-muscle"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-muscle"
+      ]
+    },
+    {
+      "id": "eyes",
+      "name_ru": "Глаза",
+      "name_en": "Eyes",
+      "system_ids": [
+        "sensory"
+      ],
+      "kind": "organ",
+      "region": "head",
+      "position_ru": "В глазницах черепа.",
+      "position_en": "In the orbits of the skull.",
+      "function_ru": "Воспринимают свет и формируют зрительные сигналы.",
+      "function_en": "Detect light and form visual signals.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Слёзные железы помогают поддерживать поверхность глаза влажной.",
+          "text_en": "Lacrimal glands help keep the eye surface moist.",
+          "source_ids": [
+            "openstax-sensory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-sensory"
+      ]
+    },
+    {
+      "id": "ears",
+      "name_ru": "Уши",
+      "name_en": "Ears",
+      "system_ids": [
+        "sensory"
+      ],
+      "kind": "organ",
+      "region": "head",
+      "position_ru": "По бокам головы.",
+      "position_en": "On the sides of the head.",
+      "function_ru": "Участвуют в слухе и равновесии.",
+      "function_en": "Participate in hearing and balance.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Ухо — орган чувств, а не железа.",
+          "text_en": "The ear is a sensory organ, not a gland.",
+          "source_ids": [
+            "openstax-sensory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-sensory"
+      ]
+    },
+    {
+      "id": "nasal_cavity",
+      "name_ru": "Носовая полость",
+      "name_en": "Nasal cavity",
+      "system_ids": [
+        "respiratory",
+        "sensory"
+      ],
+      "kind": "organ",
+      "region": "head",
+      "position_ru": "Внутри носа, над ротовой полостью.",
+      "position_en": "Inside the nose, above the oral cavity.",
+      "function_ru": "Проводит, согревает и увлажняет вдыхаемый воздух; участвует в обонянии.",
+      "function_en": "Conducts, warms, and humidifies inspired air; participates in smell.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Носовые ходы входят в проводящую часть дыхательной системы.",
+          "text_en": "Nasal passages are part of the respiratory conducting zone.",
+          "source_ids": [
+            "openstax-respiratory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-respiratory"
+      ]
+    },
+    {
+      "id": "larynx",
+      "name_ru": "Гортань",
+      "name_en": "Larynx",
+      "system_ids": [
+        "respiratory"
+      ],
+      "kind": "organ",
+      "region": "neck",
+      "position_ru": "Между глоткой и трахеей.",
+      "position_en": "Between the pharynx and trachea.",
+      "function_ru": "Проводит воздух и участвует в образовании голоса.",
+      "function_en": "Conducts air and contributes to voice production.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Гортань относится к проводящим дыхательным путям.",
+          "text_en": "The larynx is part of the conducting airways.",
+          "source_ids": [
+            "openstax-respiratory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-respiratory"
+      ]
+    },
+    {
+      "id": "trachea",
+      "name_ru": "Трахея",
+      "name_en": "Trachea",
+      "system_ids": [
+        "respiratory"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "От гортани к главным бронхам.",
+      "position_en": "From the larynx to the main bronchi.",
+      "function_ru": "Проводит воздух к бронхам.",
+      "function_en": "Conducts air to the bronchi.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Трахея — часть проводящей зоны, а не место газообмена.",
+          "text_en": "The trachea is conducting zone, not a gas-exchange site.",
+          "source_ids": [
+            "openstax-respiratory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-respiratory"
+      ]
+    },
+    {
+      "id": "lungs",
+      "name_ru": "Лёгкие",
+      "name_en": "Lungs",
+      "system_ids": [
+        "respiratory"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "В грудной полости по сторонам средостения.",
+      "position_en": "In the thoracic cavity on either side of the mediastinum.",
+      "function_ru": "Обеспечивают газообмен между воздухом и кровью.",
+      "function_en": "Enable gas exchange between air and blood.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Правое лёгкое имеет три доли, левое — две.",
+          "text_en": "The right lung has three lobes and the left has two.",
+          "source_ids": [
+            "openstax-respiratory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-respiratory"
+      ]
+    },
+    {
+      "id": "heart",
+      "name_ru": "Сердце",
+      "name_en": "Heart",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "В средостении между лёгкими.",
+      "position_en": "In the mediastinum between the lungs.",
+      "function_ru": "Насосом поддерживает движение крови по кругам кровообращения.",
+      "function_en": "Pumps blood through the circulatory circuits.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Сердце имеет четыре камеры: два предсердия и два желудочка.",
+          "text_en": "The heart has four chambers: two atria and two ventricles.",
+          "source_ids": [
+            "nhlbi-heart"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "nhlbi-heart"
+      ]
+    },
+    {
+      "id": "blood_vessels",
+      "name_ru": "Кровеносные сосуды",
+      "name_en": "Blood vessels",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "Разветвлённая сеть по всему телу.",
+      "position_en": "A branching network throughout the body.",
+      "function_ru": "Переносят кровь между сердцем и тканями.",
+      "function_en": "Carry blood between the heart and tissues.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Артерии, вены и капилляры выполняют разные роли в кровотоке.",
+          "text_en": "Arteries, veins, and capillaries have different roles in blood flow.",
+          "source_ids": [
+            "openstax-vessels"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-vessels"
+      ]
+    },
+    {
+      "id": "lymph_nodes",
+      "name_ru": "Лимфатические узлы",
+      "name_en": "Lymph nodes",
+      "system_ids": [
+        "lymphatic"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "Вдоль лимфатических сосудов.",
+      "position_en": "Along lymphatic vessels.",
+      "function_ru": "Фильтруют лимфу и служат местом иммунных взаимодействий.",
+      "function_en": "Filter lymph and provide sites for immune interactions.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Узлы относятся к лимфатической, а не к эндокринной системе.",
+          "text_en": "Nodes belong to the lymphatic rather than endocrine system.",
+          "source_ids": [
+            "openstax-lymphatic"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-lymphatic"
+      ]
+    },
+    {
+      "id": "spleen",
+      "name_ru": "Селезёнка",
+      "name_en": "Spleen",
+      "system_ids": [
+        "lymphatic"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "В левом верхнем отделе живота.",
+      "position_en": "In the upper left abdomen.",
+      "function_ru": "Участвует в иммунной защите и фильтрации крови.",
+      "function_en": "Contributes to immune defense and blood filtration.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Селезёнка — лимфатический орган, расположенный рядом с желудком.",
+          "text_en": "The spleen is a lymphatic organ near the stomach.",
+          "source_ids": [
+            "openstax-lymphatic"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-lymphatic"
+      ]
+    },
+    {
+      "id": "thymus",
+      "name_ru": "Тимус",
+      "name_en": "Thymus",
+      "system_ids": [
+        "lymphatic"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "В верхней части переднего средостения.",
+      "position_en": "In the upper anterior mediastinum.",
+      "function_ru": "Поддерживает созревание T-лимфоцитов, особенно в раннем возрасте.",
+      "function_en": "Supports T-lymphocyte maturation, especially early in life.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Тимус — первичный лимфоидный орган, где созревают T-лимфоциты.",
+          "text_en": "The thymus is a primary lymphoid organ where T lymphocytes mature.",
+          "source_ids": [
+            "openstax-lymphatic"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-lymphatic"
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name_ru": "Пищевод",
+      "name_en": "Esophagus",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "От глотки через грудную клетку к желудку.",
+      "position_en": "From the pharynx through the thorax to the stomach.",
+      "function_ru": "Продвигает пищу к желудку.",
+      "function_en": "Propels food to the stomach.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Пищевод входит в непрерывный пищеварительный канал.",
+          "text_en": "The esophagus is part of the continuous alimentary canal.",
+          "source_ids": [
+            "openstax-salivary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "stomach",
+      "name_ru": "Желудок",
+      "name_en": "Stomach",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "В левом верхнем отделе живота.",
+      "position_en": "In the upper left abdomen.",
+      "function_ru": "Перемешивает пищу и начинает химическое переваривание белков.",
+      "function_en": "Mixes food and begins chemical protein digestion.",
+      "secretions_ru": [
+        "желудочный сок"
+      ],
+      "secretions_en": [
+        "gastric juice"
+      ],
+      "facts": [
+        {
+          "text_ru": "Желудочные железы находятся в слизистой оболочке желудка.",
+          "text_en": "Gastric glands lie in the stomach mucosa.",
+          "source_ids": [
+            "openstax-stomach"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-stomach"
+      ]
+    },
+    {
+      "id": "liver",
+      "name_ru": "Печень",
+      "name_en": "Liver",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Под диафрагмой, преимущественно справа вверху живота.",
+      "position_en": "Below the diaphragm, mostly in the upper right abdomen.",
+      "function_ru": "Обрабатывает питательные вещества и образует желчь.",
+      "function_en": "Processes nutrients and produces bile.",
+      "secretions_ru": [
+        "желчь"
+      ],
+      "secretions_en": [
+        "bile"
+      ],
+      "facts": [
+        {
+          "text_ru": "Печень — крупнейшая железа организма и добавочный орган пищеварения.",
+          "text_en": "The liver is the body’s largest gland and an accessory digestive organ.",
+          "source_ids": [
+            "openstax-digestive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-digestive"
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name_ru": "Жёлчный пузырь",
+      "name_en": "Gallbladder",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "На нижней поверхности печени.",
+      "position_en": "On the inferior surface of the liver.",
+      "function_ru": "Хранит, концентрирует и выделяет желчь в двенадцатиперстную кишку.",
+      "function_en": "Stores, concentrates, and releases bile into the duodenum.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Жёлчный пузырь не образует желчь: её образует печень.",
+          "text_en": "The gallbladder does not produce bile; the liver does.",
+          "source_ids": [
+            "openstax-digestive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-digestive"
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name_ru": "Поджелудочная железа",
+      "name_en": "Pancreas",
+      "system_ids": [
+        "digestive",
+        "endocrine"
+      ],
+      "kind": "mixed_gland",
+      "region": "abdomen",
+      "position_ru": "Позади желудка, рядом с двенадцатиперстной кишкой.",
+      "position_en": "Behind the stomach, beside the duodenum.",
+      "function_ru": "Выделяет пищеварительный сок в кишечник и гормоны в кровь.",
+      "function_en": "Delivers digestive juice to the intestine and hormones to blood.",
+      "secretions_ru": [
+        "панкреатический сок",
+        "инсулин",
+        "глюкагон"
+      ],
+      "secretions_en": [
+        "pancreatic juice",
+        "insulin",
+        "glucagon"
+      ],
+      "facts": [
+        {
+          "text_ru": "Экзокринные ацинусы и эндокринные островки выполняют разные функции поджелудочной железы.",
+          "text_en": "Exocrine acini and endocrine islets perform different pancreatic functions.",
+          "source_ids": [
+            "openstax-digestive",
+            "openstax-endocrine"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-digestive",
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "small_intestine",
+      "name_ru": "Тонкая кишка",
+      "name_en": "Small intestine",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Петли в центральной и нижней части живота.",
+      "position_en": "Loops in the central and lower abdomen.",
+      "function_ru": "Переваривает пищу и всасывает большинство питательных веществ.",
+      "function_en": "Digests food and absorbs most nutrients.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "В двенадцатиперстную кишку поступают желчь и панкреатический сок.",
+          "text_en": "Bile and pancreatic juice enter the duodenum.",
+          "source_ids": [
+            "openstax-digestive",
+            "openstax-intestines"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-digestive",
+        "openstax-intestines"
+      ]
+    },
+    {
+      "id": "large_intestine",
+      "name_ru": "Толстая кишка",
+      "name_en": "Large intestine",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Обрамляет петли тонкой кишки.",
+      "position_en": "Frames the loops of the small intestine.",
+      "function_ru": "Всасывает воду и формирует каловые массы.",
+      "function_en": "Absorbs water and forms feces.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Основные отделы толстой кишки — слепая, ободочная и прямая кишка.",
+          "text_en": "Major regions include cecum, colon, and rectum.",
+          "source_ids": [
+            "openstax-intestines"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-intestines"
+      ]
+    },
+    {
+      "id": "kidneys",
+      "name_ru": "Почки",
+      "name_en": "Kidneys",
+      "system_ids": [
+        "urinary",
+        "endocrine"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Забрюшинно по сторонам позвоночника.",
+      "position_en": "Retroperitoneal, on either side of the vertebral column.",
+      "function_ru": "Фильтруют кровь и образуют мочу; участвуют в регуляции внутренней среды.",
+      "function_en": "Filter blood and produce urine; help regulate the internal environment.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Моча проходит из почек по мочеточникам к мочевому пузырю.",
+          "text_en": "Urine travels from kidneys through ureters to the bladder.",
+          "source_ids": [
+            "niddk-kidneys"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "niddk-kidneys",
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "ureters",
+      "name_ru": "Мочеточники",
+      "name_en": "Ureters",
+      "system_ids": [
+        "urinary"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "От каждой почки к мочевому пузырю.",
+      "position_en": "From each kidney to the urinary bladder.",
+      "function_ru": "Проводят мочу к мочевому пузырю.",
+      "function_en": "Carry urine to the urinary bladder.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Мочеточники — парные проводящие пути мочи.",
+          "text_en": "Ureters are paired urine-conducting passages.",
+          "source_ids": [
+            "openstax-urinary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "bladder",
+      "name_ru": "Мочевой пузырь",
+      "name_en": "Urinary bladder",
+      "system_ids": [
+        "urinary"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "В малом тазу.",
+      "position_en": "In the pelvic cavity.",
+      "function_ru": "Временно хранит мочу.",
+      "function_en": "Temporarily stores urine.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Моча покидает пузырь через мочеиспускательный канал.",
+          "text_en": "Urine leaves the bladder through the urethra.",
+          "source_ids": [
+            "openstax-urinary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "urethra",
+      "name_ru": "Мочеиспускательный канал",
+      "name_en": "Urethra",
+      "system_ids": [
+        "urinary",
+        "reproductive"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "От мочевого пузыря наружу.",
+      "position_en": "From the urinary bladder to the exterior.",
+      "function_ru": "Выводит мочу; у мужчин также входит в репродуктивный путь.",
+      "function_en": "Carries urine out; in males it also forms part of the reproductive route.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Мужская уретра проходит через простату.",
+          "text_en": "The male urethra passes through the prostate.",
+          "source_ids": [
+            "openstax-urinary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "skin",
+      "name_ru": "Кожа",
+      "name_en": "Skin",
+      "system_ids": [
+        "integumentary"
+      ],
+      "kind": "organ",
+      "region": "distributed",
+      "position_ru": "Покрывает наружную поверхность тела.",
+      "position_en": "Covers the external surface of the body.",
+      "function_ru": "Создаёт защитный барьер и участвует в терморегуляции и ощущениях.",
+      "function_en": "Forms a protective barrier and participates in temperature regulation and sensation.",
+      "secretions_ru": [
+        "пот",
+        "кожное сало"
+      ],
+      "secretions_en": [
+        "sweat",
+        "sebum"
+      ],
+      "facts": [
+        {
+          "text_ru": "Кожа содержит эккриновые, апокриновые и сальные железы.",
+          "text_en": "Skin contains eccrine, apocrine, and sebaceous glands.",
+          "source_ids": [
+            "openstax-skin"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "hypothalamus",
+      "name_ru": "Гипоталамус",
+      "name_en": "Hypothalamus",
+      "system_ids": [
+        "nervous",
+        "endocrine"
+      ],
+      "kind": "endocrine_tissue",
+      "region": "head",
+      "position_ru": "В основании мозга, ниже таламуса.",
+      "position_en": "At the brain base, inferior to the thalamus.",
+      "function_ru": "Связывает нервную и эндокринную регуляцию и управляет гипофизом.",
+      "function_en": "Links neural and endocrine regulation and controls the pituitary.",
+      "secretions_ru": [
+        "рилизинг-гормоны",
+        "ингибирующие гормоны"
+      ],
+      "secretions_en": [
+        "releasing hormones",
+        "inhibiting hormones"
+      ],
+      "facts": [
+        {
+          "text_ru": "Задняя доля гипофиза хранит и выделяет гормоны, образованные гипоталамусом.",
+          "text_en": "The posterior pituitary stores and releases hormones made by the hypothalamus.",
+          "source_ids": [
+            "openstax-endocrine"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "pituitary",
+      "name_ru": "Гипофиз",
+      "name_en": "Pituitary gland",
+      "system_ids": [
+        "endocrine"
+      ],
+      "kind": "endocrine_gland",
+      "region": "head",
+      "position_ru": "Под гипоталамусом, в турецком седле.",
+      "position_en": "Below the hypothalamus, in the sella turcica.",
+      "function_ru": "Выделяет гормоны, регулирующие рост, лактацию и другие железы.",
+      "function_en": "Releases hormones regulating growth, lactation, and other glands.",
+      "secretions_ru": [
+        "гормон роста",
+        "ТТГ",
+        "АКТГ",
+        "пролактин"
+      ],
+      "secretions_en": [
+        "growth hormone",
+        "TSH",
+        "ACTH",
+        "prolactin"
+      ],
+      "facts": [
+        {
+          "text_ru": "Передняя и задняя доли гипофиза имеют разное происхождение и функции.",
+          "text_en": "Anterior and posterior pituitary lobes have different origins and functions.",
+          "source_ids": [
+            "openstax-endocrine"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "pineal",
+      "name_ru": "Эпифиз",
+      "name_en": "Pineal gland",
+      "system_ids": [
+        "endocrine"
+      ],
+      "kind": "endocrine_gland",
+      "region": "head",
+      "position_ru": "В глубине головного мозга.",
+      "position_en": "Deep within the brain.",
+      "function_ru": "Вырабатывает мелатонин, связанный с суточными ритмами.",
+      "function_en": "Produces melatonin associated with circadian timing.",
+      "secretions_ru": [
+        "мелатонин"
+      ],
+      "secretions_en": [
+        "melatonin"
+      ],
+      "facts": [
+        {
+          "text_ru": "Эпифиз относится к основным эндокринным железам.",
+          "text_en": "The pineal is a major endocrine gland.",
+          "source_ids": [
+            "openstax-endocrine-review"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "thyroid",
+      "name_ru": "Щитовидная железа",
+      "name_en": "Thyroid gland",
+      "system_ids": [
+        "endocrine"
+      ],
+      "kind": "endocrine_gland",
+      "region": "neck",
+      "position_ru": "Спереди шеи, у трахеи.",
+      "position_en": "At the front of the neck, beside the trachea.",
+      "function_ru": "Вырабатывает гормоны, влияющие на обмен веществ.",
+      "function_en": "Produces hormones that influence metabolism.",
+      "secretions_ru": [
+        "тироксин",
+        "трийодтиронин",
+        "кальцитонин"
+      ],
+      "secretions_en": [
+        "thyroxine",
+        "triiodothyronine",
+        "calcitonin"
+      ],
+      "facts": [
+        {
+          "text_ru": "Кальцитонин существует, но не является главным регулятором кальция у взрослых.",
+          "text_en": "Calcitonin exists but is not the principal adult calcium regulator.",
+          "source_ids": [
+            "openstax-endocrine-review"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "parathyroids",
+      "name_ru": "Паращитовидные железы",
+      "name_en": "Parathyroid glands",
+      "system_ids": [
+        "endocrine"
+      ],
+      "kind": "endocrine_gland",
+      "region": "neck",
+      "position_ru": "Обычно на задней поверхности щитовидной железы.",
+      "position_en": "Usually on the posterior surface of the thyroid.",
+      "function_ru": "Вырабатывают паратиреоидный гормон, участвующий в регуляции кальция.",
+      "function_en": "Produce parathyroid hormone involved in calcium regulation.",
+      "secretions_ru": [
+        "паратиреоидный гормон"
+      ],
+      "secretions_en": [
+        "parathyroid hormone"
+      ],
+      "facts": [
+        {
+          "text_ru": "Это отдельные железы, хотя они расположены рядом со щитовидной.",
+          "text_en": "They are separate glands although located near the thyroid.",
+          "source_ids": [
+            "openstax-endocrine-review"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "adrenals",
+      "name_ru": "Надпочечники",
+      "name_en": "Adrenal glands",
+      "system_ids": [
+        "endocrine"
+      ],
+      "kind": "endocrine_gland",
+      "region": "abdomen",
+      "position_ru": "На верхних полюсах почек.",
+      "position_en": "On the superior poles of the kidneys.",
+      "function_ru": "Вырабатывают гормоны коры и мозгового вещества.",
+      "function_en": "Produce cortical and medullary hormones.",
+      "secretions_ru": [
+        "кортизол",
+        "альдостерон",
+        "адреналин"
+      ],
+      "secretions_en": [
+        "cortisol",
+        "aldosterone",
+        "epinephrine"
+      ],
+      "facts": [
+        {
+          "text_ru": "АКТГ гипофиза стимулирует кору надпочечников.",
+          "text_en": "Pituitary ACTH stimulates the adrenal cortex.",
+          "source_ids": [
+            "openstax-endocrine-review"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "ovaries",
+      "name_ru": "Яичники",
+      "name_en": "Ovaries",
+      "system_ids": [
+        "reproductive",
+        "endocrine"
+      ],
+      "kind": "mixed_gland",
+      "region": "pelvis",
+      "position_ru": "По сторонам матки в малом тазу.",
+      "position_en": "On either side of the uterus in the pelvis.",
+      "function_ru": "Образуют ооциты и выделяют репродуктивные гормоны.",
+      "function_en": "Produce oocytes and release reproductive hormones.",
+      "secretions_ru": [
+        "эстрогены",
+        "прогестерон"
+      ],
+      "secretions_en": [
+        "estrogens",
+        "progesterone"
+      ],
+      "facts": [
+        {
+          "text_ru": "После овуляции жёлтое тело выделяет прогестерон и некоторое количество эстрогена.",
+          "text_en": "After ovulation, the corpus luteum releases progesterone and some estrogen.",
+          "source_ids": [
+            "nci-ovaries"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "nci-ovaries"
+      ]
+    },
+    {
+      "id": "testes",
+      "name_ru": "Яички",
+      "name_en": "Testes",
+      "system_ids": [
+        "reproductive",
+        "endocrine"
+      ],
+      "kind": "mixed_gland",
+      "region": "pelvis",
+      "position_ru": "В мошонке, вне брюшной полости.",
+      "position_en": "In the scrotum, outside the abdominal cavity.",
+      "function_ru": "Образуют сперматозоиды и выделяют тестостерон.",
+      "function_en": "Produce sperm and release testosterone.",
+      "secretions_ru": [
+        "тестостерон"
+      ],
+      "secretions_en": [
+        "testosterone"
+      ],
+      "facts": [
+        {
+          "text_ru": "Клетки Лейдига между семенными канальцами вырабатывают половые гормоны.",
+          "text_en": "Leydig cells between seminiferous tubules produce sex hormones.",
+          "source_ids": [
+            "nci-testes"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "nci-testes"
+      ]
+    },
+    {
+      "id": "uterus",
+      "name_ru": "Матка",
+      "name_en": "Uterus",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "В центре малого таза.",
+      "position_en": "In the center of the pelvic cavity.",
+      "function_ru": "Мышечный орган репродуктивной системы.",
+      "function_en": "A muscular organ of the reproductive system.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Окситоцин участвует в сокращениях матки во время родов.",
+          "text_en": "Oxytocin participates in uterine contractions during childbirth.",
+          "source_ids": [
+            "openstax-female-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-female-reproductive"
+      ]
+    },
+    {
+      "id": "fallopian_tubes",
+      "name_ru": "Маточные трубы",
+      "name_en": "Uterine tubes",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "Между областью яичников и маткой.",
+      "position_en": "Between the ovarian region and uterus.",
+      "function_ru": "Направляют ооцит к матке.",
+      "function_en": "Guide an oocyte toward the uterus.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Маточная труба — отдельная структура, не часть яичника.",
+          "text_en": "A uterine tube is separate from an ovary.",
+          "source_ids": [
+            "nci-ovaries"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "nci-ovaries"
+      ]
+    },
+    {
+      "id": "vagina",
+      "name_ru": "Влагалище",
+      "name_en": "Vagina",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "Канал между шейкой матки и наружными половыми органами.",
+      "position_en": "A canal between cervix and external genitalia.",
+      "function_ru": "Мышечный канал репродуктивной системы.",
+      "function_en": "A muscular canal of the reproductive system.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Часть влагалища формируется из мюллеровых протоков в эмбриональном развитии.",
+          "text_en": "Part of the vagina forms from Müllerian ducts during embryonic development.",
+          "source_ids": [
+            "openstax-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "parotid",
+      "name_ru": "Околоушные слюнные железы",
+      "name_en": "Parotid glands",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "head",
+      "position_ru": "Перед и ниже каждого уха.",
+      "position_en": "Anterior and inferior to each ear.",
+      "function_ru": "Выделяют слюну в полость рта.",
+      "function_en": "Release saliva into the oral cavity.",
+      "secretions_ru": [
+        "слюна"
+      ],
+      "secretions_en": [
+        "saliva"
+      ],
+      "facts": [
+        {
+          "text_ru": "Околоушные железы относятся к большим слюнным железам.",
+          "text_en": "Parotids are major salivary glands.",
+          "source_ids": [
+            "openstax-salivary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "submandibular",
+      "name_ru": "Поднижнечелюстные слюнные железы",
+      "name_en": "Submandibular glands",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "head",
+      "position_ru": "Под нижней челюстью.",
+      "position_en": "Below the mandible.",
+      "function_ru": "Выделяют слюну в полость рта.",
+      "function_en": "Release saliva into the oral cavity.",
+      "secretions_ru": [
+        "слюна"
+      ],
+      "secretions_en": [
+        "saliva"
+      ],
+      "facts": [
+        {
+          "text_ru": "Поднижнечелюстные железы — парные добавочные органы пищеварения.",
+          "text_en": "Submandibular glands are paired accessory digestive organs.",
+          "source_ids": [
+            "openstax-salivary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "sublingual",
+      "name_ru": "Подъязычные слюнные железы",
+      "name_en": "Sublingual glands",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "head",
+      "position_ru": "На дне ротовой полости под языком.",
+      "position_en": "In the floor of the mouth beneath the tongue.",
+      "function_ru": "Выделяют слюну в полость рта.",
+      "function_en": "Release saliva into the oral cavity.",
+      "secretions_ru": [
+        "слюна"
+      ],
+      "secretions_en": [
+        "saliva"
+      ],
+      "facts": [
+        {
+          "text_ru": "Подъязычные железы относятся к большим слюнным железам.",
+          "text_en": "Sublingual glands are major salivary glands.",
+          "source_ids": [
+            "openstax-salivary"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "lacrimal",
+      "name_ru": "Слёзные железы",
+      "name_en": "Lacrimal glands",
+      "system_ids": [
+        "sensory"
+      ],
+      "kind": "exocrine_gland",
+      "region": "head",
+      "position_ru": "У верхнелатеральной части каждой глазницы.",
+      "position_en": "At the superolateral part of each orbit.",
+      "function_ru": "Выделяют слёзную жидкость на поверхность глаза.",
+      "function_en": "Release tear fluid onto the eye surface.",
+      "secretions_ru": [
+        "слёзная жидкость"
+      ],
+      "secretions_en": [
+        "tear fluid"
+      ],
+      "facts": [
+        {
+          "text_ru": "Слёзные железы — экзокринные железы, а не эндокринные.",
+          "text_en": "Lacrimal glands are exocrine, not endocrine glands.",
+          "source_ids": [
+            "openstax-sensory"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-sensory"
+      ]
+    },
+    {
+      "id": "eccrine_sweat",
+      "name_ru": "Эккриновые потовые железы",
+      "name_en": "Eccrine sweat glands",
+      "system_ids": [
+        "integumentary"
+      ],
+      "kind": "gland_group",
+      "region": "distributed",
+      "position_ru": "Широко распределены в коже.",
+      "position_en": "Widely distributed in skin.",
+      "function_ru": "Выделяют водянистый пот и участвуют в охлаждении тела.",
+      "function_en": "Release watery sweat and contribute to cooling.",
+      "secretions_ru": [
+        "пот"
+      ],
+      "secretions_en": [
+        "sweat"
+      ],
+      "facts": [
+        {
+          "text_ru": "Эккриновые железы открываются на поверхность кожи.",
+          "text_en": "Eccrine glands open onto the skin surface.",
+          "source_ids": [
+            "openstax-skin"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "apocrine_sweat",
+      "name_ru": "Апокриновые потовые железы",
+      "name_en": "Apocrine sweat glands",
+      "system_ids": [
+        "integumentary"
+      ],
+      "kind": "gland_group",
+      "region": "distributed",
+      "position_ru": "В отдельных областях кожи, часто у волосяных фолликулов.",
+      "position_en": "In selected skin regions, often near hair follicles.",
+      "function_ru": "Выделяют более вязкий секрет в волосяные фолликулы.",
+      "function_en": "Release a more viscous secretion into hair follicles.",
+      "secretions_ru": [
+        "апокриновый секрет"
+      ],
+      "secretions_en": [
+        "apocrine secretion"
+      ],
+      "facts": [
+        {
+          "text_ru": "Апокриновые и эккриновые железы не следует объединять в один тип.",
+          "text_en": "Apocrine and eccrine glands should not be treated as one type.",
+          "source_ids": [
+            "openstax-skin"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "sebaceous",
+      "name_ru": "Сальные железы",
+      "name_en": "Sebaceous glands",
+      "system_ids": [
+        "integumentary"
+      ],
+      "kind": "gland_group",
+      "region": "distributed",
+      "position_ru": "В коже, обычно связанные с волосяными фолликулами.",
+      "position_en": "In skin, commonly associated with hair follicles.",
+      "function_ru": "Выделяют кожное сало, смазывающее кожу и волосы.",
+      "function_en": "Release sebum that lubricates skin and hair.",
+      "secretions_ru": [
+        "кожное сало"
+      ],
+      "secretions_en": [
+        "sebum"
+      ],
+      "facts": [
+        {
+          "text_ru": "Сальные железы относятся к придаткам кожи.",
+          "text_en": "Sebaceous glands are skin appendages.",
+          "source_ids": [
+            "openstax-skin"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "mammary",
+      "name_ru": "Молочные железы",
+      "name_en": "Mammary glands",
+      "system_ids": [
+        "reproductive",
+        "integumentary"
+      ],
+      "kind": "exocrine_gland",
+      "region": "thorax",
+      "position_ru": "В грудной области.",
+      "position_en": "In the breast region of the thorax.",
+      "function_ru": "При лактации образуют и выделяют молоко.",
+      "function_en": "During lactation, produce and release milk.",
+      "secretions_ru": [
+        "молоко"
+      ],
+      "secretions_en": [
+        "milk"
+      ],
+      "facts": [
+        {
+          "text_ru": "Пролактин стимулирует образование молока, а окситоцин участвует в его выделении.",
+          "text_en": "Prolactin stimulates milk production and oxytocin participates in milk ejection.",
+          "source_ids": [
+            "openstax-endocrine"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "prostate",
+      "name_ru": "Предстательная железа",
+      "name_en": "Prostate gland",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "pelvis",
+      "position_ru": "Под мочевым пузырём, вокруг части уретры.",
+      "position_en": "Below the urinary bladder, around part of the urethra.",
+      "function_ru": "Добавляет секрет к семенной жидкости.",
+      "function_en": "Adds secretion to seminal fluid.",
+      "secretions_ru": [
+        "секрет простаты"
+      ],
+      "secretions_en": [
+        "prostatic secretion"
+      ],
+      "facts": [
+        {
+          "text_ru": "Простата окружает простатическую часть уретры.",
+          "text_en": "The prostate surrounds the prostatic urethra.",
+          "source_ids": [
+            "openstax-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "seminal_vesicles",
+      "name_ru": "Семенные пузырьки",
+      "name_en": "Seminal vesicles",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "pelvis",
+      "position_ru": "Позади мочевого пузыря.",
+      "position_en": "Posterior to the urinary bladder.",
+      "function_ru": "Добавляют богатую фруктозой жидкость к семенной жидкости.",
+      "function_en": "Add fructose-rich fluid to seminal fluid.",
+      "secretions_ru": [
+        "семенная жидкость"
+      ],
+      "secretions_en": [
+        "seminal fluid"
+      ],
+      "facts": [
+        {
+          "text_ru": "Семенные пузырьки — парные добавочные железы мужской репродуктивной системы.",
+          "text_en": "Seminal vesicles are paired male accessory glands.",
+          "source_ids": [
+            "openstax-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "bulbourethral",
+      "name_ru": "Бульбоуретральные железы",
+      "name_en": "Bulbourethral glands",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "pelvis",
+      "position_ru": "В основании таза, рядом с уретрой.",
+      "position_en": "At the pelvic base, near the urethra.",
+      "function_ru": "Выделяют слизистый секрет в уретру.",
+      "function_en": "Release a mucus-rich secretion into the urethra.",
+      "secretions_ru": [
+        "слизь"
+      ],
+      "secretions_en": [
+        "mucus"
+      ],
+      "facts": [
+        {
+          "text_ru": "Их секрет помогает очищать и смазывать уретру.",
+          "text_en": "Their secretion helps cleanse and lubricate the urethra.",
+          "source_ids": [
+            "openstax-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "greater_vestibular",
+      "name_ru": "Большие железы преддверия",
+      "name_en": "Greater vestibular glands",
+      "system_ids": [
+        "reproductive"
+      ],
+      "kind": "exocrine_gland",
+      "region": "pelvis",
+      "position_ru": "В области наружных женских половых органов.",
+      "position_en": "In the region of the external female genitalia.",
+      "function_ru": "Выделяют густую слизь, поддерживающую влажность преддверия.",
+      "function_en": "Release thick mucus that helps maintain moisture in the vestibular area.",
+      "secretions_ru": [
+        "слизь"
+      ],
+      "secretions_en": [
+        "mucus"
+      ],
+      "facts": [
+        {
+          "text_ru": "Большие железы преддверия также называют бартолиновыми.",
+          "text_en": "Greater vestibular glands are also called Bartholin glands.",
+          "source_ids": [
+            "openstax-female-reproductive"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-female-reproductive"
+      ]
+    },
+    {
+      "id": "gastric_glands",
+      "name_ru": "Желудочные железы",
+      "name_en": "Gastric glands",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "gland_group",
+      "region": "abdomen",
+      "position_ru": "В слизистой оболочке желудка.",
+      "position_en": "In the stomach mucosa.",
+      "function_ru": "Выделяют компоненты желудочного сока.",
+      "function_en": "Release components of gastric juice.",
+      "secretions_ru": [
+        "соляная кислота",
+        "пепсиноген",
+        "слизь"
+      ],
+      "secretions_en": [
+        "hydrochloric acid",
+        "pepsinogen",
+        "mucus"
+      ],
+      "facts": [
+        {
+          "text_ru": "Это группа микроскопических желёз внутри стенки желудка, а не отдельный крупный орган.",
+          "text_en": "They are microscopic glands in the stomach wall, not a separate large organ.",
+          "source_ids": [
+            "openstax-stomach"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-stomach"
+      ]
+    },
+    {
+      "id": "intestinal_glands",
+      "name_ru": "Кишечные железы",
+      "name_en": "Intestinal glands",
+      "system_ids": [
+        "digestive"
+      ],
+      "kind": "gland_group",
+      "region": "abdomen",
+      "position_ru": "В слизистой оболочке тонкой и толстой кишки.",
+      "position_en": "In the mucosa of the small and large intestines.",
+      "function_ru": "Выделяют секреты, поддерживающие процессы в кишечнике.",
+      "function_en": "Release secretions that support intestinal processes.",
+      "secretions_ru": [
+        "кишечный секрет",
+        "слизь"
+      ],
+      "secretions_en": [
+        "intestinal secretion",
+        "mucus"
+      ],
+      "facts": [
+        {
+          "text_ru": "Это учебная группа желёз, а не перечень каждого микроскопического типа.",
+          "text_en": "This is a learning group of glands, not a list of every microscopic type.",
+          "source_ids": [
+            "openstax-intestines"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-intestines"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "anatomy-q01",
+      "topic": "function",
+      "stem_ru": "Какой орган перекачивает кровь по кругам кровообращения?",
+      "stem_en": "Which organ pumps blood through the circulatory circuits?",
+      "option_ids": [
+        "lungs",
+        "liver",
+        "heart",
+        "kidneys"
+      ],
+      "correct_id": "heart",
+      "explanation_ru": "Сердце — мышечный насос кровообращения.",
+      "explanation_en": "The heart is the muscular pump of circulation.",
+      "source_ids": [
+        "nhlbi-heart"
+      ]
+    },
+    {
+      "id": "anatomy-q02",
+      "topic": "location",
+      "stem_ru": "Какая железа находится под гипоталамусом?",
+      "stem_en": "Which gland lies below the hypothalamus?",
+      "option_ids": [
+        "pituitary",
+        "thyroid",
+        "pineal",
+        "adrenals"
+      ],
+      "correct_id": "pituitary",
+      "explanation_ru": "Гипофиз соединён с гипоталамусом ножкой.",
+      "explanation_en": "The pituitary is connected to the hypothalamus by a stalk.",
+      "source_ids": [
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "anatomy-q03",
+      "topic": "secretion",
+      "stem_ru": "Какая железа выделяет мелатонин?",
+      "stem_en": "Which gland releases melatonin?",
+      "option_ids": [
+        "pituitary",
+        "thyroid",
+        "parathyroids",
+        "pineal"
+      ],
+      "correct_id": "pineal",
+      "explanation_ru": "Мелатонин связан с работой эпифиза.",
+      "explanation_en": "Melatonin is associated with the pineal gland.",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "anatomy-q04",
+      "topic": "fact",
+      "stem_ru": "Какая структура, а именно задняя доля гипофиза, хранит и выделяет, но не производит окситоцин и АДГ?",
+      "stem_en": "Which structure, specifically the posterior lobe of the pituitary, stores and releases but does not produce oxytocin and ADH?",
+      "option_ids": [
+        "hypothalamus",
+        "pituitary",
+        "thyroid",
+        "pancreas"
+      ],
+      "correct_id": "pituitary",
+      "explanation_ru": "Задняя доля гипофиза хранит и выделяет гормоны, синтезированные в гипоталамусе.",
+      "explanation_en": "The posterior pituitary stores and releases hormones synthesized in the hypothalamus.",
+      "source_ids": [
+        "openstax-endocrine"
+      ]
+    },
+    {
+      "id": "anatomy-q05",
+      "topic": "function",
+      "stem_ru": "Какая железа смешанного типа выделяет и пищеварительный сок, и гормоны?",
+      "stem_en": "Which mixed gland releases digestive juice and hormones?",
+      "option_ids": [
+        "thyroid",
+        "pancreas",
+        "parotid",
+        "prostate"
+      ],
+      "correct_id": "pancreas",
+      "explanation_ru": "Поджелудочная железа имеет экзокринную и эндокринную части.",
+      "explanation_en": "The pancreas has exocrine and endocrine parts.",
+      "source_ids": [
+        "openstax-digestive"
+      ]
+    },
+    {
+      "id": "anatomy-q06",
+      "topic": "secretion",
+      "stem_ru": "Какой орган образует желчь?",
+      "stem_en": "Which organ produces bile?",
+      "option_ids": [
+        "gallbladder",
+        "pancreas",
+        "stomach",
+        "liver"
+      ],
+      "correct_id": "liver",
+      "explanation_ru": "Печень образует желчь; пузырь её хранит и концентрирует.",
+      "explanation_en": "The liver produces bile; the gallbladder stores and concentrates it.",
+      "source_ids": [
+        "openstax-digestive"
+      ]
+    },
+    {
+      "id": "anatomy-q07",
+      "topic": "location",
+      "stem_ru": "Какие железы обычно расположены на задней поверхности щитовидной железы?",
+      "stem_en": "Which glands are usually on the posterior surface of the thyroid?",
+      "option_ids": [
+        "parathyroids",
+        "adrenals",
+        "lacrimal",
+        "pituitary"
+      ],
+      "correct_id": "parathyroids",
+      "explanation_ru": "Паращитовидные железы отдельны от щитовидной, хотя расположены рядом.",
+      "explanation_en": "Parathyroids are separate from the thyroid although they lie nearby.",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "anatomy-q08",
+      "topic": "fact",
+      "stem_ru": "Какая железа вырабатывает кальцитонин, который не является главным регулятором кальция у взрослых?",
+      "stem_en": "Which gland produces calcitonin, which is not the main adult calcium regulator?",
+      "option_ids": [
+        "parathyroids",
+        "pituitary",
+        "thyroid",
+        "adrenals"
+      ],
+      "correct_id": "thyroid",
+      "explanation_ru": "Кальцитонин выделяет щитовидная железа; это не делает её главным регулятором кальция у взрослых.",
+      "explanation_en": "The thyroid releases calcitonin; that does not make it the main adult calcium regulator.",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "anatomy-q09",
+      "topic": "location",
+      "stem_ru": "Какие железы лежат на верхних полюсах почек?",
+      "stem_en": "Which glands lie on the superior poles of the kidneys?",
+      "option_ids": [
+        "adrenals",
+        "parathyroids",
+        "ovaries",
+        "pancreas"
+      ],
+      "correct_id": "adrenals",
+      "explanation_ru": "Надпочечники расположены над почками.",
+      "explanation_en": "Adrenal glands sit above the kidneys.",
+      "source_ids": [
+        "openstax-endocrine-review"
+      ]
+    },
+    {
+      "id": "anatomy-q10",
+      "topic": "function",
+      "stem_ru": "Какой орган фильтрует кровь и образует мочу?",
+      "stem_en": "Which organ filters blood and produces urine?",
+      "option_ids": [
+        "bladder",
+        "ureters",
+        "kidneys",
+        "urethra"
+      ],
+      "correct_id": "kidneys",
+      "explanation_ru": "Почки образуют мочу, которая далее идёт по мочеточникам.",
+      "explanation_en": "Kidneys form urine, which then travels through ureters.",
+      "source_ids": [
+        "niddk-kidneys"
+      ]
+    },
+    {
+      "id": "anatomy-q11",
+      "topic": "location",
+      "stem_ru": "Какая пара трубок проводит мочу от почек к мочевому пузырю?",
+      "stem_en": "Which paired tubes carry urine from kidneys to the bladder?",
+      "option_ids": [
+        "urethra",
+        "ureters",
+        "fallopian_tubes",
+        "blood_vessels"
+      ],
+      "correct_id": "ureters",
+      "explanation_ru": "Мочеточники идут от каждой почки к пузырю.",
+      "explanation_en": "Ureters run from each kidney to the bladder.",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "anatomy-q12",
+      "topic": "function",
+      "stem_ru": "Какой орган временно хранит мочу?",
+      "stem_en": "Which organ temporarily stores urine?",
+      "option_ids": [
+        "kidneys",
+        "ureters",
+        "prostate",
+        "bladder"
+      ],
+      "correct_id": "bladder",
+      "explanation_ru": "Мочевой пузырь служит резервуаром до мочеиспускания.",
+      "explanation_en": "The urinary bladder serves as a reservoir before urination.",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "anatomy-q13",
+      "topic": "fact",
+      "stem_ru": "Какая структура у мужчин проходит через предстательную железу?",
+      "stem_en": "Which structure passes through the prostate in males?",
+      "option_ids": [
+        "ureters",
+        "esophagus",
+        "trachea",
+        "urethra"
+      ],
+      "correct_id": "urethra",
+      "explanation_ru": "Мужская уретра проходит через простату.",
+      "explanation_en": "The male urethra passes through the prostate.",
+      "source_ids": [
+        "openstax-urinary"
+      ]
+    },
+    {
+      "id": "anatomy-q14",
+      "topic": "function",
+      "stem_ru": "Какие железы выделяют слюну в полость рта?",
+      "stem_en": "Which glands release saliva into the mouth?",
+      "option_ids": [
+        "lacrimal",
+        "parotid",
+        "sebaceous",
+        "adrenals"
+      ],
+      "correct_id": "parotid",
+      "explanation_ru": "Околоушные — одна из трёх пар больших слюнных желёз.",
+      "explanation_en": "Parotids are one of the three pairs of major salivary glands.",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "anatomy-q15",
+      "topic": "location",
+      "stem_ru": "Какие слюнные железы лежат под языком?",
+      "stem_en": "Which salivary glands lie beneath the tongue?",
+      "option_ids": [
+        "submandibular",
+        "parotid",
+        "sublingual",
+        "lacrimal"
+      ],
+      "correct_id": "sublingual",
+      "explanation_ru": "Подъязычные железы находятся на дне полости рта.",
+      "explanation_en": "Sublingual glands lie in the floor of the mouth.",
+      "source_ids": [
+        "openstax-salivary"
+      ]
+    },
+    {
+      "id": "anatomy-q16",
+      "topic": "secretion",
+      "stem_ru": "Какие железы выделяют слёзную жидкость?",
+      "stem_en": "Which glands release tear fluid?",
+      "option_ids": [
+        "lacrimal",
+        "parotid",
+        "mammary",
+        "sebaceous"
+      ],
+      "correct_id": "lacrimal",
+      "explanation_ru": "Слёзные железы увлажняют поверхность глаза.",
+      "explanation_en": "Lacrimal glands moisten the eye surface.",
+      "source_ids": [
+        "openstax-sensory"
+      ]
+    },
+    {
+      "id": "anatomy-q17",
+      "topic": "function",
+      "stem_ru": "Какая группа желёз особенно участвует в охлаждении тела водянистым потом?",
+      "stem_en": "Which gland group especially contributes to cooling with watery sweat?",
+      "option_ids": [
+        "apocrine_sweat",
+        "eccrine_sweat",
+        "sebaceous",
+        "gastric_glands"
+      ],
+      "correct_id": "eccrine_sweat",
+      "explanation_ru": "Эккриновые железы открываются на поверхность кожи.",
+      "explanation_en": "Eccrine glands open onto the skin surface.",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "anatomy-q18",
+      "topic": "secretion",
+      "stem_ru": "Какие железы выделяют кожное сало?",
+      "stem_en": "Which glands release sebum?",
+      "option_ids": [
+        "sebaceous",
+        "eccrine_sweat",
+        "lacrimal",
+        "intestinal_glands"
+      ],
+      "correct_id": "sebaceous",
+      "explanation_ru": "Сальные железы выделяют sebum, то есть кожное сало.",
+      "explanation_en": "Sebaceous glands release sebum.",
+      "source_ids": [
+        "openstax-skin"
+      ]
+    },
+    {
+      "id": "anatomy-q19",
+      "topic": "fact",
+      "stem_ru": "Какая пара желез образует ооциты и выделяет эстрогены и прогестерон?",
+      "stem_en": "Which paired glands produce oocytes and release estrogens and progesterone?",
+      "option_ids": [
+        "testes",
+        "adrenals",
+        "parathyroids",
+        "ovaries"
+      ],
+      "correct_id": "ovaries",
+      "explanation_ru": "Яичники — одновременно репродуктивные органы и эндокринные железы.",
+      "explanation_en": "Ovaries are both reproductive organs and endocrine glands.",
+      "source_ids": [
+        "nci-ovaries"
+      ]
+    },
+    {
+      "id": "anatomy-q20",
+      "topic": "function",
+      "stem_ru": "Какая пара желёз образует сперматозоиды и выделяет тестостерон?",
+      "stem_en": "Which paired glands produce sperm and release testosterone?",
+      "option_ids": [
+        "ovaries",
+        "seminal_vesicles",
+        "testes",
+        "prostate"
+      ],
+      "correct_id": "testes",
+      "explanation_ru": "Яички имеют репродуктивную и эндокринную функции.",
+      "explanation_en": "Testes have reproductive and endocrine functions.",
+      "source_ids": [
+        "nci-testes"
+      ]
+    },
+    {
+      "id": "anatomy-q21",
+      "topic": "secretion",
+      "stem_ru": "Какие добавочные железы мужской системы добавляют богатую фруктозой жидкость?",
+      "stem_en": "Which male accessory glands add fructose-rich fluid?",
+      "option_ids": [
+        "bulbourethral",
+        "prostate",
+        "seminal_vesicles",
+        "testes"
+      ],
+      "correct_id": "seminal_vesicles",
+      "explanation_ru": "Семенные пузырьки добавляют фруктозосодержащий секрет к семенной жидкости.",
+      "explanation_en": "Seminal vesicles add fructose-containing secretion to seminal fluid.",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "anatomy-q22",
+      "topic": "function",
+      "stem_ru": "Какие железы выделяют слизь в уретру?",
+      "stem_en": "Which glands release mucus into the urethra?",
+      "option_ids": [
+        "seminal_vesicles",
+        "greater_vestibular",
+        "mammary",
+        "bulbourethral"
+      ],
+      "correct_id": "bulbourethral",
+      "explanation_ru": "Бульбоуретральные железы очищают и смазывают уретру своим секретом.",
+      "explanation_en": "Bulbourethral gland secretion helps cleanse and lubricate the urethra.",
+      "source_ids": [
+        "openstax-reproductive"
+      ]
+    },
+    {
+      "id": "anatomy-q23",
+      "topic": "secretion",
+      "stem_ru": "Какие железы поддерживают влажность преддверия густой слизью?",
+      "stem_en": "Which glands help maintain vestibular moisture with thick mucus?",
+      "option_ids": [
+        "greater_vestibular",
+        "bulbourethral",
+        "lacrimal",
+        "gastric_glands"
+      ],
+      "correct_id": "greater_vestibular",
+      "explanation_ru": "Большие железы преддверия также известны как бартолиновы железы.",
+      "explanation_en": "Greater vestibular glands are also known as Bartholin glands.",
+      "source_ids": [
+        "openstax-female-reproductive"
+      ]
+    },
+    {
+      "id": "anatomy-q24",
+      "topic": "fact",
+      "stem_ru": "Какая группа желёз находится в стенке желудка, а не является отдельным крупным органом?",
+      "stem_en": "Which gland group lies in the stomach wall rather than being a separate large organ?",
+      "option_ids": [
+        "parotid",
+        "gastric_glands",
+        "adrenals",
+        "thyroid"
+      ],
+      "correct_id": "gastric_glands",
+      "explanation_ru": "Желудочные железы — микроскопические железы слизистой оболочки желудка.",
+      "explanation_en": "Gastric glands are microscopic glands of the stomach mucosa.",
+      "source_ids": [
+        "openstax-stomach"
+      ]
+    }
+  ]
+}
