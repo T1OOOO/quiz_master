@@ -128,28 +128,44 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     OrganAtlas atlas,
     List<OrganStructure> visible, {
     List<OrganQuestion>? retry,
-  }) => setState(() {
-    _round =
+  }) {
+    final round =
         retry ??
         atlas.round(
           seed: _seed++,
           count: 10,
           allowedIds: visible.map((item) => item.id),
         );
-    _training = true;
-    _index = 0;
-    if (retry == null) {
-      _score = 0;
-      _originalTotal = _round.length;
+    if (retry == null && round.isEmpty && visible.isNotEmpty) {
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => FactPracticePage(
+            scope: 'organs',
+            bundle: widget.bundle,
+            entityIds: visible.map((item) => item.id).toSet(),
+          ),
+        ),
+      );
+      return;
     }
-    _checked = false;
-    _finished = _round.isEmpty;
-    _answer = null;
-    if (retry == null) {
-      _missed = [];
-      _review = false;
-    }
-  });
+    setState(() {
+      _round = round;
+      _training = true;
+      _index = 0;
+      if (retry == null) {
+        _score = 0;
+        _originalTotal = _round.length;
+      }
+      _checked = false;
+      _finished = _round.isEmpty;
+      _answer = null;
+      if (retry == null) {
+        _missed = [];
+        _review = false;
+      }
+    });
+  }
+
   void _check() => setState(() {
     if (_answer == null || _checked) return;
     _checked = true;
@@ -263,7 +279,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                   border: const OutlineInputBorder(),
                   labelText: _t(
                     'Search organs, glands and systems',
-                    'Поиск органов, желёз и систем',
+                    'Поиск костей, органов и систем',
                   ),
                 ),
               ),
@@ -527,13 +543,17 @@ String _filterLabel(BuildContext context, String value) {
     'abdomen': 'Abdomen',
     'pelvis': 'Pelvis',
     'distributed': 'Distributed',
+    'upper_limb': 'Upper limb',
+    'lower_limb': 'Lower limb',
+    'spine': 'Spine',
     'organ': 'Organ',
     'endocrine_gland': 'Endocrine gland',
     'exocrine_gland': 'Exocrine gland',
     'mixed_gland': 'Mixed gland',
     'gland_group': 'Gland group',
     'endocrine_tissue': 'Endocrine tissue',
-    'bone_group': 'Bones',
+    'bone_group': 'Bone group',
+    'bone': 'Bone',
     'brain_region': 'Brain region',
     'nervous': 'Nervous system',
     'endocrine': 'Endocrine system',
@@ -554,13 +574,17 @@ String _filterLabel(BuildContext context, String value) {
     'abdomen': 'Живот',
     'pelvis': 'Таз',
     'distributed': 'Распределено',
+    'upper_limb': 'Верхняя конечность',
+    'lower_limb': 'Нижняя конечность',
+    'spine': 'Позвоночник',
     'organ': 'Орган',
     'endocrine_gland': 'Эндокринная железа',
     'exocrine_gland': 'Экзокринная железа',
     'mixed_gland': 'Смешанная железа',
     'gland_group': 'Группа желёз',
     'endocrine_tissue': 'Эндокринная ткань',
-    'bone_group': 'Кости',
+    'bone_group': 'Группа костей',
+    'bone': 'Кость',
     'brain_region': 'Отдел мозга',
     'nervous': 'Нервная',
     'endocrine': 'Эндокринная',

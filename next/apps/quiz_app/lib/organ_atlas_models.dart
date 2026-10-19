@@ -9,6 +9,9 @@ const organRegions = {
   'abdomen',
   'pelvis',
   'distributed',
+  'upper_limb',
+  'lower_limb',
+  'spine',
 };
 const organKinds = {
   'organ',
@@ -18,6 +21,7 @@ const organKinds = {
   'gland_group',
   'endocrine_tissue',
   'bone_group',
+  'bone',
   'brain_region',
 };
 const organDiagramGroups = {'skeleton', 'brain', 'organs'};

@@ -46,10 +46,12 @@ class FactPracticePage extends StatefulWidget {
     required this.scope,
     this.bundle,
     this.facts,
+    this.entityIds,
   });
   final String scope;
   final AssetBundle? bundle;
   final List<StudyFact>? facts;
+  final Set<String>? entityIds;
   @override
   State<FactPracticePage> createState() => _FactPracticePageState();
 }
@@ -78,7 +80,11 @@ class _FactPracticePageState extends State<FactPracticePage> {
     final facts =
         widget.facts ??
         await loadStudyFacts(widget.scope, bundle: widget.bundle);
-    return buildFactQuestions(facts);
+    final questions = buildFactQuestions(facts);
+    final entityIds = widget.entityIds;
+    return entityIds == null
+        ? questions
+        : questions.where((q) => entityIds.contains(q.fact.entityId)).toList();
   }
 
   @override

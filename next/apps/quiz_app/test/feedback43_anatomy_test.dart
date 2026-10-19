@@ -157,7 +157,7 @@ void main() {
 
       await tester.tap(find.byKey(const Key('organ-filters')));
       await tester.pumpAndSettle();
-      expect(find.text('Кости'), findsOneWidget);
+      expect(find.text('Группа костей'), findsOneWidget);
       expect(find.text('Отдел мозга'), findsOneWidget);
 
       await tester.enterText(find.byKey(const Key('organ-search')), 'skeleton');

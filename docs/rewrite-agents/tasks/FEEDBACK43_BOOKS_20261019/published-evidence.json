@@ -1,0 +1,19 @@
+{
+  "build_id": "quiz-2026.10.19-books-8954b166",
+  "helm_revision": "68",
+  "deployment_revision": "66",
+  "containers": [
+    {
+      "name": "api",
+      "image": "quiz-master:quiz-2026.10.19-books-8954b166@sha256:dd7166c8690a2009f6b6fa5ae6b8145f6328c93fd0b8e1d450cbe9de83b4ef13"
+    },
+    {
+      "name": "web",
+      "image": "quiz-master:quiz-2026.10.19-books-8954b166@sha256:dd7166c8690a2009f6b6fa5ae6b8145f6328c93fd0b8e1d450cbe9de83b4ef13"
+    }
+  ],
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "original_feedback_rows_preserved": 66,
+  "imagefs_available_percent": 20.559959683561875,
+  "publication_rollback_required": false
+}

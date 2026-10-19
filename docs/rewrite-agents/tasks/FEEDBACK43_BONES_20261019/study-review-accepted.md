@@ -1,0 +1,23 @@
+Independent reviewer: Google Antigravity gemini-4-argon-high
+
+Conversation: 20acfe37-3bfe-474f-8521-8a8b01fdd245
+
+**Verdict:** `ACCEPT EXACTDELTA` (`base_sha256: bb481d09669e86e0afc3c5ebbd153c85be599acd7a8e391b8232e287d2168cbd` → `new_sha256: 3b03a52084051fcff4c4a765f81eb7a30c851bbb71140cdc9af985b5573c025f`)
+
+### 1. Verification of `study-glossary-delta.json` and `catalog.json`
+Comparison of [study-glossary-delta.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK43_BONES_20261019/study-glossary-delta.json), [study-question-audit.md](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK43_BONES_20261019/study-question-audit.md), and [catalog.json](file:///E:/Projects/quiz_master/next/apps/quiz_app/assets/study/catalog.json) confirms:
+- All six `## Слова простыми словами` blocks are inserted immediately before each module’s existing review/self-check heading (`anchor_before`).
+- All 120 embedded questions (20 per module), `options`, `correct_answer` keys, `explanation` texts, `source_refs`, `sources[].url`, `source_quiz_ids`, and prior article body text are preserved intact.
+
+### 2. Factual Accuracy & Guardrails Against Overgeneralization
+Each glossary item is derived from the cited sources in [catalog.json](file:///E:/Projects/quiz_master/next/apps/quiz_app/assets/study/catalog.json) and avoids false universals:
+- **Map hachures & bearing (`geography-maps`):** `Штрихи внутри замкнутой горизонтали` is properly restricted to ticks pointing inside a closed contour (depression/впадина per USGS), rather than all map hachures. `Азимутальная эквидистантная проекция` is bounded to distances *from the chosen center* (`от выбранного центра`). `Пеленг` (direction angle) and `магнитное склонение` (angle between magnetic and true north) are stated without conflating reference norths.
+- **Keystone species & acclimatization (`nature`):** `Ключевой вид` is defined by disproportionate impact on the ecosystem interaction web (matching NPS), avoiding "largest predator" or "rarest species" tropes. `Акклиматизация` is explicitly bounded as a reversible physiological response of an individual organism within its lifetime, contrasted with population-level evolution. *(Minor non-blocking Russian style note: `из поверхности в грунт` for `Просачивание` is comprehensible as-is, though `с поверхности` is slightly more idiomatic).*
+- **Biological species concept (`nature-evolution`):** Explicitly scoped with `В биологической концепции вида...` (interbreeding capability and reproductive isolation rather than mere outward similarity), avoiding any claim that BSC applies universally to asexual or fossil taxa. `Эволюционное дерево` and `Генетический дрейф` avoid teleological ("ladder of perfection") or adaptive-only fallacies.
+- **Greek authorship (`greek-mythology`):** `Титаны` are anchored to Hesiod's genealogical scheme (`в гесиодовской схеме`); `Псевдо-Аполлодор` is presented as the conventional name (`принятое имя`) of an ancient myth compiler representing one version; `Гомеровский гимн` is framed as an ancient poem about a deity conveying its own version, without falsely attributing authorship to Homer.
+- **Countries & History (`geography-countries`, `history`):** Equal-area projection tradeoffs, UN M49 statistical coding, UNCLOS EEZ/baselines (non-sovereign territory), source context, audience, interpretation, and counterfactual causal testing are all factually sound.
+
+### 3. Evaluation Against Original Feedback #6 and #8
+- **Feedback #6 (quiz-relevant selected knowledge):** Satisfied. Previously mismatched ordinary quiz links (dogs, raccoons, flags removed in #6/#8) stay removed, while genuinely related normal quizzes (`prep-capitals-1`, `prep-capitals-world`, `prep-greek-mythology`, `prep-history-events`) remain adjacent via `source_quiz_ids`. Every module provides 20 embedded self-check questions (120 total) directly tied to the curated concepts.
+- **Feedback #8 (materials explain questions & accessibility):** As documented in [study-question-audit.md](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK43_BONES_20261019/study-question-audit.md), all 120 stems map to specific article sections, and the six plain-Russian glossaries bridge the dense terminology gaps (especially in `geography-maps` and `nature-evolution`) for an attentive general/teen-to-adult reader.
+- **Authored improvements vs. universal readability:** These glossaries are a concrete authored improvement in self-containment and comprehension for ordinary literate readers, **not** a literal guarantee of universal readability for infants, early primary children, or every possible age and Russian proficiency level.

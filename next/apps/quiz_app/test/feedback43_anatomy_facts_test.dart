@@ -15,11 +15,11 @@ void main() {
       organs.where((f) => f.fieldPath == 'kind' && f.valueRu == 'Отдел мозга'),
       hasLength(15),
     );
-    expect(organs.map((f) => f.entityId).toSet(), hasLength(75));
+    expect(organs.map((f) => f.entityId).toSet(), hasLength(281));
     final summary = {
       'facts': all.length,
       'sections': all.map((f) => f.scope).toSet().length,
-      'organs': 75,
+      'organs': 281,
       'bone_groups': counts.length,
     };
     // This receipt supplies measured coverage to the release package producer.

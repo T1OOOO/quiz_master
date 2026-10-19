@@ -1,0 +1,53 @@
+{
+  "session": "feedback43_reference",
+  "target": "https://quiz.kotopedia.org",
+  "viewport_css": "361x738",
+  "ballet": {
+    "status": "PASS",
+    "route": "/#/quiz/prep-ballet",
+    "navigator_position": 5,
+    "stem": "Кто написал музыку к сценической пантомиме «Чудесный мандарин»?",
+    "wrong_selected": "Арам Хачатурян",
+    "correct_revealed": "Бела Барток",
+    "article_opened": true,
+    "article_heading": "«Чудесный мандарин»: пантомима Бартока, а не балет Стравинского",
+    "source_labels": [
+      "Boosey & Hawkes: The Miraculous Mandarin",
+      "Boosey & Hawkes: authorised Miraculous Mandarin audio sample"
+    ],
+    "evidence": [
+      "01-ballet-target-before.png",
+      "02-ballet-wrong-reveal.png",
+      "03-ballet-article-top.png"
+    ]
+  },
+  "cerberus": {
+    "status": "PASS",
+    "route": "/#/quiz/dogs-biology-anatomy-part-2",
+    "navigator_position": 9,
+    "stem": "Сколько голов было у Цербера, стража подземного мира в греческой мифологии?",
+    "wrong_selected": "Одна",
+    "correct_revealed": "Три",
+    "article_control_visible": true,
+    "article_heading": "Почему в викторине у Цербера три головы",
+    "article_facts_verified": [
+      "all incorrect option numbers are listed",
+      "Apollodorus three-headed version",
+      "Hesiod fifty-headed caveat",
+      "fifty is absent from current options"
+    ],
+    "evidence": [
+      "08-dogs-exact-target-before.png",
+      "09-dogs-exact-wrong-reveal.png",
+      "10-dogs-exact-article-top.png",
+      "11-dogs-exact-article-later.png"
+    ]
+  },
+  "non_target_cerberus": {
+    "status": "RAW_NON_TARGET",
+    "navigator_position": 11,
+    "stem": "Сколько голов было у Цербера — стража Аида, согласно наиболее распространенным греческим мифам?",
+    "article_control_visible": false,
+    "evidence": ["05-dogs-target-before.png", "06-dogs-wrong-reveal.png", "07-dogs-revisit.json"]
+  }
+}
