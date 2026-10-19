@@ -1,0 +1,39 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e174]
+          - heading "Атлас созвездий" [level=2, ref=e175]
+          - button "Предыдущее созвездие" [ref=e176]
+          - button "Следующее созвездие" [ref=e177]
+        - group
+          - StaticText "Изучение · без рейтинга"
+          - textbox "Найти созвездие" [ref=e190]
+          - group
+            - checkbox "Андромеда" [checked=true, ref=e193]
+            - checkbox "Насос" [checked=false, ref=e194]
+            - checkbox "Райская Птица" [checked=false, ref=e195]
+            - checkbox "Водолей" [checked=false, ref=e196]
+            - checkbox "Орёл" [checked=false, ref=e197]
+            - checkbox "Жертвенник" [checked=false, ref=e198]
+          - StaticText "Андромеда"
+          - checkbox "Подписи" [checked=true, ref=e178]
+          - checkbox "Линии" [checked=true, ref=e179]
+          - button "Схема созвездия. Масштабируйте двумя пальцами, перемещайте и увеличивайте двойным касанием." [ref=e180]
+          - button "Увеличить" [ref=e181]
+          - button "Уменьшить" [ref=e182]
+          - button "Сбросить" [ref=e191]
+          - StaticText "Сводите пальцы для масштаба, перетаскивайте карту или дважды коснитесь нужного места."
+          - StaticText "Звёзды: доступный список"
+          - button "Альферац" [ref=e183]
+          - button "31 Дельта Андромеды" [ref=e184]
+          - button "35 Ню Андромеды" [ref=e185]
+          - button "37 Мю Андромеды" [ref=e186]
+          - button "Мирах" [ref=e187]
+          - button "Альмах" [ref=e188]
+          - StaticText "Альферац · звёздная величина 2.07 · прямое восхождение 0.139791 ч · склонение 29.090432°"
+          - group "О рисунке Андромеда — одно из 88 официальных созвездий. Количество звёзд на учебной схеме: 6. Самая яркая среди выбранных — Альферац. Соединительные линии взяты из «Стеллариума» и не обозначают официальные границы или физические связи между звёздами."
+            - button "Открыть источник данных" [ref=e192]
+          - button "Начать тренировку" [ref=e189]
+      - button "Отправить отзыв" [ref=e3]

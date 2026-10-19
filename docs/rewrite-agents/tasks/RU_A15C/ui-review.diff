@@ -1,0 +1,768 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 49b040b9..1d0ca599 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math';
+
+@@ -72,7 +74,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
+   String _t(String en, String ru) => _ru ? ru : en;
+   String _name(BeliefNode n) => _ru ? n.ru : n.en;
+-  String _v(String en, String ru) => _ru ? ru : en;
++  String _v(String en, String ru) => _ru ? russianLearningText(ru) : en;
+   List<BeliefNode> get _nodes =>
+       _atlas!.nodes.where((n) => n.section == _section).toList();
+   BeliefNode get _node => _atlas!.nodes.firstWhere((n) => n.id == _selected);
+@@ -593,7 +595,7 @@ class _Detail extends StatelessWidget {
+   final BeliefAtlas atlas;
+   final bool ru;
+   final ValueChanged<String> onTap;
+-  String v(String en, String r) => ru ? r : en;
++  String v(String en, String r) => ru ? russianLearningText(r) : en;
+   @override
+   Widget build(BuildContext c) {
+     final links = atlas.edges
+@@ -667,7 +669,7 @@ class _Detail extends StatelessWidget {
+                 ),
+                 icon: const Icon(Icons.open_in_new),
+                 label: Text(
+-                  '${v('Source', 'Источник')}: ${atlas.sources.firstWhere((s) => s.id == id).title}',
++                  '${v('Source', 'Источник')}: ${learningSourceTitle(atlas.sources.firstWhere((s) => s.id == id).title, russian: ru)}',
+                 ),
+               ),
+           ],
+@@ -763,7 +765,10 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
+                       )
+                     : '${_i + 1}/${_round.length}',
+               ),
+-              Text(ru ? q.ru : q.en, style: Theme.of(c).textTheme.titleLarge),
++              Text(
++                ru ? russianLearningText(q.ru) : q.en,
++                style: Theme.of(c).textTheme.titleLarge,
++              ),
+               const SizedBox(height: 12),
+               for (var j = 0; j < opts.length; j++)
+                 Padding(
+@@ -807,9 +812,9 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
+                       ? t('Correct.', 'Верно.')
+                       : t('Not quite.', 'Не совсем.'),
+                 ),
+-                Text(ru ? q.explainRu : q.explainEn),
++                Text(ru ? russianLearningText(q.explainRu) : q.explainEn),
+                 Text(
+-                  'Source: ${widget.atlas.sources.firstWhere((s) => s.id == q.sourceIds.first).title}',
++                  '${t('Source', 'Источник')}: ${learningSourceTitle(widget.atlas.sources.firstWhere((s) => s.id == q.sourceIds.first).title, russian: ru)}',
+                 ),
+                 FilledButton(
+                   key: const Key('belief-next'),
+diff --git a/next/apps/quiz_app/lib/brand_atlas.dart b/next/apps/quiz_app/lib/brand_atlas.dart
+index 21bae093..1efebeb9 100644
+--- a/next/apps/quiz_app/lib/brand_atlas.dart
++++ b/next/apps/quiz_app/lib/brand_atlas.dart
+@@ -1,6 +1,8 @@
+ /// A small source-linked, local brand reference and practice screen.
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math';
+
+@@ -559,7 +561,8 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+   String _t(String en, String ru) => _ru ? ru : en;
+   String _sectorName(Brand brand) => _ru ? brand.sectorRu : brand.sectorEn;
+   String _country(Brand brand) => _ru ? brand.countryRu : brand.countryEn;
+-  String _claim(String ru, String en) => _ru ? ru : en;
++  String _claim(String ru, String en) => _ru ? russianLearningText(ru) : en;
++  String _displayName(String value) => _ru ? russianLearningText(value) : value;
+   String _topicName(BrandQuestionKind? value) => switch (value) {
+     null => _t('Mixed topics', 'Все темы'),
+     BrandQuestionKind.owner => _t('Owners', 'Владельцы'),
+@@ -664,7 +667,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+     final sectors = atlas.brands.map(_sectorName).toSet().toList()..sort();
+     final matches = atlas.brands.where((brand) {
+       final haystack =
+-          '${brand.name} ${brand.sectorRu} ${brand.sectorEn} ${brand.countryRu} ${brand.countryEn} ${brand.founders.join(' ')} ${brand.formerNames.map((item) => item.name).join(' ')} ${atlas.ownerFor(brand).name}'
++          '${brand.name} ${brand.sectorRu} ${brand.sectorEn} ${brand.countryRu} ${brand.countryEn} ${brand.founders.join(' ')} ${brand.formerNames.map((item) => item.name).join(' ')} ${atlas.ownerFor(brand).name} ${_displayName(brand.name)} ${_displayName(atlas.ownerFor(brand).name)} ${brand.formerNames.map((item) => _displayName(item.name)).join(' ')}'
+               .toLowerCase();
+       return (_sector == null || _sector == _sectorName(brand)) &&
+           haystack.contains(_query.toLowerCase());
+@@ -675,7 +678,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+             ? _compareYears(a.foundedYear, b.foundedYear)
+             : _compareYears(b.foundedYear, a.foundedYear);
+       }
+-      final value = a.name.compareTo(b.name);
++      final value = _displayName(a.name).compareTo(_displayName(b.name));
+       return _ascending ? value : -value;
+     });
+     final selected = atlas.brands
+@@ -819,9 +822,9 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+             (brand) => Card(
+               child: ListTile(
+                 key: Key('brand-${brand.id}'),
+-                title: Text(brand.name),
++                title: Text(_displayName(brand.name)),
+                 subtitle: Text(
+-                  '${atlas.ownerFor(brand).name}\n${_sectorName(brand)} · ${_country(brand)}${brand.foundedYear == null ? '' : ' · ${brand.foundedYear}'}',
++                  '${_displayName(atlas.ownerFor(brand).name)}\n${_sectorName(brand)} · ${_country(brand)}${brand.foundedYear == null ? '' : ' · ${brand.foundedYear}'}',
+                 ),
+                 trailing: const Icon(Icons.chevron_right),
+                 onTap: () => _showBrand(brand.id),
+@@ -858,7 +861,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+               children: [
+                 Expanded(
+                   child: Text(
+-                    brand.name,
++                    _displayName(brand.name),
+                     style: Theme.of(context).textTheme.headlineSmall,
+                   ),
+                 ),
+@@ -880,7 +883,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+               ),
+             const SizedBox(height: 8),
+             Text(
+-              '${_t('Owner', 'Владелец')}: ${owner.name}',
++              '${_t('Owner', 'Владелец')}: ${_displayName(owner.name)}',
+               style: Theme.of(context).textTheme.titleSmall,
+             ),
+             Text(_claim(brand.ownershipNoteRu, brand.ownershipNoteEn)),
+@@ -983,7 +986,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+               children: [
+                 Expanded(
+                   child: Text(
+-                    owner.name,
++                    _displayName(owner.name),
+                     style: Theme.of(context).textTheme.headlineSmall,
+                   ),
+                 ),
+@@ -1009,7 +1012,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+               children: owned
+                   .map(
+                     (brand) => ActionChip(
+-                      label: Text(brand.name),
++                      label: Text(_displayName(brand.name)),
+                       onPressed: () => _showBrand(brand.id),
+                     ),
+                   )
+@@ -1029,7 +1032,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+       return TextButton.icon(
+         onPressed: () => _open(source.url),
+         icon: const Icon(Icons.open_in_new, size: 16),
+-        label: Text(source.title),
++        label: Text(learningSourceTitle(source.title, russian: _ru)),
+       );
+     }).toList(),
+   );
+@@ -1085,7 +1088,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+                       : null,
+                   minimumSize: const Size.fromHeight(48),
+                 ),
+-                child: Text(option),
++                child: Text(_displayName(option)),
+               ),
+             ),
+           ),
+diff --git a/next/apps/quiz_app/lib/constellation_atlas.dart b/next/apps/quiz_app/lib/constellation_atlas.dart
+index 7e0dd63f..451043cd 100644
+--- a/next/apps/quiz_app/lib/constellation_atlas.dart
++++ b/next/apps/quiz_app/lib/constellation_atlas.dart
+@@ -6,6 +6,14 @@ import 'package:url_launcher/url_launcher.dart';
+
+ import 'quizipedia.dart';
+
++String starLabel(Map<String, dynamic> star, bool russian) {
++  final russianName = star['name_ru'];
++  if (russian && russianName is String && russianName.trim().isNotEmpty) {
++    return russianName;
++  }
++  return star['name'] as String;
++}
++
+ class ConstellationAtlasPage extends StatefulWidget {
+   const ConstellationAtlasPage({
+     super.key,
+@@ -200,6 +208,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
+                 lines: lines,
+                 showNames: _showNames,
+                 showLines: _showLines,
++                russian: _russian,
+                 onDoubleTapDown: (details) =>
+                     _doubleTapAt = details.localPosition,
+                 onDoubleTap: () => _zoomAt(_doubleTapAt, 1.8),
+@@ -342,6 +351,7 @@ class _ConstellationCanvas extends StatelessWidget {
+     required this.lines,
+     required this.showNames,
+     required this.showLines,
++    required this.russian,
+     required this.onDoubleTapDown,
+     required this.onDoubleTap,
+     required this.onStar,
+@@ -349,7 +359,7 @@ class _ConstellationCanvas extends StatelessWidget {
+   final TransformationController controller;
+   final List<Map<String, dynamic>> stars;
+   final List<List> lines;
+-  final bool showNames, showLines;
++  final bool showNames, showLines, russian;
+   final GestureTapDownCallback onDoubleTapDown;
+   final GestureTapCallback onDoubleTap;
+   final ValueChanged<Map<String, dynamic>> onStar;
+@@ -403,6 +413,7 @@ class _ConstellationCanvas extends StatelessWidget {
+                     lines,
+                     showNames: showNames,
+                     showLines: showLines,
++                    russian: russian,
+                   ),
+                 ),
+               ),
+@@ -420,10 +431,11 @@ class _SkyPainter extends CustomPainter {
+     this.lines, {
+     required this.showNames,
+     required this.showLines,
++    required this.russian,
+   });
+   final List<Map<String, dynamic>> stars;
+   final List<List> lines;
+-  final bool showNames, showLines;
++  final bool showNames, showLines, russian;
+   @override
+   void paint(Canvas canvas, Size size) {
+     final points = projectConstellation(stars, size);
+@@ -452,7 +464,7 @@ class _SkyPainter extends CustomPainter {
+       if (showNames) {
+         final painter = TextPainter(
+           text: TextSpan(
+-            text: star['name'] as String,
++            text: starLabel(star, russian),
+             style: const TextStyle(color: Color(0xffd9efff), fontSize: 12),
+           ),
+           textDirection: TextDirection.ltr,
+@@ -477,7 +489,8 @@ class _SkyPainter extends CustomPainter {
+       old.stars != stars ||
+       old.lines != lines ||
+       old.showNames != showNames ||
+-      old.showLines != showLines;
++      old.showLines != showLines ||
++      old.russian != russian;
+ }
+
+ class _ZoomToolbar extends StatelessWidget {
+@@ -550,7 +563,7 @@ class _StarList extends StatelessWidget {
+                     ? Theme.of(context).colorScheme.secondaryContainer
+                     : null,
+               ),
+-              child: Text(star['name'] as String),
++              child: Text(starLabel(star, russian)),
+             ),
+         ],
+       ),
+@@ -568,8 +581,8 @@ class _StarCard extends StatelessWidget {
+       padding: const EdgeInsets.all(12),
+       child: Text(
+         russian
+-            ? '${star['name']} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
+-            : '${star['name']} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
++            ? '${starLabel(star, true)} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
++            : '${starLabel(star, false)} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
+       ),
+     ),
+   );
+diff --git a/next/apps/quiz_app/lib/country_learning.dart b/next/apps/quiz_app/lib/country_learning.dart
+index 0f592549..d455109e 100644
+--- a/next/apps/quiz_app/lib/country_learning.dart
++++ b/next/apps/quiz_app/lib/country_learning.dart
+@@ -2,6 +2,8 @@
+ /// source-labelled asset and creates no question for fields that are absent.
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math' as math;
+
+@@ -12,6 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
+ import 'quizipedia.dart';
+ import 'country_religions.dart';
+ import 'music_learning.dart';
++import 'country_labels_ru.dart';
+
+ const _factsAsset = 'assets/quizipedia/country_facts.json';
+
+@@ -660,7 +663,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                     relationEn:
+                         'Largest affiliation category in Pew Research Center estimates (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Population affiliation, not official state religion.',
+                     relationRu:
+-                        'Крупнейшая категория религиозной принадлежности по оценке Pew Research Center (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Принадлежность населения, а не официальная религия государства.',
++                        'Крупнейшая категория религиозной принадлежности по оценке Исследовательского центра Пью (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Принадлежность населения, а не официальная религия государства.',
+                   ),
+                 );
+           }
+@@ -705,9 +708,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+   }
+
+   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
+-  String _t(String en, String ru) => _ru ? ru : en;
++  String _t(String en, String ru) => _ru ? russianLearningText(ru) : en;
+   String _display(String value) {
+     if (!_ru) return value;
++    final localized = russianCountryLabel(value);
++    if (localized != value) return localized;
+     final country = _facts.where((f) => f.nameEn == value).firstOrNull;
+     if (country != null) return country.nameRu;
+     final relation = _associations.values
+@@ -715,6 +720,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+         .where((r) => r.nameEn == value)
+         .firstOrNull;
+     if (relation != null) return relation.nameRu;
++    if (value.contains(', ')) return value.split(', ').map(_display).join(', ');
+     return _russianFactLabels[value] ??
+         value
+             .replaceAll('million', 'млн')
+@@ -738,7 +744,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+       }
+     },
+     icon: const Icon(Icons.open_in_new, size: 14),
+-    label: Text(label ?? _t('Source', 'Источник')),
++    label: Text(
++      label == null
++          ? _t('Source', 'Источник')
++          : (_ru ? russianLearningText(label) : label),
++    ),
+   );
+   CountryFact? get _fact => _facts.where((f) => f.id == _selected).firstOrNull;
+   bool _matches(CountryFact fact) {
+@@ -747,6 +757,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+           fact.nameEn,
+           fact.nameRu,
+           fact.capital,
++          if (_ru) _display(fact.capital),
++          if (_ru) ...fact.languages.map(_display),
++          if (_ru) ...fact.currencies.map(_display),
+           ...fact.languages,
+           ...fact.currencies,
+           for (final row in _associations[fact.id] ?? <CountryAssociation>[])
+@@ -764,7 +777,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+           '',
+     'flag' => _ru ? fact.nameRu : fact.nameEn,
+     'capital' => _display(fact.capital),
+-    'currency' => fact.currencies.join(', '),
++    'currency' => fact.currencies.map(_display).join(', '),
+     'population' =>
+       fact.population > 0
+           ? '${(fact.population / 1000000).toStringAsFixed(1)} ${_t('m', 'млн')} (${fact.populationYear})'
+@@ -851,7 +864,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                           title: Text(_ru ? fact.nameRu : fact.nameEn),
+                           subtitle: Text(
+                             _sort == 'population'
+-                                ? '${fact.population} · ${fact.populationYear} · World Bank'
++                                ? '${fact.population} · ${fact.populationYear} · ${_t('World Bank', 'Всемирный банк')}'
+                                 : '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
+                           ),
+                           onTap: () {
+@@ -1289,7 +1302,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+     final name = question.country.nameRu;
+     return switch (question.kind) {
+       'religion' =>
+-        'Какая категория религиозной принадлежности была крупнейшей в стране $name по оценке Pew Research Center за ${question.association?.checked} год?',
++        'Какая категория религиозной принадлежности была крупнейшей в стране $name по оценке Исследовательского центра Пью за ${question.association?.checked} год?',
+       'flag' => 'Какой стране принадлежит этот флаг?',
+       'capital' => 'Столица страны $name?',
+       'language' =>
+@@ -1357,7 +1370,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+         Text(
+           _t(
+             'Pew Research Center · data ${data.year} · published ${data.publishedYear}',
+-            'Pew Research Center · данные ${data.year} · публикация ${data.publishedYear}',
++            'Исследовательский центр Пью · данные ${data.year} · публикация ${data.publishedYear}',
+           ),
+         ),
+         Wrap(
+@@ -1444,18 +1457,24 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                 ),
+               if (fact.currencies.isNotEmpty)
+                 Text(
+-                  field(_t('Currency', 'Валюта'), fact.currencies.join(', ')),
++                  field(
++                    _t('Currency', 'Валюта'),
++                    fact.currencies.map(_display).join(', '),
++                  ),
+                 ),
+               if (fact.population > 0)
+                 Text(
+                   field(
+                     _t('Population (approximate)', 'Население (примерно)'),
+-                    '${fact.population.toString().replaceAllMapped(RegExp(r"\B(?=(\d{3})+(?!\d))"), (_) => " ")} · ${fact.populationYear} · World Bank',
++                    '${fact.population.toString().replaceAllMapped(RegExp(r"\B(?=(\d{3})+(?!\d))"), (_) => " ")} · ${fact.populationYear} · ${_t('World Bank', 'Всемирный банк')}',
+                   ),
+                 ),
+               if (fact.areaKm2 != null)
+                 Text(
+-                  field(_t('Area', 'Площадь'), '${fact.areaKm2!.round()} km²'),
++                  field(
++                    _t('Area', 'Площадь'),
++                    '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
++                  ),
+                 ),
+               Text(field(_t('Region', 'Регион'), _display(fact.region))),
+               if (feature == null)
+@@ -1482,7 +1501,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                         contentPadding: EdgeInsets.zero,
+                         title: Text(_ru ? row.nameRu : row.nameEn),
+                         subtitle: Text(
+-                          '${_ru ? row.relationRu : row.relationEn}${row.checked.isEmpty ? '' : ' · ${row.checked}'}',
++                          '${_ru ? russianLearningText(row.relationRu) : row.relationEn}${row.checked.isEmpty ? '' : ' · ${row.checked}'}',
+                         ),
+                         trailing: row.sourceUrl.isEmpty
+                             ? null
+@@ -1663,7 +1682,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                       if (q.association != null)
+                         Text(
+                           _ru
+-                              ? q.association!.relationRu
++                              ? russianLearningText(q.association!.relationRu)
+                               : q.association!.relationEn,
+                         ),
+                       if (q.association?.sourceUrl.isNotEmpty ?? false)
+diff --git a/next/apps/quiz_app/lib/food_atlas.dart b/next/apps/quiz_app/lib/food_atlas.dart
+index dcfa245e..767ca847 100644
+--- a/next/apps/quiz_app/lib/food_atlas.dart
++++ b/next/apps/quiz_app/lib/food_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+
+ import 'package:flutter/material.dart';
+@@ -67,7 +69,7 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
+   String _categoryName(FoodDish dish) =>
+       _ru ? dish.categoryRu : dish.categoryEn;
+   String _region(FoodDish dish) => _ru ? dish.regionRu : dish.regionEn;
+-  String _claim(String ru, String en) => _ru ? ru : en;
++  String _claim(String ru, String en) => _ru ? russianLearningText(ru) : en;
+
+   void _retry() => setState(() {
+     _future = loadFoodAtlas(widget.bundle);
+@@ -309,7 +311,12 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
+                     mode: LaunchMode.externalApplication,
+                   ),
+                   icon: const Icon(Icons.open_in_new),
+-                  label: Text(atlas.sourceFor(id).title),
++                  label: Text(
++                    learningSourceTitle(
++                      atlas.sourceFor(id).title,
++                      russian: _ru,
++                    ),
++                  ),
+                 ),
+             ],
+           ),
+@@ -457,7 +464,12 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
+                     Uri.parse(atlas.sourceFor(id).url),
+                     mode: LaunchMode.externalApplication,
+                   ),
+-                  child: Text(atlas.sourceFor(id).title),
++                  child: Text(
++                    learningSourceTitle(
++                      atlas.sourceFor(id).title,
++                      russian: _ru,
++                    ),
++                  ),
+                 ),
+               FilledButton(
+                 onPressed: () {
+diff --git a/next/apps/quiz_app/lib/knowledge_atlas.dart b/next/apps/quiz_app/lib/knowledge_atlas.dart
+index ec1c03bf..0aa9d08a 100644
+--- a/next/apps/quiz_app/lib/knowledge_atlas.dart
++++ b/next/apps/quiz_app/lib/knowledge_atlas.dart
+@@ -1,6 +1,8 @@
+ /// A small, source-linked atlas for unranked history and culture practice.
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math';
+
+@@ -483,10 +485,13 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+   }
+
+   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
+-  String _text(String en, String ru) => _ru ? ru : en;
+-  String _eventName(AtlasEvent event) => _ru ? event.titleRu : event.titleEn;
+-  String _workName(AtlasWork work) => _ru ? work.titleRu : work.titleEn;
+-  String _personName(AtlasPerson person) => _ru ? person.nameRu : person.nameEn;
++  String _text(String en, String ru) => _ru ? russianLearningText(ru) : en;
++  String _eventName(AtlasEvent event) =>
++      _ru ? russianLearningText(event.titleRu) : event.titleEn;
++  String _workName(AtlasWork work) =>
++      _ru ? russianLearningText(work.titleRu) : work.titleEn;
++  String _personName(AtlasPerson person) =>
++      _ru ? russianLearningText(person.nameRu) : person.nameEn;
+
+   @override
+   Widget build(BuildContext context) => FutureBuilder<KnowledgeAtlas>(
+@@ -794,15 +799,17 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+             const SizedBox(height: 10),
+             _labelled(
+               _text('What happened', 'Что произошло'),
+-              _ru ? event.whatRu : event.whatEn,
++              _ru ? russianLearningText(event.whatRu) : event.whatEn,
+             ),
+             _labelled(
+               _text('Why it matters', 'Почему это важно'),
+-              _ru ? event.whyRu : event.whyEn,
++              _ru ? russianLearningText(event.whyRu) : event.whyEn,
+             ),
+             _labelled(
+               _text('What changed next', 'Что изменилось дальше'),
+-              _ru ? event.consequencesRu : event.consequencesEn,
++              _ru
++                  ? russianLearningText(event.consequencesRu)
++                  : event.consequencesEn,
+             ),
+             _sourceButton(event.sourceUrl),
+           ],
+@@ -831,9 +838,12 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+             const SizedBox(height: 8),
+             _labelled(
+               _text('Briefly', 'Кратко'),
+-              _ru ? work.summaryRu : work.summaryEn,
++              _ru ? russianLearningText(work.summaryRu) : work.summaryEn,
++            ),
++            _labelled(
++              _text('Fact', 'Факт'),
++              _ru ? russianLearningText(work.factRu) : work.factEn,
+             ),
+-            _labelled(_text('Fact', 'Факт'), _ru ? work.factRu : work.factEn),
+             Text(
+               _text('Creator', 'Создатель'),
+               style: Theme.of(context).textTheme.titleSmall,
+@@ -854,7 +864,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+                 (credit) => TextButton(
+                   onPressed: () => _showPerson(atlas, people[credit.personId]!),
+                   child: Text(
+-                    '${_personName(people[credit.personId]!)} — ${_ru ? credit.roleRu : credit.roleEn}',
++                    '${_personName(people[credit.personId]!)} — ${_ru ? russianLearningText(credit.roleRu) : credit.roleEn}',
+                   ),
+                 ),
+               ),
+@@ -881,7 +891,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+             ),
+             Text('${person.born} · ${person.roles.map(_roleLabel).join(', ')}'),
+             const SizedBox(height: 8),
+-            Text(_ru ? person.bioRu : person.bioEn),
++            Text(_ru ? russianLearningText(person.bioRu) : person.bioEn),
+             const SizedBox(height: 8),
+             Text(
+               _text('Works and participation', 'Произведения и участие'),
+@@ -1006,7 +1016,9 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+                   ),
+                   const SizedBox(height: 12),
+                   Text(
+-                    _ru ? question.promptRu : question.promptEn,
++                    _ru
++                        ? russianLearningText(question.promptRu)
++                        : question.promptEn,
+                     style: Theme.of(context).textTheme.titleMedium,
+                   ),
+                   const SizedBox(height: 12),
+@@ -1043,7 +1055,11 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+                           : '${_text('Correct answer:', 'Правильный ответ:')} ${_quizValue(atlas, question.answer)}',
+                       style: Theme.of(context).textTheme.titleSmall,
+                     ),
+-                    Text(_ru ? question.explanationRu : question.explanationEn),
++                    Text(
++                      _ru
++                          ? russianLearningText(question.explanationRu)
++                          : question.explanationEn,
++                    ),
+                     _sourceButton(question.sourceUrl),
+                     FilledButton.tonal(
+                       onPressed: () => setModalState(() {
+diff --git a/next/apps/quiz_app/lib/music_learning.dart b/next/apps/quiz_app/lib/music_learning.dart
+index 083687e4..551adde3 100644
+--- a/next/apps/quiz_app/lib/music_learning.dart
++++ b/next/apps/quiz_app/lib/music_learning.dart
+@@ -1,6 +1,8 @@
+ /// Sourced local music reference and finite, unranked visual practice.
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math';
+
+@@ -115,8 +117,9 @@ class MusicEntry {
+   final List<String> sourceIds;
+   final Map<String, dynamic>? visual;
+   String name(bool ru) => ru ? nameRu : nameEn;
+-  String description(bool ru) => ru ? descriptionRu : descriptionEn;
+-  String example(bool ru) => ru ? exampleRu : exampleEn;
++  String description(bool ru) =>
++      ru ? russianLearningText(descriptionRu) : descriptionEn;
++  String example(bool ru) => ru ? russianLearningText(exampleRu) : exampleEn;
+   bool matches(String query) =>
+       '$nameRu $nameEn $descriptionRu $descriptionEn $exampleRu $exampleEn'
+           .toLowerCase()
+@@ -215,7 +218,10 @@ class MusicVisual extends StatelessWidget {
+                 switch (visual['text']) {
+                   'tie' => '⌒',
+                   'crescendo' => '＜',
+-                  _ => visual['text'] as String,
++                  _ =>
++                    Localizations.localeOf(context).languageCode == 'ru'
++                        ? russianLearningText(visual['text'] as String)
++                        : visual['text'] as String,
+                 },
+                 textAlign: TextAlign.center,
+                 style: Theme.of(context).textTheme.headlineLarge,
+@@ -392,7 +398,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
+           ),
+           icon: const Icon(Icons.open_in_new, size: 16),
+           label: Text(
+-            '${_catalog!.sources[id]!.title} · ${_catalog!.sources[id]!.checkedOn}',
++            '${learningSourceTitle(_catalog!.sources[id]!.title, russian: _ru)} · ${_catalog!.sources[id]!.checkedOn}',
+           ),
+         ),
+     ],
+@@ -413,7 +419,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
+               entry.name(_ru),
+               style: Theme.of(context).textTheme.headlineSmall,
+             ),
+-            Text(_ru ? entry.nameEn : entry.nameRu),
++            if (!_ru) Text(entry.nameRu),
+             const SizedBox(height: 16),
+             if (entry.visual != null)
+               MusicVisual(visual: entry.visual!, label: entry.name(_ru)),
+@@ -668,7 +674,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
+                   ),
+             style: Theme.of(context).textTheme.titleLarge,
+           ),
+-          Text(_ru ? q.explanationRu : q.explanationEn),
++          Text(_ru ? russianLearningText(q.explanationRu) : q.explanationEn),
+           _sources(q.sourceIds),
+           FilledButton(
+             key: const Key('music-next'),
+diff --git a/next/apps/quiz_app/lib/organ_atlas.dart b/next/apps/quiz_app/lib/organ_atlas.dart
+index c5a51ff9..20e6996e 100644
+--- a/next/apps/quiz_app/lib/organ_atlas.dart
++++ b/next/apps/quiz_app/lib/organ_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+
+ import 'package:flutter/material.dart';
+@@ -65,7 +67,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
+   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
+   String _t(String en, String ru) => _ru ? ru : en;
+   String _name(OrganStructure item) => _ru ? item.nameRu : item.nameEn;
+-  String _v(String en, String ru) => _ru ? ru : en;
++  String _v(String en, String ru) => _ru ? russianLearningText(ru) : en;
+   void _reset() => setState(() => _camera.value = Matrix4.identity());
+   void _zoom(double value) {
+     final next = Matrix4.copy(_camera.value)..scaleByDouble(value, value, 1, 1);
+@@ -447,7 +449,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
+               Text(_v(question.explanationEn, question.explanationRu)),
+               for (final source in question.sourceIds)
+                 Text(
+-                  '${_t('Source', 'Источник')}: ${atlas.source(source).title}',
++                  '${_t('Source', 'Источник')}: ${learningSourceTitle(atlas.source(source).title, russian: _ru)}',
+                 ),
+               FilledButton(
+                 key: const Key('organ-next'),
+@@ -979,7 +981,7 @@ class _Detail extends StatelessWidget {
+   final OrganStructure item;
+   final OrganAtlas atlas;
+   final bool russian;
+-  String v(String en, String ru) => russian ? ru : en;
++  String v(String en, String ru) => russian ? russianLearningText(ru) : en;
+   @override
+   Widget build(BuildContext context) => Card(
+     key: const Key('organ-detail'),
+@@ -1018,7 +1020,7 @@ class _Detail extends StatelessWidget {
+               ),
+               icon: const Icon(Icons.open_in_new),
+               label: Text(
+-                '${v('Source', 'Источник')}: ${atlas.source(id).title}',
++                '${v('Source', 'Источник')}: ${learningSourceTitle(atlas.source(id).title, russian: russian)}',
+               ),
+             ),
+         ],
+diff --git a/next/apps/quiz_app/lib/quizipedia.dart b/next/apps/quiz_app/lib/quizipedia.dart
+index f54554ec..06a67847 100644
+--- a/next/apps/quiz_app/lib/quizipedia.dart
++++ b/next/apps/quiz_app/lib/quizipedia.dart
+@@ -1,6 +1,8 @@
+ /// Local, unranked visual practice. Answers stay outside ranked API models.
+ library;
+
++import 'russian_learning_text.dart';
++
+ import 'dart:convert';
+ import 'dart:math' as math;
+ import 'dart:ui' as ui;
+@@ -472,7 +474,9 @@ Map<String, Offset> projectConstellation(
+ }
+
+ String _t(BuildContext context, String en, String ru) =>
+-    Localizations.localeOf(context).languageCode == 'ru' ? ru : en;
++    Localizations.localeOf(context).languageCode == 'ru'
++    ? russianLearningText(ru)
++    : en;
+
+ String _localized(
+   BuildContext context,
+@@ -810,8 +814,20 @@ Future<void> _showCredits(BuildContext context, QuizipediaCatalog catalog) =>
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+-                        Text(credit['attribution'] as String),
+-                        Text(credit['license'] as String),
++                        Text(
++                          _t(
++                            context,
++                            credit['attribution'] as String,
++                            russianCreditAttribution(credit),
++                          ),
++                        ),
++                        Text(
++                          _t(
++                            context,
++                            credit['license'] as String,
++                            russianLearningText(credit['license'] as String),
++                          ),
++                        ),
+                         Wrap(
+                           spacing: 8,
+                           children: [
+@@ -1788,7 +1804,11 @@ class _QuizGameState extends State<_QuizGame> {
+                   style: OutlinedButton.styleFrom(
+                     minimumSize: const Size(44, 44),
+                   ),
+-                  child: Text(star['name'] as String),
++                  child: Text(
++                    Localizations.localeOf(context).languageCode == 'ru'
++                        ? star['name_ru'] as String? ?? star['name'] as String
++                        : star['name'] as String,
++                  ),
+                 ),
+             ],
+           ),
+@@ -1799,7 +1819,7 @@ class _QuizGameState extends State<_QuizGame> {
+   String _starDescription(Map<String, dynamic> star) => _t(
+     context,
+     '${star['name']} · magnitude ${star['magnitude']}',
+-    '${star['name']} · звёздная величина ${star['magnitude']}',
++    '${star['name_ru'] ?? star['name']} · звёздная величина ${star['magnitude']}',
+   );
+ }
