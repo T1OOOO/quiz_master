@@ -13,3 +13,7 @@ Bead: quiz_master-a0iz. Feature branch codex/quiz-v2. No main merge or productio
 External review gate: quiz_master-4z58. Managed Claude and official direct CLI could not authenticate (OAuth session expired and could not be refreshed). Different-provider review remains unaccepted before main merge/deployment. Independent Codex code/factual review is not claimed as different-provider acceptance. Hub child task task-32811a91c6c040c3877fa17cf59dce58 is REWORK with truthful authentication evidence.
 
 Shared checkout has unrelated work. Only explicit atlas/task files are committed; legacy mobile deletions, main/discovery/localization/backend/study changes belong to peers.
+
+Hub root submission was refused with `child results not accepted` because the different-provider child remains REWORK. Root task is intentionally not represented as accepted; implementation evidence and authentication follow-up remain available. No review gate was bypassed.
+
+Clean sparse worktree at implementation commit4357d734: `git pull --rebase origin codex/quiz-v2` reported HEAD up to date; offline dependency resolution and21 atlas/navigation/parser/camera tests passed. Re-running the importer in this clean checkout left the production country asset unchanged. Final isolated build evidence is isolated-build.log.
