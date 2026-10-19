@@ -1,0 +1,64 @@
+{
+  "as_of_utc": "2026-10-19",
+  "reviewer": "session-206c1fe8f0144409b40f8989d8b79364",
+  "model": "codex/gpt-6.1-sol/high (self-reported; runtime not verified)",
+  "scope": "Independent native candidate-first fact check and exact final private draft/source review; no publication acceptance.",
+  "clean_blind": false,
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_STAGE_SORCERY_PAIR_20261019/articles.json",
+    "sha256": "da04c273ec9a01ed5f9da46181bfd72baceebec16ce139b812e18c0bb40cad5e"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_STAGE_SORCERY_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "0670827764af1b510f68ad9e8b363b056b6469915958ca72ed101d8ae0a14c05"
+  },
+  "blind_answer_sha256": "c7098358417474e910ce86688b52a0a0e50000eb673e88a6aad6c456ca7d0abf",
+  "items": [
+    {
+      "id": "question:compositions019",
+      "question_id": "compositions019",
+      "verdict": "accepted_for_draft",
+      "blind_answer_option_id": "compositions019-opt-3",
+      "answer_integrity": "Grieg is the composer of the original stage music for Ibsen's Peer Gynt; Ibsen is the dramatist. Sibelius and Nielsen are not supported for this specific original score, and Ibsen is a role distractor, not another defensible composer answer.",
+      "checked_claims": [
+        "LA Phil explicitly identifies Ibsen's January 1874 invitation to Grieg and places Morning Mood, opening Suite I, in Act IV set in Africa.",
+        "Faber identifies original incidental music Op. 23 and later suites Op. 46 and Op. 55; its retail item is a string-orchestra arrangement and is not treated as the original score.",
+        "British Library's manuscript catalogue documents Suite II's four-number form, five-number first printing, and later withdrawal of the Mountain King's Daughter dance. The final article therefore avoids an unqualified movement count and tells readers to check the edition."
+      ],
+      "opened_sources": [
+        "https://www.laphil.com/works/peer-gynt-suite-no-1",
+        "https://www.fabermusic.com/shop/peer-gynt-suite-p14717",
+        "https://searcharchives.bl.uk/catalog/040-001945784",
+        "https://www.kodebergen.no/en/collections/edvard-grieg",
+        "https://www.kodebergen.no/samlingene/alle-griegs-opus"
+      ],
+      "pedagogy": "Separates play text, stage score, concert selection, scene context, and personal listening impression. Listening is conditional; no measured learning outcome is promised.",
+      "revision_history": "Initial unqualified eight-movement/two-four-movement sentence was challenged against the British Library record and removed before this exact final review."
+    },
+    {
+      "id": "question:compositions020",
+      "question_id": "compositions020",
+      "verdict": "accepted_for_draft",
+      "blind_answer_option_id": "compositions020-opt-1",
+      "answer_integrity": "BnF, LA Phil, and Boston Symphony identify Dukas as the composer. Goethe wrote the literary ballad; Ravel, Debussy, and Satie are not defensible composer answers for this named work.",
+      "checked_claims": [
+        "BnF dates the work to 1897 while specifying a composition period of 1896/1897 and calls it a symphonic scherzo after Goethe's Der Zauberlehrling; the final article keeps these date fields distinct.",
+        "LA Phil describes a tone poem, broom represented by bassoon, water-carrying and divided-broom episode, master's return, and later Fantasia association.",
+        "Boston Symphony supports Goethe's story sequence and says the quiet opening music returns to complete the frame. The final listening cues remain attributed and do not universalize the bassoon association."
+      ],
+      "opened_sources": [
+        "https://catalogue.bnf.fr/ark:/12148/cb139117204",
+        "https://www.laphil.com/works/the-sorcerers-apprentice",
+        "https://www.bso.org/works/dukas-the-sorcerers-apprentice"
+      ],
+      "pedagogy": "Separates composer, literary source, later film, source-described orchestration, and optional personal listening observations.",
+      "revision_history": "The initial unqualified composition-in-1897 wording was narrowed to work date 1897 plus composition period 1896–1897 before this exact final review."
+    }
+  ],
+  "limitations": [
+    "The informative brief and possible prior exposure mean the blind record is candidate-first, not clean first exposure.",
+    "The public compositions020 stem still says created in 1897; BnF's precise composition period is 1896/1897. The unchanged candidate remains unambiguous among its options, but a later independent editor should preserve this nuance.",
+    "Review relied on actually opened institutional catalogue/programme and publisher pages; no original score, recording, full manuscript, image rights, or performance was inspected.",
+    "The review is same-provider private draft evidence; genuine different-provider exact-text/source/options acceptance and editorial publication remain pending."
+  ]
+}
