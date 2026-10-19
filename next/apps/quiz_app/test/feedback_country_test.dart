@@ -104,4 +104,43 @@ void main() {
       expect(controller.value, camera);
     },
   );
+  testWidgets('map omits labels over polygon holes', (tester) async {
+    final controller = TransformationController();
+    addTearDown(controller.dispose);
+    const feature = QuizipediaFeature(
+      id: 'XX',
+      nameRu: 'Проверка',
+      nameEn: 'Test',
+      polygons: [
+        [
+          [
+            QuizipediaPoint(.1, .1),
+            QuizipediaPoint(.9, .1),
+            QuizipediaPoint(.9, .9),
+            QuizipediaPoint(.1, .9),
+            QuizipediaPoint(.1, .1),
+          ],
+          [
+            QuizipediaPoint(.3, .3),
+            QuizipediaPoint(.7, .3),
+            QuizipediaPoint(.7, .7),
+            QuizipediaPoint(.3, .7),
+            QuizipediaPoint(.3, .3),
+          ],
+        ],
+      ],
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: QuizipediaWorldMap(
+          features: const [feature],
+          controller: controller,
+          onSelect: (_) {},
+          overlayLabels: const {'XX': 'Outside-land-label'},
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Outside-land-label'), findsNothing);
+  });
 }

@@ -2149,6 +2149,22 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           final labelWidth = math.min(72.0, countryWidth - 8);
           final labelHeight = math.min(30.0, countryHeight - 6);
           if (labelWidth < 28 || labelHeight < 14) continue;
+          // A bounding box may span sea or a neighbouring country's enclave.
+          // Only show a label when its centre and corners fit the actual land.
+          final halfWidth = labelWidth / (2 * scene.width * scale);
+          final halfHeight = labelHeight / (2 * scene.height * scale);
+          if (!feature.contains(QuizipediaPoint(center.dx, center.dy)) ||
+              [-1, 1].any(
+                (x) => [-1, 1].any(
+                  (y) => !feature.contains(
+                    QuizipediaPoint(
+                      center.dx + x * halfWidth,
+                      center.dy + y * halfHeight,
+                    ),
+                  ),
+                ),
+              ))
+            continue;
           final rect = Rect.fromCenter(
             center: at,
             width: labelWidth,
