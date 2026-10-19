@@ -1,0 +1,28 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1772]
+          - heading "Тренировка по фактам" [level=2, ref=e1773]
+        - group
+          - StaticText "Факты из карточек · вопросы с проверкой ответа"
+          - StaticText "Локальная тренировка без рейтинга. Выберите тему или отдельный факт. В каждом раунде — до 10 вопросов; ошибки можно повторить."
+          - textbox "Название или тема" [ref=e1776]: череп
+            - StaticText "череп"
+          - button "Тип факта Все факты" [expanded=false, ref=e1774]
+          - button "Начать тренировку" [ref=e1775]
+          - StaticText "Доступно вопросов: 10"
+          - button "Череп Костей в группе" [ref=e1777]
+          - button "Череп Факт" [ref=e1778]
+          - button "Череп Факт" [ref=e1779]
+          - button "Череп Функция" [ref=e1780]
+          - button "Череп Тип" [ref=e1781]
+          - button "Череп Латинское название" [ref=e1782]
+          - button "Череп Примечание" [ref=e1783]
+          - button "Череп Положение" [ref=e1784]
+      - button "Отправить отзыв" [ref=e1593]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1594]
+        - tab "Квизы" [ref=e1595]
+        - tab "Статьи" [ref=e1596]

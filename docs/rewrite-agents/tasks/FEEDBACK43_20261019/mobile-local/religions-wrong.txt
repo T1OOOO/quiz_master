@@ -1,0 +1,23 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1410]
+          - heading "Тренировка по фактам" [level=2, ref=e1411]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Сфера» для «Вера бахаи»?"
+          - button "церковные общины" [disabled, ref=e1424]
+          - button "гимны" [disabled, ref=e1425]
+          - button "Веды" [disabled, ref=e1426]
+          - button "писания Бахауллы" [disabled, ref=e1427]
+          - group "Пока неверно Правильный ответ: писания Бахауллы"
+            - button "Официальный сайт всемирной общины бахаи" [ref=e1431]
+          - button "Завершить" [ref=e1429]
+          - button "К списку фактов" [ref=e1430]
+      - button "Отправить отзыв" [ref=e1347]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1348]
+        - tab "Квизы" [ref=e1349]
+        - tab "Статьи" [ref=e1350]

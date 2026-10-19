@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1138]
+          - heading "Тренировка по фактам" [level=2, ref=e1139]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "рисовая миска" [disabled, ref=e1183]
+          - button "запеканка" [disabled, ref=e1184]
+          - button "рыбное блюдо" [disabled, ref=e1185]
+          - button "выпечка" [disabled, ref=e1186]
+          - group "Верно Правильный ответ: рисовая миска"
+            - button "Хёсун Ро, «Корейский стол»: пибимпап" [ref=e1190]
+          - button "Завершить" [ref=e1188]
+          - button "К списку фактов" [ref=e1189]
+      - button "Отправить отзыв" [ref=e1081]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1082]
+        - tab "Квизы" [ref=e1083]
+        - tab "Статьи" [ref=e1084]

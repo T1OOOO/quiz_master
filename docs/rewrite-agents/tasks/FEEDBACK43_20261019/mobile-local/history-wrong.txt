@@ -1,0 +1,23 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e750]
+          - heading "Тренировка по фактам" [level=2, ref=e751]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Дата» для «Закон об отмене рабства»?"
+          - button "27 до н. э." [disabled, ref=e764]
+          - button "1543" [disabled, ref=e765]
+          - button "1917" [disabled, ref=e766]
+          - button "1833" [disabled, ref=e767]
+          - group "Пока неверно Правильный ответ: 1833"
+            - button "Источник" [ref=e771]
+          - button "Завершить" [ref=e769]
+          - button "К списку фактов" [ref=e770]
+      - button "Отправить отзыв" [ref=e696]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e697]
+        - tab "Квизы" [ref=e698]
+        - tab "Статьи" [ref=e699]

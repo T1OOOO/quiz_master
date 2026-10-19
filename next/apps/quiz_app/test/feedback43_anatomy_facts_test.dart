@@ -13,13 +13,13 @@ void main() {
     expect(counts.fold<int>(0, (sum, f) => sum + int.parse(f.valueRu)), 206);
     expect(
       organs.where((f) => f.fieldPath == 'kind' && f.valueRu == 'Отдел мозга'),
-      hasLength(9),
+      hasLength(15),
     );
-    expect(organs.map((f) => f.entityId).toSet(), hasLength(69));
+    expect(organs.map((f) => f.entityId).toSet(), hasLength(75));
     final summary = {
       'facts': all.length,
       'sections': all.map((f) => f.scope).toSet().length,
-      'organs': 69,
+      'organs': 75,
       'bone_groups': counts.length,
     };
     // This receipt supplies measured coverage to the release package producer.

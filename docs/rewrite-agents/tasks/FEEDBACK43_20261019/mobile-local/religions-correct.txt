@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1410]
+          - heading "Тренировка по фактам" [level=2, ref=e1411]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "церковные общины" [disabled, ref=e1435]
+          - button "гимны" [disabled, ref=e1436]
+          - button "Веды" [disabled, ref=e1437]
+          - button "писания Бахауллы" [disabled, ref=e1438]
+          - group "Верно Правильный ответ: писания Бахауллы"
+            - button "Официальный сайт всемирной общины бахаи" [ref=e1442]
+          - button "Завершить" [ref=e1440]
+          - button "К списку фактов" [ref=e1441]
+      - button "Отправить отзыв" [ref=e1347]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1348]
+        - tab "Квизы" [ref=e1349]
+        - tab "Статьи" [ref=e1350]

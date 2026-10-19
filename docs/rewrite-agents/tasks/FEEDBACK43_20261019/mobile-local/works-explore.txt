@@ -1,0 +1,35 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e823]
+          - heading "Атлас культуры" [level=2, ref=e824]
+          - button "Вопросы по всем фактам" [ref=e825]
+        - StaticText "Локальная тренировка · источники открываются в браузере"
+        - group
+          - button "Тренировать связи" [ref=e826]
+          - textbox "Поиск имён, произведений, периодов" [ref=e827]
+          - generic
+            - checkbox "Всё" [checked=true, ref=e828]
+            - checkbox "Фильмы" [checked=false, ref=e829]
+            - checkbox "Книги" [checked=false, ref=e830]
+            - checkbox "Опера" [checked=false, ref=e831]
+            - checkbox "Оратория" [checked=false, ref=e832]
+            - checkbox "Балет" [checked=false, ref=e833]
+            - checkbox "Пьесы" [checked=false, ref=e834]
+            - checkbox "Музыка" [checked=false, ref=e835]
+          - group "около 800 до н. э.–700 до н. э. · Книги «Одиссея» Кратко Эпическая поэма о долгом возвращении Одиссея домой после Троянской войны. Факт Поэма существовала в устной традиции до записи текста. Создатель"
+            - checkbox "Гомер" [checked=false, ref=e842]
+            - button "Источник" [ref=e843]
+          - button "около 800 до н. э.–700 до н. э. «Одиссея» Книги" [ref=e836]
+          - button "около 1308–1321 «Божественная комедия» Книги" [ref=e837]
+          - button "около 1600–1601 «Гамлет» Пьесы" [ref=e838]
+          - button "1605 «Дон Кихот» Книги" [ref=e839]
+          - button "около 1606 «Макбет» Пьесы" [ref=e840]
+          - button "1741 «Мессия» Оратория" [ref=e841]
+      - button "Отправить отзыв" [ref=e786]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e787]
+        - tab "Квизы" [ref=e788]
+        - tab "Статьи" [ref=e789]

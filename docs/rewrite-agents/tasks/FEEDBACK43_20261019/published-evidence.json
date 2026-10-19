@@ -1,0 +1,19 @@
+{
+  "build_id": "quiz-2026.10.19-feedback-5df1d538",
+  "helm_revision": "67",
+  "deployment_revision": "65",
+  "containers": [
+    {
+      "name": "api",
+      "image": "quiz-master:quiz-2026.10.19-feedback-5df1d538@sha256:ea1d2e9049f87f777df9b5b226dba5391aff4050bfd66c28690259d04b668561"
+    },
+    {
+      "name": "web",
+      "image": "quiz-master:quiz-2026.10.19-feedback-5df1d538@sha256:ea1d2e9049f87f777df9b5b226dba5391aff4050bfd66c28690259d04b668561"
+    }
+  ],
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "original_feedback_rows_preserved": 66,
+  "imagefs_available_percent": 20.35726567940025,
+  "publication_rollback_required": false
+}

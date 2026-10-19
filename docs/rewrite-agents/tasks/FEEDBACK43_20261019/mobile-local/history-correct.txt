@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e750]
+          - heading "Тренировка по фактам" [level=2, ref=e751]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "27 до н. э." [disabled, ref=e775]
+          - button "1543" [disabled, ref=e776]
+          - button "1917" [disabled, ref=e777]
+          - button "1833" [disabled, ref=e778]
+          - group "Верно Правильный ответ: 1833"
+            - button "Источник" [ref=e782]
+          - button "Завершить" [ref=e780]
+          - button "К списку фактов" [ref=e781]
+      - button "Отправить отзыв" [ref=e696]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e697]
+        - tab "Квизы" [ref=e698]
+        - tab "Статьи" [ref=e699]

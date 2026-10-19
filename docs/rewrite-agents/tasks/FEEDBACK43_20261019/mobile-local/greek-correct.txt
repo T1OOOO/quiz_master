@@ -1,0 +1,23 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1309]
+          - heading "Тренировка по фактам" [level=2, ref=e1310]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "музыка" [disabled, ref=e1335]
+          - button "небо" [disabled, ref=e1336]
+          - button "прорицание" [disabled, ref=e1337]
+          - button "любовь" [disabled, ref=e1338]
+          - group "Верно Правильный ответ: любовь"
+            - button "Гесиод, «Теогония», перевод Хью Эвелин-Уайта" [ref=e1342]
+            - button "Метрополитен-музей: греческие боги и религиозные практики" [ref=e1343]
+          - button "Завершить" [ref=e1340]
+          - button "К списку фактов" [ref=e1341]
+      - button "Отправить отзыв" [ref=e1237]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1238]
+        - tab "Квизы" [ref=e1239]
+        - tab "Статьи" [ref=e1240]

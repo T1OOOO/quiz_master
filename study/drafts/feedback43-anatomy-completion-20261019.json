@@ -1,0 +1,498 @@
+{
+  "schema_version": "qm-organ-atlas-completion-draft/v1",
+  "status": "draft_pending_independent_fact_check",
+  "scope_ru": "Точечное дополнение вводного атласа: четыре наружные доли коры, гиппокамп и миндалевидное тело. Это не каталог всех частей мозга и не предложение новых маркеров на схеме.",
+  "base_draft": {
+    "path": "study/drafts/feedback43-anatomy-20261019.json",
+    "sha256": "93443D961BE758D81B005078E57BB3053C7E6CCC41AB01EE0C2F4E9FCE5AF1A9",
+    "accepted_structure_count": 17,
+    "accepted_question_count": 17
+  },
+  "source_envelope": {
+    "entity_fields": [
+      "id",
+      "name_ru",
+      "name_en",
+      "name_la",
+      "diagram_group",
+      "system_ids",
+      "kind",
+      "region",
+      "position_ru",
+      "position_en",
+      "function_ru",
+      "function_en",
+      "secretions_ru",
+      "secretions_en",
+      "facts",
+      "note_ru",
+      "note_en",
+      "source_ids"
+    ],
+    "question_fields": [
+      "id",
+      "topic",
+      "stem_ru",
+      "option_ids",
+      "correct_id",
+      "explanation_ru",
+      "source_ids"
+    ],
+    "note_fields": [
+      "scope_ru",
+      "terminology_status_ru",
+      "diagram_anchor_policy_ru"
+    ],
+    "citation_rule_ru": "Каждый source_id в факте, вопросе или предложении латинского имени должен ссылаться на sources; терминологические предложения используют только точное поле term.la из сохранённого извлечения TA2."
+  },
+  "sources": [
+    {
+      "id": "openstax-cns",
+      "title_ru": "OpenStax Anatomy and Physiology 2e, 13.2: центральная нервная система",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+      "accessed": "2026-10-19",
+      "cache_path": ".run/feedback43_20261019/sources/openstax-brain.json",
+      "cache_sha256": "7168A2877A00694804991DA3ACCDAA6805AA7D9FD3684322E0F885E5BF8B0791"
+    },
+    {
+      "id": "fipat-ta2",
+      "title_ru": "FIPAT Terminologia Anatomica 2, официальный просмотрщик",
+      "url": "https://ta2viewer.openanatomy.org/",
+      "accessed": "2026-10-19",
+      "cache_path": ".run/feedback43_20261019/sources/ta2viewer-main.js",
+      "cache_sha256": "B673EC1A7BC44CF02F6B32F670F5F65F7E8A1D0F62ADD6403B5F506F62A93B91"
+    }
+  ],
+  "notes": {
+    "scope_ru": "Шесть карточек предназначены для поиска и фактов; они не заявляют исчерпывающую карту микроструктур, ядер, проводящих путей, сосудов или всех частей мозга.",
+    "terminology_status_ru": "Латинские строки ниже являются точными совпадениями term.la в сохранённом извлечении FIPAT TA2; перед импортом требуется независимая фактическая проверка другого провайдера.",
+    "diagram_anchor_policy_ru": "diagram_group: brain используется для фильтрации. Поле diagram_anchor намеренно отсутствует у всех шести записей: черновик не создаёт координат, проекций или изображённых ориентиров."
+  },
+  "brain_regions": [
+    {
+      "id": "brain-frontal-lobe",
+      "name_ru": "Лобная доля",
+      "name_en": "Frontal lobe",
+      "name_la": "lobus frontalis",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "Передняя часть коры больших полушарий; находится кпереди от центральной борозды.",
+      "position_en": "Anterior cerebral-cortex region, in front of the central sulcus.",
+      "function_ru": "На вводном уровне связывается прежде всего с двигательными функциями.",
+      "function_en": "At an introductory level, it is primarily associated with motor functions.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "OpenStax описывает лобную долю как область кпереди от центральной борозды и связывает её прежде всего с двигательными функциями.",
+          "text_en": "OpenStax places the frontal lobe anterior to the central sulcus and primarily associates it with motor functions.",
+          "source_ids": [
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    },
+    {
+      "id": "brain-parietal-lobe",
+      "name_ru": "Теменная доля",
+      "name_en": "Parietal lobe",
+      "name_la": "lobus parietalis",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "Часть коры позади центральной борозды и выше латеральной борозды.",
+      "position_en": "Cortical region behind the central sulcus and above the lateral sulcus.",
+      "function_ru": "На вводном уровне связывается с соматосенсорными ощущениями тела.",
+      "function_en": "At an introductory level, it is associated with somatosensation from the body.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "OpenStax называет соматосенсорику главной сенсорной темой теменной доли и помещает первичную соматосенсорную кору в постцентральной извилине.",
+          "text_en": "OpenStax identifies somatosensation as the main sensation associated with the parietal lobe and locates primary somatosensory cortex in the postcentral gyrus.",
+          "source_ids": [
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    },
+    {
+      "id": "brain-temporal-lobe",
+      "name_ru": "Височная доля",
+      "name_en": "Temporal lobe",
+      "name_la": "lobus temporalis",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "Расположена по другую сторону латеральной борозды от лобной и теменной долей.",
+      "position_en": "Separated from the frontal and parietal regions by the lateral sulcus.",
+      "function_ru": "На вводном уровне связывается с первичным слуховым ощущением.",
+      "function_en": "At an introductory level, it is associated with primary auditory sensation.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Латеральная борозда отделяет височную долю от других наружных долей; OpenStax связывает первичное слуховое ощущение с верхней височной извилиной.",
+          "text_en": "The lateral sulcus separates the temporal lobe from the other external lobes; OpenStax associates primary auditory sensation with the superior temporal lobe.",
+          "source_ids": [
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    },
+    {
+      "id": "brain-occipital-lobe",
+      "name_ru": "Затылочная доля",
+      "name_en": "Occipital lobe",
+      "name_la": "lobus occipitalis",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "Задняя область коры больших полушарий.",
+      "position_en": "Posterior region of the cerebral cortex.",
+      "function_ru": "На вводном уровне содержит области первичного зрительного восприятия.",
+      "function_en": "At an introductory level, it contains areas for primary visual perception.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Затылочная доля находится в задней части больших полушарий и включает первичную зрительную кору.",
+          "text_en": "The occipital lobe is in the posterior part of the cerebral hemispheres and includes the primary visual cortex.",
+          "source_ids": [
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    },
+    {
+      "id": "brain-hippocampus",
+      "name_ru": "Гиппокамп",
+      "name_en": "Hippocampus",
+      "name_la": "hippocampus",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "В медиальной части височной доли больших полушарий.",
+      "position_en": "In the medial part of the temporal lobe of the cerebral hemispheres.",
+      "function_ru": "Вместе с миндалевидным телом и прилежащей корой участвует в формировании долговременной памяти и эмоциональных реакциях.",
+      "function_en": "Together with the amygdala and adjacent cortex, it participates in long-term memory formation and emotional responses.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "OpenStax называет гиппокамп и миндалевидное тело медиальнодолевыми структурами, которые вместе с прилежащей корой участвуют в формировании долговременной памяти и эмоциональных реакциях.",
+          "text_en": "OpenStax describes the hippocampus and amygdala as medial-lobe structures that, with adjacent cortex, are involved in long-term memory formation and emotional responses.",
+          "source_ids": [
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    },
+    {
+      "id": "brain-amygdala",
+      "name_ru": "Миндалевидное тело",
+      "name_en": "Amygdaloid body (amygdala)",
+      "name_la": "corpus amygdaloideum",
+      "diagram_group": "brain",
+      "system_ids": [
+        "nervous"
+      ],
+      "kind": "brain_region",
+      "region": "head",
+      "position_ru": "В медиальной части височной доли больших полушарий.",
+      "position_en": "In the medial part of the temporal lobe of the cerebral hemispheres.",
+      "function_ru": "Вместе с гиппокампом и прилежащей корой участвует в формировании долговременной памяти и эмоциональных реакциях.",
+      "function_en": "Together with the hippocampus and adjacent cortex, it participates in long-term memory formation and emotional responses.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "В TA2 основной латинский термин — corpus amygdaloideum; «amygdala» приведено как латинский синоним. OpenStax описывает эту структуру вместе с гиппокампом как медиальнодолевую.",
+          "text_en": "TA2 gives corpus amygdaloideum as the primary Latin term and amygdala as a Latin synonym. OpenStax describes it with the hippocampus as a medial-lobe structure.",
+          "source_ids": [
+            "fipat-ta2",
+            "openstax-cns"
+          ]
+        }
+      ],
+      "note_ru": "",
+      "note_en": "",
+      "source_ids": [
+        "openstax-cns",
+        "fipat-ta2"
+      ]
+    }
+  ],
+  "latin_name_updates": [
+    {
+      "entity_id": "brain",
+      "name_ru": "Головной мозг",
+      "proposed_name_la": "encephalon",
+      "ta2_english": "brain",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "spinal_cord",
+      "name_ru": "Спинной мозг",
+      "proposed_name_la": "medulla spinalis",
+      "ta2_english": "spinal cord",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "larynx",
+      "name_ru": "Гортань",
+      "proposed_name_la": "larynx",
+      "ta2_english": "larynx",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "trachea",
+      "name_ru": "Трахея",
+      "proposed_name_la": "trachea",
+      "ta2_english": "trachea",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "lungs",
+      "name_ru": "Лёгкие",
+      "proposed_name_la": "pulmones",
+      "ta2_english": "lungs",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "heart",
+      "name_ru": "Сердце",
+      "proposed_name_la": "cor",
+      "ta2_english": "heart",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "spleen",
+      "name_ru": "Селезёнка",
+      "proposed_name_la": "splen",
+      "ta2_english": "spleen",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "stomach",
+      "name_ru": "Желудок",
+      "proposed_name_la": "gaster",
+      "ta2_english": "stomach",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "liver",
+      "name_ru": "Печень",
+      "proposed_name_la": "hepar",
+      "ta2_english": "liver",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "pancreas",
+      "name_ru": "Поджелудочная железа",
+      "proposed_name_la": "pancreas",
+      "ta2_english": "pancreas",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "small_intestine",
+      "name_ru": "Тонкая кишка",
+      "proposed_name_la": "intestinum tenue",
+      "ta2_english": "small intestine",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "large_intestine",
+      "name_ru": "Толстая кишка",
+      "proposed_name_la": "intestinum crassum",
+      "ta2_english": "large intestine",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "bladder",
+      "name_ru": "Мочевой пузырь",
+      "proposed_name_la": "vesica urinaria",
+      "ta2_english": "urinary bladder",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    },
+    {
+      "entity_id": "hypothalamus",
+      "name_ru": "Гипоталамус",
+      "proposed_name_la": "hypothalamus",
+      "ta2_english": "hypothalamus",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "anatomy-completion-brain-01",
+      "topic": "location",
+      "stem_ru": "Какая доля находится кпереди от центральной борозды и на вводном уровне прежде всего связана с двигательными функциями?",
+      "option_ids": [
+        "brain-frontal-lobe",
+        "brain-parietal-lobe",
+        "brain-temporal-lobe",
+        "brain-occipital-lobe"
+      ],
+      "correct_id": "brain-frontal-lobe",
+      "explanation_ru": "Лобная доля лежит кпереди от центральной борозды; OpenStax связывает её прежде всего с двигательными функциями.",
+      "source_ids": [
+        "openstax-cns"
+      ]
+    },
+    {
+      "id": "anatomy-completion-brain-02",
+      "topic": "function",
+      "stem_ru": "Какая доля лежит позади центральной борозды и связана с соматосенсорными ощущениями тела?",
+      "option_ids": [
+        "brain-parietal-lobe",
+        "brain-frontal-lobe",
+        "brain-temporal-lobe",
+        "brain-occipital-lobe"
+      ],
+      "correct_id": "brain-parietal-lobe",
+      "explanation_ru": "Теменная доля связана с соматосенсорикой; первичная соматосенсорная кора находится в постцентральной извилине.",
+      "source_ids": [
+        "openstax-cns"
+      ]
+    },
+    {
+      "id": "anatomy-completion-brain-03",
+      "topic": "function",
+      "stem_ru": "В какой доле находится первичная зрительная кора?",
+      "option_ids": [
+        "brain-occipital-lobe",
+        "brain-temporal-lobe",
+        "brain-parietal-lobe",
+        "brain-frontal-lobe"
+      ],
+      "correct_id": "brain-occipital-lobe",
+      "explanation_ru": "Первичная зрительная кора находится в затылочной доле.",
+      "source_ids": [
+        "openstax-cns"
+      ]
+    },
+    {
+      "id": "anatomy-completion-brain-04",
+      "topic": "function",
+      "stem_ru": "Какая доля связана с первичным слуховым ощущением, а не с первичным зрительным восприятием?",
+      "option_ids": [
+        "brain-temporal-lobe",
+        "brain-occipital-lobe",
+        "brain-parietal-lobe",
+        "brain-frontal-lobe"
+      ],
+      "correct_id": "brain-temporal-lobe",
+      "explanation_ru": "OpenStax связывает первичное слуховое ощущение с верхней височной долей; первичное зрительное восприятие относится к затылочной доле.",
+      "source_ids": [
+        "openstax-cns"
+      ]
+    },
+    {
+      "id": "anatomy-completion-brain-05",
+      "topic": "fact",
+      "stem_ru": "Какая из этих структур находится в медиальной части височной доли и участвует в формировании долговременной памяти?",
+      "option_ids": [
+        "brain-hippocampus",
+        "brain-frontal-lobe",
+        "brain-parietal-lobe",
+        "brain-occipital-lobe"
+      ],
+      "correct_id": "brain-hippocampus",
+      "explanation_ru": "OpenStax называет гиппокамп и миндалевидное тело медиальнодолевыми структурами и описывает их совместную учебную связь с памятью и эмоциональными реакциями.",
+      "source_ids": [
+        "openstax-cns"
+      ]
+    },
+    {
+      "id": "anatomy-completion-brain-06",
+      "topic": "latin_name",
+      "stem_ru": "Какой структуре соответствует латинское название corpus amygdaloideum?",
+      "option_ids": [
+        "brain-amygdala",
+        "brain-hippocampus",
+        "brain-temporal-lobe",
+        "brain-occipital-lobe"
+      ],
+      "correct_id": "brain-amygdala",
+      "explanation_ru": "В TA2 основной термин corpus amygdaloideum соответствует миндалевидному телу; amygdala приведено там как синоним.",
+      "source_ids": [
+        "fipat-ta2"
+      ]
+    }
+  ]
+}

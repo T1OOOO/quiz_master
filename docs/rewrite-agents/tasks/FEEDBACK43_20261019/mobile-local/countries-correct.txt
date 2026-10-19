@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e113]
+          - heading "Тренировка по фактам" [level=2, ref=e114]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "34.2 км²" [disabled, ref=e138]
+          - button "9372610 км²" [disabled, ref=e139]
+          - button "181034 км²" [disabled, ref=e140]
+          - button "468 км²" [disabled, ref=e141]
+          - group "Верно Правильный ответ: 468 км²"
+            - button "Справочный источник" [ref=e145]
+          - button "Завершить" [ref=e143]
+          - button "К списку фактов" [ref=e144]
+      - button "Отправить отзыв" [ref=e76]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e77]
+        - tab "Квизы" [ref=e78]
+        - tab "Статьи" [ref=e79]

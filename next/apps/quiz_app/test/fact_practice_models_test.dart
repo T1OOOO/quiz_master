@@ -36,7 +36,7 @@ void main() {
             .where((fact) => fact.scope == 'organs')
             .map((fact) => fact.entityId)
             .toSet(),
-        hasLength(69),
+        hasLength(75),
       );
       expect(
         facts.where(

@@ -1,0 +1,51 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - button "Назад" [ref=e3097]
+        - button "Домой" [ref=e3098]
+        - StaticText "Quiz Master"
+        - button "Открыть меню навигации" [ref=e3099]
+        - StaticText "Гастрономический этикет"
+        - StaticText "Все вопросы"
+        - progressbar "97"
+        - group "Навигация по вопросам"
+          - group
+            - generic
+              - button "1: отвечен 1: отвечен" [ref=e3108]
+                - button "1" [ref=e3119]
+              - button "2: отвечен 2: отвечен" [ref=e3109]
+                - button "2" [ref=e3120]
+              - button "3: отвечен 3: отвечен" [ref=e3110]
+                - button "3" [ref=e3121]
+              - button "4: отвечен 4: отвечен" [ref=e3111]
+                - button "4" [ref=e3122]
+              - button "5: отвечен 5: отвечен" [ref=e3112]
+                - button "5" [ref=e3123]
+              - button "6: отвечен 6: отвечен" [ref=e3113]
+                - button "6" [ref=e3124]
+              - button "7: отвечен 7: отвечен" [ref=e3114]
+                - button "7" [ref=e3125]
+              - button "8: отвечен 8: отвечен" [ref=e3115]
+                - button "8" [ref=e3126]
+              - button "9: отвечен 9: отвечен" [ref=e3116]
+                - button "9" [ref=e3127]
+              - button "10: отвечен 10: отвечен" [ref=e3117]
+                - button "10" [ref=e3128]
+              - button "11: отвечен 11: отвечен" [ref=e3118]
+                - button "11" [ref=e3129]
+        - button "Не уверен" [ref=e3100]
+        - group
+          - group "В какой стране чаевые официанту могут воспринять как оскорбление? Правильный ответ Япония В Японии качественный сервис считается обязанностью, и чаевые могут обидеть."
+            - button "Бразилия" [disabled, ref=e3102]
+            - button "США" [disabled, ref=e3103]
+            - button "Египет" [disabled, ref=e3104]
+            - button "Япония" [disabled, ref=e3105]
+            - button "Мексика" [disabled, ref=e3106]
+            - button "Франция" [disabled, ref=e3107]
+        - button "Завершить викторину" [ref=e3101]
+      - button "Отправить отзыв" [ref=e3093]
+      - tablist
+        - tab "Квизипедия" [ref=e3094]
+        - tab "Квизы" [selected, ref=e3095]
+        - tab "Статьи" [ref=e3096]

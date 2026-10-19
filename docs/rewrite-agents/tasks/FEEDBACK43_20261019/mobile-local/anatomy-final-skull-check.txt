@@ -1,0 +1,25 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1772]
+          - heading "Тренировка по фактам" [level=2, ref=e1773]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Костей в группе» для «Череп»?"
+          - button "7" [disabled, ref=e1786]
+          - button "22" [disabled, ref=e1787]
+          - button "60" [disabled, ref=e1788]
+          - button "4" [disabled, ref=e1789]
+          - group "Пока неверно Правильный ответ: 22"
+            - button "Издатель «ОпенСтакс»: анатомия и физиология: скелет" [ref=e1793]
+            - button "Издатель «ОпенСтакс»: череп" [ref=e1794]
+            - button "Официальный просмотрщик анатомической терминологии, второе издание" [ref=e1795]
+          - button "Завершить" [ref=e1791]
+          - button "К списку фактов" [ref=e1792]
+      - button "Отправить отзыв" [ref=e1593]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e1594]
+        - tab "Квизы" [ref=e1595]
+        - tab "Статьи" [ref=e1596]

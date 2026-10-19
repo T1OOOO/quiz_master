@@ -1,0 +1,23 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e344]
+          - heading "Тренировка по фактам" [level=2, ref=e345]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Город» для «Колизей»?"
+          - button "Рим" [disabled, ref=e378]
+          - button "Париж" [disabled, ref=e379]
+          - button "Петра" [disabled, ref=e380]
+          - button "Гиза" [disabled, ref=e381]
+          - group "Пока неверно Правильный ответ: Рим"
+            - button "Источник о памятнике" [ref=e385]
+          - button "Завершить" [ref=e383]
+          - button "К списку фактов" [ref=e384]
+      - button "Отправить отзыв" [ref=e308]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e309]
+        - tab "Квизы" [ref=e310]
+        - tab "Статьи" [ref=e311]

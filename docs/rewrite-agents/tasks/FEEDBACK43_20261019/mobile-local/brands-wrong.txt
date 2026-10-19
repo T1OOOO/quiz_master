@@ -1,0 +1,23 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1025]
+          - heading "Тренировка по фактам" [level=2, ref=e1026]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Страна» для «Адидас»?"
+          - button "Германия" [disabled, ref=e1059]
+          - button "Франция" [disabled, ref=e1060]
+          - button "Япония" [disabled, ref=e1061]
+          - button "США" [disabled, ref=e1062]
+          - group "Пока неверно Правильный ответ: Германия"
+            - button "Адидас: история компании" [ref=e1066]
+          - button "Завершить" [ref=e1064]
+          - button "К списку фактов" [ref=e1065]
+      - button "Отправить отзыв" [ref=e968]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e969]
+        - tab "Квизы" [ref=e970]
+        - tab "Статьи" [ref=e971]

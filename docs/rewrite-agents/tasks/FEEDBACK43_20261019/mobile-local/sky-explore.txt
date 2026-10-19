@@ -1,0 +1,43 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e175]
+          - heading "Атлас созвездий" [level=2, ref=e176]
+          - button "Вопросы по всем фактам" [ref=e177]
+          - button "Предыдущее созвездие" [ref=e178]
+          - button "Следующее созвездие" [ref=e179]
+        - group
+          - StaticText "Изучение · без рейтинга"
+          - textbox "Найти созвездие" [ref=e192]
+          - group
+            - checkbox "Андромеда" [checked=true, ref=e195]
+            - checkbox "Насос" [checked=false, ref=e196]
+            - checkbox "Райская Птица" [checked=false, ref=e197]
+            - checkbox "Водолей" [checked=false, ref=e198]
+            - checkbox "Орёл" [checked=false, ref=e199]
+            - checkbox "Жертвенник" [checked=false, ref=e200]
+          - StaticText "Андромеда"
+          - checkbox "Подписи" [checked=true, ref=e180]
+          - checkbox "Линии" [checked=true, ref=e181]
+          - button "Схема созвездия. Масштабируйте двумя пальцами, перемещайте и увеличивайте двойным касанием." [ref=e182]
+          - button "Увеличить" [ref=e183]
+          - button "Уменьшить" [ref=e184]
+          - button "Сбросить" [ref=e193]
+          - StaticText "Сводите пальцы для масштаба, перетаскивайте карту или дважды коснитесь нужного места."
+          - StaticText "Звёзды: доступный список"
+          - button "Альферац" [ref=e185]
+          - button "31 Дельта Андромеды" [ref=e186]
+          - button "35 Ню Андромеды" [ref=e187]
+          - button "37 Мю Андромеды" [ref=e188]
+          - button "Мирах" [ref=e189]
+          - button "Альмах" [ref=e190]
+          - group "О рисунке Андромеда — одно из 88 официальных созвездий. Количество звёзд на учебной схеме: 6. Самая яркая среди выбранных — Альферац. Соединительные линии взяты из «Стеллариума» и не обозначают официальные границы или физические связи между звёздами."
+            - button "Открыть источник данных" [ref=e194]
+          - button "Начать тренировку" [ref=e191]
+      - button "Отправить отзыв" [ref=e149]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e150]
+        - tab "Квизы" [ref=e151]
+        - tab "Статьи" [ref=e152]

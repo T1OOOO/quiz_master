@@ -1,0 +1,37 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1004]
+          - heading "Атлас брендов" [level=2, ref=e1005]
+          - button "Вопросы по всем фактам" [ref=e1006]
+        - group
+          - StaticText "Справочник с источниками · локальная тренировка без рейтинга"
+          - StaticText "Учебная подборка: 61 бренд и 39 компаний/групп. Это не полный мировой реестр. Связи владельцев проверены на 19.10.2026; даты основания, запуска и предшественников поясняются отдельно."
+          - textbox "Найти бренд, группу, основателя или старое название" [ref=e1007]
+          - generic
+            - checkbox "Все отрасли" [checked=true, ref=e1008]
+            - checkbox "автомобили" [checked=false, ref=e1009]
+            - checkbox "еда и напитки" [checked=false, ref=e1010]
+            - checkbox "медиа и игры" [checked=false, ref=e1011]
+            - checkbox "мода и роскошь" [checked=false, ref=e1012]
+            - checkbox "спорт и мода" [checked=false, ref=e1013]
+            - checkbox "технологии" [checked=false, ref=e1014]
+          - generic
+            - button "Сортировка Название" [expanded=false, ref=e1015]
+            - button "Порядок" [ref=e1016]
+            - button "Тема тренировки Все темы" [expanded=false, ref=e1017]
+            - button "Тренировка" [ref=e1018]
+          - StaticText "61 брендов"
+          - button "Адидас Адидас спорт и мода · Германия · 1949" [ref=e1019]
+          - button "Амазон Амазон технологии · США · 1994" [ref=e1020]
+          - button "Амазон Веб Сервисез Амазон технологии · США · 2006" [ref=e1021]
+          - button "Ауди Фольксваген автомобили · Германия · 1909" [ref=e1022]
+          - button "БМВ БМВ автомобили · Германия · 1916" [ref=e1023]
+          - button "Виндоус Майкрософт Корпорейшн технологии · США · 1985" [ref=e1024]
+      - button "Отправить отзыв" [ref=e968]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e969]
+        - tab "Квизы" [ref=e970]
+        - tab "Статьи" [ref=e971]

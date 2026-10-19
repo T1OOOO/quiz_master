@@ -1,0 +1,27 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e99]
+          - heading "Атлас стран" [level=2, ref=e100]
+          - button "Вопросы по всем фактам" [ref=e101]
+        - group
+          - textbox "Найти факт" [ref=e112]
+          - button "Список стран" [ref=e102]
+          - button "Фильтры и тренировка" [ref=e103]
+          - button "Подписи на карте Без подписей" [expanded=false, ref=e104]
+          - button "Сравнить страны: население и площадь" [ref=e105]
+          - StaticText "Нажмите на страну"
+          - button "Интерактивная карта мира" [ref=e106]
+          - button "Увеличить" [ref=e107]
+          - button "Уменьшить" [ref=e108]
+          - button "Весь мир" [ref=e109]
+          - button "Показать выбранную страну" [disabled, ref=e110]
+          - StaticText "Перетаскивайте · сближайте пальцы · двойное касание для зума"
+          - button "Тренировка: 10 вопросов" [ref=e111]
+      - button "Отправить отзыв" [ref=e76]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e77]
+        - tab "Квизы" [ref=e78]
+        - tab "Статьи" [ref=e79]

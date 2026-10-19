@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1025]
+          - heading "Тренировка по фактам" [level=2, ref=e1026]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Германия" [disabled, ref=e1070]
+          - button "Франция" [disabled, ref=e1071]
+          - button "Япония" [disabled, ref=e1072]
+          - button "США" [disabled, ref=e1073]
+          - group "Верно Правильный ответ: Германия"
+            - button "Адидас: история компании" [ref=e1077]
+          - button "Завершить" [ref=e1075]
+          - button "К списку фактов" [ref=e1076]
+      - button "Отправить отзыв" [ref=e968]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e969]
+        - tab "Квизы" [ref=e970]
+        - tab "Статьи" [ref=e971]

@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e844]
+          - heading "Тренировка по фактам" [level=2, ref=e845]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Габриэль Гарсиа Маркес" [disabled, ref=e869]
+          - button "Джейн Остин" [disabled, ref=e870]
+          - button "Джордж Оруэлл" [disabled, ref=e871]
+          - button "Пон Джун-хо" [disabled, ref=e872]
+          - group "Верно Правильный ответ: Джордж Оруэлл"
+            - button "Источник" [ref=e876]
+          - button "Завершить" [ref=e874]
+          - button "К списку фактов" [ref=e875]
+      - button "Отправить отзыв" [ref=e786]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e787]
+        - tab "Квизы" [ref=e788]
+        - tab "Статьи" [ref=e789]

@@ -1,0 +1,22 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e660]
+          - heading "Тренировка по фактам" [level=2, ref=e661]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Ритм и паузы" [disabled, ref=e685]
+          - button "Основы гармонии" [disabled, ref=e686]
+          - button "Динамика" [disabled, ref=e687]
+          - button "Темп" [disabled, ref=e688]
+          - group "Верно Правильный ответ: Темп"
+            - button "Открытая теория музыки: исполнительские обозначения" [ref=e692]
+          - button "Завершить" [ref=e690]
+          - button "К списку фактов" [ref=e691]
+      - button "Отправить отзыв" [ref=e615]
+      - tablist
+        - tab "Квизипедия" [selected, ref=e616]
+        - tab "Квизы" [ref=e617]
+        - tab "Статьи" [ref=e618]
