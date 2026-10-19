@@ -658,9 +658,13 @@ void main() {
         in (data['landmarks'] as List).cast<Map<String, dynamic>>()) {
       row['image_asset'] = 'assets/missing.png';
     }
-    await tester.pumpWidget(
-      MaterialApp(home: QuizipediaPage(bundle: _Bundle(data))),
-    );
+    (data['landmarks'] as List)[3].addAll({
+      'country_iso2': 'SG',
+      'country_name_en': 'Singapore',
+      'country_name_ru': 'Сингапур',
+    });
+    final bundle = _PhotoBundle(data)..failThumbs = true;
+    await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
     await tester.pumpAndSettle();
     await tester.runAsync(() async {
       await tester.tap(find.text('Landmark photographs'));
@@ -672,12 +676,30 @@ void main() {
     await tester.ensureVisible(picker);
     await tester.tap(picker);
     await tester.pumpAndSettle();
+    expect(bundle.thumbLoads, 1);
+    expect(find.byKey(const Key('landmark-thumbnails-retry')), findsOneWidget);
+    bundle.failThumbs = false;
+    await tester.tap(find.byKey(const Key('landmark-thumbnails-retry')));
+    await tester.pumpAndSettle();
+    expect(bundle.thumbLoads, 2);
+    expect(find.byKey(const Key('landmark-thumbnails-retry')), findsNothing);
+    expect(
+      bundle.photos,
+      hasLength(1),
+      reason: 'Picker must not fetch full-size images',
+    );
     tester.view.viewInsets = const FakeViewPadding(bottom: 280);
     addTearDown(tester.view.resetViewInsets);
     await tester.pump();
     await tester.enterText(find.byKey(const Key('landmark-search')), 'City 3');
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('landmark-choice-landmark:3')), findsOneWidget);
+    await tester.enterText(
+      find.byKey(const Key('landmark-search')),
+      'Singapore',
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('City 3 · Singapore'), findsOneWidget);
     expect(find.byKey(const Key('landmark-choice-landmark:0')), findsNothing);
     await tester.tap(find.byKey(const Key('landmark-choice-landmark:3')));
     await tester.pumpAndSettle();
@@ -867,8 +889,23 @@ class _Bundle extends CachingAssetBundle {
 class _PhotoBundle extends _Bundle {
   _PhotoBundle(super.catalog);
   final photos = <String>[];
+  int thumbLoads = 0;
+  bool failThumbs = false;
   @override
   Future<ByteData> load(String key) {
+    if (key == 'assets/quizipedia/landmark_thumbnails.json') {
+      thumbLoads++;
+      if (failThumbs) return Future.error(FlutterError('missing previews'));
+      final text = jsonEncode({
+        'schema_version': 'qm-landmark-thumbnails/v1',
+        'photos': {
+          for (final row in catalog['landmarks'] as List) row['id']: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC',
+        },
+      });
+      return Future.value(
+        ByteData.sublistView(Uint8List.fromList(utf8.encode(text))),
+      );
+    }
     if (key.startsWith('assets/missing')) {
       photos.add(key);
       return super.load('assets/missing.png');

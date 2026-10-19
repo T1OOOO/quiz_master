@@ -15,6 +15,8 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'question_articles.dart';
+import 'photo_thumbnails.dart';
+import 'waterways_models.dart';
 import 'country_learning.dart';
 import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
@@ -1025,6 +1027,7 @@ class _QuizGameState extends State<_QuizGame> {
   late QuizipediaSession _session;
   final TransformationController _controller = TransformationController();
   final Map<String, Future<ui.Image>> _images = {};
+  Future<PhotoThumbnails>? _thumbnailFuture;
   String? _selected;
   String? _exploreId;
   String? _starInfo;
@@ -1578,6 +1581,9 @@ class _QuizGameState extends State<_QuizGame> {
   }
 
   String _landmarkCountry(Map<String, dynamic> row) {
+    if (row['country_name_ru'] is String && row['country_name_en'] is String) {
+      return _localized(context, row, 'country_name');
+    }
     final countries = widget.catalog.countryRows.where(
       (c) => c['id'] == row['country_iso2'],
     );
@@ -1607,96 +1613,127 @@ class _QuizGameState extends State<_QuizGame> {
                 ).contains(normalized(query)),
               )
               .toList();
-          return SafeArea(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 16,
-                bottom: MediaQuery.viewInsetsOf(context).bottom,
-              ),
-              child: SizedBox(
-                height: MediaQuery.sizeOf(context).height * .8,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            _t(context, 'Photo catalog', 'Фотокаталог'),
-                            style: Theme.of(context).textTheme.titleLarge,
+          return FutureBuilder<PhotoThumbnails>(
+            future: _thumbnailFuture ??= PhotoThumbnails.load(widget.bundle),
+            builder: (context, thumbs) => SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  top: 16,
+                  bottom: MediaQuery.viewInsetsOf(context).bottom,
+                ),
+                child: SizedBox(
+                  height: MediaQuery.sizeOf(context).height * .8,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _t(context, 'Photo catalog', 'Фотокаталог'),
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: _t(context, 'Close', 'Закрыть'),
+                            onPressed: () => Navigator.pop(sheetContext),
+                            icon: const Icon(Icons.close),
+                          ),
+                        ],
+                      ),
+                      TextField(
+                        key: const Key('landmark-search'),
+                        onChanged: (value) =>
+                            setSheetState(() => query = value),
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search),
+                          labelText: _t(
+                            context,
+                            'Name, city or country',
+                            'Название, город или страна',
                           ),
                         ),
-                        IconButton(
-                          tooltip: _t(context, 'Close', 'Закрыть'),
-                          onPressed: () => Navigator.pop(sheetContext),
-                          icon: const Icon(Icons.close),
-                        ),
-                      ],
-                    ),
-                    TextField(
-                      key: const Key('landmark-search'),
-                      onChanged: (value) => setSheetState(() => query = value),
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        labelText: _t(
-                          context,
-                          'Name, city or country',
-                          'Название, город или страна',
-                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: rows.isEmpty
-                          ? Center(
-                              child: Text(
-                                _t(
-                                  context,
-                                  'No matching photographs',
-                                  'Фотографий по запросу нет',
-                                ),
-                              ),
-                            )
-                          : ListView.builder(
-                              itemCount: rows.length,
-                              itemBuilder: (context, index) {
-                                final row = rows[index];
-                                return ListTile(
-                                  key: Key('landmark-choice-${row['id']}'),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 4,
+                      const SizedBox(height: 8),
+                      if (thumbs.connectionState != ConnectionState.done)
+                        LinearProgressIndicator(
+                          semanticsLabel: _t(
+                            context,
+                            'Loading previews',
+                            'Загрузка превью',
+                          ),
+                        ),
+                      if (thumbs.hasError)
+                        TextButton.icon(
+                          key: const Key('landmark-thumbnails-retry'),
+                          onPressed: () =>
+                              setSheetState(() => _thumbnailFuture = null),
+                          icon: const Icon(Icons.refresh),
+                          label: Text(
+                            _t(
+                              context,
+                              'Retry previews',
+                              'Повторить загрузку превью',
+                            ),
+                          ),
+                        ),
+                      Expanded(
+                        child: rows.isEmpty
+                            ? Center(
+                                child: Text(
+                                  _t(
+                                    context,
+                                    'No matching photographs',
+                                    'Фотографий по запросу нет',
                                   ),
-                                  leading: SizedBox(
-                                    width: 64,
-                                    height: 56,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.asset(
-                                        row['image_asset'] as String,
-                                        bundle: widget.bundle,
-                                        scale: 1,
-                                        cacheWidth: 144,
-                                        fit: BoxFit.cover,
-                                        errorBuilder: (_, _, _) =>
-                                            const Icon(Icons.photo_outlined),
+                                ),
+                              )
+                            : ListView.builder(
+                                itemCount: rows.length,
+                                itemBuilder: (context, index) {
+                                  final row = rows[index];
+                                  final preview =
+                                      thumbs.data?.photos[row['id']];
+                                  return ListTile(
+                                    key: Key('landmark-choice-${row['id']}'),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                    ),
+                                    leading: SizedBox(
+                                      width: 64,
+                                      height: 56,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: preview == null
+                                            ? const Icon(Icons.photo_outlined)
+                                            : Image.memory(
+                                                preview,
+                                                fit: BoxFit.cover,
+                                                errorBuilder: (_, _, _) =>
+                                                    const Icon(
+                                                      Icons.photo_outlined,
+                                                    ),
+                                              ),
                                       ),
                                     ),
-                                  ),
-                                  title: Text(_localized(context, row, 'name')),
-                                  subtitle: Text(
-                                    '${_localized(context, row, 'city')} · ${_landmarkCountry(row)}',
-                                  ),
-                                  selected: row['id'] == _exploreId,
-                                  onTap: () => Navigator.pop(
-                                    sheetContext,
-                                    row['id'] as String,
-                                  ),
-                                );
-                              },
-                            ),
-                    ),
-                  ],
+                                    title: Text(
+                                      _localized(context, row, 'name'),
+                                    ),
+                                    subtitle: Text(
+                                      '${_localized(context, row, 'city')} · ${_landmarkCountry(row)}',
+                                    ),
+                                    selected: row['id'] == _exploreId,
+                                    onTap: () => Navigator.pop(
+                                      sheetContext,
+                                      row['id'] as String,
+                                    ),
+                                  );
+                                },
+                              ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -2206,6 +2243,10 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.overlayLabels = const {},
     this.showFlags = false,
     this.showSelectionLabel = true,
+    this.waters = const [],
+    this.selectedWater,
+    this.showWaterLabels = true,
+    this.onWaterSelect,
   });
   final List<QuizipediaFeature> features;
   final TransformationController controller;
@@ -2218,6 +2259,10 @@ class QuizipediaWorldMap extends StatefulWidget {
   final String? focusTarget;
   final Map<String, String> overlayLabels;
   final bool showFlags, showSelectionLabel;
+  final List<WaterShape> waters;
+  final String? selectedWater;
+  final bool showWaterLabels;
+  final ValueChanged<String>? onWaterSelect;
 
   @override
   State<QuizipediaWorldMap> createState() => _QuizipediaWorldMapState();
@@ -2416,11 +2461,15 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         bounds = rect;
       }
     }
+    _focusBounds(bounds!);
+  }
+
+  void _focusBounds(Rect bounds) {
     final worldWidth = _scene.width;
     final worldHeight = _scene.height;
     final scale = math
         .min(
-          _view.width * .7 / math.max(1, bounds!.width * worldWidth),
+          _view.width * .7 / math.max(1, bounds.width * worldWidth),
           _view.height * .7 / math.max(1, bounds.height * worldHeight),
         )
         .clamp(1.0, 16.0)
@@ -2439,6 +2488,38 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         )
         ..scaleByDouble(scale, scale, scale, 1),
     );
+  }
+
+  void _focusWater() {
+    final water = widget.waters
+        .where((f) => f.id == widget.selectedWater)
+        .firstOrNull;
+    if (water == null || _view.isEmpty) return;
+    final parts = [...water.polygons.map((p) => p.first), ...water.lines];
+    // Focus the part containing its real label anchor; do not span the date line.
+    final anchor = Offset(water.anchor.x, water.anchor.y);
+    final bounds = parts
+        .map(
+          (points) => Rect.fromLTRB(
+            points.map((p) => p.x).reduce(math.min),
+            points.map((p) => p.y).reduce(math.min),
+            points.map((p) => p.x).reduce(math.max),
+            points.map((p) => p.y).reduce(math.max),
+          ),
+        )
+        .toList();
+    final matching = bounds.where((b) => b.contains(anchor)).toList()
+      ..sort((a, b) => (a.width * a.height).compareTo(b.width * b.height));
+    var target = matching.isEmpty ? bounds.first : matching.first;
+    // Polar oceans cover all longitudes. Inspect a region around the water anchor.
+    if (target.width > .6) {
+      target = Rect.fromCenter(
+        center: anchor,
+        width: .4,
+        height: math.min(.25, target.height),
+      );
+    }
+    _focusBounds(target);
   }
 
   Widget _factLabels(Size scene) => IgnorePointer(
@@ -2649,12 +2730,20 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             IconButton(
               tooltip: _t(
                 context,
-                'Show selected country',
-                'Показать выбранную страну',
+                widget.selectedWater == null
+                    ? 'Show selected country'
+                    : 'Show selected water body',
+                widget.selectedWater == null
+                    ? 'Показать выбранную страну'
+                    : 'Показать выбранный водоём',
               ),
               icon: const Icon(Icons.center_focus_strong),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
-              onPressed: selected == null ? null : () => _focus(),
+              onPressed: widget.selectedWater != null
+                  ? _focusWater
+                  : selected == null
+                  ? null
+                  : () => _focus(),
             ),
           ],
         ),
@@ -2713,7 +2802,41 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                                   final hit = widget.features.reversed
                                       .where((f) => f.contains(point))
                                       .firstOrNull;
-                                  widget.onSelect(hit?.id);
+                                  final water =
+                                      widget.waters
+                                          .where(
+                                            (w) =>
+                                                w.kind != 'marine' &&
+                                                w.contains(
+                                                  WaterPoint(point.x, point.y),
+                                                  tolerance:
+                                                      6 /
+                                                      (scene.width *
+                                                          widget
+                                                              .controller
+                                                              .value
+                                                              .getMaxScaleOnAxis()),
+                                                ),
+                                          )
+                                          .firstOrNull ??
+                                      (hit == null
+                                          ? widget.waters
+                                                .where(
+                                                  (w) => w.contains(
+                                                    WaterPoint(
+                                                      point.x,
+                                                      point.y,
+                                                    ),
+                                                  ),
+                                                )
+                                                .firstOrNull
+                                          : null);
+                                  if (water != null &&
+                                      widget.onWaterSelect != null) {
+                                    widget.onWaterSelect!(water.id);
+                                  } else {
+                                    widget.onSelect(hit?.id);
+                                  }
                                 },
                           child: ValueListenableBuilder<Matrix4>(
                             valueListenable: widget.controller,
@@ -2722,6 +2845,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                               size: scene,
                               painter: _MapPainter(
                                 features: widget.features,
+                                waters: widget.waters,
+                                selectedWater: widget.selectedWater,
+                                showWaterLabels: widget.showWaterLabels,
                                 dark:
                                     Theme.of(context).brightness ==
                                     Brightness.dark,
@@ -2816,7 +2942,13 @@ class _MapPainter extends CustomPainter {
     required this.showLabels,
     required this.russian,
     required this.sceneScale,
+    this.waters = const [],
+    this.selectedWater,
+    this.showWaterLabels = true,
   });
+  final List<WaterShape> waters;
+  final String? selectedWater;
+  final bool showWaterLabels;
   final List<QuizipediaFeature> features;
   final Map<String, ui.Image> flags;
   final String? highlighted, selected, correct;
@@ -2830,6 +2962,7 @@ class _MapPainter extends CustomPainter {
       Offset.zero & size,
       Paint()..color = dark ? const Color(0xff101f2d) : const Color(0xffd9edfc),
     );
+    _paintWaters(canvas, size, marine: true);
     for (final feature in features) {
       for (final polygon in feature.polygons) {
         final path = Path()..fillType = PathFillType.evenOdd;
@@ -2881,6 +3014,7 @@ class _MapPainter extends CustomPainter {
         }
       }
     }
+    _paintWaters(canvas, size, marine: false);
     for (final feature in [
       ...features.where((f) => f.id != selected),
       ...features.where((f) => f.id == selected),
@@ -2905,6 +3039,7 @@ class _MapPainter extends CustomPainter {
         );
       }
     }
+    _paintWaterLabels(canvas, size);
     if (showLabels) {
       for (final feature in features) {
         if (feature.id != highlighted) continue;
@@ -2935,6 +3070,117 @@ class _MapPainter extends CustomPainter {
     }
   }
 
+  void _paintWaters(Canvas canvas, Size size, {required bool marine}) {
+    final matching = waters.where((w) => (w.kind == 'marine') == marine);
+    for (final water in [
+      ...matching.where((w) => w.id != selectedWater),
+      ...matching.where((w) => w.id == selectedWater),
+    ]) {
+      final selected = water.id == selectedWater;
+      final color = selected
+          ? const Color(0xfff6c762)
+          : dark
+          ? const Color(0xff4a90b8)
+          : const Color(0xff378cc0);
+      for (final polygon in water.polygons) {
+        final path = Path()..fillType = PathFillType.evenOdd;
+        for (final ring in polygon) {
+          path.moveTo(ring.first.x * size.width, ring.first.y * size.height);
+          for (final p in ring.skip(1)) {
+            path.lineTo(p.x * size.width, p.y * size.height);
+          }
+          path.close();
+        }
+        canvas.drawPath(
+          path,
+          Paint()
+            ..color = selected
+                ? color.withValues(alpha: .55)
+                : marine
+                ? (dark ? const Color(0xff153044) : const Color(0xffc8e5f6))
+                : color,
+        );
+        if (selected) {
+          canvas.drawPath(
+            path,
+            Paint()
+              ..color = color
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 2 / sceneScale,
+          );
+        }
+      }
+      for (final line in water.lines) {
+        final path = Path()
+          ..moveTo(line.first.x * size.width, line.first.y * size.height);
+        for (final p in line.skip(1)) {
+          path.lineTo(p.x * size.width, p.y * size.height);
+        }
+        canvas.drawPath(
+          path,
+          Paint()
+            ..color = color
+            ..style = PaintingStyle.stroke
+            ..strokeCap = StrokeCap.round
+            ..strokeJoin = StrokeJoin.round
+            ..strokeWidth = (selected ? 3 : 1.4) / sceneScale,
+        );
+      }
+    }
+  }
+
+  void _paintWaterLabels(Canvas canvas, Size size) {
+    if (!showWaterLabels) return;
+    final occupied = <Rect>[];
+    final ordered = [
+      ...waters.where((w) => w.id == selectedWater),
+      ...waters.where((w) => w.id != selectedWater),
+    ];
+    for (final water in ordered) {
+      final selected = water.id == selectedWater;
+      if (!selected &&
+          sceneScale < 2.5 &&
+          !const {'Q97', 'Q98', 'Q1239', 'Q788', 'Q7354'}.contains(water.id)) {
+        continue;
+      }
+      final text = russian ? water.nameRu : water.nameEn;
+      final at = Offset(
+        water.anchor.x * size.width,
+        water.anchor.y * size.height,
+      );
+      final label = TextPainter(
+        text: TextSpan(
+          text: text,
+          style: TextStyle(
+            fontSize: 12 / sceneScale,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      final rect = Rect.fromCenter(
+        center: at,
+        width: label.width + 12 / sceneScale,
+        height: 24 / sceneScale,
+      );
+      if (!selected &&
+          (!(Offset.zero & size).contains(rect.topLeft) ||
+              !(Offset.zero & size).contains(rect.bottomRight) ||
+              occupied.any((r) => r.overlaps(rect)))) {
+        continue;
+      }
+      occupied.add(rect);
+      _paintLabel(
+        canvas,
+        at,
+        text,
+        selected ? const Color(0xff251f12) : Colors.white,
+        selected ? const Color(0xfff6c762) : const Color(0xff164760),
+        sceneScale: sceneScale,
+      );
+    }
+  }
+
   Offset _centroid(QuizipediaFeature feature, Size size) {
     final ring = feature.polygons.first.first;
     final points = ring.length > 1 && ring.first == ring.last
@@ -2952,6 +3198,9 @@ class _MapPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _MapPainter old) =>
       features != old.features ||
+      waters != old.waters ||
+      selectedWater != old.selectedWater ||
+      showWaterLabels != old.showWaterLabels ||
       dark != old.dark ||
       flags != old.flags ||
       highlighted != old.highlighted ||

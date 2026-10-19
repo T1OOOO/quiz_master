@@ -1,0 +1,67 @@
+{
+  "accounting": {
+    "planned_total_bytes": 287253881
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "deployment_revision": "71",
+    "helm_deployed_revision": 73,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 72
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "input_sha256": "1053f1700d1c6bea8fbe2a37fe42cc3ad1dd004835f8075f58c9eb1e9358c71f"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-water-baseline-20261020",
+  "plan_only": true,
+  "purpose": "Archive7 literal redundant copied release73 inputs/proofcopies only; keep runtimeimages/livePVC/allpublishedbackups/chart/support/receipts/metadata and complete hash-verified local release73 package. No prune or thresholdchange. Localverified hash/SQLite/fsync/ACL archive before exact deletion.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 93086986,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74919936,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 74919936,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 12830714,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/web-delta",
+      "sqlite": false
+    }
+  ]
+}

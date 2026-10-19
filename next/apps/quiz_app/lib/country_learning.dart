@@ -14,6 +14,8 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
+import 'waterways_models.dart';
+import 'waterways_page.dart';
 import 'country_religions.dart';
 import 'music_learning.dart';
 import 'country_labels_ru.dart';
@@ -603,6 +605,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   bool _reverseRelations = false;
   bool _filtersVisible = false;
   String _layer = 'none', _sort = 'population';
+  WaterAtlas? _waters;
+  String? _selectedWater;
+  bool _loadingWater = false;
+  Object? _waterError;
   bool _descending = true;
   Object? _loadError;
   CountryReligions? _religions;
@@ -612,6 +618,29 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   void initState() {
     super.initState();
     _load();
+  }
+
+  void _selectWater(String id) {
+    setState(() {
+      _selectedWater = id;
+      _selected = _focus = '';
+    });
+  }
+
+  Future<void> _loadWater() async {
+    if (_loadingWater || _waters != null) return;
+    setState(() {
+      _loadingWater = true;
+      _waterError = null;
+    });
+    try {
+      final water = await WaterAtlas.load(widget.bundle);
+      if (mounted) setState(() => _waters = water);
+    } catch (error) {
+      if (mounted) setState(() => _waterError = error);
+    } finally {
+      if (mounted) setState(() => _loadingWater = false);
+    }
   }
 
   void _load() {
@@ -873,6 +902,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           onTap: () {
                             Navigator.pop(context);
                             setState(() {
+                              _selectedWater = null;
                               _selected = fact.id;
                               _focus = fact.id;
                             });
@@ -941,6 +971,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                             onTap: () {
                               Navigator.pop(context);
                               setState(() {
+                                _selectedWater = null;
                                 _selected = fact.id;
                                 _focus = fact.id;
                               });
@@ -1234,8 +1265,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                             ),
                           ),
                       ],
-                      onChanged: (value) =>
-                          change(() => _layer = value ?? 'none'),
+                      onChanged: (value) {
+                        change(() => _layer = value ?? 'none');
+                        if (_layer == 'water') _loadWater();
+                      },
                     ),
                   ),
                   TextButton.icon(
@@ -1355,6 +1388,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                               onPressed: () {
                                 FocusManager.instance.primaryFocus?.unfocus();
                                 setState(() {
+                                  _selectedWater = null;
                                   _selected = fact.id;
                                   _focus = fact.id;
                                   _region = 'All';
@@ -1367,6 +1401,66 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       .toList(),
                 ),
               ),
+            if (_layer == 'water') ...[
+              if (_loadingWater) const LinearProgressIndicator(),
+              if (_waterError != null)
+                TextButton.icon(
+                  key: const Key('water-geometry-retry'),
+                  onPressed: _loadWater,
+                  icon: const Icon(Icons.refresh),
+                  label: Text(
+                    _t('Retry water map', 'Повторить загрузку водоёмов'),
+                  ),
+                ),
+              if (_waters != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          key: const Key('water-picker'),
+                          icon: const Icon(Icons.search),
+                          label: Text(
+                            _selectedWater == null
+                                ? _t('Water bodies · 63', 'Водоёмы · 63')
+                                : (_waters!.features
+                                          .where((w) => w.id == _selectedWater)
+                                          .map((w) => _ru ? w.nameRu : w.nameEn)
+                                          .firstOrNull ??
+                                      ''),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          onPressed: () async {
+                            final id = await pickWater(context, _waters!);
+                            if (mounted && id != null) {
+                              _selectWater(id);
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(
+                        tooltip: _t(
+                          'Recognize water bodies',
+                          'Узнавать водоёмы',
+                        ),
+                        icon: const Icon(Icons.quiz_outlined),
+                        key: const Key('water-training'),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => WaterPracticePage(
+                              catalog: widget.catalog,
+                              atlas: _waters!,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
             Expanded(
               child: QuizipediaWorldMap(
                 features: _visible,
@@ -1375,7 +1469,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 highlighted: _focus.isEmpty ? null : _focus,
                 showSelectionLabel: false,
                 showLabels: _layer == 'none',
-                overlayLabels: _layer == 'none'
+                waters: _layer == 'water'
+                    ? (_waters?.features ?? const [])
+                    : const [],
+                selectedWater: _layer == 'water' ? _selectedWater : null,
+                onWaterSelect: _selectWater,
+                overlayLabels: _layer == 'none' || _layer == 'water'
                     ? const {}
                     : {
                         for (final fact in _facts)
@@ -1386,6 +1485,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 onSelect: (id) {
                   FocusManager.instance.primaryFocus?.unfocus();
                   setState(() {
+                    _selectedWater = null;
                     _selected = id ?? '';
                     _focus = id ?? '';
                   });
@@ -1663,6 +1763,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         label: Text(_ru ? neighbor.nameRu : neighbor.nameEn),
                         avatar: const Icon(Icons.compare_arrows, size: 16),
                         onPressed: () => change(() {
+                          _selectedWater = null;
                           _selected = neighbor.id;
                           _focus = neighbor.id;
                         }),
@@ -1748,6 +1849,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                             : _sourceLink(row.sourceUrl),
                         onTap: row.kind == 'neighbor'
                             ? () => change(() {
+                                _selectedWater = null;
                                 _selected = row.id;
                                 _focus = row.id;
                                 _query = '';
