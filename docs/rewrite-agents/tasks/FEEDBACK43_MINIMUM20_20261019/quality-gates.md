@@ -1,4 +1,6 @@
-# Minimum20 integration verification (in progress)
+# Minimum20 integration verification
+
+Final status: published Helm70/Deployment68; original43/43 reports resolved after independent public-outcome acceptance. Earlier checkpoints below retain their historical scope.
 
 The user selected related-topic merging plus additions to standalone quizzes. The local catalog has 105 visible banks, 4520 question slots and 56 legacy aliases. Twenty-three semantic pools and 38 new questions have separate exact-draft independent acceptance receipts. This is not a fresh factual certification of the entire legacy corpus; the legacy cat/dog quality follow-up remains `quiz_master-rplv`.
 
@@ -20,3 +22,5 @@ Capacity recovery executed after independent acceptance: exact 30 archived paths
 Actual Linux image rehearsal passed all 105 banks / 4520 slots, 56 aliases, 38 new correct/incorrect grading cases, 57 eligible difficulty starts, 363 short-band rejections and all 241 article bindings (11 archival fallbacks). Docker engine image ID is `sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee`; exported image config is `sha256:92a9a966fb7a5f478b273d9b2e8c4df47ef719fa66c6dcca6ba57df01448d130`. The post-rehearsal disk guard stopped before CRI import/Helm publication at 19.962044% available. The existing image is retained for reviewed resume; production69/67 and report26 remain unchanged.
 
 The resume controller delta passed 11 unit tests and independent Google static acceptance. Additional reversible offload of 21 old copied release inputs (1,127,768,030 bytes) has independent exact-plan acceptance; staging, per-file archive verification and exact21-target application completed. Ten SQLite databases passed integrity checks locally and remotely; the durable private archive is retained. Fresh imageFS availability is21.613399%, node Ready without pressure, production69/67 unchanged.
+
+Final outcome: Helm70/Deployment68 published and healthy; public catalog105/4520/min20 and all56 aliases verified, exact API/JS hashes matched, mobile Chrome390/360 catalog/search/legacy-alias answer feedback/new20 bank passed. Independent Google public-outcome ACCEPT recorded. Originalreport26 resolved through admin API; all43 original reports resolved (all66 serverreports resolved), protected content and screenshots retained. See PUBLISHED.md and feedback-resolution-minimum20.json. Physical Android and broader legacy editorial tasks remain explicit follow-ups.
