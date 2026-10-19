@@ -12,3 +12,7 @@ Validation: initial missingfeature tests RED; first fullsuite210passed/1brand-me
 Only explicit music/map/menu/font/tests/task files owned; preserve foreign main/discovery/localization/backend/study and legacy mobile changes. No main merge or production deploy. Web evidence, not Android hardware validation. No audio-recognition feature claimed.
 
 Browser additionally verified country instrument layer, searchкото→Japan→instrument expansion→Koto sourced detail sheet; desktop1280x900 and mobile390x844 captures saved, browser errors empty. Latest copy-only change improves Russian question-count grammar.
+
+Actual debug app on8787: proactive DTD discovery/connect succeeded, hot_reload succeeded; get_runtime_errors before shutdown twice returned No runtime errors found. Owned debug/browser helpers stopped; pre-existing static preview8788 preserved. Verified committed blobs for both accepted JSON assets and unmodified Bravura font match working bytes exactly.
+
+Clean exact-commit verification at e62f0241: offline pub get succeeded; full210/210 Flutter tests passed; analyze no issues; Web release build succeeded37.1s (existing nonfatal CupertinoIcons warning). Pull --rebase origin codex/quiz-v2 reported up to date before checks. Clean checkout has no tracked changes. See clean-pub.log, clean-all-tests.log, clean-analyze.log, clean-build.log.
