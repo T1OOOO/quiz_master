@@ -1,0 +1,38 @@
+{
+  "schema_version": "qm-private-editorial-review/v1",
+  "reviewed_at_utc": "2026-10-19",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/articles.json",
+    "sha256": "1c15efb3ce14d5a3347c3f259ab13e101b4ed578bbbbf5583110c44d7f509f97"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "5a4c8a019dc7c81e0855e902fb2683d7a11263dd233d7d5fc168d4ee0635819c"
+  },
+  "blind_answer_sha256": "f29a19605bd8e5d61a8c5f98b4fb9bdbe1b6ff1dcaba3e336c67ad4d65c54725",
+  "clean_blind": false,
+  "blind_exposure_note": "The brief named Hamlet/Shakespeare and Jane Eyre/Charlotte Brontë; previous familiarity with public works is possible. Candidate questions and independently opened library/museum sources were reviewed before the current writer's article drafting, source memo, or private keys. The blind-answer file was persisted at 2026-10-19 08:34:59 UTC. The reviewer has not opened local private keys.",
+  "items": [
+    {
+      "id": "question:prep-books-classic-07",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 212,
+      "blind_selected_option_id": "prep-books-classic-07-opt-3",
+      "factual_review": "Shakespeare is named on the 1603 first quarto title page catalogued through Folger Shakespeare Documented. Folger's Hamlet overview supports the revenge-tragedy premise and open interpretive questions. Mowat and Werstine's editorial introduction supports Q1 1603, Q2 copies dated 1604 or 1605, F1 1623, material textual differences, and the need for editorial selection. Publication dates are not presented as composition or premiere dates, and no final authorial text is asserted.",
+      "option_review": "Christopher Marlowe, Ben Jonson and John Webster are separate playwrights, not defensible authors of this named play under the stem; Hamlet is the character, not the author.",
+      "source_review": "Both exact final Folger URLs opened with relevant full text: overview lines 127–130 and editorial introduction lines 116–143. The two article links come from one institution; the article explicitly limits its editorial account to that edition. The independent 1603 title-page catalogue also opened before answer freezing.",
+      "pedagogy_review": "The optional scene-and-edition comparison distinguishes early English textual variants from translators' choices and personal interpretation without promising measured outcomes or assigning a psychiatric diagnosis."
+    },
+    {
+      "id": "question:prep-books-classic-08",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 207,
+      "blind_selected_option_id": "prep-books-classic-08-opt-4",
+      "factual_review": "The Brontë Parsonage Museum distinguishes Charlotte's Jane Eyre from Emily's Wuthering Heights. Oxford's English faculty confirms 1847 publication under Currer Bell and describes Jane's retrospective, crafted narration. The British Library catalogue identifies Charlotte's fair-copy manuscript, its submission to Smith, Elder and Co., and the historical title Jane Eyre: An Autobiography, Edited by Currer Bell. The article does not infer literal author autobiography or claim a disputed day of first publication.",
+      "option_review": "Emily Brontë wrote Wuthering Heights, not Jane Eyre; Jane Austen and George Eliot are distinct writers and not defensible answers to the named-work authorship question. Jane Eyre is the narrator and title character, not the author.",
+      "source_review": "All three exact final URLs opened with relevant text: museum lines 34, 42–49; Oxford lines 87 and 103–106; British Library catalogue lines 27–32. No original manuscript leaf, full novel, or paywalled text was represented as inspected.",
+      "pedagogy_review": "The optional event-versus-retrospective-comment exercise is specific, grounded in the Oxford discussion, and makes no measured learning claim or single-biographical-prototype assertion."
+    }
+  ],
+  "scope": "Private draft review only; different-provider acceptance and publication remain pending."
+}

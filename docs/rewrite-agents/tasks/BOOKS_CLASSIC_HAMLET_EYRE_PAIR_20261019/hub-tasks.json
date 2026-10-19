@@ -1,0 +1,71 @@
+{
+  "tasks": [
+    {
+      "acceptance": [
+        "Actual primary-source reads and candidate-first durable freeze before current writer access; truthful exposure",
+        "Final fullIDs/rawhashbindings/whitespacecounts, Root presubmitcheck and actual Hub submission; external acceptance/publication pending"
+      ],
+      "allowed_paths": [
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019"
+      ],
+      "assignee": "session-40a5bd2945004c728ab7d9006b66d5b8",
+      "author": "session-77ec120cf10e46fdbdbe22d6cf606570",
+      "body": "Own ONLY blind-answers.json/review.json/REVIEW_EN.md in packet. Candidate/brief before current writer and keys; actual primary source verification and durable64raw answer freeze then report. Root waits freeze before drafting. Final allclaims/options/ref/source review exact hashes/fullarticleIDs/WHITESPACEcounts; wait Root pre-submitcheck then actualHubsubmit5hashes/quiesce. clean_blind=false. No children/Git/Beads/provider/server/runtime/frozen writes.",
+      "created_at": 1792398802.2809327,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-59a4dc897ae744cab70dd43e77fcb0f8",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/blind-answers.json",
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/review.json",
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/REVIEW_EN.md"
+        ],
+        "evidence": [
+          {
+            "kind": "source_audit",
+            "result": "Actually opened Folger Shakespeare Documented 1603 Hamlet title-page catalogue, Folger Hamlet overview and Mowat/Werstine editorial introduction; British Library Jane Eyre autograph catalogue, Brontë Parsonage Museum novels page and Oxford English faculty commentary. All final five article URLs opened. Every factual claim, option, question reference and pedagogical statement reviewed."
+          },
+          {
+            "kind": "blind_freeze",
+            "result": "Candidate-first answers 07 Shakespeare opt-3 and 08 Charlotte Brontë opt-4 persisted at 2026-10-19 08:34:59 UTC before current writer drafting or reviewer writer/key access; clean_blind=false due informative brief and possible prior public familiarity."
+          },
+          {
+            "command": "python docs/rewrite-agents/tasks/BOOKS_CLASSIC_HAMLET_EYRE_PAIR_20261019/validate.py --final",
+            "cwd": "E:\\Projects\\quiz_master",
+            "kind": "command",
+            "result": "exit 0; word counts 212/207 via whitespace regex \\S+; exact public references and frozen pins; independent answers match two local keys through Root key-integrity; native review accepted_for_draft; external review and publication pending."
+          },
+          {
+            "kind": "lead_pre_submit",
+            "result": "Root PRE_SUBMIT_METADATA_PASS reproduced all five exact raw hashes, full article IDs, whitespace counts and validator exit 0 before Hub task submission."
+          }
+        ],
+        "limitations": [
+          "Genuine different-provider acceptance and publication remain pending."
+        ],
+        "sha256": {
+          "REVIEW_EN.md": "134e5ac2dd02217274d2684133b976a953489ccd46a6917970ab87cacd4681aa",
+          "SOURCES_EN.md": "5a4c8a019dc7c81e0855e902fb2683d7a11263dd233d7d5fc168d4ee0635819c",
+          "articles.json": "1c15efb3ce14d5a3347c3f259ab13e101b4ed578bbbbf5583110c44d7f509f97",
+          "blind-answers.json": "f29a19605bd8e5d61a8c5f98b4fb9bdbe1b6ff1dcaba3e336c67ad4d65c54725",
+          "review.json": "a8ee4238c65994361b45fed13239d62d5cd72db2a1e6a927c26d409376a2db12"
+        },
+        "status": "DONE",
+        "summary": "Native candidate-first factual review accepted both Hamlet/Jane Eyre private drafts; different-provider acceptance and publication pending."
+      },
+      "root_task_id": "task-59a4dc897ae744cab70dd43e77fcb0f8",
+      "run_id": "run-304f7f30faad40a5b5a56ff1f57a2883",
+      "skills": [],
+      "state": "SUBMITTED",
+      "team_id": "team-70081b8521cf432ea083f2ee84fa00d4",
+      "title": "quiz_master-969 Hamlet Jane Eyre07-08 native review",
+      "version": 3
+    }
+  ]
+}
