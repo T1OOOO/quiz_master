@@ -1,0 +1,9 @@
+# Private classic creators03/04
+
+Existingpublishedpreparation-books-classic30 current03/04, Russian adult original160–260wordminis. Rootownsarticles/SOURCES/integration; nativecheckerONLYblind-answers.json/review.json/REVIEW_EN.md afteractualHuboffer. No children/Git/Beads/server/providers/build/canonical/runtime/frozenedits. Projectuserqueuewaiverappliesfiniteauthorizedwork; ownership/gatesremain.
+
+FIRSTONLYbrief/candidates, actuallyopenprimaryinstitutional library/museum/publisher/archive sources verifyingauthor/allstemfacts/options BEFOREcurrentwriterprose/SOURCES/privatekeys. Freeze answers raw64charSHA256mechanically, reportthenWAITRootfinalhashes. Informativebrief/possiblepriorpublicexposure explicitclean_blind=false, nofirstexposureclaim. Rootkeycomparisononlyafteractualfreeze; checkerneverkeys. ActualUTC2026-10-19.
+
+03 originalnovel versus1818/1831edition/sourcehistory, creator/createdcharacter versusauthor, Percyeditorial/prefacerole notblanketcoauthorship. No ambiguous firstuseoffirstname/unqualifiedearliestsciencefiction/soleinspiration/currentfilmdata/psychoanalysis.04 SaintExuperyoriginaltextanddrawings versuslatertranslation/edition, NewYork1943firstFrench/English versusFrance1946onlywithactualsources. Heldmanuscript/drawingcatalogue notfullphysicalinspection; no disappearingpilot mystery/rights/currentglobaltranslationranking claims.
+
+Finalallclaims/finallinks/options/exactrefs/pedagogy check; sourceinterpretationattributed, conditionalreadingexercise notguaranteedlearning. review.json bindsreviewed_file.sha256/reviewed_sources.sha256/blind_answer_sha256/items{id,verdict accepted_for_draft/revise/reject}; mechanicallyassertlowercasebindings. ActualHubsubmit/evidencelist, thenreadyfalse/IDLE/quiescent. Sameproviderprivateonly, genuine different-provideracceptance/publicationpending. Previousfirstpair966/QUALITY_BOOKS10alternativequestionsunchanged.

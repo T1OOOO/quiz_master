@@ -1,0 +1,27 @@
+{
+  "kind": "post_submission_metadata_binding_audit",
+  "task_id": "task-077b30cb961a4141901435e48be30c52",
+  "original_review_task_id": "task-c47cc542f02c46f8a85aaccde9f9b515",
+  "original_receipt_note": "The original host_hub submission reached SUBMITTED version 3 before the full-article-ID and whitespace-count correction. Its evidence said 204/205 using a lexical-token count. The original raw REVIEW_EN.md bytes were not backed up; no earlier report hash or reconstruction is asserted. A second submit was rejected because the task was already SUBMITTED. The current files and hashes below are the final metadata state.",
+  "current_raw_sha256": {
+    "articles.json": "f7dbe6d5fb2034b18f13f7dd4930c64f9953e88141c50b130f1ea263a839c340",
+    "SOURCES_EN.md": "dae17a9775dffbd9f3f3185066841b86184702373d9328a0b43ccb1f7dbff885",
+    "blind-answers.json": "84b097dc915eb6a81115025f3db4fa74c0f5eb85de60a9145b442363e84ce76d",
+    "review.json": "7c35cb401308532a4208343462e694171f1b40e2fd7bd49661896bd4d465253b",
+    "REVIEW_EN.md": "f371d98294347850777cef0cca2b44e410d4af0b31985c62a8bdbcc993924cc4"
+  },
+  "verified_bindings": {
+    "reviewed_file_sha256_matches_articles": true,
+    "reviewed_sources_sha256_matches_sources": true,
+    "blind_answer_sha256_matches_frozen_blind_answers": true,
+    "review_item_ids_match_full_article_ids": true,
+    "review_verdicts": "accepted_for_draft",
+    "whitespace_word_counts": {
+      "question:prep-books-classic-03": 204,
+      "question:prep-books-classic-04": 209
+    },
+    "review_memo_states_whitespace_counts": true
+  },
+  "verification": "PowerShell Get-FileHash SHA256 plus ConvertFrom-Json and regex \\S+ assertions; cwd E:\\Projects\\quiz_master; exit 0.",
+  "scope_note": "This audit verifies metadata only. It does not repeat the factual review or alter articles, sources, blind answers, review JSON, or review memo. Different-provider acceptance and editorial publication remain pending."
+}

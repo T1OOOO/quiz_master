@@ -1,0 +1,28 @@
+{
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_CREATORS_PAIR_20261019/articles.json",
+    "sha256": "f7dbe6d5fb2034b18f13f7dd4930c64f9953e88141c50b130f1ea263a839c340"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_CREATORS_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "dae17a9775dffbd9f3f3185066841b86184702373d9328a0b43ccb1f7dbff885"
+  },
+  "blind_answer_sha256": "84b097dc915eb6a81115025f3db4fa74c0f5eb85de60a9145b442363e84ce76d",
+  "clean_blind": false,
+  "reviewer_identity": "Codex gpt-6.1-sol; provider/model are self reported in host_hub, not independently verified",
+  "items": [
+    {
+      "id": "question:prep-books-classic-03",
+      "verdict": "accepted_for_draft",
+      "findings": [],
+      "note": "Mary Shelley is the only defensible listed answer. The article distinguishes her authorship from Victor Frankenstein, the anonymous 1818 publication from the revised 1831 edition, and Percy's documented editorial input from blanket coauthorship. Both final source URLs opened and support the cited claims."
+    },
+    {
+      "id": "question:prep-books-classic-04",
+      "verdict": "accepted_for_draft",
+      "findings": [],
+      "note": "Antoine de Saint-Exupéry is the only defensible listed answer. The article correctly separates New York 1943 first French/English publication from publication in France in 1946, and credits author drawings without claiming every preparatory drawing was printed. Both final source URLs opened and support the cited claims."
+    }
+  ],
+  "publication_status": "pending_genuine_different_provider_review_and_authorized_editor"
+}
