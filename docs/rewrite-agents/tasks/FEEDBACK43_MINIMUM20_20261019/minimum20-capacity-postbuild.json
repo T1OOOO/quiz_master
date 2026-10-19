@@ -1,0 +1,138 @@
+{
+  "scope": "read-only SSH capacity diagnosis after release-70 rehearsal; no delete, offload, cache prune, image/CRI operation, Helm action, deployment, build, or process operation was performed",
+  "observed_at": "2026-10-19T20:08:00+03:00",
+  "baseline_preserved": {
+    "helm_revision": 69,
+    "deployment_revision": 67,
+    "baseline_build_id": "quiz-2026.10.19-bones-36e0b68c",
+    "baseline_image_digest": "sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a",
+    "pvc": "preserved; not queried or changed by this inventory",
+    "candidate_image_index": "sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee",
+    "candidate_cri_imported": false,
+    "helm70_published": false
+  },
+  "filesystem": {
+    "source": "/dev/vda2",
+    "mount": "/",
+    "total_bytes": 102417174528,
+    "used_bytes": 76198883328,
+    "available_bytes": 20994117632,
+    "available_percent": 20.498,
+    "reported_post_rehearsal_node_guard_percent": 19.9620439,
+    "interpretation": "The SSH df sample is above 20%, but it is not evidence that the node guard remains satisfied after CRI import. The requested approximately 1 GB of additional headroom is not yet present as a separately protected reserve."
+  },
+  "release_stages": [
+    {
+      "name": "quiz-2026.10.19-minimum20-7f8344d6",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6",
+      "owner": "root:root",
+      "mode": "0700",
+      "bytes": 290901356,
+      "role": "current unpublished release-70 stage; retain until a separately reviewed continuation/rollback decision"
+    },
+    {
+      "name": "quiz-2026.10.19-feedback-849e6705",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705",
+      "owner": "root:root",
+      "mode": "0700",
+      "bytes": 477323113,
+      "role": "older same-project stage; provenance/activity/receipt retention not established by this inventory"
+    },
+    {
+      "name": "quiz-2026.10.19-mobile-2e28262c",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c",
+      "owner": "root:root",
+      "mode": "0700",
+      "bytes": 177512137,
+      "role": "older same-project stage; provenance/activity/receipt retention not established by this inventory"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818",
+      "owner": "root:root",
+      "mode": "0755",
+      "bytes": 284034774,
+      "role": "old project stage with copied api/web/quizzes and two rehearsal directories; not approved for removal"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4",
+      "owner": "root:root",
+      "mode": "0755",
+      "bytes": 196116173,
+      "role": "old project stage with copied api/web/quizzes and one rehearsal directory; not approved for removal"
+    }
+  ],
+  "current_stage70_components_bytes": {
+    "web": 84630112,
+    "api": 22997561,
+    "private": 4285861,
+    "quizzes": 4212887,
+    "base_api": 15614112,
+    "new_api": 22997561,
+    "base_quizzes": 3500334,
+    "candidate_quizzes": 4212887,
+    "restore_proof_sqlite": 60190720,
+    "rehearsal_data": 67981312
+  },
+  "current_stage70_disposable_candidates_for_separate_review": {
+    "items": [
+      "base.api",
+      "new.api",
+      "base-quizzes",
+      "candidate-quizzes",
+      "restore-proof.sqlite",
+      "rehearsal-data"
+    ],
+    "bytes": 173498726,
+    "note": "These copies look disposable after a completed rehearsal but are not approved here. Current stage and all release receipts/chart/manifests remain preserved."
+  },
+  "buildkit": {
+    "buildx_version": "github.com/docker/buildx v0.37.0 ac30b249211430b85fb8f37b6e7154b5c47ba0b6",
+    "du_totals_reported": {
+      "shared": "2.435GB",
+      "private": "4.263GB",
+      "reclaimable": "6.698GB",
+      "total": "6.698GB"
+    },
+    "du_observation": "docker buildx du --verbose marks many records reclaimable, including recently used records. This inventory did not identify a cache record that can be safely attributed to this release alone.",
+    "prune_capability": "docker buildx prune --help exposes filters and aggregate space targets, but no exact cache-ID deletion option. A broad prune would exceed this task scope and can affect retained/current builds.",
+    "safe_action_now": "none"
+  },
+  "candidate_recovery_paths_requiring_independent_review": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6",
+      "amount_bytes": 173498726,
+      "reason": "current stage rehearsal copies only; must verify publication continuation no longer needs them"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818",
+      "amount_bytes": 284034774,
+      "reason": "old project stage; requires receipt, active-process/mount, backup and local-offload review"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4",
+      "amount_bytes": 196116173,
+      "reason": "old project stage; requires receipt, active-process/mount, backup and local-offload review"
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705",
+      "amount_bytes": 477323113,
+      "reason": "older stage; requires ownership and retained-manifest review"
+    }
+  ],
+  "prohibitions_honored": [
+    "no global docker/buildx prune",
+    "no image deletion",
+    "no CRI import",
+    "no Helm action",
+    "no stage deletion",
+    "no backup/PVC/receipt/chart/manifest modification",
+    "no production API/database operation"
+  ]
+}

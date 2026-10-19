@@ -59,6 +59,30 @@ class Minimum20ReleaseTest(unittest.TestCase):
   for needle in ('DEPLOY.lock','f_bavail * 5 >= s.f_blocks','helm rollback quiz-master 69','restore-proof.sqlite','--require-real-http-grading','--require-article-revision-binding','canonical-cri.json','feedback'):
    self.assertIn(needle,script)
   self.assertIn('COPY --chown=10001:10001 quizzes/',release.DOCKERFILE); self.assertIn('chmod 0755 /app/api',release.DOCKERFILE); self.assertIn('chmod -R u=rwX,go=rX /app/quizzes',release.DOCKERFILE); self.assertNotIn('ENTRYPOINT',release.DOCKERFILE); self.assertIn('test "$ready" = 1',script); self.assertIn("'private':private",script)
+ def test_resume_prepare_requires_exact_existing_image_and_keeps_all_later_gates(self):
+  digest='09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee'
+  with self.assertRaisesRegex(release.GuardError,'existing image digest'): release.remote_script(self.build,'b'*64,'resume-prepare')
+  with self.assertRaisesRegex(release.GuardError,'existing image digest'): release.remote_script(self.build,'b'*64,'resume-prepare','not-a-digest')
+  with self.assertRaisesRegex(release.GuardError,'release input manifest hash'): release.remote_script(self.build,'b'*64,'resume-prepare',digest)
+  with self.assertRaisesRegex(release.GuardError,'only valid with resume-prepare'): release.remote_script(self.build,'b'*64,'prepare',input_manifest_sha256='c'*64)
+  script=release.remote_script(self.build,'b'*64,'resume-prepare',digest,'c'*64)
+  self.assertNotIn('docker build',script); self.assertNotIn('test ! -e "$backup"',script)
+  for needle in ('sha256:'+digest,'input_manifest_sha256='+'c'*64,'release input checksum mismatch','test ! -e "$stage/prepared-receipt.json"','base.api','new.api','candidate image/source lock differs','restore-proof.sqlite','--require-real-http-grading','canonical-cri.json','rendered-baseline.yaml','helm lint --strict','kubectl apply --dry-run=server','f_bavail * 5 >= s.f_blocks'):
+   self.assertIn(needle,script)
+  self.assertIn("sha256sum \"$stage/new.api\"",script); self.assertIn('b'*64,script)
+  for path in ('resume-base-quizzes','resume-candidate-quizzes','resume-restore-proof.sqlite','resume-rehearsal-data','resume-quiz-source-closure.json'):
+   self.assertIn('test ! -e "$stage/'+path+'"',script); self.assertIn('$stage/'+path,script)
+  self.assertNotIn('$stage/base-quizzes',script); self.assertNotIn('$stage/candidate-quizzes',script); self.assertNotIn('$stage/rehearsal-data',script)
+ def test_resume_prepare_executes_only_the_digest_pinned_remote_guard(self):
+  inputs=release.collect_inputs(self.root); identity=self.root/'release-key'; identity.write_text('key')
+  digest='09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee'
+  with patch.object(release,'stage_package') as stage, patch.object(release.subprocess,'run') as run:
+   release.execute(release.HOST,identity,self.build,inputs,'resume-prepare',existing_image_digest=digest)
+  stage.assert_not_called(); self.assertEqual(run.call_count,1)
+  command=run.call_args.args[0]; script=run.call_args.kwargs['input'].decode()
+  self.assertEqual(command[-2:],['bash','-s']); self.assertNotIn('docker build',script)
+  self.assertIn(inputs.manifest['target_api_sha256'],script)
+  self.assertIn(hashlib.sha256(json.dumps(inputs.manifest,sort_keys=True,indent=2).encode()+b'\n').hexdigest(),script)
  def test_prepare_preflight_pins_live_baseline69(self):
   deployment={'hostname':'racknerd-f0269d5','revision':'69','deployment_revision':'67','pvc_uid':'7fc2428f-4146-4c78-a26d-2347d9f3b7bf','containers':[{'image':release.BASE_IMAGE},{'image':release.BASE_IMAGE}]}
   version={'buildId':'quiz-2026.10.19-bones-36e0b68c','api_sha256':release.BASE_API_SHA256}

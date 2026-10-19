@@ -1,0 +1,195 @@
+{
+  "accounting": {
+    "by_stage": {
+      "quiz-2026.10.15-country483-3c22818": 280515080,
+      "quiz-2026.10.15-reader303-14b7da4": 192633120,
+      "quiz-2026.10.19-feedback-849e6705": 477187564,
+      "quiz-2026.10.19-mobile-2e28262c": 177432266
+    },
+    "exceeds_goal_bytes": 127768030,
+    "goal_bytes": 1000000000,
+    "planned_total_bytes": 1127768030
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-bones-36e0b68c",
+    "deployment_revision": "67",
+    "helm_deployed_revision": 69,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a",
+    "namespace": "quiz-master",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "release": "quiz-master",
+    "rollback_revision": 68
+  },
+  "contract": "quiz-master-storage-offload-extra/v1",
+  "inventory_evidence": "minimum20-capacity-postbuild.json",
+  "local_destination": "storage-offload-extra-20261019",
+  "plan_only": true,
+  "preserve": [
+    "all production images",
+    "Helm 69 and rollback 68",
+    "current 68/69 backups",
+    "all PVC data",
+    "all prepared/reviewed receipts",
+    "charts, manifests, feedback evidence, release-inputs and rendered YAML",
+    "all unselected old-stage files"
+  ],
+  "purpose": "planned reversible recovery of selected inactive, copied release inputs only; never image/PVC/receipt/chart/manifest/backup/global-prune work",
+  "review_preconditions": [
+    "different-provider ACCEPT receipt binds exact plan SHA256",
+    "fresh remote snapshot under DEPLOY.lock",
+    "each literal path resolves to itself, has no symlink, exact type and expected bytes",
+    "no Docker/CRI/pod/process reference to any selected literal path",
+    "local restricted archive and full manifest verify before remote unlink",
+    "all selected top-level and nested SQLite databases pass integrity_check locally and remotely"
+  ],
+  "targets": [
+    {
+      "expected_bytes": 15614112,
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-849e6705:api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22988817,
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-849e6705:base.api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 15614112,
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-849e6705:new.api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 84419537,
+      "kind": "dir",
+      "label": "quiz-2026.10.19-feedback-849e6705:web",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 169242826,
+      "kind": "dir",
+      "label": "quiz-2026.10.19-feedback-849e6705:failed-prepare-1",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/failed-prepare-1",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 56528896,
+      "kind": "dir",
+      "label": "quiz-2026.10.19-feedback-849e6705:rehearsal-data",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/rehearsal-data",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 56389632,
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-849e6705:restore-proof.sqlite",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 56389632,
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-849e6705:publish-restore-proof.sqlite",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-849e6705/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 22988817,
+      "kind": "file",
+      "label": "quiz-2026.10.19-mobile-2e28262c:base.api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22988817,
+      "kind": "file",
+      "label": "quiz-2026.10.19-mobile-2e28262c:new.api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 81741480,
+      "kind": "dir",
+      "label": "quiz-2026.10.19-mobile-2e28262c:web",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 49713152,
+      "kind": "file",
+      "label": "quiz-2026.10.19-mobile-2e28262c:restore-proof.sqlite",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-mobile-2e28262c/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 22988817,
+      "kind": "file",
+      "label": "quiz-2026.10.15-country483-3c22818:api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 78590536,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-country483-3c22818:web",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 3143565,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-country483-3c22818:quizzes",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 87902225,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-country483-3c22818:rehearsal-quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/rehearsal-quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 87889937,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-country483-3c22818:rehearsal-quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818/rehearsal-quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22988817,
+      "kind": "file",
+      "label": "quiz-2026.10.15-reader303-14b7da4:api",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 78590321,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-reader303-14b7da4:web",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 3143565,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-reader303-14b7da4:quizzes",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 87910417,
+      "kind": "dir",
+      "label": "quiz-2026.10.15-reader303-14b7da4:rehearsal-quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4/rehearsal-quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z",
+      "sqlite": false
+    }
+  ]
+}

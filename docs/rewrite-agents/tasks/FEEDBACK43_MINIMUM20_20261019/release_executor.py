@@ -116,6 +116,12 @@ def validate_build_id(build_id: str) -> None:
         raise GuardError("the baseline build ID cannot be reused")
 
 
+def validate_existing_image_digest(digest: str | None) -> str:
+    if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+        raise GuardError("resume-prepare requires a 64-character lowercase existing image digest")
+    return digest
+
+
 def validate_ssh_target(target: str) -> None:
     if target not in {HOST, f"root@{HOST}", HOST_IP, f"root@{HOST_IP}"}:
         raise GuardError("SSH target must be the pinned production hostname or IP")
@@ -259,15 +265,36 @@ tar -xf - -C "$stage" --no-same-owner --no-same-permissions
 """
 
 
-def remote_script(build_id: str, target_api_sha256: str, phase: str) -> str:
+def remote_script(build_id: str, target_api_sha256: str, phase: str,
+                  existing_image_digest: str | None = None, input_manifest_sha256: str | None = None) -> str:
     """Return the only remote mutation path. Values are fixed or regex-guarded."""
     if not re.fullmatch(r"[0-9a-f]{64}", target_api_sha256):
         raise GuardError("invalid target API hash")
-    if phase not in {"prepare", "publish"}:
-        raise GuardError("release phase must be prepare or publish")
+    if phase not in {"prepare", "resume-prepare", "publish"}:
+        raise GuardError("release phase must be prepare, resume-prepare, or publish")
+    resume_prepare = phase == "resume-prepare"
+    if resume_prepare:
+        existing_image_digest = validate_existing_image_digest(existing_image_digest)
+    elif existing_image_digest is not None:
+        raise GuardError("--existing-image-digest is only valid with resume-prepare")
+    if resume_prepare:
+        if not isinstance(input_manifest_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", input_manifest_sha256):
+            raise GuardError("resume-prepare requires a 64-character release input manifest hash")
+    elif input_manifest_sha256 is not None:
+        raise GuardError("release input manifest hash is only valid with resume-prepare")
     tag = f"quiz-master:{build_id}"
     stage = f"{RELEASE_PARENT}/{build_id}"
     backup = f"{BACKUP_PARENT}/{build_id}.sqlite"
+    base_quizzes = "resume-base-quizzes" if resume_prepare else "base-quizzes"
+    candidate_quizzes = "resume-candidate-quizzes" if resume_prepare else "candidate-quizzes"
+    restore_proof = "resume-restore-proof.sqlite" if resume_prepare else "restore-proof.sqlite"
+    rehearsal_data = "resume-rehearsal-data" if resume_prepare else "rehearsal-data"
+    closure_report = "resume-quiz-source-closure.json" if resume_prepare else "quiz-source-closure.json"
+    resume_workdir_guard = "\n".join(f'test ! -e "$stage/{name}"' for name in (base_quizzes, candidate_quizzes, restore_proof, rehearsal_data, closure_report)) if resume_prepare else ""
+    backup_guard = 'test ! -e "$backup"' if phase == "prepare" else ('test -f "$backup"\ntest "$(sqlite3 "$backup" \'pragma integrity_check\')" = ok' if resume_prepare else '')
+    image_prepare = f'if docker image inspect "$tag" >/dev/null 2>&1; then echo \'release tag already exists\' >&2; exit 1; fi\nnode_guard\ndocker build --network=none --pull=false --build-arg BASE_IMAGE="$base_local" -t "$tag" "$stage"\ndocker run --rm --network=none --read-only --tmpfs /tmp "$tag" nginx -t\nnew_docker_id=$(docker image inspect "$tag" --format \'{{{{.Id}}}}\')\n[[ "$new_docker_id" =~ ^sha256:[0-9a-f]{{64}}$ ]]'
+    if resume_prepare:
+        image_prepare = f'test "$(docker image inspect "$tag" --format \'{{{{.Id}}}}\')" = {shlex.quote("sha256:" + existing_image_digest)}\nnew_docker_id=$(docker image inspect "$tag" --format \'{{{{.Id}}}}\')\n[[ "$new_docker_id" =~ ^sha256:[0-9a-f]{{64}}$ ]]\ndocker run --rm --network=none --read-only --tmpfs /tmp "$tag" nginx -t'
     return f"""#!/usr/bin/env bash
 set -Eeuo pipefail
 umask 077
@@ -280,6 +307,7 @@ base_local={shlex.quote(BASE_LOCAL_TAG)}
 lock={shlex.quote(LOCK_PATH)}
 db={shlex.quote(DB_PATH)}
 phase={shlex.quote(phase)}
+input_manifest_sha256={shlex.quote(input_manifest_sha256)}
 node_guard() {{
  curl -fsS --connect-timeout 10 --max-time 30 https://quiz.kotopedia.org/health/ready >/dev/null
  node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
@@ -290,9 +318,13 @@ node_guard() {{
 test \"$(hostname)\" = {shlex.quote(HOST)}
 exec 9>\"$lock\"
 flock -n 9
-node_guard
 test -d \"$stage\"
-if [ \"$phase\" = prepare ]; then test ! -e \"$backup\"; fi
+if [ \"$phase\" = resume-prepare ]; then
+ test -f \"$stage/release-inputs.json\"
+ test \"$(sha256sum \"$stage/release-inputs.json\" | awk '{{print $1}}')\" = \"$input_manifest_sha256\"
+fi
+node_guard
+{backup_guard}
 test -f \"$db\"
 test \"$(helm history {RELEASE} -n {NAMESPACE} -o json | python3 -c 'import json,sys; h=json.load(sys.stdin); print(h[-1][\"revision\"])')\" = {shlex.quote(BASE_REVISION)}
 test \"$(kubectl get deploy {RELEASE} -n {NAMESPACE} -o jsonpath='{{.metadata.annotations.deployment\\.kubernetes\\.io/revision}}')\" = {shlex.quote(BASE_DEPLOYMENT_REVISION)}
@@ -317,7 +349,8 @@ actual={{'baseline':{{'deployed_image':{BASE_IMAGE!r},'local_image':{BASE_LOCAL_
 if actual != expected: raise SystemExit('release input checksum mismatch')
 json.load(open(root/'web/version.json'))
 PY
-if [ \"$phase\" = prepare ]; then
+if [ \"$phase\" = prepare ] || [ \"$phase\" = resume-prepare ]; then
+{resume_workdir_guard}
 web_bytes=$(du -sb \"$stage/web\" | awk '{{print $1}}')
 db_bytes=$(stat -c %s \"$db\")
 base_image_bytes=$(docker image inspect \"$base_local\" --format '{{{{.Size}}}}')
@@ -336,20 +369,15 @@ trap cleanup EXIT
 docker cp \"$base_api:/app/api\" \"$stage/base.api\"
 docker cp \"$base_api:/etc/nginx/nginx.conf\" \"$stage/base.nginx.conf\"
 test \"$(sha256sum \"$stage/base.api\" | awk '{{print $1}}')\" = {shlex.quote(API_SHA256)}
-if docker image inspect \"$tag\" >/dev/null 2>&1; then echo 'release tag already exists' >&2; exit 1; fi
-node_guard
-docker build --network=none --pull=false --build-arg BASE_IMAGE=\"$base_local\" -t \"$tag\" \"$stage\"
-docker run --rm --network=none --read-only --tmpfs /tmp \"$tag\" nginx -t
-new_docker_id=$(docker image inspect \"$tag\" --format '{{{{.Id}}}}')
-[[ \"$new_docker_id\" =~ ^sha256:[0-9a-f]{{64}}$ ]]
+{image_prepare}
 new_api=$(docker create \"$tag\")
 docker cp \"$new_api:/app/api\" \"$stage/new.api\"
 docker cp \"$new_api:/etc/nginx/nginx.conf\" \"$stage/new.nginx.conf\"
 test \"$(sha256sum \"$stage/new.api\" | awk '{{print $1}}')\" = {shlex.quote(target_api_sha256)}
 test \"$(sha256sum \"$stage/new.api\" | awk '{{print $1}}')\" != {shlex.quote(API_SHA256)}
 cmp -s \"$stage/base.nginx.conf\" \"$stage/new.nginx.conf\"
-docker cp \"$base_api:/app/quizzes\" \"$stage/base-quizzes\"
-docker cp \"$new_api:/app/quizzes\" \"$stage/candidate-quizzes\"
+docker cp \"$base_api:/app/quizzes\" \"$stage/{base_quizzes}\"
+docker cp \"$new_api:/app/quizzes\" \"$stage/{candidate_quizzes}\"
 python3 - \"$stage\" <<'PY'
 import hashlib,json,pathlib,sys
 root=pathlib.Path(sys.argv[1])
@@ -359,11 +387,11 @@ def tree(folder):
   if p.is_symlink(): raise SystemExit('symlink in image quiz source')
   if p.is_file(): result[p.relative_to(root/folder).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
  return result
-base=tree('base-quizzes'); candidate=tree('candidate-quizzes'); lock=json.load(open(root/'quiz-closure.json'))
+base=tree({base_quizzes!r}); candidate=tree({candidate_quizzes!r}); lock=json.load(open(root/'quiz-closure.json'))
 if base != lock.get('base') or candidate != lock.get('candidate'): raise SystemExit('candidate image/source lock differs')
 expected=set(lock.get('expected_mutated',()))
 if len(base)!=148 or len(candidate)!=165 or len(set(candidate)-set(base))!=17 or len(expected)!=11 or {{path for path in base if base[path]!=candidate[path]}} != expected: raise SystemExit('candidate exact 11/17 quiz closure differs')
-json.dump(dict(original_files=len(base),candidate_files=len(candidate),approved_existing_mutations=len(expected)),open(root/'quiz-source-closure.json','w'))
+json.dump(dict(original_files=len(base),candidate_files=len(candidate),approved_existing_mutations=len(expected)),open(root/{closure_report!r},'w'))
 PY
 python3 - \"$db\" \"$stage/feedback-before.json\" <<'PY'
 import hashlib,json,sqlite3,sys
@@ -381,14 +409,14 @@ PY
 install -d -m 700 {shlex.quote(BACKUP_PARENT)}
 sqlite3 \"$db\" \".backup '$backup'\"
 test \"$(sqlite3 \"$backup\" 'pragma integrity_check')\" = ok
-cp --reflink=auto \"$backup\" \"$stage/restore-proof.sqlite\"
-test \"$(sqlite3 \"$stage/restore-proof.sqlite\" 'pragma integrity_check')\" = ok
+cp --reflink=auto \"$backup\" \"$stage/{restore_proof}\"
+test \"$(sqlite3 \"$stage/{restore_proof}\" 'pragma integrity_check')\" = ok
 # Rehearse this exact binary against a disposable restored database copy.
-install -d -m 700 \"$stage/rehearsal-data\"
-cp \"$stage/restore-proof.sqlite\" \"$stage/rehearsal-data/quiz.db\"
-chown -R 10001:10001 \"$stage/rehearsal-data\"
+install -d -m 700 \"$stage/{rehearsal_data}\"
+cp \"$stage/{restore_proof}\" \"$stage/{rehearsal_data}/quiz.db\"
+chown -R 10001:10001 \"$stage/{rehearsal_data}\"
 python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1",18088)); s.close()'
-rehearsal=$(docker run -d --network=host --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp --user 10001:10001 --entrypoint /app/api -e QM_LISTEN_ADDR=127.0.0.1:18088 -e QM_DATABASE_URL=sqlite:../data/quiz.db -e QM_CONTENT_BUNDLE_PATH=/app/quizzes -e QM_CONTENT_MANIFEST_PATH=/app/next/content/home-alone-1-part-1/manifest.json --mount type=bind,src=\"$stage/rehearsal-data\",dst=/data \"$tag\")
+rehearsal=$(docker run -d --network=host --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp --user 10001:10001 --entrypoint /app/api -e QM_LISTEN_ADDR=127.0.0.1:18088 -e QM_DATABASE_URL=sqlite:../data/quiz.db -e QM_CONTENT_BUNDLE_PATH=/app/quizzes -e QM_CONTENT_MANIFEST_PATH=/app/next/content/home-alone-1-part-1/manifest.json --mount type=bind,src=\"$stage/{rehearsal_data}\",dst=/data \"$tag\")
 ready=0
 for attempt in $(seq 1 45); do
  if docker exec \"$rehearsal\" /bin/busybox wget -q -O /dev/null http://127.0.0.1:18088/health/ready; then ready=1; break; fi
@@ -398,7 +426,7 @@ test \"$ready\" = 1
 test -f \"$stage/rehearse.py\"
 python3 \"$stage/rehearse.py\" --base-url http://127.0.0.1:18088 --catalog-json \"$stage/catalog.json\" --pool-evidence \"$stage/pool-materialization-evidence.json\" --private-quizzes-root \"$stage/private\" --web-root \"$stage/web\" --require-real-http-grading --require-article-revision-binding
 docker stop \"$rehearsal\" >/dev/null
-test \"$(sqlite3 \"$stage/rehearsal-data/quiz.db\" 'pragma integrity_check')\" = ok
+test \"$(sqlite3 \"$stage/{rehearsal_data}/quiz.db\" 'pragma integrity_check')\" = ok
 node_guard
 docker save \"$tag\" | k3s ctr -n k8s.io images import -
 containerd_digest=$(k3s ctr -n k8s.io images ls | awk -v tag=\"$tag\" '$1==tag || $1==\"docker.io/library/\"tag {{print $3}}')
@@ -432,6 +460,7 @@ if normalize(baseline,old_image,old_build) != normalize(target,new_image,new_bui
 PY
 helm lint --strict \"$stage/chart\" -n {NAMESPACE} -f \"$stage/live-values.yaml\"
 kubectl apply --dry-run=server -n {NAMESPACE} -f \"$stage/rendered-target.yaml\"
+test ! -e \"$stage/prepared-receipt.json\"
 python3 - \"$stage/prepared-receipt.json\" \"$stage/release-inputs.json\" \"$candidate_image\" <<'PY'
 import hashlib,json,sys
 inputs=open(sys.argv[2],'rb').read()
@@ -525,13 +554,21 @@ def stage_package(target: str, identity_file: Path, build_id: str, inputs: Input
 
 
 def execute(target: str, identity_file: Path | None, build_id: str, inputs: Inputs, phase: str,
-            reviewed_receipt: Path | None = None) -> None:
+            reviewed_receipt: Path | None = None, existing_image_digest: str | None = None) -> None:
     validate_ssh_target(target)
     validate_build_id(build_id)
     validate_package_identity(inputs, build_id)
     identity_file = validate_identity_file(identity_file)
-    if phase not in {"prepare", "publish"}:
-        raise GuardError("release phase must be prepare or publish")
+    if phase not in {"prepare", "resume-prepare", "publish"}:
+        raise GuardError("release phase must be prepare, resume-prepare, or publish")
+    if phase == "resume-prepare":
+        digest = validate_existing_image_digest(existing_image_digest)
+        manifest_sha256 = hashlib.sha256(json.dumps(inputs.manifest, sort_keys=True, indent=2).encode() + b"\n").hexdigest()
+        subprocess.run(["ssh", "-i", str(identity_file), "-o", "IdentitiesOnly=yes", target, "bash", "-s"],
+                       input=remote_script(build_id, inputs.manifest["target_api_sha256"], phase, digest, manifest_sha256).encode(), check=True, timeout=600)
+        return
+    if existing_image_digest is not None:
+        raise GuardError("--existing-image-digest is only valid with resume-prepare")
     dockerfile = inputs.package / "Dockerfile"
     if phase == "publish":
         if reviewed_receipt is None or not reviewed_receipt.is_file():
@@ -569,8 +606,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--plan", action="store_true")
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--acknowledge-production", action="store_true")
-    parser.add_argument("--phase", choices=("prepare", "publish"), default="prepare")
+    parser.add_argument("--phase", choices=("prepare", "resume-prepare", "publish"), default="prepare")
     parser.add_argument("--reviewed-receipt", type=Path)
+    parser.add_argument("--existing-image-digest")
     args = parser.parse_args(argv)
     read_preflight(args.preflight)
     inputs = collect_inputs(args.package)
@@ -579,7 +617,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if not args.acknowledge_production:
         raise GuardError("--execute requires --acknowledge-production")
-    execute(args.ssh_target, args.identity_file, args.build_id, inputs, args.phase, args.reviewed_receipt)
+    execute(args.ssh_target, args.identity_file, args.build_id, inputs, args.phase, args.reviewed_receipt, args.existing_image_digest)
     return 0
 
 
