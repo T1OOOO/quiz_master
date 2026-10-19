@@ -1,0 +1,13 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart
+00:00 +0: a dish may omit undocumented variants
+00:00 +0 -1: a dish may omit undocumented variants [E]
+  FormatException: dish minimum detail
+  package:quiz_app/food_atlas_models.dart 197:7   new FoodDish.fromJson
+  dart:_internal                                  ListIterable.toList
+  package:quiz_app/food_atlas_models.dart 272:30  new FoodAtlas.fromJson
+  test\food_atlas_test.dart 13:22                 main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart: a dish may omit undocumented variants

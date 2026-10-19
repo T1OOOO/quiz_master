@@ -15,6 +15,7 @@ import 'country_learning.dart';
 import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
 import 'brand_atlas.dart';
+import 'food_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -617,18 +618,22 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   ),
                 ),
               ),
-            for (final section in ['history', 'culture', 'people', 'brands'])
+            for (final section in [
+              'history',
+              'culture',
+              'people',
+              'brands',
+              'food',
+            ])
               Card(
                 child: ListTile(
-                  leading: Icon(
-                    section == 'history'
-                        ? Icons.timeline
-                        : section == 'culture'
-                        ? Icons.theaters
-                        : section == 'brands'
-                        ? Icons.business
-                        : Icons.people,
-                  ),
+                  leading: Icon(switch (section) {
+                    'history' => Icons.timeline,
+                    'culture' => Icons.theaters,
+                    'brands' => Icons.business,
+                    'food' => Icons.restaurant_menu,
+                    _ => Icons.people,
+                  }),
                   title: Text(switch (section) {
                     'history' => _t(
                       context,
@@ -645,6 +650,11 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                       'Brands and companies',
                       'Бренды и компании',
                     ),
+                    'food' => _t(
+                      context,
+                      'Food and regional cuisines',
+                      'Блюда и кухни мира',
+                    ),
                     _ => _t(
                       context,
                       'People and their works',
@@ -654,12 +664,14 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (_) => section == 'brands'
-                          ? BrandAtlasPage(bundle: widget.bundle)
-                          : KnowledgeAtlasPage(
-                              section: section,
-                              bundle: widget.bundle,
-                            ),
+                      builder: (_) => switch (section) {
+                        'brands' => BrandAtlasPage(bundle: widget.bundle),
+                        'food' => FoodAtlasPage(bundle: widget.bundle),
+                        _ => KnowledgeAtlasPage(
+                          section: section,
+                          bundle: widget.bundle,
+                        ),
+                      },
                     ),
                   ),
                 ),

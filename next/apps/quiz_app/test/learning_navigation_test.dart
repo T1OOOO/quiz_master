@@ -5,6 +5,39 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/quizipedia.dart';
 
 void main() {
+  testWidgets('food menu loads the shipped classic recipes', (tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.runAsync(() async {
+      final bundle = _NavigationBundle({
+        for (final key in [
+          'assets/quizipedia/catalog.json',
+          'assets/quizipedia/food_atlas.json',
+        ])
+          key: await rootBundle.loadString(key),
+      });
+      await tester.pumpWidget(
+        MaterialApp(home: QuizipediaPage(bundle: bundle)),
+      );
+      await tester.pump();
+      final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
+        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
+      );
+      await catalog.future!;
+    });
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Food and regional cuisines'),
+      200,
+    );
+    await tester.tap(find.text('Food and regional cuisines'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('food-search')), findsOneWidget);
+    expect(find.text('Retry'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
   testWidgets('brands menu opens the shipped brand registry', (tester) async {
     tester.view.physicalSize = const Size(390, 844);
     tester.view.devicePixelRatio = 1;
@@ -63,6 +96,7 @@ void main() {
         'Films, books and opera',
         'People and their works',
         'Brands and companies',
+        'Food and regional cuisines',
       ]) {
         await tester.scrollUntilVisible(find.text(name), 200);
         expect(find.text(name), findsOneWidget);

@@ -1,0 +1,61 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart
+00:00 +0: food atlas validates references and creates an unambiguous frozen round
+00:00 +1: food atlas rejects unresolved references, bad dates and ambiguous signatures
+00:00 +2: selection down the list scrolls to readable detail and survives filtering
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _KeyWidgetFinder:<Found 0 widgets with key [<'food-detail'>]: []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart:78:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart line 78
+The test description was:
+  selection down the list scrolls to readable detail and survives filtering
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -1: selection down the list scrolls to readable detail and survives filtering [E]
+  Test failed. See exception logs above.
+  The test description was: selection down the list scrolls to readable detail and survives filtering
+
+00:01 +2 -1: load failure keeps navigation and can retry successfully
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TypeWidgetFinder:<Found 0 widgets with type "Scaffold": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart:90:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart line 90
+The test description was:
+  load failure keeps navigation and can retry successfully
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -2: load failure keeps navigation and can retry successfully [E]
+  Test failed. See exception logs above.
+  The test description was: load failure keeps navigation and can retry successfully
+
+00:01 +2 -2: checked answers finish and finite mistakes review preserves original score
+00:03 +3 -2: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart: load failure keeps navigation and can retry successfully
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart: selection down the list scrolls to readable detail and survives filtering

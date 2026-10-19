@@ -1,0 +1,940 @@
+{
+  "schema_version": "qm-food-atlas/v1",
+  "coverage_note_ru": "Учебная подборка: 11 знаменитых блюд из 8 стран. Для каждого указана конкретная классическая региональная или авторская версия с источником. Семейные и местные традиции могут различаться.",
+  "coverage_note_en": "Learning collection: 11 well-known dishes from 8 countries. Each follows a named classic regional or author reference recipe with sources. Local and family traditions may differ.",
+  "sources": [
+    {
+      "id": "pizza-stg-pdf",
+      "title": "Pizza Napoletana STG production specification",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252Fa%252FD.54ec78491c37356fe33f/P/BLOB:ID=24230/E/pdf?mode=download",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "paella-valencia-pdf",
+      "title": "Turisme Comunitat Valenciana: Paella Valenciana",
+      "url": "https://multimedia.comunitatvalenciana.com/02DE7ACEB70B406FB083C79314A85B50/doc/7791B45ACAB1455ABAB179442017C123/Paella_Valenciana_EN.pdf",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "carbonara-lci",
+      "title": "La Cucina Italiana: Carbonara classica",
+      "url": "https://www.lacucinaitaliana.it/ricetta/primi/carbonara-classica/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "nigiri-maff",
+      "title": "MAFF: Nigiri zushi",
+      "url": "https://www.maff.go.jp/e/policies/market/k_ryouri/search_menu/1121/index.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "chirashi-maff",
+      "title": "MAFF: Chirashi sushi",
+      "url": "https://www.maff.go.jp/j/yusyutu_kokusai/kokuchi/middle_east/japan-cuisine/ja/japan/20/index.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "ceviche-peru",
+      "title": "Peru Travel: Peruvian Fish Ceviche",
+      "url": "https://www.peru.travel/gastronomy/en/recipes/entrees/peruvian-fish-ceviche.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "moussaka-gnto",
+      "title": "Visit Greece: Moussaka",
+      "url": "https://www.visitgreece.gr/el/experiences/gastronomy/recipes/mousaka",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "khachapuri-author",
+      "title": "Irma Iantbelidze: Adjarian Khachapuri",
+      "url": "https://georgianrecipes.com/recipes/Adjarian-khachapuri/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "khachapuri-georgia",
+      "title": "Georgia Travel: Ajarian Khachapuri",
+      "url": "https://georgia.travel/ship-and-sun-the-inspiration-for-ajarian-khachapuri",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "borscht-klopotenko",
+      "title": "Ievgen Klopotenko: Ukrainian borsch with pork ribs",
+      "url": "https://klopotenko.com/en/ukrainian-borsch-with-pork-ribs/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "bibimbap-koreanbapsang",
+      "title": "Hyosun Ro, Korean Bapsang: Bibimbap",
+      "url": "https://www.koreanbapsang.com/bibimbap/",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "pizza_napoletana",
+      "name_ru": "Пицца Наполетана",
+      "name_en": "Pizza Napoletana",
+      "category_ru": "выпечка",
+      "category_en": "baked dish",
+      "country_ru": "Италия",
+      "country_en": "Italy",
+      "region_ru": "Неаполь, Кампания",
+      "region_en": "Naples, Campania",
+      "summary_ru": "Дрожжевая неаполитанская пицца с томатом, моцареллой, базиликом и маслом.",
+      "summary_en": "Neapolitan yeast pizza with tomato, mozzarella, basil and oil.",
+      "classic_note_ru": "Справочная версия: Margherita из спецификации Pizza Napoletana STG.",
+      "classic_note_en": "Reference version: Margherita in the Pizza Napoletana STG specification.",
+      "origin_ru": "Спецификация определяет неаполитанскую традицию и называет Маргариту одной из известных неаполитанских пицц.",
+      "origin_en": "The specification defines a Neapolitan tradition and names Margherita among well-known Neapolitan pizzas.",
+      "servings_ru": "11–15 пицц; шарики по 180–250 г",
+      "servings_en": "11–15 pizzas; 180–250 g dough balls",
+      "ingredients": [
+        {
+          "name_ru": "вода, соль, свежие дрожжи и мука",
+          "name_en": "water, salt, fresh yeast and flour",
+          "amount_ru": "1 л, 50–55 г, 3 г, 1,8 кг",
+          "amount_en": "1 L, 50–55 g, 3 g, 1.8 kg"
+        },
+        {
+          "name_ru": "томаты",
+          "name_en": "tomatoes",
+          "amount_ru": "60–80 г на пиццу",
+          "amount_en": "60–80 g per pizza"
+        },
+        {
+          "name_ru": "моцарелла и базилик",
+          "name_en": "mozzarella and basil",
+          "amount_ru": "80–100 г и несколько листьев на пиццу",
+          "amount_en": "80–100 g and a few leaves per pizza"
+        },
+        {
+          "name_ru": "оливковое масло",
+          "name_en": "extra-virgin olive oil",
+          "amount_ru": "4–5 г на пиццу",
+          "amount_en": "4–5 g per pizza"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Растворите соль в воде, добавьте 10% муки и дрожжи, затем постепенно вмешайте остальную муку; месите 20 минут на малой скорости до мягкой эластичной массы.",
+          "text_en": "Dissolve salt in water, add 10% of the flour and yeast, then the rest of the flour; knead 20 minutes on low speed until soft and elastic."
+        },
+        {
+          "text_ru": "Дайте тесту постоять под влажной тканью 2 часа, разделите вручную на шарики 180–250 г и расстаивайте ещё 4–6 часов.",
+          "text_en": "Rest under a damp cloth for 2 hours, hand-divide into 180–250 g balls and proof for another 4–6 hours."
+        },
+        {
+          "text_ru": "Растяните руками диск, положите томат, моцареллу, базилик и масло; выпекайте в дровяной печи при 485°C 60–90 секунд, до равномерной готовности.",
+          "text_en": "Hand-stretch a disc, add tomato, mozzarella, basil and oil; bake in a wood-fired oven at 485°C for 60–90 seconds until evenly cooked."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "STG ограничивает диаметр пиццы 35 см, а толщину центра — примерно 0,4 см.",
+          "text_en": "The STG limits pizza diameter to 35 cm and the centre thickness to about 0.4 cm.",
+          "source_ids": [
+            "pizza-stg-pdf"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Пицца маринара",
+          "name_en": "Pizza Marinara",
+          "region_ru": "Неаполь",
+          "region_en": "Naples",
+          "difference_ru": "В варианте STG чеснок и орегано заменяют моцареллу и базилик.",
+          "difference_en": "In the STG type, garlic and oregano replace mozzarella and basil.",
+          "source_ids": [
+            "pizza-stg-pdf"
+          ]
+        }
+      ],
+      "source_ids": [
+        "pizza-stg-pdf"
+      ]
+    },
+    {
+      "id": "pizza_marinara",
+      "name_ru": "Пицца маринара",
+      "name_en": "Pizza Marinara",
+      "category_ru": "выпечка",
+      "category_en": "baked dish",
+      "country_ru": "Италия",
+      "country_en": "Italy",
+      "region_ru": "Неаполь, Кампания",
+      "region_en": "Naples, Campania",
+      "summary_ru": "Неаполитанская пицца STG с томатом, чесноком, орегано и маслом.",
+      "summary_en": "Neapolitan STG pizza with tomato, garlic, oregano and oil.",
+      "classic_note_ru": "Справочная версия: Marinara из спецификации Pizza Napoletana STG.",
+      "classic_note_en": "Reference version: Marinara in the Pizza Napoletana STG specification.",
+      "origin_ru": "Спецификация относит Marinara к известным неаполитанским пиццам.",
+      "origin_en": "The specification places Marinara among the well-known Neapolitan pizzas.",
+      "servings_ru": "11–15 пицц; шарики по 180–250 г",
+      "servings_en": "11–15 pizzas; 180–250 g dough balls",
+      "ingredients": [
+        {
+          "name_ru": "вода, соль, свежие дрожжи и мука",
+          "name_en": "water, salt, fresh yeast and flour",
+          "amount_ru": "1 л, 50–55 г, 3 г, 1,8 кг",
+          "amount_en": "1 L, 50–55 g, 3 g, 1.8 kg"
+        },
+        {
+          "name_ru": "томаты",
+          "name_en": "tomatoes",
+          "amount_ru": "70–100 г на пиццу",
+          "amount_en": "70–100 g per pizza"
+        },
+        {
+          "name_ru": "чеснок и орегано",
+          "name_en": "garlic and oregano",
+          "amount_ru": "1 зубчик и щепотка на пиццу",
+          "amount_en": "1 clove and a pinch per pizza"
+        },
+        {
+          "name_ru": "оливковое масло",
+          "name_en": "extra-virgin olive oil",
+          "amount_ru": "4–5 г на пиццу",
+          "amount_en": "4–5 g per pizza"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Замесите тесто из воды, соли, дрожжей и муки 20 минут до мягкой эластичности.",
+          "text_en": "Knead water, salt, yeast and flour for 20 minutes until soft and elastic."
+        },
+        {
+          "text_ru": "Оставьте на 2 часа, разделите вручную на шарики 180–250 г и расстаивайте 4–6 часов.",
+          "text_en": "Rest for 2 hours, hand-divide into 180–250 g balls and proof for 4–6 hours."
+        },
+        {
+          "text_ru": "Растяните руками, распределите томат, соль, орегано, нарезанный чеснок и масло; пеките при 485°C 60–90 секунд.",
+          "text_en": "Hand-stretch, spread tomato, salt, oregano, sliced garlic and oil; bake at 485°C for 60–90 seconds."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "STG описывает Marinara как томатную пиццу с чесноком, орегано и 4–5 г масла.",
+          "text_en": "The STG describes Marinara as tomato pizza with garlic, oregano and 4–5 g oil.",
+          "source_ids": [
+            "pizza-stg-pdf"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Маргарита",
+          "name_en": "Margherita",
+          "region_ru": "Неаполь",
+          "region_en": "Naples",
+          "difference_ru": "Margherita STG добавляет моцареллу и свежий базилик.",
+          "difference_en": "STG Margherita adds mozzarella and fresh basil.",
+          "source_ids": [
+            "pizza-stg-pdf"
+          ]
+        }
+      ],
+      "source_ids": [
+        "pizza-stg-pdf"
+      ]
+    },
+    {
+      "id": "paella_valenciana",
+      "name_ru": "Паэлья валенсиана",
+      "name_en": "Paella Valenciana",
+      "category_ru": "рисовое блюдо",
+      "category_en": "rice dish",
+      "country_ru": "Испания",
+      "country_en": "Spain",
+      "region_ru": "Валенсия",
+      "region_en": "Valencia",
+      "summary_ru": "Валенсийский рис в широкой сковороде с курицей, кроликом и бобами.",
+      "summary_en": "Valencian rice in a wide pan with chicken, rabbit and beans.",
+      "classic_note_ru": "Справочная версия: рецепт Turisme Comunitat Valenciana на 4 порции.",
+      "classic_note_en": "Reference version: Turisme Comunitat Valenciana’s four-serving recipe.",
+      "origin_ru": "Официальный региональный материал называет блюдо символом Валенсии и связывает его с местным рисом и овощами huerta.",
+      "origin_en": "The regional source calls it a Valencian symbol and connects it with local rice and huerta vegetables.",
+      "servings_ru": "4 порции",
+      "servings_en": "4 servings",
+      "ingredients": [
+        {
+          "name_ru": "курица и кролик",
+          "name_en": "chicken and rabbit",
+          "amount_ru": "480 г и 320 г",
+          "amount_en": "480 g and 320 g"
+        },
+        {
+          "name_ru": "гаррофон, зелёная фасоль и томаты",
+          "name_en": "garrofó beans, green beans and tomatoes",
+          "amount_ru": "24 шт., 200 г, 2 тёртых",
+          "amount_en": "24 beans, 200 g, 2 grated"
+        },
+        {
+          "name_ru": "рис, вода и соль",
+          "name_en": "rice, water and salt",
+          "amount_ru": "400 г, 2,6 л, около 28 г",
+          "amount_en": "400 g, 2.6 L, about 28 g"
+        },
+        {
+          "name_ru": "масло, паприка и шафран",
+          "name_en": "olive oil, paprika and saffron",
+          "amount_ru": "120 мл, 0,8 ч. л., 32 нити",
+          "amount_en": "120 ml, 0.8 tsp, 32 strands"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "В паэльере 42–55 см обжарьте на среднем огне курицу и кролика до готовности; добавьте фасоль, затем паприку и томат.",
+          "text_en": "In a 42–55 cm paella pan, fry chicken and rabbit over medium heat until cooked; add beans, then paprika and tomato."
+        },
+        {
+          "text_ru": "Добавьте воду, соль и гаррофон, доведите до слабого кипения и уварите до отмеченного уровня жидкости.",
+          "text_en": "Add water, salt and garrofó, bring to a simmer and reduce to the marked liquid level."
+        },
+        {
+          "text_ru": "Всыпьте рис: кипятите 5 минут, затем 5 минут на среднем и 5–8 минут на слабом огне; оставьте на 5 минут.",
+          "text_en": "Add rice: boil 5 minutes, then cook 5 minutes on medium and 5–8 minutes on low; rest 5 minutes."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Рецепт использует 400 г короткозёрного риса Valencia DOP и готовится за один час.",
+          "text_en": "The recipe uses 400 g Valencia DOP short-grain rice and takes one hour.",
+          "source_ids": [
+            "paella-valencia-pdf"
+          ]
+        }
+      ],
+      "variants": [],
+      "source_ids": [
+        "paella-valencia-pdf"
+      ]
+    },
+    {
+      "id": "carbonara",
+      "name_ru": "Карбонара",
+      "name_en": "Carbonara classica",
+      "category_ru": "паста",
+      "category_en": "pasta",
+      "country_ru": "Италия",
+      "country_en": "Italy",
+      "region_ru": "Рим и Лацио",
+      "region_en": "Rome and Lazio",
+      "summary_ru": "Спагетти с хрустящим гуанчале, желтками, двумя сырами и чёрным перцем.",
+      "summary_en": "Spaghetti with crisp guanciale, yolks, two cheeses and black pepper.",
+      "classic_note_ru": "Справочная версия: Carbonara classica от La Cucina Italiana.",
+      "classic_note_en": "Reference version: La Cucina Italiana’s Carbonara classica.",
+      "origin_ru": "Источник называет карбонару типичным блюдом римской и лацийской кухни.",
+      "origin_en": "The source calls carbonara a typical dish of Roman and Lazio cuisine.",
+      "servings_ru": "4 порции",
+      "servings_en": "4 servings",
+      "ingredients": [
+        {
+          "name_ru": "спагетти и гуанчале",
+          "name_en": "spaghetti and guanciale",
+          "amount_ru": "350 г и 100 г",
+          "amount_en": "350 g and 100 g"
+        },
+        {
+          "name_ru": "пекорино и грана",
+          "name_en": "Pecorino and Grana",
+          "amount_ru": "30 г и 30 г",
+          "amount_en": "30 g and 30 g"
+        },
+        {
+          "name_ru": "желтки",
+          "name_en": "egg yolks",
+          "amount_ru": "4 шт.",
+          "amount_en": "4"
+        },
+        {
+          "name_ru": "оливковое масло, соль и чёрный перец",
+          "name_en": "olive oil, salt and black pepper",
+          "amount_ru": "1 ст. л., по вкусу",
+          "amount_en": "1 tbsp, to taste"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Нарежьте гуанчале полосками; смешайте желтки с тёртыми сырами и перцем.",
+          "text_en": "Cut guanciale into strips; mix yolks with grated cheeses and pepper."
+        },
+        {
+          "text_ru": "Обжарьте гуанчале в ложке масла около 2 минут до хруста, выключите огонь и слегка остудите.",
+          "text_en": "Fry guanciale in the oil for about 2 minutes until crisp, turn off the heat and let it cool slightly."
+        },
+        {
+          "text_ru": "Сварите спагетти al dente, сохраните ковш воды; перемешайте пасту с гуанчале, водой и желтковой смесью быстро, чтобы соус остался кремовым.",
+          "text_en": "Cook spaghetti al dente and reserve a ladle of water; toss pasta with guanciale, water and yolk mixture quickly so the sauce stays creamy."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Источник указывает 40 минут общего времени и советует подавать сразу на горячих тарелках.",
+          "text_en": "The source gives a 40-minute total time and advises serving immediately on hot plates.",
+          "source_ids": [
+            "carbonara-lci"
+          ]
+        }
+      ],
+      "variants": [],
+      "source_ids": [
+        "carbonara-lci"
+      ]
+    },
+    {
+      "id": "nigiri_zushi",
+      "name_ru": "Нигири-дзуси",
+      "name_en": "Nigiri-zushi",
+      "category_ru": "суши",
+      "category_en": "sushi",
+      "country_ru": "Япония",
+      "country_en": "Japan",
+      "region_ru": "Токио",
+      "region_en": "Tokyo",
+      "summary_ru": "Уксусный рис с маринованным тунцом, сформованный небольшими порциями.",
+      "summary_en": "Vinegared rice with marinated tuna, shaped into small portions.",
+      "classic_note_ru": "Справочная версия: тунцовое нигири из MAFF Our Regional Cuisines.",
+      "classic_note_en": "Reference version: tuna nigiri from MAFF Our Regional Cuisines.",
+      "origin_ru": "MAFF связывает расцвет нигири как уличной еды с периодом Эдо и районом Токийского залива.",
+      "origin_en": "MAFF links nigiri’s rise as stall food to the Edo period and the Tokyo Bay area.",
+      "servings_ru": "3–4 порции",
+      "servings_en": "3–4 servings",
+      "ingredients": [
+        {
+          "name_ru": "рис и саке",
+          "name_en": "rice and sake",
+          "amount_ru": "2 gō и 2 ст. л.",
+          "amount_en": "2 gō and 2 tbsp"
+        },
+        {
+          "name_ru": "комбу",
+          "name_en": "kelp",
+          "amount_ru": "10–15 см",
+          "amount_en": "10–15 cm"
+        },
+        {
+          "name_ru": "красный уксус, сахар и соль",
+          "name_en": "red vinegar, sugar and salt",
+          "amount_ru": "4 ст. л., 1/2 ч. л., 1 ч. л.",
+          "amount_en": "4 tbsp, 1/2 tsp, 1 tsp"
+        },
+        {
+          "name_ru": "красный тунец, тёмный соевый соус и мирин",
+          "name_en": "red tuna, dark soy sauce and mirin",
+          "amount_ru": "1 кусок, 2 ст. л., 2 ч. л.",
+          "amount_en": "1 piece, 2 tbsp, 2 tsp"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Промойте рис, обсушите 5–10 минут и сварите с саке и комбу.",
+          "text_en": "Wash rice, drain 5–10 minutes and cook it with sake and kelp."
+        },
+        {
+          "text_ru": "Растворите ингредиенты уксуса; вмешайте его в горячий рис и остудите веером.",
+          "text_en": "Dissolve the vinegar ingredients; fold them into hot rice and fan it cool."
+        },
+        {
+          "text_ru": "Нагрейте мирин, чтобы убрать алкоголь, маринуйте тонкий тунец 10 минут и мягко прижмите его к рисовому овалу.",
+          "text_en": "Heat mirin to dissipate alcohol, marinate thin tuna for 10 minutes and gently press it onto a rice oval."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "MAFF определяет нигири как уксусный рис с начинкой сверху.",
+          "text_en": "MAFF defines nigiri as vinegared rice topped with ingredients.",
+          "source_ids": [
+            "nigiri-maff"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Обычный уксус",
+          "name_en": "Regular-vinegar option",
+          "region_ru": "Токио",
+          "region_en": "Tokyo",
+          "difference_ru": "MAFF допускает обычный уксус, если красного уксуса нет.",
+          "difference_en": "MAFF permits regular vinegar when red vinegar is unavailable.",
+          "source_ids": [
+            "nigiri-maff"
+          ]
+        }
+      ],
+      "source_ids": [
+        "nigiri-maff"
+      ]
+    },
+    {
+      "id": "sushi_chirashi",
+      "name_ru": "Тирасидзуси",
+      "name_en": "Chirashi sushi",
+      "category_ru": "суши",
+      "category_en": "sushi",
+      "country_ru": "Япония",
+      "country_en": "Japan",
+      "region_ru": "Япония",
+      "region_en": "Japan",
+      "summary_ru": "Уксусный рис с копчёным лососем, яичной крошкой, спаржей и кунжутом.",
+      "summary_en": "Vinegared rice with smoked salmon, scrambled egg, asparagus and sesame.",
+      "classic_note_ru": "Справочная версия: домашний рецепт MAFF на 2 порции.",
+      "classic_note_en": "Reference version: MAFF’s two-serving home recipe.",
+      "origin_ru": "Карточка ограничена домашней версией MAFF и не утверждает единый регион происхождения.",
+      "origin_en": "This card is limited to MAFF’s home version and does not assert one regional origin.",
+      "servings_ru": "2 порции",
+      "servings_en": "2 servings",
+      "ingredients": [
+        {
+          "name_ru": "рис, вода и комбу",
+          "name_en": "rice, water and kelp",
+          "amount_ru": "200 г, 280 мл, лист 5×5 см",
+          "amount_en": "200 g, 280 ml, 5×5 cm sheet"
+        },
+        {
+          "name_ru": "уксус, сахар, соль, васаби и кунжут",
+          "name_en": "vinegar, sugar, salt, wasabi and sesame",
+          "amount_ru": "2 ст. л., 1 ст. л., 1/6 ч. л., 1/3 ч. л., 1 ст. л.",
+          "amount_en": "2 tbsp, 1 tbsp, 1/6 tsp, 1/3 tsp, 1 tbsp"
+        },
+        {
+          "name_ru": "яйца, спаржа и копчёный лосось",
+          "name_en": "eggs, asparagus and smoked salmon",
+          "amount_ru": "2 шт., 2 стебля, 70 г",
+          "amount_en": "2, 2 stalks, 70 g"
+        },
+        {
+          "name_ru": "соевый и кунжутный масла",
+          "name_en": "soy sauce and sesame oil",
+          "amount_ru": "1/2 ст. л. и 1 ч. л.",
+          "amount_en": "1/2 tbsp and 1 tsp"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Сварите рис с водой и комбу: после появления пузырьков томите под крышкой 20 минут и оставьте на 10 минут.",
+          "text_en": "Cook rice with water and kelp: once bubbles appear, cover and simmer 20 minutes, then rest 10 minutes."
+        },
+        {
+          "text_ru": "Смешайте уксус, сахар, соль, васаби и кунжут с рисом; бланшируйте спаржу около минуты и заправьте лосось соевым соусом.",
+          "text_en": "Mix vinegar, sugar, salt, wasabi and sesame into the rice; blanch asparagus about a minute and dress salmon with soy sauce."
+        },
+        {
+          "text_ru": "Сделайте на кунжутном масле мелкую яичную крошку, разложите рис и покройте яйцом, спаржей и лососем.",
+          "text_en": "Make fine scrambled egg in sesame oil, plate the rice and top with egg, asparagus and salmon."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "MAFF описывает три цвета этой версии: лосось, яйцо и спаржу.",
+          "text_en": "MAFF describes this version’s three colours: salmon, egg and asparagus.",
+          "source_ids": [
+            "chirashi-maff"
+          ]
+        }
+      ],
+      "variants": [],
+      "source_ids": [
+        "chirashi-maff"
+      ]
+    },
+    {
+      "id": "ceviche_peruano",
+      "name_ru": "Перуанский рыбный севиче",
+      "name_en": "Peruvian fish ceviche",
+      "category_ru": "рыбное блюдо",
+      "category_en": "fish dish",
+      "country_ru": "Перу",
+      "country_en": "Peru",
+      "region_ru": "Перуанская кухня",
+      "region_en": "Peruvian cuisine",
+      "summary_ru": "Свежая рыба в соке лайма с луком, кинзой, перцем, кукурузой и бататом.",
+      "summary_en": "Fresh fish in lime juice with onion, cilantro, chile, corn and sweet potato.",
+      "classic_note_ru": "Справочная версия: рецепт Peru Travel.",
+      "classic_note_en": "Reference version: the Peru Travel recipe.",
+      "origin_ru": "Карточка описывает рецепт, представленный официальным перуанским туристическим ресурсом, без заявления о единственном историческом происхождении.",
+      "origin_en": "The card describes a recipe presented by Peru’s official tourism resource without asserting a sole historical origin.",
+      "servings_ru": "6 порций",
+      "servings_en": "6 servings",
+      "ingredients": [
+        {
+          "name_ru": "свежое рыбное филе и лаймы",
+          "name_en": "fresh fish fillets and limes",
+          "amount_ru": "1 кг и 20 шт.",
+          "amount_en": "1 kg and 20"
+        },
+        {
+          "name_ru": "кукуруза, батат и салат",
+          "name_en": "corn, sweet potato and lettuce",
+          "amount_ru": "2 початка, 2 крупных, 6 листьев",
+          "amount_en": "2 ears, 2 large, 6 leaves"
+        },
+        {
+          "name_ru": "красный лук, кинза и аджи",
+          "name_en": "red onion, cilantro and ají",
+          "amount_ru": "1 крупная, 4 веточки, 2–3 ají limo",
+          "amount_en": "1 large, 4 sprigs, 2–3 ají limo"
+        },
+        {
+          "name_ru": "чеснок, соль, перец и MSG",
+          "name_en": "garlic, salt, pepper and MSG",
+          "amount_ru": "1 1/2 ч. л., 1 1/2 ч. л., 1/2 ч. л., 1 ч. л.",
+          "amount_en": "1 1/2 tsp, 1 1/2 tsp, 1/2 tsp, 1 tsp"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Нарежьте рыбу кубиками чуть меньше 2,5 см и держите в стеклянной посуде со льдом; тонко нарежьте лук и кинзу.",
+          "text_en": "Cut fish into cubes just under 1 inch and keep it in a glass container with ice; finely slice onion and cilantro."
+        },
+        {
+          "text_ru": "Отварите кукурузу и батат, выжмите лаймы без горькой кожуры и перемешайте сок с чесноком, MSG, солью и перцем 20 секунд.",
+          "text_en": "Parboil corn and sweet potato, juice limes without bitter rind and mix juice with garlic, MSG, salt and pepper for 20 seconds."
+        },
+        {
+          "text_ru": "Добавьте к соку осушенную рыбу, ají, лук и кинзу, перемешайте и подайте на листе салата с кукурузой и бататом.",
+          "text_en": "Add drained fish, ají, onion and cilantro to the juice, mix and serve on lettuce with corn and sweet potato."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Peru Travel советует резать лук тонкими «перьями».",
+          "text_en": "Peru Travel advises cutting the onion into thin feather-like strips.",
+          "source_ids": [
+            "ceviche-peru"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Версия с рокото",
+          "name_en": "Rocoto option",
+          "region_ru": "Перу",
+          "region_en": "Peru",
+          "difference_ru": "Источник разрешает заменить ají limo половиной нарезанного перца рокото.",
+          "difference_en": "The source permits replacing ají limo with half a chopped rocoto pepper.",
+          "source_ids": [
+            "ceviche-peru"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ceviche-peru"
+      ]
+    },
+    {
+      "id": "moussaka",
+      "name_ru": "Мусака",
+      "name_en": "Moussaka",
+      "category_ru": "запеканка",
+      "category_en": "baked casserole",
+      "country_ru": "Греция",
+      "country_en": "Greece",
+      "region_ru": "Греция",
+      "region_en": "Greece",
+      "summary_ru": "Слоёная запеканка из картофеля, баклажана, говядины и бешамеля.",
+      "summary_en": "Layered casserole of potato, eggplant, beef and béchamel.",
+      "classic_note_ru": "Справочная версия: рецепт Greek National Tourism Organisation.",
+      "classic_note_en": "Reference version: Greek National Tourism Organisation recipe.",
+      "origin_ru": "Карточка описывает греческую рецептурную версию GNTO, не делая исключительных заявлений о происхождении блюда.",
+      "origin_en": "The card describes GNTO’s Greek recipe version without making exclusive origin claims.",
+      "servings_ru": "8 порций",
+      "servings_en": "8 servings",
+      "ingredients": [
+        {
+          "name_ru": "баклажаны, картофель и говяжий фарш",
+          "name_en": "eggplants, potatoes and ground beef",
+          "amount_ru": "по 1 кг",
+          "amount_en": "1 kg each"
+        },
+        {
+          "name_ru": "масло, лук, белое вино и томатная паста",
+          "name_en": "oil, onion, white wine and tomato paste",
+          "amount_ru": "1/2 чашки, 2 шт., 1 стакан, 1 ст. л.",
+          "amount_en": "1/2 cup, 2, 1 glass, 1 tbsp"
+        },
+        {
+          "name_ru": "корица, соль и перец",
+          "name_en": "cinnamon, salt and pepper",
+          "amount_ru": "немного, по вкусу",
+          "amount_en": "a little, to taste"
+        },
+        {
+          "name_ru": "масло, мука, молоко, яйцо и мускатный орех",
+          "name_en": "butter, flour, milk, egg and nutmeg",
+          "amount_ru": "6 ст. л., 8 ст. л., 1 л, 1 шт., по вкусу",
+          "amount_en": "6 tbsp, 8 tbsp, 1 L, 1, to taste"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Обжарьте лук в масле, добавьте фарш, затем томатную пасту, воду, корицу, соль и перец; готовьте до готовности.",
+          "text_en": "Fry onion in oil, add beef, then tomato paste, water, cinnamon, salt and pepper; cook through."
+        },
+        {
+          "text_ru": "Подрумяньте картофель на сковороде, баклажаны приготовьте на гриле; уложите картофель, половину баклажанов, мясо и остальные баклажаны.",
+          "text_en": "Brown potatoes in a pan and grill eggplants; layer potato, half the eggplant, meat and remaining eggplant."
+        },
+        {
+          "text_ru": "Нагрейте масло с мукой, постепенно влейте молоко, приправьте и загустите; снимите с огня, вмешайте яйцо, покройте мусаку и запекайте до румяного бешамеля.",
+          "text_en": "Heat butter with flour, gradually add milk, season and thicken; remove from heat, stir in egg, cover moussaka and bake until béchamel browns."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "GNTO указывает 1 час 35 минут приготовления.",
+          "text_en": "GNTO gives a preparation time of 1 hour 35 minutes.",
+          "source_ids": [
+            "moussaka-gnto"
+          ]
+        }
+      ],
+      "variants": [],
+      "source_ids": [
+        "moussaka-gnto"
+      ]
+    },
+    {
+      "id": "khachapuri_adjaruli",
+      "name_ru": "Аджарский хачапури",
+      "name_en": "Adjarian khachapuri",
+      "category_ru": "выпечка",
+      "category_en": "baked bread",
+      "country_ru": "Грузия",
+      "country_en": "Georgia",
+      "region_ru": "Аджария",
+      "region_en": "Adjara",
+      "summary_ru": "Лодочка из дрожжевого теста с сыром, желтком и маслом.",
+      "summary_en": "A yeast-dough boat with cheese, yolk and butter.",
+      "classic_note_ru": "Справочная версия: рецепт Ирэмы Янтбелидзе на Georgian Recipes.",
+      "classic_note_en": "Reference version: Irma Iantbelidze’s recipe at Georgian Recipes.",
+      "origin_ru": "Georgia Travel связывает лодочную форму с лазами — лодочниками и рыбаками — и с Аджарией.",
+      "origin_en": "Georgia Travel connects the boat form with Laz boatmen and fishers and with Adjara.",
+      "servings_ru": "2 лодочки",
+      "servings_en": "2 boats",
+      "ingredients": [
+        {
+          "name_ru": "мука, тёплая вода и сухие дрожжи",
+          "name_en": "flour, warm water and dry yeast",
+          "amount_ru": "300 г, 150 мл, 10 г",
+          "amount_en": "300 g, 150 ml, 10 g"
+        },
+        {
+          "name_ru": "тёртый сыр",
+          "name_en": "grated cheese",
+          "amount_ru": "500 г",
+          "amount_en": "500 g"
+        },
+        {
+          "name_ru": "яичные желтки и сливочное масло",
+          "name_en": "egg yolks and butter",
+          "amount_ru": "2 шт. и 20 г",
+          "amount_en": "2 and 20 g"
+        },
+        {
+          "name_ru": "подсолнечное масло и соль",
+          "name_en": "sunflower oil and salt",
+          "amount_ru": "по 1 ч. л.",
+          "amount_en": "1 tsp each"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Размешайте дрожжи в тёплой воде и оставьте примерно на 15 минут до пены; добавьте муку и соль, замесите мягкое тесто, смажьте его маслом и оставьте под плёнкой на 40 минут.",
+          "text_en": "Stir yeast into warm water and leave about 15 minutes until foamy; add flour and salt, knead a soft dough, oil it and rest it covered for 40 minutes."
+        },
+        {
+          "text_ru": "Разделите тесто на две части, раскатайте овалы, защипните длинные стороны лодочкой и распределите тёртый сыр между двумя лодочками.",
+          "text_en": "Divide dough in two, roll ovals, seal the long sides into boats and divide the grated cheese between the two boats."
+        },
+        {
+          "text_ru": "Пеките при 220°C 12–15 минут до золотистости; добавьте по желтку ещё на 1–2 минуты и закончите маслом.",
+          "text_en": "Bake at 220°C for 12–15 minutes until golden; add one yolk for another 1–2 minutes and finish with butter."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Georgia Travel советует перед едой смешать внутри лодочки горячий сыр, мягкий желток и масло.",
+          "text_en": "Georgia Travel advises mixing hot cheese, soft yolk and butter inside the boat before eating.",
+          "source_ids": [
+            "khachapuri-georgia"
+          ]
+        }
+      ],
+      "variants": [],
+      "source_ids": [
+        "khachapuri-author",
+        "khachapuri-georgia"
+      ]
+    },
+    {
+      "id": "ukrainian_borscht_ribs",
+      "name_ru": "Украинский борщ со свиными рёбрами",
+      "name_en": "Ukrainian borsch with pork ribs",
+      "category_ru": "суп",
+      "category_en": "soup",
+      "country_ru": "Украина",
+      "country_en": "Ukraine",
+      "region_ru": "украинская кухня",
+      "region_en": "Ukrainian cuisine",
+      "summary_ru": "Борщ на запечённых свиных рёбрах со свёклой, капустой, томатами и копчёной грушей.",
+      "summary_en": "Borsch on roasted pork ribs with beet, cabbage, tomato and smoked dried pear.",
+      "classic_note_ru": "Справочная версия: рецепт Евгения Клопотенко на 8 порций.",
+      "classic_note_en": "Reference version: Ievgen Klopotenko’s eight-serving recipe.",
+      "origin_ru": "Автор прямо отмечает, что в семьях существуют разные рецепты борща; карточка не выдаёт этот вариант за единственный.",
+      "origin_en": "The author explicitly notes that families make different borsch recipes; this card does not present this one as the only version.",
+      "servings_ru": "8 порций",
+      "servings_en": "8 servings",
+      "ingredients": [
+        {
+          "name_ru": "свиные рёбра и вода",
+          "name_en": "pork ribs and water",
+          "amount_ru": "400–500 г и около 3 л",
+          "amount_en": "400–500 g and about 3 L"
+        },
+        {
+          "name_ru": "свёкла, томаты, сельдерей и капуста",
+          "name_en": "beets, tomatoes, celery root and cabbage",
+          "amount_ru": "2 шт., 2 шт., 1/4 корня, 1/4 кочана",
+          "amount_en": "2, 2, 1/4 root, 1/4 head"
+        },
+        {
+          "name_ru": "картофель, морковь, лук, чеснок и сладкий перец",
+          "name_en": "potatoes, carrot, onion, garlic and sweet pepper",
+          "amount_ru": "3–4 шт., 1–2 шт., 1 шт., 1 головка, 1 шт.",
+          "amount_en": "3–4, 1–2, 1, 1 head, 1"
+        },
+        {
+          "name_ru": "груши, томатный сок, масло, паста, лавр и душистый перец",
+          "name_en": "pears, tomato juice, butter, paste, bay and allspice",
+          "amount_ru": "1–2 шт., 200 мл, 30 г, 2 ст. л., 2 листа, 3 горошины",
+          "amount_en": "1–2, 200 ml, 30 g, 2 tbsp, 2 leaves, 3 berries"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Запеките рёбра при 200°C около 30 минут до золотистой корочки; варите их с водой, сельдереем, морковью и половиной лука около 30 минут.",
+          "text_en": "Bake ribs at 200°C about 30 minutes until golden; simmer them with water, celery, carrot and half an onion about 30 minutes."
+        },
+        {
+          "text_ru": "На масле размягчите перец, томаты и оставшийся лук, добавьте сок и пасту на 5–7 минут, затем одну тёртую свёклу ещё на 3–4 минуты.",
+          "text_en": "Soften pepper, tomatoes and remaining onion in butter, add juice and paste for 5–7 minutes, then one grated beet for 3–4 minutes."
+        },
+        {
+          "text_ru": "Добавьте в бульон овощи, вторую свёклу, пряности, картофель, чеснок и груши; когда всё мягкое, положите капусту на 5 минут и дайте постоять 30 минут.",
+          "text_en": "Add vegetables, second beet, spices, potato, garlic and pears to the broth; once tender, add cabbage for 5 minutes and rest 30 minutes."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Рецепт рассчитан на 1 час 30 минут и советует подавать со сметаной и укропом.",
+          "text_en": "The recipe is timed at 1 hour 30 minutes and suggests serving with sour cream and dill.",
+          "source_ids": [
+            "borscht-klopotenko"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Зелёный борщ",
+          "name_en": "Green borsch",
+          "region_ru": "украинская кухня",
+          "region_en": "Ukrainian cuisine",
+          "difference_ru": "Авторский каталог отдельно перечисляет зелёный борщ, поэтому он отмечен как связанная, а не производная версия.",
+          "difference_en": "The author’s catalogue separately lists green borsch, so it is marked as a related rather than descended version.",
+          "source_ids": [
+            "borscht-klopotenko"
+          ]
+        }
+      ],
+      "source_ids": [
+        "borscht-klopotenko"
+      ]
+    },
+    {
+      "id": "bibimbap",
+      "name_ru": "Пибимпап",
+      "name_en": "Bibimbap",
+      "category_ru": "рисовая миска",
+      "category_en": "rice bowl",
+      "country_ru": "Республика Корея",
+      "country_en": "Republic of Korea",
+      "region_ru": "корейская кухня",
+      "region_en": "Korean cuisine",
+      "summary_ru": "Рисовая миска с отдельно подготовленными овощами, говядиной и соусом кочхуджан.",
+      "summary_en": "Rice bowl with separately prepared vegetables, beef and gochujang sauce.",
+      "classic_note_ru": "Справочная версия: домашний рецепт корейского автора Хёсон Ро на Korean Bapsang.",
+      "classic_note_en": "Reference version: Korean author Hyosun Ro’s home recipe at Korean Bapsang.",
+      "origin_ru": "Источник называет Jeonju самым известным пибимпапом, но эта карточка следует домашней версии, а не приписывает ей происхождение.",
+      "origin_en": "The source calls Jeonju bibimbap the most famous, but this card follows the home version rather than assigning it an origin.",
+      "servings_ru": "4 порции",
+      "servings_en": "4 servings",
+      "ingredients": [
+        {
+          "name_ru": "короткозёрный рис и тонкая говядина",
+          "name_en": "short-grain rice and thin beef",
+          "amount_ru": "3 чашки и 8 унций",
+          "amount_en": "3 cups and 8 oz"
+        },
+        {
+          "name_ru": "проростки, шпинат, огурцы, грибы и морковь",
+          "name_en": "sprouts, spinach, cucumbers, mushrooms and carrots",
+          "amount_ru": "8, 8, 5, 4, 5 унций",
+          "amount_en": "8, 8, 5, 4, 5 oz"
+        },
+        {
+          "name_ru": "соевый соус, сахар, кунжутное масло, рисовое вино, чеснок и зелёный лук",
+          "name_en": "soy sauce, sugar, sesame oil, rice wine, garlic and scallion",
+          "amount_ru": "1 1/2 ст. л., 2 ч. л., 2 ч. л., 2 ч. л., 2 1/2 ч. л., 4 ст. л.",
+          "amount_en": "1 1/2 tbsp, 2 tsp, 2 tsp, 2 tsp, 2 1/2 tsp, 4 tbsp"
+        },
+        {
+          "name_ru": "кочхуджан, вода, яйца и кунжут",
+          "name_en": "gochujang, water, eggs and sesame",
+          "amount_ru": "4 ст. л., 1 ст. л., 4 шт., по вкусу",
+          "amount_en": "4 tbsp, 1 tbsp, 4, to taste"
+        }
+      ],
+      "steps": [
+        {
+          "text_ru": "Сварите рис чуть суше обычного; замаринуйте говядину 20 минут и быстро обжарьте на сильном огне 2–3 минуты.",
+          "text_en": "Cook rice a little drier than usual; marinate beef 20 minutes and sauté it over high heat for 2–3 minutes."
+        },
+        {
+          "text_ru": "Бланшируйте проростки около минуты и шпинат около 40 секунд, огурцы посолите на 10–15 минут; грибы и морковь обжарьте отдельно 1–2 минуты.",
+          "text_en": "Blanch sprouts about a minute and spinach about 40 seconds, salt cucumber 10–15 minutes; sauté mushrooms and carrot separately 1–2 minutes."
+        },
+        {
+          "text_ru": "Смешайте кочхуджан с сахаром, кунжутным маслом и водой; разложите рис, овощи и говядину, добавьте жареное яйцо и соус.",
+          "text_en": "Mix gochujang with sugar, sesame oil and water; arrange rice, vegetables and beef, then add fried egg and sauce."
+        }
+      ],
+      "facts": [
+        {
+          "text_ru": "Источник объясняет, что bibim означает «смешивать», а bap — «рис».",
+          "text_en": "The source explains that bibim means mixing and bap means rice.",
+          "source_ids": [
+            "bibimbap-koreanbapsang"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name_ru": "Дольсот пибимпап",
+          "name_en": "Dolsot bibimbap",
+          "region_ru": "корейская кухня",
+          "region_en": "Korean cuisine",
+          "difference_ru": "Горячая каменная чаша поджаривает нижний слой риса до корочки.",
+          "difference_en": "A hot stone bowl crisps the bottom layer of rice.",
+          "source_ids": [
+            "bibimbap-koreanbapsang"
+          ]
+        }
+      ],
+      "source_ids": [
+        "bibimbap-koreanbapsang"
+      ]
+    }
+  ]
+}

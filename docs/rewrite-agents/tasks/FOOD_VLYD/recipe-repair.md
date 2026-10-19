@@ -1,0 +1,9 @@
+# FOOD_VLYD recipe-source repair
+
+Checked on 2026-10-19 against pages or PDFs opened during this repair. The previous 24-card candidate remains read-only. This new candidate retains eleven recipe cards: `pizza_napoletana`, `pizza_marinara`, `paella_valenciana`, `carbonara`, `nigiri_zushi`, `sushi_chirashi`, `ceviche_peruano`, `moussaka`, `khachapuri_adjaruli`, `ukrainian_borscht_ribs`, and `bibimbap`. Dolsot bibimbap remains a source-backed variant within `bibimbap`, so it does not create an ambiguous duplicate composition question.
+
+Each card has a source that supplies a named recipe with a yield, ingredient set and method. The pizza cards cite the actual Ministry STG PDF, rather than the Ministry index. Carbonara now follows the LCI 350 g spaghetti / 100 g guanciale / 30 g Pecorino / 30 g Grana / four-yolk recipe. Khachapuri now uses Irma Iantbelidze’s Georgian Recipes formula: 300 g flour, 150 ml water, 10 g dry yeast, 500 g cheese, two yolks, 20 g butter and 220°C; Georgia Travel remains contextual regional evidence only. Paella cites the linked official recipe PDF, not its overview page.
+
+Removed from this repair candidate: `rendang`, `tagine_poisson`, `pierogi_ruskie`, `pho_bo`, `banh_mi`, `nasi_lemak`, `mole_poblano`, `asado_argentino`, `peking_duck`, `doro_wat`, `tabbouleh`, `arepas`, and `souvlaki`. Their former URLs were overview-only, inaccessible, or did not support the stated complete household recipe. No broad source is retained as recipe evidence.
+
+The source-specific reference forms are used where a source has no independently documented regional branch; this records the named recipe rather than inventing a descendant claim. The candidate is ready for independent review and root-controlled canonical import. It is not a publication or acceptance decision.

@@ -1,0 +1,15 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart
+00:00 +0: training-sized data without four distinct regions is rejected at load
+00:00 +0 -1: training-sized data without four distinct regions is rejected at load [E]
+  Expected: throws <Instance of 'FormatException'>
+    Actual: <Closure: () => FoodAtlas>
+     Which: returned <Instance of 'FoodAtlas'>
+
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\food_atlas_test.dart 118:5                     main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart: training-sized data without four distinct regions is rejected at load

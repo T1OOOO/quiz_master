@@ -1,0 +1,20 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart
+00:00 +0: food atlas validates references and creates an unambiguous frozen round
+00:00 +1: food atlas rejects unresolved references, bad dates and ambiguous signatures
+00:00 +2: selection down the list scrolls to readable detail and survives filtering
+00:01 +3: Russian answer labels and ingredient signatures are unambiguous
+00:01 +3 -1: Russian answer labels and ingredient signatures are unambiguous [E]
+  Expected: an object with length of <4>
+    Actual: Set:['Регион 0', 'Регион 2', 'Регион 8']
+     Which: has length of <3>
+
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\food_atlas_test.dart 92:7                      main.<fn>
+
+00:01 +3 -1: load failure keeps navigation and can retry successfully
+00:01 +4 -1: checked answers finish and finite mistakes review preserves original score
+00:05 +5 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_atlas_test.dart: Russian answer labels and ingredient signatures are unambiguous

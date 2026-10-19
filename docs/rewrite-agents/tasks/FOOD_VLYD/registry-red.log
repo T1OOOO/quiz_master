@@ -1,0 +1,11 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/food_registry_test.dart
+00:00 +0: food registry contains sourced complete classic recipe cards
+00:00 +0 -1: food registry contains sourced complete classic recipe cards [E]
+  PathNotFoundException: Cannot open file, path = 'assets/quizipedia/food_atlas.json' (OS Error: The system cannot find the file specified, errno = 2)
+  dart:io                            _File.readAsStringSync
+  test\food_registry_test.dart 9:49  main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/food_registry_test.dart: food registry contains sourced complete classic recipe cards
