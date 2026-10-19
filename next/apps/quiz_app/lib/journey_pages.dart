@@ -478,6 +478,7 @@ class _QuestionNavigator extends ConsumerWidget {
         ? null
         : () => showModalBottomSheet<void>(
             context: context,
+            useRootNavigator: true,
             showDragHandle: true,
             useSafeArea: true,
             isScrollControlled: true,

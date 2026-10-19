@@ -14,6 +14,33 @@ import 'package:quiz_app/main.dart';
 import 'package:quiz_app/quizipedia.dart';
 
 void main() {
+  testWidgets('question grid stays above the global feedback button', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(361, 738);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final api = await _QuizTestServer.start();
+    final client = QuizApiClient(baseUri: api.baseUri);
+    client.dio.httpClientAdapter = _QuizTestAdapter(api);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [quizApiProvider.overrideWithValue(client)],
+        child: const QuizApp(
+          initialLocation: '/quiz/quiz-many',
+          defaultLocale: Locale('en'),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('question-navigation-menu')));
+    await tester.pumpAndSettle();
+    expect(find.byTooltip('Send feedback').hitTestable(), findsNothing);
+    await tester.tap(find.byKey(const Key('question-nav-18')));
+    await tester.pumpAndSettle();
+    expect(find.text('19 / 25'), findsOneWidget);
+  });
   testWidgets(
     'browse from a failed selected quiz preserves its difficulty band',
     (tester) async {
