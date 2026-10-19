@@ -34,15 +34,16 @@ void main() {
         await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Карта и флаги'));
-      await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('map-country-search')));
-      await tester.tap(find.byKey(const Key('map-country-search')));
+      await tester.runAsync(() async {
+        await tester.tap(find.text('Страны мира'));
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 500));
+      });
       await tester.pumpAndSettle();
       const name = 'Французские Южные и Антарктические территории';
       await tester.enterText(find.byType(TextField), name);
       await tester.pump();
-      await tester.tap(find.widgetWithText(ListTile, name));
+      await tester.tap(find.widgetWithText(ActionChip, name));
       await tester.pumpAndSettle();
       final footerName = find.descendant(
         of: find.byKey(const Key('map-details')),

@@ -1,0 +1,28 @@
+Country atlas data and attribution (snapshot retrieved 2026-10-19)
+
+Country names, source languages, capitals, area, currencies and border base:
+mledoze/countries contributors, https://github.com/mledoze/countries
+Database license: Open Database License (ODbL) 1.0:
+https://github.com/mledoze/countries/blob/master/LICENSE
+country_facts.json is a derived database made available under ODbL 1.0.
+Reviewed corrections and their sources are recorded alongside the affected fields
+and in docs/rewrite-agents/tasks/ATLAS_53W8/fact-review.md.
+
+Population: World Bank, SP.POP.TOTL, 2024 mid-year estimates.
+https://data.worldbank.org/indicator/SP.POP.TOTL
+World Bank datasets: CC BY 4.0 unless otherwise specified by the dataset.
+https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets
+
+Major geographic and resource associations: CIA World Factbook public-domain
+US government geographic text, via https://github.com/factbook/factbook.json
+Source records and selected field evidence accompany the generation script.
+These records are a historical geographic snapshot, not live economic statistics.
+
+Flags: Flagpedia / FlagCDN, https://flagcdn.com/ and https://flagpedia.net/
+Downloaded PNGs from https://flagcdn.com/w160/{iso2}.png for offline display.
+FlagCDN credits Wikipedia Commons vector originals. National flag designs may
+have local usage rules; no team logos or presidential photographs are included.
+
+Curated landmark, culture, scientist, bridge, president and sports associations
+contain names, locations and short original relation labels; each item links its
+reference. No source article text or portraits are copied into those records.

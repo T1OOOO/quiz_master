@@ -1,0 +1,5845 @@
+{
+  "schema": "qm-country-facts/v2",
+  "sources": {
+    "countries": {
+      "url": "https://github.com/mledoze/countries/blob/master/countries.json",
+      "retrieved": "2026-10-19",
+      "license": "ODbL-1.0",
+      "license_url": "https://github.com/mledoze/countries/blob/master/LICENSE"
+    },
+    "population": {
+      "indicator": "SP.POP.TOTL",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2024&format=json&per_page=400",
+      "year": 2024,
+      "retrieved": "2026-10-19"
+    },
+    "official_languages_note": "Only entries in official_languages are curated for this topic; generic languages are never presented as official.",
+    "review": "See docs/rewrite-agents/tasks/ATLAS_53W8/fact-review.md for legal-language exclusions and capital/currency exceptions."
+  },
+  "countries": [
+    {
+      "id": "AW",
+      "name_en": "Aruba",
+      "name_ru": "Аруба",
+      "capital": "Oranjestad",
+      "languages": [
+        "Dutch",
+        "Papiamento"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AWG"
+      ],
+      "population": 107995,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 180,
+      "neighbors": []
+    },
+    {
+      "id": "AF",
+      "name_en": "Afghanistan",
+      "name_ru": "Афганистан",
+      "capital": "Kabul",
+      "languages": [
+        "Dari",
+        "Pashto",
+        "Turkmen"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AFN"
+      ],
+      "population": 42647492,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 652230,
+      "neighbors": [
+        "IR",
+        "PK",
+        "TM",
+        "UZ",
+        "TJ",
+        "CN"
+      ]
+    },
+    {
+      "id": "AO",
+      "name_en": "Angola",
+      "name_ru": "Ангола",
+      "capital": "Luanda",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AOA"
+      ],
+      "population": 37885849,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 1246700,
+      "neighbors": [
+        "CG",
+        "CD",
+        "ZM",
+        "NA"
+      ]
+    },
+    {
+      "id": "AI",
+      "name_en": "Anguilla",
+      "name_ru": "Ангилья",
+      "capital": "The Valley",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 91,
+      "neighbors": []
+    },
+    {
+      "id": "AX",
+      "name_en": "Åland Islands",
+      "name_ru": "Аландские острова",
+      "capital": "Mariehamn",
+      "languages": [
+        "Swedish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 1580,
+      "neighbors": []
+    },
+    {
+      "id": "AL",
+      "name_en": "Albania",
+      "name_ru": "Албания",
+      "capital": "Tirana",
+      "languages": [
+        "Albanian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ALL"
+      ],
+      "population": 2377128,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 28748,
+      "neighbors": [
+        "ME",
+        "GR",
+        "MK",
+        "XK"
+      ]
+    },
+    {
+      "id": "AD",
+      "name_en": "Andorra",
+      "name_ru": "Андорра",
+      "capital": "Andorra la Vella",
+      "languages": [
+        "Catalan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 81938,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 468,
+      "neighbors": [
+        "FR",
+        "ES"
+      ]
+    },
+    {
+      "id": "AE",
+      "name_en": "United Arab Emirates",
+      "name_ru": "Объединённые Арабские Эмираты",
+      "capital": "Abu Dhabi",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AED"
+      ],
+      "population": 10986400,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 83600,
+      "neighbors": [
+        "OM",
+        "SA"
+      ]
+    },
+    {
+      "id": "AR",
+      "name_en": "Argentina",
+      "name_ru": "Аргентина",
+      "capital": "Buenos Aires",
+      "languages": [
+        "Guaraní",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ARS"
+      ],
+      "population": 45696159,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 2780400,
+      "neighbors": [
+        "BO",
+        "BR",
+        "CL",
+        "PY",
+        "UY"
+      ]
+    },
+    {
+      "id": "AM",
+      "name_en": "Armenia",
+      "name_ru": "Армения",
+      "capital": "Yerevan",
+      "languages": [
+        "Armenian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AMD"
+      ],
+      "population": 3033500,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 29743,
+      "neighbors": [
+        "AZ",
+        "GE",
+        "IR",
+        "TR"
+      ]
+    },
+    {
+      "id": "AS",
+      "name_en": "American Samoa",
+      "name_ru": "Американское Самоа",
+      "capital": "Pago Pago",
+      "languages": [
+        "English",
+        "Samoan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 46765,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 199,
+      "neighbors": []
+    },
+    {
+      "id": "AQ",
+      "name_en": "Antarctica",
+      "name_ru": "Антарктида",
+      "capital": null,
+      "languages": [],
+      "official_languages": null,
+      "currencies": [],
+      "population": 0,
+      "population_year": 0,
+      "region": "Antarctic",
+      "subregion": "",
+      "area_km2": 14000000,
+      "neighbors": []
+    },
+    {
+      "id": "TF",
+      "name_en": "French Southern and Antarctic Lands",
+      "name_ru": "Французские Южные и Антарктические территории",
+      "capital": "Port-aux-Français",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Antarctic",
+      "subregion": "",
+      "area_km2": 7747,
+      "neighbors": []
+    },
+    {
+      "id": "AG",
+      "name_en": "Antigua and Barbuda",
+      "name_ru": "Антигуа и Барбуда",
+      "capital": "Saint John's",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 93772,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 442,
+      "neighbors": []
+    },
+    {
+      "id": "AU",
+      "name_en": "Australia",
+      "name_ru": "Австралия",
+      "capital": "Canberra",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD"
+      ],
+      "population": 27194286,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Australia and New Zealand",
+      "area_km2": 7692024,
+      "neighbors": []
+    },
+    {
+      "id": "AT",
+      "name_en": "Austria",
+      "name_ru": "Австрия",
+      "capital": "Vienna",
+      "languages": [
+        "Austro-Bavarian German"
+      ],
+      "official_languages": [
+        "German"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 9177982,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 83871,
+      "neighbors": [
+        "CZ",
+        "DE",
+        "HU",
+        "IT",
+        "LI",
+        "SK",
+        "SI",
+        "CH"
+      ]
+    },
+    {
+      "id": "AZ",
+      "name_en": "Azerbaijan",
+      "name_ru": "Азербайджан",
+      "capital": "Baku",
+      "languages": [
+        "Azerbaijani",
+        "Russian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AZN"
+      ],
+      "population": 10202830,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 86600,
+      "neighbors": [
+        "AM",
+        "GE",
+        "IR",
+        "RU",
+        "TR"
+      ]
+    },
+    {
+      "id": "BI",
+      "name_en": "Burundi",
+      "name_ru": "Бурунди",
+      "capital": "Gitega",
+      "languages": [
+        "French",
+        "Kirundi"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BIF"
+      ],
+      "population": 14047786,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 27834,
+      "neighbors": [
+        "CD",
+        "RW",
+        "TZ"
+      ]
+    },
+    {
+      "id": "BE",
+      "name_en": "Belgium",
+      "name_ru": "Бельгия",
+      "capital": "Brussels",
+      "languages": [
+        "German",
+        "French",
+        "Dutch"
+      ],
+      "official_languages": [
+        "Dutch",
+        "French",
+        "German"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 11858610,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 30528,
+      "neighbors": [
+        "FR",
+        "DE",
+        "LU",
+        "NL"
+      ]
+    },
+    {
+      "id": "BJ",
+      "name_en": "Benin",
+      "name_ru": "Бенин",
+      "capital": "Porto-Novo",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 14462724,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 112622,
+      "neighbors": [
+        "BF",
+        "NE",
+        "NG",
+        "TG"
+      ]
+    },
+    {
+      "id": "BF",
+      "name_en": "Burkina Faso",
+      "name_ru": "Буркина-Фасо",
+      "capital": "Ouagadougou",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 23548781,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 272967,
+      "neighbors": [
+        "BJ",
+        "CI",
+        "GH",
+        "ML",
+        "NE",
+        "TG"
+      ]
+    },
+    {
+      "id": "BD",
+      "name_en": "Bangladesh",
+      "name_ru": "Бангладеш",
+      "capital": "Dhaka",
+      "languages": [
+        "Bengali"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BDT"
+      ],
+      "population": 173562364,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 147570,
+      "neighbors": [
+        "MM",
+        "IN"
+      ]
+    },
+    {
+      "id": "BG",
+      "name_en": "Bulgaria",
+      "name_ru": "Болгария",
+      "capital": "Sofia",
+      "languages": [
+        "Bulgarian"
+      ],
+      "official_languages": [
+        "Bulgarian"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 6441421,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 110879,
+      "neighbors": [
+        "GR",
+        "MK",
+        "RO",
+        "RS",
+        "TR"
+      ]
+    },
+    {
+      "id": "BH",
+      "name_en": "Bahrain",
+      "name_ru": "Бахрейн",
+      "capital": "Manama",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BHD"
+      ],
+      "population": 1588670,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 765,
+      "neighbors": []
+    },
+    {
+      "id": "BS",
+      "name_en": "Bahamas",
+      "name_ru": "Багамские Острова",
+      "capital": "Nassau",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BSD",
+        "USD"
+      ],
+      "population": 401283,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 13943,
+      "neighbors": []
+    },
+    {
+      "id": "BA",
+      "name_en": "Bosnia and Herzegovina",
+      "name_ru": "Босния и Герцеговина",
+      "capital": "Sarajevo",
+      "languages": [
+        "Bosnian",
+        "Croatian",
+        "Serbian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BAM"
+      ],
+      "population": 3164253,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 51209,
+      "neighbors": [
+        "HR",
+        "ME",
+        "RS"
+      ]
+    },
+    {
+      "id": "BL",
+      "name_en": "Saint Barthélemy",
+      "name_ru": "Сен-Бартелеми",
+      "capital": "Gustavia",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 21,
+      "neighbors": []
+    },
+    {
+      "id": "SH",
+      "name_en": "Saint Helena, Ascension and Tristan da Cunha",
+      "name_ru": "Острова Святой Елены, Вознесения и Тристан-да-Кунья",
+      "capital": "Jamestown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GBP",
+        "SHP"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 394,
+      "neighbors": []
+    },
+    {
+      "id": "BY",
+      "name_en": "Belarus",
+      "name_ru": "Беларусь",
+      "capital": "Minsk",
+      "languages": [
+        "Belarusian",
+        "Russian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BYN"
+      ],
+      "population": 9132629,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Eastern Europe",
+      "area_km2": 207600,
+      "neighbors": [
+        "LV",
+        "LT",
+        "PL",
+        "RU",
+        "UA"
+      ]
+    },
+    {
+      "id": "BZ",
+      "name_en": "Belize",
+      "name_ru": "Белиз",
+      "capital": "Belmopan",
+      "languages": [
+        "Belizean Creole",
+        "English",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BZD"
+      ],
+      "population": 417072,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 22966,
+      "neighbors": [
+        "GT",
+        "MX"
+      ]
+    },
+    {
+      "id": "BM",
+      "name_en": "Bermuda",
+      "name_ru": "Бермудские Острова",
+      "capital": "Hamilton",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BMD"
+      ],
+      "population": 64636,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 54,
+      "neighbors": []
+    },
+    {
+      "id": "BO",
+      "name_en": "Bolivia",
+      "name_ru": "Боливия",
+      "capital": "Sucre (constitutional capital)",
+      "languages": [
+        "Aymara",
+        "Guaraní",
+        "Quechua",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BOB"
+      ],
+      "population": 12413315,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 1098581,
+      "neighbors": [
+        "AR",
+        "BR",
+        "CL",
+        "PY",
+        "PE"
+      ]
+    },
+    {
+      "id": "BQ",
+      "name_en": "Caribbean Netherlands",
+      "name_ru": "Карибские Нидерланды",
+      "capital": "Kralendijk",
+      "languages": [
+        "English",
+        "Dutch",
+        "Papiamento"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 328,
+      "neighbors": []
+    },
+    {
+      "id": "BR",
+      "name_en": "Brazil",
+      "name_ru": "Бразилия",
+      "capital": "Brasília",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": [
+        "Portuguese"
+      ],
+      "currencies": [
+        "BRL"
+      ],
+      "population": 211998573,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 8515767,
+      "neighbors": [
+        "AR",
+        "BO",
+        "CO",
+        "GF",
+        "GY",
+        "PY",
+        "PE",
+        "SR",
+        "UY",
+        "VE",
+        "FR"
+      ],
+      "neighbor_sources": {
+        "FR": "https://www.defense.gouv.fr/terre/actualites/mission-trijonction-jusquaux-trois-frontieres"
+      }
+    },
+    {
+      "id": "BB",
+      "name_en": "Barbados",
+      "name_ru": "Барбадос",
+      "capital": "Bridgetown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BBD"
+      ],
+      "population": 282467,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 430,
+      "neighbors": []
+    },
+    {
+      "id": "BN",
+      "name_en": "Brunei",
+      "name_ru": "Бруней",
+      "capital": "Bandar Seri Begawan",
+      "languages": [
+        "Malay"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BND",
+        "SGD"
+      ],
+      "population": 462721,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 5765,
+      "neighbors": [
+        "MY"
+      ]
+    },
+    {
+      "id": "BT",
+      "name_en": "Bhutan",
+      "name_ru": "Бутан",
+      "capital": "Thimphu",
+      "languages": [
+        "Dzongkha"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BTN",
+        "INR"
+      ],
+      "population": 791524,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 38394,
+      "neighbors": [
+        "CN",
+        "IN"
+      ]
+    },
+    {
+      "id": "BV",
+      "name_en": "Bouvet Island",
+      "name_ru": "Остров Буве",
+      "capital": null,
+      "languages": [
+        "Norwegian"
+      ],
+      "official_languages": null,
+      "currencies": [],
+      "population": 0,
+      "population_year": 0,
+      "region": "Antarctic",
+      "subregion": "",
+      "area_km2": 49,
+      "neighbors": []
+    },
+    {
+      "id": "BW",
+      "name_en": "Botswana",
+      "name_ru": "Ботсвана",
+      "capital": "Gaborone",
+      "languages": [
+        "English",
+        "Tswana"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BWP"
+      ],
+      "population": 2521139,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Southern Africa",
+      "area_km2": 582000,
+      "neighbors": [
+        "NA",
+        "ZA",
+        "ZM",
+        "ZW"
+      ]
+    },
+    {
+      "id": "CF",
+      "name_en": "Central African Republic",
+      "name_ru": "Центральноафриканская Республика",
+      "capital": "Bangui",
+      "languages": [
+        "French",
+        "Sango"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 5330690,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 622984,
+      "neighbors": [
+        "CM",
+        "TD",
+        "CD",
+        "CG",
+        "SS",
+        "SD"
+      ]
+    },
+    {
+      "id": "CA",
+      "name_en": "Canada",
+      "name_ru": "Канада",
+      "capital": "Ottawa",
+      "languages": [
+        "English",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CAD"
+      ],
+      "population": 41262329,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 9984670,
+      "neighbors": [
+        "US",
+        "DK",
+        "GL"
+      ],
+      "neighbor_sources": {
+        "DK": "https://canada.um.dk/en/the-arctic",
+        "GL": "https://canada.um.dk/en/the-arctic"
+      }
+    },
+    {
+      "id": "CC",
+      "name_en": "Cocos (Keeling) Islands",
+      "name_ru": "Кокосовые острова",
+      "capital": "West Island",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Australia and New Zealand",
+      "area_km2": 14,
+      "neighbors": []
+    },
+    {
+      "id": "CH",
+      "name_en": "Switzerland",
+      "name_ru": "Швейцария",
+      "capital": "Bern",
+      "languages": [
+        "French",
+        "Swiss German",
+        "Italian",
+        "Romansh"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CHF"
+      ],
+      "population": 9005582,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 41284,
+      "neighbors": [
+        "AT",
+        "FR",
+        "IT",
+        "LI",
+        "DE"
+      ]
+    },
+    {
+      "id": "CL",
+      "name_en": "Chile",
+      "name_ru": "Чили",
+      "capital": "Santiago",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CLP"
+      ],
+      "population": 19764771,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 756102,
+      "neighbors": [
+        "AR",
+        "BO",
+        "PE"
+      ]
+    },
+    {
+      "id": "CN",
+      "name_en": "China",
+      "name_ru": "Китай",
+      "capital": "Beijing",
+      "languages": [
+        "Chinese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CNY"
+      ],
+      "population": 1408975000,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 9706961,
+      "neighbors": [
+        "AF",
+        "BT",
+        "MM",
+        "HK",
+        "IN",
+        "KZ",
+        "NP",
+        "KP",
+        "KG",
+        "LA",
+        "MO",
+        "MN",
+        "PK",
+        "RU",
+        "TJ",
+        "VN"
+      ]
+    },
+    {
+      "id": "CI",
+      "name_en": "Ivory Coast",
+      "name_ru": "Кот-д’Ивуар",
+      "capital": "Yamoussoukro",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 31934230,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 322463,
+      "neighbors": [
+        "BF",
+        "GH",
+        "GN",
+        "LR",
+        "ML"
+      ]
+    },
+    {
+      "id": "CM",
+      "name_en": "Cameroon",
+      "name_ru": "Камерун",
+      "capital": "Yaoundé",
+      "languages": [
+        "English",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 29123744,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 475442,
+      "neighbors": [
+        "CF",
+        "TD",
+        "CG",
+        "GQ",
+        "GA",
+        "NG"
+      ]
+    },
+    {
+      "id": "CD",
+      "name_en": "DR Congo",
+      "name_ru": "Демократическая Республика Конго",
+      "capital": "Kinshasa",
+      "languages": [
+        "French",
+        "Kikongo",
+        "Lingala",
+        "Tshiluba",
+        "Swahili"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CDF"
+      ],
+      "population": 109276265,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 2344858,
+      "neighbors": [
+        "AO",
+        "BI",
+        "CF",
+        "CG",
+        "RW",
+        "SS",
+        "TZ",
+        "UG",
+        "ZM"
+      ]
+    },
+    {
+      "id": "CG",
+      "name_en": "Congo",
+      "name_ru": "Республика Конго",
+      "capital": "Brazzaville",
+      "languages": [
+        "French",
+        "Kikongo",
+        "Lingala"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 6332961,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 342000,
+      "neighbors": [
+        "AO",
+        "CM",
+        "CF",
+        "CD",
+        "GA"
+      ]
+    },
+    {
+      "id": "CK",
+      "name_en": "Cook Islands",
+      "name_ru": "Острова Кука",
+      "capital": "Avarua",
+      "languages": [
+        "English",
+        "Cook Islands Māori"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CKD",
+        "NZD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 236,
+      "neighbors": []
+    },
+    {
+      "id": "CO",
+      "name_en": "Colombia",
+      "name_ru": "Колумбия",
+      "capital": "Bogotá",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "COP"
+      ],
+      "population": 52886363,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 1141748,
+      "neighbors": [
+        "BR",
+        "EC",
+        "PA",
+        "PE",
+        "VE"
+      ]
+    },
+    {
+      "id": "KM",
+      "name_en": "Comoros",
+      "name_ru": "Коморы",
+      "capital": "Moroni",
+      "languages": [
+        "Arabic",
+        "French",
+        "Comorian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KMF"
+      ],
+      "population": 866628,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 1862,
+      "neighbors": []
+    },
+    {
+      "id": "CV",
+      "name_en": "Cape Verde",
+      "name_ru": "Кабо-Верде",
+      "capital": "Praia",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CVE"
+      ],
+      "population": 524877,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 4033,
+      "neighbors": []
+    },
+    {
+      "id": "CR",
+      "name_en": "Costa Rica",
+      "name_ru": "Коста-Рика",
+      "capital": "San José",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CRC"
+      ],
+      "population": 5129910,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 51100,
+      "neighbors": [
+        "NI",
+        "PA"
+      ]
+    },
+    {
+      "id": "CU",
+      "name_en": "Cuba",
+      "name_ru": "Куба",
+      "capital": "Havana",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CUC",
+        "CUP"
+      ],
+      "population": 10979783,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 109884,
+      "neighbors": []
+    },
+    {
+      "id": "CW",
+      "name_en": "Curaçao",
+      "name_ru": "Кюрасао",
+      "capital": "Willemstad",
+      "languages": [
+        "English",
+        "Dutch",
+        "Papiamento"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ANG"
+      ],
+      "population": 155967,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 444,
+      "neighbors": []
+    },
+    {
+      "id": "CX",
+      "name_en": "Christmas Island",
+      "name_ru": "Остров Рождества",
+      "capital": "Flying Fish Cove",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Australia and New Zealand",
+      "area_km2": 135,
+      "neighbors": []
+    },
+    {
+      "id": "KY",
+      "name_en": "Cayman Islands",
+      "name_ru": "Каймановы острова",
+      "capital": "George Town",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KYD"
+      ],
+      "population": 74457,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 264,
+      "neighbors": []
+    },
+    {
+      "id": "CY",
+      "name_en": "Cyprus",
+      "name_ru": "Кипр",
+      "capital": "Nicosia",
+      "languages": [
+        "Greek",
+        "Turkish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 1358282,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 9251,
+      "neighbors": []
+    },
+    {
+      "id": "CZ",
+      "name_en": "Czechia",
+      "name_ru": "Чехия",
+      "capital": "Prague",
+      "languages": [
+        "Czech",
+        "Slovak"
+      ],
+      "official_languages": [
+        "Czech"
+      ],
+      "currencies": [
+        "CZK"
+      ],
+      "population": 10905028,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 78865,
+      "neighbors": [
+        "AT",
+        "DE",
+        "PL",
+        "SK"
+      ]
+    },
+    {
+      "id": "DE",
+      "name_en": "Germany",
+      "name_ru": "Германия",
+      "capital": "Berlin",
+      "languages": [
+        "German"
+      ],
+      "official_languages": [
+        "German"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 83516593,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 357114,
+      "neighbors": [
+        "AT",
+        "BE",
+        "CZ",
+        "DK",
+        "FR",
+        "LU",
+        "NL",
+        "PL",
+        "CH"
+      ]
+    },
+    {
+      "id": "DJ",
+      "name_en": "Djibouti",
+      "name_ru": "Джибути",
+      "capital": "Djibouti",
+      "languages": [
+        "Arabic",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DJF"
+      ],
+      "population": 1168722,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 23200,
+      "neighbors": [
+        "ER",
+        "ET",
+        "SO"
+      ]
+    },
+    {
+      "id": "DM",
+      "name_en": "Dominica",
+      "name_ru": "Доминика",
+      "capital": "Roseau",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 66205,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 751,
+      "neighbors": []
+    },
+    {
+      "id": "DK",
+      "name_en": "Denmark",
+      "name_ru": "Дания",
+      "capital": "Copenhagen",
+      "languages": [
+        "Danish"
+      ],
+      "official_languages": [
+        "Danish"
+      ],
+      "currencies": [
+        "DKK"
+      ],
+      "population": 5976992,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 43094,
+      "neighbors": [
+        "DE",
+        "CA"
+      ],
+      "neighbor_sources": {
+        "CA": "https://canada.um.dk/en/the-arctic"
+      }
+    },
+    {
+      "id": "DO",
+      "name_en": "Dominican Republic",
+      "name_ru": "Доминиканская Республика",
+      "capital": "Santo Domingo",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DOP"
+      ],
+      "population": 11427557,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 48671,
+      "neighbors": [
+        "HT"
+      ]
+    },
+    {
+      "id": "DZ",
+      "name_en": "Algeria",
+      "name_ru": "Алжир",
+      "capital": "Algiers",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DZD"
+      ],
+      "population": 46814308,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 2381741,
+      "neighbors": [
+        "TN",
+        "LY",
+        "NE",
+        "EH",
+        "MR",
+        "ML",
+        "MA"
+      ]
+    },
+    {
+      "id": "EC",
+      "name_en": "Ecuador",
+      "name_ru": "Эквадор",
+      "capital": "Quito",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 18135478,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 276841,
+      "neighbors": [
+        "CO",
+        "PE"
+      ]
+    },
+    {
+      "id": "EG",
+      "name_en": "Egypt",
+      "name_ru": "Египет",
+      "capital": "Cairo",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EGP"
+      ],
+      "population": 116538258,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 1002450,
+      "neighbors": [
+        "IL",
+        "LY",
+        "PS",
+        "SD"
+      ]
+    },
+    {
+      "id": "ER",
+      "name_en": "Eritrea",
+      "name_ru": "Эритрея",
+      "capital": "Asmara",
+      "languages": [
+        "Arabic",
+        "English",
+        "Tigrinya"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ERN"
+      ],
+      "population": 3535603,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 117600,
+      "neighbors": [
+        "DJ",
+        "ET",
+        "SD"
+      ]
+    },
+    {
+      "id": "EH",
+      "name_en": "Western Sahara",
+      "name_ru": "Западная Сахара",
+      "capital": "El Aaiún",
+      "languages": [
+        "Berber",
+        "Hassaniya",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DZD",
+        "MAD",
+        "MRU"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 266000,
+      "neighbors": [
+        "DZ",
+        "MR",
+        "MA"
+      ]
+    },
+    {
+      "id": "ES",
+      "name_en": "Spain",
+      "name_ru": "Испания",
+      "capital": "Madrid",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": [
+        "Spanish"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 48848840,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 505992,
+      "neighbors": [
+        "AD",
+        "FR",
+        "GI",
+        "PT",
+        "MA"
+      ]
+    },
+    {
+      "id": "EE",
+      "name_en": "Estonia",
+      "name_ru": "Эстония",
+      "capital": "Tallinn",
+      "languages": [
+        "Estonian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 1372341,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 45227,
+      "neighbors": [
+        "LV",
+        "RU"
+      ]
+    },
+    {
+      "id": "ET",
+      "name_en": "Ethiopia",
+      "name_ru": "Эфиопия",
+      "capital": "Addis Ababa",
+      "languages": [
+        "Amharic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ETB"
+      ],
+      "population": 132059767,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 1104300,
+      "neighbors": [
+        "DJ",
+        "ER",
+        "KE",
+        "SO",
+        "SS",
+        "SD"
+      ]
+    },
+    {
+      "id": "FI",
+      "name_en": "Finland",
+      "name_ru": "Финляндия",
+      "capital": "Helsinki",
+      "languages": [
+        "Finnish",
+        "Swedish"
+      ],
+      "official_languages": [
+        "Finnish",
+        "Swedish"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 5619911,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 338424,
+      "neighbors": [
+        "NO",
+        "SE",
+        "RU"
+      ]
+    },
+    {
+      "id": "FJ",
+      "name_en": "Fiji",
+      "name_ru": "Фиджи",
+      "capital": "Suva",
+      "languages": [
+        "English",
+        "Fijian",
+        "Fiji Hindi"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "FJD"
+      ],
+      "population": 928784,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Melanesia",
+      "area_km2": 18272,
+      "neighbors": []
+    },
+    {
+      "id": "FK",
+      "name_en": "Falkland Islands",
+      "name_ru": "Фолклендские острова",
+      "capital": "Stanley",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "FKP"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 12173,
+      "neighbors": []
+    },
+    {
+      "id": "FR",
+      "name_en": "France",
+      "name_ru": "Франция",
+      "capital": "Paris",
+      "languages": [
+        "French"
+      ],
+      "official_languages": [
+        "French"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 68551653,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 551695,
+      "neighbors": [
+        "AD",
+        "BE",
+        "DE",
+        "IT",
+        "LU",
+        "MC",
+        "ES",
+        "CH",
+        "BR",
+        "SR",
+        "NL"
+      ],
+      "neighbor_sources": {
+        "BR": "https://www.defense.gouv.fr/terre/actualites/mission-trijonction-jusquaux-trois-frontieres",
+        "SR": "https://www.defense.gouv.fr/terre/actualites/mission-trijonction-jusquaux-trois-frontieres",
+        "NL": "https://www.diplomatie.gouv.fr/en/information-by-country/netherlands/france-and-the-netherlands"
+      }
+    },
+    {
+      "id": "FO",
+      "name_en": "Faroe Islands",
+      "name_ru": "Фарерские острова",
+      "capital": "Tórshavn",
+      "languages": [
+        "Danish",
+        "Faroese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DKK",
+        "FOK"
+      ],
+      "population": 54640,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 1393,
+      "neighbors": []
+    },
+    {
+      "id": "FM",
+      "name_en": "Micronesia",
+      "name_ru": "Федеративные Штаты Микронезии",
+      "capital": "Palikir",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [],
+      "population": 113160,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 702,
+      "neighbors": []
+    },
+    {
+      "id": "GA",
+      "name_en": "Gabon",
+      "name_ru": "Габон",
+      "capital": "Libreville",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 2538952,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 267668,
+      "neighbors": [
+        "CM",
+        "CG",
+        "GQ"
+      ]
+    },
+    {
+      "id": "GB",
+      "name_en": "United Kingdom",
+      "name_ru": "Великобритания",
+      "capital": "London",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GBP"
+      ],
+      "population": 69281000,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 242900,
+      "neighbors": [
+        "IE"
+      ]
+    },
+    {
+      "id": "GE",
+      "name_en": "Georgia",
+      "name_ru": "Грузия",
+      "capital": "Tbilisi",
+      "languages": [
+        "Georgian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GEL"
+      ],
+      "population": 3812518,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 69700,
+      "neighbors": [
+        "AM",
+        "AZ",
+        "RU",
+        "TR"
+      ]
+    },
+    {
+      "id": "GG",
+      "name_en": "Guernsey",
+      "name_ru": "Гернси",
+      "capital": "St. Peter Port",
+      "languages": [
+        "English",
+        "French",
+        "Guernésiais"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GBP",
+        "GGP"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 78,
+      "neighbors": []
+    },
+    {
+      "id": "GH",
+      "name_en": "Ghana",
+      "name_ru": "Гана",
+      "capital": "Accra",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GHS"
+      ],
+      "population": 34427414,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 238533,
+      "neighbors": [
+        "BF",
+        "CI",
+        "TG"
+      ]
+    },
+    {
+      "id": "GI",
+      "name_en": "Gibraltar",
+      "name_ru": "Гибралтар",
+      "capital": "Gibraltar",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GIP"
+      ],
+      "population": 39329,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 6,
+      "neighbors": [
+        "ES"
+      ]
+    },
+    {
+      "id": "GN",
+      "name_en": "Guinea",
+      "name_ru": "Гвинея",
+      "capital": "Conakry",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GNF"
+      ],
+      "population": 14754785,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 245857,
+      "neighbors": [
+        "CI",
+        "GW",
+        "LR",
+        "ML",
+        "SN",
+        "SL"
+      ]
+    },
+    {
+      "id": "GP",
+      "name_en": "Guadeloupe",
+      "name_ru": "Гваделупа",
+      "capital": "Basse-Terre",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 1628,
+      "neighbors": []
+    },
+    {
+      "id": "GM",
+      "name_en": "Gambia",
+      "name_ru": "Гамбия",
+      "capital": "Banjul",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GMD"
+      ],
+      "population": 2759988,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 10689,
+      "neighbors": [
+        "SN"
+      ]
+    },
+    {
+      "id": "GW",
+      "name_en": "Guinea-Bissau",
+      "name_ru": "Гвинея-Бисау",
+      "capital": "Bissau",
+      "languages": [
+        "Portuguese",
+        "Upper Guinea Creole"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 2201352,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 36125,
+      "neighbors": [
+        "GN",
+        "SN"
+      ]
+    },
+    {
+      "id": "GQ",
+      "name_en": "Equatorial Guinea",
+      "name_ru": "Экваториальная Гвинея",
+      "capital": "Malabo",
+      "languages": [
+        "French",
+        "Portuguese",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 1892516,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 28051,
+      "neighbors": [
+        "CM",
+        "GA"
+      ]
+    },
+    {
+      "id": "GR",
+      "name_en": "Greece",
+      "name_ru": "Греция",
+      "capital": "Athens",
+      "languages": [
+        "Greek"
+      ],
+      "official_languages": [
+        "Greek"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 10405134,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 131990,
+      "neighbors": [
+        "AL",
+        "BG",
+        "TR",
+        "MK"
+      ]
+    },
+    {
+      "id": "GD",
+      "name_en": "Grenada",
+      "name_ru": "Гренада",
+      "capital": "St. George's",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 117207,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 344,
+      "neighbors": []
+    },
+    {
+      "id": "GL",
+      "name_en": "Greenland",
+      "name_ru": "Гренландия",
+      "capital": "Nuuk",
+      "languages": [
+        "Greenlandic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "DKK"
+      ],
+      "population": 56836,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 2166086,
+      "neighbors": [
+        "CA"
+      ],
+      "neighbor_sources": {
+        "CA": "https://canada.um.dk/en/the-arctic"
+      }
+    },
+    {
+      "id": "GT",
+      "name_en": "Guatemala",
+      "name_ru": "Гватемала",
+      "capital": "Guatemala City",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GTQ"
+      ],
+      "population": 18406359,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 108889,
+      "neighbors": [
+        "BZ",
+        "SV",
+        "HN",
+        "MX"
+      ]
+    },
+    {
+      "id": "GF",
+      "name_en": "French Guiana",
+      "name_ru": "Французская Гвиана",
+      "capital": "Cayenne",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 83534,
+      "neighbors": [
+        "BR",
+        "SR"
+      ]
+    },
+    {
+      "id": "GU",
+      "name_en": "Guam",
+      "name_ru": "Гуам",
+      "capital": "Hagåtña",
+      "languages": [
+        "Chamorro",
+        "English",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 167777,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 549,
+      "neighbors": []
+    },
+    {
+      "id": "GY",
+      "name_en": "Guyana",
+      "name_ru": "Гайана",
+      "capital": "Georgetown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GYD"
+      ],
+      "population": 831087,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 214969,
+      "neighbors": [
+        "BR",
+        "SR",
+        "VE"
+      ]
+    },
+    {
+      "id": "HK",
+      "name_en": "Hong Kong",
+      "name_ru": "Гонконг",
+      "capital": "City of Victoria",
+      "languages": [
+        "English",
+        "Chinese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "HKD"
+      ],
+      "population": 7524100,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 1104,
+      "neighbors": [
+        "CN"
+      ]
+    },
+    {
+      "id": "HM",
+      "name_en": "Heard Island and McDonald Islands",
+      "name_ru": "Остров Херд и острова Макдональд",
+      "capital": null,
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [],
+      "population": 0,
+      "population_year": 0,
+      "region": "Antarctic",
+      "subregion": "",
+      "area_km2": 412,
+      "neighbors": []
+    },
+    {
+      "id": "HN",
+      "name_en": "Honduras",
+      "name_ru": "Гондурас",
+      "capital": "Tegucigalpa",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "HNL"
+      ],
+      "population": 10825703,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 112492,
+      "neighbors": [
+        "GT",
+        "SV",
+        "NI"
+      ]
+    },
+    {
+      "id": "HR",
+      "name_en": "Croatia",
+      "name_ru": "Хорватия",
+      "capital": "Zagreb",
+      "languages": [
+        "Croatian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 3866200,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 56594,
+      "neighbors": [
+        "BA",
+        "HU",
+        "ME",
+        "RS",
+        "SI"
+      ]
+    },
+    {
+      "id": "HT",
+      "name_en": "Haiti",
+      "name_ru": "Гаити",
+      "capital": "Port-au-Prince",
+      "languages": [
+        "French",
+        "Haitian Creole"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "HTG"
+      ],
+      "population": 11772557,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 27750,
+      "neighbors": [
+        "DO"
+      ]
+    },
+    {
+      "id": "HU",
+      "name_en": "Hungary",
+      "name_ru": "Венгрия",
+      "capital": "Budapest",
+      "languages": [
+        "Hungarian"
+      ],
+      "official_languages": [
+        "Hungarian"
+      ],
+      "currencies": [
+        "HUF"
+      ],
+      "population": 9562065,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 93028,
+      "neighbors": [
+        "AT",
+        "HR",
+        "RO",
+        "RS",
+        "SK",
+        "SI",
+        "UA"
+      ]
+    },
+    {
+      "id": "ID",
+      "name_en": "Indonesia",
+      "name_ru": "Индонезия",
+      "capital": "Jakarta",
+      "languages": [
+        "Indonesian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "IDR"
+      ],
+      "population": 283487931,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 1904569,
+      "neighbors": [
+        "TL",
+        "MY",
+        "PG"
+      ]
+    },
+    {
+      "id": "IM",
+      "name_en": "Isle of Man",
+      "name_ru": "Остров Мэн",
+      "capital": "Douglas",
+      "languages": [
+        "English",
+        "Manx"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GBP",
+        "IMP"
+      ],
+      "population": 84160,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 572,
+      "neighbors": []
+    },
+    {
+      "id": "IN",
+      "name_en": "India",
+      "name_ru": "Индия",
+      "capital": "New Delhi",
+      "languages": [
+        "English",
+        "Hindi",
+        "Tamil"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "INR"
+      ],
+      "population": 1450935791,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 3287590,
+      "neighbors": [
+        "BD",
+        "BT",
+        "MM",
+        "CN",
+        "NP",
+        "PK"
+      ]
+    },
+    {
+      "id": "IO",
+      "name_en": "British Indian Ocean Territory",
+      "name_ru": "Британская территория в Индийском океане",
+      "capital": "Diego Garcia",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 60,
+      "neighbors": []
+    },
+    {
+      "id": "IE",
+      "name_en": "Ireland",
+      "name_ru": "Ирландия",
+      "capital": "Dublin",
+      "languages": [
+        "English",
+        "Irish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 5395790,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 70273,
+      "neighbors": [
+        "GB"
+      ]
+    },
+    {
+      "id": "IR",
+      "name_en": "Iran",
+      "name_ru": "Иран",
+      "capital": "Tehran",
+      "languages": [
+        "Persian (Farsi)"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "IRR"
+      ],
+      "population": 91567738,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 1648195,
+      "neighbors": [
+        "AF",
+        "AM",
+        "AZ",
+        "IQ",
+        "PK",
+        "TR",
+        "TM"
+      ]
+    },
+    {
+      "id": "IQ",
+      "name_en": "Iraq",
+      "name_ru": "Ирак",
+      "capital": "Baghdad",
+      "languages": [
+        "Arabic",
+        "Aramaic",
+        "Sorani"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "IQD"
+      ],
+      "population": 46042015,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 438317,
+      "neighbors": [
+        "IR",
+        "JO",
+        "KW",
+        "SA",
+        "SY",
+        "TR"
+      ]
+    },
+    {
+      "id": "IS",
+      "name_en": "Iceland",
+      "name_ru": "Исландия",
+      "capital": "Reykjavik",
+      "languages": [
+        "Icelandic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ISK"
+      ],
+      "population": 386506,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 103000,
+      "neighbors": []
+    },
+    {
+      "id": "IL",
+      "name_en": "Israel",
+      "name_ru": "Израиль",
+      "capital": "Jerusalem",
+      "languages": [
+        "Arabic",
+        "Hebrew"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ILS"
+      ],
+      "population": 10002200,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 20770,
+      "neighbors": [
+        "EG",
+        "JO",
+        "LB",
+        "PS",
+        "SY"
+      ]
+    },
+    {
+      "id": "IT",
+      "name_en": "Italy",
+      "name_ru": "Италия",
+      "capital": "Rome",
+      "languages": [
+        "Italian"
+      ],
+      "official_languages": [
+        "Italian"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 58952704,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 301336,
+      "neighbors": [
+        "AT",
+        "FR",
+        "SM",
+        "SI",
+        "CH",
+        "VA"
+      ]
+    },
+    {
+      "id": "JM",
+      "name_en": "Jamaica",
+      "name_ru": "Ямайка",
+      "capital": "Kingston",
+      "languages": [
+        "English",
+        "Jamaican Patois"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "JMD"
+      ],
+      "population": 2839175,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 10991,
+      "neighbors": []
+    },
+    {
+      "id": "JE",
+      "name_en": "Jersey",
+      "name_ru": "Джерси",
+      "capital": "Saint Helier",
+      "languages": [
+        "English",
+        "French",
+        "Jèrriais"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "GBP",
+        "JEP"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 116,
+      "neighbors": []
+    },
+    {
+      "id": "JO",
+      "name_en": "Jordan",
+      "name_ru": "Иордания",
+      "capital": "Amman",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "JOD"
+      ],
+      "population": 11552876,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 89342,
+      "neighbors": [
+        "IQ",
+        "IL",
+        "PS",
+        "SA",
+        "SY"
+      ]
+    },
+    {
+      "id": "JP",
+      "name_en": "Japan",
+      "name_ru": "Япония",
+      "capital": "Tokyo",
+      "languages": [
+        "Japanese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "JPY"
+      ],
+      "population": 123975371,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 377930,
+      "neighbors": []
+    },
+    {
+      "id": "KZ",
+      "name_en": "Kazakhstan",
+      "name_ru": "Казахстан",
+      "capital": "Astana",
+      "languages": [
+        "Kazakh",
+        "Russian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KZT"
+      ],
+      "population": 20592571,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Central Asia",
+      "area_km2": 2724900,
+      "neighbors": [
+        "CN",
+        "KG",
+        "RU",
+        "TM",
+        "UZ"
+      ]
+    },
+    {
+      "id": "KE",
+      "name_en": "Kenya",
+      "name_ru": "Кения",
+      "capital": "Nairobi",
+      "languages": [
+        "English",
+        "Swahili"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KES"
+      ],
+      "population": 56432944,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 580367,
+      "neighbors": [
+        "ET",
+        "SO",
+        "SS",
+        "TZ",
+        "UG"
+      ]
+    },
+    {
+      "id": "KG",
+      "name_en": "Kyrgyzstan",
+      "name_ru": "Киргизия",
+      "capital": "Bishkek",
+      "languages": [
+        "Kyrgyz",
+        "Russian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KGS"
+      ],
+      "population": 7221868,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Central Asia",
+      "area_km2": 199951,
+      "neighbors": [
+        "CN",
+        "KZ",
+        "TJ",
+        "UZ"
+      ]
+    },
+    {
+      "id": "KH",
+      "name_en": "Cambodia",
+      "name_ru": "Камбоджа",
+      "capital": "Phnom Penh",
+      "languages": [
+        "Khmer"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KHR",
+        "USD"
+      ],
+      "population": 17638801,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 181035,
+      "neighbors": [
+        "LA",
+        "TH",
+        "VN"
+      ]
+    },
+    {
+      "id": "KI",
+      "name_en": "Kiribati",
+      "name_ru": "Кирибати",
+      "capital": "South Tarawa",
+      "languages": [
+        "English",
+        "Gilbertese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD",
+        "KID"
+      ],
+      "population": 134518,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 811,
+      "neighbors": []
+    },
+    {
+      "id": "KN",
+      "name_en": "Saint Kitts and Nevis",
+      "name_ru": "Сент-Китс и Невис",
+      "capital": "Basseterre",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 46843,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 261,
+      "neighbors": []
+    },
+    {
+      "id": "KR",
+      "name_en": "South Korea",
+      "name_ru": "Южная Корея",
+      "capital": "Seoul",
+      "languages": [
+        "Korean"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KRW"
+      ],
+      "population": 51751065,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 100210,
+      "neighbors": [
+        "KP"
+      ]
+    },
+    {
+      "id": "XK",
+      "name_en": "Kosovo",
+      "name_ru": "Республика Косово",
+      "capital": "Pristina",
+      "languages": [
+        "Albanian",
+        "Serbian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 1594353,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 10908,
+      "neighbors": [
+        "AL",
+        "MK",
+        "ME",
+        "RS"
+      ]
+    },
+    {
+      "id": "KW",
+      "name_en": "Kuwait",
+      "name_ru": "Кувейт",
+      "capital": "Kuwait City",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KWD"
+      ],
+      "population": 4897263,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 17818,
+      "neighbors": [
+        "IQ",
+        "SA"
+      ]
+    },
+    {
+      "id": "LA",
+      "name_en": "Laos",
+      "name_ru": "Лаос",
+      "capital": "Vientiane",
+      "languages": [
+        "Lao"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LAK"
+      ],
+      "population": 7769819,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 236800,
+      "neighbors": [
+        "MM",
+        "KH",
+        "CN",
+        "TH",
+        "VN"
+      ]
+    },
+    {
+      "id": "LB",
+      "name_en": "Lebanon",
+      "name_ru": "Ливан",
+      "capital": "Beirut",
+      "languages": [
+        "Arabic",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LBP"
+      ],
+      "population": 5805962,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 10452,
+      "neighbors": [
+        "IL",
+        "SY"
+      ]
+    },
+    {
+      "id": "LR",
+      "name_en": "Liberia",
+      "name_ru": "Либерия",
+      "capital": "Monrovia",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LRD"
+      ],
+      "population": 5612817,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 111369,
+      "neighbors": [
+        "GN",
+        "CI",
+        "SL"
+      ]
+    },
+    {
+      "id": "LY",
+      "name_en": "Libya",
+      "name_ru": "Ливия",
+      "capital": "Tripoli",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LYD"
+      ],
+      "population": 7381023,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 1759540,
+      "neighbors": [
+        "DZ",
+        "TD",
+        "EG",
+        "NE",
+        "SD",
+        "TN"
+      ]
+    },
+    {
+      "id": "LC",
+      "name_en": "Saint Lucia",
+      "name_ru": "Сент-Люсия",
+      "capital": "Castries",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 179744,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 616,
+      "neighbors": []
+    },
+    {
+      "id": "LI",
+      "name_en": "Liechtenstein",
+      "name_ru": "Лихтенштейн",
+      "capital": "Vaduz",
+      "languages": [
+        "German"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "CHF"
+      ],
+      "population": 40450,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 160,
+      "neighbors": [
+        "AT",
+        "CH"
+      ]
+    },
+    {
+      "id": "LK",
+      "name_en": "Sri Lanka",
+      "name_ru": "Шри-Ланка",
+      "capital": "Colombo",
+      "languages": [
+        "Sinhala",
+        "Tamil"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LKR"
+      ],
+      "population": 21916000,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 65610,
+      "neighbors": [
+        "IN"
+      ]
+    },
+    {
+      "id": "LS",
+      "name_en": "Lesotho",
+      "name_ru": "Лесото",
+      "capital": "Maseru",
+      "languages": [
+        "English",
+        "Sotho"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "LSL",
+        "ZAR"
+      ],
+      "population": 2337423,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Southern Africa",
+      "area_km2": 30355,
+      "neighbors": [
+        "ZA"
+      ]
+    },
+    {
+      "id": "LT",
+      "name_en": "Lithuania",
+      "name_ru": "Литва",
+      "capital": "Vilnius",
+      "languages": [
+        "Lithuanian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 2888278,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 65300,
+      "neighbors": [
+        "BY",
+        "LV",
+        "PL",
+        "RU"
+      ]
+    },
+    {
+      "id": "LU",
+      "name_en": "Luxembourg",
+      "name_ru": "Люксембург",
+      "capital": "Luxembourg",
+      "languages": [
+        "German",
+        "French",
+        "Luxembourgish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 677012,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 2586,
+      "neighbors": [
+        "BE",
+        "FR",
+        "DE"
+      ]
+    },
+    {
+      "id": "LV",
+      "name_en": "Latvia",
+      "name_ru": "Латвия",
+      "capital": "Riga",
+      "languages": [
+        "Latvian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 1866124,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 64559,
+      "neighbors": [
+        "BY",
+        "EE",
+        "LT",
+        "RU"
+      ]
+    },
+    {
+      "id": "MO",
+      "name_en": "Macau",
+      "name_ru": "Макао",
+      "capital": null,
+      "languages": [
+        "Portuguese",
+        "Chinese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MOP"
+      ],
+      "population": 687000,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 30,
+      "neighbors": [
+        "CN"
+      ]
+    },
+    {
+      "id": "MF",
+      "name_en": "Saint Martin",
+      "name_ru": "Сен-Мартен",
+      "capital": "Marigot",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 26129,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 53,
+      "neighbors": [
+        "SX"
+      ]
+    },
+    {
+      "id": "MA",
+      "name_en": "Morocco",
+      "name_ru": "Марокко",
+      "capital": "Rabat",
+      "languages": [
+        "Arabic",
+        "Berber"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MAD"
+      ],
+      "population": 38081173,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 446550,
+      "neighbors": [
+        "DZ",
+        "EH",
+        "ES"
+      ]
+    },
+    {
+      "id": "MC",
+      "name_en": "Monaco",
+      "name_ru": "Монако",
+      "capital": "Monaco",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 38631,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 2.02,
+      "neighbors": [
+        "FR"
+      ]
+    },
+    {
+      "id": "MD",
+      "name_en": "Moldova",
+      "name_ru": "Молдавия",
+      "capital": "Chișinău",
+      "languages": [
+        "Moldavian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MDL"
+      ],
+      "population": 2402306,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Eastern Europe",
+      "area_km2": 33846,
+      "neighbors": [
+        "RO",
+        "UA"
+      ]
+    },
+    {
+      "id": "MG",
+      "name_en": "Madagascar",
+      "name_ru": "Мадагаскар",
+      "capital": "Antananarivo",
+      "languages": [
+        "French",
+        "Malagasy"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MGA"
+      ],
+      "population": 31964956,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 587041,
+      "neighbors": []
+    },
+    {
+      "id": "MV",
+      "name_en": "Maldives",
+      "name_ru": "Мальдивы",
+      "capital": "Malé",
+      "languages": [
+        "Maldivian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MVR"
+      ],
+      "population": 527799,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 300,
+      "neighbors": []
+    },
+    {
+      "id": "MX",
+      "name_en": "Mexico",
+      "name_ru": "Мексика",
+      "capital": "Mexico City",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MXN"
+      ],
+      "population": 130861007,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 1964375,
+      "neighbors": [
+        "BZ",
+        "GT",
+        "US"
+      ]
+    },
+    {
+      "id": "MH",
+      "name_en": "Marshall Islands",
+      "name_ru": "Маршалловы Острова",
+      "capital": "Majuro",
+      "languages": [
+        "English",
+        "Marshallese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 37548,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 181,
+      "neighbors": []
+    },
+    {
+      "id": "MK",
+      "name_en": "North Macedonia",
+      "name_ru": "Северная Македония",
+      "capital": "Skopje",
+      "languages": [
+        "Macedonian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MKD"
+      ],
+      "population": 1824359,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 25713,
+      "neighbors": [
+        "AL",
+        "BG",
+        "GR",
+        "XK",
+        "RS"
+      ]
+    },
+    {
+      "id": "ML",
+      "name_en": "Mali",
+      "name_ru": "Мали",
+      "capital": "Bamako",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 24478595,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 1240192,
+      "neighbors": [
+        "DZ",
+        "BF",
+        "GN",
+        "CI",
+        "MR",
+        "NE",
+        "SN"
+      ]
+    },
+    {
+      "id": "MT",
+      "name_en": "Malta",
+      "name_ru": "Мальта",
+      "capital": "Valletta",
+      "languages": [
+        "English",
+        "Maltese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 568847,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 316,
+      "neighbors": []
+    },
+    {
+      "id": "MM",
+      "name_en": "Myanmar",
+      "name_ru": "Мьянма",
+      "capital": "Naypyidaw",
+      "languages": [
+        "Burmese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MMK"
+      ],
+      "population": 54500091,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 676578,
+      "neighbors": [
+        "BD",
+        "CN",
+        "IN",
+        "LA",
+        "TH"
+      ]
+    },
+    {
+      "id": "ME",
+      "name_en": "Montenegro",
+      "name_ru": "Черногория",
+      "capital": "Podgorica",
+      "languages": [
+        "Montenegrin"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 623525,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 13812,
+      "neighbors": [
+        "AL",
+        "BA",
+        "HR",
+        "XK",
+        "RS"
+      ]
+    },
+    {
+      "id": "MN",
+      "name_en": "Mongolia",
+      "name_ru": "Монголия",
+      "capital": "Ulan Bator",
+      "languages": [
+        "Mongolian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MNT"
+      ],
+      "population": 3524788,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 1564110,
+      "neighbors": [
+        "CN",
+        "RU"
+      ]
+    },
+    {
+      "id": "MP",
+      "name_en": "Northern Mariana Islands",
+      "name_ru": "Северные Марианские острова",
+      "capital": "Saipan",
+      "languages": [
+        "Carolinian",
+        "Chamorro",
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 44278,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 464,
+      "neighbors": []
+    },
+    {
+      "id": "MZ",
+      "name_en": "Mozambique",
+      "name_ru": "Мозамбик",
+      "capital": "Maputo",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MZN"
+      ],
+      "population": 34631766,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 801590,
+      "neighbors": [
+        "MW",
+        "ZA",
+        "SZ",
+        "TZ",
+        "ZM",
+        "ZW"
+      ]
+    },
+    {
+      "id": "MR",
+      "name_en": "Mauritania",
+      "name_ru": "Мавритания",
+      "capital": "Nouakchott",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MRU"
+      ],
+      "population": 5169395,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 1030700,
+      "neighbors": [
+        "DZ",
+        "ML",
+        "SN",
+        "EH"
+      ]
+    },
+    {
+      "id": "MS",
+      "name_en": "Montserrat",
+      "name_ru": "Монтсеррат",
+      "capital": "Plymouth",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 102,
+      "neighbors": []
+    },
+    {
+      "id": "MQ",
+      "name_en": "Martinique",
+      "name_ru": "Мартиника",
+      "capital": "Fort-de-France",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 1128,
+      "neighbors": []
+    },
+    {
+      "id": "MU",
+      "name_en": "Mauritius",
+      "name_ru": "Маврикий",
+      "capital": "Port Louis",
+      "languages": [
+        "English",
+        "French",
+        "Mauritian Creole"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MUR"
+      ],
+      "population": 1245779,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 2040,
+      "neighbors": []
+    },
+    {
+      "id": "MW",
+      "name_en": "Malawi",
+      "name_ru": "Малави",
+      "capital": "Lilongwe",
+      "languages": [
+        "English",
+        "Chewa"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MWK"
+      ],
+      "population": 21655286,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 118484,
+      "neighbors": [
+        "MZ",
+        "TZ",
+        "ZM"
+      ]
+    },
+    {
+      "id": "MY",
+      "name_en": "Malaysia",
+      "name_ru": "Малайзия",
+      "capital": "Kuala Lumpur",
+      "languages": [
+        "English",
+        "Malay"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "MYR"
+      ],
+      "population": 35557673,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 330803,
+      "neighbors": [
+        "BN",
+        "ID",
+        "TH"
+      ]
+    },
+    {
+      "id": "YT",
+      "name_en": "Mayotte",
+      "name_ru": "Майотта",
+      "capital": "Mamoudzou",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 374,
+      "neighbors": []
+    },
+    {
+      "id": "NA",
+      "name_en": "Namibia",
+      "name_ru": "Намибия",
+      "capital": "Windhoek",
+      "languages": [
+        "Afrikaans",
+        "German",
+        "English",
+        "Herero",
+        "Khoekhoe",
+        "Kwangali",
+        "Lozi",
+        "Ndonga",
+        "Tswana"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NAD",
+        "ZAR"
+      ],
+      "population": 3030131,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Southern Africa",
+      "area_km2": 825615,
+      "neighbors": [
+        "AO",
+        "BW",
+        "ZA",
+        "ZM"
+      ]
+    },
+    {
+      "id": "NC",
+      "name_en": "New Caledonia",
+      "name_ru": "Новая Каледония",
+      "capital": "Nouméa",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XPF"
+      ],
+      "population": 292639,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Melanesia",
+      "area_km2": 18575,
+      "neighbors": []
+    },
+    {
+      "id": "NE",
+      "name_en": "Niger",
+      "name_ru": "Нигер",
+      "capital": "Niamey",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 27032412,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 1267000,
+      "neighbors": [
+        "DZ",
+        "BJ",
+        "BF",
+        "TD",
+        "LY",
+        "ML",
+        "NG"
+      ]
+    },
+    {
+      "id": "NF",
+      "name_en": "Norfolk Island",
+      "name_ru": "Норфолк",
+      "capital": "Kingston",
+      "languages": [
+        "English",
+        "Norfuk"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Australia and New Zealand",
+      "area_km2": 36,
+      "neighbors": []
+    },
+    {
+      "id": "NG",
+      "name_en": "Nigeria",
+      "name_ru": "Нигерия",
+      "capital": "Abuja",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NGN"
+      ],
+      "population": 232679478,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 923768,
+      "neighbors": [
+        "BJ",
+        "CM",
+        "TD",
+        "NE"
+      ]
+    },
+    {
+      "id": "NI",
+      "name_en": "Nicaragua",
+      "name_ru": "Никарагуа",
+      "capital": "Managua",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NIO"
+      ],
+      "population": 6916140,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 130373,
+      "neighbors": [
+        "CR",
+        "HN"
+      ]
+    },
+    {
+      "id": "NU",
+      "name_en": "Niue",
+      "name_ru": "Ниуэ",
+      "capital": "Alofi",
+      "languages": [
+        "English",
+        "Niuean"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NZD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 260,
+      "neighbors": []
+    },
+    {
+      "id": "NL",
+      "name_en": "Netherlands",
+      "name_ru": "Нидерланды",
+      "capital": "Amsterdam (capital; government in The Hague)",
+      "languages": [
+        "Dutch"
+      ],
+      "official_languages": [
+        "Dutch"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 17993485,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "area_km2": 41850,
+      "neighbors": [
+        "BE",
+        "DE",
+        "FR"
+      ],
+      "neighbor_sources": {
+        "FR": "https://www.diplomatie.gouv.fr/en/information-by-country/netherlands/france-and-the-netherlands"
+      }
+    },
+    {
+      "id": "NO",
+      "name_en": "Norway",
+      "name_ru": "Норвегия",
+      "capital": "Oslo",
+      "languages": [
+        "Norwegian Nynorsk",
+        "Norwegian Bokmål",
+        "Sami"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NOK"
+      ],
+      "population": 5572279,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 323802,
+      "neighbors": [
+        "FI",
+        "SE",
+        "RU"
+      ]
+    },
+    {
+      "id": "NP",
+      "name_en": "Nepal",
+      "name_ru": "Непал",
+      "capital": "Kathmandu",
+      "languages": [
+        "Nepali"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NPR"
+      ],
+      "population": 29651054,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 147181,
+      "neighbors": [
+        "CN",
+        "IN"
+      ]
+    },
+    {
+      "id": "NR",
+      "name_en": "Nauru",
+      "name_ru": "Науру",
+      "capital": "Yaren",
+      "languages": [
+        "English",
+        "Nauru"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD"
+      ],
+      "population": 11947,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 21,
+      "neighbors": []
+    },
+    {
+      "id": "NZ",
+      "name_en": "New Zealand",
+      "name_ru": "Новая Зеландия",
+      "capital": "Wellington",
+      "languages": [
+        "English",
+        "Māori",
+        "New Zealand Sign Language"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NZD"
+      ],
+      "population": 5290000,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Australia and New Zealand",
+      "area_km2": 270467,
+      "neighbors": []
+    },
+    {
+      "id": "OM",
+      "name_en": "Oman",
+      "name_ru": "Оман",
+      "capital": "Muscat",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "OMR"
+      ],
+      "population": 5281538,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 309500,
+      "neighbors": [
+        "SA",
+        "AE",
+        "YE"
+      ]
+    },
+    {
+      "id": "PK",
+      "name_en": "Pakistan",
+      "name_ru": "Пакистан",
+      "capital": "Islamabad",
+      "languages": [
+        "English",
+        "Urdu"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PKR"
+      ],
+      "population": 251269164,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Southern Asia",
+      "area_km2": 881912,
+      "neighbors": [
+        "AF",
+        "CN",
+        "IN",
+        "IR"
+      ]
+    },
+    {
+      "id": "PA",
+      "name_en": "Panama",
+      "name_ru": "Панама",
+      "capital": "Panama City",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PAB",
+        "USD"
+      ],
+      "population": 4515577,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 75417,
+      "neighbors": [
+        "CO",
+        "CR"
+      ]
+    },
+    {
+      "id": "PN",
+      "name_en": "Pitcairn Islands",
+      "name_ru": "Острова Питкэрн",
+      "capital": "Adamstown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NZD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 47,
+      "neighbors": []
+    },
+    {
+      "id": "PE",
+      "name_en": "Peru",
+      "name_ru": "Перу",
+      "capital": "Lima",
+      "languages": [
+        "Aymara",
+        "Quechua",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PEN"
+      ],
+      "population": 34217848,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 1285216,
+      "neighbors": [
+        "BO",
+        "BR",
+        "CL",
+        "CO",
+        "EC"
+      ]
+    },
+    {
+      "id": "PH",
+      "name_en": "Philippines",
+      "name_ru": "Филиппины",
+      "capital": "Manila",
+      "languages": [
+        "English",
+        "Filipino"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PHP"
+      ],
+      "population": 115843670,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 342353,
+      "neighbors": []
+    },
+    {
+      "id": "PW",
+      "name_en": "Palau",
+      "name_ru": "Палау",
+      "capital": "Ngerulmud",
+      "languages": [
+        "English",
+        "Palauan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 17695,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Micronesia",
+      "area_km2": 459,
+      "neighbors": []
+    },
+    {
+      "id": "PG",
+      "name_en": "Papua New Guinea",
+      "name_ru": "Папуа — Новая Гвинея",
+      "capital": "Port Moresby",
+      "languages": [
+        "English",
+        "Hiri Motu",
+        "Tok Pisin"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PGK"
+      ],
+      "population": 10576502,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Melanesia",
+      "area_km2": 462840,
+      "neighbors": [
+        "ID"
+      ]
+    },
+    {
+      "id": "PL",
+      "name_en": "Poland",
+      "name_ru": "Польша",
+      "capital": "Warsaw",
+      "languages": [
+        "Polish"
+      ],
+      "official_languages": [
+        "Polish"
+      ],
+      "currencies": [
+        "PLN"
+      ],
+      "population": 36559233,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 312679,
+      "neighbors": [
+        "BY",
+        "CZ",
+        "DE",
+        "LT",
+        "RU",
+        "SK",
+        "UA"
+      ]
+    },
+    {
+      "id": "PR",
+      "name_en": "Puerto Rico",
+      "name_ru": "Пуэрто-Рико",
+      "capital": "San Juan",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 3202521,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 8870,
+      "neighbors": []
+    },
+    {
+      "id": "KP",
+      "name_en": "North Korea",
+      "name_ru": "Северная Корея",
+      "capital": "Pyongyang",
+      "languages": [
+        "Korean"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "KPW"
+      ],
+      "population": 26498823,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 120538,
+      "neighbors": [
+        "CN",
+        "KR",
+        "RU"
+      ]
+    },
+    {
+      "id": "PT",
+      "name_en": "Portugal",
+      "name_ru": "Португалия",
+      "capital": "Lisbon",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": [
+        "Portuguese"
+      ],
+      "currencies": [
+        "EUR"
+      ],
+      "population": 10694681,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 92090,
+      "neighbors": [
+        "ES"
+      ]
+    },
+    {
+      "id": "PY",
+      "name_en": "Paraguay",
+      "name_ru": "Парагвай",
+      "capital": "Asunción",
+      "languages": [
+        "Guaraní",
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "PYG"
+      ],
+      "population": 6929153,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 406752,
+      "neighbors": [
+        "AR",
+        "BO",
+        "BR"
+      ]
+    },
+    {
+      "id": "PS",
+      "name_en": "Palestine",
+      "name_ru": "Палестина",
+      "capital": "Ramallah",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EGP",
+        "ILS",
+        "JOD"
+      ],
+      "population": 5289152,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 6220,
+      "neighbors": [
+        "IL",
+        "EG",
+        "JO"
+      ]
+    },
+    {
+      "id": "PF",
+      "name_en": "French Polynesia",
+      "name_ru": "Французская Полинезия",
+      "capital": "Papeetē",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XPF"
+      ],
+      "population": 281807,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 4167,
+      "neighbors": []
+    },
+    {
+      "id": "QA",
+      "name_en": "Qatar",
+      "name_ru": "Катар",
+      "capital": "Doha",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "QAR"
+      ],
+      "population": 2857822,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 11586,
+      "neighbors": [
+        "SA"
+      ]
+    },
+    {
+      "id": "RE",
+      "name_en": "Réunion",
+      "name_ru": "Реюньон",
+      "capital": "Saint-Denis",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 2511,
+      "neighbors": []
+    },
+    {
+      "id": "RO",
+      "name_en": "Romania",
+      "name_ru": "Румыния",
+      "capital": "Bucharest",
+      "languages": [
+        "Romanian"
+      ],
+      "official_languages": [
+        "Romanian"
+      ],
+      "currencies": [
+        "RON"
+      ],
+      "population": 19051804,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 238391,
+      "neighbors": [
+        "BG",
+        "HU",
+        "MD",
+        "RS",
+        "UA"
+      ]
+    },
+    {
+      "id": "RU",
+      "name_en": "Russia",
+      "name_ru": "Россия",
+      "capital": "Moscow",
+      "languages": [
+        "Russian"
+      ],
+      "official_languages": [
+        "Russian"
+      ],
+      "currencies": [
+        "RUB"
+      ],
+      "population": 143669648,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Eastern Europe",
+      "area_km2": 17098242,
+      "neighbors": [
+        "AZ",
+        "BY",
+        "CN",
+        "EE",
+        "FI",
+        "GE",
+        "KZ",
+        "KP",
+        "LV",
+        "LT",
+        "MN",
+        "NO",
+        "PL",
+        "UA"
+      ]
+    },
+    {
+      "id": "RW",
+      "name_en": "Rwanda",
+      "name_ru": "Руанда",
+      "capital": "Kigali",
+      "languages": [
+        "English",
+        "French",
+        "Kinyarwanda"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "RWF"
+      ],
+      "population": 14256567,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 26338,
+      "neighbors": [
+        "BI",
+        "CD",
+        "TZ",
+        "UG"
+      ]
+    },
+    {
+      "id": "SA",
+      "name_en": "Saudi Arabia",
+      "name_ru": "Саудовская Аравия",
+      "capital": "Riyadh",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SAR"
+      ],
+      "population": 35300280,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 2149690,
+      "neighbors": [
+        "IQ",
+        "JO",
+        "KW",
+        "OM",
+        "QA",
+        "AE",
+        "YE"
+      ]
+    },
+    {
+      "id": "SD",
+      "name_en": "Sudan",
+      "name_ru": "Судан",
+      "capital": "Khartoum",
+      "languages": [
+        "Arabic",
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SDG"
+      ],
+      "population": 50448963,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 1886068,
+      "neighbors": [
+        "CF",
+        "TD",
+        "EG",
+        "ER",
+        "ET",
+        "LY",
+        "SS"
+      ]
+    },
+    {
+      "id": "SN",
+      "name_en": "Senegal",
+      "name_ru": "Сенегал",
+      "capital": "Dakar",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 18501984,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 196722,
+      "neighbors": [
+        "GM",
+        "GN",
+        "GW",
+        "ML",
+        "MR"
+      ]
+    },
+    {
+      "id": "SG",
+      "name_en": "Singapore",
+      "name_ru": "Сингапур",
+      "capital": "Singapore",
+      "languages": [
+        "English",
+        "Malay",
+        "Tamil",
+        "Chinese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SGD"
+      ],
+      "population": 6036860,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 710,
+      "neighbors": []
+    },
+    {
+      "id": "GS",
+      "name_en": "South Georgia",
+      "name_ru": "Южная Георгия и Южные Сандвичевы острова",
+      "capital": "King Edward Point",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SHP"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Antarctic",
+      "subregion": "",
+      "area_km2": 3903,
+      "neighbors": []
+    },
+    {
+      "id": "SJ",
+      "name_en": "Svalbard and Jan Mayen",
+      "name_ru": "Шпицберген и Ян-Майен",
+      "capital": "Longyearbyen",
+      "languages": [
+        "Norwegian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NOK"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": -1,
+      "neighbors": []
+    },
+    {
+      "id": "SB",
+      "name_en": "Solomon Islands",
+      "name_ru": "Соломоновы Острова",
+      "capital": "Honiara",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SBD"
+      ],
+      "population": 819198,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Melanesia",
+      "area_km2": 28896,
+      "neighbors": []
+    },
+    {
+      "id": "SL",
+      "name_en": "Sierra Leone",
+      "name_ru": "Сьерра-Леоне",
+      "capital": "Freetown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SLE"
+      ],
+      "population": 8642022,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 71740,
+      "neighbors": [
+        "GN",
+        "LR"
+      ]
+    },
+    {
+      "id": "SV",
+      "name_en": "El Salvador",
+      "name_ru": "Сальвадор",
+      "capital": "San Salvador",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 6338193,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Central America",
+      "area_km2": 21041,
+      "neighbors": [
+        "GT",
+        "HN"
+      ]
+    },
+    {
+      "id": "SM",
+      "name_en": "San Marino",
+      "name_ru": "Сан-Марино",
+      "capital": "City of San Marino",
+      "languages": [
+        "Italian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 33977,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 61,
+      "neighbors": [
+        "IT"
+      ]
+    },
+    {
+      "id": "SO",
+      "name_en": "Somalia",
+      "name_ru": "Сомали",
+      "capital": "Mogadishu",
+      "languages": [
+        "Arabic",
+        "Somali"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SOS"
+      ],
+      "population": 19009151,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 637657,
+      "neighbors": [
+        "DJ",
+        "ET",
+        "KE"
+      ]
+    },
+    {
+      "id": "PM",
+      "name_en": "Saint Pierre and Miquelon",
+      "name_ru": "Сен-Пьер и Микелон",
+      "capital": "Saint-Pierre",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 242,
+      "neighbors": []
+    },
+    {
+      "id": "RS",
+      "name_en": "Serbia",
+      "name_ru": "Сербия",
+      "capital": "Belgrade",
+      "languages": [
+        "Serbian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "RSD"
+      ],
+      "population": 6586476,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Southeast Europe",
+      "area_km2": 88361,
+      "neighbors": [
+        "BA",
+        "BG",
+        "HR",
+        "HU",
+        "XK",
+        "MK",
+        "ME",
+        "RO"
+      ]
+    },
+    {
+      "id": "SS",
+      "name_en": "South Sudan",
+      "name_ru": "Южный Судан",
+      "capital": "Juba",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SSP"
+      ],
+      "population": 11943408,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 619745,
+      "neighbors": [
+        "CF",
+        "CD",
+        "ET",
+        "KE",
+        "SD",
+        "UG"
+      ]
+    },
+    {
+      "id": "ST",
+      "name_en": "São Tomé and Príncipe",
+      "name_ru": "Сан-Томе и Принсипи",
+      "capital": "São Tomé",
+      "languages": [
+        "Portuguese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "STN"
+      ],
+      "population": 235536,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 964,
+      "neighbors": []
+    },
+    {
+      "id": "SR",
+      "name_en": "Suriname",
+      "name_ru": "Суринам",
+      "capital": "Paramaribo",
+      "languages": [
+        "Dutch"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SRD"
+      ],
+      "population": 634431,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 163820,
+      "neighbors": [
+        "BR",
+        "GF",
+        "GY",
+        "FR"
+      ],
+      "neighbor_sources": {
+        "FR": "https://www.defense.gouv.fr/terre/actualites/mission-trijonction-jusquaux-trois-frontieres"
+      }
+    },
+    {
+      "id": "SK",
+      "name_en": "Slovakia",
+      "name_ru": "Словакия",
+      "capital": "Bratislava",
+      "languages": [
+        "Slovak"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 5422069,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 49037,
+      "neighbors": [
+        "AT",
+        "CZ",
+        "HU",
+        "PL",
+        "UA"
+      ]
+    },
+    {
+      "id": "SI",
+      "name_en": "Slovenia",
+      "name_ru": "Словения",
+      "capital": "Ljubljana",
+      "languages": [
+        "Slovene"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 2127400,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Central Europe",
+      "area_km2": 20273,
+      "neighbors": [
+        "AT",
+        "HR",
+        "IT",
+        "HU"
+      ]
+    },
+    {
+      "id": "SE",
+      "name_en": "Sweden",
+      "name_ru": "Швеция",
+      "capital": "Stockholm",
+      "languages": [
+        "Swedish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SEK"
+      ],
+      "population": 10569709,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Northern Europe",
+      "area_km2": 450295,
+      "neighbors": [
+        "FI",
+        "NO"
+      ]
+    },
+    {
+      "id": "SZ",
+      "name_en": "Eswatini",
+      "name_ru": "Свазиленд",
+      "capital": "Lobamba",
+      "languages": [
+        "English",
+        "Swazi"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SZL",
+        "ZAR"
+      ],
+      "population": 1242822,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Southern Africa",
+      "area_km2": 17364,
+      "neighbors": [
+        "MZ",
+        "ZA"
+      ]
+    },
+    {
+      "id": "SX",
+      "name_en": "Sint Maarten",
+      "name_ru": "Синт-Мартен",
+      "capital": "Philipsburg",
+      "languages": [
+        "English",
+        "French",
+        "Dutch"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ANG"
+      ],
+      "population": 43350,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 34,
+      "neighbors": [
+        "MF"
+      ]
+    },
+    {
+      "id": "SC",
+      "name_en": "Seychelles",
+      "name_ru": "Сейшельские Острова",
+      "capital": "Victoria",
+      "languages": [
+        "Seychellois Creole",
+        "English",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SCR"
+      ],
+      "population": 121354,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 452,
+      "neighbors": []
+    },
+    {
+      "id": "SY",
+      "name_en": "Syria",
+      "name_ru": "Сирия",
+      "capital": "Damascus",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "SYP"
+      ],
+      "population": 24672760,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 185180,
+      "neighbors": [
+        "IQ",
+        "IL",
+        "JO",
+        "LB",
+        "TR"
+      ]
+    },
+    {
+      "id": "TC",
+      "name_en": "Turks and Caicos Islands",
+      "name_ru": "Теркс и Кайкос",
+      "capital": "Cockburn Town",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 46535,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 948,
+      "neighbors": []
+    },
+    {
+      "id": "TD",
+      "name_en": "Chad",
+      "name_ru": "Чад",
+      "capital": "N'Djamena",
+      "languages": [
+        "Arabic",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XAF"
+      ],
+      "population": 20299123,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Middle Africa",
+      "area_km2": 1284000,
+      "neighbors": [
+        "CM",
+        "CF",
+        "LY",
+        "NE",
+        "NG",
+        "SD"
+      ]
+    },
+    {
+      "id": "TG",
+      "name_en": "Togo",
+      "name_ru": "Того",
+      "capital": "Lomé",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XOF"
+      ],
+      "population": 8406558,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Western Africa",
+      "area_km2": 56785,
+      "neighbors": [
+        "BJ",
+        "BF",
+        "GH"
+      ]
+    },
+    {
+      "id": "TH",
+      "name_en": "Thailand",
+      "name_ru": "Таиланд",
+      "capital": "Bangkok",
+      "languages": [
+        "Thai"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "THB"
+      ],
+      "population": 71668011,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 513120,
+      "neighbors": [
+        "MM",
+        "KH",
+        "LA",
+        "MY"
+      ]
+    },
+    {
+      "id": "TJ",
+      "name_en": "Tajikistan",
+      "name_ru": "Таджикистан",
+      "capital": "Dushanbe",
+      "languages": [
+        "Russian",
+        "Tajik"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TJS"
+      ],
+      "population": 10590927,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Central Asia",
+      "area_km2": 143100,
+      "neighbors": [
+        "AF",
+        "CN",
+        "KG",
+        "UZ"
+      ]
+    },
+    {
+      "id": "TK",
+      "name_en": "Tokelau",
+      "name_ru": "Токелау",
+      "capital": "Fakaofo",
+      "languages": [
+        "English",
+        "Samoan",
+        "Tokelauan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "NZD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 12,
+      "neighbors": []
+    },
+    {
+      "id": "TM",
+      "name_en": "Turkmenistan",
+      "name_ru": "Туркмения",
+      "capital": "Ashgabat",
+      "languages": [
+        "Russian",
+        "Turkmen"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TMT"
+      ],
+      "population": 7494498,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Central Asia",
+      "area_km2": 488100,
+      "neighbors": [
+        "AF",
+        "IR",
+        "KZ",
+        "UZ"
+      ]
+    },
+    {
+      "id": "TL",
+      "name_en": "Timor-Leste",
+      "name_ru": "Восточный Тимор",
+      "capital": "Dili",
+      "languages": [
+        "Portuguese",
+        "Tetum"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 1400638,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 14874,
+      "neighbors": [
+        "ID"
+      ]
+    },
+    {
+      "id": "TO",
+      "name_en": "Tonga",
+      "name_ru": "Тонга",
+      "capital": "Nuku'alofa",
+      "languages": [
+        "English",
+        "Tongan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TOP"
+      ],
+      "population": 104175,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 747,
+      "neighbors": []
+    },
+    {
+      "id": "TT",
+      "name_en": "Trinidad and Tobago",
+      "name_ru": "Тринидад и Тобаго",
+      "capital": "Port of Spain",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TTD"
+      ],
+      "population": 1368333,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 5130,
+      "neighbors": []
+    },
+    {
+      "id": "TN",
+      "name_en": "Tunisia",
+      "name_ru": "Тунис",
+      "capital": "Tunis",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TND"
+      ],
+      "population": 12277109,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "area_km2": 163610,
+      "neighbors": [
+        "DZ",
+        "LY"
+      ]
+    },
+    {
+      "id": "TR",
+      "name_en": "Türkiye",
+      "name_ru": "Турция",
+      "capital": "Ankara",
+      "languages": [
+        "Turkish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TRY"
+      ],
+      "population": 85518661,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 783562,
+      "neighbors": [
+        "AM",
+        "AZ",
+        "BG",
+        "GE",
+        "GR",
+        "IR",
+        "IQ",
+        "SY"
+      ]
+    },
+    {
+      "id": "TV",
+      "name_en": "Tuvalu",
+      "name_ru": "Тувалу",
+      "capital": "Funafuti",
+      "languages": [
+        "English",
+        "Tuvaluan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "AUD",
+        "TVD"
+      ],
+      "population": 9646,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 26,
+      "neighbors": []
+    },
+    {
+      "id": "TW",
+      "name_en": "Taiwan",
+      "name_ru": "Тайвань",
+      "capital": "Taipei",
+      "languages": [
+        "Chinese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TWD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Asia",
+      "subregion": "Eastern Asia",
+      "area_km2": 36193,
+      "neighbors": []
+    },
+    {
+      "id": "TZ",
+      "name_en": "Tanzania",
+      "name_ru": "Танзания",
+      "capital": "Dodoma",
+      "languages": [
+        "English",
+        "Swahili"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "TZS"
+      ],
+      "population": 68560157,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 945087,
+      "neighbors": [
+        "BI",
+        "CD",
+        "KE",
+        "MW",
+        "MZ",
+        "RW",
+        "UG",
+        "ZM"
+      ]
+    },
+    {
+      "id": "UG",
+      "name_en": "Uganda",
+      "name_ru": "Уганда",
+      "capital": "Kampala",
+      "languages": [
+        "English",
+        "Swahili"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "UGX"
+      ],
+      "population": 50015092,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 241550,
+      "neighbors": [
+        "CD",
+        "KE",
+        "RW",
+        "SS",
+        "TZ"
+      ]
+    },
+    {
+      "id": "UA",
+      "name_en": "Ukraine",
+      "name_ru": "Украина",
+      "capital": "Kyiv",
+      "languages": [
+        "Ukrainian"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "UAH"
+      ],
+      "population": 37860221,
+      "population_year": 2024,
+      "region": "Europe",
+      "subregion": "Eastern Europe",
+      "area_km2": 603500,
+      "neighbors": [
+        "BY",
+        "HU",
+        "MD",
+        "PL",
+        "RO",
+        "RU",
+        "SK"
+      ]
+    },
+    {
+      "id": "UM",
+      "name_en": "United States Minor Outlying Islands",
+      "name_ru": "Внешние малые острова США",
+      "capital": null,
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 34.2,
+      "neighbors": []
+    },
+    {
+      "id": "UY",
+      "name_en": "Uruguay",
+      "name_ru": "Уругвай",
+      "capital": "Montevideo",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "UYU"
+      ],
+      "population": 3386588,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 181034,
+      "neighbors": [
+        "AR",
+        "BR"
+      ]
+    },
+    {
+      "id": "US",
+      "name_en": "United States",
+      "name_ru": "Соединённые Штаты Америки",
+      "capital": "Washington D.C.",
+      "languages": [
+        "English"
+      ],
+      "official_languages": [
+        "English"
+      ],
+      "currencies": [
+        "USD"
+      ],
+      "population": 340003797,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "North America",
+      "area_km2": 9372610,
+      "neighbors": [
+        "CA",
+        "MX"
+      ],
+      "official_languages_source": "https://www.whitehouse.gov/fact-sheets/2025/03/fact-sheet-president-donald-j-trump-designates-english-as-the-official-language-of-the-united-states/"
+    },
+    {
+      "id": "UZ",
+      "name_en": "Uzbekistan",
+      "name_ru": "Узбекистан",
+      "capital": "Tashkent",
+      "languages": [
+        "Russian",
+        "Uzbek"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "UZS"
+      ],
+      "population": 36361859,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Central Asia",
+      "area_km2": 447400,
+      "neighbors": [
+        "AF",
+        "KZ",
+        "KG",
+        "TJ",
+        "TM"
+      ]
+    },
+    {
+      "id": "VA",
+      "name_en": "Vatican City",
+      "name_ru": "Ватикан",
+      "capital": "Vatican City",
+      "languages": [
+        "Italian",
+        "Latin"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "EUR"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Europe",
+      "subregion": "Southern Europe",
+      "area_km2": 0.44,
+      "neighbors": [
+        "IT"
+      ]
+    },
+    {
+      "id": "VC",
+      "name_en": "Saint Vincent and the Grenadines",
+      "name_ru": "Сент-Винсент и Гренадины",
+      "capital": "Kingstown",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XCD"
+      ],
+      "population": 100616,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 389,
+      "neighbors": []
+    },
+    {
+      "id": "VE",
+      "name_en": "Venezuela",
+      "name_ru": "Венесуэла",
+      "capital": "Caracas",
+      "languages": [
+        "Spanish"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "VES"
+      ],
+      "population": 28405543,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "South America",
+      "area_km2": 916445,
+      "neighbors": [
+        "BR",
+        "CO",
+        "GY"
+      ]
+    },
+    {
+      "id": "VG",
+      "name_en": "British Virgin Islands",
+      "name_ru": "Британские Виргинские острова",
+      "capital": "Road Town",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 39471,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 151,
+      "neighbors": []
+    },
+    {
+      "id": "VI",
+      "name_en": "United States Virgin Islands",
+      "name_ru": "Виргинские Острова",
+      "capital": "Charlotte Amalie",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "USD"
+      ],
+      "population": 104377,
+      "population_year": 2024,
+      "region": "Americas",
+      "subregion": "Caribbean",
+      "area_km2": 347,
+      "neighbors": []
+    },
+    {
+      "id": "VN",
+      "name_en": "Vietnam",
+      "name_ru": "Вьетнам",
+      "capital": "Hanoi",
+      "languages": [
+        "Vietnamese"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "VND"
+      ],
+      "population": 100987686,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "area_km2": 331212,
+      "neighbors": [
+        "KH",
+        "CN",
+        "LA"
+      ]
+    },
+    {
+      "id": "VU",
+      "name_en": "Vanuatu",
+      "name_ru": "Вануату",
+      "capital": "Port Vila",
+      "languages": [
+        "Bislama",
+        "English",
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "VUV"
+      ],
+      "population": 327777,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Melanesia",
+      "area_km2": 12189,
+      "neighbors": []
+    },
+    {
+      "id": "WF",
+      "name_en": "Wallis and Futuna",
+      "name_ru": "Уоллис и Футуна",
+      "capital": "Mata-Utu",
+      "languages": [
+        "French"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "XPF"
+      ],
+      "population": 0,
+      "population_year": 0,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 142,
+      "neighbors": []
+    },
+    {
+      "id": "WS",
+      "name_en": "Samoa",
+      "name_ru": "Самоа",
+      "capital": "Apia",
+      "languages": [
+        "English",
+        "Samoan"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "WST"
+      ],
+      "population": 218019,
+      "population_year": 2024,
+      "region": "Oceania",
+      "subregion": "Polynesia",
+      "area_km2": 2842,
+      "neighbors": []
+    },
+    {
+      "id": "YE",
+      "name_en": "Yemen",
+      "name_ru": "Йемен",
+      "capital": "Sana'a",
+      "languages": [
+        "Arabic"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "YER"
+      ],
+      "population": 40583164,
+      "population_year": 2024,
+      "region": "Asia",
+      "subregion": "Western Asia",
+      "area_km2": 527968,
+      "neighbors": [
+        "OM",
+        "SA"
+      ]
+    },
+    {
+      "id": "ZA",
+      "name_en": "South Africa",
+      "name_ru": "Южно-Африканская Республика",
+      "capital": "Pretoria (administrative); Cape Town (legislative); Bloemfontein (judicial)",
+      "languages": [
+        "Afrikaans",
+        "English",
+        "Southern Ndebele",
+        "Northern Sotho",
+        "Southern Sotho",
+        "Swazi",
+        "Tswana",
+        "Tsonga",
+        "Venda",
+        "Xhosa",
+        "Zulu"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ZAR"
+      ],
+      "population": 64007187,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Southern Africa",
+      "area_km2": 1221037,
+      "neighbors": [
+        "BW",
+        "LS",
+        "MZ",
+        "NA",
+        "SZ",
+        "ZW"
+      ]
+    },
+    {
+      "id": "ZM",
+      "name_en": "Zambia",
+      "name_ru": "Замбия",
+      "capital": "Lusaka",
+      "languages": [
+        "English"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "ZMW"
+      ],
+      "population": 21314956,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 752612,
+      "neighbors": [
+        "AO",
+        "BW",
+        "CD",
+        "MW",
+        "MZ",
+        "NA",
+        "TZ",
+        "ZW"
+      ]
+    },
+    {
+      "id": "ZW",
+      "name_en": "Zimbabwe",
+      "name_ru": "Зимбабве",
+      "capital": "Harare",
+      "languages": [
+        "Chibarwe",
+        "English",
+        "Kalanga",
+        "Khoisan",
+        "Ndau",
+        "Northern Ndebele",
+        "Chewa",
+        "Shona",
+        "Sotho",
+        "Tonga",
+        "Tswana",
+        "Tsonga",
+        "Venda",
+        "Xhosa",
+        "Zimbabwean Sign Language"
+      ],
+      "official_languages": null,
+      "currencies": [
+        "BWP",
+        "CNY",
+        "EUR",
+        "GBP",
+        "INR",
+        "JPY",
+        "USD",
+        "ZAR",
+        "ZWG"
+      ],
+      "population": 16634373,
+      "population_year": 2024,
+      "region": "Africa",
+      "subregion": "Eastern Africa",
+      "area_km2": 390757,
+      "neighbors": [
+        "BW",
+        "MZ",
+        "ZA",
+        "ZM"
+      ],
+      "currency_source": "https://www.rbz.co.zw/documents/press/2024/July/PRESS_STATEMENT_ON_ZiG_CURRENCY_CODE.pdf"
+    }
+  ]
+}

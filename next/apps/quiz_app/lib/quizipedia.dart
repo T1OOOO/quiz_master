@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'question_articles.dart';
+import 'country_learning.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -475,7 +476,7 @@ String _localized(
 enum _Module { map, anatomy, landmarks, sky }
 
 String _moduleTitle(BuildContext context, _Module module) => switch (module) {
-  _Module.map => _t(context, 'World map and flags', 'Карта и флаги'),
+  _Module.map => _t(context, 'Countries of the world', 'Страны мира'),
   _Module.anatomy => _t(context, 'Endocrine system', 'Эндокринная система'),
   _Module.landmarks => _t(
     context,
@@ -585,12 +586,19 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (_) => _QuizGame(
-                        catalog: catalog,
-                        module: module,
-                        challenge: _challenge,
-                        bundle: widget.bundle ?? rootBundle,
-                      ),
+                      builder: (_) => module == _Module.map
+                          ? CountryAtlasPage(
+                              catalog: catalog,
+                              challenge: _challenge,
+                              locationTrainingBuilder: (_) =>
+                                  quizipediaLocationTraining(catalog),
+                            )
+                          : _QuizGame(
+                              catalog: catalog,
+                              module: module,
+                              challenge: _challenge,
+                              bundle: widget.bundle ?? rootBundle,
+                            ),
                     ),
                   ),
                 ),
@@ -689,6 +697,17 @@ Future<void> _showCredits(BuildContext context, QuizipediaCatalog catalog) =>
       ),
     );
 
+/// Reuse the geographic hit-testing round from the country topic picker.
+Widget quizipediaLocationTraining(
+  QuizipediaCatalog catalog, {
+  AssetBundle? bundle,
+}) => _QuizGame(
+  catalog: catalog,
+  module: _Module.map,
+  challenge: true,
+  bundle: bundle ?? rootBundle,
+);
+
 class _QuizGame extends StatefulWidget {
   const _QuizGame({
     required this.catalog,
@@ -707,11 +726,18 @@ class _QuizGame extends StatefulWidget {
 class _QuizGameState extends State<_QuizGame> {
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
     _Module.map =>
-      widget.challenge
-          ? widget.catalog.countryRows
-                .where((row) => widget.catalog.mapTargetIds.contains(row['id']))
-                .toList()
-          : widget.catalog.countryRows,
+      widget.catalog.countryRows
+          .map(
+            (row) => <String, dynamic>{
+              ...row,
+              'explanation_en':
+                  row['explanation_en'] ??
+                  'Find this country on the world map.',
+              'explanation_ru':
+                  row['explanation_ru'] ?? 'Найдите эту страну на карте мира.',
+            },
+          )
+          .toList(),
     _Module.anatomy =>
       (widget.catalog.anatomy['targets'] as List).cast<Map<String, dynamic>>(),
     _Module.landmarks => widget.catalog.landmarks,
@@ -1136,8 +1162,8 @@ class _QuizGameState extends State<_QuizGame> {
             )
           : _t(
               context,
-              'Tap the country for this flag: ${_current['flag']}',
-              'Нажмите на страну с этим флагом: ${_current['flag']}',
+              'Find ${_name(_currentId)} on the map',
+              'Найдите на карте: ${_name(_currentId)}',
             );
     }
     if (widget.module == _Module.anatomy) {
@@ -1647,6 +1673,7 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.numbers = const [],
     this.showLabels = true,
     this.selectionEnabled = true,
+    this.focusTarget,
   });
   final List<QuizipediaFeature> features;
   final TransformationController controller;
@@ -1655,11 +1682,65 @@ class QuizipediaWorldMap extends StatefulWidget {
   final List<String> numbers;
   final bool showLabels, selectionEnabled;
 
+  /// A search result can request camera focus without revealing a quiz answer.
+  final String? focusTarget;
+
   @override
   State<QuizipediaWorldMap> createState() => _QuizipediaWorldMapState();
 }
 
-class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
+class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _camera = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 200),
+  );
+  Animation<Matrix4>? _cameraFrames;
+  Offset _doubleTapAt = Offset.zero;
+
+  @override
+  void initState() {
+    super.initState();
+    _camera.addListener(() {
+      widget.controller.value = _cameraFrames!.value;
+    });
+    if (widget.focusTarget != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _focus(widget.focusTarget);
+      });
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant QuizipediaWorldMap oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.focusTarget != null &&
+        widget.focusTarget != oldWidget.focusTarget) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _focus(widget.focusTarget);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _camera.dispose();
+    super.dispose();
+  }
+
+  void _moveCamera(Matrix4 target) {
+    _camera.stop();
+    if (MediaQuery.disableAnimationsOf(context)) {
+      widget.controller.value = target;
+      return;
+    }
+    _cameraFrames = Matrix4Tween(
+      begin: widget.controller.value.clone(),
+      end: target,
+    ).animate(CurvedAnimation(parent: _camera, curve: Curves.easeOutCubic));
+    _camera.forward(from: 0);
+  }
+
   Size _view = Size.zero;
   Size get _scene => Size(
     math.min(_view.width, _view.height * 2),
@@ -1669,23 +1750,31 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
       .where((feature) => feature.id == widget.selected)
       .firstOrNull;
 
-  void _zoom(double factor) {
+  void _zoom(double factor, [Offset? focalPoint]) {
     final scale = widget.controller.value.getMaxScaleOnAxis();
-    final next = (scale * factor).clamp(1.0, 6.0).toDouble();
-    final center = Offset(_view.width / 2, _view.height / 2);
+    final next = (scale * factor).clamp(1.0, 16.0).toDouble();
+    if (next == 1) {
+      _moveCamera(Matrix4.identity());
+      return;
+    }
+    final center = focalPoint ?? Offset(_view.width / 2, _view.height / 2);
     final scene = widget.controller.toScene(center);
-    widget.controller.value = Matrix4.identity()
-      ..translateByDouble(
-        center.dx - scene.dx * next,
-        center.dy - scene.dy * next,
-        0,
-        1,
-      )
-      ..scaleByDouble(next, next, next, 1);
+    _moveCamera(
+      Matrix4.identity()
+        ..translateByDouble(
+          center.dx - scene.dx * next,
+          center.dy - scene.dy * next,
+          0,
+          1,
+        )
+        ..scaleByDouble(next, next, next, 1),
+    );
   }
 
-  void _focus() {
-    final feature = _selected;
+  void _focus([String? id]) {
+    final feature = id == null
+        ? _selected
+        : widget.features.where((f) => f.id == id).firstOrNull;
     if (feature == null || _view.isEmpty) return;
     // Use the largest part, avoiding distant islands stretching the camera.
     Rect? bounds;
@@ -1710,20 +1799,22 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
           _view.width * .7 / math.max(1, bounds!.width * worldWidth),
           _view.height * .7 / math.max(1, bounds.height * worldHeight),
         )
-        .clamp(1.0, 6.0)
+        .clamp(1.0, 16.0)
         .toDouble();
     final center = Offset(
       bounds.center.dx * worldWidth + (_view.width - worldWidth) / 2,
       bounds.center.dy * worldHeight + (_view.height - worldHeight) / 2,
     );
-    widget.controller.value = Matrix4.identity()
-      ..translateByDouble(
-        _view.width / 2 - center.dx * scale,
-        _view.height / 2 - center.dy * scale,
-        0,
-        1,
-      )
-      ..scaleByDouble(scale, scale, scale, 1);
+    _moveCamera(
+      Matrix4.identity()
+        ..translateByDouble(
+          _view.width / 2 - center.dx * scale,
+          _view.height / 2 - center.dy * scale,
+          0,
+          1,
+        )
+        ..scaleByDouble(scale, scale, scale, 1),
+    );
   }
 
   @override
@@ -1749,9 +1840,13 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                   key: const Key('quizipedia-viewport'),
                   transformationController: widget.controller,
                   constrained: false,
-                  boundaryMargin: const EdgeInsets.all(48),
+                  boundaryMargin: EdgeInsets.all(
+                    math.max(_view.width, _view.height),
+                  ),
                   minScale: 1,
-                  maxScale: 6,
+                  maxScale: 16,
+                  trackpadScrollCausesScale: true,
+                  onInteractionStart: (_) => _camera.stop(),
                   child: SizedBox(
                     width: _view.width,
                     height: _view.height,
@@ -1764,6 +1859,19 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                         ),
                         child: GestureDetector(
                           behavior: HitTestBehavior.opaque,
+                          onDoubleTapDown: (details) {
+                            final origin = Offset(
+                              (_view.width - scene.width) / 2,
+                              (_view.height - scene.height) / 2,
+                            );
+                            final p = details.localPosition + origin;
+                            final transformed = MatrixUtils.transformPoint(
+                              widget.controller.value,
+                              p,
+                            );
+                            _doubleTapAt = transformed;
+                          },
+                          onDoubleTap: () => _zoom(2, _doubleTapAt),
                           onTapUp: !widget.selectionEnabled
                               ? null
                               : (details) {
@@ -1806,7 +1914,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
             Positioned(
               top: 8,
               left: 8,
-              right: 64,
+              right: 8,
               child: IgnorePointer(
                 child: Semantics(
                   liveRegion: true,
@@ -1829,12 +1937,12 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
               ),
             ),
             Positioned(
-              top: 8,
-              right: 8,
+              bottom: 32,
+              left: 8,
               child: Material(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
@@ -1862,8 +1970,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                         minWidth: 48,
                         minHeight: 48,
                       ),
-                      onPressed: () =>
-                          widget.controller.value = Matrix4.identity(),
+                      onPressed: () => _moveCamera(Matrix4.identity()),
                     ),
                     IconButton(
                       tooltip: _t(
@@ -1879,7 +1986,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                         minWidth: 48,
                         minHeight: 48,
                       ),
-                      onPressed: selected == null ? null : _focus,
+                      onPressed: selected == null ? null : () => _focus(),
                     ),
                   ],
                 ),
@@ -1893,8 +2000,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap> {
                 child: Text(
                   _t(
                     context,
-                    'Drag to move · pinch or +/− to zoom',
-                    'Перетаскивайте карту · масштаб двумя пальцами или +/−',
+                    'Drag · pinch · double-tap to zoom',
+                    'Перетаскивайте · сближайте пальцы · двойное касание для зума',
                   ),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -1950,16 +2057,16 @@ class _MapPainter extends CustomPainter {
             ? const Color(0xffffa335)
             : feature.id == highlighted
             ? const Color(0xff8167ce)
-            : const Color(0xffd5d8d0);
+            : const Color(0xffe2e9d9);
         canvas.drawPath(path, Paint()..color = fill);
         canvas.drawPath(
           path,
           Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = feature.id == selected ? 2.5 : 1
+            ..strokeWidth = (feature.id == selected ? 1.2 : .45) / sceneScale
             ..color = feature.id == selected
                 ? const Color(0xff513408)
-                : const Color(0xff737d82),
+                : const Color(0xff81968b),
         );
       }
     }
@@ -2009,6 +2116,7 @@ class _MapPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _MapPainter old) =>
+      features != old.features ||
       highlighted != old.highlighted ||
       selected != old.selected ||
       correct != old.correct ||

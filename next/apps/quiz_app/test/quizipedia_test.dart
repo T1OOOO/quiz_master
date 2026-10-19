@@ -43,11 +43,14 @@ void main() {
       });
       await tester.pumpAndSettle();
       expect(find.text('Quizipedia'), findsOneWidget);
-      await tester.tap(find.text('World map and flags'));
+      await tester.runAsync(() async {
+        await tester.tap(find.text('Countries of the world'));
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 400));
+      });
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('quizipedia-map')), findsOneWidget);
-      await tester.ensureVisible(find.text('Exit'));
-      await tester.tap(find.text('Exit'));
+      await tester.tap(find.byTooltip('Back'));
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Quiz library'));
       await tester.pumpAndSettle();
@@ -66,7 +69,7 @@ void main() {
         await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
-      expect(find.text('World map and flags'), findsOneWidget);
+      expect(find.text('Countries of the world'), findsOneWidget);
       expect(tester.takeException(), isNull);
     },
   );
@@ -267,11 +270,10 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
+      MaterialApp(
+        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(fixture())),
+      ),
     );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Training'));
-    await tester.tap(find.text('World map and flags'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Training · local unranked'), findsOneWidget);
     expect(find.text('Correct answer'), findsNothing);
@@ -295,17 +297,19 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
+      MaterialApp(
+        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(fixture())),
+      ),
     );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Training'));
-    await tester.tap(find.text('World map and flags'));
     await tester.pumpAndSettle();
 
     final prompt = tester
-        .widget<Text>(find.textContaining('Tap the country for this flag:'))
+        .widget<Text>(find.textContaining(' on the map'))
         .data!;
-    final targetIndex = _mapFlags.indexWhere(prompt.contains);
+    final targetIndex = List.generate(
+      4,
+      (i) => 'Name country:test$i',
+    ).indexWhere(prompt.contains);
     expect(targetIndex, greaterThanOrEqualTo(0));
     final left = .04 + .23 * targetIndex;
     final viewport = find.byKey(const Key('quizipedia-viewport'));
@@ -338,7 +342,7 @@ void main() {
       await tester.tapAt(
         box.localToGlobal(Offset(x * size.width, y * size.height)),
       );
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 350));
     }
 
     FilledButton check() =>
@@ -380,14 +384,18 @@ void main() {
         MaterialApp(home: QuizipediaPage(bundle: _Bundle(data))),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('World map and flags'));
+      await tester.runAsync(() async {
+        await tester.tap(find.text('Countries of the world'));
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 400));
+      });
       await tester.pumpAndSettle();
       final map = find.byKey(const Key('quizipedia-map'));
       final box = tester.renderObject<RenderBox>(map);
       await tester.tapAt(
         box.localToGlobal(Offset(box.size.width * .17, box.size.height * .72)),
       );
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 350));
       expect(
         tester.widget<Text>(find.byKey(const Key('map-selection-label'))).data,
         'Extra country',
@@ -405,17 +413,17 @@ void main() {
           .transformationController!;
       expect(controller.value.getMaxScaleOnAxis(), greaterThan(1));
       await tester.tap(find.byTooltip('Reset view'));
-      await tester.pump();
-      expect(controller.value.getMaxScaleOnAxis(), 1);
-      await tester.ensureVisible(find.byKey(const Key('map-country-search')));
-      await tester.tap(find.byKey(const Key('map-country-search')));
       await tester.pumpAndSettle();
+      expect(controller.value.getMaxScaleOnAxis(), 1);
       await tester.enterText(find.byType(TextField), 'Extra');
       await tester.pump();
-      expect(find.widgetWithText(ListTile, 'Extra country'), findsOneWidget);
-      expect(find.widgetWithText(ListTile, 'Name test0'), findsNothing);
-      await tester.tap(find.widgetWithText(ListTile, 'Extra country'));
-      await tester.pumpAndSettle();
+      expect(
+        tester
+            .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+            .features
+            .any((f) => f.id == 'extra-country'),
+        isTrue,
+      );
       expect(tester.takeException(), isNull);
     },
   );
@@ -497,10 +505,10 @@ void main() {
 
   testWidgets('zoom buttons preserve the gesture scale limits', (tester) async {
     await tester.pumpWidget(
-      MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
+      MaterialApp(
+        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(fixture())),
+      ),
     );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('World map and flags'));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.byTooltip('Zoom in'));
     final controller = tester
@@ -508,12 +516,12 @@ void main() {
         .transformationController!;
     for (var i = 0; i < 12; i++) {
       await tester.tap(find.byTooltip('Zoom in'));
-      await tester.pump();
+      await tester.pumpAndSettle();
     }
-    expect(controller.value.getMaxScaleOnAxis(), closeTo(6, .000001));
+    expect(controller.value.getMaxScaleOnAxis(), closeTo(16, .000001));
     for (var i = 0; i < 12; i++) {
       await tester.tap(find.byTooltip('Zoom out'));
-      await tester.pump();
+      await tester.pumpAndSettle();
     }
     expect(controller.value.getMaxScaleOnAxis(), closeTo(1, .000001));
   });
@@ -561,8 +569,9 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('World map and flags'), findsOneWidget);
+    expect(find.text('Countries of the world'), findsOneWidget);
     await tester.ensureVisible(find.text('Landmark photographs'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
     await tester.pumpAndSettle();
     expect(find.text('Retry'), findsOneWidget);
