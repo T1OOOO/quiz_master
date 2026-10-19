@@ -2163,8 +2163,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                     ),
                   ),
                 ),
-              ))
+              )) {
             continue;
+          }
           final rect = Rect.fromCenter(
             center: at,
             width: labelWidth,
