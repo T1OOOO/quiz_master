@@ -1,0 +1,11 @@
+# Private narrator/rhapsody017/018
+
+Russian adult original160–260word minis, exactcurrentrefs candidates only. Root ownsarticles/SOURCES/integration. Independent native checker ownsONLYblind-answers.json/review.json/REVIEW_EN.md afteractualHuboffer. Nochildren/Git/Beads/server/providers/browser/build/canonical/runtime/frozenedits. Userresourcequeuewaiver directfinitework.
+
+FIRST checkerreadONLYbrief/candidates, independentlyverify composers/allstemfacts/options using actuallyopenedprimaryinstitutional pages BEFORECURRENTwriter/keys. Freeze actualrawSHA256 mechanicallycomputed64chars, reportthenwaitRootexacthashes. clean_blind=false dueinformativebrief/possiblepriorexposure, notfirstexposure. No privatekeys bychecker; Rootcomparesonlyafterfreeze. ActualUTCdate2026-10-19, useactualclock.
+
+017 original narrator/orchestra/educational instrument-introduction purpose; distinguish composer/narrator/text author ifverified. Specific original character-instrument mappings onlyactualsources, no generalpsychology/biology/automaticeducationoutcome claim or unqualifiedmappingacrossallarrangements. Huntinggunshotpercussion notallhuntersmelody.1936onlyifsupported, no invented narrative/fulltext/lyrics.
+
+018 originalcomposer versusGroféorchestration; AeolianHallNewYork12Feb1924publicpremiere check. Distinguish original1924jazzband scoring from laterexpanded/symphonicorchestrations, no unqualifiedallversionsorchestratedbycomposer. Piano/clarinetcontextonlyifsupported. No unsupported train-origin/unwrittenimprovisation anecdote, exactroles/years/rights/reception/superlativeorchronologyclaims. Sources must nameactualroles, not merely familiar recordings.
+
+Rootarticleqm-question-articles/v1 draft/domain:arts/emptytargets/exactrefs/1–5actualprimaryHTTPSsourcesaccessed2026-10-19. Conditionaloriginallisteningexercise allowed; no actualhearing/score/manuscript/rightsinspection. Finalchecker everyclaim/finallink/exactrefs/options/pedagogy; review.json binds reviewed_file.sha256/reviewed_sources.sha256/blind_answer_sha256/items.id/verdict accepted_for_draft/revise/reject. Recomputeactualbindingequalhash(notmanuallycopiedlabel); submitactualHubtask/evidence thenquiesce. Sameprovidernativeprivate only, different-provideracceptance/publicationpending.

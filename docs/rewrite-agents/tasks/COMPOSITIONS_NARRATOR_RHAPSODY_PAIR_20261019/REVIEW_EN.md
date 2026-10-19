@@ -1,0 +1,13 @@
+# Native independent review — narrator/rhapsody017/018
+
+**Verdict: both articles accepted for the private draft.** This review covers the exact `articles.json` and `SOURCES_EN.md` byte hashes recorded in `review.json`, the frozen candidate questions, every option, and all four final supporting links. The candidate-first answer file is preserved separately; `clean_blind=false` because the task brief identified the works and roles and earlier exposure is possible. I did not read private answer keys.
+
+## compositions017
+
+The [publisher's work record](https://www.wisemusicclassical.com/work/31743/Peter-and-the-Wolf-for-narrator-and-orchestra--Sergei-Prokofiev/) names Prokofiev as composer and text writer, dates the narrator-and-orchestra work to 1936, and states the purpose of introducing young listeners to orchestral instruments. The [LA Phil note](https://www.laphil.com/works/peter-and-the-wolf) confirms the six character/instrument or gunshot pairings actually used in the article. The original question's unique answer is `compositions017-opt-4`; Shostakovich, Stravinsky and Khachaturian are not coauthors of this specified work. The article correctly says the gunshots, rather than every hunters' musical passage, use percussion. Its proposed listening comparison makes no claim that learning was measured or guaranteed. I found no unsupported universal animal/timbre symbolism.
+
+## compositions018
+
+The [official Gershwin catalogue](https://gershwin.com/publications/rhapsody-in-blue/) gives the Aeolian Hall, New York premiere on 12 February 1924, Gershwin at the piano with Whiteman's orchestra, and the opening clarinet glissando. The [Library of Congress article](https://blogs.loc.gov/loc/2020/12/gershwins-rhapsody-in-blue-wait-for-nod/) distinguishes Gershwin's composition and piano material from Grofé's instrumental scoring. It identifies the original jazz-band-and-piano designation and a distinct 1942 orchestral version by Grofé. The original question's unique answer is `compositions018-opt-2`; Grofé's orchestration and his independent work as a composer do not make him composer of this rhapsody, and neither Bernstein nor Copland is credited. The draft preserves the difference between a work, an arrangement and a performance. Its listening exercise is conditional; no actual listening or manuscript inspection is claimed.
+
+The two final articles contain 232 and 208 whitespace-delimited Russian words, keep their exact candidate question revision references, use `domain:arts`, and leave targets empty. This is native private-draft sign-off only. Different-provider acceptance and publication remain pending.

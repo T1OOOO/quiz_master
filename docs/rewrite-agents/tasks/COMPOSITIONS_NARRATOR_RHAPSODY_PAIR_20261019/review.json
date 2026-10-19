@@ -1,0 +1,57 @@
+{
+  "schema": "qm-question-articles-review/v1",
+  "reviewer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "hub_session_id": "session-551ecfe62c934c81946c2f40e6dbede3",
+    "same_provider_as_writer": true
+  },
+  "reviewed_at_utc": "2026-10-19T00:33:54Z",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_NARRATOR_RHAPSODY_PAIR_20261019/articles.json",
+    "sha256": "10be05e04fd82766c0e37eee560d15c6d4bc53f9d3a26e22399808076bf62bf1"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/COMPOSITIONS_NARRATOR_RHAPSODY_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "16896eef12368acd677e43d46cbc23484665e9aadf4c40e89574efddde49e92c"
+  },
+  "blind_answer_sha256": "df118efb871b21c835d0e86092cf13f5ec118a3ff7a0be94ec57d6fd6527b1e3",
+  "clean_blind": false,
+  "scope": "Native independent private-draft factual and pedagogical review. No private key, canonical content, publication, or different-provider acceptance checked.",
+  "items": [
+    {
+      "id": "question:compositions017",
+      "verdict": "accepted_for_draft",
+      "question_id": "compositions017",
+      "selected_option_id": "compositions017-opt-4",
+      "body_word_count_whitespace": 232,
+      "question_ref_verified": true,
+      "stem_and_options_verified": true,
+      "source_links_opened": [
+        "https://www.wisemusicclassical.com/work/31743/Peter-and-the-Wolf-for-narrator-and-orchestra--Sergei-Prokofiev/",
+        "https://www.laphil.com/works/peter-and-the-wolf"
+      ],
+      "evidence": "The publisher's work record names Sergei Prokofiev as both composer and text writer, dates Op. 67 to 1936, lists narrator and orchestra, and states the educational instrument-introduction purpose. LA Phil independently credits Prokofiev and gives exactly the draft's bird/flute, duck/oboe, cat/clarinet, grandfather/bassoon, wolf/three horns and hunters' gunshots/timpani plus bass drum pairings. The article correctly confines the pairings to this work and proposes listening rather than reporting an observed outcome.",
+      "option_check": "Only Prokofiev is credited with this specified work. Shostakovich, Stravinsky and Khachaturian are not defensible answers to this stem. Narrator and text-writer roles do not change the composer answer.",
+      "limitations": "No score, recording or manuscript was independently examined. The claim about gunshots is narrower than a claim that all hunters' music is percussion; the article uses the narrower form."
+    },
+    {
+      "id": "question:compositions018",
+      "verdict": "accepted_for_draft",
+      "question_id": "compositions018",
+      "selected_option_id": "compositions018-opt-2",
+      "body_word_count_whitespace": 208,
+      "question_ref_verified": true,
+      "stem_and_options_verified": true,
+      "source_links_opened": [
+        "https://gershwin.com/publications/rhapsody-in-blue/",
+        "https://blogs.loc.gov/loc/2020/12/gershwins-rhapsody-in-blue-wait-for-nod/"
+      ],
+      "evidence": "The official Gershwin catalogue identifies the Aeolian Hall, New York premiere on 12 February 1924, Gershwin at the piano with Paul Whiteman's orchestra, and the opening clarinet glissando. The Library of Congress describes Gershwin's handwritten music and piano sketches, Grofé's instrumental scoring for the 1924 band, the original jazz-band-and-piano designation, and Grofé's separate 1942 orchestral version. The article distinguishes composition, scoring, premiere and later version without assigning every arrangement to one person.",
+      "option_check": "Gershwin is the composer under the exact stem. Grofé orchestrated this work and was also a composer in his own right, but is not the answer here; Bernstein and Copland are not credited with this specified composition.",
+      "limitations": "The draft does not rely on the Library's train anecdote, blank solo-section anecdote, corrected guest-list assertion, exact score counts, or a particular modern recording. Manuscripts and audio were not independently inspected."
+    }
+  ],
+  "overall_verdict": "accepted_for_draft",
+  "publication_gate": "Genuine different-provider independent acceptance and authorized publication remain pending."
+}
