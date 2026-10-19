@@ -15,7 +15,7 @@ void main() {
     (tester) async {
       final data = fixture();
       final catalog = QuizipediaCatalog.fromJson(data);
-      final rows = (data['countries'] as List).cast<Map<String, dynamic>>();
+      final rows = catalog.countryRows;
       for (final row in rows) {
         row.remove('explanation_en');
         row.remove('explanation_ru');
@@ -50,6 +50,7 @@ void main() {
       await tester.tap(find.text('Check'));
       await tester.pumpAndSettle();
       expect(find.textContaining('Capital: Paris'), findsOneWidget);
+      expect(find.textContaining('Explanation '), findsNothing);
       expect(
         find.textContaining('Find this country on the world map.'),
         findsNothing,

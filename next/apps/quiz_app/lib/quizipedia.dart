@@ -1014,7 +1014,16 @@ class _QuizGame extends StatefulWidget {
 
 class _QuizGameState extends State<_QuizGame> {
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
-    _Module.map => widget.catalog.countryRows,
+    _Module.map =>
+      widget.catalog.countryRows
+          .map(
+            (row) => <String, dynamic>{
+              ...row,
+              'explanation_en': row['explanation_en'] ?? '',
+              'explanation_ru': row['explanation_ru'] ?? '',
+            },
+          )
+          .toList(),
     _Module.anatomy =>
       (widget.catalog.anatomy['targets'] as List).cast<Map<String, dynamic>>(),
     _Module.landmarks => widget.catalog.landmarks,
