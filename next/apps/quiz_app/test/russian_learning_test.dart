@@ -67,7 +67,7 @@ void main() {
         OutlinedButton,
         russianLearningText(question.answer),
       );
-      await tester.ensureVisible(answer);
+      await tester.scrollUntilVisible(answer, 150, scrollable: find.byType(Scrollable).first);
       await tester.tap(answer);
       await tester.pump();
       final check = find.widgetWithText(FilledButton, 'Проверить');
