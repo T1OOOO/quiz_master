@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'map_interaction.dart';
+
 import 'quizipedia.dart';
 import 'waterways_models.dart';
 
@@ -136,7 +138,7 @@ class _WaterPracticePageState extends State<WaterPracticePage> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: Text(_t(context, 'Water bodies', 'Водоёмы'))),
     body: LayoutBuilder(
-      builder: (context, constraints) => SingleChildScrollView(
+      builder: (context, constraints) => MapScrollView(
         controller: scroll,
         child: Column(
           children: [

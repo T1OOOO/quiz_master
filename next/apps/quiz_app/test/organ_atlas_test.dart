@@ -74,6 +74,38 @@ class _AtlasBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets(
+    'vertical map drag pans organs rather than the surrounding page',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
+      );
+      await tester.pumpAndSettle();
+      final map = find.byKey(const Key('organ-map'));
+      final camera = tester
+          .widget<InteractiveViewer>(map)
+          .transformationController!;
+      final before = camera.value.storage[13];
+      final page = tester.state<ScrollableState>(
+        find
+            .descendant(
+              of: find.byKey(const Key('organ-scroll')),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      final top = page.position.pixels;
+      final finger = await tester.startGesture(tester.getCenter(map));
+      await tester.pump();
+      await finger.moveBy(const Offset(0, -35));
+      await tester.pump(const Duration(milliseconds: 16));
+      await finger.moveBy(const Offset(0, -45));
+      await finger.up();
+      await tester.pumpAndSettle();
+      expect(page.position.pixels, top);
+      expect((camera.value.storage[13] - before).abs(), greaterThan(10));
+    },
+  );
   test('parses immutable atlas data and creates a finite fair round', () {
     final atlas = OrganAtlas.fromJson(_atlas);
     expect(atlas.organs, hasLength(4));

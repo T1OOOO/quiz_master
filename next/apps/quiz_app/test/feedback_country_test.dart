@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/country_learning.dart';
 import 'package:quiz_app/quizipedia.dart';
+import 'package:quiz_app/map_interaction.dart';
 
 const _catalog = QuizipediaCatalog(
   countries: [],
@@ -20,6 +21,114 @@ const _catalog = QuizipediaCatalog(
 );
 
 void main() {
+  testWidgets(
+    'vertical touch drag moves an embedded world map rather than its page',
+    (tester) async {
+      final camera = TransformationController();
+      addTearDown(camera.dispose);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: MapScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 36),
+                  SizedBox(
+                    width: 320,
+                    height: 300,
+                    child: QuizipediaWorldMap(
+                      features: const [],
+                      controller: camera,
+                      onSelect: (_) {},
+                    ),
+                  ),
+                  const SizedBox(height: 900),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+      final page = tester.state<ScrollableState>(find.byType(Scrollable));
+      final finger = await tester.startGesture(
+        tester.getCenter(find.byType(InteractiveViewer)),
+      );
+      await tester.pump();
+      await finger.moveBy(const Offset(0, -35));
+      await tester.pump(const Duration(milliseconds: 16));
+      await finger.moveBy(const Offset(0, -45));
+      await finger.up();
+      await tester.pumpAndSettle();
+      expect(page.position.pixels, 0);
+      expect(camera.value.storage[13], lessThan(-10));
+      await tester.dragFrom(const Offset(5, 180), const Offset(0, -90));
+      await tester.pumpAndSettle();
+      expect(page.position.pixels, greaterThan(0));
+    },
+  );
+  testWidgets(
+    'world map preserves coordinate taps without a centre-tap semantic action',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      try {
+        final camera = TransformationController();
+        addTearDown(camera.dispose);
+        String? selected;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: SizedBox(
+                  width: 320,
+                  height: 300,
+                  child: QuizipediaWorldMap(
+                    features: const [
+                      QuizipediaFeature(
+                        id: 'FR',
+                        nameEn: 'France',
+                        nameRu: 'Франция',
+                        polygons: [
+                          [
+                            [
+                              QuizipediaPoint(.1, .1),
+                              QuizipediaPoint(.4, .1),
+                              QuizipediaPoint(.4, .8),
+                              QuizipediaPoint(.1, .8),
+                              QuizipediaPoint(.1, .1),
+                            ],
+                          ],
+                        ],
+                      ),
+                    ],
+                    controller: camera,
+                    onSelect: (id) => selected = id,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+        final map = find.bySemanticsLabel('Interactive world map');
+        expect(
+          tester
+              .getSemantics(map)
+              .getSemanticsData()
+              .hasAction(ui.SemanticsAction.tap),
+          isFalse,
+        );
+        final rect = tester.getRect(find.byKey(const Key('quizipedia-map')));
+        await tester.tapAt(
+          rect.topLeft + Offset(rect.width * .25, rect.height * .5),
+        );
+        await tester.pump(const Duration(milliseconds: 350));
+        await tester.pumpAndSettle();
+        expect(selected, 'FR');
+        expect(camera.value.getMaxScaleOnAxis(), 1);
+      } finally {
+        semantics.dispose();
+      }
+    },
+  );
   for (final retry in [false, true]) {
     testWidgets(
       'map flags use one image bundle without per-country requests (retry=$retry)',

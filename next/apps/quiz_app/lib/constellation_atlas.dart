@@ -6,6 +6,9 @@ import 'fact_practice.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+
+import 'map_interaction.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
@@ -279,7 +282,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: MapScrollView(
           key: const Key('constellation-scroll'),
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -311,19 +314,21 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                     label: Text(starLabel(_star!, _russian)),
                   ),
                 ),
-              _ConstellationCanvas(
-                key: _canvasKey,
-                selectedStar: _star?['id'] as String?,
-                controller: _controller,
-                stars: stars,
-                lines: lines,
-                showNames: _showNames,
-                showLines: _showLines,
-                russian: _russian,
-                onDoubleTapDown: (details) =>
-                    _doubleTapAt = details.localPosition,
-                onDoubleTap: () => _zoomAtScene(_doubleTapAt, 1.8),
-                onStar: _showStar,
+              MapInteraction(
+                child: _ConstellationCanvas(
+                  key: _canvasKey,
+                  selectedStar: _star?['id'] as String?,
+                  controller: _controller,
+                  stars: stars,
+                  lines: lines,
+                  showNames: _showNames,
+                  showLines: _showLines,
+                  russian: _russian,
+                  onDoubleTapDown: (details) =>
+                      _doubleTapAt = details.localPosition,
+                  onDoubleTap: () => _zoomAtScene(_doubleTapAt, 1.8),
+                  onStar: _showStar,
+                ),
               ),
               _ZoomToolbar(
                 onZoomIn: () => _zoomCentre(1.35),
@@ -512,6 +517,9 @@ class _ConstellationCanvas extends StatelessWidget {
               maxScale: 8,
               boundaryMargin: const EdgeInsets.all(160),
               child: GestureDetector(
+                // A semantic tap has no coordinates and selects the centre.
+                // Named star buttons provide the accessible alternative.
+                excludeFromSemantics: true,
                 behavior: HitTestBehavior.opaque,
                 onDoubleTapDown: onDoubleTapDown,
                 onDoubleTap: onDoubleTap,

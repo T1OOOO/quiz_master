@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'organ_atlas_models.dart';
+import 'map_interaction.dart';
 
 Future<OrganAtlas> loadOrganAtlas([AssetBundle? bundle]) async {
   final raw = await (bundle ?? rootBundle).loadString(organAtlasAsset);
@@ -242,7 +243,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: MapScrollView(
           key: const Key('organ-scroll'),
           padding: const EdgeInsets.all(12),
           child: Column(
@@ -646,82 +647,88 @@ class _BodyMapState extends State<_BodyMap> {
                 );
                 final left = (box.maxWidth - 300 * scale) / 2;
                 final top = (box.maxHeight - 450 * scale) / 2;
-                return InteractiveViewer(
-                  key: const Key('organ-map'),
-                  transformationController: widget.controller,
-                  minScale: .6,
-                  maxScale: 5,
-                  boundaryMargin: const EdgeInsets.all(120),
-                  child: SizedBox(
-                    width: box.maxWidth,
-                    height: box.maxHeight,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: left,
-                          top: top,
-                          width: 300 * scale,
-                          height: 450 * scale,
-                          child: Image.asset(
-                            'assets/quizipedia/anatomy-orientation.png',
-                            fit: BoxFit.contain,
-                            semanticLabel: ru
-                                ? 'Схема органов: вид спереди'
-                                : 'Anterior organ overview',
-                          ),
-                        ),
-                        for (var i = 0; i < targets.length; i++)
+                return MapInteraction(
+                  child: InteractiveViewer(
+                    key: const Key('organ-map'),
+                    transformationController: widget.controller,
+                    minScale: .6,
+                    maxScale: 5,
+                    boundaryMargin: const EdgeInsets.all(120),
+                    child: SizedBox(
+                      width: box.maxWidth,
+                      height: box.maxHeight,
+                      child: Stack(
+                        children: [
                           Positioned(
-                            left:
-                                left +
-                                _illustratedAnchors[targets[i].id]!.dx * scale -
-                                22,
-                            top:
-                                top +
-                                _illustratedAnchors[targets[i].id]!.dy * scale -
-                                22,
-                            width: 44,
-                            height: 44,
-                            child: Tooltip(
-                              message: widget.name(targets[i]),
-                              child: Semantics(
-                                label: widget.name(targets[i]),
-                                child: IconButton(
-                                  key: Key('organ-map-target-${targets[i].id}'),
-                                  onPressed: () =>
-                                      widget.onSelected(targets[i]),
-                                  padding: EdgeInsets.zero,
-                                  icon: Container(
-                                    width: 24,
-                                    height: 24,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primaryContainer,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      ),
+                            left: left,
+                            top: top,
+                            width: 300 * scale,
+                            height: 450 * scale,
+                            child: Image.asset(
+                              'assets/quizipedia/anatomy-orientation.png',
+                              fit: BoxFit.contain,
+                              semanticLabel: ru
+                                  ? 'Схема органов: вид спереди'
+                                  : 'Anterior organ overview',
+                            ),
+                          ),
+                          for (var i = 0; i < targets.length; i++)
+                            Positioned(
+                              left:
+                                  left +
+                                  _illustratedAnchors[targets[i].id]!.dx *
+                                      scale -
+                                  22,
+                              top:
+                                  top +
+                                  _illustratedAnchors[targets[i].id]!.dy *
+                                      scale -
+                                  22,
+                              width: 44,
+                              height: 44,
+                              child: Tooltip(
+                                message: widget.name(targets[i]),
+                                child: Semantics(
+                                  label: widget.name(targets[i]),
+                                  child: IconButton(
+                                    key: Key(
+                                      'organ-map-target-${targets[i].id}',
                                     ),
-                                    child: Text(
-                                      '${i + 1}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
+                                    onPressed: () =>
+                                        widget.onSelected(targets[i]),
+                                    padding: EdgeInsets.zero,
+                                    icon: Container(
+                                      width: 24,
+                                      height: 24,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .onPrimaryContainer,
+                                            .primaryContainer,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        '${i + 1}',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimaryContainer,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );

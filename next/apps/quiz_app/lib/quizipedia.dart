@@ -19,6 +19,7 @@ import 'photo_thumbnails.dart';
 import 'waterways_models.dart';
 import 'country_learning.dart';
 import 'country_labels_ru.dart';
+import 'map_interaction.dart';
 import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
 import 'brand_atlas.dart';
@@ -1253,7 +1254,7 @@ class _QuizGameState extends State<_QuizGame> {
       );
     }
     if (widget.module == _Module.map) return _mapContent();
-    return SingleChildScrollView(
+    return MapScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1972,62 +1973,64 @@ class _QuizGameState extends State<_QuizGame> {
           final width = math.min(constraints.maxWidth, 700.0).toDouble();
           final height = width / ratio;
           final size = Size(width, height);
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: width,
-                  height: height,
-                  child: ClipRect(
-                    child: InteractiveViewer(
-                      key: const Key('quizipedia-viewport'),
-                      transformationController: _controller,
-                      constrained: false,
-                      boundaryMargin: const EdgeInsets.all(100),
-                      minScale: 1,
-                      maxScale: 6,
-                      child: SizedBox(
-                        width: width,
-                        height: height,
-                        child: scene(size),
+          return MapInteraction(
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: width,
+                    height: height,
+                    child: ClipRect(
+                      child: InteractiveViewer(
+                        key: const Key('quizipedia-viewport'),
+                        transformationController: _controller,
+                        constrained: false,
+                        boundaryMargin: const EdgeInsets.all(100),
+                        minScale: 1,
+                        maxScale: 6,
+                        child: SizedBox(
+                          width: width,
+                          height: height,
+                          child: scene(size),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Wrap(
-                  spacing: 8,
-                  children: [
-                    IconButton(
-                      tooltip: _t(context, 'Zoom in', 'Увеличить'),
-                      icon: const Icon(Icons.zoom_in),
-                      constraints: const BoxConstraints(
-                        minWidth: 44,
-                        minHeight: 44,
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      IconButton(
+                        tooltip: _t(context, 'Zoom in', 'Увеличить'),
+                        icon: const Icon(Icons.zoom_in),
+                        constraints: const BoxConstraints(
+                          minWidth: 44,
+                          minHeight: 44,
+                        ),
+                        onPressed: () => _zoom(1.5),
                       ),
-                      onPressed: () => _zoom(1.5),
-                    ),
-                    IconButton(
-                      tooltip: _t(context, 'Zoom out', 'Уменьшить'),
-                      icon: const Icon(Icons.zoom_out),
-                      constraints: const BoxConstraints(
-                        minWidth: 44,
-                        minHeight: 44,
+                      IconButton(
+                        tooltip: _t(context, 'Zoom out', 'Уменьшить'),
+                        icon: const Icon(Icons.zoom_out),
+                        constraints: const BoxConstraints(
+                          minWidth: 44,
+                          minHeight: 44,
+                        ),
+                        onPressed: () => _zoom(1 / 1.5),
                       ),
-                      onPressed: () => _zoom(1 / 1.5),
-                    ),
-                    IconButton(
-                      tooltip: _t(context, 'Reset view', 'Сбросить вид'),
-                      icon: const Icon(Icons.center_focus_strong),
-                      constraints: const BoxConstraints(
-                        minWidth: 44,
-                        minHeight: 44,
+                      IconButton(
+                        tooltip: _t(context, 'Reset view', 'Сбросить вид'),
+                        icon: const Icon(Icons.center_focus_strong),
+                        constraints: const BoxConstraints(
+                          minWidth: 44,
+                          minHeight: 44,
+                        ),
+                        onPressed: () => _controller.value = Matrix4.identity(),
                       ),
-                      onPressed: () => _controller.value = Matrix4.identity(),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -2088,6 +2091,7 @@ class _QuizGameState extends State<_QuizGame> {
           'Схема эндокринной системы с пронумерованными точками',
         ),
         child: GestureDetector(
+          excludeFromSemantics: true,
           behavior: HitTestBehavior.opaque,
           onTapUp: (details) {
             if (_submitted) return;
@@ -2205,6 +2209,7 @@ class _QuizGameState extends State<_QuizGame> {
               'Звёздный рисунок созвездия',
             ),
             child: GestureDetector(
+              excludeFromSemantics: true,
               behavior: HitTestBehavior.opaque,
               onTapUp: canInspect
                   ? (details) {
@@ -2791,123 +2796,131 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           ],
         ),
       );
-      return ColoredBox(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? const Color(0xff101f2d)
-            : const Color(0xffd9edfc),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: ClipRect(
-                child: InteractiveViewer(
-                  key: const Key('quizipedia-viewport'),
-                  transformationController: widget.controller,
-                  constrained: false,
-                  boundaryMargin: EdgeInsets.all(
-                    math.max(_view.width, _view.height),
-                  ),
-                  minScale: 1,
-                  maxScale: 16,
-                  trackpadScrollCausesScale: true,
-                  onInteractionStart: (_) => _camera.stop(),
-                  child: SizedBox(
-                    width: _view.width,
-                    height: _view.height,
-                    child: Center(
-                      child: Semantics(
-                        label: _t(
-                          context,
-                          'Interactive world map',
-                          'Интерактивная карта мира',
-                        ),
-                        child: GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                          onDoubleTapDown: (details) {
-                            final origin = Offset(
-                              (_view.width - scene.width) / 2,
-                              (_view.height - scene.height) / 2,
-                            );
-                            final p = details.localPosition + origin;
-                            final transformed = MatrixUtils.transformPoint(
-                              widget.controller.value,
-                              p,
-                            );
-                            _doubleTapAt = transformed;
-                          },
-                          onDoubleTap: () => _zoom(2, _doubleTapAt),
-                          onTapUp: !widget.selectionEnabled
-                              ? null
-                              : (details) {
-                                  final point = QuizipediaPoint(
-                                    details.localPosition.dx / scene.width,
-                                    details.localPosition.dy / scene.height,
-                                  );
-                                  final hit = widget.features.reversed
-                                      .where((f) => f.contains(point))
-                                      .firstOrNull;
-                                  final water =
-                                      widget.waters
-                                          .where(
-                                            (w) =>
-                                                w.kind != 'marine' &&
-                                                w.contains(
-                                                  WaterPoint(point.x, point.y),
-                                                  tolerance:
-                                                      6 /
-                                                      (scene.width *
-                                                          widget
-                                                              .controller
-                                                              .value
-                                                              .getMaxScaleOnAxis()),
-                                                ),
-                                          )
-                                          .firstOrNull ??
-                                      (hit == null
-                                          ? widget.waters
-                                                .where(
-                                                  (w) => w.contains(
+      return MapInteraction(
+        child: ColoredBox(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? const Color(0xff101f2d)
+              : const Color(0xffd9edfc),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: ClipRect(
+                  child: InteractiveViewer(
+                    key: const Key('quizipedia-viewport'),
+                    transformationController: widget.controller,
+                    constrained: false,
+                    boundaryMargin: EdgeInsets.all(
+                      math.max(_view.width, _view.height),
+                    ),
+                    minScale: 1,
+                    maxScale: 16,
+                    trackpadScrollCausesScale: true,
+                    onInteractionStart: (_) => _camera.stop(),
+                    child: SizedBox(
+                      width: _view.width,
+                      height: _view.height,
+                      child: Center(
+                        child: Semantics(
+                          label: _t(
+                            context,
+                            'Interactive world map',
+                            'Интерактивная карта мира',
+                          ),
+                          child: GestureDetector(
+                            // Country lists and answer buttons retain named actions.
+                            excludeFromSemantics: true,
+                            behavior: HitTestBehavior.opaque,
+                            onDoubleTapDown: (details) {
+                              final origin = Offset(
+                                (_view.width - scene.width) / 2,
+                                (_view.height - scene.height) / 2,
+                              );
+                              final p = details.localPosition + origin;
+                              final transformed = MatrixUtils.transformPoint(
+                                widget.controller.value,
+                                p,
+                              );
+                              _doubleTapAt = transformed;
+                            },
+                            onDoubleTap: () => _zoom(2, _doubleTapAt),
+                            onTapUp: !widget.selectionEnabled
+                                ? null
+                                : (details) {
+                                    final point = QuizipediaPoint(
+                                      details.localPosition.dx / scene.width,
+                                      details.localPosition.dy / scene.height,
+                                    );
+                                    final hit = widget.features.reversed
+                                        .where((f) => f.contains(point))
+                                        .firstOrNull;
+                                    final water =
+                                        widget.waters
+                                            .where(
+                                              (w) =>
+                                                  w.kind != 'marine' &&
+                                                  w.contains(
                                                     WaterPoint(
                                                       point.x,
                                                       point.y,
                                                     ),
+                                                    tolerance:
+                                                        6 /
+                                                        (scene.width *
+                                                            widget
+                                                                .controller
+                                                                .value
+                                                                .getMaxScaleOnAxis()),
                                                   ),
-                                                )
-                                                .firstOrNull
-                                          : null);
-                                  if (water != null &&
-                                      widget.onWaterSelect != null) {
-                                    widget.onWaterSelect!(water.id);
-                                  } else {
-                                    widget.onSelect(hit?.id);
-                                  }
-                                },
-                          child: ValueListenableBuilder<Matrix4>(
-                            valueListenable: widget.controller,
-                            builder: (context, transform, child) => CustomPaint(
-                              key: const Key('quizipedia-map'),
-                              size: scene,
-                              painter: _MapPainter(
-                                features: widget.features,
-                                waters: widget.waters,
-                                selectedWater: widget.selectedWater,
-                                showWaterLabels: widget.showWaterLabels,
-                                dark:
-                                    Theme.of(context).brightness ==
-                                    Brightness.dark,
-                                flags: widget.showFlags
-                                    ? Map.of(_flags)
-                                    : const {},
-                                highlighted: widget.highlighted,
-                                selected: widget.selected,
-                                correct: widget.correct,
-                                numbers: widget.numbers,
-                                showLabels: widget.showLabels,
-                                sceneScale: transform.getMaxScaleOnAxis(),
-                                russian:
-                                    Localizations.localeOf(context)
-                                        .languageCode ==
-                                    'ru',
-                              ),
+                                            )
+                                            .firstOrNull ??
+                                        (hit == null
+                                            ? widget.waters
+                                                  .where(
+                                                    (w) => w.contains(
+                                                      WaterPoint(
+                                                        point.x,
+                                                        point.y,
+                                                      ),
+                                                    ),
+                                                  )
+                                                  .firstOrNull
+                                            : null);
+                                    if (water != null &&
+                                        widget.onWaterSelect != null) {
+                                      widget.onWaterSelect!(water.id);
+                                    } else {
+                                      widget.onSelect(hit?.id);
+                                    }
+                                  },
+                            child: ValueListenableBuilder<Matrix4>(
+                              valueListenable: widget.controller,
+                              builder: (context, transform, child) =>
+                                  CustomPaint(
+                                    key: const Key('quizipedia-map'),
+                                    size: scene,
+                                    painter: _MapPainter(
+                                      features: widget.features,
+                                      waters: widget.waters,
+                                      selectedWater: widget.selectedWater,
+                                      showWaterLabels: widget.showWaterLabels,
+                                      dark:
+                                          Theme.of(context).brightness ==
+                                          Brightness.dark,
+                                      flags: widget.showFlags
+                                          ? Map.of(_flags)
+                                          : const {},
+                                      highlighted: widget.highlighted,
+                                      selected: widget.selected,
+                                      correct: widget.correct,
+                                      numbers: widget.numbers,
+                                      showLabels: widget.showLabels,
+                                      sceneScale: transform.getMaxScaleOnAxis(),
+                                      russian:
+                                          Localizations.localeOf(context)
+                                              .languageCode ==
+                                          'ru',
+                                    ),
+                                  ),
                             ),
                           ),
                         ),
@@ -2916,57 +2929,57 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                   ),
                 ),
               ),
-            ),
-            Positioned.fill(
-              child: widget.showFlags
-                  ? const SizedBox.shrink()
-                  : _factLabels(scene),
-            ),
-            if (widget.showFlags && _loadingFlags)
-              Positioned(
-                top: 12,
-                left: 12,
-                child: IgnorePointer(
-                  child: SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      semanticsLabel: _t(
-                        context,
-                        'Loading flags',
-                        'Загрузка флагов',
+              Positioned.fill(
+                child: widget.showFlags
+                    ? const SizedBox.shrink()
+                    : _factLabels(scene),
+              ),
+              if (widget.showFlags && _loadingFlags)
+                Positioned(
+                  top: 12,
+                  left: 12,
+                  child: IgnorePointer(
+                    child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        semanticsLabel: _t(
+                          context,
+                          'Loading flags',
+                          'Загрузка флагов',
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            if (widget.showFlags && _flagLoadError && !_loadingFlags)
-              Positioned(
-                top: 8,
-                left: 8,
-                child: FilledButton.tonalIcon(
-                  key: const Key('map-flags-retry'),
-                  onPressed: () {
-                    setState(() {
-                      _flagData = null;
-                      _flagLoadError = false;
-                      _requestedFlags.removeWhere(
-                        (id) => !_flags.containsKey(id),
-                      );
-                    });
-                    _loadFlags();
-                  },
-                  icon: const Icon(Icons.refresh),
-                  label: Text(
-                    _t(context, 'Retry flags', 'Повторить загрузку флагов'),
+              if (widget.showFlags && _flagLoadError && !_loadingFlags)
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: FilledButton.tonalIcon(
+                    key: const Key('map-flags-retry'),
+                    onPressed: () {
+                      setState(() {
+                        _flagData = null;
+                        _flagLoadError = false;
+                        _requestedFlags.removeWhere(
+                          (id) => !_flags.containsKey(id),
+                        );
+                      });
+                      _loadFlags();
+                    },
+                    icon: const Icon(Icons.refresh),
+                    label: Text(
+                      _t(context, 'Retry flags', 'Повторить загрузку флагов'),
+                    ),
                   ),
                 ),
-              ),
-            if (widget.showSelectionLabel)
-              Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
-            Positioned(bottom: 12, right: 12, child: zoomControls()),
-          ],
+              if (widget.showSelectionLabel)
+                Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
+              Positioned(bottom: 12, right: 12, child: zoomControls()),
+            ],
+          ),
         ),
       );
     },

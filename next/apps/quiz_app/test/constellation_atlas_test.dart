@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'dart:ui' as ui;
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/constellation_atlas.dart';
 import 'package:quiz_app/quizipedia.dart';
@@ -81,6 +84,113 @@ Widget _app({TextScaler? scaler}) => MaterialApp(
 );
 
 void main() {
+  testWidgets(
+    'pinch keeps page still until the last map contact is cancelled',
+    (tester) async {
+      await tester.pumpWidget(_app());
+      final viewer = find.byType(InteractiveViewer);
+      final camera = tester
+          .widget<InteractiveViewer>(viewer)
+          .transformationController!;
+      final page = tester.state<ScrollableState>(
+        find
+            .descendant(
+              of: find.byKey(const Key('constellation-scroll')),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      final centre = tester.getCenter(viewer);
+      final left = await tester.startGesture(
+        centre - const Offset(50, 0),
+        pointer: 21,
+      );
+      final right = await tester.startGesture(
+        centre + const Offset(50, 0),
+        pointer: 22,
+      );
+      await tester.pump();
+      await left.moveBy(const Offset(-30, 0));
+      await right.moveBy(const Offset(30, 0));
+      await tester.pump(const Duration(milliseconds: 16));
+      expect(camera.value.getMaxScaleOnAxis(), greaterThan(1.2));
+      await left.up();
+      await tester.pump();
+      await tester.dragFrom(
+        const Offset(5, 300),
+        const Offset(0, -90),
+        pointer: 23,
+      );
+      await tester.pump();
+      expect(page.position.pixels, 0);
+      await right.cancel();
+      await tester.pumpAndSettle();
+      await tester.dragFrom(const Offset(5, 300), const Offset(0, -90));
+      await tester.pumpAndSettle();
+      expect(page.position.pixels, greaterThan(0));
+    },
+  );
+  testWidgets('vertical touch drag moves the sky rather than its page', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app());
+    final viewer = find.byType(InteractiveViewer);
+    final camera = tester
+        .widget<InteractiveViewer>(viewer)
+        .transformationController!;
+    final page = tester.state<ScrollableState>(
+      find
+          .descendant(
+            of: find.byKey(const Key('constellation-scroll')),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    final finger = await tester.startGesture(tester.getCenter(viewer));
+    await tester.pump();
+    await finger.moveBy(const Offset(0, -35));
+    await tester.pump(const Duration(milliseconds: 16));
+    await finger.moveBy(const Offset(0, -45));
+    await finger.up();
+    await tester.pumpAndSettle();
+    expect(page.position.pixels, 0);
+    expect(camera.value.storage[13], lessThan(-10));
+    await tester.dragFrom(const Offset(5, 300), const Offset(0, -90));
+    await tester.pumpAndSettle();
+    expect(page.position.pixels, greaterThan(0));
+  });
+  testWidgets('coordinate canvas is not a centre-tap accessibility button', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    try {
+      await tester.pumpWidget(_app());
+      final chart = find.bySemanticsLabel(RegExp('Constellation star pattern'));
+      expect(
+        tester
+            .getSemantics(chart)
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isFalse,
+      );
+      final star = find.widgetWithText(OutlinedButton, 'Betelgeuse');
+      await tester.ensureVisible(star);
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .getSemantics(star)
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isTrue,
+      );
+      await tester.tap(star);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('star-details-sheet')), findsOneWidget);
+      expect(find.text('Betelgeuse'), findsWidgets);
+    } finally {
+      semantics.dispose();
+    }
+  });
   testWidgets('double-tap after a pan and zoom keeps the tapped point fixed', (
     tester,
   ) async {

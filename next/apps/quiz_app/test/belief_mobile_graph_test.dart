@@ -8,6 +8,45 @@ import 'package:quiz_app/belief_atlas.dart';
 import 'package:quiz_app/belief_atlas_models.dart';
 
 void main() {
+  testWidgets(
+    'vertical map drag pans beliefs rather than the surrounding page',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: BeliefAtlasPage(
+            initialSection: 'religions',
+            bundle: _Bundle(jsonEncode(_religionFixture)),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final map = find.byKey(const Key('belief-graph'));
+      await tester.ensureVisible(map);
+      await tester.pumpAndSettle();
+      final camera = tester
+          .widget<InteractiveViewer>(map)
+          .transformationController!;
+      final before = camera.value.storage[13];
+      final page = tester.state<ScrollableState>(
+        find
+            .descendant(
+              of: find.byKey(const Key('belief-scroll')),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      final top = page.position.pixels;
+      final finger = await tester.startGesture(tester.getCenter(map));
+      await tester.pump();
+      await finger.moveBy(const Offset(0, -35));
+      await tester.pump(const Duration(milliseconds: 16));
+      await finger.moveBy(const Offset(0, -45));
+      await finger.up();
+      await tester.pumpAndSettle();
+      expect(page.position.pixels, top);
+      expect((camera.value.storage[13] - before).abs(), greaterThan(10));
+    },
+  );
   test('narrow geometry stacks two nodes and keeps an edge caption clear', () {
     final geometry = BeliefGraphGeometry(viewportWidth: 288, count: 2);
     final first = geometry.nodeRect(0);
