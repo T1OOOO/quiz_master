@@ -14,6 +14,7 @@ import 'question_articles.dart';
 import 'country_learning.dart';
 import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
+import 'brand_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -616,7 +617,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   ),
                 ),
               ),
-            for (final section in ['history', 'culture', 'people'])
+            for (final section in ['history', 'culture', 'people', 'brands'])
               Card(
                 child: ListTile(
                   leading: Icon(
@@ -624,6 +625,8 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                         ? Icons.timeline
                         : section == 'culture'
                         ? Icons.theaters
+                        : section == 'brands'
+                        ? Icons.business
                         : Icons.people,
                   ),
                   title: Text(switch (section) {
@@ -637,6 +640,11 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                       'Films, books and opera',
                       'Фильмы, книги и опера',
                     ),
+                    'brands' => _t(
+                      context,
+                      'Brands and companies',
+                      'Бренды и компании',
+                    ),
                     _ => _t(
                       context,
                       'People and their works',
@@ -646,10 +654,12 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (_) => KnowledgeAtlasPage(
-                        section: section,
-                        bundle: widget.bundle,
-                      ),
+                      builder: (_) => section == 'brands'
+                          ? BrandAtlasPage(bundle: widget.bundle)
+                          : KnowledgeAtlasPage(
+                              section: section,
+                              bundle: widget.bundle,
+                            ),
                     ),
                   ),
                 ),
@@ -1883,15 +1893,28 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           for (final polygon in feature.polygons) {
             if (polygon.isEmpty || polygon.first.isEmpty) continue;
             final ring = polygon.first;
-            final width = ring.map((p) => p.x).reduce(math.max) - ring.map((p) => p.x).reduce(math.min);
-            final height = ring.map((p) => p.y).reduce(math.max) - ring.map((p) => p.y).reduce(math.min);
+            final width =
+                ring.map((p) => p.x).reduce(math.max) -
+                ring.map((p) => p.x).reduce(math.min);
+            final height =
+                ring.map((p) => p.y).reduce(math.max) -
+                ring.map((p) => p.y).reduce(math.min);
             area = math.max(area, width * height);
           }
           return area;
         }
-        final areas = {for (final feature in widget.features) feature.id: footprint(feature)};
+
+        final areas = {
+          for (final feature in widget.features) feature.id: footprint(feature),
+        };
         final ordered = [...widget.features]
-          ..sort((a, b) => a.id == widget.selected ? -1 : b.id == widget.selected ? 1 : areas[b.id]!.compareTo(areas[a.id]!));
+          ..sort(
+            (a, b) => a.id == widget.selected
+                ? -1
+                : b.id == widget.selected
+                ? 1
+                : areas[b.id]!.compareTo(areas[a.id]!),
+          );
         for (final feature in ordered) {
           final text = widget.overlayLabels[feature.id];
           if (text == null) continue;
@@ -1923,7 +1946,11 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           final height =
               MediaQuery.textScalerOf(context).scale(12) * 3 +
               (widget.showFlags ? 26 : 12);
-          final rect = Rect.fromCenter(center: at, width: widget.showFlags ? 76 : 112, height: height);
+          final rect = Rect.fromCenter(
+            center: at,
+            width: widget.showFlags ? 76 : 112,
+            height: height,
+          );
           if (rect.left < 0 ||
               rect.right > _view.width ||
               rect.top < 58 ||
