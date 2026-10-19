@@ -7,8 +7,55 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/main.dart';
 import 'package:quiz_app/quizipedia.dart';
+import 'package:quiz_app/country_learning.dart';
 
 void main() {
+  testWidgets(
+    'map feedback teaches loaded facts instead of repeating the task',
+    (tester) async {
+      final data = fixture();
+      final catalog = QuizipediaCatalog.fromJson(data);
+      final rows = (data['countries'] as List).cast<Map<String, dynamic>>();
+      for (final row in rows) {
+        row.remove('explanation_en');
+        row.remove('explanation_ru');
+      }
+      await tester.pumpWidget(
+        MaterialApp(
+          home: quizipediaLocationTraining(
+            catalog,
+            countryFacts: [
+              for (final row in rows)
+                CountryFact(
+                  id: row['id'] as String,
+                  nameEn: 'Example',
+                  nameRu: 'Пример',
+                  capital: 'Paris',
+                  languages: const [],
+                  currencies: const [],
+                  population: 1,
+                  populationYear: 2024,
+                  region: 'Europe',
+                ),
+            ],
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Capital: Paris'), findsNothing);
+      await tester.ensureVisible(find.text('Spot 1'));
+      await tester.tap(find.text('Spot 1'));
+      await tester.pump();
+      await tester.ensureVisible(find.text('Check'));
+      await tester.tap(find.text('Check'));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Capital: Paris'), findsOneWidget);
+      expect(
+        find.textContaining('Find this country on the world map.'),
+        findsNothing,
+      );
+    },
+  );
   testWidgets(
     'real Quizipedia route returns to the library and drawer reopens it',
     (tester) async {

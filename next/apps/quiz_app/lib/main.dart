@@ -103,11 +103,17 @@ class _QuizAppState extends ConsumerState<QuizApp> {
 
 ThemeData _theme(Brightness brightness) {
   final dark = brightness == Brightness.dark;
-  final colors = ColorScheme.fromSeed(
+  final seeded = ColorScheme.fromSeed(
     seedColor: const Color(0xff477ab5),
     brightness: brightness,
     surface: dark ? const Color(0xff111923) : const Color(0xfff5f7fb),
   );
+  final colors = dark ? seeded.copyWith(
+    primaryContainer:const Color(0xff203b55),
+    onPrimaryContainer:const Color(0xffd6e9ff),
+    errorContainer:const Color(0xff3a2830),
+    onErrorContainer:const Color(0xffffd9de),
+  ) : seeded;
   return ThemeData(
     useMaterial3: true,
     brightness: brightness,

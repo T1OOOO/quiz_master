@@ -69,16 +69,191 @@ const _catalog = QuizipediaCatalog(
 );
 
 Widget _app({TextScaler? scaler}) => MaterialApp(
-  home: MediaQuery(
-    data: MediaQueryData(textScaler: scaler ?? TextScaler.noScaling),
-    child: ConstellationAtlasPage(
-      catalog: _catalog,
-      trainingBuilder: (_) => const Placeholder(),
-    ),
+  builder: (context, child) => MediaQuery(
+    data: MediaQuery.of(context)
+        .copyWith(textScaler: scaler ?? TextScaler.noScaling),
+    child: child!,
+  ),
+  home: ConstellationAtlasPage(
+    catalog: _catalog,
+    trainingBuilder: (_) => const Placeholder(),
   ),
 );
 
 void main() {
+  testWidgets('double-tap after a pan and zoom keeps the tapped point fixed', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app());
+    final viewer = tester.widget<InteractiveViewer>(
+      find.byType(InteractiveViewer),
+    );
+    final controller = viewer.transformationController!;
+    controller.value = Matrix4.identity()
+      ..translateByDouble(18, 24, 0, 1)
+      ..scaleByDouble(1.7, 1.7, 1, 1);
+    await tester.pump();
+    const at = Offset(130, 100);
+    final before = controller.toScene(at);
+    final global = tester.getTopLeft(find.byType(InteractiveViewer)) + at;
+    await tester.tapAt(global);
+    await tester.pump(const Duration(milliseconds: 100));
+    await tester.tapAt(global);
+    await tester.pumpAndSettle();
+    expect((controller.toScene(at) - before).distance, lessThan(.001));
+    expect(controller.value.getMaxScaleOnAxis(), closeTo(3.06, .001));
+  });
+  testWidgets('zoom buttons clamp to the minimum and maximum scales', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app());
+    final controller = tester
+        .widget<InteractiveViewer>(find.byType(InteractiveViewer))
+        .transformationController!;
+    controller.value = Matrix4.identity()..scaleByDouble(1.1, 1.1, 1, 1);
+    await tester.pump();
+    await tester.ensureVisible(find.byTooltip('Zoom out'));
+    await tester.tap(find.byTooltip('Zoom out'));
+    await tester.pumpAndSettle();
+    expect(controller.value.getMaxScaleOnAxis(), 1);
+    controller.value = Matrix4.identity()..scaleByDouble(7.5, 7.5, 1, 1);
+    await tester.pump();
+    await tester.tap(find.byTooltip('Zoom in'));
+    await tester.pumpAndSettle();
+    expect(controller.value.getMaxScaleOnAxis(), 8);
+  });
+  testWidgets('the visible star label opens the same facts as its dot', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app());
+    final canvas = find.byKey(const Key('constellation-canvas'));
+    await tester.ensureVisible(canvas);
+    final stars = (_catalog.constellations.first['stars'] as List)
+        .cast<Map<String, dynamic>>();
+    final dot = projectConstellation(
+      stars,
+      tester.getSize(canvas),
+    )['betelgeuse']!;
+    await tester.tapAt(tester.getTopLeft(canvas) + dot + const Offset(55, -12));
+    await tester.pump(const Duration(milliseconds: 350));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('star-details-sheet')), findsOneWidget);
+    expect(find.text('Betelgeuse'), findsWidgets);
+  });
+  testWidgets(
+    'short landscape chooser remains scrollable above a tall keyboard',
+    (tester) async {
+      tester.view.physicalSize = const Size(740, 360);
+      tester.view.devicePixelRatio = 1;
+      tester.view.padding = const FakeViewPadding(top: 24);
+      tester.view.viewPadding = const FakeViewPadding(top: 24);
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetPadding);
+      addTearDown(tester.view.resetViewPadding);
+      addTearDown(tester.view.resetViewInsets);
+      await tester.pumpWidget(_app(scaler: const TextScaler.linear(1.5)));
+      await tester.tap(find.byKey(const Key('constellation-choose')));
+      await tester.pumpAndSettle();
+      tester.view.viewInsets = const FakeViewPadding(bottom: 260);
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+      await tester.enterText(
+        find.byKey(const Key('constellation-search')),
+        'ursa',
+      );
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(
+        find.byKey(const Key('constellation-option-uma')),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        tester.getCenter(find.byKey(const Key('constellation-option-uma'))).dy,
+        lessThan(100),
+      );
+      await tester.tap(find.byKey(const Key('constellation-option-uma')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('constellation-search')), findsNothing);
+      expect(find.text('Ursa Major'), findsWidgets);
+    },
+  );
+  testWidgets(
+    'zoom buttons keep the actual canvas centre fixed on a wide screen',
+    (tester) async {
+      tester.view.physicalSize = const Size(900, 700);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(_app());
+      final viewer = tester.widget<InteractiveViewer>(
+        find.byType(InteractiveViewer),
+      );
+      final size = tester.getSize(
+        find.byKey(const Key('constellation-canvas')),
+      );
+      final centre = Offset(size.width / 2, size.height / 2);
+      final before = viewer.transformationController!.toScene(centre);
+      await tester.tap(find.byTooltip('Zoom in'));
+      await tester.pumpAndSettle();
+      expect(
+        (viewer.transformationController!.toScene(centre) - before).distance,
+        lessThan(.001),
+      );
+    },
+  );
+  testWidgets(
+    'star tap opens readable facts immediately without moving the camera',
+    (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(_app());
+      final canvas = find.byKey(const Key('constellation-canvas'));
+      final stars = (_catalog.constellations.first['stars'] as List)
+          .cast<Map<String, dynamic>>();
+      final at = projectConstellation(
+        stars,
+        tester.getSize(canvas),
+      )['betelgeuse']!;
+      final viewer = tester.widget<InteractiveViewer>(
+        find.byType(InteractiveViewer),
+      );
+      final before = viewer.transformationController!.value.clone();
+
+      await tester.tapAt(tester.getTopLeft(canvas) + at);
+      // A single tap waits for the normal double-tap recognition window.
+      await tester.pump(const Duration(milliseconds: 350));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('star-details-sheet')), findsOneWidget);
+      expect(find.textContaining('magnitude'), findsWidgets);
+      expect(viewer.transformationController!.value, before);
+      await tester.tap(find.byTooltip('Close star facts'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('star-details-sheet')), findsNothing);
+      expect(
+        find.byKey(const Key('constellation-selected-star')),
+        findsOneWidget,
+      );
+    },
+  );
+  testWidgets('constellation search list stays above the phone keyboard', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320, 568);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.view.resetViewInsets);
+    await tester.pumpWidget(_app(scaler: const TextScaler.linear(1.5)));
+    await tester.tap(find.byKey(const Key('constellation-choose')));
+    await tester.pumpAndSettle();
+    tester.view.viewInsets = const FakeViewPadding(bottom: 280);
+    await tester.pumpAndSettle();
+    final list = find.byKey(const Key('constellation-picker-scroll'));
+    expect(tester.getBottomRight(list).dy, lessThanOrEqualTo(288));
+    expect(tester.takeException(), isNull);
+  });
   testWidgets('a visible star can be tapped on a phone width canvas', (
     tester,
   ) async {

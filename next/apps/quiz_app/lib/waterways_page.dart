@@ -180,6 +180,9 @@ class _WaterPracticePageState extends State<WaterPracticePage> {
                       child: OutlinedButton(
                         key: ValueKey('water-answer-${w.id}'),
                         style: OutlinedButton.styleFrom(
+                          disabledForegroundColor: Theme.of(context)
+                              .colorScheme
+                              .onSurface,
                           backgroundColor: checked && w.id == question.id
                               ? Theme.of(context).colorScheme.primaryContainer
                               : choice == w.id

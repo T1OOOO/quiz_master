@@ -584,7 +584,8 @@ class CountryAtlasPage extends StatefulWidget {
   final QuizipediaCatalog catalog;
   final bool challenge;
   final AssetBundle? bundle;
-  final WidgetBuilder? locationTrainingBuilder;
+  final Widget Function(BuildContext, List<CountryFact>)?
+  locationTrainingBuilder;
   @override
   State<CountryAtlasPage> createState() => _CountryAtlasPageState();
 }
@@ -998,8 +999,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
 
   void _start({String? countryId, List<CountryQuestion>? retry}) {
     if (_topic == 'location' && widget.locationTrainingBuilder != null) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: widget.locationTrainingBuilder!));
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) =>
+              widget.locationTrainingBuilder!(context, _facts),
+        ),
+      );
       return;
     }
     final pool =
@@ -2006,6 +2011,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                             }
                           }),
                     style: OutlinedButton.styleFrom(
+                      disabledForegroundColor: Theme.of(context)
+                          .colorScheme
+                          .onSurface,
                       foregroundColor: _checked && option != q.answer
                           ? Theme.of(context).colorScheme.onSurfaceVariant
                           : null,

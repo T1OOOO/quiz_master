@@ -18,6 +18,7 @@ import 'question_articles.dart';
 import 'photo_thumbnails.dart';
 import 'waterways_models.dart';
 import 'country_learning.dart';
+import 'country_labels_ru.dart';
 import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
 import 'brand_atlas.dart';
@@ -704,8 +705,11 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                         ? CountryAtlasPage(
                             catalog: catalog,
                             challenge: _challenge,
-                            locationTrainingBuilder: (_) =>
-                                quizipediaLocationTraining(catalog),
+                            locationTrainingBuilder: (_, facts) =>
+                                quizipediaLocationTraining(
+                                  catalog,
+                                  countryFacts: facts,
+                                ),
                           )
                         : module == _Module.sky
                         ? ConstellationAtlasPage(
@@ -982,11 +986,13 @@ Future<void> _showCredits(BuildContext context, QuizipediaCatalog catalog) =>
 Widget quizipediaLocationTraining(
   QuizipediaCatalog catalog, {
   AssetBundle? bundle,
+  List<CountryFact> countryFacts = const [],
 }) => _QuizGame(
   catalog: catalog,
   module: _Module.map,
   challenge: true,
   bundle: bundle ?? rootBundle,
+  countryFacts: countryFacts,
 );
 
 class _QuizGame extends StatefulWidget {
@@ -995,30 +1001,20 @@ class _QuizGame extends StatefulWidget {
     required this.module,
     required this.challenge,
     required this.bundle,
+    this.countryFacts = const [],
   });
   final QuizipediaCatalog catalog;
   final _Module module;
   final bool challenge;
   final AssetBundle bundle;
+  final List<CountryFact> countryFacts;
   @override
   State<_QuizGame> createState() => _QuizGameState();
 }
 
 class _QuizGameState extends State<_QuizGame> {
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
-    _Module.map =>
-      widget.catalog.countryRows
-          .map(
-            (row) => <String, dynamic>{
-              ...row,
-              'explanation_en':
-                  row['explanation_en'] ??
-                  'Find this country on the world map.',
-              'explanation_ru':
-                  row['explanation_ru'] ?? 'Найдите эту страну на карте мира.',
-            },
-          )
-          .toList(),
+    _Module.map => widget.catalog.countryRows,
     _Module.anatomy =>
       (widget.catalog.anatomy['targets'] as List).cast<Map<String, dynamic>>(),
     _Module.landmarks => widget.catalog.landmarks,
@@ -1056,7 +1052,7 @@ class _QuizGameState extends State<_QuizGame> {
         }
       }
       return candidates;
-    }, choiceCount: widget.module == _Module.landmarks ? 6 : 4);
+    }, choiceCount: 6);
     _exploreId = ids.first;
   }
 
@@ -1570,6 +1566,7 @@ class _QuizGameState extends State<_QuizGame> {
       child: OutlinedButton(
         onPressed: _submitted ? null : () => _select(id),
         style: OutlinedButton.styleFrom(
+          disabledForegroundColor: Theme.of(context).colorScheme.onSurface,
           minimumSize: const Size(48, 48),
           backgroundColor: selected
               ? Theme.of(context).colorScheme.secondaryContainer
@@ -1839,6 +1836,41 @@ class _QuizGameState extends State<_QuizGame> {
     ],
   );
 
+  List<Widget> _countryFeedback() {
+    final fact = widget.countryFacts
+        .where((f) => f.id == _currentId)
+        .firstOrNull;
+    if (fact == null) return const [];
+    final ru = Localizations.localeOf(context).languageCode == 'ru';
+    final neighbors =
+        fact.neighbors
+            .map(
+              (id) => widget.countryFacts.where((f) => f.id == id).firstOrNull,
+            )
+            .nonNulls
+            .map((f) => ru ? f.nameRu : f.nameEn)
+            .toList()
+          ..sort();
+    return [
+      if (fact.capital.isNotEmpty)
+        Text(
+          _t(
+            context,
+            'Capital: ${fact.capital}',
+            'Столица: ${russianCountryLabel(fact.capital)}',
+          ),
+        ),
+      if (neighbors.isNotEmpty)
+        Text(
+          _t(
+            context,
+            'Land neighbours: ${neighbors.join(', ')}',
+            'Соседи по суше: ${neighbors.join(', ')}',
+          ),
+        ),
+    ];
+  }
+
   Widget _feedback() {
     final correct = _current;
     final answer = widget.module == _Module.landmarks && _reverse
@@ -1887,7 +1919,9 @@ class _QuizGameState extends State<_QuizGame> {
                     'Место: ${_localized(context, correct, 'city')}',
                   ),
                 ),
-              Text(_localized(context, correct, 'explanation')),
+              if (_localized(context, correct, 'explanation').isNotEmpty)
+                Text(_localized(context, correct, 'explanation')),
+              if (widget.module == _Module.map) ..._countryFeedback(),
               if (widget.module == _Module.landmarks)
                 ExpansionTile(
                   key: const Key('landmark-other-options'),

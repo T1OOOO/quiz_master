@@ -429,6 +429,9 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                       ? null
                       : () => setState(() => _answer = item.id),
                   style: OutlinedButton.styleFrom(
+                    disabledForegroundColor: Theme.of(context)
+                        .colorScheme
+                        .onSurface,
                     minimumSize: const Size(44, 48),
                     backgroundColor: _answer == item.id
                         ? Theme.of(context).colorScheme.secondaryContainer

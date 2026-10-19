@@ -3,6 +3,8 @@ library;
 
 import 'fact_practice.dart';
 
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,6 +36,7 @@ class ConstellationAtlasPage extends StatefulWidget {
 
 class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
   final _search = TextEditingController();
+  final _canvasKey = GlobalKey();
   final _controller = TransformationController();
   late List<Map<String, dynamic>> _constellations;
   var _selectedIndex = 0;
@@ -78,42 +81,63 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
+      useSafeArea: true,
       builder: (sheetContext) => StatefulBuilder(
         builder: (context, update) => SafeArea(
+          minimum: EdgeInsets.only(
+            bottom: MediaQuery.viewInsetsOf(context).bottom,
+          ),
           child: SizedBox(
             height: MediaQuery.sizeOf(context).height * .78,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  TextField(
-                    key: const Key('constellation-search'),
-                    controller: _search,
-                    decoration: InputDecoration(
-                      labelText: _t('Find a constellation', 'Найти созвездие'),
-                      prefixIcon: const Icon(Icons.search),
+            child: CustomScrollView(
+              key: const Key('constellation-picker-scroll'),
+              slivers: [
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                  sliver: SliverToBoxAdapter(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            key: const Key('constellation-search'),
+                            controller: _search,
+                            decoration: InputDecoration(
+                              labelText: _t(
+                                'Find a constellation',
+                                'Найти созвездие',
+                              ),
+                              prefixIcon: const Icon(Icons.search),
+                            ),
+                            onChanged: (_) => update(() {}),
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: _t('Close', 'Закрыть'),
+                          icon: const Icon(Icons.close),
+                          onPressed: () => Navigator.pop(sheetContext),
+                        ),
+                      ],
                     ),
-                    onChanged: (_) => update(() {}),
                   ),
-                  const SizedBox(height: 8),
-                  Expanded(
-                    child: _ConstellationPicker(
-                      rows: _matches,
-                      selected: _selected['id'] as String,
-                      name: _name,
-                      onSelected: (row) {
-                        _select(row);
-                        Navigator.pop(sheetContext);
-                      },
-                      emptyLabel: _t(
-                        'No matching constellations',
-                        'Созвездия не найдены',
-                      ),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  sliver: _ConstellationPicker(
+                    rows: _matches,
+                    selected: _selected['id'] as String,
+                    name: _name,
+                    onSelected: (row) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      _select(row);
+                      Navigator.pop(sheetContext);
+                    },
+                    emptyLabel: _t(
+                      'No matching constellations',
+                      'Созвездия не найдены',
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -138,16 +162,69 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
     });
   }
 
+  Future<void> _showStar(Map<String, dynamic> star) async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    setState(() => _star = star);
+    await showModalBottomSheet<void>(
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (context) => SizedBox(
+        key: const Key('star-details-sheet'),
+        height: MediaQuery.sizeOf(context).height * .62,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                starLabel(star, _russian),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              subtitle: Text(_name(_selected)),
+              trailing: IconButton(
+                tooltip: _t('Close star facts', 'Закрыть сведения о звезде'),
+                icon: const Icon(Icons.close),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: _StarCard(star: star, russian: _russian),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _zoomCentre(double factor) {
+    final box = _canvasKey.currentContext?.findRenderObject();
+    if (box is RenderBox) {
+      _zoomAtViewport(Offset(box.size.width / 2, box.size.height / 2), factor);
+    }
+  }
+
   void _reset() => setState(() => _controller.value = Matrix4.identity());
 
-  void _zoomAt(Offset focalPoint, double factor) {
-    final scene = _controller.toScene(focalPoint);
-    final next = Matrix4.copy(_controller.value)
-      ..translateByDouble(scene.dx, scene.dy, 0, 1)
-      ..scaleByDouble(factor, factor, 1, 1)
-      ..translateByDouble(-scene.dx, -scene.dy, 0, 1);
-    final scale = next.getMaxScaleOnAxis();
-    if (scale >= 1 && scale <= 8) setState(() => _controller.value = next);
+  void _zoomAtViewport(Offset viewport, double factor) =>
+      _zoomAtScene(_controller.toScene(viewport), factor);
+
+  void _zoomAtScene(Offset scene, double factor) {
+    final current = _controller.value.getMaxScaleOnAxis();
+    final target = (current * factor).clamp(1.0, 8.0).toDouble();
+    if (target == current) return;
+    if (target == 1) {
+      setState(() => _controller.value = Matrix4.identity());
+      return;
+    }
+    final step = target / current;
+    setState(
+      () => _controller.value = Matrix4.copy(_controller.value)
+        ..translateByDouble(scene.dx, scene.dy, 0, 1)
+        ..scaleByDouble(step, step, 1, 1)
+        ..translateByDouble(-scene.dx, -scene.dy, 0, 1),
+    );
   }
 
   Future<void> _openSource() async {
@@ -214,8 +291,29 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                 icon: const Icon(Icons.search),
                 label: Text(_name(row)),
               ),
-              const SizedBox(height: 12),
+              if (_star == null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    _t(
+                      'Tap a star to open its facts. Pinch to zoom; drag to move.',
+                      'Нажмите на звезду — откроются её данные. Масштаб — двумя пальцами, перемещение — одним.',
+                    ),
+                  ),
+                )
+              else
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: TextButton.icon(
+                    key: const Key('constellation-selected-star'),
+                    onPressed: () => _showStar(_star!),
+                    icon: const Icon(Icons.star_outline),
+                    label: Text(starLabel(_star!, _russian)),
+                  ),
+                ),
               _ConstellationCanvas(
+                key: _canvasKey,
+                selectedStar: _star?['id'] as String?,
                 controller: _controller,
                 stars: stars,
                 lines: lines,
@@ -224,12 +322,12 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                 russian: _russian,
                 onDoubleTapDown: (details) =>
                     _doubleTapAt = details.localPosition,
-                onDoubleTap: () => _zoomAt(_doubleTapAt, 1.8),
-                onStar: (star) => setState(() => _star = star),
+                onDoubleTap: () => _zoomAtScene(_doubleTapAt, 1.8),
+                onStar: _showStar,
               ),
               _ZoomToolbar(
-                onZoomIn: () => _zoomAt(const Offset(160, 150), 1.35),
-                onZoomOut: () => _zoomAt(const Offset(160, 150), 1 / 1.35),
+                onZoomIn: () => _zoomCentre(1.35),
+                onZoomOut: () => _zoomCentre(1 / 1.35),
                 onReset: _reset,
                 russian: _russian,
               ),
@@ -244,10 +342,9 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
               _StarList(
                 stars: stars,
                 selected: _star,
-                onSelected: (star) => setState(() => _star = star),
+                onSelected: _showStar,
                 russian: _russian,
               ),
-              if (_star != null) _StarCard(star: _star!, russian: _russian),
               const SizedBox(height: 12),
               Card(
                 child: Padding(
@@ -305,10 +402,15 @@ class _ConstellationPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (rows.isEmpty) {
-      return Padding(padding: const EdgeInsets.all(8), child: Text(emptyLabel));
+      return SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(emptyLabel),
+        ),
+      );
     }
     final sorted = [...rows]..sort((a, b) => name(a).compareTo(name(b)));
-    return ListView.builder(
+    return SliverList.builder(
       itemCount: sorted.length,
       itemBuilder: (context, index) {
         final row = sorted[index];
@@ -366,6 +468,8 @@ class _SkyControls extends StatelessWidget {
 
 class _ConstellationCanvas extends StatelessWidget {
   const _ConstellationCanvas({
+    super.key,
+    required this.selectedStar,
     required this.controller,
     required this.stars,
     required this.lines,
@@ -376,6 +480,7 @@ class _ConstellationCanvas extends StatelessWidget {
     required this.onDoubleTap,
     required this.onStar,
   });
+  final String? selectedStar;
   final TransformationController controller;
   final List<Map<String, dynamic>> stars;
   final List<List> lines;
@@ -425,17 +530,45 @@ class _ConstellationCanvas extends StatelessWidget {
                       nearest = star;
                     }
                   }
-                  if (nearest != null && distance < 30) onStar(nearest);
-                },
-                child: CustomPaint(
-                  key: const Key('constellation-canvas'),
-                  size: Size(constraints.maxWidth, 340),
-                  painter: _SkyPainter(
+                  final labels = _layoutStarLabels(
                     stars,
-                    lines,
-                    showNames: showNames,
-                    showLines: showLines,
+                    Size(constraints.maxWidth, 340),
                     russian: russian,
+                    showNames: showNames,
+                    selectedStar: selectedStar,
+                    sceneScale: controller.value.getMaxScaleOnAxis(),
+                    textScaler: MediaQuery.textScalerOf(context),
+                  );
+                  final label = labels
+                      .where((l) => l.rect.contains(details.localPosition))
+                      .firstOrNull;
+                  final labelled = label == null
+                      ? null
+                      : stars
+                            .where((star) => star['id'] == label.id)
+                            .firstOrNull;
+                  if (labelled != null) {
+                    onStar(labelled);
+                  } else if (nearest != null &&
+                      distance < 24 / controller.value.getMaxScaleOnAxis()) {
+                    onStar(nearest);
+                  }
+                },
+                child: ValueListenableBuilder<Matrix4>(
+                  valueListenable: controller,
+                  builder: (context, transform, _) => CustomPaint(
+                    key: const Key('constellation-canvas'),
+                    size: Size(constraints.maxWidth, 340),
+                    painter: _SkyPainter(
+                      stars,
+                      lines,
+                      showNames: showNames,
+                      showLines: showLines,
+                      russian: russian,
+                      selectedStar: selectedStar,
+                      sceneScale: transform.getMaxScaleOnAxis(),
+                      textScaler: MediaQuery.textScalerOf(context),
+                    ),
                   ),
                 ),
               ),
@@ -447,6 +580,103 @@ class _ConstellationCanvas extends StatelessWidget {
   );
 }
 
+class _StarLabel {
+  const _StarLabel(this.id, this.rect, this.text);
+  final String id;
+  final Rect rect;
+  final TextPainter text;
+}
+
+List<_StarLabel> _layoutStarLabels(
+  List<Map<String, dynamic>> stars,
+  Size size, {
+  required bool russian,
+  required bool showNames,
+  required String? selectedStar,
+  required double sceneScale,
+  required TextScaler textScaler,
+}) {
+  if (!showNames && selectedStar == null) return const [];
+  final points = projectConstellation(stars, size);
+  double radius(Map<String, dynamic> star) =>
+      (5.6 - (star['magnitude'] as num)).clamp(2.2, 5.2).toDouble();
+  final occupied = <Rect>[
+    for (final star in stars)
+      Rect.fromCircle(
+        center: points[star['id']]!,
+        radius:
+            (radius(star) + (star['id'] == selectedStar ? 8 : 3)) / sceneScale,
+      ),
+  ];
+  final ordered = [...stars]
+    ..sort(
+      (a, b) => a['id'] == selectedStar
+          ? -1
+          : b['id'] == selectedStar
+          ? 1
+          : (a['magnitude'] as num).compareTo(b['magnitude'] as num),
+    );
+  final result = <_StarLabel>[];
+  final margin = 4 / sceneScale;
+  for (final star in ordered) {
+    if (!showNames && star['id'] != selectedStar) continue;
+    final point = points[star['id']]!;
+    final selected = star['id'] == selectedStar;
+    final text =
+        TextPainter(
+          text: TextSpan(
+            text: starLabel(star, russian),
+            style: TextStyle(
+              color: selected
+                  ? const Color(0xffb6dcff)
+                  : const Color(0xffd9efff),
+              fontWeight: selected ? FontWeight.w700 : FontWeight.normal,
+              fontSize: textScaler.scale(selected ? 14 : 13) / sceneScale,
+            ),
+          ),
+          textDirection: TextDirection.ltr,
+          maxLines: 1,
+          ellipsis: '…',
+        )..layout(
+          maxWidth: math.max(
+            1,
+            math.min(
+              (size.width < 420 ? 120 : 160) *
+                  textScaler.scale(13) /
+                  13 /
+                  sceneScale,
+              size.width - 2 * margin,
+            ),
+          ),
+        );
+    final pad = (radius(star) + (selected ? 11 : 6)) / sceneScale;
+    double x(double value) =>
+        value.clamp(margin, math.max(margin, size.width - text.width - margin));
+    double y(double value) => value.clamp(
+      margin,
+      math.max(margin, size.height - text.height - margin),
+    );
+    final candidates = [
+      Offset(x(point.dx + pad), y(point.dy - text.height - pad)),
+      Offset(x(point.dx - text.width - pad), y(point.dy - text.height - pad)),
+      Offset(x(point.dx + pad), y(point.dy + pad)),
+      Offset(x(point.dx - text.width - pad), y(point.dy + pad)),
+    ];
+    final offset = candidates
+        .where(
+          (o) => occupied.every(
+            (r) => !r.inflate(2 / sceneScale).overlaps(o & text.size),
+          ),
+        )
+        .firstOrNull;
+    if (offset == null) continue;
+    final rect = offset & text.size;
+    occupied.add(rect);
+    result.add(_StarLabel(star['id'] as String, rect, text));
+  }
+  return result;
+}
+
 class _SkyPainter extends CustomPainter {
   const _SkyPainter(
     this.stars,
@@ -454,16 +684,22 @@ class _SkyPainter extends CustomPainter {
     required this.showNames,
     required this.showLines,
     required this.russian,
+    required this.selectedStar,
+    required this.sceneScale,
+    required this.textScaler,
   });
   final List<Map<String, dynamic>> stars;
   final List<List> lines;
   final bool showNames, showLines, russian;
+  final String? selectedStar;
+  final double sceneScale;
+  final TextScaler textScaler;
   @override
   void paint(Canvas canvas, Size size) {
     final points = projectConstellation(stars, size);
     final linePaint = Paint()
       ..color = const Color(0xff72b6ee)
-      ..strokeWidth = 1.5;
+      ..strokeWidth = 1.5 / sceneScale;
     if (showLines) {
       for (final line in lines) {
         canvas.drawLine(points[line[0]]!, points[line[1]]!, linePaint);
@@ -471,11 +707,21 @@ class _SkyPainter extends CustomPainter {
     }
     for (final star in stars) {
       final magnitude = (star['magnitude'] as num).toDouble();
-      final radius = (5.6 - magnitude).clamp(2.2, 5.2).toDouble();
+      final radius = (5.6 - magnitude).clamp(2.2, 5.2).toDouble() / sceneScale;
       final point = points[star['id']]!;
+      if (star['id'] == selectedStar) {
+        canvas.drawCircle(
+          point,
+          radius + 7 / sceneScale,
+          Paint()
+            ..color = const Color(0xff9bceff)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 2 / sceneScale,
+        );
+      }
       canvas.drawCircle(
         point,
-        radius + 2,
+        radius + 2 / sceneScale,
         Paint()..color = const Color(0xffd9efff).withValues(alpha: .16),
       );
       canvas.drawCircle(
@@ -484,61 +730,27 @@ class _SkyPainter extends CustomPainter {
         Paint()..color = const Color(0xfff5fbff),
       );
     }
-    if (!showNames) return;
-
-    final occupied = <Rect>[];
-    final maxLabelWidth = size.width < 420 ? 92.0 : 120.0;
-    final ordered = [
-      ...stars,
-    ]..sort((a, b) => (a['magnitude'] as num).compareTo(b['magnitude'] as num));
     canvas.save();
     canvas.clipRect(Offset.zero & size);
-    for (final star in ordered) {
-      final point = points[star['id']]!;
-      final painter = TextPainter(
-        text: TextSpan(
-          text: starLabel(star, russian),
-          style: TextStyle(
-            color: const Color(0xffd9efff),
-            fontSize: size.width < 420 ? 11 : 12,
-          ),
-        ),
-        textDirection: TextDirection.ltr,
-        maxLines: 1,
-        ellipsis: '…',
-      )..layout(maxWidth: maxLabelWidth);
-      final right = (point.dx + 8).clamp(4.0, size.width - painter.width - 4);
-      final left = (point.dx - painter.width - 8).clamp(
-        4.0,
-        size.width - painter.width - 4,
-      );
-      final top = (point.dy - painter.height - 8).clamp(
-        4.0,
-        size.height - painter.height - 4,
-      );
-      final bottom = (point.dy + 8).clamp(
-        4.0,
-        size.height - painter.height - 4,
-      );
-      final candidates = [
-        Offset(right, top),
-        Offset(left, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      final offset = candidates.where((candidate) {
-        final rect = candidate & painter.size;
-        return occupied.every((other) => !other.inflate(4).overlaps(rect));
-      }).firstOrNull;
-      if (offset == null) continue;
-      occupied.add(offset & painter.size);
-      painter.paint(canvas, offset);
+    for (final label in _layoutStarLabels(
+      stars,
+      size,
+      russian: russian,
+      showNames: showNames,
+      selectedStar: selectedStar,
+      sceneScale: sceneScale,
+      textScaler: textScaler,
+    )) {
+      label.text.paint(canvas, label.rect.topLeft);
     }
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(covariant _SkyPainter old) =>
+      old.textScaler != textScaler ||
+      old.selectedStar != selectedStar ||
+      old.sceneScale != sceneScale ||
       old.stars != stars ||
       old.lines != lines ||
       old.showNames != showNames ||
@@ -630,12 +842,42 @@ class _StarCard extends StatelessWidget {
   final bool russian;
   @override
   Widget build(BuildContext context) => Card(
+    margin: const EdgeInsets.all(16),
     child: Padding(
-      padding: const EdgeInsets.all(12),
-      child: Text(
-        russian
-            ? '${starLabel(star, true)} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
-            : '${starLabel(star, false)} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final row in [
+            (
+              russian ? 'Звёздная величина' : 'magnitude',
+              '${star['magnitude']}',
+            ),
+            (
+              russian
+                  ? 'Прямое восхождение · J2000'
+                  : 'right ascension · J2000',
+              '${star['ra_hours']} ${russian ? 'ч' : 'h'}',
+            ),
+            (
+              russian ? 'Склонение · J2000' : 'declination · J2000',
+              '${star['dec_degrees']}°',
+            ),
+          ])
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(row.$1, style: Theme.of(context).textTheme.labelLarge),
+                  Text(
+                    russian ? row.$2.replaceAll('.', ',') : row.$2,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
+              ),
+            ),
+        ],
       ),
     ),
   );

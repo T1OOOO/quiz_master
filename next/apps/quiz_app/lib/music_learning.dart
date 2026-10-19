@@ -666,6 +666,9 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
               key: Key('music-option-$id'),
               onPressed: _checked ? null : () => setState(() => _choice = id),
               style: OutlinedButton.styleFrom(
+                disabledForegroundColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface,
                 backgroundColor: _choice == id
                     ? Theme.of(context).colorScheme.secondaryContainer
                     : null,

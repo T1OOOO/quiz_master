@@ -33,6 +33,54 @@ class WaterBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('checked water choices stay readable in dark mode', (
+    tester,
+  ) async {
+    late WaterAtlas atlas;
+    await tester.runAsync(() async {
+      atlas = await WaterAtlas.load();
+    });
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        home: WaterPracticePage(catalog: catalog, atlas: atlas),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final target = tester
+        .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+        .selectedWater;
+    final wrong = find
+        .byType(OutlinedButton)
+        .evaluate()
+        .map((e) => e.widget as OutlinedButton)
+        .firstWhere((b) => b.key != ValueKey('water-answer-$target'));
+    await tester.ensureVisible(find.byKey(wrong.key!));
+    await tester.tap(find.byKey(wrong.key!));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const Key('water-check')));
+    await tester.tap(find.byKey(const Key('water-check')));
+    await tester.pumpAndSettle();
+    for (final symbol in ['✗ ', '✓ ']) {
+      final label = find.textContaining(symbol);
+      final element = tester.element(label);
+      final ink = DefaultTextStyle.of(element).style.color!;
+      final material = tester.widget<Material>(
+        find.ancestor(of: label, matching: find.byType(Material)).first,
+      );
+      final background = Color.alphaBlend(
+        material.color ?? Colors.transparent,
+        Theme.of(element).scaffoldBackgroundColor,
+      );
+      final a = Color.alphaBlend(ink, background).computeLuminance(),
+          b = background.computeLuminance();
+      expect(
+        a > b ? (a + .05) / (b + .05) : (b + .05) / (a + .05),
+        greaterThanOrEqualTo(4.5),
+      );
+    }
+    expect(tester.takeException(), isNull);
+  });
   testWidgets(
     'explicit water focus handles split and polar oceans without automatic zoom',
     (tester) async {
@@ -108,6 +156,25 @@ void main() {
       expect(find.textContaining('Correct answer:'), findsOneWidget);
       expect(find.textContaining('✗ '), findsOneWidget);
       expect(find.textContaining('✓ '), findsOneWidget);
+      final wrongLabel = find.textContaining('✗ ');
+      final element = tester.element(wrongLabel);
+      final ink = DefaultTextStyle.of(element).style.color!;
+      final material = tester.widget<Material>(
+        find.ancestor(of: wrongLabel, matching: find.byType(Material)).first,
+      );
+      final background = Color.alphaBlend(
+        material.color ?? Colors.transparent,
+        Theme.of(element).scaffoldBackgroundColor,
+      );
+      final visibleInk = Color.alphaBlend(ink, background);
+      final a = visibleInk.computeLuminance(),
+          b = background.computeLuminance();
+      final contrast = (a > b ? (a + .05) / (b + .05) : (b + .05) / (a + .05));
+      expect(
+        contrast,
+        greaterThanOrEqualTo(4.5),
+        reason: 'Checked answer labels remain readable even when disabled',
+      );
       await tester.pump(const Duration(seconds: 3));
       expect(
         tester
