@@ -4,6 +4,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/main.dart';
 
 void main() {
+  testWidgets('reselecting Quizzes clears the current folder and difficulty', (
+    tester,
+  ) async {
+    await _pumpDiscovery(
+      tester,
+      '/library?folder=%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F&difficulty=easy',
+    );
+    expect(find.byKey(const Key('catalog-root')), findsOneWidget);
+    await tester.tap(
+      find.descendant(
+        of: find.byType(NavigationBar),
+        matching: find.text('Quizzes'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('catalog-root')), findsNothing);
+    expect(
+      find
+          .widgetWithText(FilterChip, 'Easy')
+          .evaluate()
+          .every((e) => !(e.widget as FilterChip).selected),
+      isTrue,
+    );
+  });
   test('category cover resolver uses topic art and a stable fallback', () {
     expect(
       categoryCoverAsset('География/Столицы'),

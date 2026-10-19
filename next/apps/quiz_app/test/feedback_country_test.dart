@@ -18,6 +18,28 @@ const _catalog = QuizipediaCatalog(
 
 void main() {
   testWidgets(
+    'country ranking replaces layers and selection returns to the map',
+    (tester) async {
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+        );
+        await tester.pump();
+        await Future<void>.delayed(const Duration(milliseconds: 500));
+      });
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Compare countries: population and area'));
+      await tester.pumpAndSettle();
+      expect(find.byType(BottomSheet), findsOneWidget);
+      await tester.tap(find.byType(ListTile).first);
+      await tester.pumpAndSettle();
+      expect(find.byType(BottomSheet), findsNothing);
+      expect(find.byKey(const Key('country-selected-details')), findsOneWidget);
+    },
+  );
+  testWidgets(
     'country map owns vertical drags and most of the phone viewport',
     (tester) async {
       tester.view.physicalSize = const Size(361, 738);

@@ -247,7 +247,7 @@ class _MainNavigation extends StatelessWidget {
                   '/library',
                   '/study',
                 ][index];
-                if (path != target) context.go(target);
+                context.go(target);
               },
               destinations: [
                 NavigationDestination(

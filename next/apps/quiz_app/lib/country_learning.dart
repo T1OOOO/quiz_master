@@ -1239,7 +1239,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     ),
                   ),
                   TextButton.icon(
-                    onPressed: _showRanking,
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _showRanking();
+                    },
                     icon: const Icon(Icons.sort),
                     label: Text(
                       _t(
