@@ -1,0 +1,53 @@
+{
+  "helm_revision": 75,
+  "deployment_revision": 73,
+  "version": {
+    "buildId": "quiz-2026.10.20-sky-388e5c0c",
+    "commit": "388e5c0c943902b803002471896721496251230f",
+    "source_commit": "388e5c0c943902b803002471896721496251230f",
+    "local_build": true,
+    "packs": 105,
+    "questions": 4520,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 305,
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "main_dart_js_sha256": "f1dd3c18753b1596f75716114bf22a09fbffb0edf20afa57609b3ce46fcb3d0a",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "quizipedia_facts": 13678,
+    "quizipedia_sections": 13,
+    "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "frontend_only": true,
+    "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "question_article_references": 241
+  },
+  "containers": [
+    {
+      "name": "api",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de"
+    },
+    {
+      "name": "web",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de"
+    }
+  ],
+  "pvc_unchanged": true,
+  "integrity": {
+    "backup": "ok",
+    "publish_restore": "ok"
+  },
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "imagefs_available_percent": 20.027045064001864,
+  "capacity_meets_20_percent": true
+}

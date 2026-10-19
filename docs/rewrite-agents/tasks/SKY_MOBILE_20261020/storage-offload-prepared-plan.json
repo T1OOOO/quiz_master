@@ -1,0 +1,43 @@
+{
+  "accounting": {
+    "planned_total_bytes": 90411310
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.20-water-82fb9c57",
+    "deployment_revision": "72",
+    "helm_deployed_revision": 74,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.20-water-82fb9c57@sha256:cfe81210b9d3efba88bf3e90de2ddad3239375d55b284da095702a7aeccfba21",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 73
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-sky-388e5c0c",
+    "image": "quiz-master:quiz-2026.10.20-sky-388e5c0c@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de",
+    "input_sha256": "755223f8cb24fee4a8edc644178b0d31871868f8ac11b4c682f153b1fb03a487"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-sky-prepared-20261020",
+  "plan_only": true,
+  "purpose": "Reversibly archive only three stopped verification outputs of prepared release75. Keep full local frozen candidate, all frozen remote inputs, prepared receipt, full image/source closure and restoreSHA proofs, immutable images, all backups/live PVC/metadata. Rehearsal DB integrity verified before archive. No threshold or GC change.",
+  "targets": [
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 81985536,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/rehearsal-data",
+      "sqlite": true
+    }
+  ]
+}
