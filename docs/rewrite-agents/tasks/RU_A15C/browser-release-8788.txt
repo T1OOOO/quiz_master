@@ -1,0 +1,28 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e218]
+          - heading "Атлас брендов" [level=2, ref=e219]
+        - group
+          - StaticText "Справочник с источниками · локальная тренировка без рейтинга"
+          - StaticText "Учебная подборка: 61 бренд и 39 компаний/групп. Это не полный мировой реестр. Связи владельцев проверены на 19.10.2026; даты основания, запуска и предшественников поясняются отдельно."
+          - textbox "Найти бренд, группу, основателя или старое название" [ref=e220]: Гугл
+            - StaticText "Гугл"
+          - generic
+            - checkbox "Все отрасли" [checked=true, ref=e221]
+            - checkbox "автомобили" [checked=false, ref=e222]
+            - checkbox "еда и напитки" [checked=false, ref=e223]
+            - checkbox "медиа и игры" [checked=false, ref=e224]
+            - checkbox "мода и роскошь" [checked=false, ref=e225]
+            - checkbox "спорт и мода" [checked=false, ref=e226]
+            - checkbox "технологии" [checked=false, ref=e227]
+          - generic
+            - button "Название" [expanded=false, ref=e228]
+            - button "Порядок" [ref=e229]
+            - button "Все темы" [expanded=false, ref=e230]
+            - button "Тренировка" [ref=e231]
+          - StaticText "1 брендов"
+          - button "Гугл Алфабет технологии · США · 1998" [ref=e232]
+      - button "Отправить отзыв" [ref=e199]
