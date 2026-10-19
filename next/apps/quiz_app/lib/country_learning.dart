@@ -124,8 +124,10 @@ class CountryFact {
     this.areaKm2,
     this.neighbors = const [],
     this.neighborSources = const {},
+    this.officialLanguagesSource = '',
   });
   final String id, nameEn, nameRu, capital, region;
+  final String officialLanguagesSource;
   final List<String> languages, sourceLanguages, currencies, neighbors;
   final int population, populationYear;
   final double? areaKm2;
@@ -148,6 +150,7 @@ class CountryFact {
     population: json['population'] as int? ?? 0,
     populationYear: json['population_year'] as int? ?? 0,
     region: json['region'] as String? ?? '',
+    officialLanguagesSource: json['official_languages_source'] as String? ?? '',
     areaKm2: (json['area_km2'] as num?)?.toDouble(),
     neighbors: (json['neighbors'] as List? ?? []).cast<String>(),
     neighborSources: Map<String, String>.from(
@@ -349,17 +352,20 @@ class CountryQuestion {
     this.options, {
     this.source = '',
     this.association,
+    this.reverse = false,
   });
   final String kind, prompt, answer;
   final CountryFact country;
   final List<String> options;
   final String source;
   final CountryAssociation? association;
+  final bool reverse;
 
   static List<CountryQuestion> associations(
     List<CountryFact> facts,
     Map<String, List<CountryAssociation>> associations, {
     String? kind,
+    bool reverse = false,
   }) {
     final random = math.Random();
     final result = <CountryQuestion>[];
@@ -368,6 +374,33 @@ class CountryQuestion {
           .where((row) => kind == null || row.kind == kind)
           .toList();
       for (final row in trueRows) {
+        if (reverse) {
+          final valid = facts
+              .where(
+                (candidate) => (associations[candidate.id] ?? const []).any(
+                  (r) => r.kind == row.kind && r.nameEn == row.nameEn,
+                ),
+              )
+              .map((f) => f.nameEn)
+              .toSet();
+          final distractors =
+              facts.map((f) => f.nameEn).toSet().difference(valid).toList()
+                ..shuffle(random);
+          if (distractors.length < 3) continue;
+          result.add(
+            CountryQuestion(
+              row.kind,
+              fact,
+              'According to this atlas, which country lists ${row.nameEn} (${row.relationEn})?',
+              fact.nameEn,
+              [fact.nameEn, ...distractors.take(3)]..shuffle(random),
+              association: row,
+              source: row.checked,
+              reverse: true,
+            ),
+          );
+          continue;
+        }
         final trueNames = trueRows
             .where((candidate) => candidate.kind == row.kind)
             .map((candidate) => candidate.nameEn)
@@ -552,6 +585,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   int _index = 0, _score = 0;
   String? _choice;
   bool _checked = false, _practice = false;
+  bool _reverseRelations = false;
+  String _layer = 'none', _sort = 'population';
+  bool _descending = true;
   Object? _loadError;
   final List<CountryQuestion> _missed = [];
 
@@ -661,6 +697,132 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     label: Text(label ?? _t('Source', 'Источник')),
   );
   CountryFact? get _fact => _facts.where((f) => f.id == _selected).firstOrNull;
+  bool _matches(CountryFact fact) {
+    final query = _query.trim().toLowerCase();
+    return [
+      fact.nameEn,
+      fact.nameRu,
+      fact.capital,
+      ...fact.languages,
+      ...fact.currencies,
+      for (final row in _associations[fact.id] ?? <CountryAssociation>[])
+        '${row.nameEn} ${row.nameRu}',
+    ].any((value) => value.toLowerCase().contains(query));
+  }
+
+  String _layerText(CountryFact fact) => switch (_layer) {
+    'flag' => _ru ? fact.nameRu : fact.nameEn,
+    'capital' => _display(fact.capital),
+    'currency' => fact.currencies.join(', '),
+    'population' =>
+      fact.population > 0
+          ? '${(fact.population / 1000000).toStringAsFixed(1)} ${_t('m', 'млн')} (${fact.populationYear})'
+          : '',
+    'area' =>
+      fact.areaKm2 == null
+          ? ''
+          : '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
+    _ =>
+      (_associations[fact.id] ?? [])
+          .where((r) => r.kind == _layer)
+          .take(2)
+          .map((r) => _ru ? r.nameRu : r.nameEn)
+          .join(' · '),
+  };
+
+  void _showRanking() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => StatefulBuilder(
+        builder: (context, update) {
+          final rows =
+              _facts
+                  .where(
+                    (f) =>
+                        (_region == 'All' || f.region == _region) &&
+                        (_sort == 'population'
+                            ? f.population > 0
+                            : f.areaKm2 != null),
+                  )
+                  .toList()
+                ..sort(
+                  (a, b) =>
+                      (_sort == 'population'
+                          ? a.population.compareTo(b.population)
+                          : a.areaKm2!.compareTo(b.areaKm2!)) *
+                      (_descending ? -1 : 1),
+                );
+          return SafeArea(
+            child: SizedBox(
+              height: MediaQuery.sizeOf(context).height * .82,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Wrap(
+                      spacing: 8,
+                      children: [
+                        ChoiceChip(
+                          label: Text(_topicLabel('population')),
+                          selected: _sort == 'population',
+                          onSelected: (_) => update(() => _sort = 'population'),
+                        ),
+                        ChoiceChip(
+                          label: Text(_topicLabel('area')),
+                          selected: _sort == 'area',
+                          onSelected: (_) => update(() => _sort = 'area'),
+                        ),
+                        TextButton.icon(
+                          icon: Icon(
+                            _descending
+                                ? Icons.arrow_downward
+                                : Icons.arrow_upward,
+                          ),
+                          label: Text(
+                            _descending
+                                ? _t('Descending', 'По убыванию')
+                                : _t('Ascending', 'По возрастанию'),
+                          ),
+                          onPressed: () =>
+                              update(() => _descending = !_descending),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: rows.length,
+                      itemBuilder: (context, index) {
+                        final fact = rows[index];
+                        return ListTile(
+                          leading: Text('${index + 1}'),
+                          title: Text(_ru ? fact.nameRu : fact.nameEn),
+                          subtitle: Text(
+                            _sort == 'population'
+                                ? '${fact.population} · ${fact.populationYear} · World Bank'
+                                : '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
+                          ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            setState(() {
+                              _selected = fact.id;
+                              _focus = fact.id;
+                            });
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   List<QuizipediaFeature> get _visible =>
       widget.catalog.countries.where((country) {
         final fact = _facts.where((f) => f.id == country.id).firstOrNull;
@@ -681,6 +843,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
             _facts,
             _associations,
             kind: _topic == 'mixed' ? null : _topic,
+            reverse: _reverseRelations,
           ),
         ];
     final questions =
@@ -801,7 +964,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     key: const Key('map-country-search'),
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.search),
-                      labelText: _t('Find a country', 'Найти страну'),
+                      labelText: _t(
+                        'Country, river, club or fact',
+                        'Страна, река, клуб или факт',
+                      ),
                     ),
                     onChanged: (value) => setState(() => _query = value),
                   ),
@@ -812,12 +978,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: _facts
-                          .where(
-                            (fact) => (_ru ? fact.nameRu : fact.nameEn)
-                                .toLowerCase()
-                                .contains(_query.toLowerCase()),
-                          )
-                          .take(8)
+                          .where(_matches)
                           .map(
                             (fact) => Padding(
                               padding: const EdgeInsets.only(left: 8),
@@ -893,6 +1054,89 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     },
                   ),
                 ),
+                if (_query.trim().isNotEmpty && !_facts.any(_matches))
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(
+                      _t(
+                        'No matching countries or facts.',
+                        'Страны или факты не найдены.',
+                      ),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: DropdownButtonFormField<String>(
+                    key: const Key('atlas-map-layer'),
+                    initialValue: _layer,
+                    isExpanded: true,
+                    decoration: InputDecoration(
+                      labelText: _t('Map layer', 'Подписи на карте'),
+                      border: const OutlineInputBorder(),
+                    ),
+                    items: [
+                      for (final layer in [
+                        'none',
+                        'flag',
+                        'capital',
+                        'currency',
+                        'population',
+                        'area',
+                        'water',
+                        'resource',
+                        'neighbor',
+                      ])
+                        DropdownMenuItem(
+                          value: layer,
+                          child: Text(
+                            layer == 'none'
+                                ? _t('No labels', 'Без подписей')
+                                : _topicLabel(layer),
+                          ),
+                        ),
+                    ],
+                    onChanged: (value) =>
+                        setState(() => _layer = value ?? 'none'),
+                  ),
+                ),
+                TextButton.icon(
+                  onPressed: _showRanking,
+                  icon: const Icon(Icons.sort),
+                  label: Text(
+                    _t(
+                      'Compare countries: population and area',
+                      'Сравнить страны: население и площадь',
+                    ),
+                  ),
+                ),
+                if (['water', 'resource', 'neighbor'].contains(_layer))
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text(
+                      _t(
+                        'Selected facts are attached to countries; labels are not exact object locations.',
+                        'Подписи показывают связи со странами, а не точные координаты объектов.',
+                      ),
+                    ),
+                  ),
+                SwitchListTile(
+                  key: const Key('atlas-reverse-relations'),
+                  title: Text(
+                    _t(
+                      'Guess the country from a fact',
+                      'Узнать страну по факту',
+                    ),
+                  ),
+                  subtitle: Text(
+                    _t(
+                      'Rivers, clubs, food and other associations',
+                      'Реки, клубы, еда и другие связи',
+                    ),
+                  ),
+                  value: _reverseRelations,
+                  onChanged: (value) =>
+                      setState(() => _reverseRelations = value),
+                ),
                 SizedBox(
                   height: math.max(260, math.min(600, box.maxHeight * .55)),
                   child: QuizipediaWorldMap(
@@ -900,7 +1144,14 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     controller: _controller,
                     selected: _selected.isEmpty ? null : _selected,
                     highlighted: _focus.isEmpty ? null : _focus,
-                    focusTarget: _focus.isEmpty ? null : _focus,
+                    overlayLabels: _layer == 'none'
+                        ? const {}
+                        : {
+                            for (final fact in _facts)
+                              if (_layerText(fact).isNotEmpty)
+                                fact.id: _layerText(fact),
+                          },
+                    showFlags: _layer == 'flag',
                     onSelect: (id) {
                       FocusManager.instance.primaryFocus?.unfocus();
                       setState(() {
@@ -945,6 +1196,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
 
   String _questionText(CountryQuestion question) {
     if (!_ru) return question.prompt;
+    if (question.reverse) {
+      return 'По этому справочнику: с какой страной связан объект «${question.association!.nameRu}» (${question.association!.relationRu})?';
+    }
     final name = question.country.nameRu;
     return switch (question.kind) {
       'flag' => 'Какой стране принадлежит этот флаг?',
@@ -993,9 +1247,6 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     String field(String label, String value) => '$label: $value';
     return Container(
       key: const Key('map-details'),
-      constraints: BoxConstraints(
-        maxHeight: MediaQuery.sizeOf(context).height * .34,
-      ),
       width: double.infinity,
       padding: const EdgeInsetsDirectional.fromSTEB(12, 12, 72, 16),
       child: Material(
@@ -1005,6 +1256,24 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(name, style: Theme.of(context).textTheme.titleLarge),
+              if (fact.neighbors.isNotEmpty)
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: [
+                    for (final neighbor in _facts.where(
+                      (f) => fact.neighbors.contains(f.id),
+                    ))
+                      ActionChip(
+                        label: Text(_ru ? neighbor.nameRu : neighbor.nameEn),
+                        avatar: const Icon(Icons.compare_arrows, size: 16),
+                        onPressed: () => setState(() {
+                          _selected = neighbor.id;
+                          _focus = neighbor.id;
+                        }),
+                      ),
+                  ],
+                ),
               Image.asset(
                 'assets/quizipedia/flag-${fact.id.toLowerCase()}.png',
                 height: 36,
@@ -1018,6 +1287,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     _t('Official language', 'Официальный язык'),
                     fact.languages.map(_display).join(', '),
                   ),
+                ),
+              if (fact.officialLanguagesSource.isNotEmpty)
+                _sourceLink(
+                  fact.officialLanguagesSource,
+                  _t('Official language source', 'Источник: официальные языки'),
                 ),
               if (fact.sourceLanguages.isNotEmpty)
                 Text(
@@ -1034,7 +1308,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 Text(
                   field(
                     _t('Population (approximate)', 'Население (примерно)'),
-                    '${_display(populationBand(fact.population))} · ${fact.populationYear} · World Bank',
+                    '${fact.population.toString().replaceAllMapped(RegExp(r"\B(?=(\d{3})+(?!\d))"), (_) => " ")} · ${fact.populationYear} · World Bank',
                   ),
                 ),
               if (fact.areaKm2 != null)
@@ -1246,6 +1520,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           'https://data.worldbank.org/indicator/SP.POP.TOTL',
                           'World Bank · ${q.country.populationYear}',
                         ),
+                      if (q.kind == 'language' &&
+                          q.country.officialLanguagesSource.isNotEmpty)
+                        _sourceLink(q.country.officialLanguagesSource),
                       if (q.source.isNotEmpty)
                         Text(
                           '${_t('Checked', 'Проверено')}: ${q.source}',

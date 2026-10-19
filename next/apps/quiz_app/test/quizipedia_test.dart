@@ -296,9 +296,11 @@ void main() {
   testWidgets('transformed production map respects polygon holes and ocean', (
     tester,
   ) async {
+    final mapFixture = fixture();
+    (mapFixture['countries'] as List).removeWhere((row) => row['id'] == 'country:background');
     await tester.pumpWidget(
       MaterialApp(
-        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(fixture())),
+        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(mapFixture)),
       ),
     );
     await tester.pumpAndSettle();
@@ -391,6 +393,8 @@ void main() {
       });
       await tester.pumpAndSettle();
       final map = find.byKey(const Key('quizipedia-map'));
+      await tester.ensureVisible(map);
+      await tester.pumpAndSettle();
       final box = tester.renderObject<RenderBox>(map);
       await tester.tapAt(
         box.localToGlobal(Offset(box.size.width * .17, box.size.height * .72)),

@@ -21,6 +21,31 @@ class BrokenBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('country search also finds a sports club association', (
+    tester,
+  ) async {
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        const MaterialApp(home: CountryAtlasPage(catalog: catalog)),
+      );
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+    });
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('map-country-search')),
+      'Lakers',
+    );
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ActionChip, 'United States'), findsOneWidget);
+    await tester.tap(find.widgetWithText(ActionChip, 'United States'));
+    await tester.pumpAndSettle();
+    final viewer = tester.widget<InteractiveViewer>(find.byKey(const Key('quizipedia-viewport')));
+    expect(viewer.transformationController!.value, Matrix4.identity(), reason: 'Country selection must preserve the user camera.');
+    await tester.ensureVisible(find.text('Official language source'));
+    expect(find.text('Official language source'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
   test('linked asset failure is visible to the loading screen', () async {
     await expectLater(
       loadCountryAssociations('missing', bundle: BrokenBundle()),

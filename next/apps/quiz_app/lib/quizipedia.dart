@@ -12,6 +12,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'question_articles.dart';
 import 'country_learning.dart';
+import 'constellation_atlas.dart';
+import 'knowledge_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -593,12 +595,61 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                               locationTrainingBuilder: (_) =>
                                   quizipediaLocationTraining(catalog),
                             )
+                          : module == _Module.sky
+                          ? ConstellationAtlasPage(
+                              catalog: catalog,
+                              challenge: _challenge,
+                              trainingBuilder: (_) => _QuizGame(
+                                catalog: catalog,
+                                module: _Module.sky,
+                                challenge: true,
+                                bundle: widget.bundle ?? rootBundle,
+                              ),
+                            )
                           : _QuizGame(
                               catalog: catalog,
                               module: module,
                               challenge: _challenge,
                               bundle: widget.bundle ?? rootBundle,
                             ),
+                    ),
+                  ),
+                ),
+              ),
+            for (final section in ['history', 'culture', 'people'])
+              Card(
+                child: ListTile(
+                  leading: Icon(
+                    section == 'history'
+                        ? Icons.timeline
+                        : section == 'culture'
+                        ? Icons.theaters
+                        : Icons.people,
+                  ),
+                  title: Text(switch (section) {
+                    'history' => _t(
+                      context,
+                      'World history',
+                      'История человечества',
+                    ),
+                    'culture' => _t(
+                      context,
+                      'Films, books and opera',
+                      'Фильмы, книги и опера',
+                    ),
+                    _ => _t(
+                      context,
+                      'People and their works',
+                      'Люди и их произведения',
+                    ),
+                  }),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => KnowledgeAtlasPage(
+                        section: section,
+                        bundle: widget.bundle,
+                      ),
                     ),
                   ),
                 ),
@@ -1674,6 +1725,8 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.showLabels = true,
     this.selectionEnabled = true,
     this.focusTarget,
+    this.overlayLabels = const {},
+    this.showFlags = false,
   });
   final List<QuizipediaFeature> features;
   final TransformationController controller;
@@ -1684,6 +1737,8 @@ class QuizipediaWorldMap extends StatefulWidget {
 
   /// A search result can request camera focus without revealing a quiz answer.
   final String? focusTarget;
+  final Map<String, String> overlayLabels;
+  final bool showFlags;
 
   @override
   State<QuizipediaWorldMap> createState() => _QuizipediaWorldMapState();
@@ -1817,6 +1872,107 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
     );
   }
 
+  Widget _factLabels(Size scene) => IgnorePointer(
+    child: ValueListenableBuilder<Matrix4>(
+      valueListenable: widget.controller,
+      builder: (context, transform, _) {
+        final occupied = <Rect>[];
+        final labels = <Widget>[];
+        double footprint(QuizipediaFeature feature) {
+          var area = 0.0;
+          for (final polygon in feature.polygons) {
+            if (polygon.isEmpty || polygon.first.isEmpty) continue;
+            final ring = polygon.first;
+            final width = ring.map((p) => p.x).reduce(math.max) - ring.map((p) => p.x).reduce(math.min);
+            final height = ring.map((p) => p.y).reduce(math.max) - ring.map((p) => p.y).reduce(math.min);
+            area = math.max(area, width * height);
+          }
+          return area;
+        }
+        final areas = {for (final feature in widget.features) feature.id: footprint(feature)};
+        final ordered = [...widget.features]
+          ..sort((a, b) => a.id == widget.selected ? -1 : b.id == widget.selected ? 1 : areas[b.id]!.compareTo(areas[a.id]!));
+        for (final feature in ordered) {
+          final text = widget.overlayLabels[feature.id];
+          if (text == null) continue;
+          final rings = feature.polygons
+              .where((p) => p.isNotEmpty)
+              .map((p) => p.first)
+              .where((r) => r.isNotEmpty)
+              .toList();
+          if (rings.isEmpty) continue;
+          Rect bounds(List<QuizipediaPoint> r) => Rect.fromLTRB(
+            r.map((p) => p.x).reduce(math.min),
+            r.map((p) => p.y).reduce(math.min),
+            r.map((p) => p.x).reduce(math.max),
+            r.map((p) => p.y).reduce(math.max),
+          );
+          rings.sort(
+            (a, b) => (bounds(b).width * bounds(b).height).compareTo(
+              bounds(a).width * bounds(a).height,
+            ),
+          );
+          final center = bounds(rings.first).center;
+          final at = MatrixUtils.transformPoint(
+            transform,
+            Offset(
+              center.dx * scene.width + (_view.width - scene.width) / 2,
+              center.dy * scene.height + (_view.height - scene.height) / 2,
+            ),
+          );
+          final height =
+              MediaQuery.textScalerOf(context).scale(12) * 3 +
+              (widget.showFlags ? 26 : 12);
+          final rect = Rect.fromCenter(center: at, width: widget.showFlags ? 76 : 112, height: height);
+          if (rect.left < 0 ||
+              rect.right > _view.width ||
+              rect.top < 58 ||
+              rect.bottom > _view.height - 90 ||
+              occupied.any((r) => r.overlaps(rect.inflate(3)))) {
+            continue;
+          }
+          occupied.add(rect);
+          labels.add(
+            Positioned.fromRect(
+              rect: rect,
+              child: Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  color: const Color(0xf2ffffff),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (widget.showFlags)
+                      Image.asset(
+                        'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
+                        height: 18,
+                        width: 28,
+                        errorBuilder: (_, _, _) => const SizedBox(height: 18),
+                      ),
+                    Text(
+                      text,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff173f57),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+          if (labels.length == 40) break;
+        }
+        return Stack(children: labels);
+      },
+    ),
+  );
+
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, constraints) {
@@ -1911,6 +2067,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                 ),
               ),
             ),
+            Positioned.fill(child: _factLabels(scene)),
             Positioned(
               top: 8,
               left: 8,

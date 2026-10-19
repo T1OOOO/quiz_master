@@ -21,6 +21,27 @@ const country = QuizipediaFeature(
 );
 
 void main() {
+  testWidgets('map fact labels are visible without changing the camera', (
+    tester,
+  ) async {
+    final controller = TransformationController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: QuizipediaWorldMap(
+            features: const [country],
+            controller: controller,
+            selected: 'test',
+            overlayLabels: const {'test': 'Capital: Example'},
+            onSelect: (_) {},
+          ),
+        ),
+      ),
+    );
+    expect(find.text('Capital: Example'), findsOneWidget);
+    expect(controller.value, Matrix4.identity());
+  });
   Future<TransformationController> mount(WidgetTester tester) async {
     final controller = TransformationController();
     addTearDown(controller.dispose);

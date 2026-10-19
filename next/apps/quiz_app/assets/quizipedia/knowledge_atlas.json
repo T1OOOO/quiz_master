@@ -1,0 +1,1785 @@
+{
+  "schema_version": "qm-knowledge-atlas/v1",
+  "events": [
+    {
+      "id": "agriculture",
+      "year": -10000,
+      "approximate": true,
+      "era": "prehistory",
+      "title_ru": "Переход к земледелию",
+      "title_en": "Agricultural transition",
+      "what_ru": "В нескольких регионах люди начали выращивать растения и разводить животных.",
+      "what_en": "Communities in several regions began cultivating plants and herding animals.",
+      "why_ru": "Более предсказуемое питание позволило поселениям расти.",
+      "why_en": "More reliable food supported larger settlements.",
+      "consequences_ru": "Появились постоянные поселения, избыток продуктов и новые формы неравенства.",
+      "consequences_en": "Permanent settlements, food surplus and new inequalities followed.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/living-and-dying"
+    },
+    {
+      "id": "writing",
+      "year": -3200,
+      "approximate": true,
+      "era": "ancient",
+      "title_ru": "Письменность в Месопотамии",
+      "title_en": "Writing in Mesopotamia",
+      "what_ru": "Шумерские писцы использовали клинопись для учёта и текстов.",
+      "what_en": "Sumerian scribes used cuneiform for records and texts.",
+      "why_ru": "Городскому хозяйству требовалась память, не зависящая от человека.",
+      "why_en": "Urban administration needed memory beyond an individual.",
+      "consequences_ru": "Знания и законы стало возможно фиксировать и передавать.",
+      "consequences_en": "Knowledge and law could be recorded and transmitted.",
+      "source_url": "https://www.metmuseum.org/toah/hd/wrtg/hd_wrtg.htm"
+    },
+    {
+      "id": "pyramids",
+      "year": -2600,
+      "approximate": true,
+      "era": "ancient",
+      "title_ru": "Пирамиды Гизы",
+      "title_en": "Pyramids of Giza",
+      "what_ru": "В Древнем Египте возвели крупнейшие пирамиды комплекса Гизы.",
+      "what_en": "Ancient Egypt built the largest pyramids at Giza.",
+      "why_ru": "Они были частью погребального культа фараонов.",
+      "why_en": "They formed part of royal funerary belief.",
+      "consequences_ru": "Памятники показывают возможности централизованного государства.",
+      "consequences_en": "The monuments show the capacity of a centralised state.",
+      "source_url": "https://whc.unesco.org/en/list/86"
+    },
+    {
+      "id": "hammurabi",
+      "year": -1750,
+      "approximate": true,
+      "era": "ancient",
+      "title_ru": "Законы Хаммурапи",
+      "title_en": "Code of Hammurabi",
+      "what_ru": "Вавилонский царь связал правовые решения с надписью на стеле.",
+      "what_en": "A Babylonian king associated legal rulings with an inscribed stele.",
+      "why_ru": "Власти нужен был общий порядок для сложного общества.",
+      "why_en": "Authority needed a shared order for a complex society.",
+      "consequences_ru": "Кодекс стал знаменитым свидетельством ранней письменной правовой традиции.",
+      "consequences_en": "The code became a famous witness to an early written legal tradition.",
+      "source_url": "https://www.louvre.fr/en/the-code-of-hammurabi"
+    },
+    {
+      "id": "buddha",
+      "year": -500,
+      "approximate": true,
+      "era": "ancient",
+      "title_ru": "Возникновение буддийской традиции",
+      "title_en": "Buddhist tradition emerges",
+      "what_ru": "Учение Будды распространилось в Северной Индии.",
+      "what_en": "The Buddha's teaching spread in northern India.",
+      "why_ru": "Оно отвечало на вопросы страдания, этики и освобождения.",
+      "why_en": "It addressed suffering, ethics and liberation.",
+      "consequences_ru": "Буддизм стал одной из мировых религиозных традиций Азии и мира.",
+      "consequences_en": "Buddhism became a major religious tradition across Asia and beyond.",
+      "source_url": "https://www.britannica.com/topic/Buddhism"
+    },
+    {
+      "id": "athens",
+      "year": -508,
+      "end_year": -507,
+      "approximate": true,
+      "era": "ancient",
+      "title_ru": "Афинская демократия",
+      "title_en": "Athenian democracy",
+      "what_ru": "В Афинах сложилась система гражданского участия в политике.",
+      "what_en": "Athens developed a system of citizen participation in politics.",
+      "why_ru": "Реформы стремились ограничить власть аристократических родов.",
+      "why_en": "Reforms sought to constrain aristocratic power.",
+      "consequences_ru": "Это ранний, но ограниченный по составу граждан пример демократии.",
+      "consequences_en": "It was an early but restricted example of democracy.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/ancient-greece-and-rome"
+    },
+    {
+      "id": "alexander",
+      "year": -334,
+      "era": "ancient",
+      "title_ru": "Походы Александра Македонского",
+      "title_en": "Alexander's campaigns",
+      "what_ru": "Армии Македонии завоевали Персидскую державу и дошли до Индии.",
+      "what_en": "Macedonian armies conquered the Persian Empire and reached India.",
+      "why_ru": "Александр стремился расширить власть и продолжить войну с Персией.",
+      "why_en": "Alexander sought power and continued war with Persia.",
+      "consequences_ru": "Греческие, египетские и западноазиатские культуры интенсивнее взаимодействовали.",
+      "consequences_en": "Greek, Egyptian and West Asian cultures interacted more intensely.",
+      "source_url": "https://www.metmuseum.org/toah/hd/haht/hd_haht.htm"
+    },
+    {
+      "id": "qin",
+      "year": -221,
+      "era": "ancient",
+      "title_ru": "Объединение Китая Цинь",
+      "title_en": "Qin unification of China",
+      "what_ru": "Цинь Шихуанди объединил соперничающие царства.",
+      "what_en": "Qin Shi Huang united competing states.",
+      "why_ru": "Военное соперничество завершилось победой самого сильного государства.",
+      "why_en": "Military rivalry ended with victory by the strongest state.",
+      "consequences_ru": "Появилась модель централизованной китайской империи.",
+      "consequences_en": "A model of the centralised Chinese empire emerged.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/china"
+    },
+    {
+      "id": "rome",
+      "year": -27,
+      "era": "ancient",
+      "title_ru": "Начало Римской империи",
+      "title_en": "Beginning of the Roman Empire",
+      "what_ru": "Октавиан получил титул Августа и стал первым римским императором.",
+      "what_en": "Octavian received the title Augustus and became Rome's first emperor.",
+      "why_ru": "Долгие гражданские войны подорвали республиканский порядок.",
+      "why_en": "Long civil wars had weakened the republican order.",
+      "consequences_ru": "Римская власть на века изменила Средиземноморье.",
+      "consequences_en": "Roman rule reshaped the Mediterranean for centuries.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/ancient-greece-and-rome"
+    },
+    {
+      "id": "christianity",
+      "year": 313,
+      "era": "ancient",
+      "title_ru": "Миланский эдикт",
+      "title_en": "Edict of Milan",
+      "what_ru": "Константин и Лициний провозгласили терпимость к христианству в Римской империи.",
+      "what_en": "Constantine and Licinius proclaimed tolerance for Christianity in the Roman Empire.",
+      "why_ru": "Правители стремились прекратить религиозные преследования и стабилизировать империю.",
+      "why_en": "The rulers sought to end persecution and stabilise the empire.",
+      "consequences_ru": "Христианство получило законное положение и вскоре стало важнейшей силой империи.",
+      "consequences_en": "Christianity gained legal standing and soon became a major imperial force.",
+      "source_url": "https://www.britannica.com/event/Edict-of-Milan"
+    },
+    {
+      "id": "gupta",
+      "year": 320,
+      "era": "ancient",
+      "title_ru": "Империя Гуптов",
+      "title_en": "Gupta Empire",
+      "what_ru": "На севере Индии возникла держава Гуптов.",
+      "what_en": "The Gupta state arose in northern India.",
+      "why_ru": "Династия объединила ряд североиндийских территорий.",
+      "why_en": "The dynasty united a number of north Indian territories.",
+      "consequences_ru": "Период важен для развития санскритской культуры, математики и искусства.",
+      "consequences_en": "The period matters for Sanskrit culture, mathematics and art.",
+      "source_url": "https://www.metmuseum.org/toah/hd/gupt/hd_gupt.htm"
+    },
+    {
+      "id": "islam",
+      "year": 622,
+      "era": "medieval",
+      "title_ru": "Хиджра",
+      "title_en": "Hijra",
+      "what_ru": "Мухаммед и его последователи переселились из Мекки в Медину.",
+      "what_en": "Muhammad and his followers migrated from Mecca to Medina.",
+      "why_ru": "Община нуждалась в безопасном политическом и религиозном центре.",
+      "why_en": "The community needed a secure political and religious centre.",
+      "consequences_ru": "С этого события начинается мусульманское летоисчисление и политическая община ислама.",
+      "consequences_en": "It begins the Muslim calendar and the political community of Islam.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/the-islamic-world"
+    },
+    {
+      "id": "tang",
+      "year": 618,
+      "era": "medieval",
+      "title_ru": "Династия Тан",
+      "title_en": "Tang dynasty",
+      "what_ru": "В Китае началось правление династии Тан.",
+      "what_en": "Tang rule began in China.",
+      "why_ru": "После периодов раздробленности новый дом укрепил управление.",
+      "why_en": "After fragmentation, a new house strengthened administration.",
+      "consequences_ru": "Танский Китай стал крупным культурным и торговым центром Евразии.",
+      "consequences_en": "Tang China became a major cultural and trading centre of Eurasia.",
+      "source_url": "https://www.metmuseum.org/toah/hd/tang/hd_tang.htm"
+    },
+    {
+      "id": "charlemagne",
+      "year": 800,
+      "era": "medieval",
+      "title_ru": "Коронация Карла Великого",
+      "title_en": "Coronation of Charlemagne",
+      "what_ru": "Папа римский короновал франкского правителя Карла императором.",
+      "what_en": "The pope crowned Frankish ruler Charles emperor.",
+      "why_ru": "Союз папства и франкской власти нуждался в новом символе легитимности.",
+      "why_en": "The alliance of papacy and Frankish power needed a new symbol of legitimacy.",
+      "consequences_ru": "Событие стало важной точкой в истории Западной Европы и имперской идеи.",
+      "consequences_en": "It became a major point in western European and imperial history.",
+      "source_url": "https://www.britannica.com/biography/Charlemagne"
+    },
+    {
+      "id": "vikings",
+      "year": 793,
+      "era": "medieval",
+      "title_ru": "Набег на Линдисфарн",
+      "title_en": "Raid on Lindisfarne",
+      "what_ru": "Нападение на монастырь Линдисфарн стало символическим началом эпохи викингов в Британии.",
+      "what_en": "The attack on Lindisfarne became a symbolic beginning of the Viking Age in Britain.",
+      "why_ru": "Скандинавские общества использовали морские пути для торговли, набегов и переселений.",
+      "why_en": "Scandinavian societies used sea routes for trade, raids and settlement.",
+      "consequences_ru": "Связи Северной Атлантики и Европы резко усилились.",
+      "consequences_en": "North Atlantic and European connections intensified.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/vikings"
+    },
+    {
+      "id": "norman",
+      "year": 1066,
+      "era": "medieval",
+      "title_ru": "Нормандское завоевание Англии",
+      "title_en": "Norman Conquest of England",
+      "what_ru": "Вильгельм Нормандский победил при Гастингсе.",
+      "what_en": "William of Normandy won at Hastings.",
+      "why_ru": "Наследование английского престола стало предметом спора.",
+      "why_en": "The English succession was disputed.",
+      "consequences_ru": "Элиты, язык управления и землевладение Англии изменились.",
+      "consequences_en": "England's elites, administrative language and landholding changed.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/medieval-europe"
+    },
+    {
+      "id": "crusades",
+      "year": 1096,
+      "era": "medieval",
+      "title_ru": "Первый крестовый поход",
+      "title_en": "First Crusade",
+      "what_ru": "Западноевропейские войска отправились к Иерусалиму.",
+      "what_en": "Western European forces set out for Jerusalem.",
+      "why_ru": "Поход соединил религиозные мотивы, политику и военное предпринимательство.",
+      "why_en": "The expedition combined religious motives, politics and military enterprise.",
+      "consequences_ru": "Конфликты и обмены между Средиземноморскими обществами усилились.",
+      "consequences_en": "Conflict and exchange among Mediterranean societies intensified.",
+      "source_url": "https://www.metmuseum.org/toah/hd/crus/hd_crus.htm"
+    },
+    {
+      "id": "mongols",
+      "year": 1206,
+      "era": "medieval",
+      "title_ru": "Чингисхан объединяет монголов",
+      "title_en": "Genghis Khan unites the Mongols",
+      "what_ru": "Тэмуджин получил титул Чингисхана и объединил многие монгольские группы.",
+      "what_en": "Temüjin received the title Genghis Khan and united many Mongol groups.",
+      "why_ru": "Военные союзы и новая организация дали ему преимущество.",
+      "why_en": "Military alliances and new organisation gave him an advantage.",
+      "consequences_ru": "Монгольские завоевания создали крупнейшую связанную сухопутную империю своего времени.",
+      "consequences_en": "Mongol conquests created the largest contiguous land empire of their time.",
+      "source_url": "https://www.metmuseum.org/toah/hd/mong/hd_mong.htm"
+    },
+    {
+      "id": "magna",
+      "year": 1215,
+      "era": "medieval",
+      "title_ru": "Великая хартия вольностей",
+      "title_en": "Magna Carta",
+      "what_ru": "Английский король Иоанн подтвердил хартию после конфликта с баронами.",
+      "what_en": "England's King John confirmed a charter after conflict with barons.",
+      "why_ru": "Бароны оспаривали налоги и произвольную королевскую власть.",
+      "why_en": "Barons challenged taxation and arbitrary royal power.",
+      "consequences_ru": "Текст позднее стал важным символом ограничения власти законом.",
+      "consequences_en": "The text later became an important symbol of power limited by law.",
+      "source_url": "https://searcharchives.bl.uk/catalog/040-001102110"
+    },
+    {
+      "id": "plague",
+      "year": 1347,
+      "era": "medieval",
+      "title_ru": "Чёрная смерть в Европе",
+      "title_en": "Black Death in Europe",
+      "what_ru": "Эпидемия чумы достигла Средиземноморья и Европы.",
+      "what_en": "A plague pandemic reached the Mediterranean and Europe.",
+      "why_ru": "Болезнь двигалась по торговым и военным путям.",
+      "why_en": "Disease moved along trade and military routes.",
+      "consequences_ru": "Гибель огромного числа людей изменила труд, хозяйство и социальные отношения.",
+      "consequences_en": "Mass mortality transformed labour, economy and social relations.",
+      "source_url": "https://www.cam.ac.uk/stories/volcanoes-black-death"
+    },
+    {
+      "id": "printing",
+      "year": 1450,
+      "era": "early_modern",
+      "title_ru": "Печатный пресс Гутенберга",
+      "title_en": "Gutenberg printing press",
+      "what_ru": "В Европе получила развитие печать подвижными литерами.",
+      "what_en": "Movable-type printing developed in Europe.",
+      "why_ru": "Технологии бумаги, металла и пресса соединились с рынком книг.",
+      "why_en": "Paper, metal and press technologies met a book market.",
+      "consequences_ru": "Тексты стало проще и дешевле копировать, что ускорило обмен идеями.",
+      "consequences_en": "Texts became cheaper to reproduce, accelerating the exchange of ideas.",
+      "source_url": "https://www.bl.uk/collection-items/gutenberg-bible"
+    },
+    {
+      "id": "columbus",
+      "year": 1492,
+      "era": "early_modern",
+      "title_ru": "Плавание Колумба через Атлантику",
+      "title_en": "Columbus crosses the Atlantic",
+      "what_ru": "Экспедиция под испанским флагом достигла Карибского региона.",
+      "what_en": "An expedition under the Spanish flag reached the Caribbean.",
+      "why_ru": "Европейские государства искали морские пути и торговые возможности.",
+      "why_en": "European states sought sea routes and trading opportunities.",
+      "consequences_ru": "Начался длительный обмен людьми, растениями, болезнями и имперское завоевание Америк.",
+      "consequences_en": "A long exchange of people, crops and disease and imperial conquest of the Americas followed.",
+      "source_url": "https://www.loc.gov/item/2007682991/"
+    },
+    {
+      "id": "reformation",
+      "year": 1517,
+      "era": "early_modern",
+      "title_ru": "Начало Реформации",
+      "title_en": "Beginning of the Reformation",
+      "what_ru": "Лютер публично выступил против ряда практик позднесредневековой церкви.",
+      "what_en": "Luther publicly challenged several practices of the late medieval church.",
+      "why_ru": "Споры о власти, спасении и церковных финансах уже нарастали.",
+      "why_en": "Disputes over authority, salvation and church finance were growing.",
+      "consequences_ru": "Западное христианство раскололось, а европейская политика изменилась.",
+      "consequences_en": "Western Christianity fractured and European politics changed.",
+      "source_url": "https://www.bl.uk/collection-items/martin-luthers-95-theses"
+    },
+    {
+      "id": "mughal",
+      "year": 1526,
+      "era": "early_modern",
+      "title_ru": "Основание империи Великих Моголов",
+      "title_en": "Mughal Empire founded",
+      "what_ru": "Бабур победил при Панипате и заложил новую империю в Южной Азии.",
+      "what_en": "Babur won at Panipat and founded a new empire in South Asia.",
+      "why_ru": "Военная кампания использовала кризисы североиндийских государств.",
+      "why_en": "A military campaign used crises among north Indian states.",
+      "consequences_ru": "Империя стала важнейшим центром политики, искусства и торговли региона.",
+      "consequences_en": "The empire became a major centre of regional politics, art and trade.",
+      "source_url": "https://www.metmuseum.org/toah/hd/mugh/hd_mugh.htm"
+    },
+    {
+      "id": "science",
+      "year": 1543,
+      "era": "early_modern",
+      "title_ru": "Коперник публикует гелиоцентрическую модель",
+      "title_en": "Copernicus publishes heliocentrism",
+      "what_ru": "Книга Коперника предложила модель с Солнцем в центре планетной системы.",
+      "what_en": "Copernicus's book proposed a Sun-centred model of the planetary system.",
+      "why_ru": "Наблюдения и математическая традиция требовали новых объяснений движения планет.",
+      "why_en": "Observation and mathematical tradition demanded new explanations of planetary motion.",
+      "consequences_ru": "Работа стала важной частью научной революции.",
+      "consequences_en": "The work became an important part of the Scientific Revolution.",
+      "source_url": "https://www.loc.gov/item/46033966/"
+    },
+    {
+      "id": "english_civil",
+      "year": 1642,
+      "era": "early_modern",
+      "title_ru": "Английская гражданская война",
+      "title_en": "English Civil War",
+      "what_ru": "Конфликт между сторонниками короля и парламента перешёл в войну.",
+      "what_en": "Conflict between supporters of king and parliament became war.",
+      "why_ru": "Споры касались налогов, религии и пределов монархической власти.",
+      "why_en": "Disputes concerned taxes, religion and the limits of monarchy.",
+      "consequences_ru": "Казнь Карла I, республика и реставрация изменили английскую политическую традицию.",
+      "consequences_en": "The execution of Charles I, republic and restoration changed English political tradition.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/britain-europe-and-the-world"
+    },
+    {
+      "id": "newton",
+      "year": 1687,
+      "era": "early_modern",
+      "title_ru": "«Начала» Ньютона",
+      "title_en": "Newton's Principia",
+      "what_ru": "Ньютон сформулировал законы движения и всемирного тяготения.",
+      "what_en": "Newton formulated laws of motion and universal gravitation.",
+      "why_ru": "Он объединил математику, астрономию и механику.",
+      "why_en": "He united mathematics, astronomy and mechanics.",
+      "consequences_ru": "Классическая механика стала влиятельной моделью научного объяснения.",
+      "consequences_en": "Classical mechanics became an influential model of scientific explanation.",
+      "source_url": "https://cudl.lib.cam.ac.uk/view/PR-ADV-B-00039-00001/1"
+    },
+    {
+      "id": "glorious",
+      "year": 1688,
+      "era": "early_modern",
+      "title_ru": "Славная революция",
+      "title_en": "Glorious Revolution",
+      "what_ru": "Яков II был свергнут, а Вильгельм и Мария получили английскую корону.",
+      "what_en": "James II was deposed and William and Mary received the English crown.",
+      "why_ru": "Религия, наследование и страх перед абсолютной властью обострили кризис.",
+      "why_en": "Religion, succession and fear of absolute power sharpened the crisis.",
+      "consequences_ru": "Парламентская власть была закреплена Биллем о правах.",
+      "consequences_en": "Parliamentary power was strengthened by the Bill of Rights.",
+      "source_url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/parliamentaryauthority/revolution/"
+    },
+    {
+      "id": "american_rev",
+      "year": 1776,
+      "era": "modern",
+      "title_ru": "Декларация независимости США",
+      "title_en": "US Declaration of Independence",
+      "what_ru": "Тринадцать колоний заявили о независимости от Британии.",
+      "what_en": "Thirteen colonies declared independence from Britain.",
+      "why_ru": "Колониальный конфликт обострился из-за представительства, налогов и власти империи.",
+      "why_en": "The colonial conflict sharpened over representation, taxation and imperial power.",
+      "consequences_ru": "Возникли Соединённые Штаты, а язык прав и республик получил новое влияние.",
+      "consequences_en": "The United States emerged and the language of rights and republics gained influence.",
+      "source_url": "https://www.archives.gov/founding-docs/declaration"
+    },
+    {
+      "id": "french_rev",
+      "year": 1789,
+      "era": "modern",
+      "title_ru": "Французская революция",
+      "title_en": "French Revolution",
+      "what_ru": "Кризис монархии привёл к революции и созыву Национального собрания.",
+      "what_en": "A monarchical crisis led to revolution and the National Assembly.",
+      "why_ru": "Долги, неравенство и политический тупик сошлись вместе.",
+      "why_en": "Debt, inequality and political deadlock converged.",
+      "consequences_ru": "Революция изменила Францию и дала новый язык гражданства, прав и нации.",
+      "consequences_en": "The revolution changed France and gave new language to citizenship, rights and nation.",
+      "source_url": "https://gallica.bnf.fr/essentiels/repere/prise-bastille-1789"
+    },
+    {
+      "id": "haiti",
+      "year": 1804,
+      "era": "modern",
+      "title_ru": "Независимость Гаити",
+      "title_en": "Haitian independence",
+      "what_ru": "После революции бывшая французская колония стала независимой Гаити.",
+      "what_en": "After revolution, the former French colony became independent Haiti.",
+      "why_ru": "Порабощённые люди восстали против колониальной и расовой системы.",
+      "why_en": "Enslaved people rose against a colonial and racial system.",
+      "consequences_ru": "Это была первая независимая республика, возникшая из успешного восстания порабощённых людей.",
+      "consequences_en": "It was the first independent republic born of a successful uprising by enslaved people.",
+      "source_url": "https://www.loc.gov/item/2021666466/"
+    },
+    {
+      "id": "industrial",
+      "year": 1780,
+      "end_year": 1900,
+      "approximate": true,
+      "era": "modern",
+      "title_ru": "Промышленная революция",
+      "title_en": "Industrial Revolution",
+      "what_ru": "Механизированное производство и фабрики быстро распространились из Британии.",
+      "what_en": "Mechanised production and factories spread rapidly from Britain.",
+      "why_ru": "Капитал, уголь, технологии и рынки соединились.",
+      "why_en": "Capital, coal, technology and markets combined.",
+      "consequences_ru": "Изменились труд, города, потребление и глобальная экономика.",
+      "consequences_en": "Labour, cities, consumption and the global economy changed.",
+      "source_url": "https://www.nationalarchives.gov.uk/currency-converter/living-in-the-19th-century/"
+    },
+    {
+      "id": "abolition",
+      "year": 1833,
+      "era": "modern",
+      "title_ru": "Закон об отмене рабства",
+      "title_en": "Slavery Abolition Act",
+      "what_ru": "Парламент принял Закон об отмене рабства для большей части Британской империи.",
+      "what_en": "Parliament passed the Slavery Abolition Act for most of the British Empire.",
+      "why_ru": "Десятилетия сопротивления порабощённых людей и аболиционизма изменили политику.",
+      "why_en": "Decades of resistance by enslaved people and abolitionism changed politics.",
+      "consequences_ru": "Основные положения вступили в силу в 1834 году; это был важный, но неполный шаг в мировой борьбе против рабства.",
+      "consequences_en": "Its main provisions took effect in 1834; it was an important but incomplete step in the global struggle against slavery.",
+      "source_url": "https://researchbriefings.files.parliament.uk/documents/CBP-8265/CBP-8265.pdf"
+    },
+    {
+      "id": "meiji",
+      "year": 1868,
+      "era": "modern",
+      "title_ru": "Реставрация Мэйдзи",
+      "title_en": "Meiji Restoration",
+      "what_ru": "В Японии начались политические преобразования вокруг восстановления императорской власти.",
+      "what_en": "Japan began political transformations around restoration of imperial authority.",
+      "why_ru": "Военное давление извне и внутренние конфликты подорвали сёгунат.",
+      "why_en": "External military pressure and internal conflict undermined the shogunate.",
+      "consequences_ru": "Япония быстро реформировала государство, армию, образование и промышленность.",
+      "consequences_en": "Japan rapidly reformed state, army, education and industry.",
+      "source_url": "https://www.metmuseum.org/toah/hd/japn/hd_japn.htm"
+    },
+    {
+      "id": "ww1",
+      "year": 1914,
+      "era": "modern",
+      "title_ru": "Первая мировая война",
+      "title_en": "First World War",
+      "what_ru": "Европейский кризис после убийства в Сараеве перерос в мировую войну.",
+      "what_en": "A European crisis after the Sarajevo assassination became world war.",
+      "why_ru": "Союзы, милитаризм, имперское соперничество и национализм усилили риск.",
+      "why_en": "Alliances, militarism, imperial rivalry and nationalism increased risk.",
+      "consequences_ru": "Погибли миллионы, рухнули империи и изменилась карта мира.",
+      "consequences_en": "Millions died, empires collapsed and the world map changed.",
+      "source_url": "https://www.iwm.org.uk/history/first-world-war"
+    },
+    {
+      "id": "russian_rev",
+      "year": 1917,
+      "era": "modern",
+      "title_ru": "Российская революция",
+      "title_en": "Russian Revolution",
+      "what_ru": "В 1917 году в России произошли Февральская и Октябрьская революции.",
+      "what_en": "Russia experienced the February and October revolutions in 1917.",
+      "why_ru": "Война, социальный кризис и слабость монархии разрушили прежний порядок.",
+      "why_en": "War, social crisis and monarchical weakness broke the old order.",
+      "consequences_ru": "Возникло советское государство, повлиявшее на политику XX века.",
+      "consequences_en": "A Soviet state emerged and shaped twentieth-century politics.",
+      "source_url": "https://history.state.gov/historicaldocuments/frus1917/papers"
+    },
+    {
+      "id": "ww2",
+      "year": 1939,
+      "era": "modern",
+      "title_ru": "Вторая мировая война",
+      "title_en": "Second World War",
+      "what_ru": "Нападение Германии на Польшу стало началом войны в Европе.",
+      "what_en": "Germany's invasion of Poland began the war in Europe.",
+      "why_ru": "Нацистская экспансия следовала за кризисом международного порядка.",
+      "why_en": "Nazi expansion followed a crisis in the international order.",
+      "consequences_ru": "Холокост, массовые разрушения, ООН и новый мировой порядок определили послевоенный мир.",
+      "consequences_en": "The Holocaust, mass destruction, the UN and a new world order defined the postwar world.",
+      "source_url": "https://www.iwm.org.uk/history/second-world-war"
+    },
+    {
+      "id": "un",
+      "year": 1945,
+      "era": "contemporary",
+      "title_ru": "Создание ООН",
+      "title_en": "Founding of the United Nations",
+      "what_ru": "Устав ООН вступил в силу после войны.",
+      "what_en": "The UN Charter entered into force after the war.",
+      "why_ru": "Государства стремились создать механизм коллективной безопасности.",
+      "why_en": "States sought a mechanism for collective security.",
+      "consequences_ru": "ООН стала центральной площадкой международной дипломатии и гуманитарной работы.",
+      "consequences_en": "The UN became a central forum for diplomacy and humanitarian work.",
+      "source_url": "https://www.un.org/en/about-us/history-of-the-un"
+    },
+    {
+      "id": "india",
+      "year": 1947,
+      "era": "contemporary",
+      "title_ru": "Независимость Индии и раздел",
+      "title_en": "Indian independence and Partition",
+      "what_ru": "Британское правление закончилось, а Британская Индия была разделена на Индию и Пакистан.",
+      "what_en": "British rule ended and British India was partitioned into India and Pakistan.",
+      "why_ru": "Антиколониальное движение и конфликт вокруг политического представительства сошлись в момент ухода Британии.",
+      "why_en": "Anti-colonial mobilisation and conflict over representation met at Britain's withdrawal.",
+      "consequences_ru": "Независимость сопровождалась массовым переселением и насилием.",
+      "consequences_en": "Independence was accompanied by mass migration and violence.",
+      "source_url": "https://www.bl.uk/people/mahatma-gandhi"
+    },
+    {
+      "id": "civil_rights",
+      "year": 1964,
+      "era": "contemporary",
+      "title_ru": "Закон о гражданских правах США",
+      "title_en": "US Civil Rights Act",
+      "what_ru": "Федеральный закон запретил дискриминацию в ключевых общественных сферах.",
+      "what_en": "Federal law prohibited discrimination in key public spheres.",
+      "why_ru": "Движение за гражданские права добивалось исполнения конституционных прав.",
+      "why_en": "The civil rights movement sought enforcement of constitutional rights.",
+      "consequences_ru": "Он стал основой для дальнейших правовых изменений, хотя борьба за равенство продолжилась.",
+      "consequences_en": "It became a basis for further legal change, though the struggle for equality continued.",
+      "source_url": "https://www.archives.gov/milestone-documents/civil-rights-act"
+    },
+    {
+      "id": "moon",
+      "year": 1969,
+      "era": "contemporary",
+      "title_ru": "Высадка «Аполлона-11» на Луну",
+      "title_en": "Apollo 11 Moon landing",
+      "what_ru": "Нил Армстронг и Базз Олдрин высадились на Луне.",
+      "what_en": "Neil Armstrong and Buzz Aldrin landed on the Moon.",
+      "why_ru": "США развивали пилотируемую космонавтику в условиях холодной войны.",
+      "why_en": "The United States developed human spaceflight amid the Cold War.",
+      "consequences_ru": "Миссия стала символом возможностей космической техники и международной аудитории.",
+      "consequences_en": "The mission became a symbol of space technology and a global audience.",
+      "source_url": "https://www.nasa.gov/mission/apollo-11/"
+    },
+    {
+      "id": "internet",
+      "year": 1989,
+      "era": "contemporary",
+      "title_ru": "Предложение Всемирной паутины",
+      "title_en": "World Wide Web proposed",
+      "what_ru": "Тим Бернерс-Ли предложил систему гипертекстовой информации в CERN.",
+      "what_en": "Tim Berners-Lee proposed a hypertext information system at CERN.",
+      "why_ru": "Учёным было трудно обмениваться данными между разными системами.",
+      "why_en": "Scientists struggled to share data across different systems.",
+      "consequences_ru": "Веб изменил коммуникацию, доступ к знаниям, торговлю и политику.",
+      "consequences_en": "The web changed communication, access to knowledge, commerce and politics.",
+      "source_url": "https://home.cern/science/computing/the-birth-of-the-web"
+    },
+    {
+      "id": "berlin",
+      "year": 1989,
+      "era": "contemporary",
+      "title_ru": "Падение Берлинской стены",
+      "title_en": "Fall of the Berlin Wall",
+      "what_ru": "Граница в Берлине открылась после протестов и политического кризиса ГДР.",
+      "what_en": "The Berlin border opened after protests and a political crisis in East Germany.",
+      "why_ru": "Реформы в Восточной Европе и общественное давление подорвали прежние режимы.",
+      "why_en": "Reforms in eastern Europe and public pressure undermined old regimes.",
+      "consequences_ru": "Событие ускорило объединение Германии и конец холодной войны в Европе.",
+      "consequences_en": "It accelerated German reunification and the end of the Cold War in Europe.",
+      "source_url": "https://www.bundesstiftung-aufarbeitung.de/en"
+    },
+    {
+      "id": "genome",
+      "year": 2003,
+      "era": "contemporary",
+      "title_ru": "Завершение проекта «Геном человека»",
+      "title_en": "Human Genome Project completed",
+      "what_ru": "Международный проект объявил о завершении основной последовательности человеческого генома.",
+      "what_en": "An international project announced completion of the main human genome sequence.",
+      "why_ru": "Новые методы секвенирования сделали возможным масштабное сотрудничество.",
+      "why_en": "New sequencing methods made large-scale collaboration possible.",
+      "consequences_ru": "Геномика стала важнейшим направлением биологии и медицины.",
+      "consequences_en": "Genomics became a major field in biology and medicine.",
+      "source_url": "https://www.genome.gov/human-genome-project"
+    }
+  ],
+  "works": [
+    {
+      "id": "odyssey",
+      "type": "book",
+      "year": -800,
+      "title_ru": "«Одиссея»",
+      "title_en": "The Odyssey",
+      "creator_ids": [
+        "homer"
+      ],
+      "cast": [],
+      "summary_ru": "Эпическая поэма о долгом возвращении Одиссея домой после Троянской войны.",
+      "summary_en": "An epic poem about Odysseus's long return home after the Trojan War.",
+      "fact_ru": "Поэма существовала в устной традиции до записи текста.",
+      "fact_en": "The poem existed in oral tradition before its text was recorded.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/ancient-greece-and-rome",
+      "approximate": true,
+      "end_year": -700
+    },
+    {
+      "id": "divine_comedy",
+      "type": "book",
+      "year": 1308,
+      "title_ru": "«Божественная комедия»",
+      "title_en": "The Divine Comedy",
+      "creator_ids": [
+        "dante"
+      ],
+      "cast": [],
+      "summary_ru": "Данте ведёт читателя через Ад, Чистилище и Рай.",
+      "summary_en": "Dante leads the reader through Hell, Purgatory and Paradise.",
+      "fact_ru": "Поэма написана на тосканском народном языке, а не на латыни.",
+      "fact_en": "The poem was written in Tuscan vernacular rather than Latin.",
+      "source_url": "https://www.bl.uk/collection-items/dantes-divine-comedy",
+      "approximate": true,
+      "end_year": 1321
+    },
+    {
+      "id": "hamlet",
+      "type": "play",
+      "year": 1600,
+      "title_ru": "«Гамлет»",
+      "title_en": "Hamlet",
+      "creator_ids": [
+        "shakespeare"
+      ],
+      "cast": [],
+      "summary_ru": "Датский принц пытается понять правду о смерти отца и выбрать действие.",
+      "summary_en": "A Danish prince seeks truth about his father's death and a course of action.",
+      "fact_ru": "Точная дата первой постановки неизвестна.",
+      "fact_en": "The exact date of its first performance is unknown.",
+      "source_url": "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+      "approximate": true,
+      "end_year": 1601
+    },
+    {
+      "id": "don_quixote",
+      "type": "book",
+      "year": 1605,
+      "title_ru": "«Дон Кихот»",
+      "title_en": "Don Quixote",
+      "creator_ids": [
+        "cervantes"
+      ],
+      "cast": [],
+      "summary_ru": "Дворянин принимает рыцарские романы за жизнь и отправляется странствовать.",
+      "summary_en": "A gentleman takes chivalric romances for life and sets out wandering.",
+      "fact_ru": "Первая часть вышла в 1605 году, вторая — в 1615-м.",
+      "fact_en": "Part I appeared in 1605; Part II in 1615.",
+      "source_url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/alcala_henares_miguel_cervantes.htm"
+    },
+    {
+      "id": "messiah",
+      "type": "oratorio",
+      "year": 1741,
+      "title_ru": "«Мессия»",
+      "title_en": "Messiah",
+      "creator_ids": [
+        "handel"
+      ],
+      "cast": [],
+      "summary_ru": "Оратория на библейские тексты о жизни и значении Христа.",
+      "summary_en": "An oratorio on biblical texts about the life and meaning of Christ.",
+      "fact_ru": "Это оратория, а не опера; премьера состоялась в Дублине.",
+      "fact_en": "It is an oratorio rather than an opera; its premiere was in Dublin.",
+      "source_url": "https://www.gfhandel.org/handel/works/messiah"
+    },
+    {
+      "id": "pride",
+      "type": "book",
+      "year": 1813,
+      "title_ru": "«Гордость и предубеждение»",
+      "title_en": "Pride and Prejudice",
+      "creator_ids": [
+        "austen"
+      ],
+      "cast": [],
+      "summary_ru": "Элизабет Беннет и мистер Дарси преодолевают ошибочные первые впечатления.",
+      "summary_en": "Elizabeth Bennet and Mr Darcy overcome mistaken first impressions.",
+      "fact_ru": "Роман сначала назывался «Первые впечатления».",
+      "fact_en": "The novel was first called First Impressions.",
+      "source_url": "https://www.bl.uk/collection-items/pride-and-prejudice"
+    },
+    {
+      "id": "beethoven9",
+      "type": "music",
+      "year": 1824,
+      "title_ru": "Девятая симфония",
+      "title_en": "Ninth Symphony",
+      "creator_ids": [
+        "beethoven"
+      ],
+      "cast": [],
+      "summary_ru": "Симфония завершается хоровой частью на «Оду к радости» Шиллера.",
+      "summary_en": "The symphony ends with a choral setting of Schiller's Ode to Joy.",
+      "fact_ru": "Это одна из первых крупных симфоний с вокальными солистами и хором.",
+      "fact_en": "It is among the first major symphonies to use vocal soloists and chorus.",
+      "source_url": "https://www.wienerphilharmoniker.at/en/orchestra/philharmonic-archive/"
+    },
+    {
+      "id": "frankenstein",
+      "type": "book",
+      "year": 1818,
+      "title_ru": "«Франкенштейн»",
+      "title_en": "Frankenstein",
+      "creator_ids": [
+        "shelley"
+      ],
+      "cast": [],
+      "summary_ru": "Учёный создаёт живое существо и отказывается от ответственности за него.",
+      "summary_en": "A scientist creates a living being and refuses responsibility for it.",
+      "fact_ru": "Первое издание вышло анонимно.",
+      "fact_en": "The first edition appeared anonymously.",
+      "source_url": "https://www.bl.uk/collection-items/frankenstein-or-the-modern-prometheus"
+    },
+    {
+      "id": "carmen",
+      "type": "opera",
+      "year": 1875,
+      "title_ru": "«Кармен»",
+      "title_en": "Carmen",
+      "creator_ids": [
+        "bizet"
+      ],
+      "cast": [],
+      "summary_ru": "Опера о свободолюбивой Кармен и разрушительной ревности дона Хосе.",
+      "summary_en": "An opera about free-spirited Carmen and Don José's destructive jealousy.",
+      "fact_ru": "Премьера в Париже получила прохладный приём.",
+      "fact_en": "Its Paris premiere received a cool reception.",
+      "source_url": "https://www.opera-comique.com/fr/actualites/carmen-150-ans-d-histoire-a-l-opera-comique"
+    },
+    {
+      "id": "anna_karenina",
+      "type": "book",
+      "year": 1878,
+      "title_ru": "«Анна Каренина»",
+      "title_en": "Anna Karenina",
+      "creator_ids": [
+        "tolstoy"
+      ],
+      "cast": [],
+      "summary_ru": "Роман переплетает историю Анны и Вронского с поисками Левина.",
+      "summary_en": "The novel intertwines Anna and Vronsky's story with Levin's search.",
+      "fact_ru": "Роман сначала печатался частями в журнале.",
+      "fact_en": "The novel first appeared in serial form in a journal.",
+      "source_url": "https://www.loc.gov/item/06013207/"
+    },
+    {
+      "id": "swan_lake",
+      "type": "ballet",
+      "year": 1877,
+      "title_ru": "«Лебединое озеро»",
+      "title_en": "Swan Lake",
+      "creator_ids": [
+        "tchaikovsky"
+      ],
+      "cast": [],
+      "summary_ru": "Балет о заколдованной Одетте и принце Зигфриде.",
+      "summary_en": "A ballet about enchanted Odette and Prince Siegfried.",
+      "fact_ru": "Известная сегодня версия связана с постановкой 1895 года.",
+      "fact_en": "The version best known today is associated with an 1895 production.",
+      "source_url": "https://www.mariinsky.ru/about/exhibitions/petipa200/swan_lake/"
+    },
+    {
+      "id": "war_peace",
+      "type": "book",
+      "year": 1869,
+      "title_ru": "«Война и мир»",
+      "title_en": "War and Peace",
+      "creator_ids": [
+        "tolstoy"
+      ],
+      "cast": [],
+      "summary_ru": "Семейные судьбы разворачиваются на фоне Наполеоновских войн.",
+      "summary_en": "Family lives unfold against the Napoleonic Wars.",
+      "fact_ru": "Роман соединяет вымышленных героев и исторических фигур.",
+      "fact_en": "The novel combines fictional characters and historical figures.",
+      "source_url": "https://www.loc.gov/item/07011014/"
+    },
+    {
+      "id": "sherlock",
+      "type": "book",
+      "year": 1887,
+      "title_ru": "«Этюд в багровых тонах»",
+      "title_en": "A Study in Scarlet",
+      "creator_ids": [
+        "doyle"
+      ],
+      "cast": [],
+      "summary_ru": "Доктор Ватсон знакомится с Шерлоком Холмсом и участвует в расследовании.",
+      "summary_en": "Dr Watson meets Sherlock Holmes and joins an investigation.",
+      "fact_ru": "Это первое опубликованное появление Холмса и Ватсона.",
+      "fact_en": "It is the first published appearance of Holmes and Watson.",
+      "source_url": "https://www.bl.uk/collection-items/a-study-in-scarlet"
+    },
+    {
+      "id": "wizard",
+      "type": "film",
+      "year": 1939,
+      "title_ru": "«Волшебник страны Оз»",
+      "title_en": "The Wizard of Oz",
+      "creator_ids": [
+        "fleming"
+      ],
+      "cast": [
+        [
+          "garland",
+          "Дороти",
+          "Dorothy"
+        ]
+      ],
+      "summary_ru": "Дороти попадает в страну Оз и ищет дорогу домой.",
+      "summary_en": "Dorothy arrives in Oz and seeks a way home.",
+      "fact_ru": "Переход из Канзаса в Оз использует знаменитый цветовой контраст.",
+      "fact_en": "The move from Kansas to Oz uses a famous colour contrast.",
+      "source_url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/wizard_oz.pdf"
+    },
+    {
+      "id": "citizen_kane",
+      "type": "film",
+      "year": 1941,
+      "title_ru": "«Гражданин Кейн»",
+      "title_en": "Citizen Kane",
+      "creator_ids": [
+        "welles"
+      ],
+      "cast": [
+        [
+          "welles",
+          "Чарльз Фостер Кейн",
+          "Charles Foster Kane"
+        ]
+      ],
+      "summary_ru": "Журналисты пытаются понять последнюю загадку жизни газетного магната.",
+      "summary_en": "Reporters try to understand the final mystery of a newspaper magnate's life.",
+      "fact_ru": "Фильм знаменит глубокофокусной операторской работой.",
+      "fact_en": "The film is famous for deep-focus cinematography.",
+      "source_url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/kane.pdf"
+    },
+    {
+      "id": "casablanca",
+      "type": "film",
+      "year": 1942,
+      "title_ru": "«Касабланка»",
+      "title_en": "Casablanca",
+      "creator_ids": [
+        "curtiz"
+      ],
+      "cast": [
+        [
+          "bogart",
+          "Рик Блейн",
+          "Rick Blaine"
+        ],
+        [
+          "bergman",
+          "Ильза Лунд",
+          "Ilsa Lund"
+        ]
+      ],
+      "summary_ru": "В Касабланке военного времени Рик встречает прежнюю любовь и делает моральный выбор.",
+      "summary_en": "In wartime Casablanca, Rick meets a former love and makes a moral choice.",
+      "fact_ru": "Фильм получил «Оскар» за лучший фильм.",
+      "fact_en": "The film won the Academy Award for Best Picture.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/1944"
+    },
+    {
+      "id": "1984",
+      "type": "book",
+      "year": 1949,
+      "title_ru": "«1984»",
+      "title_en": "Nineteen Eighty-Four",
+      "creator_ids": [
+        "orwell"
+      ],
+      "cast": [],
+      "summary_ru": "Уинстон Смит пытается сохранить личную правду в тоталитарном государстве.",
+      "summary_en": "Winston Smith tries to preserve personal truth in a totalitarian state.",
+      "fact_ru": "Роман породил множество устойчивых политических выражений.",
+      "fact_en": "The novel gave rise to many enduring political expressions.",
+      "source_url": "https://www.bl.uk/collection-items/nineteen-eighty-four"
+    },
+    {
+      "id": "waiting",
+      "type": "play",
+      "year": 1953,
+      "title_ru": "«В ожидании Годо»",
+      "title_en": "Waiting for Godot",
+      "creator_ids": [
+        "beckett"
+      ],
+      "cast": [],
+      "summary_ru": "Два героя ждут человека, который так и не приходит.",
+      "summary_en": "Two characters wait for a person who never arrives.",
+      "fact_ru": "Пьеса первоначально написана по-французски.",
+      "fact_en": "The play was originally written in French.",
+      "source_url": "https://www.bl.uk/collection-items/waiting-for-godot"
+    },
+    {
+      "id": "seven_samurai",
+      "type": "film",
+      "year": 1954,
+      "title_ru": "«Семь самураев»",
+      "title_en": "Seven Samurai",
+      "creator_ids": [
+        "kurosawa"
+      ],
+      "cast": [
+        [
+          "mifune",
+          "Кикутиё",
+          "Kikuchiyo"
+        ]
+      ],
+      "summary_ru": "Крестьяне нанимают самураев для защиты деревни.",
+      "summary_en": "Farmers hire samurai to defend their village.",
+      "fact_ru": "Структура истории заметно повлияла на приключенческое кино.",
+      "fact_en": "Its story structure strongly influenced adventure cinema.",
+      "source_url": "https://www.bfi.org.uk/film/01391b07-5940-5d02-aa47-1158142f2b64/seven-samurai"
+    },
+    {
+      "id": "doctor_zhivago",
+      "type": "book",
+      "year": 1957,
+      "title_ru": "«Доктор Живаго»",
+      "title_en": "Doctor Zhivago",
+      "creator_ids": [
+        "pasternak"
+      ],
+      "cast": [],
+      "summary_ru": "Поэт и врач Юрий Живаго переживает революцию и гражданскую войну.",
+      "summary_en": "Poet and doctor Yuri Zhivago lives through revolution and civil war.",
+      "fact_ru": "Роман впервые был опубликован в Италии.",
+      "fact_en": "The novel was first published in Italy.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1958/pasternak/facts/"
+    },
+    {
+      "id": "psycho",
+      "type": "film",
+      "year": 1960,
+      "title_ru": "«Психо»",
+      "title_en": "Psycho",
+      "creator_ids": [
+        "hitchcock"
+      ],
+      "cast": [
+        [
+          "perkins",
+          "Норман Бейтс",
+          "Norman Bates"
+        ]
+      ],
+      "summary_ru": "После кражи денег Мэрион Крейн останавливается в мотеле Бейтса.",
+      "summary_en": "After stealing money, Marion Crane stops at the Bates Motel.",
+      "fact_ru": "Музыка Бернарда Херрманна усилила эффект знаменитой сцены в душе.",
+      "fact_en": "Bernard Herrmann's music intensified the famous shower scene.",
+      "source_url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/psycho.pdf"
+    },
+    {
+      "id": "one_hundred",
+      "type": "book",
+      "year": 1967,
+      "title_ru": "«Сто лет одиночества»",
+      "title_en": "One Hundred Years of Solitude",
+      "creator_ids": [
+        "marquez"
+      ],
+      "cast": [],
+      "summary_ru": "Семья Буэндиа проживает поколения в вымышленном Макондо.",
+      "summary_en": "The Buendía family lives through generations in fictional Macondo.",
+      "fact_ru": "Роман стал ключевым произведением магического реализма.",
+      "fact_en": "The novel became a key work of magical realism.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1982/marquez/facts/"
+    },
+    {
+      "id": "godfather",
+      "type": "film",
+      "year": 1972,
+      "title_ru": "«Крёстный отец»",
+      "title_en": "The Godfather",
+      "creator_ids": [
+        "coppola"
+      ],
+      "cast": [
+        [
+          "brando",
+          "Вито Корлеоне",
+          "Vito Corleone"
+        ],
+        [
+          "pacino",
+          "Майкл Корлеоне",
+          "Michael Corleone"
+        ]
+      ],
+      "summary_ru": "Семья Корлеоне переживает передачу власти в послевоенной Америке.",
+      "summary_en": "The Corleone family undergoes a transfer of power in postwar America.",
+      "fact_ru": "Фильм получил «Оскар» за лучший фильм.",
+      "fact_en": "The film won the Academy Award for Best Picture.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/1973"
+    },
+    {
+      "id": "star_wars",
+      "type": "film",
+      "year": 1977,
+      "title_ru": "«Звёздные войны»",
+      "title_en": "Star Wars",
+      "creator_ids": [
+        "lucas"
+      ],
+      "cast": [
+        [
+          "hamill",
+          "Люк Скайуокер",
+          "Luke Skywalker"
+        ],
+        [
+          "fisher",
+          "Принцесса Лея",
+          "Princess Leia"
+        ]
+      ],
+      "summary_ru": "Люк Скайуокер присоединяется к восстанию против Галактической империи.",
+      "summary_en": "Luke Skywalker joins a rebellion against the Galactic Empire.",
+      "fact_ru": "Фильм расширил индустрию визуальных эффектов и франшизного кино.",
+      "fact_en": "The film expanded visual-effects and franchise filmmaking.",
+      "source_url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/star_wars.pdf"
+    },
+    {
+      "id": "beloved",
+      "type": "book",
+      "year": 1987,
+      "title_ru": "«Возлюбленная»",
+      "title_en": "Beloved",
+      "creator_ids": [
+        "morrison"
+      ],
+      "cast": [],
+      "summary_ru": "Сете сталкивается с памятью о рабстве и трагедией своей семьи.",
+      "summary_en": "Sethe confronts memory of slavery and a family tragedy.",
+      "fact_ru": "Роман получил Пулитцеровскую премию.",
+      "fact_en": "The novel won the Pulitzer Prize.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1993/morrison/facts/"
+    },
+    {
+      "id": "spirited",
+      "type": "film",
+      "year": 2001,
+      "title_ru": "«Унесённые призраками»",
+      "title_en": "Spirited Away",
+      "creator_ids": [
+        "miyazaki"
+      ],
+      "cast": [],
+      "summary_ru": "Тихиро попадает в мир духов и пытается спасти родителей.",
+      "summary_en": "Chihiro enters a spirit world and tries to save her parents.",
+      "fact_ru": "Фильм получил «Оскар» за лучший анимационный фильм.",
+      "fact_en": "The film won the Academy Award for Best Animated Feature.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2003"
+    },
+    {
+      "id": "lotr",
+      "type": "film",
+      "year": 2003,
+      "title_ru": "«Возвращение короля»",
+      "title_en": "The Return of the King",
+      "creator_ids": [
+        "jackson"
+      ],
+      "cast": [
+        [
+          "wood",
+          "Фродо Бэггинс",
+          "Frodo Baggins"
+        ]
+      ],
+      "summary_ru": "Фродо и его союзники пытаются уничтожить Кольцо Всевластия.",
+      "summary_en": "Frodo and his allies try to destroy the One Ring.",
+      "fact_ru": "Фильм получил 11 премий «Оскар».",
+      "fact_en": "The film won 11 Academy Awards.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2004"
+    },
+    {
+      "id": "parasite",
+      "type": "film",
+      "year": 2019,
+      "title_ru": "«Паразиты»",
+      "title_en": "Parasite",
+      "creator_ids": [
+        "bong"
+      ],
+      "cast": [
+        [
+          "song",
+          "Ким Ки Тхэк",
+          "Kim Ki-taek"
+        ]
+      ],
+      "summary_ru": "Семья Ким постепенно устраивается на работу в богатом доме Пак.",
+      "summary_en": "The Kim family gradually finds work in the wealthy Park household.",
+      "fact_ru": "Это первый неанглоязычный фильм, получивший «Оскар» за лучший фильм.",
+      "fact_en": "It was the first non-English-language film to win Best Picture.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2020"
+    },
+    {
+      "id": "hamilton",
+      "type": "music",
+      "year": 2015,
+      "title_ru": "«Гамильтон»",
+      "title_en": "Hamilton",
+      "creator_ids": [
+        "miranda"
+      ],
+      "cast": [
+        [
+          "miranda",
+          "Александр Гамильтон",
+          "Alexander Hamilton"
+        ]
+      ],
+      "summary_ru": "Мюзикл рассказывает о жизни американского государственного деятеля Александра Гамильтона.",
+      "summary_en": "A musical tells the life story of American statesman Alexander Hamilton.",
+      "fact_ru": "В постановке соединяются хип-хоп, R&B и традиции бродвейского мюзикла.",
+      "fact_en": "The show combines hip-hop, R&B and Broadway musical traditions.",
+      "source_url": "https://www.loc.gov/item/2022630104/"
+    },
+    {
+      "id": "macbeth",
+      "type": "play",
+      "year": 1606,
+      "title_ru": "«Макбет»",
+      "title_en": "Macbeth",
+      "creator_ids": [
+        "shakespeare"
+      ],
+      "cast": [],
+      "summary_ru": "Шотландский полководец совершает преступление ради власти и теряет опору в мире.",
+      "summary_en": "A Scottish commander commits a crime for power and loses his footing in the world.",
+      "fact_ru": "Пьесу часто связывают с правлением Якова I и интересом к теме колдовства.",
+      "fact_en": "The play is often linked to James I's reign and interest in witchcraft.",
+      "source_url": "https://www.folger.edu/explore/shakespeares-works/macbeth/",
+      "approximate": true
+    }
+  ],
+  "people": [
+    {
+      "id": "homer",
+      "name_ru": "Гомер",
+      "name_en": "Homer",
+      "roles": [
+        "author"
+      ],
+      "born": "около VIII века до н. э.",
+      "bio_ru": "Легендарный древнегреческий поэт, которому традиционно приписывают «Илиаду» и «Одиссею».",
+      "bio_en": "Legendary ancient Greek poet traditionally credited with the Iliad and Odyssey.",
+      "source_url": "https://www.britannica.com/biography/Homer-Greek-poet",
+      "credit_work_ids": [
+        "odyssey"
+      ]
+    },
+    {
+      "id": "dante",
+      "name_ru": "Данте Алигьери",
+      "name_en": "Dante Alighieri",
+      "roles": [
+        "author"
+      ],
+      "born": "1265",
+      "bio_ru": "Итальянский поэт и мыслитель позднего Средневековья.",
+      "bio_en": "Italian poet and thinker of the late Middle Ages.",
+      "source_url": "https://www.britannica.com/biography/Dante",
+      "credit_work_ids": [
+        "divine_comedy"
+      ]
+    },
+    {
+      "id": "shakespeare",
+      "name_ru": "Уильям Шекспир",
+      "name_en": "William Shakespeare",
+      "roles": [
+        "author"
+      ],
+      "born": "1564",
+      "bio_ru": "Английский драматург и поэт, чьи пьесы продолжают ставить по всему миру.",
+      "bio_en": "English playwright and poet whose plays continue to be performed worldwide.",
+      "source_url": "https://www.folger.edu/explore/shakespeares-life/",
+      "credit_work_ids": [
+        "hamlet",
+        "macbeth"
+      ]
+    },
+    {
+      "id": "cervantes",
+      "name_ru": "Мигель де Сервантес",
+      "name_en": "Miguel de Cervantes",
+      "roles": [
+        "author"
+      ],
+      "born": "1547",
+      "bio_ru": "Испанский писатель эпохи Возрождения, автор «Дон Кихота».",
+      "bio_en": "Spanish Renaissance writer, author of Don Quixote.",
+      "source_url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/biografias/alcala_henares_miguel_cervantes.htm",
+      "credit_work_ids": [
+        "don_quixote"
+      ]
+    },
+    {
+      "id": "handel",
+      "name_ru": "Георг Фридрих Гендель",
+      "name_en": "George Frideric Handel",
+      "roles": [
+        "composer"
+      ],
+      "born": "1685",
+      "bio_ru": "Немецко-британский композитор эпохи барокко.",
+      "bio_en": "German-British composer of the Baroque period.",
+      "source_url": "https://www.gfhandel.org/handel/biography",
+      "credit_work_ids": [
+        "messiah"
+      ]
+    },
+    {
+      "id": "austen",
+      "name_ru": "Джейн Остин",
+      "name_en": "Jane Austen",
+      "roles": [
+        "author"
+      ],
+      "born": "1775",
+      "bio_ru": "Английская писательница, известная романами о семье, классе и браке.",
+      "bio_en": "English novelist known for novels about family, class and marriage.",
+      "source_url": "https://janeaustensociety.org.uk/jane-austen/biography/",
+      "credit_work_ids": [
+        "pride"
+      ]
+    },
+    {
+      "id": "beethoven",
+      "name_ru": "Людвиг ван Бетховен",
+      "name_en": "Ludwig van Beethoven",
+      "roles": [
+        "composer"
+      ],
+      "born": "1770",
+      "bio_ru": "Композитор, связавший венский классицизм и романтизм.",
+      "bio_en": "Composer linking Viennese Classicism and Romanticism.",
+      "source_url": "https://www.beethoven.de/en/beethoven",
+      "credit_work_ids": [
+        "beethoven9"
+      ]
+    },
+    {
+      "id": "shelley",
+      "name_ru": "Мэри Шелли",
+      "name_en": "Mary Shelley",
+      "roles": [
+        "author"
+      ],
+      "born": "1797",
+      "bio_ru": "Английская писательница, автор «Франкенштейна».",
+      "bio_en": "English writer, author of Frankenstein.",
+      "source_url": "https://english.web.ox.ac.uk/ten-minute-book-club/shelley-frankenstein",
+      "credit_work_ids": [
+        "frankenstein"
+      ]
+    },
+    {
+      "id": "bizet",
+      "name_ru": "Жорж Бизе",
+      "name_en": "Georges Bizet",
+      "roles": [
+        "composer"
+      ],
+      "born": "1838",
+      "bio_ru": "Французский композитор, автор оперы «Кармен».",
+      "bio_en": "French composer, author of the opera Carmen.",
+      "source_url": "https://www.opera-comique.com/fr/georges-bizet-1838-1875",
+      "credit_work_ids": [
+        "carmen"
+      ]
+    },
+    {
+      "id": "tolstoy",
+      "name_ru": "Лев Толстой",
+      "name_en": "Leo Tolstoy",
+      "roles": [
+        "author"
+      ],
+      "born": "1828",
+      "bio_ru": "Русский писатель, автор крупных романов о войне, семье и обществе.",
+      "bio_en": "Russian writer of major novels about war, family and society.",
+      "source_url": "https://www.loc.gov/item/n84193808/",
+      "credit_work_ids": [
+        "anna_karenina",
+        "war_peace"
+      ]
+    },
+    {
+      "id": "tchaikovsky",
+      "name_ru": "Пётр Чайковский",
+      "name_en": "Pyotr Tchaikovsky",
+      "roles": [
+        "composer"
+      ],
+      "born": "1840",
+      "bio_ru": "Русский композитор, создавший музыку к знаменитым балетам.",
+      "bio_en": "Russian composer who wrote music for famous ballets.",
+      "source_url": "https://en.tchaikovsky-research.net/pages/Chronology",
+      "credit_work_ids": [
+        "swan_lake"
+      ]
+    },
+    {
+      "id": "doyle",
+      "name_ru": "Артур Конан Дойл",
+      "name_en": "Arthur Conan Doyle",
+      "roles": [
+        "author"
+      ],
+      "born": "1859",
+      "bio_ru": "Британский писатель и создатель Шерлока Холмса.",
+      "bio_en": "British writer and creator of Sherlock Holmes.",
+      "source_url": "https://www.ed.ac.uk/about/people/plaques/doyle",
+      "credit_work_ids": [
+        "sherlock"
+      ]
+    },
+    {
+      "id": "fleming",
+      "name_ru": "Виктор Флеминг",
+      "name_en": "Victor Fleming",
+      "roles": [
+        "director"
+      ],
+      "born": "1889",
+      "bio_ru": "Американский режиссёр, работавший в классическом голливудском кино.",
+      "bio_en": "American director working in classical Hollywood cinema.",
+      "source_url": "https://www.loc.gov/item/nr92020022/",
+      "credit_work_ids": [
+        "wizard"
+      ]
+    },
+    {
+      "id": "garland",
+      "name_ru": "Джуди Гарленд",
+      "name_en": "Judy Garland",
+      "roles": [
+        "actor"
+      ],
+      "born": "1922",
+      "bio_ru": "Американская актриса и певица, сыгравшая Дороти в «Волшебнике страны Оз».",
+      "bio_en": "American actor and singer who played Dorothy in The Wizard of Oz.",
+      "source_url": "https://www.loc.gov/item/nr93017042/",
+      "credit_work_ids": [
+        "wizard"
+      ]
+    },
+    {
+      "id": "welles",
+      "name_ru": "Орсон Уэллс",
+      "name_en": "Orson Welles",
+      "roles": [
+        "director",
+        "actor"
+      ],
+      "born": "1915",
+      "bio_ru": "Американский режиссёр, актёр и театральный новатор.",
+      "bio_en": "American director, actor and theatre innovator.",
+      "source_url": "https://www.loc.gov/item/nr92038706/",
+      "credit_work_ids": [
+        "citizen_kane"
+      ]
+    },
+    {
+      "id": "curtiz",
+      "name_ru": "Майкл Кёртис",
+      "name_en": "Michael Curtiz",
+      "roles": [
+        "director"
+      ],
+      "born": "1886",
+      "bio_ru": "Режиссёр, снявший «Касабланку».",
+      "bio_en": "Director of Casablanca.",
+      "source_url": "https://catalog.afi.com/Person/10430-Michael-Curtiz",
+      "credit_work_ids": [
+        "casablanca"
+      ]
+    },
+    {
+      "id": "bogart",
+      "name_ru": "Хамфри Богарт",
+      "name_en": "Humphrey Bogart",
+      "roles": [
+        "actor"
+      ],
+      "born": "1899",
+      "bio_ru": "Американский актёр, сыгравший Рика Блейна в «Касабланке».",
+      "bio_en": "American actor who played Rick Blaine in Casablanca.",
+      "source_url": "https://www.loc.gov/item/nr92001458/",
+      "credit_work_ids": [
+        "casablanca"
+      ]
+    },
+    {
+      "id": "bergman",
+      "name_ru": "Ингрид Бергман",
+      "name_en": "Ingrid Bergman",
+      "roles": [
+        "actor"
+      ],
+      "born": "1915",
+      "bio_ru": "Шведская актриса, сыгравшая Ильзу Лунд в «Касабланке».",
+      "bio_en": "Swedish actor who played Ilsa Lund in Casablanca.",
+      "source_url": "https://www.loc.gov/item/nr93015383/",
+      "credit_work_ids": [
+        "casablanca"
+      ]
+    },
+    {
+      "id": "orwell",
+      "name_ru": "Джордж Оруэлл",
+      "name_en": "George Orwell",
+      "roles": [
+        "author"
+      ],
+      "born": "1903",
+      "bio_ru": "Английский писатель и эссеист, автор антиутопии «1984».",
+      "bio_en": "English writer and essayist, author of the dystopia Nineteen Eighty-Four.",
+      "source_url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/biography/",
+      "credit_work_ids": [
+        "1984"
+      ]
+    },
+    {
+      "id": "beckett",
+      "name_ru": "Сэмюэл Беккет",
+      "name_en": "Samuel Beckett",
+      "roles": [
+        "author"
+      ],
+      "born": "1906",
+      "bio_ru": "Ирландский драматург и лауреат Нобелевской премии.",
+      "bio_en": "Irish playwright and Nobel laureate.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1969/beckett/facts/",
+      "credit_work_ids": [
+        "waiting"
+      ]
+    },
+    {
+      "id": "kurosawa",
+      "name_ru": "Акира Куросава",
+      "name_en": "Akira Kurosawa",
+      "roles": [
+        "director"
+      ],
+      "born": "1910",
+      "bio_ru": "Японский режиссёр, чьи фильмы получили мировое признание.",
+      "bio_en": "Japanese director whose films received worldwide recognition.",
+      "source_url": "https://www.bfi.org.uk/film/01391b07-5940-5d02-aa47-1158142f2b64/seven-samurai",
+      "credit_work_ids": [
+        "seven_samurai"
+      ]
+    },
+    {
+      "id": "mifune",
+      "name_ru": "Тосиро Мифунэ",
+      "name_en": "Toshiro Mifune",
+      "roles": [
+        "actor"
+      ],
+      "born": "1920",
+      "bio_ru": "Японский актёр, сыгравший Кикутиё в «Семи самураях».",
+      "bio_en": "Japanese actor who played Kikuchiyo in Seven Samurai.",
+      "source_url": "https://www.bfi.org.uk/film/01391b07-5940-5d02-aa47-1158142f2b64/seven-samurai",
+      "credit_work_ids": [
+        "seven_samurai"
+      ]
+    },
+    {
+      "id": "pasternak",
+      "name_ru": "Борис Пастернак",
+      "name_en": "Boris Pasternak",
+      "roles": [
+        "author"
+      ],
+      "born": "1890",
+      "bio_ru": "Русский поэт и писатель, лауреат Нобелевской премии по литературе.",
+      "bio_en": "Russian poet and writer, Nobel laureate in Literature.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1958/pasternak/facts/",
+      "credit_work_ids": [
+        "doctor_zhivago"
+      ]
+    },
+    {
+      "id": "hitchcock",
+      "name_ru": "Альфред Хичкок",
+      "name_en": "Alfred Hitchcock",
+      "roles": [
+        "director"
+      ],
+      "born": "1899",
+      "bio_ru": "Британский и американский режиссёр, мастер саспенса.",
+      "bio_en": "British and American director, master of suspense.",
+      "source_url": "https://www.loc.gov/item/nr92001349/",
+      "credit_work_ids": [
+        "psycho"
+      ]
+    },
+    {
+      "id": "perkins",
+      "name_ru": "Энтони Перкинс",
+      "name_en": "Anthony Perkins",
+      "roles": [
+        "actor"
+      ],
+      "born": "1932",
+      "bio_ru": "Американский актёр, сыгравший Нормана Бейтса в «Психо».",
+      "bio_en": "American actor who played Norman Bates in Psycho.",
+      "source_url": "https://catalog.afi.com/Person/118954-Anthony-Perkins",
+      "credit_work_ids": [
+        "psycho"
+      ]
+    },
+    {
+      "id": "marquez",
+      "name_ru": "Габриэль Гарсиа Маркес",
+      "name_en": "Gabriel García Márquez",
+      "roles": [
+        "author"
+      ],
+      "born": "1927",
+      "bio_ru": "Колумбийский писатель, лауреат Нобелевской премии по литературе.",
+      "bio_en": "Colombian writer and Nobel laureate in Literature.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1982/marquez/facts/",
+      "credit_work_ids": [
+        "one_hundred"
+      ]
+    },
+    {
+      "id": "coppola",
+      "name_ru": "Фрэнсис Форд Коппола",
+      "name_en": "Francis Ford Coppola",
+      "roles": [
+        "director"
+      ],
+      "born": "1939",
+      "bio_ru": "Американский режиссёр и продюсер, снявший «Крёстного отца».",
+      "bio_en": "American director and producer of The Godfather.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/1973",
+      "credit_work_ids": [
+        "godfather"
+      ]
+    },
+    {
+      "id": "brando",
+      "name_ru": "Марлон Брандо",
+      "name_en": "Marlon Brando",
+      "roles": [
+        "actor"
+      ],
+      "born": "1924",
+      "bio_ru": "Американский актёр, сыгравший Вито Корлеоне.",
+      "bio_en": "American actor who played Vito Corleone.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/1973",
+      "credit_work_ids": [
+        "godfather"
+      ]
+    },
+    {
+      "id": "pacino",
+      "name_ru": "Аль Пачино",
+      "name_en": "Al Pacino",
+      "roles": [
+        "actor"
+      ],
+      "born": "1940",
+      "bio_ru": "Американский актёр, сыгравший Майкла Корлеоне.",
+      "bio_en": "American actor who played Michael Corleone.",
+      "source_url": "https://catalog.afi.com/Person/3675-Al-Pacino",
+      "credit_work_ids": [
+        "godfather"
+      ]
+    },
+    {
+      "id": "lucas",
+      "name_ru": "Джордж Лукас",
+      "name_en": "George Lucas",
+      "roles": [
+        "director"
+      ],
+      "born": "1944",
+      "bio_ru": "Американский режиссёр и создатель «Звёздных войн».",
+      "bio_en": "American director and creator of Star Wars.",
+      "source_url": "https://www.loc.gov/item/n2002131479/",
+      "credit_work_ids": [
+        "star_wars"
+      ]
+    },
+    {
+      "id": "hamill",
+      "name_ru": "Марк Хэмилл",
+      "name_en": "Mark Hamill",
+      "roles": [
+        "actor"
+      ],
+      "born": "1951",
+      "bio_ru": "Американский актёр, сыгравший Люка Скайуокера.",
+      "bio_en": "American actor who played Luke Skywalker.",
+      "source_url": "https://www.loc.gov/item/n2007062741/",
+      "credit_work_ids": [
+        "star_wars"
+      ]
+    },
+    {
+      "id": "fisher",
+      "name_ru": "Кэрри Фишер",
+      "name_en": "Carrie Fisher",
+      "roles": [
+        "actor"
+      ],
+      "born": "1956",
+      "bio_ru": "Американская актриса и писательница, сыгравшая принцессу Лею.",
+      "bio_en": "American actor and writer who played Princess Leia.",
+      "source_url": "https://www.loc.gov/item/no2017062420/",
+      "credit_work_ids": [
+        "star_wars"
+      ]
+    },
+    {
+      "id": "morrison",
+      "name_ru": "Тони Моррисон",
+      "name_en": "Toni Morrison",
+      "roles": [
+        "author"
+      ],
+      "born": "1931",
+      "bio_ru": "Американская писательница и лауреат Нобелевской премии.",
+      "bio_en": "American writer and Nobel laureate.",
+      "source_url": "https://www.nobelprize.org/prizes/literature/1993/morrison/facts/",
+      "credit_work_ids": [
+        "beloved"
+      ]
+    },
+    {
+      "id": "miyazaki",
+      "name_ru": "Хаяо Миядзаки",
+      "name_en": "Hayao Miyazaki",
+      "roles": [
+        "director"
+      ],
+      "born": "1941",
+      "bio_ru": "Японский режиссёр анимации и сооснователь Studio Ghibli.",
+      "bio_en": "Japanese animation director and Studio Ghibli co-founder.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2003",
+      "credit_work_ids": [
+        "spirited"
+      ]
+    },
+    {
+      "id": "jackson",
+      "name_ru": "Питер Джексон",
+      "name_en": "Peter Jackson",
+      "roles": [
+        "director"
+      ],
+      "born": "1961",
+      "bio_ru": "Новозеландский режиссёр кинотрилогии «Властелин колец».",
+      "bio_en": "New Zealand director of The Lord of the Rings film trilogy.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2004",
+      "credit_work_ids": [
+        "lotr"
+      ]
+    },
+    {
+      "id": "wood",
+      "name_ru": "Элайджа Вуд",
+      "name_en": "Elijah Wood",
+      "roles": [
+        "actor"
+      ],
+      "born": "1981",
+      "bio_ru": "Американский актёр, сыгравший Фродо Бэггинса.",
+      "bio_en": "American actor who played Frodo Baggins.",
+      "source_url": "https://catalog.afi.com/Person/41212-Elijah-Wood",
+      "credit_work_ids": [
+        "lotr"
+      ]
+    },
+    {
+      "id": "bong",
+      "name_ru": "Пон Джун-хо",
+      "name_en": "Bong Joon-ho",
+      "roles": [
+        "director"
+      ],
+      "born": "1969",
+      "bio_ru": "Южнокорейский режиссёр фильма «Паразиты».",
+      "bio_en": "South Korean director of Parasite.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2020",
+      "credit_work_ids": [
+        "parasite"
+      ]
+    },
+    {
+      "id": "song",
+      "name_ru": "Сон Кан-хо",
+      "name_en": "Song Kang-ho",
+      "roles": [
+        "actor"
+      ],
+      "born": "1967",
+      "bio_ru": "Южнокорейский актёр, сыгравший Ким Ки Тхэка в «Паразитах».",
+      "bio_en": "South Korean actor who played Kim Ki-taek in Parasite.",
+      "source_url": "https://www.oscars.org/oscars/ceremonies/2020",
+      "credit_work_ids": [
+        "parasite"
+      ]
+    },
+    {
+      "id": "miranda",
+      "name_ru": "Лин-Мануэль Миранда",
+      "name_en": "Lin-Manuel Miranda",
+      "roles": [
+        "composer",
+        "actor"
+      ],
+      "born": "1980",
+      "bio_ru": "Американский композитор, драматург и исполнитель, создавший мюзикл «Гамильтон».",
+      "bio_en": "American composer, playwright and performer who created Hamilton.",
+      "source_url": "https://www.loc.gov/item/2022630104/",
+      "credit_work_ids": [
+        "hamilton"
+      ]
+    }
+  ]
+}

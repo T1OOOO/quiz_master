@@ -1,0 +1,576 @@
+/// A touch-first explorer for the fixed J2000 constellation patterns.
+library;
+
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'quizipedia.dart';
+
+class ConstellationAtlasPage extends StatefulWidget {
+  const ConstellationAtlasPage({
+    super.key,
+    required this.catalog,
+    required this.trainingBuilder,
+    this.challenge = false,
+  });
+
+  final QuizipediaCatalog catalog;
+  final WidgetBuilder trainingBuilder;
+  final bool challenge;
+
+  @override
+  State<ConstellationAtlasPage> createState() => _ConstellationAtlasPageState();
+}
+
+class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
+  final _search = TextEditingController();
+  final _controller = TransformationController();
+  late List<Map<String, dynamic>> _constellations;
+  var _selectedIndex = 0;
+  bool _showNames = true;
+  bool _showLines = true;
+  Map<String, dynamic>? _star;
+  Offset _doubleTapAt = Offset.zero;
+
+  @override
+  void initState() {
+    super.initState();
+    _constellations = List.of(widget.catalog.constellations)
+      ..sort(
+        (a, b) => (a['name_en'] as String).compareTo(b['name_en'] as String),
+      );
+    _search.addListener(_onSearchChanged);
+  }
+
+  @override
+  void dispose() {
+    _search
+      ..removeListener(_onSearchChanged)
+      ..dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  bool get _russian => Localizations.localeOf(context).languageCode == 'ru';
+  String _t(String en, String ru) => _russian ? ru : en;
+  String _name(Map<String, dynamic> row) =>
+      row[_russian ? 'name_ru' : 'name_en'] as String;
+  String _explanation(Map<String, dynamic> row) =>
+      row[_russian ? 'explanation_ru' : 'explanation_en'] as String;
+  Map<String, dynamic> get _selected => _constellations[_selectedIndex];
+  String get _query => _search.text.trim().toLowerCase();
+  List<Map<String, dynamic>> get _matches => _constellations.where((row) {
+    if (_query.isEmpty) return true;
+    return '${row['name_en']} ${row['name_ru']}'.toLowerCase().contains(_query);
+  }).toList();
+
+  void _onSearchChanged() => setState(() {});
+
+  void _select(Map<String, dynamic> row) {
+    setState(() {
+      _selectedIndex = _constellations.indexOf(row);
+      _star = null;
+      _controller.value = Matrix4.identity();
+    });
+  }
+
+  void _move(int direction) {
+    setState(() {
+      _selectedIndex = (_selectedIndex + direction) % _constellations.length;
+      if (_selectedIndex < 0) _selectedIndex += _constellations.length;
+      _star = null;
+      _controller.value = Matrix4.identity();
+    });
+  }
+
+  void _reset() => setState(() => _controller.value = Matrix4.identity());
+
+  void _zoomAt(Offset focalPoint, double factor) {
+    final scene = _controller.toScene(focalPoint);
+    final next = Matrix4.copy(_controller.value)
+      ..translateByDouble(scene.dx, scene.dy, 0, 1)
+      ..scaleByDouble(factor, factor, 1, 1)
+      ..translateByDouble(-scene.dx, -scene.dy, 0, 1);
+    final scale = next.getMaxScaleOnAxis();
+    if (scale >= 1 && scale <= 8) setState(() => _controller.value = next);
+  }
+
+  Future<void> _openSource() async {
+    final creditId = _selected['credit_id'];
+    final credit = widget.catalog.credits.cast<Map<String, dynamic>>().where(
+      (row) => row['id'] == creditId,
+    );
+    if (credit.isEmpty) return;
+    final uri = Uri.tryParse(credit.first['source_url'] as String);
+    if (uri == null ||
+        !await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              _t('Could not open source', 'Не удалось открыть источник'),
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_constellations.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(_t('Constellation atlas', 'Атлас созвездий')),
+        ),
+        body: Center(
+          child: Text(_t('No constellation data', 'Нет данных о созвездиях')),
+        ),
+      );
+    }
+    final row = _selected;
+    final stars = (row['stars'] as List).cast<Map<String, dynamic>>();
+    final lines = (row['lines'] as List).cast<List>();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_t('Constellation atlas', 'Атлас созвездий')),
+        actions: [
+          IconButton(
+            tooltip: _t('Previous constellation', 'Предыдущее созвездие'),
+            onPressed: () => _move(-1),
+            icon: const Icon(Icons.chevron_left),
+          ),
+          IconButton(
+            tooltip: _t('Next constellation', 'Следующее созвездие'),
+            onPressed: () => _move(1),
+            icon: const Icon(Icons.chevron_right),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          key: const Key('constellation-scroll'),
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                _t('Explore · local unranked', 'Изучение · без рейтинга'),
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                key: const Key('constellation-search'),
+                controller: _search,
+                textInputAction: TextInputAction.search,
+                decoration: InputDecoration(
+                  labelText: _t('Find a constellation', 'Найти созвездие'),
+                  prefixIcon: const Icon(Icons.search),
+                  border: const OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 8),
+              _ConstellationPicker(
+                rows: _matches,
+                selected: row['id'] as String,
+                name: _name,
+                onSelected: _select,
+                emptyLabel: _t(
+                  'No matching constellations',
+                  'Созвездия не найдены',
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                _name(row),
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 8),
+              _SkyControls(
+                names: _showNames,
+                lines: _showLines,
+                russian: _russian,
+                onNamesChanged: (value) => setState(() => _showNames = value),
+                onLinesChanged: (value) => setState(() => _showLines = value),
+              ),
+              const SizedBox(height: 8),
+              _ConstellationCanvas(
+                controller: _controller,
+                stars: stars,
+                lines: lines,
+                showNames: _showNames,
+                showLines: _showLines,
+                onDoubleTapDown: (details) =>
+                    _doubleTapAt = details.localPosition,
+                onDoubleTap: () => _zoomAt(_doubleTapAt, 1.8),
+                onStar: (star) => setState(() => _star = star),
+              ),
+              _ZoomToolbar(
+                onZoomIn: () => _zoomAt(const Offset(160, 150), 1.35),
+                onZoomOut: () => _zoomAt(const Offset(160, 150), 1 / 1.35),
+                onReset: _reset,
+                russian: _russian,
+              ),
+              Text(
+                _t(
+                  'Pinch to zoom, drag to move, or double-tap where you want to inspect.',
+                  'Сводите пальцы для масштаба, перетаскивайте карту или дважды коснитесь нужного места.',
+                ),
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const SizedBox(height: 12),
+              _StarList(
+                stars: stars,
+                selected: _star,
+                onSelected: (star) => setState(() => _star = star),
+                russian: _russian,
+              ),
+              if (_star != null) _StarCard(star: _star!, russian: _russian),
+              const SizedBox(height: 12),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _t('About this pattern', 'О рисунке'),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 6),
+                      Text(_explanation(row)),
+                      TextButton.icon(
+                        onPressed: _openSource,
+                        icon: const Icon(Icons.open_in_new),
+                        label: Text(
+                          _t('Open data source', 'Открыть источник данных'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              FilledButton.icon(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(builder: widget.trainingBuilder),
+                ),
+                icon: const Icon(Icons.play_arrow),
+                label: Text(_t('Start training', 'Начать тренировку')),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ConstellationPicker extends StatelessWidget {
+  const _ConstellationPicker({
+    required this.rows,
+    required this.selected,
+    required this.name,
+    required this.onSelected,
+    required this.emptyLabel,
+  });
+  final List<Map<String, dynamic>> rows;
+  final String selected;
+  final String Function(Map<String, dynamic>) name;
+  final ValueChanged<Map<String, dynamic>> onSelected;
+  final String emptyLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    if (rows.isEmpty) {
+      return Padding(padding: const EdgeInsets.all(8), child: Text(emptyLabel));
+    }
+    return SizedBox(
+      height: 52,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: rows.length,
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
+        itemBuilder: (context, index) {
+          final row = rows[index];
+          final id = row['id'] as String;
+          return ChoiceChip(
+            key: Key('constellation-option-$id'),
+            label: Text(name(row), overflow: TextOverflow.ellipsis),
+            selected: id == selected,
+            onSelected: (_) => onSelected(row),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _SkyControls extends StatelessWidget {
+  const _SkyControls({
+    required this.names,
+    required this.lines,
+    required this.russian,
+    required this.onNamesChanged,
+    required this.onLinesChanged,
+  });
+  final bool names, lines;
+  final bool russian;
+  final ValueChanged<bool> onNamesChanged, onLinesChanged;
+  @override
+  Widget build(BuildContext context) => Wrap(
+    spacing: 8,
+    children: [
+      FilterChip(
+        label: Text(russian ? 'Подписи' : 'Labels'),
+        selected: names,
+        onSelected: onNamesChanged,
+      ),
+      FilterChip(
+        label: Text(russian ? 'Линии' : 'Lines'),
+        selected: lines,
+        onSelected: onLinesChanged,
+      ),
+    ],
+  );
+}
+
+class _ConstellationCanvas extends StatelessWidget {
+  const _ConstellationCanvas({
+    required this.controller,
+    required this.stars,
+    required this.lines,
+    required this.showNames,
+    required this.showLines,
+    required this.onDoubleTapDown,
+    required this.onDoubleTap,
+    required this.onStar,
+  });
+  final TransformationController controller;
+  final List<Map<String, dynamic>> stars;
+  final List<List> lines;
+  final bool showNames, showLines;
+  final GestureTapDownCallback onDoubleTapDown;
+  final GestureTapCallback onDoubleTap;
+  final ValueChanged<Map<String, dynamic>> onStar;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    label: 'Constellation star pattern. Pinch, pan, and double-tap to inspect.',
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: const Color(0xff071525),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
+        ),
+        child: SizedBox(
+          height: 340,
+          child: LayoutBuilder(
+            builder: (context, constraints) => InteractiveViewer(
+              transformationController: controller,
+              minScale: 1,
+              maxScale: 8,
+              boundaryMargin: const EdgeInsets.all(160),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onDoubleTapDown: onDoubleTapDown,
+                onDoubleTap: onDoubleTap,
+                onTapUp: (details) {
+                  final points = projectConstellation(
+                    stars,
+                    Size(constraints.maxWidth, 340),
+                  );
+                  Map<String, dynamic>? nearest;
+                  var distance = double.infinity;
+                  for (final star in stars) {
+                    final value =
+                        (details.localPosition - points[star['id']]!).distance;
+                    if (value < distance) {
+                      distance = value;
+                      nearest = star;
+                    }
+                  }
+                  if (nearest != null && distance < 30) onStar(nearest);
+                },
+                child: CustomPaint(
+                  key: const Key('constellation-canvas'),
+                  size: Size(constraints.maxWidth, 340),
+                  painter: _SkyPainter(
+                    stars,
+                    lines,
+                    showNames: showNames,
+                    showLines: showLines,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+class _SkyPainter extends CustomPainter {
+  const _SkyPainter(
+    this.stars,
+    this.lines, {
+    required this.showNames,
+    required this.showLines,
+  });
+  final List<Map<String, dynamic>> stars;
+  final List<List> lines;
+  final bool showNames, showLines;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final points = projectConstellation(stars, size);
+    final linePaint = Paint()
+      ..color = const Color(0xff72b6ee)
+      ..strokeWidth = 1.5;
+    if (showLines) {
+      for (final line in lines) {
+        canvas.drawLine(points[line[0]]!, points[line[1]]!, linePaint);
+      }
+    }
+    for (final star in stars) {
+      final magnitude = (star['magnitude'] as num).toDouble();
+      final radius = (5.6 - magnitude).clamp(2.2, 5.2).toDouble();
+      final point = points[star['id']]!;
+      canvas.drawCircle(
+        point,
+        radius + 2,
+        Paint()..color = const Color(0xffd9efff).withValues(alpha: .16),
+      );
+      canvas.drawCircle(
+        point,
+        radius,
+        Paint()..color = const Color(0xfff5fbff),
+      );
+      if (showNames) {
+        final painter = TextPainter(
+          text: TextSpan(
+            text: star['name'] as String,
+            style: const TextStyle(color: Color(0xffd9efff), fontSize: 12),
+          ),
+          textDirection: TextDirection.ltr,
+          maxLines: 1,
+        )..layout(maxWidth: 120);
+        painter.paint(
+          canvas,
+          Offset(
+            (point.dx + 8).clamp(
+              4.0,
+              (size.width - painter.width - 4).clamp(4.0, double.infinity),
+            ),
+            (point.dy - 18).clamp(4.0, size.height - painter.height - 4),
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SkyPainter old) =>
+      old.stars != stars ||
+      old.lines != lines ||
+      old.showNames != showNames ||
+      old.showLines != showLines;
+}
+
+class _ZoomToolbar extends StatelessWidget {
+  const _ZoomToolbar({
+    required this.onZoomIn,
+    required this.onZoomOut,
+    required this.onReset,
+    required this.russian,
+  });
+  final VoidCallback onZoomIn, onZoomOut, onReset;
+  final bool russian;
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      children: [
+        IconButton(
+          tooltip: russian ? 'Увеличить' : 'Zoom in',
+          icon: const Icon(Icons.add),
+          onPressed: onZoomIn,
+        ),
+        IconButton(
+          tooltip: russian ? 'Уменьшить' : 'Zoom out',
+          icon: const Icon(Icons.remove),
+          onPressed: onZoomOut,
+        ),
+        Tooltip(
+          message: russian ? 'Сбросить вид' : 'Reset view',
+          child: TextButton.icon(
+            onPressed: onReset,
+            icon: const Icon(Icons.replay),
+            label: Text(russian ? 'Сбросить' : 'Reset'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _StarList extends StatelessWidget {
+  const _StarList({
+    required this.stars,
+    required this.selected,
+    required this.onSelected,
+    required this.russian,
+  });
+  final List<Map<String, dynamic>> stars;
+  final Map<String, dynamic>? selected;
+  final ValueChanged<Map<String, dynamic>> onSelected;
+  final bool russian;
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        russian ? 'Звёзды: доступный список' : 'Stars: accessible list',
+        style: Theme.of(context).textTheme.titleSmall,
+      ),
+      const SizedBox(height: 4),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (final star in stars)
+            OutlinedButton(
+              onPressed: () => onSelected(star),
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size(44, 44),
+                backgroundColor: selected?['id'] == star['id']
+                    ? Theme.of(context).colorScheme.secondaryContainer
+                    : null,
+              ),
+              child: Text(star['name'] as String),
+            ),
+        ],
+      ),
+    ],
+  );
+}
+
+class _StarCard extends StatelessWidget {
+  const _StarCard({required this.star, required this.russian});
+  final Map<String, dynamic> star;
+  final bool russian;
+  @override
+  Widget build(BuildContext context) => Card(
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Text(
+        russian
+            ? '${star['name']} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
+            : '${star['name']} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
+      ),
+    ),
+  );
+}
