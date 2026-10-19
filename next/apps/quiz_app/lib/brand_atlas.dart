@@ -1,6 +1,8 @@
 /// A small source-linked, local brand reference and practice screen.
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -637,7 +639,12 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
     builder: (context, snapshot) {
       if (snapshot.hasError) {
         return Scaffold(
-          appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
+          appBar: AppBar(
+            title: Text(_t('Brand atlas', 'Атлас брендов')),
+            actions: [
+              FactPracticeAction(scope: 'brands', bundle: widget.bundle),
+            ],
+          ),
           body: Center(
             child: FilledButton.icon(
               key: const Key('brand-retry'),
@@ -651,13 +658,21 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
       }
       if (!snapshot.hasData) {
         return Scaffold(
-          appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
+          appBar: AppBar(
+            title: Text(_t('Brand atlas', 'Атлас брендов')),
+            actions: [
+              FactPracticeAction(scope: 'brands', bundle: widget.bundle),
+            ],
+          ),
           body: const Center(child: CircularProgressIndicator()),
         );
       }
       final atlas = snapshot.data!;
       return Scaffold(
-        appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
+        appBar: AppBar(
+          title: Text(_t('Brand atlas', 'Атлас брендов')),
+          actions: [FactPracticeAction(scope: 'brands', bundle: widget.bundle)],
+        ),
         body: _practice ? _practiceView(atlas) : _explorer(atlas),
       );
     },
@@ -744,19 +759,39 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
           Wrap(
             spacing: 8,
             children: [
-              DropdownButton<String>(
-                value: _sort,
-                items: [
-                  DropdownMenuItem(
+              PopupMenuButton<String>(
+                tooltip: _t('Sort', 'Сортировка'),
+                initialValue: _sort,
+                itemBuilder: (_) => [
+                  PopupMenuItem(
                     value: 'name',
                     child: Text(_t('Name', 'Название')),
                   ),
-                  DropdownMenuItem(
+                  PopupMenuItem(
                     value: 'year',
                     child: Text(_t('Founded', 'Год основания')),
                   ),
                 ],
-                onChanged: (value) => setState(() => _sort = value!),
+                onSelected: (value) => setState(() => _sort = value),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 12,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          _sort == 'name'
+                              ? _t('Name', 'Название')
+                              : _t('Founded', 'Год основания'),
+                        ),
+                      ),
+                      const Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
               ),
               OutlinedButton.icon(
                 onPressed: () => setState(() => _ascending = !_ascending),
@@ -765,18 +800,36 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                 ),
                 label: Text(_t('Order', 'Порядок')),
               ),
-              DropdownButton<BrandQuestionKind?>(
-                value: _topic,
-                items: [
-                  DropdownMenuItem(value: null, child: Text(_topicName(null))),
+              PopupMenuButton<String>(
+                tooltip: _t('Training topic', 'Тема тренировки'),
+                initialValue: _topic?.name ?? 'all',
+                itemBuilder: (_) => [
+                  PopupMenuItem(value: 'all', child: Text(_topicName(null))),
                   ...BrandQuestionKind.values.map(
-                    (item) => DropdownMenuItem(
-                      value: item,
+                    (item) => PopupMenuItem(
+                      value: item.name,
                       child: Text(_topicName(item)),
                     ),
                   ),
                 ],
-                onChanged: (value) => setState(() => _topic = value),
+                onSelected: (value) => setState(
+                  () => _topic = value == 'all'
+                      ? null
+                      : BrandQuestionKind.values.byName(value),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 12,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(child: Text(_topicName(_topic))),
+                      const Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
               ),
               FilledButton.icon(
                 key: const Key('brand-train'),

@@ -1,6 +1,8 @@
 /// A touch-first explorer for the fixed J2000 constellation patterns.
 library;
 
+import 'fact_practice.dart';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -143,6 +145,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
       appBar: AppBar(
         title: Text(_t('Constellation atlas', 'Атлас созвездий')),
         actions: [
+          const FactPracticeAction(scope: 'sky'),
           IconButton(
             tooltip: _t('Previous constellation', 'Предыдущее созвездие'),
             onPressed: () => _move(-1),
@@ -330,16 +333,26 @@ class _SkyControls extends StatelessWidget {
   Widget build(BuildContext context) => Wrap(
     spacing: 8,
     children: [
-      FilterChip(
-        label: Text(russian ? 'Подписи' : 'Labels'),
-        selected: names,
-        onSelected: onNamesChanged,
-      ),
-      FilterChip(
-        label: Text(russian ? 'Линии' : 'Lines'),
-        selected: lines,
-        onSelected: onLinesChanged,
-      ),
+      for (final control in [
+        (
+          label: russian ? 'Подписи' : 'Labels',
+          selected: names,
+          onSelected: onNamesChanged,
+        ),
+        (
+          label: russian ? 'Линии' : 'Lines',
+          selected: lines,
+          onSelected: onLinesChanged,
+        ),
+      ])
+        ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48),
+          child: FilterChip(
+            label: Text(control.label),
+            selected: control.selected,
+            onSelected: control.onSelected,
+          ),
+        ),
     ],
   );
 }
@@ -463,27 +476,58 @@ class _SkyPainter extends CustomPainter {
         radius,
         Paint()..color = const Color(0xfff5fbff),
       );
-      if (showNames) {
-        final painter = TextPainter(
-          text: TextSpan(
-            text: starLabel(star, russian),
-            style: const TextStyle(color: Color(0xffd9efff), fontSize: 12),
-          ),
-          textDirection: TextDirection.ltr,
-          maxLines: 1,
-        )..layout(maxWidth: 120);
-        painter.paint(
-          canvas,
-          Offset(
-            (point.dx + 8).clamp(
-              4.0,
-              (size.width - painter.width - 4).clamp(4.0, double.infinity),
-            ),
-            (point.dy - 18).clamp(4.0, size.height - painter.height - 4),
-          ),
-        );
-      }
     }
+    if (!showNames) return;
+
+    final occupied = <Rect>[];
+    final maxLabelWidth = size.width < 420 ? 92.0 : 120.0;
+    final ordered = [
+      ...stars,
+    ]..sort((a, b) => (a['magnitude'] as num).compareTo(b['magnitude'] as num));
+    canvas.save();
+    canvas.clipRect(Offset.zero & size);
+    for (final star in ordered) {
+      final point = points[star['id']]!;
+      final painter = TextPainter(
+        text: TextSpan(
+          text: starLabel(star, russian),
+          style: TextStyle(
+            color: const Color(0xffd9efff),
+            fontSize: size.width < 420 ? 11 : 12,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+      )..layout(maxWidth: maxLabelWidth);
+      final right = (point.dx + 8).clamp(4.0, size.width - painter.width - 4);
+      final left = (point.dx - painter.width - 8).clamp(
+        4.0,
+        size.width - painter.width - 4,
+      );
+      final top = (point.dy - painter.height - 8).clamp(
+        4.0,
+        size.height - painter.height - 4,
+      );
+      final bottom = (point.dy + 8).clamp(
+        4.0,
+        size.height - painter.height - 4,
+      );
+      final candidates = [
+        Offset(right, top),
+        Offset(left, top),
+        Offset(right, bottom),
+        Offset(left, bottom),
+      ];
+      final offset = candidates.where((candidate) {
+        final rect = candidate & painter.size;
+        return occupied.every((other) => !other.inflate(4).overlaps(rect));
+      }).firstOrNull;
+      if (offset == null) continue;
+      occupied.add(offset & painter.size);
+      painter.paint(canvas, offset);
+    }
+    canvas.restore();
   }
 
   @override

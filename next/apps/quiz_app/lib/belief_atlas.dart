@@ -1,5 +1,7 @@
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -127,13 +129,19 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
   Widget build(BuildContext c) {
     if (_loading) {
       return Scaffold(
-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
+        appBar: AppBar(
+          title: Text(_t('Belief atlas', 'Атлас верований')),
+          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
+        ),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
     if (_error != null) {
       return Scaffold(
-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
+        appBar: AppBar(
+          title: Text(_t('Belief atlas', 'Атлас верований')),
+          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
+        ),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -153,7 +161,10 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
     final a = _atlas!;
     if (_nodes.isEmpty) {
       return Scaffold(
-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
+        appBar: AppBar(
+          title: Text(_t('Belief atlas', 'Атлас верований')),
+          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
+        ),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -186,7 +197,10 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
       );
     }
     return Scaffold(
-      appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
+      appBar: AppBar(
+        title: Text(_t('Belief atlas', 'Атлас верований')),
+        actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           key: const Key('belief-scroll'),

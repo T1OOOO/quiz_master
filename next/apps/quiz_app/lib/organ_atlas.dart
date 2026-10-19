@@ -1,5 +1,7 @@
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -215,6 +217,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
       appBar: AppBar(
         title: Text(_t('Human organs and glands', 'Атлас органов и желёз')),
         actions: [
+          FactPracticeAction(scope: 'organs', bundle: widget.bundle),
           TextButton.icon(
             onPressed: () => _start(atlas, shown),
             icon: const Icon(Icons.quiz_outlined),

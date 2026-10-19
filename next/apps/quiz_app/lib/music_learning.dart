@@ -1,6 +1,8 @@
 /// Sourced local music reference and finite, unranked visual practice.
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -440,6 +442,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      actions: [FactPracticeAction(scope: 'music', bundle: widget.bundle)],
       title: Text(
         _t('Music · learn and practise', 'Музыка · изучение и тренировка'),
       ),

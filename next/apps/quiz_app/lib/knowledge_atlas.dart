@@ -1,6 +1,8 @@
 /// A small, source-linked atlas for unranked history and culture practice.
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -499,7 +501,15 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     builder: (context, snapshot) {
       if (snapshot.hasError) {
         return Scaffold(
-          appBar: AppBar(title: Text(_title)),
+          appBar: AppBar(
+            title: Text(_title),
+            actions: [
+              FactPracticeAction(
+                scope: widget.section == 'culture' ? 'works' : widget.section,
+                bundle: widget.bundle,
+              ),
+            ],
+          ),
           body: Center(
             child: FilledButton.icon(
               onPressed: () => setState(() => _future = _load()),
@@ -511,12 +521,28 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       }
       if (!snapshot.hasData) {
         return Scaffold(
-          appBar: AppBar(title: Text(_title)),
+          appBar: AppBar(
+            title: Text(_title),
+            actions: [
+              FactPracticeAction(
+                scope: widget.section == 'culture' ? 'works' : widget.section,
+                bundle: widget.bundle,
+              ),
+            ],
+          ),
           body: const Center(child: CircularProgressIndicator()),
         );
       }
       return Scaffold(
-        appBar: AppBar(title: Text(_title)),
+        appBar: AppBar(
+          title: Text(_title),
+          actions: [
+            FactPracticeAction(
+              scope: widget.section == 'culture' ? 'works' : widget.section,
+              bundle: widget.bundle,
+            ),
+          ],
+        ),
         body: _build(snapshot.data!),
       );
     },

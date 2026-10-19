@@ -149,30 +149,53 @@ class _FeedbackOverlayState extends ConsumerState<_FeedbackOverlay> {
     );
     return ListenableBuilder(
       listenable: widget.router.routeInformationProvider,
-      builder: (context, _) => Stack(
-        children: [
-          RepaintBoundary(key: _boundary, child: widget.child),
-          if (widget.router.routeInformationProvider.value.uri.path !=
-                  '/feedback' &&
-              !(finished &&
-                  (widget.router.routeInformationProvider.value.uri.path ==
-                          '/' ||
-                      widget.router.routeInformationProvider.value.uri.path
-                          .startsWith('/quiz/'))))
-            PositionedDirectional(
-              end: 12,
-              bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
-              child: SafeArea(
-                child: FloatingActionButton.small(
-                  heroTag: 'feedback',
-                  tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
-                  onPressed: _opening ? null : _open,
-                  child: const Icon(Icons.support_agent),
+      builder: (context, _) {
+        final route = widget.router.routeInformationProvider.value.uri.path;
+        final show =
+            route != '/feedback' &&
+            !(finished && (route == '/' || route.startsWith('/quiz/')));
+        final button = FloatingActionButton.small(
+          heroTag: 'feedback',
+          tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
+          onPressed: _opening ? null : _open,
+          child: const Icon(Icons.support_agent),
+        );
+        if (route != '/quizipedia') {
+          return Stack(
+            children: [
+              RepaintBoundary(key: _boundary, child: widget.child),
+              if (show)
+                PositionedDirectional(
+                  end: 12,
+                  bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
+                  child: SafeArea(child: button),
+                ),
+            ],
+          );
+        }
+        return Column(
+          children: [
+            Expanded(
+              child: RepaintBoundary(key: _boundary, child: widget.child),
+            ),
+            if (show && MediaQuery.viewInsetsOf(context).bottom == 0)
+              ColoredBox(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                child: SafeArea(
+                  top: false,
+                  child: Padding(
+                    key: const Key('feedback-footer'),
+                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
+                    child: Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: button,
+                    ),
+                  ),
                 ),
               ),
-            ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }

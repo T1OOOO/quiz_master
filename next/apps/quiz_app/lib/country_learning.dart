@@ -2,6 +2,8 @@
 /// source-labelled asset and creates no question for fields that are absent.
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -1016,7 +1018,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
           .toSet(),
     ];
     return Scaffold(
-      appBar: AppBar(title: Text(_t('Country atlas', 'Атлас стран'))),
+      appBar: AppBar(
+        title: Text(_t('Country atlas', 'Атлас стран')),
+        actions: [
+          FactPracticeAction(scope: 'countries', bundle: widget.bundle),
+        ],
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, box) => SingleChildScrollView(
@@ -1235,7 +1242,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       setState(() => _reverseRelations = value),
                 ),
                 SizedBox(
-                  height: math.max(260, math.min(600, box.maxHeight * .55)),
+                  height: math.max(300, math.min(560, box.maxHeight * .60)),
                   child: QuizipediaWorldMap(
                     features: _visible,
                     controller: _controller,

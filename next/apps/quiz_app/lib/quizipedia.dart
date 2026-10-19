@@ -1,6 +1,8 @@
 /// Local, unranked visual practice. Answers stay outside ranked API models.
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -627,6 +629,33 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               ),
             Card(
               child: ListTile(
+                key: const Key('quizipedia-all-facts'),
+                leading: const Icon(Icons.fact_check_outlined),
+                title: Text(
+                  _t(
+                    context,
+                    'Questions for every fact',
+                    'Вопросы по всем фактам',
+                  ),
+                ),
+                subtitle: Text(
+                  _t(
+                    context,
+                    'Choose any section, topic or card',
+                    'Любой раздел, тема или карточка',
+                  ),
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        FactPracticePage(scope: 'all', bundle: widget.bundle),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: ListTile(
                 leading: const Icon(Icons.accessibility_new),
                 title: Text(
                   _t(
@@ -1050,6 +1079,15 @@ class _QuizGameState extends State<_QuizGame> {
       appBar: AppBar(
         title: Text(_moduleTitle(context, widget.module)),
         actions: [
+          FactPracticeAction(
+            scope: switch (widget.module) {
+              _Module.anatomy => 'endocrine',
+              _Module.landmarks => 'landmarks',
+              _Module.sky => 'sky',
+              _Module.map => 'countries',
+            },
+            bundle: widget.bundle,
+          ),
           IconButton(
             tooltip: _t(context, 'Credits', 'Источники'),
             icon: const Icon(Icons.info_outline),

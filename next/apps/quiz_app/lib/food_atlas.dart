@@ -1,5 +1,7 @@
 library;
 
+import 'fact_practice.dart';
+
 import 'russian_learning_text.dart';
 
 import 'dart:convert';
@@ -167,6 +169,7 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
       appBar: AppBar(
         title: Text(_t('Food atlas', 'Атлас блюд')),
         actions: [
+          FactPracticeAction(scope: 'food', bundle: widget.bundle),
           TextButton.icon(
             key: const Key('food-train'),
             onPressed: atlas.dishes.length >= 10 ? () => _start(atlas) : null,
