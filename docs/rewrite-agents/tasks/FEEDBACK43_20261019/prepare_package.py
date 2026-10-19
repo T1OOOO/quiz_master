@@ -33,7 +33,7 @@ version.update(buildId=build, commit=commit, source_commit=commit,
                main_dart_js_sha256=hashlib.sha256(js).hexdigest(),
                api_sha256=hashlib.sha256(api).hexdigest(),
                quizipedia_facts=12296, quizipedia_sections=13,
-               quiz_packs=144, quiz_questions=4474, question_articles=305,
+               packs=144, questions=4474, question_articles=305,
                api_build_id=build, frontend_only=False)
 shutil.copytree(web, args.destination / 'web')
 shutil.copytree(source / 'deploy/helm/quiz-master', args.destination / 'chart')
