@@ -29,3 +29,9 @@ No production deployment or physical Android-device check was performed.
 
 Only brand-related files and task evidence are included in this change. Existing
 unrelated shared-checkout changes remain outside the commits.
+
+Implementation commit: 7d35cc06. Release browser check on port 8788 loaded
+the shipped 61-brand registry through the real menu; release-mobile.png shows
+the final 390 × 844 layout. Clean checkout pull --rebase found HEAD up to date.
+
+Clean committed checkout: 22 focused registry, brand UI, menu and Quizipedia tests passed (clean-checkout-tests.log), with offline dependency resolution.
