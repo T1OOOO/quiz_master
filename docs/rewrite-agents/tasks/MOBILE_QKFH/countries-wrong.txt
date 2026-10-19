@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e335]
+          - heading "Тренировка по фактам" [level=2, ref=e336]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Площадь» для «Андорра»?"
+          - button "34.2 км²" [disabled, ref=e349]
+          - button "9372610 км²" [disabled, ref=e350]
+          - button "181034 км²" [disabled, ref=e351]
+          - button "468 км²" [disabled, ref=e352]
+          - group "Пока неверно Правильный ответ: 468 км²"
+            - button "Справочник стран" [ref=e357]
+          - button "Завершить" [ref=e355]
+          - button "К списку фактов" [ref=e356]
+      - button "Отправить отзыв" [ref=e348]

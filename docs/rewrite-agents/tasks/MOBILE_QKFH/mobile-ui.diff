@@ -1,0 +1,588 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 1d0ca599..76169c63 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -127,13 +129,19 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+   Widget build(BuildContext c) {
+     if (_loading) {
+       return Scaffold(
+-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
++        appBar: AppBar(
++          title: Text(_t('Belief atlas', 'Атлас верований')),
++          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
++        ),
+         body: const Center(child: CircularProgressIndicator()),
+       );
+     }
+     if (_error != null) {
+       return Scaffold(
+-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
++        appBar: AppBar(
++          title: Text(_t('Belief atlas', 'Атлас верований')),
++          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
++        ),
+         body: Center(
+           child: Column(
+             mainAxisSize: MainAxisSize.min,
+@@ -153,7 +161,10 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+     final a = _atlas!;
+     if (_nodes.isEmpty) {
+       return Scaffold(
+-        appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
++        appBar: AppBar(
++          title: Text(_t('Belief atlas', 'Атлас верований')),
++          actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
++        ),
+         body: Center(
+           child: Column(
+             mainAxisSize: MainAxisSize.min,
+@@ -186,7 +197,10 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+       );
+     }
+     return Scaffold(
+-      appBar: AppBar(title: Text(_t('Belief atlas', 'Атлас верований'))),
++      appBar: AppBar(
++        title: Text(_t('Belief atlas', 'Атлас верований')),
++        actions: [FactPracticeAction(scope: _section, bundle: widget.bundle)],
++      ),
+       body: SafeArea(
+         child: SingleChildScrollView(
+           key: const Key('belief-scroll'),
+diff --git a/next/apps/quiz_app/lib/brand_atlas.dart b/next/apps/quiz_app/lib/brand_atlas.dart
+index 1efebeb9..c4c6d4b0 100644
+--- a/next/apps/quiz_app/lib/brand_atlas.dart
++++ b/next/apps/quiz_app/lib/brand_atlas.dart
+@@ -1,6 +1,8 @@
+ /// A small source-linked, local brand reference and practice screen.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -637,7 +639,12 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+     builder: (context, snapshot) {
+       if (snapshot.hasError) {
+         return Scaffold(
+-          appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
++          appBar: AppBar(
++            title: Text(_t('Brand atlas', 'Атлас брендов')),
++            actions: [
++              FactPracticeAction(scope: 'brands', bundle: widget.bundle),
++            ],
++          ),
+           body: Center(
+             child: FilledButton.icon(
+               key: const Key('brand-retry'),
+@@ -651,13 +658,21 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+       }
+       if (!snapshot.hasData) {
+         return Scaffold(
+-          appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
++          appBar: AppBar(
++            title: Text(_t('Brand atlas', 'Атлас брендов')),
++            actions: [
++              FactPracticeAction(scope: 'brands', bundle: widget.bundle),
++            ],
++          ),
+           body: const Center(child: CircularProgressIndicator()),
+         );
+       }
+       final atlas = snapshot.data!;
+       return Scaffold(
+-        appBar: AppBar(title: Text(_t('Brand atlas', 'Атлас брендов'))),
++        appBar: AppBar(
++          title: Text(_t('Brand atlas', 'Атлас брендов')),
++          actions: [FactPracticeAction(scope: 'brands', bundle: widget.bundle)],
++        ),
+         body: _practice ? _practiceView(atlas) : _explorer(atlas),
+       );
+     },
+@@ -744,19 +759,23 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+           Wrap(
+             spacing: 8,
+             children: [
+-              DropdownButton<String>(
+-                value: _sort,
+-                items: [
+-                  DropdownMenuItem(
+-                    value: 'name',
+-                    child: Text(_t('Name', 'Название')),
+-                  ),
+-                  DropdownMenuItem(
+-                    value: 'year',
+-                    child: Text(_t('Founded', 'Год основания')),
+-                  ),
+-                ],
+-                onChanged: (value) => setState(() => _sort = value!),
++              SizedBox(
++                width: double.infinity,
++                child: DropdownButton<String>(
++                  isExpanded: true,
++                  value: _sort,
++                  items: [
++                    DropdownMenuItem(
++                      value: 'name',
++                      child: Text(_t('Name', 'Название')),
++                    ),
++                    DropdownMenuItem(
++                      value: 'year',
++                      child: Text(_t('Founded', 'Год основания')),
++                    ),
++                  ],
++                  onChanged: (value) => setState(() => _sort = value!),
++                ),
+               ),
+               OutlinedButton.icon(
+                 onPressed: () => setState(() => _ascending = !_ascending),
+@@ -765,18 +784,25 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
+                 ),
+                 label: Text(_t('Order', 'Порядок')),
+               ),
+-              DropdownButton<BrandQuestionKind?>(
+-                value: _topic,
+-                items: [
+-                  DropdownMenuItem(value: null, child: Text(_topicName(null))),
+-                  ...BrandQuestionKind.values.map(
+-                    (item) => DropdownMenuItem(
+-                      value: item,
+-                      child: Text(_topicName(item)),
++              SizedBox(
++                width: double.infinity,
++                child: DropdownButton<BrandQuestionKind?>(
++                  isExpanded: true,
++                  value: _topic,
++                  items: [
++                    DropdownMenuItem(
++                      value: null,
++                      child: Text(_topicName(null)),
+                     ),
+-                  ),
+-                ],
+-                onChanged: (value) => setState(() => _topic = value),
++                    ...BrandQuestionKind.values.map(
++                      (item) => DropdownMenuItem(
++                        value: item,
++                        child: Text(_topicName(item)),
++                      ),
++                    ),
++                  ],
++                  onChanged: (value) => setState(() => _topic = value),
++                ),
+               ),
+               FilledButton.icon(
+                 key: const Key('brand-train'),
+diff --git a/next/apps/quiz_app/lib/constellation_atlas.dart b/next/apps/quiz_app/lib/constellation_atlas.dart
+index 6985d8e3..5c6957d1 100644
+--- a/next/apps/quiz_app/lib/constellation_atlas.dart
++++ b/next/apps/quiz_app/lib/constellation_atlas.dart
+@@ -1,6 +1,8 @@
+ /// A touch-first explorer for the fixed J2000 constellation patterns.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'package:flutter/material.dart';
+ import 'package:url_launcher/url_launcher.dart';
+ 
+@@ -143,6 +145,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
+       appBar: AppBar(
+         title: Text(_t('Constellation atlas', 'Атлас созвездий')),
+         actions: [
++          const FactPracticeAction(scope: 'sky'),
+           IconButton(
+             tooltip: _t('Previous constellation', 'Предыдущее созвездие'),
+             onPressed: () => _move(-1),
+@@ -330,16 +333,26 @@ class _SkyControls extends StatelessWidget {
+   Widget build(BuildContext context) => Wrap(
+     spacing: 8,
+     children: [
+-      FilterChip(
+-        label: Text(russian ? 'Подписи' : 'Labels'),
+-        selected: names,
+-        onSelected: onNamesChanged,
+-      ),
+-      FilterChip(
+-        label: Text(russian ? 'Линии' : 'Lines'),
+-        selected: lines,
+-        onSelected: onLinesChanged,
+-      ),
++      for (final control in [
++        (
++          label: russian ? 'Подписи' : 'Labels',
++          selected: names,
++          onSelected: onNamesChanged,
++        ),
++        (
++          label: russian ? 'Линии' : 'Lines',
++          selected: lines,
++          onSelected: onLinesChanged,
++        ),
++      ])
++        ConstrainedBox(
++          constraints: const BoxConstraints(minHeight: 48),
++          child: FilterChip(
++            label: Text(control.label),
++            selected: control.selected,
++            onSelected: control.onSelected,
++          ),
++        ),
+     ],
+   );
+ }
+@@ -463,27 +476,58 @@ class _SkyPainter extends CustomPainter {
+         radius,
+         Paint()..color = const Color(0xfff5fbff),
+       );
+-      if (showNames) {
+-        final painter = TextPainter(
+-          text: TextSpan(
+-            text: starLabel(star, russian),
+-            style: const TextStyle(color: Color(0xffd9efff), fontSize: 12),
+-          ),
+-          textDirection: TextDirection.ltr,
+-          maxLines: 1,
+-        )..layout(maxWidth: 120);
+-        painter.paint(
+-          canvas,
+-          Offset(
+-            (point.dx + 8).clamp(
+-              4.0,
+-              (size.width - painter.width - 4).clamp(4.0, double.infinity),
+-            ),
+-            (point.dy - 18).clamp(4.0, size.height - painter.height - 4),
++    }
++    if (!showNames) return;
++
++    final occupied = <Rect>[];
++    final maxLabelWidth = size.width < 420 ? 92.0 : 120.0;
++    final ordered = [
++      ...stars,
++    ]..sort((a, b) => (a['magnitude'] as num).compareTo(b['magnitude'] as num));
++    canvas.save();
++    canvas.clipRect(Offset.zero & size);
++    for (final star in ordered) {
++      final point = points[star['id']]!;
++      final painter = TextPainter(
++        text: TextSpan(
++          text: starLabel(star, russian),
++          style: TextStyle(
++            color: const Color(0xffd9efff),
++            fontSize: size.width < 420 ? 11 : 12,
+           ),
+-        );
+-      }
++        ),
++        textDirection: TextDirection.ltr,
++        maxLines: 1,
++        ellipsis: '…',
++      )..layout(maxWidth: maxLabelWidth);
++      final right = (point.dx + 8).clamp(4.0, size.width - painter.width - 4);
++      final left = (point.dx - painter.width - 8).clamp(
++        4.0,
++        size.width - painter.width - 4,
++      );
++      final top = (point.dy - painter.height - 8).clamp(
++        4.0,
++        size.height - painter.height - 4,
++      );
++      final bottom = (point.dy + 8).clamp(
++        4.0,
++        size.height - painter.height - 4,
++      );
++      final candidates = [
++        Offset(right, top),
++        Offset(left, top),
++        Offset(right, bottom),
++        Offset(left, bottom),
++      ];
++      final offset = candidates.where((candidate) {
++        final rect = candidate & painter.size;
++        return occupied.every((other) => !other.inflate(4).overlaps(rect));
++      }).firstOrNull;
++      if (offset == null) continue;
++      occupied.add(offset & painter.size);
++      painter.paint(canvas, offset);
+     }
++    canvas.restore();
+   }
+ 
+   @override
+diff --git a/next/apps/quiz_app/lib/country_learning.dart b/next/apps/quiz_app/lib/country_learning.dart
+index d455109e..2e8f4f36 100644
+--- a/next/apps/quiz_app/lib/country_learning.dart
++++ b/next/apps/quiz_app/lib/country_learning.dart
+@@ -2,6 +2,8 @@
+ /// source-labelled asset and creates no question for fields that are absent.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -1016,7 +1018,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+           .toSet(),
+     ];
+     return Scaffold(
+-      appBar: AppBar(title: Text(_t('Country atlas', 'Атлас стран'))),
++      appBar: AppBar(
++        title: Text(_t('Country atlas', 'Атлас стран')),
++        actions: [
++          FactPracticeAction(scope: 'countries', bundle: widget.bundle),
++        ],
++      ),
+       body: SafeArea(
+         child: LayoutBuilder(
+           builder: (context, box) => SingleChildScrollView(
+@@ -1235,7 +1242,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                       setState(() => _reverseRelations = value),
+                 ),
+                 SizedBox(
+-                  height: math.max(260, math.min(600, box.maxHeight * .55)),
++                  height: math.max(300, math.min(560, box.maxHeight * .60)),
+                   child: QuizipediaWorldMap(
+                     features: _visible,
+                     controller: _controller,
+diff --git a/next/apps/quiz_app/lib/feedback.dart b/next/apps/quiz_app/lib/feedback.dart
+index b6476f0e..60ae005e 100644
+--- a/next/apps/quiz_app/lib/feedback.dart
++++ b/next/apps/quiz_app/lib/feedback.dart
+@@ -149,25 +149,32 @@ class _FeedbackOverlayState extends ConsumerState<_FeedbackOverlay> {
+     );
+     return ListenableBuilder(
+       listenable: widget.router.routeInformationProvider,
+-      builder: (context, _) => Stack(
++      builder: (context, _) => Column(
+         children: [
+-          RepaintBoundary(key: _boundary, child: widget.child),
++          Expanded(
++            child: RepaintBoundary(key: _boundary, child: widget.child),
++          ),
+           if (widget.router.routeInformationProvider.value.uri.path !=
+                   '/feedback' &&
++              MediaQuery.viewInsetsOf(context).bottom == 0 &&
+               !(finished &&
+                   (widget.router.routeInformationProvider.value.uri.path ==
+                           '/' ||
+                       widget.router.routeInformationProvider.value.uri.path
+                           .startsWith('/quiz/'))))
+-            PositionedDirectional(
+-              end: 12,
+-              bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
+-              child: SafeArea(
+-                child: FloatingActionButton.small(
+-                  heroTag: 'feedback',
+-                  tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
+-                  onPressed: _opening ? null : _open,
+-                  child: const Icon(Icons.support_agent),
++            SafeArea(
++              top: false,
++              child: Padding(
++                key: const Key('feedback-footer'),
++                padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
++                child: Align(
++                  alignment: AlignmentDirectional.centerEnd,
++                  child: FloatingActionButton.small(
++                    heroTag: 'feedback',
++                    tooltip: AppLocalizations.of(context)!.feedbackSendFeedback,
++                    onPressed: _opening ? null : _open,
++                    child: const Icon(Icons.support_agent),
++                  ),
+                 ),
+               ),
+             ),
+diff --git a/next/apps/quiz_app/lib/food_atlas.dart b/next/apps/quiz_app/lib/food_atlas.dart
+index 767ca847..472c8087 100644
+--- a/next/apps/quiz_app/lib/food_atlas.dart
++++ b/next/apps/quiz_app/lib/food_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -167,6 +169,7 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
+       appBar: AppBar(
+         title: Text(_t('Food atlas', 'Атлас блюд')),
+         actions: [
++          FactPracticeAction(scope: 'food', bundle: widget.bundle),
+           TextButton.icon(
+             key: const Key('food-train'),
+             onPressed: atlas.dishes.length >= 10 ? () => _start(atlas) : null,
+diff --git a/next/apps/quiz_app/lib/knowledge_atlas.dart b/next/apps/quiz_app/lib/knowledge_atlas.dart
+index 0aa9d08a..862742e6 100644
+--- a/next/apps/quiz_app/lib/knowledge_atlas.dart
++++ b/next/apps/quiz_app/lib/knowledge_atlas.dart
+@@ -1,6 +1,8 @@
+ /// A small, source-linked atlas for unranked history and culture practice.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -499,7 +501,15 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+     builder: (context, snapshot) {
+       if (snapshot.hasError) {
+         return Scaffold(
+-          appBar: AppBar(title: Text(_title)),
++          appBar: AppBar(
++            title: Text(_title),
++            actions: [
++              FactPracticeAction(
++                scope: widget.section == 'culture' ? 'works' : widget.section,
++                bundle: widget.bundle,
++              ),
++            ],
++          ),
+           body: Center(
+             child: FilledButton.icon(
+               onPressed: () => setState(() => _future = _load()),
+@@ -511,12 +521,28 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
+       }
+       if (!snapshot.hasData) {
+         return Scaffold(
+-          appBar: AppBar(title: Text(_title)),
++          appBar: AppBar(
++            title: Text(_title),
++            actions: [
++              FactPracticeAction(
++                scope: widget.section == 'culture' ? 'works' : widget.section,
++                bundle: widget.bundle,
++              ),
++            ],
++          ),
+           body: const Center(child: CircularProgressIndicator()),
+         );
+       }
+       return Scaffold(
+-        appBar: AppBar(title: Text(_title)),
++        appBar: AppBar(
++          title: Text(_title),
++          actions: [
++            FactPracticeAction(
++              scope: widget.section == 'culture' ? 'works' : widget.section,
++              bundle: widget.bundle,
++            ),
++          ],
++        ),
+         body: _build(snapshot.data!),
+       );
+     },
+diff --git a/next/apps/quiz_app/lib/music_learning.dart b/next/apps/quiz_app/lib/music_learning.dart
+index 551adde3..8ea115c7 100644
+--- a/next/apps/quiz_app/lib/music_learning.dart
++++ b/next/apps/quiz_app/lib/music_learning.dart
+@@ -1,6 +1,8 @@
+ /// Sourced local music reference and finite, unranked visual practice.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -440,6 +442,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
+   @override
+   Widget build(BuildContext context) => Scaffold(
+     appBar: AppBar(
++      actions: [FactPracticeAction(scope: 'music', bundle: widget.bundle)],
+       title: Text(
+         _t('Music · learn and practise', 'Музыка · изучение и тренировка'),
+       ),
+diff --git a/next/apps/quiz_app/lib/organ_atlas.dart b/next/apps/quiz_app/lib/organ_atlas.dart
+index 20e6996e..b661b0fa 100644
+--- a/next/apps/quiz_app/lib/organ_atlas.dart
++++ b/next/apps/quiz_app/lib/organ_atlas.dart
+@@ -1,5 +1,7 @@
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -215,6 +217,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
+       appBar: AppBar(
+         title: Text(_t('Human organs and glands', 'Атлас органов и желёз')),
+         actions: [
++          FactPracticeAction(scope: 'organs', bundle: widget.bundle),
+           TextButton.icon(
+             onPressed: () => _start(atlas, shown),
+             icon: const Icon(Icons.quiz_outlined),
+diff --git a/next/apps/quiz_app/lib/quizipedia.dart b/next/apps/quiz_app/lib/quizipedia.dart
+index 06a67847..40cdfd2a 100644
+--- a/next/apps/quiz_app/lib/quizipedia.dart
++++ b/next/apps/quiz_app/lib/quizipedia.dart
+@@ -1,6 +1,8 @@
+ /// Local, unranked visual practice. Answers stay outside ranked API models.
+ library;
+ 
++import 'fact_practice.dart';
++
+ import 'russian_learning_text.dart';
+ 
+ import 'dart:convert';
+@@ -625,6 +627,33 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
+                   ),
+                 ),
+               ),
++            Card(
++              child: ListTile(
++                key: const Key('quizipedia-all-facts'),
++                leading: const Icon(Icons.fact_check_outlined),
++                title: Text(
++                  _t(
++                    context,
++                    'Questions for every fact',
++                    'Вопросы по всем фактам',
++                  ),
++                ),
++                subtitle: Text(
++                  _t(
++                    context,
++                    'Choose any section, topic or card',
++                    'Любой раздел, тема или карточка',
++                  ),
++                ),
++                trailing: const Icon(Icons.chevron_right),
++                onTap: () => Navigator.of(context).push(
++                  MaterialPageRoute<void>(
++                    builder: (_) =>
++                        FactPracticePage(scope: 'all', bundle: widget.bundle),
++                  ),
++                ),
++              ),
++            ),
+             Card(
+               child: ListTile(
+                 leading: const Icon(Icons.accessibility_new),
+@@ -1050,6 +1079,15 @@ class _QuizGameState extends State<_QuizGame> {
+       appBar: AppBar(
+         title: Text(_moduleTitle(context, widget.module)),
+         actions: [
++          FactPracticeAction(
++            scope: switch (widget.module) {
++              _Module.anatomy => 'endocrine',
++              _Module.landmarks => 'landmarks',
++              _Module.sky => 'sky',
++              _Module.map => 'countries',
++            },
++            bundle: widget.bundle,
++          ),
+           IconButton(
+             tooltip: _t(context, 'Credits', 'Источники'),
+             icon: const Icon(Icons.info_outline),

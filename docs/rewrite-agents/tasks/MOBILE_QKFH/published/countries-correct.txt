@@ -1,0 +1,18 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1360]
+          - heading "Тренировка по фактам" [level=2, ref=e1361]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "34.2 км²" [disabled, ref=e1385]
+          - button "9372610 км²" [disabled, ref=e1386]
+          - button "181034 км²" [disabled, ref=e1387]
+          - button "468 км²" [disabled, ref=e1388]
+          - group "Верно Правильный ответ: 468 км²"
+            - button "Справочный источник" [ref=e1393]
+          - button "Завершить" [ref=e1391]
+          - button "К списку фактов" [ref=e1392]
+      - button "Отправить отзыв" [ref=e1320]

@@ -1,0 +1,39 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e392]
+          - heading "Атлас созвездий" [level=2, ref=e393]
+          - button "Вопросы по всем фактам" [ref=e394]
+          - button "Предыдущее созвездие" [ref=e395]
+          - button "Следующее созвездие" [ref=e396]
+        - group
+          - StaticText "Изучение · без рейтинга"
+          - textbox "Найти созвездие" [ref=e409]
+          - group
+            - checkbox "Андромеда" [checked=true, ref=e412]
+            - checkbox "Насос" [checked=false, ref=e413]
+            - checkbox "Райская Птица" [checked=false, ref=e414]
+            - checkbox "Водолей" [checked=false, ref=e415]
+            - checkbox "Орёл" [checked=false, ref=e416]
+            - checkbox "Жертвенник" [checked=false, ref=e417]
+          - StaticText "Андромеда"
+          - checkbox "Подписи" [checked=true, ref=e397]
+          - checkbox "Линии" [checked=true, ref=e398]
+          - button "Схема созвездия. Масштабируйте двумя пальцами, перемещайте и увеличивайте двойным касанием." [ref=e399]
+          - button "Увеличить" [ref=e400]
+          - button "Уменьшить" [ref=e401]
+          - button "Сбросить" [ref=e410]
+          - StaticText "Сводите пальцы для масштаба, перетаскивайте карту или дважды коснитесь нужного места."
+          - StaticText "Звёзды: доступный список"
+          - button "Альферац" [ref=e402]
+          - button "31 Дельта Андромеды" [ref=e403]
+          - button "35 Ню Андромеды" [ref=e404]
+          - button "37 Мю Андромеды" [ref=e405]
+          - button "Мирах" [ref=e406]
+          - button "Альмах" [ref=e407]
+          - group "О рисунке Андромеда — одно из 88 официальных созвездий. Количество звёзд на учебной схеме: 6. Самая яркая среди выбранных — Альферац. Соединительные линии взяты из «Стеллариума» и не обозначают официальные границы или физические связи между звёздами."
+            - button "Открыть источник данных" [ref=e411]
+          - button "Начать тренировку" [ref=e408]
+      - button "Отправить отзыв" [ref=e373]

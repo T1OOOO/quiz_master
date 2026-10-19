@@ -1,0 +1,20 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1896]
+          - heading "Тренировка по фактам" [level=2, ref=e1897]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Сфера» для «Афродита»?"
+          - button "музыка" [disabled, ref=e1909]
+          - button "небо" [disabled, ref=e1910]
+          - button "прорицание" [disabled, ref=e1911]
+          - button "любовь" [disabled, ref=e1912]
+          - group "Пока неверно Правильный ответ: любовь"
+            - button "Гесиод, «Теогония», перевод Хью Эвелин-Уайта" [ref=e1917]
+            - button "Метрополитен-музей: греческие боги и религиозные практики" [ref=e1918]
+          - button "Завершить" [ref=e1915]
+          - button "К списку фактов" [ref=e1916]
+      - button "Отправить отзыв" [ref=e1841]

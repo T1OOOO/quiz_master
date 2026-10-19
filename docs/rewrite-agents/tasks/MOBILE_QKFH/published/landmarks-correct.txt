@@ -1,0 +1,18 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1580]
+          - heading "Тренировка по фактам" [level=2, ref=e1581]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Рим" [disabled, ref=e1625]
+          - button "Париж" [disabled, ref=e1626]
+          - button "Петра" [disabled, ref=e1627]
+          - button "Гиза" [disabled, ref=e1628]
+          - group "Верно Правильный ответ: Рим"
+            - button "Источник о памятнике" [ref=e1633]
+          - button "Завершить" [ref=e1631]
+          - button "К списку фактов" [ref=e1632]
+      - button "Отправить отзыв" [ref=e1549]

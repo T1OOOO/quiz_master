@@ -1,0 +1,319 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 76169c63..9dab42a8 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -13,6 +13,54 @@ import 'package:url_launcher/url_launcher.dart';
+ 
+ import 'belief_atlas_models.dart';
+ 
++/// Shared scene geometry keeps the buttons, edges, captions, and fit control
++/// on the same responsive layout.
++class BeliefGraphGeometry {
++  BeliefGraphGeometry({required double viewportWidth, required this.count})
++    : narrow = viewportWidth < 600,
++      sceneWidth = viewportWidth < 600
++          ? viewportWidth
++          : max(520.0, viewportWidth),
++      columns = viewportWidth < 600 ? 1 : 3,
++      nodeWidth = viewportWidth < 600
++          ? min(240.0, max(44.0, viewportWidth - 32))
++          : 140;
++
++  final bool narrow;
++  final int count, columns;
++  final double sceneWidth, nodeWidth;
++  static const nodeHeight = 56.0;
++  int get rows => max(1, (count / columns).ceil());
++  double get rowStep => narrow ? 164 : 110;
++  double get topInset => narrow ? 12 : 36;
++  double get sceneHeight =>
++      max(280.0, topInset + (rows - 1) * rowStep + nodeHeight + topInset);
++
++  Rect nodeRect(int index) {
++    final column = index % columns;
++    final left = narrow ? (sceneWidth - nodeWidth) / 2 : 40 + column * 165.0;
++    return Rect.fromLTWH(
++      left,
++      topInset + (index ~/ columns) * rowStep,
++      nodeWidth,
++      nodeHeight,
++    );
++  }
++
++  Rect edgeCaptionRect(int fromIndex, int toIndex, Size labelSize) {
++    final center = Offset.lerp(
++      nodeRect(fromIndex).center,
++      nodeRect(toIndex).center,
++      .5,
++    )!;
++    return Rect.fromCenter(
++      center: center,
++      width: labelSize.width,
++      height: labelSize.height,
++    );
++  }
++}
++
+ class BeliefAtlasPage extends StatefulWidget {
+   const BeliefAtlasPage({
+     super.key,
+@@ -113,13 +161,14 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+   }
+ 
+   void _fit() {
+-    final rows = max(1, (_shownCount / 3).ceil());
+-    final sceneHeight = max(280.0, rows * 110.0 + 80);
+     final viewportWidth = MediaQuery.sizeOf(context).width - 32;
+-    final sceneWidth = max(520.0, MediaQuery.sizeOf(context).width);
++    final geometry = BeliefGraphGeometry(
++      viewportWidth: viewportWidth,
++      count: _shownCount,
++    );
+     final scale = min(
+-      viewportWidth / sceneWidth,
+-      280 / sceneHeight,
++      viewportWidth / geometry.sceneWidth,
++      280 / geometry.sceneHeight,
+     ).clamp(.25, 1.0);
+     final matrix = Matrix4.identity()..scaleByDouble(scale, scale, 1, 1);
+     setState(() => _transform.value = matrix);
+@@ -431,85 +480,89 @@ class _Graph extends StatelessWidget {
+               shown.any((n) => n.id == e.to),
+         )
+         .toList();
+-    final rows = max(1, (shown.length / 3).ceil());
+-    final sceneHeight = max(280.0, rows * 110.0 + 80);
+     final edgeSummary = edgeRows
+         .map(
+           (e) =>
+               '${name(nodes.firstWhere((n) => n.id == e.from))} → ${name(nodes.firstWhere((n) => n.id == e.to))}: ${russian ? e.ru : e.en}; ${russian ? e.scopeRu : e.scopeEn}',
+         )
+         .join('. ');
+-    return Semantics(
+-      label: russian
+-          ? 'Интерактивный граф связей. $edgeSummary'
+-          : 'Interactive relationship graph. $edgeSummary',
+-      child: SizedBox(
+-        height: 280,
+-        child: ClipRRect(
+-          borderRadius: BorderRadius.circular(12),
+-          child: DecoratedBox(
+-            decoration: BoxDecoration(
+-              color: Theme.of(c).colorScheme.surfaceContainerLow,
+-              border: Border.all(color: Theme.of(c).colorScheme.outlineVariant),
+-            ),
+-            child: InteractiveViewer(
+-              key: const Key('belief-graph'),
+-              transformationController: controller,
+-              minScale: .25,
+-              maxScale: 5,
+-              constrained: false,
+-              boundaryMargin: const EdgeInsets.all(140),
+-              child: SizedBox(
+-                key: const Key('belief-scene'),
+-                width: max(520, MediaQuery.sizeOf(c).width),
+-                height: sceneHeight,
+-                child: Stack(
+-                  children: [
+-                    CustomPaint(
+-                      size: Size(
+-                        max(520, MediaQuery.sizeOf(c).width),
+-                        sceneHeight,
+-                      ),
+-                      painter: _EdgePainter(
+-                        shown,
+-                        edgeRows,
+-                        russian,
+-                        Theme.of(c).colorScheme.onSurface,
+-                        Theme.of(c).colorScheme.surfaceContainerLow,
+-                      ),
+-                    ),
+-                    for (var i = 0; i < shown.length; i++)
+-                      Positioned(
+-                        left: 40 + (i % 3) * 165.0,
+-                        top: 36 + (i ~/ 3) * 110.0,
+-                        width: 140,
+-                        height: 56,
+-                        child: Semantics(
+-                          button: true,
+-                          label: name(shown[i]),
+-                          child: FilledButton(
+-                            key: Key('belief-node-${shown[i].id}'),
+-                            onPressed: () => onTap(shown[i].id),
+-                            style: FilledButton.styleFrom(
+-                              backgroundColor: shown[i].id == selected
+-                                  ? Theme.of(c).colorScheme.primary
+-                                  : Theme.of(c).colorScheme.secondary,
+-                            ),
+-                            child: Text(
+-                              name(shown[i]),
+-                              maxLines: 2,
+-                              overflow: TextOverflow.ellipsis,
+-                            ),
++    return LayoutBuilder(
++      builder: (context, constraints) {
++        final geometry = BeliefGraphGeometry(
++          viewportWidth: constraints.maxWidth,
++          count: shown.length,
++        );
++        return Semantics(
++          label: russian
++              ? 'Интерактивный граф связей. $edgeSummary'
++              : 'Interactive relationship graph. $edgeSummary',
++          child: SizedBox(
++            height: 280,
++            child: ClipRRect(
++              borderRadius: BorderRadius.circular(12),
++              child: DecoratedBox(
++                decoration: BoxDecoration(
++                  color: Theme.of(c).colorScheme.surfaceContainerLow,
++                  border: Border.all(
++                    color: Theme.of(c).colorScheme.outlineVariant,
++                  ),
++                ),
++                child: InteractiveViewer(
++                  key: const Key('belief-graph'),
++                  transformationController: controller,
++                  minScale: .25,
++                  maxScale: 5,
++                  constrained: false,
++                  boundaryMargin: const EdgeInsets.all(140),
++                  child: SizedBox(
++                    key: const Key('belief-scene'),
++                    width: geometry.sceneWidth,
++                    height: geometry.sceneHeight,
++                    child: Stack(
++                      children: [
++                        CustomPaint(
++                          size: Size(geometry.sceneWidth, geometry.sceneHeight),
++                          painter: _EdgePainter(
++                            shown,
++                            edgeRows,
++                            geometry,
++                            russian,
++                            MediaQuery.textScalerOf(c),
++                            Theme.of(c).colorScheme.onSurface,
++                            Theme.of(c).colorScheme.surfaceContainerLow,
+                           ),
+                         ),
+-                      ),
+-                  ],
++                        for (var i = 0; i < shown.length; i++)
++                          Positioned.fromRect(
++                            rect: geometry.nodeRect(i),
++                            child: Semantics(
++                              button: true,
++                              label: name(shown[i]),
++                              child: FilledButton(
++                                key: Key('belief-node-${shown[i].id}'),
++                                onPressed: () => onTap(shown[i].id),
++                                style: FilledButton.styleFrom(
++                                  backgroundColor: shown[i].id == selected
++                                      ? Theme.of(c).colorScheme.primary
++                                      : Theme.of(c).colorScheme.secondary,
++                                ),
++                                child: Text(
++                                  name(shown[i]),
++                                  maxLines: 2,
++                                  overflow: TextOverflow.ellipsis,
++                                ),
++                              ),
++                            ),
++                          ),
++                      ],
++                    ),
++                  ),
+                 ),
+               ),
+             ),
+           ),
+-        ),
+-      ),
++        );
++      },
+     );
+   }
+ }
+@@ -531,18 +584,20 @@ class _EdgePainter extends CustomPainter {
+   _EdgePainter(
+     this.nodes,
+     this.edges,
++    this.geometry,
+     this.russian,
++    this.textScaler,
+     this.labelColor,
+     this.labelBackground,
+   );
+   final Color labelColor, labelBackground;
+   final List<BeliefNode> nodes;
+   final List<BeliefEdge> edges;
++  final BeliefGraphGeometry geometry;
+   final bool russian;
+-  Offset p(String id) {
+-    final i = nodes.indexWhere((n) => n.id == id);
+-    return Offset(110 + (i % 3) * 165, 64 + (i ~/ 3) * 110);
+-  }
++  final TextScaler textScaler;
++  Offset p(String id) =>
++      geometry.nodeRect(nodes.indexWhere((n) => n.id == id)).center;
+ 
+   @override
+   void paint(Canvas c, Size s) {
+@@ -552,11 +607,19 @@ class _EdgePainter extends CustomPainter {
+     for (final e in edges) {
+       final source = p(e.from), target = p(e.to);
+       final a = beliefArrowTip(
+-        Rect.fromCenter(center: source, width: 140, height: 56),
++        Rect.fromCenter(
++          center: source,
++          width: geometry.nodeWidth,
++          height: BeliefGraphGeometry.nodeHeight,
++        ),
+         target,
+       );
+       final b = beliefArrowTip(
+-        Rect.fromCenter(center: target, width: 140, height: 56),
++        Rect.fromCenter(
++          center: target,
++          width: geometry.nodeWidth,
++          height: BeliefGraphGeometry.nodeHeight,
++        ),
+         source,
+       );
+       c.drawLine(a, b, paint);
+@@ -578,14 +641,22 @@ class _EdgePainter extends CustomPainter {
+         text: TextSpan(
+           text: russian ? e.ru : e.en,
+           style: TextStyle(
+-            fontSize: 10,
++            fontSize: geometry.narrow ? 14 : 10,
+             color: labelColor,
+             backgroundColor: labelBackground,
+           ),
+         ),
+         textDirection: TextDirection.ltr,
+-      )..layout(maxWidth: 90);
+-      t.paint(c, Offset((a.dx + b.dx) / 2, (a.dy + b.dy) / 2));
++        textScaler: textScaler,
++        maxLines: geometry.narrow ? 3 : 1,
++        ellipsis: '…',
++      )..layout(maxWidth: geometry.narrow ? geometry.nodeWidth : 90);
++      final caption = geometry.edgeCaptionRect(
++        nodes.indexWhere((n) => n.id == e.from),
++        nodes.indexWhere((n) => n.id == e.to),
++        t.size,
++      );
++      t.paint(c, caption.topLeft);
+     }
+   }
+ 
+@@ -593,7 +664,9 @@ class _EdgePainter extends CustomPainter {
+   bool shouldRepaint(covariant _EdgePainter o) =>
+       o.nodes != nodes ||
+       o.edges != edges ||
++      o.geometry != geometry ||
+       o.russian != russian ||
++      o.textScaler != textScaler ||
+       o.labelColor != labelColor ||
+       o.labelBackground != labelBackground;
+ }

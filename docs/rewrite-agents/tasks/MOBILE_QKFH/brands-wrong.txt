@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e141]
+          - heading "Тренировка по фактам" [level=2, ref=e142]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Страна» для «Адидас»?"
+          - button "Германия" [disabled, ref=e174]
+          - button "Франция" [disabled, ref=e175]
+          - button "Япония" [disabled, ref=e176]
+          - button "США" [disabled, ref=e177]
+          - group "Пока неверно Правильный ответ: Германия"
+            - button "Адидас: история компании" [ref=e182]
+          - button "Завершить" [ref=e180]
+          - button "К списку фактов" [ref=e181]
+      - button "Отправить отзыв" [ref=e102]

@@ -1,0 +1,32 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart
+test/fact_practice_test.dart:4:8: Error: Error when reading 'lib/fact_practice.dart': The system cannot find the file specified
+import 'package:quiz_app/fact_practice.dart';
+       ^
+test/fact_practice_test.dart:5:8: Error: Error when reading 'lib/fact_practice_models.dart': The system cannot find the file specified
+import 'package:quiz_app/fact_practice_models.dart';
+       ^
+test/fact_practice_test.dart:13:48: Error: Method not found: 'StudyFact'.
+    final facts = [for (var i = 0; i < 4; i++) StudyFact(
+                                               ^^^^^^^^^
+test/fact_practice_test.dart:21:12: Error: Method not found: 'FactPracticePage'.
+      home:FactPracticePage(scope:'music', facts:facts)));
+           ^^^^^^^^^^^^^^^^
+00:00 +0 -1: loading E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart [E]
+  Failed to load "E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart":
+  Compilation failed for testPath=E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart: test/fact_practice_test.dart:4:8: Error: Error when reading 'lib/fact_practice.dart': The system cannot find the file specified
+  import 'package:quiz_app/fact_practice.dart';
+         ^
+  test/fact_practice_test.dart:5:8: Error: Error when reading 'lib/fact_practice_models.dart': The system cannot find the file specified
+  import 'package:quiz_app/fact_practice_models.dart';
+         ^
+  test/fact_practice_test.dart:13:48: Error: Method not found: 'StudyFact'.
+      final facts = [for (var i = 0; i < 4; i++) StudyFact(
+                                                 ^^^^^^^^^
+  test/fact_practice_test.dart:21:12: Error: Method not found: 'FactPracticePage'.
+        home:FactPracticePage(scope:'music', facts:facts)));
+             ^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart: loading E:/Projects/quiz_master/next/apps/quiz_app/test/fact_practice_test.dart

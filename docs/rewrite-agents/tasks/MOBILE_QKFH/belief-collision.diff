@@ -1,0 +1,52 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 5987908e..338674ee 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -59,6 +59,13 @@ class BeliefGraphGeometry {
+       height: labelSize.height,
+     );
+   }
++
++  bool captionFits(Rect caption, Iterable<Rect> painted) =>
++      !List.generate(
++        count,
++        nodeRect,
++      ).any((node) => node.inflate(4).overlaps(caption)) &&
++      !painted.any((label) => label.inflate(4).overlaps(caption));
+ }
+ 
+ class BeliefAtlasPage extends StatefulWidget {
+@@ -604,6 +611,7 @@ class _EdgePainter extends CustomPainter {
+     final paint = Paint()
+       ..color = Colors.blueGrey
+       ..strokeWidth = 2;
++    final captions = <Rect>[];
+     for (final e in edges) {
+       final source = p(e.from), target = p(e.to);
+       final a = beliefArrowTip(
+@@ -656,6 +664,9 @@ class _EdgePainter extends CustomPainter {
+         nodes.indexWhere((n) => n.id == e.to),
+         t.size,
+       );
++      // Full relation text is also available in semantics and the detail list.
++      if (!geometry.captionFits(caption, captions)) continue;
++      captions.add(caption);
+       t.paint(c, caption.topLeft);
+     }
+   }
+diff --git a/next/apps/quiz_app/test/belief_mobile_graph_test.dart b/next/apps/quiz_app/test/belief_mobile_graph_test.dart
+index c53d236a..fbdb8ebb 100644
+--- a/next/apps/quiz_app/test/belief_mobile_graph_test.dart
++++ b/next/apps/quiz_app/test/belief_mobile_graph_test.dart
+@@ -23,6 +23,11 @@ void main() {
+     expect(first.overlaps(second), isFalse);
+     expect(caption.overlaps(first), isFalse);
+     expect(caption.overlaps(second), isFalse);
++    expect(geometry.captionFits(caption, const []), isTrue);
++    expect(geometry.captionFits(caption, [caption]), isFalse);
++    final three = BeliefGraphGeometry(viewportWidth: 288, count: 3);
++    final acrossMiddle = three.edgeCaptionRect(0, 2, const Size(180, 20));
++    expect(three.captionFits(acrossMiddle, const []), isFalse);
+   });
+ 
+   testWidgets(

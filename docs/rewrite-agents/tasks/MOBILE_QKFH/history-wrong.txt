@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1052]
+          - heading "Тренировка по фактам" [level=2, ref=e1053]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Дата» для «Закон об отмене рабства»?"
+          - button "27 до н. э." [disabled, ref=e1064]
+          - button "1543" [disabled, ref=e1065]
+          - button "1917" [disabled, ref=e1066]
+          - button "1833" [disabled, ref=e1067]
+          - group "Пока неверно Правильный ответ: 1833"
+            - button "Источник" [ref=e1072]
+          - button "Завершить" [ref=e1070]
+          - button "К списку фактов" [ref=e1071]
+      - button "Отправить отзыв" [ref=e1015]

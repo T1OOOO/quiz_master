@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e2131]
+          - heading "Тренировка по фактам" [level=2, ref=e2132]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Создатель» для ««1984»»?"
+          - button "Габриэль Гарсиа Маркес" [disabled, ref=e2144]
+          - button "Джейн Остин" [disabled, ref=e2145]
+          - button "Джордж Оруэлл" [disabled, ref=e2146]
+          - button "Пон Джун-хо" [disabled, ref=e2147]
+          - group "Пока неверно Правильный ответ: Джордж Оруэлл"
+            - button "Источник" [ref=e2152]
+          - button "Завершить" [ref=e2150]
+          - button "К списку фактов" [ref=e2151]
+      - button "Отправить отзыв" [ref=e2092]

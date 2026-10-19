@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1283]
+          - heading "Тренировка по фактам" [level=2, ref=e1284]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Сфера» для «Вера бахаи»?"
+          - button "церковные общины" [disabled, ref=e1296]
+          - button "гимны" [disabled, ref=e1297]
+          - button "Веды" [disabled, ref=e1298]
+          - button "писания Бахауллы" [disabled, ref=e1299]
+          - group "Пока неверно Правильный ответ: писания Бахауллы"
+            - button "Официальный сайт всемирной общины бахаи" [ref=e1304]
+          - button "Завершить" [ref=e1302]
+          - button "К списку фактов" [ref=e1303]
+      - button "Отправить отзыв" [ref=e1236]

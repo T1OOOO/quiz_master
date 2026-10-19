@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e2376]
+          - heading "Тренировка по фактам" [level=2, ref=e2377]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Категория» для «Пибимпап»?"
+          - button "рисовая миска" [disabled, ref=e2409]
+          - button "запеканка" [disabled, ref=e2410]
+          - button "рыбное блюдо" [disabled, ref=e2411]
+          - button "выпечка" [disabled, ref=e2412]
+          - group "Пока неверно Правильный ответ: рисовая миска"
+            - button "Хёсун Ро, «Корейский стол»: пибимпап" [ref=e2417]
+          - button "Завершить" [ref=e2415]
+          - button "К списку фактов" [ref=e2416]
+      - button "Отправить отзыв" [ref=e2336]

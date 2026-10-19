@@ -1,0 +1,31 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e314]
+          - heading "Атлас стран" [level=2, ref=e315]
+          - button "Вопросы по всем фактам" [ref=e316]
+        - group
+          - textbox "Страна, река, клуб или факт" [ref=e327]
+          - group
+            - checkbox "Весь мир" [checked=true, ref=e328]
+            - checkbox "Америка" [checked=false, ref=e329]
+            - checkbox "Азия" [checked=false, ref=e330]
+            - checkbox "Африка" [checked=false, ref=e331]
+            - checkbox "Европа" [checked=false, ref=e332]
+            - checkbox "Океания" [checked=false, ref=e333]
+            - checkbox "Антарктика" [checked=false, ref=e334]
+          - button "Тема тренировки Все темы" [expanded=false, ref=e317]
+          - button "Подписи на карте Без подписей" [expanded=false, ref=e318]
+          - button "Сравнить страны: население и площадь" [ref=e319]
+          - switch "Узнать страну по факту Реки, клубы, еда и другие связи" [checked=false, ref=e320]
+          - StaticText "Нажмите на страну"
+          - button "Интерактивная карта мира" [ref=e321]
+          - button "Увеличить" [ref=e322]
+          - button "Уменьшить" [ref=e323]
+          - button "Весь мир" [ref=e324]
+          - button "Показать выбранную страну" [disabled, ref=e325]
+          - StaticText "Перетаскивайте · сближайте пальцы · двойное касание для зума"
+          - button "Тренировка: 10 вопросов" [ref=e326]
+      - button "Отправить отзыв" [ref=e295]

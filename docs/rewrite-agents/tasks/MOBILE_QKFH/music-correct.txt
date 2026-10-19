@@ -1,0 +1,18 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e644]
+          - heading "Тренировка по фактам" [level=2, ref=e645]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Ритм и паузы" [disabled, ref=e669]
+          - button "Основы гармонии" [disabled, ref=e670]
+          - button "Динамика" [disabled, ref=e671]
+          - button "Темп" [disabled, ref=e672]
+          - group "Верно Правильный ответ: Темп"
+            - button "Открытая теория музыки: исполнительские обозначения" [ref=e677]
+          - button "Завершить" [ref=e675]
+          - button "К списку фактов" [ref=e676]
+      - button "Отправить отзыв" [ref=e613]

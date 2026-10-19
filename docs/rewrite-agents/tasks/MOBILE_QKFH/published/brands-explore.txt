@@ -1,0 +1,32 @@
+- generic
+  - generic
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e2259]
+          - heading "Атлас брендов" [level=2, ref=e2260]
+          - button "Вопросы по всем фактам" [ref=e2261]
+        - group
+          - StaticText "Справочник с источниками · локальная тренировка без рейтинга"
+          - StaticText "Учебная подборка: 61 бренд и 39 компаний/групп. Это не полный мировой реестр. Связи владельцев проверены на 19.10.2026; даты основания, запуска и предшественников поясняются отдельно."
+          - textbox "Найти бренд, группу, основателя или старое название" [ref=e2262]
+          - generic
+            - checkbox "Все отрасли" [checked=true, ref=e2263]
+            - checkbox "автомобили" [checked=false, ref=e2264]
+            - checkbox "еда и напитки" [checked=false, ref=e2265]
+            - checkbox "медиа и игры" [checked=false, ref=e2266]
+            - checkbox "мода и роскошь" [checked=false, ref=e2267]
+            - checkbox "спорт и мода" [checked=false, ref=e2268]
+            - checkbox "технологии" [checked=false, ref=e2269]
+          - generic
+            - button "Сортировка Название" [expanded=false, ref=e2270]
+            - button "Порядок" [ref=e2271]
+            - button "Тема тренировки Все темы" [expanded=false, ref=e2272]
+            - button "Тренировка" [ref=e2273]
+          - StaticText "61 брендов"
+          - button "Адидас Адидас спорт и мода · Германия · 1949" [ref=e2274]
+          - button "Амазон Амазон технологии · США · 1994" [ref=e2275]
+          - button "Амазон Веб Сервисез Амазон технологии · США · 2006" [ref=e2276]
+          - button "Ауди Фольксваген автомобили · Германия · 1909" [ref=e2277]
+          - button "БМВ БМВ автомобили · Германия · 1916" [ref=e2278]
+      - button "Отправить отзыв" [ref=e2240]

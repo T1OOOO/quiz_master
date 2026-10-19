@@ -1,0 +1,50 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 9dab42a8..5987908e 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -155,7 +155,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+       ..translateByDouble(scene.dx, scene.dy, 0, 1)
+       ..scaleByDouble(f, f, 1, 1)
+       ..translateByDouble(-scene.dx, -scene.dy, 0, 1);
+-    if (m.entry(0, 0) >= .25 && m.entry(0, 0) <= 5) {
++    if (m.entry(0, 0) >= .05 && m.entry(0, 0) <= 5) {
+       setState(() => _transform.value = m);
+     }
+   }
+@@ -169,7 +169,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
+     final scale = min(
+       viewportWidth / geometry.sceneWidth,
+       280 / geometry.sceneHeight,
+-    ).clamp(.25, 1.0);
++    ).clamp(.05, 1.0);
+     final matrix = Matrix4.identity()..scaleByDouble(scale, scale, 1, 1);
+     setState(() => _transform.value = matrix);
+   }
+@@ -510,7 +510,7 @@ class _Graph extends StatelessWidget {
+                 child: InteractiveViewer(
+                   key: const Key('belief-graph'),
+                   transformationController: controller,
+-                  minScale: .25,
++                  minScale: .05,
+                   maxScale: 5,
+                   constrained: false,
+                   boundaryMargin: const EdgeInsets.all(140),
+diff --git a/next/apps/quiz_app/test/belief_atlas_test.dart b/next/apps/quiz_app/test/belief_atlas_test.dart
+index df7234a7..6fff6445 100644
+--- a/next/apps/quiz_app/test/belief_atlas_test.dart
++++ b/next/apps/quiz_app/test/belief_atlas_test.dart
+@@ -92,6 +92,14 @@ void main() {
+             .entry(0, 0),
+         lessThan(1),
+       );
++      final viewer = tester.widget<InteractiveViewer>(
++        find.byKey(const Key('belief-graph')),
++      );
++      final scale = viewer.transformationController!.value.entry(0, 0);
++      expect(
++        tester.getSize(find.byKey(const Key('belief-scene'))).height * scale,
++        lessThanOrEqualTo(280.01),
++      );
+     },
+   );
+ 

@@ -1,0 +1,19 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e1668]
+          - heading "Тренировка по фактам" [level=2, ref=e1669]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - StaticText "Что указано в разделе «Категория» для «А темпо»?"
+          - button "Ритм и паузы" [disabled, ref=e1681]
+          - button "Основы гармонии" [disabled, ref=e1682]
+          - button "Динамика" [disabled, ref=e1683]
+          - button "Темп" [disabled, ref=e1684]
+          - group "Пока неверно Правильный ответ: Темп"
+            - button "Открытая теория музыки: исполнительские обозначения" [ref=e1689]
+          - button "Завершить" [ref=e1687]
+          - button "К списку фактов" [ref=e1688]
+      - button "Отправить отзыв" [ref=e1637]

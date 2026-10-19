@@ -1,0 +1,18 @@
+- generic
+  - generic "Назад Тренировка по фактам Отправить отзыв"
+    - generic
+      - generic
+        - generic
+          - button "Назад" [ref=e2279]
+          - heading "Тренировка по фактам" [level=2, ref=e2280]
+        - group
+          - StaticText "Без рейтинга · вопрос 1 из 1"
+          - button "Германия" [disabled, ref=e2324]
+          - button "Франция" [disabled, ref=e2325]
+          - button "Япония" [disabled, ref=e2326]
+          - button "США" [disabled, ref=e2327]
+          - group "Верно Правильный ответ: Германия"
+            - button "Адидас: история компании" [ref=e2332]
+          - button "Завершить" [ref=e2330]
+          - button "К списку фактов" [ref=e2331]
+      - button "Отправить отзыв" [ref=e2240]
