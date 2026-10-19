@@ -42,7 +42,7 @@ void main() {
         await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
-      expect(find.text('Quizipedia'), findsOneWidget);
+      expect(find.widgetWithText(AppBar, 'Quizipedia'), findsOneWidget);
       await tester.runAsync(() async {
         await tester.tap(find.text('Countries of the world'));
         await tester.pump();
@@ -54,11 +54,11 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Quiz library'));
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('catalog-search')), findsOneWidget);
+      expect(find.byType(DiscoveryPage), findsOneWidget);
       await tester.tap(find.byIcon(Icons.menu));
       await tester.pumpAndSettle();
       await tester.runAsync(() async {
-        await tester.tap(find.text('Quizipedia'));
+        await tester.tap(find.widgetWithText(ListTile, 'Quizipedia'));
         await tester.pump();
         await tester.pump();
         final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
@@ -297,10 +297,14 @@ void main() {
     tester,
   ) async {
     final mapFixture = fixture();
-    (mapFixture['countries'] as List).removeWhere((row) => row['id'] == 'country:background');
+    (mapFixture['countries'] as List).removeWhere(
+      (row) => row['id'] == 'country:background',
+    );
     await tester.pumpWidget(
       MaterialApp(
-        home: quizipediaLocationTraining(QuizipediaCatalog.fromJson(mapFixture)),
+        home: quizipediaLocationTraining(
+          QuizipediaCatalog.fromJson(mapFixture),
+        ),
       ),
     );
     await tester.pumpAndSettle();

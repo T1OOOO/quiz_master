@@ -100,7 +100,9 @@ void main() {
     tester,
   ) async {
     await _pumpDiscovery(tester, '/library');
-    expect(find.byKey(const Key('catalog-search')), findsOneWidget);
+    // Feedback rep_ff3e/rep_c63e: no title search and no root crumb on the root.
+    expect(find.byKey(const Key('catalog-search')), findsNothing);
+    expect(find.byKey(const Key('catalog-root')), findsNothing);
     expect(
       find.byWidgetPredicate(
         (widget) =>
@@ -117,36 +119,10 @@ void main() {
       ),
       findsNWidgets(15),
     );
+  });
 
-    await tester.enterText(
-      find.byKey(const Key('catalog-search')),
-      'Смешанный',
-    );
-    await tester.pumpAndSettle();
-    expect(
-      find.byKey(const Key('pack-pub-connections-20261014')),
-      findsOneWidget,
-    );
-
-    await tester.enterText(find.byKey(const Key('catalog-search')), 'Столицы');
-    await tester.pumpAndSettle();
-    expect(find.byKey(const Key('pack-prep-capitals-1')), findsOneWidget);
-    final capitalsCover = tester.widget<Image>(
-      find.descendant(
-        of: find.ancestor(
-          of: find.byKey(const Key('pack-prep-capitals-1')),
-          matching: find.byType(Card),
-        ),
-        matching: find.byType(Image),
-      ),
-    );
-    expect(
-      _assetName(capitalsCover),
-      'assets/categories/geography-capitals.png',
-    );
-
-    await tester.enterText(find.byKey(const Key('catalog-search')), 'сыр');
-    await tester.pumpAndSettle();
+  testWidgets('q deep link still filters the catalog', (tester) async {
+    await _pumpDiscovery(tester, '/library?q=%D1%81%D1%8B%D1%80');
     expect(
       find.byKey(const Key('pack-gastronomy-cheeses-and-dairy')),
       findsOneWidget,
@@ -155,18 +131,38 @@ void main() {
     final card = tester.widget<ListTile>(
       find.byKey(const Key('pack-gastronomy-cheeses-and-dairy')),
     );
-    expect(
-      card.onTap,
-      isNotNull,
-    ); // Every migrated source pack must have a real start action.
+    expect(card.onTap, isNotNull);
+  });
 
-    await tester.enterText(
-      find.byKey(const Key('catalog-search')),
-      'no-such-quiz',
-    );
-    await tester.pumpAndSettle();
+  testWidgets('q deep link without matches says so', (tester) async {
+    await _pumpDiscovery(tester, '/library?q=no-such-quiz');
     expect(find.text('No quizzes match your search.'), findsOneWidget);
   });
+
+  testWidgets(
+    'a single-round pack starts from its card without round buttons',
+    (tester) async {
+      // Feedback rep_da16.
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            discoveryCatalogProvider.overrideWith(
+              (ref) async => const [
+                CatalogPack('one', 'One round', 'Description', 'Разное', 20),
+                CatalogPack('two', 'Two rounds', 'Description', 'Разное', 40),
+              ],
+            ),
+          ],
+          child: QuizApp(initialLocation: '/library'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('pack-one')), findsOneWidget);
+      expect(find.byKey(const Key('round-one-0')), findsNothing);
+      expect(find.byKey(const Key('round-two-0')), findsNothing);
+      expect(find.byKey(const Key('round-two-1')), findsNothing);
+    },
+  );
 
   testWidgets('geography has its own category cover', (tester) async {
     await _pumpDiscovery(tester, '/library');
@@ -190,7 +186,6 @@ void main() {
     tester,
   ) async {
     await _pumpDiscovery(tester, '/library?folder=%D0%9A%D0%B8%D0%BD%D0%BE');
-    expect(find.byKey(const Key('catalog-search')), findsOneWidget);
     expect(find.byKey(const Key('catalog-root')), findsOneWidget);
     await tester.tap(find.byKey(const Key('catalog-root')));
     await tester.pumpAndSettle();
@@ -220,11 +215,21 @@ void main() {
       ),
       findsOneWidget,
     );
-    final round = find.descendant(
+    final rounds = find.descendant(
       of: find.ancestor(of: card, matching: find.byType(Card)),
-      matching: find.byType(ActionChip),
+      matching: find.byType(FilledButton),
     );
-    expect(tester.widget<ActionChip>(round).onPressed, isNotNull);
+    // Feedback rep_02b6: each round row spans the whole card width.
+    final cardBox = tester.getRect(
+      find.ancestor(of: card, matching: find.byType(Card)),
+    );
+    for (final element in rounds.evaluate()) {
+      expect((element.widget as FilledButton).onPressed, isNotNull);
+    }
+    if (rounds.evaluate().length > 1) {
+      final last = tester.getRect(rounds.last);
+      expect(last.right, closeTo(cardBox.right - 12, 1));
+    }
     expect(tester.widget<ListTile>(card).onTap, isNotNull);
     expect(tester.takeException(), isNull);
   });

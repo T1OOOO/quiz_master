@@ -40,8 +40,14 @@ void main() {
     expect(find.widgetWithText(ActionChip, 'United States'), findsOneWidget);
     await tester.tap(find.widgetWithText(ActionChip, 'United States'));
     await tester.pumpAndSettle();
-    final viewer = tester.widget<InteractiveViewer>(find.byKey(const Key('quizipedia-viewport')));
-    expect(viewer.transformationController!.value, Matrix4.identity(), reason: 'Country selection must preserve the user camera.');
+    final viewer = tester.widget<InteractiveViewer>(
+      find.byKey(const Key('quizipedia-viewport')),
+    );
+    expect(
+      viewer.transformationController!.value,
+      Matrix4.identity(),
+      reason: 'Country selection must preserve the user camera.',
+    );
     await tester.ensureVisible(find.text('Official language source'));
     expect(find.text('Official language source'), findsOneWidget);
     expect(tester.takeException(), isNull);
@@ -96,8 +102,7 @@ void main() {
       await tester.ensureVisible(choices.first);
       await tester.tap(choices.first);
       await tester.pump();
-      await tester.ensureVisible(find.text('Check'));
-      await tester.tap(find.text('Check'));
+      expect(find.text('Check'), findsNothing);
       await tester.pumpAndSettle();
       expect(find.textContaining('Correct answer:'), findsOneWidget);
       expect(tester.takeException(), isNull);

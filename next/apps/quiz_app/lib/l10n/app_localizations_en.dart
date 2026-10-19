@@ -124,6 +124,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get correctAnswerLabel => 'Correct answer';
+
+  @override
   String get displayName => 'Display name';
 
   @override

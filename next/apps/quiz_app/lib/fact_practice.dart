@@ -373,26 +373,19 @@ class _FactPracticePageState extends State<FactPracticePage> {
               style: OutlinedButton.styleFrom(
                 minimumSize: const Size.fromHeight(48),
                 padding: const EdgeInsets.all(16),
-                backgroundColor: _chosen == choice.id
-                    ? Theme.of(context).colorScheme.secondaryContainer
+                backgroundColor: _checked && choice.id == q.correctId
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : _chosen == choice.id
+                    ? Theme.of(context).colorScheme.errorContainer
                     : null,
+                disabledForegroundColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface,
               ),
               onPressed: _checked
                   ? null
-                  : () => setState(() => _chosen = choice.id),
-              child: Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(_ru ? choice.textRu : choice.textEn),
-              ),
-            ),
-          ),
-        if (!_checked)
-          FilledButton(
-            onPressed: _chosen == null
-                ? null
-                : () {
-                    if (_checked) return;
-                    setState(() {
+                  : () => setState(() {
+                      _chosen = choice.id;
                       _checked = true;
                       _seen.add(f.id);
                       if (_chosen == q.correctId) {
@@ -400,9 +393,12 @@ class _FactPracticePageState extends State<FactPracticePage> {
                       } else {
                         _missed.add(q);
                       }
-                    });
-                  },
-            child: Text(_t('Проверить', 'Check')),
+                    }),
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(_ru ? choice.textRu : choice.textEn),
+              ),
+            ),
           ),
         if (_checked) ...[
           Card(

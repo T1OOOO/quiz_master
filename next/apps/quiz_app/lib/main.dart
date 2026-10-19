@@ -33,7 +33,7 @@ part 'feedback_admin.dart';
 
 void main() => runApp(
   const ProviderScope(
-    child: QuizApp(initialLocation: '/library', defaultLocale: Locale('ru')),
+    child: QuizApp(initialLocation: '/quizipedia', defaultLocale: Locale('ru')),
   ),
 );
 
@@ -113,7 +113,7 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
     // Keep global controls below the navigator's already-owned overlay.
     ShellRoute(
       builder: (context, state, child) =>
-          _FeedbackOverlay(router: GoRouter.of(context), child: child),
+          _MainNavigation(path: state.uri.path, child: child),
       routes: [
         GoRoute(
           path: '/quizipedia',
@@ -170,6 +170,47 @@ GoRouter createRouter({String initialLocation = '/'}) => GoRouter(
     ),
   ],
 );
+
+class _MainNavigation extends StatelessWidget {
+  const _MainNavigation({required this.path, required this.child});
+  final String path;
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    final ru = Localizations.localeOf(context).languageCode == 'ru';
+    final hidden = path == '/feedback' || path.startsWith('/join/');
+    return Scaffold(
+      body: _FeedbackOverlay(router: GoRouter.of(context), child: child),
+      bottomNavigationBar: hidden
+          ? null
+          : NavigationBar(
+              height: 64,
+              selectedIndex: path.startsWith('/quizipedia')
+                  ? 0
+                  : path.startsWith('/study')
+                  ? 2
+                  : 1,
+              onDestinationSelected: (index) => context.go(
+                const ['/quizipedia', '/library', '/study'][index],
+              ),
+              destinations: [
+                NavigationDestination(
+                  icon: const Icon(Icons.public),
+                  label: ru ? 'Квизипедия' : 'Quizipedia',
+                ),
+                NavigationDestination(
+                  icon: const Icon(Icons.quiz_outlined),
+                  label: ru ? 'Квизы' : 'Quizzes',
+                ),
+                NavigationDestination(
+                  icon: const Icon(Icons.menu_book_outlined),
+                  label: ru ? 'Статьи' : 'Articles',
+                ),
+              ],
+            ),
+    );
+  }
+}
 
 class AppScaffold extends ConsumerWidget {
   const AppScaffold({super.key, required this.title, required this.body});
@@ -400,7 +441,7 @@ class _QuestionCardState extends State<QuestionCard> {
         .toList();
     return Card(
       child: Padding(
-        padding: EdgeInsets.all(compact ? 12 : 16),
+        padding: EdgeInsets.all(compact ? 8 : 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -445,7 +486,7 @@ class _QuestionCardState extends State<QuestionCard> {
             else
               for (final choice in choices)
                 Padding(
-                  padding: EdgeInsets.only(top: compact ? 4 : 8),
+                  padding: EdgeInsets.only(top: compact ? 1 : 8),
                   child: choice,
                 ),
             if (widget.reveal != null && widget.showExplanation)
@@ -607,8 +648,8 @@ class _ChoiceControlState extends State<_ChoiceControl> {
         child: Material(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(16),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 3),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 48),
             child: widget.child,
           ),
         ),
@@ -629,35 +670,63 @@ class ExplanationPanel extends StatelessWidget {
   final Reveal reveal;
   final VoidCallback? onBeforeArticleOpen;
   @override
-  Widget build(BuildContext context) => Semantics(
-    liveRegion: true,
-    child: Padding(
-      padding: const EdgeInsets.only(top: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.answer(reveal.answer),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color:
-                  DefaultTextStyle.of(context).style.color ??
-                  Theme.of(context).colorScheme.onSurface,
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    // Inherit the host surface's text colour; no fill, so contrast stays theirs.
+    final color =
+        DefaultTextStyle.of(context).style.color ?? theme.colorScheme.onSurface;
+    return Semantics(
+      liveRegion: true,
+      child: Container(
+        margin: const EdgeInsets.only(top: 12),
+        padding: const EdgeInsets.only(left: 12),
+        decoration: const BoxDecoration(
+          border: Border(left: BorderSide(color: Color(0xff81c784), width: 4)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(
+                  Icons.check_circle,
+                  color: Color(0xff81c784),
+                  size: 18,
+                ),
+                const SizedBox(width: 6),
+                Flexible(
+                  child: Text(
+                    AppLocalizations.of(context)!.correctAnswerLabel,
+                    style: theme.textTheme.labelLarge?.copyWith(color: color),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Text(reveal.explanation),
-          if (reveal.quizId != null &&
-              reveal.questionId != null &&
-              reveal.revision != null)
-            QuestionArticleLink(
-              quizId: reveal.quizId,
-              questionId: reveal.questionId,
-              revision: reveal.revision!.sha256,
-              onBeforeOpen: onBeforeArticleOpen,
+            const SizedBox(height: 4),
+            Text(
+              reveal.answer,
+              key: const Key('reveal-answer'),
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: color,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-        ],
+            const SizedBox(height: 8),
+            Text(reveal.explanation),
+            if (reveal.quizId != null &&
+                reveal.questionId != null &&
+                reveal.revision != null)
+              QuestionArticleLink(
+                quizId: reveal.quizId,
+                questionId: reveal.questionId,
+                revision: reveal.revision!.sha256,
+                onBeforeOpen: onBeforeArticleOpen,
+              ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 final fixtures = <PublicQuestion>[

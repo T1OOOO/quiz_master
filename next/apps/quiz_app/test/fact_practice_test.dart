@@ -48,17 +48,14 @@ void main() {
       await tester.ensureVisible(wrong);
       await tester.tap(wrong);
       await tester.pump();
-      final check = find.widgetWithText(FilledButton, 'Проверить');
-      await tester.ensureVisible(check);
-      await tester.tap(check);
-      await tester.pumpAndSettle();
+      expect(find.text('Проверить'), findsNothing);
       expect(find.text('Пока неверно'), findsOneWidget);
       expect(
         find.textContaining('Правильный ответ: Описание инструмента 0'),
         findsOneWidget,
       );
       final finish = find.widgetWithText(FilledButton, 'Завершить');
-      await tester.ensureVisible(finish);
+      await tester.scrollUntilVisible(finish, 200);
       await tester.tap(finish);
       await tester.pumpAndSettle();
       expect(find.text('Верных ответов: 0 из 1'), findsOneWidget);
@@ -71,14 +68,9 @@ void main() {
       await tester.ensureVisible(correct);
       await tester.tap(correct);
       await tester.pump();
-      await tester.ensureVisible(
-        find.widgetWithText(FilledButton, 'Проверить'),
-      );
-      await tester.tap(find.widgetWithText(FilledButton, 'Проверить'));
-      await tester.pumpAndSettle();
       expect(find.text('Верно'), findsOneWidget);
       final done = find.widgetWithText(FilledButton, 'Завершить');
-      await tester.ensureVisible(done);
+      await tester.scrollUntilVisible(done, 200);
       await tester.tap(done);
       await tester.pumpAndSettle();
       expect(find.text('Верных ответов: 1 из 1'), findsOneWidget);

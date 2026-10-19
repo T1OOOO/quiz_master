@@ -246,7 +246,13 @@ void main() {
       await tester.ensureVisible(find.byKey(const Key('music-entry-sharp')));
       await tester.tap(find.byKey(const Key('music-entry-sharp')));
       await tester.pumpAndSettle();
-      expect(find.byType(MusicVisual), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const Key('music-detail')),
+          matching: find.byType(MusicVisual),
+        ),
+        findsOneWidget,
+      );
       expect(find.text('Диез'), findsOneWidget);
       expect(tester.takeException(), isNull);
       await tester.binding.handlePopRoute();

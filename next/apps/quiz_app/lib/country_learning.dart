@@ -601,6 +601,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   String? _choice;
   bool _checked = false, _practice = false;
   bool _reverseRelations = false;
+  bool _filtersVisible = false;
   String _layer = 'none', _sort = 'population';
   bool _descending = true;
   Object? _loadError;
@@ -889,6 +890,75 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     );
   }
 
+  void _showCountryList() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        var search = '';
+        return StatefulBuilder(
+          builder: (context, update) {
+            final rows =
+                _facts.where((fact) {
+                  final query = search.trim().toLowerCase();
+                  return query.isEmpty ||
+                      fact.nameEn.toLowerCase().contains(query) ||
+                      fact.nameRu.toLowerCase().contains(query) ||
+                      fact.capital.toLowerCase().contains(query);
+                }).toList()..sort(
+                  (a, b) => (_ru ? a.nameRu : a.nameEn).compareTo(
+                    _ru ? b.nameRu : b.nameEn,
+                  ),
+                );
+            return SafeArea(
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).height * .78,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: TextField(
+                        key: const Key('country-list-search'),
+                        autofocus: true,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search),
+                          labelText: _t('Choose a country', 'Выберите страну'),
+                          border: const OutlineInputBorder(),
+                        ),
+                        onChanged: (value) => update(() => search = value),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: rows.length,
+                        itemBuilder: (context, index) {
+                          final fact = rows[index];
+                          return ListTile(
+                            title: Text(_ru ? fact.nameRu : fact.nameEn),
+                            subtitle: fact.capital.isEmpty
+                                ? null
+                                : Text(_display(fact.capital)),
+                            onTap: () {
+                              Navigator.pop(context);
+                              setState(() {
+                                _selected = fact.id;
+                                _focus = fact.id;
+                              });
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   List<QuizipediaFeature> get _visible =>
       widget.catalog.countries.where((country) {
         final fact = _facts.where((f) => f.id == country.id).firstOrNull;
@@ -1031,16 +1101,26 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(12),
-                  child: TextField(
-                    key: const Key('map-country-search'),
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      labelText: _t(
-                        'Country, river, club or fact',
-                        'Страна, река, клуб или факт',
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          key: const Key('map-country-search'),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.search),
+                            labelText: _t('Search a fact', 'Найти факт'),
+                          ),
+                          onChanged: (value) => setState(() => _query = value),
+                        ),
                       ),
-                    ),
-                    onChanged: (value) => setState(() => _query = value),
+                      const SizedBox(width: 8),
+                      IconButton.filledTonal(
+                        key: const Key('country-list-button'),
+                        tooltip: _t('Country list', 'Список стран'),
+                        icon: const Icon(Icons.format_list_bulleted),
+                        onPressed: _showCountryList,
+                      ),
+                    ],
                   ),
                 ),
                 if (_query.isNotEmpty)
@@ -1080,49 +1160,81 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           .toList(),
                     ),
                   ),
-                SizedBox(
-                  height: chipHeight,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: regions
-                        .map(
-                          (region) => Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: ChoiceChip(
-                              label: Text(_display(region)),
-                              selected: _region == region,
-                              onSelected: (_) =>
-                                  setState(() => _region = region),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-                  child: DropdownButtonFormField<String>(
-                    key: const Key('atlas-topic-picker'),
-                    initialValue: _topic,
-                    isExpanded: true,
-                    decoration: InputDecoration(
-                      labelText: _t('Training topic', 'Тема тренировки'),
-                      border: const OutlineInputBorder(),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: ExpansionTile(
+                    key: const Key('country-atlas-filters'),
+                    title: Text(
+                      _t('Filters and practice', 'Фильтры и тренировка'),
                     ),
-                    items: [
-                      for (final topic in topics)
-                        DropdownMenuItem(
-                          value: topic,
-                          child: Text(
-                            _topicLabel(topic),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                    initiallyExpanded: _filtersVisible,
+                    onExpansionChanged: (value) =>
+                        setState(() => _filtersVisible = value),
+                    children: [
+                      SizedBox(
+                        height: chipHeight,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: regions
+                              .map(
+                                (region) => Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: ChoiceChip(
+                                    label: Text(_display(region)),
+                                    selected: _region == region,
+                                    onSelected: (_) =>
+                                        setState(() => _region = region),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                        child: DropdownButtonFormField<String>(
+                          key: const Key('atlas-topic-picker'),
+                          initialValue: _topic,
+                          isExpanded: true,
+                          decoration: InputDecoration(
+                            labelText: _t('Practice topic', 'Тема тренировки'),
+                            border: const OutlineInputBorder(),
+                          ),
+                          items: [
+                            for (final topic in topics)
+                              DropdownMenuItem(
+                                value: topic,
+                                child: Text(
+                                  _topicLabel(topic),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                          ],
+                          onChanged: (value) {
+                            if (value != null) setState(() => _topic = value);
+                          },
+                        ),
+                      ),
+                      SwitchListTile(
+                        key: const Key('atlas-reverse-relations'),
+                        title: Text(
+                          _t(
+                            'Guess the country from a fact',
+                            'Узнать страну по факту',
                           ),
                         ),
+                        subtitle: Text(
+                          _t(
+                            'Rivers, clubs, food and other associations',
+                            'Реки, клубы, еда и другие связи',
+                          ),
+                        ),
+                        value: _reverseRelations,
+                        onChanged: (value) =>
+                            setState(() => _reverseRelations = value),
+                      ),
                     ],
-                    onChanged: (value) {
-                      if (value != null) setState(() => _topic = value);
-                    },
                   ),
                 ),
                 if (_query.trim().isNotEmpty && !_facts.any(_matches))
@@ -1223,24 +1335,6 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       ),
                     ),
                   ),
-                SwitchListTile(
-                  key: const Key('atlas-reverse-relations'),
-                  title: Text(
-                    _t(
-                      'Guess the country from a fact',
-                      'Узнать страну по факту',
-                    ),
-                  ),
-                  subtitle: Text(
-                    _t(
-                      'Rivers, clubs, food and other associations',
-                      'Реки, клубы, еда и другие связи',
-                    ),
-                  ),
-                  value: _reverseRelations,
-                  onChanged: (value) =>
-                      setState(() => _reverseRelations = value),
-                ),
                 SizedBox(
                   height: math.max(300, math.min(560, box.maxHeight * .60)),
                   child: QuizipediaWorldMap(
@@ -1655,11 +1749,29 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   child: OutlinedButton(
                     onPressed: _checked
                         ? null
-                        : () => setState(() => _choice = option),
+                        : () => setState(() {
+                            _choice = option;
+                            _checked = true;
+                            if (option == q.answer) {
+                              _score++;
+                            } else {
+                              _missed.add(q);
+                            }
+                          }),
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: _choice == option
-                          ? Theme.of(context).colorScheme.secondaryContainer
+                      foregroundColor: _checked && option != q.answer
+                          ? Theme.of(context).colorScheme.onSurfaceVariant
                           : null,
+                      backgroundColor: !_checked
+                          ? null
+                          : option == q.answer
+                          ? Theme.of(context).colorScheme.secondaryContainer
+                          : _choice == option
+                          ? Theme.of(context).colorScheme.errorContainer
+                                .withValues(alpha: .45)
+                          : Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHighest,
                     ),
                     child: Text(_display(option)),
                   ),
@@ -1669,9 +1781,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 Container(
                   key: const Key('quizipedia-feedback'),
                   padding: const EdgeInsets.all(12),
-                  color: _choice == q.answer
-                      ? Theme.of(context).colorScheme.secondaryContainer
-                      : Theme.of(context).colorScheme.errorContainer,
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -1715,22 +1825,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 onPressed: _choice == null
                     ? null
                     : () => setState(() {
-                        if (_checked) {
-                          _index++;
-                          _choice = null;
-                          _checked = false;
-                        } else {
-                          _checked = true;
-                          if (_choice == q.answer) {
-                            _score++;
-                          } else {
-                            _missed.add(q);
-                          }
-                        }
+                        _index++;
+                        _choice = null;
+                        _checked = false;
                       }),
-                child: Text(
-                  _checked ? _t('Next', 'Далее') : _t('Check', 'Проверить'),
-                ),
+                child: Text(_t('Next', 'Далее')),
               ),
             ],
           ),

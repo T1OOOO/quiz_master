@@ -34,6 +34,11 @@ void main() {
         await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Страны мира'),
+        150,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.runAsync(() async {
         await tester.tap(find.text('Страны мира'));
         await tester.pump();
@@ -89,6 +94,10 @@ void main() {
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
     expect(find.text('Feedback'), findsOneWidget);
+    expect(
+      tester.widget<CheckboxListTile>(find.byType(CheckboxListTile)).value,
+      isTrue,
+    );
     expect(
       find.descendant(
         of: find.byType(AlertDialog),

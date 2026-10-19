@@ -910,7 +910,7 @@ void main() {
             ),
           );
 
-          final heading = tester.widget<Text>(find.text('Answer: Test answer'));
+          final heading = tester.widget<Text>(find.text('Test answer'));
           expect(heading.style?.color, foreground);
           expect(tester.takeException(), isNull);
         },

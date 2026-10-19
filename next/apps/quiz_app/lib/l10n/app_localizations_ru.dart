@@ -124,6 +124,9 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get correctAnswerLabel => 'Правильный ответ';
+
+  @override
   String get displayName => 'Имя';
 
   @override

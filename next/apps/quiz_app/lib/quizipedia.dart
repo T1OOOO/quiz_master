@@ -522,6 +522,64 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
     return QuizipediaCatalog.fromJson(_record(jsonDecode(source), 'catalog'));
   }
 
+  Widget _themeCard({
+    Key? key,
+    required String title,
+    required IconData icon,
+    String? image,
+    String? subtitle,
+    required VoidCallback onTap,
+  }) => Card(
+    key: key,
+    clipBehavior: Clip.antiAlias,
+    child: InkWell(
+      onTap: onTap,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 76),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 76,
+                height: 60,
+                child: image == null
+                    ? ColoredBox(
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                        child: Icon(icon, size: 30),
+                      )
+                    : Image.asset(image, fit: BoxFit.cover),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 4, 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title, maxLines: 2, overflow: TextOverflow.ellipsis),
+                      if (subtitle != null)
+                        Text(
+                          subtitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsetsDirectional.only(end: 8),
+                child: Icon(Icons.chevron_right),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
@@ -569,143 +627,131 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               ),
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            const SizedBox(height: 16),
-            SegmentedButton<bool>(
-              segments: [
-                ButtonSegment(
-                  value: false,
-                  label: Text(_t(context, 'Explore', 'Изучение')),
+            Text(
+              _t(
+                context,
+                'Choose a topic: study cards or answer questions',
+                'Выберите тему: изучайте карточки или отвечайте на вопросы',
+              ),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: TextButton.icon(
+                onPressed: () => setState(() => _challenge = !_challenge),
+                icon: Icon(_challenge ? Icons.menu_book : Icons.quiz),
+                label: Text(
+                  _challenge
+                      ? _t(context, 'Explore', 'Изучение')
+                      : _t(context, 'Training', 'Тренировка'),
                 ),
-                ButtonSegment(
-                  value: true,
-                  label: Text(_t(context, 'Training', 'Тренировка')),
-                ),
-              ],
-              selected: {_challenge},
-              onSelectionChanged: (values) =>
-                  setState(() => _challenge = values.first),
+              ),
             ),
             const SizedBox(height: 16),
             for (final module in _Module.values)
-              Card(
-                child: ListTile(
-                  leading: Icon(switch (module) {
-                    _Module.map => Icons.public,
-                    _Module.anatomy => Icons.accessibility_new,
-                    _Module.landmarks => Icons.photo,
-                    _Module.sky => Icons.nightlight,
-                  }),
-                  title: Text(_moduleTitle(context, module)),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => module == _Module.map
-                          ? CountryAtlasPage(
+              _themeCard(
+                title: _moduleTitle(context, module),
+                icon: switch (module) {
+                  _Module.map => Icons.public,
+                  _Module.anatomy => Icons.accessibility_new,
+                  _Module.landmarks => Icons.photo,
+                  _Module.sky => Icons.nightlight,
+                },
+                image: switch (module) {
+                  _Module.map => 'assets/study/geography-countries-hero.png',
+                  _Module.anatomy => 'assets/quizipedia/endocrine.png',
+                  _Module.landmarks => 'assets/quizipedia/eiffel.jpg',
+                  _Module.sky => null,
+                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => module == _Module.map
+                        ? CountryAtlasPage(
+                            catalog: catalog,
+                            challenge: _challenge,
+                            locationTrainingBuilder: (_) =>
+                                quizipediaLocationTraining(catalog),
+                          )
+                        : module == _Module.sky
+                        ? ConstellationAtlasPage(
+                            catalog: catalog,
+                            challenge: _challenge,
+                            trainingBuilder: (_) => _QuizGame(
                               catalog: catalog,
-                              challenge: _challenge,
-                              locationTrainingBuilder: (_) =>
-                                  quizipediaLocationTraining(catalog),
-                            )
-                          : module == _Module.sky
-                          ? ConstellationAtlasPage(
-                              catalog: catalog,
-                              challenge: _challenge,
-                              trainingBuilder: (_) => _QuizGame(
-                                catalog: catalog,
-                                module: _Module.sky,
-                                challenge: true,
-                                bundle: widget.bundle ?? rootBundle,
-                              ),
-                            )
-                          : _QuizGame(
-                              catalog: catalog,
-                              module: module,
-                              challenge: _challenge,
+                              module: _Module.sky,
+                              challenge: true,
                               bundle: widget.bundle ?? rootBundle,
                             ),
-                    ),
+                          )
+                        : _QuizGame(
+                            catalog: catalog,
+                            module: module,
+                            challenge: _challenge,
+                            bundle: widget.bundle ?? rootBundle,
+                          ),
                   ),
                 ),
               ),
-            Card(
-              child: ListTile(
-                key: const Key('quizipedia-all-facts'),
-                leading: const Icon(Icons.fact_check_outlined),
-                title: Text(
-                  _t(
-                    context,
-                    'Questions for every fact',
-                    'Вопросы по всем фактам',
-                  ),
+            _themeCard(
+              key: const Key('quizipedia-all-facts'),
+              icon: Icons.fact_check_outlined,
+              title: _t(
+                context,
+                'Questions for every fact',
+                'Вопросы по всем фактам',
+              ),
+              subtitle: _t(
+                context,
+                'Choose any section, topic or card',
+                'Любой раздел, тема или карточка',
+              ),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) =>
+                      FactPracticePage(scope: 'all', bundle: widget.bundle),
                 ),
-                subtitle: Text(
-                  _t(
-                    context,
-                    'Choose any section, topic or card',
-                    'Любой раздел, тема или карточка',
-                  ),
-                ),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) =>
-                        FactPracticePage(scope: 'all', bundle: widget.bundle),
+              ),
+            ),
+            _themeCard(
+              icon: Icons.accessibility_new,
+              image: 'assets/quizipedia/anatomy-orientation.png',
+              title: _t(
+                context,
+                'Human organs and glands',
+                'Атлас органов и желёз',
+              ),
+              subtitle: _t(
+                context,
+                'Body systems, functions and practice',
+                'Системы организма, функции и тренировка',
+              ),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => OrganAtlasPage(
+                    bundle: widget.bundle,
+                    training: _challenge,
                   ),
                 ),
               ),
             ),
-            Card(
-              child: ListTile(
-                leading: const Icon(Icons.accessibility_new),
-                title: Text(
-                  _t(
-                    context,
-                    'Human organs and glands',
-                    'Атлас органов и желёз',
-                  ),
-                ),
-                subtitle: Text(
-                  _t(
-                    context,
-                    'Body systems, functions and practice',
-                    'Системы организма, функции и тренировка',
-                  ),
-                ),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) => OrganAtlasPage(
-                      bundle: widget.bundle,
-                      training: _challenge,
-                    ),
-                  ),
-                ),
+            _themeCard(
+              icon: Icons.music_note,
+              image: 'assets/categories/music.jpg',
+              title: _t(
+                context,
+                'Music: notes, signs and instruments',
+                'Музыка: ноты, знаки и инструменты',
               ),
-            ),
-            Card(
-              child: ListTile(
-                leading: const Icon(Icons.music_note),
-                title: Text(
-                  _t(
-                    context,
-                    'Music: notes, signs and instruments',
-                    'Музыка: ноты, знаки и инструменты',
-                  ),
-                ),
-                subtitle: Text(
-                  _t(
-                    context,
-                    'Read music, explore terms and practise',
-                    'Чтение нот, термины и проверочные вопросы',
-                  ),
-                ),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) => MusicLearningPage(
-                      bundle: widget.bundle,
-                      training: _challenge,
-                    ),
+              subtitle: _t(
+                context,
+                'Read music, explore terms and practise',
+                'Чтение нот, термины и проверочные вопросы',
+              ),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => MusicLearningPage(
+                    bundle: widget.bundle,
+                    training: _challenge,
                   ),
                 ),
               ),
@@ -719,70 +765,71 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               'greek',
               'religions',
             ])
-              Card(
-                child: ListTile(
-                  leading: Icon(switch (section) {
-                    'history' => Icons.timeline,
-                    'culture' => Icons.theaters,
-                    'brands' => Icons.business,
-                    'food' => Icons.restaurant_menu,
-                    'greek' => Icons.account_tree,
-                    'religions' => Icons.public,
-                    _ => Icons.people,
-                  }),
-                  title: Text(switch (section) {
-                    'history' => _t(
-                      context,
-                      'World history',
-                      'История человечества',
-                    ),
-                    'culture' => _t(
-                      context,
-                      'Films, books and opera',
-                      'Фильмы, книги и опера',
-                    ),
-                    'brands' => _t(
-                      context,
-                      'Brands and companies',
-                      'Бренды и компании',
-                    ),
-                    'greek' => _t(
-                      context,
-                      'Greek gods',
-                      'Древнегреческие боги',
-                    ),
-                    'religions' => _t(
-                      context,
-                      'Religions and traditions',
-                      'Религии и традиции',
-                    ),
-                    'food' => _t(
-                      context,
-                      'Food and regional cuisines',
-                      'Блюда и кухни мира',
-                    ),
-                    _ => _t(
-                      context,
-                      'People and their works',
-                      'Люди и их произведения',
-                    ),
-                  }),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => switch (section) {
-                        'brands' => BrandAtlasPage(bundle: widget.bundle),
-                        'food' => FoodAtlasPage(bundle: widget.bundle),
-                        'greek' || 'religions' => BeliefAtlasPage(
-                          bundle: widget.bundle,
-                          initialSection: section,
-                        ),
-                        _ => KnowledgeAtlasPage(
-                          section: section,
-                          bundle: widget.bundle,
-                        ),
-                      },
-                    ),
+              _themeCard(
+                icon: switch (section) {
+                  'history' => Icons.timeline,
+                  'culture' => Icons.theaters,
+                  'brands' => Icons.business,
+                  'food' => Icons.restaurant_menu,
+                  'greek' => Icons.account_tree,
+                  'religions' => Icons.public,
+                  _ => Icons.people,
+                },
+                image: switch (section) {
+                  'history' => 'assets/categories/history.jpg',
+                  'culture' => 'assets/categories/cinema.jpg',
+                  'food' => 'assets/categories/food.jpg',
+                  'greek' ||
+                  'religions' => 'assets/categories/mythology-greece.png',
+                  _ => null,
+                },
+                title: switch (section) {
+                  'history' => _t(
+                    context,
+                    'World history',
+                    'История человечества',
+                  ),
+                  'culture' => _t(
+                    context,
+                    'Films, books and opera',
+                    'Фильмы, книги и опера',
+                  ),
+                  'brands' => _t(
+                    context,
+                    'Brands and companies',
+                    'Бренды и компании',
+                  ),
+                  'greek' => _t(context, 'Greek gods', 'Древнегреческие боги'),
+                  'religions' => _t(
+                    context,
+                    'Religions and traditions',
+                    'Религии и традиции',
+                  ),
+                  'food' => _t(
+                    context,
+                    'Food and regional cuisines',
+                    'Блюда и кухни мира',
+                  ),
+                  _ => _t(
+                    context,
+                    'People and their works',
+                    'Люди и их произведения',
+                  ),
+                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => switch (section) {
+                      'brands' => BrandAtlasPage(bundle: widget.bundle),
+                      'food' => FoodAtlasPage(bundle: widget.bundle),
+                      'greek' || 'religions' => BeliefAtlasPage(
+                        bundle: widget.bundle,
+                        initialSection: section,
+                      ),
+                      _ => KnowledgeAtlasPage(
+                        section: section,
+                        bundle: widget.bundle,
+                      ),
+                    },
                   ),
                 ),
               ),
@@ -2090,13 +2137,22 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               center.dy * scene.height + (_view.height - scene.height) / 2,
             ),
           );
-          final height =
-              MediaQuery.textScalerOf(context).scale(12) * 3 +
-              (widget.showFlags ? 26 : 12);
+          final scale = transform.getMaxScaleOnAxis();
+          final countryWidth = math.max(
+            0.0,
+            bounds(rings.first).width * scene.width * scale,
+          );
+          final countryHeight = math.max(
+            0.0,
+            bounds(rings.first).height * scene.height * scale,
+          );
+          final labelWidth = math.min(72.0, countryWidth - 8);
+          final labelHeight = math.min(30.0, countryHeight - 6);
+          if (labelWidth < 28 || labelHeight < 14) continue;
           final rect = Rect.fromCenter(
             center: at,
-            width: widget.showFlags ? 76 : 112,
-            height: height,
+            width: labelWidth,
+            height: labelHeight,
           );
           if (rect.left < 0 ||
               rect.right > _view.width ||
@@ -2109,33 +2165,18 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           labels.add(
             Positioned.fromRect(
               rect: rect,
-              child: Container(
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: const Color(0xf2ffffff),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (widget.showFlags)
-                      Image.asset(
-                        'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
-                        height: 18,
-                        width: 28,
-                        errorBuilder: (_, _, _) => const SizedBox(height: 18),
-                      ),
-                    Text(
-                      text,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff173f57),
-                      ),
-                    ),
-                  ],
+              child: Center(
+                child: Text(
+                  text,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff173f57),
+                    shadows: [Shadow(color: Colors.white, blurRadius: 3)],
+                  ),
                 ),
               ),
             ),

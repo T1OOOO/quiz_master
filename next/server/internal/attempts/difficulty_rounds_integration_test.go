@@ -100,9 +100,10 @@ func TestPostgresDifficultyRoundsPersistFilteredShuffledPartitions(t *testing.T)
 	if err != nil || len(whole.QuestionSnapshots) != 41 {
 		t.Fatalf("whole filtered attempt: %v", err)
 	}
+	// Whole-pack starts shuffle too; the injected shuffler reverses.
 	for i, snapshot := range whole.QuestionSnapshots {
-		if snapshot.QuestionID != catalog.Quiz.Questions[i].QuestionID {
-			t.Fatal("whole attempt/catalog order mismatch")
+		if snapshot.QuestionID != catalog.Quiz.Questions[len(whole.QuestionSnapshots)-1-i].QuestionID {
+			t.Fatal("whole attempt is not the shuffled catalog order")
 		}
 	}
 	seen := map[string]bool{}

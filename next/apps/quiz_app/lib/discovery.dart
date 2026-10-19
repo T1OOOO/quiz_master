@@ -125,19 +125,6 @@ class DiscoveryPage extends ConsumerStatefulWidget {
 }
 
 class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
-  late final _search = TextEditingController(text: widget.query);
-  @override
-  void didUpdateWidget(DiscoveryPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (_search.text != widget.query) _search.text = widget.query;
-  }
-
-  @override
-  void dispose() {
-    _search.dispose();
-    super.dispose();
-  }
-
   String _location(
     String folder, [
     String query = '',
@@ -220,22 +207,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      TextField(
-                        key: const Key('catalog-search'),
-                        controller: _search,
-                        decoration: InputDecoration(
-                          labelText: l10n.searchQuizzes,
-                          prefixIcon: const Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        onChanged: (value) => context.replace(
-                          _location(widget.folder, value, widget.difficulty),
-                        ),
-                      ),
-                      SizedBox(height: compact ? 8 : 28),
+                      const SizedBox(height: 8),
                       if (packs.any((pack) => pack.difficultyCounts != null))
                         Wrap(
                           spacing: 8,
@@ -263,31 +235,32 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                               ),
                           ],
                         ),
-                      Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          TextButton(
-                            key: const Key('catalog-root'),
-                            onPressed: () => context.go(
-                              _location('', '', widget.difficulty),
-                            ),
-                            child: Text(l10n.catalogRoot),
-                          ),
-                          for (var i = 0; i < segments.length; i++) ...[
-                            const Icon(Icons.chevron_right, size: 18),
+                      if (segments.isNotEmpty || query.isNotEmpty)
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
                             TextButton(
+                              key: const Key('catalog-root'),
                               onPressed: () => context.go(
-                                _location(
-                                  segments.take(i + 1).join('/'),
-                                  '',
-                                  widget.difficulty,
-                                ),
+                                _location('', '', widget.difficulty),
                               ),
-                              child: Text(segments[i]),
+                              child: Text(l10n.catalogRoot),
                             ),
+                            for (var i = 0; i < segments.length; i++) ...[
+                              const Icon(Icons.chevron_right, size: 18),
+                              TextButton(
+                                onPressed: () => context.go(
+                                  _location(
+                                    segments.take(i + 1).join('/'),
+                                    '',
+                                    widget.difficulty,
+                                  ),
+                                ),
+                                child: Text(segments[i]),
+                              ),
+                            ],
                           ],
-                        ],
-                      ),
+                        ),
                       if (sortedFolders.isNotEmpty) ...[
                         Text(
                           l10n.categories,
@@ -340,82 +313,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                           },
                         ),
                       ],
-                      for (final pack in visible)
-                        Card(
-                          margin: const EdgeInsets.symmetric(vertical: 8),
-                          clipBehavior: Clip.antiAlias,
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                categoryCoverAsset(pack.category),
-                                width: double.infinity,
-                                height: 96,
-                                fit: BoxFit.cover,
-                                cacheWidth: 600,
-                                excludeFromSemantics: true,
-                              ),
-                              ListTile(
-                                key: Key('pack-${pack.id}'),
-                                isThreeLine: true,
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
-                                  vertical: 16,
-                                ),
-                                title: Text(pack.title),
-                                subtitle: Text(
-                                  '${pack.description}\n${l10n.questionsCount(pack.questions)}',
-                                ),
-                                trailing: const Icon(Icons.play_arrow),
-                                onTap: () => context.go(
-                                  _quizLocation(
-                                    pack.id,
-                                    null,
-                                    widget.difficulty,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  16,
-                                  0,
-                                  16,
-                                  16,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Wrap(
-                                    spacing: 8,
-                                    runSpacing: 8,
-                                    children: [
-                                      for (
-                                        var round = 0;
-                                        round <
-                                            questionRoundCount(
-                                              pack.questionsFor(
-                                                widget.difficulty,
-                                              ),
-                                            );
-                                        round++
-                                      )
-                                        ActionChip(
-                                          label: Text(
-                                            '${l10n.roundLabel(round + 1)} · ${l10n.roundQuestions(questionCountInRound(pack.questionsFor(widget.difficulty), round))}',
-                                          ),
-                                          onPressed: () => context.go(
-                                            _quizLocation(
-                                              pack.id,
-                                              round,
-                                              widget.difficulty,
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      for (final pack in visible) _packCard(pack, l10n),
                       if (sortedFolders.isEmpty && visible.isEmpty)
                         Padding(
                           padding: const EdgeInsets.all(24),
@@ -432,6 +330,38 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
             ],
           );
         },
+      ),
+    );
+  }
+
+  Widget _packCard(CatalogPack pack, AppLocalizations l10n) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: [
+          Image.asset(
+            categoryCoverAsset(pack.category),
+            width: double.infinity,
+            height: 64,
+            fit: BoxFit.cover,
+            cacheWidth: 600,
+            excludeFromSemantics: true,
+          ),
+          ListTile(
+            key: Key('pack-${pack.id}'),
+            isThreeLine: true,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+            title: Text(pack.title),
+            subtitle: Text(
+              '${pack.description}\n${l10n.questionsCount(pack.questions)}',
+            ),
+            trailing: const Icon(Icons.play_arrow),
+            // One round needs no picker: the card itself starts it.
+            onTap: () =>
+                context.go(_quizLocation(pack.id, null, widget.difficulty)),
+          ),
+        ],
       ),
     );
   }

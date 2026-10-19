@@ -37,6 +37,10 @@ void main() {
           await tester.tap(find.text('Training'));
           await tester.pump();
         }
+        await tester.scrollUntilVisible(
+          find.text('Human organs and glands'),
+          200,
+        );
         await tester.tap(find.text('Human organs and glands'));
         await tester.pumpAndSettle();
         expect(find.text('Retry'), findsNothing);
@@ -61,6 +65,10 @@ void main() {
         await catalog.future!;
       });
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Human organs and glands'),
+        200,
+      );
       expect(find.text('Human organs and glands'), findsOneWidget);
       await tester.scrollUntilVisible(find.text('Endocrine system'), 200);
       expect(find.text('Endocrine system'), findsOneWidget);

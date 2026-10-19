@@ -123,6 +123,14 @@ func (s *Attempts) start(ctx context.Context, owner string, practice bool) (atte
 		return attempts.Attempt{}, attempts.ErrValidation
 	}
 	id := "a-" + uuid.NewString()
+	// Every attempt gets a fresh question order, whole pack or one round alike.
+	questions, e := attempts.ShuffleQuestions(s.bundle.Quiz.Questions, attempts.RandomShuffle)
+	if e != nil {
+		return attempts.Attempt{}, e
+	}
+	shuffled := *s
+	shuffled.bundle.Quiz.Questions = questions
+	s = &shuffled
 	snaps, e := attempts.MakeSnapshots(s.bundle, attempts.RandomShuffle)
 	if e != nil {
 		return attempts.Attempt{}, e

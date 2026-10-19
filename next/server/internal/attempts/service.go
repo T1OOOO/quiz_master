@@ -172,7 +172,7 @@ func (s *Service) StartRound(ctx context.Context, owner, id string, round int) (
 	if err != nil {
 		return Attempt{}, err
 	}
-	questions, err := s.shuffledRound(selected.bundle.Quiz.Questions, round)
+	questions, err := QuestionRound(selected.bundle.Quiz.Questions, round)
 	if err != nil {
 		return Attempt{}, err
 	}
@@ -190,21 +190,13 @@ func (s *Service) StartDifficultyRound(ctx context.Context, owner, id, difficult
 	if err != nil {
 		return Attempt{}, err
 	}
-	questions, err := s.shuffledRound(filtered.Questions, round)
+	questions, err := QuestionRound(filtered.Questions, round)
 	if err != nil {
 		return Attempt{}, err
 	}
 	copy := *selected
 	copy.bundle.Quiz.Questions = questions
 	return copy.Start(ctx, owner)
-}
-
-func (s *Service) shuffledRound(questions []content.PublicQuestion, round int) ([]content.PublicQuestion, error) {
-	selected, err := QuestionRound(questions, round)
-	if err != nil {
-		return nil, err
-	}
-	return ShuffleQuestions(selected, s.opts.Shuffle)
 }
 func DifficultyCounts(quiz content.PublicQuiz) map[string]int {
 	counts := map[string]int{"easy": 0, "medium": 0, "hard": 0, "nightmare": 0}
@@ -226,6 +218,14 @@ func (s *Service) Start(ctx context.Context, owner string) (Attempt, error) {
 	if !contractID.MatchString(id) {
 		return Attempt{}, ErrValidation
 	}
+	// Every attempt gets a fresh question order, whole pack or one round alike.
+	questions, err := ShuffleQuestions(s.bundle.Quiz.Questions, s.opts.Shuffle)
+	if err != nil {
+		return Attempt{}, err
+	}
+	shuffled := *s
+	shuffled.bundle.Quiz.Questions = questions
+	s = &shuffled
 	snapshots, err := makeSnapshots(s.bundle, s.opts.Shuffle)
 	if err != nil {
 		return Attempt{}, err

@@ -232,14 +232,27 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(_v(atlas.coverageNoteEn, atlas.coverageNoteRu)),
-              const SizedBox(height: 8),
-              Text(
-                _t(
-                  'Anterior view: the patient’s right is on your left. Female and male reproductive structures are combined as variants in this overview; paired, deep and distributed structures are approximate schematic layers, not diagnostic anatomy.',
-                  'Вид спереди: правая сторона пациента слева от вас. Женские и мужские репродуктивные структуры показаны как варианты в одном обзоре; парные, глубокие и распределённые структуры даны приблизительно, это не диагностическая анатомия.',
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  tooltip: _t('Atlas scope', 'О схеме'),
+                  icon: const Icon(Icons.info_outline),
+                  onPressed: () => showDialog<void>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(_t('About this atlas', 'О схеме')),
+                      content: Text(
+                        '${_v(atlas.coverageNoteEn, atlas.coverageNoteRu)}\n\n${_t('Anterior overview only. The patient’s right is on your left. Deep, paired and distributed structures are represented by their sourced cards rather than invented surface anchors.', 'Только обзор спереди: правая сторона пациента слева от вас. Глубокие, парные и распределённые структуры показаны в карточках с источниками, без выдуманных поверхностных точек.')}',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text(_t('Close', 'Закрыть')),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 12),
               TextField(
@@ -594,28 +607,67 @@ class _BodyMap extends StatefulWidget {
 }
 
 class _BodyMapState extends State<_BodyMap> {
-  int _page = 0;
-  @override
-  void didUpdateWidget(covariant _BodyMap oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.organs.map((e) => e.id).join(',') !=
-        widget.organs.map((e) => e.id).join(',')) {
-      _page = 0;
-    }
-  }
+  static const _drawableIds = {
+    'brain',
+    'thyroid',
+    'parathyroids',
+    'thymus',
+    'lungs',
+    'heart',
+    'liver',
+    'stomach',
+    'pancreas',
+    'adrenals',
+    'kidneys',
+    'bladder',
+  };
+  static const _illustratedAnchors = <String, Offset>{
+    'brain': Offset(147, 28),
+    'thyroid': Offset(150, 114),
+    'lungs': Offset(150, 172),
+    'heart': Offset(162, 189),
+    'liver': Offset(126, 228),
+    'stomach': Offset(171, 237),
+  };
 
   @override
   Widget build(BuildContext context) {
     final ru = Localizations.localeOf(context).languageCode == 'ru';
-    final count = (widget.organs.length / 8).ceil();
-    final page = widget.organs.skip(_page * 8).take(8).toList();
+    final focused =
+        widget.selected != null &&
+            _drawableIds.contains(widget.selected!.id) &&
+            widget.organs.any((item) => item.id == widget.selected!.id)
+        ? widget.selected!
+        : widget.organs.firstWhere(
+            (item) => _drawableIds.contains(item.id),
+            orElse: () => widget.organs.first,
+          );
+    final anchor = _illustratedAnchors[focused.id];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
           ru
-              ? 'Выберите орган на схеме или подпись под ней'
-              : 'Select an organ on the diagram or a callout below',
+              ? 'Выберите структуру: карточка покажет точку на схеме, если она есть.'
+              : 'Choose a structure. Its card focuses the diagram when a location is available.',
+        ),
+        const SizedBox(height: 8),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (final item in widget.organs)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: ChoiceChip(
+                    key: Key('organ-map-card-${item.id}'),
+                    label: Text(widget.name(item)),
+                    selected: item.id == focused.id,
+                    onSelected: (_) => widget.onSelected(item),
+                  ),
+                ),
+            ],
+          ),
         ),
         const SizedBox(height: 8),
         SizedBox(
@@ -634,164 +686,62 @@ class _BodyMapState extends State<_BodyMap> {
                 child: SizedBox(
                   width: 300,
                   height: 430,
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTapUp: (details) {
-                      final point = details.localPosition;
-                      final boxes = <String, Rect>{
-                        'brain': const Rect.fromLTWH(119, 32, 62, 43),
-                        'heart': const Rect.fromLTWH(148, 151, 40, 57),
-                        'stomach': const Rect.fromLTWH(165, 260, 42, 52),
-                        'liver': const Rect.fromLTWH(82, 225, 80, 40),
-                        'kidneys': const Rect.fromLTWH(103, 279, 31, 46),
-                        'bladder': const Rect.fromLTWH(130, 340, 40, 31),
-                        'lungs': const Rect.fromLTWH(92, 128, 115, 92),
-                      };
-                      for (final entry in boxes.entries) {
-                        final organ = widget.organs
-                            .where((o) => o.id == entry.key)
-                            .firstOrNull;
-                        if (organ != null &&
-                            (entry.value.contains(point) ||
-                                (entry.key == 'kidneys' &&
-                                    const Rect.fromLTWH(
-                                      165,
-                                      278,
-                                      32,
-                                      48,
-                                    ).contains(point)))) {
-                          widget.onSelected(organ);
-                          return;
-                        }
-                      }
-                    },
-                    child: Stack(
-                      children: [
-                        CustomPaint(
-                          size: const Size(300, 430),
-                          painter: _BodyPainter(
-                            widget.organs,
-                            widget.selected?.id,
-                            Theme.of(context).colorScheme,
-                          ),
-                        ),
-                        CustomPaint(
-                          size: const Size(300, 430),
-                          painter: _CalloutPainter(
-                            page,
-                            Theme.of(context).colorScheme,
-                          ),
-                        ),
-                        for (var i = 0; i < page.length; i++)
-                          Positioned(
-                            left: i.isEven ? 0 : 252,
-                            top: 20 + (i ~/ 2) * 95.0,
-                            width: 48,
-                            height: 44,
-                            child: Tooltip(
-                              message: widget.name(page[i]),
-                              child: FilledButton(
-                                key: Key('organ-map-target-${page[i].id}'),
-                                style: FilledButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                ),
-                                onPressed: () => widget.onSelected(page[i]),
-                                child: Text('${_page * 8 + i + 1}'),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        'assets/quizipedia/anatomy-orientation.png',
+                        width: 300,
+                        height: 430,
+                        fit: BoxFit.cover,
+                        semanticLabel: ru
+                            ? 'Ориентационный вид спереди'
+                            : 'Anterior orientation view',
+                      ),
+                      if (anchor != null)
+                        Positioned(
+                          left: anchor.dx - 22,
+                          top: anchor.dy - 22,
+                          width: 44,
+                          height: 44,
+                          child: Tooltip(
+                            message: widget.name(focused),
+                            child: FilledButton(
+                              key: Key('organ-map-target-${focused.id}'),
+                              onPressed: () => widget.onSelected(focused),
+                              style: FilledButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                shape: const CircleBorder(),
                               ),
+                              child: const Icon(Icons.ads_click, size: 20),
                             ),
                           ),
-                      ],
-                    ),
+                        )
+                      else
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(32),
+                            child: Text(
+                              ru
+                                  ? 'Для этой структуры нет точки на обзорной иллюстрации. Откройте карточку с источниками.'
+                                  : 'This structure has no point on the orientation illustration. Open its sourced card.',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
         ),
-        if (count > 1)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                key: const Key('organ-callouts-previous'),
-                tooltip: ru ? 'Предыдущие подписи' : 'Previous callouts',
-                onPressed: _page > 0 ? () => setState(() => _page--) : null,
-                icon: const Icon(Icons.chevron_left),
-              ),
-              Text('${_page + 1} / $count'),
-              IconButton(
-                key: const Key('organ-callouts-next'),
-                tooltip: ru ? 'Следующие подписи' : 'Next callouts',
-                onPressed: _page + 1 < count
-                    ? () => setState(() => _page++)
-                    : null,
-                icon: const Icon(Icons.chevron_right),
-              ),
-            ],
-          ),
-        for (var i = 0; i < page.length; i++)
-          TextButton(
-            key: Key('organ-callout-${page[i].id}'),
-            style: TextButton.styleFrom(
-              alignment: Alignment.centerLeft,
-              minimumSize: const Size(44, 44),
-            ),
-            onPressed: () => widget.onSelected(page[i]),
-            child: Text(
-              '${_page * 8 + i + 1}. ${widget.name(page[i])} · ${_filterLabel(context, page[i].region)}',
-            ),
-          ),
       ],
     );
   }
 }
 
-Offset _organAnchor(OrganStructure organ) {
-  const points = <String, Offset>{
-    'brain': Offset(150, 53),
-    'heart': Offset(169, 179),
-    'lungs': Offset(120, 170),
-    'liver': Offset(120, 245),
-    'stomach': Offset(185, 280),
-    'kidneys': Offset(118, 301),
-    'bladder': Offset(150, 356),
-  };
-  return points[organ.id] ??
-      Offset(
-        150,
-        switch (organ.region) {
-          'head' => 60,
-          'neck' => 105,
-          'thorax' => 170,
-          'abdomen' => 255,
-          'pelvis' => 345,
-          _ => 390,
-        }.toDouble(),
-      );
-}
-
-class _CalloutPainter extends CustomPainter {
-  const _CalloutPainter(this.organs, this.colors);
-  final List<OrganStructure> organs;
-  final ColorScheme colors;
-  @override
-  void paint(Canvas canvas, Size size) {
-    final pen = Paint()
-      ..color = colors.outline
-      ..strokeWidth = 1;
-    for (var i = 0; i < organs.length; i++) {
-      final target = _organAnchor(organs[i]);
-      final start = Offset(i.isEven ? 48 : 252, 42 + (i ~/ 2) * 95.0);
-      canvas.drawLine(start, target, pen);
-      canvas.drawCircle(target, 3, Paint()..color = colors.onSurface);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _CalloutPainter old) =>
-      old.organs != organs || old.colors != colors;
-}
-
+// Retained as a fallback sketch for future non-illustrated anatomy views.
+// ignore: unused_element
 class _BodyPainter extends CustomPainter {
   const _BodyPainter(this.organs, this.selected, this.colors);
   final List<OrganStructure> organs;

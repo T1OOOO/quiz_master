@@ -129,9 +129,14 @@ func TestAnnotatedPartialAttemptPinsMetadataAfterRepublish(t *testing.T) {
 	if newAttempt.BundleSHA256 == a.BundleSHA256 || !reflect.DeepEqual(current.bundle.TaxonomyRef, &content.TaxonomyRef{TaxonomyID: newTaxonomy.ID, TaxonomySHA256: newTaxonomy.SHA256}) {
 		t.Fatal("republish did not change bundle/taxonomy identity")
 	}
+	// Attempts shuffle question order, so match snapshots by question ID.
+	adopted := map[string]content.Revision{}
+	for _, snap := range newAttempt.QuestionSnapshots {
+		adopted[snap.QuestionID] = snap.QuestionRevision
+	}
 	for i, q := range current.bundle.Quiz.Questions {
 		oldQ := oldBundle.Quiz.Questions[i]
-		if q.QuestionID != oldQ.QuestionID || q.Revision == oldQ.Revision || q.DifficultyLevel == nil || *q.DifficultyLevel != 9 || q.Difficulty != "nightmare" || !reflect.DeepEqual(q.ContextTagIDs, []string{"topic:new"}) || !reflect.DeepEqual(current.bundle.PrivateQuestionMetadata[q.QuestionID].EditorialTagIDs, []string{"skill:new", "topic:new"}) || newAttempt.QuestionSnapshots[i].QuestionRevision != q.Revision {
+		if q.QuestionID != oldQ.QuestionID || q.Revision == oldQ.Revision || q.DifficultyLevel == nil || *q.DifficultyLevel != 9 || q.Difficulty != "nightmare" || !reflect.DeepEqual(q.ContextTagIDs, []string{"topic:new"}) || !reflect.DeepEqual(current.bundle.PrivateQuestionMetadata[q.QuestionID].EditorialTagIDs, []string{"skill:new", "topic:new"}) || adopted[q.QuestionID] != q.Revision {
 			t.Fatal("new attempt did not adopt replacement content")
 		}
 	}
@@ -160,9 +165,14 @@ func TestAnnotatedPartialAttemptPinsMetadataAfterRepublish(t *testing.T) {
 	if err != nil || len(reveals) != 2 {
 		t.Fatalf("old reveals: %v", err)
 	}
+	// Attempts shuffle question order, so find each question's bundle index by ID.
+	bundleIndex := map[string]int{}
+	for i, q := range oldBundle.Quiz.Questions {
+		bundleIndex[q.QuestionID] = i
+	}
 	for i, reveal := range reveals {
-		q := oldBundle.Quiz.Questions[i]
-		if reveal.QuestionID != q.QuestionID || reveal.QuestionRevision != q.Revision || reveal.CorrectAnswer.OptionID != oldBundle.PrivateGrading[q.QuestionID].CorrectOptionID || reveal.Explanation != fmt.Sprintf("old explanation %d", i) || finished.History[i].QuestionRevision != q.Revision {
+		q := oldBundle.Quiz.Questions[bundleIndex[a.QuestionSnapshots[i].QuestionID]]
+		if reveal.QuestionID != q.QuestionID || reveal.QuestionRevision != q.Revision || reveal.CorrectAnswer.OptionID != oldBundle.PrivateGrading[q.QuestionID].CorrectOptionID || reveal.Explanation != fmt.Sprintf("old explanation %d", bundleIndex[q.QuestionID]) || finished.History[i].QuestionRevision != q.Revision {
 			t.Fatal("reveal/history used replacement content")
 		}
 	}
@@ -197,7 +207,7 @@ func TestAnnotatedPartialAttemptPinsMetadataAfterRepublish(t *testing.T) {
 		if err = json.Unmarshal([]byte(snapshotRaw), &snapshot); err != nil {
 			t.Fatal(err)
 		}
-		if position != count || !reflect.DeepEqual(public, oldBundle.Quiz.Questions[count]) || !reflect.DeepEqual(snapshot, a.QuestionSnapshots[count]) {
+		if position != count || !reflect.DeepEqual(public, oldBundle.Quiz.Questions[bundleIndex[a.QuestionSnapshots[count].QuestionID]]) || !reflect.DeepEqual(snapshot, a.QuestionSnapshots[count]) {
 			t.Fatal("stored revision/options/order/public metadata changed")
 		}
 		count++

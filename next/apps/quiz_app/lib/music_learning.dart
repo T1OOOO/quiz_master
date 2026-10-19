@@ -200,16 +200,22 @@ class MusicCatalog {
 
 /// The semantic label is supplied by the caller: practice visuals never announce the answer.
 class MusicVisual extends StatelessWidget {
-  const MusicVisual({super.key, required this.visual, required this.label});
+  const MusicVisual({
+    super.key,
+    required this.visual,
+    required this.label,
+    this.compact = false,
+  });
   final Map<String, dynamic> visual;
   final String label;
+  final bool compact;
   @override
   Widget build(BuildContext context) => Semantics(
     label: label,
     image: true,
     child: ExcludeSemantics(
       child: Container(
-        height: 168,
+        height: compact ? 72 : 168,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerHighest,
@@ -226,10 +232,12 @@ class MusicVisual extends StatelessWidget {
                         : visual['text'] as String,
                 },
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: compact
+                    ? Theme.of(context).textTheme.headlineMedium
+                    : Theme.of(context).textTheme.headlineLarge,
               )
             : CustomPaint(
-                size: const Size(260, 156),
+                size: Size(compact ? 76 : 260, compact ? 68 : 156),
                 painter: _MusicPainter(
                   visual,
                   Theme.of(context).colorScheme.onSurface,
@@ -411,6 +419,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
     showDragHandle: true,
     useSafeArea: true,
     builder: (context) => SizedBox(
+      key: const Key('music-detail'),
       height: MediaQuery.sizeOf(context).height * .82,
       child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
@@ -564,7 +573,16 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
         Card(
           child: ListTile(
             key: Key('music-entry-${e.id}'),
-            leading: Icon(e.visual != null ? Icons.music_note : Icons.piano),
+            leading: e.visual != null
+                ? SizedBox(
+                    width: 76,
+                    child: MusicVisual(
+                      visual: e.visual!,
+                      label: e.name(_ru),
+                      compact: true,
+                    ),
+                  )
+                : const Icon(Icons.piano),
             title: Text(e.name(_ru)),
             subtitle: Text(
               e.description(_ru),

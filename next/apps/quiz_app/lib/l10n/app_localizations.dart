@@ -302,6 +302,12 @@ abstract class AppLocalizations {
   /// **'Answer: {answer}'**
   String answer(String answer);
 
+  /// No description provided for @correctAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer'**
+  String get correctAnswerLabel;
+
   /// No description provided for @displayName.
   ///
   /// In en, this message translates to:

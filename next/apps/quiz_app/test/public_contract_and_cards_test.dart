@@ -297,7 +297,10 @@ void main() {
           ),
         ),
       );
-      expect(find.textContaining('Answer: Mars'), findsOneWidget);
+      expect(
+        tester.widget<Text>(find.byKey(const Key('reveal-answer'))).data,
+        'Mars',
+      );
       expect(find.text('A planet'), findsOneWidget);
       expect(answer, isNull);
     },

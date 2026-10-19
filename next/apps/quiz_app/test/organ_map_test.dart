@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,56 +36,35 @@ Future<void> _mount(WidgetTester tester) async {
       home: OrganAtlasPage(bundle: _Bundle(text)),
     ),
   );
-  await tester.pumpAndSettle();
+  await tester.pump();
+  await tester.pump(const Duration(seconds: 1));
 }
 
 void main() {
   testWidgets(
-    'all 52 shipped map callouts are reachable through finite pages',
+    'all shipped structures remain reachable through the accessible list and search',
     (tester) async {
       await _mount(tester);
-      final visited = <String>{};
-      for (var page = 0; page < 7; page++) {
-        final targets = find.byWidgetPredicate(
-          (w) =>
-              w is FilledButton &&
-              w.key.toString().contains('organ-map-target-'),
-        );
-        for (final element in targets.evaluate()) {
-          visited.add(element.widget.key.toString());
-        }
-        if (page < 6) {
-          await tester.ensureVisible(
-            find.byKey(const Key('organ-callouts-next')),
-          );
-          await tester.tap(find.byKey(const Key('organ-callouts-next')));
-          await tester.pumpAndSettle();
-        }
-      }
-      expect(visited.length, 52);
+      late Map<String, dynamic> raw;
+      await tester.runAsync(() async {
+        raw = jsonDecode(
+          await rootBundle.loadString('assets/quizipedia/organ_atlas.json'),
+        ) as Map<String, dynamic>;
+      });
+      final ids = (raw['organs'] as List).cast<Map>();
+      expect(ids, hasLength(52));
       expect(
-        tester
-            .widget<IconButton>(find.byKey(const Key('organ-callouts-next')))
-            .onPressed,
-        isNull,
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is OutlinedButton &&
+              widget.key.toString().contains('organ-list-'),
+        ),
+        findsNWidgets(52),
       );
-      final target = find
-          .byWidgetPredicate(
-            (w) =>
-                w is FilledButton &&
-                w.key.toString().contains('organ-map-target-'),
-          )
-          .last;
-      final camera = tester
-          .widget<InteractiveViewer>(find.byKey(const Key('organ-map')))
-          .transformationController!;
-      final before = camera.value.clone();
-      await Scrollable.ensureVisible(tester.element(target), alignment: .4);
-      await tester.pumpAndSettle();
-      await tester.tap(target);
-      await tester.pumpAndSettle();
-      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
-      expect(camera.value.storage, before.storage);
+      await tester.enterText(find.byKey(const Key('organ-search')), 'thyroid');
+      await tester.pump();
+      expect(find.byKey(const Key('organ-list-thyroid')), findsOneWidget);
+      expect(find.byKey(const Key('organ-list-heart')), findsNothing);
       expect(tester.takeException(), isNull);
     },
   );
@@ -99,29 +80,35 @@ void main() {
     final before = camera.value.clone();
     await Scrollable.ensureVisible(tester.element(map), alignment: .2);
     await tester.pumpAndSettle();
-    await tester.tapAt(
-      tester.getTopLeft(map) + const Offset(169 * 1.2, 179 * 1.2),
+    await tester.scrollUntilVisible(
+      find.byKey(const Key('organ-list-heart')),
+      200,
+      scrollable: find
+          .descendant(
+            of: find.byKey(const Key('organ-scroll')),
+            matching: find.byType(Scrollable),
+          )
+          .first,
     );
+    await tester.tap(find.byKey(const Key('organ-list-heart')));
+    await tester.pumpAndSettle();
+    await tester.binding.handlePopRoute();
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(map);
+    await tester.pumpAndSettle();
+    final heartMarker = find.byKey(const Key('organ-map-target-heart'));
+    expect(heartMarker, findsOneWidget);
+    final markerCenter = tester.getCenter(heartMarker);
+    final mapOrigin = tester.getTopLeft(map);
+    expect((markerCenter.dx - mapOrigin.dx) / 1.2, closeTo(162, 4));
+    expect((markerCenter.dy - mapOrigin.dy) / 1.2, closeTo(189, 4));
+    await tester.tap(heartMarker);
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('organ-detail')), findsOneWidget);
     expect(
       find.descendant(
         of: find.byKey(const Key('organ-detail')),
         matching: find.text('Heart'),
-      ),
-      findsOneWidget,
-    );
-    expect(camera.value.storage, before.storage);
-    await tester.binding.handlePopRoute();
-    await tester.pumpAndSettle();
-    await tester.tapAt(
-      tester.getTopLeft(map) + const Offset(181 * 1.2, 320 * 1.2),
-    );
-    await tester.pumpAndSettle();
-    expect(
-      find.descendant(
-        of: find.byKey(const Key('organ-detail')),
-        matching: find.text('Kidneys'),
       ),
       findsOneWidget,
     );

@@ -218,21 +218,11 @@ func (s *Attempts) startDifficultyRound(ctx context.Context, owner, id, difficul
 	}
 	return startQuestionRound(ctx, owner, selected, questions, practice)
 }
+
+// start shuffles the selected round's question order.
 func startQuestionRound(ctx context.Context, owner string, pack *Attempts, questions []content.PublicQuestion, practice bool) (attempts.Attempt, error) {
-	ids := make([]string, len(questions))
-	byID := map[string]content.PublicQuestion{}
-	for i, q := range questions {
-		ids[i] = q.QuestionID
-		byID[q.QuestionID] = q
-	}
-	if err := attempts.RandomShuffle(ids); err != nil {
-		return attempts.Attempt{}, err
-	}
 	selected := *pack
-	selected.bundle.Quiz.Questions = make([]content.PublicQuestion, len(ids))
-	for i, id := range ids {
-		selected.bundle.Quiz.Questions[i] = byID[id]
-	}
+	selected.bundle.Quiz.Questions = questions
 	return selected.start(ctx, owner, practice)
 }
 func selectDifficulty(pack *Attempts, difficulty string) (*Attempts, error) {

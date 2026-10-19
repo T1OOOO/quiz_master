@@ -205,13 +205,17 @@ func TestServiceShuffledRoundPermutesOnlyItsSelectedSlice(t *testing.T) {
 	for i := range questions {
 		questions[i] = content.PublicQuestion{QuestionID: fmt.Sprintf("q-%02d", i)}
 	}
-	service := Service{opts: Options{Shuffle: func(ids []string) error {
+	reverse := func(ids []string) error {
 		for left, right := 0, len(ids)-1; left < right; left, right = left+1, right-1 {
 			ids[left], ids[right] = ids[right], ids[left]
 		}
 		return nil
-	}}}
-	selected, err := service.shuffledRound(questions, 1)
+	}
+	// Start shuffles whatever QuestionRound selected.
+	selected, err := QuestionRound(questions, 1)
+	if err == nil {
+		selected, err = ShuffleQuestions(selected, reverse)
+	}
 	if err != nil || len(selected) != 21 {
 		t.Fatalf("round = %d, %v", len(selected), err)
 	}

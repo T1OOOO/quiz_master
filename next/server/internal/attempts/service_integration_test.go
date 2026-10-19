@@ -38,6 +38,11 @@ func TestPostgresAttemptLifecycle(t *testing.T) {
 	path := "../../../content/home-alone-1-part-1/bundle.json"
 	schemas := "../../../contracts/quiz-contract/v1/schemas"
 	opts := Options{Now: now, ManifestPath: "../../../content/home-alone-1-part-1/manifest.json", Shuffle: func(ids []string) error {
+		// Reverse option order only: these cases pin questions by source position.
+		// Question-order shuffling is covered by the difficulty rounds test.
+		if len(ids) > 0 && !strings.Contains(ids[0], "-opt-") {
+			return nil
+		}
 		for i, j := 0, len(ids)-1; i < j; i, j = i+1, j-1 {
 			ids[i], ids[j] = ids[j], ids[i]
 		}

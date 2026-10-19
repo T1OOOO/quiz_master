@@ -41,6 +41,10 @@ void main() {
       await future.future!;
     });
     await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Music: notes, signs and instruments'),
+      200,
+    );
     expect(find.text('Music: notes, signs and instruments'), findsOneWidget);
   });
 }

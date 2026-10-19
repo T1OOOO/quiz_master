@@ -218,7 +218,7 @@ class _GlobalFeedbackDialog extends StatefulWidget {
 class _GlobalFeedbackDialogState extends State<_GlobalFeedbackDialog> {
   final _comment = TextEditingController();
   String _type = 'ui';
-  bool _attach = false;
+  bool _attach = true;
   bool _sending = false;
   bool _failed = false;
   Map<String, Object>? _payload;

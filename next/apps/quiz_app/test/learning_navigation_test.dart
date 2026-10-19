@@ -68,6 +68,8 @@ void main() {
       find.text('Food and regional cuisines'),
       200,
     );
+    await tester.ensureVisible(find.text('Food and regional cuisines'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Food and regional cuisines'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('food-search')), findsOneWidget);
