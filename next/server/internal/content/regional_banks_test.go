@@ -1,6 +1,7 @@
 package content
 
 import (
+	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -27,8 +28,8 @@ func TestRegionalGeographyBanksPartitionWorldPacksWithoutAnswerDrift(t *testing.
 		id     string
 	}
 	sources := []sourceSpec{
-		{"quizzes/Preparation/prep_capitals_world.json", "7dcb15b820f18649a5d8fbc7adebac18fdff1dfda49fba70fe8d0e15fa891ccd", "capitals", "География/Столицы"},
-		{"quizzes/Preparation/prep_flags_world.json", "6c6c64597a3c8f09767de3c228ce6ac54e285574ca6f07cfcaca8c61017e247c", "flags", "География/Флаги"},
+		{"quizzes/Preparation/prep_capitals_world.json", "696b25cec11a2c671e555f9b5c93a2b5250d075564527e431afbaec104cf6842", "capitals", "География/Столицы"},
+		{"quizzes/Preparation/prep_flags_world.json", "52de3206a1a73786b978ceab485e96555b4d57dcb4ae72099d7c005890ca51f9", "flags", "География/Флаги"},
 	}
 	regions := []string{"europe", "africa", "americas", "asia-oceania"}
 
@@ -38,7 +39,7 @@ func TestRegionalGeographyBanksPartitionWorldPacksWithoutAnswerDrift(t *testing.
 		if err != nil {
 			t.Fatal(err)
 		}
-		if got := sha256hex(bytes); got != source.hash {
+		if got := normalizedSourceSHA256(bytes); got != source.hash {
 			t.Fatalf("source %s changed: %s", source.path, got)
 		}
 		var original regionalRawPack
@@ -105,6 +106,19 @@ func TestRegionalGeographyBanksPartitionWorldPacksWithoutAnswerDrift(t *testing.
 	}
 }
 
+func TestRegionalWorldSourceHashNormalizesCRLFButRejectsContentMutation(t *testing.T) {
+	lf := []byte("{\n  \"id\": \"source\"\n}\n")
+	crlf := bytes.ReplaceAll(lf, []byte("\n"), []byte("\r\n"))
+	if got, want := normalizedSourceSHA256(crlf), normalizedSourceSHA256(lf); got != want {
+		t.Fatalf("CRLF hash %s, want LF hash %s", got, want)
+	}
+
+	mutated := bytes.Replace(lf, []byte("source"), []byte("changed"), 1)
+	if normalizedSourceSHA256(mutated) == normalizedSourceSHA256(lf) {
+		t.Fatal("source hash accepted a content mutation")
+	}
+}
+
 type regionalRawPack struct {
 	ID        string                `json:"id"`
 	Category  string                `json:"category"`
@@ -146,4 +160,8 @@ func number(value any) (int, bool) {
 func sha256hex(data []byte) string {
 	sum := sha256.Sum256(data)
 	return hex.EncodeToString(sum[:])
+}
+
+func normalizedSourceSHA256(data []byte) string {
+	return sha256hex(bytes.ReplaceAll(data, []byte("\r\n"), []byte("\n")))
 }

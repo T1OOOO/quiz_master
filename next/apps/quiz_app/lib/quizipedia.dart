@@ -2258,6 +2258,78 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           : (Localizations.localeOf(context).languageCode == 'ru'
                 ? selected.nameRu
                 : selected.nameEn);
+      final compactControls = MediaQuery.sizeOf(context).height <= 600;
+      Widget selectionLabel() => IgnorePointer(
+        child: Semantics(
+          liveRegion: true,
+          child: Material(
+            color: const Color(0xff173f57),
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                name,
+                key: const Key('map-selection-label'),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      Widget zoomControls() => Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              tooltip: _t(context, 'Zoom in', 'Увеличить'),
+              icon: const Icon(Icons.add, color: Color(0xff173f57)),
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+              onPressed: () => _zoom(1.5),
+            ),
+            IconButton(
+              tooltip: _t(context, 'Zoom out', 'Уменьшить'),
+              icon: const Icon(Icons.remove, color: Color(0xff173f57)),
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+              onPressed: () => _zoom(1 / 1.5),
+            ),
+            IconButton(
+              tooltip: _t(context, 'Reset view', 'Весь мир'),
+              icon: const Icon(Icons.public, color: Color(0xff173f57)),
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+              onPressed: () => _moveCamera(Matrix4.identity()),
+            ),
+            IconButton(
+              tooltip: _t(
+                context,
+                'Show selected country',
+                'Показать выбранную страну',
+              ),
+              icon: const Icon(
+                Icons.center_focus_strong,
+                color: Color(0xff173f57),
+              ),
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+              onPressed: selected == null ? null : () => _focus(),
+            ),
+          ],
+        ),
+      );
+      Widget gestureHint() => IgnorePointer(
+        child: Text(
+          _t(
+            context,
+            'Drag · pinch · double-tap to zoom',
+            'Перетаскивайте · сближайте пальцы · двойное касание для зума',
+          ),
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Color(0xff173f57), fontSize: 12),
+        ),
+      );
       return ColoredBox(
         color: const Color(0xffd9edfc),
         child: Stack(
@@ -2340,106 +2412,27 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               ),
             ),
             Positioned.fill(child: _factLabels(scene)),
-            Positioned(
-              top: 8,
-              left: 8,
-              right: 8,
-              child: IgnorePointer(
-                child: Semantics(
-                  liveRegion: true,
-                  child: Material(
-                    color: const Color(0xff173f57),
-                    borderRadius: BorderRadius.circular(12),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        name,
-                        key: const Key('map-selection-label'),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 32,
-              left: 8,
-              child: Material(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+            if (compactControls)
+              Positioned(
+                top: 8,
+                left: 8,
+                right: 8,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    IconButton(
-                      tooltip: _t(context, 'Zoom in', 'Увеличить'),
-                      icon: const Icon(Icons.add, color: Color(0xff173f57)),
-                      constraints: const BoxConstraints(
-                        minWidth: 48,
-                        minHeight: 48,
-                      ),
-                      onPressed: () => _zoom(1.5),
-                    ),
-                    IconButton(
-                      tooltip: _t(context, 'Zoom out', 'Уменьшить'),
-                      icon: const Icon(Icons.remove, color: Color(0xff173f57)),
-                      constraints: const BoxConstraints(
-                        minWidth: 48,
-                        minHeight: 48,
-                      ),
-                      onPressed: () => _zoom(1 / 1.5),
-                    ),
-                    IconButton(
-                      tooltip: _t(context, 'Reset view', 'Весь мир'),
-                      icon: const Icon(Icons.public, color: Color(0xff173f57)),
-                      constraints: const BoxConstraints(
-                        minWidth: 48,
-                        minHeight: 48,
-                      ),
-                      onPressed: () => _moveCamera(Matrix4.identity()),
-                    ),
-                    IconButton(
-                      tooltip: _t(
-                        context,
-                        'Show selected country',
-                        'Показать выбранную страну',
-                      ),
-                      icon: const Icon(
-                        Icons.center_focus_strong,
-                        color: Color(0xff173f57),
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 48,
-                        minHeight: 48,
-                      ),
-                      onPressed: selected == null ? null : () => _focus(),
-                    ),
+                    selectionLabel(),
+                    const SizedBox(height: 4),
+                    zoomControls(),
+                    const SizedBox(height: 4),
+                    gestureHint(),
                   ],
                 ),
-              ),
-            ),
-            Positioned(
-              bottom: 8,
-              left: 8,
-              right: 8,
-              child: IgnorePointer(
-                child: Text(
-                  _t(
-                    context,
-                    'Drag · pinch · double-tap to zoom',
-                    'Перетаскивайте · сближайте пальцы · двойное касание для зума',
-                  ),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Color(0xff173f57),
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ),
+              )
+            else ...[
+              Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
+              Positioned(bottom: 32, left: 8, child: zoomControls()),
+              Positioned(bottom: 8, left: 8, right: 8, child: gestureHint()),
+            ],
           ],
         ),
       );

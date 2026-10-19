@@ -26,7 +26,7 @@ REPORT_PATH = ROOT / "docs/rewrite-agents/tasks/FEEDBACK43_20261019/regional-ban
 SOURCES = {
     "capitals": {
         "path": ROOT / "quizzes/Preparation/prep_capitals_world.json",
-        "sha256": "7dcb15b820f18649a5d8fbc7adebac18fdff1dfda49fba70fe8d0e15fa891ccd",
+        "sha256": "696b25cec11a2c671e555f9b5c93a2b5250d075564527e431afbaec104cf6842",
         "category": "География/Столицы",
         "titles": {
             "europe": "Столицы Европы",
@@ -38,7 +38,7 @@ SOURCES = {
     },
     "flags": {
         "path": ROOT / "quizzes/Preparation/prep_flags_world.json",
-        "sha256": "6c6c64597a3c8f09767de3c228ce6ac54e285574ca6f07cfcaca8c61017e247c",
+        "sha256": "52de3206a1a73786b978ceab485e96555b4d57dcb4ae72099d7c005890ca51f9",
         "category": "География/Флаги",
         "titles": {
             "europe": "Флаги Европы",
@@ -115,6 +115,11 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def source_sha256(data: bytes) -> str:
+    """Hash reviewed source JSON independently of Windows CRLF line endings."""
+    return sha256(data.replace(b"\r\n", b"\n"))
+
+
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -175,7 +180,7 @@ def generated_packs() -> tuple[dict[Path, bytes], dict[str, Any]]:
     evidence: dict[str, Any] = {"sources": {}, "packs": {}, "aliases": {}}
     for kind, spec in SOURCES.items():
         source_bytes = spec["path"].read_bytes()
-        if sha256(source_bytes) != spec["sha256"]:
+        if source_sha256(source_bytes) != spec["sha256"]:
             raise ValueError(f"reviewed source changed: {spec['path']}")
         source = json.loads(source_bytes)
         questions = source.get("questions")
@@ -198,7 +203,7 @@ def generated_packs() -> tuple[dict[Path, bytes], dict[str, Any]]:
 
         if len(country_ids) != 195:
             raise ValueError(f"{kind} does not identify 195 distinct countries")
-        evidence["sources"][kind] = {"sha256": sha256(source_bytes), "questions": len(questions)}
+        evidence["sources"][kind] = {"sha256": source_sha256(source_bytes), "questions": len(questions)}
         for region in REGIONS:
             derived_questions = partitions[region]
             if len(derived_questions) < 20:
@@ -236,7 +241,7 @@ def report(evidence: dict[str, Any]) -> bytes:
         "",
     ]
     for kind, source in evidence["sources"].items():
-        lines.append(f"- `{kind}`: {source['questions']} вопросов, SHA-256 `{source['sha256']}`")
+        lines.append(f"- `{kind}`: {source['questions']} вопросов, SHA-256 после нормализации CRLF→LF `{source['sha256']}`")
     lines.extend(["", "## Получившиеся наборы", ""])
     for name, pack in evidence["packs"].items():
         lines.append(f"- `{name}`: {pack['questions']} вопросов, SHA-256 `{pack['sha256']}`")

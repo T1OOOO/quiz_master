@@ -4,8 +4,8 @@
 
 ## Проверенные источники
 
-- `capitals`: 195 вопросов, SHA-256 `7dcb15b820f18649a5d8fbc7adebac18fdff1dfda49fba70fe8d0e15fa891ccd`
-- `flags`: 195 вопросов, SHA-256 `6c6c64597a3c8f09767de3c228ce6ac54e285574ca6f07cfcaca8c61017e247c`
+- `capitals`: 195 вопросов, SHA-256 после нормализации CRLF→LF `696b25cec11a2c671e555f9b5c93a2b5250d075564527e431afbaec104cf6842`
+- `flags`: 195 вопросов, SHA-256 после нормализации CRLF→LF `52de3206a1a73786b978ceab485e96555b4d57dcb4ae72099d7c005890ca51f9`
 
 ## Получившиеся наборы
 

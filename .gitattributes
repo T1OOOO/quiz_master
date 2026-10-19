@@ -7,3 +7,8 @@ deploy/** text eol=lf
 quizipedia/*.json -text whitespace=cr-at-eol
 quizipedia/sources/** -text whitespace=cr-at-eol
 next/apps/quiz_app/assets/quizipedia/** -text
+
+# These exact reviewed bytes are used by content acceptance and release checks.
+study/drafts/feedback43-anatomy-20261019.json -text
+quizzes/Preparation/GeographyRegions/*.json -text
+next/content/home-alone-1-part-1/manifest.json -text
