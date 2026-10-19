@@ -1,0 +1,48 @@
+{
+  "plan_sha256": "9b33c948dda966c0b2aed932fe56c20fb5b9837ee2864586f59ff35f17c9dcaf",
+  "remote_targets_sha256": "f69b19bf72be68e54385015fa20ca0d268ba8303bea4881912dfe6481f3bcac3",
+  "archive": "remote-targets.tar.gz",
+  "archive_sha256": "ce44bb04540008e09d7ecd489af940a61341be4229d80b002b6747120d4c4f2e",
+  "extract_root": "extract",
+  "executed_at_utc": "2026-10-19T17:29:17.111126+00:00",
+  "targets": 21,
+  "planned_bytes": 1127768030,
+  "verified_sqlite_databases": 10,
+  "all_file_hashes_verified_locally_and_rechecked_remotely": true,
+  "archive_and_snapshot_fsynced_before_apply": true,
+  "private_archive_retained": true,
+  "remote_apply_exit_code": 0,
+  "post_apply_preflight": {
+    "hostname": "racknerd-f0269d5",
+    "revision": "69",
+    "deployment_revision": "67",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "containers": [
+      {
+        "name": "api",
+        "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a"
+      },
+      {
+        "name": "web",
+        "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a"
+      }
+    ],
+    "disk": {
+      "total": 102417174528,
+      "free": 22135832576,
+      "available_percent": 21.6133990007196,
+      "path": "/var/lib/rancher/k3s/agent/containerd"
+    },
+    "node": {
+      "conditions": {
+        "MemoryPressure": "False",
+        "DiskPressure": "False",
+        "PIDPressure": "False",
+        "Ready": "True"
+      },
+      "unschedulable": false,
+      "taints": []
+    }
+  },
+  "excluded": "All Docker/CRI images, live PVC, current and rollback backups, all receipts/charts/manifests, feedback evidence and entire minimum20 stage retained."
+}

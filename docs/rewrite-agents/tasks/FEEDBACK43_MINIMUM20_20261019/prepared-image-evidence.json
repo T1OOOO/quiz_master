@@ -1,0 +1,114 @@
+{
+  "hostname": "racknerd-f0269d5",
+  "receipt": {
+    "build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "image": "quiz-master:quiz-2026.10.19-minimum20-7f8344d6@sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee",
+    "input_sha256": "80a8d4d7b1b6b3c99fff21052630b090a6665619b7443d7094cd29c0280c5bf6"
+  },
+  "docker_engine_image_id": "sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee",
+  "docker_image_size": 1369543799,
+  "cri_status": {
+    "id": "sha256:92a9a966fb7a5f478b273d9b2e8c4df47ef719fa66c6dcca6ba57df01448d130",
+    "repoTags": [
+      "docker.io/library/quiz-master:quiz-2026.10.19-minimum20-7f8344d6"
+    ],
+    "repoDigests": [
+      "docker.io/library/quiz-master@sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee"
+    ],
+    "size": "491702223"
+  },
+  "cri_manifest_digest": "sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee",
+  "source_closure": {
+    "original_files": 148,
+    "candidate_files": 165,
+    "approved_existing_mutations": 11
+  },
+  "proof_sha256": {
+    "release-inputs.json": "80a8d4d7b1b6b3c99fff21052630b090a6665619b7443d7094cd29c0280c5bf6",
+    "prepared-receipt.json": "408c909c0c63f9a459983900ef99def57990fcd9387fd7be14fcad8675d40836",
+    "base.api": "208ac3638f5d7bd3e081b2f042b0afcf222c95a4b1af5e139286e45a3e6f22aa",
+    "new.api": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "base.nginx.conf": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+    "new.nginx.conf": "e9add812a138010e443463acb455295103dc69886ca32cd17dafbccfa676d6bc",
+    "resume-quiz-source-closure.json": "34b18b9d444d6a712eb57c7aaa8a12c498f8ec71eac354d7742a9eb9d39cb651",
+    "base-docker-config-id.txt": "9ca428dcde6dd53e3fd3c5d883e1770319c901fbcd303ba70ff74356c60ada51",
+    "new-docker-config-id.txt": "a26a9fae332de1fdc849c09e4d6d3777a47ed3f9803a34f245561bfaf8dca8a9",
+    "containerd-manifest-digest.txt": "a26a9fae332de1fdc849c09e4d6d3777a47ed3f9803a34f245561bfaf8dca8a9",
+    "canonical-cri.json": "30c8a8b1c8a5644e8fc6df5e003b7a732b36d7a13422886dbc24ce85af06f194",
+    "live-values.yaml": "138826255aabc1c26957cc773052a8676871797222ccddede941f1a88c8383d2",
+    "live-manifest.yaml": "d0b887a99432bcf7449dcb664df189f4d3a8e33807ae3a4854a886a0b40825d1",
+    "rendered-baseline.yaml": "863596780ea5990b965beddb461c10cff6069dc151b4fab79e33c1ac5eb99c68",
+    "rendered-target.yaml": "b949c1a054119a29b559d8a7840aaf7275b7033522367f47d4fb9d3d80dd95c8",
+    "feedback-before.json": "3f6724d8617ea60d25b8663822ce54e18fae2fa1289117efb5eb1d24a36574f9",
+    "rehearse.py": "42da280e7281077dc406e4958f1b6226713c1009058fd840e63b2fe47b92627f"
+  },
+  "sqlite_integrity": {
+    "/opt/quiz-master/backups/quiz-2026.10.19-minimum20-7f8344d6.sqlite": {
+      "result": "ok",
+      "sha256": "db5d2c2805138545913a9baf7f29e39f1db695c897cf16d93a8ac524bd604ac8",
+      "bytes": 60190720
+    },
+    "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-restore-proof.sqlite": {
+      "result": "ok",
+      "sha256": "db5d2c2805138545913a9baf7f29e39f1db695c897cf16d93a8ac524bd604ac8",
+      "bytes": 60190720
+    },
+    "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-rehearsal-data/quiz.db": {
+      "result": "ok",
+      "sha256": "0e129b267628c2a527aea4dcf27348808097feee3d66fc80af241a27d27d9b5a",
+      "bytes": 67940352
+    }
+  },
+  "production_helm_revision": 69,
+  "deployment_revision": "67",
+  "containers": [
+    {
+      "name": "api",
+      "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a"
+    },
+    {
+      "name": "web",
+      "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a"
+    }
+  ],
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "disk": {
+    "total": 102417174528,
+    "available": 21645365248,
+    "available_percent": 21.134507320432217
+  },
+  "feedback": {
+    "before_rows": 66,
+    "now_rows": 66,
+    "original_rows_unchanged": true,
+    "before_sha256": "3f6724d8617ea60d25b8663822ce54e18fae2fa1289117efb5eb1d24a36574f9"
+  },
+  "version": {
+    "buildId": "quiz-2026.10.19-minimum20-7f8344d6",
+    "commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "source_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "local_build": true,
+    "packs": 105,
+    "questions": 4520,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 305,
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "main_dart_js_sha256": "4f67b8208b5fbddf9092e0105a46a267719cd6ad215966cab67e533f2502445d",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "quizipedia_facts": 13588,
+    "quizipedia_sections": 13,
+    "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "frontend_only": false,
+    "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "question_article_references": 241
+  }
+}
