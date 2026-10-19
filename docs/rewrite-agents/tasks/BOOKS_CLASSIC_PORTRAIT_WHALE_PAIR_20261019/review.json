@@ -1,0 +1,38 @@
+{
+  "schema_version": "qm-private-editorial-review/v1",
+  "reviewed_at_utc": "2026-10-19",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_PORTRAIT_WHALE_PAIR_20261019/articles.json",
+    "sha256": "b2ddb17b71b7c918bf902903d6dc5bfca2f2d932d6c791f60c1dcf535e29c02d"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_PORTRAIT_WHALE_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "eaf9e876cdc8423551e4fa59d6ac5de60ea98f1601fb96dfa1f94339be03ddae"
+  },
+  "blind_answer_sha256": "083b3e7573472aec7bfc47b0a1a1913f5d2e0d19a57c16aad57ff59bdfb105fc",
+  "clean_blind": false,
+  "blind_exposure_note": "The brief named Wilde and Melville, and previous familiarity with public works is possible. Candidate answers were checked against independently opened institutional sources before current writer drafting, source memo, or local private keys. The blind-answer file was persisted at 2026-10-19 09:34:03.821 UTC. The reviewer has not opened local private keys.",
+  "items": [
+    {
+      "id": "question:prep-books-classic-09",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 190,
+      "blind_selected_option_id": "prep-books-classic-09-opt-1",
+      "factual_review": "Oscar Wilde authored The Picture of Dorian Gray. Project Gutenberg's opening identifies Basil Hallward as the artist beside the portrait and Lord Henry as his interlocutor; Dorian is the subject and character. The public Harvard University Press/JSTOR description and textual-introduction preview support the July 1890 magazine appearance, Wilde's later enlargement for book publication, and Nicholas Frankel's edition based on a typescript with Wilde's emendations. The article does not turn publisher speculation about Wilde's preferred version into a unique final authorial intention or collapse the editor, fictional artist, and author.",
+      "option_review": "Bram Stoker, Arthur Conan Doyle, and Robert Louis Stevenson are distinct authors and not defensible answers to this named-work authorship stem. Basil Hallward is the fictional painter, not an alternative literary author.",
+      "source_review": "Both exact final URLs opened with relevant text: Harvard University Press on JSTOR public metadata/description lines 4–28 and textual-introduction preview line 96; Project Gutenberg chapter I lines 2–4 and 47–71. The JSTOR full book and original typescript were inaccessible and are not represented as inspected. Separate Library of Congress and New York Public Library records opened before answer freezing.",
+      "pedagogy_review": "The short dialogue-and-edition comparison is concrete and optional. It distinguishes character speech from author belief and asks the reader to identify an edition without asserting a measured learning result."
+    },
+    {
+      "id": "question:prep-books-classic-10",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 189,
+      "blind_selected_option_id": "prep-books-classic-10-opt-2",
+      "factual_review": "Library of America identifies Herman Melville as author of Moby-Dick, dates the novel 1851, names Ahab's hunt of the white whale, describes Ishmael's reflections, and credits G. Thomas Tanselle as editor of its volume. Project Gutenberg chapter I has the narrator ask to be called Ishmael, mention little or no money, and express a wish to go to sea. The article keeps narrator, captain, author, and later editor distinct and avoids literal autobiography or medical diagnosis.",
+      "option_review": "Jack London, Jules Verne, and Joseph Conrad are separate writers and not defensible answers to this named-work authorship stem; Captain Ahab and Ishmael are characters, not competing authors.",
+      "source_review": "Both exact final URLs opened with relevant text: Library of America lines 22–24 and 43–50; Project Gutenberg chapter I lines 542–545. These are an edition description and a modern digital transcription, not inspection of a first edition or evidence of a clinical condition. The Melville Electronic Library and Library of Congress exhibit independently opened before answer freezing.",
+      "pedagogy_review": "The optional passage annotation separates events, narration, and reflection, and the caution about treating nineteenth-century literary passages as current biology is appropriately framed without a measured learning claim."
+    }
+  ],
+  "scope": "Private draft review only; different-provider acceptance and publication remain pending. The prior 07/08 scope metadata mismatch is documented separately and has not been retroactively repaired."
+}
