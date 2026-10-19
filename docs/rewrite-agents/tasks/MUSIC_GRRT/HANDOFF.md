@@ -1,0 +1,14 @@
+# MUSIC_GRRT / quiz_master-grrt
+Implemented source-backed RU/EN music learning reference:95cards,9topics,28authored questions. Explicit foundational coverage: Western notation plus selected world traditions; not all terminology from every culture. BravuraOFLfont bundled for realnotation. Seven treble-clef C4–B4 examples; isolated signs, contextual clefs/rests/articulations; searchable detail cards with explanations and checked source links. Local finite up-to10question rounds, stable ID answers, shuffled options, original score retained in finite mistakes review. Filters retain all distractors. Check handler synchronously rejects duplicate events before a new frame.
+
+Country map:16cultural associations across11countries, instrument/culture layers and practice topics, search, source details and direct music-card links. Existing camera preservation retained. Shared tango (Argentina/Uruguay) and Aitysh/Aitys (Kazakhstan/Kyrgyzstan) exclude all linked countries as reverse-question distractors. Explicit non-exclusive cultural association wording.
+
+Independent fact review ACCEPT: musicSHA4EB3639F9965CD1168F03EE4308FBA0EF9CBA4010255EDC383B23F8886B8E0B2, countrySHA6F43C0279AB17FA3D7001C567E75BD1FC706EB28CC1A7FBBB8205056FDFB1617. All28blind answers match; savedkeys7/7/7/7; runtime also shuffles. Original sources repaired to accessible/claim-specific records. See fact-review.md.
+
+Different-provider review: official Antigravity CLI available gemini-4-argon-high, managed scoped read of10files, requirements/codequality APPROVE. Changed-scope same-conversation no-tool recheck approved double-check guard and final contextual painter (external-recheck.md). No commands/tests/browser executed by reviewer. Nonblocking registry duplication retained intentionally as a shared source snapshot; direct-entry widget regression added and passed after review.
+
+Validation: initial missingfeature tests RED; first fullsuite210passed/1brand-menu viewport-assumption failure; ensureVisible fixed that test; full211/211 passed. After synchronous check guard, focused17/17 and analyze pass; finalWeb release39.0s. Dedicated deep-link test passed. Browser390x844 dark: noteC4correct staff/clef/ledger, half-rest onstaff, actualsourcecards, filteredquestion with4choices, checkedcorrect feedback. Later exact-commit evidence appended below.
+
+Only explicit music/map/menu/font/tests/task files owned; preserve foreign main/discovery/localization/backend/study and legacy mobile changes. No main merge or production deploy. Web evidence, not Android hardware validation. No audio-recognition feature claimed.
+
+Browser additionally verified country instrument layer, searchкото→Japan→instrument expansion→Koto sourced detail sheet; desktop1280x900 and mobile390x844 captures saved, browser errors empty. Latest copy-only change improves Russian question-count grammar.

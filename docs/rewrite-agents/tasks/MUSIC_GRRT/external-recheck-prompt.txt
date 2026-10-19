@@ -1,0 +1,92 @@
+Continue your MUSIC_GRRT code review, changed scope only. No tools or directory listing. You read the prior actual files. Root found and reproduced rapid double-check events before a frame causing duplicate score; a focused RED regression demonstrated it. The final saved handler now has a synchronous guard. All other logic/data unchanged. Root also improved visual context for clefs/rests/articulations as below. Assess these exact saved snippets and return requirements/codequality APPROVE or concrete remaining blocker. Do not claim tests executed. Two low notes remain optional (country source registry duplication; deep-link assertion will be added by root).
+
+Final painter:
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.2;
+    if (visual['note'] case final int note) {
+      for (var i = 0; i < 5; i++) {
+        canvas.drawLine(
+          Offset(22, 40 + i * 12),
+          Offset(size.width - 22, 40 + i * 12),
+          paint,
+        );
+      }
+      glyph(canvas, 0xE050, const Offset(36, 76), 48);
+      final y = 100.0 - note * 6;
+      if (note == 0) canvas.drawLine(Offset(130, y), Offset(158, y), paint);
+      glyph(canvas, 0xE0A4, Offset(136, y), 48);
+      canvas.drawLine(Offset(147, y), Offset(147, y - 36), paint);
+    } else if (visual['glyph'] case final int codepoint) {
+      if ([0xE050, 0xE062, 0xE05C, 0xE4E3, 0xE4E4].contains(codepoint)) {
+        for (var i = 0; i < 5; i++) {
+          canvas.drawLine(
+            Offset(22, 40 + i * 12),
+            Offset(size.width - 22, 40 + i * 12),
+            paint,
+          );
+        }
+        // SMuFL clef origins sit on their reference line. Rest origins sit
+        // on a line too: the line distinguishes hanging and sitting rectangles.
+        final y = switch (codepoint) {
+          0xE050 => 76.0,
+          0xE062 => 52.0,
+          _ => 64.0,
+        };
+        glyph(canvas, codepoint, Offset(size.width / 2 - 15, y), 48);
+      } else if ([0xE4A2, 0xE4A0, 0xE4C0].contains(codepoint)) {
+        glyph(canvas, 0xE1D5, Offset(size.width / 2 - 8, 115), 60);
+        glyph(canvas, codepoint, Offset(size.width / 2 - 8, 51), 60);
+      } else {
+        glyph(canvas, codepoint, Offset(size.width / 2 - 15, 106), 76);
+      }
+    }
+  }
+
+
+Final check/next handlers:
+        if (!_checked)
+          FilledButton(
+            key: const Key('music-check'),
+            onPressed: _choice == null
+                ? null
+                : () {
+                    if (_checked) return;
+                    setState(() {
+                      _checked = true;
+                      if (_choice == q.correctId) {
+                        if (!_retry) _score++;
+                      } else {
+                        _missed.add(q);
+                      }
+                    });
+                  },
+            child: Text(_t('Check', 'Проверить')),
+          ),
+        if (_checked) ...[
+          Text(
+            _choice == q.correctId
+                ? _t('Correct', 'Верно')
+                : _t(
+                    'Answer: ${_catalog!.entries[q.correctId]!.name(_ru)}',
+                    'Ответ: ${_catalog!.entries[q.correctId]!.name(_ru)}',
+                  ),
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          Text(_ru ? q.explanationRu : q.explanationEn),
+          _sources(q.sourceIds),
+          FilledButton(
+            key: const Key('music-next'),
+            onPressed: () => setState(() {
+              _index++;
+              _choice = null;
+              _checked = false;
+            }),
+            child: Text(_t('Next', 'Далее')),
+          ),
+        ],
+      ],
+    );
+  }
+}

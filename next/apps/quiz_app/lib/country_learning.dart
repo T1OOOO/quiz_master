@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
 import 'country_religions.dart';
+import 'music_learning.dart';
 
 const _factsAsset = 'assets/quizipedia/country_facts.json';
 
@@ -447,6 +448,10 @@ class CountryQuestion {
     'sports_team' => 'Which sports club is based in $country?',
     'religion' =>
       'Which affiliation category was largest in $country in Pew Research Center estimates for ${row.checked}?',
+    'instrument' =>
+      'According to this atlas, which musical instrument is associated with $country?',
+    'culture' =>
+      'According to this atlas, which cultural tradition is associated with $country?',
     'resource' => 'Which resource is listed for $country?',
     _ => 'Which ${row.kind} is associated with $country?',
   };
@@ -618,6 +623,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
           ),
           loadCountryPresidents(widget.bundle),
           CountryReligions.load(widget.bundle),
+          loadCountryAssociations(
+            'assets/quizipedia/country_culture.json',
+            bundle: widget.bundle,
+          ),
         ])
         .then((loaded) {
           final facts = loaded[0] as List<CountryFact>;
@@ -631,6 +640,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
               (id, rows) => associations.putIfAbsent(id, () => []).addAll(rows),
             );
           }
+          (loaded[5] as Map<String, List<CountryAssociation>>).forEach(
+            (id, rows) => associations.putIfAbsent(id, () => []).addAll(rows),
+          );
           final religions = loaded[4] as CountryReligions;
           for (final row in religions.countries.values) {
             if (row.largestGroups.length != 1) continue;
@@ -1125,6 +1137,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         'resource',
                         'neighbor',
                         'religion',
+                        'instrument',
+                        'culture',
                       ])
                         DropdownMenuItem(
                           value: layer,
@@ -1149,6 +1163,16 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     ),
                   ),
                 ),
+                if (['instrument', 'culture'].contains(_layer))
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(
+                      _t(
+                        'Selected cultural associations, not exclusive national ownership. Shared traditions can belong to several countries. No label means this selection has no entry yet.',
+                        'Избранные культурные связи, а не исключительная принадлежность стране. Общие традиции могут быть связаны с несколькими странами. Нет подписи — пока нет записи в этой подборке.',
+                      ),
+                    ),
+                  ),
                 if (_layer == 'religion')
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -1245,6 +1269,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     'bridge' => _t('Bridges', 'Мосты'),
     'scientist' => _t('Scientists', 'Учёные'),
     'food' => _t('Food', 'Еда и кухня'),
+    'instrument' => _t('Musical instruments', 'Музыкальные инструменты'),
+    'culture' => _t('Cultural traditions', 'Культурные традиции'),
     'flag' => _t('Flags', 'Флаги'),
     'capital' => _t('Capitals', 'Столицы'),
     'language' => _t('Official languages', 'Официальные языки'),
@@ -1282,6 +1308,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         'Кто из учёных родился на территории современной страны $name?',
       'food' => 'Какая кулинарная традиция включена ЮНЕСКО для страны $name?',
       'sports_team' => 'Какой спортивный клуб базируется в стране $name?',
+      'instrument' =>
+        'Какой музыкальный инструмент связан со страной $name согласно этому атласу?',
+      'culture' =>
+        'Какая культурная традиция связана со страной $name согласно этому атласу?',
       'resource' => 'Какой природный ресурс указан в справочнике страны $name?',
       'desert' => 'Какая пустыня расположена на территории страны $name?',
       'bridge' => 'Какой мост находится в стране $name?',
@@ -1463,6 +1493,15 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                                 _focus = row.id;
                                 _query = '';
                               })
+                            : ['instrument', 'culture'].contains(row.kind)
+                            ? () => Navigator.of(context).push(
+                                MaterialPageRoute<void>(
+                                  builder: (_) => MusicLearningPage(
+                                    bundle: widget.bundle,
+                                    initialEntryId: row.id,
+                                  ),
+                                ),
+                              )
                             : null,
                       ),
                   ],

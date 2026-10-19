@@ -18,6 +18,7 @@ import 'brand_atlas.dart';
 import 'food_atlas.dart';
 import 'belief_atlas.dart';
 import 'organ_atlas.dart';
+import 'music_learning.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -641,6 +642,34 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
                     builder: (_) => OrganAtlasPage(
+                      bundle: widget.bundle,
+                      training: _challenge,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.music_note),
+                title: Text(
+                  _t(
+                    context,
+                    'Music: notes, signs and instruments',
+                    'Музыка: ноты, знаки и инструменты',
+                  ),
+                ),
+                subtitle: Text(
+                  _t(
+                    context,
+                    'Read music, explore terms and practise',
+                    'Чтение нот, термины и проверочные вопросы',
+                  ),
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => MusicLearningPage(
                       bundle: widget.bundle,
                       training: _challenge,
                     ),

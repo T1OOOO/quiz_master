@@ -98,6 +98,8 @@ void main() {
     });
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.text('Brands and companies'), 200);
+    await tester.ensureVisible(find.text('Brands and companies'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Brands and companies'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('brand-search')), findsOneWidget);

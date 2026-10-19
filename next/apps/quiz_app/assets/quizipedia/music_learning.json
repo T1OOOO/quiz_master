@@ -1,0 +1,2137 @@
+{
+  "schema": "qm-music-learning/v1",
+  "sources": [
+    {
+      "id": "notation",
+      "title": "Open Music Theory · Basic notation",
+      "url": "https://openmusictheory.github.io/basicNotation.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "rhythm",
+      "title": "Open Music Theory · Rhythmic values",
+      "url": "https://openmusictheory.github.io/rhythmicValues.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "meter",
+      "title": "Open Music Theory · Meter and time signatures",
+      "url": "https://openmusictheory.github.io/meter.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "performance",
+      "title": "Open Music Theory · Other aspects of notation",
+      "url": "https://viva.pressbooks.pub/openmusictheorycopy/chapter/other-aspects-of-notation/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "scales",
+      "title": "Open Music Theory · Scales",
+      "url": "https://openmusictheory.github.io/scales.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "intervals",
+      "title": "Open Music Theory · Intervals",
+      "url": "https://openmusictheory.github.io/intervals.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "chords",
+      "title": "Open Music Theory · Triads and seventh chords",
+      "url": "https://openmusictheory.github.io/triads.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "violin-source",
+      "title": "Philharmonia · Violin",
+      "url": "https://philharmonia.co.uk/resources/instruments/violin/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "viola-source",
+      "title": "Philharmonia · Viola",
+      "url": "https://philharmonia.co.uk/resources/instruments/viola/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "cello-source",
+      "title": "Philharmonia · Cello",
+      "url": "https://philharmonia.co.uk/resources/instruments/cello/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "double-bass-source",
+      "title": "Philharmonia · Double bass",
+      "url": "https://philharmonia.co.uk/resources/instruments/double-bass/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "flute-source",
+      "title": "Philharmonia · Flute",
+      "url": "https://philharmonia.co.uk/resources/instruments/flute/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "oboe-source",
+      "title": "Philharmonia · Oboe",
+      "url": "https://philharmonia.co.uk/resources/instruments/oboe/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "clarinet-source",
+      "title": "Philharmonia · Clarinet",
+      "url": "https://philharmonia.co.uk/resources/instruments/clarinet/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "bassoon-source",
+      "title": "Philharmonia · Bassoon",
+      "url": "https://philharmonia.co.uk/resources/instruments/bassoon/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "horn-source",
+      "title": "Philharmonia · Horn",
+      "url": "https://philharmonia.co.uk/resources/instruments/horn/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "trumpet-source",
+      "title": "Philharmonia · Trumpet",
+      "url": "https://philharmonia.co.uk/resources/instruments/trumpet/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "trombone-source",
+      "title": "Philharmonia · Trombone",
+      "url": "https://philharmonia.co.uk/resources/instruments/trombone/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "tuba-source",
+      "title": "Philharmonia · Tuba",
+      "url": "https://philharmonia.co.uk/resources/instruments/tuba/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "timpani-source",
+      "title": "Philharmonia · Timpani",
+      "url": "https://philharmonia.co.uk/resources/instruments/timpani/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "harp-source",
+      "title": "Philharmonia · Harp",
+      "url": "https://philharmonia.co.uk/resources/instruments/harp/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "piano-source",
+      "title": "Philharmonia · Piano instrument",
+      "url": "https://philharmonia.co.uk/resources/instruments/piano/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "duduk-source",
+      "title": "UNESCO · Djivan Gasparyan and the duduk",
+      "url": "https://www.unesco.org/en/articles/unesco-remembers-djivan-gasparyan-armenian-musician",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "angklung-source",
+      "title": "UNESCO Archives · Indonesian Angklung",
+      "url": "https://www.unesco.org/archives/multimedia/document-1681",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "dombra-source",
+      "title": "UNESCO · Kazakh Dombra Kuy",
+      "url": "https://ich.unesco.org/en/RL/traditional-art-of-dombra-kuy-in-kazakhstan-00996",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "mbira-source",
+      "title": "Bath Spa University · Mbira Hut",
+      "url": "https://www.bathspa.ac.uk/projects/mbira-hut/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "japan-source",
+      "title": "Ministry of Foreign Affairs of Japan · Traditional music",
+      "url": "https://web-japan.org/kidsweb/virtual/koto/koto01.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "india-source",
+      "title": "Metropolitan Museum · Instruments of the Indian subcontinent",
+      "url": "https://www.metmuseum.org/essays/musical-instruments-of-the-indian-subcontinent",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "gamelan-source",
+      "title": "UNESCO · Gamelan",
+      "url": "https://www.unesco.org/en/articles/gamelan-another-indonesian-tradition-unesco-representative-list-intangible-cultural-heritage",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "flamenco-source",
+      "title": "UNESCO Archives · Flamenco",
+      "url": "https://www.unesco.org/archives/multimedia/document-1696",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "tango-source",
+      "title": "UNESCO · Tango",
+      "url": "https://ich.unesco.org/en/RL/tango-00258",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "aitysh-source",
+      "title": "UNESCO · Aitysh/Aitys",
+      "url": "https://ich.unesco.org/en/RL/aitysaitys-art-of-improvisation-00997",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "bagpipe-source",
+      "title": "UNESCO · Bagpipe culture",
+      "url": "https://ich.unesco.org/en/RL/bagpipe-culture-01075",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "entries": [
+    {
+      "id": "note-0",
+      "category": "notes",
+      "name_ru": "До первой октавы",
+      "name_en": "C4 · middle C",
+      "description_ru": "В скрипичном ключе эта нота находится на добавочной линейке под нотным станом. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits on the ledger line below the staff. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 0
+      }
+    },
+    {
+      "id": "note-1",
+      "category": "notes",
+      "name_ru": "Ре первой октавы",
+      "name_en": "D4",
+      "description_ru": "В скрипичном ключе эта нота находится под первой линейкой. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits just below the bottom line. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 1
+      }
+    },
+    {
+      "id": "note-2",
+      "category": "notes",
+      "name_ru": "Ми первой октавы",
+      "name_en": "E4",
+      "description_ru": "В скрипичном ключе эта нота находится на первой линейке. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits on the bottom line. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 2
+      }
+    },
+    {
+      "id": "note-3",
+      "category": "notes",
+      "name_ru": "Фа первой октавы",
+      "name_en": "F4",
+      "description_ru": "В скрипичном ключе эта нота находится между первой и второй линейками. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits in the first space. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 3
+      }
+    },
+    {
+      "id": "note-4",
+      "category": "notes",
+      "name_ru": "Соль первой октавы",
+      "name_en": "G4",
+      "description_ru": "В скрипичном ключе эта нота находится на второй линейке. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits on the second line from the bottom. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 4
+      }
+    },
+    {
+      "id": "note-5",
+      "category": "notes",
+      "name_ru": "Ля первой октавы",
+      "name_en": "A4",
+      "description_ru": "В скрипичном ключе эта нота находится между второй и третьей линейками. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits in the second space. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 5
+      }
+    },
+    {
+      "id": "note-6",
+      "category": "notes",
+      "name_ru": "Си первой октавы",
+      "name_en": "B4",
+      "description_ru": "В скрипичном ключе эта нота находится на третьей линейке. Линейки считаются снизу.",
+      "description_en": "In treble clef this note sits on the middle line. Count staff lines from the bottom.",
+      "example_ru": "Положение показано для скрипичного ключа и первой октавы.",
+      "example_en": "Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 6
+      }
+    },
+    {
+      "id": "treble",
+      "category": "notation",
+      "name_ru": "Скрипичный ключ",
+      "name_en": "Treble clef",
+      "description_ru": "Закрепляет соль первой октавы на второй линейке снизу.",
+      "description_en": "Places G4 on the second line from the bottom.",
+      "example_ru": "Ключ задаёт высоты нот, а не длительности.",
+      "example_en": "A clef locates pitches, not durations.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57424
+      }
+    },
+    {
+      "id": "bass",
+      "category": "notation",
+      "name_ru": "Басовый ключ",
+      "name_en": "Bass clef",
+      "description_ru": "Фа малой октавы находится на четвёртой линейке снизу.",
+      "description_en": "Places F3 on the fourth line from the bottom.",
+      "example_ru": "Две точки располагаются по сторонам этой линейки.",
+      "example_en": "Its two dots bracket that line.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57442
+      }
+    },
+    {
+      "id": "alto",
+      "category": "notation",
+      "name_ru": "Альтовый ключ",
+      "name_en": "Alto clef",
+      "description_ru": "В альтовом ключе середина знака до указывает на третью линейку: до первой октавы.",
+      "description_en": "In alto clef the C-clef centre marks middle C on the third line.",
+      "example_ru": "Применяется, в частности, для альта.",
+      "example_en": "Used notably for the viola.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57436
+      }
+    },
+    {
+      "id": "sharp",
+      "category": "notation",
+      "name_ru": "Диез",
+      "name_en": "Sharp",
+      "description_ru": "Повышает ноту на полутон относительно её натуральной высоты.",
+      "description_en": "Raises a note one semitone from its natural pitch.",
+      "example_ru": "Фа-диез выше фа на полутон.",
+      "example_en": "F sharp is one semitone above F.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57954
+      }
+    },
+    {
+      "id": "flat",
+      "category": "notation",
+      "name_ru": "Бемоль",
+      "name_en": "Flat",
+      "description_ru": "Понижает ноту на полутон относительно её натуральной высоты.",
+      "description_en": "Lowers a note one semitone from its natural pitch.",
+      "example_ru": "Си-бемоль ниже си на полутон.",
+      "example_en": "B flat is one semitone below B.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57952
+      }
+    },
+    {
+      "id": "natural",
+      "category": "notation",
+      "name_ru": "Бекар",
+      "name_en": "Natural",
+      "description_ru": "Возвращает ноте натуральную высоту, отменяя действующую альтерацию.",
+      "description_en": "Restores a note to its natural pitch, cancelling an active accidental.",
+      "example_ru": "После фа-диеза знак бекар возвращает фа.",
+      "example_en": "After F sharp, a natural restores F.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57953
+      }
+    },
+    {
+      "id": "double-sharp",
+      "category": "notation",
+      "name_ru": "Дубль-диез",
+      "name_en": "Double sharp",
+      "description_ru": "Повышает натуральную ноту на два полутона.",
+      "description_en": "Raises a natural note by two semitones.",
+      "example_ru": "До-дубль-диез звучит как ре на равномерно темперированном фортепиано.",
+      "example_en": "C double sharp sounds like D on an equal-tempered piano.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57955
+      }
+    },
+    {
+      "id": "double-flat",
+      "category": "notation",
+      "name_ru": "Дубль-бемоль",
+      "name_en": "Double flat",
+      "description_ru": "Понижает натуральную ноту на два полутона.",
+      "description_en": "Lowers a natural note by two semitones.",
+      "example_ru": "Ре-дубль-бемоль звучит как до на равномерно темперированном фортепиано.",
+      "example_en": "D double flat sounds like C on an equal-tempered piano.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "glyph": 57956
+      }
+    },
+    {
+      "id": "staff",
+      "category": "notation",
+      "name_ru": "Нотный стан",
+      "name_en": "Staff",
+      "description_ru": "Пять параллельных линеек; ноты пишут на линейках и между ними.",
+      "description_en": "Five parallel lines; notes occupy lines and spaces.",
+      "example_ru": "Высоту читают с учётом ключа.",
+      "example_en": "Read pitch together with the clef.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "text": "─────\n─────\n─────\n─────\n─────"
+      }
+    },
+    {
+      "id": "ledger",
+      "category": "notation",
+      "name_ru": "Добавочная линейка",
+      "name_en": "Ledger line",
+      "description_ru": "Короткая линейка продолжает стан для нот вне его пяти линеек.",
+      "description_en": "A short line extends the staff for notes beyond its five lines.",
+      "example_ru": "До первой октавы в скрипичном ключе требует добавочной линейки.",
+      "example_en": "Middle C in treble clef uses a ledger line.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 0
+      }
+    },
+    {
+      "id": "whole",
+      "category": "rhythm",
+      "name_ru": "Целая нота",
+      "name_en": "Whole note",
+      "description_ru": "Длится столько же, сколько две половинные ноты.",
+      "description_en": "Lasts as long as two half notes.",
+      "example_ru": "В размере 4/4 — четыре четвертные доли.",
+      "example_en": "In 4/4 it lasts four quarter-note beats.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 57810
+      }
+    },
+    {
+      "id": "half",
+      "category": "rhythm",
+      "name_ru": "Половинная нота",
+      "name_en": "Half note",
+      "description_ru": "Половина длительности целой ноты.",
+      "description_en": "Half the duration of a whole note.",
+      "example_ru": "В размере 4/4 — две четвертные доли.",
+      "example_en": "In 4/4 it lasts two quarter-note beats.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 57811
+      }
+    },
+    {
+      "id": "quarter",
+      "category": "rhythm",
+      "name_ru": "Четвертная нота",
+      "name_en": "Quarter note",
+      "description_ru": "Четверть длительности целой ноты.",
+      "description_en": "One quarter of a whole note.",
+      "example_ru": "В 4/4 это единица счёта, но не во всех размерах.",
+      "example_en": "It is the beat unit in 4/4, but not in every meter.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 57813
+      }
+    },
+    {
+      "id": "eighth",
+      "category": "rhythm",
+      "name_ru": "Восьмая нота",
+      "name_en": "Eighth note",
+      "description_ru": "Половина длительности четвертной.",
+      "description_en": "Half the duration of a quarter note.",
+      "example_ru": "Две восьмые равны одной четвертной.",
+      "example_en": "Two eighths equal one quarter note.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 57815
+      }
+    },
+    {
+      "id": "sixteenth",
+      "category": "rhythm",
+      "name_ru": "Шестнадцатая нота",
+      "name_en": "Sixteenth note",
+      "description_ru": "Половина длительности восьмой.",
+      "description_en": "Half the duration of an eighth note.",
+      "example_ru": "Четыре шестнадцатые равны четверти.",
+      "example_en": "Four sixteenths equal one quarter note.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 57817
+      }
+    },
+    {
+      "id": "whole-rest",
+      "category": "rhythm",
+      "name_ru": "Целая пауза",
+      "name_en": "Whole rest",
+      "description_ru": "Знак молчания длительностью в целую ноту; также обозначает пустой такт в обычной записи.",
+      "description_en": "Silence lasting a whole note; also used for a full silent measure in conventional notation.",
+      "example_ru": "Прямоугольник висит под линейкой.",
+      "example_en": "Its rectangle hangs below a staff line.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 58595
+      }
+    },
+    {
+      "id": "half-rest",
+      "category": "rhythm",
+      "name_ru": "Половинная пауза",
+      "name_en": "Half rest",
+      "description_ru": "Молчание длительностью в половинную ноту.",
+      "description_en": "Silence lasting a half note.",
+      "example_ru": "Прямоугольник стоит на линейке.",
+      "example_en": "Its rectangle sits above a staff line.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 58596
+      }
+    },
+    {
+      "id": "quarter-rest",
+      "category": "rhythm",
+      "name_ru": "Четвертная пауза",
+      "name_en": "Quarter rest",
+      "description_ru": "Молчание длительностью в четвертную ноту.",
+      "description_en": "Silence lasting a quarter note.",
+      "example_ru": "В 4/4 занимает одну четвертную долю.",
+      "example_en": "In 4/4 it occupies one quarter-note beat.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 58597
+      }
+    },
+    {
+      "id": "eighth-rest",
+      "category": "rhythm",
+      "name_ru": "Восьмая пауза",
+      "name_en": "Eighth rest",
+      "description_ru": "Молчание длительностью в восьмую ноту.",
+      "description_en": "Silence lasting an eighth note.",
+      "example_ru": "Половина четвертной паузы.",
+      "example_en": "Half the duration of a quarter rest.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 58598
+      }
+    },
+    {
+      "id": "sixteenth-rest",
+      "category": "rhythm",
+      "name_ru": "Шестнадцатая пауза",
+      "name_en": "Sixteenth rest",
+      "description_ru": "Молчание длительностью в шестнадцатую ноту.",
+      "description_en": "Silence lasting a sixteenth note.",
+      "example_ru": "Четверть длительности четвертной паузы.",
+      "example_en": "One quarter of a quarter rest.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "glyph": 58599
+      }
+    },
+    {
+      "id": "dot",
+      "category": "rhythm",
+      "name_ru": "Точка продления",
+      "name_en": "Augmentation dot",
+      "description_ru": "Добавляет половину исходной длительности.",
+      "description_en": "Adds half the original duration.",
+      "example_ru": "Четверть с точкой равна трём восьмым.",
+      "example_en": "A dotted quarter equals three eighths.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "text": "·"
+      }
+    },
+    {
+      "id": "tie",
+      "category": "rhythm",
+      "name_ru": "Лига продления",
+      "name_en": "Tie",
+      "description_ru": "Соединяет две ноты одной высоты в один непрерывный звук.",
+      "description_en": "Joins two notes of the same pitch into one sustained sound.",
+      "example_ru": "Длительности складываются; повторной атаки нет.",
+      "example_en": "Add their durations without a new attack.",
+      "source_ids": [
+        "rhythm"
+      ],
+      "visual": {
+        "text": "tie"
+      }
+    },
+    {
+      "id": "meter44",
+      "category": "rhythm",
+      "name_ru": "Размер 4/4",
+      "name_en": "4/4 meter",
+      "description_ru": "В такте четыре доли, единица доли — четверть.",
+      "description_en": "Four beats per bar, with a quarter note as the beat unit.",
+      "example_ru": "Четыре четверти заполняют такт.",
+      "example_en": "Four quarter notes fill one bar.",
+      "source_ids": [
+        "meter"
+      ],
+      "visual": {
+        "text": "4\n4"
+      }
+    },
+    {
+      "id": "meter34",
+      "category": "rhythm",
+      "name_ru": "Размер 3/4",
+      "name_en": "3/4 meter",
+      "description_ru": "В такте три четвертные доли.",
+      "description_en": "Three quarter-note beats per bar.",
+      "example_ru": "Счёт: раз-два-три.",
+      "example_en": "Count: one-two-three.",
+      "source_ids": [
+        "meter"
+      ],
+      "visual": {
+        "text": "3\n4"
+      }
+    },
+    {
+      "id": "meter68",
+      "category": "rhythm",
+      "name_ru": "Размер 6/8",
+      "name_en": "6/8 meter",
+      "description_ru": "Обычно две основные доли, каждая делится на три восьмых.",
+      "description_en": "Usually two main beats, each divided into three eighth notes.",
+      "example_ru": "Две четверти с точкой; не шесть основных долей.",
+      "example_en": "Two dotted-quarter beats, rather than six main beats.",
+      "source_ids": [
+        "meter"
+      ],
+      "visual": {
+        "text": "6\n8"
+      }
+    },
+    {
+      "id": "triplet",
+      "category": "rhythm",
+      "name_ru": "Триоль",
+      "name_en": "Triplet",
+      "description_ru": "Три равные длительности звучат за время двух таких же обычных длительностей.",
+      "description_en": "Three equal values occupy the time normally given to two of those values.",
+      "example_ru": "Три восьмые триоли занимают одну четверть.",
+      "example_en": "Three triplet eighths occupy one quarter note.",
+      "source_ids": [
+        "meter"
+      ],
+      "visual": {
+        "text": "3"
+      }
+    },
+    {
+      "id": "pp",
+      "category": "dynamics",
+      "name_ru": "Пианиссимо",
+      "name_en": "Pianissimo",
+      "description_ru": "Очень тихо.",
+      "description_en": "Very softly.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "pp"
+      }
+    },
+    {
+      "id": "p",
+      "category": "dynamics",
+      "name_ru": "Пиано",
+      "name_en": "Piano",
+      "description_ru": "Тихо; это обозначение громкости, а не название инструмента.",
+      "description_en": "Softly; a dynamic marking, distinct from the instrument name.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "p"
+      }
+    },
+    {
+      "id": "mp",
+      "category": "dynamics",
+      "name_ru": "Меццо-пиано",
+      "name_en": "Mezzo piano",
+      "description_ru": "Умеренно тихо.",
+      "description_en": "Moderately softly.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "mp"
+      }
+    },
+    {
+      "id": "mf",
+      "category": "dynamics",
+      "name_ru": "Меццо-форте",
+      "name_en": "Mezzo forte",
+      "description_ru": "Умеренно громко.",
+      "description_en": "Moderately loudly.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "mf"
+      }
+    },
+    {
+      "id": "f",
+      "category": "dynamics",
+      "name_ru": "Форте",
+      "name_en": "Forte",
+      "description_ru": "Громко.",
+      "description_en": "Loudly.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "f"
+      }
+    },
+    {
+      "id": "ff",
+      "category": "dynamics",
+      "name_ru": "Фортиссимо",
+      "name_en": "Fortissimo",
+      "description_ru": "Очень громко.",
+      "description_en": "Very loudly.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "ff"
+      }
+    },
+    {
+      "id": "crescendo",
+      "category": "dynamics",
+      "name_ru": "Крещендо",
+      "name_en": "Crescendo",
+      "description_ru": "Постепенно усиливать громкость.",
+      "description_en": "Gradually increase loudness.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "crescendo"
+      }
+    },
+    {
+      "id": "diminuendo",
+      "category": "dynamics",
+      "name_ru": "Диминуэндо",
+      "name_en": "Diminuendo",
+      "description_ru": "Постепенно уменьшать громкость.",
+      "description_en": "Gradually decrease loudness.",
+      "example_ru": "Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "example_en": "Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "dim."
+      }
+    },
+    {
+      "id": "largo",
+      "category": "tempo",
+      "name_ru": "Ларго",
+      "name_en": "Largo",
+      "description_ru": "Широко, медленно.",
+      "description_en": "Broadly and slowly.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Largo"
+      }
+    },
+    {
+      "id": "adagio",
+      "category": "tempo",
+      "name_ru": "Адажио",
+      "name_en": "Adagio",
+      "description_ru": "Медленно, спокойно.",
+      "description_en": "Slowly, at ease.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Adagio"
+      }
+    },
+    {
+      "id": "andante",
+      "category": "tempo",
+      "name_ru": "Анданте",
+      "name_en": "Andante",
+      "description_ru": "В темпе спокойного шага.",
+      "description_en": "At a walking pace.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Andante"
+      }
+    },
+    {
+      "id": "moderato",
+      "category": "tempo",
+      "name_ru": "Модерато",
+      "name_en": "Moderato",
+      "description_ru": "Умеренный темп.",
+      "description_en": "At a moderate tempo.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Moderato"
+      }
+    },
+    {
+      "id": "allegro",
+      "category": "tempo",
+      "name_ru": "Аллегро",
+      "name_en": "Allegro",
+      "description_ru": "Быстрый, оживлённый темп.",
+      "description_en": "A fast, lively tempo.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Allegro"
+      }
+    },
+    {
+      "id": "presto",
+      "category": "tempo",
+      "name_ru": "Престо",
+      "name_en": "Presto",
+      "description_ru": "Очень быстро.",
+      "description_en": "Very fast.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Presto"
+      }
+    },
+    {
+      "id": "accelerando",
+      "category": "tempo",
+      "name_ru": "Аччелерандо",
+      "name_en": "Accelerando",
+      "description_ru": "Постепенно ускорять темп.",
+      "description_en": "Gradually speed up.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Accelerando"
+      }
+    },
+    {
+      "id": "ritardando",
+      "category": "tempo",
+      "name_ru": "Ритардандо",
+      "name_en": "Ritardando",
+      "description_ru": "Постепенно замедлять темп.",
+      "description_en": "Gradually slow down.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "Ritardando"
+      }
+    },
+    {
+      "id": "a-tempo",
+      "category": "tempo",
+      "name_ru": "А темпо",
+      "name_en": "A tempo",
+      "description_ru": "Вернуться к прежнему темпу после отклонения.",
+      "description_en": "Return to the previous tempo after a change.",
+      "example_ru": "Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "example_en": "Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "A tempo"
+      }
+    },
+    {
+      "id": "staccato",
+      "category": "technique",
+      "name_ru": "Стаккато",
+      "name_en": "Staccato",
+      "description_ru": "Исполнять звуки коротко, отделяя их друг от друга.",
+      "description_en": "Play notes short and detached.",
+      "example_ru": "Точка над или под нотой — штрих; точка справа — продление.",
+      "example_en": "A dot above/below is articulation; a dot to the right adds duration.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 58530
+      }
+    },
+    {
+      "id": "legato",
+      "category": "technique",
+      "name_ru": "Легато",
+      "name_en": "Legato",
+      "description_ru": "Исполнять звуки связно.",
+      "description_en": "Play notes smoothly connected.",
+      "example_ru": "Дуга над разными высотами обычно обозначает лигу артикуляции.",
+      "example_en": "A slur over different pitches commonly indicates connected articulation.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "legato"
+      }
+    },
+    {
+      "id": "accent",
+      "category": "technique",
+      "name_ru": "Акцент",
+      "name_en": "Accent",
+      "description_ru": "Выделить ноту относительно окружающих звуков.",
+      "description_en": "Emphasise a note relative to surrounding notes.",
+      "example_ru": "Знак не означает ускорение темпа.",
+      "example_en": "The sign does not mean speeding up.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 58528
+      }
+    },
+    {
+      "id": "fermata",
+      "category": "technique",
+      "name_ru": "Фермата",
+      "name_en": "Fermata",
+      "description_ru": "Продлить ноту или паузу сверх записанной длительности.",
+      "description_en": "Hold a note or rest beyond its written duration.",
+      "example_ru": "Точное продление зависит от исполнения.",
+      "example_en": "The exact extension depends on the performance.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 58560
+      }
+    },
+    {
+      "id": "pizzicato",
+      "category": "technique",
+      "name_ru": "Пиццикато",
+      "name_en": "Pizzicato",
+      "description_ru": "На смычковых: извлекать звук щипком струны.",
+      "description_en": "On bowed strings: pluck the string.",
+      "example_ru": "Arco указывает на возвращение к игре смычком.",
+      "example_en": "Arco asks for a return to the bow.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "pizz."
+      }
+    },
+    {
+      "id": "arco",
+      "category": "technique",
+      "name_ru": "Арко",
+      "name_en": "Arco",
+      "description_ru": "На смычковых: играть смычком.",
+      "description_en": "On string instruments: play with the bow.",
+      "example_ru": "Часто стоит после pizzicato.",
+      "example_en": "Often follows pizzicato.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "text": "arco"
+      }
+    },
+    {
+      "id": "repeat",
+      "category": "technique",
+      "name_ru": "Реприза",
+      "name_en": "End repeat",
+      "description_ru": "Повторить раздел от соответствующего знака начала повтора или от начала.",
+      "description_en": "Repeat the section from the matching start repeat, or from the beginning.",
+      "example_ru": "Дополнительные указания и вольты уточняют порядок исполнения.",
+      "example_en": "Other instructions and alternate endings can qualify the route.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 57409
+      }
+    },
+    {
+      "id": "segno",
+      "category": "technique",
+      "name_ru": "Сеньо",
+      "name_en": "Segno",
+      "description_ru": "Ориентир для возврата по указанию Dal segno.",
+      "description_en": "A reference sign used by a Dal segno instruction.",
+      "example_ru": "Один знак сеньо не требует немедленного прыжка.",
+      "example_en": "The sign alone does not command an immediate jump.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 57415
+      }
+    },
+    {
+      "id": "coda",
+      "category": "technique",
+      "name_ru": "Кода",
+      "name_en": "Coda sign",
+      "description_ru": "Знак перехода к заключительному разделу по соответствующему указанию.",
+      "description_en": "Marks a destination in the ending section when a corresponding jump is instructed.",
+      "example_ru": "Следуйте указаниям To Coda и порядку повторов.",
+      "example_en": "Follow To Coda and the repeat instructions.",
+      "source_ids": [
+        "performance"
+      ],
+      "visual": {
+        "glyph": 57416
+      }
+    },
+    {
+      "id": "semitone",
+      "category": "harmony",
+      "name_ru": "Полутон",
+      "name_en": "Semitone",
+      "description_ru": "Минимальное расстояние между соседними клавишами равномерно темперированного фортепиано.",
+      "description_en": "The distance between adjacent keys on an equal-tempered piano.",
+      "example_ru": "Ми–фа и си–до — полутоны.",
+      "example_en": "E–F and B–C are semitones.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "text": "Semitone"
+      }
+    },
+    {
+      "id": "tone",
+      "category": "harmony",
+      "name_ru": "Целый тон",
+      "name_en": "Whole tone",
+      "description_ru": "Расстояние в два полутона.",
+      "description_en": "A distance of two semitones.",
+      "example_ru": "До–ре — целый тон.",
+      "example_en": "C–D is a whole tone.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "text": "Whole tone"
+      }
+    },
+    {
+      "id": "octave",
+      "category": "harmony",
+      "name_ru": "Октава",
+      "name_en": "Octave",
+      "description_ru": "Интервал из восьми диатонических ступеней; чистая октава — двенадцать полутонов.",
+      "description_en": "An interval spanning eight diatonic steps; a perfect octave is twelve semitones.",
+      "example_ru": "До первой — до второй октавы.",
+      "example_en": "C4 to C5 is a perfect octave.",
+      "source_ids": [
+        "intervals"
+      ],
+      "visual": {
+        "text": "Octave"
+      }
+    },
+    {
+      "id": "major",
+      "category": "harmony",
+      "name_ru": "Мажорная гамма",
+      "name_en": "Major scale",
+      "description_ru": "Последовательность шагов: тон, тон, полутон, тон, тон, тон, полутон.",
+      "description_en": "Step pattern: whole, whole, half, whole, whole, whole, half.",
+      "example_ru": "До мажор: до–ре–ми–фа–соль–ля–си–до.",
+      "example_en": "C major: C–D–E–F–G–A–B–C.",
+      "source_ids": [
+        "scales"
+      ],
+      "visual": {
+        "text": "Major scale"
+      }
+    },
+    {
+      "id": "minor",
+      "category": "harmony",
+      "name_ru": "Натуральный минор",
+      "name_en": "Natural minor",
+      "description_ru": "Последовательность шагов: тон, полутон, тон, тон, полутон, тон, тон.",
+      "description_en": "Step pattern: whole, half, whole, whole, half, whole, whole.",
+      "example_ru": "Ля минор: ля–си–до–ре–ми–фа–соль–ля.",
+      "example_en": "A natural minor: A–B–C–D–E–F–G–A.",
+      "source_ids": [
+        "scales"
+      ],
+      "visual": {
+        "text": "Natural minor"
+      }
+    },
+    {
+      "id": "triad",
+      "category": "harmony",
+      "name_ru": "Трезвучие",
+      "name_en": "Triad",
+      "description_ru": "Аккорд из трёх звуков, которые можно расположить по терциям.",
+      "description_en": "A three-note chord that can be arranged in stacked thirds.",
+      "example_ru": "До–ми–соль — мажорное трезвучие.",
+      "example_en": "C–E–G is a major triad.",
+      "source_ids": [
+        "chords"
+      ],
+      "visual": {
+        "text": "Triad"
+      }
+    },
+    {
+      "id": "arpeggio",
+      "category": "harmony",
+      "name_ru": "Арпеджио",
+      "name_en": "Arpeggio",
+      "description_ru": "Последовательное исполнение звуков аккорда.",
+      "description_en": "Playing the notes of a chord successively.",
+      "example_ru": "До, затем ми, затем соль вместо одновременного созвучия.",
+      "example_en": "C, then E, then G instead of all three together.",
+      "source_ids": [
+        "chords"
+      ],
+      "visual": {
+        "text": "Arpeggio"
+      }
+    },
+    {
+      "id": "violin",
+      "category": "instruments",
+      "name_ru": "Скрипка",
+      "name_en": "Violin",
+      "description_ru": "Высокий струнный смычковый инструмент с четырьмя струнами.",
+      "description_en": "A high bowed-string instrument with four strings.",
+      "example_ru": "Обычный строй: соль–ре–ля–ми.",
+      "example_en": "Usual tuning: G–D–A–E.",
+      "source_ids": [
+        "violin-source"
+      ]
+    },
+    {
+      "id": "viola",
+      "category": "instruments",
+      "name_ru": "Альт",
+      "name_en": "Viola",
+      "description_ru": "Струнный смычковый инструмент, крупнее скрипки и ниже по строю.",
+      "description_en": "A bowed-string instrument larger and lower-tuned than the violin.",
+      "example_ru": "Обычный строй: до–соль–ре–ля.",
+      "example_en": "Usual tuning: C–G–D–A.",
+      "source_ids": [
+        "viola-source"
+      ]
+    },
+    {
+      "id": "cello",
+      "category": "instruments",
+      "name_ru": "Виолончель",
+      "name_en": "Cello",
+      "description_ru": "Низкий струнный смычковый инструмент, который держат между коленями с опорой на шпиль.",
+      "description_en": "A low bowed-string instrument held between the knees and supported by an endpin.",
+      "example_ru": "Обычный строй на октаву ниже альта.",
+      "example_en": "Its usual tuning is an octave below the viola.",
+      "source_ids": [
+        "cello-source"
+      ]
+    },
+    {
+      "id": "double-bass",
+      "category": "instruments",
+      "name_ru": "Контрабас",
+      "name_en": "Double bass",
+      "description_ru": "Самый низкий обычный инструмент оркестровой группы смычковых.",
+      "description_en": "The lowest usual member of the orchestral bowed-string section.",
+      "example_ru": "Четырёхструнный вариант обычно настроен по квартам.",
+      "example_en": "The four-string version is usually tuned in fourths.",
+      "source_ids": [
+        "double-bass-source"
+      ]
+    },
+    {
+      "id": "flute",
+      "category": "instruments",
+      "name_ru": "Флейта",
+      "name_en": "Flute",
+      "description_ru": "Деревянный духовой по классификации; звук возникает от струи воздуха у края отверстия.",
+      "description_en": "Classed as woodwind; an air jet meets the edge of an opening to produce sound.",
+      "example_ru": "Современная оркестровая флейта часто металлическая.",
+      "example_en": "The modern orchestral flute is often metal.",
+      "source_ids": [
+        "flute-source"
+      ]
+    },
+    {
+      "id": "oboe",
+      "category": "instruments",
+      "name_ru": "Гобой",
+      "name_en": "Oboe",
+      "description_ru": "Деревянный духовой инструмент с двойной тростью.",
+      "description_en": "A woodwind instrument with a double reed.",
+      "example_ru": "Не путайте с одинарной тростью кларнета.",
+      "example_en": "Contrast the clarinet’s single reed.",
+      "source_ids": [
+        "oboe-source"
+      ]
+    },
+    {
+      "id": "clarinet",
+      "category": "instruments",
+      "name_ru": "Кларнет",
+      "name_en": "Clarinet",
+      "description_ru": "Деревянный духовой инструмент с одинарной тростью.",
+      "description_en": "A woodwind instrument with a single reed.",
+      "example_ru": "Трость закреплена на мундштуке.",
+      "example_en": "The reed is attached to the mouthpiece.",
+      "source_ids": [
+        "clarinet-source"
+      ]
+    },
+    {
+      "id": "bassoon",
+      "category": "instruments",
+      "name_ru": "Фагот",
+      "name_en": "Bassoon",
+      "description_ru": "Низкий деревянный духовой инструмент с двойной тростью.",
+      "description_en": "A low woodwind instrument with a double reed.",
+      "example_ru": "Длинная воздушная трубка сложена внутри корпуса.",
+      "example_en": "Its long air column is folded within the body.",
+      "source_ids": [
+        "bassoon-source"
+      ]
+    },
+    {
+      "id": "horn",
+      "category": "instruments",
+      "name_ru": "Валторна",
+      "name_en": "Horn",
+      "description_ru": "Медный духовой инструмент с длинной свёрнутой трубкой.",
+      "description_en": "A brass instrument with a long coiled tube.",
+      "example_ru": "Звук начинается с вибрации губ в мундштуке.",
+      "example_en": "Lip vibration in the mouthpiece starts the sound.",
+      "source_ids": [
+        "horn-source"
+      ]
+    },
+    {
+      "id": "trumpet",
+      "category": "instruments",
+      "name_ru": "Труба",
+      "name_en": "Trumpet",
+      "description_ru": "Медный духовой инструмент; современные оркестровые модели обычно имеют клапаны.",
+      "description_en": "A brass instrument; modern orchestral models usually have valves.",
+      "example_ru": "Клапаны изменяют длину воздушного пути.",
+      "example_en": "Valves change the length of the air path.",
+      "source_ids": [
+        "trumpet-source"
+      ]
+    },
+    {
+      "id": "trombone",
+      "category": "instruments",
+      "name_ru": "Тромбон",
+      "name_en": "Trombone",
+      "description_ru": "Медный духовой инструмент, обычно с выдвижной кулисой.",
+      "description_en": "A brass instrument usually equipped with a slide.",
+      "example_ru": "Кулиса позволяет плавно менять длину трубки.",
+      "example_en": "The slide continuously changes the tube length.",
+      "source_ids": [
+        "trombone-source"
+      ]
+    },
+    {
+      "id": "tuba",
+      "category": "instruments",
+      "name_ru": "Туба",
+      "name_en": "Tuba",
+      "description_ru": "Низкий медный духовой инструмент оркестра.",
+      "description_en": "A low brass instrument in the orchestra.",
+      "example_ru": "В отличие от контрабаса, относится к духовым.",
+      "example_en": "Unlike the double bass, it belongs to the wind instruments.",
+      "source_ids": [
+        "tuba-source"
+      ]
+    },
+    {
+      "id": "timpani",
+      "category": "instruments",
+      "name_ru": "Литавры",
+      "name_en": "Timpani",
+      "description_ru": "Ударные с определённой высотой звука; мембрана натянута над котлом.",
+      "description_en": "Pitched percussion with a membrane stretched over a bowl.",
+      "example_ru": "Изменение натяжения мембраны меняет высоту.",
+      "example_en": "Changing membrane tension changes pitch.",
+      "source_ids": [
+        "timpani-source"
+      ]
+    },
+    {
+      "id": "harp",
+      "category": "instruments",
+      "name_ru": "Арфа",
+      "name_en": "Harp",
+      "description_ru": "Струнный щипковый инструмент с рамой и рядом струн.",
+      "description_en": "A plucked-string instrument with a frame and a row of strings.",
+      "example_ru": "Педали концертной арфы меняют высоту групп струн.",
+      "example_en": "Concert-harp pedals change the pitches of groups of strings.",
+      "source_ids": [
+        "harp-source"
+      ]
+    },
+    {
+      "id": "piano",
+      "category": "instruments",
+      "name_ru": "Фортепиано",
+      "name_en": "Piano instrument",
+      "description_ru": "Клавишный инструмент: молоточки ударяют по струнам.",
+      "description_en": "A keyboard instrument whose hammers strike strings.",
+      "example_ru": "По способу звукоизвлечения — ударяемые струны.",
+      "example_en": "Its sound is produced by struck strings.",
+      "source_ids": [
+        "piano-source"
+      ]
+    },
+    {
+      "id": "duduk",
+      "category": "world",
+      "name_ru": "Дудук",
+      "name_en": "Duduk",
+      "description_ru": "Духовой инструмент с двойной тростью, связанный с армянской музыкальной традицией.",
+      "description_en": "A double-reed woodwind associated with Armenian musical tradition.",
+      "example_ru": "Армения; традиция также известна за пределами страны.",
+      "example_en": "Armenia; the tradition is also known beyond the country.",
+      "source_ids": [
+        "duduk-source"
+      ]
+    },
+    {
+      "id": "angklung",
+      "category": "world",
+      "name_ru": "Ангклунг",
+      "name_en": "Angklung",
+      "description_ru": "Бамбуковые трубки в раме звучат при встряхивании или постукивании.",
+      "description_en": "Bamboo tubes in a frame sound when shaken or tapped.",
+      "example_ru": "Индонезия; мелодии часто исполняют совместно несколько музыкантов.",
+      "example_en": "Indonesia; melodies often require several players cooperating.",
+      "source_ids": [
+        "angklung-source"
+      ]
+    },
+    {
+      "id": "dombra",
+      "category": "world",
+      "name_ru": "Домбра",
+      "name_en": "Dombra",
+      "description_ru": "Длинношейный двухструнный щипковый инструмент; казахский кюй — традиция сольного исполнения.",
+      "description_en": "A long-necked two-string plucked instrument; Kazakh kuy is a solo-performance tradition.",
+      "example_ru": "Казахстан: в подборке показана именно традиция домбра-кюй.",
+      "example_en": "Kazakhstan: this reference specifically covers dombra kuy.",
+      "source_ids": [
+        "dombra-source"
+      ]
+    },
+    {
+      "id": "mbira",
+      "category": "world",
+      "name_ru": "Мбира",
+      "name_en": "Mbira",
+      "description_ru": "Инструмент с металлическими язычками на деревянной деке, которые защипывают пальцами.",
+      "description_en": "An instrument with metal tongues on a wooden soundboard, plucked with the fingers.",
+      "example_ru": "В этой карточке — традиция народа шона в Зимбабве.",
+      "example_en": "This card describes the Shona tradition in Zimbabwe.",
+      "source_ids": [
+        "mbira-source"
+      ]
+    },
+    {
+      "id": "koto",
+      "category": "world",
+      "name_ru": "Кото",
+      "name_en": "Koto",
+      "description_ru": "Японская щипковая цитра; распространённый традиционный вариант имеет 13 струн и подвижные подставки.",
+      "description_en": "A Japanese plucked zither; a common traditional version has 13 strings and movable bridges.",
+      "example_ru": "Японская традиция сформировалась с учётом китайских предшественников.",
+      "example_en": "The Japanese tradition developed from Chinese predecessors.",
+      "source_ids": [
+        "japan-source"
+      ]
+    },
+    {
+      "id": "shamisen",
+      "category": "world",
+      "name_ru": "Сямисэн",
+      "name_en": "Shamisen",
+      "description_ru": "Трёхструнный японский инструмент с длинным грифом; играют крупным плектром бати.",
+      "description_en": "A three-string Japanese long-necked instrument played with a large bachi plectrum.",
+      "example_ru": "Часто сопровождает пение.",
+      "example_en": "Often accompanies singing.",
+      "source_ids": [
+        "japan-source"
+      ]
+    },
+    {
+      "id": "shakuhachi",
+      "category": "world",
+      "name_ru": "Сякухати",
+      "name_en": "Shakuhachi",
+      "description_ru": "Японская продольная бамбуковая флейта; типичный вариант имеет пять игровых отверстий.",
+      "description_en": "A Japanese end-blown bamboo flute; a typical form has five finger holes.",
+      "example_ru": "Четыре отверстия спереди и одно сзади.",
+      "example_en": "Four holes in front and one at the back.",
+      "source_ids": [
+        "japan-source"
+      ]
+    },
+    {
+      "id": "sitar",
+      "category": "world",
+      "name_ru": "Ситар",
+      "name_en": "Sitar",
+      "description_ru": "Щипковый струнный инструмент, важный для североиндийской классической музыки.",
+      "description_en": "A plucked-string instrument important in North Indian classical music.",
+      "example_ru": "Имеет игровые и резонирующие струны.",
+      "example_en": "Has playing strings and sympathetic strings.",
+      "source_ids": [
+        "india-source"
+      ]
+    },
+    {
+      "id": "tabla",
+      "category": "world",
+      "name_ru": "Табла",
+      "name_en": "Tabla",
+      "description_ru": "Пара ручных барабанов в североиндийской музыкальной традиции.",
+      "description_en": "A pair of hand drums in North Indian musical tradition.",
+      "example_ru": "Два барабана различаются размером и высотой.",
+      "example_en": "The two drums differ in size and pitch.",
+      "source_ids": [
+        "india-source"
+      ]
+    },
+    {
+      "id": "gamelan",
+      "category": "world",
+      "name_ru": "Гамелан",
+      "name_en": "Gamelan",
+      "description_ru": "Индонезийская ансамблевая традиция с гонгами, металлофонами, барабанами и другими инструментами.",
+      "description_en": "An Indonesian ensemble tradition featuring gongs, metallophones, drums and other instruments.",
+      "example_ru": "Указана конкретная культурная связь, а не исключительная принадлежность стране.",
+      "example_en": "A specific cultural association, not exclusive national ownership.",
+      "source_ids": [
+        "gamelan-source"
+      ]
+    },
+    {
+      "id": "flamenco",
+      "category": "world",
+      "name_ru": "Фламенко",
+      "name_en": "Flamenco",
+      "description_ru": "Пение, танец и инструментальное сопровождение; основные корни — в Андалусии, Испания.",
+      "description_en": "Singing, dance and instrumental accompaniment, rooted especially in Andalusia, Spain.",
+      "example_ru": "Указана конкретная культурная связь, а не исключительная принадлежность стране.",
+      "example_en": "A specific cultural association, not exclusive national ownership.",
+      "source_ids": [
+        "flamenco-source"
+      ]
+    },
+    {
+      "id": "tango",
+      "category": "world",
+      "name_ru": "Танго",
+      "name_en": "Tango",
+      "description_ru": "Музыкальная и танцевальная традиция Рио-де-ла-Платы; связана с Аргентиной и Уругваем.",
+      "description_en": "A music and dance tradition of the Rio de la Plata, associated with Argentina and Uruguay.",
+      "example_ru": "Указана конкретная культурная связь, а не исключительная принадлежность стране.",
+      "example_en": "A specific cultural association, not exclusive national ownership.",
+      "source_ids": [
+        "tango-source"
+      ]
+    },
+    {
+      "id": "aitysh",
+      "category": "world",
+      "name_ru": "Айтыс",
+      "name_en": "Aitysh / Aitys",
+      "description_ru": "Состязание в импровизированной поэзии с музыкальным сопровождением; совместная традиция Казахстана и Кыргызстана.",
+      "description_en": "A contest of improvised poetry with musical accompaniment; a shared tradition of Kazakhstan and Kyrgyzstan.",
+      "example_ru": "Указана конкретная культурная связь, а не исключительная принадлежность стране.",
+      "example_en": "A specific cultural association, not exclusive national ownership.",
+      "source_ids": [
+        "aitysh-source"
+      ]
+    },
+    {
+      "id": "bagpipe-culture",
+      "category": "world",
+      "name_ru": "Культура волынки",
+      "name_en": "Bagpipe culture",
+      "description_ru": "Словацкая традиция включает исполнение, изготовление инструментов, песни и танцы.",
+      "description_en": "The Slovak tradition includes playing, instrument making, songs and dances.",
+      "example_ru": "Указана конкретная культурная связь, а не исключительная принадлежность стране.",
+      "example_en": "A specific cultural association, not exclusive national ownership.",
+      "source_ids": [
+        "bagpipe-source"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-note-0",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-0",
+        "note-1",
+        "note-3",
+        "note-5"
+      ],
+      "correct_id": "note-0",
+      "explanation_ru": "В скрипичном ключе эта нота находится на добавочной линейке под нотным станом. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits on the ledger line below the staff. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 0
+      }
+    },
+    {
+      "id": "q-note-1",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-1",
+        "note-2",
+        "note-4",
+        "note-6"
+      ],
+      "correct_id": "note-1",
+      "explanation_ru": "В скрипичном ключе эта нота находится под первой линейкой. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits just below the bottom line. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 1
+      }
+    },
+    {
+      "id": "q-note-2",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-3",
+        "note-2",
+        "note-5",
+        "note-0"
+      ],
+      "correct_id": "note-2",
+      "explanation_ru": "В скрипичном ключе эта нота находится на первой линейке. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits on the bottom line. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 2
+      }
+    },
+    {
+      "id": "q-note-3",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-4",
+        "note-6",
+        "note-1",
+        "note-3"
+      ],
+      "correct_id": "note-3",
+      "explanation_ru": "В скрипичном ключе эта нота находится между первой и второй линейками. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits in the first space. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 3
+      }
+    },
+    {
+      "id": "q-note-4",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-5",
+        "note-0",
+        "note-2",
+        "note-4"
+      ],
+      "correct_id": "note-4",
+      "explanation_ru": "В скрипичном ключе эта нота находится на второй линейке. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits on the second line from the bottom. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 4
+      }
+    },
+    {
+      "id": "q-note-5",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-6",
+        "note-1",
+        "note-5",
+        "note-3"
+      ],
+      "correct_id": "note-5",
+      "explanation_ru": "В скрипичном ключе эта нота находится между второй и третьей линейками. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits in the second space. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 5
+      }
+    },
+    {
+      "id": "q-note-6",
+      "stem_ru": "Какая нота показана в скрипичном ключе?",
+      "stem_en": "Which note is shown in treble clef?",
+      "option_ids": [
+        "note-0",
+        "note-2",
+        "note-6",
+        "note-4"
+      ],
+      "correct_id": "note-6",
+      "explanation_ru": "В скрипичном ключе эта нота находится на третьей линейке. Линейки считаются снизу. Положение показано для скрипичного ключа и первой октавы.",
+      "explanation_en": "In treble clef this note sits on the middle line. Count staff lines from the bottom. Shown in treble clef, octave 4 in scientific pitch notation.",
+      "source_ids": [
+        "notation"
+      ],
+      "visual": {
+        "note": 6
+      }
+    },
+    {
+      "id": "q-sharp",
+      "stem_ru": "Какой знак повышает натуральную ноту на полутон?",
+      "stem_en": "Which sign raises a natural note by one semitone?",
+      "option_ids": [
+        "flat",
+        "sharp",
+        "natural",
+        "double-flat"
+      ],
+      "correct_id": "sharp",
+      "explanation_ru": "Повышает ноту на полутон относительно её натуральной высоты. Фа-диез выше фа на полутон.",
+      "explanation_en": "Raises a note one semitone from its natural pitch. F sharp is one semitone above F.",
+      "source_ids": [
+        "notation"
+      ]
+    },
+    {
+      "id": "q-flat",
+      "stem_ru": "Какой знак понижает натуральную ноту на полутон?",
+      "stem_en": "Which sign lowers a natural note by one semitone?",
+      "option_ids": [
+        "natural",
+        "double-sharp",
+        "flat",
+        "sharp"
+      ],
+      "correct_id": "flat",
+      "explanation_ru": "Понижает ноту на полутон относительно её натуральной высоты. Си-бемоль ниже си на полутон.",
+      "explanation_en": "Lowers a note one semitone from its natural pitch. B flat is one semitone below B.",
+      "source_ids": [
+        "notation"
+      ]
+    },
+    {
+      "id": "q-natural",
+      "stem_ru": "Какой знак возвращает натуральную высоту ноты?",
+      "stem_en": "Which sign restores the natural pitch of a note?",
+      "option_ids": [
+        "flat",
+        "sharp",
+        "double-flat",
+        "natural"
+      ],
+      "correct_id": "natural",
+      "explanation_ru": "Возвращает ноте натуральную высоту, отменяя действующую альтерацию. После фа-диеза знак бекар возвращает фа.",
+      "explanation_en": "Restores a note to its natural pitch, cancelling an active accidental. After F sharp, a natural restores F.",
+      "source_ids": [
+        "notation"
+      ]
+    },
+    {
+      "id": "q-whole",
+      "stem_ru": "Какая длительность равна двум половинным нотам?",
+      "stem_en": "Which duration equals two half notes?",
+      "option_ids": [
+        "whole",
+        "half",
+        "quarter",
+        "eighth"
+      ],
+      "correct_id": "whole",
+      "explanation_ru": "Длится столько же, сколько две половинные ноты. В размере 4/4 — четыре четвертные доли.",
+      "explanation_en": "Lasts as long as two half notes. In 4/4 it lasts four quarter-note beats.",
+      "source_ids": [
+        "rhythm"
+      ]
+    },
+    {
+      "id": "q-eighth",
+      "stem_ru": "Какая нота вдвое короче четвертной?",
+      "stem_en": "Which note lasts half as long as a quarter?",
+      "option_ids": [
+        "sixteenth",
+        "eighth",
+        "quarter",
+        "half"
+      ],
+      "correct_id": "eighth",
+      "explanation_ru": "Половина длительности четвертной. Две восьмые равны одной четвертной.",
+      "explanation_en": "Half the duration of a quarter note. Two eighths equal one quarter note.",
+      "source_ids": [
+        "rhythm"
+      ]
+    },
+    {
+      "id": "q-dot",
+      "stem_ru": "Какой знак справа от ноты добавляет половину её длительности?",
+      "stem_en": "Which sign to the right of a note adds half its duration?",
+      "option_ids": [
+        "tie",
+        "fermata",
+        "dot",
+        "accent"
+      ],
+      "correct_id": "dot",
+      "explanation_ru": "Добавляет половину исходной длительности. Четверть с точкой равна трём восьмым.",
+      "explanation_en": "Adds half the original duration. A dotted quarter equals three eighths.",
+      "source_ids": [
+        "rhythm"
+      ]
+    },
+    {
+      "id": "q-tie",
+      "stem_ru": "Что объединяет ноты одной высоты в непрерывный звук без повторной атаки?",
+      "stem_en": "What joins notes of the same pitch into one sound without a new attack?",
+      "option_ids": [
+        "legato",
+        "accent",
+        "staccato",
+        "tie"
+      ],
+      "correct_id": "tie",
+      "explanation_ru": "Соединяет две ноты одной высоты в один непрерывный звук. Длительности складываются; повторной атаки нет.",
+      "explanation_en": "Joins two notes of the same pitch into one sustained sound. Add their durations without a new attack.",
+      "source_ids": [
+        "rhythm"
+      ]
+    },
+    {
+      "id": "q-meter68",
+      "stem_ru": "Какой размер обычно содержит две основные доли по три восьмых?",
+      "stem_en": "Which meter usually has two main beats of three eighths each?",
+      "option_ids": [
+        "meter68",
+        "meter34",
+        "meter44",
+        "triplet"
+      ],
+      "correct_id": "meter68",
+      "explanation_ru": "Обычно две основные доли, каждая делится на три восьмых. Две четверти с точкой; не шесть основных долей.",
+      "explanation_en": "Usually two main beats, each divided into three eighth notes. Two dotted-quarter beats, rather than six main beats.",
+      "source_ids": [
+        "meter"
+      ]
+    },
+    {
+      "id": "q-crescendo",
+      "stem_ru": "Как называется постепенное усиление громкости?",
+      "stem_en": "What means gradually increasing loudness?",
+      "option_ids": [
+        "diminuendo",
+        "crescendo",
+        "ritardando",
+        "accelerando"
+      ],
+      "correct_id": "crescendo",
+      "explanation_ru": "Постепенно усиливать громкость. Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "explanation_en": "Gradually increase loudness. Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-ritardando",
+      "stem_ru": "Как называется постепенное замедление темпа?",
+      "stem_en": "What means gradually slowing the tempo?",
+      "option_ids": [
+        "accelerando",
+        "crescendo",
+        "ritardando",
+        "a-tempo"
+      ],
+      "correct_id": "ritardando",
+      "explanation_ru": "Постепенно замедлять темп. Словесные темпы не задают универсального точного числа ударов в минуту.",
+      "explanation_en": "Gradually slow down. Verbal tempo markings do not specify a universal exact BPM.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-p",
+      "stem_ru": "Какое обозначение означает «тихо»?",
+      "stem_en": "Which marking means softly?",
+      "option_ids": [
+        "f",
+        "mf",
+        "ff",
+        "p"
+      ],
+      "correct_id": "p",
+      "explanation_ru": "Тихо; это обозначение громкости, а не название инструмента. Динамика относительна: учитываются инструмент и музыкальный контекст.",
+      "explanation_en": "Softly; a dynamic marking, distinct from the instrument name. Dynamics are relative to the instrument and musical context.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-staccato",
+      "stem_ru": "Какой штрих требует коротких, отделённых звуков?",
+      "stem_en": "Which articulation calls for short, detached notes?",
+      "option_ids": [
+        "staccato",
+        "legato",
+        "arco",
+        "fermata"
+      ],
+      "correct_id": "staccato",
+      "explanation_ru": "Исполнять звуки коротко, отделяя их друг от друга. Точка над или под нотой — штрих; точка справа — продление.",
+      "explanation_en": "Play notes short and detached. A dot above/below is articulation; a dot to the right adds duration.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-fermata",
+      "stem_ru": "Какой знак продлевает ноту или паузу по усмотрению исполнителя?",
+      "stem_en": "Which sign extends a note or rest at the performer’s discretion?",
+      "option_ids": [
+        "accent",
+        "fermata",
+        "segno",
+        "coda"
+      ],
+      "correct_id": "fermata",
+      "explanation_ru": "Продлить ноту или паузу сверх записанной длительности. Точное продление зависит от исполнения.",
+      "explanation_en": "Hold a note or rest beyond its written duration. The exact extension depends on the performance.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-pizzicato",
+      "stem_ru": "Как называется извлечение звука щипком на смычковом инструменте?",
+      "stem_en": "What is plucking the strings of a bowed-string instrument called?",
+      "option_ids": [
+        "arco",
+        "legato",
+        "pizzicato",
+        "staccato"
+      ],
+      "correct_id": "pizzicato",
+      "explanation_ru": "На смычковых: извлекать звук щипком струны. Arco указывает на возвращение к игре смычком.",
+      "explanation_en": "On bowed strings: pluck the string. Arco asks for a return to the bow.",
+      "source_ids": [
+        "performance"
+      ]
+    },
+    {
+      "id": "q-oboe",
+      "stem_ru": "У какого инструмента двойная трость?",
+      "stem_en": "Which instrument uses a double reed?",
+      "option_ids": [
+        "flute",
+        "clarinet",
+        "trumpet",
+        "oboe"
+      ],
+      "correct_id": "oboe",
+      "explanation_ru": "Деревянный духовой инструмент с двойной тростью. Не путайте с одинарной тростью кларнета.",
+      "explanation_en": "A woodwind instrument with a double reed. Contrast the clarinet’s single reed.",
+      "source_ids": [
+        "oboe-source"
+      ]
+    },
+    {
+      "id": "q-trombone",
+      "stem_ru": "Какой медный духовой обычно использует выдвижную кулису?",
+      "stem_en": "Which brass instrument usually uses a slide?",
+      "option_ids": [
+        "trombone",
+        "trumpet",
+        "horn",
+        "tuba"
+      ],
+      "correct_id": "trombone",
+      "explanation_ru": "Медный духовой инструмент, обычно с выдвижной кулисой. Кулиса позволяет плавно менять длину трубки.",
+      "explanation_en": "A brass instrument usually equipped with a slide. The slide continuously changes the tube length.",
+      "source_ids": [
+        "trombone-source"
+      ]
+    },
+    {
+      "id": "q-piano",
+      "stem_ru": "В каком инструменте молоточки ударяют по струнам?",
+      "stem_en": "In which instrument do hammers strike strings?",
+      "option_ids": [
+        "harp",
+        "piano",
+        "violin",
+        "cello"
+      ],
+      "correct_id": "piano",
+      "explanation_ru": "Клавишный инструмент: молоточки ударяют по струнам. По способу звукоизвлечения — ударяемые струны.",
+      "explanation_en": "A keyboard instrument whose hammers strike strings. Its sound is produced by struck strings.",
+      "source_ids": [
+        "piano-source"
+      ]
+    },
+    {
+      "id": "q-duduk",
+      "stem_ru": "Какой инструмент связан с армянской традицией и имеет двойную трость?",
+      "stem_en": "Which instrument is associated with Armenian tradition and has a double reed?",
+      "option_ids": [
+        "sitar",
+        "angklung",
+        "duduk",
+        "koto"
+      ],
+      "correct_id": "duduk",
+      "explanation_ru": "Духовой инструмент с двойной тростью, связанный с армянской музыкальной традицией. Армения; традиция также известна за пределами страны.",
+      "explanation_en": "A double-reed woodwind associated with Armenian musical tradition. Armenia; the tradition is also known beyond the country.",
+      "source_ids": [
+        "duduk-source"
+      ]
+    },
+    {
+      "id": "q-angklung",
+      "stem_ru": "Какой индонезийский инструмент делают из бамбуковых трубок в раме?",
+      "stem_en": "Which Indonesian instrument uses bamboo tubes in a frame?",
+      "option_ids": [
+        "dombra",
+        "shamisen",
+        "mbira",
+        "angklung"
+      ],
+      "correct_id": "angklung",
+      "explanation_ru": "Бамбуковые трубки в раме звучат при встряхивании или постукивании. Индонезия; мелодии часто исполняют совместно несколько музыкантов.",
+      "explanation_en": "Bamboo tubes in a frame sound when shaken or tapped. Indonesia; melodies often require several players cooperating.",
+      "source_ids": [
+        "angklung-source"
+      ]
+    },
+    {
+      "id": "q-koto",
+      "stem_ru": "Какая японская цитра в распространённом варианте имеет 13 струн?",
+      "stem_en": "Which Japanese zither commonly has 13 strings?",
+      "option_ids": [
+        "koto",
+        "tabla",
+        "shakuhachi",
+        "dombra"
+      ],
+      "correct_id": "koto",
+      "explanation_ru": "Японская щипковая цитра; распространённый традиционный вариант имеет 13 струн и подвижные подставки. Японская традиция сформировалась с учётом китайских предшественников.",
+      "explanation_en": "A Japanese plucked zither; a common traditional version has 13 strings and movable bridges. The Japanese tradition developed from Chinese predecessors.",
+      "source_ids": [
+        "japan-source"
+      ]
+    },
+    {
+      "id": "q-triad",
+      "stem_ru": "Как называется аккорд из трёх звуков, располагаемых по терциям?",
+      "stem_en": "What is a three-note chord arranged in stacked thirds called?",
+      "option_ids": [
+        "octave",
+        "triad",
+        "tone",
+        "semitone"
+      ],
+      "correct_id": "triad",
+      "explanation_ru": "Аккорд из трёх звуков, которые можно расположить по терциям. До–ми–соль — мажорное трезвучие.",
+      "explanation_en": "A three-note chord that can be arranged in stacked thirds. C–E–G is a major triad.",
+      "source_ids": [
+        "chords"
+      ]
+    }
+  ]
+}
