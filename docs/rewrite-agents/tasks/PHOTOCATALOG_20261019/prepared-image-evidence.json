@@ -1,0 +1,38 @@
+{
+  "receipt": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "input_sha256": "1053f1700d1c6bea8fbe2a37fe42cc3ad1dd004835f8075f58c9eb1e9358c71f"
+  },
+  "docker_engine_id": "sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+  "cri_config_id": "sha256:85019d5b6666de955389b69b75cec21145b2138dfebc8ff915b343b32f54afb8",
+  "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+  "main_dart_js_sha256": "8ff0fe6eaa803c3ed980807aa22553663f0d1113025e19d443792f5ab8e2a806",
+  "source_commit": "a034673a5e30603bf5dd71ef5478fca1726b1d62",
+  "frontend_only": true,
+  "live_helm_revision": 72,
+  "live_deployment_revision": 70,
+  "pvc_unchanged": true,
+  "integrity": {
+    "backup": "ok",
+    "restore": "ok",
+    "rehearsal": "ok"
+  },
+  "image_web_closure": {
+    "files": 572,
+    "all_web_bytes_match": true
+  },
+  "quiz_source_closure": {
+    "original_files": 165,
+    "candidate_files": 165,
+    "approved_existing_mutations": 0
+  },
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "capacity_meets_20_percent": true,
+  "imagefs_available_percent": 20.080748056935892
+}

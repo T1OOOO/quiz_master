@@ -1,0 +1,37 @@
+{
+  "running_pods": [
+    {
+      "pod": "quiz-master-67f788b79f-9xkg2",
+      "phase": "Running",
+      "containers": [
+        {
+          "name": "api",
+          "image": "docker.io/library/quiz-master:quiz-2026.10.19-photo-a034673a",
+          "imageID": "docker.io/library/quiz-master@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+          "ready": true,
+          "restartCount": 0
+        },
+        {
+          "name": "web",
+          "image": "docker.io/library/quiz-master:quiz-2026.10.19-photo-a034673a",
+          "imageID": "docker.io/library/quiz-master@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+          "ready": true,
+          "restartCount": 0
+        }
+      ]
+    }
+  ],
+  "running_api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+  "kubelet_capacity_config": {
+    "evictionHard": {
+      "imagefs.available": "5%",
+      "nodefs.available": "5%"
+    },
+    "evictionMinimumReclaim": {
+      "imagefs.available": "10%",
+      "nodefs.available": "10%"
+    },
+    "imageGCHighThresholdPercent": 85,
+    "imageGCLowThresholdPercent": 80
+  }
+}

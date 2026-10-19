@@ -1,0 +1,55 @@
+{
+  "accounting": {
+    "planned_total_bytes": 136402336
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-grid-9de2ad04",
+    "deployment_revision": "70",
+    "helm_deployed_revision": 72,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-grid-9de2ad04@sha256:0b46d13b5496a7d2388b3385476d4306b97709f843182407e5483b5996e643c8",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 71
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "input_sha256": "1053f1700d1c6bea8fbe2a37fe42cc3ad1dd004835f8075f58c9eb1e9358c71f"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-photo-ephemeral-20261020",
+  "plan_only": true,
+  "purpose": "Archive5 owned stopped candidate rehearsal/copy outputs only, after preparation and exact input/image receipt binding. Keep frozen releaseinputs api/web/quizzes/private/chart/support, candidate backup+restoreproof, all publishedbackups, all runtimeimages and livePVC. Needed to keep >=20percent imageFS through publication. No imageprune or threshold changes.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 81981440,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-photo-a034673a/rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}
