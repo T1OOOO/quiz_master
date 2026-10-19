@@ -333,13 +333,14 @@ void _countryFacts(
           _textOr(item, 'name_en'),
           refs,
         );
+        final itemKind = _textOr(item, 'kind');
         _add(
           out,
           'countries',
-          countryEntry.key,
+          '${countryEntry.key}:${asset.$1}:${itemKind.isEmpty ? 'item' : itemKind}:$itemId',
           name.$1,
           name.$2,
-          '${asset.$1}.${_textOr(item, 'kind')}.$itemId.relation',
+          '${asset.$1}.$itemKind.$itemId.relation',
           _relationFieldRu(asset.$1, item),
           _relationFieldEn(asset.$1, item),
           _relationValueRu(asset.$1, item),
@@ -1376,6 +1377,7 @@ String _tupleText(List<dynamic> value, int index) =>
     ? value[index] as String
     : '';
 String _family(String path) {
+  if (path == 'historical_project') return 'former_names.name';
   final parts = path.split('.');
   final stable = parts
       .where((part) => int.tryParse(part) == null && part.isNotEmpty)
@@ -1400,7 +1402,10 @@ String _family(String path) {
 }
 
 String _valueKind(StudyFact fact) {
-  final leaf = _family(fact.fieldPath).split('.').last;
+  final family = _family(fact.fieldPath);
+  if (family == 'former_names.name') return 'historical_name';
+  final leaf = family.split('.').last;
+  if (leaf == 'relation') return 'relation';
   if (const {
     'date',
     'founded_year',
@@ -1584,18 +1589,24 @@ String _relationLabelEn(String asset, Map<String, dynamic> item) =>
       'culture' => 'Cultural connection',
       _ => 'Water body',
     };
-String _relationFieldRu(String asset, Map<String, dynamic> item) =>
-    switch (asset) {
-      'links' => 'Связь: ${_linkKindRu(_textOr(item, 'kind'))}',
-      'culture' => 'Культурная связь',
-      _ => 'Связь с водоёмом',
-    };
-String _relationFieldEn(String asset, Map<String, dynamic> item) =>
-    switch (asset) {
-      'links' => 'Relation: ${_linkKindEn(_textOr(item, 'kind'))}',
-      'culture' => 'Cultural connection',
-      _ => 'Water relation',
-    };
+String _relationFieldRu(String asset, Map<String, dynamic> item) {
+  final name = russianLearningText(_textOr(item, 'name_ru'));
+  return switch (asset) {
+    'links' => 'Связь: «$name»',
+    'culture' => 'Культурная связь: $name',
+    _ => 'Связь с водоёмом: $name',
+  };
+}
+
+String _relationFieldEn(String asset, Map<String, dynamic> item) {
+  final name = _textOr(item, 'name_en');
+  return switch (asset) {
+    'links' => 'Relation: “$name”',
+    'culture' => 'Cultural connection: $name',
+    _ => 'Water relation: $name',
+  };
+}
+
 String _relationValueRu(String asset, Map<String, dynamic> item) {
   final raw = _textOr(item, 'relation_ru');
   if (raw.isNotEmpty) return raw;

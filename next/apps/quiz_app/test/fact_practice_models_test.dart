@@ -176,6 +176,28 @@ void main() {
         ),
         isNotEmpty,
       );
+      final relations = facts
+          .where((fact) => fact.fieldPath.endsWith('.relation'))
+          .toList();
+      expect(relations, isNotEmpty);
+      expect(relations.every((fact) => fact.fieldRu.contains(':')), isTrue);
+      expect(relations.every((fact) => fact.fieldEn.contains(':')), isTrue);
+      expect(
+        relations.map((fact) => fact.entityId).toSet().length,
+        relations.length,
+      );
+      final factsById = {for (final fact in facts) fact.id: fact};
+      for (final question in buildFactQuestions(
+        facts,
+        seed: 31,
+      ).where((question) => question.fact.fieldPath.endsWith('.relation'))) {
+        expect(
+          question.options.every(
+            (option) => factsById[option.id]!.fieldPath.endsWith('.relation'),
+          ),
+          isTrue,
+        );
+      }
       expect(facts.where((fact) => fact.fieldPath == 'religion_year'), isEmpty);
       expect(
         facts.where((fact) => fact.fieldPath == 'president.checked'),
@@ -214,6 +236,12 @@ void main() {
       );
       expect(
         facts.where((fact) => fact.fieldPath.startsWith('credit_work_ids.')),
+        isNotEmpty,
+      );
+      expect(
+        facts.where(
+          (fact) => fact.scope == 'people' && fact.fieldPath == 'born',
+        ),
         isNotEmpty,
       );
       expect(
