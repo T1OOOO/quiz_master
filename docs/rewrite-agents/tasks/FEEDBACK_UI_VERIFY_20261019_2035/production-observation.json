@@ -1,0 +1,25 @@
+{
+  "actual_exit": 0,
+  "script_raw_sha256": "4f11d4be6cb00629aa2d04ff722a5707e756146573c699f8568f64732be63b08",
+  "read_only": true,
+  "release_baseline_certificate": false,
+  "observation": {
+    "observed_at_utc": "2026-10-19T20:35:40.207738+00:00",
+    "disk_available": 20591214592,
+    "disk_total": 102417174528,
+    "available_percent": 20.105,
+    "strict20_pass": true,
+    "helm_revision": 72,
+    "helm_status": "deployed",
+    "images": [
+      "quiz-master:quiz-2026.10.19-grid-9de2ad04@sha256:0b46d13b5496a7d2388b3385476d4306b97709f843182407e5483b5996e643c8",
+      "quiz-master:quiz-2026.10.19-grid-9de2ad04@sha256:0b46d13b5496a7d2388b3385476d4306b97709f843182407e5483b5996e643c8"
+    ],
+    "replicas": 1,
+    "readiness": 200,
+    "feedback_count": 90,
+    "feedback_open": 24,
+    "feedback_sha256": "03b3644bab8f10970aab5c258da5ae16550906384c50804f198c05a86e789dab",
+    "mutation": false
+  }
+}
