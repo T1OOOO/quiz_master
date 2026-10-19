@@ -1,0 +1,61 @@
+{
+  "accounting": {
+    "planned_total_bytes": 205926342
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.20-water-82fb9c57",
+    "deployment_revision": "72",
+    "helm_deployed_revision": 74,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.20-water-82fb9c57@sha256:cfe81210b9d3efba88bf3e90de2ddad3239375d55b284da095702a7aeccfba21",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 73
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-water-82fb9c57",
+    "image": "quiz-master:quiz-2026.10.20-water-82fb9c57@sha256:cfe81210b9d3efba88bf3e90de2ddad3239375d55b284da095702a7aeccfba21",
+    "input_sha256": "7fc7c2f928366d99ad313623ca31bbbb005674502ba20f58962d25fe996b2264"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-sky-baseline-20261020",
+  "plan_only": true,
+  "purpose": "Reversibly archive six redundant copied release74 inputs and publish restore proof. Keep all runtime images, published backups, live PVC, chart/support/receipts/metadata. Full hash-verified local package and restricted verified archive retained. No prune or threshold change.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 93738049,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74919936,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 5772048,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/web-delta",
+      "sqlite": false
+    }
+  ]
+}
