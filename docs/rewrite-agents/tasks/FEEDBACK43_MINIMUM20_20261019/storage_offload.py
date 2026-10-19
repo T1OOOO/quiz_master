@@ -168,7 +168,10 @@ def local_verify(root: Path, items: list[dict]) -> None:
         else:
             actual=[]
             for f in sorted(x for x in p.rglob('*') if x.is_file()): actual.append([str(f.relative_to(p)).replace('\\','/'),f.stat().st_size,local_digest(f)])
-            if actual != item['files']: raise RuntimeError('local directory mismatch: '+str(p))
+            # WindowsPath sorts names case-insensitively; POSIX sorts by bytes.
+            # Compare the complete normalized records in one explicit order.
+            if sorted(actual, key=lambda row: row[0]) != sorted(item['files'], key=lambda row: row[0]):
+                raise RuntimeError('local directory mismatch: '+str(p))
 def restrict(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=False)
     if os.name=='nt':
