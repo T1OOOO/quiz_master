@@ -5,6 +5,40 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/quizipedia.dart';
 
 void main() {
+  for (final section in ['Greek gods', 'Religions and traditions']) {
+    testWidgets('$section menu loads the shipped relationship atlas', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.runAsync(() async {
+        final bundle = _NavigationBundle({
+          for (final key in [
+            'assets/quizipedia/catalog.json',
+            'assets/quizipedia/belief_atlas.json',
+          ])
+            key: await rootBundle.loadString(key),
+        });
+        await tester.pumpWidget(
+          MaterialApp(home: QuizipediaPage(bundle: bundle)),
+        );
+        await tester.pump();
+        final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
+          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
+        );
+        await catalog.future!;
+      });
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(find.text(section), 200);
+      await tester.tap(find.text(section));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('belief-search')), findsOneWidget);
+      expect(find.text('Retry'), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+  }
   testWidgets('food menu loads the shipped classic recipes', (tester) async {
     tester.view.physicalSize = const Size(390, 844);
     tester.view.devicePixelRatio = 1;
@@ -97,6 +131,8 @@ void main() {
         'People and their works',
         'Brands and companies',
         'Food and regional cuisines',
+        'Greek gods',
+        'Religions and traditions',
       ]) {
         await tester.scrollUntilVisible(find.text(name), 200);
         expect(find.text(name), findsOneWidget);

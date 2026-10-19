@@ -16,6 +16,7 @@ import 'constellation_atlas.dart';
 import 'knowledge_atlas.dart';
 import 'brand_atlas.dart';
 import 'food_atlas.dart';
+import 'belief_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -624,6 +625,8 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               'people',
               'brands',
               'food',
+              'greek',
+              'religions',
             ])
               Card(
                 child: ListTile(
@@ -632,6 +635,8 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                     'culture' => Icons.theaters,
                     'brands' => Icons.business,
                     'food' => Icons.restaurant_menu,
+                    'greek' => Icons.account_tree,
+                    'religions' => Icons.public,
                     _ => Icons.people,
                   }),
                   title: Text(switch (section) {
@@ -650,6 +655,16 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                       'Brands and companies',
                       'Бренды и компании',
                     ),
+                    'greek' => _t(
+                      context,
+                      'Greek gods',
+                      'Древнегреческие боги',
+                    ),
+                    'religions' => _t(
+                      context,
+                      'Religions and traditions',
+                      'Религии и традиции',
+                    ),
                     'food' => _t(
                       context,
                       'Food and regional cuisines',
@@ -667,6 +682,10 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                       builder: (_) => switch (section) {
                         'brands' => BrandAtlasPage(bundle: widget.bundle),
                         'food' => FoodAtlasPage(bundle: widget.bundle),
+                        'greek' || 'religions' => BeliefAtlasPage(
+                          bundle: widget.bundle,
+                          initialSection: section,
+                        ),
                         _ => KnowledgeAtlasPage(
                           section: section,
                           bundle: widget.bundle,

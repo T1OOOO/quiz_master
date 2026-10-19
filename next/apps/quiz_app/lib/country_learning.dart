@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
+import 'country_religions.dart';
 
 const _factsAsset = 'assets/quizipedia/country_facts.json';
 
@@ -433,18 +434,22 @@ class CountryQuestion {
     return result;
   }
 
-  static String _associationPrompt(CountryAssociation row, String country) =>
-      switch (row.kind) {
-        'neighbor' => 'Which country shares a land border with $country?',
-        'water' => 'Which major water body is listed for $country?',
-        'president' => 'Who is the president of $country as of ${row.checked}?',
-        'scientist' =>
-          'Which scientist was born in the territory of modern $country?',
-        'food' => 'Which culinary tradition is listed for $country?',
-        'sports_team' => 'Which sports club is based in $country?',
-        'resource' => 'Which resource is listed for $country?',
-        _ => 'Which ${row.kind} is associated with $country?',
-      };
+  static String _associationPrompt(
+    CountryAssociation row,
+    String country,
+  ) => switch (row.kind) {
+    'neighbor' => 'Which country shares a land border with $country?',
+    'water' => 'Which major water body is listed for $country?',
+    'president' => 'Who is the president of $country as of ${row.checked}?',
+    'scientist' =>
+      'Which scientist was born in the territory of modern $country?',
+    'food' => 'Which culinary tradition is listed for $country?',
+    'sports_team' => 'Which sports club is based in $country?',
+    'religion' =>
+      'Which affiliation category was largest in $country in Pew Research Center estimates for ${row.checked}?',
+    'resource' => 'Which resource is listed for $country?',
+    _ => 'Which ${row.kind} is associated with $country?',
+  };
 
   static List<CountryQuestion> build(
     List<CountryFact> facts, {
@@ -589,6 +594,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   String _layer = 'none', _sort = 'population';
   bool _descending = true;
   Object? _loadError;
+  CountryReligions? _religions;
   final List<CountryQuestion> _missed = [];
 
   @override
@@ -611,15 +617,40 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
             bundle: widget.bundle,
           ),
           loadCountryPresidents(widget.bundle),
+          CountryReligions.load(widget.bundle),
         ])
         .then((loaded) {
           final facts = loaded[0] as List<CountryFact>;
           final associations = <String, List<CountryAssociation>>{};
           for (final value
-              in loaded.skip(1).cast<Map<String, List<CountryAssociation>>>()) {
+              in loaded
+                  .skip(1)
+                  .take(3)
+                  .cast<Map<String, List<CountryAssociation>>>()) {
             value.forEach(
               (id, rows) => associations.putIfAbsent(id, () => []).addAll(rows),
             );
+          }
+          final religions = loaded[4] as CountryReligions;
+          for (final row in religions.countries.values) {
+            if (row.largestGroups.length != 1) continue;
+            final group = religionGroups[row.largestGroups.single]!;
+            associations
+                .putIfAbsent(row.id, () => [])
+                .add(
+                  CountryAssociation(
+                    id: 'religion-${row.id}',
+                    kind: 'religion',
+                    nameEn: group.nameEn,
+                    nameRu: group.nameRu,
+                    checked: '${religions.year}',
+                    sourceUrl: religions.sourceUrl,
+                    relationEn:
+                        'Largest affiliation category in Pew Research Center estimates (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Population affiliation, not official state religion.',
+                    relationRu:
+                        'Крупнейшая категория религиозной принадлежности по оценке Pew Research Center (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Принадлежность населения, а не официальная религия государства.',
+                  ),
+                );
           }
           final names = {for (final fact in facts) fact.id: fact};
           for (final fact in facts) {
@@ -645,6 +676,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
           if (mounted) {
             setState(() {
               _facts = facts;
+              _religions = religions;
               _associations = associations;
             });
           }
@@ -700,17 +732,24 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   bool _matches(CountryFact fact) {
     final query = _query.trim().toLowerCase();
     return [
-      fact.nameEn,
-      fact.nameRu,
-      fact.capital,
-      ...fact.languages,
-      ...fact.currencies,
-      for (final row in _associations[fact.id] ?? <CountryAssociation>[])
-        '${row.nameEn} ${row.nameRu}',
-    ].any((value) => value.toLowerCase().contains(query));
+          fact.nameEn,
+          fact.nameRu,
+          fact.capital,
+          ...fact.languages,
+          ...fact.currencies,
+          for (final row in _associations[fact.id] ?? <CountryAssociation>[])
+            '${row.nameEn} ${row.nameRu}',
+        ].any((value) => value.toLowerCase().contains(query)) ||
+        (_religions?.countries[fact.id]?.matches(query) ?? false);
   }
 
   String _layerText(CountryFact fact) => switch (_layer) {
+    'religion' =>
+      _religions?.countries[fact.id]?.mapLabel(
+            ru: _ru,
+            year: _religions!.year,
+          ) ??
+          '',
     'flag' => _ru ? fact.nameRu : fact.nameEn,
     'capital' => _display(fact.capital),
     'currency' => fact.currencies.join(', '),
@@ -1085,6 +1124,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         'water',
                         'resource',
                         'neighbor',
+                        'religion',
                       ])
                         DropdownMenuItem(
                           value: layer,
@@ -1109,6 +1149,26 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     ),
                   ),
                 ),
+                if (_layer == 'religion')
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _t(
+                            'Largest affiliation category · Pew Research Center, 2020 estimates (published 2025). Country labels show population affiliation, not official state religion. No label means no data in this source.',
+                            'Крупнейшая категория религиозной принадлежности · оценка Pew Research Center за 2020 год (публикация 2025). Подписи относятся к населению, а не к официальной религии государства. Нет подписи — нет данных в этом источнике.',
+                          ),
+                        ),
+                        if (_religions != null)
+                          _sourceLink(
+                            _religions!.sourceUrl,
+                            'Pew Research Center',
+                          ),
+                      ],
+                    ),
+                  ),
                 if (['water', 'resource', 'neighbor'].contains(_layer))
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -1171,6 +1231,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   }
 
   String _topicLabel(String topic) => switch (topic) {
+    'religion' => _t('Religious affiliation', 'Религиозная принадлежность'),
     'mixed' => _t('Mixed', 'Все темы'),
     'location' => _t('Location', 'Положение на карте'),
     'neighbor' => _t('Land neighbors', 'Сухопутные соседи'),
@@ -1201,6 +1262,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     }
     final name = question.country.nameRu;
     return switch (question.kind) {
+      'religion' =>
+        'Какая категория религиозной принадлежности была крупнейшей в стране $name по оценке Pew Research Center за ${question.association?.checked} год?',
       'flag' => 'Какой стране принадлежит этот флаг?',
       'capital' => 'Столица страны $name?',
       'language' =>
@@ -1226,6 +1289,55 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
       'landmark' => 'Какая достопримечательность находится в стране $name?',
       _ => 'Что связано со страной $name?',
     };
+  }
+
+  Widget _religionDetails(CountryFact fact) {
+    final data = _religions;
+    if (data == null) return const SizedBox.shrink();
+    final row = data.countries[fact.id];
+    final entries =
+        row?.shares.entries.toList() ?? <MapEntry<String, double>>[];
+    entries.sort((a, b) => b.value.compareTo(a.value));
+    return Column(
+      key: const Key('country-religion-details'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 12),
+        Text(
+          '${_topicLabel('religion')} · ${data.year}',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        if (row == null)
+          Text(
+            _t(
+              'No estimates for this country in this source.',
+              'Для этой страны нет оценок в этом источнике.',
+            ),
+          ),
+        for (final entry in entries)
+          Text(
+            '${religionGroups[entry.key]!.name(_ru)}: ${affiliationPercent(entry.value)}',
+          ),
+        Text(
+          _t(
+            'Approximate population affiliation; not official state religion. Unaffiliated includes people with no particular religion, agnostics and atheists. Other religions are combined in this source. Rounded percentages may not total 100%.',
+            'Оценка принадлежности населения, а не официальная религия государства. Без религиозной принадлежности — в том числе без определённой религии, агностики и атеисты. Другие религии объединены источником. Округлённые доли могут не дать ровно 100%.',
+          ),
+        ),
+        Text(
+          _t(
+            'Pew Research Center · data ${data.year} · published ${data.publishedYear}',
+            'Pew Research Center · данные ${data.year} · публикация ${data.publishedYear}',
+          ),
+        ),
+        Wrap(
+          children: [
+            _sourceLink(data.sourceUrl, 'Pew Research Center'),
+            _sourceLink(data.methodologyUrl, _t('Methodology', 'Методология')),
+          ],
+        ),
+      ],
+    );
   }
 
   Widget _details() {
@@ -1323,8 +1435,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     'Контура на этой карте нет; факты и тренировки доступны.',
                   ),
                 ),
+              _religionDetails(fact),
               for (final kind
                   in (_associations[fact.id] ?? const [])
+                      .where((r) => r.kind != 'religion')
                       .map((r) => r.kind)
                       .toSet())
                 ExpansionTile(
@@ -1525,7 +1639,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         _sourceLink(q.country.officialLanguagesSource),
                       if (q.source.isNotEmpty)
                         Text(
-                          '${_t('Checked', 'Проверено')}: ${q.source}',
+                          '${q.kind == 'religion' ? _t('Data year', 'Год данных') : _t('Checked', 'Проверено')}: ${q.source}',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                     ],

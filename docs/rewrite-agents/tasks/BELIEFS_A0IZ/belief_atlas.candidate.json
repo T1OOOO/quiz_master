@@ -1,0 +1,1913 @@
+{
+  "schema_version": "qm-belief-atlas/v1",
+  "coverage_note_ru": "Это учебная выборка, а не полный пантеон или каталог религий. Греческие связи привязаны к названным древним текстам и могут различаться в других источниках. Раздел о религиях не строит единого родословного дерева: связи обозначают только конкретно названные текстовые или самоописательные отношения.",
+  "coverage_note_en": "This is a teaching selection, not a complete pantheon or catalogue of religions. Greek connections are tied to named ancient texts and can differ in other sources. The religion section does not make one descent tree: its links name only specific textual or self-described relationships.",
+  "sources": [
+    {
+      "id": "hesiod_theogony",
+      "title": "Hesiod, Theogony, trans. H. G. Evelyn-White",
+      "url": "https://www.theoi.com/Text/HesiodTheogony.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "homeric_hymns",
+      "title": "Homeric Hymns 5–33, trans. H. G. Evelyn-White",
+      "url": "https://www.theoi.com/Text/HomericHymns3.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "homeric_hymns_1_3",
+      "title": "Homeric Hymns 1–3, trans. H. G. Evelyn-White",
+      "url": "https://www.theoi.com/Text/HomericHymns1.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "met_greek_gods",
+      "title": "The Metropolitan Museum of Art: Greek Gods and Religious Practices",
+      "url": "https://www.metmuseum.org/fr/essays/greek-gods-and-religious-practices",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "pluralism_judaism",
+      "title": "Harvard Pluralism Project: God, Torah, and Israel",
+      "url": "https://pluralism.org/god-torah-and-israel",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "pluralism_christianity",
+      "title": "Harvard Pluralism Project: Introduction to Christianity",
+      "url": "https://pluralism.org/introduction-christianity",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "quran_2_177",
+      "title": "Qur'an 2:177, Quran.com",
+      "url": "https://quran.com/al-baqarah/177",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "pluralism_hindu_veda",
+      "title": "Harvard Pluralism Project: Veda: Scripture and Authority",
+      "url": "https://pluralism.org/veda-scripture-and-authority",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "pluralism_buddhist_dharma",
+      "title": "Harvard Pluralism Project: The Dharma: The Teachings of the Buddha",
+      "url": "https://pluralism.org/the-dharma-the-teachings-of-the-buddha",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "sikh_coalition_history",
+      "title": "Sikh Coalition: History",
+      "url": "https://www.sikhcoalition.org/about-sikhs/history/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "jainpedia_beliefs",
+      "title": "Jainpedia: Jain Beliefs",
+      "url": "https://jainpedia.org/article/themes/principles/jain-beliefs/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "bahai_official",
+      "title": "The Bahá’í Faith: official website of the worldwide Bahá’í community",
+      "url": "https://www.bahai.org/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "id": "jinja_honcho_shinto",
+      "title": "Jinja Honcho: What is Shinto?",
+      "url": "https://www.jinjahoncho.or.jp/en/shinto/",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "chaos",
+      "section": "greek",
+      "name_ru": "Хаос",
+      "name_en": "Chaos",
+      "group_ru": "Первобытные силы",
+      "group_en": "Primordial powers",
+      "summary_ru": "В «Теогонии» Гесиода Хаос появляется первым.",
+      "summary_en": "In Hesiod’s Theogony, Chaos comes to be first.",
+      "domains_ru": [
+        "первоначало"
+      ],
+      "domains_en": [
+        "beginning"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "«Теогония» 116 начинает космогонию с Хаоса.",
+          "text_en": "Theogony 116 begins the cosmogony with Chaos.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Это формулировка Гесиода, а не универсальная схема всех греческих авторов.",
+      "variant_note_en": "This is Hesiod’s formulation, not a universal scheme for every Greek author.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "gaia",
+      "section": "greek",
+      "name_ru": "Гея",
+      "name_en": "Gaia",
+      "group_ru": "Первобытные силы",
+      "group_en": "Primordial powers",
+      "summary_ru": "У Гесиода Земля следует за Хаосом и рождает Небо.",
+      "summary_en": "In Hesiod, Earth follows Chaos and bears Heaven.",
+      "domains_ru": [
+        "земля"
+      ],
+      "domains_en": [
+        "earth"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "«Теогония» 126–132 называет Гею матерью Урана и титанов.",
+          "text_en": "Theogony 126–132 names Gaia as mother of Uranus and the Titans.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Родственные связи здесь следуют версии «Теогонии».",
+      "variant_note_en": "Family links here follow the Theogony version.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "uranus",
+      "section": "greek",
+      "name_ru": "Уран",
+      "name_en": "Uranus",
+      "group_ru": "Первобытные силы",
+      "group_en": "Primordial powers",
+      "summary_ru": "У Гесиода Уран — звёздное Небо, рождённое Геей.",
+      "summary_en": "In Hesiod, Uranus is the starry Heaven born by Gaia.",
+      "domains_ru": [
+        "небо"
+      ],
+      "domains_en": [
+        "sky"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "В «Теогонии» Гея рождает Урана как равного себе, чтобы он покрывал её со всех сторон.",
+          "text_en": "In the Theogony Gaia bears Uranus as her equal, to cover her on every side.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Связи с детьми даны только по «Теогонии».",
+      "variant_note_en": "Links to children are given only for the Theogony.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus",
+      "section": "greek",
+      "name_ru": "Кронос",
+      "name_en": "Cronus",
+      "group_ru": "Титаны",
+      "group_en": "Titans",
+      "summary_ru": "В «Теогонии» Кронос — сын Геи и Урана и отец нескольких олимпийских богов.",
+      "summary_en": "In the Theogony, Cronus is a child of Gaia and Uranus and father of several Olympian gods.",
+      "domains_ru": [
+        "титан"
+      ],
+      "domains_en": [
+        "Titan"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гесиод называет Кроноса среди титанов, рождённых Геей и Ураном.",
+          "text_en": "Hesiod lists Cronus among the Titans born by Gaia and Uranus.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Не отождествляется здесь с Хроносом (временем).",
+      "variant_note_en": "He is not identified here with Chronos (time).",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea",
+      "section": "greek",
+      "name_ru": "Рея",
+      "name_en": "Rhea",
+      "group_ru": "Титаны",
+      "group_en": "Titans",
+      "summary_ru": "В «Теогонии» Рея — титан и мать детей Кроноса, приведённых на графе.",
+      "summary_en": "In the Theogony, Rhea is a Titan and mother of Cronus’s children shown in this graph.",
+      "domains_ru": [
+        "титан"
+      ],
+      "domains_en": [
+        "Titan"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гесиод перечисляет Рею среди титанов, рождённых Геей и Ураном.",
+          "text_en": "Hesiod lists Rhea among the Titans born by Gaia and Uranus.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Граф показывает только текстово подтверждённые связи версии Гесиода.",
+      "variant_note_en": "The graph shows only text-supported links in Hesiod’s version.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "oceanus",
+      "section": "greek",
+      "name_ru": "Океан",
+      "name_en": "Oceanus",
+      "group_ru": "Титаны",
+      "group_en": "Titans",
+      "summary_ru": "В «Теогонии» Океан — титан, связанный с реками и водами.",
+      "summary_en": "In the Theogony, Oceanus is a Titan connected with rivers and waters.",
+      "domains_ru": [
+        "реки",
+        "воды"
+      ],
+      "domains_en": [
+        "rivers",
+        "waters"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "«Теогония» называет Океана среди детей Геи и Урана; далее от него и Тефии происходят реки.",
+          "text_en": "Theogony names Oceanus among Gaia and Uranus’s children; later rivers descend from him and Tethys.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Описание относится к космологии «Теогонии».",
+      "variant_note_en": "The description belongs to the Theogony’s cosmology.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "zeus",
+      "section": "greek",
+      "name_ru": "Зевс",
+      "name_en": "Zeus",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "В музейном обзоре Метрополитен-музея Зевс назван богом неба и отцом богов.",
+      "summary_en": "The Met overview calls Zeus sky god and father of the gods.",
+      "domains_ru": [
+        "небо"
+      ],
+      "domains_en": [
+        "sky"
+      ],
+      "symbols_ru": [
+        "дуб",
+        "бык"
+      ],
+      "symbols_en": [
+        "oak",
+        "ox"
+      ],
+      "facts": [
+        {
+          "text_ru": "Метрополитен-музей связывает Зевса с дубом и быком.",
+          "text_en": "The Met associates Zeus with the oak and ox.",
+          "source_ids": [
+            "met_greek_gods"
+          ]
+        }
+      ],
+      "variant_note_ru": "Его происхождение на графе следует «Теогонии»; функции и атрибуты — музейному обзору.",
+      "variant_note_en": "His ancestry in the graph follows the Theogony; functions and attributes follow the museum overview.",
+      "source_ids": [
+        "hesiod_theogony",
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "hera",
+      "section": "greek",
+      "name_ru": "Гера",
+      "name_en": "Hera",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "В Гомеровом гимне 12 Гера названа сестрой и женой Зевса.",
+      "summary_en": "Homeric Hymn 12 calls Hera sister and wife of Zeus.",
+      "domains_ru": [
+        "царица богов"
+      ],
+      "domains_en": [
+        "queen of the gods"
+      ],
+      "symbols_ru": [
+        "полос (высокая корона)"
+      ],
+      "symbols_en": [
+        "polos (tall crown)"
+      ],
+      "facts": [
+        {
+          "text_ru": "Метрополитен-музей отмечает, что Геру часто изображали в высокой короне — полосе.",
+          "text_en": "The Met notes that Hera is often depicted wearing a tall crown, a polos.",
+          "source_ids": [
+            "met_greek_gods"
+          ]
+        }
+      ],
+      "variant_note_ru": "Супружеская связь с Зевсом указана по Гомерову гимну 12.",
+      "variant_note_en": "The marriage link with Zeus is stated in Homeric Hymn 12.",
+      "source_ids": [
+        "homeric_hymns",
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "poseidon",
+      "section": "greek",
+      "name_ru": "Посейдон",
+      "name_en": "Poseidon",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Посейдона владыкой моря.",
+      "summary_en": "The Met calls Poseidon ruler of the sea.",
+      "domains_ru": [
+        "море"
+      ],
+      "domains_en": [
+        "sea"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 22 обращается к Посейдону как к богу моря.",
+          "text_en": "Homeric Hymn 22 addresses Poseidon as god of the sea.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Его родство с Кроносом и Реей показано по «Теогонии».",
+      "variant_note_en": "His kinship with Cronus and Rhea is shown from the Theogony.",
+      "source_ids": [
+        "hesiod_theogony",
+        "homeric_hymns",
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "hades",
+      "section": "greek",
+      "name_ru": "Аид",
+      "name_en": "Hades",
+      "group_ru": "Подземные боги",
+      "group_en": "Underworld gods",
+      "summary_ru": "Метрополитен-музей называет Аида владыкой подземного мира.",
+      "summary_en": "The Met calls Hades ruler of the Underworld.",
+      "domains_ru": [
+        "подземный мир"
+      ],
+      "domains_en": [
+        "Underworld"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "В Гомеровом гимне 2 к Деметре Аид увозит Персефону; связь на графе дана с этой оговоркой текста.",
+          "text_en": "In Homeric Hymn 2 to Demeter, Hades takes Persephone; the graph link is qualified by that text.",
+          "source_ids": [
+            "homeric_hymns_1_3"
+          ]
+        }
+      ],
+      "variant_note_ru": "Супружеская связь с Персефоной не сглаживает сюжет похищения в Гомеровом гимне 2.",
+      "variant_note_en": "The marriage link with Persephone does not erase the abduction plot in Homeric Hymn 2.",
+      "source_ids": [
+        "homeric_hymns_1_3",
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "demeter",
+      "section": "greek",
+      "name_ru": "Деметра",
+      "name_en": "Demeter",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Гомеровы гимны называют Деметру и её дочь Персефону.",
+      "summary_en": "The Homeric Hymns name Demeter and her daughter Persephone.",
+      "domains_ru": [
+        "земледелие",
+        "зерно"
+      ],
+      "domains_en": [
+        "agriculture",
+        "grain"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гимн 13 к Деметре прямо называет Персефону её дочерью.",
+          "text_en": "Hymn 13 to Demeter explicitly calls Persephone her daughter.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Связь с Персефоной подтверждена гимном; происхождение Персефоны на графе дополнено «Теогонией».",
+      "variant_note_en": "The link to Persephone is stated by the hymn; Persephone’s parentage in the graph is supplemented by the Theogony.",
+      "source_ids": [
+        "homeric_hymns",
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "persephone",
+      "section": "greek",
+      "name_ru": "Персефона",
+      "name_en": "Persephone",
+      "group_ru": "Подземные боги",
+      "group_en": "Underworld gods",
+      "summary_ru": "Персефона названа дочерью Деметры в Гомеровом гимне 13.",
+      "summary_en": "Persephone is called Demeter’s daughter in Homeric Hymn 13.",
+      "domains_ru": [
+        "подземный мир"
+      ],
+      "domains_en": [
+        "Underworld"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "В «Теогонии» 912 Персефона названа дочерью Зевса и Деметры.",
+          "text_en": "Theogony 912 names Persephone as daughter of Zeus and Demeter.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Сюжет Гомеровa гимна 2 описывает похищение Аидом; не следует читать ребро как нейтральную романтическую историю.",
+      "variant_note_en": "Homeric Hymn 2 narrates abduction by Hades; the edge should not be read as a neutral romance.",
+      "source_ids": [
+        "homeric_hymns_1_3",
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "hestia",
+      "section": "greek",
+      "name_ru": "Гестия",
+      "name_en": "Hestia",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Гомеров гимн 5 описывает Гестию как девственную богиню с местом в середине дома.",
+      "summary_en": "Homeric Hymn 5 describes Hestia as a maiden goddess with a place in the middle of the house.",
+      "domains_ru": [
+        "очаг",
+        "дом"
+      ],
+      "domains_en": [
+        "hearth",
+        "household"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гимн 5 говорит, что Посейдон и Аполлон искали её руки, но она отказалась и осталась девой.",
+          "text_en": "Hymn 5 says Poseidon and Apollo sought her hand, but she refused and remained a maiden.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Этот факт относится к версии Гомеровa гимна 5.",
+      "variant_note_en": "This fact belongs to the version in Homeric Hymn 5.",
+      "source_ids": [
+        "homeric_hymns",
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "athena",
+      "section": "greek",
+      "name_ru": "Афина",
+      "name_en": "Athena",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей описывает Афину как покровительницу Афин, ткачества и плотницкого дела.",
+      "summary_en": "The Met describes Athena as patron of Athens, weaving, and carpentry.",
+      "domains_ru": [
+        "война",
+        "ткачество",
+        "плотницкое дело"
+      ],
+      "domains_en": [
+        "war",
+        "weaving",
+        "carpentry"
+      ],
+      "symbols_ru": [
+        "сова",
+        "олива",
+        "шлем",
+        "копьё",
+        "эгида"
+      ],
+      "symbols_en": [
+        "owl",
+        "olive",
+        "helmet",
+        "spear",
+        "aegis"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 28 называет Афину хранительницей города и связывает её с делами войны.",
+          "text_en": "Homeric Hymn 28 calls Athena guardian of the city and connects her with war.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Карточка не выводит родство Афины: цель — не превращать спорные варианты в единственную схему.",
+      "variant_note_en": "The card does not draw Athena’s parentage: it avoids turning variant accounts into one scheme.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "apollo",
+      "section": "greek",
+      "name_ru": "Аполлон",
+      "name_en": "Apollo",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Аполлона богом музыки и прорицания.",
+      "summary_en": "The Met calls Apollo god of music and prophecy.",
+      "domains_ru": [
+        "музыка",
+        "прорицание"
+      ],
+      "domains_en": [
+        "music",
+        "prophecy"
+      ],
+      "symbols_ru": [
+        "кифара"
+      ],
+      "symbols_en": [
+        "kithara"
+      ],
+      "facts": [
+        {
+          "text_ru": "Метрополитен-музей связывает Аполлона с кифарой и Дельфами.",
+          "text_en": "The Met associates Apollo with the kithara and Delphi.",
+          "source_ids": [
+            "met_greek_gods"
+          ]
+        }
+      ],
+      "variant_note_ru": "Гимн 9 называет Артемиду сестрой Аполлона; это единственная семейная формулировка, используемая для карточки.",
+      "variant_note_en": "Hymn 9 calls Artemis Apollo’s sister; that is the only family formulation used for this card.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "artemis",
+      "section": "greek",
+      "name_ru": "Артемида",
+      "name_en": "Artemis",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Артемиду покровительницей охоты.",
+      "summary_en": "The Met calls Artemis patroness of hunting.",
+      "domains_ru": [
+        "охота"
+      ],
+      "domains_en": [
+        "hunting"
+      ],
+      "symbols_ru": [
+        "лук",
+        "колчан"
+      ],
+      "symbols_en": [
+        "bow",
+        "quiver"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 9 называет Артемиду сестрой Аполлона и любительницей стрел.",
+          "text_en": "Homeric Hymn 9 calls Artemis Apollo’s sister and delighting in arrows.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Связь с Аполлоном основана на Гомеровом гимне 9.",
+      "variant_note_en": "The connection with Apollo is based on Homeric Hymn 9.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "ares",
+      "section": "greek",
+      "name_ru": "Арес",
+      "name_en": "Ares",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Ареса богом войны.",
+      "summary_en": "The Met calls Ares god of war.",
+      "domains_ru": [
+        "война"
+      ],
+      "domains_en": [
+        "war"
+      ],
+      "symbols_ru": [
+        "шлем",
+        "щит",
+        "копьё"
+      ],
+      "symbols_en": [
+        "helmet",
+        "shield",
+        "spear"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 8 обращается к Аресу как к золотоверхому, щитоносному и копьеносному богу.",
+          "text_en": "Homeric Hymn 8 addresses Ares as golden-helmeted, shield-bearing, and spear-mighty.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Здесь не приводится происхождение Ареса, потому что граф приоритизирует явно подтверждённые ребра.",
+      "variant_note_en": "Ares’s parentage is not supplied here because the graph prioritizes explicitly supported edges.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "aphrodite",
+      "section": "greek",
+      "name_ru": "Афродита",
+      "name_en": "Aphrodite",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Афродиту богиней любви.",
+      "summary_en": "The Met calls Aphrodite goddess of love.",
+      "domains_ru": [
+        "любовь"
+      ],
+      "domains_en": [
+        "love"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "В «Теогонии» 188–206 Афродита возникает из морской пены после оскопления Урана.",
+          "text_en": "In Theogony 188–206 Aphrodite emerges from sea foam after Uranus’s castration.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Это версия Гесиода; другие древние генеалогии существуют. Поэтому граф не рисует единственное родительское ребро Афродиты.",
+      "variant_note_en": "This is Hesiod’s version; other ancient genealogies exist. The graph therefore draws no single parental edge for Aphrodite.",
+      "source_ids": [
+        "hesiod_theogony",
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "hephaestus",
+      "section": "greek",
+      "name_ru": "Гефест",
+      "name_en": "Hephaestus",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Гефеста богом обработки металла.",
+      "summary_en": "The Met calls Hephaestus god of metalworking.",
+      "domains_ru": [
+        "обработка металла"
+      ],
+      "domains_en": [
+        "metalworking"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 20 называет Гефеста прославленным мастером.",
+          "text_en": "Homeric Hymn 20 calls Hephaestus a famed craftsman.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Происхождение Гефеста различается в древних источниках; эта карточка не утверждает единственного родителя и не строит супружеское ребро с Афродитой.",
+      "variant_note_en": "Hephaestus’s parentage differs among ancient sources; this card asserts no sole parent and draws no spousal edge to Aphrodite.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns",
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "hermes",
+      "section": "greek",
+      "name_ru": "Гермес",
+      "name_en": "Hermes",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей называет Гермеса вестником богов.",
+      "summary_en": "The Met calls Hermes messenger of the gods.",
+      "domains_ru": [
+        "вестник"
+      ],
+      "domains_en": [
+        "messenger"
+      ],
+      "symbols_ru": [
+        "крылатые сандалии",
+        "керикион"
+      ],
+      "symbols_en": [
+        "winged sandals",
+        "kerykeion"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 18 называет Гермеса вестником бессмертных богов.",
+          "text_en": "Homeric Hymn 18 calls Hermes messenger of the deathless gods.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Гимн 18 называет его сыном Зевса и Майи, но Майя не включена в эту ограниченную выборку.",
+      "variant_note_en": "Hymn 18 names him son of Zeus and Maia, but Maia is outside this bounded selection.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "dionysus",
+      "section": "greek",
+      "name_ru": "Дионис",
+      "name_en": "Dionysus",
+      "group_ru": "Олимпийские боги",
+      "group_en": "Olympian gods",
+      "summary_ru": "Метрополитен-музей связывает Диониса с вином и театром.",
+      "summary_en": "The Met associates Dionysus with wine and theater.",
+      "domains_ru": [
+        "вино",
+        "театр"
+      ],
+      "domains_en": [
+        "wine",
+        "theater"
+      ],
+      "symbols_ru": [
+        "виноградная лоза",
+        "плющ"
+      ],
+      "symbols_en": [
+        "vine",
+        "ivy"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гомеров гимн 7 описывает лозу и плющ на корабле как знаки Диониса.",
+          "text_en": "Homeric Hymn 7 describes vine and ivy on the ship as signs of Dionysus.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Гимн 7 называет его сыном Зевса и Семелы; Семела вне этой выборки.",
+      "variant_note_en": "Hymn 7 names him son of Zeus and Semele; Semele is outside this selection.",
+      "source_ids": [
+        "met_greek_gods",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "judaism",
+      "section": "religions",
+      "name_ru": "Иудаизм",
+      "name_en": "Judaism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Гарвардский Pluralism Project описывает иудаизм как многослойную религиозную, культурную и историческую традицию еврейского народа.",
+      "summary_en": "Harvard’s Pluralism Project describes Judaism as a layered religious, cultural, and historical tradition of Jewish people.",
+      "domains_ru": [
+        "Тора",
+        "завет",
+        "еврейская жизнь"
+      ],
+      "domains_en": [
+        "Torah",
+        "covenant",
+        "Jewish life"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Источник предлагает понимать отношения Бога, Торы и народа Израиля как взаимосвязанные точки отсчёта, а не как один исчерпывающий признак.",
+          "text_en": "The source presents God, Torah, and the people Israel as interdependent reference points, rather than one exhaustive marker.",
+          "source_ids": [
+            "pluralism_judaism"
+          ]
+        }
+      ],
+      "variant_note_ru": "Описание не сводит разнообразные еврейские общины к единой позиции.",
+      "variant_note_en": "The description does not reduce diverse Jewish communities to one position.",
+      "source_ids": [
+        "pluralism_judaism"
+      ]
+    },
+    {
+      "id": "christianity",
+      "section": "religions",
+      "name_ru": "Христианство",
+      "name_en": "Christianity",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Plurаlism Project описывает христианские традиции, восходящие к жизни Иисуса, и отмечает крупные ветви современного христианства.",
+      "summary_en": "The Pluralism Project describes Christian traditions tracing teachings to Jesus’s life and notes major contemporary branches.",
+      "domains_ru": [
+        "Новый Завет",
+        "церковные общины"
+      ],
+      "domains_en": [
+        "New Testament",
+        "church communities"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Источник называет католическую, православные и протестантские традиции тремя крупными ветвями современного христианства.",
+          "text_en": "The source names Catholic, Orthodox, and Protestant traditions as three major branches of contemporary Christianity.",
+          "source_ids": [
+            "pluralism_christianity"
+          ]
+        }
+      ],
+      "variant_note_ru": "Фраза о крупных ветвях не исчерпывает христианское разнообразие.",
+      "variant_note_en": "The phrase about major branches does not exhaust Christian diversity.",
+      "source_ids": [
+        "pluralism_christianity"
+      ]
+    },
+    {
+      "id": "islam",
+      "section": "religions",
+      "name_ru": "Ислам",
+      "name_en": "Islam",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Коран 2:177 связывает праведность с верой, молитвой, милостыней, исполнением обещаний и стойкостью.",
+      "summary_en": "Qur'an 2:177 associates righteousness with belief, prayer, alms, keeping commitments, and steadfastness.",
+      "domains_ru": [
+        "Коран",
+        "молитва",
+        "милостыня"
+      ],
+      "domains_en": [
+        "Qur'an",
+        "prayer",
+        "alms"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "В переводе Корана 2:177 прямо упомянуты установление молитвы и уплата милостыни.",
+          "text_en": "The translation of Qur'an 2:177 explicitly mentions establishing prayer and giving alms-tax.",
+          "source_ids": [
+            "quran_2_177"
+          ]
+        }
+      ],
+      "variant_note_ru": "Один аят не заменяет обзор разнообразных мусульманских школ и практик.",
+      "variant_note_en": "One verse does not replace an overview of diverse Muslim schools and practices.",
+      "source_ids": [
+        "quran_2_177"
+      ]
+    },
+    {
+      "id": "hinduism",
+      "section": "religions",
+      "name_ru": "Индуизм",
+      "name_en": "Hinduism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Plurаlism Project называет Веды ключевыми текстами индуистской традиции и отмечает их устную передачу.",
+      "summary_en": "The Pluralism Project calls the Vedas key texts of Hindu traditions and notes their oral transmission.",
+      "domains_ru": [
+        "Веды",
+        "гимны",
+        "ритуальные наставления"
+      ],
+      "domains_en": [
+        "Vedas",
+        "hymns",
+        "ritual instructions"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Источник различает четыре Веды: Риг-, Сама-, Яджур- и Атхарва-веду.",
+          "text_en": "The source distinguishes four Vedas: Rig, Sama, Yajur, and Atharva.",
+          "source_ids": [
+            "pluralism_hindu_veda"
+          ]
+        }
+      ],
+      "variant_note_ru": "Текст не сводит индуистские традиции к одному канону или практике.",
+      "variant_note_en": "The text does not reduce Hindu traditions to one canon or practice.",
+      "source_ids": [
+        "pluralism_hindu_veda"
+      ]
+    },
+    {
+      "id": "buddhism",
+      "section": "religions",
+      "name_ru": "Буддизм",
+      "name_en": "Buddhism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Plurаlism Project связывает учение Будды с Дхармой, Срединным путём, Четырьмя благородными истинами и Восьмеричным путём.",
+      "summary_en": "The Pluralism Project connects the Buddha’s teaching with Dharma, the Middle Way, the Four Noble Truths, and the Eightfold Path.",
+      "domains_ru": [
+        "Дхарма",
+        "Четыре благородные истины",
+        "Восьмеричный путь"
+      ],
+      "domains_en": [
+        "Dharma",
+        "Four Noble Truths",
+        "Eightfold Path"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Источник отмечает традиции тхеравады, махаяны и ваджраяны в навигации своего обзора.",
+          "text_en": "The source’s overview navigation notes Theravada, Mahayana, and Vajrayana traditions.",
+          "source_ids": [
+            "pluralism_buddhist_dharma"
+          ]
+        }
+      ],
+      "variant_note_ru": "Термины приведены как учебные ориентиры, не как единственное описание всех буддийских традиций.",
+      "variant_note_en": "These terms are teaching signposts, not a single description of all Buddhist traditions.",
+      "source_ids": [
+        "pluralism_buddhist_dharma"
+      ]
+    },
+    {
+      "id": "sikhism",
+      "section": "religions",
+      "name_ru": "Сикхизм",
+      "name_en": "Sikhism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Sikh Coalition описывает традицию, связанную с Гуру Нанаком, десятью гуру и центральной ролью Гуру Грантх Сахиба.",
+      "summary_en": "The Sikh Coalition describes a tradition associated with Guru Nanak, ten Gurus, and the central role of the Guru Granth Sahib.",
+      "domains_ru": [
+        "Гуру Грантх Сахиб",
+        "гурдвара",
+        "служение"
+      ],
+      "domains_en": [
+        "Guru Granth Sahib",
+        "gurdwara",
+        "service"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Источник называет Гуру Грантх Сахиб высшим авторитетом в сикхской традиции и центральным элементом богослужебного пространства.",
+          "text_en": "The source calls the Guru Granth Sahib the ultimate authority in Sikh tradition and a centerpiece of worship space.",
+          "source_ids": [
+            "sikh_coalition_history"
+          ]
+        }
+      ],
+      "variant_note_ru": "Упоминание пяти предметов веры относится у источника к посвящённым сикхам и не описывает каждого сикха.",
+      "variant_note_en": "The source’s mention of five articles of faith concerns initiated Sikhs and does not describe every Sikh.",
+      "source_ids": [
+        "sikh_coalition_history"
+      ]
+    },
+    {
+      "id": "jainism",
+      "section": "religions",
+      "name_ru": "Джайнизм",
+      "name_en": "Jainism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Jainpedia описывает джайнскую цель освобождения души от кармы через учения джинов и практики.",
+      "summary_en": "Jainpedia describes the Jain goal of freeing the soul from karma through teachings of the Jinas and practice.",
+      "domains_ru": [
+        "ахимса",
+        "карма",
+        "освобождение"
+      ],
+      "domains_en": [
+        "ahimsa",
+        "karma",
+        "liberation"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Jainpedia связывает ахимсу (ненасилие) с представлением о взаимосвязанности жизни и с джайнскими практиками.",
+          "text_en": "Jainpedia links ahimsa (non-violence) to the interconnection of life and Jain practices.",
+          "source_ids": [
+            "jainpedia_beliefs"
+          ]
+        }
+      ],
+      "variant_note_ru": "Источник различает практики мирян и монашествующих; карточка не стирает это различие.",
+      "variant_note_en": "The source distinguishes lay and mendicant practices; this card does not erase that distinction.",
+      "source_ids": [
+        "jainpedia_beliefs"
+      ]
+    },
+    {
+      "id": "bahai_faith",
+      "section": "religions",
+      "name_ru": "Вера бахаи",
+      "name_en": "Bahá’í Faith",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Официальный сайт бахаи представляет учение Бахауллы и темы верований и практики общин.",
+      "summary_en": "The official Bahá’í site presents Bahá’u’lláh’s teachings and topics of belief and community practice.",
+      "domains_ru": [
+        "писания Бахауллы",
+        "единство человечества",
+        "служение"
+      ],
+      "domains_en": [
+        "writings of Bahá’u’lláh",
+        "unity of humanity",
+        "service"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Официальный сайт называет онлайн-библиотеку бахаи авторитетным источником писаний бахаи.",
+          "text_en": "The official site calls the Bahá’í Reference Library an authoritative online source of Bahá’í writings.",
+          "source_ids": [
+            "bahai_official"
+          ]
+        }
+      ],
+      "variant_note_ru": "Связи с другими традициями ниже передают самоописание официального сайта бахаи, а не историческую генеалогию религий.",
+      "variant_note_en": "The links below convey the official Bahá’í site’s self-description, not a historical genealogy of religions.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    },
+    {
+      "id": "shinto",
+      "section": "religions",
+      "name_ru": "Синто",
+      "name_en": "Shinto",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Jinja Honcho описывает синто как практику уважения и благодарности к ками; дзиндзя — священные места их почитания.",
+      "summary_en": "Jinja Honcho describes Shinto as respect and gratitude toward kami; jinja are sacred places where they are venerated.",
+      "domains_ru": [
+        "ками",
+        "дзиндзя",
+        "мацури"
+      ],
+      "domains_en": [
+        "kami",
+        "jinja",
+        "matsuri"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Jinja Honcho говорит, что у синто нет основателя, догмата и доктрины, и называет мацури собраниями в честь ками.",
+          "text_en": "Jinja Honcho says Shinto has no founder, dogma, or doctrine, and calls matsuri gatherings to honor kami.",
+          "source_ids": [
+            "jinja_honcho_shinto"
+          ]
+        }
+      ],
+      "variant_note_ru": "Карточка описывает представление Jinja Honcho и не приписывает всем японцам одинаковую религиозную идентичность.",
+      "variant_note_en": "The card reports Jinja Honcho’s presentation and does not assign one religious identity to all Japanese people.",
+      "source_ids": [
+        "jinja_honcho_shinto"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "gaia_to_uranus_mother",
+      "from_id": "gaia",
+      "to_id": "uranus",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония» 126–132.",
+      "scope_en": "Hesiod, Theogony 126–132.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "gaia_to_cronus_mother",
+      "from_id": "gaia",
+      "to_id": "cronus",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония»: Кронос среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Cronus is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "uranus_to_cronus_father",
+      "from_id": "uranus",
+      "to_id": "cronus",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония»: Кронос среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Cronus is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "gaia_to_rhea_mother",
+      "from_id": "gaia",
+      "to_id": "rhea",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония»: Рея среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Rhea is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "uranus_to_rhea_father",
+      "from_id": "uranus",
+      "to_id": "rhea",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония»: Рея среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Rhea is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "gaia_to_oceanus_mother",
+      "from_id": "gaia",
+      "to_id": "oceanus",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония»: Океан среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Oceanus is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "uranus_to_oceanus_father",
+      "from_id": "uranus",
+      "to_id": "oceanus",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония»: Океан среди титанов Геи и Урана.",
+      "scope_en": "Hesiod, Theogony: Oceanus is among Gaia and Uranus’s Titans.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_zeus_father",
+      "from_id": "cronus",
+      "to_id": "zeus",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_zeus_mother",
+      "from_id": "rhea",
+      "to_id": "zeus",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_hera_father",
+      "from_id": "cronus",
+      "to_id": "hera",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_hera_mother",
+      "from_id": "rhea",
+      "to_id": "hera",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_poseidon_father",
+      "from_id": "cronus",
+      "to_id": "poseidon",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_poseidon_mother",
+      "from_id": "rhea",
+      "to_id": "poseidon",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_hades_father",
+      "from_id": "cronus",
+      "to_id": "hades",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_hades_mother",
+      "from_id": "rhea",
+      "to_id": "hades",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_demeter_father",
+      "from_id": "cronus",
+      "to_id": "demeter",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_demeter_mother",
+      "from_id": "rhea",
+      "to_id": "demeter",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "cronus_to_hestia_father",
+      "from_id": "cronus",
+      "to_id": "hestia",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "rhea_to_hestia_mother",
+      "from_id": "rhea",
+      "to_id": "hestia",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония», версия о детях Кроноса и Реи.",
+      "scope_en": "Hesiod, Theogony, version of the children of Cronus and Rhea.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "zeus_to_hera_spouse",
+      "from_id": "zeus",
+      "to_id": "hera",
+      "label_ru": "Супруг",
+      "label_en": "Spouse",
+      "scope_ru": "Гомеров гимн 12 называет Геру сестрой и женой Зевса.",
+      "scope_en": "Homeric Hymn 12 calls Hera Zeus’s sister and wife.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "hera_to_zeus_spouse",
+      "from_id": "hera",
+      "to_id": "zeus",
+      "label_ru": "Супруга",
+      "label_en": "Spouse",
+      "scope_ru": "Гомеров гимн 12 называет Геру сестрой и женой Зевса.",
+      "scope_en": "Homeric Hymn 12 calls Hera Zeus’s sister and wife.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "zeus_to_persephone_father",
+      "from_id": "zeus",
+      "to_id": "persephone",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гесиод, «Теогония» 912: Персефона — дочь Зевса и Деметры.",
+      "scope_en": "Hesiod, Theogony 912: Persephone is daughter of Zeus and Demeter.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "demeter_to_persephone_mother",
+      "from_id": "demeter",
+      "to_id": "persephone",
+      "label_ru": "Мать",
+      "label_en": "Mother",
+      "scope_ru": "Гесиод, «Теогония» 912; также Гомеров гимн 13 к Деметре.",
+      "scope_en": "Hesiod, Theogony 912; also Homeric Hymn 13 to Demeter.",
+      "source_ids": [
+        "hesiod_theogony",
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "hades_to_persephone_spouse",
+      "from_id": "hades",
+      "to_id": "persephone",
+      "label_ru": "Супруг",
+      "label_en": "Spouse",
+      "scope_ru": "Гомеров гимн 2: сюжет похищения Персефоны Аидом; ярлык не отменяет этого контекста.",
+      "scope_en": "Homeric Hymn 2: Hades’ abduction of Persephone; the label does not remove that context.",
+      "source_ids": [
+        "homeric_hymns_1_3"
+      ]
+    },
+    {
+      "id": "persephone_to_hades_spouse",
+      "from_id": "persephone",
+      "to_id": "hades",
+      "label_ru": "Супруга",
+      "label_en": "Spouse",
+      "scope_ru": "Гомеров гимн 2: сюжет похищения Персефоны Аидом; ярлык не отменяет этого контекста.",
+      "scope_en": "Homeric Hymn 2: Hades’ abduction of Persephone; the label does not remove that context.",
+      "source_ids": [
+        "homeric_hymns_1_3"
+      ]
+    },
+    {
+      "id": "apollo_to_artemis_siblings",
+      "from_id": "apollo",
+      "to_id": "artemis",
+      "label_ru": "Сестра",
+      "label_en": "Sister",
+      "scope_ru": "Гомеров гимн 9 называет Артемиду сестрой Аполлона.",
+      "scope_en": "Homeric Hymn 9 calls Artemis sister of Apollo.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "artemis_to_apollo_siblings",
+      "from_id": "artemis",
+      "to_id": "apollo",
+      "label_ru": "Брат",
+      "label_en": "Brother",
+      "scope_ru": "Гомеров гимн 9 называет Артемиду сестрой Аполлона.",
+      "scope_en": "Homeric Hymn 9 calls Artemis sister of Apollo.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "bahai_to_judaism_manifestation",
+      "from_id": "bahai_faith",
+      "to_id": "judaism",
+      "label_ru": "Признаёт Авраама среди посланников (учение бахаи)",
+      "label_en": "Recognizes Abraham among Messengers (Bahá’í teaching)",
+      "scope_ru": "Самоописание официального сайта бахаи; это не генеалогическое ребро.",
+      "scope_en": "Official Bahá’í self-description; this is not a genealogical edge.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    },
+    {
+      "id": "bahai_to_christianity_manifestation",
+      "from_id": "bahai_faith",
+      "to_id": "christianity",
+      "label_ru": "Признаёт Иисуса среди посланников (учение бахаи)",
+      "label_en": "Recognizes Jesus among Messengers (Bahá’í teaching)",
+      "scope_ru": "Самоописание официального сайта бахаи; это не генеалогическое ребро.",
+      "scope_en": "Official Bahá’í self-description; this is not a genealogical edge.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    },
+    {
+      "id": "bahai_to_islam_manifestation",
+      "from_id": "bahai_faith",
+      "to_id": "islam",
+      "label_ru": "Признаёт Мухаммада среди посланников (учение бахаи)",
+      "label_en": "Recognizes Muhammad among Messengers (Bahá’í teaching)",
+      "scope_ru": "Самоописание официального сайта бахаи; это не генеалогическое ребро.",
+      "scope_en": "Official Bahá’í self-description; this is not a genealogical edge.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    },
+    {
+      "id": "bahai_to_hinduism_manifestation",
+      "from_id": "bahai_faith",
+      "to_id": "hinduism",
+      "label_ru": "Признаёт Кришну среди посланников (учение бахаи)",
+      "label_en": "Recognizes Krishna among Messengers (Bahá’í teaching)",
+      "scope_ru": "Самоописание официального сайта бахаи; это не генеалогическое ребро.",
+      "scope_en": "Official Bahá’í self-description; this is not a genealogical edge.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    },
+    {
+      "id": "bahai_to_buddhism_manifestation",
+      "from_id": "bahai_faith",
+      "to_id": "buddhism",
+      "label_ru": "Признаёт Будду среди посланников (учение бахаи)",
+      "label_en": "Recognizes the Buddha among Messengers (Bahá’í teaching)",
+      "scope_ru": "Самоописание официального сайта бахаи; это не генеалогическое ребро.",
+      "scope_en": "Official Bahá’í self-description; this is not a genealogical edge.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "greek_q_01_sea",
+      "section": "greek",
+      "stem_ru": "По Гомерову гимну 22, кто назван богом моря?",
+      "stem_en": "According to Homeric Hymn 22, who is called god of the sea?",
+      "option_ids": [
+        "zeus",
+        "hades",
+        "poseidon",
+        "apollo"
+      ],
+      "correct_id": "poseidon",
+      "explanation_ru": "Гимн 22 обращается к Посейдону как к богу моря.",
+      "explanation_en": "Hymn 22 addresses Poseidon as god of the sea.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "greek_q_02_kithara",
+      "section": "greek",
+      "stem_ru": "В обзоре Метрополитен-музея с кифарой связан какой бог?",
+      "stem_en": "Which god is associated with the kithara in the Met overview?",
+      "option_ids": [
+        "apollo",
+        "ares",
+        "hermes",
+        "hephaestus"
+      ],
+      "correct_id": "apollo",
+      "explanation_ru": "Метрополитен-музей связывает кифару с Аполлоном.",
+      "explanation_en": "The Met associates the kithara with Apollo.",
+      "source_ids": [
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "greek_q_03_owl",
+      "section": "greek",
+      "stem_ru": "По обзору Метрополитен-музея, чьими священными знаками названы сова и олива?",
+      "stem_en": "According to the Met overview, whose sacred signs are the owl and olive?",
+      "option_ids": [
+        "hera",
+        "athena",
+        "artemis",
+        "aphrodite"
+      ],
+      "correct_id": "athena",
+      "explanation_ru": "Метрополитен-музей называет сову и оливу священными для Афины.",
+      "explanation_en": "The Met names the owl and olive as sacred to Athena.",
+      "source_ids": [
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "greek_q_04_messenger",
+      "section": "greek",
+      "stem_ru": "Кого Метрополитен-музей называет вестником богов с крылатыми сандалиями и керикионом?",
+      "stem_en": "Whom does the Met call the messenger god with winged sandals and a kerykeion?",
+      "option_ids": [
+        "hermes",
+        "dionysus",
+        "hades",
+        "cronus"
+      ],
+      "correct_id": "hermes",
+      "explanation_ru": "В музейном обзоре эти атрибуты даны Гермесу.",
+      "explanation_en": "The museum overview gives those attributes to Hermes.",
+      "source_ids": [
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "greek_q_05_artemis",
+      "section": "greek",
+      "stem_ru": "Какая богиня в Гомеровом гимне 9 названа сестрой Аполлона, любящей стрелы?",
+      "stem_en": "Who is called Apollo’s sister, delighting in arrows, in Homeric Hymn 9?",
+      "option_ids": [
+        "artemis",
+        "athena",
+        "hera",
+        "persephone"
+      ],
+      "correct_id": "artemis",
+      "explanation_ru": "Гимн 9 называет Артемиду сестрой Аполлона и любительницей стрел.",
+      "explanation_en": "Hymn 9 calls Artemis Apollo’s sister and delighting in arrows.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "greek_q_06_chaos",
+      "section": "greek",
+      "stem_ru": "Кто появляется первым в космогонии «Теогонии» Гесиода, строка 116?",
+      "stem_en": "Who comes to be first in Hesiod’s Theogony 116 cosmogony?",
+      "option_ids": [
+        "chaos",
+        "gaia",
+        "uranus",
+        "oceanus"
+      ],
+      "correct_id": "chaos",
+      "explanation_ru": "Строка 116 «Теогонии» начинает с Хаоса.",
+      "explanation_en": "Theogony line 116 begins with Chaos.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "greek_q_07_aphrodite_hesiod",
+      "section": "greek",
+      "stem_ru": "В версии Гесиода («Теогония» 188–206) кто возникает из морской пены после оскопления Урана?",
+      "stem_en": "In Hesiod’s version (Theogony 188–206), who emerges from sea foam after Uranus’s castration?",
+      "option_ids": [
+        "aphrodite",
+        "hera",
+        "athena",
+        "demeter"
+      ],
+      "correct_id": "aphrodite",
+      "explanation_ru": "Это именно версия Гесиода о появлении Афродиты; карточка не делает её единственной генеалогией во всех источниках.",
+      "explanation_en": "This is Hesiod’s version of Aphrodite’s emergence; the card does not make it the only genealogy in all sources.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
+    },
+    {
+      "id": "greek_q_08_hera_hymn",
+      "section": "greek",
+      "stem_ru": "Кого Гомеров гимн 12 называет одновременно сестрой и женой Зевса?",
+      "stem_en": "Whom does Homeric Hymn 12 call both sister and wife of Zeus?",
+      "option_ids": [
+        "hera",
+        "rhea",
+        "hestia",
+        "aphrodite"
+      ],
+      "correct_id": "hera",
+      "explanation_ru": "Гомеров гимн 12 прямо говорит это о Гере.",
+      "explanation_en": "Homeric Hymn 12 states this directly about Hera.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "greek_q_09_persephone",
+      "section": "greek",
+      "stem_ru": "В Гомеровом гимне 13 к Деметре кто назван её дочерью?",
+      "stem_en": "Who is called Demeter’s daughter in Homeric Hymn 13 to Demeter?",
+      "option_ids": [
+        "persephone",
+        "athena",
+        "artemis",
+        "hera"
+      ],
+      "correct_id": "persephone",
+      "explanation_ru": "Гимн 13 называет Деметру и её дочь Персефону.",
+      "explanation_en": "Hymn 13 names Demeter and her daughter Persephone.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "greek_q_10_metalworking",
+      "section": "greek",
+      "stem_ru": "Кого Метрополитен-музей называет богом обработки металла?",
+      "stem_en": "Whom does the Met call the god of metalworking?",
+      "option_ids": [
+        "hephaestus",
+        "hermes",
+        "ares",
+        "dionysus"
+      ],
+      "correct_id": "hephaestus",
+      "explanation_ru": "Метрополитен-музей называет Гефеста богом обработки металла.",
+      "explanation_en": "The Met calls Hephaestus god of metalworking.",
+      "source_ids": [
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "greek_q_11_dionysus",
+      "section": "greek",
+      "stem_ru": "Какого бога Метрополитен-музей связывает с вином и театром?",
+      "stem_en": "Which god does the Met associate with wine and theater?",
+      "option_ids": [
+        "dionysus",
+        "apollo",
+        "poseidon",
+        "hades"
+      ],
+      "correct_id": "dionysus",
+      "explanation_ru": "В музейном обзоре Дионис назван богом вина и театра.",
+      "explanation_en": "The museum overview names Dionysus god of wine and theater.",
+      "source_ids": [
+        "met_greek_gods"
+      ]
+    },
+    {
+      "id": "religion_q_01_torah",
+      "section": "religions",
+      "stem_ru": "Какая традиция в обзоре Harvard Pluralism Project описывается через взаимосвязанные точки отсчёта: Бог, Тора и народ Израиля?",
+      "stem_en": "Which tradition does the Harvard Pluralism Project describe through the interdependent reference points God, Torah, and the people Israel?",
+      "option_ids": [
+        "judaism",
+        "christianity",
+        "islam",
+        "bahai_faith"
+      ],
+      "correct_id": "judaism",
+      "explanation_ru": "Источник применяет эту триаду к иудаизму.",
+      "explanation_en": "The source applies this triad to Judaism.",
+      "source_ids": [
+        "pluralism_judaism"
+      ]
+    },
+    {
+      "id": "religion_q_02_christian_branches",
+      "section": "religions",
+      "stem_ru": "К какой традиции источник относит крупные ветви: католическую, православные церкви и протестантские традиции?",
+      "stem_en": "To which tradition does the source assign the major branches Catholic, Orthodox churches, and Protestant traditions?",
+      "option_ids": [
+        "christianity",
+        "judaism",
+        "sikhism",
+        "shinto"
+      ],
+      "correct_id": "christianity",
+      "explanation_ru": "Plurаlism Project называет их крупными ветвями современного христианства.",
+      "explanation_en": "The Pluralism Project names them major branches of contemporary Christianity.",
+      "source_ids": [
+        "pluralism_christianity"
+      ]
+    },
+    {
+      "id": "religion_q_03_quran",
+      "section": "religions",
+      "stem_ru": "В Коране 2:177 прямо упомянуты установление молитвы и закят. К какой традиции относится этот текст?",
+      "stem_en": "Qur'an 2:177 explicitly mentions establishing prayer and alms. To which tradition does this text belong?",
+      "option_ids": [
+        "islam",
+        "hinduism",
+        "buddhism",
+        "jainism"
+      ],
+      "correct_id": "islam",
+      "explanation_ru": "Это аят Корана; он используется здесь только для этого конкретного текстового утверждения.",
+      "explanation_en": "This is a Qur'anic verse; it is used here only for this specific textual claim.",
+      "source_ids": [
+        "quran_2_177"
+      ]
+    },
+    {
+      "id": "religion_q_04_vedas",
+      "section": "religions",
+      "stem_ru": "В какой традиции источник выделяет четыре Веды: Риг-, Сама-, Яджур- и Атхарва-веду?",
+      "stem_en": "In which tradition does the source distinguish the four Vedas—Rig, Sama, Yajur, and Atharva?",
+      "option_ids": [
+        "hinduism",
+        "buddhism",
+        "sikhism",
+        "bahai_faith"
+      ],
+      "correct_id": "hinduism",
+      "explanation_ru": "Источник описывает Веды как ключевые тексты индуистской традиции.",
+      "explanation_en": "The source describes the Vedas as key texts of Hindu traditions.",
+      "source_ids": [
+        "pluralism_hindu_veda"
+      ]
+    },
+    {
+      "id": "religion_q_05_dharma",
+      "section": "religions",
+      "stem_ru": "Какая традиция в источнике связана со Срединным путём, Четырьмя благородными истинами и Восьмеричным путём?",
+      "stem_en": "Which tradition is associated in the source with the Middle Way, Four Noble Truths, and Eightfold Path?",
+      "option_ids": [
+        "buddhism",
+        "jainism",
+        "hinduism",
+        "shinto"
+      ],
+      "correct_id": "buddhism",
+      "explanation_ru": "Plurаlism Project называет эти учения частью Дхармы в буддийском контексте.",
+      "explanation_en": "The Pluralism Project names these teachings as part of Dharma in the Buddhist context.",
+      "source_ids": [
+        "pluralism_buddhist_dharma"
+      ]
+    },
+    {
+      "id": "religion_q_06_granth",
+      "section": "religions",
+      "stem_ru": "В какой традиции Гуру Грантх Сахиб назван высшим авторитетом и центром богослужебного пространства?",
+      "stem_en": "In which tradition is the Guru Granth Sahib called the ultimate authority and a centerpiece of worship space?",
+      "option_ids": [
+        "sikhism",
+        "jainism",
+        "islam",
+        "christianity"
+      ],
+      "correct_id": "sikhism",
+      "explanation_ru": "Sikh Coalition сообщает это о сикхской традиции.",
+      "explanation_en": "The Sikh Coalition reports this of Sikh tradition.",
+      "source_ids": [
+        "sikh_coalition_history"
+      ]
+    },
+    {
+      "id": "religion_q_07_ahimsa",
+      "section": "religions",
+      "stem_ru": "В какой традиции Jainpedia связывает ахимсу (ненасилие) с представлением о взаимосвязанности жизни?",
+      "stem_en": "In which tradition does Jainpedia link ahimsa (non-violence) with the interconnection of life?",
+      "option_ids": [
+        "jainism",
+        "buddhism",
+        "hinduism",
+        "bahai_faith"
+      ],
+      "correct_id": "jainism",
+      "explanation_ru": "Jainpedia связывает ахимсу с джайнскими убеждениями и практиками.",
+      "explanation_en": "Jainpedia connects ahimsa with Jain beliefs and practices.",
+      "source_ids": [
+        "jainpedia_beliefs"
+      ]
+    },
+    {
+      "id": "religion_q_08_shinto",
+      "section": "religions",
+      "stem_ru": "Какая традиция, по Jinja Honcho, не имеет основателя, догмата и доктрины и включает почитание ками в дзиндзя?",
+      "stem_en": "Which tradition, according to Jinja Honcho, has no founder, dogma, or doctrine and includes veneration of kami at jinja?",
+      "option_ids": [
+        "shinto",
+        "sikhism",
+        "judaism",
+        "christianity"
+      ],
+      "correct_id": "shinto",
+      "explanation_ru": "Jinja Honcho описывает так синто и его отношение к ками и дзиндзя.",
+      "explanation_en": "Jinja Honcho describes Shinto this way in relation to kami and jinja.",
+      "source_ids": [
+        "jinja_honcho_shinto"
+      ]
+    },
+    {
+      "id": "religion_q_09_bahai_library",
+      "section": "religions",
+      "stem_ru": "Какая традиция на своём официальном сайте называет Bahá’í Reference Library авторитетным онлайн-источником своих писаний?",
+      "stem_en": "Which tradition calls the Bahá’í Reference Library an authoritative online source of its writings on its official site?",
+      "option_ids": [
+        "bahai_faith",
+        "islam",
+        "sikhism",
+        "hinduism"
+      ],
+      "correct_id": "bahai_faith",
+      "explanation_ru": "Так её описывает официальный сайт всемирной общины бахаи.",
+      "explanation_en": "That is how the official site of the worldwide Bahá’í community describes it.",
+      "source_ids": [
+        "bahai_official"
+      ]
+    }
+  ]
+}

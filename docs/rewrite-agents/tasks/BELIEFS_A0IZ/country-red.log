@@ -1,0 +1,62 @@
+00:00 +0: loading E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart
+test/country_religions_test.dart:5:8: Error: Error when reading 'lib/country_religions.dart': The system cannot find the file specified
+import 'package:quiz_app/country_religions.dart';
+       ^
+test/country_religions_test.dart:9:19: Error: Undefined name 'CountryReligions'.
+    final atlas = CountryReligions.fromJson(_fixture());
+                  ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:12:12: Error: Undefined name 'religionGroups'.
+    expect(religionGroups['Religiously_unaffiliated']!.nameRu,
+           ^^^^^^^^^^^^^^
+test/country_religions_test.dart:25:17: Error: Undefined name 'CountryReligions'.
+    final row = CountryReligions.fromJson(data).countries['AA']!;
+                ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:33:18: Error: Undefined name 'CountryReligions'.
+    expect(() => CountryReligions.fromJson(badShare), throwsFormatException);
+                 ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:36:18: Error: Undefined name 'CountryReligions'.
+    expect(() => CountryReligions.fromJson(sum), throwsFormatException);
+                 ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:39:18: Error: Undefined name 'CountryReligions'.
+    expect(() => CountryReligions.fromJson(duplicate), throwsFormatException);
+                 ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:41:18: Error: Undefined name 'CountryReligions'.
+    expect(() => CountryReligions.fromJson(date), throwsFormatException);
+                 ^^^^^^^^^^^^^^^^
+test/country_religions_test.dart:45:19: Error: Undefined name 'CountryReligions'.
+    final atlas = CountryReligions.fromJson(jsonDecode(
+                  ^^^^^^^^^^^^^^^^
+00:00 +0 -1: loading E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart [E]
+  Failed to load "E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart":
+  Compilation failed for testPath=E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart: test/country_religions_test.dart:5:8: Error: Error when reading 'lib/country_religions.dart': The system cannot find the file specified
+  import 'package:quiz_app/country_religions.dart';
+         ^
+  test/country_religions_test.dart:9:19: Error: Undefined name 'CountryReligions'.
+      final atlas = CountryReligions.fromJson(_fixture());
+                    ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:12:12: Error: Undefined name 'religionGroups'.
+      expect(religionGroups['Religiously_unaffiliated']!.nameRu,
+             ^^^^^^^^^^^^^^
+  test/country_religions_test.dart:25:17: Error: Undefined name 'CountryReligions'.
+      final row = CountryReligions.fromJson(data).countries['AA']!;
+                  ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:33:18: Error: Undefined name 'CountryReligions'.
+      expect(() => CountryReligions.fromJson(badShare), throwsFormatException);
+                   ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:36:18: Error: Undefined name 'CountryReligions'.
+      expect(() => CountryReligions.fromJson(sum), throwsFormatException);
+                   ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:39:18: Error: Undefined name 'CountryReligions'.
+      expect(() => CountryReligions.fromJson(duplicate), throwsFormatException);
+                   ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:41:18: Error: Undefined name 'CountryReligions'.
+      expect(() => CountryReligions.fromJson(date), throwsFormatException);
+                   ^^^^^^^^^^^^^^^^
+  test/country_religions_test.dart:45:19: Error: Undefined name 'CountryReligions'.
+      final atlas = CountryReligions.fromJson(jsonDecode(
+                    ^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart: loading E:/Projects/quiz_master/next/apps/quiz_app/test/country_religions_test.dart
