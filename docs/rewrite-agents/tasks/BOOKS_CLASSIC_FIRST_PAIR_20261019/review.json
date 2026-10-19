@@ -1,0 +1,79 @@
+{
+  "schema_version": "qm-private-question-article-review/v1",
+  "reviewer": "Codex gpt-6.1-sol/high (self-reported; runtime identity not independently verified)",
+  "hub_session_id": "session-ff229264cd244f0e837306ee75d7e849",
+  "reviewed_at_utc": "2026-10-19",
+  "candidate_first": true,
+  "clean_blind": false,
+  "blindness_note": "Informative brief and possible prior public familiarity were present before the candidate answer freeze. Current writer prose, source list and private keys were first accessed only after blind-answers.json was frozen and its raw SHA-256 sent to Root.",
+  "reviewed_file": {
+    "path": "articles.json",
+    "sha256": "a9cfffd27d138f4a5d6cb65a75e17f903f2e473f778df6eb2218d43464548d3d"
+  },
+  "reviewed_sources": {
+    "path": "SOURCES_EN.md",
+    "sha256": "d19a659f0a58d94c097b6f1937e50a3be331de1611e3edefbbd8ddc02b22c2c1"
+  },
+  "blind_answer_sha256": "393ef1b6dc7c5e72056043ba5cf8e4ef7b560a87bc305709768867be283edd2a",
+  "candidate_sha256": "fd38f4dcf7ea64b144ad747d13096fbdce47f4316d324f2b392e319679995cc7",
+  "items": [
+    {
+      "id": "question:prep-books-classic-01",
+      "question_id": "prep-books-classic-01",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-books-classic-01-opt-1",
+      "revision_sha256": "a8ef4824d8427034798dad758884abaefb03b38c41e9ecdc74739aeeab1ff6a2",
+      "findings": [],
+      "evidence": [
+        {
+          "url": "https://janeaustens.house/object/pride-and-prejudice-first-edition/",
+          "opened": true,
+          "supports": "Museum's own first-edition record identifies Jane Austen as writer, T. Egerton as publisher, January 1813 as publication, one novel issued in three volumes, the 1796 First Impressions draft and substantial 1811–1812 revision."
+        },
+        {
+          "url": "https://www.folger.edu/explore/the-stuart-and-mimi-rose-collection/jane-austen/",
+          "opened": true,
+          "supports": "Folger's collection record identifies the 1813 first edition, October 1796–August 1797 early writing period, and Elizabeth Bennet as a fictional heroine of similar age to the young Austen."
+        },
+        {
+          "url": "https://support.bl.uk/Book/BooksList?name=Classic",
+          "opened": true,
+          "supports": "British Library classic list pairs Pride and Prejudice with Austen; the three distractors are paired with different novels: Shelley/Frankenstein, Brontë/Jane Eyre, Eliot/Middlemarch."
+        }
+      ],
+      "review_note": "The article distinguishes draft, revision and first publication; writer, publisher and fictional character; and proposes a conditional bibliographic comparison without claiming a single literary interpretation. No physical-object inspection or exact-day/print-run claim is made."
+    },
+    {
+      "id": "question:prep-books-classic-02",
+      "question_id": "prep-books-classic-02",
+      "verdict": "accepted_for_draft",
+      "blind_option_id": "prep-books-classic-02-opt-2",
+      "revision_sha256": "43d8256165901807d97a599552175d09c086887d06b7152d9a2fce0225566255",
+      "findings": [],
+      "evidence": [
+        {
+          "url": "https://www.prlib.ru/section/1326343",
+          "opened": true,
+          "supports": "Presidential Library's Dostoevsky section identifies the novel and 1866 Russkii vestnik journal installments; the issue bibliography says edition of M. Katkov. General contributor names on the catalogue page are not treated as coauthors."
+        },
+        {
+          "url": "https://ilibrary.ru/text/69/p.1/index.html",
+          "opened": true,
+          "supports": "Displayed modern digital reprint identifies Dostoevsky and six parts plus epilogue. Its opening directly supports July heat, cramped lodging, anxiety about the landlady, Petersburg streets, and Raskolnikov's name in dialogue."
+        },
+        {
+          "url": "https://exhibits.library.utoronto.ca/exhibits/show/cp150/translations",
+          "opened": true,
+          "supports": "University of Toronto Libraries exhibition independently credits Dostoevsky and distinguishes the 1866 journal appearance from a 1867 separate edition; it attributes War and Peace to Tolstoy and Fathers and Sons to Turgenev."
+        },
+        {
+          "url": "https://www.loc.gov/nls/new-materials/collections-connections/january-2026-collections-connections/",
+          "opened": true,
+          "supports": "Library of Congress NLS collection note identifies Dead Souls as Gogol's work, accounting for the fourth option."
+        }
+      ],
+      "review_note": "The article describes only the 1866 journal context and the displayed beginning of a modern digital reprint. It does not date all separate book editions, conflate Raskolnikov with Dostoevsky, infer diagnosis or sole motive, or present one compulsory interpretation."
+    }
+  ],
+  "gate": "Native private draft review only; genuinely different-provider acceptance and publication remain pending."
+}

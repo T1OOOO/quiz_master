@@ -1,0 +1,52 @@
+{
+  "reviewer": "Codex gpt-6.1-sol/high (self-reported; runtime identity not independently verified)",
+  "hub_session_id": "session-ff229264cd244f0e837306ee75d7e849",
+  "answered_at_utc": "2026-10-19",
+  "candidate_first": true,
+  "clean_blind": false,
+  "exposure_note": "The informative BRIEF_EN.md was read before answering, and possible earlier public familiarity with these famous works cannot be excluded. Current writer prose, its source list and private keys were not read before this freeze.",
+  "scope": "The two candidate questions in candidate-questions.json only; the older QUALITY_BOOKS10 is a separate alternative draft.",
+  "answers": [
+    {
+      "question_id": "prep-books-classic-01",
+      "option_id": "prep-books-classic-01-opt-1",
+      "answer_text": "Джейн Остин",
+      "confidence": "high",
+      "evidence": [
+        {
+          "url": "https://janeaustens.house/wp-content/uploads/2023/01/Pride-and-Prejudice-Day-leaflet-1.pdf",
+          "institution": "Jane Austen's House",
+          "observed": "Actually opened PDF: names Austen as writer, distinguishes the 1796 First Impressions draft from publication as Pride and Prejudice in January 1813, and explains the lifetime anonymous title-page attribution."
+        },
+        {
+          "url": "https://support.bl.uk/Book/BooksList?name=Classic",
+          "institution": "British Library",
+          "observed": "Actually opened classic-book catalogue: pairs Pride and Prejudice with Jane Austen and separately pairs Jane Eyre with Charlotte Brontë, Frankenstein with Mary Shelley, and Middlemarch with George Eliot."
+        }
+      ]
+    },
+    {
+      "question_id": "prep-books-classic-02",
+      "option_id": "prep-books-classic-02-opt-2",
+      "answer_text": "Фёдор Достоевский",
+      "confidence": "high",
+      "evidence": [
+        {
+          "url": "https://exhibits.library.utoronto.ca/exhibits/show/cp150/translations",
+          "institution": "University of Toronto Libraries",
+          "observed": "Actually opened exhibition: attributes Crime and Punishment to Dostoevsky, records serial publication in Russkii vestnik in 1866 and separate book in 1867; contrasts Tolstoy's War and Peace and Turgenev's Fathers and Sons."
+        },
+        {
+          "url": "https://ar.culture.ru/ru/subject/kniga-f-m-dostoevskiy-prestuplenie-i-nakazanie-tom-1-izdanie-chetvertoe-318-s",
+          "institution": "Omsk F. M. Dostoevsky Literary Museum catalogue via Artefact",
+          "observed": "Actually opened museum object record: names F. M. Dostoevsky, distinguishes 1866 magazine appearance from first separate edition in 1867."
+        },
+        {
+          "url": "https://www.loc.gov/nls/new-materials/collections-connections/january-2026-collections-connections/",
+          "institution": "Library of Congress",
+          "observed": "Actually opened NLS collection note: attributes Dead Souls to Nikolai Gogol."
+        }
+      ]
+    }
+  ]
+}

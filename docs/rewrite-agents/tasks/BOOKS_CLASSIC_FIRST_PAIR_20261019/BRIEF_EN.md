@@ -1,0 +1,9 @@
+# Private classic-books01/02
+
+Existing published preparation-books-classic30 current01/02, Russian adult original160–260word article pair. Separate from older QUALITY_BOOKS10 alternative question drafts: do not change/reuse those candidate refs, no canonical/revision/runtime/frozen edits. Rootownsarticles/SOURCES/integration. NativecheckerONLYblind-answers.json/review.json/REVIEW_EN.md afteractualHuboffer. Nochildren/Git/Beads/server/providers/build.
+
+FIRSTreadONLYbrief/candidates; actuallyopenprimarylibrary/museum/publisher/authortext sources verifyingauthors/allstemfacts/options BEFORE currentwriter prose/privatekeys. Freeze raw64charSHA256mechanically, report thenWAITRootfinalhashes. Informativebrief/possibleearlierpublicexposure explicitclean_blind=false, nofirstexposureclaim. ActualUTC2026-10-19. Rootcomparesonlyafterfreeze, checkerneverkeys.
+
+01 originalnovel versusfilms/translations, firstedition/publication versusearlydraft/authornameattribution and anonymouspublication. 02 originalnovel versusjournalappearance/firstseparatebook/draftdate, narrator/character versusauthor; do not inferdiagnosis/solemotive/onecorrectreading/autobiography. Everyliterarydetailneedsopenedsource; avoid unsupportednumberofprintcopies/rights/physicalmanuscriptinspection. Directsourceattributionforinterpretation, conditionalreadingexercise notguaranteedlearning. No copiednovelquotes/lyrics required.
+
+Finalallclaims/finallinks/options/exactrefs/pedagogy review; review.json binds reviewed_file.sha256/reviewed_sources.sha256/blind_answer_sha256/items{id,verdict}. Assertmechanicalbindings, submit actualHubtask/evidence thenreadyfalse/IDLE/quiescent. Nativeprivateonly; genuine different-provider exacttext/source/options acceptance/publicationpending. Projectuserqueuewaiveroverridesmandatoryresourcequeuewait; exclusivefileownershipremains.
