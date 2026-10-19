@@ -1,0 +1,33 @@
+{
+  "helm_revision": 66,
+  "helm_status": "deployed",
+  "deployment_revision": "64",
+  "ready_replicas": 1,
+  "images": [
+    {
+      "name": "api",
+      "image": "quiz-master:quiz-2026.10.19-feedback-849e6705@sha256:2205f76f1a7d02f91765c7fa1ca347b6db14b1ef241a03496470154664df3d43"
+    },
+    {
+      "name": "web",
+      "image": "quiz-master:quiz-2026.10.19-feedback-849e6705@sha256:2205f76f1a7d02f91765c7fa1ca347b6db14b1ef241a03496470154664df3d43"
+    }
+  ],
+  "api_sha256": "95bca76bdf4bc8ad3dd74be44aae0cc936444fb86e74339ef793c825b74aa0f6",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "all_original_feedback_rows_unchanged": true,
+  "original_feedback_rows": 66,
+  "current_feedback_rows": 66,
+  "backup_mode": "0600",
+  "fresh_backup_integrity": "ok",
+  "fresh_backup_restore_integrity": "ok",
+  "backup_mtime_utc": "2026-10-19T11:30:41.905425+00:00",
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "disk_available_percent": 22.878890752443,
+  "digest_alias_registration_sha256": "6caca83066261039d04dc0d66c3ef10b28b1260764da61aae0ef006466b51e57"
+}

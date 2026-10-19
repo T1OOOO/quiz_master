@@ -29,3 +29,7 @@ Actual reviewer: Antigravity CLI / gemini-4-argon-high. Read-only review; no rem
 - None identified.
 
 **Verdict: ACCEPT**
+Historical initial review: this acceptance preceded the full binding runbook
+audit and is superseded by `release-hardening-review-findings.md` and
+`release-hardening-review-accepted.md`. Publication requires the later review
+bound to the actual prepared image and frozen payload.

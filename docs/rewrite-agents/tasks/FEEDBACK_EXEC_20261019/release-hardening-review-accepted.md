@@ -1,0 +1,18 @@
+Actual reviewer: Antigravity CLI / gemini-4-argon-high
+
+### Verdict: **ACCEPT FOR PREPARE / RECOVERY**
+
+Both previously reported material blockers and the SQLite loopback listener requirement are cleanly resolved:
+
+1. **Non-catalog Reader `question_refs` pin verification ([`rehearse.py`](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/rehearse.py#L13-L16), [#L30-L64](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/rehearse.py#L30-L64))**:
+   - `NONCATALOG_READER_REFS` pins the exact two non-playable references (`study-geography-countries-001` and `study-geography-countries-002`) to their reviewed `revision_sha256` values and rejects any mismatch before skipping the `/v1/catalog` lookup, while all 158 playable references are verified against live `/v1/catalog?quiz_id=...` responses.
+   - `found = True` is now set only after confirming non-empty `question_refs` ([#L41-L44](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/rehearse.py#L41-L44)), and [`test_article_runtime_binding_handles_only_exact_pinned_study_refs`](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/test_release_executor.py#L146-L167) exercises both the runtime `/v1/catalog` path and pin-mismatch rejection.
+
+2. **Loopback rehearsal startup, hardening & post-grading integrity ([`release_executor.py`](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/release_executor.py#L302-L303), [#L341-L352](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/release_executor.py#L341-L352))**:
+   - Pre-checks that `127.0.0.1:18088` is free, runs the disposable rehearsal container with `--network=host --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp --user 10001:10001` and `-e QM_LISTEN_ADDR=127.0.0.1:18088` (satisfying the SQLite loopback listener guard), polls `http://127.0.0.1:18088/health/ready` up to 45s, runs `rehearse.py` directly against the ready process without an unwaited restart, stops the container, and then verifies `pragma integrity_check = ok` on `$stage/rehearsal-data/quiz.db`.
+   - The `EXIT` trap ([#L302](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/release_executor.py#L302)) retains `$stage/rehearsal-startup.log` before removing disposable containers, and `node_guard()` ([#L253-L259](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/FEEDBACK_EXEC_20261019/release_executor.py#L253-L259)) now also enforces live `https://quiz.kotopedia.org/health/ready` readiness at every guard point.
+
+3. **Bounded `prepare` recovery controller ([`recover_prepare.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/recover_prepare.py#L1-L57))**:
+   - Acquires `/opt/quiz-master/DEPLOY.lock`, verifies hostname `racknerd-f0269d5`, Helm revision `65`, and baseline container images (`quiz-master:quiz-2026.10.19-mobile-2e28262c`).
+   - Verifies that all staged product hashes (`baseline`, `target_api_sha256`, `web`, `chart`, `version_sha256`, `dockerfile_sha256`) match the local manifest, that `prepared-receipt.json` does not exist, and that `quiz-master:quiz-2026.10.19-feedback-849e6705` was never imported into `k3s ctr` and has no active/stopped containers.
+   - Preserves the failed attempt's artifacts and verified `initial-backup.sqlite` under `$stage/failed-prepare-1` (`0700`), removes only the unpublished candidate Docker tag `quiz-master:quiz-2026.10.19-feedback-849e6705`, writes the updated `rehearse.py` and `release-inputs.json` (`0600`), and executes the `prepare`-only `remote_script` with a 600s timeout while recording `prepare-2.log` and `prepare-2-exit.json`.

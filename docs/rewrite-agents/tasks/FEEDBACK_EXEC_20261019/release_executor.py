@@ -37,6 +37,7 @@ LOCK_PATH = "/opt/quiz-master/DEPLOY.lock"
 RELEASE_PARENT = "/opt/quiz-master/releases"
 BACKUP_PARENT = "/opt/quiz-master/backups"
 MIN_FIXED_HEADROOM = 512 * 1024 * 1024
+K3S_IMAGEFS = "/var/lib/rancher/k3s/agent/containerd"
 BUILD_RE = re.compile(r"^quiz-[a-z0-9][a-z0-9.-]{5,100}$")
 
 FRONTEND_DOCKERFILE = f"""ARG BASE_IMAGE={BASE_LOCAL_TAG}
@@ -51,6 +52,21 @@ USER 10001:10001
 
 class GuardError(RuntimeError):
     pass
+
+
+def validate_node_status(node: dict[str, Any]) -> None:
+    conditions = {item.get("type"): item.get("status") for item in node.get("status", {}).get("conditions", [])}
+    if conditions.get("Ready") != "True" or conditions.get("DiskPressure") != "False":
+        raise GuardError("node must be Ready=True and DiskPressure=False")
+    if node.get("spec", {}).get("unschedulable", False):
+        raise GuardError("node is cordoned")
+    if any(item.get("effect") in {"NoSchedule", "NoExecute"} for item in node.get("spec", {}).get("taints", [])):
+        raise GuardError("node has a blocking scheduling taint")
+
+
+def validate_imagefs_blocks(f_bavail: int, f_blocks: int) -> None:
+    if f_blocks <= 0 or f_bavail < 0 or f_bavail * 5 < f_blocks:
+        raise GuardError("k3s image filesystem has less than 20% available blocks")
 
 
 @dataclass(frozen=True)
@@ -164,6 +180,7 @@ def collect_inputs(package: Path) -> Inputs:
         "chart": hash_tree(chart),
         "version_sha256": sha256_file(version),
         "dockerfile_sha256": hashlib.sha256(FRONTEND_DOCKERFILE.encode()).hexdigest(),
+        "rehearsal_sha256": sha256_file(Path(__file__).with_name("rehearse.py")),
     }
     return Inputs(package, web, chart, version, manifest)
 
@@ -198,6 +215,12 @@ umask 077
 test "$(hostname)" = {shlex.quote(HOST)}
 exec 9>{shlex.quote(LOCK_PATH)}
 flock -n 9
+node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
+kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.stdin); c=dict((x["type"],x["status"]) for x in n["status"].get("conditions",[])); assert c.get("Ready")=="True" and c.get("DiskPressure")=="False"; assert not n["spec"].get("unschedulable",False); assert not any(t.get("effect") in ("NoSchedule","NoExecute") for t in n["spec"].get("taints",[]))'
+python3 - <<'PY'
+import os
+s=os.statvfs({K3S_IMAGEFS!r}); assert s.f_bavail * 5 >= s.f_blocks
+PY
 stage={shlex.quote(stage)}
 test ! -e "$stage"
 mkdir -m 700 "$stage"
@@ -206,10 +229,12 @@ tar -xf - -C "$stage" --no-same-owner --no-same-permissions
 """
 
 
-def remote_script(build_id: str, target_api_sha256: str) -> str:
+def remote_script(build_id: str, target_api_sha256: str, phase: str) -> str:
     """Return the only remote mutation path. Values are fixed or regex-guarded."""
     if not re.fullmatch(r"[0-9a-f]{64}", target_api_sha256):
         raise GuardError("invalid target API hash")
+    if phase not in {"prepare", "publish"}:
+        raise GuardError("release phase must be prepare or publish")
     tag = f"quiz-master:{build_id}"
     stage = f"{RELEASE_PARENT}/{build_id}"
     backup = f"{BACKUP_PARENT}/{build_id}.sqlite"
@@ -224,11 +249,20 @@ base_deployed={shlex.quote(BASE_IMAGE)}
 base_local={shlex.quote(BASE_LOCAL_TAG)}
 lock={shlex.quote(LOCK_PATH)}
 db={shlex.quote(DB_PATH)}
+phase={shlex.quote(phase)}
+node_guard() {{
+ curl -fsS --connect-timeout 10 --max-time 30 https://quiz.kotopedia.org/health/ready >/dev/null
+ node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
+ kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.stdin); c=dict((x["type"],x["status"]) for x in n["status"].get("conditions",[])); assert c.get("Ready")=="True" and c.get("DiskPressure")=="False"; assert not n["spec"].get("unschedulable",False); assert not any(t.get("effect") in ("NoSchedule","NoExecute") for t in n["spec"].get("taints",[]))'
+ python3 -c 'import os; s=os.statvfs("/var/lib/rancher/k3s/agent/containerd"); assert s.f_bavail * 5 >= s.f_blocks'
+ kubectl get --raw "/api/v1/nodes/$node/proxy/configz" | python3 -c 'import json,sys; c=json.load(sys.stdin).get("kubeletconfig",dict()); print(dict((x,c.get(x)) for x in ("evictionHard","evictionMinimumReclaim","imageGCHighThresholdPercent","imageGCLowThresholdPercent")))'
+}}
 test \"$(hostname)\" = {shlex.quote(HOST)}
 exec 9>\"$lock\"
 flock -n 9
+node_guard
 test -d \"$stage\"
-test ! -e \"$backup\"
+if [ \"$phase\" = prepare ]; then test ! -e \"$backup\"; fi
 test -f \"$db\"
 test \"$(helm history {RELEASE} -n {NAMESPACE} -o json | python3 -c 'import json,sys; h=json.load(sys.stdin); print(h[-1][\"revision\"])')\" = {shlex.quote(BASE_REVISION)}
 test \"$(kubectl get deploy {RELEASE} -n {NAMESPACE} -o jsonpath='{{.metadata.annotations.deployment\\.kubernetes\\.io/revision}}')\" = {shlex.quote(BASE_DEPLOYMENT_REVISION)}
@@ -247,10 +281,11 @@ def tree(name):
   if p.is_symlink(): raise SystemExit('symlink in input')
   if p.is_file(): out[p.relative_to(root/name).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
  return out
-actual={{'baseline':{{'deployed_image':{BASE_IMAGE!r},'local_image':{BASE_LOCAL_TAG!r},'api_sha256':{API_SHA256!r},'revision':{BASE_REVISION!r}}}, 'target_api_sha256':hashlib.sha256((root/'api').read_bytes()).hexdigest(),'web':tree('web'),'chart':tree('chart'), 'version_sha256':hashlib.sha256((root/'web/version.json').read_bytes()).hexdigest(), 'dockerfile_sha256':hashlib.sha256((root/'Dockerfile').read_bytes()).hexdigest()}}
+actual={{'baseline':{{'deployed_image':{BASE_IMAGE!r},'local_image':{BASE_LOCAL_TAG!r},'api_sha256':{API_SHA256!r},'revision':{BASE_REVISION!r}}}, 'target_api_sha256':hashlib.sha256((root/'api').read_bytes()).hexdigest(),'web':tree('web'),'chart':tree('chart'), 'version_sha256':hashlib.sha256((root/'web/version.json').read_bytes()).hexdigest(), 'dockerfile_sha256':hashlib.sha256((root/'Dockerfile').read_bytes()).hexdigest(), 'rehearsal_sha256':hashlib.sha256((root/'rehearse.py').read_bytes()).hexdigest()}}
 if actual != expected: raise SystemExit('release input checksum mismatch')
 json.load(open(root/'web/version.json'))
 PY
+if [ \"$phase\" = prepare ]; then
 web_bytes=$(du -sb \"$stage/web\" | awk '{{print $1}}')
 db_bytes=$(stat -c %s \"$db\")
 base_image_bytes=$(docker image inspect \"$base_local\" --format '{{{{.Size}}}}')
@@ -264,12 +299,13 @@ test \"$base_docker_id\" = {shlex.quote(BASE_DIGEST)}
 base_api=$(docker create \"$base_local\")
 new_api=''
 rehearsal=''
-cleanup() {{ docker rm -f \"$base_api\" ${{new_api:+\"$new_api\"}} ${{rehearsal:+\"$rehearsal\"}} >/dev/null 2>&1 || true; }}
+cleanup() {{ if [ -n \"$rehearsal\" ]; then docker logs \"$rehearsal\" > \"$stage/rehearsal-startup.log\" 2>&1 || true; fi; docker rm -f \"$base_api\" ${{new_api:+\"$new_api\"}} ${{rehearsal:+\"$rehearsal\"}} >/dev/null 2>&1 || true; }}
 trap cleanup EXIT
 docker cp \"$base_api:/app/api\" \"$stage/base.api\"
 docker cp \"$base_api:/etc/nginx/nginx.conf\" \"$stage/base.nginx.conf\"
 test \"$(sha256sum \"$stage/base.api\" | awk '{{print $1}}')\" = {shlex.quote(API_SHA256)}
 if docker image inspect \"$tag\" >/dev/null 2>&1; then echo 'release tag already exists' >&2; exit 1; fi
+node_guard
 docker build --network=none --pull=false --build-arg BASE_IMAGE=\"$base_local\" -t \"$tag\" \"$stage\"
 docker run --rm --network=none --read-only --tmpfs /tmp \"$tag\" nginx -t
 new_docker_id=$(docker image inspect \"$tag\" --format '{{{{.Id}}}}')
@@ -302,18 +338,23 @@ test \"$(sqlite3 \"$stage/restore-proof.sqlite\" 'pragma integrity_check')\" = o
 install -d -m 700 \"$stage/rehearsal-data\"
 cp \"$stage/restore-proof.sqlite\" \"$stage/rehearsal-data/quiz.db\"
 chown -R 10001:10001 \"$stage/rehearsal-data\"
-rehearsal=$(docker run -d --network=none --read-only --tmpfs /tmp --user 10001:10001 --entrypoint /app/api -e QM_LISTEN_ADDR=127.0.0.1:8088 -e QM_DATABASE_URL=sqlite:/data/quiz.db -e QM_CONTENT_BUNDLE_PATH=/app/quizzes -e QM_CONTENT_MANIFEST_PATH=/app/next/content/home-alone-1-part-1/manifest.json --mount type=bind,src=\"$stage/rehearsal-data\",dst=/data \"$tag\")
+python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1",18088)); s.close()'
+rehearsal=$(docker run -d --network=host --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp --user 10001:10001 --entrypoint /app/api -e QM_LISTEN_ADDR=127.0.0.1:18088 -e QM_DATABASE_URL=sqlite:../data/quiz.db -e QM_CONTENT_BUNDLE_PATH=/app/quizzes -e QM_CONTENT_MANIFEST_PATH=/app/next/content/home-alone-1-part-1/manifest.json --mount type=bind,src=\"$stage/rehearsal-data\",dst=/data \"$tag\")
 ready=0
 for attempt in $(seq 1 45); do
- if docker exec \"$rehearsal\" /bin/busybox wget -q -O /dev/null http://127.0.0.1:8088/health/ready; then ready=1; break; fi
+ if docker exec \"$rehearsal\" /bin/busybox wget -q -O /dev/null http://127.0.0.1:18088/health/ready; then ready=1; break; fi
  sleep 1
 done
 test \"$ready\" = 1
+test -f \"$stage/rehearse.py\"
+python3 \"$stage/rehearse.py\" --base-url http://127.0.0.1:18088 --web-root \"$stage/web\" --require-real-http-grading --require-article-revision-binding
 docker stop \"$rehearsal\" >/dev/null
 test \"$(sqlite3 \"$stage/rehearsal-data/quiz.db\" 'pragma integrity_check')\" = ok
+node_guard
 docker save \"$tag\" | k3s ctr -n k8s.io images import -
 containerd_digest=$(k3s ctr -n k8s.io images ls | awk -v tag=\"$tag\" '$1==tag || $1==\"docker.io/library/\"tag {{print $3}}')
 [[ \"$containerd_digest\" =~ ^sha256:[0-9a-f]{{64}}$ ]]
+candidate_image=\"$tag@$containerd_digest\"
 # Docker image IDs are config digests; containerd digests are manifest descriptors.
 printf '%s\\n' \"$base_docker_id\" > \"$stage/base-docker-config-id.txt\"
 printf '%s\\n' \"$new_docker_id\" > \"$stage/new-docker-config-id.txt\"
@@ -321,8 +362,8 @@ printf '%s\\n' \"$containerd_digest\" > \"$stage/containerd-manifest-digest.txt\
 helm get values {RELEASE} -n {NAMESPACE} -a -o yaml > \"$stage/live-values.yaml\"
 helm get manifest {RELEASE} -n {NAMESPACE} > \"$stage/live-manifest.yaml\"
 helm template {RELEASE} \"$stage/chart\" -n {NAMESPACE} -f \"$stage/live-values.yaml\" --set-string image=\"$base_deployed\" --set-string buildId=\"$current_build\" > \"$stage/rendered-baseline.yaml\"
-helm template {RELEASE} \"$stage/chart\" -n {NAMESPACE} -f \"$stage/live-values.yaml\" --set-string image=\"$tag\" --set-string buildId=\"$build\" > \"$stage/rendered-target.yaml\"
-python3 - \"$stage/live-manifest.yaml\" \"$stage/rendered-baseline.yaml\" \"$stage/rendered-target.yaml\" \"$base_deployed\" \"$tag\" \"$current_build\" \"$build\" <<'PY'
+helm template {RELEASE} \"$stage/chart\" -n {NAMESPACE} -f \"$stage/live-values.yaml\" --set-string image=\"$candidate_image\" --set-string buildId=\"$build\" > \"$stage/rendered-target.yaml\"
+python3 - \"$stage/live-manifest.yaml\" \"$stage/rendered-baseline.yaml\" \"$stage/rendered-target.yaml\" \"$base_deployed\" \"$candidate_image\" \"$current_build\" \"$build\" <<'PY'
 import sys
 live,baseline,target,old_image,new_image,old_build,new_build=(open(p).read() if i < 3 else p for i,p in enumerate(sys.argv[1:]))
 def normalize(text,image,build):
@@ -333,14 +374,39 @@ if normalize(live,old_image,old_build) != normalize(baseline,old_image,old_build
 if normalize(baseline,old_image,old_build) != normalize(target,new_image,new_build): raise SystemExit('render changes more than image/build annotation')
 PY
 helm lint --strict \"$stage/chart\" -n {NAMESPACE} -f \"$stage/live-values.yaml\"
+kubectl apply --dry-run=server -n {NAMESPACE} -f \"$stage/rendered-target.yaml\"
+python3 - \"$stage/prepared-receipt.json\" \"$stage/release-inputs.json\" \"$candidate_image\" <<'PY'
+import hashlib,json,sys
+inputs=open(sys.argv[2],'rb').read()
+json.dump(dict(build_id={build_id!r},input_sha256=hashlib.sha256(inputs).hexdigest(),image=sys.argv[3]),open(sys.argv[1],'w'),sort_keys=True)
+PY
+chmod 600 \"$stage/prepared-receipt.json\"
+echo \"PREPARED receipt=$stage/prepared-receipt.json image=$candidate_image\"
+exit 0
+fi
+test -f \"$stage/reviewed-receipt.json\"
+cmp -s \"$stage/prepared-receipt.json\" \"$stage/reviewed-receipt.json\"
+candidate_image=$(python3 - \"$stage/prepared-receipt.json\" <<'PY'
+import json,sys
+r=json.load(open(sys.argv[1])); assert r['build_id']=={build_id!r}; assert isinstance(r['image'],str) and '@sha256:' in r['image']; print(r['image'])
+PY
+)
+candidate_digest=$(printf '%s' \"$candidate_image\" | sed 's/^.*@//')
+k3s ctr -n k8s.io images ls | awk -v digest=\"$candidate_digest\" '$3==digest {{found=1}} END{{exit !found}}'
+node_guard
+sqlite3 \"$db\" \".backup '$backup'\"
+chmod 600 \"$backup\"
+test \"$(sqlite3 \"$backup\" 'pragma integrity_check')\" = ok
+cp --reflink=auto \"$backup\" \"$stage/publish-restore-proof.sqlite\"
+test \"$(sqlite3 \"$stage/publish-restore-proof.sqlite\" 'pragma integrity_check')\" = ok
 rollback() {{ helm rollback {RELEASE} {BASE_REVISION} -n {NAMESPACE} --wait --timeout 180s; }}
-if ! helm upgrade {RELEASE} \"$stage/chart\" -n {NAMESPACE} --reuse-values --set-string image=\"$tag\" --set-string buildId=\"$build\" --atomic --wait --timeout 180s; then rollback; exit 1; fi
+if ! helm upgrade {RELEASE} \"$stage/chart\" -n {NAMESPACE} --reuse-values --set-string image=\"$candidate_image\" --set-string buildId=\"$build\" --atomic --wait --timeout 180s; then rollback; exit 1; fi
 post_upgrade_err() {{ status=$?; trap - ERR; rollback || true; exit \"$status\"; }}
 trap post_upgrade_err ERR
 kubectl rollout status deployment/{RELEASE} -n {NAMESPACE} --timeout=180s
 test \"$(kubectl get pvc quiz-data -n {NAMESPACE} -o jsonpath='{{.metadata.uid}}')\" = {shlex.quote(PVC_UID)}
 post=$(kubectl get deploy {RELEASE} -n {NAMESPACE} -o jsonpath='{{range .spec.template.spec.containers[*]}}{{.image}}{{"\\n"}}{{end}}')
-test \"$post\" = \"$(printf '%s\\n%s' \"$tag\" \"$tag\")\"
+test \"$post\" = \"$(printf '%s\\n%s' \"$candidate_image\" \"$candidate_image\")\"
 verify_public() {{
   test \"$(curl -fsS --proto '=https' --tlsv1.2 -o \"$stage/public-version.json\" -w '%{{http_code}}' https://quiz.kotopedia.org/version.json)\" = 200 || return 1
   cmp -s \"$stage/public-version.json\" \"$stage/web/version.json\" || return 1
@@ -387,7 +453,8 @@ def stage_package(target: str, identity_file: Path, build_id: str, inputs: Input
     """Transfer only manifest-checked inputs after the fresh-folder guard."""
     command = f"bash -c {shlex.quote(remote_stage_script(build_id))}"
     archive = subprocess.Popen(
-        ["tar", "-C", str(inputs.package), "-cf", "-", "web", "chart", "release-inputs.json", "Dockerfile", "api"],
+        ["tar", "-C", str(inputs.package), "-cf", "-", "web", "chart", "release-inputs.json", "Dockerfile", "api",
+         "-C", str(Path(__file__).parent), "rehearse.py"],
         stdout=subprocess.PIPE,
     )
     try:
@@ -401,12 +468,28 @@ def stage_package(target: str, identity_file: Path, build_id: str, inputs: Input
             raise GuardError("local package archiving failed")
 
 
-def execute(target: str, identity_file: Path | None, build_id: str, inputs: Inputs) -> None:
+def execute(target: str, identity_file: Path | None, build_id: str, inputs: Inputs, phase: str,
+            reviewed_receipt: Path | None = None) -> None:
     validate_ssh_target(target)
     validate_build_id(build_id)
     validate_package_identity(inputs, build_id)
     identity_file = validate_identity_file(identity_file)
+    if phase not in {"prepare", "publish"}:
+        raise GuardError("release phase must be prepare or publish")
     dockerfile = inputs.package / "Dockerfile"
+    if phase == "publish":
+        if reviewed_receipt is None or not reviewed_receipt.is_file():
+            raise GuardError("publish requires a reviewed immutable prepare receipt")
+        receipt = json.loads(reviewed_receipt.read_text(encoding="utf-8"))
+        if receipt != {"build_id": build_id, "input_sha256": hashlib.sha256(json.dumps(inputs.manifest, sort_keys=True, indent=2).encode() + b"\n").hexdigest(),
+                       "image": receipt.get("image")} or not isinstance(receipt.get("image"), str):
+            raise GuardError("reviewed receipt does not bind this build and inputs")
+        subprocess.run(["ssh", "-i", str(validate_identity_file(identity_file)), "-o", "IdentitiesOnly=yes", target,
+                        f"umask 077; cat > {shlex.quote(RELEASE_PARENT + '/' + build_id + '/reviewed-receipt.json')}"],
+                       input=reviewed_receipt.read_bytes(), check=True, timeout=600)
+        subprocess.run(["ssh", "-i", str(validate_identity_file(identity_file)), "-o", "IdentitiesOnly=yes", target, "bash", "-s"],
+                       input=remote_script(build_id, inputs.manifest["target_api_sha256"], phase).encode(), check=True, timeout=600)
+        return
     if dockerfile.exists():
         raise GuardError("refusing to overwrite package Dockerfile")
     manifest_path = write_local_manifest(inputs)
@@ -414,7 +497,7 @@ def execute(target: str, identity_file: Path | None, build_id: str, inputs: Inpu
         with dockerfile.open("w", encoding="utf-8", newline="\n") as destination:
             destination.write(FRONTEND_DOCKERFILE)
         stage_package(target, identity_file, build_id, inputs)
-        subprocess.run(["ssh", "-i", str(identity_file), "-o", "IdentitiesOnly=yes", target, "bash", "-s"], input=remote_script(build_id, inputs.manifest["target_api_sha256"]).encode(), check=True)
+        subprocess.run(["ssh", "-i", str(identity_file), "-o", "IdentitiesOnly=yes", target, "bash", "-s"], input=remote_script(build_id, inputs.manifest["target_api_sha256"], phase).encode(), check=True, timeout=600)
     finally:
         dockerfile.unlink(missing_ok=True)
         manifest_path.unlink(missing_ok=True)
@@ -430,6 +513,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--plan", action="store_true")
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--acknowledge-production", action="store_true")
+    parser.add_argument("--phase", choices=("prepare", "publish"), default="prepare")
+    parser.add_argument("--reviewed-receipt", type=Path)
     args = parser.parse_args(argv)
     read_preflight(args.preflight)
     inputs = collect_inputs(args.package)
@@ -438,7 +523,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if not args.acknowledge_production:
         raise GuardError("--execute requires --acknowledge-production")
-    execute(args.ssh_target, args.identity_file, args.build_id, inputs)
+    execute(args.ssh_target, args.identity_file, args.build_id, inputs, args.phase, args.reviewed_receipt)
     return 0
 
 

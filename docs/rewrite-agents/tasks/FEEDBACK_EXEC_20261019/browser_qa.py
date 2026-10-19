@@ -38,6 +38,15 @@ def command(*args):
         raise RuntimeError((args, response, result.stderr))
     return response['data']
 
+def wheel(amount):
+    panes = command('eval', "Array.from(document.querySelectorAll('flt-semantics')).filter(e=>e.clientHeight>160 && e.scrollHeight>e.clientHeight+20 && getComputedStyle(e).overflowY==='scroll').map(e=>({id:e.id,height:e.clientHeight})).sort((a,b)=>b.height-a.height)").get('result', [])
+    if panes:
+        command('scroll', 'down' if amount > 0 else 'up', str(abs(amount)), '--selector', '#' + panes[0]['id'])
+    else:
+        command('mouse', 'move', '195', '420')
+        command('mouse', 'wheel', str(amount))
+
+
 def snapshot(interactive=True):
     return command('snapshot', *(['-i'] if interactive else []))
 
@@ -47,12 +56,7 @@ def ref_named(name, prefix=False):
         for ref, value in data.get('refs', {}).items():
             if value['role'] == 'button' and (value['name'].startswith(name) if prefix else value['name'] == name):
                 return ref
-        buttons = [(ref, value) for ref, value in data.get('refs', {}).items()
-                   if value['role'] == 'button' and value['name'] != 'Отправить отзыв']
-        if buttons:
-            command('scrollintoview', '@' + buttons[-1][0])
-        else:
-            command('scroll', 'down', '420')
+        wheel(420)
     raise AssertionError(f'No observed button: {name}')
 
 def click(ref):
@@ -64,7 +68,7 @@ def click(ref):
         if 8 <= y <= 700:
             command('click', '@' + ref)
             return
-        command('scroll', 'down' if y > 700 else 'up', '320')
+        wheel(320 if y > 700 else -320)
     raise AssertionError(f'Cannot bring observed ref {ref} into phone viewport')
 
 def ready(name):
@@ -75,6 +79,8 @@ def ready(name):
         for ref, value in data.get('refs', {}).items():
             if value.get('name') == 'Enable accessibility':
                 command('eval', '-b', base64.b64encode(b"document.querySelector('flt-semantics-placeholder').click()").decode())
+        if name == 'Завершить':
+            wheel(320)
         time.sleep(.1)
     raise AssertionError(f'Page did not expose {name}')
 
@@ -104,7 +110,7 @@ def first_fact():
                       and v['name'] not in excluded and not v['name'].startswith(('Тип факта', 'Раздел'))]
         if candidates:
             return candidates[0]
-        command('scroll', 'down', '300')
+        wheel(300)
     raise AssertionError('No individual fact is reachable')
 
 def check(scope):
@@ -139,7 +145,7 @@ def check(scope):
     ready('Повторить ошибки')
     click(ref_named('Повторить ошибки'))
     choices = options()
-    correct = next(r for r, name in choices if name == answer)
+    correct = ref_named(answer)
     _, was_correct = grade(correct)
     assert was_correct
     save(scope + '-correct')

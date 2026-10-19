@@ -1,0 +1,18 @@
+Actual reviewer: Antigravity CLI / gemini-4-argon-high. Final root strengthening also excludes all CRI imageRef aliases, not only IDs.
+
+**Verdict: ACCEPT**
+
+### 1. Requirements Compliance: **ACCEPT**
+- **Reused Baseline & Lock Guards**: [`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L3-L4) loads [`offload.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/offload.py#L7-L16) in `'plan'` mode (`sys.argv=['offload.py']`) and executes through `d['remote']`, enforcing host verification (`racknerd-f0269d5`), exclusive non-blocking `/opt/quiz-master/DEPLOY.lock`, Helm revision `65`, and live deployment image verification before inspecting or removing any image refs.
+- **Last 3 Releases Preserved (65 / 64 / 63)**:
+  - Protected by build tag substring via `keep` in [`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L23) (`any(any(k in t for k in keep) for t in tags)`).
+  - Protected by manifest digest intersection via [`keepdigests`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L7-L27) (`targetdigests & keepdigests`).
+- **No Broad Prune / Non-Destructive Scope**: Only explicit `docker.io/library/quiz-master` refs are passed to `k3s ctr -n k8s.io images rm` ([`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L34-L35)). No other project images, containers, volumes, node configuration, or databases are touched. Execution is gated behind `QM_IMAGE_CLEANUP='--execute'` ([`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L5)).
+
+### 2. Technical Verification (`imageRef`, Aliases Ownership, Live Image Checks): **ACCEPT**
+- **CRI `imageRef` Semantics**: [`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L12-L14) collects `used = {c['imageRef'] for c in containers}` from `k3s crictl ps -a -o json` (covering running, created, and exited containers). In containerd CRI, `c['imageRef']` resolves to the image config ID (`sha256:...`), which matches `image['id']` in `k3s crictl images -o json` ([`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L25): `if image['id'] in used ...: continue`).
+- **Containerd Alias Ownership by Target Digest**: [`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L26-L29) extracts `targetdigests = {ref.split('@')[1] for ref in digs}` from CRI `repoDigests`, maps all `k3s ctr -n k8s.io images ls` entries whose `DIGEST` (`cols[2]`) is in `targetdigests`, and requires `refs` to be non-empty with **every** alias starting with `'docker.io/library/quiz-master:'` or `'docker.io/library/quiz-master@'`. Any shared digest with non-Quiz-Master aliases is skipped.
+- **Current Live Image Checks**: [`cleanup_images.py`](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L8-L11) collects all `containers` and `initContainers` image strings across all namespaces (`kubectl get pods -A -o json`) and rejects matches against both CRI `tags` ([L25](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L25)) and containerd `refs` ([L30](file:///E:/Projects/quiz_master/.run/feedback_20261019/cleanup_images.py#L30)). Even where pod specs use short names without the `docker.io/library/` prefix (e.g., `quiz-master:quiz-2026.10.19-mobile-2e28262c`), active/recent Quiz Master pods are simultaneously excluded by `image['id'] in used` (`crictl ps -a`), `keep` substring matching (`k in t`), and `keepdigests`.
+
+### Blockers / Material Risks
+- **None.** No concrete material blockers found.
