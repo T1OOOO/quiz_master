@@ -1,0 +1,1426 @@
+{
+  "contract": "quiz-contract/v1",
+  "state": "draft",
+  "quiz_id": "dogs-biology-anatomy",
+  "revision": {
+    "number": 1,
+    "sha256": "0dfaf6693156d398d903cf5f85a77222a1182e5f075f3da43d90fc62d848d04f"
+  },
+  "locale": "ru",
+  "questions": [
+    {
+      "question_id": "q-dog-media-298",
+      "revision": {
+        "number": 1,
+        "sha256": "7df92c3048f2480f38764bb0e033a7cfe137ec314435eea341321edd99213dae"
+      },
+      "stem": "\"Какая собака-блогер породы мопс стала известна в интернете своими предсказаниями дня (\"No Bones\" или \"Bones Day\")?\"",
+      "options": [
+        {
+          "option_id": "q-dog-media-298-opt-1",
+          "text": "Нудл (Noodle)"
+        },
+        {
+          "option_id": "q-dog-media-298-opt-2",
+          "text": "Даг (Doug the Pug)"
+        },
+        {
+          "option_id": "q-dog-media-298-opt-3",
+          "text": "Фрэнк"
+        },
+        {
+          "option_id": "q-dog-media-298-opt-4",
+          "text": "Отис"
+        },
+        {
+          "option_id": "q-dog-media-298-opt-5",
+          "text": "Моти"
+        },
+        {
+          "option_id": "q-dog-media-298-opt-6",
+          "text": "Персик"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-media-298-opt-1"
+      }
+    },
+    {
+      "question_id": "q-dog-breeds-78",
+      "revision": {
+        "number": 1,
+        "sha256": "00fe4cc27c175f96a3519d100c69c0068f3df3bab89c3593ccb29e594744d28d"
+      },
+      "stem": "У какой уникальной норвежской породы собак по 6 пальцев на каждой лапе и суставы, позволяющие выворачивать лапы под прямым углом?",
+      "options": [
+        {
+          "option_id": "q-dog-breeds-78-opt-1",
+          "text": "Норвежский элькхаунд"
+        },
+        {
+          "option_id": "q-dog-breeds-78-opt-2",
+          "text": "Норвежский лундехунд"
+        },
+        {
+          "option_id": "q-dog-breeds-78-opt-3",
+          "text": "Норвежский бухунд"
+        },
+        {
+          "option_id": "q-dog-breeds-78-opt-4",
+          "text": "Финский шпиц"
+        },
+        {
+          "option_id": "q-dog-breeds-78-opt-5",
+          "text": "Шведский валльхунд"
+        },
+        {
+          "option_id": "q-dog-breeds-78-opt-6",
+          "text": "Самоед"
+        }
+      ],
+      "difficulty": "hard",
+      "difficulty_level": 8,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-breeds-78-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-breeds-61",
+      "revision": {
+        "number": 1,
+        "sha256": "cf6a4ac1e2d30137abaeafd68191c04176172c6b41b19f7490f275eb0a0c76ca"
+      },
+      "stem": "Какая порода собак славится своими перепончатыми лапами и водоотталкивающей шерстью, так как помогала рыбакам вытягивать сети?",
+      "options": [
+        {
+          "option_id": "q-dog-breeds-61-opt-1",
+          "text": "Золотистый ретривер"
+        },
+        {
+          "option_id": "q-dog-breeds-61-opt-2",
+          "text": "Ньюфаундленд"
+        },
+        {
+          "option_id": "q-dog-breeds-61-opt-3",
+          "text": "Лабрадор"
+        },
+        {
+          "option_id": "q-dog-breeds-61-opt-4",
+          "text": "Ирландский водяной спаниель"
+        },
+        {
+          "option_id": "q-dog-breeds-61-opt-5",
+          "text": "Португальская водяная собака"
+        },
+        {
+          "option_id": "q-dog-breeds-61-opt-6",
+          "text": "Испанская водяная собака"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-breeds-61-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-records-540",
+      "revision": {
+        "number": 1,
+        "sha256": "dd6c0d4648a88bd7a770a3fe7365823033fa8f5239a3f446731944bb8ced6459"
+      },
+      "stem": "Какая порода собаки Пурин из Японии, которая ловит мячи лапами и прыгает через скакалку?",
+      "options": [
+        {
+          "option_id": "q-dog-records-540-opt-1",
+          "text": "Пудель"
+        },
+        {
+          "option_id": "q-dog-records-540-opt-2",
+          "text": "Бигль"
+        },
+        {
+          "option_id": "q-dog-records-540-opt-3",
+          "text": "Джек-рассел-терьер"
+        },
+        {
+          "option_id": "q-dog-records-540-opt-4",
+          "text": "Ши-тцу"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-records-540-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-breeds-230",
+      "revision": {
+        "number": 1,
+        "sha256": "b38b34a27d77a5ef2f35032deba62ae2f1a8a81d04a7ff9efee9771a8473ed8d"
+      },
+      "stem": "Какая охотничья порода известна своим «белым кончиком хвоста», который позволял охотникам видеть собаку в высокой траве?",
+      "options": [
+        {
+          "option_id": "q-dog-breeds-230-opt-1",
+          "text": "Бигль"
+        },
+        {
+          "option_id": "q-dog-breeds-230-opt-2",
+          "text": "Такса"
+        },
+        {
+          "option_id": "q-dog-breeds-230-opt-3",
+          "text": "Бассет-хаунд"
+        },
+        {
+          "option_id": "q-dog-breeds-230-opt-4",
+          "text": "Бладхаунд"
+        },
+        {
+          "option_id": "q-dog-breeds-230-opt-5",
+          "text": "Веймаранер"
+        },
+        {
+          "option_id": "q-dog-breeds-230-opt-6",
+          "text": "Риджбек"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-breeds-230-opt-1"
+      }
+    },
+    {
+      "question_id": "q-dog-breeds-236",
+      "revision": {
+        "number": 1,
+        "sha256": "d4ec6f92e1c55171fccb43006833c6395b0120748df8f6c50994aa4412bf6ef6"
+      },
+      "stem": "Какая порода собак внешне напоминает ягненка из-за своей грушевидной головы и белой кучерявой шерсти?",
+      "options": [
+        {
+          "option_id": "q-dog-breeds-236-opt-1",
+          "text": "Бедлингтон-терьер"
+        },
+        {
+          "option_id": "q-dog-breeds-236-opt-2",
+          "text": "Пудель"
+        },
+        {
+          "option_id": "q-dog-breeds-236-opt-3",
+          "text": "Бишон-фризе"
+        },
+        {
+          "option_id": "q-dog-breeds-236-opt-4",
+          "text": "Керри-блю-терьер"
+        },
+        {
+          "option_id": "q-dog-breeds-236-opt-5",
+          "text": "Эледел-терьер"
+        },
+        {
+          "option_id": "q-dog-breeds-236-opt-6",
+          "text": "Денди-динмонт-терьер"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-breeds-236-opt-1"
+      }
+    },
+    {
+      "question_id": "q-dog-media-286",
+      "revision": {
+        "number": 1,
+        "sha256": "f64b4871d181eeaa6dbab040ffe0baf6fe4cf3ca2ee0f5be28b3499aaec40aeb"
+      },
+      "stem": "\"Какой пес породы джек-рассел-терьер получил премию \"Golden Collar\" за роль в оскароносном фильме «Артист»?\"",
+      "options": [
+        {
+          "option_id": "q-dog-media-286-opt-1",
+          "text": "Угги (Uggie)"
+        },
+        {
+          "option_id": "q-dog-media-286-opt-2",
+          "text": "Космо"
+        },
+        {
+          "option_id": "q-dog-media-286-opt-3",
+          "text": "Скиппи"
+        },
+        {
+          "option_id": "q-dog-media-286-opt-4",
+          "text": "Пенни"
+        },
+        {
+          "option_id": "q-dog-media-286-opt-5",
+          "text": "Макс"
+        },
+        {
+          "option_id": "q-dog-media-286-opt-6",
+          "text": "Джек"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-media-286-opt-1"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-43",
+      "revision": {
+        "number": 1,
+        "sha256": "a1101a9fab245a2c710789f0a34ee35952ac8408ac7a44feba78210fdfb7683a"
+      },
+      "stem": "Сколько мышц управляют движением каждого уха у собаки?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-43-opt-1",
+          "text": "5"
+        },
+        {
+          "option_id": "q-dog-biology-43-opt-2",
+          "text": "18"
+        },
+        {
+          "option_id": "q-dog-biology-43-opt-3",
+          "text": "10"
+        },
+        {
+          "option_id": "q-dog-biology-43-opt-4",
+          "text": "32"
+        },
+        {
+          "option_id": "q-dog-biology-43-opt-5",
+          "text": "12"
+        },
+        {
+          "option_id": "q-dog-biology-43-opt-6",
+          "text": "24"
+        }
+      ],
+      "difficulty": "hard",
+      "difficulty_level": 8,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-43-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-392",
+      "revision": {
+        "number": 1,
+        "sha256": "8b74c9d3ddab1d0b1d075080fc43bb1374e05ce0506b50458794a8564c945acc"
+      },
+      "stem": "Сколько отдельных мышц управляют движениями каждого уха собаки, позволяя им вращаться независимо?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-392-opt-1",
+          "text": "5 мышц"
+        },
+        {
+          "option_id": "q-dog-biology-392-opt-2",
+          "text": "18 мышц"
+        },
+        {
+          "option_id": "q-dog-biology-392-opt-3",
+          "text": "10 мышц"
+        },
+        {
+          "option_id": "q-dog-biology-392-opt-4",
+          "text": "32 мышцы"
+        },
+        {
+          "option_id": "q-dog-biology-392-opt-5",
+          "text": "12 мышц"
+        },
+        {
+          "option_id": "q-dog-biology-392-opt-6",
+          "text": "24 мышцы"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-392-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-history-358",
+      "revision": {
+        "number": 1,
+        "sha256": "93f4ea16f9a32793b1bbab185352e2fc66f843f791ad3ccefe73b672b3b68cc0"
+      },
+      "stem": "В каком парке мира установлен памятник хаски Балто с надписью «Выносливость, Верность, Интеллект»?",
+      "options": [
+        {
+          "option_id": "q-dog-history-358-opt-1",
+          "text": "Гайд-парк (Лондон)"
+        },
+        {
+          "option_id": "q-dog-history-358-opt-2",
+          "text": "Центральный парк (Нью-Йорк)"
+        },
+        {
+          "option_id": "q-dog-history-358-opt-3",
+          "text": "Александровский сад (Москва)"
+        },
+        {
+          "option_id": "q-dog-history-358-opt-4",
+          "text": "Парк Горького (Минск)"
+        },
+        {
+          "option_id": "q-dog-history-358-opt-5",
+          "text": "Уэно (Токио)"
+        },
+        {
+          "option_id": "q-dog-history-358-opt-6",
+          "text": "Тамани (Сеул)"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-history-358-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-225",
+      "revision": {
+        "number": 1,
+        "sha256": "249101ed4442691ce7170fd9545065f548f7ba6dddb0d12ab0e87e50b779cddc"
+      },
+      "stem": "Сколько зубов у взрослой здоровой собаки при правильном развитии?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-225-opt-1",
+          "text": "32"
+        },
+        {
+          "option_id": "q-dog-biology-225-opt-2",
+          "text": "42"
+        },
+        {
+          "option_id": "q-dog-biology-225-opt-3",
+          "text": "30"
+        },
+        {
+          "option_id": "q-dog-biology-225-opt-4",
+          "text": "44"
+        },
+        {
+          "option_id": "q-dog-biology-225-opt-5",
+          "text": "28"
+        },
+        {
+          "option_id": "q-dog-biology-225-opt-6",
+          "text": "38"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-225-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-297",
+      "revision": {
+        "number": 1,
+        "sha256": "d96893f18d80bbb0341b652d2bfd8f10e644f5abe434a681a22de1ea5ba3e4b1"
+      },
+      "stem": "На какой стадии сна собаки могут подергивать лапами и «бежать» лежа?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-297-opt-1",
+          "text": "Глубокий сон"
+        },
+        {
+          "option_id": "q-dog-biology-297-opt-2",
+          "text": "Быстрый сон (REM)"
+        },
+        {
+          "option_id": "q-dog-biology-297-opt-3",
+          "text": "Поверхностный сон"
+        },
+        {
+          "option_id": "q-dog-biology-297-opt-4",
+          "text": "Дремота"
+        },
+        {
+          "option_id": "q-dog-biology-297-opt-5",
+          "text": "Медитация"
+        },
+        {
+          "option_id": "q-dog-biology-297-opt-6",
+          "text": "Расслабление"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-297-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-332",
+      "revision": {
+        "number": 1,
+        "sha256": "25316cc706bfd4f014a7b38050eab26763132f3d4528ddcfca33d69797f6c459"
+      },
+      "stem": "Какое количество постоянных зубов должно быть у взрослой здоровой собаки?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-332-opt-1",
+          "text": "32 зуба"
+        },
+        {
+          "option_id": "q-dog-biology-332-opt-2",
+          "text": "42 зуба"
+        },
+        {
+          "option_id": "q-dog-biology-332-opt-3",
+          "text": "38 зубов"
+        },
+        {
+          "option_id": "q-dog-biology-332-opt-4",
+          "text": "44 зуба"
+        },
+        {
+          "option_id": "q-dog-biology-332-opt-5",
+          "text": "30 зубов"
+        },
+        {
+          "option_id": "q-dog-biology-332-opt-6",
+          "text": "36 зубов"
+        }
+      ],
+      "difficulty": "easy",
+      "difficulty_level": 3,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-332-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-287",
+      "revision": {
+        "number": 1,
+        "sha256": "60c815f166d2c572033935eac0d459c744e254f50911ec29cebf880fc51f751c"
+      },
+      "stem": "Какая часть организма собаки наиболее важна для терморегуляции при одышке?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-287-opt-1",
+          "text": "Уши"
+        },
+        {
+          "option_id": "q-dog-biology-287-opt-2",
+          "text": "Язык"
+        },
+        {
+          "option_id": "q-dog-biology-287-opt-3",
+          "text": "Подушечки лап"
+        },
+        {
+          "option_id": "q-dog-biology-287-opt-4",
+          "text": "Нос"
+        },
+        {
+          "option_id": "q-dog-biology-287-opt-5",
+          "text": "Хвост"
+        },
+        {
+          "option_id": "q-dog-biology-287-opt-6",
+          "text": "Живот"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-287-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-records-319",
+      "revision": {
+        "number": 1,
+        "sha256": "52c22b1aca8c1f5f41d6f7b943a65d740cdf6379050f5c06f41f9cfee0343838"
+      },
+      "stem": "Какова была громкость коллективного лая группы из 76 собак в Колорадо, сопоставимая с рок-концертом?",
+      "options": [
+        {
+          "option_id": "q-dog-records-319-opt-1",
+          "text": "100 дБ"
+        },
+        {
+          "option_id": "q-dog-records-319-opt-2",
+          "text": "124 дБ"
+        },
+        {
+          "option_id": "q-dog-records-319-opt-3",
+          "text": "110 дБ"
+        },
+        {
+          "option_id": "q-dog-records-319-opt-4",
+          "text": "150 дБ"
+        },
+        {
+          "option_id": "q-dog-records-319-opt-5",
+          "text": "90 дБ"
+        },
+        {
+          "option_id": "q-dog-records-319-opt-6",
+          "text": "135 дБ"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-records-319-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-records-542",
+      "revision": {
+        "number": 1,
+        "sha256": "ba0ef31cb0345ab423e2785ebc82a6968da9ad83141406a789cccb48c1723014"
+      },
+      "stem": "Какова была громкость коллективного лая группы из 76 собак в штате Колорадо?",
+      "options": [
+        {
+          "option_id": "q-dog-records-542-opt-1",
+          "text": "100 дБ"
+        },
+        {
+          "option_id": "q-dog-records-542-opt-2",
+          "text": "124 дБ"
+        },
+        {
+          "option_id": "q-dog-records-542-opt-3",
+          "text": "150 дБ"
+        },
+        {
+          "option_id": "q-dog-records-542-opt-4",
+          "text": "90 дБ"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-records-542-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-36",
+      "revision": {
+        "number": 1,
+        "sha256": "58e7ace5224cba2fd6f010f6e346cfd7912cf8f11402dd91b6997da8c7c62c82"
+      },
+      "stem": "Сколько зубов у взрослой собаки при правильном прикусе?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-36-opt-1",
+          "text": "32"
+        },
+        {
+          "option_id": "q-dog-biology-36-opt-2",
+          "text": "42"
+        },
+        {
+          "option_id": "q-dog-biology-36-opt-3",
+          "text": "30"
+        },
+        {
+          "option_id": "q-dog-biology-36-opt-4",
+          "text": "44"
+        },
+        {
+          "option_id": "q-dog-biology-36-opt-5",
+          "text": "28"
+        },
+        {
+          "option_id": "q-dog-biology-36-opt-6",
+          "text": "38"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-36-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-95",
+      "revision": {
+        "number": 1,
+        "sha256": "c0258854280fc78cda9697b9496af5013d21ca492156bf2d6bccea4c78e5c07c"
+      },
+      "stem": "Какая часть организма собаки наиболее важна для терморегуляции, когда животное дышит с открытым ртом?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-95-opt-1",
+          "text": "Уши"
+        },
+        {
+          "option_id": "q-dog-biology-95-opt-2",
+          "text": "Язык"
+        },
+        {
+          "option_id": "q-dog-biology-95-opt-3",
+          "text": "Подушечки лап"
+        },
+        {
+          "option_id": "q-dog-biology-95-opt-4",
+          "text": "Нос"
+        },
+        {
+          "option_id": "q-dog-biology-95-opt-5",
+          "text": "Хвост"
+        },
+        {
+          "option_id": "q-dog-biology-95-opt-6",
+          "text": "Живот"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-95-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-records-49",
+      "revision": {
+        "number": 1,
+        "sha256": "c3334fca9a617ddd28eab45193a9ac312bf790cdc907faa11ea1b27dcb140a16"
+      },
+      "stem": "Какой рекорд принадлежит ирландскому волкодаву по кличке Кеон?",
+      "options": [
+        {
+          "option_id": "q-dog-records-49-opt-1",
+          "text": "Самый высокий рост"
+        },
+        {
+          "option_id": "q-dog-records-49-opt-2",
+          "text": "Самый длинный хвост (76,8 см)"
+        },
+        {
+          "option_id": "q-dog-records-49-opt-3",
+          "text": "Самый громкий лай"
+        },
+        {
+          "option_id": "q-dog-records-49-opt-4",
+          "text": "Больше всего пойманных фрисби"
+        },
+        {
+          "option_id": "q-dog-records-49-opt-5",
+          "text": "Самый длинный язык"
+        },
+        {
+          "option_id": "q-dog-records-49-opt-6",
+          "text": "Самые длинные уши"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-records-49-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-records-310",
+      "revision": {
+        "number": 1,
+        "sha256": "39bf5ce6fc49cecff255020aba4881819516c6dfd64cc68cf55e7a9bd505b50e"
+      },
+      "stem": "Какова официальная длина самого длинного собачьего хвоста в мире, принадлежащего волкодаву Кеону?",
+      "options": [
+        {
+          "option_id": "q-dog-records-310-opt-1",
+          "text": "50,5 см"
+        },
+        {
+          "option_id": "q-dog-records-310-opt-2",
+          "text": "76,8 см"
+        },
+        {
+          "option_id": "q-dog-records-310-opt-3",
+          "text": "60,2 см"
+        },
+        {
+          "option_id": "q-dog-records-310-opt-4",
+          "text": "85,0 см"
+        },
+        {
+          "option_id": "q-dog-records-310-opt-5",
+          "text": "45,3 см"
+        },
+        {
+          "option_id": "q-dog-records-310-opt-6",
+          "text": "90,1 см"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-records-310-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-70",
+      "revision": {
+        "number": 1,
+        "sha256": "067040c41eaecee8a0a4ef900f4c4ea6826e5160f080840bbfe71d5af4bf947a"
+      },
+      "stem": "Могут ли собаки распознавать эмоции человека и его физическое состояние (например, рак или диабет)?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-70-opt-1",
+          "text": "Нет, это миф"
+        },
+        {
+          "option_id": "q-dog-biology-70-opt-2",
+          "text": "Да, по запаху и изменениям поведения"
+        },
+        {
+          "option_id": "q-dog-biology-70-opt-3",
+          "text": "Только по жестам хозяина"
+        },
+        {
+          "option_id": "q-dog-biology-70-opt-4",
+          "text": "Только после специальной операции"
+        },
+        {
+          "option_id": "q-dog-biology-70-opt-5",
+          "text": "Только собаки определенных 10 пород"
+        },
+        {
+          "option_id": "q-dog-biology-70-opt-6",
+          "text": "Да, но только у своих хозяев"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-70-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-345",
+      "revision": {
+        "number": 1,
+        "sha256": "8bbb081d918eeddd9247a055579fe786d3fa2f24ce3c2d575b1cc24e9d6487c9"
+      },
+      "stem": "Какова средняя частота пульса в покое у собаки мелкой породы (что примерно на 50% быстрее человеческого)?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-345-opt-1",
+          "text": "70 ударов в минуту"
+        },
+        {
+          "option_id": "q-dog-biology-345-opt-2",
+          "text": "120 ударов в минуту"
+        },
+        {
+          "option_id": "q-dog-biology-345-opt-3",
+          "text": "90 ударов в минуту"
+        },
+        {
+          "option_id": "q-dog-biology-345-opt-4",
+          "text": "150 ударов в минуту"
+        },
+        {
+          "option_id": "q-dog-biology-345-opt-5",
+          "text": "60 ударов в минуту"
+        },
+        {
+          "option_id": "q-dog-biology-345-opt-6",
+          "text": "180 ударов в минуту"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-345-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-history-340",
+      "revision": {
+        "number": 1,
+        "sha256": "22bd0c6a43baa1a77a373b3a461070643d54b2b8b71a380e79664544e042c875"
+      },
+      "stem": "Какую ложную причину приводили в Древнем Риме для оправдания купирования ( docking) хвостов у собак?",
+      "options": [
+        {
+          "option_id": "q-dog-history-340-opt-1",
+          "text": "Улучшение скорости бега"
+        },
+        {
+          "option_id": "q-dog-history-340-opt-2",
+          "text": "Предотвращение бешенства"
+        },
+        {
+          "option_id": "q-dog-history-340-opt-3",
+          "text": "Красота экстерьера"
+        },
+        {
+          "option_id": "q-dog-history-340-opt-4",
+          "text": "Удобство на охоте"
+        },
+        {
+          "option_id": "q-dog-history-340-opt-5",
+          "text": "Усиление агрессии"
+        },
+        {
+          "option_id": "q-dog-history-340-opt-6",
+          "text": "Облегчение веса"
+        }
+      ],
+      "difficulty": "hard",
+      "difficulty_level": 8,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-history-340-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-history-04",
+      "revision": {
+        "number": 1,
+        "sha256": "eea8b70558c324a97813815a9c4d8c0bc55a3159e65db04d9cf92db59b8ccf3b"
+      },
+      "stem": "Кто стал первой собакой, получившей четыре протеза конечностей и прозвище «Бионическая собака»?",
+      "options": [
+        {
+          "option_id": "q-dog-history-04-opt-1",
+          "text": "Балто"
+        },
+        {
+          "option_id": "q-dog-history-04-opt-2",
+          "text": "Стабби"
+        },
+        {
+          "option_id": "q-dog-history-04-opt-3",
+          "text": "Наки’о"
+        },
+        {
+          "option_id": "q-dog-history-04-opt-4",
+          "text": "Робот"
+        },
+        {
+          "option_id": "q-dog-history-04-opt-5",
+          "text": "Чипс"
+        },
+        {
+          "option_id": "q-dog-history-04-opt-6",
+          "text": "Барри"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-history-04-opt-3"
+      }
+    },
+    {
+      "question_id": "q-dog-history-204",
+      "revision": {
+        "number": 1,
+        "sha256": "8494443fe13869df52e1829c7400ac8c5fd0d7561b9f8adddedd1cbc83d3e3a8"
+      },
+      "stem": "Какое прозвище получил пес Наки’о, ставший первой собакой с четырьмя протезами конечностей?",
+      "options": [
+        {
+          "option_id": "q-dog-history-204-opt-1",
+          "text": "Суперпес"
+        },
+        {
+          "option_id": "q-dog-history-204-opt-2",
+          "text": "Робопес"
+        },
+        {
+          "option_id": "q-dog-history-204-opt-3",
+          "text": "Бионическая собака"
+        },
+        {
+          "option_id": "q-dog-history-204-opt-4",
+          "text": "Железный Лапик"
+        },
+        {
+          "option_id": "q-dog-history-204-opt-5",
+          "text": "Кибер-друг"
+        },
+        {
+          "option_id": "q-dog-history-204-opt-6",
+          "text": "Стальной бегун"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-history-204-opt-3"
+      }
+    },
+    {
+      "question_id": "q-dog-history-305",
+      "revision": {
+        "number": 1,
+        "sha256": "56413422271157a90650a60baee74ab95b55a21a8ea3be0fd67683761fbfabdc"
+      },
+      "stem": "Какое прозвище получил пес Наки’о, потерявший лапы из-за обморожения и ставший первым обладателем четырех протезов?",
+      "options": [
+        {
+          "option_id": "q-dog-history-305-opt-1",
+          "text": "Робопес"
+        },
+        {
+          "option_id": "q-dog-history-305-opt-2",
+          "text": "Бионическая собака"
+        },
+        {
+          "option_id": "q-dog-history-305-opt-3",
+          "text": "Железный Лапик"
+        },
+        {
+          "option_id": "q-dog-history-305-opt-4",
+          "text": "Супер-Хаски"
+        },
+        {
+          "option_id": "q-dog-history-305-opt-5",
+          "text": "Кибер-друг"
+        },
+        {
+          "option_id": "q-dog-history-305-opt-6",
+          "text": "Стальной бегун"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-history-305-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-myth-29",
+      "revision": {
+        "number": 1,
+        "sha256": "77202af66a6032570cfd7009757cddfd044be4853dcbca51440258217e61bcb4"
+      },
+      "stem": "Сколько голов было у Цербера, стража подземного мира в греческой мифологии?",
+      "options": [
+        {
+          "option_id": "q-dog-myth-29-opt-1",
+          "text": "Две"
+        },
+        {
+          "option_id": "q-dog-myth-29-opt-2",
+          "text": "Три"
+        },
+        {
+          "option_id": "q-dog-myth-29-opt-3",
+          "text": "Семь"
+        },
+        {
+          "option_id": "q-dog-myth-29-opt-4",
+          "text": "Одна"
+        },
+        {
+          "option_id": "q-dog-myth-29-opt-5",
+          "text": "Девять"
+        },
+        {
+          "option_id": "q-dog-myth-29-opt-6",
+          "text": "Пять"
+        }
+      ],
+      "difficulty": "easy",
+      "difficulty_level": 2,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-myth-29-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-myth-377",
+      "revision": {
+        "number": 1,
+        "sha256": "230662ab70c06cf6f670953d999fe10c1acc3e97a47268088ad723837504ef11"
+      },
+      "stem": "Сколько голов было у Цербера — стража Аида, согласно наиболее распространенным греческим мифам?",
+      "options": [
+        {
+          "option_id": "q-dog-myth-377-opt-1",
+          "text": "Одна"
+        },
+        {
+          "option_id": "q-dog-myth-377-opt-2",
+          "text": "Три"
+        },
+        {
+          "option_id": "q-dog-myth-377-opt-3",
+          "text": "Семь"
+        },
+        {
+          "option_id": "q-dog-myth-377-opt-4",
+          "text": "Две"
+        },
+        {
+          "option_id": "q-dog-myth-377-opt-5",
+          "text": "Девять"
+        },
+        {
+          "option_id": "q-dog-myth-377-opt-6",
+          "text": "Сто"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-myth-377-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-myth-382",
+      "revision": {
+        "number": 1,
+        "sha256": "3cabbd3928db1790ab7ba7bee6887c5471727f514e897ec521664a6ebf95fce3"
+      },
+      "stem": "Что взвешивает египетский бог Анубис на весах правосудия, определяя судьбу души умершего?",
+      "options": [
+        {
+          "option_id": "q-dog-myth-382-opt-1",
+          "text": "Золотой слиток"
+        },
+        {
+          "option_id": "q-dog-myth-382-opt-2",
+          "text": "Перо истины Маат"
+        },
+        {
+          "option_id": "q-dog-myth-382-opt-3",
+          "text": "Монету"
+        },
+        {
+          "option_id": "q-dog-myth-382-opt-4",
+          "text": "Собачью кость"
+        },
+        {
+          "option_id": "q-dog-myth-382-opt-5",
+          "text": "Книгу мертвых"
+        },
+        {
+          "option_id": "q-dog-myth-382-opt-6",
+          "text": "Цветок лотоса"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 6,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-myth-382-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-mythology-567",
+      "revision": {
+        "number": 1,
+        "sha256": "17a7fdbe3d228efd6b768b3be809e3f3a9af81a9b9ca57ec53b6dd3a6626fc70"
+      },
+      "stem": "Что древнеегипетский бог Анубис взвешивает на весах правосудия рядом с сердцем умершего?",
+      "options": [
+        {
+          "option_id": "q-dog-mythology-567-opt-1",
+          "text": "Золотую монету"
+        },
+        {
+          "option_id": "q-dog-mythology-567-opt-2",
+          "text": "Перо истины (Маат)"
+        },
+        {
+          "option_id": "q-dog-mythology-567-opt-3",
+          "text": "Собачью кость"
+        },
+        {
+          "option_id": "q-dog-mythology-567-opt-4",
+          "text": "Книгу мертвых"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-mythology-567-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-biology-53",
+      "revision": {
+        "number": 1,
+        "sha256": "8bfc23c4111361ceb1c3be04ea59bc31538de9277494451747cd2ec7a4ff9568"
+      },
+      "stem": "Какое направление виляния хвостом у собаки обычно указывает на положительные эмоции и радость?",
+      "options": [
+        {
+          "option_id": "q-dog-biology-53-opt-1",
+          "text": "Влево"
+        },
+        {
+          "option_id": "q-dog-biology-53-opt-2",
+          "text": "Вправо"
+        },
+        {
+          "option_id": "q-dog-biology-53-opt-3",
+          "text": "Строго вверх"
+        },
+        {
+          "option_id": "q-dog-biology-53-opt-4",
+          "text": "По кругу"
+        },
+        {
+          "option_id": "q-dog-biology-53-opt-5",
+          "text": "Поджатый хвост"
+        },
+        {
+          "option_id": "q-dog-biology-53-opt-6",
+          "text": "Быстрое виляние только кончиком"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 4,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-biology-53-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-mythology-565",
+      "revision": {
+        "number": 1,
+        "sha256": "64c9f9a1623cf18de7c635c40c6e8c04c776af1997d2b741fd53327bebbfbd6c"
+      },
+      "stem": "С каким предметом в лапах традиционно изображается самец Собаки Фу (китайского льва-хранителя)?",
+      "options": [
+        {
+          "option_id": "q-dog-mythology-565-opt-1",
+          "text": "С детенышем"
+        },
+        {
+          "option_id": "q-dog-mythology-565-opt-2",
+          "text": "С шаром (жемчужиной)"
+        },
+        {
+          "option_id": "q-dog-mythology-565-opt-3",
+          "text": "С мечом"
+        },
+        {
+          "option_id": "q-dog-mythology-565-opt-4",
+          "text": "Со свитком"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-mythology-565-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-mythology-579",
+      "revision": {
+        "number": 1,
+        "sha256": "5968c252c53384444a3b25afddf737e408b31f46041a72e6a0090e2974d27375"
+      },
+      "stem": "Как звали верного пса Одиссея, который был единственным, кто узнал его после 20 лет странствий?",
+      "options": [
+        {
+          "option_id": "q-dog-mythology-579-opt-1",
+          "text": "Гектор"
+        },
+        {
+          "option_id": "q-dog-mythology-579-opt-2",
+          "text": "Аргос (Argus)"
+        },
+        {
+          "option_id": "q-dog-mythology-579-opt-3",
+          "text": "Лайлапс"
+        },
+        {
+          "option_id": "q-dog-mythology-579-opt-4",
+          "text": "Цербер"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-mythology-579-opt-2"
+      }
+    },
+    {
+      "question_id": "q-dog-mythology-562",
+      "revision": {
+        "number": 1,
+        "sha256": "aaa1fab92a899e158a3f0022e7315aa65d95df08d0fea6ca26970ddf45e7b841"
+      },
+      "stem": "Как зовут свирепого окровавленного пса, охраняющего вход в Хельхейм в скандинавской мифологии?",
+      "options": [
+        {
+          "option_id": "q-dog-mythology-562-opt-1",
+          "text": "Фенрир"
+        },
+        {
+          "option_id": "q-dog-mythology-562-opt-2",
+          "text": "Гарм (Garmr)"
+        },
+        {
+          "option_id": "q-dog-mythology-562-opt-3",
+          "text": "Скёлль"
+        },
+        {
+          "option_id": "q-dog-mythology-562-opt-4",
+          "text": "Хати"
+        }
+      ],
+      "difficulty": "medium",
+      "difficulty_level": 5,
+      "source": {
+        "uri": "/app/quizzes/Collections/dogs-biology-anatomy.json"
+      },
+      "answer_kind": "single_choice",
+      "grading": {
+        "correct_option_id": "q-dog-mythology-562-opt-2"
+      }
+    }
+  ]
+}

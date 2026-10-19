@@ -1,12 +1,8 @@
 {
-  "title": "Музыка: голоса и записи",
-  "description": "Вопросы о певцах, авторах и записях с первичными музейными и официальными источниками.",
-  "category": "Музыка",
   "id": "music-people-20261011",
-  "taxonomy_ref": {
-    "taxonomy_id": "qm-tags-v1",
-    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
-  },
+  "title": "Музыка: голоса, студии и записи",
+  "description": "Певцы, авторы, записи и студийная работа — единый слой музыкального производства.",
+  "category": "Музыка",
   "questions": [
     {
       "id": "music-people-001",
@@ -383,7 +379,12 @@
     {
       "id": "music-people-025",
       "text": "Кто в 1950 году стала ведущей певицей кубинского оркестра La Sonora Matancera?",
-      "options": ["Селия Крус", "Омара Портуондо", "Ла Лупе", "Мерседес Соса"],
+      "options": [
+        "Селия Крус",
+        "Омара Портуондо",
+        "Ла Лупе",
+        "Мерседес Соса"
+      ],
       "correct_answer": 0,
       "explanation": "Официальная биография Селии Крус указывает, что в 1950 году она стала ведущей певицей La Sonora Matancera.",
       "type": "choice",
@@ -392,7 +393,12 @@
     {
       "id": "music-people-026",
       "text": "Какая певица выпустила в 1964 году запись «Walk On By» Бакарака и Дэвида?",
-      "options": ["Диана Росс", "Дайон Уорвик", "Глэдис Найт", "Арета Франклин"],
+      "options": [
+        "Диана Росс",
+        "Дайон Уорвик",
+        "Глэдис Найт",
+        "Арета Франклин"
+      ],
       "correct_answer": 1,
       "explanation": "Rock and Roll Hall of Fame и Official Charts связывают запись «Walk On By» 1964 года с Дайон Уорвик.",
       "type": "choice",
@@ -401,7 +407,12 @@
     {
       "id": "music-people-027",
       "text": "Кто выпустил в 1978 году сольную запись «I’m Every Woman», ставшую затем известной и в версии Уитни Хьюстон?",
-      "options": ["Донна Саммер", "Глория Гейнор", "Натали Коул", "Чака Хан"],
+      "options": [
+        "Донна Саммер",
+        "Глория Гейнор",
+        "Натали Коул",
+        "Чака Хан"
+      ],
       "correct_answer": 3,
       "explanation": "Официальная дискография Чаки Хан указывает «I’m Every Woman» на её сольном альбоме Chaka 1978 года.",
       "type": "choice",
@@ -410,11 +421,228 @@
     {
       "id": "music-people-028",
       "text": "Кто написал «Jolene» и «I Will Always Love You»?",
-      "options": ["Лоретта Линн", "Тэмми Уайнетт", "Долли Партон", "Эммилу Харрис"],
+      "options": [
+        "Лоретта Линн",
+        "Тэмми Уайнетт",
+        "Долли Партон",
+        "Эммилу Харрис"
+      ],
       "correct_answer": 2,
       "explanation": "Официальные страницы Долли Партон и Уитни Хьюстон указывают Долли Партон автором «I Will Always Love You»; её страница альбома Jolene связывает обе песни с её авторской работой.",
       "type": "choice",
       "difficulty": 5
+    },
+    {
+      "id": "music-encore-001",
+      "text": "Кто вместе с Мадонной указан продюсером сингла «Vogue»?",
+      "options": [
+        "Уильям Орбит",
+        "Шеп Петтибон",
+        "Найл Роджерс",
+        "Патрик Леонард"
+      ],
+      "correct_answer": 1,
+      "explanation": "Официальная страница Madonna называет продюсерами «Vogue» Мадонну и Шепа Петтибона.",
+      "type": "choice",
+      "difficulty": 4
+    },
+    {
+      "id": "music-encore-002",
+      "text": "На каком альбоме Metallica находится «Creeping Death»?",
+      "options": [
+        "Kill ’Em All",
+        "Master of Puppets",
+        "Ride the Lightning",
+        "…And Justice for All"
+      ],
+      "correct_answer": 2,
+      "explanation": "В официальном трек-листе Metallica «Creeping Death» стоит седьмой композицией Ride the Lightning.",
+      "type": "choice",
+      "difficulty": 4
+    },
+    {
+      "id": "music-encore-003",
+      "text": "Какая из этих студий указана в кредитах The Joshua Tree?",
+      "options": [
+        "Эбби-Роуд",
+        "Электрик Леди",
+        "Ханса",
+        "Виндмилл-Лейн"
+      ],
+      "correct_answer": 3,
+      "explanation": "Официальная страница U2 перечисляет Windmill Lane среди мест записи The Joshua Tree.",
+      "type": "choice",
+      "difficulty": 6
+    },
+    {
+      "id": "music-encore-004",
+      "text": "Какая композиция открывает альбом Prince Purple Rain?",
+      "options": [
+        "Let’s Go Crazy",
+        "Take Me with U",
+        "The Beautiful Ones",
+        "Computer Blue"
+      ],
+      "correct_answer": 0,
+      "explanation": "Официальная дискография Prince ставит «Let’s Go Crazy» первой композицией Purple Rain.",
+      "type": "choice",
+      "difficulty": 3
+    },
+    {
+      "id": "music-encore-005",
+      "text": "Какая песня была на стороне B сингла Johnny Cash «Folsom Prison Blues»?",
+      "options": [
+        "I Walk the Line",
+        "So Doggone Lonesome",
+        "Big River",
+        "Ring of Fire"
+      ],
+      "correct_answer": 1,
+      "explanation": "Официальная страница трека называет «So Doggone Lonesome» стороной B сингла 1955 года.",
+      "type": "choice",
+      "difficulty": 6
+    },
+    {
+      "id": "music-encore-006",
+      "text": "На каком инструменте Carole King указана в кредитах альбома Tapestry?",
+      "options": [
+        "Гитара",
+        "Орган",
+        "Фортепиано",
+        "Виолончель"
+      ],
+      "correct_answer": 2,
+      "explanation": "В кредитах Tapestry Carole King указана как исполнительница на фортепиано и клавишных, а также вокалистка.",
+      "type": "choice",
+      "difficulty": 3
+    },
+    {
+      "id": "music-encore-007",
+      "text": "Какой сингл R.E.M. вышел в 1981 году до EP Chronic Town?",
+      "options": [
+        "Gardening at Night",
+        "Wolves, Lower",
+        "Carnival of Sorts",
+        "Radio Free Europe"
+      ],
+      "correct_answer": 3,
+      "explanation": "Официальный пресс-релиз R.E.M. называет «Radio Free Europe» прорывным синглом 1981 года, которому последовал Chronic Town.",
+      "type": "choice",
+      "difficulty": 5
+    },
+    {
+      "id": "music-encore-008",
+      "text": "Кто указан приглашённым вокалистом в «From This Moment On» на Come On Over?",
+      "options": [
+        "Bryan White",
+        "Mark McGrath",
+        "Chris Martin",
+        "Elton John"
+      ],
+      "correct_answer": 0,
+      "explanation": "В официальном трек-листе Come On Over у «From This Moment On» указан гостевой вокал Bryan White.",
+      "type": "choice",
+      "difficulty": 4
+    },
+    {
+      "id": "music-encore-009",
+      "text": "Какая пара в ABBA писала и продюсировала песни группы?",
+      "options": [
+        "Agnetha Fältskog и Anni-Frid Lyngstad",
+        "Benny Andersson и Björn Ulvaeus",
+        "Agnetha Fältskog и Benny Andersson",
+        "Anni-Frid Lyngstad и Björn Ulvaeus"
+      ],
+      "correct_answer": 1,
+      "explanation": "Официальная история ABBA называет Benny Andersson и Björn Ulvaeus авторами и продюсерами песен группы.",
+      "type": "choice",
+      "difficulty": 4
+    },
+    {
+      "id": "music-encore-010",
+      "text": "Какая композиция открывает альбом Bob Marley & The Wailers Exodus?",
+      "options": [
+        "Jamming",
+        "Waiting in Vain",
+        "Natural Mystic",
+        "One Love/People Get Ready"
+      ],
+      "correct_answer": 2,
+      "explanation": "Официальный трек-лист Exodus начинается с «Natural Mystic».",
+      "type": "choice",
+      "difficulty": 4
+    },
+    {
+      "correct_answer": 0,
+      "difficulty": 3,
+      "editorial_tag_ids": [
+        "domain:arts"
+      ],
+      "explanation": "Панорама размещает выход дорожки в стереополе. Темп меняет скорость проекта, транспозиция — высоту звука, а соло лишь временно заглушает другие дорожки.",
+      "id": "music-craft-pilot-001",
+      "options": [
+        "Панораму",
+        "Темп",
+        "Транспозицию",
+        "Соло"
+      ],
+      "text": "В миксе гитару нужно расположить левее, не меняя её высоту тона и не выключая дорожку. Какой регулятор следует изменить?",
+      "type": "choice"
+    },
+    {
+      "correct_answer": 1,
+      "difficulty": 5,
+      "editorial_tag_ids": [
+        "domain:arts"
+      ],
+      "explanation": "В Ableton Live warp-маркер фиксирует выбранную точку аудио на шкале; его перемещением можно совместить запоздавший удар с первой долей. Остальные действия не переставляют конкретный момент внутри лупа.",
+      "id": "music-craft-pilot-002",
+      "options": [
+        "Добавить дорожку возврата",
+        "Передвинуть warp-маркер к доле",
+        "Включить запись наложением",
+        "Переключить дорожку в соло"
+      ],
+      "text": "В Ableton Live первый удар бочки в импортированном лупе запаздывает относительно первой доли сетки. Какое действие привяжет этот момент к нужной доле?",
+      "type": "choice"
+    },
+    {
+      "correct_answer": 2,
+      "difficulty": 3,
+      "editorial_tag_ids": [
+        "domain:arts"
+      ],
+      "explanation": "Поп-фильтр ослабляет поток воздуха от взрывных согласных до того, как он попадёт в микрофон. Шок-маунт изолирует микрофон от вибрации, метроном задаёт пульс, а фейдер регулирует уровень.",
+      "id": "music-craft-pilot-003",
+      "options": [
+        "Шок-маунт",
+        "Метроном",
+        "Поп-фильтр",
+        "Фейдер"
+      ],
+      "text": "При близкой записи вокала согласные «п» и «б» дают резкие воздушные хлопки. Что ставят между певцом и микрофоном, чтобы ослабить их?",
+      "type": "choice"
+    },
+    {
+      "correct_answer": 3,
+      "difficulty": 4,
+      "editorial_tag_ids": [
+        "domain:arts"
+      ],
+      "explanation": "Сэмплирование использует фрагмент записанного звука как материал для новой работы. Панорамирование размещает звук в стереополе, наложение добавляет запись поверх клипа, а тюнинг связан с настройкой высоты.",
+      "id": "music-craft-pilot-004",
+      "options": [
+        "Панорамирование",
+        "Наложение",
+        "Тюнинг",
+        "Сэмплирование"
+      ],
+      "text": "Продюсер берёт короткую ранее записанную фразу, меняет её ритм и использует как материал новой композиции. Как называется этот приём?",
+      "type": "choice"
     }
-  ]
+  ],
+  "taxonomy_ref": {
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  }
 }

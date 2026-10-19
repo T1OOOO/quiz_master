@@ -1,7 +1,7 @@
 part of 'main.dart';
 
 int questionRoundCount(int questions) {
-  if (questions <= 0) return 0;
+  if (questions < 20) return 0;
   final fullRounds = questions ~/ 20;
   return fullRounds == 0 ? 1 : fullRounds;
 }
@@ -167,8 +167,10 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
           final folders = <String>{};
           final visible = <CatalogPack>[];
           for (final pack in packs) {
+            if (pack.questions < 20) continue;
             if (widget.difficulty != null &&
-                (pack.count(widget.difficulty!) ?? 0) == 0) {
+                (pack.count(widget.difficulty!) ?? 0) <
+                    20) {
               continue;
             }
             if (query.isNotEmpty) {
@@ -203,11 +205,20 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                     children: [
                       Text(
                         l10n.catalogInventory(
-                          packs.length,
-                          packs.fold(
-                            0,
-                            (total, pack) => total + pack.questions,
-                          ),
+                          packs
+                              .where(
+                                (pack) =>
+                                    pack.questions >=
+                                    20,
+                              )
+                              .length,
+                          packs
+                              .where(
+                                (pack) =>
+                                    pack.questions >=
+                                    20,
+                              )
+                              .fold(0, (total, pack) => total + pack.questions),
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -223,7 +234,7 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
                                 selected: widget.difficulty == band,
                                 onSelected:
                                     packs.any(
-                                      (pack) => (pack.count(band) ?? 0) > 0,
+                                      (pack) => (pack.count(band) ?? 0) >= 20,
                                     )
                                     ? (_) => context.go(
                                         _location(

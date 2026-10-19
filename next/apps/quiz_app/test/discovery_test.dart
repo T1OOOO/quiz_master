@@ -110,7 +110,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.text('144 quizzes · 4486 questions'), findsOneWidget);
+    expect(find.text('105 quizzes · 4520 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(
@@ -124,12 +124,12 @@ void main() {
   testWidgets('q deep link still filters the catalog', (tester) async {
     await _pumpDiscovery(tester, '/library?q=%D1%81%D1%8B%D1%80');
     expect(
-      find.byKey(const Key('pack-gastronomy-cheeses-and-dairy')),
+      find.byKey(const Key('pack-gastronomy-animal-products')),
       findsOneWidget,
     );
     expect(find.byKey(const Key('folder-Кино')), findsNothing);
     final card = tester.widget<ListTile>(
-      find.byKey(const Key('pack-gastronomy-cheeses-and-dairy')),
+      find.byKey(const Key('pack-gastronomy-animal-products')),
     );
     expect(card.onTap, isNotNull);
   });
@@ -235,7 +235,7 @@ void main() {
   });
 
   testWidgets(
-    'long LOTR title remains available on a narrow text-scaled card',
+    'long merged books title remains available on a narrow text-scaled card',
     (tester) async {
       tester.view.physicalSize = const Size(361, 738);
       tester.view.devicePixelRatio = 1;
@@ -246,14 +246,14 @@ void main() {
 
       await _pumpDiscovery(
         tester,
-        '/library?q=%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5',
+        '/library?q=%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B2%D0%BE%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F',
       );
       expect(
-        find.byKey(const Key('pack-lotr-return-king-bts-100')),
+        find.byKey(const Key('pack-preparation-books-modern')),
         findsOneWidget,
       );
       expect(
-        find.text('Властелин Колец: Возвращение Короля и Создание'),
+        find.text('Литература: послевоенная и современная — авторы'),
         findsOneWidget,
       );
       expect(tester.takeException(), isNull);

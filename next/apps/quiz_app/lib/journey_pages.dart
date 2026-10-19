@@ -43,6 +43,9 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     final catalog = journey.catalog;
     final attempt = journey.attempt;
     final finish = journey.finish;
+    final activeQuizId =
+        catalog?.quiz.id ??
+        (widget.quizId == null ? null : playableQuizId(widget.quizId!));
     ref.listen(journeyProvider.select((s) => s.feedback), (previous, feedback) {
       if (feedback != null && feedback != previous) {
         _showFeedback(context, feedback, controller.nextQuestion);
@@ -52,7 +55,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         .watch(discoveryCatalogProvider)
         .asData
         ?.value
-        .where((p) => p.id == widget.quizId)
+        .where((p) => p.id == activeQuizId)
         .firstOrNull;
     final title = pack?.title ?? '';
     final backgroundAsset = pack == null
@@ -134,7 +137,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                             .watch(discoveryCatalogProvider)
                             .asData
                             ?.value
-                            .where((p) => p.id == widget.quizId)
+                            .where((p) => p.id == activeQuizId)
                             .firstOrNull
                             ?.title ??
                         '',
@@ -239,7 +242,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                     FilledButton(
                       onPressed: () => context.go(
                         _quizLocation(
-                          widget.quizId!,
+                          activeQuizId!,
                           widget.round! + 1,
                           widget.difficulty,
                         ),

@@ -55,6 +55,9 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 		CatalogFor(string) (attempts.Catalog, error)
 		StartQuiz(context.Context, string, string) (attempts.Attempt, error)
 	})
+	sourceCatalog, supportsSourceCatalog := s.(interface {
+		SourceCatalogFor(string) (attempts.Catalog, error)
+	})
 	difficultySelection, supportsDifficulty := s.(interface {
 		CatalogForDifficulty(string, string) (attempts.Catalog, error)
 		StartDifficultyQuiz(context.Context, string, string, string) (attempts.Attempt, error)
@@ -96,6 +99,19 @@ func registerAttemptRoutes(mux *http.ServeMux, s AttemptService, auth TokenAuthe
 			return
 		}
 		catalog, err := selected.CatalogFor(id)
+		if err != nil {
+			writeAttemptError(w, err)
+			return
+		}
+		writeAttemptJSON(w, http.StatusOK, catalog)
+	})
+	mux.HandleFunc("GET /v1/source-catalog", func(w http.ResponseWriter, r *http.Request) {
+		id, valid := sourceCatalogSelection(r)
+		if !valid || !supportsSourceCatalog {
+			writeAttemptError(w, attempts.ErrValidation)
+			return
+		}
+		catalog, err := sourceCatalog.SourceCatalogFor(id)
 		if err != nil {
 			writeAttemptError(w, err)
 			return
@@ -270,6 +286,18 @@ func catalogSelection(r *http.Request) (string, string, bool) {
 	}
 	id, difficulty := query.Get("quiz_id"), query.Get("difficulty")
 	return id, difficulty, validDifficulty(difficulty)
+}
+
+func sourceCatalogSelection(r *http.Request) (string, bool) {
+	query := r.URL.Query()
+	if len(query) != 1 {
+		return "", false
+	}
+	values, ok := query["quiz_id"]
+	if !ok || len(values) != 1 || values[0] == "" {
+		return "", false
+	}
+	return values[0], true
 }
 func validDifficulty(difficulty string) bool {
 	return difficulty == "" || difficulty == "easy" || difficulty == "medium" || difficulty == "hard" || difficulty == "nightmare"

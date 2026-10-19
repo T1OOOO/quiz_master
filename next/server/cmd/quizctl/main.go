@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"quiz_master/next/server/internal/attempts"
 	"quiz_master/next/server/internal/content"
 )
 
@@ -80,6 +81,10 @@ func run(args []string, out, errOut io.Writer) int {
 		if e := json.Unmarshal(checked.Bytes(), &report); e != nil {
 			return fail(e)
 		}
+		playable, e := catalogPlayablePacks(report.Packs, content.RoundAliases)
+		if e != nil {
+			return fail(e)
+		}
 		type metadata struct {
 			QuizID           string         `json:"quiz_id"`
 			Title            string         `json:"title"`
@@ -88,8 +93,8 @@ func run(args []string, out, errOut io.Writer) int {
 			Questions        int            `json:"questions_count"`
 			DifficultyCounts map[string]int `json:"difficulty_counts,omitempty"`
 		}
-		packs := make([]metadata, 0, len(report.Packs))
-		for _, p := range report.Packs {
+		packs := make([]metadata, 0, len(playable))
+		for _, p := range playable {
 			pack := metadata{QuizID: p.CanonicalID, Title: p.Title, Description: p.Description, Category: p.Category, Questions: p.Questions}
 			if *withDifficulty {
 				draft, _, e := content.ImportWithTaxonomy(p.Path, taxonomy)
@@ -233,6 +238,31 @@ func catalogDifficultyCounts(draft content.Draft) (map[string]int, error) {
 		counts[question.Difficulty]++
 	}
 	return counts, nil
+}
+
+func catalogPlayablePacks(packs []auditPack, aliases map[string]string) ([]auditPack, error) {
+	known := make(map[string]bool, len(packs))
+	for _, pack := range packs {
+		known[pack.CanonicalID] = true
+	}
+	for source, target := range aliases {
+		// A partial fixture or a future source collection can legitimately omit a
+		// legacy source. Only aliases that apply to this audited collection affect
+		// its public catalog.
+		if !known[source] {
+			continue
+		}
+		if source == "" || target == "" || source == target || !known[target] || aliases[target] != "" {
+			return nil, &content.Error{Kind: "round_alias", Path: source + "->" + target}
+		}
+	}
+	playable := make([]auditPack, 0, len(packs))
+	for _, pack := range packs {
+		if aliases[pack.CanonicalID] == "" && pack.Questions >= attempts.MinimumAttemptQuestions {
+			playable = append(playable, pack)
+		}
+	}
+	return playable, nil
 }
 
 func loadTaxonomy(path string) (*content.Taxonomy, error) {

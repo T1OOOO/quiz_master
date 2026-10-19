@@ -14,6 +14,70 @@ final journeyProvider = NotifierProvider<JourneyController, JourneyState>(
   JourneyController.new,
 );
 
+// Reviewed minimum-20 aliases.  Resolve only these known historical routes
+// before making a practice request; a response for any other ID stays strict.
+const legacyPlayableQuizAliases = <String, String>{
+  'acting-craft-20261014': 'cinema-people-20261011',
+  'cinema-encore-20261011': 'cinema-people-20261011',
+  'film-craft-20261013': 'cinema-people-20261011',
+  'screen-song-20261014': 'cinema-people-20261011',
+  'lotr': 'lotr-trilogy',
+  'lotr-fellowship-100': 'lotr-trilogy',
+  'lotr-return-king-bts-100': 'lotr-trilogy',
+  'lotr-two-towers-lore-100': 'lotr-trilogy',
+  'home-alone-2-part-1': 'home-alone-2',
+  'home-alone-2-part-2': 'home-alone-2',
+  'home-alone-2-part-3': 'home-alone-2',
+  'theme-pixar': 'animation-studios-pixar-dreamworks',
+  'theme-dreamworks': 'animation-studios-pixar-dreamworks',
+  'theme-game-of-thrones': 'theme-tv-series',
+  'theme-star-wars': 'cinema-science-fiction-worlds',
+  'theme-terminator': 'cinema-science-fiction-worlds',
+  'gastronomy-cheeses-and-dairy': 'gastronomy-animal-products',
+  'gastronomy-meat-and-fish': 'gastronomy-animal-products',
+  'gastronomy-2': 'gastronomy-1',
+  'music-encore-20261011': 'music-people-20261011',
+  'music-craft-20261013': 'music-people-20261011',
+  'cats-biology-anatomy-part-1': 'cats-biology-anatomy',
+  'cats-biology-anatomy-part-2': 'cats-biology-anatomy',
+  'cats-breeds-man-made': 'cats-breeds',
+  'cats-breeds-natural-and-ancient-part-1': 'cats-breeds',
+  'cats-breeds-natural-and-ancient-part-2': 'cats-breeds',
+  'cats-history-ancient-egypt': 'cats-history-culture',
+  'cats-history-famous-and-culture': 'cats-history-culture',
+  'cats-history-mythology': 'cats-history-culture',
+  'cats-history-other-eras': 'cats-history-culture',
+  'cats-trivia-records-and-general-part-1': 'cats-trivia-records',
+  'cats-trivia-records-and-general-part-2': 'cats-trivia-records',
+  'cats-trivia-records-and-general-part-3': 'cats-trivia-records',
+  'cats-trivia-records-and-general-part-4': 'cats-trivia-records',
+  'dogs-biology-anatomy-part-1': 'dogs-biology-anatomy',
+  'dogs-biology-anatomy-part-2': 'dogs-biology-anatomy',
+  'dogs-breeds-sporting-hounds': 'dogs-breeds',
+  'dogs-breeds-toy-terrier-rare-part-1': 'dogs-breeds',
+  'dogs-breeds-toy-terrier-rare-part-2': 'dogs-breeds',
+  'dogs-breeds-working-herding': 'dogs-breeds',
+  'dogs-history-ancient-world': 'dogs-history-culture',
+  'dogs-history-famous-and-service': 'dogs-history-culture',
+  'dogs-history-mythology': 'dogs-history-culture',
+  'philias-abstract': 'philias-abstract-other',
+  'philias-other': 'philias-abstract-other',
+  'philias-animals-part-1': 'philias-animals',
+  'philias-animals-part-2': 'philias-animals',
+  'philias-nature-part-2': 'philias-nature',
+  'philias-people-part-1': 'philias-people',
+  'philias-people-part-2': 'philias-people',
+  'vocabulary-archaisms': 'vocabulary-historical',
+  'vocabulary-church-slavonic': 'vocabulary-historical',
+  'vocabulary-art-culture': 'vocabulary-art-intellectual',
+  'vocabulary-intellectual': 'vocabulary-art-intellectual',
+  'phobias-nature': 'phobias-general',
+  'gastronomy-miscellaneous-off-topic': 'prep-capitals-americas',
+};
+
+String playableQuizId(String routeQuizId) =>
+    legacyPlayableQuizAliases[routeQuizId] ?? routeQuizId;
+
 enum QuestionProgress { answered, unanswered, uncertain }
 
 class JourneyState {
@@ -163,7 +227,8 @@ class JourneyController extends Notifier<JourneyState> {
     DifficultyBand? difficulty,
   }) async {
     final generation = ++_generation;
-    _quizId = id;
+    final canonicalId = playableQuizId(id);
+    _quizId = canonicalId;
     _round = round;
     _difficulty = difficulty;
     state = JourneyState(session: state.session, loading: true);
@@ -173,12 +238,12 @@ class JourneyController extends Notifier<JourneyState> {
         state.session == null
             ? api.bootstrap('Guest')
             : Future.value(state.session!),
-        api.catalog(quizId: id, difficulty: difficulty),
+        api.catalog(quizId: canonicalId, difficulty: difficulty),
       ]);
       final session = results[0] as GuestSession;
       final catalog = results[1] as Catalog;
       if (generation != _generation) return;
-      if (catalog.quiz.id != id) {
+      if (catalog.quiz.id != canonicalId) {
         throw const FormatException('selected quiz mismatch');
       }
       state = state.copyWith(session: session, catalog: catalog);

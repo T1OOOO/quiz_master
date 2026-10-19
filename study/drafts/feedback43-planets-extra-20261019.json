@@ -1,0 +1,220 @@
+{
+  "schema_version": "qm-planet-paradoxes-extra-draft/v1",
+  "status": "draft_pending_independent_fact_check",
+  "draft_id": "feedback43-planets-extra-20261019",
+  "base_pack": {
+    "path": "study/drafts/planet-paradoxes-20261010.candidate.json",
+    "pack_id": "planet-paradoxes-20261010",
+    "existing_question_count": 10,
+    "proposed_total_after_integration": 20
+  },
+  "language": "ru",
+  "question_type": "choice",
+  "accessed_on": "2026-10-19",
+  "sources": [
+    {
+      "id": "nasa-mercury-permanent-darkness",
+      "title": "NASA Science: Permanent Darkness",
+      "url": "https://science.nasa.gov/photojournal/permanent-darkness/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "There is evidence that this crater contains ice within its permanently shadowed interior."
+    },
+    {
+      "id": "nasa-venus-facts",
+      "title": "NASA Science: Venus Facts",
+      "url": "https://science.nasa.gov/venus/venus-facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "The Sun would rise in the west and set in the east, because Venus spins backward compared to Earth."
+    },
+    {
+      "id": "nasa-mars-sunset",
+      "title": "NASA Science: Mastcam-Z’s First Martian Sunset",
+      "url": "https://science.nasa.gov/resource/mastcam-zs-first-martian-sunset/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Martian sunsets typically stand out for their distinctive blue color."
+    },
+    {
+      "id": "nasa-saturn-facts",
+      "title": "NASA Science: Saturn Facts",
+      "url": "https://science.nasa.gov/saturn/facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "They are made of billions of small chunks of ice and rock coated with other materials such as dust."
+    },
+    {
+      "id": "nasa-jupiter-facts",
+      "title": "NASA Science: Jupiter Facts",
+      "url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Jupiter has the shortest day in the solar system."
+    },
+    {
+      "id": "nasa-uranus-facts",
+      "title": "NASA Science: Uranus Facts",
+      "url": "https://science.nasa.gov/uranus/facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Uranus was the first planet found with the aid of a telescope."
+    },
+    {
+      "id": "nasa-uranus-facts-structure",
+      "title": "NASA Science: Uranus Facts, Structure",
+      "url": "https://science.nasa.gov/uranus/facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Most of the planet's mass is made up of a hot dense fluid of water, methane, and ammonia."
+    },
+    {
+      "id": "nasa-neptune-winds",
+      "title": "NASA Science: Voyager Fact Sheet",
+      "url": "https://science.nasa.gov/mission/voyager/fact-sheet/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "The strongest winds on any planet were measured on Neptune."
+    },
+    {
+      "id": "nasa-saturn-hexagon",
+      "title": "NASA Science: Saturn Facts, Atmosphere",
+      "url": "https://science.nasa.gov/saturn/facts/",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Saturn's north pole has an interesting atmospheric feature – a six-sided jet stream."
+    },
+    {
+      "id": "nasa-mars-moons-facts",
+      "title": "NASA Science: Mars Moons Facts",
+      "url": "https://science.nasa.gov/mars/moons/facts/?source=post_page",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Phobos is gradually spiraling inward."
+    }
+  ],
+  "questions": [
+    {
+      "id": "planet-paradox-011",
+      "estimated_difficulty": "medium",
+      "topic": "composition",
+      "stem_ru": "Где на Меркурии NASA обнаружило свидетельства наличия льда, хотя планета ближе всех к Солнцу?",
+      "option_ids": ["mercury-011-a", "mercury-011-b", "mercury-011-c", "mercury-011-d"],
+      "options": ["В тени полярных кратеров", "На освещённых равнинах у экватора", "В облаках над поверхностью", "В лавовых потоках у вулканов"],
+      "correct_answer_index": 0,
+      "explanation_ru": "В некоторых полярных кратерах Меркурия есть участки постоянной тени. NASA сообщает о свидетельствах льда внутри такого затенённого кратера.",
+      "fact_justification_ru": "Вопрос проверяет различие между средней близостью планеты к Солнцу и локальными холодными ловушками, куда солнечный свет не попадает.",
+      "source_ids": ["nasa-mercury-permanent-darkness"],
+      "distractor_rationales_ru": ["У экватора поверхность получает прямой солнечный свет, поэтому это не постоянная холодная ловушка.", "У Меркурия нет плотной облачной атмосферы, в которой мог бы находиться такой лёд.", "Источник связывает лёд с постоянно затенёнными кратерами, а не с лавовыми потоками."]
+    },
+    {
+      "id": "planet-paradox-012",
+      "estimated_difficulty": "easy",
+      "topic": "rotation",
+      "stem_ru": "На какой планете Солнце для наблюдателя на поверхности восходило бы на западе?",
+      "option_ids": ["venus-012-a", "venus-012-b", "venus-012-c", "venus-012-d"],
+      "options": ["На Венере", "На Марсе", "На Юпитере", "На Сатурне"],
+      "correct_answer_index": 0,
+      "explanation_ru": "Венера вращается в направлении, противоположном вращению Земли. Поэтому NASA указывает, что там Солнце восходило бы на западе и заходило на востоке.",
+      "fact_justification_ru": "Это отдельное следствие обратного вращения Венеры; оно не повторяет вопрос о том, какой её период длиннее года.",
+      "source_ids": ["nasa-venus-facts"],
+      "distractor_rationales_ru": ["Марс вращается в обычном для большинства планет направлении.", "Юпитер быстро вращается, но не в обратном по отношению к Земле направлении.", "Сатурн не указан NASA как планета с западным восходом Солнца."]
+    },
+    {
+      "id": "planet-paradox-013",
+      "estimated_difficulty": "medium",
+      "topic": "weather",
+      "stem_ru": "Какой цвет часто имеет область вокруг заходящего Солнца на Марсе?",
+      "option_ids": ["mars-013-a", "mars-013-b", "mars-013-c", "mars-013-d"],
+      "options": ["Зелёный", "Красный", "Фиолетовый", "Голубой"],
+      "correct_answer_index": 3,
+      "explanation_ru": "Марсианские закаты обычно выделяются голубым цветом. NASA объясняет его тем, что мелкая атмосферная пыль эффективнее пропускает голубой свет, чем более длинные волны.",
+      "fact_justification_ru": "Вопрос намеренно уточняет область у заходящего Солнца: днём небо Марса в целом выглядит красноватым из-за пыли.",
+      "source_ids": ["nasa-mars-sunset"],
+      "distractor_rationales_ru": ["Зелёный цвет не назван типичной особенностью марсианского заката.", "Красноватый оттенок характерен для марсианского неба в целом, но не для типичной области заката у Солнца.", "Фиолетовый цвет не указан в источнике как типичный для марсианского заката."]
+    },
+    {
+      "id": "planet-paradox-014",
+      "estimated_difficulty": "easy",
+      "topic": "composition",
+      "stem_ru": "Из чего в основном состоят видимые кольца Сатурна?",
+      "option_ids": ["saturn-014-a", "saturn-014-b", "saturn-014-c", "saturn-014-d"],
+      "options": ["Из сплошной металлической пластины", "Из плотного слоя водяного пара", "Из частиц льда и горных пород", "Из единого облака метана"],
+      "correct_answer_index": 2,
+      "explanation_ru": "Кольца Сатурна не являются цельным диском. NASA описывает их как миллиарды небольших кусков льда и горных пород, покрытых пылью и другими материалами.",
+      "fact_justification_ru": "Проверяется различие между кажущимся сплошным кольцом и системой отдельных частиц.",
+      "source_ids": ["nasa-saturn-facts"],
+      "distractor_rationales_ru": ["Кольца состоят из множества частиц, а не из цельной пластины.", "Водяной пар не соответствует описанию частиц льда и горных пород.", "Метан не назван основным материалом колец."]
+    },
+    {
+      "id": "planet-paradox-015",
+      "estimated_difficulty": "easy",
+      "topic": "time",
+      "stem_ru": "У какой планеты самые короткие сутки в Солнечной системе?",
+      "option_ids": ["jupiter-015-a", "jupiter-015-b", "jupiter-015-c", "jupiter-015-d"],
+      "options": ["У Юпитера", "У Меркурия", "У Венеры", "У Марса"],
+      "correct_answer_index": 0,
+      "explanation_ru": "NASA называет Юпитер планетой с самыми короткими сутками в Солнечной системе: один оборот вокруг оси занимает у него около 9,9 часа.",
+      "fact_justification_ru": "Короткие сутки определяет быстрое осевое вращение, а не длительность года или расстояние от Солнца.",
+      "source_ids": ["nasa-jupiter-facts"],
+      "distractor_rationales_ru": ["На Меркурии осевое вращение значительно медленнее.", "Венера вращается очень медленно.", "Марсианские сутки близки к земным и длиннее суток Юпитера."]
+    },
+    {
+      "id": "planet-paradox-016",
+      "estimated_difficulty": "medium",
+      "topic": "discovery",
+      "stem_ru": "Какая планета стала первой, открытой с помощью телескопа?",
+      "option_ids": ["uranus-016-a", "uranus-016-b", "uranus-016-c", "uranus-016-d"],
+      "options": ["Нептун", "Уран", "Сатурн", "Марс"],
+      "correct_answer_index": 1,
+      "explanation_ru": "NASA сообщает, что Уран стал первой планетой, найденной с помощью телескопа: Уильям Гершель обнаружил его в 1781 году.",
+      "fact_justification_ru": "Сатурн и Марс были известны без телескопа, а Нептун открыли позднее; вопрос отделяет способ открытия от порядка планет от Солнца.",
+      "source_ids": ["nasa-uranus-facts"],
+      "distractor_rationales_ru": ["Нептун был открыт позднее Урана.", "Сатурн виден невооружённым глазом и был известен в древности.", "Марс также виден невооружённым глазом и был известен задолго до телескопов."]
+    },
+    {
+      "id": "planet-paradox-017",
+      "estimated_difficulty": "medium",
+      "topic": "composition",
+      "stem_ru": "Как NASA описывает основной объём массы Урана под его атмосферой?",
+      "option_ids": ["uranus-017-a", "uranus-017-b", "uranus-017-c", "uranus-017-d"],
+      "options": ["Расплавленным железом и никелем", "Плотной смесью воды, метана и аммиака", "Твёрдой каменной корой, как у Земли", "Сжатым газообразным кислородом"],
+      "correct_answer_index": 1,
+      "explanation_ru": "Большая часть массы Урана приходится на горячую плотную текучую смесь веществ, которые в холодной внешней Солнечной системе называют льдами: воды, метана и аммиака.",
+      "fact_justification_ru": "Так объясняется термин «ледяной гигант»: речь о составе, а не о твёрдой ледяной поверхности планеты.",
+      "source_ids": ["nasa-uranus-facts-structure"],
+      "distractor_rationales_ru": ["NASA не описывает основной объём Урана как расплавленное железо и никель.", "У Урана нет твёрдой поверхности, аналогичной земной коре.", "Кислород не является единственным или главным материалом, указанным для основной массы Урана."]
+    },
+    {
+      "id": "planet-paradox-018",
+      "estimated_difficulty": "medium",
+      "topic": "weather",
+      "stem_ru": "На какой планете измерили самые сильные ветры среди планет?",
+      "option_ids": ["neptune-018-a", "neptune-018-b", "neptune-018-c", "neptune-018-d"],
+      "options": ["На Юпитере", "На Сатурне", "На Уране", "На Нептуне"],
+      "correct_answer_index": 3,
+      "explanation_ru": "Во время исследования «Вояджером» на Нептуне были измерены самые сильные ветры среди планет. Вблизи Большого Тёмного Пятна они достигали примерно 2 000 км/ч.",
+      "fact_justification_ru": "Формулировка опирается на измерение NASA и связывает экстремальные ветры с Нептуном, хотя он получает гораздо меньше солнечного света, чем Земля.",
+      "source_ids": ["nasa-neptune-winds"],
+      "distractor_rationales_ru": ["На Юпитере есть мощные ветры, но NASA не называет их самыми сильными среди планет.", "Сатурн известен штормами, однако рекорд измеренных ветров источник относит к Нептуну.", "Уран тоже ветреный, но источник не приписывает ему самые сильные измеренные ветры."]
+    },
+    {
+      "id": "planet-paradox-019",
+      "estimated_difficulty": "easy",
+      "topic": "weather",
+      "stem_ru": "Что представляет собой знаменитый шестиугольник у северного полюса Сатурна?",
+      "option_ids": ["saturn-019-a", "saturn-019-b", "saturn-019-c", "saturn-019-d"],
+      "options": ["Границу твёрдого материка", "След гигантского удара", "Струйный поток в атмосфере", "Промежуток между кольцами"],
+      "correct_answer_index": 2,
+      "explanation_ru": "Северный полюс Сатурна окружает шестигранный струйный поток. Это атмосферный рисунок ветров, а не объект на твёрдой поверхности и не элемент колец.",
+      "fact_justification_ru": "Вопрос различает атмосферное явление газового гиганта и привычные наземные формы рельефа.",
+      "source_ids": ["nasa-saturn-hexagon"],
+      "distractor_rationales_ru": ["У Сатурна нет твёрдого материка, который образовывал бы такую границу.", "Источник описывает шестиугольник как струйный поток, а не ударную структуру.", "Кольца обращаются вокруг экваториальной области; шестиугольник находится у северного полюса в атмосфере."]
+    },
+    {
+      "id": "planet-paradox-020",
+      "estimated_difficulty": "easy",
+      "topic": "orbit",
+      "stem_ru": "Как со временем меняется орбита Фобоса, более крупного спутника Марса?",
+      "option_ids": ["phobos-020-a", "phobos-020-b", "phobos-020-c", "phobos-020-d"],
+      "options": ["Постепенно приближается к Марсу", "Постепенно уходит от Марса", "Остаётся неизменной", "Переходит на орбиту Земли"],
+      "correct_answer_index": 0,
+      "explanation_ru": "Фобос постепенно спирально приближается к Марсу. NASA связывает это с будущим столкновением с планетой или разрушением спутника с образованием кольца.",
+      "fact_justification_ru": "Это контринтуитивный пример приливной эволюции спутника: не все спутники медленно удаляются от своей планеты.",
+      "source_ids": ["nasa-mars-moons-facts"],
+      "distractor_rationales_ru": ["Источник говорит об обратном направлении: Фобос приближается к Марсу.", "NASA описывает постепенное изменение орбиты, а не её неизменность.", "Гравитационная эволюция Фобоса связана с Марсом, а не с переходом на орбиту Земли."]
+    }
+  ],
+  "difficulty_summary": {"easy": 5, "medium": 5},
+  "review_requirements_ru": "Нужна независимая проверка фактов и решения вопросов другим провайдером. Этот файл — черновик; он не является импортом, публикацией или редакционным принятием."
+}

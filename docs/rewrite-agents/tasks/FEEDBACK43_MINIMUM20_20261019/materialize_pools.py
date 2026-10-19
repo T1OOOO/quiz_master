@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+"""Fail-closed materializer for accepted minimum-20 semantic pools."""
+import argparse, hashlib, json, os, subprocess, tempfile
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[4]; ROOT_RESOLVED=ROOT.resolve(); HERE=Path(__file__).parent
+PLAN=HERE/'semantic-pools-draft.json'; RECEIPT=HERE/'semantic-acceptance.json'; BASE='0c409ff28ca26b9a27ad30e07050e7892864e570'; VERSION='2026.10.19.minimum20'; PUBLISHED='2026-10-19T00:00:00Z'
+EXISTING={'cinema-people-20261011':'quizzes/Cinema/People/cinema_people_20261011.json','theme-tv-series':'quizzes/Cinema/Thematic80/tv_series.json','gastronomy-1':'quizzes/Gastronomy/gastronomy_general_facts_1.json','music-people-20261011':'quizzes/MusicPeople/music_people_20261011.json','philias-nature':'quizzes/Philias/philias_nature.json','phobias-general':'quizzes/Psychology/phobias_general.json'}
+def scoped(rel, prefix):
+    rel=Path(rel)
+    assert not rel.is_absolute() and ".." not in rel.parts, rel
+    assert tuple(rel.parts[:len(prefix)])==prefix, rel
+    p=ROOT/rel
+    assert p.resolve().is_relative_to(ROOT_RESOLVED), rel
+    current=ROOT
+    for part in rel.parts:
+        current=current/part
+        assert not current.is_symlink(), current
+    return p
+def lf(b): return b.replace(b'\r\n',b'\n').replace(b'\r',b'\n')
+def h(b): return hashlib.sha256(b).hexdigest()
+def load(p):
+ b=p.read_bytes(); return b,json.loads(b)
+def base(path): return subprocess.check_output(['git','show',BASE+':'+path.replace('\\','/')])
+def atom(p,v):
+ assert p.resolve().is_relative_to(ROOT_RESOLVED) and not p.is_symlink(), p
+ data=(json.dumps(v,ensure_ascii=False,indent=2)+'\n').encode(); p.parent.mkdir(parents=True,exist_ok=True)
+ with tempfile.NamedTemporaryFile('wb',dir=p.parent,delete=False) as f: f.write(data); f.flush(); os.fsync(f.fileno()); t=Path(f.name)
+ t.replace(p)
+def ascii_id(x):
+ import re
+ x=re.sub('[^a-z0-9]+','-',x.lower()).strip('-'); return x
+def plan():
+ raw=PLAN.read_bytes(); _,d=load(PLAN); _,r=load(RECEIPT)
+ assert h(raw)==r['draft_sha256']=='a9fc8a92e7902b23d9b269e5eaa4cdaf2edfc95c37dc413aadb0543b09ec5f29' and r['decision']=='ACCEPT EXACTMERGEPLAN' and r['reviewer_provider']=='google'
+ candidates=[]; inputs={}
+ for pool in d['proposed_static_derived_banks']:
+  target=pool['target_quiz_id']; qs=[]; refs=[]; tax=[]
+  excluded={x['question_id'] for x in pool.get('question_exclusions',[])}
+  for source in pool['sources']:
+   rel=source['source_path']; p=scoped(rel, ('quizzes',)); b,x=load(p); assert lf(b)==lf(base(rel)),rel
+   assert x['id']==source['source_quiz_id'] and len(x['questions'])==source['question_count']
+   inputs[rel]=h(lf(b)); qs += [q for q in x['questions'] if q['id'] not in excluded]; refs.append(x); tax += [json.dumps(x['taxonomy_ref'],sort_keys=True,ensure_ascii=False)] if x.get('taxonomy_ref') else []
+  assert len(qs)==pool['total_questions'] and len({q['id'] for q in qs})==len(qs)
+  existing=target in EXISTING; out=scoped(EXISTING[target] if existing else f'quizzes/Collections/{target}.json', ('quizzes',))
+  original=refs[0] if existing else None
+  if existing: assert qs[:len(original['questions'])]==original['questions']
+  doc={'id':original['id'] if existing else target,'title':pool['title_ru'],'description':pool['semantic_reason_ru'],'category':pool['category'],'questions':qs}
+  if tax:
+   assert len(set(tax))==1, f'ambiguous taxonomy_ref for {target}'
+   doc['taxonomy_ref']=json.loads(tax[0])
+  candidates.append((target,out,doc,existing))
+ aliases={a:p['target_quiz_id'] for p in d['proposed_static_derived_banks'] for a in p['legacy_alias_quiz_ids'] if a!=p['target_quiz_id']}
+ for x in d.get('legacy_redirects',[]): aliases[x['source_quiz_id']]=x['target_quiz_id']
+ assert len(candidates)==23 and len(aliases)==56
+ canonical={ascii_id(x['id'] if e else t) for t,_,x,e in candidates}
+ assert len(canonical)==23 and all(canonical), canonical
+ terminals={t for t,_,_,_ in candidates}|{x['target_quiz_id'] for x in d.get('legacy_redirects',[])}
+ for source in aliases:
+  seen=set(); current=source
+  while current in aliases:
+   assert current not in seen, f'alias cycle at {source}'
+   seen.add(current); current=aliases[current]
+  assert current in terminals and source != aliases[source], (source,current)
+ return candidates,aliases,inputs
+def apply():
+ candidates,aliases,inputs=plan()
+ # all inputs were read/checked before any write
+ for _,out,doc,_ in candidates: atom(out,doc)
+ for target,out,_,_ in candidates:
+  cdir=scoped(f'next/content/{target}', ('next','content'))
+  subprocess.run(['go','run','./next/server/cmd/quizctl','import','--in',str(out),'--out',str(cdir),'--taxonomy','metadata/tags.v1.json','--force'],cwd=ROOT,check=True)
+  subprocess.run(['go','run','./next/server/cmd/quizctl','build','--in',str(cdir/'draft.json'),'--out',str(cdir/'bundle.json'),'--taxonomy','metadata/tags.v1.json','--version',VERSION,'--published-at',PUBLISHED,'--force'],cwd=ROOT,check=True)
+ lines=['// Code generated by the reviewed minimum-20 content materializer. DO NOT EDIT.','package content','','var RoundAliases = map[string]string{']+[f'\t"{k}": "{v}",' for k,v in sorted(aliases.items())]+['}']
+ scoped('next/server/internal/content/round_aliases_generated.go', ('next','server','internal','content')).write_text('\n'.join(lines)+'\n',encoding='utf8',newline='\n')
+ evidence={'plan_sha256':h(PLAN.read_bytes()),'source_lf_sha256':inputs,'targets':[{ 'quiz_id':t,'raw':str(o.relative_to(ROOT)).replace('\\','/'),'questions':len(x['questions']),'raw_sha256':h(lf(o.read_bytes()))} for t,o,x,_ in candidates],'aliases':aliases}
+ atom(HERE/'pool-materialization-evidence.json',evidence); print(json.dumps({'targets':len(candidates),'aliases':len(aliases)},ensure_ascii=False))
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('--apply',action='store_true');a=p.parse_args(); c,al,_=plan(); print(json.dumps({'applied':False,'targets':len(c),'aliases':len(al)})) if not a.apply else apply()

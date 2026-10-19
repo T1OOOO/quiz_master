@@ -5,8 +5,8 @@ void main() {
   test('round counts and slices retain every selected question once', () {
     const cases = {
       0: <int>[],
-      1: [1],
-      19: [19],
+      1: <int>[],
+      19: <int>[],
       20: [20],
       21: [21],
       39: [39],
@@ -32,7 +32,11 @@ void main() {
         );
         partitioned += questionCountInRound(questions, round);
       }
-      expect(partitioned, questions, reason: '$questions items');
+      expect(
+        partitioned,
+        questions < 20 ? 0 : questions,
+        reason: '$questions items',
+      );
       expect(questionCountInRound(questions, sizes.length), 0);
       expect(questionCountInRound(questions, -1), 0);
     }

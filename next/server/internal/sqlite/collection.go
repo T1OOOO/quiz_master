@@ -16,6 +16,10 @@ import (
 // Source answers stay server-side. Validate the entire collection before
 // atomically storing immutable bundles; existing attempts retain their versions.
 func newCollection(db *sql.DB, directory, schemas string, duration time.Duration, taxonomyPath string) (*Attempts, error) {
+	return newCollectionWithAliases(db, directory, schemas, duration, taxonomyPath, content.RoundAliases)
+}
+
+func newCollectionWithAliases(db *sql.DB, directory, schemas string, duration time.Duration, taxonomyPath string, aliases map[string]string) (*Attempts, error) {
 	type pack struct {
 		service       *Attempts
 		raw, manifest []byte
@@ -83,6 +87,9 @@ func newCollection(db *sql.DB, directory, schemas string, duration time.Duration
 	if len(loaded) == 0 {
 		return nil, attempts.ErrValidation
 	}
+	if err := validateRoundAliases(packs, aliases); err != nil {
+		return nil, err
+	}
 	tx, err := db.Begin()
 	if err != nil {
 		return nil, err
@@ -115,20 +122,58 @@ func newCollection(db *sql.DB, directory, schemas string, duration time.Duration
 
 func (s *Attempts) selected(id string) (*Attempts, error) {
 	if s.packs != nil {
-		if pack := s.packs[id]; pack != nil {
-			return pack, nil
-		}
+		return selectPack(s.packs, content.PlayableQuizID(id), nil)
 	} else if id == s.bundle.Quiz.QuizID {
 		return s, nil
 	}
 	return nil, attempts.ErrValidation
+}
+
+func selectPack(packs map[string]*Attempts, id string, aliases map[string]string) (*Attempts, error) {
+	if target := aliases[id]; target != "" {
+		id = target
+	}
+	if pack := packs[id]; pack != nil {
+		return pack, nil
+	}
+	return nil, attempts.ErrValidation
+}
+
+func validateRoundAliases(packs map[string]*Attempts, aliases map[string]string) error {
+	for source, target := range aliases {
+		if packs[source] == nil {
+			continue
+		}
+		if target == "" || source == target || aliases[target] != "" || packs[target] == nil {
+			return attempts.ErrValidation
+		}
+	}
+	return nil
 }
 func (s *Attempts) CatalogFor(id string) (attempts.Catalog, error) {
 	pack, err := s.selected(id)
 	if err != nil {
 		return attempts.Catalog{}, err
 	}
+	if err := attempts.ValidateNewAttemptQuestions(pack.bundle.Quiz.Questions); err != nil {
+		return attempts.Catalog{}, err
+	}
 	return pack.Catalog(), nil
+}
+
+// SourceCatalogFor returns a raw public source pack for archival reference
+// verification. It intentionally bypasses aliases and the new-attempt minimum.
+func (s *Attempts) SourceCatalogFor(id string) (attempts.Catalog, error) {
+	if s.packs != nil {
+		if pack := s.packs[id]; pack != nil {
+			return pack.Catalog(), nil
+		}
+		return attempts.Catalog{}, attempts.ErrValidation
+	}
+	if id != s.bundle.Quiz.QuizID {
+		return attempts.Catalog{}, attempts.ErrValidation
+	}
+	return s.Catalog(), nil
 }
 func (s *Attempts) CatalogForDifficulty(id, difficulty string) (attempts.Catalog, error) {
 	pack, err := s.selected(id)
@@ -146,11 +191,17 @@ func (s *Attempts) StartQuiz(ctx context.Context, owner, id string) (attempts.At
 	if err != nil {
 		return attempts.Attempt{}, err
 	}
+	if err := attempts.ValidateNewAttemptQuestions(pack.bundle.Quiz.Questions); err != nil {
+		return attempts.Attempt{}, err
+	}
 	return pack.Start(ctx, owner)
 }
 func (s *Attempts) StartPracticeQuiz(ctx context.Context, owner, id string) (attempts.Attempt, error) {
 	pack, err := s.selected(id)
 	if err != nil {
+		return attempts.Attempt{}, err
+	}
+	if err := attempts.ValidateNewAttemptQuestions(pack.bundle.Quiz.Questions); err != nil {
 		return attempts.Attempt{}, err
 	}
 	return pack.start(ctx, owner, true)
@@ -221,6 +272,9 @@ func (s *Attempts) startDifficultyRound(ctx context.Context, owner, id, difficul
 
 // start shuffles the selected round's question order.
 func startQuestionRound(ctx context.Context, owner string, pack *Attempts, questions []content.PublicQuestion, practice bool) (attempts.Attempt, error) {
+	if err := attempts.ValidateNewAttemptQuestions(questions); err != nil {
+		return attempts.Attempt{}, err
+	}
 	selected := *pack
 	selected.bundle.Quiz.Questions = questions
 	return selected.start(ctx, owner, practice)

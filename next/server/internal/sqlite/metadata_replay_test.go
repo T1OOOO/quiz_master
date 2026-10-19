@@ -75,7 +75,7 @@ func TestAnnotatedPartialAttemptPinsMetadataAfterRepublish(t *testing.T) {
 	publish := func(version string, taxonomy *content.Taxonomy, level, correct int) {
 		t.Helper()
 		questions := []any{}
-		for i := 0; i < 2; i++ {
+		for i := 0; i < attempts.MinimumAttemptQuestions; i++ {
 			questions = append(questions, map[string]any{
 				"id": fmt.Sprintf("q-replay-%d", i), "type": "choice", "text": fmt.Sprintf("Question %d %s?", i, version),
 				"options":        []string{"First " + version, "Second " + version, "Third " + version, "Fourth " + version},
@@ -215,7 +215,7 @@ func TestAnnotatedPartialAttemptPinsMetadataAfterRepublish(t *testing.T) {
 	if err = rows.Err(); err != nil {
 		t.Fatal(err)
 	}
-	if count != 2 {
+	if count != attempts.MinimumAttemptQuestions {
 		t.Fatalf("pinned question count = %d", count)
 	}
 }

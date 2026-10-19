@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,17 +16,21 @@ const frozenTaxonomySHA256 = "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebce
 
 func writeAnnotatedSource(t *testing.T, dir, tag string) string {
 	t.Helper()
+	questions := make([]any, 0, 20)
+	for index := 1; index <= 20; index++ {
+		questions = append(questions, map[string]any{
+			"id": fmt.Sprintf("annotated-audit-%03d", index), "text": "Which option is correct?", "options": []string{"zero", "one", "two", "three"},
+			"correct_answer": 1, "explanation": "The nonzero option is correct.", "type": "choice", "difficulty": 4,
+			"editorial_tag_ids": []string{tag}, "context_tag_ids": []string{},
+		})
+	}
 	source := map[string]any{
 		"id":           "annotated-audit",
 		"title":        "Annotated audit fixture",
 		"description":  "Exercises the frozen taxonomy path.",
 		"category":     "Tests",
 		"taxonomy_ref": map[string]any{"taxonomy_id": "qm-tags-v1", "taxonomy_sha256": frozenTaxonomySHA256},
-		"questions": []any{map[string]any{
-			"id": "annotated-audit-001", "text": "Which option is correct?", "options": []string{"zero", "one", "two", "three"},
-			"correct_answer": 1, "explanation": "The nonzero option is correct.", "type": "choice", "difficulty": 4,
-			"editorial_tag_ids": []string{tag}, "context_tag_ids": []string{},
-		}},
+		"questions": questions,
 	}
 	data, err := json.Marshal(source)
 	if err != nil {
@@ -64,6 +69,10 @@ func TestAuditAndCatalogHonorExplicitFrozenTaxonomy(t *testing.T) {
 	data, err := os.ReadFile(catalog)
 	if err != nil {
 		t.Fatal(err)
+	}
+	var catalogPacks []map[string]any
+	if err := json.Unmarshal(data, &catalogPacks); err != nil || len(catalogPacks) != 1 || catalogPacks[0]["questions_count"] != float64(20) {
+		t.Fatalf("minimum-eligible catalog = %#v, err=%v", catalogPacks, err)
 	}
 	if strings.Contains(string(data), "editorial_tag_ids") || strings.Contains(string(data), "correct_option") || strings.Contains(string(data), "domain:arts") {
 		t.Fatalf("catalog leaked private metadata: %s", data)

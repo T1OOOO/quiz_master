@@ -1,0 +1,309 @@
+{
+  "scope": "read-only SSH inventory; no remote mutation, offload, deletion, deployment, image operation, or process operation was performed",
+  "remote": {
+    "host": "racknerd-f0269d5",
+    "deployment_revision": 67,
+    "helm_deployed_revision": 69,
+    "rollback_revision_retained": 68,
+    "build_id": "quiz-2026.10.19-bones-36e0b68c",
+    "image_digest": "sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "node_ready": true,
+    "disk_pressure": false,
+    "imagefs_available_bytes": 20098121728,
+    "imagefs_total_bytes": 102417174528,
+    "imagefs_available_percent": 19.62378069950108,
+    "filesystem_shared_by_stages_backups_imagefs": "/dev/vda2 mounted at /"
+  },
+  "kubelet_guard_unchanged": {
+    "evictionHard": {
+      "imagefs.available": "5%",
+      "nodefs.available": "5%"
+    },
+    "evictionMinimumReclaim": {
+      "imagefs.available": "10%",
+      "nodefs.available": "10%"
+    },
+    "imageGCHighThresholdPercent": 85,
+    "imageGCLowThresholdPercent": 80
+  },
+  "deploy_lock": {
+    "path": "/opt/quiz-master/DEPLOY.lock",
+    "kind": "regular_file",
+    "mode": "0644",
+    "bytes": 0
+  },
+  "stages": [
+    {
+      "build_id": "quiz-2026.10.19-feedback-5df1d538",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-5df1d538",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-5df1d538",
+      "mode": "0700",
+      "owner": "root:root",
+      "receipt_image_digest": "sha256:ea1d2e9049f87f777df9b5b226dba5391aff4050bfd66c28690259d04b668561",
+      "inputs": [
+        {
+          "name": "web",
+          "kind": "directory",
+          "bytes": 84508096,
+          "mode": "0700"
+        },
+        {
+          "name": "api",
+          "kind": "regular_file",
+          "bytes": 15614112,
+          "mode": "0600"
+        }
+      ],
+      "disposable": []
+    },
+    {
+      "build_id": "quiz-2026.10.19-books-8954b166",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-books-8954b166",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-books-8954b166",
+      "mode": "0700",
+      "owner": "root:root",
+      "receipt_image_digest": "sha256:dd7166c8690a2009f6b6fa5ae6b8145f6328c93fd0b8e1d450cbe9de83b4ef13",
+      "inputs": [
+        {
+          "name": "web",
+          "kind": "directory",
+          "bytes": 84525256,
+          "mode": "0700"
+        },
+        {
+          "name": "api",
+          "kind": "regular_file",
+          "bytes": 15614112,
+          "mode": "0600"
+        }
+      ],
+      "disposable": []
+    },
+    {
+      "build_id": "quiz-2026.10.19-bones-36e0b68c",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c",
+      "resolved_path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c",
+      "mode": "0700",
+      "owner": "root:root",
+      "receipt_image_digest": "sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a",
+      "inputs": [
+        {
+          "name": "web",
+          "kind": "directory",
+          "bytes": 84799240,
+          "mode": "0700"
+        },
+        {
+          "name": "api",
+          "kind": "regular_file",
+          "bytes": 15614112,
+          "mode": "0600"
+        }
+      ],
+      "disposable": [
+        {
+          "name": "base.api",
+          "kind": "regular_file",
+          "bytes": 15614112,
+          "mode": "0755"
+        },
+        {
+          "name": "new.api",
+          "kind": "regular_file",
+          "bytes": 15614112,
+          "mode": "0755"
+        },
+        {
+          "name": "base-quizzes",
+          "kind": "directory",
+          "bytes": 3500334,
+          "mode": "0755"
+        },
+        {
+          "name": "candidate-quizzes",
+          "kind": "directory",
+          "bytes": 3500334,
+          "mode": "0755"
+        },
+        {
+          "name": "restore-proof.sqlite",
+          "kind": "regular_file",
+          "bytes": 60190720,
+          "mode": "0600"
+        },
+        {
+          "name": "publish-restore-proof.sqlite",
+          "kind": "regular_file",
+          "bytes": 60190720,
+          "mode": "0600"
+        },
+        {
+          "name": "rehearsal-data",
+          "kind": "directory",
+          "bytes": 60190720,
+          "mode": "0700",
+          "owner": "10001:10001"
+        }
+      ]
+    }
+  ],
+  "backups": [
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.restore-proof.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.sqlite",
+      "bytes": 49364992,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.19-bones-36e0b68c.sqlite",
+      "bytes": 60190720,
+      "kind": "regular_file",
+      "mode": "0600",
+      "sqlite_integrity_check": "ok"
+    },
+    {
+      "name": "quiz-2026.10.19-books-8954b166.sqlite",
+      "bytes": 60190720,
+      "kind": "regular_file",
+      "mode": "0600",
+      "sqlite_integrity_check": "ok"
+    },
+    {
+      "name": "quiz-2026.10.19-feedback-0c409557.sqlite",
+      "bytes": 58146816,
+      "kind": "regular_file",
+      "mode": "0600",
+      "sqlite_integrity_check": "ok"
+    },
+    {
+      "name": "quiz-2026.10.19-feedback-27d53b72.sqlite",
+      "bytes": 58146816,
+      "kind": "regular_file",
+      "mode": "0600",
+      "sqlite_integrity_check": "ok"
+    },
+    {
+      "name": "quiz-2026.10.19-feedback-5df1d538.sqlite",
+      "bytes": 58146816,
+      "kind": "regular_file",
+      "mode": "0600",
+      "sqlite_integrity_check": "ok"
+    },
+    {
+      "name": "quiz-2026.10.19-feedback-849e6705.sqlite",
+      "bytes": 56389632,
+      "kind": "regular_file",
+      "mode": "0600"
+    },
+    {
+      "name": "quiz-2026.10.19-mobile-2e28262c.sqlite",
+      "bytes": 49713152,
+      "kind": "regular_file",
+      "mode": "0600"
+    }
+  ],
+  "root_package_candidates_found": [],
+  "unrelated_archives_seen_not_candidates": [
+    {
+      "name": "quiz-2026.10.15-country483-3c22818.tar.gz",
+      "bytes": 60989538
+    },
+    {
+      "name": "quiz-2026.10.15-reader303-14b7da4.tar.gz",
+      "bytes": 60989154
+    }
+  ],
+  "candidate_offload_plan_only": {
+    "old_stage_inputs_bytes": 200261576,
+    "current_stage_disposable_bytes": 218801052,
+    "older_own_backup_bytes": 174440448,
+    "current_stage_inputs_requires_explicit_review_bytes": 100413352,
+    "maximum_known_owned_bytes": 693916428,
+    "minimum_requested_bytes": 1500000000,
+    "shortfall_to_1_5GB_bytes": 806083572,
+    "predicted_available_percent_if_maximum_recovered": 20.301319824357808,
+    "shortfall_to_20_8_percent_bytes": 510734145
+  },
+  "preserve_without_exception": [
+    "all production images",
+    "current 69 and rollback 68 Helm state",
+    "PVC",
+    "current 68/69 SQLite backups",
+    "all unrelated archives/backups",
+    "release receipts/chart/manifests",
+    "feedback data"
+  ],
+  "local_destination_preflight": {
+    "path": "E:/Projects/quiz_master/.run/private",
+    "exists": false,
+    "volume_free_bytes": 673376665600,
+    "required_future_mode": "0700 directory and 0600 files"
+  }
+}

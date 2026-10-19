@@ -42,7 +42,7 @@ func TestCatalogDifficultyCountsAreOptInAndPublicOnly(t *testing.T) {
 	if !ok || len(counts) != 5 {
 		t.Fatalf("difficulty counts missing: %#v", difficultyPacks)
 	}
-	want := map[string]float64{"easy": 1, "medium": 1, "hard": 1, "nightmare": 1, "unknown": 1}
+	want := map[string]float64{"easy": 4, "medium": 4, "hard": 4, "nightmare": 4, "unknown": 4}
 	for band, count := range want {
 		if got, ok := counts[band].(float64); !ok || got != count {
 			t.Fatalf("difficulty %s=%v, want %v", band, counts[band], count)
@@ -94,8 +94,11 @@ func readCatalogPacks(t *testing.T, path string) []map[string]any {
 
 func writeCatalogDifficultyFixture(t *testing.T, dir string) {
 	t.Helper()
-	questions := make([]map[string]any, 0, 5)
-	for index, difficulty := range []any{1, 4, 7, 9, nil} {
+	// Four full difficulty cycles meet the 20-question playable minimum while
+	// retaining coverage for every public difficulty bucket, including unknown.
+	questions := make([]map[string]any, 0, 20)
+	for index := 0; index < 20; index++ {
+		difficulty := []any{1, 4, 7, 9, nil}[index%5]
 		question := map[string]any{
 			"id":             "catalog-difficulty-" + string(rune('a'+index)),
 			"type":           "choice",

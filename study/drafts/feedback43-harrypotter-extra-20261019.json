@@ -1,0 +1,204 @@
+{
+  "schema_version": "qm-harry-potter-extra-draft/v1",
+  "status": "draft_pending_independent_fact_check",
+  "draft_id": "feedback43-harrypotter-extra-20261019",
+  "base_pack": {
+    "path": "docs/rewrite-agents/tasks/THEMATIC80/franchises/theme-harry-potter.candidate.json",
+    "pack_id": "theme-harry-potter",
+    "scope_ru": "Оригинальные семь книг о Гарри Поттере; новые вопросы не меняют существующие 001–010.",
+    "existing_question_count": 10,
+    "proposed_total_after_integration": 20
+  },
+  "language": "ru",
+  "question_type": "choice",
+  "accessed_on": "2026-10-19",
+  "sources": [
+    {
+      "id": "official-platform-nine-three-quarters",
+      "title": "Official Harry Potter Encyclopedia: Platform Nine and Three-Quarters",
+      "url": "https://www.harrypotter.com/fact-file/locations/platform-nine-and-three-quarters",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "the barrier dividing platforms 9 and 10"
+    },
+    {
+      "id": "official-gryffindor",
+      "title": "Official Harry Potter Encyclopedia: Gryffindor",
+      "url": "https://www.harrypotter.com/fact-file/magical-miscellany/gryffindor",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "the emblematic animal was a lion"
+    },
+    {
+      "id": "official-gryffindor-common-room",
+      "title": "Official Harry Potter Encyclopedia: The Gryffindor common room",
+      "url": "https://www.harrypotter.com/fact-file/locations/the-gryffindor-common-room",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "accessible with a password given to the portrait of The Fat Lady"
+    },
+    {
+      "id": "official-quidditch",
+      "title": "Official Harry Potter Encyclopedia: Quidditch",
+      "url": "https://www.harrypotter.com/fact-file/magical-miscellany/quidditch",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "seven players; catch the Golden Snitch - at which point the game ended; Keeper defend their team's hoops"
+    },
+    {
+      "id": "official-golden-snitch",
+      "title": "Official Harry Potter Encyclopedia: Golden Snitch",
+      "url": "https://www.harrypotter.com/fact-file/objects/golden-snitch",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Worth 150 points, catching the Golden Snitch usually results in victory"
+    },
+    {
+      "id": "official-patronus",
+      "title": "Wizarding World: What can a Patronus say about a character?",
+      "url": "https://www.harrypotter.com/features/what-can-a-patronus-say-about-a-character",
+      "accessed_on": "2026-10-19",
+      "source_excerpt_en": "Harry's stag Patronus; Hermione’s Patronus, a shining silver otter"
+    }
+  ],
+  "questions": [
+    {
+      "id": "theme-hp-011",
+      "estimated_difficulty": "easy",
+      "topic": "location",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Между какими платформами Кингс-Кросс находится проход к платформе 9¾?",
+      "option_ids": ["theme-hp-011-a", "theme-hp-011-b", "theme-hp-011-c", "theme-hp-011-d"],
+      "options": ["Между 7 и 8", "Между 8 и 9", "Между 9 и 10", "Между 10 и 11"],
+      "correct_answer_index": 2,
+      "explanation_ru": "К платформе 9¾ попадают через барьер между платформами 9 и 10 на вокзале Кингс-Кросс.",
+      "fact_justification_ru": "Вопрос о местоположении прохода, а не о времени отправления поезда или его маршруте.",
+      "source_ids": ["official-platform-nine-three-quarters"],
+      "distractor_rationales_ru": ["Источник называет барьер между платформами 9 и 10, а не 7 и 8.", "Платформы 8 и 9 не образуют указанный в источнике проход.", "Источник не помещает проход между платформами 10 и 11."]
+    },
+    {
+      "id": "theme-hp-012",
+      "estimated_difficulty": "easy",
+      "topic": "houses",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какое животное изображено на гербе факультета Гриффиндор?",
+      "option_ids": ["theme-hp-012-a", "theme-hp-012-b", "theme-hp-012-c", "theme-hp-012-d"],
+      "options": ["Лев", "Орёл", "Барсук", "Змея"],
+      "correct_answer_index": 0,
+      "explanation_ru": "Символическое животное Гриффиндора — лев; официальный справочник также называет цвета факультета алыми и золотыми.",
+      "fact_justification_ru": "Животное-символ отличается от животных других факультетов Хогвартса.",
+      "source_ids": ["official-gryffindor"],
+      "distractor_rationales_ru": ["Орёл связан с Когтевраном, а не с Гриффиндором.", "Барсук связан с Пуффендуем, а не с Гриффиндором.", "Змея связана со Слизерином, а не с Гриффиндором."]
+    },
+    {
+      "id": "theme-hp-013",
+      "estimated_difficulty": "easy",
+      "topic": "location",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какой портрет обычно охраняет вход в гостиную Гриффиндора?",
+      "option_ids": ["theme-hp-013-a", "theme-hp-013-b", "theme-hp-013-c", "theme-hp-013-d"],
+      "options": ["Сэра Кэдогана", "Толстой Дамы", "Финеаса Найджелуса", "Арианы Дамблдор"],
+      "correct_answer_index": 1,
+      "explanation_ru": "Вход в гостиную Гриффиндора открывается паролем, который сообщают портрету Толстой Дамы.",
+      "fact_justification_ru": "Вопрос относится к доступу в гостиную факультета и не повторяет вопрос о Выручай-комнате.",
+      "source_ids": ["official-gryffindor-common-room"],
+      "distractor_rationales_ru": ["Сэр Кэдоган временно заменял Толстую Даму, но обычно вход охраняет её портрет.", "Финеас Найджелус — другой портрет, но не названный обычный охранник этого входа.", "Ариана Дамблдор не является указанным обычным портретом у входа в гостиную Гриффиндора."]
+    },
+    {
+      "id": "theme-hp-014",
+      "estimated_difficulty": "medium",
+      "topic": "quidditch",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Сколько игроков одновременно выходит на поле от одной команды в квиддиче?",
+      "option_ids": ["theme-hp-014-a", "theme-hp-014-b", "theme-hp-014-c", "theme-hp-014-d"],
+      "options": ["Пять", "Шесть", "Восемь", "Семь"],
+      "correct_answer_index": 3,
+      "explanation_ru": "В квиддиче в каждой команде семь игроков: три охотника, два загонщика, вратарь и ловец.",
+      "fact_justification_ru": "Семь включает все игровые роли одной команды, а не только тех, кто набирает очки кольцами.",
+      "source_ids": ["official-quidditch"],
+      "distractor_rationales_ru": ["Официальный справочник указывает семь игроков, а не пять.", "Шесть не включает полный состав, описанный для команды.", "Восемь не соответствует указанному составу команды."]
+    },
+    {
+      "id": "theme-hp-015",
+      "estimated_difficulty": "medium",
+      "topic": "quidditch",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какую роль в квиддиче выполняет игрок, защищающий кольца своей команды?",
+      "option_ids": ["theme-hp-015-a", "theme-hp-015-b", "theme-hp-015-c", "theme-hp-015-d"],
+      "options": ["Вратарь", "Ловец", "Загонщик", "Охотник"],
+      "correct_answer_index": 0,
+      "explanation_ru": "Вратарь защищает кольца своей команды от бросков охотников соперника.",
+      "fact_justification_ru": "Официальное описание отдельно называет вратаря защитником колец, а охотников — игроками, забрасывающими квоффл.",
+      "source_ids": ["official-quidditch"],
+      "distractor_rationales_ru": ["Ловец ищет Золотой снитч, а не охраняет кольца.", "Загонщик направляет бладжеры, а не защищает кольца.", "Охотник забрасывает квоффл в кольца соперника."]
+    },
+    {
+      "id": "theme-hp-016",
+      "estimated_difficulty": "easy",
+      "topic": "quidditch",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какую задачу выполняет ловец в квиддиче?",
+      "option_ids": ["theme-hp-016-a", "theme-hp-016-b", "theme-hp-016-c", "theme-hp-016-d"],
+      "options": ["Защищает кольца", "Направляет бладжеры", "Ловит Золотой снитч", "Забрасывает квоффл"],
+      "correct_answer_index": 2,
+      "explanation_ru": "Ловец ищет и ловит Золотой снитч.",
+      "fact_justification_ru": "Роль ловца отличается от ролей вратаря, загонщиков и охотников.",
+      "source_ids": ["official-quidditch"],
+      "distractor_rationales_ru": ["Кольца защищает вратарь.", "Бладжеры направляют загонщики.", "Квоффл в кольца забрасывают охотники."]
+    },
+    {
+      "id": "theme-hp-017",
+      "estimated_difficulty": "medium",
+      "topic": "quidditch",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Сколько очков приносит поимка Золотого снитча?",
+      "option_ids": ["theme-hp-017-a", "theme-hp-017-b", "theme-hp-017-c", "theme-hp-017-d"],
+      "options": ["100 очков", "150 очков", "200 очков", "250 очков"],
+      "correct_answer_index": 1,
+      "explanation_ru": "Поимка Золотого снитча приносит 150 очков. Обычно этого достаточно для победы, но официальный справочник отмечает, что это не гарантирует её.",
+      "fact_justification_ru": "Вопрос проверяет конкретное правило подсчёта, отдельно от условия окончания игры.",
+      "source_ids": ["official-golden-snitch"],
+      "distractor_rationales_ru": ["Официальный справочник указывает 150, а не 100 очков.", "200 очков не соответствуют указанной ценности снитча.", "250 очков не соответствуют указанной ценности снитча."]
+    },
+    {
+      "id": "theme-hp-018",
+      "estimated_difficulty": "medium",
+      "topic": "quidditch",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какое событие завершает матч по квиддичу?",
+      "option_ids": ["theme-hp-018-a", "theme-hp-018-b", "theme-hp-018-c", "theme-hp-018-d"],
+      "options": ["Первый гол охотника", "Тайм-аут капитана", "Третий удар бладжера", "Поимка Золотого снитча"],
+      "correct_answer_index": 3,
+      "explanation_ru": "Матч заканчивается, когда ловец поймает Золотой снитч. Команда ловца при этом может проиграть, если до этого существенно уступала по голам.",
+      "fact_justification_ru": "Завершение матча и победа команды — разные правила: снитч обычно, но не всегда, обеспечивает победу.",
+      "source_ids": ["official-quidditch", "official-golden-snitch"],
+      "distractor_rationales_ru": ["Голы охотников приносят очки, но не завершают матч.", "В официальном описании тайм-аут капитана не назван условием окончания матча.", "Бладжеры создают игровую опасность, но не являются условием окончания матча."]
+    },
+    {
+      "id": "theme-hp-019",
+      "estimated_difficulty": "easy",
+      "topic": "patronus",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какую телесную форму принимает Патронус Гарри Поттера?",
+      "option_ids": ["theme-hp-019-a", "theme-hp-019-b", "theme-hp-019-c", "theme-hp-019-d"],
+      "options": ["Оленя", "Терьера", "Зайца", "Кабана"],
+      "correct_answer_index": 0,
+      "explanation_ru": "Телесный Патронус Гарри — олень.",
+      "fact_justification_ru": "Вопрос о форме Патронуса Гарри, а не о формах Патронусов его друзей.",
+      "source_ids": ["official-patronus"],
+      "distractor_rationales_ru": ["Терьер — Патронус Рона Уизли в официальной статье.", "Заяц — Патронус Полумны Лавгуд в официальной статье.", "Кабан — Патронус Эрни Макмиллана в официальной статье."]
+    },
+    {
+      "id": "theme-hp-020",
+      "estimated_difficulty": "medium",
+      "topic": "patronus",
+      "canon_scope_ru": "Книги",
+      "stem_ru": "Какую телесную форму принимает Патронус Гермионы Грейнджер?",
+      "option_ids": ["theme-hp-020-a", "theme-hp-020-b", "theme-hp-020-c", "theme-hp-020-d"],
+      "options": ["Лани", "Выдры", "Волка", "Терьера"],
+      "correct_answer_index": 1,
+      "explanation_ru": "Телесный Патронус Гермионы — выдра. Официальная статья описывает её как сияющую серебряную выдру.",
+      "fact_justification_ru": "Вопрос отделяет форму Патронуса Гермионы от оленя Гарри, волка Люпина и терьера Рона.",
+      "source_ids": ["official-patronus"],
+      "distractor_rationales_ru": ["Лань — форма Патронуса Лили Поттер.", "Волк — изменившаяся форма Патронуса Тонкс, упомянутая в статье.", "Терьер — форма Патронуса Рона Уизли в статье."]
+    }
+  ],
+  "difficulty_summary": {"easy": 5, "medium": 5},
+  "answer_index_summary": {"0": 3, "1": 3, "2": 2, "3": 2},
+  "review_requirements_ru": "Нужны независимые слепое решение и фактическая проверка другим провайдером. Это черновик: он не является импортом, публикацией или редакционным принятием."
+}

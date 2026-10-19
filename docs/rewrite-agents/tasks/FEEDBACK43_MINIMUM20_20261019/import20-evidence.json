@@ -1,0 +1,91 @@
+{
+  "schema": "feedback43-minimum20-import-evidence/v1",
+  "version": "2026.10.19.minimum20",
+  "published_at": "2026-10-19T00:00:00Z",
+  "packs": {
+    "planets": {
+      "source": "quizzes/Science/planet_paradoxes_20261010.json",
+      "accepted_draft_sha256": "34d70d4c755a7598c4ca7428e3c51a5d39b3e048a74d683b879ead8024468b54",
+      "review_receipt": {
+        "decision": "ACCEPT EXACTDRAFT",
+        "reviewer_provider": "google",
+        "reviewer_model": "gemini-4-argon-high",
+        "conversation_id": "636bec86-c682-459d-b9b8-3c2081622832"
+      },
+      "source_question_count": 20,
+      "original_prefix_preserved": true,
+      "legacy_addition_fields": [
+        "id",
+        "type",
+        "text",
+        "options",
+        "correct_answer",
+        "difficulty",
+        "explanation"
+      ],
+      "canonical": {
+        "source_sha256": "81261770f98c99d8be4440be979cb7194e34066baaede2b16e59278848de2690",
+        "bundle_sha256": "ddb5254507ff898f65badbf215fd817515bbc010db0d321e6f46a04c59f89eff",
+        "draft_questions": 20,
+        "manifest_questions": 20,
+        "bundle_questions": 20,
+        "private_grading_questions": 20,
+        "private_grading_verified_for_new_ids": [
+          "planet-paradox-011",
+          "planet-paradox-012",
+          "planet-paradox-013",
+          "planet-paradox-014",
+          "planet-paradox-015",
+          "planet-paradox-016",
+          "planet-paradox-017",
+          "planet-paradox-018",
+          "planet-paradox-019",
+          "planet-paradox-020"
+        ],
+        "public_bundle_has_no_grading": true
+      }
+    },
+    "games": {
+      "source": "quizzes/Cinema/Thematic80/game_worlds.json",
+      "accepted_draft_sha256": "5b1f1474f1dd8d087c1442d60858be0e3074ef30759076fafddf8e1017cc89df",
+      "review_receipt": {
+        "decision": "ACCEPT EXACTDRAFT",
+        "reviewer_provider": "google",
+        "reviewer_model": "gemini-4-argon-high",
+        "conversation_id": "62b3017b-081f-42f9-ba48-07b0903d3d32"
+      },
+      "source_question_count": 20,
+      "original_prefix_preserved": true,
+      "legacy_addition_fields": [
+        "id",
+        "type",
+        "text",
+        "options",
+        "correct_answer",
+        "difficulty",
+        "explanation"
+      ],
+      "canonical": {
+        "source_sha256": "32b77109cfd973db3e12e92a40faf4884318e89336b21f326994a55ce68e65c6",
+        "bundle_sha256": "0530ebe3c73cad9fb7996f977be528240e6e28618a0608a2941a375310537642",
+        "draft_questions": 20,
+        "manifest_questions": 20,
+        "bundle_questions": 20,
+        "private_grading_questions": 20,
+        "private_grading_verified_for_new_ids": [
+          "theme-games-011",
+          "theme-games-012",
+          "theme-games-013",
+          "theme-games-014",
+          "theme-games-015",
+          "theme-games-016",
+          "theme-games-017",
+          "theme-games-018",
+          "theme-games-019",
+          "theme-games-020"
+        ],
+        "public_bundle_has_no_grading": true
+      }
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "contract": "quiz-master-storage-offload/v1",
+  "purpose": "reversible capacity recovery only; never an image, deployment, PVC, receipt, manifest, chart or global-prune operation",
+  "baseline": {
+    "host": "racknerd-f0269d5",
+    "namespace": "quiz-master",
+    "release": "quiz-master",
+    "deployment_revision": "67",
+    "helm_deployed_revision": 69,
+    "rollback_revision": 68,
+    "build_id": "quiz-2026.10.19-bones-36e0b68c",
+    "image": "quiz-master:quiz-2026.10.19-bones-36e0b68c@sha256:54a3455a7efac04ab6ee6f9ffb5a053d3ce2ca431ee938557d4ab2aed928d54a",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+  },
+  "targets": [
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-5df1d538/web",
+      "kind": "dir",
+      "label": "quiz-2026.10.19-feedback-5df1d538:web",
+      "sqlite": false,
+      "expected_bytes": 84508096
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-feedback-5df1d538/api",
+      "kind": "file",
+      "label": "quiz-2026.10.19-feedback-5df1d538:api",
+      "sqlite": false,
+      "expected_bytes": 15614112
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-books-8954b166/web",
+      "kind": "dir",
+      "label": "quiz-2026.10.19-books-8954b166:web",
+      "sqlite": false,
+      "expected_bytes": 84525256
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-books-8954b166/api",
+      "kind": "file",
+      "label": "quiz-2026.10.19-books-8954b166:api",
+      "sqlite": false,
+      "expected_bytes": 15614112
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/web",
+      "kind": "dir",
+      "label": "quiz-2026.10.19-bones-36e0b68c:web",
+      "sqlite": false,
+      "expected_bytes": 84799240
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/api",
+      "kind": "file",
+      "label": "quiz-2026.10.19-bones-36e0b68c:api",
+      "sqlite": false,
+      "expected_bytes": 15614112
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/base.api",
+      "kind": "file",
+      "label": "36e0-disposable:base.api",
+      "sqlite": false,
+      "expected_bytes": 15614112
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/new.api",
+      "kind": "file",
+      "label": "36e0-disposable:new.api",
+      "sqlite": false,
+      "expected_bytes": 15614112
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/base-quizzes",
+      "kind": "dir",
+      "label": "36e0-disposable:base-quizzes",
+      "sqlite": false,
+      "expected_bytes": 3500334
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/candidate-quizzes",
+      "kind": "dir",
+      "label": "36e0-disposable:candidate-quizzes",
+      "sqlite": false,
+      "expected_bytes": 3500334
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/restore-proof.sqlite",
+      "kind": "file",
+      "label": "36e0-disposable:restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 60190720
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/publish-restore-proof.sqlite",
+      "kind": "file",
+      "label": "36e0-disposable:publish-restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 60190720
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-bones-36e0b68c/rehearsal-data",
+      "kind": "dir",
+      "label": "36e0-disposable:rehearsal-data",
+      "sqlite": false,
+      "expected_bytes": 60190720
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.19-feedback-0c409557.sqlite",
+      "kind": "file",
+      "label": "older-backup:quiz-2026.10.19-feedback-0c409557.sqlite",
+      "sqlite": true,
+      "expected_bytes": 58146816
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.19-feedback-27d53b72.sqlite",
+      "kind": "file",
+      "label": "older-backup:quiz-2026.10.19-feedback-27d53b72.sqlite",
+      "sqlite": true,
+      "expected_bytes": 58146816
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.19-feedback-5df1d538.sqlite",
+      "kind": "file",
+      "label": "older-backup:quiz-2026.10.19-feedback-5df1d538.sqlite",
+      "sqlite": true,
+      "expected_bytes": 58146816
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-country483-3c22818.tar.gz",
+      "kind": "file",
+      "label": "legacy-archive:quiz-2026.10.15-country483-3c22818",
+      "sqlite": false,
+      "expected_bytes": 60989538
+    },
+    {
+      "path": "/opt/quiz-master/releases/quiz-2026.10.15-reader303-14b7da4.tar.gz",
+      "kind": "file",
+      "label": "legacy-archive:quiz-2026.10.15-reader303-14b7da4",
+      "sqlite": false,
+      "expected_bytes": 60989154
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-cutover-20261015T210834Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-cutover-20261015T224118Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-country483-3c22818-publish-20261015T230615Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-cutover-20261015T162707Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-cutover-20261015T171054Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.restore-proof.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.restore-proof.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    },
+    {
+      "path": "/opt/quiz-master/backups/quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.sqlite",
+      "kind": "file",
+      "label": "legacy-backup:quiz-2026.10.15-reader303-14b7da4-publish-20261015T181146Z.sqlite",
+      "sqlite": true,
+      "expected_bytes": 49364992
+    }
+  ],
+  "preserve": {
+    "backups": [
+      "quiz-2026.10.19-books-8954b166.sqlite",
+      "quiz-2026.10.19-bones-36e0b68c.sqlite"
+    ],
+    "paths": [
+      "all production images",
+      "all receipts",
+      "all charts",
+      "all manifests",
+      "all PVC data",
+      "all feedback data"
+    ],
+    "global_operations_forbidden": [
+      "docker image prune",
+      "ctr image prune",
+      "crictl rmi",
+      "kubectl delete",
+      "helm uninstall",
+      "process termination"
+    ]
+  },
+  "accounting": {
+    "known_previous_candidates_bytes": 693916428,
+    "oct15_archives_bytes": 121978692,
+    "oct15_backups_bytes": 592379904,
+    "planned_total_bytes": 1408275024,
+    "requested_recovery_bytes": 1400000000
+  },
+  "review_gate": {
+    "decision": "ACCEPT",
+    "different_provider_required": true,
+    "receipt_required_fields": [
+      "decision",
+      "reviewer_provider",
+      "plan_sha256",
+      "reviewed_at_utc"
+    ],
+    "author_provider": "openai"
+  },
+  "local_destination": ".run/private/storage-offload-20261019",
+  "legacy_archive_provenance": {
+    "hub_read_only_task_titles": [
+      "quiz_master-7sw: diagnose Country483 post-rehearsal capacity failure without mutation",
+      "quiz_master-7sw: implement bounded Reader303 controllers from verified62 baseline",
+      "quiz_master-7sw: fresh read-only Reader303 capacity and protected62 retention audit"
+    ],
+    "remote_observation": "two root-owned regular release archives; no current deployment, pod, Docker or CRI reference is permitted by the helper"
+  }
+}

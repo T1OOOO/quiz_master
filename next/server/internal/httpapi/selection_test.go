@@ -20,10 +20,19 @@ func (selectedRouteService) CatalogFor(id string) (attempts.Catalog, error) {
 	return c, nil
 }
 func (selectedRouteService) StartQuiz(_ context.Context, _ string, id string) (attempts.Attempt, error) {
+	if id == "legacy-archive" {
+		return attempts.Attempt{}, attempts.ErrNoMatch
+	}
 	if id != "q-selected" {
 		return attempts.Attempt{}, attempts.ErrValidation
 	}
 	return attempts.Attempt{AttemptID: "a-selected"}, nil
+}
+func (selectedRouteService) SourceCatalogFor(id string) (attempts.Catalog, error) {
+	if id != "legacy-archive" {
+		return attempts.Catalog{}, attempts.ErrValidation
+	}
+	return attempts.Catalog{Quiz: content.PublicQuiz{QuizID: id, Questions: make([]content.PublicQuestion, 19)}}, nil
 }
 func (selectedRouteService) CatalogForDifficulty(id, difficulty string) (attempts.Catalog, error) {
 	if id != "q-selected" || difficulty != "hard" {
@@ -69,6 +78,30 @@ func TestSelectedQuizReachesCatalogAndAttempt(t *testing.T) {
 	h.ServeHTTP(w, r)
 	if w.Code != 201 || !strings.Contains(w.Body.String(), "a-selected") {
 		t.Fatalf("selected start: %d %s", w.Code, w.Body.String())
+	}
+}
+
+func TestSourceCatalogExposesShortArchiveWithoutMakingItStartable(t *testing.T) {
+	h := AttemptRoutes(selectedRouteService{}, func(context.Context, string) (Principal, error) { return Principal{ID: "p_owner", Kind: "guest"}, nil })
+	w := httptest.NewRecorder()
+	h.ServeHTTP(w, httptest.NewRequest("GET", "/v1/source-catalog?quiz_id=legacy-archive", nil))
+	if w.Code != 200 || !strings.Contains(w.Body.String(), "legacy-archive") || strings.Contains(w.Body.String(), "correct_answer") || strings.Contains(w.Body.String(), "private_grading") {
+		t.Fatalf("source catalog: %d %s", w.Code, w.Body.String())
+	}
+	r := httptest.NewRequest("POST", "/v1/attempts", strings.NewReader(`{"quiz_id":"legacy-archive"}`))
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Authorization", "Bearer token")
+	w = httptest.NewRecorder()
+	h.ServeHTTP(w, r)
+	if w.Code != 422 {
+		t.Fatalf("short archive start: %d %s", w.Code, w.Body.String())
+	}
+	for _, path := range []string{"/v1/source-catalog", "/v1/source-catalog?quiz_id=legacy-archive&quiz_id=again", "/v1/source-catalog?difficulty=easy", "/v1/source-catalog?quiz_id=missing"} {
+		w = httptest.NewRecorder()
+		h.ServeHTTP(w, httptest.NewRequest("GET", path, nil))
+		if w.Code != 400 {
+			t.Fatalf("%s status %d", path, w.Code)
+		}
 	}
 }
 func TestDifficultySelectionRejectsMalformedValuesAndReachesBothEndpoints(t *testing.T) {

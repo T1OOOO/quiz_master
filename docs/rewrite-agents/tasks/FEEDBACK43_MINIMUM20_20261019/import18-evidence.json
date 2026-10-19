@@ -1,0 +1,121 @@
+{
+  "schema": "feedback43-minimum20-import-evidence/v1",
+  "version": "2026.10.19.minimum20",
+  "published_at": "2026-10-19T00:00:00Z",
+  "packs": {
+    "harry_potter": {
+      "source": "quizzes/Cinema/Thematic80/harry_potter.json",
+      "accepted_draft_sha256": "b7e4e85b2ccde778f5d622686de03a88845ffe18a2361c136ef4d9fc6bbcebeb",
+      "review_receipt": {
+        "decision": "ACCEPT EXACTDRAFT",
+        "reviewer_provider": "google",
+        "reviewer_model": "gemini-4-argon-high",
+        "conversation_id": "14fe2f03-be8e-43e0-b836-12ffca496a0f"
+      },
+      "source_question_count": 20,
+      "original_prefix_preserved": true,
+      "legacy_addition_fields": [
+        "id",
+        "type",
+        "text",
+        "options",
+        "correct_answer",
+        "difficulty",
+        "explanation"
+      ],
+      "canonical": {
+        "source_sha256": "23eda258ad884e68f4af0c0751660f1b097b1cd99d1d094fcfd76ebecb5c6309",
+        "bundle_sha256": "e77b44b1132198e0cd1f70a53badf4118a801457749267c8285f2ecad6199863",
+        "draft_questions": 20,
+        "manifest_questions": 20,
+        "bundle_questions": 20,
+        "private_grading_questions": 20,
+        "private_grading_verified_for_new_ids": [
+          "theme-hp-011",
+          "theme-hp-012",
+          "theme-hp-013",
+          "theme-hp-014",
+          "theme-hp-015",
+          "theme-hp-016",
+          "theme-hp-017",
+          "theme-hp-018",
+          "theme-hp-019",
+          "theme-hp-020"
+        ],
+        "public_bundle_has_no_grading": true
+      }
+    },
+    "cats": {
+      "source": "quizzes/Nature/Cats/cats_behavior_and_psychology.json",
+      "accepted_draft_sha256": "043f712010cc4590f2f9fcb5bc501d1810859f9f86c83fdcef35946e8849ac52",
+      "review_receipt": {
+        "decision": "ACCEPT EXACTDRAFT",
+        "reviewer_provider": "google",
+        "reviewer_model": "gemini-4-argon-high",
+        "conversation_id": "6f6882e6-d7c1-4d01-9b1f-28ffbf689500"
+      },
+      "source_question_count": 20,
+      "original_prefix_preserved": true,
+      "legacy_addition_fields": [
+        "id",
+        "type",
+        "text",
+        "options",
+        "correct_answer",
+        "difficulty",
+        "explanation"
+      ],
+      "canonical": {
+        "source_sha256": "ec3e5fe079f69280f7ed745bb7a0092827ebc1fe0f7e89686c1cd07532109e7a",
+        "bundle_sha256": "765d59228f896020f63ab5e9b49949506c954963e1c0e4857b653e7bf459b993",
+        "draft_questions": 20,
+        "manifest_questions": 20,
+        "bundle_questions": 20,
+        "private_grading_questions": 20,
+        "private_grading_verified_for_new_ids": [
+          "cats-behavior-and-psychology-018",
+          "cats-behavior-and-psychology-019",
+          "cats-behavior-and-psychology-020"
+        ],
+        "public_bundle_has_no_grading": true
+      }
+    },
+    "dogs": {
+      "source": "quizzes/Nature/Dogs/dogs_science_and_experiments.json",
+      "accepted_draft_sha256": "043f712010cc4590f2f9fcb5bc501d1810859f9f86c83fdcef35946e8849ac52",
+      "review_receipt": {
+        "decision": "ACCEPT EXACTDRAFT",
+        "reviewer_provider": "google",
+        "reviewer_model": "gemini-4-argon-high",
+        "conversation_id": "6f6882e6-d7c1-4d01-9b1f-28ffbf689500"
+      },
+      "source_question_count": 20,
+      "original_prefix_preserved": true,
+      "legacy_addition_fields": [
+        "id",
+        "type",
+        "text",
+        "options",
+        "correct_answer",
+        "difficulty",
+        "explanation"
+      ],
+      "canonical": {
+        "source_sha256": "6318b077d71d1843a68bcfd93bea4675dd51db008e231899e9eb022ee2e25093",
+        "bundle_sha256": "331ea24707b5d487d2bfe634301b6ed72a2fe12903493278463ca5973e74eb41",
+        "draft_questions": 20,
+        "manifest_questions": 20,
+        "bundle_questions": 20,
+        "private_grading_questions": 20,
+        "private_grading_verified_for_new_ids": [
+          "dogs-science-and-experiments-016",
+          "dogs-science-and-experiments-017",
+          "dogs-science-and-experiments-018",
+          "dogs-science-and-experiments-019",
+          "dogs-science-and-experiments-020"
+        ],
+        "public_bundle_has_no_grading": true
+      }
+    }
+  }
+}

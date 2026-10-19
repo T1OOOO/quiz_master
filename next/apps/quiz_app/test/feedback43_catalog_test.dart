@@ -17,8 +17,8 @@ void main() {
       final container = ProviderContainer();
       addTearDown(container.dispose);
       final packs = await container.read(discoveryCatalogProvider.future);
-      expect(packs, hasLength(144));
-      expect(packs.fold<int>(0, (sum, p) => sum + p.questions), 4486);
+      expect(packs, hasLength(105));
+      expect(packs.fold<int>(0, (sum, p) => sum + p.questions), 4520);
       for (final row in raw.cast<Map<String, dynamic>>()) {
         final counts = row['difficulty_counts'] as Map<String, dynamic>;
         expect(counts.keys.toSet(), {

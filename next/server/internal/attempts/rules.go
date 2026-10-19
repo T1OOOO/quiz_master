@@ -26,6 +26,17 @@ var (
 	contractID          = regexp.MustCompile(`^[a-z][a-z0-9-]{2,63}$`)
 )
 
+const MinimumAttemptQuestions = 20
+
+// ValidateNewAttemptQuestions keeps new attempts meaningful while leaving
+// already-persisted attempts and round partitioning untouched.
+func ValidateNewAttemptQuestions(questions []content.PublicQuestion) error {
+	if len(questions) < MinimumAttemptQuestions {
+		return ErrNoMatch
+	}
+	return nil
+}
+
 func ExternalParticipant(id string) (string, error) {
 	if !internalParticipant.MatchString(id) {
 		return "", ErrForbidden
@@ -52,7 +63,7 @@ func SelectDifficulty(quiz content.PublicQuiz, difficulty string) (content.Publi
 			selected.Questions = append(selected.Questions, question)
 		}
 	}
-	if len(selected.Questions) == 0 {
+	if err := ValidateNewAttemptQuestions(selected.Questions); err != nil {
 		return content.PublicQuiz{}, ErrNoMatch
 	}
 	return selected, nil

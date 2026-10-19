@@ -128,6 +128,9 @@ func (s *Service) CatalogFor(id string) (Catalog, error) {
 	if err != nil {
 		return Catalog{}, err
 	}
+	if err := ValidateNewAttemptQuestions(selected.bundle.Quiz.Questions); err != nil {
+		return Catalog{}, err
+	}
 	return selected.Catalog(), nil
 }
 
@@ -207,6 +210,9 @@ func DifficultyCounts(quiz content.PublicQuiz) map[string]int {
 }
 func (s *Service) now() time.Time { return s.opts.Now().UTC().Truncate(time.Microsecond) }
 func (s *Service) Start(ctx context.Context, owner string) (Attempt, error) {
+	if err := ValidateNewAttemptQuestions(s.bundle.Quiz.Questions); err != nil {
+		return Attempt{}, err
+	}
 	external, err := ExternalParticipant(owner)
 	if err != nil {
 		return Attempt{}, err

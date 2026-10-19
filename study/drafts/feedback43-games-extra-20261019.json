@@ -1,0 +1,317 @@
+{
+  "draft_id": "feedback43-games-extra-20261019",
+  "status": "DRAFT ONLY — independent fact-check required before any import",
+  "language": "ru",
+  "base_pack": {
+    "id": "theme-game-worlds",
+    "source_path": "docs/rewrite-agents/tasks/THEMATIC80/screen-games/theme-game-worlds.candidate.json",
+    "existing_question_count": 10,
+    "combined_target_count": 20
+  },
+  "source_revision": "36e0b68c64d1b6647923b5e5ddcc70d34e7edd60",
+  "accessed": "2026-10-19",
+  "questions": [
+    {
+      "id": "theme-games-011",
+      "type": "choice",
+      "text": "На какую планету отправляется Самус в Metroid Dread, чтобы расследовать загадочную передачу?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "ZDR",
+        "SR388",
+        "Зебес",
+        "Таллон IV"
+      ],
+      "correct_answer": 0,
+      "difficulty": "лёгкий",
+      "explanation": "Самус прибывает на удалённую планету ZDR после сообщения о возможном выживании паразита X. Там она оказывается в лабиринте опасностей и преследующих её роботов E.M.M.I.",
+      "source_url": "https://metroid.nintendo.com/dread/story/",
+      "source_quote": "A mysterious transmission draws Samus to planet ZDR.",
+      "fact_reason": "Официальная страница сюжета Nintendo прямо называет ZDR планетой, куда загадочная передача приводит Самус.",
+      "distractor_rationales": {
+        "b": "SR388 связана с прежними событиями серии и паразитом X, но не является местом действия Metroid Dread.",
+        "c": "Зебес — важная планета ранних игр Metroid, однако расследование в этой части проходит не там.",
+        "d": "Таллон IV относится к Metroid Prime, а не к миссии Самус в Metroid Dread."
+      }
+    },
+    {
+      "id": "theme-games-012",
+      "type": "choice",
+      "text": "Что должна уничтожить Самус в Metroid Dread, чтобы временно получить Омега-пушку против E.M.M.I.?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Корабельный двигатель",
+        "Статую Чозо",
+        "Центральный блок",
+        "Дверь зоны E.M.M.I."
+      ],
+      "correct_answer": 2,
+      "difficulty": "средний",
+      "explanation": "Центральный блок — органический суперкомпьютер, связанный с Омега-пушкой. После его уничтожения Самус временно получает оружие, способное пробить защитную броню E.M.M.I.",
+      "source_url": "https://metroid.nintendo.com/dread/planet-zdr/",
+      "source_quote": "Central units hold the key to wielding the Omega Cannon.",
+      "fact_reason": "Nintendo описывает Центральные блоки как источник доступа к Омега-пушке и предлагает уничтожить блок, чтобы временно ею воспользоваться.",
+      "distractor_rationales": {
+        "a": "Двигатель корабля не назван источником Омега-пушки и не связан с боем против E.M.M.I.",
+        "b": "Чозо — народ и противники в игре, но статуя Чозо не открывает Омега-пушку.",
+        "d": "Двери ограничивают зоны E.M.M.I.; доступ к специальному оружию дают не они."
+      }
+    },
+    {
+      "id": "theme-games-013",
+      "type": "choice",
+      "text": "Какая цель определяет победителя в обычном Turf War в Splatoon 3?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Собрать больше золотых яиц",
+        "Закрасить своей краской больше территории",
+        "Победить всех боссов-лососёвых",
+        "Удерживать Ультра-сигнал до конца матча"
+      ],
+      "correct_answer": 1,
+      "difficulty": "лёгкий",
+      "explanation": "В обычном Turf War две команды по четыре игрока за три минуты стараются покрыть своей краской как можно большую площадь карты. Золотые яйца и Ультра-сигнал относятся к другим режимам.",
+      "source_url": "https://splatoon.nintendo.com/en/news/enter-the-splatlands-when-splatoon-3-surfaces-sept-9/",
+      "source_quote": "teams of four face off to cover the most ground in their ink",
+      "fact_reason": "Официальная новость Nintendo определяет Turf War как матч 4 на 4, где команды стараются закрасить наибольшую площадь.",
+      "distractor_rationales": {
+        "a": "Золотые яйца собирают в Salmon Run, а не ради победы в Turf War.",
+        "c": "Боссы-лососёвые встречаются в Salmon Run, который является отдельным кооперативным режимом.",
+        "d": "Ультра-сигнал связан с трёхцветным Turf War во время Splatfest, а не с обычным матчем."
+      }
+    },
+    {
+      "id": "theme-games-014",
+      "type": "choice",
+      "text": "Кем выступает игрок в сюжетном режиме Splatoon 3, исследуя тайны Альтерны?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Капитаном Каракатицей",
+        "Маленьким Лососёнком",
+        "Мариной",
+        "Агентом 3"
+      ],
+      "correct_answer": 3,
+      "difficulty": "средний",
+      "explanation": "Сюжетный режим Splatoon 3 поручает игроку роль Агента 3 — новобранца New Squidbeak Splatoon. Вместе с Маленьким Лососёнком он противостоит армии Октарианцев и исследует Альтерну.",
+      "source_url": "https://splatoon.nintendo.com/en/news/catch-up-on-all-the-latest-from-the-splatoon-3-direct/",
+      "source_quote": "As Agent 3, the latest recruit of the New Squidbeak Splatoon",
+      "fact_reason": "Nintendo прямо называет игрового героя сюжетного режима Агентом 3 и описывает его борьбу с армией Октарианцев.",
+      "distractor_rationales": {
+        "a": "Капитан Каракатица — персонаж серии, но официальный текст называет игрока новобранцем Агентом 3.",
+        "b": "Маленький Лососёнок сопровождает Агента 3, однако не является ролью игрока.",
+        "c": "Марина — персонаж Splatoon 2, не герой сюжетной кампании Splatoon 3."
+      }
+    },
+    {
+      "id": "theme-games-015",
+      "type": "choice",
+      "text": "Как в Pikmin 4 новые пикмины присоединяются к отряду после того, как их вырастили?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Их выдёргивают из земли после прорастания",
+        "Их покупают у Корпуса спасения",
+        "Их вызывают через терминал корабля",
+        "Они появляются после победы над боссом"
+      ],
+      "correct_answer": 0,
+      "difficulty": "лёгкий",
+      "explanation": "Выросшего пикмина нужно выдернуть из земли: после этого он присоединяется к отряду и может выполнять задания.",
+      "source_url": "https://pikmin4.nintendo.com/",
+      "source_quote": "If you pluck them from the ground, they’ll join you.",
+      "fact_reason": "Официальная страница Pikmin 4 прямо говорит, что после выдёргивания из земли выросшие пикмины присоединяются к игроку.",
+      "distractor_rationales": {
+        "b": "Корпус спасения участвует в сюжете, но Nintendo не описывает покупку пикминов как способ пополнить отряд.",
+        "c": "Nintendo описывает выдёргивание выросших пикминов из земли, а не вызов через терминал.",
+        "d": "Победы над боссами могут продвигать игру, но не являются указанным способом присоединения выросшего пикмина."
+      }
+    },
+    {
+      "id": "theme-games-016",
+      "type": "choice",
+      "text": "Кто такой Оатчи в Pikmin 4?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Механик корабля S.S. Shepherd",
+        "Правитель местной планеты",
+        "Пёс-спасатель и напарник игрока",
+        "Вид ледяных пикминов"
+      ],
+      "correct_answer": 2,
+      "difficulty": "средний",
+      "explanation": "Оатчи — пёс-спасатель, которого можно тренировать по ходу приключения. Он помогает исследователю вместе с пикминами и может участвовать в переноске и поиске экипажа.",
+      "source_url": "https://pikmin4.nintendo.com/",
+      "source_quote": "train this Rescue Pup to become more helpful",
+      "fact_reason": "Nintendo называет Оатчи Rescue Pup, надёжным партнёром, которого игрок может тренировать в ходе приключения.",
+      "distractor_rationales": {
+        "a": "S.S. Shepherd — корабль Корпуса спасения; Оатчи описан как напарник-пёс, а не механик.",
+        "b": "Официальная страница не называет Оатчи правителем; он помогает спасательной экспедиции.",
+        "d": "Оатчи — отдельный пёс-партнёр, а не разновидность пикминов."
+      }
+    },
+    {
+      "id": "theme-games-017",
+      "type": "choice",
+      "text": "Что запускает прикосновение к Чудо-цветку в уровне Super Mario Bros. Wonder?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Автоматическое завершение уровня",
+        "Чудо-эффект, меняющий уровень",
+        "Переход в подводный режим",
+        "Появление второго игрока"
+      ],
+      "correct_answer": 1,
+      "difficulty": "лёгкий",
+      "explanation": "Чудо-цветок активирует Чудо-эффект: трубы могут начать двигаться, ландшафт — наклониться, а перспектива — измениться. Это особое преобразование уровня, а не обычный предмет завершения.",
+      "source_url": "https://www.nintendo.com/en-ca/whatsnew/experience-the-unexpected-in-super-mario-bros-wonder-gameplay-presentation/",
+      "source_quote": "a Wonder effect will trigger, causing dramatic changes",
+      "fact_reason": "Nintendo объясняет, что касание Чудо-цветка запускает Wonder effect, вызывающий заметные изменения в уровне.",
+      "distractor_rationales": {
+        "a": "Чудо-эффект меняет ход уровня, но Nintendo не называет его условием мгновенного завершения.",
+        "c": "Эффекты могут быть разными, однако подводный режим не является общим определением Чудо-цветка.",
+        "d": "Локальный мультиплеер существует отдельно; Чудо-цветок не добавляет игрока."
+      }
+    },
+    {
+      "id": "theme-games-018",
+      "type": "choice",
+      "text": "Сколько отдельных миров окружают Лепестковые острова в Цветочном королевстве Super Mario Bros. Wonder?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Шесть",
+        "Три",
+        "Восемь",
+        "Двенадцать"
+      ],
+      "correct_answer": 0,
+      "difficulty": "средний",
+      "explanation": "Цветочное королевство состоит из шести отдельных миров, расположенных вокруг Лепестковых островов. Вместе с островами это даёт семь областей для исследования на карте мира.",
+      "source_url": "https://www.nintendo.com/en-ca/whatsnew/experience-the-unexpected-in-super-mario-bros-wonder-gameplay-presentation/",
+      "source_quote": "six distinct worlds that circle the Petal Isles",
+      "fact_reason": "В официальном описании Nintendo сказано, что шесть отдельных миров окружают Petal Isles.",
+      "distractor_rationales": {
+        "b": "Три — популярное число для группировок в других играх, но Nintendo указывает шесть миров.",
+        "c": "Восемь не следует из состава Цветочного королевства; вместе с островами областей семь.",
+        "d": "Двенадцать не названо в описании карты Цветочного королевства."
+      }
+    },
+    {
+      "id": "theme-games-019",
+      "type": "choice",
+      "text": "Какие две враждующие нации ведут бесконечный конфликт в мире Айониос из Xenoblade Chronicles 3?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Хайрул и Лорул",
+        "Фодлан и Бригида",
+        "Кевес и Агнус",
+        "Бионис и Мехонис"
+      ],
+      "correct_answer": 2,
+      "difficulty": "лёгкий",
+      "explanation": "Айониос — мир Xenoblade Chronicles 3, где конфликтуют Кевес и Агнус. Герои из обеих сторон временно оставляют вражду, чтобы разобраться в истинной угрозе их миру.",
+      "source_url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/",
+      "source_quote": "nations of Keves and Agnus",
+      "fact_reason": "Официальная страница Nintendo называет Кевес и Агнус нациями, чьи поселения и солдаты определяют конфликт Айониоса.",
+      "distractor_rationales": {
+        "a": "Хайрул и Лорул относятся к серии The Legend of Zelda, а не к Айониосу.",
+        "b": "Фодлан — континент Fire Emblem: Three Houses; эти названия не являются парой наций Xenoblade Chronicles 3.",
+        "d": "Бионис и Мехонис — ключевые названия Xenoblade Chronicles, но не противостоящие нации этой части."
+      }
+    },
+    {
+      "id": "theme-games-020",
+      "type": "choice",
+      "text": "Какую роль может выполнять Герой из Айониоса в Xenoblade Chronicles 3?",
+      "option_ids": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "options": [
+        "Становится постоянным восьмым бойцом",
+        "Заменяет всю основную шестёрку",
+        "Может участвовать только в роликах сюжета",
+        "Присоединяется к группе как седьмой боец"
+      ],
+      "correct_answer": 3,
+      "difficulty": "средний",
+      "explanation": "Жители Айониоса могут стать Героями и помочь группе как седьмой участник. Одновременно в бою участвует только один Герой, поэтому их можно менять в зависимости от задачи.",
+      "source_url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/",
+      "source_quote": "as a seventh party member. Only one of these heroes",
+      "fact_reason": "Nintendo описывает Героев как седьмого участника и уточняет, что на поле боя одновременно может быть только один.",
+      "distractor_rationales": {
+        "a": "Официальное описание говорит о седьмом, а не о восьмом постоянном участнике.",
+        "b": "Герой дополняет основную группу; Nintendo не описывает замену всей шестёрки.",
+        "c": "Герои участвуют в бою и имеют классы, поэтому они не ограничены сюжетными роликами."
+      }
+    }
+  ],
+  "editorial_checks": {
+    "new_question_count": 10,
+    "combined_question_count": 20,
+    "new_correct_answer_index_counts": {
+      "0": 3,
+      "1": 2,
+      "2": 3,
+      "3": 2
+    },
+    "combined_correct_answer_index_counts": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "difficulty_mix": {
+      "лёгкий": 5,
+      "средний": 5
+    },
+    "source_policy": "Все десять источников — официальные страницы Nintendo; цитаты короче 25 слов.",
+    "review_required": "Независимый фактчекер должен слепо решить вопросы, затем проверить ключи, первичные источники, русскую формулировку, дистракторы и отсутствие дубликатов перед любым импортом."
+  }
+}

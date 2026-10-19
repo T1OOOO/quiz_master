@@ -146,6 +146,28 @@ func TestDifficultySelectionPartitionsFilteredPackWithoutRepeats(t *testing.T) {
 	}
 }
 
+func TestSelectDifficultyRequiresAtLeastTwentyQuestionsForANewAttempt(t *testing.T) {
+	quiz := content.PublicQuiz{QuizID: "minimum-twenty"}
+	for i := 0; i < 39; i++ {
+		difficulty := "hard"
+		if i < 19 {
+			difficulty = "easy"
+		}
+		quiz.Questions = append(quiz.Questions, content.PublicQuestion{QuestionID: fmt.Sprintf("q-%02d", i), Difficulty: difficulty})
+	}
+
+	if _, err := SelectDifficulty(quiz, "easy"); !errors.Is(err, ErrNoMatch) {
+		t.Fatalf("nineteen selected questions = %v, want no match", err)
+	}
+	selected, err := SelectDifficulty(quiz, "hard")
+	if err != nil {
+		t.Fatalf("twenty selected questions: %v", err)
+	}
+	if len(selected.Questions) != 20 {
+		t.Fatalf("hard selection count = %d", len(selected.Questions))
+	}
+}
+
 func TestQuestionRoundBoundaries(t *testing.T) {
 	for _, tt := range []struct {
 		questionCount int

@@ -1,0 +1,1019 @@
+{
+  "draft_status": "editorial_only_not_for_import_or_publication",
+  "source_evidence": {
+    "catalog": "next/apps/quiz_app/assets/catalog.json",
+    "minimum20_audit": "docs/rewrite-agents/tasks/FEEDBACK43_BONES_20261019/minimum20-catalog-audit.json",
+    "source_scan": "144 source JSON files; all 48 audited short public packs mapped to exact source files",
+    "question_check": "Count source questions and reject duplicate question IDs or equal stems before merge.",
+    "lotr_correction": "Re-read legacy lotr stems: Orodruin/Gollum is Return of the King, nine Fellowship members and Gandalf/Shadowfax span the trilogy. Fellowship-only proposal rejected."
+  },
+  "proposed_static_derived_banks": [
+    {
+      "target_quiz_id": "home-alone-2",
+      "title_ru": "Один дома 2: Затерянный в Нью-Йорке",
+      "category": "Кино",
+      "semantic_reason_ru": "Три последовательные части одного фильма 1992 года.",
+      "legacy_alias_quiz_ids": [
+        "home-alone-2-part-1",
+        "home-alone-2-part-2",
+        "home-alone-2-part-3"
+      ],
+      "total_questions": 65,
+      "sources": [
+        {
+          "public_quiz_id": "home-alone-2-part-1",
+          "source_path": "quizzes/Cinema/HomeAlone/home_alone_2_part_1.json",
+          "source_quiz_id": "home_alone_2_part_1",
+          "question_count": 25
+        },
+        {
+          "public_quiz_id": "home-alone-2-part-2",
+          "source_path": "quizzes/Cinema/HomeAlone/home_alone_2_part_2.json",
+          "source_quiz_id": "home_alone_2_part_2",
+          "question_count": 25
+        },
+        {
+          "public_quiz_id": "home-alone-2-part-3",
+          "source_path": "quizzes/Cinema/HomeAlone/home_alone_2_part_3.json",
+          "source_quiz_id": "home_alone_2_part_3",
+          "question_count": 15
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "lotr-trilogy",
+      "title_ru": "Средиземье: книги и фильмы",
+      "category": "Кино",
+      "semantic_reason_ru": "Единый мир Толкина в книгах и экранизациях; исходный lore-набор включает также вопрос о «Хоббите», поэтому название не ограничено тремя фильмами.",
+      "legacy_alias_quiz_ids": [
+        "lotr",
+        "lotr-fellowship-100",
+        "lotr-two-towers-lore-100",
+        "lotr-return-king-bts-100"
+      ],
+      "total_questions": 251,
+      "sources": [
+        {
+          "public_quiz_id": "lotr",
+          "source_path": "quizzes/Cinema/LOTR/lotr.json",
+          "source_quiz_id": "lotr",
+          "question_count": 3
+        },
+        {
+          "public_quiz_id": "lotr-fellowship-100",
+          "source_path": "quizzes/Cinema/LOTR/lotr_fellowship_100.json",
+          "source_quiz_id": "lotr_fellowship_100",
+          "question_count": 50
+        },
+        {
+          "public_quiz_id": "lotr-two-towers-lore-100",
+          "source_path": "quizzes/Cinema/LOTR/lotr_two_towers_lore_100.json",
+          "source_quiz_id": "lotr_two_towers_lore_100",
+          "question_count": 100
+        },
+        {
+          "public_quiz_id": "lotr-return-king-bts-100",
+          "source_path": "quizzes/Cinema/LOTR/lotr_return_king_bts_100.json",
+          "source_quiz_id": "lotr_return_king_bts_100",
+          "question_count": 100
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "each of the four legacy quiz IDs remains a resolvable alias to lotr-trilogy; do not present it as Fellowship-only"
+      },
+      "semantic_near_duplicates_for_editorial_dedupe": [
+        {
+          "legacy_question_id": "q_lotr_0_lotr-q1",
+          "candidate_question_id": "lotr_rk_12",
+          "relation_ru": "Оба вопроса о финальном уничтожении Кольца; один спрашивает, кто упал в Ородруин, другой — как Кольцо уничтожено. Не одинаковые stems, но требуют редакционной проверки на повтор факта."
+        },
+        {
+          "legacy_question_id": "q_lotr_0_lotr-q1",
+          "candidate_question_id": "lotr_rk_48",
+          "relation_ru": "Оба вопроса связывают уничтожение Кольца с Ородруином; разные формулировки и ответы, но близкий факт."
+        },
+        {
+          "legacy_question_id": "q_lotr_1_lotr-q2",
+          "candidate_question_id": "lotr_f_15",
+          "relation_ru": "Оба относятся к составу Братства: общий размер и число хоббитов. Это связанные, но не одинаковые проверки."
+        },
+        {
+          "legacy_question_id": "q_lotr_2_lotr-q3",
+          "candidate_question_id": "lotr_tt_8",
+          "relation_ru": "Оба спрашивают имя коня Гэндальфа/меарас. Вероятный повтор ответа «Тенегрив»; решение об удалении или сохранении принимает редактор до derived bank."
+        }
+      ],
+      "source_raw_question_count": 253,
+      "question_exclusions": [
+        {
+          "question_id": "q_lotr_0_lotr-q1",
+          "covered_by_source_question_id": "lotr_rk_12",
+          "reason_ru": "Повторяет факт об уничтожении Кольца при падении Голлума; старый вопрос сохранён в исходном архивном наборе."
+        },
+        {
+          "question_id": "q_lotr_2_lotr-q3",
+          "covered_by_source_question_id": "lotr_tt_8",
+          "reason_ru": "Повторяет имя коня Гэндальфа; старый вопрос сохранён в исходном архивном наборе."
+        }
+      ],
+      "near_duplicate_review": "Old Fellowship size9 differs from new hobbit-count4 and is retained. Two repeated old facts excluded explicitly; all three old facts remain covered. Existing lore corpus is reused unchanged, not freshly fact-certified in full."
+    },
+    {
+      "target_quiz_id": "cinema-people-20261011",
+      "title_ru": "Кино: люди, роли, звук и ремесло",
+      "category": "Кино",
+      "semantic_reason_ru": "Люди, роли, режиссура, исполнение, звук и производство — один профессиональный слой кино.",
+      "legacy_alias_quiz_ids": [
+        "cinema-people-20261011",
+        "cinema-encore-20261011",
+        "acting-craft-20261014",
+        "screen-song-20261014",
+        "film-craft-20261013"
+      ],
+      "total_questions": 54,
+      "sources": [
+        {
+          "public_quiz_id": "cinema-people-20261011",
+          "source_path": "quizzes/Cinema/People/cinema_people_20261011.json",
+          "source_quiz_id": "cinema-people-20261011",
+          "question_count": 28
+        },
+        {
+          "public_quiz_id": "cinema-encore-20261011",
+          "source_path": "quizzes/Cinema/People/cinema_encore_20261011.json",
+          "source_quiz_id": "cinema-encore-20261011",
+          "question_count": 10
+        },
+        {
+          "public_quiz_id": "acting-craft-20261014",
+          "source_path": "quizzes/Cinema/acting_craft_20261014.json",
+          "source_quiz_id": "acting-craft-20261014",
+          "question_count": 8
+        },
+        {
+          "public_quiz_id": "screen-song-20261014",
+          "source_path": "quizzes/Cinema/screen_song_20261014.json",
+          "source_quiz_id": "screen-song-20261014",
+          "question_count": 4
+        },
+        {
+          "public_quiz_id": "film-craft-20261013",
+          "source_path": "quizzes/Preparation/film_craft_20261013.json",
+          "source_quiz_id": "film-craft-20261013",
+          "question_count": 4
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "animation-studios-pixar-dreamworks",
+      "title_ru": "Анимация Pixar и DreamWorks",
+      "category": "Кино",
+      "semantic_reason_ru": "Полнометражная анимация двух прямо названных студий.",
+      "legacy_alias_quiz_ids": [
+        "theme-pixar",
+        "theme-dreamworks"
+      ],
+      "total_questions": 20,
+      "sources": [
+        {
+          "public_quiz_id": "theme-pixar",
+          "source_path": "quizzes/Cinema/Thematic80/pixar.json",
+          "source_quiz_id": "theme-pixar",
+          "question_count": 10
+        },
+        {
+          "public_quiz_id": "theme-dreamworks",
+          "source_path": "quizzes/Cinema/Thematic80/dreamworks.json",
+          "source_quiz_id": "theme-dreamworks",
+          "question_count": 10
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "theme-tv-series",
+      "title_ru": "Телесериалы: «Игра престолов» и другие миры",
+      "category": "Кино",
+      "semantic_reason_ru": "«Игра престолов» — телесериал, а второй источник тоже посвящён сериалам.",
+      "legacy_alias_quiz_ids": [
+        "theme-tv-series",
+        "theme-game-of-thrones"
+      ],
+      "total_questions": 20,
+      "sources": [
+        {
+          "public_quiz_id": "theme-tv-series",
+          "source_path": "quizzes/Cinema/Thematic80/tv_series.json",
+          "source_quiz_id": "theme-tv-series",
+          "question_count": 10
+        },
+        {
+          "public_quiz_id": "theme-game-of-thrones",
+          "source_path": "quizzes/Cinema/Thematic80/game_of_thrones.json",
+          "source_quiz_id": "theme-game-of-thrones",
+          "question_count": 10
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "gastronomy-animal-products",
+      "title_ru": "Продукты животного происхождения: сыры, мясо и рыба",
+      "category": "Гастрономия",
+      "semantic_reason_ru": "Точный общий предмет: продукты животного происхождения.",
+      "legacy_alias_quiz_ids": [
+        "gastronomy-cheeses-and-dairy",
+        "gastronomy-meat-and-fish"
+      ],
+      "total_questions": 32,
+      "sources": [
+        {
+          "public_quiz_id": "gastronomy-cheeses-and-dairy",
+          "source_path": "quizzes/Gastronomy/gastronomy_cheeses_and_dairy.json",
+          "source_quiz_id": "gastronomy_сыры_и_молочные_продукты",
+          "question_count": 19
+        },
+        {
+          "public_quiz_id": "gastronomy-meat-and-fish",
+          "source_path": "quizzes/Gastronomy/gastronomy_meat_and_fish.json",
+          "source_quiz_id": "gastronomy_мясо_и_рыба",
+          "question_count": 13
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "gastronomy-1",
+      "title_ru": "Гастрономия: общие факты",
+      "category": "Гастрономия",
+      "semantic_reason_ru": "Две части одного исходного пула «Общие факты».",
+      "legacy_alias_quiz_ids": [
+        "gastronomy-1",
+        "gastronomy-2"
+      ],
+      "total_questions": 76,
+      "sources": [
+        {
+          "public_quiz_id": "gastronomy-1",
+          "source_path": "quizzes/Gastronomy/gastronomy_general_facts_1.json",
+          "source_quiz_id": "gastronomy_общие_факты_1",
+          "question_count": 57
+        },
+        {
+          "public_quiz_id": "gastronomy-2",
+          "source_path": "quizzes/Gastronomy/gastronomy_general_facts_2.json",
+          "source_quiz_id": "gastronomy_общие_факты_2",
+          "question_count": 19
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "music-people-20261011",
+      "title_ru": "Музыка: голоса, студии и записи",
+      "category": "Музыка",
+      "semantic_reason_ru": "Певцы, авторы, записи и студийная работа — единый слой музыкального производства.",
+      "legacy_alias_quiz_ids": [
+        "music-people-20261011",
+        "music-encore-20261011",
+        "music-craft-20261013"
+      ],
+      "total_questions": 42,
+      "sources": [
+        {
+          "public_quiz_id": "music-people-20261011",
+          "source_path": "quizzes/MusicPeople/music_people_20261011.json",
+          "source_quiz_id": "music-people-20261011",
+          "question_count": 28
+        },
+        {
+          "public_quiz_id": "music-encore-20261011",
+          "source_path": "quizzes/MusicPeople/music_encore_20261011.json",
+          "source_quiz_id": "music-encore-20261011",
+          "question_count": 10
+        },
+        {
+          "public_quiz_id": "music-craft-20261013",
+          "source_path": "quizzes/MusicPeople/music_craft_20261013.json",
+          "source_quiz_id": "music-craft-20261013",
+          "question_count": 4
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "cats-biology-anatomy",
+      "title_ru": "Кошки: биология и анатомия",
+      "category": "Природа",
+      "semantic_reason_ru": "Две последовательные части одного анатомического корпуса.",
+      "legacy_alias_quiz_ids": [
+        "cats-biology-anatomy-part-1",
+        "cats-biology-anatomy-part-2"
+      ],
+      "total_questions": 39,
+      "sources": [
+        {
+          "public_quiz_id": "cats-biology-anatomy-part-1",
+          "source_path": "quizzes/Nature/Cats/cats_biology_anatomy_part_1.json",
+          "source_quiz_id": "cats_biology_anatomy_part_1",
+          "question_count": 20
+        },
+        {
+          "public_quiz_id": "cats-biology-anatomy-part-2",
+          "source_path": "quizzes/Nature/Cats/cats_biology_anatomy_part_2.json",
+          "source_quiz_id": "cats_biology_anatomy_part_2",
+          "question_count": 19
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "cats-breeds",
+      "title_ru": "Кошки: породы и происхождение",
+      "category": "Природа",
+      "semantic_reason_ru": "Искусственные, природные и древние породы — один предмет классификации и происхождения.",
+      "legacy_alias_quiz_ids": [
+        "cats-breeds-man-made",
+        "cats-breeds-natural-and-ancient-part-1",
+        "cats-breeds-natural-and-ancient-part-2"
+      ],
+      "total_questions": 55,
+      "sources": [
+        {
+          "public_quiz_id": "cats-breeds-man-made",
+          "source_path": "quizzes/Nature/Cats/cats_breeds_man_made.json",
+          "source_quiz_id": "cats_breeds_man_made",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "cats-breeds-natural-and-ancient-part-1",
+          "source_path": "quizzes/Nature/Cats/cats_breeds_natural_and_ancient_part_1.json",
+          "source_quiz_id": "cats_breeds_natural_and_ancient_part_1",
+          "question_count": 20
+        },
+        {
+          "public_quiz_id": "cats-breeds-natural-and-ancient-part-2",
+          "source_path": "quizzes/Nature/Cats/cats_breeds_natural_and_ancient_part_2.json",
+          "source_quiz_id": "cats_breeds_natural_and_ancient_part_2",
+          "question_count": 20
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "cats-history-culture",
+      "title_ru": "Кошки в истории, мифах и культуре",
+      "category": "Природа",
+      "semantic_reason_ru": "Египет, мифология, культура и исторические эпохи образуют один корпус.",
+      "legacy_alias_quiz_ids": [
+        "cats-history-ancient-egypt",
+        "cats-history-famous-and-culture",
+        "cats-history-mythology",
+        "cats-history-other-eras"
+      ],
+      "total_questions": 60,
+      "sources": [
+        {
+          "public_quiz_id": "cats-history-ancient-egypt",
+          "source_path": "quizzes/Nature/Cats/cats_history_ancient_egypt.json",
+          "source_quiz_id": "cats_history_ancient_egypt",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "cats-history-famous-and-culture",
+          "source_path": "quizzes/Nature/Cats/cats_history_famous_and_culture.json",
+          "source_quiz_id": "cats_history_famous_and_culture",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "cats-history-mythology",
+          "source_path": "quizzes/Nature/Cats/cats_history_mythology.json",
+          "source_quiz_id": "cats_history_mythology",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "cats-history-other-eras",
+          "source_path": "quizzes/Nature/Cats/cats_history_other_eras.json",
+          "source_quiz_id": "cats_history_other_eras",
+          "question_count": 15
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "cats-trivia-records",
+      "title_ru": "Кошки: факты и рекорды",
+      "category": "Природа",
+      "semantic_reason_ru": "Четыре части одного цикла «Факты о кошках / рекорды и общее».",
+      "legacy_alias_quiz_ids": [
+        "cats-trivia-records-and-general-part-1",
+        "cats-trivia-records-and-general-part-2",
+        "cats-trivia-records-and-general-part-3",
+        "cats-trivia-records-and-general-part-4"
+      ],
+      "total_questions": 85,
+      "sources": [
+        {
+          "public_quiz_id": "cats-trivia-records-and-general-part-1",
+          "source_path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_1.json",
+          "source_quiz_id": "cats_trivia_records_and_general_part_1",
+          "question_count": 24
+        },
+        {
+          "public_quiz_id": "cats-trivia-records-and-general-part-2",
+          "source_path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_2.json",
+          "source_quiz_id": "cats_trivia_records_and_general_part_2",
+          "question_count": 24
+        },
+        {
+          "public_quiz_id": "cats-trivia-records-and-general-part-3",
+          "source_path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_3.json",
+          "source_quiz_id": "cats_trivia_records_and_general_part_3",
+          "question_count": 24
+        },
+        {
+          "public_quiz_id": "cats-trivia-records-and-general-part-4",
+          "source_path": "quizzes/Nature/Cats/cats_trivia_records_and_general_part_4.json",
+          "source_quiz_id": "cats_trivia_records_and_general_part_4",
+          "question_count": 13
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "dogs-biology-anatomy",
+      "title_ru": "Собаки: биология и анатомия",
+      "category": "Природа",
+      "semantic_reason_ru": "Две последовательные части одного анатомического корпуса.",
+      "legacy_alias_quiz_ids": [
+        "dogs-biology-anatomy-part-1",
+        "dogs-biology-anatomy-part-2"
+      ],
+      "total_questions": 34,
+      "sources": [
+        {
+          "public_quiz_id": "dogs-biology-anatomy-part-1",
+          "source_path": "quizzes/Nature/Dogs/dogs_biology_anatomy_part_1.json",
+          "source_quiz_id": "dogs_biology_anatomy_part_1",
+          "question_count": 17
+        },
+        {
+          "public_quiz_id": "dogs-biology-anatomy-part-2",
+          "source_path": "quizzes/Nature/Dogs/dogs_biology_anatomy_part_2.json",
+          "source_quiz_id": "dogs_biology_anatomy_part_2",
+          "question_count": 17
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "dogs-breeds",
+      "title_ru": "Собаки: породы и назначение",
+      "category": "Природа",
+      "semantic_reason_ru": "Спортивные, гончие, рабочие, пастушьи, той-терьеры и редкие породы — корпус о породах и назначении.",
+      "legacy_alias_quiz_ids": [
+        "dogs-breeds-sporting-hounds",
+        "dogs-breeds-toy-terrier-rare-part-1",
+        "dogs-breeds-toy-terrier-rare-part-2",
+        "dogs-breeds-working-herding"
+      ],
+      "total_questions": 76,
+      "sources": [
+        {
+          "public_quiz_id": "dogs-breeds-sporting-hounds",
+          "source_path": "quizzes/Nature/Dogs/dogs_breeds_sporting_hounds.json",
+          "source_quiz_id": "dogs_breeds_sporting_hounds",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "dogs-breeds-toy-terrier-rare-part-1",
+          "source_path": "quizzes/Nature/Dogs/dogs_breeds_toy_terrier_rare_part_1.json",
+          "source_quiz_id": "dogs_breeds_toy_terrier_rare_part_1",
+          "question_count": 19
+        },
+        {
+          "public_quiz_id": "dogs-breeds-toy-terrier-rare-part-2",
+          "source_path": "quizzes/Nature/Dogs/dogs_breeds_toy_terrier_rare_part_2.json",
+          "source_quiz_id": "dogs_breeds_toy_terrier_rare_part_2",
+          "question_count": 19
+        },
+        {
+          "public_quiz_id": "dogs-breeds-working-herding",
+          "source_path": "quizzes/Nature/Dogs/dogs_breeds_working_herding.json",
+          "source_quiz_id": "dogs_breeds_working_herding",
+          "question_count": 23
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "dogs-history-culture",
+      "title_ru": "Собаки в истории, мифах и службе",
+      "category": "Природа",
+      "semantic_reason_ru": "Древний мир, мифология, известные собаки и служебные роли — общий корпус.",
+      "legacy_alias_quiz_ids": [
+        "dogs-history-mythology",
+        "dogs-history-ancient-world",
+        "dogs-history-famous-and-service"
+      ],
+      "total_questions": 72,
+      "sources": [
+        {
+          "public_quiz_id": "dogs-history-mythology",
+          "source_path": "quizzes/Nature/Dogs/dogs_history_mythology.json",
+          "source_quiz_id": "dogs_history_mythology",
+          "question_count": 19
+        },
+        {
+          "public_quiz_id": "dogs-history-ancient-world",
+          "source_path": "quizzes/Nature/Dogs/dogs_history_ancient_world.json",
+          "source_quiz_id": "dogs_history_ancient_world",
+          "question_count": 28
+        },
+        {
+          "public_quiz_id": "dogs-history-famous-and-service",
+          "source_path": "quizzes/Nature/Dogs/dogs_history_famous_and_service.json",
+          "source_quiz_id": "dogs_history_famous_and_service",
+          "question_count": 25
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "philias-abstract-other",
+      "title_ru": "Филии: абстрактные и необычные понятия",
+      "category": "Филии",
+      "semantic_reason_ru": "Оба источника о понятиях и необычных предпочтениях, без смешения с людьми, животными или природой.",
+      "legacy_alias_quiz_ids": [
+        "philias-abstract",
+        "philias-other"
+      ],
+      "total_questions": 32,
+      "sources": [
+        {
+          "public_quiz_id": "philias-abstract",
+          "source_path": "quizzes/Philias/philias_abstract.json",
+          "source_quiz_id": "philias_abstract",
+          "question_count": 16
+        },
+        {
+          "public_quiz_id": "philias-other",
+          "source_path": "quizzes/Philias/philias_other.json",
+          "source_quiz_id": "philias_other",
+          "question_count": 16
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "philias-animals",
+      "title_ru": "Филии: любовь к животным",
+      "category": "Филии",
+      "semantic_reason_ru": "Две последовательные части одного животного корпуса.",
+      "legacy_alias_quiz_ids": [
+        "philias-animals-part-1",
+        "philias-animals-part-2"
+      ],
+      "total_questions": 32,
+      "sources": [
+        {
+          "public_quiz_id": "philias-animals-part-1",
+          "source_path": "quizzes/Philias/philias_animals_part_1.json",
+          "source_quiz_id": "philias_animals_part_1",
+          "question_count": 15
+        },
+        {
+          "public_quiz_id": "philias-animals-part-2",
+          "source_path": "quizzes/Philias/philias_animals_part_2.json",
+          "source_quiz_id": "philias_animals_part_2",
+          "question_count": 17
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "philias-nature",
+      "title_ru": "Филии: природа и стихии",
+      "category": "Филии",
+      "semantic_reason_ru": "Две последовательные части одного корпуса о природе и стихиях.",
+      "legacy_alias_quiz_ids": [
+        "philias-nature",
+        "philias-nature-part-2"
+      ],
+      "total_questions": 31,
+      "sources": [
+        {
+          "public_quiz_id": "philias-nature",
+          "source_path": "quizzes/Philias/philias_nature.json",
+          "source_quiz_id": "philias_nature",
+          "question_count": 21
+        },
+        {
+          "public_quiz_id": "philias-nature-part-2",
+          "source_path": "quizzes/Philias/philias_nature_part_2.json",
+          "source_quiz_id": "philias_nature_part_2",
+          "question_count": 10
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "philias-people",
+      "title_ru": "Филии: отношение к людям",
+      "category": "Филии",
+      "semantic_reason_ru": "Две последовательные части одного корпуса о людях.",
+      "legacy_alias_quiz_ids": [
+        "philias-people-part-1",
+        "philias-people-part-2"
+      ],
+      "total_questions": 29,
+      "sources": [
+        {
+          "public_quiz_id": "philias-people-part-1",
+          "source_path": "quizzes/Philias/philias_people_part_1.json",
+          "source_quiz_id": "philias_people_part_1",
+          "question_count": 14
+        },
+        {
+          "public_quiz_id": "philias-people-part-2",
+          "source_path": "quizzes/Philias/philias_people_part_2.json",
+          "source_quiz_id": "philias_people_part_2",
+          "question_count": 15
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "vocabulary-historical",
+      "title_ru": "Историческая лексика: архаизмы и церковнославянизмы",
+      "category": "Филология",
+      "semantic_reason_ru": "Оба набора различают исторические пласты русского словаря: связь семантическая и этимологическая.",
+      "legacy_alias_quiz_ids": [
+        "vocabulary-archaisms",
+        "vocabulary-church-slavonic"
+      ],
+      "total_questions": 29,
+      "sources": [
+        {
+          "public_quiz_id": "vocabulary-archaisms",
+          "source_path": "quizzes/Philology/vocabulary_archaisms.json",
+          "source_quiz_id": "vocabulary_archaisms",
+          "question_count": 12
+        },
+        {
+          "public_quiz_id": "vocabulary-church-slavonic",
+          "source_path": "quizzes/Philology/vocabulary_church_slavonic.json",
+          "source_quiz_id": "vocabulary_church_slavonic",
+          "question_count": 17
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "vocabulary-art-intellectual",
+      "title_ru": "Лексика культуры и интеллектуальной речи",
+      "category": "Филология",
+      "semantic_reason_ru": "Искусство, культура и интеллектуальный лексикон — ограниченный корпус культурной абстрактной речи.",
+      "legacy_alias_quiz_ids": [
+        "vocabulary-art-culture",
+        "vocabulary-intellectual"
+      ],
+      "total_questions": 21,
+      "sources": [
+        {
+          "public_quiz_id": "vocabulary-art-culture",
+          "source_path": "quizzes/Philology/vocabulary_art_culture.json",
+          "source_quiz_id": "vocabulary_art_culture",
+          "question_count": 16
+        },
+        {
+          "public_quiz_id": "vocabulary-intellectual",
+          "source_path": "quizzes/Philology/vocabulary_intellectual.json",
+          "source_quiz_id": "vocabulary_intellectual",
+          "question_count": 5
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "phobias-general",
+      "title_ru": "Фобии: общие и природные",
+      "category": "Психология",
+      "semantic_reason_ru": "Природные явления — прямо названный класс фобий внутри общего корпуса.",
+      "legacy_alias_quiz_ids": [
+        "phobias-general",
+        "phobias-nature"
+      ],
+      "total_questions": 63,
+      "sources": [
+        {
+          "public_quiz_id": "phobias-general",
+          "source_path": "quizzes/Psychology/phobias_general.json",
+          "source_quiz_id": "phobias_general",
+          "question_count": 54
+        },
+        {
+          "public_quiz_id": "phobias-nature",
+          "source_path": "quizzes/Psychology/phobias_nature.json",
+          "source_quiz_id": "phobias_nature",
+          "question_count": 9
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    },
+    {
+      "target_quiz_id": "cinema-science-fiction-worlds",
+      "title_ru": "Кинофантастика: «Звёздные войны» и «Терминатор»",
+      "category": "Кино",
+      "semantic_reason_ru": "Две фантастические киновселенные: узнаваемые герои, технологии и сюжетные миры. Название явно перечисляет обе франшизы.",
+      "legacy_alias_quiz_ids": [
+        "theme-star-wars",
+        "theme-terminator"
+      ],
+      "total_questions": 20,
+      "sources": [
+        {
+          "public_quiz_id": "theme-star-wars",
+          "source_path": "quizzes/Cinema/Thematic80/star_wars.json",
+          "source_quiz_id": "theme-star-wars",
+          "question_count": 10
+        },
+        {
+          "public_quiz_id": "theme-terminator",
+          "source_path": "quizzes/Cinema/Thematic80/terminator.json",
+          "source_quiz_id": "theme-terminator",
+          "question_count": 10
+        }
+      ],
+      "collision_check": {
+        "duplicate_question_ids": 0,
+        "equal_stems": 0,
+        "status": "pass"
+      },
+      "publication_contract": {
+        "derived_bank": "static canonical bank, following the regional-bank pattern; no runtime provenance subsystem by default",
+        "question_identity": "Preserve source question IDs, options, answer keys and explanations. Derived source location produces explicit new revisions; regenerate exact article bindings rather than claiming byte-identical old revisions.",
+        "legacy_reachability": "every legacy alias must resolve to the derived bank"
+      }
+    }
+  ],
+  "flagged_standalones": [
+    {
+      "public_quiz_id": "theme-harry-potter",
+      "source_path": "quizzes/Cinema/Thematic80/harry_potter.json",
+      "source_quiz_id": "theme-harry-potter",
+      "question_count": 10,
+      "reason_ru": "Только десять вопросов о семи книгах; другие фэнтези-франшизы не являются тем же произведением.",
+      "recommendation": "Не объединять без нового редакционного пула: соседние пакеты совпадают только по широкой категории.",
+      "legacy_reachability": "retain the existing standalone quiz route pending a separately reviewed addition"
+    },
+    {
+      "public_quiz_id": "cats-behavior-and-psychology",
+      "source_path": "quizzes/Nature/Cats/cats_behavior_and_psychology.json",
+      "source_quiz_id": "cats_behavior_and_psychology",
+      "question_count": 17,
+      "reason_ru": "Поведение и психология не совпадают с анатомией, породами, историей или рекордами; совпадает только животное.",
+      "recommendation": "Не объединять без нового редакционного пула: соседние пакеты совпадают только по широкой категории.",
+      "legacy_reachability": "retain the existing standalone quiz route pending a separately reviewed addition"
+    },
+    {
+      "public_quiz_id": "dogs-science-and-experiments",
+      "source_path": "quizzes/Nature/Dogs/dogs_science_and_experiments.json",
+      "source_quiz_id": "dogs_science_and_experiments",
+      "question_count": 15,
+      "reason_ru": "Эксперименты и научные сюжеты не являются тем же корпусом, что анатомия, породы или история собак.",
+      "recommendation": "Не объединять без нового редакционного пула: соседние пакеты совпадают только по широкой категории.",
+      "legacy_reachability": "retain the existing standalone quiz route pending a separately reviewed addition"
+    }
+  ],
+  "excluded_already_handled": [
+    {
+      "public_quiz_id": "theme-game-worlds",
+      "reason_ru": "Separate ten-question draft exists; this mapping does not alter or duplicate it.",
+      "legacy_reachability": "retain the existing route; a separate draft may later reach 20 without this mapping"
+    },
+    {
+      "public_quiz_id": "planet-paradoxes-20261010",
+      "reason_ru": "Separate ten-question draft exists; this mapping does not alter or duplicate it.",
+      "legacy_reachability": "retain the existing route; a separate draft may later reach 20 without this mapping"
+    }
+  ],
+  "coverage": {
+    "audited_short_packs": 48,
+    "short_packs_covered_by_proposals": 42,
+    "supplemental_nonshort_sources": 17,
+    "flagged_honestly_unmerged": 3,
+    "excluded_owned_drafts": 2,
+    "all_48_accounted_for": true,
+    "existing_geography_redirects": 1
+  },
+  "legacy_redirects": [
+    {
+      "source_quiz_id": "gastronomy-miscellaneous-off-topic",
+      "target_quiz_id": "prep-capitals-americas",
+      "target_questions": 35,
+      "reason_ru": "Два географических вопроса ошибочно лежали в гастрономии. Новый маршрут ведёт к подходящему квизу о столицах Америки. Старый набор сохранён для истории попыток.",
+      "covered_old_question_id": "q_gastronomy_традиции_и_этикет_4_food_72",
+      "retired_from_new_play_question_id": "q_gastronomy_традиции_и_этикет_42_food_606",
+      "retirement_reason_ru": "Рейтинг книжных магазинов без даты, методики и источника не годится для нового проверяемого раунда."
+    }
+  ]
+}
