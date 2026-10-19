@@ -19,9 +19,7 @@ void main() {
         greaterThanOrEqualTo(24),
       );
       final facts = await loadStudyFacts('landmarks');
-      print(
-        'Derived total study facts: ${(await loadStudyFacts('all')).length}',
-      );
+      expect((await loadStudyFacts('all')).length, 13678);
       final credits = (data['credits'] as List).cast<Map<String, dynamic>>();
       for (final row in rows) {
         expect(await rootBundle.load(row['image_asset'] as String), isNotNull);
