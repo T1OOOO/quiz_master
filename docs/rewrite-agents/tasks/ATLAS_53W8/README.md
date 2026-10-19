@@ -28,6 +28,7 @@ Working checkout: `E:/Projects/quiz_master/next/apps/quiz_app`.
 - Widget checks cover narrow/scaled layouts, correction/retry navigation, load failures, multiple valid languages, same-kind relation distractors, actual snapshot data, thin zoomed borders, double-tap focus and pinch without accidental selection.
 - Browser evidence includes mobile atlas/country details, a sports question and correction. Release preview is local; no production deployment is implied.
 - Physical Android touch/device and signed Android release were not verified.
+- Clean isolated checkout of implementation commit `e88101c8`: the five atlas/Quizipedia/feedback test files passed **30 tests**. This confirms the feature works without the shared checkout's unrelated dirty source changes; see `clean-checkout-tests.log`.
 
 The shared checkout contained unrelated dirty changes before work. They must be preserved. In particular, the existing `DiscoveryPage` assertion change in `quizipedia_test.dart` belongs to another task and is excluded from this task's staged version. Beads export also contains other sessions' work; only the three task-owned issue records should enter this integration commit.
 
