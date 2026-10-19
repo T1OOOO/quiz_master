@@ -1,5 +1,7 @@
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -67,7 +69,7 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
   String _categoryName(FoodDish dish) =>
       _ru ? dish.categoryRu : dish.categoryEn;
   String _region(FoodDish dish) => _ru ? dish.regionRu : dish.regionEn;
-  String _claim(String ru, String en) => _ru ? ru : en;
+  String _claim(String ru, String en) => _ru ? russianLearningText(ru) : en;
 
   void _retry() => setState(() {
     _future = loadFoodAtlas(widget.bundle);
@@ -309,7 +311,12 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
                     mode: LaunchMode.externalApplication,
                   ),
                   icon: const Icon(Icons.open_in_new),
-                  label: Text(atlas.sourceFor(id).title),
+                  label: Text(
+                    learningSourceTitle(
+                      atlas.sourceFor(id).title,
+                      russian: _ru,
+                    ),
+                  ),
                 ),
             ],
           ),
@@ -457,7 +464,12 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
                     Uri.parse(atlas.sourceFor(id).url),
                     mode: LaunchMode.externalApplication,
                   ),
-                  child: Text(atlas.sourceFor(id).title),
+                  child: Text(
+                    learningSourceTitle(
+                      atlas.sourceFor(id).title,
+                      russian: _ru,
+                    ),
+                  ),
                 ),
               FilledButton(
                 onPressed: () {

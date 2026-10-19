@@ -2,6 +2,8 @@
 /// source-labelled asset and creates no question for fields that are absent.
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math' as math;
 
@@ -12,6 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'quizipedia.dart';
 import 'country_religions.dart';
 import 'music_learning.dart';
+import 'country_labels_ru.dart';
 
 const _factsAsset = 'assets/quizipedia/country_facts.json';
 
@@ -660,7 +663,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     relationEn:
                         'Largest affiliation category in Pew Research Center estimates (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Population affiliation, not official state religion.',
                     relationRu:
-                        'Крупнейшая категория религиозной принадлежности по оценке Pew Research Center (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Принадлежность населения, а не официальная религия государства.',
+                        'Крупнейшая категория религиозной принадлежности по оценке Исследовательского центра Пью (${religions.year}): ${affiliationPercent(row.shares[row.largestGroups.single]!)}. Принадлежность населения, а не официальная религия государства.',
                   ),
                 );
           }
@@ -705,9 +708,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   }
 
   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
-  String _t(String en, String ru) => _ru ? ru : en;
+  String _t(String en, String ru) => _ru ? russianLearningText(ru) : en;
   String _display(String value) {
     if (!_ru) return value;
+    final localized = russianCountryLabel(value);
+    if (localized != value) return localized;
     final country = _facts.where((f) => f.nameEn == value).firstOrNull;
     if (country != null) return country.nameRu;
     final relation = _associations.values
@@ -715,6 +720,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         .where((r) => r.nameEn == value)
         .firstOrNull;
     if (relation != null) return relation.nameRu;
+    if (value.contains(', ')) return value.split(', ').map(_display).join(', ');
     return _russianFactLabels[value] ??
         value
             .replaceAll('million', 'млн')
@@ -738,7 +744,11 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
       }
     },
     icon: const Icon(Icons.open_in_new, size: 14),
-    label: Text(label ?? _t('Source', 'Источник')),
+    label: Text(
+      label == null
+          ? _t('Source', 'Источник')
+          : (_ru ? russianLearningText(label) : label),
+    ),
   );
   CountryFact? get _fact => _facts.where((f) => f.id == _selected).firstOrNull;
   bool _matches(CountryFact fact) {
@@ -747,6 +757,9 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
           fact.nameEn,
           fact.nameRu,
           fact.capital,
+          if (_ru) _display(fact.capital),
+          if (_ru) ...fact.languages.map(_display),
+          if (_ru) ...fact.currencies.map(_display),
           ...fact.languages,
           ...fact.currencies,
           for (final row in _associations[fact.id] ?? <CountryAssociation>[])
@@ -764,7 +777,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
           '',
     'flag' => _ru ? fact.nameRu : fact.nameEn,
     'capital' => _display(fact.capital),
-    'currency' => fact.currencies.join(', '),
+    'currency' => fact.currencies.map(_display).join(', '),
     'population' =>
       fact.population > 0
           ? '${(fact.population / 1000000).toStringAsFixed(1)} ${_t('m', 'млн')} (${fact.populationYear})'
@@ -851,7 +864,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           title: Text(_ru ? fact.nameRu : fact.nameEn),
                           subtitle: Text(
                             _sort == 'population'
-                                ? '${fact.population} · ${fact.populationYear} · World Bank'
+                                ? '${fact.population} · ${fact.populationYear} · ${_t('World Bank', 'Всемирный банк')}'
                                 : '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
                           ),
                           onTap: () {
@@ -1289,7 +1302,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     final name = question.country.nameRu;
     return switch (question.kind) {
       'religion' =>
-        'Какая категория религиозной принадлежности была крупнейшей в стране $name по оценке Pew Research Center за ${question.association?.checked} год?',
+        'Какая категория религиозной принадлежности была крупнейшей в стране $name по оценке Исследовательского центра Пью за ${question.association?.checked} год?',
       'flag' => 'Какой стране принадлежит этот флаг?',
       'capital' => 'Столица страны $name?',
       'language' =>
@@ -1357,7 +1370,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         Text(
           _t(
             'Pew Research Center · data ${data.year} · published ${data.publishedYear}',
-            'Pew Research Center · данные ${data.year} · публикация ${data.publishedYear}',
+            'Исследовательский центр Пью · данные ${data.year} · публикация ${data.publishedYear}',
           ),
         ),
         Wrap(
@@ -1444,18 +1457,24 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 ),
               if (fact.currencies.isNotEmpty)
                 Text(
-                  field(_t('Currency', 'Валюта'), fact.currencies.join(', ')),
+                  field(
+                    _t('Currency', 'Валюта'),
+                    fact.currencies.map(_display).join(', '),
+                  ),
                 ),
               if (fact.population > 0)
                 Text(
                   field(
                     _t('Population (approximate)', 'Население (примерно)'),
-                    '${fact.population.toString().replaceAllMapped(RegExp(r"\B(?=(\d{3})+(?!\d))"), (_) => " ")} · ${fact.populationYear} · World Bank',
+                    '${fact.population.toString().replaceAllMapped(RegExp(r"\B(?=(\d{3})+(?!\d))"), (_) => " ")} · ${fact.populationYear} · ${_t('World Bank', 'Всемирный банк')}',
                   ),
                 ),
               if (fact.areaKm2 != null)
                 Text(
-                  field(_t('Area', 'Площадь'), '${fact.areaKm2!.round()} km²'),
+                  field(
+                    _t('Area', 'Площадь'),
+                    '${fact.areaKm2!.round()} ${_t('km²', 'км²')}',
+                  ),
                 ),
               Text(field(_t('Region', 'Регион'), _display(fact.region))),
               if (feature == null)
@@ -1482,7 +1501,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         contentPadding: EdgeInsets.zero,
                         title: Text(_ru ? row.nameRu : row.nameEn),
                         subtitle: Text(
-                          '${_ru ? row.relationRu : row.relationEn}${row.checked.isEmpty ? '' : ' · ${row.checked}'}',
+                          '${_ru ? russianLearningText(row.relationRu) : row.relationEn}${row.checked.isEmpty ? '' : ' · ${row.checked}'}',
                         ),
                         trailing: row.sourceUrl.isEmpty
                             ? null
@@ -1663,7 +1682,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       if (q.association != null)
                         Text(
                           _ru
-                              ? q.association!.relationRu
+                              ? russianLearningText(q.association!.relationRu)
                               : q.association!.relationEn,
                         ),
                       if (q.association?.sourceUrl.isNotEmpty ?? false)

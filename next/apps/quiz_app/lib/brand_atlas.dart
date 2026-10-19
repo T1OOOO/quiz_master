@@ -1,6 +1,8 @@
 /// A small source-linked, local brand reference and practice screen.
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math';
 
@@ -559,7 +561,8 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
   String _t(String en, String ru) => _ru ? ru : en;
   String _sectorName(Brand brand) => _ru ? brand.sectorRu : brand.sectorEn;
   String _country(Brand brand) => _ru ? brand.countryRu : brand.countryEn;
-  String _claim(String ru, String en) => _ru ? ru : en;
+  String _claim(String ru, String en) => _ru ? russianLearningText(ru) : en;
+  String _displayName(String value) => _ru ? russianLearningText(value) : value;
   String _topicName(BrandQuestionKind? value) => switch (value) {
     null => _t('Mixed topics', 'Все темы'),
     BrandQuestionKind.owner => _t('Owners', 'Владельцы'),
@@ -664,7 +667,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
     final sectors = atlas.brands.map(_sectorName).toSet().toList()..sort();
     final matches = atlas.brands.where((brand) {
       final haystack =
-          '${brand.name} ${brand.sectorRu} ${brand.sectorEn} ${brand.countryRu} ${brand.countryEn} ${brand.founders.join(' ')} ${brand.formerNames.map((item) => item.name).join(' ')} ${atlas.ownerFor(brand).name}'
+          '${brand.name} ${brand.sectorRu} ${brand.sectorEn} ${brand.countryRu} ${brand.countryEn} ${brand.founders.join(' ')} ${brand.formerNames.map((item) => item.name).join(' ')} ${atlas.ownerFor(brand).name} ${_displayName(brand.name)} ${_displayName(atlas.ownerFor(brand).name)} ${brand.formerNames.map((item) => _displayName(item.name)).join(' ')}'
               .toLowerCase();
       return (_sector == null || _sector == _sectorName(brand)) &&
           haystack.contains(_query.toLowerCase());
@@ -675,7 +678,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
             ? _compareYears(a.foundedYear, b.foundedYear)
             : _compareYears(b.foundedYear, a.foundedYear);
       }
-      final value = a.name.compareTo(b.name);
+      final value = _displayName(a.name).compareTo(_displayName(b.name));
       return _ascending ? value : -value;
     });
     final selected = atlas.brands
@@ -819,9 +822,9 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
             (brand) => Card(
               child: ListTile(
                 key: Key('brand-${brand.id}'),
-                title: Text(brand.name),
+                title: Text(_displayName(brand.name)),
                 subtitle: Text(
-                  '${atlas.ownerFor(brand).name}\n${_sectorName(brand)} · ${_country(brand)}${brand.foundedYear == null ? '' : ' · ${brand.foundedYear}'}',
+                  '${_displayName(atlas.ownerFor(brand).name)}\n${_sectorName(brand)} · ${_country(brand)}${brand.foundedYear == null ? '' : ' · ${brand.foundedYear}'}',
                 ),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => _showBrand(brand.id),
@@ -858,7 +861,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
               children: [
                 Expanded(
                   child: Text(
-                    brand.name,
+                    _displayName(brand.name),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
@@ -880,7 +883,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
               ),
             const SizedBox(height: 8),
             Text(
-              '${_t('Owner', 'Владелец')}: ${owner.name}',
+              '${_t('Owner', 'Владелец')}: ${_displayName(owner.name)}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             Text(_claim(brand.ownershipNoteRu, brand.ownershipNoteEn)),
@@ -983,7 +986,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
               children: [
                 Expanded(
                   child: Text(
-                    owner.name,
+                    _displayName(owner.name),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
@@ -1009,7 +1012,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
               children: owned
                   .map(
                     (brand) => ActionChip(
-                      label: Text(brand.name),
+                      label: Text(_displayName(brand.name)),
                       onPressed: () => _showBrand(brand.id),
                     ),
                   )
@@ -1029,7 +1032,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
       return TextButton.icon(
         onPressed: () => _open(source.url),
         icon: const Icon(Icons.open_in_new, size: 16),
-        label: Text(source.title),
+        label: Text(learningSourceTitle(source.title, russian: _ru)),
       );
     }).toList(),
   );
@@ -1085,7 +1088,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                       : null,
                   minimumSize: const Size.fromHeight(48),
                 ),
-                child: Text(option),
+                child: Text(_displayName(option)),
               ),
             ),
           ),

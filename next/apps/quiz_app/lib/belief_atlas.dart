@@ -1,5 +1,7 @@
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math';
 
@@ -72,7 +74,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
   String _t(String en, String ru) => _ru ? ru : en;
   String _name(BeliefNode n) => _ru ? n.ru : n.en;
-  String _v(String en, String ru) => _ru ? ru : en;
+  String _v(String en, String ru) => _ru ? russianLearningText(ru) : en;
   List<BeliefNode> get _nodes =>
       _atlas!.nodes.where((n) => n.section == _section).toList();
   BeliefNode get _node => _atlas!.nodes.firstWhere((n) => n.id == _selected);
@@ -593,7 +595,7 @@ class _Detail extends StatelessWidget {
   final BeliefAtlas atlas;
   final bool ru;
   final ValueChanged<String> onTap;
-  String v(String en, String r) => ru ? r : en;
+  String v(String en, String r) => ru ? russianLearningText(r) : en;
   @override
   Widget build(BuildContext c) {
     final links = atlas.edges
@@ -667,7 +669,7 @@ class _Detail extends StatelessWidget {
                 ),
                 icon: const Icon(Icons.open_in_new),
                 label: Text(
-                  '${v('Source', 'Источник')}: ${atlas.sources.firstWhere((s) => s.id == id).title}',
+                  '${v('Source', 'Источник')}: ${learningSourceTitle(atlas.sources.firstWhere((s) => s.id == id).title, russian: ru)}',
                 ),
               ),
           ],
@@ -763,7 +765,10 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
                       )
                     : '${_i + 1}/${_round.length}',
               ),
-              Text(ru ? q.ru : q.en, style: Theme.of(c).textTheme.titleLarge),
+              Text(
+                ru ? russianLearningText(q.ru) : q.en,
+                style: Theme.of(c).textTheme.titleLarge,
+              ),
               const SizedBox(height: 12),
               for (var j = 0; j < opts.length; j++)
                 Padding(
@@ -807,9 +812,9 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
                       ? t('Correct.', 'Верно.')
                       : t('Not quite.', 'Не совсем.'),
                 ),
-                Text(ru ? q.explainRu : q.explainEn),
+                Text(ru ? russianLearningText(q.explainRu) : q.explainEn),
                 Text(
-                  'Source: ${widget.atlas.sources.firstWhere((s) => s.id == q.sourceIds.first).title}',
+                  '${t('Source', 'Источник')}: ${learningSourceTitle(widget.atlas.sources.firstWhere((s) => s.id == q.sourceIds.first).title, russian: ru)}',
                 ),
                 FilledButton(
                   key: const Key('belief-next'),

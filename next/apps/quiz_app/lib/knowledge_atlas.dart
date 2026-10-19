@@ -1,6 +1,8 @@
 /// A small, source-linked atlas for unranked history and culture practice.
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math';
 
@@ -483,10 +485,13 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
   }
 
   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
-  String _text(String en, String ru) => _ru ? ru : en;
-  String _eventName(AtlasEvent event) => _ru ? event.titleRu : event.titleEn;
-  String _workName(AtlasWork work) => _ru ? work.titleRu : work.titleEn;
-  String _personName(AtlasPerson person) => _ru ? person.nameRu : person.nameEn;
+  String _text(String en, String ru) => _ru ? russianLearningText(ru) : en;
+  String _eventName(AtlasEvent event) =>
+      _ru ? russianLearningText(event.titleRu) : event.titleEn;
+  String _workName(AtlasWork work) =>
+      _ru ? russianLearningText(work.titleRu) : work.titleEn;
+  String _personName(AtlasPerson person) =>
+      _ru ? russianLearningText(person.nameRu) : person.nameEn;
 
   @override
   Widget build(BuildContext context) => FutureBuilder<KnowledgeAtlas>(
@@ -794,15 +799,17 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
             const SizedBox(height: 10),
             _labelled(
               _text('What happened', 'Что произошло'),
-              _ru ? event.whatRu : event.whatEn,
+              _ru ? russianLearningText(event.whatRu) : event.whatEn,
             ),
             _labelled(
               _text('Why it matters', 'Почему это важно'),
-              _ru ? event.whyRu : event.whyEn,
+              _ru ? russianLearningText(event.whyRu) : event.whyEn,
             ),
             _labelled(
               _text('What changed next', 'Что изменилось дальше'),
-              _ru ? event.consequencesRu : event.consequencesEn,
+              _ru
+                  ? russianLearningText(event.consequencesRu)
+                  : event.consequencesEn,
             ),
             _sourceButton(event.sourceUrl),
           ],
@@ -831,9 +838,12 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
             const SizedBox(height: 8),
             _labelled(
               _text('Briefly', 'Кратко'),
-              _ru ? work.summaryRu : work.summaryEn,
+              _ru ? russianLearningText(work.summaryRu) : work.summaryEn,
             ),
-            _labelled(_text('Fact', 'Факт'), _ru ? work.factRu : work.factEn),
+            _labelled(
+              _text('Fact', 'Факт'),
+              _ru ? russianLearningText(work.factRu) : work.factEn,
+            ),
             Text(
               _text('Creator', 'Создатель'),
               style: Theme.of(context).textTheme.titleSmall,
@@ -854,7 +864,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                 (credit) => TextButton(
                   onPressed: () => _showPerson(atlas, people[credit.personId]!),
                   child: Text(
-                    '${_personName(people[credit.personId]!)} — ${_ru ? credit.roleRu : credit.roleEn}',
+                    '${_personName(people[credit.personId]!)} — ${_ru ? russianLearningText(credit.roleRu) : credit.roleEn}',
                   ),
                 ),
               ),
@@ -881,7 +891,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
             ),
             Text('${person.born} · ${person.roles.map(_roleLabel).join(', ')}'),
             const SizedBox(height: 8),
-            Text(_ru ? person.bioRu : person.bioEn),
+            Text(_ru ? russianLearningText(person.bioRu) : person.bioEn),
             const SizedBox(height: 8),
             Text(
               _text('Works and participation', 'Произведения и участие'),
@@ -1006,7 +1016,9 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    _ru ? question.promptRu : question.promptEn,
+                    _ru
+                        ? russianLearningText(question.promptRu)
+                        : question.promptEn,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 12),
@@ -1043,7 +1055,11 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                           : '${_text('Correct answer:', 'Правильный ответ:')} ${_quizValue(atlas, question.answer)}',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    Text(_ru ? question.explanationRu : question.explanationEn),
+                    Text(
+                      _ru
+                          ? russianLearningText(question.explanationRu)
+                          : question.explanationEn,
+                    ),
                     _sourceButton(question.sourceUrl),
                     FilledButton.tonal(
                       onPressed: () => setModalState(() {

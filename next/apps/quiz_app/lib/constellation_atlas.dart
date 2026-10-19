@@ -6,6 +6,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
 
+String starLabel(Map<String, dynamic> star, bool russian) {
+  final russianName = star['name_ru'];
+  if (russian && russianName is String && russianName.trim().isNotEmpty) {
+    return russianName;
+  }
+  return star['name'] as String;
+}
+
 class ConstellationAtlasPage extends StatefulWidget {
   const ConstellationAtlasPage({
     super.key,
@@ -200,6 +208,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                 lines: lines,
                 showNames: _showNames,
                 showLines: _showLines,
+                russian: _russian,
                 onDoubleTapDown: (details) =>
                     _doubleTapAt = details.localPosition,
                 onDoubleTap: () => _zoomAt(_doubleTapAt, 1.8),
@@ -342,6 +351,7 @@ class _ConstellationCanvas extends StatelessWidget {
     required this.lines,
     required this.showNames,
     required this.showLines,
+    required this.russian,
     required this.onDoubleTapDown,
     required this.onDoubleTap,
     required this.onStar,
@@ -349,14 +359,16 @@ class _ConstellationCanvas extends StatelessWidget {
   final TransformationController controller;
   final List<Map<String, dynamic>> stars;
   final List<List> lines;
-  final bool showNames, showLines;
+  final bool showNames, showLines, russian;
   final GestureTapDownCallback onDoubleTapDown;
   final GestureTapCallback onDoubleTap;
   final ValueChanged<Map<String, dynamic>> onStar;
 
   @override
   Widget build(BuildContext context) => Semantics(
-    label: 'Constellation star pattern. Pinch, pan, and double-tap to inspect.',
+    label: russian
+        ? 'Схема созвездия. Масштабируйте двумя пальцами, перемещайте и увеличивайте двойным касанием.'
+        : 'Constellation star pattern. Pinch, pan, and double-tap to inspect.',
     child: ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: DecoratedBox(
@@ -403,6 +415,7 @@ class _ConstellationCanvas extends StatelessWidget {
                     lines,
                     showNames: showNames,
                     showLines: showLines,
+                    russian: russian,
                   ),
                 ),
               ),
@@ -420,10 +433,11 @@ class _SkyPainter extends CustomPainter {
     this.lines, {
     required this.showNames,
     required this.showLines,
+    required this.russian,
   });
   final List<Map<String, dynamic>> stars;
   final List<List> lines;
-  final bool showNames, showLines;
+  final bool showNames, showLines, russian;
   @override
   void paint(Canvas canvas, Size size) {
     final points = projectConstellation(stars, size);
@@ -452,7 +466,7 @@ class _SkyPainter extends CustomPainter {
       if (showNames) {
         final painter = TextPainter(
           text: TextSpan(
-            text: star['name'] as String,
+            text: starLabel(star, russian),
             style: const TextStyle(color: Color(0xffd9efff), fontSize: 12),
           ),
           textDirection: TextDirection.ltr,
@@ -477,7 +491,8 @@ class _SkyPainter extends CustomPainter {
       old.stars != stars ||
       old.lines != lines ||
       old.showNames != showNames ||
-      old.showLines != showLines;
+      old.showLines != showLines ||
+      old.russian != russian;
 }
 
 class _ZoomToolbar extends StatelessWidget {
@@ -550,7 +565,7 @@ class _StarList extends StatelessWidget {
                     ? Theme.of(context).colorScheme.secondaryContainer
                     : null,
               ),
-              child: Text(star['name'] as String),
+              child: Text(starLabel(star, russian)),
             ),
         ],
       ),
@@ -568,8 +583,8 @@ class _StarCard extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Text(
         russian
-            ? '${star['name']} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
-            : '${star['name']} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
+            ? '${starLabel(star, true)} · звёздная величина ${star['magnitude']} · прямое восхождение ${star['ra_hours']} ч · склонение ${star['dec_degrees']}°'
+            : '${starLabel(star, false)} · magnitude ${star['magnitude']} · right ascension ${star['ra_hours']} h · declination ${star['dec_degrees']}°',
       ),
     ),
   );

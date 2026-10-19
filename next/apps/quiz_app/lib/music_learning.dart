@@ -1,6 +1,8 @@
 /// Sourced local music reference and finite, unranked visual practice.
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math';
 
@@ -115,8 +117,9 @@ class MusicEntry {
   final List<String> sourceIds;
   final Map<String, dynamic>? visual;
   String name(bool ru) => ru ? nameRu : nameEn;
-  String description(bool ru) => ru ? descriptionRu : descriptionEn;
-  String example(bool ru) => ru ? exampleRu : exampleEn;
+  String description(bool ru) =>
+      ru ? russianLearningText(descriptionRu) : descriptionEn;
+  String example(bool ru) => ru ? russianLearningText(exampleRu) : exampleEn;
   bool matches(String query) =>
       '$nameRu $nameEn $descriptionRu $descriptionEn $exampleRu $exampleEn'
           .toLowerCase()
@@ -215,7 +218,10 @@ class MusicVisual extends StatelessWidget {
                 switch (visual['text']) {
                   'tie' => '⌒',
                   'crescendo' => '＜',
-                  _ => visual['text'] as String,
+                  _ =>
+                    Localizations.localeOf(context).languageCode == 'ru'
+                        ? russianLearningText(visual['text'] as String)
+                        : visual['text'] as String,
                 },
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineLarge,
@@ -392,7 +398,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
           ),
           icon: const Icon(Icons.open_in_new, size: 16),
           label: Text(
-            '${_catalog!.sources[id]!.title} · ${_catalog!.sources[id]!.checkedOn}',
+            '${learningSourceTitle(_catalog!.sources[id]!.title, russian: _ru)} · ${_catalog!.sources[id]!.checkedOn}',
           ),
         ),
     ],
@@ -413,7 +419,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
               entry.name(_ru),
               style: Theme.of(context).textTheme.headlineSmall,
             ),
-            Text(_ru ? entry.nameEn : entry.nameRu),
+            if (!_ru) Text(entry.nameRu),
             const SizedBox(height: 16),
             if (entry.visual != null)
               MusicVisual(visual: entry.visual!, label: entry.name(_ru)),
@@ -668,7 +674,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
                   ),
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          Text(_ru ? q.explanationRu : q.explanationEn),
+          Text(_ru ? russianLearningText(q.explanationRu) : q.explanationEn),
           _sources(q.sourceIds),
           FilledButton(
             key: const Key('music-next'),

@@ -1,6 +1,8 @@
 /// Local, unranked visual practice. Answers stay outside ranked API models.
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
@@ -472,7 +474,9 @@ Map<String, Offset> projectConstellation(
 }
 
 String _t(BuildContext context, String en, String ru) =>
-    Localizations.localeOf(context).languageCode == 'ru' ? ru : en;
+    Localizations.localeOf(context).languageCode == 'ru'
+    ? russianLearningText(ru)
+    : en;
 
 String _localized(
   BuildContext context,
@@ -810,8 +814,20 @@ Future<void> _showCredits(BuildContext context, QuizipediaCatalog catalog) =>
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(credit['attribution'] as String),
-                        Text(credit['license'] as String),
+                        Text(
+                          _t(
+                            context,
+                            credit['attribution'] as String,
+                            russianCreditAttribution(credit),
+                          ),
+                        ),
+                        Text(
+                          _t(
+                            context,
+                            credit['license'] as String,
+                            russianLearningText(credit['license'] as String),
+                          ),
+                        ),
                         Wrap(
                           spacing: 8,
                           children: [
@@ -1788,7 +1804,11 @@ class _QuizGameState extends State<_QuizGame> {
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size(44, 44),
                   ),
-                  child: Text(star['name'] as String),
+                  child: Text(
+                    Localizations.localeOf(context).languageCode == 'ru'
+                        ? star['name_ru'] as String? ?? star['name'] as String
+                        : star['name'] as String,
+                  ),
                 ),
             ],
           ),
@@ -1799,7 +1819,7 @@ class _QuizGameState extends State<_QuizGame> {
   String _starDescription(Map<String, dynamic> star) => _t(
     context,
     '${star['name']} · magnitude ${star['magnitude']}',
-    '${star['name']} · звёздная величина ${star['magnitude']}',
+    '${star['name_ru'] ?? star['name']} · звёздная величина ${star['magnitude']}',
   );
 }
 

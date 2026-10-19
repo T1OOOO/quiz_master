@@ -1,5 +1,7 @@
 library;
 
+import 'russian_learning_text.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -65,7 +67,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   bool get _ru => Localizations.localeOf(context).languageCode == 'ru';
   String _t(String en, String ru) => _ru ? ru : en;
   String _name(OrganStructure item) => _ru ? item.nameRu : item.nameEn;
-  String _v(String en, String ru) => _ru ? ru : en;
+  String _v(String en, String ru) => _ru ? russianLearningText(ru) : en;
   void _reset() => setState(() => _camera.value = Matrix4.identity());
   void _zoom(double value) {
     final next = Matrix4.copy(_camera.value)..scaleByDouble(value, value, 1, 1);
@@ -447,7 +449,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
               Text(_v(question.explanationEn, question.explanationRu)),
               for (final source in question.sourceIds)
                 Text(
-                  '${_t('Source', 'Источник')}: ${atlas.source(source).title}',
+                  '${_t('Source', 'Источник')}: ${learningSourceTitle(atlas.source(source).title, russian: _ru)}',
                 ),
               FilledButton(
                 key: const Key('organ-next'),
@@ -979,7 +981,7 @@ class _Detail extends StatelessWidget {
   final OrganStructure item;
   final OrganAtlas atlas;
   final bool russian;
-  String v(String en, String ru) => russian ? ru : en;
+  String v(String en, String ru) => russian ? russianLearningText(ru) : en;
   @override
   Widget build(BuildContext context) => Card(
     key: const Key('organ-detail'),
@@ -1018,7 +1020,7 @@ class _Detail extends StatelessWidget {
               ),
               icon: const Icon(Icons.open_in_new),
               label: Text(
-                '${v('Source', 'Источник')}: ${atlas.source(id).title}',
+                '${v('Source', 'Источник')}: ${learningSourceTitle(atlas.source(id).title, russian: russian)}',
               ),
             ),
         ],
