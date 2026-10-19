@@ -1,0 +1,72 @@
+{
+  "tasks": [
+    {
+      "acceptance": [
+        "Actualprimaryopens/candidate-firstfreeze/exposuretruthful",
+        "FullarticleIDs/whitespacecounts/exactfinalrawbindings/Rootpre-submitmetadatacheck/actualHubsubmit,externalacceptancepublicationpending"
+      ],
+      "allowed_paths": [
+        "E:\\Projects\\quiz_master\\docs\\rewrite-agents\\tasks\\BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019"
+      ],
+      "assignee": "session-40a5bd2945004c728ab7d9006b66d5b8",
+      "author": "session-6db676fd68b94d75b343915b4e8ed0fc",
+      "body": "OwnONLYblind-answers.json/review.json/REVIEW_EN.md. Candidate/BRIEFfirstactualprimaryauthor/editor/date/part/options verification BEFORECURRENTwriter/keys; mechanicallycomputed64charfreeze/reportWAITRootfinalhashes. Finaleveryclaim/link/ref/optionsreview. FullarticleIDs/WHITESPACEcounts/lowercaseexactrawhashes mechanicallyvalidate thenWAITRootpre-submitconfirmation, submitactualreporthashes/evidence/quiesce. clean_blind=false. No children/Git/Beads/provider/server/canonical/runtimefrozenwrites.",
+      "created_at": 1792395094.2989461,
+      "depth": 0,
+      "difficulty": 2,
+      "difficulty_explicit": true,
+      "domain": "general",
+      "id": "task-9c4d06642f15475886eed436cd40eded",
+      "parent_task_id": null,
+      "project_id": "project-b50d7d0cbbb84e3bbf9691469c747c8e",
+      "requires_review": true,
+      "result": {
+        "changed_files": [
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/blind-answers.json",
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/review.json",
+          "docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/REVIEW_EN.md"
+        ],
+        "evidence": [
+          {
+            "kind": "source_audit",
+            "result": "Actually opened DLA Marbach press note, S. Fischer Kafka page, OUP public abstract, Instituto Cervantes 1615 title page/1605 privilege/contents, and Instituto Cervantes Krakow conference description. All claims, options, refs and pedagogical statements reviewed. CVC source URL intermittently redirected to maintenance after successful full-page read."
+          },
+          {
+            "kind": "blind_freeze",
+            "result": "Candidate-first answers 05 Kafka opt-1 and 06 Cervantes opt-2 frozen 2026-10-19 07:37:26 UTC before reviewer access to writer articles/SOURCES/private keys, seven seconds after article file creation; clean_blind=false due informative brief and possible prior public familiarity."
+          },
+          {
+            "command": "python docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/validate.py --final",
+            "cwd": "E:\\Projects\\quiz_master",
+            "kind": "command",
+            "result": "exit 0; word counts 203/208 via regex \\S+; exact public refs and frozen pins; independent answers match two local keys via Root key-integrity; native review accepted_for_draft; no external acceptance/publication."
+          },
+          {
+            "kind": "lead_pre_submit",
+            "result": "Root PRE_SUBMIT_METADATA_PASS confirmed full IDs, counts, exact raw hash bindings, review/memo hashes, and final validator exit 0 before task submission."
+          }
+        ],
+        "limitations": [
+          "CVC source link availability intermittent; successful title-page content read, no physical copy inspection.",
+          "Hub different-provider acceptance and publication pending."
+        ],
+        "sha256": {
+          "REVIEW_EN.md": "ea06e18af6f7c4efc94159cc09f4051cc048f3016858cf5f20045fc4a51d0b9b",
+          "SOURCES_EN.md": "abdac656514ddc874c4d2270bcf024af7fae9ef6a1dd1d5d849c944d9253ded9",
+          "articles.json": "853a6341a9c1139d03572323a2c7b3d800adc0c35c8bc54450e9fbec8b1d2d51",
+          "blind-answers.json": "7c9c0bb01d19072e4aed4cfd6977e69743b5078b32f0e9639bdfd9093c155ae8",
+          "review.json": "9a7ed57068a938fd36ec6cae09a3ebf6930b9ee2bce30995d0fe8e3649fdab84"
+        },
+        "status": "DONE_WITH_CONCERNS",
+        "summary": "Native candidate-first factual review accepted both private drafts; transient CVC title-page availability documented; different-provider acceptance and publication remain pending."
+      },
+      "root_task_id": "task-9c4d06642f15475886eed436cd40eded",
+      "run_id": "run-b991201e56b94ed1a5bfd2e4bae37f86",
+      "skills": [],
+      "state": "SUBMITTED",
+      "team_id": "team-7dad1b2564734109b234d0ab375e7f77",
+      "title": "quiz_master-968 Kafka Cervantes05-06 native review",
+      "version": 3
+    }
+  ]
+}

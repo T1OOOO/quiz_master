@@ -1,0 +1,38 @@
+{
+  "schema_version": "qm-private-editorial-review/v1",
+  "reviewed_at_utc": "2026-10-19",
+  "reviewed_file": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/articles.json",
+    "sha256": "853a6341a9c1139d03572323a2c7b3d800adc0c35c8bc54450e9fbec8b1d2d51"
+  },
+  "reviewed_sources": {
+    "path": "docs/rewrite-agents/tasks/BOOKS_CLASSIC_TRIAL_QUIXOTE_PAIR_20261019/SOURCES_EN.md",
+    "sha256": "abdac656514ddc874c4d2270bcf024af7fae9ef6a1dd1d5d849c944d9253ded9"
+  },
+  "blind_answer_sha256": "7c9c0bb01d19072e4aed4cfd6977e69743b5078b32f0e9639bdfd9093c155ae8",
+  "clean_blind": false,
+  "blind_exposure_note": "The informative brief named Kafka and Cervantes, and prior familiarity with public works is possible. Candidate questions and independent primary/publisher sources were reviewed before the current writer's articles, source memo, or private keys were accessed. The blind-answer file was saved at 07:37:26 UTC, seven seconds after the writer's article file was created; no claim of pre-draft freezing is made. The reviewer has not opened the local private keys.",
+  "items": [
+    {
+      "id": "question:prep-books-classic-05",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 203,
+      "blind_selected_option_id": "prep-books-classic-05-opt-1",
+      "factual_review": "Kafka is the author; Max Brod's posthumous editorial role, 1914–15 writing interval, 1925 Die Schmiede publication, and Brod's display sequence match the German Literature Archive and S. Fischer accounts. The OUP public abstract supports Josef K.'s undisclosed accusation and plural interpretive approaches. The prose avoids equating unfinished with no ending or asserting a definitive authorial chapter order.",
+      "option_review": "Thomas Mann, Robert Musil and Hermann Hesse are distinct writers and not defensible answers to the named-work authorship question; no alternate correct option found.",
+      "source_review": "Both final source URLs opened with relevant text. DLA press note lines 366–370 and OUP abstract lines 2518–2521 support the attributed claims. No paywalled chapter or physical manuscript inspection was counted.",
+      "pedagogy_review": "The optional evidence-and-interpretation comparison is concrete and does not claim a measured learning effect. The mini-article adds useful author/editor and textual-history distinctions without disclosing a private key."
+    },
+    {
+      "id": "question:prep-books-classic-06",
+      "verdict": "accepted_for_draft",
+      "word_count_whitespace": 208,
+      "blind_selected_option_id": "prep-books-classic-06-opt-2",
+      "factual_review": "The annotated 1615 title page names Miguel de Cervantes as author of both parts, identifies Madrid, Juan de Cuesta and Francisco de Robles, and notes that Cuesta's name remained the workshop name after his departure. The Instituto Cervantes conference description distinguishes the 1605 and 1615 books. The article correctly distinguishes work parts from the physical volumes of later editions.",
+      "option_review": "Lope de Vega, Francisco de Quevedo and Pedro Calderón are distinct writers and not defensible answers to the named-work authorship question; Don Quixote is the character rather than an author.",
+      "source_review": "The exact final CVC URL was successfully read as a full annotated page by the writer; a later reviewer open redirected to a maintenance page. The reviewer opened the same annotated title-page content through the shorter /portada/ URL. The final Instituto Cervantes Krakow URL opened and supported the dates. Link availability is intermittent; no physical copy was inspected.",
+      "pedagogy_review": "The proposed title-page comparison separates author, translator, edition and part; it makes no measured-outcome claim or unsupported ranking of the novel."
+    }
+  ],
+  "scope": "Private draft review only; different-provider acceptance and publication remain pending."
+}
