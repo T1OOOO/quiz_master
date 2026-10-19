@@ -2166,18 +2166,28 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             Positioned.fromRect(
               rect: rect,
               child: Center(
-                child: Text(
-                  text,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xff173f57),
-                    shadows: [Shadow(color: Colors.white, blurRadius: 3)],
-                  ),
-                ),
+                child: widget.showFlags
+                    ? Image.asset(
+                        'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
+                        key: Key(
+                          'map-country-flag-${feature.id.toLowerCase()}',
+                        ),
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.low,
+                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                      )
+                    : Text(
+                        text,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff173f57),
+                          shadows: [Shadow(color: Colors.white, blurRadius: 3)],
+                        ),
+                      ),
               ),
             ),
           );

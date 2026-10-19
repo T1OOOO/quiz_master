@@ -221,26 +221,33 @@ class MusicVisual extends StatelessWidget {
           color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(16),
         ),
+        clipBehavior: Clip.antiAlias,
         child: visual.containsKey('text')
-            ? Text(
-                switch (visual['text']) {
-                  'tie' => '⌒',
-                  'crescendo' => '＜',
-                  _ =>
-                    Localizations.localeOf(context).languageCode == 'ru'
-                        ? russianLearningText(visual['text'] as String)
-                        : visual['text'] as String,
-                },
-                textAlign: TextAlign.center,
-                style: compact
-                    ? Theme.of(context).textTheme.headlineMedium
-                    : Theme.of(context).textTheme.headlineLarge,
+            ? FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  switch (visual['text']) {
+                    'tie' => '⌒',
+                    'crescendo' => '＜',
+                    _ =>
+                      Localizations.localeOf(context).languageCode == 'ru'
+                          ? russianLearningText(visual['text'] as String)
+                          : visual['text'] as String,
+                  },
+                  textAlign: TextAlign.center,
+                  style: compact
+                      ? Theme.of(context).textTheme.headlineMedium
+                      : Theme.of(context).textTheme.headlineLarge,
+                ),
               )
-            : CustomPaint(
-                size: Size(compact ? 76 : 260, compact ? 68 : 156),
-                painter: _MusicPainter(
-                  visual,
-                  Theme.of(context).colorScheme.onSurface,
+            : FittedBox(
+                fit: BoxFit.contain,
+                child: CustomPaint(
+                  size: const Size(260, 156),
+                  painter: _MusicPainter(
+                    visual,
+                    Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
               ),
       ),

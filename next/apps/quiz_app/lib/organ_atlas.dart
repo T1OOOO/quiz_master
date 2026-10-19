@@ -607,20 +607,6 @@ class _BodyMap extends StatefulWidget {
 }
 
 class _BodyMapState extends State<_BodyMap> {
-  static const _drawableIds = {
-    'brain',
-    'thyroid',
-    'parathyroids',
-    'thymus',
-    'lungs',
-    'heart',
-    'liver',
-    'stomach',
-    'pancreas',
-    'adrenals',
-    'kidneys',
-    'bladder',
-  };
   static const _illustratedAnchors = <String, Offset>{
     'brain': Offset(147, 28),
     'thyroid': Offset(150, 114),
@@ -633,13 +619,13 @@ class _BodyMapState extends State<_BodyMap> {
   @override
   Widget build(BuildContext context) {
     final ru = Localizations.localeOf(context).languageCode == 'ru';
+    if (widget.organs.isEmpty) return const SizedBox.shrink();
     final focused =
         widget.selected != null &&
-            _drawableIds.contains(widget.selected!.id) &&
             widget.organs.any((item) => item.id == widget.selected!.id)
         ? widget.selected!
         : widget.organs.firstWhere(
-            (item) => _drawableIds.contains(item.id),
+            (item) => _illustratedAnchors.containsKey(item.id),
             orElse: () => widget.organs.first,
           );
     final anchor = _illustratedAnchors[focused.id];

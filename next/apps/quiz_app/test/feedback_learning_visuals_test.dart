@@ -22,6 +22,28 @@ void main() {
 
       expect(find.byKey(const Key('organ-callouts-next')), findsNothing);
       expect(find.byKey(const Key('organ-map-card-brain')), findsOneWidget);
+      expect(find.byKey(const Key('organ-map-target-brain')), findsOneWidget);
+
+      await tester.enterText(find.byKey(const Key('organ-search')), 'pineal');
+      await tester.pump();
+      await tester.tap(find.byKey(const Key('organ-map-card-pineal')));
+      await tester.pumpAndSettle();
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .widget<ChoiceChip>(find.byKey(const Key('organ-map-card-pineal')))
+            .selected,
+        isTrue,
+      );
+      expect(
+        find.textContaining('no point on the orientation illustration'),
+        findsOneWidget,
+      );
+
+      await tester.enterText(find.byKey(const Key('organ-search')), 'no-match');
+      await tester.pump();
+      expect(tester.takeException(), isNull);
     },
   );
 
@@ -41,6 +63,30 @@ void main() {
         find.descendant(of: note, matching: find.byType(MusicVisual)),
         findsOneWidget,
       );
+    },
+  );
+
+  testWidgets(
+    'compact notation visuals contain native-size painters and text',
+    (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Center(
+            child: SizedBox(
+              width: 76,
+              height: 72,
+              child: MusicVisual(
+                compact: true,
+                visual: {'note': 4},
+                label: 'note preview',
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+      expect(find.byType(FittedBox), findsOneWidget);
+      expect(tester.takeException(), isNull);
     },
   );
 }

@@ -58,4 +58,50 @@ void main() {
     expect(find.text('Next'), findsOneWidget);
     expect(find.text('Check'), findsNothing);
   });
+
+  testWidgets(
+    'flag layer renders a compact country raster without moving camera',
+    (tester) async {
+      final controller = TransformationController(
+        Matrix4.identity()..translateByDouble(-18, -12, 0, 1),
+      );
+      addTearDown(controller.dispose);
+      const france = QuizipediaFeature(
+        id: 'FR',
+        nameRu: 'Франция',
+        nameEn: 'France',
+        polygons: [
+          [
+            [
+              QuizipediaPoint(.2, .2),
+              QuizipediaPoint(.8, .2),
+              QuizipediaPoint(.8, .8),
+              QuizipediaPoint(.2, .8),
+              QuizipediaPoint(.2, .2),
+            ],
+          ],
+        ],
+      );
+      final camera = controller.value.clone();
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SizedBox(
+            width: 320,
+            height: 300,
+            child: QuizipediaWorldMap(
+              features: const [france],
+              controller: controller,
+              onSelect: (_) {},
+              overlayLabels: const {'FR': 'France'},
+              showFlags: true,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('map-country-flag-fr')), findsOneWidget);
+      expect(find.text('France'), findsNothing);
+      expect(controller.value, camera);
+    },
+  );
 }

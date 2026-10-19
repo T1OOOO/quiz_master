@@ -1197,7 +1197,15 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           initialValue: _topic,
                           isExpanded: true,
                           decoration: InputDecoration(
-                            labelText: _t('Practice topic', 'Тема тренировки'),
+                            labelText: _t(
+                              'Questions about',
+                              'О чём спрашивать',
+                            ),
+                            helperText: _t(
+                              'Choose the facts for the next 10 questions.',
+                              'Выберите факты для следующих 10 вопросов.',
+                            ),
+                            helperMaxLines: 3,
                             border: const OutlineInputBorder(),
                           ),
                           items: [
@@ -1226,8 +1234,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         ),
                         subtitle: Text(
                           _t(
-                            'Rivers, clubs, food and other associations',
-                            'Реки, клубы, еда и другие связи',
+                            'A river, club or dish is the clue; choose its country.',
+                            'Вопрос о реке, клубе или блюде — выберите связанную с ним страну.',
                           ),
                         ),
                         value: _reverseRelations,
