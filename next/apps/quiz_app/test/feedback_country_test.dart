@@ -1,4 +1,7 @@
 import 'dart:ui' as ui;
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +20,96 @@ const _catalog = QuizipediaCatalog(
 );
 
 void main() {
+  for (final retry in [false, true]) {
+    testWidgets(
+      'map flags use one image bundle without per-country requests (retry=$retry)',
+      (tester) async {
+        late ByteData manifest, png;
+        await tester.runAsync(() async {
+          manifest = await rootBundle.load('AssetManifest.bin');
+          png = await rootBundle.load('assets/quizipedia/flag-fr.png');
+        });
+        var bundleCalls = 0, countryCalls = 0;
+        final messenger =
+            TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+        messenger.setMockMessageHandler('flutter/assets', (message) async {
+          final key = utf8.decode(
+            message!.buffer.asUint8List(
+              message.offsetInBytes,
+              message.lengthInBytes,
+            ),
+          );
+          if (key == 'AssetManifest.bin') return manifest;
+          if (key == 'assets/quizipedia/country_flag_images.json') {
+            bundleCalls++;
+            if (retry && bundleCalls == 1) return null;
+            return ByteData.sublistView(
+              utf8.encode(
+                jsonEncode({
+                  'schema_version': 'qm-country-flag-images/v1',
+                  'flags': {
+                    'FR': base64Encode(
+                      png.buffer.asUint8List(
+                        png.offsetInBytes,
+                        png.lengthInBytes,
+                      ),
+                    ),
+                  },
+                }),
+              ),
+            );
+          }
+          if (key.contains('/flag-')) {
+            countryCalls++;
+            return png;
+          }
+          return null;
+        });
+        addTearDown(
+          () => messenger.setMockMessageHandler('flutter/assets', null),
+        );
+        final camera = TransformationController();
+        addTearDown(camera.dispose);
+        await tester.pumpWidget(
+          MaterialApp(
+            home: SizedBox(
+              width: 320,
+              height: 300,
+              child: QuizipediaWorldMap(
+                features: const [
+                  QuizipediaFeature(
+                    id: 'FR',
+                    nameEn: 'France',
+                    nameRu: 'Франция',
+                    polygons: [],
+                  ),
+                ],
+                controller: camera,
+                onSelect: (_) {},
+                showFlags: true,
+              ),
+            ),
+          ),
+        );
+        await tester.runAsync(() async {
+          await Future<void>.delayed(const Duration(milliseconds: 500));
+        });
+        await tester.pumpAndSettle();
+        if (retry) {
+          expect(find.byKey(const Key('map-flags-retry')), findsOneWidget);
+          await tester.tap(find.byKey(const Key('map-flags-retry')));
+          await tester.runAsync(() async {
+            await Future<void>.delayed(const Duration(milliseconds: 500));
+          });
+          await tester.pumpAndSettle();
+          expect(find.byKey(const Key('map-flags-retry')), findsNothing);
+        }
+        expect(countryCalls, 0);
+        expect(bundleCalls, retry ? 2 : 1);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
   testWidgets(
     'country ranking replaces layers and selection returns to the map',
     (tester) async {
@@ -167,10 +260,15 @@ void main() {
           ),
         ),
       );
-      await tester.pumpAndSettle();
-      await tester.runAsync(() async {
-        await Future<void>.delayed(const Duration(milliseconds: 500));
-      });
+      // Let both platform asset IO and the large-UTF8 worker finish between frames.
+      for (var i = 0; i < 40; i++) {
+        await tester.pump();
+        if (find.byType(CircularProgressIndicator).evaluate().isEmpty) break;
+        await tester.runAsync(() async {
+          await Future<void>.delayed(const Duration(milliseconds: 50));
+        });
+      }
+      expect(find.byType(CircularProgressIndicator), findsNothing);
       await tester.pumpAndSettle();
       final boundary = tester.renderObject<RenderRepaintBoundary>(
         find.byKey(const Key('flag-boundary')),

@@ -1992,51 +1992,86 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
 
   final Map<String, ui.Image> _flags = {};
   final Set<String> _requestedFlags = {};
-  late final Future<Set<String>> _flagAssets =
-      AssetManifest.loadFromAssetBundle(rootBundle)
-          .then((manifest) => manifest.listAssets().toSet());
+  Future<Map<String, String>>? _flagData;
+  Set<String> _flagCodes = {};
+  bool _loadingFlags = false, _flagLoadError = false;
+
   Future<void> _loadFlags() async {
-    if (!widget.showFlags) return;
-    final assets = await _flagAssets;
-    if (!mounted) return;
-    final pending = widget.features
-        .where(
-          (f) =>
-              assets.contains(
-                'assets/quizipedia/flag-${f.id.toLowerCase()}.png',
-              ) &&
-              _requestedFlags.add(f.id),
-        )
-        .toList();
-    final loaded = await Future.wait(
-      pending.map((feature) async {
-        try {
-          final bytes = await rootBundle.load(
-            'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
-          );
-          final codec = await ui.instantiateImageCodec(
-            bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes),
-            targetWidth: 256,
-            allowUpscaling: false,
-          );
+    if (!widget.showFlags || _loadingFlags) return;
+    _loadingFlags = true;
+    try {
+      final data = await (_flagData ??= rootBundle
+          .loadString(
+            'assets/quizipedia/country_flag_images.json',
+            cache: false,
+          )
+          .then((text) {
+            final value = jsonDecode(text);
+            if (value is! Map ||
+                value['schema_version'] != 'qm-country-flag-images/v1' ||
+                value['flags'] is! Map ||
+                (value['flags'] as Map).values.any((v) => v is! String)) {
+              throw const FormatException('Invalid country flag image bundle');
+            }
+            return Map<String, String>.from(value['flags'] as Map);
+          }));
+      if (!mounted) return;
+      _flagCodes = data.keys.toSet();
+      final pending = widget.features
+          .where(
+            (f) =>
+                data.containsKey(f.id) &&
+                !_flags.containsKey(f.id) &&
+                _requestedFlags.add(f.id),
+          )
+          .toList();
+      if (pending.isEmpty) return;
+      final loaded = await Future.wait(
+        pending.map((feature) async {
           try {
-            return MapEntry(feature.id, (await codec.getNextFrame()).image);
-          } finally {
-            codec.dispose();
+            final codec = await ui.instantiateImageCodec(
+              base64Decode(data[feature.id]!),
+              targetWidth: 256,
+              allowUpscaling: false,
+            );
+            try {
+              return MapEntry(feature.id, (await codec.getNextFrame()).image);
+            } finally {
+              codec.dispose();
+            }
+          } on Exception {
+            return null;
+          } on FlutterError {
+            return null;
           }
-        } on Exception {
-          return null;
+        }),
+      );
+      if (!mounted) {
+        for (final entry in loaded.nonNulls) {
+          entry.value.dispose();
         }
-      }),
-    );
-    if (!mounted) {
-      for (final entry in loaded.nonNulls) {
-        entry.value.dispose();
+        return;
       }
-      return;
+      setState(() {
+        _flags.addEntries(loaded.nonNulls);
+        _flagLoadError = loaded.any((entry) => entry == null);
+      });
+    } on Exception {
+      _flagData = null;
+      if (mounted) setState(() => _flagLoadError = true);
+    } on FlutterError {
+      _flagData = null;
+      if (mounted) setState(() => _flagLoadError = true);
+    } finally {
+      if (mounted) setState(() => _loadingFlags = false);
     }
-    if (loaded.any((entry) => entry != null)) {
-      setState(() => _flags.addEntries(loaded.nonNulls));
+    if (mounted &&
+        !_flagLoadError &&
+        widget.showFlags &&
+        widget.features.any(
+          (f) => _flagCodes.contains(f.id) && !_requestedFlags.contains(f.id),
+        )) {
+      _loadFlags();
     }
   }
 
@@ -2476,6 +2511,47 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                   ? const SizedBox.shrink()
                   : _factLabels(scene),
             ),
+            if (widget.showFlags && _loadingFlags)
+              Positioned(
+                top: 12,
+                left: 12,
+                child: IgnorePointer(
+                  child: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      semanticsLabel: _t(
+                        context,
+                        'Loading flags',
+                        'Загрузка флагов',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            if (widget.showFlags && _flagLoadError && !_loadingFlags)
+              Positioned(
+                top: 8,
+                left: 8,
+                child: FilledButton.tonalIcon(
+                  key: const Key('map-flags-retry'),
+                  onPressed: () {
+                    setState(() {
+                      _flagData = null;
+                      _flagLoadError = false;
+                      _requestedFlags.removeWhere(
+                        (id) => !_flags.containsKey(id),
+                      );
+                    });
+                    _loadFlags();
+                  },
+                  icon: const Icon(Icons.refresh),
+                  label: Text(
+                    _t(context, 'Retry flags', 'Повторить загрузку флагов'),
+                  ),
+                ),
+              ),
             if (widget.showSelectionLabel)
               Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
             Positioned(bottom: 12, right: 12, child: zoomControls()),
