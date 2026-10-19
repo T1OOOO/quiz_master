@@ -1,0 +1,110 @@
+{
+  "accounting": {
+    "planned_total_bytes": 486658360
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "deployment_revision": "68",
+    "helm_deployed_revision": 70,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-minimum20-7f8344d6@sha256:09cc9e1df1e5d430952d1b25e57de10824877d89f1eeaac7b2cd0626e292bdee",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 69
+  },
+  "contract": "quiz-master-storage-offload-visual/v1",
+  "local_destination": "storage-offload-visual-20261019",
+  "plan_only": true,
+  "purpose": "Reversibly archive 15 inactive copied release70 input targets; all runtime images, PVC/live DB, server backup70 and candidate71, candidate71 inputs/restore proof, release70 metadata retained. Stopped rehearsal container metadata is not active usage; only running container/pod/process references block offload. Restore archived folders before restarting any old rehearsal container. No image/prune/threshold/cluster changes.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 15614112,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 84630112,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 3500334,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 3500334,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 60190720,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 60190720,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 60190720,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 67981312,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/rehearsal-data",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 67940352,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-minimum20-7f8344d6/resume-rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}

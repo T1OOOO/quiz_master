@@ -1,0 +1,86 @@
+{
+  "accounting": {
+    "planned_total_bytes": 402649926
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-visual-3b604773",
+    "deployment_revision": "69",
+    "helm_deployed_revision": 71,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-visual-3b604773@sha256:90431ef229e5f86f2c3b8a4c368f473c1172d91150c3c02f50c1b10f4c599591",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 70
+  },
+  "contract": "quiz-master-storage-offload-superseded/v1",
+  "local_destination": "storage-offload-superseded-20261019",
+  "plan_only": true,
+  "purpose": "Archive copied inputs/restored/rehearsal DB and pre-prepare backup of superseded NEVER PUBLISHED candidate grid8681 only. Preserve all published rollback backups70/71, all images, live PVC, metadata and all other stages. Candidate8681 prepared imagea8e was rejected from publication by root QA due inherited flag-request rate-limit bug. Current71 remains running. Files retained locally with all previous checksum/SQLite/fsync/recheck guards.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 85050673,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74887168,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 81907712,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-grid-8681ac36/rehearsal-data",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74887168,
+      "kind": "file",
+      "path": "/opt/quiz-master/backups/quiz-2026.10.19-grid-8681ac36.sqlite",
+      "sqlite": true
+    }
+  ]
+}

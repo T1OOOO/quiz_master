@@ -1,0 +1,86 @@
+{
+  "accounting": {
+    "planned_total_bytes": 402580298
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-visual-3b604773",
+    "deployment_revision": "69",
+    "helm_deployed_revision": 71,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-visual-3b604773@sha256:90431ef229e5f86f2c3b8a4c368f473c1172d91150c3c02f50c1b10f4c599591",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 70
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-grid-20261019",
+  "plan_only": true,
+  "purpose": "Same reviewed reversible-copy archive algorithm, now literal11 inactive copied release71 targets only. Preserve all images, live PVC, all server backups, receipt/chart/metadata files. No global prune, no thresholds changed. New delta-only image replaces identical-path changed web files and verifies final full image web closure.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 85050677,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74854400,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 74854400,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 81903616,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.19-visual-3b604773/rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}
