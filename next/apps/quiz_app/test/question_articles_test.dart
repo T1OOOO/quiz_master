@@ -229,8 +229,18 @@ void main() {
         ))!,
       );
 
-      expect(articles.articles, hasLength(303));
+      expect(articles.articles, hasLength(305));
       for (final (quizId, questionId, revision) in [
+        (
+          'vocabulary-church-slavonic',
+          'q-vocabulary-200-94',
+          'cff3d0b124deb247fb33df04df74b8704fb8b099fd096558c4e46516e86a286b',
+        ),
+        (
+          'dogs-biology-anatomy-part-2',
+          'q-dog-myth-29',
+          'c39f618999cbb670498cae5554860a59679267589f31bf71ac15612b75bdfd41',
+        ),
         (
           'prep-film-actors-1',
           'cinema-oct3-013',

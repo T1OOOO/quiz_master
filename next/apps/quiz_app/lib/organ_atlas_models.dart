@@ -17,7 +17,10 @@ const organKinds = {
   'mixed_gland',
   'gland_group',
   'endocrine_tissue',
+  'bone_group',
+  'brain_region',
 };
+const organDiagramGroups = {'skeleton', 'brain', 'organs'};
 const organSystems = {
   'nervous',
   'endocrine',
@@ -39,6 +42,20 @@ String _string(Map<String, dynamic> json, String key, {bool empty = false}) {
     throw FormatException('$key required');
   }
   return value.trim();
+}
+
+String? _optionalString(Map<String, dynamic> json, String key) {
+  if (!json.containsKey(key) || json[key] == null) return null;
+  return _string(json, key);
+}
+
+int? _optionalPositiveInt(Map<String, dynamic> json, String key) {
+  if (!json.containsKey(key) || json[key] == null) return null;
+  final value = json[key];
+  if (value is! int || value <= 0) {
+    throw FormatException('$key positive integer required');
+  }
+  return value;
 }
 
 List<Map<String, dynamic>> _objects(Object? value, String label) {
@@ -119,6 +136,9 @@ class OrganStructure {
     required this.id,
     required this.nameRu,
     required this.nameEn,
+    this.nameLa,
+    this.boneCount,
+    this.diagramGroup,
     required this.systemIds,
     required this.kind,
     required this.region,
@@ -144,13 +164,17 @@ class OrganStructure {
       functionEn,
       noteRu,
       noteEn;
+  final String? nameLa, diagramGroup;
+  final int? boneCount;
   final List<String> systemIds, secretionsRu, secretionsEn, sourceIds;
   final List<OrganFact> facts;
   factory OrganStructure.fromJson(Map<String, dynamic> json) {
     final kind = _string(json, 'kind'), region = _string(json, 'region');
     final systems = _strings(json['system_ids'], 'system');
+    final diagramGroup = _optionalString(json, 'diagram_group');
     if (!organKinds.contains(kind) ||
         !organRegions.contains(region) ||
+        (diagramGroup != null && !organDiagramGroups.contains(diagramGroup)) ||
         systems.any((id) => !organSystems.contains(id))) {
       throw const FormatException('organ classification');
     }
@@ -176,6 +200,9 @@ class OrganStructure {
       id: _string(json, 'id'),
       nameRu: _string(json, 'name_ru'),
       nameEn: _string(json, 'name_en'),
+      nameLa: _optionalString(json, 'name_la'),
+      boneCount: _optionalPositiveInt(json, 'bone_count'),
+      diagramGroup: diagramGroup,
       systemIds: systems,
       kind: kind,
       region: region,

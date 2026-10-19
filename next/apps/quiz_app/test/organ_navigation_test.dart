@@ -41,6 +41,12 @@ void main() {
           find.text('Human organs and glands'),
           200,
         );
+        await tester.pumpAndSettle();
+        await Scrollable.ensureVisible(
+          tester.element(find.text('Human organs and glands')),
+          alignment: .3,
+        );
+        await tester.pumpAndSettle();
         await tester.tap(find.text('Human organs and glands'));
         await tester.pumpAndSettle();
         expect(find.text('Retry'), findsNothing);

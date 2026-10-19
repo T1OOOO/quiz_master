@@ -55,13 +55,22 @@ void main() {
       expect(find.text('Alphabet Inc.'), findsNothing);
       await tester.tap(find.byTooltip('Закрыть'));
       await tester.pumpAndSettle();
+      // A founder prompt can have several valid source rows. Use the owner
+      // topic so the randomly selected displayed prompt identifies one answer.
+      final topic = find.byTooltip('Тема тренировки');
+      await tester.ensureVisible(topic);
+      await tester.tap(topic);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Владельцы').last);
+      await tester.pumpAndSettle();
       final practice = find.widgetWithText(FilledButton, 'Тренировка');
       await tester.ensureVisible(practice);
       await tester.tap(practice);
       await tester.pumpAndSettle();
       final atlas = BrandAtlas.fromJson(jsonDecode(raw));
       final question = atlas.questions.firstWhere(
-        (q) => find.text(russianLearningText(q.promptRu)).evaluate().isNotEmpty,
+        (q) => q.kind == BrandQuestionKind.owner &&
+            find.text(russianLearningText(q.promptRu)).evaluate().isNotEmpty,
       );
       final answer = find.widgetWithText(
         OutlinedButton,

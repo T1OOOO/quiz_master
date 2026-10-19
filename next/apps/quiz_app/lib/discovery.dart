@@ -145,6 +145,9 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
     final compact = MediaQuery.sizeOf(context).height < 720;
     return SourceScaffold(
       compact: compact,
+      backgroundAsset: widget.folder.isEmpty
+          ? null
+          : categoryCoverAsset(widget.folder),
       body: catalog.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (_, _) => Center(
@@ -336,32 +339,28 @@ class _DiscoveryPageState extends ConsumerState<DiscoveryPage> {
 
   Widget _packCard(CatalogPack pack, AppLocalizations l10n) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        children: [
-          Image.asset(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      child: ListTile(
+        key: Key('pack-${pack.id}'),
+        minVerticalPadding: 8,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.asset(
             categoryCoverAsset(pack.category),
-            width: double.infinity,
+            width: 64,
             height: 64,
             fit: BoxFit.cover,
-            cacheWidth: 600,
+            cacheWidth: 160,
             excludeFromSemantics: true,
           ),
-          ListTile(
-            key: Key('pack-${pack.id}'),
-            isThreeLine: true,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-            title: Text(pack.title),
-            subtitle: Text(
-              '${pack.description}\n${l10n.questionsCount(pack.questions)}',
-            ),
-            trailing: const Icon(Icons.play_arrow),
-            // One round needs no picker: the card itself starts it.
-            onTap: () =>
-                context.go(_quizLocation(pack.id, null, widget.difficulty)),
-          ),
-        ],
+        ),
+        title: Text(pack.title, maxLines: 2, overflow: TextOverflow.ellipsis),
+        subtitle: Text(l10n.questionsCount(pack.questions)),
+        trailing: const Icon(Icons.play_arrow),
+        // One round needs no picker: the card itself starts it.
+        onTap: () =>
+            context.go(_quizLocation(pack.id, null, widget.difficulty)),
       ),
     );
   }

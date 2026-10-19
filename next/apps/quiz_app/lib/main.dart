@@ -338,12 +338,14 @@ class QuestionCard extends StatefulWidget {
     this.submitting = false,
     this.reveal,
     this.showExplanation = true,
+    this.initialAnswer,
   });
   final PublicQuestion question;
   final ValueChanged<Object> onAnswer;
   final bool submitting;
   final Reveal? reveal;
   final bool showExplanation;
+  final StagedAnswer? initialAnswer;
   @override
   State<QuestionCard> createState() => _QuestionCardState();
 }
@@ -352,6 +354,21 @@ class _QuestionCardState extends State<QuestionCard> {
   String? single;
   final multiple = <String>{};
   final text = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    switch (widget.initialAnswer) {
+      case SingleChoiceAnswer(:final optionId):
+        single = optionId;
+      case MultipleChoiceAnswer(:final optionIds):
+        multiple.addAll(optionIds);
+      case NormalizedTextAnswer(:final text):
+        this.text.text = text;
+      case null:
+        break;
+    }
+  }
+
   @override
   void dispose() {
     text.dispose();

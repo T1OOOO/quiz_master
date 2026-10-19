@@ -8,10 +8,12 @@ class SourceScaffold extends ConsumerWidget {
     required this.body,
     this.compact = false,
     this.backLocation,
+    this.backgroundAsset,
   });
   final Widget body;
   final bool compact;
   final String? backLocation;
+  final String? backgroundAsset;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
@@ -19,7 +21,8 @@ class SourceScaffold extends ConsumerWidget {
       children: [
         Positioned.fill(
           child: Image.asset(
-            'assets/library-bg-v1.png',
+            backgroundAsset ?? 'assets/library-bg-v1.png',
+            key: const Key('source-background'),
             fit: BoxFit.cover,
             cacheWidth: 1024,
             excludeFromSemantics: true,
@@ -199,16 +202,6 @@ class SourceScaffold extends ConsumerWidget {
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  if (!compact) ...[
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      l10n.holidaySubtitle,
-                                      style: const TextStyle(
-                                        color: _cream,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ],
                                 ],
                               ),
                             ),

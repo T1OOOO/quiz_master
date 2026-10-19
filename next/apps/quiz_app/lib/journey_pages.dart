@@ -48,27 +48,29 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
         _showFeedback(context, feedback, controller.nextQuestion);
       }
     });
-    final title =
-        ref
-            .watch(discoveryCatalogProvider)
-            .asData
-            ?.value
-            .where((p) => p.id == widget.quizId)
-            .firstOrNull
-            ?.title ??
-        '';
+    final pack = ref
+        .watch(discoveryCatalogProvider)
+        .asData
+        ?.value
+        .where((p) => p.id == widget.quizId)
+        .firstOrNull;
+    final title = pack?.title ?? '';
+    final backgroundAsset = pack == null
+        ? null
+        : categoryCoverAsset(pack.category);
     if (widget.quizId != null &&
         attempt != null &&
         catalog != null &&
-        journey.index < attempt.snapshots.length &&
+        finish == null &&
         !journey.loading) {
       return SourceScaffold(
         compact: true,
+        backgroundAsset: backgroundAsset,
         body: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 760),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
               child: Column(
                 children: [
                   Row(
@@ -209,8 +211,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                         : controller.reloadCatalog,
                     child: Text(journey.loading ? l10n.loading : l10n.retry),
                   ),
-                ] else if (attempt != null &&
-                    journey.index < attempt.snapshots.length) ...[
+                ] else if (attempt != null && finish == null) ...[
                   _QuestionStep(
                     journey: journey,
                     question: _orderedQuestion(
@@ -218,19 +219,6 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
                       attempt.snapshots[journey.index],
                     ),
                   ),
-                ] else if (attempt != null && finish == null) ...[
-                  FilledButton(
-                    onPressed: journey.submitting ? null : controller.complete,
-                    child: Text(
-                      journey.submitting ? l10n.finishing : l10n.finishQuiz,
-                    ),
-                  ),
-                  if (journey.error != null)
-                    _ErrorPanel(
-                      message: l10n.journeyError,
-                      retryable: journey.errorRetryable,
-                      onRetry: controller.retry,
-                    ),
                 ] else if (finish != null) ...[
                   Text(
                     l10n.score(finish.score),
@@ -316,7 +304,11 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
     );
     return widget.quizId == null
         ? AppScaffold(title: l10n.catalogTitle, body: body)
-        : SourceScaffold(compact: true, body: body);
+        : SourceScaffold(
+            compact: true,
+            backgroundAsset: backgroundAsset,
+            body: body,
+          );
   }
 }
 
@@ -342,15 +334,59 @@ class _QuestionStep extends ConsumerWidget {
         onRetry: () {},
       );
     }
+    final answered = journey.isAnsweredAt(journey.index);
+    final reviewing = answered && journey.feedback == null;
+    final reveal =
+        journey.feedback?.reveal ??
+        (reviewing ? journey.reviewRevealAt(journey.index) : null);
     return Column(
       children: [
         LinearProgressIndicator(
           value: journey.index / attempt.snapshots.length,
-          minHeight: 6,
+          minHeight: 3,
           borderRadius: BorderRadius.circular(8),
         ),
-        const SizedBox(height: 8),
-        Text('${journey.index + 1}/${attempt.snapshots.length}'),
+        Row(
+          children: [
+            Expanded(
+              child: SizedBox(
+                height: 48,
+                child: _QuestionNavigator(journey: journey),
+              ),
+            ),
+            if (MediaQuery.sizeOf(context).width < 360 ||
+                MediaQuery.textScalerOf(context).scale(14) > 20)
+              IconButton(
+                key: const Key('mark-question-uncertain'),
+                tooltip: Localizations.localeOf(context).languageCode == 'ru'
+                    ? 'Отметить: не уверен'
+                    : 'Mark for review',
+                isSelected: journey.uncertainIndices.contains(journey.index),
+                onPressed: journey.submitting || journey.feedback != null
+                    ? null
+                    : ref.read(journeyProvider.notifier).toggleUncertain,
+                icon: const Icon(Icons.bookmark_border),
+                selectedIcon: const Icon(Icons.bookmark),
+              )
+            else
+              TextButton.icon(
+                key: const Key('mark-question-uncertain'),
+                onPressed: journey.submitting || journey.feedback != null
+                    ? null
+                    : ref.read(journeyProvider.notifier).toggleUncertain,
+                icon: Icon(
+                  journey.uncertainIndices.contains(journey.index)
+                      ? Icons.bookmark
+                      : Icons.bookmark_border,
+                ),
+                label: Text(
+                  Localizations.localeOf(context).languageCode == 'ru'
+                      ? 'Не уверен'
+                      : 'Mark for review',
+                ),
+              ),
+          ],
+        ),
         if (fitScreen)
           Expanded(
             child: SingleChildScrollView(
@@ -360,9 +396,11 @@ class _QuestionStep extends ConsumerWidget {
                 question: current,
                 submitting:
                     journey.submitting ||
-                    journey.receipts.length > journey.index,
-                reveal: journey.feedback?.reveal,
-                showExplanation: false,
+                    answered ||
+                    journey.sentByIndex.containsKey(journey.index),
+                initialAnswer: journey.stagedByIndex[journey.index],
+                reveal: reveal,
+                showExplanation: reviewing,
                 onAnswer: (value) => ref
                     .read(journeyProvider.notifier)
                     .stage(current.kind, value),
@@ -374,11 +412,18 @@ class _QuestionStep extends ConsumerWidget {
             key: ValueKey(current.id),
             question: current,
             submitting:
-                journey.submitting || journey.receipts.length > journey.index,
+                journey.submitting ||
+                answered ||
+                journey.sentByIndex.containsKey(journey.index),
+            initialAnswer: journey.stagedByIndex[journey.index],
+            reveal: reveal,
+            showExplanation: reviewing,
             onAnswer: (value) =>
                 ref.read(journeyProvider.notifier).stage(current.kind, value),
           ),
-        if (!fitScreen || current.kind == AnswerKind.multipleChoice)
+        if (!answered &&
+            !journey.sentByIndex.containsKey(journey.index) &&
+            (!fitScreen || current.kind == AnswerKind.multipleChoice))
           SizedBox(
             width: double.infinity,
             child: FilledButton(
@@ -399,9 +444,145 @@ class _QuestionStep extends ConsumerWidget {
             retryable: journey.errorRetryable,
             onRetry: ref.read(journeyProvider.notifier).retry,
           ),
+        if (journey.error == null &&
+            journey.sentByIndex.containsKey(journey.index) &&
+            !journey.submitting)
+          FilledButton.icon(
+            key: const Key('retry-saved-answer'),
+            onPressed: ref.read(journeyProvider.notifier).submit,
+            icon: const Icon(Icons.sync),
+            label: Text(l10n.retry),
+          ),
+        if (journey.isComplete)
+          FilledButton(
+            onPressed: journey.submitting
+                ? null
+                : ref.read(journeyProvider.notifier).complete,
+            child: Text(journey.submitting ? l10n.finishing : l10n.finishQuiz),
+          ),
       ],
     );
   }
+}
+
+class _QuestionNavigator extends ConsumerWidget {
+  const _QuestionNavigator({required this.journey});
+
+  final JourneyState journey;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final attempt = journey.attempt!;
+    return Semantics(
+      label: _questionNavigatorLabel(context),
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          Row(
+            children: [
+              for (var index = 0; index < attempt.snapshots.length; index++)
+                Padding(
+                  padding: const EdgeInsets.only(right: 4),
+                  child: _QuestionNavigatorButton(
+                    index: index,
+                    selected: journey.index == index,
+                    progress: journey.progressAt(index),
+                    marked: journey.uncertainIndices.contains(index),
+                    enabled: !journey.submitting && journey.feedback == null,
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _QuestionNavigatorButton extends ConsumerWidget {
+  const _QuestionNavigatorButton({
+    required this.index,
+    required this.selected,
+    required this.progress,
+    required this.enabled,
+    required this.marked,
+  });
+
+  final int index;
+  final bool selected;
+  final QuestionProgress progress;
+  final bool enabled;
+  final bool marked;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) => Tooltip(
+    message:
+        '${index + 1}: ${_questionProgressLabel(context, progress)}${marked ? ' ★' : ''}',
+    child: Semantics(
+      button: true,
+      selected: selected,
+      label:
+          '${index + 1}: ${_questionProgressLabel(context, progress)}${marked ? ' · ${Localizations.localeOf(context).languageCode == 'ru' ? 'не уверен' : 'marked for review'}' : ''}',
+      child: selected
+          ? FilledButton.tonal(
+              key: Key('question-nav-$index'),
+              style: _questionNavigatorButtonStyle,
+              onPressed: enabled
+                  ? () => ref.read(journeyProvider.notifier).goToQuestion(index)
+                  : null,
+              child: _questionNavigatorButtonContent(index, progress, marked),
+            )
+          : OutlinedButton(
+              key: Key('question-nav-$index'),
+              style: _questionNavigatorButtonStyle,
+              onPressed: enabled
+                  ? () => ref.read(journeyProvider.notifier).goToQuestion(index)
+                  : null,
+              child: _questionNavigatorButtonContent(index, progress, marked),
+            ),
+    ),
+  );
+}
+
+final _questionNavigatorButtonStyle = ButtonStyle(
+  minimumSize: const WidgetStatePropertyAll(Size(48, 48)),
+  padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 6)),
+  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+);
+
+Widget _questionNavigatorButtonContent(
+  int index,
+  QuestionProgress progress,
+  bool marked,
+) => Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    _questionProgressIcon(progress),
+    const SizedBox(width: 2),
+    Text('${index + 1}'),
+    if (marked) const Icon(Icons.bookmark, size: 14),
+  ],
+);
+
+Widget _questionProgressIcon(QuestionProgress progress) =>
+    Icon(switch (progress) {
+      QuestionProgress.answered => Icons.check_circle,
+      QuestionProgress.uncertain => Icons.help_outline,
+      QuestionProgress.unanswered => Icons.circle_outlined,
+    }, size: 18);
+
+String _questionNavigatorLabel(BuildContext context) =>
+    Localizations.localeOf(context).languageCode == 'ru'
+    ? 'Навигация по вопросам'
+    : 'Question navigation';
+
+String _questionProgressLabel(BuildContext context, QuestionProgress progress) {
+  final russian = Localizations.localeOf(context).languageCode == 'ru';
+  return switch (progress) {
+    QuestionProgress.answered => russian ? 'отвечен' : 'answered',
+    QuestionProgress.uncertain => russian ? 'не уверен' : 'uncertain',
+    QuestionProgress.unanswered => russian ? 'без ответа' : 'unanswered',
+  };
 }
 
 String _feedbackLabel(BuildContext context, bool correct) =>

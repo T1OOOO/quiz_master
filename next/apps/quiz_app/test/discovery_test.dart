@@ -110,7 +110,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.text('136 quizzes · 4084 questions'), findsOneWidget);
+    expect(find.text('144 quizzes · 4474 questions'), findsOneWidget);
     expect(find.text('Display name'), findsNothing);
     expect(
       find.descendant(

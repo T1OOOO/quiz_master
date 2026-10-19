@@ -32,11 +32,15 @@ func run(args []string, out, errOut io.Writer) int {
 	taxonomyPath := fs.String("taxonomy", "", "optional frozen taxonomy dictionary for annotated content")
 	var in, outPath, before, after, version, publishedAt *string
 	var force *bool
+	var withDifficulty *bool
 	switch command {
 	case "catalog", "import", "build":
 		in = fs.String("in", "", "input file")
 		outPath = fs.String("out", "", "import directory or bundle file")
 		force = fs.Bool("force", false, "explicit overwrite")
+		if command == "catalog" {
+			withDifficulty = fs.Bool("with-difficulty", false, "include public question counts by difficulty band")
+		}
 		if command == "build" {
 			version = fs.String("version", "", "explicit bundle version")
 			publishedAt = fs.String("published-at", "", "RFC3339 publication timestamp")
@@ -77,15 +81,28 @@ func run(args []string, out, errOut io.Writer) int {
 			return fail(e)
 		}
 		type metadata struct {
-			QuizID      string `json:"quiz_id"`
-			Title       string `json:"title"`
-			Description string `json:"description"`
-			Category    string `json:"category"`
-			Questions   int    `json:"questions_count"`
+			QuizID           string         `json:"quiz_id"`
+			Title            string         `json:"title"`
+			Description      string         `json:"description"`
+			Category         string         `json:"category"`
+			Questions        int            `json:"questions_count"`
+			DifficultyCounts map[string]int `json:"difficulty_counts,omitempty"`
 		}
 		packs := make([]metadata, 0, len(report.Packs))
 		for _, p := range report.Packs {
-			packs = append(packs, metadata{p.CanonicalID, p.Title, p.Description, p.Category, p.Questions})
+			pack := metadata{QuizID: p.CanonicalID, Title: p.Title, Description: p.Description, Category: p.Category, Questions: p.Questions}
+			if *withDifficulty {
+				draft, _, e := content.ImportWithTaxonomy(p.Path, taxonomy)
+				if e != nil {
+					return fail(e)
+				}
+				counts, e := catalogDifficultyCounts(draft)
+				if e != nil {
+					return fail(e)
+				}
+				pack.DifficultyCounts = counts
+			}
+			packs = append(packs, pack)
 		}
 		if e := content.WriteJSON(*outPath, packs, *force); e != nil {
 			return fail(e)
@@ -206,6 +223,18 @@ func run(args []string, out, errOut io.Writer) int {
 	}
 	return 0
 }
+
+func catalogDifficultyCounts(draft content.Draft) (map[string]int, error) {
+	counts := map[string]int{"easy": 0, "medium": 0, "hard": 0, "nightmare": 0, "unknown": 0}
+	for _, question := range draft.Questions {
+		if _, ok := counts[question.Difficulty]; !ok {
+			return nil, &content.Error{Kind: "difficulty", Path: draft.QuizID + "/" + question.QuestionID}
+		}
+		counts[question.Difficulty]++
+	}
+	return counts, nil
+}
+
 func loadTaxonomy(path string) (*content.Taxonomy, error) {
 	if path == "" {
 		return nil, nil

@@ -115,7 +115,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     final query = _search.text.trim().toLowerCase();
     return atlas.organs.where((item) {
       final words =
-          '${item.nameEn} ${item.nameRu} ${item.functionEn} ${item.functionRu} ${item.systemIds.join(' ')} ${item.kind} ${item.region}'
+          '${item.nameEn} ${item.nameRu} ${item.nameLa ?? ''} ${item.functionEn} ${item.functionRu} ${item.systemIds.join(' ')} ${item.kind} ${item.region}'
               .toLowerCase();
       return (_region.isEmpty || item.region == _region) &&
           (_kind.isEmpty || item.kind == _kind) &&
@@ -533,6 +533,8 @@ String _filterLabel(BuildContext context, String value) {
     'mixed_gland': 'Mixed gland',
     'gland_group': 'Gland group',
     'endocrine_tissue': 'Endocrine tissue',
+    'bone_group': 'Bones',
+    'brain_region': 'Brain region',
     'nervous': 'Nervous system',
     'endocrine': 'Endocrine system',
     'digestive': 'Digestive system',
@@ -558,6 +560,8 @@ String _filterLabel(BuildContext context, String value) {
     'mixed_gland': 'Смешанная железа',
     'gland_group': 'Группа желёз',
     'endocrine_tissue': 'Эндокринная ткань',
+    'bone_group': 'Кости',
+    'brain_region': 'Отдел мозга',
     'nervous': 'Нервная',
     'endocrine': 'Эндокринная',
     'digestive': 'Пищеварительная',
@@ -934,6 +938,25 @@ class _Detail extends StatelessWidget {
             v(item.nameEn, item.nameRu),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
+          if (item.nameLa != null)
+            ExpansionTile(
+              key: const Key('organ-latin-name'),
+              tilePadding: EdgeInsets.zero,
+              title: Text(v('Latin name', 'Латинское название')),
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(item.nameLa!),
+                ),
+              ],
+            ),
+          if (item.boneCount != null)
+            Text(
+              v(
+                'Bones in group: ${item.boneCount}',
+                'Костей в группе: ${item.boneCount}',
+              ),
+            ),
           Text(
             '${v('Position', 'Положение')}: ${v(item.positionEn, item.positionRu)}',
           ),

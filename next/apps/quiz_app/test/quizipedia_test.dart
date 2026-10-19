@@ -578,7 +578,11 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Countries of the world'), findsOneWidget);
-    await tester.ensureVisible(find.text('Landmark photographs'));
+    await tester.scrollUntilVisible(
+      find.text('Landmark photographs'),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
     await tester.pumpAndSettle();

@@ -52,14 +52,14 @@ void main() {
         ) as Map<String, dynamic>;
       });
       final ids = (raw['organs'] as List).cast<Map>();
-      expect(ids, hasLength(52));
+      expect(ids, hasLength(69));
       expect(
         find.byWidgetPredicate(
           (widget) =>
               widget is OutlinedButton &&
               widget.key.toString().contains('organ-list-'),
         ),
-        findsNWidgets(52),
+        findsNWidgets(69),
       );
       await tester.enterText(find.byKey(const Key('organ-search')), 'thyroid');
       await tester.pump();

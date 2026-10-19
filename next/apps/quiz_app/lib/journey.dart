@@ -14,6 +14,8 @@ final journeyProvider = NotifierProvider<JourneyController, JourneyState>(
   JourneyController.new,
 );
 
+enum QuestionProgress { answered, unanswered, uncertain }
+
 class JourneyState {
   const JourneyState({
     this.loading = false,
@@ -26,6 +28,10 @@ class JourneyState {
     this.attempt,
     this.index = 0,
     this.staged,
+    this.stagedByIndex = const {},
+    this.sentByIndex = const {},
+    this.uncertainIndices = const {},
+    this.feedbackByIndex = const {},
     this.submitting = false,
     this.finish,
     this.reveals = const [],
@@ -42,6 +48,10 @@ class JourneyState {
   final Attempt? attempt;
   final int index;
   final StagedAnswer? staged;
+  final Map<int, StagedAnswer> stagedByIndex;
+  final Map<int, StagedAnswer> sentByIndex;
+  final Set<int> uncertainIndices;
+  final Map<int, PracticeFeedback> feedbackByIndex;
   final bool submitting;
   final Finish? finish;
   final List<Reveal> reveals;
@@ -58,6 +68,10 @@ class JourneyState {
     Attempt? attempt,
     int? index,
     StagedAnswer? staged,
+    Map<int, StagedAnswer>? stagedByIndex,
+    Map<int, StagedAnswer>? sentByIndex,
+    Set<int>? uncertainIndices,
+    Map<int, PracticeFeedback>? feedbackByIndex,
     bool? submitting,
     Finish? finish,
     List<Reveal>? reveals,
@@ -74,12 +88,66 @@ class JourneyState {
     attempt: attempt ?? this.attempt,
     index: index ?? this.index,
     staged: staged,
+    stagedByIndex: stagedByIndex ?? this.stagedByIndex,
+    sentByIndex: sentByIndex ?? this.sentByIndex,
+    uncertainIndices: uncertainIndices ?? this.uncertainIndices,
+    feedbackByIndex: feedbackByIndex ?? this.feedbackByIndex,
     submitting: submitting ?? this.submitting,
     finish: finish ?? this.finish,
     reveals: reveals ?? this.reveals,
     receipts: receipts ?? this.receipts,
     feedback: feedback,
   );
+
+  bool isAnsweredAt(int questionIndex) {
+    final attempt = this.attempt;
+    if (attempt == null ||
+        questionIndex < 0 ||
+        questionIndex >= attempt.snapshots.length) {
+      return false;
+    }
+    final questionId = attempt.snapshots[questionIndex].questionId;
+    return receipts.any((receipt) => receipt.questionId == questionId);
+  }
+
+  QuestionProgress progressAt(int questionIndex) {
+    if (isAnsweredAt(questionIndex)) return QuestionProgress.answered;
+    return isUncertainAt(questionIndex)
+        ? QuestionProgress.uncertain
+        : QuestionProgress.unanswered;
+  }
+
+  int? get firstUnansweredIndex {
+    final attempt = this.attempt;
+    if (attempt == null) return null;
+    for (var index = 0; index < attempt.snapshots.length; index++) {
+      if (progressAt(index) == QuestionProgress.unanswered) return index;
+    }
+    return null;
+  }
+
+  int? get firstPendingIndex {
+    final attempt = this.attempt;
+    if (attempt == null) return null;
+    for (var index = 0; index < attempt.snapshots.length; index++) {
+      if (!isAnsweredAt(index)) return index;
+    }
+    return null;
+  }
+
+  bool get isComplete => attempt != null && firstPendingIndex == null;
+
+  bool isUncertainAt(int index) =>
+      uncertainIndices.contains(index) ||
+      (!isAnsweredAt(index) && stagedByIndex.containsKey(index));
+
+  bool get canComplete => isComplete;
+
+  StagedAnswer? answerForSubmissionAt(int questionIndex) =>
+      sentByIndex[questionIndex] ?? stagedByIndex[questionIndex];
+
+  Reveal? reviewRevealAt(int questionIndex) =>
+      feedbackByIndex[questionIndex]?.reveal;
 }
 
 class JourneyController extends Notifier<JourneyState> {
@@ -116,12 +184,14 @@ class JourneyController extends Notifier<JourneyState> {
       state = state.copyWith(session: session, catalog: catalog);
       await start();
     } on ApiClientException catch (e) {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: e.code,
         errorRetryable: e.retryable,
       );
     } on FormatException {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: 'invalid_response',
@@ -131,28 +201,33 @@ class JourneyController extends Notifier<JourneyState> {
   }
 
   Future<void> bootstrap(String name) async {
+    final generation = ++_generation;
     _quizId = null;
     _round = null;
     _difficulty = null;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
       final session = await ref.read(quizApiProvider).bootstrap(name);
+      if (generation != _generation) return;
       state = state.copyWith(loading: true, session: session);
       final catalog = await ref
           .read(quizApiProvider)
           .catalog(quizId: _quizId, difficulty: _difficulty);
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         session: session,
         catalog: catalog,
       );
     } on ApiClientException catch (e) {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: e.code,
         errorRetryable: e.retryable,
       );
     } on FormatException {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: 'invalid_response',
@@ -163,19 +238,23 @@ class JourneyController extends Notifier<JourneyState> {
 
   Future<void> reloadCatalog() async {
     if (state.session == null || state.loading) return;
+    final generation = _generation;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
     try {
       final catalog = await ref
           .read(quizApiProvider)
           .catalog(quizId: _quizId, difficulty: _difficulty);
+      if (generation != _generation) return;
       state = state.copyWith(loading: false, catalog: catalog);
     } on ApiClientException catch (e) {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: e.code,
         errorRetryable: e.retryable,
       );
     } on FormatException {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: 'invalid_response',
@@ -185,7 +264,7 @@ class JourneyController extends Notifier<JourneyState> {
   }
 
   Future<void> start() async {
-    final generation = _generation;
+    final generation = ++_generation;
     final catalog = state.catalog;
     if (catalog == null) return;
     state = state.copyWith(loading: true, error: null, errorRetryable: false);
@@ -200,14 +279,29 @@ class JourneyController extends Notifier<JourneyState> {
           );
       validateAttemptCatalog(attempt, catalog);
       if (generation != _generation) return;
-      state = state.copyWith(loading: false, attempt: attempt, index: 0);
+      state = state.copyWith(
+        loading: false,
+        attempt: attempt,
+        index: 0,
+        staged: null,
+        stagedByIndex: const {},
+        sentByIndex: const {},
+        uncertainIndices: const {},
+        feedbackByIndex: const {},
+        receipts: const [],
+        feedback: null,
+        finish: null,
+        reveals: const [],
+      );
     } on ApiClientException catch (e) {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: e.code,
         errorRetryable: e.retryable,
       );
     } on FormatException {
+      if (generation != _generation) return;
       state = state.copyWith(
         loading: false,
         error: 'invalid_response',
@@ -216,88 +310,167 @@ class JourneyController extends Notifier<JourneyState> {
     }
   }
 
+  void toggleUncertain() {
+    final attempt = state.attempt;
+    if (attempt == null ||
+        state.submitting ||
+        state.finish != null ||
+        state.index < 0 ||
+        state.index >= attempt.snapshots.length) {
+      return;
+    }
+    final marked = Set<int>.of(state.uncertainIndices);
+    marked.contains(state.index)
+        ? marked.remove(state.index)
+        : marked.add(state.index);
+    state = state.copyWith(
+      staged: state.staged,
+      feedback: state.feedback,
+      error: state.error,
+      uncertainIndices: marked,
+    );
+  }
+
   void stage(AnswerKind kind, Object value) {
     if (state.submitting ||
         state.feedback != null ||
-        state.receipts.length > state.index) {
+        state.isAnsweredAt(state.index) ||
+        state.sentByIndex.containsKey(state.index)) {
       return;
     }
-    state = state.copyWith(staged: StagedAnswer.fromInput(kind, value));
+    final staged = StagedAnswer.fromInput(kind, value);
+    state = state.copyWith(
+      staged: staged,
+      stagedByIndex: {...state.stagedByIndex, state.index: staged},
+    );
     if (_quizId != null && kind != AnswerKind.multipleChoice) submit();
+  }
+
+  void goToQuestion(int index) {
+    final attempt = state.attempt;
+    if (attempt == null ||
+        state.submitting ||
+        state.feedback != null ||
+        index < 0 ||
+        index >= attempt.snapshots.length) {
+      return;
+    }
+    state = state.copyWith(
+      index: index,
+      staged: state.stagedByIndex[index],
+      feedback: null,
+    );
   }
 
   void nextQuestion() {
     if (state.feedback == null || state.submitting) return;
-    state = state.copyWith(index: state.index + 1);
+    final attempt = state.attempt;
+    if (attempt == null) return;
+    state = state.copyWith(
+      index: state.firstPendingIndex ?? state.index,
+      staged: state.firstPendingIndex == null
+          ? null
+          : state.stagedByIndex[state.firstPendingIndex!],
+      feedback: null,
+    );
   }
 
   Future<void> submit() async {
+    final generation = _generation;
     final attempt = state.attempt;
-    final staged = state.staged;
+    final index = state.index;
+    final quizId = _quizId;
+    final staged = state.answerForSubmissionAt(index) ?? state.staged;
     if (attempt == null ||
-        (staged == null && state.receipts.length <= state.index) ||
+        (staged == null && !state.isAnsweredAt(index)) ||
         state.submitting ||
-        state.index >= attempt.snapshots.length) {
+        state.finish != null ||
+        index < 0 ||
+        index >= attempt.snapshots.length ||
+        (state.isAnsweredAt(index) &&
+            (quizId == null || state.feedbackByIndex.containsKey(index)))) {
       return;
     }
+    final snapshot = attempt.snapshots[index];
+    bool stale() => generation != _generation || state.attempt != attempt;
     state = state.copyWith(
       submitting: true,
       error: null,
       errorRetryable: false,
     );
     try {
-      if (state.receipts.length <= state.index) {
+      if (!state.isAnsweredAt(index)) {
+        final answer = staged!;
+        state = state.copyWith(
+          staged: answer,
+          stagedByIndex: {...state.stagedByIndex, index: answer},
+          sentByIndex: {...state.sentByIndex, index: answer},
+        );
         final receipt = await ref
             .read(quizApiProvider)
             .submitAnswer(
               attempt,
-              attempt.snapshots[state.index],
-              staged!,
+              snapshot,
+              answer,
               idempotencyKey:
-                  'a-${sha256.convert(utf8.encode('${attempt.id}/${attempt.snapshots[state.index].questionId}'))}',
+                  'a-${sha256.convert(utf8.encode('${attempt.id}/${snapshot.questionId}'))}',
             );
-        if (state.attempt != attempt) return;
+        if (stale()) return;
         state = state.copyWith(
+          staged: answer,
           submitting: true,
           receipts: [...state.receipts, receipt],
+          sentByIndex: Map.of(state.sentByIndex)..remove(index),
         );
       }
-      if (_quizId != null) {
+      if (quizId != null) {
         final feedback = await ref
             .read(quizApiProvider)
-            .feedback(attempt, attempt.snapshots[state.index], _quizId!);
-        if (state.attempt != attempt) return;
-        state = state.copyWith(submitting: false, feedback: feedback);
+            .feedback(attempt, snapshot, quizId);
+        if (stale()) return;
+        state = state.copyWith(
+          staged: staged,
+          submitting: false,
+          feedback: feedback,
+          feedbackByIndex: {...state.feedbackByIndex, index: feedback},
+        );
         return;
       }
+      final next = state.firstPendingIndex ?? index;
       state = state.copyWith(
         submitting: false,
-        index: state.index + 1,
-        staged: null,
+        index: next,
+        staged: state.stagedByIndex[next],
       );
     } on ApiClientException catch (e) {
-      if (state.attempt != attempt) return;
+      if (stale()) return;
       state = state.copyWith(
         staged: staged,
         submitting: false,
         error: e.code,
-        errorRetryable: e.retryable,
+        errorRetryable: e.retryable || state.sentByIndex.containsKey(index),
       );
     } on FormatException {
-      if (state.attempt != attempt) return;
+      if (stale()) return;
       state = state.copyWith(
         staged: staged,
         submitting: false,
         error: 'invalid_response',
-        errorRetryable: false,
+        errorRetryable: true,
       );
     }
   }
 
   Future<void> complete() async {
+    final generation = _generation;
     final attempt = state.attempt;
     final catalog = state.catalog;
-    if (attempt == null || catalog == null || state.submitting) return;
+    if (attempt == null ||
+        catalog == null ||
+        state.submitting ||
+        !state.canComplete) {
+      return;
+    }
     state = state.copyWith(
       submitting: true,
       error: null,
@@ -308,6 +481,7 @@ class JourneyController extends Notifier<JourneyState> {
     try {
       final finish =
           state.finish ?? await ref.read(quizApiProvider).finish(attempt);
+      if (generation != _generation || state.attempt != attempt) return;
       validateFinishReceipts(finish, state.receipts);
       // Persist the server result before a reveal request so retry never posts
       // finish a second time.
@@ -315,6 +489,7 @@ class JourneyController extends Notifier<JourneyState> {
       final reveals = await ref
           .read(quizApiProvider)
           .reveals(attempt, finish, expectedQuizId: catalog.quiz.id);
+      if (generation != _generation || state.attempt != attempt) return;
       state = state.copyWith(
         submitting: false,
         finish: finish,
@@ -323,6 +498,7 @@ class JourneyController extends Notifier<JourneyState> {
         postFinishRetryable: false,
       );
     } on ApiClientException catch (e) {
+      if (generation != _generation || state.attempt != attempt) return;
       state = state.finish == null
           ? state.copyWith(
               submitting: false,
@@ -336,6 +512,7 @@ class JourneyController extends Notifier<JourneyState> {
               postFinishRetryable: e.retryable,
             );
     } on FormatException {
+      if (generation != _generation || state.attempt != attempt) return;
       state = state.finish == null
           ? state.copyWith(
               submitting: false,
@@ -355,11 +532,17 @@ class JourneyController extends Notifier<JourneyState> {
     if (state.postFinishError != null) return complete();
     if (state.catalog == null) return reloadCatalog();
     if (state.attempt == null) return start();
-    if (state.index < state.attempt!.snapshots.length) return submit();
+    if (_quizId != null &&
+        state.isAnsweredAt(state.index) &&
+        !state.feedbackByIndex.containsKey(state.index)) {
+      return submit();
+    }
+    if (!state.isComplete) return submit();
     return complete();
   }
 
   void newQuiz() {
+    ++_generation;
     state = JourneyState(session: state.session, catalog: state.catalog);
   }
 }

@@ -212,6 +212,50 @@ class _StudyMobileTable extends StatelessWidget {
   );
 }
 
+class _StudyImageFallback extends StatelessWidget {
+  const _StudyImageFallback({required this.label, this.loading = false});
+  final String? label;
+  final bool loading;
+
+  @override
+  Widget build(BuildContext context) {
+    final visibleLabel = label?.trim().isNotEmpty == true
+        ? label!
+        : loading
+        ? 'Загрузка иллюстрации'
+        : 'Иллюстрация недоступна';
+    return Semantics(
+      label: visibleLabel,
+      child: Container(
+        key: const Key('study-image-fallback'),
+        constraints: const BoxConstraints(minHeight: 96, maxHeight: 220),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: const Color(0xfffff5e8),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: _studyPaperLine),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              loading ? Icons.image_outlined : Icons.broken_image_outlined,
+              color: _studyPaperInk,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              visibleLabel,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: _studyPaperInk),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class StudySource {
   const StudySource({required this.id, required this.title, required this.url});
   final String id, title, url;
@@ -483,6 +527,20 @@ class StudyArticlePage extends ConsumerWidget {
                           ),
                         ),
                       ),
+                    if (module.sourceQuizIds.isNotEmpty)
+                      const _StudyPaperCard(
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text(
+                            'Викторины по материалу',
+                            style: TextStyle(
+                              color: _studyPaperInk,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
                     for (final quizId in module.sourceQuizIds)
                       _StudyQuizLink(quizId: quizId),
                   ],
@@ -530,6 +588,9 @@ class _StudyArticleContentState extends State<_StudyArticleContent> {
   String _heading(String section) =>
       section.split('\n').first.replaceFirst(RegExp(r'^#{1,6}\s*'), '').trim();
 
+  String _contentsHeading(String section) =>
+      _heading(section).replaceFirst(RegExp(r'^\d+[.)]\s*'), '');
+
   int _headingLevel(String section) =>
       RegExp(r'^#+').firstMatch(section)?.group(0)?.length ?? 0;
 
@@ -550,7 +611,11 @@ class _StudyArticleContentState extends State<_StudyArticleContent> {
                 semanticLabel: alt?.isEmpty ?? true ? null : alt,
                 excludeFromSemantics: alt?.isEmpty ?? true,
                 fit: BoxFit.cover,
-                errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                frameBuilder: (_, child, frame, wasSynchronouslyLoaded) =>
+                    wasSynchronouslyLoaded || frame != null
+                    ? child
+                    : _StudyImageFallback(label: alt, loading: true),
+                errorBuilder: (_, _, _) => _StudyImageFallback(label: alt),
               ),
             ),
           )
@@ -575,7 +640,7 @@ class _StudyArticleContentState extends State<_StudyArticleContent> {
                 ),
                 for (var i = 0; i < sections.length; i++)
                   if (_headingLevel(sections[i]) >= 2 &&
-                      _heading(sections[i]).isNotEmpty)
+                      _contentsHeading(sections[i]).isNotEmpty)
                     Padding(
                       padding: EdgeInsetsDirectional.only(
                         start: _headingLevel(sections[i]) > 2 ? 16 : 0,
@@ -601,7 +666,7 @@ class _StudyArticleContentState extends State<_StudyArticleContent> {
                           }
                         },
                         icon: const Icon(Icons.arrow_downward, size: 18),
-                        label: Text(_heading(sections[i])),
+                        label: Text(_contentsHeading(sections[i])),
                       ),
                     ),
               ],

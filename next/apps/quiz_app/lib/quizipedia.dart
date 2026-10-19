@@ -528,6 +528,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
     required IconData icon,
     String? image,
     String? subtitle,
+    String? practiceScope,
     required VoidCallback onTap,
   }) => Card(
     key: key,
@@ -564,6 +565,25 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      if (practiceScope != null)
+                        TextButton.icon(
+                          key: Key('practice-$practiceScope'),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: const Size(48, 44),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          icon: const Icon(Icons.quiz_outlined, size: 18),
+                          label: Text(_t(context, 'Practise', 'Тренироваться')),
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => FactPracticePage(
+                                scope: practiceScope,
+                                bundle: widget.bundle,
+                              ),
+                            ),
+                          ),
                         ),
                     ],
                   ),
@@ -623,7 +643,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               _t(
                 context,
                 'Local unranked learning practice',
-                'Локальная тренировка без рейтинга',
+                'Изучайте мир — проверяйте себя',
               ),
               style: Theme.of(context).textTheme.titleMedium,
             ),
@@ -631,7 +651,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               _t(
                 context,
                 'Choose a topic: study cards or answer questions',
-                'Выберите тему: изучайте карточки или отвечайте на вопросы',
+                'Откройте атлас или начните тренировку по теме.',
               ),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
@@ -651,6 +671,12 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
             for (final module in _Module.values)
               _themeCard(
                 title: _moduleTitle(context, module),
+                practiceScope: switch (module) {
+                  _Module.map => 'countries',
+                  _Module.anatomy => 'endocrine',
+                  _Module.landmarks => 'landmarks',
+                  _Module.sky => 'sky',
+                },
                 icon: switch (module) {
                   _Module.map => Icons.public,
                   _Module.anatomy => Icons.accessibility_new,
@@ -715,6 +741,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
             _themeCard(
               icon: Icons.accessibility_new,
               image: 'assets/quizipedia/anatomy-orientation.png',
+              practiceScope: 'organs',
               title: _t(
                 context,
                 'Human organs and glands',
@@ -737,6 +764,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
             _themeCard(
               icon: Icons.music_note,
               image: 'assets/categories/music.jpg',
+              practiceScope: 'music',
               title: _t(
                 context,
                 'Music: notes, signs and instruments',
@@ -766,6 +794,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               'religions',
             ])
               _themeCard(
+                practiceScope: section == 'culture' ? 'works' : section,
                 icon: switch (section) {
                   'history' => Icons.timeline,
                   'culture' => Icons.theaters,
@@ -777,7 +806,8 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                 },
                 image: switch (section) {
                   'history' => 'assets/categories/history.jpg',
-                  'culture' => 'assets/categories/cinema.jpg',
+                  'culture' || 'people' => 'assets/categories/cinema.jpg',
+                  'brands' => 'assets/categories/history.jpg',
                   'food' => 'assets/categories/food.jpg',
                   'greek' ||
                   'religions' => 'assets/categories/mythology-greece.png',
@@ -2456,7 +2486,15 @@ class _MapPainter extends CustomPainter {
             ? const Color(0xffffa335)
             : feature.id == highlighted
             ? const Color(0xff8167ce)
-            : const Color(0xffe2e9d9);
+            : const [
+                Color(0xffd6e7b5),
+                Color(0xfff2d7a4),
+                Color(0xffc4dfd0),
+                Color(0xffead2bd),
+                Color(0xffd9d7ec),
+                Color(0xfff2e5b6),
+              ][feature.id.codeUnits.fold<int>(0, (a, b) => a * 31 + b).abs() %
+                  6];
         canvas.drawPath(path, Paint()..color = fill);
         canvas.drawPath(
           path,

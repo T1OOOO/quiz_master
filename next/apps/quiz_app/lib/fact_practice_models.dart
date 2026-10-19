@@ -592,9 +592,15 @@ void _organFacts(List<StudyFact> out, Map<String, dynamic> data) {
       'region',
       'Область тела',
       'Body region',
-      _textOr(row, 'region'),
-      _textOr(row, 'region'),
+      _organLabelRu(_textOr(row, 'region')),
+      _organLabelEn(_textOr(row, 'region')),
     );
+    if (row['name_la'] case final String latin when latin.trim().isNotEmpty) {
+      add('name_la', 'Латинское название', 'Latin name', latin, latin);
+    }
+    if (row['bone_count'] case final int count when count > 0) {
+      add('bone_count', 'Костей в группе', 'Bones in group', count, count);
+    }
     for (final item in _strings(row['system_ids']).indexed) {
       add(
         'system_ids.${item.$1}',
@@ -1503,6 +1509,8 @@ String _organLabelRu(String value) =>
       'pelvis': 'Таз',
       'distributed': 'Распределено',
       'organ': 'Орган',
+      'bone_group': 'Группа костей',
+      'brain_region': 'Отдел мозга',
       'endocrine_gland': 'Эндокринная железа',
       'exocrine_gland': 'Экзокринная железа',
       'mixed_gland': 'Смешанная железа',
@@ -1530,6 +1538,8 @@ String _organLabelEn(String value) =>
       'pelvis': 'Pelvis',
       'distributed': 'Distributed',
       'organ': 'Organ',
+      'bone_group': 'Bone group',
+      'brain_region': 'Brain region',
       'endocrine_gland': 'Endocrine gland',
       'exocrine_gland': 'Exocrine gland',
       'mixed_gland': 'Mixed gland',
