@@ -50,3 +50,9 @@ release-mobile.png and practice-release-mobile.png capture final layout.
 After the final accepted origin metadata, Russian proofreading corrected only
 свежое to свежее in the ceviche ingredient label. Recipe meaning is unchanged.
 Final registry/navigation tests and the release build were rerun on this asset.
+
+Implementation commit: afebc38a. A clean sparse checkout pulled/rebased against
+origin/codex/quiz-v2 and confirmed HEAD up to date before isolated tests.
+
+Isolated committed checkout:26 focused food/model/registry/menu/Quizipedia tests
+passed (clean-checkout-tests.log), with offline dependency resolution.
