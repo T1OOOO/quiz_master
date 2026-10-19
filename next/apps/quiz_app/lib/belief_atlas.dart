@@ -155,7 +155,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
       ..translateByDouble(scene.dx, scene.dy, 0, 1)
       ..scaleByDouble(f, f, 1, 1)
       ..translateByDouble(-scene.dx, -scene.dy, 0, 1);
-    if (m.entry(0, 0) >= .25 && m.entry(0, 0) <= 5) {
+    if (m.entry(0, 0) >= .05 && m.entry(0, 0) <= 5) {
       setState(() => _transform.value = m);
     }
   }
@@ -169,7 +169,7 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
     final scale = min(
       viewportWidth / geometry.sceneWidth,
       280 / geometry.sceneHeight,
-    ).clamp(.25, 1.0);
+    ).clamp(.05, 1.0);
     final matrix = Matrix4.identity()..scaleByDouble(scale, scale, 1, 1);
     setState(() => _transform.value = matrix);
   }
@@ -510,7 +510,7 @@ class _Graph extends StatelessWidget {
                 child: InteractiveViewer(
                   key: const Key('belief-graph'),
                   transformationController: controller,
-                  minScale: .25,
+                  minScale: .05,
                   maxScale: 5,
                   constrained: false,
                   boundaryMargin: const EdgeInsets.all(140),

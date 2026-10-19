@@ -92,6 +92,14 @@ void main() {
             .entry(0, 0),
         lessThan(1),
       );
+      final viewer = tester.widget<InteractiveViewer>(
+        find.byKey(const Key('belief-graph')),
+      );
+      final scale = viewer.transformationController!.value.entry(0, 0);
+      expect(
+        tester.getSize(find.byKey(const Key('belief-scene'))).height * scale,
+        lessThanOrEqualTo(280.01),
+      );
     },
   );
 
