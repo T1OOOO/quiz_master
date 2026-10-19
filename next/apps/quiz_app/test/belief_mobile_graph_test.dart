@@ -23,6 +23,11 @@ void main() {
     expect(first.overlaps(second), isFalse);
     expect(caption.overlaps(first), isFalse);
     expect(caption.overlaps(second), isFalse);
+    expect(geometry.captionFits(caption, const []), isTrue);
+    expect(geometry.captionFits(caption, [caption]), isFalse);
+    final three = BeliefGraphGeometry(viewportWidth: 288, count: 3);
+    final acrossMiddle = three.edgeCaptionRect(0, 2, const Size(180, 20));
+    expect(three.captionFits(acrossMiddle, const []), isFalse);
   });
 
   testWidgets(

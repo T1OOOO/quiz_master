@@ -59,6 +59,13 @@ class BeliefGraphGeometry {
       height: labelSize.height,
     );
   }
+
+  bool captionFits(Rect caption, Iterable<Rect> painted) =>
+      !List.generate(
+        count,
+        nodeRect,
+      ).any((node) => node.inflate(4).overlaps(caption)) &&
+      !painted.any((label) => label.inflate(4).overlaps(caption));
 }
 
 class BeliefAtlasPage extends StatefulWidget {
@@ -604,6 +611,7 @@ class _EdgePainter extends CustomPainter {
     final paint = Paint()
       ..color = Colors.blueGrey
       ..strokeWidth = 2;
+    final captions = <Rect>[];
     for (final e in edges) {
       final source = p(e.from), target = p(e.to);
       final a = beliefArrowTip(
@@ -656,6 +664,9 @@ class _EdgePainter extends CustomPainter {
         nodes.indexWhere((n) => n.id == e.to),
         t.size,
       );
+      // Full relation text is also available in semantics and the detail list.
+      if (!geometry.captionFits(caption, captions)) continue;
+      captions.add(caption);
       t.paint(c, caption.topLeft);
     }
   }
