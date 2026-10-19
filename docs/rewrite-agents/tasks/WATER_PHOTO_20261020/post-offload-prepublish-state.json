@@ -1,0 +1,32 @@
+{
+  "hostname": "racknerd-f0269d5",
+  "revision": "73",
+  "deployment_revision": "71",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "containers": [
+    {
+      "name": "api",
+      "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa"
+    },
+    {
+      "name": "web",
+      "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa"
+    }
+  ],
+  "disk": {
+    "total": 102417174528,
+    "free": 20670488576,
+    "available_percent": 20.18263896779232,
+    "path": "/var/lib/rancher/k3s/agent/containerd"
+  },
+  "node": {
+    "conditions": {
+      "MemoryPressure": "False",
+      "DiskPressure": "False",
+      "PIDPressure": "False",
+      "Ready": "True"
+    },
+    "unschedulable": false,
+    "taints": []
+  }
+}

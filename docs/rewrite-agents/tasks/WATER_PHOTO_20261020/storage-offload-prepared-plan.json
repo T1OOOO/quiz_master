@@ -1,0 +1,49 @@
+{
+  "accounting": {
+    "planned_total_bytes": 165339438
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "deployment_revision": "71",
+    "helm_deployed_revision": 73,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 72
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-water-82fb9c57",
+    "image": "quiz-master:quiz-2026.10.20-water-82fb9c57@sha256:cfe81210b9d3efba88bf3e90de2ddad3239375d55b284da095702a7aeccfba21",
+    "input_sha256": "7fc7c2f928366d99ad313623ca31bbbb005674502ba20f58962d25fe996b2264"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-water-prepared-20261020",
+  "plan_only": true,
+  "purpose": "Archive4 stopped preparedcandidate resumeproof/rehearsal/quizzes copies only after exactinput/image preparedreceipt binding. Frozenapi/web/private/quizzes/chart/support/receipts/metadata, allserverbackups/livePVC/allruntimeimages retained. LocalACL fsynchash/SQLite archive beforedelete. Neededforpublish75MBproofwhilekeeping>=20percent. No imageprune or thresholdchange.",
+  "targets": [
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/resume-base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/resume-candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74919936,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/resume-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 81993728,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/resume-rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}

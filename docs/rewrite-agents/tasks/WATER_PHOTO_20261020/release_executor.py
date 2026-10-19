@@ -373,15 +373,15 @@ new_api=''
 rehearsal=''
 cleanup() {{ if [ -n \"$rehearsal\" ]; then docker logs \"$rehearsal\" > \"$stage/rehearsal-startup.log\" 2>&1 || true; fi; docker rm -f \"$base_api\" ${{new_api:+\"$new_api\"}} ${{rehearsal:+\"$rehearsal\"}} >/dev/null 2>&1 || true; }}
 trap cleanup EXIT
-docker cp \"$base_api:/app/api\" \"$stage/base.api\"
+docker cp \"$base_api:/app/api\" - | tar -xOf - api | sha256sum | awk '{{print $1}}' > \"$stage/base-api-sha256.txt\"
 docker cp \"$base_api:/etc/nginx/nginx.conf\" \"$stage/base.nginx.conf\"
-test \"$(sha256sum \"$stage/base.api\" | awk '{{print $1}}')\" = {shlex.quote(API_SHA256)}
+test \"$(cat \"$stage/base-api-sha256.txt\")\" = {shlex.quote(API_SHA256)}
 {image_prepare}
 new_api=$(docker create \"$tag\")
-docker cp \"$new_api:/app/api\" \"$stage/new.api\"
+docker cp \"$new_api:/app/api\" - | tar -xOf - api | sha256sum | awk '{{print $1}}' > \"$stage/new-api-sha256.txt\"
 docker cp \"$new_api:/etc/nginx/nginx.conf\" \"$stage/new.nginx.conf\"
-test \"$(sha256sum \"$stage/new.api\" | awk '{{print $1}}')\" = {shlex.quote(target_api_sha256)}
-test \"$(sha256sum \"$stage/new.api\" | awk '{{print $1}}')\" = {shlex.quote(API_SHA256)}
+test \"$(cat \"$stage/new-api-sha256.txt\")\" = {shlex.quote(target_api_sha256)}
+test \"$(cat \"$stage/new-api-sha256.txt\")\" = {shlex.quote(API_SHA256)}
 docker run --rm --network=none --read-only --entrypoint /bin/busybox \"$tag\" find /usr/share/nginx/html -type f -exec /bin/busybox sha256sum '{{}}' + > \"$stage/image-web-sha256.txt\"
 python3 - \"$stage\" <<'PY'
 import json,pathlib,sys
@@ -456,7 +456,8 @@ k3s ctr -n k8s.io images ls | awk -v ref=\"$canonical_image\" -v digest=\"$conta
 for n in $(seq 1 10); do if k3s crictl inspecti \"$canonical_image\" > \"$stage/canonical-cri.json\"; then break; fi; sleep 1; done
 k3s crictl inspecti \"$canonical_image\" > \"$stage/canonical-cri.json\"
 candidate_image=\"$tag@$containerd_digest\"
-# Docker image IDs are config digests; containerd digests are manifest descriptors.
+# Keep the observed Docker image ID separate from the containerd descriptor.
+# Docker backends may return an index ID; OCI content and CRI prove config identity separately.
 printf '%s\\n' \"$base_docker_id\" > \"$stage/base-docker-config-id.txt\"
 printf '%s\\n' \"$new_docker_id\" > \"$stage/new-docker-config-id.txt\"
 printf '%s\\n' \"$containerd_digest\" > \"$stage/containerd-manifest-digest.txt\"

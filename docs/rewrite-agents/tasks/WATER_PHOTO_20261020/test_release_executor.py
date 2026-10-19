@@ -17,6 +17,14 @@ class VisualReleaseTest(unittest.TestCase):
   self.assertIn('COPY --chown=10001:10001 web-delta/',r.DOCKERFILE)
   self.assertNotIn('COPY --chown=10001:10001 api',r.DOCKERFILE)
   self.assertNotIn('COPY --chown=10001:10001 quizzes/',r.DOCKERFILE)
+ def test_runtime_api_hashes_stream_without_redundant_disk_copies(self):
+  script=r.remote_script('quiz-2026.10.20-water-abcdef12',r.API_SHA256,'prepare')
+  self.assertIn('docker cp "$base_api:/app/api" - | tar -xOf - api | sha256sum',script)
+  self.assertIn('docker cp "$new_api:/app/api" - | tar -xOf - api | sha256sum',script)
+  self.assertIn('base-api-sha256.txt',script)
+  self.assertIn('new-api-sha256.txt',script)
+  self.assertNotIn('$stage/base.api',script)
+  self.assertNotIn('$stage/new.api',script)
  def test_release_gates_remain(self):
   script=r.remote_script('quiz-2026.10.19-visual-abcdef12',r.API_SHA256,'prepare')+r.remote_script('quiz-2026.10.19-visual-abcdef12',r.API_SHA256,'publish')
   for needle in ['DEPLOY.lock','f_bavail * 5 >= s.f_blocks','helm rollback quiz-master 73','--require-real-http-grading','--require-article-revision-binding','canonical-cri.json','restore-proof.sqlite','feedback-before.json','helm lint --strict','kubectl apply --dry-run=server']:

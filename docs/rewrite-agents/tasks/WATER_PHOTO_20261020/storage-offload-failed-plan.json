@@ -1,0 +1,67 @@
+{
+  "accounting": {
+    "planned_total_bytes": 211318176
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "deployment_revision": "71",
+    "helm_deployed_revision": 73,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 72
+  },
+  "candidate_build": {
+    "build_id": "quiz-2026.10.20-water-82fb9c57",
+    "docker_config_id": "sha256:cfe81210b9d3efba88bf3e90de2ddad3239375d55b284da095702a7aeccfba21",
+    "image_tag": "quiz-master:quiz-2026.10.20-water-82fb9c57",
+    "input_sha256": "7fc7c2f928366d99ad313623ca31bbbb005674502ba20f58962d25fe996b2264"
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.19-photo-a034673a",
+    "image": "quiz-master:quiz-2026.10.19-photo-a034673a@sha256:710eaf4fdd68dead9dfc2bc4d38b72bd329c0dadd9e69640e56ab922100fdbfa",
+    "input_sha256": "1053f1700d1c6bea8fbe2a37fe42cc3ad1dd004835f8075f58c9eb1e9358c71f"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-water-failed-20261020",
+  "plan_only": true,
+  "purpose": "Archive6 stopped failed-candidate74 rehearsal/proof/API-copy outputs only; no prepared receipt exists yet. Bind exact immutable Docker config and frozeninputSHA plus live73baseline. Preserve candidatefrozenapi/web/private/quizzes/chart/support/metadata, all images/serverbackups/livePVC; local verified ACL archive before deletion. Resume existingimage with streamedAPIhashes saves46MB duplicateddisk. Keep20percentgates.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/base.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/new.api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/candidate-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 74919936,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 81977344,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-water-82fb9c57/rehearsal-data",
+      "sqlite": false
+    }
+  ]
+}

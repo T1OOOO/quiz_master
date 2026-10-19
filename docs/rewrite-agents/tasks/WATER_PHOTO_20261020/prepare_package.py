@@ -33,6 +33,20 @@ def main():
  if build.encode() not in js or b'https://quiz.kotopedia.org' not in js: raise release.GuardError('compiled application identity differs')
  dest.mkdir()
  shutil.copytree(web,dest/'web'); shutil.copytree(source/'deploy/helm/quiz-master',dest/'chart')
+ # The delta image retains this existing fallback font even when Flutter's clean
+ # output omits it. Preserve exactly that inherited byte in the full-image closure.
+ font=Path('assets/fonts/fallback/Roboto-Regular.ttf')
+ if not (dest/'web'/font).exists():
+  if release.sha256_file(baseline/'web'/font)!='79e851404657dac2106b3d22ad256d47824a9a5765458edb72c9102a45816d95': raise release.GuardError('inherited fallback font changed')
+  (dest/'web'/font).parent.mkdir(parents=True,exist_ok=True)
+  shutil.copy2(baseline/'web'/font,dest/'web'/font)
+ # Retain its existing registration, so ordinary text needs no Google Fonts fetch.
+ fonts=dest/'web/assets/FontManifest.json'
+ entries=json.loads(fonts.read_text(encoding='utf-8'))
+ if not any(row.get('family')=='Roboto' for row in entries):
+  entries.append({'family':'Roboto','fonts':[{'asset':'fonts/fallback/Roboto-Regular.ttf'}]})
+  if entries==json.loads((baseline/'web/assets/FontManifest.json').read_text(encoding='utf-8')): shutil.copy2(baseline/'web/assets/FontManifest.json',fonts)
+  else: fonts.write_text(json.dumps(entries,separators=(',',':'))+'\n',encoding='utf-8',newline='\n')
  if tree(dest/'chart')!=tree(baseline/'chart'): raise release.GuardError('chart changed from deployed baseline')
  copy_verified(baseline/'quizzes',dest/'quizzes',quizzes)
  shutil.copytree(baseline/'private',dest/'private'); shutil.copy2(baseline/'api',dest/'api'); shutil.copy2(baseline/'catalog.json',dest/'catalog.json')
