@@ -1,0 +1,20 @@
+**Decision: ACCEPT**
+
+Independent final review of [resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py), [feedback-resolution-review.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-resolution-review.json), [feedback-resolution-candidates.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-resolution-candidates.json), and [feedback-review-packet.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-review-packet.json) confirms all requirements are satisfied:
+
+1. **Exact 3-Report Scope (`[67, 69, 70]`)**:
+   - [feedback-resolution-review.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-resolution-review.json#L1-L11), [feedback-resolution-candidates.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-resolution-candidates.json#L1-L32), and [feedback-review-packet.json](file:///E:/Projects/quiz_master/docs/rewrite-agents/tasks/LAZY_FEEDBACK20_20261020/feedback-review-packet.json#L1-L41) list only ordinals `[67, 69, 70]` with `"all_other_open_feedback_stays_open": true`.
+   - [resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L7-L17) asserts `review['decision'] == 'ACCEPT'`, `review['reviewer_provider'] == 'google'`, exact SHA-256 match of `feedback-review-packet.json`, candidate ordinal alignment with `review['accepted_ordinals']`, and `assert [x['ordinal'] for x in chosen] == [67, 69, 70]`.
+
+2. **Original Comment SHA-256 Binding to Private Cache Ordinal/Index/ID**:
+   - [resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L11-L16) indexes `rows[item['ordinal'] - 1]` from `.run/photo_catalog_20261019/private/reports-latest.json`, verifies `hashlib.sha256(row['comment'].encode()).hexdigest() == item['comment_sha256']`, and binds `ordinal`, `id`, and `comment` into the remote payload.
+
+3. **Post-Publish, Build/Image, PVC, and Lock Guards**:
+   - Local pre-checks ([resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L5-L6)) assert `helm_revision == 78`, `deployment_revision == 76`, `build_id == 'quiz-2026.10.20-lazy-2af0ab3f'`, and `status == 'scoped_mobile_checks_pass_with_open_followups'`.
+   - Remote checks ([resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L20-L31)) verify hostname `racknerd-f0269d5`, acquire non-blocking exclusive `/opt/quiz-master/DEPLOY.lock`, and assert deployment revision `76`, build annotation `quiz-2026.10.20-lazy-2af0ab3f`, PVC `quiz-data` UID `7fc2428f-4146-4c78-a26d-2347d9f3b7bf`, live `https://quiz.kotopedia.org/version.json` `buildId`, and container image `quiz-master:quiz-2026.10.20-lazy-2af0ab3f@sha256:088725db5d3cc0c03031d394094076bda15366c5951a67c47501b05e5cbd6a01`.
+
+4. **Admin Token Confined to Server Memory**:
+   - [resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L32-L37) resolves `QM_FEEDBACK_ADMIN_TOKEN` strictly in remote Python memory, validates format/length, uses it only in the HTTPS `Authorization` header, and never prints, logs, or writes it.
+
+5. **API-Only Status Mutation and Read-Only DB Verification**:
+   - [resolve_verified_reports.py](file:///E:/Projects/quiz_master/.run/lazy_feedback20_20261020/resolve_verified_reports.py#L38-L54) opens SQLite strictly with `?mode=ro` (`uri=True`), captures `before` status counts, verifies `rep_[0-9a-f]{32}` ID format and exact `comment` match for each target row, updates open rows exclusively via `POST https://quiz.kotopedia.org/v1/admin/reports/<id>/status` with `{"status":"resolved"}`, verifies both the API response and post-POST DB row status, records `after` status counts, and writes only non-sensitive summary data to `feedback-status-outcome.json`.

@@ -1,0 +1,457 @@
+{
+  "host": "192.3.164.184",
+  "hostname": "racknerd-f0269d5",
+  "baseline_helm": "77",
+  "baseline_build": "quiz-2026.10.20-atlas-4fc2fd02",
+  "builder": "default",
+  "targets": [
+    {
+      "CreatedAt": "2026-10-15 02:12:27.387758479 +0000 UTC",
+      "Description": "[8/8] WORKDIR /app",
+      "ID": "5dwmnos34aj7xnc982jxcfqex",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "x9kjypii1d7ieeoh3ou5t7rut"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "4.128kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 03:10:25.062227099 +0000 UTC",
+      "Description": "[8/8] WORKDIR /app",
+      "ID": "jqac6ohpajljw58lgjtnma4ku",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "mwc47mgnxo6r6amdaxfilgbn1"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "4.128kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 02:12:26.874792709 +0000 UTC",
+      "Description": "[6/8] COPY metadata /app/metadata",
+      "ID": "t3fmocv3p7o47qlfc87bsugw1",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "t259okxw51nip8dx4e7ms5b3z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "157.3kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 03:10:24.49621583 +0000 UTC",
+      "Description": "[6/8] COPY metadata /app/metadata",
+      "ID": "oa3ll9kg2xpvhj4ncpqhrjhbg",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "beyzsm8wocajqxpflm8vadn41"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "157.3kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 02:12:26.720622333 +0000 UTC",
+      "Description": "[4/8] COPY next /app/next",
+      "ID": "otctdehjsyyp6mu6nbmot1fxk",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "z4na7g4ju1sdzm89vmav3nzij"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.186MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 03:10:24.342108983 +0000 UTC",
+      "Description": "[4/8] COPY next /app/next",
+      "ID": "ugvuqhbb4s8v9y385yjch99go",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "z4na7g4ju1sdzm89vmav3nzij"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.186MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 03:10:24.46445653 +0000 UTC",
+      "Description": "[5/8] COPY quizzes /app/quizzes",
+      "ID": "beyzsm8wocajqxpflm8vadn41",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ugvuqhbb4s8v9y385yjch99go"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "4.121MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 02:12:26.835502612 +0000 UTC",
+      "Description": "[5/8] COPY quizzes /app/quizzes",
+      "ID": "t259okxw51nip8dx4e7ms5b3z",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "otctdehjsyyp6mu6nbmot1fxk"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "4.121MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 07:27:29.77237494 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "1tdhdenxlq81wd36qr4vdrmqc",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "13xyjhmn8xgxag9f3sabd0i1c"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.18MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 10:00:31.931945846 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "ojlbu2ag80v6oblgkxykd9ax7",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "yibi33eoosr4szw5dlmlj5cw6"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.19MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 11:24:14.768451377 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "84x6j503hv812tz3rsqs5p7ur",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "jar4v9jbdznybsjecqdbz62c8"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.2MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 13:50:11.301864739 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "xvsfpxl71xw6gr3zxpsbr6m1e",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "rs6hdr25vcijgglwgx10ejgre"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.21MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 07:59:49.839846683 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "puude1iev1484w3ekrrit059m",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "v2tr330eh6nr3imndbk7lx69x"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 08:51:59.057191942 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "9688wf2d2goo3hlzz6r5g3yeh",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ff7dsw1a8tjwq0qlzudhcmpgy"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 08:38:47.122919823 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "io56j73fnbiymqsngmog6ycd4",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "x7r9xe9sg85a8iptgzsnwlvj1"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 08:20:44.740287042 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "4ctfr6f8qynd8xmcvq21qnlac",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "07k8dmoy4vm56enkcclurl4wr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 20:57:00.226194445 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "w3r4unnp9p6xt7ab451c7cupe",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "bivoxr9ik1bjawmc8wf25ytj9"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 19:31:17.14426354 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "yn4pxmpttuq2afmwyaxadae62",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "4whyiaxnb73x0ek6i4kmiax2o"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 21:58:06.54036226 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "2im5isrmbuyjxl01itw1885hr",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "iaac91qjmf76d9b1tjik3261d"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 22:53:37.573040305 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c find /usr/share/nginx/html -type f \\( -name \"*.js\" -o -name \"*.wasm\" -o -name \"*.json\" \\) -size +1k -exec gzip -9 -k {} \\;",
+      "ID": "kzbia21dszuvelapufklz3wg0",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "nagz0w8wr37wvk1okqpo5o3ro"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.41MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 08:51:52.628216189 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "ff7dsw1a8tjwq0qlzudhcmpgy",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "70.4MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 19:31:10.192607103 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "4whyiaxnb73x0ek6i4kmiax2o",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "70.42MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 20:56:53.829095579 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "bivoxr9ik1bjawmc8wf25ytj9",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "70.42MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 07:27:23.679365678 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "13xyjhmn8xgxag9f3sabd0i1c",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "115.3MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 10:00:25.541898965 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "yibi33eoosr4szw5dlmlj5cw6",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "115.3MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 11:24:08.731677737 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "jar4v9jbdznybsjecqdbz62c8",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "115.3MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 13:50:04.579472935 +0000 UTC",
+      "Description": "[3/4] COPY web/ /usr/share/nginx/html/",
+      "ID": "rs6hdr25vcijgglwgx10ejgre",
+      "LastUsedAt": "4 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5931qg1v9vgpwnsqz8xoatsxr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "115.4MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 03:10:25.024045832 +0000 UTC",
+      "Description": "[7/8] COPY web /usr/share/nginx/html",
+      "ID": "mwc47mgnxo6r6amdaxfilgbn1",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "oa3ll9kg2xpvhj4ncpqhrjhbg"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "126.9MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-15 02:12:27.336877545 +0000 UTC",
+      "Description": "[7/8] COPY web /usr/share/nginx/html",
+      "ID": "x9kjypii1d7ieeoh3ou5t7rut",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "t3fmocv3p7o47qlfc87bsugw1"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "126.9MB",
+      "Type": "regular",
+      "UsageCount": 1
+    }
+  ],
+  "command_template": [
+    "docker",
+    "buildx",
+    "prune",
+    "--builder",
+    "default",
+    "--force",
+    "--filter",
+    "id=EXACT_REVIEWED_ID",
+    "--filter",
+    "until=72h"
+  ],
+  "scope": "Delete ONLY listed unused/private build-cache IDs, after fresh same-ID/Reclaimable/Shared/age checks. NO image/system/container/volume prune, no files/tmp cleanup, no reserve or GC policy change. User explicitly authorized cleanup. Preserve every Docker+Kubernetes image reference, every physical backup hash and live PVC. Host/Helm77/build/lock checks first. Published candidate deployment remains separately guarded by release controller."
+}

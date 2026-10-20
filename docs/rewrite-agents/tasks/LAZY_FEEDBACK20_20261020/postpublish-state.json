@@ -1,0 +1,66 @@
+{
+  "helm_revision": 78,
+  "deployment_revision": 76,
+  "version": {
+    "buildId": "quiz-2026.10.20-lazy-2af0ab3f",
+    "commit": "2af0ab3fb065ec484b6da67f2c029766d991c938",
+    "source_commit": "2af0ab3fb065ec484b6da67f2c029766d991c938",
+    "local_build": true,
+    "packs": 105,
+    "questions": 4520,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 305,
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "main_dart_js_sha256": "f6d41745e2c25f606e0547944f1a60516120b6be2f63d76929368d95a08d8ab3",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "quizipedia_facts": 13725,
+    "quizipedia_sections": 13,
+    "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "frontend_only": true,
+    "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "question_article_references": 241
+  },
+  "containers": [
+    {
+      "name": "api",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:088725db5d3cc0c03031d394094076bda15366c5951a67c47501b05e5cbd6a01"
+    },
+    {
+      "name": "web",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:088725db5d3cc0c03031d394094076bda15366c5951a67c47501b05e5cbd6a01"
+    }
+  ],
+  "pvc_unchanged": true,
+  "integrity": {
+    "physical_backup": "ok",
+    "independent_full_memory_restore": "ok"
+  },
+  "sql_restore_proof": {
+    "backup_sha256": "1c5a1e39af4607d0418ba44434d57b09cb3a3652f1748fbcbf56a91a5f6510ca",
+    "build_id": "quiz-2026.10.20-lazy-2af0ab3f",
+    "bytes": 82173952,
+    "image_docker_id": "sha256:088725db5d3cc0c03031d394094076bda15366c5951a67c47501b05e5cbd6a01",
+    "input_sha256": "86b78ab5689c8abbf462f47b7330d8edd5d404477877f284cb501220dfb80cd3",
+    "integrity": "ok",
+    "kind": "restore",
+    "phase": "publish",
+    "recorded_at_utc": "2026-10-20T08:51:44.708848+00:00",
+    "restored_sha256": "1c5a1e39af4607d0418ba44434d57b09cb3a3652f1748fbcbf56a91a5f6510ca"
+  },
+  "candidate_ram_unmounted": true,
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "imagefs_available_percent": 20.637722641158625,
+  "capacity_meets_20_percent": true
+}

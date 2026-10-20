@@ -1,0 +1,15 @@
+{'evictionHard': {'imagefs.available': '5%', 'nodefs.available': '5%'}, 'evictionMinimumReclaim': {'imagefs.available': '10%', 'nodefs.available': '10%'}, 'imageGCHighThresholdPercent': 85, 'imageGCLowThresholdPercent': 80}
+{'evictionHard': {'imagefs.available': '5%', 'nodefs.available': '5%'}, 'evictionMinimumReclaim': {'imagefs.available': '10%', 'nodefs.available': '10%'}, 'imageGCHighThresholdPercent': 85, 'imageGCLowThresholdPercent': 80}
+{"available_memory_bytes": 2982895616, "mounted": true, "reserve_bytes": 1073741824, "size_bytes": 268435456}
+{"backup_sha256": "1c5a1e39af4607d0418ba44434d57b09cb3a3652f1748fbcbf56a91a5f6510ca", "build_id": "quiz-2026.10.20-lazy-2af0ab3f", "bytes": 82173952, "image_docker_id": "sha256:088725db5d3cc0c03031d394094076bda15366c5951a67c47501b05e5cbd6a01", "input_sha256": "86b78ab5689c8abbf462f47b7330d8edd5d404477877f284cb501220dfb80cd3", "integrity": "ok", "kind": "restore", "phase": "publish", "recorded_at_utc": "2026-10-20T08:51:44.708848+00:00", "restored_sha256": "1c5a1e39af4607d0418ba44434d57b09cb3a3652f1748fbcbf56a91a5f6510ca"}
+{"mounted": false, "released_bytes": 268435456}
+{'evictionHard': {'imagefs.available': '5%', 'nodefs.available': '5%'}, 'evictionMinimumReclaim': {'imagefs.available': '10%', 'nodefs.available': '10%'}, 'imageGCHighThresholdPercent': 85, 'imageGCLowThresholdPercent': 80}
+Release "quiz-master" has been upgraded. Happy Helming!
+NAME: quiz-master
+LAST DEPLOYED: Tue Oct 20 11:51:48 2026
+NAMESPACE: quiz-master
+STATUS: deployed
+REVISION: 78
+TEST SUITE: None
+deployment "quiz-master" successfully rolled out
+{"already_unmounted": true, "mounted": false}
