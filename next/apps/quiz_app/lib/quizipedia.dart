@@ -1014,6 +1014,10 @@ class _QuizGame extends StatefulWidget {
 }
 
 class _QuizGameState extends State<_QuizGame> {
+  final _scroll = ScrollController();
+  void _top() => WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
+  });
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
     _Module.map =>
       widget.catalog.countryRows
@@ -1069,6 +1073,7 @@ class _QuizGameState extends State<_QuizGame> {
   @override
   void dispose() {
     _controller.dispose();
+    _scroll.dispose();
     for (final future in _images.values) {
       future.then((image) => image.dispose(), onError: (Object _) {});
     }
@@ -1136,6 +1141,7 @@ class _QuizGameState extends State<_QuizGame> {
     setState(() {
       _wasCorrect = _session.submit(_selected!);
     });
+    _top();
     SemanticsService.sendAnnouncement(
       View.of(context),
       _wasCorrect
@@ -1157,6 +1163,7 @@ class _QuizGameState extends State<_QuizGame> {
       _starInfo = null;
       _controller.value = Matrix4.identity();
     });
+    _top();
   }
 
   void _restart() {
@@ -1168,6 +1175,7 @@ class _QuizGameState extends State<_QuizGame> {
       _starInfo = null;
       _controller.value = Matrix4.identity();
     });
+    _top();
   }
 
   @override
@@ -1218,6 +1226,18 @@ class _QuizGameState extends State<_QuizGame> {
                 },
               ),
       ),
+      bottomNavigationBar: _submitted && !_showResult
+          ? SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                child: FilledButton(
+                  onPressed: _next,
+                  child: Text(_t(context, 'Next', 'Далее')),
+                ),
+              ),
+            )
+          : null,
     );
   }
 
@@ -1255,6 +1275,7 @@ class _QuizGameState extends State<_QuizGame> {
     }
     if (widget.module == _Module.map) return _mapContent();
     return MapScrollView(
+      controller: _scroll,
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1287,6 +1308,7 @@ class _QuizGameState extends State<_QuizGame> {
           const SizedBox(height: 16),
           Text(_prompt(), style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
+          if (_submitted) _feedback(),
           _visual(image),
           if (widget.module == _Module.sky)
             Text(
@@ -1303,7 +1325,6 @@ class _QuizGameState extends State<_QuizGame> {
             ),
           const SizedBox(height: 12),
           if (widget.challenge) _challengeControls() else _exploreControls(),
-          if (_submitted) _feedback(),
           const SizedBox(height: 8),
           if (widget.challenge)
             TextButton(
@@ -1358,16 +1379,17 @@ class _QuizGameState extends State<_QuizGame> {
           constraints: BoxConstraints(maxHeight: constraints.maxHeight * .38),
           child: SingleChildScrollView(
             key: const Key('map-details'),
+            controller: _scroll,
             // Keep wrapped text and controls clear of the global feedback FAB.
             padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 72, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                if (_submitted) _feedback(),
                 if (widget.challenge)
                   _challengeControls()
                 else
                   _mapExploreControls(),
-                if (_submitted) _feedback(),
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text(_t(context, 'Exit', 'Выйти')),
@@ -1955,11 +1977,6 @@ class _QuizGameState extends State<_QuizGame> {
                   ],
                 ),
               _articleLink(),
-              const SizedBox(height: 8),
-              FilledButton(
-                onPressed: _next,
-                child: Text(_t(context, 'Next', 'Далее')),
-              ),
             ],
           ),
         ),
@@ -2288,6 +2305,8 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.showLabels = true,
     this.selectionEnabled = true,
     this.focusTarget,
+    this.focusRequest = 0,
+    this.labelPriorityIds = const {},
     this.overlayLabels = const {},
     this.showFlags = false,
     this.showSelectionLabel = true,
@@ -2305,6 +2324,8 @@ class QuizipediaWorldMap extends StatefulWidget {
 
   /// A search result can request camera focus without revealing a quiz answer.
   final String? focusTarget;
+  final int focusRequest;
+  final Set<String> labelPriorityIds;
   final Map<String, String> overlayLabels;
   final bool showFlags, showSelectionLabel;
   final List<WaterShape> waters;
@@ -2429,7 +2450,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
     super.didUpdateWidget(oldWidget);
     _loadFlags();
     if (widget.focusTarget != null &&
-        widget.focusTarget != oldWidget.focusTarget) {
+        (widget.focusTarget != oldWidget.focusTarget ||
+            widget.focusRequest != oldWidget.focusRequest)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _focus(widget.focusTarget);
       });
@@ -2595,14 +2617,16 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         final areas = {
           for (final feature in widget.features) feature.id: footprint(feature),
         };
+        int priority(QuizipediaFeature feature) => feature.id == widget.selected
+            ? 2
+            : widget.labelPriorityIds.contains(feature.id)
+            ? 1
+            : 0;
         final ordered = [...widget.features]
-          ..sort(
-            (a, b) => a.id == widget.selected
-                ? -1
-                : b.id == widget.selected
-                ? 1
-                : areas[b.id]!.compareTo(areas[a.id]!),
-          );
+          ..sort((a, b) {
+            final rank = priority(b).compareTo(priority(a));
+            return rank != 0 ? rank : areas[b.id]!.compareTo(areas[a.id]!);
+          });
         for (final feature in ordered) {
           final text = widget.overlayLabels[feature.id];
           if (text == null) continue;
@@ -2623,7 +2647,32 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               bounds(a).width * bounds(a).height,
             ),
           );
-          final center = bounds(rings.first).center;
+          final landBounds = bounds(rings.first);
+          var center = landBounds.center;
+          if (!feature.contains(QuizipediaPoint(center.dx, center.dy))) {
+            // Do not shift a name away from an internal hole into a neighbour.
+            if (feature.polygons.any((polygon) => polygon.length > 1)) {
+              continue;
+            }
+            final candidates =
+                [
+                  for (final x in [.25, .5, .75])
+                    for (final y in [.25, .5, .75])
+                      Offset(
+                        landBounds.left + landBounds.width * x,
+                        landBounds.top + landBounds.height * y,
+                      ),
+                ]..sort(
+                  (a, b) => (a - landBounds.center).distanceSquared.compareTo(
+                    (b - landBounds.center).distanceSquared,
+                  ),
+                );
+            final inland = candidates
+                .where((p) => feature.contains(QuizipediaPoint(p.dx, p.dy)))
+                .firstOrNull;
+            if (inland == null) continue;
+            center = inland;
+          }
           final at = MatrixUtils.transformPoint(
             transform,
             Offset(
@@ -2641,33 +2690,47 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             bounds(rings.first).height * scene.height * scale,
           );
           final isSelected = feature.id == widget.selected;
-          final labelWidth = isSelected
-              ? 120.0
-              : math.min(96.0, countryWidth - 6);
-          final labelHeight = isSelected
-              ? 38.0
-              : math.min(32.0, countryHeight - 4);
-          if (labelWidth < 28 || labelHeight < 14) continue;
-          // A bounding box may span sea or a neighbouring country's enclave.
-          // Only show a label when its centre and corners fit the actual land.
-          final halfWidth = labelWidth / (2 * scene.width * scale);
-          final halfHeight = labelHeight / (2 * scene.height * scale);
-          if (!feature.contains(QuizipediaPoint(center.dx, center.dy)) ||
-              (!isSelected &&
-                  [-1, 1].any(
-                    (x) => [-1, 1].any(
-                      (y) => !feature.contains(
-                        QuizipediaPoint(
-                          center.dx + x * halfWidth,
-                          center.dy + y * halfHeight,
-                        ),
-                      ),
-                    ),
-                  ))) {
+          if (!isSelected && (countryWidth < 28 || countryHeight < 14)) {
+            continue;
+          }
+          final textScale = MediaQuery.textScalerOf(context).scale(11) / 11;
+          final labelStyle = DefaultTextStyle.of(context).style.copyWith(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: widget.labelPriorityIds.contains(feature.id)
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.onSurface,
+            backgroundColor: Theme.of(context).colorScheme.surface
+                .withValues(alpha: .94),
+          );
+          final metrics = TextPainter(
+            text: TextSpan(text: text, style: labelStyle),
+            textDirection: Directionality.of(context),
+            textScaler: MediaQuery.textScalerOf(context),
+            maxLines: 2,
+            ellipsis: '…',
+          )..layout(maxWidth: 160 * textScale);
+          final labelWidth = metrics.width + 8;
+          final labelHeight = metrics.height + 6;
+          metrics.dispose();
+          // Anchor names on land. Text may extend over a coastline; actual flag
+          // pixels are separately clipped to the country polygons by the painter.
+          if (labelWidth > _view.width - 16 ||
+              labelHeight > _view.height - 16 ||
+              at.dx < 0 ||
+              at.dx > _view.width ||
+              at.dy < 0 ||
+              at.dy > _view.height) {
             continue;
           }
           final rect = Rect.fromCenter(
-            center: at,
+            center: Offset(
+              at.dx.clamp(labelWidth / 2 + 8, _view.width - labelWidth / 2 - 8),
+              at.dy.clamp(
+                labelHeight / 2 + 8,
+                _view.height - labelHeight / 2 - 8,
+              ),
+            ),
             width: labelWidth,
             height: labelHeight,
           );
@@ -2695,16 +2758,11 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                       )
                     : Text(
                         text,
+                        key: Key('map-overlay-label-${feature.id}'),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: Theme.of(context).colorScheme.onSurface,
-                          backgroundColor: Theme.of(context).colorScheme.surface
-                              .withValues(alpha: .94),
-                        ),
+                        style: labelStyle,
                       ),
               ),
             ),

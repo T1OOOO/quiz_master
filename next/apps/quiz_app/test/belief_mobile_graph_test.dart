@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,6 +9,51 @@ import 'package:quiz_app/belief_atlas.dart';
 import 'package:quiz_app/belief_atlas_models.dart';
 
 void main() {
+  testWidgets('relationship canvas keeps its named accessible list separate', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    try {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: BeliefAtlasPage(
+            initialSection: 'religions',
+            bundle: _Bundle(jsonEncode(_religionFixture)),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final canvas = find.byKey(const Key('belief-graph'));
+      final node = find
+          .descendant(of: canvas, matching: find.byType(FilledButton))
+          .first;
+      expect(
+        tester
+            .getSemantics(node)
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isFalse,
+      );
+      final listButton = find
+          .byWidgetPredicate(
+            (w) =>
+                w is OutlinedButton &&
+                w.key.toString().contains('belief-list-'),
+          )
+          .first;
+      await tester.ensureVisible(listButton);
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .getSemantics(listButton)
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isTrue,
+      );
+    } finally {
+      semantics.dispose();
+    }
+  });
   testWidgets(
     'vertical map drag pans beliefs rather than the surrounding page',
     (tester) async {

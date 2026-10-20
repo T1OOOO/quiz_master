@@ -11,6 +11,46 @@ import 'package:quiz_app/country_learning.dart';
 
 void main() {
   testWidgets(
+    'checked sky practice keeps feedback and next visible on a phone',
+    (tester) async {
+      tester.view.physicalSize = const Size(320, 680);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
+      );
+      await tester.pumpAndSettle();
+      final atlas = find.text('J2000 constellation atlas');
+      await tester.ensureVisible(atlas);
+      await tester.tap(atlas);
+      await tester.pumpAndSettle();
+      final start = find.text('Start training');
+      await tester.ensureVisible(start);
+      await tester.tap(start);
+      await tester.pumpAndSettle();
+      final option = find.byType(OutlinedButton).first;
+      await tester.ensureVisible(option);
+      await tester.tap(option);
+      await tester.pumpAndSettle();
+      final check = find.text('Check');
+      await tester.ensureVisible(check);
+      await tester.tap(check);
+      await tester.pumpAndSettle();
+      expect(
+        find.textContaining('Correct answer:').hitTestable(),
+        findsOneWidget,
+      );
+      expect(find.text('Next').hitTestable(), findsOneWidget);
+      await tester.tap(find.text('Next'));
+      await tester.pumpAndSettle();
+      expect(
+        find.text('Name this constellation pattern').hitTestable(),
+        findsOneWidget,
+      );
+    },
+  );
+  testWidgets(
     'map feedback teaches loaded facts instead of repeating the task',
     (tester) async {
       final data = fixture();
@@ -602,23 +642,36 @@ void main() {
   );
 
   testWidgets('photo browsing evicts old full-size images', (tester) async {
+    Future<void> decodedPhoto() async {
+      for (var attempt = 0; attempt < 250; attempt++) {
+        await tester.pump(const Duration(milliseconds: 16));
+        final photo = find.byWidgetPredicate(
+          (widget) =>
+              widget is Semantics && widget.properties.label == 'Photograph',
+        );
+        final ready = find
+            .descendant(of: photo, matching: find.byType(RawImage))
+            .evaluate()
+            .any((element) => (element.widget as RawImage).image != null);
+        if (ready && !tester.binding.hasScheduledFrame) {
+          return;
+        }
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 20)),
+        );
+      }
+      fail('The current photograph did not decode within five seconds');
+    }
+
     final bundle = _PhotoBundle(fixture());
     await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
     await tester.pumpAndSettle();
-    await tester.runAsync(() async {
-      await tester.tap(find.text('Landmark photographs'));
-      await tester.pump();
-      await Future<void>.delayed(const Duration(milliseconds: 100));
-    });
-    await tester.pumpAndSettle();
+    await tester.tap(find.text('Landmark photographs'));
+    await decodedPhoto();
     for (var i = 0; i < 4; i++) {
       await tester.ensureVisible(find.byTooltip('Next photograph'));
-      await tester.runAsync(() async {
-        await tester.tap(find.byTooltip('Next photograph'));
-        await tester.pump();
-        await Future<void>.delayed(const Duration(milliseconds: 100));
-      });
-      await tester.pumpAndSettle();
+      await tester.tap(find.byTooltip('Next photograph'));
+      await decodedPhoto();
     }
     expect(
       bundle.photos.where((p) => p == 'assets/missing0.png'),

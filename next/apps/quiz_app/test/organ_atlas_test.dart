@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -74,6 +75,41 @@ class _AtlasBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('diagram exposes named controls outside the touch canvas', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    try {
+      await tester.pumpWidget(
+        MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
+      );
+      await tester.pumpAndSettle();
+      // Tappable DOM overlays debounce raw down/move events together on Web.
+      // Canvas controls stay visual; the separate named legend serves accessibility.
+      expect(
+        tester
+            .getSemantics(find.byKey(const Key('organ-map-target-brain')))
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isFalse,
+      );
+      final legend = find.byKey(const Key('organ-map-card-brain'));
+      await tester.ensureVisible(legend);
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .getSemantics(legend)
+            .getSemanticsData()
+            .hasAction(ui.SemanticsAction.tap),
+        isTrue,
+      );
+      await tester.tap(legend);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
+    } finally {
+      semantics.dispose();
+    }
+  });
   testWidgets(
     'vertical map drag pans organs rather than the surrounding page',
     (tester) async {

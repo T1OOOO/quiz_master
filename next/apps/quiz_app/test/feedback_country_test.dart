@@ -21,6 +21,143 @@ const _catalog = QuizipediaCatalog(
 );
 
 void main() {
+  testWidgets('country labels fit a whole readable name on a narrow map', (
+    tester,
+  ) async {
+    final camera = TransformationController();
+    addTearDown(camera.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: SizedBox(
+              width: 393,
+              height: 500,
+              child: QuizipediaWorldMap(
+                features: const [
+                  QuizipediaFeature(
+                    id: 'NL',
+                    nameEn: 'Netherlands',
+                    nameRu: 'Нидерланды',
+                    polygons: [
+                      [
+                        [
+                          QuizipediaPoint(.45, .2),
+                          QuizipediaPoint(.55, .2),
+                          QuizipediaPoint(.55, .5),
+                          QuizipediaPoint(.45, .5),
+                          QuizipediaPoint(.45, .2),
+                        ],
+                      ],
+                    ],
+                  ),
+                ],
+                controller: camera,
+                onSelect: (_) {},
+                showLabels: false,
+                overlayLabels: const {'NL': 'Нидерланды'},
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final paragraph = tester.renderObject<RenderParagraph>(
+      find.byKey(const Key('map-overlay-label-NL')),
+    );
+    expect(
+      paragraph.getBoxesForSelection(
+        const TextSelection(baseOffset: 0, extentOffset: 10),
+      ),
+      hasLength(1),
+    );
+  });
+  testWidgets(
+    'country name labels remain visible across irregular coastlines',
+    (tester) async {
+      late QuizipediaCatalog catalog;
+      await tester.runAsync(() async {
+        catalog = QuizipediaCatalog.fromJson(
+          jsonDecode(
+            await rootBundle.loadString('assets/quizipedia/catalog.json'),
+          ) as Map<String, dynamic>,
+        );
+      });
+      final camera = TransformationController();
+      addTearDown(camera.dispose);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: SizedBox(
+                width: 393,
+                height: 500,
+                child: QuizipediaWorldMap(
+                  features: catalog.countries,
+                  controller: camera,
+                  onSelect: (_) {},
+                  showLabels: false,
+                  overlayLabels: const {'AU': 'Australia'},
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('map-overlay-label-AU')), findsOneWidget);
+    },
+  );
+  testWidgets('a repeated explicit focus request recentres the same country', (
+    tester,
+  ) async {
+    final camera = TransformationController();
+    final request = ValueNotifier(0);
+    addTearDown(camera.dispose);
+    addTearDown(request.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ValueListenableBuilder<int>(
+            valueListenable: request,
+            builder: (context, value, _) => QuizipediaWorldMap(
+              features: const [
+                QuizipediaFeature(
+                  id: 'FR',
+                  nameEn: 'France',
+                  nameRu: 'Франция',
+                  polygons: [
+                    [
+                      [
+                        QuizipediaPoint(.3, .2),
+                        QuizipediaPoint(.4, .2),
+                        QuizipediaPoint(.4, .4),
+                        QuizipediaPoint(.3, .4),
+                        QuizipediaPoint(.3, .2),
+                      ],
+                    ],
+                  ],
+                ),
+              ],
+              controller: camera,
+              onSelect: (_) {},
+              focusTarget: 'FR',
+              focusRequest: value,
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final focused = camera.value.clone();
+    camera.value = Matrix4.identity()..translateByDouble(-20, -30, 0, 1);
+    request.value++;
+    await tester.pumpAndSettle();
+    for (final index in [0, 5, 12, 13]) {
+      expect(camera.value.storage[index], closeTo(focused.storage[index], .01));
+    }
+  });
   testWidgets(
     'vertical touch drag moves an embedded world map rather than its page',
     (tester) async {
@@ -190,12 +327,24 @@ void main() {
                     id: 'FR',
                     nameEn: 'France',
                     nameRu: 'Франция',
-                    polygons: [],
+                    polygons: [
+                      [
+                        [
+                          QuizipediaPoint(.1, .2),
+                          QuizipediaPoint(.4, .2),
+                          QuizipediaPoint(.4, .5),
+                          QuizipediaPoint(.1, .5),
+                          QuizipediaPoint(.1, .2),
+                        ],
+                      ],
+                    ],
                   ),
                 ],
                 controller: camera,
                 onSelect: (_) {},
                 showFlags: true,
+                selected: 'FR',
+                overlayLabels: const {'FR': 'France'},
               ),
             ),
           ),
@@ -230,6 +379,14 @@ void main() {
         await Future<void>.delayed(const Duration(milliseconds: 500));
       });
       await tester.pumpAndSettle();
+      final initialMap = tester.widget<QuizipediaWorldMap>(
+        find.byType(QuizipediaWorldMap),
+      );
+      expect(
+        initialMap.overlayLabels,
+        isNotEmpty,
+        reason: 'Unselected countries need visible names',
+      );
       await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Compare countries: population and area'));
@@ -239,6 +396,15 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(BottomSheet), findsNothing);
       expect(find.byKey(const Key('country-selected-details')), findsOneWidget);
+      final selectedMap = tester.widget<QuizipediaWorldMap>(
+        find.byType(QuizipediaWorldMap),
+      );
+      expect(
+        selectedMap.focusTarget,
+        selectedMap.selected,
+        reason: 'Explicit list selection requests camera focus',
+      );
+      expect(find.byKey(const Key('country-flag-preview')), findsOneWidget);
     },
   );
   testWidgets(
@@ -295,6 +461,10 @@ void main() {
   testWidgets('a country answer shows feedback on its first tap', (
     tester,
   ) async {
+    tester.view.physicalSize = const Size(320, 680);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     await tester.runAsync(() async {
       await tester.pumpWidget(
         const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
@@ -314,6 +484,8 @@ void main() {
     expect(find.byKey(const Key('country-answer-explanation')), findsOneWidget);
     expect(find.textContaining('Review the country card'), findsNothing);
     expect(find.text('Next'), findsOneWidget);
+    expect(find.textContaining('Your answer:').hitTestable(), findsOneWidget);
+    expect(find.text('Next').hitTestable(), findsOneWidget);
     expect(find.text('Check'), findsNothing);
   });
 

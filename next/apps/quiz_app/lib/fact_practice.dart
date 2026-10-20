@@ -97,6 +97,19 @@ class _FactPracticePageState extends State<FactPracticePage> {
     if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
   });
 
+  void _nextQuestion() {
+    setState(() {
+      if (_index + 1 == _round!.length) {
+        _finished = true;
+      } else {
+        _index++;
+      }
+      _chosen = null;
+      _checked = false;
+    });
+    _top();
+  }
+
   void _start(
     List<FactQuestion> questions, {
     bool retry = false,
@@ -169,6 +182,22 @@ class _FactPracticePageState extends State<FactPracticePage> {
         },
       ),
     ),
+    bottomNavigationBar: _round != null && !_finished && _checked
+        ? SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+              child: FilledButton(
+                onPressed: _nextQuestion,
+                child: Text(
+                  _index + 1 == _round!.length
+                      ? _t('Завершить', 'Finish')
+                      : _t('Дальше', 'Next'),
+                ),
+              ),
+            ),
+          )
+        : null,
   );
 
   Widget _browse(List<FactQuestion> bank) {
@@ -372,40 +401,6 @@ class _FactPracticePageState extends State<FactPracticePage> {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 16),
-        for (final choice in q.options)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-                padding: const EdgeInsets.all(16),
-                backgroundColor: _checked && choice.id == q.correctId
-                    ? Theme.of(context).colorScheme.primaryContainer
-                    : _chosen == choice.id
-                    ? Theme.of(context).colorScheme.errorContainer
-                    : null,
-                disabledForegroundColor: Theme.of(context)
-                    .colorScheme
-                    .onSurface,
-              ),
-              onPressed: _checked
-                  ? null
-                  : () => setState(() {
-                      _chosen = choice.id;
-                      _checked = true;
-                      _seen.add(f.id);
-                      if (_chosen == q.correctId) {
-                        _score++;
-                      } else {
-                        _missed.add(q);
-                      }
-                    }),
-              child: Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(_ru ? choice.textRu : choice.textEn),
-              ),
-            ),
-          ),
         if (_checked) ...[
           Card(
             child: Padding(
@@ -439,26 +434,44 @@ class _FactPracticePageState extends State<FactPracticePage> {
               ),
             ),
           ),
-          FilledButton(
-            onPressed: () {
-              setState(() {
-                if (_index + 1 == _round!.length) {
-                  _finished = true;
-                } else {
-                  _index++;
-                }
-                _chosen = null;
-                _checked = false;
-              });
-              _top();
-            },
-            child: Text(
-              _index + 1 == _round!.length
-                  ? _t('Завершить', 'Finish')
-                  : _t('Дальше', 'Next'),
+        ],
+        for (final choice in q.options)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size.fromHeight(48),
+                padding: const EdgeInsets.all(16),
+                backgroundColor: _checked && choice.id == q.correctId
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : _chosen == choice.id
+                    ? Theme.of(context).colorScheme.errorContainer
+                    : null,
+                disabledForegroundColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface,
+              ),
+              onPressed: _checked
+                  ? null
+                  : () {
+                      setState(() {
+                        _chosen = choice.id;
+                        _checked = true;
+                        _seen.add(f.id);
+                        if (_chosen == q.correctId) {
+                          _score++;
+                        } else {
+                          _missed.add(q);
+                        }
+                      });
+                      _top();
+                    },
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(_ru ? choice.textRu : choice.textEn),
+              ),
             ),
           ),
-        ],
         TextButton(
           onPressed: () {
             setState(() => _round = null);

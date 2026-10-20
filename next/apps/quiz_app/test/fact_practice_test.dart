@@ -6,6 +6,60 @@ import 'package:quiz_app/fact_practice_models.dart';
 
 void main() {
   testWidgets(
+    'long six-choice fact answers keep verdict and continuation on the phone',
+    (tester) async {
+      tester.view.physicalSize = const Size(320, 680);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final facts = [
+        for (var i = 0; i < 6; i++)
+          StudyFact(
+            id: 'long-$i',
+            scope: 'music',
+            entityId: 'entity-$i',
+            nameRu: 'Инструмент $i',
+            nameEn: 'Instrument $i',
+            fieldPath: 'description',
+            fieldRu: 'Описание',
+            fieldEn: 'Description',
+            valueRu:
+                'Описание $i. ${List.filled(18, 'Классическое устройство инструмента.').join(' ')}',
+            valueEn:
+                'Description $i. ${List.filled(18, 'Classical construction of an instrument.').join(' ')}',
+            sources: const [],
+          ),
+      ];
+      await tester.pumpWidget(
+        MaterialApp(
+          home: FactPracticePage(scope: 'music', facts: facts),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final open = find.byKey(const Key('fact-open-long-0'));
+      await tester.ensureVisible(open);
+      await tester.tap(open);
+      await tester.pumpAndSettle();
+      final choice = find.widgetWithText(OutlinedButton, facts.first.valueEn);
+      await tester.ensureVisible(choice);
+      await tester.pumpAndSettle();
+      final visible = tester
+          .getRect(choice)
+          .intersect(const Rect.fromLTRB(0, 56, 320, 680));
+      expect(visible.height, greaterThan(20));
+      await tester.tapAt(visible.center);
+      await tester.pumpAndSettle();
+      expect(find.text('Correct').hitTestable(), findsOneWidget);
+      expect(
+        find.widgetWithText(FilledButton, 'Finish').hitTestable(),
+        findsOneWidget,
+      );
+      await tester.tap(find.widgetWithText(FilledButton, 'Finish'));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'phone fact practice checks canonical choices and retries a mistake',
     (tester) async {
       tester.view.physicalSize = const Size(320, 680);

@@ -500,73 +500,81 @@ class _Graph extends StatelessWidget {
           viewportWidth: constraints.maxWidth,
           count: shown.length,
         );
-        return MapInteraction(
-          child: Semantics(
-            label: russian
-                ? 'Интерактивный граф связей. $edgeSummary'
-                : 'Interactive relationship graph. $edgeSummary',
-            child: SizedBox(
-              height: 280,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Theme.of(c).colorScheme.surfaceContainerLow,
-                    border: Border.all(
-                      color: Theme.of(c).colorScheme.outlineVariant,
-                    ),
-                  ),
-                  child: InteractiveViewer(
-                    key: const Key('belief-graph'),
-                    transformationController: controller,
-                    minScale: .05,
-                    maxScale: 5,
-                    constrained: false,
-                    boundaryMargin: const EdgeInsets.all(140),
-                    child: SizedBox(
-                      key: const Key('belief-scene'),
-                      width: geometry.sceneWidth,
-                      height: geometry.sceneHeight,
-                      child: Stack(
-                        children: [
-                          CustomPaint(
-                            size: Size(
-                              geometry.sceneWidth,
-                              geometry.sceneHeight,
-                            ),
-                            painter: _EdgePainter(
-                              shown,
-                              edgeRows,
-                              geometry,
-                              russian,
-                              MediaQuery.textScalerOf(c),
-                              Theme.of(c).colorScheme.onSurface,
-                              Theme.of(c).colorScheme.surfaceContainerLow,
-                            ),
-                          ),
-                          for (var i = 0; i < shown.length; i++)
-                            Positioned.fromRect(
-                              rect: geometry.nodeRect(i),
-                              child: Semantics(
-                                button: true,
-                                label: name(shown[i]),
-                                child: FilledButton(
-                                  key: Key('belief-node-${shown[i].id}'),
-                                  onPressed: () => onTap(shown[i].id),
-                                  style: FilledButton.styleFrom(
-                                    backgroundColor: shown[i].id == selected
-                                        ? Theme.of(c).colorScheme.primary
-                                        : Theme.of(c).colorScheme.secondary,
-                                  ),
-                                  child: Text(
-                                    name(shown[i]),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+        // Keep raw touch coordinates on Web; named accessible controls are below.
+        return Semantics(
+          label: russian
+              ? 'Интерактивный граф связей. $edgeSummary'
+              : 'Interactive relationship graph. $edgeSummary',
+          child: ExcludeSemantics(
+            child: MapInteraction(
+              child: Semantics(
+                label: russian
+                    ? 'Интерактивный граф связей. $edgeSummary'
+                    : 'Interactive relationship graph. $edgeSummary',
+                child: SizedBox(
+                  height: 280,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Theme.of(c).colorScheme.surfaceContainerLow,
+                        border: Border.all(
+                          color: Theme.of(c).colorScheme.outlineVariant,
+                        ),
+                      ),
+                      child: InteractiveViewer(
+                        key: const Key('belief-graph'),
+                        transformationController: controller,
+                        minScale: .05,
+                        maxScale: 5,
+                        constrained: false,
+                        boundaryMargin: const EdgeInsets.all(140),
+                        child: SizedBox(
+                          key: const Key('belief-scene'),
+                          width: geometry.sceneWidth,
+                          height: geometry.sceneHeight,
+                          child: Stack(
+                            children: [
+                              CustomPaint(
+                                size: Size(
+                                  geometry.sceneWidth,
+                                  geometry.sceneHeight,
+                                ),
+                                painter: _EdgePainter(
+                                  shown,
+                                  edgeRows,
+                                  geometry,
+                                  russian,
+                                  MediaQuery.textScalerOf(c),
+                                  Theme.of(c).colorScheme.onSurface,
+                                  Theme.of(c).colorScheme.surfaceContainerLow,
                                 ),
                               ),
-                            ),
-                        ],
+                              for (var i = 0; i < shown.length; i++)
+                                Positioned.fromRect(
+                                  rect: geometry.nodeRect(i),
+                                  child: Semantics(
+                                    button: true,
+                                    label: name(shown[i]),
+                                    child: FilledButton(
+                                      key: Key('belief-node-${shown[i].id}'),
+                                      onPressed: () => onTap(shown[i].id),
+                                      style: FilledButton.styleFrom(
+                                        backgroundColor: shown[i].id == selected
+                                            ? Theme.of(c).colorScheme.primary
+                                            : Theme.of(c).colorScheme.secondary,
+                                      ),
+                                      child: Text(
+                                        name(shown[i]),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),

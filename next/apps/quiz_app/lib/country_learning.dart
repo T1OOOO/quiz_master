@@ -592,15 +592,17 @@ class CountryAtlasPage extends StatefulWidget {
 
 class _CountryAtlasPageState extends State<CountryAtlasPage> {
   final _controller = TransformationController();
+  final _practiceScroll = ScrollController();
   String _query = '',
       _region = 'All',
       _selected = '',
       _focus = '',
+      _cameraTarget = '',
       _topic = 'mixed';
   List<CountryFact> _facts = const [];
   List<CountryQuestion> _questions = const [];
   Map<String, List<CountryAssociation>> _associations = const {};
-  int _index = 0, _score = 0;
+  int _index = 0, _score = 0, _cameraRequest = 0;
   String? _choice;
   bool _checked = false, _practice = false;
   bool _reverseRelations = false;
@@ -624,7 +626,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   void _selectWater(String id) {
     setState(() {
       _selectedWater = id;
-      _selected = _focus = '';
+      _selected = _focus = _cameraTarget = '';
     });
   }
 
@@ -737,6 +739,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   @override
   void dispose() {
     _controller.dispose();
+    _practiceScroll.dispose();
     super.dispose();
   }
 
@@ -906,6 +909,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                               _selectedWater = null;
                               _selected = fact.id;
                               _focus = fact.id;
+                              _cameraTarget = fact.id;
+                              _cameraRequest++;
                             });
                           },
                         );
@@ -975,6 +980,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                                 _selectedWater = null;
                                 _selected = fact.id;
                                 _focus = fact.id;
+                                _cameraTarget = fact.id;
+                                _cameraRequest++;
                               });
                             },
                           );
@@ -1060,6 +1067,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         _practice = true;
         _missed.clear();
       });
+      _practiceTop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -1265,7 +1273,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                             value: layer,
                             child: Text(
                               layer == 'none'
-                                  ? _t('No labels', 'Без подписей')
+                                  ? _t('Country names', 'Названия стран')
                                   : _topicLabel(layer),
                             ),
                           ),
@@ -1275,6 +1283,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         if (_layer == 'water') _loadWater();
                       },
                     ),
+                  ),
+                  TextButton.icon(
+                    key: const Key('country-apply-layer'),
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.map_outlined),
+                    label: Text(_t('Show on the map', 'Показать на карте')),
                   ),
                   TextButton.icon(
                     onPressed: () {
@@ -1396,6 +1410,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                                   _selectedWater = null;
                                   _selected = fact.id;
                                   _focus = fact.id;
+                                  _cameraTarget = fact.id;
+                                  _cameraRequest++;
                                   _region = 'All';
                                 });
                               },
@@ -1473,18 +1489,23 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 selected: _selected.isEmpty ? null : _selected,
                 highlighted: _focus.isEmpty ? null : _focus,
                 showSelectionLabel: false,
-                showLabels: _layer == 'none',
+                showLabels: false,
+                focusTarget: _cameraTarget.isEmpty ? null : _cameraTarget,
+                focusRequest: _cameraRequest,
+                labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
                 waters: _layer == 'water'
                     ? (_waters?.features ?? const [])
                     : const [],
                 selectedWater: _layer == 'water' ? _selectedWater : null,
                 onWaterSelect: _selectWater,
-                overlayLabels: _layer == 'none' || _layer == 'water'
+                overlayLabels: _layer == 'water'
                     ? const {}
                     : {
                         for (final fact in _facts)
-                          if (_layerText(fact).isNotEmpty)
-                            fact.id: _layerText(fact),
+                          if (_layer == 'none' || _layerText(fact).isNotEmpty)
+                            fact.id: _layer == 'none'
+                                ? (_ru ? fact.nameRu : fact.nameEn)
+                                : _layerText(fact),
                       },
                 showFlags: _layer == 'flag',
                 onSelect: (id) {
@@ -1493,6 +1514,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     _selectedWater = null;
                     _selected = id ?? '';
                     _focus = id ?? '';
+                    _cameraTarget = '';
                   });
                 },
               ),
@@ -1500,6 +1522,17 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
             if (_selected.isNotEmpty)
               ListTile(
                 key: const Key('country-selected-details'),
+                leading: SizedBox(
+                  width: 48,
+                  height: 32,
+                  child: Image.asset(
+                    'assets/quizipedia/flag-${_selected.toLowerCase()}.png',
+                    key: const Key('country-flag-preview'),
+                    fit: BoxFit.contain,
+                    semanticLabel: _t('Country flag', 'Флаг страны'),
+                    errorBuilder: (_, _, _) => const Icon(Icons.flag_outlined),
+                  ),
+                ),
                 dense: true,
                 title: Text(
                   _fact == null
@@ -1518,7 +1551,18 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           'Details are not available yet',
                           'Сведения пока не добавлены',
                         )
-                      : _t('Country facts', 'Факты о стране'),
+                      : _layer != 'none' &&
+                            _layer != 'flag' &&
+                            _layerText(_fact!).isNotEmpty
+                      ? _layerText(_fact!)
+                      : [
+                          if (_fact!.capital.isNotEmpty)
+                            _display(_fact!.capital),
+                          if (_fact!.neighbors.isNotEmpty)
+                            '${_t('Neighbours', 'Соседи')}: ${_facts.where((f) => _fact!.neighbors.contains(f.id)).map((f) => _ru ? f.nameRu : f.nameEn).join(', ')}',
+                        ].join(' · '),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 trailing: _fact == null ? null : const Icon(Icons.expand_less),
                 onTap: _fact == null ? null : _showDetails,
@@ -1532,7 +1576,13 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       key: const Key('country-map-settings'),
                       onPressed: showSettings,
                       icon: const Icon(Icons.layers_outlined),
-                      label: Text(_t('Layers', 'Слои')),
+                      label: Text(
+                        _layer == 'none'
+                            ? _t('Layers', 'Слои')
+                            : _topicLabel(_layer),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -1771,6 +1821,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                           _selectedWater = null;
                           _selected = neighbor.id;
                           _focus = neighbor.id;
+                          _cameraTarget = neighbor.id;
+                          _cameraRequest++;
                         }),
                       ),
                   ],
@@ -1857,6 +1909,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                                 _selectedWater = null;
                                 _selected = row.id;
                                 _focus = row.id;
+                                _cameraTarget = row.id;
+                                _cameraRequest++;
                                 _query = '';
                               })
                             : ['instrument', 'culture'].contains(row.kind)
@@ -1918,6 +1972,19 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     );
   }
 
+  void _practiceTop() => WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (mounted && _practiceScroll.hasClients) _practiceScroll.jumpTo(0);
+  });
+
+  void _nextPractice() {
+    setState(() {
+      _index++;
+      _choice = null;
+      _checked = false;
+    });
+    _practiceTop();
+  }
+
   Widget _quiz() {
     if (_index >= _questions.length) {
       return Scaffold(
@@ -1972,6 +2039,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          controller: _practiceScroll,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1995,21 +2063,68 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   ),
                 ),
               const SizedBox(height: 16),
+              if (_checked)
+                Container(
+                  key: const Key('quizipedia-feedback'),
+                  padding: const EdgeInsets.all(12),
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _choice == q.answer
+                            ? _t('Correct', 'Верно')
+                            : _t('Incorrect', 'Неверно'),
+                      ),
+                      Text(
+                        '${_t('Your answer', 'Ваш ответ')}: ${_display(_choice!)}',
+                        key: const Key('country-your-answer'),
+                      ),
+                      Text(
+                        '${_t('Correct answer', 'Правильный ответ')}: ${_display(q.answer)}',
+                        style: const TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        _answerExplanation(q),
+                        key: const Key('country-answer-explanation'),
+                      ),
+                      if (q.association?.sourceUrl.isNotEmpty ?? false)
+                        _sourceLink(q.association!.sourceUrl),
+                      if (q.kind == 'population')
+                        _sourceLink(
+                          'https://data.worldbank.org/indicator/SP.POP.TOTL',
+                          'World Bank · ${q.country.populationYear}',
+                        ),
+                      if (q.kind == 'language' &&
+                          q.country.officialLanguagesSource.isNotEmpty)
+                        _sourceLink(q.country.officialLanguagesSource),
+                      if (q.source.isNotEmpty)
+                        Text(
+                          '${q.kind == 'religion' ? _t('Data year', 'Год данных') : _t('Checked', 'Проверено')}: ${q.source}',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                    ],
+                  ),
+                ),
               ...q.options.map(
                 (option) => Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: OutlinedButton(
                     onPressed: _checked
                         ? null
-                        : () => setState(() {
-                            _choice = option;
-                            _checked = true;
-                            if (option == q.answer) {
-                              _score++;
-                            } else {
-                              _missed.add(q);
-                            }
-                          }),
+                        : () {
+                            setState(() {
+                              _choice = option;
+                              _checked = true;
+                              if (option == q.answer) {
+                                _score++;
+                              } else {
+                                _missed.add(q);
+                              }
+                            });
+                            _practiceTop();
+                          },
                     style: OutlinedButton.styleFrom(
                       disabledForegroundColor: Theme.of(context)
                           .colorScheme
@@ -2055,65 +2170,22 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   ),
                 ),
               ),
-              if (_checked)
-                Container(
-                  key: const Key('quizipedia-feedback'),
-                  padding: const EdgeInsets.all(12),
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        _choice == q.answer
-                            ? _t('Correct', 'Верно')
-                            : _t('Incorrect', 'Неверно'),
-                      ),
-                      Text(
-                        '${_t('Your answer', 'Ваш ответ')}: ${_display(_choice!)}',
-                        key: const Key('country-your-answer'),
-                      ),
-                      Text(
-                        '${_t('Correct answer', 'Правильный ответ')}: ${_display(q.answer)}',
-                        style: const TextStyle(fontWeight: FontWeight.w700),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        _answerExplanation(q),
-                        key: const Key('country-answer-explanation'),
-                      ),
-                      if (q.association?.sourceUrl.isNotEmpty ?? false)
-                        _sourceLink(q.association!.sourceUrl),
-                      if (q.kind == 'population')
-                        _sourceLink(
-                          'https://data.worldbank.org/indicator/SP.POP.TOTL',
-                          'World Bank · ${q.country.populationYear}',
-                        ),
-                      if (q.kind == 'language' &&
-                          q.country.officialLanguagesSource.isNotEmpty)
-                        _sourceLink(q.country.officialLanguagesSource),
-                      if (q.source.isNotEmpty)
-                        Text(
-                          '${q.kind == 'religion' ? _t('Data year', 'Год данных') : _t('Checked', 'Проверено')}: ${q.source}',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                    ],
-                  ),
-                ),
-              const SizedBox(height: 16),
-              FilledButton(
-                onPressed: _choice == null
-                    ? null
-                    : () => setState(() {
-                        _index++;
-                        _choice = null;
-                        _checked = false;
-                      }),
-                child: Text(_t('Next', 'Далее')),
-              ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: _checked
+          ? SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                child: FilledButton(
+                  onPressed: _nextPractice,
+                  child: Text(_t('Next', 'Далее')),
+                ),
+              ),
+            )
+          : null,
     );
   }
 }
