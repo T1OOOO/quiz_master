@@ -1,0 +1,177 @@
+--- TOUCH/release_executor.py
++++ ATLAS/release_executor.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Guarded, web/API executor for the TOUCH_MAPS_20261020 production release.
++"""Guarded, web/API executor for the ATLAS_MOBILE_20261020 production release.
+
+ It is inert unless both --execute and --acknowledge-production are supplied.
+ Default mode is local planning; execute mode is for an authorized publication.
+@@ -21,11 +21,11 @@
+ HOST_IP = "192.3.164.184"
+ NAMESPACE = "quiz-master"
+ RELEASE = "quiz-master"
+-BASE_REVISION = "75"
+-BASE_DEPLOYMENT_REVISION = "73"
+-BASE_BUILD_ID = "quiz-2026.10.20-sky-388e5c0c"
+-BASE_IMAGE = 'quiz-master:quiz-2026.10.20-sky-388e5c0c@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de'
+-BASE_DIGEST = "sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de"
++BASE_REVISION = "76"
++BASE_DEPLOYMENT_REVISION = "74"
++BASE_BUILD_ID = "quiz-2026.10.20-touch-b5863403"
++BASE_IMAGE = 'quiz-master:quiz-2026.10.20-touch-b5863403@sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0'
++BASE_DIGEST = "sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0"
+ BASE_LOCAL_TAG = f"quiz-master:{BASE_BUILD_ID}"
+ API_SHA256 = "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4"
+ PVC_UID = "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
+--- TOUCH/prepare_package.py
++++ ATLAS/prepare_package.py
+@@ -29,7 +29,7 @@
+  closure=json.loads((baseline/'quiz-closure.json').read_text(encoding='utf-8')); quizzes=tree(baseline/'quizzes')
+  if len(quizzes)!=165 or quizzes!=closure.get('candidate'): raise release.GuardError('baseline quiz closure differs')
+  if release.sha256_file(baseline/'api')!=release.API_SHA256: raise release.GuardError('unchanged API bytes differ')
+- web=source/'next/apps/quiz_app/build/web'; js=(web/'main.dart.js').read_bytes(); build='quiz-2026.10.20-touch-'+commit[:8]
++ web=source/'next/apps/quiz_app/build/web'; js=(web/'main.dart.js').read_bytes(); build='quiz-2026.10.20-atlas-'+commit[:8]
+  if build.encode() not in js or b'https://quiz.kotopedia.org' not in js: raise release.GuardError('compiled application identity differs')
+  dest.mkdir()
+  shutil.copytree(web,dest/'web'); shutil.copytree(source/'deploy/helm/quiz-master',dest/'chart')
+--- TOUCH/volatile_checks.py
++++ ATLAS/volatile_checks.py
+@@ -12,7 +12,7 @@
+
+ def validate_stage_name(stage: str,build: str) -> PurePosixPath:
+  p=PurePosixPath(stage)
+- if not re.fullmatch(r'quiz-2026\.10\.20-touch-[0-9a-f]{8}',build) or str(p)!=stage or p.parent!=PARENT or p.name!=build:
++ if not re.fullmatch(r'quiz-2026\.10\.20-atlas-[0-9a-f]{8}',build) or str(p)!=stage or p.parent!=PARENT or p.name!=build:
+   raise GuardError('not the literal candidate release stage')
+  return p
+
+--- TOUCH/test_release_executor.py
++++ ATLAS/test_release_executor.py
+@@ -22,10 +22,10 @@
+   publish=script[script.index('test -f "$stage/reviewed-receipt.json"'):]
+   self.assertLess(publish.index('record-restore'),publish.index('volatile_checks.py" unmount'))
+   self.assertLess(publish.index('volatile_checks.py" unmount'),publish.index('helm upgrade'))
+- def test_baseline_is_exact_release75(self):
+-  self.assertEqual(r.BASE_REVISION, '75')
+-  self.assertEqual(r.BASE_DEPLOYMENT_REVISION, '73')
+-  self.assertEqual(r.BASE_BUILD_ID, 'quiz-2026.10.20-sky-388e5c0c')
++ def test_baseline_is_exact_release76(self):
++  self.assertEqual(r.BASE_REVISION, '76')
++  self.assertEqual(r.BASE_DEPLOYMENT_REVISION, '74')
++  self.assertEqual(r.BASE_BUILD_ID, 'quiz-2026.10.20-touch-b5863403')
+   self.assertEqual(r.API_SHA256, 'e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4')
+  def test_quizzes_must_be_identical(self):
+   base={f'quiz-{i}.json':str(i) for i in range(165)}
+@@ -47,7 +47,7 @@
+   self.assertNotIn('$stage/new.api',script)
+  def test_release_gates_remain(self):
+   script=r.remote_script('quiz-2026.10.19-visual-abcdef12',r.API_SHA256,'prepare')+r.remote_script('quiz-2026.10.19-visual-abcdef12',r.API_SHA256,'publish')
+-  for needle in ['DEPLOY.lock','f_bavail * 5 >= s.f_blocks','helm rollback quiz-master 75','--require-real-http-grading','--require-article-revision-binding','canonical-cri.json','restore-proof.sqlite','feedback-before.json','helm lint --strict','kubectl apply --dry-run=server']:
++  for needle in ['DEPLOY.lock','f_bavail * 5 >= s.f_blocks','helm rollback quiz-master 76','--require-real-http-grading','--require-article-revision-binding','canonical-cri.json','restore-proof.sqlite','feedback-before.json','helm lint --strict','kubectl apply --dry-run=server']:
+    self.assertIn(needle,script)
+   self.assertIn('frontend-only candidate changed a quiz source byte',script)
+   self.assertIn('test \"$(sha256sum',script)
+--- TOUCH/test_volatile_checks.py
++++ ATLAS/test_volatile_checks.py
+@@ -2,7 +2,7 @@
+ from pathlib import Path
+ import volatile_checks as v
+
+-BUILD='quiz-2026.10.20-touch-abcdef12'
++BUILD='quiz-2026.10.20-atlas-abcdef12'
+ STAGE='/opt/quiz-master/releases/'+BUILD
+
+ class VolatileChecksTest(unittest.TestCase):
+--- TOUCH/storage_offload.py
++++ ATLAS/storage_offload.py
+@@ -13,7 +13,7 @@
+ ROOT = Path(__file__).resolve().parents[4]
+ HERE = Path(__file__).parent
+ PLAN_PATH = HERE / 'storage-offload-plan.json'
+-PLAN_SHA256 = '3c39f18efabdf6afd4b64f6e3e3d6d43089c7b5ee199b0b88f407032239545ea'
++PLAN_SHA256 = '2d4938a4b6dda80c045a7bd35a13ee6b80096c31bd5f531e14e823e5d62e5cc0'
+ HOST = '192.3.164.184'
+ KEY = Path(r'C:\Users\Alexey_Matvienko\.ssh\ll_deploy_ed25519')
+ LOCK = '/opt/quiz-master/DEPLOY.lock'
+@@ -30,7 +30,7 @@
+     if plan.get('contract') != 'quiz-master-storage-offload-grid/v1': raise RuntimeError('unexpected plan contract')
+     paths = [x.get('path') for x in plan.get('targets', [])]
+     if len(paths) != 6 or len(set(paths)) != len(paths): raise RuntimeError('literal target set is incomplete or duplicated')
+-    if any(not isinstance(p, str) or not p.startswith('/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/') or '..' in PurePosixPath(p).parts for p in paths):
++    if any(not isinstance(p, str) or not p.startswith('/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/') or '..' in PurePosixPath(p).parts for p in paths):
+         raise RuntimeError('target path escapes approved root')
+     return plan
+ def receipt(path: Path) -> None:
+@@ -116,7 +116,7 @@
+   if json.load(r).get('buildId')!={baseline['build_id']!r}: raise RuntimeError('public build')
+  with urllib.request.urlopen('https://quiz.kotopedia.org/health/ready',timeout=30) as r:
+   if r.status!=200: raise RuntimeError('public health')
+- for p in (BACKUPS/'quiz-2026.10.19-minimum20-7f8344d6.sqlite',BACKUPS/'quiz-2026.10.19-grid-9de2ad04.sqlite',BACKUPS/'quiz-2026.10.19-photo-a034673a.sqlite',BACKUPS/'quiz-2026.10.20-water-82fb9c57.sqlite',BACKUPS/'quiz-2026.10.20-sky-388e5c0c.sqlite'):
++ for p in (BACKUPS/'quiz-2026.10.19-minimum20-7f8344d6.sqlite',BACKUPS/'quiz-2026.10.19-grid-9de2ad04.sqlite',BACKUPS/'quiz-2026.10.19-photo-a034673a.sqlite',BACKUPS/'quiz-2026.10.20-water-82fb9c57.sqlite',BACKUPS/'quiz-2026.10.20-sky-388e5c0c.sqlite',BACKUPS/'quiz-2026.10.20-touch-b5863403.sqlite'):
+   regular(p); sqlite_ok(p)
+  return {{'deployment_revision':72,'helm_revision':74,'rollback_revision':73,'node_ready':True,'disk_pressure':False}}
+ def active_refs(roots):
+
+EXACT PLAN
+{
+  "accounting": {
+    "planned_total_bytes": 25877242
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.20-touch-b5863403",
+    "deployment_revision": "74",
+    "helm_deployed_revision": 76,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.20-touch-b5863403@sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 75
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-touch-b5863403",
+    "image": "quiz-master:quiz-2026.10.20-touch-b5863403@sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0",
+    "input_sha256": "0561e9af6d404527a3138488cba62660efef91baf01f18747d2c1971c801642a"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-atlas-baseline-20261020",
+  "plan_only": true,
+  "purpose": "Reversibly archive only six redundant release76 copied staging directories. Full frozen local76 package retained. Preserve every published image, every full physical backup, livePVC/chart/support/receipts/proofmetadata. No prune/GC/threshold changes.",
+  "targets": [
+    {
+      "expected_bytes": 4402045,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4550675,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/web-delta",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/candidate-quizzes",
+      "sqlite": false
+    }
+  ]
+}

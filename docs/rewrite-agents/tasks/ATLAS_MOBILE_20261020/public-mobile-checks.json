@@ -1,0 +1,122 @@
+{
+  "status": "scoped_mobile_checks_pass_with_open_followups",
+  "build_id": "quiz-2026.10.20-atlas-4fc2fd02",
+  "viewport": {
+    "width": 393,
+    "height": 851,
+    "dpr": 2.75,
+    "touch": 5,
+    "coarse": true
+  },
+  "physical_android": false,
+  "organs": {
+    "native_pinch_changes_scene": true,
+    "native_vertical_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "native_tap": [
+      224,
+      201
+    ],
+    "opened": "Сердце",
+    "named_accessible_list_retained": true
+  },
+  "sky": {
+    "native_tap": [
+      121,
+      257
+    ],
+    "opened": "Бетельгейзе",
+    "native_pinch_changes_scene": true,
+    "native_vertical_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "viewport_scale": 1,
+    "six_photo_or_sky_choices": true,
+    "checked_feedback_before_diagram": true,
+    "next_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    },
+    "manual_next_advanced_from": 1,
+    "manual_next_advanced_to": 2
+  },
+  "countries": {
+    "initial_visible_names": [
+      "Норвегия",
+      "Россия",
+      "Канада",
+      "Мексика",
+      "Индия",
+      "Бразилия",
+      "Австралия"
+    ],
+    "explicit_list_france_focus": true,
+    "neighbour_buttons_visible_and_select_france_from_spain": true,
+    "flag_thumbnail": true,
+    "currency_layer_caption": "Валюты",
+    "selected_currency": "евро",
+    "native_map_tap_spain_preserves_camera": true,
+    "france_label_rect_before_and_after": [
+      {
+        "x": 172.682373046875,
+        "y": 358.5,
+        "width": 47.625,
+        "height": 16
+      }
+    ],
+    "native_water_map_pan_parent_scroll": 0,
+    "checked_wrong": "Намиб",
+    "correct": "Сахара",
+    "correct_club_answer": "Арсенал — футбол",
+    "manual_next_after_correct": true,
+    "next_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    }
+  },
+  "photos": {
+    "count": 36,
+    "facts": 108,
+    "search": "Сингапур",
+    "selected": "Мерлайон",
+    "real_photo_visible": true,
+    "russian_full_country_name": true,
+    "photo_practice_choices": 6,
+    "correct_colosseum_graded": true,
+    "other_option_explanations_available": true
+  },
+  "waters": {
+    "count": 63,
+    "selected": "Средиземное море",
+    "native_focus_button_zoomed_to_real_polygon": true,
+    "lakes_rivers_and_marine_geometry_visible": true,
+    "grading_available": true
+  },
+  "beliefs": {
+    "full_graph_native_pinch_changes_scene": true,
+    "full_graph_native_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "external_named_list_retained": true
+  },
+  "all_facts": {
+    "long_acropolis_description_graded": true,
+    "feedback_before_choices": true,
+    "finish_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    },
+    "observed_choice_count": 4
+  },
+  "open_followups": [
+    "Separate WaterPracticePage still places Next below viewport after grade: x12,y1102.080078125,w369,h48. Keep as an explicit follow-up; do not claim every practice screen fixed.",
+    "Production fact-question generator still uses 4 choices; one country desert question had5. Six-choice broad coverage is NOT accepted. Existing report23 remains open.",
+    "Belief full graph is a tall narrow layout with tiny fitted labels; gesture delivery passed, visual quality is not accepted as complete.",
+    "Missing anatomy markers, loading performance, selected-border styling and subjective interface/color feedback remain open."
+  ],
+  "reports_resolved": []
+}

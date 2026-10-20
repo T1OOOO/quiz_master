@@ -1,0 +1,1667 @@
+diff --git a/next/apps/quiz_app/lib/belief_atlas.dart b/next/apps/quiz_app/lib/belief_atlas.dart
+index 3d51888b..bcf10929 100644
+--- a/next/apps/quiz_app/lib/belief_atlas.dart
++++ b/next/apps/quiz_app/lib/belief_atlas.dart
+@@ -500,73 +500,81 @@ class _Graph extends StatelessWidget {
+           viewportWidth: constraints.maxWidth,
+           count: shown.length,
+         );
+-        return MapInteraction(
+-          child: Semantics(
+-            label: russian
+-                ? 'Интерактивный граф связей. $edgeSummary'
+-                : 'Interactive relationship graph. $edgeSummary',
+-            child: SizedBox(
+-              height: 280,
+-              child: ClipRRect(
+-                borderRadius: BorderRadius.circular(12),
+-                child: DecoratedBox(
+-                  decoration: BoxDecoration(
+-                    color: Theme.of(c).colorScheme.surfaceContainerLow,
+-                    border: Border.all(
+-                      color: Theme.of(c).colorScheme.outlineVariant,
+-                    ),
+-                  ),
+-                  child: InteractiveViewer(
+-                    key: const Key('belief-graph'),
+-                    transformationController: controller,
+-                    minScale: .05,
+-                    maxScale: 5,
+-                    constrained: false,
+-                    boundaryMargin: const EdgeInsets.all(140),
+-                    child: SizedBox(
+-                      key: const Key('belief-scene'),
+-                      width: geometry.sceneWidth,
+-                      height: geometry.sceneHeight,
+-                      child: Stack(
+-                        children: [
+-                          CustomPaint(
+-                            size: Size(
+-                              geometry.sceneWidth,
+-                              geometry.sceneHeight,
+-                            ),
+-                            painter: _EdgePainter(
+-                              shown,
+-                              edgeRows,
+-                              geometry,
+-                              russian,
+-                              MediaQuery.textScalerOf(c),
+-                              Theme.of(c).colorScheme.onSurface,
+-                              Theme.of(c).colorScheme.surfaceContainerLow,
+-                            ),
+-                          ),
+-                          for (var i = 0; i < shown.length; i++)
+-                            Positioned.fromRect(
+-                              rect: geometry.nodeRect(i),
+-                              child: Semantics(
+-                                button: true,
+-                                label: name(shown[i]),
+-                                child: FilledButton(
+-                                  key: Key('belief-node-${shown[i].id}'),
+-                                  onPressed: () => onTap(shown[i].id),
+-                                  style: FilledButton.styleFrom(
+-                                    backgroundColor: shown[i].id == selected
+-                                        ? Theme.of(c).colorScheme.primary
+-                                        : Theme.of(c).colorScheme.secondary,
+-                                  ),
+-                                  child: Text(
+-                                    name(shown[i]),
+-                                    maxLines: 2,
+-                                    overflow: TextOverflow.ellipsis,
+-                                  ),
++        // Keep raw touch coordinates on Web; named accessible controls are below.
++        return Semantics(
++          label: russian
++              ? 'Интерактивный граф связей. $edgeSummary'
++              : 'Interactive relationship graph. $edgeSummary',
++          child: ExcludeSemantics(
++            child: MapInteraction(
++              child: Semantics(
++                label: russian
++                    ? 'Интерактивный граф связей. $edgeSummary'
++                    : 'Interactive relationship graph. $edgeSummary',
++                child: SizedBox(
++                  height: 280,
++                  child: ClipRRect(
++                    borderRadius: BorderRadius.circular(12),
++                    child: DecoratedBox(
++                      decoration: BoxDecoration(
++                        color: Theme.of(c).colorScheme.surfaceContainerLow,
++                        border: Border.all(
++                          color: Theme.of(c).colorScheme.outlineVariant,
++                        ),
++                      ),
++                      child: InteractiveViewer(
++                        key: const Key('belief-graph'),
++                        transformationController: controller,
++                        minScale: .05,
++                        maxScale: 5,
++                        constrained: false,
++                        boundaryMargin: const EdgeInsets.all(140),
++                        child: SizedBox(
++                          key: const Key('belief-scene'),
++                          width: geometry.sceneWidth,
++                          height: geometry.sceneHeight,
++                          child: Stack(
++                            children: [
++                              CustomPaint(
++                                size: Size(
++                                  geometry.sceneWidth,
++                                  geometry.sceneHeight,
++                                ),
++                                painter: _EdgePainter(
++                                  shown,
++                                  edgeRows,
++                                  geometry,
++                                  russian,
++                                  MediaQuery.textScalerOf(c),
++                                  Theme.of(c).colorScheme.onSurface,
++                                  Theme.of(c).colorScheme.surfaceContainerLow,
+                                 ),
+                               ),
+-                            ),
+-                        ],
++                              for (var i = 0; i < shown.length; i++)
++                                Positioned.fromRect(
++                                  rect: geometry.nodeRect(i),
++                                  child: Semantics(
++                                    button: true,
++                                    label: name(shown[i]),
++                                    child: FilledButton(
++                                      key: Key('belief-node-${shown[i].id}'),
++                                      onPressed: () => onTap(shown[i].id),
++                                      style: FilledButton.styleFrom(
++                                        backgroundColor: shown[i].id == selected
++                                            ? Theme.of(c).colorScheme.primary
++                                            : Theme.of(c).colorScheme.secondary,
++                                      ),
++                                      child: Text(
++                                        name(shown[i]),
++                                        maxLines: 2,
++                                        overflow: TextOverflow.ellipsis,
++                                      ),
++                                    ),
++                                  ),
++                                ),
++                            ],
++                          ),
++                        ),
+                       ),
+                     ),
+                   ),
+diff --git a/next/apps/quiz_app/lib/country_learning.dart b/next/apps/quiz_app/lib/country_learning.dart
+index 013d9bbc..54eeb4f9 100644
+--- a/next/apps/quiz_app/lib/country_learning.dart
++++ b/next/apps/quiz_app/lib/country_learning.dart
+@@ -592,15 +592,17 @@ class CountryAtlasPage extends StatefulWidget {
+
+ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+   final _controller = TransformationController();
++  final _practiceScroll = ScrollController();
+   String _query = '',
+       _region = 'All',
+       _selected = '',
+       _focus = '',
++      _cameraTarget = '',
+       _topic = 'mixed';
+   List<CountryFact> _facts = const [];
+   List<CountryQuestion> _questions = const [];
+   Map<String, List<CountryAssociation>> _associations = const {};
+-  int _index = 0, _score = 0;
++  int _index = 0, _score = 0, _cameraRequest = 0;
+   String? _choice;
+   bool _checked = false, _practice = false;
+   bool _reverseRelations = false;
+@@ -624,7 +626,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+   void _selectWater(String id) {
+     setState(() {
+       _selectedWater = id;
+-      _selected = _focus = '';
++      _selected = _focus = _cameraTarget = '';
+     });
+   }
+
+@@ -737,6 +739,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+   @override
+   void dispose() {
+     _controller.dispose();
++    _practiceScroll.dispose();
+     super.dispose();
+   }
+
+@@ -906,6 +909,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                               _selectedWater = null;
+                               _selected = fact.id;
+                               _focus = fact.id;
++                              _cameraTarget = fact.id;
++                              _cameraRequest++;
+                             });
+                           },
+                         );
+@@ -975,6 +980,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                                 _selectedWater = null;
+                                 _selected = fact.id;
+                                 _focus = fact.id;
++                                _cameraTarget = fact.id;
++                                _cameraRequest++;
+                               });
+                             },
+                           );
+@@ -1060,6 +1067,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+         _practice = true;
+         _missed.clear();
+       });
++      _practiceTop();
+     } else {
+       ScaffoldMessenger.of(context).showSnackBar(
+         SnackBar(
+@@ -1265,7 +1273,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                             value: layer,
+                             child: Text(
+                               layer == 'none'
+-                                  ? _t('No labels', 'Без подписей')
++                                  ? _t('Country names', 'Названия стран')
+                                   : _topicLabel(layer),
+                             ),
+                           ),
+@@ -1276,6 +1284,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                       },
+                     ),
+                   ),
++                  TextButton.icon(
++                    key: const Key('country-apply-layer'),
++                    onPressed: () => Navigator.of(context).pop(),
++                    icon: const Icon(Icons.map_outlined),
++                    label: Text(_t('Show on the map', 'Показать на карте')),
++                  ),
+                   TextButton.icon(
+                     onPressed: () {
+                       Navigator.pop(context);
+@@ -1396,6 +1410,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                                   _selectedWater = null;
+                                   _selected = fact.id;
+                                   _focus = fact.id;
++                                  _cameraTarget = fact.id;
++                                  _cameraRequest++;
+                                   _region = 'All';
+                                 });
+                               },
+@@ -1473,18 +1489,23 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                 selected: _selected.isEmpty ? null : _selected,
+                 highlighted: _focus.isEmpty ? null : _focus,
+                 showSelectionLabel: false,
+-                showLabels: _layer == 'none',
++                showLabels: false,
++                focusTarget: _cameraTarget.isEmpty ? null : _cameraTarget,
++                focusRequest: _cameraRequest,
++                labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
+                 waters: _layer == 'water'
+                     ? (_waters?.features ?? const [])
+                     : const [],
+                 selectedWater: _layer == 'water' ? _selectedWater : null,
+                 onWaterSelect: _selectWater,
+-                overlayLabels: _layer == 'none' || _layer == 'water'
++                overlayLabels: _layer == 'water'
+                     ? const {}
+                     : {
+                         for (final fact in _facts)
+-                          if (_layerText(fact).isNotEmpty)
+-                            fact.id: _layerText(fact),
++                          if (_layer == 'none' || _layerText(fact).isNotEmpty)
++                            fact.id: _layer == 'none'
++                                ? (_ru ? fact.nameRu : fact.nameEn)
++                                : _layerText(fact),
+                       },
+                 showFlags: _layer == 'flag',
+                 onSelect: (id) {
+@@ -1493,6 +1514,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                     _selectedWater = null;
+                     _selected = id ?? '';
+                     _focus = id ?? '';
++                    _cameraTarget = '';
+                   });
+                 },
+               ),
+@@ -1500,6 +1522,17 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+             if (_selected.isNotEmpty)
+               ListTile(
+                 key: const Key('country-selected-details'),
++                leading: SizedBox(
++                  width: 48,
++                  height: 32,
++                  child: Image.asset(
++                    'assets/quizipedia/flag-${_selected.toLowerCase()}.png',
++                    key: const Key('country-flag-preview'),
++                    fit: BoxFit.contain,
++                    semanticLabel: _t('Country flag', 'Флаг страны'),
++                    errorBuilder: (_, _, _) => const Icon(Icons.flag_outlined),
++                  ),
++                ),
+                 dense: true,
+                 title: Text(
+                   _fact == null
+@@ -1518,7 +1551,18 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                           'Details are not available yet',
+                           'Сведения пока не добавлены',
+                         )
+-                      : _t('Country facts', 'Факты о стране'),
++                      : _layer != 'none' &&
++                            _layer != 'flag' &&
++                            _layerText(_fact!).isNotEmpty
++                      ? _layerText(_fact!)
++                      : [
++                          if (_fact!.capital.isNotEmpty)
++                            _display(_fact!.capital),
++                          if (_fact!.neighbors.isNotEmpty)
++                            '${_t('Neighbours', 'Соседи')}: ${_facts.where((f) => _fact!.neighbors.contains(f.id)).map((f) => _ru ? f.nameRu : f.nameEn).join(', ')}',
++                        ].join(' · '),
++                  maxLines: 2,
++                  overflow: TextOverflow.ellipsis,
+                 ),
+                 trailing: _fact == null ? null : const Icon(Icons.expand_less),
+                 onTap: _fact == null ? null : _showDetails,
+@@ -1532,7 +1576,13 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                       key: const Key('country-map-settings'),
+                       onPressed: showSettings,
+                       icon: const Icon(Icons.layers_outlined),
+-                      label: Text(_t('Layers', 'Слои')),
++                      label: Text(
++                        _layer == 'none'
++                            ? _t('Layers', 'Слои')
++                            : _topicLabel(_layer),
++                        maxLines: 1,
++                        overflow: TextOverflow.ellipsis,
++                      ),
+                     ),
+                   ),
+                   const SizedBox(width: 10),
+@@ -1771,6 +1821,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                           _selectedWater = null;
+                           _selected = neighbor.id;
+                           _focus = neighbor.id;
++                          _cameraTarget = neighbor.id;
++                          _cameraRequest++;
+                         }),
+                       ),
+                   ],
+@@ -1857,6 +1909,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                                 _selectedWater = null;
+                                 _selected = row.id;
+                                 _focus = row.id;
++                                _cameraTarget = row.id;
++                                _cameraRequest++;
+                                 _query = '';
+                               })
+                             : ['instrument', 'culture'].contains(row.kind)
+@@ -1918,6 +1972,19 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+     );
+   }
+
++  void _practiceTop() => WidgetsBinding.instance.addPostFrameCallback((_) {
++    if (mounted && _practiceScroll.hasClients) _practiceScroll.jumpTo(0);
++  });
++
++  void _nextPractice() {
++    setState(() {
++      _index++;
++      _choice = null;
++      _checked = false;
++    });
++    _practiceTop();
++  }
++
+   Widget _quiz() {
+     if (_index >= _questions.length) {
+       return Scaffold(
+@@ -1972,6 +2039,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+       ),
+       body: SafeArea(
+         child: SingleChildScrollView(
++          controller: _practiceScroll,
+           padding: const EdgeInsets.all(16),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.stretch,
+@@ -1995,21 +2063,68 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                   ),
+                 ),
+               const SizedBox(height: 16),
++              if (_checked)
++                Container(
++                  key: const Key('quizipedia-feedback'),
++                  padding: const EdgeInsets.all(12),
++                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
++                  child: Column(
++                    crossAxisAlignment: CrossAxisAlignment.start,
++                    children: [
++                      Text(
++                        _choice == q.answer
++                            ? _t('Correct', 'Верно')
++                            : _t('Incorrect', 'Неверно'),
++                      ),
++                      Text(
++                        '${_t('Your answer', 'Ваш ответ')}: ${_display(_choice!)}',
++                        key: const Key('country-your-answer'),
++                      ),
++                      Text(
++                        '${_t('Correct answer', 'Правильный ответ')}: ${_display(q.answer)}',
++                        style: const TextStyle(fontWeight: FontWeight.w700),
++                      ),
++                      const SizedBox(height: 8),
++                      Text(
++                        _answerExplanation(q),
++                        key: const Key('country-answer-explanation'),
++                      ),
++                      if (q.association?.sourceUrl.isNotEmpty ?? false)
++                        _sourceLink(q.association!.sourceUrl),
++                      if (q.kind == 'population')
++                        _sourceLink(
++                          'https://data.worldbank.org/indicator/SP.POP.TOTL',
++                          'World Bank · ${q.country.populationYear}',
++                        ),
++                      if (q.kind == 'language' &&
++                          q.country.officialLanguagesSource.isNotEmpty)
++                        _sourceLink(q.country.officialLanguagesSource),
++                      if (q.source.isNotEmpty)
++                        Text(
++                          '${q.kind == 'religion' ? _t('Data year', 'Год данных') : _t('Checked', 'Проверено')}: ${q.source}',
++                          style: Theme.of(context).textTheme.bodySmall,
++                        ),
++                    ],
++                  ),
++                ),
+               ...q.options.map(
+                 (option) => Padding(
+                   padding: const EdgeInsets.only(bottom: 8),
+                   child: OutlinedButton(
+                     onPressed: _checked
+                         ? null
+-                        : () => setState(() {
+-                            _choice = option;
+-                            _checked = true;
+-                            if (option == q.answer) {
+-                              _score++;
+-                            } else {
+-                              _missed.add(q);
+-                            }
+-                          }),
++                        : () {
++                            setState(() {
++                              _choice = option;
++                              _checked = true;
++                              if (option == q.answer) {
++                                _score++;
++                              } else {
++                                _missed.add(q);
++                              }
++                            });
++                            _practiceTop();
++                          },
+                     style: OutlinedButton.styleFrom(
+                       disabledForegroundColor: Theme.of(context)
+                           .colorScheme
+@@ -2055,65 +2170,22 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
+                   ),
+                 ),
+               ),
+-              if (_checked)
+-                Container(
+-                  key: const Key('quizipedia-feedback'),
+-                  padding: const EdgeInsets.all(12),
+-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+-                  child: Column(
+-                    crossAxisAlignment: CrossAxisAlignment.start,
+-                    children: [
+-                      Text(
+-                        _choice == q.answer
+-                            ? _t('Correct', 'Верно')
+-                            : _t('Incorrect', 'Неверно'),
+-                      ),
+-                      Text(
+-                        '${_t('Your answer', 'Ваш ответ')}: ${_display(_choice!)}',
+-                        key: const Key('country-your-answer'),
+-                      ),
+-                      Text(
+-                        '${_t('Correct answer', 'Правильный ответ')}: ${_display(q.answer)}',
+-                        style: const TextStyle(fontWeight: FontWeight.w700),
+-                      ),
+-                      const SizedBox(height: 8),
+-                      Text(
+-                        _answerExplanation(q),
+-                        key: const Key('country-answer-explanation'),
+-                      ),
+-                      if (q.association?.sourceUrl.isNotEmpty ?? false)
+-                        _sourceLink(q.association!.sourceUrl),
+-                      if (q.kind == 'population')
+-                        _sourceLink(
+-                          'https://data.worldbank.org/indicator/SP.POP.TOTL',
+-                          'World Bank · ${q.country.populationYear}',
+-                        ),
+-                      if (q.kind == 'language' &&
+-                          q.country.officialLanguagesSource.isNotEmpty)
+-                        _sourceLink(q.country.officialLanguagesSource),
+-                      if (q.source.isNotEmpty)
+-                        Text(
+-                          '${q.kind == 'religion' ? _t('Data year', 'Год данных') : _t('Checked', 'Проверено')}: ${q.source}',
+-                          style: Theme.of(context).textTheme.bodySmall,
+-                        ),
+-                    ],
+-                  ),
+-                ),
+-              const SizedBox(height: 16),
+-              FilledButton(
+-                onPressed: _choice == null
+-                    ? null
+-                    : () => setState(() {
+-                        _index++;
+-                        _choice = null;
+-                        _checked = false;
+-                      }),
+-                child: Text(_t('Next', 'Далее')),
+-              ),
+             ],
+           ),
+         ),
+       ),
++      bottomNavigationBar: _checked
++          ? SafeArea(
++              top: false,
++              child: Padding(
++                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
++                child: FilledButton(
++                  onPressed: _nextPractice,
++                  child: Text(_t('Next', 'Далее')),
++                ),
++              ),
++            )
++          : null,
+     );
+   }
+ }
+diff --git a/next/apps/quiz_app/lib/fact_practice.dart b/next/apps/quiz_app/lib/fact_practice.dart
+index 3e1edc6c..b6beab59 100644
+--- a/next/apps/quiz_app/lib/fact_practice.dart
++++ b/next/apps/quiz_app/lib/fact_practice.dart
+@@ -97,6 +97,19 @@ class _FactPracticePageState extends State<FactPracticePage> {
+     if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
+   });
+
++  void _nextQuestion() {
++    setState(() {
++      if (_index + 1 == _round!.length) {
++        _finished = true;
++      } else {
++        _index++;
++      }
++      _chosen = null;
++      _checked = false;
++    });
++    _top();
++  }
++
+   void _start(
+     List<FactQuestion> questions, {
+     bool retry = false,
+@@ -169,6 +182,22 @@ class _FactPracticePageState extends State<FactPracticePage> {
+         },
+       ),
+     ),
++    bottomNavigationBar: _round != null && !_finished && _checked
++        ? SafeArea(
++            top: false,
++            child: Padding(
++              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
++              child: FilledButton(
++                onPressed: _nextQuestion,
++                child: Text(
++                  _index + 1 == _round!.length
++                      ? _t('Завершить', 'Finish')
++                      : _t('Дальше', 'Next'),
++                ),
++              ),
++            ),
++          )
++        : null,
+   );
+
+   Widget _browse(List<FactQuestion> bank) {
+@@ -372,40 +401,6 @@ class _FactPracticePageState extends State<FactPracticePage> {
+           style: Theme.of(context).textTheme.titleLarge,
+         ),
+         const SizedBox(height: 16),
+-        for (final choice in q.options)
+-          Padding(
+-            padding: const EdgeInsets.only(bottom: 10),
+-            child: OutlinedButton(
+-              style: OutlinedButton.styleFrom(
+-                minimumSize: const Size.fromHeight(48),
+-                padding: const EdgeInsets.all(16),
+-                backgroundColor: _checked && choice.id == q.correctId
+-                    ? Theme.of(context).colorScheme.primaryContainer
+-                    : _chosen == choice.id
+-                    ? Theme.of(context).colorScheme.errorContainer
+-                    : null,
+-                disabledForegroundColor: Theme.of(context)
+-                    .colorScheme
+-                    .onSurface,
+-              ),
+-              onPressed: _checked
+-                  ? null
+-                  : () => setState(() {
+-                      _chosen = choice.id;
+-                      _checked = true;
+-                      _seen.add(f.id);
+-                      if (_chosen == q.correctId) {
+-                        _score++;
+-                      } else {
+-                        _missed.add(q);
+-                      }
+-                    }),
+-              child: Align(
+-                alignment: AlignmentDirectional.centerStart,
+-                child: Text(_ru ? choice.textRu : choice.textEn),
+-              ),
+-            ),
+-          ),
+         if (_checked) ...[
+           Card(
+             child: Padding(
+@@ -439,26 +434,44 @@ class _FactPracticePageState extends State<FactPracticePage> {
+               ),
+             ),
+           ),
+-          FilledButton(
+-            onPressed: () {
+-              setState(() {
+-                if (_index + 1 == _round!.length) {
+-                  _finished = true;
+-                } else {
+-                  _index++;
+-                }
+-                _chosen = null;
+-                _checked = false;
+-              });
+-              _top();
+-            },
+-            child: Text(
+-              _index + 1 == _round!.length
+-                  ? _t('Завершить', 'Finish')
+-                  : _t('Дальше', 'Next'),
++        ],
++        for (final choice in q.options)
++          Padding(
++            padding: const EdgeInsets.only(bottom: 10),
++            child: OutlinedButton(
++              style: OutlinedButton.styleFrom(
++                minimumSize: const Size.fromHeight(48),
++                padding: const EdgeInsets.all(16),
++                backgroundColor: _checked && choice.id == q.correctId
++                    ? Theme.of(context).colorScheme.primaryContainer
++                    : _chosen == choice.id
++                    ? Theme.of(context).colorScheme.errorContainer
++                    : null,
++                disabledForegroundColor: Theme.of(context)
++                    .colorScheme
++                    .onSurface,
++              ),
++              onPressed: _checked
++                  ? null
++                  : () {
++                      setState(() {
++                        _chosen = choice.id;
++                        _checked = true;
++                        _seen.add(f.id);
++                        if (_chosen == q.correctId) {
++                          _score++;
++                        } else {
++                          _missed.add(q);
++                        }
++                      });
++                      _top();
++                    },
++              child: Align(
++                alignment: AlignmentDirectional.centerStart,
++                child: Text(_ru ? choice.textRu : choice.textEn),
++              ),
+             ),
+           ),
+-        ],
+         TextButton(
+           onPressed: () {
+             setState(() => _round = null);
+diff --git a/next/apps/quiz_app/lib/organ_atlas.dart b/next/apps/quiz_app/lib/organ_atlas.dart
+index e1cd685a..9b123245 100644
+--- a/next/apps/quiz_app/lib/organ_atlas.dart
++++ b/next/apps/quiz_app/lib/organ_atlas.dart
+@@ -647,87 +647,95 @@ class _BodyMapState extends State<_BodyMap> {
+                 );
+                 final left = (box.maxWidth - 300 * scale) / 2;
+                 final top = (box.maxHeight - 450 * scale) / 2;
+-                return MapInteraction(
+-                  child: InteractiveViewer(
+-                    key: const Key('organ-map'),
+-                    transformationController: widget.controller,
+-                    minScale: .6,
+-                    maxScale: 5,
+-                    boundaryMargin: const EdgeInsets.all(120),
+-                    child: SizedBox(
+-                      width: box.maxWidth,
+-                      height: box.maxHeight,
+-                      child: Stack(
+-                        children: [
+-                          Positioned(
+-                            left: left,
+-                            top: top,
+-                            width: 300 * scale,
+-                            height: 450 * scale,
+-                            child: Image.asset(
+-                              'assets/quizipedia/anatomy-orientation.png',
+-                              fit: BoxFit.contain,
+-                              semanticLabel: ru
+-                                  ? 'Схема органов: вид спереди'
+-                                  : 'Anterior organ overview',
+-                            ),
+-                          ),
+-                          for (var i = 0; i < targets.length; i++)
+-                            Positioned(
+-                              left:
+-                                  left +
+-                                  _illustratedAnchors[targets[i].id]!.dx *
+-                                      scale -
+-                                  22,
+-                              top:
+-                                  top +
+-                                  _illustratedAnchors[targets[i].id]!.dy *
+-                                      scale -
+-                                  22,
+-                              width: 44,
+-                              height: 44,
+-                              child: Tooltip(
+-                                message: widget.name(targets[i]),
+-                                child: Semantics(
+-                                  label: widget.name(targets[i]),
+-                                  child: IconButton(
+-                                    key: Key(
+-                                      'organ-map-target-${targets[i].id}',
+-                                    ),
+-                                    onPressed: () =>
+-                                        widget.onSelected(targets[i]),
+-                                    padding: EdgeInsets.zero,
+-                                    icon: Container(
+-                                      width: 24,
+-                                      height: 24,
+-                                      alignment: Alignment.center,
+-                                      decoration: BoxDecoration(
+-                                        color: Theme.of(context)
+-                                            .colorScheme
+-                                            .primaryContainer,
+-                                        shape: BoxShape.circle,
+-                                        border: Border.all(
+-                                          color: Theme.of(context)
+-                                              .colorScheme
+-                                              .primary,
++                // Keep raw touch coordinates on Web; named accessible controls are below.
++                return Semantics(
++                  label: ru
++                      ? 'Схема органов: вид спереди'
++                      : 'Anterior organ overview',
++                  child: ExcludeSemantics(
++                    child: MapInteraction(
++                      child: InteractiveViewer(
++                        key: const Key('organ-map'),
++                        transformationController: widget.controller,
++                        minScale: .6,
++                        maxScale: 5,
++                        boundaryMargin: const EdgeInsets.all(120),
++                        child: SizedBox(
++                          width: box.maxWidth,
++                          height: box.maxHeight,
++                          child: Stack(
++                            children: [
++                              Positioned(
++                                left: left,
++                                top: top,
++                                width: 300 * scale,
++                                height: 450 * scale,
++                                child: Image.asset(
++                                  'assets/quizipedia/anatomy-orientation.png',
++                                  fit: BoxFit.contain,
++                                  semanticLabel: ru
++                                      ? 'Схема органов: вид спереди'
++                                      : 'Anterior organ overview',
++                                ),
++                              ),
++                              for (var i = 0; i < targets.length; i++)
++                                Positioned(
++                                  left:
++                                      left +
++                                      _illustratedAnchors[targets[i].id]!.dx *
++                                          scale -
++                                      22,
++                                  top:
++                                      top +
++                                      _illustratedAnchors[targets[i].id]!.dy *
++                                          scale -
++                                      22,
++                                  width: 44,
++                                  height: 44,
++                                  child: Tooltip(
++                                    message: widget.name(targets[i]),
++                                    child: Semantics(
++                                      label: widget.name(targets[i]),
++                                      child: IconButton(
++                                        key: Key(
++                                          'organ-map-target-${targets[i].id}',
+                                         ),
+-                                      ),
+-                                      child: Text(
+-                                        '${i + 1}',
+-                                        style: TextStyle(
+-                                          fontSize: 12,
+-                                          fontWeight: FontWeight.bold,
+-                                          color: Theme.of(context)
+-                                              .colorScheme
+-                                              .onPrimaryContainer,
++                                        onPressed: () =>
++                                            widget.onSelected(targets[i]),
++                                        padding: EdgeInsets.zero,
++                                        icon: Container(
++                                          width: 24,
++                                          height: 24,
++                                          alignment: Alignment.center,
++                                          decoration: BoxDecoration(
++                                            color: Theme.of(context)
++                                                .colorScheme
++                                                .primaryContainer,
++                                            shape: BoxShape.circle,
++                                            border: Border.all(
++                                              color: Theme.of(context)
++                                                  .colorScheme
++                                                  .primary,
++                                            ),
++                                          ),
++                                          child: Text(
++                                            '${i + 1}',
++                                            style: TextStyle(
++                                              fontSize: 12,
++                                              fontWeight: FontWeight.bold,
++                                              color: Theme.of(context)
++                                                  .colorScheme
++                                                  .onPrimaryContainer,
++                                            ),
++                                          ),
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+                                 ),
+-                              ),
+-                            ),
+-                        ],
++                            ],
++                          ),
++                        ),
+                       ),
+                     ),
+                   ),
+diff --git a/next/apps/quiz_app/lib/quizipedia.dart b/next/apps/quiz_app/lib/quizipedia.dart
+index 4e3971f4..4da7f757 100644
+--- a/next/apps/quiz_app/lib/quizipedia.dart
++++ b/next/apps/quiz_app/lib/quizipedia.dart
+@@ -1014,6 +1014,10 @@ class _QuizGame extends StatefulWidget {
+ }
+
+ class _QuizGameState extends State<_QuizGame> {
++  final _scroll = ScrollController();
++  void _top() => WidgetsBinding.instance.addPostFrameCallback((_) {
++    if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
++  });
+   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
+     _Module.map =>
+       widget.catalog.countryRows
+@@ -1069,6 +1073,7 @@ class _QuizGameState extends State<_QuizGame> {
+   @override
+   void dispose() {
+     _controller.dispose();
++    _scroll.dispose();
+     for (final future in _images.values) {
+       future.then((image) => image.dispose(), onError: (Object _) {});
+     }
+@@ -1136,6 +1141,7 @@ class _QuizGameState extends State<_QuizGame> {
+     setState(() {
+       _wasCorrect = _session.submit(_selected!);
+     });
++    _top();
+     SemanticsService.sendAnnouncement(
+       View.of(context),
+       _wasCorrect
+@@ -1157,6 +1163,7 @@ class _QuizGameState extends State<_QuizGame> {
+       _starInfo = null;
+       _controller.value = Matrix4.identity();
+     });
++    _top();
+   }
+
+   void _restart() {
+@@ -1168,6 +1175,7 @@ class _QuizGameState extends State<_QuizGame> {
+       _starInfo = null;
+       _controller.value = Matrix4.identity();
+     });
++    _top();
+   }
+
+   @override
+@@ -1218,6 +1226,18 @@ class _QuizGameState extends State<_QuizGame> {
+                 },
+               ),
+       ),
++      bottomNavigationBar: _submitted && !_showResult
++          ? SafeArea(
++              top: false,
++              child: Padding(
++                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
++                child: FilledButton(
++                  onPressed: _next,
++                  child: Text(_t(context, 'Next', 'Далее')),
++                ),
++              ),
++            )
++          : null,
+     );
+   }
+
+@@ -1255,6 +1275,7 @@ class _QuizGameState extends State<_QuizGame> {
+     }
+     if (widget.module == _Module.map) return _mapContent();
+     return MapScrollView(
++      controller: _scroll,
+       padding: const EdgeInsets.all(16),
+       child: Column(
+         crossAxisAlignment: CrossAxisAlignment.stretch,
+@@ -1287,6 +1308,7 @@ class _QuizGameState extends State<_QuizGame> {
+           const SizedBox(height: 16),
+           Text(_prompt(), style: Theme.of(context).textTheme.titleLarge),
+           const SizedBox(height: 12),
++          if (_submitted) _feedback(),
+           _visual(image),
+           if (widget.module == _Module.sky)
+             Text(
+@@ -1303,7 +1325,6 @@ class _QuizGameState extends State<_QuizGame> {
+             ),
+           const SizedBox(height: 12),
+           if (widget.challenge) _challengeControls() else _exploreControls(),
+-          if (_submitted) _feedback(),
+           const SizedBox(height: 8),
+           if (widget.challenge)
+             TextButton(
+@@ -1358,16 +1379,17 @@ class _QuizGameState extends State<_QuizGame> {
+           constraints: BoxConstraints(maxHeight: constraints.maxHeight * .38),
+           child: SingleChildScrollView(
+             key: const Key('map-details'),
++            controller: _scroll,
+             // Keep wrapped text and controls clear of the global feedback FAB.
+             padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 72, 12),
+             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.stretch,
+               children: [
++                if (_submitted) _feedback(),
+                 if (widget.challenge)
+                   _challengeControls()
+                 else
+                   _mapExploreControls(),
+-                if (_submitted) _feedback(),
+                 TextButton(
+                   onPressed: () => Navigator.pop(context),
+                   child: Text(_t(context, 'Exit', 'Выйти')),
+@@ -1955,11 +1977,6 @@ class _QuizGameState extends State<_QuizGame> {
+                   ],
+                 ),
+               _articleLink(),
+-              const SizedBox(height: 8),
+-              FilledButton(
+-                onPressed: _next,
+-                child: Text(_t(context, 'Next', 'Далее')),
+-              ),
+             ],
+           ),
+         ),
+@@ -2288,6 +2305,8 @@ class QuizipediaWorldMap extends StatefulWidget {
+     this.showLabels = true,
+     this.selectionEnabled = true,
+     this.focusTarget,
++    this.focusRequest = 0,
++    this.labelPriorityIds = const {},
+     this.overlayLabels = const {},
+     this.showFlags = false,
+     this.showSelectionLabel = true,
+@@ -2305,6 +2324,8 @@ class QuizipediaWorldMap extends StatefulWidget {
+
+   /// A search result can request camera focus without revealing a quiz answer.
+   final String? focusTarget;
++  final int focusRequest;
++  final Set<String> labelPriorityIds;
+   final Map<String, String> overlayLabels;
+   final bool showFlags, showSelectionLabel;
+   final List<WaterShape> waters;
+@@ -2429,7 +2450,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+     super.didUpdateWidget(oldWidget);
+     _loadFlags();
+     if (widget.focusTarget != null &&
+-        widget.focusTarget != oldWidget.focusTarget) {
++        (widget.focusTarget != oldWidget.focusTarget ||
++            widget.focusRequest != oldWidget.focusRequest)) {
+       WidgetsBinding.instance.addPostFrameCallback((_) {
+         if (mounted) _focus(widget.focusTarget);
+       });
+@@ -2595,14 +2617,16 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+         final areas = {
+           for (final feature in widget.features) feature.id: footprint(feature),
+         };
++        int priority(QuizipediaFeature feature) => feature.id == widget.selected
++            ? 2
++            : widget.labelPriorityIds.contains(feature.id)
++            ? 1
++            : 0;
+         final ordered = [...widget.features]
+-          ..sort(
+-            (a, b) => a.id == widget.selected
+-                ? -1
+-                : b.id == widget.selected
+-                ? 1
+-                : areas[b.id]!.compareTo(areas[a.id]!),
+-          );
++          ..sort((a, b) {
++            final rank = priority(b).compareTo(priority(a));
++            return rank != 0 ? rank : areas[b.id]!.compareTo(areas[a.id]!);
++          });
+         for (final feature in ordered) {
+           final text = widget.overlayLabels[feature.id];
+           if (text == null) continue;
+@@ -2623,7 +2647,32 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+               bounds(a).width * bounds(a).height,
+             ),
+           );
+-          final center = bounds(rings.first).center;
++          final landBounds = bounds(rings.first);
++          var center = landBounds.center;
++          if (!feature.contains(QuizipediaPoint(center.dx, center.dy))) {
++            // Do not shift a name away from an internal hole into a neighbour.
++            if (feature.polygons.any((polygon) => polygon.length > 1)) {
++              continue;
++            }
++            final candidates =
++                [
++                  for (final x in [.25, .5, .75])
++                    for (final y in [.25, .5, .75])
++                      Offset(
++                        landBounds.left + landBounds.width * x,
++                        landBounds.top + landBounds.height * y,
++                      ),
++                ]..sort(
++                  (a, b) => (a - landBounds.center).distanceSquared.compareTo(
++                    (b - landBounds.center).distanceSquared,
++                  ),
++                );
++            final inland = candidates
++                .where((p) => feature.contains(QuizipediaPoint(p.dx, p.dy)))
++                .firstOrNull;
++            if (inland == null) continue;
++            center = inland;
++          }
+           final at = MatrixUtils.transformPoint(
+             transform,
+             Offset(
+@@ -2641,33 +2690,47 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+             bounds(rings.first).height * scene.height * scale,
+           );
+           final isSelected = feature.id == widget.selected;
+-          final labelWidth = isSelected
+-              ? 120.0
+-              : math.min(96.0, countryWidth - 6);
+-          final labelHeight = isSelected
+-              ? 38.0
+-              : math.min(32.0, countryHeight - 4);
+-          if (labelWidth < 28 || labelHeight < 14) continue;
+-          // A bounding box may span sea or a neighbouring country's enclave.
+-          // Only show a label when its centre and corners fit the actual land.
+-          final halfWidth = labelWidth / (2 * scene.width * scale);
+-          final halfHeight = labelHeight / (2 * scene.height * scale);
+-          if (!feature.contains(QuizipediaPoint(center.dx, center.dy)) ||
+-              (!isSelected &&
+-                  [-1, 1].any(
+-                    (x) => [-1, 1].any(
+-                      (y) => !feature.contains(
+-                        QuizipediaPoint(
+-                          center.dx + x * halfWidth,
+-                          center.dy + y * halfHeight,
+-                        ),
+-                      ),
+-                    ),
+-                  ))) {
++          if (!isSelected && (countryWidth < 28 || countryHeight < 14)) {
++            continue;
++          }
++          final textScale = MediaQuery.textScalerOf(context).scale(11) / 11;
++          final labelStyle = DefaultTextStyle.of(context).style.copyWith(
++            fontSize: 11,
++            fontWeight: FontWeight.w700,
++            color: widget.labelPriorityIds.contains(feature.id)
++                ? Theme.of(context).colorScheme.primary
++                : Theme.of(context).colorScheme.onSurface,
++            backgroundColor: Theme.of(context).colorScheme.surface
++                .withValues(alpha: .94),
++          );
++          final metrics = TextPainter(
++            text: TextSpan(text: text, style: labelStyle),
++            textDirection: Directionality.of(context),
++            textScaler: MediaQuery.textScalerOf(context),
++            maxLines: 2,
++            ellipsis: '…',
++          )..layout(maxWidth: 160 * textScale);
++          final labelWidth = metrics.width + 8;
++          final labelHeight = metrics.height + 6;
++          metrics.dispose();
++          // Anchor names on land. Text may extend over a coastline; actual flag
++          // pixels are separately clipped to the country polygons by the painter.
++          if (labelWidth > _view.width - 16 ||
++              labelHeight > _view.height - 16 ||
++              at.dx < 0 ||
++              at.dx > _view.width ||
++              at.dy < 0 ||
++              at.dy > _view.height) {
+             continue;
+           }
+           final rect = Rect.fromCenter(
+-            center: at,
++            center: Offset(
++              at.dx.clamp(labelWidth / 2 + 8, _view.width - labelWidth / 2 - 8),
++              at.dy.clamp(
++                labelHeight / 2 + 8,
++                _view.height - labelHeight / 2 - 8,
++              ),
++            ),
+             width: labelWidth,
+             height: labelHeight,
+           );
+@@ -2695,16 +2758,11 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
+                       )
+                     : Text(
+                         text,
++                        key: Key('map-overlay-label-${feature.id}'),
+                         maxLines: 2,
+                         overflow: TextOverflow.ellipsis,
+                         textAlign: TextAlign.center,
+-                        style: TextStyle(
+-                          fontSize: 11,
+-                          fontWeight: FontWeight.w700,
+-                          color: Theme.of(context).colorScheme.onSurface,
+-                          backgroundColor: Theme.of(context).colorScheme.surface
+-                              .withValues(alpha: .94),
+-                        ),
++                        style: labelStyle,
+                       ),
+               ),
+             ),
+diff --git a/next/apps/quiz_app/test/belief_mobile_graph_test.dart b/next/apps/quiz_app/test/belief_mobile_graph_test.dart
+index e2aeff40..9ea951b2 100644
+--- a/next/apps/quiz_app/test/belief_mobile_graph_test.dart
++++ b/next/apps/quiz_app/test/belief_mobile_graph_test.dart
+@@ -1,4 +1,5 @@
+ import 'dart:convert';
++import 'dart:ui' as ui;
+
+ import 'package:flutter/material.dart';
+ import 'package:flutter_localizations/flutter_localizations.dart';
+@@ -8,6 +9,51 @@ import 'package:quiz_app/belief_atlas.dart';
+ import 'package:quiz_app/belief_atlas_models.dart';
+
+ void main() {
++  testWidgets('relationship canvas keeps its named accessible list separate', (
++    tester,
++  ) async {
++    final semantics = tester.ensureSemantics();
++    try {
++      await tester.pumpWidget(
++        MaterialApp(
++          home: BeliefAtlasPage(
++            initialSection: 'religions',
++            bundle: _Bundle(jsonEncode(_religionFixture)),
++          ),
++        ),
++      );
++      await tester.pumpAndSettle();
++      final canvas = find.byKey(const Key('belief-graph'));
++      final node = find
++          .descendant(of: canvas, matching: find.byType(FilledButton))
++          .first;
++      expect(
++        tester
++            .getSemantics(node)
++            .getSemanticsData()
++            .hasAction(ui.SemanticsAction.tap),
++        isFalse,
++      );
++      final listButton = find
++          .byWidgetPredicate(
++            (w) =>
++                w is OutlinedButton &&
++                w.key.toString().contains('belief-list-'),
++          )
++          .first;
++      await tester.ensureVisible(listButton);
++      await tester.pumpAndSettle();
++      expect(
++        tester
++            .getSemantics(listButton)
++            .getSemanticsData()
++            .hasAction(ui.SemanticsAction.tap),
++        isTrue,
++      );
++    } finally {
++      semantics.dispose();
++    }
++  });
+   testWidgets(
+     'vertical map drag pans beliefs rather than the surrounding page',
+     (tester) async {
+diff --git a/next/apps/quiz_app/test/fact_practice_test.dart b/next/apps/quiz_app/test/fact_practice_test.dart
+index cc90045c..cfe31a6f 100644
+--- a/next/apps/quiz_app/test/fact_practice_test.dart
++++ b/next/apps/quiz_app/test/fact_practice_test.dart
+@@ -5,6 +5,60 @@ import 'package:quiz_app/fact_practice.dart';
+ import 'package:quiz_app/fact_practice_models.dart';
+
+ void main() {
++  testWidgets(
++    'long six-choice fact answers keep verdict and continuation on the phone',
++    (tester) async {
++      tester.view.physicalSize = const Size(320, 680);
++      tester.view.devicePixelRatio = 1;
++      addTearDown(tester.view.resetPhysicalSize);
++      addTearDown(tester.view.resetDevicePixelRatio);
++      final facts = [
++        for (var i = 0; i < 6; i++)
++          StudyFact(
++            id: 'long-$i',
++            scope: 'music',
++            entityId: 'entity-$i',
++            nameRu: 'Инструмент $i',
++            nameEn: 'Instrument $i',
++            fieldPath: 'description',
++            fieldRu: 'Описание',
++            fieldEn: 'Description',
++            valueRu:
++                'Описание $i. ${List.filled(18, 'Классическое устройство инструмента.').join(' ')}',
++            valueEn:
++                'Description $i. ${List.filled(18, 'Classical construction of an instrument.').join(' ')}',
++            sources: const [],
++          ),
++      ];
++      await tester.pumpWidget(
++        MaterialApp(
++          home: FactPracticePage(scope: 'music', facts: facts),
++        ),
++      );
++      await tester.pumpAndSettle();
++      final open = find.byKey(const Key('fact-open-long-0'));
++      await tester.ensureVisible(open);
++      await tester.tap(open);
++      await tester.pumpAndSettle();
++      final choice = find.widgetWithText(OutlinedButton, facts.first.valueEn);
++      await tester.ensureVisible(choice);
++      await tester.pumpAndSettle();
++      final visible = tester
++          .getRect(choice)
++          .intersect(const Rect.fromLTRB(0, 56, 320, 680));
++      expect(visible.height, greaterThan(20));
++      await tester.tapAt(visible.center);
++      await tester.pumpAndSettle();
++      expect(find.text('Correct').hitTestable(), findsOneWidget);
++      expect(
++        find.widgetWithText(FilledButton, 'Finish').hitTestable(),
++        findsOneWidget,
++      );
++      await tester.tap(find.widgetWithText(FilledButton, 'Finish'));
++      await tester.pumpAndSettle();
++      expect(tester.takeException(), isNull);
++    },
++  );
+   testWidgets(
+     'phone fact practice checks canonical choices and retries a mistake',
+     (tester) async {
+diff --git a/next/apps/quiz_app/test/feedback_country_test.dart b/next/apps/quiz_app/test/feedback_country_test.dart
+index e928de4d..94ccbcb2 100644
+--- a/next/apps/quiz_app/test/feedback_country_test.dart
++++ b/next/apps/quiz_app/test/feedback_country_test.dart
+@@ -21,6 +21,143 @@ const _catalog = QuizipediaCatalog(
+ );
+
+ void main() {
++  testWidgets('country labels fit a whole readable name on a narrow map', (
++    tester,
++  ) async {
++    final camera = TransformationController();
++    addTearDown(camera.dispose);
++    await tester.pumpWidget(
++      MaterialApp(
++        home: Scaffold(
++          body: Center(
++            child: SizedBox(
++              width: 393,
++              height: 500,
++              child: QuizipediaWorldMap(
++                features: const [
++                  QuizipediaFeature(
++                    id: 'NL',
++                    nameEn: 'Netherlands',
++                    nameRu: 'Нидерланды',
++                    polygons: [
++                      [
++                        [
++                          QuizipediaPoint(.45, .2),
++                          QuizipediaPoint(.55, .2),
++                          QuizipediaPoint(.55, .5),
++                          QuizipediaPoint(.45, .5),
++                          QuizipediaPoint(.45, .2),
++                        ],
++                      ],
++                    ],
++                  ),
++                ],
++                controller: camera,
++                onSelect: (_) {},
++                showLabels: false,
++                overlayLabels: const {'NL': 'Нидерланды'},
++              ),
++            ),
++          ),
++        ),
++      ),
++    );
++    await tester.pumpAndSettle();
++    final paragraph = tester.renderObject<RenderParagraph>(
++      find.byKey(const Key('map-overlay-label-NL')),
++    );
++    expect(
++      paragraph.getBoxesForSelection(
++        const TextSelection(baseOffset: 0, extentOffset: 10),
++      ),
++      hasLength(1),
++    );
++  });
++  testWidgets(
++    'country name labels remain visible across irregular coastlines',
++    (tester) async {
++      late QuizipediaCatalog catalog;
++      await tester.runAsync(() async {
++        catalog = QuizipediaCatalog.fromJson(
++          jsonDecode(
++            await rootBundle.loadString('assets/quizipedia/catalog.json'),
++          ) as Map<String, dynamic>,
++        );
++      });
++      final camera = TransformationController();
++      addTearDown(camera.dispose);
++      await tester.pumpWidget(
++        MaterialApp(
++          home: Scaffold(
++            body: Center(
++              child: SizedBox(
++                width: 393,
++                height: 500,
++                child: QuizipediaWorldMap(
++                  features: catalog.countries,
++                  controller: camera,
++                  onSelect: (_) {},
++                  showLabels: false,
++                  overlayLabels: const {'AU': 'Australia'},
++                ),
++              ),
++            ),
++          ),
++        ),
++      );
++      await tester.pumpAndSettle();
++      expect(find.byKey(const Key('map-overlay-label-AU')), findsOneWidget);
++    },
++  );
++  testWidgets('a repeated explicit focus request recentres the same country', (
++    tester,
++  ) async {
++    final camera = TransformationController();
++    final request = ValueNotifier(0);
++    addTearDown(camera.dispose);
++    addTearDown(request.dispose);
++    await tester.pumpWidget(
++      MaterialApp(
++        home: Scaffold(
++          body: ValueListenableBuilder<int>(
++            valueListenable: request,
++            builder: (context, value, _) => QuizipediaWorldMap(
++              features: const [
++                QuizipediaFeature(
++                  id: 'FR',
++                  nameEn: 'France',
++                  nameRu: 'Франция',
++                  polygons: [
++                    [
++                      [
++                        QuizipediaPoint(.3, .2),
++                        QuizipediaPoint(.4, .2),
++                        QuizipediaPoint(.4, .4),
++                        QuizipediaPoint(.3, .4),
++                        QuizipediaPoint(.3, .2),
++                      ],
++                    ],
++                  ],
++                ),
++              ],
++              controller: camera,
++              onSelect: (_) {},
++              focusTarget: 'FR',
++              focusRequest: value,
++            ),
++          ),
++        ),
++      ),
++    );
++    await tester.pumpAndSettle();
++    final focused = camera.value.clone();
++    camera.value = Matrix4.identity()..translateByDouble(-20, -30, 0, 1);
++    request.value++;
++    await tester.pumpAndSettle();
++    for (final index in [0, 5, 12, 13]) {
++      expect(camera.value.storage[index], closeTo(focused.storage[index], .01));
++    }
++  });
+   testWidgets(
+     'vertical touch drag moves an embedded world map rather than its page',
+     (tester) async {
+@@ -190,12 +327,24 @@ void main() {
+                     id: 'FR',
+                     nameEn: 'France',
+                     nameRu: 'Франция',
+-                    polygons: [],
++                    polygons: [
++                      [
++                        [
++                          QuizipediaPoint(.1, .2),
++                          QuizipediaPoint(.4, .2),
++                          QuizipediaPoint(.4, .5),
++                          QuizipediaPoint(.1, .5),
++                          QuizipediaPoint(.1, .2),
++                        ],
++                      ],
++                    ],
+                   ),
+                 ],
+                 controller: camera,
+                 onSelect: (_) {},
+                 showFlags: true,
++                selected: 'FR',
++                overlayLabels: const {'FR': 'France'},
+               ),
+             ),
+           ),
+@@ -230,6 +379,14 @@ void main() {
+         await Future<void>.delayed(const Duration(milliseconds: 500));
+       });
+       await tester.pumpAndSettle();
++      final initialMap = tester.widget<QuizipediaWorldMap>(
++        find.byType(QuizipediaWorldMap),
++      );
++      expect(
++        initialMap.overlayLabels,
++        isNotEmpty,
++        reason: 'Unselected countries need visible names',
++      );
+       await tester.tap(find.byKey(const Key('country-map-settings')));
+       await tester.pumpAndSettle();
+       await tester.tap(find.text('Compare countries: population and area'));
+@@ -239,6 +396,15 @@ void main() {
+       await tester.pumpAndSettle();
+       expect(find.byType(BottomSheet), findsNothing);
+       expect(find.byKey(const Key('country-selected-details')), findsOneWidget);
++      final selectedMap = tester.widget<QuizipediaWorldMap>(
++        find.byType(QuizipediaWorldMap),
++      );
++      expect(
++        selectedMap.focusTarget,
++        selectedMap.selected,
++        reason: 'Explicit list selection requests camera focus',
++      );
++      expect(find.byKey(const Key('country-flag-preview')), findsOneWidget);
+     },
+   );
+   testWidgets(
+@@ -295,6 +461,10 @@ void main() {
+   testWidgets('a country answer shows feedback on its first tap', (
+     tester,
+   ) async {
++    tester.view.physicalSize = const Size(320, 680);
++    tester.view.devicePixelRatio = 1;
++    addTearDown(tester.view.resetPhysicalSize);
++    addTearDown(tester.view.resetDevicePixelRatio);
+     await tester.runAsync(() async {
+       await tester.pumpWidget(
+         const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+@@ -314,6 +484,8 @@ void main() {
+     expect(find.byKey(const Key('country-answer-explanation')), findsOneWidget);
+     expect(find.textContaining('Review the country card'), findsNothing);
+     expect(find.text('Next'), findsOneWidget);
++    expect(find.textContaining('Your answer:').hitTestable(), findsOneWidget);
++    expect(find.text('Next').hitTestable(), findsOneWidget);
+     expect(find.text('Check'), findsNothing);
+   });
+
+diff --git a/next/apps/quiz_app/test/organ_atlas_test.dart b/next/apps/quiz_app/test/organ_atlas_test.dart
+index f39bd05b..75153720 100644
+--- a/next/apps/quiz_app/test/organ_atlas_test.dart
++++ b/next/apps/quiz_app/test/organ_atlas_test.dart
+@@ -1,4 +1,5 @@
+ import 'dart:convert';
++import 'dart:ui' as ui;
+
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+@@ -74,6 +75,41 @@ class _AtlasBundle extends CachingAssetBundle {
+ }
+
+ void main() {
++  testWidgets('diagram exposes named controls outside the touch canvas', (
++    tester,
++  ) async {
++    final semantics = tester.ensureSemantics();
++    try {
++      await tester.pumpWidget(
++        MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
++      );
++      await tester.pumpAndSettle();
++      // Tappable DOM overlays debounce raw down/move events together on Web.
++      // Canvas controls stay visual; the separate named legend serves accessibility.
++      expect(
++        tester
++            .getSemantics(find.byKey(const Key('organ-map-target-brain')))
++            .getSemanticsData()
++            .hasAction(ui.SemanticsAction.tap),
++        isFalse,
++      );
++      final legend = find.byKey(const Key('organ-map-card-brain'));
++      await tester.ensureVisible(legend);
++      await tester.pumpAndSettle();
++      expect(
++        tester
++            .getSemantics(legend)
++            .getSemanticsData()
++            .hasAction(ui.SemanticsAction.tap),
++        isTrue,
++      );
++      await tester.tap(legend);
++      await tester.pumpAndSettle();
++      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
++    } finally {
++      semantics.dispose();
++    }
++  });
+   testWidgets(
+     'vertical map drag pans organs rather than the surrounding page',
+     (tester) async {
+diff --git a/next/apps/quiz_app/test/quizipedia_test.dart b/next/apps/quiz_app/test/quizipedia_test.dart
+index 1da8f17f..4ff1b4ab 100644
+--- a/next/apps/quiz_app/test/quizipedia_test.dart
++++ b/next/apps/quiz_app/test/quizipedia_test.dart
+@@ -10,6 +10,46 @@ import 'package:quiz_app/quizipedia.dart';
+ import 'package:quiz_app/country_learning.dart';
+
+ void main() {
++  testWidgets(
++    'checked sky practice keeps feedback and next visible on a phone',
++    (tester) async {
++      tester.view.physicalSize = const Size(320, 680);
++      tester.view.devicePixelRatio = 1;
++      addTearDown(tester.view.resetPhysicalSize);
++      addTearDown(tester.view.resetDevicePixelRatio);
++      await tester.pumpWidget(
++        MaterialApp(home: QuizipediaPage(bundle: _Bundle(fixture()))),
++      );
++      await tester.pumpAndSettle();
++      final atlas = find.text('J2000 constellation atlas');
++      await tester.ensureVisible(atlas);
++      await tester.tap(atlas);
++      await tester.pumpAndSettle();
++      final start = find.text('Start training');
++      await tester.ensureVisible(start);
++      await tester.tap(start);
++      await tester.pumpAndSettle();
++      final option = find.byType(OutlinedButton).first;
++      await tester.ensureVisible(option);
++      await tester.tap(option);
++      await tester.pumpAndSettle();
++      final check = find.text('Check');
++      await tester.ensureVisible(check);
++      await tester.tap(check);
++      await tester.pumpAndSettle();
++      expect(
++        find.textContaining('Correct answer:').hitTestable(),
++        findsOneWidget,
++      );
++      expect(find.text('Next').hitTestable(), findsOneWidget);
++      await tester.tap(find.text('Next'));
++      await tester.pumpAndSettle();
++      expect(
++        find.text('Name this constellation pattern').hitTestable(),
++        findsOneWidget,
++      );
++    },
++  );
+   testWidgets(
+     'map feedback teaches loaded facts instead of repeating the task',
+     (tester) async {
+@@ -602,23 +642,36 @@ void main() {
+   );
+
+   testWidgets('photo browsing evicts old full-size images', (tester) async {
++    Future<void> decodedPhoto() async {
++      for (var attempt = 0; attempt < 250; attempt++) {
++        await tester.pump(const Duration(milliseconds: 16));
++        final photo = find.byWidgetPredicate(
++          (widget) =>
++              widget is Semantics && widget.properties.label == 'Photograph',
++        );
++        final ready = find
++            .descendant(of: photo, matching: find.byType(RawImage))
++            .evaluate()
++            .any((element) => (element.widget as RawImage).image != null);
++        if (ready && !tester.binding.hasScheduledFrame) {
++          return;
++        }
++        await tester.runAsync(
++          () => Future<void>.delayed(const Duration(milliseconds: 20)),
++        );
++      }
++      fail('The current photograph did not decode within five seconds');
++    }
++
+     final bundle = _PhotoBundle(fixture());
+     await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
+     await tester.pumpAndSettle();
+-    await tester.runAsync(() async {
+-      await tester.tap(find.text('Landmark photographs'));
+-      await tester.pump();
+-      await Future<void>.delayed(const Duration(milliseconds: 100));
+-    });
+-    await tester.pumpAndSettle();
++    await tester.tap(find.text('Landmark photographs'));
++    await decodedPhoto();
+     for (var i = 0; i < 4; i++) {
+       await tester.ensureVisible(find.byTooltip('Next photograph'));
+-      await tester.runAsync(() async {
+-        await tester.tap(find.byTooltip('Next photograph'));
+-        await tester.pump();
+-        await Future<void>.delayed(const Duration(milliseconds: 100));
+-      });
+-      await tester.pumpAndSettle();
++      await tester.tap(find.byTooltip('Next photograph'));
++      await decodedPhoto();
+     }
+     expect(
+       bundle.photos.where((p) => p == 'assets/missing0.png'),

@@ -1,0 +1,331 @@
+Evidence-consistency review, not independent physical-device QA. Root performed actual nativeCDP and viewed screenshots. Source/controller/exact image reviews ACCEPT separately. Public build exact identity confirmed. Original report31 protected screenshot was a country language checked question; this particular report does not refer to separate new WaterPracticePage. No status changes yet.
+
+FILE feedback-resolution-candidates.json
+[
+  {
+    "ordinal": 5,
+    "comment": "серьезно? 6 достопримечательностей и все?"
+  },
+  {
+    "ordinal": 12,
+    "comment": "Я выбрал подписи и ничего не отображается на карте. где?"
+  },
+  {
+    "ordinal": 15,
+    "comment": "а водоемы должны быть тоже нанесесы и моря тоже"
+  },
+  {
+    "ordinal": 16,
+    "comment": "при навигации по карте вниз сдвигается сама страница"
+  },
+  {
+    "ordinal": 19,
+    "comment": "при правильном ответе продолжить автоматически замени просто на продолжить и моментальное переключение дальше"
+  },
+  {
+    "ordinal": 24,
+    "comment": "когда ты пишешь не верно а ниже правильный ответ непонятно я выбрал правильно или нет. по интерфейсу вообще не понятно"
+  },
+  {
+    "ordinal": 25,
+    "comment": "при клике показывай миниатюру где то"
+  },
+  {
+    "ordinal": 26,
+    "comment": "как работают слов непонятно. никаких изменений"
+  },
+  {
+    "ordinal": 29,
+    "comment": "при выборе из меню надо приближать"
+  },
+  {
+    "ordinal": 30,
+    "comment": "при выделении страны показывай как то и соседей"
+  },
+  {
+    "ordinal": 31,
+    "comment": "пролистывание плохо"
+  },
+  {
+    "ordinal": 32,
+    "comment": "когда ничего не выделено показывай страны"
+  }
+]
+
+
+FILE public-mobile-checks.json
+{
+  "status": "scoped_mobile_checks_pass_with_open_followups",
+  "build_id": "quiz-2026.10.20-atlas-4fc2fd02",
+  "viewport": {
+    "width": 393,
+    "height": 851,
+    "dpr": 2.75,
+    "touch": 5,
+    "coarse": true
+  },
+  "physical_android": false,
+  "organs": {
+    "native_pinch_changes_scene": true,
+    "native_vertical_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "native_tap": [
+      224,
+      201
+    ],
+    "opened": "Сердце",
+    "named_accessible_list_retained": true
+  },
+  "sky": {
+    "native_tap": [
+      121,
+      257
+    ],
+    "opened": "Бетельгейзе",
+    "native_pinch_changes_scene": true,
+    "native_vertical_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "viewport_scale": 1,
+    "six_photo_or_sky_choices": true,
+    "checked_feedback_before_diagram": true,
+    "next_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    },
+    "manual_next_advanced_from": 1,
+    "manual_next_advanced_to": 2
+  },
+  "countries": {
+    "initial_visible_names": [
+      "Норвегия",
+      "Россия",
+      "Канада",
+      "Мексика",
+      "Индия",
+      "Бразилия",
+      "Австралия"
+    ],
+    "explicit_list_france_focus": true,
+    "neighbour_buttons_visible_and_select_france_from_spain": true,
+    "flag_thumbnail": true,
+    "currency_layer_caption": "Валюты",
+    "selected_currency": "евро",
+    "native_map_tap_spain_preserves_camera": true,
+    "france_label_rect_before_and_after": [
+      {
+        "x": 172.682373046875,
+        "y": 358.5,
+        "width": 47.625,
+        "height": 16
+      }
+    ],
+    "native_water_map_pan_parent_scroll": 0,
+    "checked_wrong": "Намиб",
+    "correct": "Сахара",
+    "correct_club_answer": "Арсенал — футбол",
+    "manual_next_after_correct": true,
+    "next_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    }
+  },
+  "photos": {
+    "count": 36,
+    "facts": 108,
+    "search": "Сингапур",
+    "selected": "Мерлайон",
+    "real_photo_visible": true,
+    "russian_full_country_name": true,
+    "photo_practice_choices": 6,
+    "correct_colosseum_graded": true,
+    "other_option_explanations_available": true
+  },
+  "waters": {
+    "count": 63,
+    "selected": "Средиземное море",
+    "native_focus_button_zoomed_to_real_polygon": true,
+    "lakes_rivers_and_marine_geometry_visible": true,
+    "grading_available": true
+  },
+  "beliefs": {
+    "full_graph_native_pinch_changes_scene": true,
+    "full_graph_native_pan_changes_scene": true,
+    "parent_scroll_after_each": 0,
+    "external_named_list_retained": true
+  },
+  "all_facts": {
+    "long_acropolis_description_graded": true,
+    "feedback_before_choices": true,
+    "finish_rect": {
+      "x": 16,
+      "y": 667,
+      "width": 361,
+      "height": 48
+    },
+    "observed_choice_count": 4
+  },
+  "open_followups": [
+    "Separate WaterPracticePage still places Next below viewport after grade: x12,y1102.080078125,w369,h48. Keep as an explicit follow-up; do not claim every practice screen fixed.",
+    "Production fact-question generator still uses 4 choices; one country desert question had5. Six-choice broad coverage is NOT accepted. Existing report23 remains open.",
+    "Belief full graph is a tall narrow layout with tiny fitted labels; gesture delivery passed, visual quality is not accepted as complete.",
+    "Missing anatomy markers, loading performance, selected-border styling and subjective interface/color feedback remain open."
+  ],
+  "reports_resolved": []
+}
+
+
+FILE gesture-scene-differences.json
+{
+  "organs": {
+    "css_scene_crop": [
+      12,
+      116,
+      381,
+      566
+    ],
+    "pixel_dpr": 2.7506361323155217,
+    "pinch_changed_pixels": 1053238,
+    "pan_changed_pixels": 1059839
+  },
+  "sky": {
+    "css_scene_crop": [
+      16,
+      168,
+      377,
+      508
+    ],
+    "pixel_dpr": 2.7506361323155217,
+    "pinch_changed_pixels": 70678,
+    "pan_changed_pixels": 53241
+  },
+  "beliefs": {
+    "css_scene_crop": [
+      16,
+      228,
+      377,
+      508
+    ],
+    "pixel_dpr": 2.7506361323155217,
+    "pinch_changed_pixels": 36563,
+    "pan_changed_pixels": 54939
+  }
+}
+
+
+FILE postpublish-state.json
+{
+  "helm_revision": 77,
+  "deployment_revision": 75,
+  "version": {
+    "buildId": "quiz-2026.10.20-atlas-4fc2fd02",
+    "commit": "4fc2fd02d078d50f102d261029634838efe85e0d",
+    "source_commit": "4fc2fd02d078d50f102d261029634838efe85e0d",
+    "local_build": true,
+    "packs": 105,
+    "questions": 4520,
+    "study_modules": 6,
+    "study_questions": 120,
+    "question_articles": 305,
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "main_dart_js_sha256": "7c833afd2b096b06975a9a645451b80efe5be740aec5a3b62414f983dc183a64",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151",
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "quizipedia_facts": 13678,
+    "quizipedia_sections": 13,
+    "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "frontend_only": true,
+    "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "question_article_references": 241
+  },
+  "containers": [
+    {
+      "name": "api",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:ff432a5964e36a9ad56fd7d60e6b1dbfa87a553ebfe191e180bdf48aa4f8f95f"
+    },
+    {
+      "name": "web",
+      "ready": true,
+      "restartCount": 0,
+      "imageID": "docker.io/library/quiz-master@sha256:ff432a5964e36a9ad56fd7d60e6b1dbfa87a553ebfe191e180bdf48aa4f8f95f"
+    }
+  ],
+  "pvc_unchanged": true,
+  "integrity": {
+    "physical_backup": "ok",
+    "independent_full_memory_restore": "ok"
+  },
+  "sql_restore_proof": {
+    "backup_sha256": "da69522f263e8240a447657330cf57f3faa8526a23e8193d97fa3570fe83c36e",
+    "build_id": "quiz-2026.10.20-atlas-4fc2fd02",
+    "bytes": 77963264,
+    "image_docker_id": "sha256:ff432a5964e36a9ad56fd7d60e6b1dbfa87a553ebfe191e180bdf48aa4f8f95f",
+    "input_sha256": "25b1df1a8c0f76981a04d481e8fb81b0184948be961db4b04b4ecf5f4b886a6b",
+    "integrity": "ok",
+    "kind": "restore",
+    "phase": "publish",
+    "recorded_at_utc": "2026-10-20T01:42:34.831425+00:00",
+    "restored_sha256": "da69522f263e8240a447657330cf57f3faa8526a23e8193d97fa3570fe83c36e"
+  },
+  "candidate_ram_unmounted": true,
+  "node_conditions": {
+    "MemoryPressure": "False",
+    "DiskPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "imagefs_available_percent": 20.003209061776158,
+  "capacity_meets_20_percent": true
+}
+
+
+FILE public-bytes-evidence.json
+{
+  "version.json": {
+    "status": 200,
+    "bytes": 940,
+    "sha256": "6eb855efc2c6752ff0e55eed59374f6b78b46889bbd766959309c490d7d95d5c"
+  },
+  "main.dart.js": {
+    "status": 200,
+    "bytes": 4541425,
+    "sha256": "7c833afd2b096b06975a9a645451b80efe5be740aec5a3b62414f983dc183a64"
+  },
+  "assets/assets/quizipedia/catalog.json": {
+    "status": 200,
+    "bytes": 546354,
+    "sha256": "f0df75dc2535e3608531d837591da078a03fe97ef0752c985a3168d2d1ecf79f"
+  },
+  "assets/assets/quizipedia/waterways.json": {
+    "status": 200,
+    "bytes": 473400,
+    "sha256": "cb884b1a74fbfdaea11176c51045d37ae19546b1cc9c2ad6763d91dbd0bd9593"
+  },
+  "assets/assets/quizipedia/landmark_thumbnails.json": {
+    "status": 200,
+    "bytes": 151158,
+    "sha256": "f3cd6f54e3b843c4db138e79bde7345ffb94c4b354bf6e1964cc7f647c00d7d4"
+  },
+  "assets/FontManifest.json": {
+    "status": 200,
+    "bytes": 226,
+    "sha256": "1a658035293ddded72e719022ff0b0ffb6322cfc7aeb20a794d59c6cc863e04d"
+  },
+  "assets/fonts/fallback/Roboto-Regular.ttf": {
+    "status": 200,
+    "bytes": 171676,
+    "sha256": "79e851404657dac2106b3d22ad256d47824a9a5765458edb72c9102a45816d95"
+  },
+  "health/ready": {
+    "status": 200
+  },
+  "health/live": {
+    "status": 200
+  }
+}

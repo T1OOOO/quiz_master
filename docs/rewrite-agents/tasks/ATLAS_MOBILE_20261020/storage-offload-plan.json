@@ -1,0 +1,61 @@
+{
+  "accounting": {
+    "planned_total_bytes": 25877242
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.20-touch-b5863403",
+    "deployment_revision": "74",
+    "helm_deployed_revision": 76,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.20-touch-b5863403@sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 75
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-touch-b5863403",
+    "image": "quiz-master:quiz-2026.10.20-touch-b5863403@sha256:343caae195b9d79085dacbd92aa2f9dec37dcf7fca91c6b5aa61efc12a4995b0",
+    "input_sha256": "0561e9af6d404527a3138488cba62660efef91baf01f18747d2c1971c801642a"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-atlas-baseline-20261020",
+  "plan_only": true,
+  "purpose": "Reversibly archive only six redundant release76 copied staging directories. Full frozen local76 package retained. Preserve every published image, every full physical backup, livePVC/chart/support/receipts/proofmetadata. No prune/GC/threshold changes.",
+  "targets": [
+    {
+      "expected_bytes": 4402045,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4550675,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/web-delta",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/base-quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-touch-b5863403/candidate-quizzes",
+      "sqlite": false
+    }
+  ]
+}
