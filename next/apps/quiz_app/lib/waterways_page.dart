@@ -137,6 +137,35 @@ class _WaterPracticePageState extends State<WaterPracticePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: Text(_t(context, 'Water bodies', 'Водоёмы'))),
+    bottomNavigationBar: checked
+        ? SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: FilledButton(
+                key: const Key('water-next'),
+                onPressed: () => setState(() {
+                  if (index == questions.length - 1) {
+                    index = 0;
+                    score = 0;
+                    questions.shuffle(random);
+                  } else {
+                    index++;
+                  }
+                  checked = false;
+                  choice = null;
+                  compare = null;
+                  choices = _choices();
+                  scroll.jumpTo(0);
+                }),
+                child: Text(
+                  index == questions.length - 1
+                      ? _t(context, 'New round', 'Новый круг')
+                      : _t(context, 'Next', 'Дальше'),
+                ),
+              ),
+            ),
+          )
+        : null,
     body: LayoutBuilder(
       builder: (context, constraints) => MapScrollView(
         controller: scroll,
@@ -149,6 +178,44 @@ class _WaterPracticePageState extends State<WaterPracticePage> {
                 textAlign: TextAlign.center,
               ),
             ),
+            if (checked)
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      choice == question.id
+                          ? _t(context, 'Correct', 'Верно')
+                          : _t(context, 'Incorrect', 'Неверно'),
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    Text(
+                      '${_t(context, 'Correct answer', 'Правильный ответ')}: ${_name(context, question)}',
+                      key: const Key('water-feedback'),
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    Text(
+                      _t(
+                        context,
+                        'Compare every option on the map; move and zoom manually.',
+                        'Сравните каждый вариант на карте; перемещайте и увеличивайте вручную.',
+                      ),
+                    ),
+                    Wrap(
+                      spacing: 8,
+                      children: choices
+                          .map(
+                            (w) => ActionChip(
+                              label: Text(_name(context, w)),
+                              onPressed: () => setState(() => compare = w.id),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ],
+                ),
+              ),
             SizedBox(
               height: max(240, min(420, constraints.maxHeight * .48)),
               child: QuizipediaWorldMap(
@@ -216,57 +283,14 @@ class _WaterPracticePageState extends State<WaterPracticePage> {
                           : () => setState(() {
                               checked = true;
                               if (choice == question.id) score++;
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                if (mounted && scroll.hasClients) {
+                                  scroll.jumpTo(0);
+                                }
+                              });
                             }),
                       child: Text(_t(context, 'Check', 'Проверить')),
                     ),
-                  if (checked) ...[
-                    Text(
-                      '${_t(context, 'Correct answer', 'Правильный ответ')}: ${_name(context, question)}',
-                      key: const Key('water-feedback'),
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      _t(
-                        context,
-                        'Compare every option on the map; move and zoom manually.',
-                        'Сравните каждый вариант на карте; перемещайте и увеличивайте вручную.',
-                      ),
-                    ),
-                    Wrap(
-                      spacing: 8,
-                      children: choices
-                          .map(
-                            (w) => ActionChip(
-                              label: Text(_name(context, w)),
-                              onPressed: () => setState(() => compare = w.id),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    const SizedBox(height: 8),
-                    FilledButton(
-                      key: const Key('water-next'),
-                      onPressed: () => setState(() {
-                        if (index == questions.length - 1) {
-                          index = 0;
-                          score = 0;
-                          questions.shuffle(random);
-                        } else {
-                          index++;
-                        }
-                        checked = false;
-                        choice = null;
-                        compare = null;
-                        choices = _choices();
-                        scroll.jumpTo(0);
-                      }),
-                      child: Text(
-                        index == questions.length - 1
-                            ? _t(context, 'New round', 'Новый круг')
-                            : _t(context, 'Next', 'Дальше'),
-                      ),
-                    ),
-                  ],
                   const SizedBox(height: 12),
                   Text(
                     _t(

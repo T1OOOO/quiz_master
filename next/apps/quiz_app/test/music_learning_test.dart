@@ -7,6 +7,19 @@ import 'package:quiz_app/quizipedia.dart';
 
 void main() {
   test(
+    'notation font is an on-demand asset, absent from startup fonts',
+    () async {
+      TestWidgetsFlutterBinding.ensureInitialized();
+      final fonts =
+          jsonDecode(await rootBundle.loadString('FontManifest.json')) as List;
+      expect(fonts.where((row) => row['family'] == 'Bravura'), isEmpty);
+      expect(
+        (await rootBundle.load('assets/fonts/Bravura.otf')).lengthInBytes,
+        greaterThan(800000),
+      );
+    },
+  );
+  test(
     'shipped music reference includes notation and instrument learning',
     () async {
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +48,7 @@ void main() {
     await tester.runAsync(() async {
       await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
       await tester.pump();
-      final future = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-      );
-      await future.future!;
+      expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
     });
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(

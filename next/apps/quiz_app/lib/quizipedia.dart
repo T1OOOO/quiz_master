@@ -10,6 +10,7 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -521,7 +522,6 @@ class QuizipediaPage extends StatefulWidget {
 }
 
 class _QuizipediaPageState extends State<QuizipediaPage> {
-  late Future<QuizipediaCatalog> _catalog = _load();
   bool _challenge = false;
 
   Future<QuizipediaCatalog> _load() async {
@@ -626,7 +626,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
           icon: const Icon(Icons.info_outline),
           onPressed: () async {
             try {
-              final catalog = await _catalog;
+              final catalog = await _load();
               if (context.mounted) _showCredits(context, catalog);
             } catch (_) {
               // The visible load error offers Retry.
@@ -635,252 +635,266 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
         ),
       ],
     ),
-    body: FutureBuilder<QuizipediaCatalog>(
-      future: _catalog,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (snapshot.hasError || !snapshot.hasData) {
-          return _LoadError(onRetry: () => setState(() => _catalog = _load()));
-        }
-        final catalog = snapshot.data!;
-        return ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            Text(
-              _t(
-                context,
-                'Local unranked learning practice',
-                'Изучайте мир — проверяйте себя',
-              ),
-              style: Theme.of(context).textTheme.titleMedium,
+    body: ListView(
+      scrollCacheExtent: const ScrollCacheExtent.pixels(0),
+      padding: const EdgeInsets.all(16),
+      children: [
+        Text(
+          _t(
+            context,
+            'Local unranked learning practice',
+            'Изучайте мир — проверяйте себя',
+          ),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        Text(
+          _t(
+            context,
+            'Choose a topic: study cards or answer questions',
+            'Откройте атлас или начните тренировку по теме.',
+          ),
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        Align(
+          alignment: AlignmentDirectional.centerEnd,
+          child: TextButton.icon(
+            onPressed: () => setState(() => _challenge = !_challenge),
+            icon: Icon(_challenge ? Icons.menu_book : Icons.quiz),
+            label: Text(
+              _challenge
+                  ? _t(context, 'Explore', 'Изучение')
+                  : _t(context, 'Training', 'Тренировка'),
             ),
-            Text(
-              _t(
-                context,
-                'Choose a topic: study cards or answer questions',
-                'Откройте атлас или начните тренировку по теме.',
-              ),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Align(
-              alignment: AlignmentDirectional.centerEnd,
-              child: TextButton.icon(
-                onPressed: () => setState(() => _challenge = !_challenge),
-                icon: Icon(_challenge ? Icons.menu_book : Icons.quiz),
-                label: Text(
-                  _challenge
-                      ? _t(context, 'Explore', 'Изучение')
-                      : _t(context, 'Training', 'Тренировка'),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            for (final module in _Module.values.where(
-              (module) => module != _Module.anatomy,
-            ))
-              _themeCard(
-                title: _moduleTitle(context, module),
-                practiceScope: switch (module) {
-                  _Module.map => 'countries',
-                  _Module.anatomy => 'endocrine',
-                  _Module.landmarks => 'landmarks',
-                  _Module.sky => 'sky',
-                },
-                icon: switch (module) {
-                  _Module.map => Icons.public,
-                  _Module.anatomy => Icons.accessibility_new,
-                  _Module.landmarks => Icons.photo,
-                  _Module.sky => Icons.nightlight,
-                },
-                image: switch (module) {
-                  _Module.map => 'assets/study/geography-countries-hero.png',
-                  _Module.anatomy => 'assets/quizipedia/endocrine.png',
-                  _Module.landmarks => 'assets/quizipedia/eiffel.jpg',
-                  _Module.sky => null,
-                },
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) => module == _Module.map
-                        ? CountryAtlasPage(
+          ),
+        ),
+        const SizedBox(height: 16),
+        for (final module in _Module.values.where(
+          (module) => module != _Module.anatomy,
+        ))
+          _themeCard(
+            title: _moduleTitle(context, module),
+            practiceScope: switch (module) {
+              _Module.map => 'countries',
+              _Module.anatomy => 'endocrine',
+              _Module.landmarks => 'landmarks',
+              _Module.sky => 'sky',
+            },
+            icon: switch (module) {
+              _Module.map => Icons.public,
+              _Module.anatomy => Icons.accessibility_new,
+              _Module.landmarks => Icons.photo,
+              _Module.sky => Icons.nightlight,
+            },
+            image: switch (module) {
+              _Module.map =>
+                'assets/quizipedia/preview-geography-countries-hero.webp',
+              _Module.anatomy => 'assets/quizipedia/preview-endocrine.webp',
+              _Module.landmarks => 'assets/quizipedia/preview-eiffel.webp',
+              _Module.sky => null,
+            },
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => _CatalogModulePage(
+                  load: _load,
+                  builder: (catalog) => module == _Module.map
+                      ? CountryAtlasPage(
+                          catalog: catalog,
+                          challenge: _challenge,
+                          locationTrainingBuilder: (_, facts) =>
+                              quizipediaLocationTraining(
+                                catalog,
+                                countryFacts: facts,
+                              ),
+                        )
+                      : module == _Module.sky
+                      ? ConstellationAtlasPage(
+                          catalog: catalog,
+                          challenge: _challenge,
+                          trainingBuilder: (_) => _QuizGame(
                             catalog: catalog,
-                            challenge: _challenge,
-                            locationTrainingBuilder: (_, facts) =>
-                                quizipediaLocationTraining(
-                                  catalog,
-                                  countryFacts: facts,
-                                ),
-                          )
-                        : module == _Module.sky
-                        ? ConstellationAtlasPage(
-                            catalog: catalog,
-                            challenge: _challenge,
-                            trainingBuilder: (_) => _QuizGame(
-                              catalog: catalog,
-                              module: _Module.sky,
-                              challenge: true,
-                              bundle: widget.bundle ?? rootBundle,
-                            ),
-                          )
-                        : _QuizGame(
-                            catalog: catalog,
-                            module: module,
-                            challenge: _challenge,
+                            module: _Module.sky,
+                            challenge: true,
                             bundle: widget.bundle ?? rootBundle,
                           ),
-                  ),
-                ),
-              ),
-            _themeCard(
-              key: const Key('quizipedia-all-facts'),
-              icon: Icons.fact_check_outlined,
-              title: _t(
-                context,
-                'Questions for every fact',
-                'Вопросы по всем фактам',
-              ),
-              subtitle: _t(
-                context,
-                'Choose any section, topic or card',
-                'Любой раздел, тема или карточка',
-              ),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(
-                  builder: (_) =>
-                      FactPracticePage(scope: 'all', bundle: widget.bundle),
+                        )
+                      : _QuizGame(
+                          catalog: catalog,
+                          module: module,
+                          challenge: _challenge,
+                          bundle: widget.bundle ?? rootBundle,
+                        ),
                 ),
               ),
             ),
-            _themeCard(
-              icon: Icons.accessibility_new,
-              image: 'assets/quizipedia/anatomy-orientation.png',
-              practiceScope: 'organs',
-              title: _t(
-                context,
-                'Human organs and glands',
-                'Атлас органов и желёз',
+          ),
+        _themeCard(
+          key: const Key('quizipedia-all-facts'),
+          icon: Icons.fact_check_outlined,
+          title: _t(
+            context,
+            'Questions for every fact',
+            'Вопросы по всем фактам',
+          ),
+          subtitle: _t(
+            context,
+            'Choose any section, topic or card',
+            'Любой раздел, тема или карточка',
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) =>
+                  FactPracticePage(scope: 'all', bundle: widget.bundle),
+            ),
+          ),
+        ),
+        _themeCard(
+          icon: Icons.accessibility_new,
+          image: 'assets/quizipedia/preview-anatomy-orientation.webp',
+          practiceScope: 'organs',
+          title: _t(
+            context,
+            'Human organs and glands',
+            'Атлас органов и желёз',
+          ),
+          subtitle: _t(
+            context,
+            'Body systems, functions and practice',
+            'Системы организма, функции и тренировка',
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) =>
+                  OrganAtlasPage(bundle: widget.bundle, training: _challenge),
+            ),
+          ),
+        ),
+        _themeCard(
+          icon: Icons.music_note,
+          image: 'assets/quizipedia/preview-music.webp',
+          practiceScope: 'music',
+          title: _t(
+            context,
+            'Music: notes, signs and instruments',
+            'Музыка: ноты, знаки и инструменты',
+          ),
+          subtitle: _t(
+            context,
+            'Read music, explore terms and practise',
+            'Чтение нот, термины и проверочные вопросы',
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => MusicLearningPage(
+                bundle: widget.bundle,
+                training: _challenge,
               ),
-              subtitle: _t(
+            ),
+          ),
+        ),
+        for (final section in [
+          'history',
+          'culture',
+          'people',
+          'brands',
+          'food',
+          'greek',
+          'religions',
+        ])
+          _themeCard(
+            practiceScope: section == 'culture' ? 'works' : section,
+            icon: switch (section) {
+              'history' => Icons.timeline,
+              'culture' => Icons.theaters,
+              'brands' => Icons.business,
+              'food' => Icons.restaurant_menu,
+              'greek' => Icons.account_tree,
+              'religions' => Icons.public,
+              _ => Icons.people,
+            },
+            image: switch (section) {
+              'history' => 'assets/quizipedia/preview-history.webp',
+              'culture' || 'people' => 'assets/quizipedia/preview-cinema.webp',
+              'brands' => 'assets/quizipedia/preview-history.webp',
+              'food' => 'assets/quizipedia/preview-food.webp',
+              'greek' || 'religions' =>
+                'assets/quizipedia/preview-mythology-greece-cover.webp',
+              _ => null,
+            },
+            title: switch (section) {
+              'history' => _t(context, 'World history', 'История человечества'),
+              'culture' => _t(
                 context,
-                'Body systems, functions and practice',
-                'Системы организма, функции и тренировка',
+                'Films, books and opera',
+                'Фильмы, книги и опера',
               ),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(
-                  builder: (_) => OrganAtlasPage(
+              'brands' => _t(
+                context,
+                'Brands and companies',
+                'Бренды и компании',
+              ),
+              'greek' => _t(context, 'Greek gods', 'Древнегреческие боги'),
+              'religions' => _t(
+                context,
+                'Religions and traditions',
+                'Религии и традиции',
+              ),
+              'food' => _t(
+                context,
+                'Food and regional cuisines',
+                'Блюда и кухни мира',
+              ),
+              _ => _t(
+                context,
+                'People and their works',
+                'Люди и их произведения',
+              ),
+            },
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => switch (section) {
+                  'brands' => BrandAtlasPage(bundle: widget.bundle),
+                  'food' => FoodAtlasPage(bundle: widget.bundle),
+                  'greek' || 'religions' => BeliefAtlasPage(
                     bundle: widget.bundle,
-                    training: _challenge,
+                    initialSection: section,
                   ),
-                ),
-              ),
-            ),
-            _themeCard(
-              icon: Icons.music_note,
-              image: 'assets/categories/music.jpg',
-              practiceScope: 'music',
-              title: _t(
-                context,
-                'Music: notes, signs and instruments',
-                'Музыка: ноты, знаки и инструменты',
-              ),
-              subtitle: _t(
-                context,
-                'Read music, explore terms and practise',
-                'Чтение нот, термины и проверочные вопросы',
-              ),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(
-                  builder: (_) => MusicLearningPage(
+                  _ => KnowledgeAtlasPage(
+                    section: section,
                     bundle: widget.bundle,
-                    training: _challenge,
                   ),
-                ),
+                },
               ),
             ),
-            for (final section in [
-              'history',
-              'culture',
-              'people',
-              'brands',
-              'food',
-              'greek',
-              'religions',
-            ])
-              _themeCard(
-                practiceScope: section == 'culture' ? 'works' : section,
-                icon: switch (section) {
-                  'history' => Icons.timeline,
-                  'culture' => Icons.theaters,
-                  'brands' => Icons.business,
-                  'food' => Icons.restaurant_menu,
-                  'greek' => Icons.account_tree,
-                  'religions' => Icons.public,
-                  _ => Icons.people,
-                },
-                image: switch (section) {
-                  'history' => 'assets/categories/history.jpg',
-                  'culture' || 'people' => 'assets/categories/cinema.jpg',
-                  'brands' => 'assets/categories/history.jpg',
-                  'food' => 'assets/categories/food.jpg',
-                  'greek' || 'religions' =>
-                    'assets/categories/mythology-greece-cover.webp',
-                  _ => null,
-                },
-                title: switch (section) {
-                  'history' => _t(
-                    context,
-                    'World history',
-                    'История человечества',
-                  ),
-                  'culture' => _t(
-                    context,
-                    'Films, books and opera',
-                    'Фильмы, книги и опера',
-                  ),
-                  'brands' => _t(
-                    context,
-                    'Brands and companies',
-                    'Бренды и компании',
-                  ),
-                  'greek' => _t(context, 'Greek gods', 'Древнегреческие боги'),
-                  'religions' => _t(
-                    context,
-                    'Religions and traditions',
-                    'Религии и традиции',
-                  ),
-                  'food' => _t(
-                    context,
-                    'Food and regional cuisines',
-                    'Блюда и кухни мира',
-                  ),
-                  _ => _t(
-                    context,
-                    'People and their works',
-                    'Люди и их произведения',
-                  ),
-                },
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) => switch (section) {
-                      'brands' => BrandAtlasPage(bundle: widget.bundle),
-                      'food' => FoodAtlasPage(bundle: widget.bundle),
-                      'greek' || 'religions' => BeliefAtlasPage(
-                        bundle: widget.bundle,
-                        initialSection: section,
-                      ),
-                      _ => KnowledgeAtlasPage(
-                        section: section,
-                        bundle: widget.bundle,
-                      ),
-                    },
-                  ),
-                ),
-              ),
-          ],
-        );
-      },
+          ),
+      ],
     ),
+  );
+}
+
+class _CatalogModulePage extends StatefulWidget {
+  const _CatalogModulePage({required this.load, required this.builder});
+  final Future<QuizipediaCatalog> Function() load;
+  final Widget Function(QuizipediaCatalog) builder;
+  @override
+  State<_CatalogModulePage> createState() => _CatalogModulePageState();
+}
+
+class _CatalogModulePageState extends State<_CatalogModulePage> {
+  late Future<QuizipediaCatalog> future = widget.load();
+  @override
+  Widget build(BuildContext context) => FutureBuilder<QuizipediaCatalog>(
+    future: future,
+    builder: (context, snapshot) {
+      if (snapshot.hasData) return widget.builder(snapshot.data!);
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(_t(context, 'Loading section', 'Загружаем раздел')),
+        ),
+        body: snapshot.hasError
+            ? _LoadError(onRetry: () => setState(() => future = widget.load()))
+            : const Center(child: CircularProgressIndicator()),
+      );
+    },
   );
 }
 
@@ -1512,8 +1526,8 @@ class _QuizGameState extends State<_QuizGame> {
       return _reverse
           ? _t(
               context,
-              'Which city or settlement is this landmark in?',
-              'В каком городе или населённом пункте находится эта достопримечательность?',
+              'Where is this landmark located?',
+              'Где находится эта достопримечательность?',
             )
           : _t(context, 'Name this landmark', 'Назовите достопримечательность');
     }
@@ -1628,6 +1642,9 @@ class _QuizGameState extends State<_QuizGame> {
 
   Future<void> _pickLandmark() async {
     var query = '';
+    final individualPreviews = _targets.every(
+      (row) => row['thumbnail_asset'] is String,
+    );
     String normalized(String text) => text.toLowerCase().replaceAll('ё', 'е');
     final id = await showModalBottomSheet<String>(
       context: context,
@@ -1643,7 +1660,9 @@ class _QuizGameState extends State<_QuizGame> {
               )
               .toList();
           return FutureBuilder<PhotoThumbnails>(
-            future: _thumbnailFuture ??= PhotoThumbnails.load(widget.bundle),
+            future: individualPreviews
+                ? null
+                : (_thumbnailFuture ??= PhotoThumbnails.load(widget.bundle)),
             builder: (context, thumbs) => SafeArea(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -1685,7 +1704,8 @@ class _QuizGameState extends State<_QuizGame> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      if (thumbs.connectionState != ConnectionState.done)
+                      if (!individualPreviews &&
+                          thumbs.connectionState != ConnectionState.done)
                         LinearProgressIndicator(
                           semanticsLabel: _t(
                             context,
@@ -1693,7 +1713,7 @@ class _QuizGameState extends State<_QuizGame> {
                             'Загрузка превью',
                           ),
                         ),
-                      if (thumbs.hasError)
+                      if (!individualPreviews && thumbs.hasError)
                         TextButton.icon(
                           key: const Key('landmark-thumbnails-retry'),
                           onPressed: () =>
@@ -1719,6 +1739,8 @@ class _QuizGameState extends State<_QuizGame> {
                                 ),
                               )
                             : ListView.builder(
+                                scrollCacheExtent:
+                                    const ScrollCacheExtent.pixels(0),
                                 itemCount: rows.length,
                                 itemBuilder: (context, index) {
                                   final row = rows[index];
@@ -1734,7 +1756,19 @@ class _QuizGameState extends State<_QuizGame> {
                                       height: 56,
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
-                                        child: preview == null
+                                        child: individualPreviews
+                                            ? Image.asset(
+                                                row['thumbnail_asset']
+                                                    as String,
+                                                bundle: widget.bundle,
+                                                fit: BoxFit.cover,
+                                                cacheWidth: 192,
+                                                errorBuilder: (_, _, _) =>
+                                                    const Icon(
+                                                      Icons.photo_outlined,
+                                                    ),
+                                              )
+                                            : preview == null
                                             ? const Icon(Icons.photo_outlined)
                                             : Image.memory(
                                                 preview,

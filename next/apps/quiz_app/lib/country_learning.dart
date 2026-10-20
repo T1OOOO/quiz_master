@@ -238,7 +238,8 @@ String areaBand(double area) {
   if (area < 10000) return '1,000–10,000 km²';
   if (area < 100000) return '10,000–100,000 km²';
   if (area < 1000000) return '100,000–1 million km²';
-  return '1 million km²+';
+  if (area < 5000000) return '1–5 million km²';
+  return '5 million km²+';
 }
 
 class CountryAssociation {

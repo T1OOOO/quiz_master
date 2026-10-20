@@ -26,12 +26,7 @@ void main() {
             ),
           ),
         );
-        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate(
-            (widget) => widget is FutureBuilder<QuizipediaCatalog>,
-          ),
-        );
-        await builder.future!.timeout(const Duration(seconds: 5));
+        expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
       });
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(
@@ -42,8 +37,19 @@ void main() {
       await tester.runAsync(() async {
         await tester.tap(find.text('Страны мира'));
         await tester.pump();
-        await Future<void>.delayed(const Duration(milliseconds: 500));
       });
+      // The section is loaded only after entry; let real rootBundle/isolate IO run.
+      for (var frame = 0; frame < 750; frame++) {
+        await tester.runAsync(() async {
+          await tester.pump(const Duration(milliseconds: 16));
+          await Future<void>.delayed(const Duration(milliseconds: 20));
+        });
+        if (find.byKey(const Key('quizipedia-map')).evaluate().isNotEmpty &&
+            find.byType(CircularProgressIndicator).evaluate().isEmpty) {
+          break;
+        }
+      }
+      expect(find.byKey(const Key('quizipedia-map')), findsOneWidget);
       await tester.pumpAndSettle();
       const name = 'Французские Южные и Антарктические территории';
       await tester.enterText(find.byType(TextField), name);

@@ -78,17 +78,42 @@ Future<List<StudyFact>> loadStudyFacts(
   String scope, {
   AssetBundle? bundle,
 }) async {
+  final names = switch (scope) {
+    'all' => _assets.map((p) => p.split('/').last).toSet(),
+    'countries' => {
+      'country_facts.json',
+      'country_religions.json',
+      'country_links.json',
+      'country_culture.json',
+      'country_waters.json',
+      'country_presidents.json',
+    },
+    'landmarks' => {'catalog.json', 'country_facts.json'},
+    'sky' || 'endocrine' => {'catalog.json'},
+    'music' => {'music_learning.json'},
+    'organs' => {'organ_atlas.json'},
+    'greek' || 'religions' => {'belief_atlas.json'},
+    'food' => {'food_atlas.json'},
+    'brands' => {'brands.json'},
+    'history' || 'works' || 'people' => {'knowledge_atlas.json'},
+    _ => throw ArgumentError.value(scope, 'scope'),
+  };
   final assets = await Future.wait(
-    _assets.map(
-      (path) async => MapEntry(
-        path,
-        Map<String, dynamic>.from(
-          jsonDecode(await (bundle ?? rootBundle).loadString(path)) as Map,
+    _assets
+        .where((path) => names.contains(path.split('/').last))
+        .map(
+          (path) async => MapEntry(
+            path,
+            Map<String, dynamic>.from(
+              jsonDecode(await (bundle ?? rootBundle).loadString(path)) as Map,
+            ),
+          ),
         ),
-      ),
-    ),
   );
-  final values = {for (final entry in assets) entry.key: entry.value};
+  final values = <String, Map<String, dynamic>>{
+    for (final path in _assets) path: <String, dynamic>{},
+    for (final entry in assets) entry.key: entry.value,
+  };
   final facts = extractStudyFacts(values);
   if (scope == 'all') return facts;
   return List.unmodifiable(facts.where((fact) => fact.scope == scope));
@@ -456,8 +481,8 @@ void _catalogFacts(
       ru,
       en,
       'city',
-      'Город или населённый пункт',
-      'City or settlement',
+      'Местоположение',
+      'Location',
       _textOr(row, 'city_ru'),
       _textOr(row, 'city_en'),
       sources,
@@ -1266,7 +1291,7 @@ List<FactQuestion> buildFactQuestions(
     final options = <FactChoice>[
       FactChoice(id: fact.id, textRu: fact.valueRu, textEn: fact.valueEn),
       ...candidates
-          .take(3)
+          .take(5)
           .map(
             (item) => FactChoice(
               id: item.id,
@@ -1302,7 +1327,7 @@ List<StudyFact> _takeCandidates(
   final seenEn = <String>{_normEn(fact)};
   void take(Iterable<StudyFact> values) {
     for (final item in values) {
-      if (selected.length == 3) return;
+      if (selected.length == 5) return;
       final ru = _normRu(item), en = _normEn(item);
       if (item.entityId != fact.entityId &&
           !forbiddenRu.contains(ru) &&
@@ -1323,7 +1348,7 @@ List<StudyFact> _takeCandidates(
   }
 
   take(rotate(compatible));
-  if (selected.length < 3) take(rotate(compatibleKind));
+  if (selected.length < 5) take(rotate(compatibleKind));
   return selected;
 }
 

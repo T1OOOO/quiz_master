@@ -1,8 +1,27 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/services.dart';
 import 'package:quiz_app/fact_practice_models.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  test('music practice loads only music data', () async {
+    final bundle = _OnlyMusicBundle();
+    final facts = await loadStudyFacts('music', bundle: bundle);
+    expect(facts, isNotEmpty);
+    expect(facts.every((v) => v.scope == 'music'), isTrue);
+    expect(bundle.loaded, ['assets/quizipedia/music_learning.json']);
+  });
+  test('production landmark facts offer six unique answer choices', () async {
+    final questions = buildFactQuestions(
+      await loadStudyFacts('landmarks'),
+      seed: 17,
+    );
+    for (final question in questions) {
+      expect(question.options, hasLength(6), reason: question.fact.id);
+      expect(question.options.map((v) => v.textRu).toSet(), hasLength(6));
+    }
+  });
 
   test(
     'loads every frozen scope and preserves the known coverage gaps',
@@ -29,7 +48,7 @@ void main() {
             .where((fact) => fact.scope == 'music')
             .map((fact) => fact.entityId)
             .toSet(),
-        hasLength(95),
+        hasLength(96),
       );
       expect(
         facts
@@ -263,7 +282,7 @@ void main() {
       expect(questions, isNotEmpty);
       expect(questions, hasLength((await loadStudyFacts('all')).length));
       for (final question in questions) {
-        expect(question.options, hasLength(greaterThanOrEqualTo(2)));
+        expect(question.options, hasLength(6), reason: question.fact.id);
         expect(
           question.options.map((option) => option.id).toSet(),
           hasLength(question.options.length),
@@ -371,4 +390,16 @@ void main() {
         .singleWhere((item) => item.fact.id == 'a');
     expect(question.options.map((item) => item.id), isNot(contains('b')));
   });
+}
+
+class _OnlyMusicBundle extends CachingAssetBundle {
+  final loaded = <String>[];
+  @override
+  Future<ByteData> load(String key) {
+    loaded.add(key);
+    if (key != 'assets/quizipedia/music_learning.json') {
+      throw StateError('Unrelated asset requested: $key');
+    }
+    return rootBundle.load(key);
+  }
 }

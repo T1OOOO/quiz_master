@@ -13,13 +13,13 @@ void main() {
         await rootBundle.loadString('assets/quizipedia/catalog.json'),
       ) as Map<String, dynamic>;
       final rows = (data['landmarks'] as List).cast<Map<String, dynamic>>();
-      expect(rows.length, greaterThanOrEqualTo(36));
+      expect(rows.length, greaterThanOrEqualTo(46));
       expect(
         rows.map((r) => r['country_iso2']).toSet().length,
         greaterThanOrEqualTo(24),
       );
       final facts = await loadStudyFacts('landmarks');
-      expect((await loadStudyFacts('all')).length, 13678);
+      expect((await loadStudyFacts('all')).length, 13725);
       final credits = (data['credits'] as List).cast<Map<String, dynamic>>();
       for (final row in rows) {
         expect(await rootBundle.load(row['image_asset'] as String), isNotNull);

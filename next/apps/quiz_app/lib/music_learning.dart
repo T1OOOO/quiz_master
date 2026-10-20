@@ -240,18 +240,62 @@ class MusicVisual extends StatelessWidget {
                       : Theme.of(context).textTheme.headlineLarge,
                 ),
               )
-            : FittedBox(
-                fit: BoxFit.contain,
-                child: CustomPaint(
-                  size: const Size(260, 156),
-                  painter: _MusicPainter(
-                    visual,
-                    Theme.of(context).colorScheme.onSurface,
-                  ),
-                ),
+            : _MusicNotation(
+                visual: visual,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
       ),
     ),
+  );
+}
+
+Future<void>? _notationFont;
+Future<void> _loadNotationFont() => _notationFont ??= () async {
+  try {
+    final loader = FontLoader('Bravura')
+      ..addFont(rootBundle.load('assets/fonts/Bravura.otf'));
+    await loader.load();
+  } catch (_) {
+    _notationFont = null;
+    rethrow;
+  }
+}();
+
+class _MusicNotation extends StatefulWidget {
+  const _MusicNotation({required this.visual, required this.color});
+  final Map<String, dynamic> visual;
+  final Color color;
+  @override
+  State<_MusicNotation> createState() => _MusicNotationState();
+}
+
+class _MusicNotationState extends State<_MusicNotation> {
+  late Future<void> _font = _loadNotationFont();
+  @override
+  Widget build(BuildContext context) => FutureBuilder<void>(
+    future: _font,
+    builder: (context, snapshot) {
+      if (snapshot.hasError) {
+        return TextButton(
+          onPressed: () => setState(() => _font = _loadNotationFont()),
+          child: Text(
+            Localizations.localeOf(context).languageCode == 'ru'
+                ? 'Повторить загрузку нотных знаков'
+                : 'Retry music notation',
+          ),
+        );
+      }
+      if (snapshot.connectionState != ConnectionState.done) {
+        return const CircularProgressIndicator();
+      }
+      return FittedBox(
+        fit: BoxFit.contain,
+        child: CustomPaint(
+          size: const Size(260, 156),
+          painter: _MusicPainter(widget.visual, widget.color),
+        ),
+      );
+    },
   );
 }
 

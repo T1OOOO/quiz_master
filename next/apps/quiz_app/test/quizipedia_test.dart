@@ -10,6 +10,68 @@ import 'package:quiz_app/quizipedia.dart';
 import 'package:quiz_app/country_learning.dart';
 
 void main() {
+  testWidgets('photo picker requests only visible individual previews', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(393, 851);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final data = fixture();
+    final template = (data['landmarks'] as List).first as Map;
+    data['landmarks'] = [
+      for (var i = 0; i < 24; i++)
+        {
+          ...template,
+          'id': 'lazy-photo-$i',
+          'name_en': 'Lazy photograph $i',
+          'name_ru': 'Фото $i',
+          'city_en': 'Place $i',
+          'city_ru': 'Место $i',
+          'image_asset': 'assets/missing-full-$i.png',
+          'thumbnail_asset': 'assets/missing-preview-$i.png',
+        },
+    ];
+    final bundle = _PhotoBundle(data);
+    await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Landmark photographs'));
+    await settleLoadedSection(tester);
+    await tester.ensureVisible(find.byKey(const Key('landmark-picker')));
+    await tester.tap(find.byKey(const Key('landmark-picker')));
+    await tester.pumpAndSettle();
+    expect(
+      bundle.thumbLoads,
+      0,
+      reason: 'Do not download the complete preview bundle',
+    );
+    expect(
+      bundle.photos.where((v) => v.contains('missing-full-')),
+      hasLength(1),
+    );
+    final previews = bundle.photos
+        .where((v) => v.contains('missing-preview-'))
+        .toSet();
+    expect(previews, isNotEmpty);
+    expect(previews.length, lessThan(24));
+  });
+  testWidgets('home does not fetch unopened atlas data or full photos', (
+    tester,
+  ) async {
+    final bundle = _Bundle(fixture());
+    await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
+    await tester.pumpAndSettle();
+    expect(find.text('Countries of the world'), findsOneWidget);
+    expect(bundle.loads, isEmpty);
+    expect(find.byType(CircularProgressIndicator), findsNothing);
+    for (final image in tester.widgetList<Image>(find.byType(Image))) {
+      final provider = image.image;
+      if (provider is AssetImage) {
+        expect(provider.assetName, contains('preview-'));
+      }
+    }
+  });
+
   testWidgets(
     'checked sky practice keeps feedback and next visible on a phone',
     (tester) async {
@@ -122,12 +184,10 @@ void main() {
             ),
           ),
         );
-        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate(
-            (widget) => widget is FutureBuilder<QuizipediaCatalog>,
-          ),
+        expect(
+          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
+          findsNothing,
         );
-        await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
       expect(find.widgetWithText(AppBar, 'Quizipedia'), findsOneWidget);
@@ -136,7 +196,7 @@ void main() {
         await tester.pump();
         await Future<void>.delayed(const Duration(milliseconds: 400));
       });
-      await tester.pumpAndSettle();
+      await settleLoadedSection(tester);
       expect(find.byKey(const Key('quizipedia-map')), findsOneWidget);
       await tester.tap(find.byTooltip('Back'));
       await tester.pumpAndSettle();
@@ -149,12 +209,10 @@ void main() {
         await tester.tap(find.widgetWithText(ListTile, 'Quizipedia'));
         await tester.pump();
         await tester.pump();
-        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate(
-            (widget) => widget is FutureBuilder<QuizipediaCatalog>,
-          ),
+        expect(
+          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
+          findsNothing,
         );
-        await builder.future!.timeout(const Duration(seconds: 5));
       });
       await tester.pumpAndSettle();
       expect(find.text('Countries of the world'), findsOneWidget);
@@ -483,7 +541,7 @@ void main() {
         await tester.pump();
         await Future<void>.delayed(const Duration(milliseconds: 400));
       });
-      await tester.pumpAndSettle();
+      await settleLoadedSection(tester);
       final map = find.byKey(const Key('quizipedia-map'));
       await tester.ensureVisible(map);
       await tester.pumpAndSettle();
@@ -697,7 +755,7 @@ void main() {
       await tester.pump();
       await Future<void>.delayed(const Duration(milliseconds: 150));
     });
-    await tester.pumpAndSettle();
+    await settleLoadedSection(tester);
     await tester.ensureVisible(find.byType(OutlinedButton).first);
     await tester.tap(find.byType(OutlinedButton).first);
     await tester.pumpAndSettle();
@@ -772,7 +830,7 @@ void main() {
       await tester.pump();
       await Future<void>.delayed(const Duration(milliseconds: 150));
     });
-    await tester.pumpAndSettle();
+    await settleLoadedSection(tester);
     final picker = find.byKey(const Key('landmark-picker'));
     await tester.ensureVisible(picker);
     await tester.tap(picker);
@@ -844,7 +902,7 @@ void main() {
     );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
-    await tester.pumpAndSettle();
+    await settleLoadedSection(tester);
     expect(find.text('Retry'), findsOneWidget);
     expect(find.text('Check'), findsNothing);
     expect(tester.takeException(), isNull);
@@ -969,8 +1027,10 @@ Map<String, dynamic> fixture() {
 class _Bundle extends CachingAssetBundle {
   _Bundle(this.catalog);
   final Map<String, dynamic> catalog;
+  final loads = <String>[];
   @override
   Future<ByteData> load(String key) async {
+    loads.add(key);
     if (key == 'assets/missing.png') {
       return ByteData.sublistView(
         base64Decode(
@@ -994,6 +1054,9 @@ class _PhotoBundle extends _Bundle {
   bool failThumbs = false;
   @override
   Future<ByteData> load(String key) {
+    if (key == 'AssetManifest.bin' || key == 'AssetManifest.bin.json') {
+      return rootBundle.load(key);
+    }
     if (key == 'assets/quizipedia/landmark_thumbnails.json') {
       thumbLoads++;
       if (failThumbs) return Future.error(FlutterError('missing previews'));
@@ -1013,4 +1076,22 @@ class _PhotoBundle extends _Bundle {
     }
     return super.load(key);
   }
+}
+
+Future<void> settleLoadedSection(WidgetTester tester) async {
+  // Root-bundle parsing uses a real isolate; give it a bounded CPU-time window
+  // when the production-fact generator runs concurrently on the shared host.
+  for (var frame = 0; frame < 750; frame++) {
+    await tester.runAsync(() async {
+      await tester.pump(const Duration(milliseconds: 16));
+      await Future<void>.delayed(const Duration(milliseconds: 20));
+    });
+    if (!tester.binding.hasScheduledFrame &&
+        find.byType(CircularProgressIndicator).evaluate().isEmpty) {
+      return;
+    }
+  }
+  fail(
+    'Section did not finish loading: indicators=${find.byType(CircularProgressIndicator).evaluate().length}, scheduled=${tester.binding.hasScheduledFrame}, maps=${find.byKey(const Key('quizipedia-map')).evaluate().length}',
+  );
 }

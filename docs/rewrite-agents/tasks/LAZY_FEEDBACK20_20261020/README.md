@@ -1,0 +1,15 @@
+# Lazy atlas continuation, 20 October 2026
+
+Candidate implementation, not yet published. Public baseline remains Helm77 / `quiz-2026.10.20-atlas-4fc2fd02`. Server feedback remains20open/78resolved; no new report status mutations.
+
+Home renders without fetching the atlas catalog and uses small visible WebP previews. Section fact practice loads only its dependencies.46 licensed landmark photographs (10 new), all46 with separate small previews; the production picker requests visible rows rather than the legacy aggregate thumbnail JSON. The original36 photographs and full illustration sources remain. Bravura889228B is removed from startup FontManifest and loaded when notation is displayed. Anatomy display derivative158502B replaces the2.37MB display request.
+
+Shared production fact practice and country topics offer6 distinct options, excluding every alternative valid value for the same entity.7 source-backed associations fill the small desert/bridge/scientist/culture pools. Area has6 bands. Water63 practice shows checked feedback before the map and pins manual Next in the viewport. Anatomy has14 anchors for structures actually visible in its overview and a nearest-scene-anchor tap handler, with separately accessible named controls; the full281-item atlas remains. It does not falsely plot every gland on the anterior overview.
+
+Verification: analyzer clean; full Flutter suite334passed with concurrency2. Default-concurrency full run had333pass plus one existing navigation test that did not complete; its isolated rerun and the complete bounded-concurrency run passed. Real rootBundle/isolate section readiness is pumped inside runAsync. Source, licensed content and added font scope independently reviewed by Google/AGY and ACCEPT. Two rejected photos were omitted. Selected-border regression passes already-existing selected-last painting; no new border fix is claimed.
+
+Native touch mobile browser emulation393x851/DPR2.75/coarse/5touch points: photos46/search/MachuPicchu, water6choices/check/manualNext to2of63, organpinch1.6x and raw coordinate tap on gallbladder marker opens the gallbladder card. Physical Android is unavailable. Release build/network cold-start verification pending below.
+
+Capacity blocker: read-only server measurement20422033408B available,19.9400477%, below the unchanged20% gate. Remaining redundant owned staging copies plus an old temporary archive cannot fund another full physical backup and candidate staging/image. All published runtime images, full physical backups and live PVC are preserved. No global disk setting, GC policy, backup retention or release threshold changed.
+
+Remaining: obtain sustainable server capacity; freeze/build candidate, controller/exact-image review, persistent full backup plus independent restore, deploy and public/mobile checks; resolve only individually verified reports. Native legacy curated banks still contain4-option fixtures; this batch does not claim every historical quiz has6 options or detailed distractor articles. Subjective design/sky complaints and unillustrated structures remain open.

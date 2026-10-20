@@ -81,7 +81,13 @@ void main() {
           ),
         ),
       );
-      await tester.pump();
+      for (var frame = 0; frame < 250; frame++) {
+        await tester.runAsync(() async {
+          await tester.pump(const Duration(milliseconds: 16));
+          await Future<void>.delayed(const Duration(milliseconds: 20));
+        });
+        if (find.byType(FittedBox).evaluate().isNotEmpty) break;
+      }
       expect(find.byType(FittedBox), findsOneWidget);
       expect(tester.takeException(), isNull);
     },

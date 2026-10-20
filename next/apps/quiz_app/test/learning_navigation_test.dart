@@ -25,10 +25,7 @@ void main() {
           MaterialApp(home: QuizipediaPage(bundle: bundle)),
         );
         await tester.pump();
-        final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-        );
-        await catalog.future!;
+        expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
       });
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(find.text(section), 200);
@@ -58,10 +55,7 @@ void main() {
         MaterialApp(home: QuizipediaPage(bundle: bundle)),
       );
       await tester.pump();
-      final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-      );
-      await catalog.future!;
+      expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
     });
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
@@ -93,10 +87,7 @@ void main() {
         MaterialApp(home: QuizipediaPage(bundle: bundle)),
       );
       await tester.pump();
-      final catalog = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-      );
-      await catalog.future!;
+      expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
     });
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.text('Brands and companies'), 200);
@@ -125,10 +116,7 @@ void main() {
       await tester.runAsync(() async {
         await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
         await tester.pump();
-        final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-          find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-        );
-        await builder.future!;
+        expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
       });
       await tester.pumpAndSettle();
       for (final name in [

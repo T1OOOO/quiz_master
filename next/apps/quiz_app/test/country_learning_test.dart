@@ -42,6 +42,7 @@ void main() {
       expect(pool.where((q) => q.kind == kind), isNotEmpty, reason: kind);
     }
     for (final q in pool) {
+      expect(q.options, hasLength(6), reason: q.kind);
       final valid = relations[q.country.id]!
           .where((r) => r.kind == q.kind)
           .map((r) => r.nameEn)
@@ -85,6 +86,7 @@ void main() {
           reason: kind,
         );
       }
+      for (final q in pool) { expect(q.options, hasLength(6), reason: q.kind); }
       final belgium = pool
           .where((q) => q.kind == 'language' && q.country.id == 'BE')
           .toList();

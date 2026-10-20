@@ -67,14 +67,58 @@ final _atlas = <String, dynamic>{
 };
 
 class _AtlasBundle extends CachingAssetBundle {
+  _AtlasBundle([this.data]);
+  final Map<String, dynamic>? data;
   @override
   Future<ByteData> load(String key) => throw UnimplementedError();
   @override
   Future<String> loadString(String key, {bool cache = true}) async =>
-      jsonEncode(_atlas);
+      jsonEncode(data ?? _atlas);
 }
 
 void main() {
+  testWidgets(
+    'additional illustrated organs select their own cards at compact scale',
+    (tester) async {
+      final data = jsonDecode(jsonEncode(_atlas)) as Map<String, dynamic>;
+      final rows = data['organs'] as List;
+      final template = Map<String, dynamic>.from(rows.last as Map);
+      for (final id in [
+        'trachea',
+        'small_intestine',
+        'large_intestine',
+        'gallbladder',
+        'bone-right-humerus',
+        'bone-left-humerus',
+        'bone-right-clavicle',
+        'bone-left-clavicle',
+      ]) {
+        rows.add({...template, 'id': id, 'name_en': id, 'name_ru': id});
+      }
+      await tester.pumpWidget(
+        MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle(data))),
+      );
+      await tester.pumpAndSettle();
+      for (final id in ['gallbladder', 'small_intestine', 'liver']) {
+        final target = find.byKey(Key('organ-map-target-$id'));
+        expect(target, findsOneWidget);
+        await tester.ensureVisible(target);
+        await tester.tap(target);
+        await tester.pumpAndSettle();
+        final sheet = find.byKey(const Key('organ-detail'));
+        expect(
+          find.descendant(
+            of: sheet,
+            matching: find.text(id == 'liver' ? 'Liver' : id),
+          ),
+          findsOneWidget,
+        );
+        Navigator.of(tester.element(sheet)).pop();
+        await tester.pumpAndSettle();
+      }
+    },
+  );
+
   testWidgets('diagram exposes named controls outside the touch canvas', (
     tester,
   ) async {

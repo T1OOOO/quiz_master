@@ -33,6 +33,45 @@ class WaterBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('phone water grading shows feedback and reachable manual next', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(393, 851);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    late WaterAtlas atlas;
+    await tester.runAsync(() async {
+      atlas = await WaterAtlas.load();
+    });
+    await tester.pumpWidget(
+      MaterialApp(
+        home: WaterPracticePage(catalog: catalog, atlas: atlas),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final target = tester
+        .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+        .selectedWater;
+    final answer = find.byKey(ValueKey('water-answer-$target'));
+    await tester.ensureVisible(answer);
+    await tester.tap(answer);
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const Key('water-check')));
+    await tester.tap(find.byKey(const Key('water-check')));
+    await tester.pumpAndSettle();
+    expect(
+      tester.getTopLeft(find.byKey(const Key('water-feedback'))).dy,
+      lessThan(240),
+    );
+    final next = find.byKey(const Key('water-next'));
+    expect(tester.getBottomRight(next).dy, lessThanOrEqualTo(851));
+    await tester.tap(next);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('2/63'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('checked water choices stay readable in dark mode', (
     tester,
   ) async {

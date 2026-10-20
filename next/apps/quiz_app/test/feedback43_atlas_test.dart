@@ -13,10 +13,7 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
     await tester.runAsync(() async {
       await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
-      final builder = tester.widget<FutureBuilder<QuizipediaCatalog>>(
-        find.byWidgetPredicate((w) => w is FutureBuilder<QuizipediaCatalog>),
-      );
-      await builder.future!;
+      expect(find.byType(FutureBuilder<QuizipediaCatalog>), findsNothing);
     });
     await tester.pumpAndSettle();
     final action = find.byKey(const Key('practice-countries'));
