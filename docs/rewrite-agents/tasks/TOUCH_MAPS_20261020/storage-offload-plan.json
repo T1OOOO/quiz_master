@@ -1,0 +1,61 @@
+{
+  "accounting": {
+    "planned_total_bytes": 117451194
+  },
+  "baseline": {
+    "build_id": "quiz-2026.10.20-sky-388e5c0c",
+    "deployment_revision": "73",
+    "helm_deployed_revision": 75,
+    "host": "racknerd-f0269d5",
+    "image": "quiz-master:quiz-2026.10.20-sky-388e5c0c@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de",
+    "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+    "rollback_revision": 74
+  },
+  "candidate_receipt": {
+    "build_id": "quiz-2026.10.20-sky-388e5c0c",
+    "image": "quiz-master:quiz-2026.10.20-sky-388e5c0c@sha256:c606cee83ba594c921eb80867dd4a5d356b63e09983e2ff50585aac2088b97de",
+    "input_sha256": "755223f8cb24fee4a8edc644178b0d31871868f8ac11b4c682f153b1fb03a487"
+  },
+  "contract": "quiz-master-storage-offload-grid/v1",
+  "local_destination": "storage-offload-touch-baseline-20261020",
+  "plan_only": true,
+  "purpose": "Reversibly archive six redundant release75 staging inputs, preserving all published images/backups/live PVC and full local frozen package. Full restore proof copied into restricted verified archive. No prune/GC/threshold change.",
+  "targets": [
+    {
+      "expected_bytes": 22997561,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/api",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4402043,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/web",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4285861,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/private",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 4212887,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/quizzes",
+      "sqlite": false
+    },
+    {
+      "expected_bytes": 76988416,
+      "kind": "file",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/publish-restore-proof.sqlite",
+      "sqlite": true
+    },
+    {
+      "expected_bytes": 4564426,
+      "kind": "dir",
+      "path": "/opt/quiz-master/releases/quiz-2026.10.20-sky-388e5c0c/web-delta",
+      "sqlite": false
+    }
+  ]
+}

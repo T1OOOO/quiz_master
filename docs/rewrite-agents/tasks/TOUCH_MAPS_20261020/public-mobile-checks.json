@@ -1,0 +1,35 @@
+{
+  "status": "partial_mobile_acceptance_followup_required",
+  "build_id": "quiz-2026.10.20-touch-b5863403",
+  "viewport": {
+    "width": 393,
+    "height": 851,
+    "dpr": 2.75,
+    "max_touch_points": 5,
+    "coarse_pointer": true
+  },
+  "physical_android": false,
+  "sky": {
+    "native_tap_visible_betelgeuse": "Бетельгейзе",
+    "pinch_changes_scene": true,
+    "viewport_scale": 1,
+    "vertical_pan_changes_scene": true,
+    "parent_scroll_during_pan": 0,
+    "outside_pan_scroll": 65,
+    "practice_has_six_choices": true,
+    "grading_correct": true
+  },
+  "photos": {
+    "count": 36,
+    "search": "Сингапур",
+    "selected": "Мерлайон",
+    "image_visible": true,
+    "russian_full_country_name": true,
+    "practice_has_six_choices": true
+  },
+  "open_failures": [
+    "Anatomy image and numbered semantic DOM overlays intercept touch: pinch did not zoom and vertical pan scrolled parent64px. Native semantic-button events can arrive batched after Web click debouncing. Source fix underway; do not claim anatomy mobile acceptance.",
+    "After checking a legacy sky practice answer, newly revealed star controls push answer feedback below the phone viewport. Keep the long-answer scrolling feedback open."
+  ],
+  "reports_resolved": []
+}
