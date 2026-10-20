@@ -1,0 +1,17 @@
+{
+  "state": "SOURCE_BUILT_LOCAL_QA_NOT_DEPLOYED",
+  "source_commit": "2af0ab3fb065ec484b6da67f2c029766d991c938",
+  "build_id": "quiz-2026.10.20-lazy-2af0ab3f",
+  "web_file_count": 639,
+  "web_bytes": 96059555,
+  "web_manifest_sha256": "381184ad111835bee6757e21ca84558678bcc3b40424c571d2ac56004afc010c",
+  "main_js_sha256": "f6d41745e2c25f606e0547944f1a60516120b6be2f63d76929368d95a08d8ab3",
+  "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+  "api_content_quizzes_changed": false,
+  "baseline_helm_revision": 77,
+  "baseline_deployment_revision": 75,
+  "images_and_physical_backups_retained": true,
+  "release20percent_gate_unchanged": true,
+  "capacity_config_mutation_executed": false,
+  "reason": "Fresh capacity below20percent; exact separately-reviewed global ext4 reservation proposal awaits human authorization. Full release controller/backup/restore/image/public acceptance gates still required after capacity."
+}

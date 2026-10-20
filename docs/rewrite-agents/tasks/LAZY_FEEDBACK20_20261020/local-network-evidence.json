@@ -1,0 +1,190 @@
+{
+  "source_commit": "2af0ab3fb065ec484b6da67f2c029766d991c938",
+  "build_id": "quiz-2026.10.20-lazy-2af0ab3f",
+  "main_js_sha256": "f6d41745e2c25f606e0547944f1a60516120b6be2f63d76929368d95a08d8ab3",
+  "mobile": {
+    "width": 393,
+    "height": 851,
+    "dpr": 2.75,
+    "touch_points": 5,
+    "coarse": true,
+    "physical_device": false
+  },
+  "home": {
+    "requests": [
+      {
+        "path": "",
+        "status": 200,
+        "bytes": 2348
+      },
+      {
+        "path": "startup.css",
+        "status": 200,
+        "bytes": 965
+      },
+      {
+        "path": "startup.js",
+        "status": 200,
+        "bytes": 1172
+      },
+      {
+        "path": "flutter_bootstrap.js",
+        "status": 200,
+        "bytes": 13094
+      },
+      {
+        "path": "manifest.json",
+        "status": 200,
+        "bytes": 947
+      },
+      {
+        "path": "main.dart.js",
+        "status": 200,
+        "bytes": 4548463
+      },
+      {
+        "path": "favicon.png",
+        "status": 200,
+        "bytes": 917
+      },
+      {
+        "path": "icons/Icon-192.png",
+        "status": 200,
+        "bytes": 5292
+      },
+      {
+        "path": "assets/FontManifest.json",
+        "status": 200,
+        "bytes": 82
+      },
+      {
+        "path": "assets/fonts/MaterialIcons-Regular.otf",
+        "status": 200,
+        "bytes": 15548
+      },
+      {
+        "path": "assets/AssetManifest.bin.json",
+        "status": 200,
+        "bytes": 42174
+      },
+      {
+        "path": "assets/assets/quizipedia/preview-geography-countries-hero.webp",
+        "status": 200,
+        "bytes": 4458
+      },
+      {
+        "path": "assets/assets/quizipedia/preview-eiffel.webp",
+        "status": 200,
+        "bytes": 2966
+      },
+      {
+        "path": "assets/assets/quizipedia/preview-anatomy-orientation.webp",
+        "status": 200,
+        "bytes": 1932
+      },
+      {
+        "path": "assets/assets/quizipedia/preview-music.webp",
+        "status": 200,
+        "bytes": 2854
+      }
+    ],
+    "preview_count": 4,
+    "preview_bytes": 12210,
+    "unopened_atlas_json_requests": 0,
+    "full_photo_requests": 0,
+    "notation_font_requests": 0
+  },
+  "photo_open": {
+    "requests": [
+      {
+        "path": "assets/assets/quizipedia/catalog.json",
+        "status": 200,
+        "bytes": 560891
+      },
+      {
+        "path": "assets/assets/quizipedia/colosseum.jpg",
+        "status": 200,
+        "bytes": 162665
+      },
+      {
+        "path": "assets/assets/study/question-articles.json",
+        "status": 200,
+        "bytes": 1090094
+      }
+    ],
+    "full_photo_count": 1
+  },
+  "picker": {
+    "requests": [
+      {
+        "path": "assets/assets/quizipedia/thumb-colosseum.webp",
+        "status": 200,
+        "bytes": 4088
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-taj-mahal.webp",
+        "status": 200,
+        "bytes": 2500
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-giza-pyramid.webp",
+        "status": 200,
+        "bytes": 1624
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-petra-treasury.webp",
+        "status": 200,
+        "bytes": 2650
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-sydney-opera.webp",
+        "status": 200,
+        "bytes": 4178
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-eiffel.webp",
+        "status": 200,
+        "bytes": 3050
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-statue-liberty.webp",
+        "status": 200,
+        "bytes": 906
+      },
+      {
+        "path": "assets/assets/quizipedia/thumb-golden-gate.webp",
+        "status": 200,
+        "bytes": 3168
+      }
+    ],
+    "visible_preview_count": 8,
+    "total_catalog_photos": 46,
+    "preview_bytes": 22164,
+    "aggregate_bundle_requests": 0,
+    "full_photo_requests": 0
+  },
+  "compiled_font_manifest": [
+    {
+      "family": "MaterialIcons",
+      "fonts": [
+        {
+          "asset": "fonts/MaterialIcons-Regular.otf"
+        }
+      ]
+    }
+  ],
+  "scope": "Local compiled release browser acceptance. No server/public deployment claim.",
+  "music_open": {
+    "requests": [
+      {
+        "path": "assets/assets/quizipedia/music_learning.json",
+        "status": 200
+      },
+      {
+        "path": "assets/assets/fonts/Bravura.otf",
+        "status": 200
+      }
+    ],
+    "scope": "Notationfont fetched only after entry, with music JSON and no unrelated atlas data."
+  }
+}

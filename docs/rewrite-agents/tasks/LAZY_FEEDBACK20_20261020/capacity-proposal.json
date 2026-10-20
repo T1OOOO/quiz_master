@@ -1,0 +1,23 @@
+{
+  "status": "PROPOSAL ONLY; NO GLOBAL FILESYSTEM MUTATION AUTHORIZED OR EXECUTED",
+  "host": "192.3.164.184",
+  "hostname": "racknerd-f0269d5",
+  "device": "/dev/vda2",
+  "filesystem_uuid": "3829960b-43f1-4d64-9bd9-2286e8c0345f",
+  "filesystem_type": "ext4",
+  "filesystem_state": "clean",
+  "block_count": 25427136,
+  "block_size": 4096,
+  "old_reserved_blocks": 1271337,
+  "proposed_reserved_blocks": 1017085,
+  "old_reserved_percent": 5,
+  "proposed_reserved_percent": 4,
+  "bytes_added_to_nonroot_available": 1041416192,
+  "remaining_root_reserved_bytes": 4165980160,
+  "proposed_command_after_explicit_human_approval_only": "tune2fs -r 1017085 /dev/vda2",
+  "config_rollback_command": "tune2fs -r 1271337 /dev/vda2",
+  "scope": "Global root filesystem reservation; affects other projects' available capacity. Must ask the human separately from deployment authorization. Does not change filesystem size, file contents, images, backup retention, GC, live PVC, release20percent gate or ownership.",
+  "execution_guards_if_approved": "Hold existing DEPLOY.lock; fresh verify host, UUID, ext4/device/mount/blockcount/blocksize/oldreservedblocks; confirm no unknown concurrent deployment; run exact approved command; recheck reserved count and statvfs, capture proof; full ordinary release preflight and gates still mandatory. Config rollback increases reservation and may lower measured capacity; do not automatically roll it back during app rollback if capacity remains in use.",
+  "alternative": "Increase VPS disk capacity through the owner/provider. No provider purchase or resize is authorized. No deletion of published images/full physical backups or reduction of20percent gate is proposed.",
+  "capacity_note": "This adds about1GiB headroom, not a permanent disk expansion. Further releases still need sustainable capacity planning. Read-only latest available20422033408B of102417174528B,19.9400477percent. Candidate/source work continues locally; no deploy attempted below gate."
+}
