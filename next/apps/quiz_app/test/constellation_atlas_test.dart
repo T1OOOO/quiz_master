@@ -84,6 +84,45 @@ Widget _app({TextScaler? scaler}) => MaterialApp(
 );
 
 void main() {
+  test(
+    'catalogue groups are derived from plotted declination, not visibility',
+    () {
+      expect(
+        constellationSkyGroup({
+          'stars': [
+            {'dec_degrees': 30},
+            {'dec_degrees': 40},
+          ],
+        }),
+        ConstellationSkyGroup.north,
+      );
+      expect(
+        constellationSkyGroup({
+          'stars': [
+            {'dec_degrees': -5},
+            {'dec_degrees': 8},
+          ],
+        }),
+        ConstellationSkyGroup.equatorial,
+      );
+    },
+  );
+
+  testWidgets('catalogue group filters use the plotted-star category', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app());
+    await tester.tap(find.byKey(const Key('constellation-choose')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('constellation-picker-groups')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('constellation-picker-group-north')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('constellation-option-uma')), findsOneWidget);
+    expect(find.byKey(const Key('constellation-option-ori')), findsNothing);
+  });
+
   testWidgets(
     'pinch keeps page still until the last map contact is cancelled',
     (tester) async {

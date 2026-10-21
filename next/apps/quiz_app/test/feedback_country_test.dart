@@ -266,110 +266,78 @@ void main() {
       }
     },
   );
-  for (final retry in [false, true]) {
-    testWidgets(
-      'map flags use one image bundle without per-country requests (retry=$retry)',
-      (tester) async {
-        late ByteData manifest, png;
-        await tester.runAsync(() async {
-          manifest = await rootBundle.load('AssetManifest.bin');
-          png = await rootBundle.load('assets/quizipedia/flag-fr.png');
-        });
-        var bundleCalls = 0, countryCalls = 0;
-        final messenger =
-            TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
-        messenger.setMockMessageHandler('flutter/assets', (message) async {
-          final key = utf8.decode(
-            message!.buffer.asUint8List(
-              message.offsetInBytes,
-              message.lengthInBytes,
-            ),
-          );
-          if (key == 'AssetManifest.bin') return manifest;
-          if (key == 'assets/quizipedia/country_flag_images.json') {
-            bundleCalls++;
-            if (retry && bundleCalls == 1) return null;
-            return ByteData.sublistView(
-              utf8.encode(
-                jsonEncode({
-                  'schema_version': 'qm-country-flag-images/v1',
-                  'flags': {
-                    'FR': base64Encode(
-                      png.buffer.asUint8List(
-                        png.offsetInBytes,
-                        png.lengthInBytes,
-                      ),
-                    ),
-                  },
-                }),
-              ),
-            );
-          }
-          if (key.contains('/flag-')) {
-            countryCalls++;
-            return png;
-          }
-          return null;
-        });
-        addTearDown(
-          () => messenger.setMockMessageHandler('flutter/assets', null),
-        );
-        final camera = TransformationController();
-        addTearDown(camera.dispose);
-        await tester.pumpWidget(
-          MaterialApp(
-            home: SizedBox(
-              width: 320,
-              height: 300,
-              child: QuizipediaWorldMap(
-                features: const [
-                  QuizipediaFeature(
-                    id: 'FR',
-                    nameEn: 'France',
-                    nameRu: 'Франция',
-                    polygons: [
-                      [
-                        [
-                          QuizipediaPoint(.1, .2),
-                          QuizipediaPoint(.4, .2),
-                          QuizipediaPoint(.4, .5),
-                          QuizipediaPoint(.1, .5),
-                          QuizipediaPoint(.1, .2),
-                        ],
-                      ],
+  testWidgets('map flags request only an individual visible marker asset', (
+    tester,
+  ) async {
+    late ByteData manifest, png;
+    await tester.runAsync(() async {
+      manifest = await rootBundle.load('AssetManifest.bin');
+      png = await rootBundle.load('assets/quizipedia/flag-fr.png');
+    });
+    final requests = <String>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMessageHandler('flutter/assets', (message) async {
+      final key = utf8.decode(
+        message!.buffer.asUint8List(
+          message.offsetInBytes,
+          message.lengthInBytes,
+        ),
+      );
+      requests.add(key);
+      if (key == 'AssetManifest.bin') return manifest;
+      if (key.startsWith('assets/quizipedia/flag-')) return png;
+      return null;
+    });
+    addTearDown(() => messenger.setMockMessageHandler('flutter/assets', null));
+    final camera = TransformationController();
+    addTearDown(camera.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SizedBox(
+          width: 320,
+          height: 300,
+          child: QuizipediaWorldMap(
+            features: const [
+              QuizipediaFeature(
+                id: 'FR',
+                nameEn: 'France',
+                nameRu: 'Франция',
+                polygons: [
+                  [
+                    [
+                      QuizipediaPoint(.1, .2),
+                      QuizipediaPoint(.4, .2),
+                      QuizipediaPoint(.4, .5),
+                      QuizipediaPoint(.1, .5),
+                      QuizipediaPoint(.1, .2),
                     ],
-                  ),
+                  ],
                 ],
-                controller: camera,
-                onSelect: (_) {},
-                showFlags: true,
-                selected: 'FR',
-                overlayLabels: const {'FR': 'France'},
               ),
-            ),
+            ],
+            controller: camera,
+            onSelect: (_) {},
+            showFlags: true,
+            selected: 'FR',
+            overlayLabels: const {'FR': 'France'},
           ),
-        );
-        await tester.runAsync(() async {
-          await Future<void>.delayed(const Duration(milliseconds: 500));
-        });
-        await tester.pumpAndSettle();
-        if (retry) {
-          expect(find.byKey(const Key('map-flags-retry')), findsOneWidget);
-          await tester.tap(find.byKey(const Key('map-flags-retry')));
-          await tester.runAsync(() async {
-            await Future<void>.delayed(const Duration(milliseconds: 500));
-          });
-          await tester.pumpAndSettle();
-          expect(find.byKey(const Key('map-flags-retry')), findsNothing);
-        }
-        expect(countryCalls, 0);
-        expect(bundleCalls, retry ? 2 : 1);
-        expect(tester.takeException(), isNull);
-      },
+        ),
+      ),
     );
-  }
+    await tester.pumpAndSettle();
+    expect(
+      requests,
+      isNot(contains('assets/quizipedia/country_flag_images.json')),
+    );
+    expect(
+      requests.where((key) => key.startsWith('assets/quizipedia/flag-')),
+      equals(['assets/quizipedia/flag-fr.png']),
+    );
+    expect(tester.takeException(), isNull);
+  });
   testWidgets(
-    'country ranking replaces layers and selection returns to the map',
+    'country ranking selection returns to the map without moving its camera',
     (tester) async {
       await tester.runAsync(() async {
         await tester.pumpWidget(
@@ -382,13 +350,21 @@ void main() {
       final initialMap = tester.widget<QuizipediaWorldMap>(
         find.byType(QuizipediaWorldMap),
       );
+      initialMap.controller.value = Matrix4.identity()
+        ..translateByDouble(-34, -18, 0, 1)
+        ..scaleByDouble(1.5, 1.5, 1.5, 1);
+      final cameraBeforeSelection = initialMap.controller.value.clone();
       expect(
         initialMap.overlayLabels,
         isNotEmpty,
         reason: 'Unselected countries need visible names',
       );
+      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
       await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();
+      await tester.ensureVisible(
+        find.text('Compare countries: population and area'),
+      );
       await tester.tap(find.text('Compare countries: population and area'));
       await tester.pumpAndSettle();
       expect(find.byType(BottomSheet), findsOneWidget);
@@ -401,14 +377,15 @@ void main() {
       );
       expect(
         selectedMap.focusTarget,
-        selectedMap.selected,
-        reason: 'Explicit list selection requests camera focus',
+        isNull,
+        reason: 'Choosing a country is not an explicit fit request.',
       );
+      expect(selectedMap.controller.value, cameraBeforeSelection);
       expect(find.byKey(const Key('country-flag-preview')), findsOneWidget);
     },
   );
   testWidgets(
-    'country map owns vertical drags and most of the phone viewport',
+    'country map uses the world aspect ratio and owns vertical drags',
     (tester) async {
       tester.view.physicalSize = const Size(361, 738);
       tester.view.devicePixelRatio = 1;
@@ -423,7 +400,7 @@ void main() {
       });
       await tester.pumpAndSettle();
       final map = find.byKey(const Key('quizipedia-viewport'));
-      expect(tester.getSize(map).height, greaterThan(400));
+      expect(tester.getSize(map).height, closeTo(180.5, 2));
       final before = tester.getTopLeft(map);
       final viewer = tester.widget<InteractiveViewer>(map);
       final camera = viewer.transformationController!.value.clone();
@@ -434,6 +411,46 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets('expand map keeps the manual camera on a phone', (tester) async {
+    tester.view.physicalSize = const Size(361, 738);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+      );
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+    });
+    await tester.pumpAndSettle();
+    final before =
+        tester
+            .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+            .controller
+            .value
+          ..translateByDouble(-24, -12, 0, 1);
+    await tester.tap(find.byKey(const Key('country-expand-map')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('country-collapse-map')), findsOneWidget);
+    expect(
+      tester
+          .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+          .controller
+          .value,
+      before,
+    );
+    await tester.tap(find.byKey(const Key('country-collapse-map')));
+    await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap))
+          .controller
+          .value,
+      before,
+    );
+  });
 
   testWidgets('country picker opens a searchable country sheet on a phone', (
     tester,
@@ -456,6 +473,43 @@ void main() {
     expect(find.byKey(const Key('country-list-search')), findsOneWidget);
     expect(find.text('Choose a country'), findsOneWidget);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('map layers can keep names, capitals and flags together', (
+    tester,
+  ) async {
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+      );
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+    });
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('country-direct-layers')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('country-direct-layer-capital')));
+    await tester.tap(find.byKey(const Key('country-direct-layer-flag')));
+    QuizipediaWorldMap currentMap() =>
+        tester.widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap));
+    for (
+      var frame = 0;
+      frame < 40 && currentMap().capitalPoints['FR'] == null;
+      frame++
+    ) {
+      await tester.pump(const Duration(milliseconds: 16));
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 20)),
+      );
+    }
+    await tester.pump();
+
+    final map = currentMap();
+    expect(map.showFlags, isTrue);
+    expect(map.overlayLabels['FR'], contains('France'));
+    expect(map.overlayLabels['FR'], contains('Paris'));
+    expect(map.capitalPoints['FR'], isNotNull);
+    expect(map.capitalLabels['FR'], 'Paris');
   });
 
   testWidgets('a country answer shows feedback on its first tap', (
@@ -490,7 +544,7 @@ void main() {
   });
 
   testWidgets(
-    'flag fills the country outline without leaking into the sea or moving camera',
+    'flag is a raised country marker without repainting the country outline',
     (tester) async {
       final controller = TransformationController(
         Matrix4.identity()..translateByDouble(-18, -12, 0, 1),
@@ -564,12 +618,15 @@ void main() {
             pixels.getUint8((y * image.width + x) * 4 + i),
         ];
         final land = rgb(60, 120), sea = rgb(30, 120);
-        expect(land[2], greaterThan(land[0] + 60));
+        expect(
+          land[1],
+          greaterThan(land[2]),
+          reason: 'Land keeps its map fill.',
+        );
         expect(sea, rgb(20, 130));
-        expect(sea[0], greaterThan(land[0]));
         image.dispose();
       });
-      expect(find.text('France'), findsNothing);
+      expect(find.byKey(const Key('map-country-flag-fr')), findsOneWidget);
       expect(controller.value, camera);
     },
   );

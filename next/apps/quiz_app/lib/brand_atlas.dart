@@ -2,6 +2,7 @@
 library;
 
 import 'fact_practice.dart';
+import 'atlas_media.dart';
 
 import 'russian_learning_text.dart';
 
@@ -376,16 +377,17 @@ class BrandAtlas {
 
   List<BrandQuestion> questionsFor({int seed = 0}) {
     final result = <BrandQuestion>[];
-    List<String>? four(String answer, Iterable<String> candidates) {
+    List<String>? choices(String answer, Iterable<String> candidates) {
       final others = candidates.where((item) => item != answer).toSet().toList()
         ..sort();
-      if (others.length < 3) return null;
-      return [answer, ...others.take(3)];
+      final count = brands.length >= 6 ? 5 : 3;
+      if (others.length < count) return null;
+      return [answer, ...others.take(count)];
     }
 
     for (final brand in brands) {
       final owner = ownerFor(brand);
-      final ownerOptions = four(owner.name, owners.map((item) => item.name));
+      final ownerOptions = choices(owner.name, owners.map((item) => item.name));
       if (ownerOptions != null) {
         result.add(
           BrandQuestion(
@@ -404,7 +406,7 @@ class BrandAtlas {
       }
       if (brand.foundedYear != null) {
         final answer = '${brand.foundedYear}';
-        final options = four(
+        final options = choices(
           answer,
           brands
               .where((item) => item.foundedYear != null)
@@ -430,7 +432,7 @@ class BrandAtlas {
       for (final former in brand.formerNames.where(
         (item) => item.quizEnabled,
       )) {
-        final options = four(
+        final options = choices(
           brand.name,
           brands
               .where((item) => item.id != brand.id)
@@ -461,7 +463,7 @@ class BrandAtlas {
         final candidates = brands
             .expand((item) => item.founders)
             .where((item) => !brand.founders.contains(item));
-        final options = four(founder, candidates);
+        final options = choices(founder, candidates);
         if (options != null) {
           result.add(
             BrandQuestion(
@@ -486,7 +488,7 @@ class BrandAtlas {
                 .hasMatch('${item.textRu} ${item.textEn}'),
       )) {
         final answer = '${moment.year}';
-        final options = four(
+        final options = choices(
           answer,
           brands
               .expand((item) => item.logoHistory)
@@ -875,6 +877,11 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
             (brand) => Card(
               child: ListTile(
                 key: Key('brand-${brand.id}'),
+                leading: AtlasMedia(
+                  scope: 'brands',
+                  entityId: brand.id,
+                  compact: true,
+                ),
                 title: Text(_displayName(brand.name)),
                 subtitle: Text(
                   '${_displayName(atlas.ownerFor(brand).name)}\n${_sectorName(brand)} · ${_country(brand)}${brand.foundedYear == null ? '' : ' · ${brand.foundedYear}'}',
@@ -910,6 +917,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AtlasMedia(scope: 'brands', entityId: brand.id),
             Row(
               children: [
                 Expanded(

@@ -269,16 +269,11 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(2, 2, 1, 1);
       viewer.transformationController!.value = camera;
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      final layer = find.byKey(const Key('country-direct-layer-water'));
+      await tester.ensureVisible(layer);
+      await tester.tap(layer);
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('atlas-map-layer')));
-      await tester.tap(find.byKey(const Key('atlas-map-layer')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Water bodies').last);
-      await tester.pumpAndSettle();
-      Navigator.of(tester.element(find.byKey(const Key('atlas-map-layer'))))
-          .pop();
-      await tester.pumpAndSettle();
+      expect(tester.widget<FilterChip>(layer).selected, isTrue);
       expect(bundle.loads, 1);
       expect(find.byKey(const Key('water-geometry-retry')), findsOneWidget);
       expect(find.byKey(const Key('quizipedia-viewport')), findsOneWidget);

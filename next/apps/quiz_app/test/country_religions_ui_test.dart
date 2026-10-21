@@ -36,20 +36,21 @@ void main() {
         ..translateByDouble(-20, -10, 0, 1)
         ..scaleByDouble(1.8, 1.8, 1, 1);
       viewer.transformationController!.value = camera;
+      final layer = find.byKey(const Key('country-direct-layer-religion'));
+      await tester.ensureVisible(layer);
+      await tester.tap(layer);
+      await tester.pumpAndSettle();
+      expect(tester.widget<FilterChip>(layer).selected, isTrue);
+      expect(viewer.transformationController!.value, camera);
+      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
       await tester.tap(find.byKey(const Key('country-map-settings')));
-      await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('atlas-map-layer')));
-      await tester.tap(find.byKey(const Key('atlas-map-layer')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Religious affiliation').last);
       await tester.pumpAndSettle();
       expect(
         find.textContaining('2020 estimates (published 2025)'),
         findsOneWidget,
       );
-      expect(viewer.transformationController!.value, camera);
-      Navigator.of(tester.element(find.byKey(const Key('atlas-map-layer'))))
-          .pop();
+      expect(find.text('Pew Research Center'), findsOneWidget);
+      Navigator.of(tester.element(find.text('Pew Research Center'))).pop();
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('map-country-search')));
       await tester.enterText(

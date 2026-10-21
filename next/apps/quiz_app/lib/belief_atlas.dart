@@ -1,6 +1,7 @@
 library;
 
 import 'fact_practice.dart';
+import 'atlas_media.dart';
 
 import 'russian_learning_text.dart';
 
@@ -18,28 +19,24 @@ import 'map_interaction.dart';
 /// on the same responsive layout.
 class BeliefGraphGeometry {
   BeliefGraphGeometry({required double viewportWidth, required this.count})
-    : narrow = viewportWidth < 600,
-      sceneWidth = viewportWidth < 600
-          ? viewportWidth
-          : max(520.0, viewportWidth),
-      columns = viewportWidth < 600 ? 1 : 3,
-      nodeWidth = viewportWidth < 600
-          ? min(240.0, max(44.0, viewportWidth - 32))
-          : 140;
+    : narrow = false,
+      sceneWidth = max(320.0, viewportWidth),
+      columns = 3,
+      nodeWidth = min(140.0, max(92.0, (max(320.0, viewportWidth) - 64) / 3));
 
   final bool narrow;
   final int count, columns;
   final double sceneWidth, nodeWidth;
   static const nodeHeight = 56.0;
   int get rows => max(1, (count / columns).ceil());
-  double get rowStep => narrow ? 164 : 110;
-  double get topInset => narrow ? 12 : 36;
+  double get rowStep => 82;
+  double get topInset => 16;
   double get sceneHeight =>
       max(280.0, topInset + (rows - 1) * rowStep + nodeHeight + topInset);
 
   Rect nodeRect(int index) {
     final column = index % columns;
-    final left = narrow ? (sceneWidth - nodeWidth) / 2 : 40 + column * 165.0;
+    final left = 16 + column * (nodeWidth + 16);
     return Rect.fromLTWH(
       left,
       topInset + (index ~/ columns) * rowStep,
@@ -87,7 +84,9 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
   BeliefAtlas? _atlas;
   Object? _error;
   String _section = 'greek', _selected = '';
-  bool _full = false, _loading = true;
+  // An overview is useful before a learner chooses a node.  Camera changes
+  // after that point are always deliberate: drag, pinch, zoom, fit or reset.
+  bool _full = false, _loading = true, _fitQueued = false;
   @override
   void initState() {
     super.initState();
@@ -107,10 +106,15 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
         setState(() {
           _atlas = a;
           final sectionNodes = a.nodes.where((n) => n.section == _section);
-          _selected = sectionNodes.isEmpty ? '' : sectionNodes.first.id;
+          _selected =
+              _section == 'greek' &&
+                  sectionNodes.any((node) => node.id == 'zeus')
+              ? 'zeus'
+              : (sectionNodes.isEmpty ? '' : sectionNodes.first.id);
           _error = null;
           _loading = false;
         });
+        _scheduleInitialFit();
       }
     } catch (e) {
       if (mounted) {
@@ -155,6 +159,16 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
             .length;
   void _choose(String id) {
     setState(() => _selected = id);
+  }
+
+  void _scheduleInitialFit() {
+    if (_fitQueued) return;
+    _fitQueued = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _fitQueued = false;
+      _fit();
+    });
   }
 
   void _zoom(double f) {
@@ -236,12 +250,16 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
                 if (section != _section &&
                     a.nodes.any((n) => n.section == section))
                   TextButton(
-                    onPressed: () => setState(() {
-                      _section = section;
-                      _selected = a.nodes
-                          .firstWhere((n) => n.section == section)
-                          .id;
-                    }),
+                    onPressed: () {
+                      setState(() {
+                        _section = section;
+                        _selected = a.nodes
+                            .firstWhere((n) => n.section == section)
+                            .id;
+                        _full = false;
+                      });
+                      _scheduleInitialFit();
+                    },
                     child: Text(
                       section == 'greek'
                           ? _t('Greek gods', 'Греческие боги')
@@ -282,12 +300,19 @@ class _BeliefAtlasPageState extends State<BeliefAtlasPage> {
                   ),
                 ],
                 selected: {_section},
-                onSelectionChanged: (v) => setState(() {
-                  _section = v.first;
-                  final first = a.nodes.where((n) => n.section == _section);
-                  _selected = first.isEmpty ? '' : first.first.id;
-                  _full = false;
-                }),
+                onSelectionChanged: (v) {
+                  setState(() {
+                    _section = v.first;
+                    final first = a.nodes.where((n) => n.section == _section);
+                    _selected =
+                        _section == 'greek' &&
+                            first.any((node) => node.id == 'zeus')
+                        ? 'zeus'
+                        : (first.isEmpty ? '' : first.first.id);
+                    _full = false;
+                  });
+                  _scheduleInitialFit();
+                },
               ),
               const SizedBox(height: 12),
               TextField(
@@ -560,12 +585,17 @@ class _Graph extends StatelessWidget {
                                       key: Key('belief-node-${shown[i].id}'),
                                       onPressed: () => onTap(shown[i].id),
                                       style: FilledButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 4,
+                                          vertical: 6,
+                                        ),
                                         backgroundColor: shown[i].id == selected
                                             ? Theme.of(c).colorScheme.primary
                                             : Theme.of(c).colorScheme.secondary,
                                       ),
                                       child: Text(
                                         name(shown[i]),
+                                        style: const TextStyle(fontSize: 12),
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -724,6 +754,7 @@ class _Detail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AtlasMedia(scope: node.section, entityId: node.id),
             Text(
               v(node.en, node.ru),
               style: Theme.of(c).textTheme.headlineSmall,

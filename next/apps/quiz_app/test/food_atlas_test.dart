@@ -21,8 +21,8 @@ void main() {
       expect(round, hasLength(10));
       expect(round.map((question) => question.dishId).toSet(), hasLength(10));
       for (final question in round) {
-        expect(question.optionsEn, hasLength(4));
-        expect(question.optionsEn.toSet(), hasLength(4));
+        expect(question.optionsEn, hasLength(6));
+        expect(question.optionsEn.toSet(), hasLength(6));
         expect(
           question.optionsEn.where((option) => option == question.answerEn),
           hasLength(1),

@@ -54,6 +54,11 @@ void main() {
       });
       await tester.pump();
 
+      // The reference now opens with topic cards. Choosing note reading is also
+      // what makes the optional notation font relevant to this test.
+      await tester.tap(find.byKey(const Key('music-topic-notes')));
+      await tester.pump();
+
       final note = find.byKey(const Key('music-entry-note-0'));
       expect(note, findsOneWidget);
       expect(
@@ -74,8 +79,8 @@ void main() {
               height: 72,
               child: MusicVisual(
                 compact: true,
-                visual: {'note': 4},
-                label: 'note preview',
+                visual: {'text': 'tie'},
+                label: 'tie preview',
               ),
             ),
           ),
@@ -89,6 +94,7 @@ void main() {
         if (find.byType(FittedBox).evaluate().isNotEmpty) break;
       }
       expect(find.byType(FittedBox), findsOneWidget);
+      expect(find.text('⌒'), findsOneWidget);
       expect(tester.takeException(), isNull);
     },
   );

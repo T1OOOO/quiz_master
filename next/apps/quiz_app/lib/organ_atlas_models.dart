@@ -248,8 +248,8 @@ class OrganQuestion {
     final topic = _string(json, 'topic');
     final options = _strings(json['option_ids'], 'question options');
     if (!organQuestionTopics.contains(topic) ||
-        options.length != 4 ||
-        options.toSet().length != 4) {
+        !{4, 6}.contains(options.length) ||
+        options.toSet().length != options.length) {
       throw const FormatException('question topic/options');
     }
     final correct = _string(json, 'correct_id');

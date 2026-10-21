@@ -84,19 +84,26 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(1.7, 1.7, 1, 1);
       viewer.transformationController!.value = camera;
+      final layer = find.byKey(const Key('country-direct-layer-instrument'));
+      await tester.ensureVisible(layer);
+      await tester.tap(layer);
+      await tester.pumpAndSettle();
+      expect(tester.widget<FilterChip>(layer).selected, isTrue);
+      final map = tester.widget<QuizipediaWorldMap>(
+        find.byType(QuizipediaWorldMap),
+      );
+      expect(map.overlayLabels['JP'], contains('Koto'));
+      expect(viewer.transformationController!.value, camera);
+      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
       await tester.tap(find.byKey(const Key('country-map-settings')));
-      await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('atlas-map-layer')));
-      await tester.tap(find.byKey(const Key('atlas-map-layer')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Musical instruments').last);
       await tester.pumpAndSettle();
       expect(
         find.textContaining('Selected cultural associations'),
         findsOneWidget,
       );
-      Navigator.of(tester.element(find.byKey(const Key('atlas-map-layer'))))
-          .pop();
+      Navigator.of(
+        tester.element(find.textContaining('Selected cultural associations')),
+      ).pop();
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('map-country-search')));
       await tester.enterText(

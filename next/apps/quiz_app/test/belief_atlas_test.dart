@@ -36,14 +36,19 @@ void main() {
       addTearDown(tester.view.resetDevicePixelRatio);
       await tester.pumpWidget(_app(scaler: const TextScaler.linear(1.5)));
       await tester.pumpAndSettle();
-      await tester.tap(find.byTooltip('Zoom in'));
-      await tester.pump();
       final before = tester
           .widget<InteractiveViewer>(find.byKey(const Key('belief-graph')))
           .transformationController!
           .value
           .clone();
-      await tester.tap(find.byKey(const Key('belief-node-zeus')));
+      // Zoom controls sit below the graph and scroll the surrounding map into
+      // view. Return to the graph before tapping a real transformed node.
+      final graph = find.byKey(const Key('belief-graph'));
+      await tester.ensureVisible(graph);
+      await tester.pumpAndSettle();
+      final hera = find.byKey(const Key('belief-node-hera'));
+      expect(tester.getRect(graph).overlaps(tester.getRect(hera)), isTrue);
+      await tester.tap(hera);
       await tester.pump();
       final after = tester
           .widget<InteractiveViewer>(find.byKey(const Key('belief-graph')))
@@ -51,6 +56,11 @@ void main() {
           .value;
       expect(after.storage, before.storage);
       expect(find.byKey(const Key('belief-detail')), findsOneWidget);
+      final heraButton = tester.widget<FilledButton>(hera);
+      expect(
+        heraButton.style!.backgroundColor!.resolve(<WidgetState>{}),
+        Theme.of(tester.element(hera)).colorScheme.primary,
+      );
       await tester.enterText(find.byKey(const Key('belief-search')), 'Hera');
       await tester.pump();
       await tester.ensureVisible(find.byKey(const Key('belief-list-hera')));
@@ -58,6 +68,39 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Hera'), findsWidgets);
       expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'initial overview fits several Greek nodes and relations without moving on selection',
+    (tester) async {
+      tester.view.physicalSize = const Size(361, 738);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(_app());
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('belief-node-zeus')), findsOneWidget);
+      expect(find.byKey(const Key('belief-node-hera')), findsOneWidget);
+      expect(
+        find.bySemanticsLabel(RegExp('Zeus → Athena: Father')),
+        findsOneWidget,
+      );
+      final viewer = tester.widget<InteractiveViewer>(
+        find.byKey(const Key('belief-graph')),
+      );
+      final initial = viewer.transformationController!.value.clone();
+      expect(initial.entry(0, 0), lessThanOrEqualTo(1));
+      await tester.tap(find.byKey(const Key('belief-node-hera')));
+      await tester.pump();
+      expect(
+        tester
+            .widget<InteractiveViewer>(find.byKey(const Key('belief-graph')))
+            .transformationController!
+            .value
+            .storage,
+        initial.storage,
+      );
     },
   );
 
@@ -74,11 +117,14 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Full graph'));
-      await tester.pump();
+      expect(find.byKey(const Key('belief-node-zeus')), findsOneWidget);
+      expect(find.byKey(const Key('belief-node-node-20')), findsNothing);
+      await tester.ensureVisible(find.widgetWithText(FilterChip, 'Full graph'));
+      await tester.tap(find.widgetWithText(FilterChip, 'Full graph'));
+      await tester.pumpAndSettle();
       expect(
         tester.getSize(find.byKey(const Key('belief-scene'))).height,
-        greaterThan(700),
+        greaterThan(500),
       );
       expect(find.bySemanticsLabel('Node 20'), findsWidgets);
       await tester.ensureVisible(find.byKey(const Key('belief-fit')));
@@ -102,6 +148,46 @@ void main() {
       );
     },
   );
+
+  testWidgets('switching to religions fits its overview once', (tester) async {
+    final data = _fixture();
+    final religions = <Map<String, Object>>[
+      for (final id in ['tradition-a', 'tradition-b'])
+        {
+          ...Map<String, Object>.from((data['nodes'] as List).first),
+          'id': id,
+          'section': 'religions',
+          'name_en': id,
+          'name_ru': id,
+        },
+    ];
+    (data['nodes'] as List).addAll(religions);
+    (data['edges'] as List).add({
+      'id': 'religion-edge',
+      'from_id': 'tradition-a',
+      'to_id': 'tradition-b',
+      'label_ru': 'Связь',
+      'label_en': 'Relation',
+      'scope_ru': 'Традиция',
+      'scope_en': 'Tradition',
+      'source_ids': ['s'],
+    });
+    await tester.pumpWidget(
+      MaterialApp(home: BeliefAtlasPage(bundle: _Bundle(jsonEncode(data)))),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Religions'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('belief-node-tradition-a')), findsOneWidget);
+    expect(
+      tester
+          .widget<InteractiveViewer>(find.byKey(const Key('belief-graph')))
+          .transformationController!
+          .value
+          .entry(0, 0),
+      lessThanOrEqualTo(1),
+    );
+  });
 
   testWidgets(
     'checked quiz completes finite mistakes review and retry is asynchronous',

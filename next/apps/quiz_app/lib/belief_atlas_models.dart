@@ -173,8 +173,8 @@ class BeliefQuestion {
   final List<String> options, sourceIds;
   factory BeliefQuestion.fromJson(Map<String, dynamic> r) {
     final o = _ids(r['option_ids'], 'question option');
-    if (o.length != 4 || o.toSet().length != 4) {
-      throw FormatException('four unique options');
+    if (!{4, 6}.contains(o.length) || o.toSet().length != o.length) {
+      throw FormatException('four or six unique options');
     }
     final correct = _string(r, 'correct_id');
     if (o.where((id) => id == correct).length != 1) {

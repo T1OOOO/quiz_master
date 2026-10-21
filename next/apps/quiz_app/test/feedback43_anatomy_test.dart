@@ -30,7 +30,7 @@ final _anatomyFixture = <String, dynamic>{
         'id': row[0],
         'name_en': row[1],
         'name_ru': row[2],
-        'system_ids': ['musculoskeletal'],
+        'system_ids': [row[0] == 'kidney' ? 'endocrine' : 'musculoskeletal'],
         'kind': row[4],
         'region': row[3],
         'position_en': 'Approximate position.',
@@ -142,6 +142,32 @@ void main() {
     expect(() => OrganAtlas.fromJson(invalid), throwsFormatException);
   });
 
+  testWidgets('initial scoped training does not load questions outside bones', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        home: OrganAtlasPage(
+          bundle: _Bundle(),
+          initialScope: OrganAtlasScope.bones,
+          training: true,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // The fixture question only names four organs; it must not appear in the
+    // bone route merely because training started before the atlas UI did.
+    expect(
+      find.text('Нет подходящих вопросов для этих фильтров.'),
+      findsOneWidget,
+    );
+    expect(find.text('Что?'), findsNothing);
+  });
+
   testWidgets(
     'major illustrated organs are all selectable before browsing the directory',
     (tester) async {
@@ -197,4 +223,154 @@ void main() {
       expect(find.byKey(const Key('organ-map-target-skeleton')), findsNothing);
     },
   );
+
+  testWidgets('bones open as a separate named catalogue', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        home: OrganAtlasPage(
+          bundle: _Bundle(),
+          initialScope: OrganAtlasScope.bones,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Каталог костей'), findsOneWidget);
+    expect(find.byKey(const Key('organ-directory-bones')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const Key('organ-directory-bones')));
+    await tester.tap(find.byKey(const Key('organ-directory-bones')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('organ-list-skeleton')), findsOneWidget);
+    expect(find.byKey(const Key('organ-list-heart')), findsNothing);
+    expect(find.byKey(const Key('anatomy-scene')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const Key('anatomy-marker-skull')));
+    await tester.tap(find.byKey(const Key('anatomy-marker-skull')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('anatomy-show-all')), findsOneWidget);
+  });
+
+  for (final size in [const Size(361, 738), const Size(393, 851)]) {
+    testWidgets('systems exposes groups and kidney card immediately at $size', (
+      tester,
+    ) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: OrganAtlasPage(
+            bundle: _Bundle(),
+            initialScope: OrganAtlasScope.systems,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Системы организма'), findsOneWidget);
+      expect(find.byKey(const Key('organ-map')), findsNothing);
+      final endocrine = find.byKey(const Key('organ-system-endocrine'));
+      expect(endocrine, findsOneWidget);
+      final bounds = tester.getRect(endocrine);
+      expect(bounds.left, greaterThanOrEqualTo(0));
+      expect(bounds.right, lessThanOrEqualTo(size.width));
+      await tester.tap(endocrine);
+      await tester.pumpAndSettle();
+      final kidney = find.byKey(const Key('organ-list-kidney'));
+      await tester.ensureVisible(kidney);
+      await tester.tap(kidney);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-detail')), findsOneWidget);
+      expect(find.text('Почка'), findsWidgets);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
+  testWidgets('brain scene selects only a visibly labelled brain card', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        home: OrganAtlasPage(
+          bundle: _Bundle(),
+          initialScope: OrganAtlasScope.brain,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('anatomy-scene')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('anatomy-marker-cerebellum')));
+    await tester.pumpAndSettle();
+    await Scrollable.ensureVisible(
+      tester.element(find.byKey(const Key('organ-list-cerebellum'))),
+    );
+    expect(find.byKey(const Key('organ-list-cerebellum')), findsOneWidget);
+    expect(find.byKey(const Key('anatomy-show-all')), findsOneWidget);
+  });
+
+  testWidgets('bone illustration exposes working manual zoom controls', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: OrganAtlasPage(
+          bundle: _Bundle(),
+          initialScope: OrganAtlasScope.bones,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final scene = find.byKey(const Key('anatomy-scene'));
+    final viewer = tester.widget<InteractiveViewer>(scene);
+    final before = viewer.transformationController!.value.storage[0];
+    expect(viewer.scaleEnabled, isTrue);
+    await tester.tap(find.byTooltip('Zoom in'));
+    await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<InteractiveViewer>(scene)
+          .transformationController!
+          .value
+          .storage[0],
+      greaterThan(before),
+    );
+  });
+
+  for (final size in [const Size(361, 738), const Size(393, 851)]) {
+    testWidgets('bone catalogue remains usable at $size', (tester) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: OrganAtlasPage(
+            bundle: _Bundle(),
+            initialScope: OrganAtlasScope.bones,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Каталог костей'), findsOneWidget);
+      final directory = find.byKey(const Key('organ-directory-bones'));
+      await tester.ensureVisible(directory);
+      await tester.tap(directory);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('organ-list-skeleton')), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  }
 }

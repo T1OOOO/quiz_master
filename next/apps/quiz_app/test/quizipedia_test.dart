@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/main.dart';
@@ -10,6 +11,55 @@ import 'package:quiz_app/quizipedia.dart';
 import 'package:quiz_app/country_learning.dart';
 
 void main() {
+  testWidgets(
+    'photo country filters use Russian names and keep matching photos',
+    (tester) async {
+      final data = fixture();
+      for (final entry in (data['landmarks'] as List).indexed) {
+        final row = entry.$2 as Map;
+        final france = entry.$1.isEven;
+        row['country_iso2'] = france ? 'FR' : 'AU';
+        row['country_name_ru'] = france ? 'Франция' : 'Австралия';
+        row['country_name_en'] = france ? 'France' : 'Australia';
+        row['tag_ids'] = [
+          'domain:geography',
+          'skill:recognition',
+          'topic:architecture',
+        ];
+      }
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru'), Locale('en')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: QuizipediaPage(bundle: _Bundle(data)),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Фотографии достопримечательностей'));
+      await tester.pumpAndSettle();
+      expect(find.widgetWithText(ChoiceChip, 'Франция'), findsOneWidget);
+      expect(find.widgetWithText(ChoiceChip, 'Архитектура'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('landmark-country-FR')));
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const Key('landmark-catalog-landmark:0')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const Key('landmark-catalog-landmark:2')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const Key('landmark-catalog-landmark:1')),
+        findsNothing,
+      );
+      expect(
+        find.byKey(const Key('landmark-catalog-landmark:3')),
+        findsNothing,
+      );
+    },
+  );
   testWidgets('photo picker requests only visible individual previews', (
     tester,
   ) async {
@@ -36,25 +86,46 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
-    await settleLoadedSection(tester);
-    await tester.ensureVisible(find.byKey(const Key('landmark-picker')));
-    await tester.tap(find.byKey(const Key('landmark-picker')));
     await tester.pumpAndSettle();
+    expect(find.byKey(const Key('landmark-catalog-grid')), findsOneWidget);
+    expect(
+      bundle.photos.where((v) => v.contains('missing-full-')),
+      isEmpty,
+      reason:
+          'The catalog does not request a full image until a photo is chosen.',
+    );
     expect(
       bundle.thumbLoads,
       0,
-      reason: 'Do not download the complete preview bundle',
-    );
-    expect(
-      bundle.photos.where((v) => v.contains('missing-full-')),
-      hasLength(1),
+      reason: 'Do not download the aggregate preview bundle.',
     );
     final previews = bundle.photos
         .where((v) => v.contains('missing-preview-'))
         .toSet();
     expect(previews, isNotEmpty);
-    expect(previews.length, lessThan(24));
+    expect(previews.length, lessThanOrEqualTo(8));
+    await tester.tap(find.byKey(const Key('landmark-catalog-lazy-photo-0')));
+    await tester.pump();
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
+    );
+    await tester.pump();
+    expect(
+      bundle.photos.where((v) => v.contains('missing-full-')),
+      hasLength(1),
+    );
   });
+  testWidgets('anatomy cards expose one practice action per scope', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: QuizipediaPage()));
+    await tester.pumpAndSettle();
+    for (final scope in ['organs', 'bones', 'brain', 'systems']) {
+      await tester.scrollUntilVisible(find.byKey(Key('practice-$scope')), 180);
+      expect(find.byKey(Key('practice-$scope')), findsOneWidget);
+    }
+  });
+
   testWidgets('home does not fetch unopened atlas data or full photos', (
     tester,
   ) async {
@@ -725,6 +796,8 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: QuizipediaPage(bundle: bundle)));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('landmark-catalog-landmark:0')));
     await decodedPhoto();
     for (var i = 0; i < 4; i++) {
       await tester.ensureVisible(find.byTooltip('Next photograph'));
@@ -792,6 +865,39 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  test('native domain pools generate six distinct reviewed choices', () async {
+    final catalog = QuizipediaCatalog.fromJson(
+      jsonDecode(await rootBundle.loadString('assets/quizipedia/catalog.json'))
+          as Map<String, dynamic>,
+    );
+    final pools = <String, List<String>>{
+      'world': catalog.mapTargetIds,
+      'endocrine': (catalog.anatomy['targets'] as List)
+          .cast<Map<String, dynamic>>()
+          .map((row) => row['id'] as String)
+          .toList(),
+      'sky': catalog.constellations.map((row) => row['id'] as String).toList(),
+      'photo': catalog.landmarks.map((row) => row['id'] as String).toList(),
+    };
+    for (final entry in pools.entries) {
+      expect(entry.value.toSet(), hasLength(entry.value.length));
+      expect(entry.value.length, greaterThanOrEqualTo(6), reason: entry.key);
+      final session = QuizipediaSession(
+        entry.value,
+        (_) => entry.value,
+        choiceCount: 6,
+      );
+      while (true) {
+        expect(session.options, hasLength(6), reason: entry.key);
+        expect(session.options.toSet(), hasLength(6), reason: entry.key);
+        expect(session.options, contains(session.current), reason: entry.key);
+        expect(session.submit(session.current), isTrue, reason: entry.key);
+        if (session.finished) break;
+        session.next();
+      }
+    }
+  });
+
   test('photo rounds offer six real choices with smaller-pool fallback', () {
     final six = ['a', 'b', 'c', 'd', 'e', 'f'];
     final round = QuizipediaSession(six, (_) => six, choiceCount: 6);
@@ -831,6 +937,12 @@ void main() {
       await Future<void>.delayed(const Duration(milliseconds: 150));
     });
     await settleLoadedSection(tester);
+    await tester.tap(find.byKey(const Key('landmark-catalog-landmark:0')));
+    await tester.pump();
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
+    );
+    await tester.pump();
     final picker = find.byKey(const Key('landmark-picker'));
     await tester.ensureVisible(picker);
     await tester.tap(picker);
@@ -902,6 +1014,9 @@ void main() {
     );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Landmark photographs'));
+    await settleLoadedSection(tester);
+    expect(find.byKey(const Key('landmark-catalog-grid')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('landmark-catalog-landmark:0')));
     await settleLoadedSection(tester);
     expect(find.text('Retry'), findsOneWidget);
     expect(find.text('Check'), findsNothing);

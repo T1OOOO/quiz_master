@@ -48,6 +48,9 @@ void main() {
       Matrix4.identity(),
       reason: 'Country selection must preserve the user camera.',
     );
+    await tester.ensureVisible(
+      find.byKey(const Key('country-selected-details')),
+    );
     await tester.tap(find.byKey(const Key('country-selected-details')));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Official language source'));

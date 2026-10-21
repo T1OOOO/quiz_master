@@ -2,6 +2,8 @@
 library;
 
 import 'fact_practice.dart';
+import 'chronology_timeline.dart';
+import 'atlas_media.dart';
 
 import 'russian_learning_text.dart';
 
@@ -339,7 +341,7 @@ class KnowledgeAtlas {
           .where((label) => label != answerDate)
           .toSet()
           .toList();
-      if (candidates.length >= 3) {
+      if (candidates.length >= 5) {
         result.add(
           KnowledgeQuestion(
             kind: KnowledgeQuestionKind.date,
@@ -350,7 +352,7 @@ class KnowledgeAtlas {
                 ? 'About when did “${event.titleEn}” happen?'
                 : 'When did “${event.titleEn}” happen?',
             answer: answerDate,
-            options: [answerDate, ...candidates.take(3)],
+            options: [answerDate, ...candidates.take(5)],
             explanationRu: '${event.titleRu}: $answerDate. ${event.whatRu}',
             explanationEn: '${event.titleEn}: $answerDate. ${event.whatEn}',
             sourceUrl: event.sourceUrl,
@@ -358,13 +360,15 @@ class KnowledgeAtlas {
         );
       }
     }
-    for (var index = 3; index < events.length; index += 4) {
+    for (var index = 5; index < events.length; index += 6) {
       final answer = events[index];
       final options = [
         answer,
         events[index - 1],
         events[index - 2],
         events[index - 3],
+        events[index - 4],
+        events[index - 5],
       ];
       if (options.map((event) => event.year).toSet().length != options.length) {
         continue;
@@ -387,10 +391,10 @@ class KnowledgeAtlas {
       final creator = peopleById[work.creatorIds.first]!;
       final distractors = people
           .where((person) => !work.creatorIds.contains(person.id))
-          .take(3)
+          .take(5)
           .map((person) => person.nameEn)
           .toList();
-      if (distractors.length == 3) {
+      if (distractors.length == 5) {
         result.add(
           KnowledgeQuestion(
             kind: KnowledgeQuestionKind.creator,
@@ -412,10 +416,10 @@ class KnowledgeAtlas {
         final distractors = people
             .where((person) => !excluded.contains(person.id))
             .where((person) => person.roles.contains('actor'))
-            .take(3)
+            .take(5)
             .map((person) => person.nameEn)
             .toList();
-        if (distractors.length == 3) {
+        if (distractors.length == 5) {
           result.add(
             KnowledgeQuestion(
               kind: KnowledgeQuestionKind.credit,
@@ -622,7 +626,28 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           ],
         ),
         const SizedBox(height: 12),
-        if (selected != null) _eventCard(atlas, selected, events),
+        ChronologyTimeline(
+          entries: events
+              .map(
+                (event) => ChronologyEntry(
+                  id: event.id,
+                  year: event.year,
+                  date: _date(
+                    event.year,
+                    endYear: event.endYear,
+                    approximate: event.approximate,
+                  ),
+                  title: _eventName(event),
+                ),
+              )
+              .toList(),
+          selectedId: selected?.id,
+          onSelected: (id) => _showEvent(
+            atlas,
+            events.firstWhere((event) => event.id == id),
+            events,
+          ),
+        ),
         const SizedBox(height: 8),
         ...events.map(
           (event) => Card(
@@ -636,7 +661,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
               title: Text(_eventName(event)),
               subtitle: Text(_eraLabel(event.era)),
               trailing: const Icon(Icons.chevron_right),
-              onTap: () => _showEvent(atlas, event),
+              onTap: () => _showEvent(atlas, event, events),
             ),
           ),
         ),
@@ -689,7 +714,25 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           ],
         ),
         const SizedBox(height: 12),
-        if (selected != null) _workCard(atlas, selected),
+        ChronologyTimeline(
+          entries: works
+              .map(
+                (work) => ChronologyEntry(
+                  id: work.id,
+                  year: work.year,
+                  date: _date(
+                    work.year,
+                    endYear: work.endYear,
+                    approximate: work.approximate,
+                  ),
+                  title: _workName(work),
+                ),
+              )
+              .toList(),
+          selectedId: selected?.id,
+          onSelected: (id) =>
+              _showWork(atlas, works.firstWhere((work) => work.id == id)),
+        ),
         ...works.map(
           (work) => Card(
             child: ListTile(
@@ -732,8 +775,10 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           (person) => Card(
             child: ListTile(
               key: Key('knowledge-person-${person.id}'),
-              leading: CircleAvatar(
-                child: Text(_personName(person).characters.first),
+              leading: AtlasMedia(
+                scope: 'people',
+                entityId: person.id,
+                compact: true,
               ),
               title: Text(_personName(person)),
               subtitle: Text(
@@ -770,7 +815,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       padding: const EdgeInsets.only(bottom: 8),
       child: FilledButton.icon(
         key: const Key('knowledge-train'),
-        onPressed: () => _showQuiz(atlas),
+        onPressed: atlas.questions.isEmpty ? null : () => _showQuiz(atlas),
         icon: const Icon(Icons.school_outlined),
         label: Text(_text('Train connections', 'Тренировать связи')),
       ),
@@ -781,6 +826,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     KnowledgeAtlas atlas,
     AtlasEvent event,
     List<AtlasEvent> visible,
+    ValueChanged<AtlasEvent> onSelectEvent,
   ) {
     final index = visible.indexOf(event);
     return Card(
@@ -801,18 +847,14 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                 IconButton(
                   tooltip: _text('Previous event', 'Предыдущее событие'),
                   onPressed: index > 0
-                      ? () => setState(
-                          () => _selectedEvent = visible[index - 1].id,
-                        )
+                      ? () => onSelectEvent(visible[index - 1])
                       : null,
                   icon: const Icon(Icons.arrow_back),
                 ),
                 IconButton(
                   tooltip: _text('Next event', 'Следующее событие'),
                   onPressed: index + 1 < visible.length
-                      ? () => setState(
-                          () => _selectedEvent = visible[index + 1].id,
-                        )
+                      ? () => onSelectEvent(visible[index + 1])
                       : null,
                   icon: const Icon(Icons.arrow_forward),
                 ),
@@ -911,6 +953,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AtlasMedia(scope: 'people', entityId: person.id),
             Text(
               _personName(person),
               style: Theme.of(context).textTheme.headlineSmall,
@@ -946,17 +989,32 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     onPressed: () => _showPerson(atlas, person),
   );
 
-  void _showEvent(KnowledgeAtlas atlas, AtlasEvent event) =>
-      showModalBottomSheet<void>(
-        context: context,
-        isScrollControlled: true,
-        builder: (sheetContext) => SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: _eventCard(atlas, event, [event]),
+  void _showEvent(
+    KnowledgeAtlas atlas,
+    AtlasEvent event,
+    List<AtlasEvent> visible,
+  ) {
+    // A modal builder is re-run when MediaQuery changes. Keep this outside
+    // it so resizing the viewport preserves the event being read.
+    var current = event;
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (sheetContext) {
+        return StatefulBuilder(
+          builder: (context, setSheetState) => SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: _eventCard(atlas, current, visible, (next) {
+                setSheetState(() => current = next);
+                setState(() => _selectedEvent = next.id);
+              }),
+            ),
           ),
-        ),
-      );
+        );
+      },
+    );
+  }
 
   void _showWork(KnowledgeAtlas atlas, AtlasWork work) =>
       showModalBottomSheet<void>(
@@ -1016,6 +1074,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       : dateLabel(year, endYear: endYear, approximate: approximate);
 
   void _showQuiz(KnowledgeAtlas atlas) {
+    if (atlas.questions.isEmpty) return;
     setState(() {
       _questionIndex = 0;
       _answer = null;

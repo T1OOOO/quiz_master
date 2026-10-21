@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'fact_practice_models.dart';
 
 const factPracticeSections = <String, (String, String)>{
+  'vascular': ('Артерии и вены', 'Arteries and veins'),
+  'animals': ('Животные: виды и породы', 'Animals: species and breeds'),
   'countries': ('Страны', 'Countries'),
   'sky': ('Созвездия', 'Constellations'),
   'endocrine': ('Эндокринная система', 'Endocrine system'),
@@ -22,9 +24,15 @@ const factPracticeSections = <String, (String, String)>{
 };
 
 class FactPracticeAction extends StatelessWidget {
-  const FactPracticeAction({super.key, required this.scope, this.bundle});
+  const FactPracticeAction({
+    super.key,
+    required this.scope,
+    this.bundle,
+    this.entityIds,
+  });
   final String scope;
   final AssetBundle? bundle;
+  final Set<String>? entityIds;
 
   @override
   Widget build(BuildContext context) => IconButton(
@@ -34,7 +42,11 @@ class FactPracticeAction extends StatelessWidget {
     icon: const Icon(Icons.fact_check_outlined),
     onPressed: () => Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => FactPracticePage(scope: scope, bundle: bundle),
+        builder: (_) => FactPracticePage(
+          scope: scope,
+          bundle: bundle,
+          entityIds: entityIds,
+        ),
       ),
     ),
   );
@@ -395,9 +407,7 @@ class _FactPracticePageState extends State<FactPracticePage> {
         ),
         const SizedBox(height: 16),
         Text(
-          _ru
-              ? 'Что указано в разделе «${f.fieldRu}» для «${f.nameRu}»?'
-              : 'What is listed under “${f.fieldEn}” for “${f.nameEn}”?',
+          factQuestionPrompt(f, russian: _ru),
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 16),
@@ -420,6 +430,63 @@ class _FactPracticePageState extends State<FactPracticePage> {
                       'Правильный ответ: ${f.valueRu}',
                       'Correct answer: ${f.valueEn}',
                     ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    _t('Почему этот ответ', 'Why this answer'),
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  Text(
+                    _ru
+                        ? '${f.nameRu} · ${f.fieldRu}: ${f.valueRu}'
+                        : '${f.nameEn} · ${f.fieldEn}: ${f.valueEn}',
+                  ),
+                  for (final contextFact in q.contextFacts)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        _ru ? contextFact.valueRu : contextFact.valueEn,
+                      ),
+                    ),
+                  ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    title: Text(
+                      _t(
+                        'Чем отличаются другие варианты',
+                        'Compare the other choices',
+                      ),
+                    ),
+                    children: [
+                      for (final option in q.options.where(
+                        (option) => option.id != q.correctId,
+                      ))
+                        if (option.reference case final reference?)
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text(_ru ? option.textRu : option.textEn),
+                            subtitle: Text(
+                              _ru
+                                  ? '${reference.nameRu} · ${reference.fieldRu}'
+                                  : '${reference.nameEn} · ${reference.fieldEn}',
+                            ),
+                            trailing: reference.sources.isEmpty
+                                ? null
+                                : IconButton(
+                                    tooltip: _t(
+                                      'Источник варианта',
+                                      'Choice source',
+                                    ),
+                                    icon: const Icon(
+                                      Icons.open_in_new,
+                                      size: 18,
+                                    ),
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(reference.sources.first.url),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                  ),
+                          ),
+                    ],
                   ),
                   for (final source in f.sources)
                     TextButton.icon(

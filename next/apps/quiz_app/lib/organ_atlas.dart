@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'organ_atlas_models.dart';
 import 'map_interaction.dart';
+import 'anatomy_scene.dart';
 
 Future<OrganAtlas> loadOrganAtlas([AssetBundle? bundle]) async {
   final raw = await (bundle ?? rootBundle).loadString(organAtlasAsset);
@@ -22,10 +23,20 @@ Future<OrganAtlas> loadOrganAtlas([AssetBundle? bundle]) async {
 /// basis and therefore cannot tell whether a 2D map has zoomed out.
 double organAtlasCameraScale(Matrix4 matrix) => matrix.storage[0].abs();
 
+/// A route can choose a truthful catalogue without loading a second anatomy
+/// asset. The data remains the retained, source-linked registry.
+enum OrganAtlasScope { all, organs, bones, brain, systems }
+
 class OrganAtlasPage extends StatefulWidget {
-  const OrganAtlasPage({super.key, this.bundle, this.training = false});
+  const OrganAtlasPage({
+    super.key,
+    this.bundle,
+    this.training = false,
+    this.initialScope = OrganAtlasScope.all,
+  });
   final AssetBundle? bundle;
   final bool training;
+  final OrganAtlasScope initialScope;
   @override
   State<OrganAtlasPage> createState() => _OrganAtlasPageState();
 }
@@ -37,7 +48,11 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   Future<OrganAtlas> _load() async {
     final atlas = await loadOrganAtlas(widget.bundle);
     if (widget.training && !_initialTrainingStarted) {
-      _round = atlas.round(seed: _seed++, count: 10);
+      _round = atlas.round(
+        seed: _seed++,
+        count: 10,
+        allowedIds: atlas.organs.where(_inScope).map((item) => item.id),
+      );
       _originalTotal = _round.length;
       _finished = _round.isEmpty;
       _initialTrainingStarted = true;
@@ -48,6 +63,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   final _search = TextEditingController();
   final _camera = TransformationController();
   String _region = '', _system = '', _kind = '';
+  Set<String>? _sceneIds;
   OrganStructure? _selected;
   bool _training = false, _checked = false, _finished = false, _review = false;
   List<OrganQuestion> _round = [], _missed = [];
@@ -97,13 +113,68 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   }
 
   OrganAtlas? _loadedAtlas;
+  bool _inScope(OrganStructure item) => switch (widget.initialScope) {
+    OrganAtlasScope.all => true,
+    OrganAtlasScope.organs =>
+      item.kind != 'bone' &&
+          item.kind != 'bone_group' &&
+          item.kind != 'brain_region',
+    OrganAtlasScope.bones => item.kind == 'bone' || item.kind == 'bone_group',
+    OrganAtlasScope.brain => item.kind == 'brain_region',
+    OrganAtlasScope.systems => true,
+  };
+
+  String _scopeTitle() => switch (widget.initialScope) {
+    OrganAtlasScope.all => _t('Human anatomy atlas', 'Атлас анатомии'),
+    OrganAtlasScope.organs => _t('Organs and glands', 'Органы и железы'),
+    OrganAtlasScope.bones => _t('Bone catalogue', 'Каталог костей'),
+    OrganAtlasScope.brain => _t('Brain regions', 'Отделы мозга'),
+    OrganAtlasScope.systems => _t('Body systems', 'Системы организма'),
+  };
+
+  String _scopeDirectoryTitle() => switch (widget.initialScope) {
+    OrganAtlasScope.all => _t('All structures', 'Все структуры'),
+    OrganAtlasScope.organs => _t('Organs and glands', 'Органы и железы'),
+    OrganAtlasScope.bones => _t('206 bones', '206 костей'),
+    OrganAtlasScope.brain => _t('Brain regions', 'Отделы мозга'),
+    OrganAtlasScope.systems => _t(
+      'Structures by body system',
+      'Структуры по системам',
+    ),
+  };
+
+  String _scopeDirectorySubtitle() => switch (widget.initialScope) {
+    OrganAtlasScope.all => _t(
+      'Organs, glands, bones and brain regions',
+      'Органы, железы, кости и отделы мозга',
+    ),
+    OrganAtlasScope.organs => _t(
+      'Major organs and named glandular structures',
+      'Крупные органы и именованные железистые структуры',
+    ),
+    OrganAtlasScope.bones => _t(
+      'Tap a visible region to filter the list of bones.',
+      'Нажмите на видимую область, чтобы отфильтровать список костей.',
+    ),
+    OrganAtlasScope.brain => _t(
+      'Tap a visible region or browse all brain cards.',
+      'Нажмите на видимый отдел или просмотрите все карточки мозга.',
+    ),
+    OrganAtlasScope.systems => _t(
+      'Each item appears under its recorded system or systems',
+      'Каждый объект показан в записанной для него системе или системах',
+    ),
+  };
+
   List<OrganStructure> _visible(OrganAtlas atlas) {
     final query = _search.text.trim().toLowerCase();
     return atlas.organs.where((item) {
       final words =
           '${item.nameEn} ${item.nameRu} ${item.nameLa ?? ''} ${item.functionEn} ${item.functionRu} ${item.systemIds.join(' ')} ${item.kind} ${item.region}'
               .toLowerCase();
-      return (_region.isEmpty || item.region == _region) &&
+      return _inScope(item) &&
+          (_sceneIds == null || _sceneIds!.contains(item.id)) &&
+          (_region.isEmpty || item.region == _region) &&
           (_kind.isEmpty || item.kind == _kind) &&
           (_system.isEmpty || item.systemIds.contains(_system)) &&
           words.contains(query);
@@ -202,24 +273,21 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     },
   );
   Widget _shell(Widget child) => Scaffold(
-    appBar: AppBar(
-      title: Text(_t('Human organs and glands', 'Атлас органов и желёз')),
-    ),
+    appBar: AppBar(title: Text(_scopeTitle())),
     body: SafeArea(child: child),
   );
   Widget _browse(OrganAtlas atlas) {
     final shown = _visible(atlas);
-    final regions = atlas.organs.map((item) => item.region).toSet().toList()
+    final regions = shown.map((item) => item.region).toSet().toList()..sort();
+    final systems = shown.expand((item) => item.systemIds).toSet().toList()
       ..sort();
-    final systems =
-        atlas.organs.expand((item) => item.systemIds).toSet().toList()..sort();
-    final kinds = atlas.organs.map((item) => item.kind).toSet().toList()
-      ..sort();
+    final kinds = shown.map((item) => item.kind).toSet().toList()..sort();
     final searching =
         _search.text.trim().isNotEmpty ||
         _region.isNotEmpty ||
         _system.isNotEmpty ||
-        _kind.isNotEmpty;
+        _kind.isNotEmpty ||
+        _sceneIds != null;
     final rows = [
       for (final item in shown)
         ListTile(
@@ -232,11 +300,20 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(_t('Human anatomy', 'Органы и системы')),
+        title: Text(_scopeTitle()),
         actions: [
-          FactPracticeAction(scope: 'organs', bundle: widget.bundle),
+          FactPracticeAction(
+            scope: 'organs',
+            bundle: widget.bundle,
+            entityIds: shown.map((item) => item.id).toSet(),
+          ),
           IconButton(
-            tooltip: _t('Anatomy questions', 'Вопросы об органах'),
+            tooltip: _t('Anatomy questions', switch (widget.initialScope) {
+              OrganAtlasScope.bones => 'Вопросы о костях',
+              OrganAtlasScope.brain => 'Вопросы о мозге',
+              OrganAtlasScope.systems => 'Вопросы о системах организма',
+              _ => 'Вопросы об органах',
+            }),
             onPressed: () => _start(atlas, shown),
             icon: const Icon(Icons.quiz_outlined),
           ),
@@ -249,33 +326,45 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _BodyMap(
-                controller: _camera,
-                organs: shown,
-                selected: _selected,
-                name: _name,
-                onSelected: _select,
-              ),
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: [
-                  IconButton(
-                    tooltip: _t('Zoom in', 'Увеличить'),
-                    icon: const Icon(Icons.add),
-                    onPressed: () => _zoom(1.25),
-                  ),
-                  IconButton(
-                    tooltip: _t('Zoom out', 'Уменьшить'),
-                    icon: const Icon(Icons.remove),
-                    onPressed: () => _zoom(.8),
-                  ),
-                  TextButton.icon(
-                    onPressed: _reset,
-                    icon: const Icon(Icons.center_focus_strong),
-                    label: Text(_t('Fit', 'Вся схема')),
-                  ),
-                ],
-              ),
+              if (widget.initialScope == OrganAtlasScope.all ||
+                  widget.initialScope == OrganAtlasScope.organs) ...[
+                _BodyMap(
+                  controller: _camera,
+                  organs: shown
+                      .where(
+                        (item) =>
+                            item.kind != 'bone' &&
+                            item.kind != 'bone_group' &&
+                            item.kind != 'brain_region',
+                      )
+                      .toList(),
+                  selected: _selected,
+                  name: _name,
+                  onSelected: _select,
+                ),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  children: [
+                    IconButton(
+                      tooltip: _t('Zoom in', 'Увеличить'),
+                      icon: const Icon(Icons.add),
+                      onPressed: () => _zoom(1.25),
+                    ),
+                    IconButton(
+                      tooltip: _t('Zoom out', 'Уменьшить'),
+                      icon: const Icon(Icons.remove),
+                      onPressed: () => _zoom(.8),
+                    ),
+                    TextButton.icon(
+                      onPressed: _reset,
+                      icon: const Icon(Icons.center_focus_strong),
+                      label: Text(_t('Fit', 'Вся схема')),
+                    ),
+                  ],
+                ),
+              ],
+              if (widget.initialScope == OrganAtlasScope.bones) _boneScene(),
+              if (widget.initialScope == OrganAtlasScope.brain) _brainScene(),
               const SizedBox(height: 12),
               TextField(
                 key: const Key('organ-search'),
@@ -283,11 +372,21 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   labelText: _t(
-                    'Search organs, glands and bones',
-                    'Найти орган, железу или кость',
+                    'Search this catalogue',
+                    'Поиск по этому каталогу',
                   ),
                 ),
               ),
+              if (_sceneIds != null || _region.isNotEmpty)
+                TextButton.icon(
+                  key: const Key('anatomy-show-all'),
+                  onPressed: () => setState(() {
+                    _sceneIds = null;
+                    _region = '';
+                  }),
+                  icon: const Icon(Icons.clear),
+                  label: Text(_t('Show all', 'Показать всё')),
+                ),
               ExpansionTile(
                 key: const Key('organ-filters'),
                 title: Text(_t('Filters', 'Фильтры')),
@@ -323,16 +422,30 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                 ...rows
               else
                 ExpansionTile(
-                  key: const Key('organ-directory'),
-                  title: Text(_t('All structures', 'Все структуры')),
-                  subtitle: Text(
-                    _t(
-                      'Organs, glands, bones and brain regions',
-                      'Органы, железы, кости и отделы мозга',
-                    ),
-                  ),
+                  key: widget.initialScope == OrganAtlasScope.all
+                      ? const Key('organ-directory')
+                      : Key('organ-directory-${widget.initialScope.name}'),
+                  initiallyExpanded:
+                      widget.initialScope == OrganAtlasScope.systems,
+                  title: Text(_scopeDirectoryTitle()),
+                  subtitle: Text(_scopeDirectorySubtitle()),
                   trailing: Text('${shown.length}'),
-                  children: rows,
+                  children: widget.initialScope == OrganAtlasScope.systems
+                      ? _systemGroups(shown)
+                      : [
+                          if (widget.initialScope == OrganAtlasScope.all)
+                            ExpansionTile(
+                              key: const Key('organ-system-directory'),
+                              title: Text(
+                                _t(
+                                  'Browse by body system',
+                                  'По системам организма',
+                                ),
+                              ),
+                              children: _systemGroups(shown),
+                            ),
+                          ...rows,
+                        ],
                 ),
               TextButton.icon(
                 icon: const Icon(Icons.info_outline),
@@ -359,6 +472,105 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
       ),
     );
   }
+
+  List<Widget> _systemGroups(List<OrganStructure> shown) {
+    final bySystem = <String, List<OrganStructure>>{};
+    for (final item in shown) {
+      for (final system in item.systemIds) {
+        bySystem.putIfAbsent(system, () => []).add(item);
+      }
+    }
+    final systems = bySystem.keys.toList()..sort();
+    return [
+      for (final system in systems)
+        ExpansionTile(
+          key: Key('organ-system-$system'),
+          title: Text(_filterLabel(context, system)),
+          trailing: Text('${bySystem[system]!.length}'),
+          children: [
+            for (final item in bySystem[system]!)
+              ListTile(
+                key: Key('organ-list-${item.id}'),
+                title: Text(_name(item)),
+                subtitle: Text(_filterLabel(context, item.kind)),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => _select(item),
+              ),
+          ],
+        ),
+    ];
+  }
+
+  Widget _boneScene() => AnatomyScene(
+    asset: 'assets/quizipedia/skeleton-display.png',
+    aspectRatio: 500 / 967,
+    credit: const AnatomySceneCredit(
+      author: 'Mariana Ruiz Villarreal / Mikael Häggström',
+      license: 'Public domain',
+      source: 'https://commons.wikimedia.org/wiki/File:Human_skeleton_front_-_no_labels.svg',
+    ),
+    zoomInLabel: _t('Zoom in', 'Увеличить'),
+    zoomOutLabel: _t('Zoom out', 'Уменьшить'),
+    resetLabel: _t('Fit image', 'Вся схема'),
+    creditLabel: _t('Image credit', 'Источник изображения'),
+    markers: [
+      _marker('skull', 'Skull', 'Череп', .46, .09),
+      _marker('thorax', 'Thorax', 'Грудная клетка', .46, .26),
+      _marker('spine', 'Spine', 'Позвоночник', .46, .36),
+      _marker('pelvis', 'Pelvis', 'Таз', .46, .44),
+      _marker('upper-limb-left', 'Upper limb', 'Верхняя конечность', .25, .32),
+      _marker('upper-limb-right', 'Upper limb', 'Верхняя конечность', .75, .32),
+      _marker('lower-limb-left', 'Lower limb', 'Нижняя конечность', .39, .68),
+      _marker('lower-limb-right', 'Lower limb', 'Нижняя конечность', .55, .68),
+    ],
+    onMarkerTap: (marker) => setState(() {
+      _sceneIds = null;
+      _region = switch (marker.id) {
+        'skull' => 'head',
+        'thorax' => 'thorax',
+        'spine' => 'spine',
+        'pelvis' => 'pelvis',
+        'upper-limb-left' || 'upper-limb-right' => 'upper_limb',
+        _ => 'lower_limb',
+      };
+    }),
+  );
+
+  Widget _brainScene() => AnatomyScene(
+    asset: 'assets/quizipedia/brain-display.png',
+    aspectRatio: 500 / 699,
+    credit: const AnatomySceneCredit(
+      author: 'Patrick J. Lynch; C. Carl Jaffe, MD',
+      license: 'CC BY 2.5',
+      source: 'https://commons.wikimedia.org/wiki/File:Skull_and_brain_normal_human.svg',
+    ),
+    zoomInLabel: _t('Zoom in', 'Увеличить'),
+    zoomOutLabel: _t('Zoom out', 'Уменьшить'),
+    resetLabel: _t('Fit image', 'Вся схема'),
+    creditLabel: _t('Image credit', 'Источник изображения'),
+    markers: [
+      _marker('frontal', 'Frontal lobe', 'Лобная доля', .25, .16),
+      _marker('parietal', 'Parietal lobe', 'Теменная доля', .60, .12),
+      _marker('temporal', 'Temporal lobe', 'Височная доля', .50, .33),
+      _marker('occipital', 'Occipital lobe', 'Затылочная доля', .86, .24),
+      _marker('cerebellum', 'Cerebellum', 'Мозжечок', .77, .40),
+    ],
+    onMarkerTap: (marker) => setState(() {
+      _region = '';
+      _sceneIds = {'brain-${marker.id}-lobe'};
+      if (marker.id == 'cerebellum') {
+        _sceneIds = {'brain-cerebellum', 'cerebellum'};
+      }
+    }),
+  );
+
+  AnatomySceneMarker _marker(
+    String id,
+    String english,
+    String russian,
+    double x,
+    double y,
+  ) => AnatomySceneMarker(id: id, label: _t(english, russian), x: x, y: y);
 
   Widget _quiz(OrganAtlas atlas) {
     if (_finished || _round.isEmpty) {

@@ -37,13 +37,43 @@ class StudyFact {
   final List<FactSource> sources;
 }
 
+String factQuestionPrompt(StudyFact fact, {required bool russian}) {
+  final name = russian ? fact.nameRu : fact.nameEn;
+  final field = russian ? fact.fieldRu : fact.fieldEn;
+  if (fact.fieldPath.startsWith('former_names.') &&
+      (fact.fieldPath.endsWith('.from_year') ||
+          fact.fieldPath.endsWith('.to_year'))) {
+    final oldName = field.split(':').skip(1).join(':').trim();
+    if (oldName.isNotEmpty) {
+      final from = fact.fieldPath.endsWith('.from_year');
+      return russian
+          ? '${from ? 'С какого года' : 'По какой год'} «$name» использовал название «$oldName»?'
+          : '${from ? 'From' : 'Until'} which year did “$name” use the name “$oldName”?';
+    }
+  }
+  if (russian) {
+    return switch (fact.fieldPath) {
+      'capital' => 'Какой город указан как столица страны «$name»?',
+      'founded_year' => 'В каком году основан «$name»?',
+      'year' => 'Когда произошло «$name»?',
+      'description' || 'summary' => 'Какое описание относится к «$name»?',
+      _ when fact.fieldPath.startsWith('facts.') =>
+        'Какой факт относится к «$name»?',
+      _ => 'Что относится к «$name» в теме «$field»?',
+    };
+  }
+  return 'What is listed under “$field” for “$name”?';
+}
+
 class FactChoice {
   const FactChoice({
     required this.id,
     required this.textRu,
     required this.textEn,
+    this.reference,
   });
   final String id, textRu, textEn;
+  final StudyFact? reference;
 }
 
 class FactQuestion {
@@ -51,10 +81,12 @@ class FactQuestion {
     required this.fact,
     required this.options,
     required this.correctId,
+    this.contextFacts = const [],
   });
   final StudyFact fact;
   final List<FactChoice> options;
   final String correctId;
+  final List<StudyFact> contextFacts;
 }
 
 const _assets = <String>[
@@ -71,6 +103,8 @@ const _assets = <String>[
   'assets/quizipedia/food_atlas.json',
   'assets/quizipedia/brands.json',
   'assets/quizipedia/knowledge_atlas.json',
+  'assets/quizipedia/animals.json',
+  'assets/quizipedia/vascular_atlas.json',
 ];
 
 /// Loads one frozen fact scope, or every scope when [scope] is `all`.
@@ -91,6 +125,8 @@ Future<List<StudyFact>> loadStudyFacts(
     'landmarks' => {'catalog.json', 'country_facts.json'},
     'sky' || 'endocrine' => {'catalog.json'},
     'music' => {'music_learning.json'},
+    'animals' => {'animals.json'},
+    'vascular' => {'vascular_atlas.json'},
     'organs' => {'organ_atlas.json'},
     'greek' || 'religions' => {'belief_atlas.json'},
     'food' => {'food_atlas.json'},
@@ -152,6 +188,64 @@ List<StudyFact> extractStudyFacts(Map<String, Map<String, dynamic>> assets) {
   _foodFacts(out, food);
   _brandFacts(out, brands);
   _knowledgeFacts(out, knowledge);
+  final vascular =
+      assets['assets/quizipedia/vascular_atlas.json'] ??
+      const <String, dynamic>{};
+  final vascularSources = _sourceMap(vascular);
+  for (final row in _rows(vascular['organs'])) {
+    final references = _refs(vascularSources, _strings(row['source_ids']));
+    for (final (path, label, ru, en) in [
+      (
+        'position',
+        'Расположение',
+        _text(row, 'position_ru'),
+        _text(row, 'position_en'),
+      ),
+      (
+        'function',
+        'Роль',
+        _text(row, 'function_ru'),
+        _text(row, 'function_en'),
+      ),
+      (
+        'fact',
+        'Факт',
+        _text(_rows(row['facts']).first, 'text_ru'),
+        _text(_rows(row['facts']).first, 'text_en'),
+      ),
+    ]) {
+      _add(
+        out,
+        'vascular',
+        _text(row, 'id'),
+        _text(row, 'name_ru'),
+        _text(row, 'name_en'),
+        path,
+        label,
+        label,
+        ru,
+        en,
+        references,
+      );
+    }
+  }
+  for (final animal in _rows(
+    assets['assets/quizipedia/animals.json']?['animals'],
+  )) {
+    _add(
+      out,
+      'animals',
+      _text(animal, 'id'),
+      _text(animal, 'name_ru'),
+      _text(animal, 'wiki_title'),
+      'facts.0',
+      'Факт',
+      'Fact',
+      _text(animal, 'fact_ru'),
+      _text(animal, 'fact_ru'),
+      _urlSource(_text(animal, 'source_url'), 'Источник', 'Source'),
+    );
+  }
   out.sort((a, b) => a.id.compareTo(b.id));
   return List.unmodifiable(out);
 }
@@ -1265,6 +1359,7 @@ List<FactQuestion> buildFactQuestions(
   final byValueKind = <String, List<StudyFact>>{};
   final forbiddenRuByEntity = <String, Set<String>>{};
   final forbiddenEnByEntity = <String, Set<String>>{};
+  final byEntity = <String, List<StudyFact>>{};
   for (final item in all) {
     final scope = item.scope;
     byFamily
@@ -1274,6 +1369,7 @@ List<FactQuestion> buildFactQuestions(
         .putIfAbsent('$scope\u0000${_valueKind(item)}', () => [])
         .add(item);
     final key = '$scope\u0000${item.entityId}';
+    byEntity.putIfAbsent(key, () => []).add(item);
     forbiddenRuByEntity.putIfAbsent(key, () => {}).add(_normRu(item));
     forbiddenEnByEntity.putIfAbsent(key, () => {}).add(_normEn(item));
   }
@@ -1289,7 +1385,12 @@ List<FactQuestion> buildFactQuestions(
       seed,
     );
     final options = <FactChoice>[
-      FactChoice(id: fact.id, textRu: fact.valueRu, textEn: fact.valueEn),
+      FactChoice(
+        id: fact.id,
+        textRu: fact.valueRu,
+        textEn: fact.valueEn,
+        reference: fact,
+      ),
       ...candidates
           .take(5)
           .map(
@@ -1297,6 +1398,7 @@ List<FactQuestion> buildFactQuestions(
               id: item.id,
               textRu: item.valueRu,
               textEn: item.valueEn,
+              reference: item,
             ),
           ),
     ]..shuffle(Random(seed ^ _hash(fact.id)));
@@ -1308,6 +1410,29 @@ List<FactQuestion> buildFactQuestions(
         fact: fact,
         options: List.unmodifiable(options),
         correctId: fact.id,
+        contextFacts: List.unmodifiable(
+          (byEntity[key]!
+                  .where(
+                    (item) =>
+                        item.id != fact.id &&
+                        item.valueRu != fact.valueRu &&
+                        RegExp(r'note|description|summary|explanation|facts\.')
+                            .hasMatch(item.fieldPath),
+                  )
+                  .toList()
+                ..sort((a, b) {
+                  final aRelated =
+                      a.fieldPath.split('.').first ==
+                      fact.fieldPath.split('.').first;
+                  final bRelated =
+                      b.fieldPath.split('.').first ==
+                      fact.fieldPath.split('.').first;
+                  return aRelated == bRelated
+                      ? a.id.compareTo(b.id)
+                      : (aRelated ? -1 : 1);
+                }))
+              .take(3),
+        ),
       ),
     );
   }

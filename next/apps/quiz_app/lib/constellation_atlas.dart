@@ -21,6 +21,34 @@ String starLabel(Map<String, dynamic> star, bool russian) {
   return star['name'] as String;
 }
 
+enum ConstellationSkyGroup { north, equatorial, south }
+
+/// Categories describe the mean declination of stars drawn in the learning
+/// pattern; they are not claims about seasonal or local visibility.
+ConstellationSkyGroup constellationSkyGroup(Map<String, dynamic> row) {
+  final stars = (row['stars'] as List).cast<Map<String, dynamic>>();
+  final mean =
+      stars
+          .map((star) => (star['dec_degrees'] as num).toDouble())
+          .reduce((a, b) => a + b) /
+      stars.length;
+  if (mean > 15) return ConstellationSkyGroup.north;
+  if (mean < -15) return ConstellationSkyGroup.south;
+  return ConstellationSkyGroup.equatorial;
+}
+
+String constellationSkyGroupLabel(ConstellationSkyGroup group, bool russian) =>
+    switch (group) {
+      ConstellationSkyGroup.north =>
+        russian
+            ? 'Севернее небесного экватора'
+            : 'North of the celestial equator',
+      ConstellationSkyGroup.equatorial =>
+        russian ? 'У небесного экватора' : 'Near the celestial equator',
+      ConstellationSkyGroup.south =>
+        russian ? 'Южнее небесного экватора' : 'South of the celestial equator',
+    };
+
 class ConstellationAtlasPage extends StatefulWidget {
   const ConstellationAtlasPage({
     super.key,
@@ -43,6 +71,7 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
   final _controller = TransformationController();
   late List<Map<String, dynamic>> _constellations;
   var _selectedIndex = 0;
+  ConstellationSkyGroup? _pickerGroup;
   bool _showNames = true;
   bool _showLines = true;
   Map<String, dynamic>? _star;
@@ -75,12 +104,16 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
   Map<String, dynamic> get _selected => _constellations[_selectedIndex];
   String get _query => _search.text.trim().toLowerCase();
   List<Map<String, dynamic>> get _matches => _constellations.where((row) {
-    if (_query.isEmpty) return true;
-    return '${row['name_en']} ${row['name_ru']}'.toLowerCase().contains(_query);
+    final nameMatch =
+        _query.isEmpty ||
+        '${row['name_en']} ${row['name_ru']}'.toLowerCase().contains(_query);
+    return nameMatch &&
+        (_pickerGroup == null || constellationSkyGroup(row) == _pickerGroup);
   }).toList();
 
   Future<void> _choose() async {
     _search.clear();
+    _pickerGroup = null;
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -123,6 +156,19 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                     ),
                   ),
                 ),
+                if (MediaQuery.viewInsetsOf(context).bottom == 0)
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    sliver: SliverToBoxAdapter(
+                      child: _PickerGroups(
+                        rows: _constellations,
+                        selected: _pickerGroup,
+                        russian: _russian,
+                        onSelected: (group) =>
+                            update(() => _pickerGroup = group),
+                      ),
+                    ),
+                  ),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   sliver: _ConstellationPicker(
@@ -294,14 +340,33 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                 icon: const Icon(Icons.search),
                 label: Text(_name(row)),
               ),
+              const SizedBox(height: 8),
+              Semantics(
+                header: true,
+                child: Text(
+                  _name(row),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
               if (_star == null)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Text(
-                    _t(
-                      'Tap a star to open its facts. Pinch to zoom; drag to move.',
-                      'Нажмите на звезду — откроются её данные. Масштаб — двумя пальцами, перемещение — одним.',
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _t(
+                          'Tap a star to open its facts. Pinch to zoom; drag to move.',
+                          'Нажмите на звезду — откроются её данные. Масштаб — двумя пальцами, перемещение — одним.',
+                        ),
+                      ),
+                      Text(
+                        _t(
+                          'Learning stars: ${constellationSkyGroupLabel(constellationSkyGroup(row), false)}.',
+                          'Учебные звёзды: ${constellationSkyGroupLabel(constellationSkyGroup(row), true)}.',
+                        ),
+                      ),
+                    ],
                   ),
                 )
               else
@@ -415,21 +480,144 @@ class _ConstellationPicker extends StatelessWidget {
       );
     }
     final sorted = [...rows]..sort((a, b) => name(a).compareTo(name(b)));
+    // The complete catalogue stays lazy. A short filtered result is built at
+    // once so it can be brought above an on-screen keyboard on landscape
+    // phones, where a SliverList otherwise has no viewport to create a child.
+    if (sorted.length <= 12) {
+      return SliverToBoxAdapter(
+        child: Column(
+          children: [for (final row in sorted) _option(context, row)],
+        ),
+      );
+    }
     return SliverList.builder(
       itemCount: sorted.length,
-      itemBuilder: (context, index) {
-        final row = sorted[index];
-        final id = row['id'] as String;
-        return ListTile(
-          key: Key('constellation-option-$id'),
-          title: Text(name(row)),
-          selected: id == selected,
-          trailing: id == selected ? const Icon(Icons.check) : null,
-          onTap: () => onSelected(row),
-        );
-      },
+      itemBuilder: (context, index) => _option(context, sorted[index]),
     );
   }
+
+  Widget _option(BuildContext context, Map<String, dynamic> row) {
+    final id = row['id'] as String;
+    return ListTile(
+      key: Key('constellation-option-$id'),
+      leading: SizedBox(
+        width: 48,
+        height: 48,
+        child: _ConstellationPreview(row: row),
+      ),
+      title: Text(name(row)),
+      subtitle: Text(
+        constellationSkyGroupLabel(
+          constellationSkyGroup(row),
+          Localizations.localeOf(context).languageCode == 'ru',
+        ),
+      ),
+      selected: id == selected,
+      trailing: id == selected ? const Icon(Icons.check) : null,
+      onTap: () => onSelected(row),
+    );
+  }
+}
+
+class _PickerGroups extends StatelessWidget {
+  const _PickerGroups({
+    required this.rows,
+    required this.selected,
+    required this.russian,
+    required this.onSelected,
+  });
+  final List<Map<String, dynamic>> rows;
+  final ConstellationSkyGroup? selected;
+  final bool russian;
+  final ValueChanged<ConstellationSkyGroup?> onSelected;
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 12),
+    child: ExpansionTile(
+      key: const Key('constellation-picker-groups'),
+      title: Text(
+        russian ? 'Группы на учебной схеме' : 'Learning-pattern groups',
+      ),
+      subtitle: Text(
+        russian
+            ? 'По среднему склонению звёзд; не прогноз видимости.'
+            : 'Mean declination; not a visibility forecast.',
+      ),
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              ChoiceChip(
+                key: const Key('constellation-picker-group-all'),
+                label: Text(
+                  russian ? 'Все (${rows.length})' : 'All (${rows.length})',
+                ),
+                selected: selected == null,
+                onSelected: (_) => onSelected(null),
+              ),
+              for (final group in ConstellationSkyGroup.values)
+                ChoiceChip(
+                  key: Key('constellation-picker-group-${group.name}'),
+                  label: Text(
+                    '${constellationSkyGroupLabel(group, russian)} (${rows.where((row) => constellationSkyGroup(row) == group).length})',
+                  ),
+                  selected: selected == group,
+                  onSelected: (_) => onSelected(group),
+                ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _ConstellationPreview extends StatelessWidget {
+  const _ConstellationPreview({required this.row});
+  final Map<String, dynamic> row;
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+    painter: _ConstellationPreviewPainter(
+      (row['stars'] as List).cast<Map<String, dynamic>>(),
+      (row['lines'] as List).cast<List>(),
+      Theme.of(context).colorScheme.primary,
+    ),
+  );
+}
+
+class _ConstellationPreviewPainter extends CustomPainter {
+  _ConstellationPreviewPainter(this.stars, this.lines, this.color);
+  final List<Map<String, dynamic>> stars;
+  final List<List> lines;
+  final Color color;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final points = projectConstellation(
+      stars,
+      Size(size.width - 8, size.height - 8),
+    );
+    final offset = const Offset(4, 4);
+    final paint = Paint()..color = color;
+    for (final line in lines) {
+      final from = points[line[0]];
+      final to = points[line[1]];
+      if (from != null && to != null) {
+        canvas.drawLine(from + offset, to + offset, paint..strokeWidth = 1.2);
+      }
+    }
+    for (final point in points.values) {
+      canvas.drawCircle(point + offset, 2.2, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _ConstellationPreviewPainter oldDelegate) =>
+      oldDelegate.stars != stars ||
+      oldDelegate.lines != lines ||
+      oldDelegate.color != color;
 }
 
 class _SkyControls extends StatelessWidget {
@@ -823,23 +1011,45 @@ class _StarList extends StatelessWidget {
         style: Theme.of(context).textTheme.titleSmall,
       ),
       const SizedBox(height: 4),
-      Wrap(
-        spacing: 8,
-        runSpacing: 8,
-        children: [
-          for (final star in stars)
-            OutlinedButton(
+      for (final star in stars)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            child: OutlinedButton(
               onPressed: () => onSelected(star),
               style: OutlinedButton.styleFrom(
-                minimumSize: const Size(44, 44),
+                minimumSize: const Size.fromHeight(52),
+                alignment: AlignmentDirectional.centerStart,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 backgroundColor: selected?['id'] == star['id']
                     ? Theme.of(context).colorScheme.secondaryContainer
                     : null,
               ),
-              child: Text(starLabel(star, russian)),
+              child: Row(
+                children: [
+                  const Icon(Icons.star_outline),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(starLabel(star, russian)),
+                        Text(
+                          russian
+                              ? 'Звёздная величина: ${star['magnitude']}'
+                              : 'Magnitude: ${star['magnitude']}',
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-        ],
-      ),
+          ),
+        ),
     ],
   );
 }

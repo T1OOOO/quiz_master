@@ -24,8 +24,8 @@ void main() {
             final origin = question.kind == FoodQuestionKind.origin;
             expect(question.answerEn, origin ? dish.regionEn : dish.nameEn);
             expect(question.answerRu, origin ? dish.regionRu : dish.nameRu);
-            expect(question.optionsEn.toSet(), hasLength(4));
-            expect(question.optionsRu.toSet(), hasLength(4));
+            expect(question.optionsEn.toSet(), hasLength(6));
+            expect(question.optionsRu.toSet(), hasLength(6));
             expect(
               question.optionsEn.where((v) => v == question.answerEn),
               hasLength(1),

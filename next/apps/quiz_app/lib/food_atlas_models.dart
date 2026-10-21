@@ -386,10 +386,10 @@ class FoodAtlas {
       distinctEn.add(candidate.en.toLowerCase());
       distinctRu.add(candidate.ru.toLowerCase());
       options.add(candidate);
-      if (options.length == 3) break;
+      if (options.length == 5) break;
     }
-    if (options.length < 3) {
-      throw const FormatException('four unambiguous question options required');
+    if (options.length < 5) {
+      throw const FormatException('six unambiguous question options required');
     }
     options.add((en: answerEn, ru: answerRu));
     options.shuffle(Random(seed));

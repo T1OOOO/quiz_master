@@ -80,6 +80,24 @@
       "title": "Jinja Honcho: What is Shinto?",
       "url": "https://www.jinjahoncho.or.jp/en/shinto/",
       "checked_on": "2026-10-19"
+    },
+    {
+      "id": "harvard_daoism",
+      "title": "Даосизм — Гарвардский проект Pluralism",
+      "url": "https://pluralism.org/daoism",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "id": "harvard_four_books",
+      "title": "Четверокнижие — Гарвардский проект Pluralism",
+      "url": "https://pluralism.org/four-books",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "id": "fezana_glance",
+      "title": "Зороастризм: краткий обзор FEZANA",
+      "url": "https://fezana.org/wp-content/uploads/FEZANA-Zoroastrianism-at-a-Glance.pdf",
+      "checked_on": "2026-10-21"
     }
   ],
   "nodes": [
@@ -1159,6 +1177,224 @@
       "source_ids": [
         "jinja_honcho_shinto"
       ]
+    },
+    {
+      "id": "daoism",
+      "section": "religions",
+      "name_ru": "Даосизм",
+      "name_en": "Daoism",
+      "group_ru": "Религиозно-философская традиция",
+      "group_en": "Religious and philosophical tradition",
+      "summary_ru": "Даосизм связан с понятием дао — Пути; к его основным текстам относятся «Дао дэ цзин» и «Чжуан-цзы».",
+      "summary_en": "Daoism centres on the dao, or Way; its foundational texts include the Daodejing and Zhuangzi.",
+      "domains_ru": [
+        "дао",
+        "Дао дэ цзин",
+        "Чжуан-цзы"
+      ],
+      "domains_en": [
+        "dao",
+        "Daodejing",
+        "Zhuangzi"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Традиция приписывает «Дао дэ цзин» Лао-цзы; точные сроки составления текста спорны.",
+          "text_en": "Tradition attributes the Daodejing to Laozi; its exact compilation dates are disputed.",
+          "source_ids": [
+            "harvard_daoism"
+          ]
+        }
+      ],
+      "variant_note_ru": "Краткая учебная карточка; практики и толкования внутри традиции различаются.",
+      "variant_note_en": "A brief learning card; practices and interpretations vary within the tradition.",
+      "source_ids": [
+        "harvard_daoism"
+      ]
+    },
+    {
+      "id": "confucianism",
+      "section": "religions",
+      "name_ru": "Конфуцианство",
+      "name_en": "Confucianism",
+      "group_ru": "Этическая и религиозно-философская традиция",
+      "group_en": "Ethical, religious and philosophical tradition",
+      "summary_ru": "Важную роль в конфуцианской традиции играет Четверокнижие: «Лунь юй», «Мэн-цзы», «Да сюэ» и «Чжун юн».",
+      "summary_en": "The Four Books play a central role in the Confucian tradition: the Analects, Mencius, Great Learning and Doctrine of the Mean.",
+      "domains_ru": [
+        "Четверокнижие",
+        "Лунь юй",
+        "Мэн-цзы"
+      ],
+      "domains_en": [
+        "Four Books",
+        "Analects",
+        "Mencius"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Чжу Си объединил эти тексты в Четверокнижие в XII веке.",
+          "text_en": "Zhu Xi grouped these texts as the Four Books in the twelfth century.",
+          "source_ids": [
+            "harvard_four_books"
+          ]
+        }
+      ],
+      "variant_note_ru": "Краткая учебная карточка; практики и толкования внутри традиции различаются.",
+      "variant_note_en": "A brief learning card; practices and interpretations vary within the tradition.",
+      "source_ids": [
+        "harvard_four_books"
+      ]
+    },
+    {
+      "id": "zoroastrianism",
+      "section": "religions",
+      "name_ru": "Зороастризм",
+      "name_en": "Zoroastrianism",
+      "group_ru": "Религиозная традиция",
+      "group_en": "Religious tradition",
+      "summary_ru": "Зороастрийская традиция связана с Заратуштрой; Ахура Мазда — имя божества, переводимое как «Господь мудрости».",
+      "summary_en": "The Zoroastrian tradition is associated with Zarathushtra; Ahura Mazda means Lord of Wisdom.",
+      "domains_ru": [
+        "Заратуштра",
+        "Ахура Мазда",
+        "Гаты"
+      ],
+      "domains_en": [
+        "Zarathushtra",
+        "Ahura Mazda",
+        "Gathas"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "FEZANA описывает Гаты как 17 песнопений Заратуштры.",
+          "text_en": "FEZANA describes the Gathas as seventeen hymns by Zarathushtra.",
+          "source_ids": [
+            "fezana_glance"
+          ]
+        }
+      ],
+      "variant_note_ru": "Краткая учебная карточка; практики и толкования внутри традиции различаются.",
+      "variant_note_en": "A brief learning card; practices and interpretations vary within the tradition.",
+      "source_ids": [
+        "fezana_glance"
+      ]
+    },
+    {
+      "id": "asclepius",
+      "section": "greek",
+      "name_ru": "Асклепий",
+      "name_en": "Asclepius",
+      "group_ru": "Другие божества",
+      "group_en": "Other deities",
+      "summary_ru": "В гомеровском гимне XVI Асклепий — сын Аполлона и целитель болезней.",
+      "summary_en": "In Homeric Hymn XVI, Asclepius is Apollo’s son and a healer of sicknesses.",
+      "domains_ru": [
+        "исцеление"
+      ],
+      "domains_en": [
+        "healing"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "Гимн XVI называет его матерью Корониду, дочь Флегия.",
+          "text_en": "Hymn XVI names his mother as Coronis, daughter of Phlegyas.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Характеристика и родство приведены по указанному античному тексту.",
+      "variant_note_en": "Attributes and relationships follow the cited ancient text.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "pan",
+      "section": "greek",
+      "name_ru": "Пан",
+      "name_en": "Pan",
+      "group_ru": "Другие божества",
+      "group_en": "Other deities",
+      "summary_ru": "В гомеровском гимне XIX Пан — сын Гермеса и бог пастухов.",
+      "summary_en": "In Homeric Hymn XIX, Pan is Hermes’s son and the shepherd-god.",
+      "domains_ru": [
+        "пастухи",
+        "горы"
+      ],
+      "domains_en": [
+        "shepherds",
+        "mountains"
+      ],
+      "symbols_ru": [
+        "козлиные ноги",
+        "два рога",
+        "тростниковая свирель"
+      ],
+      "symbols_en": [
+        "goat feet",
+        "two horns",
+        "reed pipes"
+      ],
+      "facts": [
+        {
+          "text_ru": "Гимн XIX описывает Пана с козлиными ногами и двумя рогами; по вечерам он играет на тростниковой свирели.",
+          "text_en": "Hymn XIX describes goat feet and two horns; in the evening he plays reed pipes.",
+          "source_ids": [
+            "homeric_hymns"
+          ]
+        }
+      ],
+      "variant_note_ru": "Характеристика и родство приведены по указанному античному тексту.",
+      "variant_note_en": "Attributes and relationships follow the cited ancient text.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "hecate",
+      "section": "greek",
+      "name_ru": "Геката",
+      "name_en": "Hecate",
+      "group_ru": "Другие божества",
+      "group_en": "Other deities",
+      "summary_ru": "В «Теогонии» Гесиода Зевс почитает Гекату и сохраняет её долю почестей на земле, море и небе.",
+      "summary_en": "In Hesiod’s Theogony, Zeus honours Hecate and preserves her share of honours on earth, sea and heaven.",
+      "domains_ru": [
+        "земля",
+        "море",
+        "небо"
+      ],
+      "domains_en": [
+        "earth",
+        "sea",
+        "heaven"
+      ],
+      "symbols_ru": [],
+      "symbols_en": [],
+      "facts": [
+        {
+          "text_ru": "«Теогония» 404–410 называет её родителями Астерию и Перса.",
+          "text_en": "Theogony 404–410 names her parents as Asteria and Perses.",
+          "source_ids": [
+            "hesiod_theogony"
+          ]
+        }
+      ],
+      "variant_note_ru": "Характеристика и родство приведены по указанному античному тексту.",
+      "variant_note_en": "Attributes and relationships follow the cited ancient text.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
     }
   ],
   "edges": [
@@ -1546,6 +1782,42 @@
       "source_ids": [
         "bahai_official"
       ]
+    },
+    {
+      "id": "apollo_asclepius_father",
+      "from_id": "apollo",
+      "to_id": "asclepius",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гомеровский гимн XVI.",
+      "scope_en": "Гомеровский гимн XVI.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "hermes_pan_father",
+      "from_id": "hermes",
+      "to_id": "pan",
+      "label_ru": "Отец",
+      "label_en": "Father",
+      "scope_ru": "Гомеровский гимн XIX.",
+      "scope_en": "Гомеровский гимн XIX.",
+      "source_ids": [
+        "homeric_hymns"
+      ]
+    },
+    {
+      "id": "zeus_hecate_honours",
+      "from_id": "zeus",
+      "to_id": "hecate",
+      "label_ru": "Почитает",
+      "label_en": "Honours",
+      "scope_ru": "Гесиод, «Теогония» 410–452.",
+      "scope_en": "Гесиод, «Теогония» 410–452.",
+      "source_ids": [
+        "hesiod_theogony"
+      ]
     }
   ],
   "questions": [
@@ -1555,10 +1827,12 @@
       "stem_ru": "По Гомерову гимну 22, кто назван богом моря?",
       "stem_en": "According to Homeric Hymn 22, who is called god of the sea?",
       "option_ids": [
-        "zeus",
-        "hades",
         "poseidon",
-        "apollo"
+        "apollo",
+        "uranus",
+        "chaos",
+        "hades",
+        "zeus"
       ],
       "correct_id": "poseidon",
       "explanation_ru": "Гимн 22 обращается к Посейдону как к богу моря.",
@@ -1573,9 +1847,11 @@
       "stem_ru": "В обзоре Метрополитен-музея с кифарой связан какой бог?",
       "stem_en": "Which god is associated with the kithara in the Met overview?",
       "option_ids": [
+        "hermes",
+        "poseidon",
         "apollo",
         "ares",
-        "hermes",
+        "gaia",
         "hephaestus"
       ],
       "correct_id": "apollo",
@@ -1591,10 +1867,12 @@
       "stem_ru": "По обзору Метрополитен-музея, чьими священными знаками названы сова и олива?",
       "stem_en": "According to the Met overview, whose sacred signs are the owl and olive?",
       "option_ids": [
-        "hera",
+        "demeter",
         "athena",
-        "artemis",
-        "aphrodite"
+        "chaos",
+        "hera",
+        "aphrodite",
+        "artemis"
       ],
       "correct_id": "athena",
       "explanation_ru": "Метрополитен-музей называет сову и оливу священными для Афины.",
@@ -1609,10 +1887,12 @@
       "stem_ru": "Кого Метрополитен-музей называет вестником богов с крылатыми сандалиями и керикионом?",
       "stem_en": "Whom does the Met call the messenger god with winged sandals and a kerykeion?",
       "option_ids": [
-        "hermes",
-        "dionysus",
         "hades",
-        "cronus"
+        "cronus",
+        "dionysus",
+        "poseidon",
+        "athena",
+        "hermes"
       ],
       "correct_id": "hermes",
       "explanation_ru": "В музейном обзоре эти атрибуты даны Гермесу.",
@@ -1627,10 +1907,12 @@
       "stem_ru": "Какая богиня в Гомеровом гимне 9 названа сестрой Аполлона, любящей стрелы?",
       "stem_en": "Who is called Apollo’s sister, delighting in arrows, in Homeric Hymn 9?",
       "option_ids": [
-        "artemis",
         "athena",
-        "hera",
-        "persephone"
+        "zeus",
+        "persephone",
+        "hephaestus",
+        "artemis",
+        "hera"
       ],
       "correct_id": "artemis",
       "explanation_ru": "Гимн 9 называет Артемиду сестрой Аполлона и любительницей стрел.",
@@ -1646,9 +1928,11 @@
       "stem_en": "Who comes to be first in Hesiod’s Theogony 116 cosmogony?",
       "option_ids": [
         "chaos",
+        "rhea",
         "gaia",
-        "uranus",
-        "oceanus"
+        "oceanus",
+        "demeter",
+        "uranus"
       ],
       "correct_id": "chaos",
       "explanation_ru": "Строка 116 «Теогонии» начинает с Хаоса.",
@@ -1663,10 +1947,12 @@
       "stem_ru": "В версии Гесиода («Теогония» 188–206) кто возникает из морской пены после оскопления Урана?",
       "stem_en": "In Hesiod’s version (Theogony 188–206), who emerges from sea foam after Uranus’s castration?",
       "option_ids": [
+        "demeter",
         "aphrodite",
-        "hera",
         "athena",
-        "demeter"
+        "gaia",
+        "apollo",
+        "hera"
       ],
       "correct_id": "aphrodite",
       "explanation_ru": "Это именно версия Гесиода о появлении Афродиты; карточка не делает её единственной генеалогией во всех источниках.",
@@ -1681,10 +1967,12 @@
       "stem_ru": "Кого Гомеров гимн 12 называет одновременно сестрой и женой Зевса?",
       "stem_en": "Whom does Homeric Hymn 12 call both sister and wife of Zeus?",
       "option_ids": [
-        "hera",
+        "aphrodite",
+        "demeter",
         "rhea",
-        "hestia",
-        "aphrodite"
+        "apollo",
+        "hera",
+        "hestia"
       ],
       "correct_id": "hera",
       "explanation_ru": "Гомеров гимн 12 прямо говорит это о Гере.",
@@ -1699,10 +1987,12 @@
       "stem_ru": "В Гомеровом гимне 13 к Деметре кто назван её дочерью?",
       "stem_en": "Who is called Demeter’s daughter in Homeric Hymn 13 to Demeter?",
       "option_ids": [
-        "persephone",
         "athena",
+        "persephone",
+        "oceanus",
+        "hera",
         "artemis",
-        "hera"
+        "hades"
       ],
       "correct_id": "persephone",
       "explanation_ru": "Гимн 13 называет Деметру и её дочь Персефону.",
@@ -1717,10 +2007,12 @@
       "stem_ru": "Кого Метрополитен-музей называет богом обработки металла?",
       "stem_en": "Whom does the Met call the god of metalworking?",
       "option_ids": [
+        "poseidon",
+        "dionysus",
         "hephaestus",
         "hermes",
-        "ares",
-        "dionysus"
+        "gaia",
+        "ares"
       ],
       "correct_id": "hephaestus",
       "explanation_ru": "Метрополитен-музей называет Гефеста богом обработки металла.",
@@ -1735,10 +2027,12 @@
       "stem_ru": "Какого бога Метрополитен-музей связывает с вином и театром?",
       "stem_en": "Which god does the Met associate with wine and theater?",
       "option_ids": [
-        "dionysus",
+        "hera",
+        "hestia",
         "apollo",
+        "hades",
         "poseidon",
-        "hades"
+        "dionysus"
       ],
       "correct_id": "dionysus",
       "explanation_ru": "В музейном обзоре Дионис назван богом вина и театра.",
@@ -1754,8 +2048,10 @@
       "stem_en": "Which tradition does the Harvard Pluralism Project describe through the interdependent reference points God, Torah, and the people Israel?",
       "option_ids": [
         "judaism",
+        "hinduism",
         "christianity",
         "islam",
+        "sikhism",
         "bahai_faith"
       ],
       "correct_id": "judaism",
@@ -1771,10 +2067,12 @@
       "stem_ru": "К какой традиции источник относит крупные ветви: католическую, православные церкви и протестантские традиции?",
       "stem_en": "To which tradition does the source assign the major branches Catholic, Orthodox churches, and Protestant traditions?",
       "option_ids": [
-        "christianity",
-        "judaism",
+        "shinto",
         "sikhism",
-        "shinto"
+        "christianity",
+        "islam",
+        "judaism",
+        "jainism"
       ],
       "correct_id": "christianity",
       "explanation_ru": "Plurаlism Project называет их крупными ветвями современного христианства.",
@@ -1789,10 +2087,12 @@
       "stem_ru": "В Коране 2:177 прямо упомянуты установление молитвы и закят. К какой традиции относится этот текст?",
       "stem_en": "Qur'an 2:177 explicitly mentions establishing prayer and alms. To which tradition does this text belong?",
       "option_ids": [
+        "shinto",
+        "bahai_faith",
+        "jainism",
         "islam",
-        "hinduism",
         "buddhism",
-        "jainism"
+        "hinduism"
       ],
       "correct_id": "islam",
       "explanation_ru": "Это аят Корана; он используется здесь только для этого конкретного текстового утверждения.",
@@ -1807,10 +2107,12 @@
       "stem_ru": "В какой традиции источник выделяет четыре Веды: Риг-, Сама-, Яджур- и Атхарва-веду?",
       "stem_en": "In which tradition does the source distinguish the four Vedas—Rig, Sama, Yajur, and Atharva?",
       "option_ids": [
-        "hinduism",
-        "buddhism",
+        "islam",
+        "shinto",
         "sikhism",
-        "bahai_faith"
+        "bahai_faith",
+        "buddhism",
+        "hinduism"
       ],
       "correct_id": "hinduism",
       "explanation_ru": "Источник описывает Веды как ключевые тексты индуистской традиции.",
@@ -1825,10 +2127,12 @@
       "stem_ru": "Какая традиция в источнике связана со Срединным путём, Четырьмя благородными истинами и Восьмеричным путём?",
       "stem_en": "Which tradition is associated in the source with the Middle Way, Four Noble Truths, and Eightfold Path?",
       "option_ids": [
+        "christianity",
         "buddhism",
         "jainism",
+        "shinto",
         "hinduism",
-        "shinto"
+        "judaism"
       ],
       "correct_id": "buddhism",
       "explanation_ru": "Plurаlism Project называет эти учения частью Дхармы в буддийском контексте.",
@@ -1843,10 +2147,12 @@
       "stem_ru": "В какой традиции Гуру Грантх Сахиб назван высшим авторитетом и центром богослужебного пространства?",
       "stem_en": "In which tradition is the Guru Granth Sahib called the ultimate authority and a centerpiece of worship space?",
       "option_ids": [
-        "sikhism",
+        "hinduism",
         "jainism",
+        "christianity",
+        "shinto",
         "islam",
-        "christianity"
+        "sikhism"
       ],
       "correct_id": "sikhism",
       "explanation_ru": "Sikh Coalition сообщает это о сикхской традиции.",
@@ -1861,10 +2167,12 @@
       "stem_ru": "В какой традиции Jainpedia связывает ахимсу (ненасилие) с представлением о взаимосвязанности жизни?",
       "stem_en": "In which tradition does Jainpedia link ahimsa (non-violence) with the interconnection of life?",
       "option_ids": [
-        "jainism",
         "buddhism",
-        "hinduism",
-        "bahai_faith"
+        "bahai_faith",
+        "jainism",
+        "sikhism",
+        "christianity",
+        "hinduism"
       ],
       "correct_id": "jainism",
       "explanation_ru": "Jainpedia связывает ахимсу с джайнскими убеждениями и практиками.",
@@ -1880,9 +2188,11 @@
       "stem_en": "Which tradition, according to Jinja Honcho, has no founder, dogma, or doctrine and includes veneration of kami at jinja?",
       "option_ids": [
         "shinto",
-        "sikhism",
         "judaism",
-        "christianity"
+        "islam",
+        "sikhism",
+        "christianity",
+        "buddhism"
       ],
       "correct_id": "shinto",
       "explanation_ru": "Jinja Honcho описывает так синто и его отношение к ками и дзиндзя.",
@@ -1897,9 +2207,11 @@
       "stem_ru": "Какая традиция на своём официальном сайте называет Bahá’í Reference Library авторитетным онлайн-источником своих писаний?",
       "stem_en": "Which tradition calls the Bahá’í Reference Library an authoritative online source of its writings on its official site?",
       "option_ids": [
-        "bahai_faith",
-        "islam",
+        "shinto",
         "sikhism",
+        "christianity",
+        "islam",
+        "bahai_faith",
         "hinduism"
       ],
       "correct_id": "bahai_faith",

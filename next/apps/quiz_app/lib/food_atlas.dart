@@ -1,6 +1,7 @@
 library;
 
 import 'fact_practice.dart';
+import 'atlas_media.dart';
 
 import 'russian_learning_text.dart';
 
@@ -230,6 +231,11 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
               Card(
                 child: ListTile(
                   key: Key('food-${dish.id}'),
+                  leading: AtlasMedia(
+                    scope: 'food',
+                    entityId: dish.id,
+                    compact: true,
+                  ),
                   title: Text(_name(dish)),
                   subtitle: Text(
                     '${_claim(dish.countryRu, dish.countryEn)} · ${_region(dish)}\n${_claim(dish.summaryRu, dish.summaryEn)}',
@@ -252,6 +258,7 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          AtlasMedia(scope: 'food', entityId: dish.id),
           Row(
             children: [
               Expanded(

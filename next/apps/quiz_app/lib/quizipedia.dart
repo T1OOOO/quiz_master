@@ -28,6 +28,8 @@ import 'food_atlas.dart';
 import 'belief_atlas.dart';
 import 'organ_atlas.dart';
 import 'music_learning.dart';
+import 'animal_atlas.dart';
+import 'vascular_atlas.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -536,8 +538,10 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
     required String title,
     required IconData icon,
     String? image,
+    BoxFit? imageFit,
     String? subtitle,
     String? practiceScope,
+    VoidCallback? practiceOnTap,
     required VoidCallback onTap,
   }) => Card(
     key: key,
@@ -558,7 +562,7 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                         color: Theme.of(context).colorScheme.secondaryContainer,
                         child: Icon(icon, size: 30),
                       )
-                    : Image.asset(image, fit: BoxFit.cover),
+                    : Image.asset(image, fit: imageFit ?? BoxFit.cover),
               ),
               Expanded(
                 child: Padding(
@@ -585,14 +589,16 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                           ),
                           icon: const Icon(Icons.quiz_outlined, size: 18),
                           label: Text(_t(context, 'Practise', 'Тренироваться')),
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute<void>(
-                              builder: (_) => FactPracticePage(
-                                scope: practiceScope,
-                                bundle: widget.bundle,
+                          onPressed:
+                              practiceOnTap ??
+                              () => Navigator.of(context).push(
+                                MaterialPageRoute<void>(
+                                  builder: (_) => FactPracticePage(
+                                    scope: practiceScope,
+                                    bundle: widget.bundle,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
                         ),
                     ],
                   ),
@@ -747,24 +753,80 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
             ),
           ),
         ),
-        _themeCard(
-          icon: Icons.accessibility_new,
-          image: 'assets/quizipedia/preview-anatomy-orientation.webp',
-          practiceScope: 'organs',
-          title: _t(
-            context,
+        for (final anatomyCard in [
+          (
+            OrganAtlasScope.organs,
+            Icons.accessibility_new,
             'Human organs and glands',
-            'Атлас органов и желёз',
+            'Органы и железы',
           ),
+          (
+            OrganAtlasScope.bones,
+            Icons.accessibility,
+            'Bones and skeleton',
+            'Кости и скелет',
+          ),
+          (OrganAtlasScope.brain, Icons.psychology, 'Brain', 'Головной мозг'),
+          (
+            OrganAtlasScope.systems,
+            Icons.hub_outlined,
+            'Body systems',
+            'Системы организма',
+          ),
+        ])
+          _themeCard(
+            icon: anatomyCard.$2,
+            image: switch (anatomyCard.$1) {
+              OrganAtlasScope.bones =>
+                'assets/quizipedia/preview-skeleton-display.png',
+              OrganAtlasScope.brain =>
+                'assets/quizipedia/preview-brain-display.png',
+              _ => 'assets/quizipedia/preview-anatomy-orientation.webp',
+            },
+            imageFit: switch (anatomyCard.$1) {
+              OrganAtlasScope.bones || OrganAtlasScope.brain => BoxFit.contain,
+              _ => null,
+            },
+            practiceScope: anatomyCard.$1.name,
+            practiceOnTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => OrganAtlasPage(
+                  bundle: widget.bundle,
+                  training: true,
+                  initialScope: anatomyCard.$1,
+                ),
+              ),
+            ),
+            title: _t(context, anatomyCard.$3, anatomyCard.$4),
+            subtitle: _t(
+              context,
+              'Explore and practise',
+              'Изучение и тренировка',
+            ),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => OrganAtlasPage(
+                  bundle: widget.bundle,
+                  training: _challenge,
+                  initialScope: anatomyCard.$1,
+                ),
+              ),
+            ),
+          ),
+        _themeCard(
+          icon: Icons.route,
+          title: _t(context, 'Arteries and veins', 'Артерии и вены'),
           subtitle: _t(
             context,
-            'Body systems, functions and practice',
-            'Системы организма, функции и тренировка',
+            'Body map and major vessels',
+            'Карта тела и основные сосуды',
           ),
+          practiceScope: 'vascular',
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute<void>(
-              builder: (_) =>
-                  OrganAtlasPage(bundle: widget.bundle, training: _challenge),
+              builder: (_) => _challenge
+                  ? FactPracticePage(scope: 'vascular', bundle: widget.bundle)
+                  : VascularAtlasPage(bundle: widget.bundle),
             ),
           ),
         ),
@@ -788,6 +850,28 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                 bundle: widget.bundle,
                 training: _challenge,
               ),
+            ),
+          ),
+        ),
+        _themeCard(
+          icon: Icons.pets,
+          image: 'assets/quizipedia/media-thumb-animals-beagle.jpg',
+          practiceScope: 'animals',
+          title: _t(
+            context,
+            'Animals: species and breeds',
+            'Животные: виды и породы',
+          ),
+          subtitle: _t(
+            context,
+            'Dogs, cats, fish, birds and wild animals',
+            'Собаки, кошки, рыбы, птицы и дикие животные',
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => _challenge
+                  ? FactPracticePage(scope: 'animals', bundle: widget.bundle)
+                  : AnimalsPage(bundle: widget.bundle),
             ),
           ),
         ),
@@ -1035,6 +1119,7 @@ class _QuizGameState extends State<_QuizGame> {
   late final List<Map<String, dynamic>> _targets = switch (widget.module) {
     _Module.map =>
       widget.catalog.countryRows
+          .where((row) => widget.catalog.mapTargetIds.contains(row['id']))
           .map(
             (row) => <String, dynamic>{
               ...row,
@@ -1051,9 +1136,11 @@ class _QuizGameState extends State<_QuizGame> {
   late QuizipediaSession _session;
   final TransformationController _controller = TransformationController();
   final Map<String, Future<ui.Image>> _images = {};
+  final Map<String, Future<ui.Image>> _thumbnailImages = {};
   Future<PhotoThumbnails>? _thumbnailFuture;
   String? _selected;
   String? _exploreId;
+  String _landmarkQuery = '', _landmarkCountryFilter = '', _landmarkTopic = '';
   String? _starInfo;
   int _questionIndex = 0;
   bool _wasCorrect = false;
@@ -1081,14 +1168,14 @@ class _QuizGameState extends State<_QuizGame> {
       }
       return candidates;
     }, choiceCount: 6);
-    _exploreId = ids.first;
+    _exploreId = widget.module == _Module.landmarks ? null : ids.first;
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _scroll.dispose();
-    for (final future in _images.values) {
+    for (final future in [..._images.values, ..._thumbnailImages.values]) {
       future.then((image) => image.dispose(), onError: (Object _) {});
     }
     super.dispose();
@@ -1110,17 +1197,19 @@ class _QuizGameState extends State<_QuizGame> {
   bool get _reverse => _questionIndex.isOdd;
   bool get _submitted => widget.challenge && _session.submitted;
 
-  Future<ui.Image> _loadImage(String asset) {
+  Future<ui.Image> _loadImage(String asset, {bool thumbnail = false}) {
+    final images = thumbnail ? _thumbnailImages : _images;
+    final limit = thumbnail ? 8 : 2;
     if (widget.module == _Module.landmarks &&
-        !_images.containsKey(asset) &&
-        _images.length >= 2) {
-      final old = _images.remove(_images.keys.first)!;
+        !images.containsKey(asset) &&
+        images.length >= limit) {
+      final old = images.remove(images.keys.first)!;
       // Dispose after the old RawImage has left the rendered frame.
       WidgetsBinding.instance.addPostFrameCallback((_) {
         old.then((image) => image.dispose(), onError: (Object _) {});
       });
     }
-    return _images.putIfAbsent(asset, () async {
+    return images.putIfAbsent(asset, () async {
       final data = await widget.bundle.load(asset);
       final bytes = Uint8List.fromList(
         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
@@ -1137,6 +1226,7 @@ class _QuizGameState extends State<_QuizGame> {
 
   void _retryImage(String asset) => setState(() {
     _images.remove(asset);
+    _thumbnailImages.remove(asset);
   });
 
   void _select(String? id) {
@@ -1194,6 +1284,11 @@ class _QuizGameState extends State<_QuizGame> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.module == _Module.landmarks &&
+        !widget.challenge &&
+        _exploreId == null) {
+      return _landmarkCatalogPage();
+    }
     final row = _current;
     final imageAsset = switch (widget.module) {
       _Module.anatomy => widget.catalog.anatomy['image_asset'] as String,
@@ -1639,6 +1734,190 @@ class _QuizGameState extends State<_QuizGame> {
     _exploreId = id;
     _controller.value = Matrix4.identity();
   });
+
+  Widget _landmarkCatalogPage() {
+    String normal(String value) => value.toLowerCase().replaceAll('ё', 'е');
+    String topicOf(Map<String, dynamic> row) {
+      final tags = row['tag_ids'];
+      if (tags is List) {
+        final topic = tags
+            .whereType<String>()
+            .where((tag) => tag.startsWith('topic:'))
+            .firstOrNull;
+        return topic?.substring('topic:'.length) ?? '';
+      }
+      return tags is Map ? tags['topic'] as String? ?? '' : '';
+    }
+
+    final topics =
+        _targets
+            .map(topicOf)
+            .where((value) => value.isNotEmpty)
+            .toSet()
+            .toList()
+          ..sort();
+    final countries =
+        _targets.map((row) => row['country_iso2'] as String).toSet().toList()
+          ..sort();
+    final rows = _targets.where((row) {
+      final topic = topicOf(row);
+      final searchable =
+          '${_localized(context, row, 'name')} ${_localized(context, row, 'city')} ${_landmarkCountry(row)}';
+      return (_landmarkQuery.isEmpty ||
+              normal(searchable).contains(normal(_landmarkQuery))) &&
+          (_landmarkCountryFilter.isEmpty ||
+              row['country_iso2'] == _landmarkCountryFilter) &&
+          (_landmarkTopic.isEmpty || topic == _landmarkTopic);
+    }).toList();
+    return Scaffold(
+      appBar: AppBar(title: Text(_t(context, 'Photo catalog', 'Фотокаталог'))),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                key: const Key('landmark-catalog-search'),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  labelText: _t(context, 'Search photos', 'Найти фотографию'),
+                ),
+                onChanged: (value) => setState(() => _landmarkQuery = value),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.textScalerOf(context).scale(42),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                children: [
+                  ChoiceChip(
+                    key: const Key('landmark-country-all'),
+                    label: Text(_t(context, 'All countries', 'Все страны')),
+                    selected: _landmarkCountryFilter.isEmpty,
+                    onSelected: (_) =>
+                        setState(() => _landmarkCountryFilter = ''),
+                  ),
+                  for (final country in countries)
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 6),
+                      child: ChoiceChip(
+                        key: Key('landmark-country-$country'),
+                        label: Text(
+                          _landmarkCountry(
+                            _targets.firstWhere(
+                              (row) => row['country_iso2'] == country,
+                            ),
+                          ),
+                        ),
+                        selected: _landmarkCountryFilter == country,
+                        onSelected: (_) =>
+                            setState(() => _landmarkCountryFilter = country),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.textScalerOf(context).scale(42),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                children: [
+                  ChoiceChip(
+                    key: const Key('landmark-topic-all'),
+                    label: Text(_t(context, 'All types', 'Все типы')),
+                    selected: _landmarkTopic.isEmpty,
+                    onSelected: (_) => setState(() => _landmarkTopic = ''),
+                  ),
+                  for (final topic in topics)
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 6),
+                      child: ChoiceChip(
+                        key: Key('landmark-topic-$topic'),
+                        label: Text(
+                          topic == 'architecture'
+                              ? _t(context, 'Architecture', 'Архитектура')
+                              : russianLearningText(topic),
+                        ),
+                        selected: _landmarkTopic == topic,
+                        onSelected: (_) =>
+                            setState(() => _landmarkTopic = topic),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: rows.isEmpty
+                  ? Center(
+                      child: Text(
+                        _t(
+                          context,
+                          'No matching photographs',
+                          'Фотографий по запросу нет',
+                        ),
+                      ),
+                    )
+                  : GridView.builder(
+                      key: const Key('landmark-catalog-grid'),
+                      scrollCacheExtent: const ScrollCacheExtent.pixels(0),
+                      padding: const EdgeInsets.all(12),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: .85,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                          ),
+                      itemCount: rows.length,
+                      itemBuilder: (context, index) {
+                        final row = rows[index];
+                        return Semantics(
+                          button: true,
+                          label: _localized(context, row, 'name'),
+                          child: InkWell(
+                            key: Key('landmark-catalog-${row['id']}'),
+                            onTap: () => _chooseLandmark(row['id'] as String),
+                            child: Card(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Expanded(
+                                    child: row['thumbnail_asset'] is String
+                                        ? Image.asset(
+                                            row['thumbnail_asset'] as String,
+                                            bundle: widget.bundle,
+                                            fit: BoxFit.cover,
+                                            cacheWidth: 96,
+                                            errorBuilder: (_, _, _) =>
+                                                const Icon(
+                                                  Icons.photo_outlined,
+                                                ),
+                                          )
+                                        : const Icon(Icons.photo_outlined),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Text(
+                                      _localized(context, row, 'name'),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   Future<void> _pickLandmark() async {
     var query = '';
@@ -2341,7 +2620,10 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.focusTarget,
     this.focusRequest = 0,
     this.labelPriorityIds = const {},
+    this.neighborIds = const {},
     this.overlayLabels = const {},
+    this.capitalPoints = const {},
+    this.capitalLabels = const {},
     this.showFlags = false,
     this.showSelectionLabel = true,
     this.waters = const [],
@@ -2360,7 +2642,15 @@ class QuizipediaWorldMap extends StatefulWidget {
   final String? focusTarget;
   final int focusRequest;
   final Set<String> labelPriorityIds;
+
+  /// Land neighbours of the selected country get a separate outline.
+  final Set<String> neighborIds;
   final Map<String, String> overlayLabels;
+
+  /// Normalised world coordinates for capital dots (west→east, north→south).
+  /// Labels remain owned by the caller so they use verified local fact text.
+  final Map<String, Offset> capitalPoints;
+  final Map<String, String> capitalLabels;
   final bool showFlags, showSelectionLabel;
   final List<WaterShape> waters;
   final String? selectedWater;
@@ -2380,95 +2670,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   Animation<Matrix4>? _cameraFrames;
   Offset _doubleTapAt = Offset.zero;
 
-  final Map<String, ui.Image> _flags = {};
-  final Set<String> _requestedFlags = {};
-  Future<Map<String, String>>? _flagData;
-  Set<String> _flagCodes = {};
-  bool _loadingFlags = false, _flagLoadError = false;
-
-  Future<void> _loadFlags() async {
-    if (!widget.showFlags || _loadingFlags) return;
-    _loadingFlags = true;
-    try {
-      final data = await (_flagData ??= rootBundle
-          .loadString(
-            'assets/quizipedia/country_flag_images.json',
-            cache: false,
-          )
-          .then((text) {
-            final value = jsonDecode(text);
-            if (value is! Map ||
-                value['schema_version'] != 'qm-country-flag-images/v1' ||
-                value['flags'] is! Map ||
-                (value['flags'] as Map).values.any((v) => v is! String)) {
-              throw const FormatException('Invalid country flag image bundle');
-            }
-            return Map<String, String>.from(value['flags'] as Map);
-          }));
-      if (!mounted) return;
-      _flagCodes = data.keys.toSet();
-      final pending = widget.features
-          .where(
-            (f) =>
-                data.containsKey(f.id) &&
-                !_flags.containsKey(f.id) &&
-                _requestedFlags.add(f.id),
-          )
-          .toList();
-      if (pending.isEmpty) return;
-      final loaded = await Future.wait(
-        pending.map((feature) async {
-          try {
-            final codec = await ui.instantiateImageCodec(
-              base64Decode(data[feature.id]!),
-              targetWidth: 256,
-              allowUpscaling: false,
-            );
-            try {
-              return MapEntry(feature.id, (await codec.getNextFrame()).image);
-            } finally {
-              codec.dispose();
-            }
-          } on Exception {
-            return null;
-          } on FlutterError {
-            return null;
-          }
-        }),
-      );
-      if (!mounted) {
-        for (final entry in loaded.nonNulls) {
-          entry.value.dispose();
-        }
-        return;
-      }
-      setState(() {
-        _flags.addEntries(loaded.nonNulls);
-        _flagLoadError = loaded.any((entry) => entry == null);
-      });
-    } on Exception {
-      _flagData = null;
-      if (mounted) setState(() => _flagLoadError = true);
-    } on FlutterError {
-      _flagData = null;
-      if (mounted) setState(() => _flagLoadError = true);
-    } finally {
-      if (mounted) setState(() => _loadingFlags = false);
-    }
-    if (mounted &&
-        !_flagLoadError &&
-        widget.showFlags &&
-        widget.features.any(
-          (f) => _flagCodes.contains(f.id) && !_requestedFlags.contains(f.id),
-        )) {
-      _loadFlags();
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    _loadFlags();
     _camera.addListener(() {
       widget.controller.value = _cameraFrames!.value;
     });
@@ -2482,7 +2686,6 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   @override
   void didUpdateWidget(covariant QuizipediaWorldMap oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _loadFlags();
     if (widget.focusTarget != null &&
         (widget.focusTarget != oldWidget.focusTarget ||
             widget.focusRequest != oldWidget.focusRequest)) {
@@ -2495,9 +2698,6 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   @override
   void dispose() {
     _camera.dispose();
-    for (final flag in _flags.values) {
-      flag.dispose();
-    }
     super.dispose();
   }
 
@@ -2631,7 +2831,72 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
       valueListenable: widget.controller,
       builder: (context, transform, _) {
         final occupied = <Rect>[];
+        final capitalMarkers = <Rect>[];
         final labels = <Widget>[];
+        final scale = transform.getMaxScaleOnAxis();
+        // At the whole-world view, a dense row of individual flag image
+        // widgets is both unreadable and an eager asset load in disguise.
+        // Keep the selected/priority countries first and reveal more as the
+        // learner zooms, while the collision rectangles still handle local
+        // overlap.
+        final flagMarkerBudget = scale >= 2.25
+            ? 40
+            : scale >= 1.5
+            ? 16
+            : 8;
+        final capitalIds =
+            widget.capitalPoints.keys
+                .where(widget.capitalLabels.containsKey)
+                .toList()
+              ..sort(
+                (a, b) => (a == widget.selected ? 1 : 0).compareTo(
+                  b == widget.selected ? 1 : 0,
+                ),
+              );
+        for (final id in capitalIds.reversed) {
+          final point = widget.capitalPoints[id]!;
+          final at = MatrixUtils.transformPoint(
+            transform,
+            Offset(
+              point.dx * scene.width + (_view.width - scene.width) / 2,
+              point.dy * scene.height + (_view.height - scene.height) / 2,
+            ),
+          );
+          final marker = Rect.fromCenter(center: at, width: 18, height: 18);
+          final visible =
+              id == widget.selected ||
+              scale >= 2.25 ||
+              !capitalMarkers.any(
+                (other) => other.overlaps(marker.inflate(12)),
+              );
+          if (!visible) continue;
+          capitalMarkers.add(marker);
+          if ((id == widget.selected || scale >= 2.25) && !widget.showFlags) {
+            final text = TextPainter(
+              text: TextSpan(
+                text: widget.capitalLabels[id],
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              textDirection: Directionality.of(context),
+              maxLines: 1,
+              ellipsis: '…',
+            )..layout(maxWidth: 108);
+            occupied.add(
+              Rect.fromLTWH(
+                at.dx + 5,
+                at.dy - text.height - 5,
+                text.width + 6,
+                text.height + 4,
+              ),
+            );
+            text.dispose();
+          } else if (!widget.showFlags) {
+            occupied.add(marker.inflate(3));
+          }
+        }
         double footprint(QuizipediaFeature feature) {
           var area = 0.0;
           for (final polygon in feature.polygons) {
@@ -2744,11 +3009,12 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             maxLines: 2,
             ellipsis: '…',
           )..layout(maxWidth: 160 * textScale);
-          final labelWidth = metrics.width + 8;
-          final labelHeight = metrics.height + 6;
+          final hasFlag = widget.showFlags;
+          final labelWidth = hasFlag ? 72.0 : metrics.width + 8;
+          final labelHeight = hasFlag ? 48.0 : metrics.height + 6;
           metrics.dispose();
-          // Anchor names on land. Text may extend over a coastline; actual flag
-          // pixels are separately clipped to the country polygons by the painter.
+          // Anchor labels and flag markers on land. Their compact overlay may
+          // extend over a coastline, but never repaints a country polygon.
           if (labelWidth > _view.width - 16 ||
               labelHeight > _view.height - 16 ||
               at.dx < 0 ||
@@ -2780,15 +3046,40 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             Positioned.fromRect(
               rect: rect,
               child: Center(
-                child: widget.showFlags
-                    ? Image.asset(
-                        'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
-                        key: Key(
-                          'map-country-flag-${feature.id.toLowerCase()}',
+                child: hasFlag
+                    ? Semantics(
+                        image: true,
+                        label: _t(
+                          context,
+                          'Flag of ${feature.nameEn}',
+                          'Флаг: ${feature.nameRu}',
                         ),
-                        fit: BoxFit.contain,
-                        filterQuality: FilterQuality.low,
-                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              width: 40,
+                              height: 26,
+                              child: Image.asset(
+                                'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
+                                key: Key(
+                                  'map-country-flag-${feature.id.toLowerCase()}',
+                                ),
+                                fit: BoxFit.contain,
+                                cacheWidth: 96,
+                                errorBuilder: (_, _, _) =>
+                                    const Icon(Icons.flag_outlined),
+                              ),
+                            ),
+                            Text(
+                              text,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: labelStyle.copyWith(fontSize: 9),
+                            ),
+                          ],
+                        ),
                       )
                     : Text(
                         text,
@@ -2801,6 +3092,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               ),
             ),
           );
+          if (hasFlag && labels.length == flagMarkerBudget) break;
           if (labels.length == 40) break;
         }
         return Stack(children: labels);
@@ -2821,7 +3113,10 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           : (Localizations.localeOf(context).languageCode == 'ru'
                 ? selected.nameRu
                 : selected.nameEn);
-      final compactControls = MediaQuery.sizeOf(context).height <= 600;
+      // The map can be compact even on a tall phone page.  Its own bounds,
+      // not the outer MediaQuery, decide whether a four-button vertical rail
+      // would be clipped.
+      final compactControls = constraints.maxHeight < 240;
       Widget selectionLabel() => IgnorePointer(
         child: Semantics(
           liveRegion: true,
@@ -2998,13 +3293,14 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                                       dark:
                                           Theme.of(context).brightness ==
                                           Brightness.dark,
-                                      flags: widget.showFlags
-                                          ? Map.of(_flags)
-                                          : const {},
+                                      flags: const {},
                                       highlighted: widget.highlighted,
                                       selected: widget.selected,
                                       correct: widget.correct,
                                       numbers: widget.numbers,
+                                      neighborIds: widget.neighborIds,
+                                      capitalPoints: widget.capitalPoints,
+                                      capitalLabels: widget.capitalLabels,
                                       showLabels: widget.showLabels,
                                       sceneScale: transform.getMaxScaleOnAxis(),
                                       russian:
@@ -3021,52 +3317,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                   ),
                 ),
               ),
-              Positioned.fill(
-                child: widget.showFlags
-                    ? const SizedBox.shrink()
-                    : _factLabels(scene),
-              ),
-              if (widget.showFlags && _loadingFlags)
-                Positioned(
-                  top: 12,
-                  left: 12,
-                  child: IgnorePointer(
-                    child: SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        semanticsLabel: _t(
-                          context,
-                          'Loading flags',
-                          'Загрузка флагов',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              if (widget.showFlags && _flagLoadError && !_loadingFlags)
-                Positioned(
-                  top: 8,
-                  left: 8,
-                  child: FilledButton.tonalIcon(
-                    key: const Key('map-flags-retry'),
-                    onPressed: () {
-                      setState(() {
-                        _flagData = null;
-                        _flagLoadError = false;
-                        _requestedFlags.removeWhere(
-                          (id) => !_flags.containsKey(id),
-                        );
-                      });
-                      _loadFlags();
-                    },
-                    icon: const Icon(Icons.refresh),
-                    label: Text(
-                      _t(context, 'Retry flags', 'Повторить загрузку флагов'),
-                    ),
-                  ),
-                ),
+              Positioned.fill(child: _factLabels(scene)),
               if (widget.showSelectionLabel)
                 Positioned(top: 8, left: 8, right: 8, child: selectionLabel()),
               Positioned(bottom: 12, right: 12, child: zoomControls()),
@@ -3087,6 +3338,9 @@ class _MapPainter extends CustomPainter {
     required this.selected,
     required this.correct,
     required this.numbers,
+    required this.neighborIds,
+    this.capitalPoints = const {},
+    this.capitalLabels = const {},
     required this.showLabels,
     required this.russian,
     required this.sceneScale,
@@ -3101,6 +3355,9 @@ class _MapPainter extends CustomPainter {
   final Map<String, ui.Image> flags;
   final String? highlighted, selected, correct;
   final List<String> numbers;
+  final Set<String> neighborIds;
+  final Map<String, Offset> capitalPoints;
+  final Map<String, String> capitalLabels;
   final bool showLabels, russian, dark;
   final double sceneScale;
 
@@ -3148,18 +3405,6 @@ class _MapPainter extends CustomPainter {
                       .abs() %
                   6];
         canvas.drawPath(path, Paint()..color = fill);
-        final flag = flags[feature.id];
-        if (flag != null) {
-          canvas.save();
-          canvas.clipPath(path);
-          canvas.drawImageRect(
-            flag,
-            Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
-            path.getBounds(),
-            Paint()..filterQuality = FilterQuality.low,
-          );
-          canvas.restore();
-        }
       }
     }
     _paintWaters(canvas, size, marine: false);
@@ -3183,11 +3428,14 @@ class _MapPainter extends CustomPainter {
             ..strokeWidth = (feature.id == selected ? 1.4 : .5) / sceneScale
             ..color = feature.id == selected
                 ? (dark ? const Color(0xff9bceff) : const Color(0xff194b7c))
+                : neighborIds.contains(feature.id)
+                ? (dark ? const Color(0xfff2c879) : const Color(0xff9a6500))
                 : (dark ? const Color(0xff617b90) : const Color(0xff8296a4)),
         );
       }
     }
     _paintWaterLabels(canvas, size);
+    _paintCapitalMarkers(canvas, size);
     if (showLabels) {
       for (final feature in features) {
         if (feature.id != highlighted) continue;
@@ -3215,6 +3463,103 @@ class _MapPainter extends CustomPainter {
         const Color(0xff263d58),
         sceneScale: sceneScale,
       );
+    }
+  }
+
+  void _paintCapitalMarkers(Canvas canvas, Size size) {
+    // At world scale, capitals are a dense geographic layer. Keep a sparse,
+    // stable set of dots until the user zooms; the selected capital is never
+    // culled. Labels wait for a closer view so they cannot obscure countries.
+    final markers = <Rect>[];
+    final occupied = <Rect>[];
+    final ids = capitalPoints.keys.where(capitalLabels.containsKey).toList()
+      ..sort((a, b) {
+        final selectedFirst = (a == selected ? 1 : 0).compareTo(
+          b == selected ? 1 : 0,
+        );
+        return selectedFirst != 0 ? -selectedFirst : a.compareTo(b);
+      });
+    for (final id in ids) {
+      final point = capitalPoints[id]!;
+      if (point.dx < 0 || point.dx > 1 || point.dy < 0 || point.dy > 1) {
+        continue;
+      }
+      final at = Offset(point.dx * size.width, point.dy * size.height);
+      final radius = (id == selected ? 5.0 : 3.5) / sceneScale;
+      final marker = Rect.fromCircle(
+        center: at,
+        radius: math.max(radius, 12 / sceneScale),
+      );
+      final showMarker =
+          id == selected ||
+          sceneScale >= 2.25 ||
+          !markers.any(
+            (other) => other.overlaps(marker.inflate(12 / sceneScale)),
+          );
+      if (!showMarker) continue;
+      markers.add(marker);
+      canvas.drawCircle(
+        at,
+        radius,
+        Paint()
+          ..color = id == selected
+              ? const Color(0xfff6c762)
+              : const Color(0xff153f62),
+      );
+      canvas.drawCircle(
+        at,
+        radius,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1 / sceneScale
+          ..color = Colors.white,
+      );
+      if (id != selected && sceneScale < 2.25) continue;
+      final text = capitalLabels[id]!;
+      final painter = TextPainter(
+        text: TextSpan(
+          text: text,
+          style: TextStyle(
+            color: dark ? Colors.white : const Color(0xff102a43),
+            fontSize: 10 / sceneScale,
+            fontWeight: id == selected ? FontWeight.w700 : FontWeight.w600,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+      )..layout(maxWidth: 108 / sceneScale);
+      final rect = Rect.fromLTWH(
+        at.dx + 5 / sceneScale,
+        at.dy - painter.height - 5 / sceneScale,
+        painter.width + 6 / sceneScale,
+        painter.height + 4 / sceneScale,
+      );
+      final canLabel =
+          id == selected ||
+          (rect.left >= 0 &&
+              rect.top >= 0 &&
+              rect.right <= size.width &&
+              !occupied.any(
+                (other) => other.overlaps(rect.inflate(3 / sceneScale)),
+              ));
+      if (!canLabel) {
+        painter.dispose();
+        continue;
+      }
+      occupied.add(rect);
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(rect, Radius.circular(3 / sceneScale)),
+        Paint()
+          ..color = (dark ? const Color(0xff102333) : Colors.white).withValues(
+            alpha: .9,
+          ),
+      );
+      painter.paint(
+        canvas,
+        rect.topLeft + Offset(3 / sceneScale, 2 / sceneScale),
+      );
+      painter.dispose();
     }
   }
 
@@ -3357,6 +3702,9 @@ class _MapPainter extends CustomPainter {
       showLabels != old.showLabels ||
       russian != old.russian ||
       sceneScale != old.sceneScale ||
+      neighborIds != old.neighborIds ||
+      capitalPoints != old.capitalPoints ||
+      capitalLabels != old.capitalLabels ||
       numbers != old.numbers;
 }
 

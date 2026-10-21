@@ -1,0 +1,630 @@
+{
+  "schema_version": "qm-organ-atlas/v1",
+  "scope_ru": "Основные сосуды: учебный маршрут, не полный перечень сосудов",
+  "source_ids": [
+    "openstax-20-1",
+    "openstax-20-5",
+    "openstax-25-3"
+  ],
+  "taxonomy": {
+    "vascular_class": [
+      "artery",
+      "vein"
+    ],
+    "circuits": [
+      "systemic",
+      "pulmonary",
+      "portal"
+    ],
+    "ui_note_ru": "Классы и маршруты предназначены для фильтрации списка; в этом черновике нет координат маркеров."
+  },
+  "organs": [
+    {
+      "id": "aorta",
+      "name_ru": "Аорта",
+      "name_en": "Aorta",
+      "name_la": "aorta",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "Выходит из левого желудочка и продолжается в грудной и брюшной полости.",
+      "position_en": "Arises from the left ventricle and continues through the thorax and abdomen.",
+      "function_ru": "Начальный крупный сосуд системного круга; её ветви распределяют кровь к тканям.",
+      "function_en": "Initial large vessel of the systemic circuit; its branches distribute blood to tissues.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Аорта — крупнейшая артерия; в области L4 она разделяется на общие подвздошные артерии.",
+          "text_en": "The aorta is the largest artery and divides into common iliac arteries at L4.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись без отдельных координат восходящей дуги и нисходящих отделов.",
+      "note_en": "Teaching record without separate coordinates for its named segments.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "pulmonary_trunk",
+      "name_ru": "Лёгочный ствол",
+      "name_en": "Pulmonary trunk",
+      "name_la": "truncus pulmonalis",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "Выходит из правого желудочка.",
+      "position_en": "Exits the right ventricle.",
+      "function_ru": "Разделяется на правую и левую лёгочные артерии.",
+      "function_en": "Divides into the right and left pulmonary arteries.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Лёгочный ствол — единственный сосуд, выходящий из правого желудочка.",
+          "text_en": "The pulmonary trunk is the single vessel exiting the right ventricle.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Отдельно от лёгочных артерий, чтобы не смешивать ствол и его ветви.",
+      "note_en": "Kept separate from its arterial branches.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "pulmonary"
+      ]
+    },
+    {
+      "id": "pulmonary_arteries",
+      "name_ru": "Лёгочные артерии",
+      "name_en": "Pulmonary arteries",
+      "name_la": "arteriae pulmonales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "Идут от лёгочного ствола к правому и левому лёгкому.",
+      "position_en": "Run from the pulmonary trunk to the right and left lungs.",
+      "function_ru": "Ветвятся к лёгочным капиллярам.",
+      "function_en": "Branch toward pulmonary capillaries.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Правая и левая лёгочные артерии образуются из лёгочного ствола и ведут к меньшим артериолам.",
+          "text_en": "Right and left pulmonary arteries form from the pulmonary trunk and lead to smaller arterioles.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Не обозначает все внутрилёгочные ветви.",
+      "note_en": "Does not enumerate all intrapulmonary branches.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "pulmonary"
+      ]
+    },
+    {
+      "id": "pulmonary_veins",
+      "name_ru": "Лёгочные вены",
+      "name_en": "Pulmonary veins",
+      "name_la": "venae pulmonales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "Возвращаются от лёгких к левому предсердию.",
+      "position_en": "Return from the lungs to the left atrium.",
+      "function_ru": "Возвращают кровь из лёгочного круга к сердцу.",
+      "function_en": "Return blood from the pulmonary circuit to the heart.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Четыре лёгочные вены, по две с каждой стороны, возвращают кровь в левое предсердие.",
+          "text_en": "Four pulmonary veins, two on each side, return blood to the left atrium.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет парные вены.",
+      "note_en": "Teaching record groups the paired veins.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "pulmonary"
+      ]
+    },
+    {
+      "id": "superior_vena_cava",
+      "name_ru": "Верхняя полая вена",
+      "name_en": "Superior vena cava",
+      "name_la": "vena cava superior",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "В грудной полости, впадает в правое предсердие.",
+      "position_en": "In the thorax, emptying into the right atrium.",
+      "function_ru": "Собирает кровь из большей части тела выше диафрагмы.",
+      "function_en": "Drains most of the body superior to the diaphragm.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Верхняя полая вена — крупная системная вена, впадающая в правое предсердие.",
+          "text_en": "The superior vena cava is a large systemic vein that empties into the right atrium.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Не заменяет отдельный список притоков.",
+      "note_en": "Does not replace a separate tributary list.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "inferior_vena_cava",
+      "name_ru": "Нижняя полая вена",
+      "name_en": "Inferior vena cava",
+      "name_la": "vena cava inferior",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "В брюшной полости, впадает в правое предсердие.",
+      "position_en": "In the abdomen, emptying into the right atrium.",
+      "function_ru": "Собирает кровь из областей преимущественно ниже диафрагмы.",
+      "function_en": "Drains areas largely inferior to the diaphragm.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Нижняя полая вена — крупная системная вена, впадающая в правое предсердие.",
+          "text_en": "The inferior vena cava is a large systemic vein that empties into the right atrium.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Не включает все притоки.",
+      "note_en": "Does not enumerate every tributary.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "common_carotid_arteries",
+      "name_ru": "Общие сонные артерии",
+      "name_en": "Common carotid arteries",
+      "name_la": "arteriae carotides communes",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "neck",
+      "position_ru": "По сторонам шеи.",
+      "position_en": "On the sides of the neck.",
+      "function_ru": "Дают внутреннюю и наружную сонные артерии и снабжают соответствующие стороны головы и шеи.",
+      "function_en": "Give rise to internal and external carotid arteries and supply the respective head and neck.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Правая общая сонная артерия начинается от плечеголовной артерии, левая — от дуги аорты.",
+          "text_en": "The right common carotid arises from the brachiocephalic artery and the left from the aortic arch.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "subclavian_arteries",
+      "name_ru": "Подключичные артерии",
+      "name_en": "Subclavian arteries",
+      "name_la": "arteriae subclaviae",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "thorax",
+      "position_ru": "Под ключицами, между грудной клеткой и верхними конечностями.",
+      "position_en": "Beneath the clavicles between thorax and upper limbs.",
+      "function_ru": "Снабжают кровью верхние конечности, грудную клетку, плечи, спину и центральную нервную систему.",
+      "function_en": "Supply the arms, chest, shoulders, back, and central nervous system.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Правая подключичная артерия начинается от плечеголовной артерии, левая — от дуги аорты.",
+          "text_en": "The right subclavian arises from the brachiocephalic artery and the left from the aortic arch.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "renal_arteries",
+      "name_ru": "Почечные артерии",
+      "name_en": "Renal arteries",
+      "name_la": "arteriae renales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Подходят к воротам почек.",
+      "position_en": "Approach the renal hila.",
+      "function_ru": "Снабжают каждую почку кровью.",
+      "function_en": "Supply each kidney.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Почечные артерии отходят непосредственно от нисходящей аорты.",
+          "text_en": "Renal arteries form directly from the descending aorta.",
+          "source_ids": [
+            "openstax-25-3"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет парные артерии.",
+      "note_en": "Teaching record groups the paired arteries.",
+      "source_ids": [
+        "openstax-25-3",
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "renal_veins",
+      "name_ru": "Почечные вены",
+      "name_en": "Renal veins",
+      "name_la": "venae renales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Выходят из ворот почек к нижней полой вене.",
+      "position_en": "Leave the renal hila toward the inferior vena cava.",
+      "function_ru": "Отводят кровь от почек к нижней полой вене.",
+      "function_en": "Drain blood from the kidneys to the inferior vena cava.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Почечные вены возвращают кровь непосредственно в нижнюю полую вену.",
+          "text_en": "Renal veins return blood directly to the inferior vena cava.",
+          "source_ids": [
+            "openstax-25-3"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет парные вены.",
+      "note_en": "Teaching record groups the paired veins.",
+      "source_ids": [
+        "openstax-25-3",
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "common_iliac_arteries",
+      "name_ru": "Общие подвздошные артерии",
+      "name_en": "Common iliac arteries",
+      "name_la": "arteriae iliacae communes",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "В области таза после разделения брюшной аорты.",
+      "position_en": "In the pelvis after the abdominal aorta divides.",
+      "function_ru": "Делятся на внутренние и наружные подвздошные артерии.",
+      "function_en": "Divide into internal and external iliac arteries.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Общие подвздошные артерии обеспечивают кровью тазовую область и далее нижние конечности.",
+          "text_en": "Common iliac arteries supply the pelvic region and ultimately the lower limbs.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "femoral_arteries",
+      "name_ru": "Бедренные артерии",
+      "name_en": "Femoral arteries",
+      "name_la": "arteriae femorales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "lower_limb",
+      "position_ru": "В бедренной области нижних конечностей.",
+      "position_en": "In the femoral region of the lower limbs.",
+      "function_ru": "Продолжают наружные подвздошные артерии после выхода из полости тела.",
+      "function_en": "Continue the external iliac arteries after leaving the body cavity.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Наружная подвздошная артерия при переходе в бедренную область получает название бедренной артерии.",
+          "text_en": "The external iliac artery becomes the femoral artery in the femoral region.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "artery",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "common_iliac_veins",
+      "name_ru": "Общие подвздошные вены",
+      "name_en": "Common iliac veins",
+      "name_la": "venae iliacae communes",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "pelvis",
+      "position_ru": "В области таза, ведут к нижней полой вене.",
+      "position_en": "In the pelvis, leading to the inferior vena cava.",
+      "function_ru": "Образуются из наружных и внутренних подвздошных вен и соединяются в нижнюю полую вену.",
+      "function_en": "Form from external and internal iliac veins and join to form the inferior vena cava.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Общие подвздошные вены соединяются на уровне L5 и образуют нижнюю полую вену.",
+          "text_en": "Common iliac veins join at L5 to form the inferior vena cava.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "femoral_veins",
+      "name_ru": "Бедренные вены",
+      "name_en": "Femoral veins",
+      "name_la": "venae femorales",
+      "system_ids": [
+        "cardiovascular"
+      ],
+      "kind": "organ",
+      "region": "lower_limb",
+      "position_ru": "В бедренной области нижних конечностей.",
+      "position_en": "In the femoral region of the lower limbs.",
+      "function_ru": "Отводят кровь от верхней части ноги и продолжаются в наружные подвздошные вены.",
+      "function_en": "Drain the upper leg and continue as external iliac veins.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Бедренная вена при переходе через стенку тела становится наружной подвздошной веной.",
+          "text_en": "The femoral vein becomes the external iliac vein as it crosses the body wall.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Учебная запись объединяет правую и левую стороны.",
+      "note_en": "Teaching record groups right and left sides.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "systemic"
+      ]
+    },
+    {
+      "id": "hepatic_portal_vein",
+      "name_ru": "Печёночная воротная вена",
+      "name_en": "Hepatic portal vein",
+      "name_la": "vena portae hepatis",
+      "system_ids": [
+        "cardiovascular",
+        "digestive"
+      ],
+      "kind": "organ",
+      "region": "abdomen",
+      "position_ru": "Идёт к печени от органов пищеварительной системы и селезёнки.",
+      "position_en": "Runs to the liver from digestive organs and the spleen.",
+      "function_ru": "Доставляет материалы из пищеварительных и некоторых других органов в печень для обработки.",
+      "function_en": "Delivers materials from digestive and some other organs to the liver for processing.",
+      "secretions_ru": [],
+      "secretions_en": [],
+      "facts": [
+        {
+          "text_ru": "Капилляры желудка, кишечника и селезёнки ведут к печёночной воротной вене и затем к синусоидам печени.",
+          "text_en": "Capillaries from the stomach, intestines, and spleen lead to the hepatic portal vein and liver sinusoids.",
+          "source_ids": [
+            "openstax-20-5"
+          ]
+        }
+      ],
+      "note_ru": "Воротная система начинается и заканчивается капиллярами; это отдельный учебный маршрут, не общий перечень вен.",
+      "note_en": "The portal system begins and ends in capillaries.",
+      "source_ids": [
+        "openstax-20-5"
+      ],
+      "vascular_class": "vein",
+      "circuits": [
+        "portal"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "pulmonary-core",
+      "circuit": "pulmonary",
+      "node_ids": [
+        "pulmonary_trunk",
+        "pulmonary_arteries",
+        "pulmonary_veins"
+      ],
+      "note_ru": "Между артериями и венами находятся лёгочные капилляры; они не представлены отдельной записью в этом черновике.",
+      "source_ids": [
+        "openstax-20-5"
+      ]
+    },
+    {
+      "id": "systemic-arterial-teaching-branches",
+      "circuit": "systemic",
+      "node_ids": [
+        "aorta",
+        "common_carotid_arteries",
+        "subclavian_arteries",
+        "renal_arteries",
+        "common_iliac_arteries",
+        "femoral_arteries"
+      ],
+      "note_ru": "Это выборка крупных ветвей для обучения, а не полный порядок ветвления аорты.",
+      "source_ids": [
+        "openstax-20-5",
+        "openstax-25-3"
+      ]
+    },
+    {
+      "id": "systemic-venous-teaching-return",
+      "circuit": "systemic",
+      "node_ids": [
+        "femoral_veins",
+        "common_iliac_veins",
+        "inferior_vena_cava",
+        "renal_veins",
+        "superior_vena_cava"
+      ],
+      "note_ru": "Маршрут показывает отдельные крупные возвратные пути; не задаёт соединение между любыми соседними карточками без явной записи.",
+      "source_ids": [
+        "openstax-20-5",
+        "openstax-25-3"
+      ]
+    },
+    {
+      "id": "portal-core",
+      "circuit": "portal",
+      "node_ids": [
+        "hepatic_portal_vein"
+      ],
+      "note_ru": "В этом наборе представлена только воротная вена; капиллярные сети и печёночные вены не добавлены как отдельные сосудистые записи.",
+      "source_ids": [
+        "openstax-20-5"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "openstax-20-1",
+      "title": "Издатель «ОпенСтакс»: строение и функции кровеносных сосудов",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "id": "openstax-20-5",
+      "title": "Издатель «ОпенСтакс»: пути кровообращения",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+      "checked_on": "2026-10-21"
+    },
+    {
+      "id": "openstax-25-3",
+      "title": "Издатель «ОпенСтакс»: строение почки",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+      "checked_on": "2026-10-21"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ Map<String, dynamic> fixture() => {
     },
   ],
   'entries': [
-    for (final id in ['a', 'b', 'c', 'd'])
+    for (final id in ['a', 'b', 'c', 'd', 'e', 'f', 'g'])
       {
         'id': id,
         'category': id == 'b' ? 'instruments' : 'notation',
@@ -92,7 +92,7 @@ void main() {
     check();
     check();
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.byKey(const Key('music-next')));
+    await tester.scrollUntilVisible(find.byKey(const Key('music-next')), 180);
     await tester.tap(find.byKey(const Key('music-next')));
     await tester.pumpAndSettle();
     expect(find.text('Score 1 / 1'), findsOneWidget);
@@ -109,6 +109,18 @@ void main() {
     (raw['questions'] as List).first['option_ids'] = ['a', 'a', 'b', 'c'];
     expect(() => MusicCatalog.fromJson(raw), throwsFormatException);
   });
+  test(
+    'practice extends sourced choices to six distinct same-topic entries',
+    () {
+      final catalog = MusicCatalog.fromJson(fixture());
+      final question = catalog.questions.first;
+      final options = musicPracticeOptions(catalog, question);
+      expect(options, hasLength(6));
+      expect(options.toSet(), hasLength(6));
+      expect(options, contains(question.correctId));
+      expect(options, containsAll(question.optionIds));
+    },
+  );
   test('catalog rejects invalid notation and dates rather than painting corrupt examples', () {
     final raw = fixture();
     (raw['entries'] as List).first['visual'] = {'note': 7};
@@ -135,6 +147,12 @@ void main() {
     expect(music.entries['note-0']!.visual, {'note': 0});
     expect(music.entries['note-6']!.visual, {'note': 6});
     expect(music.entries['sharp']!.visual, {'glyph': 0xE262});
+    for (final question in music.questions) {
+      final options = musicPracticeOptions(music, question);
+      expect(options, hasLength(6), reason: question.id);
+      expect(options.toSet(), hasLength(6), reason: question.id);
+      expect(options, contains(question.correctId), reason: question.id);
+    }
   });
   testWidgets(
     'cold training starts a finite round and mistakes retain original score',
@@ -159,7 +177,10 @@ void main() {
         await tester.pumpAndSettle();
         await tester.scrollUntilVisible(find.text('Source · 2026-10-19'), 180);
         expect(find.text('Source · 2026-10-19'), findsOneWidget);
-        await tester.ensureVisible(find.byKey(const Key('music-next')));
+        await tester.scrollUntilVisible(
+          find.byKey(const Key('music-next')),
+          180,
+        );
         await tester.tap(find.byKey(const Key('music-next')));
         await tester.pumpAndSettle();
       }
@@ -171,7 +192,7 @@ void main() {
       await tester.pump();
       await tester.tap(find.byKey(const Key('music-check')));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('music-next')));
+      await tester.scrollUntilVisible(find.byKey(const Key('music-next')), 180);
       await tester.tap(find.byKey(const Key('music-next')));
       await tester.pumpAndSettle();
       expect(find.text('Score 1 / 2'), findsOneWidget);
@@ -179,25 +200,27 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
-  testWidgets('topic filtering keeps distractors outside the chosen topic', (
+  testWidgets('topic overview opens a meaningful list and six answer choices', (
     tester,
   ) async {
     await tester.pumpWidget(
       MaterialApp(home: MusicLearningPage(bundle: Bundle(fixture()))),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('music-category')));
+    expect(find.byKey(const Key('music-topics')), findsOneWidget);
+    expect(find.byKey(const Key('music-search')), findsNothing);
+    expect(find.byKey(const Key('music-topic-notation')), findsOneWidget);
+    await tester.tap(find.byKey(const Key('music-topic-notation')));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Orchestra').last);
-    await tester.pumpAndSettle();
-    expect(find.byKey(const Key('music-entry-b')), findsOneWidget);
-    expect(find.byKey(const Key('music-entry-a')), findsNothing);
+    expect(find.byKey(const Key('music-entry-a')), findsOneWidget);
+    expect(find.byKey(const Key('music-entry-b')), findsNothing);
+    expect(find.byKey(const Key('music-back-to-topics')), findsOneWidget);
     await tester.tap(find.byKey(const Key('music-practice')));
     await tester.pumpAndSettle();
-    for (final id in ['a', 'b', 'c', 'd']) {
+    for (final id in ['a', 'b', 'c', 'd', 'e', 'f']) {
       expect(find.byKey(Key('music-option-$id')), findsOneWidget);
     }
-    expect(find.text('Question b'), findsOneWidget);
+    expect(find.text('Question a'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
   testWidgets(
@@ -220,6 +243,8 @@ void main() {
           home: MusicLearningPage(bundle: Bundle(raw)),
         ),
       );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('music-topic-notation')));
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(
         find.byKey(const Key('music-search')),

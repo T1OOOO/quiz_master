@@ -92,7 +92,7 @@ void main() {
       containsAll(['function', 'secretion', 'location', 'fact']),
     );
     for (final q in questions) {
-      expect((q['option_ids'] as List).toSet().length, 4);
+      expect((q['option_ids'] as List).toSet().length, 6);
       expect(
         (q['option_ids'] as List).where((id) => id == q['correct_id']).length,
         1,

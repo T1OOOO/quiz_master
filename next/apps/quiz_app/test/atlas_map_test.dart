@@ -99,6 +99,42 @@ void main() {
     );
   });
 
+  testWidgets('compact map keeps every zoom control within its bounds', (
+    tester,
+  ) async {
+    final controller = TransformationController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Center(
+          child: SizedBox(
+            width: 361,
+            height: 180,
+            child: QuizipediaWorldMap(
+              features: const [country],
+              controller: controller,
+              onSelect: (_) {},
+              showLabels: false,
+            ),
+          ),
+        ),
+      ),
+    );
+    final mapBounds = tester.getRect(find.byKey(const Key('quizipedia-map')));
+    for (final tooltip in [
+      'Zoom in',
+      'Zoom out',
+      'Reset view',
+      'Show selected country',
+    ]) {
+      final bounds = tester.getRect(find.byTooltip(tooltip));
+      expect(bounds.top, greaterThanOrEqualTo(mapBounds.top));
+      expect(bounds.bottom, lessThanOrEqualTo(mapBounds.bottom));
+      expect(bounds.left, greaterThanOrEqualTo(mapBounds.left));
+      expect(bounds.right, lessThanOrEqualTo(mapBounds.right));
+    }
+  });
+
   testWidgets('double tap zooms around tapped point', (tester) async {
     final controller = await mount(tester);
     final at =

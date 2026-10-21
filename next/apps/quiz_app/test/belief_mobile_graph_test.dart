@@ -93,26 +93,22 @@ void main() {
       expect((camera.value.storage[13] - before).abs(), greaterThan(10));
     },
   );
-  test('narrow geometry stacks two nodes and keeps an edge caption clear', () {
-    final geometry = BeliefGraphGeometry(viewportWidth: 288, count: 2);
+  test('phone geometry arranges three readable nodes across', () {
+    final geometry = BeliefGraphGeometry(viewportWidth: 288, count: 3);
     final first = geometry.nodeRect(0);
     final second = geometry.nodeRect(1);
-    final caption = geometry.edgeCaptionRect(0, 1, const Size(180, 16));
+    final third = geometry.nodeRect(2);
+    final caption = geometry.edgeCaptionRect(0, 1, const Size(8, 16));
 
-    expect(geometry.narrow, isTrue);
-    expect(geometry.columns, 1);
-    expect(geometry.sceneWidth, 288);
-    expect(first.left, greaterThanOrEqualTo(0));
-    expect(first.right, lessThanOrEqualTo(288));
-    expect(second.top, greaterThan(first.bottom));
+    expect(geometry.columns, 3);
+    expect(geometry.sceneWidth, 320);
+    expect(geometry.nodeWidth, greaterThanOrEqualTo(92));
+    expect(first.right, lessThanOrEqualTo(geometry.sceneWidth));
+    expect(second.left, greaterThan(first.right));
+    expect(third.left, greaterThan(second.right));
     expect(first.overlaps(second), isFalse);
-    expect(caption.overlaps(first), isFalse);
-    expect(caption.overlaps(second), isFalse);
     expect(geometry.captionFits(caption, const []), isTrue);
     expect(geometry.captionFits(caption, [caption]), isFalse);
-    final three = BeliefGraphGeometry(viewportWidth: 288, count: 3);
-    final acrossMiddle = three.edgeCaptionRect(0, 2, const Size(180, 20));
-    expect(three.captionFits(acrossMiddle, const []), isFalse);
   });
 
   testWidgets(
@@ -138,7 +134,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       final scene = find.byKey(const Key('belief-scene'));
-      expect(tester.getSize(scene).width, 288);
+      expect(tester.getSize(scene).width, 320);
       expect(tester.getSize(scene).height, greaterThanOrEqualTo(280));
       expect(tester.takeException(), isNull);
     },

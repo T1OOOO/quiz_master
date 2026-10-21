@@ -198,6 +198,23 @@ class MusicCatalog {
       );
 }
 
+/// Keeps the author-reviewed answer set, then completes it from records in the
+/// same editorial topic. This never creates a new fact or repeats an option.
+List<String> musicPracticeOptions(
+  MusicCatalog catalog,
+  MusicQuestion question,
+) {
+  final correct = catalog.entries[question.correctId]!;
+  final ids = <String>[...question.optionIds];
+  for (final entry in catalog.entries.values) {
+    if (ids.length == 6) break;
+    if (entry.category == correct.category && !ids.contains(entry.id)) {
+      ids.add(entry.id);
+    }
+  }
+  return List.unmodifiable(ids);
+}
+
 /// The semantic label is supplied by the caller: practice visuals never announce the answer.
 class MusicVisual extends StatelessWidget {
   const MusicVisual({
@@ -384,6 +401,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
   MusicCatalog? _catalog;
   Object? _error;
   String _query = '', _category = 'all';
+  bool _topics = true;
   bool _practice = false, _checked = false, _retry = false;
   int _index = 0, _score = 0, _total = 0;
   String? _choice;
@@ -434,7 +452,8 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
     _round = mistakes ?? ((_available..shuffle(Random())).take(10).toList());
     _options = {
       for (final q in _round)
-        q.id: (List<String>.of(q.optionIds)..shuffle(Random())),
+        q.id: (List<String>.of(musicPracticeOptions(_catalog!, q))
+          ..shuffle(Random())),
     };
     _index = 0;
     _choice = null;
@@ -503,9 +522,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       actions: [FactPracticeAction(scope: 'music', bundle: widget.bundle)],
-      title: Text(
-        _t('Music · learn and practise', 'Музыка · изучение и тренировка'),
-      ),
+      title: Text(_t('Music', 'Музыка')),
       leading: _practice
           ? IconButton(
               tooltip: _t('Back to reference', 'К справочнику'),
@@ -540,9 +557,61 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
           : _reference(),
     ),
   );
-  Widget _reference() => ListView(
+  Widget _reference() => _topics ? _topicOverview() : _catalogue();
+
+  Widget _topicOverview() => ListView(
+    key: const Key('music-topics'),
     padding: const EdgeInsets.all(16),
     children: [
+      Text(
+        _t('Choose a music topic', 'Выберите тему музыки'),
+        style: Theme.of(context).textTheme.headlineSmall,
+      ),
+      const SizedBox(height: 8),
+      Text(
+        _t(
+          'Open a topic for its sourced cards, search and local practice.',
+          'Откройте тему: внутри — карточки с источниками, поиск и локальная тренировка.',
+        ),
+      ),
+      const SizedBox(height: 16),
+      for (final topic in musicCategories.entries.where(
+        (item) => item.key != 'all',
+      ))
+        Card(
+          child: ListTile(
+            key: Key('music-topic-${topic.key}'),
+            title: Text(_ru ? topic.value.$2 : topic.value.$1),
+            subtitle: Text(
+              _t(
+                '${_catalog!.entries.values.where((entry) => entry.category == topic.key).length} cards',
+                'Карточек: ${_catalog!.entries.values.where((entry) => entry.category == topic.key).length}',
+              ),
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => setState(() {
+              _category = topic.key;
+              _query = '';
+              _topics = false;
+            }),
+          ),
+        ),
+    ],
+  );
+
+  Widget _catalogue() => ListView(
+    padding: const EdgeInsets.all(16),
+    children: [
+      TextButton.icon(
+        key: const Key('music-back-to-topics'),
+        onPressed: () => setState(() {
+          _topics = true;
+          _query = '';
+          _category = 'all';
+        }),
+        icon: const Icon(Icons.arrow_back),
+        label: Text(_t('All music topics', 'Все темы музыки')),
+      ),
       Text(
         _t(
           'Read a score, recognise a sign, discover an instrument',

@@ -97,7 +97,11 @@ void main() {
     await tester.pumpAndSettle();
     final map = find.byKey(const Key('quizipedia-viewport'));
     await tester.ensureVisible(map);
-    expect(tester.getSize(map).height, greaterThanOrEqualTo(300));
+    expect(tester.getSize(map).height, closeTo(180, 2));
+    await tester.tap(find.byKey(const Key('country-expand-map')));
+    await tester.pumpAndSettle();
+    final expandedMap = find.byKey(const Key('quizipedia-viewport'));
+    expect(tester.getSize(expandedMap).height, greaterThanOrEqualTo(300));
     await _pinchAndPan(tester);
     expect(tester.takeException(), isNull);
   });
@@ -106,11 +110,19 @@ void main() {
 Future<void> _pinchAndPan(WidgetTester tester) async {
   final viewer = find.byType(InteractiveViewer).first;
   await tester.ensureVisible(viewer);
-  final controller = tester.widget<InteractiveViewer>(viewer).transformationController!;
+  final controller = tester
+      .widget<InteractiveViewer>(viewer)
+      .transformationController!;
   final before = controller.value.storage[0].abs();
   final center = tester.getCenter(viewer);
-  final one = await tester.createGesture(pointer: 21, kind: PointerDeviceKind.touch);
-  final two = await tester.createGesture(pointer: 22, kind: PointerDeviceKind.touch);
+  final one = await tester.createGesture(
+    pointer: 21,
+    kind: PointerDeviceKind.touch,
+  );
+  final two = await tester.createGesture(
+    pointer: 22,
+    kind: PointerDeviceKind.touch,
+  );
   await one.down(center - const Offset(30, 0));
   await two.down(center + const Offset(30, 0));
   await tester.pump();
@@ -124,7 +136,11 @@ Future<void> _pinchAndPan(WidgetTester tester) async {
   await tester.pumpAndSettle();
   expect(controller.value.storage[0].abs(), greaterThan(before));
   final offset = controller.value.getTranslation();
-  final finger = await tester.startGesture(center, pointer: 23, kind: PointerDeviceKind.touch);
+  final finger = await tester.startGesture(
+    center,
+    pointer: 23,
+    kind: PointerDeviceKind.touch,
+  );
   await finger.moveBy(const Offset(24, 16));
   await tester.pump();
   await finger.moveBy(const Offset(24, 16));
