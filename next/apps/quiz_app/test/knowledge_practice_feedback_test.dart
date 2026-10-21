@@ -92,11 +92,16 @@ void main() {
     final data = _fixture();
     for (final event in data['events'] as List) {
       event['what_ru'] = 'Google';
+      event['year'] = -(event['year'] as int);
+      event['approximate'] = true;
     }
     final question = KnowledgeAtlas.fromJson(data).questions.first;
     final wrong = question.options.firstWhere(
       (option) => option != question.answer,
     );
+    final wrongLabel = wrong
+        .replaceAll('BCE', 'до н. э.')
+        .replaceFirst('≈ ', 'около ');
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('ru'),
@@ -112,7 +117,7 @@ void main() {
       find.byKey(const Key('knowledge-choice-explanations')),
       findsNothing,
     );
-    await tester.tap(find.widgetWithText(OutlinedButton, wrong));
+    await tester.tap(find.widgetWithText(OutlinedButton, wrongLabel));
     await tester.pump();
     await tester.tap(find.widgetWithText(FilledButton, 'Проверить'));
     await tester.pumpAndSettle();
@@ -135,6 +140,8 @@ void main() {
     }
     expect(find.textContaining('Google'), findsNothing);
     expect(find.textContaining('Гугл'), findsWidgets);
+    expect(find.textContaining('BCE'), findsNothing);
+    expect(find.textContaining('≈ '), findsNothing);
   });
   testWidgets('Russian people explanations localize biographies and roles', (
     tester,

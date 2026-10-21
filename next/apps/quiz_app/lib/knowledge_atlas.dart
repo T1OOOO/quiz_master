@@ -1136,7 +1136,10 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                     ),
                     Text(
                       _ru
-                          ? russianLearningText(question.explanationRu)
+                          ? _quizValue(
+                              atlas,
+                              russianLearningText(question.explanationRu),
+                            )
                           : question.explanationEn,
                     ),
                     _sourceButton(question.sourceUrl),
