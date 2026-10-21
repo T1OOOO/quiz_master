@@ -5,7 +5,8 @@
   "logs": {
     "integration-capital-fixed.log": "2483d565bda02efe85bb1da862bcc61ad421086e2f27f5ce17f4f0fe64f86783",
     "capital-regression-final.log": "67491494683e7e16988079cb5044a45ef60ce77f7975b27c29c7190d3cb1d4b9",
-    "analyze-capital-final.log": "b1963947aaa7d32f82694ff682bfa484fea3d211d690872b9416accf08dca51e"
+    "analyze-capital-final.log": "b1963947aaa7d32f82694ff682bfa484fea3d211d690872b9416accf08dca51e",
+    "build-0c536221.log": "321501259ef1c39ab618f9e8e960ae20b1db760f44b3463b1e63215adadcf5da"
   },
   "source_files": {
     "next/apps/quiz_app/lib/anatomy_scene.dart": "a9583dc226a2df7788e6d67cc5234188a9e4655a32ae589274f759c5530fb0f5",
@@ -35,5 +36,24 @@
     "production_candidate": false,
     "superseded": true
   },
-  "test_harness_note": "Initial parallel run: 372 passed / 1 asset-loading timeout in work/creator test with a fixed500ms delay. Isolated reproduction passed. Test now awaits actual JSON before fake-async pumping; final full run373 passed. No production data-loader relaxation."
+  "test_harness_note": "Initial parallel run: 372 passed / 1 asset-loading timeout in work/creator test with a fixed500ms delay. Isolated reproduction passed. Test now awaits actual JSON before fake-async pumping; final full run373 passed. No production data-loader relaxation.",
+  "final_local_package": {
+    "build_id": "quiz-2026.10.21-feedback-0c536221",
+    "source_commit": "0c536221c84b0777ffce24f9919e9541e30a64be",
+    "input_sha256": "ca89b956a2512508487829d169bc2522fefb68932f3f0f00cb196a2de70dc384",
+    "web_files": 804,
+    "web_delta_files": 173,
+    "web_delta_bytes": 12857267,
+    "baseline_deletions": 0,
+    "approved_assets": 167,
+    "approved_asset_bytes": 8093100,
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "main_dart_js_sha256": "3e03f9fc502d6aca58a83d78b66f5789e5abe7c03054074dd745ca0c7b7dc9e2",
+    "facts": 13828,
+    "sections": 15,
+    "container_image_built": false,
+    "server_mutation": false,
+    "local_package_review": "ACCEPT d735eaba-018f-4a42-81ec-e18ed460cbc1; not image/publication"
+  },
+  "final_mobile": "Exact served8796 version/mainJS hashes verified; France capitals+flags361/393, manualpinch, heart361/393, nativeorgan6choices+wronganswer/source/manualNext. No browser errors. PhysicalAndroidunverified."
 }
