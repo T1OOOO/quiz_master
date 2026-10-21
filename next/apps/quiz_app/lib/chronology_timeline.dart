@@ -40,6 +40,36 @@ class _ChronologyTimelineState extends State<ChronologyTimeline> {
     final entries = [...widget.entries]
       ..sort((a, b) => a.year.compareTo(b.year));
     final colors = Theme.of(context).colorScheme;
+    final textScaler = MediaQuery.textScalerOf(context);
+    final textStyle = DefaultTextStyle.of(context).style;
+    final dateStyle = textStyle.copyWith(
+      color: colors.primary,
+      fontWeight: FontWeight.bold,
+    );
+    final entryWidth = 164 * _scale;
+    double heightOf(String text, TextStyle style, {int? maxLines}) {
+      final painter = TextPainter(
+        text: TextSpan(text: text, style: style),
+        textDirection: Directionality.of(context),
+        textScaler: textScaler,
+        locale: Localizations.maybeLocaleOf(context),
+        maxLines: maxLines,
+        ellipsis: maxLines == null ? null : '…',
+      )..layout(maxWidth: entryWidth - 16);
+      final height = painter.height;
+      painter.dispose();
+      return height;
+    }
+
+    double dateHeight = 0;
+    double titleHeight = 0;
+    for (final entry in entries) {
+      final date = heightOf(entry.date, dateStyle);
+      final title = heightOf(entry.title, textStyle, maxLines: 3);
+      if (date > dateHeight) dateHeight = date;
+      if (title > titleHeight) titleHeight = title;
+    }
+    final contentHeight = 24 + dateHeight + 10 + 20 + 16 + titleHeight;
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +111,9 @@ class _ChronologyTimelineState extends State<ChronologyTimeline> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.textScalerOf(context).scale(180),
+            height: contentHeight > textScaler.scale(180)
+                ? contentHeight
+                : textScaler.scale(180),
             child: Scrollbar(
               controller: _scroll,
               child: ListView.builder(
@@ -93,7 +125,7 @@ class _ChronologyTimelineState extends State<ChronologyTimeline> {
                   final entry = entries[index];
                   final selected = widget.selectedId == entry.id;
                   return SizedBox(
-                    width: 164 * _scale,
+                    width: entryWidth,
                     child: InkWell(
                       key: Key('chronology-entry-${entry.id}'),
                       onTap: () => widget.onSelected(entry.id),
@@ -101,42 +133,54 @@ class _ChronologyTimelineState extends State<ChronologyTimeline> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                              ),
-                              child: Text(
-                                entry.date,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: colors.primary,
-                                  fontWeight: FontWeight.bold,
+                            SizedBox(
+                              height: dateHeight,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                ),
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Text(
+                                    entry.date,
+                                    textAlign: TextAlign.center,
+                                    style: dateStyle,
+                                  ),
                                 ),
                               ),
                             ),
                             const SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Expanded(child: Divider(color: colors.primary)),
-                                Icon(
-                                  selected
-                                      ? Icons.radio_button_checked
-                                      : Icons.circle,
-                                  size: selected ? 20 : 12,
-                                  color: colors.primary,
-                                ),
-                                Expanded(child: Divider(color: colors.primary)),
-                              ],
-                            ),
-                            Flexible(child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Text(
-                                entry.title,
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
+                            SizedBox(
+                              height: 20,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Divider(color: colors.primary),
+                                  ),
+                                  Icon(
+                                    selected
+                                        ? Icons.radio_button_checked
+                                        : Icons.circle,
+                                    size: selected ? 20 : 12,
+                                    color: colors.primary,
+                                  ),
+                                  Expanded(
+                                    child: Divider(color: colors.primary),
+                                  ),
+                                ],
                               ),
-                            )),
+                            ),
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Text(
+                                  entry.title,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

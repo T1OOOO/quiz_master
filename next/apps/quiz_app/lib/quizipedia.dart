@@ -2663,23 +2663,49 @@ class QuizipediaWorldMap extends StatefulWidget {
 
 class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
     with SingleTickerProviderStateMixin {
+  // A full-screen route keeps the compact map mounted below it.  The two map
+  // states deliberately share one controller, so retain the active viewport
+  // with the controller rather than with either state.
+  static final Expando<Size> _cameraViewports = Expando<Size>(
+    'quizipedia map viewport',
+  );
   late final AnimationController _camera = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 200),
   );
   Animation<Matrix4>? _cameraFrames;
   Offset _doubleTapAt = Offset.zero;
+  bool _cameraActive = false;
+  int _viewportRevision = 0;
+
+  bool get _ownsCamera =>
+      _cameraActive && (ModalRoute.of(context)?.isCurrent ?? true);
 
   @override
   void initState() {
     super.initState();
     _camera.addListener(() {
-      widget.controller.value = _cameraFrames!.value;
+      if (_ownsCamera && _cameraFrames != null) {
+        widget.controller.value = _cameraFrames!.value;
+      }
     });
     if (widget.focusTarget != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _focus(widget.focusTarget);
       });
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final active = TickerMode.valuesOf(context).enabled;
+    if (active == _cameraActive) return;
+    _cameraActive = active;
+    if (!active) {
+      _camera.stop();
+    } else {
+      _syncCameraViewport();
     }
   }
 
@@ -2702,6 +2728,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   }
 
   void _moveCamera(Matrix4 target) {
+    if (!_ownsCamera) return;
     _camera.stop();
     if (MediaQuery.disableAnimationsOf(context)) {
       widget.controller.value = target;
@@ -2722,6 +2749,57 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   QuizipediaFeature? get _selected => widget.features
       .where((feature) => feature.id == widget.selected)
       .firstOrNull;
+
+  static Size _sceneFor(Size view) {
+    final width = math.min(view.width, view.height * 2);
+    return Size(width, width / 2);
+  }
+
+  /// Reframe a manual transform around the same normalised world point when
+  /// the route changes the viewport's size or centred map origin.
+  Matrix4 _reframeCamera(Size previous, Size next) {
+    final previousScene = _sceneFor(previous);
+    final nextScene = _sceneFor(next);
+    final oldCenter = Offset(previous.width / 2, previous.height / 2);
+    final oldFocal = widget.controller.toScene(oldCenter);
+    final world = Offset(
+      (oldFocal.dx - (previous.width - previousScene.width) / 2) /
+          previousScene.width,
+      (oldFocal.dy - (previous.height - previousScene.height) / 2) /
+          previousScene.height,
+    );
+    final nextFocal = Offset(
+      (next.width - nextScene.width) / 2 + world.dx * nextScene.width,
+      (next.height - nextScene.height) / 2 + world.dy * nextScene.height,
+    );
+    final scale = widget.controller.value.getMaxScaleOnAxis();
+    return Matrix4.identity()
+      ..translateByDouble(
+        next.width / 2 - nextFocal.dx * scale,
+        next.height / 2 - nextFocal.dy * scale,
+        0,
+        1,
+      )
+      ..scaleByDouble(scale, scale, scale, 1);
+  }
+
+  void _syncCameraViewport() {
+    final revision = ++_viewportRevision;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted ||
+          !_ownsCamera ||
+          _view.isEmpty ||
+          revision != _viewportRevision) {
+        return;
+      }
+      final previous = _cameraViewports[widget.controller];
+      if (previous != null && previous != _view && !previous.isEmpty) {
+        _camera.stop();
+        widget.controller.value = _reframeCamera(previous, _view);
+      }
+      _cameraViewports[widget.controller] = _view;
+    });
+  }
 
   void _zoom(double factor, [Offset? focalPoint]) {
     final scale = widget.controller.value.getMaxScaleOnAxis();
@@ -3189,7 +3267,11 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, constraints) {
-      _view = Size(constraints.maxWidth, constraints.maxHeight);
+      final view = Size(constraints.maxWidth, constraints.maxHeight);
+      if (view != _view) {
+        _view = view;
+        if (_cameraActive) _syncCameraViewport();
+      }
       final scene = _scene;
       final selected = _selected;
       final name = selected == null
