@@ -1,0 +1,100 @@
+{
+  "review_kind": "independent-final-content-review/v3",
+  "reviewer_label": "capitals-six-factcheck",
+  "reviewed_at": "2026-10-21",
+  "scope": "Hash-bound final review of the private six-option capitals draft. It verifies the current 20-question structure, preservation of the source quiz's keys and four legacy options, all 40 already-approved additions, and the three repaired stems/explanations. The unchanged 17 questions are accepted through the v1 review evidence rather than being represented as a new review of every factual sentence in their explanations.",
+  "artifact_binding": {
+    "draft_path": ".run/feedback_execute_20261021/archive21/capitals-six-draft.json",
+    "draft_sha256": "ec6aa50dbb8bbddce2642e871bdc89046a26a747f608c5c9430ede89c443e58f",
+    "source_quiz_path": "next/content/prep-capitals-1/draft.json",
+    "source_quiz_raw_bytes": 13958,
+    "source_quiz_hash_algorithm": "SHA-256 of the exact current file bytes via [System.IO.File]::ReadAllBytes",
+    "source_quiz_sha256": "2c08402c53021e198fce9fde9ae954c327cfd5c812e824cd3a2ba090f080b41b",
+    "source_quiz_declared_sha256_in_private_draft": "3c914f5db5dd22540319ea7d0b57305c9aa0c063bfc2a2f4345e49c12089c318",
+    "prior_full_fact_review": ".run/feedback_execute_20261021/archive21/capitals-six-review.json",
+    "prior_v2_review": ".run/feedback_execute_20261021/archive21/capitals-six-review-v2.json",
+    "prior_explanation_review": ".run/feedback_execute_20261021/archive21/capitals-six-explanations-review-v2.json"
+  },
+  "source_hash_discrepancy": {
+    "status": "RECORDED",
+    "finding": "The value declared in the private draft (3c914f5d...) is not the SHA-256 of the current raw `next/content/prep-capitals-1/draft.json` bytes (2c08402c...). It also does not match the raw bundle file in that canonical directory.",
+    "root_cause": "The current workspace contains no canonical source file with the declared digest. It is therefore stale or derived from an earlier/other serialization or baseline; the exact historical generator is not recoverable from the present artifacts.",
+    "review_action": "This report binds mechanical preservation checks to the actual raw-byte digest 2c08402c... and does not treat the stale declared metadata as a successful file hash."
+  },
+  "mechanical_integrity": {
+    "draft_revision": 3,
+    "question_count": 20,
+    "legacy_options_preserved_from_source": 80,
+    "correct_option_ids_preserved_from_source": 20,
+    "new_options": 40,
+    "total_option_ids": 120,
+    "total_option_ids_unique": 120,
+    "result": "PASS"
+  },
+  "all_40_previously_approved_additions_unchanged": {
+    "capitals-oct3-001": ["Чикаго", "Лос-Анджелес"],
+    "capitals-oct3-002": ["Нагоя", "Саппоро"],
+    "capitals-oct3-003": ["Ла-Плата", "Мар-дель-Плата"],
+    "capitals-oct3-004": ["Порт-Харкорт", "Бенин-Сити"],
+    "capitals-oct3-005": ["Актобе", "Тараз"],
+    "capitals-oct3-006": ["Кветта", "Фейсалабад"],
+    "capitals-oct3-007": ["Аджман", "Фуджейра"],
+    "capitals-oct3-008": ["Коросаль", "Дангрига"],
+    "capitals-oct3-009": ["Муйинга", "Руйиги"],
+    "capitals-oct3-010": ["Касунгу", "Мангочи"],
+    "capitals-oct3-011": ["Дурбан", "Гкеберха"],
+    "capitals-oct3-012": ["Йоханнесбург", "Гкеберха"],
+    "capitals-oct3-013": ["Дурбан", "Йоханнесбург"],
+    "capitals-oct3-014": ["Тариха", "Оруро"],
+    "capitals-oct3-015": ["Кочабамба", "Санта-Крус-де-ла-Сьерра"],
+    "capitals-oct3-016": ["Эйндховен", "Гронинген"],
+    "capitals-oct3-017": ["Роттердам", "Утрехт"],
+    "capitals-oct3-018": ["Галле", "Негомбо"],
+    "capitals-oct3-019": ["Корого", "Далоа"],
+    "capitals-oct3-020": ["Мбея", "Морогоро"]
+  },
+  "focused_source_evidence": [
+    {
+      "question_id": "capitals-oct3-009",
+      "correct_option_id": "capitals-oct3-009-opt-4",
+      "correct_option_text": "Гитега",
+      "stem": "Какой город является политической столицей Бурунди?",
+      "explanation": "Гитега — политическая столица Бурунди с 2019 года; Бужумбура выполняет экономическую роль.",
+      "status": "ACCEPT",
+      "source": "https://www.mae.gov.bi/geographie/",
+      "evidence_excerpt": "МИД Бурунди: «Bujumbura la capitale économique»; «Gitega la capitale politique»; «Gitega est la capitale politique ... depuis le 04 février 2019»."
+    },
+    {
+      "question_id": "capitals-oct3-015",
+      "correct_option_id": "capitals-oct3-015-opt-2",
+      "correct_option_text": "Ла-Пас",
+      "stem": "В каком городе находятся центральные учреждения исполнительной и законодательной власти Боливии?",
+      "explanation": "Центральные органы исполнительной и законодательной власти работают в Ла-Пасе, тогда как конституционная столица Боливии — Сукре.",
+      "status": "ACCEPT",
+      "sources": [
+        "https://presidencia.gob.bo/index.php/nota_prensa/nueva-etapa-en-las-relaciones-presidente-de-chile-llega-a-bolivia-y-es-recibido-con-honores-en-plaza-murillo/",
+        "https://diputados.gob.bo/wp-content/uploads/2025/02/2-REDACTOR-DICIEMBRE-2024.pdf",
+        "https://web.oep.org.bo/wp-content/uploads/2016/12/constitucion_politica_estado.pdf"
+      ],
+      "evidence_excerpt": "Официальный сайт Министерства президентства называет Casa Grande del Pueblo «sede del Gobierno nacional» в Ла-Пасе; официальный документ Палаты депутатов фиксирует заседание Ассамблеи в Ла-Пасе; статья 6 Конституции Боливии называет Сукре столицей. Новая формулировка об органах, а не «резиденциях», соответствует этим источникам.",
+      "stale_review_flag": "REMOVED"
+    },
+    {
+      "question_id": "capitals-oct3-018",
+      "correct_option_id": "capitals-oct3-018-opt-3",
+      "correct_option_text": "Шри-Джаяварденепура-Котте",
+      "stem": "В каком городе Шри-Ланки расположен и заседает парламент?",
+      "explanation": "Шри-Джаяварденепура-Котте объявлен столицей и в его границах расположен парламентский комплекс; Коломбо остаётся коммерческим центром.",
+      "status": "ACCEPT",
+      "sources": [
+        "https://www.kotte.mc.gov.lk/index.php?Itemid=175&id=25&lang=en&option=com_content&view=article",
+        "https://www.parliament.lk/en/visit-parliament/visiting-parliament/how-to-get-here"
+      ],
+      "evidence_excerpt": "Муниципалитет Котте сообщает, что город объявлен новой столицей Шри-Ланки с 29 января 1985 года, является административной столицей и местом парламентского комплекса; он также называет Коломбо коммерческой столицей. Сайт парламента прямо указывает его расположение в центре Sri Jayewardenepura Kotte."
+    }
+  ],
+  "overall_20_question_verdict": "ACCEPT",
+  "result": "The v3 private draft preserves the 20 original keys and 80 original option texts, retains all 40 additions accepted in the initial independent review, and resolves the three targeted stem/explanation issues. The v3 revision note accurately describes the sole content change and removal of the stale 015 flag.",
+  "remaining_scope_limit": "This review does not newly fact-check all prose in the 17 unchanged older explanations, nor does it approve a canonical import, API payload, server publication, feedback-status change or commit.",
+  "publication_boundary": "Private review only."
+}

@@ -3,7 +3,7 @@
 from __future__ import annotations
 import argparse,base64,hashlib,json,os,pathlib,re,shlex,subprocess
 HOST='racknerd-f0269d5';SSH_HOST='root@192.3.164.184';KEY=r'C:/Users/Alexey_Matvienko/.ssh/ll_deploy_ed25519'
-MANIFEST_SHA='d9ad832c05d472cd116aa3d8a459ac1183f81be520aa751bdf5b8626bf7e9830';ARCHIVE_BYTES=9555880176;EVIDENCE_ROOT=pathlib.Path(r'E:/Backups/quiz-master/server-20261021')
+MANIFEST_SHA='f0a62786649b35315a831807cd30b2dd5dd034bb16a2b34dcfeda8f3c966943b';ARCHIVE_BYTES=9555880176;EVIDENCE_ROOT=pathlib.Path(r'E:/Backups/quiz-master/server-20261021')
 PROTECTED=frozenset({'atlas-reader-green-20261021-uBBJXphO','atlas-reader-red-20261021-F1CYXtII','atlas-reader-backend-20261021-0OPKKBZe'})
 ARCHIVE_RELEASES=frozenset({'atlas-language-tests-20261020-uq50AzWm','loading-build-20261020-jZMLHsKM','ui55-backend-FirDEO1L','feedback-20261020-pQyJdfDm','atlas-backend-v2-20261020-cqYOYnPw','loading-build-20261020-iV6WKV3h','loading-build-20261020-9B3QwE7p','loading-build-20261020-Y0EFuthk','loading-build-20261020-rsFfOQmW'})
 TMP_RE=re.compile(r'^/tmp/krug-[^/]+/(?:\.dart_tool|build)$');OPT_RE=re.compile(r'^/opt/ll/releases/([^/]+)/(?:app/(?:\.dart_tool|build)|flutter/bin/cache|pub-cache)$')
@@ -24,7 +24,7 @@ def validate_manifest(d):
  fs=d.get('filesystem',{})
  if d.get('schema_version')!=1 or d.get('host')!=HOST or not isinstance(fs,dict) or fs.get('source')!='/dev/vda2' or fs.get('fstype')!='ext4':raise ValueError('manifest context')
  rows=d.get('cache_children')
- if not isinstance(rows,list) or len(rows)!=24:raise ValueError('exact 24 disjoint children required')
+ if not isinstance(rows,list) or len(rows)!=21:raise ValueError('exact 21 disjoint children required')
  seen=set()
  for r in rows:
   if not isinstance(r,dict) or not isinstance(r.get('path'),str) or r['path'] in seen:raise ValueError('duplicate child')
@@ -45,7 +45,7 @@ q=json.load(sys.stdin);rows=q['rows'];delete=bool(q.get('delete'))
 TMP=re.compile(r'^/tmp/krug-[^/]+/(?:\.dart_tool|build)$');OPT=re.compile(r'^/opt/ll/releases/([^/]+)/(?:app/(?:\.dart_tool|build)|flutter/bin/cache|pub-cache)$')
 PROTECTED={'atlas-reader-green-20261021-uBBJXphO','atlas-reader-red-20261021-F1CYXtII','atlas-reader-backend-20261021-0OPKKBZe'}
 ARCHIVE={'atlas-language-tests-20261020-uq50AzWm','loading-build-20261020-jZMLHsKM','ui55-backend-FirDEO1L','feedback-20261020-pQyJdfDm','atlas-backend-v2-20261020-cqYOYnPw','loading-build-20261020-iV6WKV3h','loading-build-20261020-9B3QwE7p','loading-build-20261020-Y0EFuthk','loading-build-20261020-rsFfOQmW'}
-if socket.gethostname()!='racknerd-f0269d5' or len(rows)!=24:raise SystemExit('host/count')
+if socket.gethostname()!='racknerd-f0269d5' or len(rows)!=21:raise SystemExit('host/count')
 def project(p):
  m=OPT.fullmatch(p)
  return p.rsplit('/',1)[0] if TMP.fullmatch(p) else '/opt/ll/releases/'+m.group(1) if m else None

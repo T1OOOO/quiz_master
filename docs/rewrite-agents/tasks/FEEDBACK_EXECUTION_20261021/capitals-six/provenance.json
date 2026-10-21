@@ -1,0 +1,132 @@
+{
+  "packet": "yp19/prep-capitals-1-six-choice",
+  "status": "canonical-input-generated; publication-not-performed",
+  "source_quiz": "quizzes/Preparation/prep_capitals_1.json",
+  "source_quiz_sha256": "a29c9ee7aa363d6fa7a481d16dd30d52ad105ac884fbed4692af9ce451a82279",
+  "controlled_input": "docs/rewrite-agents/tasks/FEEDBACK_EXECUTION_20261021/capitals-six/source.legacy.json",
+  "controlled_input_sha256": "e00d79bfc964fd7800bc7f446b5c86c7f70aa8008ebbf76e28ba6a9d2dcc25ea",
+  "accepted_private_draft": "docs/rewrite-agents/tasks/FEEDBACK_EXECUTION_20261021/capitals-six/accepted-draft-v3.json",
+  "accepted_private_draft_sha256": "ec6aa50dbb8bbddce2642e871bdc89046a26a747f608c5c9430ede89c443e58f",
+  "accepted_fact_review": "docs/rewrite-agents/tasks/FEEDBACK_EXECUTION_20261021/capitals-six/final-review-v3.json",
+  "accepted_fact_review_sha256": "aa094cbada1938ea5e184005ab2e4735bd27baa4909e388f7b68a3a53e9ad619",
+  "prior_full_fact_review_sources_sha256": "57def723fbc1f67c9eb2b4a13b91fbe2e73046799413e823df846ab6dbbf5fb7",
+  "reviewed_canonical_source": "next/content/prep-capitals-1/draft.json",
+  "reviewed_canonical_source_raw_sha256": "2c08402c53021e198fce9fde9ae954c327cfd5c812e824cd3a2ba090f080b41b",
+  "private_draft_declared_source_sha256": "3c914f5db5dd22540319ea7d0b57305c9aa0c063bfc2a2f4345e49c12089c318",
+  "private_draft_declared_source_binding": "Retained as an unverified private-draft declaration; final review v3 binds the actual canonical raw-byte hash above.",
+  "reviewed_stem_clarifications": [
+    "capitals-oct3-009",
+    "capitals-oct3-015",
+    "capitals-oct3-018"
+  ],
+  "reviewed_explanation_replacements": [
+    "capitals-oct3-009",
+    "capitals-oct3-015",
+    "capitals-oct3-018"
+  ],
+  "preserved_correct_option_ids": [
+    {
+      "question_id": "capitals-oct3-001",
+      "correct_option_id": "capitals-oct3-001-opt-3"
+    },
+    {
+      "question_id": "capitals-oct3-002",
+      "correct_option_id": "capitals-oct3-002-opt-2"
+    },
+    {
+      "question_id": "capitals-oct3-003",
+      "correct_option_id": "capitals-oct3-003-opt-1"
+    },
+    {
+      "question_id": "capitals-oct3-004",
+      "correct_option_id": "capitals-oct3-004-opt-4"
+    },
+    {
+      "question_id": "capitals-oct3-005",
+      "correct_option_id": "capitals-oct3-005-opt-1"
+    },
+    {
+      "question_id": "capitals-oct3-006",
+      "correct_option_id": "capitals-oct3-006-opt-2"
+    },
+    {
+      "question_id": "capitals-oct3-007",
+      "correct_option_id": "capitals-oct3-007-opt-1"
+    },
+    {
+      "question_id": "capitals-oct3-008",
+      "correct_option_id": "capitals-oct3-008-opt-4"
+    },
+    {
+      "question_id": "capitals-oct3-009",
+      "correct_option_id": "capitals-oct3-009-opt-4"
+    },
+    {
+      "question_id": "capitals-oct3-010",
+      "correct_option_id": "capitals-oct3-010-opt-4"
+    },
+    {
+      "question_id": "capitals-oct3-011",
+      "correct_option_id": "capitals-oct3-011-opt-2"
+    },
+    {
+      "question_id": "capitals-oct3-012",
+      "correct_option_id": "capitals-oct3-012-opt-1"
+    },
+    {
+      "question_id": "capitals-oct3-013",
+      "correct_option_id": "capitals-oct3-013-opt-3"
+    },
+    {
+      "question_id": "capitals-oct3-014",
+      "correct_option_id": "capitals-oct3-014-opt-3"
+    },
+    {
+      "question_id": "capitals-oct3-015",
+      "correct_option_id": "capitals-oct3-015-opt-2"
+    },
+    {
+      "question_id": "capitals-oct3-016",
+      "correct_option_id": "capitals-oct3-016-opt-4"
+    },
+    {
+      "question_id": "capitals-oct3-017",
+      "correct_option_id": "capitals-oct3-017-opt-1"
+    },
+    {
+      "question_id": "capitals-oct3-018",
+      "correct_option_id": "capitals-oct3-018-opt-3"
+    },
+    {
+      "question_id": "capitals-oct3-019",
+      "correct_option_id": "capitals-oct3-019-opt-2"
+    },
+    {
+      "question_id": "capitals-oct3-020",
+      "correct_option_id": "capitals-oct3-020-opt-3"
+    }
+  ],
+  "expected_question_revision_number": 2,
+  "difficulty_provenance": {
+    "legacy_numeric_difficulty_values": {
+      "7": 3,
+      "3": 2,
+      "2": 4,
+      "5": 4,
+      "4": 3,
+      "6": 4
+    },
+    "legacy_difficulty_level": "absent for all 20 source questions",
+    "canonicalization_observation": "quizctl derives labels and emits difficulty_level from the legacy numeric value; this is a mechanical representation change, not a calibration claim.",
+    "known_label_delta": [
+      "capitals-oct3-014: medium to hard, level 7",
+      "capitals-oct3-015: medium to hard, level 7",
+      "capitals-oct3-018: medium to hard, level 7"
+    ]
+  },
+  "build": {
+    "version": "2026.10.21.yp19-capitals-six",
+    "published_at": "2026-10-21T09:35:54Z"
+  },
+  "boundary": "This evidence authorizes only local canonicalization. It does not import to a server, publish a bundle, deploy, or resolve feedback."
+}

@@ -6,12 +6,15 @@ def manifest(rows):
  d={'schema_version':1,'host':c.HOST,'filesystem':{'source':'/dev/vda2','fstype':'ext4'},'archive_prerequisite':{'expected_reclaimed_allocated_bytes':c.ARCHIVE_BYTES},'cache_children':rows,'cache_children_allocated_bytes':sum(x['allocated_bytes'] for x in rows)};d['manifest_sha256']=c.digest(d);return d
 class CacheCleanupTest(unittest.TestCase):
  def test_committed_manifest_is_exact_and_disjoint(self):
-  d=json.loads((HERE/'cache-cleanup-manifest-v5.json').read_text(encoding='utf-8'))
+  d=json.loads((HERE/'cache-cleanup-manifest-v6.json').read_text(encoding='utf-8'))
   rows=c.validate_manifest(d)
-  self.assertEqual(len(rows),24)
-  self.assertEqual(sum(r['allocated_bytes'] for r in rows),2187223040)
+  self.assertEqual(len(rows),21)
+  self.assertEqual(sum(r['allocated_bytes'] for r in rows),1780559872)
+  self.assertEqual(d['disjoint_archive_cache_proof']['externally_missing_children_count'],3)
+  self.assertEqual(d['disjoint_archive_cache_proof']['externally_missing_allocated_bytes'],406663168)
+  self.assertEqual({r['path'] for r in rows}&set(d['disjoint_archive_cache_proof']['externally_missing_paths']),set())
   for r in rows:self.assertNotIn(c.project_root(r['path']).rsplit('/',1)[-1],c.ARCHIVE_RELEASES|c.PROTECTED)
- def valid(self):return manifest([row('/tmp/krug-%02d/build'%n,n) for n in range(24)])
+ def valid(self):return manifest([row('/tmp/krug-%02d/build'%n,n) for n in range(21)])
  def test_embedded_scripts_compile(self):compile(c.REMOTE_COMMON,'common','exec');compile(c.REMOTE_BUILDER,'builder','exec')
  def test_builder_prune_captures_stdout_and_emits_one_json(self):
   self.assertIn('capture_output=True,text=True',c.REMOTE_BUILDER);self.assertEqual(c.REMOTE_BUILDER.count('print('),1)
@@ -21,7 +24,7 @@ class CacheCleanupTest(unittest.TestCase):
  def test_mount_unescape(self):self.assertEqual(c.unescape_mount(r'/a\040b'),'/a b')
  def test_tamper_protected_count(self):
   d=self.valid()
-  with mock.patch.object(c,'MANIFEST_SHA',d['manifest_sha256']):self.assertEqual(len(c.validate_manifest(d)),24)
+  with mock.patch.object(c,'MANIFEST_SHA',d['manifest_sha256']):self.assertEqual(len(c.validate_manifest(d)),21)
   d['cache_children'][0]['inode']=99
   with self.assertRaises(ValueError):c.validate_manifest(d)
   for name in (*c.PROTECTED,'ui55-backend-FirDEO1L'):
@@ -30,7 +33,7 @@ class CacheCleanupTest(unittest.TestCase):
     with self.assertRaises(ValueError):c.validate_manifest(d)
  def test_filesystem_telemetry_is_allowed_under_hash_pin(self):
   d=self.valid();d['filesystem'].update({'observed_free_bytes':123,'target_percent':20,'total_bytes':456});d['manifest_sha256']=c.digest({k:v for k,v in d.items() if k!='manifest_sha256'})
-  with mock.patch.object(c,'MANIFEST_SHA',d['manifest_sha256']):self.assertEqual(len(c.validate_manifest(d)),24)
+  with mock.patch.object(c,'MANIFEST_SHA',d['manifest_sha256']):self.assertEqual(len(c.validate_manifest(d)),21)
  def test_nonpersistent_receipt_never_ssh(self):
   d=self.valid()
   with tempfile.TemporaryDirectory() as td:
