@@ -2,7 +2,7 @@ import hashlib,json,tempfile,unittest,shlex
 from unittest import mock
 from pathlib import Path
 import release_executor as r
-class Release81GuardsTest(unittest.TestCase):
+class Release82GuardsTest(unittest.TestCase):
  def test_oci_identity_inline_python_survives_shell_quoting(self):
   script=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'prepare')
   commands=[line for line in script.splitlines() if line.startswith(('k3s ctr -n k8s.io content get ','k3s crictl inspecti ')) and 'python3 -c' in line]
@@ -45,7 +45,7 @@ class Release81GuardsTest(unittest.TestCase):
    r.validate_web_delta(base,candidate,candidate,root,allow)
    with self.assertRaises(r.GuardError): r.validate_web_delta(base,{**candidate,'assets/unapproved.json':'new'},{**candidate,'assets/unapproved.json':'new'},root,allow)
  def test_baseline_and_tag(self):
-  self.assertEqual((r.BASE_REVISION,r.BASE_DEPLOYMENT_REVISION,r.BASE_BUILD_ID),('81','79','quiz-2026.10.21-feedback-3208d5f0'))
+  self.assertEqual((r.BASE_REVISION,r.BASE_DEPLOYMENT_REVISION,r.BASE_BUILD_ID),('82','80','quiz-2026.10.21-feedback-02df23a7'))
   r.validate_build_id('quiz-2026.10.21-feedback-deadbeef')
   with self.assertRaises(r.GuardError):r.validate_build_id('quiz-2026.10.20-lazy-deadbeef')
  def test_server_guards(self):
@@ -56,10 +56,10 @@ class Release81GuardsTest(unittest.TestCase):
   with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(2000000,3275433,10000000,None,None)
   receipt=b'{"build_id":"quiz-2026.10.21-feedback-deadbeef","input_sha256":"x","image":"x@sha256:y"}'
   script=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'publish',reviewed_receipt_bytes=receipt)
-  for x in ('tune2fs','Reserved block count','/dev/vda2','helm rollback quiz-master 81','= "82"','restore-proof.sqlite','review receipt hash mismatch','deadbeef-publish.sqlite'):self.assertIn(x,script)
+  for x in ('tune2fs','Reserved block count','/dev/vda2','helm rollback quiz-master 82','= "83"','restore-proof.sqlite','review receipt hash mismatch','deadbeef-publish.sqlite'):self.assertIn(x,script)
   self.assertLess(script.index('volatile_checks.py" unmount'),script.index('helm upgrade'))
   prepare=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'prepare')
-  self.assertIn('k3s ctr -n k8s.io content get sha256:a447',prepare); self.assertIn('baseline image web closure',prepare)
+  self.assertIn('k3s ctr -n k8s.io content get sha256:ac4b',prepare); self.assertIn('baseline image web closure',prepare)
  def test_exact_approved_asset_bytes(self):
   with tempfile.TemporaryDirectory() as d:
    root=Path(d); f=root/'assets'/'a.png';f.parent.mkdir();f.write_bytes(b'abc');digest=hashlib.sha256(b'abc').hexdigest();p=root/r.ASSET_ALLOWLIST_NAME;p.write_text(json.dumps([{'path':'assets/a.png','sha256':digest,'bytes':3}]));allow=r.load_asset_allowlist(p)
@@ -91,7 +91,7 @@ class Release81GuardsTest(unittest.TestCase):
   self.assertNotEqual(r.BASE_OCI_INDEX_DIGEST,r.BASE_OCI_MANIFEST_DIGEST); self.assertNotEqual(r.BASE_OCI_MANIFEST_DIGEST,r.BASE_DOCKER_CONFIG_DIGEST)
 
 
- def test_release81_lineage_binds_historical_context(self):
+ def test_release82_lineage_binds_historical_context(self):
   manifest={'baseline':{'revision':'79'},'web':{'main.dart.js':'a'*64},'support':{'rehearse.py':'b'*64}}
   synthetic_sha=r.canonical_json_sha256(manifest)
   receipt={'build_id':r.BASE_BUILD_ID,'image':r.BASE_IMAGE,'input_sha256':synthetic_sha}
@@ -101,6 +101,6 @@ class Release81GuardsTest(unittest.TestCase):
    with self.assertRaises(r.GuardError): r.validate_baseline_lineage(altered,receipt)
    altered_receipt=dict(receipt); altered_receipt['input_sha256']='0'*64
    with self.assertRaises(r.GuardError): r.validate_baseline_lineage(manifest,altered_receipt)
-  self.assertEqual(r.BASE_INPUT_SHA256,'3b972b30dfc3f3ad1490040fd6a720b0271e4e28f73b89d4d25c4fd6ef096390')
+  self.assertEqual(r.BASE_INPUT_SHA256,'13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec')
 
 if __name__=='__main__':unittest.main()

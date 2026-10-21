@@ -21,15 +21,15 @@ HOST = "racknerd-f0269d5"
 HOST_IP = "192.3.164.184"
 NAMESPACE = "quiz-master"
 RELEASE = "quiz-master"
-BASE_REVISION = "81"
-BASE_DEPLOYMENT_REVISION = "79"
-BASE_BUILD_ID = "quiz-2026.10.21-feedback-3208d5f0"
-BASE_IMAGE = 'quiz-master:quiz-2026.10.21-feedback-3208d5f0@sha256:26618e10660ea237444628ac82edc69cad3c57435c7862e044a0ab2788f8071a'
-BASE_OCI_INDEX_DIGEST = "sha256:26618e10660ea237444628ac82edc69cad3c57435c7862e044a0ab2788f8071a"
-BASE_OCI_MANIFEST_DIGEST = "sha256:a4470dfed924840aaa3154090c54656b623f894b47bdd067719270666b828757"
-BASE_DOCKER_CONFIG_DIGEST = "sha256:4a6c8109834338d2a9a05ca787334d47810fb52652b720846c2fa592fec480c6"
+BASE_REVISION = "82"
+BASE_DEPLOYMENT_REVISION = "80"
+BASE_BUILD_ID = "quiz-2026.10.21-feedback-02df23a7"
+BASE_IMAGE = 'quiz-master:quiz-2026.10.21-feedback-02df23a7@sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4'
+BASE_OCI_INDEX_DIGEST = "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4"
+BASE_OCI_MANIFEST_DIGEST = "sha256:ac4bf41df357fe8de546a8d0aff63b0bb976324f00f6146ef12eecc8ed6b6724"
+BASE_DOCKER_CONFIG_DIGEST = "sha256:574eb768f63655d0b26339ea6f7513382c256c03f21b2a23e7b71a2acaee67db"
 EXT4_RESERVED_BLOCKS = 1271337
-BASE_INPUT_SHA256 = "3b972b30dfc3f3ad1490040fd6a720b0271e4e28f73b89d4d25c4fd6ef096390"
+BASE_INPUT_SHA256 = "13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec"
 BASE_LOCAL_TAG = f"quiz-master:{BASE_BUILD_ID}"
 API_SHA256 = "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4"
 PVC_UID = "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
@@ -93,10 +93,10 @@ def canonical_json_sha256(value: object) -> str:
 
 def validate_baseline_lineage(manifest: dict[str, Any], receipt: dict[str, Any]) -> None:
     if canonical_json_sha256(manifest) != BASE_INPUT_SHA256:
-        raise GuardError("baseline inputs do not match the pinned release-79 input manifest")
+        raise GuardError("baseline inputs do not match the pinned baseline input manifest")
     expected = {"build_id": BASE_BUILD_ID, "image": BASE_IMAGE, "input_sha256": BASE_INPUT_SHA256}
     if receipt != expected:
-        raise GuardError("baseline receipt does not bind the pinned release-79 inputs")
+        raise GuardError("baseline receipt does not bind the pinned baseline inputs")
 
 
 def sha256_file(path: Path) -> str:

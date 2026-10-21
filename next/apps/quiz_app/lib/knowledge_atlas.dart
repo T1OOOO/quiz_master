@@ -405,12 +405,13 @@ class KnowledgeAtlas {
         result.add(
           KnowledgeQuestion(
             kind: KnowledgeQuestionKind.creator,
-            promptRu: 'Кто создал произведение «${work.titleRu}»?',
+            promptRu:
+                'Кто создал произведение ${_quotedRuWorkTitle(work.titleRu)}?',
             promptEn: 'Who created “${work.titleEn}”?',
             answer: creator.nameEn,
             options: [creator.nameEn, ...distractors],
             explanationRu:
-                '${creator.nameRu} связан с произведением «${work.titleRu}».',
+                '${creator.nameRu} связан с произведением ${_quotedRuWorkTitle(work.titleRu)}.',
             explanationEn:
                 '${creator.nameEn} is credited for “${work.titleEn}”.',
             sourceUrl: work.sourceUrl,
@@ -433,7 +434,7 @@ class KnowledgeAtlas {
             KnowledgeQuestion(
               kind: KnowledgeQuestionKind.credit,
               promptRu:
-                  'Кто сыграл роль «${credit.roleRu}» в «${work.titleRu}»?',
+                  'Кто сыграл роль «${credit.roleRu}» в ${_quotedRuWorkTitle(work.titleRu)}?',
               promptEn: 'Who played ${credit.roleEn} in “${work.titleEn}”?',
               answer: actor.nameEn,
               options: [actor.nameEn, ...distractors],
@@ -479,6 +480,9 @@ String dateLabelRu(int year, {int? endYear, bool approximate = false}) {
   String one(int value) => value < 0 ? '${-value} до н. э.' : '$value';
   return '$mark${one(year)}${endYear == null ? '' : '–${one(endYear)}'}';
 }
+
+String _quotedRuWorkTitle(String title) =>
+    title.startsWith('«') && title.endsWith('»') ? title : '«$title»';
 
 class KnowledgeAtlasPage extends StatefulWidget {
   const KnowledgeAtlasPage({super.key, required this.section, this.bundle});
@@ -960,6 +964,10 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
+            DefaultAssetBundle(
+              bundle: widget.bundle ?? rootBundle,
+              child: AtlasMedia(scope: 'works', entityId: work.id),
+            ),
             _labelled(
               _text('Briefly', 'Кратко'),
               _ru ? russianLearningText(work.summaryRu) : work.summaryEn,

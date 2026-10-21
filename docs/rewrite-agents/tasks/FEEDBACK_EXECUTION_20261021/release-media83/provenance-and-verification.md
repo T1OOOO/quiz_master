@@ -1,0 +1,7 @@
+# Media follow-up83
+
+Exactly11 added media records:9brandlogos (YouTube,Netflix,Windows,Honda,Mercedes-Benz,McDonald’s,Spotify,Nintendo,ElectronicArts) and2workreproductions (OdysseyXVcenturymanuscript; DonQuixote1605titlepage). Existing77metadatarecords unchanged; total88. 22imagebinaries,23assetdeltas includingmetadata. SourceURLs/credits/license in runtime metadata. Separate read-only agent reviewed13exactCommons primarypages and all26draftimagehashes/bytes/dimensions. RejectedMarvel because primarypage identity conflicts. Root independently viewed contact sheet and rejectedDivineComedy’s greenblankcover despite acceptablelicence. Neither rejectedimage/rowintegrated. No claim that allbrands/works haveimages.
+
+Knowledge selectedworkdetail alone mounts its cover. Fakebundle regression: catalogzeroimagerequests; selectedfirstwork loadsitsfullimage once; secondneverrequested. Missingrows retainzeroheightfallback. Russianquotedtitles normalized in creator/creditprompts andcreatorexplanation. No facts/API/quizzes changed.
+
+404Fluttertests passed; fullanalyze noissues.23Pythonreleaseguards passed after rebasingbaseline assertions to actualpublished82/80/index4b7853/AMDac4/config574/input13b3. Initial4baselinepin failures then1testdigesttranscriptionfailure fixed in tests; no guard weakened. Coldlive82homepage lazyresource checks retained. Frozenbuild/mobilecandidate/finalimagegate/publication stillrequired; this document doesnotclaim83published.
