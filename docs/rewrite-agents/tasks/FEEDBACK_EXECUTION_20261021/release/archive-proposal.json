@@ -1,0 +1,108 @@
+{
+  "status": "USER_APPROVED_EXECUTION_STARTED_NOT_DELETION_PROOF",
+  "observed_at": "2026-10-21",
+  "host": "racknerd-f0269d5",
+  "filesystem": {
+    "mount": "/",
+    "fstype": "ext4",
+    "size_bytes": 102417174528,
+    "free_bytes": 8531845120,
+    "free_percent": 8.33
+  },
+  "protected_paths": [
+    "/opt/ll/assets",
+    "/opt/quiz-master",
+    "/var/lib/rancher/k3s",
+    "/var/backups/language-learner/pgbackrest"
+  ],
+  "active_reference_scan": {
+    "process_cwd_fd_cmdline": [],
+    "docker_mounts": [],
+    "kubernetes_hostpath_mounts": [],
+    "note": "The scan is a point-in-time observation and must be repeated immediately before each deletion."
+  },
+  "phase_a_candidates": [
+    {
+      "path": "/opt/ll/releases/atlas-language-tests-20261020-uq50AzWm",
+      "allocated_bytes": 3515830272,
+      "logical_bytes": 3309326632,
+      "files": 76314,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/loading-build-20261020-jZMLHsKM",
+      "allocated_bytes": 2335207424,
+      "logical_bytes": 2195861459,
+      "files": 53543,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/ui55-backend-FirDEO1L",
+      "allocated_bytes": 845848576,
+      "logical_bytes": 845727328,
+      "files": 25,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/feedback-20261020-pQyJdfDm",
+      "allocated_bytes": 544935936,
+      "logical_bytes": 544485774,
+      "files": 168,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/atlas-backend-v2-20261020-cqYOYnPw",
+      "allocated_bytes": 514269184,
+      "logical_bytes": 512263032,
+      "files": 908,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/loading-build-20261020-iV6WKV3h",
+      "allocated_bytes": 449978368,
+      "logical_bytes": 442157478,
+      "files": 2710,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/loading-build-20261020-9B3QwE7p",
+      "allocated_bytes": 449945600,
+      "logical_bytes": 442157783,
+      "files": 2708,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/loading-build-20261020-Y0EFuthk",
+      "allocated_bytes": 449941504,
+      "logical_bytes": 442132276,
+      "files": 2710,
+      "duplicate_inode_files": 0
+    },
+    {
+      "path": "/opt/ll/releases/loading-build-20261020-rsFfOQmW",
+      "allocated_bytes": 449933312,
+      "logical_bytes": 442156988,
+      "files": 2707,
+      "duplicate_inode_files": 0
+    }
+  ],
+  "phase_a_totals": {
+    "allocated_bytes": 9555880176,
+    "unique_allocated_bytes": 9555880176,
+    "logical_bytes": 9134946750,
+    "projected_free_bytes_after_delete": 18087725296,
+    "projected_free_percent_after_delete": 17.66,
+    "shortfall_to_20_percent_bytes": 2395709610
+  },
+  "explicit_exclusions": [
+    "/opt/ll/releases/atlas-reader-backend-20261021-0OPKKBZe",
+    "/opt/ll/releases/atlas-reader-green-20261021-uBBJXphO",
+    "/opt/ll/releases/atlas-reader-red-20261021-F1CYXtII"
+  ],
+  "archive_destination_requirement": {
+    "must_not_be_same_filesystem_as": "/opt/ll/releases",
+    "minimum_free_bytes_before_start": 18269893500,
+    "reason": "An uncompressed archive and separately extracted verification tree must coexist off-host; no compression ratio is assumed."
+  },
+  "authorization_date": "2026-10-21"
+}
