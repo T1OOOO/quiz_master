@@ -1,0 +1,7 @@
+# Public79 checks and remaining native training gaps
+
+Chrome touch emulation, 361×738 and393×851, DPR2.75,5touchpoints. Physical Android not tested. Cold home excluded domain JSON/originalphotos/Bravura. Public music topics and note cards rendered readable Russian musical notation; Bravura889528B requested only after opening music. Native note question displayed6answers and manualCheck/Next; per-other-choice explanations remain missing, delegated for next iteration after frozen3252c7bb.
+
+Public constellation picker has88entries, search and3declination groups. Previews actually collapsed to dots; fixed adaptive projection padding is in frozen3252c7bb, pending browser check of new artifact. Public countryLayers button lacked directchoices; newdirectsheet/compactsummary in3252c7bb. Water practice63features passed hiddennames/sixchoices/wrong+correct/manualNext/comparison-on-map checks. France selection/manualcamera and combinedflag/capital layers passed; expanded/collapsed drift fixed in037efe20 and included3252. Culturetimeline date-step fixed in037efe20 and included3252.
+
+The remaining native practice audit identifies music, food, belief and knowledge routes needing source-backed other-choice explanations and clearer selected/correct feedback. Vascular practice already delegates to the generic fact practice which has these controls. Keep feedback89/119 open until actual implemented scopes and legacy content are verified. All49open feedback rows remain unchanged.
