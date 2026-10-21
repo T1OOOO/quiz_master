@@ -3290,18 +3290,56 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             maxLines: 1,
           )..layout(maxWidth: 108);
           final width = textPainter.width + 8;
+          final height = textPainter.height + 4;
           textPainter.dispose();
-          // A flag is a large marker, while the capital remains at its source
-          // coordinate.  Put the selected capital caption beside that marker;
-          // when its flag is decluttered/off-screen, keep the caption beside
-          // the visible capital rather than losing it with the painter label.
-          final reference =
-              selectedFlagRect ??
-              Rect.fromCenter(center: at, width: 10, height: 10);
-          final right = reference.right + 4;
-          final left = right + width <= _view.width - 4
-              ? right
-              : math.max(4.0, reference.left - width - 4);
+          // Country flags use a geographic centroid, which can be far from a
+          // capital in a large country. The capital caption must always use
+          // the source capital coordinate as its anchor.
+          final reference = Rect.fromCenter(center: at, width: 10, height: 10);
+          final centeredLeft = (at.dx - width / 2)
+              .clamp(4.0, _view.width - width - 4)
+              .toDouble();
+          final defaultTop = (at.dy - 11)
+              .clamp(4.0, _view.height - height - 4)
+              .toDouble();
+          final aboveTop = reference.top - height - 4;
+          final belowTop = reference.bottom + 4;
+          final clearedAboveTop =
+              (selectedFlagRect?.top ?? aboveTop) - height - 4;
+          final clearedBelowTop = (selectedFlagRect?.bottom ?? belowTop) + 4;
+          final candidates =
+              <Rect>[
+                Rect.fromLTWH(reference.right + 4, defaultTop, width, height),
+                Rect.fromLTWH(
+                  reference.left - width - 4,
+                  defaultTop,
+                  width,
+                  height,
+                ),
+                Rect.fromLTWH(centeredLeft, aboveTop, width, height),
+                Rect.fromLTWH(centeredLeft, belowTop, width, height),
+                Rect.fromLTWH(centeredLeft, clearedAboveTop, width, height),
+                Rect.fromLTWH(centeredLeft, clearedBelowTop, width, height),
+              ].where(
+                (rect) =>
+                    rect.left >= 4 &&
+                    rect.right <= _view.width - 4 &&
+                    rect.top >= 4 &&
+                    rect.bottom <= _view.height - 4,
+              );
+          final blockers = <Rect>[
+            ...occupied,
+            ?selectedFlagRect,
+          ];
+          var caption = candidates.firstOrNull;
+          for (final candidate in candidates) {
+            if (!blockers.any(
+              (other) => other.overlaps(candidate.inflate(3)),
+            )) {
+              caption = candidate;
+              break;
+            }
+          }
           if (at.dx < 0 ||
               at.dx > _view.width ||
               at.dy < 0 ||
@@ -3329,8 +3367,8 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           );
           labels.add(
             Positioned(
-              left: left,
-              top: (at.dy - 11).clamp(4.0, _view.height - 26).toDouble(),
+              left: caption?.left ?? reference.right + 4,
+              top: caption?.top ?? defaultTop,
               width: width,
               child: Text(
                 selectedCapitalLabel,

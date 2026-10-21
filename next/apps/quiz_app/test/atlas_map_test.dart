@@ -42,6 +42,64 @@ void main() {
     expect(find.text('Capital: Example'), findsOneWidget);
     expect(controller.value, Matrix4.identity());
   });
+
+  testWidgets(
+    'selected capital label stays anchored to its capital, not flag',
+    (tester) async {
+      final controller = TransformationController();
+      addTearDown(controller.dispose);
+      const wideCountry = QuizipediaFeature(
+        id: 'RU',
+        nameRu: 'Россия',
+        nameEn: 'Russia',
+        polygons: [
+          [
+            [
+              QuizipediaPoint(.1, .2),
+              QuizipediaPoint(.9, .2),
+              QuizipediaPoint(.9, .8),
+              QuizipediaPoint(.1, .8),
+            ],
+          ],
+        ],
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Center(
+            child: SizedBox(
+              width: 320,
+              height: 180,
+              child: QuizipediaWorldMap(
+                features: const [wideCountry],
+                controller: controller,
+                selected: 'RU',
+                showFlags: true,
+                capitalPoints: const {'RU': Offset(.2, .5)},
+                capitalLabels: const {'RU': 'Москва'},
+                overlayLabels: const {'RU': 'Россия'},
+                onSelect: (_) {},
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final dot = tester.getRect(
+        find.byKey(const Key('map-selected-capital-dot')),
+      );
+      final label = tester.getRect(
+        find.byKey(const Key('map-selected-capital-label')),
+      );
+      expect(
+        (label.center.dx - dot.center.dx).abs(),
+        lessThan(8),
+        reason: 'The capital caption must remain beside its geographic dot.',
+      );
+      expect(controller.value, Matrix4.identity());
+    },
+  );
+
   Future<TransformationController> mount(WidgetTester tester) async {
     final controller = TransformationController();
     addTearDown(controller.dispose);
