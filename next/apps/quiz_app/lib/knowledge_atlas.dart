@@ -234,6 +234,9 @@ class KnowledgeQuestion {
     required this.explanationRu,
     required this.explanationEn,
     required this.sourceUrl,
+    this.eventIds = const [],
+    this.workId,
+    this.personId,
   });
   final KnowledgeQuestionKind kind;
   final String promptRu,
@@ -243,6 +246,8 @@ class KnowledgeQuestion {
       explanationEn,
       sourceUrl;
   final List<String> options;
+  final List<String> eventIds;
+  final String? workId, personId;
 }
 
 class KnowledgeAtlas {
@@ -356,6 +361,7 @@ class KnowledgeAtlas {
             explanationRu: '${event.titleRu}: $answerDate. ${event.whatRu}',
             explanationEn: '${event.titleEn}: $answerDate. ${event.whatEn}',
             sourceUrl: event.sourceUrl,
+            eventIds: [event.id],
           ),
         );
       }
@@ -383,6 +389,7 @@ class KnowledgeAtlas {
           explanationRu: '${answer.titleRu} — ${dateLabel(answer.year)}.',
           explanationEn: '${answer.titleEn} — ${dateLabel(answer.year)}.',
           sourceUrl: answer.sourceUrl,
+          eventIds: options.map((event) => event.id).toList(),
         ),
       );
     }
@@ -407,6 +414,8 @@ class KnowledgeAtlas {
             explanationEn:
                 '${creator.nameEn} is credited for “${work.titleEn}”.',
             sourceUrl: work.sourceUrl,
+            workId: work.id,
+            personId: creator.id,
           ),
         );
       }
@@ -431,6 +440,8 @@ class KnowledgeAtlas {
               explanationRu: '${actor.nameRu} сыграл(а) ${credit.roleRu}.',
               explanationEn: '${actor.nameEn} played ${credit.roleEn}.',
               sourceUrl: work.sourceUrl,
+              workId: work.id,
+              personId: actor.id,
             ),
           );
         }
@@ -448,6 +459,9 @@ class KnowledgeAtlas {
             explanationRu: question.explanationRu,
             explanationEn: question.explanationEn,
             sourceUrl: question.sourceUrl,
+            eventIds: question.eventIds,
+            workId: question.workId,
+            personId: question.personId,
           ),
         )
         .toList(growable: false);
@@ -606,7 +620,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 4, 12, 24),
       children: [
-        _quizButton(atlas),
+        _quizButton(atlas, eventIds: events.map((event) => event.id).toSet()),
         _search(),
         Wrap(
           spacing: 6,
@@ -694,7 +708,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 4, 12, 24),
       children: [
-        _quizButton(atlas),
+        _quizButton(atlas, workIds: works.map((work) => work.id).toSet()),
         _search(),
         Wrap(
           spacing: 6,
@@ -768,7 +782,10 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 4, 12, 24),
       children: [
-        _quizButton(atlas),
+        _quizButton(
+          atlas,
+          personIds: people.map((person) => person.id).toSet(),
+        ),
         _search(),
         if (selected != null) _personCard(atlas, selected),
         ...people.map(
@@ -809,18 +826,57 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     ),
   );
 
-  Widget _quizButton(KnowledgeAtlas atlas) => Align(
-    alignment: Alignment.centerLeft,
-    child: Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: FilledButton.icon(
-        key: const Key('knowledge-train'),
-        onPressed: atlas.questions.isEmpty ? null : () => _showQuiz(atlas),
-        icon: const Icon(Icons.school_outlined),
-        label: Text(_text('Train connections', 'Тренировать связи')),
+  List<KnowledgeQuestion> _scopedQuestions(
+    KnowledgeAtlas atlas, {
+    Set<String>? eventIds,
+    Set<String>? workIds,
+    Set<String>? personIds,
+  }) => atlas.questions
+      .where((question) {
+        if (eventIds != null) {
+          return question.eventIds.isNotEmpty &&
+              question.eventIds.every(eventIds.contains);
+        }
+        if (workIds != null) return workIds.contains(question.workId);
+        if (personIds != null) return personIds.contains(question.personId);
+        return false;
+      })
+      .toList(growable: false);
+
+  Widget _quizButton(
+    KnowledgeAtlas atlas, {
+    Set<String>? eventIds,
+    Set<String>? workIds,
+    Set<String>? personIds,
+  }) {
+    final questions = _scopedQuestions(
+      atlas,
+      eventIds: eventIds,
+      workIds: workIds,
+      personIds: personIds,
+    );
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: FilledButton.icon(
+          key: const Key('knowledge-train'),
+          onPressed: questions.isEmpty
+              ? null
+              : () => _showQuiz(atlas, questions),
+          icon: const Icon(Icons.school_outlined),
+          label: Text(
+            questions.isEmpty
+                ? _text(
+                    'No practice for this selection',
+                    'Для этого выбора нет тренировки',
+                  )
+                : _text('Train connections', 'Тренировать связи'),
+          ),
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   Widget _eventCard(
     KnowledgeAtlas atlas,
@@ -1073,8 +1129,8 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       ? dateLabelRu(year, endYear: endYear, approximate: approximate)
       : dateLabel(year, endYear: endYear, approximate: approximate);
 
-  void _showQuiz(KnowledgeAtlas atlas) {
-    if (atlas.questions.isEmpty) return;
+  void _showQuiz(KnowledgeAtlas atlas, List<KnowledgeQuestion> questions) {
+    if (questions.isEmpty) return;
     setState(() {
       _questionIndex = 0;
       _answer = null;
@@ -1085,7 +1141,6 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       isScrollControlled: true,
       builder: (context) => StatefulBuilder(
         builder: (context, setModalState) {
-          final questions = atlas.questions;
           final question = questions[_questionIndex % questions.length];
           final correct = _answer == question.answer;
           return SafeArea(

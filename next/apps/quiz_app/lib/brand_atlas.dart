@@ -566,6 +566,8 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
   String _sectorName(Brand brand) => _ru ? brand.sectorRu : brand.sectorEn;
   String _country(Brand brand) => _ru ? brand.countryRu : brand.countryEn;
   String _claim(String ru, String en) => _ru ? russianLearningText(ru) : en;
+  String _factClaim(String ru, String en) =>
+      _ru ? russianLearningText(ru.replaceAll('AWS', 'Эй-дабл-ю-эс')) : en;
   String _displayName(String value) => _ru ? russianLearningText(value) : value;
   String _topicName(BrandQuestionKind? value) => switch (value) {
     null => _t('Mixed topics', 'Все темы'),
@@ -979,7 +981,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                 _t('Facts', 'Факты'),
                 brand.facts.map(
                   (item) => _SourcedText(
-                    _claim(item.textRu, item.textEn),
+                    _factClaim(item.textRu, item.textEn),
                     item.sourceIds,
                   ),
                 ),
@@ -1163,7 +1165,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                   brand.sourceIds,
                 ),
                 ...brand.facts.map(
-                  (fact) => _BrandOptionDetail(
+                  (fact) => _BrandOptionDetail.fact(
                     fact.textRu,
                     fact.textEn,
                     fact.sourceIds,
@@ -1186,7 +1188,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                   brand.sourceIds,
                 ),
                 ...brand.facts.map(
-                  (fact) => _BrandOptionDetail(
+                  (fact) => _BrandOptionDetail.fact(
                     fact.textRu,
                     fact.textEn,
                     fact.sourceIds,
@@ -1292,12 +1294,9 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                           start: 32,
                           top: 2,
                         ),
-                        child: Semantics(
-                          label: status,
-                          child: Text(
-                            status,
-                            style: Theme.of(context).textTheme.labelSmall,
-                          ),
+                        child: Text(
+                          status,
+                          style: Theme.of(context).textTheme.labelSmall,
                         ),
                       ),
                   ],
@@ -1418,7 +1417,11 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                           ...details.map(
                             (detail) => Padding(
                               padding: const EdgeInsets.only(top: 4),
-                              child: Text(_claim(detail.ru, detail.en)),
+                              child: Text(
+                                detail.isFact
+                                    ? _factClaim(detail.ru, detail.en)
+                                    : _claim(detail.ru, detail.en),
+                              ),
                             ),
                           ),
                           _sourceButtons(atlas, sourceIds),
@@ -1491,7 +1494,10 @@ class _SourcedText {
 }
 
 class _BrandOptionDetail {
-  const _BrandOptionDetail(this.ru, this.en, this.sourceIds);
+  const _BrandOptionDetail(this.ru, this.en, this.sourceIds) : isFact = false;
+  const _BrandOptionDetail.fact(this.ru, this.en, this.sourceIds)
+    : isFact = true;
   final String ru, en;
   final List<String> sourceIds;
+  final bool isFact;
 }

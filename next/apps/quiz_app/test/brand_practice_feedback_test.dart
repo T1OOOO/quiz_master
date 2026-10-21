@@ -8,9 +8,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/brand_atlas.dart';
 
 class _Bundle extends CachingAssetBundle {
+  _Bundle({Map<String, dynamic>? atlas}) : _data = atlas ?? _atlas;
+
+  final Map<String, dynamic> _data;
+
   @override
   Future<String> loadString(String key, {bool cache = true}) =>
-      SynchronousFuture(jsonEncode(_atlas));
+      SynchronousFuture(jsonEncode(_data));
 
   @override
   Future<ByteData> load(String key) => throw UnsupportedError('text only');
@@ -70,10 +74,43 @@ final _atlas = <String, dynamic>{
   ],
 };
 
+Map<String, dynamic> _atlasWithAwsFact() {
+  final data = jsonDecode(jsonEncode(_atlas)) as Map<String, dynamic>;
+  (data['brands'] as List).add({
+    'id': 'aws',
+    'name': 'AWS',
+    'sector_ru': 'технологии',
+    'sector_en': 'technology',
+    'country_ru': 'США',
+    'country_en': 'United States',
+    'founded_year': 2006,
+    'date_scope': 'brand',
+    'date_note_ru': 'Облачные сервисы AWS запущены в 2006 году.',
+    'date_note_en': 'AWS cloud services launched in 2006.',
+    'owner_id': 'owner-0',
+    'ownership_note_ru': 'Облачное направление Amazon.com, Inc.',
+    'ownership_note_en': 'Cloud business of Amazon.com, Inc.',
+    'ownership_checked_on': '2026-10-21',
+    'founders': [],
+    'former_names': [],
+    'facts': [
+      {
+        'text_ru': 'AWS — сокращение от Amazon Web Services.',
+        'text_en': 'AWS stands for Amazon Web Services.',
+        'source_ids': ['source'],
+      },
+    ],
+    'logo_history': [],
+    'source_ids': ['source'],
+  });
+  return data;
+}
+
 void main() {
   testWidgets(
     'wrong brand answer names both answers and explains every locked option',
     (tester) async {
+      final semantics = tester.ensureSemantics();
       tester.view.physicalSize = const Size(361, 738);
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.resetPhysicalSize);
@@ -135,7 +172,16 @@ void main() {
           scrollable: practiceScrollable,
         );
         expect(tester.widget<OutlinedButton>(option).onPressed, isNull);
+        if (index == selectedIndex) {
+          expect(
+            RegExp('Ваш ответ: неверно')
+                .allMatches(tester.getSemantics(option).label)
+                .length,
+            1,
+          );
+        }
       }
+      semantics.dispose();
 
       await tester.scrollUntilVisible(
         find.byKey(const Key('brand-option-explanations')),
@@ -212,21 +258,20 @@ void main() {
       final question = BrandAtlas.fromJson(_atlas).questions
           .firstWhere((item) => find.text(item.promptRu).evaluate().isNotEmpty);
       expect(question.options, hasLength(6));
+      final wrongLabel = question.options.firstWhere(
+        (option) => option != question.answer,
+      );
       await tester.drag(
         find.byKey(const Key('brand-practice-scroll')),
         const Offset(0, -900),
       );
       await tester.pumpAndSettle();
-      final wrongIndex = question.options.indexWhere(
-        (option) =>
-            option != question.answer &&
-            find
-                .byKey(Key('brand-option-${question.options.indexOf(option)}'))
-                .evaluate()
-                .isNotEmpty,
-      );
-      expect(wrongIndex, isNonNegative);
-      await tester.tap(find.byKey(Key('brand-option-$wrongIndex')));
+      // The production generator shuffles options for each atlas instance.
+      // Select by the stable, known-wrong label rendered in this sheet, not by
+      // an index from the independently constructed fixture question.
+      final wrongChoice = find.widgetWithText(OutlinedButton, wrongLabel);
+      await tester.ensureVisible(wrongChoice);
+      await tester.tap(wrongChoice);
       await tester.pump();
       final check = find.widgetWithText(FilledButton, 'Проверить');
       await tester.drag(
@@ -240,6 +285,33 @@ void main() {
       expect(find.byKey(const Key('brand-feedback-your')), findsOneWidget);
       expect(find.byKey(const Key('brand-feedback-correct')), findsOneWidget);
       expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'Russian AWS fact keeps the spoken abbreviation distinct from its name',
+    (tester) async {
+      tester.view.physicalSize = const Size(800, 2000);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru'), Locale('en')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: BrandAtlasPage(bundle: _Bundle(atlas: _atlasWithAwsFact())),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(const Key('brand-search')), 'AWS');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Амазон Веб Сервисез').last);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Амазон Веб Сервисез'), findsAtLeastNWidgets(1));
+      final fact = tester.widget<Text>(find.textContaining('сокращение')).data;
+      expect(fact, '• Эй-дабл-ю-эс — сокращение от Амазон Веб Сервисез.');
     },
   );
 }

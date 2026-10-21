@@ -246,4 +246,190 @@ void main() {
       expect(RegExp('[A-Za-z]').hasMatch(detail), isFalse);
     }
   });
+
+  testWidgets('culture training stays with the searched visible work', (
+    tester,
+  ) async {
+    final data = jsonDecode(
+      File('assets/quizipedia/knowledge_atlas.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    final work = Map<String, dynamic>.from(
+      (data['works'] as List).first as Map,
+    );
+    for (final event in data['events'] as List) {
+      (event as Map<String, dynamic>)['source_url'] =
+          'https://example.com/shared';
+    }
+    for (final item in data['works'] as List) {
+      (item as Map<String, dynamic>)['source_url'] =
+          'https://example.com/shared';
+    }
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru'), Locale('en')],
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        home: KnowledgeAtlasPage(section: 'culture', bundle: _Bundle(data)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('knowledge-search')),
+      work['title_ru'] as String,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('knowledge-train')));
+    await tester.pumpAndSettle();
+
+    final sheet = find.byType(BottomSheet);
+    for (var index = 0; index < 3; index++) {
+      expect(
+        find.descendant(
+          of: sheet,
+          matching: find.textContaining(work['title_ru'] as String),
+        ),
+        findsWidgets,
+      );
+      expect(
+        find.descendant(
+          of: sheet,
+          matching: find.textContaining('В каком году произошло'),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: sheet,
+          matching: find.textContaining('Примерно когда произошло'),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: sheet,
+          matching: find.textContaining('Какое из этих событий'),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(of: sheet, matching: find.byType(OutlinedButton)),
+        findsNWidgets(6),
+      );
+      if (index < 2) {
+        await tester.tap(find.byKey(const Key('knowledge-option-0')));
+        await tester.pump();
+        await tester.tap(find.byKey(const Key('knowledge-check')));
+        await tester.pumpAndSettle();
+        final next = find.byKey(const Key('knowledge-next'));
+        await tester.ensureVisible(next);
+        await tester.tap(next);
+        await tester.pumpAndSettle();
+      }
+    }
+  });
+
+  testWidgets('history training follows the selected era event target', (
+    tester,
+  ) async {
+    final data = _fixture();
+    final events = data['events'] as List;
+    (events.first as Map<String, dynamic>)['era'] = 'ancient';
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeAtlasPage(section: 'history', bundle: _Bundle(data)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ChoiceChip, 'Ancient world').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('knowledge-train')));
+    await tester.pumpAndSettle();
+
+    final sheet = find.byType(BottomSheet);
+    expect(
+      find.descendant(of: sheet, matching: find.textContaining('Event 0')),
+      findsWidgets,
+    );
+    expect(
+      find.descendant(of: sheet, matching: find.textContaining('Event 1')),
+      findsNothing,
+    );
+  });
+
+  testWidgets('empty culture search disables unrelated training', (
+    tester,
+  ) async {
+    final data = jsonDecode(
+      File('assets/quizipedia/knowledge_atlas.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeAtlasPage(section: 'culture', bundle: _Bundle(data)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('knowledge-search')),
+      'no match',
+    );
+    await tester.pumpAndSettle();
+
+    final button = tester.widget<FilledButton>(
+      find.byKey(const Key('knowledge-train')),
+    );
+    expect(button.onPressed, isNull);
+    expect(find.text('No practice for this selection'), findsOneWidget);
+  });
+
+  testWidgets(
+    'people training keeps the searched person as the answer target',
+    (tester) async {
+      final data = jsonDecode(
+        File('assets/quizipedia/knowledge_atlas.json').readAsStringSync(),
+      ) as Map<String, dynamic>;
+      final atlas = KnowledgeAtlas.fromJson(data);
+      final target = atlas.people.firstWhere(
+        (person) =>
+            atlas.questions.any((question) => question.personId == person.id),
+      );
+      final question = atlas.questions.firstWhere(
+        (question) => question.personId == target.id,
+      );
+      final wrong = question.options.firstWhere(
+        (option) => option != question.answer,
+      );
+      final wrongName = atlas.people
+          .firstWhere((person) => person.nameEn == wrong)
+          .nameRu;
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('ru'), Locale('en')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: KnowledgeAtlasPage(section: 'people', bundle: _Bundle(data)),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.enterText(
+        find.byKey(const Key('knowledge-search')),
+        target.nameRu,
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('knowledge-train')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(OutlinedButton, wrongName));
+      await tester.pump();
+      await tester.tap(find.byKey(const Key('knowledge-check')));
+      await tester.pumpAndSettle();
+
+      final sheet = find.byType(BottomSheet);
+      expect(
+        find.descendant(
+          of: sheet,
+          matching: find.text('Правильный ответ: ${target.nameRu}'),
+        ),
+        findsOneWidget,
+      );
+    },
+  );
 }
