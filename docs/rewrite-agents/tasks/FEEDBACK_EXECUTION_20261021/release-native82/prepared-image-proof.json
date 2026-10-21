@@ -1,0 +1,106 @@
+{
+  "all_165_quiz_sources_unchanged": true,
+  "all_original_feedback_rows_unchanged": true,
+  "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+  "artifacts": {
+    "image-web-closure.json": {
+      "all_web_bytes_match": true,
+      "files": 804
+    },
+    "prepare-unmount.json": {
+      "mounted": false,
+      "released_bytes": 268435456
+    },
+    "quiz-source-closure.json": {
+      "approved_existing_mutations": 0,
+      "candidate_files": 165,
+      "original_files": 165
+    },
+    "rehearsal-evidence.json": {
+      "backup_sha256": "3ecc6222772bdba309e68c00480a227a5114a7979297fed1711d5bdd5ce04e69",
+      "build_id": "quiz-2026.10.21-feedback-02df23a7",
+      "http": {
+        "aliases": 56,
+        "archival_fallback_quizzes": 11,
+        "article_refs": 241,
+        "eligible_started": 57,
+        "new_questions_graded": 38,
+        "private_pooled_banks": 23,
+        "short_bands_rejected": 363,
+        "visible_banks": 105,
+        "visible_slots": 4520
+      },
+      "image_docker_id": "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4",
+      "input_sha256": "13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec",
+      "integrity": "ok",
+      "kind": "rehearsal",
+      "phase": "prepare",
+      "recorded_at_utc": "2026-10-21T11:29:27.844931+00:00"
+    },
+    "rehearsal-http.json": {
+      "aliases": 56,
+      "archival_fallback_quizzes": 11,
+      "article_refs": 241,
+      "eligible_started": 57,
+      "new_questions_graded": 38,
+      "private_pooled_banks": 23,
+      "short_bands_rejected": 363,
+      "visible_banks": 105,
+      "visible_slots": 4520
+    },
+    "restore-evidence.json": {
+      "backup_sha256": "3ecc6222772bdba309e68c00480a227a5114a7979297fed1711d5bdd5ce04e69",
+      "build_id": "quiz-2026.10.21-feedback-02df23a7",
+      "bytes": 89694208,
+      "image_docker_id": "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4",
+      "input_sha256": "13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec",
+      "integrity": "ok",
+      "kind": "restore",
+      "phase": "prepare",
+      "recorded_at_utc": "2026-10-21T11:29:01.406755+00:00",
+      "restored_sha256": "3ecc6222772bdba309e68c00480a227a5114a7979297fed1711d5bdd5ce04e69"
+    }
+  },
+  "backup": {
+    "bytes": 89694208,
+    "integrity": "ok",
+    "mode": "0o600",
+    "path": "/opt/quiz-master/backups/quiz-2026.10.21-feedback-02df23a7-prepare.sqlite",
+    "sha256": "3ecc6222772bdba309e68c00480a227a5114a7979297fed1711d5bdd5ce04e69"
+  },
+  "build_id": "quiz-2026.10.21-feedback-02df23a7",
+  "chart_rendered_baseline_matches_live": true,
+  "deployment_revision": 79,
+  "feedback_original_rows": 130,
+  "free_bytes": 21462917120,
+  "free_percent": 20.95636519842892,
+  "helm_revision": 81,
+  "image_identity": {
+    "amd64_manifest": "sha256:ac4bf41df357fe8de546a8d0aff63b0bb976324f00f6146ef12eecc8ed6b6724",
+    "config_digest": "sha256:574eb768f63655d0b26339ea6f7513382c256c03f21b2a23e7b71a2acaee67db",
+    "cri_id": "sha256:574eb768f63655d0b26339ea6f7513382c256c03f21b2a23e7b71a2acaee67db",
+    "docker_descriptor_digest": "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4",
+    "docker_id": "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4",
+    "oci_content_hashes_verified": true,
+    "oci_index": "sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4"
+  },
+  "image_web_all_bytes_match": true,
+  "image_web_files": 804,
+  "image_web_manifest_file_sha256": "eef99fdd49e61c81048e5926f093e10b4eadacb0190800db39734c7ceca07bad",
+  "input_sha256": "13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec",
+  "new_release_published": false,
+  "node_conditions": {
+    "DiskPressure": "False",
+    "MemoryPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "prepared_receipt": {
+    "build_id": "quiz-2026.10.21-feedback-02df23a7",
+    "image": "quiz-master:quiz-2026.10.21-feedback-02df23a7@sha256:4b785307be90941b23a5b59c5ffdee18edfdcb62cdff18897a3ce43959c92ef4",
+    "input_sha256": "13b31cec36573714d733fbaf324340630c161914de5724112d775687984bccec"
+  },
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "reserved_block_count": 1271337,
+  "tmpfs_unmounted": true
+}

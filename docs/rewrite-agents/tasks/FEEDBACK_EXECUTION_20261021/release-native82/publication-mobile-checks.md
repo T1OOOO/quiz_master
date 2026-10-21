@@ -1,0 +1,11 @@
+# Published release 82 verification
+
+Published source `02df23a7e8d8fd2ee2027fb279952d777e3d4a48`; Helm82 / Deployment80. Full402Flutter tests, whole analysis and production build passed. Image identity and public JS bound in accompanying proofs. API and all165quiz sources unchanged. All130feedback rows preserved during release.
+
+Mobile Chromium emulation361×738/DPR2.75/touch5, not physical Android. Final compiled candidate: Culture search «Касабланка» gives its creator question, six choices, wrong/correct labels, allsix target details and source links; emptysearch disables practice. Final Brand wrongBMW/correctDisney shows each accessibility status once and six distinct company descriptions, readable disabled labels, manual Next. Sky/Photo checked flows already tested on equivalent unchanged components in prior candidate.
+
+Published HTTPS82: Culture same searchedwork creator question checked, expanded allsix details, rawtouch scroll, pinnedClose; Next asks RickBlaine actor for the same Casablanca work; rawtouch Close returns Culture search. NativeHistory six Russian dates wrong1750/correct10000BCE, expanded details, pinnedClose after scroll returns History. Private screenshot+semantics receipts retained. Coldhome14resource entries, onlytwo visible small preview images, no domainatlas JSON, full catalog images, Bravura font or allfactsaggregate. MainJScompressed1352443B; wasm2080997B. These are single browser-session observations.
+
+Known cosmetic doubled Russian work quotes remain in this deployed version; fixed by separately reviewed upcoming media packet. This does not change answer identity.
+
+After publication verification and independent feedback-evidence review, exactly ordinals102,106,107,113,117,118,122,123,124 marked resolved using authenticated admin API. Status-only proof verifies preserved content/screenshots and all other rows. Music nine topics were directly checked on published81; identical assets/feature retained82. Ordinal118 scoped to the constellation chooser (88 miniatures/search/hemispheregroups), as supported by original screenshot. This is not a claim of a separate full star catalog. Actualremaining40open; no broad unresolved reports closed.
